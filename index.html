@@ -7,8 +7,6 @@
 <title>JRS™ | Justification Review Standard</title>
 <meta name="description" content="The pre-save documentation standard.">
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-
 <style>
 body {
   margin: 0;
@@ -35,72 +33,26 @@ body {
   background: #C8A24A;
 }
 
-/* JRS MARK */
+/* JRS mark */
 .jrs-mark {
-  display: inline-flex;
+  display: flex;
   align-items: flex-start;
   margin-bottom: 28px;
 }
 
-/* CUSTOM J (aligned) */
-.j-letter {
-  position: relative;
-  width: 26px;
-  height: 44px;
-  margin-right: 2px;
-  top: -4px; /* fixed alignment */
+.jrs-mark svg {
+  width: 120px;
+  height: auto;
+  display: block;
 }
 
-.j-letter::before {
-  content: "";
-  position: absolute;
-  left: 10px;
-  top: 0;
-  width: 6px;
-  height: 44px;
-  background: linear-gradient(180deg,#E8B830,#C4961E,#8B6914);
-}
-
-.j-letter::after {
-  content: "";
-  position: absolute;
-  left: 2px;
-  bottom: 0;
-  width: 18px;
-  height: 10px;
-  border-bottom: 6px solid #C4961E;
-  border-left: 6px solid #C4961E;
-  border-bottom-left-radius: 12px;
-}
-
-/* RS */
-.rs {
-  font-family: "Playfair Display", Georgia, serif;
-  font-weight: 700;
-  font-size: 44px;
-  letter-spacing: -0.4px;
-  line-height: 1;
-
-  background: linear-gradient(
-    180deg,
-    #E8B830 0%,
-    #C4961E 55%,
-    #8B6914 100%
-  );
-
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* TM */
 .tm {
-  font-family: "Playfair Display", Georgia, serif;
-  font-weight: 700;
   font-size: 11px;
   margin-left: 2px;
   position: relative;
   top: 6px;
   color: #C8A24A;
+  font-weight: 700;
 }
 
 /* Sections */
@@ -139,9 +91,31 @@ a:hover {
 <div class="container">
 
 <div class="jrs-mark">
-  <span class="j-letter"></span>
-  <span class="rs">RS</span>
-  <span class="tm">™</span>
+
+<!-- FIXED JRS LETTERING -->
+<svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E8B830"/>
+      <stop offset="55%" stop-color="#C4961E"/>
+      <stop offset="100%" stop-color="#8B6914"/>
+    </linearGradient>
+  </defs>
+
+  <!-- J -->
+  <path d="M20 10 L20 35 Q20 50 5 50" stroke="url(#gold)" stroke-width="6" fill="none" stroke-linecap="round"/>
+
+  <!-- R -->
+  <path d="M45 50 L45 10 L65 10 Q75 10 75 20 Q75 30 65 30 L45 30 L75 50"
+        stroke="url(#gold)" stroke-width="6" fill="none" stroke-linecap="round"/>
+
+  <!-- S -->
+  <path d="M110 15 Q95 5 85 15 Q75 25 95 30 Q115 35 105 45 Q95 55 80 45"
+        stroke="url(#gold)" stroke-width="6" fill="none" stroke-linecap="round"/>
+</svg>
+
+<span class="tm">™</span>
+
 </div>
 
 <div class="section">
