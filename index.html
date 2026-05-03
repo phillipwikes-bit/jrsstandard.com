@@ -7,7 +7,7 @@
 <title>JRS™ | Justification Review Standard</title>
 <meta name="description" content="The pre-save documentation standard.">
 
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
 <style>
 body {
@@ -41,29 +41,35 @@ body {
   margin-bottom: 28px;
 }
 
-.jrs-text {
-  font-family: "Libre Baskerville", Georgia, serif;
+/* FORCE J SHAPE */
+.j {
+  font-family: Georgia, serif;
   font-weight: 700;
   font-size: 44px;
-  letter-spacing: -0.3px;
+  margin-right: -2px;
+
+  background: linear-gradient(180deg,#E8B830,#C4961E,#8B6914);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* RS stays in Playfair */
+.rs {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 700;
+  font-size: 44px;
+  letter-spacing: -0.5px;
   line-height: 1;
 
-  background: linear-gradient(
-    180deg,
-    #E8B830 0%,
-    #C4961E 55%,
-    #8B6914 100%
-  );
-
+  background: linear-gradient(180deg,#E8B830,#C4961E,#8B6914);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .tm {
-  font-family: "Libre Baskerville", Georgia, serif;
+  font-family: "Playfair Display", Georgia, serif;
   font-weight: 700;
   font-size: 11px;
-  line-height: 1;
   margin-left: 2px;
   position: relative;
   top: 6px;
@@ -105,7 +111,8 @@ a:hover {
 <div class="container">
 
 <div class="jrs-mark">
-  <span class="jrs-text">JRS</span>
+  <span class="j">J</span>
+  <span class="rs">RS</span>
   <span class="tm">™</span>
 </div>
 
