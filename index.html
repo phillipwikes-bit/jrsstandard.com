@@ -16,10 +16,23 @@ body {
   line-height: 1.6;
 }
 
+/* Container with vertical line */
 .container {
   max-width: 720px;
   margin: 0 auto;
   padding: 80px 40px 80px 120px;
+  position: relative;
+}
+
+/* Vertical gold line */
+.container::before {
+  content: '';
+  position: absolute;
+  left: 80px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #C8A24A;
 }
 
 /* Title */
