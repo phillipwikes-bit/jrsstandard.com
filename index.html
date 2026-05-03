@@ -9,127 +9,130 @@
 
 <style>
 :root {
-  --bg: #000;
-  --text: #EAEAEA;
-  --muted: #AFAFAF;
-  --gold: #C8A24A;
+  --bg:#000;
+  --text:#EAEAEA;
+  --muted:#9A9A9A;
+  --gold:#C8A24A;
 }
 
-/* Base */
 body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
   font-family: Georgia, "Times New Roman", serif;
-  line-height: 1.7;
+  line-height:1.75;
 }
 
 /* Layout */
-.container {
-  max-width: 680px;
-  margin: 0 auto;
-  padding: 72px 32px 72px 112px;
-  position: relative;
+.wrapper {
+  max-width:720px;
+  margin:0 auto;
+  padding:56px 20px;
+  position:relative;
 }
 
-/* Vertical line (system anchor) */
-.container::before {
-  content: "";
-  position: absolute;
-  left: 72px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: var(--gold);
+/* Subtle vertical system line */
+.wrapper::before {
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:2px;
+  background:var(--gold);
+  opacity:0.4;
 }
 
-/* Header block */
+/* Content aligned with line */
+.content {
+  padding-left:20px;
+}
+
+/* Header */
 .header {
-  margin-bottom: 40px;
+  margin-bottom:40px;
 }
 
 .title {
-  font-size: 18px;
-  color: var(--gold);
-  margin-bottom: 8px;
+  font-size:20px;
+  color:var(--gold);
+  margin-bottom:8px;
 }
 
 .meta {
-  font-size: 12px;
-  color: var(--muted);
-  margin-bottom: 6px;
+  font-size:12px;
+  color:var(--muted);
+  margin-bottom:4px;
 }
 
 .authority {
-  font-size: 12px;
-  color: var(--muted);
-  margin-bottom: 20px;
+  font-size:12px;
+  color:var(--muted);
+  margin-bottom:20px;
 }
 
 /* JRS anchor */
 .jrs {
-  font-size: 40px;
-  color: var(--gold);
-  margin-top: 16px;
+  font-size:42px;
+  color:var(--gold);
+  margin-top:10px;
 }
 
 /* Sections */
 .section {
-  margin-bottom: 48px;
+  margin-bottom:44px;
 }
 
 .label {
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-bottom: 10px;
+  font-size:12px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  margin-bottom:10px;
 }
 
 .line {
-  margin-bottom: 12px;
-  max-width: 520px;
+  margin-bottom:12px;
 }
 
 /* Emphasis */
 .underline {
-  border-bottom: 2px solid var(--text);
+  border-bottom:2px solid var(--text);
 }
 
 /* Link */
 a {
-  color: var(--text);
-  text-decoration: none;
-  border-bottom: 1px solid var(--gold);
+  color:var(--text);
+  text-decoration:none;
+  border-bottom:1px solid var(--gold);
 }
 
-/* MOBILE (clean, not compressed) */
-@media (max-width: 768px) {
-  .container {
-    padding: 40px 20px 40px 64px;
+/* Mobile optimization */
+@media (max-width:600px) {
+
+  .wrapper {
+    padding:40px 16px;
   }
 
-  .container::before {
-    left: 40px;
+  .content {
+    padding-left:16px;
   }
 
   .jrs {
-    font-size: 32px;
+    font-size:34px;
   }
 
   .section {
-    margin-bottom: 40px;
+    margin-bottom:36px;
   }
 
-  .line {
-    max-width: 100%;
-  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="wrapper">
+<div class="content">
 
 <div class="header">
   <div class="title">Justification Review Standard</div>
@@ -138,7 +141,6 @@ a {
     Issued under the JRS Documentation Control Framework.  
     Control Owner: Documentation Governance Function.
   </div>
-
   <div class="jrs">JRS<span style="font-size:10px;vertical-align:super;">™</span></div>
 </div>
 
@@ -198,6 +200,7 @@ a {
   </div>
 </div>
 
+</div>
 </div>
 
 </body>
