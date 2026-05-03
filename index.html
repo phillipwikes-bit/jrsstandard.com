@@ -7,11 +7,14 @@
 <title>Justification Review Standard</title>
 <meta name="description" content="Pre-save documentation control for AI and human-authored records.">
 
+<!-- FIX: Proper title font -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
 <style>
 :root {
   --bg:#000;
   --text:#EAEAEA;
-  --muted:#D0D0D0;   /* FIX: readable contrast */
+  --muted:#D0D0D0;
   --gold:#C8A24A;
 }
 
@@ -27,7 +30,7 @@ body {
 .container {
   max-width:720px;
   margin:0 auto;
-  padding:56px 20px 56px 64px; /* mobile-first */
+  padding:56px 20px 56px 64px;
   position:relative;
 }
 
@@ -42,26 +45,31 @@ body {
   background:var(--gold);
 }
 
-/* Header */
+/* Title FIXED */
 .title {
-  font-size:18px;
-  color:var(--gold);
+  font-family: "Playfair Display", serif;
+  font-size:28px;
+  font-weight:600;
+  color:#EAEAEA;
   margin-bottom:12px;
+  line-height:1.2;
 }
 
+/* Meta readable */
 .meta {
-  font-size:14px;          /* FIX: readable */
+  font-size:14px;
   color:var(--muted);
   margin-bottom:6px;
 }
 
+/* Authority readable */
 .authority {
-  font-size:14px;          /* FIX: readable */
+  font-size:14px;
   color:var(--muted);
   margin-bottom:24px;
 }
 
-/* JRS anchor */
+/* JRS */
 .jrs {
   font-size:38px;
   color:var(--gold);
@@ -73,6 +81,7 @@ body {
   margin-bottom:40px;
 }
 
+/* Headers */
 .label {
   font-size:12px;
   letter-spacing:0.12em;
@@ -81,6 +90,7 @@ body {
   margin-bottom:10px;
 }
 
+/* Content */
 .line {
   margin-bottom:10px;
 }
