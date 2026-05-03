@@ -5,32 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Justification Review Standard</title>
-<meta name="description" content="Pre-save documentation control for AI and human-authored records.">
+<meta name="description" content="Enterprise pre-save documentation control for AI and human-authored records.">
 
-<!-- FIX: Proper title font -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
 <style>
 :root {
   --bg:#000;
   --text:#EAEAEA;
-  --muted:#D0D0D0;
+  --muted:#CFCFCF;
   --gold:#C8A24A;
 }
 
+/* Base */
 body {
   margin:0;
   background:var(--bg);
   color:var(--text);
   font-family: Georgia, "Times New Roman", serif;
-  line-height:1.7;
+  line-height:1.75;
 }
 
 /* Layout */
 .container {
   max-width:720px;
   margin:0 auto;
-  padding:56px 20px 56px 64px;
+  padding:64px 24px 64px 72px;
   position:relative;
 }
 
@@ -45,54 +45,54 @@ body {
   background:var(--gold);
 }
 
-/* Title FIXED */
-.title {
-  font-family: "Playfair Display", serif;
-  font-size:28px;
-  font-weight:600;
-  color:#EAEAEA;
-  margin-bottom:12px;
-  line-height:1.2;
+/* Header */
+.header {
+  margin-bottom:48px;
 }
 
-/* Meta readable */
+.title {
+  font-family:"Playfair Display", serif;
+  font-size:30px;
+  font-weight:600;
+  line-height:1.2;
+  margin-bottom:12px;
+}
+
 .meta {
   font-size:14px;
   color:var(--muted);
   margin-bottom:6px;
 }
 
-/* Authority readable */
 .authority {
   font-size:14px;
   color:var(--muted);
-  margin-bottom:24px;
+  margin-bottom:28px;
 }
 
-/* JRS */
+/* JRS anchor */
 .jrs {
-  font-size:38px;
+  font-size:40px;
   color:var(--gold);
-  margin-bottom:32px;
+  margin-top:16px;
 }
 
 /* Sections */
 .section {
-  margin-bottom:40px;
+  margin-bottom:48px;
 }
 
-/* Headers */
 .label {
   font-size:12px;
   letter-spacing:0.12em;
   text-transform:uppercase;
   color:var(--gold);
-  margin-bottom:10px;
+  margin-bottom:14px;
 }
 
-/* Content */
 .line {
-  margin-bottom:10px;
+  margin-bottom:12px;
+  max-width:560px;
 }
 
 /* Emphasis */
@@ -107,16 +107,31 @@ a {
   border-bottom:1px solid var(--gold);
 }
 
-/* Desktop spacing */
-@media (min-width:768px) {
+/* Mobile */
+@media (max-width:768px) {
+
   .container {
-    padding:72px 32px 72px 96px;
+    padding:48px 20px 48px 60px;
   }
+
   .container::before {
-    left:56px;
+    left:28px;
   }
+
+  .title {
+    font-size:26px;
+  }
+
   .jrs {
-    font-size:42px;
+    font-size:34px;
+  }
+
+  .section {
+    margin-bottom:40px;
+  }
+
+  .line {
+    max-width:100%;
   }
 }
 </style>
@@ -126,14 +141,16 @@ a {
 
 <div class="container">
 
-<div class="title">Justification Review Standard</div>
-<div class="meta">Version 1.0 | AI Documentation Risk Control</div>
-<div class="authority">
-Issued under the JRS Documentation Control Framework.<br>
-Control Owner: Documentation Governance Function.
-</div>
+<div class="header">
+  <div class="title">Justification Review Standard</div>
+  <div class="meta">Version 1.0 | AI Documentation Risk Control</div>
+  <div class="authority">
+    Issued under the JRS Documentation Control Framework.<br>
+    Control Owner: Documentation Governance Function.
+  </div>
 
-<div class="jrs">JRS<span style="font-size:10px;vertical-align:super;">™</span></div>
+  <div class="jrs">JRS<span style="font-size:10px;vertical-align:super;">™</span></div>
+</div>
 
 <div class="section">
   <div class="label">Scope</div>
@@ -162,6 +179,26 @@ Control Owner: Documentation Governance Function.
   <div class="line">Does it stand on its own?</div>
   <div class="line">What is it based on?</div>
   <div class="line">Could someone else understand it without you?</div>
+</div>
+
+<div class="section">
+  <div class="label">Control Enforcement</div>
+  <div class="line">Records that fail this standard must not be finalized.</div>
+  <div class="line">Embed enforcement in pre-save validation where possible.</div>
+</div>
+
+<div class="section">
+  <div class="label">Audit and Evidence</div>
+  <div class="line">Evidence of compliance must be retained.</div>
+  <div class="line">Records without evidence may be subject to audit exception.</div>
+</div>
+
+<div class="section">
+  <div class="label">Failure Example</div>
+  <div class="line">Not a strong cultural fit.</div>
+  <div class="line">No defined criteria.</div>
+  <div class="line">No observable basis.</div>
+  <div class="line"><span class="underline">This does not meet the standard.</span></div>
 </div>
 
 <div class="section">
