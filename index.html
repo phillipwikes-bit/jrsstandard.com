@@ -7,8 +7,6 @@
 <title>JRS™ | Justification Review Standard</title>
 <meta name="description" content="The pre-save documentation standard.">
 
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@700&display=swap" rel="stylesheet">
-
 <style>
 body {
   margin: 0;
@@ -35,39 +33,19 @@ body {
   background: #C8A24A;
 }
 
-/* JRS mark */
-.jrs-mark {
-  display: inline-flex;
-  align-items: flex-start;
-  margin-bottom: 28px;
-}
-
-.jrs-text {
-  font-family: "EB Garamond", Georgia, serif;
-  font-weight: 700;
+/* SIMPLE, STABLE JRS */
+.jrs {
   font-size: 46px;
-  letter-spacing: -0.3px;
-  line-height: 1;
-
-  background: linear-gradient(
-    180deg,
-    #E8B830 0%,
-    #C4961E 55%,
-    #8B6914 100%
-  );
-
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  letter-spacing: 0;
+  margin-bottom: 28px;
+  color: #C8A24A;
 }
 
 .tm {
-  font-family: "EB Garamond", Georgia, serif;
-  font-weight: 700;
-  font-size: 11px;
+  font-size: 12px;
+  vertical-align: super;
   margin-left: 2px;
-  position: relative;
-  top: 6px;
-  color: #C8A24A;
 }
 
 /* Content */
@@ -86,17 +64,12 @@ body {
 .underline {
   border-bottom: 2px solid #EAEAEA;
   display: inline-block;
-  padding-bottom: 2px;
 }
 
 a {
   color: #EAEAEA;
   text-decoration: none;
   border-bottom: 1px solid #C8A24A;
-}
-
-a:hover {
-  opacity: 0.8;
 }
 </style>
 </head>
@@ -105,10 +78,7 @@ a:hover {
 
 <div class="container">
 
-<div class="jrs-mark">
-  <span class="jrs-text">JRS</span>
-  <span class="tm">™</span>
-</div>
+<div class="jrs">JRS<span class="tm">™</span></div>
 
 <div class="section">
   <div class="line">Protect Humans.</div>
