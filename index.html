@@ -8,208 +8,131 @@
 <meta name="description" content="An enterprise pre-save documentation control for AI and human-authored records.">
 
 <style>
-:root {
-  --bg: #050505;
-  --panel: rgba(255, 255, 255, 0.025);
-  --panel-border: rgba(200, 164, 74, 0.16);
-  --text: #EAEAEA;
-  --muted: #B0B0B0;
-  --gold: #C8A24A;
-  --line: rgba(200, 164, 74, 0.95);
-  --line-soft: rgba(200, 164, 74, 0.35);
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  -webkit-text-size-adjust: 100%;
-}
-
 body {
   margin: 0;
-  background:
-    radial-gradient(circle at top left, rgba(200, 164, 74, 0.06), transparent 28%),
-    radial-gradient(circle at top right, rgba(255, 255, 255, 0.02), transparent 24%),
-    var(--bg);
-  color: var(--text);
+  background: #000;
+  color: #EAEAEA;
   font-family: Georgia, "Times New Roman", serif;
   line-height: 1.75;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
 }
 
-.page {
-  width: min(100%, 980px);
+/* Container */
+.container {
+  max-width: 720px;
   margin: 0 auto;
-  padding: clamp(22px, 4vw, 54px);
+  padding: 80px 40px 80px 120px;
   position: relative;
 }
 
-.page::before {
-  content: "";
+/* Vertical gold line (ALWAYS visible) */
+.container::before {
+  content: '';
   position: absolute;
-  left: clamp(22px, 4vw, 54px);
+  left: 80px;
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(180deg, var(--line), var(--line-soft));
+  background: #C8A24A;
 }
 
-.shell {
-  padding-left: clamp(58px, 10vw, 120px);
-}
-
-.hero {
-  max-width: 66ch;
-  padding: 6px 0 26px;
-  margin-bottom: 22px;
-  border-bottom: 1px solid rgba(200, 164, 74, 0.14);
-}
-
-.kicker {
-  margin: 0 0 10px 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--gold);
-}
-
-h1 {
-  margin: 0 0 10px 0;
-  font-size: clamp(2rem, 4.8vw, 3.6rem);
-  line-height: 1.05;
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  color: var(--text);
-}
-
-.lede {
-  margin: 0 0 12px 0;
-  max-width: 62ch;
-  font-size: clamp(0.98rem, 1.1vw, 1.08rem);
-  color: #CFCFCF;
+/* Header */
+.title {
+  font-size: 18px;
+  color: #C8A24A;
+  margin-bottom: 6px;
 }
 
 .meta {
-  margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-size: 12px;
   color: #AFAFAF;
+  margin-bottom: 6px;
 }
 
-.stack {
-  display: grid;
-  gap: 18px;
-  max-width: 66ch;
+.authority {
+  font-size: 12px;
+  color: #AFAFAF;
+  margin-bottom: 32px;
 }
 
-.panel {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.016));
-  border: 1px solid var(--panel-border);
-  border-radius: 18px;
-  padding: 22px 22px 20px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+/* JRS mark (anchor) */
+.jrs {
+  font-size: 42px;
+  font-weight: 400;
+  color: #C8A24A;
+  margin-bottom: 40px;
 }
 
-.panel h2 {
-  margin: 0 0 12px 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
+.tm {
+  font-size: 11px;
+  vertical-align: super;
+  margin-left: 2px;
+}
+
+/* Sections */
+.section {
+  margin-bottom: 56px;
+}
+
+/* Labels */
+.label {
+  font-size: 12px;
+  color: #EAEAEA;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--gold);
+  margin-bottom: 10px;
 }
 
-.panel p {
-  margin: 0 0 10px 0;
-  font-size: 1rem;
-  color: var(--text);
+/* Lines */
+.line {
+  margin-bottom: 12px;
+  max-width: 560px;
 }
 
-.panel p:last-child {
-  margin-bottom: 0;
-}
-
+/* Underline */
 .underline {
+  border-bottom: 2px solid #EAEAEA;
   display: inline-block;
-  border-bottom: 2px solid var(--text);
-  padding-bottom: 1px;
 }
 
-.access {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.access a {
-  color: var(--text);
+/* Link */
+a {
+  color: #EAEAEA;
   text-decoration: none;
-  border-bottom: 1px solid var(--gold);
-  padding-bottom: 2px;
+  border-bottom: 1px solid #C8A24A;
 }
 
-.access a:hover {
-  opacity: 0.86;
-}
+/* MOBILE — FIXED (no crowding, line stays) */
+@media (max-width: 768px) {
 
-@media (max-width: 720px) {
-  .page {
-    padding: 18px 16px 32px;
+  .container {
+    padding: 48px 20px 48px 64px;
   }
 
-  .page::before {
-    display: none;
+  .container::before {
+    left: 40px;
   }
 
-  .shell {
-    padding-left: 0;
+  .jrs {
+    font-size: 34px;
+    margin-bottom: 32px;
   }
 
-  .hero,
-  .stack {
-    max-width: none;
+  .section {
+    margin-bottom: 44px;
   }
 
-  .hero {
-    padding: 2px 0 22px;
-    margin-bottom: 18px;
+  .line {
+    margin-bottom: 10px;
+    max-width: 100%;
   }
 
-  h1 {
-    font-size: clamp(1.85rem, 9.5vw, 2.7rem);
+  .label {
+    font-size: 12px;
   }
 
-  .lede {
-    font-size: 1rem;
-  }
-
-  .meta {
-    font-size: 0.74rem;
-    color: #B9B9B9;
-  }
-
-  .panel {
-    border-radius: 16px;
-    padding: 18px 18px 16px;
-  }
-
-  .panel h2 {
-    color: #F2F2F2;
-    font-size: 0.72rem;
-    letter-spacing: 0.16em;
-  }
-
-  .panel p {
-    font-size: 0.98rem;
-    line-height: 1.7;
+  .meta,
+  .authority {
+    font-size: 12px;
   }
 }
 </style>
@@ -217,73 +140,73 @@ h1 {
 
 <body>
 
-<div class="page">
-  <div class="shell">
-    <header class="hero">
-      <div class="kicker">JRS</div>
-      <h1>Justification Review Standard</h1>
-      <p class="lede">A pre-save documentation control for AI and human-authored records.</p>
-      <p class="meta">Version 1.0 · AI Documentation Risk Control · Issued under the JRS Documentation Control Framework.</p>
-    </header>
+<div class="container">
 
-    <main class="stack">
-      <section class="panel">
-        <h2>Scope</h2>
-        <p>Applies to documentation generated by AI systems and human operators.</p>
-        <p>Executed before any record is finalized, stored, or relied upon.</p>
-      </section>
+<div class="title">Justification Review Standard</div>
+<div class="meta">Version 1.0 | AI Documentation Risk Control</div>
+<div class="authority">
+Issued as part of the JRS Documentation Control Framework.  
+Control Owner: Documentation Governance Function.
+</div>
 
-      <section class="panel">
-        <h2>Context</h2>
-        <p>AI produces explanations.</p>
-        <p>That does not mean they hold.</p>
-        <p>Records are saved.</p>
-        <p>Later, they must be defended.</p>
-      </section>
+<div class="jrs">JRS<span class="tm">™</span></div>
 
-      <section class="panel">
-        <h2>Standard Requirement</h2>
-        <p>The justification must stand on its own.</p>
-        <p>It must be based on something observable.</p>
-        <p>It must be clearly explainable.</p>
-        <p><span class="underline">If it does not, do not finalize.</span></p>
-      </section>
+<div class="section">
+  <div class="label">Scope</div>
+  <div class="line">Applies to documentation generated by AI systems and human operators.</div>
+  <div class="line">Executed prior to any record being finalized, stored, or relied upon.</div>
+</div>
 
-      <section class="panel">
-        <h2>Verification Check</h2>
-        <p>Does it stand on its own?</p>
-        <p>What is it based on?</p>
-        <p>Could someone else understand it without you?</p>
-      </section>
+<div class="section">
+  <div class="label">Context</div>
+  <div class="line">AI produces explanations.</div>
+  <div class="line">That does not mean they hold.</div>
+  <div class="line">Records are saved.</div>
+  <div class="line">Later, they must be defended.</div>
+</div>
 
-      <section class="panel">
-        <h2>Control Enforcement</h2>
-        <p>Records that fail this standard must not be finalized.</p>
-        <p>Embed enforcement in pre-save validation where possible.</p>
-      </section>
+<div class="section">
+  <div class="label">Standard Requirement</div>
+  <div class="line">The justification must stand on its own.</div>
+  <div class="line">It must be based on something observable.</div>
+  <div class="line">It must be clearly explainable.</div>
+  <div class="line"><span class="underline">If it does not, do not finalize.</span></div>
+</div>
 
-      <section class="panel">
-        <h2>Audit and Evidence</h2>
-        <p>Evidence of compliance must be retained.</p>
-        <p>Records without evidence may be subject to audit exception.</p>
-      </section>
+<div class="section">
+  <div class="label">Verification Check</div>
+  <div class="line">Does it stand on its own?</div>
+  <div class="line">What is it based on?</div>
+  <div class="line">Could someone else understand it without you?</div>
+</div>
 
-      <section class="panel">
-        <h2>Failure Example</h2>
-        <p>Not a strong cultural fit.</p>
-        <p>No defined criteria.</p>
-        <p>No observable basis.</p>
-        <p><span class="underline">This does not meet the standard.</span></p>
-      </section>
+<div class="section">
+  <div class="label">Control Enforcement</div>
+  <div class="line">Records that fail this standard must not be finalized.</div>
+  <div class="line">Embed enforcement in pre-save validation where possible.</div>
+</div>
 
-      <section class="panel">
-        <h2>Access</h2>
-        <p class="access">
-          <a href="https://wikesphere.gumroad.com/">Download the standard</a>
-        </p>
-      </section>
-    </main>
+<div class="section">
+  <div class="label">Audit and Evidence</div>
+  <div class="line">Evidence of compliance must be retained.</div>
+  <div class="line">Records without evidence may be subject to audit exception.</div>
+</div>
+
+<div class="section">
+  <div class="label">Failure Example</div>
+  <div class="line">Not a strong cultural fit.</div>
+  <div class="line">No defined criteria.</div>
+  <div class="line">No observable basis.</div>
+  <div class="line"><span class="underline">This does not meet the standard.</span></div>
+</div>
+
+<div class="section">
+  <div class="label">Access</div>
+  <div class="line">
+    <a href="https://wikesphere.gumroad.com/">Download the standard</a>
   </div>
+</div>
+
 </div>
 
 </body>
