@@ -35,20 +35,22 @@ body {
   background: #C8A24A;
 }
 
-/* JRS mark */
+/* JRS MARK */
 .jrs-mark {
   display: inline-flex;
   align-items: flex-start;
   margin-bottom: 28px;
 }
 
-/* Drawn J (unambiguous) */
+/* CUSTOM J (aligned) */
 .j-letter {
   position: relative;
   width: 26px;
   height: 44px;
   margin-right: 2px;
+  top: -4px; /* fixed alignment */
 }
+
 .j-letter::before {
   content: "";
   position: absolute;
@@ -58,6 +60,7 @@ body {
   height: 44px;
   background: linear-gradient(180deg,#E8B830,#C4961E,#8B6914);
 }
+
 .j-letter::after {
   content: "";
   position: absolute;
@@ -100,6 +103,7 @@ body {
   color: #C8A24A;
 }
 
+/* Sections */
 .section {
   margin-bottom: 64px;
 }
