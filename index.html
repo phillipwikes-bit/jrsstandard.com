@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Justification Review Standard</title>
-<meta name="description" content="A pre-save documentation control for AI and human-authored records.">
+<meta name="description" content="An enterprise pre-save documentation control for AI and human-authored records.">
 
 <style>
 body {
@@ -16,7 +16,6 @@ body {
   line-height: 1.6;
 }
 
-/* Container with vertical line */
 .container {
   max-width: 720px;
   margin: 0 auto;
@@ -24,7 +23,6 @@ body {
   position: relative;
 }
 
-/* Vertical gold line */
 .container::before {
   content: '';
   position: absolute;
@@ -35,14 +33,12 @@ body {
   background: #C8A24A;
 }
 
-/* Title */
 .title {
   font-size: 20px;
   color: #C8A24A;
   margin-bottom: 4px;
 }
 
-/* Metadata */
 .meta {
   font-size: 11px;
   color: #888;
@@ -50,14 +46,12 @@ body {
   margin-bottom: 6px;
 }
 
-/* Authority line */
 .authority {
   font-size: 11px;
   color: #888;
   margin-bottom: 16px;
 }
 
-/* JRS */
 .jrs {
   font-size: 44px;
   font-weight: 400;
@@ -72,7 +66,6 @@ body {
   margin-left: 2px;
 }
 
-/* Labels */
 .label {
   font-size: 11px;
   color: #888;
@@ -81,17 +74,12 @@ body {
   text-transform: uppercase;
 }
 
-/* Content */
 .section {
   margin-bottom: 48px;
 }
 
 .line {
   margin-bottom: 10px;
-}
-
-.gold {
-  color: #C8A24A;
 }
 
 .underline {
@@ -113,7 +101,10 @@ a {
 
 <div class="title">Justification Review Standard</div>
 <div class="meta">Version 1.0 | AI Documentation Risk Control</div>
-<div class="authority">Issued as part of the JRS Documentation Control Framework.</div>
+<div class="authority">
+Issued as part of the JRS Documentation Control Framework.  
+Control Owner: Documentation Governance Function (or equivalent).
+</div>
 
 <div class="jrs">JRS<span class="tm">™</span></div>
 
@@ -144,6 +135,26 @@ a {
   <div class="line">Does it stand on its own?</div>
   <div class="line">What is it based on?</div>
   <div class="line">Could someone else understand it without you?</div>
+</div>
+
+<div class="section">
+  <div class="label">Control Enforcement</div>
+  <div class="line">Records that fail this standard must not be finalized.</div>
+  <div class="line">Where system controls exist, enforcement should be embedded as a pre-save validation step.</div>
+  <div class="line">Where manual workflows exist, reviewers are responsible for enforcement prior to approval.</div>
+</div>
+
+<div class="section">
+  <div class="label">Audit and Evidence</div>
+  <div class="line">Evidence of compliance must be retained at the point of record creation or approval.</div>
+  <div class="line">Acceptable evidence includes documented justification, reviewer confirmation, or system validation logs.</div>
+  <div class="line">Records lacking evidence of compliance may be subject to audit exception or remediation.</div>
+</div>
+
+<div class="section">
+  <div class="label">Legal and Risk Consideration</div>
+  <div class="line">This standard supports defensibility of documented decisions and outcomes.</div>
+  <div class="line">Failure to meet the standard may increase legal, regulatory, or operational risk.</div>
 </div>
 
 <div class="section">
