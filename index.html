@@ -8,141 +8,124 @@
 <meta name="description" content="Enterprise pre-save documentation control for AI and human-authored records.">
 
 <style>
-:root {
-  --bg:#000;
-  --text:#EAEAEA;
-  --muted:#9A9A9A;
-  --gold:#C8A24A;
-}
-
 body {
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
+  margin: 0;
+  background: #000;
+  color: #EAEAEA;
   font-family: Georgia, "Times New Roman", serif;
-  line-height:1.75;
+  line-height: 1.7;
 }
 
 /* Layout */
-.wrapper {
-  max-width:720px;
-  margin:0 auto;
-  padding:56px 20px;
-  position:relative;
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 64px 24px 64px 88px;
+  position: relative;
 }
 
-/* Subtle vertical system line */
-.wrapper::before {
-  content:"";
-  position:absolute;
-  left:0;
-  top:0;
-  bottom:0;
-  width:2px;
-  background:var(--gold);
-  opacity:0.4;
+/* Vertical line */
+.container::before {
+  content: "";
+  position: absolute;
+  left: 48px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #C8A24A;
 }
 
-/* Content aligned with line */
-.content {
-  padding-left:20px;
-}
-
-/* Header */
-.header {
-  margin-bottom:40px;
-}
-
+/* HEADER (FIXED VISIBILITY) */
 .title {
-  font-size:20px;
-  color:var(--gold);
-  margin-bottom:8px;
+  font-size: 18px;
+  color: #C8A24A; /* FIX: visible */
+  margin-bottom: 10px;
 }
 
 .meta {
-  font-size:12px;
-  color:var(--muted);
-  margin-bottom:4px;
+  font-size: 12px;
+  color: #B8B8B8; /* FIX: stronger */
+  margin-bottom: 6px;
 }
 
 .authority {
-  font-size:12px;
-  color:var(--muted);
-  margin-bottom:20px;
+  font-size: 12px;
+  color: #B8B8B8; /* FIX: stronger */
+  margin-bottom: 28px; /* FIX: spacing restored */
 }
 
-/* JRS anchor */
+/* JRS */
 .jrs {
-  font-size:42px;
-  color:var(--gold);
-  margin-top:10px;
+  font-size: 42px;
+  color: #C8A24A;
+  margin-bottom: 36px;
 }
 
 /* Sections */
 .section {
-  margin-bottom:44px;
+  margin-bottom: 52px; /* FIX: real spacing */
 }
 
+/* Headers (FIXED HIERARCHY) */
 .label {
-  font-size:12px;
-  letter-spacing:0.12em;
-  text-transform:uppercase;
-  margin-bottom:10px;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #C8A24A; /* FIX: now gold */
+  margin-bottom: 12px;
 }
 
+/* Content */
 .line {
-  margin-bottom:12px;
+  margin-bottom: 12px;
+  max-width: 560px;
 }
 
 /* Emphasis */
 .underline {
-  border-bottom:2px solid var(--text);
+  border-bottom: 2px solid #EAEAEA;
 }
 
 /* Link */
 a {
-  color:var(--text);
-  text-decoration:none;
-  border-bottom:1px solid var(--gold);
+  color: #EAEAEA;
+  text-decoration: none;
+  border-bottom: 1px solid #C8A24A;
 }
 
-/* Mobile optimization */
-@media (max-width:600px) {
-
-  .wrapper {
-    padding:40px 16px;
+/* Mobile */
+@media (max-width: 768px) {
+  .container {
+    padding: 48px 20px 48px 64px;
   }
 
-  .content {
-    padding-left:16px;
+  .container::before {
+    left: 32px;
   }
 
   .jrs {
-    font-size:34px;
+    font-size: 34px;
   }
 
   .section {
-    margin-bottom:36px;
+    margin-bottom: 40px;
   }
-
 }
 </style>
 </head>
 
 <body>
 
-<div class="wrapper">
-<div class="content">
+<div class="container">
 
-<div class="header">
-  <div class="title">Justification Review Standard</div>
-  <div class="meta">Version 1.0 | AI Documentation Risk Control</div>
-  <div class="authority">
-    Issued under the JRS Documentation Control Framework.  
-    Control Owner: Documentation Governance Function.
-  </div>
-  <div class="jrs">JRS<span style="font-size:10px;vertical-align:super;">™</span></div>
+<div class="title">Justification Review Standard</div>
+<div class="meta">Version 1.0 | AI Documentation Risk Control</div>
+<div class="authority">
+Issued under the JRS Documentation Control Framework.  
+Control Owner: Documentation Governance Function.
 </div>
+
+<div class="jrs">JRS<span style="font-size:10px;vertical-align:super;">™</span></div>
 
 <div class="section">
   <div class="label">Scope</div>
@@ -200,7 +183,6 @@ a {
   </div>
 </div>
 
-</div>
 </div>
 
 </body>
