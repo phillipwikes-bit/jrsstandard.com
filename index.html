@@ -4,1026 +4,443 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Justification Review Standard — JRS™</title>
+
+<title>Justification Review Standard (JRS™)</title>
+<meta name="description" content="Pre-save documentation control for AI-generated and human-authored records. An operational standard for AI Documentation Risk.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
 <style>
   :root {
-    --bg: #0c0b09;
-    --bg-2: #131210;
-    --rule: #2a2723;
-    --rule-strong: #3a3630;
-    --ink: #ece6d2;
-    --ink-soft: #c2bca8;
-    --muted: #8a8474;
-    --muted-2: #6a6557;
-    --gold: #c8a24a;
-    --gold-soft: #a78435;
-    --gold-dim: #7d6326;
+    --bg: #000000;
+    --surface: #0B0B0B;
+    --rule: #1F1F1F;
+    --text: #EAEAEA;
+    --muted: #9A9A9A;
+    --gold: #E0A92C;
+    --gold-soft: #C8A24A;
   }
 
-- { box-sizing: border-box; }
+  * { box-sizing: border-box; }
 
-html, body {
-background: var(–bg);
-color: var(–ink);
-font-family: Georgia, “Times New Roman”, Times, serif;
-font-size: 17px;
-line-height: 1.65;
-margin: 0;
-padding: 0;
--webkit-font-smoothing: antialiased;
-}
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-a {
-color: var(–gold);
-text-decoration: none;
-border-bottom: 1px solid rgba(200,162,74,0.35);
-}
-a:hover { color: var(–ink); border-bottom-color: var(–gold); }
+  .display {
+    font-family: 'Bodoni Moda', 'Bodoni 72', Didot, Georgia, serif;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
 
-/* ––––– TOPBAR ––––– */
-.topbar {
-border-bottom: 1px solid var(–rule);
-padding: 14px 22px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-font-size: 11px;
-letter-spacing: 0.22em;
-text-transform: uppercase;
-color: var(–muted);
-background: var(–bg);
-position: sticky;
-top: 0;
-z-index: 50;
-backdrop-filter: blur(6px);
-}
-.topbar .left { color: var(–ink-soft); }
-.topbar .right { color: var(–gold); }
+  .container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 64px 28px 96px;
+  }
 
-/* ––––– LAYOUT ––––– */
-.wrap {
-max-width: 760px;
-margin: 0 auto;
-padding: 56px 24px 96px 24px;
-position: relative;
-}
+  /* ===== HEADER / BANNER ===== */
+  .banner {
+    display: grid;
+    grid-template-columns: auto 1px 1fr;
+    gap: 36px;
+    align-items: center;
+    padding: 32px 0 56px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 56px;
+  }
 
-/* subtle vertical institutional rule on desktop */
-@media (min-width: 900px) {
-.wrap::before {
-content: “”;
-position: absolute;
-left: 0;
-top: 56px;
-bottom: 96px;
-width: 1px;
-background: linear-gradient(to bottom, transparent, var(–gold-dim) 8%, var(–gold-dim) 92%, transparent);
-opacity: 0.55;
-}
-.wrap > * { padding-left: 22px; }
-.topbar-inner { padding-left: 22px; }
-}
+  .wordmark {
+    font-family: 'Bodoni Moda', 'Bodoni 72', Didot, serif;
+    font-weight: 500;
+    font-size: 64px;
+    line-height: 1;
+    color: var(--gold);
+    letter-spacing: 0.01em;
+    position: relative;
+  }
 
-/* ––––– TITLE BLOCK ––––– */
-.eyebrow {
-font-size: 11px;
-letter-spacing: 0.32em;
-text-transform: uppercase;
-color: var(–muted);
-margin-bottom: 26px;
-}
+  .wordmark .tm {
+    font-size: 16px;
+    font-weight: 500;
+    vertical-align: super;
+    margin-left: 4px;
+    color: var(--gold);
+  }
 
-h1.title {
-font-family: Georgia, “Times New Roman”, Times, serif;
-font-size: clamp(38px, 7vw, 64px);
-line-height: 1.04;
-font-weight: normal;
-color: var(–ink);
-margin: 0 0 6px 0;
-letter-spacing: 0.005em;
-}
-h1.title .gold {
-color: var(–gold);
-font-style: italic;
-font-weight: normal;
-}
+  .rule-vertical {
+    width: 1px;
+    background: var(--gold);
+    height: 150px;
+    justify-self: center;
+  }
 
-.jrs-mark {
-margin-top: 22px;
-font-size: 14px;
-letter-spacing: 0.36em;
-color: var(–gold);
-text-transform: uppercase;
-}
+  .statement {
+    font-family: 'Bodoni Moda', Georgia, serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.55;
+  }
 
-.meta {
-margin-top: 26px;
-display: flex;
-flex-wrap: wrap;
-gap: 22px;
-font-size: 13px;
-color: var(–ink-soft);
-}
-.meta span strong {
-display: block;
-font-weight: normal;
-font-size: 10px;
-letter-spacing: 0.22em;
-text-transform: uppercase;
-color: var(–muted);
-margin-bottom: 3px;
-}
+  .statement .accent {
+    color: var(--gold);
+    font-weight: 700;
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 2px;
+  }
 
-.authority {
-margin-top: 28px;
-padding-top: 18px;
-border-top: 1px solid var(–rule);
-font-size: 14.5px;
-color: var(–ink-soft);
-line-height: 1.65;
-}
-.authority .name { color: var(–ink); }
-.authority .role { color: var(–gold-soft); }
+  /* ===== DOCUMENT TITLE & CONTROL ===== */
+  .doc-title {
+    font-family: 'Bodoni Moda', Georgia, serif;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.2;
+    margin: 0 0 8px;
+    color: var(--text);
+  }
 
-/* ––––– DIVIDERS ––––– */
-hr.div {
-border: 0;
-border-top: 1px solid var(–rule);
-margin: 56px 0 0 0;
-}
+  .doc-subtitle {
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 28px;
+    letter-spacing: 0.01em;
+  }
 
-/* ––––– SECTIONS ––––– */
-section {
-margin-top: 56px;
-scroll-margin-top: 80px;
-}
-.section-label {
-font-size: 11px;
-letter-spacing: 0.32em;
-text-transform: uppercase;
-color: var(–gold);
-margin-bottom: 10px;
-}
-h2.section-title {
-font-family: Georgia, “Times New Roman”, Times, serif;
-font-size: clamp(24px, 3.5vw, 32px);
-font-weight: normal;
-color: var(–ink);
-margin: 0 0 18px 0;
-letter-spacing: 0.005em;
-line-height: 1.2;
-}
-h2.section-title em { color: var(–gold); font-style: italic; }
+  .control-block {
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--gold);
+    background: var(--surface);
+    padding: 22px 26px;
+    margin-bottom: 48px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px 32px;
+  }
 
-h3.sub {
-font-size: 12px;
-letter-spacing: 0.28em;
-text-transform: uppercase;
-color: var(–gold);
-margin: 32px 0 12px 0;
-font-weight: normal;
-}
+  .control-item {
+    display: flex;
+    flex-direction: column;
+  }
 
-p { margin: 0 0 14px 0; color: var(–ink-soft); }
-p.lede { color: var(–ink); font-size: 17px; }
+  .control-label {
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
 
-/* ––––– DOC SWITCHER (anchor nav) ––––– */
-.docnav {
-margin-top: 36px;
-display: flex;
-flex-wrap: wrap;
-gap: 0;
-border-top: 1px solid var(–rule);
-border-bottom: 1px solid var(–rule);
-}
-.docnav a {
-flex: 1 1 50%;
-padding: 14px 16px;
-font-size: 11px;
-letter-spacing: 0.28em;
-text-transform: uppercase;
-color: var(–ink-soft);
-border: 0;
-border-right: 1px solid var(–rule);
-text-align: left;
-}
-.docnav a:last-child { border-right: 0; }
-.docnav a:hover { background: var(–bg-2); color: var(–gold); }
-.docnav a .num {
-display: block;
-color: var(–gold);
-font-size: 9.5px;
-letter-spacing: 0.32em;
-margin-bottom: 4px;
-}
+  .control-value {
+    font-size: 14.5px;
+    color: var(--text);
+    font-weight: 500;
+  }
 
-/* ––––– STANDARD BLOCK ––––– */
-.standard-block {
-border-left: 2px solid var(–gold);
-padding: 6px 0 6px 22px;
-margin: 18px 0;
-}
-.standard-block .crit {
-color: var(–ink);
-font-size: 18px;
-margin: 0 0 8px 0;
-line-height: 1.5;
-}
-.standard-block .closer {
-color: var(–ink-soft);
-font-style: italic;
-margin-top: 12px;
-font-size: 16px;
-}
+  /* ===== SECTIONS ===== */
+  .section {
+    margin-bottom: 44px;
+  }
 
-/* ––––– ORDERED LISTS ––––– */
-ol.ordered {
-list-style: none;
-padding: 0;
-margin: 14px 0;
-counter-reset: oi;
-}
-ol.ordered li {
-counter-increment: oi;
-padding: 14px 0 14px 56px;
-border-bottom: 1px solid var(–rule);
-position: relative;
-}
-ol.ordered li:last-child { border-bottom: 0; }
-ol.ordered li::before {
-content: counter(oi, decimal-leading-zero);
-position: absolute;
-left: 0; top: 16px;
-font-size: 12px;
-color: var(–gold);
-letter-spacing: 0.16em;
-font-variant-numeric: tabular-nums;
-}
-ol.ordered .h {
-text-transform: uppercase;
-letter-spacing: 0.2em;
-font-size: 12px;
-color: var(–ink);
-margin-bottom: 6px;
-}
-ol.ordered .b {
-font-size: 16px;
-color: var(–ink-soft);
-line-height: 1.6;
-}
-ol.ordered .b em { color: var(–ink); font-style: normal; }
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+  }
 
-/* “Step ##” variant for the audit */
-ol.ordered.steps li { padding-left: 80px; }
-ol.ordered.steps li::before {
-content: “Step “ counter(oi, decimal-leading-zero);
-font-size: 10.5px;
-letter-spacing: 0.2em;
-text-transform: uppercase;
-}
+  .section p, .section .line {
+    font-size: 16.5px;
+    line-height: 1.75;
+    margin: 0 0 8px;
+    color: var(--text);
+  }
 
-/* ––––– CALLOUT ––––– */
-.callout {
-margin: 22px 0;
-padding: 16px 20px;
-background: var(–bg-2);
-border-left: 2px solid var(–gold);
-color: var(–ink-soft);
-font-size: 15.5px;
-line-height: 1.6;
-}
-.callout .lab {
-display: block;
-font-size: 10.5px;
-letter-spacing: 0.28em;
-text-transform: uppercase;
-color: var(–gold);
-margin-bottom: 6px;
-}
+  .section .line.muted {
+    color: var(--muted);
+  }
 
-/* ––––– BEFORE/AFTER PAIRS ––––– */
-.pair {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 12px;
-margin: 14px 0;
-}
-@media (max-width: 640px) { .pair { grid-template-columns: 1fr; } }
-.pair .col {
-background: var(–bg-2);
-border: 1px solid var(–rule);
-padding: 14px 16px;
-}
-.pair .lab {
-font-size: 10px;
-letter-spacing: 0.32em;
-text-transform: uppercase;
-color: var(–gold);
-margin-bottom: 8px;
-}
-.pair .quote {
-color: var(–ink);
-font-size: 15.5px;
-line-height: 1.55;
-margin-bottom: 10px;
-}
-.pair .cite {
-color: var(–ink-soft);
-font-size: 13.5px;
-line-height: 1.55;
-border-top: 1px solid var(–rule);
-padding-top: 8px;
-}
-.stamp {
-font-size: 10.5px;
-letter-spacing: 0.26em;
-text-transform: uppercase;
-color: var(–gold);
-margin: -4px 0 18px 0;
-}
+  .pull {
+    font-family: 'Bodoni Moda', Georgia, serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--text);
+    border-left: 2px solid var(--gold);
+    padding: 4px 0 4px 18px;
+    margin: 14px 0;
+  }
 
-/* ––––– 15-PHRASE TABLE ––––– */
-.phrase-table-wrap {
-overflow-x: auto;
-margin: 16px 0;
-border: 1px solid var(–rule);
-}
-table.phrase {
-width: 100%;
-border-collapse: collapse;
-font-size: 14px;
-min-width: 560px;
-}
-table.phrase thead th {
-background: var(–bg-2);
-color: var(–gold);
-font-weight: normal;
-text-align: left;
-padding: 12px 14px;
-font-size: 10.5px;
-letter-spacing: 0.22em;
-text-transform: uppercase;
-border-bottom: 1px solid var(–rule-strong);
-}
-table.phrase td {
-padding: 11px 14px;
-vertical-align: top;
-border-bottom: 1px solid var(–rule);
-color: var(–ink-soft);
-line-height: 1.5;
-}
-table.phrase td:first-child { color: var(–ink); }
+  /* ===== CTA ===== */
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 18px;
+  }
 
-/* ––––– PASS/FAIL ––––– */
-.pass-fail {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 12px;
-margin: 18px 0 6px 0;
-}
-@media (max-width: 640px) { .pass-fail { grid-template-columns: 1fr; } }
-.pass-fail .cell {
-border: 1px solid var(–rule);
-padding: 16px 18px;
-background: var(–bg-2);
-}
-.pass-fail .pass { border-left: 2px solid var(–gold); }
-.pass-fail .fail { border-left: 2px solid var(–rule-strong); }
-.pass-fail .mark {
-font-size: 11px;
-letter-spacing: 0.26em;
-text-transform: uppercase;
-color: var(–gold);
-margin-bottom: 6px;
-}
-.pass-fail .fail .mark { color: var(–ink-soft); }
-.pass-fail .head {
-font-size: 16px;
-color: var(–ink);
-margin-bottom: 6px;
-}
-.pass-fail .body { font-size: 14px; color: var(–ink-soft); line-height: 1.55; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 26px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14.5px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
 
-/* ––––– FAILURE EXAMPLE ––––– */
-.failure-example {
-margin-top: 14px;
-padding-top: 14px;
-border-top: 1px dashed var(–rule-strong);
-}
-.failure-example .lab {
-font-size: 10.5px;
-letter-spacing: 0.32em;
-text-transform: uppercase;
-color: var(–muted);
-margin-bottom: 6px;
-}
-.failure-example .line {
-color: var(–ink);
-text-decoration: underline;
-text-decoration-color: var(–gold);
-text-underline-offset: 4px;
-text-decoration-thickness: 1px;
-}
+  .btn-primary {
+    background: var(--gold);
+    color: #000;
+    border: 1px solid var(--gold);
+  }
 
-/* ––––– TOC for kit ––––– */
-ol.kit-toc {
-list-style: none;
-padding: 0;
-margin: 16px 0;
-counter-reset: kt;
-}
-ol.kit-toc li {
-counter-increment: kt;
-display: flex;
-justify-content: space-between;
-padding: 11px 0;
-border-bottom: 1px dotted var(–rule-strong);
-font-size: 14.5px;
-color: var(–ink-soft);
-}
-ol.kit-toc li::before {
-content: counter(kt, decimal-leading-zero);
-color: var(–gold);
-margin-right: 16px;
-font-size: 11px;
-letter-spacing: 0.16em;
-font-variant-numeric: tabular-nums;
-}
-ol.kit-toc li a { flex: 1; border: 0; color: var(–ink-soft); }
-ol.kit-toc li a:hover { color: var(–gold); }
-ol.kit-toc .pg { color: var(–muted); font-size: 12px; }
+  .btn-primary:hover {
+    background: #F1BB36;
+    border-color: #F1BB36;
+  }
 
-/* ––––– ABOUT ––––– */
-.about p { color: var(–ink-soft); }
-.about .name { color: var(–ink); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--rule);
+  }
 
-/* ––––– DISCLAIMER / FOOTER ––––– */
-.disclaimer {
-margin-top: 56px;
-padding-top: 22px;
-border-top: 1px solid var(–rule);
-font-size: 12.5px;
-color: var(–muted);
-line-height: 1.65;
-}
-.disclaimer .lab {
-font-size: 10.5px;
-letter-spacing: 0.28em;
-text-transform: uppercase;
-color: var(–gold);
-margin-bottom: 8px;
-}
+  .btn-secondary:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
 
-footer.foot {
-margin-top: 36px;
-padding-top: 22px;
-border-top: 1px solid var(–rule);
-font-size: 11px;
-letter-spacing: 0.18em;
-text-transform: uppercase;
-color: var(–muted);
-display: flex;
-flex-wrap: wrap;
-gap: 20px;
-justify-content: space-between;
-}
-footer.foot .gold { color: var(–gold); }
+  .btn-tertiary {
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--rule);
+    padding: 11px 22px;
+    font-size: 13.5px;
+    font-weight: 500;
+  }
 
-/* tighter mobile */
-@media (max-width: 520px) {
-.wrap { padding: 36px 18px 72px 18px; }
-.meta { gap: 16px; }
-.topbar { padding: 12px 16px; font-size: 10px; }
-}
+  .btn-tertiary:hover {
+    border-color: var(--muted);
+    color: var(--text);
+  }
+
+  .btn-meta {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 10px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ===== INSTITUTIONAL CONTACT ===== */
+  .contact-block {
+    margin-top: 16px;
+    padding: 20px 22px;
+    border: 1px solid var(--rule);
+    background: var(--surface);
+    border-radius: 2px;
+  }
+
+  .contact-block .contact-label {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .contact-block p {
+    font-size: 14.5px;
+    margin: 0 0 6px;
+    color: var(--text);
+  }
+
+  .contact-block a {
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s;
+  }
+
+  .contact-block a:hover {
+    border-bottom-color: var(--gold);
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    margin-top: 72px;
+    padding-top: 28px;
+    border-top: 1px solid var(--rule);
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .footer .tag {
+    font-family: 'Bodoni Moda', Georgia, serif;
+    font-style: italic;
+    color: var(--gold-soft);
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 640px) {
+    .banner {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 16px 0 40px;
+      margin-bottom: 40px;
+    }
+    .rule-vertical {
+      display: none;
+    }
+    .wordmark { font-size: 52px; }
+    .statement { font-size: 22px; }
+    .doc-title { font-size: 26px; }
+    .control-block {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .container { padding: 40px 20px 64px; }
+  }
 </style>
 
 </head>
+
 <body>
 
-<div class="topbar">
-  <div class="topbar-inner left">JRS · AI Documentation Risk · v1.0</div>
-  <div class="right">Effective May 2026</div>
-</div>
+<div class="container">
 
-<div class="wrap">
+  <!-- ===== BANNER ===== -->
 
-  <!-- ============ TITLE BLOCK ============ -->
+  <div class="banner">
+    <div class="wordmark">JRS<span class="tm">™</span></div>
+    <div class="rule-vertical"></div>
+    <div class="statement">
+      <div>Protect Humans.</div>
+      <div>Apply the <span class="accent">Standard</span>.</div>
+    </div>
+  </div>
 
-  <header>
-    <div class="eyebrow">An Operational Standard</div>
+  <!-- ===== TITLE ===== -->
 
-```
-<h1 class="title">Justification Review<br><span class="gold">Standard</span></h1>
+  <h1 class="doc-title">Justification Review Standard</h1>
+  <div class="doc-subtitle">A pre-save documentation control for AI-generated and human-authored records.</div>
 
-<div class="jrs-mark">JRS™</div>
+  <!-- ===== DOCUMENT CONTROL BLOCK ===== -->
 
-<div class="meta">
-  <span><strong>Version</strong>v1.0</span>
-  <span><strong>Effective</strong>May 2026</span>
-  <span><strong>Domain</strong>AI Documentation Risk</span>
-  <span><strong>Surface</strong>Pre-Save Documentation Control</span>
-</div>
+  <div class="control-block">
+    <div class="control-item">
+      <div class="control-label">Standard ID</div>
+      <div class="control-value">JRS-STD-001</div>
+    </div>
+    <div class="control-item">
+      <div class="control-label">Version</div>
+      <div class="control-value">1.0</div>
+    </div>
+    <div class="control-item">
+      <div class="control-label">Effective Date</div>
+      <div class="control-value">June 1, 2026</div>
+    </div>
+    <div class="control-item">
+      <div class="control-label">Review Cycle</div>
+      <div class="control-value">Annual</div>
+    </div>
+    <div class="control-item">
+      <div class="control-label">Control Domain</div>
+      <div class="control-value">AI Documentation Risk</div>
+    </div>
+    <div class="control-item">
+      <div class="control-label">Status</div>
+      <div class="control-value">Issued</div>
+    </div>
+  </div>
 
-<div class="authority">
-  <span class="name">Phillip Wikes</span> · <span class="role">AI Governance and Cognitive Risk Advisor</span><br>
-  Creator of the Justification Review Standard (JRS™).<br>
-  JRS is a management standard. It does not engage in the practice of law.
-</div>
+  <!-- ===== SCOPE ===== -->
 
-<div class="docnav">
-  <a href="#standard"><span class="num">Document I</span>The Standard</a>
-  <a href="#kit"><span class="num">Document II</span>Implementation Kit</a>
-</div>
-```
+  <div class="section">
+    <div class="section-label">Scope</div>
+    <p>This standard applies to documentation generated by AI systems and human operators in employment, housing, healthcare, public accommodations, and compliance settings.</p>
+    <p>It is executed before any record is finalized, stored, or relied upon as the basis for a decision affecting an individual's rights or interests.</p>
+  </div>
 
-  </header>
+  <!-- ===== CONTEXT ===== -->
 
-  <!-- ============================================================ -->
+  <div class="section">
+    <div class="section-label">Context</div>
+    <p>AI produces explanations that may not withstand review.</p>
+    <p>Records get saved. Later, they have to be defended in audits, in litigation, and in regulatory review.</p>
+    <div class="pull">A justification that cannot stand on its own creates risk the moment it enters the record.</div>
+  </div>
 
-  <!-- ============ DOCUMENT I — THE STANDARD ===================== -->
+  <!-- ===== STANDARD REQUIREMENT ===== -->
 
-  <!-- ============================================================ -->
-
-  <section id="standard">
-    <div class="section-label">Document I · Scope</div>
-    <h2 class="section-title">A Control Applied Before Any Record Is <em>Finalized</em></h2>
-    <p class="lede">JRS is applied to records before they become the system of record. AI-assisted drafting influences documentation. The resulting record carries evidentiary risk. JRS is a pre-submission control used before finalizing a record. It ensures reasoning remains clear, observable, and explainable when reviewed later without context.</p>
-  </section>
-
-  <section>
+  <div class="section">
     <div class="section-label">Standard Requirement</div>
-    <h2 class="section-title">The <em>Standard</em></h2>
-    <div class="standard-block">
-      <p class="crit">Stand on its own.</p>
-      <p class="crit">Be based on something observable.</p>
-      <p class="crit">Be clearly explainable.</p>
-      <p class="closer">If it does not stand on its own, do not finalize it.</p>
-    </div>
-  </section>
+    <p>Before any AI-generated or human-authored justification is finalized, it must meet three conditions:</p>
+    <p><strong>1.</strong> &nbsp;The justification stands on its own, without relying on the model, the prompt, or the operator.</p>
+    <p><strong>2.</strong> &nbsp;It is grounded in something observable, such as a fact, an artifact, or a verifiable source.</p>
+    <p><strong>3.</strong> &nbsp;It is clearly explainable, so a reviewer outside the original context can understand it.</p>
+    <p style="margin-top:14px;"><em>If any condition fails, the record is not finalized.</em></p>
+  </div>
 
-  <section>
+  <!-- ===== VERIFICATION ===== -->
+
+  <div class="section">
     <div class="section-label">Verification Check</div>
-    <h2 class="section-title">The <em>Check</em></h2>
-    <ol class="ordered">
-      <li><div class="h">Standalone</div><div class="b">Does it stand on its own?</div></li>
-      <li><div class="h">Basis</div><div class="b">What is it based on?</div></li>
-      <li><div class="h">Independence</div><div class="b">Would someone else understand it without context?</div></li>
-    </ol>
-    <p>If not, it is not ready.</p>
-  </section>
+    <p>Verification requires confirmation that the justification stands on its own, is supported by observable evidence, and is understandable without author input.</p>
+  </div>
 
-  <section>
-    <div class="section-label">Control Enforcement</div>
-    <h2 class="section-title">The Simple <em>Version</em></h2>
-    <div class="callout">
-      <span class="lab">Control</span>
-      <strong style="color:var(--ink); font-weight:normal;">Does this meet the standard?</strong><br>
-      If it does not, revise it before it becomes the record.
+  <!-- ===== ACCESS ===== -->
+
+  <div class="section">
+    <div class="section-label">Access the Standard</div>
+    <div class="cta-row">
+      <a href="/files/JRS-Standard.pdf" download class="btn btn-primary">Download the Standard (PDF)</a>
     </div>
-  </section>
+  </div>
 
-  <section>
-    <div class="section-label">Audit and Evidence</div>
-    <h2 class="section-title">Forensic <em>Redlines</em></h2>
-    <p class="lede">What the difference looks like in a real record. The before language does not meet the standard under review. The revised language is grounded in observable criteria and withstands independent review. Identification of phrasing does not constitute a determination of unlawfulness.</p>
+  <!-- ===== IMPLEMENTATION ===== -->
 
-```
-<div class="pair">
-  <div class="col"><div class="lab">Before</div><div class="quote">Not a strong cultural fit</div><div class="cite">This phrasing frequently appears in administrative charges and complaints implicating race, national origin, or background. Cultural fit has no standard definition.</div></div>
-  <div class="col"><div class="lab">After</div><div class="quote">Did not meet defined collaboration criteria based on documented peer and manager feedback.</div><div class="cite">Grounded in observable criteria.</div></div>
-</div>
-<div class="stamp">Grounded · Observable · Explainable</div>
-
-<div class="pair">
-  <div class="col"><div class="lab">Before</div><div class="quote">Attendance issues affecting the team</div><div class="cite">This phrasing frequently appears in administrative charges and complaints implicating disability. Vague attendance language may describe an unaccommodated condition.</div></div>
-  <div class="col"><div class="lab">After</div><div class="quote">Missed nine shifts between January and March. Accommodation request submitted February 14, pending HR review.</div><div class="cite">Documented and dated.</div></div>
-</div>
-<div class="stamp">Documented · Specific · Verifiable</div>
-
-<div class="pair">
-  <div class="col"><div class="lab">Before</div><div class="quote">Lacks leadership maturity</div><div class="cite">This phrasing frequently appears in administrative charges and complaints implicating age and gender. Maturity without definition is not observable.</div></div>
-  <div class="col"><div class="lab">After</div><div class="quote">Did not meet leadership criteria including delivery metrics and structured stakeholder communication.</div><div class="cite">Defined criteria.</div></div>
-</div>
-<div class="stamp">Observable · Defined</div>
-
-<div class="pair">
-  <div class="col"><div class="lab">Before</div><div class="quote">Inconsistent performance</div><div class="cite">This phrasing frequently appears in administrative charges and complaints implicating disability. Performance must be defined by measurable output, not impression.</div></div>
-  <div class="col"><div class="lab">After</div><div class="quote">Did not meet defined performance expectations across three review periods based on documented results.</div><div class="cite">Tied to documented periods.</div></div>
-</div>
-<div class="stamp">Traceable · Specific</div>
-
-<div class="pair">
-  <div class="col"><div class="lab">Before</div><div class="quote">Strong executive presence</div><div class="cite">This phrasing appears in administrative charges and complaints implicating gender and race. Executive presence has no standard definition. Positive records carry the same risk.</div></div>
-  <div class="col"><div class="lab">After</div><div class="quote">Delivered structured presentations aligned to defined communication expectations across four stakeholder reviews.</div><div class="cite">Tied to defined expectations.</div></div>
-</div>
-<div class="stamp">Grounded in Observable Criteria</div>
-
-<div class="pair">
-  <div class="col"><div class="lab">Before</div><div class="quote">Poor communication skills</div><div class="cite">This phrasing frequently appears in administrative charges and complaints implicating national origin and gender. Must be grounded in a defined standard.</div></div>
-  <div class="col"><div class="lab">After</div><div class="quote">Did not meet defined communication standards based on documented stakeholder feedback.</div><div class="cite">Defined standard. Documented feedback.</div></div>
-</div>
-<div class="stamp">Documented · Defined</div>
-```
-
-  </section>
-
-  <section>
-    <div class="section-label">Failure Example</div>
-    <h2 class="section-title">When the Record Does Not Stand On Its <em>Own</em></h2>
-    <div class="failure-example">
-      <div class="lab">Failure Example</div>
-      <p class="line">A record stating an employee is "not a strong cultural fit" does not stand on its own, is not based on observable criteria, and cannot be clearly explained without additional context. It is not ready for finalization.</p>
+  <div class="section" style="margin-top: -16px;">
+    <div class="section-label">Implementation</div>
+    <div class="cta-row">
+      <a href="https://wikesphere.gumroad.com/l/opukbv" class="btn btn-tertiary">Access the Implementation Kit</a>
     </div>
-  </section>
-
-  <section>
-    <div class="section-label">Pre-Submission Checklist</div>
-    <h2 class="section-title">Apply Before Saving Any <em>Record</em></h2>
-    <p class="lede">This standard is applied before finalizing records. Organizations incorporate it into internal review or audit processes. Each checkpoint reflects what is required before the record is saved.</p>
-
-```
-<ol class="ordered">
-  <li>
-    <div class="h">Standalone Clarity</div>
-    <div class="b">Read this record as if you were not the person who wrote it. Does it hold together without you in the room?</div>
-  </li>
-  <li>
-    <div class="h">Observable Basis</div>
-    <div class="b">Can you point to a specific document, feedback record, metric, or observed event for every claim in this record?</div>
-  </li>
-  <li>
-    <div class="h">Explainability</div>
-    <div class="b">Can you explain this record plainly to someone who asks what it is based on? If you need context that is not in the record, the record is not ready.</div>
-  </li>
-  <li>
-    <div class="h">Phrase Review</div>
-    <div class="b">Does this record contain language that is vague, impression-based, or not grounded in a defined, observable standard? If yes, replace it before saving.</div>
-  </li>
-  <li>
-    <div class="h">Accommodation Status</div>
-    <div class="b">If this record involves an employee with a known or disclosed disability or accommodation request, does it note the current status?</div>
-  </li>
-</ol>
-
-<div class="callout">
-  <span class="lab">Severity Tier</span>
-  Standard records: apply all five checkpoints.<br>
-  High-impact decisions (termination, demotion, hiring rejection): enhanced review required. Add a second reviewer.<br>
-  <em style="color:var(--ink-soft);">Higher-risk decisions require additional independent review before finalization. The tier reflects the level of independent review warranted before the file is finalized.</em>
-</div>
-
-<div class="pass-fail">
-  <div class="cell pass">
-    <div class="mark">All Pass</div>
-    <div class="head">Submit the record.</div>
-    <div class="body">The record is grounded, stands on its own, and reflects independent human judgment.</div>
-  </div>
-  <div class="cell fail">
-    <div class="mark">Any Fail</div>
-    <div class="head">Revise before saving.</div>
-    <div class="body">Do not finalize a record that cannot answer: what, specifically, is this based on?</div>
-  </div>
-</div>
-
-<p style="margin-top:18px; font-style:italic; color:var(--ink-soft);">
-  Time spent before finalization reduces the need for post hoc explanation. Records are evaluated based on whether reasoning is supported by documented evidence.
-</p>
-```
-
-  </section>
-
-  <hr class="div">
-
-  <!-- ============================================================ -->
-
-  <!-- ============ DOCUMENT II — IMPLEMENTATION KIT ============== -->
-
-  <!-- ============================================================ -->
-
-  <section id="kit">
-    <div class="section-label">Document II</div>
-    <h2 class="section-title">JRS™ Implementation <em>Kit</em></h2>
-    <p class="lede">Application of JRS across employment records. This reduces documentation challenges arising from insufficient evidentiary support.</p>
-
-```
-<ol class="kit-toc">
-  <li><a href="#k01">Regulatory Alignment</a><span class="pg">§01</span></li>
-  <li><a href="#k02">The Standard</a><span class="pg">§02</span></li>
-  <li><a href="#k03">Application Protocol</a><span class="pg">§03</span></li>
-  <li><a href="#k04">Performance Reviews</a><span class="pg">§04</span></li>
-  <li><a href="#k05">Termination Records</a><span class="pg">§05</span></li>
-  <li><a href="#k06">Performance Improvement Plans</a><span class="pg">§06</span></li>
-  <li><a href="#k07">Disciplinary Records</a><span class="pg">§07</span></li>
-  <li><a href="#k08">Hiring and Rejection Records</a><span class="pg">§08</span></li>
-  <li><a href="#k09">Disability and Accommodation</a><span class="pg">§09</span></li>
-  <li><a href="#k10">15-Phrase Citation Pattern Reference</a><span class="pg">§10</span></li>
-  <li><a href="#k11">Pre-Submission Checklist</a><span class="pg">§11</span></li>
-  <li><a href="#k12">Chain of Reasoning Audit</a><span class="pg">§12</span></li>
-  <li><a href="#k13">Limitations of JRS · About the Author</a><span class="pg">Closing</span></li>
-</ol>
-```
-
-  </section>
-
-  <section id="k01">
-    <div class="section-label">Section 01</div>
-    <h2 class="section-title">Regulatory <em>Alignment</em></h2>
-
-```
-<p>JRS is applied to records before they become the system of record. AI-assisted drafting influences documentation. The resulting record carries evidentiary risk. JRS is applied across common employment decision types.</p>
-
-<p>JRS establishes a contemporaneous record of reasoning at the moment of creation. Courts and regulators rely on contemporaneous documentation when evaluating whether a decision is supported by evidence.</p>
-
-<h3 class="sub">Regulatory Alignment</h3>
-<p>Colorado SB 24-205 (effective June 30, 2026) provides an affirmative defense for organizations demonstrating reasonable care through documented AI governance. JRS supports evidence of reasonable care. The EU AI Act (August 2, 2026) requires transparency documentation and human oversight for all high-risk AI used in employment decisions.</p>
-
-<p>JRS aligns with documentation and oversight controls referenced in the EU AI Act, NIST RMF, and state laws in New York, California, Colorado, and Illinois that apply to AI-assisted employment decisions. It applies prior to record finalization.</p>
-```
-
-  </section>
-
-  <section id="k02">
-    <div class="section-label">Section 02</div>
-    <h2 class="section-title">The <em>Standard</em></h2>
-    <p class="lede">A pre-submission control used before finalizing a record. It ensures reasoning remains clear, observable, and explainable when reviewed later without context.</p>
-
-```
-<h3 class="sub">The Standard</h3>
-<div class="standard-block">
-  <p class="crit">Stand on its own.</p>
-  <p class="crit">Be based on something observable.</p>
-  <p class="crit">Be clearly explainable.</p>
-  <p class="closer">If it does not stand on its own, do not finalize it.</p>
-</div>
-
-<h3 class="sub">The Check</h3>
-<div class="standard-block">
-  <p class="crit">Does it stand on its own?</p>
-  <p class="crit">What is it based on?</p>
-  <p class="crit">Would someone else understand it without context?</p>
-  <p class="closer">If not, it is not ready.</p>
-</div>
-
-<h3 class="sub">The Simple Version</h3>
-<div class="standard-block">
-  <p class="crit">Does this stand on business?</p>
-  <p class="closer">If it does not, revise it before it becomes the record.</p>
-</div>
-```
-
-  </section>
-
-  <section id="k03">
-    <div class="section-label">Section 03</div>
-    <h2 class="section-title">Application <em>Protocol</em></h2>
-    <p class="lede">JRS is applied before finalizing any written decision.</p>
-
-```
-<ol class="ordered">
-  <li><div class="h">Read it back</div><div class="b">Read the file as if you were not in the room. Does it hold together without your context?</div></li>
-  <li><div class="h">Apply the three questions</div><div class="b">Does it stand on its own? Is it based on something observable? Can it be clearly explained if someone asks?</div></li>
-  <li><div class="h">Check for pattern phrases</div><div class="b">Does it contain any phrases from the risk reference? If yes, replace them before saving.</div></li>
-  <li><div class="h">Confirm the basis</div><div class="b">Can you point to a specific document, feedback record, metric, or observed behavior for every claim?</div></li>
-  <li><div class="h">Save or revise</div><div class="b">If all four steps pass, save. If any step fails, revise. Do not finalize a record that cannot answer: what, specifically, is this based on?</div></li>
-</ol>
-
-<div class="callout">JRS is applied consistently, before every record, regardless of whether the decision feels difficult or routine.</div>
-```
-
-  </section>
-
-  <section id="k04">
-    <div class="section-label">Section 04</div>
-    <h2 class="section-title">Performance <em>Reviews</em></h2>
-    <p class="lede">Performance reviews are the most frequently reviewed employment documents in discrimination investigations. Vague language here creates the clearest pattern risk.</p>
-
-```
-<div class="pair"><div class="col"><div class="lab">Before</div><div class="quote">Not a strong cultural fit</div><div class="cite">Citation pattern: appears in administrative charges and complaints implicating race, national origin, and background.</div></div><div class="col"><div class="lab">After</div><div class="quote">Did not meet defined collaboration criteria based on documented peer and manager feedback.</div><div class="cite">Grounded. Observable. Explainable.</div></div></div>
-
-<div class="pair"><div class="col"><div class="lab">Before</div><div class="quote">Lacks leadership maturity</div><div class="cite">Citation pattern: appears in charges implicating age and gender. Maturity without definition is not observable.</div></div><div class="col"><div class="lab">After</div><div class="quote">Did not meet leadership criteria including delivery against defined milestones and stakeholder feedback.</div><div class="cite">Observable. Defined.</div></div></div>
-
-<div class="pair"><div class="col"><div class="lab">Before</div><div class="quote">Does not communicate well</div><div class="cite">Commonly cited in charges implicating national origin and gender.</div></div><div class="col"><div class="lab">After</div><div class="quote">Did not meet defined communication standards based on documented stakeholder feedback.</div><div class="cite">Documented. Specific. Verifiable.</div></div></div>
-
-<div class="pair"><div class="col"><div class="lab">Before</div><div class="quote">Not performing at expected level</div><div class="cite">Citation pattern: expectation without definition cannot be evaluated independently.</div></div><div class="col"><div class="lab">After</div><div class="quote">Did not meet defined output expectations in three of five tracked categories based on documented results.</div><div class="cite">Traceable. Specific.</div></div></div>
-
-<div class="pair"><div class="col"><div class="lab">Before</div><div class="quote">Hard to manage</div><div class="cite">Citation pattern: appears in hard to manage is not observable. Document the specific conduct.</div></div><div class="col"><div class="lab">After</div><div class="quote">Declined direct feedback on three documented occasions between January and March.</div><div class="cite">Documented. Specific.</div></div></div>
-```
-
-  </section>
-
-  <section id="k05">
-    <div class="section-label">Section 05</div>
-    <h2 class="section-title">Termination <em>Records</em></h2>
-    <p class="lede">Termination records are the most heavily scrutinized employment documents in litigation. Every sentence will be read by someone who was not present.</p>
-
-```
-<div class="pair"><div class="col"><div class="lab">Before</div><div class="quote">Does not meet the needs of the role</div><div class="cite">Commonly cited in needs without definition is not a performance standard.</div></div><div class="col"><div class="lab">After</div><div class="quote">Did not meet defined performance criteria as documented in Q1 and Q2 review cycles.</div><div class="cite">Grounded. Observable. Explainable.</div></div></div>
-
-<div class="pair"><div class="col"><div class="lab">Before</div><div class="quote">Not a good long-term fit</div><div class="cite">Citation pattern: long-term fit is not observable.</div></div><div class="col"><div class="lab">After</div><div class="quote">Did not demonstrate required competencies in the defined area after documented coaching sessions.</div><div class="cite">Observable. Defined.</div></div></div>
-
-<div class="pair"><div class="col"><div class="lab">Before</div><div class="quote">Position eliminated</div><div class="cite">Citation pattern: appears in selection criteria must be documented to withstand scrutiny.</div></div><div class="col"><div class="lab">After</div><div class="quote">Position eliminated as part of restructuring approved on the noted date. Selection criteria documented.</div><div class="cite">Documented. Specific. Verifiable.</div></div></div>
-
-<div class="pair"><div class="col"><div class="lab">Before</div><div class="quote">Performance concerns over time</div><div class="cite">Commonly cited in document the specific dates and standards.</div></div><div class="col"><div class="lab">After</div><div class="quote">Received documented written warnings on the noted dates. Did not improve within the defined period.</div><div class="cite">Traceable. Specific.</div></div></div>
-
-<div class="pair"><div class="col"><div class="lab">Before</div><div class="quote">Mutual agreement to part ways</div><div class="cite">Citation pattern: mutual without documentation is not defensible.</div></div><div class="col"><div class="lab">After</div><div class="quote">Employment ended following documented performance improvement plan. Process reviewed with HR.</div><div class="cite">Documented.</div></div></div>
-```
-
-  </section>
-
-  <section id="k06">
-    <div class="section-label">Section 06</div>
-    <h2 class="section-title">Performance Improvement <em>Plans</em></h2>
-    <p class="lede">PIPs are frequently used as evidence of pretextual termination. Every expectation must be defined and every timeline specific.</p>
-
-```
-<div class="pair"><div class="col"><div class="lab">Before</div><div class="quote">Must improve attitude</div><div class="cite">Citation pattern: appears in attitude is not a PIP standard. Define the conduct.</div></div><div class="col"><div class="lab">After</div><div class="quote">Must cease the specific conduct as documented in feedback from the noted dates. Defined in policy.</div><div class="cite">Grounded. Observable. Explainable.</div></div></div>
-
-<div class="pair"><div class="col"><div class="lab">Before</div><div class="quote">Needs to be more proactive</div><div class="cite">Commonly cited in proactive is not observable. Define the behavior.</div></div><div class="col"><div class="lab">After</div><div class="quote">Must initiate status updates on assigned projects weekly by the defined date per the PIP.</div><div class="cite">Observable. Defined.</div></div></div>
-
-<div class="pair"><div class="col"><div class="lab">Before</div><div class="quote">Communication needs improvement</div><div class="cite">Citation pattern: define the current gap and the required standard.</div></div><div class="col"><div class="lab">After</div><div class="quote">Must respond to requests within 24 hours and confirm receipt of action items by end of day.</div><div class="cite">Documented. Specific. Verifiable.</div></div></div>
-
-<div class="pair"><div class="col"><div class="lab">Before</div><div class="quote">Must meet performance expectations</div><div class="cite">Citation pattern: appears in vague expectations cannot be enforced.</div></div><div class="col"><div class="lab">After</div><div class="quote">Must achieve the specific metric in the defined area by the specific date per documented plan.</div><div class="cite">Traceable. Specific.</div></div></div>
-
-<div class="pair"><div class="col"><div class="lab">Before</div><div class="quote">Attendance must improve</div><div class="cite">Commonly cited in ground attendance in policy and specific counts.</div></div><div class="col"><div class="lab">After</div><div class="quote">Must not exceed the defined number of absences per period per the attendance policy, section noted.</div><div class="cite">Documented. Specific.</div></div></div>
-```
-
-  </section>
-
-  <section id="k07">
-    <div class="section-label">Section 07</div>
-    <h2 class="section-title">Disciplinary <em>Records</em></h2>
-    <p class="lede">Disciplinary records must document what happened, when, who observed it, and what policy was violated.</p>
-
-```
-<div class="pair"><div class="col"><div class="lab">Before</div><div class="quote">Disrespectful toward colleagues</div><div class="cite">Citation pattern: appears in conduct disputes. Document the specific behavior.</div></div><div class="col"><div class="lab">After</div><div class="quote">On the noted date, employee raised voice during team meeting and interrupted colleagues on three occasions.</div><div class="cite">Grounded. Observable. Explainable.</div></div></div>
-
-<div class="pair"><div class="col"><div class="lab">Before</div><div class="quote">Unprofessional conduct</div><div class="cite">Citation pattern: appears in unprofessional is not observable without a defined standard.</div></div><div class="col"><div class="lab">After</div><div class="quote">On the noted date, employee sent written communication that violated the conduct policy, section noted.</div><div class="cite">Documented. Specific. Verifiable.</div></div></div>
-
-<div class="pair"><div class="col"><div class="lab">Before</div><div class="quote">Attitude toward management</div><div class="cite">Commonly cited in charges implicating race and gender. Document the specific incidents.</div></div><div class="col"><div class="lab">After</div><div class="quote">On the noted dates, employee declined direct instruction from named supervisor on three occasions.</div><div class="cite">Observable. Defined.</div></div></div>
-
-<div class="pair"><div class="col"><div class="lab">Before</div><div class="quote">Insubordination</div><div class="cite">Citation pattern: requires a specific instruction, a refusal, and a witness.</div></div><div class="col"><div class="lab">After</div><div class="quote">On the noted date, employee refused direct instruction from named supervisor in the presence of witnesses.</div><div class="cite">Documented. Specific.</div></div></div>
-
-<div class="pair"><div class="col"><div class="lab">Before</div><div class="quote">Poor work quality</div><div class="cite">Citation pattern: appears in define the expectation and document the gap.</div></div><div class="col"><div class="lab">After</div><div class="quote">Work product submitted did not meet the defined standard as assessed against the rubric on the noted date.</div><div class="cite">Documented. Defined.</div></div></div>
-```
-
-  </section>
-
-  <section id="k08">
-    <div class="section-label">Section 08</div>
-    <h2 class="section-title">Hiring and Rejection <em>Records</em></h2>
-    <p class="lede">Hiring documentation is subject to AI bias audit requirements in multiple states. Rejection reasoning must be grounded in defined criteria applied consistently across all candidates.</p>
-
-```
-<div class="pair"><div class="col"><div class="lab">Before</div><div class="quote">Does not seem like a strong fit</div><div class="cite">Commonly cited in fit is not a hiring criterion. Define what was required.</div></div><div class="col"><div class="lab">After</div><div class="quote">Did not meet defined criteria for the specific competency as assessed against the structured rubric.</div><div class="cite">Documented. Specific. Verifiable.</div></div></div>
-
-<div class="pair"><div class="col"><div class="lab">Before</div><div class="quote">Lacks polish</div><div class="cite">Citation pattern: appears in charges implicating background and race. Define the presentation standard.</div></div><div class="col"><div class="lab">After</div><div class="quote">Did not demonstrate defined presentation standards as assessed in the structured interview.</div><div class="cite">Observable. Defined.</div></div></div>
-
-<div class="pair"><div class="col"><div class="lab">Before</div><div class="quote">Did not connect well with the team</div><div class="cite">Citation pattern: appears in define what was assessed.</div></div><div class="col"><div class="lab">After</div><div class="quote">Did not demonstrate defined collaboration competencies in panel interview as assessed against the rubric.</div><div class="cite">Documented. Specific.</div></div></div>
-
-<div class="pair"><div class="col"><div class="lab">Before</div><div class="quote">Overqualified</div><div class="cite">Commonly cited in charges implicating age. Document the specific misalignment.</div></div><div class="col"><div class="lab">After</div><div class="quote">Stated compensation expectations exceeded the defined salary band for this role.</div><div class="cite">Traceable. Specific.</div></div></div>
-
-<div class="pair"><div class="col"><div class="lab">Before</div><div class="quote">Not the right culture add</div><div class="cite">Citation pattern: culture add is not a defensible criterion.</div></div><div class="col"><div class="lab">After</div><div class="quote">Did not demonstrate the specific competency assessed against the defined criteria.</div><div class="cite">Grounded. Observable. Explainable.</div></div></div>
-```
-
-  </section>
-
-  <section id="k09">
-    <div class="section-label">Section 09</div>
-    <h2 class="section-title">Disability and <em>Accommodation</em></h2>
-    <p class="lede">Accommodation documentation carries specific legal obligations under the ADA and equivalent statutes. JRS does not constitute legal advice. Whether any specific record complies with applicable law is a fact-specific determination requiring legal counsel.</p>
-
-```
-<div class="pair"><div class="col"><div class="lab">Before</div><div class="quote">Attendance issues affecting the team</div><div class="cite">Citation pattern: appears in charges implicating disability. Attendance language without accommodation status is one of the most common precursors to ADA litigation.</div></div><div class="col"><div class="lab">After</div><div class="quote">Missed nine scheduled shifts between January and March. Accommodation request submitted February 14, pending HR review.</div><div class="cite">Grounded. Observable. Explainable.</div></div></div>
-
-<div class="pair"><div class="col"><div class="lab">Before</div><div class="quote">Inconsistent performance</div><div class="cite">Commonly cited in performance records must note active accommodation requests.</div></div><div class="col"><div class="lab">After</div><div class="quote">Did not meet defined output expectations in three of five categories during the period. Accommodation request active.</div><div class="cite">Documented. Specific. Verifiable.</div></div></div>
-
-<div class="pair"><div class="col"><div class="lab">Before</div><div class="quote">Needs too much support</div><div class="cite">Citation pattern: appears in charges implicating disability. One of the most common phrases preceding disability discrimination claims.</div></div><div class="col"><div class="lab">After</div><div class="quote">Requires daily check-in beyond standard weekly cadence. Accommodation assessment pending as of noted date.</div><div class="cite">Observable. Defined.</div></div></div>
-```
-
-  </section>
-
-  <section id="k10">
-    <div class="section-label">Section 10</div>
-    <h2 class="section-title">15-Phrase Citation Pattern <em>Reference</em></h2>
-    <p class="lede">These fifteen phrases are frequently cited in administrative charges and complaints. Replace each with language grounded in observable criteria before any record is saved.</p>
-
-```
-<div class="phrase-table-wrap">
-  <table class="phrase">
-    <thead>
-      <tr>
-        <th>Phrase Frequently Cited in Charges</th>
-        <th>Protected Category</th>
-        <th>Replacement Approach</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>"Not a strong cultural fit"</td><td>Race, national origin, background</td><td>Define collaboration criteria. Cite documented feedback.</td></tr>
-      <tr><td>"Lacks executive presence"</td><td>Gender, race</td><td>Define communication standards. Cite documented assessment.</td></tr>
-      <tr><td>"Lacks energy"</td><td>Age, disability</td><td>Define behavioral criteria not demonstrated.</td></tr>
-      <tr><td>"Attitude issues"</td><td>Race, gender</td><td>Document specific conduct against a defined policy.</td></tr>
-      <tr><td>"Not adaptable"</td><td>Age</td><td>Define adaptability criteria. Cite documented assessment.</td></tr>
-      <tr><td>"Needs too much support"</td><td>Disability</td><td>Document support needed. Note accommodation status.</td></tr>
-      <tr><td>"Not a team player"</td><td>Race, background</td><td>Define collaboration standards. Cite peer feedback.</td></tr>
-      <tr><td>"Inconsistent performance"</td><td>Disability</td><td>Define output expectations. Cite documented periods.</td></tr>
-      <tr><td>"Unprofessional behavior"</td><td>Race, gender</td><td>Cite policy violated. Document specific conduct.</td></tr>
-      <tr><td>"Communication style concerns"</td><td>National origin, gender</td><td>Define communication standards. Cite documented assessment.</td></tr>
-      <tr><td>"Not polished"</td><td>Background, race</td><td>Define presentation standards. Cite role criteria.</td></tr>
-      <tr><td>"Struggles with change"</td><td>Age</td><td>Define change management criteria. Cite documented period.</td></tr>
-      <tr><td>"Not assertive enough"</td><td>Gender</td><td>Define leadership initiative criteria. Cite assessment.</td></tr>
-      <tr><td>"History of issues"</td><td>Race, gender</td><td>Cite specific documented actions with dates.</td></tr>
-      <tr><td>"Overqualified"</td><td>Age</td><td>Document compensation expectation vs. defined salary band.</td></tr>
-    </tbody>
-  </table>
-</div>
-```
-
-  </section>
-
-  <section id="k11">
-    <div class="section-label">Section 11</div>
-    <h2 class="section-title">Pre-Submission <em>Checklist</em></h2>
-    <p class="lede">Apply before finalizing any employment record. All five checkpoints must pass.</p>
-
-```
-<ol class="ordered">
-  <li><div class="h">Standalone Clarity</div><div class="b">Read this record as if you were not the person who wrote it. Does it hold together without you in the room?</div></li>
-  <li><div class="h">Observable Basis</div><div class="b">Can you point to a specific document, feedback record, metric, or observed event for every claim in this record?</div></li>
-  <li><div class="h">Explainability</div><div class="b">Can you explain this record plainly to someone who asks what it is based on? If you need context that is not in the record, the record is not ready.</div></li>
-  <li><div class="h">Phrase Review</div><div class="b">Does this record contain any of the 15 high-risk phrases? If yes, replace them with language grounded in observable criteria.</div></li>
-  <li><div class="h">Accommodation Status</div><div class="b">If this record involves an employee with a known or suspected disability, does it note the status of any accommodation request?</div></li>
-</ol>
-
-<div class="callout">When all checkpoints pass, the record is ready for finalization.</div>
-```
-
-  </section>
-
-  <section id="k12">
-    <div class="section-label">Section 12</div>
-    <h2 class="section-title">Chain of Reasoning <em>Audit</em></h2>
-    <p class="lede">For high-stakes decisions: terminations, demotions, and any decision where AI-assisted reasoning carries significant risk.</p>
-
-```
-<ol class="ordered steps">
-  <li><div class="h">The Original Decision</div><div class="b">Can the decision-maker state the basis for this decision without reference to anything AI produced? If no, the independence of the reasoning cannot be established.</div></li>
-  <li><div class="h">The Prompt History</div><div class="b">What was the AI asked to do? If the prompt contained the conclusion, the record built from that prompt is not independent reasoning.</div></li>
-  <li><div class="h">The Evidence File</div><div class="b">Does a file exist containing the evidence the documentation references? If the evidence does not exist outside the record, the file is not grounded.</div></li>
-  <li><div class="h">The Record Itself</div><div class="b">Apply the three-question check. Does it stand on its own? Is it based on something observable? Can it be clearly explained?</div></li>
-  <li><div class="h">The Second Review</div><div class="b">For terminations and demotions, has a second reviewer independent of the decision-maker reviewed the file before it was finalized?</div></li>
-</ol>
-
-<div class="callout">
-  <span class="lab">Audit Observation</span>
-  In a recent termination case, the file appeared complete. Applying the audit, the decision-maker could not state the rationale without referring back to AI-generated text. The prompt had been shaped to produce the conclusion. No independent evidence file existed. The record did not pass Steps 01 through 03, and the decision was reopened before finalization.
-</div>
-
-<div class="callout">
-  <span class="lab">Audit Observation</span>
-  In a separate disciplinary matter, the audit surfaced a different issue. Steps 01 and 02 passed, but the evidence file referenced events that did not exist outside the AI-generated narrative. The reasoning was independent; the supporting record was not. Step 03 failed, and the file was returned for documentation before any action was taken.
-</div>
-
-<p style="margin-top:18px; font-style:italic; color:var(--ink-soft);">Records are evaluated based on whether reasoning is supported by documented evidence.</p>
-```
-
-  </section>
-
-  <section id="k13">
-    <div class="section-label">Closing</div>
-    <h2 class="section-title">Limitations of <em>JRS</em></h2>
-    <p class="lede">JRS improves documentation quality. It also has limitations. The following identify limitations of the standard.</p>
-
-```
-<ol class="ordered">
-  <li><div class="h">Compliance Fatigue</div><div class="b">When managers use AI to rewrite records to meet JRS criteria, the AI produces language that looks defensible even when the underlying reasoning has not changed. JRS requires independent human judgment, not AI-polished compliance.</div></li>
-  <li><div class="h">Prompt Integrity</div><div class="b">JRS addresses what gets written. It does not address what drove the writing. A well-worded record built on a biased prompt is still a biased record.</div></li>
-  <li><div class="h">Shadow AI</div><div class="b">Many managers draft in personal AI accounts and paste into official platforms. The drafting is the creation. The standard applies at the moment of drafting, not just saving.</div></li>
-  <li><div class="h">Qualitative Over-Correction</div><div class="b">Observable does not mean a number on a spreadsheet. Documented failures and conduct must be captured accurately. Documentation must remain accurate and reflect actual events, not sanitized into numbers that obscure what actually happened.</div></li>
-  <li><div class="h">Safe Harbor Limitations</div><div class="b">JRS supports evidence of reasonable care. It does not provide complete legal protection. For decisions as significant as a termination or demotion, consult qualified employment counsel.</div></li>
-</ol>
-
-<div class="about" style="margin-top:36px; padding-top:22px; border-top:1px solid var(--rule);">
-  <div class="section-label">About the Author</div>
-  <p><span class="name">Phillip Wikes</span> focuses on how documentation is evaluated in audits, investigations, and disputes. Over more than a decade evaluating discrimination intake under HUD and EEOC frameworks, records failed when they could not be tied to documented evidence.</p>
-  <p>He developed the Justification Review Standard (JRS™) as a pre-finalization documentation control, to make reasoning clear, specific, and supportable.</p>
-  <p>He also co-developed the DRAMA (Dispute Resolution and Managing Anger) Club and contributed to applied research on behavioral outcomes. He holds an M.S. in Negotiation and Conflict Management. JRS is his independent post-tenure work.</p>
-</div>
-```
-
-  </section>
-
-  <!-- ============ DISCLAIMER ============ -->
-
-  <div class="disclaimer">
-    <div class="lab">Disclaimer</div>
-    JRS™ is a management standard for documentation practices. It is not legal advice and does not constitute the practice of law. JRS supports documentation practices but does not establish legal compliance. It is not a guarantee against legal exposure, and it does not establish, replace, or substitute for legal duties under any applicable statute or regulation. Identification of phrasing does not constitute a determination of unlawfulness. Whether any specific record complies with applicable law is a fact-specific determination that requires qualified employment counsel familiar with the relevant jurisdiction. Organizations should consult counsel before relying on this standard for any decision with material legal or employment consequences.
   </div>
 
-  <footer class="foot">
-    <div>AI Documentation Risk · <span class="gold">JRS™</span> · v1.0</div>
-    <div>Effective May 2026</div>
-    <div>© 2026 Phillip Wikes</div>
-  </footer>
+  <!-- ===== INSTITUTIONAL CONTACT ===== -->
+
+  <div class="contact-block">
+    <div class="contact-label">Institutional Adoption Inquiries</div>
+    <p><a href="mailto:[email protected]">[email protected]</a></p>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+
+  <div class="footer">
+    <div>JRS™ and Justification Review Standard™ are trademarks of Phillip Wikes. All rights reserved.</div>
+    <div>© 2026 Phillip Wikes. Issued by the author of the Justification Review Standard.</div>
+  </div>
 
 </div>
 
