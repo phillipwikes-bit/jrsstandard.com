@@ -228,17 +228,27 @@
     color: var(--gold);
   }
 
-  .btn-tertiary {
-    background: transparent;
-    color: var(--muted);
-    border: 1px solid var(--rule);
-    padding: 11px 22px;
-    font-size: 13.5px;
-    font-weight: 500;
+  /* ===== TERMINAL UTILITY LINE ===== */
+  .terminal-line {
+    margin-top: 32px;
+    margin-bottom: 16px;
   }
 
-  .btn-tertiary:hover {
-    border-color: var(--muted);
+  .terminal-line a {
+    display: inline-block;
+    padding: 8px 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--muted);
+    text-decoration: none;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    transition: color 0.2s ease;
+  }
+
+  .terminal-line a:hover {
     color: var(--text);
   }
 
@@ -419,13 +429,10 @@
     </div>
   </div>
 
-  <!-- ===== IMPLEMENTATION ===== -->
+  <!-- ===== TERMINAL UTILITY LINE ===== -->
 
-  <div class="section" style="margin-top: -16px;">
-    <div class="section-label">Implementation</div>
-    <div class="cta-row">
-      <a href="https://wikesphere.gumroad.com/l/opukbv" class="btn btn-tertiary">Access the Implementation Kit</a>
-    </div>
+  <div class="terminal-line">
+    <a href="https://wikesphere.gumroad.com/l/opukbv">Implementation Kit</a>
   </div>
 
   <!-- ===== INSTITUTIONAL CONTACT ===== -->
