@@ -1,529 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>JRS™ Documentation Review Process</title>
-<meta name="description" content="A documentation review process for employment documentation and organizational review environments.">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-<style>
-
-:root{
-  --bg:#000;
-  --surface:#0E0E0E;
-  --rule:#1F1F1F;
-  --text:#ECECEC;
-  --muted:#9A9A9A;
-  --muted-soft:#707070;
-  --accent:#A88B46;
-}
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-html,body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:'Inter',sans-serif;
-  line-height:1.7;
-  -webkit-font-smoothing:antialiased;
-}
-
-.container{
-  max-width:820px;
-  margin:0 auto;
-  padding:56px 28px 90px;
-}
-
-/* HEADER */
-
-.header{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-end;
-  gap:24px;
-  border-bottom:1px solid var(--rule);
-  padding-bottom:18px;
-  margin-bottom:42px;
-  flex-wrap:wrap;
-}
-
-.wordmark{
-  font-family:'Bodoni Moda',serif;
-  font-size:30px;
-  font-weight:500;
-  color:var(--text);
-  line-height:1;
-}
-
-.wordmark .tm{
-  font-size:11px;
-  vertical-align:super;
-}
-
-.header-meta{
-  font-family:'JetBrains Mono',monospace;
-  font-size:10px;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:var(--muted-soft);
-  line-height:1.7;
-  text-align:right;
-}
-
-/* TITLE */
-
-.doc-title{
-  font-family:'Bodoni Moda',serif;
-  font-size:45px;
-  font-weight:400;
-  line-height:1.08;
-  margin-bottom:16px;
-  letter-spacing:-0.01em;
-}
-
-.doc-subtitle{
-  font-size:17px;
-  color:var(--muted);
-  max-width:640px;
-  margin-bottom:34px;
-}
-
-/* CONTROL BLOCK */
-
-.control-block{
-  border:1px solid var(--rule);
-  background:var(--surface);
-  padding:20px 24px;
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:18px 26px;
-  margin-bottom:54px;
-}
-
-.control-label{
-  font-family:'JetBrains Mono',monospace;
-  font-size:9px;
-  text-transform:uppercase;
-  letter-spacing:.24em;
-  color:var(--muted-soft);
-  margin-bottom:5px;
-}
-
-.control-value{
-  font-size:14px;
-  color:var(--text);
-}
-
-/* SECTIONS */
-
-.section{
-  margin-bottom:46px;
-}
-
-.section-title{
-  font-family:'Inter',sans-serif;
-  font-size:15px;
-  font-weight:600;
-  margin-bottom:14px;
-  padding-bottom:10px;
-  border-bottom:1px solid var(--rule);
-  color:var(--text);
-}
-
-.section p{
-  font-size:15.5px;
-  margin-bottom:12px;
-  color:var(--text);
-}
-
-.section p:last-child{
-  margin-bottom:0;
-}
-
-/* CONDITIONS */
-
-.conditions{
-  margin-top:16px;
-}
-
-.condition{
-  display:grid;
-  grid-template-columns:40px 1fr;
-  gap:16px;
-  padding:16px 0;
-  border-top:1px solid #161616;
-}
-
-.condition:last-child{
-  border-bottom:1px solid #161616;
-}
-
-.condition-number{
-  font-family:'JetBrains Mono',monospace;
-  font-size:12px;
-  color:var(--muted);
-  padding-top:2px;
-}
-
-.condition-title{
-  font-size:15px;
-  font-weight:600;
-  margin-bottom:4px;
-}
-
-.condition-text{
-  font-size:14.5px;
-  color:var(--muted);
-}
-
-/* LISTS */
-
-.simple-list{
-  margin-top:10px;
-}
-
-.simple-item{
-  padding:11px 0;
-  border-bottom:1px solid #161616;
-  font-size:15px;
-  color:var(--text);
-}
-
-.simple-item:first-child{
-  border-top:1px solid #161616;
-}
-
-/* NOTE */
-
-.note{
-  border-left:2px solid var(--accent);
-  padding:14px 18px;
-  background:var(--surface);
-  margin-top:18px;
-  font-size:15px;
-  color:var(--text);
-}
-
-/* BUTTONS */
-
-.cta-row{
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-}
-
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:13px 24px;
-  border-radius:2px;
-  text-decoration:none;
-  font-size:14px;
-  font-weight:500;
-  transition:.2s ease;
-}
-
-.btn-primary{
-  background:#EAEAEA;
-  color:#000;
-}
-
-.btn-secondary{
-  border:1px solid var(--rule);
-  color:var(--text);
-}
-
-/* FOOTER */
-
-.footer{
-  margin-top:72px;
-  padding-top:22px;
-  border-top:1px solid var(--rule);
-  font-size:11px;
-  color:var(--muted-soft);
-  line-height:1.8;
-}
-
-/* MOBILE */
-
-@media(max-width:720px){
-
-  .container{
-    padding:38px 20px 70px;
-  }
-
-  .doc-title{
-    font-size:38px;
-  }
-
-  .control-block{
-    grid-template-columns:1fr;
-  }
-
-  .header-meta{
-    text-align:left;
-  }
-
-}
-
-</style>
-</head>
-
-<body>
-
-<div class="container">
-
-  <!-- HEADER -->
-
-  <div class="header">
-
-    <div class="wordmark">
-      JRS<span class="tm">™</span>
-    </div>
-
-    <div class="header-meta">
-      Document № 001<br>
-      Version 1.0 · Effective May 2026
-    </div>
-
-  </div>
-
-  <!-- HERO -->
-
-  <h1 class="doc-title">
-    JRS™ Documentation Review Process
-  </h1>
-
-  <div class="doc-subtitle">
-    A documentation review process for employment documentation and organizational review environments.
-  </div>
-
-  <!-- CONTROL BLOCK -->
-
-  <div class="control-block">
-
-    <div>
-      <div class="control-label">Version</div>
-      <div class="control-value">1.0</div>
-    </div>
-
-    <div>
-      <div class="control-label">Effective</div>
-      <div class="control-value">May 2026</div>
-    </div>
-
-  </div>
-
-  <!-- SUMMARY -->
-
-  <div class="section">
-
-    <div class="section-title">
-      Purpose
-    </div>
-
-    <p>
-      This documentation review process is intended for use before employment documentation is finalized within organizational systems.
-    </p>
-
-    <p>
-      The review process is intended to reduce ambiguity in written records before finalization by reinforcing identifiable support for conclusions, independently understandable documentation, and reviewable reasoning.
-    </p>
-
-  </div>
-
-  <!-- CONDITIONS -->
-
-  <div class="section">
-
-    <div class="section-title">
-      Review Conditions
-    </div>
-
-    <p>
-      Before a record is finalized, the documentation review process applies three review conditions.
-    </p>
-
-    <div class="conditions">
-
-      <div class="condition">
-        <div class="condition-number">01</div>
-        <div>
-          <div class="condition-title">
-            Independently understandable
-          </div>
-          <div class="condition-text">
-            The record can be understood without reliance on the original drafter, prompt history, or surrounding context.
-          </div>
-        </div>
-      </div>
-
-      <div class="condition">
-        <div class="condition-number">02</div>
-        <div>
-          <div class="condition-title">
-            Identifiable basis
-          </div>
-          <div class="condition-text">
-            Conclusions are tied to identifiable information, documentation, events, or observable support.
-          </div>
-        </div>
-      </div>
-
-      <div class="condition">
-        <div class="condition-number">03</div>
-        <div>
-          <div class="condition-title">
-            Reviewable reasoning
-          </div>
-          <div class="condition-text">
-            A reviewer outside the original context can identify the basis for conclusions during later review.
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-  <!-- CONTEXT -->
-
-  <div class="section">
-
-    <div class="section-title">
-      Context
-    </div>
-
-    <p>
-      Records may later be reviewed during audits, investigations, escalation processes, disputes, or administrative review.
-    </p>
-
-    <div class="note">
-      Documentation that does not identify the basis for conclusions may be interpreted inconsistently during later review.
-    </div>
-
-  </div>
-
-  <!-- APPLICATION -->
-
-  <div class="section">
-
-    <div class="section-title">
-      Application
-    </div>
-
-    <div class="simple-list">
-
-      <div class="simple-item">Performance Reviews</div>
-      <div class="simple-item">Disciplinary Documentation</div>
-      <div class="simple-item">Hiring & Rejection Documentation</div>
-      <div class="simple-item">Termination Documentation</div>
-      <div class="simple-item">Performance Improvement Plans</div>
-      <div class="simple-item">Accommodation Documentation</div>
-
-    </div>
-
-  </div>
-
-  <!-- CONSTRAINTS -->
-
-  <div class="section">
-
-    <div class="section-title">
-      Implementation Constraints
-    </div>
-
-    <p>
-      Application may involve incomplete records, conflicting accounts, operational time pressures, or qualitative information requiring reviewer judgment.
-    </p>
-
-    <p>
-      Observable information may include documented interactions, structured feedback, qualitative observations, or referenced supporting documentation where appropriately identified.
-    </p>
-
-    <p>
-      Application depth may vary based on workflow, record type, and operational constraints.
-    </p>
-
-  </div>
-
-  <!-- GOVERNANCE -->
-
-  <div class="section">
-
-    <div class="section-title">
-      Governance Compatibility
-    </div>
-
-    <p>
-      The documentation review process is intended to operate within existing organizational documentation, compliance, investigation, legal review, and AI governance environments.
-    </p>
-
-  </div>
-
-  <!-- LIMITS -->
-
-  <div class="section">
-
-    <div class="section-title">
-      Limitations of Review Process
-    </div>
-
-    <div class="simple-list">
-
-      <div class="simple-item">Does not determine employment outcomes</div>
-      <div class="simple-item">Does not replace legal review</div>
-      <div class="simple-item">Does not eliminate subjective judgment</div>
-      <div class="simple-item">Does not establish legal sufficiency</div>
-      <div class="simple-item">Does not replace organizational policy obligations</div>
-
-    </div>
-
-  </div>
-
-  <!-- ACCESS -->
-
-  <div class="section">
-
-    <div class="section-title">
-      Access
-    </div>
-
-    <div class="cta-row">
-
-      <a href="#" class="btn btn-primary">
-        Download Standard
-      </a>
-
-      <a href="#" class="btn btn-secondary">
-        Implementation Kit
-      </a>
-
-    </div>
-
-  </div>
-
-  <!-- FOOTER -->
-
-  <div class="footer">
-
-    Version 1.0 · Effective May 2026<br>
-    © 2026 Phillip Wikes
-
-  </div>
-
-</div>
-
-</body>
-</html>
+Justification Review Standard
+Documentation Review Process
+Overview
+The Justification Review Standard establishes a review process for evaluating whether organizational documentation contains an identifiable basis for conclusions and documented decisions.
+This standard applies to organizational documentation used in employment, administrative, or compliance review processes. The review process is designed to support organizational review practices while acknowledging operational constraints.
+Definition
+Justification Review Standard: A documentation review process that evaluates whether organizational records contain observable information supporting conclusions and decisions. The process evaluates whether records are independently understandable and whether the basis for conclusions can be identified during later review.
+Review Conditions
+Observable Information
+Documentation must contain specific, identifiable information that supports the decision. Observable information may include documented observations, interactions, or structured feedback where appropriately identified.
+Independently Understandable Records
+A reviewer should be able to understand the basis for conclusions without requiring additional context or supplementary explanation.
+Identifiable Basis for Conclusions
+The foundation for conclusions or decisions must be traceable within the record itself. Conclusions should not depend on unstated assumptions or undocumented context.
+Operational Constraints
+Application may involve incomplete records, conflicting accounts, operational time pressures, or qualitative information requiring reviewer judgment. The process acknowledges these constraints without eliminating the requirement for identifiable support.
+Review Limitations
+The review process is not designed to enable procedural compliance without substantive support. Specifically, the process does not:
+	•	Sanitize poor documentation through procedural compliance
+	•	Enable box-checking without meaningful review
+	•	Substitute procedural compliance for substantive support
+	•	Create the appearance of rigor where evidence is absent
+Instead, the process identifies where documentation lacks identifiable basis for conclusions and distinguishes between wording quality and evidentiary support.
+Review Procedure
+The review process applies the following procedure:
+01
+Identify the Conclusion or Decision
+Determine what specific conclusion or decision the documentation supports.
+02
+Locate Observable Support
+Identify specific, observable information within the record that supports the conclusion.
+03
+Evaluate Independent Understandability
+Assess whether a reviewer unfamiliar with the situation could understand the basis for the conclusion using only the record itself.
+04
+Assess Completeness
+Determine whether the record contains sufficient information for later review.
+05
+Document Limitations
+Acknowledge any incomplete information, conflicting accounts, or qualitative judgments that may affect the record's clarity.
+Application
+The review process applies to organizational documentation across multiple contexts:
+	•	Performance Documentation: Employee evaluations, feedback, and performance-related decisions.
+	•	Hiring Documentation: Recruitment records, candidate evaluation, and hiring decisions.
+	•	Termination Documentation: Records supporting employment termination, including disciplinary action or termination documentation.
+	•	Administrative Records: Any organizational documentation used in employment, administrative, or compliance review processes.
+Secondary review may involve HR, compliance, legal, or supervisory personnel depending on documentation type and organizational process.
+AI-Assisted Documentation
+The review process applies to AI-assisted documentation before integration into organizational records. Review personnel should:
+	•	Verify factual accuracy and identifiable support in AI-generated text
+	•	Ensure AI-drafted language reflects documented events and interactions
+	•	Confirm AI-assisted text does not overstate certainty or evidentiary support
+Materials
+The standard and reference materials are intended for organizational and educational review use.
+Justification Review Standard
+The formal standard establishing the documentation review framework, review conditions, and procedural guidelines.
+Download Standard
+Documentation Review Reference
+Operational guidance including review controls, practical examples, and implementation considerations.
+Download Reference
+Disclaimers
+Not legal advice. Organizations should consult with legal counsel regarding applicable law and documentation requirements in their jurisdiction.
+Legal sufficiency. Application of this process does not establish legal sufficiency or eliminate legal risk.
+Jurisdiction variability. Documentation standards and legal requirements differ across jurisdictions and regulatory frameworks.
+Operational context. This process is designed for organizational use and assumes reasonable operational constraints. It does not eliminate the need for reviewer judgment.
+Justification Review Standard
+Standard 001 · Version 1.0 · Effective May 2026
+© 2026 Phillip Wikes
+JRS™ and Justification Review Standard™ are trademarks of Phillip Wikes.
