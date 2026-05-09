@@ -59,3 +59,398 @@ html,body{
   font-size:30px;
   font-weight:500;
   color:var(--text);
+  line-height:1;
+}
+
+.wordmark .tm{
+  font-size:11px;
+  vertical-align:super;
+}
+
+.header-meta{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted-soft);
+  line-height:1.7;
+  text-align:right;
+}
+
+/* TITLE */
+.doc-title{
+  font-family:'Bodoni Moda',serif;
+  font-size:42px;
+  font-weight:400;
+  line-height:1.08;
+  margin-bottom:16px;
+  letter-spacing:-0.01em;
+}
+
+.doc-subtitle{
+  font-size:17px;
+  color:var(--muted);
+  max-width:640px;
+  margin-bottom:34px;
+}
+
+/* CONTROL BLOCK */
+.control-block{
+  border:1px solid var(--rule);
+  background:var(--surface);
+  padding:20px 24px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px 26px;
+  margin-bottom:54px;
+}
+
+.control-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:.24em;
+  color:var(--muted-soft);
+  margin-bottom:5px;
+}
+
+.control-value{
+  font-size:14px;
+  color:var(--text);
+}
+
+/* SECTIONS */
+.section{
+  margin-bottom:46px;
+}
+
+.section-title{
+  font-family:'Inter',sans-serif;
+  font-size:15px;
+  font-weight:600;
+  margin-bottom:14px;
+  padding-bottom:10px;
+  border-bottom:1px solid var(--rule);
+  color:var(--text);
+}
+
+.section p{
+  font-size:15.5px;
+  margin-bottom:12px;
+  color:var(--text);
+}
+
+.section p:last-child{
+  margin-bottom:0;
+}
+
+/* CONDITIONS */
+.conditions{
+  margin-top:16px;
+}
+
+.condition{
+  display:grid;
+  grid-template-columns:40px 1fr;
+  gap:16px;
+  padding:16px 0;
+  border-top:1px solid #161616;
+}
+
+.condition:last-child{
+  border-bottom:1px solid #161616;
+}
+
+.condition-number{
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;
+  color:var(--muted);
+  padding-top:2px;
+}
+
+.condition-title{
+  font-size:15px;
+  font-weight:600;
+  margin-bottom:4px;
+}
+
+.condition-text{
+  font-size:14.5px;
+  color:var(--muted);
+}
+
+/* LISTS */
+.simple-list{
+  margin-top:10px;
+}
+
+.simple-item{
+  padding:11px 0;
+  border-bottom:1px solid #161616;
+  font-size:15px;
+  color:var(--text);
+}
+
+.simple-item:first-child{
+  border-top:1px solid #161616;
+}
+
+/* NOTE */
+.note{
+  border-left:2px solid var(--accent);
+  padding:14px 18px;
+  background:var(--surface);
+  margin-top:18px;
+  font-size:15px;
+  color:var(--text);
+}
+
+/* BUTTONS */
+.cta-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:13px 24px;
+  border-radius:2px;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:500;
+  transition:.2s ease;
+}
+
+.btn-primary{
+  background:#EAEAEA;
+  color:#000;
+}
+
+.btn-secondary{
+  border:1px solid var(--rule);
+  color:var(--text);
+}
+
+/* FOOTER */
+.footer{
+  margin-top:72px;
+  padding-top:22px;
+  border-top:1px solid var(--rule);
+  font-size:11px;
+  color:var(--muted-soft);
+  line-height:1.8;
+}
+
+.footer > div {
+  margin-bottom: 6px;
+}
+
+.footer > div:last-child {
+  margin-bottom: 0;
+}
+
+/* MOBILE */
+@media(max-width:720px){
+  .container{ padding:38px 20px 70px; }
+  .doc-title{ font-size:38px; }
+  .control-block{ grid-template-columns:1fr; }
+  .header-meta{ text-align:left; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="wordmark">
+      JRS<span class="tm">™</span>
+    </div>
+    <div class="header-meta">
+      Standard 001<br>
+      Version 1.0 · Effective May 2026
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <h1 class="doc-title">
+    Justification Review Standard (JRS™)
+  </h1>
+  <div class="doc-subtitle">
+    Documentation Review Process
+  </div>
+
+  <!-- CONTROL BLOCK -->
+  <div class="control-block">
+    <div>
+      <div class="control-label">Version</div>
+      <div class="control-value">1.0</div>
+    </div>
+    <div>
+      <div class="control-label">Effective</div>
+      <div class="control-value">May 2026</div>
+    </div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="section">
+    <div class="section-title">Overview</div>
+    <p>The Justification Review Standard establishes a review process for evaluating whether organizational documentation contains identifiable support for conclusions or decisions.</p>
+    <p>This standard applies to organizational documentation used in employment, administrative, or compliance review processes. The review process is designed to support organizational review practices while acknowledging operational constraints.</p>
+  </div>
+
+  <!-- DEFINITION -->
+  <div class="section">
+    <div class="section-title">Definition</div>
+    <p><strong>Justification Review Standard (JRS™)</strong>: A documentation review process used to evaluate whether organizational records are independently understandable and contain an identifiable basis for conclusions during later review.</p>
+  </div>
+
+  <!-- REVIEW CONDITIONS -->
+  <div class="section">
+    <div class="section-title">Review Conditions</div>
+    <p>Before a record is finalized, documentation should satisfy the following review conditions:</p>
+    <div class="conditions">
+      <div class="condition">
+        <div class="condition-number">01</div>
+        <div>
+          <div class="condition-title">Independently Understandable Records</div>
+          <div class="condition-text">A reviewer should be able to identify the basis for conclusions without requiring additional context or supplementary explanation.</div>
+        </div>
+      </div>
+      <div class="condition">
+        <div class="condition-number">02</div>
+        <div>
+          <div class="condition-title">Observable Information</div>
+          <div class="condition-text">Documentation must contain specific, identifiable information supporting conclusions or decisions. Observable information may include documented observations, interactions, structured feedback, or other referenced supporting documentation.</div>
+        </div>
+      </div>
+      <div class="condition">
+        <div class="condition-number">03</div>
+        <div>
+          <div class="condition-title">Identifiable Basis for Conclusions</div>
+          <div class="condition-text">The foundation for conclusions or decisions must be traceable within the record itself. Conclusions should not depend on unstated assumptions or undocumented context.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTEXT -->
+  <div class="section">
+    <div class="section-title">Context</div>
+    <p>Records may later be reviewed during audits, investigations, escalation processes, disputes, or administrative review.</p>
+    <div class="note">
+      Documentation that does not identify the basis for conclusions may be interpreted inconsistently during later review.
+    </div>
+  </div>
+
+  <!-- REVIEW PROCEDURE -->
+  <div class="section">
+    <div class="section-title">Review Procedure</div>
+    <div class="simple-list">
+      <div class="simple-item">Identify the Conclusion or Decision</div>
+      <div class="simple-item">Locate Observable Support</div>
+      <div class="simple-item">Evaluate Independent Understandability</div>
+      <div class="simple-item">Assess Identifiable Support</div>
+      <div class="simple-item">Document Limitations</div>
+    </div>
+  </div>
+
+  <!-- APPLICATION -->
+  <div class="section">
+    <div class="section-title">Application</div>
+    <p>This standard applies to administrative documentation, including but not limited to:</p>
+    <div class="simple-list">
+      <div class="simple-item">Performance Reviews</div>
+      <div class="simple-item">Disciplinary Documentation</div>
+      <div class="simple-item">Hiring & Rejection Documentation</div>
+      <div class="simple-item">Termination Documentation</div>
+      <div class="simple-item">Performance Improvement Plans</div>
+      <div class="simple-item">Accommodation Documentation</div>
+    </div>
+    <p style="margin-top:16px;font-size:14.5px;color:var(--muted);">These examples are illustrative and not exhaustive.</p>
+  </div>
+
+  <!-- OPERATIONAL CONSTRAINTS -->
+  <div class="section">
+    <div class="section-title">Operational Constraints</div>
+    <p>Application may involve incomplete records, conflicting accounts, operational time pressures, or qualitative information requiring reviewer judgment.</p>
+    <p>Observable information may include documented interactions, structured feedback, qualitative observations, or referenced supporting documentation where appropriately identified.</p>
+    <p>Application depth may vary based on workflow, record type, and operational constraints.</p>
+  </div>
+
+  <!-- REVIEW LIMITATIONS -->
+  <div class="section">
+    <div class="section-title">Review Limitations</div>
+    <p>The review process is not intended to substitute procedural formality for identifiable evidentiary support. It does not:</p>
+    <div class="simple-list">
+      <div class="simple-item">Sanitize poor documentation through procedural compliance</div>
+      <div class="simple-item">Enable box-checking without meaningful review</div>
+      <div class="simple-item">Create the appearance of rigor where evidence is absent</div>
+    </div>
+    <p style="margin-top:16px;">Instead, the process identifies where documentation lacks an identifiable basis for conclusions and distinguishes between wording quality and evidentiary support.</p>
+  </div>
+
+  <!-- AI-ASSISTED -->
+  <div class="section">
+    <div class="section-title">AI-Assisted Documentation</div>
+    <p>When AI tools are used to draft or refine documentation, the underlying observable information must still satisfy the review conditions. AI-generated language should not be treated as independent evidentiary support absent identifiable underlying information. Review responsibility remains with organizational personnel regardless of drafting method.</p>
+  </div>
+
+  <!-- GOVERNANCE -->
+  <div class="section">
+    <div class="section-title">Governance Compatibility</div>
+    <p>JRS™ is intended to operate within existing organizational documentation, compliance, investigation, legal review, and AI governance environments.</p>
+  </div>
+
+  <!-- MATERIALS -->
+  <div class="section">
+    <div class="section-title">Materials</div>
+    <p>The following materials provide the foundational review standard and supplemental operational reference guidance.</p>
+    <div class="simple-list">
+      <div class="simple-item">
+        <strong>JRS Standard</strong><br>
+        <span style="color:var(--muted);font-size:14.5px;">The foundational review standard establishing the documentation review framework, review conditions, and procedural guidance.</span>
+      </div>
+      <div class="simple-item">
+        <strong>JRS Documentation Review Reference</strong><br>
+        <span style="color:var(--muted);font-size:14.5px;">Supplemental operational guidance addressing review controls, implementation considerations, practical review examples, and review procedures.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- DISCLAIMERS -->
+  <div class="section">
+    <div class="section-title">Disclaimers</div>
+    <p>This standard is not legal advice. It does not establish legal sufficiency, replace organizational policy obligations, or eliminate the need for jurisdiction-specific legal review. Application should account for operational context and variability across jurisdictions.</p>
+  </div>
+
+  <!-- ACCESS -->
+  <div class="section">
+    <div class="section-title">Access</div>
+    <div class="cta-row">
+      <a href="JRS-Standard.pdf" download class="btn btn-primary">
+        Download JRS Standard
+      </a>
+      <a href="https://wikesphere.gumroad.com/l/opukbv" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+        JRS Documentation Review Reference
+      </a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div>Standard 001 · Version 1.0 · Effective May 2026</div>
+    <div>JRS™ and Justification Review Standard™ are trademarks of Phillip Wikes.</div>
+    <div>© 2026 Phillip Wikes</div>
+    <div>Future revisions may clarify procedural guidance without altering core review conditions.</div>
+  </div>
+
+</div>
+
+</body>
+</html>
