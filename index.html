@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Justification Review Standard (JRS™) | Documentation Review Process</title>
-<meta name="description" content="A documentation review process for evaluating identifiable support for conclusions within organizational documentation.">
+<title>Justification Review Standard (JRS™) | Documentation Review Structure</title>
+<meta name="description" content="A documentation review structure for evaluating documented support for conclusions within organizational records used in HR, compliance, and investigation workflows.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -91,7 +91,26 @@ html,body{
   font-size:17px;
   color:var(--muted);
   max-width:640px;
-  margin-bottom:34px;
+  margin-bottom:22px;
+}
+
+/* OPERATIONAL TAG ROW */
+.env-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:36px;
+}
+
+.env-tag{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted-soft);
+  border:1px solid #282828;
+  padding:5px 10px;
+  background:var(--surface);
 }
 
 /* CONTROL BLOCK */
@@ -205,6 +224,121 @@ html,body{
   color:var(--text);
 }
 
+/* REVIEWER LENS */
+.lens-grid{
+  margin-top:16px;
+  border-top:1px solid #161616;
+}
+
+.lens-item{
+  display:grid;
+  grid-template-columns:52px 1fr;
+  gap:14px;
+  padding:16px 0;
+  border-bottom:1px solid #161616;
+}
+
+.lens-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  color:var(--muted-soft);
+  padding-top:2px;
+  letter-spacing:.06em;
+}
+
+.lens-title{
+  font-size:14.5px;
+  font-weight:600;
+  margin-bottom:4px;
+  color:var(--text);
+}
+
+.lens-text{
+  font-size:14px;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+/* FAILURE MODES */
+.failure-list{
+  margin-top:16px;
+  border-top:1px solid #161616;
+}
+
+.failure-item{
+  padding:18px 0;
+  border-bottom:1px solid #161616;
+}
+
+.failure-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:9.5px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:12px;
+}
+
+.failure-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.failure-col-head{
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted-soft);
+  margin-bottom:7px;
+}
+
+.failure-bad{
+  font-size:13.5px;
+  color:#8a6a6a;
+  font-style:italic;
+  line-height:1.55;
+}
+
+.failure-good{
+  font-size:13.5px;
+  color:var(--muted);
+  line-height:1.55;
+}
+
+/* MATURITY */
+.maturity-list{
+  margin-top:16px;
+  border-top:1px solid #161616;
+}
+
+.maturity-item{
+  display:grid;
+  grid-template-columns:40px 1fr;
+  gap:14px;
+  padding:15px 0;
+  border-bottom:1px solid #161616;
+}
+
+.maturity-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  color:var(--muted-soft);
+  padding-top:2px;
+}
+
+.maturity-title{
+  font-size:14.5px;
+  font-weight:600;
+  margin-bottom:3px;
+}
+
+.maturity-text{
+  font-size:14px;
+  color:var(--muted);
+}
+
 /* BUTTONS */
 .cta-row{
   display:flex;
@@ -221,17 +355,25 @@ html,body{
   text-decoration:none;
   font-size:14px;
   font-weight:500;
-  transition:.2s ease;
+  transition:.15s ease;
 }
 
 .btn-primary{
-  background:#EAEAEA;
+  background:#DCDCDC;
   color:#000;
+}
+
+.btn-primary:hover{
+  background:#C8C8C8;
 }
 
 .btn-secondary{
   border:1px solid var(--rule);
   color:var(--text);
+}
+
+.btn-secondary:hover{
+  border-color:#383838;
 }
 
 /* FOOTER */
@@ -258,6 +400,7 @@ html,body{
   .doc-title{ font-size:38px; }
   .control-block{ grid-template-columns:1fr; }
   .header-meta{ text-align:left; }
+  .failure-row{ grid-template-columns:1fr; gap:12px; }
 }
 </style>
 </head>
@@ -272,7 +415,6 @@ html,body{
       JRS<span class="tm">™</span>
     </div>
     <div class="header-meta">
-      Standard 001<br>
       Version 1.0 · Effective May 2026
     </div>
   </div>
@@ -282,7 +424,16 @@ html,body{
     Justification Review Standard (JRS™)
   </h1>
   <div class="doc-subtitle">
-    Documentation Review Process
+    Documentation Review Structure
+  </div>
+
+  <!-- OPERATIONAL TAG ROW -->
+  <div class="env-tags">
+    <span class="env-tag">HR Documentation</span>
+    <span class="env-tag">Compliance Records</span>
+    <span class="env-tag">Investigation Workflows</span>
+    <span class="env-tag">Administrative Review</span>
+    <span class="env-tag">AI-Assisted Draft Review</span>
   </div>
 
   <!-- CONTROL BLOCK -->
@@ -300,14 +451,14 @@ html,body{
   <!-- OVERVIEW -->
   <div class="section">
     <div class="section-title">Overview</div>
-    <p>The Justification Review Standard establishes a review process for evaluating whether organizational documentation contains identifiable support for conclusions or decisions.</p>
-    <p>This standard applies to organizational documentation used in employment, administrative, or compliance review processes. The review process is designed to support organizational review practices while acknowledging operational constraints.</p>
+    <p>The Justification Review Standard establishes a review structure for evaluating whether organizational documentation contains documented support for conclusions or decisions.</p>
+    <p>This standard applies to organizational documentation used in employment, administrative, or compliance review processes. The review structure is designed to support organizational review practices while acknowledging operational constraints.</p>
   </div>
 
   <!-- DEFINITION -->
   <div class="section">
     <div class="section-title">Definition</div>
-    <p><strong>Justification Review Standard (JRS™)</strong>: A documentation review process used to evaluate whether organizational records are independently understandable and contain an identifiable basis for conclusions during later review.</p>
+    <p><strong>Justification Review Standard (JRS™)</strong>: A documentation review structure used to evaluate whether organizational records are independently reviewable and contain a documented basis for conclusions during later review.</p>
   </div>
 
   <!-- REVIEW CONDITIONS -->
@@ -318,24 +469,118 @@ html,body{
       <div class="condition">
         <div class="condition-number">01</div>
         <div>
-          <div class="condition-title">Independently Understandable Records</div>
-          <div class="condition-text">A reviewer should be able to identify the basis for conclusions without requiring additional context or supplementary explanation.</div>
+          <div class="condition-title">Independently Reviewable Records</div>
+          <div class="condition-text">A reviewer should be able to identify the basis for conclusions without requiring additional context, institutional memory, or supplementary explanation.</div>
         </div>
       </div>
       <div class="condition">
         <div class="condition-number">02</div>
         <div>
-          <div class="condition-title">Observable Information</div>
-          <div class="condition-text">Documentation must contain specific, identifiable information supporting conclusions or decisions. Observable information may include documented observations, interactions, structured feedback, or other referenced supporting documentation.</div>
+          <div class="condition-title">Observable Support</div>
+          <div class="condition-text">Documentation must contain specific, verifiable support for conclusions or decisions. Observable support may include documented interactions, referenced records, structured feedback, or other identified supporting documentation.</div>
         </div>
       </div>
       <div class="condition">
         <div class="condition-number">03</div>
         <div>
-          <div class="condition-title">Identifiable Basis for Conclusions</div>
-          <div class="condition-text">The foundation for conclusions or decisions must be traceable within the record itself. Conclusions should not depend on unstated assumptions or undocumented context.</div>
+          <div class="condition-title">Documented Reasoning</div>
+          <div class="condition-text">The basis for conclusions or decisions must be visible within the record itself. Conclusions should not depend on unstated assumptions or undocumented context.</div>
         </div>
       </div>
+      <div class="condition">
+        <div class="condition-number">04</div>
+        <div>
+          <div class="condition-title">Source Integrity</div>
+          <div class="condition-text">Where automated drafting contributes to a record, the source material supporting substantive conclusions should be identifiable. Review responsibility remains with organizational personnel regardless of drafting method.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REVIEWER LENS -->
+  <div class="section">
+    <div class="section-title">Reviewer Lens</div>
+    <p>Records are often reviewed later by individuals who were not present during the original events, discussions, or decisions. Before finalization, apply the following checks:</p>
+    <div class="lens-grid">
+      <div class="lens-item">
+        <div class="lens-num">01 —</div>
+        <div>
+          <div class="lens-title">Can this stand on its own?</div>
+          <div class="lens-text">Could a later reviewer understand the basis for the record without relying on institutional memory or additional explanation?</div>
+        </div>
+      </div>
+      <div class="lens-item">
+        <div class="lens-num">02 —</div>
+        <div>
+          <div class="lens-title">Observable Support</div>
+          <div class="lens-text">Does the record identify specific dates, interactions, logs, referenced documents, or other observable support?</div>
+        </div>
+      </div>
+      <div class="lens-item">
+        <div class="lens-num">03 —</div>
+        <div>
+          <div class="lens-title">Documented Reasoning</div>
+          <div class="lens-text">Is the reasoning visible within the record itself, or does the conclusion rely on unstated assumptions?</div>
+        </div>
+      </div>
+      <div class="lens-item">
+        <div class="lens-num">04 —</div>
+        <div>
+          <div class="lens-title">AI Verification</div>
+          <div class="lens-text">Where AI-assisted drafting was used, has the wording been reviewed against source material before finalization?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMMON DOCUMENTATION FAILURES -->
+  <div class="section">
+    <div class="section-title">Common Documentation Failures</div>
+    <p>The following patterns represent documentation that does not satisfy the review conditions, with revisions that would.</p>
+    <div class="failure-list">
+
+      <div class="failure-item">
+        <div class="failure-label">Unsupported Generalization</div>
+        <div class="failure-row">
+          <div>
+            <div class="failure-col-head">Insufficient</div>
+            <div class="failure-bad">"Employee has attendance issues."</div>
+          </div>
+          <div>
+            <div class="failure-col-head">Supported Revision</div>
+            <div class="failure-good">"Employee was absent January 5, January 12, and February 3 without prior notice. Attendance counseling documented February 4."</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="failure-item">
+        <div class="failure-label">Missing Observable Behavior</div>
+        <div class="failure-row">
+          <div>
+            <div class="failure-col-head">Insufficient</div>
+            <div class="failure-bad">"Employee demonstrated unprofessional conduct."</div>
+          </div>
+          <div>
+            <div class="failure-col-head">Supported Revision</div>
+            <div class="failure-good">"Employee interrupted two client meetings on April 4 and April 11 despite prior instruction regarding meeting protocol."</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="failure-item">
+        <div class="failure-label">AI Summary Without Verification</div>
+        <div class="failure-row">
+          <div>
+            <div class="failure-col-head">Insufficient</div>
+            <div class="failure-bad">"AI summary: Employee is difficult to work with."</div>
+          </div>
+          <div>
+            <div class="failure-col-head">Supported Revision</div>
+            <div class="failure-good">"Summary reviewed against meeting notes dated March 4, 11, and 18. Human review completed before finalization."</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -348,15 +593,39 @@ html,body{
     </div>
   </div>
 
-  <!-- REVIEW PROCEDURE -->
+  <!-- WORKFLOW COMPATIBILITY -->
   <div class="section">
-    <div class="section-title">Review Procedure</div>
-    <div class="simple-list">
-      <div class="simple-item">Identify the Conclusion or Decision</div>
-      <div class="simple-item">Locate Observable Support</div>
-      <div class="simple-item">Evaluate Independent Understandability</div>
-      <div class="simple-item">Assess Identifiable Support</div>
-      <div class="simple-item">Document Limitations</div>
+    <div class="section-title">Workflow Compatibility</div>
+    <p>JRS operates within existing organizational workflows and does not require dedicated software, system replacement, or proprietary tooling.</p>
+    <p style="font-size:14.5px;color:var(--muted);">Application may occur within HR, compliance, legal, investigation, or supervisory review structures.</p>
+  </div>
+
+  <!-- IMPLEMENTATION MATURITY -->
+  <div class="section">
+    <div class="section-title">Implementation Maturity</div>
+    <p>Organizations may apply JRS at varying levels of integration. These models are illustrative rather than prescriptive.</p>
+    <div class="maturity-list">
+      <div class="maturity-item">
+        <div class="maturity-num">01</div>
+        <div>
+          <div class="maturity-title">Foundational</div>
+          <div class="maturity-text">Self-review before finalization. Applies the core diagnostic questions at the drafting stage. No secondary review required.</div>
+        </div>
+      </div>
+      <div class="maturity-item">
+        <div class="maturity-num">02</div>
+        <div>
+          <div class="maturity-title">Secondary Review</div>
+          <div class="maturity-text">HR or compliance review for elevated-risk records. Applied selectively based on documentation sensitivity and organizational workflow.</div>
+        </div>
+      </div>
+      <div class="maturity-item">
+        <div class="maturity-num">03</div>
+        <div>
+          <div class="maturity-title">Audit and Governance</div>
+          <div class="maturity-text">Periodic audit sampling and documentation review. Reviewer is independent of the drafting chain. Integrated with existing compliance or quality review workflows.</div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -367,7 +636,7 @@ html,body{
     <div class="simple-list">
       <div class="simple-item">Performance Reviews</div>
       <div class="simple-item">Disciplinary Documentation</div>
-      <div class="simple-item">Hiring & Rejection Documentation</div>
+      <div class="simple-item">Hiring &amp; Rejection Documentation</div>
       <div class="simple-item">Termination Documentation</div>
       <div class="simple-item">Performance Improvement Plans</div>
       <div class="simple-item">Accommodation Documentation</div>
@@ -379,26 +648,26 @@ html,body{
   <div class="section">
     <div class="section-title">Operational Constraints</div>
     <p>Application may involve incomplete records, conflicting accounts, operational time pressures, or qualitative information requiring reviewer judgment.</p>
-    <p>Observable information may include documented interactions, structured feedback, qualitative observations, or referenced supporting documentation where appropriately identified.</p>
-    <p>Application depth may vary based on workflow, record type, and operational constraints.</p>
+    <p>Observable support may include documented interactions, structured feedback, qualitative observations, or referenced supporting documentation where appropriately identified.</p>
+    <p>Documentation depth will vary depending on staffing availability, review timelines, and workflow conditions.</p>
   </div>
 
   <!-- REVIEW LIMITATIONS -->
   <div class="section">
     <div class="section-title">Review Limitations</div>
-    <p>The review process is not intended to substitute procedural formality for identifiable evidentiary support. It does not:</p>
+    <p>The review structure is not intended to substitute procedural formality for documented evidentiary support. It does not:</p>
     <div class="simple-list">
       <div class="simple-item">Sanitize poor documentation through procedural compliance</div>
       <div class="simple-item">Enable box-checking without meaningful review</div>
-      <div class="simple-item">Create the appearance of rigor where evidence is absent</div>
+      <div class="simple-item">Create the appearance of rigor where support is absent</div>
     </div>
-    <p style="margin-top:16px;">Instead, the process identifies where documentation lacks an identifiable basis for conclusions and distinguishes between wording quality and evidentiary support.</p>
+    <p style="margin-top:16px;">Instead, the structure identifies where documentation lacks a documented basis for conclusions and distinguishes between wording quality and evidentiary support.</p>
   </div>
 
   <!-- AI-ASSISTED -->
   <div class="section">
     <div class="section-title">AI-Assisted Documentation</div>
-    <p>When AI tools are used to draft or refine documentation, the underlying observable information must still satisfy the review conditions. AI-generated language should not be treated as independent evidentiary support absent identifiable underlying information. Review responsibility remains with organizational personnel regardless of drafting method.</p>
+    <p>When AI tools are used to draft or refine documentation, the underlying observable support must still satisfy the review conditions. AI-generated language should not be treated as independent evidentiary support absent identifiable underlying information. Review responsibility remains with organizational personnel regardless of drafting method.</p>
   </div>
 
   <!-- GOVERNANCE -->
@@ -414,11 +683,11 @@ html,body{
     <div class="simple-list">
       <div class="simple-item">
         <strong>JRS Standard</strong><br>
-        <span style="color:var(--muted);font-size:14.5px;">The foundational review standard establishing the documentation review framework, review conditions, and procedural guidance.</span>
+        <span style="color:var(--muted);font-size:14.5px;">The foundational review structure establishing the documentation review conditions, reviewer lens, and procedural guidance.</span>
       </div>
       <div class="simple-item">
         <strong>JRS Documentation Review Reference</strong><br>
-        <span style="color:var(--muted);font-size:14.5px;">Supplemental operational guidance addressing review controls, implementation considerations, practical review examples, and review procedures.</span>
+        <span style="color:var(--muted);font-size:14.5px;">Supplemental operational guidance addressing review controls, implementation considerations, practical review examples, and reviewer question sets.</span>
       </div>
     </div>
   </div>
@@ -444,7 +713,7 @@ html,body{
 
   <!-- FOOTER -->
   <div class="footer">
-    <div>Standard 001 · Version 1.0 · Effective May 2026</div>
+    <div>Version 1.0 · Effective May 2026</div>
     <div>JRS™ and Justification Review Standard™ are trademarks of Phillip Wikes.</div>
     <div>© 2026 Phillip Wikes</div>
     <div>Future revisions may clarify procedural guidance without altering core review conditions.</div>
