@@ -19,7 +19,7 @@
   --text:#ECECEC;
   --muted:#9A9A9A;
   --muted-soft:#707070;
-  --accent:#A88B46;
+  --accent:#B68A3D;
 }
 
 *{
@@ -355,7 +355,7 @@ html,body{
   text-decoration:none;
   font-size:14px;
   font-weight:500;
-  transition:.15s ease;
+  transition:.08s ease;
 }
 
 .btn-primary{
@@ -378,7 +378,7 @@ html,body{
 
 /* FOOTER */
 .footer{
-  margin-top:72px;
+  margin-top:82px;
   padding-top:22px;
   border-top:1px solid var(--rule);
   font-size:11px;
@@ -433,7 +433,7 @@ html,body{
     <span class="env-tag">Compliance Records</span>
     <span class="env-tag">Investigation Workflows</span>
     <span class="env-tag">Administrative Review</span>
-    <span class="env-tag">AI-Assisted Draft Review</span>
+    <span class="env-tag">AI-Assisted Documentation</span>
   </div>
 
   <!-- CONTROL BLOCK -->
@@ -458,7 +458,7 @@ html,body{
   <!-- DEFINITION -->
   <div class="section">
     <div class="section-title">Definition</div>
-    <p><strong>Justification Review Standard (JRS™)</strong>: A documentation review structure used to evaluate whether organizational records are independently reviewable and contain a documented basis for conclusions during later review.</p>
+    <p><strong>Justification Review Standard (JRS™)</strong>: A documentation review structure used to evaluate whether organizational records are understandable during later review and contain a documented basis for conclusions.</p>
   </div>
 
   <!-- REVIEW CONDITIONS -->
@@ -490,8 +490,8 @@ html,body{
       <div class="condition">
         <div class="condition-number">04</div>
         <div>
-          <div class="condition-title">Source Integrity</div>
-          <div class="condition-text">Where automated drafting contributes to a record, the source material supporting substantive conclusions should be identifiable. Review responsibility remains with organizational personnel regardless of drafting method.</div>
+          <div class="condition-title">Source Verification</div>
+          <div class="condition-text">Where automated drafting contributes to a record, the source material supporting substantive conclusions should remain identifiable and reviewable. Review responsibility remains with organizational personnel regardless of drafting method.</div>
         </div>
       </div>
     </div>
@@ -513,7 +513,7 @@ html,body{
         <div class="lens-num">02 —</div>
         <div>
           <div class="lens-title">Observable Support</div>
-          <div class="lens-text">Does the record identify specific dates, interactions, logs, referenced documents, or other observable support?</div>
+          <div class="lens-text">Does the record identify specific dates, interactions, logs, referenced documents, or other supporting records?</div>
         </div>
       </div>
       <div class="lens-item">
@@ -563,6 +563,20 @@ html,body{
           <div>
             <div class="failure-col-head">Supported Revision</div>
             <div class="failure-good">"Employee interrupted two client meetings on April 4 and April 11 despite prior instruction regarding meeting protocol."</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="failure-item">
+        <div class="failure-label">Missing Timeline Anchors</div>
+        <div class="failure-row">
+          <div>
+            <div class="failure-col-head">Insufficient</div>
+            <div class="failure-bad">"Employee communication was inconsistent."</div>
+          </div>
+          <div>
+            <div class="failure-col-head">Supported Revision</div>
+            <div class="failure-good">"Project update deadlines required repeated follow-up during February and March review cycles. Delayed responses documented in team email chain."</div>
           </div>
         </div>
       </div>
@@ -667,7 +681,7 @@ html,body{
   <!-- AI-ASSISTED -->
   <div class="section">
     <div class="section-title">AI-Assisted Documentation</div>
-    <p>When AI tools are used to draft or refine documentation, the underlying observable support must still satisfy the review conditions. AI-generated language should not be treated as independent evidentiary support absent identifiable underlying information. Review responsibility remains with organizational personnel regardless of drafting method.</p>
+    <p>When AI tools are used to draft or refine documentation, the underlying observable support must still satisfy the review conditions. AI-generated language should not be treated as independent evidentiary support absent documented underlying information. Review responsibility remains with organizational personnel regardless of drafting method.</p>
   </div>
 
   <!-- GOVERNANCE -->
