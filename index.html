@@ -336,6 +336,23 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
   .primary-nav-inner{gap:0}
   .site-header-inner{gap:12px}
 }
+@media(max-width:480px){
+  .container{padding:28px 16px 72px}
+  .page-title{font-size:26px}
+  .course-title{font-size:24px}
+  .site-header-inner{padding:16px 0 14px}
+  .primary-nav-inner{padding:0 16px}
+  .util-bar{padding:0 16px}
+  .util-label{display:none}
+  .wf-table{font-size:12px}
+  .wf-table th,.wf-table td{padding:7px 8px}
+  .card-grid,.card-grid-3{grid-template-columns:1fr}
+  .library-grid{grid-template-columns:1fr}
+  .quiz-option{font-size:13px}
+  .score-number{font-size:36px}
+  .cert-name-row{flex-direction:column;align-items:flex-start}
+  .cert-name-input{width:100%}
+}
 @media print{
   .primary-nav,.util-bar,.site-footer,.nav-item,.btn-print{display:none!important}
   .worksheet-body{display:block!important}
@@ -408,6 +425,8 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
 <div style="border:1px solid var(--rule);background:var(--surface);padding:20px 22px;display:grid;grid-template-columns:repeat(2,1fr);gap:16px 24px;margin-bottom:48px;">
   <div><div style="font-family:'JetBrains Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.24em;color:var(--muted-soft);margin-bottom:5px;">Version</div><div style="font-size:14px;color:var(--text);">1.0</div></div>
   <div><div style="font-family:'JetBrains Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.24em;color:var(--muted-soft);margin-bottom:5px;">Effective</div><div style="font-size:14px;color:var(--text);">May 2026</div></div>
+  <div><div style="font-family:'JetBrains Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.24em;color:var(--muted-soft);margin-bottom:5px;">Published</div><div style="font-size:14px;color:var(--text);">May 15, 2026</div></div>
+  <div><div style="font-family:'JetBrains Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.24em;color:var(--muted-soft);margin-bottom:5px;">Status</div><div style="font-size:14px;color:var(--text);">Active</div></div>
 </div>
 
 <div style="margin-bottom:44px;">
@@ -490,6 +509,60 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
   <p class="body-text">This standard is not legal advice. It does not establish legal sufficiency, replace organizational policy obligations, or eliminate the need for jurisdiction-specific legal review. Application should account for operational context and variability across jurisdictions.</p>
 </div>
 
+<div style="margin-bottom:44px;">
+  <div class="section-head">Governance Compatibility</div>
+  <p class="body-text">JRS™ is designed to operate within existing organizational documentation, compliance, investigation, legal review, and AI governance environments. It does not replace applicable regulatory requirements and is not a substitute for jurisdiction-specific legal counsel.</p>
+  <p class="body-text">The following table identifies alignment between JRS review conditions and selected governance frameworks. Alignment indicates that JRS supports rather than duplicates the identified requirement.</p>
+  <div style="margin-top:16px;border:1px solid var(--rule);overflow:hidden;">
+    <div style="display:grid;grid-template-columns:180px 1fr;border-bottom:1px solid var(--rule);">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);padding:9px 14px;border-right:1px solid var(--rule);">Framework</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);padding:9px 14px;">JRS Alignment</div>
+    </div>
+    <div style="display:grid;grid-template-columns:180px 1fr;border-bottom:1px solid #1E1E1E;background:var(--surface);">
+      <div style="font-size:13.5px;font-weight:500;color:var(--text);padding:12px 14px;border-right:1px solid var(--rule);line-height:1.5;">NIST AI RMF</div>
+      <div style="font-size:13.5px;color:var(--muted);padding:12px 14px;line-height:1.6;">Supports GOVERN 1 (documentation practices), MANAGE 3 (incident traceability), and MAP 2 (AI system documentation) through source integrity controls and reconstruction continuity requirements.</div>
+    </div>
+    <div style="display:grid;grid-template-columns:180px 1fr;border-bottom:1px solid #1E1E1E;background:var(--surface);">
+      <div style="font-size:13.5px;font-weight:500;color:var(--text);padding:12px 14px;border-right:1px solid var(--rule);line-height:1.5;">EU AI Act</div>
+      <div style="font-size:13.5px;color:var(--muted);padding:12px 14px;line-height:1.6;">Addresses Article 13 (transparency and traceability) and Article 14 (human oversight) requirements for high-risk AI systems through Source Integrity Condition IV and human attestation requirements.</div>
+    </div>
+    <div style="display:grid;grid-template-columns:180px 1fr;border-bottom:1px solid #1E1E1E;background:var(--surface);">
+      <div style="font-size:13.5px;font-weight:500;color:var(--text);padding:12px 14px;border-right:1px solid var(--rule);line-height:1.5;">Colorado SB 24-205</div>
+      <div style="font-size:13.5px;color:var(--muted);padding:12px 14px;line-height:1.6;">Supports consequential decision documentation requirements and adverse action documentation traceability for high-risk AI systems used in employment determinations.</div>
+    </div>
+    <div style="display:grid;grid-template-columns:180px 1fr;border-bottom:1px solid #1E1E1E;background:var(--surface);">
+      <div style="font-size:13.5px;font-weight:500;color:var(--text);padding:12px 14px;border-right:1px solid var(--rule);line-height:1.5;">NYC Local Law 144</div>
+      <div style="font-size:13.5px;color:var(--muted);padding:12px 14px;line-height:1.6;">Addresses bias audit traceability and documentation requirements for automated employment decision tools through observable support and source integrity review conditions.</div>
+    </div>
+    <div style="display:grid;grid-template-columns:180px 1fr;background:var(--surface);">
+      <div style="font-size:13.5px;font-weight:500;color:var(--text);padding:12px 14px;border-right:1px solid var(--rule);line-height:1.5;">ISO/IEC 42001</div>
+      <div style="font-size:13.5px;color:var(--muted);padding:12px 14px;line-height:1.6;">Supports Clause 8 (AI system operation documentation) and Clause 9 (performance evaluation traceability) through documented reasoning and later-review readability requirements.</div>
+    </div>
+  </div>
+  <p style="margin-top:12px;font-size:13px;color:var(--muted-soft);">Alignment descriptions are informational. Organizations should independently assess applicable regulatory obligations with qualified legal counsel.</p>
+</div>
+
+<div style="margin-bottom:44px;">
+  <div class="section-head">Revision Process</div>
+  <p class="body-text">Revisions to this standard will be versioned. Minor revisions addressing procedural clarity or operational guidance will increment the minor version number. Revisions that alter core review conditions will increment the major version number and will be accompanied by a summary of substantive changes.</p>
+  <p class="body-text">Organizations that have integrated this standard into internal documentation governance should review version release notes before updating internal references. Core review conditions are designed to remain stable across minor revisions.</p>
+  <div style="border-top:1px solid var(--rule);margin-top:14px;padding-top:14px;">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px;">Version History</div>
+    <div style="border:1px solid var(--rule);">
+      <div style="display:grid;grid-template-columns:80px 100px 1fr;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);padding:8px 12px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);">Version</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);padding:8px 12px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);">Date</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);padding:8px 12px;border-bottom:1px solid var(--rule);">Notes</div>
+      </div>
+      <div style="display:grid;grid-template-columns:80px 100px 1fr;">
+        <div style="font-size:13.5px;color:var(--text);padding:10px 12px;border-right:1px solid var(--rule);">1.0</div>
+        <div style="font-size:13.5px;color:var(--muted);padding:10px 12px;border-right:1px solid var(--rule);">May 2026</div>
+        <div style="font-size:13.5px;color:var(--muted);padding:10px 12px;line-height:1.6;">Initial release. Four review conditions, reviewer lens, failure-mode catalog, workflow integration models, and AI-assisted documentation controls.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div style="margin-bottom:20px;">
   <div class="section-head">Access</div>
   <div class="btn-row">
@@ -522,6 +595,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
   <div class="worksheet-header" onclick="toggleWS(this)">
     <span class="worksheet-title">01 — Pre-Finalization Review Worksheet</span>
     <span class="worksheet-toggle">Expand ↓</span>
+    <button class="btn-print" style="margin-left:auto;font-size:8.5px;" onclick="event.stopPropagation();printWorksheet(1)">Print</button>
   </div>
   <div class="worksheet-body">
     <div class="ws-section">
@@ -561,6 +635,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
   <div class="worksheet-header" onclick="toggleWS(this)">
     <span class="worksheet-title">02 — Later-Review Reconstruction Checklist</span>
     <span class="worksheet-toggle">Expand ↓</span>
+    <button class="btn-print" style="margin-left:auto;font-size:8.5px;" onclick="event.stopPropagation();printWorksheet(2)">Print</button>
   </div>
   <div class="worksheet-body">
     <div class="ws-section">
@@ -590,6 +665,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
   <div class="worksheet-header" onclick="toggleWS(this)">
     <span class="worksheet-title">03 — Observable Support Review Aid</span>
     <span class="worksheet-toggle">Expand ↓</span>
+    <button class="btn-print" style="margin-left:auto;font-size:8.5px;" onclick="event.stopPropagation();printWorksheet(3)">Print</button>
   </div>
   <div class="worksheet-body">
     <div class="ws-section">
@@ -607,6 +683,19 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
       <div class="ws-item"><input type="checkbox" class="ws-check"><span>Performance metric, threshold, or standard with documented baseline</span></div>
     </div>
     <div class="ws-section">
+      <div class="ws-section-label">Illustration — Investigation Record</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">No Anchor</div>
+          <div style="font-size:13px;color:#9e7878;font-style:italic;line-height:1.6;">"Witness accounts supported the complainant's version of events."</div>
+        </div>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">Anchored</div>
+          <div style="font-size:13px;color:var(--muted);line-height:1.6;">Two witnesses (interviews on file, October 6 and October 7) corroborated the complainant's account of the September 19 incident. A third witness declined to comment; that absence is noted. One witness contested the characterization of the September 12 event; that account is preserved in the file.</div>
+        </div>
+      </div>
+    </div>
+    <div class="ws-section">
       <div class="ws-section-label">Unsupported Language Flags</div>
       <div class="ws-item"><input type="checkbox" class="ws-check"><span>Evaluative adjectives without corresponding behavioral anchor</span></div>
       <div class="ws-item"><input type="checkbox" class="ws-check"><span>Pattern claims without specific dated instances</span></div>
@@ -621,6 +710,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
   <div class="worksheet-header" onclick="toggleWS(this)">
     <span class="worksheet-title">04 — Traceable Reasoning Checklist</span>
     <span class="worksheet-toggle">Expand ↓</span>
+    <button class="btn-print" style="margin-left:auto;font-size:8.5px;" onclick="event.stopPropagation();printWorksheet(4)">Print</button>
   </div>
   <div class="worksheet-body">
     <div class="ws-section">
@@ -650,6 +740,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
   <div class="worksheet-header" onclick="toggleWS(this)">
     <span class="worksheet-title">05 — AI-Assisted Draft Verification Worksheet</span>
     <span class="worksheet-toggle">Expand ↓</span>
+    <button class="btn-print" style="margin-left:auto;font-size:8.5px;" onclick="event.stopPropagation();printWorksheet(5)">Print</button>
   </div>
   <div class="worksheet-body">
     <div class="ws-section">
@@ -684,6 +775,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
   <div class="worksheet-header" onclick="toggleWS(this)">
     <span class="worksheet-title">06 — Escalation Documentation Review Aid</span>
     <span class="worksheet-toggle">Expand ↓</span>
+    <button class="btn-print" style="margin-left:auto;font-size:8.5px;" onclick="event.stopPropagation();printWorksheet(6)">Print</button>
   </div>
   <div class="worksheet-body">
     <div class="ws-section">
@@ -717,6 +809,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
   <div class="worksheet-header" onclick="toggleWS(this)">
     <span class="worksheet-title">07 — Investigation Reconstruction Worksheet</span>
     <span class="worksheet-toggle">Expand ↓</span>
+    <button class="btn-print" style="margin-left:auto;font-size:8.5px;" onclick="event.stopPropagation();printWorksheet(7)">Print</button>
   </div>
   <div class="worksheet-body">
     <div class="ws-section">
@@ -750,6 +843,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
   <div class="worksheet-header" onclick="toggleWS(this)">
     <span class="worksheet-title">08 — Timeline Anchor Review Checklist</span>
     <span class="worksheet-toggle">Expand ↓</span>
+    <button class="btn-print" style="margin-left:auto;font-size:8.5px;" onclick="event.stopPropagation();printWorksheet(8)">Print</button>
   </div>
   <div class="worksheet-body">
     <div class="ws-section">
@@ -774,6 +868,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
   <div class="worksheet-header" onclick="toggleWS(this)">
     <span class="worksheet-title">09 — Manager Self-Review Prompt Sheet</span>
     <span class="worksheet-toggle">Expand ↓</span>
+    <button class="btn-print" style="margin-left:auto;font-size:8.5px;" onclick="event.stopPropagation();printWorksheet(9)">Print</button>
   </div>
   <div class="worksheet-body">
     <div class="ws-section">
@@ -803,6 +898,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
   <div class="worksheet-header" onclick="toggleWS(this)">
     <span class="worksheet-title">10 — Secondary Review Checklist</span>
     <span class="worksheet-toggle">Expand ↓</span>
+    <button class="btn-print" style="margin-left:auto;font-size:8.5px;" onclick="event.stopPropagation();printWorksheet(10)">Print</button>
   </div>
   <div class="worksheet-body">
     <div class="ws-section">
@@ -1484,6 +1580,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
         <button class="btn btn-ghost" onclick="retakeQuiz()">Try Again</button>
       </div>
     </div>
+    <div id="quiz-validation" style="display:none;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--stop-text);border:1px solid var(--stop);padding:10px 14px;margin-top:14px;">Answer all questions before submitting.</div>
   </div>
 </div>
 
@@ -1613,10 +1710,10 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
 <!-- SITE FOOTER -->
 <div class="site-footer">
   <div class="site-footer-inner">
-    <div>JRS™ Documentation Review Structure · v1.0 · Effective May 2026</div>
+    <div>JRS™ Documentation Review Structure · v1.0 · Published May 15, 2026</div>
     <div>JRS™ and Justification Review Standard™ are trademarks of Phillip Wikes. © 2026 Phillip Wikes.</div>
     <div>Educational material. Does not constitute legal advice, professional certification, regulatory accreditation, or employment decision guidance.</div>
-    <div>Future revisions may clarify procedural guidance without altering core review conditions.</div>
+    <div>Current version: 1.0 (May 2026) — Initial release. Future revisions will be versioned. Core review conditions are designed to remain stable across minor revisions.</div>
   </div>
 </div>
 
@@ -1641,6 +1738,41 @@ function toggleWS(header){
   const isOpen=body.classList.contains('open');
   body.classList.toggle('open',!isOpen);
   toggle.textContent=isOpen?'Expand ↓':'Collapse ↑';
+}
+
+function printWorksheet(num){
+  const sheets=document.querySelectorAll('.worksheet');
+  const target=sheets[num-1];
+  if(!target)return;
+  const body=target.querySelector('.worksheet-body');
+  const title=target.querySelector('.worksheet-title').textContent;
+  const w=window.open('','_blank');
+  w.document.write(`<!DOCTYPE html><html><head><title>${title}</title><style>
+    body{font-family:'Inter',sans-serif;color:#111;background:#fff;padding:32px;max-width:720px;margin:0 auto;font-size:14px;line-height:1.7}
+    .worksheet-body{display:block!important}
+    .ws-section{margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid #ddd}
+    .ws-section-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#777;margin-bottom:10px;font-family:monospace}
+    .ws-item{display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #eee;font-size:13.5px}
+    .ws-check{width:12px;height:12px;border:1px solid #999;flex-shrink:0;margin-top:3px}
+    .ws-note{font-size:11.5px;color:#777;font-style:italic;margin-top:6px}
+    .readiness-grid{margin-top:12px}
+    .readiness-row{display:grid;grid-template-columns:70px 1fr;border:1px solid #ccc;margin-bottom:-1px}
+    .readiness-badge{display:flex;align-items:center;justify-content:center;padding:12px 8px;font-size:9px;letter-spacing:.14em;font-family:monospace;text-transform:uppercase}
+    .readiness-badge.stop{background:#8B2020;color:#E88080}
+    .readiness-badge.review{background:#8B5E1A;color:#D4A055}
+    .readiness-badge.ready{background:#1E5C35;color:#5DBF82}
+    .readiness-desc{padding:10px 14px;font-size:13px;border-left:1px solid #ccc}
+    .readiness-desc strong{display:block;font-size:12px;font-weight:600;margin-bottom:2px}
+    h1{font-size:18px;font-family:Georgia,serif;font-weight:400;border-bottom:1px solid #ccc;padding-bottom:12px;margin-bottom:24px}
+    .print-meta{font-size:10px;font-family:monospace;letter-spacing:.1em;text-transform:uppercase;color:#aaa;margin-bottom:20px}
+    @media print{body{padding:18px}}
+  </style></head><body>
+    <div class="print-meta">JRS™ · Justification Review Standard · v1.0 · May 2026</div>
+    <h1>${title}</h1>
+    ${body.innerHTML}
+  </body></html>`);
+  w.document.close();
+  setTimeout(()=>w.print(),400);
 }
 
 // ── SCENARIOS ─────────────────────────────────────────────
@@ -1815,7 +1947,7 @@ const MODULES=[
 {title:"Introduction to Documentation Review",tag:"Module 01",
 lessons:[
 {title:"Why Records Fail",html:`<p>Organizational records are created by people who understand the full context of what they are documenting. At the time of drafting, the supporting context feels obvious. The author knows the participants, the history, and the reasoning behind every conclusion.</p><div class="callout"><div class="callout-label">The Problem</div><p>Records are reviewed later by people who were not present. Personnel change. Time passes. What felt obvious during drafting may not be recoverable when someone else reads the file cold.</p></div><p>Documentation review is a reconstruction problem. The question is not whether the record reads well. It is whether someone with no access to the original participants can identify the basis for each conclusion from what the file actually contains.</p><div class="op-note">If the reviewer has to call someone to understand the file, the record is already unstable.</div><div class="quote-block">"The file is what survives. Not the meeting. Not the conversation. Not what the manager remembers."</div><div class="lo-block"><div class="lo-label">This module addresses</div><div class="lo-item"><span class="lo-check">—</span>Common causes of documentation failure during later review</div><div class="lo-item"><span class="lo-check">—</span>The difference between readable language and supported conclusions</div><div class="lo-item"><span class="lo-check">—</span>Why records are routinely reviewed without original context</div><div class="lo-item"><span class="lo-check">—</span>Operational risk created by conclusions that cannot be verified from the file</div></div>`},
-{title:"Administrative Realities",html:`<p>Documentation is created under real operational conditions: time pressure, incomplete information, and drafters who may be writing records after the relevant events have already occurred. These are not exceptional circumstances.</p><p>Records often reflect what the author remembers rather than what they documented. A conclusion that relies on the author's memory is not the same as a conclusion grounded in a documented record.</p><div class="callout"><div class="callout-label">File Readability vs. Support Visibility</div><p>A record can be well-written and still fail during later review. Professional wording creates the appearance of support. It does not substitute for it.</p></div><p>Documentation review addresses whether the basis is present in the record. It does not address whether the underlying decision was correct. Those are separate questions.</p><div class="callout"><div class="callout-label">Administrative Neutrality</div><p>Documentation quality and decision quality are not the same thing. A record can be thoroughly documented and still reflect a poor decision. A record can contain an accurate conclusion with no recoverable evidentiary basis.</p></div><div class="op-note">Most timeline problems are discovered after escalation, not before.</div><div class="quote-block">"What seemed adequately documented at drafting may not hold up when someone reads it without that background."</div>`}
+{title:"Administrative Realities",html:`<p>Documentation is created under real operational conditions: time pressure, incomplete information, and drafters who may be writing records after the relevant events have already occurred. These are not exceptional circumstances.</p><p>Records often reflect what the author remembers rather than what they documented. A conclusion that relies on the author's memory is not the same as a conclusion grounded in a documented record.</p><div class="callout"><div class="callout-label">File Readability vs. Support Visibility</div><p>A record can be well-written and still fail during later review. Professional wording creates the appearance of support. It does not substitute for it.</p></div><p>Documentation review addresses whether the basis is present in the record. It does not address whether the underlying decision was correct. Those are separate questions.</p><div class="callout"><div class="callout-label">Administrative Neutrality</div><p>Documentation quality and decision quality are not the same thing. A record can be thoroughly documented and still reflect a poor decision. A record can contain an accurate conclusion with no recoverable evidentiary basis.</p></div><div class="op-note">Most timeline problems are discovered after escalation, not before.</div><p>The gap between what exists in the file and what the author knows is not visible at drafting. It becomes visible when someone else reads the record later, without the author present.</p><div class="quote-block">"What seemed adequately documented at drafting may not hold up when someone reads it without that background."</div>`}
 ],
 quiz:[
 {q:"Documentation review primarily evaluates whether:",options:["The employment decision was substantively correct","Someone with no prior knowledge can reconstruct the basis for conclusions from the file","The record uses professional language and clear writing","The manager followed the applicable disciplinary procedure"],correct:1,explanation:"The review addresses reconstruction: can a later reviewer, with no access to the original participants, identify the basis for each conclusion from the file alone? Whether the decision was correct is a separate question."},
@@ -1855,7 +1987,7 @@ quiz:[
 {title:"AI-Assisted Documentation Review",tag:"Module 05",
 lessons:[
 {title:"AI Drafting Risks",html:`<p>The review conditions do not change based on how a document was produced. A record generated with AI assistance must satisfy the same evidentiary requirements as one written by hand.</p><div class="callout"><div class="callout-label">The Specific Risk</div><p>AI-assisted wording can introduce characterizations not present in the source material, intensify conclusions beyond what the notes support, and produce language that sounds settled when the underlying information is incomplete or contested.</p></div><div class="cond-grid"><div class="cond-row"><div class="cond-num" style="font-size:13px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:5px;">R1</div><div><div class="cond-title">Drafting vs. Attesting</div><div class="cond-text">A tool may assist in drafting. Only a human reviewer can attest that what the record says is grounded in the source material. The wording can sound accurate while the support is absent.</div></div></div><div class="cond-row"><div class="cond-num" style="font-size:13px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:5px;">R2</div><div><div class="cond-title">Unsupported Characterization</div><div class="cond-text">AI-generated characterizations must be replaced by or anchored to direct observations, specific behavioral descriptions, or referenced conduct records before the document enters an official system.</div></div></div><div class="cond-row"><div class="cond-num" style="font-size:13px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:5px;">R3</div><div><div class="cond-title">Conflict Obscuring</div><div class="cond-text">AI summaries may omit contested accounts or incomplete information present in the original notes. A reviewer accepting the polished output without checking it against source material may not notice what was left out.</div></div></div><div class="cond-row"><div class="cond-num" style="font-size:13px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:5px;">R4</div><div><div class="cond-title">Repetition Without Support</div><div class="cond-text">Similar AI-generated language across many records does not create cumulative evidentiary support. Consistent wording is not the same as consistent documentation.</div></div></div></div><div class="op-note">AI-generated problems in a record are usually found during a later proceeding, not during drafting.</div><div class="lo-block"><div class="lo-label">This module addresses</div><div class="lo-item"><span class="lo-check">—</span>Evaluating AI-assisted records for support visibility</div><div class="lo-item"><span class="lo-check">—</span>The distinction between drafting assistance and evidentiary support</div><div class="lo-item"><span class="lo-check">—</span>Applying source verification before system entry</div></div>`},
-{title:"Human Attestation & Source Verification",html:`<p>Where automated drafting has contributed to a record, the review standard does not change. All substantive conclusions must be grounded in referenced source material before the record enters an official system.</p><div class="callout"><div class="callout-label">Source Integrity</div><p>Conclusions must trace back to identifiable source material. Wording that introduces characterizations not present in the original notes is a gap regardless of how it was generated.</p></div><div class="lesson-section-title">Attestation Before Record Entry</div><div class="lo-block" style="border-left:2px solid #333;background:rgba(255,255,255,.02);"><div class="lo-label">Example Attestation Language — Illustrative Only</div><p style="font-size:14.5px;color:var(--text);line-height:1.7;font-style:italic;margin-bottom:14px;">"I reviewed this AI-assisted draft against the source material available to me and confirmed that substantive conclusions remain traceable to documented information in the file."</p><div style="border-top:1px solid var(--rule);padding-top:12px;margin-top:4px;"><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:8px;">Extended Example — Illustrative Only</div><p style="font-size:13px;color:var(--muted-soft);line-height:1.65;font-style:italic;margin-bottom:9px;">"I have reviewed this AI-assisted draft against my original notes and source records. It accurately reflects the documented interactions. No unverified characterizations or sentiment has been introduced that was not in the original material."</p></div></div><div class="failure-block"><div class="failure-head">AI Summary — Before and After Source Verification</div><div class="failure-cols"><div class="failure-col"><div class="failure-col-label">Unverified</div><div class="failure-bad">"AI summary: Employee is difficult to work with."</div></div><div class="failure-col"><div class="failure-col-label">After Verification</div><div class="failure-good">Summary reviewed against meeting notes dated March 4, 11, and 18. No unverified characterizations introduced. Human review completed March 19, confirmed against original notes by attesting reviewer.</div></div></div></div><div class="quote-block">"The wording may sound complete. That is not the same as being supported."</div><div class="applied-exercise"><div class="applied-exercise-head">Applied Review Exercise</div><div class="applied-exercise-body"><div class="applied-exercise-original">"AI-generated summary: Based on available records, the employee exhibited a pattern of uncooperative behavior and resistance to management direction. Overall performance was below expectations."</div><p class="applied-exercise-prompt">Apply the Source Integrity condition. Identify what must be resolved before this enters an official record:</p><ul class="applied-exercise-items"><li>What source records were reviewed, and are they identified?</li><li>"Uncooperative behavior" — traceable to documented interactions, or introduced by the tool?</li><li>"Resistance to management direction" — what specific instructions, on what dates?</li><li>Has a human reviewer confirmed no unverified sentiment was introduced?</li></ul><div class="applied-exercise-note">The language here has review exposure on every evaluative claim.</div></div></div>`}
+{title:"Human Attestation & Source Verification",html:`<p>Where automated drafting has contributed to a record, the review standard does not change. All substantive conclusions must be grounded in referenced source material before the record enters an official system.</p><div class="callout"><div class="callout-label">Source Integrity</div><p>Conclusions must trace back to identifiable source material. Wording that introduces characterizations not present in the original notes is a gap regardless of how it was generated.</p></div><div class="lesson-section-title">Attestation Before Record Entry</div><div class="lo-block" style="border-left:2px solid #333;background:rgba(255,255,255,.02);"><div class="lo-label">Example Attestation Language — Illustrative Only</div><p style="font-size:14.5px;color:var(--text);line-height:1.7;font-style:italic;margin-bottom:14px;">"I reviewed this AI-assisted draft against the source material available to me and confirmed that substantive conclusions remain traceable to documented information in the file."</p><div style="border-top:1px solid var(--rule);padding-top:12px;margin-top:4px;"><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:8px;">Extended Example — Illustrative Only</div><p style="font-size:13px;color:var(--muted-soft);line-height:1.65;font-style:italic;margin-bottom:9px;">"I have reviewed this AI-assisted draft against my original notes and source records. It accurately reflects the documented interactions. No unverified characterizations or sentiment has been introduced that was not in the original material."</p></div></div><div class="failure-block"><div class="failure-head">AI Summary — Before and After Source Verification</div><div class="failure-cols"><div class="failure-col"><div class="failure-col-label">Unverified</div><div class="failure-bad">"AI summary: Employee has displayed a pattern of disengagement and resistance throughout the project cycle."</div></div><div class="failure-col"><div class="failure-col-label">After Verification</div><div class="failure-good">Summary reviewed against project meeting notes (March 4, 11, 18) and manager coaching records (March 7, March 21). Characterizations verified against documented events. No introduced sentiment. Human review completed March 22, confirmed by attesting reviewer before system entry.</div></div></div></div><div class="quote-block">"The wording may sound complete. That is not the same as being supported."</div><div class="applied-exercise"><div class="applied-exercise-head">Applied Review Exercise</div><div class="applied-exercise-body"><div class="applied-exercise-original">"AI-generated summary: Based on available records, the employee exhibited a pattern of uncooperative behavior and resistance to management direction. Overall performance was below expectations."</div><p class="applied-exercise-prompt">Apply the Source Integrity condition. Identify what must be resolved before this enters an official record:</p><ul class="applied-exercise-items"><li>What source records were reviewed, and are they identified?</li><li>"Uncooperative behavior" — traceable to documented interactions, or introduced by the tool?</li><li>"Resistance to management direction" — what specific instructions, on what dates?</li><li>Has a human reviewer confirmed no unverified sentiment was introduced?</li></ul><div class="applied-exercise-note">The language here has review exposure on every evaluative claim.</div></div></div>`}
 ],
 quiz:[
 {q:"Before an AI-generated characterization enters an official record, what is required?",options:["Manager signature acknowledging AI was used","Human review against identifiable source material confirming specific behavioral incidents support the characterization","Disclosure to the employee that AI assisted in drafting","Legal review before any AI-assisted language enters HR documentation"],correct:1,explanation:"AI-generated characterizations require source verification: a human reviewer must confirm the characterization reflects specific documented interactions and no unverified sentiment was introduced."},
@@ -1939,7 +2071,12 @@ function selectAnswer(qi,oi){
 
 function submitQuiz(){
   const quiz=MODULES[currentModule].quiz;
-  if(quizAnswers.some(a=>a===-1)){alert('Please answer all questions before submitting.');return;}
+  if(quizAnswers.some(a=>a===-1)){
+    const v=document.getElementById('quiz-validation');
+    v.style.display='block';
+    setTimeout(()=>v.style.display='none',3000);
+    return;
+  }
   quizSubmitted=true;let correct=0;
   quiz.forEach((q,qi)=>{
     const ok=quizAnswers[qi]===q.correct;if(ok)correct++;
