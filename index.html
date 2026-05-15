@@ -388,6 +388,8 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
     <button class="nav-item" onclick="showSection('maturity')">Maturity Framework</button>
     <button class="nav-item" onclick="showSection('ai')">AI Documentation</button>
     <button class="nav-item" onclick="showSection('implementation')">In Practice</button>
+    <button class="nav-item" onclick="showSection('deployment')">Deployment</button>
+    <button class="nav-item" onclick="showSection('usecases')">Use Cases</button>
     <button class="nav-item" onclick="showSection('training')">Training Program</button>
     <button class="nav-item" onclick="showSection('library')">Materials Library</button>
   </div>
@@ -1888,6 +1890,400 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
 
 
 <!-- ═══════════════════════════════════ -->
+<!-- SECTION: DEPLOYMENT                -->
+<!-- ═══════════════════════════════════ -->
+<div id="section-deployment" class="page-section">
+<div class="container">
+
+<div class="page-eyebrow">Organizational Deployment</div>
+<h1 class="page-title">Deployment Realism</h1>
+<p class="page-subtitle">Operational answers to the questions boutique compliance, HR, and governance buyers ask before adopting a documentation review framework. This section addresses rollout mechanics, reviewer assignment, workflow burden, retention, and auditability.</p>
+
+<div class="callout"><div class="callout-label">Framing</div><p>JRS does not require a formal adoption project. It requires that the people who review documentation before submission apply the review conditions consistently. The questions below reflect what organizational implementation actually involves.</p></div>
+
+<hr class="section-rule">
+<div class="section-head">How Would This Actually Be Rolled Out?</div>
+
+<div class="card-grid" style="margin-top:16px;">
+  <div class="card">
+    <div class="card-label">Phase 01</div>
+    <div class="card-title">Identify Entry Point</div>
+    <div class="card-text">Select the record type with the highest review exposure — most commonly termination documentation, investigation conclusions, or AI-assisted performance records. Apply JRS review to that record type first. No organization-wide rollout required at this stage.</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Phase 02</div>
+    <div class="card-title">Assign Review Responsibility</div>
+    <div class="card-text">Designate who applies pre-submission review for each elevated-risk record type. This is typically one or two people in HR compliance or legal — not a new hire. The role is added to an existing function, not created separately.</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Phase 03</div>
+    <div class="card-title">Deploy the Worksheet</div>
+    <div class="card-text">Add the relevant worksheet to the record type's submission process. For terminations: the Secondary Review Checklist and Escalation Review Aid. For AI-assisted records: the Draft Verification Worksheet. No system change required — the worksheet sits alongside the existing process.</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Phase 04</div>
+    <div class="card-title">Expand by Record Type</div>
+    <div class="card-text">Once elevated-risk records are covered, expand to standard performance and disciplinary documentation. Managers apply the Self-Review Prompt Sheet before HRIS submission. HR routes STOP and REVIEW flags back to drafter before entry.</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Phase 05</div>
+    <div class="card-title">Add Audit Sampling</div>
+    <div class="card-text">Compliance or audit personnel apply the failure-mode catalog to sample existing records quarterly. Sampling surfaces systemic patterns — departments or record types where documentation quality is consistently insufficient — and informs workflow intervention priorities.</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Phase 06</div>
+    <div class="card-title">Integrate into Policy</div>
+    <div class="card-text">At full integration, the review conditions are referenced in the organization's HR documentation policy or AI governance policy as the pre-submission review standard. This creates an auditable, documented process without requiring new infrastructure.</div>
+  </div>
+</div>
+
+<hr class="section-rule">
+<div class="section-head">Who Performs Reviews?</div>
+<table class="wf-table" style="margin-top:16px;">
+  <tr><th>Record Type</th><th>Primary Reviewer</th><th>Secondary Reviewer</th><th>When Applied</th></tr>
+  <tr><td>Standard performance notes</td><td>Manager (self-review)</td><td>Not required</td><td>Before HRIS submission</td></tr>
+  <tr><td>Performance evaluations</td><td>Manager (self-review)</td><td>HR generalist spot-check</td><td>Before system entry</td></tr>
+  <tr><td>Formal disciplinary action</td><td>HR generalist</td><td>HR compliance</td><td>Before system entry</td></tr>
+  <tr><td>Performance improvement plans</td><td>HR generalist</td><td>HR compliance or legal</td><td>Before employee delivery</td></tr>
+  <tr><td>Termination documentation</td><td>HR compliance</td><td>Legal counsel</td><td>Before system entry and separation</td></tr>
+  <tr><td>Accommodation decisions</td><td>HR compliance</td><td>Legal counsel</td><td>Before determination is communicated</td></tr>
+  <tr><td>Investigation conclusions</td><td>HR or investigator</td><td>Independent reviewer</td><td>Before conclusion is filed</td></tr>
+  <tr><td>AI-assisted records (any type)</td><td>Human with source access</td><td>HR compliance if elevated risk</td><td>Before system entry, regardless of risk level</td></tr>
+  <tr><td>Hiring and rejection records</td><td>Recruiting or HR</td><td>HR compliance for senior roles</td><td>Before final determination is documented</td></tr>
+</table>
+
+<hr class="section-rule">
+<div class="section-head">What Records Trigger Escalation?</div>
+<p class="body-text">The following conditions automatically route a record to secondary review before system entry. Any one indicator is sufficient to require escalation — these are not weighted.</p>
+<div class="list-block" style="margin-top:16px;">
+  <div class="list-item"><span class="list-dash">—</span><span><strong style="color:var(--text);font-weight:600;">Termination of employment</strong> — regardless of stated reason or documentation volume on file.</span></div>
+  <div class="list-item"><span class="list-dash">—</span><span><strong style="color:var(--text);font-weight:600;">Formal disciplinary action</strong> — written warnings, suspensions, demotions, or formal PIPs.</span></div>
+  <div class="list-item"><span class="list-dash">—</span><span><strong style="color:var(--text);font-weight:600;">Accommodation denial or modification</strong> — any determination affecting an accommodation request.</span></div>
+  <div class="list-item"><span class="list-dash">—</span><span><strong style="color:var(--text);font-weight:600;">Investigation conclusions</strong> — substantiation or non-substantiation findings in any workplace complaint or incident investigation.</span></div>
+  <div class="list-item"><span class="list-dash">—</span><span><strong style="color:var(--text);font-weight:600;">AI-assisted records</strong> — any record where automated drafting materially contributed to language before human attestation is confirmed.</span></div>
+  <div class="list-item"><span class="list-dash">—</span><span><strong style="color:var(--text);font-weight:600;">Escalation conclusions without prior documentation trail</strong> — records asserting a pattern or prior history where supporting records are not referenced and on file.</span></div>
+  <div class="list-item"><span class="list-dash">—</span><span><strong style="color:var(--text);font-weight:600;">Evaluative language without behavioral anchors</strong> — records relying on adjectives (difficult, disruptive, unprofessional, poor) where no specific dated conduct is identified.</span></div>
+</div>
+
+<hr class="section-rule">
+<div class="section-head">What Is the Workflow Burden?</div>
+<p class="body-text">The review adds time at the drafting stage in exchange for time not spent reconstructing records during escalation, disputes, or proceedings. The burden varies by record type and reviewer.</p>
+<div class="card-grid-3" style="margin-top:16px;">
+  <div class="card">
+    <div class="card-label">Self-Review (Manager)</div>
+    <div class="card-title">3–8 minutes</div>
+    <div class="card-text">Manager applies the Self-Review Prompt Sheet to a standard performance or conduct record before HRIS submission. The time depends on how well the record was drafted. A well-drafted record passes in under five minutes. A record with missing dates or evaluative language without anchors requires rework — that is the point.</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Secondary Review (HR)</div>
+    <div class="card-title">15–30 minutes</div>
+    <div class="card-text">HR compliance applies the Secondary Review Checklist to an elevated-risk record — a formal discipline, PIP, or termination file. Time includes reviewing the record, confirming supporting records are on file, and routing back to drafter if gaps are identified.</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Investigation Review</div>
+    <div class="card-title">30–60 minutes</div>
+    <div class="card-text">An independent reviewer applies the Investigation Reconstruction Worksheet to an investigation conclusion. Time includes reading the conclusion, checking source material identification, confirming conflicting accounts are acknowledged, and confirming the reasoning trail is visible.</div>
+  </div>
+</div>
+<div class="callout callout-ready" style="margin-top:16px;"><div class="callout-label">Operational Note</div><p>Most of the time saved is not visible at drafting. It is visible during the dispute, audit, or proceeding where a file that would have taken weeks to reconstruct is instead self-contained. The workflow burden is front-loaded. The exposure reduction is back-loaded.</p></div>
+
+<hr class="section-rule">
+<div class="section-head">How Do You Sample Records?</div>
+<p class="body-text">Audit sampling applies the failure-mode catalog to existing records across departments and record types. The goal is to identify systemic documentation quality patterns, not to evaluate individual decisions.</p>
+<div class="list-block" style="margin-top:14px;">
+  <div class="list-item"><span class="list-dash">—</span><span><strong style="color:var(--text);font-weight:600;">Sample size:</strong> 10–15 records per department per quarter is sufficient to surface systemic patterns. Random selection within each record type produces more reliable patterns than cherry-picking.</span></div>
+  <div class="list-item"><span class="list-dash">—</span><span><strong style="color:var(--text);font-weight:600;">Record types to prioritize:</strong> Terminations, formal disciplinary actions, investigation conclusions, accommodation records, and AI-assisted summaries. These carry the highest review exposure and are the most likely to surface documentation quality gaps.</span></div>
+  <div class="list-item"><span class="list-dash">—</span><span><strong style="color:var(--text);font-weight:600;">Reviewer independence:</strong> Sampling should be conducted by someone not involved in drafting or approving the sampled records. HR compliance or audit personnel are appropriate for most contexts.</span></div>
+  <div class="list-item"><span class="list-dash">—</span><span><strong style="color:var(--text);font-weight:600;">Evaluation standard:</strong> Each sampled record is assessed against the four review conditions. Records are coded as meeting or not meeting each condition. The failure-mode catalog identifies which pattern applies to each gap.</span></div>
+  <div class="list-item"><span class="list-dash">—</span><span><strong style="color:var(--text);font-weight:600;">Reporting:</strong> Sampling results are reported by record type and department. The report identifies where documentation quality is consistently insufficient and recommends workflow-level intervention. It does not assess decision correctness.</span></div>
+</div>
+
+<hr class="section-rule">
+<div class="section-head">What Is Retained?</div>
+<div class="card-grid" style="margin-top:16px;">
+  <div class="card">
+    <div class="card-label">The Record</div>
+    <div class="card-title">Official System of Record</div>
+    <div class="card-text">The reviewed and approved documentation enters the HRIS, case management system, or compliance record system as normal. JRS does not create a separate record system.</div>
+  </div>
+  <div class="card">
+    <div class="card-label">The Review Notation</div>
+    <div class="card-title">Review Completion Documentation</div>
+    <div class="card-text">For elevated-risk records, the completed Secondary Review Checklist or review memorandum is retained alongside the record. This documents that secondary review occurred, who conducted it, and the disposition (READY or RETURNED with notation).</div>
+  </div>
+  <div class="card">
+    <div class="card-label">AI Attestation</div>
+    <div class="card-title">Source Verification Confirmation</div>
+    <div class="card-text">For AI-assisted records, the human reviewer attestation is retained with the record or in the supporting file. This documents that source verification occurred and who confirmed it before system entry.</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Sampling Results</div>
+    <div class="card-title">Audit Documentation</div>
+    <div class="card-text">Periodic sampling results are retained as compliance or audit documentation. They demonstrate that a systematic documentation quality review process exists — which itself becomes an auditable organizational control.</div>
+  </div>
+</div>
+
+<hr class="section-rule">
+<div class="section-head">What Is Auditable?</div>
+<p class="body-text">At full implementation, the following elements are auditable from the organizational record:</p>
+<div class="list-block" style="margin-top:14px;">
+  <div class="list-item"><span class="list-dash">—</span><span>That a pre-submission documentation review process exists and was applied consistently to elevated-risk records</span></div>
+  <div class="list-item"><span class="list-dash">—</span><span>That secondary review was conducted by identified personnel before specific record types entered official systems</span></div>
+  <div class="list-item"><span class="list-dash">—</span><span>That AI-assisted records underwent source verification and human attestation before system entry</span></div>
+  <div class="list-item"><span class="list-dash">—</span><span>That records returned to drafter for gap remediation were corrected before resubmission</span></div>
+  <div class="list-item"><span class="list-dash">—</span><span>That periodic sampling was conducted, and that results informed workflow-level intervention</span></div>
+  <div class="list-item"><span class="list-dash">—</span><span>That documentation quality standards were applied consistently across record types and departments, not selectively</span></div>
+</div>
+<div class="op-note">An organization that can demonstrate all six of these has a materially stronger position during any external review of its documentation practices than one that cannot — regardless of what the underlying records contain.</div>
+
+</div>
+</div>
+
+
+<!-- ═══════════════════════════════════ -->
+<!-- SECTION: USE CASES                 -->
+<!-- ═══════════════════════════════════ -->
+<div id="section-usecases" class="page-section">
+<div class="container">
+
+<div class="page-eyebrow">Use Cases</div>
+<h1 class="page-title">Operational Use Cases</h1>
+<p class="page-subtitle">Five named operational contexts showing how JRS review applies within real organizational workflows. Each use case identifies the documentation at issue, the review applied, what the reviewer checks, and what makes the record hold up during later review.</p>
+
+<div class="callout"><div class="callout-label">Framing</div><p>These are not hypotheticals. Each pattern describes the type of documentation that surfaces most frequently during employment disputes, regulatory audits, and workplace investigations. The review applied in each case is drawn directly from the JRS framework.</p></div>
+
+<!-- USE CASE 1 -->
+<div class="scenario-block" style="margin-top:28px;">
+  <div class="scenario-header">
+    <div>
+      <div class="scenario-label">Use Case 01 — HR Corrective Action Review</div>
+      <div class="scenario-title">Progressive Discipline Record — Termination Following PIP</div>
+    </div>
+  </div>
+  <div class="scenario-tabs">
+    <button class="scenario-tab active" onclick="showScenarioPane(this,'uc1-context')">Context</button>
+    <button class="scenario-tab" onclick="showScenarioPane(this,'uc1-review')">Review Applied</button>
+    <button class="scenario-tab" onclick="showScenarioPane(this,'uc1-gaps')">Common Gaps</button>
+    <button class="scenario-tab" onclick="showScenarioPane(this,'uc1-ready')">What Ready Looks Like</button>
+  </div>
+  <div id="uc1-context" class="scenario-pane active">
+    <p style="font-size:14.5px;color:var(--muted);line-height:1.75;">An employee is terminated following a 90-day performance improvement plan. The manager drafted the termination record and routed it to HR. The record states the employee "failed to demonstrate improvement" and "continued to exhibit performance issues throughout the PIP period." HR secondary review is required before system entry.</p>
+    <p style="font-size:14.5px;color:var(--muted);line-height:1.75;margin-top:10px;">This is the highest-frequency documentation pattern in employment disputes. The question is not whether the termination was appropriate — it is whether the file is independently reviewable without the manager being present to explain it.</p>
+  </div>
+  <div id="uc1-review" class="scenario-pane">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:12px;">Tools Applied</div>
+    <div class="list-block">
+      <div class="list-item"><span class="list-dash">—</span>Secondary Review Checklist — confirms all four conditions are met before system entry</div>
+      <div class="list-item"><span class="list-dash">—</span>Escalation Documentation Review Aid — confirms prior counseling trail is referenced and on file</div>
+      <div class="list-item"><span class="list-dash">—</span>Timeline Anchor Review Checklist — confirms PIP dates, check-in dates, and missed benchmarks are all identified</div>
+    </div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin:14px 0 8px;">Reviewer Checks</div>
+    <div class="list-block">
+      <div class="list-item"><span class="list-dash">—</span>Is the PIP referenced by date and on file?</div>
+      <div class="list-item"><span class="list-dash">—</span>Are specific PIP benchmarks identified and is the failure of each benchmark documented?</div>
+      <div class="list-item"><span class="list-dash">—</span>Are check-in meeting dates and outcomes on file?</div>
+      <div class="list-item"><span class="list-dash">—</span>Is the termination decision rationale documented separately from the employee-facing communication?</div>
+      <div class="list-item"><span class="list-dash">—</span>Has legal consultation been documented?</div>
+    </div>
+  </div>
+  <div id="uc1-gaps" class="scenario-pane">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:12px;">Most Frequent Documentation Gaps in This Context</div>
+    <div class="annotation"><span class="annotation-tag">Gap</span><span>"Failed to demonstrate improvement" — no specific benchmarks, no dates, no documented check-in outcomes. A later reviewer cannot verify what improvement was expected or what was measured.</span></div>
+    <div class="annotation"><span class="annotation-tag">Gap</span><span>PIP referenced but not dated. Supporting check-in notes referenced but not identified. A later reviewer cannot confirm the documented process was completed.</span></div>
+    <div class="annotation"><span class="annotation-tag">Gap</span><span>Termination record and employee communication are the same document. The decision rationale is not separately documented. The file shows what was communicated — not why the decision was made.</span></div>
+    <div class="annotation warn"><span class="annotation-tag">Risk</span><span>Records returned under STOP designation for missing benchmark documentation and undated PIP reference. Not submitted until corrected. This is the most common pattern that creates exposure during employment disputes.</span></div>
+  </div>
+  <div id="uc1-ready" class="scenario-pane">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:12px;">What a READY Termination Record Contains</div>
+    <div class="record-text" style="color:var(--muted);">PIP established January 15 addressing three documented deficiencies: project deadline adherence (threshold: no more than one missed deadline per review period), client response time (threshold: under 24 hours for priority requests), and meeting preparation (threshold: pre-read materials submitted 48 hours before scheduled meetings). PIP documentation on file, acknowledged by employee January 17. Check-in meetings conducted February 5, February 19, March 5, March 19, April 2 — notes on file for each session. Employee missed deadline benchmarks in February (February 14) and March (March 22) — documentation on file. Response time remained above threshold in February and March — performance data on file. Verbal warning issued February 7 (on file, acknowledged February 8). Written warning issued March 7 (on file, acknowledged March 8). HR secondary review completed April 8. Legal consultation completed April 11. Termination effective April 15. Decision rationale documented separately from employee-facing separation communication.</div>
+    <div class="annotation good"><span class="annotation-tag">Analysis</span><span>This record is self-contained. A reviewer with no knowledge of these events can identify the PIP basis, the benchmarks, the dates of failure, the documented warning trail, and the review steps. No supplementary explanation required.</span></div>
+  </div>
+</div>
+
+<!-- USE CASE 2 -->
+<div class="scenario-block">
+  <div class="scenario-header">
+    <div>
+      <div class="scenario-label">Use Case 02 — Investigation Summary Review</div>
+      <div class="scenario-title">Workplace Harassment Complaint — Investigation Conclusion Review</div>
+    </div>
+  </div>
+  <div class="scenario-tabs">
+    <button class="scenario-tab active" onclick="showScenarioPane(this,'uc2-context')">Context</button>
+    <button class="scenario-tab" onclick="showScenarioPane(this,'uc2-review')">Review Applied</button>
+    <button class="scenario-tab" onclick="showScenarioPane(this,'uc2-gaps')">Common Gaps</button>
+    <button class="scenario-tab" onclick="showScenarioPane(this,'uc2-ready')">What Ready Looks Like</button>
+  </div>
+  <div id="uc2-context" class="scenario-pane active">
+    <p style="font-size:14.5px;color:var(--muted);line-height:1.75;">An HR investigator completes a workplace harassment investigation and drafts a conclusion. The conclusion states the complaint was "substantiated based on the totality of evidence reviewed" and that the respondent's conduct "violated the organization's Respectful Workplace Policy." An independent reviewer applies the reconstruction check before the conclusion is filed.</p>
+    <p style="font-size:14.5px;color:var(--muted);line-height:1.75;margin-top:10px;">Investigation records are among the most likely to be examined adversarially. If the investigator is no longer available — or if the conclusion is challenged — the file must be able to stand on its own.</p>
+  </div>
+  <div id="uc2-review" class="scenario-pane">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:12px;">Tools Applied</div>
+    <div class="list-block">
+      <div class="list-item"><span class="list-dash">—</span>Investigation Reconstruction Worksheet — confirms source materials are identified, conclusions trace to evidence, conflicts acknowledged</div>
+      <div class="list-item"><span class="list-dash">—</span>Traceable Reasoning Checklist — confirms the path from evidence to substantiation finding is visible in the record</div>
+    </div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin:14px 0 8px;">Reviewer Checks</div>
+    <div class="list-block">
+      <div class="list-item"><span class="list-dash">—</span>Are the specific incidents substantiated identified by date and described conduct?</div>
+      <div class="list-item"><span class="list-dash">—</span>Are source materials (witness interviews, documents reviewed) identified in the record?</div>
+      <div class="list-item"><span class="list-dash">—</span>Are conflicting accounts or gaps in the evidence acknowledged?</div>
+      <div class="list-item"><span class="list-dash">—</span>Is the policy section violated identified by name and section?</div>
+      <div class="list-item"><span class="list-dash">—</span>Does the conclusion acknowledge the limits of what the evidence shows?</div>
+    </div>
+  </div>
+  <div id="uc2-gaps" class="scenario-pane">
+    <div class="annotation"><span class="annotation-tag">Gap</span><span>"Totality of evidence" — evidence not identified. A later reviewer cannot determine what was reviewed or how it supports the conclusion.</span></div>
+    <div class="annotation"><span class="annotation-tag">Gap</span><span>Policy violation stated but section not cited. A later reviewer cannot verify which standard was applied or whether it was in effect at the time of the alleged conduct.</span></div>
+    <div class="annotation"><span class="annotation-tag">Gap</span><span>No acknowledgment of the respondent's account or conflicting witness statements. The conclusion presents a clean narrative where the source material contains disputes — this fails Condition III.</span></div>
+    <div class="annotation warn"><span class="annotation-tag">Risk</span><span>Investigation conclusions that cannot be reconstructed without the investigator are the most common documentation failure in employment litigation. The record is returned for source identification and conflict acknowledgment before filing.</span></div>
+  </div>
+  <div id="uc2-ready" class="scenario-pane">
+    <div class="record-text" style="color:var(--muted);">Investigation conducted October 3–14. Complaint received October 1 from Complainant A regarding Respondent B's conduct during team meetings on September 5, 12, and 19. Witness interviews conducted with four employees (interview notes on file, October 4–8). Emails reviewed (correspondence on file, dated September 5–19). The September 12 and September 19 incidents were substantiated: two witnesses corroborated the complainant's account of each incident; notes on file. Respondent B contested the characterization of the September 19 comment — that dispute is reflected here. The September 5 allegation was not substantiated: only the complainant reported that incident and no corroborating evidence was identified. Both the substantiated and unsubstantiated findings are documented separately. Conduct on September 12 and 19 violated Respectful Workplace Policy Section 2.1 (policy on file). Corrective action recommended per HR protocol.</div>
+    <div class="annotation good"><span class="annotation-tag">Analysis</span><span>Source materials identified. Specific incidents dated. Corroborating evidence noted. Conflicting account preserved. Unsubstantiated allegation documented separately. Policy section cited. A later reviewer can reconstruct this investigation without the original investigator.</span></div>
+  </div>
+</div>
+
+<!-- USE CASE 3 -->
+<div class="scenario-block">
+  <div class="scenario-header">
+    <div>
+      <div class="scenario-label">Use Case 03 — Accommodation Documentation Review</div>
+      <div class="scenario-title">Disability Accommodation Request — Interactive Process and Determination</div>
+    </div>
+  </div>
+  <div class="scenario-tabs">
+    <button class="scenario-tab active" onclick="showScenarioPane(this,'uc3-context')">Context</button>
+    <button class="scenario-tab" onclick="showScenarioPane(this,'uc3-review')">Review Applied</button>
+    <button class="scenario-tab" onclick="showScenarioPane(this,'uc3-gaps')">Common Gaps</button>
+    <button class="scenario-tab" onclick="showScenarioPane(this,'uc3-ready')">What Ready Looks Like</button>
+  </div>
+  <div id="uc3-context" class="scenario-pane active">
+    <p style="font-size:14.5px;color:var(--muted);line-height:1.75;">An employee submits a written request for a schedule modification as a disability accommodation. HR conducts an interactive process and denies the specific request, offering an alternative accommodation. The determination is documented before being communicated to the employee. HR compliance applies secondary review before the file is finalized.</p>
+    <p style="font-size:14.5px;color:var(--muted);line-height:1.75;margin-top:10px;">Accommodation records are among the highest-risk documentation types. They are reviewed by regulatory agencies, in litigation, and during audits. The interactive process must be documented, not just completed.</p>
+  </div>
+  <div id="uc3-review" class="scenario-pane">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:12px;">Tools Applied</div>
+    <div class="list-block">
+      <div class="list-item"><span class="list-dash">—</span>Secondary Review Checklist — accommodation-specific check for interactive process documentation</div>
+      <div class="list-item"><span class="list-dash">—</span>Escalation Documentation Review Aid — confirms legal consultation is documented before determination</div>
+    </div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin:14px 0 8px;">Reviewer Checks</div>
+    <div class="list-block">
+      <div class="list-item"><span class="list-dash">—</span>Is the original request documented by date and specific accommodation requested?</div>
+      <div class="list-item"><span class="list-dash">—</span>Are interactive process meeting dates and participants documented?</div>
+      <div class="list-item"><span class="list-dash">—</span>Are alternatives considered and the basis for each disposition documented?</div>
+      <div class="list-item"><span class="list-dash">—</span>Is the undue hardship analysis (if applicable) documented with specific operational factors?</div>
+      <div class="list-item"><span class="list-dash">—</span>Is the determination rationale on file before the decision is communicated?</div>
+    </div>
+  </div>
+  <div id="uc3-gaps" class="scenario-pane">
+    <div class="annotation"><span class="annotation-tag">Gap</span><span>"Interactive process was conducted" — no dates, no meeting notes, no record of what was discussed. A later reviewer cannot confirm the interactive process occurred or what was considered.</span></div>
+    <div class="annotation"><span class="annotation-tag">Gap</span><span>"Accommodation denied due to operational constraints" — operational constraints not identified. A later reviewer cannot evaluate whether the constraints constitute undue hardship or whether alternatives were genuinely considered.</span></div>
+    <div class="annotation warn"><span class="annotation-tag">Risk</span><span>Accommodation files without documented interactive process steps and dated determination rationale are the most common basis for regulatory complaints in this category. Returned under STOP designation until process documentation and rationale are on file.</span></div>
+  </div>
+  <div id="uc3-ready" class="scenario-pane">
+    <div class="record-text" style="color:var(--muted);">Accommodation request received March 3: employee requested modified schedule (7am–3pm) as accommodation for documented medical condition. Request acknowledged March 4. Interactive process meetings conducted March 8 and March 15 (notes on file for each session; employee and HR compliance attended both). Alternatives considered: (1) modified schedule as requested — evaluated against coverage requirements for role; (2) compressed workweek — evaluated; (3) remote work on two days per week — evaluated. Modified schedule as requested determined not feasible: role requires on-site coverage 8am–5pm per documented operational requirement (staffing memo on file). Remote work alternative approved: employee may work remotely Tuesdays and Thursdays, effective March 22. Employee confirmed acceptance March 18 (written acknowledgment on file). Legal review completed March 16. Determination rationale documented before communication.</div>
+    <div class="annotation good"><span class="annotation-tag">Analysis</span><span>Request dated. Interactive process dates and participants documented. Alternatives considered with disposition rationale. Operational constraint identified and documented. Legal review confirmed. Determination on file before communication. This record satisfies all four review conditions.</span></div>
+  </div>
+</div>
+
+<!-- USE CASE 4 -->
+<div class="scenario-block">
+  <div class="scenario-header">
+    <div>
+      <div class="scenario-label">Use Case 04 — AI-Assisted Disciplinary Drafting Review</div>
+      <div class="scenario-title">AI-Generated Disciplinary Record — Source Verification Before System Entry</div>
+    </div>
+  </div>
+  <div class="scenario-tabs">
+    <button class="scenario-tab active" onclick="showScenarioPane(this,'uc4-context')">Context</button>
+    <button class="scenario-tab" onclick="showScenarioPane(this,'uc4-review')">Review Applied</button>
+    <button class="scenario-tab" onclick="showScenarioPane(this,'uc4-gaps')">Common Gaps</button>
+    <button class="scenario-tab" onclick="showScenarioPane(this,'uc4-ready')">What Ready Looks Like</button>
+  </div>
+  <div id="uc4-context" class="scenario-pane active">
+    <p style="font-size:14.5px;color:var(--muted);line-height:1.75;">A manager uses an AI-assisted HR tool to draft a formal written warning. The tool generates language describing the employee as having "exhibited a persistent pattern of resistance to feedback and disengagement from team responsibilities." The manager submits it to HR for secondary review before system entry.</p>
+    <p style="font-size:14.5px;color:var(--muted);line-height:1.75;margin-top:10px;">This is the most rapidly emerging documentation risk. AI-assisted language can introduce characterizations that exceed what the manager's actual notes support, intensify conclusions, and create the appearance of evidentiary grounding that is not present in the source material.</p>
+  </div>
+  <div id="uc4-review" class="scenario-pane">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:12px;">Tools Applied</div>
+    <div class="list-block">
+      <div class="list-item"><span class="list-dash">—</span>AI-Assisted Draft Verification Worksheet — source verification, characterization check, human attestation</div>
+      <div class="list-item"><span class="list-dash">—</span>Secondary Review Checklist — formal disciplinary record review before system entry</div>
+    </div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin:14px 0 8px;">Reviewer Checks</div>
+    <div class="list-block">
+      <div class="list-item"><span class="list-dash">—</span>What source notes did the manager provide before generation? Are they identifiable?</div>
+      <div class="list-item"><span class="list-dash">—</span>"Persistent pattern of resistance to feedback" — is this characterization in the source notes, or introduced by the AI tool?</div>
+      <div class="list-item"><span class="list-dash">—</span>"Disengagement from team responsibilities" — what specific conduct, on what dates, is this characterization based on?</div>
+      <div class="list-item"><span class="list-dash">—</span>Has the manager reviewed the AI output against their original notes and confirmed accuracy?</div>
+      <div class="list-item"><span class="list-dash">—</span>Has the manager confirmed no unverified characterizations were introduced and no conduct was omitted or distorted?</div>
+    </div>
+  </div>
+  <div id="uc4-gaps" class="scenario-pane">
+    <div class="annotation"><span class="annotation-tag">Unverified</span><span>"Persistent pattern of resistance to feedback" — manager's source notes describe two specific instances where employee pushed back on deadlines. The AI tool intensified this to a "persistent pattern" and added "resistance to feedback" which is not in the source notes.</span></div>
+    <div class="annotation"><span class="annotation-tag">Unverified</span><span>"Disengagement from team responsibilities" — not present in source notes. Introduced by the AI tool. No dated behavioral basis.</span></div>
+    <div class="annotation warn"><span class="annotation-tag">Critical</span><span>Record returned under STOP. The AI-generated characterizations exceed what the source notes support. Before resubmission: manager must either anchor each characterization to specific dated conduct in the source notes, or replace AI-generated language with direct behavioral descriptions. Human attestation required confirming revised language reflects documented events.</span></div>
+  </div>
+  <div id="uc4-ready" class="scenario-pane">
+    <div class="record-text" style="color:var(--muted);">Written warning issued April 19 for two documented instances of missed project deadlines after manager instruction. On February 14, employee did not submit project deliverable by the deadline established in the January 15 project brief (brief on file). Manager communicated concern in writing February 15 (email on file). On April 3, employee again missed the deadline established in the March 1 project update (update on file). Manager documented both instances in coaching notes (on file, February 15 and April 4). Policy reference: Work Standards Policy Section 4.1 — deadline adherence requirement (policy on file, acknowledged by employee January 2). This formal warning is issued in accordance with the progressive discipline procedure. Source records: manager coaching notes dated February 15 and April 4. AI-assisted draft reviewed against source notes by attesting manager, April 19. No unverified characterizations introduced. Human review confirmed before submission.</div>
+    <div class="annotation good"><span class="annotation-tag">Analysis</span><span>Source records identified. AI-generated characterizations removed and replaced with specific dated conduct. Policy cited. Attestation documented. Each conclusion traces to an identified source. This record satisfies Condition IV.</span></div>
+  </div>
+</div>
+
+<!-- USE CASE 5 -->
+<div class="scenario-block">
+  <div class="scenario-header">
+    <div>
+      <div class="scenario-label">Use Case 05 — Audit Preparation Review</div>
+      <div class="scenario-title">Documentation Quality Sampling — Pre-Audit Record Assessment</div>
+    </div>
+  </div>
+  <div class="scenario-tabs">
+    <button class="scenario-tab active" onclick="showScenarioPane(this,'uc5-context')">Context</button>
+    <button class="scenario-tab" onclick="showScenarioPane(this,'uc5-review')">Review Applied</button>
+    <button class="scenario-tab" onclick="showScenarioPane(this,'uc5-findings')">Sample Findings</button>
+    <button class="scenario-tab" onclick="showScenarioPane(this,'uc5-output')">Audit Output</button>
+  </div>
+  <div id="uc5-context" class="scenario-pane active">
+    <p style="font-size:14.5px;color:var(--muted);line-height:1.75;">An HR compliance officer prepares for an anticipated EEOC charge by sampling the organization's documentation across the relevant department. The goal is to assess documentation quality before an external reviewer examines the records — and to address identifiable gaps while there is still time to do so.</p>
+    <p style="font-size:14.5px;color:var(--muted);line-height:1.75;margin-top:10px;">Pre-audit documentation sampling is one of the highest-value applications of JRS. It surfaces patterns the organization can address before external review rather than after.</p>
+  </div>
+  <div id="uc5-review" class="scenario-pane">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:12px;">Sampling Approach</div>
+    <div class="list-block">
+      <div class="list-item"><span class="list-dash">—</span>Compliance officer pulls 12 records from the relevant department: 4 performance evaluations, 3 disciplinary records, 3 termination files, 2 accommodation records</div>
+      <div class="list-item"><span class="list-dash">—</span>Each record assessed against all four JRS conditions using the failure-mode catalog</div>
+      <div class="list-item"><span class="list-dash">—</span>Records coded: Met / Gap for each condition</div>
+      <div class="list-item"><span class="list-dash">—</span>Gaps documented by failure-mode type and record</div>
+      <div class="list-item"><span class="list-dash">—</span>Results reported to HR director and legal counsel with remediation recommendations</div>
+    </div>
+  </div>
+  <div id="uc5-findings" class="scenario-pane">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:12px;">Illustrative Sampling Findings</div>
+    <div class="annotation warn"><span class="annotation-tag">Pattern</span><span>9 of 12 records contain evaluative adjectives without behavioral anchors. Most common: "unprofessional," "difficult," "poor attitude." None accompanied by dated conduct. Failure mode 02 and 08.</span></div>
+    <div class="annotation warn"><span class="annotation-tag">Pattern</span><span>All 3 termination files reference "repeated counseling" or "prior warnings" without citing specific dates or referencing records on file. Counseling records may exist in the system — they are simply not referenced in the termination documentation. Failure mode 06.</span></div>
+    <div class="annotation"><span class="annotation-tag">Finding</span><span>2 of 2 accommodation records lack documentation of the interactive process. Both files contain the determination but no record of what was discussed, what alternatives were considered, or who participated. Highest-risk gap in the sample.</span></div>
+    <div class="annotation good"><span class="annotation-tag">Strength</span><span>4 of 4 performance evaluations contain specific dates and referenced supporting records. These records would hold up during later review. Documentation quality in performance evaluations is the strongest area in the sample.</span></div>
+  </div>
+  <div id="uc5-output" class="scenario-pane">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:12px;">What the Organization Can Do Before External Review</div>
+    <div class="list-block">
+      <div class="list-item"><span class="list-dash">—</span><span><strong style="color:var(--text);font-weight:600;">Termination files:</strong> Pull counseling records from the system and create a documentation index for each termination file. Reference each supporting record by date in the termination documentation. This does not change the records — it makes the existing support visible in the file.</span></div>
+      <div class="list-item"><span class="list-dash">—</span><span><strong style="color:var(--text);font-weight:600;">Accommodation files:</strong> Draft a supplemental process documentation memo for each accommodation file, recording the interactive process steps from available notes and calendar records. Dated contemporaneously to reflect what occurred — not backdated. Legal review before filing.</span></div>
+      <div class="list-item"><span class="list-dash">—</span><span><strong style="color:var(--text);font-weight:600;">Forward workflow:</strong> Implement the Secondary Review Checklist for all future elevated-risk records. The sampling findings demonstrate where the pre-submission review gap is creating auditable exposure.</span></div>
+    </div>
+    <div class="callout callout-warn" style="margin-top:14px;"><div class="callout-label">Limitation</div><p>Pre-audit supplementation of existing records carries its own risk and must be done with legal guidance. The value of pre-audit sampling is not to retroactively fix records — it is to understand the exposure, address what can be legitimately addressed, and demonstrate that a forward-looking review process now exists.</p></div>
+  </div>
+</div>
+
+</div>
+</div>
+
+
+<!-- ═══════════════════════════════════ -->
 <!-- SECTION 9: MATERIALS LIBRARY       -->
 <!-- ═══════════════════════════════════ -->
 <div id="section-library" class="page-section">
@@ -2002,6 +2398,20 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
   </div>
 </div>
 
+<div style="margin-bottom:32px;">
+  <div class="section-head">Deployment & Use Cases</div>
+  <div class="library-grid">
+    <div class="library-item">
+      <div class="library-item-info"><div class="library-item-label">Deployment Guide</div><div class="library-item-title">Organizational Deployment Realism</div><div class="library-item-desc">Rollout phases, reviewer assignment, escalation triggers, workflow burden estimates, sampling methodology, retention, and auditability documentation.</div></div>
+      <div class="library-item-action"><button class="lib-btn primary" onclick="showSection('deployment')">Open</button></div>
+    </div>
+    <div class="library-item">
+      <div class="library-item-info"><div class="library-item-label">Use Cases</div><div class="library-item-title">Operational Use Cases</div><div class="library-item-desc">Five annotated use cases: HR corrective action, investigation summary, accommodation documentation, AI-assisted disciplinary drafting, and audit preparation review.</div></div>
+      <div class="library-item-action"><button class="lib-btn" onclick="showSection('usecases')">Open</button></div>
+    </div>
+  </div>
+</div>
+
 </div>
 </div>
 
@@ -2025,7 +2435,7 @@ function showSection(id){
   const sec=document.getElementById('section-'+id);
   if(sec)sec.classList.add('active');
   const navItems=document.querySelectorAll('.nav-item');
-  const sectionMap={'home':0,'tools':1,'scenarios':2,'guidance':3,'roles':4,'maturity':5,'ai':6,'implementation':7,'training':8,'library':9};
+  const sectionMap={'home':0,'tools':1,'scenarios':2,'guidance':3,'roles':4,'maturity':5,'ai':6,'implementation':7,'deployment':8,'usecases':9,'training':10,'library':11};
   if(sectionMap[id]!==undefined)navItems[sectionMap[id]].classList.add('active');
   window.scrollTo(0,0);
 }
