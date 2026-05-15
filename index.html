@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Justification Review Standard (JRS™) | Documentation Review Structure</title>
 <meta name="description" content="A documentation review structure for evaluating documented support for conclusions within organizational records used in HR, compliance, and investigation workflows.">
 
@@ -12,782 +11,1169 @@
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
+/* ── TOKENS ── */
 :root{
   --bg:#050505;
   --surface:#121212;
+  --surface2:#1A1A1A;
   --rule:#2A2A2A;
   --text:#F2F2F2;
   --muted:#B3B3B3;
   --muted-soft:#8A8A8A;
   --accent:#BE9447;
+  --accent-dim:#7A5E28;
+  --stop:#8B2020;
+  --review-c:#8B5E1A;
+  --ready:#1E5C35;
+  --stop-text:#E88080;
+  --review-text:#D4A055;
+  --ready-text:#5DBF82;
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased}
 
-html,body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:'Inter',sans-serif;
-  line-height:1.72;
-  -webkit-font-smoothing:antialiased;
-}
+.container{max-width:820px;margin:0 auto;padding:56px 28px 90px}
 
-.container{
-  max-width:820px;
-  margin:0 auto;
-  padding:56px 28px 90px;
-}
-
-/* HEADER */
+/* ── HEADER ── */
 .header{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-end;
-  gap:24px;
+  display:flex;justify-content:space-between;align-items:flex-end;
+  gap:24px;border-bottom:1px solid var(--rule);
+  padding-bottom:18px;margin-bottom:0;flex-wrap:wrap;
+}
+.wordmark{font-family:'Bodoni Moda',serif;font-size:30px;font-weight:500;color:var(--accent);line-height:1;text-rendering:optimizeLegibility;text-decoration:none}
+.wordmark .tm{font-size:11px;vertical-align:super}
+.header-meta{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);line-height:1.8;text-align:right}
+
+/* ── UTILITY NAV BAR ── */
+.util-nav{
+  display:flex;align-items:center;gap:0;
   border-bottom:1px solid var(--rule);
-  padding-bottom:18px;
   margin-bottom:42px;
-  flex-wrap:wrap;
+  padding:0;
 }
-
-.wordmark{
-  font-family:'Bodoni Moda',serif;
-  font-size:30px;
-  font-weight:500;
-  color:var(--accent);
-  line-height:1;
-  text-rendering:optimizeLegibility;
-}
-
-.wordmark .tm{
-  font-size:11px;
-  vertical-align:super;
-}
-
-.header-meta{
+.util-nav-label{
   font-family:'JetBrains Mono',monospace;
-  font-size:10px;
-  letter-spacing:.18em;
-  text-transform:uppercase;
+  font-size:9px;letter-spacing:.18em;text-transform:uppercase;
   color:var(--muted-soft);
-  line-height:1.8;
-  text-align:right;
+  padding:10px 0;
+  margin-right:20px;
+  flex-shrink:0;
 }
-
-/* TITLE */
-.doc-title{
-  font-family:'Bodoni Moda',serif;
-  font-size:40px;
-  font-weight:400;
-  line-height:1.08;
-  margin-bottom:13px;
-  letter-spacing:-0.01em;
-}
-
-.doc-subtitle{
-  font-size:17px;
-  color:var(--muted);
-  max-width:640px;
-  margin-bottom:14px;
-}
-
-.doc-realism{
+.util-nav-links{display:flex;gap:0;flex-wrap:wrap}
+.util-nav-link{
   font-family:'JetBrains Mono',monospace;
-  font-size:10.5px;
-  letter-spacing:.1em;
+  font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
   color:var(--muted-soft);
-  margin-bottom:20px;
-}
-
-/* WORKFLOW CHIPS */
-.workflow-chips{
-  display:flex;
-  flex-wrap:wrap;
-  gap:7px;
-  row-gap:9px;
-  margin-bottom:22px;
-}
-
-.workflow-chip{
-  font-family:'JetBrains Mono',monospace;
-  font-size:9.5px;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:var(--muted-soft);
-  border:1px solid #252525;
-  padding:5px 10px;
-  background:transparent;
-}
-
-/* OPERATIONAL TAG ROW */
-.env-tags{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-bottom:38px;
-}
-
-.env-tag{
-  font-family:'JetBrains Mono',monospace;
-  font-size:10px;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color:var(--muted);
-  border:1px solid #333;
-  padding:6px 11px;
-  background:var(--surface);
-}
-
-/* CONTROL BLOCK */
-.control-block{
-  border:1px solid var(--rule);
-  background:var(--surface);
-  padding:22px 24px;
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:18px 26px;
-  margin-bottom:56px;
-}
-
-.control-label{
-  font-family:'JetBrains Mono',monospace;
-  font-size:9px;
-  text-transform:uppercase;
-  letter-spacing:.24em;
-  color:var(--muted-soft);
-  margin-bottom:6px;
-}
-
-.control-value{
-  font-size:14px;
-  color:var(--text);
-}
-
-/* SECTIONS */
-.section{
-  margin-bottom:48px;
-}
-
-.section-title{
-  font-family:'Inter',sans-serif;
-  font-size:15px;
-  font-weight:600;
-  margin-bottom:14px;
-  padding-bottom:10px;
-  border-bottom:1px solid var(--rule);
-  color:var(--text);
-}
-
-.section p{
-  font-size:15.5px;
-  line-height:1.75;
-  margin-bottom:13px;
-  color:var(--text);
-}
-
-.section p:last-child{
-  margin-bottom:0;
-}
-
-/* CONDITIONS */
-.conditions{
-  margin-top:18px;
-}
-
-.condition{
-  display:grid;
-  grid-template-columns:40px 1fr;
-  gap:16px;
-  padding:18px 0;
-  border-top:1px solid #222;
-}
-
-.condition:last-child{
-  border-bottom:1px solid #222;
-}
-
-.condition-number{
-  font-family:'JetBrains Mono',monospace;
-  font-size:12px;
-  color:var(--muted);
-  padding-top:2px;
-}
-
-.condition-title{
-  font-size:15px;
-  font-weight:600;
-  margin-bottom:5px;
-  color:var(--text);
-}
-
-.condition-text{
-  font-size:14.5px;
-  color:var(--muted);
-  line-height:1.7;
-}
-
-/* LISTS */
-.simple-list{
-  margin-top:12px;
-}
-
-.simple-item{
-  padding:12px 0;
-  border-bottom:1px solid #222;
-  font-size:15px;
-  color:var(--text);
-}
-
-.simple-item:first-child{
-  border-top:1px solid #222;
-}
-
-/* NOTE */
-.note{
-  border-left:2px solid var(--accent);
-  padding:15px 18px;
-  background:var(--surface);
-  margin-top:20px;
-  font-size:15px;
-  color:var(--text);
-  line-height:1.7;
-}
-
-/* REVIEWER LENS */
-.lens-grid{
-  margin-top:18px;
-  border-top:1px solid #222;
-}
-
-.lens-item{
-  display:grid;
-  grid-template-columns:52px 1fr;
-  gap:14px;
-  padding:18px 0;
-  border-bottom:1px solid #222;
-}
-
-.lens-num{
-  font-family:'JetBrains Mono',monospace;
-  font-size:11px;
-  color:var(--muted-soft);
-  padding-top:2px;
-  letter-spacing:.06em;
-}
-
-.lens-title{
-  font-size:14.5px;
-  font-weight:600;
-  margin-bottom:5px;
-  color:var(--text);
-}
-
-.lens-text{
-  font-size:14px;
-  color:var(--muted);
-  line-height:1.65;
-}
-
-/* FAILURE MODES */
-.failure-list{
-  margin-top:18px;
-  border-top:1px solid #222;
-}
-
-.failure-item{
-  padding:20px 0;
-  border-bottom:1px solid #222;
-}
-
-.failure-label{
-  font-family:'JetBrains Mono',monospace;
-  font-size:9.5px;
-  letter-spacing:.2em;
-  text-transform:uppercase;
-  color:var(--accent);
-  margin-bottom:13px;
-}
-
-.failure-row{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
-}
-
-.failure-col-head{
-  font-family:'JetBrains Mono',monospace;
-  font-size:9px;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:var(--muted-soft);
-  margin-bottom:8px;
-}
-
-.failure-bad{
-  font-size:13.5px;
-  color:#9e7878;
-  font-style:italic;
-  line-height:1.6;
-}
-
-.failure-good{
-  font-size:13.5px;
-  color:var(--muted);
-  line-height:1.6;
-}
-
-/* MATURITY */
-.maturity-list{
-  margin-top:18px;
-  border-top:1px solid #222;
-}
-
-.maturity-item{
-  display:grid;
-  grid-template-columns:40px 1fr;
-  gap:14px;
-  padding:17px 0;
-  border-bottom:1px solid #222;
-}
-
-.maturity-num{
-  font-family:'JetBrains Mono',monospace;
-  font-size:11px;
-  color:var(--muted-soft);
-  padding-top:2px;
-}
-
-.maturity-title{
-  font-size:14.5px;
-  font-weight:600;
-  margin-bottom:4px;
-  color:var(--text);
-}
-
-.maturity-text{
-  font-size:14px;
-  color:var(--muted);
-  line-height:1.65;
-}
-
-/* BUTTONS */
-.cta-row{
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-}
-
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:14px 26px;
-  border-radius:2px;
   text-decoration:none;
-  font-size:14px;
-  font-weight:500;
-  transition:.08s ease;
-  min-height:48px;
+  padding:10px 14px;
+  border-left:1px solid var(--rule);
+  transition:color .1s;
+  display:inline-flex;align-items:center;
 }
+.util-nav-link:hover{color:var(--text)}
+.util-nav-link.primary{color:var(--accent)}
+.util-nav-link.primary:hover{color:var(--text)}
 
-.btn-primary{
-  background:#DCDCDC;
-  color:#000;
-  font-weight:600;
-}
+/* ── SITE SECTIONS (from original index.html) ── */
+.doc-title{font-family:'Bodoni Moda',serif;font-size:40px;font-weight:400;line-height:1.08;margin-bottom:13px;letter-spacing:-0.01em}
+.doc-subtitle{font-size:17px;color:var(--muted);max-width:640px;margin-bottom:14px}
+.doc-realism{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:var(--muted-soft);margin-bottom:20px}
+.workflow-chips{display:flex;flex-wrap:wrap;gap:7px;row-gap:9px;margin-bottom:22px}
+.workflow-chip{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);border:1px solid #292929;padding:5px 10px;background:transparent}
+.env-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:38px}
+.env-tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border:1px solid #333;padding:6px 11px;background:var(--surface)}
+.control-block{border:1px solid var(--rule);background:var(--surface);padding:22px 24px;display:grid;grid-template-columns:repeat(2,1fr);gap:18px 26px;margin-bottom:56px}
+.control-label{font-family:'JetBrains Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.24em;color:var(--muted-soft);margin-bottom:6px}
+.control-value{font-size:14px;color:var(--text)}
+.section{margin-bottom:48px}
+.section-title{font-family:'Inter',sans-serif;font-size:15px;font-weight:600;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--rule);color:var(--text)}
+.section p{font-size:15.5px;line-height:1.75;margin-bottom:13px;color:var(--text)}
+.section p:last-child{margin-bottom:0}
+.conditions{margin-top:18px}
+.condition{display:grid;grid-template-columns:40px 1fr;gap:16px;padding:18px 0;border-top:1px solid #222}
+.condition:last-child{border-bottom:1px solid #222}
+.condition-number{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);padding-top:2px}
+.condition-title{font-size:15px;font-weight:600;margin-bottom:5px;color:var(--text)}
+.condition-text{font-size:14.5px;color:var(--muted);line-height:1.7}
+.simple-list{margin-top:12px}
+.simple-item{padding:12px 0;border-bottom:1px solid #222;font-size:15px;color:var(--text)}
+.simple-item:first-child{border-top:1px solid #222}
+.note{border-left:2px solid var(--accent);padding:15px 18px;background:var(--surface);margin-top:20px;font-size:15px;color:var(--text);line-height:1.7}
+.lens-grid{margin-top:18px;border-top:1px solid #222}
+.lens-item{display:grid;grid-template-columns:52px 1fr;gap:14px;padding:18px 0;border-bottom:1px solid #222}
+.lens-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-soft);padding-top:2px;letter-spacing:.06em}
+.lens-title{font-size:14.5px;font-weight:600;margin-bottom:5px;color:var(--text)}
+.lens-text{font-size:14px;color:var(--muted);line-height:1.65}
+.failure-list{margin-top:18px;border-top:1px solid #222}
+.failure-item{padding:20px 0;border-bottom:1px solid #222}
+.failure-label{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:13px}
+.failure-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.failure-col-head{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:8px}
+.failure-bad{font-size:13.5px;color:#9e7878;font-style:italic;line-height:1.6}
+.failure-good{font-size:13.5px;color:var(--muted);line-height:1.6}
+.maturity-list{margin-top:18px;border-top:1px solid #222}
+.maturity-item{display:grid;grid-template-columns:40px 1fr;gap:14px;padding:17px 0;border-bottom:1px solid #222}
+.maturity-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-soft);padding-top:2px}
+.maturity-title{font-size:14.5px;font-weight:600;margin-bottom:4px;color:var(--text)}
+.maturity-text{font-size:14px;color:var(--muted);line-height:1.65}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px}
+.btn-site{display:inline-flex;align-items:center;justify-content:center;padding:14px 26px;border-radius:2px;text-decoration:none;font-size:14px;font-weight:500;transition:.08s ease;min-height:48px}
+.btn-site-primary{background:#DCDCDC;color:#000;font-weight:600}
+.btn-site-primary:hover{background:#D2D2D2}
+.btn-site-secondary{border:1px solid #303030;color:var(--muted);font-weight:400}
+.btn-site-secondary:hover{border-color:#444;color:var(--text)}
 
-.btn-primary:hover{
-  background:#D2D2D2;
-}
-
-.btn-secondary{
-  border:1px solid #303030;
-  color:var(--muted);
-  font-weight:400;
-}
-
-.btn-secondary:hover{
-  border-color:#444;
-  color:var(--text);
-}
-
-/* FOOTER */
-.footer{
-  margin-top:86px;
-  padding-top:24px;
+/* ── SECTION DIVIDER between site and course ── */
+.section-divider{
   border-top:1px solid var(--rule);
-  font-size:11.5px;
-  color:#9A9A9A;
-  line-height:1.9;
+  margin:64px 0 52px;
+  padding-top:0;
 }
-
-.footer > div {
-  margin-bottom:6px;
-}
-
-.footer > div:last-child {
+.section-divider-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--muted-soft);
   margin-bottom:0;
+  padding:14px 0 0;
 }
 
-/* MOBILE */
+/* ── COURSE STYLES ── */
+.course-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:13px}
+.course-title{font-family:'Bodoni Moda',serif;font-size:36px;font-weight:400;line-height:1.12;margin-bottom:13px;letter-spacing:-0.01em}
+.course-subtitle{font-size:15.5px;color:var(--muted);max-width:600px;margin-bottom:20px;line-height:1.7}
+.course-meta-chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:36px}
+.chip{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);border:1px solid #252525;padding:5px 10px}
+.progress-track{width:100%;height:2px;background:var(--rule);margin-bottom:5px}
+.progress-fill{height:100%;background:var(--accent);transition:width .4s ease}
+.progress-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:32px}
+.module-nav{border-top:1px solid var(--rule);margin-bottom:40px}
+.module-nav-item{display:flex;align-items:center;gap:16px;padding:13px 0;border-bottom:1px solid var(--rule);cursor:pointer;transition:.1s}
+.module-nav-item:hover .module-nav-title{color:var(--accent)}
+.module-nav-num{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--muted-soft);width:26px;flex-shrink:0}
+.module-nav-title{font-size:14.5px;font-weight:500;color:var(--text);flex:1;transition:color .1s}
+.module-nav-status{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:4px 8px;border:1px solid var(--rule);color:var(--muted-soft);flex-shrink:0}
+.module-nav-status.complete{border-color:var(--accent-dim);color:var(--accent)}
+.module-nav-status.active{border-color:var(--accent);color:var(--accent);background:rgba(190,148,71,.08)}
+.supplemental-block{border-top:1px solid var(--rule);margin-top:48px;padding-top:22px}
+.supplemental-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:12px}
+.supplemental-desc{font-size:14px;color:var(--muted);line-height:1.65;margin-bottom:16px}
+#course-panel{display:none}
+#course-panel.visible{display:block}
+.panel-header{border-bottom:1px solid var(--rule);padding-bottom:16px;margin-bottom:30px}
+.panel-module-tag{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:7px}
+.panel-title{font-family:'Bodoni Moda',serif;font-size:27px;font-weight:400;line-height:1.15}
+.lesson-tabs{display:flex;border-bottom:1px solid var(--rule);margin-bottom:28px;overflow-x:auto}
+.lesson-tab{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);padding:10px 16px;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:.1s;background:none;border-top:none;border-left:none;border-right:none}
+.lesson-tab:hover{color:var(--text)}
+.lesson-tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.lesson-body{display:none}
+.lesson-body.active{display:block}
+.lesson-body p{font-size:15.5px;line-height:1.72;color:var(--text);margin-bottom:15px}
+.lesson-body p:last-child{margin-bottom:0}
+.lesson-section-title{font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-soft);margin:26px 0 13px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+.callout{border-left:2px solid var(--accent);background:var(--surface);padding:15px 18px;margin:18px 0}
+.callout-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:7px}
+.callout p{font-size:14.5px;color:var(--text);margin:0}
+.op-note{font-size:13.5px;color:var(--muted-soft);font-style:italic;margin:14px 0 18px;padding-left:2px;line-height:1.6}
+.quote-block{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:18px 0;margin:22px 0;font-family:'Bodoni Moda',serif;font-size:18px;font-weight:400;color:var(--muted);font-style:italic;line-height:1.5}
+.condition-grid{border-top:1px solid var(--rule);margin:14px 0}
+.cond-row{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:16px 0;border-bottom:1px solid var(--rule)}
+.cond-num{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:500;color:var(--accent-dim);padding-top:2px}
+.cond-title{font-size:15px;font-weight:600;margin-bottom:4px;color:var(--text)}
+.cond-badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);border:1px solid #333;padding:2px 7px;margin-bottom:7px}
+.cond-text{font-size:14.5px;color:var(--muted);line-height:1.68}
+.failure-block{border:1px solid var(--rule);background:var(--surface);margin:14px 0}
+.failure-head{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);padding:11px 15px;border-bottom:1px solid var(--rule)}
+.failure-cols{display:grid;grid-template-columns:1fr 1fr}
+.failure-col{padding:15px}
+.failure-col:first-child{border-right:1px solid var(--rule)}
+.failure-col-label{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:8px}
+.failure-bad{font-size:13.5px;color:#9e7878;font-style:italic;line-height:1.6}
+.failure-good{font-size:13.5px;color:var(--muted);line-height:1.6}
+.role-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin:14px 0}
+.role-card{background:var(--surface);border:1px solid var(--rule);padding:15px}
+.role-card-title{font-size:13px;font-weight:600;margin-bottom:5px;color:var(--text)}
+.role-card-text{font-size:13px;color:var(--muted);line-height:1.6}
+.list-block{margin:12px 0;border-top:1px solid var(--rule)}
+.list-item{padding:10px 0;border-bottom:1px solid var(--rule);font-size:14.5px;color:var(--text);display:flex;gap:12px;align-items:flex-start}
+.list-dash{color:var(--accent-dim);font-family:'JetBrains Mono',monospace;font-size:12px;padding-top:2px;flex-shrink:0}
+.lo-block{background:var(--surface);border:1px solid var(--rule);padding:15px 18px;margin:18px 0}
+.lo-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px}
+.lo-item{font-size:14px;color:var(--muted);line-height:1.6;padding:5px 0;border-bottom:1px solid #1E1E1E;display:flex;gap:10px}
+.lo-item:last-child{border-bottom:none;padding-bottom:0}
+.lo-check{color:var(--accent-dim);font-size:10px;padding-top:4px;flex-shrink:0}
+.adjective-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+.adjective-table th{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);text-align:left;padding:9px 12px;border-bottom:1px solid var(--rule);font-weight:400}
+.adjective-table td{padding:11px 12px;border-bottom:1px solid #1E1E1E;vertical-align:top;line-height:1.6}
+.adjective-table td:first-child{color:#9e7878;font-style:italic;font-size:13.5px}
+.adjective-table td:last-child{color:var(--muted);font-size:13.5px}
+.readiness-grid{display:flex;flex-direction:column;border:1px solid var(--rule);margin:14px 0}
+.readiness-row{display:grid;grid-template-columns:80px 1fr}
+.readiness-row+.readiness-row{border-top:1px solid var(--rule)}
+.readiness-badge{display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.16em;font-weight:500;padding:16px 10px}
+.readiness-badge.stop{background:var(--stop);color:var(--stop-text)}
+.readiness-badge.review{background:var(--review-c);color:var(--review-text)}
+.readiness-badge.ready{background:var(--ready);color:var(--ready-text)}
+.readiness-desc{padding:14px 17px;font-size:14px;color:var(--muted);line-height:1.6;border-left:1px solid var(--rule)}
+.readiness-desc strong{display:block;font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px}
+.workflow-table{width:100%;border-collapse:collapse;margin:14px 0}
+.workflow-table th{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);text-align:left;padding:9px 13px;border-bottom:1px solid var(--rule);font-weight:400}
+.workflow-table td{padding:12px 13px;border-bottom:1px solid #1E1E1E;font-size:14px;color:var(--muted);vertical-align:top;line-height:1.6}
+.workflow-table td:first-child{color:var(--text);font-weight:500}
+.quiz-section{margin-top:36px;border-top:1px solid var(--rule);padding-top:26px}
+.quiz-eyebrow{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px}
+.quiz-title{font-family:'Bodoni Moda',serif;font-size:21px;font-weight:400;margin-bottom:22px;color:var(--text)}
+.quiz-question-block{margin-bottom:26px;padding-bottom:26px;border-bottom:1px solid var(--rule)}
+.quiz-question-block:last-of-type{border-bottom:none}
+.quiz-q-num{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;color:var(--muted-soft);margin-bottom:7px}
+.quiz-q-text{font-size:15px;font-weight:500;margin-bottom:13px;color:var(--text);line-height:1.6}
+.quiz-options{display:flex;flex-direction:column;gap:7px}
+.quiz-option{display:flex;align-items:flex-start;gap:12px;padding:11px 13px;border:1px solid var(--rule);cursor:pointer;transition:.1s;background:none;text-align:left;font-family:'Inter',sans-serif;font-size:14px;color:var(--text);line-height:1.5}
+.quiz-option:hover:not(.answered){border-color:#444}
+.quiz-option.selected{border-color:var(--accent);background:rgba(190,148,71,.06)}
+.quiz-option.correct{border-color:#2E7D4F;background:rgba(46,125,79,.1);color:var(--ready-text)}
+.quiz-option.wrong{border-color:var(--stop);background:rgba(139,32,32,.1);color:var(--stop-text)}
+.quiz-option-marker{width:18px;height:18px;border:1px solid var(--rule);flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:10px}
+.quiz-feedback{margin-top:10px;padding:11px 13px;background:var(--surface);border-left:2px solid var(--rule);font-size:13.5px;color:var(--muted);line-height:1.62;display:none}
+.quiz-feedback.visible{display:block}
+.quiz-score-block{background:var(--surface);border:1px solid var(--rule);padding:22px;margin-top:22px;display:none;text-align:center}
+.quiz-score-block.visible{display:block}
+.score-number{font-family:'Bodoni Moda',serif;font-size:48px;font-weight:400;color:var(--accent);line-height:1;margin-bottom:6px}
+.score-label{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:12px}
+.score-msg{font-size:14px;color:var(--muted);margin-bottom:18px}
+.btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 20px;font-family:'Inter',sans-serif;font-size:13.5px;font-weight:500;cursor:pointer;border:none;transition:.08s;text-decoration:none;min-height:42px}
+.btn-primary{background:#DCDCDC;color:#000;font-weight:600}
+.btn-primary:hover{background:#CCC}
+.btn-ghost{border:1px solid #303030;color:var(--muted);background:none}
+.btn-ghost:hover{border-color:#555;color:var(--text)}
+.btn-accent{background:var(--accent);color:#000;font-weight:600}
+.btn-accent:hover{background:var(--accent-dim);color:var(--text)}
+.completion-block{border:1px solid var(--rule);background:var(--surface);padding:24px;margin-top:36px;display:none}
+.completion-block.visible{display:block}
+.completion-title{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px}
+.completion-body{font-size:14.5px;color:var(--text);margin-bottom:18px;line-height:1.7}
+.cert-name-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:0}
+.cert-name-input{background:var(--surface2);border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;padding:9px 13px;width:250px;outline:none;transition:border-color .1s}
+.cert-name-input::placeholder{color:var(--muted-soft)}
+.cert-name-input:focus{border-color:var(--accent)}
+.back-link{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);cursor:pointer;background:none;border:none;margin-bottom:30px;display:inline-flex;align-items:center;gap:8px;transition:color .1s}
+.back-link:hover{color:var(--text)}
+.cert-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:1000;align-items:center;justify-content:center;padding:20px}
+.cert-overlay.visible{display:flex}
+.cert-modal{background:#fff;max-width:820px;width:100%;position:relative}
+.cert-close{position:absolute;top:-34px;right:0;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);cursor:pointer;background:none;border:none;transition:color .1s}
+.cert-close:hover{color:var(--text)}
+canvas#cert-canvas{display:block;width:100%;height:auto}
+.cert-actions{display:flex;gap:10px;justify-content:flex-start;padding:12px 16px;background:#f0f0f0;border-top:1px solid #ddd}
+.cert-btn{font-family:'Inter',sans-serif;font-size:12.5px;font-weight:500;padding:9px 18px;cursor:pointer;border:none;transition:.08s}
+.cert-btn-primary{background:#333;color:#fff}
+.cert-btn-primary:hover{background:#555}
+.cert-btn-secondary{background:#ddd;color:#333}
+.cert-btn-secondary:hover{background:#ccc}
+.applied-exercise{border:1px solid var(--rule);background:var(--surface);margin:26px 0 4px;padding:0}
+.applied-exercise-head{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);padding:11px 15px;border-bottom:1px solid var(--rule)}
+.applied-exercise-body{padding:16px 15px}
+.applied-exercise-original{font-size:13.5px;color:#9e7878;font-style:italic;line-height:1.6;margin-bottom:14px;padding:10px 13px;background:rgba(158,120,120,.06);border-left:2px solid #5A3030}
+.applied-exercise-prompt{font-size:13.5px;color:var(--muted);line-height:1.65;margin-bottom:10px}
+.applied-exercise-items{margin:0;padding:0;list-style:none}
+.applied-exercise-items li{font-size:13.5px;color:var(--muted);padding:5px 0;border-bottom:1px solid #1E1E1E;display:flex;gap:10px}
+.applied-exercise-items li:last-child{border-bottom:none}
+.applied-exercise-items li::before{content:'—';color:var(--accent-dim);font-family:'JetBrains Mono',monospace;font-size:11px;flex-shrink:0;padding-top:2px}
+.applied-exercise-note{font-size:12px;color:var(--muted-soft);font-style:italic;margin-top:12px;line-height:1.6}
+.framing-block{border-left:2px solid var(--rule);padding:12px 16px;margin-bottom:30px}
+.framing-block p{font-size:14px;color:var(--muted-soft);line-height:1.7;font-style:italic;margin:0}
+
+/* ── FOOTER ── */
+.footer{margin-top:86px;padding-top:24px;border-top:1px solid var(--rule);font-size:11.5px;color:#666;line-height:1.9}
+.footer>div{margin-bottom:5px}
+.footer>div:last-child{margin-bottom:0}
+
+/* ── RESPONSIVE ── */
 @media(max-width:720px){
-  .container{ padding:38px 20px 72px; }
-  .doc-title{ font-size:36px; }
-  .control-block{ grid-template-columns:1fr; }
-  .header-meta{ text-align:left; }
-  .failure-row{ grid-template-columns:1fr; gap:14px; }
-  .lens-item{ grid-template-columns:44px 1fr; }
-  .section{ margin-bottom:44px; }
-  .section p{ font-size:15.5px; }
-  .condition-text{ font-size:14.5px; }
-  .env-tag{ font-size:10px; padding:7px 11px; }
-  .btn{ min-height:48px; padding:14px 22px; }
+  .container{padding:38px 20px 72px}
+  .doc-title{font-size:36px}
+  .control-block{grid-template-columns:1fr}
+  .header-meta{text-align:left}
+  .failure-row{grid-template-columns:1fr;gap:14px}
+  .lens-item{grid-template-columns:44px 1fr}
+  .section{margin-bottom:44px}
+  .section p{font-size:15.5px}
+  .condition-text{font-size:14.5px}
+  .env-tag{font-size:10px;padding:7px 11px}
+  .btn-site{min-height:48px;padding:14px 22px}
+  .course-title{font-size:28px}
+  .failure-cols{grid-template-columns:1fr}
+  .failure-col:first-child{border-right:none;border-bottom:1px solid var(--rule)}
+  .role-grid{grid-template-columns:1fr}
+  .readiness-row{grid-template-columns:70px 1fr}
+  .cond-row{grid-template-columns:34px 1fr}
+  .workflow-table th,.workflow-table td{padding:9px 10px}
+  .util-nav-label{display:none}
 }
 </style>
 </head>
-
 <body>
-
 <div class="container">
 
-  <!-- HEADER -->
-  <div class="header">
-    <div class="wordmark">
-      JRS<span class="tm">™</span>
-    </div>
-    <div class="header-meta">
-      Version 1.0 · Effective May 2026
-    </div>
-  </div>
-
-  <!-- HERO -->
-  <h1 class="doc-title">
-    Justification Review Standard (JRS™)
-  </h1>
-  <div class="doc-subtitle">
-    Operational Documentation Review Structure
-  </div>
-  <div class="doc-realism">Designed for use within existing organizational review workflows.</div>
-
-  <!-- WORKFLOW CLASSIFICATION CHIPS -->
-  <div class="workflow-chips">
-    <span class="workflow-chip">Later-Review Readability</span>
-    <span class="workflow-chip">Observable Support</span>
-    <span class="workflow-chip">Documentation Traceability</span>
-    <span class="workflow-chip">AI-Assisted Review</span>
-  </div>
-
-  <!-- OPERATIONAL TAG ROW -->
-  <div class="env-tags">
-    <span class="env-tag">HR Documentation</span>
-    <span class="env-tag">Compliance Records</span>
-    <span class="env-tag">Investigation Workflows</span>
-    <span class="env-tag">Administrative Review</span>
-    <span class="env-tag">AI-Assisted Documentation</span>
-  </div>
-
-  <!-- CONTROL BLOCK -->
-  <div class="control-block">
-    <div>
-      <div class="control-label">Version</div>
-      <div class="control-value">1.0</div>
-    </div>
-    <div>
-      <div class="control-label">Effective</div>
-      <div class="control-value">May 2026</div>
-    </div>
-  </div>
-
-  <!-- OVERVIEW -->
-  <div class="section">
-    <div class="section-title">Overview</div>
-    <p>The Justification Review Standard establishes a review structure for evaluating whether organizational documentation contains documented support for conclusions or decisions.</p>
-    <p>This standard applies to organizational documentation used in employment, administrative, or compliance review processes. The review structure is designed to support organizational review practices while acknowledging operational constraints.</p>
-  </div>
-
-  <!-- DEFINITION -->
-  <div class="section">
-    <div class="section-title">Definition</div>
-    <p><strong>Justification Review Standard (JRS™)</strong>: A documentation review structure used to evaluate whether organizational records are understandable during later review and contain a documented basis for conclusions.</p>
-  </div>
-
-  <!-- REVIEW CONDITIONS -->
-  <div class="section">
-    <div class="section-title">Review Conditions</div>
-    <p>Before a record is finalized, documentation should satisfy the following review conditions:</p>
-    <div class="conditions">
-      <div class="condition">
-        <div class="condition-number">01</div>
-        <div>
-          <div class="condition-title">Independently Reviewable Records</div>
-          <div class="condition-text">A reviewer should be able to identify the basis for conclusions without requiring additional context, institutional memory, or supplementary explanation.</div>
-        </div>
-      </div>
-      <div class="condition">
-        <div class="condition-number">02</div>
-        <div>
-          <div class="condition-title">Observable Support</div>
-          <div class="condition-text">Documentation must contain specific, verifiable support for conclusions or decisions. Observable support may include documented interactions, referenced records, structured feedback, or other identified supporting documentation.</div>
-        </div>
-      </div>
-      <div class="condition">
-        <div class="condition-number">03</div>
-        <div>
-          <div class="condition-title">Documented Reasoning</div>
-          <div class="condition-text">The basis for conclusions or decisions must be visible within the record itself. Conclusions should not depend on unstated assumptions or undocumented context.</div>
-        </div>
-      </div>
-      <div class="condition">
-        <div class="condition-number">04</div>
-        <div>
-          <div class="condition-title">Source Verification</div>
-          <div class="condition-text">Where automated drafting contributes to a record, the source material supporting substantive conclusions should remain identifiable and reviewable. Review responsibility remains with organizational personnel regardless of drafting method.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- REVIEWER LENS -->
-  <div class="section">
-    <div class="section-title">Reviewer Lens</div>
-    <p>Records are often reviewed later by individuals who were not present during the original events, discussions, or decisions. Before finalization, apply the following checks:</p>
-    <div class="lens-grid">
-      <div class="lens-item">
-        <div class="lens-num">01 —</div>
-        <div>
-          <div class="lens-title">Can this stand on its own?</div>
-          <div class="lens-text">Could a later reviewer understand the basis for the record without relying on institutional memory or additional explanation?</div>
-        </div>
-      </div>
-      <div class="lens-item">
-        <div class="lens-num">02 —</div>
-        <div>
-          <div class="lens-title">Observable Support</div>
-          <div class="lens-text">Does the record identify specific dates, interactions, logs, referenced documents, or other supporting records?</div>
-        </div>
-      </div>
-      <div class="lens-item">
-        <div class="lens-num">03 —</div>
-        <div>
-          <div class="lens-title">Documented Reasoning</div>
-          <div class="lens-text">Is the reasoning visible within the record itself, or does the conclusion rely on unstated assumptions?</div>
-        </div>
-      </div>
-      <div class="lens-item">
-        <div class="lens-num">04 —</div>
-        <div>
-          <div class="lens-title">AI Verification</div>
-          <div class="lens-text">Where AI-assisted drafting was used, has the wording been reviewed against source material before finalization?</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- COMMON DOCUMENTATION FAILURES -->
-  <div class="section">
-    <div class="section-title">Common Documentation Failures</div>
-    <p>The following patterns represent documentation that does not satisfy the review conditions, with revisions that would.</p>
-    <div class="failure-list">
-
-      <div class="failure-item">
-        <div class="failure-label">Unsupported Generalization</div>
-        <div class="failure-row">
-          <div>
-            <div class="failure-col-head">Insufficient</div>
-            <div class="failure-bad">"Employee has attendance issues."</div>
-          </div>
-          <div>
-            <div class="failure-col-head">Supported Revision</div>
-            <div class="failure-good">"Employee was absent January 5, January 12, and February 3 without prior notice. Attendance counseling documented February 4."</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="failure-item">
-        <div class="failure-label">Missing Observable Behavior</div>
-        <div class="failure-row">
-          <div>
-            <div class="failure-col-head">Insufficient</div>
-            <div class="failure-bad">"Employee demonstrated unprofessional conduct."</div>
-          </div>
-          <div>
-            <div class="failure-col-head">Supported Revision</div>
-            <div class="failure-good">"Employee interrupted two client meetings on April 4 and April 11 despite prior instruction regarding meeting protocol."</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="failure-item">
-        <div class="failure-label">Missing Timeline Anchors</div>
-        <div class="failure-row">
-          <div>
-            <div class="failure-col-head">Insufficient</div>
-            <div class="failure-bad">"Employee communication was inconsistent."</div>
-          </div>
-          <div>
-            <div class="failure-col-head">Supported Revision</div>
-            <div class="failure-good">"Project update deadlines required repeated follow-up during February and March review cycles. Delayed responses documented in team email chain."</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="failure-item">
-        <div class="failure-label">AI Summary Without Verification</div>
-        <div class="failure-row">
-          <div>
-            <div class="failure-col-head">Insufficient</div>
-            <div class="failure-bad">"AI summary: Employee is difficult to work with."</div>
-          </div>
-          <div>
-            <div class="failure-col-head">Supported Revision</div>
-            <div class="failure-good">"Summary reviewed against meeting notes dated March 4, 11, and 18. Human review completed before finalization."</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- CONTEXT -->
-  <div class="section">
-    <div class="section-title">Context</div>
-    <p>Records may later be reviewed during audits, investigations, escalation processes, disputes, or administrative review.</p>
-    <div class="note">
-      Documentation that does not identify the basis for conclusions may be interpreted inconsistently during later review.
-    </div>
-  </div>
-
-  <!-- WORKFLOW COMPATIBILITY -->
-  <div class="section">
-    <div class="section-title">Workflow Compatibility</div>
-    <p>JRS operates within existing organizational workflows and does not require dedicated software, system replacement, or proprietary tooling.</p>
-    <p style="font-size:14.5px;color:var(--muted);">Application may occur within HR, compliance, legal, investigation, or supervisory review structures.</p>
-  </div>
-
-  <!-- IMPLEMENTATION MATURITY -->
-  <div class="section">
-    <div class="section-title">Implementation Maturity</div>
-    <p>Organizations may apply JRS at varying levels of integration. These models are illustrative rather than prescriptive.</p>
-    <div class="maturity-list">
-      <div class="maturity-item">
-        <div class="maturity-num">01</div>
-        <div>
-          <div class="maturity-title">Foundational</div>
-          <div class="maturity-text">Self-review before finalization. Applies the core diagnostic questions at the drafting stage. No secondary review required.</div>
-        </div>
-      </div>
-      <div class="maturity-item">
-        <div class="maturity-num">02</div>
-        <div>
-          <div class="maturity-title">Secondary Review</div>
-          <div class="maturity-text">HR or compliance review for elevated-risk records. Applied selectively based on documentation sensitivity and organizational workflow.</div>
-        </div>
-      </div>
-      <div class="maturity-item">
-        <div class="maturity-num">03</div>
-        <div>
-          <div class="maturity-title">Audit and Governance</div>
-          <div class="maturity-text">Periodic audit sampling and documentation review. Reviewer is independent of the drafting chain. Integrated with existing compliance or quality review workflows.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- APPLICATION -->
-  <div class="section">
-    <div class="section-title">Application</div>
-    <p>This standard applies to administrative documentation, including but not limited to:</p>
-    <div class="simple-list">
-      <div class="simple-item">Performance Reviews</div>
-      <div class="simple-item">Disciplinary Documentation</div>
-      <div class="simple-item">Hiring &amp; Rejection Documentation</div>
-      <div class="simple-item">Termination Documentation</div>
-      <div class="simple-item">Performance Improvement Plans</div>
-      <div class="simple-item">Accommodation Documentation</div>
-    </div>
-    <p style="margin-top:16px;font-size:14.5px;color:var(--muted);">These examples are illustrative and not exhaustive.</p>
-  </div>
-
-  <!-- OPERATIONAL CONSTRAINTS -->
-  <div class="section">
-    <div class="section-title">Operational Constraints</div>
-    <p>Application may involve incomplete records, conflicting accounts, operational time pressures, or qualitative information requiring reviewer judgment.</p>
-    <p>Observable support may include documented interactions, structured feedback, qualitative observations, or referenced supporting documentation where appropriately identified.</p>
-    <p>Documentation depth will vary depending on staffing availability, review timelines, and workflow conditions.</p>
-  </div>
-
-  <!-- REVIEW LIMITATIONS -->
-  <div class="section">
-    <div class="section-title">Review Limitations</div>
-    <p>The review structure is not intended to substitute procedural formality for documented evidentiary support. It does not:</p>
-    <div class="simple-list">
-      <div class="simple-item">Sanitize poor documentation through procedural compliance</div>
-      <div class="simple-item">Enable box-checking without meaningful review</div>
-      <div class="simple-item">Create the appearance of rigor where support is absent</div>
-    </div>
-    <p style="margin-top:16px;">Instead, the structure identifies where documentation lacks a documented basis for conclusions and distinguishes between wording quality and evidentiary support.</p>
-  </div>
-
-  <!-- AI-ASSISTED -->
-  <div class="section">
-    <div class="section-title">AI-Assisted Documentation</div>
-    <p>When AI tools are used to draft or refine documentation, the underlying observable support must still satisfy the review conditions. AI-generated language should not be treated as independent evidentiary support absent documented underlying information. Review responsibility remains with organizational personnel regardless of drafting method.</p>
-  </div>
-
-  <!-- GOVERNANCE -->
-  <div class="section">
-    <div class="section-title">Governance Compatibility</div>
-    <p>JRS™ is intended to operate within existing organizational documentation, compliance, investigation, legal review, and AI governance environments.</p>
-  </div>
-
-  <!-- MATERIALS -->
-  <div class="section">
-    <div class="section-title">Materials</div>
-    <p>The following materials provide the foundational review standard and supplemental operational reference guidance.</p>
-    <div class="simple-list">
-      <div class="simple-item">
-        <strong>JRS Standard</strong><br>
-        <span style="color:var(--muted);font-size:14.5px;">The foundational review structure establishing the documentation review conditions, reviewer lens, and procedural guidance.</span>
-      </div>
-      <div class="simple-item">
-        <strong>JRS Documentation Review Reference</strong><br>
-        <span style="color:var(--muted);font-size:14.5px;">Supplemental operational guidance addressing review controls, implementation considerations, practical review examples, and reviewer question sets.</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- DISCLAIMERS -->
-  <div class="section">
-    <div class="section-title">Disclaimers</div>
-    <p>This standard is not legal advice. It does not establish legal sufficiency, replace organizational policy obligations, or eliminate the need for jurisdiction-specific legal review. Application should account for operational context and variability across jurisdictions.</p>
-  </div>
-
-  <!-- ACCESS -->
-  <div class="section">
-    <div class="section-title">Access</div>
-    <div class="cta-row">
-      <a href="JRS-Standard.pdf" download class="btn btn-primary">
-        Download JRS Standard
-      </a>
-      <a href="https://wikesphere.gumroad.com/l/opukbv" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-        JRS Documentation Review Reference
-      </a>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <div>Version 1.0 · Effective May 2026</div>
-    <div>JRS™ and Justification Review Standard™ are trademarks of Phillip Wikes.</div>
-    <div>© 2026 Phillip Wikes</div>
-    <div>Future revisions may clarify procedural guidance without altering core review conditions.</div>
-  </div>
-
+<!-- HEADER -->
+<div class="header">
+  <div class="wordmark">JRS<span class="tm">™</span></div>
+  <div class="header-meta">Version 1.0 · Effective May 2026</div>
 </div>
 
+<!-- UTILITY NAV BAR -->
+<div class="util-nav">
+  <span class="util-nav-label">Framework</span>
+  <div class="util-nav-links">
+    <a href="JRS-Standard.pdf" download class="util-nav-link primary">Download Standard</a>
+    <a href="https://wikesphere.gumroad.com/l/opukbv" target="_blank" rel="noopener noreferrer" class="util-nav-link">Reviewer Reference</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<h1 class="doc-title">Justification Review Standard (JRS™)</h1>
+<div class="doc-subtitle">Operational Documentation Review Structure</div>
+<div class="doc-realism">Designed for use within existing organizational review workflows.</div>
+
+<div class="workflow-chips">
+  <span class="workflow-chip">Later-Review Readability</span>
+  <span class="workflow-chip">Observable Support</span>
+  <span class="workflow-chip">Documentation Traceability</span>
+  <span class="workflow-chip">AI-Assisted Review</span>
+</div>
+
+<div class="env-tags">
+  <span class="env-tag">HR Documentation</span>
+  <span class="env-tag">Compliance Records</span>
+  <span class="env-tag">Investigation Workflows</span>
+  <span class="env-tag">Administrative Review</span>
+  <span class="env-tag">AI-Assisted Documentation</span>
+</div>
+
+<div class="control-block">
+  <div><div class="control-label">Version</div><div class="control-value">1.0</div></div>
+  <div><div class="control-label">Effective</div><div class="control-value">May 2026</div></div>
+</div>
+
+<!-- OVERVIEW -->
+<div class="section">
+  <div class="section-title">Overview</div>
+  <p>The Justification Review Standard establishes a review structure for evaluating whether organizational documentation contains documented support for conclusions or decisions.</p>
+  <p>This standard applies to organizational documentation used in employment, administrative, or compliance review processes. The review structure is designed to support organizational review practices while acknowledging operational constraints.</p>
+</div>
+
+<!-- DEFINITION -->
+<div class="section" style="margin-bottom:40px;">
+  <div class="section-title">Definition</div>
+  <p><strong>Justification Review Standard (JRS™)</strong>: A documentation review structure used to evaluate whether organizational records are understandable during later review and contain a documented basis for conclusions.</p>
+</div>
+
+<!-- REVIEW CONDITIONS -->
+<div class="section">
+  <div class="section-title">Review Conditions</div>
+  <p>Before a record is finalized, documentation should satisfy the following review conditions:</p>
+  <div class="conditions">
+    <div class="condition">
+      <div class="condition-number">01</div>
+      <div>
+        <div class="condition-title">Independently Reviewable Records</div>
+        <div class="condition-text">A reviewer should be able to identify the basis for conclusions without requiring additional context, institutional memory, or supplementary explanation.</div>
+      </div>
+    </div>
+    <div class="condition">
+      <div class="condition-number">02</div>
+      <div>
+        <div class="condition-title">Observable Support</div>
+        <div class="condition-text">Documentation must contain specific, verifiable support for conclusions or decisions. Observable support may include documented interactions, referenced records, structured feedback, or other identified supporting documentation.</div>
+      </div>
+    </div>
+    <div class="condition">
+      <div class="condition-number">03</div>
+      <div>
+        <div class="condition-title">Documented Reasoning</div>
+        <div class="condition-text">The basis for conclusions or decisions must be visible within the record itself. Conclusions should not depend on unstated assumptions or undocumented context.</div>
+      </div>
+    </div>
+    <div class="condition">
+      <div class="condition-number">04</div>
+      <div>
+        <div class="condition-title">Source Verification</div>
+        <div class="condition-text">Where automated drafting contributes to a record, the source material supporting substantive conclusions should remain identifiable and reviewable. Review responsibility remains with organizational personnel regardless of drafting method.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REVIEWER LENS -->
+<div class="section">
+  <div class="section-title">Reviewer Lens</div>
+  <p>Records are often reviewed later by individuals who were not present during the original events, discussions, or decisions. Before finalization, apply the following checks:</p>
+  <div class="lens-grid">
+    <div class="lens-item">
+      <div class="lens-num">01 —</div>
+      <div>
+        <div class="lens-title">Can this stand on its own?</div>
+        <div class="lens-text">Could a later reviewer understand the basis for the record without relying on institutional memory or additional explanation?</div>
+      </div>
+    </div>
+    <div class="lens-item">
+      <div class="lens-num">02 —</div>
+      <div>
+        <div class="lens-title">Observable Support</div>
+        <div class="lens-text">Does the record identify specific dates, interactions, logs, referenced documents, or other supporting records?</div>
+      </div>
+    </div>
+    <div class="lens-item">
+      <div class="lens-num">03 —</div>
+      <div>
+        <div class="lens-title">Documented Reasoning</div>
+        <div class="lens-text">Is the reasoning visible within the record itself, or does the conclusion rely on unstated assumptions?</div>
+      </div>
+    </div>
+    <div class="lens-item">
+      <div class="lens-num">04 —</div>
+      <div>
+        <div class="lens-title">AI Verification</div>
+        <div class="lens-text">Where AI-assisted drafting was used, has the wording been reviewed against source material before finalization?</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COMMON DOCUMENTATION FAILURES -->
+<div class="section">
+  <div class="section-title">Common Documentation Failures</div>
+  <p>The following patterns represent documentation that does not satisfy the review conditions, with revisions that would.</p>
+  <div class="failure-list">
+    <div class="failure-item">
+      <div class="failure-label">Unsupported Generalization</div>
+      <div class="failure-row">
+        <div><div class="failure-col-head">Insufficient</div><div class="failure-bad">"Employee has attendance issues."</div></div>
+        <div><div class="failure-col-head">Supported Revision</div><div class="failure-good">"Employee was absent January 5, January 12, and February 3 without prior notice. Attendance counseling documented February 4."</div></div>
+      </div>
+    </div>
+    <div class="failure-item">
+      <div class="failure-label">Missing Observable Behavior</div>
+      <div class="failure-row">
+        <div><div class="failure-col-head">Insufficient</div><div class="failure-bad">"Employee demonstrated unprofessional conduct."</div></div>
+        <div><div class="failure-col-head">Supported Revision</div><div class="failure-good">"Employee interrupted two client meetings on April 4 and April 11 despite prior instruction regarding meeting protocol."</div></div>
+      </div>
+    </div>
+    <div class="failure-item">
+      <div class="failure-label">Missing Timeline Anchors</div>
+      <div class="failure-row">
+        <div><div class="failure-col-head">Insufficient</div><div class="failure-bad">"Employee communication was inconsistent."</div></div>
+        <div><div class="failure-col-head">Supported Revision</div><div class="failure-good">"Project update deadlines required repeated follow-up during February and March review cycles. Delayed responses documented in team email chain."</div></div>
+      </div>
+    </div>
+    <div class="failure-item">
+      <div class="failure-label">AI Summary Without Verification</div>
+      <div class="failure-row">
+        <div><div class="failure-col-head">Insufficient</div><div class="failure-bad">"AI summary: Employee is difficult to work with."</div></div>
+        <div><div class="failure-col-head">Supported Revision</div><div class="failure-good">"Summary reviewed against meeting notes dated March 4, 11, and 18. Human review completed before finalization."</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTEXT -->
+<div class="section">
+  <div class="section-title">Context</div>
+  <p>Records may later be reviewed during audits, investigations, escalation processes, disputes, or administrative review.</p>
+  <div class="note">Documentation that does not identify the basis for conclusions may be interpreted inconsistently during later review.</div>
+</div>
+
+<!-- WORKFLOW COMPATIBILITY -->
+<div class="section">
+  <div class="section-title">Workflow Compatibility</div>
+  <p>JRS operates within existing organizational workflows and does not require dedicated software, system replacement, or proprietary tooling.</p>
+  <p style="font-size:14.5px;color:var(--muted);">Application may occur within HR, compliance, legal, investigation, or supervisory review structures.</p>
+</div>
+
+<!-- IMPLEMENTATION MATURITY -->
+<div class="section">
+  <div class="section-title">Implementation Maturity</div>
+  <p>Organizations may apply JRS at varying levels of integration. These models are illustrative rather than prescriptive.</p>
+  <div class="maturity-list">
+    <div class="maturity-item">
+      <div class="maturity-num">01</div>
+      <div><div class="maturity-title">Foundational</div><div class="maturity-text">Self-review before finalization. Applies the core diagnostic questions at the drafting stage. No secondary review required.</div></div>
+    </div>
+    <div class="maturity-item">
+      <div class="maturity-num">02</div>
+      <div><div class="maturity-title">Secondary Review</div><div class="maturity-text">HR or compliance review for elevated-risk records. Applied selectively based on documentation sensitivity and organizational workflow.</div></div>
+    </div>
+    <div class="maturity-item">
+      <div class="maturity-num">03</div>
+      <div><div class="maturity-title">Audit and Governance</div><div class="maturity-text">Periodic audit sampling and documentation review. Reviewer is independent of the drafting chain. Integrated with existing compliance or quality review workflows.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- APPLICATION -->
+<div class="section">
+  <div class="section-title">Application</div>
+  <p>This standard applies to administrative documentation, including but not limited to:</p>
+  <div class="simple-list">
+    <div class="simple-item">Performance Reviews</div>
+    <div class="simple-item">Disciplinary Documentation</div>
+    <div class="simple-item">Hiring &amp; Rejection Documentation</div>
+    <div class="simple-item">Termination Documentation</div>
+    <div class="simple-item">Performance Improvement Plans</div>
+    <div class="simple-item">Accommodation Documentation</div>
+  </div>
+  <p style="margin-top:16px;font-size:14.5px;color:var(--muted);">These examples are illustrative and not exhaustive.</p>
+</div>
+
+<!-- OPERATIONAL CONSTRAINTS -->
+<div class="section" style="margin-bottom:56px;">
+  <div class="section-title">Operational Constraints</div>
+  <p>Application may involve incomplete records, conflicting accounts, operational time pressures, or qualitative information requiring reviewer judgment.</p>
+  <p>Observable support may include documented interactions, structured feedback, qualitative observations, or referenced supporting documentation where appropriately identified.</p>
+  <p>Documentation depth will vary depending on staffing availability, review timelines, and workflow conditions.</p>
+</div>
+
+<!-- REVIEW LIMITATIONS -->
+<div class="section">
+  <div class="section-title">Review Limitations</div>
+  <p>The review structure is not intended to substitute procedural formality for documented evidentiary support. It does not:</p>
+  <div class="simple-list">
+    <div class="simple-item">Sanitize poor documentation through procedural compliance</div>
+    <div class="simple-item">Enable box-checking without meaningful review</div>
+    <div class="simple-item">Create the appearance of rigor where support is absent</div>
+  </div>
+  <p style="margin-top:16px;">Instead, the structure identifies where documentation lacks a documented basis for conclusions and distinguishes between wording quality and evidentiary support.</p>
+</div>
+
+<!-- AI-ASSISTED -->
+<div class="section">
+  <div class="section-title">AI-Assisted Documentation</div>
+  <p>When AI tools are used to draft or refine documentation, the underlying observable support must still satisfy the review conditions. AI-generated language should not be treated as independent evidentiary support absent documented underlying information. Review responsibility remains with organizational personnel regardless of drafting method.</p>
+</div>
+
+<!-- GOVERNANCE -->
+<div class="section">
+  <div class="section-title">Governance Compatibility</div>
+  <p>JRS™ is intended to operate within existing organizational documentation, compliance, investigation, legal review, and AI governance environments.</p>
+</div>
+
+<!-- MATERIALS -->
+<div class="section">
+  <div class="section-title">Materials</div>
+  <p>The following materials provide the foundational review standard and supplemental operational reference guidance.</p>
+  <div class="simple-list">
+    <div class="simple-item">
+      <strong>JRS Standard</strong><br>
+      <span style="color:var(--muted);font-size:14.5px;">The foundational review structure establishing the documentation review conditions, reviewer lens, and procedural guidance.</span>
+    </div>
+    <div class="simple-item">
+      <strong>JRS Documentation Review Reference</strong><br>
+      <span style="color:var(--muted);font-size:14.5px;">Supplemental operational guidance addressing review controls, implementation considerations, practical review examples, and reviewer question sets.</span>
+    </div>
+  </div>
+</div>
+
+<!-- DISCLAIMERS -->
+<div class="section">
+  <div class="section-title">Disclaimers</div>
+  <p>This standard is not legal advice. It does not establish legal sufficiency, replace organizational policy obligations, or eliminate the need for jurisdiction-specific legal review. Application should account for operational context and variability across jurisdictions.</p>
+</div>
+
+<!-- ACCESS -->
+<div class="section">
+  <div class="section-title">Access</div>
+  <div class="cta-row">
+    <a href="JRS-Standard.pdf" download class="btn-site btn-site-primary">Download JRS Standard</a>
+    <a href="https://wikesphere.gumroad.com/l/opukbv" target="_blank" rel="noopener noreferrer" class="btn-site btn-site-secondary">Reviewer Reference</a>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════════════ -->
+<!-- TRAINING COURSE SECTION                         -->
+<!-- ════════════════════════════════════════════════ -->
+
+<div class="section-divider">
+  <div class="section-divider-label">Documentation Review Learning Program</div>
+</div>
+
+<!-- COURSE INDEX -->
+<div id="course-index">
+  <div class="course-eyebrow">Documentation Review Learning Program</div>
+  <h2 class="course-title">JRS™ Documentation<br>Review Foundations</h2>
+  <p class="course-subtitle">Six modules covering evidence anchoring, file survivability, traceable reasoning, and review of AI-assisted records. Applicable to HR, compliance, investigation, and administrative documentation environments.</p>
+  <div class="course-meta-chips">
+    <span class="chip">6 Learning Modules</span>
+    <span class="chip">Self-Paced</span>
+    <span class="chip">No Account Required</span>
+    <span class="chip">HR · Compliance · Investigations · AI Records</span>
+  </div>
+  <div class="framing-block">
+    <p>This program evaluates whether a record's supporting basis remains identifiable during later review by individuals without original context.</p>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+  <div class="progress-label" id="progress-label">0 of 6 modules complete</div>
+  <div class="module-nav" id="module-nav">
+    <div class="module-nav-item" onclick="openModule(0)"><span class="module-nav-num">01</span><span class="module-nav-title">Introduction to Documentation Review</span><span class="module-nav-status" id="nav-status-0">Start</span></div>
+    <div class="module-nav-item" onclick="openModule(1)"><span class="module-nav-num">02</span><span class="module-nav-title">Observable Support &amp; Evidence Anchoring</span><span class="module-nav-status" id="nav-status-1">Start</span></div>
+    <div class="module-nav-item" onclick="openModule(2)"><span class="module-nav-num">03</span><span class="module-nav-title">Traceable Reasoning &amp; Reviewer Reconstruction</span><span class="module-nav-status" id="nav-status-2">Start</span></div>
+    <div class="module-nav-item" onclick="openModule(3)"><span class="module-nav-num">04</span><span class="module-nav-title">Common Documentation Failure Modes</span><span class="module-nav-status" id="nav-status-3">Start</span></div>
+    <div class="module-nav-item" onclick="openModule(4)"><span class="module-nav-num">05</span><span class="module-nav-title">AI-Assisted Documentation Review</span><span class="module-nav-status" id="nav-status-4">Start</span></div>
+    <div class="module-nav-item" onclick="openModule(5)"><span class="module-nav-num">06</span><span class="module-nav-title">Operational Workflow Integration</span><span class="module-nav-status" id="nav-status-5">Start</span></div>
+  </div>
+
+  <div class="completion-block" id="course-complete">
+    <div class="completion-title">Modules Complete</div>
+    <p class="completion-body">All six modules have been completed. Enter your name to create a completion record for your files.</p>
+    <div class="cert-name-row">
+      <input type="text" class="cert-name-input" id="cert-name-input" placeholder="Full name" maxlength="60">
+      <button class="btn btn-accent" style="margin-left:10px;" onclick="openCertificate()">Generate Completion Record</button>
+    </div>
+  </div>
+
+  <div class="supplemental-block">
+    <div class="supplemental-label">Supplemental Materials</div>
+    <p class="supplemental-desc">The JRS Standard establishes the review structure introduced throughout this program. The Reviewer Reference provides the condensed operational review companion used during pre-submission documentation review, including reconstruction checks, escalation indicators, AI source verification reminders, and workflow review prompts.</p>
+    <div class="btn-row" style="margin-top:0;">
+      <a href="JRS-Standard.pdf" download class="btn btn-primary">Download JRS Standard</a>
+      <a href="https://wikesphere.gumroad.com/l/opukbv" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Reviewer Reference</a>
+    </div>
+  </div>
+
+  <div class="cert-overlay" id="cert-overlay">
+    <div class="cert-modal">
+      <button class="cert-close" onclick="closeCertificate()">✕ Close</button>
+      <canvas id="cert-canvas" width="1100" height="778"></canvas>
+      <div class="cert-actions">
+        <button class="cert-btn cert-btn-primary" onclick="downloadCertificate()">Save PNG</button>
+        <button class="cert-btn cert-btn-secondary" onclick="printCertificate()">Print</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COURSE PANEL -->
+<div id="course-panel">
+  <button class="back-link" onclick="closeModule()">← Back to modules</button>
+  <div class="panel-header">
+    <div class="panel-module-tag" id="panel-module-tag"></div>
+    <div class="panel-title" id="panel-title"></div>
+  </div>
+  <div class="lesson-tabs" id="lesson-tabs"></div>
+  <div id="lesson-content-area"></div>
+  <div class="quiz-section" id="quiz-section">
+    <div class="quiz-eyebrow">Review Questions</div>
+    <div class="quiz-title" id="quiz-title"></div>
+    <div id="quiz-questions"></div>
+    <div class="quiz-score-block" id="quiz-score-block">
+      <div class="score-number" id="score-number"></div>
+      <div class="score-label">Correct</div>
+      <div class="score-msg" id="score-msg"></div>
+      <div class="btn-row" style="justify-content:center;">
+        <button class="btn btn-primary" id="next-module-btn" onclick="nextModule()"></button>
+        <button class="btn btn-ghost" onclick="retakeQuiz()">Try Again</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- SHARED FOOTER -->
+<div class="footer">
+  <div>Version 1.0 · Effective May 2026</div>
+  <div>JRS™ and Justification Review Standard™ are trademarks of Phillip Wikes.</div>
+  <div>© 2026 Phillip Wikes</div>
+  <div>Educational material. Does not constitute legal advice, professional certification, regulatory accreditation, or employment decision guidance.</div>
+  <div>Future revisions may clarify procedural guidance without altering core review conditions.</div>
+</div>
+
+</div><!-- /container -->
+
+<script>
+const MODULES=[
+
+{title:"Introduction to Documentation Review",tag:"Module 01",
+lessons:[
+{title:"Why Records Fail",html:`
+<p>Organizational records are created by people who understand the full context of what they are documenting. Performance notes. Disciplinary records. Investigation summaries. Termination files. At the time of drafting, the supporting context feels obvious. The author knows the participants, the history, and the reasoning behind every conclusion.</p>
+<div class="callout"><div class="callout-label">The Problem</div><p>Records are reviewed later by people who were not present. Personnel change. Time passes. What felt obvious during drafting may not be recoverable when someone else reads the file cold.</p></div>
+<p>Documentation review is not primarily a writing quality problem. It is a reconstruction problem. The question is not whether the record reads well. It is whether someone with no access to the original participants can identify the basis for each conclusion from what the file actually contains.</p>
+<div class="op-note">If the reviewer has to call someone to understand the file, the record is already unstable.</div>
+<div class="quote-block">"The file is what survives. Not the meeting. Not the conversation. Not what the manager remembers."</div>
+<div class="lo-block"><div class="lo-label">This module addresses</div>
+<div class="lo-item"><span class="lo-check">—</span>Common causes of documentation failure during later review</div>
+<div class="lo-item"><span class="lo-check">—</span>The difference between readable language and supported conclusions</div>
+<div class="lo-item"><span class="lo-check">—</span>Why records are routinely reviewed without original context</div>
+<div class="lo-item"><span class="lo-check">—</span>Operational risk created by conclusions that cannot be verified from the file</div></div>`},
+{title:"Administrative Realities",html:`
+<p>Documentation is created under real operational conditions: time pressure, incomplete information, and drafters who may be writing records after the relevant events have already occurred. These are not exceptional circumstances.</p>
+<p>The practical consequence is that records often reflect what the author remembers rather than what they documented. A conclusion that relies on the author's memory of a conversation is not the same as a conclusion grounded in a documented record of that conversation.</p>
+<div class="callout"><div class="callout-label">File Readability vs. Support Visibility</div><p>A record can be well-written and still fail during later review. Professional wording creates the appearance of support. It does not substitute for it. The two are frequently confused at the drafting stage.</p></div>
+<p>Documentation review addresses whether the basis is present in the record. It does not address whether the underlying decision was correct. Those are separate questions, and reviewers sometimes conflate them.</p>
+<div class="callout"><div class="callout-label">Administrative Neutrality</div><p>A record can be thoroughly documented and still reflect a poor decision. A record can contain an accurate conclusion with no recoverable evidentiary basis. Documentation quality and decision quality are not the same thing.</p></div>
+<div class="op-note">Most timeline problems are discovered after escalation, not before.</div>
+<div class="quote-block">"What seemed adequately documented at drafting may not hold up when someone reads it without that background."</div>`}
+],
+quiz:[
+{q:"Documentation review primarily evaluates whether:",options:["The employment decision was substantively correct","Someone with no prior knowledge can reconstruct the basis for conclusions from the file","The record uses professional language and clear writing","The manager followed the applicable disciplinary procedure"],correct:1,explanation:"The review addresses reconstruction: can a later reviewer, with no access to the original participants, identify the basis for each conclusion from the file alone? Whether the decision was correct is a separate question."},
+{q:"Which best describes the reconstruction problem in documentation review?",options:["Records are sometimes written after events have occurred","The author knows the context but may not have documented it, leaving later reviewers unable to verify the basis","Documentation is frequently lost in organizational record systems","Reviewers lack sufficient writing skill to produce accurate records"],correct:1,explanation:"The reconstruction problem is the gap between what the author knows and what the file contains. What the author knows does not help a later reviewer who has only the document."},
+{q:"A well-written record that reads professionally will hold up during later review.",options:["True","False"],correct:1,explanation:"Professional language creates the appearance of support. It does not create the support itself. The gap is often not visible until someone reads the record without prior context."}
+]},
+
+{title:"Observable Support & Evidence Anchoring",tag:"Module 02",
+lessons:[
+{title:"Observable vs. Evaluative Language",html:`
+<p>Every conclusion in an organizational record needs something to stand on. That support must be identifiable by a downstream reviewer from what the file actually contains — not inferred from the author's intent or general knowledge of the situation.</p>
+<div class="condition-grid">
+<div class="cond-row"><div class="cond-num" style="font-size:13px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:6px;">OBS</div><div><div class="cond-title">Observable Language</div><div class="cond-text">Describes specific conduct, events, or interactions that can be independently identified. Includes dates, names, actions, outcomes, and referenced records. A reviewer can evaluate it without asking the author what they meant.</div></div></div>
+<div class="cond-row"><div class="cond-num" style="font-size:13px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:6px;">EVAL</div><div><div class="cond-title">Evaluative Language</div><div class="cond-text">Characterizes conduct without identifying the specific events underlying the characterization. Tells the reviewer what to conclude without showing what occurred. A reviewer outside the original workflow has no basis to evaluate it from the record alone.</div></div></div>
+</div>
+<div class="callout"><div class="callout-label">Adjective Alert</div><p>Evaluative adjectives such as <em>difficult, combative, unprofessional, poor, aggressive, uncooperative</em> appearing without a behavioral anchor fail the documented reasoning requirement. Each adjective requires a fact: what occurred, when, and where. Dates before adjectives.</p></div>
+<table class="adjective-table">
+<tr><th>Evaluative (Insufficient)</th><th>What the Record Actually Needs</th></tr>
+<tr><td>"Employee is difficult."</td><td>Specific conduct: what occurred, on what date, who observed it, what record supports it.</td></tr>
+<tr><td>"Employee is dismissive."</td><td>A documented incident: what was said or done, when, and what record reflects it.</td></tr>
+<tr><td>"Employee is unprofessional."</td><td>Observable behavior: which expectation, what conduct specifically, what standard applies.</td></tr>
+<tr><td>"Employee has a poor attitude."</td><td>Documented interactions: dates, described behavior, referenced feedback or coaching notes on file.</td></tr>
+</table>
+<div class="op-note">The wording may sound complete while the support is still missing.</div>
+<div class="lo-block"><div class="lo-label">This module addresses</div>
+<div class="lo-item"><span class="lo-check">—</span>Whether conclusions in a record contain identifiable support</div>
+<div class="lo-item"><span class="lo-check">—</span>Connecting conclusions to records or events that can be independently identified</div>
+<div class="lo-item"><span class="lo-check">—</span>Distinguishing unsupported characterizations from evidence-grounded documentation</div>
+<div class="lo-item"><span class="lo-check">—</span>Recognizing language patterns associated with later-review risk</div></div>`},
+{title:"Evidence Anchors",html:`
+<p>An evidence anchor is a specific, verifiable reference that grounds a conclusion in something a subsequent reviewer can independently identify from the file. Without one, the conclusion cannot be evaluated from the record alone.</p>
+<div class="lesson-section-title">What Constitutes an Anchor</div>
+<div class="list-block">
+<div class="list-item"><span class="list-dash">—</span>A specific date or date range tied to the described conduct or event</div>
+<div class="list-item"><span class="list-dash">—</span>A referenced record, document, or log entry identifiable from the file</div>
+<div class="list-item"><span class="list-dash">—</span>A documented interaction: meeting notes, email correspondence, coaching record</div>
+<div class="list-item"><span class="list-dash">—</span>A policy reference with a section number or documented acknowledgment date</div>
+<div class="list-item"><span class="list-dash">—</span>A witness statement or interview note identified within the record</div>
+<div class="list-item"><span class="list-dash">—</span>An HRIS entry, access log, or system record traceable from the file</div>
+<div class="list-item"><span class="list-dash">—</span>A performance metric, threshold, or standard with an established, documented baseline</div>
+</div>
+<div class="callout"><div class="callout-label">General Impressions Are Not Evidence</div><p>Supporting material that exists only in the author's memory is not available to an escalation reviewer. The question is not whether the author knows it. The question is whether it is in the file.</p></div>
+<div class="failure-block"><div class="failure-head">Anchoring — Comparison</div><div class="failure-cols"><div class="failure-col"><div class="failure-col-label">No Anchor</div><div class="failure-bad">"Employee has attendance issues."</div></div><div class="failure-col"><div class="failure-col-label">Anchored</div><div class="failure-good">Employee was absent January 5, 12, and February 3 without prior notice, contrary to Attendance Policy acknowledged January 2. Counseling note on file February 4.</div></div></div></div>
+<div class="failure-block"><div class="failure-head">Anchoring — Comparison</div><div class="failure-cols"><div class="failure-col"><div class="failure-col-label">No Anchor</div><div class="failure-bad">"Employee's behavior violated company policy."</div></div><div class="failure-col"><div class="failure-col-label">Anchored</div><div class="failure-good">Employee's conduct violated Remote Work Policy Section 3.2, acknowledged in writing January 10. Policy and acknowledgment are on file.</div></div></div></div>
+<div class="op-note">Sometimes the issue is simply that nobody documented the date.</div>
+<div class="quote-block">"If the support is not in the document, it is not available for review."</div>
+<div class="applied-exercise">
+<div class="applied-exercise-head">Applied Review Exercise</div>
+<div class="applied-exercise-body">
+<div class="applied-exercise-original">"Employee has ongoing performance concerns related to quality of work and professional conduct."</div>
+<p class="applied-exercise-prompt">Identify what is missing for this conclusion to be independently reviewable from the file:</p>
+<ul class="applied-exercise-items">
+<li>What specific performance standard applies, and is it documented?</li>
+<li>What dates or instances of substandard work are identified?</li>
+<li>What observable conduct is being characterized as unprofessional?</li>
+<li>Are any referenced records, coaching notes, or prior feedback identified in the file?</li>
+</ul>
+<div class="applied-exercise-note">As written, a subsequent reviewer has no basis to evaluate this conclusion. Each missing element is a separate anchoring gap.</div>
+</div>
+</div>`}
+],
+quiz:[
+{q:"Which of the following has identifiable, anchored support?",options:["Employee demonstrated unprofessional conduct.","Employee is difficult to work with.","Employee interrupted client meetings on April 4 and April 11 despite prior written instruction dated March 28. Incident report on file April 12.","Employee has consistently shown a poor attitude toward supervisors."],correct:2,explanation:"The third option contains specific dates, a described behavior, a referenced prior instruction with a date, and a referenced supporting record. Each element can be evaluated independently without asking the author."},
+{q:"A record states: 'Employee's performance has been below expectations.' What is missing for the basis to be identifiable from the file?",options:["The employee's acknowledgment of the record","A co-signature from a secondary reviewer","Specific expectations, a timeframe, documented conduct, and referenced supporting records","Legal review before finalization"],correct:2,explanation:"The conclusion lacks all four anchoring elements: what specific expectations were not met, over what period, what conduct supports the conclusion, and what records are on file. None of this can be reconstructed from the file as written."},
+{q:"An evidence anchor must be a formal written document such as an email or HRIS record.",options:["True","False"],correct:1,explanation:"Anchors can include meeting notes, witness statements, coaching records, access logs, and policy references. The requirement is that the anchor be identifiable from the file by a later reviewer — not that it take any specific formal format."}
+]},
+
+{title:"Traceable Reasoning & Reviewer Reconstruction",tag:"Module 03",
+lessons:[
+{title:"The Path from Evidence to Conclusion",html:`
+<p>Identifiable support is necessary but not sufficient. A record can contain specific dates and behavioral descriptions and still fail during review if the connection between that evidence and the stated conclusion is not visible within the document.</p>
+<p>Traceable reasoning means the logical path from the documented facts to the stated conclusion is visible in the record. A reviewer reading the file cold should be able to follow the same reasoning the author followed — without the author being available to explain it.</p>
+<div class="callout"><div class="callout-label">Where This Breaks Down</div><p>Reviewers often find that conclusions which seemed well-grounded at drafting cannot actually be traced through the document. The reasoning was in the author's head, not on the page. A coherent narrative is not the same as a supported one.</p></div>
+<div class="condition-grid">
+<div class="cond-row"><div class="cond-num">I</div><div><div class="cond-badge">Review Continuity</div><div class="cond-title">Independently Reviewable Records</div><div class="cond-text">A reviewer inheriting the file with no prior knowledge must be able to understand the basis for each conclusion from what the file contains. No supplementary explanation, institutional memory, or contact with the original author should be necessary.</div></div></div>
+<div class="cond-row"><div class="cond-num">II</div><div><div class="cond-badge">Fact Anchor</div><div class="cond-title">Observable Support</div><div class="cond-text">Each conclusion requires a specific, verifiable anchor in the file: a date, a documented interaction, a log entry, or a referenced record. General impressions are not evidence.</div></div></div>
+<div class="cond-row"><div class="cond-num">III</div><div><div class="cond-badge">Reasoning Trail</div><div class="cond-title">Documented Reasoning</div><div class="cond-text">The connection between evidence and conclusion should be visible within the record itself. Conclusions that depend on unstated assumptions or context not present in the file do not satisfy this condition.</div></div></div>
+<div class="cond-row"><div class="cond-num">IV</div><div><div class="cond-badge">Source Check</div><div class="cond-title">Source Integrity</div><div class="cond-text">Where automated drafting has contributed to a record, the source material behind substantive conclusions should be identifiable. Wording that introduces characterizations not present in source notes is a gap regardless of how it was generated.</div></div></div>
+</div>
+<div class="lo-block"><div class="lo-label">This module addresses</div>
+<div class="lo-item"><span class="lo-check">—</span>Whether the reasoning behind a conclusion is visible in the record</div>
+<div class="lo-item"><span class="lo-check">—</span>Whether another reviewer could follow the same path to the same conclusion</div>
+<div class="lo-item"><span class="lo-check">—</span>Identifying gaps that need to be resolved before system entry</div>
+<div class="lo-item"><span class="lo-check">—</span>Applying reconstruction thinking before a record is finalized</div></div>`},
+{title:"Reviewer Reconstruction",html:`
+<p>The practical test is reviewer reconstruction: could a reviewer outside the original workflow, reading the file cold, follow the same reasoning path the author followed?</p>
+<p>This test surfaces during escalation or audit review — when the original author may no longer be available. Records that passed through without meeting this standard become a problem at that stage.</p>
+<div class="lesson-section-title">Five Checks Before Finalization</div>
+<div class="condition-grid">
+<div class="cond-row"><div class="cond-num">1</div><div><div class="cond-title">Can this record stand on its own?</div><div class="cond-text">Would someone unfamiliar with these events understand the conclusion without calling the author?</div></div></div>
+<div class="cond-row"><div class="cond-num">2</div><div><div class="cond-title">What specific evidence anchors this conclusion?</div><div class="cond-text">A date, a log entry, a documented interaction, or a referenced record.</div></div></div>
+<div class="cond-row"><div class="cond-num">3</div><div><div class="cond-title">Is the path from evidence to conclusion visible in the file?</div><div class="cond-text">Not in the author's memory. In the document itself.</div></div></div>
+<div class="cond-row"><div class="cond-num">4</div><div><div class="cond-title">Are dates, interactions, and policies identifiable?</div><div class="cond-text">Each conclusion requires a traceable anchor.</div></div></div>
+<div class="cond-row"><div class="cond-num">5</div><div><div class="cond-title">Would a later reviewer follow the same reasoning?</div><div class="cond-text">Without access to context that exists only within the original workflow.</div></div></div>
+</div>
+<div class="callout"><div class="callout-label">File Survivability Over Time</div><p>Personnel change. The people who could explain a record may no longer be available. Records with specific dates and referenced support tend to remain usable. Records that rely on the author's memory tend not to.</p></div>
+<div class="op-note">Repeated wording does not create evidence. Each record still needs its own basis.</div>
+<div class="quote-block">"A conclusion without documented support is only an impression. That distinction matters when a record is reviewed outside its original context."</div>
+<div class="applied-exercise">
+<div class="applied-exercise-head">Applied Review Exercise</div>
+<div class="applied-exercise-body">
+<div class="applied-exercise-original">"Following a series of performance discussions, it was determined that the employee's conduct and output were not consistent with role expectations. Formal action was recommended."</div>
+<p class="applied-exercise-prompt">Assess the reasoning trail. Identify what a later reviewer cannot reconstruct from this record:</p>
+<ul class="applied-exercise-items">
+<li>When did the performance discussions occur, and are they documented separately?</li>
+<li>Who made the determination, and on what basis is it traceable in the file?</li>
+<li>What specific conduct or output is being characterized as inconsistent?</li>
+<li>What role expectations apply, and where are they documented?</li>
+</ul>
+<div class="applied-exercise-note">The conclusion follows a plausible structure but the reasoning trail is entirely absent. The record cannot be reconstructed without follow-up.</div>
+</div>
+</div>`}
+],
+quiz:[
+{q:"What does the reconstruction check ask?",options:["Whether the record was completed within 24 hours of the relevant event","Whether someone with no prior knowledge can identify the basis for conclusions from the file alone","Whether the record has been reviewed by at least two people before submission","Whether the author can accurately recall the events in the record"],correct:1,explanation:"Reviewer reconstruction asks: could someone with no context about these events identify the basis for each conclusion from the file, without contacting the original author? Records that fail this test depend on who is still available to explain them."},
+{q:"A record has specific dates and behavioral descriptions but does not explain the connection between those events and the conclusion. Which condition does it fail?",options:["Observable Support — the dates and behaviors are insufficient as anchors","Documented Reasoning — the path from evidence to conclusion is not visible in the record","Source Integrity — the record was likely AI-assisted","Independently Reviewable — the record requires supplementary explanation"],correct:1,explanation:"The record satisfies Observable Support (it has anchors) but fails Documented Reasoning (the reasoning trail connecting those anchors to the stated conclusion is not visible in the document). Both conditions are required."},
+{q:"Multiple records over six months all using the same evaluative language about an employee build stronger cumulative evidentiary support.",options:["True","False"],correct:1,explanation:"Repetition does not create evidence. Each record still requires its own specific anchors: dates, conduct, policy references, or other documented support. Volume does not substitute for content."}
+]},
+
+{title:"Common Documentation Failure Modes",tag:"Module 04",
+lessons:[
+{title:"Failure Modes 01–05",html:`
+<p>The patterns below appear repeatedly in HR, compliance, investigation, and audit review. Most share a common characteristic: the record looks complete at drafting, but a reviewer with no prior knowledge of the events cannot evaluate what it actually says.</p>
+<div class="lo-block"><div class="lo-label">This module addresses</div>
+<div class="lo-item"><span class="lo-check">—</span>Recognizing recurring documentation weaknesses before records enter official systems</div>
+<div class="lo-item"><span class="lo-check">—</span>Comparing unsupported versus anchored documentation examples</div>
+<div class="lo-item"><span class="lo-check">—</span>Identifying escalation vulnerabilities in existing records</div>
+<div class="lo-item"><span class="lo-check">—</span>Assessing documentation durability during later review</div></div>
+<div class="failure-block"><div class="failure-head">01 | Unsupported Generalization</div><div class="failure-cols"><div class="failure-col"><div class="failure-col-label">Insufficient</div><div class="failure-bad">"Employee has attendance issues."</div></div><div class="failure-col"><div class="failure-col-label">Supported Revision</div><div class="failure-good">Employee was absent without prior notice on January 5, 12, and February 3, contrary to the Attendance Policy acknowledged January 2. Counseling note on file February 4.</div></div></div></div>
+<div class="failure-block"><div class="failure-head">02 | Missing Observable Behavior</div><div class="failure-cols"><div class="failure-col"><div class="failure-col-label">Insufficient</div><div class="failure-bad">"Employee demonstrated unprofessional conduct."</div></div><div class="failure-col"><div class="failure-col-label">Supported Revision</div><div class="failure-good">Employee interrupted client meetings on April 4 and April 11 despite prior written instruction regarding meeting protocol issued March 28. Incident report on file April 12.</div></div></div></div>
+<div class="failure-block"><div class="failure-head">03 | Missing Performance Standard</div><div class="failure-cols"><div class="failure-col"><div class="failure-col-label">Insufficient</div><div class="failure-bad">"Employee does not meet expectations."</div></div><div class="failure-col"><div class="failure-col-label">Supported Revision</div><div class="failure-good">Employee missed project deadlines on January 20, February 17, and March 1, resulting in documented client delay. Performance improvement plan established January 5. Check-in notes on file for each review period.</div></div></div></div>
+<div class="failure-block"><div class="failure-head">04 | Missing Timeline Anchors</div><div class="failure-cols"><div class="failure-col"><div class="failure-col-label">Insufficient</div><div class="failure-bad">"Employee repeatedly failed to communicate project updates."</div></div><div class="failure-col"><div class="failure-col-label">Supported Revision</div><div class="failure-good">Employee did not provide project updates on March 3, 10, and 17 during scheduled team meetings, despite three documented requests from the project lead on file.</div></div></div></div>
+<div class="failure-block"><div class="failure-head">05 | Missing Policy Traceability</div><div class="failure-cols"><div class="failure-col"><div class="failure-col-label">Insufficient</div><div class="failure-bad">"Employee's behavior violated company policy."</div></div><div class="failure-col"><div class="failure-col-label">Supported Revision</div><div class="failure-good">Employee's conduct violated Remote Work Policy Section 3.2, acknowledged in writing January 10. Policy and acknowledgment are on file.</div></div></div></div>
+<div class="op-note">Most escalation files fail at the timeline level. Conduct is described. Dates are not.</div>`},
+{title:"Failure Modes 06–08",html:`
+<div class="failure-block"><div class="failure-head">06 | Unsupported Escalation Language</div><div class="failure-cols"><div class="failure-col"><div class="failure-col-label">Insufficient</div><div class="failure-bad">"This situation has become a serious performance concern."</div></div><div class="failure-col"><div class="failure-col-label">Supported Revision</div><div class="failure-good">Following three documented counseling sessions (Feb 3, Feb 17, Mar 3), error rate remains above the documented threshold. Escalation to formal PIP recommended per HR protocol. Counseling records and performance data on file.</div></div></div></div>
+<div class="failure-block"><div class="failure-head">07 | Narrative Inflation</div><div class="failure-cols"><div class="failure-col"><div class="failure-col-label">Insufficient</div><div class="failure-bad">"Employee has consistently undermined team morale."</div></div><div class="failure-col"><div class="failure-col-label">Supported Revision</div><div class="failure-good">Employee declined to participate in team planning sessions on March 7 and March 14 without stated reason. Two colleagues submitted written notes March 14 referencing project coordination impact. Notes on file.</div></div></div></div>
+<div class="failure-block"><div class="failure-head">08 | Ambiguous Documentation</div><div class="failure-cols"><div class="failure-col"><div class="failure-col-label">Insufficient</div><div class="failure-bad">"Employee discussed concerns with leadership."</div></div><div class="failure-col"><div class="failure-col-label">Supported Revision</div><div class="failure-good">Employee raised concerns regarding overtime scheduling during March 12 meeting with Operations Manager. Follow-up request submitted March 14 and acknowledged by HR March 15.</div></div></div></div>
+<div class="callout"><div class="callout-label">Across All These Patterns</div><p>The same question applies: does the file actually show the basis for this conclusion? If not, it needs additional anchoring before entering an official system. Volume does not substitute for content.</p></div>
+<div class="lesson-section-title">Submission Readiness</div>
+<div class="readiness-grid">
+<div class="readiness-row"><div class="readiness-badge stop">STOP</div><div class="readiness-desc"><strong>Return to Drafter</strong>Evaluative language without anchors. Timeline or policy basis absent. Do not submit until behavioral anchoring is added.</div></div>
+<div class="readiness-row"><div class="readiness-badge review">REVIEW</div><div class="readiness-desc"><strong>Clarification Needed</strong>Conclusion is likely accurate but the basis is not visible in the record. A reviewer reading it cold cannot verify what is not written down.</div></div>
+<div class="readiness-row"><div class="readiness-badge ready">READY</div><div class="readiness-desc"><strong>Self-Contained</strong>Supporting evidence is identifiable, the reasoning is traceable from the record, and the basis holds without explanation from the author.</div></div>
+</div>
+<div class="op-note">A record that reads smoothly is not necessarily a record that is supported.</div>
+<div class="applied-exercise">
+<div class="applied-exercise-head">Applied Review Exercise</div>
+<div class="applied-exercise-body">
+<div class="applied-exercise-original">"Employee demonstrated repeated disruptive conduct that negatively impacted team operations. Despite prior coaching efforts, the behavior continued. Formal disciplinary action is warranted."</div>
+<p class="applied-exercise-prompt">Using the failure-mode catalog, identify each documentation gap:</p>
+<ul class="applied-exercise-items">
+<li>Missing timeline anchors — no dates provided for any instance of described conduct</li>
+<li>Missing observable behavior — "disruptive conduct" is evaluative with no specific acts identified</li>
+<li>Missing policy traceability — no policy cited, no acknowledgment referenced</li>
+<li>Unsupported escalation language — "prior coaching efforts" not referenced or dated</li>
+<li>Unsupported evaluative language — "negatively impacted team operations" without observable support</li>
+</ul>
+<div class="applied-exercise-note">Every sentence in this record contains at least one anchoring gap. The conclusion is not reviewable from the file as written.</div>
+</div>
+</div>`}
+],
+quiz:[
+{q:"A termination record states: 'Employee's performance has been consistently below acceptable levels.' Which failure mode does this represent?",options:["Missing policy traceability","Unsupported generalization with no behavioral, timeline, or standard anchors","Ambiguous documentation","Narrative inflation"],correct:1,explanation:"This is an unsupported generalization. It contains no specific conduct, no dates, no documented standard, and no referenced supporting records. A reviewer reading it cold has no basis to evaluate the conclusion."},
+{q:"A disciplinary record states: 'Employee has been counseled multiple times for the same issue.' What is missing for this to be independently reviewable?",options:["The employee's job title","The supervisor's professional credentials","Specific counseling dates and referenced counseling records","The employee's length of service"],correct:2,explanation:"'Multiple times' is a pattern claim requiring specific dates and referenced records. Without them, a later reviewer cannot establish when counseling occurred, what was communicated, or whether the pattern exists in the documented record."},
+{q:"Which of the following is marked READY under the Submission Readiness framework?",options:["A record with evaluative adjectives and no referenced behavioral events","A conclusion the author knows is accurate but has not documented the basis for","A self-contained record where supporting evidence is identifiable and reasoning is visible in the file","A record reviewed and signed off by the author's direct supervisor"],correct:2,explanation:"READY means the record is self-contained: the evidence is identifiable, the reasoning is visible, and the basis holds up without the author needing to be present to explain it. Supervisor sign-off does not substitute for documented evidentiary grounding."}
+]},
+
+{title:"AI-Assisted Documentation Review",tag:"Module 05",
+lessons:[
+{title:"AI Drafting Risks",html:`
+<p>The review conditions do not change based on how a document was produced. A record generated with AI assistance must satisfy the same evidentiary requirements as one written by hand.</p>
+<div class="callout"><div class="callout-label">The Specific Risk</div><p>AI-assisted wording can introduce characterizations not present in the source material, intensify conclusions beyond what the notes support, and produce language that sounds settled when the underlying information is incomplete or contested.</p></div>
+<div class="condition-grid">
+<div class="cond-row"><div class="cond-num" style="font-size:13px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:6px;">R1</div><div><div class="cond-title">Drafting vs. Attesting</div><div class="cond-text">A tool may assist in drafting. Only a human reviewer can attest that what the record says is grounded in the source material. The wording can sound accurate while the support is absent.</div></div></div>
+<div class="cond-row"><div class="cond-num" style="font-size:13px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:6px;">R2</div><div><div class="cond-title">Unsupported Characterization</div><div class="cond-text">AI-generated characterizations such as "the employee appeared resistant to direction" must be replaced by or anchored to direct observations, specific behavioral descriptions, or referenced conduct records before the document enters an official system.</div></div></div>
+<div class="cond-row"><div class="cond-num" style="font-size:13px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:6px;">R3</div><div><div class="cond-title">Conflict Obscuring</div><div class="cond-text">AI summaries may omit contested accounts or incomplete information present in the original notes. A reviewer accepting the polished output without checking it against source material may not notice what was left out.</div></div></div>
+<div class="cond-row"><div class="cond-num" style="font-size:13px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:6px;">R4</div><div><div class="cond-title">Repetition Without Support</div><div class="cond-text">Similar AI-generated language appearing across many records does not create cumulative evidentiary support. Consistent wording is not the same as consistent documentation.</div></div></div>
+</div>
+<div class="op-note">AI-generated problems in a record are usually found during a later proceeding, not during drafting.</div>
+<div class="lo-block"><div class="lo-label">This module addresses</div>
+<div class="lo-item"><span class="lo-check">—</span>Evaluating AI-assisted records for support visibility</div>
+<div class="lo-item"><span class="lo-check">—</span>The distinction between drafting assistance and evidentiary support</div>
+<div class="lo-item"><span class="lo-check">—</span>Applying source verification to AI-assisted records before system entry</div>
+<div class="lo-item"><span class="lo-check">—</span>Recognizing unsupported summarization patterns</div></div>`},
+{title:"Human Attestation & Source Verification",html:`
+<p>Where automated drafting has contributed to a record, the review standard does not change. All substantive conclusions must be grounded in referenced source material before the record enters an official system. It does not matter whether the wording was generated by a tool or typed by the reviewer.</p>
+<div class="callout"><div class="callout-label">Source Integrity</div><p>Conclusions must trace back to identifiable source material. Wording that introduces characterizations not present in the original notes is a gap in the record regardless of how it was generated. Formal logging of AI prompts is not required. The requirement is that each conclusion remain traceable to a referenced source.</p></div>
+<div class="lesson-section-title">Attestation Before Record Entry</div>
+<div class="lo-block" style="border-left:2px solid #333;background:rgba(255,255,255,.02);">
+<div class="lo-label">Example Attestation Language — Illustrative Only</div>
+<p style="font-size:14.5px;color:var(--text);line-height:1.7;font-style:italic;margin-bottom:14px;">"I reviewed this AI-assisted draft against the source material available to me and confirmed that substantive conclusions remain traceable to documented information in the file."</p>
+<div style="border-top:1px solid var(--rule);padding-top:12px;margin-top:4px;">
+<div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:8px;">Extended Example — Illustrative Only</div>
+<p style="font-size:13px;color:var(--muted-soft);line-height:1.65;font-style:italic;margin-bottom:9px;">"I have reviewed this AI-assisted draft against my original notes and source records. It accurately reflects the documented interactions. No unverified characterizations or sentiment has been introduced that was not in the original material. I am attesting to its accuracy as the reviewer of record."</p>
+<p style="font-size:12.5px;color:var(--muted-soft);line-height:1.6;font-style:italic;opacity:.8;">"Conflict check: This draft has not obscured material disagreements or incomplete information present in the source notes. Where the source material was contested or uncertain, that is reflected here rather than resolved in the summary."</p>
+</div>
+</div>
+<div class="failure-block"><div class="failure-head">AI Summary — Before and After Source Verification</div><div class="failure-cols"><div class="failure-col"><div class="failure-col-label">Unverified</div><div class="failure-bad">"AI summary: Employee is difficult to work with."</div></div><div class="failure-col"><div class="failure-col-label">After Verification</div><div class="failure-good">Summary reviewed against meeting notes dated March 4, 11, and 18. No unverified characterizations introduced. Human review completed March 19 prior to finalization, confirmed against original notes by the attesting reviewer.</div></div></div></div>
+<div class="callout"><div class="callout-label">These Gaps Surface Late</div><p>AI-assisted documentation problems are frequently identified only after a record has entered an official system, during a subsequent review or proceeding. Reviewing AI-assisted drafts against source material before submission is the more reliable point of control.</p></div>
+<div class="quote-block">"The wording may sound complete. That is not the same as being supported."</div>
+<div class="applied-exercise">
+<div class="applied-exercise-head">Applied Review Exercise</div>
+<div class="applied-exercise-body">
+<div class="applied-exercise-original">"AI-generated summary: Based on available records, the employee exhibited a pattern of uncooperative behavior and resistance to management direction throughout the review period. Overall performance was below expectations."</div>
+<p class="applied-exercise-prompt">Apply the Source Integrity condition. Identify what must be resolved before this enters an official record:</p>
+<ul class="applied-exercise-items">
+<li>What source records were reviewed to generate this summary, and are they identified?</li>
+<li>"Uncooperative behavior" — is this characterization traceable to documented interactions, or introduced by the tool?</li>
+<li>"Resistance to management direction" — what specific instructions, on what dates, are reflected in the source notes?</li>
+<li>Has a human reviewer confirmed that no unverified sentiment was introduced and that conflicting accounts were not omitted?</li>
+</ul>
+<div class="applied-exercise-note">AI-generated summaries require the same source anchoring as manually drafted records. The language here has review exposure on every evaluative claim.</div>
+</div>
+</div>`}
+],
+quiz:[
+{q:"An AI tool generates: 'Employee has shown a persistent pattern of resistance to feedback.' Before this enters an official record, what is required?",options:["Manager signature acknowledging that AI was used in drafting","Human review against identifiable source material confirming that specific behavioral incidents support the characterization","Disclosure to the employee that AI assisted in drafting the record","Legal review before any AI-assisted language enters HR documentation"],correct:1,explanation:"AI-generated characterizations require source verification: a human reviewer must confirm the characterization reflects specific documented interactions and that no unverified sentiment or characterization has been introduced."},
+{q:"Which describes the 'conflict obscuring' risk in AI-assisted documentation?",options:["AI tools create conflicting entries across different records in the file","AI summaries may present a cleaner narrative than the source material supports, omitting contested or incomplete information","AI drafting tools create conflicts with existing HR software","AI-generated language creates legal conflicts with applicable employment law"],correct:1,explanation:"Conflict obscuring is the risk that an AI summary smooths over disagreements or gaps that were present in the source notes. A polished output can create the appearance of evidentiary support where the underlying material is actually incomplete or contested."},
+{q:"Ten AI-generated records over six months using similar language about an employee create strong cumulative evidentiary support.",options:["True","False"],correct:1,explanation:"Consistent wording is not consistent documentation. Each record still requires its own specific anchors: dates, conduct descriptions, policy references. Volume substitutes for neither content nor specificity."},
+{q:"The Source Integrity condition requires organizations to log every AI prompt used to generate organizational records.",options:["True","False"],correct:1,explanation:"Source Integrity does not require logging of AI prompts. It requires that the source material behind substantive conclusions remain identifiable. The requirement is traceability of conclusions, not audit logging of the generation process."}
+]},
+
+{title:"Operational Workflow Integration",tag:"Module 06",
+lessons:[
+{title:"Integration Models",html:`
+<p>JRS is applied at the drafting stage, before records enter official systems. No system replacement, dedicated tooling, or structural change is required. It operates within whatever documentation workflows are already in place.</p>
+<p>The depth of review varies by record type, workflow, and staffing. Not every record receives secondary review. The framework identifies where it is warranted, not where it always occurs.</p>
+<div class="lesson-section-title">Where Review Applies</div>
+<table class="workflow-table">
+<tr><th>Model</th><th>When Applied</th><th>Who Reviews</th></tr>
+<tr><td>M1 — Self-Review</td><td>Standard-risk records at drafting stage before system entry</td><td>Manager, investigator, or HR reviewer responsible for the record</td></tr>
+<tr><td>M2 — Secondary Review</td><td>Elevated-risk records: performance evaluations, disciplinary actions, terminations, accommodations</td><td>HR, compliance, or legal personnel before system entry</td></tr>
+<tr><td>M3 — Investigation Review</td><td>Witness summaries, incident records, narrative conclusions</td><td>Reviewer independent of the drafting chain where staffing allows</td></tr>
+<tr><td>M4 — Audit Sampling</td><td>Periodic organizational record sampling</td><td>Compliance or audit personnel using the failure-mode catalog</td></tr>
+<tr><td>M5 — AI Draft Review</td><td>Before AI-assisted wording enters official records</td><td>Human reviewer with direct access to source materials. Human reviewer confirmation required before submission.</td></tr>
+</table>
+<div class="callout"><div class="callout-label">Administrative Neutrality</div><p>JRS evaluates whether the record's supporting basis is present in the file, regardless of whether a secondary reviewer agrees with the outcome. Documentation sufficiency and decision correctness are separate questions. This framework addresses the former.</p></div>
+<div class="op-note">Secondary review does not repair unsupported drafting. The gap has to be addressed before submission.</div>
+<div class="lesson-section-title">Resource-Constrained Review Realities</div>
+<p>Records are drafted under throughput pressure, from incomplete notes, by reviewers with varying skill, and sometimes after events have already occurred. These are operational norms.</p>
+<div class="list-block">
+<div class="list-item"><span class="list-dash">—</span><span><strong style="font-weight:600;color:var(--text);">Incomplete source records.</strong> Notes may be missing, partial, or retrospective. Review standards apply regardless of how source material was assembled.</span></div>
+<div class="list-item"><span class="list-dash">—</span><span><strong style="font-weight:600;color:var(--text);">Delayed note entry.</strong> Records drafted after events are more likely to reflect memory than observation. The gap increases reconstruction risk.</span></div>
+<div class="list-item"><span class="list-dash">—</span><span><strong style="font-weight:600;color:var(--text);">Inconsistent documentation skill.</strong> The same conduct may be documented very differently depending on the drafter. The standard does not vary with those conditions.</span></div>
+<div class="list-item"><span class="list-dash">—</span><span><strong style="font-weight:600;color:var(--text);">Operational throughput pressure.</strong> Some records move through systems without secondary check. The framework identifies where that gap creates risk.</span></div>
+</div>
+<div class="callout"><div class="callout-label">What This Means in Practice</div><p>These constraints do not lower the review standard. They explain why gaps exist. A framework that only applies under ideal conditions is not operational.</p></div>
+<div class="lo-block"><div class="lo-label">This module addresses</div>
+<div class="lo-item"><span class="lo-check">—</span>How documentation review fits within existing organizational workflows</div>
+<div class="lo-item"><span class="lo-check">—</span>Applying review concepts across different operational environments</div>
+<div class="lo-item"><span class="lo-check">—</span>Identifying the limits of procedural review</div>
+<div class="lo-item"><span class="lo-check">—</span>Recognizing workflow constraints that affect documentation quality</div></div>`},
+{title:"High-Risk Indicators & Limitations",html:`
+<p>The following patterns signal elevated documentation risk and require secondary review before the record is finalized. Many gaps result from time pressure, rushed drafting, or incomplete note-taking — not intentional omission. The problem is usually visible only after escalation.</p>
+<div class="list-block">
+<div class="list-item"><span class="list-dash">—</span>Evaluative adjectives without a specific behavioral anchor (disruptive, difficult, unprofessional, poor)</div>
+<div class="list-item"><span class="list-dash">—</span>Disciplinary conclusions citing no specific conduct dates or incidents</div>
+<div class="list-item"><span class="list-dash">—</span>Termination documentation with generalized performance characterizations and no supporting record references</div>
+<div class="list-item"><span class="list-dash">—</span>AI-assisted summaries without identified source records or human attestation</div>
+<div class="list-item"><span class="list-dash">—</span>Timeline inconsistencies between documented events and formal record dates</div>
+<div class="list-item"><span class="list-dash">—</span>Escalation language without documented prior warnings or counseling records on file</div>
+<div class="list-item"><span class="list-dash">—</span>Accommodation records lacking documentation of the interactive process</div>
+<div class="list-item"><span class="list-dash">—</span>Investigation conclusions that do not acknowledge conflicting accounts or limits of the evidence</div>
+</div>
+<div class="op-note">When any of these are present, secondary review is required. Do not submit.</div>
+<div class="lesson-section-title">What This Framework Does Not Do</div>
+<div class="role-grid">
+<div class="role-card"><div class="role-card-title">Not Legal Advice</div><div class="role-card-text">Does not establish legal sufficiency or eliminate legal risk. Organizations should consult qualified legal counsel regarding documentation requirements in their jurisdiction.</div></div>
+<div class="role-card"><div class="role-card-title">Not a Decision Evaluator</div><div class="role-card-text">Does not determine whether an employment decision was substantively correct. Evaluates whether the documented basis for that decision is identifiable from the record.</div></div>
+<div class="role-card"><div class="role-card-title">Not a System Replacement</div><div class="role-card-text">No dedicated software, platform, or system change required. Operates within existing documentation, compliance, and HR workflows.</div></div>
+<div class="role-card"><div class="role-card-title">Not a Judgment Substitute</div><div class="role-card-text">Reviewer judgment is not replaced. Staffing pressure, incomplete records, and varying reviewer skill are operational realities this framework addresses but cannot eliminate.</div></div>
+</div>
+<div class="quote-block">"The goal is not more documentation. It is documentation that actually survives later review."</div>`}
+],
+quiz:[
+{q:"When should documentation review be applied within the workflow?",options:["After the record has entered the official system of record","Only when the record is subject to an active legal hold","At the drafting stage, before records enter official systems","During the annual compliance audit cycle"],correct:2,explanation:"JRS is applied at the drafting stage, before records enter official systems. Reviewing documentation before submission is the more reliable point of control. Problems identified after a record has entered the system are substantially harder to address."},
+{q:"Which of the following records would not trigger a High-Risk Indicator requiring secondary review?",options:["An AI summary characterizing an employee without referenced source material","A termination record that references three specific prior counseling records by date and outcome","Escalation documentation with no referenced prior warnings on file","Evaluative language in a disciplinary record without behavioral anchors"],correct:1,explanation:"A termination record that references specific prior records by date satisfies Conditions I through III: independently reviewable, observable support, and traceable reasoning. The other options all represent High-Risk Indicators."},
+{q:"A record satisfies all four JRS review conditions. This confirms that the employment decision it documents was substantively correct.",options:["True","False"],correct:1,explanation:"JRS evaluates documentation sufficiency, not decision correctness. A record can satisfy all four conditions and still reflect a decision that is later disputed on substantive grounds. These are separate questions."},
+{q:"JRS requires organizations to adopt dedicated documentation management software to implement the standard correctly.",options:["True","False"],correct:1,explanation:"JRS operates within existing organizational workflows. No system replacement, dedicated software, or structural change is required."}
+]}
+
+];
+
+let currentModule=-1,currentLesson=0,quizAnswers=[],quizSubmitted=false;
+
+let completed=(()=>{
+  try{const s=localStorage.getItem('jrs_completed');return s?JSON.parse(s):new Array(MODULES.length).fill(false);}
+  catch(e){return new Array(MODULES.length).fill(false);}
+})();
+
+(()=>{
+  try{const n=localStorage.getItem('jrs_name');if(n)document.getElementById('cert-name-input').value=n;}
+  catch(e){}
+})();
+
+function saveProgress(){
+  try{localStorage.setItem('jrs_completed',JSON.stringify(completed));}catch(e){}
+}
+
+function updateProgress(){
+  const count=completed.filter(Boolean).length;
+  document.getElementById('progress-fill').style.width=(count/MODULES.length*100)+'%';
+  document.getElementById('progress-label').textContent=count+' of '+MODULES.length+' modules complete';
+  MODULES.forEach((_,i)=>{
+    const el=document.getElementById('nav-status-'+i);
+    if(completed[i]){el.textContent='Complete';el.className='module-nav-status complete';}
+    else if(i===currentModule){el.textContent='In Progress';el.className='module-nav-status active';}
+    else{el.textContent='Start';el.className='module-nav-status';}
+  });
+  if(completed.every(Boolean))document.getElementById('course-complete').classList.add('visible');
+}
+
+function openModule(idx){
+  currentModule=idx;currentLesson=0;
+  quizAnswers=new Array(MODULES[idx].quiz.length).fill(-1);quizSubmitted=false;
+  const mod=MODULES[idx];
+  document.getElementById('panel-module-tag').textContent=mod.tag;
+  document.getElementById('panel-title').textContent=mod.title;
+  document.getElementById('lesson-tabs').innerHTML=mod.lessons.map((l,i)=>`<button class="lesson-tab ${i===0?'active':''}" onclick="switchLesson(${i})">${l.title}</button>`).join('')+(mod.quiz.length?`<button class="lesson-tab" onclick="switchLesson(${mod.lessons.length})">Review Questions</button>`:'');
+  document.getElementById('lesson-content-area').innerHTML=mod.lessons.map((l,i)=>`<div class="lesson-body ${i===0?'active':''}" id="lb-${i}">${l.html}</div>`).join('')+(mod.quiz.length?`<div class="lesson-body" id="lb-${mod.lessons.length}"></div>`:'');
+  buildQuiz(idx);
+  document.getElementById('quiz-section').style.display='none';
+  document.getElementById('quiz-score-block').classList.remove('visible');
+  document.getElementById('course-index').style.display='none';
+  document.getElementById('course-panel').classList.add('visible');
+  if(!mod.quiz.length&&!completed[idx]){completed[idx]=true;saveProgress();}
+  updateProgress();window.scrollTo(0,0);
+}
+
+function switchLesson(idx){
+  const mod=MODULES[currentModule];currentLesson=idx;
+  document.querySelectorAll('.lesson-tab').forEach((t,i)=>t.classList.toggle('active',i===idx));
+  mod.lessons.forEach((_,i)=>document.getElementById('lb-'+i).classList.toggle('active',i===idx));
+  const quizBody=document.getElementById('lb-'+mod.lessons.length);
+  if(quizBody)quizBody.classList.toggle('active',idx===mod.lessons.length);
+  document.getElementById('quiz-section').style.display=(idx===mod.lessons.length&&mod.quiz.length)?'block':'none';
+  window.scrollTo(0,document.querySelector('.lesson-tabs').offsetTop-20);
+}
+
+function buildQuiz(idx){
+  const quiz=MODULES[idx].quiz;
+  document.getElementById('quiz-title').textContent='Module '+(idx+1)+' — Review Questions';
+  document.getElementById('quiz-questions').innerHTML=quiz.map((q,qi)=>`
+    <div class="quiz-question-block" id="qblock-${qi}">
+      <div class="quiz-q-num">Question ${qi+1} of ${quiz.length}</div>
+      <div class="quiz-q-text">${q.q}</div>
+      <div class="quiz-options">${q.options.map((opt,oi)=>`<button class="quiz-option" id="opt-${qi}-${oi}" onclick="selectAnswer(${qi},${oi})"><span class="quiz-option-marker" id="marker-${qi}-${oi}"></span>${opt}</button>`).join('')}</div>
+      <div class="quiz-feedback" id="feedback-${qi}">${q.explanation}</div>
+    </div>`).join('')+`<div class="btn-row"><button class="btn btn-accent" onclick="submitQuiz()">Submit</button></div>`;
+}
+
+function selectAnswer(qi,oi){
+  if(quizSubmitted)return;
+  quizAnswers[qi]=oi;
+  MODULES[currentModule].quiz[qi].options.forEach((_,i)=>{
+    document.getElementById('opt-'+qi+'-'+i).classList.toggle('selected',i===oi);
+    document.getElementById('marker-'+qi+'-'+i).textContent=i===oi?'◆':'';
+  });
+}
+
+function submitQuiz(){
+  const quiz=MODULES[currentModule].quiz;
+  if(quizAnswers.some(a=>a===-1)){alert('Please answer all questions before submitting.');return;}
+  quizSubmitted=true;let correct=0;
+  quiz.forEach((q,qi)=>{
+    const ok=quizAnswers[qi]===q.correct;if(ok)correct++;
+    q.options.forEach((_,oi)=>{
+      const btn=document.getElementById('opt-'+qi+'-'+oi);btn.classList.remove('selected');
+      if(oi===q.correct)btn.classList.add('correct');
+      else if(oi===quizAnswers[qi]&&!ok)btn.classList.add('wrong');
+    });
+    document.getElementById('feedback-'+qi).classList.add('visible');
+  });
+  const pct=Math.round(correct/quiz.length*100);
+  document.getElementById('score-number').textContent=correct+'/'+quiz.length;
+  document.getElementById('score-msg').textContent=pct===100?'All questions correct.':pct>=80?'Review the explanations above for any missed questions.':'Review the lesson content before continuing.';
+  document.getElementById('next-module-btn').textContent=currentModule<MODULES.length-1?'Next Module →':'Return to Course Index';
+  document.getElementById('quiz-score-block').classList.add('visible');
+  if(pct>=80){completed[currentModule]=true;saveProgress();updateProgress();}
+}
+
+function retakeQuiz(){quizAnswers=new Array(MODULES[currentModule].quiz.length).fill(-1);quizSubmitted=false;buildQuiz(currentModule);document.getElementById('quiz-score-block').classList.remove('visible');}
+function nextModule(){if(currentModule<MODULES.length-1){openModule(currentModule+1);switchLesson(0);}else closeModule();}
+function closeModule(){currentModule=-1;document.getElementById('course-index').style.display='block';document.getElementById('course-panel').classList.remove('visible');updateProgress();window.scrollTo(0,0);}
+
+function openCertificate(){
+  const name=document.getElementById('cert-name-input').value.trim();
+  if(!name){const inp=document.getElementById('cert-name-input');inp.focus();inp.style.borderColor='#C0392B';setTimeout(()=>inp.style.borderColor='',1400);return;}
+  try{localStorage.setItem('jrs_name',name);}catch(e){}
+  drawCertificate(name);document.getElementById('cert-overlay').classList.add('visible');document.body.style.overflow='hidden';
+}
+function closeCertificate(){document.getElementById('cert-overlay').classList.remove('visible');document.body.style.overflow='';}
+
+function drawCertificate(recipientName){
+  const canvas=document.getElementById('cert-canvas'),ctx=canvas.getContext('2d');
+  const W=1100,H=778;
+  canvas.width=W;canvas.height=H;
+  ctx.fillStyle='#0C0B09';ctx.fillRect(0,0,W,H);
+  const B=30;
+  ctx.strokeStyle='#8A6E2A';ctx.lineWidth=1;ctx.strokeRect(B,B,W-B*2,H-B*2);
+  ctx.fillStyle='#8A6E2A';ctx.fillRect(B,B,W-B*2,2);
+  ctx.fillStyle='#6A6A6A';ctx.font='400 11px "JetBrains Mono",monospace';ctx.textAlign='center';
+  ctx.fillText('COMPLETION RECORD',W/2,100);
+  ctx.strokeStyle='#222';ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(W/2-160,112);ctx.lineTo(W/2+160,112);ctx.stroke();
+  ctx.fillStyle='#8A8A8A';ctx.font='italic 16px "Bodoni Moda","Georgia",serif';
+  ctx.fillText('This acknowledges that',W/2,148);
+  const nfs=recipientName.length>32?46:recipientName.length>22?52:58;
+  ctx.fillStyle='#E8E0CC';ctx.font=`400 ${nfs}px "Bodoni Moda","Georgia",serif`;
+  ctx.fillText(recipientName,W/2,222);
+  const nw=ctx.measureText(recipientName).width;
+  const ux=W/2-Math.min(nw/2+30,300),uw=Math.min(nw+60,600);
+  ctx.strokeStyle='#444';ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(ux,236);ctx.lineTo(ux+uw,236);ctx.stroke();
+  ctx.fillStyle='#8A8A8A';ctx.font='italic 16px "Bodoni Moda","Georgia",serif';
+  ctx.fillText('has reviewed and completed',W/2,278);
+  ctx.fillStyle='#BE9447';ctx.font='500 21px "Inter","Helvetica Neue",sans-serif';
+  ctx.fillText('JRS™ DOCUMENTATION REVIEW FOUNDATIONS',W/2,316);
+  ctx.fillStyle='#666';ctx.font='400 12px "Inter",sans-serif';
+  ctx.fillText('DOCUMENTATION REVIEW LEARNING PROGRAM  ·  v1.0',W/2,340);
+  ctx.strokeStyle='#222';ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(B+80,366);ctx.lineTo(W-B-80,366);ctx.stroke();
+  ctx.fillStyle='#666';ctx.font='400 11.5px "Inter",sans-serif';
+  ctx.fillText('Evidence Anchoring  ·  File Survivability  ·  Traceable Reasoning  ·  AI-Assisted Records  ·  Workflow Integration',W/2,390);
+  ctx.beginPath();ctx.moveTo(B+80,408);ctx.lineTo(W-B-80,408);ctx.stroke();
+  ctx.fillStyle='#505050';ctx.font='400 11px "Inter",sans-serif';
+  ctx.fillText('Educational material. Does not constitute professional certification, legal qualification, or compliance accreditation.',W/2,430);
+  const dateStr=new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+  ctx.fillStyle='#6A6A6A';ctx.font='400 12px "Inter",sans-serif';
+  ctx.fillText('Completed '+dateStr,W/2,462);
+  const infoY=580;
+  ctx.fillStyle='#555';ctx.font='400 10px "JetBrains Mono",monospace';
+  ctx.fillText('PROGRAM AUTHOR',W/2-160,infoY);
+  ctx.fillStyle='#C8C0B0';ctx.font='italic 15px "Bodoni Moda","Georgia",serif';
+  ctx.fillText('Phillip Wikes',W/2-160,infoY+18);
+  ctx.fillStyle='#555';ctx.font='400 10px "JetBrains Mono",monospace';
+  ctx.fillText('FRAMEWORK VERSION',W/2+160,infoY);
+  ctx.fillStyle='#C8C0B0';ctx.font='400 15px "Inter",sans-serif';
+  ctx.fillText('v1.0',W/2+160,infoY+18);
+  ctx.fillStyle='#8A6E2A';ctx.font='400 20px "Bodoni Moda","Georgia",serif';ctx.fillText('JRS™',W/2,infoY+8);
+  ctx.fillStyle='#555';ctx.font='400 9px "JetBrains Mono",monospace';
+  ctx.fillText('JUSTIFICATION REVIEW STANDARD',W/2,infoY+24);
+  ctx.fillStyle='#3A3A3A';ctx.font='400 10.5px "Inter",sans-serif';
+  ctx.fillText('JRS™ is a trademark of Phillip Wikes.  ©2026 Phillip Wikes',W/2,700);
+  ctx.fillStyle='#8A6E2A';ctx.fillRect(B,H-B-2,W-B*2,1);
+}
+
+function downloadCertificate(){
+  const name=document.getElementById('cert-name-input').value.trim().replace(/\s+/g,'-')||'JRS-Completion';
+  const a=document.createElement('a');a.download='JRS-Completion-Record-'+name+'.png';a.href=document.getElementById('cert-canvas').toDataURL('image/png');a.click();
+}
+function printCertificate(){
+  const d=document.getElementById('cert-canvas').toDataURL('image/png'),w=window.open('','_blank');
+  w.document.write(`<!DOCTYPE html><html><head><title>JRS Program Completion Record</title><style>*{margin:0;padding:0}body{background:#fff}img{max-width:100%;display:block}</style></head><body><img src="${d}" onload="window.print();window.close()"></body></html>`);
+  w.document.close();
+}
+
+updateProgress();
+</script>
 </body>
 </html>
