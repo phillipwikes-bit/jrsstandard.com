@@ -387,6 +387,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
     <button class="nav-item" onclick="showSection('roles')">Role Environments</button>
     <button class="nav-item" onclick="showSection('maturity')">Maturity Framework</button>
     <button class="nav-item" onclick="showSection('ai')">AI Documentation</button>
+    <button class="nav-item" onclick="showSection('implementation')">In Practice</button>
     <button class="nav-item" onclick="showSection('training')">Training Program</button>
     <button class="nav-item" onclick="showSection('library')">Materials Library</button>
   </div>
@@ -573,7 +574,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
   <div class="section-head">Access</div>
   <div class="btn-row">
     <a href="JRS-Standard.pdf" download class="btn btn-primary">Download JRS Standard</a>
-    <a href="https://wikesphere.gumroad.com/l/opukbv" target="_blank" rel="noopener noreferrer" class="btn btn-white-box">Reviewer Reference</a>
+    <a href="https://wikesphere.gumroad.com/l/opukbv" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Reviewer Reference</a>
   </div>
 </div>
 
@@ -1550,7 +1551,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
   <p class="supplemental-desc">The JRS Standard establishes the review structure introduced throughout this program. The Reviewer Reference provides the condensed operational review companion used during pre-submission documentation review, including reconstruction checks, escalation indicators, AI source verification reminders, and workflow review prompts.</p>
   <div class="btn-row" style="margin-top:0;">
     <a href="JRS-Standard.pdf" download class="btn btn-primary">Download JRS Standard</a>
-    <a href="https://wikesphere.gumroad.com/l/opukbv" target="_blank" rel="noopener noreferrer" class="btn btn-white-box">Reviewer Reference</a>
+    <a href="https://wikesphere.gumroad.com/l/opukbv" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Reviewer Reference</a>
   </div>
 </div>
 
@@ -1589,6 +1590,298 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
     <div id="quiz-validation" style="display:none;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--stop-text);border:1px solid var(--stop);padding:10px 14px;margin-top:14px;">Answer all questions before submitting.</div>
   </div>
 </div>
+
+</div>
+</div>
+
+
+<!-- ═══════════════════════════════════ -->
+<!-- SECTION 8b: IN PRACTICE            -->
+<!-- ═══════════════════════════════════ -->
+<div id="section-implementation" class="page-section">
+<div class="container">
+
+<div class="page-eyebrow">JRS in Practice</div>
+<h1 class="page-title">Organizational Implementation</h1>
+<p class="page-subtitle">How organizations operationalize JRS within existing HR, compliance, and investigation workflows. This section provides sample workflow integration models, escalation triggers, review memoranda, audit language, and implementation scenarios drawn from realistic organizational contexts.</p>
+
+<div class="callout"><div class="callout-label">Framing</div><p>JRS does not require a formal adoption process, dedicated software, or policy overhaul. It enters organizations the same way any review discipline does: through the people who review documentation before it is submitted. The artifacts below represent how that integration looks in practice.</p></div>
+
+<!-- ─── WORKFLOW INTEGRATION MODELS ─── -->
+<hr class="section-rule">
+<div class="section-head">Sample Workflow Integration Models</div>
+<p class="body-text">The following models illustrate how JRS review inserts into existing organizational documentation workflows without disrupting the underlying process. Each model identifies the insertion point, the reviewer, the trigger, and the output.</p>
+
+<div style="margin-top:20px;">
+
+<div style="border:1px solid var(--rule);background:var(--surface);margin-bottom:8px;">
+  <div style="padding:14px 18px;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:60px 1fr;gap:14px;align-items:start;">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:22px;color:var(--accent-dim);line-height:1;">W1</div>
+    <div><div style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:3px;">Performance Documentation — Standard Risk</div><div style="font-size:13px;color:var(--muted);">Manager drafts → self-review → HRIS submission</div></div>
+  </div>
+  <div style="padding:16px 18px;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:16px;">
+    <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Insertion Point</div><div style="font-size:13.5px;color:var(--muted);">Before HRIS submission, after drafting</div></div>
+    <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Reviewer</div><div style="font-size:13.5px;color:var(--muted);">Manager (self-review)</div></div>
+    <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Tool Applied</div><div style="font-size:13.5px;color:var(--muted);">Manager Self-Review Prompt Sheet</div></div>
+    <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Output</div><div style="font-size:13.5px;color:var(--muted);">READY → submit. REVIEW → add anchors and recheck.</div></div>
+  </div>
+</div>
+
+<div style="border:1px solid var(--rule);background:var(--surface);margin-bottom:8px;">
+  <div style="padding:14px 18px;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:60px 1fr;gap:14px;align-items:start;">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:22px;color:var(--accent-dim);line-height:1;">W2</div>
+    <div><div style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:3px;">Termination Documentation — Elevated Risk</div><div style="font-size:13px;color:var(--muted);">Manager drafts → HR secondary review → legal consultation → HRIS submission</div></div>
+  </div>
+  <div style="padding:16px 18px;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:16px;">
+    <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Insertion Point</div><div style="font-size:13.5px;color:var(--muted);">Before secondary HR review, and again before legal consultation</div></div>
+    <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Reviewer</div><div style="font-size:13.5px;color:var(--muted);">HR compliance personnel</div></div>
+    <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Tools Applied</div><div style="font-size:13.5px;color:var(--muted);">Secondary Review Checklist + Escalation Documentation Review Aid</div></div>
+    <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Output</div><div style="font-size:13.5px;color:var(--muted);">STOP → return to manager. READY → route to legal consultation.</div></div>
+  </div>
+</div>
+
+<div style="border:1px solid var(--rule);background:var(--surface);margin-bottom:8px;">
+  <div style="padding:14px 18px;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:60px 1fr;gap:14px;align-items:start;">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:22px;color:var(--accent-dim);line-height:1;">W3</div>
+    <div><div style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:3px;">AI-Assisted Performance Summary — Any Risk Level</div><div style="font-size:13px;color:var(--muted);">AI draft generated → human source verification → HR review → submission</div></div>
+  </div>
+  <div style="padding:16px 18px;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:16px;">
+    <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Insertion Point</div><div style="font-size:13.5px;color:var(--muted);">Immediately after AI draft generation, before any human review</div></div>
+    <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Reviewer</div><div style="font-size:13.5px;color:var(--muted);">Human reviewer with source material access</div></div>
+    <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Tool Applied</div><div style="font-size:13.5px;color:var(--muted);">AI-Assisted Draft Verification Worksheet</div></div>
+    <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Output</div><div style="font-size:13.5px;color:var(--muted);">Attestation completed or record returned for manual revision before submission.</div></div>
+  </div>
+</div>
+
+<div style="border:1px solid var(--rule);background:var(--surface);margin-bottom:8px;">
+  <div style="padding:14px 18px;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:60px 1fr;gap:14px;align-items:start;">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:22px;color:var(--accent-dim);line-height:1;">W4</div>
+    <div><div style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:3px;">Workplace Complaint Investigation — Independent Review</div><div style="font-size:13px;color:var(--muted);">Investigator drafts conclusion → independent reviewer applies reconstruction check → conclusion filed</div></div>
+  </div>
+  <div style="padding:16px 18px;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:16px;">
+    <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Insertion Point</div><div style="font-size:13.5px;color:var(--muted);">Before investigation conclusion enters the official file</div></div>
+    <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Reviewer</div><div style="font-size:13.5px;color:var(--muted);">Reviewer independent of investigation chain</div></div>
+    <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Tool Applied</div><div style="font-size:13.5px;color:var(--muted);">Investigation Reconstruction Worksheet</div></div>
+    <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Output</div><div style="font-size:13.5px;color:var(--muted);">READY → file conclusion. REVIEW → return to investigator for source identification and conflict acknowledgment.</div></div>
+  </div>
+</div>
+
+</div>
+
+<!-- ─── ESCALATION TRIGGERS ─── -->
+<hr class="section-rule">
+<div class="section-head">Sample Escalation Triggers</div>
+<p class="body-text">The following conditions automatically elevate a record to secondary review before system entry. These triggers represent the minimum escalation threshold. Organizations may add triggers based on their specific risk profile.</p>
+
+<div style="border:1px solid var(--rule);margin-top:16px;">
+  <div style="display:grid;grid-template-columns:200px 1fr 100px;border-bottom:1px solid var(--rule);">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);padding:9px 14px;border-right:1px solid var(--rule);">Trigger Condition</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);padding:9px 14px;border-right:1px solid var(--rule);">Why It Escalates</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);padding:9px 14px;">Routing</div>
+  </div>
+  <div style="display:grid;grid-template-columns:200px 1fr 100px;border-bottom:1px solid #1E1E1E;background:var(--surface);">
+    <div style="font-size:13.5px;color:var(--text);font-weight:500;padding:12px 14px;border-right:1px solid var(--rule);line-height:1.5;">Termination record</div>
+    <div style="font-size:13.5px;color:var(--muted);padding:12px 14px;border-right:1px solid var(--rule);line-height:1.6;">Highest review exposure. Prior counseling trail must be present and traceable.</div>
+    <div style="font-size:13.5px;color:var(--muted);padding:12px 14px;line-height:1.5;">HR + Legal</div>
+  </div>
+  <div style="display:grid;grid-template-columns:200px 1fr 100px;border-bottom:1px solid #1E1E1E;background:var(--surface);">
+    <div style="font-size:13.5px;color:var(--text);font-weight:500;padding:12px 14px;border-right:1px solid var(--rule);line-height:1.5;">Formal disciplinary action</div>
+    <div style="font-size:13.5px;color:var(--muted);padding:12px 14px;border-right:1px solid var(--rule);line-height:1.6;">Policy basis and prior warnings must be identifiable before formal action is documented.</div>
+    <div style="font-size:13.5px;color:var(--muted);padding:12px 14px;line-height:1.5;">HR</div>
+  </div>
+  <div style="display:grid;grid-template-columns:200px 1fr 100px;border-bottom:1px solid #1E1E1E;background:var(--surface);">
+    <div style="font-size:13.5px;color:var(--text);font-weight:500;padding:12px 14px;border-right:1px solid var(--rule);line-height:1.5;">Accommodation denial</div>
+    <div style="font-size:13.5px;color:var(--muted);padding:12px 14px;border-right:1px solid var(--rule);line-height:1.6;">Interactive process documentation must be identifiable. Determination rationale must be on file.</div>
+    <div style="font-size:13.5px;color:var(--muted);padding:12px 14px;line-height:1.5;">HR + Legal</div>
+  </div>
+  <div style="display:grid;grid-template-columns:200px 1fr 100px;border-bottom:1px solid #1E1E1E;background:var(--surface);">
+    <div style="font-size:13.5px;color:var(--text);font-weight:500;padding:12px 14px;border-right:1px solid var(--rule);line-height:1.5;">AI-assisted record without attestation</div>
+    <div style="font-size:13.5px;color:var(--muted);padding:12px 14px;border-right:1px solid var(--rule);line-height:1.6;">Source verification and human confirmation required before any AI-assisted wording enters the official record.</div>
+    <div style="font-size:13.5px;color:var(--muted);padding:12px 14px;line-height:1.5;">Designated reviewer</div>
+  </div>
+  <div style="display:grid;grid-template-columns:200px 1fr 100px;border-bottom:1px solid #1E1E1E;background:var(--surface);">
+    <div style="font-size:13.5px;color:var(--text);font-weight:500;padding:12px 14px;border-right:1px solid var(--rule);line-height:1.5;">Investigation conclusion</div>
+    <div style="font-size:13.5px;color:var(--muted);padding:12px 14px;border-right:1px solid var(--rule);line-height:1.6;">Source materials, conflicting accounts, and evidentiary limits must be identified before conclusion is filed.</div>
+    <div style="font-size:13.5px;color:var(--muted);padding:12px 14px;line-height:1.5;">Independent reviewer</div>
+  </div>
+  <div style="display:grid;grid-template-columns:200px 1fr 100px;background:var(--surface);">
+    <div style="font-size:13.5px;color:var(--text);font-weight:500;padding:12px 14px;border-right:1px solid var(--rule);line-height:1.5;">Escalation without documented prior steps</div>
+    <div style="font-size:13.5px;color:var(--muted);padding:12px 14px;border-right:1px solid var(--rule);line-height:1.6;">Escalation conclusions must reference specific prior documented stages. Records asserting patterns without dated examples require secondary review before submission.</div>
+    <div style="font-size:13.5px;color:var(--muted);padding:12px 14px;line-height:1.5;">HR</div>
+  </div>
+</div>
+
+<!-- ─── SAMPLE REVIEW MEMO ─── -->
+<hr class="section-rule">
+<div class="section-head">Sample Review Memorandum</div>
+<p class="body-text">The following is an illustrative review memorandum format for organizations implementing secondary review on elevated-risk records. Wording should be adapted to the organization's existing documentation standards.</p>
+
+<div style="border:1px solid var(--rule);background:var(--surface);margin-top:16px;">
+  <div style="padding:14px 18px;border-bottom:1px solid var(--rule);">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Illustrative Document — Not a Required Format</div>
+    <div style="font-size:15px;font-weight:600;color:var(--text);">Secondary Documentation Review — Completion Memorandum</div>
+  </div>
+  <div style="padding:20px 22px;display:grid;grid-template-columns:140px 1fr;gap:10px 20px;border-bottom:1px solid var(--rule);">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);">Record Type</div>
+    <div style="font-size:13.5px;color:var(--muted);">[Performance Improvement Plan / Formal Discipline / Termination / Accommodation Decision — select applicable]</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);">Review Date</div>
+    <div style="font-size:13.5px;color:var(--muted);">[Date secondary review was conducted]</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);">Reviewer</div>
+    <div style="font-size:13.5px;color:var(--muted);">[Name and role of secondary reviewer — must be independent of drafting chain for investigation records]</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);">Record Reference</div>
+    <div style="font-size:13.5px;color:var(--muted);">[File reference or record identifier]</div>
+  </div>
+  <div style="padding:20px 22px;">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:12px;">Review Findings</div>
+    <div style="display:grid;grid-template-columns:1fr 80px;gap:0;border:1px solid var(--rule);">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);padding:8px 13px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);">Condition</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);padding:8px 13px;border-bottom:1px solid var(--rule);">Status</div>
+      <div style="font-size:13.5px;color:var(--muted);padding:10px 13px;border-bottom:1px solid #1E1E1E;border-right:1px solid var(--rule);">I — Record is independently reviewable without supplementary explanation</div>
+      <div style="font-size:13.5px;color:var(--muted);padding:10px 13px;border-bottom:1px solid #1E1E1E;">[ ]&nbsp;Met &nbsp;[ ]&nbsp;Gap</div>
+      <div style="font-size:13.5px;color:var(--muted);padding:10px 13px;border-bottom:1px solid #1E1E1E;border-right:1px solid var(--rule);">II — Observable support is present and identifiable for each conclusion</div>
+      <div style="font-size:13.5px;color:var(--muted);padding:10px 13px;border-bottom:1px solid #1E1E1E;">[ ]&nbsp;Met &nbsp;[ ]&nbsp;Gap</div>
+      <div style="font-size:13.5px;color:var(--muted);padding:10px 13px;border-bottom:1px solid #1E1E1E;border-right:1px solid var(--rule);">III — Documented reasoning is visible within the record</div>
+      <div style="font-size:13.5px;color:var(--muted);padding:10px 13px;border-bottom:1px solid #1E1E1E;">[ ]&nbsp;Met &nbsp;[ ]&nbsp;Gap</div>
+      <div style="font-size:13.5px;color:var(--muted);padding:10px 13px;border-right:1px solid var(--rule);">IV — Source integrity confirmed (if AI-assisted drafting was used)</div>
+      <div style="font-size:13.5px;color:var(--muted);padding:10px 13px;">[ ]&nbsp;Met &nbsp;[ ]&nbsp;N/A</div>
+    </div>
+    <div style="margin-top:14px;display:grid;grid-template-columns:140px 1fr;gap:10px 20px;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);">Disposition</div>
+      <div style="font-size:13.5px;color:var(--muted);">[ ] READY — all conditions met. Proceed to system entry.&nbsp;&nbsp; [ ] RETURNED — gaps identified. Record returned to drafter with notation.</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);">Gaps Noted</div>
+      <div style="font-size:13.5px;color:var(--muted);font-style:italic;">[If returned: describe the specific gap and what is required before resubmission]</div>
+    </div>
+    <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--rule);font-size:12px;color:var(--muted-soft);line-height:1.6;">This memorandum documents the completion of secondary documentation review and does not constitute a determination of legal sufficiency, decision correctness, or regulatory compliance. It is an internal review record only.</div>
+  </div>
+</div>
+
+<!-- ─── SAMPLE AUDIT LANGUAGE ─── -->
+<hr class="section-rule">
+<div class="section-head">Sample Audit Language</div>
+<p class="body-text">The following language illustrates how JRS review criteria may be incorporated into existing audit protocols, compliance sampling language, or documentation quality reviews. Adapt to the organization's existing audit terminology.</p>
+
+<div style="border:1px solid var(--rule);background:var(--surface);margin-top:16px;padding:0;">
+  <div style="padding:12px 18px;border-bottom:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);">Illustrative Language — Documentation Quality Sampling Protocol</div>
+  <div style="padding:20px 22px;">
+    <p style="font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:14px;">For each sampled record, the reviewer shall assess whether the documentation satisfies the following criteria:</p>
+    <div class="list-block">
+      <div class="list-item"><span class="list-dash">—</span><span><strong style="color:var(--text);font-weight:600;">Independent Reviewability.</strong> Could a reviewer with no prior knowledge of these events identify the basis for each conclusion from the file alone, without contacting the original author?</span></div>
+      <div class="list-item"><span class="list-dash">—</span><span><strong style="color:var(--text);font-weight:600;">Observable Support.</strong> Does the record contain specific, verifiable support for each conclusion — including dates, referenced records, documented interactions, or policy references?</span></div>
+      <div class="list-item"><span class="list-dash">—</span><span><strong style="color:var(--text);font-weight:600;">Documented Reasoning.</strong> Is the basis for each conclusion visible within the record itself, or does it rely on unstated assumptions or context not present in the file?</span></div>
+      <div class="list-item"><span class="list-dash">—</span><span><strong style="color:var(--text);font-weight:600;">Source Integrity (AI-assisted records).</strong> Where automated drafting contributed to the record, is the source material behind substantive conclusions identifiable? Has human reviewer confirmation been documented before system entry?</span></div>
+    </div>
+    <p style="font-size:14px;color:var(--muted);line-height:1.75;margin-top:14px;margin-bottom:0;">Records that do not satisfy one or more criteria shall be coded as deficient and flagged for workflow-level intervention. Sampling results shall be reported by record type and organizational unit. The review evaluates documentation sufficiency; it does not assess whether underlying decisions were substantively correct.</p>
+  </div>
+</div>
+
+<div style="border:1px solid var(--rule);background:var(--surface);margin-top:8px;padding:0;">
+  <div style="padding:12px 18px;border-bottom:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);">Illustrative Language — AI Governance Review Insert</div>
+  <div style="padding:20px 22px;">
+    <p style="font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:0;">For all records where AI-assisted drafting materially contributed to final language, the governance review shall confirm: (1) the source records reviewed prior to generation are identifiable; (2) a designated human reviewer has confirmed the absence of unverified characterizations; (3) contested or incomplete information present in source notes is reflected in the record rather than resolved by the AI output; and (4) human reviewer confirmation is documented before system entry. Records that do not satisfy these criteria shall not enter official systems until source verification and attestation are completed.</p>
+  </div>
+</div>
+
+<!-- ─── IMPLEMENTATION SCENARIOS ─── -->
+<hr class="section-rule">
+<div class="section-head">Implementation Scenarios</div>
+<p class="body-text">The following scenarios describe how JRS enters and operates within different organizational contexts. Each scenario identifies the adoption pathway, the primary workflow change, and what the organization gains operationally.</p>
+
+<div style="margin-top:16px;">
+
+<div class="memo" style="margin-bottom:8px;">
+  <div class="memo-header"><div class="memo-to">Scenario A — Mid-Market HR Team</div><div class="memo-subject">HR Compliance Officer Introduces JRS as Pre-Submission Review Standard</div></div>
+  <div class="memo-body">
+    <div class="memo-section">
+      <div class="memo-section-label">Context</div>
+      <div class="memo-text">An HR compliance officer at a 400-person organization notices that termination files reviewed during a recent employment dispute contained no specific conduct dates or prior warning references. The legal team had to reconstruct the timeline from email, which took weeks. The officer wants to prevent recurrence without adding formal process overhead.</div>
+    </div>
+    <div class="memo-section">
+      <div class="memo-section-label">Adoption Pathway</div>
+      <div class="memo-text">The officer shares the Pre-Finalization Review Worksheet with the four HR generalists who handle escalated records. No policy change, no system change. The worksheet is added to the folder template used before HRIS submission. Managers receive the Manager Self-Review Prompt Sheet as a one-page attachment in the performance review season communication.</div>
+    </div>
+    <div class="memo-section">
+      <div class="memo-section-label">Primary Workflow Change</div>
+      <div class="memo-text">Managers complete the self-review prompt before routing records to HR. HR generalists apply the Secondary Review Checklist before elevated-risk records enter the HRIS. Records that fail the STOP indicator are returned to the manager with a notation identifying the specific gap.</div>
+    </div>
+    <div class="memo-section">
+      <div class="memo-section-label">Operational Result</div>
+      <div class="memo-text">Termination and disciplinary files begin arriving with specific conduct dates, referenced counseling records, and policy citations. The legal team can reconstruct the timeline from the file alone. The HR officer can demonstrate a consistent pre-submission review process if documentation quality is later questioned.</div>
+    </div>
+  </div>
+</div>
+
+<div class="memo" style="margin-bottom:8px;">
+  <div class="memo-header"><div class="memo-to">Scenario B — Investigation Function</div><div class="memo-subject">Investigators Apply Reconstruction Requirement Before Filing Conclusions</div></div>
+  <div class="memo-body">
+    <div class="memo-section">
+      <div class="memo-section-label">Context</div>
+      <div class="memo-text">An employee relations investigation team at a 1,200-person organization has experienced two situations in the past year where investigation conclusions were challenged and the investigator was no longer available to explain the basis for the findings. In one case, the file contained a conclusion but did not identify the specific conduct, the corroborating witnesses, or the evidence basis for the substantiation determination.</div>
+    </div>
+    <div class="memo-section">
+      <div class="memo-section-label">Adoption Pathway</div>
+      <div class="memo-text">The investigation team adds the Investigation Reconstruction Worksheet as a required step before any investigation conclusion is filed. A senior investigator or HR director applies the worksheet as an independent check before the conclusion enters the official record. No new system, no new software. The worksheet is added to the existing investigation file template.</div>
+    </div>
+    <div class="memo-section">
+      <div class="memo-section-label">Primary Workflow Change</div>
+      <div class="memo-text">Investigation conclusions now identify source materials, corroborating evidence, conflicting accounts, and the specific conduct that was substantiated or unsubstantiated. Where evidence was limited or unavailable, the conclusion acknowledges that rather than asserting certainty the evidence does not support.</div>
+    </div>
+    <div class="memo-section">
+      <div class="memo-section-label">Operational Result</div>
+      <div class="memo-text">Investigation files can be reconstructed without the original investigator. When subsequent challenges arise, the file itself contains the basis for the determination. The organization can demonstrate that the investigative process was documented consistently.</div>
+    </div>
+  </div>
+</div>
+
+<div class="memo">
+  <div class="memo-header"><div class="memo-to">Scenario C — AI Governance Integration</div><div class="memo-subject">Compliance Team Adds JRS Source Integrity Controls to AI Deployment Policy</div></div>
+  <div class="memo-body">
+    <div class="memo-section">
+      <div class="memo-section-label">Context</div>
+      <div class="memo-text">A compliance team at a 2,500-person organization is deploying an AI-assisted performance documentation tool across the HR function. Legal counsel has flagged that AI-generated characterizations in employment records create review exposure if they cannot be traced to source material. The team needs a review standard that applies before AI-assisted records enter official systems — without building a new infrastructure layer.</div>
+    </div>
+    <div class="memo-section">
+      <div class="memo-section-label">Adoption Pathway</div>
+      <div class="memo-text">The compliance team incorporates the JRS Source Integrity condition and human attestation requirement into the AI tool deployment policy. The AI-Assisted Draft Verification Worksheet is added as a required pre-submission step in the tool's workflow documentation. HR reviewers are trained on the verification process using the Documentation Review Learning Program.</div>
+    </div>
+    <div class="memo-section">
+      <div class="memo-section-label">Primary Workflow Change</div>
+      <div class="memo-text">Before any AI-assisted performance record enters the HRIS, a designated human reviewer applies the verification worksheet, confirms source traceability, and documents completion. The attestation notation is added to the record or its supporting file. Records without completed attestation are held from submission.</div>
+    </div>
+    <div class="memo-section">
+      <div class="memo-section-label">Operational Result</div>
+      <div class="memo-text">The organization can demonstrate that AI-assisted records were reviewed against source material before submission. Characterizations introduced by the AI tool that were not present in source notes are identified and corrected before entering official records. The compliance team has a consistent, documented review process compatible with AI governance reporting requirements.</div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- ─── ORGANIZATIONAL ADOPTION ─── -->
+<hr class="section-rule">
+<div class="section-head">How Organizations Operationalize JRS</div>
+<p class="body-text">JRS enters organizational workflows in one of three ways. Each path leads to the same operational result — pre-submission documentation review — through a different organizational entry point.</p>
+
+<div class="card-grid" style="margin-top:16px;">
+  <div class="card">
+    <div class="card-label">Entry Path 01</div>
+    <div class="card-title">Compliance-Driven</div>
+    <div class="card-text">A compliance officer, HR director, or legal counsel identifies documentation quality as a systemic risk — typically following a dispute, audit finding, or regulatory inquiry. JRS is introduced as the review standard for elevated-risk records. Adoption begins with the Secondary Review Checklist and Escalation Documentation Review Aid for the record types that created exposure.</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Entry Path 02</div>
+    <div class="card-title">Investigation-Driven</div>
+    <div class="card-text">An investigation function, employee relations team, or legal team identifies reconstruction gaps in existing investigation files. JRS is adopted to standardize how investigation conclusions are documented and reviewed before filing. Adoption begins with the Investigation Reconstruction Worksheet applied as a pre-filing check independent of the drafting chain.</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Entry Path 03</div>
+    <div class="card-title">AI Governance-Driven</div>
+    <div class="card-text">A compliance or governance team deploying AI-assisted documentation tools needs a source verification and attestation standard before AI-generated content enters official records. JRS is incorporated into the AI tool deployment policy as the pre-submission review requirement. Adoption begins with the AI-Assisted Draft Verification Worksheet and the Source Integrity condition.</div>
+  </div>
+</div>
+
+<div class="callout" style="margin-top:20px;"><div class="callout-label">Consistent Across All Paths</div><p>JRS does not require a formal organizational adoption process. It requires that the people who review documentation before submission apply the review conditions consistently. The framework, the worksheets, and the training program are designed to support that without structural change.</p></div>
+
+<div class="op-note">No dedicated software, platform, or system change required. No organizational reinvention. The review happens at the drafting stage, before records enter official systems, by the people already responsible for reviewing them.</div>
 
 </div>
 </div>
@@ -1732,7 +2025,7 @@ function showSection(id){
   const sec=document.getElementById('section-'+id);
   if(sec)sec.classList.add('active');
   const navItems=document.querySelectorAll('.nav-item');
-  const sectionMap={'home':0,'tools':1,'scenarios':2,'guidance':3,'roles':4,'maturity':5,'ai':6,'training':7,'library':8};
+  const sectionMap={'home':0,'tools':1,'scenarios':2,'guidance':3,'roles':4,'maturity':5,'ai':6,'implementation':7,'training':8,'library':9};
   if(sectionMap[id]!==undefined)navItems[sectionMap[id]].classList.add('active');
   window.scrollTo(0,0);
 }
