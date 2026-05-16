@@ -478,8 +478,8 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
 <div class="onboarding-strip">
   <div class="onboarding-inner">
  <div class="ob-step"><div class="ob-num">A</div><div class="ob-label">What JRS Is</div><div class="ob-text">A pre-finalization documentation review structure for organizational records.</div></div>
- <div class="ob-step"><div class="ob-num">B</div><div class="ob-label">The Problem</div><div class="ob-text">Records are reviewed later by people with no original context. Most hold up or fail at that point.</div></div>
- <div class="ob-step"><div class="ob-num">C</div><div class="ob-label">How Review Works</div><div class="ob-text">Five checks applied before a record enters a formal system. No software required.</div></div>
+ <div class="ob-step"><div class="ob-num">B</div><div class="ob-label">The Problem</div><div class="ob-text">Records are reviewed later by people who were not present. Most hold up or fail at that point.</div></div>
+ <div class="ob-step"><div class="ob-num">C</div><div class="ob-label">How Review Works</div><div class="ob-text">Five questions applied before finalization. No software required. Works inside existing workflows.</div></div>
  <div class="ob-step"><div class="ob-num">D</div><div class="ob-label">Where It Fits</div><div class="ob-text">HR, compliance, investigations, administrative review. Works inside existing workflows.</div></div>
  <div class="ob-step"><div class="ob-num">E</div><div class="ob-label">Deployment Kit</div><div class="ob-text">Onboarding, reviewer training, and operational forms for implementation.</div></div>
   </div>
@@ -576,6 +576,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
  </div>
   </div>
   <div class="reviewer-note" style="margin-top:10px;"><div class="reviewer-note-label">Note</div>Secondary review does not repair unsupported drafting. Records that arrive without a traceable basis are returned, not approved with notation.</div>
+  <div class="reviewer-note" style="margin-top:6px;"><div class="reviewer-note-label">From practice</div>Most secondary review returns happen at intake. Evaluative language without anchors is the most common return indicator. Timeline gaps are second.</div>
 </div>
 
 <div style="margin-bottom:44px;">
@@ -620,6 +621,34 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
  <div class="card"><div class="card-label">Secondary Review</div><div class="card-title">15–30 minutes</div><div class="card-text">HR compliance reviews an elevated-risk record before system entry. Includes confirming supporting records are on file and routing back if gaps are identified.</div></div>
   </div>
   <div class="op-note">The burden is front-loaded. The exposure reduction shows up later, when a record survives a dispute or proceeding that would otherwise have taken weeks to reconstruct.</div>
+</div>
+
+<div style="margin-bottom:44px;">
+  <div class="section-head">Practitioner References</div>
+  <p class="body-text">The following practitioner-oriented references are available as part of the public framework layer. Each is organized around a specific review function.</p>
+  <div style="border-top:1px solid var(--rule);margin-top:12px;">
+    <div style="display:grid;grid-template-columns:52px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--rule);">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);padding-top:3px;">HR</div>
+      <div><div style="font-size:14px;font-weight:600;margin-bottom:3px;color:var(--text);">HR Documentation Review Guide</div><div style="font-size:13px;color:var(--muted);line-height:1.5;">Pre-submission review for performance, disciplinary, termination, and accommodation records. Includes secondary review indicators and escalation routing.</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:52px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--rule);">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);padding-top:3px;">INV</div>
+      <div><div style="font-size:14px;font-weight:600;margin-bottom:3px;color:var(--text);">Investigator Field Reference</div><div style="font-size:13px;color:var(--muted);line-height:1.5;">Source identification, conflict acknowledgment, and reconstruction review for workplace investigation records. Applied before investigation conclusions are filed.</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:52px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--rule);">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);padding-top:3px;">CPL</div>
+      <div><div style="font-size:14px;font-weight:600;margin-bottom:3px;color:var(--text);">Compliance Reviewer Reference</div><div style="font-size:13px;color:var(--muted);line-height:1.5;">Policy traceability review, audit sampling application, and compliance documentation quality assessment.</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:52px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--rule);">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);padding-top:3px;">AI</div>
+      <div><div style="font-size:14px;font-weight:600;margin-bottom:3px;color:var(--text);">AI-Assisted Documentation Review Guide</div><div style="font-size:13px;color:var(--muted);line-height:1.5;">Source verification, attestation prompts, and human review confirmation for AI-assisted records before system entry.</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:52px 1fr;gap:14px;padding:14px 0;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);padding-top:3px;">AUD</div>
+      <div><div style="font-size:14px;font-weight:600;margin-bottom:3px;color:var(--text);">Audit Sampling Reference</div><div style="font-size:13px;color:var(--muted);line-height:1.5;">Documentation quality sampling using the failure-mode catalog. For compliance and audit personnel conducting periodic record review across departments.</div></div>
+    </div>
+  </div>
+  <div style="margin-top:14px;"><button class="btn btn-ghost" style="font-size:12.5px;" onclick="showSection('roles')">View Role Environments</button></div>
 </div>
 
 <div style="margin-bottom:44px;">
@@ -684,7 +713,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
  <div class="kit-purchase-card">
  <div class="kit-purchase-label">JRS&#8482; Deployment Kit</div>
  <div class="kit-purchase-title">Operational Implementation Package</div>
- <div class="kit-purchase-sub">Downloadable PDF. Unlimited access. No account required after purchase.</div><div style="font-size:12px;color:var(--muted-soft);line-height:1.5;margin-bottom:16px;padding:8px 10px;border-left:1px solid rgba(190,148,71,.25);">Operational implementation layer for the JRS&#8482; Documentation Review Reference. Includes onboarding, training, and deployment materials.</div>
+ <div class="kit-purchase-sub">Downloadable PDF package. Operational forms, reviewer training, and workflow guidance for applying JRS within existing documentation environments.</div><div style="font-size:12px;color:var(--muted-soft);line-height:1.5;margin-bottom:16px;padding:8px 10px;border-left:1px solid rgba(190,148,71,.25);">Operational implementation layer for the JRS&#8482; Documentation Review Reference. Includes onboarding, training, and deployment materials.</div>
  
  <div class="kit-price-note" style="margin-bottom:22px;">Downloadable PDF via Gumroad. Unlimited access.</div>
  <a href="https://wikesphere.gumroad.com/l/ojeqeo" target="_blank" rel="noopener noreferrer" class="kit-cta">Access Deployment Resources</a>
@@ -738,7 +767,33 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
  <div class="callout" style="margin-top:20px;">
  <div class="callout-label">Implementation Support</div>
  <p>Operational implementation guidance may be available upon request following Deployment Kit access. Support discussions are limited to workflow adaptation, reviewer onboarding considerations, and implementation questions related to existing documentation-review environments.</p>
- </div>
+    </div>
+
+    <div style="border:1px solid var(--rule);margin-top:20px;">
+      <div style="padding:10px 15px;border-bottom:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);">Reviewer Onboarding Sequence (Illustrative)</div>
+      <div style="padding:0;">
+        <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--rule);">
+          <div style="background:var(--surface2);padding:10px 14px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent-dim);min-width:40px;border-right:1px solid var(--rule);display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div>
+          <div style="padding:10px 14px;font-size:13px;color:var(--muted);">Review the JRS Standard. Understand four review conditions and reviewer lens.</div>
+        </div>
+        <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--rule);">
+          <div style="background:var(--surface2);padding:10px 14px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent-dim);min-width:40px;border-right:1px solid var(--rule);display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div>
+          <div style="padding:10px 14px;font-size:13px;color:var(--muted);">Complete onboarding module. Role-specific review responsibilities and escalation indicators.</div>
+        </div>
+        <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--rule);">
+          <div style="background:var(--surface2);padding:10px 14px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent-dim);min-width:40px;border-right:1px solid var(--rule);display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div>
+          <div style="padding:10px 14px;font-size:13px;color:var(--muted);">Apply Pre-Finalization Worksheet to the next record in your queue. Self-review or route for secondary check.</div>
+        </div>
+        <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--rule);">
+          <div style="background:var(--surface2);padding:10px 14px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent-dim);min-width:40px;border-right:1px solid var(--rule);display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div>
+          <div style="padding:10px 14px;font-size:13px;color:var(--muted);">Reference the failure-mode catalog for any record showing evaluative language, pattern claims, or escalation conclusions.</div>
+        </div>
+        <div style="display:flex;align-items:stretch;">
+          <div style="background:var(--surface2);padding:10px 14px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent-dim);min-width:40px;border-right:1px solid var(--rule);display:flex;align-items:center;justify-content:center;flex-shrink:0;">5</div>
+          <div style="padding:10px 14px;font-size:13px;color:var(--muted);">Introduce the Manager Self-Review Prompt to drafters. Incremental. No formal rollout required.</div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -835,7 +890,18 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
 <div class="callout"><div class="callout-label">Usage Note</div><p>These tools structure the questions a later reviewer would ask. Apply the relevant worksheet before submitting documentation into any official system of record.</p></div>
 <div style="margin-top:28px;"><button class="btn-print" onclick="window.print()">Print Active Worksheet</button></div>
 
-<div class="worksheet" style="margin-top:24px;">
+<div style="border:1px solid var(--rule);margin:24px 0 8px;">
+  <div style="padding:10px 15px;border-bottom:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);">Sample / Review Intake Notation</div>
+  <div style="padding:14px 16px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
+    <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Record</div><div style="font-size:13px;color:var(--muted);">Termination / M. Rivera</div></div>
+    <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Received</div><div style="font-size:13px;color:var(--muted);">5/9/26</div></div>
+    <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Disposition</div><div style="font-size:13px;color:var(--stop-text);">STOP</div></div>
+    <div style="grid-column:1/-1;"><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Reviewer Note</div><div style="font-size:13px;color:var(--muted);font-style:italic;">No PIP referenced. Three counseling notes mentioned in narrative; none attached. Pattern claim unsupported. Timeline between January 15 and March 3 unclear. Returned to drafter before system entry. -- AJL, 5/9/26</div></div>
+  </div>
+  <div style="padding:8px 16px;border-top:1px solid var(--rule);font-size:11.5px;color:var(--muted-soft);font-style:italic;">Illustrative example. Format adapted to organizational workflow.</div>
+</div>
+
+<div class="worksheet" style="margin-top:8px;">
   <div class="worksheet-header" onclick="toggleWS(this)"><span class="worksheet-title">01 / Pre-Finalization Review Worksheet</span><span class="worksheet-toggle">Expand &#8595;</span></div>
   <div class="worksheet-body">
  <div class="ws-section"><div class="ws-section-label">Core Review Checks</div>
@@ -984,6 +1050,19 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
 <p class="page-subtitle">Each scenario presents a record as it commonly appears in practice, with annotated review analysis identifying specific documentation failures and a supported revision.</p>
 <div class="callout"><div class="callout-label">How to Use</div><p>Select the record type. Use the tabs to move between the original record, the review analysis, and the supported revision.</p></div>
 
+<div style="border:1px solid var(--rule);margin-top:20px;margin-bottom:8px;">
+  <div style="padding:10px 15px;border-bottom:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);">Sample / Secondary Review Routing Sheet</div>
+  <div style="padding:14px 16px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;">
+    <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Record Type</div><div style="font-size:13px;color:var(--muted);">Performance Evaluation</div></div>
+    <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Risk Level</div><div style="font-size:13px;color:var(--review-text);">Elevated</div></div>
+    <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Status</div><div style="font-size:13px;color:var(--stop-text);">Returned to Drafter</div></div>
+    <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Gap Identified</div><div style="font-size:13px;color:var(--muted);font-style:italic;">Evaluative language without behavioral anchors. No dates identified.</div></div>
+    <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Action Required</div><div style="font-size:13px;color:var(--muted);">Anchor each claim to specific dated conduct before resubmission.</div></div>
+    <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Reviewer</div><div style="font-size:13px;color:var(--muted);">Initials: AJL &nbsp; Date: 4/18/26</div></div>
+  </div>
+  <div style="padding:8px 16px;border-top:1px solid var(--rule);font-size:11.5px;color:var(--muted-soft);font-style:italic;">Illustrative example. Format may be adapted to organizational workflow.</div>
+</div>
+
 <div class="scenario-block" style="margin-top:28px;">
   <div class="scenario-header"><div><div class="scenario-label">Scenario 01 / Performance Documentation</div><div class="scenario-title">Annual Performance Review with Unsupported Conclusions</div></div></div>
   <div class="scenario-tabs">
@@ -1097,6 +1176,11 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
  <div class="memo-item"><span class="memo-dash">--</span>Witness summaries that introduce characterizations not present in original interview notes</div>
  </div></div>
  <div class="memo-section"><div class="memo-section-label">Conflict Acknowledgment Requirement</div><div class="memo-text">Investigation records must acknowledge conflicting accounts and the limits of what the evidence shows. A record that presents a clean narrative where the source material contains disputes does not satisfy Condition III. Conflicting accounts should be preserved in the record, not resolved by omission.</div></div>
+    <div class="memo-section"><div class="memo-section-label">Common Reviewer Notes in Investigation Files</div>
+      <div class="reviewer-note" style="margin-bottom:6px;"><div class="reviewer-note-label">Example</div>Source X unavailable at time of review. Reviewer unable to verify referenced interaction. Noted as known gap.</div>
+      <div class="reviewer-note" style="margin-bottom:6px;"><div class="reviewer-note-label">Example</div>Witness account in file conflicts with summary conclusion. Conflict not acknowledged in record. Returned for revision.</div>
+      <div class="reviewer-note"><div class="reviewer-note-label">Example</div>Investigation conclusion extends beyond what identified evidence supports. Secondary review recommended before filing.</div>
+    </div>
   </div>
 </div>
 
@@ -1158,8 +1242,8 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
 <div class="container">
 <div class="page-eyebrow">AI-Assisted Documentation Controls</div>
 <h1 class="page-title">AI Documentation Review</h1>
-<p class="page-subtitle">Operational controls for AI-assisted documentation in HR, compliance, and investigation environments. This section addresses source verification, attestation, and whether records remain usable during later review. Not about AI ethics or AI policy frameworks.</p>
-<div class="callout"><div class="callout-label">Framing</div><p>The review conditions apply regardless of whether a record was drafted manually or with AI assistance. What matters is whether the supporting basis can be identified by someone reading the file later, without access to the original author or drafting context.</p></div>
+<p class="page-subtitle">Source verification, attestation, and reconstruction review for records where AI tools contributed to drafting. Applied at the pre-submission stage, before records enter official systems.</p>
+<div class="callout"><div class="callout-label">Review Standard</div><p>The review conditions apply regardless of how a record was drafted. What matters is whether the supporting basis can be identified by someone reading the file later, without the original author available to explain it.</p></div>
 
 <div style="margin-top:32px;"><div class="section-head">Why AI-Assisted Records Fail During Review</div>
 <div class="cond-grid">
@@ -1327,6 +1411,17 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
 <p class="page-subtitle">Framework documents, review worksheets, implementation guidance, and learning resources. Organized by material type and intended use context.</p>
 
 <div style="margin-bottom:32px;">
+  <div class="section-head">Public Resources</div>
+  <p class="muted-text" style="margin-bottom:14px;">The following materials are available at no cost. They are operational references intended for practitioner use within existing review workflows.</p>
+  <div class="library-grid">
+    <div class="library-item"><div class="library-item-info"><div class="library-item-label">Framework Document</div><div class="library-item-title">JRS Standard v1.0</div><div class="library-item-desc">Foundational review structure. Four conditions, reviewer lens, failure-mode catalog. The primary framework document.</div></div><div class="library-item-action"><a href="JRS-Standard.pdf" download class="lib-btn primary">Download</a></div></div>
+    <div class="library-item"><div class="library-item-info"><div class="library-item-label">Practitioner Reference</div><div class="library-item-title">JRS Reviewer Reference</div><div class="library-item-desc">Foundational framework guidance. Reconstruction-focused review principles, failure-mode reference, and documentation review methodology.</div></div><div class="library-item-action"><a href="https://wikesphere.gumroad.com/l/opukbv" target="_blank" rel="noopener noreferrer" class="lib-btn">Access</a></div></div>
+    <div class="library-item"><div class="library-item-info"><div class="library-item-label">Field Supplement</div><div class="library-item-title">Investigator Field Reference</div><div class="library-item-desc">Reconstruction review for investigation records. Source identification prompts, conflict acknowledgment guidance, and reviewer question sets for workplace investigations.</div></div><div class="library-item-action"><a href="https://wikesphere.gumroad.com/l/opukbv" target="_blank" rel="noopener noreferrer" class="lib-btn">Access</a></div></div>
+    <div class="library-item"><div class="library-item-info"><div class="library-item-label">Role Reference</div><div class="library-item-title">HR Documentation Review Guide</div><div class="library-item-desc">Pre-submission review guidance for HR practitioners. Performance, disciplinary, termination, and accommodation documentation review.</div></div><div class="library-item-action"><a href="https://wikesphere.gumroad.com/l/opukbv" target="_blank" rel="noopener noreferrer" class="lib-btn">Access</a></div></div>
+  </div>
+</div>
+
+<div style="margin-bottom:32px;">
   <div class="section-head">Framework Materials</div>
   <div class="library-grid">
  <div class="library-item"><div class="library-item-info"><div class="library-item-label">Standard Document</div><div class="library-item-title">JRS Standard v1.0</div><div class="library-item-desc">Foundational review structure. Four conditions, reviewer lens, failure-mode catalog.</div></div><div class="library-item-action"><a href="JRS-Standard.pdf" download class="lib-btn primary">Download</a></div></div>
@@ -1347,6 +1442,17 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
  <div class="library-item"><div class="library-item-info"><div class="library-item-label">Worksheet 06</div><div class="library-item-title">Investigation Reconstruction Worksheet</div><div class="library-item-desc">Source identification, reconstruction check, independent review.</div></div><div class="library-item-action"><button class="lib-btn" onclick="showSection('tools')">Open</button></div></div>
   </div>
   <p class="muted-text" style="margin-top:8px;">Print-ready versions of all worksheets plus additional operational forms are included in the <button onclick="showSection('kit')" style="background:none;border:none;color:var(--accent);font-size:inherit;cursor:pointer;font-family:inherit;text-decoration:underline;padding:0;">Deployment Kit</button>.</p>
+</div>
+
+<div style="margin-bottom:32px;">
+  <div class="section-head">Role-Specific References</div>
+  <p class="muted-text" style="margin-bottom:14px;">Operational reference materials organized by practitioner role. Each addresses documentation review from the perspective of the reviewer function.</p>
+  <div class="library-grid">
+    <div class="library-item"><div class="library-item-info"><div class="library-item-label">Role Reference</div><div class="library-item-title">Investigator Supplement</div><div class="library-item-desc">Source identification, conflict acknowledgment, reconstruction review. For investigators reviewing workplace complaint documentation before filing.</div></div><div class="library-item-action"><button class="lib-btn" onclick="showSection('roles')">Open</button></div></div>
+    <div class="library-item"><div class="library-item-info"><div class="library-item-label">Role Reference</div><div class="library-item-title">HR Reviewer Guide</div><div class="library-item-desc">Pre-submission review for performance, disciplinary, termination, and accommodation records. Secondary review checklists for elevated-risk documentation.</div></div><div class="library-item-action"><button class="lib-btn" onclick="showSection('roles')">Open</button></div></div>
+    <div class="library-item"><div class="library-item-info"><div class="library-item-label">Role Reference</div><div class="library-item-title">Compliance Reviewer Reference</div><div class="library-item-desc">Policy traceability, audit sampling application, and compliance documentation quality review. For compliance reviewers and audit personnel.</div></div><div class="library-item-action"><button class="lib-btn" onclick="showSection('roles')">Open</button></div></div>
+    <div class="library-item"><div class="library-item-info"><div class="library-item-label">Role Reference</div><div class="library-item-title">Manager Self-Review Companion</div><div class="library-item-desc">Drafting-stage self-review. Pre-submission checklist for performance and conduct documentation. Includes AI-assisted drafting verification prompts.</div></div><div class="library-item-action"><button class="lib-btn" onclick="showSection('roles')">Open</button></div></div>
+  </div>
 </div>
 
 <div style="margin-bottom:32px;">
