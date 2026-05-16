@@ -489,7 +489,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
 
 <div class="page-eyebrow">Documentation Review Structure</div>
 <h1 class="page-title">Justification Review Standard (JRS&#8482;)</h1>
-<p class="page-subtitle">Applied before records enter official systems. The review checks whether conclusions are understandable, supportable, and reconstructable during later review.</p>
+<p class="page-subtitle">Applied before records enter official systems. Checks whether conclusions are understandable and reconstructable from the file alone.</p>
 
 <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:var(--muted-soft);margin-bottom:20px;">Designed for use within existing organizational workflows. No dedicated platform required.</div>
 
@@ -541,7 +541,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
 
 <div style="margin-bottom:44px;">
   <div class="section-head">Four Review Conditions</div>
-  <p class="body-text">Documentation sufficiency is evaluated against four conditions. These apply regardless of record type or how the document was produced.</p>
+  <p class="body-text">Four conditions apply before a record enters an official system. They apply regardless of record type or how the document was drafted.</p>
   <div class="cond-grid">
  <div class="cond-row"><div class="cond-num" style="font-size:14px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:4px;">01</div><div><div class="cond-title">Independently Reviewable</div><div class="cond-text">The basis for conclusions should be recoverable from the record by someone with no prior knowledge of the events, without additional context or supplementary explanation.</div></div></div>
  <div class="cond-row"><div class="cond-num" style="font-size:14px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:4px;">02</div><div><div class="cond-title">Observable Support</div><div class="cond-text">Each conclusion requires a specific, verifiable anchor in the file: a date, a documented interaction, a log entry, or a referenced record.</div></div></div>
@@ -593,7 +593,8 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
 <div style="margin-bottom:44px;">
   <div class="section-head">Common Documentation Failures</div>
   <p class="body-text">The following patterns appear repeatedly in HR, compliance, investigation, and audit review. Most look complete at drafting. The gap shows up later, when a reviewer reads the file without the original context.</p>
-  <div class="reviewer-note" style="margin-bottom:14px;"><div class="reviewer-note-label">From practice</div>Most escalation files fail at the timeline level. Conduct is described. Dates are not. Without dates, the pattern cannot be independently established.</div>
+  <div class="reviewer-note" style="margin-bottom:8px;"><div class="reviewer-note-label">From practice</div>Most escalation files fail at the timeline level. Conduct is described. Dates are not. Without dates, the pattern cannot be independently established.</div>
+  <div class="reviewer-note" style="margin-bottom:14px;"><div class="reviewer-note-label">From practice</div>Secondary review most often flags: evaluative adjectives without anchors, escalation without prior counseling trail, and AI summaries without source identification. Pattern claims missing dates are the most common single gap.</div>
   <div class="failure-block"><div class="failure-head">Unsupported Generalization</div><div class="failure-cols"><div class="failure-col"><div class="failure-col-label">As Written</div><div class="failure-bad">"Employee has attendance issues."</div><div class="reviewer-note" style="margin-top:8px;"><div class="reviewer-note-label">Reviewer flag</div>No dates, no frequency, no policy reference. Cannot verify from file.</div></div><div class="failure-col"><div class="failure-col-label">Supported Revision</div><div class="failure-good">Employee was absent January 5, 12, and February 3 without prior notice, contrary to Attendance Policy acknowledged January 2. Counseling note on file February 4.</div></div></div></div>
   <div class="failure-block"><div class="failure-head">Missing Observable Behavior</div><div class="failure-cols"><div class="failure-col"><div class="failure-col-label">As Written</div><div class="failure-bad">"Employee demonstrated unprofessional conduct."</div><div class="reviewer-note" style="margin-top:8px;"><div class="reviewer-note-label">Reviewer flag</div>Evaluative label only. No specific conduct identified.</div></div><div class="failure-col"><div class="failure-col-label">Supported Revision</div><div class="failure-good">Employee interrupted client meetings on April 4 and April 11 despite prior written instruction dated March 28. Incident report on file April 12.</div></div></div></div>
   <div class="failure-block"><div class="failure-head">AI Summary Without Verification</div><div class="failure-cols"><div class="failure-col"><div class="failure-col-label">As Written</div><div class="failure-bad">"AI summary: Employee is difficult to work with."</div><div class="reviewer-note" style="margin-top:8px;"><div class="reviewer-note-label">Reviewer flag</div>Source records not identified. Human review not confirmed. Do not submit.</div></div><div class="failure-col"><div class="failure-col-label">Supported Revision</div><div class="failure-good">Summary reviewed against meeting notes dated March 4, 11, and 18. No unverified characterizations introduced. Human review completed March 19.</div></div></div></div>
@@ -621,6 +622,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
  <div class="card"><div class="card-label">Secondary Review</div><div class="card-title">15–30 minutes</div><div class="card-text">HR compliance reviews an elevated-risk record before system entry. Includes confirming supporting records are on file and routing back if gaps are identified.</div></div>
   </div>
   <div class="op-note">The burden is front-loaded. The exposure reduction shows up later, when a record survives a dispute or proceeding that would otherwise have taken weeks to reconstruct.</div>
+  <div class="reviewer-note" style="margin-top:12px;"><div class="reviewer-note-label">Reviewer note</div>Underlying documentation not attached. Timeline unclear. Pattern claim unsupported by materials on file. This is what secondary review catches before system entry, not after.</div>
 </div>
 
 <div style="margin-bottom:44px;">
@@ -643,9 +645,13 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
       <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);padding-top:3px;">AI</div>
       <div><div style="font-size:14px;font-weight:600;margin-bottom:3px;color:var(--text);">AI-Assisted Documentation Review Guide</div><div style="font-size:13px;color:var(--muted);line-height:1.5;">Source verification, attestation prompts, and human review confirmation for AI-assisted records before system entry.</div></div>
     </div>
-    <div style="display:grid;grid-template-columns:52px 1fr;gap:14px;padding:14px 0;">
+    <div style="display:grid;grid-template-columns:52px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--rule);">
       <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);padding-top:3px;">AUD</div>
       <div><div style="font-size:14px;font-weight:600;margin-bottom:3px;color:var(--text);">Audit Sampling Reference</div><div style="font-size:13px;color:var(--muted);line-height:1.5;">Documentation quality sampling using the failure-mode catalog. For compliance and audit personnel conducting periodic record review across departments.</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:52px 1fr;gap:14px;padding:14px 0;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);padding-top:3px;">ADM</div>
+      <div><div style="font-size:14px;font-weight:600;margin-bottom:3px;color:var(--text);">Administrative Review Companion</div><div style="font-size:13px;color:var(--muted);line-height:1.5;">Reconstruction check for accommodation decisions, separation records, and formal administrative action documentation before processing.</div></div>
     </div>
   </div>
   <div style="margin-top:14px;"><button class="btn btn-ghost" style="font-size:12.5px;" onclick="showSection('roles')">View Role Environments</button></div>
@@ -693,7 +699,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
  <div>
  <div class="kit-badge">Deployment Kit</div>
  <h1 class="kit-title">Operational onboarding.<br><span>Reviewer training.</span><br>Implementation resources.</h1>
- <p class="kit-subtitle">For applying JRS&#8482; within existing documentation workflows. Designed for use without a dedicated platform, system replacement, or implementation project.</p>
+ <p class="kit-subtitle">Operational onboarding, reviewer training, and implementation resources for applying JRS&#8482; within existing documentation workflows. No dedicated platform required.</p>
  <div class="kit-tagline">Practical. Operational. Implementable.</div>
  <div class="kit-features">
  <div class="kit-feature"><span class="kit-feature-icon">--</span><span>Reviewer onboarding materials and orientation guides</span></div>
@@ -742,7 +748,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
  <h2 class="kit-section-title">What the Deployment Kit Contains</h2>
  <p class="kit-section-text">The kit is organized into five operational sections. Each is usable independently. A reviewer can begin with the onboarding sequence and proceed to the forms library as records come through, or apply the training modules organization-wide before rollout.</p>
  <div class="contents-grid">
- <div class="contents-item"><div class="contents-item-label">Section A</div><div class="contents-item-title">Reviewer Onboarding</div><div class="contents-item-text">Step-by-step onboarding sequence for individual reviewers and HR teams. Explains what JRS is, what the reviewer does, and where each tool applies. Written for practitioners, not theorists.</div></div>
+ <div class="contents-item"><div class="contents-item-label">Section A</div><div class="contents-item-title">Reviewer Onboarding</div><div class="contents-item-text">Step-by-step onboarding for individual reviewers and HR teams. What the reviewer does, where each tool applies, and how review fits into existing workflow.</div></div>
  <div class="contents-item"><div class="contents-item-label">Section B</div><div class="contents-item-title">Reviewer Training Modules</div><div class="contents-item-text">Operational training for HR reviewers, investigators, and compliance personnel. Covers evidence anchoring, reconstruction review, escalation indicators, and AI-assisted documentation controls.</div></div>
  <div class="contents-item"><div class="contents-item-label">Section C</div><div class="contents-item-title">Operational Tools</div><div class="contents-item-text">Checklists, forms, escalation worksheets, and reviewer signoff templates. Print-ready. Designed to work alongside existing documentation workflows without replacing them.</div></div>
  <div class="contents-item"><div class="contents-item-label">Section D</div><div class="contents-item-title">Redlined Examples</div><div class="contents-item-text">Annotated before-and-after documentation examples with reviewer observations. Shows what each failure mode looks like in practice and what the record needs to satisfy the review conditions.</div></div>
@@ -888,6 +894,21 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
 <h1 class="page-title">Pre-Submission Review Worksheets</h1>
 <p class="page-subtitle">Applied at the drafting stage, before records enter official systems. No software required. Works within existing HR, compliance, and investigation workflows.</p>
 <div class="callout"><div class="callout-label">Usage Note</div><p>These tools structure the questions a later reviewer would ask. Apply the relevant worksheet before submitting documentation into any official system of record.</p></div>
+<div style="margin-top:14px;margin-bottom:0;border:1px solid var(--rule);padding:14px 16px;background:var(--surface);">
+  <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:8px;">Worksheet selection by record type</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;font-size:13px;color:var(--muted);">
+    <div style="padding:5px 0;border-bottom:1px solid var(--rule-soft);">Standard performance record</div>
+    <div style="padding:5px 0;border-bottom:1px solid var(--rule-soft);padding-left:12px;">Worksheet 01 / Manager self-review</div>
+    <div style="padding:5px 0;border-bottom:1px solid var(--rule-soft);">Formal disciplinary / termination</div>
+    <div style="padding:5px 0;border-bottom:1px solid var(--rule-soft);padding-left:12px;">Worksheet 01 + 04 / HR secondary review</div>
+    <div style="padding:5px 0;border-bottom:1px solid var(--rule-soft);">Pattern conduct / PIP records</div>
+    <div style="padding:5px 0;border-bottom:1px solid var(--rule-soft);padding-left:12px;">Worksheet 01 + 02 / Timeline anchor check</div>
+    <div style="padding:5px 0;border-bottom:1px solid var(--rule-soft);">Investigation conclusions</div>
+    <div style="padding:5px 0;border-bottom:1px solid var(--rule-soft);padding-left:12px;">Worksheet 06 / Reconstruction check</div>
+    <div style="padding:5px 0;">AI-assisted records (any type)</div>
+    <div style="padding:5px 0;padding-left:12px;">Worksheet 03 / Source verification</div>
+  </div>
+</div>
 <div style="margin-top:28px;"><button class="btn-print" onclick="window.print()">Print Active Worksheet</button></div>
 
 <div style="border:1px solid var(--rule);margin:24px 0 8px;">
@@ -1047,7 +1068,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
 <div class="container">
 <div class="page-eyebrow">Documentation Review Lab</div>
 <h1 class="page-title">Review Scenarios</h1>
-<p class="page-subtitle">Each scenario presents a record as it commonly appears in practice, with annotated review analysis identifying specific documentation failures and a supported revision.</p>
+<p class="page-subtitle">Records as they commonly arrive for review. Each scenario shows the original record, the reviewer analysis identifying gaps, and a supported revision.</p>
 <div class="callout"><div class="callout-label">How to Use</div><p>Select the record type. Use the tabs to move between the original record, the review analysis, and the supported revision.</p></div>
 
 <div style="border:1px solid var(--rule);margin-top:20px;margin-bottom:8px;">
@@ -1079,6 +1100,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
  <div class="annotation"><span class="annotation-tag">Missing Anchor</span><span>"Does not take initiative" -- characterization without supporting behavioral examples. What specific assignments, what specific dates?</span></div>
  <div class="annotation"><span class="annotation-tag">Missing Anchor</span><span>"Unprofessional communication" -- evaluative label without a single documented incident.</span></div>
  <div class="annotation warn"><span class="annotation-tag">Reviewer Note</span><span>Every conclusion in this record is unsupported. Pattern claim unsupported. No dates, frequency, or policy references documented.</span></div>
+    <div class="reviewer-note" style="margin-top:10px;"><div class="reviewer-note-label">From review file</div>Record returned to drafter. Five evaluative claims identified. None anchored. Underlying documentation not attached. Cannot advance to system entry. -- HR secondary reviewer, 3/14/26</div>
   </div>
   <div id="sc1-revision" class="scenario-pane">
  <div class="record-text" style="color:var(--muted);">"During the January through December review period, employee missed three project deadlines (February 14, April 3, September 22) against timelines established in the January 5 performance plan. Check-in notes for each missed deadline are on file. On March 7 and March 14, employee declined to participate in team planning sessions without stated reason; two colleagues submitted written notes March 14 referencing coordination impact. Employee was absent without prior notice on June 8 and August 11, contrary to attendance policy acknowledged January 2. Counseling note on file August 12. During the October 19 client review meeting, employee interrupted the presenter three times after the project lead had issued written guidance regarding meeting conduct (guidance on file, October 1)."</div>
@@ -1200,7 +1222,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
 <div class="container">
 <div class="page-eyebrow">Role-Based Environments</div>
 <h1 class="page-title">Review Environments</h1>
-<p class="page-subtitle">Select a role environment to access review responsibilities, common documentation failures, reconstruction questions, and escalation indicators specific to that function.</p>
+<p class="page-subtitle">Documentation review responsibilities, common failure patterns, reconstruction questions, and escalation indicators organized by practitioner role. Each environment reflects the documentation context specific to that function.</p>
 <div id="roles-menu">
   <div class="role-grid">
  <div class="role-card" onclick="showRoleEnv('hr')"><div class="role-card-sub">Environment 01</div><div class="role-card-title">HR Reviewer</div><div class="role-card-text">Performance, disciplinary, termination, and accommodation documentation review.</div></div>
@@ -1230,7 +1252,9 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
   <div class="maturity-level"><div class="maturity-level-header" onclick="toggleMaturity(this)"><div class="maturity-level-num">01</div><div><div class="maturity-level-title">Foundational Self-Review</div><div class="maturity-level-sub">Manager or HR reviewer applies the diagnostic questions before finalizing. No secondary review required for standard-risk records.</div></div></div><div class="maturity-level-body"><p class="body-text">The reviewer applies the five reconstruction checks and the Pre-Finalization Review Worksheet at the drafting stage, before the record enters an official system. No dedicated tooling required. Appropriate for standard performance check-ins, routine coaching notes, and non-elevated administrative records.</p></div></div>
   <div class="maturity-level"><div class="maturity-level-header" onclick="toggleMaturity(this)"><div class="maturity-level-num">02</div><div><div class="maturity-level-title">Secondary Review Risk-Based</div><div class="maturity-level-sub">HR or compliance review for elevated-risk records before system entry.</div></div></div><div class="maturity-level-body"><p class="body-text">Secondary Review Checklist and Escalation Documentation Review Aid applied by HR, compliance, or legal personnel before elevated-risk records enter official systems. Applies to PIPs, formal disciplinary actions, termination documentation, and accommodation decisions.</p><div class="reviewer-note"><div class="reviewer-note-label">Reviewer Note</div>Secondary review cannot repair unsupported drafting. Records that arrive without a traceable basis should be returned to the drafter. Approving them with a notation does not resolve the underlying problem.</div></div></div>
   <div class="maturity-level"><div class="maturity-level-header" onclick="toggleMaturity(this)"><div class="maturity-level-num">03</div><div><div class="maturity-level-title">Investigation Review</div><div class="maturity-level-sub">Applied to witness summaries, incident records, and narrative conclusions before finalization.</div></div></div><div class="maturity-level-body"><p class="body-text">Investigation Reconstruction Worksheet applied. Source material identification required. Conflicting accounts must be acknowledged. Reviewer independent of the drafting chain where staffing allows.</p></div></div>
-  <div class="maturity-level"><div class="maturity-level-header" onclick="toggleMaturity(this)"><div class="maturity-level-num">04</div><div><div class="maturity-level-title">Audit Sampling</div><div class="maturity-level-sub">Compliance or audit personnel periodically sample organizational records using the failure-mode catalog.</div></div></div><div class="maturity-level-body"><p class="body-text">Sampling surfaces patterns across departments where documentation quality is consistently low. Results identify record types and workflow stages where intervention is most warranted. Reviewer operates independently of the drafting chain for sampled records.</p></div></div>
+  <div class="maturity-level"><div class="maturity-level-header" onclick="toggleMaturity(this)"><div class="maturity-level-num">04</div><div><div class="maturity-level-title">Audit Sampling</div><div class="maturity-level-sub">Compliance or audit personnel periodically sample organizational records using the failure-mode catalog.</div></div></div><div class="maturity-level-body"><p class="body-text">Sampling surfaces patterns across departments where documentation quality is consistently low. Results identify record types and workflow stages where intervention is most warranted. Reviewer operates independently of the drafting chain for sampled records.</p>
+<div class="reviewer-note" style="margin-top:10px;"><div class="reviewer-note-label">Typical sampling findings</div>Department A: 8 of 12 termination records lacked referenced supporting documentation. Department B: All 6 investigation records reviewed contained evaluative conclusions without identified source materials. Timeline gaps present in 11 of 15 disciplinary records sampled.</div>
+</div></div>
   <div class="maturity-level"><div class="maturity-level-header" onclick="toggleMaturity(this)"><div class="maturity-level-num">05</div><div><div class="maturity-level-title">AI-Assisted Review Oversight</div><div class="maturity-level-sub">AI-Assisted Draft Verification Worksheet applied before AI content enters official records.</div></div></div><div class="maturity-level-body"><p class="body-text">Human reviewer with direct access to source materials confirms conclusions, absence of unverified characterizations, and preservation of conflicting accounts. Required for any record where AI tools materially contributed to drafting or summarization.</p></div></div>
 </div>
 </div>
@@ -1251,6 +1275,8 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
   <div class="cond-row"><div class="cond-num" style="font-size:13px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:5px;">R2</div><div><div class="cond-title">Unsupported Characterization</div><div class="cond-text">AI-generated characterizations must be anchored to specific documented observations before the document enters an official system. Phrases like "appeared resistant" or "uncooperative behavior" are evaluative, not evidentiary.</div></div></div>
   <div class="cond-row"><div class="cond-num" style="font-size:13px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:5px;">R3</div><div><div class="cond-title">Conflict Obscuring</div><div class="cond-text">AI summaries may omit contested accounts or incomplete information present in source notes. A polished summary that resolves rather than reflects source conflicts fails Condition III.</div></div></div>
   <div class="cond-row"><div class="cond-num" style="font-size:13px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:5px;">R4</div><div><div class="cond-title">Repetition Without Support</div><div class="cond-text">Consistent AI-generated language across multiple records does not create cumulative evidentiary support. Each record still requires its own specific anchors. Repetition does not create evidence.</div></div></div>
+</div>
+<div class="reviewer-note" style="margin-top:14px;"><div class="reviewer-note-label">Pattern seen in review</div>File contained nine records using similar evaluative language. None cited specific conduct, dates, or interactions. Pattern claim could not be established from any individual record or from the file as a whole.</div>
 </div></div>
 
 <hr class="section-rule">
@@ -1278,7 +1304,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
 <div class="container">
 <div class="page-eyebrow">Use Cases</div>
 <h1 class="page-title">Operational Use Cases</h1>
-<p class="page-subtitle">Named operational contexts showing how JRS review applies within real organizational workflows. Each identifies the documentation at issue, the review applied, common gaps, and what the record needs to hold up.</p>
+<p class="page-subtitle">Documentation review as it applies in specific operational contexts. Each use case identifies the record type, review applied, common gaps encountered, and what the file needs to hold up during later review.</p>
 
 <div class="scenario-block" style="margin-top:28px;">
   <div class="scenario-header"><div><div class="scenario-label">Use Case 01 HR Corrective Action Review</div><div class="scenario-title">Progressive Discipline Record Termination Following PIP</div></div></div>
@@ -1334,11 +1360,11 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
 <!-- TRAINING SECTION -->
 <div id="section-training" class="page-section">
 <div class="container">
-<div class="course-eyebrow">Documentation Review Learning Program</div>
+<div class="course-eyebrow">Reviewer Training Program</div>
 <h2 class="course-title">JRS&#8482; Documentation Review Foundations</h2>
 <p class="course-subtitle">Six modules covering evidence anchoring, file survivability, traceable reasoning, and review of AI-assisted records. Applicable to HR, compliance, investigation, and administrative documentation environments.</p>
 <div class="chip-row"><span class="chip">6 Learning Modules</span><span class="chip">Self-Paced</span><span class="chip">No Account Required</span></div>
-<div class="framing-block"><p>This program evaluates whether a record's supporting basis remains identifiable during later review by individuals without original context.</p></div>
+<div class="framing-block"><p>Covers documentation review from the reviewer's perspective. Each module addresses a specific aspect of pre-submission review practice.</p></div>
 <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
 <div class="progress-label" id="progress-label">0 of 6 modules complete</div>
 <div class="module-nav" id="module-nav">
@@ -1418,6 +1444,8 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
     <div class="library-item"><div class="library-item-info"><div class="library-item-label">Practitioner Reference</div><div class="library-item-title">JRS Reviewer Reference</div><div class="library-item-desc">Foundational framework guidance. Reconstruction-focused review principles, failure-mode reference, and documentation review methodology.</div></div><div class="library-item-action"><a href="https://wikesphere.gumroad.com/l/opukbv" target="_blank" rel="noopener noreferrer" class="lib-btn">Access</a></div></div>
     <div class="library-item"><div class="library-item-info"><div class="library-item-label">Field Supplement</div><div class="library-item-title">Investigator Field Reference</div><div class="library-item-desc">Reconstruction review for investigation records. Source identification prompts, conflict acknowledgment guidance, and reviewer question sets for workplace investigations.</div></div><div class="library-item-action"><a href="https://wikesphere.gumroad.com/l/opukbv" target="_blank" rel="noopener noreferrer" class="lib-btn">Access</a></div></div>
     <div class="library-item"><div class="library-item-info"><div class="library-item-label">Role Reference</div><div class="library-item-title">HR Documentation Review Guide</div><div class="library-item-desc">Pre-submission review guidance for HR practitioners. Performance, disciplinary, termination, and accommodation documentation review.</div></div><div class="library-item-action"><a href="https://wikesphere.gumroad.com/l/opukbv" target="_blank" rel="noopener noreferrer" class="lib-btn">Access</a></div></div>
+    <div class="library-item"><div class="library-item-info"><div class="library-item-label">Operational Reference</div><div class="library-item-title">Administrative Review Companion</div><div class="library-item-desc">Documentation review guidance for administrative employment actions. Reconstruction check for accommodation decisions, separation records, and formal action documentation.</div></div><div class="library-item-action"><a href="https://wikesphere.gumroad.com/l/opukbv" target="_blank" rel="noopener noreferrer" class="lib-btn">Access</a></div></div>
+    <div class="library-item"><div class="library-item-info"><div class="library-item-label">Field Guide</div><div class="library-item-title">Escalation Review Procedures</div><div class="library-item-desc">Escalation indicators, secondary review triggers, and routing guidance for records that require HR compliance or legal review before system entry.</div></div><div class="library-item-action"><a href="https://wikesphere.gumroad.com/l/opukbv" target="_blank" rel="noopener noreferrer" class="lib-btn">Access</a></div></div>
   </div>
 </div>
 
@@ -1562,6 +1590,38 @@ const ROLE_ENVS={
  <div class="list-item"><span class="list-dash">--</span>Identify systemic documentation quality patterns</div>
  </div>
  <p class="body-text" style="margin-top:16px;">Sampling results evaluate process quality, not decision correctness. Findings identify where documentation gaps are systemic and where workflow intervention is warranted.</p>
+  `},
+  'admin':{title:'Administrative Reviewer',sub:'Environment 07',content:`
+    <div class="section-head">Review Responsibilities</div>
+    <div class="list-block">
+      <div class="list-item"><span class="list-dash">--</span>Review administrative employment actions before formal processing</div>
+      <div class="list-item"><span class="list-dash">--</span>Confirm supporting documentation is referenced and on file</div>
+      <div class="list-item"><span class="list-dash">--</span>Apply reconstruction check before records enter official systems</div>
+      <div class="list-item"><span class="list-dash">--</span>Route elevated-risk records for secondary HR or legal review</div>
+    </div>
+    <div class="section-head" style="margin-top:24px;">Common Failure Patterns</div>
+    <div class="list-block">
+      <div class="list-item"><span class="list-dash">--</span>Action documentation references prior process without identifying specific records</div>
+      <div class="list-item"><span class="list-dash">--</span>Accommodation records missing interactive process documentation</div>
+      <div class="list-item"><span class="list-dash">--</span>Separation paperwork without traceable disciplinary history</div>
+    </div>
+    <div class="callout" style="margin-top:16px;"><div class="callout-label">Key Check</div><p>If someone reads this file six months from now with no context, can they identify what happened, why the action was taken, and what documentation supported it?</p></div>
+  `},
+  'intake':{title:'Intake Reviewer',sub:'Environment 08',content:`
+    <div class="section-head">Review Responsibilities</div>
+    <div class="list-block">
+      <div class="list-item"><span class="list-dash">--</span>First-line review at document intake before routing or system entry</div>
+      <div class="list-item"><span class="list-dash">--</span>Identify high-risk indicators that require secondary review</div>
+      <div class="list-item"><span class="list-dash">--</span>Apply the STOP / REVIEW / READY intake classification</div>
+      <div class="list-item"><span class="list-dash">--</span>Route STOP records back to drafter before they advance in the workflow</div>
+    </div>
+    <div class="section-head" style="margin-top:24px;">Intake Classification</div>
+    <div class="readiness-grid">
+      <div class="readiness-row"><div class="readiness-badge stop">STOP</div><div class="readiness-desc"><strong>Return to Drafter</strong>Evaluative language without anchors. Timeline or policy basis absent. Do not advance.</div></div>
+      <div class="readiness-row"><div class="readiness-badge review">REVIEW</div><div class="readiness-desc"><strong>Secondary Review Required</strong>Conclusion may be accurate but basis not visible. Route to HR or compliance before system entry.</div></div>
+      <div class="readiness-row"><div class="readiness-badge ready">READY</div><div class="readiness-desc"><strong>Advance</strong>Self-contained. Evidence identifiable. Basis traceable without author explanation.</div></div>
+    </div>
+    <div class="reviewer-note" style="margin-top:12px;"><div class="reviewer-note-label">Intake shorthand</div>Referenced attachment unavailable. Timeline unresolved. Pattern claim unsupported. Returned to drafter before routing.</div>
   `},
   'ai-reviewer':{title:'AI Documentation Reviewer',sub:'Environment 06',content:`
  <div class="section-head">Review Responsibilities</div>
