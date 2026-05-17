@@ -61,6 +61,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 .page-section.active{display:block}
 
 /* TYPOGRAPHY */
+.page-eyebrow{overflow-wrap:break-word;word-break:break-word;}
 .page-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:12px;padding-top:48px}
 .page-title{font-family:'Bodoni Moda',serif;font-size:38px;font-weight:400;line-height:1.1;margin-bottom:14px;letter-spacing:-0.01em}
 .page-subtitle{font-size:16px;color:var(--muted);max-width:640px;margin-bottom:32px;line-height:1.7}
@@ -420,6 +421,130 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
  .kit-hero-inner{padding:36px 0 32px}
  .reviewer-note+.reviewer-note{margin-top:4px}
 }
+
+/* ── OVERRIDE GUMROAD BUTTON STYLES ── */
+a.gumroad-button,
+a.gumroad-button:hover,
+a.gumroad-button:visited,
+a.gumroad-button::before,
+a.gumroad-button::after {
+  background:inherit !important;
+  color:inherit !important;
+  font-family:inherit !important;
+  font-size:inherit !important;
+  border:inherit !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+  padding:inherit !important;
+  text-decoration:none !important;
+  display:inline !important;
+}
+/* Specific overrides for kit purchase buttons that should keep gold styling */
+.btn-accent.gumroad-button,
+.btn-accent.gumroad-button:hover {
+  background:var(--accent) !important;
+  color:var(--black) !important;
+  display:inline-block !important;
+  padding:10px 20px !important;
+}
+.btn-ghost.gumroad-button,
+.btn-ghost.gumroad-button:hover {
+  background:transparent !important;
+  color:var(--text) !important;
+  border:1px solid var(--rule) !important;
+  display:inline-block !important;
+  padding:9px 18px !important;
+}
+/* ── VERSION TABLE MOBILE ── */
+@media(max-width:560px){
+ .ver-hdr{grid-template-columns:1fr 80px !important;}
+ .ver-hdr > div:nth-child(2),
+ .ver-hdr > div:nth-child(3),
+ .ver-hdr > div:nth-child(4){display:none;}
+}
+/* ── MOBILE FIXES FOR INLINE GRIDS ── */
+@media(max-width:640px){
+ /* Version reference table - collapse to 2-col on mobile */
+ div[style*="grid-template-columns:1fr 76px 80px 88px 80px"]{
+   grid-template-columns:1fr 60px !important;
+ }
+ /* Hide middle columns in version table on small screens */
+ div[style*="grid-template-columns:1fr 76px 80px 88px 80px"] > div:nth-child(3),
+ div[style*="grid-template-columns:1fr 76px 80px 88px 80px"] > div:nth-child(4){
+   display:none !important;
+ }
+ /* 3-column inline grids -> 1-column */
+ div[style*="grid-template-columns:1fr 1fr 1fr"]{
+   grid-template-columns:1fr !important;
+ }
+ /* 2-column inline grids -> 1-column for tight layouts */
+ div[style*="grid-template-columns:1fr 1fr"]{
+   grid-template-columns:1fr !important;
+ }
+ /* Reviewer role table */
+ div[style*="grid-template-columns:140px 1fr"]{
+   grid-template-columns:1fr !important;
+ }
+ /* Operational constraints */
+ div[style*="grid-template-columns:160px 1fr"]{
+   grid-template-columns:1fr !important;
+ }
+ /* Maturity stages */
+ div[style*="grid-template-columns:52px 1fr"]{
+   grid-template-columns:40px 1fr !important;
+ }
+ /* Doc cards in training page */
+ div[style*="grid-template-columns:180px 1fr"]{
+   grid-template-columns:1fr !important;
+ }
+ /* Audit sampling 2-col stat blocks */
+ div[style*="grid-template-columns:1fr 1fr;gap:12px"]{
+   grid-template-columns:1fr !important;
+ }
+ div[style*="grid-template-columns:1fr 1fr;gap:14px"]{
+   grid-template-columns:1fr !important;
+ }
+ /* Border cleanup when grids collapse */
+ div[style*="border-right:1px solid var(--rule)"]{
+   border-right:none !important;
+   border-bottom:1px solid var(--rule);
+ }
+ /* Walkthrough gap grids */
+ div[style*="gap:10px"]{
+   grid-template-columns:1fr !important;
+ }
+ /* Util bar - wrap on mobile */
+ .util-bar-inner{
+   flex-wrap:wrap;
+   gap:4px 12px;
+   padding:8px 16px;
+ }
+ .util-link{font-size:8px;}
+ /* Chip row wrap */
+ .chip-row{flex-wrap:wrap;}
+ /* Download buttons full width */
+ .btn-dl, .btn-dl-ghost{
+   width:100% !important;
+   text-align:center;
+   box-sizing:border-box;
+ }
+ /* Step grids in walkthrough */
+ div[style*="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom"]{
+   grid-template-columns:1fr !important;
+ }
+ /* Reviewer roles inner grid */
+ div[style*="display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom"]{
+   grid-template-columns:1fr !important;
+ }
+ /* ROC cells */
+ div[style*="Review Operations Center"] div[style*="grid-template-columns:1fr 1fr"]{
+   grid-template-columns:1fr !important;
+ }
+ /* Failure pattern libraries 2-col */
+ div[style*="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top"]{
+   grid-template-columns:1fr !important;
+ }
+}
 @media(max-width:540px){
  div[style*="grid-template-columns:1fr 1fr;gap:8px"]{grid-template-columns:1fr !important}
  .kit-flow-step{flex-direction:column}
@@ -468,8 +593,8 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
 <div class="util-bar">
  <div class="util-bar-inner">
  <span class="util-label">Framework</span>
- <a href="JRS-Standard.pdf" download class="util-link accent-link">Download Standard (Free PDF)</a>
- <a class="gumroad-button" href="https://wikesphere.gumroad.com/l/opukbv" data-gumroad-single-product="true" class="util-link">Reviewer Reference</a>
+ <a href="JRS-Standard.pdf" download class="util-link accent-link">Download Standard</a>
+ <a href="https://wikesphere.gumroad.com/l/opukbv" class="util-link gumroad-button" data-gumroad-single-product="true">Reviewer Reference</a>
  <a href="JRS_Rapid_Review_Card.pdf" target="_blank" rel="noopener noreferrer" class="util-link">Rapid Review Card</a>
     <a href="JRS_Investigator_Field_Guide.pdf" target="_blank" rel="noopener noreferrer" class="util-link" style="color:var(--accent);">Investigator Field Guide</a>
  <a href="#" onclick="showSection('kit');return false;" class="util-link" style="border-left:2px solid rgba(190,148,71,.3);color:var(--accent-dim);">Deployment Resources</a>
@@ -1003,7 +1128,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
 <div style="margin-bottom:44px;">
   <div class="section-head">Document Version Reference</div>
   <div style="border:1px solid var(--rule);overflow:hidden;margin-top:10px;">
-    <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);background:var(--surface2);padding:7px 12px;">
+    <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);background:var(--surface2);padding:7px 12px;" class="ver-hdr">
       <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);">Document</div>
       <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);">ID</div>
       <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);">Version</div>
@@ -1111,7 +1236,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
  <div class="section-head">Access</div>
  <div class="btn-row">
  <a href="JRS-Standard.pdf" download class="btn btn-primary">Download JRS Standard</a>
- <a class="gumroad-button" href="https://wikesphere.gumroad.com/l/opukbv" data-gumroad-single-product="true" class="btn btn-ghost">Reviewer Reference</a>
+ <a href="https://wikesphere.gumroad.com/l/opukbv" class="btn btn-ghost gumroad-button" data-gumroad-single-product="true">Reviewer Reference</a>
  <button class="btn btn-accent" onclick="showSection('kit')">Deployment Resources</button>
  </div>
 </div>
@@ -2322,7 +2447,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
 <!-- AI SECTION -->
 <div id="section-ai" class="page-section">
 <div class="container">
-<div class="page-eyebrow">AI-Assisted Documentation Controls</div>
+<div class="page-eyebrow">AI Documentation Controls</div>
 <h1 class="page-title">AI Documentation Review</h1>
 <p class="page-subtitle">Source verification and reconstruction review for records where AI tools contributed to drafting. Applied at the pre-submission stage, before records enter official systems.</p>
 <div class="callout"><div class="callout-label">Review Standard</div><p>The review conditions apply regardless of how a record was drafted. What matters is whether the supporting basis can be identified by someone reading the file later, without the original author available to explain it.</p></div>
