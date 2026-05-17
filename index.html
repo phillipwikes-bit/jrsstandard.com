@@ -3,7 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JRS™ Justification Review Standard</title>
+<title>JRS Justification Review Standard | Pre-Finalization Documentation Review</title>
+<meta property="og:title" content="JRS Justification Review Standard" />
+<meta property="og:description" content="Pre-finalization documentation review structure for HR, compliance, and investigation workflows." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://jrsstandard.com" />
+<link rel="canonical" href="https://jrsstandard.com" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <meta name="description" content="A pre-finalization documentation review structure for HR, compliance, and investigation workflows. Applied before records enter official systems.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -463,7 +469,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
  <div class="util-bar-inner">
  <span class="util-label">Framework</span>
  <a href="JRS-Standard.pdf" download class="util-link accent-link">Download Standard (Free PDF)</a>
- <a href="https://wikesphere.gumroad.com/l/opukbv" target="_blank" rel="noopener noreferrer" class="util-link">Reviewer Reference</a>
+ <a class="gumroad-button" href="https://wikesphere.gumroad.com/l/opukbv" data-gumroad-single-product="true" class="util-link">Reviewer Reference</a>
  <a href="JRS_Rapid_Review_Card.pdf" target="_blank" rel="noopener noreferrer" class="util-link">Rapid Review Card</a>
     <a href="JRS_Investigator_Field_Guide.pdf" target="_blank" rel="noopener noreferrer" class="util-link" style="color:var(--accent);">Investigator Field Guide</a>
  <a href="#" onclick="showSection('kit');return false;" class="util-link" style="border-left:2px solid rgba(190,148,71,.3);color:var(--accent-dim);">Deployment Resources</a>
@@ -829,6 +835,260 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
  </div>
 </div>
 
+
+<div style="margin-bottom:44px;">
+  <div class="section-head">Review Operations Center</div>
+  <p class="body-text">Pre-finalization review resources organized by function. Each row represents an operational layer within the review workflow.</p>
+  <div style="border:1px solid var(--rule);overflow:hidden;margin-top:12px;">
+
+    <div style="border-bottom:1px solid var(--rule);background:var(--surface2);padding:8px 14px;font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);">Core Review Controls</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule);">
+      <div style="padding:11px 15px;border-right:1px solid var(--rule);cursor:pointer;" onclick="showSection('tools')">
+        <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Review Workflow</div>
+        <div style="font-size:12px;color:var(--muted);">Draft to system entry. Five-step pre-finalization sequence.</div>
+      </div>
+      <div style="padding:11px 15px;cursor:pointer;" onclick="showSection('tools')">
+        <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Quick Review</div>
+        <div style="font-size:12px;color:var(--muted);">Rapid Review minimum standard. Four checks before any record enters the system.</div>
+      </div>
+    </div>
+
+    <div style="border-bottom:1px solid var(--rule);background:var(--surface2);padding:8px 14px;font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);">Escalation Controls</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule);">
+      <div style="padding:11px 15px;border-right:1px solid var(--rule);cursor:pointer;" onclick="showSection('scenarios')">
+        <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Secondary Review Triggers</div>
+        <div style="font-size:12px;color:var(--muted);">Six trigger categories. Indicator checklists. Routing disposition.</div>
+      </div>
+      <div style="padding:11px 15px;cursor:pointer;" onclick="showSection('scenarios')">
+        <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Escalation Routing Flow</div>
+        <div style="font-size:12px;color:var(--muted);">Return to drafter / secondary review / legal escalation decision tree.</div>
+      </div>
+    </div>
+
+    <div style="border-bottom:1px solid var(--rule);background:var(--surface2);padding:8px 14px;font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);">Documentation Examples</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule);">
+      <div style="padding:11px 15px;border-right:1px solid var(--rule);cursor:pointer;" onclick="showSection('scenarios')">
+        <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Redlined Examples</div>
+        <div style="font-size:12px;color:var(--muted);">10 before-and-after annotated examples across record types.</div>
+      </div>
+      <div style="padding:11px 15px;cursor:pointer;" onclick="showSection('scenarios')">
+        <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Reviewer Walkthroughs</div>
+        <div style="font-size:12px;color:var(--muted);">Six full walkthrough sequences with gap analysis and disposition.</div>
+      </div>
+    </div>
+
+    <div style="border-bottom:1px solid var(--rule);background:var(--surface2);padding:8px 14px;font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);">Investigation and AI Review</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule);">
+      <div style="padding:11px 15px;border-right:1px solid var(--rule);cursor:pointer;" onclick="showSection('scenarios')">
+        <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Investigator Guidance</div>
+        <div style="font-size:12px;color:var(--muted);">Reconstruction review, source verification, conflicting account preservation.</div>
+      </div>
+      <div style="padding:11px 15px;cursor:pointer;" onclick="showSection('ai')">
+        <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">AI Documentation Review</div>
+        <div style="font-size:12px;color:var(--muted);">Source verification, semantic inflation, human confirmation flow.</div>
+      </div>
+    </div>
+
+    <div style="border-bottom:1px solid var(--rule);background:var(--surface2);padding:8px 14px;font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);">Audit and Implementation</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;">
+      <div style="padding:11px 15px;border-right:1px solid var(--rule);cursor:pointer;" onclick="showSection('guidance')">
+        <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Audit Sampling</div>
+        <div style="font-size:12px;color:var(--muted);">Quarterly sampling examples, recurring gap patterns, systemic findings.</div>
+      </div>
+      <div style="padding:11px 15px;cursor:pointer;" onclick="showSection('guidance')">
+        <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Implementation Rollout</div>
+        <div style="font-size:12px;color:var(--muted);">Five maturity stages. Reviewer onboarding. Department-by-department entry points.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div style="margin-bottom:44px;">
+  <div class="section-head">Operational Review Conditions</div>
+  <p class="body-text">The four conditions evaluated in every pre-finalization review. Each condition includes common failure modes and the reviewer test applied at the drafting stage.</p>
+  <div style="border:1px solid var(--rule);overflow:hidden;margin-top:12px;">
+    <div style="border-bottom:1px solid var(--rule);">
+      <div style="padding:10px 15px;background:var(--surface2);border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:13px;font-weight:600;color:var(--text);">Independently Reviewable</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);">Time Traveler Test</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule);">
+        <div style="padding:10px 14px;border-right:1px solid var(--rule);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--stop-text);margin-bottom:4px;">Common Failure</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;">Record depends on institutional memory, verbal context, or the original author being available to explain it.</div>
+        </div>
+        <div style="padding:10px 14px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Reviewer Test</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;">Could a reviewer unfamiliar with the matter reconstruct the basis from the file alone, two years from now?</div>
+        </div>
+      </div>
+    </div>
+    <div style="border-bottom:1px solid var(--rule);">
+      <div style="padding:10px 15px;background:var(--surface2);border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:13px;font-weight:600;color:var(--text);">Observable Support</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);">Fact Anchor</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule);">
+        <div style="padding:10px 14px;border-right:1px solid var(--rule);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--stop-text);margin-bottom:4px;">Common Failure</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;">Conclusion stated without a specific, verifiable anchor: a date, a log entry, a documented interaction, or a referenced record.</div>
+        </div>
+        <div style="padding:10px 14px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Reviewer Test</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;">What specific evidence in the file identifies the basis for this conclusion? If nothing comes to mind, the anchor is missing.</div>
+        </div>
+      </div>
+    </div>
+    <div style="border-bottom:1px solid var(--rule);">
+      <div style="padding:10px 15px;background:var(--surface2);border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:13px;font-weight:600;color:var(--text);">Documented Reasoning</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);">Reasoning Trail</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule);">
+        <div style="padding:10px 14px;border-right:1px solid var(--rule);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--stop-text);margin-bottom:4px;">Common Failure</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;">The path from evidence to conclusion is in the author's head, not in the document. The record reads smoothly but the basis is not visible.</div>
+        </div>
+        <div style="padding:10px 14px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Reviewer Test</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;">Is the path from evidence to conclusion visible within the record itself, without the author's recollection?</div>
+        </div>
+      </div>
+    </div>
+    <div style="border-bottom:1px solid var(--rule);">
+      <div style="padding:10px 15px;background:var(--surface2);border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:13px;font-weight:600;color:var(--text);">Source Integrity</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);">AI Attestation</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule);">
+        <div style="padding:10px 14px;border-right:1px solid var(--rule);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--stop-text);margin-bottom:4px;">Common Failure</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;">AI-assisted wording introduces characterizations not present in the source notes, or source notes are not identified before submission.</div>
+        </div>
+        <div style="padding:10px 14px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Reviewer Test</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;">Where AI-assisted drafting contributed, can each characterization be traced to a specific source record? Is human confirmation documented?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-bottom:44px;">
+  <div class="section-head">From Practice</div>
+  <p class="body-text">Observations from documentation review that reflect recurring patterns across record types and organizational contexts.</p>
+  <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px;">
+    <div style="border:1px solid var(--rule);padding:11px 15px 11px 18px;background:var(--surface);border-left:3px solid var(--accent-dim);">
+      <div style="font-size:12.5px;color:var(--muted);line-height:1.6;">Most unsupported records appeared complete at drafting. The gap became visible only when someone else read the file without the original author available to explain it.</div>
+    </div>
+    <div style="border:1px solid var(--rule);padding:11px 15px 11px 18px;background:var(--surface);border-left:3px solid var(--accent-dim);">
+      <div style="font-size:12.5px;color:var(--muted);line-height:1.6;">Escalation failures most often originate from undocumented coaching. The manager remembered the conversations. The file did not reflect them.</div>
+    </div>
+    <div style="border:1px solid var(--rule);padding:11px 15px 11px 18px;background:var(--surface);border-left:3px solid var(--accent-dim);">
+      <div style="font-size:12.5px;color:var(--muted);line-height:1.6;">AI-assisted summaries often increase the confidence of a conclusion without increasing the evidentiary support behind it. The wording becomes more certain. The source notes do not change.</div>
+    </div>
+    <div style="border:1px solid var(--rule);padding:11px 15px 11px 18px;background:var(--surface);border-left:3px solid var(--accent-dim);">
+      <div style="font-size:12.5px;color:var(--muted);line-height:1.6;">Reviewers frequently discover timeline gaps late -- during proceedings or after escalation -- rather than during drafting. Pre-finalization review is the only point where a gap can be resolved without consequence.</div>
+    </div>
+    <div style="border:1px solid var(--rule);padding:11px 15px 11px 18px;background:var(--surface);border-left:3px solid var(--accent-dim);">
+      <div style="font-size:12.5px;color:var(--muted);line-height:1.6;">Repeated characterizations across multiple records do not create evidentiary support for a pattern. Each entry still requires a specific dated instance. Volume is not corroboration.</div>
+    </div>
+    <div style="border:1px solid var(--rule);padding:11px 15px 11px 18px;background:var(--surface);border-left:3px solid var(--accent-dim);">
+      <div style="font-size:12.5px;color:var(--muted);line-height:1.6;">The reconstruction failure problem is most acute after personnel change. The manager who drafted the record is no longer available. What they remembered and did not write down is gone. Only the file remains.</div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-bottom:44px;">
+  <div class="section-head">Document Version Reference</div>
+  <div style="border:1px solid var(--rule);overflow:hidden;margin-top:10px;">
+    <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);background:var(--surface2);padding:7px 12px;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);">Document</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);">ID</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);">Version</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);">Effective</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);">Status</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);padding:7px 12px;">
+      <div style="font-size:12px;color:var(--text);">JRS Standard</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">--</div>
+      <div style="font-size:11.5px;color:var(--muted);">v1.0</div>
+      <div style="font-size:11.5px;color:var(--muted);">May 2026</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Active</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);padding:7px 12px;">
+      <div style="font-size:12px;color:var(--text);">Investigator Field Guide</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">001-INV</div>
+      <div style="font-size:11.5px;color:var(--muted);">v1.0</div>
+      <div style="font-size:11.5px;color:var(--muted);">May 2026</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Active</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);padding:7px 12px;">
+      <div style="font-size:12px;color:var(--text);">Rapid Review Card</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">KIT-F1</div>
+      <div style="font-size:11.5px;color:var(--muted);">v1.0</div>
+      <div style="font-size:11.5px;color:var(--muted);">May 2026</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Active</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);padding:7px 12px;">
+      <div style="font-size:12px;color:var(--text);">Pre-Finalization Worksheet</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">KIT-A1</div>
+      <div style="font-size:11.5px;color:var(--muted);">v1.0</div>
+      <div style="font-size:11.5px;color:var(--muted);">May 2026</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Active</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);padding:7px 12px;">
+      <div style="font-size:12px;color:var(--text);">Secondary Review Escalation Form</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">KIT-A2</div>
+      <div style="font-size:11.5px;color:var(--muted);">v1.0</div>
+      <div style="font-size:11.5px;color:var(--muted);">May 2026</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Active</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);padding:7px 12px;">
+      <div style="font-size:12px;color:var(--text);">Reviewer Signoff Template</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">KIT-A3</div>
+      <div style="font-size:11.5px;color:var(--muted);">v1.0</div>
+      <div style="font-size:11.5px;color:var(--muted);">May 2026</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Active</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);padding:7px 12px;">
+      <div style="font-size:12px;color:var(--text);">Reviewer Onboarding Guide</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">KIT-B1</div>
+      <div style="font-size:11.5px;color:var(--muted);">v1.0</div>
+      <div style="font-size:11.5px;color:var(--muted);">May 2026</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Active</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);padding:7px 12px;">
+      <div style="font-size:12px;color:var(--text);">AI Verification Checklist</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">KIT-C1</div>
+      <div style="font-size:11.5px;color:var(--muted);">v1.0</div>
+      <div style="font-size:11.5px;color:var(--muted);">May 2026</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Active</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);padding:7px 12px;">
+      <div style="font-size:12px;color:var(--text);">Redlined Examples</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">KIT-D1</div>
+      <div style="font-size:11.5px;color:var(--muted);">v1.0</div>
+      <div style="font-size:11.5px;color:var(--muted);">May 2026</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Active</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);padding:7px 12px;">
+      <div style="font-size:12px;color:var(--text);">Implementation Playbook</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">KIT-E1</div>
+      <div style="font-size:11.5px;color:var(--muted);">v1.0</div>
+      <div style="font-size:11.5px;color:var(--muted);">May 2026</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Active</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);padding:7px 12px;">
+      <div style="font-size:12px;color:var(--text);">Secondary Review Trigger Reference</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">KIT-E1A</div>
+      <div style="font-size:11.5px;color:var(--muted);">v1.0</div>
+      <div style="font-size:11.5px;color:var(--muted);">May 2026</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Active</div>
+    </div>
+  </div>
+</div>
 <div style="margin-bottom:44px;">
   <div class="section-head">Operational FAQ</div>
   <div style="border-top:1px solid var(--rule);">
@@ -851,7 +1111,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
  <div class="section-head">Access</div>
  <div class="btn-row">
  <a href="JRS-Standard.pdf" download class="btn btn-primary">Download JRS Standard</a>
- <a href="https://wikesphere.gumroad.com/l/opukbv" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Reviewer Reference</a>
+ <a class="gumroad-button" href="https://wikesphere.gumroad.com/l/opukbv" data-gumroad-single-product="true" class="btn btn-ghost">Reviewer Reference</a>
  <button class="btn btn-accent" onclick="showSection('kit')">Deployment Resources</button>
  </div>
 </div>
@@ -894,7 +1154,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
  <div class="kit-purchase-sub">Downloadable PDF package. Operational forms, reviewer training, and workflow guidance for applying JRS within existing documentation environments.</div><div style="font-size:12px;color:var(--muted-soft);line-height:1.5;margin-bottom:16px;padding:8px 10px;border-left:1px solid rgba(190,148,71,.25);">Operational implementation layer for the JRS Documentation Review Reference. Includes onboarding, training, and deployment materials.</div>
  
  <div class="kit-price-note" style="margin-bottom:22px;">Downloadable PDF via Gumroad. Unlimited access.</div>
- <a href="https://wikesphere.gumroad.com/l/ojeqeo" target="_blank" rel="noopener noreferrer" class="kit-cta">Access Deployment Resources</a>
+ <a class="gumroad-button" href="https://wikesphere.gumroad.com/l/ojeqeo" data-gumroad-single-product="true" class="kit-cta">Access Deployment Resources</a>
  <span class="kit-cta-note">Secure checkout via Gumroad<br>PDF delivery after purchase</span>
  <div class="kit-includes">
  <div class="kit-includes-label">Included in this package</div>
@@ -1045,7 +1305,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
 <div class="kit-section" style="border-bottom:none;">
  <div class="kit-section-inner">
  <div style="display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;">
- <a href="https://wikesphere.gumroad.com/l/ojeqeo" target="_blank" rel="noopener noreferrer" class="btn btn-accent" style="font-size:13px;padding:13px 28px;">Access Deployment Resources</a>
+ <a class="gumroad-button" href="https://wikesphere.gumroad.com/l/ojeqeo" data-gumroad-single-product="true" class="btn btn-accent" style="font-size:13px;padding:13px 28px;">Access Deployment Resources</a>
  <a href="JRS-Standard.pdf" download class="btn btn-ghost">Download Standard (Free PDF)</a>
  <button class="btn btn-ghost" onclick="showSection('tools')">Review Tools &rarr;</button>
  </div>
@@ -1593,6 +1853,75 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
 <div class="reviewer-note"><div class="reviewer-note-label">Investigator note</div>Investigation records that reach later review without identified source materials present the most significant reconstruction problem. The conclusion may be well-founded. Without visible sources, a later reviewer cannot independently evaluate it.</div>
 </div>
 
+<div style="margin-top:24px;">
+<div class="section-head">Conflicting Account Preservation</div>
+<p class="body-text">Where accounts conflict, the conflict should remain visible in the record. Resolving conflicts through omission creates a gap that surfaces during later review.</p>
+<div style="border:1px solid var(--rule);overflow:hidden;margin-top:12px;">
+  <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule);">
+    <div style="padding:12px 15px;border-right:1px solid var(--rule);">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--stop-text);margin-bottom:5px;">Problematic Approach</div>
+      <div style="font-size:12.5px;color:var(--muted);line-height:1.7;font-style:italic;">"Based on the available evidence, the investigator found that the incident occurred as described by the complainant."</div>
+      <div style="margin-top:6px;font-size:12px;color:var(--muted);">Respondent account absent. Basis for crediting one account not stated. Conflicting evidence not acknowledged.</div>
+    </div>
+    <div style="padding:12px 15px;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:#5DBF82;margin-bottom:5px;">Supported Approach</div>
+      <div style="font-size:12.5px;color:var(--muted);line-height:1.7;font-style:italic;">"Complainant provided contemporaneous documentation dated April 3. Respondent denied the conduct and provided no supporting documentation. One witness corroborated complainant's account; one was not present. Credibility determination based on contemporaneous documentation and corroboration. Respondent's account noted and preserved."</div>
+    </div>
+  </div>
+  <div style="padding:10px 15px;background:var(--surface2);"><div style="font-size:12.5px;color:var(--muted);">Reviewer guidance: Conflicting accounts should remain visible where independently unresolved. A later reviewer needs to see what was contested, not only what was concluded.</div></div>
+</div>
+</div>
+
+
+<div style="margin-top:36px;">
+<div class="section-head">Failure Pattern Libraries</div>
+<p class="body-text">Categorized documentation failure patterns organized by type. Each pattern represents a recurring gap identified across review contexts.</p>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;">
+
+<div style="border:1px solid var(--rule);overflow:hidden;">
+  <div style="padding:9px 14px;border-bottom:1px solid var(--rule);background:var(--surface2);font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--stop-text);">A. Timeline Failures</div>
+  <div style="padding:10px 14px;display:flex;flex-direction:column;gap:6px;">
+    <div style="font-size:12.5px;color:var(--muted);padding-bottom:5px;border-bottom:1px solid var(--rule);">-- Missing dates for specific conduct instances<div style="font-size:11px;color:var(--muted-soft);margin-top:2px;font-style:italic;">Pattern claim described; dates not present.</div></div>
+    <div style="font-size:12.5px;color:var(--muted);padding-bottom:5px;border-bottom:1px solid var(--rule);">-- Vague chronology ("over the past several months")<div style="font-size:11px;color:var(--muted-soft);margin-top:2px;font-style:italic;">Period not identifiable from the record alone.</div></div>
+    <div style="font-size:12.5px;color:var(--muted);padding-bottom:5px;border-bottom:1px solid var(--rule);">-- Timeline inconsistency between conduct described and formal record date<div style="font-size:11px;color:var(--muted-soft);margin-top:2px;font-style:italic;">Incident described as recent; file date does not correspond.</div></div>
+    <div style="font-size:12.5px;color:var(--muted);">-- Retroactive documentation with no contemporaneous anchor<div style="font-size:11px;color:var(--muted-soft);margin-top:2px;font-style:italic;">Record created after events; no contemporaneous note referenced.</div></div>
+  </div>
+</div>
+
+<div style="border:1px solid var(--rule);overflow:hidden;">
+  <div style="padding:9px 14px;border-bottom:1px solid var(--rule);background:var(--surface2);font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--stop-text);">B. Escalation Failures</div>
+  <div style="padding:10px 14px;display:flex;flex-direction:column;gap:6px;">
+    <div style="font-size:12.5px;color:var(--muted);padding-bottom:5px;border-bottom:1px solid var(--rule);">-- Formal discipline without referenced prior counseling<div style="font-size:11px;color:var(--muted-soft);margin-top:2px;font-style:italic;">Escalation level not supported by visible counseling trail.</div></div>
+    <div style="font-size:12.5px;color:var(--muted);padding-bottom:5px;border-bottom:1px solid var(--rule);">-- Termination referencing "progressive discipline" with no record attached<div style="font-size:11px;color:var(--muted-soft);margin-top:2px;font-style:italic;">Supporting disciplinary history not identified in file.</div></div>
+    <div style="font-size:12.5px;color:var(--muted);padding-bottom:5px;border-bottom:1px solid var(--rule);">-- Escalation language exceeding documented conduct<div style="font-size:11px;color:var(--muted-soft);margin-top:2px;font-style:italic;">"Serious ongoing performance concern" -- no performance plan on file.</div></div>
+    <div style="font-size:12.5px;color:var(--muted);">-- Absent prior warnings for stated pattern<div style="font-size:11px;color:var(--muted-soft);margin-top:2px;font-style:italic;">Pattern described; no prior documented warning identifiable.</div></div>
+  </div>
+</div>
+
+<div style="border:1px solid var(--rule);overflow:hidden;">
+  <div style="padding:9px 14px;border-bottom:1px solid var(--rule);background:var(--surface2);font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--stop-text);">C. AI-Assisted Failures</div>
+  <div style="padding:10px 14px;display:flex;flex-direction:column;gap:6px;">
+    <div style="font-size:12.5px;color:var(--muted);padding-bottom:5px;border-bottom:1px solid var(--rule);">-- Semantic inflation: qualified source language stated as finding<div style="font-size:11px;color:var(--muted-soft);margin-top:2px;font-style:italic;">"Seemed resistant" in notes becomes "demonstrated resistance" in record.</div></div>
+    <div style="font-size:12.5px;color:var(--muted);padding-bottom:5px;border-bottom:1px solid var(--rule);">-- AI characterizations not traceable to source interactions<div style="font-size:11px;color:var(--muted-soft);margin-top:2px;font-style:italic;">Record states conclusion; source notes not identified.</div></div>
+    <div style="font-size:12.5px;color:var(--muted);padding-bottom:5px;border-bottom:1px solid var(--rule);">-- Source verification absent; human confirmation not documented<div style="font-size:11px;color:var(--muted-soft);margin-top:2px;font-style:italic;">AI-assisted wording entered system without review against original notes.</div></div>
+    <div style="font-size:12.5px;color:var(--muted);">-- Conflicts in source notes smoothed over by AI narrative<div style="font-size:11px;color:var(--muted-soft);margin-top:2px;font-style:italic;">Source notes showed disagreement; generated record presents unified account.</div></div>
+  </div>
+</div>
+
+<div style="border:1px solid var(--rule);overflow:hidden;">
+  <div style="padding:9px 14px;border-bottom:1px solid var(--rule);background:var(--surface2);font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--stop-text);">D. Investigation Failures</div>
+  <div style="padding:10px 14px;display:flex;flex-direction:column;gap:6px;">
+    <div style="font-size:12.5px;color:var(--muted);padding-bottom:5px;border-bottom:1px solid var(--rule);">-- Conclusion stated without identified source materials<div style="font-size:11px;color:var(--muted-soft);margin-top:2px;font-style:italic;">"Thorough investigation conducted" -- no interviews or documents listed.</div></div>
+    <div style="font-size:12.5px;color:var(--muted);padding-bottom:5px;border-bottom:1px solid var(--rule);">-- Conflicting accounts resolved through omission<div style="font-size:11px;color:var(--muted-soft);margin-top:2px;font-style:italic;">Respondent's account absent from record. Only complainant's account visible.</div></div>
+    <div style="font-size:12.5px;color:var(--muted);padding-bottom:5px;border-bottom:1px solid var(--rule);">-- Conclusion extending beyond what evidence shows<div style="font-size:11px;color:var(--muted-soft);margin-top:2px;font-style:italic;">Finding stated as definitive; source evidence is partial or contested.</div></div>
+    <div style="font-size:12.5px;color:var(--muted);">-- Investigation record used as basis for discipline without reconstruction review<div style="font-size:11px;color:var(--muted-soft);margin-top:2px;font-style:italic;">Discipline action taken; investigation basis not independently reviewable.</div></div>
+  </div>
+</div>
+
+</div>
+</div>
+
 </div>
 </div>
 
@@ -1720,6 +2049,226 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
 </div>
 
 <div class="reviewer-note"><div class="reviewer-note-label">Implementation note</div>Each case above began with one record type and one reviewer. None required a policy change, system integration, or formal organizational announcement. Expansion followed demonstrated usefulness at the starting point.</div>
+</div>
+
+<div style="margin-top:36px;">
+<div class="section-head">Expanded Audit Sampling</div>
+<p class="body-text">Periodic record sampling identifies systemic documentation gaps. The following illustrates findings from three sampling periods.</p>
+<div style="border:1px solid var(--rule);overflow:hidden;margin-bottom:10px;">
+  <div style="padding:8px 14px;border-bottom:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);background:var(--surface2);">Q1  /  Supervisory Counseling Records  /  12 Records  /  3 Departments</div>
+  <div style="padding:11px 15px;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+    <div><div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--review-text);margin-bottom:3px;">Primary Gap</div><div style="font-size:12.5px;color:var(--text);">8 of 12: pattern conduct claims without specific dated instances</div></div>
+    <div><div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Secondary Gap</div><div style="font-size:12.5px;color:var(--text);">5 of 12: "multiple discussions" without documented dates</div></div>
+  </div>
+  <div style="padding:8px 14px;font-size:12px;color:var(--muted);">Disposition: Records returned for anchoring. Department briefing scheduled.</div>
+</div>
+<div style="border:1px solid var(--rule);overflow:hidden;margin-bottom:10px;">
+  <div style="padding:8px 14px;border-bottom:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);background:var(--surface2);">Q2  /  Termination Records  /  8 Records  /  2 Departments</div>
+  <div style="padding:11px 15px;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+    <div><div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--review-text);margin-bottom:3px;">Primary Gap</div><div style="font-size:12.5px;color:var(--text);">6 of 8: referenced progressive discipline without attached supporting records</div></div>
+    <div><div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Secondary Gap</div><div style="font-size:12.5px;color:var(--text);">4 of 8: evaluative characterizations without behavioral anchors</div></div>
+  </div>
+  <div style="padding:8px 14px;font-size:12px;color:var(--muted);">Disposition: Secondary review applied retroactively. Documentation supplement attached where supporting records were identified.</div>
+</div>
+<div style="border:1px solid var(--rule);overflow:hidden;margin-bottom:10px;">
+  <div style="padding:8px 14px;border-bottom:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);background:var(--surface2);">Q3  /  AI-Assisted Documentation  /  10 Records  /  Cross-Department</div>
+  <div style="padding:11px 15px;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+    <div><div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--review-text);margin-bottom:3px;">Primary Gap</div><div style="font-size:12.5px;color:var(--text);">9 of 10: submitted without identified source notes or human confirmation documented</div></div>
+    <div><div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Secondary Gap</div><div style="font-size:12.5px;color:var(--text);">7 of 10: characterizations not traceable to identified source interactions</div></div>
+  </div>
+  <div style="padding:8px 14px;font-size:12px;color:var(--muted);">Disposition: AI Verification Checklist introduced as pre-submission control. Human confirmation requirement communicated.</div>
+</div>
+<div class="reviewer-note"><div class="reviewer-note-label">Audit pattern</div>Across all three periods, the most consistent gap was the absence of specific dates for stated patterns of conduct. Volume of documentation did not correlate with evidentiary support.</div>
+</div>
+
+<div style="margin-top:36px;">
+<div class="section-head">Implementation Maturity Stages</div>
+<p class="body-text">These stages are descriptive, not prescriptive. Organizations may operate at different stages across record types simultaneously.</p>
+<div style="border:1px solid var(--rule);overflow:hidden;margin-top:12px;">
+  <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--rule);">
+    <div style="background:var(--surface2);padding:12px 14px;min-width:52px;border-right:1px solid var(--rule);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.1em;color:var(--muted-soft);">Stage</div><div style="font-size:17px;font-weight:700;color:var(--text);">1</div></div>
+    <div style="padding:12px 16px;flex:1;"><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px;">Single Record Self-Review</div><div style="font-size:12.5px;color:var(--muted);line-height:1.6;">Drafter applies the five pre-finalization questions before submitting. No secondary review required. Appropriate for routine performance and counseling records.</div></div>
+  </div>
+  <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--rule);">
+    <div style="background:var(--surface2);padding:12px 14px;min-width:52px;border-right:1px solid var(--rule);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.1em;color:var(--muted-soft);">Stage</div><div style="font-size:17px;font-weight:700;color:var(--text);">2</div></div>
+    <div style="padding:12px 16px;flex:1;"><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px;">Secondary Review Routing</div><div style="font-size:12.5px;color:var(--muted);line-height:1.6;">HR or compliance reviewer applies the escalation form for elevated-risk records before system entry. Termination, discipline, and accommodation records reviewed before filing.</div></div>
+  </div>
+  <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--rule);">
+    <div style="background:var(--surface2);padding:12px 14px;min-width:52px;border-right:1px solid var(--rule);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.1em;color:var(--muted-soft);">Stage</div><div style="font-size:17px;font-weight:700;color:var(--text);">3</div></div>
+    <div style="padding:12px 16px;flex:1;"><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px;">Audit Sampling</div><div style="font-size:12.5px;color:var(--muted);line-height:1.6;">Compliance or audit function periodically samples existing records using the failure-mode catalog. Findings identify systemic gaps across departments or record types.</div></div>
+  </div>
+  <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--rule);">
+    <div style="background:var(--surface2);padding:12px 14px;min-width:52px;border-right:1px solid var(--rule);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.1em;color:var(--muted-soft);">Stage</div><div style="font-size:17px;font-weight:700;color:var(--text);">4</div></div>
+    <div style="padding:12px 16px;flex:1;"><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px;">Cross-Department Standardization</div><div style="font-size:12.5px;color:var(--muted);line-height:1.6;">Review practices consistent across HR, compliance, and investigation functions. Common review language. Shared escalation routing. Reviewer onboarding integrated into existing training.</div></div>
+  </div>
+  <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--rule);">
+    <div style="background:var(--surface2);padding:12px 14px;min-width:52px;border-right:1px solid var(--rule);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.1em;color:var(--muted-soft);">Stage</div><div style="font-size:17px;font-weight:700;color:var(--text);">5</div></div>
+    <div style="padding:12px 16px;flex:1;"><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px;">AI-Assisted Review Integration</div><div style="font-size:12.5px;color:var(--muted);line-height:1.6;">AI Verification Checklist applied before AI-assisted content enters official records. Human confirmation documented. Source verification integrated into existing workflows.</div></div>
+  </div>
+</div>
+<div class="reviewer-note" style="margin-top:10px;"><div class="reviewer-note-label">Implementation note</div>Most organizations begin at Stage 1 or 2 and expand incrementally. Each stage adds depth without requiring the prior stage to be fully complete.</div>
+</div>
+
+
+<div style="margin-top:36px;">
+<div class="section-head">Reviewer Role Structures</div>
+<p class="body-text">Review responsibility varies by record type and risk level. The following describes the primary reviewer roles and their scope.</p>
+<div style="border:1px solid var(--rule);overflow:hidden;margin-top:12px;">
+  <div style="border-bottom:1px solid var(--rule);">
+    <div style="padding:9px 14px;background:var(--surface2);border-bottom:1px solid var(--rule);">
+      <div style="font-size:12.5px;font-weight:600;color:var(--text);">Primary Reviewer</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--rule);">
+      <div style="padding:9px 13px;border-right:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Scope</div><div style="font-size:12px;color:var(--muted);">Drafting-stage self-review before submission.</div></div>
+      <div style="padding:9px 13px;border-right:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Escalation Authority</div><div style="font-size:12px;color:var(--muted);">Return to self for revision. Flag for secondary review.</div></div>
+      <div style="padding:9px 13px;"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Primary Tools</div><div style="font-size:12px;color:var(--muted);">Pre-Finalization Worksheet, Rapid Review Card</div></div>
+    </div>
+  </div>
+  <div style="border-bottom:1px solid var(--rule);">
+    <div style="padding:9px 14px;background:var(--surface2);border-bottom:1px solid var(--rule);">
+      <div style="font-size:12.5px;font-weight:600;color:var(--text);">Secondary Reviewer</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--rule);">
+      <div style="padding:9px 13px;border-right:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Scope</div><div style="font-size:12px;color:var(--muted);">HR or compliance review of escalated records before system entry.</div></div>
+      <div style="padding:9px 13px;border-right:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Escalation Authority</div><div style="font-size:12px;color:var(--muted);">Approve, return to drafter, or escalate to legal.</div></div>
+      <div style="padding:9px 13px;"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Primary Tools</div><div style="font-size:12px;color:var(--muted);">Escalation Form, Reviewer Signoff Template</div></div>
+    </div>
+  </div>
+  <div style="border-bottom:1px solid var(--rule);">
+    <div style="padding:9px 14px;background:var(--surface2);border-bottom:1px solid var(--rule);">
+      <div style="font-size:12.5px;font-weight:600;color:var(--text);">Escalation Reviewer</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--rule);">
+      <div style="padding:9px 13px;border-right:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Scope</div><div style="font-size:12px;color:var(--muted);">Legal or compliance review of high-risk records.</div></div>
+      <div style="padding:9px 13px;border-right:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Escalation Authority</div><div style="font-size:12px;color:var(--muted);">Approve, hold, or route to legal counsel.</div></div>
+      <div style="padding:9px 13px;"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Primary Tools</div><div style="font-size:12px;color:var(--muted);">Escalation Form, Signoff Template</div></div>
+    </div>
+  </div>
+  <div style="border-bottom:1px solid var(--rule);">
+    <div style="padding:9px 14px;background:var(--surface2);border-bottom:1px solid var(--rule);">
+      <div style="font-size:12.5px;font-weight:600;color:var(--text);">AI Documentation Reviewer</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--rule);">
+      <div style="padding:9px 13px;border-right:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Scope</div><div style="font-size:12px;color:var(--muted);">Source verification for AI-assisted records before system entry.</div></div>
+      <div style="padding:9px 13px;border-right:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Escalation Authority</div><div style="font-size:12px;color:var(--muted);">Hold AI-assisted record pending source review.</div></div>
+      <div style="padding:9px 13px;"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Primary Tools</div><div style="font-size:12px;color:var(--muted);">AI Verification Checklist, source notes</div></div>
+    </div>
+  </div>
+  <div style="border-bottom:1px solid var(--rule);">
+    <div style="padding:9px 14px;background:var(--surface2);border-bottom:1px solid var(--rule);">
+      <div style="font-size:12.5px;font-weight:600;color:var(--text);">Audit Sampling Reviewer</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--rule);">
+      <div style="padding:9px 13px;border-right:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Scope</div><div style="font-size:12px;color:var(--muted);">Periodic sampling of existing records for systemic gaps.</div></div>
+      <div style="padding:9px 13px;border-right:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Escalation Authority</div><div style="font-size:12px;color:var(--muted);">Flag department-level patterns for remediation.</div></div>
+      <div style="padding:9px 13px;"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Primary Tools</div><div style="font-size:12px;color:var(--muted);">Failure-mode catalog, Redlined Examples</div></div>
+    </div>
+  </div>
+  <div style="border-bottom:1px solid var(--rule);">
+    <div style="padding:9px 14px;background:var(--surface2);border-bottom:1px solid var(--rule);">
+      <div style="font-size:12.5px;font-weight:600;color:var(--text);">Investigator Reviewer</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--rule);">
+      <div style="padding:9px 13px;border-right:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Scope</div><div style="font-size:12px;color:var(--muted);">Reconstruction review of investigation records before filing.</div></div>
+      <div style="padding:9px 13px;border-right:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Escalation Authority</div><div style="font-size:12px;color:var(--muted);">Return for anchoring. Flag conflicting accounts.</div></div>
+      <div style="padding:9px 13px;"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Primary Tools</div><div style="font-size:12px;color:var(--muted);">Investigator Field Guide, Investigation Review Flow</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<div style="margin-top:36px;">
+<div class="section-head">Operational Constraints</div>
+<p class="body-text">Documentation review operates under real organizational conditions. The following acknowledges common constraints without eliminating the requirement for identifiable support.</p>
+<div style="border:1px solid var(--rule);overflow:hidden;margin-top:12px;">
+  <div style="display:grid;grid-template-columns:160px 1fr;border-bottom:1px solid var(--rule);">
+    <div style="padding:10px 13px;border-right:1px solid var(--rule);font-size:12.5px;font-weight:600;color:var(--text);background:var(--surface);">Time pressure</div>
+    <div style="padding:10px 13px;font-size:12.5px;color:var(--muted);line-height:1.6;">Documentation drafted under deadline may omit detail. Where time permits, add specific dates and source references before submission.</div>
+  </div>
+  <div style="display:grid;grid-template-columns:160px 1fr;border-bottom:1px solid var(--rule);">
+    <div style="padding:10px 13px;border-right:1px solid var(--rule);font-size:12.5px;font-weight:600;color:var(--text);background:var(--surface);">Retroactive drafting</div>
+    <div style="padding:10px 13px;font-size:12.5px;color:var(--muted);line-height:1.6;">Records created after events occurred lose specificity over time. Where unavoidable, note the gap explicitly and identify any contemporaneous records that can anchor the account.</div>
+  </div>
+  <div style="display:grid;grid-template-columns:160px 1fr;border-bottom:1px solid var(--rule);">
+    <div style="padding:10px 13px;border-right:1px solid var(--rule);font-size:12.5px;font-weight:600;color:var(--text);background:var(--surface);">Staffing constraints</div>
+    <div style="padding:10px 13px;font-size:12.5px;color:var(--muted);line-height:1.6;">Under staffing pressure, apply the Rapid Review minimum: identify unsupported evaluative language, confirm timeline anchors, verify referenced records are identifiable.</div>
+  </div>
+  <div style="display:grid;grid-template-columns:160px 1fr;border-bottom:1px solid var(--rule);">
+    <div style="padding:10px 13px;border-right:1px solid var(--rule);font-size:12.5px;font-weight:600;color:var(--text);background:var(--surface);">Partial information</div>
+    <div style="padding:10px 13px;font-size:12.5px;color:var(--muted);line-height:1.6;">Incomplete information should be documented as such rather than omitted. A known limitation noted in the record is preferable to a gap discovered during later review.</div>
+  </div>
+  <div style="display:grid;grid-template-columns:160px 1fr;border-bottom:1px solid var(--rule);">
+    <div style="padding:10px 13px;border-right:1px solid var(--rule);font-size:12.5px;font-weight:600;color:var(--text);background:var(--surface);">AI-assisted drafting</div>
+    <div style="padding:10px 13px;font-size:12.5px;color:var(--muted);line-height:1.6;">Where automated tools contributed, the standard for identifiable support does not change. The review evaluates whether the basis is visible in the file regardless of how wording was generated.</div>
+  </div>
+</div>
+<div class="reviewer-note" style="margin-top:10px;"><div class="reviewer-note-label">Operational note</div>Documentation depth may vary by workflow context. Identifiable support, traceable reasoning, and reviewer confirmation remain required before finalization regardless of the circumstances under which the record was drafted.</div>
+</div>
+
+<div style="margin-top:36px;">
+<div class="section-head">Department Implementation Examples</div>
+<p class="body-text">How review practices integrate within different organizational functions. Each reflects a realistic entry point and operational workflow.</p>
+<div style="border:1px solid var(--rule);overflow:hidden;margin-top:10px;">
+  <div style="padding:9px 14px;border-bottom:1px solid var(--rule);background:var(--surface2);display:flex;justify-content:space-between;align-items:center;">
+    <span style="font-size:13px;font-weight:600;color:var(--text);">HR Operations</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);">Secondary Review Model</span>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--rule);">
+    <div style="padding:10px 13px;border-right:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Entry Point</div><div style="font-size:12px;color:var(--muted);">Termination and formal discipline records before system entry.</div></div>
+    <div style="padding:10px 13px;border-right:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Reviewer Role</div><div style="font-size:12px;color:var(--muted);">HR business partner applies Pre-Finalization Worksheet and Escalation Form.</div></div>
+    <div style="padding:10px 13px;"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Escalation Routing</div><div style="font-size:12px;color:var(--muted);">Records with unsupported language returned to manager. High-risk records routed to legal.</div></div>
+  </div>
+  <div style="padding:9px 14px;font-size:12px;color:var(--muted);font-style:italic;background:var(--surface);">Operational constraint: staffing pressure may limit secondary review depth. Rapid Review minimum applied when full review is not possible.</div>
+</div>
+<div style="border:1px solid var(--rule);overflow:hidden;margin-top:10px;">
+  <div style="padding:9px 14px;border-bottom:1px solid var(--rule);background:var(--surface2);display:flex;justify-content:space-between;align-items:center;">
+    <span style="font-size:13px;font-weight:600;color:var(--text);">Compliance Function</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);">Audit Sampling Model</span>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--rule);">
+    <div style="padding:10px 13px;border-right:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Entry Point</div><div style="font-size:12px;color:var(--muted);">Periodic sampling of existing records across departments.</div></div>
+    <div style="padding:10px 13px;border-right:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Reviewer Role</div><div style="font-size:12px;color:var(--muted);">Compliance analyst applies failure-mode catalog and documents findings.</div></div>
+    <div style="padding:10px 13px;"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Escalation Routing</div><div style="font-size:12px;color:var(--muted);">Systemic gaps flagged to department heads. Records requiring remediation identified.</div></div>
+  </div>
+  <div style="padding:9px 14px;font-size:12px;color:var(--muted);font-style:italic;background:var(--surface);">Operational constraint: sampling is retrospective. Pre-submission controls are more effective than retroactive sampling alone.</div>
+</div>
+<div style="border:1px solid var(--rule);overflow:hidden;margin-top:10px;">
+  <div style="padding:9px 14px;border-bottom:1px solid var(--rule);background:var(--surface2);display:flex;justify-content:space-between;align-items:center;">
+    <span style="font-size:13px;font-weight:600;color:var(--text);">Investigation Unit</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);">Investigation Review Model</span>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--rule);">
+    <div style="padding:10px 13px;border-right:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Entry Point</div><div style="font-size:12px;color:var(--muted);">Investigation records before filing. Witness summaries before inclusion.</div></div>
+    <div style="padding:10px 13px;border-right:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Reviewer Role</div><div style="font-size:12px;color:var(--muted);">Independent reviewer outside the drafting chain where staffing allows.</div></div>
+    <div style="padding:10px 13px;"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Escalation Routing</div><div style="font-size:12px;color:var(--muted);">Records with unidentified source materials returned before filing. Conflicting accounts reviewed before conclusion is stated.</div></div>
+  </div>
+  <div style="padding:9px 14px;font-size:12px;color:var(--muted);font-style:italic;background:var(--surface);">Operational constraint: reviewer independence is preferred but not always achievable. Where the investigator reviews their own record, document the limitation.</div>
+</div>
+<div style="border:1px solid var(--rule);overflow:hidden;margin-top:10px;">
+  <div style="padding:9px 14px;border-bottom:1px solid var(--rule);background:var(--surface2);display:flex;justify-content:space-between;align-items:center;">
+    <span style="font-size:13px;font-weight:600;color:var(--text);">Accommodation Review</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);">Legal Escalation Model</span>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--rule);">
+    <div style="padding:10px 13px;border-right:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Entry Point</div><div style="font-size:12px;color:var(--muted);">Accommodation records before determination is communicated.</div></div>
+    <div style="padding:10px 13px;border-right:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Reviewer Role</div><div style="font-size:12px;color:var(--muted);">HR or compliance reviewer confirms interactive process documentation.</div></div>
+    <div style="padding:10px 13px;"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Escalation Routing</div><div style="font-size:12px;color:var(--muted);">Records missing interactive process steps routed to legal before determination is issued.</div></div>
+  </div>
+  <div style="padding:9px 14px;font-size:12px;color:var(--muted);font-style:italic;background:var(--surface);">Operational constraint: accommodation records are among the highest-risk for documentation gaps. Timeliness of determination should not override documentation completeness.</div>
+</div>
+<div style="border:1px solid var(--rule);overflow:hidden;margin-top:10px;">
+  <div style="padding:9px 14px;border-bottom:1px solid var(--rule);background:var(--surface2);display:flex;justify-content:space-between;align-items:center;">
+    <span style="font-size:13px;font-weight:600;color:var(--text);">Internal Audit</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);">Systemic Review Model</span>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--rule);">
+    <div style="padding:10px 13px;border-right:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Entry Point</div><div style="font-size:12px;color:var(--muted);">Cross-department record sampling on a quarterly or semi-annual basis.</div></div>
+    <div style="padding:10px 13px;border-right:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Reviewer Role</div><div style="font-size:12px;color:var(--muted);">Audit analyst applies failure-mode catalog. Findings presented to HR leadership.</div></div>
+    <div style="padding:10px 13px;"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:3px;">Escalation Routing</div><div style="font-size:12px;color:var(--muted);">Systemic patterns escalated to HR leadership and compliance. Individual records not remediated through audit.</div></div>
+  </div>
+  <div style="padding:9px 14px;font-size:12px;color:var(--muted);font-style:italic;background:var(--surface);">Operational constraint: audit sampling is a retrospective control. It identifies where the system is failing, not where individual records are unsupported.</div>
+</div>
 </div>
 
 </div>
@@ -1919,6 +2468,20 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
 </div>
 </div>
 
+<div style="margin-top:36px;">
+<div class="section-head">Investigation Review Flow</div>
+<p class="body-text">Sequential review steps applied to investigation records before conclusions are filed.</p>
+<div style="border:1px solid var(--rule);overflow:hidden;margin-top:12px;">
+  <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--rule);"><div style="background:var(--surface2);padding:11px 14px;min-width:28px;border-right:1px solid var(--rule);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">1</div><div style="padding:11px 15px;"><span style="font-size:13px;font-weight:600;color:var(--text);">Complaint Intake</span><span style="font-size:12px;color:var(--muted);margin-left:10px;">Intake documented. Parties, allegations, and dates recorded before investigation opens.</span></div></div>
+  <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--rule);"><div style="background:var(--surface2);padding:11px 14px;min-width:28px;border-right:1px solid var(--rule);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">2</div><div style="padding:11px 15px;"><span style="font-size:13px;font-weight:600;color:var(--text);">Source Collection</span><span style="font-size:12px;color:var(--muted);margin-left:10px;">Witnesses identified. Documents gathered. Each source logged before review begins.</span></div></div>
+  <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--rule);"><div style="background:var(--surface2);padding:11px 14px;min-width:28px;border-right:1px solid var(--rule);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--review-text);">3</div><div style="padding:11px 15px;"><span style="font-size:13px;font-weight:600;color:var(--text);">Timeline Reconstruction</span><span style="font-size:12px;color:var(--muted);margin-left:10px;">Events sequenced from documented sources. Gaps in the timeline identified and noted.</span></div></div>
+  <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--rule);"><div style="background:var(--surface2);padding:11px 14px;min-width:28px;border-right:1px solid var(--rule);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--review-text);">4</div><div style="padding:11px 15px;"><span style="font-size:13px;font-weight:600;color:var(--text);">Conflicting Account Preservation</span><span style="font-size:12px;color:var(--muted);margin-left:10px;">Accounts that conflict with the finding remain visible. Not resolved away through omission.</span></div></div>
+  <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--rule);"><div style="background:var(--surface2);padding:11px 14px;min-width:28px;border-right:1px solid var(--rule);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--review-text);">5</div><div style="padding:11px 15px;"><span style="font-size:13px;font-weight:600;color:var(--text);">Finding Review</span><span style="font-size:12px;color:var(--muted);margin-left:10px;">Conclusion traced to identified sources. Reasoning visible in record. Independent review where staffing allows.</span></div></div>
+  <div style="display:flex;align-items:stretch;"><div style="background:var(--surface2);padding:11px 14px;min-width:28px;border-right:1px solid var(--rule);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">6</div><div style="padding:11px 15px;"><span style="font-size:13px;font-weight:600;color:var(--text);">Final Documentation</span><span style="font-size:12px;color:var(--muted);margin-left:10px;">Record filed with source materials identified, conflicts noted, reasoning visible from the file alone.</span></div></div>
+</div>
+<div class="reviewer-note" style="margin-top:10px;"><div class="reviewer-note-label">Investigator note</div>The investigation record must stand without the investigator available to explain it. If following the reasoning requires knowing what the investigator knew, the record is not complete.</div>
+</div>
+
 </div>
 </div>
 
@@ -1974,7 +2537,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
 
   <div style="padding:20px 24px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
     <div style="font-size:13px;color:var(--muted);">All six modules included in the Deployment Kit as downloadable PDF references.</div>
-    <a href="https://wikesphere.gumroad.com/l/ojeqeo" target="_blank" rel="noopener noreferrer" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--black);background:var(--accent);padding:10px 20px;text-decoration:none;white-space:nowrap;">Access Deployment Kit</a>
+    <a class="gumroad-button" href="https://wikesphere.gumroad.com/l/ojeqeo" data-gumroad-single-product="true" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--black);background:var(--accent);padding:10px 20px;text-decoration:none;white-space:nowrap;">Access Deployment Kit</a>
   </div>
 </div>
 
@@ -2008,11 +2571,11 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
  <p class="muted-text" style="margin-bottom:14px;">The following materials are available at no cost. They are operational references intended for practitioner use within existing review workflows.</p>
  <div class="library-grid">
   <div class="library-item"><div class="library-item-info"><div class="library-item-label">Framework Document  <span style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.1em;font-weight:400;color:var(--muted-soft);">v1.0  |  May 2026  |  Free</span></div><div class="library-item-title">JRS Standard</div><div class="library-item-desc">Foundational review structure. Four conditions, reviewer lens, failure-mode catalog. The primary framework document.</div></div><div class="library-item-action"><a href="JRS-Standard.pdf" download class="lib-btn primary">Download</a></div></div>
-  <div class="library-item"><div class="library-item-info"><div class="library-item-label">Practitioner Reference  /  Paid</div><div class="library-item-title">JRS Reviewer Reference</div><div class="library-item-desc">Foundational documentation review reference. Reconstruction-focused review principles, failure-mode reference, and documentation review methodology.</div></div><div class="library-item-action"><a href="https://wikesphere.gumroad.com/l/opukbv" target="_blank" rel="noopener noreferrer" class="lib-btn">Access</a></div></div>
+  <div class="library-item"><div class="library-item-info"><div class="library-item-label">Practitioner Reference  /  Paid</div><div class="library-item-title">JRS Reviewer Reference</div><div class="library-item-desc">Foundational documentation review reference. Reconstruction-focused review principles, failure-mode reference, and documentation review methodology.</div></div><div class="library-item-action"><a class="gumroad-button" href="https://wikesphere.gumroad.com/l/opukbv" data-gumroad-single-product="true" class="lib-btn">Access</a></div></div>
   <div class="library-item"><div class="library-item-info"><div class="library-item-label">Field Supplement  <span style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.1em;font-weight:400;color:var(--muted-soft);">001-INV  |  v1.0  |  Free</span></div><div class="library-item-title">JRS Investigator Field Guide</div><div class="library-item-desc">Evidentiary traceability review for workplace investigations. Record interrogation framework, common documentation flags, AI documentation risk, and reviewer quick reference.</div></div><div class="library-item-action"><a href="JRS_Investigator_Field_Guide.pdf" target="_blank" rel="noopener noreferrer" class="lib-btn primary">Download PDF</a></div></div>
-  <div class="library-item"><div class="library-item-info"><div class="library-item-label">Role Reference</div><div class="library-item-title">HR Documentation Review Guide</div><div class="library-item-desc">Pre-submission review guidance for HR practitioners. Performance, disciplinary, termination, and accommodation documentation review.</div></div><div class="library-item-action"><a href="https://wikesphere.gumroad.com/l/opukbv" target="_blank" rel="noopener noreferrer" class="lib-btn">Access</a></div></div>
-  <div class="library-item"><div class="library-item-info"><div class="library-item-label">Operational Reference</div><div class="library-item-title">Administrative Review Companion</div><div class="library-item-desc">Documentation review guidance for administrative employment actions. Reconstruction check for accommodation decisions, separation records, and formal action documentation.</div></div><div class="library-item-action"><a href="https://wikesphere.gumroad.com/l/opukbv" target="_blank" rel="noopener noreferrer" class="lib-btn">Access</a></div></div>
-  <div class="library-item"><div class="library-item-info"><div class="library-item-label">Field Guide</div><div class="library-item-title">Escalation Review Procedures</div><div class="library-item-desc">Escalation indicators, secondary review triggers, and routing guidance for records that require HR compliance or legal review before system entry.</div></div><div class="library-item-action"><a href="https://wikesphere.gumroad.com/l/opukbv" target="_blank" rel="noopener noreferrer" class="lib-btn">Access</a></div></div>
+  <div class="library-item"><div class="library-item-info"><div class="library-item-label">Role Reference</div><div class="library-item-title">HR Documentation Review Guide</div><div class="library-item-desc">Pre-submission review guidance for HR practitioners. Performance, disciplinary, termination, and accommodation documentation review.</div></div><div class="library-item-action"><a class="gumroad-button" href="https://wikesphere.gumroad.com/l/opukbv" data-gumroad-single-product="true" class="lib-btn">Access</a></div></div>
+  <div class="library-item"><div class="library-item-info"><div class="library-item-label">Operational Reference</div><div class="library-item-title">Administrative Review Companion</div><div class="library-item-desc">Documentation review guidance for administrative employment actions. Reconstruction check for accommodation decisions, separation records, and formal action documentation.</div></div><div class="library-item-action"><a class="gumroad-button" href="https://wikesphere.gumroad.com/l/opukbv" data-gumroad-single-product="true" class="lib-btn">Access</a></div></div>
+  <div class="library-item"><div class="library-item-info"><div class="library-item-label">Field Guide</div><div class="library-item-title">Escalation Review Procedures</div><div class="library-item-desc">Escalation indicators, secondary review triggers, and routing guidance for records that require HR compliance or legal review before system entry.</div></div><div class="library-item-action"><a class="gumroad-button" href="https://wikesphere.gumroad.com/l/opukbv" data-gumroad-single-product="true" class="lib-btn">Access</a></div></div>
  </div>
 </div>
 
@@ -2020,7 +2583,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
  <div class="section-head">Framework Materials</div>
  <div class="library-grid">
  <div class="library-item"><div class="library-item-info"><div class="library-item-label">Standard Document  <span style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.1em;font-weight:400;color:var(--muted-soft);">v1.0  |  May 2026  |  Free</span></div><div class="library-item-title">JRS Standard</div><div class="library-item-desc">Foundational review structure. Four conditions, reviewer lens, failure-mode catalog.</div></div><div class="library-item-action"><a href="JRS-Standard.pdf" download class="lib-btn primary">Download</a></div></div>
- <div class="library-item"><div class="library-item-info"><div class="library-item-label">Operational Reference  /  Paid</div><div class="library-item-title">JRS Reviewer Reference</div><div class="library-item-desc">Foundational documentation review reference. Reconstruction-focused review principles, failure-mode reference, and documentation review methodology.</div></div><div class="library-item-action"><a href="https://wikesphere.gumroad.com/l/opukbv" target="_blank" rel="noopener noreferrer" class="lib-btn">Access</a></div></div>
+ <div class="library-item"><div class="library-item-info"><div class="library-item-label">Operational Reference  /  Paid</div><div class="library-item-title">JRS Reviewer Reference</div><div class="library-item-desc">Foundational documentation review reference. Reconstruction-focused review principles, failure-mode reference, and documentation review methodology.</div></div><div class="library-item-action"><a class="gumroad-button" href="https://wikesphere.gumroad.com/l/opukbv" data-gumroad-single-product="true" class="lib-btn">Access</a></div></div>
  <div class="library-item"><div class="library-item-info"><div class="library-item-label">Operational Resources</div><div class="library-item-title">Operational Implementation Package</div><div class="library-item-desc">Reviewer onboarding, training modules, operational forms, escalation templates, AI documentation guidance.</div></div><div class="library-item-action"><button class="lib-btn primary" onclick="showSection('kit')">View Kit</button></div></div>
  <div class="library-item"><div class="library-item-info"><div class="library-item-label">Training Program</div><div class="library-item-title">Documentation Review Foundations</div><div class="library-item-desc">Six-module self-paced program. Evidence anchoring, traceable reasoning, AI records, workflow integration.</div></div><div class="library-item-action"><button class="lib-btn primary" onclick="showSection('training')">Start</button></div></div>
  </div>
@@ -2070,7 +2633,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
  </div>
 </div>
 
-<script>
+<script defer>
 // ── NAVIGATION ────────────────────────────────────
 function showSection(id){
  document.querySelectorAll('.page-section').forEach(s=>s.classList.remove('active'));
@@ -2379,5 +2942,7 @@ function printCertificate(){const d=document.getElementById('cert-canvas').toDat
 
 updateProgress();
 </script>
+<!-- Gumroad inline overlay -->
+<script src="https://gumroad.com/js/embed.js" async></script>
 </body>
 </html>
