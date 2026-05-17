@@ -584,6 +584,29 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
 </div>
 
 <div style="margin-bottom:44px;">
+  <div class="section-head">Where JRS Fits</div>
+  <p class="body-text" style="max-width:580px;">Review is applied at the pre-finalization stage. The record passes through three layers before it enters the official system.</p>
+  <div style="margin-top:14px;display:flex;gap:0;border:1px solid var(--rule);overflow:hidden;">
+    <div style="flex:1;padding:16px;border-right:1px solid var(--rule);">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">Layer 1</div>
+      <div style="font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:4px;">Drafting</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.6;">Manager, investigator, HR, or automated tool prepares the record. Source material available at this stage.</div>
+    </div>
+    <div style="flex:1;padding:16px;border-right:1px solid var(--rule);background:rgba(184,144,64,.06);">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:6px;">Layer 2  /  JRS Applied Here</div>
+      <div style="font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:4px;">Pre-Finalization Review</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.6;">Reviewer applies five questions. Gaps flagged. Secondary review triggered if indicated. Record returned or approved.</div>
+    </div>
+    <div style="flex:1;padding:16px;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">Layer 3</div>
+      <div style="font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:4px;">Official System of Record</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.6;">Record enters the system. Later review by HR, compliance, legal, or audit personnel reads the file as submitted.</div>
+    </div>
+  </div>
+  <div class="reviewer-note" style="margin-top:10px;"><div class="reviewer-note-label">The control point</div>Once a record enters an official system, the opportunity to resolve a gap without consequence has passed. Pre-finalization review is the only practical intervention point.</div>
+</div>
+
+<div style="margin-bottom:44px;">
  <div class="section-head">Typical Reviewer Routing</div>
  <p class="body-text" style="max-width:620px;">How a record moves through review depends on its risk level. Most records are self-reviewed by the drafter. Elevated-risk records route through a secondary check before system entry.</p>
  <div style="border:1px solid var(--rule);overflow:hidden;margin-top:16px;">
@@ -763,6 +786,34 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
     </div>
   </div>
   <div style="margin-top:12px;"><button class="btn btn-ghost" style="font-size:12.5px;" onclick="showSection('kit')">View Deployment Resources</button></div>
+</div>
+
+<div style="margin-bottom:44px;">
+  <div class="section-head">Audit Sampling Example</div>
+  <p class="body-text">Periodic record sampling applies the failure-mode catalog to identify systemic documentation gaps across departments or record types.</p>
+  <div style="border:1px solid var(--rule);overflow:hidden;margin-top:12px;">
+    <div style="padding:10px 14px;border-bottom:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);">Sampling Finding  /  Supervisory Counseling Records  /  Q1</div>
+    <div style="padding:14px 16px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:12px;">
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Records Sampled</div>
+          <div style="font-size:13px;color:var(--text);">12 supervisory counseling records across three departments</div>
+        </div>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--review-text);margin-bottom:4px;">Finding</div>
+          <div style="font-size:13px;color:var(--text);">8 of 12 records contained pattern conduct claims without specific dated instances</div>
+        </div>
+      </div>
+      <div style="border-top:1px solid var(--rule);padding-top:10px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">Recurring gaps identified</div>
+        <div style="font-size:12.5px;color:var(--muted);margin-bottom:4px;">-- Evaluative language without behavioral anchor or date: 6 of 12 records</div>
+        <div style="font-size:12.5px;color:var(--muted);margin-bottom:4px;">-- Pattern conduct described without specific dated instances: 5 of 12 records</div>
+        <div style="font-size:12.5px;color:var(--muted);margin-bottom:4px;">-- Policy cited but section not identified: 4 of 12 records</div>
+        <div style="font-size:12.5px;color:var(--muted);">-- Timeline inconsistency between described conduct and record date: 3 of 12 records</div>
+      </div>
+      <div class="reviewer-note" style="margin-top:10px;"><div class="reviewer-note-label">Audit disposition</div>Records with unsupported pattern claims returned for anchoring before retention. No remediation of existing records. Gap documented for department review.</div>
+    </div>
+  </div>
 </div>
 
 <div style="margin-bottom:44px;">
@@ -1547,7 +1598,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
 
 <div class="callout" style="margin-top:0;">
   <div class="callout-label">Free Alternative</div>
-  <p>The JRS Standard, Reviewer Reference, and Investigator Field Guide are available at no cost from the Library section. Role environments and implementation guidance are also publicly accessible.</p>
+  <p>The JRS Standard and Investigator Field Guide are available at no cost from the Library section. Role environments and implementation guidance are also publicly accessible.</p>
 </div>
 
 </div>
@@ -1575,7 +1626,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
  <p class="muted-text" style="margin-bottom:14px;">The following materials are available at no cost. They are operational references intended for practitioner use within existing review workflows.</p>
  <div class="library-grid">
   <div class="library-item"><div class="library-item-info"><div class="library-item-label">Framework Document</div><div class="library-item-title">JRS Standard v1.0</div><div class="library-item-desc">Foundational review structure. Four conditions, reviewer lens, failure-mode catalog. The primary framework document.</div></div><div class="library-item-action"><a href="JRS-Standard.pdf" download class="lib-btn primary">Download</a></div></div>
-  <div class="library-item"><div class="library-item-info"><div class="library-item-label">Practitioner Reference</div><div class="library-item-title">JRS Reviewer Reference</div><div class="library-item-desc">Foundational framework guidance. Reconstruction-focused review principles, failure-mode reference, and documentation review methodology.</div></div><div class="library-item-action"><a href="https://wikesphere.gumroad.com/l/opukbv" target="_blank" rel="noopener noreferrer" class="lib-btn">Access</a></div></div>
+  <div class="library-item"><div class="library-item-info"><div class="library-item-label">Practitioner Reference  /  Paid</div><div class="library-item-title">JRS Reviewer Reference</div><div class="library-item-desc">Foundational documentation review reference. Reconstruction-focused review principles, failure-mode reference, and documentation review methodology.</div></div><div class="library-item-action"><a href="https://wikesphere.gumroad.com/l/opukbv" target="_blank" rel="noopener noreferrer" class="lib-btn">Access</a></div></div>
   <div class="library-item"><div class="library-item-info"><div class="library-item-label">Field Supplement / Document 001-INV</div><div class="library-item-title">JRS Investigator Field Guide</div><div class="library-item-desc">Evidentiary traceability review for workplace investigations. Record interrogation framework, common documentation flags, AI documentation risk, and reviewer quick reference.</div></div><div class="library-item-action"><a href="JRS_Investigator_Field_Guide.pdf" target="_blank" rel="noopener noreferrer" class="lib-btn primary">Download PDF</a></div></div>
   <div class="library-item"><div class="library-item-info"><div class="library-item-label">Role Reference</div><div class="library-item-title">HR Documentation Review Guide</div><div class="library-item-desc">Pre-submission review guidance for HR practitioners. Performance, disciplinary, termination, and accommodation documentation review.</div></div><div class="library-item-action"><a href="https://wikesphere.gumroad.com/l/opukbv" target="_blank" rel="noopener noreferrer" class="lib-btn">Access</a></div></div>
   <div class="library-item"><div class="library-item-info"><div class="library-item-label">Operational Reference</div><div class="library-item-title">Administrative Review Companion</div><div class="library-item-desc">Documentation review guidance for administrative employment actions. Reconstruction check for accommodation decisions, separation records, and formal action documentation.</div></div><div class="library-item-action"><a href="https://wikesphere.gumroad.com/l/opukbv" target="_blank" rel="noopener noreferrer" class="lib-btn">Access</a></div></div>
@@ -1587,7 +1638,7 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
  <div class="section-head">Framework Materials</div>
  <div class="library-grid">
  <div class="library-item"><div class="library-item-info"><div class="library-item-label">Standard Document</div><div class="library-item-title">JRS Standard v1.0</div><div class="library-item-desc">Foundational review structure. Four conditions, reviewer lens, failure-mode catalog.</div></div><div class="library-item-action"><a href="JRS-Standard.pdf" download class="lib-btn primary">Download</a></div></div>
- <div class="library-item"><div class="library-item-info"><div class="library-item-label">Operational Reference</div><div class="library-item-title">JRS Reviewer Reference</div><div class="library-item-desc">Foundational framework guidance. Reconstruction-focused review principles, failure-mode reference, and documentation review methodology.</div></div><div class="library-item-action"><a href="https://wikesphere.gumroad.com/l/opukbv" target="_blank" rel="noopener noreferrer" class="lib-btn">Access</a></div></div>
+ <div class="library-item"><div class="library-item-info"><div class="library-item-label">Operational Reference  /  Paid</div><div class="library-item-title">JRS Reviewer Reference</div><div class="library-item-desc">Foundational documentation review reference. Reconstruction-focused review principles, failure-mode reference, and documentation review methodology.</div></div><div class="library-item-action"><a href="https://wikesphere.gumroad.com/l/opukbv" target="_blank" rel="noopener noreferrer" class="lib-btn">Access</a></div></div>
  <div class="library-item"><div class="library-item-info"><div class="library-item-label">Operational Resources</div><div class="library-item-title">Operational Implementation Package</div><div class="library-item-desc">Reviewer onboarding, training modules, operational forms, escalation templates, AI documentation guidance.</div></div><div class="library-item-action"><button class="lib-btn primary" onclick="showSection('kit')">View Kit</button></div></div>
  <div class="library-item"><div class="library-item-info"><div class="library-item-label">Training Program</div><div class="library-item-title">Documentation Review Foundations</div><div class="library-item-desc">Six-module self-paced program. Evidence anchoring, traceable reasoning, AI records, workflow integration.</div></div><div class="library-item-action"><button class="lib-btn primary" onclick="showSection('training')">Start</button></div></div>
  </div>
