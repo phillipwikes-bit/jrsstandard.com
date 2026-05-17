@@ -552,6 +552,34 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
 </div>
 
 <div style="margin-bottom:44px;">
+  <div class="section-head">Review Lifecycle</div>
+  <p class="body-text" style="max-width:580px;">Applied at the pre-finalization stage, before records enter official systems. The review does not change the substance of the decision. It checks whether the basis is visible in the file.</p>
+  <div style="margin-top:14px;border:1px solid var(--rule);overflow:hidden;">
+    <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--rule);">
+      <div style="background:var(--surface2);padding:12px 16px;min-width:36px;border-right:1px solid var(--rule);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted-soft);">1</div>
+      <div style="padding:12px 16px;font-size:13.5px;color:var(--text);font-weight:600;">Draft prepared</div>
+    </div>
+    <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--rule);background:rgba(255,255,255,.01);">
+      <div style="background:var(--surface2);padding:12px 16px;min-width:36px;border-right:1px solid var(--rule);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted-soft);">2</div>
+      <div style="padding:12px 16px;"><span style="font-size:13.5px;color:var(--text);font-weight:600;">Reviewer verification</span><span style="font-size:12.5px;color:var(--muted);margin-left:10px;">Five questions applied. Gaps flagged before submission.</span></div>
+    </div>
+    <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--rule);">
+      <div style="background:var(--surface2);padding:12px 16px;min-width:36px;border-right:1px solid var(--rule);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted-soft);">3</div>
+      <div style="padding:12px 16px;"><span style="font-size:13.5px;color:var(--text);font-weight:600;">Source confirmation</span><span style="font-size:12.5px;color:var(--muted);margin-left:10px;">AI-assisted content reviewed against source material before entry.</span></div>
+    </div>
+    <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--rule);background:rgba(255,255,255,.01);">
+      <div style="background:var(--surface2);padding:12px 16px;min-width:36px;border-right:1px solid var(--rule);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--review-text);">4</div>
+      <div style="padding:12px 16px;"><span style="font-size:13.5px;color:var(--text);font-weight:600;">Secondary review if triggered</span><span style="font-size:12.5px;color:var(--muted);margin-left:10px;">Elevated-risk records routed to HR compliance or legal before system entry.</span></div>
+    </div>
+    <div style="display:flex;align-items:stretch;">
+      <div style="background:var(--surface2);padding:12px 16px;min-width:36px;border-right:1px solid var(--rule);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:10px;color:#5DBF82;">5</div>
+      <div style="padding:12px 16px;"><span style="font-size:13.5px;color:var(--text);font-weight:600;">Record enters system</span><span style="font-size:12.5px;color:var(--muted);margin-left:10px;">Self-contained. Anchored. Reconstructable.</span></div>
+    </div>
+  </div>
+  <div class="reviewer-note" style="margin-top:10px;"><div class="reviewer-note-label">Pre-finalization</div>Review occurs before the record enters the official system. That is the only point where a gap can be resolved without consequence.</div>
+</div>
+
+<div style="margin-bottom:44px;">
  <div class="section-head">Typical Reviewer Routing</div>
  <p class="body-text" style="max-width:620px;">How a record moves through review depends on its risk level. Most records are self-reviewed by the drafter. Elevated-risk records route through a secondary check before system entry.</p>
  <div style="border:1px solid var(--rule);overflow:hidden;margin-top:16px;">
@@ -616,7 +644,17 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
 </div>
 
 <div style="margin-bottom:44px;">
- <div class="section-head">Lightweight Adoption</div>
+ <div class="section-head">Incremental Adoption</div>
+ <div style="border:1px solid var(--rule);padding:18px 20px;margin-bottom:14px;background:var(--surface);">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;">
+   <div style="display:flex;gap:10px;align-items:flex-start;"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent-dim);margin-top:2px;flex-shrink:0;">--</span><span style="font-size:13px;color:var(--muted);">No dedicated software required</span></div>
+   <div style="display:flex;gap:10px;align-items:flex-start;"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent-dim);margin-top:2px;flex-shrink:0;">--</span><span style="font-size:13px;color:var(--muted);">Compatible with existing workflows</span></div>
+   <div style="display:flex;gap:10px;align-items:flex-start;"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent-dim);margin-top:2px;flex-shrink:0;">--</span><span style="font-size:13px;color:var(--muted);">Start with one record type</span></div>
+   <div style="display:flex;gap:10px;align-items:flex-start;"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent-dim);margin-top:2px;flex-shrink:0;">--</span><span style="font-size:13px;color:var(--muted);">Expand from demonstrated usefulness</span></div>
+   <div style="display:flex;gap:10px;align-items:flex-start;"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent-dim);margin-top:2px;flex-shrink:0;">--</span><span style="font-size:13px;color:var(--muted);">Applied at the pre-finalization stage</span></div>
+   <div style="display:flex;gap:10px;align-items:flex-start;"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent-dim);margin-top:2px;flex-shrink:0;">--</span><span style="font-size:13px;color:var(--muted);">No formal rollout or policy change required</span></div>
+  </div>
+ </div>
  <p class="body-text">JRS is designed for use within existing workflows. No dedicated platform required. No software replacement. Can be introduced incrementally. Supports existing documentation environments.</p>
  <div class="card-grid">
  <div class="card"><div class="card-label">Self-Review</div><div class="card-title">3–8 minutes</div><div class="card-text">Manager applies the self-review prompt before submitting. A clean record passes quickly. A record with missing dates or unanchored language requires rework. That is the point.</div></div>
@@ -659,8 +697,69 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
 </div>
 
 <div style="margin-bottom:44px;">
+  <div class="section-head">Operational Components</div>
+  <p class="body-text">The following materials are available across the public and Deployment Kit layers. Each is designed for practitioner use within existing review workflows.</p>
+  <div style="border:1px solid var(--rule);overflow:hidden;margin-top:12px;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;">
+      <div style="padding:13px 16px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:4px;">Public</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">JRS Standard</div>
+        <div style="font-size:12px;color:var(--muted);">Four conditions. Reviewer lens. Failure-mode catalog.</div>
+      </div>
+      <div style="padding:13px 16px;border-bottom:1px solid var(--rule);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:4px;">Public</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Investigator Field Guide</div>
+        <div style="font-size:12px;color:var(--muted);">Evidentiary traceability for investigations and EEO review.</div>
+      </div>
+      <div style="padding:13px 16px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:4px;">Deployment Kit</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Pre-Finalization Review Worksheet</div>
+        <div style="font-size:12px;color:var(--muted);">Four-section checklist. Disposition and signoff.</div>
+      </div>
+      <div style="padding:13px 16px;border-bottom:1px solid var(--rule);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:4px;">Deployment Kit</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Secondary Review Escalation Form</div>
+        <div style="font-size:12px;color:var(--muted);">Trigger checklist. Gap documentation. Routing disposition.</div>
+      </div>
+      <div style="padding:13px 16px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:4px;">Deployment Kit</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">AI Verification Checklist</div>
+        <div style="font-size:12px;color:var(--muted);">Source identification. Characterization review. Human confirmation.</div>
+      </div>
+      <div style="padding:13px 16px;border-bottom:1px solid var(--rule);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:4px;">Deployment Kit</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Reviewer Signoff Template</div>
+        <div style="font-size:12px;color:var(--muted);">Confirmation checklist. Known limitations. Attestation block.</div>
+      </div>
+      <div style="padding:13px 16px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:4px;">Deployment Kit</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Redlined Documentation Examples</div>
+        <div style="font-size:12px;color:var(--muted);">Seven before/after annotated examples across record types.</div>
+      </div>
+      <div style="padding:13px 16px;border-bottom:1px solid var(--rule);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:4px;">Deployment Kit</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Reviewer Onboarding Guide</div>
+        <div style="font-size:12px;color:var(--muted);">Step-by-step orientation. Tool routing. Risk-level routing.</div>
+      </div>
+      <div style="padding:13px 16px;border-right:1px solid var(--rule);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:4px;">Deployment Kit</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Implementation Playbook</div>
+        <div style="font-size:12px;color:var(--muted);">Three models. Role-based entry points. Common implementation questions.</div>
+      </div>
+      <div style="padding:13px 16px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:4px;">Deployment Kit</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Training Modules (6)</div>
+        <div style="font-size:12px;color:var(--muted);">PDF reference versions of all six review training modules.</div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:12px;"><button class="btn btn-ghost" style="font-size:12.5px;" onclick="showSection('kit')">View Deployment Resources</button></div>
+</div>
+
+<div style="margin-bottom:44px;">
  <div class="section-head">What JRS Does Not Do</div>
- <p class="body-text">JRS evaluates documentation sufficiency. Not decision correctness.</p>
+ <p class="body-text">JRS evaluates documentation sufficiency. Not decision correctness. A record can satisfy all four conditions and still reflect a decision that gets disputed.</p>
+ <div class="reviewer-note" style="margin-bottom:12px;"><div class="reviewer-note-label">Incomplete record example</div>Referenced counseling history unavailable at review. Escalation unsupported pending documentation. Record returned to drafter before system entry. -- Secondary reviewer, 4/18/26</div>
  <div style="border-top:1px solid var(--rule);margin-top:10px;">
  <div style="padding:10px 0;border-bottom:1px solid #222;font-size:15px;color:var(--text);">Sanitize poor documentation through procedural compliance</div>
  <div style="padding:10px 0;border-bottom:1px solid #222;font-size:15px;color:var(--text);">Enable box-checking without meaningful review</div>
@@ -668,6 +767,18 @@ canvas#cert-canvas{display:block;width:100%;height:auto}
  <div style="padding:10px 0;border-bottom:1px solid #222;font-size:15px;color:var(--text);">Establish legal sufficiency or eliminate legal risk</div>
  <div style="padding:10px 0;border-bottom:1px solid #222;font-size:15px;color:var(--text);">Replace professional judgment, legal counsel, or HR expertise</div>
  </div>
+</div>
+
+<div style="margin-bottom:44px;">
+  <div class="section-head">Operational FAQ</div>
+  <div style="border-top:1px solid var(--rule);">
+    <div style="padding:14px 0;border-bottom:1px solid var(--rule);"><div style="font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:5px;">Does implementation require a policy change?</div><div style="font-size:13px;color:var(--muted);line-height:1.6;">No. JRS operates within existing workflows without requiring policy revisions, system changes, or dedicated software. It can be introduced as a reviewer reference before any formal adoption decision.</div></div>
+    <div style="padding:14px 0;border-bottom:1px solid var(--rule);"><div style="font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:5px;">Which records should we start with?</div><div style="font-size:13px;color:var(--muted);line-height:1.6;">Termination records, accommodation documentation, and investigation conclusions are the highest-leverage starting points. Performance records are the most common entry point for teams new to pre-finalization review.</div></div>
+    <div style="padding:14px 0;border-bottom:1px solid var(--rule);"><div style="font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:5px;">When should secondary review occur?</div><div style="font-size:13px;color:var(--muted);line-height:1.6;">When a high-risk indicator is present: evaluative language without behavioral anchors, pattern conduct without dated instances, escalation without a prior counseling trail, or AI-assisted wording without source verification.</div></div>
+    <div style="padding:14px 0;border-bottom:1px solid var(--rule);"><div style="font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:5px;">How are AI-assisted records reviewed?</div><div style="font-size:13px;color:var(--muted);line-height:1.6;">The AI Verification Checklist is applied before AI-assisted content enters an official system. A human reviewer confirms that source materials were reviewed and that no unverified characterizations were introduced before finalization.</div></div>
+    <div style="padding:14px 0;border-bottom:1px solid var(--rule);"><div style="font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:5px;">Does JRS require notifying employees?</div><div style="font-size:13px;color:var(--muted);line-height:1.6;">JRS is an internal documentation quality review applied before records enter official systems. It does not change the substance of employment decisions or alter employee-facing communications.</div></div>
+    <div style="padding:14px 0;"><div style="font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:5px;">What if time or staffing is limited?</div><div style="font-size:13px;color:var(--muted);line-height:1.6;">Apply the Rapid Review minimum: identify unsupported evaluative language, confirm timeline anchors for pattern claims, verify referenced records are identifiable, and ensure each conclusion is reconstructable from the file alone.</div></div>
+  </div>
 </div>
 
 <div style="margin-bottom:44px;">
@@ -1654,7 +1765,7 @@ const MODULES=[
 {title:"Introduction to Documentation Review",tag:"Module 01",
 lessons:[
 {title:"Why Records Fail",html:`<p>Records are reviewed later by people who were not present. Personnel change. Time passes. What felt obvious during drafting may not be recoverable when someone else reads the file cold.</p><div class="callout"><div class="callout-label">The Problem</div><p>Documentation review is a reconstruction problem. The question is not whether the record reads well. It is whether someone with no access to the original participants can identify the basis for each conclusion from what the file actually contains.</p></div><p>If the reviewer has to call someone to understand the file, the record is already unstable.</p><div class="quote-block">"The file is what survives. Not the meeting. Not the conversation. Not what the manager remembers."</div><div class="lo-block"><div class="lo-label">This module covers</div><div class="lo-item"><span class="lo-check">--</span>Common causes of documentation failure during later review</div><div class="lo-item"><span class="lo-check">--</span>The difference between readable language and supported conclusions</div><div class="lo-item"><span class="lo-check">--</span>Why records are routinely reviewed without original context</div></div>`},
-{title:"Administrative Realities",html:`<p>Documentation is created under real operational conditions: time pressure, incomplete information, and drafters who may be writing records after the relevant events have already occurred. These are not exceptional circumstances. They are the norm.</p><p>A record can be well-written and still fail during later review. Professional wording creates the appearance of support. It does not substitute for it.</p><div class="callout"><div class="callout-label">File Readability vs. Support Visibility</div><p>Documentation quality and decision quality are not the same thing. A record can be thoroughly documented and still reflect a poor decision. This framework addresses whether the documented basis is identifiable from the record.</p></div><div class="quote-block">"What seemed adequately documented at drafting may not hold up when someone reads it without that background."</div>`}
+{title:"Administrative Realities",html:`<p>Documentation is created under real operational conditions: time pressure, incomplete information, and drafters who may be writing records after the relevant events have already occurred. These are not exceptional circumstances. They are the norm.</p><p>A record can be well-written and still fail during later review. Professional wording creates the appearance of support. It does not substitute for it.</p><div class="callout"><div class="callout-label">File Readability vs. Support Visibility</div><p>Documentation quality and decision quality are not the same thing. A record can be thoroughly documented and still reflect a poor decision. This review methodology addresses whether the documented basis is identifiable from the record.</p></div><div class="quote-block">"What seemed adequately documented at drafting may not hold up when someone reads it without that background."</div>`}
 ],quiz:[
 {q:"Documentation review primarily evaluates whether:",options:["The employment decision was substantively correct","Someone with no prior knowledge can reconstruct the basis for conclusions from the file","The record uses professional language and clear writing","The manager followed the applicable disciplinary procedure"],correct:1,explanation:"The review addresses reconstruction: can a later reviewer identify the basis for each conclusion from the file alone? Whether the decision was correct is a separate question."},
 {q:"A well-written record that reads professionally will hold up during later review.",options:["True","False"],correct:1,explanation:"Professional language creates the appearance of support. It does not create the support itself."}
