@@ -985,7 +985,7 @@ a.gumroad-button.util-link {
 
 /* 6. STICKY MICRO-HEADER */
  .mobile-sticky-bar{
-  display:flex !important;
+  display:none !important;
   position:fixed !important;
   top:0 !important;
   left:0 !important;
@@ -1002,7 +1002,7 @@ a.gumroad-button.util-link {
   transform:translateY(-100%) !important;
   transition:transform .22s ease !important;
  }
- .mobile-sticky-bar.visible{transform:translateY(0) !important}
+ .mobile-sticky-bar.visible{display:flex !important;transform:translateY(0) !important}
  .mobile-sticky-brand{
   font-family:'Bodoni Moda',serif !important;
   font-size:18px !important;
@@ -1093,7 +1093,7 @@ a.gumroad-button.util-link {
 </head>
 <body>
 <!-- MOBILE STICKY BAR — appears on scroll, mobile only -->
-<div class="mobile-sticky-bar" id="mobileStickyBar">
+<div class="mobile-sticky-bar" id="mobileStickyBar" style="display:none;">
  <span class="mobile-sticky-brand">JRS<sup style="font-size:10px;vertical-align:super;">™</sup></span>
  <a href="JRS-Standard.pdf" class="mobile-sticky-cta">Download Standard</a>
 </div>
