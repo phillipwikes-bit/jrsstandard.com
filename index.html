@@ -599,6 +599,209 @@ a.gumroad-button.util-link {
 }
 
 
+/* ── MOBILE ENHANCEMENT PASS ── */
+/* All rules below are phone-optimized additions only. Desktop unchanged. */
+
+@media(max-width:480px){
+
+ /* ── HEADER ── */
+ .site-header-inner{padding:16px 0 13px;gap:10px}
+ .wordmark{font-size:26px}
+ .header-meta{font-size:9px;letter-spacing:.1em;line-height:1.6}
+
+ /* ── NAV ── */
+ .primary-nav-inner{padding:0 14px;gap:0}
+ .nav-item{font-size:9px;letter-spacing:.1em;padding:10px 11px}
+
+ /* ── UTIL BAR ── */
+ .util-bar{padding:0 14px}
+ .util-bar-inner{flex-wrap:wrap;row-gap:0;padding:6px 0}
+ .util-label{display:none}
+ .util-link{font-size:8.5px;letter-spacing:.09em;padding:7px 10px;border-left:none;border-bottom:1px solid var(--rule)}
+ .util-link:last-child{border-bottom:none}
+
+ /* ── ONBOARDING STRIP ── */
+ .onboarding-strip{padding:0 14px}
+ .ob-step{padding:16px 12px 18px}
+ .ob-num{font-size:28px;margin-bottom:5px}
+ .ob-label{font-size:8px;letter-spacing:.14em;margin-bottom:5px}
+ .ob-text{font-size:12.5px;line-height:1.6;color:var(--muted)}
+
+ /* ── CONTAINER & TYPOGRAPHY ── */
+ .container{padding:28px 16px 72px}
+ .page-eyebrow{font-size:9px;letter-spacing:.18em;padding-top:36px;margin-bottom:10px}
+ .page-title{font-size:28px;line-height:1.08;margin-bottom:12px}
+ .page-subtitle{font-size:15px;line-height:1.65;margin-bottom:24px}
+ .section-head{font-size:11px;letter-spacing:.07em;padding-bottom:9px;margin-bottom:14px}
+ .body-text{font-size:15px;line-height:1.72}
+ .muted-text{font-size:13.5px}
+ .op-note{font-size:13px}
+ .quote-block{font-size:16px;padding:14px 0}
+
+ /* ── CALLOUTS ── */
+ .callout{padding:12px 14px;margin:14px 0}
+ .callout-label{font-size:8.5px;letter-spacing:.18em;margin-bottom:5px}
+ .callout p,.callout-body{font-size:14px;line-height:1.65}
+
+ /* ── CHIPS ── */
+ .chip{font-size:8.5px;padding:5px 9px}
+
+ /* ── CONDITIONS ── */
+ .cond-row{grid-template-columns:36px 1fr;gap:10px;padding:14px 0}
+ .cond-num{font-size:12px}
+ .cond-title{font-size:14px}
+ .cond-text{font-size:14px;line-height:1.65}
+
+ /* ── FAILURE BLOCKS ── */
+ .failure-head{font-size:8.5px;padding:10px 12px}
+ .failure-col{padding:12px}
+ .failure-bad,.failure-good{font-size:13px}
+ .failure-col-label{font-size:8px;letter-spacing:.14em}
+
+ /* ── REVIEWER NOTES ── */
+ .reviewer-note{padding:10px 12px;font-size:11px;line-height:1.65}
+ .reviewer-note-label{font-size:8.5px;letter-spacing:.15em;margin-bottom:4px}
+
+ /* ── READINESS GRID ── */
+ .readiness-row{grid-template-columns:64px 1fr}
+ .readiness-badge{font-size:8.5px;letter-spacing:.12em;padding:12px 6px}
+ .readiness-desc{padding:12px 14px;font-size:13.5px}
+ .readiness-desc strong{font-size:12px}
+
+ /* ── LIST BLOCKS ── */
+ .list-item{font-size:14px;padding:9px 0}
+ .list-dash{font-size:11px}
+
+ /* ── CARDS ── */
+ .card{padding:15px}
+ .card-label{font-size:8.5px;letter-spacing:.17em;margin-bottom:6px}
+ .card-title{font-size:13.5px}
+ .card-text{font-size:12.5px}
+
+ /* ── WORKSHEETS ── */
+ .worksheet-header{padding:12px 14px}
+ .worksheet-title{font-size:9px;letter-spacing:.13em}
+ .worksheet-toggle{font-size:8.5px}
+ .worksheet-body{padding:14px}
+ .ws-section-label{font-size:8px;letter-spacing:.17em;margin-bottom:8px}
+ .ws-item{font-size:13px;padding:7px 0}
+ .ws-note{font-size:11.5px}
+
+ /* ── SCENARIOS ── */
+ .scenario-label{font-size:8.5px;letter-spacing:.17em}
+ .scenario-title{font-size:14px}
+ .scenario-tab{font-size:9px;letter-spacing:.1em;padding:8px 11px}
+ .record-text{font-size:13.5px;line-height:1.7;padding:14px}
+ .annotation{font-size:12.5px;padding:8px 10px}
+ .annotation-tag{font-size:8px;letter-spacing:.12em}
+
+ /* ── MEMO ── */
+ .memo-to{font-size:8.5px;letter-spacing:.15em}
+ .memo-subject{font-size:14px}
+ .memo-body{padding:14px}
+ .memo-section-label{font-size:8px;letter-spacing:.17em;margin-bottom:6px}
+ .memo-text{font-size:13.5px;line-height:1.68}
+ .memo-item{font-size:13px;padding:5px 0}
+ .memo-dash{font-size:10px}
+
+ /* ── KIT FLOW ── */
+ .kit-flow{margin:14px 0}
+ .kit-flow-step{grid-template-columns:44px 1fr}
+ .kit-flow-num{font-size:15px;padding:12px}
+ .kit-flow-content{padding:12px 14px}
+ .kit-flow-title{font-size:13.5px}
+ .kit-flow-text{font-size:12.5px}
+
+ /* ── KIT HERO ── */
+ .kit-badge{font-size:8.5px;letter-spacing:.18em;padding:5px 10px}
+ .kit-title{font-size:26px}
+ .kit-subtitle{font-size:15px;line-height:1.65}
+ .kit-tagline{font-size:9px;letter-spacing:.17em}
+ .kit-feature{font-size:13.5px}
+ .kit-section-label{font-size:8.5px;letter-spacing:.17em}
+ .kit-section-title{font-size:23px;margin-bottom:10px}
+ .kit-section-text{font-size:14px;line-height:1.65;margin-bottom:18px}
+
+ /* ── PURCHASE CARD ── */
+ .kit-purchase-label{font-size:8px;letter-spacing:.17em}
+ .kit-purchase-title{font-size:18px}
+ .kit-purchase-sub{font-size:12.5px}
+ .kit-price-note{font-size:8.5px;letter-spacing:.11em}
+ .kit-cta{font-size:10px;letter-spacing:.13em;padding:13px 16px}
+ .kit-include-item{font-size:12px}
+ .kit-include-dash{font-size:9px}
+
+ /* ── CONTENTS GRID ── */
+ .contents-item{padding:14px}
+ .contents-item-label{font-size:7.5px;letter-spacing:.15em}
+ .contents-item-title{font-size:13.5px}
+ .contents-item-text{font-size:12px}
+
+ /* ── LIBRARY ── */
+ .library-item{padding:14px 15px;gap:10px}
+ .library-item-label{font-size:8px;letter-spacing:.13em;margin-bottom:4px}
+ .library-item-title{font-size:13.5px}
+ .library-item-desc{font-size:12.5px}
+ .lib-btn{font-size:8.5px;padding:6px 10px}
+
+ /* ── ROLE CARDS ── */
+ .role-card{padding:14px}
+ .role-card-sub{font-size:8.5px;letter-spacing:.11em;margin-bottom:5px}
+ .role-card-title{font-size:13.5px;margin-bottom:4px}
+ .role-card-text{font-size:12.5px}
+
+ /* ── MATURITY ── */
+ .maturity-level-header{padding:12px 14px;gap:12px}
+ .maturity-level-num{font-size:18px}
+ .maturity-level-title{font-size:14px}
+ .maturity-level-sub{font-size:12.5px}
+ .maturity-level-body{padding:14px}
+
+ /* ── BUTTONS ── */
+ .btn{font-size:13px;padding:10px 16px;min-height:40px}
+ .btn-row{gap:8px;margin-top:18px}
+ .btn-print{font-size:8.5px;letter-spacing:.12em;padding:7px 11px}
+
+ /* ── COURSE / TRAINING ── */
+ .course-eyebrow{font-size:9px;letter-spacing:.15em;margin-bottom:10px}
+ .course-title{font-size:26px;line-height:1.1;margin-bottom:10px}
+ .course-subtitle{font-size:14.5px;line-height:1.65;margin-bottom:16px}
+ .module-nav-title{font-size:14px}
+ .module-nav-num{font-size:9.5px}
+ .module-nav-status{font-size:8.5px;padding:3px 7px}
+ .lesson-tab{font-size:9.5px;letter-spacing:.1em;padding:9px 13px}
+ .lesson-body p{font-size:15px;line-height:1.7}
+ .lo-label{font-size:8.5px;letter-spacing:.17em;margin-bottom:7px}
+ .lo-item{font-size:13.5px}
+ .quiz-q-text{font-size:14.5px;line-height:1.58}
+ .quiz-option{font-size:13.5px;padding:10px 11px;gap:10px}
+ .quiz-feedback{font-size:13px}
+ .score-number{font-size:42px}
+
+ /* ── FOOTER ── */
+ .site-footer{padding:20px 16px 36px}
+ .site-footer-inner{font-size:11px;line-height:1.8}
+
+ /* ── BACK LINK ── */
+ .back-link{font-size:9.5px;letter-spacing:.12em;margin-bottom:20px}
+
+ /* ── COMPLETION BLOCK ── */
+ .completion-title{font-size:9px;letter-spacing:.17em}
+ .completion-body{font-size:14px;line-height:1.65}
+ .cert-name-input{font-size:13.5px;padding:8px 11px;width:100%}
+ .cert-name-row{flex-direction:column;align-items:stretch}
+
+}
+
+/* ── VERY SMALL PHONES (375px and below) ── */
+@media(max-width:375px){
+ .page-title{font-size:25px}
+ .kit-title{font-size:23px}
+ .nav-item{font-size:8.5px;letter-spacing:.08em;padding:10px 9px}
+ .body-text{font-size:14.5px}
+ .wordmark{font-size:23px}
+}
+
 </style>
 </head>
 <body>
