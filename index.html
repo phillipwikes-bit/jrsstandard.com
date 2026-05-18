@@ -599,235 +599,6 @@ a.gumroad-button.util-link {
 }
 
 
-
-/* ── MOBILE ENHANCEMENT PASS ── */
-/* All rules below are phone-optimized additions only. Desktop unchanged. */
-
-@media(max-width:480px){
-
- /* ── HEADER ── */
- .site-header-inner{padding:16px 0 13px;gap:10px}
- .wordmark{font-size:26px}
- .header-meta{font-size:9px;letter-spacing:.1em;line-height:1.6}
-
- /* ── NAV ── */
- .primary-nav-inner{padding:0 14px;gap:0}
- .nav-item{font-size:9px;letter-spacing:.1em;padding:10px 11px}
-
- /* ── UTIL BAR ── */
- .util-bar{padding:0 14px}
- .util-bar-inner{flex-wrap:wrap;row-gap:0;padding:6px 0}
- .util-label{display:none}
- .util-link{font-size:8.5px;letter-spacing:.09em;padding:7px 10px;border-left:none;border-bottom:1px solid var(--rule)}
- .util-link:last-child{border-bottom:none}
-
- /* ── ONBOARDING STRIP ── */
- .onboarding-strip{padding:0 14px}
- .ob-step{padding:16px 12px 18px}
- .ob-num{font-size:28px;margin-bottom:5px}
- .ob-label{font-size:8px;letter-spacing:.14em;margin-bottom:5px}
- .ob-text{font-size:12.5px;line-height:1.6;color:var(--muted)}
-
- /* ── CONTAINER & TYPOGRAPHY ── */
- .container{padding:28px 16px 72px}
- .page-eyebrow{font-size:9px;letter-spacing:.18em;padding-top:36px;margin-bottom:10px}
- .page-title{font-size:28px;line-height:1.08;margin-bottom:12px}
- .page-subtitle{font-size:15px;line-height:1.65;margin-bottom:24px}
- .section-head{font-size:11px;letter-spacing:.07em;padding-bottom:9px;margin-bottom:14px}
- .body-text{font-size:15px;line-height:1.72}
- .muted-text{font-size:13.5px}
- .op-note{font-size:13px}
- .quote-block{font-size:16px;padding:14px 0}
-
- /* ── CALLOUTS ── */
- .callout{padding:12px 14px;margin:14px 0}
- .callout-label{font-size:8.5px;letter-spacing:.18em;margin-bottom:5px}
- .callout p,.callout-body{font-size:14px;line-height:1.65}
-
- /* ── CHIPS ── */
- .chip{font-size:8.5px;padding:5px 9px}
-
- /* ── CONDITIONS ── */
- .cond-row{grid-template-columns:36px 1fr;gap:10px;padding:14px 0}
- .cond-num{font-size:12px}
- .cond-title{font-size:14px}
- .cond-text{font-size:14px;line-height:1.65}
-
- /* ── FAILURE BLOCKS ── */
- .failure-head{font-size:8.5px;padding:10px 12px}
- .failure-col{padding:12px}
- .failure-bad,.failure-good{font-size:13px}
- .failure-col-label{font-size:8px;letter-spacing:.14em}
-
- /* ── REVIEWER NOTES ── */
- .reviewer-note{padding:10px 12px;font-size:11px;line-height:1.65}
- .reviewer-note-label{font-size:8.5px;letter-spacing:.15em;margin-bottom:4px}
-
- /* ── READINESS GRID ── */
- .readiness-row{grid-template-columns:64px 1fr}
- .readiness-badge{font-size:8.5px;letter-spacing:.12em;padding:12px 6px}
- .readiness-desc{padding:12px 14px;font-size:13.5px}
- .readiness-desc strong{font-size:12px}
-
- /* ── LIST BLOCKS ── */
- .list-item{font-size:14px;padding:9px 0}
- .list-dash{font-size:11px}
-
- /* ── CARDS ── */
- .card{padding:15px}
- .card-label{font-size:8.5px;letter-spacing:.17em;margin-bottom:6px}
- .card-title{font-size:13.5px}
- .card-text{font-size:12.5px}
-
- /* ── WORKSHEETS ── */
- .worksheet-header{padding:12px 14px}
- .worksheet-title{font-size:9px;letter-spacing:.13em}
- .worksheet-toggle{font-size:8.5px}
- .worksheet-body{padding:14px}
- .ws-section-label{font-size:8px;letter-spacing:.17em;margin-bottom:8px}
- .ws-item{font-size:13px;padding:7px 0}
- .ws-note{font-size:11.5px}
-
- /* ── SCENARIOS ── */
- .scenario-label{font-size:8.5px;letter-spacing:.17em}
- .scenario-title{font-size:14px}
- .scenario-tab{font-size:9px;letter-spacing:.1em;padding:8px 11px}
- .record-text{font-size:13.5px;line-height:1.7;padding:14px}
- .annotation{font-size:12.5px;padding:8px 10px}
- .annotation-tag{font-size:8px;letter-spacing:.12em}
-
- /* ── MEMO ── */
- .memo-to{font-size:8.5px;letter-spacing:.15em}
- .memo-subject{font-size:14px}
- .memo-body{padding:14px}
- .memo-section-label{font-size:8px;letter-spacing:.17em;margin-bottom:6px}
- .memo-text{font-size:13.5px;line-height:1.68}
- .memo-item{font-size:13px;padding:5px 0}
- .memo-dash{font-size:10px}
-
- /* ── KIT FLOW ── */
- .kit-flow{margin:14px 0}
- .kit-flow-step{grid-template-columns:44px 1fr}
- .kit-flow-num{font-size:15px;padding:12px}
- .kit-flow-content{padding:12px 14px}
- .kit-flow-title{font-size:13.5px}
- .kit-flow-text{font-size:12.5px}
-
- /* ── KIT HERO ── */
- .kit-badge{font-size:8.5px;letter-spacing:.18em;padding:5px 10px}
- .kit-title{font-size:26px}
- .kit-subtitle{font-size:15px;line-height:1.65}
- .kit-tagline{font-size:9px;letter-spacing:.17em}
- .kit-feature{font-size:13.5px}
- .kit-section-label{font-size:8.5px;letter-spacing:.17em}
- .kit-section-title{font-size:23px;margin-bottom:10px}
- .kit-section-text{font-size:14px;line-height:1.65;margin-bottom:18px}
-
- /* ── PURCHASE CARD ── */
- .kit-purchase-label{font-size:8px;letter-spacing:.17em}
- .kit-purchase-title{font-size:18px}
- .kit-purchase-sub{font-size:12.5px}
- .kit-price-note{font-size:8.5px;letter-spacing:.11em}
- .kit-cta{font-size:10px;letter-spacing:.13em;padding:13px 16px}
- .kit-include-item{font-size:12px}
- .kit-include-dash{font-size:9px}
-
- /* ── CONTENTS GRID ── */
- .contents-item{padding:14px}
- .contents-item-label{font-size:7.5px;letter-spacing:.15em}
- .contents-item-title{font-size:13.5px}
- .contents-item-text{font-size:12px}
-
- /* ── LIBRARY ── */
- .library-item{padding:14px 15px;gap:10px}
- .library-item-label{font-size:8px;letter-spacing:.13em;margin-bottom:4px}
- .library-item-title{font-size:13.5px}
- .library-item-desc{font-size:12.5px}
- .lib-btn{font-size:8.5px;padding:6px 10px}
-
- /* ── ROLE CARDS ── */
- .role-card{padding:14px}
- .role-card-sub{font-size:8.5px;letter-spacing:.11em;margin-bottom:5px}
- .role-card-title{font-size:13.5px;margin-bottom:4px}
- .role-card-text{font-size:12.5px}
-
- /* ── MATURITY ── */
- .maturity-level-header{padding:12px 14px;gap:12px}
- .maturity-level-num{font-size:18px}
- .maturity-level-title{font-size:14px}
- .maturity-level-sub{font-size:12.5px}
- .maturity-level-body{padding:14px}
-
- /* ── BUTTONS ── */
- .btn{font-size:13px;padding:10px 16px;min-height:40px}
- .btn-row{gap:8px;margin-top:18px}
- .btn-print{font-size:8.5px;letter-spacing:.12em;padding:7px 11px}
-
- /* ── COURSE / TRAINING ── */
- .course-eyebrow{font-size:9px;letter-spacing:.15em;margin-bottom:10px}
- .course-title{font-size:26px;line-height:1.1;margin-bottom:10px}
- .course-subtitle{font-size:14.5px;line-height:1.65;margin-bottom:16px}
- .module-nav-title{font-size:14px}
- .module-nav-num{font-size:9.5px}
- .module-nav-status{font-size:8.5px;padding:3px 7px}
- .lesson-tab{font-size:9.5px;letter-spacing:.1em;padding:9px 13px}
- .lesson-body p{font-size:15px;line-height:1.7}
- .lo-label{font-size:8.5px;letter-spacing:.17em;margin-bottom:7px}
- .lo-item{font-size:13.5px}
- .quiz-q-text{font-size:14.5px;line-height:1.58}
- .quiz-option{font-size:13.5px;padding:10px 11px;gap:10px}
- .quiz-feedback{font-size:13px}
- .score-number{font-size:42px}
-
- /* ── FOOTER ── */
- .site-footer{padding:20px 16px 36px}
- .site-footer-inner{font-size:11px;line-height:1.8}
-
- /* ── BACK LINK ── */
- .back-link{font-size:9.5px;letter-spacing:.12em;margin-bottom:20px}
-
- /* ── COMPLETION BLOCK ── */
- .completion-title{font-size:9px;letter-spacing:.17em}
- .completion-body{font-size:14px;line-height:1.65}
- .cert-name-input{font-size:13.5px;padding:8px 11px;width:100%}
- .cert-name-row{flex-direction:column;align-items:stretch}
-
-}
-
-/* ── VERY SMALL PHONES (375px and below) ── */
-@media(max-width:375px){
- .page-title{font-size:25px}
- .kit-title{font-size:23px}
- .nav-item{font-size:8.5px;letter-spacing:.08em;padding:10px 9px}
- .body-text{font-size:14.5px}
- .wordmark{font-size:23px}
-}
-
-
-
-/* ── MATURITY & ROLES MOBILE HINTS ── */
-@media(max-width:480px){
- .maturity-level-body.open{display:block !important}
- .maturity-level-header{cursor:pointer;-webkit-tap-highlight-color:rgba(190,148,71,.12)}
- .maturity-level-header::after{
-  content:'tap to expand ▸';
-  font-family:'JetBrains Mono',monospace;
-  font-size:8px;letter-spacing:.08em;
-  color:var(--muted-soft);
-  margin-left:auto;padding-left:10px;white-space:nowrap;
- }
- .maturity-level:has(.maturity-level-body.open) .maturity-level-header::after{
-  content:'collapse ▾';
- }
- .role-card{cursor:pointer}
- .role-card::after{
-  content:'Tap to view ▸';
-  display:block;
-  font-family:'JetBrains Mono',monospace;
-  font-size:8px;letter-spacing:.08em;
-  color:var(--accent-dim);margin-top:6px;
- }
-}
 </style>
 </head>
 <body>
@@ -1806,8 +1577,8 @@ a.gumroad-button.util-link {
 </div>
 
 <div class="worksheet" style="margin-top:8px;">
- <div class="worksheet-header" onclick="toggleWS(this)"><span class="worksheet-title">01 / Pre-Finalization Review Worksheet</span><span class="worksheet-toggle">Collapse &#8593;</span></div>
- <div class="worksheet-body" style="display:block;">
+ <div class="worksheet-header" onclick="toggleWS(this)"><span class="worksheet-title">01 / Pre-Finalization Review Worksheet</span><span class="worksheet-toggle">Expand &#8595;</span></div>
+ <div class="worksheet-body">
  <div class="ws-section"><div class="ws-section-label">Core Review Checks</div>
  <div class="ws-item"><input type="checkbox" class="ws-check"><span>Can this record stand on its own without follow-up with the original author?</span></div>
  <div class="ws-item"><input type="checkbox" class="ws-check"><span>Does each major conclusion have a specific, identifiable anchor: a date, interaction, log entry, or referenced record?</span></div>
@@ -2777,7 +2548,7 @@ a.gumroad-button.util-link {
 <p class="page-subtitle">Organizations apply JRS at varying levels of integration depending on documentation sensitivity, organizational structure, and available staffing. These levels are illustrative rather than prescriptive.</p>
 <div class="callout"><div class="callout-label">Operational Note</div><p>Review depth varies in practice. These levels identify where secondary review is required, not where it always occurs. Organizations typically operate across multiple levels simultaneously depending on record type.</p></div>
 <div class="maturity-track" style="margin-top:24px;">
- <div class="maturity-level"><div class="maturity-level-header" onclick="toggleMaturity(this)"><div class="maturity-level-num">01</div><div><div class="maturity-level-title">Foundational Self-Review</div><div class="maturity-level-sub">Manager or HR reviewer applies the diagnostic questions before finalizing. No secondary review required for standard-risk records.</div></div></div><div class="maturity-level-body open"><p class="body-text">The reviewer applies the five reconstruction checks and the Pre-Finalization Review Worksheet at the drafting stage, before the record enters an official system. No dedicated tooling required. Appropriate for standard performance check-ins, routine coaching notes, and non-elevated administrative records.</p></div></div>
+ <div class="maturity-level"><div class="maturity-level-header" onclick="toggleMaturity(this)"><div class="maturity-level-num">01</div><div><div class="maturity-level-title">Foundational Self-Review</div><div class="maturity-level-sub">Manager or HR reviewer applies the diagnostic questions before finalizing. No secondary review required for standard-risk records.</div></div></div><div class="maturity-level-body"><p class="body-text">The reviewer applies the five reconstruction checks and the Pre-Finalization Review Worksheet at the drafting stage, before the record enters an official system. No dedicated tooling required. Appropriate for standard performance check-ins, routine coaching notes, and non-elevated administrative records.</p></div></div>
  <div class="maturity-level"><div class="maturity-level-header" onclick="toggleMaturity(this)"><div class="maturity-level-num">02</div><div><div class="maturity-level-title">Secondary Review Risk-Based</div><div class="maturity-level-sub">HR or compliance review for elevated-risk records before system entry.</div></div></div><div class="maturity-level-body"><p class="body-text">Secondary Review Checklist and Escalation Documentation Review Aid applied by HR, compliance, or legal personnel before elevated-risk records enter official systems. Applies to PIPs, formal disciplinary actions, termination documentation, and accommodation decisions.</p><div class="reviewer-note"><div class="reviewer-note-label">Reviewer Note</div>Secondary review cannot repair unsupported drafting. Records that arrive without a traceable basis should be returned to the drafter. Approving them with a notation does not resolve the underlying problem.</div></div></div>
  <div class="maturity-level"><div class="maturity-level-header" onclick="toggleMaturity(this)"><div class="maturity-level-num">03</div><div><div class="maturity-level-title">Investigation Review</div><div class="maturity-level-sub">Applied to witness summaries, incident records, and narrative conclusions before finalization.</div></div></div><div class="maturity-level-body"><p class="body-text">Investigation Reconstruction Worksheet applied. Source material identification required. Conflicting accounts must be acknowledged. Reviewer independent of the drafting chain where staffing allows.</p></div></div>
  <div class="maturity-level"><div class="maturity-level-header" onclick="toggleMaturity(this)"><div class="maturity-level-num">04</div><div><div class="maturity-level-title">Audit Sampling</div><div class="maturity-level-sub">Compliance or audit personnel periodically sample organizational records using the failure-mode catalog.</div></div></div><div class="maturity-level-body"><p class="body-text">Sampling surfaces patterns across departments where documentation quality is consistently low. Results identify record types and workflow stages where intervention is most warranted. Reviewer operates independently of the drafting chain for sampled records.</p>
@@ -3233,7 +3004,6 @@ function showSection(id){
  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
  const sec=document.getElementById('section-'+id);
  if(sec)sec.classList.add('active');
- if(id==='roles'&&typeof showRoleEnv==='function'){setTimeout(()=>showRoleEnv('hr'),30);}
  const sectionMap={'home':0,'tools':1,'scenarios':2,'guidance':3,'roles':4,'maturity':5,'ai':6,'usecases':7,'training':8,'about':9,'library':10,'kit':11};
  const navItems=document.querySelectorAll('.nav-item');
  if(sectionMap[id]!==undefined&&navItems[sectionMap[id]])navItems[sectionMap[id]].classList.add('active');
