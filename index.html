@@ -804,6 +804,39 @@ a.gumroad-button.util-link {
 }
 
 
+
+/* ── MATURITY MOBILE FIXES ── */
+@media(max-width:480px){
+ /* Show expand hint on collapsed maturity headers */
+ .maturity-level-header::after{
+  content:' ▸ tap to expand';
+  font-family:'JetBrains Mono',monospace;
+  font-size:8px;
+  letter-spacing:.1em;
+  color:var(--muted-soft);
+  margin-left:auto;
+  padding-left:8px;
+  white-space:nowrap;
+ }
+ /* Hide hint when body is open */
+ .maturity-level:has(.maturity-level-body.open) .maturity-level-header::after{
+  content:' ▾ collapse';
+ }
+ /* Ensure open body is visible */
+ .maturity-level-body.open{
+  display:block !important;
+ }
+ /* Role cards — add tap hint */
+ .role-card::after{
+  content:'Tap to view ▸';
+  display:block;
+  font-family:'JetBrains Mono',monospace;
+  font-size:8px;
+  letter-spacing:.1em;
+  color:var(--accent-dim);
+  margin-top:6px;
+ }
+}
 </style>
 </head>
 <body>
@@ -2753,7 +2786,7 @@ a.gumroad-button.util-link {
 <p class="page-subtitle">Organizations apply JRS at varying levels of integration depending on documentation sensitivity, organizational structure, and available staffing. These levels are illustrative rather than prescriptive.</p>
 <div class="callout"><div class="callout-label">Operational Note</div><p>Review depth varies in practice. These levels identify where secondary review is required, not where it always occurs. Organizations typically operate across multiple levels simultaneously depending on record type.</p></div>
 <div class="maturity-track" style="margin-top:24px;">
- <div class="maturity-level"><div class="maturity-level-header" onclick="toggleMaturity(this)"><div class="maturity-level-num">01</div><div><div class="maturity-level-title">Foundational Self-Review</div><div class="maturity-level-sub">Manager or HR reviewer applies the diagnostic questions before finalizing. No secondary review required for standard-risk records.</div></div></div><div class="maturity-level-body"><p class="body-text">The reviewer applies the five reconstruction checks and the Pre-Finalization Review Worksheet at the drafting stage, before the record enters an official system. No dedicated tooling required. Appropriate for standard performance check-ins, routine coaching notes, and non-elevated administrative records.</p></div></div>
+ <div class="maturity-level"><div class="maturity-level-header" onclick="toggleMaturity(this)"><div class="maturity-level-num">01</div><div><div class="maturity-level-title">Foundational Self-Review</div><div class="maturity-level-sub">Manager or HR reviewer applies the diagnostic questions before finalizing. No secondary review required for standard-risk records.</div></div></div><div class="maturity-level-body open"><p class="body-text">The reviewer applies the five reconstruction checks and the Pre-Finalization Review Worksheet at the drafting stage, before the record enters an official system. No dedicated tooling required. Appropriate for standard performance check-ins, routine coaching notes, and non-elevated administrative records.</p></div></div>
  <div class="maturity-level"><div class="maturity-level-header" onclick="toggleMaturity(this)"><div class="maturity-level-num">02</div><div><div class="maturity-level-title">Secondary Review Risk-Based</div><div class="maturity-level-sub">HR or compliance review for elevated-risk records before system entry.</div></div></div><div class="maturity-level-body"><p class="body-text">Secondary Review Checklist and Escalation Documentation Review Aid applied by HR, compliance, or legal personnel before elevated-risk records enter official systems. Applies to PIPs, formal disciplinary actions, termination documentation, and accommodation decisions.</p><div class="reviewer-note"><div class="reviewer-note-label">Reviewer Note</div>Secondary review cannot repair unsupported drafting. Records that arrive without a traceable basis should be returned to the drafter. Approving them with a notation does not resolve the underlying problem.</div></div></div>
  <div class="maturity-level"><div class="maturity-level-header" onclick="toggleMaturity(this)"><div class="maturity-level-num">03</div><div><div class="maturity-level-title">Investigation Review</div><div class="maturity-level-sub">Applied to witness summaries, incident records, and narrative conclusions before finalization.</div></div></div><div class="maturity-level-body"><p class="body-text">Investigation Reconstruction Worksheet applied. Source material identification required. Conflicting accounts must be acknowledged. Reviewer independent of the drafting chain where staffing allows.</p></div></div>
  <div class="maturity-level"><div class="maturity-level-header" onclick="toggleMaturity(this)"><div class="maturity-level-num">04</div><div><div class="maturity-level-title">Audit Sampling</div><div class="maturity-level-sub">Compliance or audit personnel periodically sample organizational records using the failure-mode catalog.</div></div></div><div class="maturity-level-body"><p class="body-text">Sampling surfaces patterns across departments where documentation quality is consistently low. Results identify record types and workflow stages where intervention is most warranted. Reviewer operates independently of the drafting chain for sampled records.</p>
@@ -3209,6 +3242,8 @@ function showSection(id){
  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
  const sec=document.getElementById('section-'+id);
  if(sec)sec.classList.add('active');
+ // Auto-load HR env when Roles section opened
+ if(id==='roles' && typeof showRoleEnv==='function'){setTimeout(function(){showRoleEnv('hr');},50);}
  const sectionMap={'home':0,'tools':1,'scenarios':2,'guidance':3,'roles':4,'maturity':5,'ai':6,'usecases':7,'training':8,'about':9,'library':10,'kit':11};
  const navItems=document.querySelectorAll('.nav-item');
  if(sectionMap[id]!==undefined&&navItems[sectionMap[id]])navItems[sectionMap[id]].classList.add('active');
