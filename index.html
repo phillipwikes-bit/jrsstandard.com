@@ -719,6 +719,7 @@ a.gumroad-button.util-link {
 <div style="margin-bottom:44px;">
  <div class="section-head">Four Review Conditions</div>
  <p class="body-text">Four conditions apply before a record enters an official system. They apply regardless of record type or how the document was drafted.</p>
+ <p class="body-text" style="max-width:600px;">The underlying question across all four conditions is whether the record is independently reconstructable: whether a later reviewer — with no access to the original author, no institutional memory, and no supplementary explanation — can identify the basis for each conclusion from the file alone.</p>
  <div class="cond-grid">
  <div class="cond-row"><div class="cond-num" style="font-size:14px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:4px;">01</div><div><div class="cond-title">Independently Reviewable</div><div class="cond-text">The basis for conclusions should be recoverable from the record by someone with no prior knowledge of the events, without additional context or supplementary explanation.</div></div></div>
  <div class="cond-row"><div class="cond-num" style="font-size:14px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:4px;">02</div><div><div class="cond-title">Observable Support</div><div class="cond-text">Each conclusion requires a specific, verifiable anchor in the file: a date, a documented interaction, a log entry, or a referenced record.</div></div></div>
@@ -814,7 +815,7 @@ a.gumroad-button.util-link {
  <div style="display:grid;grid-template-columns:52px 1fr;gap:14px;padding:18px 0;border-bottom:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-soft);">02</div><div><div style="font-size:14.5px;font-weight:600;margin-bottom:4px;color:var(--text);">What specific evidence anchors this conclusion?</div><div style="font-size:14px;color:var(--muted);line-height:1.65;">Does the record identify specific dates, interactions, logs, or referenced documents? Verify that referenced files are actually attached before submission.</div></div></div>
  <div style="display:grid;grid-template-columns:52px 1fr;gap:14px;padding:18px 0;border-bottom:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-soft);">03</div><div><div style="font-size:14.5px;font-weight:600;margin-bottom:4px;color:var(--text);">Is the path from evidence to conclusion visible?</div><div style="font-size:14px;color:var(--muted);line-height:1.65;">Not in the author's memory. In the document itself.</div></div></div>
  <div style="display:grid;grid-template-columns:52px 1fr;gap:14px;padding:18px 0;border-bottom:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-soft);">04</div><div><div style="font-size:14.5px;font-weight:600;margin-bottom:4px;color:var(--text);">Are dates, interactions, and policies identifiable?</div><div style="font-size:14px;color:var(--muted);line-height:1.65;">Missing dates become critical during escalation. Most review problems start earlier than people think.</div></div></div>
- <div style="display:grid;grid-template-columns:52px 1fr;gap:14px;padding:18px 0;border-bottom:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-soft);">05</div><div><div style="font-size:14.5px;font-weight:600;margin-bottom:4px;color:var(--text);">Would a later reviewer follow the same reasoning?</div><div style="font-size:14px;color:var(--muted);line-height:1.65;">Without access to context that exists only in the author's knowledge.</div></div></div>
+ <div style="display:grid;grid-template-columns:52px 1fr;gap:14px;padding:18px 0;border-bottom:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-soft);">05</div><div><div style="font-size:14.5px;font-weight:600;margin-bottom:4px;color:var(--text);">Is this record independently reconstructable?</div><div style="font-size:14px;color:var(--muted);line-height:1.65;">Could a reviewer with no prior knowledge of the matter follow the same reasoning from the file alone — without the author available to explain it?</div></div></div>
  </div>
 </div>
 
@@ -1168,6 +1169,38 @@ a.gumroad-button.util-link {
       <div style="font-size:12.5px;color:var(--muted);line-height:1.6;">Secondary review works best when the reviewer is not the same person who approved the underlying decision. That separation is often operationally difficult to maintain. When it is not possible, document the limitation.</div>
     </div>
   </div>
+</div>
+
+<div style="margin-bottom:44px;">
+  <div class="section-head">Later Review Conditions</div>
+  <p class="body-text" style="max-width:620px;">Records are most likely to fail independent reconstruction under specific later-review conditions. These are not exceptional circumstances — they are the common conditions under which organizational records are eventually examined.</p>
+  <div style="border:1px solid var(--rule);overflow:hidden;margin-top:12px;">
+    <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--rule);">
+      <div style="background:var(--surface2);padding:10px 14px;min-width:28px;border-right:1px solid var(--rule);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--stop-text);">!</div>
+      <div style="padding:10px 15px;"><span style="font-size:13px;font-weight:600;color:var(--text);">Original author unavailable</span><span style="font-size:12px;color:var(--muted);margin-left:10px;">Personnel change, departure, leave, or role transition after the record was created. The file is all that remains.</span></div>
+    </div>
+    <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--rule);">
+      <div style="background:var(--surface2);padding:10px 14px;min-width:28px;border-right:1px solid var(--rule);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--stop-text);">!</div>
+      <div style="padding:10px 15px;"><span style="font-size:13px;font-weight:600;color:var(--text);">Source attachments missing or unlocatable</span><span style="font-size:12px;color:var(--muted);margin-left:10px;">Records referenced in the narrative are not in the file or cannot be found in the system of record.</span></div>
+    </div>
+    <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--rule);">
+      <div style="background:var(--surface2);padding:10px 14px;min-width:28px;border-right:1px solid var(--rule);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--stop-text);">!</div>
+      <div style="padding:10px 15px;"><span style="font-size:13px;font-weight:600;color:var(--text);">Chronology unrecoverable</span><span style="font-size:12px;color:var(--muted);margin-left:10px;">Events described without dates. Sequence of conduct, coaching, and escalation cannot be independently established from the record.</span></div>
+    </div>
+    <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--rule);">
+      <div style="background:var(--surface2);padding:10px 14px;min-width:28px;border-right:1px solid var(--rule);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--stop-text);">!</div>
+      <div style="padding:10px 15px;"><span style="font-size:13px;font-weight:600;color:var(--text);">Escalation sequence unsupported</span><span style="font-size:12px;color:var(--muted);margin-left:10px;">Formal action references prior coaching or warnings that are not in the file. The escalation level cannot be independently verified.</span></div>
+    </div>
+    <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--rule);">
+      <div style="background:var(--surface2);padding:10px 14px;min-width:28px;border-right:1px solid var(--rule);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--stop-text);">!</div>
+      <div style="padding:10px 15px;"><span style="font-size:13px;font-weight:600;color:var(--text);">Conflicting accounts unresolved</span><span style="font-size:12px;color:var(--muted);margin-left:10px;">One account is visible in the record. A conflicting account exists in the source material but was not preserved. The later reviewer cannot evaluate what was contested.</span></div>
+    </div>
+    <div style="display:flex;align-items:stretch;">
+      <div style="background:var(--surface2);padding:10px 14px;min-width:28px;border-right:1px solid var(--rule);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--stop-text);">!</div>
+      <div style="padding:10px 15px;"><span style="font-size:13px;font-weight:600;color:var(--text);">Policy reference unverifiable</span><span style="font-size:12px;color:var(--muted);margin-left:10px;">Policy cited but section not identified. Employee acknowledgment not in file. Later reviewer cannot confirm the standard that was applied.</span></div>
+    </div>
+  </div>
+  <div class="reviewer-note" style="margin-top:10px;"><div class="reviewer-note-label">Independent reconstruction</div>Each condition above represents a point where a later reviewer attempting to independently reconstruct the basis for a conclusion will encounter an unresolvable gap. Pre-finalization review is the only point where these gaps can be addressed without consequence.</div>
 </div>
 
 <div style="margin-bottom:44px;">
@@ -2108,9 +2141,27 @@ a.gumroad-button.util-link {
   </div>
 </div>
 
-</div>
+
+<div style="border:1px solid var(--rule);overflow:hidden;">
+  <div style="padding:9px 14px;border-bottom:1px solid var(--rule);background:var(--surface2);font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--stop-text);">E. Accommodation Failures</div>
+  <div style="padding:10px 14px;display:flex;flex-direction:column;gap:6px;">
+    <div style="font-size:12.5px;color:var(--muted);padding-bottom:5px;border-bottom:1px solid var(--rule);">-- Interactive process not documented<div style="font-size:11px;color:var(--muted-soft);margin-top:2px;font-style:italic;">Request reviewed and denied; meeting dates, participants, and alternatives not on file.</div></div>
+    <div style="font-size:12.5px;color:var(--muted);padding-bottom:5px;border-bottom:1px solid var(--rule);">-- "Operational needs" cited without specific constraint identified<div style="font-size:11px;color:var(--muted-soft);margin-top:2px;font-style:italic;">Denial basis stated but not traceable from the file.</div></div>
+    <div style="font-size:12.5px;color:var(--muted);">-- Alternatives not documented as considered or offered<div style="font-size:11px;color:var(--muted-soft);margin-top:2px;font-style:italic;">Record shows outcome without process. Independent reconstruction not possible.</div></div>
+  </div>
 </div>
 
+<div style="border:1px solid var(--rule);overflow:hidden;">
+  <div style="padding:9px 14px;border-bottom:1px solid var(--rule);background:var(--surface2);font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--stop-text);">F. Reconstruction Failures</div>
+  <div style="padding:10px 14px;display:flex;flex-direction:column;gap:6px;">
+    <div style="font-size:12.5px;color:var(--muted);padding-bottom:5px;border-bottom:1px solid var(--rule);">-- Original author unavailable; file does not stand alone<div style="font-size:11px;color:var(--muted-soft);margin-top:2px;font-style:italic;">Record requires the author to explain it. That author is no longer available.</div></div>
+    <div style="font-size:12.5px;color:var(--muted);padding-bottom:5px;border-bottom:1px solid var(--rule);">-- Referenced records not attached or not locatable<div style="font-size:11px;color:var(--muted-soft);margin-top:2px;font-style:italic;">Counseling note, PIP, or warning referenced in narrative; not present in file.</div></div>
+    <div style="font-size:12.5px;color:var(--muted);">-- Chronology unrecoverable from available materials<div style="font-size:11px;color:var(--muted-soft);margin-top:2px;font-style:italic;">Events described without dates. Sequence cannot be independently established.</div></div>
+  </div>
+</div>
+
+</div>
+<div class="reviewer-note" style="margin-top:12px;"><div class="reviewer-note-label">Pattern note</div>Categories E and F are added as practice develops. The library is not complete. Additional failure categories will be documented as they appear consistently across review contexts.</div>
 </div>
 </div>
 
@@ -2296,6 +2347,7 @@ a.gumroad-button.util-link {
   </div>
 </div>
 <div class="reviewer-note" style="margin-top:10px;"><div class="reviewer-note-label">Implementation note</div>Most organizations begin at Stage 1 or 2 and expand incrementally. Each stage adds depth without requiring the prior stage to be fully complete.</div>
+<div class="reviewer-note" style="margin-top:6px;"><div class="reviewer-note-label">Operational continuity</div>Review depth may vary according to staffing conditions, workflow complexity, and record sensitivity. Selective deployment at higher-risk record categories is a recognized starting point. The structure does not require uniform adoption across all record types before it becomes useful.</div>
 </div>
 
 
@@ -2477,7 +2529,7 @@ a.gumroad-button.util-link {
  <div class="role-card" onclick="showRoleEnv('compliance')"><div class="role-card-sub">Environment 03</div><div class="role-card-title">Compliance Reviewer</div><div class="role-card-text">Policy compliance records, audit documentation, and regulatory review.</div></div>
  <div class="role-card" onclick="showRoleEnv('manager')"><div class="role-card-sub">Environment 04</div><div class="role-card-title">Manager / Supervisor</div><div class="role-card-text">Drafting-stage self-review for performance and conduct documentation.</div></div>
  <div class="role-card" onclick="showRoleEnv('audit')"><div class="role-card-sub">Environment 05</div><div class="role-card-title">Audit Reviewer</div><div class="role-card-text">Sampling and systemic documentation quality assessment.</div></div>
- <div class="role-card" onclick="showRoleEnv('ai-reviewer')"><div class="role-card-sub">Environment 06</div><div class="role-card-title">AI Documentation Reviewer</div><div class="role-card-text">Source verification and attestation for AI-assisted records.</div></div>
+ <div class="role-card" onclick="showRoleEnv('ai-reviewer')"><div class="role-card-sub">Environment 06</div><div class="role-card-title">AI-Assisted Review</div><div class="role-card-text">Source verification and attestation for AI-assisted records.</div></div>
  </div>
 </div>
 <div id="role-env-container" style="display:none;margin-top:8px;">
@@ -2521,6 +2573,7 @@ a.gumroad-button.util-link {
 <p class="body-text">AI-assisted drafting may introduce language that appears procedurally complete despite limited underlying evidentiary support. A generated record can read smoothly and confidently while containing characterizations absent from, or inconsistent with, the original source notes.</p>
 <p class="body-text">Common patterns: qualified language in source notes becomes declarative in the generated record; general impressions are stated as findings; conflicts or gaps in source material are smoothed over rather than preserved.</p>
 <div class="reviewer-note" style="margin-bottom:24px;"><div class="reviewer-note-label">Reviewer test</div>If the source notes were removed, would the record still appear equally well-supported? If yes, the record may contain semantic inflation. The supporting basis exists in the wording but not in the underlying file.</div>
+<div class="callout" style="margin-bottom:24px;"><div class="callout-label">Source-Path Visibility</div><p>The relevant question for AI-assisted records is whether a later reviewer can trace the path from conclusion to identified source material. Not whether the record sounds accurate — whether the path is visible. Confident language is not the same as a traceable source path. Records that provide the first without the second do not satisfy Condition IV.</p></div>
 </div>
 
 <div style="margin-top:0;"><div class="section-head">How AI-Assisted Records Fail Review</div>
@@ -2803,6 +2856,36 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:32px;">
+ <div class="section-head">Version Notes</div>
+ <p class="muted-text" style="margin-bottom:14px;">Changes and clarifications by version. The framework is updated incrementally through operational use rather than scheduled release cycles.</p>
+ <div style="border:1px solid var(--rule);overflow:hidden;">
+  <div style="padding:8px 14px;border-bottom:1px solid var(--rule);background:var(--surface2);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);">v1.0 / May 2026</div>
+  <div style="padding:12px 16px;">
+   <div style="font-size:13px;color:var(--muted);line-height:1.85;">
+    -- Initial publication of JRS Standard, four review conditions, and reviewer lens<br>
+    -- Investigator Field Guide (Document 001-INV) published<br>
+    -- Rapid Review Card (KIT-F1) published<br>
+    -- Failure-mode catalog: four primary categories (A–D)<br>
+    -- Six reviewer walkthrough sequences<br>
+    -- Web-based review worksheets (01–06)<br>
+    -- Deployment Kit operational layer released
+   </div>
+  </div>
+  <div style="padding:8px 14px;border-top:1px solid var(--rule);background:var(--surface2);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);">Pending / In development</div>
+  <div style="padding:12px 16px;">
+   <div style="font-size:13px;color:var(--muted);line-height:1.85;">
+    -- Failure-mode categories E (Accommodation) and F (Reconstruction) — added May 2026<br>
+    -- HR Documentation Review Guide (KIT-F2) — in preparation<br>
+    -- Additional reviewer walkthrough sequences — planned<br>
+    -- Chronology reconstruction reference — planned<br>
+    -- Source-path visibility reference — planned
+   </div>
+  </div>
+ </div>
+ <div class="reviewer-note" style="margin-top:10px;"><div class="reviewer-note-label">Maintenance note</div>Version notes reflect published changes to the JRS Standard and associated practitioner references. Deployment Kit contents are versioned separately.</div>
+</div>
+
+<div style="margin-bottom:32px;">
  <div class="section-head">Review Scenarios and Use Cases</div>
  <div class="library-grid">
  <div class="library-item"><div class="library-item-info"><div class="library-item-label">Interactive Scenarios</div><div class="library-item-title">Documentation Review Scenarios</div><div class="library-item-desc">Annotated analyses: performance review, AI summary, termination documentation.</div></div><div class="library-item-action"><button class="lib-btn" onclick="showSection('scenarios')">Open</button></div></div>
@@ -2832,6 +2915,7 @@ a.gumroad-button.util-link {
  <div class="section-head">What Problem It Addresses</div>
  <p class="body-text">Organizational records frequently fail during later review not because decisions were wrong, but because documentation was insufficient. Conclusions are stated without identifiable support. Dates are missing. Behavioral claims use evaluative language without observable anchors. Referenced records are not attached. AI-assisted summaries introduce characterizations not present in the source notes.</p>
  <p class="body-text">These gaps become consequential when records are examined during disputes, proceedings, audits, or administrative review. At that point, the opportunity to resolve them without consequence has passed. Pre-finalization review is the only practical point of intervention.</p>
+ <p class="body-text" style="max-width:600px;">The later-review conditions that most commonly surface documentation failures include: original author no longer available, source attachments missing from the file, chronology unrecoverable without dates, escalation sequence unsupported by prior records on file, and conflicting accounts that were resolved through omission rather than acknowledged in the record.</p>
  <div class="reviewer-note" style="margin-top:12px;"><div class="reviewer-note-label">Operational context</div>Most unsupported records appear complete at drafting. The gap becomes visible only when someone outside the original workflow reads the file without the author available to explain it.</div>
 </div>
 
