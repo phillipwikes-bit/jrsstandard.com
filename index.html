@@ -1037,6 +1037,86 @@ a.gumroad-button.util-link {
   border-radius:3px !important;
  }
 }
+
+/* ════════════════════════════════════════════════════
+   MOBILE FIX PASS — structural corrections
+   ════════════════════════════════════════════════════ */
+
+@media(max-width:480px){
+
+ /* FIX: maturity-level cards — no overflow:hidden so the
+    absolute bubble at left:-37px isn't clipped */
+ .maturity-level{
+  overflow:visible !important;
+ }
+
+ /* FIX: ensure the title container fills remaining space
+    so the absolute number doesn't overlap it */
+ .maturity-level-header > div:last-child{
+  flex:1 !important;
+  min-width:0 !important;
+ }
+
+ /* FIX: expand indicator on maturity headers */
+ .maturity-level-header::after{
+  content:'▸' !important;
+  font-family:'JetBrains Mono',monospace !important;
+  font-size:11px !important;
+  color:var(--accent-dim) !important;
+  flex-shrink:0 !important;
+  margin-left:auto !important;
+  transition:transform .2s ease !important;
+ }
+ /* Rotate when open */
+ .maturity-level-body.open ~ .maturity-level-header::after,
+ .maturity-level-header:has(+ .maturity-level-body.open)::after{
+  transform:rotate(90deg) !important;
+ }
+
+ /* FIX: maturity tap affordance — clearer interactive signal */
+ .maturity-level-header{
+  cursor:pointer !important;
+  -webkit-tap-highlight-color:rgba(190,148,71,.1) !important;
+ }
+
+ /* FIX: show first maturity body by default on mobile
+    so the section doesn't appear blank on first view */
+ .maturity-level:first-child .maturity-level-body{
+  display:block !important;
+ }
+
+ /* FIX: worksheet bodies — show first one open on mobile */
+ .worksheet:first-child .worksheet-body{
+  display:block !important;
+ }
+
+ /* FIX: maturity section wrapper overflow for bubble visibility */
+ .maturity-section-inner{
+  overflow:visible !important;
+ }
+
+ /* FIX: conditions grid items — remove the ::after separator
+    approach (can cause double borders) and use gap instead */
+ .cond-row:not(:last-child)::after{
+  display:none !important;
+ }
+
+ /* FIX: btn-row direction — preserve for non-access sections */
+ .btn-row{
+  flex-wrap:wrap !important;
+ }
+
+ /* FIX: ensure section-inner containers aren't clipping content */
+ .page-section{
+  overflow-x:hidden !important;
+  overflow-y:visible !important;
+ }
+
+ /* FIX: training section has no page-title — use course-title as page head */
+ .course-eyebrow{
+  padding-top:36px !important;
+ }
+}
 </style>
 </head>
 <body>
@@ -3004,7 +3084,7 @@ a.gumroad-button.util-link {
 <p class="page-subtitle">Organizations apply JRS at varying levels of integration depending on documentation sensitivity, organizational structure, and available staffing. These levels are illustrative rather than prescriptive.</p>
 <div class="callout"><div class="callout-label">Operational Note</div><p>Review depth varies in practice. These levels identify where secondary review is required, not where it always occurs. Organizations typically operate across multiple levels simultaneously depending on record type.</p></div>
 <div class="maturity-track" style="margin-top:24px;">
- <div class="maturity-level"><div class="maturity-level-header" onclick="toggleMaturity(this)"><div class="maturity-level-num">01</div><div><div class="maturity-level-title">Foundational Self-Review</div><div class="maturity-level-sub">Manager or HR reviewer applies the diagnostic questions before finalizing. No secondary review required for standard-risk records.</div></div></div><div class="maturity-level-body"><p class="body-text">The reviewer applies the five reconstruction checks and the Pre-Finalization Review Worksheet at the drafting stage, before the record enters an official system. No dedicated tooling required. Appropriate for standard performance check-ins, routine coaching notes, and non-elevated administrative records.</p></div></div>
+ <div class="maturity-level"><div class="maturity-level-header" onclick="toggleMaturity(this)"><div class="maturity-level-num">01</div><div style="flex:1"><div class="maturity-level-title">Foundational Self-Review</div><div class="maturity-level-sub">Manager or HR reviewer applies the diagnostic questions before finalizing. No secondary review required for standard-risk records.</div></div></div><div class="maturity-level-body"><p class="body-text">The reviewer applies the five reconstruction checks and the Pre-Finalization Review Worksheet at the drafting stage, before the record enters an official system. No dedicated tooling required. Appropriate for standard performance check-ins, routine coaching notes, and non-elevated administrative records.</p></div></div>
  <div class="maturity-level"><div class="maturity-level-header" onclick="toggleMaturity(this)"><div class="maturity-level-num">02</div><div><div class="maturity-level-title">Secondary Review Risk-Based</div><div class="maturity-level-sub">HR or compliance review for elevated-risk records before system entry.</div></div></div><div class="maturity-level-body"><p class="body-text">Secondary Review Checklist and Escalation Documentation Review Aid applied by HR, compliance, or legal personnel before elevated-risk records enter official systems. Applies to PIPs, formal disciplinary actions, termination documentation, and accommodation decisions.</p><div class="reviewer-note"><div class="reviewer-note-label">Reviewer Note</div>Secondary review cannot repair unsupported drafting. Records that arrive without a traceable basis should be returned to the drafter. Approving them with a notation does not resolve the underlying problem.</div></div></div>
  <div class="maturity-level"><div class="maturity-level-header" onclick="toggleMaturity(this)"><div class="maturity-level-num">03</div><div><div class="maturity-level-title">Investigation Review</div><div class="maturity-level-sub">Applied to witness summaries, incident records, and narrative conclusions before finalization.</div></div></div><div class="maturity-level-body"><p class="body-text">Investigation Reconstruction Worksheet applied. Source material identification required. Conflicting accounts must be acknowledged. Reviewer independent of the drafting chain where staffing allows.</p></div></div>
  <div class="maturity-level"><div class="maturity-level-header" onclick="toggleMaturity(this)"><div class="maturity-level-num">04</div><div><div class="maturity-level-title">Audit Sampling</div><div class="maturity-level-sub">Compliance or audit personnel periodically sample organizational records using the failure-mode catalog.</div></div></div><div class="maturity-level-body"><p class="body-text">Sampling surfaces patterns across departments where documentation quality is consistently low. Results identify record types and workflow stages where intervention is most warranted. Reviewer operates independently of the drafting chain for sampled records.</p>
@@ -3030,6 +3110,7 @@ a.gumroad-button.util-link {
 <p class="body-text">AI-assisted drafting may introduce language that appears procedurally complete despite limited underlying evidentiary support. A generated record can read smoothly and confidently while containing characterizations absent from, or inconsistent with, the original source notes.</p>
 <p class="body-text">Common patterns: qualified language in source notes becomes declarative in the generated record; general impressions are stated as findings; conflicts or gaps in source material are smoothed over rather than preserved.</p>
 </div>
+</div><!-- end maturity-section-inner -->
 <div class="reviewer-note" style="margin-bottom:24px;"><div class="reviewer-note-label">Reviewer test</div>If the source notes were removed, would the record still appear equally well-supported? If yes, the record may contain semantic inflation. The supporting basis exists in the wording but not in the underlying file.</div>
 <div class="callout" style="margin-bottom:24px;"><div class="callout-label">Source-Path Visibility</div><p>The relevant question for AI-assisted records is whether a later reviewer can trace the path from conclusion to identified source material. Not whether the record sounds accurate — whether the path is visible. Confident language is not the same as a traceable source path. Records that provide the first without the second do not satisfy Condition IV.</p></div>
 </div>
@@ -3490,6 +3571,8 @@ function showScenarioPane(tabEl,paneId){
 function toggleMaturity(header){
  const body=header.nextElementSibling;
  body.classList.toggle('open');
+ // Update aria for accessibility
+ header.setAttribute('aria-expanded', body.classList.contains('open'));
 }
 
 // ── ROLE ENVIRONMENTS ─────────────────────────────
