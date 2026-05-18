@@ -617,6 +617,7 @@ a.gumroad-button.util-link {
 <nav class="primary-nav">
  <div class="primary-nav-inner">
  <button class="nav-item active" onclick="showSection('home')">Standard</button>
+ <button class="nav-item" onclick="showSection('doccond')">Documentation Conditions</button>
  <button class="nav-item" onclick="showSection('tools')">Field References</button>
  <button class="nav-item" onclick="showSection('scenarios')">Review Examples</button>
  <button class="nav-item" onclick="showSection('guidance')">Implementation</button>
@@ -1221,7 +1222,7 @@ a.gumroad-button.util-link {
     <div class="cond-row"><div class="cond-num" style="font-size:13px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:4px;">09</div><div><div class="cond-title">Summary Reliance</div><div class="cond-badge">Source</div><div class="cond-text">Conclusions drawn from summaries rather than primary source records. The summary was accurate at the time it was written. The source notes it was drawn from are no longer available. At later review, the summary is treated as primary evidence.</div></div></div>
     <div class="cond-row"><div class="cond-num" style="font-size:13px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:4px;">10</div><div><div class="cond-title">Undefined Evaluative Terminology</div><div class="cond-badge">Language</div><div class="cond-text">Evaluative terms applied without operational definition: "unsatisfactory," "inadequate performance," "conduct unbecoming." The standard that was applied at the time is not stated in the record. A later reviewer cannot determine whether the conduct described meets the threshold that the term implies.</div></div></div>
   </div>
-  <div class="reviewer-note" style="margin-top:10px;"><div class="reviewer-note-label">Source-path visibility</div>The diagnostic question across all ten conditions is whether a later reviewer can trace: conclusion to chronology, chronology to interaction, interaction to identifiable source material. Where that path breaks, reconstruction fails.</div>
+  <div class="reviewer-note" style="margin-top:10px;"><div class="reviewer-note-label">Source-path visibility</div>The diagnostic question across all ten conditions is whether a later reviewer can trace: conclusion to chronology, chronology to interaction, interaction to identifiable source material. Where that path breaks, reconstruction fails. <button onclick="showSection('doccond')" style="background:none;border:none;color:var(--accent);font-size:inherit;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:0;margin-left:8px;">Full reference &rarr;</button></div>
 </div>
 
 <div style="margin-bottom:44px;">
@@ -1386,6 +1387,336 @@ a.gumroad-button.util-link {
 
 </div>
 </div><!-- end section-home -->
+
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION: DOCUMENTATION CONDITIONS -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div id="section-doccond" class="page-section">
+<div class="container">
+
+<div class="page-eyebrow">Operational Reference</div>
+<h1 class="page-title">Documentation Conditions That Affect Later Review</h1>
+<p class="page-subtitle">Records are frequently reviewed long after the people who created them are unavailable. The following conditions describe how organizational documentation commonly becomes harder to interpret over time. Not through misconduct, but through the ordinary administrative realities of how records are created, maintained, and eventually examined.</p>
+
+<div class="callout" style="margin-bottom:32px;">
+  <div class="callout-label">Framing Note</div>
+  <p>These are administrative documentation conditions, not misconduct indicators. They reflect how records degrade, fragment, compress, and become partially reconstructable across institutional time. Coherent writing is not equivalent to evidentiary clarity. A record can read well and still be difficult to evaluate independently.</p>
+</div>
+
+<div style="margin-bottom:44px;">
+  <div class="section-head">Why Later Review Is Often Difficult</div>
+  <p class="body-text" style="max-width:640px;">Documentation quality is partially determined by reconstructability: whether a later reviewer, working from the file alone, can follow the same reasoning the original author used. That capacity erodes over time. Turnover removes institutional memory. Systems fragment. Summaries replace original notes. Language is inherited without verification. Attachments go missing. The record that enters the system at drafting is not always the record that survives into later review in a usable form.</p>
+  <p class="body-text" style="max-width:640px;">The conditions below are observed regularly across HR review, compliance review, workplace investigations, escalation management, audit preparation, post-event reconstruction, regulator inquiry, litigation support, and internal review following personnel change. None of them are unusual. Most are present in some form in the majority of long-lived organizational records.</p>
+  <div class="reviewer-note" style="margin-top:4px;"><div class="reviewer-note-label">Operational basis</div>These conditions are drawn from documentation review practice. They are not theoretical failure modes. They are the ordinary environment that most records eventually enter.</div>
+</div>
+
+<div style="margin-bottom:44px;">
+  <div class="section-head">The Ten Conditions</div>
+  <p class="body-text" style="max-width:620px;">Each condition is described in terms of how it develops, what it looks like during later review, and why it complicates independent reconstruction of the original evidentiary basis.</p>
+
+  <div class="cond-grid">
+
+    <div class="cond-row">
+      <div class="cond-num">01</div>
+      <div>
+        <div class="cond-title">Undocumented Timeline Gaps</div>
+        <div class="cond-badge">Chronology</div>
+        <div class="cond-text">Records frequently describe events, conduct, or decisions without establishing the sequence in which they occurred. Dates are omitted. Periods are summarized. The record references what happened but not when, or compresses a multi-month sequence into a single paragraph that provides no chronological anchoring.</div>
+        <div style="margin-top:12px;border-top:1px solid var(--rule-soft);padding-top:12px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">During later review</div>
+          <div class="cond-text">A later reviewer attempting to establish whether escalation was appropriate, whether progressive discipline was applied, or whether timing is relevant to a disputed claim cannot reconstruct the chronology from the available record. The sequence of events that was clear to the original author is not recoverable from what was filed.</div>
+        </div>
+        <div style="margin-top:10px;">
+          <div class="reviewer-note" style="margin:0;"><div class="reviewer-note-label">Review implication</div>Pattern conduct claims require dated instances. Timeline gaps prevent independent verification of whether a pattern existed, how long it persisted, and whether prior interventions were documented in sequence.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cond-row">
+      <div class="cond-num">02</div>
+      <div>
+        <div class="cond-title">Inherited Language Without Source Confirmation</div>
+        <div class="cond-badge">Language</div>
+        <div class="cond-text">Conclusions, characterizations, and evaluative phrasing are frequently carried forward from one record to the next without verification that the original supporting basis still applies or was ever fully documented. A summary characterizes conduct in particular terms. A subsequent record uses the same terms, treated as established. A later record references the prior record as the basis. The chain extends without anyone returning to the original source interaction.</div>
+        <div style="margin-top:12px;border-top:1px solid var(--rule-soft);padding-top:12px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">During later review</div>
+          <div class="cond-text">A later reviewer tracing the basis for a conclusion finds that it originates in a prior record that itself does not identify a primary source. The characterization has been treated as confirmed at each stage without being independently verified at any stage. The original source interaction, if it exists, is not in the file.</div>
+        </div>
+        <div style="margin-top:10px;">
+          <div class="reviewer-note" style="margin:0;"><div class="reviewer-note-label">Review implication</div>Source-path visibility requires tracing a conclusion back to an identifiable interaction or document. When the chain consists of successive records each citing the prior one, the source path terminates in inherited language rather than a primary source.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cond-row">
+      <div class="cond-num">03</div>
+      <div>
+        <div class="cond-title">Reconstructed Summaries Replacing Contemporaneous Notes</div>
+        <div class="cond-badge">Source</div>
+        <div class="cond-text">Organizational records are frequently written after the fact, sometimes significantly after the events they describe. A counseling session occurs. Notes are not taken contemporaneously. A summary is drafted days or weeks later, drawing on memory rather than written observation. That summary enters the system as the primary record of the interaction. The contemporaneous record, to the extent one existed, is not preserved alongside it.</div>
+        <div style="margin-top:12px;border-top:1px solid var(--rule-soft);padding-top:12px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">During later review</div>
+          <div class="cond-text">A later reviewer reads the summary as a primary source without knowing it was reconstructed from memory. The evidentiary weight of the record appears greater than it is. Gaps between what occurred and what was recorded are not visible in the filed document.</div>
+        </div>
+        <div style="margin-top:10px;">
+          <div class="reviewer-note" style="margin:0;"><div class="reviewer-note-label">Review implication</div>Records drafted significantly after the events they describe should note the basis for the reconstruction. Where contemporaneous notes exist, they should be preserved alongside the summary rather than treated as superseded by it.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cond-row">
+      <div class="cond-num">04</div>
+      <div>
+        <div class="cond-title">Unsupported Escalation Wording</div>
+        <div class="cond-badge">Escalation</div>
+        <div class="cond-text">Escalation language, including formal warnings, performance improvement referrals, and termination documentation, frequently uses terminology that implies a prior documented history of concern. References to "ongoing issues," "prior counseling," "continued pattern," or "progressive discipline" appear in escalation records without corresponding documentation of the prior stages. The language implies a sequence. The file does not reflect one.</div>
+        <div style="margin-top:12px;border-top:1px solid var(--rule-soft);padding-top:12px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">During later review</div>
+          <div class="cond-text">A later reviewer reading the escalation record finds language that references prior stages. Those stages are not in the file and cannot be located. The escalation conclusion cannot be independently verified because the basis it references is not present.</div>
+        </div>
+        <div style="margin-top:10px;">
+          <div class="reviewer-note" style="margin:0;"><div class="reviewer-note-label">Review implication</div>Escalation records should identify and attach, or specifically reference, the prior documentation they depend on. Escalation language that implies a prior documented sequence should be verifiable from the file before the escalation record enters the system.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cond-row">
+      <div class="cond-num">05</div>
+      <div>
+        <div class="cond-title">Missing Contextual Attachments</div>
+        <div class="cond-badge">Records</div>
+        <div class="cond-text">Records regularly reference supporting materials, including emails, meeting notes, screenshots, incident reports, prior counseling records, and policy acknowledgments, that are not present in the file at the point of later review. The references survive. The materials do not. This occurs through retention policy application, system migration, informal filing practices, and the ordinary attrition of documents that were never formally attached to the record they supported.</div>
+        <div style="margin-top:12px;border-top:1px solid var(--rule-soft);padding-top:12px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">During later review</div>
+          <div class="cond-text">The narrative references materials that would, if present, support the conclusions drawn. Those materials are unavailable. The later reviewer must evaluate the conclusions without the evidentiary basis they were drawn from. The record reads as if the support exists. It does not exist in accessible form.</div>
+        </div>
+        <div style="margin-top:10px;">
+          <div class="reviewer-note" style="margin:0;"><div class="reviewer-note-label">Review implication</div>Records should confirm at pre-finalization that referenced materials are actually attached or specifically identified in accessible locations. A reference to a document that cannot be located during later review provides no evidentiary support regardless of how the narrative reads.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cond-row">
+      <div class="cond-num">06</div>
+      <div>
+        <div class="cond-title">Reviewer Turnover</div>
+        <div class="cond-badge">Institutional Memory</div>
+        <div class="cond-text">Personnel who participated in the events described in a record, or who reviewed the record at the time it was created, are frequently unavailable at the point of later review. They may have changed roles, left the organization, or be on extended leave. The institutional context they carried, what was discussed, what was understood at the time, what the record was intended to convey, leaves with them. What remains is the file.</div>
+        <div style="margin-top:12px;border-top:1px solid var(--rule-soft);padding-top:12px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">During later review</div>
+          <div class="cond-text">A later reviewer inherits a file without the people who created it. Every gap, ambiguity, or assumption embedded in the record at drafting becomes permanent. There is no one available to explain what was intended, what was known, or what the language was meant to convey.</div>
+        </div>
+        <div style="margin-top:10px;">
+          <div class="reviewer-note" style="margin:0;"><div class="reviewer-note-label">Review implication</div>Records should be written as if the author will not be available to explain them. That is not a hypothetical condition. It is the ordinary condition under which most organizational records are eventually reviewed.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cond-row">
+      <div class="cond-num">07</div>
+      <div>
+        <div class="cond-title">Fragmented Systems</div>
+        <div class="cond-badge">Operational</div>
+        <div class="cond-text">Relevant documentation frequently exists across multiple disconnected platforms, repositories, email chains, shared drives, case management systems, and paper files. A complete picture of any given matter may require assembling records from several systems that are not integrated and are not all searched during later review. Individual records within each system may appear adequate in isolation. The gaps are only visible when the full set of materials is examined together, which may not occur during a focused later review of a single file.</div>
+        <div style="margin-top:12px;border-top:1px solid var(--rule-soft);padding-top:12px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">During later review</div>
+          <div class="cond-text">A later reviewer examines the file available to them. Supporting records in other systems may not be surfaced, searched, or known to exist. The record under review references matters that are documented elsewhere. That documentation is not present and may not be located.</div>
+        </div>
+        <div style="margin-top:10px;">
+          <div class="reviewer-note" style="margin:0;"><div class="reviewer-note-label">Review implication</div>Pre-finalization review should confirm that materials supporting the record are identified and accessible, not merely referenced by name. System fragmentation is an operational condition, not an excuse. Records that depend on materials in other systems should identify those systems and confirm accessibility before entry.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cond-row">
+      <div class="cond-num">08</div>
+      <div>
+        <div class="cond-title">Undocumented Edits</div>
+        <div class="cond-badge">Revision</div>
+        <div class="cond-text">Records are frequently revised after initial drafting without documentation of what changed, why it changed, or what the prior version contained. Edits may reflect legitimate corrections, additional information, or changed understanding of the underlying events. They may also reflect organizational pressure, evolving characterizations, or attempts to resolve inconsistencies identified after drafting. In the absence of revision history, a later reviewer cannot distinguish between these scenarios.</div>
+        <div style="margin-top:12px;border-top:1px solid var(--rule-soft);padding-top:12px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">During later review</div>
+          <div class="cond-text">The filed record reflects the final version. A later reviewer has no visibility into what earlier versions contained, how substantially the record changed between drafts, or what prompted the revisions. The record reads as a single coherent document. Its drafting history is not visible.</div>
+        </div>
+        <div style="margin-top:10px;">
+          <div class="reviewer-note" style="margin:0;"><div class="reviewer-note-label">Review implication</div>Where material changes are made to a record after initial drafting, a notation identifying the nature of the revision and the date it was made improves reconstruction integrity without requiring full version preservation.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cond-row">
+      <div class="cond-num">09</div>
+      <div>
+        <div class="cond-title">Conclusions Surviving After Source Loss</div>
+        <div class="cond-badge">Reconstruction</div>
+        <div class="cond-text">Determinations made during investigation, review, or administrative process remain in the record after the documentation that supported them becomes unavailable, archived, or inaccessible. The conclusion was grounded in materials that existed at the time. Those materials no longer exist in accessible form. The conclusion survives. Its basis does not.</div>
+        <div style="margin-top:12px;border-top:1px solid var(--rule-soft);padding-top:12px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">During later review</div>
+          <div class="cond-text">A later reviewer reads a definitive conclusion without access to the materials it was drawn from. The evidentiary basis cannot be evaluated. The conclusion is present in the record. Whether it was adequately supported cannot be determined from what is available.</div>
+        </div>
+        <div style="margin-top:10px;">
+          <div class="reviewer-note" style="margin:0;"><div class="reviewer-note-label">Review implication</div>Records containing conclusions drawn from identifiable source materials should note those materials specifically enough that their existence and accessibility can be confirmed. A conclusion is only as strong as the reviewability of the basis behind it.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cond-row">
+      <div class="cond-num">10</div>
+      <div>
+        <div class="cond-title">AI-Assisted Smoothing Masking Evidentiary Weakness</div>
+        <div class="cond-badge">AI Review</div>
+        <div class="cond-text">AI-assisted drafting tools produce coherent, professionally structured narrative language from incomplete, ambiguous, or weakly supported source material. The output reads as complete. The record is organized, clear, and confident in its conclusions. The source material that generated it may contain gaps, conflicting accounts, partial observations, or unresolved questions that the generated language does not surface or acknowledge.</div>
+        <div style="margin-top:12px;border-top:1px solid var(--rule-soft);padding-top:12px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">During later review</div>
+          <div class="cond-text">A later reviewer reads a well-organized record and evaluates it accordingly. The record's coherence suggests completeness. The actual state of the underlying source documentation is not visible from the generated narrative. Evidentiary gaps that existed in the source material have been smoothed over in the generated output. The record reads well. It does not independently reconstruct.</div>
+        </div>
+        <div style="margin-top:10px;">
+          <div class="reviewer-note" style="margin:0;"><div class="reviewer-note-label">Review implication</div>AI-assisted records should be reviewed against source materials before finalization. Coherent output is not confirmation of adequate evidentiary support. Human review should confirm that each conclusion in a generated record is traceable to an identifiable source interaction or document before the record enters the system.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div style="margin-bottom:44px;">
+  <div class="section-head">What These Conditions Have in Common</div>
+  <p class="body-text" style="max-width:640px;">Each of the ten conditions above reflects a version of the same underlying problem. A record that reads coherently at drafting may not be independently reviewable at a later date by someone who was not present and does not have access to the original participants, the original source materials, or the institutional context in which the record was created.</p>
+  <div style="border-top:1px solid var(--rule);margin-top:16px;">
+    <div style="display:grid;grid-template-columns:44px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--rule);">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent-dim);padding-top:2px;">A</div>
+      <div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">Coherent writing is not evidentiary clarity</div><div class="cond-text">A record that reads well may still depend on context, memory, or materials that are no longer available. Clarity of prose and strength of evidentiary foundation are independent qualities.</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:44px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--rule);">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent-dim);padding-top:2px;">B</div>
+      <div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">Later reviewers depend on contextual survivability</div><div class="cond-text">The people who created a record, attended the meetings, understood the context, and knew what the language was intended to convey are frequently unavailable during later review. The file is what remains. It should be capable of standing on its own.</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:44px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--rule);">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent-dim);padding-top:2px;">C</div>
+      <div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">Documentation quality includes reconstructability</div><div class="cond-text">A record is not fully complete because it is well-organized, signed, and filed. It is complete when a later reviewer, working from the file alone, can identify the basis for each conclusion without requiring supplementary explanation or access to unavailable materials.</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:44px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--rule);">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent-dim);padding-top:2px;">D</div>
+      <div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">Records are reviewed under conditions that were not anticipated at drafting</div><div class="cond-text">The personnel, systems, and context available at drafting are not the conditions under which most records are eventually reviewed. Turnover, system changes, retention policy, and time create a different review environment. Records should be written for that environment, not the one that existed when they were created.</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:44px 1fr;gap:14px;padding:14px 0;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent-dim);padding-top:2px;">E</div>
+      <div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">The gap usually appears later than it could have been resolved</div><div class="cond-text">Documentation gaps tend to surface during escalation, dispute, audit, or regulatory inquiry, not during the drafting process where they could be addressed without consequence. Pre-finalization review is the point where a gap can be identified and resolved before the record becomes fixed in the system.</div></div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-bottom:44px;">
+  <div class="section-head">Connection to Pre-Finalization Review</div>
+  <p class="body-text" style="max-width:640px;">The ten conditions above are not fully preventable. Some degree of timeline compression, system fragmentation, and institutional memory loss is present in most organizational records over time. The question is not whether these conditions will exist, but whether documentation practices at drafting reduce their impact on later reviewability.</p>
+  <p class="body-text" style="max-width:640px;">Pre-finalization review applied within existing workflows addresses each of these conditions at the only point where they can be resolved without consequence: before the record enters the official system.</p>
+  <div style="border:1px solid var(--rule);overflow:hidden;margin-top:16px;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule);">
+      <div style="padding:12px 16px;border-right:1px solid var(--rule);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Condition</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text);">Undocumented timeline gaps</div>
+      </div>
+      <div style="padding:12px 16px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Pre-finalization check</div>
+        <div style="font-size:13px;color:var(--muted);">Does each described event or conduct instance have a specific date or date range? Is the sequence independently recoverable from the file?</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule);">
+      <div style="padding:12px 16px;border-right:1px solid var(--rule);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Condition</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text);">Inherited language without source confirmation</div>
+      </div>
+      <div style="padding:12px 16px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Pre-finalization check</div>
+        <div style="font-size:13px;color:var(--muted);">Can each evaluative conclusion be traced to an identifiable primary source interaction or document, rather than a prior summary?</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule);">
+      <div style="padding:12px 16px;border-right:1px solid var(--rule);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Condition</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text);">Reconstructed summaries replacing contemporaneous notes</div>
+      </div>
+      <div style="padding:12px 16px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Pre-finalization check</div>
+        <div style="font-size:13px;color:var(--muted);">Is it noted where the record was reconstructed from memory rather than contemporaneous documentation? Are original notes preserved alongside the summary?</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule);">
+      <div style="padding:12px 16px;border-right:1px solid var(--rule);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Condition</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text);">Unsupported escalation wording</div>
+      </div>
+      <div style="padding:12px 16px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Pre-finalization check</div>
+        <div style="font-size:13px;color:var(--muted);">Does the escalation record identify and attach the prior documentation it references? Is the prior documented sequence verifiable from the file?</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule);">
+      <div style="padding:12px 16px;border-right:1px solid var(--rule);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Condition</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text);">Missing contextual attachments</div>
+      </div>
+      <div style="padding:12px 16px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Pre-finalization check</div>
+        <div style="font-size:13px;color:var(--muted);">Are referenced materials actually attached or specifically identified in accessible locations? A reference to an unavailable document provides no evidentiary support.</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule);">
+      <div style="padding:12px 16px;border-right:1px solid var(--rule);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Condition</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text);">AI-assisted smoothing</div>
+      </div>
+      <div style="padding:12px 16px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Pre-finalization check</div>
+        <div style="font-size:13px;color:var(--muted);">Has each conclusion in the generated record been reviewed against the source materials it was drawn from? Is human confirmation of source accuracy documented?</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;">
+      <div style="padding:12px 16px;border-right:1px solid var(--rule);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Condition</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text);">Conclusions surviving after source loss</div>
+      </div>
+      <div style="padding:12px 16px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Pre-finalization check</div>
+        <div style="font-size:13px;color:var(--muted);">Are source materials identified specifically enough that their existence and accessibility can be confirmed later? Can the conclusion be traced to a retrievable source?</div>
+      </div>
+    </div>
+  </div>
+  <div class="reviewer-note" style="margin-top:10px;"><div class="reviewer-note-label">Scope of review</div>Review depth varies by record type, risk level, and staffing structure. These checks are not universal requirements applied uniformly to every record. They are the questions a later reviewer will ask. Pre-finalization review is the point where the answers can still be addressed.</div>
+</div>
+
+<div style="margin-bottom:44px;">
+  <div class="section-head">Applicable Review Contexts</div>
+  <p class="body-text" style="max-width:640px;">These documentation conditions are relevant across the following review environments. In each context, records created earlier in an organizational process are examined by reviewers who were not present at the time of drafting and who depend on the written record to reconstruct the evidentiary basis for conclusions and decisions.</p>
+  <div style="margin-top:14px;border-top:1px solid var(--rule);">
+    <div style="padding:10px 0;border-bottom:1px solid var(--rule-soft);font-size:14.5px;color:var(--text);">HR review and employment documentation audit</div>
+    <div style="padding:10px 0;border-bottom:1px solid var(--rule-soft);font-size:14.5px;color:var(--text);">Workplace investigation and complaint resolution</div>
+    <div style="padding:10px 0;border-bottom:1px solid var(--rule-soft);font-size:14.5px;color:var(--text);">Compliance review and internal controls assessment</div>
+    <div style="padding:10px 0;border-bottom:1px solid var(--rule-soft);font-size:14.5px;color:var(--text);">Escalation management and progressive discipline review</div>
+    <div style="padding:10px 0;border-bottom:1px solid var(--rule-soft);font-size:14.5px;color:var(--text);">Audit preparation and records quality assessment</div>
+    <div style="padding:10px 0;border-bottom:1px solid var(--rule-soft);font-size:14.5px;color:var(--text);">Post-event reconstruction following personnel change or system migration</div>
+    <div style="padding:10px 0;border-bottom:1px solid var(--rule-soft);font-size:14.5px;color:var(--text);">Regulator inquiry and documentation production</div>
+    <div style="padding:10px 0;border-bottom:1px solid var(--rule-soft);font-size:14.5px;color:var(--text);">Litigation support and evidentiary record review</div>
+    <div style="padding:10px 0;font-size:14.5px;color:var(--text);">Internal review following organizational change or leadership transition</div>
+  </div>
+  <div class="reviewer-note" style="margin-top:10px;"><div class="reviewer-note-label">Common condition</div>In each of these contexts, the reviewer reads what was filed. They do not have access to what was known, discussed, or understood at the time the record was created. The record is what remains.</div>
+</div>
+
+<div style="margin-bottom:44px;">
+  <div class="section-head">About This Reference</div>
+  <p class="body-text" style="max-width:640px;">This reference is published as part of the JRS documentation review framework. It is intended for use within HR operational guidance, internal controls documentation, compliance governance materials, audit support resources, investigation documentation guidance, and administrative review procedures.</p>
+  <p class="body-text" style="max-width:640px;">JRS is a documentation review structure: a lightweight administrative control applied at the pre-finalization stage within existing workflows. It does not replace existing systems, policies, or professional judgment. It provides a structured method for improving record survivability and later review clarity before records enter official systems.</p>
+  <div class="btn-row">
+    <a href="JRS-Standard.pdf" class="btn btn-primary">View Standard</a>
+    <button class="btn btn-ghost" onclick="showSection('tools')">Field References</button>
+    <button class="btn btn-ghost" onclick="showSection('home')">Return to Standard</button>
+  </div>
+</div>
+
+</div>
+</div>
+<!-- end section-doccond -->
 
 
 <!-- ═══════════════════════════════════════════════════════ -->
@@ -3166,7 +3497,7 @@ function showSection(id){
  const sec=document.getElementById('section-'+id);
  if(sec)sec.classList.add('active');
  if(id==='roles'&&typeof showRoleEnv==='function'){setTimeout(()=>showRoleEnv('hr'),30);}
- const sectionMap={'home':0,'tools':1,'scenarios':2,'guidance':3,'roles':4,'maturity':5,'ai':6,'usecases':7,'training':8,'about':9,'library':10,'kit':11};
+ const sectionMap={'home':0,'doccond':1,'tools':2,'scenarios':3,'guidance':4,'roles':5,'maturity':6,'ai':7,'usecases':8,'training':9,'about':10,'library':11,'kit':12};
  const navItems=document.querySelectorAll('.nav-item');
  if(sectionMap[id]!==undefined&&navItems[sectionMap[id]])navItems[sectionMap[id]].classList.add('active');
  window.scrollTo(0,0);
