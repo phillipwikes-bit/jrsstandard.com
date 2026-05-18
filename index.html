@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JRS™ Justification Review Standard — Documentation Review Reference</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Mono:wght@300;400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
   --gold: #9A7D3A;
@@ -21,494 +21,242 @@
   --text-dim: #8A8580;
   --text-muted: #5A5550;
   --white: #F2EDE6;
+  --amber: #B8860B;
+  --slate: #5A6472;
+  --sage: #3A5A4A;
+  --rust: #7A3A2A;
+  --indigo: #3A3A6B;
+  --teal: #2A5A5A;
 }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--black);color:var(--text);font-family:'EB Garamond',Georgia,serif;font-size:1.1rem;line-height:1.78;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'EB Garamond',Georgia,serif;font-weight:500;color:var(--white)}
+.mono{font-family:'DM Mono',monospace}
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* Layout */
+.container{max-width:900px;margin:0 auto;padding:0 2rem}
+.container-wide{max-width:1100px;margin:0 auto;padding:0 2rem}
 
-html { scroll-behavior: smooth; font-size: 16px; }
+/* Nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,10,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(8px)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:54px}
+.nav-brand{font-family:'DM Mono',monospace;font-size:0.78rem;font-weight:500;color:var(--gold);letter-spacing:0.14em;text-decoration:none;text-transform:uppercase}
+.nav-links{display:flex;list-style:none;gap:0}
+.nav-links a{font-family:'DM Mono',monospace;font-size:0.62rem;font-weight:400;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;padding:0.35rem 0.8rem;transition:color 0.2s;border-left:1px solid var(--border)}
+.nav-links li:last-child a{border-right:1px solid var(--border)}
+.nav-links a:hover{color:var(--gold-light)}
 
-body {
-  background: var(--black);
-  color: var(--text);
-  font-family: 'EB Garamond', Georgia, serif;
-  font-size: 1.125rem;
-  line-height: 1.75;
-  -webkit-font-smoothing: antialiased;
-}
+/* Sections */
+section{border-bottom:1px solid var(--border)}
+section[id]{scroll-margin-top:54px}
+.section-inner{padding:5.5rem 0}
 
-/* ── TYPOGRAPHY ── */
-h1, h2, h3, h4 { font-family: 'EB Garamond', Georgia, serif; font-weight: 500; letter-spacing: 0.01em; color: var(--white); }
-.mono { font-family: 'DM Mono', monospace; }
+/* Labels & headings */
+.section-label{font-family:'DM Mono',monospace;font-size:0.62rem;font-weight:500;color:var(--gold);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:1.25rem}
+.section-h1{font-size:clamp(1.8rem,4vw,2.75rem);font-weight:400;color:var(--white);line-height:1.2;margin-bottom:1.5rem}
+.section-h2{font-size:1.45rem;font-weight:500;color:var(--white);margin:3.5rem 0 1rem}
+.section-h3{font-family:'DM Mono',monospace;font-size:0.78rem;color:var(--text-dim);margin:2.5rem 0 0.75rem;letter-spacing:0.04em}
+.section-h4{font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--text-muted);letter-spacing:0.12em;text-transform:uppercase;margin:1.75rem 0 0.5rem}
+p{margin-bottom:1.2rem}
+p:last-child{margin-bottom:0}
+.text-dim{color:var(--text-dim)}
+.text-muted{color:var(--text-muted)}
+.italic{font-style:italic}
 
-/* ── LAYOUT ── */
-.container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
-.container-wide { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+/* Dividers */
+hr{border:none;border-top:1px solid var(--border);margin:3rem 0}
+.hr-tight{border:none;border-top:1px solid var(--border);margin:1.5rem 0}
 
-/* ── NAV ── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(10,10,10,0.96);
-  border-bottom: 1px solid var(--border);
-  backdrop-filter: blur(8px);
-}
-.nav-inner {
-  max-width: 1100px; margin: 0 auto; padding: 0 2rem;
-  display: flex; align-items: center; justify-content: space-between;
-  height: 56px;
-}
-.nav-brand {
-  font-family: 'DM Mono', monospace; font-size: 0.8rem; font-weight: 500;
-  color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase;
-  text-decoration: none;
-}
-.nav-links {
-  display: flex; gap: 0; list-style: none;
-}
-.nav-links a {
-  font-family: 'DM Mono', monospace; font-size: 0.7rem; font-weight: 400;
-  color: var(--text-dim); letter-spacing: 0.08em; text-transform: uppercase;
-  text-decoration: none; padding: 0.4rem 0.9rem;
-  transition: color 0.2s;
-  border-left: 1px solid var(--border);
-}
-.nav-links a:last-child { border-right: 1px solid var(--border); }
-.nav-links a:hover { color: var(--gold-light); }
+/* Callouts */
+.from-practice{border-left:3px solid var(--gold);padding:1rem 1.25rem 1rem 1.5rem;margin:2.5rem 0;background:rgba(154,125,58,0.04)}
+.from-practice-label{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--gold);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.5rem}
+.from-practice p{font-style:italic;color:var(--text-dim);font-size:0.975rem;line-height:1.7;margin:0}
 
-/* ── SECTIONS ── */
-section { border-bottom: 1px solid var(--border); }
-.section-inner { padding: 6rem 0; }
+.reviewer-note{border-left:2px solid var(--border-light);padding:0.7rem 1.25rem;margin:1.5rem 0}
+.reviewer-note-label{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.35rem}
+.reviewer-note p{font-style:italic;color:var(--text-muted);font-size:0.875rem;line-height:1.65;margin:0}
 
-/* ── SECTION LABEL ── */
-.section-label {
-  font-family: 'DM Mono', monospace; font-size: 0.65rem; font-weight: 500;
-  color: var(--gold); letter-spacing: 0.2em; text-transform: uppercase;
-  margin-bottom: 1.25rem;
-}
+.op-note{border-left:2px solid var(--border-light);padding:0.75rem 1.25rem;margin:2rem 0;background:rgba(255,255,255,0.02)}
+.op-note-label{font-family:'DM Mono',monospace;font-size:0.58rem;color:var(--text-muted);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.35rem}
+.op-note p{font-size:0.875rem;color:var(--text-muted);font-style:italic;line-height:1.65;margin:0}
 
-/* ── HERO ── */
-#hero {
-  padding-top: 56px;
-  background: var(--near-black);
-  border-bottom: 1px solid var(--border);
-}
-.hero-inner {
-  padding: 7rem 0 6rem;
-  max-width: 900px; margin: 0 auto; padding-left: 2rem; padding-right: 2rem;
-}
-.hero-mark {
-  font-family: 'DM Mono', monospace; font-size: 0.7rem; font-weight: 400;
-  color: var(--text-muted); letter-spacing: 0.15em; text-transform: uppercase;
-  margin-bottom: 2.5rem;
-  display: flex; align-items: center; gap: 1rem;
-}
-.hero-mark::after {
-  content: ''; flex: 1; max-width: 60px;
-  height: 1px; background: var(--border-light);
-}
-.hero-jrs {
-  font-family: 'EB Garamond', Georgia, serif;
-  font-size: clamp(3.5rem, 8vw, 6rem);
-  font-weight: 400; line-height: 1;
-  color: var(--gold); letter-spacing: -0.01em;
-  margin-bottom: 0.25rem;
-}
-.hero-jrs sup {
-  font-size: 0.3em; vertical-align: super;
-  color: var(--gold-dim); font-weight: 400;
-}
-.hero-title {
-  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-  font-weight: 400; color: var(--text-dim);
-  letter-spacing: 0.05em; text-transform: uppercase;
-  font-family: 'DM Mono', monospace;
-  margin-bottom: 3rem;
-}
-.hero-lede {
-  font-size: 1.2rem; line-height: 1.8;
-  color: var(--text); max-width: 680px;
-  margin-bottom: 1.5rem;
-}
-.hero-lede-sub {
-  font-size: 1rem; color: var(--text-dim);
-  max-width: 600px; line-height: 1.75;
-  margin-bottom: 3rem;
-}
-.hero-meta {
-  display: flex; gap: 2rem; align-items: center;
-  border-top: 1px solid var(--border);
-  padding-top: 2rem;
-}
-.hero-meta-item {
-  font-family: 'DM Mono', monospace; font-size: 0.65rem;
-  color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase;
-}
-.hero-meta-item span { color: var(--gold); display: block; font-size: 0.75rem; margin-bottom: 0.2rem; }
-.hero-checks {
-  display: flex; flex-wrap: wrap; gap: 0.75rem;
-  margin-bottom: 2.5rem;
-}
-.hero-check {
-  font-family: 'DM Mono', monospace; font-size: 0.65rem;
-  color: var(--text-muted); letter-spacing: 0.08em;
-  text-transform: uppercase; padding: 0.35rem 0.75rem;
-  border: 1px solid var(--border); border-radius: 2px;
-}
+.later-obs{border-left:3px solid var(--amber);padding:1rem 1.25rem 1rem 1.5rem;margin:2rem 0;background:rgba(184,134,11,0.04)}
+.later-obs-label{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--amber);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.4rem}
+.later-obs p{font-style:italic;color:var(--text-dim);font-size:0.95rem;line-height:1.65;margin:0}
 
-/* ── FROM PRACTICE ── */
-.from-practice {
-  border-left: 3px solid var(--gold);
-  padding: 1rem 1.25rem 1rem 1.5rem;
-  margin: 2.5rem 0;
-  background: rgba(154,125,58,0.04);
-}
-.from-practice-label {
-  font-family: 'DM Mono', monospace; font-size: 0.65rem;
-  color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase;
-  margin-bottom: 0.5rem;
-}
-.from-practice p {
-  font-style: italic; color: var(--text-dim);
-  font-size: 1rem; line-height: 1.7;
-}
+.drift-obs{border-left:3px solid var(--slate);padding:1rem 1.25rem 1rem 1.5rem;margin:2rem 0;background:rgba(90,100,114,0.05)}
+.drift-obs-label{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--slate);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.4rem}
+.drift-obs p{font-style:italic;color:var(--text-dim);font-size:0.95rem;line-height:1.65;margin:0}
 
-/* ── REVIEWER NOTE ── */
-.reviewer-note {
-  border-left: 2px solid var(--border-light);
-  padding: 0.75rem 1.25rem;
-  margin: 1.5rem 0;
-}
-.reviewer-note-label {
-  font-family: 'DM Mono', monospace; font-size: 0.65rem;
-  color: var(--text-muted); letter-spacing: 0.1em;
-  text-transform: uppercase; margin-bottom: 0.4rem;
-}
-.reviewer-note p {
-  font-style: italic; color: var(--text-muted);
-  font-size: 0.9rem; line-height: 1.65;
-}
+.shadow-obs{border-left:3px solid var(--teal);padding:1rem 1.25rem 1rem 1.5rem;margin:2rem 0;background:rgba(42,90,90,0.05)}
+.shadow-obs-label{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--teal);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.4rem}
+.shadow-obs p{font-style:italic;color:var(--text-dim);font-size:0.95rem;line-height:1.65;margin:0}
 
-/* ── OP NOTE ── */
-.op-note {
-  border-left: 2px solid var(--border-light);
-  padding: 0.75rem 1.25rem;
-  margin: 2rem 0;
-  background: rgba(255,255,255,0.02);
-}
-.op-note-label {
-  font-family: 'DM Mono', monospace; font-size: 0.6rem;
-  color: var(--text-muted); letter-spacing: 0.12em;
-  text-transform: uppercase; margin-bottom: 0.35rem;
-}
-.op-note p { font-size: 0.9rem; color: var(--text-muted); font-style: italic; line-height: 1.65; }
+.rem-obs{border-left:3px solid var(--sage);padding:1rem 1.25rem 1rem 1.5rem;margin:2rem 0;background:rgba(58,90,74,0.05)}
+.rem-obs-label{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--sage);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.4rem}
+.rem-obs p{font-style:italic;color:var(--text-dim);font-size:0.95rem;line-height:1.65;margin:0}
 
-/* ── DRIFT OBS ── */
-.drift-obs {
-  border-left: 3px solid #5A6472;
-  padding: 1rem 1.25rem 1rem 1.5rem;
-  margin: 2rem 0;
-  background: rgba(90,100,114,0.05);
-}
-.drift-obs-label {
-  font-family: 'DM Mono', monospace; font-size: 0.62rem;
-  color: #5A6472; letter-spacing: 0.12em; text-transform: uppercase;
-  margin-bottom: 0.4rem;
-}
-.drift-obs p { font-style: italic; color: var(--text-dim); font-size: 0.95rem; line-height: 1.65; }
+.fossil-obs{border-left:3px solid var(--indigo);padding:1rem 1.25rem 1rem 1.5rem;margin:2rem 0;background:rgba(58,58,107,0.05)}
+.fossil-obs-label{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--indigo);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.4rem}
+.fossil-obs p{font-style:italic;color:var(--text-dim);font-size:0.95rem;line-height:1.65;margin:0}
 
-/* ── LATER OBS ── */
-.later-obs {
-  border-left: 3px solid var(--gold-dim);
-  padding: 1rem 1.25rem 1rem 1.5rem;
-  margin: 2rem 0;
-  background: rgba(184,134,11,0.04);
-}
-.later-obs-label {
-  font-family: 'DM Mono', monospace; font-size: 0.62rem;
-  color: #B8860B; letter-spacing: 0.12em; text-transform: uppercase;
-  margin-bottom: 0.4rem;
-}
-.later-obs p { font-style: italic; color: var(--text-dim); font-size: 0.95rem; line-height: 1.65; }
+/* Check list */
+.check-list{list-style:none;margin:1rem 0}
+.check-list li{color:var(--text-dim);font-size:0.975rem;padding:0.3rem 0 0.3rem 1.4rem;position:relative;line-height:1.6}
+.check-list li::before{content:'–';position:absolute;left:0;color:var(--gold-dim)}
 
-/* ── RULE ── */
-hr { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
-.hr-tight { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+/* Four conditions grid */
+.conditions-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);margin:2rem 0}
+.condition-cell{background:var(--surface);padding:1.5rem}
+.condition-num{font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--gold);margin-bottom:0.5rem}
+.condition-title{font-size:1rem;color:var(--white);margin-bottom:0.4rem;font-weight:500}
+.condition-sub{font-family:'DM Mono',monospace;font-size:0.58rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.7rem}
+.condition-body{font-size:0.875rem;color:var(--text-dim);line-height:1.65}
 
-/* ── HEADINGS IN SECTIONS ── */
-.section-h1 {
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
-  font-weight: 400; color: var(--white);
-  line-height: 1.2; margin-bottom: 1.5rem;
-}
-.section-h2 {
-  font-size: 1.5rem; font-weight: 500;
-  color: var(--white); margin: 3.5rem 0 1rem;
-}
-.section-h3 {
-  font-size: 1.15rem; font-weight: 500;
-  color: var(--text-dim); margin: 2.5rem 0 0.75rem;
-  font-family: 'DM Mono', monospace; letter-spacing: 0.02em;
-}
-.section-h4 {
-  font-family: 'DM Mono', monospace; font-size: 0.7rem;
-  color: var(--text-muted); letter-spacing: 0.12em;
-  text-transform: uppercase; margin: 2rem 0 0.5rem;
-}
+/* RF cards */
+.rf-card{border:1px solid var(--border);margin:2.5rem 0;background:var(--surface)}
+.rf-card-header{padding:0.9rem 1.4rem;border-bottom:1px solid var(--border);display:flex;align-items:baseline;gap:0.9rem;background:var(--near-black);flex-wrap:wrap}
+.rf-code{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--gold);font-weight:500;white-space:nowrap}
+.rf-title{font-size:0.975rem;color:var(--white);font-weight:500}
+.rf-partial{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--text-muted);font-style:italic;margin-left:auto;white-space:nowrap}
+.rf-body{padding:1.4rem}
+.rf-field-label{font-family:'DM Mono',monospace;font-size:0.58rem;color:var(--text-muted);letter-spacing:0.12em;text-transform:uppercase;margin:1.25rem 0 0.4rem}
+.rf-field-label:first-child{margin-top:0}
+.rf-record{font-style:italic;color:var(--text);padding:0.7rem 1rem;background:rgba(255,255,255,0.02);border-left:2px solid var(--border-light);font-size:0.95rem;line-height:1.65}
+.rf-questions{list-style:none}
+.rf-questions li{color:var(--text-dim);font-size:0.9rem;padding:0.28rem 0 0.28rem 1.25rem;position:relative}
+.rf-questions li::before{content:'–';position:absolute;left:0;color:var(--text-muted)}
+.rf-disp{font-size:0.9rem;color:var(--text);border-left:3px solid var(--gold-dim);padding:0.7rem 1rem;background:rgba(154,125,58,0.04)}
+.rf-disp.stop{border-left-color:#8B1A1A;background:rgba(139,26,26,0.04)}
+.rf-disp.review{border-left-color:var(--amber);background:rgba(184,134,11,0.04)}
+.rf-disp.deferred{border-left-color:var(--slate);background:rgba(90,100,114,0.04)}
+.rf-revision{font-size:0.9rem;color:var(--text);line-height:1.7}
+.rf-closing{font-style:italic;color:var(--text-muted);font-size:0.865rem;line-height:1.65;padding:0.7rem 1rem;border-left:2px solid var(--border);background:rgba(255,255,255,0.015);margin-top:1.2rem}
 
-p { margin-bottom: 1.25rem; }
-p:last-child { margin-bottom: 0; }
+/* LC items */
+.lc-item{margin:2.75rem 0}
+.lc-header{display:flex;align-items:baseline;gap:0.9rem;margin-bottom:0.75rem}
+.lc-code{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--gold);white-space:nowrap}
+.lc-title{font-size:1.05rem;color:var(--white);font-weight:500}
+.lc-implication{border-left:2px solid var(--border-light);padding:0.6rem 1rem;margin-top:1rem;font-size:0.865rem;color:var(--text-muted);font-style:italic;line-height:1.6}
+.lc-implication strong{color:var(--text-dim);font-style:normal;font-weight:400;font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;display:block;margin-bottom:0.3rem}
 
-/* ── FIELD REFERENCE TABLE ── */
-.field-ref-table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
-.field-ref-table th {
-  font-family: 'DM Mono', monospace; font-size: 0.6rem;
-  text-transform: uppercase; letter-spacing: 0.12em;
-  color: var(--text-muted); text-align: left;
-  padding: 0.6rem 1rem; border-bottom: 1px solid var(--border);
-  font-weight: 400;
-}
-.field-ref-table td {
-  padding: 0.9rem 1rem; border-bottom: 1px solid var(--border);
-  font-size: 0.95rem; vertical-align: top;
-}
-.field-ref-table tr:last-child td { border-bottom: none; }
-.field-ref-table .doc-id {
-  font-family: 'DM Mono', monospace; font-size: 0.7rem;
-  color: var(--gold); white-space: nowrap;
-}
-.field-ref-table .doc-title { color: var(--white); }
-.field-ref-table .doc-desc { color: var(--text-dim); font-size: 0.875rem; line-height: 1.55; }
-.field-ref-table .doc-status {
-  font-family: 'DM Mono', monospace; font-size: 0.6rem;
-  color: var(--text-muted); white-space: nowrap;
-}
-.badge {
-  display: inline-block; font-family: 'DM Mono', monospace;
-  font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 0.2rem 0.5rem; border: 1px solid var(--border);
-  color: var(--text-muted); margin-left: 0.5rem;
-}
-.badge-free { border-color: var(--gold-dim); color: var(--gold-dim); }
+/* IC cards */
+.ic-card{border:1px solid var(--border);margin:2rem 0;background:var(--surface)}
+.ic-card-header{padding:0.85rem 1.25rem;border-bottom:1px solid var(--border);background:var(--near-black);font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--gold);letter-spacing:0.06em}
+.ic-card-body{padding:1.25rem}
+.ic-field{margin-bottom:1.2rem}
+.ic-field:last-child{margin-bottom:0}
+.ic-field-label{font-family:'DM Mono',monospace;font-size:0.58rem;color:var(--text-muted);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.3rem}
+.ic-field p{font-size:0.875rem;color:var(--text-dim);line-height:1.65;margin:0}
+.ic-field p.primary{color:var(--text)}
 
-/* ── RF CARDS ── */
-.rf-card {
-  border: 1px solid var(--border);
-  margin: 2.5rem 0;
-  background: var(--surface);
-}
-.rf-card-header {
-  padding: 1rem 1.5rem;
-  border-bottom: 1px solid var(--border);
-  display: flex; align-items: baseline; gap: 1rem;
-  background: var(--near-black);
-}
-.rf-code {
-  font-family: 'DM Mono', monospace; font-size: 0.75rem;
-  color: var(--gold); font-weight: 500; white-space: nowrap;
-}
-.rf-title { font-size: 1rem; color: var(--white); font-weight: 500; }
-.rf-partial {
-  font-family: 'DM Mono', monospace; font-size: 0.62rem;
-  color: var(--text-muted); font-style: italic;
-  margin-left: auto; white-space: nowrap;
-}
-.rf-body { padding: 1.5rem; }
-.rf-field-label {
-  font-family: 'DM Mono', monospace; font-size: 0.6rem;
-  color: var(--text-muted); letter-spacing: 0.12em;
-  text-transform: uppercase; margin: 1.25rem 0 0.4rem;
-}
-.rf-field-label:first-child { margin-top: 0; }
-.rf-record {
-  font-style: italic; color: var(--text);
-  padding: 0.75rem 1rem; background: rgba(255,255,255,0.02);
-  border-left: 2px solid var(--border-light);
-  font-size: 0.975rem; line-height: 1.65;
-}
-.rf-questions { list-style: none; }
-.rf-questions li {
-  color: var(--text-dim); font-size: 0.925rem;
-  padding: 0.3rem 0 0.3rem 1.25rem;
-  position: relative;
-}
-.rf-questions li::before {
-  content: '–'; position: absolute; left: 0;
-  color: var(--text-muted);
-}
-.rf-disposition {
-  font-size: 0.925rem; color: var(--text);
-  border-left: 3px solid var(--gold-dim);
-  padding: 0.75rem 1rem;
-  background: rgba(154,125,58,0.04);
-}
-.rf-revision { font-size: 0.925rem; color: var(--text); line-height: 1.7; }
-.rf-closing {
-  font-style: italic; color: var(--text-muted);
-  font-size: 0.875rem; line-height: 1.65;
-  padding: 0.75rem 1rem;
-  border-left: 2px solid var(--border);
-  background: rgba(255,255,255,0.015);
-  margin-top: 1.25rem;
-}
+/* Timeline */
+.timeline-entry{margin:1.5rem 0;padding-left:1.25rem;border-left:1px solid var(--border)}
+.timeline-date{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--gold);margin-bottom:0.2rem}
+.timeline-actor{font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--text-muted);margin-bottom:0.4rem}
+.timeline-event{font-size:0.9rem;color:var(--text);line-height:1.65;margin-bottom:0.3rem}
+.timeline-note{font-size:0.84rem;color:var(--text-muted);font-style:italic;line-height:1.6}
 
-/* ── ENVIRONMENT BLOCKS ── */
-.env-header {
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 1.5rem; margin-bottom: 2rem;
-}
-.env-label {
-  font-family: 'DM Mono', monospace; font-size: 0.6rem;
-  color: var(--gold-dim); letter-spacing: 0.15em; text-transform: uppercase;
-  margin-bottom: 0.5rem;
-}
-.env-note {
-  font-size: 0.9rem; color: var(--text-muted);
-  font-style: italic; margin-top: 0.75rem;
-}
+/* Disagreement blocks */
+.disagree-block{border:1px solid var(--border);margin:2rem 0;background:var(--surface)}
+.disagree-header{padding:0.8rem 1.25rem;border-bottom:1px solid var(--border);background:var(--near-black);font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--gold)}
+.disagree-body{padding:1.25rem}
+.disagree-review{margin-bottom:1.5rem}
+.disagree-review-label{font-family:'DM Mono',monospace;font-size:0.58rem;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.4rem}
+.disagree-note{font-style:italic;color:var(--text-dim);font-size:0.875rem;line-height:1.65;padding:0.6rem 1rem;border-left:2px solid var(--border-light);margin:0.4rem 0}
+.disagree-disp{font-family:'DM Mono',monospace;font-size:0.68rem;padding:0.35rem 0.75rem;display:inline-block;margin-bottom:0.5rem}
+.disagree-disp.ready{color:#2E6B3E;border:1px solid #2E6B3E}
+.disagree-disp.review{color:var(--amber);border:1px solid var(--amber)}
+.disagree-disp.stop{color:#8B1A1A;border:1px solid #8B1A1A}
+.disagree-resolution{border-top:1px solid var(--border);margin-top:1.25rem;padding-top:1.25rem}
+.disagree-resolution-label{font-family:'DM Mono',monospace;font-size:0.58rem;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.4rem}
 
-/* ── CHECKLIST ── */
-.check-list { list-style: none; margin: 1rem 0; }
-.check-list li {
-  color: var(--text-dim); font-size: 0.975rem;
-  padding: 0.3rem 0 0.3rem 1.5rem;
-  position: relative; line-height: 1.6;
-}
-.check-list li::before {
-  content: '–'; position: absolute; left: 0;
-  color: var(--gold-dim);
-}
+/* Field ref tables */
+.field-ref-table{width:100%;border-collapse:collapse;margin:2rem 0}
+.field-ref-table th{font-family:'DM Mono',monospace;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);text-align:left;padding:0.55rem 0.9rem;border-bottom:1px solid var(--border);font-weight:400}
+.field-ref-table td{padding:0.9rem;border-bottom:1px solid var(--border);font-size:0.9rem;vertical-align:top}
+.field-ref-table tr:last-child td{border-bottom:none}
+.doc-id{font-family:'DM Mono',monospace;font-size:0.66rem;color:var(--gold);white-space:nowrap}
+.doc-title{color:var(--white)}
+.doc-desc{color:var(--text-dim);font-size:0.855rem;line-height:1.55}
+.doc-status{font-family:'DM Mono',monospace;font-size:0.58rem;color:var(--text-muted);white-space:nowrap}
+.badge{display:inline-block;font-family:'DM Mono',monospace;font-size:0.52rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.18rem 0.45rem;border:1px solid var(--border);color:var(--text-muted);margin-left:0.4rem}
+.badge-free{border-color:var(--gold-dim);color:var(--gold-dim)}
 
-/* ── ESCALATION TABLE ── */
-.esc-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
-.esc-table th {
-  font-family: 'DM Mono', monospace; font-size: 0.6rem;
-  text-transform: uppercase; letter-spacing: 0.1em;
-  color: var(--text-muted); text-align: left;
-  padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--border); font-weight: 400;
-}
-.esc-table td {
-  padding: 0.75rem; border-bottom: 1px solid var(--border);
-  font-size: 0.875rem; vertical-align: top; color: var(--text-dim);
-}
-.esc-table tr:last-child td { border-bottom: none; }
-.esc-table td:first-child { color: var(--text); font-size: 0.9rem; }
+/* Version notes */
+.version-entry{margin:1.75rem 0}
+.version-tag{font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--gold);letter-spacing:0.08em;margin-bottom:0.4rem}
+.version-body{font-size:0.9rem;color:var(--text-dim);line-height:1.65}
 
-/* ── LC CONDITIONS ── */
-.lc-item { margin: 3rem 0; }
-.lc-header {
-  display: flex; align-items: baseline; gap: 1rem;
-  margin-bottom: 0.75rem;
-}
-.lc-code {
-  font-family: 'DM Mono', monospace; font-size: 0.7rem;
-  color: var(--gold); white-space: nowrap;
-}
-.lc-title { font-size: 1.05rem; color: var(--white); font-weight: 500; }
-.lc-implication {
-  border-left: 2px solid var(--border-light);
-  padding: 0.65rem 1rem; margin-top: 1rem;
-  font-size: 0.875rem; color: var(--text-muted); font-style: italic; line-height: 1.6;
-}
-.lc-implication strong { color: var(--text-dim); font-style: normal; font-weight: 400;
-  font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.08em;
-  text-transform: uppercase; display: block; margin-bottom: 0.35rem;
-}
+/* Escalation table */
+.esc-table{width:100%;border-collapse:collapse;margin:1.5rem 0}
+.esc-table th{font-family:'DM Mono',monospace;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);text-align:left;padding:0.5rem 0.75rem;border-bottom:1px solid var(--border);font-weight:400}
+.esc-table td{padding:0.7rem 0.75rem;border-bottom:1px solid var(--border);font-size:0.865rem;vertical-align:top;color:var(--text-dim)}
+.esc-table tr:last-child td{border-bottom:none}
+.esc-table td:first-child{color:var(--text)}
 
-/* ── VERSION NOTES ── */
-.version-entry { margin: 2rem 0; }
-.version-tag {
-  font-family: 'DM Mono', monospace; font-size: 0.65rem;
-  color: var(--gold); letter-spacing: 0.1em; margin-bottom: 0.4rem;
-}
-.version-body { font-size: 0.925rem; color: var(--text-dim); line-height: 1.65; }
+/* Translation block */
+.trans-block{border:1px solid var(--border);margin:2rem 0;background:var(--surface)}
+.trans-header{padding:0.8rem 1.25rem;border-bottom:1px solid var(--border);background:var(--near-black);font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--gold)}
+.trans-body{padding:1.25rem}
+.trans-field{margin-bottom:1.2rem}
+.trans-field:last-child{margin-bottom:0}
+.trans-field-label{font-family:'DM Mono',monospace;font-size:0.58rem;color:var(--text-muted);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.3rem}
+.trans-field p{font-size:0.875rem;line-height:1.65;margin:0}
+.trans-field p.central{color:var(--text);font-style:italic}
+.trans-field p.local{color:var(--text-dim);font-style:italic}
+.trans-field p.edge{color:var(--text)}
+.trans-field p.obs{color:var(--text-muted);font-style:italic}
 
-/* ── INSTITUTIONAL CONDITIONS ── */
-.ic-card {
-  border: 1px solid var(--border); margin: 2rem 0;
-  background: var(--surface);
-}
-.ic-card-header {
-  padding: 0.9rem 1.25rem; border-bottom: 1px solid var(--border);
-  background: var(--near-black);
-  font-family: 'DM Mono', monospace; font-size: 0.72rem;
-  color: var(--gold); letter-spacing: 0.06em;
-}
-.ic-card-body { padding: 1.25rem; }
-.ic-field { margin-bottom: 1.25rem; }
-.ic-field:last-child { margin-bottom: 0; }
-.ic-field-label {
-  font-family: 'DM Mono', monospace; font-size: 0.58rem;
-  color: var(--text-muted); letter-spacing: 0.12em;
-  text-transform: uppercase; margin-bottom: 0.3rem;
-}
-.ic-field p { font-size: 0.9rem; color: var(--text-dim); line-height: 1.65; margin: 0; }
-.ic-field p.primary { color: var(--text); }
+/* Env note */
+.env-note{font-size:0.875rem;color:var(--text-muted);font-style:italic;margin-top:0.75rem;border-left:2px solid var(--border);padding-left:1rem}
 
-/* ── FOUR CONDITIONS ── */
-.conditions-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 1px; background: var(--border); margin: 2rem 0;
-}
-.condition-cell {
-  background: var(--surface); padding: 1.5rem;
-}
-.condition-num {
-  font-family: 'DM Mono', monospace; font-size: 0.65rem;
-  color: var(--gold); margin-bottom: 0.5rem;
-}
-.condition-title { font-size: 1rem; color: var(--white); margin-bottom: 0.5rem; font-weight: 500; }
-.condition-sub {
-  font-family: 'DM Mono', monospace; font-size: 0.6rem;
-  color: var(--text-muted); text-transform: uppercase;
-  letter-spacing: 0.08em; margin-bottom: 0.75rem;
-}
-.condition-body { font-size: 0.875rem; color: var(--text-dim); line-height: 1.65; }
+/* Metric table */
+.metric-block{margin:1.75rem 0;padding:1.25rem;border:1px solid var(--border);background:var(--surface)}
+.metric-period{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--gold);margin-bottom:0.6rem}
+.metric-row{display:flex;gap:1rem;margin:0.3rem 0;font-size:0.865rem}
+.metric-key{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--text-muted);min-width:160px;text-transform:uppercase;letter-spacing:0.06em;padding-top:0.1rem}
+.metric-val{color:var(--text-dim);line-height:1.5}
+.metric-val.warn{color:var(--rust)}
 
-/* ── LINKS ── */
-a.doc-link {
-  color: var(--gold); text-decoration: none;
-  font-family: 'DM Mono', monospace; font-size: 0.7rem;
-  letter-spacing: 0.06em; text-transform: uppercase;
-  border-bottom: 1px solid var(--gold-dim);
-  padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;
-}
-a.doc-link:hover { color: var(--gold-light); border-color: var(--gold-light); }
+/* Footer */
+footer{background:var(--near-black);border-top:1px solid var(--border);padding:3rem 0}
+.footer-inner{max-width:900px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:start;gap:2rem;flex-wrap:wrap}
+.footer-brand{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--gold);letter-spacing:0.1em}
+.footer-text{font-size:0.8rem;color:var(--text-muted);line-height:1.65;max-width:400px}
+.footer-meta{font-family:'DM Mono',monospace;font-size:0.58rem;color:var(--text-muted);margin-top:0.5rem;letter-spacing:0.06em}
 
-/* ── FOOTER ── */
-footer {
-  background: var(--near-black);
-  border-top: 1px solid var(--border);
-  padding: 3rem 0;
-}
-.footer-inner {
-  max-width: 900px; margin: 0 auto; padding: 0 2rem;
-  display: flex; justify-content: space-between; align-items: start;
-  gap: 2rem; flex-wrap: wrap;
-}
-.footer-brand {
-  font-family: 'DM Mono', monospace; font-size: 0.75rem;
-  color: var(--gold); letter-spacing: 0.1em;
-}
-.footer-text { font-size: 0.8rem; color: var(--text-muted); line-height: 1.65; max-width: 420px; }
-.footer-meta {
-  font-family: 'DM Mono', monospace; font-size: 0.6rem;
-  color: var(--text-muted); margin-top: 0.5rem; letter-spacing: 0.08em;
-}
+/* Hero */
+#hero{padding-top:54px;background:var(--near-black)}
+.hero-inner{padding:6.5rem 0 5.5rem;max-width:900px;margin:0 auto;padding-left:2rem;padding-right:2rem}
+.hero-mark{font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--text-muted);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:2.5rem;display:flex;align-items:center;gap:1rem}
+.hero-mark::after{content:'';flex:1;max-width:60px;height:1px;background:var(--border-light)}
+.hero-jrs{font-family:'EB Garamond',Georgia,serif;font-size:clamp(3.5rem,8vw,6rem);font-weight:400;line-height:1;color:var(--gold);letter-spacing:-0.01em;margin-bottom:0.25rem}
+.hero-jrs sup{font-size:0.3em;vertical-align:super;color:var(--gold-dim);font-weight:400}
+.hero-title{font-size:clamp(1rem,2.2vw,1.35rem);font-weight:400;color:var(--text-muted);letter-spacing:0.06em;text-transform:uppercase;font-family:'DM Mono',monospace;margin-bottom:2.75rem}
+.hero-lede{font-size:1.2rem;line-height:1.8;color:var(--text);max-width:680px;margin-bottom:1.4rem}
+.hero-sub{font-size:1rem;color:var(--text-dim);max-width:600px;line-height:1.75;margin-bottom:2.75rem}
+.hero-tags{display:flex;flex-wrap:wrap;gap:0.6rem;margin-bottom:2.75rem}
+.hero-tag{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;padding:0.3rem 0.65rem;border:1px solid var(--border);border-radius:1px}
+.hero-meta{display:flex;gap:2.5rem;align-items:center;border-top:1px solid var(--border);padding-top:2rem;flex-wrap:wrap}
+.hero-meta-item{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase}
+.hero-meta-item span{color:var(--gold);display:block;font-size:0.68rem;margin-bottom:0.2rem}
 
-/* ── RESPONSIVE ── */
-@media (max-width: 700px) {
-  .conditions-grid { grid-template-columns: 1fr; }
-  .nav-links { display: none; }
-  .footer-inner { flex-direction: column; }
-  .hero-meta { flex-direction: column; gap: 1rem; }
+/* Responsive */
+@media(max-width:720px){
+  .conditions-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .footer-inner{flex-direction:column}
+  .hero-meta{gap:1.25rem}
+  .metric-row{flex-direction:column;gap:0.2rem}
+  .metric-key{min-width:unset}
 }
-
-/* ── SCROLL MARGIN ── */
-section[id] { scroll-margin-top: 56px; }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-inner">
     <a class="nav-brand" href="#hero">JRS™</a>
@@ -517,34 +265,28 @@ section[id] { scroll-margin-top: 56px; }
       <li><a href="#environments">Reviewer Environments</a></li>
       <li><a href="#examples">Review Examples</a></li>
       <li><a href="#later-review">Later Review</a></li>
+      <li><a href="#disagreement">Review Disagreement</a></li>
       <li><a href="#institutional">Institutional Conditions</a></li>
+      <li><a href="#shadow">Shadow Behavior</a></li>
       <li><a href="#field-references">Field References</a></li>
     </ul>
   </div>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <div class="hero-inner">
     <div class="hero-mark">Reviewer Reference · v1.0 · May 2026</div>
     <div class="hero-jrs">JRS<sup>™</sup></div>
     <div class="hero-title">Justification Review Standard</div>
     <p class="hero-lede">A pre-finalization documentation review structure for organizational records. Applied before records enter official systems. Evaluates whether conclusions are understandable, supportable, and reconstructable from the file alone.</p>
-    <p class="hero-lede-sub">The review does not assess whether decisions were correct. It assesses whether the basis for decisions can be traced from the file. No software required. Works inside existing workflows. Can be introduced incrementally without structural change.</p>
-    <div class="hero-checks">
-      <span class="hero-check">HR Operations</span>
-      <span class="hero-check">Compliance Review</span>
-      <span class="hero-check">Investigations</span>
-      <span class="hero-check">AI-Assisted Records</span>
-      <span class="hero-check">Administrative Review</span>
-      <span class="hero-check">Audit Sampling</span>
+    <p class="hero-sub">The review does not assess whether decisions were correct. It assesses whether the basis for decisions can be traced from the file. No software required. Works inside existing workflows. Can be introduced incrementally without structural change.</p>
+    <div class="hero-tags">
+      <span class="hero-tag">HR Operations</span><span class="hero-tag">Compliance Review</span><span class="hero-tag">Investigations</span><span class="hero-tag">AI-Assisted Records</span><span class="hero-tag">Administrative Review</span><span class="hero-tag">Audit Sampling</span>
     </div>
-
     <div class="from-practice">
       <div class="from-practice-label">From practice</div>
       <p>Most records that fail later review appeared complete at the time of drafting. The gap became visible only when someone else read the file without the original author available to explain it.</p>
     </div>
-
     <div class="hero-meta">
       <div class="hero-meta-item"><span>Version</span>1.0</div>
       <div class="hero-meta-item"><span>Effective</span>May 2026</div>
@@ -554,25 +296,22 @@ section[id] { scroll-margin-top: 56px; }
   </div>
 </section>
 
-<!-- REVIEW STANDARD -->
 <section id="standard">
   <div class="section-inner">
     <div class="container">
       <div class="section-label">Review Standard</div>
       <h1 class="section-h1">Documentation Review Structure</h1>
-
       <p>Records are reviewed later by people who were not present. The reviewer may have joined after the fact, inherited a file mid-process, or be reading the record months or years later. The file usually outlives the participants.</p>
-      <p>Review is applied at the drafting stage, before records enter formal systems. The review checks whether conclusions are understandable, supportable, and reconstructable from the file alone — not from the author's recollection, not from institutional memory, and not from context that was never written down.</p>
+      <p>Review is applied at the drafting stage, before records enter formal systems. The review checks whether conclusions are understandable, supportable, and reconstructable from the file alone — not from the author's recollection, not from institutional memory, not from context that was never written down.</p>
 
       <h2 class="section-h2">Before Finalization, Ask</h2>
-
-      <div class="check-list" style="margin-bottom:2rem;">
-        <li style="margin-bottom:0.75rem;"><strong style="color:var(--white)">Can this record stand on its own?</strong><br><span style="font-size:0.875rem;">Would a later reviewer understand the basis without relying on institutional memory or additional explanation?</span></li>
-        <li style="margin-bottom:0.75rem;"><strong style="color:var(--white)">What specific evidence anchors this conclusion?</strong><br><span style="font-size:0.875rem;">A date, a documented interaction, a log entry, a referenced record. General impressions are not evidence.</span></li>
-        <li style="margin-bottom:0.75rem;"><strong style="color:var(--white)">Is the path from evidence to conclusion visible in the record?</strong><br><span style="font-size:0.875rem;">The review evaluates whether the basis remains visible in the document itself rather than depending on the drafter's recollection.</span></li>
-        <li style="margin-bottom:0.75rem;"><strong style="color:var(--white)">Are dates, interactions, and policies identifiable?</strong><br><span style="font-size:0.875rem;">Missing dates become critical during escalation. Most review problems start earlier than people think.</span></li>
-        <li><strong style="color:var(--white)">Would a later reviewer follow the same reasoning?</strong><br><span style="font-size:0.875rem;">Without access to context that exists only in the author's knowledge.</span></li>
-      </div>
+      <ul class="check-list">
+        <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">Can this record stand on its own?</strong><br><span style="font-size:0.875rem">Would a later reviewer understand the basis without relying on institutional memory or additional explanation?</span></li>
+        <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">What specific evidence anchors this conclusion?</strong><br><span style="font-size:0.875rem">A date, a documented interaction, a log entry, a referenced record. General impressions are not evidence. Verify referenced files are actually attached before submission.</span></li>
+        <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">Is the path from evidence to conclusion visible in the record?</strong><br><span style="font-size:0.875rem">The review evaluates whether the basis remains visible in the document itself rather than depending on the drafter's recollection.</span></li>
+        <li style="margin-bottom:0.75rem"><strong style="color:var(--white)">Are dates, interactions, and policies identifiable?</strong><br><span style="font-size:0.875rem">Missing dates become critical during escalation. Most review problems start earlier than people think.</span></li>
+        <li><strong style="color:var(--white)">Would a later reviewer follow the same reasoning?</strong><br><span style="font-size:0.875rem">Without access to context that exists only in the author's knowledge.</span></li>
+      </ul>
 
       <h2 class="section-h2">Four Review Conditions</h2>
       <div class="conditions-grid">
@@ -610,15 +349,20 @@ section[id] { scroll-margin-top: 56px; }
       <h2 class="section-h2">Operational Constraints</h2>
       <p>Application may involve incomplete records, conflicting accounts, time pressures, or qualitative information requiring reviewer judgment. These conditions are acknowledged without eliminating the requirement for documented support.</p>
       <p>Documentation is sometimes written after events, from memory, under time pressure, or by reviewers with partial information. Depth of review will vary by workflow and staffing conditions. The four conditions do not vary.</p>
-
       <div class="op-note">
         <div class="op-note-label">Implementation note</div>
         <p>Secondary review does not repair unsupported drafting. Records that arrive without a traceable basis should be returned to the drafter. Approving them with a notation that support is missing does not resolve the underlying problem — it enters the system unsupported and the notation does not appear in the final record.</p>
       </div>
-
       <div class="from-practice">
         <div class="from-practice-label">From practice</div>
         <p>Records with specific dates, referenced policies, and identified conduct hold up. Those that depend on unwritten context do not. The difference is rarely obvious at the time of drafting.</p>
+      </div>
+
+      <h2 class="section-h2">Adjective Alert</h2>
+      <p>Evaluative adjectives — <em>difficult, hostile, unprofessional, poor, aggressive, uncooperative</em> — appearing without a corresponding behavioral anchor do not satisfy the Documented Reasoning condition. Each adjective requires a fact: what occurred, when, and where. Dates before adjectives. This is one of the most common gaps found in review.</p>
+      <div class="from-practice">
+        <div class="from-practice-label">From practice</div>
+        <p>Repeated characterizations across multiple records do not create evidentiary support for a pattern. Each entry still requires its own specific anchors. Volume is not corroboration.</p>
       </div>
     </div>
   </div>
@@ -630,74 +374,70 @@ section[id] { scroll-margin-top: 56px; }
     <div class="container">
       <div class="section-label">Reviewer Environments</div>
       <h1 class="section-h1">Review Responsibilities by Function</h1>
-      <p style="color:var(--text-dim);font-size:0.9rem;font-style:italic;">These environments were developed at different points and for different operational reasons. The depth varies by section. Where a section is thinner, additions will appear in subsequent revisions as implementation experience accumulates.</p>
+      <p class="text-dim italic" style="font-size:0.9rem">These environments were developed at different points and for different operational reasons. The depth varies by section. Where a section is thinner, additions will appear in subsequent revisions as implementation experience accumulates.</p>
 
       <!-- HR -->
       <hr>
-      <div class="env-header">
-        <div class="env-label">Environment 01</div>
-        <h2 class="section-h2" style="margin-top:0.5rem;">HR Reviewer</h2>
-        <p>HR reviewers apply the review standard to performance, disciplinary, termination, and accommodation records before those records enter official systems. Secondary review is the primary organizational control point for elevated-risk records. In practice, secondary review does not always occur before records enter official systems. That gap is what this environment addresses.</p>
-        <p style="color:var(--text-dim);font-size:0.95rem;">Some organizations apply this review alongside legacy HR documentation systems that do not support pre-submission controls. In those environments, the review is applied manually at the drafting stage before the record is transferred into the official system.</p>
-      </div>
-
+      <div class="section-label" style="margin-top:2rem">Environment 01</div>
+      <h2 class="section-h2" style="margin-top:0.5rem">HR Reviewer</h2>
+      <p>HR reviewers apply the review standard to performance, disciplinary, termination, and accommodation records before those records enter official systems. Secondary review is the primary organizational control point for elevated-risk records. In practice, secondary review does not always occur before records enter official systems. That gap is what this environment addresses.</p>
+      <p class="text-dim" style="font-size:0.95rem">Some organizations apply this review alongside legacy HR documentation systems that do not support pre-submission controls. In those environments, the review is applied manually at the drafting stage before the record is transferred into the official system.</p>
       <div class="from-practice">
         <div class="from-practice-label">From practice</div>
         <p>Most HR secondary review returns happen at intake. The most common triggers are evaluative language without behavioral anchors and escalation conclusions without an attached prior counseling trail. Both are typically identified within the first two minutes of review.</p>
       </div>
-
       <h3 class="section-h3">What HR Reviewers Are Reviewing For</h3>
       <ul class="check-list">
         <li>Whether each conclusion has a specific, verifiable anchor in the file — a date, a documented interaction, a referenced record</li>
         <li>Whether prior counseling, coaching, or warning records referenced in the record are actually attached and on file</li>
         <li>Whether evaluative language is grounded in specific, dated behavioral descriptions rather than general characterizations</li>
-        <li>Whether AI-assisted wording, if present, has been reviewed against source notes and attested by a human reviewer before submission</li>
+        <li>Whether AI-assisted wording, if present, has been reviewed against source notes and attested before submission</li>
         <li>Whether the record would be reconstructable by a later reviewer with no knowledge of the events</li>
+        <li>Whether referenced records — counseling notes, PIP documents, incident reports — are actually attached, not only mentioned</li>
       </ul>
-
       <div class="op-note">
         <div class="op-note-label">Implementation note</div>
         <p>The depth of HR secondary review varies by workflow, staffing, and record type. Not every record receives the same level of review. The indicators below identify where secondary review is required regardless of workload conditions.</p>
       </div>
-
       <h3 class="section-h3">Common Failure Patterns — HR Context</h3>
       <div class="section-h4">Performance Records</div>
-      <p style="font-size:0.95rem;color:var(--text-dim);">Performance evaluations frequently contain evaluative conclusions without a single specific dated instance of the described conduct, without reference to a documented performance standard, and without coaching records that would show the employee was aware of the gap. A record that reads as a complete performance assessment may contain no single anchored fact.</p>
-
+      <p class="text-dim" style="font-size:0.95rem">Performance evaluations frequently contain evaluative conclusions without a single specific dated instance of the described conduct, without reference to a documented performance standard, and without coaching records showing the employee was aware of the gap. A record that reads as a complete performance assessment may contain no single anchored fact.</p>
       <div class="from-practice">
         <div class="from-practice-label">From practice</div>
         <p>Well-written performance records are sometimes the least supportable. The language is professional. The basis is not in the file.</p>
       </div>
-
       <div class="section-h4">Disciplinary Records</div>
-      <p style="font-size:0.95rem;color:var(--text-dim);">Disciplinary conclusions frequently reference "repeated coaching" or "multiple warnings" without identifying the dates, participants, or file locations of those discussions. The escalation language is present. The counseling trail it presupposes is not in the file. This failure mode is most common when documentation is created at the point of formal action rather than throughout the underlying process.</p>
-
+      <p class="text-dim" style="font-size:0.95rem">Disciplinary conclusions frequently reference "repeated coaching" or "multiple warnings" without identifying the dates, participants, or file locations of those discussions. The escalation language is present. The counseling trail it presupposes is not in the file. This failure mode is most common when documentation is created at the point of formal action rather than throughout the underlying process.</p>
       <div class="section-h4">Termination Records</div>
-      <p style="font-size:0.95rem;color:var(--text-dim);">Termination records are the highest-risk documentation type. Records that reference "ongoing performance issues" or "failure to improve" without a referenced performance plan, specific benchmark failures, and a documented counseling trail cannot support reconstruction by a later reviewer. Secondary HR review plus legal consultation is required before system entry.</p>
-
+      <p class="text-dim" style="font-size:0.95rem">Termination records are the highest-risk documentation type. Records that reference "ongoing performance issues" or "failure to improve" without a referenced performance plan, specific benchmark failures, and a documented counseling trail cannot support reconstruction by a later reviewer. Secondary HR review plus legal consultation is required before system entry.</p>
       <div class="section-h4">Accommodation Records</div>
-      <p style="font-size:0.95rem;color:var(--text-dim);">Accommodation records frequently omit interactive process documentation: meeting dates, alternatives considered, employee responses, and the determination rationale. A denial noted as "operational needs" without specifying the constraint does not hold up under later review.</p>
-
+      <p class="text-dim" style="font-size:0.95rem">Accommodation records frequently omit interactive process documentation: meeting dates, alternatives considered, employee responses, and the determination rationale. A denial noted as "operational needs" without specifying the constraint does not hold up under later review. Legal review is recommended before a denial determination is communicated.</p>
       <div class="op-note">
         <div class="op-note-label">Field observation</div>
         <p>Departments with the most documentation volume may still produce weak reconstruction records. Frequency of documentation does not correlate with evidentiary support within individual records.</p>
       </div>
-
+      <h3 class="section-h3">Reviewer Questions — HR Secondary Review</h3>
+      <ul class="check-list">
+        <li>Is the prior counseling or warning trail on file and attached, not just referenced in the narrative?</li>
+        <li>Do the dates referenced in the record correspond to dates in the attached supporting documentation?</li>
+        <li>Is each evaluative adjective accompanied by a specific behavioral description with a date?</li>
+        <li>If AI-assisted drafting contributed, has attestation been completed and is it documented before submission?</li>
+        <li>Could this file support an audit or proceeding if the original reviewer were no longer available?</li>
+      </ul>
+      <div class="reviewer-note">
+        <div class="reviewer-note-label">AJL · 5/9/26</div>
+        <p>No PIP referenced. Three counseling notes mentioned in narrative; none attached. Pattern claim unsupported. Timeline between January 15 and March 3 unclear. Returned to drafter before system entry.</p>
+      </div>
       <h3 class="section-h3">Escalation Indicators</h3>
-      <p style="font-size:0.9rem;color:var(--text-dim);margin-bottom:0.75rem;">Any single indicator below is sufficient reason to stop before system entry.</p>
+      <p class="text-dim" style="font-size:0.9rem;margin-bottom:0.75rem">Any single indicator below is sufficient reason to stop before system entry.</p>
       <ul class="check-list">
         <li>Termination record without referenced and attached supporting documentation — hold, route to legal</li>
         <li>Accommodation denial without documented interactive process steps — legal review recommended</li>
         <li>AI-generated summary without source identification or attestation — return for source verification</li>
         <li>Pattern conduct claims without specific dated instances — return to drafter</li>
+        <li>Escalation language inconsistent with prior records in the file — secondary review required</li>
         <li>Evaluative conclusions without behavioral anchors — return before system entry</li>
       </ul>
-
-      <div class="reviewer-note">
-        <div class="reviewer-note-label">AJL · 5/9/26</div>
-        <p>No PIP referenced. Three counseling notes mentioned in narrative; none attached. Pattern claim unsupported. Timeline between January 15 and March 3 unclear. Returned to drafter before system entry.</p>
-      </div>
-
       <div class="from-practice">
         <div class="from-practice-label">From practice</div>
         <p>Accommodation records are among the highest-risk documentation type for reconstruction failure. The interactive process steps, alternatives considered, and determination rationale must be in the file. Not reconstructed from the reviewer's recollection of the process.</p>
@@ -705,71 +445,70 @@ section[id] { scroll-margin-top: 56px; }
 
       <!-- INVESTIGATOR -->
       <hr>
-      <div class="env-header">
-        <div class="env-label">Environment 02</div>
-        <h2 class="section-h2" style="margin-top:0.5rem;">Investigator</h2>
-        <p>Investigator review applies the review standard to witness summaries, incident records, and investigation conclusions before those records are filed. Investigation records are among the most likely to be examined under adversarial conditions. Investigator turnover makes reconstruction from the file — rather than from the investigator's memory — a practical necessity, not an edge case.</p>
-      </div>
-
+      <div class="section-label" style="margin-top:2rem">Environment 02</div>
+      <h2 class="section-h2" style="margin-top:0.5rem">Investigator</h2>
+      <p>Investigator review applies the review standard to witness summaries, incident records, and investigation conclusions before those records are filed. Investigation records are among the most likely to be examined under adversarial conditions. Investigator turnover makes reconstruction from the file — rather than from the investigator's memory — a practical necessity, not an edge case.</p>
       <div class="from-practice">
         <div class="from-practice-label">From practice</div>
         <p>The investigation record must stand without the investigator available to explain it. If following the reasoning requires knowing what the investigator knew at the time, the record is not complete.</p>
       </div>
-
       <h3 class="section-h3">Source Identification</h3>
-      <p style="font-size:0.95rem;color:var(--text-dim);">Source materials reviewed during the investigation should be specifically identified in the record. "A thorough investigation was conducted" describes the process. It does not identify the basis.</p>
+      <p class="text-dim" style="font-size:0.95rem">Source materials reviewed during the investigation should be specifically identified in the record. "A thorough investigation was conducted" describes the process. It does not identify the basis.</p>
       <ul class="check-list">
         <li>Interviews conducted: names, dates, and roles of witnesses</li>
         <li>Documents reviewed: correspondence, logs, records, policy references</li>
         <li>Prior records considered: performance history, prior complaints, relevant HRIS data</li>
       </ul>
-
       <div class="op-note">
         <div class="op-note-label">Implementation note</div>
         <p>Source identification requirements vary by investigation type and organizational context. The underlying standard does not change: a later reviewer must be able to identify what was reviewed without contacting the investigator.</p>
       </div>
-
       <h3 class="section-h3">Conflicting Account Preservation</h3>
-      <p style="font-size:0.95rem;color:var(--text-dim);">Where accounts conflict, the conflict must remain visible in the record. A later reviewer needs to see what was contested, not only what was concluded. Resolving conflicts through omission creates a gap that surfaces under adversarial review.</p>
-      <p style="font-size:0.95rem;color:var(--text-dim);">This is the section of investigator review that most consistently requires attention. Investigation summaries tend to move toward narrative coherence. The source material often contains more ambiguity than the filed record reflects.</p>
-
+      <p class="text-dim" style="font-size:0.95rem">Where accounts conflict, the conflict must remain visible in the record. A later reviewer needs to see what was contested, not only what was concluded. Resolving conflicts through omission creates a gap that surfaces under adversarial review. Investigation summaries tend to move toward narrative coherence. The source material often contains more ambiguity than the filed record reflects.</p>
       <div class="from-practice">
         <div class="from-practice-label">From practice</div>
         <p>Investigation conclusions that omit conflicting accounts do not satisfy the Documented Reasoning condition. A later reviewer needs to see what was contested, not only what was concluded.</p>
       </div>
-
+      <h3 class="section-h3">Later Reviewer Conditions — Investigation Context</h3>
+      <ul class="check-list">
+        <li>Original investigator is no longer with the organization</li>
+        <li>Investigation was conducted under a prior policy version</li>
+        <li>Witness is unavailable to confirm or clarify their account</li>
+        <li>Source documents referenced in the record are not attached or have been archived separately</li>
+        <li>Record is reviewed in the context of a subsequent proceeding where the conclusions are being challenged</li>
+      </ul>
       <h3 class="section-h3">Escalation Indicators</h3>
       <ul class="check-list">
         <li>Conclusion used as basis for formal discipline — independent reconstruction review before action is taken</li>
         <li>Source materials not specifically identified — return for identification before filing</li>
         <li>Conflicting accounts not acknowledged in the record — return for revision</li>
+        <li>Conclusion extends beyond what identified evidence shows — secondary review recommended</li>
         <li>AI-assisted wording in investigation summary without attestation — hold pending source review</li>
       </ul>
 
       <!-- COMPLIANCE -->
       <hr>
-      <div class="env-header">
-        <div class="env-label">Environment 03</div>
-        <h2 class="section-h2" style="margin-top:0.5rem;">Compliance Reviewer</h2>
-        <p>Compliance reviewers apply the review standard in two primary contexts: pre-submission review of compliance documentation before it enters official systems, and periodic audit sampling of existing records for documentation quality.</p>
-        <div class="env-note">This environment was developed later than the HR and investigator environments and reflects a narrower range of implementation experience. Additions will appear as audit sampling findings accumulate.</div>
-      </div>
-
-      <div class="from-practice">
+      <div class="section-label" style="margin-top:2rem">Environment 03</div>
+      <h2 class="section-h2" style="margin-top:0.5rem">Compliance Reviewer</h2>
+      <p>Compliance reviewers apply the review standard in two primary contexts: pre-submission review of compliance documentation before it enters official systems, and periodic audit sampling of existing records for documentation quality. Sampling identifies where the system is failing. Pre-submission review is where the failure is prevented.</p>
+      <div class="env-note">This environment was developed later than the HR and investigator environments and reflects a narrower range of implementation experience. Additions will appear as audit sampling findings accumulate.</div>
+      <div class="from-practice" style="margin-top:2rem">
         <div class="from-practice-label">From practice</div>
         <p>Compliance audit sampling surfaces patterns that pre-submission review prevents. The two are complementary, not substitutes. Sampling identifies where the system is failing. Pre-submission review is where that failure is corrected.</p>
       </div>
-
-      <h3 class="section-h3">Common Failure Patterns — Compliance Context</h3>
-      <div class="section-h4">Policy Reference Gaps</div>
-      <p style="font-size:0.95rem;color:var(--text-dim);">Compliance records frequently cite "company policy" or "applicable policy" without identifying the specific policy name, section, or version. A later reviewer cannot verify which standard was applied, whether the employee was aware of it, or whether the cited policy was in effect at the time of the conduct.</p>
-
-      <div class="section-h4">Acknowledgment Gaps</div>
-      <p style="font-size:0.95rem;color:var(--text-dim);">Policy-based conclusions require that employee acknowledgment of the applicable policy is documented and on file. Records stating that "employee was informed of expectations" without identifying when, how, or in what form do not satisfy this condition.</p>
-
+      <h3 class="section-h3">Policy Reference Gaps</h3>
+      <p class="text-dim" style="font-size:0.95rem">Compliance records frequently cite "company policy" or "applicable policy" without identifying the specific policy name, section, or version. A later reviewer cannot verify which standard was applied, whether the employee was aware of it, or whether the cited policy was in effect when the conduct occurred.</p>
+      <h3 class="section-h3">Acknowledgment Gaps</h3>
+      <p class="text-dim" style="font-size:0.95rem">Policy-based conclusions require that employee acknowledgment of the applicable policy is documented and on file. Records stating that "employee was informed of expectations" without identifying when, how, or in what form do not satisfy this condition.</p>
       <div class="from-practice">
         <div class="from-practice-label">From practice</div>
         <p>Policy-based conclusions without a traceable acknowledgment are the most common compliance documentation gap in audit sampling. The policy exists. The employee's awareness of it at the relevant time is not in the file.</p>
+      </div>
+      <h3 class="section-h3">Audit Sampling Application</h3>
+      <p class="text-dim" style="font-size:0.95rem">The failure-mode catalog is applied to a sample of existing records within a selected record type or department. Sampling surfaces patterns across departments rather than evaluating individual records. Results are documented by gap type and frequency and presented to HR leadership.</p>
+      <div class="from-practice">
+        <div class="from-practice-label">From practice</div>
+        <p>Departments with the most documentation volume do not necessarily produce better reconstruction records. In several sampling periods, high-volume departments showed more records with the same gaps, not fewer.</p>
       </div>
     </div>
   </div>
@@ -782,7 +521,6 @@ section[id] { scroll-margin-top: 56px; }
       <div class="section-label">Review Examples</div>
       <h1 class="section-h1">Reconstruction Failure Examples</h1>
       <p>The following examples show documentation failures as they commonly appear during later review. Each is drawn from a routine operational context. None are dramatic edge cases. The most significant reconstruction failures typically involve ordinary documentation gaps that were invisible at drafting and only became consequential when the file was reviewed without the original participants.</p>
-
       <div class="from-practice">
         <div class="from-practice-label">From practice</div>
         <p>Most files that arrive for secondary review are not entirely empty. They contain something. A date, a reference, a general description. The question is whether what is there is sufficient to reconstruct the basis without the author. Usually it is not.</p>
@@ -790,22 +528,14 @@ section[id] { scroll-margin-top: 56px; }
 
       <!-- RF-01 -->
       <div class="rf-card">
-        <div class="rf-card-header">
-          <span class="rf-code">RF·01</span>
-          <span class="rf-title">Missing Attachment — Counseling Note Referenced, Not Filed</span>
-        </div>
+        <div class="rf-card-header"><span class="rf-code">RF·01</span><span class="rf-title">Missing Attachment — Counseling Note Referenced, Not Filed</span></div>
         <div class="rf-body">
           <div class="rf-field-label">Record as filed</div>
           <div class="rf-record">"Employee was counseled regarding attendance on February 4. Counseling note on file."</div>
           <div class="rf-field-label">Reconstruction questions</div>
-          <ul class="rf-questions">
-            <li>Where is the February 4 counseling note? It is referenced but not attached.</li>
-            <li>What was communicated during the counseling session?</li>
-            <li>Did the employee acknowledge receipt? Is that documented?</li>
-            <li>Without the note, what does "on file" refer to?</li>
-          </ul>
+          <ul class="rf-questions"><li>Where is the February 4 counseling note? Referenced but not attached.</li><li>What was communicated during the counseling session?</li><li>Did the employee acknowledge receipt? Is that documented?</li><li>Without the note, what does "on file" refer to?</li></ul>
           <div class="rf-field-label">Disposition</div>
-          <div class="rf-disposition">STOP. Referenced record not present. Record cannot be submitted until the February 4 counseling note is located and attached. If the note cannot be located, the gap must be documented explicitly. The reference alone does not satisfy Observable Support.</div>
+          <div class="rf-disp stop">STOP. Referenced record not present. Record cannot be submitted until the February 4 counseling note is located and attached. If the note cannot be located, the gap must be documented explicitly. The reference alone does not satisfy Observable Support.</div>
           <div class="rf-field-label">Supported revision</div>
           <div class="rf-revision">Employee was counseled regarding attendance on February 4. Counseling note dated February 4 attached — Tab A. Employee acknowledged receipt in writing February 5; acknowledgment attached — Tab B.</div>
           <div class="rf-closing">The original record referenced a document that was not there. This is the most common attachment failure in secondary review. The reference creates the appearance of support. The absence of the document means the support is not in the file.</div>
@@ -814,21 +544,14 @@ section[id] { scroll-margin-top: 56px; }
 
       <!-- RF-02 -->
       <div class="rf-card">
-        <div class="rf-card-header">
-          <span class="rf-code">RF·02</span>
-          <span class="rf-title">Chronology Gap — Escalation Without Visible Prior Steps</span>
-        </div>
+        <div class="rf-card-header"><span class="rf-code">RF·02</span><span class="rf-title">Chronology Gap — Escalation Without Visible Prior Steps</span></div>
         <div class="rf-body">
           <div class="rf-field-label">Record as filed</div>
           <div class="rf-record">"Following repeated performance discussions and progressive documentation, employee is being placed on a formal performance improvement plan effective March 15."</div>
           <div class="rf-field-label">Reconstruction questions</div>
-          <ul class="rf-questions">
-            <li>What performance discussions occurred, and on what dates?</li>
-            <li>What does "progressive documentation" refer to? Which records?</li>
-            <li>Are those records attached or identifiable in the file?</li>
-          </ul>
+          <ul class="rf-questions"><li>What performance discussions occurred, and on what dates?</li><li>What does "progressive documentation" refer to? Which records?</li><li>Are those records attached or identifiable in the file?</li><li>Is the basis for the PIP recoverable from what is in the file, or only from the manager's memory?</li></ul>
           <div class="rf-field-label">Disposition</div>
-          <div class="rf-disposition">REVIEW REQUIRED. Escalation language present. Supporting trail not identifiable from the file. Return to drafter for attachment of prior documentation or explicit acknowledgment of what is and is not on file.</div>
+          <div class="rf-disp review">REVIEW REQUIRED. Escalation language present. Supporting trail not identifiable from the file. Return to drafter for attachment of prior documentation or explicit acknowledgment of what is and is not on file.</div>
           <div class="rf-field-label">Supported revision</div>
           <div class="rf-revision">Employee placed on formal Performance Improvement Plan effective March 15. Prior process: verbal counseling February 1 (note on file — Tab A); written counseling February 22 (note on file — Tab B); performance check-in March 3 reflecting continued gap (notes on file — Tab C). PIP establishes specific benchmarks for the 60-day review period — attached Tab D.</div>
           <div class="rf-closing">The original record read as the conclusion of a documented process. The file contained no evidence of that process. The manager had conducted the prior steps. They were not reflected in the file that reached secondary review.</div>
@@ -837,94 +560,131 @@ section[id] { scroll-margin-top: 56px; }
 
       <!-- RF-03 -->
       <div class="rf-card">
-        <div class="rf-card-header">
-          <span class="rf-code">RF·03</span>
-          <span class="rf-title">AI-Generated Characterization — Source Notes Not Identified</span>
-        </div>
+        <div class="rf-card-header"><span class="rf-code">RF·03</span><span class="rf-title">AI-Generated Characterization — Source Notes Not Identified</span></div>
         <div class="rf-body">
           <div class="rf-field-label">Record as filed</div>
           <div class="rf-record">"AI Summary: Employee has demonstrated a persistent pattern of resistance to management direction and has consistently underperformed relative to team expectations."</div>
           <div class="rf-field-label">Reconstruction questions</div>
-          <ul class="rf-questions">
-            <li>What source records were reviewed before this summary was generated?</li>
-            <li>What specific interactions support "persistent pattern of resistance"? Are those identifiable?</li>
-            <li>Has a human reviewer confirmed this summary against the source notes?</li>
-          </ul>
+          <ul class="rf-questions"><li>What source records were reviewed before this summary was generated?</li><li>What specific interactions support "persistent pattern of resistance"? Are those identifiable?</li><li>Is "consistently underperformed" traceable to documented performance data?</li><li>Has a human reviewer confirmed this summary against the source notes?</li></ul>
           <div class="rf-field-label">Disposition</div>
-          <div class="rf-disposition">STOP. Source records not identified. Human confirmation not documented. AI-generated characterizations not traceable to specific documented interactions. Do not submit.</div>
+          <div class="rf-disp stop">STOP. Source records not identified. Human confirmation not documented. AI-generated characterizations not traceable to specific documented interactions. Do not submit. Return for source verification and attestation.</div>
           <div class="rf-field-label">Supported revision</div>
-          <div class="rf-revision">Summary reviewed against meeting notes dated March 4, March 18, and April 1, and coaching records from February 28 and March 25. On March 4, employee did not complete assigned pre-meeting preparation (meeting notes — on file). On March 18, employee missed a submission deadline despite documented reminder March 15 (email on file). No unverified characterizations introduced. Human review completed April 3.</div>
+          <div class="rf-revision">Summary reviewed against meeting notes dated March 4, March 18, and April 1, and coaching records from February 28 and March 25. On March 4, employee did not complete assigned pre-meeting preparation (meeting notes — on file). On March 18, employee missed a submission deadline despite documented reminder March 15 (email on file). No unverified characterizations introduced. Human review completed April 3 by attesting reviewer; confirmed against original notes.</div>
           <div class="rf-closing">The manager's notes described two missed tasks. The generated record described an ongoing pattern of resistance. Those are not the same characterization. The notes did not change. The wording did. A reviewer reading the submitted record had no way to know what the underlying notes actually said.</div>
         </div>
       </div>
 
       <!-- RF-04 -->
       <div class="rf-card">
-        <div class="rf-card-header">
-          <span class="rf-code">RF·04</span>
-          <span class="rf-title">Unsupported Pattern Claim — Conduct Described, Dates Absent</span>
-        </div>
+        <div class="rf-card-header"><span class="rf-code">RF·04</span><span class="rf-title">Unsupported Pattern Claim — Conduct Described, Dates Absent</span></div>
         <div class="rf-body">
           <div class="rf-field-label">Record as filed</div>
           <div class="rf-record">"Employee has repeatedly failed to complete assignments on time, despite multiple reminders from the supervisor."</div>
           <div class="rf-field-label">Reconstruction questions</div>
-          <ul class="rf-questions">
-            <li>Which assignments were not completed on time? What were the deadlines?</li>
-            <li>What dates did the failures occur?</li>
-            <li>What reminders were issued, and when? Are they documented?</li>
-          </ul>
+          <ul class="rf-questions"><li>Which assignments were not completed on time? What were the deadlines?</li><li>What dates did the failures occur?</li><li>What reminders were issued, and when? Are they documented?</li><li>Without dates, can a later reviewer establish the frequency or pattern independently?</li></ul>
           <div class="rf-field-label">Disposition</div>
-          <div class="rf-disposition">STOP. Pattern conduct claim without dated instances. Reminder references without dates or documentation. Record does not satisfy Observable Support. Return to drafter.</div>
+          <div class="rf-disp stop">STOP. Pattern conduct claim without dated instances. Reminder references without dates or documentation. Record does not satisfy Observable Support. Return to drafter.</div>
           <div class="rf-field-label">Supported revision</div>
           <div class="rf-revision">Employee missed assignment deadlines on January 20 (project brief, due January 18), February 14 (status update, due February 12), and March 3 (final deliverable, due March 1). Supervisor issued written reminders January 19, February 11, and February 28; emails on file.</div>
           <div class="rf-closing">The original record described a pattern. Without dates, a later reviewer cannot establish the pattern independently. This is the most common single documentation gap across all record types. The date is usually simply missing — not omitted intentionally.</div>
         </div>
       </div>
 
-      <!-- RF-07 partial -->
+      <!-- RF-05 -->
       <div class="rf-card">
-        <div class="rf-card-header">
-          <span class="rf-code">RF·07</span>
-          <span class="rf-title">Policy Referenced, Acknowledgment Absent</span>
-          <span class="rf-partial">— partial reconstruction</span>
+        <div class="rf-card-header"><span class="rf-code">RF·05</span><span class="rf-title">Conflicting Account Omitted — Investigation Summary</span></div>
+        <div class="rf-body">
+          <div class="rf-field-label">Record as filed</div>
+          <div class="rf-record">"Following investigation, it was determined that the respondent engaged in the conduct described in the complaint. The investigation was thorough and the evidence supports this conclusion."</div>
+          <div class="rf-field-label">Reconstruction questions</div>
+          <ul class="rf-questions"><li>What source materials were reviewed? Which interviews, which documents?</li><li>Did the respondent provide a denial or alternative account? Is it reflected?</li><li>Were there witnesses? What did they say, and are their accounts consistent?</li><li>What is "the evidence"? Where is it identified in the record?</li></ul>
+          <div class="rf-field-label">Disposition</div>
+          <div class="rf-disp stop">STOP. Source materials not identified. Respondent's account not reflected. Investigation conclusion without visible evidentiary basis. Independent review required before filing.</div>
+          <div class="rf-field-label">Supported revision</div>
+          <div class="rf-revision">Investigation reviewed: complainant interview April 3, respondent interview April 5, two witness interviews April 4 and April 7, email correspondence March 28 and April 1. Respondent denied the conduct and stated the March 28 communication was a response to an earlier instruction from the complainant; that account is noted and not independently corroborated by available evidence. One witness corroborated complainant's account of the April interaction; one was not present. Finding: March 28 communication violated Respectful Workplace Policy Section 3.1, acknowledged January 15. Independent review completed April 9.</div>
+          <div class="rf-closing">The original record presented a clean conclusion. The source material contained a respondent denial and partial corroboration. Neither appeared in the filed record. A later reviewer reading the original had no way to evaluate the basis for the conclusion.</div>
         </div>
+      </div>
+
+      <!-- RF-06 -->
+      <div class="rf-card">
+        <div class="rf-card-header"><span class="rf-code">RF·06</span><span class="rf-title">Retroactive Documentation — Memory-Based Record</span></div>
+        <div class="rf-body">
+          <div class="rf-field-label">Record as filed</div>
+          <div class="rf-record">"Employee was counseled regarding conduct issues on several occasions during the first quarter. Employee was made aware of expectations and the need for improvement."</div>
+          <div class="rf-field-label">Reconstruction questions</div>
+          <ul class="rf-questions"><li>What conduct issues? What occurred specifically?</li><li>On what dates did counseling occur?</li><li>Is there any contemporaneous record — an email, a calendar entry, a note — that anchors any of these sessions?</li><li>This record appears to have been created after the period it describes. What contemporaneous documentation, if any, exists?</li></ul>
+          <div class="rf-field-label">Disposition</div>
+          <div class="rf-disp review">REVIEW REQUIRED. Retroactive documentation without contemporaneous anchors. Dates absent. Conduct not described. Return to drafter to identify any contemporaneous records that can anchor the account. Where no contemporaneous record exists, that gap must be explicitly noted in the file.</div>
+          <div class="rf-field-label">Supported revision</div>
+          <div class="rf-revision">Employee counseled regarding conduct on February 8 and March 3 (supervisor notes on file for each date). February 8 discussion addressed interruption of team meeting on February 7; meeting notes from February 7 on file. March 3 discussion addressed continued pattern; supervisor email to employee March 3 memorializing discussion on file. Employee acknowledged expectations in writing March 4; acknowledgment on file. Note: this record was created March 18 based on contemporaneous notes and email correspondence from the relevant dates.</div>
+          <div class="rf-closing">The original record was drafted from memory after the fact. The supported revision anchors the same events to contemporaneous records that existed at the time. Where no contemporaneous records exist, the retroactive gap must be documented — not papered over with general language that implies a record that is not there.</div>
+        </div>
+      </div>
+
+      <h2 class="section-h2">Partial Reconstruction Examples</h2>
+      <p class="text-dim" style="font-size:0.9rem">The following examples show cases where some supporting material is present but reconstruction is incomplete. These are the most common review conditions in practice. Most files are not entirely unsupported. Most files have something. The question is whether what is there is enough.</p>
+
+      <!-- RF-07 -->
+      <div class="rf-card">
+        <div class="rf-card-header"><span class="rf-code">RF·07</span><span class="rf-title">Policy Referenced, Acknowledgment Absent</span><span class="rf-partial">— partial reconstruction</span></div>
         <div class="rf-body">
           <div class="rf-field-label">Record as filed</div>
           <div class="rf-record">"Employee's conduct on April 14 violated Remote Work Policy Section 3.2. Employee was informed of expectations at the time of hire."</div>
           <div class="rf-field-label">Reconstruction questions</div>
-          <ul class="rf-questions">
-            <li>Which version of Remote Work Policy Section 3.2 was in effect on April 14?</li>
-            <li>Is the policy acknowledgment on file? The record states the employee was informed at hire — is that documented?</li>
-            <li>Without a traceable acknowledgment, how does a later reviewer confirm the employee was aware of the specific policy provision?</li>
-          </ul>
+          <ul class="rf-questions"><li>Which version of Remote Work Policy Section 3.2 was in effect on April 14?</li><li>Is the policy acknowledgment on file? The record states the employee was informed at hire — is that documented?</li><li>Without a traceable acknowledgment, how does a later reviewer confirm the employee was aware of the specific policy provision?</li></ul>
           <div class="rf-field-label">Disposition</div>
-          <div class="rf-disposition">REVIEW REQUIRED. Policy section identified — that portion is traceable. Employee acknowledgment not on file or referenced with sufficient specificity. "Informed at time of hire" is not independently verifiable from the file as filed. Return to drafter to identify and attach the relevant acknowledgment or document the gap explicitly.</div>
+          <div class="rf-disp review">REVIEW REQUIRED. Policy section identified — that portion is traceable. Employee acknowledgment not on file or referenced with sufficient specificity. "Informed at time of hire" is not independently verifiable from the file as filed. Return to drafter.</div>
           <div class="rf-field-label">Supported revision</div>
           <div class="rf-revision">Employee's conduct on April 14 violated Remote Work Policy Section 3.2 (remote work notification requirements), version effective January 1. Policy acknowledged by employee January 10 during onboarding; signed acknowledgment on file — Tab A. Employee was reminded of the notification requirement in the February 15 team meeting; meeting notes on file — Tab B.</div>
           <div class="rf-closing">The original record correctly identified the policy section. The acknowledgment gap — the employee's documented awareness of the specific provision — was not in the file. Partial traceability is not full traceability. The policy can be found. Whether the employee knew it at the relevant time cannot be established from what was filed.</div>
         </div>
       </div>
 
-      <!-- RF-10 partial -->
+      <!-- RF-08 -->
       <div class="rf-card">
-        <div class="rf-card-header">
-          <span class="rf-code">RF·10</span>
-          <span class="rf-title">Witness Account Present, Corroboration Absent</span>
-          <span class="rf-partial">— partial reconstruction</span>
+        <div class="rf-card-header"><span class="rf-code">RF·08</span><span class="rf-title">Chronology Partially Recoverable — One Anchor Missing</span><span class="rf-partial">— partial reconstruction</span></div>
+        <div class="rf-body">
+          <div class="rf-field-label">Record as filed</div>
+          <div class="rf-record">"Employee missed three project deadlines during Q1. Performance plan established January 5. Check-in notes on file for February 15 and March 3. Third deadline missed March 22; no corresponding check-in note located."</div>
+          <div class="rf-field-label">Reconstruction questions</div>
+          <ul class="rf-questions"><li>The January 5 performance plan and two check-in notes are identifiable — what do they show?</li><li>What was the March 22 deadline? Is it referenced in the performance plan or check-in notes?</li><li>Was a check-in conducted after the March 22 miss? If so, where is the note?</li><li>Can the March 22 failure be anchored to anything in the file, or does it rely on the drafter's recollection?</li></ul>
+          <div class="rf-field-label">Disposition</div>
+          <div class="rf-disp review">REVIEW REQUIRED. Two of three deadline failures are recoverable from the file. The March 22 miss is referenced in the record but not anchored to any document. Return to drafter to locate and attach the March 22 check-in note or document that no note exists. Do not submit with an unanchored third instance if the pattern conclusion depends on it.</div>
+          <div class="rf-field-label">Supported revision</div>
+          <div class="rf-revision">Employee missed project deadlines January 20, February 14, and March 22 against timelines established in the January 5 performance plan — on file, Tab A. Check-in notes on file for February 15 (Tab B) and March 3 (Tab C), each documenting the missed deadline and supervisor response. March 22 deadline miss documented in supervisor email to employee March 23, memorializing the discussion and noting continued gap; email on file — Tab D. No formal check-in note exists for March 22; gap noted.</div>
+          <div class="rf-closing">Two of three instances were well-documented. The third was referenced in the record but not anchored. The supported revision replaces the missing check-in note with a contemporaneous email that documents the same event. Where no contemporaneous anchor exists at all, that gap must be noted explicitly rather than carried forward as if it were supported.</div>
         </div>
+      </div>
+
+      <!-- RF-09 -->
+      <div class="rf-card">
+        <div class="rf-card-header"><span class="rf-code">RF·09</span><span class="rf-title">Escalation Trail Partially Documented — One Step Missing</span><span class="rf-partial">— partial reconstruction</span></div>
+        <div class="rf-body">
+          <div class="rf-field-label">Record as filed</div>
+          <div class="rf-record">"Following verbal warning February 20, written warning March 14, and continued performance gaps, employee is being placed on a 60-day Performance Improvement Plan effective April 1."</div>
+          <div class="rf-field-label">Reconstruction questions</div>
+          <ul class="rf-questions"><li>Verbal warning February 20 and written warning March 14 — are both on file?</li><li>What performance gaps continued after March 14? Are those documented between March 14 and April 1?</li><li>The verbal warning is referenced but not confirmed as attached. Is the February 20 note in the file?</li></ul>
+          <div class="rf-field-label">Disposition</div>
+          <div class="rf-disp review">REVIEW REQUIRED. Written warning March 14 located in file. Verbal warning February 20 referenced in record but note not confirmed attached at time of secondary review. Performance gaps between March 14 and April 1 described but not specifically documented. Return to drafter.</div>
+          <div class="rf-field-label">Supported revision</div>
+          <div class="rf-revision">Employee placed on 60-day Performance Improvement Plan effective April 1. Escalation trail: verbal counseling February 20 (counseling note on file — Tab A); written warning March 14 addressing continued deadline failures (written warning on file, acknowledged March 15 — Tab B). Post-warning performance: employee missed March 22 deliverable deadline (supervisor email March 23 on file — Tab C) and March 29 status update without advance notice (meeting notes March 29 on file — Tab D). HR secondary review completed March 31. PIP benchmarks and review schedule attached — Tab E.</div>
+          <div class="rf-closing">The original record described a complete progressive discipline trail. The February 20 note was referenced but its presence in the file was not confirmed. In partial reconstruction cases, the goal is not to add documentation that doesn't exist — it is to confirm that what is referenced is actually in the file.</div>
+        </div>
+      </div>
+
+      <!-- RF-10 -->
+      <div class="rf-card">
+        <div class="rf-card-header"><span class="rf-code">RF·10</span><span class="rf-title">Witness Account Present, Corroboration Absent</span><span class="rf-partial">— partial reconstruction</span></div>
         <div class="rf-body">
           <div class="rf-field-label">Record as filed</div>
           <div class="rf-record">"Complainant provided a written account of the March 18 incident. Respondent denied the conduct. Investigation found the complaint substantiated based on the complainant's account and available evidence."</div>
           <div class="rf-field-label">Reconstruction questions</div>
-          <ul class="rf-questions">
-            <li>What is "available evidence"? Is it identified in the record?</li>
-            <li>Were there other witnesses? What did they say?</li>
-            <li>On what basis was the complainant's account credited over the respondent's denial?</li>
-          </ul>
+          <ul class="rf-questions"><li>What is "available evidence"? Is it identified in the record?</li><li>Were there other witnesses? If so, what did they say?</li><li>The respondent's denial is acknowledged — on what basis was the complainant's account credited over it?</li><li>Is there any documentary evidence that corroborates either account?</li></ul>
           <div class="rf-field-label">Disposition</div>
-          <div class="rf-disposition">REVIEW REQUIRED. Complainant's written account is present and identified. Respondent denial acknowledged. "Available evidence" not identified. Credibility basis not stated. Return for identification of the evidence reviewed and the basis for crediting the complainant's account.</div>
+          <div class="rf-disp review">REVIEW REQUIRED. Complainant's written account is present and identified. Respondent denial acknowledged. "Available evidence" not identified. Credibility basis not stated. Return for identification of the evidence reviewed and the basis for crediting the complainant's account.</div>
           <div class="rf-field-label">Supported revision</div>
-          <div class="rf-revision">Complainant provided written account of March 18 incident, dated March 18 — on file. Respondent denied the conduct during April 5 interview; interview notes on file. One colleague corroborated complainant's account of the interaction. No documentary evidence directly corroborating either account identified. Credibility determination: complainant's contemporaneous written account, prepared the same day, given greater weight than respondent's denial provided two weeks later without supporting documentation. Conflict noted and preserved.</div>
+          <div class="rf-revision">Complainant provided written account of March 18 incident, dated March 18 — on file. Respondent denied the conduct during April 5 interview; interview notes on file. Two colleagues present on March 18 were interviewed; neither directly observed the specific exchange described in the complaint, though one noted the interaction appeared tense. No documentary evidence directly corroborating either account identified. Credibility determination: complainant's contemporaneous written account, prepared the same day, given greater weight than respondent's denial provided two weeks later without supporting documentation. Conflict noted and preserved. Finding limited to what the available evidence supports.</div>
           <div class="rf-closing">This is a partial reconstruction scenario: the evidence exists but the reasoning is not visible in the original record. The revision does not add evidence. It makes the existing evidence and the reasoning from that evidence visible.</div>
         </div>
       </div>
@@ -940,75 +700,156 @@ section[id] { scroll-margin-top: 56px; }
       <div class="section-label">Later Review</div>
       <h1 class="section-h1">Later Reviewer Conditions</h1>
       <p>These conditions describe the circumstances under which organizational records are most commonly reviewed outside their original context. They are not edge cases. They are routine features of HR, compliance, investigation, and administrative review environments.</p>
-
       <div class="from-practice">
         <div class="from-practice-label">From practice</div>
         <p>Reviewers regularly inherit records written by people who are no longer with the organization, for decisions made months or years earlier, in contexts that no longer exist. The file is what they have.</p>
       </div>
-
       <hr>
-
       <div class="lc-item">
-        <div class="lc-header">
-          <span class="lc-code">LC·01</span>
-          <span class="lc-title">Original Reviewer Unavailable</span>
-        </div>
-        <p>The most common later-review condition. Personnel change, department reorganization, and ordinary turnover mean that the person who drafted or reviewed a record is frequently unavailable when the record is examined later. The file must stand without them.</p>
+        <div class="lc-header"><span class="lc-code">LC·01</span><span class="lc-title">Original Reviewer Unavailable</span></div>
+        <p>The most common later-review condition. Personnel change, department reorganization, and ordinary turnover mean that the person who drafted or reviewed a record is frequently unavailable when the record is examined later. The file must stand without them. This condition affects all record types but is most consequential for investigation records and termination documentation.</p>
         <div class="lc-implication"><strong>Review implication</strong>Records that depend on the drafter's recollection to supply context that is not in the file do not survive this condition. Records with specific dates, referenced policies, and identified conduct tend to hold.</div>
       </div>
-
       <div class="lc-item">
-        <div class="lc-header">
-          <span class="lc-code">LC·02</span>
-          <span class="lc-title">Source Attachments Missing or Archived Separately</span>
-        </div>
+        <div class="lc-header"><span class="lc-code">LC·02</span><span class="lc-title">Source Attachments Missing or Archived Separately</span></div>
         <p>Records frequently reference source documents — counseling notes, performance plans, incident reports, correspondence — that are not attached at the time of later review. A reference to a document that is not in the file does not satisfy Observable Support. The reference creates the appearance of support. The absence of the document means the support is not available for later reconstruction.</p>
         <div class="lc-implication"><strong>Review implication</strong>Secondary review confirms that referenced records are actually attached before the record enters the official system. A reference to "counseling note on file" without the note being attached is one of the most common secondary review triggers.</div>
       </div>
-
       <div class="lc-item">
-        <div class="lc-header">
-          <span class="lc-code">LC·03</span>
-          <span class="lc-title">Incomplete Chronology — Timeline Cannot Be Closed</span>
-        </div>
+        <div class="lc-header"><span class="lc-code">LC·03</span><span class="lc-title">Incomplete Chronology — Timeline Cannot Be Closed</span></div>
         <p>Later review frequently reveals that a chronology described in a record cannot be independently verified from the file. Dates are missing. The sequence of events relies on the author's recollection rather than documented anchors. The pattern claim describes a progression that the file does not support.</p>
-        <div class="lc-implication"><strong>Review implication</strong>Most escalation files fail at the timeline level. Conduct is described. Dates are not. Without specific dates, the sequence cannot be established independently.</div>
+        <div class="lc-implication"><strong>Review implication</strong>Most escalation files fail at the timeline level. Conduct is described. Dates are not. Without specific dates, the sequence cannot be established independently. The pattern may be accurate. It is not reconstructable.</div>
       </div>
-
       <div class="lc-item">
-        <div class="lc-header">
-          <span class="lc-code">LC·04</span>
-          <span class="lc-title">Policy Version Unclear</span>
-        </div>
-        <p>Records citing policy must identify the specific policy and section. Where the policy has been revised, the record should reflect the version in effect at the time of the conduct. Later reviewers cannot assume which version applied without a specific citation. This condition is most common in compliance documentation reviewed during regulatory audit, where the applicable standard at a specific point in time is at issue.</p>
+        <div class="lc-header"><span class="lc-code">LC·04</span><span class="lc-title">Policy Version Unclear</span></div>
+        <p>Records citing policy must identify the specific policy and section. Where the policy has been revised, the record should reflect the version in effect at the time of the conduct. Later reviewers cannot assume which version applied without a specific citation. This condition is most common in compliance documentation reviewed during regulatory audit.</p>
         <div class="lc-implication"><strong>Review implication</strong>"Company policy" is not identifiable. "Attendance Policy Section 2.1, acknowledged January 2" is.</div>
       </div>
-
       <div class="lc-item">
-        <div class="lc-header">
-          <span class="lc-code">LC·05</span>
-          <span class="lc-title">Unresolved Conflicting Accounts in the File</span>
-        </div>
+        <div class="lc-header"><span class="lc-code">LC·05</span><span class="lc-title">Unresolved Conflicting Accounts in the File</span></div>
         <p>Where the file contains conflicting accounts and the conflict was not acknowledged or addressed, the later reviewer inherits an unresolved evidentiary problem. Investigation records are most vulnerable to this condition. Summaries that present a unified narrative where the source material contained disputes create a gap that is only visible when the original source notes are examined.</p>
         <div class="lc-implication"><strong>Review implication</strong>Conflicting accounts should be preserved in the record, not resolved through omission. A later reviewer who discovers a conflict the record does not acknowledge will question the reliability of the conclusions that follow from it.</div>
       </div>
-
       <div class="lc-item">
-        <div class="lc-header">
-          <span class="lc-code">LC·07</span>
-          <span class="lc-title">AI-Assisted Content Not Identified as Such</span>
-        </div>
-        <p>Where AI tools contributed to a record and that contribution is not identified, a later reviewer reading the file has no way to distinguish AI-generated characterizations from the drafter's documented observations. Where an AI-assisted record reaches later review and the source notes are unavailable, the characterizations in that record cannot be verified.</p>
+        <div class="lc-header"><span class="lc-code">LC·06</span><span class="lc-title">Record Reviewed in a Different Organizational Context</span></div>
+        <p>Records created in one organizational context are sometimes reviewed in a substantially different one: after a merger, a departmental restructuring, a change in applicable policy, or a shift in the regulatory environment. The reviewer may have no familiarity with the terminology, workflow, or documentation conventions of the original context.</p>
+        <div class="lc-implication"><strong>Review implication</strong>Records that rely on organizational familiarity to supply context do not hold up when read by someone outside that context. The reconstruction standard — a later reviewer with no prior knowledge of the events — anticipates this condition.</div>
+      </div>
+      <div class="lc-item">
+        <div class="lc-header"><span class="lc-code">LC·07</span><span class="lc-title">AI-Assisted Content Not Identified as Such</span></div>
+        <p>Where AI tools contributed to a record and that contribution is not identified, a later reviewer has no way to distinguish AI-generated characterizations from the drafter's documented observations. Where an AI-assisted record reaches later review and the source notes are unavailable, the characterizations in that record cannot be verified.</p>
         <div class="lc-implication"><strong>Review implication</strong>Human attestation before system entry is the control that makes AI-assisted content reviewable later. Without it, the later reviewer has no path from the conclusion to the documented source material.</div>
       </div>
-
       <h2 class="section-h2">Legacy System Coexistence</h2>
-      <p>Organizations implementing pre-finalization review do not typically begin with a clean documentation environment. Existing records in official systems may not contain source-path visibility. Historical records may reference documents that no longer exist or were never attached. Prior documentation practices may not have required the same level of evidentiary traceability now applied to new records.</p>
-      <p>The review standard applies to records entering official systems going forward. Where historical records are referenced in current documentation — as part of an escalation trail, disciplinary history, or prior conduct record — the reviewer notes any reconstruction limitations presented by those records rather than treating the historical record as satisfying current conditions.</p>
-
+      <p>Organizations implementing pre-finalization review do not typically begin with a clean documentation environment. Existing records in official systems may not contain source-path visibility. Historical records may reference documents that no longer exist or were never attached.</p>
+      <p class="text-dim">The review standard applies to records entering official systems going forward. Where historical records are referenced in current documentation — as part of an escalation trail, disciplinary history, or prior conduct record — the reviewer notes any reconstruction limitations presented by those records rather than treating the historical record as satisfying current conditions.</p>
       <div class="op-note">
         <div class="op-note-label">Implementation note</div>
         <p>Review depth in the first months of implementation is typically uneven. Some record types receive full secondary review. Others receive self-review only. That unevenness is normal. The standard does not change by record type or implementation stage.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWER DISAGREEMENT -->
+<section id="disagreement">
+  <div class="section-inner">
+    <div class="container">
+      <div class="section-label">Review Disagreement</div>
+      <h1 class="section-h1">When Reviewers Reach Different Conclusions</h1>
+      <p>Review is not always singular. Elevated-risk records move through more than one reviewer before system entry. Those reviewers do not always reach the same conclusion. The file carries the record of the disagreement, or it doesn't. When it doesn't, the later reviewer has no way to know the disposition was contested.</p>
+      <div class="from-practice">
+        <div class="from-practice-label">From practice</div>
+        <p>Secondary review does not always confirm the primary disposition. The same file read by two reviewers with different thresholds for what constitutes identifiable support will produce two different dispositions. That disagreement is part of the record. Whether it is documented is a separate question.</p>
+      </div>
+
+      <h2 class="section-h2">Disagreement Scenario 01 — HR and Legal Read the Same Termination File Differently</h2>
+      <div class="disagree-block">
+        <div class="disagree-header">Termination Documentation · Disagreement on Escalation Trail Completeness</div>
+        <div class="disagree-body">
+          <div class="disagree-review">
+            <div class="disagree-review-label">Primary Review · AJL · 4/8/26</div>
+            <div class="disagree-note">PIP on file. Check-in notes present for six of seven review dates. Written warning on file. HR secondary review complete. Record supports system entry.</div>
+            <span class="disagree-disp ready">READY</span>
+          </div>
+          <div class="disagree-review">
+            <div class="disagree-review-label">Secondary Review · Legal · 4/11/26</div>
+            <div class="disagree-note">PIP on file and acknowledged. Six check-in notes located; April 2 check-in referenced in termination record but note not present in file as received. Termination record describes continued failure to meet benchmarks through April 2. If the April 2 check-in is the final documented instance, its absence from the file creates a gap in the escalation trail. Recommend confirmation of April 2 note before system entry.</div>
+            <span class="disagree-disp review">REVIEW REQUIRED</span>
+          </div>
+          <div class="disagree-resolution">
+            <div class="disagree-resolution-label">Resolution</div>
+            <p class="text-dim" style="font-size:0.875rem">Record returned to drafter. April 2 check-in note located in HR portal; not included in file package submitted for review. Note attached. Record resubmitted. Secondary disposition on resubmission: READY. — AJL, 4/14/26</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="from-practice">
+        <div class="from-practice-label">From practice</div>
+        <p>HR review and legal review of the same file frequently produce different observations. HR review tends to focus on whether the process was followed. Legal review tends to focus on whether what is in the file can support the conclusion if the file is examined externally. Those are related but not identical questions.</p>
+      </div>
+
+      <h2 class="section-h2">Disagreement Scenario 02 — Investigator and Independent Reviewer Differ on Conclusion Scope</h2>
+      <div class="disagree-block">
+        <div class="disagree-header">Investigation Summary · Disagreement on Finding Scope</div>
+        <div class="disagree-body">
+          <div class="disagree-review">
+            <div class="disagree-review-label">Investigator · 4/9/26</div>
+            <div class="disagree-note">Complainant account on file. Respondent interviewed. One corroborating witness. Finding substantiated. Record complete.</div>
+            <span class="disagree-disp ready">READY</span>
+          </div>
+          <div class="disagree-review">
+            <div class="disagree-review-label">Independent Reviewer · 4/12/26</div>
+            <div class="disagree-note">Complainant account on file and dated. Respondent denial on file. Corroborating witness account on file — witness corroborated that an interaction occurred but did not observe the specific conduct at issue. Finding states the complaint is "substantiated" without qualifying what the corroboration actually shows. A later reviewer examining this file will see that the corroborating witness did not observe the specific conduct. The finding should reflect the limits of the corroboration rather than presenting it as full support. Recommend revision to narrow the stated finding to what the evidence directly supports.</div>
+            <span class="disagree-disp review">REVIEW REQUIRED</span>
+          </div>
+          <div class="disagree-resolution">
+            <div class="disagree-resolution-label">Resolution</div>
+            <p class="text-dim" style="font-size:0.875rem">Investigation summary revised. Finding restated as: "Conduct as described in the complaint is substantiated on the basis of complainant's contemporaneous account. Corroborating witness confirmed an interaction occurred but did not observe the specific conduct. Respondent denial is noted and not independently supported." Independent reviewer disposition on revision: READY. — 4/16/26</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-dim" style="font-size:0.9rem">Both reads were reasonable. The secondary read was more conservative. The file is stronger for it.</p>
+
+      <h2 class="section-h2">Deferred Resolution</h2>
+      <p>Not every gap identified during review is resolved before system entry. Some records proceed with a documented unresolved condition — an attachment pending retrieval, a timeline element awaiting clarification, a source verification not yet complete. The deferred disposition is neither STOP nor READY. It is a third state that real review systems occupy regularly.</p>
+      <p class="text-dim" style="font-size:0.95rem">The difference between a deferred disposition and an undocumented gap is that the deferred condition is in the file.</p>
+
+      <div class="rf-card" style="margin-top:2rem">
+        <div class="rf-card-header"><span class="rf-code">Deferred · AJL · 2/28/26</span><span class="rf-title">Attachment Pending — Proceeding to System Entry with Gap Documented</span></div>
+        <div class="rf-body">
+          <div class="rf-field-label">Gap documented</div>
+          <div class="rf-disp deferred">DEFERRED — Proceeding with documented gap. February 4 counseling note referenced in record. Not present in file as received. Drafter contacted 2/27/26. Note reportedly located in prior HR system. Retrieval in progress.</div>
+          <div class="rf-field-label">Rationale for proceeding</div>
+          <div class="rf-revision">Record is a routine counseling record with moderate documentation risk. The gap is a missing attachment, not an absence of underlying support. The February 4 counseling session is corroborated by a subsequent email reference in the file dated February 5. Proceeding to system entry with gap documented. Record flagged for attachment confirmation.</div>
+          <div class="rf-field-label">Follow-up required</div>
+          <div class="rf-revision">Confirm February 4 counseling note retrieved and attached within ten business days. If note cannot be located, drafter to provide a contemporaneous substitute or note the gap explicitly in the record. AJL to confirm resolution by 3/14/26.</div>
+        </div>
+      </div>
+
+      <div class="from-practice">
+        <div class="from-practice-label">From practice</div>
+        <p>Deferred conditions that were not resolved before the record was needed in a proceeding are among the most difficult reconstruction problems. The gap was documented. The resolution was not. The file shows the plan. Not whether it was executed.</p>
+      </div>
+
+      <h2 class="section-h2">Reviewer Fatigue Signals</h2>
+      <p>The following describes what abbreviated review looks like in the record it produces. None of these scenarios name the cause. The review record shows a completed checklist, a disposition, and a note. What the later observation shows is what the review missed.</p>
+      <div class="reviewer-note" style="margin-top:1.5rem">
+        <div class="reviewer-note-label">Fatigue Signal · High-Volume Review Period</div>
+        <p>Secondary HR reviewer processed seventeen records over a two-day period during end-of-quarter performance cycle. Checklist items marked: evaluative language — reviewed. Timeline anchors — reviewed. Policy references — reviewed. Disposition: READY. — AJL, 3/31/26</p>
+      </div>
+      <div class="later-obs">
+        <div class="later-obs-label">Later observation</div>
+        <p>Record surfaced six months later during internal audit sampling. Three of five evaluative conclusions lacked specific behavioral anchors. Timeline between January and March described in general terms without dated instances. The checklist was marked complete on the day seventeen records were reviewed. The file does not show what the review consisted of.</p>
+      </div>
+      <div class="reviewer-note">
+        <div class="reviewer-note-label">Fatigue Signal · Attestation as Formality</div>
+        <p>AI-assisted performance summary routed to HR reviewer for attestation. Attestation block signed: "I have reviewed this AI-assisted draft against my original notes and source records." Signed: MR. Date: 4/22/26.</p>
+      </div>
+      <div class="later-obs">
+        <div class="later-obs-label">Later observation</div>
+        <p>Source notes were not provided to the attesting reviewer at the time of attestation. The reviewer attested based on familiarity with the employee rather than review of the specific source records referenced in the summary. The attestation block was signed. The review it represented was not conducted.</p>
       </div>
     </div>
   </div>
@@ -1021,107 +862,222 @@ section[id] { scroll-margin-top: 56px; }
       <div class="section-label">Institutional Conditions</div>
       <h1 class="section-h1">How Records Age</h1>
       <p>The following describes conditions that arise not from individual documentation failure, but from the way institutions operate over time — layering new processes on unresolved old ones, losing interpretive continuity through personnel change, and accumulating practices whose origins are no longer recoverable.</p>
-      <p style="color:var(--text-dim);font-size:0.9rem;">This section is more developed in some areas than others. Additions will appear as implementation experience accumulates.</p>
-
+      <p class="text-dim" style="font-size:0.9rem">This section is more developed in some areas than others. Additions will appear as implementation experience accumulates.</p>
       <div class="from-practice">
         <div class="from-practice-label">From practice</div>
         <p>Standards evolve. Records do not. A later reviewer reading an older record is always reading it against a standard that may have changed since the record was created. That gap does not resolve itself.</p>
       </div>
 
-      <!-- Resolution Drift -->
       <h2 class="section-h2">Resolution Drift</h2>
-      <p>Resolution drift describes deferred conditions that aged into accepted file status without being resolved. The follow-up was assigned. The condition was documented. The file proceeded. At some point between the deferred disposition and the later review, the open condition stopped being tracked and became part of the background of the file.</p>
-      <p style="color:var(--text-dim);">The gap didn't grow. It just never closed. The later reviewer finds the deferred notation and looks for the resolution. There isn't one.</p>
+      <p>Resolution drift describes deferred conditions that aged into accepted file status without being resolved. The gap didn't grow. It just never closed.</p>
+      <div class="from-practice"><div class="from-practice-label">From practice</div><p>The gap was documented. The resolution was not. Those are not the same condition, though the file may make them look identical by the time someone reads it.</p></div>
+      <div class="drift-obs"><div class="drift-obs-label">Implementation observation</div><p>Most deferred conditions that are not resolved within thirty days of the initial entry are not resolved at all. The follow-up ages out of active tracking before it is completed.</p></div>
 
-      <div class="from-practice">
-        <div class="from-practice-label">From practice</div>
-        <p>The gap was documented. The resolution was not. Those are not the same condition, though the file may make them look identical by the time someone reads it.</p>
-      </div>
-
-      <div class="drift-obs">
-        <div class="drift-obs-label">Implementation observation</div>
-        <p>Deferred conditions closed by follow-up confirmation are only as reliable as the confirmation process. Where the confirming reviewer does not verify that the document provided matches the document requested, the deferred condition may be formally closed while remaining substantively open.</p>
-      </div>
-
-      <!-- Operational Amnesia -->
-      <h2 class="section-h2">Operational Amnesia</h2>
-      <p>Operational amnesia describes the condition in which an organization rediscovers a problem it previously identified, documented, and addressed. The corrective action was genuine. The documentation of the corrective action exists somewhere in the institutional record. Nobody currently responsible for the function knows about the prior finding or the prior response.</p>
-      <p style="color:var(--text-dim);">The finding is not new. The organization's awareness of it is.</p>
-
-      <div class="drift-obs">
-        <div class="drift-obs-label">Implementation observation</div>
-        <p>Corrective actions that are not documented in a way that survives personnel change are effectively temporary. The fix operates as long as the people who know why it exists remain. When they leave, the institutional knowledge that sustained the fix leaves with them.</p>
-      </div>
-
-      <!-- Institutional Workarounds -->
-      <h2 class="section-h2">Institutional Workarounds</h2>
-      <p>Institutional workarounds are informal operational practices that develop when the formal process is too slow, too unclear, too burdensome, or too disconnected from operational reality to be followed as written under actual workload conditions. They are not evasions. They are adaptations.</p>
-      <p style="color:var(--text-dim);">The reconstruction problem they create is not that the outcome is wrong. It is that the record reflects the formal process, not the informal one. A later reviewer reading the record cannot see that a different process actually governed.</p>
-
-      <div class="from-practice">
-        <div class="from-practice-label">From practice</div>
-        <p>The record said secondary review was completed. Secondary review had been completed — informally, by phone, two days before the formal submission. The formal submission went through as a matter of record. The review that mattered had already happened. Its informal stage is not visible.</p>
-      </div>
-
-      <!-- Procedural Fossilization -->
-      <h2 class="section-h2">Procedural Fossilization</h2>
-      <p>Procedural fossilization describes the condition in which a review step, form field, notation system, or process artifact continues to exist and be used after the process that required it no longer exists. The artifact is maintained by organizational inertia rather than by operational purpose.</p>
-
+      <h2 class="section-h2">Conflicting Review Histories</h2>
+      <p>Conflicting review histories describe files that received different dispositions from different reviewers at different points in time, on the same substantive question. The file contains both dispositions. There is no record of how the conflict between them was resolved, or whether it was recognized as a conflict at the time.</p>
+      <div class="from-practice"><div class="from-practice-label">From practice</div><p>A file with two contradictory review dispositions does not present a problem until someone reads both of them. Until then it presents as a reviewed file.</p></div>
       <div class="ic-card">
-        <div class="ic-card-header">Example · ERP Code Field</div>
+        <div class="ic-card-header">Example · HR Approval, Audit Reopen</div>
         <div class="ic-card-body">
-          <div class="ic-field">
-            <div class="ic-field-label">Artifact</div>
-            <p class="primary">Performance evaluation forms include a field: "ERP Code." The field accepts a four-digit numeric entry. Approximately 60% of submitted evaluations include an ERP code. 40% leave it blank.</p>
-          </div>
-          <div class="ic-field">
-            <div class="ic-field-label">Known origin</div>
-            <p>The organization used an enterprise resource planning system until 2021. The ERP system was decommissioned and replaced. The ERP code field was not removed from the evaluation form during the transition.</p>
-          </div>
-          <div class="ic-field">
-            <div class="ic-field-label">Effect on reconstruction</div>
-            <p>A later reviewer examining a performance evaluation with an ERP code entered cannot determine whether the code refers to anything currently accessible. The ERP system has been decommissioned. No lookup for prior ERP codes is available.</p>
-          </div>
+          <div class="ic-field"><div class="ic-field-label">April 8 · HR Secondary Review</div><p class="primary">Secondary review complete. PIP on file and acknowledged. Check-in notes present. Escalation language consistent with documented prior counseling. READY. System entry approved.</p></div>
+          <div class="ic-field"><div class="ic-field-label">October 14 · Audit Sampling</div><p>PIP on file. Three check-in notes present for six-week review period. Escalation to formal PIP references "prior documented counseling." One verbal counseling note on file dated February 20. No written counseling note identified. PIP issued March 15. Gap between February 20 verbal counseling and March 15 PIP: no documented intermediate step. Flagged.</p></div>
+          <div class="ic-field"><div class="ic-field-label">Condition</div><p>The file now contains an approval and a finding. Neither references the other. A later reviewer reading both has no guidance on which prevails or whether the gap was subsequently addressed.</p></div>
         </div>
       </div>
 
-      <!-- Legacy Vocabulary -->
-      <h2 class="section-h2">Legacy Vocabulary Persistence</h2>
-      <p>Legacy vocabulary persistence describes the condition in which terms from prior frameworks, policies, or systems continue to appear in organizational records after the frameworks that defined them have been retired.</p>
+      <h2 class="section-h2">Retention-Based Reconstruction Loss</h2>
+      <p>Retention-based reconstruction loss describes records that were destroyed or made inaccessible under applicable retention schedules, leaving a gap in the reconstruction chain of a file that continues to reference them. The destruction was correct. The reconstruction problem is real regardless.</p>
+      <div class="from-practice"><div class="from-practice-label">From practice</div><p>The record said the document was on file. It had been, when the record was written. By the time the record was needed, the document was gone. The record did not know that.</p></div>
+      <div class="ic-card">
+        <div class="ic-card-header">Example · Counseling Notes Destroyed, Termination Record Intact</div>
+        <div class="ic-card-body">
+          <div class="ic-field"><div class="ic-field-label">Condition</div><p class="primary">A termination record references three counseling notes as part of the escalation trail. The termination record is retained per the seven-year retention schedule. The counseling notes are retained per the two-year retention schedule. The termination is reviewed four years after the separation.</p></div>
+          <div class="ic-field"><div class="ic-field-label">Reconstruction gap</div><p>All three counseling notes referenced in the termination record were destroyed per retention schedule before the review date. The escalation trail described in the termination record cannot be independently verified from available documents.</p></div>
+          <div class="ic-field"><div class="ic-field-label">Implementation note</div><p>Where a termination record references supporting documentation with a shorter retention period, the reviewer should note whether the referenced documents are still available at the time of review.</p></div>
+        </div>
+      </div>
 
+      <h2 class="section-h2">Policy Drift</h2>
+      <p>Policy drift describes the reconstruction problem that arises when a record cites a policy that has since been revised, and the record does not specify the version that applied at the time of the conduct. The gap is invisible when the record is created. It becomes visible when the policy is revised and the later reviewer looks for the version the record relied on.</p>
+      <div class="from-practice"><div class="from-practice-label">From practice</div><p>The policy the record cited had been revised twice by the time the record was reviewed. The current policy said something different. The record did not specify which version applied.</p></div>
+      <div class="op-note"><div class="op-note-label">Technical clarification</div><p>Policy version specificity does not require a formal version number in every record. It requires that the citation be specific enough for a later reviewer to identify the standard applied without going outside the file. An effective date — "Attendance Policy, effective August 2024, Section 3.2" — satisfies this condition where a version number is not available.</p></div>
+
+      <h2 class="section-h2">Operational Amnesia</h2>
+      <p>Operational amnesia describes the condition in which an organization rediscovers a problem it previously identified, documented, and addressed. The corrective action was genuine. The documentation of the corrective action exists somewhere in the institutional record. Nobody currently responsible for the function knows about the prior finding or the prior response.</p>
+      <p class="text-dim">The finding is not new. The organization's awareness of it is.</p>
+      <div class="drift-obs"><div class="drift-obs-label">Implementation observation</div><p>Corrective actions that are not documented in a way that survives personnel change are effectively temporary. The fix operates as long as the people who know why it exists remain. When they leave, the institutional knowledge that sustained the fix leaves with them.</p></div>
+      <div class="from-practice"><div class="from-practice-label">From practice</div><p>The most durable corrective actions are the ones embedded in process structures that do not depend on individual memory to sustain them. Most corrective actions are not structured that way.</p></div>
+
+      <h2 class="section-h2">Remediation Saturation</h2>
+      <p>Remediation saturation describes the condition in which an organization has received, acknowledged, and responded to the same finding repeatedly, across multiple audit cycles, without the underlying documentation practice changing. The corrective actions are genuine. The gap persists. The organization is remediating at a level that does not reach the cause.</p>
+      <div class="rem-obs"><div class="rem-obs-label">Remediation observation</div><p>A finding that recurs across four audit cycles has become a normalized feature of the department's documentation record. At some point the question is not whether the finding will appear in the next cycle but whether it will be treated as a finding or as a baseline condition.</p></div>
+      <div class="from-practice"><div class="from-practice-label">From practice</div><p>Remediation saturation is most common where the corrective action is easier to produce than the change it is supposed to create. A guidance document is faster to write than a review step is to sustain.</p></div>
+
+      <h2 class="section-h2">Reinterpretation Drift</h2>
+      <p>Reinterpretation drift describes what happens when a later reviewer reads an older record using current standards, expectations, or terminology that did not exist when the record was created. The reviewer is not misreading the record. They are reading it accurately through a lens the record was not written for.</p>
+      <div class="later-obs"><div class="later-obs-label">Later observation</div><p>A 2021 record read against 2026 standards will often appear deficient. That appearance is not automatically an indication that the record was improperly created. It may indicate that standards evolved after the record was filed.</p></div>
+      <div class="from-practice"><div class="from-practice-label">From practice</div><p>Standards evolve. Records do not. A later reviewer reading an older record is always reading it against a standard that may have changed since the record was created. That gap does not resolve itself. It requires the reviewer to identify which standard applied when.</p></div>
+
+      <h2 class="section-h2">Metric Drift</h2>
+      <p>Metric drift describes the condition in which the measurement used to assess documentation quality changes over time in ways that make earlier and later measurements incomparable. The scores from different periods reflect different things.</p>
+      <div class="metric-block">
+        <div class="metric-period">2023 · Full year</div>
+        <div class="metric-row"><div class="metric-key">Score</div><div class="metric-val">78% passing secondary review without return on first submission</div></div>
+        <div class="metric-row"><div class="metric-key">Scope</div><div class="metric-val">All elevated-risk record types</div></div>
+        <div class="metric-row"><div class="metric-key">Comparable to prior</div><div class="metric-val">Baseline. No prior period.</div></div>
+      </div>
+      <div class="metric-block">
+        <div class="metric-period">2024 · Full year</div>
+        <div class="metric-row"><div class="metric-key">Score</div><div class="metric-val">84% passing</div></div>
+        <div class="metric-row"><div class="metric-key">Scope</div><div class="metric-val">Same record types. Termination records weighted 2x beginning Q3 2024.</div></div>
+        <div class="metric-row"><div class="metric-key">Comparable to prior</div><div class="metric-val warn">No — partial-year weighting change makes 2024 not directly comparable to 2023.</div></div>
+      </div>
+      <div class="metric-block">
+        <div class="metric-period">2025 · Full year</div>
+        <div class="metric-row"><div class="metric-key">Score</div><div class="metric-val">91% passing</div></div>
+        <div class="metric-row"><div class="metric-key">Scope</div><div class="metric-val">Counseling notes excluded from secondary review scope beginning Q1 2025 due to volume.</div></div>
+        <div class="metric-row"><div class="metric-key">Comparable to prior</div><div class="metric-val warn">No — exclusion of counseling notes removes the highest-volume, highest-return-rate category from the calculation.</div></div>
+      </div>
+      <div class="from-practice"><div class="from-practice-label">From practice</div><p>The score went up. Nobody was certain whether documentation had improved or whether the measurement had narrowed to the records most likely to score well.</p></div>
+
+      <h2 class="section-h2">Institutional Contradiction Accumulation</h2>
+      <p>Institutional contradiction accumulation describes the condition in which an organization's current policies, templates, review structures, and audit standards contain provisions that are inconsistent with each other — not because anyone decided to introduce the inconsistency, but because each element was updated independently, without an audit of what it was being layered on top of.</p>
+      <p class="text-dim">The contradiction is not visible in any single document. It becomes visible when a later reviewer tries to apply two documents to the same record and finds that they require different things.</p>
+      <div class="ic-card">
+        <div class="ic-card-header">Example · Policy and Template Divergence</div>
+        <div class="ic-card-body">
+          <div class="ic-field"><div class="ic-field-label">2024 Documentation Guidance Policy · Section 4.2</div><p class="primary">Disciplinary records must identify the specific policy section at issue and the date the employee acknowledged that policy. Both elements are required before the record enters the official system.</p></div>
+          <div class="ic-field"><div class="ic-field-label">Counseling Note Template · Revised 2022</div><p>Fields: Date / Employee name / Supervisor name / Nature of conduct / Policy reference / Supervisor signature / Employee signature. No field for acknowledgment date. Template instruction: "Complete all fields before submission."</p></div>
+          <div class="ic-field"><div class="ic-field-label">Reconstruction gap</div><p>A supervisor who follows the template instruction exactly produces a non-compliant record. The template does not tell them this. Both are current. Neither references the other.</p></div>
+        </div>
+      </div>
+
+      <h2 class="section-h2">Procedural Fossilization</h2>
+      <p>Procedural fossilization describes the condition in which a review step, form field, notation system, or process artifact continues to exist and be used after the process that required it no longer exists. The artifact is maintained by organizational inertia rather than operational purpose.</p>
+      <div class="from-practice"><div class="from-practice-label">From practice</div><p>The field had been in the form for longer than anyone in the department had worked there. Nobody knew what it was for. Everyone filled it in.</p></div>
+      <div class="ic-card">
+        <div class="ic-card-header">Example · ERP Code Field Surviving Decommissioned System</div>
+        <div class="ic-card-body">
+          <div class="ic-field"><div class="ic-field-label">Artifact</div><p class="primary">Performance evaluation forms include a field: "ERP Code." Approximately 60% of submitted evaluations include a code. 40% leave it blank.</p></div>
+          <div class="ic-field"><div class="ic-field-label">Origin</div><p>The organization used an enterprise resource planning system until 2021. The ERP system was decommissioned and replaced. The ERP code field was not removed from the evaluation form during the transition.</p></div>
+          <div class="ic-field"><div class="ic-field-label">Effect on reconstruction</div><p>A later reviewer cannot determine whether the code refers to anything currently accessible. The ERP system has been decommissioned. No lookup for prior ERP codes is available. The field reads as informative. It is not.</p></div>
+        </div>
+      </div>
+
+      <h2 class="section-h2">Escalation Inflation</h2>
+      <p>Escalation inflation describes the gradual drift toward more severe language in counseling and disciplinary documentation templates across successive revisions. No single revision intended to raise the threshold for what constituted serious conduct. Each revision borrowed language from the prior template and added emphasis to address a specific criticism or close a specific gap.</p>
+      <div class="ic-card">
+        <div class="ic-card-header">Template Generation History · Attendance Counseling · First Instance</div>
+        <div class="ic-card-body">
+          <div class="ic-field"><div class="ic-field-label">Generation 1 · 2019</div><p class="primary">"Employee was counseled regarding an absence on [date]." — Neutral. Describes an event.</p></div>
+          <div class="ic-field"><div class="ic-field-label">Generation 2 · 2021</div><p>"Employee was counseled regarding an unexcused absence on [date], contrary to department attendance expectations." — Added policy context. "Contrary to" introduces violation framing.</p></div>
+          <div class="ic-field"><div class="ic-field-label">Generation 3 · 2023</div><p>"Employee was counseled regarding an unexcused absence on [date], in violation of the Attendance Policy. Employee was reminded of attendance expectations and the consequences of continued non-compliance." — Significantly more severe. "In violation of" replaces "contrary to." Consequence language introduced.</p></div>
+          <div class="ic-field"><div class="ic-field-label">Generation 4 · 2025</div><p>"Employee was counseled regarding a documented unexcused absence on [date], constituting a violation of Attendance Policy Section 2.1. Employee acknowledged that continued attendance non-compliance may result in progressive disciplinary action up to and including termination." — Standard language for a first-instance counseling note now reads as a formal disciplinary notice with termination consequences stated.</p></div>
+        </div>
+      </div>
+      <div class="fossil-obs"><div class="fossil-obs-label">Structural observation</div><p>The current template is often the record of everything that was ever found missing in earlier versions, without the context of why each addition was made.</p></div>
+
+      <h2 class="section-h2">Legacy Vocabulary Persistence</h2>
+      <p>Legacy vocabulary persistence describes the condition in which terms from prior frameworks, policies, or systems continue to appear in organizational records after the frameworks that defined them have been retired. The vocabulary is in the records. Its original meaning may not be recoverable from any current organizational document.</p>
       <div class="ic-card">
         <div class="ic-card-header">"Coaching Session"</div>
         <div class="ic-card-body">
-          <div class="ic-field">
-            <div class="ic-field-label">Prior meaning (pre-2020 framework)</div>
-            <p class="primary">A defined formal step in the progressive discipline sequence: documented, dated, filed in the HRIS, and referenced in subsequent disciplinary records. Step one of a four-step process.</p>
-          </div>
-          <div class="ic-field">
-            <div class="ic-field-label">Current use</div>
-            <p>Used informally by managers and HR staff to describe any developmental or performance conversation, including conversations that have no formal documentation requirement under the current framework.</p>
-          </div>
-          <div class="ic-field">
-            <div class="ic-field-label">Reconstruction gap</div>
-            <p>A later reviewer cannot determine whether a "coaching session" reference indicates a formal documented step or an informal conversation. Whether it can be used to establish a progressive discipline trail depends on which framework applied when it occurred — a determination the record does not enable.</p>
-          </div>
+          <div class="ic-field"><div class="ic-field-label">Prior meaning (pre-2020 framework)</div><p class="primary">A defined formal step in the progressive discipline sequence: documented, dated, filed in the HRIS, and referenced in subsequent disciplinary records. Step one of a four-step process.</p></div>
+          <div class="ic-field"><div class="ic-field-label">Current use</div><p>Used informally to describe any developmental or performance conversation, including conversations that have no formal documentation requirement under the current framework.</p></div>
+          <div class="ic-field"><div class="ic-field-label">Reconstruction gap</div><p>A later reviewer cannot determine whether a "coaching session" reference indicates a formal documented step or an informal conversation. Whether it can be used to establish a progressive discipline trail depends on which framework applied when it occurred — a determination the record does not enable.</p></div>
+        </div>
+      </div>
+      <div class="from-practice"><div class="from-practice-label">From practice</div><p>The term had a specific meaning when it was introduced. By the time it appeared in the record being reviewed, that meaning was no longer current. The record read as precise. The precision referred to a framework that no longer existed.</p></div>
+
+      <h2 class="section-h2">Archive Fragmentation</h2>
+      <p>Archive fragmentation describes the condition in which documents that are relevant to the interpretation or reconstruction of current records are distributed across repositories that reviewers do not routinely access, do not know to access, or cannot access without a separate request process. The documents exist. They are not hidden. They are simply not on the standard review path.</p>
+      <div class="from-practice"><div class="from-practice-label">From practice</div><p>The answer to the interpretive question was in a memo that had been in the compliance archive for three years. Nobody reading the records produced under that interpretation had ever seen the memo. The question kept getting re-asked.</p></div>
+      <div class="later-obs"><div class="later-obs-label">Later observation</div><p>The archive contains the institutional memory that would make ambiguous records interpretable. The archive is not accessible through the standard review path. The records do not reference the archive. The institutional memory and the records it would clarify exist in parallel, without connection.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SHADOW BEHAVIOR -->
+<section id="shadow">
+  <div class="section-inner">
+    <div class="container">
+      <div class="section-label">Shadow Behavior</div>
+      <h1 class="section-h1">Informal Institutional Structures</h1>
+      <p>The following describes what institutions do informally, in parallel with their formal structures, to keep operational reality functioning despite those structures. None of these conditions involve anyone doing something wrong. They are adaptations. The problem they create is documentary: the record shows the formal process. The informal process that actually governed the outcome is not in the file.</p>
+
+      <div class="from-practice"><div class="from-practice-label">From practice</div><p>The record said secondary review was completed. Secondary review had been completed — informally, by phone, two days before the formal submission. The review was genuine. Its informal stage is not visible.</p></div>
+
+      <h2 class="section-h2">Institutional Workarounds</h2>
+      <p>Institutional workarounds are informal operational practices that develop when the formal process is too slow, too unclear, too burdensome, or too disconnected from operational reality to be followed as written under actual workload conditions.</p>
+
+      <div class="trans-block">
+        <div class="trans-header">Workaround · Informal Pre-Clearance Before Formal Submission</div>
+        <div class="trans-body">
+          <div class="trans-field"><div class="trans-field-label">Formal process</div><p class="edge">Elevated-risk records submitted for HR secondary review. HR secondary review completed within 3–5 business days. Record enters system after secondary review is complete and documented.</p></div>
+          <div class="trans-field"><div class="trans-field-label">Operational workaround</div><p class="local">HR business partners in two departments accept informal draft review by email or phone before the formal submission. The formal submission is then made with the expectation that it will pass quickly because the substantive review has already occurred.</p></div>
+          <div class="trans-field"><div class="trans-field-label">What the record shows</div><p class="edge">Formal secondary review is shown as completed within 24–48 hours of submission. The informal pre-review that made this possible is not documented anywhere in the record.</p></div>
+          <div class="trans-field"><div class="trans-field-label">Reconstruction problem</div><p class="obs">A later reviewer reading the record sees a rapid secondary review completion with no indication of how the review was conducted. The review was genuine. A reviewer evaluating whether the 24-hour turnaround suggests a cursory check cannot make that assessment from the record.</p></div>
         </div>
       </div>
 
-      <!-- Archive Fragmentation -->
-      <h2 class="section-h2">Archive Fragmentation</h2>
-      <p>Archive fragmentation describes the condition in which documents that are relevant to the interpretation or reconstruction of current records are distributed across repositories that secondary reviewers and later reviewers do not routinely access, do not know to access, or cannot access without a separate request process.</p>
-      <p style="color:var(--text-dim);">The documents exist. They are retained. They are not hidden. They are simply in a location that is not part of the standard review path. The record does not tell the later reviewer where to look.</p>
-
-      <div class="from-practice">
-        <div class="from-practice-label">From practice</div>
-        <p>The answer to the interpretive question was in a memo that had been in the compliance archive for three years. Nobody reading the records produced under that interpretation had ever seen the memo. The question kept getting re-asked.</p>
+      <div class="trans-block">
+        <div class="trans-header">Workaround · Parallel Tracking Outside the Official System</div>
+        <div class="trans-body">
+          <div class="trans-field"><div class="trans-field-label">Formal process</div><p class="edge">Escalation status tracked through the HRIS. HR staff update the HRIS record as cases progress. HRIS is the system of record for case status.</p></div>
+          <div class="trans-field"><div class="trans-field-label">Operational workaround</div><p class="local">The compliance function maintains a shared spreadsheet tracking active escalation cases, review status, and pending follow-up items. The spreadsheet is updated in real time. It is not an official record. It is not archived. It is overwritten as cases close.</p></div>
+          <div class="trans-field"><div class="trans-field-label">What the record shows</div><p class="edge">HRIS records show case status as of the last formal update. The intermediate statuses — holds, escalation discussions, review returns — are not in the HRIS.</p></div>
+          <div class="trans-field"><div class="trans-field-label">Reconstruction problem</div><p class="obs">The operational history — the actual sequence of decisions and holds — was in a document that no longer exists.</p></div>
+        </div>
       </div>
 
-      <div class="later-obs">
-        <div class="later-obs-label">Later observation</div>
-        <p>The archive contains the institutional memory that would make ambiguous records interpretable. The archive is not accessible through the standard review path. The records do not reference the archive. The institutional memory and the records it would clarify exist in parallel, without connection.</p>
+      <h2 class="section-h2">Compliance Translation</h2>
+      <p>Compliance translation describes the process by which central policy language is converted into local operational practice by the people responsible for implementing it. The translation is functionally equivalent to the central policy most of the time. At the edges — where the translation introduced a subtle narrowing, an implicit exception, or a reframing the original policy didn't intend — the local version and the central version diverge.</p>
+      <div class="from-practice"><div class="from-practice-label">From practice</div><p>The department knew what the policy meant. What they did operationally reflected what they understood it to mean. Those were not always the same thing.</p></div>
+
+      <div class="trans-block">
+        <div class="trans-header">Translation · Accommodation Request Documentation Timeline</div>
+        <div class="trans-body">
+          <div class="trans-field"><div class="trans-field-label">Central policy language</div><p class="central">"All accommodation requests must be documented within five business days of receipt."</p></div>
+          <div class="trans-field"><div class="trans-field-label">Local operational translation</div><p class="local">"Document the accommodation request before the next weekly check-in meeting."</p></div>
+          <div class="trans-field"><div class="trans-field-label">Edge case the translation creates</div><p class="edge">The weekly check-in meeting is typically within five business days of the accommodation request. When it falls on day six or seven, documentation produced at the check-in is outside the five-day window under the central policy and within the local practice.</p></div>
+          <div class="trans-field"><div class="trans-field-label">Reconstruction problem</div><p class="obs">The local practice is not documented anywhere. A later reviewer cannot determine from the record whether a given documentation date reflects the central policy, the local practice, or neither.</p></div>
+        </div>
       </div>
 
+      <div class="trans-block">
+        <div class="trans-header">Translation · Pattern Conduct Documentation</div>
+        <div class="trans-body">
+          <div class="trans-field"><div class="trans-field-label">Central policy language</div><p class="central">"Documentation of pattern conduct must include specific dates for each instance of the described conduct."</p></div>
+          <div class="trans-field"><div class="trans-field-label">Local operational translation</div><p class="local">"Make sure you have at least two dates in there before you write up a pattern."</p></div>
+          <div class="trans-field"><div class="trans-field-label">Edge case the translation creates</div><p class="edge">Records sometimes contain two dates representing the first and most recent instance of a pattern without documenting the intermediate instances that established the frequency of the conduct.</p></div>
+          <div class="trans-field"><div class="trans-field-label">Reconstruction problem</div><p class="obs">Records produced under the local translation contain at least two dates and may appear to satisfy the central policy's specificity requirement. The record states a pattern. The documentation supports two endpoints.</p></div>
+        </div>
+      </div>
+
+      <h2 class="section-h2">Process Exception Normalization</h2>
+      <p>Process exception normalization describes the condition in which a temporary exception to standard process — introduced to address a specific operational condition — persists after the condition that justified it ends, and is eventually treated as standard practice by the people using it.</p>
+      <div class="from-practice"><div class="from-practice-label">From practice</div><p>The expedited process had been introduced as a temporary measure. By the time anyone thought to retire it, it had been in use for three years and the people using it did not know it was temporary.</p></div>
+      <div class="ic-card">
+        <div class="ic-card-header">Example · Expedited Accommodation Review · Pandemic-Era Exception Not Retired</div>
+        <div class="ic-card-body">
+          <div class="ic-field"><div class="ic-field-label">Origin</div><p class="primary">In 2020, the organization introduced an expedited accommodation review process to handle the volume of remote work accommodation requests. The expedited process allowed verbal HR confirmation in place of written secondary review for routine accommodation requests. Introduced as a temporary measure.</p></div>
+          <div class="ic-field"><div class="ic-field-label">Current state</div><p>The pandemic accommodation volume ended in 2022. The expedited process was not formally retired. By 2023, it was being applied to approximately 30% of accommodation records by reviewers who understood it as a standard accommodation review option rather than a temporary measure.</p></div>
+          <div class="ic-field"><div class="ic-field-label">Reconstruction problem</div><p>A later reviewer examining accommodation records will find some with full written secondary review and others with verbal confirmation notation. The records are compliant with the expedited process as the reviewers understood it. Whether the expedited process should have applied to those records is a question the records cannot answer.</p></div>
+        </div>
+      </div>
+
+      <h2 class="section-h2">Procedural Layering</h2>
+      <p>Procedural layering describes the condition in which new review controls, attestation requirements, and process steps are added to an existing review structure without retiring or reconciling the steps they were intended to improve upon. Organizations rarely replace processes cleanly. They add to them.</p>
+      <div class="ic-card">
+        <div class="ic-card-header">Example · Three-Generation Investigation Review Structure</div>
+        <div class="ic-card-body">
+          <div class="ic-field"><div class="ic-field-label">2018</div><p class="primary">HR review required before investigation records are filed. Purpose: confirm policy citations and documentation completeness.</p></div>
+          <div class="ic-field"><div class="ic-field-label">2021</div><p>Independent review introduced for investigation records involving formal disciplinary action. Purpose: ensure investigator conclusions are not reviewed solely within the drafting chain.</p></div>
+          <div class="ic-field"><div class="ic-field-label">2024</div><p>AI Documentation Review added for any investigation summary where AI tools contributed to drafting. Purpose: source verification and attestation before system entry.</p></div>
+          <div class="ic-field"><div class="ic-field-label">Current condition</div><p>An AI-assisted investigation summary resulting in formal discipline is now subject to all three review requirements. No policy document describes the three-generation structure as a whole or specifies how the reviews relate to each other. Each requirement was introduced independently and references only the gap it was designed to address.</p></div>
+        </div>
+      </div>
+      <div class="fossil-obs"><div class="fossil-obs-label">Structural observation</div><p>The current investigation review structure is the accumulated product of seven years of gap-closing. Each layer addressed a specific problem. None of the layers were designed with knowledge of the layers that would follow.</p></div>
     </div>
   </div>
 </section>
@@ -1133,136 +1089,57 @@ section[id] { scroll-margin-top: 56px; }
       <div class="section-label">Field References</div>
       <h1 class="section-h1">Practitioner Reference Materials</h1>
       <p>Pre-finalization review references, operational guidance, and reviewer aids organized by function. Applied within existing HR, compliance, investigation, and administrative documentation workflows.</p>
-      <p style="color:var(--text-dim);font-size:0.9rem;">Materials are updated as implementation experience accumulates. Version and clarification notices appear below each document when applicable.</p>
+      <p class="text-dim" style="font-size:0.9rem">Materials are updated as implementation experience accumulates. Version and clarification notices appear below each document when applicable.</p>
 
       <h2 class="section-h2">Review Standard</h2>
       <table class="field-ref-table">
-        <thead>
-          <tr>
-            <th>ID</th><th>Document</th><th>Description</th><th>Status</th>
-          </tr>
-        </thead>
+        <thead><tr><th>ID</th><th>Document</th><th>Description</th><th>Status</th></tr></thead>
         <tbody>
-          <tr>
-            <td class="doc-id">—</td>
-            <td class="doc-title">JRS™ Documentation Review Structure <span class="badge badge-free">Free</span></td>
-            <td class="doc-desc">Foundational review structure. Four conditions, reviewer lens, failure-mode catalog. The primary framework document. v1.0 · May 2026<br><br><em style="font-size:0.8rem;color:var(--text-muted);">Clarification notice, May 2026: Observable Support condition clarified to include email timestamps, access logs, and HRIS records as identifiable anchors.</em></td>
-            <td class="doc-status">Active</td>
-          </tr>
-          <tr>
-            <td class="doc-id">KIT-F1</td>
-            <td class="doc-title">Rapid Review Card <span class="badge badge-free">Free</span></td>
-            <td class="doc-desc">One-page reviewer quick reference. Five questions, submission readiness key, and secondary review triggers. Print-ready PDF.</td>
-            <td class="doc-status">Active</td>
-          </tr>
+          <tr><td class="doc-id">—</td><td class="doc-title">JRS™ Documentation Review Structure <span class="badge badge-free">Free</span></td><td class="doc-desc">Foundational review structure. Four conditions, reviewer lens, failure-mode catalog. The primary framework document. v1.0 · May 2026<br><br><em style="color:var(--text-muted);font-size:0.82rem">Clarification notice, May 2026: Observable Support condition clarified to include email timestamps, access logs, and HRIS records as identifiable anchors. No change to the underlying condition.</em></td><td class="doc-status">Active</td></tr>
+          <tr><td class="doc-id">KIT-F1</td><td class="doc-title">Rapid Review Card <span class="badge badge-free">Free</span></td><td class="doc-desc">One-page reviewer quick reference. Five questions, submission readiness key, and secondary review triggers. Print-ready PDF.</td><td class="doc-status">Active</td></tr>
+          <tr><td class="doc-id">—</td><td class="doc-title">JRS™ Reviewer Reference</td><td class="doc-desc">Practitioner-oriented documentation review reference. Reconstruction-focused review principles, failure-mode reference, submission readiness check, and documentation review methodology.</td><td class="doc-status">Active</td></tr>
         </tbody>
       </table>
 
       <h2 class="section-h2">Field Guides</h2>
       <table class="field-ref-table">
-        <thead>
-          <tr><th>ID</th><th>Document</th><th>Description</th><th>Status</th></tr>
-        </thead>
+        <thead><tr><th>ID</th><th>Document</th><th>Description</th><th>Status</th></tr></thead>
         <tbody>
-          <tr>
-            <td class="doc-id">001-INV</td>
-            <td class="doc-title">Investigator Field Guide <span class="badge badge-free">Free</span></td>
-            <td class="doc-desc">Source identification, conflict acknowledgment, and reconstruction review for workplace investigation records. Applied before investigation conclusions are filed. v1.0 · May 2026</td>
-            <td class="doc-status">Active</td>
-          </tr>
-          <tr>
-            <td class="doc-id">—</td>
-            <td class="doc-title">HR Documentation Review Guide</td>
-            <td class="doc-desc">Pre-submission review guidance for HR practitioners. Performance, disciplinary, termination, and accommodation documentation review. Includes secondary review indicators and escalation routing.</td>
-            <td class="doc-status">Active</td>
-          </tr>
-          <tr>
-            <td class="doc-id">—</td>
-            <td class="doc-title">AI-Assisted Documentation Review Guide</td>
-            <td class="doc-desc">Source verification, attestation prompts, and human review confirmation for AI-assisted records before system entry. Covers semantic inflation, conflict obscuring, and attestation requirements.<br><br><em style="font-size:0.8rem;color:var(--text-muted);">Clarification notice, May 2026: Semantic inflation may occur even where AI tools draw on accurate source notes. The issue is intensification of language, not fabrication of events.</em></td>
-            <td class="doc-status">Active</td>
-          </tr>
-          <tr>
-            <td class="doc-id">—</td>
-            <td class="doc-title">Compliance Reviewer Reference</td>
-            <td class="doc-desc">Policy traceability review, audit sampling application, and compliance documentation quality assessment. For compliance reviewers and audit personnel.</td>
-            <td class="doc-status">Active</td>
-          </tr>
+          <tr><td class="doc-id">001-INV</td><td class="doc-title">Investigator Field Guide <span class="badge badge-free">Free</span></td><td class="doc-desc">Source identification, conflict acknowledgment, and reconstruction review for workplace investigation records. Applied before investigation conclusions are filed. v1.0 · May 2026</td><td class="doc-status">Active</td></tr>
+          <tr><td class="doc-id">—</td><td class="doc-title">HR Documentation Review Guide</td><td class="doc-desc">Pre-submission review guidance for HR practitioners. Performance, disciplinary, termination, and accommodation documentation review. Includes secondary review indicators and escalation routing.</td><td class="doc-status">Active</td></tr>
+          <tr><td class="doc-id">—</td><td class="doc-title">AI-Assisted Documentation Review Guide</td><td class="doc-desc">Source verification, attestation prompts, and human review confirmation for AI-assisted records before system entry. Covers semantic inflation, conflict obscuring, and attestation requirements.<br><br><em style="color:var(--text-muted);font-size:0.82rem">Clarification notice, May 2026: Semantic inflation may occur even where AI tools draw on accurate source notes. The issue is intensification of language, not fabrication of events.</em></td><td class="doc-status">Active</td></tr>
+          <tr><td class="doc-id">—</td><td class="doc-title">Compliance Reviewer Reference</td><td class="doc-desc">Policy traceability review, audit sampling application, and compliance documentation quality assessment. For compliance reviewers and audit personnel.</td><td class="doc-status">Active</td></tr>
+          <tr><td class="doc-id">—</td><td class="doc-title">Administrative Review Companion</td><td class="doc-desc">Reconstruction check for accommodation decisions, separation records, and formal administrative action documentation before processing.</td><td class="doc-status">Active</td></tr>
         </tbody>
       </table>
 
       <h2 class="section-h2">Operational Tools</h2>
       <table class="field-ref-table">
-        <thead>
-          <tr><th>ID</th><th>Document</th><th>Description</th><th>Status</th></tr>
-        </thead>
+        <thead><tr><th>ID</th><th>Document</th><th>Description</th><th>Status</th></tr></thead>
         <tbody>
-          <tr>
-            <td class="doc-id">KIT-A1</td>
-            <td class="doc-title">Pre-Finalization Review Worksheet</td>
-            <td class="doc-desc">Four-section checklist: core review, language check, AI-assisted content, submission readiness. Print-ready.</td>
-            <td class="doc-status">Active</td>
-          </tr>
-          <tr>
-            <td class="doc-id">KIT-A2</td>
-            <td class="doc-title">Secondary Review Escalation Form</td>
-            <td class="doc-desc">Trigger checklist, gap documentation, routing disposition, and reviewer attestation block.</td>
-            <td class="doc-status">Active</td>
-          </tr>
-          <tr>
-            <td class="doc-id">KIT-C1</td>
-            <td class="doc-title">AI Verification Checklist</td>
-            <td class="doc-desc">Source identification, characterization review, conflict check, and human confirmation. Applied before AI-assisted content enters official records.</td>
-            <td class="doc-status">Active</td>
-          </tr>
-          <tr>
-            <td class="doc-id">WS-06</td>
-            <td class="doc-title">Investigation Reconstruction Worksheet</td>
-            <td class="doc-desc">Source material identification, reconstruction check, conflicting account preservation, and independent review confirmation.</td>
-            <td class="doc-status">Active</td>
-          </tr>
+          <tr><td class="doc-id">KIT-A1</td><td class="doc-title">Pre-Finalization Review Worksheet</td><td class="doc-desc">Four-section checklist: core review, language check, AI-assisted content, submission readiness. Print-ready.</td><td class="doc-status">Active</td></tr>
+          <tr><td class="doc-id">KIT-A2</td><td class="doc-title">Secondary Review Escalation Form</td><td class="doc-desc">Trigger checklist, gap documentation, routing disposition, and reviewer attestation block.</td><td class="doc-status">Active</td></tr>
+          <tr><td class="doc-id">KIT-C1</td><td class="doc-title">AI Verification Checklist</td><td class="doc-desc">Source identification, characterization review, conflict check, and human confirmation. Applied before AI-assisted content enters official records.</td><td class="doc-status">Active</td></tr>
+          <tr><td class="doc-id">WS-06</td><td class="doc-title">Investigation Reconstruction Worksheet</td><td class="doc-desc">Source material identification, reconstruction check, conflicting account preservation, and independent review confirmation.</td><td class="doc-status">Active</td></tr>
+          <tr><td class="doc-id">KIT-B1</td><td class="doc-title">Reviewer Onboarding Guide</td><td class="doc-desc">Step-by-step onboarding for individual reviewers and HR teams. What the reviewer does, where each tool applies, and how review fits into existing workflow.</td><td class="doc-status">Active</td></tr>
         </tbody>
       </table>
 
       <h2 class="section-h2">Operational Notes</h2>
-
-      <div class="version-entry">
-        <div class="version-tag">Operational Note · May 2026</div>
-        <div class="version-body">The review conditions apply regardless of how a record was drafted. AI-assisted records are evaluated against the same four conditions as manually drafted records. The source of the wording does not change the standard for identifiable support.</div>
-      </div>
-
-      <div class="version-entry">
-        <div class="version-tag">Operational Note · May 2026</div>
-        <div class="version-body">Secondary review is listed as required for termination, accommodation, formal discipline, and investigation records. In practice, what this means operationally depends on staffing, workflow structure, and organizational size. The condition does not change. How it is met varies.</div>
-      </div>
-
-      <div class="version-entry">
-        <div class="version-tag">Field Observation · May 2026</div>
-        <div class="version-body">Records with strong narrative flow are frequently underdocumented. Professional wording can create the appearance of support where little documented evidence exists. Smooth prose and identifiable support are not the same thing.</div>
-      </div>
+      <div class="version-entry"><div class="version-tag">Operational Note · May 2026</div><div class="version-body">The review conditions apply regardless of how a record was drafted. AI-assisted records are evaluated against the same four conditions as manually drafted records. The source of the wording does not change the standard for identifiable support.</div></div>
+      <div class="version-entry"><div class="version-tag">Operational Note · May 2026</div><div class="version-body">Secondary review is listed as required for termination, accommodation, formal discipline, and investigation records. In practice, what this means operationally depends on staffing, workflow structure, and organizational size. The condition does not change. How it is met varies.</div></div>
+      <div class="version-entry"><div class="version-tag">Operational Note · May 2026</div><div class="version-body">Some organizations apply review alongside legacy documentation systems that do not support pre-submission controls. In those environments, review is applied manually at the drafting stage before the record is transferred into the official system. Review depth may vary by workflow maturity and record type. The four conditions do not vary.</div></div>
+      <div class="version-entry"><div class="version-tag">Field Observation · May 2026</div><div class="version-body">Records with strong narrative flow are frequently underdocumented. Professional wording can create the appearance of support where little documented evidence exists. Smooth prose and identifiable support are not the same thing.</div></div>
 
       <h2 class="section-h2">Version Notes</h2>
-
-      <div class="version-entry">
-        <div class="version-tag">v1.0 · May 2026 · Initial Publication</div>
-        <div class="version-body">Four review conditions. Reviewer lens and three diagnostic gates. Failure-mode catalog with eleven patterns. Reviewer question sets by documentation type. Workflow integration models. Implementation maturity levels. Reviewer worksheets 01–06.</div>
-      </div>
-
-      <div class="version-entry">
-        <div class="version-tag">Clarification · May 2026</div>
-        <div class="version-body">AI-Assisted Documentation section: added note that semantic inflation may occur even where AI tools draw on accurate source notes. The issue is intensification of language, not fabrication of events.</div>
-      </div>
-
-      <div class="version-entry">
-        <div class="version-tag">Clarification · May 2026</div>
-        <div class="version-body">Observable Support condition: clarified that email timestamps, access logs, and HRIS records constitute identifiable anchors for purposes of the review. No change to the underlying condition.</div>
-      </div>
-
+      <div class="version-entry"><div class="version-tag">v1.0 · May 2026 · Initial Publication</div><div class="version-body">Four review conditions. Reviewer lens and three diagnostic gates. Failure-mode catalog with eleven patterns. Reviewer question sets by documentation type. Workflow integration models. Implementation maturity levels. Reviewer worksheets 01–06.</div></div>
+      <div class="version-entry"><div class="version-tag">Clarification · May 2026</div><div class="version-body">AI-Assisted Documentation section: added note that semantic inflation may occur even where AI tools draw on accurate source notes. The issue is intensification of language, not fabrication of events.</div></div>
+      <div class="version-entry"><div class="version-tag">Clarification · May 2026</div><div class="version-body">Observable Support condition: clarified that email timestamps, access logs, and HRIS records constitute identifiable anchors for purposes of the review. No change to the underlying condition.</div></div>
+      <div class="version-entry"><div class="version-tag">Implementation Note · May 2026</div><div class="version-body">Reviewer Environments section note: the three environments were developed at different points and for different operational reasons. The depth varies by section. Where a section is thinner, additions will appear in subsequent revisions as implementation experience accumulates.</div></div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div>
@@ -1271,7 +1148,7 @@ section[id] { scroll-margin-top: 56px; }
     </div>
     <div class="footer-text">
       <p>Developed by Phillip Wikes, M.S., drawing from experience in administrative review, investigations, and documentation assessment within regulated environments.</p>
-      <p style="margin-top:0.75rem;">Not legal advice. Does not establish legal sufficiency or replace applicable policy obligations. Organizations should assess jurisdiction-specific requirements with legal counsel.</p>
+      <p style="margin-top:0.75rem">Not legal advice. Does not establish legal sufficiency or replace applicable policy obligations. Organizations should assess jurisdiction-specific requirements with legal counsel.</p>
     </div>
     <div>
       <div class="footer-meta">JRS™ and Justification Review Standard™ are trademarks of Phillip Wikes.<br>© 2026 Phillip Wikes. All rights reserved.</div>
