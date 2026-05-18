@@ -615,14 +615,15 @@ a.gumroad-button.util-link {
 <nav class="primary-nav">
  <div class="primary-nav-inner">
  <button class="nav-item active" onclick="showSection('home')">Standard</button>
- <button class="nav-item" onclick="showSection('tools')">Review Tools</button>
- <button class="nav-item" onclick="showSection('scenarios')">Scenarios</button>
+ <button class="nav-item" onclick="showSection('tools')">Field References</button>
+ <button class="nav-item" onclick="showSection('scenarios')">Review Examples</button>
  <button class="nav-item" onclick="showSection('guidance')">Implementation</button>
  <button class="nav-item" onclick="showSection('roles')">Roles</button>
  <button class="nav-item" onclick="showSection('maturity')">Maturity</button>
- <button class="nav-item" onclick="showSection('ai')">AI Documentation</button>
+ <button class="nav-item" onclick="showSection('ai')">AI-Assisted Review</button>
  <button class="nav-item" onclick="showSection('usecases')">Use Cases</button>
- <button class="nav-item" onclick="showSection('training')">Training</button>
+ <button class="nav-item" onclick="showSection('training')">Reviewer Guidance</button>
+ <button class="nav-item" onclick="showSection('about')">About</button>
  <button class="nav-item" onclick="showSection('library')">Library</button>
  <button class="nav-item kit-item" onclick="showSection('kit')">Operational References &#8599;</button>
  </div>
@@ -998,6 +999,7 @@ a.gumroad-button.util-link {
  <div style="padding:10px 0;border-bottom:1px solid #222;font-size:15px;color:var(--text);">Establish legal sufficiency or eliminate legal risk</div>
  <div style="padding:10px 0;border-bottom:1px solid #222;font-size:15px;color:var(--text);">Replace professional judgment, legal counsel, or HR expertise</div>
  </div>
+ <div class="reviewer-note" style="margin-top:12px;"><div class="reviewer-note-label">Proportional review</div>Review depth may vary according to record sensitivity, escalation status, and workflow complexity. Identifiable support and traceable reasoning remain required before finalization regardless of the depth of review applied.</div>
 </div>
 
 
@@ -1284,6 +1286,16 @@ a.gumroad-button.util-link {
  <p class="body-text">Workflow models, failure-mode examples, and implementation descriptions are illustrative. Adapt to organizational context.</p>
 </div>
 
+<div style="margin-bottom:44px;">
+ <div class="section-head">Implementation Questions</div>
+ <p class="body-text" style="max-width:600px;">Organizations evaluating phased implementation approaches, or with questions about applying the review structure within existing workflows, may request additional operational information.</p>
+ <div style="border:1px solid var(--rule);padding:16px 20px;background:var(--surface);margin-top:12px;">
+  <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:8px;">Scope of discussion</div>
+  <div style="font-size:13.5px;color:var(--muted);line-height:1.75;">Workflow insertion points and reviewer routing. Phased or selective deployment. Higher-risk record categories as starting points. Department-level or record-type-level implementation. Integration with existing HR, compliance, or investigation workflows.</div>
+  <div style="margin-top:12px;font-size:13px;color:var(--muted-soft);font-style:italic;">Requests are reviewed. Response time and availability are not guaranteed.</div>
+ </div>
+</div>
+
 <div style="margin-bottom:20px;">
  <div class="section-head">Access</div>
  <div class="btn-row">
@@ -1380,8 +1392,8 @@ a.gumroad-button.util-link {
  <div class="kit-flow-step"><div class="kit-flow-num">4</div><div class="kit-flow-content"><div class="kit-flow-title">Begin implementation</div><div class="kit-flow-text">Start with the onboarding sequence. Deploy forms and worksheets into existing review workflows.</div></div></div>
  </div>
  <div class="callout" style="margin-top:20px;">
- <div class="callout-label">Implementation Support</div>
- <p>Operational implementation guidance may be available upon request following Deployment Kit access. Support discussions are limited to workflow adaptation, reviewer onboarding considerations, and implementation questions related to existing documentation-review environments.</p>
+ <div class="callout-label">Implementation Questions</div>
+ <p>Organizations evaluating phased implementation approaches may request additional operational information. Discussions are limited to workflow adaptation, reviewer onboarding, and implementation questions related to existing documentation-review environments.</p>
   </div>
 
   <div style="border:1px solid var(--rule);margin-top:20px;">
@@ -1499,7 +1511,7 @@ a.gumroad-button.util-link {
 
 <div id="section-tools" class="page-section">
 <div class="container">
-<div class="page-eyebrow">Operational Review Tools</div>
+<div class="page-eyebrow">Field References</div>
 <h1 class="page-title">Pre-Submission Review Worksheets</h1>
 <p class="page-subtitle">Applied at the drafting stage, before records enter official systems. No software required. Works within existing HR, compliance, and investigation workflows.</p>
 <div class="callout"><div class="callout-label">Usage Note</div><p>These tools structure the questions a later reviewer would ask. Apply the relevant worksheet before submitting documentation into any official system of record.</p></div>
@@ -1675,8 +1687,8 @@ a.gumroad-button.util-link {
 <!-- SCENARIOS SECTION -->
 <div id="section-scenarios" class="page-section">
 <div class="container">
-<div class="page-eyebrow">Documentation Review Lab</div>
-<h1 class="page-title">Review Scenarios</h1>
+<div class="page-eyebrow">Review Examples</div>
+<h1 class="page-title">Review Examples</h1>
 <p class="page-subtitle">Records as they commonly arrive for review. Each scenario shows the original record, the reviewer analysis identifying gaps, and a supported revision.</p>
 <div class="callout"><div class="callout-label">How to Use</div><p>Select the record type. Use the tabs to move between the original record, the review analysis, and the supported revision.</p></div>
 
@@ -2499,8 +2511,8 @@ a.gumroad-button.util-link {
 <!-- AI SECTION -->
 <div id="section-ai" class="page-section">
 <div class="container">
-<div class="page-eyebrow">AI Documentation Controls</div>
-<h1 class="page-title">AI Documentation Review</h1>
+<div class="page-eyebrow">AI-Assisted Review</div>
+<h1 class="page-title">AI-Assisted Documentation Review</h1>
 <p class="page-subtitle">Source verification and reconstruction review for records where AI tools contributed to drafting. Applied at the pre-submission stage, before records enter official systems.</p>
 <div class="callout"><div class="callout-label">Review Standard</div><p>The review conditions apply regardless of how a record was drafted. What matters is whether the supporting basis can be identified by someone reading the file later, without the original author available to explain it.</p></div>
 
@@ -2666,7 +2678,7 @@ a.gumroad-button.util-link {
 <!-- TRAINING SECTION -->
 <div id="section-training" class="page-section">
 <div class="container">
-<div class="course-eyebrow">Reviewer Training Program</div>
+<div class="course-eyebrow">Reviewer Guidance</div>
 <h2 class="course-title">JRS Documentation Review Foundations</h2>
 <p class="course-subtitle">Six modules covering evidence anchoring, file survivability, traceable reasoning, and review of AI-assisted records. Applicable to HR, compliance, investigation, and administrative documentation environments.</p>
 
@@ -2801,10 +2813,96 @@ a.gumroad-button.util-link {
 </div>
 
 
+
+<!-- ABOUT SECTION -->
+<div id="section-about" class="page-section">
+<div class="container">
+<div class="page-eyebrow">About</div>
+<h1 class="page-title">About JRS</h1>
+<p class="page-subtitle">What the Justification Review Standard is, what problem it addresses, and what it is not.</p>
+
+<div style="margin-bottom:44px;">
+ <div class="section-head">What JRS Is</div>
+ <p class="body-text">JRS is a documentation review structure designed to evaluate whether organizational records contain identifiable support, traceable reasoning, and independently reviewable documentation before finalization. It is applied at the pre-finalization stage, before records enter official systems.</p>
+ <p class="body-text">The review addresses a specific problem: records are examined later by people who were not present when they were created. When that later review occurs, the record must stand on its own. The basis for conclusions must be recoverable from the file without access to the original author, institutional memory, or supplementary explanation.</p>
+ <p class="body-text">JRS provides a structured set of questions and review conditions that a drafter or reviewer can apply before submission. No dedicated software is required. The structure is designed for use within existing HR, compliance, investigation, and administrative review workflows.</p>
+</div>
+
+<div style="margin-bottom:44px;">
+ <div class="section-head">What Problem It Addresses</div>
+ <p class="body-text">Organizational records frequently fail during later review not because decisions were wrong, but because documentation was insufficient. Conclusions are stated without identifiable support. Dates are missing. Behavioral claims use evaluative language without observable anchors. Referenced records are not attached. AI-assisted summaries introduce characterizations not present in the source notes.</p>
+ <p class="body-text">These gaps become consequential when records are examined during disputes, proceedings, audits, or administrative review. At that point, the opportunity to resolve them without consequence has passed. Pre-finalization review is the only practical point of intervention.</p>
+ <div class="reviewer-note" style="margin-top:12px;"><div class="reviewer-note-label">Operational context</div>Most unsupported records appear complete at drafting. The gap becomes visible only when someone outside the original workflow reads the file without the author available to explain it.</div>
+</div>
+
+<div style="margin-bottom:44px;">
+ <div class="section-head">Where It Applies</div>
+ <p class="body-text">JRS applies to organizational documentation used in employment, administrative, or compliance review processes. It is designed for use within existing workflows and does not require replacement of existing systems or procedures.</p>
+ <div style="border:1px solid var(--rule);overflow:hidden;margin-top:12px;">
+  <div style="display:grid;grid-template-columns:1fr 1fr;">
+   <div style="padding:14px 16px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:6px;">Primary Environments</div>
+    <div style="font-size:13px;color:var(--muted);line-height:1.9;">HR operations<br>Compliance review<br>Workplace investigations<br>Administrative review<br>Accommodation documentation<br>AI-assisted documentation environments</div>
+   </div>
+   <div style="padding:14px 16px;border-bottom:1px solid var(--rule);">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:6px;">Record Types</div>
+    <div style="font-size:13px;color:var(--muted);line-height:1.9;">Performance evaluations<br>Disciplinary documentation<br>Termination records<br>Investigation summaries<br>Accommodation records<br>Compliance and audit documentation</div>
+   </div>
+   <div style="padding:14px 16px;border-right:1px solid var(--rule);">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:6px;">Review Depth</div>
+    <div style="font-size:13px;color:var(--muted);line-height:1.6;">Review depth may vary according to record sensitivity, escalation status, and workflow complexity. Identifiable support and reviewer confirmation remain required before finalization regardless of depth applied.</div>
+   </div>
+   <div style="padding:14px 16px;">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:6px;">Implementation</div>
+    <div style="font-size:13px;color:var(--muted);line-height:1.6;">Most organizations begin with one record type or one department. Selective deployment — higher-risk records first — is a reasonable and common starting point. No formal rollout is required.</div>
+   </div>
+  </div>
+ </div>
+</div>
+
+<div style="margin-bottom:44px;">
+ <div class="section-head">What JRS Is Not</div>
+ <div style="border-top:1px solid var(--rule);">
+  <div style="padding:12px 0;border-bottom:1px solid #222;font-size:14.5px;color:var(--text);">Not legal advice. JRS does not establish legal sufficiency or eliminate legal risk. Organizations should work with legal counsel on jurisdiction-specific requirements.</div>
+  <div style="padding:12px 0;border-bottom:1px solid #222;font-size:14.5px;color:var(--text);">Not a decision-correctness review. Documentation sufficiency is evaluated independently. A record can satisfy all four conditions and still reflect a decision that is disputed.</div>
+  <div style="padding:12px 0;border-bottom:1px solid #222;font-size:14.5px;color:var(--text);">Not a software platform or system replacement. JRS operates within existing workflows. No dedicated tooling is required.</div>
+  <div style="padding:12px 0;border-bottom:1px solid #222;font-size:14.5px;color:var(--text);">Not a certification or accreditation system. Completion of JRS training materials does not constitute professional certification.</div>
+  <div style="padding:12px 0;border-bottom:1px solid #222;font-size:14.5px;color:var(--text);">Not a prohibition on AI-assisted drafting. AI tools may be used in drafting. The review evaluates whether the resulting record satisfies the four conditions regardless of how wording was generated.</div>
+  <div style="padding:12px 0;font-size:14.5px;color:var(--text);">Not a mandate for complete documentation of every record. Review depth varies by record type and risk level. The Rapid Review minimum applies where full review is not operationally feasible.</div>
+ </div>
+</div>
+
+<div style="margin-bottom:44px;">
+ <div class="section-head">Development</div>
+ <p class="body-text">Developed by Phillip Wikes, M.S., drawing from experience in administrative review, investigations, and documentation assessment within regulated environments. The framework reflects recurring documentation failure patterns observed across organizational review contexts, with particular attention to records that appeared complete at drafting but failed during later review.</p>
+ <p class="body-text" style="max-width:600px;">JRS v1.0 was published in May 2026. The framework is designed to evolve incrementally through operational use rather than through theoretical expansion.</p>
+ <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;">
+  <a href="JRS-Standard.pdf" class="btn btn-primary" style="font-size:13px;">View Standard</a>
+  <button class="btn btn-ghost" style="font-size:13px;" onclick="showSection('home')">Review Conditions</button>
+  <button class="btn btn-ghost" style="font-size:13px;" onclick="showSection('library')">Library</button>
+ </div>
+</div>
+
+<div style="margin-bottom:44px;">
+ <div class="section-head">Administrative Notes</div>
+ <div style="border:1px solid var(--rule);padding:18px 20px;background:var(--surface);">
+  <div style="font-size:13.5px;color:var(--muted);line-height:1.85;">
+   JRS&#8482; and Justification Review Standard&#8482; are trademarks of Phillip Wikes.<br>
+   &copy; 2026 Phillip Wikes. All rights reserved.<br>
+   Educational material. Does not constitute legal advice, professional certification, regulatory accreditation, or employment decision guidance.<br>
+   Workflow models, failure-mode examples, and implementation descriptions are illustrative. Adapt to organizational context.
+  </div>
+ </div>
+</div>
+
+</div>
+</div><!-- end section-about -->
+
 <!-- FOOTER -->
 <div class="site-footer">
  <div class="site-footer-inner">
  <div>JRS&#8482; Documentation Review Structure &middot; v1.0 &middot; Published May 2026</div>
+ <div>Developed by Phillip Wikes, M.S., drawing from experience in administrative review, investigations, and documentation assessment within regulated environments.</div>
  <div>JRS&#8482; and Justification Review Standard&#8482; are trademarks of Phillip Wikes. &copy; 2026 Phillip Wikes.</div>
  <div>Educational material. Does not constitute legal advice, professional certification, regulatory accreditation, or employment decision guidance.</div>
  </div>
@@ -2822,7 +2920,7 @@ function showSection(id){
  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
  const sec=document.getElementById('section-'+id);
  if(sec)sec.classList.add('active');
- const sectionMap={'home':0,'tools':1,'scenarios':2,'guidance':3,'roles':4,'maturity':5,'ai':6,'usecases':7,'training':8,'library':9,'kit':10};
+ const sectionMap={'home':0,'tools':1,'scenarios':2,'guidance':3,'roles':4,'maturity':5,'ai':6,'usecases':7,'training':8,'about':9,'library':10,'kit':11};
  const navItems=document.querySelectorAll('.nav-item');
  if(sectionMap[id]!==undefined&&navItems[sectionMap[id]])navItems[sectionMap[id]].classList.add('active');
  window.scrollTo(0,0);
