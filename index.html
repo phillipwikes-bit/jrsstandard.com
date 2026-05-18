@@ -802,9 +802,250 @@ a.gumroad-button.util-link {
  .wordmark{font-size:23px}
 }
 
+/* ── PDF BUTTON TOGGLE — show mobile row, adjust desktop row ── */
+@media(max-width:480px){
+ .mobile-pdf-row{
+   display:flex !important;
+ }
+ /* Hide the desktop btn-row's PDF buttons on mobile — 
+    keep Operational References button accessible */
+ .mobile-pdf-btn-primary,
+ .mobile-pdf-btn-secondary{
+   width:100% !important;
+   box-sizing:border-box !important;
+ }
+}
+
+
+/* ════════════════════════════════════════════════════
+   MOBILE POLISH PASS — SPEC IMPLEMENTATION
+   ════════════════════════════════════════════════════ */
+
+/* 1. TYPOGRAPHY & READABILITY */
+@media(max-width:480px){
+ .container{max-width:90vw;margin:0 auto}
+ p,li,.body-text,.memo-text,.readiness-desc,.failure-bad,.failure-good,
+ .cond-text,.ob-text,.callout p,.kit-section-text,.course-subtitle{
+  line-height:1.68 !important;
+ }
+ .header-meta{
+  font-size:0.75rem !important;
+  text-transform:uppercase !important;
+  letter-spacing:0.10em !important;
+  color:var(--muted-soft) !important;
+ }
+
+/* 2. FAILURE PATTERNS — CONTRAST CARDS */
+ .failure-block{
+  border-radius:8px !important;
+  border:1px solid #2E2416 !important;
+  background:#0E0B07 !important;
+  overflow:hidden !important;
+  margin-bottom:14px !important;
+ }
+ .failure-head{
+  background:#161008 !important;
+  padding:10px 14px !important;
+  font-size:9px !important;
+  letter-spacing:.16em !important;
+ }
+ .failure-cols{grid-template-columns:1fr !important}
+ .failure-col:first-child{
+  border-right:none !important;
+  border-bottom:1px solid #2A1F10 !important;
+ }
+ .failure-col{padding:12px 14px !important}
+ .failure-col-label{
+  display:inline-block !important;
+  font-size:11px !important;
+  font-weight:700 !important;
+  padding:2px 8px !important;
+  border-radius:4px !important;
+  margin-bottom:8px !important;
+  text-transform:none !important;
+  letter-spacing:.02em !important;
+ }
+ .failure-col:first-child .failure-col-label{
+  background:rgba(139,32,32,.25) !important;
+  color:#E88080 !important;
+  border:1px solid rgba(139,32,32,.4) !important;
+ }
+ .failure-col:last-child .failure-col-label{
+  background:rgba(30,92,53,.25) !important;
+  color:#5DBF82 !important;
+  border:1px solid rgba(30,92,53,.4) !important;
+ }
+ .failure-bad{font-size:14px !important;line-height:1.65 !important;color:var(--muted) !important}
+ .failure-good{font-size:14px !important;line-height:1.65 !important;color:#9DD6B5 !important}
+
+/* 3. CONDITIONS GRID — VERTICAL GRID-CARDS */
+ .cond-grid{
+  border-top:none !important;
+  display:flex !important;
+  flex-direction:column !important;
+  gap:10px !important;
+  margin:14px 0 !important;
+ }
+ .cond-row{
+  display:flex !important;
+  flex-direction:column !important;
+  gap:8px !important;
+  padding:14px !important;
+  border-bottom:none !important;
+  background:var(--surface) !important;
+  border:1px solid var(--rule) !important;
+  border-radius:6px !important;
+ }
+ .cond-num{
+  font-family:'Bodoni Moda',serif !important;
+  font-size:28px !important;
+  font-weight:500 !important;
+  color:var(--accent) !important;
+  line-height:1 !important;
+  padding-top:0 !important;
+ }
+ .cond-title{font-size:15px !important;font-weight:700 !important;color:var(--text) !important;margin-bottom:4px !important}
+ .cond-text{font-size:14px !important;color:var(--muted) !important;line-height:1.68 !important}
+
+/* 4. MATURITY TIMELINE STEPPER */
+ .maturity-section-inner{
+  position:relative !important;
+  padding-left:44px !important;
+ }
+ .maturity-section-inner::before{
+  content:'' !important;
+  position:absolute !important;
+  left:19px !important;
+  top:10px !important;
+  bottom:24px !important;
+  width:2px !important;
+  background:var(--rule) !important;
+ }
+ .maturity-level{
+  position:relative !important;
+  margin-bottom:14px !important;
+  border-radius:6px !important;
+ }
+ .maturity-level-header{position:relative !important;padding:12px 14px !important;gap:12px !important}
+ .maturity-level-num{
+  position:absolute !important;
+  left:-37px !important;
+  top:50% !important;
+  transform:translateY(-50%) !important;
+  width:32px !important;
+  height:32px !important;
+  background:var(--bg) !important;
+  border:2px solid var(--accent-dim) !important;
+  border-radius:50% !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  font-size:11px !important;
+  color:var(--accent) !important;
+  z-index:2 !important;
+  flex-shrink:0 !important;
+ }
+
+/* 5. PDF DOWNLOAD BUTTONS */
+ .mobile-pdf-row{display:flex !important}
+ .mobile-pdf-btn-primary{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:10px !important;
+  min-height:52px !important;
+  width:100% !important;
+  background:#F2F2F2 !important;
+  color:#0A0A0A !important;
+  font-family:'JetBrains Mono',monospace !important;
+  font-size:11px !important;
+  letter-spacing:.14em !important;
+  text-transform:uppercase !important;
+  text-decoration:none !important;
+  font-weight:700 !important;
+  border-radius:4px !important;
+  padding:14px 18px !important;
+  margin-bottom:10px !important;
+  box-sizing:border-box !important;
+ }
+ .mobile-pdf-btn-secondary{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:10px !important;
+  min-height:52px !important;
+  width:100% !important;
+  background:transparent !important;
+  color:var(--text) !important;
+  border:2px solid var(--rule) !important;
+  font-family:'JetBrains Mono',monospace !important;
+  font-size:11px !important;
+  letter-spacing:.14em !important;
+  text-transform:uppercase !important;
+  text-decoration:none !important;
+  font-weight:700 !important;
+  border-radius:4px !important;
+  padding:14px 18px !important;
+  margin-bottom:10px !important;
+  box-sizing:border-box !important;
+ }
+ .mobile-pdf-micro{
+  font-size:11px !important;
+  color:var(--muted-soft) !important;
+  text-align:center !important;
+  margin-top:4px !important;
+  letter-spacing:.04em !important;
+ }
+ .btn-row{flex-direction:column !important;gap:10px !important}
+ .btn-row .btn{width:100% !important;min-height:50px !important;justify-content:center !important}
+
+/* 6. STICKY MICRO-HEADER */
+ .mobile-sticky-bar{
+  display:flex !important;
+  position:fixed !important;
+  top:0 !important;
+  left:0 !important;
+  width:100% !important;
+  height:48px !important;
+  background:rgba(5,5,5,.96) !important;
+  backdrop-filter:blur(10px) !important;
+  -webkit-backdrop-filter:blur(10px) !important;
+  border-bottom:1px solid var(--rule) !important;
+  z-index:200 !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  padding:0 16px !important;
+  transform:translateY(-100%) !important;
+  transition:transform .22s ease !important;
+ }
+ .mobile-sticky-bar.visible{transform:translateY(0) !important}
+ .mobile-sticky-brand{
+  font-family:'Bodoni Moda',serif !important;
+  font-size:18px !important;
+  font-weight:500 !important;
+  color:var(--accent) !important;
+ }
+ .mobile-sticky-cta{
+  font-family:'JetBrains Mono',monospace !important;
+  font-size:8.5px !important;
+  letter-spacing:.14em !important;
+  text-transform:uppercase !important;
+  color:var(--accent) !important;
+  text-decoration:none !important;
+  border:1px solid var(--accent-dim) !important;
+  padding:6px 11px !important;
+  border-radius:3px !important;
+ }
+}
 </style>
 </head>
 <body>
+<!-- MOBILE STICKY BAR — appears on scroll, mobile only -->
+<div class="mobile-sticky-bar" id="mobileStickyBar">
+ <span class="mobile-sticky-brand">JRS<sup style="font-size:10px;vertical-align:super;">™</sup></span>
+ <a href="JRS-Standard.pdf" class="mobile-sticky-cta">Download Standard</a>
+</div>
+
 
 <!-- SITE HEADER -->
 <div class="site-header">
@@ -1534,7 +1775,19 @@ a.gumroad-button.util-link {
 
 <div style="margin-bottom:20px;">
  <div class="section-head">Access</div>
- <div class="btn-row">
+ <!-- Mobile thumb-friendly PDF buttons (styled via mobile CSS) -->
+<div class="mobile-pdf-row" style="display:none;flex-direction:column;gap:10px;margin-top:18px;">
+ <a href="JRS-Standard.pdf" class="mobile-pdf-btn-primary">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+  View JRS Standard
+ </a>
+ <a href="https://wikesphere.gumroad.com/l/opukbv" class="mobile-pdf-btn-secondary">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="3"/></svg>
+  Reviewer Reference
+ </a>
+ <div class="mobile-pdf-micro">Format: PDF. Optimized for mobile and print reading.</div>
+</div>
+<div class="btn-row">
  <a href="JRS-Standard.pdf" class="btn btn-primary">View Standard</a>
  <button class="btn btn-ghost" onclick="showSection('kit')">Operational References</button>
  <a href="https://wikesphere.gumroad.com/l/opukbv" class="btn btn-ghost gumroad-button" data-gumroad-single-product="true">Reviewer Reference</a>
@@ -2757,7 +3010,8 @@ a.gumroad-button.util-link {
  <div class="maturity-level"><div class="maturity-level-header" onclick="toggleMaturity(this)"><div class="maturity-level-num">04</div><div><div class="maturity-level-title">Audit Sampling</div><div class="maturity-level-sub">Compliance or audit personnel periodically sample organizational records using the failure-mode catalog.</div></div></div><div class="maturity-level-body"><p class="body-text">Sampling surfaces patterns across departments where documentation quality is consistently low. Results identify record types and workflow stages where intervention is most warranted. Reviewer operates independently of the drafting chain for sampled records.</p>
 <div class="reviewer-note" style="margin-top:10px;"><div class="reviewer-note-label">Typical sampling findings</div>Department A: 8 of 12 termination records lacked referenced supporting documentation. Department B: All 6 investigation records reviewed contained evaluative conclusions without identified source materials. Timeline gaps present in 11 of 15 disciplinary records sampled.</div>
 </div></div>
- <div class="maturity-level"><div class="maturity-level-header" onclick="toggleMaturity(this)"><div class="maturity-level-num">05</div><div><div class="maturity-level-title">AI-Assisted Review Oversight</div><div class="maturity-level-sub">AI-Assisted Draft Verification Worksheet applied before AI content enters official records.</div></div></div><div class="maturity-level-body"><p class="body-text">Human reviewer with direct access to source materials confirms conclusions, absence of unverified characterizations, and preservation of conflicting accounts. Required for any record where AI tools materially contributed to drafting or summarization.</p></div></div>
+ <div class="maturity-section-inner">
+<div class="maturity-level"><div class="maturity-level-header" onclick="toggleMaturity(this)"><div class="maturity-level-num">05</div><div><div class="maturity-level-title">AI-Assisted Review Oversight</div><div class="maturity-level-sub">AI-Assisted Draft Verification Worksheet applied before AI content enters official records.</div></div></div><div class="maturity-level-body"><p class="body-text">Human reviewer with direct access to source materials confirms conclusions, absence of unverified characterizations, and preservation of conflicting accounts. Required for any record where AI tools materially contributed to drafting or summarization.</p></div></div>
 </div>
 </div>
 </div>
@@ -2775,6 +3029,7 @@ a.gumroad-button.util-link {
 <div class="section-head">Semantic Inflation</div>
 <p class="body-text">AI-assisted drafting may introduce language that appears procedurally complete despite limited underlying evidentiary support. A generated record can read smoothly and confidently while containing characterizations absent from, or inconsistent with, the original source notes.</p>
 <p class="body-text">Common patterns: qualified language in source notes becomes declarative in the generated record; general impressions are stated as findings; conflicts or gaps in source material are smoothed over rather than preserved.</p>
+</div>
 <div class="reviewer-note" style="margin-bottom:24px;"><div class="reviewer-note-label">Reviewer test</div>If the source notes were removed, would the record still appear equally well-supported? If yes, the record may contain semantic inflation. The supporting basis exists in the wording but not in the underlying file.</div>
 <div class="callout" style="margin-bottom:24px;"><div class="callout-label">Source-Path Visibility</div><p>The relevant question for AI-assisted records is whether a later reviewer can trace the path from conclusion to identified source material. Not whether the record sounds accurate — whether the path is visible. Confident language is not the same as a traceable source path. Records that provide the first without the second do not satisfy Condition IV.</p></div>
 </div>
@@ -3511,5 +3766,24 @@ updateProgress();
 </script>
 <!-- Gumroad inline overlay -->
 <script src="https://gumroad.com/js/embed.js"></script>
+
+<script>
+(function(){
+ var bar = document.getElementById('mobileStickyBar');
+ if(!bar) return;
+ // Only activate on mobile
+ if(window.innerWidth > 480) return;
+ var hero = document.querySelector('.site-header') || document.querySelector('.primary-nav');
+ function onScroll(){
+   var scrollY = window.scrollY || window.pageYOffset;
+   if(scrollY > 120){
+     bar.classList.add('visible');
+   } else {
+     bar.classList.remove('visible');
+   }
+ }
+ window.addEventListener('scroll', onScroll, {passive:true});
+})();
+</script>
 </body>
 </html>
