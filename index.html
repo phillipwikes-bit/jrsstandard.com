@@ -805,36 +805,27 @@ a.gumroad-button.util-link {
 
 
 
-/* ── MATURITY MOBILE FIXES ── */
+/* ── MATURITY & ROLES MOBILE HINTS ── */
 @media(max-width:480px){
- /* Show expand hint on collapsed maturity headers */
+ .maturity-level-body.open{display:block !important}
+ .maturity-level-header{cursor:pointer;-webkit-tap-highlight-color:rgba(190,148,71,.12)}
  .maturity-level-header::after{
-  content:' ▸ tap to expand';
+  content:'tap to expand ▸';
   font-family:'JetBrains Mono',monospace;
-  font-size:8px;
-  letter-spacing:.1em;
+  font-size:8px;letter-spacing:.08em;
   color:var(--muted-soft);
-  margin-left:auto;
-  padding-left:8px;
-  white-space:nowrap;
+  margin-left:auto;padding-left:10px;white-space:nowrap;
  }
- /* Hide hint when body is open */
  .maturity-level:has(.maturity-level-body.open) .maturity-level-header::after{
-  content:' ▾ collapse';
+  content:'collapse ▾';
  }
- /* Ensure open body is visible */
- .maturity-level-body.open{
-  display:block !important;
- }
- /* Role cards — add tap hint */
+ .role-card{cursor:pointer}
  .role-card::after{
   content:'Tap to view ▸';
   display:block;
   font-family:'JetBrains Mono',monospace;
-  font-size:8px;
-  letter-spacing:.1em;
-  color:var(--accent-dim);
-  margin-top:6px;
+  font-size:8px;letter-spacing:.08em;
+  color:var(--accent-dim);margin-top:6px;
  }
 }
 </style>
@@ -1815,8 +1806,8 @@ a.gumroad-button.util-link {
 </div>
 
 <div class="worksheet" style="margin-top:8px;">
- <div class="worksheet-header" onclick="toggleWS(this)"><span class="worksheet-title">01 / Pre-Finalization Review Worksheet</span><span class="worksheet-toggle">Expand &#8595;</span></div>
- <div class="worksheet-body">
+ <div class="worksheet-header" onclick="toggleWS(this)"><span class="worksheet-title">01 / Pre-Finalization Review Worksheet</span><span class="worksheet-toggle">Collapse &#8593;</span></div>
+ <div class="worksheet-body" style="display:block;">
  <div class="ws-section"><div class="ws-section-label">Core Review Checks</div>
  <div class="ws-item"><input type="checkbox" class="ws-check"><span>Can this record stand on its own without follow-up with the original author?</span></div>
  <div class="ws-item"><input type="checkbox" class="ws-check"><span>Does each major conclusion have a specific, identifiable anchor: a date, interaction, log entry, or referenced record?</span></div>
@@ -3242,8 +3233,7 @@ function showSection(id){
  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
  const sec=document.getElementById('section-'+id);
  if(sec)sec.classList.add('active');
- // Auto-load HR env when Roles section opened
- if(id==='roles' && typeof showRoleEnv==='function'){setTimeout(function(){showRoleEnv('hr');},50);}
+ if(id==='roles'&&typeof showRoleEnv==='function'){setTimeout(()=>showRoleEnv('hr'),30);}
  const sectionMap={'home':0,'tools':1,'scenarios':2,'guidance':3,'roles':4,'maturity':5,'ai':6,'usecases':7,'training':8,'about':9,'library':10,'kit':11};
  const navItems=document.querySelectorAll('.nav-item');
  if(sectionMap[id]!==undefined&&navItems[sectionMap[id]])navItems[sectionMap[id]].classList.add('active');
