@@ -101,6 +101,32 @@ hr{border:none;border-top:1px solid var(--border);margin:3rem 0}
 .fossil-obs-label{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--indigo);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.4rem}
 .fossil-obs p{font-style:italic;color:var(--text-dim);font-size:0.95rem;line-height:1.65;margin:0}
 
+.archive-obs{border-left:3px solid var(--rust);padding:1rem 1.25rem 1rem 1.5rem;margin:2rem 0;background:rgba(122,58,42,0.05)}
+.archive-obs-label{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--rust);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.4rem}
+.archive-obs p{font-style:italic;color:var(--text-dim);font-size:0.95rem;line-height:1.65;margin:0}
+
+.access-obs{border-left:3px solid var(--text-muted);padding:1rem 1.25rem 1rem 1.5rem;margin:2rem 0;background:rgba(90,85,80,0.05)}
+.access-obs-label{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--text-muted);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.4rem}
+.access-obs p{font-style:italic;color:var(--text-dim);font-size:0.95rem;line-height:1.65;margin:0}
+
+.xsys-obs{border-left:3px solid var(--sage);padding:1rem 1.25rem 1rem 1.5rem;margin:2rem 0;background:rgba(58,90,74,0.04)}
+.xsys-obs-label{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--sage);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.4rem}
+.xsys-obs p{font-style:italic;color:var(--text-dim);font-size:0.95rem;line-height:1.65;margin:0}
+
+/* Survivorship block */
+.surv-block{border:1px solid var(--border);margin:2.5rem 0;background:var(--surface)}
+.surv-block-header{padding:0.85rem 1.4rem;border-bottom:1px solid var(--border);background:var(--near-black);display:flex;align-items:baseline;gap:0.75rem;flex-wrap:wrap}
+.surv-code{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--rust)}
+.surv-title{font-size:0.975rem;color:var(--white);font-weight:500}
+.surv-body{padding:1.4rem}
+.surv-row{margin-bottom:1.1rem}
+.surv-row:last-child{margin-bottom:0}
+.surv-row-label{font-family:'DM Mono',monospace;font-size:0.58rem;color:var(--text-muted);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.3rem}
+.surv-row p{font-size:0.875rem;color:var(--text-dim);line-height:1.65;margin:0}
+.surv-row p.present{color:var(--text)}
+.surv-row p.absent{color:var(--rust);font-style:italic}
+.surv-row p.uncertain{color:var(--amber);font-style:italic}
+
 /* Check list */
 .check-list{list-style:none;margin:1rem 0}
 .check-list li{color:var(--text-dim);font-size:0.975rem;padding:0.3rem 0 0.3rem 1.4rem;position:relative;line-height:1.6}
@@ -278,14 +304,18 @@ footer{background:var(--near-black);border-top:1px solid var(--border);padding:3
     <div class="hero-mark">Reviewer Reference · v1.0 · May 2026</div>
     <div class="hero-jrs">JRS<sup>™</sup></div>
     <div class="hero-title">Justification Review Standard</div>
-    <p class="hero-lede">A pre-finalization documentation review structure for organizational records. Applied before records enter official systems. Evaluates whether conclusions are understandable, supportable, and reconstructable from the file alone.</p>
-    <p class="hero-sub">The review does not assess whether decisions were correct. It assesses whether the basis for decisions can be traced from the file. No software required. Works inside existing workflows. Can be introduced incrementally without structural change.</p>
+    <p class="hero-lede">A pre-finalization documentation review structure for organizational records. Applied before records enter official systems. Evaluates whether conclusions are understandable, supportable, and reconstructable from the file alone, by a later reviewer who was not present when the record was created.</p>
+    <p class="hero-sub">The review does not assess whether decisions were correct. It assesses whether the basis for those decisions can be traced from the file, across time, after the original participants are no longer available, and despite the ordinary degradation of institutional memory. No software required. Works inside existing workflows.</p>
     <div class="hero-tags">
-      <span class="hero-tag">HR Operations</span><span class="hero-tag">Compliance Review</span><span class="hero-tag">Investigations</span><span class="hero-tag">AI-Assisted Records</span><span class="hero-tag">Administrative Review</span><span class="hero-tag">Audit Sampling</span>
+      <span class="hero-tag">HR Operations</span><span class="hero-tag">Compliance Review</span><span class="hero-tag">Investigations</span><span class="hero-tag">AI-Assisted Records</span><span class="hero-tag">Administrative Review</span><span class="hero-tag">Audit Sampling</span><span class="hero-tag">Archival Review</span><span class="hero-tag">Retention Review</span>
     </div>
     <div class="from-practice">
       <div class="from-practice-label">From practice</div>
       <p>Most records that fail later review appeared complete at the time of drafting. The gap became visible only when someone else read the file without the original author available to explain it.</p>
+    </div>
+    <div class="reviewer-note" style="margin-top:1.5rem">
+      <div class="reviewer-note-label">Reconstruction note</div>
+      <p>Institutional memory degrades before records do. The file survives. The context needed to read it correctly does not always survive with it.</p>
     </div>
     <div class="hero-meta">
       <div class="hero-meta-item"><span>Version</span>1.0</div>
@@ -510,6 +540,43 @@ footer{background:var(--near-black);border-top:1px solid var(--border);padding:3
         <div class="from-practice-label">From practice</div>
         <p>Departments with the most documentation volume do not necessarily produce better reconstruction records. In several sampling periods, high-volume departments showed more records with the same gaps, not fewer.</p>
       </div>
+
+      <!-- REVIEWER ACCESS CONDITIONS -->
+      <hr>
+      <div class="section-label" style="margin-top:2rem">Access Conditions</div>
+      <h2 class="section-h2" style="margin-top:0.5rem">Reviewer Access Limitations</h2>
+      <p>Reviewers frequently encounter conditions in which the files they are reviewing cannot be fully accessed or verified from the materials available to them. These are not exceptional circumstances. They describe ordinary features of multi-system enterprise environments reviewed across time.</p>
+      <p class="text-dim" style="font-size:0.9rem">The following conditions are documented here because they affect how the review standard applies in practice, not because they change the standard itself.</p>
+
+      <div class="access-obs">
+        <div class="access-obs-label">Access condition</div>
+        <p>Reviewer inherited the file mid-process. Prior review notes are referenced in the record but were stored in a shared folder that was reorganized during the 2024 system migration. The folder path in the record returns an error. Prior review notes were not recovered during current review.</p>
+      </div>
+
+      <div class="access-obs">
+        <div class="access-obs-label">Access condition</div>
+        <p>Reviewer has read access to the current HRIS. The record references a case number from the prior HRIS, which was decommissioned in 2022. Legacy case records were exported as PDF at the time of decommission. The export directory is not on the reviewer's standard access path. Request submitted to IT for access. Review proceeding with gap documented.</p>
+      </div>
+
+      <div class="access-obs">
+        <div class="access-obs-label">Access condition</div>
+        <p>Record references an attachment described as located in the \"2021 Shared Compliance Drive.\" That drive was retired and its contents archived to a read-only SharePoint library accessible to compliance staff only. Reviewer is an HR business partner without compliance archive access. Attachment not verified at time of review.</p>
+      </div>
+
+      <h3 class="section-h3">Common Reviewer Access Gaps</h3>
+      <ul class="check-list">
+        <li>Inherited files where prior reviewers have left the organization and their review notes are inaccessible</li>
+        <li>Records referencing attachments stored in decommissioned or restricted systems</li>
+        <li>Partial archive access where only some record types are within the reviewer's repository permissions</li>
+        <li>Reviewer reliance on summaries created by others where the underlying source notes are not available for verification</li>
+        <li>Missing administrative rights to legacy templates or historical form repositories needed to interpret field entries</li>
+        <li>Audit records referencing files that require a separate request process to retrieve, with turnaround times that extend beyond the review window</li>
+      </ul>
+
+      <div class="op-note">
+        <div class="op-note-label">Implementation note</div>
+        <p>Where a reviewer cannot access materials referenced in a record, that limitation should be documented as part of the review disposition rather than treated as a completed review of those materials. Access limitations do not convert a gap into confirmed support.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -689,11 +756,45 @@ footer{background:var(--near-black);border-top:1px solid var(--border);padding:3
         </div>
       </div>
 
+      <h2 class="section-h2">Partial Evidentiary Survivorship</h2>
+      <p class="text-dim" style="font-size:0.9rem">The following examples describe conditions where records have survived in uneven form: where a narrative exists without its underlying attachments, where attachments exist without the narrative that gave them context, or where a summary references source material that has since been destroyed or made inaccessible. These conditions are ordinary features of long-maintained institutional records.</p>
+
+      <div class="surv-block">
+        <div class="surv-block-header"><span class="surv-code">SRV·01</span><span class="surv-title">Narrative Surviving Without Attachments — Migration-Related Loss</span></div>
+        <div class="surv-body">
+          <div class="surv-row"><div class="surv-row-label">Present in file</div><p class="present">Investigation summary, dated March 14. Conclusion states: conduct substantiated on basis of complainant account, two witness statements, and reviewed correspondence — attached as Tabs A through C.</p></div>
+          <div class="surv-row"><div class="surv-row-label">Status of attachments</div><p class="absent">Tabs A through C are not present in the file as currently accessible. The attachment path referenced in the record points to a shared drive folder that was retired during the 2023 system migration. The folder path returns an error. The attachments were not transferred to the successor system at the time of migration.</p></div>
+          <div class="surv-row"><div class="surv-row-label">Reconstruction condition</div><p class="uncertain">The investigation conclusion is present and dated. The evidentiary basis stated in the conclusion cannot be independently verified from the file as currently accessible. The record indicates the basis existed at the time of filing. Whether it remains recoverable is a separate question.</p></div>
+          <div class="surv-row"><div class="surv-row-label">Reviewer note</div><p>The attachment path referenced a shared drive retired during the 2023 migration. The reference remained in the record following migration. The underlying files were not recovered during current review. Gap documented. IT recovery request submitted.</p></div>
+        </div>
+      </div>
+
+      <div class="surv-block">
+        <div class="surv-block-header"><span class="surv-code">SRV·02</span><span class="surv-title">Attachments Surviving Without the Narrative — System Entry Incomplete</span></div>
+        <div class="surv-body">
+          <div class="surv-row"><div class="surv-row-label">Present in file</div><p class="present">Three counseling note attachments, dated January 10, February 5, and March 2. Each is signed and dated. No accompanying performance record, escalation summary, or narrative document located in the current file.</p></div>
+          <div class="surv-row"><div class="surv-row-label">What is missing</div><p class="absent">The narrative record that these attachments were intended to support — a performance improvement plan or formal disciplinary summary — is not in the file as received. Whether it was drafted and filed separately, was never completed, or was filed in a different system is not determinable from the current file.</p></div>
+          <div class="surv-row"><div class="surv-row-label">Reconstruction condition</div><p class="uncertain">The attachments establish that three counseling sessions occurred on specific dates. The conduct addressed, the employee's response, and the escalation rationale are in the counseling notes themselves but are not aggregated in any summary document. Partial reconstruction is possible from the notes alone. The purpose for which the notes were assembled is not recoverable from the current file.</p></div>
+        </div>
+      </div>
+
+      <div class="surv-block">
+        <div class="surv-block-header"><span class="surv-code">SRV·03</span><span class="surv-title">Summary Surviving After Source Material Destruction — Retention Schedule Compliance</span></div>
+        <div class="surv-body">
+          <div class="surv-row"><div class="surv-row-label">Present in file</div><p class="present">Investigation summary, dated July 2020. Summary states that four witness interviews were conducted and that interviewer notes were reviewed during preparation of the summary. Summary filed in the official case record per standard procedure.</p></div>
+          <div class="surv-row"><div class="surv-row-label">Status of source material</div><p class="absent">Investigator interview notes were subject to the three-year retention schedule applicable to working papers. Notes were destroyed in 2023 pursuant to that schedule. The destruction was correct. The interview notes are no longer available.</p></div>
+          <div class="surv-row"><div class="surv-row-label">Reconstruction condition</div><p>The summary reflects conclusions drawn from source material that no longer exists. The summary is the only surviving record of what the witnesses said. Whether the summary accurately reflects the interviews cannot be independently verified. This condition is the expected result of applying different retention schedules to working papers and final records. It is documented here as a reconstruction limitation, not as a compliance failure.</p></div>
+        </div>
+      </div>
+
+      <div class="archive-obs">
+        <div class="archive-obs-label">Archival observation</div>
+        <p>Records and the institutional memory needed to interpret them do not age at the same rate. The file persists. The context in which it was created does not always persist with it.</p>
+      </div>
+
     </div>
   </div>
 </section>
-
-<!-- LATER REVIEWER CONDITIONS -->
 <section id="later-review">
   <div class="section-inner">
     <div class="container">
@@ -739,6 +840,32 @@ footer{background:var(--near-black);border-top:1px solid var(--border);padding:3
         <div class="lc-header"><span class="lc-code">LC·07</span><span class="lc-title">AI-Assisted Content Not Identified as Such</span></div>
         <p>Where AI tools contributed to a record and that contribution is not identified, a later reviewer has no way to distinguish AI-generated characterizations from the drafter's documented observations. Where an AI-assisted record reaches later review and the source notes are unavailable, the characterizations in that record cannot be verified.</p>
         <div class="lc-implication"><strong>Review implication</strong>Human attestation before system entry is the control that makes AI-assisted content reviewable later. Without it, the later reviewer has no path from the conclusion to the documented source material.</div>
+      </div>
+
+      <div class="lc-item">
+        <div class="lc-header"><span class="lc-code">LC·08</span><span class="lc-title">System Migration — Attachment Path No Longer Valid</span></div>
+        <p>Records that reference attachments by path or location within a system that has since been migrated, decommissioned, or reorganized may contain references that cannot be resolved during later review. The reference is in the record. The file it points to is not accessible through the current system. Whether the file was migrated, archived separately, or lost during the transition is not determinable from the record alone.</p>
+        <div class="archive-obs">
+          <div class="archive-obs-label">Archival condition</div>
+          <p>The record stated: attachment located at \\HR-SHARE\PerformanceFiles\2021\EmployeeRecords\. The share was decommissioned during the 2022 system migration. Content was exported to a legacy archive. The legacy archive is accessible only through an IT-mediated retrieval request with a five-business-day turnaround. The reference remained in the record following migration.</p>
+        </div>
+        <div class="lc-implication"><strong>Review implication</strong>Where a record references an attachment by path rather than by attaching it directly, later retrievability depends on the survival and accessibility of the referenced system. Records that rely on path references rather than direct attachment carry a latent reconstruction risk that increases as infrastructure changes over time.</div>
+      </div>
+
+      <div class="lc-item">
+        <div class="lc-header"><span class="lc-code">LC·09</span><span class="lc-title">Metadata Surviving Without Corresponding Content</span></div>
+        <p>HRIS and case management systems sometimes retain metadata entries — case numbers, status codes, completion flags, reviewer assignments — for records whose content was transferred to a different system, exported, or deleted during a migration. The system shows the record as complete. The content is not accessible from the current system. The metadata is not the record.</p>
+        <div class="lc-implication"><strong>Review implication</strong>A case status of CLOSED or a review flag of COMPLETED in a current system does not confirm that the substantive record is accessible for later reconstruction. Metadata confirms that an event was recorded. It does not confirm that what was recorded is still retrievable.</div>
+      </div>
+
+      <div class="lc-item">
+        <div class="lc-header"><span class="lc-code">LC·10</span><span class="lc-title">Inaccessible Retention Archive — Screenshot as Substitute</span></div>
+        <p>Where original documents are inaccessible due to system retirement, archive restriction, or format incompatibility, reviewers sometimes rely on screenshots, printed copies, or manually transcribed summaries of those documents. These substitutes may be accurate. They are not the original record, and they cannot be verified against it.</p>
+        <div class="archive-obs">
+          <div class="archive-obs-label">Archival condition</div>
+          <p>The original performance evaluation was stored in a legacy HR system retired in 2019. No export was completed before retirement. A reviewer at the time printed a copy and retained it in the physical case file. The physical file was later scanned and uploaded. The uploaded scan is the only remaining accessible version of the original record. It is a scan of a print of a screen of the original.</p>
+        </div>
+        <div class="lc-implication"><strong>Review implication</strong>Substitute records should be identified as substitutes in any review or audit that references them. A scan of a print of a screen-captured record may contain the relevant information. It is not the same as the original document and should not be represented as such.</div>
       </div>
       <h2 class="section-h2">Legacy System Coexistence</h2>
       <p>Organizations implementing pre-finalization review do not typically begin with a clean documentation environment. Existing records in official systems may not contain source-path visibility. Historical records may reference documents that no longer exist or were never attached.</p>
@@ -989,6 +1116,33 @@ footer{background:var(--near-black);border-top:1px solid var(--border);padding:3
       </div>
       <div class="from-practice"><div class="from-practice-label">From practice</div><p>The term had a specific meaning when it was introduced. By the time it appeared in the record being reviewed, that meaning was no longer current. The record read as precise. The precision referred to a framework that no longer existed.</p></div>
 
+      <h2 class="section-h2">Cross-System Reconstruction Failures</h2>
+      <p>Cross-system reconstruction failures describe conditions in which records from two or more institutional systems, when read together, produce inconsistent or irreconcilable information about the same event, employee, or case. The inconsistency was not introduced intentionally. It resulted from systems that were updated independently, migrated at different times, or maintained with different data entry conventions.</p>
+      <div class="from-practice"><div class="from-practice-label">From practice</div><p>The HRIS showed a termination date of April 15. The payroll system showed a last payment date corresponding to April 22. The investigation record referenced a final review completed April 18. A later reviewer could not determine the operative sequence from the records alone.</p></div>
+      <div class="ic-card">
+        <div class="ic-card-header">Example · Conflicting Timestamps Across HRIS and Case Management System</div>
+        <div class="ic-card-body">
+          <div class="ic-field"><div class="ic-field-label">HRIS entry</div><p class="primary">Status change to TERMINATED entered April 15 at 3:42 PM. Entered by: HR Generalist. Case closed.</p></div>
+          <div class="ic-field"><div class="ic-field-label">Case management system entry</div><p>Case status: ACTIVE. Last update: April 17. Notes indicate review pending supervisor sign-off. No closure entry found.</p></div>
+          <div class="ic-field"><div class="ic-field-label">Investigation record</div><p>Investigation summary filed April 18. Record states: all administrative steps complete as of filing date.</p></div>
+          <div class="ic-field"><div class="ic-field-label">Reconstruction condition</div><p>Three systems show three different operative dates for what appears to be the same administrative closure. The systems were updated independently and do not cross-reference each other. A later reviewer cannot determine from the records alone which date is authoritative, whether the case management closure was a separate event from the HRIS status change, or whether the April 18 investigation summary postdated a termination that had already been entered.</p></div>
+        </div>
+      </div>
+
+      <div class="ic-card">
+        <div class="ic-card-header">Example · Duplicate Employee Identifiers Across Parallel Systems</div>
+        <div class="ic-card-body">
+          <div class="ic-field"><div class="ic-field-label">Condition</div><p class="primary">An employee who transferred between business units was assigned a new employee number in the acquiring unit's legacy HR system. The prior business unit retained the original number in its own records. Both numbers appear in investigation records from the period when both systems were active simultaneously.</p></div>
+          <div class="ic-field"><div class="ic-field-label">Effect on reconstruction</div><p>Records identified by the prior employee number and records identified by the new employee number refer to the same individual. A search by one number does not return records filed under the other. The employee's complete disciplinary and investigation history is not retrievable through a single system query. A later reviewer relying on a single identifier may encounter an incomplete record set without being aware of the incompleteness.</p></div>
+          <div class="ic-field"><div class="ic-field-label">Implementation note</div><p>Where an organization has undergone mergers, acquisitions, or business unit transitions, the possibility of split or duplicate employee identifiers should be considered before treating a system query result as a complete record set.</p></div>
+        </div>
+      </div>
+
+      <div class="xsys-obs">
+        <div class="xsys-obs-label">Cross-system observation</div>
+        <p>Organizations that have migrated HRIS platforms, merged case tracking systems, or absorbed legacy infrastructure from acquired entities frequently maintain records whose identifiers, timestamps, and status fields are internally consistent within each system and inconsistent across them. The inconsistency is not visible from within any single system.</p>
+      </div>
+
       <h2 class="section-h2">Archive Fragmentation</h2>
       <p>Archive fragmentation describes the condition in which documents that are relevant to the interpretation or reconstruction of current records are distributed across repositories that reviewers do not routinely access, do not know to access, or cannot access without a separate request process. The documents exist. They are not hidden. They are simply not on the standard review path.</p>
       <div class="from-practice"><div class="from-practice-label">From practice</div><p>The answer to the interpretive question was in a memo that had been in the compliance archive for three years. Nobody reading the records produced under that interpretation had ever seen the memo. The question kept getting re-asked.</p></div>
@@ -1066,6 +1220,33 @@ footer{background:var(--near-black);border-top:1px solid var(--border);padding:3
         </div>
       </div>
 
+      <h2 class="section-h2">Invisible Operational Dependencies</h2>
+      <p>Invisible operational dependencies describe conditions in which the formal record reflects an outcome that was shaped by an undocumented precondition, approval, or decision that existed entirely outside the official process. The formal record shows a completed step. The informal decision that made that step possible is not in the file and is not in any file.</p>
+      <div class="from-practice"><div class="from-practice-label">From practice</div><p>The termination was approved through the formal process. The informal pre-clearance discussion between the department head and HR leadership that preceded the formal submission is not documented anywhere. A later reviewer reading the formal record has no way to know that the substantive decision had already been made before the formal process began.</p></div>
+
+      <div class="trans-block">
+        <div class="trans-header">Dependency · Manager-Maintained Tracking Outside the Official System</div>
+        <div class="trans-body">
+          <div class="trans-field"><div class="trans-field-label">Formal record</div><p class="edge">HRIS performance review entries show quarterly ratings and one coaching note per review cycle. No additional documentation between reviews.</p></div>
+          <div class="trans-field"><div class="trans-field-label">Actual operational history</div><p class="local">The department manager maintained a personal Word document logging weekly one-on-ones, informal feedback conversations, and performance observations throughout the year. The document was updated in real time. It was used to draft the formal quarterly reviews. The document was not filed, not archived, and was stored on the manager's local drive. When the manager left the organization in February, the document was not transferred.</p></div>
+          <div class="trans-field"><div class="trans-field-label">Reconstruction problem</div><p class="obs">The formal record shows four clean quarterly reviews and one coaching note. The operational history that produced those reviews existed in a document that no longer exists. A later reviewer reading the formal record sees a sparse but completed record. They have no indication that a more detailed operational history existed or that it is no longer available.</p></div>
+        </div>
+      </div>
+
+      <div class="trans-block">
+        <div class="trans-header">Dependency · Undocumented Verbal Approval Preceding Formal Action</div>
+        <div class="trans-body">
+          <div class="trans-field"><div class="trans-field-label">Formal record</div><p class="edge">Termination record dated April 15. HR secondary review documented April 14. Legal sign-off documented April 14. Record shows standard approval chain.</p></div>
+          <div class="trans-field"><div class="trans-field-label">Actual operational history</div><p class="local">The termination decision was communicated to the department head verbally by HR leadership on April 9, six days before the formal approval was entered. The April 9 discussion included the rationale, the timing, and the approved severance terms. The formal submission on April 13 was a documentation of a decision already made.</p></div>
+          <div class="trans-field"><div class="trans-field-label">Reconstruction problem</div><p class="obs">The formal record shows a process that moved from submission to approval in one day. A later reviewer assessing whether the review was substantive cannot determine from the record whether the one-day turnaround reflects an expedited review of the submitted documentation or documentation of a decision that had already been made through a different channel.</p></div>
+        </div>
+      </div>
+
+      <div class="shadow-obs">
+        <div class="shadow-obs-label">Operational observation</div>
+        <p>The operational history frequently exists outside the formal record. The formal record shows the approved outcome. The informal structures that produced the outcome are not documented. A later reviewer reading the formal record has access to the conclusion without access to the process that generated it.</p>
+      </div>
+
       <h2 class="section-h2">Procedural Layering</h2>
       <p>Procedural layering describes the condition in which new review controls, attestation requirements, and process steps are added to an existing review structure without retiring or reconciling the steps they were intended to improve upon. Organizations rarely replace processes cleanly. They add to them.</p>
       <div class="ic-card">
@@ -1078,6 +1259,34 @@ footer{background:var(--near-black);border-top:1px solid var(--border);padding:3
         </div>
       </div>
       <div class="fossil-obs"><div class="fossil-obs-label">Structural observation</div><p>The current investigation review structure is the accumulated product of seven years of gap-closing. Each layer addressed a specific problem. None of the layers were designed with knowledge of the layers that would follow.</p></div>
+
+      <h2 class="section-h2">Procedural Archaeology</h2>
+      <p>Procedural archaeology describes the interpretive work a reviewer must perform when a record contains terminology, form fields, routing notations, or escalation codes whose original meaning is no longer documented in any current organizational reference. The artifact is in the record. Its meaning is not.</p>
+      <p class="text-dim" style="font-size:0.9rem">The strongest examples involve structures that are still actively used, and correctly filled in, after their original purpose faded. The form field persists because nobody removed it. The code is entered because the system requires a value. Neither the drafter nor the reviewer knows what the field was for.</p>
+      <div class="ic-card">
+        <div class="ic-card-header">Example · Legacy Routing Code in Active Use</div>
+        <div class="ic-card-body">
+          <div class="ic-field"><div class="ic-field-label">Artifact</div><p class="primary">Investigation records include a routing field with code entries: standard values are CLASS-A, CLASS-B, CLASS-C, and HOLD-PENDING. Approximately 85% of current records show CLASS-B. Approximately 10% show CLASS-C. HOLD-PENDING appears in 5% of records from 2021 onward.</p></div>
+          <div class="ic-field"><div class="ic-field-label">Origin of the classification system</div><p>The classification codes were introduced in 2016 as part of an investigation management system that was replaced in 2020. Under the 2016 system, each class corresponded to a distinct escalation pathway with defined timelines and required review steps. When the system was replaced, the classification codes were preserved in the new template without documentation of their meaning.</p></div>
+          <div class="ic-field"><div class="ic-field-label">Current condition</div><p>Current users of the classification field select a code based on informal guidance passed among the team, not written policy. A review of current practice found that CLASS-B is understood by some reviewers as meaning routine escalation, by others as meaning no further action required, and by others as the default when CLASS-A seems too serious and CLASS-C doesn't apply. The codes are consistently filled in. The meanings are inconsistently applied.</p></div>
+          <div class="ic-field"><div class="ic-field-label">Reconstruction problem</div><p>A later reviewer reading a 2022 investigation record with a CLASS-B designation cannot determine from any current organizational document what CLASS-B was intended to mean or whether the designation was entered with the same understanding as other CLASS-B records from the same period.</p></div>
+        </div>
+      </div>
+
+      <div class="ic-card">
+        <div class="ic-card-header">Example · Unexplained Notation Surviving Across Template Generations</div>
+        <div class="ic-card-body">
+          <div class="ic-field"><div class="ic-field-label">Artifact</div><p class="primary">Termination records from 2018 through present include a field labeled \"WF Clearance\" with a checkbox. In current use, the box is almost always checked without a corresponding explanation of what clearance it represents.</p></div>
+          <div class="ic-field"><div class="ic-field-label">Origin</div><p>The field was introduced in 2018 to document that the departing employee's access to the building and digital systems had been confirmed revoked before the termination record was filed. \"WF\" referred to the Workplace Facilities function, which managed physical and digital access clearance at the time. The Facilities function was merged into IT Security in 2021.</p></div>
+          <div class="ic-field"><div class="ic-field-label">Current condition</div><p>The WF Clearance field has remained in the template through three subsequent template revisions. Reviewers who joined after 2021 understand it variably: some check it to indicate the employee was off-boarded, some check it after confirming with IT Security, and some check it because it has always been checked. The Workplace Facilities function no longer exists. No current document explains what WF Clearance means.</p></div>
+        </div>
+      </div>
+
+      <div class="fossil-obs">
+        <div class="fossil-obs-label">Structural observation</div>
+        <p>Procedural artifacts are most persistent when they require an action — checking a box, entering a code — that can be completed without understanding what the action represents. The artifact survives because it still requires something. What it requires has not been explained since the context that gave it meaning was retired.</p>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1136,6 +1345,11 @@ footer{background:var(--near-black);border-top:1px solid var(--border);padding:3
       <div class="version-entry"><div class="version-tag">Clarification · May 2026</div><div class="version-body">AI-Assisted Documentation section: added note that semantic inflation may occur even where AI tools draw on accurate source notes. The issue is intensification of language, not fabrication of events.</div></div>
       <div class="version-entry"><div class="version-tag">Clarification · May 2026</div><div class="version-body">Observable Support condition: clarified that email timestamps, access logs, and HRIS records constitute identifiable anchors for purposes of the review. No change to the underlying condition.</div></div>
       <div class="version-entry"><div class="version-tag">Implementation Note · May 2026</div><div class="version-body">Reviewer Environments section note: the three environments were developed at different points and for different operational reasons. The depth varies by section. Where a section is thinner, additions will appear in subsequent revisions as implementation experience accumulates.</div></div>
+      <div class="version-entry"><div class="version-tag">Addition · May 2026 · Reviewer Access Limitations</div><div class="version-body">Reviewer Environments section expanded to include documented access conditions: inherited files with inaccessible prior review notes, decommissioned system references, and archive access gaps. These conditions affect how the review standard applies in practice, not the standard itself.</div></div>
+      <div class="version-entry"><div class="version-tag">Addition · May 2026 · Partial Evidentiary Survivorship</div><div class="version-body">Review Examples section expanded to include survivorship cases: narratives surviving without attachments due to migration-related loss, attachments surviving without the narrative that gave them context, and investigation summaries surviving after source material was destroyed per retention schedule. These are documented as reconstruction conditions, not compliance failures.</div></div>
+      <div class="version-entry"><div class="version-tag">Addition · May 2026 · Later Reviewer Conditions LC·08 through LC·10</div><div class="version-body">Later Review section expanded to include conditions related to archive degradation: invalid attachment paths following system migration, metadata surviving without corresponding content, and inaccessible retention archives where screenshots or printed copies have become the only accessible substitute for original records.</div></div>
+      <div class="version-entry"><div class="version-tag">Addition · May 2026 · Cross-System Reconstruction Failures</div><div class="version-body">Institutional Conditions section expanded with cross-system reconstruction failure examples: conflicting timestamps across HRIS and case management systems, and duplicate employee identifiers resulting from business unit transitions. Organizations that have migrated platforms or absorbed legacy infrastructure should consider cross-system consistency as a reconstruction risk.</div></div>
+      <div class="version-entry"><div class="version-tag">Addition · May 2026 · Invisible Operational Dependencies and Procedural Archaeology</div><div class="version-body">Shadow Behavior section expanded with two new subsections. Invisible Operational Dependencies documents conditions where the formal record reflects an outcome shaped by undocumented preconditions — manager-maintained tracking outside the official system, verbal approvals preceding formal submissions. Procedural Archaeology documents conditions where terminology, routing codes, and form fields remain in active use after their original meaning is no longer documented in any current organizational reference.</div></div>
     </div>
   </div>
 </section>
@@ -1144,7 +1358,7 @@ footer{background:var(--near-black);border-top:1px solid var(--border);padding:3
   <div class="footer-inner">
     <div>
       <div class="footer-brand">JRS™</div>
-      <div class="footer-meta">Justification Review Standard · v1.0 · May 2026</div>
+      <div class="footer-meta">Justification Review Standard · v1.0 · May 2026 · Expanded</div>
     </div>
     <div class="footer-text">
       <p>Developed by Phillip Wikes, M.S., drawing from experience in administrative review, investigations, and documentation assessment within regulated environments.</p>
