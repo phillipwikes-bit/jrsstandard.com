@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JRS Deployment Kit | Training and Downloads</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+:root{--bg:#0A0A0A;--surface:#111111;--surface2:#161616;--text:#E8E8E8;--muted:#888888;--muted-soft:#555555;--rule:#1E1E1E;--accent:#B89040;--accent-dim:#7A5E28;--ready:#1E5C35;--ready-text:#5DBF82;--stop:#8B2020;--stop-text:#E07070;--review-text:#D4A055;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;line-height:1.6;min-height:100vh;}
+.site-header{border-bottom:1px solid var(--rule);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;background:var(--bg);z-index:100;}
+.logo{font-family:'JetBrains Mono','Courier New',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);text-decoration:none;}
+.badge{font-family:'JetBrains Mono','Courier New',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:4px 10px;}
+.hero{border-bottom:1px solid var(--rule);padding:40px 32px 36px;max-width:900px;margin:0 auto;}
+.eyebrow{font-family:'JetBrains Mono','Courier New',monospace;font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:10px;}
+.hero h1{font-size:24px;font-weight:700;color:var(--text);margin-bottom:10px;line-height:1.25;}
+.hero p{font-size:13.5px;color:var(--muted);max-width:580px;line-height:1.7;}
+.access-note{margin-top:16px;border:1px solid var(--rule);border-left:3px solid var(--accent-dim);padding:10px 14px;font-size:12.5px;color:var(--muted);background:var(--surface);max-width:600px;}
+.container{max-width:900px;margin:0 auto;padding:0 32px 60px;}
+.section-head{font-size:9px;font-family:'JetBrains Mono','Courier New',monospace;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-dim);margin:36px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--rule);}
+.doc-grid{border:1px solid var(--rule);overflow:hidden;}
+.doc-card{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:var(--surface);border-bottom:1px solid var(--rule);gap:16px;}
+.doc-card:last-child{border-bottom:none;}
+.doc-card:hover{background:var(--surface2);}
+.doc-info{flex:1;}
+.doc-label{font-family:'JetBrains Mono','Courier New',monospace;font-size:7px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:3px;}
+.doc-label span{color:var(--muted-soft);margin-left:8px;font-weight:400;}
+.doc-title{font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:2px;}
+.doc-desc{font-size:12px;color:var(--muted);line-height:1.5;}
+.btn-dl{font-family:'JetBrains Mono','Courier New',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:#0A0A0A;background:var(--accent);padding:9px 14px;text-decoration:none;white-space:nowrap;flex-shrink:0;border:none;cursor:pointer;display:inline-block;}
+.btn-dl:hover{background:#A07830;}
+.module{border:1px solid var(--rule);overflow:hidden;margin-bottom:8px;}
+.module-hdr{padding:12px 16px;background:var(--surface2);border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;cursor:pointer;user-select:none;}
+.module-hdr:hover{background:#1A1A1A;}
+.module-num{font-family:'JetBrains Mono','Courier New',monospace;font-size:8px;letter-spacing:.14em;color:var(--accent-dim);margin-right:10px;}
+.module-title{font-size:13px;font-weight:600;color:var(--text);}
+.module-toggle{font-family:'JetBrains Mono','Courier New',monospace;font-size:9px;color:var(--muted-soft);}
+.module-body{display:none;padding:18px 16px;background:var(--surface);border-top:1px solid var(--rule);}
+.module-body.open{display:block;}
+.module-body p{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:10px;}
+.rn{border-left:3px solid var(--accent-dim);padding:9px 13px;background:var(--surface2);margin:10px 0;}
+.rn-label{font-family:'JetBrains Mono','Courier New',monospace;font-size:7px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:4px;}
+.rn p{font-size:12.5px;color:var(--muted);margin:0;}
+.before{background:rgba(139,32,32,.05);border-left:3px solid var(--stop);padding:9px 13px;margin-bottom:4px;}
+.after{background:rgba(30,92,53,.05);border-left:3px solid var(--ready);padding:9px 13px;}
+.rl{font-family:'JetBrains Mono','Courier New',monospace;font-size:7px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:5px;}
+.rl.bad{color:var(--stop-text);} .rl.good{color:var(--ready-text);}
+.rt{font-size:12.5px;font-style:italic;line-height:1.65;}
+.rt.bad{color:#B06060;} .rt.good{color:#70B090;}
+.ann{font-size:11.5px;color:#A05050;margin-top:5px;padding-left:8px;}
+.gap-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0;}
+.gap-box{border:1px solid var(--rule);padding:10px 12px;background:var(--surface2);}
+.gap-lbl{font-family:'JetBrains Mono','Courier New',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px;}
+.gap-lbl.red{color:var(--stop-text);} .gap-lbl.gold{color:var(--accent-dim);}
+.gap-text{font-size:12px;color:var(--muted);line-height:1.5;}
+.steps{display:flex;flex-direction:column;gap:1px;border:1px solid var(--rule);overflow:hidden;margin:10px 0;}
+.step{display:flex;align-items:stretch;border-bottom:1px solid var(--rule);}
+.step:last-child{border-bottom:none;}
+.step-num{background:var(--surface2);padding:10px 12px;min-width:32px;border-right:1px solid var(--rule);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'JetBrains Mono','Courier New',monospace;font-size:9px;color:var(--muted-soft);}
+.step-body{padding:10px 14px;font-size:12.5px;color:var(--muted);}
+.step-body strong{color:var(--text);font-size:13px;display:block;margin-bottom:2px;}
+.site-footer{border-top:1px solid var(--rule);padding:20px 32px;text-align:center;}
+.site-footer p{font-size:11.5px;color:var(--muted-soft);}
+.site-footer a{color:var(--accent-dim);text-decoration:none;}
+@media(max-width:640px){
+  .site-header{padding:0 16px;}
+  .hero{padding:24px 16px;}
+  .container{padding:0 16px 48px;}
+  .doc-card{flex-direction:column;align-items:flex-start;gap:10px;}
+  .btn-dl{width:100%;text-align:center;}
+  .gap-grid{grid-template-columns:1fr;}
+  .hero h1{font-size:20px;}
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <a href="https://jrsstandard.com" class="logo">JRS Standard</a>
+  <div class="badge">Deployment Kit Access</div>
+</header>
+<div class="hero">
+  <div class="eyebrow">JRS Deployment Kit | Training and Operational Resources</div>
+  <h1>Reviewer Training and Downloads</h1>
+  <p>Training modules and all kit documents for Deployment Kit holders. Download any file directly from this page. No additional login required.</p>
+  <div class="access-note"><strong style="color:var(--text);">Deployment Kit holders only.</strong> This page was delivered with your Gumroad purchase. Bookmark it for ongoing access. For questions, visit <a href="https://jrsstandard.com" style="color:var(--accent-dim);">jrsstandard.com</a>.</div>
+</div>
+<div class="container">
+<div class="section-head">All Documents / Download Any File</div>
+<div class="doc-grid">
+  <div class="doc-card">
+    <div class="doc-info">
+      <div class="doc-label">Quick Reference <span>KIT-F1 | v1.0</span></div>
+      <div class="doc-title">Rapid Review Card</div>
+      <div class="doc-desc">One-page reviewer reference. Five questions, readiness key, escalation triggers. Print-ready.</div>
+    </div>
+    <a href="JRS_Rapid_Review_Card.pdf" target="_blank" class="btn-dl">Download PDF</a>
+  </div>
+  <div class="doc-card">
+    <div class="doc-info">
+      <div class="doc-label">Operational Form <span>KIT-A1 | v1.0</span></div>
+      <div class="doc-title">Pre-Finalization Review Worksheet</div>
+      <div class="doc-desc">Four-section checklist covering reconstruction, evidence anchoring, AI content, and escalation.</div>
+    </div>
+    <a href="JRS_Kit_A1_Worksheet.pdf" target="_blank" class="btn-dl">Download PDF</a>
+  </div>
+  <div class="doc-card">
+    <div class="doc-info">
+      <div class="doc-label">Operational Form <span>KIT-A2 | v1.0</span></div>
+      <div class="doc-title">Secondary Review Escalation Form</div>
+      <div class="doc-desc">Trigger checklist, gap description, action required, routing disposition.</div>
+    </div>
+    <a href="JRS_Kit_A2_Escalation_Form.pdf" target="_blank" class="btn-dl">Download PDF</a>
+  </div>
+  <div class="doc-card">
+    <div class="doc-info">
+      <div class="doc-label">Operational Form <span>KIT-A3 | v1.0</span></div>
+      <div class="doc-title">Reviewer Signoff Template</div>
+      <div class="doc-desc">Reviewer confirmation checklist, known limitations, attestation block.</div>
+    </div>
+    <a href="JRS_Kit_A3_Signoff_Template.pdf" target="_blank" class="btn-dl">Download PDF</a>
+  </div>
+  <div class="doc-card">
+    <div class="doc-info">
+      <div class="doc-label">Onboarding Reference <span>KIT-B1 | v1.0</span></div>
+      <div class="doc-title">Reviewer Onboarding Guide</div>
+      <div class="doc-desc">Step-by-step reviewer orientation. What to look for, tool routing, risk-level routing.</div>
+    </div>
+    <a href="JRS_Kit_B1_Onboarding_Guide.pdf" target="_blank" class="btn-dl">Download PDF</a>
+  </div>
+  <div class="doc-card">
+    <div class="doc-info">
+      <div class="doc-label">Operational Reference <span>KIT-C1 | v1.0</span></div>
+      <div class="doc-title">AI Verification Checklist</div>
+      <div class="doc-desc">Source verification steps, attestation requirements, AI-assisted content review.</div>
+    </div>
+    <a href="JRS_Kit_C1_AI_Checklist.pdf" target="_blank" class="btn-dl">Download PDF</a>
+  </div>
+  <div class="doc-card">
+    <div class="doc-info">
+      <div class="doc-label">Reference Examples <span>KIT-D1 | v1.0</span></div>
+      <div class="doc-title">Redlined Documentation Examples</div>
+      <div class="doc-desc">Before-and-after documentation examples across 11 failure mode categories.</div>
+    </div>
+    <a href="JRS_Kit_D1_Redlined_Examples.pdf" target="_blank" class="btn-dl">Download PDF</a>
+  </div>
+  <div class="doc-card">
+    <div class="doc-info">
+      <div class="doc-label">Implementation <span>KIT-E1 | v1.0</span></div>
+      <div class="doc-title">Implementation Playbook</div>
+      <div class="doc-desc">Step-by-step deployment guide for HR, compliance, and investigation workflows.</div>
+    </div>
+    <a href="JRS_Kit_E1_Implementation_Playbook.pdf" target="_blank" class="btn-dl">Download PDF</a>
+  </div>
+  <div class="doc-card">
+    <div class="doc-info">
+      <div class="doc-label">Reference <span>KIT-E1A | v1.0</span></div>
+      <div class="doc-title">Secondary Review Trigger Reference</div>
+      <div class="doc-desc">Quick-reference escalation indicators and routing matrix.</div>
+    </div>
+    <a href="JRS_Kit_E1A_Secondary_Review_Triggers.pdf" target="_blank" class="btn-dl">Download PDF</a>
+  </div>
+  <div class="doc-card">
+    <div class="doc-info">
+      <div class="doc-label">Field Reference <span>KIT-F2 | v1.0</span></div>
+      <div class="doc-title">Investigator Field Guide</div>
+      <div class="doc-desc">Investigation-specific review reference covering source verification and conflict preservation.</div>
+    </div>
+    <a href="JRS_Investigator_Field_Guide.pdf" target="_blank" class="btn-dl">Download PDF</a>
+  </div>
+</div>
+
+<div class="section-head">Training Modules</div>
+
+<div class="module">
+  <div class="module-hdr">
+    <div><span class="module-num">Module 01</span><span class="module-title">What Pre-Finalization Review Is and Why It Matters</span></div>
+    <div class="module-toggle">expand</div>
+  </div>
+  <div class="module-body">
+    <p>Pre-finalization review is applied at the drafting stage, before a record enters an official system. The purpose is not to evaluate whether the underlying decision was correct. The purpose is to evaluate whether the basis for that decision is visible in the file.</p>
+    <p>Records are reviewed later by people who were not present during the original events. Staffing changes. People leave. The file outlasts the participants. What felt obvious during drafting may not be recoverable later.</p>
+    <div class="rn"><div class="rn-label">Core principle</div><p>The review evaluates whether the support is in the file — not whether the outcome was correct. A record can be well-supported and still reflect a decision someone disagrees with. Documentation quality and decision quality are separate questions.</p></div>
+    <p><strong style="color:var(--text);">The Three Review Checks</strong></p>
+    <p>Before finalizing any record, apply three tests:</p>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><strong>The Time Traveler Test</strong>Can this record stand on its own? If someone unfamiliar with these events reviewed it two years from now, could they reconstruct why this decision was made without calling the original author?</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><strong>The Fact Anchor</strong>What specific evidence supports each conclusion? A date, a log entry, a documented interaction, a referenced record. If the support is not in the document, it is not available for later review.</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Documented Reasoning</strong>Is the path from evidence to conclusion visible within the record itself? The reasoning must be in the document — not in the author's memory.</div></div>
+    </div>
+    <div class="rn"><div class="rn-label">From practice</div><p>Most records that fail during later review looked complete to the person who drafted them. The gap is usually not intent. It is the distance between what the author understood and what the file actually shows.</p></div>
+  </div>
+</div>
+
+<div class="module">
+  <div class="module-hdr">
+    <div><span class="module-num">Module 02</span><span class="module-title">Identifying Common Documentation Failure Modes</span></div>
+    <div class="module-toggle">expand</div>
+  </div>
+  <div class="module-body">
+    <p>Documentation failures share a common characteristic: the record looks complete at the time of drafting, but a later reviewer with no prior knowledge of the events cannot evaluate what it says.</p>
+    <p><strong style="color:var(--text);">Failure Mode 1: Unsupported Evaluative Language</strong></p>
+    <div class="before"><div class="rl bad">Before</div><div class="rt bad">"Employee has a negative attitude and is difficult to work with."</div><div class="ann">&#9654; No behavioral anchor. No dates. No documented interactions. A later reviewer cannot verify what conduct occurred.</div></div>
+    <div class="after"><div class="rl good">After</div><div class="rt good">Employee responded to three documented instructions with "I don't see why this is necessary" (Feb 2, Feb 9, Feb 16 meeting notes). Supervisor feedback provided February 17 and on file.</div></div>
+    <p style="margin-top:14px;"><strong style="color:var(--text);">Failure Mode 2: Pattern Claims Without Dates</strong></p>
+    <div class="before"><div class="rl bad">Before</div><div class="rt bad">"Employee has been repeatedly absent without advance notice on multiple occasions."</div><div class="ann">&#9654; "Repeatedly" and "multiple occasions" — no dates. Pattern cannot be independently established.</div></div>
+    <div class="after"><div class="rl good">After</div><div class="rt good">Employee was absent without advance notice on January 5, January 12, and February 3, contrary to the Attendance Policy acknowledged January 2. Counseling note issued February 4 on file.</div></div>
+    <p style="margin-top:14px;"><strong style="color:var(--text);">Failure Mode 3: Escalation Without a Prior Counseling Trail</strong></p>
+    <div class="before"><div class="rl bad">Before</div><div class="rt bad">"After repeated coaching and progressive discipline, employee has failed to demonstrate improvement necessary to continue employment."</div><div class="ann">&#9654; "Repeated coaching" — no coaching notes. "Progressive discipline" — no prior records referenced.</div></div>
+    <div class="after"><div class="rl good">After</div><div class="rt good">Employee placed on Performance Improvement Plan January 10. Check-in notes from January 24, February 14, March 3 reflect continued gaps. Written warning issued March 6. All records on file.</div></div>
+    <div class="rn"><div class="rn-label">From practice</div><p>Most records that fail during later review looked complete to the person who drafted them. The gap is usually not intent. It is the distance between what the author understood and what the file actually shows.</p></div>
+  </div>
+</div>
+
+<div class="module">
+  <div class="module-hdr">
+    <div><span class="module-num">Module 03</span><span class="module-title">Secondary Review — When to Escalate and How</span></div>
+    <div class="module-toggle">expand</div>
+  </div>
+  <div class="module-body">
+    <p>Secondary review is triggered when a high-risk indicator is present in the record. Any single indicator is sufficient reason to route for secondary review before system entry.</p>
+    <div class="gap-grid">
+      <div class="gap-box"><div class="gap-lbl red">Trigger</div><div class="gap-text">Evaluative language without a specific behavioral anchor</div></div>
+      <div class="gap-box"><div class="gap-lbl red">Trigger</div><div class="gap-text">Pattern conduct claim without specific dated instances</div></div>
+      <div class="gap-box"><div class="gap-lbl red">Trigger</div><div class="gap-text">Escalation without a documented prior counseling trail</div></div>
+      <div class="gap-box"><div class="gap-lbl red">Trigger</div><div class="gap-text">Termination without referenced supporting documentation</div></div>
+      <div class="gap-box"><div class="gap-lbl red">Trigger</div><div class="gap-text">AI-assisted wording not reviewed against source notes</div></div>
+      <div class="gap-box"><div class="gap-lbl red">Trigger</div><div class="gap-text">Accommodation record missing interactive process documentation</div></div>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="step-num" style="color:var(--stop-text);">!</div><div class="step-body"><strong>STOP</strong>Evaluative language without anchor. Missing timeline. Do not submit. Return to drafter.</div></div>
+      <div class="step"><div class="step-num" style="color:var(--review-text);">~</div><div class="step-body"><strong>REVIEW</strong>Basis likely accurate but not fully visible. Secondary review or clarification needed before entry.</div></div>
+      <div class="step"><div class="step-num" style="color:var(--ready-text);">&#10003;</div><div class="step-body"><strong>READY</strong>Self-contained. Evidence identifiable. Reasoning traceable. Basis holds without explanation from the author.</div></div>
+    </div>
+    <div class="rn"><div class="rn-label">Reviewer note</div><p>Secondary review cannot repair unsupported drafting. Records that arrive without a traceable basis are returned to the drafter — not approved with a notation.</p></div>
+  </div>
+</div>
+
+<div class="module">
+  <div class="module-hdr">
+    <div><span class="module-num">Module 04</span><span class="module-title">AI-Assisted Documentation Review</span></div>
+    <div class="module-toggle">expand</div>
+  </div>
+  <div class="module-body">
+    <p>Where AI tools contributed to a record, the review standard does not change. The review evaluates whether the basis is visible in the file regardless of how the wording was generated.</p>
+    <p><strong style="color:var(--text);">Semantic Inflation</strong></p>
+    <p>AI-assisted drafting may introduce language that appears procedurally complete despite limited underlying evidentiary support. Qualified language in source notes becomes declarative in the generated record. General impressions are stated as findings. Conflicts in source material are smoothed over rather than preserved.</p>
+    <div class="before"><div class="rl bad">AI Summary — Before</div><div class="rt bad">"Employee has consistently demonstrated difficulty working within team structures and shown resistance to supervisory guidance."</div><div class="ann">&#9654; Source records not identified. No dates, no behavioral anchors. Not traceable to documented interactions.</div></div>
+    <div class="after"><div class="rl good">After Source Review</div><div class="rt good">Summary reviewed against meeting notes dated March 4, 11, and 18, and coaching records February 10 and March 3. On March 4, employee declined project planning participation without stated reason. On March 11, employee did not submit required status report despite two documented requests. Human review completed March 19. No conflicts identified.</div></div>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Source Identification</strong>List specific source records reviewed before drafting. Dates required.</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Characterization Review</strong>Each characterization traced to a specific documented interaction.</div></div>
+      <div class="step"><div class="step-num" style="color:var(--review-text);">3</div><div class="step-body"><strong>Conflict and Gap Check</strong>Conflicting accounts preserved. Gaps noted, not smoothed over.</div></div>
+      <div class="step"><div class="step-num" style="color:var(--review-text);">4</div><div class="step-body"><strong>Human Confirmation</strong>Reviewer confirms wording against source notes before system entry.</div></div>
+      <div class="step"><div class="step-num" style="color:var(--ready-text);">5</div><div class="step-body"><strong>System Entry</strong>Record enters official system with confirmation on file.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="module">
+  <div class="module-hdr">
+    <div><span class="module-num">Module 05</span><span class="module-title">Investigation Review and Conflicting Account Preservation</span></div>
+    <div class="module-toggle">expand</div>
+  </div>
+  <div class="module-body">
+    <p>Investigation records present specific reconstruction challenges. The conclusion must be traceable to identified source materials and the reasoning must be visible within the record itself.</p>
+    <div class="before"><div class="rl bad">Problematic Approach</div><div class="rt bad">"Based on the available evidence, the investigator found that the incident occurred as described by the complainant."</div><div class="ann">&#9654; Respondent account absent. Basis for crediting one account not stated. Conflicting evidence not acknowledged.</div></div>
+    <div class="after"><div class="rl good">Supported Approach</div><div class="rt good">Complainant provided contemporaneous documentation dated April 3. Respondent denied the conduct and provided no supporting documentation. One witness corroborated complainant's account. Credibility determination based on contemporaneous documentation and corroboration. Respondent's account noted and preserved.</div></div>
+    <div class="rn"><div class="rn-label">Investigator note</div><p>The investigation record must stand without the investigator available to explain it. If following the reasoning requires knowing what the investigator knew, the record is not complete.</p></div>
+  </div>
+</div>
+
+<div class="module">
+  <div class="module-hdr">
+    <div><span class="module-num">Module 06</span><span class="module-title">Implementation — Starting and Expanding Review Practices</span></div>
+    <div class="module-toggle">expand</div>
+  </div>
+  <div class="module-body">
+    <p>JRS is designed for incremental adoption. No policy change, system integration, or formal rollout is required. Start with one record type. Expand from demonstrated usefulness.</p>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Identify one record type to start with</strong>Termination records, accommodation documentation, or investigation conclusions are highest-leverage.</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Share the Redlined Examples with drafters and reviewers</strong>Work through the before-and-after examples. Identify which failure modes appear most in your record types.</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Apply the Pre-Finalization Worksheet</strong>Drafter or first-line reviewer applies the five questions before submission.</div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Apply the Escalation Form when a high-risk indicator appears</strong>Any single trigger is sufficient reason to route for secondary review before system entry.</div></div>
+      <div class="step"><div class="step-num">5</div><div class="step-body"><strong>Introduce the AI Verification Checklist</strong>Apply before any AI-assisted content enters an official system.</div></div>
+      <div class="step"><div class="step-num" style="color:var(--ready-text);">6</div><div class="step-body"><strong>Expand to additional record types</strong>Once established for one record type, introduce to other elevated-risk categories.</div></div>
+    </div>
+    <div class="rn"><div class="rn-label">Implementation note</div><p>Start with one record type and one team. Expand from there.</p></div>
+  </div>
+</div>
+
+</div>
+
+<footer class="site-footer">
+  <p>JRS Deployment Kit &nbsp;|&nbsp; Version 1.0 &nbsp;|&nbsp; Effective May 2026 &nbsp;|&nbsp; &copy; 2026 Phillip Wikes</p>
+  <p style="margin-top:6px;"><a href="https://jrsstandard.com">jrsstandard.com</a> &nbsp;&mdash;&nbsp; Not legal advice. Does not establish legal sufficiency.</p>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.module-hdr').forEach(function(hdr) {
+    hdr.addEventListener('click', function() {
+      var body = hdr.nextElementSibling;
+      var tog = hdr.querySelector('.module-toggle');
+      if (body.classList.contains('open')) {
+        body.classList.remove('open');
+        tog.textContent = 'expand';
+      } else {
+        body.classList.add('open');
+        tog.textContent = 'collapse';
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>
