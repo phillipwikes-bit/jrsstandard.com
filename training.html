@@ -248,8 +248,8 @@ a:hover{text-decoration:underline}
     <p>Work through each module and complete the knowledge check to mark it done. Kit documents are available for download below. These materials establish a documentation sufficiency standard for pre-finalization review. They do not make legal determinations. Where a conflict exists with local practice, apply the more documentation-protective requirement.</p>
     <p style="margin-top:10px">This page also includes an interactive <strong style="color:var(--text)">Review Simulator</strong> at the bottom. The simulator offers four exercises: practice reviewing sample records against the five JRS questions, routing decision scenarios, failure mode identification, and a paste-and-assess tool where you can submit your own record text for instant pattern-based feedback. The simulator is for educational use only and does not produce legal or compliance determinations.</p>
     <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
-      <a href="#simulator" onclick="setTimeout(function(){showSimTab(3);},100)" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:10px 20px;text-decoration:none;display:inline-block">Paste &amp; Assess Tool</a>
-      <a href="#simulator" onclick="setTimeout(function(){showSimTab(0);},100)" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--accent);border:1px solid rgba(190,148,71,.4);padding:10px 20px;text-decoration:none;display:inline-block">Go to Simulator</a>
+      <a href="#paste-assess" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:11px 22px;text-decoration:none;display:inline-block">Paste &amp; Assess Tool</a>
+      <a href="#simulator" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--accent);border:1px solid rgba(190,148,71,.4);padding:11px 22px;text-decoration:none;display:inline-block">Practice Exercises</a>
     </div>
     <div class="kit-notice">Deployment Kit holders only. This page was delivered with your Gumroad purchase. For questions, visit jrsstandard.com.</div>
   </div>
@@ -979,7 +979,6 @@ a:hover{text-decoration:underline}
     <button class="sim-tab active" id="sim-tab-0" onclick="showSimTab(0)">1. Document Review</button>
     <button class="sim-tab" id="sim-tab-1" onclick="showSimTab(1)">2. Routing Decisions</button>
     <button class="sim-tab" id="sim-tab-2" onclick="showSimTab(2)">3. Failure Mode ID</button>
-    <button class="sim-tab" id="sim-tab-3" onclick="showSimTab(3)">4. Paste &amp; Assess</button>
   </div>
 
   <!-- ── TAB 1: DOCUMENT REVIEW ── -->
@@ -1023,50 +1022,67 @@ a:hover{text-decoration:underline}
     </div>
   </div>
 
-  <!-- ── TAB 4: PASTE & ASSESS ── -->
-  <div class="sim-panel" id="sim-panel-3" style="display:none">
-    <div style="padding:24px 0 8px">
-      <p style="font-size:13.5px;color:var(--muted);margin-bottom:6px;line-height:1.65">Paste any documentation record — a performance review, disciplinary note, investigation summary, or similar — and receive an instant assessment against the five JRS pre-finalization review questions.</p>
-      <p style="font-size:12px;color:var(--muted-soft);margin-bottom:20px">This assessment uses pattern analysis, not AI. Results are educational only and do not constitute legal or compliance determinations.</p>
-
-      <textarea id="pa-input" placeholder="Paste your record text here..." style="width:100%;min-height:160px;background:var(--surface);border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:13.5px;line-height:1.7;padding:14px 16px;resize:vertical;outline:none;margin-bottom:12px"></textarea>
-
-      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:20px">
-        <button onclick="runAssessment()" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:12px 24px;cursor:pointer">Assess Record</button>
-        <button onclick="clearAssessment()" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:12px 18px;cursor:pointer">Clear</button>
-      </div>
-
-      <div id="pa-results" style="display:none">
-
-        <!-- Overall rating -->
-        <div id="pa-rating-block" style="padding:18px 20px;margin-bottom:20px;border-left:4px solid var(--rule)">
-          <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px">Overall Assessment</div>
-          <div id="pa-rating-label" style="font-size:20px;font-weight:600;margin-bottom:4px"></div>
-          <div id="pa-rating-sub" style="font-size:13px;color:var(--muted);line-height:1.6"></div>
-        </div>
-
-        <!-- Flags found -->
-        <div id="pa-flags-block" style="margin-bottom:20px;display:none">
-          <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--rule)">Flagged Language</div>
-          <div id="pa-flags-list"></div>
-        </div>
-
-        <!-- Q1–Q5 scores -->
-        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--rule)">Pre-Finalization Question Assessment</div>
-        <div id="pa-q-results" style="display:flex;flex-direction:column;gap:1px;margin-bottom:20px"></div>
-
-        <!-- Recommendations -->
-        <div id="pa-recs-block" style="display:none">
-          <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--rule)">Suggested Revisions</div>
-          <div id="pa-recs-list" style="display:flex;flex-direction:column;gap:6px"></div>
-        </div>
-
-        <p style="font-size:11px;color:var(--muted-soft);margin-top:20px;line-height:1.6;border-top:1px solid var(--rule);padding-top:14px">Assessment generated by pattern analysis for educational purposes only. Does not constitute legal advice, HR guidance, or compliance determination. Organizations are responsible for their own review standards and applicable legal requirements.</p>
-      </div>
-    </div>
   </div>
 
 </main>
+
+<!-- PASTE & ASSESS — STANDALONE SECTION -->
+<div id="paste-assess" style="background:var(--surface);border-top:1px solid var(--rule);padding:48px 24px 80px">
+  <div style="max-width:860px;margin:0 auto">
+
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">Paste &amp; Assess</div>
+    <h2 style="font-family:'Bodoni Moda',serif;font-size:26px;font-weight:500;color:var(--text);margin-bottom:12px">Record Assessment Tool</h2>
+    <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:8px;max-width:640px">Paste any documentation record below — a performance review, disciplinary note, investigation summary, accommodation decision, or similar — and receive an instant assessment against the five JRS pre-finalization review questions.</p>
+    <p style="font-size:12.5px;color:var(--muted-soft);margin-bottom:24px">The tool scans for vague timeline language, unsupported conclusions, missing source records, escalation patterns, AI-generated content, and missing employee voice. It uses pattern analysis, not AI, and runs entirely in your browser.</p>
+
+    <div style="border:1px solid rgba(139,32,32,.3);background:rgba(139,32,32,.05);padding:12px 16px;margin-bottom:24px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--stop-text)">Legal Disclaimer — </span>
+      <span style="font-size:12px;color:var(--muted)">Results are for educational purposes only. Not legal advice, HR guidance, or compliance determination. Use fictional or anonymized text only. Do not paste records containing real personal identifying information.</span>
+    </div>
+
+    <label style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);display:block;margin-bottom:8px">Record Text</label>
+    <textarea id="pa-input"
+      placeholder="Paste your record text here. For example: 'Employee has consistently demonstrated poor performance and a negative attitude throughout the review period. Management has repeatedly addressed these concerns without improvement...'"
+      style="width:100%;height:200px;background:var(--bg);border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;line-height:1.75;padding:16px;box-sizing:border-box;display:block;outline:none;-webkit-appearance:none;border-radius:0;resize:none;margin-bottom:16px"
+      autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="true"></textarea>
+
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px">
+      <button onclick="runAssessment()"
+        style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:14px 28px;cursor:pointer;font-weight:600">
+        Assess Record
+      </button>
+      <button onclick="clearAssessment()"
+        style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:14px 20px;cursor:pointer">
+        Clear
+      </button>
+    </div>
+
+    <div id="pa-results" style="display:none">
+
+      <div id="pa-rating-block" style="padding:20px 22px;margin-bottom:24px;border-left:4px solid var(--rule);background:var(--bg)">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:8px">Overall Assessment</div>
+        <div id="pa-rating-label" style="font-size:24px;font-weight:600;margin-bottom:6px"></div>
+        <div id="pa-rating-sub" style="font-size:13.5px;color:var(--muted);line-height:1.65"></div>
+      </div>
+
+      <div id="pa-flags-block" style="margin-bottom:24px;display:none">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--rule)">Flagged Language</div>
+        <div id="pa-flags-list"></div>
+      </div>
+
+      <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--rule)">Pre-Finalization Question Assessment</div>
+      <div id="pa-q-results" style="display:flex;flex-direction:column;gap:2px;margin-bottom:24px"></div>
+
+      <div id="pa-recs-block" style="display:none;margin-bottom:24px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--rule)">Suggested Revisions</div>
+        <div id="pa-recs-list" style="display:flex;flex-direction:column;gap:8px"></div>
+      </div>
+
+      <p style="font-size:11.5px;color:var(--muted-soft);line-height:1.65;border-top:1px solid var(--rule);padding-top:16px">Assessment generated by pattern analysis for educational purposes only. Does not constitute legal advice, HR guidance, or compliance determination. Organizations are responsible for their own review standards and applicable legal requirements.</p>
+    </div>
+
+  </div>
+</div>
 
 <style>
 /* SIMULATOR STYLES */
