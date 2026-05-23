@@ -3543,52 +3543,96 @@ a.gumroad-button.util-link {
   <span class="chip">AI Documentation</span>
 </div>
 
-<div style="border:1px solid var(--rule);margin:28px 0;overflow:hidden;">
-  <div style="background:var(--surface2);padding:20px 24px;border-bottom:1px solid var(--rule);">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">Deployment Kit / Included</div>
-    <div style="font-size:16px;font-weight:600;color:var(--text);margin-bottom:6px;">Training modules are included in the JRS Deployment Kit</div>
-    <div style="font-size:13.5px;color:var(--muted);line-height:1.6;max-width:580px;">All six modules are available as downloadable PDF references. Access requires Deployment Kit purchase. Each module covers a specific aspect of pre-submission documentation review practice.</div>
+<div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+<div class="progress-label" id="progress-label">0 of 6 modules complete</div>
+
+<!-- MODULE INDEX -->
+<div id="module-nav">
+  <div class="module-nav">
+    <div class="module-nav-item" onclick="openModule(0)">
+      <span class="module-nav-num">01</span>
+      <span class="module-nav-title">Introduction to Documentation Review</span>
+      <span class="module-nav-status" id="nav-status-0">Start</span>
+    </div>
+    <div class="module-nav-item" onclick="openModule(1)">
+      <span class="module-nav-num">02</span>
+      <span class="module-nav-title">Observable Support &amp; Evidence Anchoring</span>
+      <span class="module-nav-status" id="nav-status-1">Start</span>
+    </div>
+    <div class="module-nav-item" onclick="openModule(2)">
+      <span class="module-nav-num">03</span>
+      <span class="module-nav-title">Traceable Reasoning &amp; Reviewer Reconstruction</span>
+      <span class="module-nav-status" id="nav-status-2">Start</span>
+    </div>
+    <div class="module-nav-item" onclick="openModule(3)">
+      <span class="module-nav-num">04</span>
+      <span class="module-nav-title">Common Documentation Failure Modes</span>
+      <span class="module-nav-status" id="nav-status-3">Start</span>
+    </div>
+    <div class="module-nav-item" onclick="openModule(4)">
+      <span class="module-nav-num">05</span>
+      <span class="module-nav-title">AI-Assisted Documentation Review</span>
+      <span class="module-nav-status" id="nav-status-4">Start</span>
+    </div>
+    <div class="module-nav-item" onclick="openModule(5)">
+      <span class="module-nav-num">06</span>
+      <span class="module-nav-title">Operational Workflow Integration</span>
+      <span class="module-nav-status" id="nav-status-5">Start</span>
+    </div>
   </div>
 
-  <div style="padding:0;">
-    <div style="display:grid;grid-template-columns:40px 1fr;border-bottom:1px solid var(--rule);opacity:.55;">
-      <div style="padding:16px;border-right:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-soft);display:flex;align-items:center;justify-content:center;">01</div>
-      <div style="padding:16px 18px;"><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:3px;">Introduction to Documentation Review</div><div style="font-size:12.5px;color:var(--muted);">Why records fail during later review. The reviewer lens and reconstruction standard.</div></div>
-    </div>
-    <div style="display:grid;grid-template-columns:40px 1fr;border-bottom:1px solid var(--rule);opacity:.55;">
-      <div style="padding:16px;border-right:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-soft);display:flex;align-items:center;justify-content:center;">02</div>
-      <div style="padding:16px 18px;"><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:3px;">Observable Support and Evidence Anchoring</div><div style="font-size:12.5px;color:var(--muted);">What counts as a specific anchor. Evaluative language without behavioral basis.</div></div>
-    </div>
-    <div style="display:grid;grid-template-columns:40px 1fr;border-bottom:1px solid var(--rule);opacity:.55;">
-      <div style="padding:16px;border-right:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-soft);display:flex;align-items:center;justify-content:center;">03</div>
-      <div style="padding:16px 18px;"><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:3px;">Traceable Reasoning and Reviewer Reconstruction</div><div style="font-size:12.5px;color:var(--muted);">The path from evidence to conclusion. What a later reviewer needs to reconstruct the basis.</div></div>
-    </div>
-    <div style="display:grid;grid-template-columns:40px 1fr;border-bottom:1px solid var(--rule);opacity:.55;">
-      <div style="padding:16px;border-right:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-soft);display:flex;align-items:center;justify-content:center;">04</div>
-      <div style="padding:16px 18px;"><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:3px;">Common Documentation Failure Modes</div><div style="font-size:12.5px;color:var(--muted);">Eleven failure patterns with reviewer questions and supported revisions.</div></div>
-    </div>
-    <div style="display:grid;grid-template-columns:40px 1fr;border-bottom:1px solid var(--rule);opacity:.55;">
-      <div style="padding:16px;border-right:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-soft);display:flex;align-items:center;justify-content:center;">05</div>
-      <div style="padding:16px 18px;"><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:3px;">AI-Assisted Documentation Review</div><div style="font-size:12.5px;color:var(--muted);">Source verification, attestation, and human confirmation for AI-assisted records.</div></div>
-    </div>
-    <div style="display:grid;grid-template-columns:40px 1fr;opacity:.55;">
-      <div style="padding:16px;border-right:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-soft);display:flex;align-items:center;justify-content:center;">06</div>
-      <div style="padding:16px 18px;"><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:3px;">Operational Workflow Integration</div><div style="font-size:12.5px;color:var(--muted);">How review fits into existing HR, compliance, and investigation workflows. This module is shorter than the others and may be expanded in a future revision.</div></div>
+  <div class="completion-block" id="course-complete">
+    <div class="completion-title">Course Complete</div>
+    <div class="completion-body">You have completed all six modules. Enter your name to generate a completion record for this training program.</div>
+    <div class="cert-name-row">
+      <input type="text" class="cert-name-input" id="cert-name-input" placeholder="Your full name" autocomplete="name">
+      <button class="btn btn-accent" onclick="openCertificate()">Generate Certificate</button>
     </div>
   </div>
 
-  <div style="padding:20px 24px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
-    <div style="font-size:13px;color:var(--muted);">All six modules included in the Deployment Kit as downloadable PDF references.</div>
-    <a href="https://wikesphere.gumroad.com/l/ojeqeo" class="gumroad-button" data-gumroad-single-product="true" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--black);background:var(--accent);padding:10px 20px;text-decoration:none;white-space:nowrap;">Access Deployment Kit</a>
+  <div class="callout callout-gold" style="margin-top:24px;">
+    <div class="callout-label">Deployment Kit</div>
+    <p>All six modules are available as downloadable PDF references in the JRS Deployment Kit, along with operational forms, worksheets, and onboarding materials. <a href="https://wikesphere.gumroad.com/l/ojeqeo" style="color:var(--accent);">Access Deployment Kit &#8599;</a></p>
   </div>
 </div>
 
-<div class="callout" style="margin-top:0;">
-  <div class="callout-label">Free Alternative</div>
-  <p>The JRS Standard and Investigator Field Guide are available at no cost from the Library section. Role environments and implementation guidance are also publicly accessible.</p>
+<!-- COURSE PANEL (shown when a module is open) -->
+<div id="course-panel" style="display:none">
+  <button class="back-link" onclick="closeModule()">&#8592; Course Index</button>
+  <div class="course-eyebrow" id="panel-module-tag"></div>
+  <h2 class="course-title" id="panel-title"></h2>
+  <div class="lesson-tabs" id="lesson-tabs"></div>
+  <div id="lesson-content-area"></div>
+  <div class="quiz-section" id="quiz-section" style="display:none">
+    <div class="quiz-eyebrow">Review</div>
+    <h3 class="quiz-title" id="quiz-title"></h3>
+    <div id="quiz-questions"></div>
+    <div id="quiz-validation" style="display:none;margin:8px 0;padding:10px 13px;border:1px solid var(--stop);color:var(--stop-text);font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;">Answer all questions before submitting.</div>
+    <div class="quiz-score-block" id="quiz-score-block">
+      <div class="score-number" id="score-number"></div>
+      <div class="score-label">Questions Correct</div>
+      <div class="score-msg" id="score-msg"></div>
+      <div class="btn-row" style="justify-content:center;margin-top:18px">
+        <button class="btn btn-ghost" onclick="retakeQuiz()">Retake</button>
+        <button class="btn btn-accent" id="next-module-btn" onclick="nextModule()">Next Module &#8594;</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 </div>
+</div>
+
+<!-- CERTIFICATE OVERLAY (fixed, outside scroll flow) -->
+<div class="cert-overlay" id="cert-overlay">
+  <div class="cert-modal">
+    <button class="cert-close" onclick="closeCertificate()">Close &#215;</button>
+    <canvas id="cert-canvas"></canvas>
+    <div class="cert-actions">
+      <button class="cert-btn cert-btn-primary" onclick="downloadCertificate()">Download PNG</button>
+      <button class="cert-btn cert-btn-secondary" onclick="printCertificate()">Print</button>
+    </div>
+  </div>
 </div>
 
 
