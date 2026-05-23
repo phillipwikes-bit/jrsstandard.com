@@ -4584,6 +4584,11 @@ function downloadCertificate(){const name=document.getElementById('cert-name-inp
 function printCertificate(){const d=document.getElementById('cert-canvas').toDataURL('image/png'),w=window.open('','_blank');w.document.write(`<!DOCTYPE html><html><head><title>JRS Completion Record</title><style>*{margin:0;padding:0}body{background:#fff}img{max-width:100%;display:block}</style></head><body><img src="${d}" onload="window.print();window.close()"></body></html>`);w.document.close();}
 
 updateProgress();
+// Auto-show section from URL param e.g. index.html?section=training
+(function(){
+  var p=new URLSearchParams(window.location.search).get('section');
+  if(p&&typeof showSection==='function')showSection(p);
+})();
 </script>
 <!-- Gumroad inline overlay -->
 <script src="https://gumroad.com/js/embed.js"></script>
