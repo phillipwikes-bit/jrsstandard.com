@@ -43,7 +43,8 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 
 /* NAV */
 .primary-nav{border-bottom:1px solid var(--rule);background:var(--bg);position:sticky;top:0;z-index:100}
-.primary-nav-inner{max-width:1060px;margin:0 auto;padding:0 28px;display:flex;align-items:stretch;gap:0;overflow-x:auto}
+.primary-nav-inner{max-width:1060px;margin:0 auto;padding:0 28px;display:flex;align-items:stretch;gap:0;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.primary-nav-inner::-webkit-scrollbar{display:none}
 .nav-item{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);padding:12px 16px;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:.1s;background:none;border-top:none;border-left:none;border-right:none}
 .nav-item:hover{color:var(--text)}
 .nav-item.active{color:var(--accent);border-bottom-color:var(--accent)}
@@ -602,9 +603,118 @@ a.gumroad-button.util-link {
  .worksheet{border:1px solid #ccc}
 }
 
-
-
 .maturity-level-body.open{display:block}
+
+/* ════════════════════════════════════════
+   MOBILE NAVIGATION (HAMBURGER)
+   ════════════════════════════════════════ */
+.primary-nav-mobile-bar{
+ display:none;
+ align-items:center;
+ justify-content:space-between;
+ padding:0 20px;
+ height:48px;
+ border-bottom:1px solid var(--rule);
+ max-width:100%;
+}
+.nav-current-section{
+ font-family:'JetBrains Mono',monospace;
+ font-size:9.5px;
+ letter-spacing:.14em;
+ text-transform:uppercase;
+ color:var(--muted-soft);
+}
+.nav-hamburger{
+ font-family:'JetBrains Mono',monospace;
+ font-size:9.5px;
+ letter-spacing:.14em;
+ text-transform:uppercase;
+ color:var(--muted-soft);
+ background:none;
+ border:1px solid var(--rule);
+ padding:8px 14px;
+ cursor:pointer;
+ transition:color .15s,border-color .15s;
+ display:flex;
+ align-items:center;
+ gap:6px;
+ min-height:36px;
+}
+.nav-hamburger:hover,.nav-hamburger.open{color:var(--accent);border-color:var(--accent-dim)}
+.nav-hamburger-icon{font-size:14px;line-height:1}
+
+/* ── MOBILE NAV BREAKPOINT ── */
+@media(max-width:640px){
+ /* Show mobile bar, collapse the scrollable strip */
+ .primary-nav-mobile-bar{display:flex}
+ .primary-nav-inner{
+  display:none;
+  flex-direction:column;
+  padding:0;
+  overflow-x:visible;
+  border-top:1px solid var(--rule);
+ }
+ .primary-nav-inner.nav-open{display:flex}
+ /* Nav items become a vertical list */
+ .nav-item{
+  padding:14px 20px;
+  text-align:left;
+  font-size:11px;
+  letter-spacing:.12em;
+  border-bottom:1px solid var(--rule) !important;
+  border-left:2px solid transparent !important;
+  border-top:none !important;
+  border-right:none !important;
+  min-height:48px;
+  width:100%;
+  white-space:normal;
+ }
+ .nav-item.active{
+  border-left-color:var(--accent) !important;
+  color:var(--accent);
+  background:rgba(190,148,71,.04);
+ }
+ .nav-item.kit-item{color:var(--accent)}
+ .nav-item:last-child{border-bottom:none !important}
+ /* Tables: enable horizontal scroll on mobile */
+ .wf-table,.adjective-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+ /* Page subtitle: remove desktop max-width cap */
+ .page-subtitle{max-width:100%}
+ /* Certificate modal: keep within viewport */
+ .cert-overlay{align-items:flex-start;padding:48px 12px 12px}
+ .cert-modal{max-height:82vh;overflow-y:auto}
+ .cert-name-input{width:100%}
+ .cert-name-row{flex-direction:column}
+ .cert-name-row .btn{width:100%;justify-content:center}
+ /* Util bar tighten */
+ .util-label{display:none}
+ .util-bar-inner{padding:6px 16px;gap:2px 8px}
+ .util-link{font-size:8.5px;padding:6px 9px;border-left-width:1px}
+ /* Onboarding strip: smaller text */
+ .ob-text{font-size:11.5px}
+ /* Readiness: keep badge legible */
+ .readiness-row{grid-template-columns:60px 1fr}
+ .readiness-badge{font-size:8px;padding:12px 6px}
+ /* Scenario header stack */
+ .scenario-header{flex-direction:column;align-items:flex-start;gap:6px}
+ /* Kit hero padding */
+ .kit-hero{padding:0 16px}
+ .kit-hero-inner{padding:32px 0 28px}
+ .kit-price{font-size:36px}
+ .kit-title{font-size:26px}
+}
+
+/* ── EXTRA SMALL SCREENS (≤400px) ── */
+@media(max-width:400px){
+ .container{padding:24px 14px 64px}
+ .page-title{font-size:24px}
+ .course-title{font-size:22px}
+ .page-eyebrow{font-size:9px}
+ .wordmark{font-size:26px}
+ .failure-head,.applied-exercise-head,.quiz-eyebrow{font-size:8px}
+ .readiness-row{grid-template-columns:52px 1fr}
+ .readiness-badge{font-size:7.5px;padding:10px 4px}
+}
 </style>
 </head>
 <body>
@@ -620,7 +730,15 @@ a.gumroad-button.util-link {
 
 <!-- PRIMARY NAV -->
 <nav class="primary-nav">
- <div class="primary-nav-inner">
+ <!-- Mobile-only bar: shows current section label + hamburger toggle -->
+ <div class="primary-nav-mobile-bar">
+  <span class="nav-current-section" id="nav-current-section">Standard</span>
+  <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileNav()" aria-label="Toggle navigation" aria-expanded="false">
+   <span class="nav-hamburger-icon">&#9776;</span> Menu
+  </button>
+ </div>
+ <!-- Nav items: horizontal scroll on desktop, dropdown on mobile -->
+ <div class="primary-nav-inner" id="primary-nav-items">
  <button class="nav-item active" onclick="showSection('home')">Standard</button>
  <button class="nav-item" onclick="showSection('doccond')">Documentation Conditions</button>
  <button class="nav-item" onclick="showSection('tools')">Field References</button>
@@ -3898,6 +4016,13 @@ a.gumroad-button.util-link {
 
 
 // ── NAVIGATION ────────────────────────────────────
+const SECTION_LABELS={
+ home:'Standard',doccond:'Documentation Conditions',tools:'Field References',
+ scenarios:'Review Examples',guidance:'Implementation',roles:'Roles',
+ maturity:'Maturity',ai:'AI-Assisted Review',usecases:'Use Cases',
+ training:'Reviewer Guidance',about:'About',library:'Document Architecture',
+ kit:'Operational References'
+};
 function showSection(id){
  document.querySelectorAll('.page-section').forEach(s=>s.classList.remove('active'));
  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
@@ -3907,7 +4032,28 @@ function showSection(id){
  const sectionMap={'home':0,'doccond':1,'tools':2,'scenarios':3,'guidance':4,'roles':5,'maturity':6,'ai':7,'usecases':8,'training':9,'about':10,'library':11,'kit':12};
  const navItems=document.querySelectorAll('.nav-item');
  if(sectionMap[id]!==undefined&&navItems[sectionMap[id]])navItems[sectionMap[id]].classList.add('active');
+ // Update mobile nav current-section label and close the dropdown
+ const labelEl=document.getElementById('nav-current-section');
+ if(labelEl)labelEl.textContent=SECTION_LABELS[id]||id;
+ const mobileNavItems=document.getElementById('primary-nav-items');
+ const hamburger=document.getElementById('nav-hamburger');
+ if(mobileNavItems)mobileNavItems.classList.remove('nav-open');
+ if(hamburger){hamburger.classList.remove('open');hamburger.setAttribute('aria-expanded','false');hamburger.innerHTML='<span class="nav-hamburger-icon">&#9776;</span> Menu';}
  window.scrollTo(0,0);
+}
+
+// ── MOBILE NAV TOGGLE ─────────────────────────────
+function toggleMobileNav(){
+ const navItems=document.getElementById('primary-nav-items');
+ const hamburger=document.getElementById('nav-hamburger');
+ if(!navItems||!hamburger)return;
+ const isOpen=navItems.classList.contains('nav-open');
+ navItems.classList.toggle('nav-open');
+ hamburger.classList.toggle('open');
+ hamburger.setAttribute('aria-expanded',String(!isOpen));
+ hamburger.innerHTML=isOpen
+  ?'<span class="nav-hamburger-icon">&#9776;</span> Menu'
+  :'<span class="nav-hamburger-icon">&#10005;</span> Close';
 }
 
 // ── WORKSHEETS ────────────────────────────────────
