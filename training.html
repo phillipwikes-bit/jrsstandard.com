@@ -3,15 +3,215 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JRS Training | Reviewer Guidance</title>
-<meta http-equiv="refresh" content="0;url=/index.html?section=training">
+<title>JRS Training Materials | Reviewer Guidance & Resources</title>
+<meta name="description" content="JRS Documentation Review training materials, PDF guides, worksheets, and reviewer resources.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  body{background:#050505;color:#F2F2F2;font-family:Inter,sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;}
-  p{opacity:.6;font-size:14px;letter-spacing:.05em;}
+:root{
+  --bg:#050505;--surface:#121212;--surface2:#1A1A1A;--surface3:#1E1E1E;
+  --rule:#2A2A2A;--rule-soft:#1E1E1E;
+  --text:#F2F2F2;--muted:#B3B3B3;--muted-soft:#8A8A8A;
+  --accent:#BE9447;--accent-dim:#7A5E28;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased}
+
+/* HEADER */
+.site-header{border-bottom:1px solid var(--rule);padding:0 24px}
+.site-header-inner{max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:18px 0;flex-wrap:wrap;gap:12px}
+.wordmark{font-family:'Bodoni Moda',serif;font-size:26px;font-weight:500;color:var(--accent);text-decoration:none;line-height:1}
+.wordmark .tm{font-size:10px;vertical-align:super}
+.back-link{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;border:1px solid var(--rule);padding:7px 14px}
+.back-link:hover{color:var(--text);border-color:var(--accent)}
+
+/* MAIN */
+.container{max-width:860px;margin:0 auto;padding:48px 24px 96px}
+
+/* PAGE TITLE */
+.page-eyebrow{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.page-title{font-family:'Bodoni Moda',serif;font-size:32px;font-weight:500;color:var(--text);line-height:1.2;margin-bottom:14px}
+.page-subtitle{font-size:15px;color:var(--muted);max-width:600px;line-height:1.7;margin-bottom:40px}
+
+/* SECTION HEADS */
+.section-label{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+
+/* PDF CARDS */
+.pdf-grid{display:flex;flex-direction:column;gap:1px;border:1px solid var(--rule);overflow:hidden;margin-bottom:40px}
+.pdf-row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;padding:18px 20px;background:var(--surface);transition:.15s}
+.pdf-row:hover{background:var(--surface2)}
+.pdf-row + .pdf-row{border-top:1px solid var(--rule)}
+.pdf-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:3px}
+.pdf-desc{font-size:12.5px;color:var(--muted);line-height:1.5}
+.pdf-badge{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:5px}
+.btn-download{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(190,148,71,.4);padding:8px 16px;text-decoration:none;white-space:nowrap;display:inline-block;transition:.15s}
+.btn-download:hover{background:rgba(190,148,71,.1);border-color:var(--accent)}
+
+/* MODULE LIST */
+.module-list{border:1px solid var(--rule);overflow:hidden;margin-bottom:40px}
+.module-row{display:grid;grid-template-columns:44px 1fr;border-bottom:1px solid var(--rule)}
+.module-row:last-child{border-bottom:none}
+.module-num{padding:18px 0;border-right:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-soft);display:flex;align-items:center;justify-content:center}
+.module-body{padding:16px 18px}
+.module-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:3px}
+.module-desc{font-size:12.5px;color:var(--muted);line-height:1.5}
+
+/* CALLOUT */
+.callout{border:1px solid rgba(190,148,71,.25);background:rgba(190,148,71,.05);padding:18px 20px;margin-bottom:40px}
+.callout-label{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.callout p{font-size:13.5px;color:var(--muted);line-height:1.6}
+.callout a{color:var(--accent);text-decoration:none}
+.callout a:hover{text-decoration:underline}
+
+/* FOOTER */
+.site-footer{border-top:1px solid var(--rule);padding:28px 24px;text-align:center}
+.footer-text{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft)}
+
+/* MOBILE */
+@media(max-width:600px){
+  .page-title{font-size:24px}
+  .pdf-row{grid-template-columns:1fr;gap:12px}
+  .btn-download{display:block;text-align:center}
+  .container{padding:32px 16px 64px}
+}
 </style>
 </head>
 <body>
-<p>Loading training...</p>
-<script>window.location.replace('/index.html?section=training');</script>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="/" class="wordmark">JRS<span class="tm">&#8482;</span></a>
+    <a href="/" class="back-link">&#8592; Return to Main Site</a>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="page-eyebrow">Reviewer Guidance</div>
+  <h1 class="page-title">JRS Training Materials</h1>
+  <p class="page-subtitle">Downloadable PDF references, worksheets, operational forms, and reviewer training resources for applying the JRS Documentation Review Standard.</p>
+
+  <!-- FREE RESOURCES -->
+  <div class="section-label">Free Resources</div>
+  <div class="pdf-grid">
+    <div class="pdf-row">
+      <div>
+        <div class="pdf-badge">Core Standard</div>
+        <div class="pdf-title">JRS Documentation Review Standard</div>
+        <div class="pdf-desc">Four review conditions, reviewer lens, submission readiness criteria, and failure-mode catalog. The primary governing document.</div>
+      </div>
+      <a href="JRS-Standard.pdf" class="btn-download" download>Download PDF</a>
+    </div>
+    <div class="pdf-row">
+      <div>
+        <div class="pdf-badge">Reference Guide</div>
+        <div class="pdf-title">JRS Rapid Review Card</div>
+        <div class="pdf-desc">One-page reviewer quick reference. Five questions, submission readiness key, and secondary review triggers. Print-ready.</div>
+      </div>
+      <a href="JRS_Rapid_Review_Card.pdf" class="btn-download" download>Download PDF</a>
+    </div>
+    <div class="pdf-row">
+      <div>
+        <div class="pdf-badge">Reference Guide</div>
+        <div class="pdf-title">JRS Investigator Field Guide</div>
+        <div class="pdf-desc">Source identification, conflict acknowledgment, and reconstruction review for workplace investigation records.</div>
+      </div>
+      <a href="JRS_Investigator_Field_Guide.pdf" class="btn-download" download>Download PDF</a>
+    </div>
+  </div>
+
+  <!-- DEPLOYMENT KIT -->
+  <div class="section-label">Deployment Kit — Operational Forms &amp; Training</div>
+  <div class="pdf-grid">
+    <div class="pdf-row">
+      <div>
+        <div class="pdf-badge">Kit — Onboarding</div>
+        <div class="pdf-title">Kit A1 — Reviewer Worksheet</div>
+        <div class="pdf-desc">Structured worksheet for applying the five JRS review questions to a single record before finalization.</div>
+      </div>
+      <a href="JRS Kit A1 Worksheet.pdf" class="btn-download" download>Download PDF</a>
+    </div>
+    <div class="pdf-row">
+      <div>
+        <div class="pdf-badge">Kit — Onboarding</div>
+        <div class="pdf-title">Kit A2 — Escalation Form</div>
+        <div class="pdf-desc">Form for documenting secondary review decisions and escalation routing when a record does not meet readiness criteria.</div>
+      </div>
+      <a href="JRS Kit A2 Escalation Form.pdf" class="btn-download" download>Download PDF</a>
+    </div>
+    <div class="pdf-row">
+      <div>
+        <div class="pdf-badge">Kit — Onboarding</div>
+        <div class="pdf-title">Kit A3 — Signoff Template</div>
+        <div class="pdf-desc">Pre-finalization sign-off template confirming reviewer completion of the five-question review sequence.</div>
+      </div>
+      <a href="JRS Kit A3 Signoff Template.pdf" class="btn-download" download>Download PDF</a>
+    </div>
+    <div class="pdf-row">
+      <div>
+        <div class="pdf-badge">Kit — Onboarding</div>
+        <div class="pdf-title">Kit B1 — Onboarding Guide</div>
+        <div class="pdf-desc">Reviewer onboarding sequence. Covers what JRS is, what the reviewer does, and how to route elevated-risk records.</div>
+      </div>
+      <a href="JRS Kit B1 Onboarding Guide.pdf" class="btn-download" download>Download PDF</a>
+    </div>
+    <div class="pdf-row">
+      <div>
+        <div class="pdf-badge">Kit — Checklists</div>
+        <div class="pdf-title">Kit C1 — AI Documentation Checklist</div>
+        <div class="pdf-desc">Review checklist for AI-assisted records. Source verification, attestation, and human confirmation requirements.</div>
+      </div>
+      <a href="JRS Kit C1 AI Checklist.pdf" class="btn-download" download>Download PDF</a>
+    </div>
+    <div class="pdf-row">
+      <div>
+        <div class="pdf-badge">Kit — Examples</div>
+        <div class="pdf-title">Kit D1 — Redlined Examples</div>
+        <div class="pdf-desc">Annotated examples of documentation insufficiency with reviewer markups and supported revision paths.</div>
+      </div>
+      <a href="JRS Kit D1 Redlined Examples.pdf" class="btn-download" download>Download PDF</a>
+    </div>
+    <div class="pdf-row">
+      <div>
+        <div class="pdf-badge">Kit — Implementation</div>
+        <div class="pdf-title">Kit E1 — Implementation Playbook</div>
+        <div class="pdf-desc">Step-by-step operational playbook for deploying JRS within existing HR, compliance, and investigation workflows.</div>
+      </div>
+      <a href="JRS Kit E1 Implementation Playbook.pdf" class="btn-download" download>Download PDF</a>
+    </div>
+    <div class="pdf-row">
+      <div>
+        <div class="pdf-badge">Kit — Implementation</div>
+        <div class="pdf-title">Kit E1A — Secondary Review Triggers</div>
+        <div class="pdf-desc">Reference list of conditions that require secondary review escalation before a record is finalized.</div>
+      </div>
+      <a href="JRS Kit E1A Secondary Review Triggers.pdf" class="btn-download" download>Download PDF</a>
+    </div>
+  </div>
+
+  <!-- TRAINING MODULES -->
+  <div class="section-label">Interactive Training — 6 Modules</div>
+  <div class="module-list">
+    <div class="module-row"><div class="module-num">01</div><div class="module-body"><div class="module-title">Introduction to Documentation Review</div><div class="module-desc">Why records fail during later review. The reviewer lens and reconstruction standard.</div></div></div>
+    <div class="module-row"><div class="module-num">02</div><div class="module-body"><div class="module-title">Observable Support &amp; Evidence Anchoring</div><div class="module-desc">What counts as a specific anchor. Evaluative language without behavioral basis.</div></div></div>
+    <div class="module-row"><div class="module-num">03</div><div class="module-body"><div class="module-title">Traceable Reasoning &amp; Reviewer Reconstruction</div><div class="module-desc">The path from evidence to conclusion. What a later reviewer needs to reconstruct the basis.</div></div></div>
+    <div class="module-row"><div class="module-num">04</div><div class="module-body"><div class="module-title">Common Documentation Failure Modes</div><div class="module-desc">Eleven failure patterns with reviewer questions and supported revisions.</div></div></div>
+    <div class="module-row"><div class="module-num">05</div><div class="module-body"><div class="module-title">AI-Assisted Documentation Review</div><div class="module-desc">Source verification, attestation, and human confirmation for AI-assisted records.</div></div></div>
+    <div class="module-row"><div class="module-num">06</div><div class="module-body"><div class="module-title">Operational Workflow Integration</div><div class="module-desc">How review fits into existing HR, compliance, and investigation workflows.</div></div></div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">Interactive Training</div>
+    <p>All six modules are available as interactive lessons with quizzes and a completion certificate on the main site. <a href="/?section=training">Launch interactive training &rarr;</a></p>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-text">JRS&#8482; Justification Review Standard &middot; &copy;2026 Phillip Wikes &middot; <a href="/" style="color:var(--muted-soft);text-decoration:none;">jrsstandard.com</a></div>
+</footer>
+
 </body>
 </html>
