@@ -715,6 +715,112 @@ a.gumroad-button.util-link {
  .readiness-row{grid-template-columns:52px 1fr}
  .readiness-badge{font-size:7.5px;padding:10px 4px}
 }
+
+/* ════════════════════════════════════════
+   TRAINING MODULE ANIMATIONS
+   ════════════════════════════════════════ */
+
+/* Course panel: slide up + fade when a module opens */
+@keyframes panel-in{
+ from{opacity:0;transform:translateY(18px)}
+ to{opacity:1;transform:translateY(0)}
+}
+.course-panel-enter{animation:panel-in .28s cubic-bezier(.22,.68,0,1.1) both}
+
+/* Module index: stagger each nav item on first load */
+@keyframes nav-item-in{
+ from{opacity:0;transform:translateX(-10px)}
+ to{opacity:1;transform:translateX(0)}
+}
+.module-nav-item{animation:nav-item-in .22s ease both}
+.module-nav-item:nth-child(1){animation-delay:.04s}
+.module-nav-item:nth-child(2){animation-delay:.09s}
+.module-nav-item:nth-child(3){animation-delay:.14s}
+.module-nav-item:nth-child(4){animation-delay:.19s}
+.module-nav-item:nth-child(5){animation-delay:.24s}
+.module-nav-item:nth-child(6){animation-delay:.29s}
+
+/* Lesson content: crossfade when switching tabs */
+@keyframes lesson-in{
+ from{opacity:0;transform:translateY(10px)}
+ to{opacity:1;transform:translateY(0)}
+}
+.lesson-body.active{animation:lesson-in .22s ease both}
+
+/* Quiz option: pulse on selection */
+@keyframes opt-select{
+ 0%{transform:scale(1)}
+ 45%{transform:scale(1.015)}
+ 100%{transform:scale(1)}
+}
+.quiz-option.selected{animation:opt-select .18s ease}
+
+/* Correct answer: soft green expand */
+@keyframes opt-correct{
+ 0%{transform:scale(1)}
+ 40%{transform:scale(1.02)}
+ 100%{transform:scale(1)}
+}
+.quiz-option.correct{animation:opt-correct .25s ease}
+
+/* Wrong answer: horizontal shake */
+@keyframes opt-wrong{
+ 0%,100%{transform:translateX(0)}
+ 20%{transform:translateX(-5px)}
+ 60%{transform:translateX(5px)}
+}
+.quiz-option.wrong{animation:opt-wrong .22s ease}
+
+/* Quiz feedback: slide down */
+@keyframes feedback-in{
+ from{opacity:0;transform:translateY(-6px)}
+ to{opacity:1;transform:translateY(0)}
+}
+.quiz-feedback.visible{animation:feedback-in .2s ease both}
+
+/* Score block: scale up from slightly small */
+@keyframes score-reveal{
+ from{opacity:0;transform:scale(.96)}
+ to{opacity:1;transform:scale(1)}
+}
+.quiz-score-block.visible{animation:score-reveal .3s cubic-bezier(.22,.68,0,1.1) both}
+
+/* Score number: count-up is handled in JS, but start invisible */
+.score-number{transition:opacity .15s}
+
+/* Completion block: fade + scale */
+@keyframes complete-in{
+ from{opacity:0;transform:scale(.97)}
+ to{opacity:1;transform:scale(1)}
+}
+.completion-block.visible{animation:complete-in .35s cubic-bezier(.22,.68,0,1.1) both}
+
+/* Progress bar fill already has transition — smooth it further */
+.progress-fill{transition:width .55s cubic-bezier(.4,0,.2,1)}
+
+/* Module status badge: flash gold when marked complete */
+@keyframes status-complete{
+ 0%{background:rgba(190,148,71,.0)}
+ 40%{background:rgba(190,148,71,.18)}
+ 100%{background:transparent}
+}
+.module-nav-status.complete{animation:status-complete .5s ease}
+
+/* Back link: fade in */
+@keyframes back-in{
+ from{opacity:0;transform:translateX(-8px)}
+ to{opacity:1;transform:translateX(0)}
+}
+.back-link{animation:back-in .2s ease both}
+
+/* Respect prefers-reduced-motion */
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{
+  animation-duration:.01ms !important;
+  animation-iteration-count:1 !important;
+  transition-duration:.01ms !important;
+ }
+}
 </style>
 </head>
 <body>
@@ -4301,6 +4407,28 @@ function updateProgress(){
  if(completed.every(Boolean))document.getElementById('course-complete').classList.add('visible');
 }
 
+// \u2500\u2500 ANIMATION HELPERS \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+function replayAnim(el,cls){
+ el.classList.remove(cls);
+ // force reflow so re-adding the class re-triggers the keyframe
+ void el.offsetWidth;
+ el.classList.add(cls);
+}
+
+function countUp(el,target,duration){
+ // Animates the score number from 0 \u2192 target over `duration` ms
+ const start=performance.now();
+ const [num,den]=target.split('/').map(Number);
+ function step(now){
+  const t=Math.min((now-start)/duration,1);
+  const ease=1-Math.pow(1-t,3); // ease-out cubic
+  el.textContent=Math.round(ease*num)+'/'+den;
+  if(t<1)requestAnimationFrame(step);
+  else el.textContent=target;
+ }
+ requestAnimationFrame(step);
+}
+
 function openModule(idx){
  currentModule=idx;currentLesson=0;
  quizAnswers=new Array(MODULES[idx].quiz.length).fill(-1);quizSubmitted=false;
@@ -4313,18 +4441,32 @@ function openModule(idx){
  document.getElementById('quiz-section').style.display='none';
  document.getElementById('quiz-score-block').classList.remove('visible');
  document.getElementById('module-nav').style.display='none';
- document.getElementById('course-panel').style.display='block';
+ const panel=document.getElementById('course-panel');
+ panel.style.display='block';
+ replayAnim(panel,'course-panel-enter');
  updateProgress();window.scrollTo(0,0);
 }
 
 function switchLesson(idx){
  const mod=MODULES[currentModule];currentLesson=idx;
  document.querySelectorAll('#lesson-tabs .lesson-tab').forEach((t,i)=>t.classList.toggle('active',i===idx));
- mod.lessons.forEach((_,i)=>document.getElementById('lb-'+i).classList.toggle('active',i===idx));
+ // Remove active from all, then add to the target (triggers lesson-in keyframe via CSS)
+ mod.lessons.forEach((_,i)=>{
+  const lb=document.getElementById('lb-'+i);
+  if(!lb)return;
+  lb.classList.remove('active');
+ });
  const qb=document.getElementById('lb-'+mod.lessons.length);
- if(qb)qb.classList.toggle('active',idx===mod.lessons.length);
+ if(qb)qb.classList.remove('active');
+ // Small delay so removal registers before re-add triggers animation
+ requestAnimationFrame(()=>{
+  const target=document.getElementById('lb-'+idx);
+  if(target)target.classList.add('active');
+  if(qb&&idx===mod.lessons.length)qb.classList.add('active');
+ });
  document.getElementById('quiz-section').style.display=(idx===mod.lessons.length&&mod.quiz.length)?'block':'none';
- window.scrollTo(0,document.querySelector('#lesson-tabs').offsetTop-20);
+ const tabsEl=document.querySelector('#lesson-tabs');
+ if(tabsEl)window.scrollTo(0,tabsEl.offsetTop-20);
 }
 
 function buildQuiz(idx){
@@ -4337,31 +4479,60 @@ function selectAnswer(qi,oi){
  if(quizSubmitted)return;
  quizAnswers[qi]=oi;
  MODULES[currentModule].quiz[qi].options.forEach((_,i)=>{
- document.getElementById('opt-'+qi+'-'+i).classList.toggle('selected',i===oi);
- document.getElementById('marker-'+qi+'-'+i).textContent=i===oi?'\u25C6':'';
+  const btn=document.getElementById('opt-'+qi+'-'+i);
+  btn.classList.toggle('selected',i===oi);
+  document.getElementById('marker-'+qi+'-'+i).textContent=i===oi?'\u25C6':'';
+  // Replay pulse animation on the newly selected option
+  if(i===oi)replayAnim(btn,'selected');
  });
 }
 
 function submitQuiz(){
  const quiz=MODULES[currentModule].quiz;
- if(quizAnswers.some(a=>a===-1)){const v=document.getElementById('quiz-validation');v.style.display='block';setTimeout(()=>v.style.display='none',3000);return;}
+ if(quizAnswers.some(a=>a===-1)){
+  const v=document.getElementById('quiz-validation');
+  v.style.display='block';
+  replayAnim(v,'feedback-in');
+  setTimeout(()=>v.style.display='none',3000);
+  return;
+ }
  quizSubmitted=true;let correct=0;
  quiz.forEach((q,qi)=>{
- const ok=quizAnswers[qi]===q.correct;if(ok)correct++;
- q.options.forEach((_,oi)=>{const btn=document.getElementById('opt-'+qi+'-'+oi);btn.classList.remove('selected');if(oi===q.correct)btn.classList.add('correct');else if(oi===quizAnswers[qi]&&!ok)btn.classList.add('wrong');});
- document.getElementById('feedback-'+qi).classList.add('visible');
+  const ok=quizAnswers[qi]===q.correct;if(ok)correct++;
+  q.options.forEach((_,oi)=>{
+   const btn=document.getElementById('opt-'+qi+'-'+oi);
+   btn.classList.remove('selected');
+   if(oi===q.correct){btn.classList.add('correct');}
+   else if(oi===quizAnswers[qi]&&!ok){btn.classList.add('wrong');}
+  });
+  // Stagger feedback reveal
+  setTimeout(()=>document.getElementById('feedback-'+qi).classList.add('visible'),qi*80);
  });
  const pct=Math.round(correct/quiz.length*100);
- document.getElementById('score-number').textContent=correct+'/'+quiz.length;
+ const scoreEl=document.getElementById('score-number');
+ scoreEl.textContent='0/'+quiz.length;
  document.getElementById('score-msg').textContent=pct===100?'All questions correct.':pct>=80?'Review explanations above for any missed questions.':'Review the lesson content before continuing.';
  document.getElementById('next-module-btn').textContent=currentModule<MODULES.length-1?'Next Module \u2192':'Return to Course Index';
- document.getElementById('quiz-score-block').classList.add('visible');
+ const scoreBlock=document.getElementById('quiz-score-block');
+ scoreBlock.classList.add('visible');
+ // Count-up animation on the score number after a short delay
+ setTimeout(()=>countUp(scoreEl,correct+'/'+quiz.length,600),180);
  if(pct>=80){completed[currentModule]=true;saveProgress();updateProgress();}
 }
 
-function retakeQuiz(){quizAnswers=new Array(MODULES[currentModule].quiz.length).fill(-1);quizSubmitted=false;buildQuiz(currentModule);document.getElementById('quiz-score-block').classList.remove('visible');}
+function retakeQuiz(){
+ quizAnswers=new Array(MODULES[currentModule].quiz.length).fill(-1);
+ quizSubmitted=false;
+ buildQuiz(currentModule);
+ document.getElementById('quiz-score-block').classList.remove('visible');
+}
 function nextModule(){if(currentModule<MODULES.length-1){openModule(currentModule+1);switchLesson(0);}else closeModule();}
-function closeModule(){currentModule=-1;document.getElementById('module-nav').style.display='block';document.getElementById('course-panel').style.display='none';updateProgress();window.scrollTo(0,0);}
+function closeModule(){
+ currentModule=-1;
+ document.getElementById('module-nav').style.display='block';
+ document.getElementById('course-panel').style.display='none';
+ updateProgress();window.scrollTo(0,0);
+}
 
 // ── CERTIFICATE ───────────────────────────────────
 function openCertificate(){
