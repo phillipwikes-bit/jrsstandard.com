@@ -214,6 +214,14 @@ a:hover{text-decoration:underline}
 .site-footer{border-top:1px solid var(--rule);padding:24px;text-align:center;margin-top:0}
 .footer-text{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);line-height:2}
 
+/* MOBILE — reduce gold accent density in secondary metadata */
+@media(max-width:600px){
+  .kit-doc-type,.kit-doc-meta,.section-label,.module-status,.progress-section-label{color:var(--muted-soft)!important}
+  .kit-notice{color:var(--muted-soft)!important;border-color:var(--rule)!important}
+  .back-to-site{display:none}
+  .site-header-meta{display:none}
+}
+
 /* MOBILE */
 @media(max-width:640px){
   .kit-doc-row{grid-template-columns:1fr}
@@ -244,14 +252,30 @@ a:hover{text-decoration:underline}
 
   <!-- INTRO -->
   <div class="page-intro">
-    <h1>Reviewer Training and Downloads</h1>
+    <h1>Reviewer Reference and Downloads</h1>
     <p>Work through each module and complete the knowledge check to mark it done. Kit documents are available for download below. These materials establish a documentation sufficiency standard for pre-finalization review. They do not make legal determinations. Where a conflict exists with local practice, apply the more documentation-protective requirement.</p>
-    <p style="margin-top:10px">This page also includes an interactive <strong style="color:var(--text)">JRS Reviewer Training Environment</strong> at the bottom. The training environment offers four exercises: practice reviewing sample records against the five JRS questions, routing decision scenarios, failure mode identification, and a record review workspace where you can submit your own record text for instant pattern-based feedback. The training environment is for educational use only and does not produce legal or compliance determinations.</p>
+
+    <!-- BEFORE / AFTER EXAMPLE -->
+    <div style="margin:18px 0;border:1px solid var(--rule);background:var(--surface);overflow:hidden">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);padding:10px 16px;border-bottom:1px solid var(--rule)">Record Clarity — Before and After</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+        <div style="padding:14px 16px;border-right:1px solid var(--rule)">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.18em;text-transform:uppercase;color:var(--stop-text);margin-bottom:7px">Before — Not Reviewable</div>
+          <div style="font-size:12.5px;color:var(--muted);line-height:1.6;font-style:italic">"Employee repeatedly demonstrated hostile behavior."</div>
+        </div>
+        <div style="padding:14px 16px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.18em;text-transform:uppercase;color:var(--ready-text);margin-bottom:7px">After — Reviewable</div>
+          <div style="font-size:12.5px;color:var(--muted);line-height:1.6;font-style:italic">"On March 11 and March 18, the employee raised their voice during meetings after direction changes were discussed. Meeting notes and witness statements are attached."</div>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top:10px">This page also includes an interactive <strong style="color:var(--text)">JRS Reviewer Training Environment</strong> at the bottom. The review environment offers four exercises: practice applying the five pre-finalization review conditions to sample records, routing decision scenarios, review instability identification, and a record review workspace where you can submit your own record text for instant pattern-based feedback. The environment is for reviewer practice only and does not produce legal or compliance determinations.</p>
     <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
       <a href="#record-review-workspace" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:11px 22px;text-decoration:none;display:inline-block">Record Review Workspace</a>
       <a href="#simulator" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--accent);border:1px solid rgba(190,148,71,.4);padding:11px 22px;text-decoration:none;display:inline-block">Practice Exercises</a>
     </div>
-    <div class="kit-notice">This training environment accompanies the JRS Implementation Materials.</div>
+    <div class="kit-notice">These reviewer materials accompany the JRS Implementation Materials.</div>
 
 <!-- WORKFLOW DIAGRAM -->
 <div style="margin-top:28px;margin-bottom:8px">
@@ -283,6 +307,33 @@ a:hover{text-decoration:underline}
     </div>
   </div>
 </div>
+
+<!-- WHAT JRS DOES NOT DO -->
+<div style="margin-top:24px;border:1px solid var(--rule);background:var(--surface);padding:18px 20px;max-width:620px">
+  <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:12px">Scope Boundary</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px 20px">
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--stop-text);margin-bottom:8px">JRS Does Not</div>
+      <ul style="list-style:none;padding:0;font-size:12.5px;color:var(--muted);line-height:2">
+        <li>Determine factual truth</li>
+        <li>Replace investigative procedures</li>
+        <li>Provide legal conclusions</li>
+        <li>Certify policy compliance</li>
+        <li>Replace organizational judgment</li>
+      </ul>
+    </div>
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ready-text);margin-bottom:8px">JRS Focuses On</div>
+      <ul style="list-style:none;padding:0;font-size:12.5px;color:var(--muted);line-height:2">
+        <li>Documentation reviewability</li>
+        <li>Reasoning visibility</li>
+        <li>Chronology clarity</li>
+        <li>Reconstruction continuity</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
   </div>
 
   <!-- PROGRESS -->
@@ -347,7 +398,7 @@ a:hover{text-decoration:underline}
         <div class="kit-doc-type">Onboarding Reference</div>
         <div class="kit-doc-meta">KIT-B1 &nbsp;|&nbsp; V1.0 &nbsp;|&nbsp; May 2026</div>
         <div class="kit-doc-title">Reviewer Onboarding Guide</div>
-        <div class="kit-doc-desc">Reviewer orientation sequence. What to look for, risk-level routing, tool selection, onboarding steps.</div>
+        <div class="kit-doc-desc">Reviewer orientation sequence. What to look for, risk-level routing, review resources, onboarding steps.</div>
         <div class="kit-doc-note">Intended for first-time reviewers and retained workflow orientation. Some organizations may initially apply secondary review only to selected record categories.</div>
       </div>
       <a href="JRS Kit B1 Onboarding Guide.pdf" class="btn-download" download>Download PDF</a>
@@ -417,7 +468,7 @@ a:hover{text-decoration:underline}
     <div class="module-row" id="module-row-0">
       <div class="module-num" id="module-num-0">01</div>
       <div class="module-body" onclick="toggleModule(0)">
-        <div class="module-title">Pre-Finalization Review Questions</div>
+        <div class="module-title">Pre-Finalization Review Conditions</div>
         <div class="module-status" id="module-status-0">Not Started</div>
       </div>
       <div class="module-actions">
@@ -426,17 +477,17 @@ a:hover{text-decoration:underline}
     </div>
     <div class="module-panel" id="module-panel-0">
       <div class="module-panel-inner">
-        <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:16px">The five pre-finalization review questions establish the baseline standard for documentation sufficiency. Each question addresses a distinct visibility requirement for later review. Apply before any record enters an official system.</p>
+        <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:16px">The five pre-finalization review conditions establish the baseline standard for documentation sufficiency. Each condition addresses a distinct visibility requirement for retained-record review. Apply before any record enters an official system.</p>
         <div class="condition-list">
-          <div class="condition-item"><div class="condition-label">Question 1</div><div class="condition-title">Can a later reviewer identify what happened?</div><div class="condition-body">Events, conduct, or decisions described with specific dates, actors, and outcomes. Not inferred from surrounding context.</div></div>
-          <div class="condition-item"><div class="condition-label">Question 2</div><div class="condition-title">Can a later reviewer identify the basis?</div><div class="condition-body">Conclusions traceable to source records identified and confirmed present in the file. Not assumed from general reference.</div></div>
-          <div class="condition-item"><div class="condition-label">Question 3</div><div class="condition-title">Can a later reviewer follow the reasoning?</div><div class="condition-body">The path from evidence to conclusion is visible in the record. Evaluative judgments are anchored to specific documented support.</div></div>
-          <div class="condition-item"><div class="condition-label">Question 4</div><div class="condition-title">Are conflicting accounts preserved?</div><div class="condition-body">Where accounts differ, the conflict and its resolution basis are both in the file. The record does not selectively present only the credited account.</div></div>
-          <div class="condition-item"><div class="condition-label">Question 5</div><div class="condition-title">Would the record support downstream review without the drafter available?</div><div class="condition-body">A reviewer with no prior knowledge of the matter could follow the record from the file alone. No context is assumed. No institutional memory is required.</div></div>
+          <div class="condition-item"><div class="condition-label">Review Condition 1 — Identifiable Basis</div><div class="condition-title">Can a later reviewer identify what happened?</div><div class="condition-body">Events, conduct, or decisions described with specific dates, actors, and outcomes. Not inferred from surrounding context.</div></div>
+          <div class="condition-item"><div class="condition-label">Review Condition 2 — Evidential Basis</div><div class="condition-title">Can a later reviewer identify the source?</div><div class="condition-body">Conclusions traceable to source records identified and confirmed present in the file. Not assumed from general reference.</div></div>
+          <div class="condition-item"><div class="condition-label">Review Condition 3 — Reasoning Visibility</div><div class="condition-title">Can a later reviewer follow the reasoning?</div><div class="condition-body">The path from evidence to conclusion is visible in the record. Evaluative judgments are anchored to specific documented support.</div></div>
+          <div class="condition-item"><div class="condition-label">Review Condition 4 — Account Preservation</div><div class="condition-title">Are conflicting accounts preserved?</div><div class="condition-body">Where accounts differ, the conflict and its resolution basis are both in the file. The record does not selectively present only the credited account.</div></div>
+          <div class="condition-item"><div class="condition-label">Review Condition 5 — Reconstruction Continuity</div><div class="condition-title">Does the retained record stand independently?</div><div class="condition-body">A reviewer with no prior knowledge of the matter could follow the record from the file alone. No context is assumed. No institutional memory is required.</div></div>
         </div>
         <div class="reviewer-reminder" style="margin-top:20px">
           <div class="reviewer-reminder-label">Reviewer Note</div>
-          <p>These five questions apply regardless of record type. The standard is consistent: can a later reviewer reconstruct what happened, from what basis, and through what reasoning — from the file alone?</p>
+          <p>These five conditions apply regardless of record type. The standard is consistent: can a retained organizational record be reconstructed — what happened, from what basis, through what reasoning — from the file alone?</p>
         </div>
       </div>
       <div class="module-complete-row">
@@ -448,7 +499,7 @@ a:hover{text-decoration:underline}
     <div class="module-row" id="module-row-1">
       <div class="module-num" id="module-num-1">02</div>
       <div class="module-body" onclick="toggleModule(1)">
-        <div class="module-title">Common Documentation Failures</div>
+        <div class="module-title">Common Documentation Conditions</div>
         <div class="module-status" id="module-status-1">Not Started</div>
       </div>
       <div class="module-actions">
@@ -474,7 +525,7 @@ a:hover{text-decoration:underline}
           <div class="condition-item"><div class="condition-label">Condition</div><div class="condition-title">Undocumented Edits and Draft Survival</div><div class="condition-body">Where earlier draft language was not clearly superseded, wording from prior versions may persist in the current record. The edit history may not be reconstructible from the file alone.</div></div>
           <div class="condition-item"><div class="condition-label">Condition</div><div class="condition-title">Partial Chronology Review</div><div class="condition-body">Where contemporaneous records were not maintained, a subsequent reviewer may be working from a reconstructed timeline rather than a documented one. The timeline may be accurate without being independently verifiable.</div></div>
         </div>
-        <p style="font-size:12.5px;color:var(--muted-soft);margin-top:16px;font-style:italic">Review practice should account for what documentation actually survives.</p>
+        <p style="font-size:12.5px;color:var(--muted-soft);margin-top:16px;font-style:italic">Retained-record review practice should account for what documentation actually survives after system migration, staffing transitions, and retention schedule application.</p>
         <div class="reviewer-reminder" style="margin-top:16px">
           <div class="reviewer-reminder-label">Operational Note</div>
           <p>Where conditions are identified, note them. Do not assume resolution.</p>
@@ -568,7 +619,7 @@ a:hover{text-decoration:underline}
           <p>Where AI-assisted drafting was used, wording should be checked against original notes before the record enters the system. Conflicting accounts should remain documented, including where one is credited over another.</p>
         </div>
         <div class="section-head" style="font-size:15px;margin-top:24px;margin-bottom:14px">AI-Assisted Documentation Verification</div>
-        <p style="font-size:13.5px;color:var(--muted);margin-bottom:16px">Apply when AI tools contributed to a record before system entry.</p>
+        <p style="font-size:13.5px;color:var(--muted);margin-bottom:16px">Apply when AI-assisted drafting contributed to a record before system entry.</p>
         <div class="ai-checklist">
           <div class="ai-checklist-section">
             <div class="ai-checklist-header">Source Traceability</div>
@@ -640,7 +691,7 @@ a:hover{text-decoration:underline}
     </div>
     <div class="module-panel" id="module-panel-5">
       <div class="module-panel-inner">
-        <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:20px">The implementation sequence supports phased rollout within existing workflows. Each step can be applied independently. Organizations may begin with the forms and refer back to training as questions arise, or proceed through the full sequence before deployment.</p>
+        <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:20px">The implementation sequence supports phased rollout within existing workflows. Each step can be applied independently. Organizations may begin with the forms and refer back to reviewer materials as questions arise, or proceed through the full sequence before deployment.</p>
         <div class="sampling-list">
           <div class="sampling-item"><div class="sampling-num">1</div><div class="sampling-body"><div class="sampling-title">Distribute the Rapid Review Card</div><div class="sampling-desc">Provide all primary reviewers with KIT-F1. Establish it as the baseline reference for pre-finalization review questions.</div></div></div>
           <div class="sampling-item"><div class="sampling-num">2</div><div class="sampling-body"><div class="sampling-title">Complete Reviewer Onboarding</div><div class="sampling-desc">Work through KIT-B1 with new and returning reviewers. Establish risk-level routing expectations before the first review cycle.</div></div></div>
@@ -841,7 +892,7 @@ a:hover{text-decoration:underline}
     </div>
     <div class="worksheet-section">
       <div class="worksheet-section-header">AI-Assisted Content</div>
-      <div class="worksheet-item"><div class="worksheet-num">10</div><div class="worksheet-content"><div class="worksheet-item-title">Generated wording verified</div><div class="worksheet-item-desc">Where AI tools contributed, generated wording has been checked against original notes.</div></div></div>
+      <div class="worksheet-item"><div class="worksheet-num">10</div><div class="worksheet-content"><div class="worksheet-item-title">Generated wording verified</div><div class="worksheet-item-desc">Where AI-assisted drafting was applied, generated wording has been checked against original notes.</div></div></div>
       <div class="worksheet-item"><div class="worksheet-num">11</div><div class="worksheet-content"><div class="worksheet-item-title">Confidence level accurate</div><div class="worksheet-item-desc">Generated wording does not exceed certainty reflected in source notes.</div></div></div>
       <div class="worksheet-item"><div class="worksheet-num">12</div><div class="worksheet-content"><div class="worksheet-item-title">Conflicting accounts preserved</div><div class="worksheet-item-desc">Where source notes reflected disagreement or uncertainty, that is reflected in the record.</div></div></div>
     </div>
@@ -864,7 +915,7 @@ a:hover{text-decoration:underline}
     <div class="trigger-item"><span class="trigger-text">Escalation wording without prior counseling trail in file</span></div>
     <div class="trigger-item"><span class="trigger-text">Conflicting chronology not resolved or noted</span></div>
     <div class="trigger-item"><span class="trigger-text">Missing source documentation referenced in record</span></div>
-    <div class="trigger-item"><span class="trigger-text">AI-generated conclusions without identifiable source support</span></div>
+    <div class="trigger-item"><span class="trigger-text">AI-assisted conclusions without identifiable source support</span></div>
     <div class="trigger-item"><span class="trigger-text">Unresolved factual conflicts between accounts</span></div>
     <div class="trigger-item"><span class="trigger-text">Protected-category allegations present</span></div>
     <div class="trigger-item"><span class="trigger-text">Materially incomplete chronology with no gap notation</span></div>
@@ -874,12 +925,12 @@ a:hover{text-decoration:underline}
     <div class="severity-item"><div class="severity-level low">Low</div><div style="font-size:12px;color:var(--accent);font-weight:600;margin-bottom:4px">Routine documentation.</div><div class="severity-desc">Primary reviewer review sufficient. No trigger conditions present.</div></div>
     <div class="severity-item"><div class="severity-level moderate">Moderate</div><div style="font-size:12px;color:var(--review-text);font-weight:600;margin-bottom:4px">Evaluative conclusions or escalation indicators present.</div><div class="severity-desc">Clarification review recommended before finalization.</div></div>
     <div class="severity-item"><div class="severity-level high">High</div><div style="font-size:12px;color:#E8A84A;font-weight:600;margin-bottom:4px">Trigger condition identified.</div><div class="severity-desc">Secondary review required before finalization.</div></div>
-    <div class="severity-item"><div class="severity-level critical">Critical</div><div style="font-size:12px;color:var(--stop-text);font-weight:600;margin-bottom:4px">Termination, protected-category, or AI-generated determination.</div><div class="severity-desc">Human source verification and reviewer confirmation required before entry into official record.</div></div>
+    <div class="severity-item"><div class="severity-level critical">Critical</div><div style="font-size:12px;color:var(--stop-text);font-weight:600;margin-bottom:4px">Termination, protected-category, or AI-assisted documentation.</div><div class="severity-desc">Human source verification and reviewer confirmation required before entry into official record.</div></div>
   </div>
 
-  <!-- FAILURE MODE RECOGNITION -->
-  <div class="section-head">Failure-Mode Recognition</div>
-  <p class="section-sub">Recognizable conditions in organizational documentation. Early identification reduces downstream review difficulty.</p>
+  <!-- REVIEW INSTABILITY RECOGNITION -->
+  <div class="section-head">Review Instability Recognition</div>
+  <p class="section-sub">Recognizable conditions in organizational documentation that create interpretive friction or reconstruction difficulty.</p>
 
   <div class="failure-list">
     <div class="failure-item">
@@ -888,7 +939,7 @@ a:hover{text-decoration:underline}
       <div class="failure-body">A record that was understandable when drafted becomes difficult to follow after the original participants are no longer available. Context that was assumed common knowledge was never written down.</div>
       <div class="failure-sub">How it develops</div>
       <div class="failure-body">Drafters often omit context they consider obvious. Over time, that context disappears as personnel change, systems migrate, or institutional memory erodes.</div>
-      <div class="failure-sub">Review mitigation</div>
+      <div class="failure-sub">Review guidance</div>
       <div class="failure-body">If a reviewer with no prior knowledge cannot follow the record, the file-based basis is insufficient.</div>
     </div>
     <div class="failure-item">
@@ -897,7 +948,7 @@ a:hover{text-decoration:underline}
       <div class="failure-body">Earlier events are described with increasing clarity or severity in later records, without new evidence being introduced. The original documentation does not support the later characterization.</div>
       <div class="failure-sub">How it develops</div>
       <div class="failure-body">Each successive record builds on prior records rather than on primary evidence. Wording migrates through templates. The original source basis becomes increasingly remote.</div>
-      <div class="failure-sub">Review mitigation</div>
+      <div class="failure-sub">Review guidance</div>
       <div class="failure-body">Check original source records against current characterization.</div>
     </div>
     <div class="failure-item">
@@ -906,27 +957,27 @@ a:hover{text-decoration:underline}
       <div class="failure-body">Escalation language appears in a record without an identifiable prior counseling trail. "Repeated warnings" or "ongoing concerns" are referenced but not traceable to documents in the file.</div>
       <div class="failure-sub">How it develops</div>
       <div class="failure-body">Earlier coaching or verbal guidance was not documented at the time. Later records reference it as though it was. The record accumulates implied history without documented support.</div>
-      <div class="failure-sub">Review mitigation</div>
+      <div class="failure-sub">Review guidance</div>
       <div class="failure-body">Prior intervention claims should reference identifiable documents. If none exist, the escalation basis is not independently verifiable.</div>
     </div>
     <div class="failure-item">
       <div class="failure-title">Cross-Record Contamination</div>
       <div class="failure-sub">What reviewers observe</div>
-      <div class="failure-body">Wording from one record appears in subsequent records without independent verification. Templates, prior conclusions, or AI-generated summaries carry forward language that was never confirmed against primary documentation.</div>
+      <div class="failure-body">Wording from one record appears in subsequent records without independent verification. Templates, prior conclusions, or AI-assisted drafting output carry forward language that was never confirmed against primary documentation.</div>
       <div class="failure-sub">How it develops</div>
       <div class="failure-body">Records are drafted using prior records as reference rather than returning to primary evidence. Wording accumulates across review cycles without re-verification.</div>
-      <div class="failure-sub">Review mitigation</div>
+      <div class="failure-sub">Review guidance</div>
       <div class="failure-body">Where wording appears across multiple records, verify each instance against independent source materials.</div>
     </div>
   </div>
 
   <!-- PERIODIC REVIEW SAMPLING -->
-  <div class="section-head">Periodic Review Sampling</div>
-  <p class="section-sub">Lightweight review of retained records on a periodic basis. Frequency and scope determined by organizational capacity.</p>
+  <div class="section-head">Periodic Retained-Record Sampling</div>
+  <p class="section-sub">Lightweight review of retained organizational records on a periodic basis. Frequency and scope determined by organizational capacity.</p>
   <div class="sampling-list">
     <div class="sampling-item"><div class="sampling-num">1</div><div class="sampling-body"><div class="sampling-title">Random Retained-Record Review</div><div class="sampling-desc">Periodically review a sample of finalized records without advance selection criteria. Apply the five pre-finalization questions to each. Note patterns.</div></div></div>
     <div class="sampling-item"><div class="sampling-num">2</div><div class="sampling-body"><div class="sampling-title">Escalation Record Sampling</div><div class="sampling-desc">Review a sample of recent escalation records. Confirm prior counseling trail is identifiable. Confirm source records are present. Note where they are not.</div></div></div>
-    <div class="sampling-item"><div class="sampling-num">3</div><div class="sampling-body"><div class="sampling-title">AI-Assisted Documentation Spot Review</div><div class="sampling-desc">Where AI tools were used, select a sample for source verification. Confirm generated wording against original notes. Note where discrepancies exist.</div></div></div>
+    <div class="sampling-item"><div class="sampling-num">3</div><div class="sampling-body"><div class="sampling-title">AI-Assisted Documentation Spot Review</div><div class="sampling-desc">Where AI-assisted drafting was applied, select a sample for source verification. Confirm generated wording against original notes. Note where discrepancies exist.</div></div></div>
     <div class="sampling-item"><div class="sampling-num">4</div><div class="sampling-body"><div class="sampling-title">Chronology Verification Sample</div><div class="sampling-desc">Select records involving conduct or performance conclusions. Confirm each conclusion has an identifiable date. Note where dates are absent.</div></div></div>
     <div class="sampling-item"><div class="sampling-num">5</div><div class="sampling-body"><div class="sampling-title">Wording Pattern Review</div><div class="sampling-desc">Where identical or near-identical phrasing appears across multiple records, check whether each instance was verified against independent source materials or carried forward from prior records.</div></div></div>
   </div>
@@ -1003,19 +1054,19 @@ a:hover{text-decoration:underline}
        JRS REVIEWER TRAINING ENVIRONMENT
   ════════════════════════════════════════════════ -->
   <div class="section-head" style="margin-top:56px" id="simulator">JRS Reviewer Training Environment</div>
-  <p class="section-sub">Practice applying the JRS documentation review standard to sample records. Three exercise types. Fictional records only.</p>
+  <p class="section-sub">Practice applying pre-finalization review conditions to sample records. Three exercise types. Fictional records only.</p>
 
   <!-- LEGAL DISCLAIMER -->
   <div style="border:1px solid rgba(139,32,32,.4);background:rgba(139,32,32,.06);padding:16px 20px;margin-bottom:32px">
     <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--stop-text);margin-bottom:7px">Legal Disclaimer</div>
-    <p style="font-size:12.5px;color:var(--muted);line-height:1.65">All records used in these training exercises are entirely fictional and created for training purposes only. Any resemblance to real persons, organizations, or events is coincidental. These exercises are educational tools only — they do not constitute legal advice, compliance guidance, HR consulting, or professional certification. Training exercise outcomes do not reflect actual legal standards. Organizations remain responsible for their own applicable legal, policy, and compliance determinations.</p>
+    <p style="font-size:12.5px;color:var(--muted);line-height:1.65">All records used in these review exercises are entirely fictional and created for reviewer practice only. Any resemblance to real persons, organizations, or events is coincidental. These exercises are reviewer practice materials only — they do not constitute legal advice, compliance guidance, HR consulting, or professional certification. Exercise outcomes do not reflect actual legal standards. Organizations remain responsible for their own applicable legal, policy, and compliance determinations.</p>
   </div>
 
   <!-- TRAINING ENVIRONMENT TABS -->
   <div style="display:flex;gap:0;border-bottom:1px solid var(--rule);margin-bottom:0">
     <button class="sim-tab active" id="sim-tab-0" onclick="showSimTab(0)">1. Document Review</button>
     <button class="sim-tab" id="sim-tab-1" onclick="showSimTab(1)">2. Routing Decisions</button>
-    <button class="sim-tab" id="sim-tab-2" onclick="showSimTab(2)">3. Failure Mode ID</button>
+    <button class="sim-tab" id="sim-tab-2" onclick="showSimTab(2)">3. Review Instability ID</button>
   </div>
 
   <!-- ── TAB 1: DOCUMENT REVIEW ── -->
@@ -1049,7 +1100,7 @@ a:hover{text-decoration:underline}
   <!-- ── TAB 3: FAILURE MODE ID ── -->
   <div class="sim-panel" id="sim-panel-2" style="display:none">
     <div style="padding:24px 0 8px">
-      <p style="font-size:13.5px;color:var(--muted);margin-bottom:20px;line-height:1.65">Read each record excerpt and identify which documentation failure mode it illustrates. Select the best match from the four options.</p>
+      <p style="font-size:13.5px;color:var(--muted);margin-bottom:20px;line-height:1.65">Read each record excerpt and identify which review instability condition it illustrates. Select the best match from the four options.</p>
       <div id="fm-items"></div>
       <div id="fm-complete" style="display:none;border:1px solid rgba(93,191,130,.3);background:rgba(30,92,53,.08);padding:20px;margin-top:16px">
         <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--ready-text);margin-bottom:8px">Exercise Complete</div>
@@ -1070,7 +1121,7 @@ a:hover{text-decoration:underline}
     <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">Record Review Workspace</div>
     <h2 style="font-family:'Bodoni Moda',serif;font-size:26px;font-weight:500;color:var(--text);margin-bottom:12px">Record Review Workspace</h2>
     <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:8px;max-width:640px">Submit any documentation record below — a performance review, disciplinary note, investigation summary, accommodation decision, or similar — and receive an instant assessment against the five JRS pre-finalization review questions.</p>
-    <p style="font-size:12.5px;color:var(--muted-soft);margin-bottom:24px">The tool scans for vague timeline language, unsupported conclusions, missing source records, escalation patterns, AI-generated content, and missing employee voice. It uses pattern analysis, not AI, and runs entirely in your browser.</p>
+    <p style="font-size:12.5px;color:var(--muted-soft);margin-bottom:24px">This workspace scans for vague timeline language, unsupported conclusions, missing source records, escalation patterns, AI-assisted content indicators, and missing employee voice. It uses pattern analysis only and runs entirely in your browser.</p>
 
     <div style="border:1px solid rgba(139,32,32,.3);background:rgba(139,32,32,.05);padding:12px 16px;margin-bottom:24px">
       <span style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--stop-text)">Legal Disclaimer — </span>
@@ -1236,7 +1287,7 @@ var RT_SCENARIOS = [
     id:'SCN-03', type:'AI-Assisted Summary',
     text:'"An AI tool generated the following summary for a quarterly review: \'Employee consistently demonstrates poor judgment, creates interpersonal conflict, and has shown a pattern of resistance to supervisory guidance.\' The supervisor\'s notes contain two entries: one documenting a missed deadline and one documenting a brief disagreement at a team meeting."',
     correct:'high',
-    feedback:'High. Trigger condition: AI-generated conclusions exceed observable source support. The supervisor\'s notes document two discrete incidents. The generated wording introduces three broad characterizations ("poor judgment," "interpersonal conflict," "pattern of resistance") not supported by the available notes. Return to drafter; human confirmation against original notes required.'
+    feedback:'High. Trigger condition: AI-assisted conclusions exceed observable source support. The supervisor\'s notes document two discrete incidents. The generated wording introduces three broad characterizations ("poor judgment," "interpersonal conflict," "pattern of resistance") not supported by the available notes. Return to drafter; human confirmation against original notes required.'
   },
   {
     id:'SCN-04', type:'Accommodation Request',
@@ -1512,7 +1563,7 @@ function selectFM(i, key) {
 
   if (Object.keys(fmState.answered).length === FM_ITEMS.length) {
     var correct = fmState.scores.filter(Boolean).length;
-    document.getElementById('fm-final-score').textContent = correct + ' of ' + FM_ITEMS.length + ' failure modes correctly identified.';
+    document.getElementById('fm-final-score').textContent = correct + ' of ' + FM_ITEMS.length + ' review instability conditions correctly identified.';
     document.getElementById('fm-complete').style.display = 'block';
   }
 }
@@ -1552,7 +1603,7 @@ var PA_FLAGS = {
     patterns:[/repeated (warnings?|counseling|coaching|intervention)/gi,/multiple (warnings?|write[- ]?ups|disciplinary actions?)/gi,/prior (warnings?|write[- ]?ups|counseling|coaching)/gi,/despite (coaching|counseling|warnings?|intervention)/gi,/progressive discipline/gi,/has been warned/gi,/was (previously|prior) warned/gi,/verbal (warnings?|counseling) (were|was|have been) (given|issued|provided)/gi]
   },
   ai_content: {
-    label:'AI-generated content indicator — verify against source notes',
+    label:'AI-assisted content indicator — verify against source notes',
     color:'var(--review-text)',
     patterns:[/ai[- ](generated|assisted|summary|draft)/gi,/generated (by|using|with) (ai|artificial intelligence|an? (ai|language) model)/gi,/ai[- ]assisted (drafting|review|summary)/gi,/(chatgpt|claude|copilot|gpt[- ]?4?)/gi,/language model/gi,/automatically generated/gi]
   },
@@ -1687,7 +1738,7 @@ function runAssessment() {
   var aiMatches = findMatches(text, PA_FLAGS.ai_content.patterns);
   if (aiMatches.length > 0) {
     flags.push({category: PA_FLAGS.ai_content.label, color: PA_FLAGS.ai_content.color, examples: aiMatches.slice(0,3)});
-    recs.push('AI-generated content detected. Verify generated wording against original source notes. Confirm that generated conclusions do not exceed the support visible in the underlying documentation.');
+    recs.push('AI-assisted content detected. Verify generated wording against original source notes. Confirm that AI-assisted conclusions do not exceed the support visible in the underlying documentation.');
   }
 
   // ── OVERALL ROUTING ──────────────────────────────
@@ -1794,7 +1845,7 @@ renderFM();
   <div style="border:1px solid rgba(190,148,71,.4);background:rgba(190,148,71,.05);padding:28px 28px 24px">
     <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">Course Complete</div>
     <div style="font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--text);margin-bottom:8px">All six modules completed.</div>
-    <p style="font-size:13.5px;color:var(--muted);margin-bottom:20px;line-height:1.65">Enter your name to generate a completion record for this training program.</p>
+    <p style="font-size:13.5px;color:var(--muted);margin-bottom:20px;line-height:1.65">Enter your name to generate a completion record for this reviewer certification.</p>
     <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:20px">
       <input type="text" id="cert-name" placeholder="Your full name" autocomplete="name"
         style="flex:1;min-width:200px;background:var(--surface2);border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;padding:11px 14px;outline:none">
@@ -1820,7 +1871,7 @@ renderFM();
 
 <footer class="site-footer">
   <div class="footer-text">
-    Reviewer Training and Reference Materials &nbsp;|&nbsp; Internal Distribution &nbsp;|&nbsp; Version 1.0 &nbsp;|&nbsp; May 2026<br>
+    Reviewer Reference and Implementation Materials &nbsp;|&nbsp; Internal Distribution &nbsp;|&nbsp; Version 1.0 &nbsp;|&nbsp; May 2026<br>
     &copy; 2026 Phillip Wikes &nbsp;|&nbsp; <a href="/" style="color:var(--muted-soft)">jrsstandard.com</a>
   </div>
 </footer>
