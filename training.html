@@ -956,7 +956,477 @@ a:hover{text-decoration:underline}
 
   <p style="font-size:12px;color:var(--muted-soft);margin-top:8px;line-height:1.7">These materials support documentation review practice only. No legal determinations. Organizations remain responsible for applicable legal, policy, and compliance determinations. Local workflow requirements govern implementation.</p>
 
+
+  <!-- ═══════════════════════════════════════════════
+       REVIEW SIMULATOR
+  ════════════════════════════════════════════════ -->
+  <div class="section-head" style="margin-top:56px">Review Simulator</div>
+  <p class="section-sub">Practice applying the JRS documentation review standard to sample records. Three exercise types. Fictional records only.</p>
+
+  <!-- LEGAL DISCLAIMER -->
+  <div style="border:1px solid rgba(139,32,32,.4);background:rgba(139,32,32,.06);padding:16px 20px;margin-bottom:32px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--stop-text);margin-bottom:7px">Legal Disclaimer</div>
+    <p style="font-size:12.5px;color:var(--muted);line-height:1.65">All records used in these simulations are entirely fictional and created for training purposes only. Any resemblance to real persons, organizations, or events is coincidental. These exercises are educational tools only — they do not constitute legal advice, compliance guidance, HR consulting, or professional certification. Simulation outcomes do not reflect actual legal standards. Organizations remain responsible for their own applicable legal, policy, and compliance determinations.</p>
+  </div>
+
+  <!-- SIMULATOR TABS -->
+  <div style="display:flex;gap:0;border-bottom:1px solid var(--rule);margin-bottom:0">
+    <button class="sim-tab active" id="sim-tab-0" onclick="showSimTab(0)">1 — Document Review</button>
+    <button class="sim-tab" id="sim-tab-1" onclick="showSimTab(1)">2 — Routing Decisions</button>
+    <button class="sim-tab" id="sim-tab-2" onclick="showSimTab(2)">3 — Failure Mode ID</button>
+  </div>
+
+  <!-- ── TAB 1: DOCUMENT REVIEW ── -->
+  <div class="sim-panel" id="sim-panel-0">
+    <div style="padding:24px 0 8px">
+      <p style="font-size:13.5px;color:var(--muted);margin-bottom:20px;line-height:1.65">Read each sample record and answer whether it meets each of the five JRS pre-finalization review questions. Select Yes or No for each, then submit to see your results.</p>
+      <div id="dr-records"></div>
+      <button onclick="nextDRRecord()" id="dr-next-btn" style="display:none;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:11px 22px;cursor:pointer;margin-top:16px">Next Record →</button>
+      <div id="dr-complete" style="display:none;border:1px solid rgba(93,191,130,.3);background:rgba(30,92,53,.08);padding:20px;margin-top:16px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--ready-text);margin-bottom:8px">Session Complete</div>
+        <div id="dr-final-score" style="font-size:16px;font-weight:600;color:var(--text);margin-bottom:8px"></div>
+        <p style="font-size:13px;color:var(--muted)">Review the feedback above for each record, then try the routing decisions exercise.</p>
+        <button onclick="resetDR()" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);background:none;border:1px solid var(--rule);padding:8px 16px;cursor:pointer;margin-top:12px">Restart Exercise</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TAB 2: ROUTING DECISIONS ── -->
+  <div class="sim-panel" id="sim-panel-1" style="display:none">
+    <div style="padding:24px 0 8px">
+      <p style="font-size:13.5px;color:var(--muted);margin-bottom:20px;line-height:1.65">Read each scenario. Select the correct review level — Low, Moderate, High, or Critical — based on the JRS secondary review conditions. You will see your result and reasoning after each selection.</p>
+      <div id="rt-scenarios"></div>
+      <div id="rt-complete" style="display:none;border:1px solid rgba(93,191,130,.3);background:rgba(30,92,53,.08);padding:20px;margin-top:16px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--ready-text);margin-bottom:8px">All Scenarios Reviewed</div>
+        <div id="rt-final-score" style="font-size:16px;font-weight:600;color:var(--text);margin-bottom:8px"></div>
+        <button onclick="resetRT()" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);background:none;border:1px solid var(--rule);padding:8px 16px;cursor:pointer;margin-top:4px">Restart Exercise</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TAB 3: FAILURE MODE ID ── -->
+  <div class="sim-panel" id="sim-panel-2" style="display:none">
+    <div style="padding:24px 0 8px">
+      <p style="font-size:13.5px;color:var(--muted);margin-bottom:20px;line-height:1.65">Read each record excerpt and identify which documentation failure mode it illustrates. Select the best match from the four options.</p>
+      <div id="fm-items"></div>
+      <div id="fm-complete" style="display:none;border:1px solid rgba(93,191,130,.3);background:rgba(30,92,53,.08);padding:20px;margin-top:16px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--ready-text);margin-bottom:8px">Exercise Complete</div>
+        <div id="fm-final-score" style="font-size:16px;font-weight:600;color:var(--text);margin-bottom:8px"></div>
+        <button onclick="resetFM()" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);background:none;border:1px solid var(--rule);padding:8px 16px;cursor:pointer;margin-top:4px">Restart Exercise</button>
+      </div>
+    </div>
+  </div>
+
 </main>
+
+<style>
+/* SIMULATOR STYLES */
+.sim-tab{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);background:none;border:none;border-bottom:2px solid transparent;padding:12px 18px;cursor:pointer;transition:.15s}
+.sim-tab:hover{color:var(--text)}
+.sim-tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.sim-record{border:1px solid var(--rule);margin-bottom:20px;overflow:hidden}
+.sim-record-header{background:var(--surface2);padding:10px 18px;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center}
+.sim-record-id{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim)}
+.sim-record-type{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft)}
+.sim-record-text{padding:18px;font-size:13.5px;color:var(--muted);line-height:1.7;font-style:italic;background:var(--surface);border-bottom:1px solid var(--rule)}
+.sim-questions{padding:16px 18px}
+.sim-q{margin-bottom:14px}
+.sim-q-label{font-size:12.5px;color:var(--text);margin-bottom:7px;line-height:1.5}
+.sim-q-opts{display:flex;gap:8px}
+.sim-btn{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;padding:7px 16px;border:1px solid var(--rule);background:none;color:var(--muted-soft);cursor:pointer;transition:.15s}
+.sim-btn:hover{color:var(--text);border-color:var(--text)}
+.sim-btn.selected-yes{background:rgba(30,92,53,.2);border-color:rgba(93,191,130,.5);color:var(--ready-text)}
+.sim-btn.selected-no{background:rgba(139,32,32,.2);border-color:rgba(232,128,128,.4);color:var(--stop-text)}
+.sim-submit{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--surface2);color:var(--text);border:1px solid var(--rule);padding:10px 22px;cursor:pointer;margin-top:8px;transition:.15s;display:block}
+.sim-submit:hover{border-color:var(--accent);color:var(--accent)}
+.sim-feedback{margin-top:14px;padding:14px 16px;border:1px solid var(--rule);background:var(--surface2);display:none}
+.sim-feedback.show{display:block}
+.sim-fb-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;font-size:12.5px;line-height:1.5}
+.sim-fb-row:last-child{margin-bottom:0}
+.fb-icon-pass{color:var(--ready-text);font-family:'JetBrains Mono',monospace;font-size:11px;flex-shrink:0}
+.fb-icon-fail{color:var(--stop-text);font-family:'JetBrains Mono',monospace;font-size:11px;flex-shrink:0}
+.fb-icon-warn{color:var(--review-text);font-family:'JetBrains Mono',monospace;font-size:11px;flex-shrink:0}
+.sim-score-bar{padding:12px 16px;border-top:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase}
+/* ROUTING */
+.rt-scenario{border:1px solid var(--rule);margin-bottom:20px;overflow:hidden}
+.rt-scenario-header{background:var(--surface2);padding:10px 18px;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center}
+.rt-scenario-text{padding:18px;font-size:13.5px;color:var(--muted);line-height:1.7;font-style:italic;background:var(--surface);border-bottom:1px solid var(--rule)}
+.rt-options{padding:16px 18px;display:flex;gap:8px;flex-wrap:wrap}
+.rt-btn{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;padding:9px 18px;border:1px solid var(--rule);background:none;color:var(--muted-soft);cursor:pointer;transition:.15s}
+.rt-btn:hover{color:var(--text);border-color:var(--text)}
+.rt-btn.rt-low{border-color:rgba(93,191,130,.5);color:var(--ready-text)}
+.rt-btn.rt-moderate{border-color:rgba(212,160,85,.5);color:var(--review-text)}
+.rt-btn.rt-high{border-color:rgba(232,168,74,.5);color:#E8A84A}
+.rt-btn.rt-critical{border-color:rgba(232,128,128,.4);color:var(--stop-text)}
+.rt-feedback{margin:0 18px 16px;padding:14px 16px;border:1px solid var(--rule);background:var(--surface2);display:none;font-size:13px;color:var(--muted);line-height:1.65}
+.rt-feedback.show{display:block}
+/* FAILURE MODE */
+.fm-item{border:1px solid var(--rule);margin-bottom:20px;overflow:hidden}
+.fm-item-header{background:var(--surface2);padding:10px 18px;border-bottom:1px solid var(--rule)}
+.fm-item-text{padding:18px;font-size:13.5px;color:var(--muted);line-height:1.7;font-style:italic;background:var(--surface);border-bottom:1px solid var(--rule)}
+.fm-options{padding:16px 18px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.fm-btn{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;padding:10px 12px;border:1px solid var(--rule);background:none;color:var(--muted-soft);cursor:pointer;transition:.15s;text-align:left;line-height:1.4}
+.fm-btn:hover{color:var(--text);border-color:var(--text)}
+.fm-btn.fm-correct{background:rgba(30,92,53,.2);border-color:rgba(93,191,130,.5);color:var(--ready-text)}
+.fm-btn.fm-wrong{background:rgba(139,32,32,.1);border-color:rgba(232,128,128,.3);color:var(--stop-text)}
+.fm-feedback{margin:0 18px 16px;padding:14px 16px;border:1px solid var(--rule);background:var(--surface2);display:none;font-size:13px;color:var(--muted);line-height:1.65}
+.fm-feedback.show{display:block}
+@media(max-width:600px){
+  .sim-tab{font-size:7.5px;padding:10px 10px}
+  .fm-options{grid-template-columns:1fr}
+  .rt-options{flex-direction:column}
+}
+</style>
+
+<script>
+// ── SIMULATOR DATA ────────────────────────────────────
+
+var DR_RECORDS = [
+  {
+    id:'REC-01', type:'Performance / Termination',
+    text:'"Employee has consistently demonstrated poor performance and a negative attitude throughout the review period. Management has repeatedly addressed these concerns without meaningful improvement. The employee\'s conduct has been disruptive to team operations and morale. Based on the ongoing pattern of behavior, the decision has been made to terminate employment."',
+    questions:[
+      {q:'Q1 — Are specific dates identifiable for each event or conduct instance?', answer:'no', feedback:'No dates are provided. "Throughout the review period" and "repeatedly" are unanchored. A later reviewer cannot identify when events occurred.'},
+      {q:'Q2 — Are the source records identified and confirmed present?', answer:'no', feedback:'"Management addressed these concerns" — no source records named or confirmed. The basis for the conclusion cannot be independently verified.'},
+      {q:'Q3 — Is the reasoning path from evidence to conclusion visible?', answer:'no', feedback:'"Ongoing pattern of behavior" is a conclusion without traceable prior documentation. No prior records, dates, or interventions are cited.'},
+      {q:'Q4 — Are conflicting accounts or the employee\'s perspective preserved?', answer:'no', feedback:'The employee\'s account is absent. No indication that the employee\'s position was obtained or preserved.'},
+      {q:'Q5 — Would this record support downstream review without the drafter?', answer:'no', feedback:'A reviewer with no prior knowledge cannot identify what happened, when, or why. The record does not stand independently.'}
+    ]
+  },
+  {
+    id:'REC-02', type:'Performance / Coaching',
+    text:'"Employee did not submit the Q3 compliance report by the October 15 deadline (project tracking log entry on file, dated October 15). Supervisor sent a written reminder of the submission requirement on October 12 (email on file). Employee stated workload as the reason on October 16 (meeting notes on file, signed by both parties). This is the first late submission documented in the current review period. No prior performance documentation identified."',
+    questions:[
+      {q:'Q1 — Are specific dates identifiable for each event or conduct instance?', answer:'yes', feedback:'Correct. October 15 deadline, October 12 reminder, October 16 meeting — all specific and verifiable.'},
+      {q:'Q2 — Are the source records identified and confirmed present?', answer:'yes', feedback:'Correct. Project tracking log, email, and meeting notes are all identified and confirmed in the file.'},
+      {q:'Q3 — Is the reasoning path from evidence to conclusion visible?', answer:'yes', feedback:'Correct. The record states what happened, when, and what documentation supports it. No unsupported conclusions.'},
+      {q:'Q4 — Are conflicting accounts or the employee\'s perspective preserved?', answer:'yes', feedback:'Correct. The employee\'s explanation (workload) is documented in the meeting notes and preserved.'},
+      {q:'Q5 — Would this record support downstream review without the drafter?', answer:'yes', feedback:'Correct. The record is complete and self-contained. A later reviewer could reconstruct the basis from the file alone.'}
+    ]
+  },
+  {
+    id:'REC-03', type:'Investigation / Conclusion',
+    text:'"Following a series of reported incidents and a subsequent investigation, it was determined that the employee\'s conduct was inconsistent with workplace policy. Witness accounts were reviewed and the investigator concluded the incidents occurred as described. The employee has been informed of the findings."',
+    questions:[
+      {q:'Q1 — Are specific dates identifiable for each event or conduct instance?', answer:'no', feedback:'"A series of reported incidents" — no dates, count, or description of the incidents. The timeline cannot be reconstructed.'},
+      {q:'Q2 — Are the source records identified and confirmed present?', answer:'no', feedback:'"Witness accounts were reviewed" — accounts are not identified, preserved, or confirmed in the file. No investigation documents are referenced.'},
+      {q:'Q3 — Is the reasoning path from evidence to conclusion visible?', answer:'no', feedback:'"Determined that conduct was inconsistent" — no policy cited, no credibility basis stated, no link between the evidence and the conclusion.'},
+      {q:'Q4 — Are conflicting accounts or the employee\'s perspective preserved?', answer:'no', feedback:'No indication that the employee\'s account was obtained. Witness accounts are referenced but not preserved or identified.'},
+      {q:'Q5 — Would this record support downstream review without the drafter?', answer:'no', feedback:'A subsequent reviewer has no basis to evaluate the investigation. None of the who, what, when, or why is reconstructible from this record.'}
+    ]
+  }
+];
+
+var RT_SCENARIOS = [
+  {
+    id:'SCN-01', type:'Termination',
+    text:'"Employee is being terminated for performance issues. The record states: \'Despite repeated coaching and written warnings, the employee has failed to meet minimum performance expectations.\' The reviewer can locate one email from six months ago mentioning a \'performance conversation.\' No formal coaching documentation, PIPs, or written warnings are in the file."',
+    correct:'critical',
+    feedback:'Critical. This is a termination record with trigger conditions: escalation wording ("repeated coaching and written warnings") without an identifiable counseling trail in the file. The single email does not constitute the referenced documentation. Legal consultation required before finalization.'
+  },
+  {
+    id:'SCN-02', type:'Routine Performance Review',
+    text:'"Annual performance review for an employee in a non-supervisory role. The record documents completion of three assigned projects (project titles and completion dates listed), attendance within policy, and one area for development (written communication) with a specific example from September. No escalation language. No prior corrective action referenced."',
+    correct:'low',
+    feedback:'Low. No trigger conditions present. Specific projects are identified with dates. The development area references a specific example. No escalation wording, no missing source documentation. Primary reviewer review is sufficient.'
+  },
+  {
+    id:'SCN-03', type:'AI-Assisted Summary',
+    text:'"An AI tool generated the following summary for a quarterly review: \'Employee consistently demonstrates poor judgment, creates interpersonal conflict, and has shown a pattern of resistance to supervisory guidance.\' The supervisor\'s notes contain two entries: one documenting a missed deadline and one documenting a brief disagreement at a team meeting."',
+    correct:'high',
+    feedback:'High. Trigger condition: AI-generated conclusions exceed observable source support. The supervisor\'s notes document two discrete incidents. The generated wording introduces three broad characterizations ("poor judgment," "interpersonal conflict," "pattern of resistance") not supported by the available notes. Return to drafter; human confirmation against original notes required.'
+  },
+  {
+    id:'SCN-04', type:'Accommodation Request',
+    text:'"An employee requested a scheduling accommodation. The record states the accommodation was denied because \'it would create an undue hardship.\' No documentation of the interactive process is in the file. No description of what alternatives were considered. No rationale for the hardship determination."',
+    correct:'critical',
+    feedback:'Critical. This is an accommodation denial without interactive process documentation or hardship rationale — both required. Legal or compliance review is required before finalization. This record presents significant downstream review exposure if the denial is later challenged.'
+  },
+  {
+    id:'SCN-05', type:'Formal Discipline',
+    text:'"Formal written warning issued for attendance. The record identifies six unexcused absences with specific dates over a 90-day period (attendance log referenced and confirmed in file). Prior verbal coaching on attendance documented March 3 (meeting notes on file). Employee was advised of the policy threshold in writing on January 15 (letter on file)."',
+    correct:'moderate',
+    feedback:'Moderate is reasonable — evaluative judgments are minimal and the record is well-documented. Some reviewers may apply low, given the specific dates and referenced documentation. The key question: is the attendance policy threshold clearly identified? The January 15 letter suggests yes. Either low or moderate is defensible here; the record does not present trigger conditions.'
+  }
+];
+
+var FM_ITEMS = [
+  {
+    id:'FM-01',
+    text:'"A termination record from October references \'years of documented performance concerns and repeated intervention.\' The reviewer searches the personnel file. The earliest performance documentation found is from eight months ago. Prior records from the referenced earlier period are not in the file and their existence cannot be confirmed."',
+    correct:'reinterpretation',
+    feedback:'Reinterpretation Drift. The October record describes a history of performance concerns that the file does not support. Earlier events are characterized with greater severity and longer duration than the available documentation reflects. The characterization has drifted from what the source records actually show.'
+  },
+  {
+    id:'FM-02',
+    text:'"Three successive performance reviews use nearly identical language to describe the same employee\'s communication issues — including the same specific example from an incident that occurred two years ago. Each review reads as though the example was drawn from the current review period."',
+    correct:'contamination',
+    feedback:'Cross-Record Contamination. Wording — including a specific example — has carried forward across three review cycles without re-verification. The example is now attributed to each period as though it occurred then. The original source basis has become detached from its context.'
+  },
+  {
+    id:'FM-03',
+    text:'"A reviewer notes that a supervisor\'s written statement describes events that \'everyone in the department understood at the time.\' The statement does not describe what those events were. The original supervisor is no longer with the organization."',
+    correct:'amnesia',
+    feedback:'Operational Amnesia. The record assumes shared knowledge that is no longer accessible. What was common context at the time of drafting has disappeared with the departure of the original drafter. A subsequent reviewer has no basis to identify what events are being referenced.'
+  },
+  {
+    id:'FM-04',
+    text:'"A formal disciplinary record references \'multiple prior written warnings for the same conduct.\' The reviewer finds one prior written warning in the file. A note in the file states: \'Earlier warnings were delivered verbally — see supervisory records.\' No supervisory records are attached or accessible."',
+    correct:'escalation',
+    feedback:'Escalation Drift. The record references a counseling trail that does not exist in the file. Prior interventions were not formally documented, but the current record treats them as though they were. The escalation basis — "multiple prior written warnings" — is not independently verifiable.'
+  },
+  {
+    id:'FM-05',
+    text:'"An investigation conclusion states: \'As is well-known within the team, the respondent has a history of similar behavior.\' The investigation file contains notes from the current investigation only. No prior complaint records, disciplinary history, or supporting documents are referenced or attached."',
+    correct:'amnesia',
+    feedback:'Operational Amnesia (with elements of Escalation Drift). "As is well-known" substitutes institutional memory for documented support. The implied prior history is not in the file and cannot be independently verified. A subsequent reviewer — or a reviewer outside the team — has no basis to evaluate the claim.'
+  },
+  {
+    id:'FM-06',
+    text:'"A review record from 2024 states that an employee \'has struggled with independent decision-making since joining the organization in 2019.\' The 2019–2022 reviews in the file describe the employee as \'meeting expectations\' with no noted performance concerns."',
+    correct:'reinterpretation',
+    feedback:'Reinterpretation Drift. The current record retroactively characterizes the 2019–2022 period in a way the contemporaneous records do not support. The earlier reviews describe no performance concerns. The 2024 characterization of a five-year struggle contradicts the available documentation.'
+  }
+];
+
+var FM_LABELS = {
+  amnesia:'Operational Amnesia',
+  reinterpretation:'Reinterpretation Drift',
+  escalation:'Escalation Drift',
+  contamination:'Cross-Record Contamination'
+};
+
+// ── SIMULATOR STATE ────────────────────────────────
+var drState = { recordIndex:0, answered:{}, scores:[], submitted:[] };
+var rtState = { answered:{}, scores:[] };
+var fmState = { answered:{}, scores:[] };
+
+// ── TAB SWITCHING ──────────────────────────────────
+function showSimTab(idx) {
+  document.querySelectorAll('.sim-tab').forEach(function(t,i){t.classList.toggle('active',i===idx);});
+  document.querySelectorAll('.sim-panel').forEach(function(p,i){p.style.display=i===idx?'block':'none';});
+}
+
+// ── DOCUMENT REVIEW ───────────────────────────────
+function renderDR() {
+  var container = document.getElementById('dr-records');
+  container.innerHTML = '';
+  var rec = DR_RECORDS[drState.recordIndex];
+  if (!rec) return;
+  var html = '<div class="sim-record" id="dr-rec-' + drState.recordIndex + '">';
+  html += '<div class="sim-record-header"><span class="sim-record-id">' + rec.id + '</span><span class="sim-record-type">' + rec.type + '</span></div>';
+  html += '<div class="sim-record-text">' + rec.text + '</div>';
+  html += '<div class="sim-questions">';
+  rec.questions.forEach(function(q, qi) {
+    html += '<div class="sim-q">';
+    html += '<div class="sim-q-label">' + q.q + '</div>';
+    html += '<div class="sim-q-opts">';
+    html += '<button class="sim-btn" id="dr-yes-'+qi+'" onclick="drSelect('+qi+',\'yes\')">Yes</button>';
+    html += '<button class="sim-btn" id="dr-no-'+qi+'" onclick="drSelect('+qi+',\'no\')">No</button>';
+    html += '</div></div>';
+  });
+  html += '<button class="sim-submit" id="dr-submit" onclick="submitDR()">Submit Answers</button>';
+  html += '<div class="sim-feedback" id="dr-feedback"></div>';
+  html += '</div></div>';
+  container.innerHTML = html;
+  document.getElementById('dr-next-btn').style.display = 'none';
+  drState.answered = {};
+}
+
+function drSelect(qi, val) {
+  drState.answered[qi] = val;
+  var yes = document.getElementById('dr-yes-'+qi);
+  var no = document.getElementById('dr-no-'+qi);
+  if (yes) { yes.className = 'sim-btn' + (val==='yes'?' selected-yes':''); }
+  if (no)  { no.className  = 'sim-btn' + (val==='no' ?' selected-no':'');  }
+}
+
+function submitDR() {
+  var rec = DR_RECORDS[drState.recordIndex];
+  if (!rec) return;
+  var allAnswered = rec.questions.every(function(_,i){ return drState.answered[i] !== undefined; });
+  if (!allAnswered) { alert('Please answer all five questions before submitting.'); return; }
+
+  var correct = 0;
+  var fbHtml = '';
+  rec.questions.forEach(function(q, qi) {
+    var userAns = drState.answered[qi];
+    var isCorrect = userAns === q.answer;
+    if (isCorrect) correct++;
+    var icon = isCorrect ? '<span class="fb-icon-pass">✓</span>' : '<span class="fb-icon-fail">✗</span>';
+    var color = isCorrect ? 'var(--ready-text)' : 'var(--stop-text)';
+    fbHtml += '<div class="sim-fb-row">' + icon + '<div><span style="color:'+color+';font-weight:600;font-size:12px">' + (isCorrect?'Correct':'Incorrect') + ' — </span>' + q.feedback + '</div></div>';
+  });
+  fbHtml = '<div style="font-family:\'JetBrains Mono\',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:12px">Feedback — ' + rec.id + '</div>' + fbHtml;
+
+  var fb = document.getElementById('dr-feedback');
+  if (fb) { fb.innerHTML = fbHtml; fb.classList.add('show'); }
+
+  // Disable buttons
+  rec.questions.forEach(function(_,qi){
+    var y=document.getElementById('dr-yes-'+qi); var n=document.getElementById('dr-no-'+qi);
+    if(y)y.disabled=true; if(n)n.disabled=true;
+  });
+  var sub = document.getElementById('dr-submit');
+  if (sub) sub.style.display = 'none';
+
+  drState.scores.push({id:rec.id, correct:correct, total:rec.questions.length});
+  drState.submitted.push(drState.recordIndex);
+
+  var sb = document.createElement('div');
+  sb.className = 'sim-score-bar';
+  sb.style.color = correct === rec.questions.length ? 'var(--ready-text)' : correct >= 3 ? 'var(--review-text)' : 'var(--stop-text)';
+  sb.textContent = correct + ' / ' + rec.questions.length + ' correct on this record';
+  var feedbackEl = document.getElementById('dr-feedback');
+  if (feedbackEl && feedbackEl.parentNode) feedbackEl.parentNode.insertBefore(sb, feedbackEl.nextSibling);
+
+  if (drState.recordIndex < DR_RECORDS.length - 1) {
+    document.getElementById('dr-next-btn').style.display = 'inline-block';
+  } else {
+    showDRComplete();
+  }
+}
+
+function nextDRRecord() {
+  drState.recordIndex++;
+  renderDR();
+}
+
+function showDRComplete() {
+  var totalC = drState.scores.reduce(function(a,s){return a+s.correct;},0);
+  var totalQ = drState.scores.reduce(function(a,s){return a+s.total;},0);
+  var el = document.getElementById('dr-complete');
+  document.getElementById('dr-final-score').textContent = totalC + ' of ' + totalQ + ' questions correct across ' + DR_RECORDS.length + ' records.';
+  if (el) el.style.display = 'block';
+  document.getElementById('dr-next-btn').style.display = 'none';
+}
+
+function resetDR() {
+  drState = { recordIndex:0, answered:{}, scores:[], submitted:[] };
+  document.getElementById('dr-complete').style.display = 'none';
+  renderDR();
+}
+
+// ── ROUTING DECISIONS ────────────────────────────
+function renderRT() {
+  var container = document.getElementById('rt-scenarios');
+  container.innerHTML = '';
+  RT_SCENARIOS.forEach(function(s, i) {
+    var html = '<div class="rt-scenario" id="rt-scn-'+i+'">';
+    html += '<div class="rt-scenario-header"><span class="sim-record-id">'+s.id+'</span><span class="sim-record-type">'+s.type+'</span></div>';
+    html += '<div class="rt-scenario-text">'+s.text+'</div>';
+    html += '<div class="rt-options">';
+    ['low','moderate','high','critical'].forEach(function(level){
+      html += '<button class="rt-btn" id="rt-btn-'+i+'-'+level+'" onclick="selectRT('+i+',\''+level+'\')">'+level.charAt(0).toUpperCase()+level.slice(1)+'</button>';
+    });
+    html += '</div>';
+    html += '<div class="rt-feedback" id="rt-fb-'+i+'"></div>';
+    html += '</div>';
+    container.innerHTML += html;
+  });
+}
+
+function selectRT(i, level) {
+  if (rtState.answered[i] !== undefined) return;
+  rtState.answered[i] = level;
+  var s = RT_SCENARIOS[i];
+  var isCorrect = level === s.correct;
+  if (!isCorrect && (level==='high'&&s.correct==='critical')||(level==='critical'&&s.correct==='high')) { isCorrect = 'partial'; }
+  rtState.scores[i] = isCorrect;
+
+  ['low','moderate','high','critical'].forEach(function(lv){
+    var btn = document.getElementById('rt-btn-'+i+'-'+lv);
+    if (!btn) return;
+    btn.disabled = true;
+    if (lv === s.correct) btn.className = 'rt-btn rt-'+lv;
+    else if (lv === level && lv !== s.correct) btn.style.opacity = '0.4';
+  });
+
+  var fb = document.getElementById('rt-fb-'+i);
+  if (fb) {
+    var resultLabel = isCorrect === true ? '<span style="color:var(--ready-text);font-weight:600">Correct. </span>'
+      : isCorrect === 'partial' ? '<span style="color:var(--review-text);font-weight:600">Close — see below. </span>'
+      : '<span style="color:var(--stop-text);font-weight:600">Incorrect. Correct level: ' + s.correct.toUpperCase() + '. </span>';
+    fb.innerHTML = resultLabel + s.feedback;
+    fb.classList.add('show');
+  }
+
+  // Check if all answered
+  if (Object.keys(rtState.answered).length === RT_SCENARIOS.length) {
+    var correct = rtState.scores.filter(function(v){return v===true;}).length;
+    document.getElementById('rt-final-score').textContent = correct + ' of ' + RT_SCENARIOS.length + ' routing decisions correct.';
+    document.getElementById('rt-complete').style.display = 'block';
+  }
+}
+
+function resetRT() {
+  rtState = { answered:{}, scores:[] };
+  document.getElementById('rt-complete').style.display = 'none';
+  renderRT();
+}
+
+// ── FAILURE MODE ID ───────────────────────────────
+function renderFM() {
+  var container = document.getElementById('fm-items');
+  container.innerHTML = '';
+  FM_ITEMS.forEach(function(item, i) {
+    var html = '<div class="fm-item" id="fm-item-'+i+'">';
+    html += '<div class="fm-item-header"><span class="sim-record-id">'+item.id+'</span></div>';
+    html += '<div class="fm-item-text">'+item.text+'</div>';
+    html += '<div class="fm-options">';
+    Object.keys(FM_LABELS).forEach(function(key){
+      html += '<button class="fm-btn" id="fm-btn-'+i+'-'+key+'" onclick="selectFM('+i+',\''+key+'\')">'+FM_LABELS[key]+'</button>';
+    });
+    html += '</div>';
+    html += '<div class="fm-feedback" id="fm-fb-'+i+'"></div>';
+    html += '</div>';
+    container.innerHTML += html;
+  });
+}
+
+function selectFM(i, key) {
+  if (fmState.answered[i] !== undefined) return;
+  fmState.answered[i] = key;
+  var item = FM_ITEMS[i];
+  var isCorrect = key === item.correct;
+  fmState.scores[i] = isCorrect;
+
+  Object.keys(FM_LABELS).forEach(function(k){
+    var btn = document.getElementById('fm-btn-'+i+'-'+k);
+    if (!btn) return;
+    btn.disabled = true;
+    if (k === item.correct) btn.className = 'fm-btn fm-correct';
+    else if (k === key && k !== item.correct) btn.className = 'fm-btn fm-wrong';
+  });
+
+  var fb = document.getElementById('fm-fb-'+i);
+  if (fb) {
+    var resultLabel = isCorrect
+      ? '<span style="color:var(--ready-text);font-weight:600">Correct — ' + FM_LABELS[item.correct] + '. </span>'
+      : '<span style="color:var(--stop-text);font-weight:600">Incorrect. This is ' + FM_LABELS[item.correct] + '. </span>';
+    fb.innerHTML = resultLabel + item.feedback;
+    fb.classList.add('show');
+  }
+
+  if (Object.keys(fmState.answered).length === FM_ITEMS.length) {
+    var correct = fmState.scores.filter(Boolean).length;
+    document.getElementById('fm-final-score').textContent = correct + ' of ' + FM_ITEMS.length + ' failure modes correctly identified.';
+    document.getElementById('fm-complete').style.display = 'block';
+  }
+}
+
+function resetFM() {
+  fmState = { answered:{}, scores:[] };
+  document.getElementById('fm-complete').style.display = 'none';
+  renderFM();
+}
+
+// ── INIT SIMULATORS ───────────────────────────────
+renderDR();
+renderRT();
+renderFM();
+</script>
+
 
 <!-- COMPLETION CERTIFICATE (shown when all 6 modules done) -->
 <div id="cert-section" style="display:none;max-width:960px;margin:0 auto;padding:0 24px 48px">
