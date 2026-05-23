@@ -246,12 +246,43 @@ a:hover{text-decoration:underline}
   <div class="page-intro">
     <h1>Reviewer Training and Downloads</h1>
     <p>Work through each module and complete the knowledge check to mark it done. Kit documents are available for download below. These materials establish a documentation sufficiency standard for pre-finalization review. They do not make legal determinations. Where a conflict exists with local practice, apply the more documentation-protective requirement.</p>
-    <p style="margin-top:10px">This page also includes an interactive <strong style="color:var(--text)">Review Simulator</strong> at the bottom. The simulator offers four exercises: practice reviewing sample records against the five JRS questions, routing decision scenarios, failure mode identification, and a paste-and-assess tool where you can submit your own record text for instant pattern-based feedback. The simulator is for educational use only and does not produce legal or compliance determinations.</p>
+    <p style="margin-top:10px">This page also includes an interactive <strong style="color:var(--text)">JRS Reviewer Training Environment</strong> at the bottom. The training environment offers four exercises: practice reviewing sample records against the five JRS questions, routing decision scenarios, failure mode identification, and a record review workspace where you can submit your own record text for instant pattern-based feedback. The training environment is for educational use only and does not produce legal or compliance determinations.</p>
     <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
-      <a href="#paste-assess" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:11px 22px;text-decoration:none;display:inline-block">Paste &amp; Assess Tool</a>
+      <a href="#record-review-workspace" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:11px 22px;text-decoration:none;display:inline-block">Record Review Workspace</a>
       <a href="#simulator" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--accent);border:1px solid rgba(190,148,71,.4);padding:11px 22px;text-decoration:none;display:inline-block">Practice Exercises</a>
     </div>
-    <div class="kit-notice">Deployment Kit holders only. This page was delivered with your Gumroad purchase. For questions, visit jrsstandard.com.</div>
+    <div class="kit-notice">This training environment accompanies the JRS Implementation Materials.</div>
+
+<!-- WORKFLOW DIAGRAM -->
+<div style="margin-top:28px;margin-bottom:8px">
+  <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:16px">Pre-Finalization Review Sequence</div>
+  <div style="display:flex;flex-direction:column;gap:0;max-width:480px">
+    <div style="display:grid;grid-template-columns:32px 1fr;align-items:center;gap:0">
+      <div style="display:flex;flex-direction:column;align-items:center"><div style="width:10px;height:10px;border:1px solid var(--accent);background:none"></div><div style="width:1px;height:28px;background:var(--rule)"></div></div>
+      <div style="font-size:13px;color:var(--text);font-weight:600;padding-left:4px">Draft Record</div>
+    </div>
+    <div style="display:grid;grid-template-columns:32px 1fr;align-items:center;gap:0">
+      <div style="display:flex;flex-direction:column;align-items:center"><div style="width:10px;height:10px;border:1px solid var(--accent);background:none"></div><div style="width:1px;height:28px;background:var(--rule)"></div></div>
+      <div style="font-size:13px;color:var(--text);font-weight:600;padding-left:4px">Pre-Finalization Review <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--accent);letter-spacing:.1em;margin-left:8px">FIVE QUESTIONS APPLIED</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:32px 1fr;align-items:center;gap:0">
+      <div style="display:flex;flex-direction:column;align-items:center"><div style="width:10px;height:10px;border:1px solid var(--accent);background:none"></div><div style="width:1px;height:28px;background:var(--rule)"></div></div>
+      <div style="font-size:13px;color:var(--text);font-weight:600;padding-left:4px">Documentation Gap Identification</div>
+    </div>
+    <div style="display:grid;grid-template-columns:32px 1fr;align-items:center;gap:0">
+      <div style="display:flex;flex-direction:column;align-items:center"><div style="width:10px;height:10px;border:1px solid var(--accent);background:none"></div><div style="width:1px;height:28px;background:var(--rule)"></div></div>
+      <div style="font-size:13px;color:var(--text);font-weight:600;padding-left:4px">Escalation / Clarification <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);letter-spacing:.1em;margin-left:8px">WHERE REQUIRED</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:32px 1fr;align-items:center;gap:0">
+      <div style="display:flex;flex-direction:column;align-items:center"><div style="width:10px;height:10px;border:1px solid var(--accent);background:none"></div><div style="width:1px;height:28px;background:var(--rule)"></div></div>
+      <div style="font-size:13px;color:var(--text);font-weight:600;padding-left:4px">Finalized Organizational Record</div>
+    </div>
+    <div style="display:grid;grid-template-columns:32px 1fr;align-items:center;gap:0">
+      <div style="display:flex;flex-direction:column;align-items:center"><div style="width:10px;height:10px;border:1px solid var(--muted-soft);background:none"></div></div>
+      <div style="font-size:13px;color:var(--muted);padding-left:4px">Later Review / Reconstruction</div>
+    </div>
+  </div>
+</div>
   </div>
 
   <!-- PROGRESS -->
@@ -953,6 +984,12 @@ a:hover{text-decoration:underline}
     </div>
   </div>
 
+  <!-- AI-ORIGIN VISIBILITY -->
+  <div class="doctrine-block" style="border-color:rgba(190,148,71,.2)">
+    <div class="doctrine-label">AI-Origin Visibility</div>
+    <div class="doctrine-text">Reviewers should distinguish between source-authored observations, imported summaries, AI-assisted drafting, and inferred characterization before finalization. Each origin type carries different evidentiary weight and different reconstruction risk. Records that blend these without identification create downstream review gaps that cannot be resolved after system entry.</div>
+  </div>
+
   <!-- REVIEW DOCTRINE -->
   <div class="doctrine-block">
     <div class="doctrine-label">Review Doctrine</div>
@@ -963,18 +1000,18 @@ a:hover{text-decoration:underline}
 
 
   <!-- ═══════════════════════════════════════════════
-       REVIEW SIMULATOR
+       JRS REVIEWER TRAINING ENVIRONMENT
   ════════════════════════════════════════════════ -->
-  <div class="section-head" style="margin-top:56px" id="simulator">Review Simulator</div>
+  <div class="section-head" style="margin-top:56px" id="simulator">JRS Reviewer Training Environment</div>
   <p class="section-sub">Practice applying the JRS documentation review standard to sample records. Three exercise types. Fictional records only.</p>
 
   <!-- LEGAL DISCLAIMER -->
   <div style="border:1px solid rgba(139,32,32,.4);background:rgba(139,32,32,.06);padding:16px 20px;margin-bottom:32px">
     <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--stop-text);margin-bottom:7px">Legal Disclaimer</div>
-    <p style="font-size:12.5px;color:var(--muted);line-height:1.65">All records used in these simulations are entirely fictional and created for training purposes only. Any resemblance to real persons, organizations, or events is coincidental. These exercises are educational tools only — they do not constitute legal advice, compliance guidance, HR consulting, or professional certification. Simulation outcomes do not reflect actual legal standards. Organizations remain responsible for their own applicable legal, policy, and compliance determinations.</p>
+    <p style="font-size:12.5px;color:var(--muted);line-height:1.65">All records used in these training exercises are entirely fictional and created for training purposes only. Any resemblance to real persons, organizations, or events is coincidental. These exercises are educational tools only — they do not constitute legal advice, compliance guidance, HR consulting, or professional certification. Training exercise outcomes do not reflect actual legal standards. Organizations remain responsible for their own applicable legal, policy, and compliance determinations.</p>
   </div>
 
-  <!-- SIMULATOR TABS -->
+  <!-- TRAINING ENVIRONMENT TABS -->
   <div style="display:flex;gap:0;border-bottom:1px solid var(--rule);margin-bottom:0">
     <button class="sim-tab active" id="sim-tab-0" onclick="showSimTab(0)">1. Document Review</button>
     <button class="sim-tab" id="sim-tab-1" onclick="showSimTab(1)">2. Routing Decisions</button>
@@ -1026,13 +1063,13 @@ a:hover{text-decoration:underline}
 
 </main>
 
-<!-- PASTE & ASSESS — STANDALONE SECTION -->
-<div id="paste-assess" style="background:var(--surface);border-top:1px solid var(--rule);padding:48px 24px 80px">
+<!-- RECORD REVIEW WORKSPACE — STANDALONE SECTION -->
+<div id="record-review-workspace" style="background:var(--surface);border-top:1px solid var(--rule);padding:48px 24px 80px">
   <div style="max-width:860px;margin:0 auto">
 
-    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">Paste &amp; Assess</div>
-    <h2 style="font-family:'Bodoni Moda',serif;font-size:26px;font-weight:500;color:var(--text);margin-bottom:12px">Record Assessment Tool</h2>
-    <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:8px;max-width:640px">Paste any documentation record below — a performance review, disciplinary note, investigation summary, accommodation decision, or similar — and receive an instant assessment against the five JRS pre-finalization review questions.</p>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">Record Review Workspace</div>
+    <h2 style="font-family:'Bodoni Moda',serif;font-size:26px;font-weight:500;color:var(--text);margin-bottom:12px">Record Review Workspace</h2>
+    <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:8px;max-width:640px">Submit any documentation record below — a performance review, disciplinary note, investigation summary, accommodation decision, or similar — and receive an instant assessment against the five JRS pre-finalization review questions.</p>
     <p style="font-size:12.5px;color:var(--muted-soft);margin-bottom:24px">The tool scans for vague timeline language, unsupported conclusions, missing source records, escalation patterns, AI-generated content, and missing employee voice. It uses pattern analysis, not AI, and runs entirely in your browser.</p>
 
     <div style="border:1px solid rgba(139,32,32,.3);background:rgba(139,32,32,.05);padding:12px 16px;margin-bottom:24px">
@@ -1042,7 +1079,7 @@ a:hover{text-decoration:underline}
 
     <label style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);display:block;margin-bottom:8px">Record Text</label>
     <textarea id="pa-input"
-      placeholder="Paste your record text here..."
+      placeholder="Enter record text for review..."
       rows="8"
       style="width:100%;background:#121212;border:1px solid #2A2A2A;color:#F2F2F2;font-family:Arial,sans-serif;font-size:15px;line-height:1.7;padding:14px;box-sizing:border-box;display:block;border-radius:4px;margin-bottom:16px;-webkit-user-select:text;user-select:text;touch-action:manipulation;cursor:text"></textarea>
 
@@ -1774,6 +1811,11 @@ renderFM();
       </button>
     </div>
   </div>
+</div>
+
+<div style="max-width:860px;margin:0 auto;padding:32px 24px 0;border-top:1px solid var(--rule)">
+  <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px">Legal + Operational Boundary</div>
+  <p style="font-size:12.5px;color:var(--muted-soft);line-height:1.7;max-width:720px">JRS establishes documentation review expectations at the pre-finalization stage. The structure does not determine factual accuracy, legal sufficiency, policy violations, or investigative findings. Organizational procedures, legal review requirements, and escalation protocols remain organization-specific. These materials support documentation review practice only and do not constitute legal advice, HR guidance, professional certification, or compliance determination.</p>
 </div>
 
 <footer class="site-footer">
