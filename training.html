@@ -1573,7 +1573,7 @@ function findMatches(text, patterns) {
 
 function runAssessment() {
   var text = document.getElementById('pa-input').value.trim();
-  if (!text || text.length < 30) { alert('Please paste a record to assess.'); return; }
+  if (!text || text.length < 5) { alert('Please type or paste some text into the box first, then tap Assess Record.'); return; }
 
   // ── SCORING ──────────────────────────────────────
   var scores = {};  // per question: 'pass'|'warn'|'fail'
