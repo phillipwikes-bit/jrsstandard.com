@@ -865,7 +865,7 @@ a.gumroad-button.util-link {
  <button class="nav-item" onclick="showSection('training')">Reviewer Guidance</button>
  <button class="nav-item" onclick="showSection('about')">About</button>
  <button class="nav-item" onclick="showSection('library')">Document Architecture</button>
- <button class="nav-item kit-item" onclick="showSection('kit')">Operational References &#8599;</button>
+ <button class="nav-item kit-item" onclick="showSection('kit')">Deployment Kit &#8599;</button>
  </div>
 </nav>
 
@@ -876,8 +876,8 @@ a.gumroad-button.util-link {
   <a href="JRS-Standard.pdf" class="util-link accent-link">View Standard</a>
   <a href="JRS_Rapid_Review_Card.pdf" class="util-link">Rapid Review Card</a>
   <a href="JRS_Investigator_Field_Guide.pdf" class="util-link">Investigator Field Guide</a>
-  <a href="https://wikesphere.gumroad.com/l/opukbv" class="util-link gumroad-button" data-gumroad-single-product="true">Reviewer Reference Kit</a>
-  <a href="#" onclick="showSection('kit');return false;" class="util-link" style="color:var(--accent-dim);">Operational References</a>
+  <a href="https://wikesphere.gumroad.com/l/opukbv" class="util-link gumroad-button" data-gumroad-single-product="true">Reviewer Reference</a>
+  <a href="#" onclick="showSection('kit');return false;" class="util-link" style="color:var(--accent-dim);">Deployment Kit</a>
  </div>
 </div>
 
@@ -894,7 +894,7 @@ a.gumroad-button.util-link {
  <div class="ob-step"><div class="ob-num">B</div><div class="ob-label">The Problem</div><div class="ob-text">Records are read later by people who were not there. Most hold up or fail at that point, not at drafting.</div></div>
  <div class="ob-step"><div class="ob-num">C</div><div class="ob-label">How Review Works</div><div class="ob-text">Five questions applied before the record enters the system. Most organizations start with one record type. The gaps appear quickly.</div></div>
  <div class="ob-step"><div class="ob-num">D</div><div class="ob-label">Where It Fits</div><div class="ob-text">HR, compliance, investigations, administrative review. Works inside existing workflows, including ones that have been running for years without a formal review step.</div></div>
- <div class="ob-step"><div class="ob-num">E</div><div class="ob-label">Deployment Kit</div><div class="ob-text">Reviewer onboarding, training materials, and operational forms. Available on the Operational References page.</div></div>
+ <div class="ob-step"><div class="ob-num">E</div><div class="ob-label">Deployment Kit</div><div class="ob-text">Reviewer onboarding, training materials, and operational forms. Available on the Deployment Kit page.</div></div>
  </div>
 </div>
 
@@ -1198,7 +1198,7 @@ a.gumroad-button.util-link {
       </div>
     </div>
   </div>
-  <div style="margin-top:12px;"><button class="btn btn-ghost" style="font-size:12.5px;" onclick="showSection('kit')">View Operational References</button></div>
+  <div style="margin-top:12px;"><button class="btn btn-ghost" style="font-size:12.5px;" onclick="showSection('kit')">View Deployment Kit</button></div>
 </div>
 
 <div style="margin-bottom:44px;">
@@ -1620,7 +1620,7 @@ a.gumroad-button.util-link {
  <div class="section-head">Access</div>
  <div class="btn-row">
  <a href="JRS-Standard.pdf" class="btn btn-primary">View Standard</a>
- <button class="btn btn-ghost" onclick="showSection('kit')">Operational References</button>
+ <button class="btn btn-ghost" onclick="showSection('kit')">Deployment Kit</button>
  <a href="https://wikesphere.gumroad.com/l/opukbv" class="btn btn-ghost gumroad-button" data-gumroad-single-product="true">Reviewer Reference</a>
  </div>
 </div>
@@ -2506,8 +2506,8 @@ a.gumroad-button.util-link {
  </div>
 </div>
 <div class="callout" style="margin-top:14px;">
- <div class="callout-label">Operational References</div>
- <p>Print-ready versions of all worksheets, operational forms, escalation templates, and reviewer training resources. <button onclick="showSection('kit')" style="background:none;border:none;color:var(--accent);font-size:inherit;cursor:pointer;font-family:inherit;text-decoration:underline;padding:0;">View Operational References</button></p>
+ <div class="callout-label">Deployment Kit</div>
+ <p>Print-ready versions of all worksheets, operational forms, escalation templates, and reviewer training resources. <button onclick="showSection('kit')" style="background:none;border:none;color:var(--accent);font-size:inherit;cursor:pointer;font-family:inherit;text-decoration:underline;padding:0;">View Deployment Kit</button></p>
 </div>
 
 <hr class="section-rule">
@@ -4179,7 +4179,7 @@ const SECTION_LABELS={
  scenarios:'Review Examples',guidance:'Implementation',roles:'Roles',
  maturity:'Maturity',ai:'AI-Assisted Review',usecases:'Use Cases',
  training:'Reviewer Guidance',about:'About',library:'Document Architecture',
- kit:'Operational References'
+ kit:'Deployment Kit'
 };
 function showSection(id){
  document.querySelectorAll('.page-section').forEach(s=>s.classList.remove('active'));
