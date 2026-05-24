@@ -1128,12 +1128,12 @@ a:hover{text-decoration:underline}
 
     <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">Record Review Workspace</div>
     <h2 style="font-family:'Bodoni Moda',serif;font-size:26px;font-weight:500;color:var(--text);margin-bottom:12px">Record Review Workspace</h2>
-    <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:8px;max-width:640px">Submit any documentation record below — a performance review, disciplinary note, investigation summary, accommodation decision, or similar — and receive an instant assessment against the five JRS pre-finalization review questions.</p>
-    <p style="font-size:12.5px;color:var(--muted-soft);margin-bottom:24px">This workspace scans for vague timeline language, unsupported conclusions, missing source records, escalation patterns, AI-assisted content indicators, and missing employee voice. It uses pattern analysis only and runs entirely in your browser.</p>
+    <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:8px;max-width:640px">Submit any documentation record below — a performance review, disciplinary note, investigation summary, accommodation decision, or similar — and receive an AI-assisted assessment against the five JRS pre-finalization review conditions.</p>
+    <p style="font-size:12.5px;color:var(--muted-soft);margin-bottom:24px">Powered by Claude AI. Assesses documentation reviewability, reasoning visibility, chronology clarity, and reconstruction continuity. Runs securely — your text is not stored.</p>
 
     <div style="border:1px solid rgba(139,32,32,.3);background:rgba(139,32,32,.05);padding:12px 16px;margin-bottom:24px">
       <span style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--stop-text)">Legal Disclaimer — </span>
-      <span style="font-size:12px;color:var(--muted)">Results are for educational purposes only. Not legal advice, HR guidance, or compliance determination. Use fictional or anonymized text only. Do not paste records containing real personal identifying information.</span>
+      <span style="font-size:12px;color:var(--muted)">Results are for reviewer practice only. Not legal advice, HR guidance, or compliance determination. Use fictional or anonymized text only. Do not paste records containing real personal identifying information.</span>
     </div>
 
     <label style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);display:block;margin-bottom:8px">Record Text</label>
@@ -1143,7 +1143,7 @@ a:hover{text-decoration:underline}
       style="width:100%;background:#121212;border:1px solid #2A2A2A;color:#F2F2F2;font-family:Arial,sans-serif;font-size:15px;line-height:1.7;padding:14px;box-sizing:border-box;display:block;border-radius:4px;margin-bottom:16px;-webkit-user-select:text;user-select:text;touch-action:manipulation;cursor:text"></textarea>
 
     <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px">
-      <button onclick="runAssessment()"
+      <button onclick="runAssessment()" id="assess-btn"
         style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:14px 28px;cursor:pointer;font-weight:600">
         Assess Record
       </button>
@@ -1153,28 +1153,51 @@ a:hover{text-decoration:underline}
       </button>
     </div>
 
+    <!-- LOADING STATE -->
+    <div id="pa-loading" style="display:none;padding:32px 0;text-align:center">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">Reviewing Record</div>
+      <div style="font-size:13px;color:var(--muted-soft)">Applying five JRS review conditions...</div>
+    </div>
+
+    <!-- ERROR STATE -->
+    <div id="pa-error" style="display:none;border:1px solid rgba(139,32,32,.4);background:rgba(139,32,32,.06);padding:16px 20px;margin-bottom:24px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--stop-text);margin-bottom:6px">Assessment Error</div>
+      <div id="pa-error-msg" style="font-size:13px;color:var(--muted)"></div>
+    </div>
+
+    <!-- RESULTS -->
     <div id="pa-results" style="display:none">
 
+      <!-- ROUTING -->
       <div id="pa-rating-block" style="padding:20px 22px;margin-bottom:24px;border-left:4px solid var(--rule);background:var(--bg)">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:8px">Overall Assessment</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:8px">Routing Determination</div>
         <div id="pa-rating-label" style="font-size:24px;font-weight:600;margin-bottom:6px"></div>
         <div id="pa-rating-sub" style="font-size:13.5px;color:var(--muted);line-height:1.65"></div>
       </div>
 
+      <!-- FIVE CONDITIONS -->
+      <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--rule)">Pre-Finalization Review Conditions</div>
+      <div id="pa-conditions" style="display:flex;flex-direction:column;gap:2px;margin-bottom:24px"></div>
+
+      <!-- FLAGS -->
       <div id="pa-flags-block" style="margin-bottom:24px;display:none">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--rule)">Flagged Language</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--rule)">Flagged Language / Gaps</div>
         <div id="pa-flags-list"></div>
       </div>
 
-      <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--rule)">Pre-Finalization Question Assessment</div>
-      <div id="pa-q-results" style="display:flex;flex-direction:column;gap:2px;margin-bottom:24px"></div>
-
+      <!-- REVISIONS -->
       <div id="pa-recs-block" style="display:none;margin-bottom:24px">
         <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--rule)">Suggested Revisions</div>
         <div id="pa-recs-list" style="display:flex;flex-direction:column;gap:8px"></div>
       </div>
 
-      <p style="font-size:11.5px;color:var(--muted-soft);line-height:1.65;border-top:1px solid var(--rule);padding-top:16px">Assessment generated by pattern analysis for educational purposes only. Does not constitute legal advice, HR guidance, or compliance determination. Organizations are responsible for their own review standards and applicable legal requirements.</p>
+      <!-- SUMMARY -->
+      <div id="pa-summary-block" style="display:none;margin-bottom:24px;padding:16px 20px;background:var(--bg);border:1px solid var(--rule)">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px">Overall Assessment</div>
+        <div id="pa-summary-text" style="font-size:13.5px;color:var(--muted);line-height:1.7"></div>
+      </div>
+
+      <p style="font-size:11.5px;color:var(--muted-soft);line-height:1.65;border-top:1px solid var(--rule);padding-top:16px">Assessment generated by Claude AI for reviewer practice only. Does not constitute legal advice, HR guidance, or compliance determination. Organizations remain responsible for their own review standards and applicable legal requirements.</p>
     </div>
 
   </div>
@@ -1667,178 +1690,100 @@ function findMatches(text, patterns) {
   return found;
 }
 
-function runAssessment() {
+async function runAssessment() {
   var text = document.getElementById('pa-input').value.trim();
-  if (!text || text.length < 5) { alert('Please type or paste some text into the box first, then tap Assess Record.'); return; }
+  if (!text || text.length < 10) { alert('Please enter some record text first.'); return; }
 
-  // ── SCORING ──────────────────────────────────────
-  var scores = {};  // per question: 'pass'|'warn'|'fail'
-  var flags = [];
-  var recs = [];
+  // Show loading, hide previous results/errors
+  document.getElementById('pa-results').style.display = 'none';
+  document.getElementById('pa-error').style.display = 'none';
+  document.getElementById('pa-loading').style.display = 'block';
+  document.getElementById('assess-btn').disabled = true;
 
-  // Q1: Dates identifiable
-  var dateCount = countMatches(text, DATE_PATTERNS);
-  var vagueTimeMatches = findMatches(text, PA_FLAGS.vague_time.patterns);
-  if (dateCount >= 2 && vagueTimeMatches.length === 0) scores.q1 = 'pass';
-  else if (dateCount >= 1 || vagueTimeMatches.length <= 1) scores.q1 = 'warn';
-  else scores.q1 = 'fail';
-  if (vagueTimeMatches.length > 0) {
-    flags.push({category: PA_FLAGS.vague_time.label, color: PA_FLAGS.vague_time.color, examples: vagueTimeMatches.slice(0,4)});
-    recs.push('Replace vague time references (' + vagueTimeMatches.slice(0,2).join(', ') + ') with specific dates. Each event should have an identifiable date in the file.');
+  try {
+    var res = await fetch('/api/review', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text: text })
+    });
+
+    var data = await res.json();
+
+    if (!res.ok || data.error) {
+      throw new Error(data.error || 'Assessment failed');
+    }
+
+    renderAssessmentResults(data);
+
+  } catch (err) {
+    document.getElementById('pa-error').style.display = 'block';
+    document.getElementById('pa-error-msg').textContent = 'Could not complete assessment: ' + (err.message || 'Unknown error') + '. Please try again.';
+  } finally {
+    document.getElementById('pa-loading').style.display = 'none';
+    document.getElementById('assess-btn').disabled = false;
   }
-  if (scores.q1 === 'fail') recs.push('No specific dates identified. A later reviewer cannot establish when events occurred. Add specific dates for each conduct instance, decision, or event.');
+}
 
-  // Q2: Source records present
-  var sourceCount = countMatches(text, SOURCE_PATTERNS);
-  var missingSourceMatches = findMatches(text, PA_FLAGS.missing_source.patterns);
-  if (sourceCount >= 2 && missingSourceMatches.length === 0) scores.q2 = 'pass';
-  else if (sourceCount >= 1) scores.q2 = 'warn';
-  else scores.q2 = 'fail';
-  if (missingSourceMatches.length > 0) {
-    flags.push({category: PA_FLAGS.missing_source.label, color: PA_FLAGS.missing_source.color, examples: missingSourceMatches.slice(0,4)});
-    recs.push('Phrases like "it was determined" or "as previously documented" reference conclusions without identifying source records. Name the specific document and confirm it is in the file.');
-  }
-  if (scores.q2 === 'fail') recs.push('No source records identified or confirmed in this record. Each conclusion should reference a specific named document confirmed present in the file.');
+function renderAssessmentResults(data) {
+  // Routing colors
+  var routingColors = { Low: 'var(--ready-text)', Moderate: 'var(--review-text)', High: '#E8A84A', Critical: 'var(--stop-text)' };
+  var ratingColor = routingColors[data.routing] || 'var(--muted)';
 
-  // Q3: Evaluative language / reasoning visible
-  var conclusionMatches = findMatches(text, PA_FLAGS.unsupported_conclusion.patterns);
-  var escalationMatches = findMatches(text, PA_FLAGS.escalation_without_trail.patterns);
-  if (conclusionMatches.length === 0 && escalationMatches.length === 0) scores.q3 = 'pass';
-  else if (conclusionMatches.length <= 1 || escalationMatches.length <= 1) scores.q3 = 'warn';
-  else scores.q3 = 'fail';
-  if (conclusionMatches.length > 0) {
-    flags.push({category: PA_FLAGS.unsupported_conclusion.label, color: PA_FLAGS.unsupported_conclusion.color, examples: conclusionMatches.slice(0,4)});
-    recs.push('Evaluative phrases (' + conclusionMatches.slice(0,2).join(', ') + ') are not traceable to specific documented events. Replace with specific incidents, dates, and source records.');
-  }
-  if (escalationMatches.length > 0) {
-    flags.push({category: PA_FLAGS.escalation_without_trail.label, color: '#E8A84A', examples: escalationMatches.slice(0,3)});
-    recs.push('Escalation language detected (' + escalationMatches.slice(0,2).join(', ') + '). Confirm that each referenced prior intervention is identifiable in the file with a specific date and document.');
-  }
-
-  // Q4: Conflicting accounts / employee voice
-  var isInvestigation = INVESTIGATION_PATTERNS.some(function(p){ return p.test(text); });
-  var hasEmployeeVoice = EMPLOYEE_VOICE_PATTERNS.some(function(p){ return p.test(text); });
-  if (hasEmployeeVoice) scores.q4 = 'pass';
-  else if (!isInvestigation) scores.q4 = 'warn';
-  else scores.q4 = 'fail';
-  if (!hasEmployeeVoice && isInvestigation) {
-    flags.push({category:'Employee/respondent account not detected', color:'var(--stop-text)', examples:[]});
-    recs.push('This record appears to involve investigation or discipline but does not preserve the employee\'s account or perspective. The employee\'s statement should be documented and retained in the file.');
-  } else if (!hasEmployeeVoice) {
-    recs.push('Consider whether the employee\'s perspective has been obtained and preserved, particularly if this record involves corrective action or performance concerns.');
-  }
-
-  // Q5: Overall independence (composite)
-  var failCount = Object.values(scores).filter(function(v){return v==='fail';}).length;
-  var warnCount = Object.values(scores).filter(function(v){return v==='warn';}).length;
-  if (failCount === 0 && warnCount <= 1) scores.q5 = 'pass';
-  else if (failCount <= 1 && warnCount <= 2) scores.q5 = 'warn';
-  else scores.q5 = 'fail';
-
-  // Inherited/template language
-  var inheritedMatches = findMatches(text, PA_FLAGS.inherited_language.patterns);
-  if (inheritedMatches.length > 0) {
-    flags.push({category: PA_FLAGS.inherited_language.label, color: PA_FLAGS.inherited_language.color, examples: inheritedMatches.slice(0,3)});
-    recs.push('Template or inherited language detected (' + inheritedMatches.slice(0,2).join(', ') + '). Confirm each instance has been independently verified against current source materials — not carried forward from prior records.');
-  }
-
-  // AI content
-  var aiMatches = findMatches(text, PA_FLAGS.ai_content.patterns);
-  if (aiMatches.length > 0) {
-    flags.push({category: PA_FLAGS.ai_content.label, color: PA_FLAGS.ai_content.color, examples: aiMatches.slice(0,3)});
-    recs.push('AI-assisted content detected. Verify generated wording against original source notes. Confirm that AI-assisted conclusions do not exceed the support visible in the underlying documentation.');
-  }
-
-  // ── OVERALL ROUTING ──────────────────────────────
-  var failTotal = Object.values(scores).filter(function(v){return v==='fail';}).length;
-  var warnTotal = Object.values(scores).filter(function(v){return v==='warn';}).length;
-  var hasTermination = /terminat/gi.test(text);
-  var hasProtected = /(accommodation|disability|pregnancy|religion|race|age|gender|harassment|retaliation)/gi.test(text);
-
-  var rating, ratingColor, ratingSub;
-  if (hasTermination || hasProtected || failTotal >= 3) {
-    rating = 'Critical'; ratingColor = 'var(--stop-text)';
-    ratingSub = 'Multiple documentation gaps identified' + (hasTermination?' in a termination record':'') + (hasProtected?' with protected-category indicators':'') + '. Human source verification and secondary review required before finalization.';
-  } else if (failTotal >= 2 || (failTotal >= 1 && warnTotal >= 2)) {
-    rating = 'High'; ratingColor = '#E8A84A';
-    ratingSub = 'Trigger conditions identified. Secondary review required before this record is finalized. See flagged items and suggested revisions below.';
-  } else if (warnTotal >= 2 || failTotal >= 1) {
-    rating = 'Moderate'; ratingColor = 'var(--review-text)';
-    ratingSub = 'Clarification review recommended. Some documentation gaps or evaluative language detected. Address flagged items before finalization.';
-  } else {
-    rating = 'Low'; ratingColor = 'var(--ready-text)';
-    ratingSub = 'No significant trigger conditions detected in this text. Primary reviewer review may be sufficient. Confirm source records are in the file before finalization.';
-  }
-
-  // ── RENDER RESULTS ───────────────────────────────
   // Rating block
   var rb = document.getElementById('pa-rating-block');
   rb.style.borderLeftColor = ratingColor;
-  document.getElementById('pa-rating-label').innerHTML = '<span style="color:'+ratingColor+'">'+rating+'</span>';
-  document.getElementById('pa-rating-sub').textContent = ratingSub;
+  document.getElementById('pa-rating-label').innerHTML = '<span style="color:'+ratingColor+'">'+data.routing+'</span>';
+  document.getElementById('pa-rating-sub').textContent = data.routingRationale || '';
+
+  // Five conditions
+  var condColors = { 'Pass': 'var(--ready-text)', 'Needs Attention': 'var(--review-text)', 'Fail': 'var(--stop-text)' };
+  var condIcons  = { 'Pass': '✓', 'Needs Attention': '△', 'Fail': '✗' };
+  var condEl = document.getElementById('pa-conditions');
+  condEl.innerHTML = (data.conditions || []).map(function(c) {
+    var color = condColors[c.status] || 'var(--muted-soft)';
+    var icon  = condIcons[c.status]  || '?';
+    return '<div style="display:grid;grid-template-columns:28px 1fr;background:var(--surface);padding:12px 16px;border-left:3px solid '+color+'">'
+      + '<span style="color:'+color+';font-family:\'JetBrains Mono\',monospace;font-size:12px">'+icon+'</span>'
+      + '<div><div style="font-size:12.5px;font-weight:600;color:'+color+'">RC '+c.id+' — '+c.label+' <span style="font-weight:400;font-size:11px">('+c.status+')</span></div>'
+      + '<div style="font-size:12.5px;color:var(--muted);margin-top:3px;line-height:1.55">'+c.note+'</div></div></div>';
+  }).join('');
 
   // Flags
   var fb = document.getElementById('pa-flags-block');
-  if (flags.length > 0) {
+  if (data.flags && data.flags.length > 0) {
     fb.style.display = 'block';
-    var fl = document.getElementById('pa-flags-list');
-    fl.innerHTML = flags.map(function(f){
-      var ex = f.examples.length > 0 ? '<div style="margin-top:5px;display:flex;flex-wrap:wrap;gap:5px">' + f.examples.map(function(e){
-        return '<span style="font-family:\'JetBrains Mono\',monospace;font-size:8px;padding:3px 8px;background:rgba(255,255,255,.04);border:1px solid var(--rule);color:var(--muted)">' + e + '</span>';
-      }).join('') + '</div>' : '';
-      return '<div style="padding:10px 14px;background:var(--surface);border-left:3px solid '+f.color+';margin-bottom:6px"><div style="font-size:12.5px;color:'+f.color+';font-weight:600;margin-bottom:2px">'+f.category+'</div>'+ex+'</div>';
+    document.getElementById('pa-flags-list').innerHTML = data.flags.map(function(f) {
+      return '<div style="padding:9px 14px;background:var(--surface);border-left:3px solid var(--review-text);margin-bottom:5px;font-size:12.5px;color:var(--muted);line-height:1.55">'+f+'</div>';
     }).join('');
-  } else {
-    fb.style.display = 'none';
-  }
+  } else { fb.style.display = 'none'; }
 
-  // Q1–Q5
-  var qr = document.getElementById('pa-q-results');
-  var qDefs = [
-    {label:'Q1 — Dates identifiable', key:'q1'},
-    {label:'Q2 — Source records present', key:'q2'},
-    {label:'Q3 — Reasoning visible / evaluative language anchored', key:'q3'},
-    {label:'Q4 — Conflicting accounts / employee perspective preserved', key:'q4'},
-    {label:'Q5 — Record stands independently', key:'q5'}
-  ];
-  var qDescriptions = {
-    q1: {pass:'Specific dates detected.',warn:'Some dates detected; vague timeline language also present. Review for gaps.',fail:'No specific dates detected. Events are not datable from this record alone.'},
-    q2: {pass:'Source record references detected.',warn:'Some source references present; some conclusions may lack traceable support.',fail:'No source records identified. Conclusions are not traceable to named documents.'},
-    q3: {pass:'No significant unsupported evaluative language detected.',warn:'Some evaluative language or escalation wording present. Verify each is anchored to a dated, named source record.',fail:'Multiple unsupported evaluative conclusions or escalation phrases detected without identifiable prior documentation.'},
-    q4: {pass:'Employee/respondent perspective appears to be preserved.',warn:'Employee perspective not detected; confirm whether this record requires it.',fail:'Discipline or investigation context detected without preserved employee account.'},
-    q5: {pass:'Record appears reasonably complete for independent review.',warn:'Some gaps that may limit a later reviewer\'s ability to reconstruct the basis independently.',fail:'Multiple gaps identified. A later reviewer may not be able to follow this record from the file alone.'}
-  };
-  qr.innerHTML = qDefs.map(function(q){
-    var s = scores[q.key] || 'warn';
-    var color = s==='pass'?'var(--ready-text)':s==='warn'?'var(--review-text)':'var(--stop-text)';
-    var icon = s==='pass'?'✓':s==='warn'?'△':'✗';
-    var desc = qDescriptions[q.key][s];
-    return '<div style="display:grid;grid-template-columns:28px 1fr;background:var(--surface);padding:12px 16px;border-left:3px solid '+color+'">'
-      +'<span style="color:'+color+';font-family:\'JetBrains Mono\',monospace;font-size:12px">'+icon+'</span>'
-      +'<div><div style="font-size:12.5px;font-weight:600;color:'+color+'">'+q.label+'</div>'
-      +'<div style="font-size:12.5px;color:var(--muted);margin-top:2px">'+desc+'</div></div></div>';
-  }).join('');
-
-  // Recommendations
+  // Revisions
   var recBlock = document.getElementById('pa-recs-block');
-  if (recs.length > 0) {
+  if (data.revisions && data.revisions.length > 0) {
     recBlock.style.display = 'block';
-    document.getElementById('pa-recs-list').innerHTML = recs.map(function(r){
+    document.getElementById('pa-recs-list').innerHTML = data.revisions.map(function(r) {
       return '<div style="display:flex;gap:10px;padding:10px 14px;background:var(--surface);border-left:3px solid rgba(190,148,71,.4)">'
-        +'<span style="color:var(--accent);font-family:\'JetBrains Mono\',monospace;font-size:11px;flex-shrink:0">—</span>'
-        +'<span style="font-size:13px;color:var(--muted);line-height:1.6">'+r+'</span></div>';
+        + '<span style="color:var(--accent);font-family:\'JetBrains Mono\',monospace;font-size:11px;flex-shrink:0">—</span>'
+        + '<span style="font-size:13px;color:var(--muted);line-height:1.6">'+r+'</span></div>';
     }).join('');
-  } else {
-    recBlock.style.display = 'none';
-  }
+  } else { recBlock.style.display = 'none'; }
+
+  // Summary
+  var sumBlock = document.getElementById('pa-summary-block');
+  if (data.summary) {
+    sumBlock.style.display = 'block';
+    document.getElementById('pa-summary-text').textContent = data.summary;
+  } else { sumBlock.style.display = 'none'; }
 
   document.getElementById('pa-results').style.display = 'block';
-  document.getElementById('pa-results').scrollIntoView({behavior:'smooth',block:'nearest'});
+  document.getElementById('pa-results').scrollIntoView({behavior:'smooth', block:'nearest'});
 }
 
 function clearAssessment() {
   document.getElementById('pa-input').value = '';
   document.getElementById('pa-results').style.display = 'none';
+  document.getElementById('pa-error').style.display = 'none';
+  document.getElementById('pa-loading').style.display = 'none';
 }
 
 // ── INIT SIMULATORS ───────────────────────────────
