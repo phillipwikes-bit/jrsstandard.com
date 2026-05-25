@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Friday JRS Review, No. 001 | JRS Justification Review Standard</title>
+<meta name="description" content="A performance review with unsupported conclusions. Apply the four JRS review conditions before revealing how an experienced reviewer reads the same record.">
+<meta property="og:title" content="The Friday JRS Review, No. 001 | A record that looks complete" />
+<meta property="og:description" content="Each Friday, a single realistic documentation scenario. Apply JRS review conditions before revealing how an experienced reviewer reads the record." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jrsstandard.com/friday-001.html" />
+<link rel="canonical" href="https://jrsstandard.com/friday-001.html" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NVYHJ7BJ92"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-NVYHJ7BJ92');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* ── RESET ── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+/* ── TOKENS ── */
+:root{
+  --paper:#F8F5EE;
+  --paper-mid:#F0EDE5;
+  --paper-dark:#E8E5DE;
+  --ink:#1A1917;
+  --ink-2:#3A3835;
+  --ink-3:#6A6865;
+  --ink-4:#9A9895;
+  --rule:#D5D1C8;
+  --rule-light:#E5E1D8;
+  --surface:#FFFFFF;
+  --accent:#2C3550;
+  --accent-light:#4A5578;
+  --flag-red:#8B2020;
+  --flag-red-bg:rgba(139,32,32,.06);
+  --flag-red-rule:rgba(139,32,32,.25);
+  --verdict-stop-bg:rgba(139,32,32,.08);
+  --verdict-pass-bg:rgba(30,92,53,.08);
+  --pass-green:#1E5C35;
+  --warm:#5A4818;
+}
+
+/* ── BASE ── */
+html{background:var(--paper);font-size:16px}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Newsreader',Georgia,serif;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* ── LAYOUT ── */
+.page-wrap{max-width:700px;margin:0 auto;padding:0 28px}
+.page-wrap-wide{max-width:840px;margin:0 auto;padding:0 28px}
+
+/* ── SITE HEADER ── */
+.site-header{
+  border-bottom:1px solid var(--rule);
+  padding:0 28px;
+  background:var(--paper);
+}
+.site-header-inner{
+  max-width:840px;
+  margin:0 auto;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  padding:22px 0 18px;
+  gap:16px;
+  flex-wrap:wrap;
+}
+.wordmark-wrap{display:flex;align-items:baseline;gap:12px}
+.wordmark{
+  font-family:'Newsreader',serif;
+  font-size:22px;
+  font-weight:600;
+  color:var(--ink);
+  letter-spacing:-0.01em;
+  line-height:1;
+  text-decoration:none;
+}
+.wordmark:hover{text-decoration:none;color:var(--accent)}
+.wordmark-sub{
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:9px;
+  font-weight:500;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--ink-3);
+  line-height:1;
+}
+.header-right{
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:9px;
+  font-weight:400;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-4);
+  text-align:right;
+  line-height:1.9;
+}
+
+/* ── SERIES MASTHEAD ── */
+.series-masthead{
+  border-bottom:1px solid var(--rule);
+  padding:0 28px;
+  background:var(--paper);
+}
+.series-masthead-inner{
+  max-width:840px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:end;
+  gap:24px;
+  padding:36px 0 28px;
+}
+.series-label{
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:9px;
+  font-weight:500;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--ink-4);
+  margin-bottom:10px;
+}
+.series-title{
+  font-family:'Newsreader',serif;
+  font-size:32px;
+  font-weight:400;
+  letter-spacing:-0.01em;
+  color:var(--ink);
+  line-height:1.15;
+  margin-bottom:6px;
+}
+.series-issue{
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:10px;
+  font-weight:500;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--ink-3);
+}
+.series-meta-block{
+  text-align:right;
+}
+.series-meta-row{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  align-items:flex-end;
+}
+.meta-item{
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:8.5px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--ink-4);
+  line-height:1;
+}
+.meta-item-label{color:var(--ink-4);margin-right:6px}
+.meta-item-value{color:var(--ink-3)}
+
+/* ── SERIES INTRO STRIP ── */
+.series-intro{
+  background:var(--paper-mid);
+  border-bottom:1px solid var(--rule);
+  padding:0 28px;
+}
+.series-intro-inner{
+  max-width:840px;
+  margin:0 auto;
+  padding:20px 0;
+  display:flex;
+  gap:24px;
+  align-items:flex-start;
+}
+.series-intro-text{
+  font-family:'Newsreader',serif;
+  font-size:15px;
+  font-style:italic;
+  color:var(--ink-3);
+  line-height:1.7;
+}
+.series-intro-text a{
+  color:var(--ink-3);
+  border-bottom:1px solid var(--rule);
+  text-decoration:none;
+}
+.series-intro-text a:hover{
+  color:var(--accent);
+  border-bottom-color:var(--accent);
+  text-decoration:none;
+}
+
+/* ── MAIN CONTENT ── */
+.main-content{
+  padding:56px 28px 0;
+  max-width:840px;
+  margin:0 auto;
+}
+
+/* ── SECTION ── */
+.section{
+  padding-bottom:52px;
+  border-bottom:1px solid var(--rule);
+  margin-bottom:52px;
+}
+.section:last-of-type{border-bottom:none}
+
+.section-number{
+  font-family:'Newsreader',serif;
+  font-size:11px;
+  font-weight:400;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--ink-4);
+  margin-bottom:8px;
+}
+.section-title{
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--ink-3);
+  padding-bottom:16px;
+  border-bottom:1px solid var(--rule-light);
+  margin-bottom:32px;
+}
+
+/* ── BODY COPY ── */
+.body-text{
+  font-family:'Newsreader',serif;
+  font-size:17px;
+  line-height:1.78;
+  color:var(--ink-2);
+  margin-bottom:18px;
+}
+.body-text:last-child{margin-bottom:0}
+
+/* ── THE RECORD BLOCK ── */
+.record-block{
+  border:1px solid var(--rule);
+  background:var(--surface);
+  margin:32px 0;
+}
+.record-block-header{
+  border-bottom:1px solid var(--rule);
+  padding:14px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.record-block-label{
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:8.5px;
+  font-weight:500;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--ink-4);
+}
+.record-block-type{
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:8.5px;
+  font-weight:500;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--ink-3);
+  border:1px solid var(--rule);
+  padding:4px 10px;
+}
+.record-block-body{
+  padding:28px 24px;
+}
+.record-text{
+  font-family:'Newsreader',serif;
+  font-size:16.5px;
+  font-style:italic;
+  line-height:1.8;
+  color:var(--ink-2);
+}
+
+/* ── COMMENTARY NOTE ── */
+.commentary{
+  background:var(--paper-mid);
+  border-left:2px solid var(--rule);
+  padding:16px 20px;
+  margin:28px 0;
+}
+.commentary p{
+  font-family:'Newsreader',serif;
+  font-size:15.5px;
+  line-height:1.7;
+  color:var(--ink-3);
+  margin-bottom:10px;
+}
+.commentary p:last-child{margin-bottom:0}
+
+/* ── PROMPT ── */
+.review-prompt{
+  font-family:'Newsreader',serif;
+  font-size:16px;
+  font-weight:400;
+  font-style:italic;
+  color:var(--ink-3);
+  margin:28px 0 36px;
+  padding-top:24px;
+  border-top:1px solid var(--rule-light);
+}
+
+/* ── REVEAL BUTTON ── */
+.reveal-btn-wrap{
+  display:flex;
+  justify-content:flex-start;
+  margin:12px 0 44px;
+}
+#reveal-btn{
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:10px;
+  font-weight:500;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--ink);
+  background:var(--ink);
+  color:var(--paper);
+  border:1px solid var(--ink);
+  padding:14px 28px;
+  cursor:pointer;
+  transition:background .15s,border-color .15s,color .15s;
+  display:inline-block;
+}
+#reveal-btn:hover{
+  background:var(--accent);
+  border-color:var(--accent);
+  color:#fff;
+}
+
+/* ── REVEAL CONTENT (hidden until button clicked) ── */
+.reveal-content{
+  display:none;
+  opacity:0;
+  transform:translateY(14px);
+  transition:opacity .55s ease,transform .55s ease;
+}
+.reveal-content.revealed{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ── FLAG BLOCKS ── */
+.flag-list{
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  border:1px solid var(--rule);
+  margin:24px 0;
+}
+.flag-item{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  border-bottom:1px solid var(--rule-light);
+}
+.flag-item:last-child{border-bottom:none}
+.flag-tag{
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:8px;
+  font-weight:600;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--flag-red);
+  background:var(--flag-red-bg);
+  border-right:1px solid var(--flag-red-rule);
+  padding:16px 14px;
+  writing-mode:horizontal-tb;
+  width:68px;
+  flex-shrink:0;
+  display:flex;
+  align-items:flex-start;
+  line-height:1.5;
+}
+.flag-body{
+  padding:16px 18px;
+}
+.flag-sentence{
+  font-family:'Newsreader',serif;
+  font-size:14px;
+  font-style:italic;
+  color:var(--ink-3);
+  line-height:1.6;
+  margin-bottom:8px;
+}
+.flag-text{
+  font-family:'Newsreader',serif;
+  font-size:14.5px;
+  line-height:1.68;
+  color:var(--ink-2);
+}
+.flag-condition{
+  display:inline-block;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:8px;
+  font-weight:500;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--flag-red);
+  border:1px solid var(--flag-red-rule);
+  padding:2px 8px;
+  margin-bottom:8px;
+  background:var(--flag-red-bg);
+}
+
+/* ── VERDICT GRID ── */
+.verdict-grid{
+  border:1px solid var(--rule);
+  margin:28px 0;
+  overflow:hidden;
+}
+.verdict-header{
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:8.5px;
+  font-weight:500;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--ink-4);
+  padding:12px 16px;
+  border-bottom:1px solid var(--rule);
+  background:var(--paper-mid);
+}
+.verdict-row{
+  display:grid;
+  grid-template-columns:180px 80px 1fr;
+  border-bottom:1px solid var(--rule-light);
+}
+.verdict-row:last-child{border-bottom:none}
+.verdict-condition{
+  font-family:'Newsreader',serif;
+  font-size:13.5px;
+  color:var(--ink-2);
+  padding:13px 16px;
+  border-right:1px solid var(--rule-light);
+  line-height:1.5;
+}
+.verdict-badge{
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:8.5px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  padding:13px 12px;
+  border-right:1px solid var(--rule-light);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.verdict-badge.fail{
+  color:var(--flag-red);
+  background:var(--verdict-stop-bg);
+}
+.verdict-badge.pass{
+  color:var(--pass-green);
+  background:var(--verdict-pass-bg);
+}
+.verdict-reason{
+  font-family:'Newsreader',serif;
+  font-size:13px;
+  color:var(--ink-3);
+  padding:13px 16px;
+  line-height:1.6;
+}
+.verdict-result{
+  border:1px solid var(--flag-red-rule);
+  background:var(--flag-red-bg);
+  padding:16px 18px;
+  margin:20px 0;
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+}
+.verdict-result-label{
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--flag-red);
+  flex-shrink:0;
+  padding-top:2px;
+}
+.verdict-result-text{
+  font-family:'Newsreader',serif;
+  font-size:15px;
+  line-height:1.65;
+  color:var(--ink-2);
+}
+
+/* ── REVISION BLOCK ── */
+.revision-note{
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:9px;
+  font-weight:400;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-4);
+  margin-bottom:20px;
+  font-style:italic;
+  line-height:1.7;
+}
+.revision-block{
+  border:1px solid var(--rule);
+  background:var(--surface);
+  margin:24px 0;
+}
+.revision-block-header{
+  border-bottom:1px solid var(--rule);
+  padding:12px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.revision-block-label{
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:8px;
+  font-weight:500;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--pass-green);
+}
+.revision-block-tag{
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:8px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--ink-4);
+  border:1px solid var(--rule);
+  padding:3px 9px;
+}
+.revision-block-body{
+  padding:24px 22px;
+}
+.revision-text{
+  font-family:'Newsreader',serif;
+  font-size:15.5px;
+  line-height:1.78;
+  color:var(--ink-2);
+}
+
+/* ── DISCUSSION BLOCK ── */
+.discussion-rule{
+  border:none;
+  border-top:1px solid var(--rule);
+  margin:32px 0 28px;
+}
+.discussion-question{
+  font-family:'Newsreader',serif;
+  font-size:19px;
+  font-weight:400;
+  font-style:italic;
+  line-height:1.55;
+  color:var(--ink);
+  margin-bottom:20px;
+}
+.discussion-context{
+  font-family:'Newsreader',serif;
+  font-size:16px;
+  line-height:1.78;
+  color:var(--ink-2);
+  margin-bottom:20px;
+}
+.discussion-link-wrap{
+  margin-top:28px;
+}
+.btn-discussion{
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:10px;
+  font-weight:500;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--paper);
+  background:var(--ink);
+  border:1px solid var(--ink);
+  padding:13px 24px;
+  text-decoration:none;
+  display:inline-block;
+  transition:background .15s,border-color .15s;
+}
+.btn-discussion:hover{
+  background:var(--accent);
+  border-color:var(--accent);
+  text-decoration:none;
+  color:#fff;
+}
+
+/* ── PREVIOUS EDITIONS ── */
+.prev-editions{
+  border:1px solid var(--rule);
+  background:var(--paper-mid);
+  padding:24px 22px;
+  margin:0 0 52px;
+}
+.prev-editions-label{
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:8.5px;
+  font-weight:500;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--ink-4);
+  margin-bottom:14px;
+  padding-bottom:12px;
+  border-bottom:1px solid var(--rule-light);
+}
+.prev-editions-note{
+  font-family:'Newsreader',serif;
+  font-size:15px;
+  font-style:italic;
+  color:var(--ink-3);
+  line-height:1.7;
+}
+
+/* ── FOOTER ── */
+.site-footer{
+  border-top:1px solid var(--rule);
+  padding:28px 28px 48px;
+  margin-top:0;
+  background:var(--paper-mid);
+}
+.site-footer-inner{
+  max-width:840px;
+  margin:0 auto;
+}
+.footer-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:0;
+  margin-bottom:20px;
+  border-bottom:1px solid var(--rule-light);
+  padding-bottom:16px;
+}
+.footer-link{
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:9.5px;
+  font-weight:400;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-4);
+  text-decoration:none;
+  padding:6px 16px 6px 0;
+  margin-right:16px;
+  border-right:1px solid var(--rule-light);
+  line-height:1;
+  white-space:nowrap;
+}
+.footer-link:last-child{border-right:none;margin-right:0}
+.footer-link:hover{color:var(--ink-2);text-decoration:none}
+.footer-meta{
+  font-family:'IBM Plex Sans',sans-serif;
+  font-size:10px;
+  color:var(--ink-4);
+  line-height:1.85;
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:640px){
+  .series-masthead-inner{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+  .series-meta-block{text-align:left}
+  .series-meta-row{align-items:flex-start}
+  .verdict-row{grid-template-columns:1fr}
+  .verdict-badge{border-right:none;border-bottom:1px solid var(--rule-light);justify-content:flex-start}
+  .verdict-condition{border-right:none;border-bottom:1px solid var(--rule-light)}
+  .flag-tag{width:58px;font-size:7.5px}
+}
+@media(max-width:540px){
+  .series-title{font-size:24px}
+  .series-masthead{padding:0 20px}
+  .series-intro{padding:0 20px}
+  .main-content{padding:40px 20px 0}
+  .site-header{padding:0 20px}
+  .site-footer{padding:24px 20px 40px}
+  .wordmark-sub{display:none}
+  .page-wrap,.page-wrap-wide{padding:0 20px}
+  .flag-item{grid-template-columns:1fr}
+  .flag-tag{width:100%;writing-mode:horizontal-tb;border-right:none;border-bottom:1px solid var(--flag-red-rule)}
+}
+@media(max-width:400px){
+  .series-title{font-size:20px}
+  .site-header-inner{padding:16px 0 14px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    transition-duration:.01ms !important;
+    animation-duration:.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- SITE HEADER -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="wordmark-wrap">
+      <a href="/" class="wordmark">JRS</a>
+      <span class="wordmark-sub">Justification Review Standard</span>
+    </div>
+    <div class="header-right">v1.0 &middot; May 2026</div>
+  </div>
+</header>
+
+<!-- SERIES MASTHEAD -->
+<div class="series-masthead">
+  <div class="series-masthead-inner">
+    <div>
+      <div class="series-label">Editorial Series</div>
+      <div class="series-title">The Friday JRS Review</div>
+      <div class="series-issue">No. 001</div>
+    </div>
+    <div class="series-meta-block">
+      <div class="series-meta-row">
+        <div class="meta-item"><span class="meta-item-label">Record Type</span><span class="meta-item-value">Annual Performance Review</span></div>
+        <div class="meta-item"><span class="meta-item-label">Review Stage</span><span class="meta-item-value">Pre-Finalization</span></div>
+        <div class="meta-item"><span class="meta-item-label">Published</span><span class="meta-item-value">May 29, 2026</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERIES INTRO STRIP -->
+<div class="series-intro">
+  <div class="series-intro-inner">
+    <p class="series-intro-text">Each Friday, a single realistic documentation scenario is published here. Apply the four JRS review conditions yourself before revealing how an experienced reviewer reads the same record. The conversation continues <a href="LINKEDIN_POST_URL_HERE" target="_blank" rel="noopener">on LinkedIn</a>.</p>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<main class="main-content">
+
+  <!-- 01 THE RECORD -->
+  <div class="section" id="section-record">
+    <div class="section-number">01</div>
+    <div class="section-title">The Record</div>
+
+    <p class="body-text">The record below was submitted by a department manager as part of the annual performance review cycle. It has not yet entered the official system. A reviewer is about to apply pre-finalization review.</p>
+
+    <div class="record-block" aria-label="Record under review">
+      <div class="record-block-header">
+        <span class="record-block-label">Submitted Record</span>
+        <span class="record-block-type">Annual Performance Review</span>
+      </div>
+      <div class="record-block-body">
+        <p class="record-text">Employee demonstrates a consistently poor attitude toward supervisors and colleagues. Performance has been below expectations throughout the review period. Employee does not take initiative and has struggled to complete assignments on time. Communication style is frequently unprofessional.</p>
+      </div>
+    </div>
+
+    <div class="commentary">
+      <p>The record reads coherently. Each sentence describes something. A reviewer who knew the employee, the manager, and the work history might find the document sufficient. But the next reviewer to read this file may be someone with none of that context.</p>
+    </div>
+
+    <p class="review-prompt">Before continuing, consider what an experienced reviewer would flag in this record.</p>
+
+    <div class="reveal-btn-wrap">
+      <button id="reveal-btn" onclick="revealReviewerRead()" aria-label="Reveal the reviewer's read of this record">Reveal the Reviewer&rsquo;s Read</button>
+    </div>
+  </div>
+
+  <!-- 02 THE REVIEWER'S READ (hidden until revealed) -->
+  <div class="reveal-content section" id="section-reviewers-read">
+    <div class="section-number">02</div>
+    <div class="section-title">The Reviewer&rsquo;s Read</div>
+
+    <p class="body-text">The reviewer reads four sentences. Each describes something. None of them can be verified from the file.</p>
+
+    <div class="flag-list" aria-label="Reviewer flags">
+
+      <div class="flag-item">
+        <div class="flag-tag" aria-hidden="true">Flag</div>
+        <div class="flag-body">
+          <div class="flag-condition">JRS Condition 1 &mdash; Observable Support</div>
+          <div class="flag-sentence">&ldquo;Employee demonstrates a consistently poor attitude toward supervisors and colleagues.&rdquo;</div>
+          <p class="flag-text">&ldquo;Consistently poor attitude&rdquo; is a conclusion. It cannot be reconstructed without reference to specific interactions. What dates? What interactions? What was said or done, and by whom? A later reviewer cannot verify this sentence from any documentation in the file as submitted.</p>
+        </div>
+      </div>
+
+      <div class="flag-item">
+        <div class="flag-tag" aria-hidden="true">Flag</div>
+        <div class="flag-body">
+          <div class="flag-condition">JRS Condition 2 &mdash; Evidentiary Traceability</div>
+          <div class="flag-sentence">&ldquo;Performance has been below expectations throughout the review period.&rdquo;</div>
+          <p class="flag-text">&ldquo;Below expectations&rdquo; is a comparative claim. The file must contain or reference the expectations against which performance is being measured. What are the stated expectations? Where are they documented? No performance plan, job description, or prior review establishing a baseline is referenced or on file.</p>
+        </div>
+      </div>
+
+      <div class="flag-item">
+        <div class="flag-tag" aria-hidden="true">Flag</div>
+        <div class="flag-body">
+          <div class="flag-condition">JRS Condition 1 &mdash; Observable Support</div>
+          <div class="flag-sentence">&ldquo;Employee does not take initiative and has struggled to complete assignments on time.&rdquo;</div>
+          <p class="flag-text">&ldquo;Does not take initiative&rdquo; and &ldquo;struggled to complete assignments on time&rdquo; are both generalizations. A later reviewer cannot verify either without specific assignments named, dates of submission, and documented deadlines. How many assignments? Which ones? How late? None of this is in the record.</p>
+        </div>
+      </div>
+
+      <div class="flag-item">
+        <div class="flag-tag" aria-hidden="true">Flag</div>
+        <div class="flag-body">
+          <div class="flag-condition">JRS Condition 1 &mdash; Observable Support</div>
+          <div class="flag-sentence">&ldquo;Communication style is frequently unprofessional.&rdquo;</div>
+          <p class="flag-text">&ldquo;Frequently unprofessional&rdquo; requires specific instances. What communications? On what dates? To whom? What made them unprofessional as documented at the time? A characterization of communication style is not the same as a record of communication.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="verdict-grid" aria-label="JRS condition verdicts">
+      <div class="verdict-header">JRS Condition Review &mdash; Pre-Finalization Assessment</div>
+      <div class="verdict-row">
+        <div class="verdict-condition">Condition 1 &mdash; Observable Support</div>
+        <div class="verdict-badge fail" aria-label="Fail">Fail</div>
+        <div class="verdict-reason">Every conclusion rests on a characterization. No specific incident, date, or interaction is named.</div>
+      </div>
+      <div class="verdict-row">
+        <div class="verdict-condition">Condition 2 &mdash; Evidentiary Traceability</div>
+        <div class="verdict-badge fail" aria-label="Fail">Fail</div>
+        <div class="verdict-reason">No record, document, or baseline is referenced or traceable from the file.</div>
+      </div>
+      <div class="verdict-row">
+        <div class="verdict-condition">Condition 3 &mdash; Chronological Clarity</div>
+        <div class="verdict-badge fail" aria-label="Fail">Fail</div>
+        <div class="verdict-reason">No timeline, date, or sequence is established for any event described.</div>
+      </div>
+      <div class="verdict-row">
+        <div class="verdict-condition">Condition 4 &mdash; Reconstructability</div>
+        <div class="verdict-badge fail" aria-label="Fail">Fail</div>
+        <div class="verdict-reason">A later reviewer, arriving without context, has nothing to reconstruct.</div>
+      </div>
+    </div>
+
+    <div class="verdict-result" aria-label="Review result">
+      <span class="verdict-result-label">Result</span>
+      <p class="verdict-result-text"><strong>Stop.</strong> Return to drafter. The record as submitted does not pass pre-finalization review on any condition. It may accurately reflect the drafter's assessment of the employee. It cannot be verified, defended, or reconstructed by anyone who was not present when it was written.</p>
+    </div>
+
+  </div>
+
+  <!-- 03 A SUPPORTED REVISION (hidden until revealed) -->
+  <div class="reveal-content section" id="section-revision">
+    <div class="section-number">03</div>
+    <div class="section-title">A Supported Revision</div>
+
+    <p class="revision-note">This is not the only way to write this record. It is one example of a revision that passes JRS pre-finalization review. The underlying facts are illustrative — a reviewer applying JRS would return the original to the drafter and ask them to supply the actual documented events from the file.</p>
+
+    <div class="revision-block">
+      <div class="revision-block-header">
+        <span class="revision-block-label">Revised Record &mdash; Passes Pre-Finalization Review</span>
+        <span class="revision-block-tag">Illustrative Example</span>
+      </div>
+      <div class="revision-block-body">
+        <p class="revision-text">On February 14, 2026, the employee received a documented verbal counseling regarding behavior toward a colleague during a team meeting; a written summary was signed by the employee and filed on February 17. On March 3, the employee was assigned a project deliverable due March 17. The deliverable was submitted on March 24 — seven business days past the deadline — without a prior extension request. On March 10, the employee sent an email to two department supervisors that was reviewed by HR and documented as requiring follow-up; a copy is retained in the file. No formal performance improvement plan was in place during the review period. The events listed above constitute the documented record for this review cycle.</p>
+      </div>
+    </div>
+
+    <p class="body-text">The revised record is longer. It is less conclusory. It is also more difficult to write, because it requires the drafter to locate and reference specific documentation rather than summarize an impression.</p>
+
+    <p class="body-text">Notice what the revision does not include: characterizations. It does not call the employee's attitude &ldquo;poor&rdquo; or their communication &ldquo;unprofessional.&rdquo; It describes what happened, with dates and references. A later reviewer arriving without context can read the file and understand what the record documents.</p>
+
+  </div>
+
+  <!-- 04 THE QUESTION (hidden until revealed) -->
+  <div class="reveal-content section" id="section-question">
+    <div class="section-number">04</div>
+    <div class="section-title">The Question</div>
+
+    <hr class="discussion-rule">
+
+    <p class="discussion-question">&ldquo;When is the original version a problem, and when is it acceptable?&rdquo;</p>
+
+    <p class="discussion-context">Some organizations have informal norms about annual review language that have accumulated over time and are understood by everyone in the room when the review is being read. The drafter knows what the record means. The manager knows. HR knows. The question is what happens when that room changes &mdash; when the matter is elevated, when the personnel change, when the record is read a year later by someone who was not part of that organization's context.</p>
+
+    <p class="discussion-context">The original record may accurately reflect reality. JRS does not evaluate whether the manager's assessment was correct. It evaluates whether the record, as written, can survive the moment when someone reads it without access to the knowledge the drafter had when writing it.</p>
+
+    <p class="discussion-context">That is the question this edition puts to the LinkedIn discussion.</p>
+
+    <div class="discussion-link-wrap">
+      <a href="LINKEDIN_POST_URL_HERE" target="_blank" rel="noopener" class="btn-discussion">Join the Discussion on LinkedIn &rarr;</a>
+    </div>
+
+  </div>
+
+  <!-- PREVIOUS EDITIONS -->
+  <div class="prev-editions">
+    <div class="prev-editions-label">Previous Editions</div>
+    <p class="prev-editions-note">New series. No. 001 is the first edition. Future editions of The Friday JRS Review will be listed here as they are released, building an open archive of documentation review across HR, compliance, investigation, and AI-assisted record types.</p>
+  </div>
+
+</main>
+
+<!-- SITE FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="footer-links">
+      <a href="/" class="footer-link">JRS Standard</a>
+      <a href="JRS-Standard.pdf" class="footer-link">Standard PDF</a>
+      <a href="JRS_Investigator_Field_Guide.pdf" class="footer-link">Investigator Field Guide</a>
+      <a href="about.html" class="footer-link">About the Author</a>
+    </div>
+    <div class="footer-meta">
+      The Friday JRS Review, No. 001. Published Friday, May 29, 2026.<br>
+      JRS Justification Review Standard v1.0. &copy; 2026 Phillip Wikes.
+    </div>
+  </div>
+</footer>
+
+<script>
+function revealReviewerRead() {
+  var btn = document.getElementById('reveal-btn');
+  var sections = document.querySelectorAll('.reveal-content');
+
+  // Show all hidden sections
+  sections.forEach(function(el) {
+    el.style.display = 'block';
+  });
+
+  // Force reflow so transition fires
+  document.body.offsetHeight;
+
+  // Trigger fade-in with staggered delay
+  sections.forEach(function(el, i) {
+    setTimeout(function() {
+      el.classList.add('revealed');
+    }, i * 120);
+  });
+
+  // Hide the button
+  btn.style.display = 'none';
+
+  // Smooth scroll to reviewer's read section
+  setTimeout(function() {
+    var target = document.getElementById('section-reviewers-read');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, 80);
+}
+</script>
+
+</body>
+</html>
