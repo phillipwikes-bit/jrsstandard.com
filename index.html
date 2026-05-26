@@ -838,38 +838,32 @@ a.gumroad-button.util-link {
 <nav class="primary-nav">
  <!-- Mobile-only bar: shows current section label + hamburger toggle -->
  <div class="primary-nav-mobile-bar">
-  <span class="nav-current-section" id="nav-current-section">Standard</span>
+  <span class="nav-current-section" id="nav-current-section">Home</span>
   <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileNav()" aria-label="Toggle navigation" aria-expanded="false">
    <span class="nav-hamburger-icon">&#9776;</span> Menu
   </button>
  </div>
  <!-- Nav items: horizontal scroll on desktop, dropdown on mobile -->
  <div class="primary-nav-inner" id="primary-nav-items">
- <button class="nav-item active" onclick="showSection('home')">Standard</button>
- <button class="nav-item" onclick="showSection('doccond')">Documentation Conditions</button>
- <button class="nav-item" onclick="showSection('tools')">Field References</button>
+ <button class="nav-item active" onclick="showSection('home')">Home</button>
  <button class="nav-item" onclick="showSection('scenarios')">Review Examples</button>
+ <button class="nav-item" onclick="showSection('tools')">Free Downloads</button>
+ <button class="nav-item kit-item" onclick="showSection('kit')">Deployment Kit &#8599;</button>
+ <a href="training.html" class="nav-item" style="text-decoration:none;">Reviewer Training &#8599;</a>
  <button class="nav-item" onclick="showSection('guidance')">Implementation</button>
- <button class="nav-item" onclick="showSection('roles')">Roles</button>
- <button class="nav-item" onclick="showSection('maturity')">Maturity</button>
- <button class="nav-item" onclick="showSection('ai')">AI-Assisted Review</button>
- <button class="nav-item" onclick="showSection('usecases')">Use Cases</button>
- <button class="nav-item" onclick="showSection('training')">Reviewer Guidance</button>
  <button class="nav-item" onclick="showSection('about')">About</button>
- <button class="nav-item" onclick="showSection('library')">Document Architecture</button>
- <button class="nav-item kit-item" onclick="showSection('kit')">Operational References &#8599;</button>
  </div>
 </nav>
 
 <!-- UTIL BAR -->
 <div class="util-bar">
  <div class="util-bar-inner">
-  <span class="util-label">Review Standard</span>
-  <a href="JRS-Standard.pdf" class="util-link accent-link">View Standard</a>
+  <span class="util-label">Free Downloads</span>
+  <a href="JRS-Standard.pdf" class="util-link accent-link">Review Framework PDF</a>
   <a href="JRS_Rapid_Review_Card.pdf" class="util-link">Rapid Review Card</a>
   <a href="JRS_Investigator_Field_Guide.pdf" class="util-link">Investigator Field Guide</a>
   <a href="https://wikesphere.gumroad.com/l/opukbv" class="util-link gumroad-button" data-gumroad-single-product="true">Reviewer Reference Kit</a>
-  <a href="#" onclick="showSection('kit');return false;" class="util-link" style="color:var(--accent-dim);">Operational References</a>
+  <a href="#" onclick="showSection('kit');return false;" class="util-link" style="color:var(--accent-dim);">Deployment Kit</a>
  </div>
 </div>
 
@@ -886,15 +880,28 @@ a.gumroad-button.util-link {
  <div class="ob-step"><div class="ob-num">B</div><div class="ob-label">The Problem</div><div class="ob-text">Records are read later by people who were not there. Most hold up or fail at that point, not at drafting.</div></div>
  <div class="ob-step"><div class="ob-num">C</div><div class="ob-label">How Review Works</div><div class="ob-text">Five questions applied before the record enters the system. Most organizations start with one record type. The gaps appear quickly.</div></div>
  <div class="ob-step"><div class="ob-num">D</div><div class="ob-label">Where It Fits</div><div class="ob-text">HR, compliance, investigations, administrative review. Works inside existing workflows, including ones that have been running for years without a formal review step.</div></div>
- <div class="ob-step"><div class="ob-num">E</div><div class="ob-label">Deployment Kit</div><div class="ob-text">Reviewer onboarding, training materials, and operational forms. Available on the Operational References page.</div></div>
+ <div class="ob-step"><div class="ob-num">E</div><div class="ob-label">Deployment Kit</div><div class="ob-text">Reviewer onboarding, training materials, and operational forms. Available on the Deployment Kit page.</div></div>
  </div>
 </div>
 
 <div class="container">
 
-<div class="page-eyebrow">Documentation Review Structure</div>
-<h1 class="page-title">Justification Review Standard</h1>
-<p class="page-subtitle">Records are read later by people who were not present. This is a review structure for what happens before they get there.</p>
+<div class="page-eyebrow">Pre-Finalization Documentation Review</div>
+<h1 class="page-title">The record looked fine. The problem appeared later.</h1>
+<p class="page-subtitle">Records are read later by people who were not present. Most documentation gaps don't show up at drafting — they show up two years later, when the original author is gone and the reviewer can't reconstruct the basis from the file alone.</p>
+
+<!-- INLINE FAILURE EXAMPLE -->
+<div style="border-left:3px solid var(--stop-text);background:var(--surface);padding:13px 18px;margin-bottom:22px;max-width:640px;">
+ <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--stop-text);margin-bottom:8px;">What the failure looks like</div>
+ <div style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:8px;">✗ &nbsp;"Employee has demonstrated ongoing performance issues." — No dates. No specific conduct. No policy anchor. A later reviewer has nothing to verify.</div>
+ <div style="font-size:13px;color:var(--ready-text);line-height:1.7;">✓ &nbsp;"Employee was absent January 5, 12, and February 3 without prior notice, contrary to Attendance Policy acknowledged January 2. Counseling note on file February 4." — The basis is in the file.</div>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px;">
+  <button onclick="showSection('tools')" style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:13px 24px;border:none;cursor:pointer;font-weight:600;">Download Free Review Resources</button>
+  <button onclick="showSection('kit')" style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--accent);border:1px solid rgba(190,148,71,.4);padding:13px 22px;cursor:pointer;">View Deployment Kit</button>
+  <button onclick="showSection('scenarios')" style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:13px 22px;cursor:pointer;">See Examples →</button>
+</div>
 
 <div class="chip-row">
  <span class="chip">HR Operations</span>
@@ -903,31 +910,65 @@ a.gumroad-button.util-link {
  <span class="chip">AI-Assisted Records</span>
 </div>
 
-<div style="border:1px solid var(--rule);background:var(--surface);padding:20px 22px;display:grid;grid-template-columns:repeat(2,1fr);gap:16px 24px;margin-bottom:48px;">
- <div><div style="font-family:'JetBrains Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.24em;color:var(--muted-soft);margin-bottom:5px;">Version</div><div style="font-size:14px;color:var(--text);">1.0</div></div>
- <div><div style="font-family:'JetBrains Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.24em;color:var(--muted-soft);margin-bottom:5px;">Effective</div><div style="font-size:14px;color:var(--text);">May 2026</div></div>
- <div><div style="font-family:'JetBrains Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.24em;color:var(--muted-soft);margin-bottom:5px;">Status</div><div style="font-size:14px;color:var(--text);">Active</div></div>
- <div><div style="font-family:'JetBrains Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.24em;color:var(--muted-soft);margin-bottom:5px;">Copyright</div><div style="font-size:14px;color:var(--text);">&copy; 2026 Phillip Wikes</div></div>
+<!-- WHAT TO START WITH -->
+<div style="margin-bottom:44px;border:1px solid var(--rule);background:var(--surface);overflow:hidden;">
+ <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);padding:12px 16px;border-bottom:1px solid var(--rule);">What To Start With</div>
+ <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0">
+  <div style="padding:16px 18px;border-right:1px solid var(--rule);">
+   <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--ready-text);margin-bottom:8px;">Free</div>
+   <div style="font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:2px;">Free Review Resources</div>
+   <div style="font-size:11px;color:var(--muted-soft);font-style:italic;margin-bottom:8px;">Start here — any reviewer, no purchase required</div>
+   <ul style="list-style:none;padding:0;font-size:12.5px;color:var(--muted);line-height:1.9;">
+    <li>Documentation Review Framework PDF</li>
+    <li>Investigator Field Guide</li>
+    <li>Rapid Review Card</li>
+   </ul>
+   <div style="margin-top:12px;"><button onclick="showSection('tools')" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--ready-text);background:none;border:1px solid rgba(93,191,130,.3);padding:6px 12px;cursor:pointer;">View All Free Downloads →</button></div>
+  </div>
+  <div style="padding:16px 18px;border-right:1px solid var(--rule);background:rgba(255,255,255,.01);">
+   <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:8px;">Individual</div>
+   <div style="font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:2px;">Reviewer Reference</div>
+   <div style="font-size:11px;color:var(--muted-soft);font-style:italic;margin-bottom:8px;">HR generalists, investigators, compliance officers doing individual review work</div>
+   <ul style="list-style:none;padding:0;font-size:12.5px;color:var(--muted);line-height:1.9;">
+    <li>Expanded reviewer toolkit</li>
+    <li>All review worksheets + forms</li>
+    <li>Full failure-mode catalog</li>
+   </ul>
+   <div style="margin-top:12px;"><a href="https://wikesphere.gumroad.com/l/opukbv" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px solid rgba(190,148,71,.3);padding:6px 12px;display:inline-block;" class="gumroad-button" data-gumroad-single-product="true">Get Access ↗</a></div>
+  </div>
+  <div style="padding:16px 18px;">
+   <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">Team</div>
+   <div style="font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:2px;">Deployment Kit</div>
+   <div style="font-size:11px;color:var(--muted-soft);font-style:italic;margin-bottom:8px;">HR teams, compliance programs, organizations rolling out review across departments</div>
+   <ul style="list-style:none;padding:0;font-size:12.5px;color:var(--muted);line-height:1.9;">
+    <li>Team onboarding + training modules</li>
+    <li>Redlined examples + templates</li>
+    <li>Secondary review forms + playbook</li>
+   </ul>
+   <div style="margin-top:12px;"><button onclick="showSection('kit')" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);background:none;border:1px solid rgba(190,148,71,.4);padding:6px 12px;cursor:pointer;">View Kit ↗</button></div>
+  </div>
+ </div>
 </div>
 
 <div style="margin-bottom:44px;">
- <div class="section-head">Overview</div>
- <p class="body-text">Most records are eventually read by someone who was not there. That person has the file. They do not have the context, the author, or the conversation that happened before it was written. What the file says is what they have to work with.</p>
- <p class="body-text">The conditions that make records difficult to reconstruct later are not usually the product of intentional falsification or misconduct. They develop through ordinary workflow pressures: personnel turnover that removes the people who understood a file, rushed review cycles that leave conclusions without visible anchors, distributed communications that never consolidate into the formal record, and delayed documentation entry that separates the observation from the written account. Well-intentioned personnel working under normal operational conditions routinely produce records that become difficult to interpret, defend, or reconstruct during later review. That is the problem this structure addresses.</p>
- <p class="body-text">Review is applied at the drafting stage, before records enter formal systems. The review checks whether conclusions are understandable, supportable, and reconstructable from the file alone.</p>
- <p class="body-text">Most organizations start with one record type. Termination records are a common starting point, as documentation gaps tend to become visible there first. The review tends to expand from there without being announced.</p>
-<p class="body-text">No software required. Works inside existing workflows. Can be introduced incrementally without structural change.</p>
-<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;">
- <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 10px;">No dedicated platform required</span>
- <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 10px;">Existing workflow compatible</span>
- <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 10px;">Incremental adoption</span>
- <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 10px;">Reviewer-layer deployment</span>
-</div>
+ <div class="section-head">Five Questions. Applied Before Any Record Enters the System.</div>
+ <p class="body-text" style="max-width:640px;">Most records that fail during later review looked fine at drafting. They looked fine because the author already knew what they meant. These questions are applied before that person is no longer available to explain it.</p>
+ <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0;">
+  <div style="padding:12px 14px;background:var(--surface);border-left:2px solid var(--accent-dim);"><div style="font-size:13px;color:var(--text);font-weight:600;margin-bottom:3px;">Can this record stand on its own?</div><div style="font-size:12px;color:var(--muted);line-height:1.6;">Could a reviewer with no prior knowledge follow the basis from the file alone?</div></div>
+  <div style="padding:12px 14px;background:var(--surface);border-left:2px solid var(--accent-dim);"><div style="font-size:13px;color:var(--text);font-weight:600;margin-bottom:3px;">What specific evidence anchors this conclusion?</div><div style="font-size:12px;color:var(--muted);line-height:1.6;">Dates, documented interactions, referenced records. Are the attachments actually on file?</div></div>
+  <div style="padding:12px 14px;background:var(--surface);border-left:2px solid var(--accent-dim);"><div style="font-size:13px;color:var(--text);font-weight:600;margin-bottom:3px;">Is the path from evidence to conclusion visible?</div><div style="font-size:12px;color:var(--muted);line-height:1.6;">Not in the author's memory. In the document itself.</div></div>
+  <div style="padding:12px 14px;background:var(--surface);border-left:2px solid var(--accent-dim);"><div style="font-size:13px;color:var(--text);font-weight:600;margin-bottom:3px;">Does the escalation trail check out?</div><div style="font-size:12px;color:var(--muted);line-height:1.6;">Prior warnings, counseling, coaching — confirmed in the file or not there.</div></div>
+ </div>
+ <div style="display:flex;flex-wrap:wrap;gap:8px;">
+  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 10px;">No software required</span>
+  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 10px;">Existing workflows</span>
+  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 10px;">Start with one record type</span>
+ </div>
 </div>
 
 <div style="margin-bottom:44px;">
  <div class="section-head">How Review Works</div>
- <p class="body-text" style="max-width:620px;">Review focuses on whether conclusions can be understood and reconstructed later from the record itself. The reviewer checks before finalization, not after escalation.</p>
+ <p class="body-text" style="max-width:620px;">The reviewer checks before the record enters the system. Gaps flagged. Record returned to drafter. Not approved with a notation — returned.</p>
  <div class="kit-flow" style="margin-top:16px;">
  <div class="kit-flow-step"><div class="kit-flow-num">1</div><div class="kit-flow-content"><div class="kit-flow-title">Draft prepared</div><div class="kit-flow-text">Manager, investigator, HR, or automated tool produces the record.</div></div></div>
  <div class="kit-flow-step" style="background:rgba(255,255,255,.015);"><div class="kit-flow-num">2</div><div class="kit-flow-content"><div class="kit-flow-title">Reviewer checks observable support</div><div class="kit-flow-text">Does each conclusion have a specific anchor? Dates, logs, documented interactions, or referenced records on file?</div></div></div>
@@ -951,8 +992,7 @@ a.gumroad-button.util-link {
 
 <div style="margin-bottom:44px;">
  <div class="section-head">Four Review Conditions</div>
- <p class="body-text">Four conditions apply before a record enters an official system. They apply regardless of record type or how the document was drafted.</p>
- <p class="body-text" style="max-width:600px;">The underlying question across all four conditions is whether the record is independently reconstructable: whether a later reviewer — with no access to the original author, no institutional memory, and no supplementary explanation — can identify the basis for each conclusion from the file alone.</p>
+ <p class="body-text" style="max-width:600px;">Four conditions before any record enters an official system — regardless of record type or how it was drafted. The question across all four: could a later reviewer, with no access to the original author and no institutional memory, identify the basis from the file alone?</p>
  <div class="cond-grid">
  <div class="cond-row"><div class="cond-num" style="font-size:14px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:4px;">01</div><div><div class="cond-title">Independently Reviewable</div><div class="cond-text">The basis for conclusions should be recoverable from the record by someone with no prior knowledge of the events, without additional context or supplementary explanation.</div></div></div>
  <div class="cond-row"><div class="cond-num" style="font-size:14px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:4px;">02</div><div><div class="cond-title">Observable Support</div><div class="cond-text">Each conclusion requires a specific, verifiable anchor in the file: a date, a documented interaction, a log entry, or a referenced record.</div></div></div>
@@ -1053,15 +1093,31 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
- <div class="section-head">Common Documentation Failures</div>
- <p class="body-text">These patterns are not unusual. They are the ordinary condition of most organizational records. The file looked complete when it was submitted. It looked complete because the person reading it at the time already knew what it meant.</p>
- <div class="reviewer-note" style="margin-bottom:8px;"><div class="reviewer-note-label">From practice</div>Most escalation files fail at the timeline level. Conduct is described. Dates are not. Without dates, the pattern cannot be independently established.</div>
- <div class="reviewer-note" style="margin-bottom:8px;"><div class="reviewer-note-label">From practice</div>Secondary review most often flags: evaluative adjectives without anchors, escalation without prior counseling trail, and AI summaries without source identification. Pattern claims missing dates are the most common single gap.</div>
-  <div class="reviewer-note" style="margin-bottom:8px;"><div class="reviewer-note-label">From practice</div>The counseling session happened. Everyone in the room knew it. Two years later, one person has left, one is on extended leave, and what the file says is "ongoing coaching provided." The written record is what later reviewers will have available.</div>
-  <div class="reviewer-note" style="margin-bottom:14px;"><div class="reviewer-note-label">Organizational texture</div>Records drafted under time pressure often reference conversations that were never documented. The supervisor remembered the discussion. The file does not reflect it. When that supervisor leaves, the file is what remains. That is the record. That is what anyone reading it later will find.</div>
+ <div class="section-head">What These Failures Look Like</div>
+ <p class="body-text" style="max-width:640px;">These are not unusual. They appear across HR, investigations, compliance, and administrative records. The file looked complete at drafting because the author already knew what they meant.</p>
+ <div class="reviewer-note" style="margin-bottom:14px;"><div class="reviewer-note-label">Most common single gap</div>Pattern conduct described. No dates. Without dates, the sequence cannot be independently established by a later reviewer. The manager remembered the conversations. The file does not reflect them.</div>
  <div class="failure-block"><div class="failure-head">Unsupported Generalization</div><div class="failure-cols"><div class="failure-col"><div class="failure-col-label">As Written</div><div class="failure-bad">"Employee has attendance issues."</div><div class="reviewer-note" style="margin-top:8px;"><div class="reviewer-note-label">Reviewer flag</div>No dates, no frequency, no policy reference. Cannot verify from file.</div></div><div class="failure-col"><div class="failure-col-label">Supported Revision</div><div class="failure-good">Employee was absent January 5, 12, and February 3 without prior notice, contrary to Attendance Policy acknowledged January 2. Counseling note on file February 4.</div></div></div></div>
  <div class="failure-block"><div class="failure-head">Missing Observable Behavior</div><div class="failure-cols"><div class="failure-col"><div class="failure-col-label">As Written</div><div class="failure-bad">"Employee demonstrated unprofessional conduct."</div><div class="reviewer-note" style="margin-top:8px;"><div class="reviewer-note-label">Reviewer flag</div>Evaluative label only. No specific conduct identified.</div></div><div class="failure-col"><div class="failure-col-label">Supported Revision</div><div class="failure-good">Employee interrupted client meetings on April 4 and April 11 despite prior written instruction dated March 28. Incident report on file April 12.</div></div></div></div>
  <div class="failure-block"><div class="failure-head">AI Summary Without Verification</div><div class="failure-cols"><div class="failure-col"><div class="failure-col-label">As Written</div><div class="failure-bad">"AI summary: Employee is difficult to work with."</div><div class="reviewer-note" style="margin-top:8px;"><div class="reviewer-note-label">Reviewer flag</div>Source records not identified. Human review not confirmed. Do not submit.</div></div><div class="failure-col"><div class="failure-col-label">Supported Revision</div><div class="failure-good">Summary reviewed against meeting notes dated March 4, 11, and 18. No unverified characterizations introduced. Human review completed March 19.</div></div></div></div>
+ <div style="margin-top:12px;"><button onclick="showSection('scenarios')" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:9px 18px;cursor:pointer;transition:.1s;" onmouseover="this.style.color='var(--accent)';this.style.borderColor='rgba(190,148,71,.4)'" onmouseout="this.style.color='var(--muted-soft)';this.style.borderColor='var(--rule)'">View All Review Examples →</button></div>
+</div>
+
+<!-- FOUNDER PROVENANCE -->
+<div style="margin-bottom:44px;border:1px solid var(--rule);background:var(--surface);padding:18px 20px;">
+ <div style="display:grid;grid-template-columns:1fr auto;gap:16px;align-items:start;">
+  <div>
+   <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:8px;">Why This Exists</div>
+   <p style="font-size:13.5px;color:var(--muted);line-height:1.7;margin-bottom:0;">These failure patterns were encountered operationally — not constructed theoretically. JRS was built from 27 years of investigative documentation review in civil rights enforcement and administrative oversight environments, where records are routinely read later by adjudicators and legal counsel who were not present when they were written.</p>
+  </div>
+  <div style="min-width:150px;border-left:1px solid var(--rule);padding-left:16px;flex-shrink:0;">
+   <div style="font-size:11.5px;color:var(--muted-soft);line-height:2.1;">
+    <div>27 years operational</div>
+    <div>MD Civil Rights Commission</div>
+    <div>Administrative oversight</div>
+    <div>Investigations review</div>
+   </div>
+  </div>
+ </div>
 </div>
 
 <div style="margin-bottom:44px;">
@@ -1190,7 +1246,7 @@ a.gumroad-button.util-link {
       </div>
     </div>
   </div>
-  <div style="margin-top:12px;"><button class="btn btn-ghost" style="font-size:12.5px;" onclick="showSection('kit')">View Operational References</button></div>
+  <div style="margin-top:12px;"><button class="btn btn-ghost" style="font-size:12.5px;" onclick="showSection('kit')">View Deployment Kit</button></div>
 </div>
 
 <div style="margin-bottom:44px;">
@@ -1612,7 +1668,7 @@ a.gumroad-button.util-link {
  <div class="section-head">Access</div>
  <div class="btn-row">
  <a href="JRS-Standard.pdf" class="btn btn-primary">View Standard</a>
- <button class="btn btn-ghost" onclick="showSection('kit')">Operational References</button>
+ <button class="btn btn-ghost" onclick="showSection('kit')">Deployment Kit</button>
  <a href="https://wikesphere.gumroad.com/l/opukbv" class="btn btn-ghost gumroad-button" data-gumroad-single-product="true">Reviewer Reference</a>
  </div>
 </div>
@@ -1823,7 +1879,7 @@ a.gumroad-button.util-link {
     </div>
     <div style="display:grid;grid-template-columns:44px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--rule);">
       <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent-dim);padding-top:2px;">B</div>
-      <div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">Later reviewers depend on contextual survivability</div><div class="cond-text">The people who created a record, attended the meetings, understood the context, and knew what the language was intended to convey are frequently unavailable during later review. The written record is what later reviewers have access to. It should be capable of standing on its own.</div></div>
+      <div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">Later reviewers work from what's in the file</div><div class="cond-text">The people who created a record, attended the meetings, understood the context, and knew what the language was intended to convey are frequently unavailable during later review. The written record is what later reviewers have access to. It should be capable of standing on its own.</div></div>
     </div>
     <div style="display:grid;grid-template-columns:44px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--rule);">
       <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent-dim);padding-top:2px;">C</div>
@@ -2026,7 +2082,7 @@ a.gumroad-button.util-link {
 
   <div style="margin-bottom:28px;">
     <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-soft);padding-bottom:10px;margin-bottom:14px;border-bottom:1px solid var(--rule);">Record Survivability</div>
-    <p class="body-text" style="max-width:640px;">Record survivability is not equivalent to record retention. A record can be retained indefinitely and still be functionally unavailable for later review if it cannot independently support the conclusions it contains.</p>
+    <p class="body-text" style="max-width:640px;">Retaining a record is not the same as making it usable for later review. A record can be retained indefinitely and still fail when a reviewer needs to reconstruct the basis — because the supporting context exists in institutional memory, not in the file.</p>
     <p class="body-text" style="max-width:640px;">An organizationally survivable record enables a later independent reviewer to establish the following without access to original participants, supplementary explanation, or institutional context that no longer exists in the file.</p>
     <div style="border:1px solid var(--rule);overflow:hidden;margin-top:14px;margin-bottom:16px;">
       <div style="padding:9px 15px;background:var(--surface2);border-bottom:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);">Independent reviewability requires the record to show</div>
@@ -2118,10 +2174,10 @@ a.gumroad-button.util-link {
 <div style="margin-bottom:44px;">
   <div class="section-head">About This Reference</div>
   <p class="body-text" style="max-width:640px;">This reference is published as part of the JRS documentation review framework. It is intended for use within HR operational guidance, internal controls documentation, compliance review materials, audit support resources, investigation documentation guidance, and administrative review procedures.</p>
-  <p class="body-text" style="max-width:640px;">JRS is a documentation review structure: a lightweight administrative control applied at the pre-finalization stage within existing workflows. It does not replace existing systems, policies, or professional judgment. It provides a structured method for improving record survivability and later review clarity before records enter official systems.</p>
+  <p class="body-text" style="max-width:640px;">JRS is a documentation review structure: a lightweight administrative control applied at the pre-finalization stage within existing workflows. It does not replace existing systems, policies, or professional judgment. It provides a structured method for ensuring the basis for conclusions is visible in the file before records enter official systems.</p>
   <div class="btn-row">
     <a href="JRS-Standard.pdf" class="btn btn-primary">View Standard</a>
-    <button class="btn btn-ghost" onclick="showSection('tools')">Field References</button>
+    <button class="btn btn-ghost" onclick="showSection('tools')">Free Downloads</button>
     <button class="btn btn-ghost" onclick="showSection('home')">Return to Standard</button>
   </div>
 </div>
@@ -2333,9 +2389,31 @@ a.gumroad-button.util-link {
 
 <div id="section-tools" class="page-section">
 <div class="container">
-<div class="page-eyebrow">Field References</div>
-<h1 class="page-title">Pre-Submission Review Worksheets</h1>
-<p class="page-subtitle">Applied at the drafting stage, before records enter official systems. No software required. Works within existing HR, compliance, and investigation workflows.</p>
+<div class="page-eyebrow">Free Downloads</div>
+<h1 class="page-title">Free Review Resources</h1>
+<p class="page-subtitle">Three free downloads for reviewers, investigators, and HR. Applied before records enter official systems. No software, no purchase required.</p>
+<!-- FREE PDF DOWNLOADS -->
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;background:var(--rule);border:1px solid var(--rule);margin-bottom:28px;margin-top:8px;">
+ <div style="background:var(--surface);padding:18px 18px 16px;">
+  <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ready-text);margin-bottom:6px;">Free PDF</div>
+  <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">Documentation Review Framework</div>
+  <div style="font-size:12.5px;color:var(--muted);line-height:1.55;margin-bottom:12px;">Four review conditions. Failure-mode catalog. Reviewer routing reference. For any practitioner starting a documentation quality review practice.</div>
+  <a href="JRS-Standard.pdf" download style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ready-text);text-decoration:none;border:1px solid rgba(93,191,130,.4);padding:6px 12px;display:inline-block;">Download PDF ↓</a>
+ </div>
+ <div style="background:var(--surface);padding:18px 18px 16px;">
+  <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ready-text);margin-bottom:6px;">Free PDF</div>
+  <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">Investigator Field Guide</div>
+  <div style="font-size:12.5px;color:var(--muted);line-height:1.55;margin-bottom:12px;">Source identification, conflict acknowledgment, and reconstruction review for workplace investigation records. Applied before conclusions are filed.</div>
+  <a href="JRS_Investigator_Field_Guide.pdf" download style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ready-text);text-decoration:none;border:1px solid rgba(93,191,130,.4);padding:6px 12px;display:inline-block;">Download PDF ↓</a>
+ </div>
+ <div style="background:var(--surface);padding:18px 18px 16px;">
+  <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ready-text);margin-bottom:6px;">Free PDF</div>
+  <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">Rapid Review Card</div>
+  <div style="font-size:12.5px;color:var(--muted);line-height:1.55;margin-bottom:12px;">One-page reviewer quick reference. Five questions, readiness key, and secondary review triggers. Print-ready. Paste into onboarding.</div>
+  <a href="JRS_Rapid_Review_Card.pdf" download style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ready-text);text-decoration:none;border:1px solid rgba(93,191,130,.4);padding:6px 12px;display:inline-block;">Download PDF ↓</a>
+ </div>
+</div>
+
 <div class="callout"><div class="callout-label">Usage Note</div><p>These tools structure the questions a later reviewer would ask. Apply the relevant worksheet before submitting documentation into any official system of record.</p></div>
 <div style="margin-top:14px;margin-bottom:0;border:1px solid var(--rule);padding:14px 16px;background:var(--surface);">
  <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:8px;">Worksheet selection by record type</div>
@@ -2498,8 +2576,8 @@ a.gumroad-button.util-link {
  </div>
 </div>
 <div class="callout" style="margin-top:14px;">
- <div class="callout-label">Operational References</div>
- <p>Print-ready versions of all worksheets, operational forms, escalation templates, and reviewer training resources. <button onclick="showSection('kit')" style="background:none;border:none;color:var(--accent);font-size:inherit;cursor:pointer;font-family:inherit;text-decoration:underline;padding:0;">View Operational References</button></p>
+ <div class="callout-label">Deployment Kit</div>
+ <p>Print-ready versions of all worksheets, operational forms, escalation templates, and reviewer training resources. <button onclick="showSection('kit')" style="background:none;border:none;color:var(--accent);font-size:inherit;cursor:pointer;font-family:inherit;text-decoration:underline;padding:0;">View Deployment Kit</button></p>
 </div>
 
 <hr class="section-rule">
@@ -3470,10 +3548,10 @@ a.gumroad-button.util-link {
 <!-- AI SECTION -->
 <div id="section-ai" class="page-section">
 <div class="container">
-<div class="page-eyebrow">AI-Assisted Review</div>
-<h1 class="page-title">AI-Assisted Documentation Review</h1>
-<p class="page-subtitle">Source verification and reconstruction review for records where AI tools contributed to drafting. Applied at the pre-submission stage, before records enter official systems.</p>
-<div class="callout"><div class="callout-label">Review Standard</div><p>The review conditions apply regardless of how a record was drafted. What matters is whether the supporting basis can be identified by someone reading the file later, without the original author available to explain it.</p></div>
+<div class="page-eyebrow">AI-Assisted Records</div>
+<h1 class="page-title">When AI Drafted the Record: What Review Catches</h1>
+<p class="page-subtitle">AI-assisted drafting introduces a specific failure mode: the record reads confidently. The source notes are thin. A later reviewer finds a conclusion that looks established but isn't anchored to anything in the file. The same four conditions apply — regardless of how the record was drafted.</p>
+<div class="callout"><div class="callout-label">The same four conditions apply</div><p>It doesn't matter how a record was drafted. What matters is whether someone reading the file later can identify the basis without the original author available to explain it. AI tools create a new category of gap — confident language without identifiable source material — but they don't change the review standard.</p></div>
 
 <div style="margin-top:32px;">
 <div class="section-head">Semantic Inflation</div>
@@ -3639,7 +3717,7 @@ a.gumroad-button.util-link {
 <div class="container">
 <div class="course-eyebrow">Reviewer Guidance</div>
 <h2 class="course-title">JRS Documentation Review Foundations</h2>
-<p class="course-subtitle">Six modules covering evidence anchoring, file survivability, traceable reasoning, and review of AI-assisted records. Applicable to HR, compliance, investigation, and administrative documentation environments.</p>
+<p class="course-subtitle">Six modules covering evidence anchoring, independent reconstructability, documented reasoning, and review of AI-assisted records. Applicable to HR, compliance, investigation, and administrative documentation environments.</p>
 
 <div class="chip-row">
   <span class="chip">6 Modules</span>
@@ -4167,11 +4245,11 @@ a.gumroad-button.util-link {
 
 // ── NAVIGATION ────────────────────────────────────
 const SECTION_LABELS={
- home:'Standard',doccond:'Documentation Conditions',tools:'Field References',
+ home:'Home',doccond:'Documentation Conditions',tools:'Free Downloads',
  scenarios:'Review Examples',guidance:'Implementation',roles:'Roles',
  maturity:'Maturity',ai:'AI-Assisted Review',usecases:'Use Cases',
  training:'Reviewer Guidance',about:'About',library:'Document Architecture',
- kit:'Operational References'
+ kit:'Deployment Kit'
 };
 function showSection(id){
  document.querySelectorAll('.page-section').forEach(s=>s.classList.remove('active'));
@@ -4179,7 +4257,7 @@ function showSection(id){
  const sec=document.getElementById('section-'+id);
  if(sec)sec.classList.add('active');
  if(id==='roles'&&typeof showRoleEnv==='function'){setTimeout(()=>showRoleEnv('hr'),30);}
- const sectionMap={'home':0,'doccond':1,'tools':2,'scenarios':3,'guidance':4,'roles':5,'maturity':6,'ai':7,'usecases':8,'training':9,'about':10,'library':11,'kit':12};
+ const sectionMap={'home':0,'scenarios':1,'tools':2,'kit':3,'guidance':5,'about':6,'doccond':99,'roles':99,'maturity':99,'ai':99,'usecases':99,'training':99,'library':99};
  const navItems=document.querySelectorAll('.nav-item');
  if(sectionMap[id]!==undefined&&navItems[sectionMap[id]])navItems[sectionMap[id]].classList.add('active');
  // Update mobile nav current-section label and close the dropdown
