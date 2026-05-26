@@ -86,14 +86,13 @@
 </head>
 <body>
 
-<!-- KEY SCREEN -->
 <div id="keyScreen" role="main">
   <div class="keyBox">
     <div class="keyLogo" aria-hidden="true">⚖️</div>
     <div class="keyTitle">MCCR Executive Director</div>
     <div class="keySub">Maryland Commission on Civil Rights<br>AI Simulator - Authorized Use Only</div>
     <label class="keyLabel" for="keyInput">Anthropic API Key</label>
-    <!-- autocomplete="off" prevents browser from autofilling / leaking the key -->
+    
     <input class="keyInput" id="keyInput" type="password" placeholder="sk-ant-api03-..." autocomplete="off" aria-describedby="keyErrorMsg" />
     <div class="keyError" id="keyErrorMsg" role="alert">Key must start with sk-ant- and be at least 40 characters</div>
     <button class="keyBtn" onclick="enterSimulator()">Enter Simulator</button>
@@ -101,7 +100,6 @@
   </div>
 </div>
 
-<!-- MAIN APP -->
 <div id="app" aria-hidden="true">
   <header>
     <div class="headerLeft">
@@ -118,10 +116,10 @@
     </div>
   </header>
 
-  <!-- Converted to <nav> for landmark semantics -->
+  
   <nav id="tabs" aria-label="MCCR Executive Director Simulator navigation"></nav>
 
-  <!-- role="log" + aria-live so screen readers announce new messages -->
+  
   <div id="chat" role="log" aria-live="polite" aria-label="Conversation"></div>
 
   <div id="inputArea">

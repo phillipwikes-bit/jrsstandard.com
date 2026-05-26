@@ -834,7 +834,6 @@ a.gumroad-button.util-link {
 <body>
 <a href="#section-home" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;font-size:0;" class="skip-link">Skip to content</a>
 
-<!-- SITE HEADER -->
 <div class="site-header">
  <div class="site-header-inner">
  <div class="wordmark" onclick="showSection('home')" role="button" aria-label="JRS Home">JRS<span class="tm">&#8482;</span></div>
@@ -842,16 +841,15 @@ a.gumroad-button.util-link {
  </div>
 </div>
 
-<!-- PRIMARY NAV -->
 <nav class="primary-nav">
- <!-- Mobile-only bar: shows current section label + hamburger toggle -->
+ 
  <div class="primary-nav-mobile-bar">
   <span class="nav-current-section" id="nav-current-section">Home</span>
   <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileNav()" aria-label="Toggle navigation" aria-expanded="false">
    <span class="nav-hamburger-icon">&#9776;</span> Menu
   </button>
  </div>
- <!-- Nav items: horizontal scroll on desktop, dropdown on mobile -->
+ 
  <div class="primary-nav-inner" id="primary-nav-items">
  <button class="nav-item active" onclick="showSection('home')">Review Controls</button>
  <button class="nav-item" onclick="showSection('scenarios')">Documentation Failures</button>
@@ -864,7 +862,6 @@ a.gumroad-button.util-link {
  </div>
 </nav>
 
-<!-- UTIL BAR -->
 <div class="util-bar">
  <div class="util-bar-inner">
   <span class="util-label">Free Resources</span>
@@ -876,10 +873,6 @@ a.gumroad-button.util-link {
  </div>
 </div>
 
-
-<!-- ═══════════════════════════════════════════════════════ -->
-<!-- SECTION: HOME / STANDARD -->
-<!-- ═══════════════════════════════════════════════════════ -->
 <div id="section-home" class="page-section active">
 
 <div class="container">
@@ -889,7 +882,6 @@ a.gumroad-button.util-link {
 <p class="page-subtitle">Practical review tools for closing chronology gaps, verifying source support, and preparing documentation for downstream review. Applied before records enter official systems, within existing workflows, without dedicated software.</p>
 <p style="font-size:13.5px;color:var(--muted-soft);margin-bottom:24px;line-height:1.6;">Designed for HR, compliance, investigations, employee relations, and administrative review environments.</p>
 
-<!-- OPERATIONAL WORKFLOW STRIP -->
 <div style="margin-bottom:20px;border:1px solid var(--rule);overflow:hidden;">
  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
   <div style="padding:14px 16px;border-right:1px solid var(--rule);">
@@ -919,7 +911,6 @@ a.gumroad-button.util-link {
  </div>
 </div>
 
-<!-- DOCUMENTATION FAILURE TEASER -->
 <div style="margin-bottom:24px;border:1px solid var(--rule);overflow:hidden;">
  <div style="padding:8px 14px;border-bottom:1px solid var(--rule);background:var(--surface);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;">
   <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--stop-text);">Documentation Failures That Surface During Later Review</span>
@@ -948,7 +939,6 @@ a.gumroad-button.util-link {
   <button onclick="showSection('scenarios')" style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:13px 22px;cursor:pointer;">See Documentation Failures →</button>
 </div>
 
-<!-- WHO USES THIS -->
 <div style="margin-bottom:20px;">
  <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px;">Designed For</div>
  <div style="display:flex;flex-wrap:wrap;gap:6px;">
@@ -970,7 +960,6 @@ a.gumroad-button.util-link {
  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 10px;">Start with one record type</span>
 </div>
 
-<!-- START HERE - 5 BUYER PATHWAYS -->
 <div style="margin-bottom:28px;border:1px solid var(--rule);background:var(--surface);overflow:hidden;">
  <div style="padding:10px 16px;border-bottom:1px solid var(--rule);">
   <span style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);">Start Here</span>
@@ -999,7 +988,6 @@ a.gumroad-button.util-link {
  </div>
 </div>
 
-<!-- HOW JRS FITS INTO EXISTING WORKFLOWS -->
 <div style="margin-bottom:36px;">
  <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:12px;">How JRS Fits Into Existing Workflows</div>
  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--rule);overflow:hidden;">
@@ -1034,7 +1022,7 @@ a.gumroad-button.util-link {
 
 <div style="margin-bottom:44px;">
  <div class="section-head">Five Pre-Finalization Review Questions</div>
- <!-- OPERATIONAL REVIEW CARDS -->
+ 
  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:16px;">
   <div style="background:var(--surface);border:1px solid var(--rule);border-top:2px solid var(--stop);padding:13px 15px;">
    <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--stop-text);margin-bottom:6px;">Unsupported Conclusions</div>
@@ -1062,7 +1050,6 @@ a.gumroad-button.util-link {
  </div>
 </div>
 
-<!-- WHY AI-ASSISTED DRAFTING CHANGES REVIEW RISK -->
 <div style="margin-bottom:44px;">
  <div class="section-head">Why AI-Assisted Drafting Changes Review Risk</div>
  <p class="body-text" style="max-width:640px;">AI drafting tools produce polished, confident language. That confidence creates a specific documentation risk that did not exist at scale before these tools were widely deployed.</p>
@@ -1079,7 +1066,6 @@ a.gumroad-button.util-link {
  <div class="reviewer-note"><div class="reviewer-note-label">Control point</div>Human review of AI-assisted records against source materials - applied before records enter official systems - is the only reliable point at which this gap can be identified and resolved. Once the record is filed, the gap is in the record.</div>
 </div>
 
-<!-- DOCUMENTATION FAILURE EXAMPLES -->
 <div style="margin-bottom:44px;">
  <div class="section-head">Common Documentation Review Failures</div>
  <p class="body-text" style="max-width:640px;">These are not unusual. They appear routinely across HR, investigations, compliance, and administrative records. The file looks complete at drafting because the author's context fills the gaps. When that author is unavailable - two years later, during escalation, audit, or litigation - the record must explain itself.</p>
@@ -1139,14 +1125,13 @@ a.gumroad-button.util-link {
  </div>
 </div>
 
-<!-- PRODUCT HIERARCHY -->
 <div style="margin-bottom:28px;border:1px solid var(--rule);background:var(--surface);overflow:hidden;">
  <div style="padding:10px 16px;border-bottom:1px solid var(--rule);">
   <span style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);">Review Ecosystem</span>
  </div>
  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0">
 
-  <!-- FREE RESOURCES -->
+  
   <div style="padding:14px 16px;border-right:1px solid var(--rule);">
    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--ready-text);margin-bottom:2px;">Free Resources</div>
    <div style="font-size:10.5px;color:var(--muted-soft);font-style:italic;margin-bottom:8px;">Understand the review problem</div>
@@ -1164,7 +1149,7 @@ a.gumroad-button.util-link {
    <div style="margin-top:10px;"><button onclick="showSection('tools')" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--ready-text);background:none;border:1px solid rgba(93,191,130,.3);padding:5px 10px;cursor:pointer;">Download Free Resources →</button></div>
   </div>
 
-  <!-- SIMULATIONS -->
+  
   <div style="padding:14px 16px;border-right:1px solid var(--rule);background:rgba(255,255,255,.01);">
    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:2px;">Simulations</div>
    <div style="font-size:10.5px;color:var(--muted-soft);font-style:italic;margin-bottom:8px;">Experience procedural instability</div>
@@ -1177,7 +1162,7 @@ a.gumroad-button.util-link {
    <a href="training.html" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;border:1px solid var(--rule);padding:5px 10px;display:inline-block;">Explore Reconstruction Simulations →</a>
   </div>
 
-  <!-- REVIEWER TOOLS -->
+  
   <div style="padding:14px 16px;border-right:1px solid var(--rule);">
    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:2px;">Reviewer Tools</div>
    <div style="font-size:10.5px;color:var(--muted-soft);font-style:italic;margin-bottom:8px;">Improve operational review consistency</div>
@@ -1197,10 +1182,10 @@ a.gumroad-button.util-link {
 
  </div>
 
- <!-- ROW 2: DEPLOYMENT KIT + ENTERPRISE PILOTS -->
+ 
  <div style="display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--rule);">
 
-  <!-- DEPLOYMENT KIT -->
+  
   <div style="padding:14px 16px;border-right:1px solid var(--rule);">
    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:2px;">Deployment Kit</div>
    <div style="font-size:10.5px;color:var(--muted-soft);font-style:italic;margin-bottom:8px;">Align teams and onboarding</div>
@@ -1218,7 +1203,7 @@ a.gumroad-button.util-link {
    <div style="margin-top:10px;"><a href="https://wikesphere.gumroad.com/l/ojeqeo" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px solid rgba(190,148,71,.4);padding:5px 10px;display:inline-block;" class="gumroad-button" data-gumroad-single-product="true">Get Deployment Kit - $77 ↗</a></div>
   </div>
 
-  <!-- ENTERPRISE PILOTS -->
+  
   <div style="padding:14px 16px;">
    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:2px;">Enterprise Pilots</div>
    <div style="font-size:10.5px;color:var(--muted-soft);font-style:italic;margin-bottom:8px;">Explore organizational implementation</div>
@@ -1233,7 +1218,6 @@ a.gumroad-button.util-link {
  </div>
 </div>
 
-<!-- BUYER JOURNEY -->
 <div style="margin-bottom:44px;">
  <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:12px;">How Organizations Typically Engage</div>
  <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:0;border:1px solid var(--rule);overflow:hidden;">
@@ -1264,7 +1248,6 @@ a.gumroad-button.util-link {
  </div>
 </div>
 
-<!-- HOW RECORDS DESTABILIZE OVER TIME -->
 <div style="margin-bottom:44px;">
  <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">Record Stability Over Time</div>
  <div style="font-family:'Bodoni Moda',serif;font-size:20px;font-weight:400;color:var(--text);margin-bottom:10px;line-height:1.2;">How Records Destabilize Over Time</div>
@@ -1297,7 +1280,6 @@ a.gumroad-button.util-link {
  <div style="margin-top:8px;padding:8px 12px;background:var(--surface);border:1px solid var(--rule);font-size:12px;color:var(--muted-soft);line-height:1.6;"><span style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);">JRS control point - </span>Review controls applied from T+0 through the escalation stage - before interpretation drift accumulates and before the original author becomes unavailable.</div>
 </div>
 
-<!-- PROCEDURAL RECONSTRUCTION SIMULATIONS -->
 <div style="margin-bottom:44px;border:1px solid rgba(190,148,71,.2);background:var(--surface);overflow:hidden;">
  <div style="padding:12px 18px;border-bottom:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
   <div>
@@ -1343,7 +1325,7 @@ a.gumroad-button.util-link {
    <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Expanding Operational Library</div>
    <div style="font-size:12.5px;color:var(--muted-soft);line-height:1.6;">Simulation library grows continuously. Additional chronology scenarios, escalation exercises, comparator analysis cases, and reconstruction failure exercises added as new documentation patterns emerge. Free access maintained throughout.</div>
   </div>
-  <!-- SIMULATION ACCESS STRUCTURE -->
+  
   <div style="border:1px solid var(--rule);overflow:hidden;margin-bottom:14px;">
    <div style="padding:8px 14px;border-bottom:1px solid var(--rule);background:var(--surface);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;">
     <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);">Simulation Access Structure</span>
@@ -1409,7 +1391,6 @@ a.gumroad-button.util-link {
  </div>
 </div>
 
-<!-- WHERE JRS IS APPLIED -->
 <div style="margin-bottom:44px;">
  <div class="section-head">Where JRS Is Applied</div>
  <p class="body-text" style="max-width:600px;">The review controls apply at the pre-finalization stage. The record type determines which review questions are most relevant - not the organizational function that produces them.</p>
@@ -1447,7 +1428,6 @@ a.gumroad-button.util-link {
  </div>
 </div>
 
-<!-- VISIBLE DEPLOYMENT SEQUENCE -->
 <div style="margin-bottom:44px;">
  <div class="section-head">How Deployment Works</div>
  <p class="body-text" style="max-width:600px;">Designed for lightweight integration within existing review processes. No dedicated software, no organizational restructuring, no formal rollout required to begin. The review controls operate as a structured question set applied at the stage when review already occurs.</p>
@@ -1476,7 +1456,6 @@ a.gumroad-button.util-link {
  <div class="callout" style="margin-top:14px;"><div class="callout-label">Scope note</div><p>JRS is a practical review layer, not a replacement governance system. It is designed for lightweight integration within existing documentation workflows - not for organizational restructuring or procedural overhaul. It does not replace legal, HR, investigative, or compliance judgment.</p></div>
 </div>
 
-<!-- TYPICAL DEPLOYMENT PATHWAY -->
 <div style="margin-bottom:44px;">
  <div class="section-head">Typical Deployment Pathway</div>
  <p class="body-text" style="max-width:600px;">Most organizations do not begin with organizational-wide deployment. They begin with a single reviewer, a single record type, or a simulation session. Deployment typically progresses in stages as reviewers become familiar with the controls.</p>
@@ -1515,7 +1494,6 @@ a.gumroad-button.util-link {
  </div>
 </div>
 
-<!-- HOW TEAMS USUALLY BEGIN -->
 <div style="margin-bottom:44px;">
  <div class="section-head">How Teams Usually Begin</div>
  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;">
@@ -1541,7 +1519,6 @@ a.gumroad-button.util-link {
  <div style="margin-top:10px;padding:10px 14px;background:var(--surface);border:1px solid var(--rule);font-size:12.5px;color:var(--muted-soft);line-height:1.65;"><span style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);">Why this matters - </span>Incremental adoption is realistic adoption. The review structure does not require universal deployment to surface gaps. Most organizations find that applying it to 3-5 records is sufficient to calibrate reviewer judgment.</div>
 </div>
 
-<!-- DEPLOYMENT BOUNDARIES -->
 <div style="margin-bottom:44px;border:1px solid var(--rule);padding:16px 20px;background:var(--surface);">
  <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px;">Deployment Boundaries</div>
  <p style="font-size:13.5px;color:var(--text);font-weight:500;margin-bottom:10px;line-height:1.5;">JRS operational-review materials are designed to supplement existing documentation-review environments.</p>
@@ -1578,8 +1555,6 @@ a.gumroad-button.util-link {
   <div class="reviewer-note" style="margin-top:10px;"><div class="reviewer-note-label">The control point</div>Once a record enters an official system, the opportunity to resolve a gap without consequence has passed. What gets filed is what the next reviewer will have. There is no practical intervention point after that.</div>
 </div>
 
-
-<!-- FOUNDER PROVENANCE -->
 <div style="margin-bottom:44px;border:1px solid var(--rule);background:var(--surface);padding:18px 20px;">
  <div style="display:grid;grid-template-columns:1fr auto;gap:16px;align-items:start;">
   <div>
@@ -1600,7 +1575,6 @@ a.gumroad-button.util-link {
  </div>
 </div>
 
-<!-- MID-PAGE CTA -->
 <div style="margin-bottom:44px;border:1px solid rgba(190,148,71,.25);background:var(--surface);padding:20px 22px;">
  <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px;">Deploy Review Controls</div>
  <p style="font-size:13.5px;color:var(--muted);line-height:1.65;max-width:560px;margin-bottom:14px;">Start with one record type. Apply the reconstruction check. Gaps that passed undetected at drafting become visible in the first record most reviewers check.</p>
@@ -1672,8 +1646,6 @@ a.gumroad-button.util-link {
  <div style="margin-top:14px;"><button class="btn btn-ghost" style="font-size:12.5px;" onclick="showSection('roles')">View Role Environments</button></div>
 </div>
 
-
-
 <div style="margin-bottom:44px;">
  <div class="section-head">What JRS Does Not Do</div>
  <p class="body-text">A well-documented record can still reflect a bad decision. Documentation quality and decision quality are separate questions. JRS addresses whether the basis is visible in the file. It does not address whether the basis was sound, legally sufficient, or consistent with policy.</p>
@@ -1685,7 +1657,6 @@ a.gumroad-button.util-link {
  </div>
  <div class="reviewer-note" style="margin-top:12px;"><div class="reviewer-note-label">Proportional review</div>Review depth may vary according to record sensitivity, escalation status, and workflow complexity. Identifiable support and a visible path from evidence to conclusion remain required before finalization regardless of the depth of review applied.</div>
 </div>
-
 
 <div style="margin-bottom:44px;">
   <div class="section-head">From Practice</div>
@@ -1703,7 +1674,6 @@ a.gumroad-button.util-link {
   </div>
 </div>
 
-
 <div style="margin-bottom:44px;">
   <div class="section-head">Operational FAQ</div>
   <div style="border-top:1px solid var(--rule);">
@@ -1717,7 +1687,6 @@ a.gumroad-button.util-link {
   </div>
 </div>
 
-<!-- DESIGNED FOR EXISTING WORKFLOW ENVIRONMENTS -->
 <div style="margin-bottom:44px;">
  <div class="section-head">Designed for Existing Workflow Environments</div>
  <p class="body-text" style="max-width:600px;">These tools are designed to work inside what you already have. No software replacement. No platform migration. No policy overhaul. No dedicated implementation team required to begin.</p>
@@ -1742,7 +1711,6 @@ a.gumroad-button.util-link {
  <div class="reviewer-note"><div class="reviewer-note-label">Integration note</div>If your organization has an existing secondary review step or records approval workflow, the review controls insert there. If it does not, the lightweight starting point is a self-review prompt applied by the drafter before submission.</div>
 </div>
 
-<!-- PILOT PROGRAM -->
 <div style="margin-bottom:44px;border:1px solid rgba(190,148,71,.25);background:var(--surface);overflow:hidden;">
  <div style="padding:12px 18px;border-bottom:1px solid var(--rule);">
   <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;">Pilot Program</div>
@@ -1799,12 +1767,8 @@ a.gumroad-button.util-link {
 </div>
 
 </div>
-</div><!-- end section-home -->
+</div>
 
-
-<!-- ═══════════════════════════════════════════════════════ -->
-<!-- SECTION: DOCUMENTATION CONDITIONS -->
-<!-- ═══════════════════════════════════════════════════════ -->
 <div id="section-doccond" class="page-section">
 <div class="container">
 
@@ -2117,7 +2081,6 @@ a.gumroad-button.util-link {
   <div class="reviewer-note" style="margin-top:10px;"><div class="reviewer-note-label">Common condition</div>In each of these contexts, the reviewer reads what was filed. They do not have access to what was known, discussed, or understood at the time the record was created. The record is what remains.</div>
 </div>
 
-
 <div style="margin-bottom:44px;">
   <div class="section-head">Cumulative Operational Effect</div>
   <p class="body-text" style="max-width:640px;">Documentation failures rarely occur as isolated defects. A single missing date, an inherited characterization, a summary that replaced the original notes: any one of these, reviewed alone, may appear minor. The operational exposure develops through layered accumulation. When several of the ten conditions are present in the same record, or across a sequence of related records, reviewability degrades in ways that are difficult to identify from any single document and increasingly difficult to address the further the review moves from the original events.</p>
@@ -2309,15 +2272,9 @@ a.gumroad-button.util-link {
 
 </div>
 </div>
-<!-- end section-doccond -->
 
-
-<!-- ═══════════════════════════════════════════════════════ -->
-<!-- SECTION: DEPLOYMENT KIT -->
-<!-- ═══════════════════════════════════════════════════════ -->
 <div id="section-kit" class="page-section">
 
-<!-- HERO -->
 <div class="kit-hero">
  <div class="kit-hero-inner">
  <div>
@@ -2337,7 +2294,7 @@ a.gumroad-button.util-link {
  </div>
  </div>
 
- <!-- PURCHASE CARD -->
+ 
  <div class="kit-purchase-card">
  <div class="kit-purchase-label">JRS Deployment Kit</div>
  <div class="kit-purchase-title">Operational Implementation Package</div>
@@ -2363,7 +2320,6 @@ a.gumroad-button.util-link {
  </div>
 </div>
 
-<!-- WHAT IS IN THE KIT -->
 <div class="kit-section">
  <div class="kit-section-inner">
  <div class="kit-section-label">Contents</div>
@@ -2380,7 +2336,6 @@ a.gumroad-button.util-link {
  </div>
 </div>
 
-<!-- HOW IT WORKS -->
 <div class="kit-section">
  <div class="kit-section-inner">
  <div class="kit-section-label">Access Flow</div>
@@ -2425,7 +2380,6 @@ a.gumroad-button.util-link {
  </div>
 </div>
 
-<!-- WHO THIS IS FOR -->
 <div class="kit-section">
  <div class="kit-section-inner">
  <div class="kit-section-label">Designed For</div>
@@ -2451,7 +2405,6 @@ a.gumroad-button.util-link {
  </div>
 </div>
 
-<!-- WHAT FREE vs KIT -->
 <div class="kit-section">
  <div class="kit-section-inner">
  <div class="kit-section-label">Free vs. Kit</div>
@@ -2491,7 +2444,6 @@ a.gumroad-button.util-link {
  </div>
 </div>
 
-<!-- BOTTOM CTA -->
 <div class="kit-section" style="border-bottom:none;">
  <div class="kit-section-inner">
  <div style="display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;">
@@ -2503,19 +2455,14 @@ a.gumroad-button.util-link {
  </div>
 </div>
 
-</div><!-- end section-kit -->
-
-
-<!-- ═══════════════════════════════════════════════════════ -->
-<!-- REMAINING SECTIONS full content from original site -->
-<!-- ═══════════════════════════════════════════════════════ -->
+</div>
 
 <div id="section-tools" class="page-section">
 <div class="container">
 <div class="page-eyebrow">Free Downloads</div>
 <h1 class="page-title">Free Review Resources</h1>
 <p class="page-subtitle">Three free downloads for reviewers, investigators, and HR. Applied before records enter official systems. No software, no purchase required.</p>
-<!-- FREE PDF DOWNLOADS -->
+
 <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;background:var(--rule);border:1px solid var(--rule);margin-bottom:28px;margin-top:8px;">
  <div style="background:var(--surface);padding:18px 18px 16px;">
   <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ready-text);margin-bottom:6px;">Free PDF</div>
@@ -2767,8 +2714,6 @@ a.gumroad-button.util-link {
 </div>
 </div>
 
-
-<!-- SCENARIOS SECTION -->
 <div id="section-scenarios" class="page-section">
 <div class="container">
 <div class="page-eyebrow">Documentation Review Examples</div>
@@ -2989,7 +2934,6 @@ a.gumroad-button.util-link {
   <div style="border-top:1px solid var(--rule);padding:10px 16px;background:var(--surface2);"><div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Reviewer note</div><div style="font-size:12.5px;color:var(--muted);font-style:italic;">Investigation records without identified source materials cannot be verified by a later reviewer. The conclusion may be accurate. Without sources, it cannot be confirmed.</div></div>
 </div></div>
 
-
 <div style="margin-top:36px;">
 <div class="section-head">Expanded Redlined Library</div>
 <p class="body-text">Additional before-and-after documentation examples covering escalation failures, timeline reconstruction gaps, and unsupported policy references.</p>
@@ -3073,7 +3017,6 @@ a.gumroad-button.util-link {
 <div class="reviewer-note" style="margin-top:10px;"><div class="reviewer-note-label">From practice</div>The reconstruction failure example above is not unusual. It is the common condition when managers depart mid-process. The file inherits language written for an audience that already knew the context. When that audience is gone, the file does not explain itself. That is when it fails.</div>
 </div>
 
-
 <div style="margin-top:36px;">
 <div class="section-head">Investigator Review Scenarios</div>
 <p class="body-text">Documentation review scenarios for workplace investigations, EEO intake, and administrative inquiry records. Each shows the reconstruction question, source identification, and evidentiary anchoring as applied before investigation conclusions are filed.</p>
@@ -3145,7 +3088,6 @@ a.gumroad-button.util-link {
 </div>
 </div>
 
-
 <div style="margin-top:36px;">
 <div class="section-head">Failure Pattern Libraries</div>
 <p class="body-text">Categorized documentation failure patterns organized by type. Each pattern represents a recurring gap identified across review contexts.</p>
@@ -3191,7 +3133,6 @@ a.gumroad-button.util-link {
     <div style="font-size:12.5px;color:var(--muted);">-- Investigation record used as basis for discipline without reconstruction review<div style="font-size:11px;color:var(--muted-soft);margin-top:2px;font-style:italic;">Discipline action taken; investigation basis not independently reviewable.</div></div>
   </div>
 </div>
-
 
 <div style="border:1px solid var(--rule);overflow:hidden;">
   <div style="padding:9px 14px;border-bottom:1px solid var(--rule);background:var(--surface2);font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--stop-text);">E. Accommodation Failures</div>
@@ -3288,8 +3229,6 @@ a.gumroad-button.util-link {
 </div>
 </div>
 
-
-<!-- IMPLEMENTATION GUIDANCE SECTION -->
 <div id="section-guidance" class="page-section">
 <div class="container">
 <div class="page-eyebrow">Implementation Guidance</div>
@@ -3473,7 +3412,6 @@ a.gumroad-button.util-link {
 <div class="reviewer-note" style="margin-top:6px;"><div class="reviewer-note-label">Operational continuity</div>Review depth may vary according to staffing conditions, workflow complexity, and record sensitivity. Selective deployment at higher-risk record categories is a recognized starting point. The structure does not require uniform adoption across all record types before it becomes useful.</div>
 </div>
 
-
 <div style="margin-top:36px;">
 <div class="section-head">Reviewer Role Structures</div>
 <p class="body-text">Review responsibility varies by record type and risk level. The following describes the primary reviewer roles and their scope.</p>
@@ -3540,7 +3478,6 @@ a.gumroad-button.util-link {
   </div>
 </div>
 </div>
-
 
 <div style="margin-top:36px;">
 <div class="section-head">Operational Constraints</div>
@@ -3638,8 +3575,6 @@ a.gumroad-button.util-link {
 </div>
 </div>
 
-
-<!-- ROLES SECTION -->
 <div id="section-roles" class="page-section">
 <div class="container">
 <div class="page-eyebrow">Role-Based Environments</div>
@@ -3662,8 +3597,6 @@ a.gumroad-button.util-link {
 </div>
 </div>
 
-
-<!-- MATURITY SECTION -->
 <div id="section-maturity" class="page-section">
 <div class="container">
 <div class="page-eyebrow">Review Maturity Framework</div>
@@ -3682,8 +3615,6 @@ a.gumroad-button.util-link {
 </div>
 </div>
 
-
-<!-- AI SECTION -->
 <div id="section-ai" class="page-section">
 <div class="container">
 <div class="page-eyebrow">AI-Assisted Records</div>
@@ -3727,8 +3658,6 @@ a.gumroad-button.util-link {
 </div>
 </div>
 
-
-<!-- USE CASES SECTION (abbreviated for space) -->
 <div id="section-usecases" class="page-section">
 <div class="container">
 <div class="page-eyebrow">Use Cases</div>
@@ -3849,8 +3778,6 @@ a.gumroad-button.util-link {
 </div>
 </div>
 
-
-<!-- TRAINING SECTION -->
 <div id="section-training" class="page-section">
 <div class="container">
 <div class="course-eyebrow">Reviewer Guidance</div>
@@ -3868,7 +3795,6 @@ a.gumroad-button.util-link {
 <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
 <div class="progress-label" id="progress-label">0 of 6 modules complete</div>
 
-<!-- MODULE INDEX -->
 <div id="module-nav">
   <div class="module-nav">
     <div class="module-nav-item" onclick="openModule(0)">
@@ -3918,7 +3844,6 @@ a.gumroad-button.util-link {
   </div>
 </div>
 
-<!-- COURSE PANEL (shown when a module is open) -->
 <div id="course-panel" style="display:none">
   <button class="back-link" onclick="closeModule()">&#8592; Course Index</button>
   <div class="course-eyebrow" id="panel-module-tag"></div>
@@ -3945,7 +3870,6 @@ a.gumroad-button.util-link {
 </div>
 </div>
 
-<!-- CERTIFICATE OVERLAY (fixed, outside scroll flow) -->
 <div class="cert-overlay" id="cert-overlay">
   <div class="cert-modal">
     <button class="cert-close" onclick="closeCertificate()">Close &#215;</button>
@@ -3957,14 +3881,11 @@ a.gumroad-button.util-link {
   </div>
 </div>
 
-
-<!-- LIBRARY SECTION -->
 <div id="section-library" class="page-section">
 <div class="container">
 <div class="page-eyebrow">Document Architecture</div>
 <h1 class="page-title">JRS Document Architecture</h1>
 <p class="page-subtitle">The JRS documentation review structure is organized across a defined document hierarchy. Each layer serves a distinct function within the review structure. Materials are listed by tier, with access links where available.</p>
-
 
 <div style="margin-bottom:36px;">
   <div class="section-head">Tier 1: Core Standard</div>
@@ -4278,7 +4199,6 @@ a.gumroad-button.util-link {
   </div>
 </div>
 
-<!-- ABOUT SECTION -->
 <div id="section-about" class="page-section">
 <div class="container">
 <div class="page-eyebrow">About</div>
@@ -4357,9 +4277,8 @@ a.gumroad-button.util-link {
   </div>
  </div>
 </div>
-</div><!-- end section-about -->
+</div>
 
-<!-- FOOTER -->
 <div class="site-footer">
  <div class="site-footer-inner">
  <div>JRS&#8482; Documentation Review Structure &middot; v1.0 &middot; Published May 2026 &middot; <a href="https://jrsstandard.com" style="color:inherit;text-decoration:none;">jrsstandard.com</a></div>
@@ -4370,11 +4289,9 @@ a.gumroad-button.util-link {
  </div>
 </div>
 
-
   </div>
 
 <script>
-
 
 // ── NAVIGATION ────────────────────────────────────
 const SECTION_LABELS={
@@ -4503,7 +4420,6 @@ function renderReviewResults(data){
   </div>`;
  results.style.display='block';
 }
-
 
 // ── SCENARIOS ─────────────────────────────────────
 function showScenarioPane(tabEl,paneId){
@@ -4875,7 +4791,7 @@ function printCertificate(){const d=document.getElementById('cert-canvas').toDat
 
 updateProgress();
 </script>
-<!-- Gumroad inline overlay -->
+
 <script src="https://gumroad.com/js/embed.js"></script>
 </body>
 </html>
