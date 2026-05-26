@@ -910,29 +910,88 @@ a.gumroad-button.util-link {
   <button onclick="showSection('scenarios')" style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:13px 22px;cursor:pointer;">See Documentation Failures →</button>
 </div>
 
+<!-- WHO USES THIS -->
+<div style="margin-bottom:20px;">
+ <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px;">Designed For</div>
+ <div style="display:flex;flex-wrap:wrap;gap:6px;">
+  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text);border:1px solid #333;padding:5px 11px;background:var(--surface);">HR Review Teams</span>
+  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text);border:1px solid #333;padding:5px 11px;background:var(--surface);">Employee Relations</span>
+  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text);border:1px solid #333;padding:5px 11px;background:var(--surface);">Workplace Investigators</span>
+  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text);border:1px solid #333;padding:5px 11px;background:var(--surface);">Compliance Operations</span>
+  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text);border:1px solid #333;padding:5px 11px;background:var(--surface);">Administrative Review</span>
+  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text);border:1px solid #333;padding:5px 11px;background:var(--surface);">Governance / Risk Operations</span>
+  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text);border:1px solid #333;padding:5px 11px;background:var(--surface);">Documentation-Review Environments</span>
+ </div>
+</div>
+
 <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:28px;">
  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 10px;">No software required</span>
  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 10px;">No policy change required</span>
  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 10px;">No certification required</span>
- <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 10px;">Lightweight integration</span>
+ <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 10px;">No platform migration</span>
  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 10px;">Start with one record type</span>
 </div>
 
-<!-- START HERE + ROLE ROUTING -->
-<div style="margin-bottom:36px;border:1px solid var(--rule);background:var(--surface);">
- <div style="padding:11px 16px;border-bottom:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+<!-- START HERE - 5 BUYER PATHWAYS -->
+<div style="margin-bottom:28px;border:1px solid var(--rule);background:var(--surface);overflow:hidden;">
+ <div style="padding:10px 16px;border-bottom:1px solid var(--rule);">
   <span style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);">Start Here</span>
-  <span style="font-size:11.5px;color:var(--muted-soft);">Select your review context for the most relevant starting point.</span>
  </div>
- <div style="padding:14px 16px 16px;">
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:6px;">
-   <button onclick="showSection('tools')" style="text-align:left;background:var(--surface2);border:1px solid var(--rule);padding:10px 13px;cursor:pointer;transition:border-color .1s;" onmouseover="this.style.borderColor='rgba(190,148,71,.4)'" onmouseout="this.style.borderColor='var(--rule)'"><div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:5px;">HR Review</div><div style="font-size:12px;color:var(--muted);line-height:1.5;">Performance, discipline, termination, and accommodation records before system entry.</div></button>
-   <button onclick="showSection('tools')" style="text-align:left;background:var(--surface2);border:1px solid var(--rule);padding:10px 13px;cursor:pointer;transition:border-color .1s;" onmouseover="this.style.borderColor='rgba(190,148,71,.4)'" onmouseout="this.style.borderColor='var(--rule)'"><div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:5px;">Investigations</div><div style="font-size:12px;color:var(--muted);line-height:1.5;">Investigation summaries, witness accounts, and findings documentation before filing.</div></button>
-   <button onclick="showSection('tools')" style="text-align:left;background:var(--surface2);border:1px solid var(--rule);padding:10px 13px;cursor:pointer;transition:border-color .1s;" onmouseover="this.style.borderColor='rgba(190,148,71,.4)'" onmouseout="this.style.borderColor='var(--rule)'"><div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:5px;">Compliance</div><div style="font-size:12px;color:var(--muted);line-height:1.5;">Audit documentation, compliance narratives, and escalation records before review.</div></button>
-   <button onclick="showSection('tools')" style="text-align:left;background:var(--surface2);border:1px solid var(--rule);padding:10px 13px;cursor:pointer;transition:border-color .1s;" onmouseover="this.style.borderColor='rgba(190,148,71,.4)'" onmouseout="this.style.borderColor='var(--rule)'"><div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:5px;">AI-Assisted Drafting</div><div style="font-size:12px;color:var(--muted);line-height:1.5;">Source verification and human attestation controls for AI-generated records.</div></button>
-   <button onclick="showSection('tools')" style="text-align:left;background:var(--surface2);border:1px solid var(--rule);padding:10px 13px;cursor:pointer;transition:border-color .1s;" onmouseover="this.style.borderColor='rgba(190,148,71,.4)'" onmouseout="this.style.borderColor='var(--rule)'"><div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:5px;">Administrative Review</div><div style="font-size:12px;color:var(--muted);line-height:1.5;">Intake reviews, administrative findings, and procedural documentation.</div></button>
+ <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;">
+  <div style="padding:13px 15px;border-right:1px solid var(--rule);">
+   <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">New to JRS?</div>
+   <button onclick="showSection('tools')" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--ready-text);background:none;border:none;cursor:pointer;padding:0;text-align:left;line-height:1.6;">Download Free Review Resources →</button>
+  </div>
+  <div style="padding:13px 15px;border-right:1px solid var(--rule);">
+   <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">Individual Reviewer?</div>
+   <a href="https://wikesphere.gumroad.com/l/opukbv" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;line-height:1.6;">Explore Reviewer Toolkit →</a>
+  </div>
+  <div style="padding:13px 15px;border-right:1px solid var(--rule);">
+   <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">Team Deployment?</div>
+   <button onclick="showSection('kit')" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:none;border:none;cursor:pointer;padding:0;text-align:left;line-height:1.6;">View Deployment Kit →</button>
+  </div>
+  <div style="padding:13px 15px;border-right:1px solid var(--rule);">
+   <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">Interested in Simulations?</div>
+   <a href="training.html" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;line-height:1.6;">Participate in Friday Review Challenges →</a>
+  </div>
+  <div style="padding:13px 15px;">
+   <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">Enterprise / Pilot?</div>
+   <a href="enterprise.html" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;line-height:1.6;">Explore Pilot Program →</a>
   </div>
  </div>
+</div>
+
+<!-- HOW JRS FITS INTO EXISTING WORKFLOWS -->
+<div style="margin-bottom:36px;">
+ <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:12px;">How JRS Fits Into Existing Workflows</div>
+ <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--rule);overflow:hidden;">
+  <div style="padding:11px 12px;border-right:1px solid var(--rule);text-align:center;">
+   <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Step 1</div>
+   <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px;">Drafting</div>
+   <div style="font-size:11px;color:var(--muted-soft);line-height:1.45;">Manager, HR, investigator, or AI tool prepares the record</div>
+  </div>
+  <div style="padding:11px 12px;border-right:1px solid var(--rule);text-align:center;">
+   <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Step 2</div>
+   <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px;">Reviewer Evaluation</div>
+   <div style="font-size:11px;color:var(--muted-soft);line-height:1.45;">Five questions applied before record advances</div>
+  </div>
+  <div style="padding:11px 12px;border-right:1px solid var(--rule);text-align:center;background:rgba(190,148,71,.05);">
+   <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:5px;">JRS Applied Here</div>
+   <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px;">Chronology Review</div>
+   <div style="font-size:11px;color:var(--muted-soft);line-height:1.45;">Timeline gaps, missing dates, unsupported pattern claims flagged</div>
+  </div>
+  <div style="padding:11px 12px;border-right:1px solid var(--rule);text-align:center;background:rgba(190,148,71,.05);">
+   <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:5px;">JRS Applied Here</div>
+   <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px;">Escalation Assessment</div>
+   <div style="font-size:11px;color:var(--muted-soft);line-height:1.45;">Prior counseling trail confirmed. High-risk records routed to secondary review</div>
+  </div>
+  <div style="padding:11px 12px;text-align:center;">
+   <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Step 5</div>
+   <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px;">Final Documentation Review</div>
+   <div style="font-size:11px;color:var(--muted-soft);line-height:1.45;">Record enters official system. Basis is visible without the author present</div>
+  </div>
+ </div>
+ <div style="padding:8px 12px;background:var(--surface);border:1px solid var(--rule);border-top:none;font-size:11.5px;color:var(--muted-soft);">Inserts at the review stage that already exists in your workflow. No new step required. No dedicated software.</div>
 </div>
 
 <div style="margin-bottom:44px;">
