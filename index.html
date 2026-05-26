@@ -1215,7 +1215,7 @@ a.gumroad-button.util-link {
     <div style="display:grid;grid-template-columns:1fr 1fr;">
       <div style="padding:13px 16px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);">
         <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:4px;">Public</div>
-        <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">JRS Standard</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;">Documentation Review Framework</div>
         <div style="font-size:12px;color:var(--muted);">Four conditions. Reviewer lens. Failure-mode catalog.</div>
       </div>
       <div style="padding:13px 16px;border-bottom:1px solid var(--rule);">
@@ -1544,7 +1544,7 @@ a.gumroad-button.util-link {
       <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);">Status</div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);padding:7px 12px;">
-      <div style="font-size:12px;color:var(--text);">JRS Standard</div>
+      <div style="font-size:12px;color:var(--text);">Documentation Review Framework</div>
       <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">--</div>
       <div style="font-size:11.5px;color:var(--muted);">v1.0</div>
       <div style="font-size:11.5px;color:var(--muted);">May 2026</div>
@@ -1704,19 +1704,45 @@ a.gumroad-button.util-link {
 
 <div class="page-eyebrow">Operational Reference</div>
 <h1 class="page-title">Documentation Conditions That Affect Later Review</h1>
-<p class="page-subtitle">Records are frequently reviewed long after the people who created them are unavailable. The following conditions describe how organizational documentation commonly becomes harder to interpret over time. Not through misconduct, but through the ordinary administrative realities of how records are created, maintained, and eventually examined.</p>
+<p class="page-subtitle">Ten documentation conditions that make records difficult to reconstruct during later review — and what they look like in practice.</p>
 
 <div class="callout" style="margin-bottom:32px;">
   <div class="callout-label">Framing Note</div>
-  <p>These are administrative documentation conditions, not misconduct indicators. They develop through ordinary workflow pressures: personnel turnover, rushed review cycles, distributed communications, fragmented case management systems, inherited drafts, evolving narratives across departments, delayed documentation entry, reliance on summaries instead of source materials, repeated copying of prior language, and partial reconstruction after escalation. Well-intentioned personnel working under normal operational conditions routinely produce records that become difficult to interpret, defend, or reconstruct during later review. Coherent writing is not equivalent to evidentiary clarity. A record can read well and still be difficult to evaluate independently.</p>
+  <p>These are administrative documentation conditions — not misconduct indicators. They develop through ordinary workflow pressures:</p>
+  <ul style="margin-top:8px;padding-left:18px;font-size:14px;color:var(--muted);line-height:1.9;">
+    <li>Personnel turnover removing people who understood a file</li>
+    <li>Rushed review cycles leaving conclusions without visible anchors</li>
+    <li>Language carried forward from prior records without re-verification</li>
+    <li>Summaries replacing source materials and then treated as the primary record</li>
+    <li>Delayed documentation entry separating observation from written account</li>
+  </ul>
+  <p style="margin-top:10px;">Well-intentioned personnel routinely produce records that become difficult to reconstruct under later review. Coherent writing is not equivalent to evidentiary clarity.</p>
 </div>
 
 <div style="margin-bottom:44px;">
   <div class="section-head">Why Later Review Is Often Difficult</div>
-  <p class="body-text" style="max-width:640px;">Documentation quality is partially determined by reconstructability: whether a later reviewer, working from the file alone, can follow the same reasoning the original author used. That capacity erodes over time through ordinary administrative processes, not through exceptional circumstances.</p>
-  <p class="body-text" style="max-width:640px;">A manager documents a counseling session from memory three days after it occurred, using language carried over from a prior performance note. An HR coordinator assembles a termination record from emails across two systems and a summary written by someone who has since left the organization. An investigator drafts a conclusion from interview summaries rather than the interview notes, which were not preserved in the case file. These are routine documentation conditions. They are not the product of bad intent. They are the product of how organizational work actually happens under ordinary operational pressures.</p>
-  <p class="body-text" style="max-width:640px;">The concern is that ordinary workflow pressures gradually separate conclusions from identifiable supporting context over time. The record that enters the system reflects what the author was able to produce under those conditions. The record that is reviewed later is evaluated without access to those conditions or the people who worked within them.</p>
-  <div class="reviewer-note" style="margin-top:4px;"><div class="reviewer-note-label">Operational basis</div>These conditions are drawn from documentation review practice across HR, compliance, investigation, and administrative review contexts. They are not theoretical failure modes. They are the ordinary environment that most records eventually enter.</div>
+  <p class="body-text" style="max-width:640px;">The question a later reviewer asks is simple: can I follow the same reasoning the author used, from the file alone? That capacity erodes through ordinary administrative pressures — not through exceptional circumstances.</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:14px;margin-bottom:14px;">
+    <div style="padding:13px 16px;background:var(--surface);border-left:3px solid var(--rule);">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">Common at drafting time</div>
+      <ul style="list-style:none;padding:0;font-size:12.5px;color:var(--muted);line-height:1.9;">
+        <li>Documented from memory days later</li>
+        <li>Language copied from prior records</li>
+        <li>Source notes not preserved in file</li>
+        <li>Assembled from disconnected systems</li>
+      </ul>
+    </div>
+    <div style="padding:13px 16px;background:var(--surface);border-left:3px solid var(--stop-text);">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--stop-text);margin-bottom:6px;">Visible during later review</div>
+      <ul style="list-style:none;padding:0;font-size:12.5px;color:var(--muted);line-height:1.9;">
+        <li>Original author unavailable</li>
+        <li>Conclusions without traceable support</li>
+        <li>Timeline gaps in conduct sequence</li>
+        <li>Referenced records not in the file</li>
+      </ul>
+    </div>
+  </div>
+  <div class="reviewer-note"><div class="reviewer-note-label">Operational basis</div>These conditions are drawn from documentation review practice across HR, compliance, investigation, and administrative review contexts — not theoretical failure modes.</div>
 </div>
 
 <div style="margin-bottom:44px;">
@@ -2191,9 +2217,17 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
-  <div class="section-head">About This Reference</div>
-  <p class="body-text" style="max-width:640px;">This reference is published as part of the JRS documentation review framework. It is intended for use within HR operational guidance, internal controls documentation, compliance review materials, audit support resources, investigation documentation guidance, and administrative review procedures.</p>
-  <p class="body-text" style="max-width:640px;">JRS is a documentation review structure: a lightweight administrative control applied at the pre-finalization stage within existing workflows. It does not replace existing systems, policies, or professional judgment. It provides a structured method for improving record survivability and later review clarity before records enter official systems.</p>
+  <div class="section-head">What This Solves</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:16px;">
+    <div style="padding:14px 16px;background:var(--surface);border-left:3px solid var(--stop-text);">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--stop-text);margin-bottom:6px;">The failure it prevents</div>
+      <p style="font-size:13px;color:var(--muted);line-height:1.65;">Records that reach later review without identifiable support — where the conclusion is present but the evidentiary basis is not visible in the file.</p>
+    </div>
+    <div style="padding:14px 16px;background:var(--surface);border-left:3px solid var(--ready-text);">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ready-text);margin-bottom:6px;">The control it provides</div>
+      <p style="font-size:13px;color:var(--muted);line-height:1.65;">A pre-finalization review step applied before records enter official systems — while the source material is still available and gaps can still be corrected.</p>
+    </div>
+  </div>
   <div class="btn-row">
     <a href="JRS-Standard.pdf" class="btn btn-primary" download>Download Free Framework PDF</a>
     <button class="btn btn-ghost" onclick="showSection('tools')">Review Toolkits</button>
@@ -2216,9 +2250,18 @@ a.gumroad-button.util-link {
  <div class="kit-hero-inner">
  <div>
  <div class="kit-badge">Deployment Kit</div>
- <h1 class="kit-title">Operational onboarding.<br><span>Reviewer training.</span><br>Implementation resources.</h1>
- <p class="kit-subtitle">Operational onboarding, reviewer training, and implementation resources for applying JRS within existing documentation workflows. No dedicated platform required.</p>
- <div class="kit-tagline">Operational. Procedural. Implementation-focused.</div>
+ <h1 class="kit-title">Reviewer onboarding.<br><span>Implementation forms.</span><br>Ready to use immediately.</h1>
+ <p class="kit-subtitle">Everything needed to deploy pre-finalization review within existing HR, compliance, investigative, and administrative workflows. No dedicated platform. No prior framework knowledge required.</p>
+ <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0;">
+  <div style="padding:11px 14px;border:1px solid rgba(190,148,71,.2);background:rgba(190,148,71,.04);">
+   <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:4px;">What problem it solves</div>
+   <div style="font-size:12.5px;color:var(--muted);line-height:1.55;">Records reaching later review without the evidentiary support needed to reconstruct the original basis.</div>
+  </div>
+  <div style="padding:11px 14px;border:1px solid rgba(93,191,130,.2);background:rgba(30,92,53,.04);">
+   <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.16em;text-transform:uppercase;color:var(--ready-text);margin-bottom:4px;">How fast you can use it</div>
+   <div style="font-size:12.5px;color:var(--muted);line-height:1.55;">Start with the onboarding sequence. Apply forms to records in existing workflow. No system change required.</div>
+  </div>
+ </div>
  <div class="kit-features">
  <div class="kit-feature"><span class="kit-feature-icon">--</span><span>Reviewer onboarding materials and orientation guides</span></div>
  <div class="kit-feature"><span class="kit-feature-icon">--</span><span>Reviewer training modules for individual and organizational use</span></div>
@@ -3153,12 +3196,12 @@ a.gumroad-button.util-link {
 <div class="container">
 <div class="page-eyebrow">Implementation Guidance</div>
 <h1 class="page-title">Workflow Implementation</h1>
-<p class="page-subtitle">Operational guidance for integrating JRS review practices within existing HR, compliance, investigation, and administrative documentation workflows.</p>
+<p class="page-subtitle">How to apply pre-finalization review within HR, compliance, investigation, and administrative workflows — with no system change required.</p>
 
 <div class="memo">
  <div class="memo-header"><div class="memo-to">To: HR Review Teams</div><div class="memo-subject">Implementation Guidance / HR Documentation Review</div></div>
  <div class="memo-body">
- <div class="memo-section"><div class="memo-section-label">Operational Problem</div><div class="memo-text">HR records are frequently created under time pressure, after events have occurred, by personnel who may no longer be present when the record is reviewed. Performance evaluations, disciplinary documentation, termination records, and accommodation files are the most likely to be reviewed during disputes, audits, or proceedings. They are also the most likely to fail reconstruction review when examined by someone without original context.<br><br>The documentation conditions that produce these gaps are not typically the result of intentional falsification. They develop through ordinary workflow pressures: rushed completion after a demanding workload period, language carried forward from a prior record without verifying that it still applies, a counseling session documented from memory two weeks after it occurred, or a termination record assembled from communications spread across email and a case management system that does not integrate. Well-intentioned personnel working under normal conditions produce these records every day. Pre-finalization review exists to catch the gaps before they become fixed in the system.</div></div>
+ <div class="memo-section"><div class="memo-section-label">Operational Problem</div><div class="memo-text">HR records — performance evaluations, disciplinary documentation, termination files, accommodation records — are the most likely to be reviewed during disputes, audits, or proceedings. They are also the most likely to fail reconstruction review when examined by someone without original context.<br><br>Gaps develop through ordinary workflow pressures, not intentional falsification: language carried forward without re-verification, conclusions documented from memory weeks later, records assembled from disconnected systems. Pre-finalization review catches these gaps before they enter the system.</div></div>
  <div class="memo-section"><div class="memo-section-label">Common Failure Patterns</div><div class="memo-list">
  <div class="memo-item"><span class="memo-dash">--</span>Evaluative language without behavioral anchors in performance evaluations</div>
  <div class="memo-item"><span class="memo-dash">--</span>Disciplinary conclusions without referenced prior warnings or counseling records</div>
@@ -3835,7 +3878,7 @@ a.gumroad-button.util-link {
       <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);">Access</div>
     </div>
     <div style="display:grid;grid-template-columns:140px 1fr 80px;border-bottom:1px solid var(--rule);padding:12px 14px;align-items:center;">
-      <div><div style="font-size:13px;font-weight:600;color:var(--text);">JRS Standard</div><div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted-soft);margin-top:2px;">v1.0 &middot; May 2026</div></div>
+      <div><div style="font-size:13px;font-weight:600;color:var(--text);">Documentation Review Framework</div><div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted-soft);margin-top:2px;">v1.0 &middot; May 2026</div></div>
       <div style="font-size:13px;color:var(--muted);line-height:1.6;padding-right:16px;">Four review conditions, reviewer lens, submission readiness criteria, and failure-mode catalog. Primary governing document for the review structure.</div>
       <div><a href="JRS-Standard.pdf" class="lib-btn primary">View PDF</a></div>
     </div>
@@ -4077,7 +4120,7 @@ a.gumroad-button.util-link {
       <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);">Status</div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);padding:7px 12px;">
-      <div style="font-size:12px;color:var(--text);">JRS Standard</div>
+      <div style="font-size:12px;color:var(--text);">Documentation Review Framework</div>
       <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">--</div>
       <div style="font-size:11.5px;color:var(--muted);">v1.0</div>
       <div style="font-size:11.5px;color:var(--muted);">May 2026</div>
