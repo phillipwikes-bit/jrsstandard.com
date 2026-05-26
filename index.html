@@ -647,6 +647,10 @@ a.gumroad-button.util-link {
 .destab-timeline{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .destab-timeline > div{min-width:640px}
 
+/* ── DEPLOYMENT PATHWAY 5-col: horizontal scroll on mobile ── */
+.deploy-pathway{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.deploy-pathway > div{min-width:540px}
+
 /* ── MOBILE NAV BREAKPOINT ── */
 @media(max-width:640px){
  /* Show mobile bar, collapse the scrollable strip */
@@ -1030,6 +1034,24 @@ a.gumroad-button.util-link {
 
 <div style="margin-bottom:44px;">
  <div class="section-head">Five Pre-Finalization Review Questions</div>
+ <!-- OPERATIONAL REVIEW CARDS -->
+ <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:16px;">
+  <div style="background:var(--surface);border:1px solid var(--rule);border-top:2px solid var(--stop);padding:13px 15px;">
+   <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--stop-text);margin-bottom:6px;">Unsupported Conclusions</div>
+   <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px;line-height:1.35;">Can another reviewer identify the basis for this characterization?</div>
+   <div style="font-size:11.5px;color:var(--muted);line-height:1.5;">Not the author's impression - a date, a log entry, a referenced record confirmed on file.</div>
+  </div>
+  <div style="background:var(--surface);border:1px solid var(--rule);border-top:2px solid var(--review-c);padding:13px 15px;">
+   <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--review-text);margin-bottom:6px;">Chronology Instability</div>
+   <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px;line-height:1.35;">Would later contextual information materially alter how this record is read?</div>
+   <div style="font-size:11.5px;color:var(--muted);line-height:1.5;">Timeline gaps allow later evidence to reframe earlier conduct. Dates close the gap.</div>
+  </div>
+  <div style="background:var(--surface);border:1px solid var(--rule);border-top:2px solid var(--accent-dim);padding:13px 15px;">
+   <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:6px;">Escalation Drift</div>
+   <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px;line-height:1.35;">Would comparable records receive consistent treatment?</div>
+   <div style="font-size:11.5px;color:var(--muted);line-height:1.5;">Inconsistency across similar records becomes visible at comparator review. Documented reasoning closes it.</div>
+  </div>
+ </div>
  <p class="body-text" style="max-width:640px;">Most records that fail during later review looked fine at drafting. They looked fine because the author already knew what they meant. These questions are applied before that person is no longer available to explain it.</p>
  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0;">
   <div style="padding:12px 14px;background:var(--surface);border-left:2px solid var(--accent-dim);"><div style="font-size:13px;color:var(--text);font-weight:600;margin-bottom:3px;">Can this record stand on its own?</div><div style="font-size:12px;color:var(--muted);line-height:1.6;">Could a reviewer with no prior knowledge follow the basis from the file alone?</div></div>
@@ -1415,6 +1437,84 @@ a.gumroad-button.util-link {
  <div class="callout" style="margin-top:14px;"><div class="callout-label">Scope note</div><p>JRS is a practical review layer, not a replacement governance system. It is designed for lightweight integration within existing documentation workflows - not for organizational restructuring or procedural overhaul. It does not replace legal, HR, investigative, or compliance judgment.</p></div>
 </div>
 
+<!-- TYPICAL DEPLOYMENT PATHWAY -->
+<div style="margin-bottom:44px;">
+ <div class="section-head">Typical Deployment Pathway</div>
+ <p class="body-text" style="max-width:600px;">Most organizations do not begin with organizational-wide deployment. They begin with a single reviewer, a single record type, or a simulation session. Deployment typically progresses in stages as reviewers become familiar with the controls.</p>
+ <div class="deploy-pathway"><div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--rule);overflow:hidden;margin-top:16px;">
+  <div style="padding:14px 12px;border-right:1px solid var(--rule);text-align:center;">
+   <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:6px;">Phase 1</div>
+   <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px;">Reviewer Simulations</div>
+   <div style="font-size:11.5px;color:var(--muted);line-height:1.5;">Individual reviewers work through scenario exercises. No deployment required.</div>
+  </div>
+  <div style="padding:14px 12px;border-right:1px solid var(--rule);text-align:center;">
+   <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:6px;">Phase 2</div>
+   <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px;">Chronology Exercises</div>
+   <div style="font-size:11.5px;color:var(--muted);line-height:1.5;">Apply review questions to existing records. Gaps surface immediately. No workflow change needed.</div>
+  </div>
+  <div style="padding:14px 12px;border-right:1px solid var(--rule);text-align:center;background:rgba(190,148,71,.04);">
+   <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:6px;">Phase 3</div>
+   <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px;">Team Onboarding</div>
+   <div style="font-size:11.5px;color:var(--muted);line-height:1.5;">Onboarding discussions, reviewer calibration. Deployment Kit used here.</div>
+  </div>
+  <div style="padding:14px 12px;border-right:1px solid var(--rule);text-align:center;background:rgba(190,148,71,.04);">
+   <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:6px;">Phase 4</div>
+   <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px;">Escalation Calibration</div>
+   <div style="font-size:11.5px;color:var(--muted);line-height:1.5;">Secondary review routing established. High-risk record types identified and handled consistently.</div>
+  </div>
+  <div style="padding:14px 12px;text-align:center;">
+   <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:6px;">Phase 5</div>
+   <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px;">Pilot Evaluation</div>
+   <div style="font-size:11.5px;color:var(--muted);line-height:1.5;">Broader organizational review. Implementation scope assessed based on where gaps surfaced.</div>
+  </div>
+ </div></div>
+ <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:8px;">
+  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 11px;">No software migration required</span>
+  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 11px;">No policy overhaul required</span>
+  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 11px;">Adaptable to existing review workflows</span>
+  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 11px;">Start with one record type</span>
+ </div>
+</div>
+
+<!-- HOW TEAMS USUALLY BEGIN -->
+<div style="margin-bottom:44px;">
+ <div class="section-head">How Teams Usually Begin</div>
+ <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;">
+  <div style="border:1px solid rgba(93,191,130,.25);background:rgba(93,191,130,.03);padding:16px 18px;">
+   <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--ready-text);margin-bottom:8px;">Most Organizations Start Here</div>
+   <div style="display:flex;flex-direction:column;gap:6px;">
+    <div style="display:flex;gap:8px;font-size:13px;color:var(--text);"><span style="color:var(--ready-text);font-family:'JetBrains Mono',monospace;font-size:10px;flex-shrink:0;padding-top:2px;">--</span>Reviewer simulation exercises (1 session)</div>
+    <div style="display:flex;gap:8px;font-size:13px;color:var(--text);"><span style="color:var(--ready-text);font-family:'JetBrains Mono',monospace;font-size:10px;flex-shrink:0;padding-top:2px;">--</span>Chronology review on 2-3 existing records</div>
+    <div style="display:flex;gap:8px;font-size:13px;color:var(--text);"><span style="color:var(--ready-text);font-family:'JetBrains Mono',monospace;font-size:10px;flex-shrink:0;padding-top:2px;">--</span>One record type (usually terminations)</div>
+    <div style="display:flex;gap:8px;font-size:13px;color:var(--text);"><span style="color:var(--ready-text);font-family:'JetBrains Mono',monospace;font-size:10px;flex-shrink:0;padding-top:2px;">--</span>Free resources only - no purchase required</div>
+   </div>
+  </div>
+  <div style="border:1px solid var(--rule);background:var(--surface);padding:16px 18px;">
+   <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:8px;">Not Where Most Organizations Begin</div>
+   <div style="display:flex;flex-direction:column;gap:6px;">
+    <div style="display:flex;gap:8px;font-size:13px;color:var(--muted);"><span style="color:var(--muted-soft);font-family:'JetBrains Mono',monospace;font-size:10px;flex-shrink:0;padding-top:2px;">--</span>Enterprise-wide deployment</div>
+    <div style="display:flex;gap:8px;font-size:13px;color:var(--muted);"><span style="color:var(--muted-soft);font-family:'JetBrains Mono',monospace;font-size:10px;flex-shrink:0;padding-top:2px;">--</span>Policy overhaul or workflow restructuring</div>
+    <div style="display:flex;gap:8px;font-size:13px;color:var(--muted);"><span style="color:var(--muted-soft);font-family:'JetBrains Mono',monospace;font-size:10px;flex-shrink:0;padding-top:2px;">--</span>Simultaneous multi-department rollout</div>
+    <div style="display:flex;gap:8px;font-size:13px;color:var(--muted);"><span style="color:var(--muted-soft);font-family:'JetBrains Mono',monospace;font-size:10px;flex-shrink:0;padding-top:2px;">--</span>Formal certification or credentialing</div>
+   </div>
+  </div>
+ </div>
+ <div style="margin-top:10px;padding:10px 14px;background:var(--surface);border:1px solid var(--rule);font-size:12.5px;color:var(--muted-soft);line-height:1.65;"><span style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);">Why this matters - </span>Incremental adoption is realistic adoption. The review structure does not require universal deployment to surface gaps. Most organizations find that applying it to 3-5 records is sufficient to calibrate reviewer judgment.</div>
+</div>
+
+<!-- DEPLOYMENT BOUNDARIES -->
+<div style="margin-bottom:44px;border:1px solid var(--rule);padding:16px 20px;background:var(--surface);">
+ <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px;">Deployment Boundaries</div>
+ <p style="font-size:13.5px;color:var(--text);font-weight:500;margin-bottom:10px;line-height:1.5;">JRS operational-review materials are designed to supplement existing documentation-review environments.</p>
+ <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+  <div style="font-size:12.5px;color:var(--muted);line-height:1.6;display:flex;gap:8px;"><span style="color:var(--stop-text);flex-shrink:0;">&#8212;</span>Does not replace legal review or legal counsel</div>
+  <div style="font-size:12.5px;color:var(--muted);line-height:1.6;display:flex;gap:8px;"><span style="color:var(--stop-text);flex-shrink:0;">&#8212;</span>Does not replace HR policy or compliance infrastructure</div>
+  <div style="font-size:12.5px;color:var(--muted);line-height:1.6;display:flex;gap:8px;"><span style="color:var(--stop-text);flex-shrink:0;">&#8212;</span>Does not establish legal sufficiency or eliminate organizational risk</div>
+  <div style="font-size:12.5px;color:var(--muted);line-height:1.6;display:flex;gap:8px;"><span style="color:var(--stop-text);flex-shrink:0;">&#8212;</span>Does not constitute a certification, accreditation, or governance credential</div>
+  <div style="font-size:12.5px;color:var(--muted);line-height:1.6;display:flex;gap:8px;"><span style="color:var(--stop-text);flex-shrink:0;">&#8212;</span>Does not replace investigative, compliance, or audit judgment</div>
+  <div style="font-size:12.5px;color:var(--muted);line-height:1.6;display:flex;gap:8px;"><span style="color:var(--stop-text);flex-shrink:0;">&#8212;</span>Does not require organizational restructuring to implement</div>
+ </div>
+</div>
 
 <div style="margin-bottom:44px;">
   <div class="section-head">Where JRS Fits</div>
@@ -1489,19 +1589,29 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
- <div class="section-head">Incremental Adoption</div>
- <div style="border:1px solid var(--rule);padding:18px 20px;margin-bottom:14px;background:var(--surface);">
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-   <div style="display:flex;gap:10px;align-items:flex-start;"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent-dim);margin-top:2px;flex-shrink:0;">--</span><span style="font-size:13px;color:var(--muted);">No dedicated software required</span></div>
-   <div style="display:flex;gap:10px;align-items:flex-start;"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent-dim);margin-top:2px;flex-shrink:0;">--</span><span style="font-size:13px;color:var(--muted);">Compatible with existing workflows, including legacy intake systems that have been in place for years</span></div>
-   <div style="display:flex;gap:10px;align-items:flex-start;"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent-dim);margin-top:2px;flex-shrink:0;">--</span><span style="font-size:13px;color:var(--muted);">Start with one record type - most teams begin with terminations or formal discipline, where the cost of a documentation gap is already visible</span></div>
-   <div style="display:flex;gap:10px;align-items:flex-start;"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent-dim);margin-top:2px;flex-shrink:0;">--</span><span style="font-size:13px;color:var(--muted);">No formal rollout or policy change required to begin</span></div>
+ <div class="section-head">Multi-Level Adoption Structure</div>
+ <p class="body-text" style="max-width:600px;">JRS is designed to be entered at any level and expanded incrementally. No level requires completion of the previous one to begin.</p>
+ <div style="border:1px solid var(--rule);overflow:hidden;margin-top:14px;">
+  <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--rule);">
+   <div style="background:var(--surface);padding:12px 16px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;color:var(--ready-text);min-width:140px;border-right:1px solid var(--rule);display:flex;align-items:center;flex-shrink:0;text-transform:uppercase;">Individual Reviewer</div>
+   <div style="padding:12px 16px;"><span style="font-size:13px;font-weight:600;color:var(--text);">Free resources + simulations.</span> <span style="font-size:13px;color:var(--muted);">Apply the five review questions to records in your current queue. No coordination or purchase required to begin.</span></div>
+  </div>
+  <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--rule);">
+   <div style="background:var(--surface);padding:12px 16px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;color:var(--accent-dim);min-width:140px;border-right:1px solid var(--rule);display:flex;align-items:center;flex-shrink:0;text-transform:uppercase;">Small Team</div>
+   <div style="padding:12px 16px;"><span style="font-size:13px;font-weight:600;color:var(--text);">Reviewer Toolkit + shared exercises.</span> <span style="font-size:13px;color:var(--muted);">2-5 reviewers applying controls to the same record type. Calibration happens through shared review, not training sessions.</span></div>
+  </div>
+  <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--rule);">
+   <div style="background:var(--surface);padding:12px 16px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;color:var(--accent);min-width:140px;border-right:1px solid var(--rule);display:flex;align-items:center;flex-shrink:0;text-transform:uppercase;">Department Pilot</div>
+   <div style="padding:12px 16px;"><span style="font-size:13px;font-weight:600;color:var(--text);">Deployment Kit + onboarding.</span> <span style="font-size:13px;color:var(--muted);">Department-wide reviewer onboarding, secondary review routing, and escalation calibration. Deployment Kit used here.</span></div>
+  </div>
+  <div style="display:flex;align-items:stretch;">
+   <div style="background:var(--surface);padding:12px 16px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;color:var(--muted-soft);min-width:140px;border-right:1px solid var(--rule);display:flex;align-items:center;flex-shrink:0;text-transform:uppercase;">Enterprise Partnership</div>
+   <div style="padding:12px 16px;"><span style="font-size:13px;font-weight:600;color:var(--text);">Pilot program + multi-department rollout.</span> <span style="font-size:13px;color:var(--muted);">Phased record-type rollout across HR, compliance, and investigations. Scope defined collaboratively. Implementation boundaries explicitly maintained.</span></div>
   </div>
  </div>
- <p class="body-text">Some organizations apply it selectively at first - only to elevated-risk records - and expand as reviewers become familiar with the process. That is a reasonable starting point. The review structure does not require universal adoption to be useful.</p>
- <div class="card-grid">
- <div class="card"><div class="card-label">Self-Review</div><div class="card-title">3–8 minutes</div><div class="card-text">Manager applies the self-review prompt before submitting. A clean record passes quickly. A record with missing dates or unanchored language requires rework. That is the point.</div></div>
- <div class="card"><div class="card-label">Secondary Review</div><div class="card-title">15–30 minutes</div><div class="card-text">HR compliance reviews an elevated-risk record before system entry. Includes confirming supporting records are on file and routing back if gaps are identified.</div></div>
+ <div class="card-grid" style="margin-top:14px;">
+ <div class="card"><div class="card-label">Self-Review</div><div class="card-title">3&#8211;8 minutes</div><div class="card-text">Manager applies the self-review prompt before submitting. A clean record passes quickly. A record with missing dates or unanchored language requires rework. That is the point.</div></div>
+ <div class="card"><div class="card-label">Secondary Review</div><div class="card-title">15&#8211;30 minutes</div><div class="card-text">HR compliance reviews an elevated-risk record before system entry. Includes confirming supporting records are on file and routing back if gaps are identified.</div></div>
  </div>
  <div class="op-note">The work happens at drafting. The value shows up later, usually during something no one anticipated when the record was written.</div>
  <div class="reviewer-note" style="margin-top:12px;"><div class="reviewer-note-label">Reviewer note</div>Underlying documentation not attached. Timeline unclear. Pattern claim unsupported by materials on file. This is what secondary review catches before system entry, not after.</div>
@@ -2059,7 +2169,7 @@ a.gumroad-button.util-link {
   <div style="margin-bottom:28px;">
     <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-soft);padding-bottom:10px;margin-bottom:14px;border-bottom:1px solid var(--rule);">Record Survivability</div>
     <p class="body-text" style="max-width:640px;">Retaining a record is not the same as making it usable for later review. A record can be retained indefinitely and still fail when a reviewer needs to reconstruct the basis - because the supporting context exists in institutional memory, not in the file.</p>
-    <p class="body-text" style="max-width:640px;">An organizationally survivable record enables a later independent reviewer to establish the following without access to original participants, supplementary explanation, or institutional context that no longer exists in the file.</p>
+    <p class="body-text" style="max-width:640px;">A record that can stand on its own enables a later independent reviewer to establish the following without access to original participants, supplementary explanation, or institutional context that no longer exists in the file.</p>
     <div style="border:1px solid var(--rule);overflow:hidden;margin-top:14px;margin-bottom:16px;">
       <div style="padding:9px 15px;background:var(--surface2);border-bottom:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);">Independent reviewability requires the record to show</div>
       <div style="padding:12px 16px;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:20px 1fr;gap:12px;align-items:start;">
