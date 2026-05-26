@@ -845,11 +845,11 @@ a.gumroad-button.util-link {
  </div>
  <!-- Nav items: horizontal scroll on desktop, dropdown on mobile -->
  <div class="primary-nav-inner" id="primary-nav-items">
- <button class="nav-item active" onclick="showSection('home')">Home</button>
- <button class="nav-item" onclick="showSection('scenarios')">Review Examples</button>
- <button class="nav-item" onclick="showSection('tools')">Free Downloads</button>
+ <button class="nav-item active" onclick="showSection('home')">Overview</button>
+ <button class="nav-item" onclick="showSection('scenarios')">Documentation Failures</button>
+ <button class="nav-item" onclick="showSection('tools')">Free Resources</button>
  <button class="nav-item kit-item" onclick="showSection('kit')">Deployment Kit &#8599;</button>
- <a href="training.html" class="nav-item" style="text-decoration:none;">Reviewer Training &#8599;</a>
+ <a href="training.html" class="nav-item" style="text-decoration:none;">Simulation Training &#8599;</a>
  <button class="nav-item" onclick="showSection('guidance')">Implementation</button>
  <button class="nav-item" onclick="showSection('about')">About</button>
  </div>
@@ -858,12 +858,12 @@ a.gumroad-button.util-link {
 <!-- UTIL BAR -->
 <div class="util-bar">
  <div class="util-bar-inner">
-  <span class="util-label">Free Downloads</span>
-  <a href="JRS-Standard.pdf" class="util-link accent-link">Review Framework PDF</a>
+  <span class="util-label">Free Resources</span>
+  <a href="JRS-Standard.pdf" class="util-link accent-link">Review Standard PDF</a>
   <a href="JRS_Rapid_Review_Card.pdf" class="util-link">Rapid Review Card</a>
   <a href="JRS_Investigator_Field_Guide.pdf" class="util-link">Investigator Field Guide</a>
-  <a href="https://wikesphere.gumroad.com/l/opukbv" class="util-link gumroad-button" data-gumroad-single-product="true">Reviewer Reference Kit</a>
-  <a href="#" onclick="showSection('kit');return false;" class="util-link" style="color:var(--accent-dim);">Deployment Kit</a>
+  <a href="https://wikesphere.gumroad.com/l/opukbv" class="util-link gumroad-button" data-gumroad-single-product="true">Reviewer Toolkit — $77</a>
+  <a href="#" onclick="showSection('kit');return false;" class="util-link" style="color:var(--accent-dim);">Deployment Kit — $77</a>
  </div>
 </div>
 
@@ -875,73 +875,150 @@ a.gumroad-button.util-link {
 
 <div class="container">
 
-<div class="page-eyebrow">Pre-Finalization Documentation Review</div>
-<h1 class="page-title">The record looked fine. The problem appeared later.</h1>
-<p class="page-subtitle">Records are read later by people who were not present. Most documentation gaps don't show up at drafting — they show up two years later, when the original author is gone and the reviewer can't reconstruct the basis from the file alone.</p>
+<div class="page-eyebrow">Documentation Review Controls</div>
+<h1 class="page-title">Operational Review Tools for AI-Assisted Workplace and Compliance Documentation</h1>
+<p class="page-subtitle">Practical review systems designed to improve reconstruction reliability, chronology continuity, evidentiary grounding, and downstream review defensibility.</p>
+<p class="body-text" style="max-width:640px;margin-bottom:20px;">Used within HR, compliance, investigations, and administrative review environments where documentation must withstand later scrutiny. No dedicated software required. Applies within existing workflows.</p>
 
-<!-- INLINE FAILURE EXAMPLE -->
-<div style="border-left:3px solid var(--stop-text);background:var(--surface);padding:13px 18px;margin-bottom:22px;max-width:640px;">
- <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--stop-text);margin-bottom:8px;">What the failure looks like</div>
- <div style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:8px;">✗ &nbsp;"Employee was terminated for cause following a pattern of misconduct." — No incidents cited. No dates. No policy referenced. A later reviewer cannot reconstruct the basis from this file.</div>
- <div style="font-size:13px;color:var(--ready-text);line-height:1.7;">✓ &nbsp;"Written warnings issued March 3 and April 2 for conduct contrary to Code of Conduct Section 4.2, acknowledged January 2. Final warning April 15. Separation April 22 following failure to meet written improvement plan requirements. Documentation on file for each step." — The record supports itself.</div>
-</div>
-
-<div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px;">
+<div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px;">
   <button onclick="showSection('tools')" style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:13px 24px;border:none;cursor:pointer;font-weight:600;">Download Free Review Resources</button>
   <button onclick="showSection('kit')" style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--accent);border:1px solid rgba(190,148,71,.4);padding:13px 22px;cursor:pointer;">View Deployment Kit</button>
   <button onclick="showSection('scenarios')" style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:13px 22px;cursor:pointer;">See Examples →</button>
 </div>
 
-<!-- WHAT THESE FAILURES LOOK LIKE — shown early so the problem is concrete before the product -->
+<!-- DOCUMENTATION FAILURE EXAMPLES — leads conversion before product pitch -->
 <div style="margin-bottom:44px;">
- <div class="section-head">What These Failures Look Like</div>
- <p class="body-text" style="max-width:640px;">These are not unusual. They appear across HR, investigations, compliance, and administrative records. The file looked complete at drafting because the author already knew what they meant.</p>
- <div class="reviewer-note" style="margin-bottom:14px;"><div class="reviewer-note-label">Most common single gap</div>Pattern conduct described. No dates. Without dates, the sequence cannot be independently established by a later reviewer. The manager remembered the conversations. The file does not reflect them.</div>
- <div class="failure-block"><div class="failure-head">Unsupported Generalization</div><div class="failure-cols"><div class="failure-col"><div class="failure-col-label">As Written</div><div class="failure-bad">"Employee has attendance issues."</div><div class="reviewer-note" style="margin-top:8px;"><div class="reviewer-note-label">Reviewer flag</div>No dates, no frequency, no policy reference. Cannot verify from file.</div></div><div class="failure-col"><div class="failure-col-label">Supported Revision</div><div class="failure-good">Employee was absent January 5, 12, and February 3 without prior notice, contrary to Attendance Policy acknowledged January 2. Counseling note on file February 4.</div></div></div></div>
- <div class="failure-block"><div class="failure-head">Missing Observable Behavior</div><div class="failure-cols"><div class="failure-col"><div class="failure-col-label">As Written</div><div class="failure-bad">"Employee demonstrated unprofessional conduct."</div><div class="reviewer-note" style="margin-top:8px;"><div class="reviewer-note-label">Reviewer flag</div>Evaluative label only. No specific conduct identified.</div></div><div class="failure-col"><div class="failure-col-label">Supported Revision</div><div class="failure-good">Employee interrupted client meetings on April 4 and April 11 despite prior written instruction dated March 28. Incident report on file April 12.</div></div></div></div>
- <div class="failure-block"><div class="failure-head">AI Summary Without Verification</div><div class="failure-cols"><div class="failure-col"><div class="failure-col-label">As Written</div><div class="failure-bad">"AI summary: Employee is difficult to work with."</div><div class="reviewer-note" style="margin-top:8px;"><div class="reviewer-note-label">Reviewer flag</div>Source records not identified. Human review not confirmed. Do not submit.</div></div><div class="failure-col"><div class="failure-col-label">Supported Revision</div><div class="failure-good">Summary reviewed against meeting notes dated March 4, 11, and 18. No unverified characterizations introduced. Human review completed March 19.</div></div></div></div>
- <div style="margin-top:12px;"><button onclick="showSection('scenarios')" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:9px 18px;cursor:pointer;transition:.1s;" onmouseover="this.style.color='var(--accent)';this.style.borderColor='rgba(190,148,71,.4)'" onmouseout="this.style.color='var(--muted-soft)';this.style.borderColor='var(--rule)'">View All Review Examples →</button></div>
+ <div class="section-head">Common Documentation Review Failures</div>
+ <p class="body-text" style="max-width:640px;">These are not unusual. They appear routinely across HR, investigations, compliance, and administrative records. The file looks complete at drafting because the author's context fills the gaps. When that author is unavailable — two years later, during escalation, audit, or litigation — the record must explain itself.</p>
+ <div class="reviewer-note" style="margin-bottom:14px;"><div class="reviewer-note-label">Most common single gap</div>Pattern conduct described without dates. Without dates, the sequence cannot be independently established by a later reviewer. The manager remembered the conversations. The file does not reflect them.</div>
+
+ <div class="failure-block">
+  <div class="failure-head">Unsupported Generalization</div>
+  <div class="failure-cols">
+   <div class="failure-col">
+    <div class="failure-col-label">As Written</div>
+    <div class="failure-bad">"Employee has attendance issues."</div>
+    <div class="reviewer-note" style="margin-top:8px;"><div class="reviewer-note-label">Reviewer flag</div>No dates, no frequency, no policy reference. Cannot verify from file.</div>
+   </div>
+   <div class="failure-col">
+    <div class="failure-col-label">Supported Revision</div>
+    <div class="failure-good">Employee was absent January 5, 12, and February 3 without prior notice, contrary to Attendance Policy acknowledged January 2. Counseling note on file February 4.</div>
+   </div>
+  </div>
+  <div style="border-top:1px solid var(--rule);margin-top:10px;padding-top:10px;font-size:11.5px;color:var(--muted-soft);line-height:1.65;"><span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--stop-text);margin-right:8px;">Downstream risk</span>At escalation or audit: no verifiable basis. A later reviewer cannot establish whether the characterization reflects documented conduct, a pattern, or the author's impression. The conclusion stands unsupported.</div>
+ </div>
+
+ <div class="failure-block">
+  <div class="failure-head">Chronology Gap</div>
+  <div class="failure-cols">
+   <div class="failure-col">
+    <div class="failure-col-label">As Written</div>
+    <div class="failure-bad">"Employee demonstrated unprofessional conduct."</div>
+    <div class="reviewer-note" style="margin-top:8px;"><div class="reviewer-note-label">Reviewer flag</div>Evaluative label only. No observable behavior, no date, no incident record identified.</div>
+   </div>
+   <div class="failure-col">
+    <div class="failure-col-label">Supported Revision</div>
+    <div class="failure-good">Employee interrupted client meetings on April 4 and April 11 despite prior written instruction dated March 28. Incident report on file April 12.</div>
+   </div>
+  </div>
+  <div style="border-top:1px solid var(--rule);margin-top:10px;padding-top:10px;font-size:11.5px;color:var(--muted-soft);line-height:1.65;"><span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--stop-text);margin-right:8px;">Downstream risk</span>At later review: no observable conduct on record. The escalation claim rests on an evaluative label the reviewer cannot verify. A contested record with no behavioral anchor is difficult to defend.</div>
+ </div>
+
+ <div class="failure-block">
+  <div class="failure-head">AI-Assisted Language Without Source Verification</div>
+  <div class="failure-cols">
+   <div class="failure-col">
+    <div class="failure-col-label">As Written</div>
+    <div class="failure-bad">"AI summary: Employee is difficult to work with and has shown persistent resistance to direction."</div>
+    <div class="reviewer-note" style="margin-top:8px;"><div class="reviewer-note-label">Reviewer flag</div>Source records not identified. Human review not confirmed. Characterizations not present in source notes. Do not submit.</div>
+   </div>
+   <div class="failure-col">
+    <div class="failure-col-label">Supported Revision</div>
+    <div class="failure-good">Summary reviewed against meeting notes dated March 4, 11, and 18. Characterizations not present in source notes removed. Human review confirmed March 19. No unverified language introduced.</div>
+   </div>
+  </div>
+  <div style="border-top:1px solid var(--rule);margin-top:10px;padding-top:10px;font-size:11.5px;color:var(--muted-soft);line-height:1.65;"><span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--stop-text);margin-right:8px;">Downstream risk</span>AI-generated characterizations read confidently but may not reflect source material. At scrutiny, the source behind the conclusion cannot be identified. This failure mode is specific to AI-assisted drafting environments and did not exist at scale before automated drafting tools were deployed.</div>
+ </div>
+
+ <div style="margin-top:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+  <button onclick="showSection('scenarios')" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:9px 18px;cursor:pointer;transition:.1s;" onmouseover="this.style.color='var(--accent)';this.style.borderColor='rgba(190,148,71,.4)'" onmouseout="this.style.color='var(--muted-soft)';this.style.borderColor='var(--rule)'">View All Documentation Failures →</button>
+  <span style="font-size:11.5px;color:var(--muted-soft);">Including escalation inconsistency, inherited language propagation, and context loss across records.</span>
+ </div>
 </div>
 
-<!-- WHAT TO START WITH -->
+<!-- PRODUCT HIERARCHY — 5-tier operational review ecosystem -->
 <div style="margin-bottom:44px;border:1px solid var(--rule);background:var(--surface);overflow:hidden;">
- <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);padding:12px 16px;border-bottom:1px solid var(--rule);">What To Start With</div>
+ <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);padding:12px 16px;border-bottom:1px solid var(--rule);">Review Infrastructure — Start Here</div>
  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0">
+
+  <!-- TIER 0: FREE -->
   <div style="padding:16px 18px;border-right:1px solid var(--rule);">
    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--ready-text);margin-bottom:8px;">Free</div>
    <div style="font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:2px;">Free Review Resources</div>
-   <div style="font-size:11px;color:var(--muted-soft);font-style:italic;margin-bottom:8px;">Start here — any reviewer, no purchase required</div>
+   <div style="font-size:11px;color:var(--muted-soft);font-style:italic;margin-bottom:8px;">Problem recognition + trust formation. Start here, any reviewer, no purchase required.</div>
    <ul style="list-style:none;padding:0;font-size:12.5px;color:var(--muted);line-height:1.9;">
-    <li>Documentation Review Framework PDF</li>
+    <li>Documentation Review Standard PDF</li>
     <li>Investigator Field Guide</li>
     <li>Rapid Review Card</li>
    </ul>
-   <div style="margin-top:12px;"><button onclick="showSection('tools')" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--ready-text);background:none;border:1px solid rgba(93,191,130,.3);padding:6px 12px;cursor:pointer;">View All Free Downloads →</button></div>
+   <div style="margin-top:12px;"><button onclick="showSection('tools')" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--ready-text);background:none;border:1px solid rgba(93,191,130,.3);padding:6px 12px;cursor:pointer;">Download Free Resources →</button></div>
   </div>
+
+  <!-- TIER 1: REVIEWER TOOLKIT -->
   <div style="padding:16px 18px;border-right:1px solid var(--rule);background:rgba(255,255,255,.01);">
    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:8px;">Individual</div>
-   <div style="font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:2px;">Reviewer Reference</div>
+   <div style="font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:2px;">Reviewer Toolkit</div>
    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent-dim);margin-bottom:4px;">$77</div>
-   <div style="font-size:11px;color:var(--muted-soft);font-style:italic;margin-bottom:8px;">HR generalists, investigators, compliance officers doing individual review work</div>
+   <div style="font-size:11px;color:var(--muted-soft);font-style:italic;margin-bottom:8px;">Individual reviewer operational layer. HR generalists, investigators, compliance officers.</div>
    <ul style="list-style:none;padding:0;font-size:12.5px;color:var(--muted);line-height:1.9;">
-    <li>Expanded reviewer toolkit</li>
-    <li>All review worksheets + forms</li>
+    <li>Expanded reviewer reference</li>
+    <li>All worksheets + forms</li>
     <li>Full failure-mode catalog</li>
+    <li>Escalation review templates</li>
    </ul>
-   <div style="margin-top:12px;"><a href="https://wikesphere.gumroad.com/l/opukbv" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px solid rgba(190,148,71,.3);padding:6px 12px;display:inline-block;" class="gumroad-button" data-gumroad-single-product="true">Get Access ↗</a></div>
+   <div style="margin-top:12px;"><a href="https://wikesphere.gumroad.com/l/opukbv" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px solid rgba(190,148,71,.3);padding:6px 12px;display:inline-block;" class="gumroad-button" data-gumroad-single-product="true">Get Reviewer Toolkit — $77 ↗</a></div>
   </div>
-  <div style="padding:16px 18px;">
+
+  <!-- TIER 2: DEPLOYMENT KIT -->
+  <div style="padding:16px 18px;border-right:1px solid var(--rule);">
    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">Team</div>
    <div style="font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:2px;">Deployment Kit</div>
    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);margin-bottom:4px;">$77</div>
-   <div style="font-size:11px;color:var(--muted-soft);font-style:italic;margin-bottom:8px;">HR teams, compliance programs, organizations rolling out review across departments</div>
+   <div style="font-size:11px;color:var(--muted-soft);font-style:italic;margin-bottom:8px;">Team implementation layer. HR teams, compliance programs, department rollout.</div>
    <ul style="list-style:none;padding:0;font-size:12.5px;color:var(--muted);line-height:1.9;">
-    <li>Team onboarding + training modules</li>
+    <li>Reviewer onboarding + training</li>
     <li>Redlined examples + templates</li>
     <li>Secondary review forms + playbook</li>
+    <li>AI documentation checklist</li>
    </ul>
-   <div style="margin-top:12px;"><button onclick="showSection('kit')" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);background:none;border:1px solid rgba(190,148,71,.4);padding:6px 12px;cursor:pointer;">View Kit ↗</button></div>
+   <div style="margin-top:12px;"><button onclick="showSection('kit')" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);background:none;border:1px solid rgba(190,148,71,.4);padding:6px 12px;cursor:pointer;">View Deployment Kit — $77 ↗</button></div>
   </div>
+
+ </div>
+
+ <!-- TIERS 3 & 4: TWO-COLUMN ROW -->
+ <div style="display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--rule);">
+
+  <!-- TIER 3: SIMULATION TRAINING -->
+  <div style="padding:14px 18px;border-right:1px solid var(--rule);">
+   <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:4px;">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);">Simulation Training</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;color:var(--muted-soft);">web-based · no download</div>
+   </div>
+   <div style="font-size:12.5px;color:var(--muted);line-height:1.6;margin-bottom:8px;">Reviewer calibration exercises. Reconstruction simulations, escalation scenarios, chronology reinterpretation, AI-assisted documentation review. Applied reviewer conditioning — not theory.</div>
+   <a href="training.html" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;border:1px solid var(--rule);padding:5px 10px;display:inline-block;">Launch Simulation Training →</a>
+  </div>
+
+  <!-- TIER 4: ENTERPRISE IMPLEMENTATION -->
+  <div style="padding:14px 18px;">
+   <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:4px;">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);">Enterprise Implementation</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;color:var(--muted-soft);">by inquiry</div>
+   </div>
+   <div style="font-size:12.5px;color:var(--muted);line-height:1.6;margin-bottom:8px;">Organizational deployment. Workflow assessment, reviewer alignment, department-level rollout, governance integration. For organizations deploying review controls across multiple functions.</div>
+   <a href="mailto:phillipwikes@gmail.com" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;border:1px solid var(--rule);padding:5px 10px;display:inline-block;">Contact for Implementation →</a>
+  </div>
+
  </div>
 </div>
 
@@ -1096,14 +1173,17 @@ a.gumroad-button.util-link {
 
 <!-- MID-PAGE CTA -->
 <div style="margin-bottom:44px;border:1px solid rgba(190,148,71,.25);background:var(--surface);padding:20px 22px;">
- <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px;">Ready to Start?</div>
- <p style="font-size:13.5px;color:var(--muted);line-height:1.65;max-width:540px;margin-bottom:14px;">Download the free resources and apply the five questions to one record type. Most reviewers identify gaps in the first record they review.</p>
+ <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px;">Deploy Review Controls</div>
+ <p style="font-size:13.5px;color:var(--muted);line-height:1.65;max-width:560px;margin-bottom:14px;">Start with one record type. Apply the reconstruction check. Gaps that passed undetected at drafting become visible in the first record most reviewers check.</p>
  <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
   <button onclick="showSection('tools')" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:11px 20px;border:none;cursor:pointer;font-weight:600;">Download Free Resources</button>
-  <a href="https://wikesphere.gumroad.com/l/opukbv" class="gumroad-button" data-gumroad-single-product="true" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px solid rgba(190,148,71,.35);padding:11px 18px;display:inline-block;">Reviewer Reference — $77 ↗</a>
+  <a href="https://wikesphere.gumroad.com/l/opukbv" class="gumroad-button" data-gumroad-single-product="true" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px solid rgba(190,148,71,.35);padding:11px 18px;display:inline-block;">Reviewer Toolkit — $77 ↗</a>
   <button onclick="showSection('kit')" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:11px 18px;cursor:pointer;">Deployment Kit — $77 ↗</button>
  </div>
- <div style="margin-top:12px;font-size:12px;color:var(--muted-soft);">Questions about implementation or organizational deployment? <a href="mailto:phillipwikes@gmail.com" style="color:var(--accent);text-decoration:none;">Contact via email ↗</a></div>
+ <div style="margin-top:10px;display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted-soft);">
+  <span><a href="training.html" style="color:var(--muted-soft);text-decoration:none;">Simulation Training →</a> <span style="color:var(--rule);">|</span> Reviewer calibration exercises, web-based</span>
+  <span><a href="mailto:phillipwikes@gmail.com" style="color:var(--accent);text-decoration:none;">Enterprise Implementation →</a> <span style="color:var(--rule);">|</span> Organizational deployment, contact for inquiry</span>
+ </div>
 </div>
 
 <div style="margin-bottom:44px;">
@@ -4232,10 +4312,10 @@ a.gumroad-button.util-link {
 
 // ── NAVIGATION ────────────────────────────────────
 const SECTION_LABELS={
- home:'Home',doccond:'Documentation Conditions',tools:'Free Downloads',
- scenarios:'Review Examples',guidance:'Implementation',roles:'Roles',
+ home:'Overview',doccond:'Documentation Conditions',tools:'Free Resources',
+ scenarios:'Documentation Failures',guidance:'Implementation',roles:'Roles',
  maturity:'Maturity',ai:'AI-Assisted Review',usecases:'Use Cases',
- training:'Reviewer Guidance',about:'About',library:'Document Architecture',
+ training:'Simulation Training',about:'About',library:'Document Architecture',
  kit:'Deployment Kit'
 };
 function showSection(id){
