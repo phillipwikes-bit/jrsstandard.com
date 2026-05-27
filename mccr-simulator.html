@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCCR Executive Director Simulator</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0d1b2a; font-family: Georgia, serif; color: #fff; height: 100vh; display: flex; flex-direction: column; }
+
+  /* KEY SCREEN */
+  #keyScreen { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; background: linear-gradient(135deg, #0a1628, #0d2147, #0a1628); }
+  .keyBox { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 44px 36px; max-width: 420px; width: 100%; box-shadow: 0 32px 80px rgba(0,0,0,0.6); }
+  .keyLogo { width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, #c8a84b, #e8c96a); display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 18px; box-shadow: 0 8px 24px rgba(200,168,75,0.3); }
+  .keyTitle { color: #e8c96a; font-size: 20px; font-weight: 700; text-align: center; margin-bottom: 6px; }
+  /* Raised from 0.4 to 0.6 for WCAG AA contrast */
+  .keySub { color: rgba(255,255,255,0.6); font-size: 12px; text-align: center; margin-bottom: 28px; }
+  .keyLabel { color: rgba(255,255,255,0.65); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; display: block; margin-bottom: 8px; }
+  .keyInput { width: 100%; padding: 12px 14px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; color: #fff; font-size: 13px; outline: none; font-family: monospace; letter-spacing: 1px; }
+  .keyInput:focus { outline: 2px solid #c8a84b; outline-offset: 2px; }
+  .keyError { color: #ff7070; font-size: 12px; margin-top: 8px; display: none; }
+  .keyBtn { width: 100%; padding: 13px; background: linear-gradient(135deg, #c8a84b, #e8c96a); border: none; border-radius: 8px; color: #0a1628; font-size: 14px; font-weight: 700; cursor: pointer; font-family: Georgia, serif; margin-top: 18px; }
+  .keyBtn:focus { outline: 2px solid #fff; outline-offset: 2px; }
+  /* Raised from 0.2 to 0.5 for WCAG AA contrast */
+  .keyNote { color: rgba(255,255,255,0.5); font-size: 11px; text-align: center; margin-top: 20px; line-height: 1.6; }
+
+  /* MAIN APP */
+  #app { display: none; flex-direction: column; height: 100vh; }
+  header { background: linear-gradient(90deg, #0a1628, #0d2147); border-bottom: 2px solid #c8a84b; padding: 13px 18px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+  .headerLeft { display: flex; align-items: center; gap: 12px; }
+  .headerIcon { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #c8a84b, #e8c96a); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .headerTitle { color: #e8c96a; font-weight: 700; font-size: 14px; }
+  /* Raised from 0.35 to 0.55 for WCAG AA contrast */
+  .headerSub { color: rgba(255,255,255,0.55); font-size: 10px; margin-top: 2px; }
+  .headerBtns { display: flex; gap: 8px; align-items: center; }
+  .hBtn { border-radius: 6px; padding: 5px 11px; font-size: 11px; cursor: pointer; font-family: Georgia, serif; border: 1px solid; }
+  .hBtn:focus { outline: 2px solid #c8a84b; outline-offset: 2px; }
+  .hBtnGold { background: rgba(200,168,75,0.15); border-color: #c8a84b; color: #e8c96a; }
+  /* Raised from 0.45 to 0.65 for WCAG AA contrast */
+  .hBtnGray { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.15); color: rgba(255,255,255,0.65); }
+  .hBtnRed { background: rgba(255,80,80,0.1); border-color: rgba(255,80,80,0.3); color: #ff8080; }
+
+  /* TABS */
+  #tabs { display: flex; background: #0a1628; border-bottom: 1px solid rgba(255,255,255,0.08); overflow-x: auto; }
+  /* Raised from 0.4 to 0.6 for WCAG AA contrast */
+  .tab { padding: 10px 14px; border: none; background: transparent; color: rgba(255,255,255,0.6); border-bottom: 2px solid transparent; font-size: 11px; font-family: Georgia, serif; white-space: nowrap; cursor: pointer; transition: all 0.2s; }
+  .tab:focus { outline: 2px solid #c8a84b; outline-offset: -2px; }
+  .tab.active { background: rgba(200,168,75,0.12); color: #e8c96a; border-bottom-color: #c8a84b; }
+
+  /* CHAT */
+  #chat { flex: 1; overflow-y: auto; padding: 18px; display: flex; flex-direction: column; gap: 14px; }
+  .empty { text-align: center; margin: 40px auto; max-width: 420px; color: rgba(255,255,255,0.25); line-height: 1.8; }
+  .emptyIcon { font-size: 40px; margin-bottom: 12px; }
+  .emptyTitle { font-size: 14px; color: rgba(255,255,255,0.45); font-weight: 600; margin-bottom: 6px; }
+  /* Raised from 0.25 to 0.55 for WCAG AA contrast */
+  .emptyText { font-size: 12px; color: rgba(255,255,255,0.55); }
+  .emptyNote { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 14px; font-style: italic; }
+  .msgRow { display: flex; gap: 10px; align-items: flex-start; }
+  .msgRow.user { flex-direction: row-reverse; }
+  .avatar { width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+  .avatar.ed { background: linear-gradient(135deg, #c8a84b, #e8c96a); color: #0a1628; }
+  .avatar.user { background: rgba(255,255,255,0.1); }
+  .bubble { max-width: 76%; padding: 12px 15px; font-size: 13px; line-height: 1.75; white-space: pre-wrap; }
+  .bubble.ed { background: rgba(200,168,75,0.08); border: 1px solid rgba(200,168,75,0.2); border-radius: 3px 14px 14px 14px; color: rgba(255,255,255,0.88); }
+  .bubble.user { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px 3px 14px 14px; color: rgba(255,255,255,0.88); }
+  .edLabel { color: #c8a84b; font-size: 9px; font-weight: 700; letter-spacing: 1.2px; margin-bottom: 5px; }
+  .dots { display: flex; gap: 5px; margin-top: 4px; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: #c8a84b; animation: pulse 1.2s ease-in-out infinite; }
+  .dot:nth-child(2) { animation-delay: 0.2s; }
+  .dot:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes pulse { 0%,100%{opacity:.3;transform:scale(.8)} 50%{opacity:1;transform:scale(1.2)} }
+
+  /* INPUT */
+  #inputArea { padding: 12px 18px; border-top: 1px solid rgba(255,255,255,0.08); background: #0a1628; display: flex; gap: 10px; align-items: flex-end; }
+  #msgInput { flex: 1; padding: 10px 13px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 9px; color: #fff; font-size: 13px; resize: none; font-family: Georgia, serif; line-height: 1.6; }
+  /* Replaced outline:none with visible gold focus ring */
+  #msgInput:focus { outline: 2px solid #c8a84b; outline-offset: 2px; }
+  #sendBtn { padding: 10px 20px; background: linear-gradient(135deg, #c8a84b, #e8c96a); border: none; border-radius: 9px; color: #0a1628; font-size: 13px; font-weight: 700; cursor: pointer; font-family: Georgia, serif; min-width: 70px; }
+  #sendBtn:focus { outline: 2px solid #fff; outline-offset: 2px; }
+  #sendBtn:disabled { background: rgba(200,168,75,0.25); cursor: not-allowed; }
+
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(200,168,75,0.3); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div id="keyScreen" role="main">
+  <div class="keyBox">
+    <div class="keyLogo" aria-hidden="true">⚖️</div>
+    <div class="keyTitle">MCCR Executive Director</div>
+    <div class="keySub">Maryland Commission on Civil Rights<br>AI Simulator - Authorized Use Only</div>
+    <label class="keyLabel" for="keyInput">Anthropic API Key</label>
+    
+    <input class="keyInput" id="keyInput" type="password" placeholder="sk-ant-api03-..." autocomplete="off" aria-describedby="keyErrorMsg" />
+    <div class="keyError" id="keyErrorMsg" role="alert">Key must start with sk-ant- and be at least 40 characters</div>
+    <button class="keyBtn" onclick="enterSimulator()">Enter Simulator</button>
+    <div class="keyNote">Your key is stored locally on your device only.<br>It is never sent anywhere except Anthropic.</div>
+  </div>
+</div>
+
+<div id="app" aria-hidden="true">
+  <header>
+    <div class="headerLeft">
+      <div class="headerIcon" aria-hidden="true">⚖️</div>
+      <div>
+        <div class="headerTitle">MCCR Executive Director Simulator</div>
+        <div class="headerSub">Maryland Commission on Civil Rights - Title 20 / HUD / EEOC Edition - v2.1</div>
+      </div>
+    </div>
+    <div class="headerBtns">
+      <button class="hBtn hBtnGold" id="exportBtn" style="display:none" onclick="exportLog()" aria-label="Export session log as text file">Export Log</button>
+      <button class="hBtn hBtnGray" id="clearBtn" style="display:none" onclick="clearChat()" aria-label="Clear current conversation">Clear</button>
+      <button class="hBtn hBtnRed" onclick="changeKey()" aria-label="Change Anthropic API key">Change Key</button>
+    </div>
+  </header>
+
+  
+  <nav id="tabs" aria-label="MCCR Executive Director Simulator navigation"></nav>
+
+  
+  <div id="chat" role="log" aria-live="polite" aria-label="Conversation"></div>
+
+  <div id="inputArea">
+    <textarea
+      id="msgInput"
+      rows="2"
+      aria-label="Message input"
+      placeholder="Type your message..."
+      onkeydown="handleKey(event)"
+    ></textarea>
+    <button id="sendBtn" onclick="sendMessage()" aria-label="Send message">Send</button>
+  </div>
+</div>
+
+<script>
+const MODES = [
+  { id: "policy",        label: "Policy & Civil Rights Q&A",    icon: "⚖️", placeholder: "Ask about Title 20, Maryland civil rights law, HUD guidance, or EEOC standards..." },
+  { id: "intake",        label: "Constituent Intake Simulation", icon: "📋", placeholder: "Describe the situation you are reporting to begin the intake process..." },
+  { id: "case_mgmt",     label: "Case Management & Outreach",   icon: "🗂️", placeholder: "Ask about case procedures, outreach programs, referral protocols, or mediation..." },
+  { id: "horton_quotes", label: "Cleveland's Favorite Quotes",  icon: "💬", placeholder: "Ask about a civil rights topic to receive wisdom from ED Horton and civil rights leaders..." },
+  { id: "correspondence",label: "Draft Official Correspondence", icon: "✉️", placeholder: "Describe the purpose and recipient for the official MCCR letter or memo..." },
+];
+
+const ED_BASE =
+  "You are the Executive Director of the Maryland Commission on Civil Rights (MCCR). You speak with authority, precision, and compassion grounded in the full body of civil rights law.\n\n" +
+  "MARYLAND STATE LAW:\n" +
+  "- Maryland Fair Employment Practices Act (FEPA), Md. Code Ann., State Govt sections 20-601 et seq.\n" +
+  "- Maryland Fair Housing Law, Md. Code Ann., State Govt sections 20-701 et seq.\n" +
+  "- Maryland Public Accommodations Law, Md. Code Ann., State Govt sections 20-301 et seq.\n" +
+  "- MCCR enabling statute, Md. Code Ann., State Govt sections 20-101 et seq.\n" +
+  "- Maryland Equal Pay for Equal Work Act\n" +
+  "- Maryland Pregnant Workers Fairness Act\n\n" +
+  "TITLE 20 OF THE MARYLAND CODE (CIVIL RIGHTS):\n" +
+  "Title 20 prohibits discrimination in employment, housing, and public accommodations on the basis of race, color, religion, sex, age, national origin, marital status, sexual orientation, gender identity, disability, and familial status.\n\n" +
+  "FEDERAL FRAMEWORKS:\n" +
+  "- Title VII of the Civil Rights Act of 1964\n" +
+  "- Title VI of the Civil Rights Act of 1964\n" +
+  "- Americans with Disabilities Act (ADA), Titles I and II\n" +
+  "- Age Discrimination in Employment Act (ADEA)\n" +
+  "- Fair Housing Act (FHA), 42 U.S.C. sections 3601 et seq.\n" +
+  "- Section 504 of the Rehabilitation Act of 1973\n" +
+  "- Genetic Information Nondiscrimination Act (GINA)\n\n" +
+  "HUD GUIDANCE:\n" +
+  "- HUD Fair Housing Act regulations, 24 C.F.R. Part 100\n" +
+  "- HUD Guidance on Criminal Records (2016)\n" +
+  "- HUD Disparate Impact Rule, 24 C.F.R. section 100.500\n" +
+  "- HUD Affirmatively Furthering Fair Housing (AFFH) regulations\n" +
+  "- HUD Guidance on Sexual Harassment in Housing (2017)\n" +
+  "- HUD/DOJ Joint Statement on Reasonable Accommodations (2004)\n\n" +
+  "EEOC GUIDANCE:\n" +
+  "- EEOC Enforcement Guidance on Harassment in the Workplace (2024)\n" +
+  "- EEOC Guidance on Reasonable Accommodation and Undue Hardship Under the ADA\n" +
+  "- EEOC Guidance on Pregnancy Discrimination\n" +
+  "- EEOC Guidance on Retaliation and Related Issues (2016)\n" +
+  "- EEOC Guidance on Sex-Based Discrimination including sexual orientation and gender identity post-Bostock v. Clayton County\n\n" +
+  "RESPONSE STANDARDS:\n" +
+  "- Never speculate beyond jurisdiction or established legal record\n" +
+  "- Cite applicable statutes, regulations, or guidance by name\n" +
+  "- No em dashes or en dashes in any response\n" +
+  "- Always maintain the professional dignity of the Office of the Executive Director\n\n" +
+  "Do not break character. You are the Executive Director of the Maryland Commission on Civil Rights.";
+
+const MODE_INSTRUCTIONS = {
+  policy: "The user is asking a policy or civil rights question. Respond with authoritative guidance grounded in Title 20 of the Maryland Code, applicable federal civil rights statutes, current HUD regulations, and EEOC enforcement guidance. Cite the specific statute or guidance by name where relevant.",
+  intake: "The user is initiating a constituent intake simulation. Conduct a structured MCCR intake interview. Gather sequentially: (1) complainant name and contact, (2) respondent name and entity type, (3) protected class basis, (4) area of discrimination, (5) nature of harm with dates, (6) whether ongoing, (7) witnesses or documentation, (8) remedy sought. After gathering all information, provide a preliminary jurisdictional assessment under Title 20.",
+  case_mgmt: "The user has a question about MCCR case management, outreach, or referral protocols. Respond with accurate information about MCCR complaint processing stages, mediation and conciliation services, outreach programs, and referral pathways to EEOC, HUD, DOJ, or the Maryland Attorney General.",
+  horton_quotes: "The user is asking about a civil rights topic. Weave together 2 to 4 quotes from this library. Attribute each clearly. Always close with: Teamwork makes the dream work.\n\nCLEVELAND L. HORTON II:\n- Teamwork makes the dream work.\n- This is not a moment for retreat. It is a moment for resolve.\n- The magnitude of work that needs to be done is impossible to do alone.\n- We lead with integrity, empathy, and an unrelenting pursuit of excellence.\n\nJOHN C. MAXWELL:\n- The bottom line in leadership is not how far we advance ourselves but how far we advance others.\n- People do not care how much you know until they know how much you care.\n- The true measure of leadership is influence, nothing more, nothing less.\n\nMARTIN LUTHER KING JR.:\n- Injustice anywhere is a threat to justice everywhere.\n- The arc of the moral universe is long, but it bends toward justice.\n- Darkness cannot drive out darkness; only light can do that.\n\nJOHN LEWIS:\n- Get in good trouble, necessary trouble, and help redeem the soul of America.\n- When you see something that is not right, not fair, not just, you have to speak up.\n\nTHURGOOD MARSHALL:\n- Where you see wrong or inequality or injustice, speak out. This is your democracy. Make it. Protect it. Pass it on.\n\nFANNIE LOU HAMER:\n- Nobody is free until everybody is free.\n\nSHIRLEY CHISHOLM:\n- If they do not give you a seat at the table, bring a folding chair.",
+  correspondence: "The user needs official MCCR correspondence drafted. Use formal Maryland state government style. Include: letterhead (Maryland Commission on Civil Rights, William Donald Schaefer Tower, 6 St. Paul Street, Suite 900, Baltimore, MD 21202), date, recipient block, salutation, body citing applicable law, formal closing, and Executive Director signature block. No em dashes or en dashes.",
+};
+
+// Maximum number of prior turns to send with each request (keeps token usage bounded)
+const MAX_HISTORY_TURNS = 20;
+
+let apiKey = localStorage.getItem("mccr_key") || "";
+let currentMode = MODES[0];
+let messages = [];
+let sessionLog = [];
+let loading = false;
+
+// Prefer DOMContentLoaded over window.onload
+document.addEventListener("DOMContentLoaded", function () {
+  if (apiKey) showApp();
+  buildTabs();
+});
+
+function buildTabs() {
+  const tabs = document.getElementById("tabs");
+  tabs.innerHTML = "";
+  MODES.forEach(m => {
+    const btn = document.createElement("button");
+    btn.className = "tab" + (m.id === currentMode.id ? " active" : "");
+    btn.textContent = m.icon + " " + m.label;
+    // aria-selected communicates active tab state to screen readers
+    btn.setAttribute("aria-selected", m.id === currentMode.id ? "true" : "false");
+    btn.setAttribute("role", "tab");
+    btn.onclick = () => switchMode(m);
+    tabs.appendChild(btn);
+  });
+}
+
+function switchMode(m) {
+  // Confirm before clearing an active conversation
+  if (messages.length > 0) {
+    const ok = confirm("Switch to \"" + m.label + "\"? This will clear the current conversation.");
+    if (!ok) return;
+  }
+  currentMode = m;
+  messages = [];
+  buildTabs();
+  renderChat();
+  document.getElementById("msgInput").placeholder = m.placeholder;
+}
+
+function enterSimulator() {
+  const k = document.getElementById("keyInput").value.trim();
+  const err = document.getElementById("keyErrorMsg");
+  // Validate prefix AND minimum length (real Anthropic keys are well over 40 chars)
+  if (!k.startsWith("sk-ant-") || k.length < 40) {
+    err.style.display = "block";
+    return;
+  }
+  err.style.display = "none";
+  localStorage.setItem("mccr_key", k);
+  apiKey = k;
+  showApp();
+}
+
+function showApp() {
+  document.getElementById("keyScreen").style.display = "none";
+  document.getElementById("keyScreen").setAttribute("aria-hidden", "true");
+  const app = document.getElementById("app");
+  app.style.display = "flex";
+  app.removeAttribute("aria-hidden");
+  document.getElementById("msgInput").placeholder = currentMode.placeholder;
+  renderChat();
+}
+
+function changeKey() {
+  localStorage.removeItem("mccr_key");
+  apiKey = "";
+  messages = [];
+  sessionLog = [];
+  const app = document.getElementById("app");
+  app.style.display = "none";
+  app.setAttribute("aria-hidden", "true");
+  const keyScreen = document.getElementById("keyScreen");
+  keyScreen.style.display = "flex";
+  keyScreen.removeAttribute("aria-hidden");
+  document.getElementById("keyInput").value = "";
+}
+
+function clearChat() {
+  messages = [];
+  renderChat();
+}
+
+function handleKey(e) {
+  if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+}
+
+async function sendMessage() {
+  const inp = document.getElementById("msgInput");
+  const text = inp.value.trim();
+  if (!text || loading) return;
+  inp.value = "";
+  loading = true;
+  document.getElementById("sendBtn").disabled = true;
+
+  messages.push({ role: "user", content: text });
+  renderChat(true);
+
+  const systemPrompt = ED_BASE + "\n\nCurrent mode: " + currentMode.label + "\n\nInstruction: " + MODE_INSTRUCTIONS[currentMode.id];
+
+  // Truncate history to last MAX_HISTORY_TURNS messages to keep token usage bounded
+  const truncatedMessages = messages.slice(-MAX_HISTORY_TURNS);
+
+  // AbortController gives us a 30-second timeout
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 30000);
+
+  try {
+    const res = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      signal: controller.signal,
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": apiKey,
+        "anthropic-version": "2023-06-01",
+        "anthropic-dangerous-direct-browser-access": "true"
+      },
+      body: JSON.stringify({
+        model: "claude-sonnet-4-6",
+        max_tokens: 1800,
+        system: systemPrompt,
+        messages: truncatedMessages
+      })
+    });
+
+    clearTimeout(timeoutId);
+
+    let data;
+    try { data = await res.json(); } catch(e) { throw new Error("Non-JSON response (Status " + res.status + "). This usually means CORS is blocking the request. Open this file directly in a browser instead of inside another application."); }
+    if (!res.ok) throw new Error("API error " + res.status + ": " + (data.error ? data.error.message : JSON.stringify(data)));
+
+    const reply = data.content && data.content.find(b => b.type === "text") ? data.content.find(b => b.type === "text").text : "No response returned.";
+    messages.push({ role: "assistant", content: reply });
+    sessionLog.push({ mode: currentMode.label, ts: new Date().toLocaleTimeString(), q: text, a: reply });
+    document.getElementById("exportBtn").style.display = "block";
+
+  } catch(err) {
+    clearTimeout(timeoutId);
+    const isTimeout = err.name === "AbortError";
+    messages.push({
+      role: "assistant",
+      content: isTimeout
+        ? "The request timed out after 30 seconds. Please check your connection and try again."
+        : "Error: " + err.message
+    });
+  }
+
+  loading = false;
+  document.getElementById("sendBtn").disabled = false;
+  renderChat();
+  if (messages.length > 0) document.getElementById("clearBtn").style.display = "block";
+}
+
+function escapeHtml(str) {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function renderChat(showLoading) {
+  const chat = document.getElementById("chat");
+  if (messages.length === 0 && !showLoading) {
+    chat.innerHTML =
+      '<div class="empty">' +
+        '<div class="emptyIcon" aria-hidden="true">' + escapeHtml(currentMode.icon) + '</div>' +
+        '<div class="emptyTitle">' + escapeHtml(currentMode.label) + '</div>' +
+        '<div class="emptyText">' + escapeHtml(currentMode.placeholder) + '</div>' +
+        '<div class="emptyNote">Conversations are not saved across page refreshes.</div>' +
+      '</div>';
+    return;
+  }
+  let html = "";
+  messages.forEach(msg => {
+    const isUser = msg.role === "user";
+    html += '<div class="msgRow ' + (isUser ? "user" : "") + '">';
+    html += '<div class="avatar ' + (isUser ? "user" : "ed") + '" aria-hidden="true">' + (isUser ? "👤" : "⚖️") + '</div>';
+    html += '<div class="bubble ' + (isUser ? "user" : "ed") + '"' + (isUser ? ' aria-label="You"' : ' aria-label="Executive Director, MCCR"') + '>';
+    if (!isUser) html += '<div class="edLabel" aria-hidden="true">EXECUTIVE DIRECTOR, MCCR</div>';
+    html += escapeHtml(msg.content).replace(/\n/g, "<br>");
+    html += '</div></div>';
+  });
+  if (showLoading) {
+    html += '<div class="msgRow" aria-live="off"><div class="avatar ed" aria-hidden="true">⚖️</div><div class="bubble ed" aria-label="Executive Director is typing"><div class="edLabel" aria-hidden="true">EXECUTIVE DIRECTOR, MCCR</div><div class="dots" aria-hidden="true"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div></div>';
+  }
+  chat.innerHTML = html;
+  chat.scrollTop = chat.scrollHeight;
+}
+
+function exportLog() {
+  const text = sessionLog.map(e => "[" + e.ts + "] " + e.mode + "\nQ: " + e.q + "\nA: " + e.a + "\n" + "-".repeat(60)).join("\n\n");
+  const blob = new Blob(["MCCR ED SIMULATOR - SESSION LOG\nGenerated: " + new Date().toLocaleString() + "\n\n" + text], {type:"text/plain"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "MCCR-Session-Log.txt";
+  a.click();
+}
+</script>
+</body>
+</html>
