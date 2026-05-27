@@ -98,6 +98,7 @@ a{color:inherit;text-decoration:none}
     <a href="simulations.html" class="active">Simulations</a>
     <a href="training.html">Reviewer Calibration</a>
     <a href="workflow-fit.html">Workflow Fit</a>
+    <a href="implementation-scenarios.html">Implementation</a>
     <a href="enterprise.html">Enterprise</a>
    </nav>
    <div class="header-meta">Operational Review Tools<br>Pre-Submission Review Controls</div>
@@ -139,7 +140,10 @@ a{color:inherit;text-decoration:none}
 <div class="cat-label" style="color:var(--review-text);">Category 01 — Sequence &amp; Timeline Instability</div>
 <p class="section-sub">Exercises focused on whether the sequence of events can be independently established from the file. The record may describe what happened without establishing when — or compress a multi-month sequence into language that provides no temporal anchoring.</p>
 
-<div class="sim-grid">
+<div style="display:flex;flex-wrap:wrap;border:1px solid var(--rule);background:var(--surface);margin-bottom:12px;overflow:hidden;">
+ <div style="padding:5px 10px;border-right:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);white-space:nowrap;">Reviewer Lens</div>
+ <div style="padding:5px 10px;border-right:1px solid var(--rule);font-size:11px;color:var(--muted-soft);">Can the sequence be established without the author?</div><div style="padding:5px 10px;border-right:1px solid var(--rule);font-size:11px;color:var(--muted-soft);">What dates are absent that would anchor this record?</div><div style="padding:5px 10px;border-right:1px solid var(--rule);font-size:11px;color:var(--muted-soft);">Where does the timeline become ambiguous?</div>
+</div><div class="sim-grid">
  <div class="sim-card">
   <div class="sim-num">CHRON-01</div>
   <div class="sim-title">Event Sequence Reconstruction</div>
@@ -170,7 +174,10 @@ a{color:inherit;text-decoration:none}
 <div class="cat-label" style="color:var(--stop-text);">Category 02 — Escalation Trail &amp; Counseling Support</div>
 <p class="section-sub">Exercises focused on whether the escalation basis is visible in the file. Escalation failures most often originate from undocumented coaching — the manager remembered the conversations, but the file does not reflect them.</p>
 
-<div class="sim-grid">
+<div style="display:flex;flex-wrap:wrap;border:1px solid var(--rule);background:var(--surface);margin-bottom:12px;overflow:hidden;">
+ <div style="padding:5px 10px;border-right:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);white-space:nowrap;">Reviewer Lens</div>
+ <div style="padding:5px 10px;border-right:1px solid var(--rule);font-size:11px;color:var(--muted-soft);">Is the counseling trail on file — or in memory?</div><div style="padding:5px 10px;border-right:1px solid var(--rule);font-size:11px;color:var(--muted-soft);">Where did escalation logic shift between records?</div><div style="padding:5px 10px;border-right:1px solid var(--rule);font-size:11px;color:var(--muted-soft);">Would another reviewer reach the same routing decision?</div>
+</div><div class="sim-grid">
  <div class="sim-card">
   <div class="sim-num">ESCL-01</div>
   <div class="sim-title">Counseling Trail Verification</div>
@@ -201,7 +208,10 @@ a{color:inherit;text-decoration:none}
 <div class="cat-label" style="color:var(--review-text);">Category 03 — Generated Language &amp; Source Verification</div>
 <p class="section-sub">Exercises focused on the specific documentation risk introduced by AI drafting tools: confident conclusions without identifiable source support. The generated output reads with equal confidence whether the underlying notes are complete or fragmentary.</p>
 
-<div class="sim-grid">
+<div style="display:flex;flex-wrap:wrap;border:1px solid var(--rule);background:var(--surface);margin-bottom:12px;overflow:hidden;">
+ <div style="padding:5px 10px;border-right:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);white-space:nowrap;">Reviewer Lens</div>
+ <div style="padding:5px 10px;border-right:1px solid var(--rule);font-size:11px;color:var(--muted-soft);">Which characterizations exist in the source — and which were introduced by the model?</div><div style="padding:5px 10px;border-right:1px solid var(--rule);font-size:11px;color:var(--muted-soft);">Does the source material support the confidence level of the output?</div><div style="padding:5px 10px;border-right:1px solid var(--rule);font-size:11px;color:var(--muted-soft);">What would a later reviewer find when tracing this conclusion to its source?</div>
+</div><div class="sim-grid">
  <div class="sim-card">
   <div class="sim-num">AI-01</div>
   <div class="sim-title">Source Note Verification</div>
@@ -232,7 +242,10 @@ a{color:inherit;text-decoration:none}
 <div class="cat-label" style="color:var(--accent-dim);">Category 04 — Consistency &amp; Treatment Disparity</div>
 <p class="section-sub">Exercises focused on whether similar records received consistent treatment. Comparator review applies when escalation patterns, documentation density, or outcome rationale differ across records that should be internally consistent.</p>
 
-<div class="sim-grid">
+<div style="display:flex;flex-wrap:wrap;border:1px solid var(--rule);background:var(--surface);margin-bottom:12px;overflow:hidden;">
+ <div style="padding:5px 10px;border-right:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);white-space:nowrap;">Reviewer Lens</div>
+ <div style="padding:5px 10px;border-right:1px solid var(--rule);font-size:11px;color:var(--muted-soft);">What changed between records that should be internally consistent?</div><div style="padding:5px 10px;border-right:1px solid var(--rule);font-size:11px;color:var(--muted-soft);">Would both records withstand the same level of scrutiny?</div><div style="padding:5px 10px;border-right:1px solid var(--rule);font-size:11px;color:var(--muted-soft);">What explains the difference in treatment — and is that explanation in the file?</div>
+</div><div class="sim-grid">
  <div class="sim-card">
   <div class="sim-num">COMP-01</div>
   <div class="sim-title">Escalation Consistency Check</div>
@@ -263,7 +276,10 @@ a{color:inherit;text-decoration:none}
 <div class="cat-label" style="color:var(--accent-dim);">Category 05 — Interpretation Divergence &amp; Threshold Variation</div>
 <p class="section-sub">Exercises focused on conditions where reviewers reach different conclusions from the same file. Disagreement typically emerges around escalation thresholds, contextual interpretation, and records where supporting documentation is present but incomplete.</p>
 
-<div class="sim-grid">
+<div style="display:flex;flex-wrap:wrap;border:1px solid var(--rule);background:var(--surface);margin-bottom:12px;overflow:hidden;">
+ <div style="padding:5px 10px;border-right:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);white-space:nowrap;">Reviewer Lens</div>
+ <div style="padding:5px 10px;border-right:1px solid var(--rule);font-size:11px;color:var(--muted-soft);">Could another reviewer reach a different conclusion from this file?</div><div style="padding:5px 10px;border-right:1px solid var(--rule);font-size:11px;color:var(--muted-soft);">What in the file drives the disagreement — and what would resolve it?</div><div style="padding:5px 10px;border-right:1px solid var(--rule);font-size:11px;color:var(--muted-soft);">What calibration would produce consistent routing decisions across reviewers?</div>
+</div><div class="sim-grid">
  <div class="sim-card">
   <div class="sim-num">RDIS-01</div>
   <div class="sim-title">Escalation Threshold Disagreement</div>
@@ -294,7 +310,10 @@ a{color:inherit;text-decoration:none}
 <div class="cat-label" style="color:var(--muted-soft);">Category 06 — Independent Reconstructability</div>
 <p class="section-sub">Exercises focused on whether a later reviewer, working from the file alone, can independently reconstruct the basis, chronology, and reasoning of the original record. This is the core test of documentation quality under JRS review conditions.</p>
 
-<div class="sim-grid">
+<div style="display:flex;flex-wrap:wrap;border:1px solid var(--rule);background:var(--surface);margin-bottom:12px;overflow:hidden;">
+ <div style="padding:5px 10px;border-right:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);white-space:nowrap;">Reviewer Lens</div>
+ <div style="padding:5px 10px;border-right:1px solid var(--rule);font-size:11px;color:var(--muted-soft);">What can be established from the file alone — without the original author?</div><div style="padding:5px 10px;border-right:1px solid var(--rule);font-size:11px;color:var(--muted-soft);">What requires the author's presence to explain — and is that acceptable?</div><div style="padding:5px 10px;border-right:1px solid var(--rule);font-size:11px;color:var(--muted-soft);">Would this record hold up under cold-read review by someone with no prior knowledge?</div>
+</div><div class="sim-grid">
  <div class="sim-card">
   <div class="sim-num">RCON-01</div>
   <div class="sim-title">Cold-Read Reconstruction</div>
