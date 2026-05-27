@@ -433,11 +433,15 @@ a:hover{text-decoration:underline}
   .sim-card-grid{grid-template-columns:1fr 1fr}
   .ref-conditions-grid{grid-template-columns:1fr 1fr}
   .resources-grid{grid-template-columns:1fr}
+  .sticky-nav-cta{display:none}
+  #role-panel-content{grid-template-columns:1fr!important}
+  .start-here-bar .hero-ctas{flex-direction:column;align-items:stretch}
 }
 @media(max-width:480px){
   .hero-h1{font-size:24px}
   .sim-card-grid{grid-template-columns:1fr}
   .ref-conditions-grid{grid-template-columns:1fr}
+  .sticky-nav-link{padding:11px 12px;font-size:7.5px}
 }
 </style>
 </head>
@@ -736,7 +740,6 @@ a:hover{text-decoration:underline}
 
   <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:24px;line-height:1.7"><strong style="color:var(--text)">Reviewer Judgment Required</strong> &#8212; Outputs are intended to support reviewer analysis and do not replace organizational judgment, investigative review, legal review, or escalation procedures.</div>
 
-  <div style="display:flex;gap:0;border-bottom:1px solid var(--rule);margin-bottom:0">
   <div style="display:flex;gap:0;border-bottom:1px solid var(--rule);margin-bottom:0">
     <button class="sim-tab active" id="sim-tab-0" onclick="showSimTab(0)">1. Document Review</button>
     <button class="sim-tab" id="sim-tab-1" onclick="showSimTab(1)">2. Routing Decisions</button>
@@ -2456,6 +2459,7 @@ renderFM();
     </div>
     <div class="findings-obs-note">Observational findings reflect participant-submitted survey responses and simulation session data. Not empirical validation. Findings do not represent statistically significant research outcomes. Organizations should not rely on these observations as compliance guidance, legal precedent, or governance authority.</div>
   </div>
+</div>
 
 <div id="cert-section" style="display:none;max-width:960px;margin:0 auto;padding:0 24px 48px">
   <div style="border:1px solid rgba(190,148,71,.4);background:rgba(190,148,71,.05);padding:28px 28px 24px">
@@ -2471,7 +2475,7 @@ renderFM();
       </button>
     </div>
     <canvas id="cert-canvas" style="display:none;max-width:100%;border:1px solid var(--rule);margin-bottom:12px"></canvas>
-    <div id="cert-actions" style="display:none;display:flex;gap:12px;flex-wrap:wrap">
+    <div id="cert-actions" style="display:none;gap:12px;flex-wrap:wrap">
       <button onclick="downloadCert()"
         style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);background:none;border:1px solid rgba(190,148,71,.4);padding:9px 18px;cursor:pointer">
         Download PNG
