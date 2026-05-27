@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pilot Program | JRS Operational Review</title>
+<meta property="og:title" content="JRS Pilot Program" />
+<meta property="og:description" content="Structured, low-overhead pilot participation for HR teams, compliance programs, and investigation units. Scope defined collaboratively. No software purchase. No policy change required." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://jrsstandard.com/pilot" />
+<meta property="og:site_name" content="JRS Operational Review Tools" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="JRS Pilot Program" />
+<meta name="twitter:description" content="Test operational review controls before broader deployment. Scope defined collaboratively. No policy change required to begin." />
+<link rel="canonical" href="https://jrsstandard.com/pilot" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<meta name="description" content="JRS Operational Review Pilot Program. For HR teams, compliance programs, and investigation units testing documentation review controls before broader deployment. One or two record types. No software purchase. No dedicated staff required.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NVYHJ7BJ92"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-NVYHJ7BJ92');
+</script>
+<style>
+:root{
+  --bg:#050505;--surface:#121212;--surface2:#1A1A1A;--surface3:#1E1E1E;
+  --rule:#2A2A2A;--rule-soft:#1E1E1E;
+  --text:#F2F2F2;--muted:#B3B3B3;--muted-soft:#8A8A8A;
+  --accent:#BE9447;--accent-dim:#7A5E28;
+  --stop:#8B2020;--review-c:#8B5E1A;--ready:#1E5C35;
+  --stop-text:#E88080;--review-text:#D4A055;--ready-text:#5DBF82;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased}
+
+.container{max-width:860px;margin:0 auto;padding:52px 28px 96px}
+.container-wide{max-width:1060px;margin:0 auto;padding:0 28px}
+
+/* HEADER */
+.site-header{border-bottom:1px solid var(--rule);padding:0 28px}
+.site-header-inner{max-width:1060px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;padding:20px 0 17px;flex-wrap:wrap}
+.wordmark{font-family:'Bodoni Moda',serif;font-size:30px;font-weight:500;color:var(--accent);line-height:1;text-decoration:none;text-rendering:optimizeLegibility}
+.header-meta{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);line-height:1.8;text-align:right}
+
+/* NAV */
+.primary-nav{border-bottom:1px solid var(--rule);background:var(--bg)}
+.primary-nav-inner{max-width:1060px;margin:0 auto;padding:0 28px;display:flex;align-items:stretch;gap:0;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.primary-nav-inner::-webkit-scrollbar{display:none}
+.nav-item{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);padding:12px 16px;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:.1s;background:none;border-top:none;border-left:none;border-right:none;text-decoration:none;display:inline-block}
+.nav-item:hover{color:var(--text)}
+.nav-item.active{color:var(--accent);border-bottom-color:var(--accent)}
+
+/* UTIL BAR */
+.util-bar{border-bottom:1px solid var(--rule);padding:0 28px;background:var(--bg)}
+.util-bar-inner{max-width:1060px;margin:0 auto;display:flex;align-items:center;gap:0;padding:0}
+.util-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);padding:9px 0;margin-right:18px;flex-shrink:0}
+.util-link{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;padding:9px 14px;border-left:1px solid var(--rule);transition:color .1s;white-space:nowrap}
+.util-link:hover{color:var(--text)}
+.util-link.accent-link{color:var(--accent)}
+
+/* TYPOGRAPHY */
+.page-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:12px;padding-top:48px}
+.page-title{font-family:'Bodoni Moda',serif;font-size:38px;font-weight:400;line-height:1.1;margin-bottom:14px;letter-spacing:-0.01em}
+.page-subtitle{font-size:16px;color:var(--muted);max-width:640px;margin-bottom:32px;line-height:1.7}
+.section-rule{border:none;border-top:1px solid var(--rule);margin:44px 0}
+.section-head{font-family:'Inter',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-soft);padding-bottom:10px;margin-bottom:16px;border-bottom:1px solid var(--rule)}
+.body-text{font-size:15.5px;line-height:1.75;color:var(--text);margin-bottom:14px}
+.muted-text{font-size:14px;color:var(--muted);line-height:1.7}
+
+/* CALLOUT */
+.callout{border-left:2px solid var(--accent);background:var(--surface);padding:14px 18px;margin:16px 0}
+.callout-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.callout p,.callout-body{font-size:14.5px;color:var(--text);line-height:1.7;margin:0}
+
+/* REVIEWER NOTE */
+.reviewer-note{background:var(--surface);border-left:2px solid var(--rule);padding:10px 14px;margin:12px 0;font-size:13px;color:var(--muted-soft);line-height:1.6}
+.reviewer-note-label{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px}
+
+/* BUTTONS */
+.btn{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;padding:12px 22px;cursor:pointer;text-decoration:none;display:inline-block;border:none;transition:.1s}
+.btn-primary{background:var(--accent);color:#050505;font-weight:600}
+.btn-primary:hover{background:#d4a855}
+.btn-ghost{background:none;color:var(--muted-soft);border:1px solid var(--rule)}
+.btn-ghost:hover{color:var(--text);border-color:#555}
+.btn-accent{background:none;color:var(--accent);border:1px solid rgba(190,148,71,.4)}
+.btn-accent:hover{color:var(--text);border-color:rgba(190,148,71,.8)}
+.btn-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+
+/* SCOPE GRID */
+.scope-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0}
+
+/* PHASE SEQUENCE */
+.phase-sequence{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--rule);min-width:600px}
+.phase-cell{padding:12px 14px;border-right:1px solid var(--rule)}
+.phase-cell:last-child{border-right:none}
+.phase-label{font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px}
+.phase-title{font-size:12.5px;font-weight:600;color:var(--text);margin-bottom:6px}
+.phase-desc{font-size:11.5px;color:var(--muted);line-height:1.5}
+
+/* PILOT STRUCTURE CARDS */
+.pilot-structures{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.pilot-card{border:1px solid var(--rule);background:var(--surface);padding:16px 18px}
+.pilot-card-label{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:6px}
+.pilot-card-title{font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:6px}
+.pilot-card-body{font-size:12.5px;color:var(--muted);line-height:1.6}
+
+/* WHO APPLIES */
+.who-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px}
+.who-card{border:1px solid var(--rule);padding:10px 12px;background:var(--surface2)}
+.who-card-label{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:4px}
+.who-card-body{font-size:12px;color:var(--muted);line-height:1.5}
+
+/* SCOPE LIST */
+.scope-list{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}
+.scope-item{display:flex;gap:8px;align-items:flex-start}
+.scope-dash{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent-dim);flex-shrink:0;margin-top:3px}
+.scope-text{font-size:13px;color:var(--muted);line-height:1.55}
+
+/* APPLY BLOCK */
+.apply-block{border:1px solid rgba(190,148,71,.3);background:rgba(190,148,71,.04);padding:28px;margin-bottom:44px}
+
+/* FOOTER */
+.site-footer{border-top:1px solid var(--rule);padding:24px 28px;margin-top:0}
+.site-footer-inner{max-width:1060px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap}
+.footer-links{display:flex;flex-wrap:wrap;gap:18px}
+.footer-link{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none}
+.footer-link:hover{color:var(--text)}
+.footer-copy{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-soft)}
+
+@media(max-width:640px){
+  .page-title{font-size:28px}
+  .scope-grid{grid-template-columns:1fr}
+  .who-grid{grid-template-columns:1fr}
+  .pilot-structures{grid-template-columns:1fr}
+  .scope-list{grid-template-columns:1fr}
+  .site-header-inner{padding:14px 0 12px}
+  .wordmark{font-size:24px}
+}
+</style>
+</head>
+<body>
+
+<div class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="wordmark">JRS<span style="font-size:11px;vertical-align:super;position:relative;top:-3px;letter-spacing:0;color:var(--accent);">&#8482;</span></a>
+    <div class="header-meta">Operational Review Tools<br>Pilot Program</div>
+  </div>
+</div>
+
+<nav class="primary-nav">
+  <div class="primary-nav-inner">
+    <a href="index.html" class="nav-item">Review Controls</a>
+    <a href="training.html" class="nav-item">Simulation Training &#8599;</a>
+    <a href="enterprise.html" class="nav-item">Enterprise</a>
+    <a href="pilot.html" class="nav-item active">Pilot Program</a>
+    <a href="index.html" class="nav-item">Free Resources</a>
+    <a href="mailto:phillipwikes@gmail.com?subject=JRS Pilot Program Inquiry" class="nav-item" style="color:var(--accent)">Apply &#8599;</a>
+  </div>
+</nav>
+
+<div class="util-bar">
+  <div class="util-bar-inner">
+    <span class="util-label">Pilot Program</span>
+    <a href="mailto:phillipwikes@gmail.com?subject=JRS Pilot Program Inquiry" class="util-link accent-link">Apply for Pilot Participation</a>
+    <a href="enterprise.html" class="util-link">Enterprise Implementation</a>
+    <a href="training.html" class="util-link">Simulation Training</a>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- PAGE HEADER -->
+  <div class="page-eyebrow">Pilot Program</div>
+  <h1 class="page-title">JRS Operational Review<br>Pilot Program</h1>
+  <p class="page-subtitle">For HR teams, compliance programs, and investigation units seeking a structured, low-overhead way to test operational review controls before broader deployment. Pilot scope is defined collaboratively based on the organization's existing workflows and highest-risk record types.</p>
+
+  <div class="apply-block">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">Apply for Participation</div>
+    <div style="font-family:'Bodoni Moda',serif;font-size:22px;font-weight:400;color:var(--text);margin-bottom:10px">Availability is limited. Requests are reviewed individually.</div>
+    <p style="font-size:14px;color:var(--muted);line-height:1.65;max-width:560px;margin-bottom:20px">No software purchase. No policy change. No dedicated staff required to begin. Scope is established in an initial conversation and can pause or limit at any stage.</p>
+    <div class="btn-row" style="margin-top:0">
+      <a href="mailto:phillipwikes@gmail.com?subject=JRS Pilot Program Inquiry" class="btn btn-primary">Apply for Pilot Participation &#8594;</a>
+      <a href="enterprise.html" class="btn btn-ghost">View Enterprise Implementation</a>
+      <a href="training.html" class="btn btn-ghost">Explore Simulations First</a>
+    </div>
+  </div>
+
+  <hr class="section-rule">
+
+  <!-- TYPICAL SCOPE -->
+  <div style="margin-bottom:44px">
+    <div class="section-head">Typical Pilot Scope</div>
+    <p class="muted-text" style="margin-bottom:14px;max-width:600px">Pilot scope is defined collaboratively based on existing workflows, reviewer availability, and the record types presenting the highest documentation risk. Organizations set the boundaries.</p>
+    <div class="scope-list">
+      <div class="scope-item"><span class="scope-dash">—</span><span class="scope-text">One or two record types as the starting scope</span></div>
+      <div class="scope-item"><span class="scope-dash">—</span><span class="scope-text">Reviewer onboarding using existing training infrastructure</span></div>
+      <div class="scope-item"><span class="scope-dash">—</span><span class="scope-text">Structured observation of gaps during initial review cycles</span></div>
+      <div class="scope-item"><span class="scope-dash">—</span><span class="scope-text">Assessment of expansion scope after the initial record-type cycle</span></div>
+      <div class="scope-item"><span class="scope-dash">—</span><span class="scope-text">No software purchase, no policy change, no dedicated staff required</span></div>
+      <div class="scope-item"><span class="scope-dash">—</span><span class="scope-text">Scope can pause or limit at any stage</span></div>
+    </div>
+  </div>
+
+  <!-- WHO APPLIES -->
+  <div style="margin-bottom:44px">
+    <div class="section-head">Who Applies</div>
+    <div class="who-grid">
+      <div class="who-card">
+        <div class="who-card-label">HR Teams</div>
+        <div class="who-card-body">Deploying documentation review controls across performance, discipline, termination, and accommodation records in multiple departments.</div>
+      </div>
+      <div class="who-card">
+        <div class="who-card-label">Compliance Programs</div>
+        <div class="who-card-body">Extending review controls to compliance narratives, audit documentation, and escalation records before they enter official systems.</div>
+      </div>
+      <div class="who-card">
+        <div class="who-card-label">Investigation Units</div>
+        <div class="who-card-body">Applying source verification and conflict acknowledgment controls to investigation summaries and findings documentation before filing.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5-PHASE SEQUENCE -->
+  <div style="margin-bottom:44px">
+    <div class="section-head">Pilot Engagement Sequence</div>
+    <p class="muted-text" style="max-width:600px;margin-bottom:14px">Five phases. Each has a specific purpose and a natural exit point. Organizations can scope participation at any stage without committing to subsequent phases.</p>
+    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch">
+      <div class="phase-sequence">
+        <div class="phase-cell" style="background:var(--surface)">
+          <div class="phase-label">Phase 1</div>
+          <div class="phase-title">Scope Definition</div>
+          <div class="phase-desc">Record types selected. Reviewer roster confirmed. Pilot scope defined collaboratively. No policy change required to begin.</div>
+        </div>
+        <div class="phase-cell" style="background:var(--surface2)">
+          <div class="phase-label">Phase 2</div>
+          <div class="phase-title">Simulation Engagement</div>
+          <div class="phase-desc">Reviewers complete simulation exercises before live record review. Chronology reconstruction, escalation routing, AI interpretation scenarios.</div>
+        </div>
+        <div class="phase-cell" style="background:var(--surface)">
+          <div class="phase-label">Phase 3</div>
+          <div class="phase-title">Reviewer Calibration</div>
+          <div class="phase-desc">Gap patterns observed across the reviewer cohort. Calibration inconsistencies logged. Common failure modes in the department's record type surface here.</div>
+        </div>
+        <div class="phase-cell" style="background:var(--surface2)">
+          <div class="phase-label">Phase 4</div>
+          <div class="phase-title">Workflow Observation</div>
+          <div class="phase-desc">Controls applied to actual records in the pilot scope. Escalation routing tested. Secondary review thresholds calibrated to organizational risk profile.</div>
+        </div>
+        <div class="phase-cell" style="background:var(--surface);border-right:none">
+          <div class="phase-label" style="color:var(--accent-dim)">Phase 5</div>
+          <div class="phase-title">Implementation Assessment</div>
+          <div class="phase-desc">Expansion scope evaluated. Multi-department pathway identified. Additional record types added where controls performed consistently.</div>
+        </div>
+      </div>
+    </div>
+    <div class="scope-grid" style="margin-top:8px">
+      <div style="padding:10px 14px;background:var(--surface);border:1px solid var(--rule);font-size:12px;color:var(--muted-soft);line-height:1.6">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ready-text)">Natural exit points — </span>Organizations can scope participation at Phase 1 (definition only), Phase 2 (simulation only), or Phase 3 (feedback without live-record application). No fixed commitment required beyond the agreed scope.
+      </div>
+      <div style="padding:10px 14px;background:var(--surface);border:1px solid var(--rule);font-size:12px;color:var(--muted-soft);line-height:1.6">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim)">No baseline disruption — </span>Each phase inserts into existing review workflows. No software migration, no policy change, no dedicated staff required at any phase.
+      </div>
+    </div>
+  </div>
+
+  <!-- PILOT STRUCTURES -->
+  <div style="margin-bottom:44px">
+    <div class="section-head">Typical Pilot Structures</div>
+    <p class="muted-text" style="max-width:600px;margin-bottom:0">Participation is structured around operational fit. Pilots are scoped based on existing workflows, reviewer availability, and the record types presenting the highest documentation risk.</p>
+    <div class="pilot-structures">
+      <div class="pilot-card">
+        <div class="pilot-card-label">Individual Reviewer Pilot</div>
+        <div class="pilot-card-title">Single reviewer. One record type. One review cycle.</div>
+        <div class="pilot-card-body">Apply the five review questions to the next 3–5 records in the queue. Gaps surface without coordination, training, or workflow change. Suitable for individual HR, compliance, or investigation reviewers testing applicability before recommending broader use.</div>
+      </div>
+      <div class="pilot-card">
+        <div class="pilot-card-label">Small-Team Pilot</div>
+        <div class="pilot-card-title">2–5 reviewers. One department. One to two record types.</div>
+        <div class="pilot-card-body">Reviewers apply the worksheet independently to the same record type, then compare findings. Calibration develops through shared review, not training. Common failure patterns in the department's records become visible within the first cycle.</div>
+      </div>
+      <div class="pilot-card">
+        <div class="pilot-card-label">Departmental Pilot</div>
+        <div class="pilot-card-title">Full department. Structured onboarding. Secondary review routing established.</div>
+        <div class="pilot-card-body">Reviewer onboarding using the Deployment Kit. Secondary review routing established for elevated-risk records. Escalation calibration across the department. Typically 4–8 weeks to establish consistent reviewer practice.</div>
+      </div>
+      <div class="pilot-card">
+        <div class="pilot-card-label">Simulation-Based Onboarding Pilot</div>
+        <div class="pilot-card-title">Reviewers begin with simulation exercises before applying controls to actual records.</div>
+        <div class="pilot-card-body">Simulation training (escalation review, chronology reconstruction, AI interpretation review) establishes reviewer calibration before live records are reviewed. Suitable for organizations deploying controls to reviewers without prior JRS experience.</div>
+      </div>
+    </div>
+    <div class="reviewer-note" style="margin-top:10px">
+      <div class="reviewer-note-label">Scope note</div>
+      Pilot participation is not a formal certification, accreditation, or governance credential. It is an operational engagement with the review infrastructure. Organizational decisions about legal sufficiency, policy compliance, and risk management remain with the organization and its legal counsel.
+    </div>
+  </div>
+
+  <!-- OPERATIONAL PATHWAY -->
+  <div style="margin-bottom:44px">
+    <div class="section-head">Operational Participation Pathway</div>
+    <p class="muted-text" style="max-width:600px;margin-bottom:14px">The typical sequence from first contact to aggregated findings. Each step has a natural exit point.</p>
+    <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--rule);overflow:hidden">
+      <div style="padding:10px 14px;border-bottom:1px solid var(--rule);font-size:13px;color:var(--muted);display:flex;align-items:center;gap:14px;background:var(--surface)">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--accent-dim);flex-shrink:0">01</span>
+        <span>Explore simulations and operational exercises on the <a href="training.html" style="color:var(--accent);text-decoration:none">training environment</a></span>
+      </div>
+      <div style="padding:10px 14px;border-bottom:1px solid var(--rule);font-size:13px;color:var(--muted);display:flex;align-items:center;gap:14px;background:var(--surface2)">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--accent-dim);flex-shrink:0">02</span>
+        <span>Review exercises for workflow applicability to your record types</span>
+      </div>
+      <div style="padding:10px 14px;border-bottom:1px solid var(--rule);font-size:13px;color:var(--muted);display:flex;align-items:center;gap:14px;background:var(--surface)">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--accent-dim);flex-shrink:0">03</span>
+        <span>Define pilot scope — record types, reviewer roster, department boundary</span>
+      </div>
+      <div style="padding:10px 14px;border-bottom:1px solid var(--rule);font-size:13px;color:var(--muted);display:flex;align-items:center;gap:14px;background:var(--surface2)">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--accent-dim);flex-shrink:0">04</span>
+        <span>Participate in observation surveys during pilot phase</span>
+      </div>
+      <div style="padding:10px 14px;font-size:13px;color:var(--muted);display:flex;align-items:center;gap:14px;background:var(--surface)">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--accent-dim);flex-shrink:0">05</span>
+        <span>Contribute to aggregated operational findings</span>
+      </div>
+    </div>
+    <div style="margin-top:8px;padding:10px 14px;background:var(--surface);border:1px solid var(--rule);font-size:12px;color:var(--muted-soft);line-height:1.6">
+      Participation is observational and operational in nature and does not establish certification, accreditation, legal authority, governance endorsement, or formal enterprise approval.
+    </div>
+  </div>
+
+  <!-- APPLY SECTION -->
+  <div style="margin-bottom:44px;border:1px solid var(--rule);padding:20px 22px;background:var(--surface)">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px">Pilot Inquiry</div>
+    <p style="font-size:13.5px;color:var(--muted);line-height:1.65;max-width:540px;margin-bottom:14px">Organizations evaluating pilot participation may request an initial conversation to define scope, confirm record types, and identify the appropriate entry point. Discussions are limited to workflow adaptation, reviewer onboarding, and implementation questions.</p>
+    <div style="font-size:13px;color:var(--muted-soft);margin-bottom:14px;line-height:1.6">
+      <strong style="color:var(--muted);font-weight:600">Scope of discussion:</strong> Workflow insertion points and reviewer routing. Phased or selective deployment. Higher-risk record categories as starting points. Department-level or record-type-level implementation. Integration with existing HR, compliance, or investigation workflows.
+    </div>
+    <div style="margin-bottom:10px;font-size:12px;color:var(--muted-soft);font-style:italic">Requests are reviewed. Response time and availability are not guaranteed.</div>
+    <div class="btn-row" style="margin-top:14px">
+      <a href="mailto:phillipwikes@gmail.com?subject=JRS Pilot Program Inquiry" class="btn btn-primary">Apply for Pilot Participation &#8594;</a>
+      <a href="mailto:phillipwikes@gmail.com?subject=JRS Enterprise Implementation Inquiry" class="btn btn-accent">Enterprise Inquiry</a>
+      <a href="training.html" class="btn btn-ghost">Explore Simulations</a>
+    </div>
+  </div>
+
+  <!-- SCOPE DISCLAIMER -->
+  <div class="callout" style="margin-bottom:44px">
+    <div class="callout-label">Operational Scope</div>
+    <p>Pilot participation is a practical review layer, not a replacement governance system. It is designed for lightweight integration within existing documentation workflows — not for organizational restructuring, software replacement, or procedural overhaul. It does not replace legal, HR, investigative, or compliance judgment. Organizations should engage legal counsel separately on questions of legal sufficiency, regulatory compliance, and jurisdiction-specific requirements.</p>
+  </div>
+
+  <!-- RESOURCES -->
+  <div style="margin-bottom:20px">
+    <div class="section-head">Resources</div>
+    <div class="btn-row">
+      <a href="JRS-Standard.pdf" class="btn btn-ghost">View Review Controls PDF</a>
+      <a href="training.html" class="btn btn-accent">Explore Simulations &#8594;</a>
+      <a href="enterprise.html" class="btn btn-ghost">Enterprise Implementation</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="site-footer">
+  <div class="site-footer-inner">
+    <div class="footer-links">
+      <a href="index.html" class="footer-link">Home</a>
+      <a href="enterprise.html" class="footer-link">Enterprise</a>
+      <a href="pilot.html" class="footer-link">Pilot Program</a>
+      <a href="training.html" class="footer-link">Simulation Training</a>
+      <a href="JRS-Standard.pdf" class="footer-link">Review Controls PDF</a>
+      <a href="mailto:phillipwikes@gmail.com" class="footer-link">Contact</a>
+    </div>
+    <div class="footer-copy">&#169; 2026 Phillip Wikes &nbsp;·&nbsp; JRS&#8482;</div>
+  </div>
+</div>
+
+</body>
+</html>
