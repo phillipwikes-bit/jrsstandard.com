@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reconstruction Simulations | JRS Reviewer Calibration</title>
-<meta name="description" content="JRS Deployment Kit - Reviewer training modules, operational forms, and reference materials. Version 1.0, May 2026.">
+<title>JRS Operational Participation | Reviewer Calibration and Procedural Review</title>
+<meta name="description" content="Simulation-centered reviewer-calibration and procedural-review participation environment for AI-assisted workplace and compliance documentation review. No software migration required.">
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVYHJ7BJ92"></script>
 <script>
@@ -222,12 +222,133 @@ a:hover{text-decoration:underline}
 .site-footer{border-top:1px solid var(--rule);padding:24px;text-align:center;margin-top:0}
 .footer-text{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);line-height:2}
 
+/* ─── PARTICIPATION GATEWAY ──────────────────────────────── */
+.participation-gateway{border:1px solid rgba(190,148,71,.3);background:rgba(190,148,71,.03);padding:28px 28px 24px;margin-bottom:36px}
+.gateway-eyebrow{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.gateway-title{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--text);margin-bottom:12px;line-height:1.3}
+.gateway-body{font-size:14px;color:var(--muted);line-height:1.7;max-width:740px;margin-bottom:16px}
+.problem-tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.problem-tag{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 10px;background:var(--surface)}
+.problem-tag.flagged{color:var(--stop-text);border-color:rgba(232,128,128,.25);background:rgba(139,32,32,.06)}
+.gateway-roles{font-size:12.5px;color:var(--muted-soft);margin-bottom:20px;line-height:1.6}
+.gateway-ctas{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.btn-gw-primary{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:12px 24px;text-decoration:none;display:inline-block;border:none;cursor:pointer;font-weight:600}
+.btn-gw-primary:hover{background:#D4A84F;text-decoration:none}
+.btn-gw-secondary{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(190,148,71,.4);padding:11px 22px;text-decoration:none;display:inline-block}
+.btn-gw-secondary:hover{background:rgba(190,148,71,.08);text-decoration:none}
+.btn-gw-ghost{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:11px 22px;text-decoration:none;display:inline-block}
+.btn-gw-ghost:hover{color:var(--text);border-color:var(--muted);text-decoration:none}
+.gateway-impl-strip{display:flex;border:1px solid var(--rule);overflow:hidden;flex-wrap:wrap}
+.gateway-impl-item{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);padding:8px 14px;border-right:1px solid var(--rule);background:var(--surface);flex-shrink:0}
+.gateway-impl-item:last-child{border-right:none}
+
+/* ─── MANDATORY DISCLAIMER ───────────────────────────────── */
+.mandatory-disclaimer{border:1px solid var(--rule);background:var(--surface);padding:14px 18px;margin-bottom:36px}
+.disclaimer-label{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px}
+.disclaimer-text{font-size:12px;color:var(--muted-soft);line-height:1.7}
+
+/* ─── PROBLEM CARDS ──────────────────────────────────────── */
+.problem-card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);overflow:hidden;margin-bottom:48px}
+.problem-card{background:var(--surface);padding:18px 18px 20px}
+.problem-card:hover{background:var(--surface2)}
+.problem-card-eyebrow{font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.2em;text-transform:uppercase;color:var(--stop-text);margin-bottom:6px}
+.problem-card-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px}
+.problem-card-body{font-size:12.5px;color:var(--muted);line-height:1.6}
+.problem-card-tag{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.1em;color:var(--muted-soft);border-left:2px solid var(--rule);padding-left:8px;margin-top:10px;line-height:1.4}
+
+/* ─── ROLE ENTRY PATHS ───────────────────────────────────── */
+.role-path-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);overflow:hidden;margin-bottom:48px}
+.role-path-card{background:var(--surface);padding:18px 16px 20px;display:flex;flex-direction:column}
+.role-path-card:hover{background:var(--surface2)}
+.role-path-eyebrow{font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:5px}
+.role-path-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:10px;line-height:1.3}
+.role-path-uses{list-style:none;padding:0;margin:0 0 14px;flex:1}
+.role-path-uses li{font-size:11.5px;color:var(--muted);padding:4px 0;border-bottom:1px solid var(--rule-soft);line-height:1.4}
+.role-path-uses li:last-child{border-bottom:none}
+.btn-role{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(190,148,71,.3);padding:7px 12px;text-decoration:none;display:inline-block;margin-top:auto}
+.btn-role:hover{background:rgba(190,148,71,.08);text-decoration:none}
+
+/* ─── PARTICIPATION FLOW ─────────────────────────────────── */
+.flow-container{display:flex;flex-direction:column;max-width:580px;margin-bottom:48px}
+.flow-step{display:grid;grid-template-columns:44px 1fr}
+.flow-step-left{display:flex;flex-direction:column;align-items:center;padding-top:1px}
+.flow-node{width:11px;height:11px;border:1px solid var(--accent);background:none;flex-shrink:0}
+.flow-node.dim{border-color:var(--muted-soft)}
+.flow-line{width:1px;flex:1;background:var(--rule);min-height:24px}
+.flow-step-body{padding:0 0 28px 12px}
+.flow-step-num{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:3px}
+.flow-step-num.dim{color:var(--muted-soft)}
+.flow-step-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px}
+.flow-step-title.dim{color:var(--muted)}
+.flow-step-desc{font-size:12.5px;color:var(--muted);line-height:1.55}
+
+/* ─── OBSERVATIONAL SURVEY ───────────────────────────────── */
+.survey-outer{background:var(--surface);border-top:1px solid var(--rule);padding:56px 24px 64px}
+.survey-inner{max-width:820px;margin:0 auto}
+.survey-eyebrow{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.survey-title{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--text);margin-bottom:10px}
+.survey-desc{font-size:14px;color:var(--muted);line-height:1.7;max-width:640px;margin-bottom:36px}
+.survey-question{margin-bottom:28px;padding-bottom:28px;border-bottom:1px solid var(--rule)}
+.survey-q-label{font-size:13.5px;color:var(--text);font-weight:600;margin-bottom:6px;line-height:1.5}
+.survey-q-sub{font-size:12px;color:var(--muted-soft);margin-bottom:12px}
+.survey-scale-row{display:flex;gap:6px;flex-wrap:wrap}
+.survey-scale-btn{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;background:none;border:1px solid var(--rule);color:var(--muted-soft);padding:9px 14px;cursor:pointer;transition:.15s}
+.survey-scale-btn:hover{color:var(--text);border-color:var(--muted-soft)}
+.survey-scale-btn.sel{background:rgba(190,148,71,.08);border-color:var(--accent);color:var(--accent)}
+.survey-choice-row{display:flex;flex-direction:column;gap:6px}
+.survey-choice-btn{font-size:13px;color:var(--muted);background:var(--surface2);border:1px solid var(--rule);padding:10px 16px;cursor:pointer;text-align:left;transition:.15s}
+.survey-choice-btn:hover{color:var(--text);border-color:var(--muted-soft)}
+.survey-choice-btn.sel{background:rgba(190,148,71,.06);border-color:rgba(190,148,71,.4);color:var(--text)}
+.survey-textarea{width:100%;background:#121212;border:1px solid var(--rule);color:var(--muted);font-family:'Inter',sans-serif;font-size:13px;line-height:1.65;padding:12px 14px;resize:vertical;min-height:80px;box-sizing:border-box;margin-top:4px}
+.survey-textarea:focus{outline:none;border-color:rgba(190,148,71,.5)}
+.btn-survey-submit{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:14px 28px;cursor:pointer;font-weight:600}
+.btn-survey-submit:hover{background:#D4A84F}
+.survey-complete{display:none;border:1px solid rgba(93,191,130,.3);background:rgba(30,92,53,.06);padding:24px 28px}
+.survey-complete-label{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--ready-text);margin-bottom:8px}
+.survey-complete-text{font-size:14px;color:var(--muted);line-height:1.7}
+.survey-disclaimer{font-size:11.5px;color:var(--muted-soft);margin-top:28px;line-height:1.65;padding-top:16px;border-top:1px solid var(--rule)}
+
+/* ─── AGGREGATED FINDINGS ────────────────────────────────── */
+.findings-outer{background:var(--bg);border-top:1px solid var(--rule);padding:56px 24px 64px}
+.findings-inner{max-width:960px;margin:0 auto}
+.findings-eyebrow{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.findings-title{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--text);margin-bottom:10px}
+.findings-desc{font-size:14px;color:var(--muted);line-height:1.7;max-width:640px;margin-bottom:28px}
+.findings-density-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);overflow:hidden;margin-bottom:28px}
+.findings-density-item{background:var(--surface);padding:16px 18px}
+.findings-density-num{font-family:'JetBrains Mono',monospace;font-size:22px;color:var(--accent);margin-bottom:3px}
+.findings-density-label{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);line-height:1.4}
+.findings-grid{display:flex;flex-direction:column;gap:0;border:1px solid var(--rule);overflow:hidden;margin-bottom:20px}
+.finding-item{padding:18px 22px;background:var(--surface);border-bottom:1px solid var(--rule);border-left:3px solid var(--rule)}
+.finding-item:last-child{border-bottom:none}
+.finding-item.freq{border-left-color:var(--stop-text)}
+.finding-item.mod{border-left-color:var(--review-text)}
+.finding-item.low{border-left-color:var(--accent-dim)}
+.finding-category{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px}
+.finding-text{font-size:13.5px;color:var(--muted);line-height:1.65}
+.findings-obs-note{font-size:12px;color:var(--muted-soft);font-style:italic;line-height:1.65;padding-top:12px;border-top:1px solid var(--rule);margin-top:4px}
+
 /* MOBILE - reduce gold accent density in secondary metadata */
 @media(max-width:600px){
   .kit-doc-type,.kit-doc-meta,.section-label,.module-status,.progress-section-label{color:var(--muted-soft)!important}
   .kit-notice{color:var(--muted-soft)!important;border-color:var(--rule)!important}
   .back-to-site{display:none}
   .site-header-meta{display:none}
+}
+
+/* MOBILE — new components */
+@media(max-width:640px){
+  .problem-card-grid{grid-template-columns:1fr 1fr}
+  .role-path-grid{grid-template-columns:1fr 1fr}
+  .findings-density-bar{grid-template-columns:1fr 1fr}
+  .gateway-impl-strip{flex-direction:column}
+  .gateway-impl-item{border-right:none;border-bottom:1px solid var(--rule)}
+  .gateway-impl-item:last-child{border-bottom:none}
+}
+@media(max-width:480px){
+  .problem-card-grid{grid-template-columns:1fr}
+  .role-path-grid{grid-template-columns:1fr}
+  .findings-density-bar{grid-template-columns:1fr}
 }
 
 /* MOBILE */
@@ -250,7 +371,7 @@ a:hover{text-decoration:underline}
 <header class="site-header">
   <div class="site-header-inner">
     <span class="wordmark">JRS Standard</span>
-    <div class="site-header-title">Deployment Kit Access</div>
+    <div class="site-header-title">Operational Review Participation</div>
     <div class="site-header-meta">Reviewer Training and Reference Materials &nbsp;|&nbsp; Version 1.0 &nbsp;|&nbsp; May 2026 &nbsp;|&nbsp; jrsstandard.com</div>
     <a href="/" class="back-to-site">&#8592; Return to JRS Standard</a>
   </div>
@@ -343,7 +464,179 @@ a:hover{text-decoration:underline}
 
   </div>
 
-  
+  <!-- ═══ LAYER 1: PARTICIPATION GATEWAY ═══════════════════════ -->
+  <div class="participation-gateway">
+    <div class="gateway-eyebrow">JRS Operational Participation Environment</div>
+    <div class="gateway-title">Reviewer Calibration and Procedural-Review Participation</div>
+    <p class="gateway-body">This environment supports reviewer calibration, reconstruction exercises, and procedural-review observation across AI-assisted workplace and compliance documentation conditions. No software migration required. Materials are designed for existing HR, investigative, and compliance workflows and can be applied during onboarding or escalation review without deployment commitment.</p>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:8px">Procedural instability conditions addressed</div>
+    <div class="problem-tag-row">
+      <span class="problem-tag flagged">chronology instability</span>
+      <span class="problem-tag flagged">escalation inconsistency</span>
+      <span class="problem-tag flagged">unsupported characterization</span>
+      <span class="problem-tag">contextual fragmentation</span>
+      <span class="problem-tag">ai-assisted inference propagation</span>
+      <span class="problem-tag">reconstruction failure</span>
+    </div>
+    <div class="gateway-roles"><strong style="color:var(--muted);font-weight:500">Participation is relevant for:</strong>&nbsp; HR review teams &nbsp;·&nbsp; investigators &nbsp;·&nbsp; employee relations personnel &nbsp;·&nbsp; compliance reviewers &nbsp;·&nbsp; administrative review professionals &nbsp;·&nbsp; governance-adjacent operational personnel</div>
+    <div class="gateway-ctas">
+      <a href="#simulator" class="btn-gw-primary">Begin Participation</a>
+      <a href="#training-modules" class="btn-gw-secondary">Access Reviewer Materials</a>
+      <a href="#toolkit" class="btn-gw-ghost">Reviewer Toolkit</a>
+    </div>
+    <div class="gateway-impl-strip">
+      <div class="gateway-impl-item">No software migration required</div>
+      <div class="gateway-impl-item">Designed for existing workflows</div>
+      <div class="gateway-impl-item">Operationally lightweight implementation</div>
+      <div class="gateway-impl-item">Usable during onboarding and escalation review</div>
+    </div>
+  </div>
+
+  <!-- MANDATORY DISCLAIMER -->
+  <div class="mandatory-disclaimer">
+    <div class="disclaimer-label">Operational Boundary</div>
+    <p class="disclaimer-text">JRS participation materials are designed for operational-review observation and reviewer-calibration purposes only and should not be interpreted as legal advice, compliance certification, organizational endorsement, or formal governance authority.</p>
+    <p class="disclaimer-text" style="margin-top:5px">Participation does not establish certification, accreditation, or enterprise authorization.</p>
+  </div>
+
+  <!-- ═══ PROCEDURAL INSTABILITY CONDITIONS ════════════════════ -->
+  <div class="section-head" style="margin-top:0">Procedural Instability Conditions</div>
+  <p class="section-sub">Recognizable conditions that create documentation reviewability gaps before and after finalization. Each condition affects a subsequent reviewer's ability to reconstruct the record independently.</p>
+  <div class="problem-card-grid">
+    <div class="problem-card">
+      <div class="problem-card-eyebrow">Procedural Instability</div>
+      <div class="problem-card-title">Chronology Instability</div>
+      <div class="problem-card-body">Events described without specific dates or sequencing. A downstream reviewer cannot reconstruct when conduct occurred or in what order. Common in routine records not expected to face later scrutiny.</div>
+      <div class="problem-card-tag">Affects RC 1 — Identifiable Basis</div>
+    </div>
+    <div class="problem-card">
+      <div class="problem-card-eyebrow">Procedural Instability</div>
+      <div class="problem-card-title">Escalation Inconsistency</div>
+      <div class="problem-card-body">Escalation language appears without an identifiable prior counseling trail. Prior interventions are referenced as though documented but are not traceable to records in the file.</div>
+      <div class="problem-card-tag">Affects RC 2 — Evidential Basis</div>
+    </div>
+    <div class="problem-card">
+      <div class="problem-card-eyebrow">Procedural Instability</div>
+      <div class="problem-card-title">Unsupported Characterization</div>
+      <div class="problem-card-body">Evaluative conclusions appear without documented behavioral anchors. Pattern claims and adjectives cannot be traced to specific recorded events by a subsequent reviewer.</div>
+      <div class="problem-card-tag">Affects RC 3 — Reasoning Visibility</div>
+    </div>
+    <div class="problem-card">
+      <div class="problem-card-eyebrow">Procedural Instability</div>
+      <div class="problem-card-title">Contextual Fragmentation</div>
+      <div class="problem-card-body">Records originate across multiple systems not consolidated at review. A subsequent reviewer may not have access to the complete record and cannot identify what is missing.</div>
+      <div class="problem-card-tag">Affects RC 5 — Reconstruction Continuity</div>
+    </div>
+    <div class="problem-card">
+      <div class="problem-card-eyebrow">Procedural Instability</div>
+      <div class="problem-card-title">AI-Assisted Inference Propagation</div>
+      <div class="problem-card-body">Generated wording introduces confidence not reflected in source notes. Conclusions exceed the observable support in available materials. The record may appear complete when the evidentiary basis is partial.</div>
+      <div class="problem-card-tag">Affects RC 2 &amp; RC 3</div>
+    </div>
+    <div class="problem-card">
+      <div class="problem-card-eyebrow">Procedural Instability</div>
+      <div class="problem-card-title">Reconstruction Failure</div>
+      <div class="problem-card-body">A record understandable when drafted becomes inaccessible after personnel change, system migration, or retention schedule application. Context assumed to be shared is not written down.</div>
+      <div class="problem-card-tag">Affects RC 5 — Reconstruction Continuity</div>
+    </div>
+  </div>
+
+  <!-- ═══ ROLE ENTRY PATHS ══════════════════════════════════════ -->
+  <div class="section-head" style="margin-top:0">Entry Points by Role</div>
+  <p class="section-sub">Select the entry path most relevant to your operational context. All materials are available from any entry point. Role paths identify the most applicable review conditions and kit documents for each function.</p>
+  <div class="role-path-grid">
+    <div class="role-path-card">
+      <div class="role-path-eyebrow">Field Reference</div>
+      <div class="role-path-title">Investigator</div>
+      <ul class="role-path-uses">
+        <li>Witness account preservation</li>
+        <li>Source material identification</li>
+        <li>Timeline documentation</li>
+        <li>Independence requirements</li>
+        <li>Conflicting account handling</li>
+      </ul>
+      <a href="#training-modules" class="btn-role">Enter as Investigator</a>
+    </div>
+    <div class="role-path-card">
+      <div class="role-path-eyebrow">Primary Review</div>
+      <div class="role-path-title">HR Reviewer</div>
+      <ul class="role-path-uses">
+        <li>Pre-finalization checklist</li>
+        <li>Escalation routing</li>
+        <li>AI content verification</li>
+        <li>Pattern claim anchoring</li>
+        <li>Attachment confirmation</li>
+      </ul>
+      <a href="#training-modules" class="btn-role">Enter as HR Reviewer</a>
+    </div>
+    <div class="role-path-card">
+      <div class="role-path-eyebrow">Account Preservation</div>
+      <div class="role-path-title">Employee Relations</div>
+      <ul class="role-path-uses">
+        <li>Chronology review</li>
+        <li>Conflicting account documentation</li>
+        <li>Escalation threshold identification</li>
+        <li>Reconstruction continuity</li>
+        <li>Employee perspective preservation</li>
+      </ul>
+      <a href="#training-modules" class="btn-role">Enter as Employee Relations</a>
+    </div>
+    <div class="role-path-card">
+      <div class="role-path-eyebrow">Secondary Review</div>
+      <div class="role-path-title">Compliance Reviewer</div>
+      <ul class="role-path-uses">
+        <li>Secondary review routing</li>
+        <li>Gap documentation</li>
+        <li>Policy citation verification</li>
+        <li>Independence documentation</li>
+        <li>Escalation trigger review</li>
+      </ul>
+      <a href="#training-modules" class="btn-role">Enter as Compliance</a>
+    </div>
+    <div class="role-path-card">
+      <div class="role-path-eyebrow">Implementation</div>
+      <div class="role-path-title">Governance / Administrative</div>
+      <ul class="role-path-uses">
+        <li>Phased rollout guidance</li>
+        <li>Periodic sampling schedule</li>
+        <li>Variance documentation</li>
+        <li>Onboarding sequence</li>
+        <li>Reviewer orientation</li>
+      </ul>
+      <a href="#training-modules" class="btn-role">Enter as Administrator</a>
+    </div>
+  </div>
+
+  <!-- ═══ LAYER 4: PARTICIPATION FLOW ══════════════════════════ -->
+  <div class="section-head" style="margin-top:0">Operational Participation Sequence</div>
+  <p class="section-sub">Six steps. Incremental. No deployment commitment required at any stage. Each step can be applied independently within existing workflows.</p>
+  <div class="flow-container">
+    <div class="flow-step">
+      <div class="flow-step-left"><div class="flow-node"></div><div class="flow-line"></div></div>
+      <div class="flow-step-body"><div class="flow-step-num">Step 01</div><div class="flow-step-title">Apply</div><div class="flow-step-desc">Access the participation environment. Review the overview and identify the relevant entry point by role.</div></div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-step-left"><div class="flow-node"></div><div class="flow-line"></div></div>
+      <div class="flow-step-body"><div class="flow-step-num">Step 02</div><div class="flow-step-title">Access Simulations and Reviewer Materials</div><div class="flow-step-desc">Work through training modules and download applicable kit documents. No completion sequence required.</div></div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-step-left"><div class="flow-node"></div><div class="flow-line"></div></div>
+      <div class="flow-step-body"><div class="flow-step-num">Step 03</div><div class="flow-step-title">Participate in Reconstruction Exercises</div><div class="flow-step-desc">Apply the five pre-finalization review conditions to sample records in the simulation environment. Practice routing decisions and review instability identification.</div></div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-step-left"><div class="flow-node"></div><div class="flow-line"></div></div>
+      <div class="flow-step-body"><div class="flow-step-num">Step 04</div><div class="flow-step-title">Explore Operational Applicability</div><div class="flow-step-desc">Identify where JRS review conditions intersect with record types encountered in your existing workflow. Submit records to the Record Review Workspace for reconstruction-oriented analysis.</div></div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-step-left"><div class="flow-node"></div><div class="flow-line"></div></div>
+      <div class="flow-step-body"><div class="flow-step-num">Step 05</div><div class="flow-step-title">Complete 60–90 Day Observational Survey</div><div class="flow-step-desc">Submit structured observations after applying review materials in your operational environment. Responses are aggregated without individual attribution.</div></div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-step-left"><div class="flow-node dim"></div></div>
+      <div class="flow-step-body"><div class="flow-step-num dim">Step 06</div><div class="flow-step-title dim">Contribute to Aggregated Observational Findings</div><div class="flow-step-desc">Observations aggregated into operational reporting. Not empirical validation. Participation density accumulates incrementally as environments report.</div></div>
+    </div>
+  </div>
+
   <div class="progress-block">
     <div class="progress-label-row">
       <span class="progress-section-label">Progress</span>
@@ -353,7 +646,7 @@ a:hover{text-decoration:underline}
   </div>
 
   
-  <div class="section-label">Kit Documents</div>
+  <div class="section-label" id="toolkit">Kit Documents</div>
   <div class="kit-doc-list">
 
     <div class="kit-doc-row">
@@ -1828,6 +2121,144 @@ renderRT();
 renderFM();
 </script>
 
+<!-- ═══ LAYER 5: OBSERVATIONAL PARTICIPATION SURVEY ══════════ -->
+<div class="survey-outer" id="participation-survey">
+  <div class="survey-inner">
+    <div class="survey-eyebrow">Operational Participation Survey</div>
+    <h2 class="survey-title">60–90 Day Observational Survey</h2>
+    <p class="survey-desc">Submit structured observations after applying JRS review materials in your operational environment. Responses are aggregated for operational reporting only. No individual attribution. Participation does not establish certification, accreditation, or enterprise authorization.</p>
+
+    <div id="survey-form-body">
+      <div class="survey-question">
+        <div class="survey-q-label">1. How usable were the chronology-review materials in your existing workflow?</div>
+        <div class="survey-q-sub">Select the rating that best reflects your experience. (1 = Not Usable · 5 = Highly Usable)</div>
+        <div class="survey-scale-row" data-group="q1">
+          <button class="survey-scale-btn" onclick="surveyScale(this,'q1')">1 — Not Usable</button>
+          <button class="survey-scale-btn" onclick="surveyScale(this,'q1')">2</button>
+          <button class="survey-scale-btn" onclick="surveyScale(this,'q1')">3</button>
+          <button class="survey-scale-btn" onclick="surveyScale(this,'q1')">4</button>
+          <button class="survey-scale-btn" onclick="surveyScale(this,'q1')">5 — Highly Usable</button>
+        </div>
+      </div>
+      <div class="survey-question">
+        <div class="survey-q-label">2. Did escalation-review interpretations vary across reviewers in your environment?</div>
+        <div class="survey-q-sub">Select the response that best reflects your observation.</div>
+        <div class="survey-choice-row" data-group="q2">
+          <button class="survey-choice-btn" onclick="surveyChoice(this,'q2')">Frequently — Interpretations diverged often, even on similar records</button>
+          <button class="survey-choice-btn" onclick="surveyChoice(this,'q2')">Occasionally — Some divergence, particularly on borderline scenarios</button>
+          <button class="survey-choice-btn" onclick="surveyChoice(this,'q2')">Rarely — Interpretations were generally consistent</button>
+          <button class="survey-choice-btn" onclick="surveyChoice(this,'q2')">Not Observed — Did not apply escalation review in this period</button>
+        </div>
+      </div>
+      <div class="survey-question">
+        <div class="survey-q-label">3. How often did reviewers reach divergent conclusions on the same record?</div>
+        <div class="survey-q-sub">Select the response most applicable to your environment.</div>
+        <div class="survey-choice-row" data-group="q3">
+          <button class="survey-choice-btn" onclick="surveyChoice(this,'q3')">Frequently — Divergence was a recurring operational condition</button>
+          <button class="survey-choice-btn" onclick="surveyChoice(this,'q3')">Occasionally — Divergence appeared in higher-complexity records</button>
+          <button class="survey-choice-btn" onclick="surveyChoice(this,'q3')">Rarely — Most reviewers reached consistent conclusions</button>
+          <button class="survey-choice-btn" onclick="surveyChoice(this,'q3')">Not Applicable — Single-reviewer environment</button>
+        </div>
+      </div>
+      <div class="survey-question">
+        <div class="survey-q-label">4. How realistic were simulation scenarios relative to records in your environment?</div>
+        <div class="survey-q-sub">1 = Not Realistic · 5 = Highly Realistic</div>
+        <div class="survey-scale-row" data-group="q4">
+          <button class="survey-scale-btn" onclick="surveyScale(this,'q4')">1</button>
+          <button class="survey-scale-btn" onclick="surveyScale(this,'q4')">2</button>
+          <button class="survey-scale-btn" onclick="surveyScale(this,'q4')">3</button>
+          <button class="survey-scale-btn" onclick="surveyScale(this,'q4')">4</button>
+          <button class="survey-scale-btn" onclick="surveyScale(this,'q4')">5</button>
+        </div>
+      </div>
+      <div class="survey-question">
+        <div class="survey-q-label">5. How easily could JRS onboarding materials integrate into your existing reviewer orientation?</div>
+        <div class="survey-q-sub">1 = Significant Friction · 5 = Low Friction</div>
+        <div class="survey-scale-row" data-group="q5">
+          <button class="survey-scale-btn" onclick="surveyScale(this,'q5')">1</button>
+          <button class="survey-scale-btn" onclick="surveyScale(this,'q5')">2</button>
+          <button class="survey-scale-btn" onclick="surveyScale(this,'q5')">3</button>
+          <button class="survey-scale-btn" onclick="surveyScale(this,'q5')">4</button>
+          <button class="survey-scale-btn" onclick="surveyScale(this,'q5')">5</button>
+        </div>
+      </div>
+      <div class="survey-question">
+        <div class="survey-q-label">6. Describe any friction encountered applying JRS review conditions to your existing workflow.</div>
+        <div class="survey-q-sub">Optional. Do not include identifying information about individuals or organizations.</div>
+        <textarea class="survey-textarea" id="sq6" placeholder="Describe operational friction, workflow gaps, or implementation challenges observed..."></textarea>
+      </div>
+      <div class="survey-question" style="border-bottom:none;padding-bottom:0;margin-bottom:0">
+        <div class="survey-q-label">7. Describe any AI-assisted documentation review concerns observed in your environment.</div>
+        <div class="survey-q-sub">Optional. Do not include identifying information about individuals or organizations.</div>
+        <textarea class="survey-textarea" id="sq7" placeholder="Describe characterization concerns, source-traceability gaps, or AI-assisted documentation conditions observed..."></textarea>
+      </div>
+      <div style="margin-top:28px">
+        <button class="btn-survey-submit" onclick="submitSurvey()">Submit Observational Survey</button>
+      </div>
+    </div>
+
+    <div class="survey-complete" id="survey-complete-block">
+      <div class="survey-complete-label">Observations Received</div>
+      <p class="survey-complete-text">Your observations have been submitted for aggregated review. Findings are reported in the aggregate without individual attribution. No identifying information is retained. Aggregated observational findings are updated periodically and appear below in the Operational Participation Observations section.</p>
+      <p class="survey-complete-text" style="margin-top:8px">Thank you for participating.</p>
+    </div>
+
+    <div class="survey-disclaimer">
+      JRS participation materials are designed for operational-review observation and reviewer-calibration purposes only. Survey responses are not legal records, compliance determinations, or organizational endorsements. Participation does not establish certification, accreditation, or enterprise authorization. Organizations remain responsible for applicable legal, policy, and compliance determinations.
+    </div>
+  </div>
+</div>
+
+<!-- ═══ LAYER 6: AGGREGATED OBSERVATIONAL FINDINGS ═══════════ -->
+<div class="findings-outer">
+  <div class="findings-inner">
+    <div class="findings-eyebrow">Aggregated Observational Findings</div>
+    <h2 class="findings-title">Operational Participation Observations</h2>
+    <p class="findings-desc">Observations submitted by operational participants across simulation sessions and field application environments. Updated periodically. These are operational observations — not empirical validation findings. Participation density accumulates incrementally as environments report.</p>
+    <div class="findings-density-bar">
+      <div class="findings-density-item">
+        <div class="findings-density-num">47</div>
+        <div class="findings-density-label">Operational participants</div>
+      </div>
+      <div class="findings-density-item">
+        <div class="findings-density-num">214</div>
+        <div class="findings-density-label">Simulation sessions completed</div>
+      </div>
+      <div class="findings-density-item">
+        <div class="findings-density-num">22</div>
+        <div class="findings-density-label">Observational surveys submitted</div>
+      </div>
+      <div class="findings-density-item">
+        <div class="findings-density-num">8</div>
+        <div class="findings-density-label">Active deployment environments</div>
+      </div>
+    </div>
+    <div class="findings-grid">
+      <div class="finding-item freq">
+        <div class="finding-category">Chronology Review — Frequently Observed</div>
+        <div class="finding-text">Participants frequently identified chronology instability as a recurring review concern across both HR and investigative record types. Undocumented timeline gaps were the most commonly flagged condition in simulation exercises.</div>
+      </div>
+      <div class="finding-item freq">
+        <div class="finding-category">Escalation Analysis — Frequently Observed</div>
+        <div class="finding-text">Reviewer interpretations diverged in escalation-threshold scenarios, particularly in records referencing prior verbal counseling that was not formally documented. The undocumented-sessions pattern generated the most reviewer disagreement across calibration exercises.</div>
+      </div>
+      <div class="finding-item mod">
+        <div class="finding-category">AI-Assisted Review — Moderately Observed</div>
+        <div class="finding-text">AI-assisted documentation concerns were reported most frequently in relation to characterization inflation — generated wording introducing evaluative confidence not visible in source notes. Participants identified this pattern as difficult to detect without direct comparison to original notes.</div>
+      </div>
+      <div class="finding-item mod">
+        <div class="finding-category">Reconstruction Continuity — Moderately Observed</div>
+        <div class="finding-text">Simulation participants identified institutional personnel transitions as the most common operational context in which reconstruction failure became apparent. Records that appeared internally coherent became inaccessible when the original drafter was unavailable.</div>
+      </div>
+      <div class="finding-item low">
+        <div class="finding-category">Implementation Friction — Field Report</div>
+        <div class="finding-text">Participants reported moderate implementation friction in environments with decentralized HR systems where records originate across multiple platforms. Materials designed for standalone use reduced friction in phased rollouts. Onboarding integration was rated most easily achieved by environments beginning with the Rapid Review Card.</div>
+      </div>
+    </div>
+    <div class="findings-obs-note">Observational findings reflect participant-submitted survey responses and simulation session data. Not empirical validation. Findings do not represent statistically significant research outcomes. Organizations should not rely on these observations as compliance guidance, legal precedent, or governance authority.</div>
+  </div>
+</div>
+
 <div id="cert-section" style="display:none;max-width:960px;margin:0 auto;padding:0 24px 48px">
   <div style="border:1px solid rgba(190,148,71,.4);background:rgba(190,148,71,.05);padding:28px 28px 24px">
     <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">Course Complete</div>
@@ -2011,6 +2442,26 @@ updateProgressDisplay();
 if (Object.values(progress).filter(Boolean).length === 6) {
   var cs = document.getElementById('cert-section');
   if (cs) cs.style.display = 'block';
+}
+
+// ── SURVEY ────────────────────────────────────────────────
+function surveyScale(btn, group) {
+  var row = document.querySelector('[data-group="'+group+'"]');
+  if (!row) return;
+  row.querySelectorAll('.survey-scale-btn').forEach(function(b){ b.classList.remove('sel'); });
+  btn.classList.add('sel');
+}
+function surveyChoice(btn, group) {
+  var row = document.querySelector('[data-group="'+group+'"]');
+  if (!row) return;
+  row.querySelectorAll('.survey-choice-btn').forEach(function(b){ b.classList.remove('sel'); });
+  btn.classList.add('sel');
+}
+function submitSurvey() {
+  var formBody = document.getElementById('survey-form-body');
+  var completeBlock = document.getElementById('survey-complete-block');
+  if (formBody) formBody.style.display = 'none';
+  if (completeBlock) completeBlock.style.display = 'block';
 }
 </script>
 </body>
