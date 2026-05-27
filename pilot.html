@@ -180,159 +180,110 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 
   <div class="apply-block">
     <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px">Explore Participation</div>
-    <p style="font-size:15.5px;color:var(--text);line-height:1.7;max-width:560px;margin-bottom:14px">Participation can begin with a single reviewer, one department, or one record type.</p>
-    <p style="font-size:14px;color:var(--muted);line-height:1.9;max-width:560px;margin-bottom:14px">No software purchase.<br>No policy overhaul.<br>No dedicated staff required to begin.</p>
-    <p style="font-size:14px;color:var(--muted);line-height:1.65;max-width:560px;margin-bottom:10px">Organizations typically start with:</p>
-    <ul style="list-style:none;padding:0;margin:0 0 18px;display:flex;flex-direction:column;gap:5px">
-      <li style="font-size:13.5px;color:var(--muted);display:flex;gap:10px"><span style="color:var(--accent-dim);flex-shrink:0">—</span>simulations</li>
-      <li style="font-size:13.5px;color:var(--muted);display:flex;gap:10px"><span style="color:var(--accent-dim);flex-shrink:0">—</span>reviewer exercises</li>
-      <li style="font-size:13.5px;color:var(--muted);display:flex;gap:10px"><span style="color:var(--accent-dim);flex-shrink:0">—</span>operational discussions</li>
-      <li style="font-size:13.5px;color:var(--muted);display:flex;gap:10px"><span style="color:var(--accent-dim);flex-shrink:0">—</span>or limited review participation inside existing workflows</li>
-    </ul>
-    <p style="font-size:14px;color:var(--muted);line-height:1.7;max-width:560px;margin-bottom:20px">If you would like to explore participation or ask questions, email:<br><a href="mailto:phillip.wikes@gmail.com" style="color:var(--accent);text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:13px;">phillip.wikes@gmail.com</a></p>
+    <p style="font-size:15.5px;color:var(--text);line-height:1.7;max-width:560px;margin-bottom:16px">Participation can begin with a single reviewer, one department, or one record type. No software purchase. No policy overhaul. No dedicated staff required to begin.</p>
+    <p style="font-size:14px;color:var(--muted);line-height:1.65;max-width:560px;margin-bottom:20px">Organizations typically start with simulations, reviewer exercises, operational discussions, or limited review participation inside existing workflows.</p>
     <div class="btn-row" style="margin-top:0">
-      <a href="training.html" class="btn btn-ghost">Explore Simulations First</a>
+      <a href="training.html" class="btn btn-primary">Explore Simulations First &#8594;</a>
+      <a href="#how-it-begins" onclick="document.getElementById('how-it-begins').scrollIntoView({behavior:'smooth'});return false;" class="btn btn-ghost">How It Typically Begins</a>
+    </div>
+  </div>
+
+  <!-- OBSERVATION WIDGET -->
+  <div style="border:1px solid var(--rule);overflow:hidden;margin-bottom:32px;">
+    <div style="padding:10px 16px;border-bottom:1px solid var(--rule);background:var(--surface);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);">Operational Observation</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);">Not stored. Not attributed.</span>
+    </div>
+    <div style="padding:14px 16px 6px;">
+      <div style="font-size:13.5px;color:var(--text);font-weight:500;line-height:1.55;margin-bottom:14px;">What condition appears most clearly in documentation environments you've observed?</div>
+      <div id="pilot-obs-options" style="display:flex;flex-direction:column;gap:6px;margin-bottom:14px;">
+        <div class="p-obs-opt" onclick="selectPilotObs(this)" style="padding:9px 13px;border:1px solid var(--rule);font-size:12.5px;color:var(--muted);cursor:pointer;" data-val="A">A. &nbsp;Chronology instability</div>
+        <div class="p-obs-opt" onclick="selectPilotObs(this)" style="padding:9px 13px;border:1px solid var(--rule);font-size:12.5px;color:var(--muted);cursor:pointer;" data-val="B">B. &nbsp;Unsupported escalation</div>
+        <div class="p-obs-opt" onclick="selectPilotObs(this)" style="padding:9px 13px;border:1px solid var(--rule);font-size:12.5px;color:var(--muted);cursor:pointer;" data-val="C">C. &nbsp;Reviewer disagreement</div>
+        <div class="p-obs-opt" onclick="selectPilotObs(this)" style="padding:9px 13px;border:1px solid var(--rule);font-size:12.5px;color:var(--muted);cursor:pointer;" data-val="D">D. &nbsp;Missing source linkage</div>
+        <div class="p-obs-opt" onclick="selectPilotObs(this)" style="padding:9px 13px;border:1px solid var(--rule);font-size:12.5px;color:var(--muted);cursor:pointer;" data-val="E">E. &nbsp;AI-assisted interpretation drift</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding-bottom:14px;">
+        <button onclick="submitPilotObs()" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--accent);border:1px solid rgba(190,148,71,.4);padding:9px 18px;cursor:pointer;">Submit Observation</button>
+        <div id="pilot-obs-confirm" style="display:none;font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--ready-text);">Observation noted.</div>
+      </div>
+      <div style="padding:8px 0;border-top:1px solid var(--rule);font-size:10.5px;color:var(--muted-soft);line-height:1.6;">These are operational observations only — not research findings or validated outcomes.</div>
     </div>
   </div>
 
   <hr class="section-rule">
 
-  <!-- TYPICAL SCOPE -->
+  <!-- WHO PARTICIPATES -->
   <div style="margin-bottom:44px">
-    <div class="section-head">Typical Pilot Scope</div>
-    <p class="muted-text" style="margin-bottom:14px;max-width:600px">Pilot scope is defined collaboratively based on existing workflows, reviewer availability, and the record types presenting the highest documentation risk. Organizations set the boundaries.</p>
-    <div class="scope-list">
-      <div class="scope-item"><span class="scope-dash">—</span><span class="scope-text">One or two record types as the starting scope</span></div>
-      <div class="scope-item"><span class="scope-dash">—</span><span class="scope-text">Reviewer onboarding using existing training infrastructure</span></div>
-      <div class="scope-item"><span class="scope-dash">—</span><span class="scope-text">Structured observation of gaps during initial review cycles</span></div>
-      <div class="scope-item"><span class="scope-dash">—</span><span class="scope-text">Assessment of expansion scope after the initial record-type cycle</span></div>
-      <div class="scope-item"><span class="scope-dash">—</span><span class="scope-text">No software purchase, no policy change, no dedicated staff required</span></div>
-      <div class="scope-item"><span class="scope-dash">—</span><span class="scope-text">Scope can pause or limit at any stage</span></div>
-    </div>
-  </div>
-
-  <!-- WHO APPLIES -->
-  <div style="margin-bottom:44px">
-    <div class="section-head">Who Applies</div>
+    <div class="section-head">Who Participates</div>
     <div class="who-grid">
       <div class="who-card">
         <div class="who-card-label">HR Teams</div>
-        <div class="who-card-body">Deploying documentation review controls across performance, discipline, termination, and accommodation records in multiple departments.</div>
+        <div class="who-card-body">HR reviewers, business partners, and team leads exploring chronology instability, escalation consistency, and documentation reviewability in performance and discipline records.</div>
       </div>
       <div class="who-card">
-        <div class="who-card-label">Compliance Programs</div>
-        <div class="who-card-body">Extending review controls to compliance narratives, audit documentation, and escalation records before they enter official systems.</div>
+        <div class="who-card-label">Compliance &amp; Audit</div>
+        <div class="who-card-body">Compliance reviewers exploring later-review traceability, escalation rationale, and documentation reconstructability across compliance and audit record populations.</div>
       </div>
       <div class="who-card">
-        <div class="who-card-label">Investigation Units</div>
-        <div class="who-card-body">Applying source verification and conflict acknowledgment controls to investigation summaries and findings documentation before filing.</div>
+        <div class="who-card-label">Investigation Teams</div>
+        <div class="who-card-body">Investigators and employee relations professionals exploring source-linkage review, chronology reconstruction, and conflicting-account documentation conditions.</div>
       </div>
     </div>
   </div>
 
-  <!-- 5-PHASE SEQUENCE -->
-  <div style="margin-bottom:44px">
-    <div class="section-head">Pilot Engagement Sequence</div>
-    <p class="muted-text" style="max-width:600px;margin-bottom:14px">Five phases. Each has a specific purpose and a natural exit point. Organizations can scope participation at any stage without committing to subsequent phases.</p>
-    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch">
-      <div class="phase-sequence">
-        <div class="phase-cell" style="background:var(--surface)">
-          <div class="phase-label">Phase 1</div>
-          <div class="phase-title">Scope Definition</div>
-          <div class="phase-desc">Record types selected. Reviewer roster confirmed. Pilot scope defined collaboratively. No policy change required to begin.</div>
-        </div>
-        <div class="phase-cell" style="background:var(--surface2)">
-          <div class="phase-label">Phase 2</div>
-          <div class="phase-title">Simulation Engagement</div>
-          <div class="phase-desc">Reviewers complete simulation exercises before live record review. Chronology reconstruction, escalation routing, AI interpretation scenarios.</div>
-        </div>
-        <div class="phase-cell" style="background:var(--surface)">
-          <div class="phase-label">Phase 3</div>
-          <div class="phase-title">Reviewer Calibration</div>
-          <div class="phase-desc">Gap patterns observed across the reviewer cohort. Calibration inconsistencies logged. Common failure modes in the department's record type surface here.</div>
-        </div>
-        <div class="phase-cell" style="background:var(--surface2)">
-          <div class="phase-label">Phase 4</div>
-          <div class="phase-title">Workflow Observation</div>
-          <div class="phase-desc">Controls applied to actual records in the pilot scope. Escalation routing tested. Secondary review thresholds calibrated to organizational risk profile.</div>
-        </div>
-        <div class="phase-cell" style="background:var(--surface);border-right:none">
-          <div class="phase-label" style="color:var(--accent-dim)">Phase 5</div>
-          <div class="phase-title">Implementation Assessment</div>
-          <div class="phase-desc">Expansion scope evaluated. Multi-department pathway identified. Additional record types added where controls performed consistently.</div>
-        </div>
+  <!-- HOW IT BEGINS -->
+  <div id="how-it-begins" style="margin-bottom:44px">
+    <div class="section-head">How Participation Typically Begins</div>
+    <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--rule);overflow:hidden">
+      <div style="padding:12px 16px;border-bottom:1px solid var(--rule);font-size:13.5px;color:var(--text);display:flex;align-items:baseline;gap:14px;background:var(--surface)">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--accent);flex-shrink:0">01</span>
+        <span>Explore simulations — <span style="color:var(--muted);">chronology reconstruction, escalation review, AI interpretation conditions</span></span>
+      </div>
+      <div style="padding:12px 16px;border-bottom:1px solid var(--rule);font-size:13.5px;color:var(--text);display:flex;align-items:baseline;gap:14px;background:var(--surface2)">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--accent);flex-shrink:0">02</span>
+        <span>Try reviewer exercises — <span style="color:var(--muted);">individually or with a small team, within existing workflows</span></span>
+      </div>
+      <div style="padding:12px 16px;border-bottom:1px solid var(--rule);font-size:13.5px;color:var(--text);display:flex;align-items:baseline;gap:14px;background:var(--surface)">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--accent);flex-shrink:0">03</span>
+        <span>Discuss workflow fit — <span style="color:var(--muted);">which record types surface the most reviewability gaps</span></span>
+      </div>
+      <div style="padding:12px 16px;border-bottom:1px solid var(--rule);font-size:13.5px;color:var(--text);display:flex;align-items:baseline;gap:14px;background:var(--surface2)">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--accent);flex-shrink:0">04</span>
+        <span>Optionally participate in operational observations — <span style="color:var(--muted);">share what conditions appear most frequently</span></span>
+      </div>
+      <div style="padding:12px 16px;font-size:13.5px;color:var(--text);display:flex;align-items:baseline;gap:14px;background:var(--surface)">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--accent-dim);flex-shrink:0">05</span>
+        <span style="color:var(--muted);">Expand only where useful — natural exit points at every stage</span>
       </div>
     </div>
-    <div class="scope-grid" style="margin-top:8px">
-      <div style="padding:10px 14px;background:var(--surface);border:1px solid var(--rule);font-size:12px;color:var(--muted-soft);line-height:1.6">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ready-text)">Natural exit points — </span>Organizations can scope participation at Phase 1 (definition only), Phase 2 (simulation only), or Phase 3 (feedback without live-record application). No fixed commitment required beyond the agreed scope.
-      </div>
-      <div style="padding:10px 14px;background:var(--surface);border:1px solid var(--rule);font-size:12px;color:var(--muted-soft);line-height:1.6">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim)">No baseline disruption — </span>Each phase inserts into existing review workflows. No software migration, no policy change, no dedicated staff required at any phase.
-      </div>
-    </div>
+    <div style="margin-top:8px;padding:9px 13px;background:var(--surface);border:1px solid var(--rule);font-size:12px;color:var(--muted-soft);line-height:1.6;">No fixed commitment. No required sequence. Participation scales to what is operationally useful.</div>
   </div>
 
-  <!-- PILOT STRUCTURES -->
+  <!-- PARTICIPATION STARTING POINTS -->
   <div style="margin-bottom:44px">
-    <div class="section-head">Typical Pilot Structures</div>
-    <p class="muted-text" style="max-width:600px;margin-bottom:0">Participation is structured around operational fit. Pilots are scoped based on existing workflows, reviewer availability, and the record types presenting the highest documentation risk.</p>
+    <div class="section-head">Participation Starting Points</div>
     <div class="pilot-structures">
       <div class="pilot-card">
-        <div class="pilot-card-label">Individual Reviewer Pilot</div>
-        <div class="pilot-card-title">Single reviewer. One record type. One review cycle.</div>
-        <div class="pilot-card-body">Apply the five review questions to the next 3–5 records in the queue. Gaps surface without coordination, training, or workflow change. Suitable for individual HR, compliance, or investigation reviewers testing applicability before recommending broader use.</div>
+        <div class="pilot-card-label">Individual Reviewer</div>
+        <div class="pilot-card-title">One reviewer. One record type. No coordination required.</div>
+        <div class="pilot-card-body">Apply the five review questions to the next few records in the queue. Gaps surface without any workflow change. A natural starting point for reviewers exploring applicability on their own.</div>
       </div>
       <div class="pilot-card">
-        <div class="pilot-card-label">Small-Team Pilot</div>
-        <div class="pilot-card-title">2–5 reviewers. One department. One to two record types.</div>
-        <div class="pilot-card-body">Reviewers apply the worksheet independently to the same record type, then compare findings. Calibration develops through shared review, not training. Common failure patterns in the department's records become visible within the first cycle.</div>
+        <div class="pilot-card-label">Small-Team Exercise</div>
+        <div class="pilot-card-title">Two to five reviewers. One record type. Independent review, then comparison.</div>
+        <div class="pilot-card-body">Each reviewer applies conditions independently to the same record type, then the group compares where interpretations diverged. Common patterns become visible within the first exercise.</div>
       </div>
       <div class="pilot-card">
-        <div class="pilot-card-label">Departmental Pilot</div>
-        <div class="pilot-card-title">Full department. Structured onboarding. Secondary review routing established.</div>
-        <div class="pilot-card-body">Reviewer onboarding using the Deployment Kit. Secondary review routing established for elevated-risk records. Escalation calibration across the department. Typically 4–8 weeks to establish consistent reviewer practice.</div>
+        <div class="pilot-card-label">Simulation-First Exploration</div>
+        <div class="pilot-card-title">Explore constructed scenarios before touching actual records.</div>
+        <div class="pilot-card-body">Reviewers explore chronology instability, escalation conditions, and AI interpretation drift through constructed simulations. No live records required. A low-commitment entry point for any team.</div>
       </div>
       <div class="pilot-card">
-        <div class="pilot-card-label">Simulation-Based Onboarding Pilot</div>
-        <div class="pilot-card-title">Reviewers begin with simulation exercises before applying controls to actual records.</div>
-        <div class="pilot-card-body">Simulation training (escalation review, chronology reconstruction, AI interpretation review) establishes reviewer calibration before live records are reviewed. Suitable for organizations deploying controls to reviewers without prior JRS experience.</div>
+        <div class="pilot-card-label">Departmental Observation</div>
+        <div class="pilot-card-title">One department, one record type, one review cycle.</div>
+        <div class="pilot-card-body">Apply review conditions to a single record type within an existing review cycle. No policy change required. Reviewers observe what surfaces. Scope can pause or expand based on what appears.</div>
       </div>
-    </div>
-    <div class="reviewer-note" style="margin-top:10px">
-      <div class="reviewer-note-label">Scope note</div>
-      Pilot participation is not a formal certification, accreditation, or governance credential. It is an operational engagement with the review infrastructure. Organizational decisions about legal sufficiency, policy compliance, and risk management remain with the organization and its legal counsel.
-    </div>
-  </div>
-
-  <!-- OPERATIONAL PATHWAY -->
-  <div style="margin-bottom:44px">
-    <div class="section-head">Operational Participation Pathway</div>
-    <p class="muted-text" style="max-width:600px;margin-bottom:14px">The typical sequence from first contact to aggregated findings. Each step has a natural exit point.</p>
-    <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--rule);overflow:hidden">
-      <div style="padding:10px 14px;border-bottom:1px solid var(--rule);font-size:13px;color:var(--muted);display:flex;align-items:center;gap:14px;background:var(--surface)">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--accent-dim);flex-shrink:0">01</span>
-        <span>Explore simulations and operational exercises on the <a href="training.html" style="color:var(--accent);text-decoration:none">training environment</a></span>
-      </div>
-      <div style="padding:10px 14px;border-bottom:1px solid var(--rule);font-size:13px;color:var(--muted);display:flex;align-items:center;gap:14px;background:var(--surface2)">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--accent-dim);flex-shrink:0">02</span>
-        <span>Review exercises for workflow applicability to your record types</span>
-      </div>
-      <div style="padding:10px 14px;border-bottom:1px solid var(--rule);font-size:13px;color:var(--muted);display:flex;align-items:center;gap:14px;background:var(--surface)">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--accent-dim);flex-shrink:0">03</span>
-        <span>Define pilot scope — record types, reviewer roster, department boundary</span>
-      </div>
-      <div style="padding:10px 14px;border-bottom:1px solid var(--rule);font-size:13px;color:var(--muted);display:flex;align-items:center;gap:14px;background:var(--surface2)">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--accent-dim);flex-shrink:0">04</span>
-        <span>Participate in observation surveys during pilot phase</span>
-      </div>
-      <div style="padding:10px 14px;font-size:13px;color:var(--muted);display:flex;align-items:center;gap:14px;background:var(--surface)">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--accent-dim);flex-shrink:0">05</span>
-        <span>Contribute to aggregated operational findings</span>
-      </div>
-    </div>
-    <div style="margin-top:8px;padding:10px 14px;background:var(--surface);border:1px solid var(--rule);font-size:12px;color:var(--muted-soft);line-height:1.6">
-      Participation is observational and operational in nature and does not establish certification, accreditation, legal authority, governance endorsement, or formal enterprise approval.
     </div>
   </div>
 
@@ -344,12 +295,6 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
     <div class="btn-row" style="margin-top:0">
       <a href="training.html" class="btn btn-ghost">Explore Simulations First</a>
     </div>
-  </div>
-
-  <!-- SCOPE DISCLAIMER -->
-  <div class="callout" style="margin-bottom:44px">
-    <div class="callout-label">Operational Scope</div>
-    <p>Pilot participation is a practical review layer, not a replacement governance system. It is designed for lightweight integration within existing documentation workflows — not for organizational restructuring, software replacement, or procedural overhaul. It does not replace legal, HR, investigative, or compliance judgment. Organizations should engage legal counsel separately on questions of legal sufficiency, regulatory compliance, and jurisdiction-specific requirements.</p>
   </div>
 
   <!-- RESOURCES -->
@@ -378,5 +323,24 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
   </div>
 </div>
 
+<script>
+var pilotObsSelected = null;
+function selectPilotObs(el) {
+  document.querySelectorAll('.p-obs-opt').forEach(function(o) {
+    o.style.borderColor = 'var(--rule)';
+    o.style.color = 'var(--muted)';
+    o.style.background = '';
+  });
+  el.style.borderColor = 'rgba(190,148,71,.5)';
+  el.style.color = 'var(--text)';
+  el.style.background = 'rgba(190,148,71,.04)';
+  pilotObsSelected = el.getAttribute('data-val');
+}
+function submitPilotObs() {
+  if (!pilotObsSelected) return;
+  document.getElementById('pilot-obs-options').style.opacity = '0.4';
+  document.getElementById('pilot-obs-confirm').style.display = 'inline';
+}
+</script>
 </body>
 </html>
