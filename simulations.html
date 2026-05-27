@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reconstruction Simulations — Operational Library | JRS</title>
+<meta name="description" content="Reconstruction simulations organized by operational category: chronology review, escalation review, AI-assisted interpretation, comparator review, reviewer disagreement, and reconstruction instability.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0a;--surface:#111;--surface2:#0f0f0f;--rule:#1e1e1e;
+  --accent:#be9447;--accent-dim:#c4963d;
+  --stop:#c04040;--stop-text:#c04040;
+  --review-text:#b8844a;--ready-text:#5dbf82;
+  --text:#e8e8e8;--muted:#888;--muted-soft:#666;
+}
+body{background:var(--bg);color:var(--text);font-family:'JetBrains Mono',monospace;font-size:14px;line-height:1.6;min-height:100vh}
+a{color:inherit;text-decoration:none}
+.container{max-width:920px;margin:0 auto;padding:0 20px}
+
+.site-header{border-bottom:1px solid var(--rule);padding:14px 0}
+.header-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.wordmark{font-family:'Bodoni Moda',serif;font-size:16px;font-weight:500;letter-spacing:.04em}
+.wordmark span{color:var(--accent)}
+.header-meta{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);line-height:1.8;text-align:right}
+.nav-links{display:flex;gap:16px;flex-wrap:wrap}
+.nav-links a{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);transition:.1s}
+.nav-links a:hover{color:var(--accent)}
+.nav-links a.active{color:var(--text)}
+
+.page-eyebrow{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;margin-top:40px}
+.page-title{font-family:'Bodoni Moda',serif;font-size:26px;font-weight:500;color:var(--text);line-height:1.2;margin-bottom:14px}
+.page-subtitle{font-size:13.5px;color:var(--muted);line-height:1.7;max-width:680px;margin-bottom:10px}
+.section-head{font-family:'Bodoni Moda',serif;font-size:18px;font-weight:500;color:var(--text);margin-bottom:6px;margin-top:44px}
+.section-sub{font-size:12.5px;color:var(--muted-soft);line-height:1.6;margin-bottom:14px;max-width:600px}
+
+.cat-label{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:3px}
+.cat-count{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);margin-left:10px;letter-spacing:.05em}
+
+.sim-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:0;border:1px solid var(--rule);overflow:hidden;margin:12px 0}
+.sim-card{padding:14px 16px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.sim-card:nth-child(even){background:var(--surface2)}
+.sim-num{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px}
+.sim-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px;line-height:1.35}
+.sim-scenario{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:9px}
+.sim-prompt{font-size:11.5px;color:var(--muted-soft);line-height:1.55;padding:8px 11px;background:var(--surface);border-left:2px solid var(--rule)}
+.sim-prompt::before{font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:3px}
+
+.sim-prompt.chron::before{content:'Chronology question';color:var(--review-text)}
+.sim-prompt.escl::before{content:'Escalation question';color:var(--stop-text)}
+.sim-prompt.ai::before{content:'Interpretation question';color:var(--review-text)}
+.sim-prompt.comp::before{content:'Comparator question';color:var(--accent-dim)}
+.sim-prompt.rdis::before{content:'Reviewer question';color:var(--accent-dim)}
+.sim-prompt.rcon::before{content:'Reconstruction question';color:var(--muted-soft)}
+
+.cat-divider{border-top:1px solid var(--rule);margin:0 0 0 0}
+
+.cta-row{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+.cta-primary{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:13px 24px;text-decoration:none;display:inline-block;font-weight:600}
+.cta-ghost{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:13px 22px;text-decoration:none;display:inline-block}
+
+.notice{background:var(--surface);border:1px solid var(--rule);padding:10px 14px;font-size:11.5px;color:var(--muted-soft);line-height:1.65;margin:14px 0}
+.notice-label{font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px}
+
+.cat-strip{border:1px solid var(--rule);background:var(--surface);overflow:hidden;margin-bottom:6px}
+.cat-strip-inner{display:flex;flex-wrap:wrap}
+.cat-chip{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;padding:7px 14px;border-right:1px solid var(--rule);color:var(--muted-soft)}
+.cat-chip.active{color:var(--text)}
+
+.site-footer{border-top:1px solid var(--rule);padding:24px 0 40px;margin-top:60px}
+.footer-inner{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:flex-start}
+.footer-left{font-size:11.5px;color:var(--muted-soft);line-height:1.8}
+.footer-note{margin-top:12px;font-size:11px;color:var(--muted-soft);line-height:1.65;max-width:580px;border-top:1px solid var(--rule);padding-top:12px}
+
+@media(max-width:640px){
+  .sim-grid{grid-template-columns:1fr}
+  .sim-card{border-right:none}
+  .header-meta{text-align:left}
+  .cat-strip-inner{flex-direction:column}
+  .cat-chip{border-right:none;border-bottom:1px solid var(--rule)}
+  .cat-chip:last-child{border-bottom:none}
+}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NVYHJ7BJ92"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NVYHJ7BJ92');</script>
+</head>
+<body>
+
+<div class="site-header">
+ <div class="container">
+  <div class="header-inner">
+   <a href="index.html"><div class="wordmark">JRS<span>.</span></div></a>
+   <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="simulations.html" class="active">Simulations</a>
+    <a href="training.html">Reviewer Calibration</a>
+    <a href="workflow-fit.html">Workflow Fit</a>
+    <a href="enterprise.html">Enterprise</a>
+   </nav>
+   <div class="header-meta">Operational Review Tools<br>Pre-Submission Review Controls</div>
+  </div>
+ </div>
+</div>
+
+<div class="container">
+
+<div class="page-eyebrow">Simulation Library</div>
+<h1 class="page-title">Reconstruction Simulations — Operational Library</h1>
+<p class="page-subtitle">Reviewer-calibration exercises organized by operational condition. Each simulation presents a record scenario and a reviewer question. Exercises are designed to surface conditions that routinely appear across HR, investigation, compliance, and administrative review environments.</p>
+<p style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:var(--accent-dim);margin-bottom:8px;">Designed for existing workflows. No software migration required.</p>
+
+<div class="notice">
+ <div class="notice-label">Operational scope</div>
+ These exercises do not produce legal conclusions, compliance determinations, or investigative findings. They are reviewer practice materials. All records are fictional and created for calibration purposes only. Any resemblance to real persons, organizations, or events is coincidental.
+</div>
+
+<div class="cat-strip">
+ <div class="cat-strip-inner">
+  <div class="cat-chip active">Chronology Review</div>
+  <div class="cat-chip">Escalation Review</div>
+  <div class="cat-chip">AI-Assisted Interpretation</div>
+  <div class="cat-chip">Comparator Review</div>
+  <div class="cat-chip">Reviewer Disagreement</div>
+  <div class="cat-chip">Reconstruction Review</div>
+ </div>
+</div>
+
+<div class="cta-row" style="margin-bottom:4px;">
+ <a href="mccr-simulator.html" class="cta-primary">Open AI-Assisted Record Reviewer</a>
+ <a href="training.html" class="cta-ghost">Full Calibration Environment →</a>
+</div>
+
+<div style="margin-top:36px;">
+
+<div class="section-head">Chronology Review</div>
+<div class="cat-label" style="color:var(--review-text);">Category 01 — Sequence &amp; Timeline Instability</div>
+<p class="section-sub">Exercises focused on whether the sequence of events can be independently established from the file. The record may describe what happened without establishing when — or compress a multi-month sequence into language that provides no temporal anchoring.</p>
+
+<div class="sim-grid">
+ <div class="sim-card">
+  <div class="sim-num">CHRON-01</div>
+  <div class="sim-title">Event Sequence Reconstruction</div>
+  <div class="sim-scenario">A performance record references "prior incidents" and "prior counseling discussions" throughout. Dates are absent. The author described a pattern of behavior spanning approximately six months. The record is now under escalation review by someone who was not involved in the original documentation.</div>
+  <div class="sim-prompt chron">Can the sequence of events be independently established from the file alone — or does reconstruction require access to the original author?</div>
+ </div>
+ <div class="sim-card">
+  <div class="sim-num">CHRON-02</div>
+  <div class="sim-title">Improvement Plan Timeline Gap</div>
+  <div class="sim-scenario">A termination record references a 90-day performance improvement plan. The plan start date, interim check-ins, and final outcome are mentioned but not dated. The record was filed 11 months after the improvement plan concluded. The manager who administered the plan is no longer with the organization.</div>
+  <div class="sim-prompt chron">Can the improvement plan timeline be reconstructed from what is in the file? What anchors exist — and what would a later reviewer need to verify the sequence?</div>
+ </div>
+ <div class="sim-card">
+  <div class="sim-num">CHRON-03</div>
+  <div class="sim-title">Multi-Author Chronology</div>
+  <div class="sim-scenario">An investigation summary was drafted by one investigator and finalized by a second, two weeks later. A third reviewer added notes before the case closed. The record contains three distinct narrative voices. Each references events slightly differently. Some dates conflict by one to three days across accounts.</div>
+  <div class="sim-prompt chron">What sequence does the file establish? Where do the three accounts diverge, and how would a later reviewer determine which account governs the record?</div>
+ </div>
+ <div class="sim-card">
+  <div class="sim-num">CHRON-04</div>
+  <div class="sim-title">Post-Incident Documentation Delay</div>
+  <div class="sim-scenario">A workplace incident occurred in February. The initial incident report was completed in April. A follow-up memo was written in June and references events from "earlier in the year." The accommodation review that followed in August references the February incident by date but cites the June memo as the record.</div>
+  <div class="sim-prompt chron">Which document establishes the authoritative timeline? How would a reviewer determine whether the June memo reflects what actually happened in February — or what was reconstructed from memory in June?</div>
+ </div>
+</div>
+
+<div class="section-head">Escalation Review</div>
+<div class="cat-label" style="color:var(--stop-text);">Category 02 — Escalation Trail &amp; Counseling Support</div>
+<p class="section-sub">Exercises focused on whether the escalation basis is visible in the file. Escalation failures most often originate from undocumented coaching — the manager remembered the conversations, but the file does not reflect them.</p>
+
+<div class="sim-grid">
+ <div class="sim-card">
+  <div class="sim-num">ESCL-01</div>
+  <div class="sim-title">Counseling Trail Verification</div>
+  <div class="sim-scenario">A termination record states the employee "received three prior warnings regarding attendance." Review the case file. One counseling memo is on file from seven months earlier. A second is referenced but not attached. The third is described in the termination record itself but appears in no prior document.</div>
+  <div class="sim-prompt escl">Are three prior warnings on file? What would a later auditor find if they reviewed the escalation trail for this record?</div>
+ </div>
+ <div class="sim-card">
+  <div class="sim-num">ESCL-02</div>
+  <div class="sim-title">Pattern Conduct Without Dates</div>
+  <div class="sim-scenario">A disciplinary record describes a "pattern of insubordination over the past year." Three incidents are described narratively. None are dated. No incident reports are referenced. The record was prepared by the department manager without HR involvement. It advanced to formal discipline without secondary review.</div>
+  <div class="sim-prompt escl">Can the pattern be independently established from this file? What would a challenged escalation require that is currently absent?</div>
+ </div>
+ <div class="sim-card">
+  <div class="sim-num">ESCL-03</div>
+  <div class="sim-title">Verbal Counseling Reference</div>
+  <div class="sim-scenario">A formal performance improvement plan references "multiple verbal counseling sessions over the past four months." No documentation of verbal counseling is on file. The plan itself was the first formal document in the case file. The HR business partner who prepared the plan recalls the verbal sessions but did not document them at the time.</div>
+  <div class="sim-prompt escl">What escalation basis exists in the file? What is absent — and how would a later reviewer assess whether the verbal counseling actually occurred?</div>
+ </div>
+ <div class="sim-card">
+  <div class="sim-num">ESCL-04</div>
+  <div class="sim-title">Threshold Consistency Across Reviewers</div>
+  <div class="sim-scenario">Two employees in the same department received formal discipline for similar attendance violations within a six-month period. One record includes three documented warnings and a counseling memo. The other includes one written warning and two verbal references. Both escalated to the same level. Both were reviewed by different HR business partners.</div>
+  <div class="sim-prompt escl">What explains the difference in documentation depth between the two escalation records? Would both trails withstand independent scrutiny at the same level?</div>
+ </div>
+</div>
+
+<div class="section-head">AI-Assisted Interpretation</div>
+<div class="cat-label" style="color:var(--review-text);">Category 03 — Generated Language &amp; Source Verification</div>
+<p class="section-sub">Exercises focused on the specific documentation risk introduced by AI drafting tools: confident conclusions without identifiable source support. The generated output reads with equal confidence whether the underlying notes are complete or fragmentary.</p>
+
+<div class="sim-grid">
+ <div class="sim-card">
+  <div class="sim-num">AI-01</div>
+  <div class="sim-title">Source Note Verification</div>
+  <div class="sim-scenario">An AI-assisted summary of a performance review states: "Employee demonstrates persistent resistance to feedback and has shown ongoing difficulty collaborating with colleagues." The source notes from three review meetings are brief. Two meetings have no notes. One has a bullet list of attendance figures. None describe the behaviors the summary characterizes.</div>
+  <div class="sim-prompt ai">Which characterizations in the AI summary are supported by identifiable source material? Which were introduced by the model — and are not present in the notes?</div>
+ </div>
+ <div class="sim-card">
+  <div class="sim-num">AI-02</div>
+  <div class="sim-title">Confidence vs. Source Support</div>
+  <div class="sim-scenario">An AI-generated termination narrative presents the following conclusion: "After exhaustive progressive discipline over 14 months, the employee's performance remained below expectations despite documented interventions." The case file contains one formal warning and two manager notes. The 14-month period is not referenced in any prior document.</div>
+  <div class="sim-prompt ai">Does the source material support the level of confidence expressed in the AI narrative? What would a later reviewer find when they attempted to verify "exhaustive progressive discipline over 14 months"?</div>
+ </div>
+ <div class="sim-card">
+  <div class="sim-num">AI-03</div>
+  <div class="sim-title">Language Origin Identification</div>
+  <div class="sim-scenario">A disciplinary record was drafted using an AI writing assistant. The final document contains several phrases not present in any source notes, emails, or prior records: "repeated failure to meet basic expectations," "serious concerns about professional conduct," and "escalating pattern of behavior." The original notes describe two missed deadlines and one meeting attendance issue.</div>
+  <div class="sim-prompt ai">Identify which phrases originated from AI output and are not reflected in source materials. What characterization risk does each phrase introduce at a later escalation or audit?</div>
+ </div>
+ <div class="sim-card">
+  <div class="sim-num">AI-04</div>
+  <div class="sim-title">Source Verification Before Finalization</div>
+  <div class="sim-scenario">An HR coordinator submitted an AI-assisted accommodation record without reviewing the generated output against the source consultation notes. The record states "employee declined all offered accommodations." The source notes reflect that two accommodations were declined, one was accepted conditionally, and the discussion continued. The record entered the HRIS unrevised.</div>
+  <div class="sim-prompt ai">What gap exists between the AI-generated summary and the source documentation? What review step would have identified this before the record was filed?</div>
+ </div>
+</div>
+
+<div class="section-head">Comparator Review</div>
+<div class="cat-label" style="color:var(--accent-dim);">Category 04 — Consistency &amp; Treatment Disparity</div>
+<p class="section-sub">Exercises focused on whether similar records received consistent treatment. Comparator review applies when escalation patterns, documentation density, or outcome rationale differ across records that should be internally consistent.</p>
+
+<div class="sim-grid">
+ <div class="sim-card">
+  <div class="sim-num">COMP-01</div>
+  <div class="sim-title">Escalation Consistency Check</div>
+  <div class="sim-scenario">Two employees in the same department, same job classification, received written warnings for the same policy violation within three months of each other. Employee A's record includes dates, a policy reference, prior verbal counseling documentation, and a supervisor signature. Employee B's record includes the policy violation but no dates, no prior counseling reference, and no signature. Both were escalated to the same formal level.</div>
+  <div class="sim-prompt comp">Would both records withstand the same level of scrutiny? If the two records were reviewed side by side at a later audit, what disparity would a reviewer identify?</div>
+ </div>
+ <div class="sim-card">
+  <div class="sim-num">COMP-02</div>
+  <div class="sim-title">Documentation Density Disparity</div>
+  <div class="sim-scenario">A termination record from Department A contains 12 pages: incident reports, counseling memos, performance notes, an improvement plan, and final decision documentation. A termination record from Department B for a similar violation contains two pages: the termination notice and a brief summary paragraph. Both are in the same organizational unit and were reviewed by the same HR director.</div>
+  <div class="sim-prompt comp">What would a later reviewer conclude about the disparity in documentation depth? How would the two records compare if placed under the same level of audit scrutiny?</div>
+ </div>
+ <div class="sim-card">
+  <div class="sim-num">COMP-03</div>
+  <div class="sim-title">Contextual Reinterpretation Across Time</div>
+  <div class="sim-scenario">A performance record was reviewed at the time of drafting and marked satisfactory. The same record was reviewed 18 months later during a compliance audit. The auditor noted that a prior accommodation request by the employee — which was not on file at the time of the performance review — had been submitted and denied three weeks before the performance review period began. The original reviewer had no knowledge of this.</div>
+  <div class="sim-prompt comp">Does the later contextual information change the interpretive basis for the performance record? What would a reviewer need in the file to explain the timing relationship between the accommodation denial and the performance period?</div>
+ </div>
+ <div class="sim-card">
+  <div class="sim-num">COMP-04</div>
+  <div class="sim-title">Supervisor-Level Treatment Variation</div>
+  <div class="sim-scenario">Three supervisors in the same department applied the same attendance policy over a 12-month period. Supervisor A documented every absence with a dated memo. Supervisor B used informal emails, none of which appear in the case files. Supervisor C documented nothing until the formal warning stage. All three escalated employees to formal discipline at the same attendance threshold.</div>
+  <div class="sim-prompt comp">How would the three escalation trails compare under later review? Which employees would have a documented basis for challenging the consistency of treatment?</div>
+ </div>
+</div>
+
+<div class="section-head">Reviewer Disagreement</div>
+<div class="cat-label" style="color:var(--accent-dim);">Category 05 — Interpretation Divergence &amp; Threshold Variation</div>
+<p class="section-sub">Exercises focused on conditions where reviewers reach different conclusions from the same file. Disagreement typically emerges around escalation thresholds, contextual interpretation, and records where supporting documentation is present but incomplete.</p>
+
+<div class="sim-grid">
+ <div class="sim-card">
+  <div class="sim-num">RDIS-01</div>
+  <div class="sim-title">Escalation Threshold Disagreement</div>
+  <div class="sim-scenario">Two HR business partners independently reviewed the same formal discipline record before it advanced. Reviewer A recommended escalation to termination based on the documented pattern. Reviewer B recommended a final written warning and continued monitoring, noting that the documented pattern did not meet the threshold for immediate termination under the applicable policy. Both reviewers worked from the same file. Neither had additional context.</div>
+  <div class="sim-prompt rdis">What in the file supports Reviewer A's conclusion? What in the file supports Reviewer B's? What additional documentation, if present, would have produced consistent routing?</div>
+ </div>
+ <div class="sim-card">
+  <div class="sim-num">RDIS-02</div>
+  <div class="sim-title">Contextual Reinterpretation After Escalation</div>
+  <div class="sim-scenario">A performance record was reviewed at drafting and approved. Nine months later, the same record was reviewed as part of a wrongful termination response. A second reviewer, working from the same file with full knowledge of subsequent events, identified three characterizations in the original record that could not be traced to source documentation. The original reviewer had no concerns at the time of drafting.</div>
+  <div class="sim-prompt rdis">What conditions allowed the original reviewer to approve a record the second reviewer could not verify? What review standard would have surfaced the unsupported characterizations before the record was filed?</div>
+ </div>
+ <div class="sim-card">
+  <div class="sim-num">RDIS-03</div>
+  <div class="sim-title">Annotated Review Divergence</div>
+  <div class="sim-scenario">A pre-submission review exercise was conducted with three reviewers working independently from the same termination record. Reviewer 1 flagged two unsupported generalizations and one chronology gap. Reviewer 2 flagged the chronology gap only. Reviewer 3 approved the record without flags. All three reviewed the same document under the same five-question review framework. Debrief discussion revealed the reviewers interpreted "supported" differently.</div>
+  <div class="sim-prompt rdis">What drove the divergence in reviewer conclusions? How should "supported conclusion" be calibrated across reviewers to produce consistent routing decisions?</div>
+ </div>
+ <div class="sim-card">
+  <div class="sim-num">RDIS-04</div>
+  <div class="sim-title">Inheritance of Prior Reviewer's Conclusions</div>
+  <div class="sim-scenario">A secondary reviewer was assigned a discipline record that had already been reviewed and approved by a primary reviewer. The secondary reviewer read the primary reviewer's approval note before reading the record. The secondary reviewer approved the record. A third reviewer, who read the record without the prior approval note, flagged two conditions for revision before the record advanced.</div>
+  <div class="sim-prompt rdis">How did the presence of the prior reviewer's conclusion affect the secondary reviewer's independent judgment? What process modification would reduce inherited reviewer bias in multi-stage review workflows?</div>
+ </div>
+</div>
+
+<div class="section-head">Reconstruction Review</div>
+<div class="cat-label" style="color:var(--muted-soft);">Category 06 — Independent Reconstructability</div>
+<p class="section-sub">Exercises focused on whether a later reviewer, working from the file alone, can independently reconstruct the basis, chronology, and reasoning of the original record. This is the core test of documentation quality under JRS review conditions.</p>
+
+<div class="sim-grid">
+ <div class="sim-card">
+  <div class="sim-num">RCON-01</div>
+  <div class="sim-title">Cold-Read Reconstruction</div>
+  <div class="sim-scenario">A termination record from 24 months ago is under compliance review. You have no background on the case, no access to the original author, and no supplementary materials beyond what is in the file. The record is three pages and describes a conduct-based termination following what the author describes as "an extended period of performance difficulty."</div>
+  <div class="sim-prompt rcon">Working from the file alone: what was the basis for termination? What is the approximate timeline? What prior steps were taken? What cannot be independently established?</div>
+ </div>
+ <div class="sim-card">
+  <div class="sim-num">RCON-02</div>
+  <div class="sim-title">Author Unavailability Test</div>
+  <div class="sim-scenario">A disciplinary record references a meeting that occurred on "an unspecified date in late March," a counseling discussion the author describes as "informal," and a policy the author describes as having been "acknowledged during onboarding." The author left the organization six months after the record was filed. None of the referenced documents are attached to the case file.</div>
+  <div class="sim-prompt rcon">What can be verified from what is on file? What requires the author's presence to explain? If this record were challenged, which elements would require reconstruction from outside the file?</div>
+ </div>
+ <div class="sim-card">
+  <div class="sim-num">RCON-03</div>
+  <div class="sim-title">Post-Escalation Stability Review</div>
+  <div class="sim-scenario">An investigation conclusion memorandum was filed and approved. Fourteen months later, the subject employee filed a formal complaint regarding the investigation's handling. The reviewing authority requested the case file to reconstruct the investigation basis. The case file contains the conclusion memo, two of the four referenced interview summaries, and a timeline that does not match the dates in the memo.</div>
+  <div class="sim-prompt rcon">What basis exists in the file for the investigation's conclusion? What is missing — and how would the inconsistency between the timeline and the memo dates affect the reconstruction effort?</div>
+ </div>
+ <div class="sim-card">
+  <div class="sim-num">RCON-04</div>
+  <div class="sim-title">Layered Documentation Reconstruction</div>
+  <div class="sim-scenario">A compliance record was built across seven documents over 18 months: an intake form, three email exchanges, two meeting memos, and a final determination. Each document references prior documents by description but not by date or document identifier. Two of the seven documents are missing from the case file. The remaining five are internally consistent but reference the missing documents as the basis for key conclusions.</div>
+  <div class="sim-prompt rcon">What can be reconstructed from the five documents available? What conclusions depend entirely on the missing documents — and how would a later reviewer assess the basis for those conclusions?</div>
+ </div>
+</div>
+
+</div>
+
+<div style="margin-top:48px;border:1px solid rgba(190,148,71,.2);background:var(--surface);padding:18px 20px;margin-bottom:28px;">
+ <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">AI-Assisted Record Review</div>
+ <p style="font-size:13px;color:var(--muted);line-height:1.65;max-width:600px;margin-bottom:14px;">The AI-assisted record reviewer applies the JRS five-question framework to submitted record text and returns routing guidance, condition flags, and revision suggestions. It is a reviewer calibration tool — not a legal, compliance, or investigative determination system.</p>
+ <div class="cta-row" style="margin:0;">
+  <a href="mccr-simulator.html" class="cta-primary">Open AI-Assisted Record Reviewer</a>
+  <a href="training.html" class="cta-ghost">Calibration Environment →</a>
+  <a href="workflow-fit.html" class="cta-ghost">Workflow Fit Guide →</a>
+ </div>
+</div>
+
+<div class="notice">
+ <div class="notice-label">Participation boundary</div>
+ These simulations are reviewer practice materials. Participation is operational and observational in nature and does not establish certification, accreditation, legal authority, governance endorsement, or formal enterprise approval. Operational findings from simulation exercises reflect participant observations and reviewer interpretations under practice conditions and should not be interpreted as empirical validation, legal conclusions, or formal compliance determinations.
+</div>
+
+</div>
+
+<div class="site-footer">
+ <div class="container">
+  <div class="footer-inner">
+   <div class="footer-left">
+    <div style="font-family:'Bodoni Moda',serif;font-size:14px;margin-bottom:4px;">JRS<span style="color:var(--accent);">.</span></div>
+    <div>Operational Review Tools</div>
+    <div style="margin-top:6px;display:flex;gap:14px;flex-wrap:wrap;">
+     <a href="index.html" style="color:var(--muted-soft);font-size:11px;">Home</a>
+     <a href="simulations.html" style="color:var(--muted-soft);font-size:11px;">Simulations</a>
+     <a href="training.html" style="color:var(--muted-soft);font-size:11px;">Reviewer Calibration</a>
+     <a href="workflow-fit.html" style="color:var(--muted-soft);font-size:11px;">Workflow Fit</a>
+     <a href="enterprise.html" style="color:var(--muted-soft);font-size:11px;">Enterprise</a>
+    </div>
+   </div>
+  </div>
+  <div class="footer-note">JRS resources are designed to supplement existing documentation-review workflows and are not legal advice, compliance certification, workflow replacement systems, automated governance scoring, or enterprise accreditation infrastructure. All simulation records are fictional.</div>
+ </div>
+</div>
+
+</body>
+</html>

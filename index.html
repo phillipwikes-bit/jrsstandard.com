@@ -855,6 +855,7 @@ a.gumroad-button.util-link {
  <button class="nav-item" onclick="showSection('scenarios')">Documentation Failures</button>
  <button class="nav-item" onclick="showSection('tools')">Free Resources</button>
  <button class="nav-item kit-item" onclick="showSection('kit')">Deployment Kit &#8599;</button>
+ <a href="simulations.html" class="nav-item" style="text-decoration:none;">Simulations &#8599;</a>
  <a href="training.html" class="nav-item" style="text-decoration:none;">Reviewer Calibration &#8599;</a>
  <button class="nav-item" onclick="showSection('guidance')">Implementation</button>
  <a href="enterprise.html" class="nav-item" style="text-decoration:none;">Enterprise &#8599;</a>
@@ -993,29 +994,46 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:28px;border:1px solid var(--rule);background:var(--surface);overflow:hidden;">
- <div style="padding:10px 16px;border-bottom:1px solid var(--rule);">
-  <span style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);">Start Here</span>
+ <div style="padding:10px 16px;border-bottom:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;">
+  <span style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);">Entry Pathways</span>
+  <span style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);">Select a starting point</span>
  </div>
- <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;">
-  <div style="padding:13px 15px;border-right:1px solid var(--rule);">
-   <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">New to JRS?</div>
-   <button onclick="showSection('tools')" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--ready-text);background:none;border:none;cursor:pointer;padding:0;text-align:left;line-height:1.6;">Download Free Review Resources →</button>
+ <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:0;">
+  <div style="padding:14px 16px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);">
+   <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;">Explore Simulations</div>
+   <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:5px;">Reviewers new to JRS</div>
+   <div style="font-size:11.5px;color:var(--muted);line-height:1.5;margin-bottom:7px;">Reconstruction exercises, chronology instability, escalation review — before encountering gaps in actual records.</div>
+   <a href="simulations.html" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;">Browse Simulation Library →</a>
   </div>
-  <div style="padding:13px 15px;border-right:1px solid var(--rule);">
-   <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">Individual Reviewer?</div>
-   <a href="https://wikesphere.gumroad.com/l/opukbv" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;line-height:1.6;">Explore Reviewer Toolkit →</a>
+  <div style="padding:14px 16px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--surface2);">
+   <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.16em;text-transform:uppercase;color:var(--review-text);margin-bottom:4px;">Reviewer Exercises</div>
+   <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:5px;">Individual reviewers</div>
+   <div style="font-size:11.5px;color:var(--muted);line-height:1.5;margin-bottom:7px;">Calibration exercises, escalation assessment, and chronology review applied at the pre-submission stage.</div>
+   <a href="training.html" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;">Reviewer Calibration →</a>
   </div>
-  <div style="padding:13px 15px;border-right:1px solid var(--rule);">
-   <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">Team Deployment?</div>
-   <button onclick="showSection('kit')" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:none;border:none;cursor:pointer;padding:0;text-align:left;line-height:1.6;">View Deployment Kit →</button>
+  <div style="padding:14px 16px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);">
+   <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.16em;text-transform:uppercase;color:var(--ready-text);margin-bottom:4px;">Operational Resources</div>
+   <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:5px;">Any reviewer starting out</div>
+   <div style="font-size:11.5px;color:var(--muted);line-height:1.5;margin-bottom:7px;">Free review PDFs, worksheets, and reference cards. No purchase required to begin.</div>
+   <button onclick="showSection('tools')" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--ready-text);background:none;border:none;cursor:pointer;padding:0;">Free Resources →</button>
   </div>
-  <div style="padding:13px 15px;border-right:1px solid var(--rule);">
-   <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">Interested in Simulations?</div>
-   <a href="training.html" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;line-height:1.6;">Participate in Friday Review Challenges →</a>
+  <div style="padding:14px 16px;border-right:1px solid var(--rule);">
+   <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:4px;">Workflow Applicability</div>
+   <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:5px;">Team leads and HR managers</div>
+   <div style="font-size:11.5px;color:var(--muted);line-height:1.5;margin-bottom:7px;">How JRS inserts into HR review, investigations, compliance, and escalation workflows.</div>
+   <a href="workflow-fit.html" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;">Workflow Fit Guide →</a>
   </div>
-  <div style="padding:13px 15px;">
-   <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">Enterprise / Pilot?</div>
-   <a href="enterprise.html" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;line-height:1.6;">Explore Pilot Program →</a>
+  <div style="padding:14px 16px;border-right:1px solid var(--rule);border-top:1px solid var(--rule);">
+   <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:4px;">Participation Environment</div>
+   <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:5px;">Organizations exploring pilot</div>
+   <div style="font-size:11.5px;color:var(--muted);line-height:1.5;margin-bottom:7px;">Operational observation, aggregated findings, and participation structure for HR and compliance programs.</div>
+   <a href="enterprise.html" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;">Enterprise Participation →</a>
+  </div>
+  <div style="padding:14px 16px;border-top:1px solid var(--rule);">
+   <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Implementation Exploration</div>
+   <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:5px;">Teams evaluating deployment</div>
+   <div style="font-size:11.5px;color:var(--muted);line-height:1.5;margin-bottom:7px;">Phased deployment guidance, team onboarding, and workflow integration examples.</div>
+   <button onclick="showSection('guidance')" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);background:none;border:none;cursor:pointer;padding:0;">Implementation Guide →</button>
   </div>
  </div>
 </div>
@@ -1178,8 +1196,9 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:28px;border:1px solid var(--rule);background:var(--surface);overflow:hidden;">
- <div style="padding:10px 16px;border-bottom:1px solid var(--rule);">
-  <span style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);">Review Ecosystem</span>
+ <div style="padding:10px 16px;border-bottom:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+  <span style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);">Operational Resources</span>
+  <span style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);">Layer 1: Free &nbsp;·&nbsp; Layer 2: Operational Resources &nbsp;·&nbsp; Layer 3: Organizational Exploration</span>
  </div>
  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0">
 
@@ -1782,6 +1801,31 @@ a.gumroad-button.util-link {
   </div>
   <div style="border-top:1px solid var(--rule);padding-top:14px;margin-bottom:14px;">
    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px;">Operational Participation Pathway</div>
+   <div style="display:flex;flex-wrap:wrap;align-items:center;gap:0;margin-bottom:10px;overflow-x:auto;">
+    <div style="display:flex;align-items:center;flex-shrink:0;">
+     <div style="padding:6px 11px;background:var(--surface2);border:1px solid var(--rule);font-size:11px;color:var(--muted);white-space:nowrap;">Explore Simulations</div>
+     <div style="font-size:14px;color:var(--accent-dim);padding:0 5px;flex-shrink:0;">→</div>
+    </div>
+    <div style="display:flex;align-items:center;flex-shrink:0;">
+     <div style="padding:6px 11px;background:var(--surface2);border:1px solid var(--rule);font-size:11px;color:var(--muted);white-space:nowrap;">Review Exercises</div>
+     <div style="font-size:14px;color:var(--accent-dim);padding:0 5px;flex-shrink:0;">→</div>
+    </div>
+    <div style="display:flex;align-items:center;flex-shrink:0;">
+     <div style="padding:6px 11px;background:var(--surface2);border:1px solid var(--rule);font-size:11px;color:var(--muted);white-space:nowrap;">Evaluate Workflow Fit</div>
+     <div style="font-size:14px;color:var(--accent-dim);padding:0 5px;flex-shrink:0;">→</div>
+    </div>
+    <div style="display:flex;align-items:center;flex-shrink:0;">
+     <div style="padding:6px 11px;background:rgba(190,148,71,.06);border:1px solid rgba(190,148,71,.2);font-size:11px;color:var(--text);white-space:nowrap;">Operational Observation</div>
+     <div style="font-size:14px;color:var(--accent-dim);padding:0 5px;flex-shrink:0;">→</div>
+    </div>
+    <div style="display:flex;align-items:center;flex-shrink:0;">
+     <div style="padding:6px 11px;background:rgba(190,148,71,.06);border:1px solid rgba(190,148,71,.2);font-size:11px;color:var(--text);white-space:nowrap;">Submit Observations</div>
+     <div style="font-size:14px;color:var(--accent-dim);padding:0 5px;flex-shrink:0;">→</div>
+    </div>
+    <div style="flex-shrink:0;">
+     <div style="padding:6px 11px;background:rgba(190,148,71,.06);border:1px solid rgba(190,148,71,.2);font-size:11px;color:var(--text);white-space:nowrap;">Aggregated Findings</div>
+    </div>
+   </div>
    <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--rule);overflow:hidden;">
     <div style="padding:8px 12px;border-bottom:1px solid var(--rule);font-size:12px;color:var(--muted);display:flex;align-items:center;gap:10px;"><span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--accent-dim);">01</span>Explore Simulations and Operational Exercises</div>
     <div style="padding:8px 12px;border-bottom:1px solid var(--rule);font-size:12px;color:var(--muted);display:flex;align-items:center;gap:10px;background:var(--surface2);"><span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--accent-dim);">02</span>Review Operational Exercises for Workflow Applicability</div>
