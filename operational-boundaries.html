@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Operational Boundaries | JRS Review Resources</title>
+<meta name="description" content="Operational boundaries for JRS review resources: implementation variability, reviewer interpretation variability, observational limitations, organizational-context dependence, non-certification status, workflow variability, and operational discretion.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0a;--surface:#111;--surface2:#0f0f0f;--rule:#1e1e1e;
+  --accent:#be9447;--accent-dim:#c4963d;
+  --stop:#c04040;--stop-text:#c04040;
+  --review-text:#b8844a;--ready-text:#5dbf82;
+  --text:#e8e8e8;--muted:#888;--muted-soft:#666;
+}
+body{background:var(--bg);color:var(--text);font-family:'JetBrains Mono',monospace;font-size:14px;line-height:1.6;min-height:100vh}
+a{color:inherit;text-decoration:none}
+.container{max-width:860px;margin:0 auto;padding:0 20px}
+.site-header{border-bottom:1px solid var(--rule);padding:14px 0}
+.header-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.wordmark{font-family:'Bodoni Moda',serif;font-size:16px;font-weight:500;letter-spacing:.04em}
+.wordmark span{color:var(--accent)}
+.header-meta{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);line-height:1.8;text-align:right}
+.nav-links{display:flex;gap:16px;flex-wrap:wrap}
+.nav-links a{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);transition:.1s}
+.nav-links a:hover{color:var(--accent)}
+.nav-links a.active{color:var(--text)}
+
+.page-eyebrow{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;margin-top:40px}
+.page-title{font-family:'Bodoni Moda',serif;font-size:26px;font-weight:500;color:var(--text);line-height:1.2;margin-bottom:14px}
+.page-subtitle{font-size:13.5px;color:var(--muted);line-height:1.7;max-width:680px;margin-bottom:24px}
+
+.section-head{font-family:'Bodoni Moda',serif;font-size:17px;font-weight:500;color:var(--text);margin-bottom:6px;margin-top:40px}
+
+.boundary-block{border:1px solid var(--rule);overflow:hidden;margin-bottom:12px}
+.bb-head{padding:11px 16px;border-bottom:1px solid var(--rule);background:var(--surface);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.bb-num{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim)}
+.bb-label{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft)}
+.bb-title{font-size:14px;font-weight:600;color:var(--text);padding:12px 16px 0}
+.bb-body{padding:8px 16px 14px;font-size:12.5px;color:var(--muted);line-height:1.7}
+.bb-implication{padding:8px 16px 10px;border-top:1px solid var(--rule);background:var(--surface2);font-size:11.5px;color:var(--muted-soft);line-height:1.6}
+.bb-impl-label{font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--stop-text);margin-right:6px}
+
+.is-isnot{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--rule);overflow:hidden;margin:20px 0}
+.is-col{padding:16px 18px}
+.is-col:first-child{border-right:1px solid var(--rule)}
+.is-col-label{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:10px}
+.is-item{display:flex;gap:8px;font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:6px}
+.is-mark{flex-shrink:0;padding-top:1px}
+
+.disclaimer-block{border:1px solid rgba(190,148,71,.2);background:var(--surface);padding:16px 20px;margin:20px 0}
+.disclaimer-label{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:8px}
+.disclaimer-text{font-size:12.5px;color:var(--muted);line-height:1.7}
+
+.site-footer{border-top:1px solid var(--rule);padding:24px 0 40px;margin-top:60px}
+.footer-note{margin-top:12px;font-size:11px;color:var(--muted-soft);line-height:1.65;max-width:580px;border-top:1px solid var(--rule);padding-top:12px}
+
+@media(max-width:600px){
+  .is-isnot{grid-template-columns:1fr}
+  .is-col:first-child{border-right:none;border-bottom:1px solid var(--rule)}
+  .header-meta{text-align:left}
+}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NVYHJ7BJ92"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NVYHJ7BJ92');</script>
+</head>
+<body>
+
+<div class="site-header">
+ <div class="container">
+  <div class="header-inner">
+   <a href="index.html"><div class="wordmark">JRS<span>.</span></div></a>
+   <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="simulations.html">Simulations</a>
+    <a href="workflow-fit.html">Workflow Fit</a>
+    <a href="implementation-scenarios.html">Implementation</a>
+    <a href="operational-boundaries.html" class="active">Boundaries</a>
+    <a href="enterprise.html">Enterprise</a>
+   </nav>
+   <div class="header-meta">Operational Review Tools<br>Pre-Submission Review Controls</div>
+  </div>
+ </div>
+</div>
+
+<div class="container">
+
+<div class="page-eyebrow">Operational Boundaries</div>
+<h1 class="page-title">Scope, Limitations, and Operational Boundaries</h1>
+<p class="page-subtitle">JRS resources are designed to supplement existing documentation-review workflows. They do not replace legal review, HR policy, compliance oversight, formal investigations, or organizational review authority. This page describes the operational boundaries that should inform how organizations interpret and use these resources.</p>
+
+<div class="is-isnot">
+ <div class="is-col">
+  <div class="is-col-label" style="color:var(--accent-dim);">What JRS Is</div>
+  <div class="is-item"><span class="is-mark" style="color:var(--accent-dim);">+</span>An operational-review and reviewer-calibration environment</div>
+  <div class="is-item"><span class="is-mark" style="color:var(--accent-dim);">+</span>Focused on chronology reconstruction and escalation-review conditions</div>
+  <div class="is-item"><span class="is-mark" style="color:var(--accent-dim);">+</span>Designed to surface reviewer interpretation variability</div>
+  <div class="is-item"><span class="is-mark" style="color:var(--accent-dim);">+</span>Applicable to AI-assisted documentation review environments</div>
+  <div class="is-item"><span class="is-mark" style="color:var(--accent-dim);">+</span>Designed for incremental, low-friction adoption within existing workflows</div>
+  <div class="is-item"><span class="is-mark" style="color:var(--accent-dim);">+</span>Supplemental to — not a replacement for — existing review processes</div>
+ </div>
+ <div class="is-col" style="background:var(--surface2);">
+  <div class="is-col-label" style="color:var(--stop-text);">What JRS Is Not</div>
+  <div class="is-item"><span class="is-mark" style="color:var(--stop-text);">—</span>Legal advice or compliance certification</div>
+  <div class="is-item"><span class="is-mark" style="color:var(--stop-text);">—</span>Governance accreditation or regulatory approval infrastructure</div>
+  <div class="is-item"><span class="is-mark" style="color:var(--stop-text);">—</span>Workflow replacement software or enterprise compliance automation</div>
+  <div class="is-item"><span class="is-mark" style="color:var(--stop-text);">—</span>Automated risk-scoring or AI decision-making infrastructure</div>
+  <div class="is-item"><span class="is-mark" style="color:var(--stop-text);">—</span>A certification program — participation does not confer credentials</div>
+  <div class="is-item"><span class="is-mark" style="color:var(--stop-text);">—</span>A substitute for legal, HR, investigative, or compliance judgment</div>
+ </div>
+</div>
+
+<div class="section-head" style="margin-top:28px;">Seven Operational Boundaries</div>
+
+<div class="boundary-block">
+ <div class="bb-head">
+  <span class="bb-num">01</span>
+  <span class="bb-label">Implementation Variability</span>
+ </div>
+ <div class="bb-title">How these resources are implemented will vary across organizations.</div>
+ <div class="bb-body">JRS review resources do not prescribe a single implementation method. Different organizations will apply these materials differently depending on their existing workflows, review structures, staff familiarity, and organizational context. There is no universally correct implementation approach, and no implementation that "completes" the framework. These resources are designed to be adapted, not uniformly applied.</div>
+ <div class="bb-implication"><span class="bb-impl-label">Implication</span>Implementation decisions should be made by the organization based on its own operational context. JRS does not standardize implementation across organizations.</div>
+</div>
+
+<div class="boundary-block">
+ <div class="bb-head">
+  <span class="bb-num">02</span>
+  <span class="bb-label">Reviewer Interpretation Variability</span>
+ </div>
+ <div class="bb-title">Different reviewers will reach different conclusions from the same record.</div>
+ <div class="bb-body">The review conditions described in JRS materials identify documentation gaps and review risks — they do not produce definitive determinations. Reviewers applying the same framework to the same record will interpret escalation thresholds, evidentiary sufficiency, and chronology stability differently. This variability is expected, not a failure. Reviewer calibration exercises are designed to surface this variability and create discussion, not to eliminate interpretive discretion.</div>
+ <div class="bb-implication"><span class="bb-impl-label">Implication</span>JRS review outputs are reviewer interpretations, not authoritative determinations. Organizations retain full discretion over review and escalation decisions.</div>
+</div>
+
+<div class="boundary-block">
+ <div class="bb-head">
+  <span class="bb-num">03</span>
+  <span class="bb-label">Observational Limitations</span>
+ </div>
+ <div class="bb-title">Operational observations reflect participant experience, not empirical validation.</div>
+ <div class="bb-body">Aggregated findings, participant observations, and operational reflections described in JRS materials are based on reviewer experiences and simulation participation. They are not research outcomes, empirical studies, or validated findings. They reflect operational observations under simulation conditions and should not be interpreted as evidence of causal relationships, validated methodologies, or formal compliance determinations.</div>
+ <div class="bb-implication"><span class="bb-impl-label">Implication</span>Operational findings should be read as reviewer observations and procedural reflections — not as empirical proof or research conclusions.</div>
+</div>
+
+<div class="boundary-block">
+ <div class="bb-head">
+  <span class="bb-num">04</span>
+  <span class="bb-label">Organizational-Context Dependence</span>
+ </div>
+ <div class="bb-title">These materials do not account for organizational-specific legal, policy, or regulatory context.</div>
+ <div class="bb-body">JRS materials describe general documentation review conditions that appear across HR, compliance, investigation, and administrative review environments. They do not account for jurisdiction-specific legal requirements, organizational policy, collective bargaining obligations, regulatory requirements, or sector-specific documentation standards. Organizations must apply these materials within their own legal, policy, and compliance context — which JRS cannot determine for them.</div>
+ <div class="bb-implication"><span class="bb-impl-label">Implication</span>Organizations should consult legal counsel and HR policy when applying review outcomes to actual records. JRS does not determine legal sufficiency or policy compliance.</div>
+</div>
+
+<div class="boundary-block">
+ <div class="bb-head">
+  <span class="bb-num">05</span>
+  <span class="bb-label">Non-Certification Status</span>
+ </div>
+ <div class="bb-title">Participation does not establish certification, accreditation, or formal credentials.</div>
+ <div class="bb-body">Participating in JRS simulation exercises, downloading operational review materials, or engaging in pilot observation does not produce professional certification, organizational accreditation, compliance credentials, or governance approval. No reviewer, team, or organization receives a formal credential or recognized qualification through JRS participation. JRS is not a certification program and does not represent itself as one.</div>
+ <div class="bb-implication"><span class="bb-impl-label">Implication</span>JRS participation should not be represented internally or externally as certification, accreditation, or formal review qualification.</div>
+</div>
+
+<div class="boundary-block">
+ <div class="bb-head">
+  <span class="bb-num">06</span>
+  <span class="bb-label">Workflow Variability</span>
+ </div>
+ <div class="bb-title">How these resources insert into existing workflows will vary, and that is expected.</div>
+ <div class="bb-body">JRS materials are designed to insert at the review stage that already exists in organizational documentation workflows — before records enter official systems. However, the specific insertion point, the reviewer responsible, the record types covered, and the depth of review applied will vary across organizations. Some organizations will apply these materials as a self-review prompt. Others will integrate them into structured secondary review processes. Both approaches are appropriate. No single insertion model is prescribed.</div>
+ <div class="bb-implication"><span class="bb-impl-label">Implication</span>Organizations should adapt workflow insertion to match their existing review structures, not restructure workflows to match a prescribed JRS model.</div>
+</div>
+
+<div class="boundary-block">
+ <div class="bb-head">
+  <span class="bb-num">07</span>
+  <span class="bb-label">Operational Discretion</span>
+ </div>
+ <div class="bb-title">Review outcomes do not substitute for organizational review authority.</div>
+ <div class="bb-body">The review conditions, routing recommendations, and simulation findings produced through JRS materials are reviewer inputs — not organizational decisions. Whether a record advances, is returned for revision, or triggers secondary review remains the discretion of designated organizational reviewers and decision-makers. JRS provides a structured question framework for review. It does not determine outcomes. Organizations retain full discretion over all review and escalation decisions.</div>
+ <div class="bb-implication"><span class="bb-impl-label">Implication</span>No JRS output — including AI-assisted review results — should be treated as an organizational determination. Reviewers exercise judgment. JRS supports that judgment.</div>
+</div>
+
+<div class="disclaimer-block" style="margin-top:32px;">
+ <div class="disclaimer-label">Site-wide disclaimer</div>
+ <div class="disclaimer-text">JRS resources are designed to supplement existing documentation-review workflows and should not replace legal review, HR policy, compliance oversight, formal investigations, or organizational review authority. Participation is operational and observational in nature and does not establish certification, accreditation, legal authority, governance endorsement, enterprise approval, or empirical validation. A record that satisfies all JRS review conditions can still reflect a decision that is challenged on substantive, legal, or policy grounds. Documentation quality and decision quality are separate questions.</div>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;gap:10px;margin:24px 0;">
+ <a href="simulations.html" style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:13px 24px;text-decoration:none;display:inline-block;font-weight:600;">Browse Simulation Library</a>
+ <a href="implementation-scenarios.html" style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:13px 22px;text-decoration:none;display:inline-block;">Implementation Scenarios →</a>
+ <a href="workflow-fit.html" style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:13px 22px;text-decoration:none;display:inline-block;">Workflow Fit Guide →</a>
+</div>
+
+</div>
+
+<div class="site-footer">
+ <div class="container">
+  <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:flex-start;">
+   <div style="font-size:11.5px;color:var(--muted-soft);line-height:1.8;">
+    <div style="font-family:'Bodoni Moda',serif;font-size:14px;margin-bottom:4px;">JRS<span style="color:var(--accent);">.</span></div>
+    <div>Operational Review Tools</div>
+    <div style="margin-top:6px;display:flex;gap:14px;flex-wrap:wrap;">
+     <a href="index.html" style="color:var(--muted-soft);font-size:11px;">Home</a>
+     <a href="simulations.html" style="color:var(--muted-soft);font-size:11px;">Simulations</a>
+     <a href="workflow-fit.html" style="color:var(--muted-soft);font-size:11px;">Workflow Fit</a>
+     <a href="implementation-scenarios.html" style="color:var(--muted-soft);font-size:11px;">Implementation</a>
+     <a href="operational-boundaries.html" style="color:var(--muted-soft);font-size:11px;">Boundaries</a>
+     <a href="enterprise.html" style="color:var(--muted-soft);font-size:11px;">Enterprise</a>
+    </div>
+   </div>
+  </div>
+  <div class="footer-note">JRS resources are designed to supplement existing documentation-review workflows and are not legal advice, compliance certification, workflow replacement systems, automated governance scoring, or enterprise accreditation infrastructure.</div>
+ </div>
+</div>
+
+</body>
+</html>
