@@ -14,6 +14,8 @@
 <meta name="twitter:description" content="Pre-finalization review tools for HR, compliance, and investigations. Applied before records enter official systems." />
 <link rel="canonical" href="https://jrsstandard.com" />
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NVYHJ7BJ92"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NVYHJ7BJ92');</script>
 <meta name="description" content="Operational review tools for AI-assisted workplace and compliance documentation. Applied before records enter official systems. Closes chronology gaps, verifies source support, and prepares documentation for downstream review. Works inside existing HR, compliance, and investigation workflows. No dedicated software required.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -5176,11 +5178,24 @@ function submitObs(){
   }
   var noteVal=(document.getElementById('obs-note').value||'').trim();
   if(noteVal&&!jrsSanitizeCheck(noteVal))return;
+  var obsPayload={type:'operational_observation',selection:selected.dataset.val,note:noteVal,source:'index',timestamp:new Date().toISOString()};
   fetch('https://api.jrsstandard.com/v1/verify-drift',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({type:'operational_observation',selection:selected.dataset.val,note:noteVal,source:'index'})
-  }).catch(function(){});
+    body:JSON.stringify(obsPayload)
+  }).catch(function(){
+    try{
+      var blob=new Blob([JSON.stringify(obsPayload,null,2)],{type:'application/json'});
+      var dlUrl=URL.createObjectURL(blob);
+      var dlAnchor=document.createElement('a');
+      dlAnchor.href=dlUrl;
+      dlAnchor.download='jrs-obs-'+Date.now()+'.json';
+      document.body.appendChild(dlAnchor);
+      dlAnchor.click();
+      document.body.removeChild(dlAnchor);
+      URL.revokeObjectURL(dlUrl);
+    }catch(e){}
+  });
   document.getElementById('obs-confirm').style.display='inline';
   document.getElementById('obs-options').style.opacity='.4';
   document.getElementById('obs-note').style.opacity='.4';

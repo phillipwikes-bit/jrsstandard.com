@@ -2791,7 +2791,19 @@ function submitSurvey() {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
   })
-  .catch(function() {})
+  .catch(function() {
+    try {
+      var blob = new Blob([JSON.stringify(payload, null, 2)], {type: 'application/json'});
+      var dlUrl = URL.createObjectURL(blob);
+      var dlAnchor = document.createElement('a');
+      dlAnchor.href = dlUrl;
+      dlAnchor.download = 'jrs-survey-' + Date.now() + '.json';
+      document.body.appendChild(dlAnchor);
+      dlAnchor.click();
+      document.body.removeChild(dlAnchor);
+      URL.revokeObjectURL(dlUrl);
+    } catch(e) {}
+  })
   .finally(function() {
     if (formBody) formBody.style.display = 'none';
     if (completeBlock) completeBlock.style.display = 'block';
