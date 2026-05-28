@@ -278,7 +278,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
       </div>
       <div class="step-row alt">
         <span class="step-num">04</span>
-        <span>Optionally participate in operational observations: <span style="color:var(--muted)">share what conditions appear most frequently</span></span>
+        <span>Optionally participate in operational observations: <span style="color:var(--muted)">share what conditions appear most often</span></span>
       </div>
       <div class="step-row last dim">
         <span class="step-num dim">05</span>
@@ -379,6 +379,7 @@ function submitVulnObs(e) {
   var status = document.getElementById('vuln-status');
   var selected = form.querySelector('input[name="vuln"]:checked');
   if (!selected) { status.textContent = 'Select an observation to submit.'; status.style.color = 'var(--stop-text)'; status.style.display = 'inline'; return; }
+  if (!jrsSanitizeCheck(selected.value)) return;
   btn.disabled = true;
   status.textContent = 'Submitting...';
   status.style.color = 'var(--muted-soft)';
