@@ -216,7 +216,7 @@ The key is stored exclusively in `process.env.ANTHROPIC_API_KEY` on the Vercel s
 
 ## V. DEPLOYMENT
 
-- **Host**: Vercel, static site
+- **Host**: Cloudflare Pages, static site
 - **Production branch**: `main`
 - **Development branch**: `claude/mobile-site-responsive-xg5tT`
 - **Push to production**: `git push -u origin <dev-branch>:main`
