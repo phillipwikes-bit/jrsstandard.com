@@ -1645,7 +1645,7 @@ renderFM();
           <div class="kit-doc-title">Review Worksheet</div>
           <div class="kit-doc-desc">Structured pre-finalization review worksheet applying all five JRS conditions. Applied before system entry.</div>
         </div>
-        <a href="JRS Kit A1 Worksheet.pdf" class="btn-download" download>Download PDF</a>
+        <a href="JRS_Kit_A1_Worksheet.pdf" class="btn-download" download>Download PDF</a>
       </div>
       <div class="kit-doc-row">
         <div>
@@ -1654,7 +1654,7 @@ renderFM();
           <div class="kit-doc-title">Escalation Routing Form</div>
           <div class="kit-doc-desc">Escalation decision documentation form with Low / Moderate / High / Critical routing fields and trigger identification.</div>
         </div>
-        <a href="JRS Kit A2 Escalation Form.pdf" class="btn-download" download>Download PDF</a>
+        <a href="JRS_Kit_A2_Escalation_Form.pdf" class="btn-download" download>Download PDF</a>
       </div>
       <div class="kit-doc-row">
         <div>
@@ -1663,7 +1663,7 @@ renderFM();
           <div class="kit-doc-title">Reviewer Sign-off Template</div>
           <div class="kit-doc-desc">Pre-finalization sign-off documentation template for reviewer authorization and escalation records.</div>
         </div>
-        <a href="JRS Kit A3 Signoff Template.pdf" class="btn-download" download>Download PDF</a>
+        <a href="JRS_Kit_A3_Signoff_Template.pdf" class="btn-download" download>Download PDF</a>
       </div>
       <div class="kit-doc-row">
         <div>
@@ -1672,7 +1672,7 @@ renderFM();
           <div class="kit-doc-title">Reviewer Onboarding Guide</div>
           <div class="kit-doc-desc">Onboarding materials for reviewer orientation. Covers five conditions, routing framework, and workflow integration guidance.</div>
         </div>
-        <a href="JRS Kit B1 Onboarding Guide.pdf" class="btn-download" download>Download PDF</a>
+        <a href="JRS_Kit_B1_Onboarding_Guide.pdf" class="btn-download" download>Download PDF</a>
       </div>
       <div class="kit-doc-row">
         <div>
@@ -1681,7 +1681,7 @@ renderFM();
           <div class="kit-doc-title">AI-Assisted Review Checklist</div>
           <div class="kit-doc-desc">Checklist for reviewing AI-assisted documentation. Source-traceability, characterization verification, and origin-identification steps.</div>
         </div>
-        <a href="JRS Kit C1 AI Checklist.pdf" class="btn-download" download>Download PDF</a>
+        <a href="JRS_Kit_C1_AI_Checklist.pdf" class="btn-download" download>Download PDF</a>
       </div>
       <div class="kit-doc-row">
         <div>
@@ -1690,7 +1690,7 @@ renderFM();
           <div class="kit-doc-title">Redlined Examples Reference</div>
           <div class="kit-doc-desc">Annotated before/after record examples illustrating common pre-finalization gaps and reviewable revisions.</div>
         </div>
-        <a href="JRS Kit D1 Redlined Examples.pdf" class="btn-download" download>Download PDF</a>
+        <a href="JRS_Kit_D1_Redlined_Examples.pdf" class="btn-download" download>Download PDF</a>
       </div>
       <div class="kit-doc-row">
         <div>
@@ -1699,7 +1699,7 @@ renderFM();
           <div class="kit-doc-title">Implementation Playbook</div>
           <div class="kit-doc-desc">Phased implementation guidance for deploying JRS review conditions across HR, compliance, and investigative workflows.</div>
         </div>
-        <a href="JRS Kit E1 Implementation Playbook.pdf" class="btn-download" download>Download PDF</a>
+        <a href="JRS_Kit_E1_Implementation_Playbook.pdf" class="btn-download" download>Download PDF</a>
       </div>
       <div class="kit-doc-row">
         <div>
@@ -1708,7 +1708,7 @@ renderFM();
           <div class="kit-doc-title">Secondary Review Triggers</div>
           <div class="kit-doc-desc">Secondary review trigger reference with escalation conditions, routing thresholds, and critical indicator identification.</div>
         </div>
-        <a href="JRS Kit E1A Secondary Review Triggers.pdf" class="btn-download" download>Download PDF</a>
+        <a href="JRS_Kit_E1A_Secondary_Review_Triggers.pdf" class="btn-download" download>Download PDF</a>
       </div>
       <div class="kit-doc-row">
         <div>
@@ -2551,13 +2551,13 @@ renderFM();
   <div style="border:1px solid rgba(190,148,71,.4);background:rgba(190,148,71,.05);padding:28px 28px 24px">
     <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">Course Complete</div>
     <div style="font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--text);margin-bottom:8px">All six modules completed.</div>
-    <p style="font-size:13.5px;color:var(--muted);margin-bottom:20px;line-height:1.65">Enter your name to generate a completion record for this reviewer certification.</p>
+    <p style="font-size:13.5px;color:var(--muted);margin-bottom:20px;line-height:1.65">Enter your name to generate a module completion record. Completion reflects participation in the training modules only and does not constitute certification, accreditation, or a professional credential.</p>
     <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:20px">
       <input type="text" id="cert-name" placeholder="Your full name" autocomplete="name"
         style="flex:1;min-width:200px;background:var(--surface2);border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;padding:11px 14px;outline:none">
       <button onclick="generateCert()"
         style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:12px 22px;cursor:pointer;white-space:nowrap">
-        Generate Certificate
+        Generate Completion Record
       </button>
     </div>
     <canvas id="cert-canvas" style="display:none;max-width:100%;border:1px solid var(--rule);margin-bottom:12px"></canvas>
@@ -2668,7 +2668,7 @@ function generateCert() {
   // Presented to
   ctx.fillStyle = '#8A8A8A';
   ctx.font = 'italic 15px "Bodoni Moda","Georgia",serif';
-  ctx.fillText('This certifies that', W/2, 185);
+  ctx.fillText('This confirms that', W/2, 185);
   // Name
   ctx.fillStyle = '#F2F2F2';
   ctx.font = '500 38px "Bodoni Moda","Georgia",serif';
@@ -2806,9 +2806,9 @@ var ROLE_PATHS = {
     modules: ['01 — Pre-Finalization Review Conditions', '02 — Common Documentation Conditions', '03 — Secondary Review and Escalation'],
     kits: [
       {code:'KIT-F1', name:'Rapid Review Card', href:'JRS_Rapid_Review_Card.pdf'},
-      {code:'KIT-A1', name:'Pre-Finalization Review Worksheet', href:'JRS Kit A1 Worksheet.pdf'},
-      {code:'KIT-A3', name:'Reviewer Signoff Template', href:'JRS Kit A3 Signoff Template.pdf'},
-      {code:'KIT-B1', name:'Reviewer Onboarding Guide', href:'JRS Kit B1 Onboarding Guide.pdf'}
+      {code:'KIT-A1', name:'Pre-Finalization Review Worksheet', href:'JRS_Kit_A1_Worksheet.pdf'},
+      {code:'KIT-A3', name:'Reviewer Signoff Template', href:'JRS_Kit_A3_Signoff_Template.pdf'},
+      {code:'KIT-B1', name:'Reviewer Onboarding Guide', href:'JRS_Kit_B1_Onboarding_Guide.pdf'}
     ]
   },
   compliance: {
@@ -2816,9 +2816,9 @@ var ROLE_PATHS = {
     simTab: 1, simLabel: 'Escalation Routing Decisions',
     modules: ['02 — Common Documentation Conditions', '03 — Secondary Review and Escalation', '04 — AI-Assisted Record Review'],
     kits: [
-      {code:'KIT-A2', name:'Secondary Review Escalation Form', href:'JRS Kit A2 Escalation Form.pdf'},
-      {code:'KIT-E1A', name:'Secondary Review Trigger Reference', href:'JRS Kit E1A Secondary Review Triggers.pdf'},
-      {code:'KIT-C1', name:'AI Verification Checklist', href:'JRS Kit C1 AI Checklist.pdf'},
+      {code:'KIT-A2', name:'Secondary Review Escalation Form', href:'JRS_Kit_A2_Escalation_Form.pdf'},
+      {code:'KIT-E1A', name:'Secondary Review Trigger Reference', href:'JRS_Kit_E1A_Secondary_Review_Triggers.pdf'},
+      {code:'KIT-C1', name:'AI Verification Checklist', href:'JRS_Kit_C1_AI_Checklist.pdf'},
       {code:'KIT-F1', name:'Rapid Review Card', href:'JRS_Rapid_Review_Card.pdf'}
     ]
   },
@@ -2828,8 +2828,8 @@ var ROLE_PATHS = {
     modules: ['03 — Secondary Review and Escalation', '05 — Investigation Review', '02 — Common Documentation Conditions'],
     kits: [
       {code:'KIT-INV', name:'Investigator Field Guide', href:'JRS_Investigator_Field_Guide.pdf'},
-      {code:'KIT-D1', name:'Redlined Documentation Examples', href:'JRS Kit D1 Redlined Examples.pdf'},
-      {code:'KIT-A2', name:'Secondary Review Escalation Form', href:'JRS Kit A2 Escalation Form.pdf'},
+      {code:'KIT-D1', name:'Redlined Documentation Examples', href:'JRS_Kit_D1_Redlined_Examples.pdf'},
+      {code:'KIT-A2', name:'Secondary Review Escalation Form', href:'JRS_Kit_A2_Escalation_Form.pdf'},
       {code:'KIT-F1', name:'Rapid Review Card', href:'JRS_Rapid_Review_Card.pdf'}
     ]
   },
@@ -2839,8 +2839,8 @@ var ROLE_PATHS = {
     modules: ['01 — Pre-Finalization Review Conditions', '02 — Common Documentation Conditions', '05 — Investigation Review'],
     kits: [
       {code:'KIT-F1', name:'Rapid Review Card', href:'JRS_Rapid_Review_Card.pdf'},
-      {code:'KIT-A1', name:'Pre-Finalization Review Worksheet', href:'JRS Kit A1 Worksheet.pdf'},
-      {code:'KIT-A3', name:'Reviewer Signoff Template', href:'JRS Kit A3 Signoff Template.pdf'}
+      {code:'KIT-A1', name:'Pre-Finalization Review Worksheet', href:'JRS_Kit_A1_Worksheet.pdf'},
+      {code:'KIT-A3', name:'Reviewer Signoff Template', href:'JRS_Kit_A3_Signoff_Template.pdf'}
     ]
   },
   admin: {
@@ -2848,9 +2848,9 @@ var ROLE_PATHS = {
     simTab: 1, simLabel: 'Escalation Routing Decisions',
     modules: ['06 — Implementation Sequence', '03 — Secondary Review and Escalation', '04 — AI-Assisted Record Review'],
     kits: [
-      {code:'KIT-E1', name:'Implementation Playbook', href:'JRS Kit E1 Implementation Playbook.pdf'},
-      {code:'KIT-B1', name:'Reviewer Onboarding Guide', href:'JRS Kit B1 Onboarding Guide.pdf'},
-      {code:'KIT-E1A', name:'Secondary Review Trigger Reference', href:'JRS Kit E1A Secondary Review Triggers.pdf'}
+      {code:'KIT-E1', name:'Implementation Playbook', href:'JRS_Kit_E1_Implementation_Playbook.pdf'},
+      {code:'KIT-B1', name:'Reviewer Onboarding Guide', href:'JRS_Kit_B1_Onboarding_Guide.pdf'},
+      {code:'KIT-E1A', name:'Secondary Review Trigger Reference', href:'JRS_Kit_E1A_Secondary_Review_Triggers.pdf'}
     ]
   }
 };
