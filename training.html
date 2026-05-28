@@ -1759,6 +1759,10 @@ renderFM();
     </div>
     <div class="module-panel" id="module-panel-0">
       <div class="module-panel-inner">
+        <div style="padding:12px 16px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;background:rgba(190,148,71,.04);border:1px solid rgba(190,148,71,.16);">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);">Start with interaction</span>
+          <a href="#simulator" onclick="document.getElementById('simulator').scrollIntoView({behavior:'smooth'});showSimTab(0)" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:10px 20px;text-decoration:none;display:inline-block;font-weight:600;">&#9654; Run a Simulation</a>
+        </div>
         <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:16px">The five pre-finalization review conditions establish the baseline standard for documentation sufficiency. Each condition addresses a distinct visibility requirement for retained-record review. Apply before any record enters an official system.</p>
         <div class="condition-list">
           <div class="condition-item"><div class="condition-label">Review Condition 1 - Identifiable Basis</div><div class="condition-title">Can a later reviewer identify what happened?</div><div class="condition-body">Events, conduct, or decisions described with specific dates, actors, and outcomes. Not inferred from surrounding context.</div></div>
@@ -1770,6 +1774,16 @@ renderFM();
         <div class="reviewer-reminder" style="margin-top:20px">
           <div class="reviewer-reminder-label">Reviewer Note</div>
           <p>These five conditions apply regardless of record type. The standard is consistent: can a retained organizational record be reconstructed - what happened, from what basis, through what reasoning - from the file alone?</p>
+        </div>
+      </div>
+      <div style="padding:14px 24px;border-top:1px solid var(--rule);background:var(--surface2);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:9px;">What appeared most clearly?</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <button onclick="recordModObs(this)" data-val="chronology" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Chronology Instability</button>
+          <button onclick="recordModObs(this)" data-val="escalation" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Unsupported Escalation</button>
+          <button onclick="recordModObs(this)" data-val="disagreement" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Reviewer Disagreement</button>
+          <button onclick="recordModObs(this)" data-val="source" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Source Linkage Failure</button>
+          <button onclick="recordModObs(this)" data-val="drift" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">AI Drift</button>
         </div>
       </div>
       <div class="module-complete-row">
@@ -1790,6 +1804,10 @@ renderFM();
     </div>
     <div class="module-panel" id="module-panel-1">
       <div class="module-panel-inner">
+        <div style="padding:12px 16px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;background:rgba(190,148,71,.04);border:1px solid rgba(190,148,71,.16);">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);">Start with interaction</span>
+          <a href="#simulator" onclick="document.getElementById('simulator').scrollIntoView({behavior:'smooth'});showSimTab(0)" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:10px 20px;text-decoration:none;display:inline-block;font-weight:600;">&#9654; Run a Simulation</a>
+        </div>
         <div class="reviewer-reminder">
           <div class="reviewer-reminder-label">Reviewer Reminder</div>
           <p>Pattern conclusions should be tied to documented incidents and dates in the file.</p>
@@ -1813,6 +1831,16 @@ renderFM();
           <p>Where conditions are identified, note them. Do not assume resolution.</p>
         </div>
       </div>
+      <div style="padding:14px 24px;border-top:1px solid var(--rule);background:var(--surface2);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:9px;">What appeared most clearly?</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <button onclick="recordModObs(this)" data-val="chronology" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Chronology Instability</button>
+          <button onclick="recordModObs(this)" data-val="escalation" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Unsupported Escalation</button>
+          <button onclick="recordModObs(this)" data-val="disagreement" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Reviewer Disagreement</button>
+          <button onclick="recordModObs(this)" data-val="source" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Source Linkage Failure</button>
+          <button onclick="recordModObs(this)" data-val="drift" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">AI Drift</button>
+        </div>
+      </div>
       <div class="module-complete-row">
         <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft)">Review complete?</span>
         <button class="btn-complete" onclick="markComplete(1)">Mark Complete</button>
@@ -1831,6 +1859,10 @@ renderFM();
     </div>
     <div class="module-panel" id="module-panel-2">
       <div class="module-panel-inner">
+        <div style="padding:12px 16px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;background:rgba(190,148,71,.04);border:1px solid rgba(190,148,71,.16);">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);">Start with interaction</span>
+          <a href="#simulator" onclick="document.getElementById('simulator').scrollIntoView({behavior:'smooth'});showSimTab(0)" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:10px 20px;text-decoration:none;display:inline-block;font-weight:600;">&#9654; Run a Simulation</a>
+        </div>
         <div class="routing-label">Secondary Review Routing Reference &nbsp;|&nbsp; KIT-REF-01 &nbsp;|&nbsp; For use with Modules 03–05<br><span style="font-size:10px;color:var(--muted-soft);font-style:italic;letter-spacing:0;text-transform:none">Field reference retained from earlier intake version</span></div>
         <div style="overflow-x:auto">
         <table class="routing-table">
@@ -1878,6 +1910,16 @@ renderFM();
         </div>
         <p class="table-note">Routing conditions reflect documentation sufficiency standards. Local workflow requirements govern implementation sequence. Where local practice differs from a routing condition, document the basis for the variance.</p>
       </div>
+      <div style="padding:14px 24px;border-top:1px solid var(--rule);background:var(--surface2);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:9px;">What appeared most clearly?</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <button onclick="recordModObs(this)" data-val="chronology" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Chronology Instability</button>
+          <button onclick="recordModObs(this)" data-val="escalation" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Unsupported Escalation</button>
+          <button onclick="recordModObs(this)" data-val="disagreement" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Reviewer Disagreement</button>
+          <button onclick="recordModObs(this)" data-val="source" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Source Linkage Failure</button>
+          <button onclick="recordModObs(this)" data-val="drift" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">AI Drift</button>
+        </div>
+      </div>
       <div class="module-complete-row">
         <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft)">Review complete?</span>
         <button class="btn-complete" onclick="markComplete(2)">Mark Complete</button>
@@ -1896,6 +1938,10 @@ renderFM();
     </div>
     <div class="module-panel" id="module-panel-3">
       <div class="module-panel-inner">
+        <div style="padding:12px 16px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;background:rgba(190,148,71,.04);border:1px solid rgba(190,148,71,.16);">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);">Start with interaction</span>
+          <a href="#simulator" onclick="document.getElementById('simulator').scrollIntoView({behavior:'smooth'});showSimTab(0)" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:10px 20px;text-decoration:none;display:inline-block;font-weight:600;">&#9654; Run a Simulation</a>
+        </div>
         <div class="reviewer-reminder">
           <div class="reviewer-reminder-label">Reviewer Reminder</div>
           <p>Where AI-assisted drafting was used, wording should be checked against original notes before the record enters the system. Conflicting accounts should remain documented, including where one is credited over another.</p>
@@ -1929,6 +1975,16 @@ renderFM();
           <div class="ai-note">Human reviewer confirmation required before system entry.</div>
         </div>
       </div>
+      <div style="padding:14px 24px;border-top:1px solid var(--rule);background:var(--surface2);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:9px;">What appeared most clearly?</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <button onclick="recordModObs(this)" data-val="chronology" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Chronology Instability</button>
+          <button onclick="recordModObs(this)" data-val="escalation" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Unsupported Escalation</button>
+          <button onclick="recordModObs(this)" data-val="disagreement" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Reviewer Disagreement</button>
+          <button onclick="recordModObs(this)" data-val="source" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Source Linkage Failure</button>
+          <button onclick="recordModObs(this)" data-val="drift" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">AI Drift</button>
+        </div>
+      </div>
       <div class="module-complete-row">
         <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft)">Review complete?</span>
         <button class="btn-complete" onclick="markComplete(3)">Mark Complete</button>
@@ -1947,12 +2003,26 @@ renderFM();
     </div>
     <div class="module-panel" id="module-panel-4">
       <div class="module-panel-inner">
+        <div style="padding:12px 16px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;background:rgba(190,148,71,.04);border:1px solid rgba(190,148,71,.16);">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);">Start with interaction</span>
+          <a href="#simulator" onclick="document.getElementById('simulator').scrollIntoView({behavior:'smooth'});showSimTab(0)" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:10px 20px;text-decoration:none;display:inline-block;font-weight:600;">&#9654; Run a Simulation</a>
+        </div>
         <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:20px">Investigation records present specific documentation sufficiency challenges. Source materials may be distributed across systems. Witness accounts may conflict. Findings are made under time pressure. This module addresses the review standard for investigation records specifically.</p>
         <div class="condition-list">
           <div class="condition-item"><div class="condition-label">Investigation Review Standard</div><div class="condition-title">Witness Accounts</div><div class="condition-body">All accounts obtained during the investigation should be preserved in the file. The credibility determination and its basis should be stated. Accounts not credited should remain accessible to a subsequent reviewer.</div></div>
           <div class="condition-item"><div class="condition-label">Investigation Review Standard</div><div class="condition-title">Source Materials</div><div class="condition-body">Documents reviewed during the investigation should be identified and confirmed present. Where source materials are in archived or inaccessible systems, that condition should be documented - not assumed resolved.</div></div>
           <div class="condition-item"><div class="condition-label">Investigation Review Standard</div><div class="condition-title">Timeline</div><div class="condition-body">Investigation open date, interview dates, and close date should be identifiable from the file. The chronology of the investigation itself should be reconstructible independently of the investigator.</div></div>
           <div class="condition-item"><div class="condition-label">Investigation Review Standard</div><div class="condition-title">Independence</div><div class="condition-body">The review of investigation conclusions should occur outside the drafting chain. Where staffing constraints limit independence, that constraint should be documented - not resolved by silence.</div></div>
+        </div>
+      </div>
+      <div style="padding:14px 24px;border-top:1px solid var(--rule);background:var(--surface2);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:9px;">What appeared most clearly?</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <button onclick="recordModObs(this)" data-val="chronology" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Chronology Instability</button>
+          <button onclick="recordModObs(this)" data-val="escalation" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Unsupported Escalation</button>
+          <button onclick="recordModObs(this)" data-val="disagreement" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Reviewer Disagreement</button>
+          <button onclick="recordModObs(this)" data-val="source" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Source Linkage Failure</button>
+          <button onclick="recordModObs(this)" data-val="drift" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">AI Drift</button>
         </div>
       </div>
       <div class="module-complete-row">
@@ -1973,6 +2043,10 @@ renderFM();
     </div>
     <div class="module-panel" id="module-panel-5">
       <div class="module-panel-inner">
+        <div style="padding:12px 16px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;background:rgba(190,148,71,.04);border:1px solid rgba(190,148,71,.16);">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);">Start with interaction</span>
+          <a href="#simulator" onclick="document.getElementById('simulator').scrollIntoView({behavior:'smooth'});showSimTab(0)" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:10px 20px;text-decoration:none;display:inline-block;font-weight:600;">&#9654; Run a Simulation</a>
+        </div>
         <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:20px">The implementation sequence supports phased rollout within existing workflows. Each step can be applied independently. Organizations may begin with the forms and refer back to reviewer materials as questions arise, or proceed through the full sequence before deployment.</p>
         <div class="sampling-list">
           <div class="sampling-item"><div class="sampling-num">1</div><div class="sampling-body"><div class="sampling-title">Distribute the Rapid Review Card</div><div class="sampling-desc">Provide all primary reviewers with KIT-F1. Establish it as the baseline reference for pre-finalization review questions.</div></div></div>
@@ -1984,6 +2058,16 @@ renderFM();
           <div class="sampling-item"><div class="sampling-num">7</div><div class="sampling-body"><div class="sampling-title">Document Variances</div><div class="sampling-desc">Where local workflow differs from a reference condition, document the basis. Variance documentation supports later review and reduces audit exposure.</div></div></div>
         </div>
       </div>
+      <div style="padding:14px 24px;border-top:1px solid var(--rule);background:var(--surface2);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:9px;">What appeared most clearly?</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <button onclick="recordModObs(this)" data-val="chronology" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Chronology Instability</button>
+          <button onclick="recordModObs(this)" data-val="escalation" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Unsupported Escalation</button>
+          <button onclick="recordModObs(this)" data-val="disagreement" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Reviewer Disagreement</button>
+          <button onclick="recordModObs(this)" data-val="source" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Source Linkage Failure</button>
+          <button onclick="recordModObs(this)" data-val="drift" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">AI Drift</button>
+        </div>
+      </div>
       <div class="module-complete-row">
         <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft)">Review complete?</span>
         <button class="btn-complete" onclick="markComplete(5)">Mark Complete</button>
@@ -1993,6 +2077,14 @@ renderFM();
   </div>
 
   
+
+  <div style="margin:32px 0 44px;padding:20px 24px;border:1px solid rgba(190,148,71,.25);background:rgba(190,148,71,.04);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;">Recurring Participation Loop</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.6;max-width:480px;">Modules explored. Return to simulations and explore a new scenario. The core loop: Explore Simulation &#8594; Observe Ambiguity &#8594; Submit Observation &#8594; Return.</div>
+    </div>
+    <a href="#simulator" onclick="document.getElementById('simulator').scrollIntoView({behavior:'smooth'});showSimTab(0)" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;background:var(--accent);color:#050505;padding:14px 24px;text-decoration:none;display:inline-block;font-weight:600;white-space:nowrap;">&#9654; Explore New Simulation</a>
+  </div>
   <div class="section-head">Reference Review Scenarios</div>
   <p class="section-sub">Examples are abbreviated and composite. Local conditions may differ.</p>
 
@@ -2637,6 +2729,19 @@ updateProgressDisplay();
 if (Object.values(progress).filter(Boolean).length === 6) {
   var cs = document.getElementById('cert-section');
   if (cs) cs.style.display = 'block';
+}
+
+// ── MODULE OBSERVATION ─────────────────────────────────────
+function recordModObs(btn) {
+  var parent = btn.parentNode;
+  parent.querySelectorAll('button').forEach(function(b) {
+    b.style.color = 'var(--muted-soft)';
+    b.style.borderColor = 'var(--rule)';
+    b.style.background = 'none';
+  });
+  btn.style.color = 'var(--accent)';
+  btn.style.borderColor = 'rgba(190,148,71,.5)';
+  btn.style.background = 'rgba(190,148,71,.06)';
 }
 
 // ── SURVEY ────────────────────────────────────────────────
