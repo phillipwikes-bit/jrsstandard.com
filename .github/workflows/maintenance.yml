@@ -1,0 +1,68 @@
+name: JRS Site Maintenance
+
+on:
+  schedule:
+    - cron: '0 10 1 * *'   # 1st of every month at 10:00 UTC
+  workflow_dispatch:
+    inputs:
+      task:
+        description: 'Specific task (leave blank for full audit)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  maintain:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: anthropics/claude-code-action@beta
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          allowed_tools: "Bash,Read,Edit,Write"
+          prompt: |
+            You are the maintenance agent for jrsstandard.com. Begin by reading CLAUDE.md in full — it is the governance protocol for this codebase and overrides all defaults.
+
+            ${{ github.event.inputs.task != '' && format('USER-SPECIFIED TASK: {0}', github.event.inputs.task) || 'Run the full monthly diagnostic audit below.' }}
+
+            FULL DIAGNOSTIC AUDIT — run each check in order:
+
+            1. SSOT CONSISTENCY
+               Verify these canonical values appear correctly across every .html file:
+               - Contact: governance@jrsstandard.com (no Gmail addresses)
+               - PDF: Wikes_Record-Level-Controls_AI-Assisted-Documentation.pdf (no JRS-Standard.pdf in href)
+               - Endpoint: https://api.jrsstandard.com/v1/verify-drift
+               - GA4: G-NVYHJ7BJ92 tag present in every .html file
+               - Copyright: © 2026 Phillip Wikes · JRS™ (canonical form)
+               - localStorage key: jrs-training-progress (training.html only)
+
+            2. BANNED PROSE PATTERNS
+               Scan all .html files for:
+               - Em-dash — used in prose sentences (exempt: UI bullet markers, section headers)
+               - "no policy change" in any form
+               - "frequently" as a filler adverb in prose (exempt: inside quoted record examples)
+               - Sentence openers matching "Designed for [audience]" pattern
+
+            3. SECURITY
+               Confirm ANTHROPIC_API_KEY does not appear in any .html file or any file outside api/review.js.
+
+            4. NETWORK FAIL-SAFES
+               Verify every fetch() POST call in .html files has a non-empty .catch() handler.
+               Empty .catch(function(){}) is a violation — must include Blob JSON download per CLAUDE.md Section III.4.
+
+            5. LINK INTEGRITY
+               Verify all relative href targets in .html files exist on disk.
+               Flag any reference to mccr-simulator.html or space-named PDFs (e.g., "JRS Kit A1 Worksheet.pdf").
+
+            6. PII SANITIZATION
+               Confirm jrsSanitizeCheck() is defined AND called before fetch() in every page that accepts free-text input.
+
+            For each issue found: apply the minimal surgical fix, following the editing standards in CLAUDE.md Section II exactly.
+
+            After all fixes (or if none needed):
+            - Commit with a message in the format: "Monthly maintenance [YYYY-MM-DD]: <summary of fixes or 'no issues found'>"
+            - Push to branch: claude/mobile-site-responsive-xg5tT
+            - Then push that branch to main: git push origin claude/mobile-site-responsive-xg5tT:main
