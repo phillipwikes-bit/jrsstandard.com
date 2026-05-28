@@ -358,6 +358,20 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 </div>
 
 <script>
+function jrsSanitizeCheck(text) {
+  var patterns = [
+    {re:/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, label:'email address'},
+    {re:/\b\d{3}[-.\s]?\d{3}[-.\s]?\d{4}\b/g, label:'phone number'},
+    {re:/\b\d{3}-\d{2}-\d{4}\b/g, label:'SSN'},
+    {re:/\b\d{4}[\s-]?\d{4}[\s-]?\d{4}[\s-]?\d{4}\b/g, label:'card number'}
+  ];
+  var found = [];
+  patterns.forEach(function(p){ if (p.re.test(text)) found.push(p.label); });
+  if (found.length) {
+    return confirm('Potential sensitive identifier detected ('+found.join(', ')+'). Confirm all personally identifiable information has been redacted before submission to preserve work-product privileges.');
+  }
+  return true;
+}
 function submitVulnObs(e) {
   e.preventDefault();
   var form = document.getElementById('vuln-form');
@@ -381,7 +395,26 @@ function submitVulnObs(e) {
     btn.disabled = false;
   })
   .catch(function() {
-    status.textContent = 'Observation recorded locally. Contact governance@jrsstandard.com to submit.';
+    var sessionObj = {
+      type: 'vulnerability_observation',
+      selection: selected.value,
+      source: 'pilot',
+      timestamp: new Date().toISOString()
+    };
+    try {
+      var blob = new Blob([JSON.stringify(sessionObj, null, 2)], {type: 'application/json'});
+      var dlUrl = URL.createObjectURL(blob);
+      var dlAnchor = document.createElement('a');
+      dlAnchor.href = dlUrl;
+      dlAnchor.download = 'jrs-session-' + Date.now() + '.json';
+      document.body.appendChild(dlAnchor);
+      dlAnchor.click();
+      document.body.removeChild(dlAnchor);
+      URL.revokeObjectURL(dlUrl);
+      status.textContent = 'Server unavailable. Session data downloaded for manual submission to governance@jrsstandard.com.';
+    } catch(e) {
+      status.textContent = 'Server unavailable. Contact governance@jrsstandard.com to submit your observation.';
+    }
     status.style.color = 'var(--review-text)';
     btn.disabled = false;
   });

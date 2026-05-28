@@ -2725,6 +2725,19 @@ function downloadCert() {
 }
 
 updateProgressDisplay();
+// Restore persisted survey selections
+if (progress.survey) {
+  Object.keys(progress.survey).forEach(function(group) {
+    var val = progress.survey[group];
+    var row = document.querySelector('[data-group="'+group+'"]');
+    if (!row) return;
+    row.querySelectorAll('.survey-scale-btn, .survey-choice-btn').forEach(function(b) {
+      if (b.textContent.trim() === val) b.classList.add('sel');
+    });
+  });
+}
+// Restore persisted role selection
+if (progress.role && ROLE_PATHS[progress.role]) selectRole(progress.role);
 // Show cert section if already all complete
 if (Object.values(progress).filter(Boolean).length === 6) {
   var cs = document.getElementById('cert-section');
@@ -2750,12 +2763,18 @@ function surveyScale(btn, group) {
   if (!row) return;
   row.querySelectorAll('.survey-scale-btn').forEach(function(b){ b.classList.remove('sel'); });
   btn.classList.add('sel');
+  if (!progress.survey) progress.survey = {};
+  progress.survey[group] = btn.textContent.trim();
+  localStorage.setItem('jrs-training-progress', JSON.stringify(progress));
 }
 function surveyChoice(btn, group) {
   var row = document.querySelector('[data-group="'+group+'"]');
   if (!row) return;
   row.querySelectorAll('.survey-choice-btn').forEach(function(b){ b.classList.remove('sel'); });
   btn.classList.add('sel');
+  if (!progress.survey) progress.survey = {};
+  progress.survey[group] = btn.textContent.trim();
+  localStorage.setItem('jrs-training-progress', JSON.stringify(progress));
 }
 function submitSurvey() {
   var formBody = document.getElementById('survey-form-body');
@@ -2841,6 +2860,8 @@ function selectRole(key) {
   if (card) card.classList.add('role-active');
   var data = ROLE_PATHS[key];
   if (!data) return;
+  progress.role = key;
+  localStorage.setItem('jrs-training-progress', JSON.stringify(progress));
   // Simulation column
   var col1 = '<div style="background:var(--surface);padding:18px 20px">'
     + '<div style="font-family:\'JetBrains Mono\',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:10px">Recommended Simulation</div>'
