@@ -868,7 +868,7 @@ a.gumroad-button.util-link {
 <div class="util-bar">
  <div class="util-bar-inner">
   <span class="util-label">Free Resources</span>
-  <a href="JRS-Standard.pdf" class="util-link accent-link">Review Controls PDF</a>
+  <a href="Wikes_Record-Level-Controls_AI-Assisted-Documentation.pdf" class="util-link accent-link">Review Controls PDF</a>
   <a href="JRS_Rapid_Review_Card.pdf" class="util-link">Rapid Review Card</a>
   <a href="JRS_Investigator_Field_Guide.pdf" class="util-link">Investigator Field Guide</a>
   <a href="simulations.html" class="util-link">Simulation Library</a>
@@ -1265,6 +1265,45 @@ a.gumroad-button.util-link {
   <div style="padding:12px 14px;background:var(--surface);border-left:2px solid var(--accent-dim);grid-column:1/-1;"><div style="font-size:13px;color:var(--text);font-weight:600;margin-bottom:3px;">Are conflicting accounts preserved and acknowledged?</div><div style="font-size:12px;color:var(--muted);line-height:1.6;">Where accounts differ, is the conflict documented - not resolved through omission? A later reviewer should be able to see what was contested and how it was handled.</div></div>
  </div>
 </div>
+
+<!-- SOURCE CONTINUITY SCORE CALCULATOR -->
+<div style="border:1px solid var(--rule);overflow:hidden;margin-bottom:28px;">
+ <div style="padding:10px 16px;border-bottom:1px solid var(--rule);background:var(--surface);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;">
+  <span style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);">Source Continuity Score Calculator</span>
+  <span style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);">SCS = (Mapped Sources / Total Claims) × 100</span>
+ </div>
+ <div style="padding:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;align-items:end;">
+  <div>
+   <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;" for="total-claims">Total Claims in Record</label>
+   <input id="total-claims" type="number" min="0" placeholder="e.g. 8" oninput="calcSCS()" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);font-family:'JetBrains Mono',monospace;font-size:13px;padding:9px 11px;outline:none;">
+  </div>
+  <div>
+   <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;" for="mapped-sources">Contemporaneous Sources Mapped</label>
+   <input id="mapped-sources" type="number" min="0" placeholder="e.g. 5" oninput="calcSCS()" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);font-family:'JetBrains Mono',monospace;font-size:13px;padding:9px 11px;outline:none;">
+  </div>
+  <div>
+   <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">Source Continuity Score</div>
+   <div id="scs-output" style="background:var(--surface);border:1px solid var(--rule);color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:500;padding:7px 11px;letter-spacing:.02em;">&#x2014;</div>
+  </div>
+ </div>
+ <div id="scs-band" style="padding:8px 16px;border-top:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:10.5px;line-height:1.6;display:none;"></div>
+ <div style="padding:8px 16px;border-top:1px solid var(--rule);font-size:10.5px;color:var(--muted-soft);line-height:1.6;">Diagnostic reference only. SCS does not constitute a legal sufficiency determination, compliance certification, or governance credential.</div>
+</div>
+<script>
+function calcSCS(){
+  var claims=parseFloat(document.getElementById('total-claims').value);
+  var sources=parseFloat(document.getElementById('mapped-sources').value);
+  var out=document.getElementById('scs-output');
+  var band=document.getElementById('scs-band');
+  if(!claims||claims<=0){out.textContent='—';out.style.color='var(--accent)';band.style.display='none';return;}
+  var score=Math.round((Math.min(sources||0,claims)/claims)*100);
+  out.textContent=score+'%';
+  if(score>=80){out.style.color='var(--ready-text)';band.style.color='var(--ready-text)';band.textContent='High source continuity. Claims are substantially supported by mapped contemporaneous sources.';}
+  else if(score>=50){out.style.color='var(--review-text)';band.style.color='var(--review-text)';band.textContent='Moderate source continuity. Some claims lack contemporaneous source mapping. Review flagged items before submission.';}
+  else{out.style.color='var(--stop-text)';band.style.color='var(--stop-text)';band.textContent='Low source continuity. Significant proportion of claims are unsupported. Record should not advance without remediation.';}
+  band.style.display='block';
+}
+</script>
 
 <div style="margin-bottom:44px;">
  <div class="section-head">Why AI-Assisted Drafting Changes Review Risk</div>
@@ -1806,7 +1845,7 @@ a.gumroad-button.util-link {
   <a href="https://wikesphere.gumroad.com/l/ojeqeo" class="gumroad-button" data-gumroad-single-product="true" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px solid rgba(190,148,71,.4);padding:11px 18px;display:inline-block;">Access Deployment Kit - $77 ↗</a>
  </div>
  <div style="margin-top:10px;font-size:12px;color:var(--muted-soft);">
-  <a href="mailto:phillipwikes@gmail.com" style="color:var(--muted-soft);text-decoration:none;">Organizational deployment inquiry →</a>
+  <a href="mailto:governance@jrsstandard.com" style="color:var(--muted-soft);text-decoration:none;">Organizational deployment inquiry →</a>
  </div>
 </div>
 
@@ -2049,10 +2088,10 @@ a.gumroad-button.util-link {
 <div style="margin-bottom:20px;">
  <div class="section-head">Access</div>
  <div class="btn-row">
- <a href="JRS-Standard.pdf" class="btn btn-primary">View Review Controls PDF</a>
+ <a href="Wikes_Record-Level-Controls_AI-Assisted-Documentation.pdf" class="btn btn-primary">View Review Controls PDF</a>
  <button class="btn btn-ghost" onclick="showSection('kit')">View Deployment Kit</button>
  <a href="https://wikesphere.gumroad.com/l/opukbv" class="btn btn-ghost gumroad-button" data-gumroad-single-product="true">Access Reviewer Reference</a>
- <a href="mailto:phillipwikes@gmail.com?subject=JRS Pilot Program Inquiry" class="btn btn-ghost">Apply for Pilot →</a>
+ <a href="mailto:governance@jrsstandard.com?subject=JRS Pilot Program Inquiry" class="btn btn-ghost">Apply for Pilot →</a>
  </div>
 </div>
 
@@ -2554,7 +2593,7 @@ a.gumroad-button.util-link {
   <p class="body-text" style="max-width:640px;">This reference is published as part of the JRS documentation review framework. It is intended for use within HR operational guidance, internal controls documentation, compliance review materials, audit support resources, investigation documentation guidance, and administrative review procedures.</p>
   <p class="body-text" style="max-width:640px;">JRS is a documentation review structure: a lightweight administrative control applied at the pre-finalization stage within existing workflows. It does not replace existing systems, policies, or professional judgment. It provides a structured method for ensuring the basis for conclusions is visible in the file before records enter official systems.</p>
   <div class="btn-row">
-    <a href="JRS-Standard.pdf" class="btn btn-primary">View Standard</a>
+    <a href="Wikes_Record-Level-Controls_AI-Assisted-Documentation.pdf" class="btn btn-primary">View Standard</a>
     <button class="btn btn-ghost" onclick="showSection('tools')">Free Downloads</button>
     <button class="btn btn-ghost" onclick="showSection('home')">Return to Standard</button>
   </div>
@@ -2738,7 +2777,7 @@ a.gumroad-button.util-link {
  <div class="kit-section-inner">
  <div style="display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;">
  <a href="https://wikesphere.gumroad.com/l/ojeqeo" class="btn btn-accent gumroad-button" data-gumroad-single-product="true" style="font-size:13px;padding:13px 28px;">Purchase Deployment Kit - $77</a>
- <a href="JRS-Standard.pdf" class="btn btn-ghost">View Standard</a>
+ <a href="Wikes_Record-Level-Controls_AI-Assisted-Documentation.pdf" class="btn btn-ghost">View Standard</a>
  <button class="btn btn-ghost" onclick="showSection('tools')">Review Tools &rarr;</button>
  </div>
  <p style="margin-top:16px;font-size:12.5px;color:var(--muted-soft);line-height:1.7;">Downloadable PDF &middot; Gumroad delivery &middot; Optional implementation support available upon request</p>
@@ -2758,7 +2797,7 @@ a.gumroad-button.util-link {
   <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ready-text);margin-bottom:6px;">Free PDF</div>
   <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">Documentation Review Framework</div>
   <div style="font-size:12.5px;color:var(--muted);line-height:1.55;margin-bottom:12px;">Four review conditions. Failure-mode catalog. Reviewer routing reference. For any practitioner starting a documentation quality review practice.</div>
-  <a href="JRS-Standard.pdf" download style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ready-text);text-decoration:none;border:1px solid rgba(93,191,130,.4);padding:6px 12px;display:inline-block;">Download PDF ↓</a>
+  <a href="Wikes_Record-Level-Controls_AI-Assisted-Documentation.pdf" download style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ready-text);text-decoration:none;border:1px solid rgba(93,191,130,.4);padding:6px 12px;display:inline-block;">Download PDF ↓</a>
  </div>
  <div style="background:var(--surface);padding:18px 18px 16px;">
   <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ready-text);margin-bottom:6px;">Free PDF</div>
@@ -4189,7 +4228,7 @@ a.gumroad-button.util-link {
     <div style="display:grid;grid-template-columns:140px 1fr 80px;border-bottom:1px solid var(--rule);padding:12px 14px;align-items:center;">
       <div><div style="font-size:13px;font-weight:600;color:var(--text);">JRS Review Reference</div><div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted-soft);margin-top:2px;">v1.0 &middot; May 2026</div></div>
       <div style="font-size:13px;color:var(--muted);line-height:1.6;padding-right:16px;">Four review conditions, reviewer lens, submission readiness criteria, and failure-mode catalog. Primary reference document for the review methodology.</div>
-      <div><a href="JRS-Standard.pdf" class="lib-btn primary">View PDF</a></div>
+      <div><a href="Wikes_Record-Level-Controls_AI-Assisted-Documentation.pdf" class="lib-btn primary">View PDF</a></div>
     </div>
   </div>
 </div>
@@ -4550,7 +4589,7 @@ a.gumroad-button.util-link {
  <p class="body-text">Developed by Phillip Wikes, M.S., drawing from experience in administrative review, investigations, and documentation assessment within regulated environments. The review structure reflects recurring documentation failure patterns observed across organizational review contexts, with particular attention to records that appeared complete at drafting but failed during later review.</p>
  <p class="body-text" style="max-width:600px;">JRS v1.0 was published in May 2026. The review structure evolves incrementally through operational use rather than through theoretical expansion.</p>
  <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;">
-  <a href="JRS-Standard.pdf" class="btn btn-primary" style="font-size:13px;">View Standard</a>
+  <a href="Wikes_Record-Level-Controls_AI-Assisted-Documentation.pdf" class="btn btn-primary" style="font-size:13px;">View Standard</a>
   <button class="btn btn-ghost" style="font-size:13px;" onclick="showSection('home')">Review Conditions</button>
   <button class="btn btn-ghost" style="font-size:13px;" onclick="showSection('library')">Document Architecture</button>
  </div>
@@ -4573,7 +4612,7 @@ a.gumroad-button.util-link {
  <div class="site-footer-inner">
  <div>JRS&#8482; Documentation Review Structure &middot; v1.0 &middot; Published May 2026 &middot; <a href="https://jrsstandard.com" style="color:inherit;text-decoration:none;">jrsstandard.com</a></div>
  <div>Developed by Phillip Wikes, M.S. Background in civil rights enforcement, administrative review, investigations, and documentation assessment within regulated environments.</div>
- <div>Questions about implementation or organizational deployment: <a href="mailto:phillipwikes@gmail.com" style="color:var(--accent);text-decoration:none;">phillipwikes@gmail.com</a></div>
+ <div>Questions about implementation or organizational deployment: <a href="mailto:governance@jrsstandard.com" style="color:var(--accent);text-decoration:none;">governance@jrsstandard.com</a></div>
  <div>JRS&#8482; and Justification Review Standard&#8482; are trademarks of Phillip Wikes. &copy; 2026 Phillip Wikes. All rights reserved.</div>
  <div>Educational material. Does not constitute legal advice, professional certification, regulatory accreditation, or employment decision guidance.</div>
  </div>
