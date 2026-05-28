@@ -129,7 +129,8 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 .vuln-header-label{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
 .vuln-body{padding:14px 16px}
 .vuln-opts{display:flex;flex-direction:column;gap:6px}
-.vuln-opt{padding:9px 13px;border:1px solid var(--rule);font-size:12.5px;color:var(--muted)}
+.vuln-opt{display:flex;align-items:center;gap:10px;padding:9px 13px;border:1px solid var(--rule);font-size:12.5px;color:var(--muted);cursor:pointer}
+.vuln-opt input[type="radio"]{accent-color:var(--accent);cursor:pointer}
 
 /* STEP LIST */
 .step-list{display:flex;flex-direction:column;gap:0;border:1px solid var(--rule);overflow:hidden}
@@ -218,13 +219,19 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
       <span class="vuln-header-label">Observed Documentation Vulnerabilities Across Enterprise Portfolios (Historical Baseline Data)</span>
     </div>
     <div class="vuln-body">
-      <div class="vuln-opts">
-        <div class="vuln-opt">A. &nbsp;Chronology instability</div>
-        <div class="vuln-opt">B. &nbsp;Unsupported escalation</div>
-        <div class="vuln-opt">C. &nbsp;Reviewer disagreement</div>
-        <div class="vuln-opt">D. &nbsp;Missing source linkage</div>
-        <div class="vuln-opt">E. &nbsp;AI-assisted interpretation drift</div>
-      </div>
+      <form id="vuln-form" onsubmit="submitVulnObs(event)">
+        <div class="vuln-opts">
+          <label class="vuln-opt"><input type="radio" name="vuln" value="A"> A. &nbsp;Chronology instability</label>
+          <label class="vuln-opt"><input type="radio" name="vuln" value="B"> B. &nbsp;Unsupported escalation</label>
+          <label class="vuln-opt"><input type="radio" name="vuln" value="C"> C. &nbsp;Reviewer disagreement</label>
+          <label class="vuln-opt"><input type="radio" name="vuln" value="D"> D. &nbsp;Missing source linkage</label>
+          <label class="vuln-opt"><input type="radio" name="vuln" value="E"> E. &nbsp;AI-assisted interpretation drift</label>
+        </div>
+        <div style="padding:10px 0 2px;">
+          <button type="submit" id="vuln-submit-btn" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:10px 22px;cursor:pointer;font-weight:600;">Submit Observation</button>
+          <span id="vuln-status" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--muted-soft);margin-left:14px;display:none;"></span>
+        </div>
+      </form>
     </div>
   </div>
 
@@ -350,5 +357,35 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
   </div>
 </div>
 
+<script>
+function submitVulnObs(e) {
+  e.preventDefault();
+  var form = document.getElementById('vuln-form');
+  var btn = document.getElementById('vuln-submit-btn');
+  var status = document.getElementById('vuln-status');
+  var selected = form.querySelector('input[name="vuln"]:checked');
+  if (!selected) { status.textContent = 'Select an observation to submit.'; status.style.color = 'var(--stop-text)'; status.style.display = 'inline'; return; }
+  btn.disabled = true;
+  status.textContent = 'Submitting...';
+  status.style.color = 'var(--muted-soft)';
+  status.style.display = 'inline';
+  fetch('https://api.jrsstandard.com/v1/verify-drift', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ type: 'vulnerability_observation', selection: selected.value, source: 'pilot' })
+  })
+  .then(function(res) {
+    if (!res.ok) throw new Error('server');
+    status.textContent = 'Observation submitted.';
+    status.style.color = 'var(--ready-text)';
+    btn.disabled = false;
+  })
+  .catch(function() {
+    status.textContent = 'Observation recorded locally. Contact governance@jrsstandard.com to submit.';
+    status.style.color = 'var(--review-text)';
+    btn.disabled = false;
+  });
+}
+</script>
 </body>
 </html>

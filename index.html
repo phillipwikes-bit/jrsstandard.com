@@ -1274,16 +1274,16 @@ a.gumroad-button.util-link {
  </div>
  <div style="padding:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;align-items:end;">
   <div>
-   <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;" for="total-claims">Total Claims in Record</label>
-   <input id="total-claims" type="number" min="0" placeholder="e.g. 8" oninput="calcSCS()" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);font-family:'JetBrains Mono',monospace;font-size:13px;padding:9px 11px;outline:none;">
+   <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;" for="jrs-total-claims">Total Claims in Record</label>
+   <input id="jrs-total-claims" type="number" min="0" placeholder="e.g. 8" oninput="calcSCS()" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);font-family:'JetBrains Mono',monospace;font-size:13px;padding:9px 11px;outline:none;">
   </div>
   <div>
-   <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;" for="mapped-sources">Contemporaneous Sources Mapped</label>
-   <input id="mapped-sources" type="number" min="0" placeholder="e.g. 5" oninput="calcSCS()" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);font-family:'JetBrains Mono',monospace;font-size:13px;padding:9px 11px;outline:none;">
+   <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;" for="jrs-mapped-sources">Contemporaneous Sources Mapped</label>
+   <input id="jrs-mapped-sources" type="number" min="0" placeholder="e.g. 5" oninput="calcSCS()" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);font-family:'JetBrains Mono',monospace;font-size:13px;padding:9px 11px;outline:none;">
   </div>
   <div>
    <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">Source Continuity Score</div>
-   <div id="scs-output" style="background:var(--surface);border:1px solid var(--rule);color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:500;padding:7px 11px;letter-spacing:.02em;">&#x2014;</div>
+   <div id="jrs-scs-output" style="background:var(--surface);border:1px solid var(--rule);color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:500;padding:7px 11px;letter-spacing:.02em;">&#x2014;</div>
   </div>
  </div>
  <div id="scs-band" style="padding:8px 16px;border-top:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:10.5px;line-height:1.6;display:none;"></div>
@@ -1291,9 +1291,9 @@ a.gumroad-button.util-link {
 </div>
 <script>
 function calcSCS(){
-  var claims=parseFloat(document.getElementById('total-claims').value);
-  var sources=parseFloat(document.getElementById('mapped-sources').value);
-  var out=document.getElementById('scs-output');
+  var claims=parseFloat(document.getElementById('jrs-total-claims').value);
+  var sources=parseFloat(document.getElementById('jrs-mapped-sources').value);
+  var out=document.getElementById('jrs-scs-output');
   var band=document.getElementById('scs-band');
   if(!claims||claims<=0){out.textContent='—';out.style.color='var(--accent)';band.style.display='none';return;}
   var score=Math.round((Math.min(sources||0,claims)/claims)*100);
