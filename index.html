@@ -5186,6 +5186,15 @@ function submitObs(){
   document.getElementById('obs-note').style.opacity='.4';
   document.querySelector('[onclick="submitObs()"]').style.display='none';
 }
+// Hash-based deep-link routing: index.html#section-tools etc.
+(function(){
+  if (!location.hash) return;
+  var id = location.hash.replace('#section-', '').replace('#', '');
+  if (document.getElementById('section-' + id)) {
+    showSection(id);
+    setTimeout(function(){ document.getElementById('section-' + id).scrollIntoView({behavior:'smooth'}); }, 80);
+  }
+}());
 </script>
 
 <script src="https://gumroad.com/js/embed.js"></script>
