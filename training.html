@@ -404,9 +404,9 @@ a:hover{text-decoration:underline}
 .hero-ctas{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}
 .btn-hero-primary{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;background:var(--accent);color:#050505;padding:14px 28px;text-decoration:none;display:inline-block;font-weight:600}
 .btn-hero-primary:hover{background:#D4A84F;text-decoration:none}
-.btn-hero-secondary{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(190,148,71,.4);padding:13px 24px;text-decoration:none;display:inline-block}
+.btn-hero-secondary{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(190,148,71,.4);padding:12px 22px;text-decoration:none;display:inline-block;min-height:44px;display:inline-flex;align-items:center}
 .btn-hero-secondary:hover{background:rgba(190,148,71,.08);text-decoration:none}
-.btn-hero-ghost{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:13px 24px;text-decoration:none;display:inline-block}
+.btn-hero-ghost{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:12px 22px;text-decoration:none;display:inline-block;min-height:44px;display:inline-flex;align-items:center}
 .btn-hero-ghost:hover{color:var(--text);border-color:var(--muted);text-decoration:none}
 .hero-tags{display:flex;gap:6px;flex-wrap:wrap}
 .hero-tag{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border:1px solid var(--rule);background:var(--surface);color:var(--muted-soft)}
@@ -456,6 +456,12 @@ a:hover{text-decoration:underline}
   .ref-conditions-grid{grid-template-columns:1fr}
   .sticky-nav-link{padding:11px 12px;font-size:7.5px}
 }
+.cross-site-nav{background:var(--bg);border-bottom:1px solid var(--rule);overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+.cross-site-nav::-webkit-scrollbar{display:none}
+.cross-site-nav-inner{display:flex;align-items:center;padding:0 24px;gap:0;max-width:960px;margin:0 auto}
+.csn-link{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;padding:10px 18px;border-bottom:2px solid transparent;white-space:nowrap;display:inline-block}
+.csn-link.csn-active{color:var(--accent);border-bottom-color:var(--accent)}
+.csn-link:hover{color:var(--text)}
 </style>
 </head>
 <body>
@@ -466,10 +472,18 @@ a:hover{text-decoration:underline}
     <span class="wordmark">JRS<span style="font-size:7px;vertical-align:super;position:relative;top:-2px;letter-spacing:0;color:var(--accent);">&#8482;</span></span>
     <div class="site-header-title">Operational Review Participation</div>
     <div class="site-header-meta">Reviewer Training and Reference Materials &nbsp;|&nbsp; Version 1.0 &nbsp;|&nbsp; May 2026 &nbsp;|&nbsp; jrsstandard.com</div>
-    <a href="/" class="back-to-site">&#8592; Return to JRS</a>
+    <a href="index.html" class="back-to-site">&#8592; Return to Home</a>
     <a href="simulations.html" class="back-to-site" style="margin-left:12px;">Simulation Library &#8599;</a>
   </div>
 </header>
+
+<div class="cross-site-nav">
+  <div class="cross-site-nav-inner">
+    <a href="index.html" class="csn-link">Home</a>
+    <a href="pilot.html" class="csn-link">Pilot Program</a>
+    <a href="training.html" class="csn-link csn-active">Simulations</a>
+  </div>
+</div>
 
 <!-- ═══ STICKY NAV ════════════════════════════════════════ -->
 <nav class="sticky-nav" aria-label="Quick navigation">
@@ -486,9 +500,10 @@ a:hover{text-decoration:underline}
 <!-- HERO -->
 <section class="hero-section">
   <div class="hero-inner">
-    <div class="hero-eyebrow">JRS Operational Participation Environment</div>
+    <div class="hero-eyebrow">AI Documentation Risk &nbsp;&middot;&nbsp; JRS Operational Participation Environment</div>
     <h1 class="hero-h1">Explore Documentation<br>Review Conditions</h1>
-    <p class="hero-sub">Simulation-centered reviewer exercises for HR, legal, compliance, governance, employee relations, investigations, and audit practitioners engaging with AI Documentation Risk during the pilot validation phase. Chronology instability, escalation inconsistency, reconstruction review, and AI-assisted documentation conditions, shared across operational review functions.</p>
+    <p class="hero-sub" style="margin-bottom:10px;">Simulation-centered reviewer exercises for HR, legal, compliance, governance, employee relations, investigations, and audit practitioners engaging with AI Documentation Risk during the pilot validation phase.</p>
+    <p class="hero-sub">Chronology instability, escalation inconsistency, reconstruction review, and AI-assisted documentation conditions, shared across operational review functions.</p>
     <div style="margin-bottom:18px;"><div style="display:inline-block;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:7px 16px;font-weight:600;">No Commercial Commitment Necessary</div></div>
     <div class="hero-ctas">
       <a href="#simulator" onclick="showSimTab(0)" class="btn-hero-primary">&#9654; Explore Procedural Review Simulations</a>
@@ -2597,9 +2612,15 @@ renderFM();
 </div>
 
 <footer class="site-footer" role="contentinfo">
-  <div class="footer-text">
-    Reviewer Reference and Implementation Materials &nbsp;|&nbsp; Internal Distribution &nbsp;|&nbsp; Version 1.0 &nbsp;|&nbsp; May 2026<br>
-    &copy; 2026 Phillip Wikes &middot; JRS&trade;
+  <div style="max-width:960px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;">
+    <div style="display:flex;flex-wrap:wrap;gap:16px;">
+      <a href="index.html" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;">Home</a>
+      <a href="pilot.html" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;">Pilot Program</a>
+      <a href="training.html" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;">Simulation Training</a>
+      <a href="Wikes_Record-Level-Controls_AI-Assisted-Documentation.pdf" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;">Review Controls PDF</a>
+      <a href="https://www.linkedin.com/in/phillipwikes" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;">LinkedIn Profile</a>
+    </div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-soft);">&#169; 2026 Phillip Wikes &nbsp;·&nbsp; JRS&#8482;</div>
   </div>
 </footer>
 <script>

@@ -835,6 +835,12 @@ a.gumroad-button.util-link {
   transition-duration:.01ms !important;
  }
 }
+.cross-site-nav{background:var(--bg);border-bottom:1px solid var(--rule);overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+.cross-site-nav::-webkit-scrollbar{display:none}
+.cross-site-nav-inner{display:flex;align-items:center;padding:0 24px;gap:0;max-width:960px;margin:0 auto}
+.csn-link{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;padding:10px 18px;border-bottom:2px solid transparent;white-space:nowrap;display:inline-block}
+.csn-link.csn-active{color:var(--accent);border-bottom-color:var(--accent)}
+.csn-link:hover{color:var(--text)}
 </style>
 </head>
 <body>
@@ -846,6 +852,14 @@ a.gumroad-button.util-link {
  <div class="header-meta">Justification Review Standard<br>Pre-Submission Review Controls</div>
  </div>
 </header>
+
+<div class="cross-site-nav">
+ <div class="cross-site-nav-inner">
+  <a href="index.html" class="csn-link csn-active">Home</a>
+  <a href="pilot.html" class="csn-link">Pilot Program</a>
+  <a href="training.html" class="csn-link">Simulations</a>
+ </div>
+</div>
 
 <nav class="primary-nav" aria-label="Site navigation">
  
@@ -889,13 +903,13 @@ a.gumroad-button.util-link {
 
 <div style="margin-top:36px;margin-bottom:32px;">
  <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">AI Documentation Risk &nbsp;&middot;&nbsp; Operational Review Controls</div>
- <div style="display:inline-block;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:7px 16px;margin-bottom:16px;font-weight:600;">No Commercial Commitment Necessary</div>
- <p style="font-size:15px;color:var(--muted);line-height:1.65;max-width:560px;margin-bottom:28px;">Procedural-review simulations and operational review exercises for HR, employee relations, legal reviewers, workplace investigators, compliance, governance, and audit environments.</p>
+ <p style="font-size:15px;color:var(--muted);line-height:1.65;max-width:560px;margin-bottom:16px;">Procedural-review simulations and operational review exercises for HR, employee relations, legal reviewers, workplace investigators, compliance, governance, and audit environments.</p>
+ <div style="display:inline-block;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:7px 16px;margin-bottom:20px;font-weight:600;">No Commercial Commitment Necessary</div>
  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:580px;margin-bottom:20px;">
+  <a href="pilot.html" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;background:var(--accent);color:#050505;padding:20px 16px;text-decoration:none;display:block;font-weight:700;text-align:center;line-height:1.5;">Explore<br>Pilot Program &#8599;</a>
   <a href="simulations.html" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;background:var(--accent);color:#050505;padding:20px 16px;text-decoration:none;display:block;font-weight:700;text-align:center;line-height:1.5;">Explore<br>Simulations</a>
   <a href="training.html" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;background:none;color:var(--text);border:1px solid rgba(190,148,71,.45);padding:20px 16px;text-decoration:none;display:block;font-weight:600;text-align:center;line-height:1.5;">Reviewer<br>Exercises</a>
   <a href="#role-pathways" onclick="document.getElementById('role-pathways').scrollIntoView({behavior:'smooth'});return false;" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;background:none;color:var(--text);border:1px solid var(--rule);padding:20px 16px;text-decoration:none;display:block;font-weight:600;text-align:center;line-height:1.5;">Explore<br>by Role</a>
-  <a href="pilot.html" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;background:none;color:var(--accent);border:1px solid rgba(190,148,71,.45);padding:20px 16px;text-decoration:none;display:block;font-weight:600;text-align:center;line-height:1.5;">Pilot<br>Program &#8599;</a>
  </div>
  <div style="font-size:12px;color:var(--muted-soft);line-height:1.65;max-width:480px;padding:10px 14px;border-left:2px solid rgba(190,148,71,.4);">No commercial commitment necessary during the pilot validation phase. Participation can begin with a single reviewer, one department, or one record type. Framework materials are available without cost while operational validation is underway.</div>
 </div>
@@ -4650,6 +4664,13 @@ function calcSCS(){
 
 <footer class="site-footer" role="contentinfo">
  <div class="site-footer-inner">
+ <div style="display:flex;flex-wrap:wrap;gap:18px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--rule);">
+  <a href="index.html" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;">Home</a>
+  <a href="pilot.html" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;">Pilot Program</a>
+  <a href="training.html" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;">Simulation Training</a>
+  <a href="Wikes_Record-Level-Controls_AI-Assisted-Documentation.pdf" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;">Review Controls PDF</a>
+  <a href="https://www.linkedin.com/in/phillipwikes" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;">LinkedIn Profile</a>
+ </div>
  <div>JRS&#8482; Documentation Review Structure &middot; v1.0 &middot; Published May 2026 &middot; <a href="https://jrsstandard.com" style="color:inherit;text-decoration:none;">jrsstandard.com</a></div>
  <div>Developed by Phillip Wikes, M.S. Background in civil rights enforcement, administrative review, investigations, and documentation assessment within regulated environments.</div>
  <div>Questions about implementation or organizational deployment: <a href="mailto:governance@jrsstandard.com" style="color:var(--accent);text-decoration:none;">governance@jrsstandard.com</a></div>
