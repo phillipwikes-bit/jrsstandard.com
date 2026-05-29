@@ -12,6 +12,8 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="JRS™ Documentation Review Methodology" />
 <meta name="twitter:description" content="Records are read later by people who were not present. A pre-finalization review structure for what happens before they get there." />
+<meta property="og:image" content="https://jrsstandard.com/og-card.svg" />
+<meta name="twitter:image" content="https://jrsstandard.com/og-card.svg" />
 <link rel="canonical" href="https://jrsstandard.com" />
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVYHJ7BJ92"></script>
@@ -29,6 +31,8 @@
  --stop:#8B2020;--review-c:#8B5E1A;--ready:#1E5C35;
  --stop-text:#E88080;--review-text:#D4A055;--ready-text:#5DBF82;
 }
+.skip-link{position:absolute;left:-9999px;top:4px;z-index:9999;background:var(--accent);color:#050505;padding:8px 16px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none}
+.skip-link:focus{left:4px}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased}
 
@@ -587,6 +591,11 @@ a.gumroad-button.util-link {
  div[style*="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top"]{
    grid-template-columns:1fr !important;
  }
+ .primary-nav-mobile-bar{display:flex}
+ .primary-nav-inner{display:none;flex-direction:column;padding:0;overflow-x:visible;border-top:1px solid var(--rule)}
+ .primary-nav-inner.nav-open{display:flex}
+ .nav-item{padding:14px 20px;text-align:left;font-size:11px;letter-spacing:.12em;border-bottom:1px solid var(--rule)!important;border-left:2px solid transparent!important;border-top:none!important;border-right:none!important;min-height:48px;width:100%;display:block}
+ .nav-item.active{border-left-color:var(--accent)!important;border-bottom-color:var(--rule)!important}
 }
 @media(max-width:540px){
  div[style*="grid-template-columns:1fr 1fr;gap:8px"]{grid-template-columns:1fr !important}
@@ -620,6 +629,11 @@ a.gumroad-button.util-link {
 .core-principle-label{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
 .core-principle-text{font-size:14px;color:var(--text);line-height:1.7;}
 
+.primary-nav-mobile-bar{display:none;align-items:center;justify-content:space-between;padding:0 20px;height:48px;border-bottom:1px solid var(--rule);max-width:100%}
+.nav-current-section{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft)}
+.nav-hamburger{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);background:none;border:1px solid var(--rule);padding:8px 14px;cursor:pointer;transition:color .15s,border-color .15s;display:flex;align-items:center;gap:6px;min-height:36px}
+.nav-hamburger:hover,.nav-hamburger.open{color:var(--accent);border-color:var(--accent-dim)}
+.nav-hamburger-icon{font-size:14px;line-height:1}
 /* MOBILE RESPONSIVE */
 @media(max-width:760px){
   .visitor-orient-grid{grid-template-columns:1fr;}
@@ -629,17 +643,23 @@ a.gumroad-button.util-link {
 </style>
 </head>
 <body>
-<a href="#section-home" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;font-size:0;" class="skip-link">Skip to content</a>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
-<div class="site-header">
+<header class="site-header" role="banner">
  <div class="site-header-inner">
  <div class="wordmark" onclick="showSection('home')" role="button" aria-label="JRS Home">JRS<span style="font-size:11px;vertical-align:super;position:relative;top:-3px;letter-spacing:0;color:var(--accent);">&#8482;</span></div>
  <div class="header-meta">Documentation Review Methodology<br>v1.0 &middot; May 2026</div>
  </div>
-</div>
+</header>
 
-<nav class="primary-nav">
- <div class="primary-nav-inner">
+<nav class="primary-nav" aria-label="Site navigation">
+ <div class="primary-nav-mobile-bar">
+  <span class="nav-current-section">Standard</span>
+  <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileNav()" aria-label="Toggle navigation" aria-expanded="false">
+   <span class="nav-hamburger-icon">&#9776;</span> Menu
+  </button>
+ </div>
+ <div class="primary-nav-inner" id="primary-nav-items">
  <button class="nav-item active" onclick="showSection('home')">Overview</button>
  <button class="nav-item" onclick="showSection('doccond')">Documentation Conditions</button>
  <button class="nav-item" onclick="showSection('tools')">Field References</button>
@@ -662,8 +682,7 @@ a.gumroad-button.util-link {
   <a href="Wikes_Record-Level-Controls_AI-Assisted-Documentation.pdf" class="util-link accent-link">View Standard</a>
   <a href="JRS_Rapid_Review_Card.pdf" class="util-link">Rapid Review Card</a>
   <a href="JRS_Investigator_Field_Guide.pdf" class="util-link">Investigator Field Guide</a>
-  <a href="https://wikesphere.gumroad.com/l/opukbv" class="util-link gumroad-button accent-link" data-gumroad-single-product="true">Reviewer Reference &mdash; $27</a>
-  <a href="https://wikesphere.gumroad.com/l/ojeqeo" class="util-link gumroad-button accent-link" data-gumroad-single-product="true">Implementation Kit &mdash; $77</a>
+  <a href="pilot.html" class="util-link accent-link">Pilot Program</a>
   <a href="#" onclick="showSection('kit');return false;" class="util-link" style="color:var(--accent-dim);">Operational References</a>
  </div>
 </div>
@@ -705,7 +724,7 @@ a.gumroad-button.util-link {
  </div>
 </div>
 
-<div class="container">
+<div class="container" id="main-content">
 
 <div class="page-eyebrow">Documentation Review Structure</div>
 <h1 class="page-title">JRS Documentation Review Methodology</h1>
@@ -1432,7 +1451,7 @@ a.gumroad-button.util-link {
  <div class="btn-row">
  <a href="Wikes_Record-Level-Controls_AI-Assisted-Documentation.pdf" class="btn btn-primary">View Standard</a>
  <button class="btn btn-ghost" onclick="showSection('kit')">Operational References</button>
- <a href="https://wikesphere.gumroad.com/l/opukbv" class="btn btn-ghost gumroad-button" data-gumroad-single-product="true">Reviewer Reference</a>
+ <a href="pilot.html" class="btn btn-ghost">Pilot Program &rarr;</a>
  </div>
 </div>
 
@@ -1972,9 +1991,9 @@ a.gumroad-button.util-link {
  <div class="kit-purchase-title">Operational Implementation Package</div>
  <div class="kit-purchase-sub">Downloadable PDF package. Operational forms, reviewer training, and workflow guidance for applying JRS within existing documentation environments.</div><div style="font-size:12px;color:var(--muted-soft);line-height:1.5;margin-bottom:16px;padding:8px 10px;border-left:1px solid rgba(190,148,71,.25);">Operational implementation layer for the JRS Documentation Review Reference. Includes onboarding, training, and deployment materials.</div>
  
- <div class="kit-price-note" style="margin-bottom:22px;">Downloadable PDF via Gumroad. Unlimited access.</div>
- <a href="https://wikesphere.gumroad.com/l/ojeqeo" class="kit-cta gumroad-button" data-gumroad-single-product="true">Access Implementation Resources</a>
- <span class="kit-cta-note">Secure checkout via Gumroad<br>PDF delivery after purchase</span>
+ <div class="kit-price-note" style="margin-bottom:22px;">No commercial commitment necessary · Pilot validation phase</div>
+ <a href="pilot.html" class="kit-cta">Request Pilot Participation →</a>
+ <span class="kit-cta-note">No cost during validation phase<br>Contact: governance@jrsstandard.com</span>
  <div class="kit-includes">
  <div class="kit-includes-label">Included in this package</div>
  <div class="kit-include-item"><span class="kit-include-dash">--</span>Reviewer onboarding materials</div>
@@ -2119,7 +2138,7 @@ a.gumroad-button.util-link {
 <div class="kit-section" style="border-bottom:none;">
  <div class="kit-section-inner">
  <div style="display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;">
- <a href="https://wikesphere.gumroad.com/l/ojeqeo" class="btn btn-accent gumroad-button" data-gumroad-single-product="true" style="font-size:13px;padding:13px 28px;">Download Implementation Kit &mdash; $77</a>
+ <a href="pilot.html" class="btn btn-accent" style="font-size:13px;padding:13px 28px;">Request Pilot Participation →</a>
  <a href="Wikes_Record-Level-Controls_AI-Assisted-Documentation.pdf" class="btn btn-ghost">View Standard</a>
  <button class="btn btn-ghost" onclick="showSection('tools')">Review Tools &rarr;</button>
  </div>
@@ -3463,7 +3482,7 @@ a.gumroad-button.util-link {
 
   <div style="padding:20px 24px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
     <div style="font-size:13px;color:var(--muted);">All six modules included in the Deployment Kit as downloadable PDF references.</div>
-    <a href="https://wikesphere.gumroad.com/l/ojeqeo" class="gumroad-button" data-gumroad-single-product="true" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--black);background:var(--accent);padding:10px 20px;text-decoration:none;white-space:nowrap;">Access Deployment Kit</a>
+    <a href="pilot.html" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--black);background:var(--accent);padding:10px 20px;text-decoration:none;white-space:nowrap;">Pilot Program →</a>
   </div>
 </div>
 
@@ -3510,7 +3529,7 @@ a.gumroad-button.util-link {
     <div style="display:grid;grid-template-columns:140px 1fr 80px;border-bottom:1px solid var(--rule);padding:12px 14px;align-items:center;">
       <div><div style="font-size:13px;font-weight:600;color:var(--text);">JRS Reviewer Reference</div><div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted-soft);margin-top:2px;">Operational</div></div>
       <div style="font-size:13px;color:var(--muted);line-height:1.6;padding-right:16px;">Reconstruction-focused review principles, documentation insufficiency patterns, and source-path visibility reference for practitioners applying the review structure within existing workflows.</div>
-      <div><a href="https://wikesphere.gumroad.com/l/opukbv" class="lib-btn gumroad-button" data-gumroad-single-product="true">Access</a></div>
+      <div><a href="pilot.html" class="lib-btn">Pilot</a></div>
     </div>
     <div style="display:grid;grid-template-columns:140px 1fr 80px;border-bottom:1px solid var(--rule);padding:12px 14px;align-items:center;">
       <div><div style="font-size:13px;font-weight:600;color:var(--text);">Investigator Field Guide</div><div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted-soft);margin-top:2px;">001-INV &middot; v1.0 &middot; Free</div></div>
@@ -3879,14 +3898,14 @@ a.gumroad-button.util-link {
 </div>
 </div>
 
-<div class="site-footer">
+<footer class="site-footer" role="contentinfo">
  <div class="site-footer-inner">
  <div>JRS&#8482; Documentation Review Structure &middot; v1.0 &middot; Published May 2026 &middot; <a href="https://jrsstandard.com" style="color:inherit;text-decoration:none;">jrsstandard.com</a></div>
  <div>Developed by Phillip Wikes, M.S. Background in civil rights enforcement, administrative review, investigations, and documentation assessment within regulated environments.</div>
  <div>JRS&#8482; and Justification Review Standard&#8482; are trademarks of Phillip Wikes. &copy; 2026 Phillip Wikes. All rights reserved.</div>
  <div>Educational material. Does not constitute legal advice, professional certification, regulatory accreditation, or employment decision guidance.</div>
  </div>
-</div>
+</footer>
 
   </div>
 
@@ -4202,6 +4221,19 @@ function printCertificate(){const d=document.getElementById('cert-canvas').toDat
 updateProgress();
 </script>
 
-<script src="https://gumroad.com/js/embed.js"></script>
+<script>
+function toggleMobileNav(){
+  var navItems=document.getElementById('primary-nav-items');
+  var hamburger=document.getElementById('nav-hamburger');
+  if(!navItems||!hamburger)return;
+  var isOpen=navItems.classList.contains('nav-open');
+  navItems.classList.toggle('nav-open');
+  hamburger.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded',String(!isOpen));
+  hamburger.innerHTML=isOpen
+    ?'<span class="nav-hamburger-icon">&#9776;</span> Menu'
+    :'<span class="nav-hamburger-icon">&#10005;</span> Close';
+}
+</script>
 </body>
 </html>

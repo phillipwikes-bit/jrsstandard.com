@@ -12,6 +12,8 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="JRS™ Enterprise Implementation" />
 <meta name="twitter:description" content="Multi-department deployment of operational review controls. Workflow insertion, reviewer onboarding, phased record-type rollout." />
+<meta property="og:image" content="https://jrsstandard.com/og-card.svg" />
+<meta name="twitter:image" content="https://jrsstandard.com/og-card.svg" />
 <link rel="canonical" href="https://jrsstandard.com/enterprise" />
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <meta name="description" content="Enterprise implementation of JRS operational review tools for HR teams, compliance programs, and investigation units deploying documentation review controls across multiple departments. No dedicated software. No platform migration.">
@@ -27,6 +29,8 @@
  --stop:#8B2020;--review-c:#8B5E1A;--ready:#1E5C35;
  --stop-text:#E88080;--review-text:#D4A055;--ready-text:#5DBF82;
 }
+.skip-link{position:absolute;left:-9999px;top:4px;z-index:9999;background:var(--accent);color:#050505;padding:8px 16px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none}
+.skip-link:focus{left:4px}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased}
 
@@ -130,6 +134,11 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 .footer-link:hover{color:var(--text)}
 .footer-copy{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-soft)}
 
+.primary-nav-mobile-bar{display:none;align-items:center;justify-content:space-between;padding:0 20px;height:48px;border-bottom:1px solid var(--rule);max-width:100%}
+.nav-current-section{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft)}
+.nav-hamburger{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);background:none;border:1px solid var(--rule);padding:8px 14px;cursor:pointer;transition:color .15s,border-color .15s;display:flex;align-items:center;gap:6px;min-height:36px}
+.nav-hamburger:hover,.nav-hamburger.open{color:var(--accent);border-color:var(--accent-dim)}
+.nav-hamburger-icon{font-size:14px;line-height:1}
 @media(max-width:760px){
  .scope-grid{grid-template-columns:1fr 1fr}
 }
@@ -148,6 +157,11 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
  .btn-row{flex-wrap:wrap;gap:8px}
  .site-footer-inner{flex-direction:column;gap:14px}
  .footer-links{gap:12px}
+ .primary-nav-mobile-bar{display:flex}
+ .primary-nav-inner{display:none;flex-direction:column;padding:0;overflow-x:visible;border-top:1px solid var(--rule)}
+ .primary-nav-inner.nav-open{display:flex}
+ .nav-item{padding:14px 20px;text-align:left;font-size:11px;letter-spacing:.12em;border-bottom:1px solid var(--rule)!important;border-left:2px solid transparent!important;border-top:none!important;border-right:none!important;min-height:48px;width:100%;display:block}
+ .nav-item.active{border-left-color:var(--accent)!important;border-bottom-color:var(--rule)!important}
 }
 @media(max-width:400px){
  .page-title{font-size:24px}
@@ -157,16 +171,23 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 </style>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
-<div class="site-header">
+<header class="site-header" role="banner">
  <div class="site-header-inner">
   <a href="index.html" class="wordmark">JRS<span style="font-size:11px;vertical-align:super;position:relative;top:-3px;letter-spacing:0;color:var(--accent);">&#8482;</span></a>
   <div class="header-meta">Justification Review Standard<br>Enterprise Implementation</div>
  </div>
-</div>
+</header>
 
-<nav class="primary-nav">
- <div class="primary-nav-inner">
+<nav class="primary-nav" aria-label="Site navigation">
+ <div class="primary-nav-mobile-bar">
+  <span class="nav-current-section">Enterprise</span>
+  <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileNav()" aria-label="Toggle navigation" aria-expanded="false">
+   <span class="nav-hamburger-icon">&#9776;</span> Menu
+  </button>
+ </div>
+ <div class="primary-nav-inner" id="primary-nav-items">
   <a href="index.html" class="nav-item">Review Controls</a>
   <a href="index.html#section-scenarios" class="nav-item" onclick="window.location='index.html';setTimeout(()=>window.location='index.html#scenarios',100)">Documentation Failures</a>
   <a href="index.html" class="nav-item">Free Resources</a>
@@ -187,7 +208,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
  </div>
 </div>
 
-<div class="container">
+<main class="container" id="main-content">
 
 <div class="page-eyebrow">Enterprise Implementation</div>
 <h1 class="page-title">Multi-Department Deployment of Operational Review Controls</h1>
@@ -393,7 +414,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
   </div>
  </div>
  <div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:10px;">
-  <a href="https://wikesphere.gumroad.com/l/ojeqeo" class="btn btn-primary">Access Deployment Kit - $77 ↗</a>
+  <a href="pilot.html" class="btn btn-primary">Request Pilot Participation &rarr;</a>
   <a href="index.html" class="btn btn-ghost">View Free Review Resources</a>
  </div>
 </div>
@@ -559,14 +580,14 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
  <div class="section-head">Resources</div>
  <div class="btn-row">
   <a href="Wikes_Record-Level-Controls_AI-Assisted-Documentation.pdf" class="btn btn-ghost">View Review Controls PDF</a>
-  <a href="https://wikesphere.gumroad.com/l/ojeqeo" class="btn btn-accent">Access Deployment Kit - $77 ↗</a>
+  <a href="pilot.html" class="btn btn-accent">Pilot Program &rarr;</a>
   <a href="training.html" class="btn btn-ghost">Explore Reconstruction Simulations →</a>
  </div>
 </div>
 
-</div>
+</main>
 
-<div class="site-footer">
+<footer class="site-footer" role="contentinfo">
  <div class="site-footer-inner">
   <div class="footer-links">
    <a href="index.html" class="footer-link">Home</a>
@@ -577,7 +598,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
   </div>
   <div class="footer-copy">&copy; 2026 Phillip Wikes &nbsp;&middot;&nbsp; JRS&#8482;</div>
  </div>
-</div>
+</footer>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVYHJ7BJ92"></script>
 <script>
@@ -585,6 +606,20 @@ window.dataLayer=window.dataLayer||[];
 function gtag(){dataLayer.push(arguments);}
 gtag('js',new Date());
 gtag('config','G-NVYHJ7BJ92');
+</script>
+<script>
+function toggleMobileNav(){
+  var navItems=document.getElementById('primary-nav-items');
+  var hamburger=document.getElementById('nav-hamburger');
+  if(!navItems||!hamburger)return;
+  var isOpen=navItems.classList.contains('nav-open');
+  navItems.classList.toggle('nav-open');
+  hamburger.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded',String(!isOpen));
+  hamburger.innerHTML=isOpen
+    ?'<span class="nav-hamburger-icon">&#9776;</span> Menu'
+    :'<span class="nav-hamburger-icon">&#10005;</span> Close';
+}
 </script>
 
 </body>

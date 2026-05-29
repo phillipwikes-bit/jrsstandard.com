@@ -13,12 +13,17 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="JRS™ Implementation Scenarios" />
 <meta name="twitter:description" content="How HR, compliance, and investigation teams typically begin using JRS review resources — from single-reviewer exploration to cross-department calibration workshops." />
+<meta property="og:image" content="https://jrsstandard.com/og-card.svg" />
+<meta name="twitter:image" content="https://jrsstandard.com/og-card.svg" />
 <link rel="canonical" href="https://jrsstandard.com/implementation-scenarios" />
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+.skip-link{position:absolute;left:-9999px;top:4px;z-index:9999;background:var(--accent);color:#050505;padding:8px 16px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none}
+.skip-link:focus{left:4px}
+.nav-toggle{display:none;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);background:none;border:1px solid var(--rule);padding:8px 14px;cursor:pointer;align-items:center;gap:8px;min-height:36px}
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:#0a0a0a;--surface:#111;--surface2:#0f0f0f;--rule:#1e1e1e;
@@ -82,18 +87,26 @@ a{color:inherit;text-decoration:none}
   .flow-arrow{padding:4px 8px;border-right:none;border-bottom:1px solid var(--rule)}
   .flow-box{border-right:none;border-bottom:1px solid var(--rule);white-space:normal}
   .flow-box.last{border-bottom:none}
+  .nav-toggle{display:flex}
+  .header-meta{display:none}
+  .nav-links{display:none;flex-direction:column;flex-basis:100%;order:10;border-top:1px solid var(--rule);padding:4px 0;gap:0}
+  .nav-links.nav-open{display:flex}
+  .nav-links a{padding:11px 20px;border-bottom:1px solid var(--rule)}
+  .nav-links a:last-child{border-bottom:none}
 }
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVYHJ7BJ92"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NVYHJ7BJ92');</script>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
-<div class="site-header">
+<header class="site-header" role="banner">
  <div class="container">
   <div class="header-inner">
    <a href="index.html"><div class="wordmark">JRS<span style="font-size:8px;vertical-align:super;position:relative;top:-2px;letter-spacing:0;color:var(--accent);">&#8482;</span></div></a>
-   <nav class="nav-links">
+   <button class="nav-toggle" id="nav-toggle" onclick="toggleMobileNav()" aria-label="Toggle navigation" aria-expanded="false">&#9776; Menu</button>
+   <nav class="nav-links" id="nav-links" role="navigation" aria-label="Site navigation">
     <a href="index.html">Home</a>
     <a href="simulations.html">Simulations</a>
     <a href="training.html">Reviewer Calibration</a>
@@ -104,9 +117,9 @@ a{color:inherit;text-decoration:none}
    <div class="header-meta">Operational Review Tools<br>Pre-Submission Review Controls</div>
   </div>
  </div>
-</div>
+</header>
 
-<div class="container">
+<div class="container" id="main-content">
 
 <div class="page-eyebrow">Implementation Scenarios</div>
 <h1 class="page-title">How Organizations Typically Begin</h1>
@@ -484,7 +497,7 @@ a{color:inherit;text-decoration:none}
 
 </div>
 
-<div class="site-footer">
+<footer class="site-footer" role="contentinfo">
  <div class="container">
   <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:flex-start;">
    <div style="font-size:11.5px;color:var(--muted-soft);line-height:1.8;">
@@ -503,7 +516,18 @@ a{color:inherit;text-decoration:none}
   <div style="margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-soft);">&#169; 2026 Phillip Wikes &nbsp;&middot;&nbsp; JRS&#8482;</div>
   <div class="footer-note">JRS resources are designed to supplement existing documentation-review workflows and are not legal advice, compliance certification, workflow replacement systems, automated governance scoring, or enterprise accreditation infrastructure.</div>
  </div>
-</div>
+</footer>
 
+<script>
+function toggleMobileNav(){
+  var nav=document.getElementById('nav-links');
+  var btn=document.getElementById('nav-toggle');
+  if(!nav||!btn)return;
+  var isOpen=nav.classList.contains('nav-open');
+  nav.classList.toggle('nav-open');
+  btn.setAttribute('aria-expanded',String(!isOpen));
+  btn.innerHTML=isOpen?'&#9776; Menu':'&#10005; Close';
+}
+</script>
 </body>
 </html>
