@@ -14,7 +14,7 @@
 <meta name="twitter:description" content="Test operational review controls before broader deployment. Scope defined collaboratively. Structured for immediate cross-departmental onboarding within existing document workflows." />
 <link rel="canonical" href="https://jrsstandard.com/pilot" />
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-<meta name="description" content="JRS Operational Review Pilot Program. For HR teams, compliance programs, and investigation units testing documentation review controls before broader deployment. One or two record types. No software purchase. No dedicated staff required.">
+<meta name="description" content="Structured pilot participation for HR teams, compliance programs, and investigation units testing documentation review controls before broader deployment. One or two record types. No software purchase. No dedicated staff required.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -156,14 +156,32 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 .footer-link:hover{color:var(--text)}
 .footer-copy{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-soft)}
 
+@media(max-width:760px){
+  .who-grid{grid-template-columns:1fr 1fr}
+}
 @media(max-width:640px){
   .page-title{font-size:28px}
   .scope-grid{grid-template-columns:1fr}
   .who-grid{grid-template-columns:1fr}
   .pilot-structures{grid-template-columns:1fr}
   .scope-list{grid-template-columns:1fr}
-  .site-header-inner{padding:14px 0 12px}
+  .site-header-inner{padding:14px 0 12px;flex-direction:column;align-items:flex-start;gap:6px}
+  .header-meta{text-align:left}
   .wordmark{font-size:24px}
+  .primary-nav-inner{padding:0 14px}
+  .util-bar-inner{overflow-x:auto;flex-wrap:nowrap;gap:0}
+  .util-label{display:none}
+  .container{padding:36px 16px 72px}
+  .apply-block{padding:18px 16px}
+  .btn-row{gap:8px}
+  .phase-sequence{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .site-footer-inner{flex-direction:column;gap:14px}
+  .footer-links{gap:12px}
+}
+@media(max-width:400px){
+  .page-title{font-size:24px}
+  .btn{font-size:8.5px;padding:11px 16px}
+  .nav-item{padding:11px 10px;font-size:8.5px}
 }
 </style>
 </head>
@@ -200,7 +218,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 
   <!-- PAGE HEADER -->
   <div class="page-eyebrow">Pilot Program</div>
-  <h1 class="page-title">JRS Operational Review<br>Pilot Program</h1>
+  <h1 class="page-title">JRS Pilot Program</h1>
   <p class="page-subtitle">For HR, legal, compliance, governance, employee relations, and investigation professionals exploring operational review participation within existing document workflows, with long-term deployment aligned to corporate data retention and governance protocols.</p>
 
   <div class="apply-block">
