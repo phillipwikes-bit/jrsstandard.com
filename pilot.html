@@ -255,12 +255,12 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
   <div class="page-eyebrow">AI Documentation Risk &nbsp;&middot;&nbsp; JRS Operational Pilot Program &nbsp;&middot;&nbsp; Validation Phase</div>
   <h1 class="page-title">JRS Pilot Program</h1>
   <div style="display:inline-block;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:7px 16px;margin-bottom:18px;font-weight:600;">No Commercial Commitment Necessary</div>
-  <p class="page-subtitle">For HR, legal, compliance, governance, employee relations, and investigation professionals engaging with AI Documentation Risk controls during the operational validation phase. No cost. No commercial commitment required. Scope defined collaboratively.</p>
+  <p class="page-subtitle">When AI-assisted content enters a workplace record through summarization, recommendation, analysis, or narrative drafting, does that record remain reviewable — traceable, evidentiary, and reconstructable — under structured JRS review conditions? This pilot examines that question across those four AI functions within existing HR, compliance, investigation, and legal review workflows. No cost. No commercial commitment required.</p>
 
   <div class="apply-block">
     <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px">Explore Participation</div>
-    <p style="font-size:15.5px;color:var(--text);line-height:1.7;max-width:560px;margin-bottom:16px">Participation can begin with a single reviewer, one department, or one record type. No commercial commitment required. No dedicated staff required. Integrates with existing systems ahead of formal governance synchronization.</p>
-    <p style="font-size:14px;color:var(--muted);line-height:1.65;max-width:560px;margin-bottom:20px">Organizations typically start with simulations, reviewer exercises, operational discussions, or limited review participation inside existing workflows.</p>
+    <p style="font-size:15.5px;color:var(--text);line-height:1.7;max-width:560px;margin-bottom:16px">Participation can begin with a single reviewer, one department, or one record type. No commercial commitment required. No dedicated staff required. Integrates with existing workflows without formal governance restructuring.</p>
+    <p style="font-size:14px;color:var(--muted);line-height:1.65;max-width:560px;margin-bottom:20px">A pilot participant produces a structured finding: the AI function present in the reviewed record (summarization, recommendation, analysis, or narrative drafting), the documentation condition that function triggered, whether the record passes or fails that condition under JRS review, and what a compliant version would require. That finding is the unit of contribution the program collects.</p>
     <div class="btn-row" style="margin-top:0">
       <a href="training.html" class="btn btn-primary">Explore Simulations First &#8594;</a>
       <a href="#how-it-begins" onclick="document.getElementById('how-it-begins').scrollIntoView({behavior:'smooth'});return false;" class="btn btn-ghost">How It Typically Begins</a>
@@ -270,16 +270,17 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
   <!-- DOCUMENTATION VULNERABILITY PANEL -->
   <div class="vuln-panel">
     <div class="vuln-header">
-      <span class="vuln-header-label">Documentation Conditions Reviewers Commonly Observe</span>
+      <span class="vuln-header-label">Observed Condition by AI Function — Select the condition you are observing in the record under review</span>
     </div>
     <div class="vuln-body">
+      <p style="font-size:12px;color:var(--muted-soft);line-height:1.6;margin-bottom:12px;font-family:'JetBrains Mono',monospace;letter-spacing:.06em;">Each condition is mapped to the AI function most likely to produce it. Selecting a condition identifies the review focus for your structured finding.</p>
       <form id="vuln-form" onsubmit="submitVulnObs(event)">
         <div class="vuln-opts">
-          <label class="vuln-opt"><input type="radio" name="vuln" value="A"> A. &nbsp;Chronology instability</label>
-          <label class="vuln-opt"><input type="radio" name="vuln" value="B"> B. &nbsp;Unsupported escalation</label>
-          <label class="vuln-opt"><input type="radio" name="vuln" value="C"> C. &nbsp;Reviewer disagreement</label>
-          <label class="vuln-opt"><input type="radio" name="vuln" value="D"> D. &nbsp;Missing source linkage</label>
-          <label class="vuln-opt"><input type="radio" name="vuln" value="E"> E. &nbsp;AI-assisted interpretation drift</label>
+          <label class="vuln-opt"><input type="radio" name="vuln" value="A"> A. &nbsp;<strong style="color:var(--text);">Chronology instability</strong> <span style="color:var(--muted-soft);font-size:11.5px;">&mdash; AI-assisted summarization</span></label>
+          <label class="vuln-opt"><input type="radio" name="vuln" value="B"> B. &nbsp;<strong style="color:var(--text);">Unsupported escalation</strong> <span style="color:var(--muted-soft);font-size:11.5px;">&mdash; AI-assisted recommendation</span></label>
+          <label class="vuln-opt"><input type="radio" name="vuln" value="D"> D. &nbsp;<strong style="color:var(--text);">Missing source linkage</strong> <span style="color:var(--muted-soft);font-size:11.5px;">&mdash; AI-assisted analysis</span></label>
+          <label class="vuln-opt"><input type="radio" name="vuln" value="E"> E. &nbsp;<strong style="color:var(--text);">Interpretation drift</strong> <span style="color:var(--muted-soft);font-size:11.5px;">&mdash; AI-assisted narrative drafting</span></label>
+          <label class="vuln-opt"><input type="radio" name="vuln" value="C"> C. &nbsp;<strong style="color:var(--text);">Reviewer disagreement</strong> <span style="color:var(--muted-soft);font-size:11.5px;">&mdash; output condition (any function)</span></label>
         </div>
         <div style="padding:10px 0 2px;">
           <button type="submit" id="vuln-submit-btn" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:10px 22px;cursor:pointer;font-weight:600;">Submit Observation</button>
@@ -297,19 +298,19 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
     <div class="who-grid">
       <div class="who-card">
         <div class="who-card-label">HR Teams</div>
-        <div class="who-card-body">HR reviewers, business partners, and team leads exploring chronology instability, escalation consistency, and documentation reviewability in performance and discipline records.</div>
+        <div class="who-card-body">HR reviewers, business partners, and team leads examining chronology instability, escalation consistency, and documentation reviewability in performance and discipline records. AI-assisted summarization and narrative drafting appear most often in this record population.</div>
       </div>
       <div class="who-card">
         <div class="who-card-label">Compliance &amp; Audit</div>
-        <div class="who-card-body">Compliance reviewers exploring later-review traceability, escalation rationale, and documentation reconstructability across compliance and audit record populations.</div>
+        <div class="who-card-body">Compliance reviewers examining later-review traceability, escalation rationale, and documentation reconstructability across compliance and audit record populations. AI-assisted analysis and recommendation appear most often in findings and escalation records within this population.</div>
       </div>
       <div class="who-card">
         <div class="who-card-label">Investigation Teams</div>
-        <div class="who-card-body">Investigators and employee relations professionals exploring source-linkage review, chronology reconstruction, and conflicting-account documentation conditions.</div>
+        <div class="who-card-body">Investigators and employee relations professionals examining source-linkage review, chronology reconstruction, and conflicting-account documentation conditions. All four AI functions appear across investigation record populations: summarization in interview summaries, recommendation in escalation decisions, analysis in findings, and narrative drafting in final reports.</div>
       </div>
       <div class="who-card">
         <div class="who-card-label">Legal &amp; Documentation Review</div>
-        <div class="who-card-body">Legal reviewers and documentation-review professionals exploring reconstructability concerns, unsupported characterizations, and summary-source divergence in records that may face later adversarial review.</div>
+        <div class="who-card-body">Legal reviewers and documentation-review professionals examining reconstructability concerns, unsupported characterizations, and summary-source divergence in records that may face later adversarial review. Narrative drafting and summarization appear most often in records this population reviews before potential adversarial scrutiny.</div>
       </div>
     </div>
   </div>
@@ -320,19 +321,19 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
     <div class="step-list">
       <div class="step-row">
         <span class="step-num">01</span>
-        <span>Explore simulations: <span style="color:var(--muted)">chronology reconstruction, escalation review, AI interpretation conditions</span></span>
+        <span>Start with a simulation organized around one AI function: <span style="color:var(--muted)">summarization, recommendation, analysis, or narrative drafting — whichever appears most in your record population</span></span>
       </div>
       <div class="step-row alt">
         <span class="step-num">02</span>
-        <span>Try reviewer exercises: <span style="color:var(--muted)">individually or with a small team, within existing workflows</span></span>
+        <span>Complete reviewer exercises that produce structured findings: <span style="color:var(--muted)">which AI function was present, which condition it triggered, pass or fail under JRS review</span></span>
       </div>
       <div class="step-row">
         <span class="step-num">03</span>
-        <span>Discuss workflow fit: <span style="color:var(--muted)">which record types surface the most reviewability gaps</span></span>
+        <span>Discuss workflow fit: <span style="color:var(--muted)">which record types in your environment contain AI-assisted content and surface the most reviewability gaps</span></span>
       </div>
       <div class="step-row alt">
         <span class="step-num">04</span>
-        <span>Optionally participate in operational observations: <span style="color:var(--muted)">share what conditions appear most often</span></span>
+        <span>Submit an operational observation: <span style="color:var(--muted)">the AI function present in the reviewed record, the condition it triggered, and whether the record passed or failed under JRS review</span></span>
       </div>
       <div class="step-row last dim">
         <span class="step-num dim">05</span>
@@ -349,22 +350,22 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
       <div class="pilot-card">
         <div class="pilot-card-label">Individual Reviewer</div>
         <div class="pilot-card-title">One reviewer. One record type. No coordination required.</div>
-        <div class="pilot-card-body">Apply the five review questions to the next few records in the queue. Gaps surface without any workflow change. A natural starting point for reviewers exploring applicability on their own.</div>
+        <div class="pilot-card-body">Before applying the JRS review conditions, identify which of the four AI functions produced the content under review. The function determines which documentation condition is most likely to be present. Apply the review questions to the next few records in the queue. Gaps surface without any workflow change.</div>
       </div>
       <div class="pilot-card">
         <div class="pilot-card-label">Small-Team Exercise</div>
         <div class="pilot-card-title">Two to five reviewers. One record type. Independent review, then comparison.</div>
-        <div class="pilot-card-body">Each reviewer applies conditions independently to the same record type, then the group compares where interpretations diverged. Reviewers can note where their interpretations diverge on the same record. Divergence is recorded as an operational observation, not a validated metric or research finding.</div>
+        <div class="pilot-card-body">Each reviewer applies conditions independently to the same record, then the group compares where determinations diverged. Divergence observations should be recorded against the specific AI function involved so that patterns across reviewers become identifiable. Divergence is recorded as an operational observation, not a validated metric or research finding.</div>
       </div>
       <div class="pilot-card">
         <div class="pilot-card-label">Simulation-First Exploration</div>
         <div class="pilot-card-title">Explore constructed scenarios before touching actual records.</div>
-        <div class="pilot-card-body">Reviewers explore chronology instability, escalation conditions, and AI interpretation drift through constructed simulations. No live records required. A low-commitment entry point for any team.</div>
+        <div class="pilot-card-body">Simulations are organized around specific AI functions. Starting with the function most common to your record population focuses the calibration before reviewers encounter live records. No live records required. A low-commitment entry point for any team.</div>
       </div>
       <div class="pilot-card">
         <div class="pilot-card-label">Departmental Observation</div>
         <div class="pilot-card-title">One department, one record type, one review cycle.</div>
-        <div class="pilot-card-body">Apply the review conditions to a single record population over a defined cycle to observe where documentation gaps surface. Findings are observational. They do not constitute statistical measurement or validated risk reduction. Integrates with existing review cycles without requiring formal governance restructuring. Scope can pause or expand based on findings.</div>
+        <div class="pilot-card-body">Apply the review conditions to a single record population over a defined cycle. Findings should be categorized by AI function so that patterns across the population — which functions produce the most reviewability failures — are identifiable. Findings are observational and do not constitute statistical measurement or validated risk reduction. Scope can pause or expand based on findings.</div>
       </div>
     </div>
   </div>
@@ -373,6 +374,12 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
   <div class="reviewer-note" style="margin-bottom:44px;">
     <div class="reviewer-note-label">Note on Legal Review</div>
     <p style="font-size:13px;color:var(--muted);line-height:1.65;margin:0">Organizations testing review controls on live records may wish to consult internal legal counsel before logging or reporting findings. JRS participation does not create a legal obligation and does not constitute legal advice.</p>
+  </div>
+
+  <!-- WHAT A COMPLETED OBSERVATION PRODUCES -->
+  <div class="callout" style="margin-bottom:24px;">
+    <div class="callout-label">What Participation Produces</div>
+    <p class="callout-body">A completed pilot observation consists of: the AI function identified in the reviewed record, the documentation condition it triggered under JRS review, a pass or fail determination against the applicable JRS condition, and — where the record fails — a brief statement of what a compliant version would require. These structured findings, categorized by AI function, constitute the evidentiary base the validation phase is building. Each participant contribution advances the evidence on a defined question: which AI functions, producing which conditions, produce reviewability failures at what frequency.</p>
   </div>
 
   <!-- CONTACT SECTION -->
