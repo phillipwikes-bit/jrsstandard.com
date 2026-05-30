@@ -255,7 +255,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
   <div class="page-eyebrow">AI Documentation Risk &nbsp;&middot;&nbsp; JRS Operational Pilot Program &nbsp;&middot;&nbsp; Validation Phase</div>
   <h1 class="page-title">JRS Pilot Program</h1>
   <div style="display:inline-block;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:7px 16px;margin-bottom:18px;font-weight:600;">No Commercial Commitment Necessary</div>
-  <p class="page-subtitle">When AI-assisted content enters a workplace record through summarization, recommendation, analysis, or narrative drafting, does that record remain reviewable — traceable, evidentiary, and reconstructable — under structured JRS review conditions? This pilot examines that question across those four AI functions within existing HR, compliance, investigation, and legal review workflows. No cost. No commercial commitment required.</p>
+  <p class="page-subtitle">When AI-assisted content enters a workplace record through summarization, recommendation, analysis, or narrative drafting, does that record remain reviewable (traceable, evidentiary, and reconstructable) under structured JRS review conditions? This pilot examines that question across those four AI functions within existing HR, compliance, investigation, and legal review workflows. No cost. No commercial commitment required.</p>
 
   <div class="apply-block">
     <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px">Explore Participation</div>
@@ -270,17 +270,17 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
   <!-- DOCUMENTATION VULNERABILITY PANEL -->
   <div class="vuln-panel">
     <div class="vuln-header">
-      <span class="vuln-header-label">Observed Condition by AI Function — Select the condition you are observing in the record under review</span>
+      <span class="vuln-header-label">Observed Condition by AI Function: Select the condition you are observing in the record under review</span>
     </div>
     <div class="vuln-body">
       <p style="font-size:12px;color:var(--muted-soft);line-height:1.6;margin-bottom:12px;font-family:'JetBrains Mono',monospace;letter-spacing:.06em;">Each condition is mapped to the AI function most likely to produce it. Selecting a condition identifies the review focus for your structured finding.</p>
       <form id="vuln-form" onsubmit="submitVulnObs(event)">
         <div class="vuln-opts">
-          <label class="vuln-opt"><input type="radio" name="vuln" value="A"> A. &nbsp;<strong style="color:var(--text);">Chronology instability</strong> <span style="color:var(--muted-soft);font-size:11.5px;">&mdash; AI-assisted summarization</span></label>
-          <label class="vuln-opt"><input type="radio" name="vuln" value="B"> B. &nbsp;<strong style="color:var(--text);">Unsupported escalation</strong> <span style="color:var(--muted-soft);font-size:11.5px;">&mdash; AI-assisted recommendation</span></label>
-          <label class="vuln-opt"><input type="radio" name="vuln" value="D"> D. &nbsp;<strong style="color:var(--text);">Missing source linkage</strong> <span style="color:var(--muted-soft);font-size:11.5px;">&mdash; AI-assisted analysis</span></label>
-          <label class="vuln-opt"><input type="radio" name="vuln" value="E"> E. &nbsp;<strong style="color:var(--text);">Interpretation drift</strong> <span style="color:var(--muted-soft);font-size:11.5px;">&mdash; AI-assisted narrative drafting</span></label>
-          <label class="vuln-opt"><input type="radio" name="vuln" value="C"> C. &nbsp;<strong style="color:var(--text);">Reviewer disagreement</strong> <span style="color:var(--muted-soft);font-size:11.5px;">&mdash; output condition (any function)</span></label>
+          <label class="vuln-opt"><input type="radio" name="vuln" value="A"> A. &nbsp;<strong style="color:var(--text);">Chronology instability</strong> <span style="color:var(--muted-soft);font-size:11.5px;">: AI-assisted summarization</span></label>
+          <label class="vuln-opt"><input type="radio" name="vuln" value="B"> B. &nbsp;<strong style="color:var(--text);">Unsupported escalation</strong> <span style="color:var(--muted-soft);font-size:11.5px;">: AI-assisted recommendation</span></label>
+          <label class="vuln-opt"><input type="radio" name="vuln" value="D"> D. &nbsp;<strong style="color:var(--text);">Missing source linkage</strong> <span style="color:var(--muted-soft);font-size:11.5px;">: AI-assisted analysis</span></label>
+          <label class="vuln-opt"><input type="radio" name="vuln" value="E"> E. &nbsp;<strong style="color:var(--text);">Interpretation drift</strong> <span style="color:var(--muted-soft);font-size:11.5px;">: AI-assisted narrative drafting</span></label>
+          <label class="vuln-opt"><input type="radio" name="vuln" value="C"> C. &nbsp;<strong style="color:var(--text);">Reviewer disagreement</strong> <span style="color:var(--muted-soft);font-size:11.5px;">: output condition (any function)</span></label>
         </div>
         <div style="padding:10px 0 2px;">
           <button type="submit" id="vuln-submit-btn" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:10px 22px;cursor:pointer;font-weight:600;">Submit Observation</button>
@@ -321,7 +321,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
     <div class="step-list">
       <div class="step-row">
         <span class="step-num">01</span>
-        <span>Start with a simulation organized around one AI function: <span style="color:var(--muted)">summarization, recommendation, analysis, or narrative drafting — whichever appears most in your record population</span></span>
+        <span>Start with a simulation organized around one AI function: <span style="color:var(--muted)">summarization, recommendation, analysis, or narrative drafting; whichever appears most in your record population</span></span>
       </div>
       <div class="step-row alt">
         <span class="step-num">02</span>
@@ -365,7 +365,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
       <div class="pilot-card">
         <div class="pilot-card-label">Departmental Observation</div>
         <div class="pilot-card-title">One department, one record type, one review cycle.</div>
-        <div class="pilot-card-body">Apply the review conditions to a single record population over a defined cycle. Findings should be categorized by AI function so that patterns across the population — which functions produce the most reviewability failures — are identifiable. Findings are observational and do not constitute statistical measurement or validated risk reduction. Scope can pause or expand based on findings.</div>
+        <div class="pilot-card-body">Apply the review conditions to a single record population over a defined cycle. Findings should be categorized by AI function so that patterns across the population (which functions produce the most reviewability failures) are identifiable. Findings are observational and do not constitute statistical measurement or validated risk reduction. Scope can pause or expand based on findings.</div>
       </div>
     </div>
   </div>
@@ -379,17 +379,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
   <!-- WHAT A COMPLETED OBSERVATION PRODUCES -->
   <div class="callout" style="margin-bottom:24px;">
     <div class="callout-label">What Participation Produces</div>
-    <p class="callout-body">A completed pilot observation consists of: the AI function identified in the reviewed record, the documentation condition it triggered under JRS review, a pass or fail determination against the applicable JRS condition, and — where the record fails — a brief statement of what a compliant version would require. These structured findings, categorized by AI function, constitute the evidentiary base the validation phase is building. Each participant contribution advances the evidence on a defined question: which AI functions, producing which conditions, produce reviewability failures at what frequency.</p>
-  </div>
-
-  <!-- CONTACT SECTION -->
-  <div class="contact-block">
-    <div class="contact-eyebrow">How Organizations Typically Begin</div>
-    <p class="contact-body">Most organizations start with simulations, a reviewer exercise, or an informal conversation about how existing review workflows intersect with the conditions JRS addresses. There is no required commitment to begin.</p>
-    <p class="contact-sub">To explore participation or ask questions, email <a href="mailto:governance@jrsstandard.com?subject=JRS%20Pilot%20Program%20Inquiry" style="color:var(--accent);text-decoration:none;">governance@jrsstandard.com</a>.</p>
-    <div class="btn-row" style="margin-top:0">
-      <a href="training.html" class="btn btn-ghost">Explore Simulations First</a>
-    </div>
+    <p class="callout-body">A completed pilot observation consists of: the AI function identified in the reviewed record, the documentation condition it triggered under JRS review, a pass or fail determination against the applicable JRS condition, and, where the record fails, a brief statement of what a compliant version would require. These structured findings, categorized by AI function, constitute the evidentiary base the validation phase is building. Each participant contribution advances the evidence on a defined question: which AI functions, producing which conditions, produce reviewability failures at what frequency.</p>
   </div>
 
   <!-- RESOURCES -->
@@ -399,10 +389,6 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
       <a href="Wikes_Record-Level-Controls_AI-Assisted-Documentation.pdf" class="btn btn-ghost">Review Controls PDF</a>
       <a href="training.html" class="btn btn-accent">Explore Simulations &#8594;</a>
       <a href="simulations.html" class="btn btn-ghost">Simulation Library</a>
-    </div>
-    <div style="border:1px solid var(--rule);padding:12px 16px;margin-top:20px;background:var(--surface);">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Cognitive Strategy Framework</div>
-      <p style="font-size:13px;color:var(--muted);line-height:1.65;margin:0;"><strong style="color:var(--text);">Dragon Heart</strong> is the cognitive strategy framework that complements JRS. Where JRS provides the operational control for AI Documentation Risk, Dragon Heart provides the cognitive recognition practitioners need to apply that discipline effectively. Dragon Heart is presented as a LinkedIn outreach campaign: <em>Dragon Heart: Negotiating AI&rsquo;s Documentation Dungeons</em>.</p>
     </div>
   </div>
 
