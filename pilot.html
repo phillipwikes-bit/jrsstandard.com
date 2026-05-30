@@ -211,7 +211,6 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
   <div class="site-header-inner">
     <a href="index.html" class="wordmark">JRS<span style="font-size:11px;vertical-align:super;position:relative;top:-3px;letter-spacing:0;color:var(--accent);">&#8482;</span></a>
     <div class="header-meta">Justification Review Standard<br>Pilot Program</div>
-    <a href="index.html" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:6px 14px;display:inline-block;margin-top:12px;text-decoration:none;">&#8592; Return to Home</a>
   </div>
 </header>
 
@@ -382,9 +381,45 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
     <p class="callout-body">A completed pilot observation consists of: the AI function identified in the reviewed record, the documentation condition it triggered under JRS review, a pass or fail determination against the applicable JRS condition, and, where the record fails, a brief statement of what a compliant version would require. These structured findings, categorized by AI function, constitute the evidentiary base the validation phase is building. Each participant contribution advances the evidence on a defined question: which AI functions, producing which conditions, produce reviewability failures at what frequency.</p>
   </div>
 
+  <!-- SPECIMEN FINDING -->
+  <div style="border:1px solid var(--rule);background:var(--surface2);padding:16px 18px;margin-bottom:44px;">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:10px;">Illustrative Example &mdash; Structured Finding</div>
+    <div style="display:grid;grid-template-columns:180px 1fr;gap:8px 16px;font-size:13px;line-height:1.6;">
+      <span style="color:var(--muted-soft);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;">AI Function</span>
+      <span style="color:var(--text);">AI-assisted summarization</span>
+      <span style="color:var(--muted-soft);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;">Condition Triggered</span>
+      <span style="color:var(--text);">Chronology instability — the summary consolidates incidents across a six-week period into a single undated paragraph, making the sequence of events unrecoverable from the record.</span>
+      <span style="color:var(--muted-soft);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;">Determination</span>
+      <span style="color:var(--stop-text);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;">FAIL</span>
+      <span style="color:var(--muted-soft);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;">Compliant Version Requires</span>
+      <span style="color:var(--text);">Each incident documented with its own date, source reference, and outcome. Summary language that consolidates multiple events without dates does not satisfy chronology reviewability. Original source entries must remain separately identifiable.</span>
+    </div>
+    <p style="font-size:11.5px;color:var(--muted-soft);margin-top:12px;font-family:'JetBrains Mono',monospace;letter-spacing:.04em;">This is a constructed illustration. It does not represent a specific organization or record population.</p>
+  </div>
+
+  <!-- CONTACT BLOCK -->
+  <div class="contact-block" style="margin-bottom:44px;">
+    <div class="contact-eyebrow">How Organizations Typically Begin</div>
+    <p class="contact-body">Most organizations start with a simulation organized around the AI function most common in their record population, a small reviewer exercise, or a conversation about how existing review workflows intersect with the conditions JRS addresses. There is no required commitment to begin.</p>
+    <p class="contact-sub">To explore participation or submit a question, use the form below. Your message is forwarded directly; your contact information is not displayed publicly.</p>
+    <form id="pilot-contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="margin-top:14px;">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <input type="text" name="name" placeholder="Name" required style="background:var(--surface2);border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:13px;padding:10px 14px;width:100%;">
+        <input type="email" name="email" placeholder="Email address" required style="background:var(--surface2);border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:13px;padding:10px 14px;width:100%;">
+        <input type="text" name="organization" placeholder="Organization (optional)" style="background:var(--surface2);border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:13px;padding:10px 14px;width:100%;">
+        <textarea name="message" placeholder="Question or inquiry" rows="4" required style="background:var(--surface2);border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:13px;padding:10px 14px;width:100%;resize:vertical;"></textarea>
+        <input type="hidden" name="_subject" value="JRS Pilot Program Inquiry">
+        <input type="text" name="_gotcha" style="display:none;">
+        <button type="submit" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:12px 24px;cursor:pointer;font-weight:600;align-self:flex-start;">Submit Inquiry</button>
+        <p id="form-status" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--muted-soft);display:none;"></p>
+      </div>
+    </form>
+  </div>
+
   <!-- RESOURCES -->
   <div style="margin-bottom:20px">
     <div class="section-head">Resources</div>
+    <p class="muted-text" style="margin-bottom:10px;">The Review Controls PDF covers the five JRS review conditions and how they apply to AI-assisted record populations. Simulations provide calibration exercises organized by AI function before reviewers engage with live records. The Simulation Library contains the full inventory of available scenarios.</p>
     <div class="btn-row">
       <a href="Wikes_Record-Level-Controls_AI-Assisted-Documentation.pdf" class="btn btn-ghost">Review Controls PDF</a>
       <a href="training.html" class="btn btn-accent">Explore Simulations &#8594;</a>
@@ -481,6 +516,41 @@ function submitVulnObs(e) {
     }
     status.style.color = 'var(--review-text)';
     btn.disabled = false;
+  });
+}
+</script>
+<script>
+var pilotForm = document.getElementById('pilot-contact-form');
+if (pilotForm) {
+  pilotForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var status = document.getElementById('form-status');
+    var btn = pilotForm.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    status.textContent = 'Submitting...';
+    status.style.color = 'var(--muted-soft)';
+    status.style.display = 'block';
+    fetch(pilotForm.action, {
+      method: 'POST',
+      body: new FormData(pilotForm),
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(function(res) {
+      if (res.ok) {
+        status.textContent = 'Inquiry submitted. You will receive a response at the email provided.';
+        status.style.color = 'var(--ready-text)';
+        pilotForm.reset();
+      } else {
+        status.textContent = 'Submission error. Email governance@jrsstandard.com directly.';
+        status.style.color = 'var(--stop-text)';
+        btn.disabled = false;
+      }
+    })
+    .catch(function() {
+      status.textContent = 'Network error. Email governance@jrsstandard.com directly.';
+      status.style.color = 'var(--stop-text)';
+      btn.disabled = false;
+    });
   });
 }
 </script>
