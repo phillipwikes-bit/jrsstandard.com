@@ -690,7 +690,7 @@ a:hover{text-decoration:underline}
 
   <!-- ═══ PARTICIPATION FLOW ══════════════════════════════════ -->
   <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px;margin-top:0">Section 2: How Participation Works</div>
-  <div class="section-head" style="margin-top:0">Operational Participation Sequence</div>
+  <div class="section-head" style="margin-top:0">Reviewer Calibration Sequence</div>
   <p class="section-sub">Six steps. Incremental. No deployment commitment required at any stage. Each step can be applied independently within existing workflows.</p>
   <div class="flow-container">
     <div class="flow-step">
@@ -776,7 +776,7 @@ a:hover{text-decoration:underline}
   </div>
 
   <div style="border:1px solid rgba(139,32,32,.25);background:rgba(139,32,32,.04);padding:12px 16px;margin-bottom:24px;max-width:720px">
-    <span style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--stop-text)">Not a Case Decision System &#8212; </span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--stop-text)">Not a Case Decision System: </span>
     <span style="font-size:12px;color:var(--muted)">JRS supports documentation review and reconstruction-oriented analysis. These exercises do not determine disciplinary outcomes, policy violations, legal conclusions, or investigative findings.</span>
   </div>
 
@@ -785,7 +785,7 @@ a:hover{text-decoration:underline}
     <p style="font-size:12.5px;color:var(--muted);line-height:1.65">All records used in these review exercises are entirely fictional and created for reviewer practice only. Any resemblance to real persons, organizations, or events is coincidental. These exercises are reviewer practice materials only. They do not constitute legal advice, compliance guidance, HR consulting, or professional certification.</p>
   </div>
 
-  <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:24px;line-height:1.7"><strong style="color:var(--text)">Reviewer Judgment Required</strong> &#8212; Outputs are intended to support reviewer analysis and do not replace organizational judgment, investigative review, legal review, or escalation procedures.</div>
+  <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:24px;line-height:1.7"><strong style="color:var(--text)">Reviewer Judgment Required</strong>: Outputs are intended to support reviewer analysis and do not replace organizational judgment, investigative review, legal review, or escalation procedures.</div>
 
   <div style="display:flex;gap:0;border-bottom:1px solid var(--rule);margin-bottom:0">
     <button class="sim-tab active" id="sim-tab-0" onclick="showSimTab(0)">1. Document Review</button>
@@ -1535,22 +1535,22 @@ renderFM();
 <!-- ═══ PARTICIPATION OBSERVATION POLL ════════════════════ -->
 <div style="background:var(--bg);border-top:1px solid var(--rule);padding:56px 24px 64px" id="participation-poll">
   <div style="max-width:820px;margin:0 auto">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px">Operational Participation</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px">Reviewer Calibration</div>
     <h2 style="font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--text);margin-bottom:12px">Participation Observation</h2>
     <p style="font-size:14px;color:var(--muted);line-height:1.7;max-width:640px;margin-bottom:24px">Read the record excerpt below. Select the response that best reflects how you would handle this record as a pre-finalization reviewer.</p>
 
     <div style="border:1px solid var(--rule);background:var(--surface);padding:16px 20px;margin-bottom:24px;max-width:700px">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:8px">Record Excerpt &#8212; Pre-Finalization Review</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:8px">Record Excerpt: Pre-Finalization Review</div>
       <div style="font-size:14px;color:var(--text);line-height:1.75;font-style:italic">"Following repeated concerns raised by multiple team members, it was determined that the employee's behavior had created a hostile work environment. The employee has been informed of the findings, and a formal corrective action has been issued consistent with prior interventions."</div>
     </div>
 
     <div style="font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:14px">What is your next step as a pre-finalization reviewer?</div>
     <div id="poll-options" style="display:flex;flex-direction:column;gap:6px;max-width:700px;margin-bottom:20px">
-      <button class="poll-btn" onclick="selectPoll(this,'A')">A &#8212; The record is sufficient. Finalize as written.</button>
-      <button class="poll-btn" onclick="selectPoll(this,'B')">B &#8212; Return to drafter: specific dates and source documentation are missing.</button>
-      <button class="poll-btn" onclick="selectPoll(this,'C')">C &#8212; Return to drafter: the employee's account is not preserved.</button>
-      <button class="poll-btn" onclick="selectPoll(this,'D')">D &#8212; Escalate: "hostile work environment" characterization requires legal review before finalization.</button>
-      <button class="poll-btn" onclick="selectPoll(this,'E')">E &#8212; Return for multiple gaps: source documentation, account preservation, and prior interventions are all unverifiable.</button>
+      <button class="poll-btn" onclick="selectPoll(this,'A')">A: The record is sufficient. Finalize as written.</button>
+      <button class="poll-btn" onclick="selectPoll(this,'B')">B: Return to drafter: specific dates and source documentation are missing.</button>
+      <button class="poll-btn" onclick="selectPoll(this,'C')">C: Return to drafter: the employee's account is not preserved.</button>
+      <button class="poll-btn" onclick="selectPoll(this,'D')">D: Escalate: "hostile work environment" characterization requires legal review before finalization.</button>
+      <button class="poll-btn" onclick="selectPoll(this,'E')">E: Return for multiple gaps: source documentation, account preservation, and prior interventions are all unverifiable.</button>
     </div>
 
     <div style="margin-bottom:16px;max-width:700px">
@@ -1616,38 +1616,38 @@ renderFM();
     <p style="font-size:14px;color:var(--muted);line-height:1.7;max-width:640px;margin-bottom:28px">Applied before any organizational record enters an official system. Each condition asks whether a reviewer with no prior knowledge could independently assess the record.</p>
     <div class="ref-conditions-grid">
       <div class="ref-condition-item">
-        <div class="ref-condition-num">RC 1 &#8212; Identifiable Basis</div>
+        <div class="ref-condition-num">RC 1: Identifiable Basis</div>
         <div class="ref-condition-title">Can a later reviewer identify what happened?</div>
-        <div class="ref-condition-test">Events, conduct, or decisions must have specific dates, actors, and outcomes &#8212; not inferred from context.</div>
+        <div class="ref-condition-test">Events, conduct, or decisions must have specific dates, actors, and outcomes: not inferred from context.</div>
       </div>
       <div class="ref-condition-item">
-        <div class="ref-condition-num">RC 2 &#8212; Evidential Basis</div>
+        <div class="ref-condition-num">RC 2: Evidential Basis</div>
         <div class="ref-condition-title">Can a later reviewer identify the source?</div>
         <div class="ref-condition-test">Conclusions must be traceable to source records confirmed present in the file.</div>
       </div>
       <div class="ref-condition-item">
-        <div class="ref-condition-num">RC 3 &#8212; Reasoning Visibility</div>
+        <div class="ref-condition-num">RC 3: Reasoning Visibility</div>
         <div class="ref-condition-title">Can a later reviewer follow the reasoning?</div>
         <div class="ref-condition-test">The path from evidence to conclusion must be visible. Evaluative judgments must be anchored to specific documented support.</div>
       </div>
       <div class="ref-condition-item">
-        <div class="ref-condition-num">RC 4 &#8212; Account Preservation</div>
+        <div class="ref-condition-num">RC 4: Account Preservation</div>
         <div class="ref-condition-title">Are conflicting accounts preserved?</div>
         <div class="ref-condition-test">Where accounts differ, the conflict and its resolution basis must both be in the file.</div>
       </div>
       <div class="ref-condition-item">
-        <div class="ref-condition-num">RC 5 &#8212; Reconstruction Continuity</div>
+        <div class="ref-condition-num">RC 5: Reconstruction Continuity</div>
         <div class="ref-condition-title">Does the retained record stand independently?</div>
-        <div class="ref-condition-test">A reviewer with no prior knowledge must be able to follow the record from the file alone &#8212; no institutional memory required.</div>
+        <div class="ref-condition-test">A reviewer with no prior knowledge must be able to follow the record from the file alone: no institutional memory required.</div>
       </div>
       <div class="ref-condition-item" style="background:var(--surface)">
         <div class="ref-condition-num">Routing Framework</div>
         <div class="ref-condition-title">Low / Moderate / High / Critical</div>
         <div class="ref-condition-test" style="color:var(--muted-soft)">
-          <span style="color:var(--ready-text)">Low</span> &#8212; No trigger conditions.<br>
-          <span style="color:var(--review-text)">Moderate</span> &#8212; Minor gaps, minimal escalation language.<br>
-          <span style="color:#E8A84A">High</span> &#8212; AI drift or undocumented counseling trail.<br>
-          <span style="color:var(--stop-text)">Critical</span> &#8212; Legal review required before finalization.
+          <span style="color:var(--ready-text)">Low</span>: No trigger conditions.<br>
+          <span style="color:var(--review-text)">Moderate</span>: Minor gaps, minimal escalation language.<br>
+          <span style="color:#E8A84A">High</span>: AI drift or undocumented counseling trail.<br>
+          <span style="color:var(--stop-text)">Critical</span>: Legal review required before finalization.
         </div>
       </div>
     </div>
@@ -2464,7 +2464,7 @@ renderFM();
 <div class="survey-outer" id="participation-survey">
   <div class="survey-inner">
     <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px">Section 5: Operational Observation System</div>
-    <div class="survey-eyebrow">Operational Participation Survey</div>
+    <div class="survey-eyebrow">Reviewer Calibration Survey</div>
     <h2 class="survey-title">60–90 Day Observational Survey</h2>
     <p class="survey-desc">Participants may complete structured observational surveys focused on chronology-review usability, reviewer interpretation variability, escalation-review consistency, implementation friction, simulation realism, and AI-assisted documentation review conditions. Responses are aggregated for operational reporting only. No individual attribution.</p>
     <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);padding:10px 14px;border:1px solid var(--rule);background:var(--bg);margin-bottom:28px;line-height:1.6">Observational participation is not intended to establish empirical validation, legal certification, compliance approval, or governance accreditation.</div>
@@ -2540,7 +2540,7 @@ renderFM();
 
     <div class="survey-complete" id="survey-complete-block">
       <div class="survey-complete-label">Observations Received</div>
-      <p class="survey-complete-text">Your observations have been submitted for aggregated review. Findings are reported in the aggregate without individual attribution. No identifying information is retained. Aggregated observational findings are updated periodically and appear below in the Operational Participation Observations section.</p>
+      <p class="survey-complete-text">Your observations have been submitted for aggregated review. Findings are reported in the aggregate without individual attribution. No identifying information is retained. Aggregated observational findings are updated periodically and appear below in the Operational Observations section.</p>
       <p class="survey-complete-text" style="margin-top:8px">Thank you for participating.</p>
     </div>
 
