@@ -703,7 +703,7 @@ a:hover{text-decoration:underline}
     </div>
     <div class="flow-step">
       <div class="flow-step-left"><div class="flow-node"></div><div class="flow-line"></div></div>
-      <div class="flow-step-body"><div class="flow-step-num">Step 03</div><div class="flow-step-title">Participate in Reconstruction Exercises</div><div class="flow-step-desc">Apply the five pre-finalization review conditions to sample records in the simulation environment. Practice routing decisions and review instability identification.</div></div>
+      <div class="flow-step-body"><div class="flow-step-num">Step 03</div><div class="flow-step-title">Participate in Reconstruction Exercises</div><div class="flow-step-desc">Apply the five JRS review conditions to sample records in the simulation environment. Practice routing decisions and review instability identification.</div></div>
     </div>
     <div class="flow-step">
       <div class="flow-step-left"><div class="flow-node"></div><div class="flow-line"></div></div>
@@ -756,7 +756,7 @@ a:hover{text-decoration:underline}
     <div style="background:var(--surface);padding:16px 18px">
       <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:6px">Category 1</div>
       <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px">Document Reconstruction Review</div>
-      <div style="font-size:12.5px;color:var(--muted);line-height:1.55">Apply the five pre-finalization review conditions to sample records. Identify what is missing, undated, unsupported, or unreconstructable.</div>
+      <div style="font-size:12.5px;color:var(--muted);line-height:1.55">Apply the five JRS review conditions to sample records. Identify what is missing, undated, unsupported, or unreconstructable.</div>
     </div>
     <div style="background:var(--surface);padding:16px 18px">
       <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:6px">Category 2</div>
@@ -796,7 +796,7 @@ a:hover{text-decoration:underline}
   
   <div class="sim-panel" id="sim-panel-0">
     <div style="padding:24px 0 8px">
-      <p style="font-size:13.5px;color:var(--muted);margin-bottom:20px;line-height:1.65">Read each sample record and answer whether it meets each of the five JRS pre-finalization review questions. Select Yes or No for each, then submit to see your results.</p>
+      <p style="font-size:13.5px;color:var(--muted);margin-bottom:20px;line-height:1.65">Read each sample record and answer whether it meets each of the five JRS review conditions. Select Yes or No for each, then submit to see your results.</p>
       <div id="dr-records"></div>
       <button onclick="nextDRRecord()" id="dr-next-btn" style="display:none;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:11px 22px;cursor:pointer;margin-top:16px">Next Record →</button>
       <div id="dr-complete" style="display:none;border:1px solid rgba(93,191,130,.3);background:rgba(30,92,53,.08);padding:20px;margin-top:16px">
@@ -841,7 +841,7 @@ a:hover{text-decoration:underline}
 
     <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">Record Review Workspace</div>
     <h2 style="font-family:'Bodoni Moda',serif;font-size:26px;font-weight:500;color:var(--text);margin-bottom:12px">Record Review Workspace</h2>
-    <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:12px;max-width:680px">Paste any organizational record into the workspace below and receive reconstruction-oriented review observations against the five JRS pre-finalization review conditions. The workspace evaluates whether a retained record would support independent review by someone with no prior knowledge of the matter - the core standard JRS applies before any record enters an official system.</p>
+    <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:12px;max-width:680px">Paste any organizational record into the workspace below and receive reconstruction-oriented review observations against the five JRS review conditions. The workspace evaluates whether the record would support independent review by someone with no prior knowledge of the original events, the core standard JRS applies to any record that may face later scrutiny.</p>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-bottom:20px;max-width:640px">
       <div style="background:var(--surface);padding:14px 16px">
@@ -1537,14 +1537,14 @@ renderFM();
   <div style="max-width:820px;margin:0 auto">
     <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px">Reviewer Calibration</div>
     <h2 style="font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--text);margin-bottom:12px">Participation Observation</h2>
-    <p style="font-size:14px;color:var(--muted);line-height:1.7;max-width:640px;margin-bottom:24px">Read the record excerpt below. Select the response that best reflects how you would handle this record as a pre-finalization reviewer.</p>
+    <p style="font-size:14px;color:var(--muted);line-height:1.7;max-width:640px;margin-bottom:24px">Read the record excerpt below. Select the response that best reflects how you would handle this record as a JRS reviewer.</p>
 
     <div style="border:1px solid var(--rule);background:var(--surface);padding:16px 20px;margin-bottom:24px;max-width:700px">
       <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:8px">Record Excerpt: Pre-Finalization Review</div>
       <div style="font-size:14px;color:var(--text);line-height:1.75;font-style:italic">"Following repeated concerns raised by multiple team members, it was determined that the employee's behavior had created a hostile work environment. The employee has been informed of the findings, and a formal corrective action has been issued consistent with prior interventions."</div>
     </div>
 
-    <div style="font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:14px">What is your next step as a pre-finalization reviewer?</div>
+    <div style="font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:14px">What is your next step as a JRS reviewer?</div>
     <div id="poll-options" style="display:flex;flex-direction:column;gap:6px;max-width:700px;margin-bottom:20px">
       <button class="poll-btn" onclick="selectPoll(this,'A')">A: The record is sufficient. Finalize as written.</button>
       <button class="poll-btn" onclick="selectPoll(this,'B')">B: Return to drafter: specific dates and source documentation are missing.</button>
@@ -1562,7 +1562,7 @@ renderFM();
     <div id="poll-result" style="display:none;margin-top:20px;max-width:700px;border:1px solid var(--rule);background:var(--surface);padding:18px 20px">
       <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">Reviewer Analysis</div>
       <p style="font-size:13.5px;color:var(--text);font-weight:600;margin-bottom:8px">The defensible answer is E. D may also warrant independent attention.</p>
-      <p style="font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:10px">This record contains multiple pre-finalization gaps. "Repeated concerns" and "prior interventions" are escalation language without a verifiable counseling trail. "Multiple team members" are not identified or documented. The employee account is absent. "Hostile work environment" is a legal characterization that requires independent confirmation before the record is finalized. This record, as written, is not independently reconstructable.</p>
+      <p style="font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:10px">This record contains multiple documentation gaps. "Repeated concerns" and "prior interventions" are escalation language without a verifiable counseling trail. "Multiple team members" are not identified or documented. The employee account is absent. "Hostile work environment" is a legal characterization that requires independent confirmation before the record is finalized. This record, as written, is not independently reconstructable.</p>
       <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-top:12px;line-height:1.6">Reviewer practice only. Not a legal determination or compliance finding.</div>
     </div>
 
@@ -1669,7 +1669,7 @@ renderFM();
           <div class="kit-doc-type">Quick Reference</div>
           <div class="kit-doc-meta">KIT-F1 &nbsp;|&nbsp; V1.0 &nbsp;|&nbsp; May 2026</div>
           <div class="kit-doc-title">Rapid Review Card</div>
-          <div class="kit-doc-desc">One-page reviewer reference. Five pre-finalization questions, submission readiness key, secondary review triggers.</div>
+          <div class="kit-doc-desc">One-page reviewer reference. Five JRS review conditions, submission readiness key, secondary review triggers.</div>
         </div>
         <a href="JRS_Rapid_Review_Card.pdf" class="btn-download" download>Download PDF</a>
       </div>
@@ -1678,7 +1678,7 @@ renderFM();
           <div class="kit-doc-type">Worksheet</div>
           <div class="kit-doc-meta">KIT-A1 &nbsp;|&nbsp; V1.0 &nbsp;|&nbsp; May 2026</div>
           <div class="kit-doc-title">Review Worksheet</div>
-          <div class="kit-doc-desc">Structured pre-finalization review worksheet applying all five JRS conditions. Applied before system entry.</div>
+          <div class="kit-doc-desc">Structured JRS review worksheet applying all five conditions. Applied within existing workflows at any stage where records may face later scrutiny.</div>
         </div>
         <a href="JRS_Kit_A1_Worksheet.pdf" class="btn-download" download>Download PDF</a>
       </div>
@@ -1723,7 +1723,7 @@ renderFM();
           <div class="kit-doc-type">Reference</div>
           <div class="kit-doc-meta">KIT-D1 &nbsp;|&nbsp; V1.0 &nbsp;|&nbsp; May 2026</div>
           <div class="kit-doc-title">Redlined Examples Reference</div>
-          <div class="kit-doc-desc">Annotated before/after record examples illustrating common pre-finalization gaps and reviewable revisions.</div>
+          <div class="kit-doc-desc">Annotated before/after record examples illustrating common documentation gaps and reviewable revisions.</div>
         </div>
         <a href="JRS_Kit_D1_Redlined_Examples.pdf" class="btn-download" download>Download PDF</a>
       </div>
@@ -1798,7 +1798,7 @@ renderFM();
           <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);">Start with interaction</span>
           <a href="#simulator" onclick="document.getElementById('simulator').scrollIntoView({behavior:'smooth'});showSimTab(0)" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:10px 20px;text-decoration:none;display:inline-block;font-weight:600;">&#9654; Run a Simulation</a>
         </div>
-        <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:16px">The five pre-finalization review conditions establish the baseline standard for documentation sufficiency. Each condition addresses a distinct visibility requirement for retained-record review. Apply before any record enters an official system.</p>
+        <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:16px">The five JRS review conditions establish the baseline standard for documentation sufficiency. Each condition addresses a distinct visibility requirement for retained-record review. Apply to any record that may face later independent scrutiny.</p>
         <div class="condition-list">
           <div class="condition-item"><div class="condition-label">Review Condition 1: Conclusion Reconstruction</div><div class="condition-title">Can the conclusion be reconstructed from the record?</div><div class="condition-body">A future reviewer can trace the path from documented evidence to the conclusion reached, without relying on the author's recollection or added explanation.</div></div>
           <div class="condition-item"><div class="condition-label">Review Condition 2: Identifiable Basis</div><div class="condition-title">Is the basis for the conclusion identifiable?</div><div class="condition-body">The source of each characterization (observation, measurement, audit finding, or reported incident) is visible and traceable, not implied or summarized without attribution.</div></div>
@@ -2084,7 +2084,7 @@ renderFM();
         </div>
         <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:20px">The implementation sequence supports phased rollout within existing workflows. Each step can be applied independently. Organizations may begin with the forms and refer back to reviewer materials as questions arise, or proceed through the full sequence before deployment.</p>
         <div class="sampling-list">
-          <div class="sampling-item"><div class="sampling-num">1</div><div class="sampling-body"><div class="sampling-title">Distribute the Rapid Review Card</div><div class="sampling-desc">Provide all primary reviewers with KIT-F1. Establish it as the baseline reference for pre-finalization review questions.</div></div></div>
+          <div class="sampling-item"><div class="sampling-num">1</div><div class="sampling-body"><div class="sampling-title">Distribute the Rapid Review Card</div><div class="sampling-desc">Provide all primary reviewers with KIT-F1. Establish it as the baseline reference for the five JRS review conditions.</div></div></div>
           <div class="sampling-item"><div class="sampling-num">2</div><div class="sampling-body"><div class="sampling-title">Complete Reviewer Onboarding</div><div class="sampling-desc">Work through KIT-B1 with new and returning reviewers. Establish risk-level routing expectations before the first review cycle.</div></div></div>
           <div class="sampling-item"><div class="sampling-num">3</div><div class="sampling-body"><div class="sampling-title">Apply the Pre-Finalization Worksheet</div><div class="sampling-desc">Use KIT-A1 for all records in scope. Begin with elevated-risk categories if phased rollout is required.</div></div></div>
           <div class="sampling-item"><div class="sampling-num">4</div><div class="sampling-body"><div class="sampling-title">Establish Escalation Routing</div><div class="sampling-desc">Identify secondary reviewer contacts. Distribute KIT-A2 and KIT-E1A to routing decision-makers. Document any local variance from the reference routing conditions.</div></div></div>
@@ -2384,7 +2384,7 @@ renderFM();
   <div class="section-head">Periodic Retained-Record Sampling</div>
   <p class="section-sub">Lightweight review of retained organizational records on a periodic basis. Frequency and scope determined by organizational capacity.</p>
   <div class="sampling-list">
-    <div class="sampling-item"><div class="sampling-num">1</div><div class="sampling-body"><div class="sampling-title">Random Retained-Record Review</div><div class="sampling-desc">Periodically review a sample of finalized records without advance selection criteria. Apply the five pre-finalization questions to each. Note patterns.</div></div></div>
+    <div class="sampling-item"><div class="sampling-num">1</div><div class="sampling-body"><div class="sampling-title">Random Retained-Record Review</div><div class="sampling-desc">Periodically review a sample of finalized records without advance selection criteria. Apply the five JRS review conditions to each. Note patterns.</div></div></div>
     <div class="sampling-item"><div class="sampling-num">2</div><div class="sampling-body"><div class="sampling-title">Escalation Record Sampling</div><div class="sampling-desc">Review a sample of recent escalation records. Confirm prior counseling trail is identifiable. Confirm source records are present. Note where they are not.</div></div></div>
     <div class="sampling-item"><div class="sampling-num">3</div><div class="sampling-body"><div class="sampling-title">AI-Assisted Documentation Spot Review</div><div class="sampling-desc">Where AI-assisted drafting was applied, select a sample for source verification. Confirm generated wording against original notes. Note where discrepancies exist.</div></div></div>
     <div class="sampling-item"><div class="sampling-num">4</div><div class="sampling-body"><div class="sampling-title">Chronology Verification Sample</div><div class="sampling-desc">Select records involving conduct or performance conclusions. Confirm each conclusion has an identifiable date. Note where dates are absent.</div></div></div>
@@ -2607,7 +2607,7 @@ renderFM();
 
 <div style="max-width:860px;margin:0 auto;padding:32px 24px 0;border-top:1px solid var(--rule)">
   <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px">Legal + Operational Boundary</div>
-  <p style="font-size:12.5px;color:var(--muted-soft);line-height:1.7;max-width:720px">JRS establishes documentation review expectations at the pre-finalization stage. The structure does not determine factual accuracy, legal sufficiency, policy violations, or investigative findings. Organizational procedures, legal review requirements, and escalation protocols remain organization-specific. These materials support documentation review practice only and do not constitute legal advice, HR guidance, professional certification, or compliance determination.</p>
+  <p style="font-size:12.5px;color:var(--muted-soft);line-height:1.7;max-width:720px">JRS establishes structured documentation review expectations applicable to any record that may face later independent scrutiny. The structure does not determine factual accuracy, legal sufficiency, policy violations, or investigative findings. Organizational procedures, legal review requirements, and escalation protocols remain organization-specific. These materials support documentation review practice only and do not constitute legal advice, HR guidance, professional certification, or compliance determination.</p>
 </div>
 
 <footer class="site-footer" role="contentinfo">
