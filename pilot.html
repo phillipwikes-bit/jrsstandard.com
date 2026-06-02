@@ -235,7 +235,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
     <a href="enterprise.html" class="nav-item">Enterprise</a>
     <a href="pilot.html" class="nav-item active">Pilot Program</a>
     <a href="index.html" class="nav-item">Free Resources</a>
-    <a href="mailto:governance@jrsstandard.com?subject=JRS%20General%20Inquiry" class="nav-item" style="color:var(--accent)">Contact &#8599;</a>
+    <a href="mailto:info@jrsstandard.com?subject=JRS%20General%20Inquiry" class="nav-item" style="color:var(--accent)">Contact &#8599;</a>
   </div>
 </nav>
 
@@ -571,9 +571,9 @@ function submitVulnObs(e) {
       dlAnchor.click();
       document.body.removeChild(dlAnchor);
       URL.revokeObjectURL(dlUrl);
-      status.textContent = 'Server unavailable. Session data downloaded for manual submission to governance@jrsstandard.com.';
+      status.textContent = 'Server unavailable. Session data downloaded for manual submission to info@jrsstandard.com.';
     } catch(e) {
-      status.textContent = 'Server unavailable. Contact governance@jrsstandard.com to submit your observation.';
+      status.textContent = 'Server unavailable. Contact info@jrsstandard.com to submit your observation.';
     }
     status.style.color = 'var(--review-text)';
     btn.disabled = false;
@@ -602,13 +602,13 @@ if (pilotForm) {
         status.style.color = 'var(--ready-text)';
         pilotForm.reset();
       } else {
-        status.textContent = 'Submission error. Email governance@jrsstandard.com directly.';
+        status.textContent = 'Submission error. Email info@jrsstandard.com directly.';
         status.style.color = 'var(--stop-text)';
         btn.disabled = false;
       }
     })
     .catch(function() {
-      status.textContent = 'Network error. Email governance@jrsstandard.com directly.';
+      status.textContent = 'Network error. Email info@jrsstandard.com directly.';
       status.style.color = 'var(--stop-text)';
       btn.disabled = false;
     });

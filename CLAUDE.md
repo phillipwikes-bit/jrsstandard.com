@@ -93,7 +93,7 @@ This codebase has several values that must remain consistent across all pages. I
 
 | Value | Canonical Form |
 |---|---|
-| Contact email | `governance@jrsstandard.com` |
+| Contact email | `info@jrsstandard.com` |
 | Main PDF | `Wikes_Record-Level-Controls_AI-Assisted-Documentation.pdf` |
 | Backend endpoint | `https://api.jrsstandard.com/v1/verify-drift` |
 | Analytics tag | `G-NVYHJ7BJ92` |
@@ -143,9 +143,9 @@ All `fetch()` POST calls must include a `.catch()` handler. For forms where the 
     dlAnchor.click();
     document.body.removeChild(dlAnchor);
     URL.revokeObjectURL(dlUrl);
-    status.textContent = 'Server unavailable. Session data downloaded for manual submission to governance@jrsstandard.com.';
+    status.textContent = 'Server unavailable. Session data downloaded for manual submission to info@jrsstandard.com.';
   } catch(e) {
-    status.textContent = 'Server unavailable. Contact governance@jrsstandard.com to submit your observation.';
+    status.textContent = 'Server unavailable. Contact info@jrsstandard.com to submit your observation.';
   }
   status.style.color = 'var(--review-text)';
   btn.disabled = false;
