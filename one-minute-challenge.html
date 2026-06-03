@@ -258,7 +258,7 @@ var participantId = 'OMC-' + Date.now().toString(36) + '-' + Math.random().toStr
    (Settings -> API -> Project API keys -> anon public) to activate. Until then
    the page uses the static results.json fallback and Formspree for delivery. */
 var SUPABASE_URL = 'https://pjzxkeviouofdseagvpf.supabase.co';
-var SUPABASE_ANON_KEY = '';
+var SUPABASE_ANON_KEY = 'sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e';
 function sbOn(){ return !!(SUPABASE_URL && SUPABASE_ANON_KEY); }
 function sbHeaders(){ return {'apikey':SUPABASE_ANON_KEY,'Authorization':'Bearer '+SUPABASE_ANON_KEY,'Content-Type':'application/json'}; }
 
