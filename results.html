@@ -119,6 +119,16 @@ var SUPABASE_ANON_KEY='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e';
   }
   return staticFallback();
 })().then(function(d){
+  var MIN_SAMPLE=25, total=d.participants||0;
+  if(total < MIN_SAMPLE){
+    var pSec=document.getElementById('n-participants').closest('section');
+    var rSec=document.getElementById('roles').closest('section');
+    if(pSec) pSec.style.display='none';
+    if(rSec) rSec.style.display='none';
+    document.getElementById('dist').innerHTML='<p class="sub">Aggregate results will be published once enough responses have been collected. Please check back soon.</p>';
+    document.getElementById('updated').textContent='Results publish once a minimum number of responses is reached.';
+    return;
+  }
   document.getElementById('n-participants').textContent = d.participants||0;
   document.getElementById('n-reviews').textContent = d.reviews_completed||0;
 
