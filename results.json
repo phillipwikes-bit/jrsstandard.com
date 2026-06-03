@@ -1,0 +1,9 @@
+{
+  "updated": "2026-06-03",
+  "min_sample_for_comparison": 20,
+  "participants": 1,
+  "reviews_completed": 1,
+  "distribution": { "Yes": 0, "Partially": 0, "No": 1 },
+  "roles": { "AI Governance Professional": 1 },
+  "top_concern": null
+}

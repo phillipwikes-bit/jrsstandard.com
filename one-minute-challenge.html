@@ -319,6 +319,21 @@ function showResults(answer){
   r.classList.remove('hidden');
   document.getElementById('your-answer').textContent = answer;
   window.scrollTo({top:0,behavior:'smooth'});
+  // Live comparison from compiled results.json (shown only once enough responses exist)
+  fetch('results.json?ts='+Date.now()).then(function(res){return res.json();}).then(function(d){
+    var total=d.participants||0, min=d.min_sample_for_comparison||20, dist=d.distribution||{};
+    var sum=(dist.Yes||0)+(dist.Partially||0)+(dist.No||0);
+    if(total>=min && sum>0){
+      function pct(k){ return Math.round((dist[k]||0)/sum*100); }
+      var html='<div style="margin-bottom:8px">Based on '+total+' participants:</div>';
+      ['Yes','Partially','No'].forEach(function(k){ html+='<div style="display:flex;justify-content:space-between;max-width:240px"><span>'+k+'</span><span style="color:var(--accent);font-family:\'JetBrains Mono\',monospace">'+pct(k)+'%</span></div>'; });
+      html+='<div style="margin-top:10px;color:var(--accent)">You selected <strong>'+answer+'</strong> &middot; '+pct(answer)+'% of participants selected '+answer+'.</div>';
+      html+='<div style="margin-top:10px"><a href="results.html">View full aggregate results &#8594;</a></div>';
+      document.getElementById('compare').innerHTML=html;
+    } else {
+      document.getElementById('compare').innerHTML='Response distribution appears here as participants accumulate. Your response has been added to the record set. <a href="results.html">View aggregate results &#8594;</a>';
+    }
+  }).catch(function(){});
 }
 </script>
 </body>
