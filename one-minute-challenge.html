@@ -254,6 +254,14 @@ details ul{padding-left:18px}
 var FORM_ENDPOINT = 'https://formspree.io/f/mreddwdg';
 var participantId = 'OMC-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,7);
 
+/* Supabase: live storage + aggregate results. Paste your anon public key below
+   (Settings -> API -> Project API keys -> anon public) to activate. Until then
+   the page uses the static results.json fallback and Formspree for delivery. */
+var SUPABASE_URL = 'https://pjzxkeviouofdseagvpf.supabase.co';
+var SUPABASE_ANON_KEY = '';
+function sbOn(){ return !!(SUPABASE_URL && SUPABASE_ANON_KEY); }
+function sbHeaders(){ return {'apikey':SUPABASE_ANON_KEY,'Authorization':'Bearer '+SUPABASE_ANON_KEY,'Content-Type':'application/json'}; }
+
 function qp(name){ try{ return new URLSearchParams(window.location.search).get(name) || ''; }catch(e){ return ''; } }
 function deviceType(){ return (window.matchMedia && window.matchMedia('(max-width:600px)').matches) ? 'mobile' : 'desktop'; }
 
@@ -281,7 +289,6 @@ function submitAssessment(){
 
   var btn=document.getElementById('submit-btn');
   btn.disabled=true; btn.textContent='Submitting...';
-  fetch('/record',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({answer:sel.value,role:role})}).catch(function(){});
   var payload={
     _subject:'JRS One-Minute Challenge — '+role,
     type:'one_minute_challenge', participantId:participantId,
@@ -300,6 +307,15 @@ function submitAssessment(){
     completion_status:'completed',
     timestamp:new Date().toISOString()
   };
+  if(sbOn()){
+    fetch(SUPABASE_URL+'/rest/v1/omc_responses',{method:'POST',headers:Object.assign(sbHeaders(),{'Prefer':'return=minimal'}),body:JSON.stringify({
+      participant_id:payload.participantId, answer:payload.answer, why:payload.why, role:payload.role,
+      first_name:payload.first_name, last_name:payload.last_name, email:payload.email,
+      consent_updates:payload.consent_updates, consent_aggregate:payload.consent_aggregate, consent_recognition:payload.consent_recognition,
+      referrer:payload.referrer, utm_source:payload.utm_source, utm_medium:payload.utm_medium, utm_campaign:payload.utm_campaign,
+      session_source:payload.session_source, device_type:payload.device_type, completion_status:payload.completion_status
+    })}).catch(function(){});
+  }
   fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)})
   .then(function(res){ if(!res.ok) throw new Error('server'); try{localStorage.setItem('omc-submitted',participantId);}catch(e){} showResults(sel.value); })
   .catch(function(){
@@ -315,8 +331,12 @@ function submitAssessment(){
 }
 
 function loadResults(){
-  return fetch('/results',{cache:'no-store'}).then(function(r){ if(!r.ok) throw 0; return r.json(); })
-    .catch(function(){ return fetch('results.json?ts='+Date.now()).then(function(r){ return r.json(); }); });
+  var staticFallback=function(){ return fetch('results.json?ts='+Date.now()).then(function(r){ return r.json(); }); };
+  if(sbOn()){
+    return fetch(SUPABASE_URL+'/rest/v1/rpc/omc_results',{method:'POST',headers:sbHeaders(),body:'{}'})
+      .then(function(r){ if(!r.ok) throw 0; return r.json(); }).catch(staticFallback);
+  }
+  return staticFallback();
 }
 function showResults(answer){
   document.getElementById('challenge').classList.add('hidden');

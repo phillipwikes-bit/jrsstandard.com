@@ -109,7 +109,16 @@ section{padding:30px 0;border-bottom:1px solid var(--rule)}
 
 <script>
 function esc(t){ var d=document.createElement('div'); d.textContent=t; return d.innerHTML; }
-(function(){ return fetch('/results',{cache:'no-store'}).then(function(r){ if(!r.ok) throw 0; return r.json(); }).catch(function(){ return fetch('results.json?ts='+Date.now()).then(function(r){return r.json();}); }); })().then(function(d){
+var SUPABASE_URL='https://pjzxkeviouofdseagvpf.supabase.co';
+var SUPABASE_ANON_KEY='';
+(function(){
+  var staticFallback=function(){ return fetch('results.json?ts='+Date.now()).then(function(r){return r.json();}); };
+  if(SUPABASE_URL && SUPABASE_ANON_KEY){
+    return fetch(SUPABASE_URL+'/rest/v1/rpc/omc_results',{method:'POST',headers:{'apikey':SUPABASE_ANON_KEY,'Authorization':'Bearer '+SUPABASE_ANON_KEY,'Content-Type':'application/json'},body:'{}'})
+      .then(function(r){ if(!r.ok) throw 0; return r.json(); }).catch(staticFallback);
+  }
+  return staticFallback();
+})().then(function(d){
   document.getElementById('n-participants').textContent = d.participants||0;
   document.getElementById('n-reviews').textContent = d.reviews_completed||0;
 
