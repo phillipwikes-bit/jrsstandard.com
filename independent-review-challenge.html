@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Independent Review Challenge | JRS™</title>
+<meta property="og:title" content="Independent Review Challenge" />
+<meta property="og:description" content="Review three workplace records in about eight minutes and compare your assessment with other reviewers. No prior experience required." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://jrsstandard.com/independent-review-challenge.html" />
+<meta property="og:site_name" content="JRS™ Justification Review Standard" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Independent Review Challenge" />
+<meta name="twitter:description" content="Review three workplace records in about eight minutes and identify potential documentation concerns. No prior experience required." />
+<meta property="og:image" content="https://jrsstandard.com/og-card.svg" />
+<meta name="twitter:image" content="https://jrsstandard.com/og-card.svg" />
+<link rel="canonical" href="https://jrsstandard.com/independent-review-challenge.html" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<meta name="description" content="Independent Review Challenge: review three constructed workplace records in about eight minutes and identify potential documentation concerns. A structured documentation review exercise. No prior experience required.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NVYHJ7BJ92"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-NVYHJ7BJ92');
+</script>
+<style>
+:root{
+  --bg:#050505;--surface:#121212;--surface2:#1A1A1A;
+  --rule:#2A2A2A;--text:#F2F2F2;--muted:#B3B3B3;--muted-soft:#8A8A8A;
+  --accent:#BE9447;--accent-dim:#7A5E28;
+  --stop-text:#E88080;--review-text:#D4A055;--ready-text:#5DBF82;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+.skip-link{position:absolute;left:-9999px;top:4px;z-index:9999;background:var(--accent);color:#050505;padding:8px 16px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none}
+.skip-link:focus{left:4px}
+a{color:var(--accent)}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+
+/* HEADER */
+.site-header{border-bottom:1px solid var(--rule);padding:0 20px}
+.site-header-inner{max-width:720px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0;flex-wrap:wrap}
+.wordmark{font-family:'Bodoni Moda',serif;font-size:24px;font-weight:500;color:var(--accent);line-height:1;text-decoration:none}
+.header-meta{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);text-align:right}
+
+/* HERO */
+.hero{padding:48px 0 36px;border-bottom:1px solid var(--rule)}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+h1{font-family:'Bodoni Moda',serif;font-size:33px;font-weight:400;line-height:1.18;letter-spacing:-0.01em;margin-bottom:16px}
+.subhead{font-size:16.5px;color:var(--muted);line-height:1.6;margin-bottom:20px;max-width:600px}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;margin-bottom:22px}
+.chip{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:6px 11px}
+.chip.time{color:var(--accent);border-color:rgba(190,148,71,.4)}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+.btn{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:15px 30px;cursor:pointer;text-decoration:none;display:inline-block;border:none;transition:.12s;font-weight:600}
+.btn-primary{background:var(--accent);color:#050505}
+.btn-primary:hover{background:#d4a855}
+.btn-ghost{background:none;color:var(--muted-soft);border:1px solid var(--rule);font-weight:500}
+.btn-ghost:hover{color:var(--text);border-color:#555}
+.fineprint{font-size:12.5px;color:var(--muted-soft);line-height:1.6}
+
+/* SECTIONS */
+section{padding:36px 0;border-bottom:1px solid var(--rule)}
+.section-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:18px}
+.cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.card{border:1px solid var(--rule);background:var(--surface);padding:16px 16px}
+.card-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:7px}
+.card-body{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* FORM */
+label.fld{display:block;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:7px}
+select,input[type=text],input[type=email],textarea{width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;padding:11px 13px;outline:none}
+select:focus,input:focus,textarea:focus{border-color:var(--accent-dim)}
+.consent{display:flex;gap:10px;align-items:flex-start;margin-top:14px;font-size:13.5px;color:var(--muted);line-height:1.5}
+.consent input{margin-top:3px;accent-color:var(--accent);flex-shrink:0}
+.field{margin-bottom:18px}
+
+/* RECORD / CHALLENGE */
+.progress{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.progress-bar{height:3px;background:var(--rule);margin-bottom:24px;overflow:hidden}
+.progress-fill{height:100%;background:var(--accent);width:0;transition:width .3s}
+.record{border:1px solid var(--rule);background:var(--surface);padding:18px 20px;margin-bottom:24px;font-size:14.5px;color:var(--text);line-height:1.75;font-style:italic;white-space:pre-line}
+.record-label{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:10px;font-style:normal}
+.q{margin-bottom:22px}
+.q-text{font-size:14.5px;color:var(--text);font-weight:500;margin-bottom:10px;line-height:1.5}
+.q-text .num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);margin-right:8px}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opt{display:flex;align-items:center;gap:10px;padding:10px 13px;border:1px solid var(--rule);font-size:13.5px;color:var(--muted);cursor:pointer;transition:.1s;background:var(--surface)}
+.opt:hover{border-color:var(--accent-dim);color:var(--text)}
+.opt input{accent-color:var(--accent);cursor:pointer}
+.opt.sel{border-color:var(--accent);color:var(--text);background:rgba(190,148,71,.06)}
+.nav-btns{display:flex;justify-content:space-between;gap:10px;margin-top:8px}
+.err{color:var(--stop-text);font-size:12.5px;font-family:'JetBrains Mono',monospace;letter-spacing:.06em;margin-top:10px;display:none}
+
+/* FEEDBACK */
+.fb-stat{border:1px solid var(--rule);background:var(--surface);padding:16px 18px;margin-bottom:12px}
+.fb-stat-label{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px}
+.fb-stat-value{font-size:18px;color:var(--accent);font-family:'Bodoni Moda',serif}
+.note{font-size:12.5px;color:var(--muted-soft);line-height:1.6;border-left:2px solid var(--rule);padding:10px 14px;background:var(--surface)}
+
+/* FOOTER */
+.site-footer{padding:22px 20px}
+.site-footer-inner{max-width:720px;margin:0 auto;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center}
+.footer-links{display:flex;flex-wrap:wrap;gap:16px}
+.footer-link{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none}
+.footer-link:hover{color:var(--text)}
+.footer-copy{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-soft)}
+.hidden{display:none}
+@media(max-width:620px){
+  h1{font-size:26px}
+  .cards{grid-template-columns:1fr}
+  .btn{display:block;text-align:center;width:100%}
+}
+</style>
+</head>
+<body>
+<a href="#start" class="skip-link">Skip to review</a>
+
+<header class="site-header" role="banner">
+  <div class="site-header-inner">
+    <a href="index.html" class="wordmark">JRS<span style="font-size:10px;vertical-align:super;position:relative;top:-3px;color:var(--accent);">&#8482;</span></a>
+    <div class="header-meta">Justification Review Standard<br>Independent Review Challenge</div>
+  </div>
+</header>
+
+<main id="main-content">
+<div class="wrap">
+
+  <!-- ============ HERO ============ -->
+  <div class="hero" id="start">
+    <div class="eyebrow">Documentation Review Exercise</div>
+    <h1>Could an Independent Reviewer Understand How This Conclusion Was Reached?</h1>
+    <p class="subhead">Review three workplace records and identify potential documentation concerns.</p>
+    <div class="meta-row">
+      <span class="chip time">Estimated time &middot; 8 minutes</span>
+      <span class="chip">No prior experience required</span>
+    </div>
+    <p class="fineprint" style="margin-bottom:20px">Participants may elect to be acknowledged in future pilot findings reports.</p>
+    <div class="cta-row">
+      <a href="#begin" class="btn btn-primary" onclick="startReview();return false;">Start Review</a>
+      <a href="pilot.html" class="btn btn-ghost">Learn About JRS</a>
+    </div>
+  </div>
+
+  <!-- ============ WHY PARTICIPATE ============ -->
+  <section id="why">
+    <div class="section-label">Why Participate</div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-title">Professional Development</div>
+        <div class="card-body">Review workplace documentation and compare your observations with other participants.</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Contribute to Research</div>
+        <div class="card-body">Help identify patterns that affect documentation clarity, evidentiary support, and reviewability.</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Recognition</div>
+        <div class="card-body">Participants may elect to be acknowledged in future pilot reports and findings summaries.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FLOW CONTAINER ============ -->
+  <section id="begin">
+
+    <!-- STEP: participant info -->
+    <div id="step-info">
+      <div class="section-label">Participant Information</div>
+      <div class="field">
+        <label class="fld" for="role">Role</label>
+        <select id="role">
+          <option value="">Select your role</option>
+          <option>Student</option>
+          <option>HR Professional</option>
+          <option>Compliance Professional</option>
+          <option>Auditor</option>
+          <option>Manager</option>
+          <option>Researcher</option>
+          <option>Attorney</option>
+          <option>Investigator</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="field">
+        <label class="fld" for="email">Email Address (optional)</label>
+        <input type="email" id="email" placeholder="name@example.com" autocomplete="email">
+      </div>
+      <label class="consent"><input type="checkbox" id="c-aggregate"> I consent to anonymous aggregation of my responses.</label>
+      <label class="consent"><input type="checkbox" id="c-updates"> I would like to receive future pilot updates.</label>
+      <div class="err" id="err-info">Please select a role to begin.</div>
+      <div class="nav-btns" style="margin-top:20px">
+        <span></span>
+        <button class="btn btn-primary" onclick="beginRecords()">Begin Records &#8594;</button>
+      </div>
+    </div>
+
+    <!-- STEP: records (rendered by JS) -->
+    <div id="step-records" class="hidden">
+      <div class="progress" id="rec-progress">Record 1 of 3</div>
+      <div class="progress-bar"><div class="progress-fill" id="rec-fill"></div></div>
+      <div class="record-label" id="rec-label">Workplace Record</div>
+      <div class="record" id="rec-text"></div>
+      <div id="rec-questions"></div>
+      <div class="err" id="err-rec">Please answer questions 1 through 6 before continuing.</div>
+      <div class="nav-btns">
+        <button class="btn btn-ghost" id="rec-back" onclick="prevRecord()">&#8592; Back</button>
+        <button class="btn btn-primary" id="rec-next" onclick="nextRecord()">Next &#8594;</button>
+      </div>
+    </div>
+
+    <!-- STEP: final summary -->
+    <div id="step-summary" class="hidden">
+      <div class="section-label">Final Participant Summary</div>
+      <div class="field">
+        <label class="fld">Which record appeared strongest?</label>
+        <select id="s-strong"><option value="">Select</option><option>Record 1</option><option>Record 2</option><option>Record 3</option></select>
+      </div>
+      <div class="field">
+        <label class="fld">Which record appeared weakest?</label>
+        <select id="s-weak"><option value="">Select</option><option>Record 1</option><option>Record 2</option><option>Record 3</option></select>
+      </div>
+      <div class="field">
+        <label class="fld">What issue appeared most frequently?</label>
+        <select id="s-issue"><option value="">Select</option><option>Unsupported conclusions</option><option>Missing facts</option><option>Ambiguous language</option><option>Missing context</option><option>Insufficient explanation of reasoning</option><option>Escalation without support</option><option>Other</option></select>
+      </div>
+      <div class="field">
+        <label class="fld">Additional observations</label>
+        <textarea id="s-notes" rows="3" placeholder="Optional"></textarea>
+      </div>
+      <label class="consent"><input type="checkbox" id="c-recognition"> I consent to being listed as a participant in future pilot findings reports.</label>
+      <div class="field hidden" id="name-field" style="margin-top:14px">
+        <label class="fld" for="p-name">Name to list (Independent Review Participant)</label>
+        <input type="text" id="p-name" placeholder="As you wish to be credited">
+      </div>
+      <div class="err" id="err-summary">Submission could not be sent. Your responses have been downloaded as a file for manual submission to info@jrsstandard.com.</div>
+      <div class="nav-btns" style="margin-top:20px">
+        <button class="btn btn-ghost" onclick="backToRecords()">&#8592; Back</button>
+        <button class="btn btn-primary" id="submit-btn" onclick="submitReview()">Submit Review</button>
+      </div>
+    </div>
+
+    <!-- STEP: feedback -->
+    <div id="step-feedback" class="hidden">
+      <div class="section-label">Thank You</div>
+      <h1 style="font-size:24px;margin-bottom:12px">Your responses have been recorded.</h1>
+      <p class="subhead" style="font-size:15px">Thank you for participating in the Independent Review Challenge.</p>
+      <div class="fb-stat">
+        <div class="fb-stat-label">Your Most Frequently Identified Concern</div>
+        <div class="fb-stat-value" id="fb-concern">&mdash;</div>
+      </div>
+      <div class="fb-stat">
+        <div class="fb-stat-label">Participant Comparison Statistics</div>
+        <div class="card-body" id="fb-compare" style="margin-top:4px">Aggregate comparison statistics appear here as the study collects responses. Your submission has been added to the record set.</div>
+      </div>
+      <p class="note" style="margin-top:16px">Records in this exercise are constructed and the parties are fictional. This is a documentation review exercise and does not constitute legal, HR, or compliance advice. Questions: <a href="mailto:info@jrsstandard.com?subject=Independent%20Review%20Challenge">info@jrsstandard.com</a>.</p>
+      <div class="cta-row" style="margin-top:20px">
+        <a href="pilot.html" class="btn btn-ghost">Learn About the JRS Pilot</a>
+      </div>
+    </div>
+
+  </section>
+</div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer-inner">
+    <div class="footer-links">
+      <a href="index.html" class="footer-link">Home</a>
+      <a href="pilot.html" class="footer-link">Pilot Program</a>
+      <a href="training.html" class="footer-link">Simulation Training</a>
+    </div>
+    <div class="footer-copy">&#169; 2026 Phillip Wikes &nbsp;&middot;&nbsp; JRS&#8482;</div>
+  </div>
+</footer>
+
+<script>
+/* ---------- record bank (constructed, fictional) ---------- */
+var RECORDS = [
+  { id:'A', tier:'weak', text:
+    '"Employee has a poor attitude and is frequently difficult to work with. Performance has not met expectations and there have been numerous complaints from the team. The employee does not take feedback well and continues to underperform. Given the ongoing issues, termination is recommended."' },
+  { id:'B', tier:'moderate', text:
+    '"On several occasions over the past quarter, the employee submitted reports after the deadline. A meeting was held in March to discuss timeliness, and the manager noted continuing concerns about quality. Some improvement was observed afterward, though issues reportedly continued in certain areas. A formal performance plan is being considered."' },
+  { id:'C', tier:'strong', text:
+    '"On March 4, March 11, and March 18, the weekly compliance report was submitted after the Friday 5:00 PM deadline (submission timestamps recorded in the shared drive). On March 20, the manager met with the employee to review the submission record; notes from that meeting are on file. The employee attributed the delays to a reporting-tool change and requested training, which was scheduled for March 27. Between March 27 and April 30, all reports were submitted on time (shared-drive log). Each conclusion in this record cites the documentation it is based on."' }
+];
+
+var QUESTIONS = [
+  { id:'q1', text:'Are the conclusions supported by information contained in the record?', opts:['Yes','Partially','No'] },
+  { id:'q2', text:'Could an independent reviewer understand how the conclusions were reached?', opts:['Yes','Partially','No'] },
+  { id:'q3', text:'Does the record distinguish between observable information and interpretation?', opts:['Yes','Partially','No'] },
+  { id:'q4', text:'Does the record contain subjective or ambiguous language?', opts:['None','Some','Significant'] },
+  { id:'q5', text:'Overall documentation quality', opts:['Strong','Adequate','Weak'] },
+  { id:'q6', text:'What is the primary concern?', opts:['Unsupported conclusions','Missing facts','Ambiguous language','Missing context','Insufficient explanation of reasoning','Escalation without support','Other'] },
+  { id:'q7', text:'Optional comments', type:'text' }
+];
+
+/* ---------- state ---------- */
+var order = [0,1,2];
+var current = 0;            // index into order
+var answers = {};           // answers[recordId] = {q1:..,..}
+var participantId = 'IRC-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,7);
+
+function shuffle(a){ for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i];a[i]=a[j];a[j]=t;} return a; }
+
+function startReview(){
+  document.getElementById('begin').scrollIntoView({behavior:'smooth'});
+  var r=document.getElementById('role'); if(r) r.focus();
+}
+
+function beginRecords(){
+  var role=document.getElementById('role').value;
+  if(!role){ document.getElementById('err-info').style.display='block'; return; }
+  document.getElementById('err-info').style.display='none';
+  order = shuffle([0,1,2]);
+  current = 0;
+  document.getElementById('step-info').classList.add('hidden');
+  document.getElementById('step-records').classList.remove('hidden');
+  renderRecord();
+  document.getElementById('begin').scrollIntoView({behavior:'smooth'});
+}
+
+function renderRecord(){
+  var rec = RECORDS[order[current]];
+  if(!answers[rec.id]) answers[rec.id] = {};
+  document.getElementById('rec-progress').textContent = 'Record ' + (current+1) + ' of 3';
+  document.getElementById('rec-fill').style.width = ((current)/3*100) + '%';
+  document.getElementById('rec-label').textContent = 'Workplace Record ' + (current+1);
+  document.getElementById('rec-text').textContent = rec.text;
+  document.getElementById('err-rec').style.display='none';
+  document.getElementById('rec-back').style.visibility = current===0 ? 'hidden' : 'visible';
+  document.getElementById('rec-next').innerHTML = current===2 ? 'Continue to Summary &#8594;' : 'Next Record &#8594;';
+
+  var html='';
+  QUESTIONS.forEach(function(q){
+    html += '<div class="q">';
+    if(q.type==='text'){
+      html += '<div class="q-text"><span class="num">7</span>'+q.text+'</div>';
+      html += '<textarea rows="2" data-q="q7" oninput="setText(\''+rec.id+'\',\'q7\',this.value)" placeholder="Optional">'+(answers[rec.id].q7||'')+'</textarea>';
+    } else {
+      var n = q.id.replace('q','');
+      html += '<div class="q-text"><span class="num">'+n+'</span>'+q.text+'</div><div class="opts">';
+      q.opts.forEach(function(o){
+        var sel = answers[rec.id][q.id]===o ? ' sel' : '';
+        var chk = answers[rec.id][q.id]===o ? ' checked' : '';
+        html += '<label class="opt'+sel+'"><input type="radio" name="'+rec.id+'-'+q.id+'" value="'+o.replace(/"/g,'&quot;')+'"'+chk+' onchange="setOpt(\''+rec.id+'\',\''+q.id+'\',this)"> '+o+'</label>';
+      });
+      html += '</div>';
+    }
+    html += '</div>';
+  });
+  document.getElementById('rec-questions').innerHTML = html;
+}
+
+function setOpt(recId,qId,el){
+  answers[recId][qId]=el.value;
+  var group=el.closest('.opts');
+  if(group){ group.querySelectorAll('.opt').forEach(function(l){l.classList.remove('sel');}); }
+  el.closest('.opt').classList.add('sel');
+}
+function setText(recId,qId,val){ answers[recId][qId]=val; }
+
+function nextRecord(){
+  var rec = RECORDS[order[current]];
+  var need=['q1','q2','q3','q4','q5','q6'];
+  for(var i=0;i<need.length;i++){ if(!answers[rec.id][need[i]]){ document.getElementById('err-rec').style.display='block'; return; } }
+  document.getElementById('err-rec').style.display='none';
+  if(current<2){ current++; renderRecord(); window.scrollTo({top:document.getElementById('begin').offsetTop-20,behavior:'smooth'}); }
+  else { goSummary(); }
+}
+function prevRecord(){ if(current>0){ current--; renderRecord(); } }
+
+function goSummary(){
+  document.getElementById('rec-fill').style.width='100%';
+  document.getElementById('step-records').classList.add('hidden');
+  document.getElementById('step-summary').classList.remove('hidden');
+  window.scrollTo({top:document.getElementById('begin').offsetTop-20,behavior:'smooth'});
+}
+function backToRecords(){
+  document.getElementById('step-summary').classList.add('hidden');
+  document.getElementById('step-records').classList.remove('hidden');
+  renderRecord();
+}
+
+document.addEventListener('change',function(e){
+  if(e.target && e.target.id==='c-recognition'){
+    document.getElementById('name-field').classList.toggle('hidden', !e.target.checked);
+  }
+});
+
+function topConcern(){
+  var tally={};
+  Object.keys(answers).forEach(function(rid){
+    var c=answers[rid].q6; if(c){ tally[c]=(tally[c]||0)+1; }
+  });
+  var best='', n=0;
+  Object.keys(tally).forEach(function(k){ if(tally[k]>n){ n=tally[k]; best=k; } });
+  return best || 'No single concern stood out';
+}
+
+function buildPayload(){
+  return {
+    type:'independent_review_challenge',
+    source:'independent-review-challenge',
+    participantId:participantId,
+    role:document.getElementById('role').value,
+    email:document.getElementById('email').value||'',
+    consent_aggregate:document.getElementById('c-aggregate').checked,
+    consent_updates:document.getElementById('c-updates').checked,
+    consent_recognition:document.getElementById('c-recognition').checked,
+    recognition_name:document.getElementById('c-recognition').checked ? (document.getElementById('p-name').value||'') : '',
+    record_order:order.map(function(i){return RECORDS[i].id;}),
+    responses:answers,
+    summary:{
+      strongest:document.getElementById('s-strong').value,
+      weakest:document.getElementById('s-weak').value,
+      most_frequent_issue:document.getElementById('s-issue').value,
+      additional:document.getElementById('s-notes').value
+    },
+    timestamp:new Date().toISOString()
+  };
+}
+
+function showFeedback(){
+  document.getElementById('step-summary').classList.add('hidden');
+  document.getElementById('step-feedback').classList.remove('hidden');
+  document.getElementById('fb-concern').textContent = topConcern();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function downloadPayload(payload){
+  try{
+    var blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
+    var url=URL.createObjectURL(blob);
+    var a=document.createElement('a');
+    a.href=url; a.download='jrs-review-'+participantId+'.json';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    return true;
+  }catch(e){ return false; }
+}
+
+function submitReview(){
+  var btn=document.getElementById('submit-btn');
+  btn.disabled=true; btn.textContent='Submitting...';
+  var payload=buildPayload();
+  fetch('https://api.jrsstandard.com/v1/verify-drift',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(payload)
+  })
+  .then(function(res){ if(!res.ok) throw new Error('server'); showFeedback(); })
+  .catch(function(){
+    downloadPayload(payload);
+    document.getElementById('err-summary').style.display='block';
+    showFeedback();
+  });
+}
+</script>
+</body>
+</html>
