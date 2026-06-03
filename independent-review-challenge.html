@@ -305,6 +305,29 @@ var current = 0;            // index into order
 var answers = {};           // answers[recordId] = {q1:..,..}
 var participantId = 'IRC-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,7);
 
+/* Submissions go to Formspree (persistent storage + dashboard + CSV export).
+   To separate this study's data from pilot contact inquiries, create a dedicated
+   Formspree form and replace the ID below with the new endpoint. */
+var FORM_ENDPOINT = 'https://formspree.io/f/mreddwdg';
+
+function flatten(p){
+  var f = {
+    _subject:'Independent Review Challenge — '+(p.role||'participant'),
+    type:p.type, participantId:p.participantId, role:p.role, email:p.email,
+    consent_aggregate:p.consent_aggregate, consent_updates:p.consent_updates,
+    consent_recognition:p.consent_recognition, recognition_name:p.recognition_name,
+    record_order:p.record_order.join(','),
+    strongest:p.summary.strongest, weakest:p.summary.weakest,
+    most_frequent_issue:p.summary.most_frequent_issue, additional:p.summary.additional,
+    your_top_concern:topConcern(), timestamp:p.timestamp
+  };
+  Object.keys(p.responses).forEach(function(rid){
+    var r=p.responses[rid];
+    Object.keys(r).forEach(function(q){ f['record_'+rid+'_'+q]=r[q]; });
+  });
+  return f;
+}
+
 function shuffle(a){ for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i];a[i]=a[j];a[j]=t;} return a; }
 
 function startReview(){
@@ -446,17 +469,28 @@ function downloadPayload(payload){
 
 function submitReview(){
   var btn=document.getElementById('submit-btn');
+  var errEl=document.getElementById('err-summary');
+  if(localStorage.getItem('irc-submitted')){
+    errEl.textContent='A submission has already been recorded from this browser. Thank you for participating.';
+    errEl.style.color='var(--muted-soft)'; errEl.style.display='block';
+    showFeedback(); return;
+  }
   btn.disabled=true; btn.textContent='Submitting...';
   var payload=buildPayload();
-  fetch('https://api.jrsstandard.com/v1/verify-drift',{
+  fetch(FORM_ENDPOINT,{
     method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify(payload)
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify(flatten(payload))
   })
-  .then(function(res){ if(!res.ok) throw new Error('server'); showFeedback(); })
+  .then(function(res){
+    if(!res.ok) throw new Error('server');
+    try{ localStorage.setItem('irc-submitted', participantId); }catch(e){}
+    showFeedback();
+  })
   .catch(function(){
     downloadPayload(payload);
-    document.getElementById('err-summary').style.display='block';
+    try{ localStorage.setItem('irc-submitted', participantId); }catch(e){}
+    errEl.style.display='block';
     showFeedback();
   });
 }
