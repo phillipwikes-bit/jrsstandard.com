@@ -473,6 +473,17 @@ function submitReview(){
   }
   btn.disabled=true; btn.textContent='Submitting...';
   var payload=buildPayload();
+  try {
+    var SB_URL='https://pjzxkeviouofdseagvpf.supabase.co', SB_KEY='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e';
+    if (SB_KEY) {
+      fetch(SB_URL+'/rest/v1/extended_reviews',{method:'POST',headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify({
+        participant_id:payload.participantId, role:payload.role, email:payload.email,
+        consent_aggregate:payload.consent_aggregate, consent_updates:payload.consent_updates, consent_recognition:payload.consent_recognition,
+        recognition_name:payload.recognition_name, record_order:(payload.record_order||[]).join(','),
+        responses:payload.responses, summary:payload.summary
+      })}).catch(function(){});
+    }
+  } catch(sbe){}
   fetch(FORM_ENDPOINT,{
     method:'POST',
     headers:{'Content-Type':'application/json','Accept':'application/json'},

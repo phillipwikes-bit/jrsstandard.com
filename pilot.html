@@ -587,6 +587,18 @@ var pilotForm = document.getElementById('pilot-contact-form');
 if (pilotForm) {
   pilotForm.addEventListener('submit', function(e) {
     e.preventDefault();
+    try {
+      var SB_URL='https://pjzxkeviouofdseagvpf.supabase.co', SB_KEY='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e';
+      if (SB_KEY) {
+        fetch(SB_URL+'/rest/v1/pilot_contacts',{method:'POST',headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify({
+          name:(pilotForm.elements['name']||{}).value||'',
+          email:(pilotForm.elements['email']||{}).value||'',
+          organization:(pilotForm.elements['organization']||{}).value||'',
+          message:(pilotForm.elements['message']||{}).value||'',
+          source:'pilot'
+        })}).catch(function(){});
+      }
+    } catch(sbe){}
     var status = document.getElementById('form-status');
     var btn = pilotForm.querySelector('button[type="submit"]');
     btn.disabled = true;
