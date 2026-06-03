@@ -281,6 +281,7 @@ function submitAssessment(){
 
   var btn=document.getElementById('submit-btn');
   btn.disabled=true; btn.textContent='Submitting...';
+  fetch('/record',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({answer:sel.value,role:role})}).catch(function(){});
   var payload={
     _subject:'JRS One-Minute Challenge — '+role,
     type:'one_minute_challenge', participantId:participantId,
@@ -313,6 +314,10 @@ function submitAssessment(){
   });
 }
 
+function loadResults(){
+  return fetch('/results',{cache:'no-store'}).then(function(r){ if(!r.ok) throw 0; return r.json(); })
+    .catch(function(){ return fetch('results.json?ts='+Date.now()).then(function(r){ return r.json(); }); });
+}
 function showResults(answer){
   document.getElementById('challenge').classList.add('hidden');
   var r=document.getElementById('results');
@@ -320,7 +325,7 @@ function showResults(answer){
   document.getElementById('your-answer').textContent = answer;
   window.scrollTo({top:0,behavior:'smooth'});
   // Live comparison from compiled results.json (shown only once enough responses exist)
-  fetch('results.json?ts='+Date.now()).then(function(res){return res.json();}).then(function(d){
+  loadResults().then(function(d){
     var total=d.participants||0, min=d.min_sample_for_comparison||5, dist=d.distribution||{};
     var sum=(dist.Yes||0)+(dist.Partially||0)+(dist.No||0);
     if(total>=min && sum>0){
