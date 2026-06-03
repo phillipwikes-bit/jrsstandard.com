@@ -232,11 +232,13 @@ select:focus,input:focus,textarea:focus{border-color:var(--accent-dim)}
         <label class="fld">Additional observations</label>
         <textarea id="s-notes" rows="3" placeholder="Optional"></textarea>
       </div>
-      <label class="consent"><input type="checkbox" id="c-recognition"> I consent to being listed as a participant in future pilot findings reports.</label>
-      <div class="field hidden" id="name-field" style="margin-top:14px">
-        <label class="fld" for="p-name">Name to list (Independent Review Participant)</label>
+      <div class="section-label" style="margin-top:10px;margin-bottom:10px">Recognition (optional)</div>
+      <p class="card-body" style="margin-bottom:12px">Participation is anonymous by default. If you would like to be acknowledged in future pilot findings reports, you may provide a name below. This is entirely optional and implies no endorsement.</p>
+      <div class="field" id="name-field">
+        <label class="fld" for="p-name">Name to list, if you wish to be credited (optional)</label>
         <input type="text" id="p-name" placeholder="As you wish to be credited">
       </div>
+      <label class="consent"><input type="checkbox" id="c-recognition"> I consent to being listed as a participant in future pilot findings reports.</label>
       <div class="err" id="err-summary">Submission could not be sent. Your responses have been downloaded as a file for manual submission to info@jrsstandard.com.</div>
       <div class="nav-btns" style="margin-top:20px">
         <button class="btn btn-ghost" onclick="backToRecords()">&#8592; Back</button>
@@ -408,12 +410,6 @@ function backToRecords(){
   document.getElementById('step-records').classList.remove('hidden');
   renderRecord();
 }
-
-document.addEventListener('change',function(e){
-  if(e.target && e.target.id==='c-recognition'){
-    document.getElementById('name-field').classList.toggle('hidden', !e.target.checked);
-  }
-});
 
 function topConcern(){
   var tally={};
