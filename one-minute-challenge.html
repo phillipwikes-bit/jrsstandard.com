@@ -321,7 +321,7 @@ function showResults(answer){
   window.scrollTo({top:0,behavior:'smooth'});
   // Live comparison from compiled results.json (shown only once enough responses exist)
   fetch('results.json?ts='+Date.now()).then(function(res){return res.json();}).then(function(d){
-    var total=d.participants||0, min=d.min_sample_for_comparison||20, dist=d.distribution||{};
+    var total=d.participants||0, min=d.min_sample_for_comparison||5, dist=d.distribution||{};
     var sum=(dist.Yes||0)+(dist.Partially||0)+(dist.No||0);
     if(total>=min && sum>0){
       function pct(k){ return Math.round((dist[k]||0)/sum*100); }
