@@ -918,6 +918,14 @@ a.gumroad-button.util-link {
  <div style="font-size:12px;color:var(--muted-soft);line-height:1.65;max-width:480px;padding:10px 14px;border-left:2px solid rgba(190,148,71,.4);">No commercial commitment necessary during the pilot validation phase. Participation can begin with a single reviewer, one department, or one record type. Framework materials are available without cost while operational validation is underway.</div>
 </div>
 
+<!-- CURRENT FINDINGS (live, gated until findings exist) -->
+<a id="finding-hero" href="#findings-block" onclick="var b=document.getElementById('findings-block');if(b)b.scrollIntoView({behavior:'smooth'});return false;" style="display:none;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(190,148,71,.5);background:rgba(190,148,71,.07);padding:10px 15px;margin-bottom:20px;text-decoration:none;"></a>
+<div id="findings-block" style="display:none;border:1px solid rgba(190,148,71,.5);background:rgba(190,148,71,.05);padding:22px 24px;margin-bottom:24px;">
+ <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">&#9654; Current Findings &nbsp;&middot;&nbsp; Live Evidence</div>
+ <div id="home-findings"></div>
+ <p style="font-size:12.5px;color:var(--muted);line-height:1.7;margin-top:12px;">Published by the JRS Evidence Development Program. Reproducibility, accuracy, and validation are distinct; figures are observational. Full program at <a href="research.html" style="color:var(--accent);">Research &amp; Validation &#8594;</a>.</p>
+</div>
+
 <!-- EVALUATION STUDY -->
 <div style="margin-bottom:24px;border:1px solid rgba(190,148,71,.3);background:rgba(190,148,71,.03);padding:20px 22px;">
  <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">Structured Evaluation</div>
@@ -5256,6 +5264,30 @@ function submitObs(){
     setTimeout(function(){ document.getElementById('section-' + id).scrollIntoView({behavior:'smooth'}); }, 80);
   }
 }());
+</script>
+
+<script>
+(function(){
+  var U='https://pjzxkeviouofdseagvpf.supabase.co';
+  var K='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e';
+  var block=document.getElementById('findings-block'), el=document.getElementById('home-findings'), hero=document.getElementById('finding-hero');
+  if(!block||!el) return;
+  function esc(t){var d=document.createElement('div');d.textContent=t;return d.innerHTML;}
+  fetch(U+'/rest/v1/findings?select=headline,body,created_at,evidence_class&published=eq.true&order=created_at.desc',{headers:{'apikey':K,'Authorization':'Bearer '+K}})
+   .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+   .then(function(rows){
+     if(!rows||!rows.length) return;            // stay hidden until findings exist
+     el.innerHTML=rows.map(function(fd){
+       return '<div style="border:1px solid var(--rule);background:var(--surface);padding:16px 18px;margin-bottom:10px;">'
+         +'<div style="font-family:\'JetBrains Mono\',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:6px;">'+esc(fd.evidence_class||'observational')+' &middot; '+esc((fd.created_at||'').slice(0,10))+'</div>'
+         +'<div style="font-size:14.5px;font-weight:600;color:var(--text);margin-bottom:6px;">'+esc(fd.headline||'')+'</div>'
+         +'<div style="font-size:13px;color:var(--muted);line-height:1.6;">'+esc(fd.body||'')+'</div></div>';
+     }).join('');
+     block.style.display='block';
+     if(hero){ hero.innerHTML='&#9654; Latest finding: '+esc(rows[0].headline||'')+' &nbsp;&#8595;'; hero.style.display='inline-block'; }
+   })
+   .catch(function(){});
+})();
 </script>
 
 </body>
