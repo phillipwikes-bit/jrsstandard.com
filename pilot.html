@@ -275,6 +275,13 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
     <a href="JRS_Operational_Evaluation_Study_Twenty_Record_Ledger.docx" class="btn btn-ghost" style="display:inline-block;">Download Evaluation Study</a>
   </div>
 
+  <!-- CURRENT FINDINGS -->
+  <div id="findings-block" style="margin-bottom:44px;display:none;">
+    <div class="section-head">Current Findings</div>
+    <p class="muted-text" style="margin-bottom:12px;">Published findings from the JRS Evidence Development Program. Reproducibility, accuracy, and validation are distinct; figures are observational. Full program at <a href="research.html" style="color:var(--accent);">Research &amp; Validation</a>.</p>
+    <div id="pilot-findings"></div>
+  </div>
+
   <!-- JRS REVIEW CONDITIONS -->
   <div style="margin-bottom:44px;">
     <div class="section-head">The Five JRS Review Conditions</div>
@@ -628,6 +635,28 @@ if (pilotForm) {
     });
   });
 }
+</script>
+<script>
+(function(){
+  var U='https://pjzxkeviouofdseagvpf.supabase.co';
+  var K='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e';
+  var block=document.getElementById('findings-block'), el=document.getElementById('pilot-findings');
+  if(!block||!el) return;
+  function esc(t){var d=document.createElement('div');d.textContent=t;return d.innerHTML;}
+  fetch(U+'/rest/v1/findings?select=headline,body,created_at,evidence_class&published=eq.true&order=created_at.desc',{headers:{'apikey':K,'Authorization':'Bearer '+K}})
+   .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+   .then(function(rows){
+     if(!rows||!rows.length) return;            // stay hidden until findings exist
+     el.innerHTML=rows.map(function(fd){
+       return '<div style="border:1px solid var(--rule);background:var(--surface);padding:16px 18px;margin-bottom:10px;">'
+         +'<div style="font-family:\'JetBrains Mono\',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:6px;">'+esc(fd.evidence_class||'observational')+' &middot; '+esc((fd.created_at||'').slice(0,10))+'</div>'
+         +'<div style="font-size:14.5px;font-weight:600;color:var(--text);margin-bottom:6px;">'+esc(fd.headline||'')+'</div>'
+         +'<div style="font-size:13px;color:var(--muted);line-height:1.6;">'+esc(fd.body||'')+'</div></div>';
+     }).join('');
+     block.style.display='block';
+   })
+   .catch(function(){});
+})();
 </script>
 </body>
 </html>
