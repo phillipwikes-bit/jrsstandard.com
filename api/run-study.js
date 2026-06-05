@@ -72,11 +72,10 @@ export default async function handler(req) {
     var bearer = (req.headers.get('authorization') || '').replace(/^Bearer\s+/i, '').trim();
     var okManual = RUN_TOKEN && token === RUN_TOKEN;
     var okCron = CRON_SECRET && bearer === CRON_SECRET;
-    var okTemp = token === 'JRS-TEMP-q8w4z2v6-refresh-once-2026';
 
     if (!ANTHROPIC) return json({ error: 'ANTHROPIC_API_KEY not set' }, 400);
     if (!SERVICE) return json({ error: 'SUPABASE_SERVICE_ROLE_KEY not set' }, 400);
-    if (!okManual && !okCron && !okTemp) return json({ error: 'invalid or missing token' }, 401);
+    if (!okManual && !okCron) return json({ error: 'invalid or missing token' }, 401);
 
     const perRecord = {};
     for (const rec of RECORDS) {
