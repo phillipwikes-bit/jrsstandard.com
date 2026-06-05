@@ -254,7 +254,15 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
   <div class="page-eyebrow">AI Documentation Risk &nbsp;&middot;&nbsp; Practitioner Review Instrument &nbsp;&middot;&nbsp; Operational Validation Phase</div>
   <h1 class="page-title">JRS Pilot Program</h1>
   <div style="display:inline-block;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:7px 16px;margin-bottom:18px;font-weight:600;">No Commercial Commitment Necessary</div>
+  <a id="finding-hero" href="#findings-block" onclick="var b=document.getElementById('findings-block');if(b)b.scrollIntoView({behavior:'smooth'});return false;" style="display:none;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(190,148,71,.5);background:rgba(190,148,71,.07);padding:10px 15px;margin-bottom:18px;text-decoration:none;"></a>
   <p class="page-subtitle">When AI-assisted content enters a workplace record through summarization, recommendation, analysis, or narrative drafting, does that record remain reviewable (meaning traceable, evidentiary, and reconstructable) under structured review conditions? JRS provides a structured documentation review instrument that practitioners in HR, compliance, investigations, audit, and legal review can apply within existing workflows to evaluate whether AI-assisted records will hold up under independent scrutiny. The framework addresses a specific and recurring gap: AI-generated content enters permanent records as finished documentation, but the evidentiary foundation behind that content is often absent. JRS is currently in operational validation, building evidence that the framework identifies documentation deficiencies practitioners recognize in their own record populations and that existing review processes do not systematically catch. No cost. No commercial commitment required.</p>
+
+  <!-- CURRENT FINDINGS (lead feature) -->
+  <div id="findings-block" style="display:none;border:1px solid rgba(190,148,71,.5);background:rgba(190,148,71,.05);padding:22px 24px;margin-bottom:32px;">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">&#9654; Current Findings &nbsp;&middot;&nbsp; Live Evidence</div>
+    <div id="pilot-findings"></div>
+    <p class="muted-text" style="margin-top:12px;font-size:12.5px;">Published by the JRS Evidence Development Program. Reproducibility, accuracy, and validation are distinct; figures are observational. Full program at <a href="research.html" style="color:var(--accent);">Research &amp; Validation &#8594;</a>.</p>
+  </div>
 
   <div class="apply-block">
     <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:14px">Explore Participation</div>
@@ -273,13 +281,6 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
     <div class="section-head" style="margin-bottom:8px;">Twenty-Record Evaluation Study</div>
     <p style="font-size:13.5px;color:var(--muted);line-height:1.7;max-width:680px;margin-bottom:14px;">A structured evaluation applying the five JRS review conditions across twenty representative workplace documentation scenarios, spanning the four AI functions: summarization, recommendation, analysis, and narrative drafting. The study illustrates how the framework distinguishes records that support independent review from those that do not. The records are constructed and the parties are fictional. The evaluation was applied by the framework's creator, not an independent reviewer, and is published as a working illustration of what the process produces rather than as a validated study. Independent replication is part of the ongoing pilot program.</p>
     <a href="JRS_Operational_Evaluation_Study_Twenty_Record_Ledger.docx" class="btn btn-ghost" style="display:inline-block;">Download Evaluation Study</a>
-  </div>
-
-  <!-- CURRENT FINDINGS -->
-  <div id="findings-block" style="margin-bottom:44px;display:none;">
-    <div class="section-head">Current Findings</div>
-    <p class="muted-text" style="margin-bottom:12px;">Published findings from the JRS Evidence Development Program. Reproducibility, accuracy, and validation are distinct; figures are observational. Full program at <a href="research.html" style="color:var(--accent);">Research &amp; Validation</a>.</p>
-    <div id="pilot-findings"></div>
   </div>
 
   <!-- RESEARCH & VALIDATION -->
@@ -654,7 +655,7 @@ if (pilotForm) {
 (function(){
   var U='https://pjzxkeviouofdseagvpf.supabase.co';
   var K='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e';
-  var block=document.getElementById('findings-block'), el=document.getElementById('pilot-findings');
+  var block=document.getElementById('findings-block'), el=document.getElementById('pilot-findings'), hero=document.getElementById('finding-hero');
   if(!block||!el) return;
   function esc(t){var d=document.createElement('div');d.textContent=t;return d.innerHTML;}
   fetch(U+'/rest/v1/findings?select=headline,body,created_at,evidence_class&published=eq.true&order=created_at.desc',{headers:{'apikey':K,'Authorization':'Bearer '+K}})
@@ -668,6 +669,7 @@ if (pilotForm) {
          +'<div style="font-size:13px;color:var(--muted);line-height:1.6;">'+esc(fd.body||'')+'</div></div>';
      }).join('');
      block.style.display='block';
+     if(hero){ hero.innerHTML='&#9654; Latest finding: '+esc(rows[0].headline||'')+' &nbsp;&#8595;'; hero.style.display='inline-block'; }
    })
    .catch(function(){});
 })();
