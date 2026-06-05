@@ -121,19 +121,24 @@ export default async function handler(req) {
 
     // Replace prior STUDY-001 finding so the public page shows one current row (no pile-up across nightly runs).
     // The full per-run history is preserved in study_runs above.
+    const baseFinding = {
+      study_id: 'STUDY-001',
+      headline: `Reproducibility run: ${pct}% self-consistency across ${recs} records (k=${k})`,
+      body: 'Automated reproducibility check: the same record was reviewed multiple times by one model; the figure is the share of runs matching the most common answer. Reproducibility is not accuracy and not validation.',
+      metrics, published: true, evidence_class: 'reproducibility',
+    };
     await fetch(SUPABASE_URL + '/rest/v1/findings?study_id=eq.STUDY-001', { method: 'DELETE', headers });
-    await fetch(SUPABASE_URL + '/rest/v1/findings', {
-      method: 'POST', headers,
-      body: JSON.stringify(Object.assign({
-        study_id: 'STUDY-001',
-        headline: `Reproducibility run: ${pct}% self-consistency across ${recs} records (k=${k})`,
-        body: 'Automated reproducibility check: the same record was reviewed multiple times by one model; the figure is the share of runs matching the most common answer. Reproducibility is not accuracy and not validation.',
-        metrics, published: true, evidence_class: 'reproducibility',
-      }, bundle)),
+    let fres = await fetch(SUPABASE_URL + '/rest/v1/findings', {
+      method: 'POST', headers, body: JSON.stringify(Object.assign({}, baseFinding, bundle)),
     });
+    // If the engagement columns aren't migrated yet (supabase-engagement-setup.sql),
+    // fall back to the base finding so a row is always published (display never goes blank).
+    if (!fres.ok) {
+      await fetch(SUPABASE_URL + '/rest/v1/findings', { method: 'POST', headers, body: JSON.stringify(baseFinding) });
+    }
     await fetch(SUPABASE_URL + '/rest/v1/studies?id=eq.STUDY-001', { method: 'PATCH', headers, body: JSON.stringify({ status: 'active' }) });
 
-    return json({ ok: true, classification, metrics });
+    return json({ ok: true, classification, enriched: fres.ok, metrics });
   } catch (e) {
     return json({ error: String(e) }, 500);
   }
