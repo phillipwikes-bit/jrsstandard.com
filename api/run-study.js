@@ -6,10 +6,16 @@ export const config = { runtime: 'edge' };
 // Required environment variables (set in the hosting dashboard, same place as ANTHROPIC_API_KEY):
 //   ANTHROPIC_API_KEY          (already set — used by the simulator)
 //   SUPABASE_SERVICE_ROLE_KEY  (add this — Supabase > Settings > API > service_role secret)
-//   RUN_TOKEN                  (add this — any random string; protects the endpoint from cost abuse)
+//   RUN_TOKEN                  (add this — any random string; protects the manual trigger from cost abuse)
+//   CRON_SECRET                (add this — for the nightly Vercel Cron in vercel.json; Vercel sends it
+//                               automatically as "Authorization: Bearer <CRON_SECRET>". Reuse the same
+//                               value as RUN_TOKEN if you like.)
 //
-// Trigger (after deploy + research SQL run):
+// Manual trigger (after deploy + research SQL run):
 //   https://www.jrsstandard.com/api/run-study?token=YOUR_RUN_TOKEN
+//
+// Nightly: vercel.json schedules a daily call to /api/run-study; Vercel authenticates it with CRON_SECRET.
+// Each run REPLACES the prior STUDY-001 finding (delete-then-insert), so findings never pile up.
 //
 // Nothing runs until ANTHROPIC_API_KEY + SUPABASE_SERVICE_ROLE_KEY + RUN_TOKEN are set
 // and the research tables exist (supabase-research-setup.sql).
@@ -59,10 +65,17 @@ export default async function handler(req) {
     const ANTHROPIC = (typeof process !== 'undefined' && process.env && process.env.ANTHROPIC_API_KEY) || '';
     const SERVICE = (typeof process !== 'undefined' && process.env && process.env.SUPABASE_SERVICE_ROLE_KEY) || '';
     const RUN_TOKEN = (typeof process !== 'undefined' && process.env && process.env.RUN_TOKEN) || '';
+    const CRON_SECRET = (typeof process !== 'undefined' && process.env && process.env.CRON_SECRET) || '';
+
+    // Authenticate: manual trigger uses ?token=RUN_TOKEN; the nightly Vercel Cron sends
+    // "Authorization: Bearer <CRON_SECRET>" automatically.
+    var bearer = (req.headers.get('authorization') || '').replace(/^Bearer\s+/i, '').trim();
+    var okManual = RUN_TOKEN && token === RUN_TOKEN;
+    var okCron = CRON_SECRET && bearer === CRON_SECRET;
 
     if (!ANTHROPIC) return json({ error: 'ANTHROPIC_API_KEY not set' }, 400);
     if (!SERVICE) return json({ error: 'SUPABASE_SERVICE_ROLE_KEY not set' }, 400);
-    if (!RUN_TOKEN || token !== RUN_TOKEN) return json({ error: 'invalid or missing token' }, 401);
+    if (!okManual && !okCron) return json({ error: 'invalid or missing token' }, 401);
 
     const perRecord = {};
     for (const rec of RECORDS) {
@@ -76,6 +89,9 @@ export default async function handler(req) {
 
     const headers = { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' };
     await fetch(SUPABASE_URL + '/rest/v1/study_runs', { method: 'POST', headers, body: JSON.stringify({ study_id: 'STUDY-001', model: metrics.model, metrics }) });
+    // Replace prior STUDY-001 finding so the public page shows one current row (no pile-up across nightly runs).
+    // The full per-run history is preserved in study_runs above.
+    await fetch(SUPABASE_URL + '/rest/v1/findings?study_id=eq.STUDY-001', { method: 'DELETE', headers });
     await fetch(SUPABASE_URL + '/rest/v1/findings', {
       method: 'POST', headers,
       body: JSON.stringify({
