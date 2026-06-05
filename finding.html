@@ -44,8 +44,6 @@ h1{font-family:'Bodoni Moda',serif;font-size:30px;font-weight:400;line-height:1.
 .part-t{font-size:14px;font-weight:600;color:var(--text);margin-bottom:3px}
 .part-s{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft)}
 .note{font-size:12.5px;color:var(--muted-soft);line-height:1.6;border-left:2px solid var(--rule);padding:11px 15px;background:var(--surface);margin:14px 0}
-.copybox{width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:12.5px;line-height:1.6;padding:12px 14px;resize:vertical}
-.copybtn{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--accent);border:1px solid rgba(190,148,71,.4);padding:8px 14px;cursor:pointer;margin-top:6px}
 .site-footer{padding:24px 22px;border-top:1px solid var(--rule);margin-top:30px}
 .site-footer-inner{max-width:820px;margin:0 auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
 .footer-link{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none}
@@ -86,24 +84,6 @@ h1{font-family:'Bodoni Moda',serif;font-size:30px;font-weight:400;line-height:1.
     <a class="part-card" href="pilot.html#contact"><div class="part-t">Become a Professional Reviewer</div><div class="part-s">Express interest</div></a>
   </div>
 
-  <div class="section-label">Share This Finding</div>
-  <p class="sub" style="font-size:12.5px;margin-bottom:8px">Copy-ready text for LinkedIn. Drives discussion, not promotion. Review before posting.</p>
-  <div class="block">
-    <div class="block-k">Short Post</div>
-    <textarea class="copybox" id="li-short" rows="4" readonly></textarea>
-    <button class="copybtn" onclick="jrsCopy('li-short',this)">Copy short post</button>
-  </div>
-  <div class="block">
-    <div class="block-k">Long Post</div>
-    <textarea class="copybox" id="li-long" rows="10" readonly></textarea>
-    <button class="copybtn" onclick="jrsCopy('li-long',this)">Copy long post</button>
-  </div>
-  <div class="block" id="li-poll-block" style="display:none">
-    <div class="block-k">Poll</div>
-    <textarea class="copybox" id="li-poll" rows="6" readonly></textarea>
-    <button class="copybtn" onclick="jrsCopy('li-poll',this)">Copy poll</button>
-  </div>
-
   <div class="note">Classification reflects the strength of <strong style="color:var(--text)">independent variation</strong> (multiple models, expert labels, multiple human reviewers), not how many times the same run repeated. Repeating one model on the same synthetic records does not raise the class. <strong style="color:var(--text)">Reproducibility</strong>, <strong style="color:var(--text)">accuracy</strong>, and <strong style="color:var(--text)">validation</strong> are distinct. Figures are observational.</div>
 
   <div class="section-label">Related</div>
@@ -125,17 +105,15 @@ h1{font-family:'Bodoni Moda',serif;font-size:30px;font-weight:400;line-height:1.
   </div>
 </footer>
 <script>
-function jrsCopy(id,btn){var t=document.getElementById(id);if(!t)return;t.select();try{document.execCommand('copy');}catch(e){}if(navigator.clipboard){navigator.clipboard.writeText(t.value).catch(function(){});}var o=btn.textContent;btn.textContent='Copied';setTimeout(function(){btn.textContent=o;},1400);}
 (function(){
   var U='https://pjzxkeviouofdseagvpf.supabase.co';
   var K='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e';
   var hdr={'apikey':K,'Authorization':'Bearer '+K};
   function esc(t){var d=document.createElement('div');d.textContent=t;return d.innerHTML;}
   function set(id,v){var n=document.getElementById(id);if(n)n.textContent=v;}
-  function val(id,v){var n=document.getElementById(id);if(n)n.value=v;}
   var id=(new URLSearchParams(location.search)).get('id');
-  var q='/rest/v1/findings?select=id,headline,body,created_at,evidence_class,observation,supporting_data,research_question,discussion,debate,poll,challenge,classification,linkedin_short,linkedin_long,views&published=eq.true&order=created_at.desc&limit=1';
-  if(id) q='/rest/v1/findings?select=id,headline,body,created_at,evidence_class,observation,supporting_data,research_question,discussion,debate,poll,challenge,classification,linkedin_short,linkedin_long,views&published=eq.true&id=eq.'+encodeURIComponent(id);
+  var q='/rest/v1/findings?select=id,headline,body,created_at,evidence_class,observation,supporting_data,research_question,discussion,debate,poll,challenge,classification,views&published=eq.true&order=created_at.desc&limit=1';
+  if(id) q='/rest/v1/findings?select=id,headline,body,created_at,evidence_class,observation,supporting_data,research_question,discussion,debate,poll,challenge,classification,views&published=eq.true&id=eq.'+encodeURIComponent(id);
   fetch(U+q,{headers:hdr})
    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
    .then(function(rows){
@@ -154,9 +132,6 @@ function jrsCopy(id,btn){var t=document.getElementById(id);if(!t)return;t.select
      if(f.challenge) prompts+='<div class="prompt"><div class="prompt-k">Challenge</div><div class="prompt-v">'+esc(f.challenge)+' <a href="one-minute-challenge.html" style="color:var(--accent)">Start &#8594;</a></div></div>';
      if(!prompts) prompts='<div class="prompt"><div class="prompt-v">Discussion prompts appear here once a study run generates them.</div></div>';
      document.getElementById('f-prompts').innerHTML=prompts;
-     val('li-short', f.linkedin_short||'');
-     val('li-long', f.linkedin_long||'');
-     if(f.poll&&f.poll.question){ document.getElementById('li-poll-block').style.display='block'; val('li-poll', f.poll.question+'\n'+(f.poll.options||[]).map(function(o,i){return String.fromCharCode(65+i)+'. '+o;}).join('\n')+'\n\nVote and explain.'); }
      // Count a view (best-effort; RPC is security-definer).
      if(f.id){ fetch(U+'/rest/v1/rpc/increment_finding_views',{method:'POST',headers:Object.assign({'Content-Type':'application/json'},hdr),body:JSON.stringify({fid:f.id})}).catch(function(){}); }
    })

@@ -114,8 +114,6 @@ export default async function handler(req) {
       poll: { question: 'Which would raise your confidence in a review result the most?', options: ['Agreement with an expert benchmark', 'Agreement across different models', 'Agreement across repeated runs', 'Agreement with human reviewers'] },
       challenge: 'Take the One-Minute Challenge on the same kind of record and compare your read to the model’s.',
       classification,
-      linkedin_short: `Early observation: reviewing the same constructed records repeatedly, one model reached the same answer in ~${pct}% of runs. Self-consistency is not accuracy. Open question: does that reflect a stable signal in the record, or just model determinism? → https://www.jrsstandard.com/research.html`,
-      linkedin_long: `An early, deliberately small observation from the JRS Evidence Development Program.\n\nWe asked one model the same review question about the same ${recs} CONSTRUCTED records, ${k} times each. It reached the same answer in about ${pct}% of runs.\n\nThat is self-consistency on synthetic data: not accuracy, not validation, and not evidence about real workplace records. A model can agree with itself and still be wrong.\n\nThe open question: does repeated agreement reflect a stable, reviewable signal in a record, or just model determinism and prompt design? Answering it needs independent variation: multiple models, expert-labeled records, and multiple human reviewers.\n\nClassification: ${classification}. We publish questions, not conclusions → https://www.jrsstandard.com/research.html`,
     };
 
     // Replace prior STUDY-001 finding so the public page shows one current row (no pile-up across nightly runs).
