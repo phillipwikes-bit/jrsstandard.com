@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research &amp; Validation | JRS™ Justification Review Standard</title>
+<meta name="description" content="JRS Evidence Development Program: research overview, study registry, validation maturity, and methodology. Operational validation phase.">
+<link rel="canonical" href="https://jrsstandard.com/research.html" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NVYHJ7BJ92"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NVYHJ7BJ92');</script>
+<style>
+:root{--bg:#050505;--surface:#121212;--surface2:#1A1A1A;--rule:#2A2A2A;--text:#F2F2F2;--muted:#B3B3B3;--muted-soft:#8A8A8A;--accent:#BE9447;--accent-dim:#7A5E28;--stop-text:#E88080;--review-text:#D4A055;--ready-text:#5DBF82}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.wrap{max-width:820px;margin:0 auto;padding:0 22px}
+.site-header{border-bottom:1px solid var(--rule);padding:0 22px}
+.site-header-inner{max-width:820px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0;flex-wrap:wrap}
+.wordmark{font-family:'Bodoni Moda',serif;font-size:24px;font-weight:500;color:var(--accent);text-decoration:none}
+.header-meta{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);text-align:right}
+.hero{padding:44px 0 26px;border-bottom:1px solid var(--rule)}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+h1{font-family:'Bodoni Moda',serif;font-size:32px;font-weight:400;line-height:1.18;margin-bottom:14px}
+.sub{font-size:15px;color:var(--muted);line-height:1.65;max-width:660px}
+.section-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin:34px 0 14px}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.card{border:1px solid var(--rule);background:var(--surface);padding:15px 17px}
+.card-k{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px}
+.card-v{font-family:'Bodoni Moda',serif;font-size:19px;color:var(--accent);line-height:1.2}
+.card-n{font-size:12px;color:var(--muted-soft);margin-top:6px;line-height:1.5}
+.study{border:1px solid var(--rule);background:var(--surface);padding:15px 18px;margin-bottom:10px}
+.study-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.study-id{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim)}
+.study-title{font-size:15px;font-weight:600;color:var(--text)}
+.badge{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.12em;text-transform:uppercase;padding:4px 9px;border:1px solid var(--rule);white-space:nowrap}
+.b-collect{color:var(--ready-text);border-color:var(--ready-text)}
+.b-design{color:var(--review-text);border-color:var(--review-text)}
+.b-planned{color:var(--muted-soft)}
+.study-desc{font-size:13px;color:var(--muted);line-height:1.55}
+.note{font-size:12.5px;color:var(--muted-soft);line-height:1.6;border-left:2px solid var(--rule);padding:11px 15px;background:var(--surface);margin:14px 0}
+.nav-tiles{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:6px}
+.tile{border:1px solid var(--rule);background:var(--surface);padding:13px 14px;text-decoration:none;display:block}
+.tile-t{font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px}
+.tile-s{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft)}
+.site-footer{padding:24px 22px}
+.site-footer-inner{max-width:820px;margin:0 auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+.footer-link{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none}
+.footer-copy{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-soft)}
+@media(max-width:600px){h1{font-size:26px}.cards,.nav-tiles{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="site-header" role="banner">
+  <div class="site-header-inner">
+    <a href="index.html" class="wordmark">JRS<span style="font-size:10px;vertical-align:super;position:relative;top:-3px;">&#8482;</span></a>
+    <div class="header-meta">Justification Review Standard<br>Research &amp; Validation</div>
+  </div>
+</header>
+<main>
+<div class="wrap">
+  <div class="hero">
+    <div class="eyebrow">Evidence Development Program</div>
+    <h1>Research &amp; Validation</h1>
+    <p class="sub">JRS is in operational validation: an ongoing effort to gather evidence about whether the framework identifies documentation deficiencies that practitioners recognize and that existing review does not systematically catch. This page registers the program's studies and methodology and reports their honest current status.</p>
+  </div>
+
+  <div class="section-label">Validation Maturity</div>
+  <div class="cards">
+    <div class="card"><div class="card-k">Current Stage</div><div class="card-v">Operational Validation</div><div class="card-n">Early. Collecting reviewer observations; no validated findings yet.</div></div>
+    <div class="card"><div class="card-k">Evidence Base</div><div class="card-v">Forming</div><div class="card-n">Live aggregate counts at <a href="results.html">results.html</a>.</div></div>
+    <div class="card"><div class="card-k">Condition Maturity</div><div class="card-v">Experimental</div><div class="card-n">All five conditions. See the <a href="codebook.html">Codebook</a>.</div></div>
+    <div class="card"><div class="card-k">Readiness Scores</div><div class="card-v">Not Established</div><div class="card-n">Require sufficient multi-reviewer and benchmark data.</div></div>
+  </div>
+
+  <div class="section-label">Study Registry</div>
+  <div class="study"><div class="study-top"><div><span class="study-id">Study 001</span> &middot; <span class="study-title">AI Reproducibility</span></div><span class="badge b-planned">Planned</span></div><div class="study-desc">Run multiple AI models against calibration/synthetic records; measure agreement and consistency. Requires a server and model API keys (not yet provisioned).</div></div>
+  <div class="study"><div class="study-top"><div><span class="study-id">Study 002</span> &middot; <span class="study-title">Ground-Truth Benchmark</span></div><span class="badge b-planned">Planned</span></div><div class="study-desc">Compare review outputs against expert benchmark mappings to measure accuracy (distinct from agreement). Requires a benchmark dataset and execution engine.</div></div>
+  <div class="study"><div class="study-top"><div><span class="study-id">Study 003</span> &middot; <span class="study-title">Condition Performance</span></div><span class="badge b-design">Design complete</span></div><div class="study-desc">Track per-condition agreement and dispute rates from challenge and reviewer data as volume grows.</div></div>
+  <div class="study"><div class="study-top"><div><span class="study-id">Study 004</span> &middot; <span class="study-title">Framework Ambiguity</span></div><span class="badge b-design">Design complete</span></div><div class="study-desc">Estimate reviewer variance and record ambiguity once multiple reviewers assess the same records.</div></div>
+  <div class="study"><div class="study-top"><div><span class="study-id">Study 005</span> &middot; <span class="study-title">Continuous Replication</span></div><span class="badge b-planned">Planned</span></div><div class="study-desc">Re-run reviews on a schedule to track drift and stability across framework versions. Requires scheduled backend compute.</div></div>
+  <div class="study"><div class="study-top"><div><span class="study-id">Study 006</span> &middot; <span class="study-title">Participant Recognition</span></div><span class="badge b-collect">Collecting</span></div><div class="study-desc">Recognition patterns from the One-Minute Challenge and Extended Review. Data accruing now; reported once the sample is adequate.</div></div>
+  <div class="study"><div class="study-top"><div><span class="study-id">Study 007</span> &middot; <span class="study-title">Learning Effect</span></div><span class="badge b-planned">Planned</span></div><div class="study-desc">Compare first vs. subsequent attempts. Requires repeat-participant identification across sessions.</div></div>
+  <div class="study"><div class="study-top"><div><span class="study-id">Study 008</span> &middot; <span class="study-title">Professional Reviewer</span></div><span class="badge b-collect">Collecting</span></div><div class="study-desc">Role and profession are captured at participation; patterns by reviewer type reported as numbers grow.</div></div>
+  <div class="study"><div class="study-top"><div><span class="study-id">Study 009</span> &middot; <span class="study-title">Organizational-Psychology Readiness</span></div><span class="badge b-collect">Building dataset</span></div><div class="study-desc">Assembling reliability, difficulty, agreement, and behavioral datasets for independent organizational-psychology review.</div></div>
+
+  <div class="note"><strong style="color:var(--text)">Status legend.</strong> <strong style="color:var(--ready-text)">Collecting</strong> = real data accruing from live participation. <strong style="color:var(--review-text)">Design complete</strong> = methodology defined; awaiting sufficient data. <strong style="color:var(--muted-soft)">Planned</strong> = requires infrastructure not yet in place (e.g., model API access or scheduled compute). No study reports validated findings; this is a validation-phase program.</div>
+
+  <div class="section-label">Program Layers</div>
+  <div class="nav-tiles">
+    <a class="tile" href="codebook.html"><div class="tile-t">JRS Codebook</div><div class="tile-s">Measurement instrument &middot; v1.0</div></a>
+    <a class="tile" href="evidence-ledger.html"><div class="tile-t">Evidence Ledger</div><div class="tile-s">Permanent record</div></a>
+    <a class="tile" href="results.html"><div class="tile-t">Live Results</div><div class="tile-s">Aggregate, gated</div></a>
+  </div>
+
+  <div class="note" style="margin-top:24px">Claim control: <strong style="color:var(--text)">reproducibility</strong>, <strong style="color:var(--text)">accuracy</strong>, and <strong style="color:var(--text)">validation</strong> are distinct and are not treated as equivalent anywhere in this program. Figures shown are observational, not statistical findings or validated data.</div>
+</div>
+</main>
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer-inner">
+    <div style="display:flex;flex-wrap:wrap;gap:16px">
+      <a href="index.html" class="footer-link">Home</a>
+      <a href="codebook.html" class="footer-link">Codebook</a>
+      <a href="evidence-ledger.html" class="footer-link">Evidence Ledger</a>
+      <a href="pilot.html" class="footer-link">Pilot Program</a>
+    </div>
+    <div class="footer-copy">&#169; 2026 Phillip Wikes &nbsp;&middot;&nbsp; JRS&#8482;</div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JRS Codebook | JRS™ Justification Review Standard</title>
+<meta name="description" content="The JRS Codebook: the authoritative measurement instrument defining the five JRS review conditions, detection criteria, examples, risks, severity guidance, maturity, and version history.">
+<link rel="canonical" href="https://jrsstandard.com/codebook.html" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NVYHJ7BJ92"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NVYHJ7BJ92');</script>
+<style>
+:root{--bg:#050505;--surface:#121212;--surface2:#1A1A1A;--rule:#2A2A2A;--text:#F2F2F2;--muted:#B3B3B3;--muted-soft:#8A8A8A;--accent:#BE9447;--accent-dim:#7A5E28;--stop-text:#E88080;--review-text:#D4A055;--ready-text:#5DBF82}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.wrap{max-width:820px;margin:0 auto;padding:0 22px}
+.site-header{border-bottom:1px solid var(--rule);padding:0 22px}
+.site-header-inner{max-width:820px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0;flex-wrap:wrap}
+.wordmark{font-family:'Bodoni Moda',serif;font-size:24px;font-weight:500;color:var(--accent);text-decoration:none}
+.header-meta{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);text-align:right}
+.hero{padding:44px 0 26px;border-bottom:1px solid var(--rule)}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+h1{font-family:'Bodoni Moda',serif;font-size:32px;font-weight:400;line-height:1.18;margin-bottom:14px}
+.sub{font-size:15px;color:var(--muted);line-height:1.65;max-width:640px}
+.meta-line{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);margin-top:14px}
+.cond{border:1px solid var(--rule);background:var(--surface);margin:24px 0;padding:0}
+.cond-head{padding:16px 20px;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.cond-id{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.cond-title{font-family:'Bodoni Moda',serif;font-size:20px;color:var(--text)}
+.maturity{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--review-text);border:1px solid var(--review-text);padding:4px 9px}
+.cond-body{padding:6px 20px 18px}
+.f{padding:12px 0;border-bottom:1px solid var(--rule)}
+.f:last-child{border-bottom:none}
+.f-label{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:5px}
+.f-body{font-size:13.5px;color:var(--muted);line-height:1.6}
+.f-body strong{color:var(--text);font-weight:500}
+.f-body ul{margin:4px 0 0 18px}
+.section-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin:34px 0 14px}
+.maturity-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mat{border:1px solid var(--rule);background:var(--surface);padding:13px 15px}
+.mat-name{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:5px}
+.mat-desc{font-size:12.5px;color:var(--muted);line-height:1.55}
+.note{font-size:12.5px;color:var(--muted-soft);line-height:1.6;border-left:2px solid var(--rule);padding:11px 15px;background:var(--surface);margin:14px 0}
+.site-footer{padding:24px 22px}
+.site-footer-inner{max-width:820px;margin:0 auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+.footer-link{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none}
+.footer-copy{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-soft)}
+@media(max-width:600px){h1{font-size:26px}.maturity-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="site-header" role="banner">
+  <div class="site-header-inner">
+    <a href="index.html" class="wordmark">JRS<span style="font-size:10px;vertical-align:super;position:relative;top:-3px;">&#8482;</span></a>
+    <div class="header-meta">Justification Review Standard<br>Codebook</div>
+  </div>
+</header>
+<main>
+<div class="wrap">
+  <div class="hero">
+    <div class="eyebrow">Governance &middot; Measurement Instrument</div>
+    <h1>JRS Codebook</h1>
+    <p class="sub">The authoritative definition of the five JRS review conditions used to assess whether an organizational record can support independent review. This codebook is the measurement instrument: review and analysis reference these definitions, and changes are version-controlled.</p>
+    <div class="meta-line">Version 1.0 &nbsp;&middot;&nbsp; 2026-06-03 &nbsp;&middot;&nbsp; Status: Experimental (operational validation phase)</div>
+  </div>
+
+  <div class="note">Maturity note: all conditions are currently classified <strong>Experimental</strong>. JRS is in operational validation. Nothing in this codebook constitutes validated measurement, statistical findings, certification, or legal guidance.</div>
+
+  <!-- RC1 -->
+  <div class="cond">
+    <div class="cond-head"><div><div class="cond-id">RC 1</div><div class="cond-title">Conclusion Reconstruction</div></div><span class="maturity">Experimental</span></div>
+    <div class="cond-body">
+      <div class="f"><div class="f-label">Definition</div><div class="f-body">Whether the conclusion in a record can be reconstructed from the record itself: a future reviewer can trace the path from documented evidence to the conclusion reached, without relying on the author's recollection or added explanation.</div></div>
+      <div class="f"><div class="f-label">Detection Criteria</div><div class="f-body">The evidence cited, the steps from evidence to conclusion, and the conclusion are all present in the file and connected.</div></div>
+      <div class="f"><div class="f-label">Examples</div><div class="f-body">A finding that states the documents reviewed, what each showed, and how they led to the determination.</div></div>
+      <div class="f"><div class="f-label">Non-Examples</div><div class="f-body">A conclusion ("performance concern") with no traceable path from any documented evidence.</div></div>
+      <div class="f"><div class="f-label">Inclusions</div><div class="f-body">Records where a conclusion or determination is asserted.</div></div>
+      <div class="f"><div class="f-label">Exclusions</div><div class="f-body">Purely descriptive logs that assert no conclusion.</div></div>
+      <div class="f"><div class="f-label">False-Positive Risks</div><div class="f-body">Marking a record reconstructable because the reviewer already knows the context (institutional memory) rather than because the file shows it.</div></div>
+      <div class="f"><div class="f-label">False-Negative Risks</div><div class="f-body">Penalizing concise records whose reasoning is implicit but genuinely recoverable from cited evidence.</div></div>
+      <div class="f"><div class="f-label">Severity Guidance</div><div class="f-body">High when the conclusion drives an adverse action and cannot be reconstructed; lower when the conclusion is minor or provisional.</div></div>
+      <div class="f"><div class="f-label">Research Notes / Version</div><div class="f-body">v1.0 (2026-06-03). Derived from the public five-condition framework. Revisions tracked in the Evidence Ledger.</div></div>
+    </div>
+  </div>
+
+  <!-- RC2 -->
+  <div class="cond">
+    <div class="cond-head"><div><div class="cond-id">RC 2</div><div class="cond-title">Identifiable Basis</div></div><span class="maturity">Experimental</span></div>
+    <div class="cond-body">
+      <div class="f"><div class="f-label">Definition</div><div class="f-body">Whether the source of each characterization (observation, measurement, audit finding, reported incident) is visible and traceable, rather than implied or summarized without attribution.</div></div>
+      <div class="f"><div class="f-label">Detection Criteria</div><div class="f-body">Each material characterization can be tied to an identified source in the record.</div></div>
+      <div class="f"><div class="f-label">Examples</div><div class="f-body">"Late on 3/4, 3/11, 3/18 (timestamps in shared drive)."</div></div>
+      <div class="f"><div class="f-label">Non-Examples</div><div class="f-body">"Has a poor attitude" with no source for the characterization.</div></div>
+      <div class="f"><div class="f-label">Inclusions</div><div class="f-body">Evaluative or factual characterizations of conduct, performance, or events.</div></div>
+      <div class="f"><div class="f-label">Exclusions</div><div class="f-body">Direct quotations or attached primary documents that are self-identifying.</div></div>
+      <div class="f"><div class="f-label">False-Positive Risks</div><div class="f-body">Accepting a generic reference ("per HR records") as an identified source.</div></div>
+      <div class="f"><div class="f-label">False-Negative Risks</div><div class="f-body">Requiring citation for uncontested, self-evident facts.</div></div>
+      <div class="f"><div class="f-label">Severity Guidance</div><div class="f-body">High when an unsupported characterization is central to an adverse conclusion.</div></div>
+      <div class="f"><div class="f-label">Research Notes / Version</div><div class="f-body">v1.0 (2026-06-03).</div></div>
+    </div>
+  </div>
+
+  <!-- RC3 -->
+  <div class="cond">
+    <div class="cond-head"><div><div class="cond-id">RC 3</div><div class="cond-title">Chronology Clarity</div></div><span class="maturity">Experimental</span></div>
+    <div class="cond-body">
+      <div class="f"><div class="f-label">Definition</div><div class="f-body">Whether the sequence of events is followable from the record alone, including timing of prior interventions, escalation steps, and the period under review.</div></div>
+      <div class="f"><div class="f-label">Detection Criteria</div><div class="f-body">Dated events in order; the review period and prior steps are identifiable.</div></div>
+      <div class="f"><div class="f-label">Examples</div><div class="f-body">Each incident documented with its own date and outcome.</div></div>
+      <div class="f"><div class="f-label">Non-Examples</div><div class="f-body">"Repeatedly counseled over the past several months" with no dates.</div></div>
+      <div class="f"><div class="f-label">Inclusions</div><div class="f-body">Records describing conduct or events over time.</div></div>
+      <div class="f"><div class="f-label">Exclusions</div><div class="f-body">Single-point-in-time records with no sequence.</div></div>
+      <div class="f"><div class="f-label">False-Positive Risks</div><div class="f-body">Treating a narrative order as a dated chronology.</div></div>
+      <div class="f"><div class="f-label">False-Negative Risks</div><div class="f-body">Requiring exact dates where approximate periods are sufficient and stated.</div></div>
+      <div class="f"><div class="f-label">Severity Guidance</div><div class="f-body">High when timing is material to the conclusion (e.g., progressive discipline).</div></div>
+      <div class="f"><div class="f-label">Research Notes / Version</div><div class="f-body">v1.0 (2026-06-03).</div></div>
+    </div>
+  </div>
+
+  <!-- RC4 -->
+  <div class="cond">
+    <div class="cond-head"><div><div class="cond-id">RC 4</div><div class="cond-title">Decision Process</div></div><span class="maturity">Experimental</span></div>
+    <div class="cond-body">
+      <div class="f"><div class="f-label">Definition</div><div class="f-body">Whether a future reviewer can determine how the conclusion was reached: who reviewed the matter, what criteria or threshold triggered it, and whether responsive or mitigating information was considered before finalization.</div></div>
+      <div class="f"><div class="f-label">Detection Criteria</div><div class="f-body">Reviewer, applicable criteria/threshold, and consideration of responses are documented.</div></div>
+      <div class="f"><div class="f-label">Examples</div><div class="f-body">"Manager met with employee 3/20; notes on file; mitigating explanation recorded."</div></div>
+      <div class="f"><div class="f-label">Non-Examples</div><div class="f-body">A determination with no record of who decided or what standard applied.</div></div>
+      <div class="f"><div class="f-label">Inclusions</div><div class="f-body">Records reflecting a decision, finding, or escalation.</div></div>
+      <div class="f"><div class="f-label">Exclusions</div><div class="f-body">Informational records with no decision.</div></div>
+      <div class="f"><div class="f-label">False-Positive Risks</div><div class="f-body">Accepting a signature block as evidence of a documented process.</div></div>
+      <div class="f"><div class="f-label">False-Negative Risks</div><div class="f-body">Requiring elaborate process for low-stakes routine decisions.</div></div>
+      <div class="f"><div class="f-label">Severity Guidance</div><div class="f-body">High when an adverse decision shows no consideration of responsive information.</div></div>
+      <div class="f"><div class="f-label">Research Notes / Version</div><div class="f-body">v1.0 (2026-06-03).</div></div>
+    </div>
+  </div>
+
+  <!-- RC5 -->
+  <div class="cond">
+    <div class="cond-head"><div><div class="cond-id">RC 5</div><div class="cond-title">Independent Sufficiency</div></div><span class="maturity">Experimental</span></div>
+    <div class="cond-body">
+      <div class="f"><div class="f-label">Definition</div><div class="f-body">The aggregate condition: whether the record stands on its own as an evidentiary document, such that an independent reviewer with no prior knowledge could assess whether the conclusion is supported by the documented evidence.</div></div>
+      <div class="f"><div class="f-label">Detection Criteria</div><div class="f-body">RC 1&ndash;4 are met to the degree that the record needs no outside context to be evaluated.</div></div>
+      <div class="f"><div class="f-label">Examples</div><div class="f-body">A record a reviewer encountering it cold could fully assess.</div></div>
+      <div class="f"><div class="f-label">Non-Examples</div><div class="f-body">A record that only makes sense to someone who was present.</div></div>
+      <div class="f"><div class="f-label">Inclusions</div><div class="f-body">All retained records intended to support later review.</div></div>
+      <div class="f"><div class="f-label">Exclusions</div><div class="f-body">Working drafts not intended for the file.</div></div>
+      <div class="f"><div class="f-label">False-Positive Risks</div><div class="f-body">Rating sufficiency on familiarity rather than on the file's contents.</div></div>
+      <div class="f"><div class="f-label">False-Negative Risks</div><div class="f-body">Holding routine records to a litigation-grade standard.</div></div>
+      <div class="f"><div class="f-label">Severity Guidance</div><div class="f-body">Reflects the most severe unmet condition among RC 1&ndash;4.</div></div>
+      <div class="f"><div class="f-label">Research Notes / Version</div><div class="f-body">v1.0 (2026-06-03).</div></div>
+    </div>
+  </div>
+
+  <div class="section-label">Condition Maturity Model</div>
+  <div class="maturity-grid">
+    <div class="mat"><div class="mat-name">Experimental</div><div class="mat-desc">Definition drafted; little or no reviewer-agreement evidence. <strong style="color:var(--review-text)">All five conditions are here now.</strong></div></div>
+    <div class="mat"><div class="mat-name">Emerging</div><div class="mat-desc">Some reviewer-agreement data collected; definition stabilizing.</div></div>
+    <div class="mat"><div class="mat-name">Stable</div><div class="mat-desc">Consistent reviewer agreement across records; definition unchanged over revisions.</div></div>
+    <div class="mat"><div class="mat-name">Validated</div><div class="mat-desc">Independent replication and benchmark agreement established. Not yet attained for any condition.</div></div>
+  </div>
+
+  <div class="note" style="margin-top:24px">This page is the human-readable codebook. Condition definitions and revisions are recorded in the <a href="evidence-ledger.html">Public Evidence Ledger</a>. Study methodology and status are in the <a href="research.html">Research &amp; Validation</a> registry.</div>
+</div>
+</main>
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer-inner">
+    <div style="display:flex;flex-wrap:wrap;gap:16px">
+      <a href="index.html" class="footer-link">Home</a>
+      <a href="research.html" class="footer-link">Research &amp; Validation</a>
+      <a href="evidence-ledger.html" class="footer-link">Evidence Ledger</a>
+      <a href="pilot.html" class="footer-link">Pilot Program</a>
+    </div>
+    <div class="footer-copy">&#169; 2026 Phillip Wikes &nbsp;&middot;&nbsp; JRS&#8482;</div>
+  </div>
+</footer>
+</body>
+</html>
