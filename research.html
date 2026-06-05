@@ -65,8 +65,20 @@ h1{font-family:'Bodoni Moda',serif;font-size:32px;font-weight:400;line-height:1.
   <div class="hero">
     <div class="eyebrow">Evidence Development Program</div>
     <h1>Research &amp; Validation</h1>
-    <p class="sub">JRS is in operational validation: an ongoing effort to gather evidence about whether the framework identifies documentation deficiencies that practitioners recognize and that existing review does not systematically catch. This page registers the program's studies and methodology and reports their honest current status.</p>
+    <p class="sub">JRS is in operational validation: an ongoing effort to gather evidence about whether the framework identifies documentation deficiencies that practitioners recognize and that existing review does not systematically catch. This page registers the program's studies and methodology and reports their honest current status. The goal is not to prove JRS works; it is to understand documentation reviewability, reviewer behavior, framework ambiguity, recognition patterns, and how evidence develops.</p>
   </div>
+
+  <!-- THIS WEEK'S OBSERVATION -->
+  <div class="section-label">This Week's Observation</div>
+  <div id="tw-observation" style="border:1px solid rgba(190,148,71,.5);background:rgba(190,148,71,.05);padding:22px 24px;">
+    <p class="sub" style="font-size:13px">No observation published yet. One appears here automatically once a study run completes.</p>
+  </div>
+
+  <!-- QUESTIONS EMERGING FROM THE DATA -->
+  <div class="section-label">Questions Emerging From the Data</div>
+  <p class="sub" style="font-size:13px;margin-bottom:12px">We publish questions, not conclusions. Each is open and under investigation. Follow a question rather than a report.</p>
+  <div id="emerging-questions"></div>
+  <div class="note" style="margin-top:4px">Full registry: <a href="questions.html">Questions Under Investigation &#8594;</a></div>
 
   <div class="section-label">Validation Maturity</div>
   <div class="cards">
@@ -94,6 +106,8 @@ h1{font-family:'Bodoni Moda',serif;font-size:32px;font-weight:400;line-height:1.
 
   <div class="section-label">Program Layers</div>
   <div class="nav-tiles">
+    <a class="tile" href="finding.html"><div class="tile-t">Findings &amp; Discussion</div><div class="tile-s">Latest finding &middot; discuss</div></a>
+    <a class="tile" href="questions.html"><div class="tile-t">Questions Under Investigation</div><div class="tile-s">Follow the questions</div></a>
     <a class="tile" href="codebook.html"><div class="tile-t">JRS Codebook</div><div class="tile-s">Measurement instrument &middot; v1.0</div></a>
     <a class="tile" href="evidence-ledger.html"><div class="tile-t">Evidence Ledger</div><div class="tile-s">Permanent record</div></a>
     <a class="tile" href="results.html"><div class="tile-t">Live Results</div><div class="tile-s">Aggregate, gated</div></a>
@@ -119,17 +133,49 @@ h1{font-family:'Bodoni Moda',serif;font-size:32px;font-weight:400;line-height:1.
 (function(){
   var U='https://pjzxkeviouofdseagvpf.supabase.co';
   var K='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e';
+  var hdr={'apikey':K,'Authorization':'Bearer '+K};
   var el=document.getElementById('findings');
+  var twEl=document.getElementById('tw-observation');
+  var qEl=document.getElementById('emerging-questions');
   function esc(t){var d=document.createElement('div');d.textContent=t;return d.innerHTML;}
-  fetch(U+'/rest/v1/findings?select=headline,body,created_at,evidence_class&published=eq.true&order=created_at.desc',{headers:{'apikey':K,'Authorization':'Bearer '+K}})
+
+  // Findings -> Current Findings list + This Week's Observation.
+  fetch(U+'/rest/v1/findings?select=id,headline,body,created_at,evidence_class,observation,supporting_data,research_question,classification&published=eq.true&order=created_at.desc',{headers:hdr})
    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
    .then(function(rows){
      if(!rows||!rows.length){ el.innerHTML='<p class="sub" style="font-size:13px">No findings have been published yet. Findings appear here automatically once studies run.</p>'; return; }
      el.innerHTML=rows.map(function(fd){
-       return '<div class="study"><div class="study-top"><div><span class="study-id">'+esc(fd.evidence_class||'observational')+'</span></div><span class="badge b-design">'+esc((fd.created_at||'').slice(0,10))+'</span></div><div class="study-title" style="margin-bottom:6px">'+esc(fd.headline||'')+'</div><div class="study-desc">'+esc(fd.body||'')+'</div></div>';
+       var fid=fd.id?('finding.html?id='+encodeURIComponent(fd.id)):'finding.html';
+       return '<div class="study"><div class="study-top"><div><span class="study-id">'+esc(fd.classification||fd.evidence_class||'observational')+'</span></div><span class="badge b-design">'+esc((fd.created_at||'').slice(0,10))+'</span></div><div class="study-title" style="margin-bottom:6px">'+esc(fd.headline||'')+'</div><div class="study-desc">'+esc(fd.body||'')+'</div><div style="margin-top:8px"><a href="'+fid+'" style="font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);text-decoration:none">Discuss this finding &#8594;</a></div></div>';
      }).join('');
+     var f=rows[0];
+     twEl.innerHTML=
+       '<div style="font-family:\'JetBrains Mono\',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">'+esc(f.classification||'Observation')+' &middot; '+esc((f.created_at||'').slice(0,10))+'</div>'
+      +'<div style="font-family:\'JetBrains Mono\',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px">Observation</div>'
+      +'<div style="font-size:15px;color:var(--text);line-height:1.6;margin-bottom:12px">'+esc(f.observation||f.headline||'')+'</div>'
+      +(f.supporting_data?'<div style="font-family:\'JetBrains Mono\',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px">Supporting Data</div><div style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:12px">'+esc(f.supporting_data)+'</div>':'')
+      +(f.research_question?'<div style="font-family:\'JetBrains Mono\',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px">Research Question</div><div style="font-size:13.5px;color:var(--text);line-height:1.6;margin-bottom:14px">'+esc(f.research_question)+'</div>':'')
+      +'<a href="'+(f.id?('finding.html?id='+encodeURIComponent(f.id)):'finding.html')+'" style="font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#050505;background:var(--accent);padding:9px 16px;text-decoration:none;display:inline-block;font-weight:600">Explore Current Findings &#8594;</a>';
    })
    .catch(function(){ el.innerHTML='<p class="sub" style="font-size:13px">No findings have been published yet.</p>'; });
+
+  // Questions Emerging From the Data (registry, with honest fallback list).
+  function renderQ(rows){
+    qEl.innerHTML=rows.map(function(q){
+      return '<div class="study"><div class="study-top"><div class="study-title">'+esc(q.question)+'</div><span class="badge '+(q.status==='Research Active'?'b-collect':'b-design')+'">'+esc(q.status||'Open')+'</span></div>'
+        +'<div class="study-desc">'+esc(q.evidence||'')+(q.related_study?' <span style="color:var(--accent-dim)">('+esc(q.related_study)+')</span>':'')+'</div></div>';
+    }).join('');
+  }
+  var fallbackQ=[
+    {question:'Can reviewers agree a record has a problem while disagreeing about which problem it is?',status:'Collecting Data',related_study:'STUDY-004',evidence:'No multi-reviewer data yet; question is open.'},
+    {question:'Why might chronology deficiencies be identified less often than unsupported conclusions?',status:'Collecting Data',related_study:'STUDY-003',evidence:'Awaiting per-condition identification data.'},
+    {question:'Do different professions identify different documentation weaknesses?',status:'Collecting Data',related_study:'STUDY-008',evidence:'Role captured at participation; reported as numbers grow.'},
+    {question:'Does repeated exposure improve recognition accuracy?',status:'Collecting Data',related_study:'STUDY-007',evidence:'Requires repeat-participant identification across sessions.'}
+  ];
+  fetch(U+'/rest/v1/research_questions?select=question,status,related_study,evidence&order=sort.asc',{headers:hdr})
+   .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+   .then(function(rows){ renderQ(rows&&rows.length?rows:fallbackQ); })
+   .catch(function(){ renderQ(fallbackQ); });
 })();
 </script>
 </body>
