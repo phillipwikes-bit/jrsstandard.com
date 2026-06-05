@@ -70,6 +70,7 @@ h1{font-family:'Bodoni Moda',serif;font-size:32px;font-weight:400;line-height:1.
 
   <!-- THIS WEEK'S OBSERVATION -->
   <div class="section-label">This Week's Observation</div>
+  <p class="sub" style="font-size:13px;margin-bottom:10px">Scope: the current automated observation is a reproducibility check on constructed (synthetic) records using a single model. It is not accuracy, not validation, and not evidence about real workplace records.</p>
   <div id="tw-observation" style="border:1px solid rgba(190,148,71,.5);background:rgba(190,148,71,.05);padding:22px 24px;">
     <p class="sub" style="font-size:13px">No observation published yet. One appears here automatically once a study run completes.</p>
   </div>
@@ -92,7 +93,7 @@ h1{font-family:'Bodoni Moda',serif;font-size:32px;font-weight:400;line-height:1.
   <div id="findings"><p class="sub" style="font-size:13px">Loading findings&hellip;</p></div>
 
   <div class="section-label">Study Registry</div>
-  <div class="study"><div class="study-top"><div><span class="study-id">Study 001</span> &middot; <span class="study-title">AI Reproducibility</span></div><span class="badge b-collect">Active</span></div><div class="study-desc">Runs a model against calibration/synthetic records multiple times and measures answer consistency. Live: an automated nightly run publishes the current self-consistency figure under Current Findings. Reproducibility is not accuracy and not validation.</div></div>
+  <div class="study"><div class="study-top"><div><span class="study-id">Study 001</span> &middot; <span class="study-title">AI Reproducibility (single-model, synthetic)</span></div><span class="badge b-collect">Active</span></div><div class="study-desc">Scope is deliberately narrow: one model reviews three constructed (synthetic) records repeatedly and the run reports answer self-consistency. It involves no human reviewers and no ground-truth labels, so it cannot speak to accuracy or to real records. Repeated runs are repetition, not replication. Reproducibility is not accuracy and not validation.</div></div>
   <div class="study"><div class="study-top"><div><span class="study-id">Study 002</span> &middot; <span class="study-title">Ground-Truth Benchmark</span></div><span class="badge b-planned">Planned</span></div><div class="study-desc">Compare review outputs against expert benchmark mappings to measure accuracy (distinct from agreement). Requires a benchmark dataset and execution engine.</div></div>
   <div class="study"><div class="study-top"><div><span class="study-id">Study 003</span> &middot; <span class="study-title">Condition Performance</span></div><span class="badge b-design">Design complete</span></div><div class="study-desc">Track per-condition agreement and dispute rates from challenge and reviewer data as volume grows.</div></div>
   <div class="study"><div class="study-top"><div><span class="study-id">Study 004</span> &middot; <span class="study-title">Framework Ambiguity</span></div><span class="badge b-design">Design complete</span></div><div class="study-desc">Estimate reviewer variance and record ambiguity once multiple reviewers assess the same records.</div></div>
@@ -103,6 +104,12 @@ h1{font-family:'Bodoni Moda',serif;font-size:32px;font-weight:400;line-height:1.
   <div class="study"><div class="study-top"><div><span class="study-id">Study 009</span> &middot; <span class="study-title">Organizational-Psychology Readiness</span></div><span class="badge b-collect">Building dataset</span></div><div class="study-desc">Assembling reliability, difficulty, agreement, and behavioral datasets for independent organizational-psychology review.</div></div>
 
   <div class="note"><strong style="color:var(--text)">Status legend.</strong> <strong style="color:var(--ready-text)">Collecting</strong> = real data accruing from live participation. <strong style="color:var(--review-text)">Design complete</strong> = methodology defined; awaiting sufficient data. <strong style="color:var(--muted-soft)">Planned</strong> = requires infrastructure not yet in place (e.g., model API access or scheduled compute). No study reports validated findings; this is a validation-phase program.</div>
+
+  <div class="section-label">What Would Count as Evidence (and What Would Falsify a Claim)</div>
+  <p class="sub" style="font-size:13.5px">A JRS claim of usefulness would be supported only if independent reviewers, applying the five conditions to records they did not author, identify deficiencies that standard review misses, and agree with one another above chance. It would be weakened or falsified if reviewers cannot apply the conditions consistently, if flagged records are no less reviewable than unflagged ones under expert assessment, or if agreement is no better than chance. The current automated reproducibility check (one model, synthetic records) does not bear on any of this; it only measures whether a single model repeats its own answer. Accuracy requires a ground-truth benchmark (Study 002); reliability requires multiple human reviewers (Study 004). Neither exists yet, which is why nothing here is presented as validated.</p>
+
+  <div class="section-label">Origin &amp; Approach</div>
+  <p class="sub" style="font-size:13.5px">JRS originated from civil rights investigative and documentation-review experience, with a cognitive-behavioral and AI-governance lens. <a href="about.html">Read the origin and what JRS is and is not &#8594;</a></p>
 
   <div class="section-label">Program Layers</div>
   <div class="nav-tiles">

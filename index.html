@@ -918,10 +918,27 @@ a.gumroad-button.util-link {
  <div style="font-size:12px;color:var(--muted-soft);line-height:1.65;max-width:480px;padding:10px 14px;border-left:2px solid rgba(190,148,71,.4);">No commercial commitment necessary during the pilot validation phase. Participation can begin with a single reviewer, one department, or one record type. Framework materials are available without cost while operational validation is underway.</div>
 </div>
 
+<!-- WHAT JRS IS / IS NOT / WHO -->
+<div style="margin-bottom:24px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+ <div style="border:1px solid var(--rule);background:var(--surface);padding:14px 16px;">
+  <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">JRS Is</div>
+  <div style="font-size:12px;color:var(--muted);line-height:1.7;">A documentation review structure: a pre-finalization review control that asks whether a record identifies the basis for its conclusions and stays understandable to a later reviewer.</div>
+ </div>
+ <div style="border:1px solid var(--rule);background:var(--surface);padding:14px 16px;">
+  <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--stop-text);margin-bottom:8px;">JRS Is Not</div>
+  <div style="font-size:12px;color:var(--muted);line-height:1.7;">Not a software product, AI application, startup, workflow replacement, consulting methodology, or decision-making framework. It does not make findings about people.</div>
+ </div>
+ <div style="border:1px solid var(--rule);background:var(--surface);padding:14px 16px;">
+  <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">Who It's For</div>
+  <div style="font-size:12px;color:var(--muted);line-height:1.7;">Investigators, HR, compliance, audit, records and legal review, and AI governance teams concerned with whether AI-assisted records stay reviewable over time.</div>
+ </div>
+</div>
+<div style="font-size:12.5px;color:var(--muted-soft);line-height:1.65;max-width:620px;margin-bottom:24px;">JRS originated from civil rights investigative and documentation-review experience, with a cognitive-behavioral and AI-governance lens. <a href="about.html" style="color:var(--accent);">Origin &amp; approach &#8594;</a></div>
+
 <!-- CURRENT FINDINGS (live, gated until findings exist) -->
 <a id="finding-hero" href="#findings-block" onclick="var b=document.getElementById('findings-block');if(b)b.scrollIntoView({behavior:'smooth'});return false;" style="display:none;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(190,148,71,.5);background:rgba(190,148,71,.07);padding:10px 15px;margin-bottom:20px;text-decoration:none;"></a>
 <div id="findings-block" style="display:none;border:1px solid rgba(190,148,71,.5);background:rgba(190,148,71,.05);padding:22px 24px;margin-bottom:24px;">
- <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">&#9654; Current Findings &nbsp;&middot;&nbsp; Live Evidence</div>
+ <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">&#9654; Current Findings &nbsp;&middot;&nbsp; Reproducibility check (synthetic)</div>
  <div id="home-findings"></div>
  <p style="font-size:12.5px;color:var(--muted);line-height:1.7;margin-top:12px;">Published by the JRS Evidence Development Program. Reproducibility, accuracy, and validation are distinct; figures are observational. <a href="finding.html" style="color:var(--accent);">Discuss this finding &#8594;</a> &nbsp;&middot;&nbsp; <a href="research.html" style="color:var(--accent);">Research &amp; Validation &#8594;</a></p>
 </div>
@@ -4685,6 +4702,8 @@ function calcSCS(){
  <div class="site-footer-inner">
  <div style="display:flex;flex-wrap:wrap;gap:18px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--rule);">
   <a href="index.html" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;">Home</a>
+  <a href="about.html" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;">Origin &amp; Approach</a>
+  <a href="research.html" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;">Research</a>
   <a href="pilot.html" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;">Pilot Program</a>
   <a href="training.html" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;">Simulation Training</a>
   <a href="Wikes_Record-Level-Controls_AI-Assisted-Documentation.pdf" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;">Review Controls PDF</a>

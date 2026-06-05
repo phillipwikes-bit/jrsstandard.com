@@ -322,6 +322,8 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
     <a href="#contact" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});return false;" class="btn btn-ghost">Join Pilot Program</a>
   </div>
 
+  <p style="font-size:12.5px;color:var(--muted-soft);line-height:1.65;max-width:600px;margin-top:16px;">JRS originated from civil rights investigative and documentation-review experience, with a cognitive-behavioral and AI-governance lens. <a href="about.html" style="color:var(--accent);">Origin &amp; what JRS is and is not &#8594;</a></p>
+
   <hr class="section-rule">
 
   <!-- 2 · IMMEDIATE PARTICIPATION OPTIONS -->
@@ -372,20 +374,17 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
   <!-- 3 · LIVE RESEARCH ACTIVITY -->
   <div style="margin-bottom:32px;">
     <div class="section-big">Research Activity</div>
-    <p class="section-big-sub">A live view of the JRS Evidence Development Program. Values update as participation accrues and studies run. Counts shown as &ldquo;Collecting&rdquo; are accruing and reported once samples are adequate.</p>
+    <p class="section-big-sub">A live view of the JRS Evidence Development Program. These are the values that currently reflect real state. Participant, observation, and simulation counts are not shown because no participation cohort exists yet: presenting empty counters would overstate activity.</p>
     <div class="metric-grid">
-      <div class="metric-card"><div class="metric-value" id="rc-participants">Collecting</div><div class="metric-label">Participants</div></div>
-      <div class="metric-card"><div class="metric-value" id="rc-observations">Collecting</div><div class="metric-label">Observations Submitted</div></div>
-      <div class="metric-card"><div class="metric-value" id="rc-simulations">Collecting</div><div class="metric-label">Simulation Completions</div></div>
-      <div class="metric-card"><div class="metric-value" id="rc-studies">&mdash;</div><div class="metric-label">Studies Active</div></div>
       <div class="metric-card"><div class="metric-value sm" id="rc-phase">Operational Validation</div><div class="metric-label">Research Phase</div></div>
+      <div class="metric-card"><div class="metric-value" id="rc-studies">&mdash;</div><div class="metric-label">Studies Active</div></div>
       <div class="metric-card"><div class="metric-value" id="rc-evidence">&mdash;</div><div class="metric-label">Evidence Updates</div></div>
-      <div class="metric-card"><div class="metric-value sm" id="rc-updated">&mdash;</div><div class="metric-label">Last Updated</div></div>
+      <div class="metric-card"><div class="metric-value sm" id="rc-updated">&mdash;</div><div class="metric-label">Last Verified</div></div>
     </div>
 
     <!-- CURRENT FINDINGS (live, gated until findings exist) -->
     <div id="findings-block" style="display:none;border:1px solid rgba(190,148,71,.5);background:rgba(190,148,71,.05);padding:22px 24px;margin-top:14px;">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">&#9654; Current Findings &nbsp;&middot;&nbsp; Live Evidence</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">&#9654; Current Findings &nbsp;&middot;&nbsp; Reproducibility check (synthetic)</div>
       <div id="pilot-findings"></div>
       <p class="muted-text" style="margin-top:12px;font-size:12.5px;">Published by the JRS Evidence Development Program. Reproducibility, accuracy, and validation are distinct; figures are observational. <a href="finding.html" style="color:var(--accent);">Discuss this finding &#8594;</a> &nbsp;&middot;&nbsp; <a href="research.html" style="color:var(--accent);">Research &amp; Validation &#8594;</a></p>
     </div>
@@ -395,13 +394,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
   <div style="border:1px solid rgba(190,148,71,.4);background:rgba(190,148,71,.04);padding:26px 24px;margin-bottom:44px;">
     <div class="dash-cap">&#9654; One-Minute Challenge</div>
     <div class="section-big">Can You Identify the Documentation Issue?</div>
-    <p class="section-big-sub">The One-Minute Challenge presents a short workplace documentation scenario. Your task is to identify the most significant reviewability issue. Aggregate responses contribute to ongoing research.</p>
-    <div class="metric-grid" style="margin-bottom:18px;">
-      <div class="metric-card"><div class="metric-value" id="ch-participants">Collecting</div><div class="metric-label">Challenge Participants</div></div>
-      <div class="metric-card"><div class="metric-value sm" id="ch-time">~60 sec</div><div class="metric-label">Average Completion Time</div></div>
-      <div class="metric-card"><div class="metric-value sm" id="ch-condition">Collecting</div><div class="metric-label">Most Selected Condition</div></div>
-      <div class="metric-card"><div class="metric-value sm" id="ch-difficulty">Calibrating</div><div class="metric-label">Current Difficulty Level</div></div>
-    </div>
+    <p class="section-big-sub">The One-Minute Challenge presents a short workplace documentation scenario. Your task is to identify the most significant reviewability issue. Your selection is recorded as an aggregate research observation: one record, one question, about sixty seconds.</p>
     <a href="one-minute-challenge.html" class="btn btn-primary">Start One-Minute Challenge &#8594;</a>
   </div>
 
@@ -565,19 +558,16 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
     </div>
   </div>
 
-  <!-- RESEARCH IMPACT DASHBOARD -->
+  <!-- DATA HANDLING & PRIVACY -->
   <div style="margin-bottom:44px;">
-    <div class="dash-cap">&#9654; Research Impact</div>
-    <div class="section-big">Program at a Glance</div>
-    <p class="section-big-sub">A single-view summary of the program. Live values appear where available; accruing measures are shown as &ldquo;Collecting.&rdquo;</p>
-    <div class="metric-grid">
-      <div class="metric-card"><div class="metric-value" id="imp-participants">Collecting</div><div class="metric-label">Participants</div></div>
-      <div class="metric-card"><div class="metric-value" id="imp-reviews">Collecting</div><div class="metric-label">Reviews Completed</div></div>
-      <div class="metric-card"><div class="metric-value" id="imp-observations">Collecting</div><div class="metric-label">Observations Submitted</div></div>
-      <div class="metric-card"><div class="metric-value sm" id="imp-conditions">5 conditions</div><div class="metric-label">Conditions Applied</div></div>
-      <div class="metric-card"><div class="metric-value" id="imp-studies">&mdash;</div><div class="metric-label">Studies Active</div></div>
-      <div class="metric-card"><div class="metric-value" id="imp-evidence">&mdash;</div><div class="metric-label">Evidence Updates</div></div>
-      <div class="metric-card"><div class="metric-value sm" id="imp-growth">Operational Validation</div><div class="metric-label">Research Growth</div></div>
+    <div class="section-big">Data Handling &amp; Privacy</div>
+    <p class="section-big-sub">What leaves your environment, and what does not.</p>
+    <div class="scope-list" style="grid-template-columns:1fr;">
+      <div class="scope-item"><span class="scope-dash">&mdash;</span><span class="scope-text">The One-Minute Challenge and the observation widget record only your menu selection. They do not collect free text, names, or identifiers.</span></div>
+      <div class="scope-item"><span class="scope-dash">&mdash;</span><span class="scope-text">The contact form forwards your message so you can receive a reply. It is not displayed publicly.</span></div>
+      <div class="scope-item"><span class="scope-dash">&mdash;</span><span class="scope-text">Free-text inputs are screened for personal identifiers (email, phone, SSN, card numbers) before submission, and you are asked to redact before sending.</span></div>
+      <div class="scope-item"><span class="scope-dash">&mdash;</span><span class="scope-text">JRS asks you not to submit live-record content. Apply the review inside your own environment and share only your menu-level observation. JRS creates no system of record of your organization's documents.</span></div>
+      <div class="scope-item"><span class="scope-dash">&mdash;</span><span class="scope-text">Organizations testing controls on live records may wish to consult internal counsel before logging or reporting findings. JRS participation creates no legal obligation and is not legal advice.</span></div>
     </div>
   </div>
 
@@ -701,6 +691,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
   <div class="site-footer-inner">
     <div class="footer-links">
       <a href="index.html" class="footer-link">Home</a>
+      <a href="about.html" class="footer-link">Origin &amp; Approach</a>
       <a href="enterprise.html" class="footer-link">Enterprise</a>
       <a href="pilot.html" class="footer-link">Pilot Program</a>
       <a href="training.html" class="footer-link">Simulation Training</a>
