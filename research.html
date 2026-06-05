@@ -76,6 +76,9 @@ h1{font-family:'Bodoni Moda',serif;font-size:32px;font-weight:400;line-height:1.
     <div class="card"><div class="card-k">Readiness Scores</div><div class="card-v">Not Established</div><div class="card-n">Require sufficient multi-reviewer and benchmark data.</div></div>
   </div>
 
+  <div class="section-label">Current Findings</div>
+  <div id="findings"><p class="sub" style="font-size:13px">Loading findings&hellip;</p></div>
+
   <div class="section-label">Study Registry</div>
   <div class="study"><div class="study-top"><div><span class="study-id">Study 001</span> &middot; <span class="study-title">AI Reproducibility</span></div><span class="badge b-planned">Planned</span></div><div class="study-desc">Run multiple AI models against calibration/synthetic records; measure agreement and consistency. Requires a server and model API keys (not yet provisioned).</div></div>
   <div class="study"><div class="study-top"><div><span class="study-id">Study 002</span> &middot; <span class="study-title">Ground-Truth Benchmark</span></div><span class="badge b-planned">Planned</span></div><div class="study-desc">Compare review outputs against expert benchmark mappings to measure accuracy (distinct from agreement). Requires a benchmark dataset and execution engine.</div></div>
@@ -112,5 +115,22 @@ h1{font-family:'Bodoni Moda',serif;font-size:32px;font-weight:400;line-height:1.
     <div class="footer-copy">&#169; 2026 Phillip Wikes &nbsp;&middot;&nbsp; JRS&#8482;</div>
   </div>
 </footer>
+<script>
+(function(){
+  var U='https://pjzxkeviouofdseagvpf.supabase.co';
+  var K='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e';
+  var el=document.getElementById('findings');
+  function esc(t){var d=document.createElement('div');d.textContent=t;return d.innerHTML;}
+  fetch(U+'/rest/v1/findings?select=headline,body,created_at,evidence_class&published=eq.true&order=created_at.desc',{headers:{'apikey':K,'Authorization':'Bearer '+K}})
+   .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+   .then(function(rows){
+     if(!rows||!rows.length){ el.innerHTML='<p class="sub" style="font-size:13px">No findings have been published yet. Findings appear here automatically once studies run.</p>'; return; }
+     el.innerHTML=rows.map(function(fd){
+       return '<div class="study"><div class="study-top"><div><span class="study-id">'+esc(fd.evidence_class||'observational')+'</span></div><span class="badge b-design">'+esc((fd.created_at||'').slice(0,10))+'</span></div><div class="study-title" style="margin-bottom:6px">'+esc(fd.headline||'')+'</div><div class="study-desc">'+esc(fd.body||'')+'</div></div>';
+     }).join('');
+   })
+   .catch(function(){ el.innerHTML='<p class="sub" style="font-size:13px">No findings have been published yet.</p>'; });
+})();
+</script>
 </body>
 </html>
