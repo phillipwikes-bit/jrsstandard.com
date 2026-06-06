@@ -6,12 +6,11 @@
   only access control. <meta name="robots" content="noindex,nofollow"> is set.
   STAGE: JRS is in OPERATIONAL VALIDATION. No effectiveness claim is made. The
   first independent professional evaluation completes August 2026.
-  SECTION 4 STUB: the Live Demonstration is an ILLUSTRATIVE PLACEHOLDER. The
-  review logic lives in runReview() / runReviewVariance() near the bottom of this
-  file, marked with "TODO: REVIEW ENGINE". It returns a sample finding and does
-  NOT analyze submitted text. The real Review Engine API drops into that stub
-  without UI rework.
-  No backend, no database, no external dependencies (Google Fonts only).
+  SECTION 4 (LIVE): the Live Demonstration calls the real JRS Review Engine API
+  at POST /api/review-engine (edge function: api/review-engine.js). It examines
+  the submitted record. The engine is in operational validation and built on a
+  single model: it is unvalidated, and "Run 3x" discloses run-to-run variance.
+  Frontend dependencies: Google Fonts only; the engine call is same-origin.
 -->
 <html lang="en">
 <head>
@@ -240,7 +239,7 @@ footer{border-top:1px solid var(--rule);padding:24px 0 40px}
     <div class="demo">
       <div class="demo-bar">
         <span class="mono">Review Engine Preview</span>
-        <span class="demo-flag" id="demo-flag">Illustrative &mdash; Review Engine in development</span>
+        <span class="demo-flag" id="demo-flag">Live &mdash; unvalidated engine · operational validation</span>
       </div>
       <div class="demo-body">
         <label class="label" for="record" style="display:block">Record under review</label>
@@ -258,7 +257,7 @@ footer{border-top:1px solid var(--rule);padding:24px 0 40px}
         <div id="results" aria-live="polite"></div>
       </div>
     </div>
-    <p class="muted" style="font-size:12px;margin-top:12px">This demonstration is illustrative. The Review Engine is in development; the result shown is a sample and does not examine the submitted text. The five-condition structure and the finding format are final; the engine drops into the same interface.</p>
+    <p class="muted" style="font-size:12px;margin-top:12px">This demonstration calls the live JRS Review Engine API, which examines the submitted record. The engine is in operational validation and is built on a single model: it is not validated, and its output reflects model behavior. Use "Run 3&times;" to see disclosed run-to-run variance. Reproducibility is distinct from accuracy and from validation.</p>
   </div>
 </section>
 
@@ -382,12 +381,11 @@ footer{border-top:1px solid var(--rule);padding:24px 0 40px}
 
 <script>
 /* ============================================================
-   SECTION 4 — REVIEW ENGINE STUB
-   This is an ILLUSTRATIVE placeholder. runReview() and
-   runReviewVariance() return a SAMPLE finding and do NOT analyze
-   the submitted text. The real Review Engine API call drops in at
-   the TODO below; the rendering contract (CONDITIONS + finding
-   object shape) stays identical, so no UI rework is required.
+   SECTION 4 — LIVE REVIEW ENGINE CLIENT
+   Calls POST /api/review-engine (edge function, api/review-engine.js).
+   The engine examines the submitted record. It is in operational
+   validation and built on a single model: unvalidated. "Run 3x"
+   requests runs:3 and the engine discloses run-to-run variance.
    ============================================================ */
 
 var EXAMPLES = {
@@ -397,102 +395,72 @@ var EXAMPLES = {
 };
 
 var CONDITIONS = [
-  { n:1, t:"Basis Identification", s:"Does the record identify the basis for its conclusions?" },
-  { n:2, t:"Reasoning Traceability", s:"Can a later reviewer trace reasoning to conclusion?" },
-  { n:3, t:"Cold-Reviewer Clarity", s:"Would a reviewer with no prior knowledge understand it?" },
-  { n:4, t:"Accountability Support", s:"Are decision-makers and reviewers identifiable?" },
-  { n:5, t:"Temporal Reconstructability", s:"Does it hold up read cold, years later?" }
+  { key:'basis_identification',        t:'Basis Identification' },
+  { key:'reasoning_traceability',      t:'Reasoning Traceability' },
+  { key:'cold_reviewer_clarity',       t:'Cold-Reviewer Clarity' },
+  { key:'accountability_support',      t:'Accountability Support' },
+  { key:'temporal_reconstructability', t:'Temporal Reconstructability' }
 ];
 
-function loadExample(key){
-  var el = document.getElementById('record');
-  el.value = EXAMPLES[key] || '';
-  el.focus();
-}
-
-function esc(t){ var d=document.createElement('div'); d.textContent=t; return d.innerHTML; }
-
-/* Returns an ILLUSTRATIVE sample finding. Deterministic, not derived from input.
-   TODO: REVIEW ENGINE — replace the body of this function with a call to the
-   real Review Engine API, e.g.:
-     return fetch('/api/review', {method:'POST', body: JSON.stringify({text:text})})
-              .then(function(r){ return r.json(); });
-   The returned object MUST keep this shape so the renderer is unchanged. */
-function sampleFinding(/* text */){
-  return {
-    illustrative: true,
-    statuses: { 1:'review', 2:'review', 3:'gap', 4:'pass', 5:'gap' },
-    notes: {
-      1:"The conclusion is stated; the basis is partially identified.",
-      2:"Reasoning is implied rather than traceable step to step.",
-      3:"A cold reviewer could not reconstruct what occurred from the record alone.",
-      4:"A decision-maker is identifiable.",
-      5:"Undated, consolidated language does not hold up read cold."
-    },
-    finding: {
-      "AI Function":"AI-assisted summarization",
-      "Condition Triggered":"Cold-Reviewer Clarity and Temporal Reconstructability",
-      "Determination":"GAP IDENTIFIED",
-      "A compliant version would":"document each event with its own date and source reference, and identify the basis for each characterization."
-    }
-  };
-}
-
+function loadExample(key){ var el=document.getElementById('record'); el.value=EXAMPLES[key]||''; el.focus(); }
+function esc(t){ var d=document.createElement('div'); d.textContent=String(t==null?'':t); return d.innerHTML; }
 function chipClass(s){ return s==='pass'?'pass':(s==='review'?'review':'gap'); }
 function chipText(s){ return s==='pass'?'Pass':(s==='review'?'Review':'Gap'); }
+function detLabel(d){ return d==='ready'?'READY':(d==='review_required'?'REVIEW REQUIRED':'GAP IDENTIFIED'); }
+function detColor(d){ return d==='ready'?'var(--ready-text)':(d==='review_required'?'var(--review-text)':'var(--stop-text)'); }
 
-function renderFinding(res){
-  var html = '<div class="label" style="margin-top:18px">Five-condition review &mdash; illustrative</div>';
+function renderResult(meta, result, variance){
+  var html = '<div class="label" style="margin-top:18px">Five-condition review</div>';
   CONDITIONS.forEach(function(c){
-    var st = res.statuses[c.n];
-    html += '<div class="cond"><div class="cond-n">0'+c.n+'</div>'
-      + '<div><div class="cond-t">'+esc(c.t)+'</div><div class="cond-s">'+esc(res.notes[c.n]||c.s)+'</div></div>'
-      + '<div class="chip '+chipClass(st)+'">'+chipText(st)+'</div></div>';
+    var cc = (result.conditions&&result.conditions[c.key])||{status:'review',note:''};
+    html += '<div class="cond"><div class="cond-n">0'+(CONDITIONS.indexOf(c)+1)+'</div>'
+      + '<div><div class="cond-t">'+esc(c.t)+'</div><div class="cond-s">'+esc(cc.note)+'</div></div>'
+      + '<div class="chip '+chipClass(cc.status)+'">'+chipText(cc.status)+'</div></div>';
   });
-  html += '<div class="finding"><div class="label" style="margin-bottom:8px">Structured finding</div><div class="finding-grid">';
-  Object.keys(res.finding).forEach(function(k){
-    var v = res.finding[k];
-    var cls = (k==='Determination') ? ' style="color:var(--stop-text)"' : '';
-    html += '<div class="k">'+esc(k)+'</div><div'+cls+'>'+esc(v)+'</div>';
-  });
-  html += '</div></div>';
+  var f = result.finding||{};
+  html += '<div class="finding"><div class="label" style="margin-bottom:8px">Structured finding</div><div class="finding-grid">'
+    + '<div class="k">AI Function</div><div>'+esc(f.ai_function||'—')+'</div>'
+    + '<div class="k">Condition Triggered</div><div>'+esc(f.condition_triggered||'—')+'</div>'
+    + '<div class="k">Determination</div><div style="color:'+detColor(result.determination)+'">'+esc(detLabel(result.determination))+'</div>'
+    + '<div class="k">A compliant version would</div><div>'+esc(f.compliant_version||'—')+'</div>'
+    + '</div></div>';
+  if(variance){
+    var vh = '<div class="variance">Variance check ('+variance.runs_detail.length+' runs) &mdash; disclosed, not hidden:<br>';
+    CONDITIONS.forEach(function(c){
+      var pc = variance.per_condition[c.key]||{modal:'review',agreement:0};
+      vh += esc(c.t)+': '+chipText(pc.modal)+' in '+Math.round(pc.agreement*100)+'% of runs<br>';
+    });
+    vh += 'Overall consistency: '+Math.round(variance.overall_consistency*100)+'%. Reproducibility is not accuracy and not validation.</div>';
+    html += vh;
+  }
+  html += '<div class="variance" style="border-top:none;color:var(--muted-soft)">Engine '+esc(meta.engine_version)+' · model '+esc(meta.model)+' · stage: operational validation (unvalidated).</div>';
   return html;
 }
 
-function requireRecord(){
-  var t = (document.getElementById('record').value||'').trim();
-  if(!t){
-    document.getElementById('results').innerHTML = '<p class="muted" style="color:var(--review-text);font-size:13px;margin-top:12px">Load or paste a record first.</p>';
-    return null;
-  }
+function getRecord(){
+  var t=(document.getElementById('record').value||'').trim();
+  if(t.length<40){ document.getElementById('results').innerHTML='<p class="muted" style="color:var(--review-text);font-size:13px;margin-top:12px">Load or paste a record of at least 40 characters first.</p>'; return null; }
   return t;
 }
-
-function runReview(){
-  var t = requireRecord(); if(t===null) return;
-  var res = sampleFinding(t);
-  document.getElementById('results').innerHTML =
-    '<p class="muted" style="font-size:11.5px;margin-top:14px;color:var(--review-text)">Sample output &mdash; illustrative; does not analyze the text above.</p>'
-    + renderFinding(res);
+function setBusy(b){
+  document.getElementById('run-btn').disabled=b;
+  document.getElementById('run3-btn').disabled=b;
+  if(b) document.getElementById('results').innerHTML='<p class="muted" style="font-size:13px;margin-top:14px">Reviewing record&hellip; the engine is calling the model.</p>';
 }
-
-/* Run 3x: in production this surfaces consistency or DISCLOSES variance across
-   runs. Stubbed to a single deterministic result, so it reports consistency now;
-   the same UI shows disclosed variance once the engine is wired. */
-function runReviewVariance(){
-  var t = requireRecord(); if(t===null) return;
-  var runs = [ sampleFinding(t), sampleFinding(t), sampleFinding(t) ];
-  var first = JSON.stringify(runs[0].statuses);
-  var consistent = runs.every(function(r){ return JSON.stringify(r.statuses)===first; });
-  var out = '<p class="muted" style="font-size:11.5px;margin-top:14px;color:var(--review-text)">Sample output &mdash; illustrative; does not analyze the text above.</p>'
-    + renderFinding(runs[0])
-    + '<div class="variance">Variance check (3 runs): '
-    + (consistent
-        ? '3 of 3 runs returned the same determination. The production engine discloses any run-to-run variance in this same panel.'
-        : 'runs diverged; variance disclosed above.')
-    + '</div>';
-  document.getElementById('results').innerHTML = out;
+function callEngine(runs){
+  var t=getRecord(); if(t===null) return;
+  setBusy(true);
+  fetch('/api/review-engine',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:t,runs:runs})})
+   .then(function(r){ return r.json().then(function(j){ return {ok:r.ok,j:j}; }); })
+   .then(function(x){
+     setBusy(false);
+     if(!x.ok || x.j.error){ document.getElementById('results').innerHTML='<p class="muted" style="color:var(--stop-text);font-size:13px;margin-top:12px">Engine error: '+esc((x.j&&(x.j.detail||x.j.error))||'unavailable')+'.</p>'; return; }
+     document.getElementById('results').innerHTML=renderResult(x.j, x.j.result, x.j.variance);
+   })
+   .catch(function(){ setBusy(false); document.getElementById('results').innerHTML='<p class="muted" style="color:var(--stop-text);font-size:13px;margin-top:12px">Network error reaching the Review Engine.</p>'; });
 }
+function runReview(){ callEngine(1); }
+function runReviewVariance(){ callEngine(3); }
 </script>
 </body>
 </html>
