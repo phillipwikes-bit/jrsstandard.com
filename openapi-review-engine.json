@@ -1,0 +1,106 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "JRS Review Engine API",
+    "version": "0.1.0-validation",
+    "description": "Examines one organizational record against the five JRS conditions and returns a record-asset result. Operational validation stage: unvalidated, single-model engine. Reproducibility is disclosed (runs>1), and is distinct from accuracy and from validation. No effectiveness claim is made."
+  },
+  "servers": [{ "url": "https://www.jrsstandard.com" }],
+  "paths": {
+    "/api/v1/review-engine": {
+      "post": {
+        "summary": "Review a record against the five JRS conditions",
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ReviewRequest" },
+              "example": { "text": "On March 4, 11, and 18 the weekly report was submitted after the Friday 5:00 PM deadline (shared-drive timestamps). On March 20 the manager met with the employee; notes are on file.", "runs": 3 }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Review result", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ReviewResponse" } } } },
+          "400": { "description": "invalid_json | record_too_short" },
+          "401": { "description": "unauthorized (when REVIEW_API_TOKEN is set)" },
+          "405": { "description": "method_not_allowed" },
+          "429": { "description": "rate_limited (best-effort, per-instance, per-IP)" },
+          "502": { "description": "review_failed (model or parse error)" },
+          "503": { "description": "engine_not_configured" }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": { "type": "http", "scheme": "bearer", "description": "Required only when REVIEW_API_TOKEN is configured. Supports comma-separated per-partner tokens." }
+    },
+    "schemas": {
+      "ReviewRequest": {
+        "type": "object",
+        "required": ["text"],
+        "properties": {
+          "text": { "type": "string", "minLength": 40, "maxLength": 8000, "description": "The record under review." },
+          "runs": { "type": "integer", "minimum": 1, "maximum": 5, "default": 1, "description": "Number of independent runs. runs>1 returns a disclosed variance block." }
+        }
+      },
+      "ConditionResult": {
+        "type": "object",
+        "properties": {
+          "status": { "type": "string", "enum": ["pass", "review", "gap"] },
+          "note": { "type": "string" }
+        }
+      },
+      "ReviewResponse": {
+        "type": "object",
+        "properties": {
+          "request_id": { "type": "string" },
+          "api_version": { "type": "string" },
+          "engine": { "type": "string" },
+          "engine_version": { "type": "string" },
+          "model": { "type": "string" },
+          "evidence_stage": { "type": "string", "example": "operational_validation" },
+          "disclaimer": { "type": "string" },
+          "reviewed_at": { "type": "string", "format": "date-time" },
+          "runs": { "type": "integer" },
+          "result": {
+            "type": "object",
+            "properties": {
+              "conditions": {
+                "type": "object",
+                "properties": {
+                  "basis_identification": { "$ref": "#/components/schemas/ConditionResult" },
+                  "reasoning_traceability": { "$ref": "#/components/schemas/ConditionResult" },
+                  "cold_reviewer_clarity": { "$ref": "#/components/schemas/ConditionResult" },
+                  "accountability_support": { "$ref": "#/components/schemas/ConditionResult" },
+                  "temporal_reconstructability": { "$ref": "#/components/schemas/ConditionResult" }
+                }
+              },
+              "determination": { "type": "string", "enum": ["ready", "review_required", "gap_identified"] },
+              "remediation_note": { "type": "string" },
+              "finding": {
+                "type": "object",
+                "properties": {
+                  "ai_function": { "type": "string" },
+                  "condition_triggered": { "type": "string" },
+                  "determination": { "type": "string" },
+                  "compliant_version": { "type": "string" }
+                }
+              }
+            }
+          },
+          "variance": {
+            "type": "object",
+            "description": "Present when runs>1. Discloses run-to-run agreement.",
+            "properties": {
+              "per_condition": { "type": "object", "additionalProperties": { "type": "object", "properties": { "modal": { "type": "string" }, "agreement": { "type": "number" } } } },
+              "overall_consistency": { "type": "number" },
+              "runs_detail": { "type": "array", "items": { "type": "object" } }
+            }
+          }
+        }
+      }
+    }
+  }
+}

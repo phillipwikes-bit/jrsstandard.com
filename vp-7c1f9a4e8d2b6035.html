@@ -297,6 +297,43 @@ footer{border-top:1px solid var(--rule);padding:24px 0 40px}
   entry_id, record_id, determination, conditions_summary,
   engine_version, reviewed_at, prev_entry_hash
 }  // append-only; entries are added, never edited</pre>
+
+    <div class="label" style="margin-top:26px">Developer Reference · Review Engine API</div>
+    <p class="muted" style="font-size:13.5px">A partner engineer wires the call below into the finalization step and stores the returned record asset in the existing audit trail. The engine is live today for sandbox and pilot integration. Full machine-readable contract: <a href="openapi-review-engine.json">OpenAPI spec</a>.</p>
+
+    <div class="istep"><span class="istep-n">&#8226;</span><div><h3>Endpoint</h3><p class="muted" style="margin:0;font-size:13px"><code>POST https://www.jrsstandard.com/api/v1/review-engine</code> &mdash; versioned, CORS-enabled. Body: <code>{ "text": "&lt;record&gt;", "runs": 1 }</code> (runs 1&ndash;5; runs&gt;1 returns disclosed variance).</p></div></div>
+    <div class="istep"><span class="istep-n">&#8226;</span><div><h3>Authentication</h3><p class="muted" style="margin:0;font-size:13px">Optional per-partner bearer tokens. When enabled, send <code>Authorization: Bearer &lt;token&gt;</code>. Distinct tokens are issued per partner.</p></div></div>
+    <div class="istep"><span class="istep-n">&#8226;</span><div><h3>Request correlation &amp; limits</h3><p class="muted" style="margin:0;font-size:13px">Every response carries a <code>request_id</code> (also in the <code>X-Request-Id</code> header) for audit correlation. A best-effort per-IP rate limit applies; production volumes are arranged per partner.</p></div></div>
+
+    <div class="label" style="margin-top:14px">Sample request · curl</div>
+    <pre aria-label="Sample curl request">curl -X POST https://www.jrsstandard.com/api/v1/review-engine \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer &lt;token-if-enabled&gt;" \
+  -d '{"text":"&lt;record text, 40+ chars&gt;","runs":3}'</pre>
+
+    <div class="label">Sample client · JavaScript</div>
+    <pre aria-label="Sample JavaScript client">async function jrsReview(text, runs) {
+  const res = await fetch("https://www.jrsstandard.com/api/v1/review-engine", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+      // , "Authorization": "Bearer &lt;token-if-enabled&gt;"
+    },
+    body: JSON.stringify({ text, runs: runs || 1 })
+  });
+  const data = await res.json();          // record-asset result (+ variance if runs&gt;1)
+  // store data.result + data.request_id in your audit trail at finalization
+  return data;
+}</pre>
+
+    <div class="label">Error codes</div>
+    <pre aria-label="Error codes">400 record_too_short | invalid_json    422-style input issues
+401 unauthorized                       (only when tokens are enabled)
+405 method_not_allowed                 (use POST)
+429 rate_limited                       (best-effort per-IP)
+502 review_failed                      (model or parse error)
+503 engine_not_configured              (engine key absent)</pre>
+    <p class="muted" style="font-size:12px">Stage note: the engine is in operational validation and is unvalidated. <code>determination</code> is derived by rule from the five condition statuses; the statuses come from a single model and vary across runs, which the <code>variance</code> block discloses. Reproducibility is distinct from accuracy and from validation.</p>
   </div>
 </section>
 
@@ -450,7 +487,7 @@ function setBusy(b){
 function callEngine(runs){
   var t=getRecord(); if(t===null) return;
   setBusy(true);
-  fetch('/api/review-engine',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:t,runs:runs})})
+  fetch('/api/v1/review-engine',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:t,runs:runs})})
    .then(function(r){ return r.json().then(function(j){ return {ok:r.ok,j:j}; }); })
    .then(function(x){
      setBusy(false);

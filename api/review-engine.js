@@ -1,24 +1,31 @@
 export const config = { runtime: 'edge' };
 
 // ============================================================
-// JRS Review Engine API  (POST /api/review-engine)
+// JRS Review Engine API   (canonical implementation)
+// Routes:  POST /api/review-engine   and   POST /api/v1/review-engine
 // ------------------------------------------------------------
-// Productized record reviewer. Reuses ANTHROPIC_API_KEY (already set).
+// Reuses ANTHROPIC_API_KEY (already set). Examines one record against the five
+// JRS conditions and returns a record-asset result; runs>1 discloses variance.
 //
-// Request  (JSON):  { "text": "<record>", "runs": 1 }   // runs 1..5
-// Response (JSON):  record-asset shaped result + (when runs>1) disclosed variance.
+// Auth (optional): set REVIEW_API_TOKEN to a token, or a comma-separated list of
+//   per-partner tokens. If set, callers must send Authorization: Bearer <token>.
+//   If unset, the endpoint is open (sandbox).
+// Rate limit: best-effort, per-instance, per-IP (see RATE_*). Not a substitute
+//   for a shared store in production; documented as best-effort.
+// Every response carries a request_id (body + X-Request-Id header) for audit
+//   correlation on the partner side.
 //
-// Auth (optional): if REVIEW_API_TOKEN env var is set, callers must send
-//   Authorization: Bearer <REVIEW_API_TOKEN>. If unset, the endpoint is open
-//   (convenient for an evaluator sandbox; set the env var to lock it down).
-//
-// STAGE: operational validation. This is an UNVALIDATED engine built on a single
-// model. Reproducibility is disclosed, not hidden; it is not accuracy and not
-// validation. No effectiveness claim is made.
+// STAGE: operational validation. Unvalidated, single-model engine. Reproducibility
+// is disclosed, not hidden; it is not accuracy and not validation. No effectiveness
+// claim is made.
 // ============================================================
 
 const ENGINE_VERSION = '0.1.0-validation';
+const API_VERSION = 'v1';
 const MODEL = 'claude-haiku-4-5-20251001';
+
+const RATE_LIMIT = 20;        // requests
+const RATE_WINDOW_MS = 60000; // per 60s, per IP, per instance (best-effort)
 
 const CONDITION_KEYS = [
   'basis_identification',
@@ -38,9 +45,7 @@ const SYSTEM_PROMPT = `You are the JRS (Justification Review Standard) Review En
 
 For each condition assign a status of exactly "pass", "review", or "gap", with a one-sentence note grounded in the record text.
 
-Then produce a structured finding: the AI function the record most resembles (summarization | recommendation | analysis | narrative), the condition(s) most triggered, an overall determination, and what a compliant version would require.
-
-Overall determination rule: "gap_identified" if any condition is gap; else "review_required" if any condition is review; else "ready".
+Then produce a structured finding: the AI function the record most resembles (summarization | recommendation | analysis | narrative), the condition(s) most triggered, and what a compliant version would require.
 
 You evaluate, examine, identify, and surface. You do not guarantee, certify, or validate. Respond with STRICT JSON only, no prose, in exactly this shape:
 {
@@ -51,7 +56,6 @@ You evaluate, examine, identify, and surface. You do not guarantee, certify, or 
     "accountability_support": {"status":"pass|review|gap","note":"..."},
     "temporal_reconstructability": {"status":"pass|review|gap","note":"..."}
   },
-  "determination": "ready|review_required|gap_identified",
   "remediation_note": "one or two sentences",
   "finding": {
     "ai_function": "summarization|recommendation|analysis|narrative",
@@ -64,17 +68,31 @@ const CORS = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+  'Access-Control-Expose-Headers': 'X-Request-Id',
 };
 
-function json(o, status = 200) {
-  return new Response(JSON.stringify(o), { status, headers: Object.assign({ 'Content-Type': 'application/json' }, CORS) });
+function newId() {
+  try { return crypto.randomUUID(); } catch (e) { return 'req_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8); }
+}
+
+function json(o, status, rid) {
+  var headers = Object.assign({ 'Content-Type': 'application/json', 'X-Request-Id': rid }, CORS);
+  return new Response(JSON.stringify(Object.assign({ request_id: rid, api_version: API_VERSION }, o)), { status: status || 200, headers: headers });
+}
+
+// Best-effort per-instance rate limiter (edge isolates do not share state).
+const RL = globalThis.__jrs_rl || (globalThis.__jrs_rl = new Map());
+function rateLimited(ip) {
+  var now = Date.now();
+  var arr = (RL.get(ip) || []).filter(function (t) { return now - t < RATE_WINDOW_MS; });
+  if (arr.length >= RATE_LIMIT) { RL.set(ip, arr); return true; }
+  arr.push(now); RL.set(ip, arr); return false;
 }
 
 function normStatus(s) {
   s = String(s || '').toLowerCase();
   return s === 'pass' || s === 'review' || s === 'gap' ? s : 'review';
 }
-
 function deriveDetermination(conditions) {
   var vals = CONDITION_KEYS.map(function (k) { return (conditions[k] || {}).status; });
   if (vals.indexOf('gap') !== -1) return 'gap_identified';
@@ -104,7 +122,7 @@ async function oneRun(text, key) {
     const c = (parsed.conditions && parsed.conditions[k]) || {};
     conditions[k] = { status: normStatus(c.status), note: String(c.note || '').slice(0, 400) };
   });
-  const determination = deriveDetermination(conditions); // derived, not model-trusted
+  const determination = deriveDetermination(conditions);
   const finding = parsed.finding || {};
   return {
     conditions: conditions,
@@ -139,22 +157,29 @@ function computeVariance(runs) {
 }
 
 export default async function handler(req) {
-  if (req.method === 'OPTIONS') return new Response(null, { status: 204, headers: CORS });
-  if (req.method !== 'POST') return json({ error: 'method_not_allowed' }, 405);
+  const rid = newId();
+  if (req.method === 'OPTIONS') return new Response(null, { status: 204, headers: Object.assign({ 'X-Request-Id': rid }, CORS) });
+  if (req.method !== 'POST') return json({ error: 'method_not_allowed', detail: 'Use POST.' }, 405, rid);
 
   const KEY = (typeof process !== 'undefined' && process.env && process.env.ANTHROPIC_API_KEY) || '';
-  const REVIEW_TOKEN = (typeof process !== 'undefined' && process.env && process.env.REVIEW_API_TOKEN) || '';
-  if (!KEY) return json({ error: 'engine_not_configured' }, 503);
+  const TOKEN_ENV = (typeof process !== 'undefined' && process.env && process.env.REVIEW_API_TOKEN) || '';
+  if (!KEY) return json({ error: 'engine_not_configured' }, 503, rid);
 
-  if (REVIEW_TOKEN) {
-    var auth = (req.headers.get('authorization') || '').replace(/^Bearer\s+/i, '').trim();
-    if (auth !== REVIEW_TOKEN) return json({ error: 'unauthorized' }, 401);
+  // Optional multi-key auth.
+  if (TOKEN_ENV) {
+    var allowed = TOKEN_ENV.split(',').map(function (t) { return t.trim(); }).filter(Boolean);
+    var bearer = (req.headers.get('authorization') || '').replace(/^Bearer\s+/i, '').trim();
+    if (allowed.indexOf(bearer) === -1) return json({ error: 'unauthorized', detail: 'Send Authorization: Bearer <token>.' }, 401, rid);
   }
 
+  // Best-effort rate limit.
+  var ip = (req.headers.get('x-forwarded-for') || '').split(',')[0].trim() || 'unknown';
+  if (rateLimited(ip)) return json({ error: 'rate_limited', detail: 'Too many requests; retry shortly. Best-effort per-instance limit.' }, 429, rid);
+
   var body;
-  try { body = await req.json(); } catch (e) { return json({ error: 'invalid_json' }, 400); }
+  try { body = await req.json(); } catch (e) { return json({ error: 'invalid_json' }, 400, rid); }
   var text = (body && body.text ? String(body.text) : '').trim();
-  if (text.length < 40) return json({ error: 'record_too_short', detail: 'Provide at least 40 characters of record text.' }, 400);
+  if (text.length < 40) return json({ error: 'record_too_short', detail: 'Provide at least 40 characters of record text.' }, 400, rid);
   if (text.length > 8000) text = text.slice(0, 8000);
   var runs = Math.min(Math.max(parseInt((body && body.runs) || 1, 10) || 1, 1), 5);
 
@@ -172,8 +197,8 @@ export default async function handler(req) {
     var results = await Promise.all(Array.from({ length: runs }, function () { return oneRun(text, KEY); }));
     var out = Object.assign({}, meta, { result: results[0] });
     if (runs > 1) out.variance = computeVariance(results);
-    return json(out);
+    return json(out, 200, rid);
   } catch (e) {
-    return json({ error: 'review_failed', detail: String(e && e.message || e) }, 502);
+    return json({ error: 'review_failed', detail: String(e && e.message || e) }, 502, rid);
   }
 }
