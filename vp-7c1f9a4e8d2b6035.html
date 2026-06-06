@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<!--
+  JRS — Documentation Safety Control · Vendor Integration Preview
+  ----------------------------------------------------------------
+  ACCESS: Opaque, unlinked URL. NOT linked from any other page. The URL is the
+  only access control. <meta name="robots" content="noindex,nofollow"> is set.
+  STAGE: JRS is in OPERATIONAL VALIDATION. No effectiveness claim is made. The
+  first independent professional evaluation completes August 2026.
+  SECTION 4 STUB: the Live Demonstration is an ILLUSTRATIVE PLACEHOLDER. The
+  review logic lives in runReview() / runReviewVariance() near the bottom of this
+  file, marked with "TODO: REVIEW ENGINE". It returns a sample finding and does
+  NOT analyze submitted text. The real Review Engine API drops into that stub
+  without UI rework.
+  No backend, no database, no external dependencies (Google Fonts only).
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>JRS — Documentation Safety Control · Integration Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050505;--surface:#121212;--surface2:#1A1A1A;--rule:#2A2A2A;
+  --text:#F2F2F2;--muted:#B3B3B3;--muted-soft:#8A8A8A;
+  --accent:#BE9447;--accent-dim:#7A5E28;
+  --stop-text:#E88080;--review-text:#D4A055;--ready-text:#5DBF82;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.skip-link{position:absolute;left:-9999px;top:6px;z-index:99;background:var(--accent);color:#050505;padding:8px 16px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none}
+.skip-link:focus{left:6px}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+.mono{font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.18em}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:38px;line-height:1.12;letter-spacing:-.01em;margin-bottom:18px}
+h2{font-family:'Bodoni Moda',serif;font-weight:400;font-size:26px;line-height:1.2;margin-bottom:14px}
+h3{font-family:'Inter',sans-serif;font-weight:600;font-size:15px;margin-bottom:6px}
+p{color:var(--text);font-size:15px;line-height:1.75;margin-bottom:14px}
+.muted{color:var(--muted)}
+.section{padding:54px 0;border-top:1px solid var(--rule)}
+.section:first-of-type{border-top:none}
+.label{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:12px}
+.core{font-family:'Bodoni Moda',serif;font-size:24px;line-height:1.32;color:var(--text);max-width:680px;margin-bottom:22px}
+.core b{color:var(--accent);font-weight:500}
+.rule{border:none;border-top:1px solid var(--rule);margin:26px 0}
+/* diagram: armor / gap / control */
+.diagram{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:stretch;border:1px solid var(--rule);margin:8px 0 6px}
+.dbox{padding:20px 18px}
+.dbox.mid{border-left:1px dashed var(--accent-dim);border-right:1px dashed var(--accent-dim);background:rgba(190,148,71,.05);display:flex;flex-direction:column;justify-content:center;min-width:110px;text-align:center}
+.dbox-k{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:8px}
+.dbox-t{font-size:14px;font-weight:600;color:var(--text);line-height:1.4}
+.dbox-s{font-size:12px;color:var(--muted);line-height:1.55;margin-top:6px}
+.dgap-k{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.jrs-band{border:1px solid var(--accent);background:rgba(190,148,71,.08);padding:13px 16px;margin-top:0;text-align:center}
+.jrs-band .mono{font-size:9px;color:var(--accent);letter-spacing:.18em}
+/* handoff sequence */
+.flow{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--rule);overflow:hidden;margin:10px 0}
+.flow-step{flex:1;min-width:140px;padding:14px 14px;border-right:1px solid var(--rule)}
+.flow-step:last-child{border-right:none}
+.flow-step.drop{background:rgba(139,32,32,.10)}
+.flow-k{font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px}
+.flow-t{font-size:12.5px;font-weight:600;color:var(--text);line-height:1.4}
+.flow-note{font-size:11px;color:var(--muted-soft);line-height:1.5;margin-top:5px}
+.flow-note.alarm{color:var(--stop-text)}
+/* is / is not */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.panel{border:1px solid var(--rule);background:var(--surface);padding:18px 18px}
+.panel-k{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.panel.neg .panel-k{color:var(--stop-text)}
+.li{display:flex;gap:9px;align-items:flex-start;margin-bottom:8px;font-size:13.5px;color:var(--muted);line-height:1.5}
+.li .d{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent-dim);flex-shrink:0;margin-top:3px}
+.panel.neg .li .d{color:var(--stop-text)}
+.note{font-size:12.5px;color:var(--muted-soft);line-height:1.65;border-left:2px solid var(--accent);padding:13px 16px;background:var(--surface);margin:18px 0}
+.note b{color:var(--text)}
+/* demo */
+.demo{border:1px solid var(--accent-dim);background:rgba(190,148,71,.04);padding:0;overflow:hidden}
+.demo-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:11px 16px;border-bottom:1px solid var(--rule);background:rgba(190,148,71,.06)}
+.demo-bar .mono{font-size:8.5px;color:var(--accent);letter-spacing:.16em}
+.demo-flag{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--review-text);border:1px solid var(--review-text);padding:4px 9px}
+.demo-body{padding:18px 16px}
+.ex-row{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 10px}
+.ex-btn{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;background:var(--surface2);color:var(--muted);border:1px solid var(--rule);padding:8px 12px;cursor:pointer}
+.ex-btn:hover,.ex-btn:focus-visible{color:var(--accent);border-color:var(--accent-dim);outline:2px solid transparent}
+textarea#record{width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:13px;line-height:1.6;padding:12px 14px;resize:vertical}
+.run-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:10px}
+.btn{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;padding:11px 18px;cursor:pointer;border:1px solid var(--accent-dim);background:none;color:var(--accent)}
+.btn.primary{background:var(--accent);color:#050505;font-weight:600;border-color:var(--accent)}
+.btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.cond{display:grid;grid-template-columns:auto 1fr auto;gap:10px 12px;align-items:start;border:1px solid var(--rule);background:var(--surface);padding:12px 14px;margin-bottom:6px}
+.cond-n{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--accent-dim);padding-top:2px}
+.cond-t{font-size:13px;color:var(--text);font-weight:600}
+.cond-s{font-size:12px;color:var(--muted);line-height:1.5;margin-top:3px}
+.chip{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.12em;text-transform:uppercase;padding:4px 8px;border:1px solid var(--rule);white-space:nowrap;height:fit-content}
+.chip.pass{color:var(--ready-text);border-color:var(--ready-text)}
+.chip.review{color:var(--review-text);border-color:var(--review-text)}
+.chip.gap{color:var(--stop-text);border-color:var(--stop-text)}
+.finding{border:1px solid var(--rule);background:var(--surface2);padding:14px 16px;margin-top:10px}
+.finding-grid{display:grid;grid-template-columns:170px 1fr;gap:7px 14px;font-size:12.5px;line-height:1.55}
+.finding-grid .k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-soft)}
+.variance{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;color:var(--muted);margin-top:10px;border-top:1px dashed var(--rule);padding-top:10px}
+/* code / schema */
+pre{background:var(--surface2);border:1px solid var(--rule);padding:14px 16px;overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:11.5px;line-height:1.7;color:var(--muted);margin:8px 0}
+pre .ck{color:var(--accent)}
+/* integration steps */
+.istep{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--rule);background:var(--surface);padding:14px 16px;margin-bottom:8px}
+.istep-n{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent);flex-shrink:0;padding-top:2px}
+/* platform cards */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.card{border:1px solid var(--rule);background:var(--surface);padding:16px 18px}
+.card-k{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:8px}
+.card-gap{font-size:12.5px;color:var(--stop-text);line-height:1.55;margin-bottom:8px}
+.card-add{font-size:12.5px;color:var(--muted);line-height:1.55}
+.card-add b{color:var(--text)}
+/* forthcoming */
+.forth{border:1px dashed var(--accent-dim);background:rgba(190,148,71,.04);padding:16px 18px;margin-top:10px}
+.forth-k{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--review-text);margin-bottom:8px}
+/* contact */
+.contact a{font-family:'Bodoni Moda',serif;font-size:22px;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-dim)}
+footer{border-top:1px solid var(--rule);padding:24px 0 40px}
+.foot{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);line-height:1.9}
+@media(max-width:600px){
+  h1{font-size:28px}h2{font-size:22px}.core{font-size:20px}
+  .diagram{grid-template-columns:1fr}
+  .dbox.mid{border:none;border-top:1px dashed var(--accent-dim);border-bottom:1px dashed var(--accent-dim)}
+  .two,.cards{grid-template-columns:1fr}
+  .cond{grid-template-columns:auto 1fr}
+  .cond .chip{grid-column:2;justify-self:start}
+  .finding-grid{grid-template-columns:1fr}
+  .finding-grid .k{margin-top:6px}
+}
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="wrap" style="padding-top:28px;padding-bottom:18px;border-bottom:1px solid var(--rule)">
+  <div class="mono" style="font-size:9px;color:var(--muted-soft)">JRS&#8482; · Justification Review Standard</div>
+  <div class="mono" style="font-size:8px;color:var(--accent-dim);margin-top:6px">Documentation Safety Control · Vendor Integration Preview · Confidential</div>
+</header>
+
+<main id="main">
+
+<!-- SECTION 1 — THE GAP (HERO) -->
+<section class="section" aria-labelledby="s1" style="border-top:none">
+  <div class="wrap">
+    <div class="eyebrow">Documentation Safety Control</div>
+    <h1 id="s1">The armor stops at the prompt window.<br>The liability begins with the permanent record.</h1>
+    <p class="core">Every AI governance tool covers the model. None covers the human-finalized record drafted from it. JRS is the documentation safety control that sits in that gap.</p>
+
+    <div class="diagram" role="img" aria-label="Model-layer armor on the left, an unguarded gap in the middle where JRS sits, and the human-approved permanent record on the right.">
+      <div class="dbox">
+        <div class="dbox-k">Model Layer · Partner Coverage</div>
+        <div class="dbox-t">Technology safety controls</div>
+        <div class="dbox-s">Prompt, output, and model behavior are monitored and governed.</div>
+      </div>
+      <div class="dbox mid">
+        <div class="dgap-k">The Gap</div>
+        <div class="dbox-s" style="color:var(--muted)">Draft&nbsp;&rarr;&nbsp;Documentation</div>
+      </div>
+      <div class="dbox">
+        <div class="dbox-k">Record Layer · Human-Finalized</div>
+        <div class="dbox-t">The permanent record</div>
+        <div class="dbox-s">Edited, signed off, and filed. This is where liability is held.</div>
+      </div>
+    </div>
+    <div class="jrs-band"><span class="mono">JRS Documentation Safety Control &mdash; positioned in the gap</span></div>
+  </div>
+</section>
+
+<!-- SECTION 2 — THE DRAFT-TO-DOCUMENTATION GAP -->
+<section class="section" aria-labelledby="s2">
+  <div class="wrap">
+    <div class="label">02 · The Blind Spot</div>
+    <h2 id="s2">The Draft-to-Documentation Gap</h2>
+    <p class="muted">Model-layer governance examines what the model produces. The moment that output is handed to a person, edited, and finalized, model-layer visibility drops to zero. The record that carries the organization's exposure is created entirely inside that blind spot. The control coverage and the liability sit in different places.</p>
+
+    <div class="flow" role="img" aria-label="Handoff sequence: AI output, then human edit, then sign-off, then permanent record. Model-layer governance visibility drops to zero at the human edit step and does not return.">
+      <div class="flow-step">
+        <div class="flow-k">Step 1</div>
+        <div class="flow-t">AI output</div>
+        <div class="flow-note">Model-layer governance is present here.</div>
+      </div>
+      <div class="flow-step drop">
+        <div class="flow-k">Step 2</div>
+        <div class="flow-t">Human edit</div>
+        <div class="flow-note alarm">Governance visibility drops to zero.</div>
+      </div>
+      <div class="flow-step drop">
+        <div class="flow-k">Step 3</div>
+        <div class="flow-t">Sign-off</div>
+        <div class="flow-note alarm">No documentation control present.</div>
+      </div>
+      <div class="flow-step drop">
+        <div class="flow-k">Step 4</div>
+        <div class="flow-t">Permanent record</div>
+        <div class="flow-note alarm">Liability is now held here.</div>
+      </div>
+    </div>
+    <p class="muted" style="font-size:13.5px">JRS examines the record at Step 3, before finalization: a documentation safety control in the place where model-layer coverage ends.</p>
+  </div>
+</section>
+
+<!-- SECTION 3 — WHAT JRS IS AND IS NOT -->
+<section class="section" aria-labelledby="s3">
+  <div class="wrap">
+    <div class="label">03 · Definition</div>
+    <h2 id="s3">What JRS Is, and Is Not</h2>
+    <div class="two">
+      <div class="panel">
+        <div class="panel-k">JRS Is</div>
+        <div class="li"><span class="d">&mdash;</span>A documentation safety control</div>
+        <div class="li"><span class="d">&mdash;</span>A pre-finalization review structure</div>
+        <div class="li"><span class="d">&mdash;</span>An operational validation program</div>
+        <div class="li"><span class="d">&mdash;</span>A governance-compatible layer that examines the finalized record</div>
+      </div>
+      <div class="panel neg">
+        <div class="panel-k">JRS Is Not</div>
+        <div class="li"><span class="d">&times;</span>Armor for the model</div>
+        <div class="li"><span class="d">&times;</span>A band-aid over a model problem</div>
+        <div class="li"><span class="d">&times;</span>A model-monitoring competitor</div>
+        <div class="li"><span class="d">&times;</span>A finished or validated product</div>
+      </div>
+    </div>
+    <p class="muted" style="margin-top:16px"><b style="color:var(--text)">Coexistence, not competition.</b> Partners handle technology safety controls. JRS handles documentation safety controls. The two layers examine different surfaces and do not overlap.</p>
+    <div class="note"><b>Honesty note.</b> JRS is in operational validation and makes no effectiveness claim. The first independent professional evaluation completes <b>August 2026</b>. No finding is published yet. This note is a permanent, visible part of the page.</div>
+  </div>
+</section>
+
+<!-- SECTION 4 — LIVE DEMONSTRATION (STUB) -->
+<section class="section" aria-labelledby="s4">
+  <div class="wrap">
+    <div class="label">04 · Live Demonstration</div>
+    <h2 id="s4">How JRS Examines a Record</h2>
+    <p class="muted">JRS reviews a record against five conditions and documents a structured finding. The interface below shows that flow.</p>
+
+    <div class="demo">
+      <div class="demo-bar">
+        <span class="mono">Review Engine Preview</span>
+        <span class="demo-flag" id="demo-flag">Illustrative &mdash; Review Engine in development</span>
+      </div>
+      <div class="demo-body">
+        <label class="label" for="record" style="display:block">Record under review</label>
+        <div class="ex-row" role="group" aria-label="Load an example record">
+          <button type="button" class="ex-btn" onclick="loadExample('a')">Example: weak record</button>
+          <button type="button" class="ex-btn" onclick="loadExample('b')">Example: moderate</button>
+          <button type="button" class="ex-btn" onclick="loadExample('c')">Example: stronger record</button>
+        </div>
+        <textarea id="record" rows="5" placeholder="Paste or load a record to examine"></textarea>
+        <div class="run-row">
+          <button type="button" class="btn primary" id="run-btn" onclick="runReview()">Run JRS Review</button>
+          <button type="button" class="btn" id="run3-btn" onclick="runReviewVariance()">Run 3&times; (variance)</button>
+        </div>
+
+        <div id="results" aria-live="polite"></div>
+      </div>
+    </div>
+    <p class="muted" style="font-size:12px;margin-top:12px">This demonstration is illustrative. The Review Engine is in development; the result shown is a sample and does not examine the submitted text. The five-condition structure and the finding format are final; the engine drops into the same interface.</p>
+  </div>
+</section>
+
+<!-- SECTION 5 — THE INTEGRATION LAYER -->
+<section class="section" aria-labelledby="s5">
+  <div class="wrap">
+    <div class="label">05 · Integration</div>
+    <h2 id="s5">How JRS Snaps Into a Partner Stack</h2>
+    <p class="muted">JRS adds a documentation review step at the point of finalization and feeds a structured record asset into a partner's existing audit trail. It makes a stack more complete; it replaces nothing.</p>
+
+    <div class="istep"><span class="istep-n">01</span><div><h3>Pre-finalization hook</h3><p class="muted" style="margin:0;font-size:13px">At sign-off, the draft record is passed to JRS, which evaluates it against the five conditions and returns a structured finding before the record is committed.</p></div></div>
+    <div class="istep"><span class="istep-n">02</span><div><h3>Record-asset schema</h3><p class="muted" style="margin:0;font-size:13px">JRS returns a compact, inspectable record asset the partner stores alongside its own artifacts.</p></div></div>
+    <div class="istep"><span class="istep-n">03</span><div><h3>Evidence feed into the partner audit trail</h3><p class="muted" style="margin:0;font-size:13px">Each review documents an append-only entry that the partner surfaces inside its existing audit log. JRS adds a record-layer signal the partner does not currently capture.</p></div></div>
+
+    <div class="label" style="margin-top:22px">Record-asset schema · design artifact</div>
+    <pre aria-label="Record asset schema, design draft"><span class="ck">record_asset</span> {
+  record_id            : uuid
+  source_ai_function   : summarization | recommendation | analysis | narrative
+  finalized_by         : actor_ref
+  finalized_at         : timestamp
+  conditions {
+    basis_identification        : pass | review | gap
+    reasoning_traceability      : pass | review | gap
+    cold_reviewer_clarity       : pass | review | gap
+    accountability_support      : pass | review | gap
+    temporal_reconstructability : pass | review | gap
+  }
+  determination        : ready | review_required | gap_identified
+  remediation_note     : text
+  reviewer_ref         : actor_ref
+  review_timestamp     : timestamp
+  engine_version       : semver
+}</pre>
+
+    <div class="label" style="margin-top:18px">Audit-log entry · append-only design</div>
+    <pre aria-label="Audit log entry, append-only design draft"><span class="ck">audit_entry</span> {
+  entry_id, record_id, determination, conditions_summary,
+  engine_version, reviewed_at, prev_entry_hash
+}  // append-only; entries are added, never edited</pre>
+  </div>
+</section>
+
+<!-- SECTION 6 — EVIDENCE -->
+<section class="section" aria-labelledby="s6">
+  <div class="wrap">
+    <div class="label">06 · Evidence</div>
+    <h2 id="s6">What Exists Today, Stated Plainly</h2>
+    <p class="muted">Transparent design is the substance of this section. What exists today is inspectable: the record-asset schema and the append-only audit-log design (Section 5), the five-condition review structure (Section 4), and the calibration approach below. No finding is published yet. This is a validation-phase program.</p>
+
+    <div class="istep"><span class="istep-n">&#8226;</span><div><h3>Calibration approach</h3><p class="muted" style="margin:0;font-size:13px">The engine is calibrated against constructed records that span the four AI functions and the five conditions. Calibration examines whether the review applies the conditions consistently. It documents reproducibility, which is distinct from accuracy and from validation.</p></div></div>
+
+    <div class="forth">
+      <div class="forth-k">Forthcoming &mdash; completes August 2026</div>
+      <p class="muted" style="margin:0;font-size:13px">First independent professional evaluation. This slot is reserved for that result and is intentionally empty until it exists. No participant counts, outcomes, or metrics are shown here because none are available yet.</p>
+    </div>
+    <div class="note" style="margin-top:14px"><b>Verb discipline.</b> JRS evaluates, examines, documents, reviews, identifies, surfaces, and assesses records. It does not guarantee or certify outcomes, and the program claims no validated result at this stage.</div>
+  </div>
+</section>
+
+<!-- SECTION 7 — INTEGRATION FIT BY PLATFORM -->
+<section class="section" aria-labelledby="s7">
+  <div class="wrap">
+    <div class="label">07 · Fit by Platform Category</div>
+    <h2 id="s7">Where the Gap Sits in Each Stack</h2>
+    <p class="muted">Each category below leads with what its coverage does not reach, then what JRS adds at the record layer.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-k">AI-Governance Record Systems</div>
+        <div class="card-gap">Coverage reaches the model and its outputs; it does not reach the human-edited record after sign-off.</div>
+        <div class="card-add"><b>JRS adds</b> a pre-finalization review and a record asset that carries audit-record DNA into the existing trail.</div>
+      </div>
+      <div class="card">
+        <div class="card-k">HR-Tech Documentation Platforms</div>
+        <div class="card-gap">Workflow and storage are covered; whether a finalized record identifies the basis for its conclusions is not examined.</div>
+        <div class="card-add"><b>JRS adds</b> a documentation review at sign-off that surfaces reviewability gaps before the record is filed.</div>
+      </div>
+      <div class="card">
+        <div class="card-k">GRC Ecosystems</div>
+        <div class="card-gap">Controls and policies are tracked; the reviewability of the underlying records is assumed, not assessed.</div>
+        <div class="card-add"><b>JRS adds</b> a record-level signal that feeds the control evidence base GRC already aggregates.</div>
+      </div>
+      <div class="card">
+        <div class="card-k">Legal-Tech / E-Discovery</div>
+        <div class="card-gap">Records are searched and produced as they exist; whether a record holds up read cold is out of scope.</div>
+        <div class="card-add"><b>JRS adds</b> a pre-finalization examination of temporal reconstructability, upstream of discovery.</div>
+      </div>
+      <div class="card">
+        <div class="card-k">Model-Testing / Compliance Platforms</div>
+        <div class="card-gap">Model behavior is tested; the human-finalized document the model contributed to is not reviewed.</div>
+        <div class="card-add"><b>JRS adds</b> the documentation-layer counterpart to model-layer testing.</div>
+      </div>
+      <div class="card">
+        <div class="card-k">The Common Thread</div>
+        <div class="card-gap">In every category, coverage ends at the model or the workflow.</div>
+        <div class="card-add"><b>JRS occupies</b> the record layer beneath all of them: coexistence, not replacement.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 8 — CONTACT -->
+<section class="section contact" aria-labelledby="s8">
+  <div class="wrap">
+    <div class="label">08 · Contact</div>
+    <h2 id="s8">A Conversation About Integration Fit</h2>
+    <p class="muted">If JRS as a documentation safety control fits alongside what your platform already covers, a direct conversation is the next step.</p>
+    <p><a href="mailto:info@jrsstandard.com?subject=JRS%20Integration%20Fit">info@jrsstandard.com</a></p>
+    <p class="muted" style="font-size:13px">Direct contact only. No form, no list, no follow-up sequence.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>JRS&#8482; · Justification Review Standard · Documentation Safety Control</div>
+    <div>Operational validation phase · First independent evaluation completes August 2026 · No finding published yet</div>
+    <div>Confidential vendor preview · not indexed · &#169; 2026 Phillip Wikes</div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   SECTION 4 — REVIEW ENGINE STUB
+   This is an ILLUSTRATIVE placeholder. runReview() and
+   runReviewVariance() return a SAMPLE finding and do NOT analyze
+   the submitted text. The real Review Engine API call drops in at
+   the TODO below; the rendering contract (CONDITIONS + finding
+   object shape) stays identical, so no UI rework is required.
+   ============================================================ */
+
+var EXAMPLES = {
+  a: "Michael has shown an increasingly unprofessional attitude over recent weeks, which has affected team morale. Despite prior coaching, improvement has not been observed.",
+  b: "Over the past quarter the employee submitted several reports after the deadline. A meeting was held in March to discuss timeliness. Some improvement was observed, though issues reportedly continued.",
+  c: "On March 4, 11, and 18 the weekly report was submitted after the Friday 5:00 PM deadline (shared-drive timestamps). On March 20 the manager met with the employee; notes are on file. Training was scheduled for March 27; from March 27 to April 30 all reports were on time (shared-drive log)."
+};
+
+var CONDITIONS = [
+  { n:1, t:"Basis Identification", s:"Does the record identify the basis for its conclusions?" },
+  { n:2, t:"Reasoning Traceability", s:"Can a later reviewer trace reasoning to conclusion?" },
+  { n:3, t:"Cold-Reviewer Clarity", s:"Would a reviewer with no prior knowledge understand it?" },
+  { n:4, t:"Accountability Support", s:"Are decision-makers and reviewers identifiable?" },
+  { n:5, t:"Temporal Reconstructability", s:"Does it hold up read cold, years later?" }
+];
+
+function loadExample(key){
+  var el = document.getElementById('record');
+  el.value = EXAMPLES[key] || '';
+  el.focus();
+}
+
+function esc(t){ var d=document.createElement('div'); d.textContent=t; return d.innerHTML; }
+
+/* Returns an ILLUSTRATIVE sample finding. Deterministic, not derived from input.
+   TODO: REVIEW ENGINE — replace the body of this function with a call to the
+   real Review Engine API, e.g.:
+     return fetch('/api/review', {method:'POST', body: JSON.stringify({text:text})})
+              .then(function(r){ return r.json(); });
+   The returned object MUST keep this shape so the renderer is unchanged. */
+function sampleFinding(/* text */){
+  return {
+    illustrative: true,
+    statuses: { 1:'review', 2:'review', 3:'gap', 4:'pass', 5:'gap' },
+    notes: {
+      1:"The conclusion is stated; the basis is partially identified.",
+      2:"Reasoning is implied rather than traceable step to step.",
+      3:"A cold reviewer could not reconstruct what occurred from the record alone.",
+      4:"A decision-maker is identifiable.",
+      5:"Undated, consolidated language does not hold up read cold."
+    },
+    finding: {
+      "AI Function":"AI-assisted summarization",
+      "Condition Triggered":"Cold-Reviewer Clarity and Temporal Reconstructability",
+      "Determination":"GAP IDENTIFIED",
+      "A compliant version would":"document each event with its own date and source reference, and identify the basis for each characterization."
+    }
+  };
+}
+
+function chipClass(s){ return s==='pass'?'pass':(s==='review'?'review':'gap'); }
+function chipText(s){ return s==='pass'?'Pass':(s==='review'?'Review':'Gap'); }
+
+function renderFinding(res){
+  var html = '<div class="label" style="margin-top:18px">Five-condition review &mdash; illustrative</div>';
+  CONDITIONS.forEach(function(c){
+    var st = res.statuses[c.n];
+    html += '<div class="cond"><div class="cond-n">0'+c.n+'</div>'
+      + '<div><div class="cond-t">'+esc(c.t)+'</div><div class="cond-s">'+esc(res.notes[c.n]||c.s)+'</div></div>'
+      + '<div class="chip '+chipClass(st)+'">'+chipText(st)+'</div></div>';
+  });
+  html += '<div class="finding"><div class="label" style="margin-bottom:8px">Structured finding</div><div class="finding-grid">';
+  Object.keys(res.finding).forEach(function(k){
+    var v = res.finding[k];
+    var cls = (k==='Determination') ? ' style="color:var(--stop-text)"' : '';
+    html += '<div class="k">'+esc(k)+'</div><div'+cls+'>'+esc(v)+'</div>';
+  });
+  html += '</div></div>';
+  return html;
+}
+
+function requireRecord(){
+  var t = (document.getElementById('record').value||'').trim();
+  if(!t){
+    document.getElementById('results').innerHTML = '<p class="muted" style="color:var(--review-text);font-size:13px;margin-top:12px">Load or paste a record first.</p>';
+    return null;
+  }
+  return t;
+}
+
+function runReview(){
+  var t = requireRecord(); if(t===null) return;
+  var res = sampleFinding(t);
+  document.getElementById('results').innerHTML =
+    '<p class="muted" style="font-size:11.5px;margin-top:14px;color:var(--review-text)">Sample output &mdash; illustrative; does not analyze the text above.</p>'
+    + renderFinding(res);
+}
+
+/* Run 3x: in production this surfaces consistency or DISCLOSES variance across
+   runs. Stubbed to a single deterministic result, so it reports consistency now;
+   the same UI shows disclosed variance once the engine is wired. */
+function runReviewVariance(){
+  var t = requireRecord(); if(t===null) return;
+  var runs = [ sampleFinding(t), sampleFinding(t), sampleFinding(t) ];
+  var first = JSON.stringify(runs[0].statuses);
+  var consistent = runs.every(function(r){ return JSON.stringify(r.statuses)===first; });
+  var out = '<p class="muted" style="font-size:11.5px;margin-top:14px;color:var(--review-text)">Sample output &mdash; illustrative; does not analyze the text above.</p>'
+    + renderFinding(runs[0])
+    + '<div class="variance">Variance check (3 runs): '
+    + (consistent
+        ? '3 of 3 runs returned the same determination. The production engine discloses any run-to-run variance in this same panel.'
+        : 'runs diverged; variance disclosed above.')
+    + '</div>';
+  document.getElementById('results').innerHTML = out;
+}
+</script>
+</body>
+</html>
