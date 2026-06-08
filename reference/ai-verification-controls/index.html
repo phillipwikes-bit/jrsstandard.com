@@ -4,16 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Verification Controls | JRS Documentation Review Reference</title>
-<meta name="description" content="JRS AI Verification Controls are the checks a human applies to AI-assisted content before a record is finalized, targeting the known AI failure modes.">
+<meta name="description" content="The JRS AI-assisted review control layer: compare generated wording against original notes, identify characterizations not in those notes, and complete attestation. Required for CRITICAL-tier records.">
 <link rel="canonical" href="https://jrsstandard.com/reference/ai-verification-controls" />
 <meta property="og:title" content="AI Verification Controls: JRS Reference" />
-<meta property="og:description" content="JRS AI Verification Controls are the checks a human applies to AI-assisted content before a record is finalized, targeting the known AI failure modes." />
+<meta property="og:description" content="The JRS AI-assisted review control layer: compare generated wording against original notes, identify characterizations not in those notes, and complete attestation. Required for CRITICAL-tier records." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://jrsstandard.com/reference/ai-verification-controls" />
 <meta property="og:site_name" content="JRS Documentation Review Reference" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="AI Verification Controls: JRS Reference" />
-<meta name="twitter:description" content="JRS AI Verification Controls are the checks a human applies to AI-assisted content before a record is finalized, targeting the known AI failure modes." />
+<meta name="twitter:description" content="The JRS AI-assisted review control layer: compare generated wording against original notes, identify characterizations not in those notes, and complete attestation. Required for CRITICAL-tier records." />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -75,19 +75,19 @@ ul.q li::before{content:'?';position:absolute;left:0;color:var(--accent);font-fa
   <h1>AI Verification Controls</h1>
 
   <h2>Short Explanation</h2>
-  <p class="lead">AI Verification Controls are the checks a person applies to AI-assisted content before a record is finalized. They target the known failure modes directly: confirm that each attribution corresponds to a real source that supports the claim, that qualified facts have not been strengthened into declarations, that conflicts and gaps in the source material remain visible rather than smoothed away, and that specifics such as dates and names survived drafting. The controls operate at the last point where the failure modes can be caught: the human edit and approval step, where a person takes ownership of text a model produced. JRS does not treat AI assistance as disqualifying; it treats AI-assisted records as records that require a verification step proportionate to the way generative text degrades. The controls are deliberately concrete so they can be applied without specialist tooling.</p>
+  <p class="lead">AI Verification Controls are the AI-assisted review control layer, applied before AI-assisted content enters finalized records. The human reviewer compares generated wording against the original notes, identifies characterizations that are not present in those notes, and completes attestation. The reference makes this a defined maturity level, AI Verification, in which AI-assisted content is reviewed against original notes and attested before entry, and it is required for CRITICAL-tier records such as AI-assisted investigation summaries. The control targets the named failure modes directly: amplified sentiment, smoothed conflicts, compressed omissions, and inflated confidence. It operates at the human edit and approval step, the last point at which generated wording can be checked against the source before it becomes part of the permanent record. Attestation that this comparison occurred is documented and on file before submission.</p>
 
   <h2>Why It Matters</h2>
-  <p>AI-assisted content enters permanent records at the moment a human approves it. That approval is both the point of greatest risk, because generated text looks finished, and the point of greatest leverage, because a defined verification step can catch the predictable failure modes before they are committed.</p>
+  <p>AI-assisted content enters the file at the moment a human approves it. That approval is both the highest-risk point, because generated text looks finished, and the highest-leverage point, because a defined comparison against the notes catches the predictable failure modes before they are committed.</p>
 
   <h2>Reviewer Questions</h2>
-  <ul class="q"><li>Has each AI-introduced attribution been verified against a real, supporting source?</li><li>Were any qualified facts strengthened into declarations during drafting?</li><li>Do conflicts and gaps in the source material remain visible in the record?</li><li>Did specifics (dates, names, evidence) survive the drafting process?</li></ul>
+  <ul class="q"><li>Was the generated wording compared against the original notes before entry?</li><li>Were characterizations not present in the notes identified and resolved?</li><li>Is attestation that the comparison occurred documented and on file?</li><li>For CRITICAL-tier AI-assisted records, was the control layer applied without exception?</li></ul>
 
   <h2>Common Failure Pattern</h2>
-  <div class="fail">A reviewer approves AI-assisted text without verification. The overstatement or false attribution enters the permanent record and is discovered only when the underlying material is examined.</div>
+  <div class="fail">An AI-assisted investigation summary is finalized without attestation. Introduced characterizations enter the record and are found only when the notes are compared.</div>
 
   <h2>Related JRS Sections</h2>
-  <div class="related"><a class="rel-card" href="/reference/ai-assisted-record-failure-modes"><div class="rel-k">JRS Concept</div><div class="rel-t">AI-Assisted Record Failure Modes</div></a><a class="rel-card" href="/reference/source-integrity"><div class="rel-k">JRS Concept</div><div class="rel-t">Source Integrity</div></a><a class="rel-card" href="/reference/unsupported-generalization"><div class="rel-k">JRS Concept</div><div class="rel-t">Unsupported Generalization</div></a><a class="rel-card" href="/reference/source-traceability"><div class="rel-k">JRS Concept</div><div class="rel-t">Source Traceability</div></a></div>
+  <div class="related"><a class="rel-card" href="/reference/ai-assisted-record-failure-modes"><div class="rel-k">JRS Concept</div><div class="rel-t">AI-Assisted Record Failure Modes</div></a><a class="rel-card" href="/reference/source-integrity"><div class="rel-k">JRS Concept</div><div class="rel-t">Source Integrity (Review Against Original Notes)</div></a><a class="rel-card" href="/reference/unsupported-generalization"><div class="rel-k">JRS Concept</div><div class="rel-t">Unsupported Generalization</div></a><a class="rel-card" href="/reference/implementation-maturity-levels"><div class="rel-k">JRS Concept</div><div class="rel-t">JRS Implementation Maturity Levels</div></a></div>
 
   <div class="next">
     <div class="next-k">Continue deeper into the JRS framework</div>

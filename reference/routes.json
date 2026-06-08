@@ -16,5 +16,8 @@
   "reviewer_responsibility_boundaries": "/reference/reviewer-responsibility-boundaries",
   "minimum_viable_review_standard": "/reference/minimum-viable-review-standard",
   "deployment_models": "/reference/deployment-models",
-  "ai_verification_controls": "/reference/ai-verification-controls"
+  "ai_verification_controls": "/reference/ai-verification-controls",
+  "field_conditions": "/reference/field-conditions",
+  "second_line_review_model": "/reference/second-line-review-model",
+  "implementation_maturity_levels": "/reference/implementation-maturity-levels"
 }
