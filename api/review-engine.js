@@ -23,6 +23,7 @@ export const config = { runtime: 'edge' };
 const ENGINE_VERSION = '0.1.0-validation';
 const API_VERSION = 'v1';
 const MODEL = 'claude-haiku-4-5-20251001';
+const SB_URL = 'https://pjzxkeviouofdseagvpf.supabase.co';
 
 const RATE_LIMIT = 20;        // requests
 const RATE_WINDOW_MS = 60000; // per 60s, per IP, per instance (best-effort)
@@ -156,6 +157,29 @@ function computeVariance(runs) {
   };
 }
 
+// Best-effort recording of each review (server-side, service role). A stored row
+// holds the structured result plus a 200-char input preview, not the full record.
+async function logReview(SERVICE, rid, text, out) {
+  if (!SERVICE) return;
+  var r = out.result || {};
+  try {
+    await fetch(SB_URL + '/rest/v1/engine_reviews', {
+      method: 'POST',
+      headers: { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+      body: JSON.stringify({
+        request_id: rid,
+        determination: r.determination || null,
+        conditions: r.conditions || null,
+        finding: r.finding || null,
+        runs: out.runs || 1,
+        overall_consistency: out.variance ? out.variance.overall_consistency : null,
+        input_preview: (text || '').slice(0, 200),
+        engine_version: out.engine_version || null,
+      }),
+    });
+  } catch (e) {}
+}
+
 export default async function handler(req) {
   const rid = newId();
   if (req.method === 'OPTIONS') return new Response(null, { status: 204, headers: Object.assign({ 'X-Request-Id': rid }, CORS) });
@@ -163,6 +187,7 @@ export default async function handler(req) {
 
   const KEY = (typeof process !== 'undefined' && process.env && process.env.ANTHROPIC_API_KEY) || '';
   const TOKEN_ENV = (typeof process !== 'undefined' && process.env && process.env.REVIEW_API_TOKEN) || '';
+  const SERVICE = (typeof process !== 'undefined' && process.env && process.env.SUPABASE_SERVICE_ROLE_KEY) || '';
   if (!KEY) return json({ error: 'engine_not_configured' }, 503, rid);
 
   // Optional multi-key auth.
@@ -197,6 +222,7 @@ export default async function handler(req) {
     var results = await Promise.all(Array.from({ length: runs }, function () { return oneRun(text, KEY); }));
     var out = Object.assign({}, meta, { result: results[0] });
     if (runs > 1) out.variance = computeVariance(results);
+    await logReview(SERVICE, rid, text, out);
     return json(out, 200, rid);
   } catch (e) {
     return json({ error: 'review_failed', detail: String(e && e.message || e) }, 502, rid);

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Review Engine Activity | JRS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#050505;--surface:#121212;--surface2:#1A1A1A;--rule:#2A2A2A;--text:#F2F2F2;--muted:#B3B3B3;--muted-soft:#8A8A8A;--accent:#BE9447;--accent-dim:#7A5E28;--ready-text:#5DBF82;--review-text:#D4A055;--stop-text:#E88080}
+html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+.site-header{border-bottom:1px solid var(--rule)}
+.site-header-inner{max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 22px;flex-wrap:wrap}
+.wordmark{font-family:'Bodoni Moda',serif;font-size:23px;font-weight:500;color:var(--accent);text-decoration:none}
+.header-meta{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);text-align:right}
+.hero{padding:38px 0 22px;border-bottom:1px solid var(--rule)}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:30px;line-height:1.18;margin-bottom:12px}
+.sub{font-size:14px;color:var(--muted);line-height:1.65;max-width:680px}
+.bar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:18px 0}
+.stat{border:1px solid var(--rule);background:var(--surface);padding:10px 14px}
+.stat .v{font-family:'Bodoni Moda',serif;font-size:22px;color:var(--accent);line-height:1}
+.stat .k{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-top:5px}
+.rev{border:1px solid var(--rule);background:var(--surface);padding:14px 16px;margin-bottom:10px}
+.rev-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline;margin-bottom:8px}
+.rev-time{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--muted-soft)}
+.det{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;padding:4px 9px;border:1px solid var(--rule)}
+.det.ready{color:var(--ready-text);border-color:var(--ready-text)}
+.det.review_required{color:var(--review-text);border-color:var(--review-text)}
+.det.gap_identified{color:var(--stop-text);border-color:var(--stop-text)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.chip{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.08em;text-transform:uppercase;padding:4px 8px;border:1px solid var(--rule);color:var(--muted)}
+.chip b{color:var(--text);font-weight:500}
+.chip.pass{border-color:var(--ready-text)}.chip.pass b{color:var(--ready-text)}
+.chip.review{border-color:var(--review-text)}.chip.review b{color:var(--review-text)}
+.chip.gap{border-color:var(--stop-text)}.chip.gap b{color:var(--stop-text)}
+.kv{font-size:12.5px;color:var(--muted);line-height:1.6;margin-top:4px}
+.kv b{color:var(--text)}
+.prev{font-size:12px;color:var(--muted-soft);line-height:1.55;border-left:2px solid var(--rule);padding:8px 12px;margin-top:8px;background:var(--surface2)}
+.note{font-size:12px;color:var(--muted-soft);line-height:1.65;border-left:2px solid var(--rule);padding:11px 15px;background:var(--surface);margin:16px 0}
+.site-footer{border-top:1px solid var(--rule);padding:22px;margin-top:28px}
+.footer-copy{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-soft);max-width:860px;margin:0 auto}
+@media(max-width:600px){h1{font-size:25px}}
+</style>
+</head>
+<body>
+<header class="site-header"><div class="site-header-inner">
+  <a href="/" class="wordmark">JRS<span style="font-size:10px;vertical-align:super;position:relative;top:-3px;">&#8482;</span></a>
+  <div class="header-meta">Review Engine Activity</div>
+</div></header>
+<main><div class="wrap">
+  <div class="hero">
+    <div class="eyebrow">Review Engine &middot; Recorded Reviews</div>
+    <h1>Review Engine Activity</h1>
+    <p class="sub">Each call to the JRS Review Engine is recorded here: the determination, the five condition statuses, the structured finding, and a short preview of the submitted record. Results are observational output from an unvalidated, single-model engine in operational validation. Reproducibility is distinct from accuracy and from validation.</p>
+    <div class="bar" id="stats"></div>
+  </div>
+  <div id="log"><p class="sub" style="margin-top:18px">Loading recorded reviews&hellip;</p></div>
+  <div class="note">A stored row holds the structured result and a 200-character input preview, not the full record. Submitting a record to the engine records a review here.</div>
+</div></main>
+<footer class="site-footer"><div class="footer-copy">&#169; 2026 Phillip Wikes &nbsp;&middot;&nbsp; JRS&#8482; &nbsp;&middot;&nbsp; Confidential &middot; not indexed</div></footer>
+<script>
+(function(){
+  var U='https://pjzxkeviouofdseagvpf.supabase.co';
+  var K='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e';
+  var hdr={'apikey':K,'Authorization':'Bearer '+K};
+  var NAMES={basis_identification:'Basis Identification',reasoning_traceability:'Reasoning Traceability',cold_reviewer_clarity:'Cold-Reviewer Clarity',accountability_support:'Accountability Support',temporal_reconstructability:'Temporal Reconstructability'};
+  var KEYS=Object.keys(NAMES);
+  var log=document.getElementById('log'), stats=document.getElementById('stats');
+  function esc(t){var d=document.createElement('div');d.textContent=(t==null?'':String(t));return d.innerHTML;}
+  function detLabel(d){return d==='ready'?'READY':(d==='review_required'?'REVIEW REQUIRED':(d==='gap_identified'?'GAP IDENTIFIED':esc(d||'')));}
+  fetch(U+'/rest/v1/engine_reviews?select=created_at,determination,conditions,finding,runs,overall_consistency,input_preview,engine_version&order=created_at.desc&limit=100',{headers:hdr})
+   .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+   .then(function(rows){
+     if(!rows||!rows.length){ log.innerHTML='<p class="sub" style="margin-top:18px">No reviews recorded yet. Run a review on the engine and it will appear here.</p>'; return; }
+     var total=rows.length, gaps=rows.filter(function(x){return x.determination==='gap_identified';}).length;
+     stats.innerHTML='<div class="stat"><div class="v">'+total+'</div><div class="k">Reviews (recent)</div></div>'
+       +'<div class="stat"><div class="v">'+gaps+'</div><div class="k">Gap Identified</div></div>';
+     log.innerHTML=rows.map(function(x){
+       var conds=x.conditions||{};
+       var chips=KEYS.map(function(k){var c=conds[k]||{};var st=(c.status||'review');return '<span class="chip '+esc(st)+'"><b>'+esc(st.toUpperCase())+'</b> '+esc(NAMES[k])+'</span>';}).join('');
+       var f=x.finding||{};
+       var vc=(x.overall_consistency!=null)?(' &middot; consistency '+Math.round(x.overall_consistency*100)+'%'):'';
+       return '<div class="rev"><div class="rev-top"><span class="rev-time">'+esc((x.created_at||'').replace('T',' ').slice(0,16))+' UTC &middot; '+esc(x.runs||1)+' run(s)'+vc+'</span>'
+         +'<span class="det '+esc(x.determination||'')+'">'+detLabel(x.determination)+'</span></div>'
+         +'<div class="chips">'+chips+'</div>'
+         +(f.ai_function?'<div class="kv"><b>AI function:</b> '+esc(f.ai_function)+'</div>':'')
+         +(f.condition_triggered?'<div class="kv"><b>Triggered:</b> '+esc(f.condition_triggered)+'</div>':'')
+         +(f.compliant_version?'<div class="kv"><b>Compliant version would:</b> '+esc(f.compliant_version)+'</div>':'')
+         +(x.input_preview?'<div class="prev">Record preview: '+esc(x.input_preview)+(x.input_preview.length>=200?'…':'')+'</div>':'')
+         +'</div>';
+     }).join('');
+   })
+   .catch(function(){ log.innerHTML='<p class="sub" style="margin-top:18px">Could not load reviews. If the table does not exist yet, run supabase-engine-reviews-setup.sql.</p>'; });
+})();
+</script>
+</body>
+</html>
