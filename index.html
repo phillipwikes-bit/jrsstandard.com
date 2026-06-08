@@ -5252,6 +5252,7 @@ function submitObs(){
   var noteVal=(document.getElementById('obs-note').value||'').trim();
   if(noteVal&&!jrsSanitizeCheck(noteVal))return;
   var obsPayload={type:'operational_observation',selection:selected.dataset.val,note:noteVal,source:'index',timestamp:new Date().toISOString()};
+  try{var SBU='https://pjzxkeviouofdseagvpf.supabase.co',SBK='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e';fetch(SBU+'/rest/v1/interaction_events',{method:'POST',headers:{'apikey':SBK,'Authorization':'Bearer '+SBK,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify({source:'index',type:'operational_observation',payload:{selection:selected.dataset.val,note:noteVal}})}).catch(function(){});}catch(e){}
   fetch('https://api.jrsstandard.com/v1/verify-drift',{
     method:'POST',
     headers:{'Content-Type':'application/json'},

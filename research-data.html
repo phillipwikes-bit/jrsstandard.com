@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Research Data Room | JRS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#050505;--surface:#121212;--surface2:#1A1A1A;--rule:#2A2A2A;--text:#F2F2F2;--muted:#B3B3B3;--muted-soft:#8A8A8A;--accent:#BE9447;--accent-dim:#7A5E28;--ready-text:#5DBF82;--review-text:#D4A055;--stop-text:#E88080}
+html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.site-header{border-bottom:1px solid var(--rule)}
+.site-header-inner{max-width:1040px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 20px;flex-wrap:wrap}
+.wordmark{font-family:'Bodoni Moda',serif;font-size:23px;font-weight:500;color:var(--accent);text-decoration:none}
+.header-meta{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);text-align:right}
+.hero{padding:34px 0 20px;border-bottom:1px solid var(--rule)}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:30px;line-height:1.18;margin-bottom:12px}
+.sub{font-size:14px;color:var(--muted);line-height:1.65;max-width:760px}
+.topbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:18px 0}
+.btn{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:10px 15px;border:1px solid var(--accent-dim);color:var(--accent);background:none;cursor:pointer;text-decoration:none}
+.btn.solid{background:var(--accent);color:#050505;font-weight:600;border-color:var(--accent)}
+.ds{border:1px solid var(--rule);background:var(--surface);margin-bottom:14px}
+.ds-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:13px 16px;border-bottom:1px solid var(--rule)}
+.ds-h{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.ds-name{font-size:15px;font-weight:600;color:var(--text)}
+.ds-count{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent)}
+.ds-note{font-size:11.5px;color:var(--muted-soft)}
+.ds-actions{display:flex;gap:8px;flex-wrap:wrap}
+.ds-actions .btn{padding:7px 12px;font-size:8px}
+.tablewrap{overflow:auto;max-height:340px}
+table{border-collapse:collapse;width:100%;font-size:11.5px}
+th{position:sticky;top:0;background:var(--surface2);text-align:left;font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);padding:8px 10px;border-bottom:1px solid var(--rule);white-space:nowrap}
+td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);vertical-align:top;max-width:320px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.empty{padding:14px 16px;font-size:12.5px;color:var(--muted-soft)}
+.empty.err{color:var(--review-text)}
+.note{font-size:12px;color:var(--muted-soft);line-height:1.6;border-left:2px solid var(--rule);padding:11px 15px;background:var(--surface);margin:16px 0}
+.site-footer{border-top:1px solid var(--rule);padding:20px;margin-top:24px}
+.footer-copy{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-soft);max-width:1040px;margin:0 auto}
+</style>
+</head>
+<body>
+<header class="site-header"><div class="site-header-inner">
+  <a href="/" class="wordmark">JRS<span style="font-size:10px;vertical-align:super;position:relative;top:-3px;">&#8482;</span></a>
+  <div class="header-meta">Research Data Room</div>
+</div></header>
+<main><div class="wrap">
+  <div class="hero">
+    <div class="eyebrow">Evidence Development Program &middot; De-identified Datasets</div>
+    <h1>Research Data Room</h1>
+    <p class="sub">A consolidated, de-identified view of everything the JRS platform records: challenge responses, extended reviews, automated engine reviews, poll votes, free-text responses, observation and survey submissions, findings, and the study registry. Each dataset can be exported as CSV or JSON. Names and email addresses are never shown here: contact identifiers stay in private tables. Data is observational and from a validation-phase program; it is not validated and makes no claim of effectiveness. Where participants gave consent, consent flags are included.</p>
+    <div class="topbar">
+      <button class="btn solid" onclick="downloadAll()">Download everything (JSON)</button>
+      <button class="btn" onclick="location.reload()">Refresh</button>
+      <span class="ds-note" id="loaded-status">Loading datasets&hellip;</span>
+    </div>
+  </div>
+  <div id="datasets"></div>
+  <div class="note">For the reviewing organizational psychologist: rows are de-identified at the source (PII columns are excluded via database views). Free-text fields are screened for personal identifiers at submission but are participant-entered, so treat them as potentially sensitive. Consent for aggregate research, updates, and recognition is captured per participant where applicable and exported with the data. If a dataset shows &ldquo;not available,&rdquo; the one-time setup SQL (supabase-research-data-room.sql) has not been run yet.</div>
+</div></main>
+<footer class="site-footer"><div class="footer-copy">&#169; 2026 Phillip Wikes &nbsp;&middot;&nbsp; JRS&#8482; &nbsp;&middot;&nbsp; Confidential &middot; de-identified &middot; not indexed</div></footer>
+<script>
+(function(){
+  var U='https://pjzxkeviouofdseagvpf.supabase.co';
+  var K='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e';
+  var hdr={'apikey':K,'Authorization':'Bearer '+K};
+  // dataset definitions: [label, rest-path, note]
+  var DS=[
+    ['One-Minute Challenge (de-identified)','/rest/v1/omc_responses_deid?select=*','answer, why, role, consent, attribution'],
+    ['Extended Reviews (de-identified)','/rest/v1/extended_reviews_deid?select=*','per-record responses, role, consent'],
+    ['Observation &amp; Survey Submissions','/rest/v1/interaction_events?select=*','homepage / pilot observations + training Likert survey'],
+    ['Automated Engine Reviews','/rest/v1/engine_reviews?select=*','five-condition results, determination, variance'],
+    ['Finding Poll Votes','/rest/v1/finding_poll_votes?select=*','A/B/C/D tallies'],
+    ['Finding Responses (free text)','/rest/v1/finding_responses?select=*','private discussion/debate responses'],
+    ['Published Findings','/rest/v1/findings?select=headline,classification,observation,research_question,supporting_data,evidence_class,metrics,created_at&published=eq.true','observational findings + metrics'],
+    ['Research Questions','/rest/v1/research_questions?select=*','open questions under investigation'],
+    ['Study Registry','/rest/v1/studies?select=*','study statuses'],
+    ['Study Runs','/rest/v1/study_runs?select=*','automated run metrics']
+  ];
+  var host=document.getElementById('datasets');
+  var loaded={}, done=0;
+  function esc(t){var d=document.createElement('div');d.textContent=(t==null?'':String(t));return d.innerHTML;}
+  function cell(v){ if(v==null) return ''; if(typeof v==='object') return JSON.stringify(v); return String(v); }
+  function toCSV(rows){
+    if(!rows||!rows.length) return '';
+    var keys=[]; rows.forEach(function(r){Object.keys(r).forEach(function(k){if(keys.indexOf(k)<0)keys.push(k);});});
+    function q(s){s=(s==null?'':(typeof s==='object'?JSON.stringify(s):String(s)));return '"'+s.replace(/"/g,'""')+'"';}
+    var out=[keys.map(q).join(',')];
+    rows.forEach(function(r){ out.push(keys.map(function(k){return q(r[k]);}).join(',')); });
+    return out.join('\r\n');
+  }
+  function dl(name,text,mime){
+    var blob=new Blob([text],{type:mime||'text/plain'});
+    var u=URL.createObjectURL(blob);var a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);
+  }
+  window.downloadAll=function(){
+    var bundle={generated_at:new Date().toISOString(),program:'JRS Evidence Development Program',note:'De-identified export. Observational, validation-phase, not validated.',datasets:loaded};
+    dl('jrs-research-data-'+Date.now()+'.json', JSON.stringify(bundle,null,2),'application/json');
+  };
+  window.dlCSV=function(i){ var d=DS[i]; dl(slug(d[0])+'.csv', toCSV(loaded[d[0]]||[]),'text/csv'); };
+  window.dlJSON=function(i){ var d=DS[i]; dl(slug(d[0])+'.json', JSON.stringify(loaded[d[0]]||[],null,2),'application/json'); };
+  function slug(s){return s.toLowerCase().replace(/&amp;/g,'and').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');}
+
+  DS.forEach(function(d,i){
+    var box=document.createElement('div'); box.className='ds';
+    box.innerHTML='<div class="ds-top"><div class="ds-h"><span class="ds-name">'+d[0]+'</span><span class="ds-count" id="c'+i+'">&hellip;</span><span class="ds-note">'+d[2]+'</span></div>'
+      +'<div class="ds-actions"><button class="btn" onclick="dlCSV('+i+')">CSV</button><button class="btn" onclick="dlJSON('+i+')">JSON</button></div></div>'
+      +'<div id="b'+i+'"><div class="empty">Loading&hellip;</div></div>';
+    host.appendChild(box);
+    fetch(U+d[1],{headers:hdr})
+     .then(function(r){ if(!r.ok) throw new Error('http'); return r.json(); })
+     .then(function(rows){
+       rows=rows||[]; loaded[d[0]]=rows;
+       document.getElementById('c'+i).textContent=rows.length+' rows';
+       var body=document.getElementById('b'+i);
+       if(!rows.length){ body.innerHTML='<div class="empty">No rows recorded yet.</div>'; return; }
+       var keys=[]; rows.slice(0,200).forEach(function(r){Object.keys(r).forEach(function(k){if(keys.indexOf(k)<0)keys.push(k);});});
+       var html='<div class="tablewrap"><table><thead><tr>'+keys.map(function(k){return '<th>'+esc(k)+'</th>';}).join('')+'</tr></thead><tbody>';
+       rows.slice(0,200).forEach(function(r){ html+='<tr>'+keys.map(function(k){return '<td title="'+esc(cell(r[k]))+'">'+esc(cell(r[k]))+'</td>';}).join('')+'</tr>'; });
+       html+='</tbody></table></div>';
+       if(rows.length>200) html+='<div class="empty">Showing first 200 of '+rows.length+'. Export for the full set.</div>';
+       body.innerHTML=html;
+     })
+     .catch(function(){
+       document.getElementById('c'+i).textContent='n/a';
+       document.getElementById('b'+i).innerHTML='<div class="empty err">Not available. Run supabase-research-data-room.sql to enable this dataset.</div>';
+     })
+     .then(function(){ done++; if(done===DS.length) document.getElementById('loaded-status').textContent=Object.keys(loaded).length+' of '+DS.length+' datasets loaded.'; });
+  });
+})();
+</script>
+</body>
+</html>

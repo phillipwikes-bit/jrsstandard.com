@@ -2863,6 +2863,7 @@ function submitSurvey() {
     var sel = row.querySelector('.survey-scale-btn.sel, .survey-choice-btn.sel');
     if (sel) payload[g] = sel.textContent.trim();
   });
+  try{var SBU='https://pjzxkeviouofdseagvpf.supabase.co',SBK='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e';var sp={};['q1','q2','q3','q4','q5'].forEach(function(g){if(payload[g])sp[g]=payload[g];});fetch(SBU+'/rest/v1/interaction_events',{method:'POST',headers:{'apikey':SBK,'Authorization':'Bearer '+SBK,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify({source:'training',type:'observational_survey',payload:sp})}).catch(function(){});}catch(e){}
   fetch('https://api.jrsstandard.com/v1/verify-drift', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

@@ -745,6 +745,7 @@ function submitVulnObs(e) {
   status.textContent = 'Submitting...';
   status.style.color = 'var(--muted-soft)';
   status.style.display = 'inline';
+  try{var SBU='https://pjzxkeviouofdseagvpf.supabase.co',SBK='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e';fetch(SBU+'/rest/v1/interaction_events',{method:'POST',headers:{'apikey':SBK,'Authorization':'Bearer '+SBK,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify({source:'pilot',type:'vulnerability_observation',payload:{selection:selected.value}})}).catch(function(){});}catch(e){}
   fetch('https://api.jrsstandard.com/v1/verify-drift', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
