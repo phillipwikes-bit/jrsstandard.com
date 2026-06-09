@@ -412,3 +412,24 @@ insert into public.bench_gold (record_id, conditions, determination) values
  ('00000000-0000-0000-0000-0000000000a2','{"basis_identification":"review","reasoning_traceability":"review","cold_reviewer_clarity":"review","accountability_support":"review","temporal_reconstructability":"review"}','review_required'),
  ('00000000-0000-0000-0000-0000000000a3','{"basis_identification":"pass","reasoning_traceability":"pass","cold_reviewer_clarity":"pass","accountability_support":"pass","temporal_reconstructability":"pass"}','ready')
 on conflict (record_id) do nothing;
+
+-- ===== expert credentials (PRIVATE — documents who set the answer key) =====
+-- Captured when a reviewer code starts with 'E'. Anon may register; there is NO
+-- anon read, so names/titles never appear in the public Data Room or exports.
+-- Read them in the Supabase Table Editor (or with the service role) only.
+create table if not exists public.bench_experts (
+  id               uuid primary key default gen_random_uuid(),
+  code             text,
+  name             text,
+  title            text,
+  credential       text,
+  years_experience text,
+  affiliation      text,
+  email            text,
+  created_at       timestamptz not null default now()
+);
+alter table public.bench_experts enable row level security;
+drop policy if exists "register expert" on public.bench_experts;
+create policy "register expert" on public.bench_experts
+  for insert to anon with check (char_length(coalesce(code,'')) >= 1);
+-- (no select policy for anon: expert identities stay private)
