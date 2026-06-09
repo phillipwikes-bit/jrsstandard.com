@@ -67,15 +67,35 @@ export default async function handler(req) {
     const RUN_TOKEN = (typeof process !== 'undefined' && process.env && process.env.RUN_TOKEN) || '';
     const CRON_SECRET = (typeof process !== 'undefined' && process.env && process.env.CRON_SECRET) || '';
 
-    // Authenticate: manual trigger uses ?token=RUN_TOKEN; the nightly Vercel Cron sends
-    // "Authorization: Bearer <CRON_SECRET>" automatically.
+    // Authentication / triggering:
+    //  - Manual:  ?token=RUN_TOKEN (bypasses the daily guard; used for testing).
+    //  - Cron:    Vercel's scheduler sends User-Agent "vercel-cron/1.0" (and, if you set
+    //             CRON_SECRET, an Authorization: Bearer header). EITHER is accepted, so the
+    //             nightly job works automatically WITHOUT any env var being set.
+    //  Abuse guard: a cron-path run is skipped if a successful run happened in the last ~20h,
+    //  so the model is called at most once per day no matter how often the endpoint is hit.
     var bearer = (req.headers.get('authorization') || '').replace(/^Bearer\s+/i, '').trim();
+    var ua = (req.headers.get('user-agent') || '').toLowerCase();
     var okManual = RUN_TOKEN && token === RUN_TOKEN;
-    var okCron = CRON_SECRET && bearer === CRON_SECRET;
+    var okCronSecret = CRON_SECRET && bearer === CRON_SECRET;
+    var isVercelCron = ua.indexOf('vercel-cron') !== -1;
 
     if (!ANTHROPIC) return json({ error: 'ANTHROPIC_API_KEY not set' }, 400);
     if (!SERVICE) return json({ error: 'SUPABASE_SERVICE_ROLE_KEY not set' }, 400);
-    if (!okManual && !okCron) return json({ error: 'invalid or missing token' }, 401);
+    if (!okManual && !okCronSecret && !isVercelCron) return json({ error: 'invalid or missing token' }, 401);
+
+    // Daily guard for unauthenticated cron-path calls (not for an explicit RUN_TOKEN/CRON_SECRET).
+    if (!okManual && !okCronSecret) {
+      try {
+        const lr = await fetch(SUPABASE_URL + '/rest/v1/findings?study_id=eq.STUDY-001&select=created_at&order=created_at.desc&limit=1',
+          { headers: { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE } });
+        const arr = await lr.json();
+        if (Array.isArray(arr) && arr[0] && arr[0].created_at) {
+          var ageH = (Date.now() - new Date(arr[0].created_at).getTime()) / 3.6e6;
+          if (ageH < 20) return json({ ok: true, skipped: 'ran ' + ageH.toFixed(1) + 'h ago' });
+        }
+      } catch (e) {}
+    }
 
     const perRecord = {};
     for (const rec of RECORDS) {
