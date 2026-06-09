@@ -40,6 +40,18 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
 .empty{padding:14px 16px;font-size:12.5px;color:var(--muted-soft)}
 .empty.err{color:var(--review-text)}
 .note{font-size:12px;color:var(--muted-soft);line-height:1.6;border-left:2px solid var(--rule);padding:11px 15px;background:var(--surface);margin:16px 0}
+.bm{border:1px solid rgba(190,148,71,.4);background:rgba(190,148,71,.04);padding:16px 18px;margin:0 0 18px}
+.bm-h{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.bm-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-bottom:12px}
+.bm-card{background:var(--surface);padding:13px 14px}
+.bm-cv{font-family:'Bodoni Moda',serif;font-size:23px;color:var(--accent);line-height:1.05}
+.bm-ck{font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-top:5px}
+.bm-tbl{border-collapse:collapse;width:100%;font-size:11px}
+.bm-tbl th{background:var(--surface2);text-align:left;font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);padding:7px 9px;border-bottom:1px solid var(--rule)}
+.bm-tbl td{padding:7px 9px;border-bottom:1px solid var(--rule);color:var(--muted)}
+.tag{font-family:'JetBrains Mono',monospace;font-size:7.5px;padding:2px 6px;border:1px solid var(--rule)}
+.t-ready{color:var(--ready-text);border-color:var(--ready-text)}.t-review_required{color:var(--review-text);border-color:var(--review-text)}.t-gap_identified{color:var(--stop-text);border-color:var(--stop-text)}
+.ok{color:var(--ready-text)}.no{color:var(--stop-text)}
 .site-footer{border-top:1px solid var(--rule);padding:20px;margin-top:24px}
 .footer-copy{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-soft);max-width:1040px;margin:0 auto}
 </style>
@@ -59,6 +71,12 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
       <button class="btn" onclick="location.reload()">Refresh</button>
       <span class="ds-note" id="loaded-status">Loading datasets&hellip;</span>
     </div>
+  </div>
+  <div class="bm">
+    <div class="bm-h">&#9654; Benchmark Results &middot; Rungs 2 &amp; 3 (computed live)</div>
+    <p class="sub" style="font-size:12.5px;margin-bottom:10px">Reviewer agreement = how often independent reviewers reached the same JRS verdict (reliability, rung 3). Accuracy vs key = how often the AI engine and the reviewer majority matched the expert consensus answer key (rung 2). Empty until records, reviews, an answer key, and AI scoring exist.</p>
+    <div class="bm-cards" id="bm-cards"></div>
+    <div style="overflow:auto"><table class="bm-tbl"><thead><tr><th>Record</th><th>JRS reviewers</th><th>Reviewer majority</th><th>Agreement</th><th>Answer key</th><th>AI verdict</th><th>AI vs key</th></tr></thead><tbody id="bm-rows"><tr><td colspan="7">Loading&hellip;</td></tr></tbody></table></div>
   </div>
   <div id="datasets"></div>
   <div class="note">For the reviewing organizational psychologist: rows are de-identified at the source (PII columns are excluded via database views). Free-text fields are screened for personal identifiers at submission but are participant-entered, so treat them as potentially sensitive. Consent for aggregate research, updates, and recognition is captured per participant where applicable and exported with the data. If a dataset shows &ldquo;not available,&rdquo; the one-time setup SQL (supabase-research-data-room.sql) has not been run yet.</div>
@@ -138,6 +156,38 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
      })
      .then(function(){ done++; if(done===DS.length) document.getElementById('loaded-status').textContent=Object.keys(loaded).length+' of '+DS.length+' datasets loaded.'; });
   });
+})();
+</script>
+<script>
+(function(){
+  var U='https://pjzxkeviouofdseagvpf.supabase.co', K='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e', HDR={'apikey':K,'Authorization':'Bearer '+K};
+  var COND=['basis_identification','reasoning_traceability','cold_reviewer_clarity','accountability_support','temporal_reconstructability'];
+  function esc(t){var d=document.createElement('div');d.textContent=(t==null?'':String(t));return d.innerHTML;}
+  function tag(d){return d?'<span class="tag t-'+d+'">'+d.replace('_',' ')+'</span>':'<span class="tag">&mdash;</span>';}
+  function majority(a){var c={};a.forEach(function(x){c[x]=(c[x]||0)+1;});var b=null,n=0;Object.keys(c).forEach(function(k){if(c[k]>n){n=c[k];b=k;}});return{value:b,share:a.length?n/a.length:0,n:a.length};}
+  function pct(a,b){return b?Math.round(a/b*100)+'%':'&mdash;';}
+  function card(v,k){return '<div class="bm-card"><div class="bm-cv">'+v+'</div><div class="bm-ck">'+k+'</div></div>';}
+  Promise.all([
+    fetch(U+'/rest/v1/bench_records?select=id,text&active=eq.true',{headers:HDR}).then(function(r){return r.ok?r.json():[];}),
+    fetch(U+'/rest/v1/bench_labels?select=record_id,mode,determination',{headers:HDR}).then(function(r){return r.ok?r.json():[];}),
+    fetch(U+'/rest/v1/bench_gold?select=record_id,determination,conditions',{headers:HDR}).then(function(r){return r.ok?r.json():[];}),
+    fetch(U+'/rest/v1/bench_ai_verdicts?select=record_id,determination,conditions',{headers:HDR}).then(function(r){return r.ok?r.json():[];})
+  ]).then(function(res){
+    var recs=res[0]||[],labels=res[1]||[],gold=res[2]||[],ai=res[3]||[];
+    if(!recs.length){ document.getElementById('bm-rows').innerHTML='<tr><td colspan="7">No benchmark records yet. Add records in bench-admin.html and have reviewers score them.</td></tr>'; document.getElementById('bm-cards').innerHTML=card('&mdash;','Reviewer agreement')+card('&mdash;','AI accuracy vs key')+card('0','Records'); return; }
+    var gB={};gold.forEach(function(g){gB[g.record_id]=g;}); var aB={};ai.forEach(function(a){aB[a.record_id]=a;});
+    var agrSum=0,agrN=0,aiMatch=0,aiN=0,humMatch=0,humN=0,condM=0,condT=0,rowsH='';
+    recs.forEach(function(r){
+      var dets=labels.filter(function(l){return l.record_id===r.id&&l.mode==='jrs';}).map(function(l){return l.determination;});
+      var maj=majority(dets); if(maj.n>=2){agrSum+=maj.share;agrN++;}
+      var g=gB[r.id],a=aB[r.id],corr=null;
+      if(g&&a){aiN++;corr=a.determination===g.determination;if(corr)aiMatch++;COND.forEach(function(k){if(g.conditions&&a.conditions){condT++;if(g.conditions[k]===a.conditions[k])condM++;}});}
+      if(g&&maj.value){humN++;if(maj.value===g.determination)humMatch++;}
+      rowsH+='<tr><td>'+esc(r.text.slice(0,70))+(r.text.length>70?'…':'')+'</td><td>'+maj.n+'</td><td>'+tag(maj.value)+'</td><td>'+(maj.n>=2?Math.round(maj.share*100)+'%':'<span class="bm-ck">need 2+</span>')+'</td><td>'+tag(g&&g.determination)+'</td><td>'+tag(a&&a.determination)+'</td><td>'+((g&&a)?(corr?'<span class="ok">match</span>':'<span class="no">mismatch</span>'):'<span class="bm-ck">&mdash;</span>')+'</td></tr>';
+    });
+    document.getElementById('bm-rows').innerHTML=rowsH;
+    document.getElementById('bm-cards').innerHTML=card(pct(agrSum,agrN),'Reviewer agreement (avg)')+card(pct(aiMatch,aiN),'AI accuracy vs key')+card(pct(condM,condT),'AI per-condition vs key')+card(pct(humMatch,humN),'Reviewer majority vs key')+card(recs.length,'Records')+card(labels.length,'Reviews');
+  }).catch(function(){ document.getElementById('bm-rows').innerHTML='<tr><td colspan="7">Benchmark tables not available yet. Run supabase-benchmark-setup.sql.</td></tr>'; });
 })();
 </script>
 </body>
