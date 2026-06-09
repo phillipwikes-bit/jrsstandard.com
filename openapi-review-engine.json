@@ -23,7 +23,7 @@
         "responses": {
           "200": { "description": "Review result", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ReviewResponse" } } } },
           "400": { "description": "invalid_json | record_too_short" },
-          "401": { "description": "unauthorized (when REVIEW_API_TOKEN is set)" },
+          "401": { "description": "unauthorized. Returned by default when no valid bearer token is presented and open sandbox mode is not enabled (JRS_SANDBOX_OPEN is not set to true)." },
           "405": { "description": "method_not_allowed" },
           "429": { "description": "rate_limited (best-effort, per-instance, per-IP)" },
           "502": { "description": "review_failed (model or parse error)" },
@@ -34,7 +34,7 @@
   },
   "components": {
     "securitySchemes": {
-      "bearerAuth": { "type": "http", "scheme": "bearer", "description": "Required only when REVIEW_API_TOKEN is configured. Supports comma-separated per-partner tokens." }
+      "bearerAuth": { "type": "http", "scheme": "bearer", "description": "Required by default. Set REVIEW_API_TOKEN (supports comma-separated per-partner tokens); callers send Authorization: Bearer <token>. Token-free open sandbox mode requires JRS_SANDBOX_OPEN=true." }
     },
     "schemas": {
       "ReviewRequest": {

@@ -7,9 +7,9 @@ export const config = { runtime: 'edge' };
 // Reuses ANTHROPIC_API_KEY (already set). Examines one record against the five
 // JRS conditions and returns a record-asset result; runs>1 discloses variance.
 //
-// Auth (optional): set REVIEW_API_TOKEN to a token, or a comma-separated list of
-//   per-partner tokens. If set, callers must send Authorization: Bearer <token>.
-//   If unset, the endpoint is open (sandbox).
+// Auth (fail-closed): a token is REQUIRED by default. Set REVIEW_API_TOKEN to a token
+//   or a comma-separated list of per-partner tokens; callers send Authorization: Bearer <token>.
+//   Token-free open mode requires the explicit flag JRS_SANDBOX_OPEN=true (rate limit still applies).
 // Rate limit: best-effort, per-instance, per-IP (see RATE_*). Not a substitute
 //   for a shared store in production; documented as best-effort.
 // Every response carries a request_id (body + X-Request-Id header) for audit
@@ -65,23 +65,33 @@ You evaluate, examine, identify, and surface. You do not guarantee, certify, or 
   }
 }`;
 
-const CORS = {
-  'Access-Control-Allow-Origin': '*',
+const CORS_BASE = {
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type, Authorization',
   'Access-Control-Expose-Headers': 'X-Request-Id',
 };
+// Echo the request Origin only when it is in the allowlist (ALLOWED_ORIGINS,
+// comma-separated; defaults to the production site). Otherwise omit the header.
+function corsFor(req) {
+  var headers = Object.assign({}, CORS_BASE);
+  var origin = (req.headers.get('origin') || '').trim();
+  var listEnv = (typeof process !== 'undefined' && process.env && process.env.ALLOWED_ORIGINS) || 'https://www.jrsstandard.com';
+  var allowed = listEnv.split(',').map(function (o) { return o.trim(); }).filter(Boolean);
+  if (origin && allowed.indexOf(origin) !== -1) headers['Access-Control-Allow-Origin'] = origin;
+  return headers;
+}
 
 function newId() {
   try { return crypto.randomUUID(); } catch (e) { return 'req_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8); }
 }
 
-function json(o, status, rid) {
-  var headers = Object.assign({ 'Content-Type': 'application/json', 'X-Request-Id': rid }, CORS);
+function json(o, status, rid, cors) {
+  var headers = Object.assign({ 'Content-Type': 'application/json', 'X-Request-Id': rid }, cors || CORS_BASE);
   return new Response(JSON.stringify(Object.assign({ request_id: rid, api_version: API_VERSION }, o)), { status: status || 200, headers: headers });
 }
 
 // Best-effort per-instance rate limiter (edge isolates do not share state).
+// TODO: production volume needs a shared store (KV/Redis); per-instance limiting is best-effort only.
 const RL = globalThis.__jrs_rl || (globalThis.__jrs_rl = new Map());
 function rateLimited(ip) {
   var now = Date.now();
@@ -182,29 +192,35 @@ async function logReview(SERVICE, rid, text, out) {
 
 export default async function handler(req) {
   const rid = newId();
-  if (req.method === 'OPTIONS') return new Response(null, { status: 204, headers: Object.assign({ 'X-Request-Id': rid }, CORS) });
-  if (req.method !== 'POST') return json({ error: 'method_not_allowed', detail: 'Use POST.' }, 405, rid);
+  const cors = corsFor(req);
+  const J = function (o, s) { return json(o, s, rid, cors); };
+  if (req.method === 'OPTIONS') return new Response(null, { status: 204, headers: Object.assign({ 'X-Request-Id': rid }, cors) });
+  if (req.method !== 'POST') return J({ error: 'method_not_allowed', detail: 'Use POST.' }, 405);
 
   const KEY = (typeof process !== 'undefined' && process.env && process.env.ANTHROPIC_API_KEY) || '';
   const TOKEN_ENV = (typeof process !== 'undefined' && process.env && process.env.REVIEW_API_TOKEN) || '';
+  const SANDBOX_OPEN = (typeof process !== 'undefined' && process.env && process.env.JRS_SANDBOX_OPEN) || '';
   const SERVICE = (typeof process !== 'undefined' && process.env && process.env.SUPABASE_SERVICE_ROLE_KEY) || '';
-  if (!KEY) return json({ error: 'engine_not_configured' }, 503, rid);
+  if (!KEY) return J({ error: 'engine_not_configured' }, 503);
 
-  // Optional multi-key auth.
+  // Fail-closed auth: a token is required by default. Open (token-free) mode must be
+  // explicitly enabled with JRS_SANDBOX_OPEN=true; the rate limit still applies in open mode.
   if (TOKEN_ENV) {
     var allowed = TOKEN_ENV.split(',').map(function (t) { return t.trim(); }).filter(Boolean);
     var bearer = (req.headers.get('authorization') || '').replace(/^Bearer\s+/i, '').trim();
-    if (allowed.indexOf(bearer) === -1) return json({ error: 'unauthorized', detail: 'Send Authorization: Bearer <token>.' }, 401, rid);
+    if (allowed.indexOf(bearer) === -1) return J({ error: 'unauthorized', detail: 'Send Authorization: Bearer <token>.' }, 401);
+  } else if (SANDBOX_OPEN !== 'true') {
+    return J({ error: 'unauthorized', detail: 'Endpoint requires a token. Set REVIEW_API_TOKEN, or set JRS_SANDBOX_OPEN=true for open sandbox mode.' }, 401);
   }
 
   // Best-effort rate limit.
   var ip = (req.headers.get('x-forwarded-for') || '').split(',')[0].trim() || 'unknown';
-  if (rateLimited(ip)) return json({ error: 'rate_limited', detail: 'Too many requests; retry shortly. Best-effort per-instance limit.' }, 429, rid);
+  if (rateLimited(ip)) return J({ error: 'rate_limited', detail: 'Too many requests; retry shortly. Best-effort per-instance limit.' }, 429);
 
   var body;
-  try { body = await req.json(); } catch (e) { return json({ error: 'invalid_json' }, 400, rid); }
+  try { body = await req.json(); } catch (e) { return J({ error: 'invalid_json' }, 400); }
   var text = (body && body.text ? String(body.text) : '').trim();
-  if (text.length < 40) return json({ error: 'record_too_short', detail: 'Provide at least 40 characters of record text.' }, 400, rid);
+  if (text.length < 40) return J({ error: 'record_too_short', detail: 'Provide at least 40 characters of record text.' }, 400);
   if (text.length > 8000) text = text.slice(0, 8000);
   var runs = Math.min(Math.max(parseInt((body && body.runs) || 1, 10) || 1, 1), 5);
 
@@ -223,8 +239,8 @@ export default async function handler(req) {
     var out = Object.assign({}, meta, { result: results[0] });
     if (runs > 1) out.variance = computeVariance(results);
     await logReview(SERVICE, rid, text, out);
-    return json(out, 200, rid);
+    return J(out, 200);
   } catch (e) {
-    return json({ error: 'review_failed', detail: String(e && e.message || e) }, 502, rid);
+    return J({ error: 'review_failed', detail: String(e && e.message || e) }, 502);
   }
 }
