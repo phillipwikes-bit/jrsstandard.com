@@ -135,6 +135,21 @@ export default async function handler(req) {
     }
     await fetch(SUPABASE_URL + '/rest/v1/studies?id=eq.STUDY-001', { method: 'PATCH', headers, body: JSON.stringify({ status: 'active' }) });
 
+    // Append-only nightly record: one row per run, never overwritten. This is the
+    // time series an external reviewer inspects (findings table only keeps the latest).
+    await fetch(SUPABASE_URL + '/rest/v1/findings_history', {
+      method: 'POST', headers,
+      body: JSON.stringify({
+        study_id: 'STUDY-001',
+        headline: baseFinding.headline,
+        classification,
+        overall_agreement: Number(overall.toFixed(3)),
+        per_record: perRecord,
+        k, records: recs, model: metrics.model,
+        metrics,
+      }),
+    }).catch(function(){});
+
     return json({ ok: true, classification, enriched: fres.ok, metrics });
   } catch (e) {
     return json({ error: String(e) }, 500);
