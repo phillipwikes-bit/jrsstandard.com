@@ -309,9 +309,9 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
       ? card(pct(aiMatch,aiN),'AI accuracy vs key')+card(pct(condM,condT),'AI per-condition vs key')+card(pct(humMatch,humN),'Reviewer majority vs key')
       : card('gated','AI accuracy vs key')+card('gated','AI per-condition')+card('gated','Reviewer vs key');
     document.getElementById('bm-cards').innerHTML=
-      card(expertAgreement!=null?p1(expertAgreement):'&mdash;','Expert-to-expert agreement')
+      card(expertAgreement!=null?p1(expertAgreement):'&mdash;','Expert-to-expert agreement (n='+expAgrN+')')
       +card(expertCount+' / '+MIN_EXPERTS,'Experts (have / min)')
-      +card(pct(agrSum,agrN),'Reviewer agreement (avg)')
+      +card(pct(agrSum,agrN),'Reviewer agreement (avg, n='+agrN+')')
       +accCards
       +card(realRecs.length,'Real records')
       +card(labels.length,'Reviews');

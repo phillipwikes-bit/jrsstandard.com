@@ -120,9 +120,9 @@ Promise.all([
     ? card(pct(aiMatch,aiN),'AI accuracy vs key')+card(pct(condAiMatch,condAiTot),'AI per-condition vs key')+card(pct(humMatch,humN),'Reviewer majority vs key')
     : card('gated','AI accuracy vs key')+card('gated','AI per-condition')+card('gated','Reviewer vs key');
   document.getElementById('cards').innerHTML=
-    card(expertAgreement!=null?p1(expertAgreement):'—','Expert-to-expert agreement')+
+    card(expertAgreement!=null?p1(expertAgreement):'—','Expert-to-expert agreement (n='+expAgrN+')')+
     card(expertCount+' / '+MIN_EXPERTS,'Experts (have / min)')+
-    card(pct(agrSum,agrN),'Reviewer agreement (avg)')+
+    card(pct(agrSum,agrN),'Reviewer agreement (avg, n='+agrN+')')+
     accCards+
     card(realRecs.length,'Real records')+
     card(labelN,'Reviews recorded');

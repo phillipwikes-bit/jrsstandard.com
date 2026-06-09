@@ -362,6 +362,8 @@ create policy "read labels" on public.bench_labels for select to anon using (tru
 -- no judgments, and no results, and is never shown on any results surface or in any export.
 -- The reviewer/expert tool inserts a row at session start to prove the datastore is reachable
 -- and writable, then deletes it immediately. A failed insert blocks the session (fail-loud).
+-- The delete is best-effort: an occasional orphan row here is acceptable debris (it is never
+-- shown or exported and carries no evidentiary meaning). Truncate it freely at any time.
 create table if not exists public.bench_preflight (
   id          uuid primary key default gen_random_uuid(),
   created_at  timestamptz not null default now()

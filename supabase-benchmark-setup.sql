@@ -44,6 +44,7 @@ create policy "read labels" on public.bench_labels for select to anon using (tru
 -- Recording-preflight health table. NOT part of the evidence ladder: no records, no judgments,
 -- no results; never shown on any results surface or export. The reviewer tool inserts a row at
 -- session start to prove the datastore is reachable and writable, then deletes it immediately.
+-- The delete is best-effort: an occasional orphan row is acceptable debris (never shown/exported).
 create table if not exists public.bench_preflight (
   id          uuid primary key default gen_random_uuid(),
   created_at  timestamptz not null default now()
