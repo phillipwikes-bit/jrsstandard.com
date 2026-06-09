@@ -74,7 +74,7 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
   </div>
   <div class="bm">
     <div class="bm-h">&#9654; Benchmark Results &middot; Rungs 2 &amp; 3 (computed live)</div>
-    <p class="sub" style="font-size:12.5px;margin-bottom:10px">Reviewer agreement = how often independent reviewers reached the same JRS verdict (reliability, rung 3). Accuracy vs key = how often the AI engine and the reviewer majority matched the expert consensus answer key (rung 2). Empty until records, reviews, an answer key, and AI scoring exist.</p>
+    <p class="sub" style="font-size:12.5px;margin-bottom:10px">Reviewer agreement = how often independent reviewers reached the same JRS verdict (reliability, rung 3). Accuracy vs key = how often the AI engine and the reviewer majority matched the answer key (rung 2). The <b>answer key builds itself</b> from expert reviewers (anyone whose code starts with &ldquo;E&rdquo;): where the experts agree, that becomes the key; where they split it shows &ldquo;split.&rdquo; Rows marked <b>(demo)</b> are illustrative placeholders, not real evidence.</p>
     <div class="bm-cards" id="bm-cards"></div>
     <div style="overflow:auto"><table class="bm-tbl"><thead><tr><th>Record</th><th>JRS reviewers</th><th>Reviewer majority</th><th>Agreement</th><th>Answer key</th><th>AI verdict</th><th>AI vs key</th></tr></thead><tbody id="bm-rows"><tr><td colspan="7">Loading&hellip;</td></tr></tbody></table></div>
   </div>
@@ -164,26 +164,51 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
   var COND=['basis_identification','reasoning_traceability','cold_reviewer_clarity','accountability_support','temporal_reconstructability'];
   function esc(t){var d=document.createElement('div');d.textContent=(t==null?'':String(t));return d.innerHTML;}
   function tag(d){return d?'<span class="tag t-'+d+'">'+d.replace('_',' ')+'</span>':'<span class="tag">&mdash;</span>';}
+  function det(c){var v=COND.map(function(k){return c[k];});if(v.indexOf('gap')>-1)return'gap_identified';if(v.indexOf('review')>-1)return'review_required';return'ready';}
   function majority(a){var c={};a.forEach(function(x){c[x]=(c[x]||0)+1;});var b=null,n=0;Object.keys(c).forEach(function(k){if(c[k]>n){n=c[k];b=k;}});return{value:b,share:a.length?n/a.length:0,n:a.length};}
+  function isExpert(code){return String(code||'').trim().toLowerCase().charAt(0)==='e';}
+  // Build the answer key automatically from EXPERT labels (code starts with 'E').
+  function keyFromExperts(expLabels){
+    if(!expLabels.length) return null;
+    var c={},unresolved=false;
+    COND.forEach(function(k){
+      var counts={},best=null,n=0,tie=false,total=0;
+      expLabels.forEach(function(l){var v=l.conditions&&l.conditions[k]; if(v){counts[v]=(counts[v]||0)+1;}});
+      Object.keys(counts).forEach(function(v){total+=counts[v]; if(counts[v]>n){n=counts[v];best=v;tie=false;} else if(counts[v]===n){tie=true;}});
+      if(best===null) unresolved=true;
+      if(tie && total>1) unresolved=true;
+      c[k]=best;
+    });
+    if(unresolved) return {unresolved:true};
+    return {conditions:c, determination:det(c), source:'experts'};
+  }
   function pct(a,b){return b?Math.round(a/b*100)+'%':'&mdash;';}
   function card(v,k){return '<div class="bm-card"><div class="bm-cv">'+v+'</div><div class="bm-ck">'+k+'</div></div>';}
   Promise.all([
-    fetch(U+'/rest/v1/bench_records?select=id,text&active=eq.true',{headers:HDR}).then(function(r){return r.ok?r.json():[];}),
-    fetch(U+'/rest/v1/bench_labels?select=record_id,mode,determination',{headers:HDR}).then(function(r){return r.ok?r.json():[];}),
+    fetch(U+'/rest/v1/bench_records?select=id,text,record_type&active=eq.true',{headers:HDR}).then(function(r){return r.ok?r.json():[];}),
+    fetch(U+'/rest/v1/bench_labels?select=record_id,mode,determination,labeler_code,conditions',{headers:HDR}).then(function(r){return r.ok?r.json():[];}),
     fetch(U+'/rest/v1/bench_gold?select=record_id,determination,conditions',{headers:HDR}).then(function(r){return r.ok?r.json():[];}),
     fetch(U+'/rest/v1/bench_ai_verdicts?select=record_id,determination,conditions',{headers:HDR}).then(function(r){return r.ok?r.json():[];})
   ]).then(function(res){
     var recs=res[0]||[],labels=res[1]||[],gold=res[2]||[],ai=res[3]||[];
-    if(!recs.length){ document.getElementById('bm-rows').innerHTML='<tr><td colspan="7">No benchmark records yet. Add records in bench-admin.html and have reviewers score them.</td></tr>'; document.getElementById('bm-cards').innerHTML=card('&mdash;','Reviewer agreement')+card('&mdash;','AI accuracy vs key')+card('0','Records'); return; }
+    if(!recs.length){ document.getElementById('bm-rows').innerHTML='<tr><td colspan="7">No benchmark records yet. Add records in bench-admin.html (or run the SQL to load the demo set), then have reviewers score them.</td></tr>'; document.getElementById('bm-cards').innerHTML=card('&mdash;','Reviewer agreement')+card('&mdash;','AI accuracy vs key')+card('0','Records'); return; }
     var gB={};gold.forEach(function(g){gB[g.record_id]=g;}); var aB={};ai.forEach(function(a){aB[a.record_id]=a;});
     var agrSum=0,agrN=0,aiMatch=0,aiN=0,humMatch=0,humN=0,condM=0,condT=0,rowsH='';
     recs.forEach(function(r){
-      var dets=labels.filter(function(l){return l.record_id===r.id&&l.mode==='jrs';}).map(function(l){return l.determination;});
-      var maj=majority(dets); if(maj.n>=2){agrSum+=maj.share;agrN++;}
-      var g=gB[r.id],a=aB[r.id],corr=null;
-      if(g&&a){aiN++;corr=a.determination===g.determination;if(corr)aiMatch++;COND.forEach(function(k){if(g.conditions&&a.conditions){condT++;if(g.conditions[k]===a.conditions[k])condM++;}});}
-      if(g&&maj.value){humN++;if(maj.value===g.determination)humMatch++;}
-      rowsH+='<tr><td>'+esc(r.text.slice(0,70))+(r.text.length>70?'…':'')+'</td><td>'+maj.n+'</td><td>'+tag(maj.value)+'</td><td>'+(maj.n>=2?Math.round(maj.share*100)+'%':'<span class="bm-ck">need 2+</span>')+'</td><td>'+tag(g&&g.determination)+'</td><td>'+tag(a&&a.determination)+'</td><td>'+((g&&a)?(corr?'<span class="ok">match</span>':'<span class="no">mismatch</span>'):'<span class="bm-ck">&mdash;</span>')+'</td></tr>';
+      var jrs=labels.filter(function(l){return l.record_id===r.id&&l.mode==='jrs';});
+      var experts=jrs.filter(function(l){return isExpert(l.labeler_code);});
+      var reviewers=jrs.filter(function(l){return !isExpert(l.labeler_code);});
+      var maj=majority(reviewers.map(function(l){return l.determination;}));
+      if(maj.n>=2){agrSum+=maj.share;agrN++;}
+      // answer key: explicit admin gold wins; else auto-derived expert consensus
+      var explicit=gB[r.id]; var ek=keyFromExperts(experts);
+      var key=explicit?{determination:explicit.determination,conditions:explicit.conditions,source:'set'}:(ek&&!ek.unresolved?ek:null);
+      var keyLabel=key?key.determination:(ek&&ek.unresolved?'(experts split)':null);
+      var a=aB[r.id],corr=null;
+      if(key&&a){aiN++;corr=a.determination===key.determination;if(corr)aiMatch++;COND.forEach(function(k){if(key.conditions&&a.conditions){condT++;if(key.conditions[k]===a.conditions[k])condM++;}});}
+      if(key&&maj.value){humN++;if(maj.value===key.determination)humMatch++;}
+      var rt=(r.record_type||'').indexOf('demo')>-1?' <span class="bm-ck">(demo)</span>':'';
+      rowsH+='<tr><td>'+esc(r.text.slice(0,66))+(r.text.length>66?'…':'')+rt+'</td><td>'+reviewers.length+(experts.length?(' <span class="bm-ck">+'+experts.length+'E</span>'):'')+'</td><td>'+tag(maj.value)+'</td><td>'+(maj.n>=2?Math.round(maj.share*100)+'%':'<span class="bm-ck">need 2+</span>')+'</td><td>'+(key?tag(key.determination):(ek&&ek.unresolved?'<span class="bm-ck">split</span>':'<span class="bm-ck">&mdash;</span>'))+'</td><td>'+tag(a&&a.determination)+'</td><td>'+((key&&a)?(corr?'<span class="ok">match</span>':'<span class="no">mismatch</span>'):'<span class="bm-ck">&mdash;</span>')+'</td></tr>';
     });
     document.getElementById('bm-rows').innerHTML=rowsH;
     document.getElementById('bm-cards').innerHTML=card(pct(agrSum,agrN),'Reviewer agreement (avg)')+card(pct(aiMatch,aiN),'AI accuracy vs key')+card(pct(condM,condT),'AI per-condition vs key')+card(pct(humMatch,humN),'Reviewer majority vs key')+card(recs.length,'Records')+card(labels.length,'Reviews');

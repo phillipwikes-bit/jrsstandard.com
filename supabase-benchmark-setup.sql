@@ -79,3 +79,19 @@ drop policy if exists "insert outcome" on public.bench_outcomes;
 create policy "insert outcome" on public.bench_outcomes for insert to anon with check (true);
 drop policy if exists "read outcomes" on public.bench_outcomes;
 create policy "read outcomes" on public.bench_outcomes for select to anon using (true);
+
+-- ===== illustrative demo set (so the results page shows a working example) =====
+-- Clearly marked record_type 'illustrative-demo'. The answer key here is a provisional
+-- placeholder written by one author, NOT an expert consensus. Real Rung 2 numbers come
+-- from records scored by reviewers whose codes start with 'E'.
+insert into public.bench_records (id, text, record_type, ai_function, kind, active) values
+ ('00000000-0000-0000-0000-0000000000a1','Michael has demonstrated increasingly unprofessional conduct over the last several weeks. His poor attitude has negatively affected team morale and productivity. Despite previous coaching conversations, meaningful improvement has not been observed.','illustrative-demo','narrative','constructed',true),
+ ('00000000-0000-0000-0000-0000000000a2','Over the past quarter the employee submitted several reports after the deadline. A meeting was held in March to discuss timeliness. Some improvement was observed, though issues reportedly continued.','illustrative-demo','summarization','constructed',true),
+ ('00000000-0000-0000-0000-0000000000a3','On March 4, 11, and 18 the weekly report was submitted after the Friday 5:00 PM deadline (timestamps in the shared drive). On March 20 the manager met with the employee; notes are on file. Training was scheduled for March 27; from March 27 to April 30 all reports were on time (shared-drive log).','illustrative-demo','analysis','constructed',true)
+on conflict (id) do nothing;
+
+insert into public.bench_gold (record_id, conditions, determination) values
+ ('00000000-0000-0000-0000-0000000000a1','{"basis_identification":"gap","reasoning_traceability":"gap","cold_reviewer_clarity":"gap","accountability_support":"gap","temporal_reconstructability":"gap"}','gap_identified'),
+ ('00000000-0000-0000-0000-0000000000a2','{"basis_identification":"review","reasoning_traceability":"review","cold_reviewer_clarity":"review","accountability_support":"review","temporal_reconstructability":"review"}','review_required'),
+ ('00000000-0000-0000-0000-0000000000a3','{"basis_identification":"pass","reasoning_traceability":"pass","cold_reviewer_clarity":"pass","accountability_support":"pass","temporal_reconstructability":"pass"}','ready')
+on conflict (record_id) do nothing;
