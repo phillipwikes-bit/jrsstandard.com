@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>JRS Benchmark Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#050505;--surface:#121212;--surface2:#1A1A1A;--rule:#2A2A2A;--text:#F2F2F2;--muted:#B3B3B3;--muted-soft:#8A8A8A;--accent:#BE9447;--accent-dim:#7A5E28;--ready:#5DBF82;--review:#D4A055;--gap:#E88080}
+html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+.hd{border-bottom:1px solid var(--rule);padding:16px 20px}
+.hd-in{max-width:760px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.wm{font-family:'Bodoni Moda',serif;font-size:22px;color:var(--accent);text-decoration:none}
+.meta{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft)}
+h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:26px;margin:24px 0 8px}
+.sub{font-size:13.5px;color:var(--muted);max-width:640px}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:22px 0 8px}
+label.f{display:block;font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin:10px 0 5px}
+input,select,textarea{width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:13px;padding:10px 12px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:11px 16px;border:1px solid var(--accent-dim);color:var(--accent);background:none;cursor:pointer}
+.btn.solid{background:var(--accent);color:#050505;font-weight:600;border-color:var(--accent)}
+.reclist{margin-top:8px}
+.recitem{border:1px solid var(--rule);background:var(--surface);padding:12px 14px;margin-bottom:8px;cursor:pointer;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.recitem:hover{border-color:var(--accent-dim)}
+.recitem .t{font-size:13px;color:var(--text);line-height:1.5;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:560px}
+.recitem .s{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);white-space:nowrap}
+.recitem.done{opacity:.5}
+.card{border:1px solid var(--rule);background:var(--surface);padding:16px 18px;margin-top:10px}
+.rectext{font-size:14px;color:var(--text);line-height:1.7;border-left:2px solid var(--accent-dim);padding:10px 14px;background:var(--surface2);margin-bottom:14px;white-space:pre-wrap}
+.cond{border-bottom:1px solid var(--rule);padding:12px 0}
+.cond-q{font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:8px}
+.opts{display:flex;gap:8px;flex-wrap:wrap}
+.opt{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--rule);color:var(--muted-soft);padding:8px 14px;cursor:pointer}
+.opt.sel-pass{border-color:var(--ready);color:var(--ready)}
+.opt.sel-review{border-color:var(--review);color:var(--review)}
+.opt.sel-gap{border-color:var(--gap);color:var(--gap)}
+.det{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;margin-top:12px;color:var(--muted-soft)}
+.status{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;margin-left:12px}
+.note{font-size:12px;color:var(--muted-soft);border-left:2px solid var(--rule);padding:10px 14px;background:var(--surface);margin:16px 0}
+.ft{border-top:1px solid var(--rule);padding:18px 20px;margin-top:26px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-soft)}
+@media(max-width:600px){.row2{grid-template-columns:1fr}.recitem .t{max-width:200px}}
+</style>
+</head>
+<body>
+<header class="hd"><div class="hd-in"><a href="/" class="wm">JRS<span style="font-size:9px;vertical-align:super">&#8482;</span></a><div class="meta">Benchmark Review</div></div></header>
+<main><div class="wrap">
+  <div id="gate">
+    <h1>Structured Record Review</h1>
+    <p class="sub">Invite-only. You will review records one at a time against the five JRS conditions, marking each Pass, Review, or Gap. Work independently: do not confer with other reviewers. Your responses are recorded under your reviewer code (no name or email).</p>
+    <label class="f">Reviewer code (from your invitation)</label>
+    <input id="code" placeholder="e.g. R-014">
+    <div class="row2">
+      <div><label class="f">Your role</label>
+        <select id="role"><option value="">Select…</option><option>HR</option><option>Compliance</option><option>Audit</option><option>Investigations</option><option>Employee Relations</option><option>Legal Review</option><option>AI Governance</option><option>Risk Management</option><option>Organizational Psychology</option><option>Other</option></select></div>
+      <div><label class="f">Review mode</label>
+        <select id="mode"><option value="jrs">JRS (five conditions)</option><option value="normal">Normal review (your usual standard)</option></select></div>
+    </div>
+    <p class="sub" style="margin-top:8px;font-size:12px">Normal mode: judge the record the way you ordinarily would, then a later session can compare it to JRS. JRS mode: apply the five conditions below.</p>
+    <button class="btn solid" style="margin-top:14px" onclick="start()">Begin</button>
+  </div>
+
+  <div id="app" style="display:none">
+    <div class="eyebrow" id="who"></div>
+    <h1 style="margin-top:4px">Records</h1>
+    <p class="sub" id="progress"></p>
+    <div class="reclist" id="reclist"></div>
+    <div class="note">When every record shows as reviewed, you are done. You can close this page.</div>
+  </div>
+</div></main>
+<footer class="ft"><div class="wrap" style="padding:0">&#169; 2026 Phillip Wikes &middot; JRS&#8482; &middot; confidential &middot; not indexed</div></footer>
+<script>
+var U='https://pjzxkeviouofdseagvpf.supabase.co', K='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e', HDR={'apikey':K,'Authorization':'Bearer '+K};
+var COND=[
+ {k:'basis_identification',q:'Basis Identification — does the record identify the basis for its conclusions?'},
+ {k:'reasoning_traceability',q:'Reasoning Traceability — can a later reviewer trace reasoning from evidence to conclusion?'},
+ {k:'cold_reviewer_clarity',q:'Cold-Reviewer Clarity — would a reviewer with no prior knowledge understand it from the record alone?'},
+ {k:'accountability_support',q:'Accountability Support — are the decision-makers and reviewers identifiable?'},
+ {k:'temporal_reconstructability',q:'Temporal Reconstructability — does it hold up read cold years later (dates, sequence, sources)?'}
+];
+var code,role,mode,records=[],doneSet={};
+function esc(t){var d=document.createElement('div');d.textContent=(t==null?'':String(t));return d.innerHTML;}
+function det(c){var v=COND.map(function(x){return c[x.k];});if(v.indexOf('gap')>-1)return'gap_identified';if(v.indexOf('review')>-1)return'review_required';return'ready';}
+function start(){
+  code=(document.getElementById('code').value||'').trim();
+  role=document.getElementById('role').value; mode=document.getElementById('mode').value;
+  if(!code){alert('Enter your reviewer code.');return;}
+  try{doneSet=JSON.parse(localStorage.getItem('bench-done-'+code)||'{}');}catch(e){doneSet={};}
+  document.getElementById('gate').style.display='none';
+  document.getElementById('app').style.display='block';
+  document.getElementById('who').textContent='Reviewer '+code+(role?(' · '+role):'')+' · '+(mode==='jrs'?'JRS mode':'Normal mode');
+  load();
+}
+function load(){
+  fetch(U+'/rest/v1/bench_records?select=id,text,record_type,ai_function&active=eq.true&order=created_at.asc',{headers:HDR})
+   .then(function(r){return r.json();})
+   .then(function(rows){ records=rows||[]; render(); })
+   .catch(function(){ document.getElementById('reclist').innerHTML='<div class="note">Could not load records. Run supabase-benchmark-setup.sql and add records in the admin page.</div>'; });
+}
+function render(){
+  var d=Object.keys(doneSet).length;
+  document.getElementById('progress').textContent=records.length?('Reviewed '+d+' of '+records.length+'.'):'No records available yet.';
+  document.getElementById('reclist').innerHTML=records.map(function(r,i){
+    var done=doneSet[r.id];
+    return '<div class="recitem'+(done?' done':'')+'" onclick="openRec('+i+')"><span class="t">'+esc(r.text.slice(0,90))+(r.text.length>90?'…':'')+'</span><span class="s">'+(done?'reviewed':('record '+(i+1)))+(r.ai_function?(' · '+esc(r.ai_function)):'')+'</span></div>';
+  }).join('');
+}
+window.openRec=function(i){
+  var r=records[i]; var picks={};
+  var html='<div class="card"><div class="rectext">'+esc(r.text)+'</div>';
+  if(mode==='jrs'){
+    COND.forEach(function(c,ci){
+      html+='<div class="cond"><div class="cond-q">'+esc(c.q)+'</div><div class="opts">'
+       +['pass','review','gap'].map(function(v){return '<span class="opt" id="o-'+ci+'-'+v+'" onclick="pick('+ci+',\''+v+'\')">'+v+'</span>';}).join('')+'</div></div>';
+    });
+    html+='<div class="det" id="det">Determination: —</div>';
+  } else {
+    html+='<div class="cond"><div class="cond-q">Your overall verdict (normal review)</div><div class="opts">'
+     +[['ready','Adequate'],['review_required','Needs work'],['gap_identified','Inadequate']].map(function(p){return '<span class="opt" id="n-'+p[0]+'" onclick="npick(\''+p[0]+'\')">'+p[1]+'</span>';}).join('')+'</div></div>';
+  }
+  html+='<label class="f" style="margin-top:12px">Note (optional, no names or case details)</label><textarea id="rn" rows="3"></textarea>';
+  html+='<div style="margin-top:12px"><button class="btn solid" onclick="submitRec(\''+r.id+'\')">Submit &amp; next</button><span class="status" id="rs"></span></div></div>';
+  // replace list with the record card
+  document.getElementById('reclist').innerHTML=html;
+  window._picks=picks; window._nverdict=null;
+  window.scrollTo(0,0);
+};
+window.pick=function(ci,v){
+  window._picks[COND[ci].k]=v;
+  ['pass','review','gap'].forEach(function(x){var e=document.getElementById('o-'+ci+'-'+x);e.className='opt';});
+  document.getElementById('o-'+ci+'-'+v).className='opt sel-'+v;
+  var c=window._picks; if(COND.every(function(x){return c[x.k];})) document.getElementById('det').textContent='Determination: '+det(c).replace('_',' ').toUpperCase();
+};
+window.npick=function(v){ window._nverdict=v; ['ready','review_required','gap_identified'].forEach(function(x){document.getElementById('n-'+x).className='opt';}); document.getElementById('n-'+v).className='opt sel-'+(v==='ready'?'pass':(v==='review_required'?'review':'gap')); };
+window.submitRec=function(rid){
+  var st=document.getElementById('rs'); var conditions=null, determination=null;
+  if(mode==='jrs'){ var c=window._picks; if(!COND.every(function(x){return c[x.k];})){st.textContent='Mark all five.';st.style.color='var(--gap)';return;} conditions=c; determination=det(c); }
+  else { if(!window._nverdict){st.textContent='Pick a verdict.';st.style.color='var(--gap)';return;} determination=window._nverdict; }
+  var note=(document.getElementById('rn').value||'').trim();
+  st.textContent='Saving…'; st.style.color='var(--muted-soft)';
+  fetch(U+'/rest/v1/bench_labels',{method:'POST',headers:Object.assign({'Content-Type':'application/json','Prefer':'return=minimal'},HDR),body:JSON.stringify({record_id:rid,labeler_code:code,role:role,mode:mode,conditions:conditions,determination:determination,note:note})})
+   .then(function(r){ if(!r.ok)throw 0; doneSet[rid]=1; try{localStorage.setItem('bench-done-'+code,JSON.stringify(doneSet));}catch(e){} render(); })
+   .catch(function(){ st.textContent='Could not save. Try again.'; st.style.color='var(--gap)'; });
+};
+</script>
+</body>
+</html>

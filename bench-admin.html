@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>JRS Benchmark Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#050505;--surface:#121212;--surface2:#1A1A1A;--rule:#2A2A2A;--text:#F2F2F2;--muted:#B3B3B3;--muted-soft:#8A8A8A;--accent:#BE9447;--accent-dim:#7A5E28;--ready:#5DBF82;--review:#D4A055;--gap:#E88080}
+html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6}
+a{color:var(--accent)}.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+.hd{border-bottom:1px solid var(--rule);padding:16px 20px}.hd-in{max-width:880px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+.wm{font-family:'Bodoni Moda',serif;font-size:22px;color:var(--accent);text-decoration:none}.meta{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft)}
+h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:24px;margin:22px 0 6px}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:24px 0 8px}
+.sub{font-size:13px;color:var(--muted);max-width:680px}
+label.f{display:block;font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin:10px 0 5px}
+input,select,textarea{width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:13px;padding:9px 12px}
+.row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.btn{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:10px 15px;border:1px solid var(--accent-dim);color:var(--accent);background:none;cursor:pointer;margin-top:10px}
+.btn.solid{background:var(--accent);color:#050505;font-weight:600;border-color:var(--accent)}
+.card{border:1px solid var(--rule);background:var(--surface);padding:16px 18px;margin-bottom:14px}
+.rec{border-bottom:1px solid var(--rule);padding:10px 0;font-size:12.5px;color:var(--muted);display:flex;justify-content:space-between;gap:12px}
+.rec .t{max-width:560px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--text)}
+.opts{display:flex;gap:6px;flex-wrap:wrap}.opt{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--rule);color:var(--muted-soft);padding:6px 10px;cursor:pointer}
+.opt.sel-pass{border-color:var(--ready);color:var(--ready)}.opt.sel-review{border-color:var(--review);color:var(--review)}.opt.sel-gap{border-color:var(--gap);color:var(--gap)}
+.status{font-family:'JetBrains Mono',monospace;font-size:10px;margin-left:10px;color:var(--muted-soft)}
+@media(max-width:640px){.row{grid-template-columns:1fr}.rec .t{max-width:180px}}
+</style>
+</head>
+<body>
+<header class="hd"><div class="hd-in"><a href="/" class="wm">JRS<span style="font-size:9px;vertical-align:super">&#8482;</span></a><div class="meta">Benchmark Admin</div></div></header>
+<main><div class="wrap">
+  <h1>Benchmark Workspace — Admin</h1>
+  <p class="sub">Manage the record bank, set the consensus answer key, and run AI scoring. All actions require your admin token (your RUN_TOKEN, or a BENCH_ADMIN_TOKEN if you set one).</p>
+  <label class="f">Admin token</label>
+  <input id="token" type="password" placeholder="RUN_TOKEN">
+  <div><button class="btn solid" onclick="loadRecs()">Load records</button><span class="status" id="loadstatus"></span></div>
+
+  <div class="eyebrow">Add a record</div>
+  <div class="card">
+    <label class="f">Record text</label><textarea id="rtext" rows="4" placeholder="Paste the record to be reviewed"></textarea>
+    <div class="row">
+      <div><label class="f">Record type</label><input id="rtype" placeholder="e.g. termination"></div>
+      <div><label class="f">AI function</label>
+        <select id="rfunc"><option value="">—</option><option>summarization</option><option>recommendation</option><option>analysis</option><option>narrative</option></select></div>
+      <div><label class="f">Kind</label><select id="rkind"><option>constructed</option><option>real</option></select></div>
+    </div>
+    <button class="btn" onclick="addRec()">Add record</button><span class="status" id="addstatus"></span>
+  </div>
+
+  <div class="eyebrow">AI scoring</div>
+  <div class="card">
+    <p class="sub">Runs the Review Engine on every active record and stores its verdict (for accuracy comparison). About $0.003 per record.</p>
+    <button class="btn" onclick="scoreAll()">Run AI scoring on all records</button><span class="status" id="scorestatus"></span>
+  </div>
+
+  <div class="eyebrow">Record bank &amp; answer key</div>
+  <div id="reclist"><p class="sub">Load records to manage them.</p></div>
+</div></main>
+<script>
+var ADMIN='/api/bench-admin';
+var COND=['basis_identification','reasoning_traceability','cold_reviewer_clarity','accountability_support','temporal_reconstructability'];
+var CN={basis_identification:'Basis',reasoning_traceability:'Reasoning',cold_reviewer_clarity:'Cold-Clarity',accountability_support:'Accountability',temporal_reconstructability:'Temporal'};
+function tok(){return (document.getElementById('token').value||'').trim();}
+function esc(t){var d=document.createElement('div');d.textContent=(t==null?'':String(t));return d.innerHTML;}
+function post(body){return fetch(ADMIN,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.assign({token:tok()},body))}).then(function(r){return r.json();});}
+function loadRecs(){
+  var s=document.getElementById('loadstatus'); s.textContent='Loading…';
+  post({action:'list'}).then(function(j){
+    if(j.error){s.textContent=j.error;return;} s.textContent=j.records.length+' records';
+    window._recs=j.records; renderRecs();
+  }).catch(function(){s.textContent='error';});
+}
+function addRec(){
+  var s=document.getElementById('addstatus'); var t=(document.getElementById('rtext').value||'').trim();
+  if(t.length<20){s.textContent='Record too short.';return;}
+  s.textContent='Adding…';
+  post({action:'add_record',text:t,record_type:document.getElementById('rtype').value,ai_function:document.getElementById('rfunc').value,kind:document.getElementById('rkind').value}).then(function(j){
+    s.textContent=j.error||'Added.'; if(!j.error){document.getElementById('rtext').value='';loadRecs();}
+  });
+}
+function scoreAll(){
+  var s=document.getElementById('scorestatus'); s.textContent='Scoring (may take ~30s)…';
+  post({action:'score_all'}).then(function(j){ s.textContent=j.error||('Scored '+j.scored+' of '+j.of+'.'); });
+}
+window.setGold=function(rid){
+  var c={}; var ok=COND.every(function(k){var v=window._gold&&window._gold[rid]&&window._gold[rid][k];if(v)c[k]=v;return v;});
+  if(!ok){alert('Pick pass/review/gap for all five conditions on this record.');return;}
+  post({action:'set_gold',record_id:rid,conditions:c}).then(function(j){ alert(j.error||'Answer key saved for this record.'); });
+};
+window.goldPick=function(rid,k,v){
+  window._gold=window._gold||{}; window._gold[rid]=window._gold[rid]||{}; window._gold[rid][k]=v;
+  COND.forEach(function(kk){}); ['pass','review','gap'].forEach(function(x){var e=document.getElementById('g-'+rid+'-'+k+'-'+x);if(e)e.className='opt';});
+  var el=document.getElementById('g-'+rid+'-'+k+'-'+v); if(el)el.className='opt sel-'+v;
+};
+window.toggleActive=function(rid,act){ post({action:'activate',record_id:rid,active:act}).then(function(){loadRecs();}); };
+function renderRecs(){
+  document.getElementById('reclist').innerHTML=(window._recs||[]).map(function(r){
+    var gold=COND.map(function(k){
+      return '<div style="margin-top:6px"><span style="font-family:\'JetBrains Mono\',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft)">'+CN[k]+'</span><div class="opts" style="margin-top:3px">'
+        +['pass','review','gap'].map(function(v){return '<span class="opt" id="g-'+r.id+'-'+k+'-'+v+'" onclick="goldPick(\''+r.id+'\',\''+k+'\',\''+v+'\')">'+v+'</span>';}).join('')+'</div></div>';
+    }).join('');
+    return '<div class="card"><div class="rec"><span class="t">'+esc(r.text.slice(0,120))+'</span><span>'+(r.kind||'')+' · '+(r.active?'active':'inactive')+'</span></div>'
+      +'<div style="font-size:11.5px;color:var(--muted-soft);margin:6px 0">'+esc(r.text)+'</div>'
+      +'<div class="eyebrow" style="margin:8px 0 0;font-size:8px">Set answer key (consensus verdict)</div>'+gold
+      +'<div style="margin-top:10px"><button class="btn" onclick="setGold(\''+r.id+'\')">Save answer key</button> '
+      +'<button class="btn" onclick="toggleActive(\''+r.id+'\','+(r.active?'false':'true')+')">'+(r.active?'Deactivate':'Activate')+'</button></div></div>';
+  }).join('')||'<p class="sub">No records yet. Add one above.</p>';
+}
+</script>
+</body>
+</html>

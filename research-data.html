@@ -81,7 +81,12 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
     ['Published Findings','/rest/v1/findings?select=headline,classification,observation,research_question,supporting_data,evidence_class,metrics,created_at&published=eq.true','observational findings + metrics'],
     ['Research Questions','/rest/v1/research_questions?select=*','open questions under investigation'],
     ['Study Registry','/rest/v1/studies?select=*','study statuses'],
-    ['Study Runs','/rest/v1/study_runs?select=*','automated run metrics']
+    ['Study Runs','/rest/v1/study_runs?select=*','automated run metrics'],
+    ['Benchmark · Records','/rest/v1/bench_records?select=*&active=eq.true','the shared record set (rungs 2&3)'],
+    ['Benchmark · Reviewer Labels','/rest/v1/bench_labels?select=*','human five-condition scores (reliability)'],
+    ['Benchmark · Answer Key','/rest/v1/bench_gold?select=*','expert consensus verdicts'],
+    ['Benchmark · AI Verdicts','/rest/v1/bench_ai_verdicts?select=*','engine verdict per record (accuracy)'],
+    ['Benchmark · Outcomes','/rest/v1/bench_outcomes?select=*','downstream outcomes (criterion validity)']
   ];
   var host=document.getElementById('datasets');
   var loaded={}, done=0;

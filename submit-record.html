@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Contribute a Record | JRS Benchmark</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#050505;--surface:#121212;--surface2:#1A1A1A;--rule:#2A2A2A;--text:#F2F2F2;--muted:#B3B3B3;--muted-soft:#8A8A8A;--accent:#BE9447;--accent-dim:#7A5E28;--ready:#5DBF82;--gap:#E88080}
+html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.65}
+a{color:var(--accent)}.wrap{max-width:680px;margin:0 auto;padding:0 20px}
+.hd{border-bottom:1px solid var(--rule);padding:16px 20px}.hd-in{max-width:680px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+.wm{font-family:'Bodoni Moda',serif;font-size:22px;color:var(--accent);text-decoration:none}.meta{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft)}
+h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:26px;margin:24px 0 8px}
+.sub{font-size:13.5px;color:var(--muted)}
+label.f{display:block;font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin:14px 0 5px}
+input,select,textarea{width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:13px;padding:10px 12px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:11px 18px;border:none;background:var(--accent);color:#050505;font-weight:600;cursor:pointer;margin-top:14px}
+.note{font-size:12.5px;color:var(--muted-soft);border-left:2px solid var(--accent);padding:12px 15px;background:var(--surface);margin:16px 0}
+.status{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;margin-left:12px}
+.ft{border-top:1px solid var(--rule);padding:18px 20px;margin-top:26px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-soft)}
+@media(max-width:600px){.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="hd"><div class="hd-in"><a href="/" class="wm">JRS<span style="font-size:9px;vertical-align:super">&#8482;</span></a><div class="meta">Contribute a Record</div></div></header>
+<main><div class="wrap">
+  <h1>Contribute a Record for Review</h1>
+  <p class="sub">To move beyond constructed examples, the benchmark needs real, <b>de-identified</b> records. Paste a record with all identifying details removed. It is held privately for a de-identification check before it can enter the shared review set.</p>
+  <div class="note"><b>Before you paste:</b> remove names, dates of birth, contact details, employee/case IDs, and anything that could identify a person or organization. The text is screened for common identifiers, but you are responsible for redaction. Do not submit anything privileged or restricted.</div>
+  <form id="f" onsubmit="return submitRec(event)">
+    <label class="f">Record text (de-identified)</label>
+    <textarea id="text" rows="8" required placeholder="Paste the de-identified record"></textarea>
+    <div class="row">
+      <div><label class="f">Record type (optional)</label><input id="rtype" placeholder="e.g. investigation summary"></div>
+      <div><label class="f">AI function involved (optional)</label>
+        <select id="rfunc"><option value="">—</option><option>summarization</option><option>recommendation</option><option>analysis</option><option>narrative</option><option>none / unknown</option></select></div>
+    </div>
+    <button class="btn" type="submit">Submit for review</button><span class="status" id="st"></span>
+  </form>
+</div></main>
+<footer class="ft"><div class="wrap" style="padding:0">&#169; 2026 Phillip Wikes &middot; JRS&#8482; &middot; confidential &middot; not indexed</div></footer>
+<script>
+var U='https://pjzxkeviouofdseagvpf.supabase.co', K='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e';
+function jrsSanitizeCheck(text){
+  var patterns=[{re:/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g,label:'email address'},{re:/\b\d{3}[-.\s]?\d{3}[-.\s]?\d{4}\b/g,label:'phone number'},{re:/\b\d{3}-\d{2}-\d{4}\b/g,label:'SSN'},{re:/\b\d{4}[\s-]?\d{4}[\s-]?\d{4}[\s-]?\d{4}\b/g,label:'card number'}];
+  var found=[]; patterns.forEach(function(p){if(p.re.test(text))found.push(p.label);});
+  if(found.length){return confirm('Potential sensitive identifier detected ('+found.join(', ')+'). Confirm all personally identifiable information has been redacted before submission.');}
+  return true;
+}
+function submitRec(e){
+  e.preventDefault();
+  var t=(document.getElementById('text').value||'').trim(), st=document.getElementById('st');
+  if(t.length<20){st.textContent='Record too short.';st.style.color='var(--gap)';return false;}
+  if(!jrsSanitizeCheck(t))return false;
+  st.textContent='Submitting…'; st.style.color='var(--muted-soft)';
+  fetch(U+'/rest/v1/bench_records',{method:'POST',headers:{'apikey':K,'Authorization':'Bearer '+K,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify({text:t,record_type:document.getElementById('rtype').value||null,ai_function:document.getElementById('rfunc').value||null,kind:'real',active:false})})
+   .then(function(r){ if(!r.ok)throw 0; document.getElementById('f').reset(); st.textContent='Received. Held privately for de-identification review.'; st.style.color='var(--ready)'; })
+   .catch(function(){ st.textContent='Could not submit. Email info@jrsstandard.com.'; st.style.color='var(--gap)'; });
+  return false;
+}
+</script>
+</body>
+</html>
