@@ -2704,6 +2704,7 @@ function toggleModule(idx) {
 function markComplete(idx) {
   progress[idx] = true;
   localStorage.setItem('jrs-training-progress', JSON.stringify(progress));
+  try{ jrsRec('module_complete',{module:idx,role:(progress&&progress.role)||null}); }catch(e){}
   var panel = document.getElementById('module-panel-' + idx);
   if (panel) panel.classList.remove('open');
   updateProgressDisplay();
@@ -2832,6 +2833,17 @@ function recordModObs(btn) {
   btn.style.color = 'var(--accent)';
   btn.style.borderColor = 'rgba(190,148,71,.5)';
   btn.style.background = 'rgba(190,148,71,.06)';
+  try{
+    var mp=btn; while(mp&&!(mp.id&&mp.id.indexOf('module-panel-')===0)) mp=mp.parentNode;
+    var mod=(mp&&mp.id)?mp.id.replace('module-panel-',''):null;
+    jrsRec('module_recognition',{module:mod,value:btn.getAttribute('data-val'),role:(progress&&progress.role)||null});
+  }catch(e){}
+}
+function jrsRec(type,payload){
+  try{
+    var SBU='https://pjzxkeviouofdseagvpf.supabase.co',SBK='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e';
+    fetch(SBU+'/rest/v1/interaction_events',{method:'POST',headers:{'apikey':SBK,'Authorization':'Bearer '+SBK,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify({source:'training',type:type,payload:payload})}).catch(function(){});
+  }catch(e){}
 }
 
 // ── SURVEY ────────────────────────────────────────────────
@@ -2950,8 +2962,10 @@ function selectRole(key) {
   if (card) card.classList.add('role-active');
   var data = ROLE_PATHS[key];
   if (!data) return;
+  var prevRole = progress.role;
   progress.role = key;
   localStorage.setItem('jrs-training-progress', JSON.stringify(progress));
+  if (prevRole !== key) { try{ jrsRec('role_select',{role:key}); }catch(e){} }
   // Simulation column
   var col1 = '<div style="background:var(--surface);padding:18px 20px">'
     + '<div style="font-family:\'JetBrains Mono\',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:10px">Recommended Simulation</div>'
