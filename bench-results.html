@@ -40,51 +40,97 @@ td{padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
   <div class="cards" id="cards"></div>
   <div><button class="btn" onclick="dl('csv')">Export per-record (CSV)</button><button class="btn" onclick="dl('json')">Export (JSON)</button><button class="btn" onclick="location.reload()">Refresh</button></div>
   <div class="eyebrow">Per-record detail</div>
-  <div style="overflow:auto"><table id="tbl"><thead><tr><th>Record</th><th>JRS reviewers</th><th>Reviewer majority</th><th>Agreement</th><th>Answer key</th><th>AI verdict</th><th>AI vs key</th></tr></thead><tbody id="rows"><tr><td colspan="7">Loading…</td></tr></tbody></table></div>
-  <div class="note">Reviewer agreement needs ≥2 JRS reviews per record. Accuracy needs an answer key (set in admin) and an AI verdict (run AI scoring). Percent agreement is shown; for a publication-grade reliability statistic an independent analyst would also compute a chance-corrected measure (e.g., kappa) from the exported data.</div>
+  <div style="overflow:auto"><table id="tbl"><thead><tr><th>Record</th><th>JRS reviewers</th><th>Reviewer majority</th><th>Agreement</th><th>Expert agmt</th><th>Answer key</th><th>AI verdict</th><th>AI vs key</th></tr></thead><tbody id="rows"><tr><td colspan="8">Loading…</td></tr></tbody></table></div>
+  <div class="note" id="gate-note" style="display:none"></div>
+  <div class="note">Reviewer agreement needs ≥2 JRS reviews per record. <b>Accuracy is withheld until expert-to-expert agreement is established</b>: it requires the configured minimum number of independent experts to agree at the configured threshold, plus an AI verdict. Until then accuracy shows &ldquo;gated.&rdquo; Percent agreement is shown; for a publication-grade reliability statistic an independent analyst would also compute a chance-corrected measure (e.g., kappa) from the exported data.</div>
 </div></main>
 <footer class="ft"><div class="wrap" style="padding:0">&#169; 2026 Phillip Wikes &middot; JRS&#8482; &middot; confidential &middot; not indexed</div></footer>
 <script>
 var U='https://pjzxkeviouofdseagvpf.supabase.co', K='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e', HDR={'apikey':K,'Authorization':'Bearer '+K};
 var COND=['basis_identification','reasoning_traceability','cold_reviewer_clarity','accountability_support','temporal_reconstructability'];
+// Founder-set thresholds (PLACEHOLDERS: confirm real values before any accuracy is published).
+var MIN_EXPERTS=3;                    // PLACEHOLDER: minimum independent experts before their consensus counts as an answer key
+var EXPERT_AGREEMENT_THRESHOLD=0.75;  // PLACEHOLDER: minimum expert-to-expert agreement before any accuracy figure is shown
 var rowsOut=[];
 function esc(t){var d=document.createElement('div');d.textContent=(t==null?'':String(t));return d.innerHTML;}
 function tag(d){return d?'<span class="tag t-'+d+'">'+d.replace('_',' ')+'</span>':'<span class="tag">—</span>';}
 function majority(arr){var c={};arr.forEach(function(x){c[x]=(c[x]||0)+1;});var best=null,n=0;Object.keys(c).forEach(function(k){if(c[k]>n){n=c[k];best=k;}});return {value:best,share:arr.length?n/arr.length:0,n:arr.length};}
+function det(c){var v=COND.map(function(k){return c[k];});if(v.indexOf('gap')>-1)return'gap_identified';if(v.indexOf('review')>-1)return'review_required';return'ready';}
+function isExpert(code){return String(code||'').trim().toLowerCase().charAt(0)==='e';}
+function isDemo(r){return String((r&&r.record_type)||'').indexOf('demo')>-1;}
+function expertAgreementFor(ex){ if(ex.length<2) return null; return majority(ex.map(function(l){return l.determination;})).share; }
+function keyFromExperts(ex){
+  var coders={}; ex.forEach(function(l){coders[String(l.labeler_code||'').toLowerCase()]=1;});
+  var nE=Object.keys(coders).length;
+  if(nE<MIN_EXPERTS) return {notKey:true,nExperts:nE};
+  var c={},unresolved=false;
+  COND.forEach(function(k){var counts={},best=null,n=0,tie=false,total=0;
+    ex.forEach(function(l){var v=l.conditions&&l.conditions[k]; if(v){counts[v]=(counts[v]||0)+1;}});
+    Object.keys(counts).forEach(function(v){total+=counts[v]; if(counts[v]>n){n=counts[v];best=v;tie=false;} else if(counts[v]===n){tie=true;}});
+    if(best===null)unresolved=true; if(tie&&total>1)unresolved=true; c[k]=best;});
+  if(unresolved) return {unresolved:true,nExperts:nE};
+  return {conditions:c,determination:det(c),nExperts:nE};
+}
+function pct(a,b){return b?Math.round(a/b*100)+'%':'—';}
+function p1(x){return x==null?'—':Math.round(x*100)+'%';}
 Promise.all([
-  fetch(U+'/rest/v1/bench_records?select=id,text&active=eq.true',{headers:HDR}).then(function(r){return r.json();}),
-  fetch(U+'/rest/v1/bench_labels?select=record_id,mode,determination,conditions',{headers:HDR}).then(function(r){return r.json();}),
+  fetch(U+'/rest/v1/bench_records?select=id,text,record_type&active=eq.true',{headers:HDR}).then(function(r){return r.json();}),
+  fetch(U+'/rest/v1/bench_labels?select=record_id,mode,determination,labeler_code,conditions',{headers:HDR}).then(function(r){return r.json();}),
   fetch(U+'/rest/v1/bench_gold?select=record_id,determination,conditions',{headers:HDR}).then(function(r){return r.json();}),
   fetch(U+'/rest/v1/bench_ai_verdicts?select=record_id,determination,conditions',{headers:HDR}).then(function(r){return r.json();})
 ]).then(function(res){
   var recs=res[0]||[], labels=res[1]||[], gold=res[2]||[], ai=res[3]||[];
   var goldBy={}; gold.forEach(function(g){goldBy[g.record_id]=g;});
   var aiBy={}; ai.forEach(function(a){aiBy[a.record_id]=a;});
+  // overall expert-to-expert agreement (real records only)
+  var expCoders={}, expAgrSum=0, expAgrN=0, realRecs=recs.filter(function(r){return !isDemo(r);});
+  realRecs.forEach(function(r){
+    var ex=labels.filter(function(l){return l.record_id===r.id&&l.mode==='jrs'&&isExpert(l.labeler_code);});
+    ex.forEach(function(l){expCoders[String(l.labeler_code||'').toLowerCase()]=1;});
+    var ea=expertAgreementFor(ex); if(ea!=null){expAgrSum+=ea;expAgrN++;}
+  });
+  var expertCount=Object.keys(expCoders).length;
+  var expertAgreement=expAgrN?(expAgrSum/expAgrN):null;
+  var preconditionMet=(expertCount>=MIN_EXPERTS)&&(expertAgreement!=null)&&(expertAgreement>=EXPERT_AGREEMENT_THRESHOLD);
   var agrSum=0,agrN=0, aiMatch=0,aiN=0, humMatch=0,humN=0, condAiMatch=0,condAiTot=0, labelN=labels.length;
   recs.forEach(function(r){
+    var demo=isDemo(r);
     var jrs=labels.filter(function(l){return l.record_id===r.id&&l.mode==='jrs';});
-    var dets=jrs.map(function(l){return l.determination;});
-    var maj=majority(dets);
-    if(maj.n>=2){agrSum+=maj.share;agrN++;}
-    var g=goldBy[r.id], a=aiBy[r.id];
-    var aiCorrect=null;
-    if(g&&a){ aiN++; if(a.determination===g.determination){aiMatch++;aiCorrect=true;}else aiCorrect=false;
-      COND.forEach(function(k){ if(g.conditions&&a.conditions){condAiTot++; if(g.conditions[k]===a.conditions[k])condAiMatch++;} }); }
-    if(g&&maj.value){ humN++; if(maj.value===g.determination)humMatch++; }
-    rowsOut.push({record:r.text.slice(0,80),jrs_reviewers:maj.n,reviewer_majority:maj.value||'',agreement:maj.n>=2?Math.round(maj.share*100)+'%':'',answer_key:g?g.determination:'',ai_verdict:a?a.determination:'',ai_vs_key:(g&&a)?(aiCorrect?'match':'mismatch'):''});
-    var tr='<tr><td>'+esc(r.text.slice(0,80))+(r.text.length>80?'…':'')+'</td><td>'+maj.n+'</td><td>'+tag(maj.value)+'</td><td>'+(maj.n>=2?Math.round(maj.share*100)+'%':'<span class="ck">need 2+</span>')+'</td><td>'+tag(g&&g.determination)+'</td><td>'+tag(a&&a.determination)+'</td><td>'+((g&&a)?(aiCorrect?'<span class="ok">match</span>':'<span class="no">mismatch</span>'):'<span class="ck">—</span>')+'</td></tr>';
+    var experts=jrs.filter(function(l){return isExpert(l.labeler_code);});
+    var reviewers=jrs.filter(function(l){return !isExpert(l.labeler_code);});
+    var maj=majority(reviewers.map(function(l){return l.determination;}));
+    if(maj.n>=2&&!demo){agrSum+=maj.share;agrN++;}
+    var ea=expertAgreementFor(experts);
+    var ek=keyFromExperts(experts);
+    var key=(ek&&!ek.unresolved&&!ek.notKey)?ek:null;
+    var explicit=goldBy[r.id];
+    var a=aiBy[r.id], aiCorrect=null, accShown=preconditionMet&&key&&a&&!demo;
+    if(accShown){ aiN++; if(a.determination===key.determination){aiMatch++;aiCorrect=true;}else aiCorrect=false;
+      COND.forEach(function(k){ if(key.conditions&&a.conditions){condAiTot++; if(key.conditions[k]===a.conditions[k])condAiMatch++;} }); }
+    if(preconditionMet&&key&&maj.value&&!demo){ humN++; if(maj.value===key.determination)humMatch++; }
+    var keyCell=key?tag(key.determination):(ek&&ek.unresolved?'<span class="ck">experts split</span>':(ek&&ek.notKey?'<span class="ck">need '+MIN_EXPERTS+'E (have '+ek.nExperts+')</span>':(explicit?'<span class="ck">provisional</span>':'<span class="tag">—</span>')));
+    var aiVsKey=demo?'<span class="ck">demo</span>':(accShown?(aiCorrect?'<span class="ok">match</span>':'<span class="no">mismatch</span>'):'<span class="ck">gated</span>');
+    rowsOut.push({record:r.text.slice(0,80),demo:demo,jrs_reviewers:reviewers.length,experts:experts.length,reviewer_majority:maj.value||'',agreement:maj.n>=2?Math.round(maj.share*100)+'%':'',expert_agreement:ea!=null?Math.round(ea*100)+'%':'',answer_key:key?key.determination:'',ai_verdict:a?a.determination:'',ai_vs_key:demo?'demo':(accShown?(aiCorrect?'match':'mismatch'):'gated')});
+    var rt=demo?' <span class="ck">(demo)</span>':'';
+    var tr='<tr><td>'+esc(r.text.slice(0,80))+(r.text.length>80?'…':'')+rt+'</td><td>'+reviewers.length+(experts.length?(' <span class="ck">+'+experts.length+'E</span>'):'')+'</td><td>'+tag(maj.value)+'</td><td>'+(maj.n>=2?Math.round(maj.share*100)+'%':'<span class="ck">need 2+</span>')+'</td><td>'+(ea!=null?Math.round(ea*100)+'%':'<span class="ck">need 2+E</span>')+'</td><td>'+keyCell+'</td><td>'+tag(a&&a.determination)+'</td><td>'+aiVsKey+'</td></tr>';
     window._rowsHtml=(window._rowsHtml||'')+tr;
   });
-  document.getElementById('rows').innerHTML=window._rowsHtml||'<tr><td colspan="7">No records yet. Add records in admin and have reviewers score them.</td></tr>';
-  function pct(a,b){return b?Math.round(a/b*100)+'%':'—';}
+  document.getElementById('rows').innerHTML=window._rowsHtml||'<tr><td colspan="8">No records yet. Add records in admin and have reviewers score them.</td></tr>';
+  var accCards=preconditionMet
+    ? card(pct(aiMatch,aiN),'AI accuracy vs key')+card(pct(condAiMatch,condAiTot),'AI per-condition vs key')+card(pct(humMatch,humN),'Reviewer majority vs key')
+    : card('gated','AI accuracy vs key')+card('gated','AI per-condition')+card('gated','Reviewer vs key');
   document.getElementById('cards').innerHTML=
+    card(expertAgreement!=null?p1(expertAgreement):'—','Expert-to-expert agreement')+
+    card(expertCount+' / '+MIN_EXPERTS,'Experts (have / min)')+
     card(pct(agrSum,agrN),'Reviewer agreement (avg)')+
-    card(pct(aiMatch,aiN),'AI accuracy vs key')+
-    card(pct(condAiMatch,condAiTot),'AI per-condition vs key')+
-    card(pct(humMatch,humN),'Reviewer majority vs key')+
-    card(recs.length,'Records')+
+    accCards+
+    card(realRecs.length,'Real records')+
     card(labelN,'Reviews recorded');
-}).catch(function(){ document.getElementById('rows').innerHTML='<tr><td colspan="7">Could not load. Run supabase-benchmark-setup.sql first.</td></tr>'; });
+  var gn=document.getElementById('gate-note');
+  if(!preconditionMet){ gn.style.display='block';
+    gn.innerHTML='Accuracy is withheld. It requires at least '+MIN_EXPERTS+' independent experts (currently '+expertCount+') reaching at least '+Math.round(EXPERT_AGREEMENT_THRESHOLD*100)+'% expert-to-expert agreement (currently '+(expertAgreement!=null?Math.round(expertAgreement*100)+'%':'not yet measurable')+'). Until then no accuracy figure is computed or shown. Thresholds are placeholders pending founder confirmation.';
+  } else { gn.style.display='none'; }
+}).catch(function(){ document.getElementById('rows').innerHTML='<tr><td colspan="8">Could not load. Run supabase-benchmark-setup.sql first.</td></tr>'; });
 function card(v,k){return '<div class="card"><div class="cv">'+v+'</div><div class="ck">'+k+'</div></div>';}
 window.dl=function(fmt){
   var name='jrs-benchmark-results.'+fmt;

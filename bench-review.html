@@ -71,9 +71,11 @@ input,select,textarea{width:100%;background:var(--surface2);border:1px solid var
     </div>
     <p class="sub" style="margin-top:8px;font-size:12px">Normal mode: judge the record the way you ordinarily would, then a later session can compare it to JRS. JRS mode: apply the five conditions below.</p>
     <button class="btn solid" style="margin-top:14px" onclick="start()">Begin</button>
+    <span class="status" id="gate-status" style="margin-left:10px"></span>
   </div>
 
   <div id="app" style="display:none">
+    <div id="rec-indicator" style="display:none;border:1px solid var(--ready-text);background:rgba(93,191,130,.08);color:var(--ready-text);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;padding:8px 12px;margin-bottom:14px">&#9679; Recording ON &middot; responses are being saved to the datastore</div>
     <div class="eyebrow" id="who"></div>
     <h1 style="margin-top:4px">Records</h1>
     <p class="sub" id="progress"></p>
@@ -104,14 +106,41 @@ function start(){
   if(isExpert(code)){
     var nm=val('e-name'), ti=val('e-title');
     if(!nm||!ti){alert('Expert code: please enter your name and title (kept private, never shown publicly).');return;}
+  }
+  // Fail-loud recording preflight: prove the datastore is reachable AND writable before any data is collected.
+  // Uses a dedicated health table (bench_preflight) that is never part of the evidence ladder, and the probe row
+  // is deleted immediately, so this NEVER writes to bench_labels and never fabricates a reviewer judgment.
+  var gs=document.getElementById('gate-status');
+  gs.textContent='Checking recording…'; gs.style.color='var(--muted-soft)';
+  fetch(U+'/rest/v1/bench_preflight',{method:'POST',headers:Object.assign({'Content-Type':'application/json','Prefer':'return=representation'},HDR),body:JSON.stringify({})})
+   .then(function(r){
+     if(!r.ok) throw new Error('not writable');     // 404 (table missing), 403 (read-only/RLS), 5xx, etc. → block
+     return r.json();
+   })
+   .then(function(rows){
+     var id=(rows&&rows[0]&&rows[0].id);
+     if(id){ fetch(U+'/rest/v1/bench_preflight?id=eq.'+id,{method:'DELETE',headers:HDR}).catch(function(){}); } // best-effort cleanup
+     proceed();
+   })
+   .catch(function(){ blockSession(); });
+}
+function blockSession(){
+  document.getElementById('gate').innerHTML='<h1>Recording is OFF</h1>'
+    +'<div style="border:1px solid var(--stop-text);background:rgba(139,32,32,.12);color:var(--stop-text);font-family:\'JetBrains Mono\',monospace;font-size:12px;letter-spacing:.04em;padding:14px 16px;margin-top:12px">&#9679; Recording is OFF &mdash; this session cannot proceed.</div>'
+    +'<p class="sub" style="margin-top:12px">The datastore could not be reached or is not accepting writes, so your responses would not be saved. To protect the integrity of the study, the session will not start and no data is collected. Run <b>supabase-ALL.sql</b> to provision the benchmark tables, confirm the database is online, then reload this page and try again. If this persists, contact info@jrsstandard.com.</p>';
+}
+function proceed(){
+  // Recording confirmed live. Now (for experts) persist credentials, then open the session.
+  if(isExpert(code)){
     try{ if(!localStorage.getItem('bench-expert-'+code)){
-      fetch(U+'/rest/v1/bench_experts',{method:'POST',headers:Object.assign({'Content-Type':'application/json','Prefer':'return=minimal'},HDR),body:JSON.stringify({code:code,name:nm,title:ti,credential:val('e-cred'),years_experience:val('e-years'),affiliation:val('e-aff'),email:val('e-email')})}).catch(function(){});
+      fetch(U+'/rest/v1/bench_experts',{method:'POST',headers:Object.assign({'Content-Type':'application/json','Prefer':'return=minimal'},HDR),body:JSON.stringify({code:code,name:val('e-name'),title:val('e-title'),credential:val('e-cred'),years_experience:val('e-years'),affiliation:val('e-aff'),email:val('e-email')})}).catch(function(){});
       localStorage.setItem('bench-expert-'+code,'1');
     }}catch(e){}
   }
   try{doneSet=JSON.parse(localStorage.getItem('bench-done-'+code)||'{}');}catch(e){doneSet={};}
   document.getElementById('gate').style.display='none';
   document.getElementById('app').style.display='block';
+  var rec=document.getElementById('rec-indicator'); if(rec) rec.style.display='block';
   document.getElementById('who').textContent='Reviewer '+code+(role?(' · '+role):'')+' · '+(mode==='jrs'?'JRS mode':'Normal mode');
   load();
 }

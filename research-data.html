@@ -72,11 +72,22 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
       <span class="ds-note" id="loaded-status">Loading datasets&hellip;</span>
     </div>
   </div>
+  <div class="bm" id="rung-status-wrap">
+    <div class="bm-h">&#9654; Evidence Ladder &middot; Current State (derived from data)</div>
+    <p class="sub" style="font-size:12.5px;margin-bottom:10px">Each rung&rsquo;s label is derived from the data that actually exists, not asserted. Reproducibility is an observation only and is never promoted. Accuracy and validation stay &ldquo;tooling only, no data&rdquo; until their preconditions are met.</p>
+    <div class="bm-cards" id="rung-status"><div class="empty">Loading&hellip;</div></div>
+  </div>
+  <div class="bm" id="rung1-wrap">
+    <div class="bm-h">&#9654; Rung 1 &middot; Reproducibility decomposition (latest nightly run)</div>
+    <p class="sub" style="font-size:12.5px;margin-bottom:10px">Reproducibility = the share of repeated runs that reached the same answer on the same record, broken out per record below, with sample size (records and runs each). Per-condition decomposition is not available because the nightly probe records one overall answer per record. It is not synthesized here.</p>
+    <div id="rung1-decomp"><div class="empty">Loading&hellip;</div></div>
+  </div>
   <div class="bm">
     <div class="bm-h">&#9654; Benchmark Results &middot; Rungs 2 &amp; 3 (computed live)</div>
-    <p class="sub" style="font-size:12.5px;margin-bottom:10px">Reviewer agreement = how often independent reviewers reached the same JRS verdict (reliability, rung 3). Accuracy vs key = how often the AI engine and the reviewer majority matched the answer key (rung 2). The <b>answer key builds itself</b> from expert reviewers (anyone whose code starts with &ldquo;E&rdquo;): where the experts agree, that becomes the key; where they split it shows &ldquo;split.&rdquo; Rows marked <b>(demo)</b> are illustrative placeholders, not real evidence.</p>
+    <p class="sub" style="font-size:12.5px;margin-bottom:10px">Reviewer agreement = how often independent reviewers reached the same JRS verdict (reliability, rung 3). Accuracy vs key = how often the AI engine matched the answer key (rung 2). The <b>answer key builds itself</b> from expert reviewers (codes starting with &ldquo;E&rdquo;), but only once enough experts agree. <b>Accuracy is withheld until expert-to-expert agreement is established</b>: until then it shows &ldquo;gated.&rdquo; Rows marked <b>(demo)</b> are illustrative placeholders, not evidence, and are excluded from the figures.</p>
     <div class="bm-cards" id="bm-cards"></div>
-    <div style="overflow:auto"><table class="bm-tbl"><thead><tr><th>Record</th><th>JRS reviewers</th><th>Reviewer majority</th><th>Agreement</th><th>Answer key</th><th>AI verdict</th><th>AI vs key</th></tr></thead><tbody id="bm-rows"><tr><td colspan="7">Loading&hellip;</td></tr></tbody></table></div>
+    <div style="overflow:auto"><table class="bm-tbl"><thead><tr><th>Record</th><th>JRS reviewers</th><th>Reviewer majority</th><th>Agreement</th><th>Expert agmt</th><th>Answer key</th><th>AI verdict</th><th>AI vs key</th></tr></thead><tbody id="bm-rows"><tr><td colspan="8">Loading&hellip;</td></tr></tbody></table></div>
+    <div class="note" id="bm-gate-note" style="display:none;margin-bottom:0"></div>
   </div>
   <div id="datasets"></div>
   <div class="note">For the reviewing organizational psychologist: rows are de-identified at the source (PII columns are excluded via database views). Free-text fields are screened for personal identifiers at submission but are participant-entered, so treat them as potentially sensitive. Consent for aggregate research, updates, and recognition is captured per participant where applicable and exported with the data. If a dataset shows &ldquo;not available,&rdquo; the one-time setup SQL (supabase-research-data-room.sql) has not been run yet.</div>
@@ -123,7 +134,7 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
     var u=URL.createObjectURL(blob);var a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);
   }
   window.downloadAll=function(){
-    var bundle={generated_at:new Date().toISOString(),program:'JRS Evidence Development Program',note:'De-identified export. Observational, validation-phase, not validated.',datasets:loaded};
+    var bundle={generated_at:new Date().toISOString(),program:'JRS Evidence Development Program',note:'De-identified export. Observational, validation-phase, not validated.',reproducibility_sample_size:(window.__jrsReproSample||null),datasets:loaded};
     dl('jrs-research-data-'+Date.now()+'.json', JSON.stringify(bundle,null,2),'application/json');
   };
   window.dlCSV=function(i){ var d=DS[i]; dl(slug(d[0])+'.csv', toCSV(loaded[d[0]]||[]),'text/csv'); };
@@ -162,14 +173,26 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
 (function(){
   var U='https://pjzxkeviouofdseagvpf.supabase.co', K='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e', HDR={'apikey':K,'Authorization':'Bearer '+K};
   var COND=['basis_identification','reasoning_traceability','cold_reviewer_clarity','accountability_support','temporal_reconstructability'];
-  function esc(t){var d=document.createElement('div');d.textContent=(t==null?'':String(t));return d.innerHTML;}
+
+  // ---- Founder-set thresholds (PLACEHOLDERS: confirm real values before any accuracy is published) ----
+  var MIN_EXPERTS = 3;                    // PLACEHOLDER: minimum independent experts before their consensus counts as an answer key
+  var EXPERT_AGREEMENT_THRESHOLD = 0.75;  // PLACEHOLDER: minimum expert-to-expert agreement before any accuracy figure is shown
+
   function tag(d){return d?'<span class="tag t-'+d+'">'+d.replace('_',' ')+'</span>':'<span class="tag">&mdash;</span>';}
+  function esc(t){var d=document.createElement('div');d.textContent=(t==null?'':String(t));return d.innerHTML;}
   function det(c){var v=COND.map(function(k){return c[k];});if(v.indexOf('gap')>-1)return'gap_identified';if(v.indexOf('review')>-1)return'review_required';return'ready';}
   function majority(a){var c={};a.forEach(function(x){c[x]=(c[x]||0)+1;});var b=null,n=0;Object.keys(c).forEach(function(k){if(c[k]>n){n=c[k];b=k;}});return{value:b,share:a.length?n/a.length:0,n:a.length};}
   function isExpert(code){return String(code||'').trim().toLowerCase().charAt(0)==='e';}
-  // Build the answer key automatically from EXPERT labels (code starts with 'E').
+  function isDemo(r){return String((r&&r.record_type)||'').indexOf('demo')>-1;}
+  function pct(a,b){return b?Math.round(a/b*100)+'%':'&mdash;';}
+  function p1(x){return (x==null)?'&mdash;':(Math.round(x*100)+'%');}
+  function card(v,k){return '<div class="bm-card"><div class="bm-cv">'+v+'</div><div class="bm-ck">'+k+'</div></div>';}
+
+  // Expert-seeded key: requires >= MIN_EXPERTS distinct experts and a resolved (no-tie) verdict per condition.
   function keyFromExperts(expLabels){
-    if(!expLabels.length) return null;
+    var coders={}; expLabels.forEach(function(l){coders[String(l.labeler_code||'').toLowerCase()]=1;});
+    var nExperts=Object.keys(coders).length;
+    if(nExperts < MIN_EXPERTS) return {notKey:true, nExperts:nExperts};
     var c={},unresolved=false;
     COND.forEach(function(k){
       var counts={},best=null,n=0,tie=false,total=0;
@@ -179,40 +202,129 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
       if(tie && total>1) unresolved=true;
       c[k]=best;
     });
-    if(unresolved) return {unresolved:true};
-    return {conditions:c, determination:det(c), source:'experts'};
+    if(unresolved) return {unresolved:true, nExperts:nExperts};
+    return {conditions:c, determination:det(c), source:'experts', nExperts:nExperts};
   }
-  function pct(a,b){return b?Math.round(a/b*100)+'%':'&mdash;';}
-  function card(v,k){return '<div class="bm-card"><div class="bm-cv">'+v+'</div><div class="bm-ck">'+k+'</div></div>';}
+  // Expert-to-expert agreement on one record: share agreeing with the modal determination (only where >=2 experts).
+  function expertAgreementFor(expLabels){
+    if(expLabels.length<2) return null;
+    return majority(expLabels.map(function(l){return l.determination;})).share;
+  }
+
+  // ---- Rung 1 decomposition + sample size (real recorded run data only; nothing synthesized) ----
+  function renderRung1(hist){
+    var host=document.getElementById('rung1-decomp');
+    if(!hist || !hist.length){ host.innerHTML='<div class="empty">No nightly reproducibility runs recorded yet.</div>'; return; }
+    var latest=hist[0]; var per=latest.per_record||{}; var ids=Object.keys(per);
+    var nRec=(latest.records!=null)?latest.records:ids.length;
+    var k=(latest.k!=null)?latest.k:'?'; var nNights=hist.length;
+    if(!ids.length){ host.innerHTML='<div class="empty">Latest run recorded no per-record breakdown.</div>'; return; }
+    var vals=ids.map(function(id){return per[id];});
+    var lo=Math.min.apply(null,vals), hi=Math.max.apply(null,vals); var loId=ids[vals.indexOf(lo)];
+    var rows=ids.map(function(id){return '<tr><td>'+esc(id)+'</td><td>'+p1(per[id])+'</td></tr>';}).join('');
+    host.innerHTML=
+      '<div class="bm-cards">'+card(p1(latest.overall_agreement),'Overall reproducibility')+card(nRec,'Records (N)')+card(k,'Runs each (k)')+card(p1(lo)+'&ndash;'+p1(hi),'Per-record range')+card(nNights,'Nights on record')+'</div>'
+      +'<div style="overflow:auto"><table class="bm-tbl"><thead><tr><th>Record</th><th>Reproducibility (this run)</th></tr></thead><tbody>'+rows+'</tbody></table></div>'
+      +'<div class="empty">Lowest record: '+esc(loId)+' at '+p1(lo)+'. Sample size: '+nRec+' records, k='+k+' runs each, '+nNights+' night(s) recorded. Per-condition decomposition is not available from the recorded probe (one overall answer per record) and is not synthesized.</div>';
+    window.__jrsReproSample={overall_agreement:latest.overall_agreement, records:nRec, runs_each:k, nights_recorded:nNights, per_record:per, source:'findings_history (latest run)'};
+  }
+
+  // ---- Rung status: labels derived from data state; reproducibility never auto-promoted ----
+  function statusCard(rung,label,state){
+    var cls = state==='data'?'t-ready':(state==='partial'?'t-review_required':'t-gap_identified');
+    return '<div class="bm-card"><div class="bm-ck" style="color:var(--accent)">'+rung+'</div><div class="bm-cv" style="font-size:15px;margin-top:4px">'+label+'</div><div style="margin-top:6px"><span class="tag '+cls+'">'+state+'</span></div></div>';
+  }
+  function renderRungStatus(rung1HasData, accMet, expertSeen){
+    var s1=statusCard('Rung 1 &middot; Reproducibility','Observation', rung1HasData?'data':'no data');
+    var s2=statusCard('Rung 2 &middot; Accuracy', accMet?'Accuracy (expert-keyed)':'Tooling only, no data', accMet?'data':(expertSeen?'partial':'no data'));
+    var s3=statusCard('Rung 3 &middot; Validation','Tooling only, no data','no data');
+    document.getElementById('rung-status').innerHTML=s1+s2+s3;
+  }
+
   Promise.all([
     fetch(U+'/rest/v1/bench_records?select=id,text,record_type&active=eq.true',{headers:HDR}).then(function(r){return r.ok?r.json():[];}),
     fetch(U+'/rest/v1/bench_labels?select=record_id,mode,determination,labeler_code,conditions',{headers:HDR}).then(function(r){return r.ok?r.json():[];}),
     fetch(U+'/rest/v1/bench_gold?select=record_id,determination,conditions',{headers:HDR}).then(function(r){return r.ok?r.json():[];}),
-    fetch(U+'/rest/v1/bench_ai_verdicts?select=record_id,determination,conditions',{headers:HDR}).then(function(r){return r.ok?r.json():[];})
+    fetch(U+'/rest/v1/bench_ai_verdicts?select=record_id,determination,conditions',{headers:HDR}).then(function(r){return r.ok?r.json():[];}),
+    fetch(U+'/rest/v1/findings_history?select=overall_agreement,per_record,k,records,created_at&order=created_at.desc&limit=30',{headers:HDR}).then(function(r){return r.ok?r.json():[];})
   ]).then(function(res){
-    var recs=res[0]||[],labels=res[1]||[],gold=res[2]||[],ai=res[3]||[];
-    if(!recs.length){ document.getElementById('bm-rows').innerHTML='<tr><td colspan="7">No benchmark records yet. Add records in bench-admin.html (or run the SQL to load the demo set), then have reviewers score them.</td></tr>'; document.getElementById('bm-cards').innerHTML=card('&mdash;','Reviewer agreement')+card('&mdash;','AI accuracy vs key')+card('0','Records'); return; }
+    var recs=res[0]||[],labels=res[1]||[],gold=res[2]||[],ai=res[3]||[],hist=res[4]||[];
+    renderRung1(hist);
+
+    if(!recs.length){
+      document.getElementById('bm-rows').innerHTML='<tr><td colspan="8">No benchmark records yet. Add records in bench-admin.html (or run the SQL to load the demo set), then have reviewers score them.</td></tr>';
+      document.getElementById('bm-cards').innerHTML=card('&mdash;','Expert-to-expert agreement')+card('gated','AI accuracy vs key')+card('0','Records');
+      renderRungStatus(hist.length>0, false, false);
+      return;
+    }
     var gB={};gold.forEach(function(g){gB[g.record_id]=g;}); var aB={};ai.forEach(function(a){aB[a.record_id]=a;});
+
+    // overall expert-to-expert agreement (real records only)
+    var expCoders={}, expAgrSum=0, expAgrN=0;
+    var realRecs=recs.filter(function(r){return !isDemo(r);});
+    realRecs.forEach(function(r){
+      var ex=labels.filter(function(l){return l.record_id===r.id&&l.mode==='jrs'&&isExpert(l.labeler_code);});
+      ex.forEach(function(l){expCoders[String(l.labeler_code||'').toLowerCase()]=1;});
+      var ea=expertAgreementFor(ex); if(ea!=null){expAgrSum+=ea;expAgrN++;}
+    });
+    var expertCount=Object.keys(expCoders).length;
+    var expertAgreement = expAgrN?(expAgrSum/expAgrN):null;
+    var preconditionMet = (expertCount>=MIN_EXPERTS) && (expertAgreement!=null) && (expertAgreement>=EXPERT_AGREEMENT_THRESHOLD);
+
     var agrSum=0,agrN=0,aiMatch=0,aiN=0,humMatch=0,humN=0,condM=0,condT=0,rowsH='';
     recs.forEach(function(r){
+      var demo=isDemo(r);
       var jrs=labels.filter(function(l){return l.record_id===r.id&&l.mode==='jrs';});
       var experts=jrs.filter(function(l){return isExpert(l.labeler_code);});
       var reviewers=jrs.filter(function(l){return !isExpert(l.labeler_code);});
       var maj=majority(reviewers.map(function(l){return l.determination;}));
-      if(maj.n>=2){agrSum+=maj.share;agrN++;}
-      // answer key: explicit admin gold wins; else auto-derived expert consensus
-      var explicit=gB[r.id]; var ek=keyFromExperts(experts);
-      var key=explicit?{determination:explicit.determination,conditions:explicit.conditions,source:'set'}:(ek&&!ek.unresolved?ek:null);
-      var keyLabel=key?key.determination:(ek&&ek.unresolved?'(experts split)':null);
-      var a=aB[r.id],corr=null;
-      if(key&&a){aiN++;corr=a.determination===key.determination;if(corr)aiMatch++;COND.forEach(function(k){if(key.conditions&&a.conditions){condT++;if(key.conditions[k]===a.conditions[k])condM++;}});}
-      if(key&&maj.value){humN++;if(maj.value===key.determination)humMatch++;}
-      var rt=(r.record_type||'').indexOf('demo')>-1?' <span class="bm-ck">(demo)</span>':'';
-      rowsH+='<tr><td>'+esc(r.text.slice(0,66))+(r.text.length>66?'…':'')+rt+'</td><td>'+reviewers.length+(experts.length?(' <span class="bm-ck">+'+experts.length+'E</span>'):'')+'</td><td>'+tag(maj.value)+'</td><td>'+(maj.n>=2?Math.round(maj.share*100)+'%':'<span class="bm-ck">need 2+</span>')+'</td><td>'+(key?tag(key.determination):(ek&&ek.unresolved?'<span class="bm-ck">split</span>':'<span class="bm-ck">&mdash;</span>'))+'</td><td>'+tag(a&&a.determination)+'</td><td>'+((key&&a)?(corr?'<span class="ok">match</span>':'<span class="no">mismatch</span>'):'<span class="bm-ck">&mdash;</span>')+'</td></tr>';
+      if(maj.n>=2 && !demo){agrSum+=maj.share;agrN++;}
+      var ea=expertAgreementFor(experts);
+      var ek=keyFromExperts(experts);
+      var keyEstablished = ek && !ek.unresolved && !ek.notKey;
+      var key = keyEstablished ? ek : null;
+      var explicit = gB[r.id];
+      var a=aB[r.id], corr=null, accShown = preconditionMet && key && a && !demo;
+      if(accShown){ aiN++; corr=a.determination===key.determination; if(corr)aiMatch++; COND.forEach(function(k){if(key.conditions&&a.conditions){condT++; if(key.conditions[k]===a.conditions[k])condM++;}}); }
+      if(preconditionMet && key && maj.value && !demo){ humN++; if(maj.value===key.determination)humMatch++; }
+      var rt = demo ? ' <span class="bm-ck">(demo)</span>' : '';
+      var keyCell = key ? tag(key.determination)
+                  : (ek&&ek.unresolved ? '<span class="bm-ck">experts split</span>'
+                  : (ek&&ek.notKey ? '<span class="bm-ck">need '+MIN_EXPERTS+'E (have '+ek.nExperts+')</span>'
+                  : (explicit ? '<span class="bm-ck">provisional</span>' : '<span class="bm-ck">&mdash;</span>')));
+      var aiVsKey = demo ? '<span class="bm-ck">demo</span>'
+                  : (accShown ? (corr?'<span class="ok">match</span>':'<span class="no">mismatch</span>') : '<span class="bm-ck">gated</span>');
+      rowsH+='<tr><td>'+esc(r.text.slice(0,60))+(r.text.length>60?'…':'')+rt+'</td>'
+        +'<td>'+reviewers.length+(experts.length?(' <span class="bm-ck">+'+experts.length+'E</span>'):'')+'</td>'
+        +'<td>'+tag(maj.value)+'</td>'
+        +'<td>'+(maj.n>=2?Math.round(maj.share*100)+'%':'<span class="bm-ck">need 2+</span>')+'</td>'
+        +'<td>'+(ea!=null?Math.round(ea*100)+'%':'<span class="bm-ck">need 2+E</span>')+'</td>'
+        +'<td>'+keyCell+'</td>'
+        +'<td>'+tag(a&&a.determination)+'</td>'
+        +'<td>'+aiVsKey+'</td></tr>';
     });
     document.getElementById('bm-rows').innerHTML=rowsH;
-    document.getElementById('bm-cards').innerHTML=card(pct(agrSum,agrN),'Reviewer agreement (avg)')+card(pct(aiMatch,aiN),'AI accuracy vs key')+card(pct(condM,condT),'AI per-condition vs key')+card(pct(humMatch,humN),'Reviewer majority vs key')+card(recs.length,'Records')+card(labels.length,'Reviews');
-  }).catch(function(){ document.getElementById('bm-rows').innerHTML='<tr><td colspan="7">Benchmark tables not available yet. Run supabase-benchmark-setup.sql.</td></tr>'; });
+
+    var accCards = preconditionMet
+      ? card(pct(aiMatch,aiN),'AI accuracy vs key')+card(pct(condM,condT),'AI per-condition vs key')+card(pct(humMatch,humN),'Reviewer majority vs key')
+      : card('gated','AI accuracy vs key')+card('gated','AI per-condition')+card('gated','Reviewer vs key');
+    document.getElementById('bm-cards').innerHTML=
+      card(expertAgreement!=null?p1(expertAgreement):'&mdash;','Expert-to-expert agreement')
+      +card(expertCount+' / '+MIN_EXPERTS,'Experts (have / min)')
+      +card(pct(agrSum,agrN),'Reviewer agreement (avg)')
+      +accCards
+      +card(realRecs.length,'Real records')
+      +card(labels.length,'Reviews');
+
+    var gn=document.getElementById('bm-gate-note');
+    if(!preconditionMet){
+      gn.style.display='block';
+      gn.innerHTML='Accuracy is withheld. It requires at least '+MIN_EXPERTS+' independent experts (currently '+expertCount+') reaching at least '+Math.round(EXPERT_AGREEMENT_THRESHOLD*100)+'% expert-to-expert agreement (currently '+(expertAgreement!=null?Math.round(expertAgreement*100)+'%':'not yet measurable')+'). Until then no accuracy figure is computed or shown. Thresholds are placeholders pending founder confirmation.';
+    } else { gn.style.display='none'; }
+    renderRungStatus(hist.length>0, preconditionMet, expertAgreement!=null);
+  }).catch(function(){
+    document.getElementById('bm-rows').innerHTML='<tr><td colspan="8">Benchmark tables not available yet. Run supabase-benchmark-setup.sql.</td></tr>';
+  });
 })();
 </script>
 </body>

@@ -358,6 +358,22 @@ create policy "insert label" on public.bench_labels
 drop policy if exists "read labels" on public.bench_labels;
 create policy "read labels" on public.bench_labels for select to anon using (true);
 
+-- Recording-preflight health table. NOT part of the evidence ladder: it holds no records,
+-- no judgments, and no results, and is never shown on any results surface or in any export.
+-- The reviewer/expert tool inserts a row at session start to prove the datastore is reachable
+-- and writable, then deletes it immediately. A failed insert blocks the session (fail-loud).
+create table if not exists public.bench_preflight (
+  id          uuid primary key default gen_random_uuid(),
+  created_at  timestamptz not null default now()
+);
+alter table public.bench_preflight enable row level security;
+drop policy if exists "preflight insert" on public.bench_preflight;
+create policy "preflight insert" on public.bench_preflight for insert to anon with check (true);
+drop policy if exists "preflight read" on public.bench_preflight;
+create policy "preflight read" on public.bench_preflight for select to anon using (true);
+drop policy if exists "preflight delete" on public.bench_preflight;
+create policy "preflight delete" on public.bench_preflight for delete to anon using (true);
+
 -- Consensus answer key (set by admin via api/bench-admin, service role).
 create table if not exists public.bench_gold (
   id           uuid primary key default gen_random_uuid(),
