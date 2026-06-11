@@ -53,8 +53,9 @@ input,select,textarea{width:100%;background:var(--surface2);border:1px solid var
   <div id="gate">
     <h1>Structured Record Review</h1>
     <p class="sub">Invite-only. You will review records one at a time against the five JRS conditions, marking each Pass, Review, or Gap. Work independently: do not confer with other reviewers. Your responses are recorded under your reviewer code (no name or email).</p>
-    <label class="f">Reviewer code (from your invitation)</label>
-    <input id="code" oninput="toggleExpert()" placeholder="e.g. R-014">
+    <label class="f">Reviewer code (optional)</label>
+    <input id="code" oninput="toggleExpert()" placeholder="Leave blank if you were not given a code">
+    <p class="sub" style="font-size:11px;margin-top:4px">Regular reviewers: leave this blank and a private code is created for you automatically. Experts: enter the code from your invitation (it begins with E).</p>
     <div class="row2">
       <div><label class="f">Your role</label>
         <select id="role"><option value="">Select…</option><option>HR</option><option>Compliance</option><option>Audit</option><option>Investigations</option><option>Employee Relations</option><option>Legal Review</option><option>AI Governance</option><option>Risk Management</option><option>Organizational Psychology</option><option>Other</option></select></div>
@@ -102,7 +103,15 @@ function toggleExpert(){ document.getElementById('expert-fields').style.display=
 function start(){
   code=(document.getElementById('code').value||'').trim();
   role=document.getElementById('role').value; mode=document.getElementById('mode').value;
-  if(!code){alert('Enter your reviewer code.');return;}
+  if(!code){
+    // Mass-invited regular reviewers have no pre-assigned code: create one unique anonymous code
+    // per person and remember it, so a single emailed link works for everyone without managing codes.
+    try{ code=localStorage.getItem('bench-auto-code')||''; }catch(e){ code=''; }
+    if(!code){
+      code='R-'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+      try{ localStorage.setItem('bench-auto-code',code); }catch(e){}
+    }
+  }
   if(isExpert(code)){
     var nm=val('e-name'), ti=val('e-title');
     if(!nm||!ti){alert('Expert code: please enter your name and title (kept private, never shown publicly).');return;}
