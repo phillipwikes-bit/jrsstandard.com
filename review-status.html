@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Review Status | JRS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#050505;--surface:#121212;--surface2:#1A1A1A;--rule:#2A2A2A;--text:#F2F2F2;--muted:#B3B3B3;--muted-soft:#8A8A8A;--accent:#BE9447;--ready:#5DBF82}
+html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:680px;margin:0 auto;padding:0 20px}
+.hd{border-bottom:1px solid var(--rule);padding:16px 20px}
+.hd-in{max-width:680px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+.wm{font-family:'Bodoni Moda',serif;font-size:22px;color:var(--accent);text-decoration:none}
+.meta{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft)}
+h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:26px;margin:24px 0 6px}
+.sub{font-size:13.5px;color:var(--muted);max-width:560px;margin-bottom:6px}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin:18px 0}
+.card{background:var(--surface);padding:20px 18px;text-align:center}
+.cv{font-family:'Bodoni Moda',serif;font-size:40px;color:var(--accent);line-height:1}
+.ck{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-top:8px}
+.bar{display:flex;gap:10px;align-items:center;margin:14px 0;flex-wrap:wrap}
+.btn{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:10px 15px;border:1px solid var(--accent);color:var(--accent);background:none;cursor:pointer;text-decoration:none}
+.live{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ready)}
+.note{font-size:12px;color:var(--muted-soft);border-left:2px solid var(--rule);padding:11px 14px;background:var(--surface);margin:16px 0;line-height:1.6}
+.ft{border-top:1px solid var(--rule);padding:18px 20px;margin-top:24px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-soft)}
+</style>
+</head>
+<body>
+<header class="hd"><div class="hd-in"><a href="/" class="wm">JRS<span style="font-size:9px;vertical-align:super">&#8482;</span></a><div class="meta">Review Status</div></div></header>
+<main><div class="wrap">
+  <h1>Review Status</h1>
+  <p class="sub">A live count of who has scored records. Bookmark this page and refresh anytime. Updates by itself every 30 seconds.</p>
+  <div class="bar"><span class="live" id="live">Loading&hellip;</span><button class="btn" onclick="load()">Refresh now</button></div>
+  <div class="cards">
+    <div class="card"><div class="cv" id="reviewers">&middot;</div><div class="ck">Reviewers</div></div>
+    <div class="card"><div class="cv" id="experts">&middot;</div><div class="ck">Experts</div></div>
+    <div class="card"><div class="cv" id="reviews">&middot;</div><div class="ck">Reviews submitted</div></div>
+    <div class="card"><div class="cv" id="finished">&middot;</div><div class="ck">Finished all records</div></div>
+  </div>
+  <div class="note" id="latest">&nbsp;</div>
+  <div class="note">Reviewers are people scoring with an auto code (or any non-E code); experts use a code starting with E and their answers build the answer key. "Finished all records" counts people who have scored every record in the set. To see the full analysis (agreement, accuracy), open the <a href="research-data.html" style="color:var(--accent)">Research Data Room</a>.</div>
+</div></main>
+<footer class="ft"><div class="wrap" style="padding:0">&#169; 2026 Phillip Wikes &middot; JRS&#8482; &middot; confidential &middot; not indexed</div></footer>
+<script>
+var U='https://pjzxkeviouofdseagvpf.supabase.co', K='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e', HDR={'apikey':K,'Authorization':'Bearer '+K};
+function isExpert(c){return String(c||'').trim().toLowerCase().charAt(0)==='e';}
+function load(){
+  document.getElementById('live').textContent='Updating…';
+  Promise.all([
+    fetch(U+'/rest/v1/bench_records?select=id&active=eq.true',{headers:HDR}).then(function(r){return r.ok?r.json():[];}),
+    fetch(U+'/rest/v1/bench_labels?select=labeler_code,record_id,created_at&order=created_at.desc',{headers:HDR}).then(function(r){return r.ok?r.json():[];})
+  ]).then(function(res){
+    var recs=res[0]||[], labels=res[1]||[];
+    var recCount=recs.length;
+    var byCoder={}; labels.forEach(function(l){ var c=l.labeler_code; if(!byCoder[c])byCoder[c]={}; byCoder[c][l.record_id]=1; });
+    var reviewers=0, experts=0, finished=0;
+    Object.keys(byCoder).forEach(function(c){
+      if(isExpert(c)) experts++; else reviewers++;
+      if(recCount>0 && Object.keys(byCoder[c]).length>=recCount) finished++;
+    });
+    document.getElementById('reviewers').textContent=reviewers;
+    document.getElementById('experts').textContent=experts;
+    document.getElementById('reviews').textContent=labels.length;
+    document.getElementById('finished').textContent=finished;
+    if(labels.length){
+      var t=new Date(labels[0].created_at);
+      document.getElementById('latest').textContent='Most recent submission: '+t.toLocaleString();
+    } else {
+      document.getElementById('latest').textContent='No reviews recorded yet. Share the reviewer link to begin.';
+    }
+    document.getElementById('live').textContent='Live · updated '+new Date().toLocaleTimeString();
+  }).catch(function(){ document.getElementById('live').textContent='Could not load. Tap Refresh.'; });
+}
+load();
+setInterval(load, 30000);
+</script>
+</body>
+</html>
