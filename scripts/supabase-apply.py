@@ -38,7 +38,12 @@ def main():
     req = urllib.request.Request(
         f"https://api.supabase.com/v1/projects/{REF}/database/query",
         data=json.dumps({"query": sql}).encode("utf-8"),
-        headers={"Authorization": f"Bearer {TOKEN}", "Content-Type": "application/json"},
+        headers={
+            "Authorization": f"Bearer {TOKEN}",
+            "Content-Type": "application/json",
+            # api.supabase.com sits behind Cloudflare; the default urllib UA is bot-blocked (error 1010).
+            "User-Agent": "jrs-migrate/1.0 (+https://jrsstandard.com)",
+        },
         method="POST",
     )
     try:

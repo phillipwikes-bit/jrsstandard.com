@@ -94,6 +94,10 @@ create policy "read published findings" on public.findings
 --  for human approval — your choice.)
 
 -- 5) Seed the registry
+-- (guard: older installs created studies without these columns; add them before seeding)
+alter table public.studies add column if not exists title       text;
+alter table public.studies add column if not exists status      text;
+alter table public.studies add column if not exists description text;
 insert into public.studies (id,title,status,description) values
  ('STUDY-001','AI Reproducibility','planned','Repeated model review of the same records; measures consistency.'),
  ('STUDY-002','Ground-Truth Benchmark','planned','Compare outputs to expert benchmark mappings (accuracy).'),
