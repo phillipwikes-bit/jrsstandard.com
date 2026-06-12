@@ -42,6 +42,10 @@ h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:26px;margin:24px 0 
     <div class="card"><div class="cv" id="finished">&middot;</div><div class="ck">Finished all records</div></div>
   </div>
   <div class="note" id="latest">&nbsp;</div>
+  <div style="margin:18px 0">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">Results so far &middot; reviewer agreement</div>
+    <div id="results"><div class="note" style="margin:0">Need 2 or more reviewers on the same record to measure agreement.</div></div>
+  </div>
   <div class="note">Reviewers are people scoring with an auto code (or any non-E code); experts use a code starting with E and their answers build the answer key. "Finished all records" counts people who have scored every record in the set. To see the full analysis (agreement, accuracy), open the <a href="research-data.html" style="color:var(--accent)">Research Data Room</a>.</div>
 </div></main>
 <footer class="ft"><div class="wrap" style="padding:0">&#169; 2026 Phillip Wikes &middot; JRS&#8482; &middot; confidential &middot; not indexed</div></footer>
@@ -51,8 +55,8 @@ function isExpert(c){return String(c||'').trim().toLowerCase().charAt(0)==='e';}
 function load(){
   document.getElementById('live').textContent='Updating…';
   Promise.all([
-    fetch(U+'/rest/v1/bench_records?select=id&active=eq.true',{headers:HDR}).then(function(r){return r.ok?r.json():[];}),
-    fetch(U+'/rest/v1/bench_labels?select=labeler_code,record_id,created_at&order=created_at.desc',{headers:HDR}).then(function(r){return r.ok?r.json():[];})
+    fetch(U+'/rest/v1/bench_records?select=id,text&active=eq.true',{headers:HDR}).then(function(r){return r.ok?r.json():[];}),
+    fetch(U+'/rest/v1/bench_labels?select=labeler_code,record_id,determination,mode,created_at&order=created_at.desc',{headers:HDR}).then(function(r){return r.ok?r.json():[];})
   ]).then(function(res){
     var recs=res[0]||[], labels=res[1]||[];
     var recCount=recs.length;
@@ -72,6 +76,20 @@ function load(){
     } else {
       document.getElementById('latest').textContent='No reviews recorded yet. Share the reviewer link to begin.';
     }
+    // Results so far: reviewer agreement (non-expert codes, JRS mode)
+    function esc(t){var d=document.createElement('div');d.textContent=(t==null?'':String(t));return d.innerHTML;}
+    function maj(a){var c={};a.forEach(function(x){c[x]=(c[x]||0)+1;});var b=null,n=0;Object.keys(c).forEach(function(k){if(c[k]>n){n=c[k];b=k;}});return{v:b,share:a.length?n/a.length:0};}
+    var rev=labels.filter(function(l){return !isExpert(l.labeler_code)&&l.mode==='jrs';});
+    var rows='',agrSum=0,agrN=0;
+    recs.forEach(function(r){
+      var ds=rev.filter(function(l){return l.record_id===r.id;}).map(function(l){return l.determination;});
+      var m=maj(ds), line;
+      if(ds.length<2){ line='<span style="color:var(--muted-soft)">'+ds.length+' reviewer'+(ds.length===1?'':'s')+' so far (need 2+)</span>'; }
+      else { agrSum+=m.share; agrN++; line=Math.round(m.share*100)+'% agreed on "'+String(m.v||'').replace(/_/g,' ')+'"'; }
+      rows+='<div style="border-bottom:1px solid var(--rule);padding:9px 0"><div style="font-size:12.5px;color:var(--text)">'+esc((r.text||'').slice(0,64))+((r.text||'').length>64?'…':'')+'</div><div style="font-size:11.5px;color:var(--muted-soft);margin-top:3px">'+line+'</div></div>';
+    });
+    var head = agrN ? '<div class="card" style="text-align:left;border:1px solid var(--rule);margin-bottom:10px"><div class="cv" style="font-size:34px">'+Math.round(agrSum/agrN*100)+'%</div><div class="ck">overall reviewer agreement (across '+agrN+' record'+(agrN===1?'':'s')+')</div></div>' : '<div class="note" style="margin:0 0 10px">Need 2 or more reviewers on the same record to measure agreement.</div>';
+    document.getElementById('results').innerHTML=head+rows;
     document.getElementById('live').textContent='Live · updated '+new Date().toLocaleTimeString();
   }).catch(function(){ document.getElementById('live').textContent='Could not load. Tap Refresh.'; });
 }
