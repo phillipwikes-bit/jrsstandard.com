@@ -70,10 +70,14 @@ async function askAnthropic(record, model, key){
 }
 async function askOpenAI(record, model, key){
   try {
+    const body = { model, max_completion_tokens:2000, messages:[{ role:'user', content:PROMPT(record) }] };
+    // Reasoning models (gpt-5*, o-series) default to heavy reasoning and can run long enough to time out
+    // the edge runtime. This is a trivial Yes/Partially/No classification, so request minimal reasoning.
+    if (/^(gpt-5|o\d)/.test(model)) body.reasoning_effort = 'minimal';
     const res = await fetch('https://api.openai.com/v1/chat/completions', {
       method:'POST',
       headers:{ 'Authorization':'Bearer '+key, 'content-type':'application/json' },
-      body: JSON.stringify({ model, max_completion_tokens:2000, messages:[{ role:'user', content:PROMPT(record) }] }),
+      body: JSON.stringify(body),
     });
     const j = await res.json();
     const c = j && j.choices && j.choices[0] && j.choices[0].message && j.choices[0].message.content;
@@ -167,19 +171,27 @@ export default async function handler(req) {
     const perRecordModels = {};   // {id: {"provider:model": answer}}
     const providersAnswered = {}; // distinct providers that returned >= 1 valid answer
     let agrSum = 0, agrN = 0;
-    for (const rec of RECORDS) {
-      const byKey = {};
-      const results = await Promise.all(roster.map(function (e) { return e.ask(rec.text, e.model); }));
-      roster.forEach(function (e, i) {
-        byKey[e.provider + ':' + e.model] = results[i];
-        if (results[i]) providersAnswered[e.provider] = true;
+    // Fire every (record x provider) call concurrently so total wall time ~= the slowest single call.
+    const tasks = [];
+    RECORDS.forEach(function (rec) {
+      roster.forEach(function (e) {
+        tasks.push(Promise.resolve(e.ask(rec.text, e.model)).then(function (ans) {
+          return { rid: rec.id, key: e.provider + ':' + e.model, provider: e.provider, ans: ans };
+        }));
       });
-      const valid = results.filter(function (a) { return a; });
+    });
+    RECORDS.forEach(function (r) { perRecordModels[r.id] = {}; });
+    (await Promise.all(tasks)).forEach(function (t) {
+      perRecordModels[t.rid][t.key] = t.ans;
+      if (t.ans) providersAnswered[t.provider] = true;
+    });
+    RECORDS.forEach(function (rec) {
+      const byKey = perRecordModels[rec.id];
+      const valid = Object.keys(byKey).map(function (kk) { return byKey[kk]; }).filter(function (a) { return a; });
       const agreement = valid.length >= 2 ? modalAgreement(valid) : null;
       perRecord[rec.id] = (agreement == null) ? null : Number(agreement.toFixed(3));
-      perRecordModels[rec.id] = byKey;
       if (agreement != null) { agrSum += agreement; agrN++; }
-    }
+    });
     const overall = agrN ? agrSum / agrN : 0;
     const nModels = roster.length;
     const providers = Object.keys(providersAnswered);
