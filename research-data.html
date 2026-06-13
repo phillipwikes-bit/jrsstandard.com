@@ -79,7 +79,7 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
   </div>
   <div class="bm" id="rung1-wrap">
     <div class="bm-h">&#9654; Rung 1 &middot; Reproducibility decomposition (latest nightly run)</div>
-    <p class="sub" style="font-size:12.5px;margin-bottom:10px">Reproducibility = how consistently the same record is judged the same way. The nightly probe compares several different Claude models on each record; the figure is how often they agree, broken out per record below with sample size. The models share a provider, so this is a stronger consistency signal than one model repeating itself, not independent cross-vendor agreement. Per-condition decomposition is not available because the probe records one overall answer per record, and is not synthesized here.</p>
+    <p class="sub" style="font-size:12.5px;margin-bottom:10px">Reproducibility = how consistently the same record is judged the same way. The nightly probe compares several AI models on each record; the figure is how often they agree, broken out per record below with sample size. When the models are from the same provider this is a strong consistency signal but not independent; when they are from different vendors (a non-Claude provider key is configured) it is independent cross-vendor agreement. Per-condition decomposition is not available because the probe records one overall answer per record, and is not synthesized here.</p>
     <div id="rung1-decomp"><div class="empty">Loading&hellip;</div></div>
   </div>
   <div class="bm">
@@ -219,25 +219,31 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
     var ids=Object.keys(per).filter(function(id){return typeof per[id]==='number';}); // skip records with no usable answer
     var nRec=(latest.records!=null)?latest.records:ids.length;
     var k=(latest.k!=null)?latest.k:'?'; var nNights=hist.length;
-    var cross=!!(latest.metrics && latest.metrics.mode==='cross_model');
+    var mode=(latest.metrics && latest.metrics.mode)||'';
+    var vendor=mode==='cross_vendor';
+    var cross=vendor||mode==='cross_model_same_provider'||mode==='cross_model';
     var models=(latest.metrics && latest.metrics.models)||null;
-    var modelStr=(cross&&models)?models.join(', '):'';
-    var overallLabel=cross?'Cross-model agreement':'Overall reproducibility';
-    var unitLabel=cross?'Models each (m)':'Runs each (k)';
+    var providers=(latest.metrics && latest.metrics.providers)||null;
+    var modelStr=models?models.join(', '):'';
+    var provStr=providers?providers.join(', '):'';
+    var overallLabel=vendor?'Cross-vendor agreement':(cross?'Cross-model agreement':'Overall reproducibility');
+    var unitLabel=vendor?'Providers (v)':(cross?'Models each (m)':'Runs each (k)');
     var colLabel=cross?'Agreement (this run)':'Reproducibility (this run)';
     if(!ids.length){ host.innerHTML='<div class="empty">Latest run recorded no per-record breakdown.</div>'; return; }
     var vals=ids.map(function(id){return per[id];});
     var lo=Math.min.apply(null,vals), hi=Math.max.apply(null,vals); var loId=ids[vals.indexOf(lo)];
     var rows=ids.map(function(id){return '<tr><td>'+esc(id)+'</td><td>'+p1(per[id])+'</td></tr>';}).join('');
-    var note='Lowest record: '+esc(loId)+' at '+p1(lo)+'. Sample size: '+nRec+' records, '
-      +(cross?(k+' models each ('+esc(modelStr)+'), same provider, not independent cross-vendor agreement')
-            :('k='+k+' runs each'))
+    var detail = vendor
+      ? (k+' independent providers ('+esc(provStr)+'): independent cross-vendor agreement')
+      : (cross ? (k+' models, same provider ('+esc(modelStr)+'), not independent cross-vendor agreement')
+               : ('k='+k+' runs each'));
+    var note='Lowest record: '+esc(loId)+' at '+p1(lo)+'. Sample size: '+nRec+' records, '+detail
       +', '+nNights+' night(s) recorded. Per-condition decomposition is not available (one overall answer per record) and is not synthesized.';
     host.innerHTML=
       '<div class="bm-cards">'+card(p1(latest.overall_agreement),overallLabel)+card(nRec,'Records (N)')+card(k,unitLabel)+card(p1(lo)+'&ndash;'+p1(hi),'Per-record range')+card(nNights,'Nights on record')+'</div>'
       +'<div style="overflow:auto"><table class="bm-tbl"><thead><tr><th>Record</th><th>'+colLabel+'</th></tr></thead><tbody>'+rows+'</tbody></table></div>'
       +'<div class="empty">'+note+'</div>';
-    window.__jrsReproSample={mode:(cross?'cross_model':'self_consistency'),models:models,overall_agreement:latest.overall_agreement, records:nRec, samples_each:k, nights_recorded:nNights, per_record:per, source:'findings_history (latest run)'};
+    window.__jrsReproSample={mode:(mode||'self_consistency'),providers:providers,models:models,overall_agreement:latest.overall_agreement, records:nRec, samples_each:k, nights_recorded:nNights, per_record:per, source:'findings_history (latest run)'};
   }
 
   // ---- Rung status: labels derived from data state; reproducibility never auto-promoted ----
