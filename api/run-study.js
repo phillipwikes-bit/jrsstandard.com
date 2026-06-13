@@ -32,20 +32,29 @@ const QUESTION =
   'Could an independent reviewer determine how the conclusion was reached based solely on this documentation? ' +
   'Respond ONLY with JSON: {"answer":"Yes|Partially|No"}.';
 
-async function askClaude(record, key) {
-  const res = await fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: { 'x-api-key': key, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
-    body: JSON.stringify({
-      model: 'claude-haiku-4-5-20251001',
-      max_tokens: 64,
-      messages: [{ role: 'user', content: `RECORD:\n${record}\n\n${QUESTION}` }],
-    }),
-  });
-  const j = await res.json();
-  const txt = (j && j.content && j.content[0] && j.content[0].text || '').trim();
-  const m = txt.match(/"answer"\s*:\s*"(Yes|Partially|No)"/i);
-  return m ? m[1] : 'Unparsed';
+// Cross-model reproducibility: each record is judged by several DIFFERENT models, and we measure
+// how often they agree. This is a stronger consistency signal than one model repeating itself.
+// NOTE: all three are Claude models (same provider), so this is not independent cross-vendor
+// validation, and agreement is still not accuracy and not validation.
+const MODELS = ['claude-haiku-4-5', 'claude-sonnet-4-6', 'claude-opus-4-8'];
+
+async function askModel(record, model, key) {
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'x-api-key': key, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
+      body: JSON.stringify({
+        model: model,
+        max_tokens: 200,
+        messages: [{ role: 'user', content: `RECORD:\n${record}\n\n${QUESTION}` }],
+      }),
+    });
+    const j = await res.json();
+    let txt = '';
+    if (j && Array.isArray(j.content)) for (const b of j.content) if (b && b.type === 'text' && b.text) txt += b.text;
+    const m = txt.trim().match(/"answer"\s*:\s*"(Yes|Partially|No)"/i);
+    return m ? m[1] : null;   // null = no usable answer from this model (excluded, never guessed)
+  } catch (e) { return null; }
 }
 
 function modalAgreement(answers) {
@@ -60,7 +69,6 @@ export default async function handler(req) {
   try {
     const url = new URL(req.url);
     const token = url.searchParams.get('token') || '';
-    const k = Math.min(Math.max(parseInt(url.searchParams.get('k') || '5', 10) || 5, 1), 10);
 
     const ANTHROPIC = (typeof process !== 'undefined' && process.env && process.env.ANTHROPIC_API_KEY) || '';
     const SERVICE = (typeof process !== 'undefined' && process.env && process.env.SUPABASE_SERVICE_ROLE_KEY) || '';
@@ -97,15 +105,27 @@ export default async function handler(req) {
       } catch (e) {}
     }
 
-    const perRecord = {};
+    // Cross-model: ask each of the MODELS once per record, measure agreement across models.
+    const perRecord = {};        // {id: agreement}  — kept numeric for the Rung 1 decomposition
+    const perRecordModels = {};  // {id: {model: answer}} — the per-model detail
+    let agrSum = 0, agrN = 0;
     for (const rec of RECORDS) {
-      const answers = [];
-      for (let i = 0; i < k; i++) answers.push(await askClaude(rec.text, ANTHROPIC));
-      perRecord[rec.id] = modalAgreement(answers);
+      const byModel = {};
+      const results = await Promise.all(MODELS.map(function (model) { return askModel(rec.text, model, ANTHROPIC); }));
+      MODELS.forEach(function (model, i) { byModel[model] = results[i]; });
+      const valid = MODELS.map(function (mdl) { return byModel[mdl]; }).filter(function (a) { return a; });
+      const agreement = valid.length >= 2 ? modalAgreement(valid) : null;
+      perRecord[rec.id] = (agreement == null) ? null : Number(agreement.toFixed(3));
+      perRecordModels[rec.id] = byModel;
+      if (agreement != null) { agrSum += agreement; agrN++; }
     }
-    const vals = Object.values(perRecord);
-    const overall = vals.reduce((a, b) => a + b, 0) / (vals.length || 1);
-    const metrics = { study: 'STUDY-001', model: 'claude-haiku-4-5-20251001', k, per_record: perRecord, overall_agreement: Number(overall.toFixed(3)) };
+    const overall = agrN ? agrSum / agrN : 0;
+    const nModels = MODELS.length;
+    const metrics = {
+      study: 'STUDY-001', mode: 'cross_model', models: MODELS, n_models: nModels,
+      model: MODELS.join(', '), per_record: perRecord, per_record_models: perRecordModels,
+      overall_agreement: Number(overall.toFixed(3)),
+    };
 
     const headers = { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' };
     await fetch(SUPABASE_URL + '/rest/v1/study_runs', { method: 'POST', headers, body: JSON.stringify({ study_id: 'STUDY-001', model: metrics.model, metrics }) });
@@ -114,7 +134,11 @@ export default async function handler(req) {
     // Re-running the same prompt on the same synthetic records is repetition, not a trend,
     // so it must not escalate the evidence class. Escalation requires independent signals:
     // more than one model, expert/ground-truth labels, or multiple human reviewers.
-    const distinctModels = 1;       // only one model is wired today
+    // Escalation requires INDEPENDENT signals. Several Claude models agreeing is a stronger
+    // consistency check than one model repeating itself, but they share a provider and lineage,
+    // so it is not the independent (cross-vendor) signal that would justify promoting the label.
+    // The honesty label therefore stays 'Observation' until a non-Claude model or human/expert data exists.
+    const distinctModels = 1;       // independent providers wired today (Claude family counts as one)
     const hasExpertLabels = false;  // no ground-truth benchmark yet (STUDY-002)
     const hasMultiReviewer = false; // no human multi-reviewer data yet (STUDY-004)
     const classification =
@@ -126,11 +150,11 @@ export default async function handler(req) {
     const pct = (overall * 100).toFixed(0);
     const recs = RECORDS.length;
     const bundle = {
-      observation: `Reviewing the same constructed records repeatedly, one model reached the same answer in about ${pct}% of runs (${recs} synthetic records, k=${k} runs each, single model). Self-consistency is not accuracy and not validation.`,
-      supporting_data: `${recs} constructed (synthetic) records · k=${k} runs each · single model (claude-haiku-4-5-20251001) · no human reviewers, no ground-truth labels`,
-      research_question: `When one model reviews the same record repeatedly, does ${pct}% self-consistency reflect a stable signal in the record, model determinism, or prompt design? Reproducibility is distinct from accuracy and from validation.`,
-      discussion: `A model agreed with itself in roughly ${pct}% of runs on synthetic records. Why might high self-consistency still coexist with being wrong, and what evidence would change your confidence?`,
-      debate: 'Is single-model self-consistency evidence of anything beyond determinism?',
+      observation: `On the same ${recs} constructed records, ${nModels} different Claude models (Haiku, Sonnet, Opus) gave the same answer about ${pct}% of the time. They are different models but the same provider, so this is a stronger consistency check than one model repeating itself, not independent cross-vendor validation. Agreement is not accuracy and not validation.`,
+      supporting_data: `${recs} constructed (synthetic) records · ${nModels} Claude models (${MODELS.join(', ')}), one pass each · same provider, not cross-vendor · no human reviewers, no ground-truth labels`,
+      research_question: `When ${nModels} different models judge the same record, does ${pct}% agreement reflect a stable signal in the record, shared model behavior, or prompt design? Reproducibility is distinct from accuracy and from validation.`,
+      discussion: `${nModels} Claude models agreed about ${pct}% of the time on synthetic records. Why might models that share a provider still agree without being right, and what evidence would change your confidence?`,
+      debate: 'Does agreement among same-provider models show more than shared training, short of independent cross-vendor agreement?',
       poll: { question: 'Which would raise your confidence in a review result the most?', options: ['Agreement with an expert benchmark', 'Agreement across different models', 'Agreement across repeated runs', 'Agreement with human reviewers'] },
       challenge: 'Take the One-Minute Challenge on the same kind of record and compare your read to the model’s.',
       classification,
@@ -140,8 +164,8 @@ export default async function handler(req) {
     // The full per-run history is preserved in study_runs above.
     const baseFinding = {
       study_id: 'STUDY-001',
-      headline: `Reproducibility probe (synthetic, single model): ${pct}% self-consistency across ${recs} constructed records (k=${k})`,
-      body: 'Automated reproducibility check: the same constructed record was reviewed multiple times by one model; the figure is the share of runs matching the most common answer. This is self-consistency on synthetic data only. It is not accuracy, not validation, and not evidence about real workplace records.',
+      headline: `Cross-model agreement (synthetic, ${nModels} Claude models): ${pct}% agreement across ${recs} constructed records`,
+      body: `Automated reproducibility check: each constructed record was reviewed by ${nModels} different Claude models (${MODELS.join(', ')}); the figure is the share of models matching the most common answer. The models share a provider, so this is a stronger consistency signal than one model repeating itself, but not independent cross-vendor agreement. It is self-consistency on synthetic data only: not accuracy, not validation, and not evidence about real workplace records.`,
       metrics, published: true, evidence_class: 'reproducibility',
     };
     await fetch(SUPABASE_URL + '/rest/v1/findings?study_id=eq.STUDY-001', { method: 'DELETE', headers });
@@ -165,7 +189,7 @@ export default async function handler(req) {
         classification,
         overall_agreement: Number(overall.toFixed(3)),
         per_record: perRecord,
-        k, records: recs, model: metrics.model,
+        k: nModels, records: recs, model: metrics.model,
         metrics,
       }),
     }).catch(function(){});
