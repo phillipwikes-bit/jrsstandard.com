@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Submit a Validated Case | JRS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#050505;--surface:#121212;--surface2:#1A1A1A;--rule:#2A2A2A;--text:#F2F2F2;--muted:#B3B3B3;--muted-soft:#8A8A8A;--accent:#BE9447;--accent-dim:#7A5E28;--ready-text:#5DBF82;--review-text:#D4A055;--stop-text:#E88080}
+html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+.hd{border-bottom:1px solid var(--rule);padding:16px 20px}
+.hd-in{max-width:720px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+.wm{font-family:'Bodoni Moda',serif;font-size:22px;color:var(--accent);text-decoration:none}
+.meta{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft)}
+h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:27px;margin:24px 0 8px}
+.sub{font-size:14px;color:var(--muted);max-width:640px;margin-bottom:8px}
+.f{display:block;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);margin:16px 0 6px}
+input,select,textarea{width:100%;background:var(--surface);border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;padding:11px 12px}
+textarea{min-height:140px;resize:vertical;line-height:1.6}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent-dim)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){.row2{grid-template-columns:1fr}}
+.hint{font-size:11.5px;color:var(--muted-soft);margin-top:4px}
+.btn{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:13px 18px;border:1px solid var(--accent);color:var(--accent);background:none;cursor:pointer}
+.btn.solid{background:var(--accent);color:#050505;font-weight:600}
+.status{font-family:'JetBrains Mono',monospace;font-size:11px;margin-left:10px}
+.note{font-size:12.5px;color:var(--muted-soft);line-height:1.6;border-left:2px solid var(--rule);padding:12px 15px;background:var(--surface);margin:14px 0}
+.note b{color:var(--text)}
+.warn{border-left-color:var(--review-text)}
+.ft{border-top:1px solid var(--rule);padding:18px 20px;margin-top:26px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-soft)}
+</style>
+</head>
+<body>
+<header class="hd"><div class="hd-in"><a href="/" class="wm">JRS<span style="font-size:9px;vertical-align:super">&#8482;</span></a><div class="meta">Validation &middot; Rung 3</div></div></header>
+<main><div class="wrap">
+  <h1>Submit a Validated Case</h1>
+  <p class="sub">Rung 3 (validation) tests whether a JRS verdict predicts what actually happened to a record when it was challenged. Each case pairs a de-identified record with its <b>documented real-world outcome</b>, so we can compare the JRS read against reality.</p>
+
+  <div class="note warn">
+    <b>Use only public or fully de-identified material.</b> Do not submit any confidential, internal, or non-public record. Good sources: published FOIL appeal determinations, Committee on Open Government opinions, Article 78 and other court rulings, arbitration awards, audit findings, and administrative-hearing decisions where the record was quoted and the outcome is in writing. Remove all names, identifiers, and case numbers that are not part of a public citation.
+  </div>
+
+  <label class="f">The record (de-identified text)</label>
+  <textarea id="record" placeholder="Paste the de-identified record or the portion quoted in the public decision. No names, no identifying details."></textarea>
+  <div class="hint">20 to 8000 characters. This is screened for personal identifiers before it is sent.</div>
+
+  <div class="row2">
+    <div>
+      <label class="f">Domain</label>
+      <select id="domain">
+        <option value="">Select&hellip;</option>
+        <option>Public records / FOIL</option>
+        <option>HR / Employment</option>
+        <option>Compliance / Audit</option>
+        <option>Investigations</option>
+        <option>Due-process / Administrative</option>
+        <option>Legal / Litigation</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div>
+      <label class="f">JRS read (your assessment)</label>
+      <select id="jrs">
+        <option value="">Not assessed</option>
+        <option value="ready">Ready (reasoning reconstructable)</option>
+        <option value="review_required">Needs work (partly reconstructable)</option>
+        <option value="gap_identified">Gap (not reconstructable)</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row2">
+    <div>
+      <label class="f">Real-world outcome</label>
+      <select id="outcome">
+        <option value="">Select&hellip;</option>
+        <option value="held_up">Held up (record stood)</option>
+        <option value="challenged">Challenged but stood</option>
+        <option value="failed_appeal">Overturned / lost on appeal</option>
+        <option value="failed_audit">Failed audit / cited as a finding</option>
+      </select>
+    </div>
+    <div>
+      <label class="f">Your code (optional)</label>
+      <input id="code" placeholder="e.g. E-08">
+    </div>
+  </div>
+
+  <label class="f">Public source / citation (required)</label>
+  <input id="source" placeholder="e.g. NY COOG FOIL-AO-19xxx, or court/arbitration cite, with a link if available">
+  <div class="hint">A verifiable public reference for the outcome. This is what makes it validation rather than anecdote.</div>
+
+  <label class="f">Notes (optional, no identifiers)</label>
+  <textarea id="notes" style="min-height:80px" placeholder="What about the documentation decided the outcome? Keep it de-identified."></textarea>
+
+  <div style="margin-top:18px"><button class="btn solid" onclick="submitCase()">Submit case</button><span class="status" id="st"></span></div>
+
+  <div class="note">Submitted cases arrive as pending entries for de-identification review before they count toward Rung 3. Validation is domain-specific: a FOIL outcome speaks to records-access decisions, an HR outcome to employment records. Nothing here is published as proof until reviewed.</div>
+</div></main>
+<footer class="ft"><div class="wrap" style="padding:0">&#169; 2026 Phillip Wikes &middot; JRS&#8482; &middot; confidential &middot; not indexed</div></footer>
+<script>
+var U='https://pjzxkeviouofdseagvpf.supabase.co', K='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e', HDR={'apikey':K,'Authorization':'Bearer '+K};
+function val(id){var e=document.getElementById(id);return e?(e.value||'').trim():'';}
+function jrsSanitizeCheck(text){
+  var patterns=[
+    {re:/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, label:'email address'},
+    {re:/\b\d{3}[-.\s]?\d{3}[-.\s]?\d{4}\b/g, label:'phone number'},
+    {re:/\b\d{3}-\d{2}-\d{4}\b/g, label:'SSN'},
+    {re:/\b\d{4}[\s-]?\d{4}[\s-]?\d{4}[\s-]?\d{4}\b/g, label:'card number'}
+  ];
+  var found=[];
+  patterns.forEach(function(p){ if(p.re.test(text)) found.push(p.label); });
+  if(found.length){
+    return confirm('Potential sensitive identifier detected ('+found.join(', ')+'). Confirm all personally identifiable information has been redacted before submission to preserve work-product privileges.');
+  }
+  return true;
+}
+function submitCase(){
+  var st=document.getElementById('st');
+  var record=val('record'), domain=val('domain'), jrs=val('jrs'), outcome=val('outcome'), code=val('code'), source=val('source'), notes=val('notes');
+  if(record.length<20||record.length>8000){ st.textContent='Record must be 20 to 8000 characters.'; st.style.color='var(--stop-text)'; return; }
+  if(!outcome){ st.textContent='Select the real-world outcome.'; st.style.color='var(--stop-text)'; return; }
+  if(!source){ st.textContent='A public source/citation is required.'; st.style.color='var(--stop-text)'; return; }
+  if(!jrsSanitizeCheck(record+' '+notes)) return;
+  st.textContent='Submitting…'; st.style.color='var(--muted-soft)';
+  var btn=document.querySelector('.btn.solid'); btn.disabled=true;
+  // Self-contained: the full case (record + paired outcome + source) is stored in one row.
+  var payload={record:record, domain:domain, jrs_read:jrs, source:source, contributor:code, notes:notes, status:'pending_deid_review'};
+  fetch(U+'/rest/v1/bench_outcomes',{method:'POST',headers:Object.assign({'Content-Type':'application/json','Prefer':'return=minimal'},HDR),
+    body:JSON.stringify({outcome:outcome, note:JSON.stringify(payload)})})
+   .then(function(r){ if(!r.ok) throw 0;
+     st.textContent='Recorded. Thank you — this case is pending de-identification review.'; st.style.color='var(--ready-text)';
+     ['record','source','notes'].forEach(function(id){document.getElementById(id).value='';});
+     btn.disabled=false;
+   })
+   .catch(function(){
+     // Fail-safe: never lose the submitter's work if the server is unreachable.
+     var obj={type:'jrs-validation-case', record:record, domain:domain, jrs_read:jrs, outcome:outcome, source:source, contributor:code, notes:notes, timestamp:new Date().toISOString()};
+     try{
+       var blob=new Blob([JSON.stringify(obj,null,2)],{type:'application/json'});
+       var u=URL.createObjectURL(blob); var a=document.createElement('a'); a.href=u; a.download='jrs-validation-'+Date.now()+'.json';
+       document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(u);
+       st.textContent='Server unavailable. Case downloaded for manual submission to info@jrsstandard.com.';
+     }catch(e){ st.textContent='Server unavailable. Contact info@jrsstandard.com to submit your case.'; }
+     st.style.color='var(--review-text)'; btn.disabled=false;
+   });
+}
+</script>
+</body>
+</html>
