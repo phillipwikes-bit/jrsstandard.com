@@ -10,6 +10,9 @@ export const config = { runtime: 'edge' };
 //   CRON_SECRET                (add this — for the nightly Vercel Cron in vercel.json; Vercel sends it
 //                               automatically as "Authorization: Bearer <CRON_SECRET>". Reuse the same
 //                               value as RUN_TOKEN if you like.)
+//   OPENAI_API_KEY / GEMINI_API_KEY  (optional — adding either turns the nightly probe into a
+//                               CROSS-VENDOR run; >= 2 vendors agreeing escalates the label to
+//                               'Emerging Pattern'. See the provider section below.)
 //
 // Manual trigger (after deploy + research SQL run):
 //   https://www.jrsstandard.com/api/run-study?token=YOUR_RUN_TOKEN
