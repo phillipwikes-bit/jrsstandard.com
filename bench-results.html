@@ -36,7 +36,7 @@ td{padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
 <header class="hd"><div class="hd-in"><a href="/" class="wm">JRS<span style="font-size:9px;vertical-align:super">&#8482;</span></a><div class="meta">Benchmark Results</div></div></header>
 <main><div class="wrap">
   <h1>Accuracy &amp; Reviewer Agreement</h1>
-  <p class="sub">Computed live from the benchmark workspace. <b>Reviewer agreement</b> (rung 3) = how often independent reviewers reached the same JRS determination on a record. <b>Accuracy vs answer key</b> (rung 2) = how often the AI engine (and the reviewer majority) matched the expert consensus. All de-identified.</p>
+  <p class="sub">Computed live from the benchmark workspace. <b>Reviewer agreement</b> = how often independent reviewers reached the same JRS determination on a record (reliability: a measurement-quality property, not one of the three rungs). <b>Accuracy vs answer key</b> (rung 2) = how often the AI engine (and the reviewer majority) matched the expert consensus. Rung 3 (validation: whether a JRS verdict predicts real-world outcomes) is separate and has no data yet. All de-identified.</p>
   <div class="cards" id="cards"></div>
   <div><button class="btn" onclick="dl('csv')">Export per-record (CSV)</button><button class="btn" onclick="dl('json')">Export (JSON)</button><button class="btn" onclick="location.reload()">Refresh</button></div>
   <div class="eyebrow">Per-record detail</div>
