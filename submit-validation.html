@@ -149,6 +149,14 @@ function submitCase(){
      st.style.color='var(--review-text)'; btn.disabled=false;
    });
 }
+// Pre-select the domain from a ?domain= link (e.g. ?domain=hr or ?domain=foil) for one-click setup.
+(function(){
+  var p=(new URLSearchParams(location.search).get('domain')||'').toLowerCase();
+  var map={foil:'Public records / FOIL','public-records':'Public records / FOIL',records:'Public records / FOIL',hr:'HR / Employment',employment:'HR / Employment',compliance:'Compliance / Audit',audit:'Compliance / Audit',investigations:'Investigations',legal:'Legal / Litigation'};
+  var v=map[p]; if(!v) return;
+  var s=document.getElementById('domain');
+  for(var i=0;i<s.options.length;i++){ if(s.options[i].text===v){ s.selectedIndex=i; break; } }
+})();
 </script>
 </body>
 </html>
