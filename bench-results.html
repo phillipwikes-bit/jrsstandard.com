@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
-<title>JRS Benchmark Results</title>
+<title>JRS Reference-Panel Results</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -15,126 +15,235 @@ a{color:var(--accent)}.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
 .hd{border-bottom:1px solid var(--rule);padding:16px 20px}.hd-in{max-width:1000px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
 .wm{font-family:'Bodoni Moda',serif;font-size:22px;color:var(--accent);text-decoration:none}.meta{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft)}
 h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:26px;margin:22px 0 6px}
-.sub{font-size:13px;color:var(--muted);max-width:760px}
+.sub{font-size:13px;color:var(--muted);max-width:780px}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:18px 0}
 .card{background:var(--surface);padding:16px}
 .cv{font-family:'Bodoni Moda',serif;font-size:26px;color:var(--accent);line-height:1.05}
 .ck{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-top:6px}
 .eyebrow{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:22px 0 8px}
+.cohort{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-dim);border:1px solid var(--rule);padding:3px 8px;display:inline-block;margin-left:8px}
+.lblpanel{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--accent-dim);color:var(--accent);padding:3px 8px}
 .btn{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:9px 14px;border:1px solid var(--accent-dim);color:var(--accent);background:none;cursor:pointer;margin-right:8px}
 table{border-collapse:collapse;width:100%;font-size:11.5px;margin-top:6px}
 th{background:var(--surface2);text-align:left;font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);padding:8px 10px;border-bottom:1px solid var(--rule)}
 td{padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--muted);vertical-align:top}
 .tag{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.06em;padding:2px 6px;border:1px solid var(--rule)}
 .t-ready{color:var(--ready);border-color:var(--ready)}.t-review_required{color:var(--review);border-color:var(--review)}.t-gap_identified{color:var(--gap);border-color:var(--gap)}
-.ok{color:var(--ready)}.no{color:var(--gap)}
+.ok{color:var(--ready)}.no{color:var(--gap)}.flag{color:var(--review)}
+.dist{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--muted)}
 .note{font-size:12px;color:var(--muted-soft);border-left:2px solid var(--rule);padding:11px 14px;background:var(--surface);margin:16px 0}
+.note.warn{border-left-color:var(--review)}
 .ft{border-top:1px solid var(--rule);padding:18px 20px;margin-top:26px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-soft)}
 </style>
 </head>
 <body>
-<header class="hd"><div class="hd-in"><a href="/" class="wm">JRS<span style="font-size:9px;vertical-align:super">&#8482;</span></a><div class="meta">Benchmark Results</div></div></header>
+<header class="hd"><div class="hd-in"><a href="/" class="wm">JRS<span style="font-size:9px;vertical-align:super">&#8482;</span></a><div class="meta">Reference-Panel Results</div></div></header>
 <main><div class="wrap">
-  <h1>Accuracy &amp; Reviewer Agreement</h1>
-  <p class="sub">Computed live from the benchmark workspace. <b>Reviewer agreement</b> = how often independent reviewers reached the same JRS determination on a record (reliability: a measurement-quality property, not one of the three rungs). <b>Accuracy vs answer key</b> (rung 2) = how often the AI engine (and the reviewer majority) matched the expert consensus. Rung 3 (validation: whether a JRS verdict predicts real-world outcomes) is separate and has no data yet. All de-identified.</p>
+  <h1>Reference Panel &middot; Accuracy &amp; Agreement <span class="cohort" id="cohort">cohort &mdash;</span></h1>
+  <p class="sub">Computed live from the benchmark workspace. For judgment-heavy records there is often no single correct score, only a distribution of defensible expert judgments. The engine (rung 2) is evaluated by whether it behaves like a competent member of that distribution, not by matching one answer key. <b>Agreement among the experts is itself a primary metric</b>, reported with its sample size. <b>Reviewer agreement</b> (reliability, not a rung) measures how often independent reviewers reach the same determination. Rung 3 (whether a JRS verdict predicts real-world outcomes) is separate and has no data yet. All de-identified.</p>
   <div class="cards" id="cards"></div>
-  <div><button class="btn" onclick="dl('csv')">Export per-record (CSV)</button><button class="btn" onclick="dl('json')">Export (JSON)</button><button class="btn" onclick="location.reload()">Refresh</button></div>
+
+  <div class="eyebrow">Reference-distribution diagnostics</div>
+  <p class="sub" style="font-size:12px">Four questions, each gated on a sufficient expert panel and reported with its N. Out-of-range engine verdicts are flagged for human review, never auto-scored right or wrong.</p>
+  <div class="cards" id="diag"></div>
+  <div class="note warn" id="pool-note" style="display:none"></div>
+
+  <div><button class="btn" onclick="dl('csv')">Export per-record (CSV)</button><button class="btn" onclick="dl('json')">Export (JSON)</button><button class="btn" id="bkbtn" onclick="toggleBk()">Show per-background breakdown</button><button class="btn" onclick="location.reload()">Refresh</button></div>
+
+  <div id="bk" style="display:none"></div>
+
   <div class="eyebrow">Per-record detail</div>
-  <div style="overflow:auto"><table id="tbl"><thead><tr><th>Record</th><th>JRS reviewers</th><th>Reviewer majority</th><th>Agreement</th><th>Expert agmt</th><th>Answer key</th><th>AI verdict</th><th>AI vs key</th></tr></thead><tbody id="rows"><tr><td colspan="8">Loading…</td></tr></tbody></table></div>
-  <div class="note" id="gate-note" style="display:none"></div>
-  <div class="note">Reviewer agreement needs ≥2 JRS reviews per record. <b>Accuracy is withheld until expert-to-expert agreement is established</b>: it requires the configured minimum number of independent experts to agree at the configured threshold, plus an AI verdict. Until then accuracy shows &ldquo;gated.&rdquo; Percent agreement is shown; for a publication-grade reliability statistic an independent analyst would also compute a chance-corrected measure (e.g., kappa) from the exported data.</div>
+  <div style="overflow:auto"><table id="tbl"><thead><tr><th>Record</th><th>JRS reviewers</th><th>Reviewer majority</th><th>Reviewer agmt</th><th>Expert agmt</th><th>Expert distribution</th><th>AI verdict</th><th>Engine vs panel</th></tr></thead><tbody id="rows"><tr><td colspan="8">Loading&hellip;</td></tr></tbody></table></div>
+  <div class="note warn" id="gate-note" style="display:none"></div>
+  <div class="note">Every figure carries its N and the cohort version it was computed against. Distribution statistics are withheld as &ldquo;insufficient expert data&rdquo; until the configured minimum number of experts is reached; the gate fails closed if the minimum is unset. The panel is described as a <b>benchmark</b> only when expert-to-expert agreement reaches the configured threshold, otherwise as a <b>reference panel</b> (alignment with informed professional judgment, not correctness against a single truth). Expert opinions are never synthesized or interpolated to fill a sparse distribution, and ranges are never widened to make the engine fall inside them. Thresholds are placeholders pending the study owner.</div>
 </div></main>
 <footer class="ft"><div class="wrap" style="padding:0">&#169; 2026 Phillip Wikes &middot; JRS&#8482; &middot; confidential &middot; not indexed</div></footer>
 <script>
 var U='https://pjzxkeviouofdseagvpf.supabase.co', K='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e', HDR={'apikey':K,'Authorization':'Bearer '+K};
 var COND=['basis_identification','reasoning_traceability','cold_reviewer_clarity','accountability_support','temporal_reconstructability'];
-// Founder-set thresholds (PLACEHOLDERS: confirm real values before any accuracy is published).
-var MIN_EXPERTS=3;                    // PLACEHOLDER: minimum independent experts before their consensus counts as an answer key
-var EXPERT_AGREEMENT_THRESHOLD=0.75;  // PLACEHOLDER: minimum expert-to-expert agreement before any accuracy figure is shown
-var rowsOut=[];
+
+// ---- Study-owner config. PLACEHOLDERS; see RUNG2-REFERENCE-PANEL-METHODOLOGY.md. Do not treat as final. ----
+// TODO(study-owner): minimum distinct experts before ANY distribution statistic is computed. If unset/invalid, the gate fails closed and nothing computes.
+var MIN_EXPERTS = 3;
+// TODO(study-owner): chance-corrected agreement (Fleiss kappa) at/above which the panel may be labelled a "benchmark"; below it (or if unset) the label stays the more conservative "reference panel". The label is governed by the chance-corrected statistic, NEVER by raw percent agreement.
+var BENCHMARK_KAPPA_THRESHOLD = 0.6;
+function gateUnset(v){ return !(typeof v==='number' && isFinite(v) && v>0); }
+var MIN_EXPERTS_EFF = gateUnset(MIN_EXPERTS) ? Infinity : MIN_EXPERTS;   // fail closed
+
+var rowsOut=[], bkCache=null, COHORT='—';
 function esc(t){var d=document.createElement('div');d.textContent=(t==null?'':String(t));return d.innerHTML;}
-function tag(d){return d?'<span class="tag t-'+d+'">'+d.replace('_',' ')+'</span>':'<span class="tag">—</span>';}
-function majority(arr){var c={};arr.forEach(function(x){c[x]=(c[x]||0)+1;});var best=null,n=0;Object.keys(c).forEach(function(k){if(c[k]>n){n=c[k];best=k;}});return {value:best,share:arr.length?n/arr.length:0,n:arr.length};}
+function tag(d){return d?'<span class="tag t-'+d+'">'+d.replace('_',' ')+'</span>':'<span class="tag">&mdash;</span>';}
 function det(c){var v=COND.map(function(k){return c[k];});if(v.indexOf('gap')>-1)return'gap_identified';if(v.indexOf('review')>-1)return'review_required';return'ready';}
 function isExpert(code){return String(code||'').trim().toLowerCase().charAt(0)==='e';}
 function isDemo(r){return String((r&&r.record_type)||'').indexOf('demo')>-1;}
-function expertAgreementFor(ex){ if(ex.length<2) return null; return majority(ex.map(function(l){return l.determination;})).share; }
-function keyFromExperts(ex){
-  var coders={}; ex.forEach(function(l){coders[String(l.labeler_code||'').toLowerCase()]=1;});
-  var nE=Object.keys(coders).length;
-  if(nE<MIN_EXPERTS) return {notKey:true,nExperts:nE};
-  var c={},unresolved=false;
-  COND.forEach(function(k){var counts={},best=null,n=0,tie=false,total=0;
-    ex.forEach(function(l){var v=l.conditions&&l.conditions[k]; if(v){counts[v]=(counts[v]||0)+1;}});
-    Object.keys(counts).forEach(function(v){total+=counts[v]; if(counts[v]>n){n=counts[v];best=v;tie=false;} else if(counts[v]===n){tie=true;}});
-    if(best===null)unresolved=true; if(tie&&total>1)unresolved=true; c[k]=best;});
-  if(unresolved) return {unresolved:true,nExperts:nE};
-  return {conditions:c,determination:det(c),nExperts:nE};
+function pct(a,b){return b?Math.round(a/b*100)+'%':'&mdash;';}
+function p1(x){return x==null?'&mdash;':Math.round(x*100)+'%';}
+function card(v,k){return '<div class="card"><div class="cv">'+v+'</div><div class="ck">'+k+'</div></div>';}
+function majority(arr){var c={};arr.forEach(function(x){c[x]=(c[x]||0)+1;});var best=null,n=0;Object.keys(c).forEach(function(k){if(c[k]>n){n=c[k];best=k;}});return {value:best,share:arr.length?n/arr.length:0,n:arr.length};}
+// dedupe expert labels to one (latest) per code, so a code cannot inflate its own weight in the distribution
+function dedupeByCode(labels){var by={};labels.forEach(function(l){by[String(l.labeler_code||'').toLowerCase()]=l;});return Object.keys(by).map(function(k){return by[k];});}
+// observed proportion of agreeing rater pairs among categorical values (null if < 2 raters)
+function pairwiseAgreement(vals){var n=vals.length;if(n<2)return null;var c={};vals.forEach(function(v){c[v]=(c[v]||0)+1;});var ag=0;Object.keys(c).forEach(function(k){ag+=c[k]*(c[k]-1);});return ag/(n*(n-1));}
+// chance-corrected agreement across items rated by a variable number of raters (Fleiss generalisation)
+function fleissKappa(items){
+  var cats={},total=0,PiSum=0,used=0;
+  items.forEach(function(it){ if(it.n<2) return; used++; total+=it.n; var sq=0;
+    Object.keys(it.counts).forEach(function(c){var nij=it.counts[c]; sq+=nij*nij; cats[c]=(cats[c]||0)+nij;});
+    PiSum += (sq - it.n)/(it.n*(it.n-1));
+  });
+  if(used<1) return null;
+  var Pbar=PiSum/used, Pe=0;
+  Object.keys(cats).forEach(function(c){var pj=cats[c]/total; Pe+=pj*pj;});
+  return {kappa:(Pe>=1?null:(Pbar-Pe)/(1-Pe)), n:used};
 }
-function pct(a,b){return b?Math.round(a/b*100)+'%':'—';}
-function p1(x){return x==null?'—':Math.round(x*100)+'%';}
+function shortHash(s){var h=0;for(var i=0;i<s.length;i++){h=((h<<5)-h+s.charCodeAt(i))|0;}return (h>>>0).toString(36).slice(0,4);}
+
 Promise.all([
   fetch(U+'/rest/v1/bench_records?select=id,text,record_type&active=eq.true',{headers:HDR}).then(function(r){return r.json();}),
-  fetch(U+'/rest/v1/bench_labels?select=record_id,mode,determination,labeler_code,conditions',{headers:HDR}).then(function(r){return r.json();}),
-  fetch(U+'/rest/v1/bench_gold?select=record_id,determination,conditions',{headers:HDR}).then(function(r){return r.json();}),
+  fetch(U+'/rest/v1/bench_labels?select=record_id,mode,determination,labeler_code,conditions,role',{headers:HDR}).then(function(r){return r.json();}),
   fetch(U+'/rest/v1/bench_ai_verdicts?select=record_id,determination,conditions',{headers:HDR}).then(function(r){return r.json();})
 ]).then(function(res){
-  var recs=res[0]||[], labels=res[1]||[], gold=res[2]||[], ai=res[3]||[];
-  var goldBy={}; gold.forEach(function(g){goldBy[g.record_id]=g;});
+  var recs=res[0]||[], labels=res[1]||[], ai=res[2]||[];
   var aiBy={}; ai.forEach(function(a){aiBy[a.record_id]=a;});
-  // overall expert-to-expert agreement (real records only)
-  var expCoders={}, expAgrSum=0, expAgrN=0, realRecs=recs.filter(function(r){return !isDemo(r);});
-  realRecs.forEach(function(r){
-    var ex=labels.filter(function(l){return l.record_id===r.id&&l.mode==='jrs'&&isExpert(l.labeler_code);});
-    ex.forEach(function(l){expCoders[String(l.labeler_code||'').toLowerCase()]=1;});
-    var ea=expertAgreementFor(ex); if(ea!=null){expAgrSum+=ea;expAgrN++;}
-  });
-  var expertCount=Object.keys(expCoders).length;
-  var expertAgreement=expAgrN?(expAgrSum/expAgrN):null;
-  var preconditionMet=(expertCount>=MIN_EXPERTS)&&(expertAgreement!=null)&&(expertAgreement>=EXPERT_AGREEMENT_THRESHOLD);
-  var agrSum=0,agrN=0, aiMatch=0,aiN=0, humMatch=0,humN=0, condAiMatch=0,condAiTot=0, labelN=labels.length;
+  var realRecs=recs.filter(function(r){return !isDemo(r);});
+
+  // ---- cohort version: frozen by the current distinct expert set ----
+  var expCodes={};
+  labels.forEach(function(l){ if(l.mode==='jrs'&&isExpert(l.labeler_code)) expCodes[String(l.labeler_code).toLowerCase()]=1; });
+  var codeList=Object.keys(expCodes).sort();
+  var expertCount=codeList.length;
+  COHORT = expertCount ? ('v'+expertCount+'·'+shortHash(codeList.join('|'))) : 'v0';
+  document.getElementById('cohort').textContent='cohort '+COHORT+' ('+expertCount+' expert'+(expertCount===1?'':'s')+')';
+  var expertStatsAllowed = expertCount >= MIN_EXPERTS_EFF;   // gate: every expert-distribution statistic
+
+  // ---- per-record pass: distribution, agreement inputs, range coverage ----
+  var kappaItems=[], pwSum=0, pwN=0;                 // expert internal agreement
+  var rangeIn=0, rangeN=0, flagged=[];               // 3.3a / 3.3c
+  var engAgrSum=0, engAgrN=0;                         // 3.3b engine-vs-experts
+  var revAgrSum=0, revAgrN=0;                         // reviewer (bench-lane) reliability
+  var byRole={};                                     // 3.3d systematic-by-background
+  var anyRoleTagged=false;
+
   recs.forEach(function(r){
     var demo=isDemo(r);
     var jrs=labels.filter(function(l){return l.record_id===r.id&&l.mode==='jrs';});
-    var experts=jrs.filter(function(l){return isExpert(l.labeler_code);});
-    var reviewers=jrs.filter(function(l){return !isExpert(l.labeler_code);});
+    var experts=dedupeByCode(jrs.filter(function(l){return isExpert(l.labeler_code);}));
+    var reviewers=jrs.filter(function(l){return !isExpert(l.labeler_code);});   // bench-lane: structurally excluded from expert stats
     var maj=majority(reviewers.map(function(l){return l.determination;}));
-    if(maj.n>=2&&!demo){agrSum+=maj.share;agrN++;}
-    var ea=expertAgreementFor(experts);
-    var ek=keyFromExperts(experts);
-    var key=(ek&&!ek.unresolved&&!ek.notKey)?ek:null;
-    var explicit=goldBy[r.id];
-    var a=aiBy[r.id], aiCorrect=null, accShown=preconditionMet&&key&&a&&!demo;
-    if(accShown){ aiN++; if(a.determination===key.determination){aiMatch++;aiCorrect=true;}else aiCorrect=false;
-      COND.forEach(function(k){ if(key.conditions&&a.conditions){condAiTot++; if(key.conditions[k]===a.conditions[k])condAiMatch++;} }); }
-    if(preconditionMet&&key&&maj.value&&!demo){ humN++; if(maj.value===key.determination)humMatch++; }
-    var keyCell=key?tag(key.determination):(ek&&ek.unresolved?'<span class="ck">experts split</span>':(ek&&ek.notKey?'<span class="ck">need '+MIN_EXPERTS+'E (have '+ek.nExperts+')</span>':(explicit?'<span class="ck">provisional</span>':'<span class="tag">—</span>')));
-    var aiVsKey=demo?'<span class="ck">demo</span>':(accShown?(aiCorrect?'<span class="ok">match</span>':'<span class="no">mismatch</span>'):'<span class="ck">gated</span>');
-    rowsOut.push({record:r.text.slice(0,80),demo:demo,jrs_reviewers:reviewers.length,experts:experts.length,reviewer_majority:maj.value||'',agreement:maj.n>=2?Math.round(maj.share*100)+'%':'',expert_agreement:ea!=null?Math.round(ea*100)+'%':'',answer_key:key?key.determination:'',ai_verdict:a?a.determination:'',ai_vs_key:demo?'demo':(accShown?(aiCorrect?'match':'mismatch'):'gated')});
+    if(maj.n>=2&&!demo){revAgrSum+=maj.share;revAgrN++;}
+
+    var expDets=experts.map(function(l){return l.determination;}).filter(Boolean);
+    var nExp=experts.length;
+    var counts={}; expDets.forEach(function(d){counts[d]=(counts[d]||0)+1;});
+    var rangeSet=Object.keys(counts);
+    var pw=pairwiseAgreement(expDets);
+    if(!demo && nExp>=2){ if(pw!=null){pwSum+=pw;pwN++;} kappaItems.push({counts:counts,n:nExp}); }
+
+    var a=aiBy[r.id];
+    // distribution + range cell only counts where the panel is sufficient on THIS record
+    var recSufficient = !demo && nExp>=MIN_EXPERTS_EFF;
+    var inRange=null;
+    if(recSufficient && a && a.determination){
+      rangeN++; inRange=(rangeSet.indexOf(a.determination)>-1);
+      if(inRange) rangeIn++; else flagged.push(r);
+      // 3.3b engine agreement rate with experts on this record
+      var hit=expDets.filter(function(d){return d===a.determination;}).length;
+      engAgrSum += hit/nExp; engAgrN++;
+      // 3.3d per-background: attribute each expert's agreement-with-engine to that expert's role
+      experts.forEach(function(l){
+        var role=(l.role||'').trim();
+        if(role) anyRoleTagged=true;
+        var key=role||'(untagged)';
+        if(!byRole[key]) byRole[key]={codes:{},agree:0,n:0};
+        byRole[key].codes[String(l.labeler_code).toLowerCase()]=1;
+        byRole[key].n++; if(l.determination===a.determination) byRole[key].agree++;
+      });
+    }
+
+    // ---- per-record row ----
+    var distCell = demo ? '<span class="ck">(demo)</span>'
+      : (nExp<MIN_EXPERTS_EFF ? '<span class="ck">insufficient (n='+nExp+')</span>'
+        : '<span class="dist">'+rangeSet.map(function(d){return d.replace('_',' ').split(' ')[0]+'×'+counts[d];}).join(' &middot; ')+' (n='+nExp+')</span>');
+    var engCell = demo ? '<span class="ck">demo</span>'
+      : (!recSufficient ? '<span class="ck">insufficient</span>'
+        : (!a ? '<span class="tag">&mdash;</span>'
+          : (inRange ? '<span class="ok">in range</span>' : '<span class="flag">out of range &middot; review</span>')));
+    var expAgmtCell = (nExp>=2 ? (pw!=null?Math.round(pw*100)+'% <span class="ck">n='+nExp+'</span>':'&mdash;') : '<span class="ck">need 2+E</span>');
+
+    rowsOut.push({record:r.text.slice(0,80),demo:demo,cohort:COHORT,jrs_reviewers:reviewers.length,experts:nExp,
+      reviewer_majority:maj.value||'',reviewer_agreement:maj.n>=2?Math.round(maj.share*100)+'%':'',
+      expert_pairwise_agreement:nExp>=2&&pw!=null?Math.round(pw*100)+'%':'',
+      expert_distribution:nExp>=MIN_EXPERTS_EFF?rangeSet.map(function(d){return d+':'+counts[d];}).join(';'):'',
+      ai_verdict:a?a.determination:'',engine_vs_panel:demo?'demo':(!recSufficient?'insufficient':(!a?'':(inRange?'in_range':'out_of_range')))});
+
     var rt=demo?' <span class="ck">(demo)</span>':'';
-    var tr='<tr><td>'+esc(r.text.slice(0,80))+(r.text.length>80?'…':'')+rt+'</td><td>'+reviewers.length+(experts.length?(' <span class="ck">+'+experts.length+'E</span>'):'')+'</td><td>'+tag(maj.value)+'</td><td>'+(maj.n>=2?Math.round(maj.share*100)+'%':'<span class="ck">need 2+</span>')+'</td><td>'+(ea!=null?Math.round(ea*100)+'%':'<span class="ck">need 2+E</span>')+'</td><td>'+keyCell+'</td><td>'+tag(a&&a.determination)+'</td><td>'+aiVsKey+'</td></tr>';
+    var tr='<tr><td>'+esc(r.text.slice(0,80))+(r.text.length>80?'…':'')+rt+'</td><td>'+reviewers.length+(nExp?(' <span class="ck">+'+nExp+'E</span>'):'')+'</td><td>'+tag(maj.value)+'</td><td>'+(maj.n>=2?Math.round(maj.share*100)+'% <span class="ck">n='+maj.n+'</span>':'<span class="ck">need 2+</span>')+'</td><td>'+expAgmtCell+'</td><td>'+distCell+'</td><td>'+tag(a&&a.determination)+'</td><td>'+engCell+'</td></tr>';
     window._rowsHtml=(window._rowsHtml||'')+tr;
   });
+
   document.getElementById('rows').innerHTML=window._rowsHtml||'<tr><td colspan="8">No records yet. Add records in admin and have reviewers score them.</td></tr>';
-  var accCards=preconditionMet
-    ? card(pct(aiMatch,aiN),'AI accuracy vs key')+card(pct(condAiMatch,condAiTot),'AI per-condition vs key')+card(pct(humMatch,humN),'Reviewer majority vs key')
-    : card('gated','AI accuracy vs key')+card('gated','AI per-condition')+card('gated','Reviewer vs key');
+
+  // ---- aggregate expert agreement (gated) ----
+  var expPct = (expertStatsAllowed && pwN) ? (pwSum/pwN) : null;
+  var kap = expertStatsAllowed ? fleissKappa(kappaItems) : null;
+  // The benchmark label is governed by the CHANCE-CORRECTED statistic (kappa), not raw percent agreement.
+  var benchmarkOK = expertStatsAllowed && kap && kap.kappa!=null && !gateUnset(BENCHMARK_KAPPA_THRESHOLD) && kap.kappa>=BENCHMARK_KAPPA_THRESHOLD;
+  var panelLabel = benchmarkOK ? 'benchmark' : 'reference panel';
+  var untaggedN = byRole['(untagged)'] ? Object.keys(byRole['(untagged)'].codes).length : 0;
+
   document.getElementById('cards').innerHTML=
-    card(expertAgreement!=null?p1(expertAgreement):'—','Expert-to-expert agreement (n='+expAgrN+')')+
-    card(expertCount+' / '+MIN_EXPERTS,'Experts (have / min)')+
-    card(pct(agrSum,agrN),'Reviewer agreement (avg, n='+agrN+')')+
-    accCards+
-    card(realRecs.length,'Real records')+
-    card(labelN,'Reviews recorded');
+    card('<span class="lblpanel">'+panelLabel+'</span>','Panel status (cohort '+COHORT+')')+
+    card(expertCount+' / '+(MIN_EXPERTS_EFF===Infinity?'unset':MIN_EXPERTS),'Experts (have / min)')+
+    card(expertStatsAllowed?(expPct!=null?p1(expPct):'&mdash;'):'insufficient','Expert agmt %, n='+(expertStatsAllowed?pwN:0))+
+    card(expertStatsAllowed&&kap&&kap.kappa!=null?kap.kappa.toFixed(2):'insufficient','Expert agmt (chance-corr), n='+(kap?kap.n:0))+
+    card(pct(revAgrSum,revAgrN),'Reviewer agreement (avg, n='+revAgrN+')')+
+    card(realRecs.length,'Real records (N)');
+
+  // ---- four diagnostic questions (gated; each with N) ----
+  var rangeRate = (expertStatsAllowed && rangeN) ? (rangeIn/rangeN) : null;
+  var engRate = (expertStatsAllowed && engAgrN) ? (engAgrSum/engAgrN) : null;
+  document.getElementById('diag').innerHTML=
+    card(rangeRate!=null?p1(rangeRate):'insufficient','(a) Range coverage, n='+(expertStatsAllowed?rangeN:0))+
+    card(engRate!=null?p1(engRate):'insufficient','(b) Engine-vs-expert (pairwise), n='+(expertStatsAllowed?engAgrN:0))+
+    card(expPct!=null?p1(expPct):'insufficient','(b) Expert-vs-expert (pairwise ref), n='+(expertStatsAllowed?pwN:0))+
+    card(expertStatsAllowed?String(flagged.length):'insufficient','(c) Out-of-range, flagged for review')+
+    card(anyRoleTagged?('see breakdown'+(untaggedN?' &middot; '+untaggedN+' untagged':'')):'background missing','(d) Systematic-by-background');
+  var pn=document.getElementById('pool-note');
+  if(expertStatsAllowed && untaggedN){ pn.style.display='block';
+    pn.innerHTML='Provenance caveat: '+untaggedN+' expert'+(untaggedN===1?'':'s')+' carr'+(untaggedN===1?'ies':'y')+' no background tag and '+(untaggedN===1?'is':'are')+' pooled into the (a) and (b) aggregates above. The per-background breakdown isolates them as &ldquo;(untagged)&rdquo;; treat the pooled figures with that in mind.';
+  } else { pn.style.display='none'; }
+
+  // stash for the on-demand background breakdown
+  bkCache={allowed:expertStatsAllowed, anyRole:anyRoleTagged, byRole:byRole, cohort:COHORT};
+
   var gn=document.getElementById('gate-note');
-  if(!preconditionMet){ gn.style.display='block';
-    gn.innerHTML='Accuracy is withheld. It requires at least '+MIN_EXPERTS+' independent experts (currently '+expertCount+') reaching at least '+Math.round(EXPERT_AGREEMENT_THRESHOLD*100)+'% expert-to-expert agreement (currently '+(expertAgreement!=null?Math.round(expertAgreement*100)+'%':'not yet measurable')+'). Until then no accuracy figure is computed or shown. Thresholds are placeholders pending founder confirmation.';
+  if(!expertStatsAllowed){ gn.style.display='block';
+    gn.innerHTML='Distribution statistics are withheld. They require at least '+(MIN_EXPERTS_EFF===Infinity?'a configured minimum (currently unset — gate fails closed)':MIN_EXPERTS+' independent experts')+'; the cohort currently has '+expertCount+'. Until the minimum is met, no expert-agreement, range, or accuracy figure is computed or shown. Thresholds are placeholders pending the study owner.';
+  } else if(!benchmarkOK){ gn.style.display='block';
+    gn.innerHTML='Labelled <b>reference panel</b>: chance-corrected expert agreement (kappa '+((kap&&kap.kappa!=null)?kap.kappa.toFixed(2):'n/a')+', n='+(kap?kap.n:0)+') is below the configured benchmark threshold ('+(gateUnset(BENCHMARK_KAPPA_THRESHOLD)?'unset':BENCHMARK_KAPPA_THRESHOLD.toFixed(2))+'). Raw percent agreement is shown for context but does not govern the label. These figures characterise alignment with informed professional judgment, not correctness against a single truth.';
   } else { gn.style.display='none'; }
 }).catch(function(){ document.getElementById('rows').innerHTML='<tr><td colspan="8">Could not load. Run supabase-benchmark-setup.sql first.</td></tr>'; });
-function card(v,k){return '<div class="card"><div class="cv">'+v+'</div><div class="ck">'+k+'</div></div>';}
+
+window.toggleBk=function(){
+  var el=document.getElementById('bk'), btn=document.getElementById('bkbtn');
+  if(el.style.display==='block'){ el.style.display='none'; btn.textContent='Show per-background breakdown'; return; }
+  btn.textContent='Hide per-background breakdown'; el.style.display='block';
+  if(!bkCache){ el.innerHTML='<div class="note">Not loaded yet.</div>'; return; }
+  if(!bkCache.allowed){ el.innerHTML='<div class="note warn">Insufficient expert data: the per-background breakdown is withheld until the minimum expert count is met.</div>'; return; }
+  if(!bkCache.anyRole){ el.innerHTML='<div class="note warn">Systematic-by-background cannot be computed: no expert carries a background tag. This renders as missing, never as a pass.</div>'; return; }
+  var rows='', keys=Object.keys(bkCache.byRole).sort();
+  keys.forEach(function(k){
+    var g=bkCache.byRole[k], nE=Object.keys(g.codes).length;
+    var rate=(nE>=MIN_EXPERTS_EFF && g.n)?Math.round(g.agree/g.n*100)+'%':'insufficient (n='+nE+'E)';
+    rows+='<tr><td>'+esc(k)+'</td><td>'+nE+'</td><td>'+g.n+'</td><td>'+rate+'</td></tr>';
+  });
+  el.innerHTML='<div class="note">Engine agreement broken down by each expert’s self-reported background (cohort '+bkCache.cohort+'). A rate is shown only where that background has at least the minimum experts; otherwise it reads insufficient with its N. Pooling without this breakdown would be a provenance defect.</div>'+
+    '<div style="overflow:auto"><table><thead><tr><th>Background</th><th>Experts</th><th>Expert·record pairs</th><th>Engine agreement</th></tr></thead><tbody>'+rows+'</tbody></table></div>';
+};
+
 window.dl=function(fmt){
-  var name='jrs-benchmark-results.'+fmt;
-  if(fmt==='json'){ blob(name,JSON.stringify(rowsOut,null,2),'application/json'); return; }
+  var name='jrs-reference-panel-results.'+fmt;
+  if(fmt==='json'){ blob(name,JSON.stringify({cohort:COHORT,min_experts:MIN_EXPERTS,benchmark_kappa_threshold:BENCHMARK_KAPPA_THRESHOLD,rows:rowsOut},null,2),'application/json'); return; }
   if(!rowsOut.length){ blob(name,'',''); return; }
   var keys=Object.keys(rowsOut[0]);
   function q(s){s=(s==null?'':String(s));return '"'+s.replace(/"/g,'""')+'"';}
