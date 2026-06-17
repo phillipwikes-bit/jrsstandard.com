@@ -1156,11 +1156,11 @@ a.gumroad-button.util-link {
 
 <div style="margin-bottom:44px;">
   <div class="section-head">Operational Review Conditions</div>
-  <p class="body-text">The four conditions evaluated in every pre-finalization review. Each condition includes common failure modes and the reviewer test applied at the drafting stage.</p>
+  <p class="body-text">The five conditions evaluated in every pre-finalization review. Each condition includes common failure modes and the reviewer test applied at the drafting stage.</p>
   <div style="border:1px solid var(--rule);overflow:hidden;margin-top:12px;">
     <div style="border-bottom:1px solid var(--rule);">
       <div style="padding:10px 15px;background:var(--surface2);border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;">
-        <span style="font-size:13px;font-weight:600;color:var(--text);">Independently Reviewable</span>
+        <span style="font-size:13px;font-weight:600;color:var(--text);">Reconstructability</span>
         <span style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);">Time Traveler Test</span>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule);">
@@ -1176,29 +1176,45 @@ a.gumroad-button.util-link {
     </div>
     <div style="border-bottom:1px solid var(--rule);">
       <div style="padding:10px 15px;background:var(--surface2);border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;">
-        <span style="font-size:13px;font-weight:600;color:var(--text);">Observable Support</span>
+        <span style="font-size:13px;font-weight:600;color:var(--text);">Basis Identification</span>
         <span style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);">Fact Anchor</span>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule);">
         <div style="padding:10px 14px;border-right:1px solid var(--rule);">
           <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--stop-text);margin-bottom:4px;">Common Failure</div>
-          <div style="font-size:12px;color:var(--muted);line-height:1.6;">Conclusion stated without a specific, verifiable anchor: a date, a log entry, a documented interaction, or a referenced record.</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;">Conclusion stated without a specific, identifiable anchor in the record: a date, a log entry, a documented interaction, or a referenced record.</div>
         </div>
         <div style="padding:10px 14px;">
           <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Reviewer Test</div>
-          <div style="font-size:12px;color:var(--muted);line-height:1.6;">What specific evidence in the file identifies the basis for this conclusion? If nothing comes to mind, the anchor is missing.</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;">What specific item in the file identifies the basis for this conclusion? If nothing can be pointed to, the anchor is missing.</div>
         </div>
       </div>
     </div>
     <div style="border-bottom:1px solid var(--rule);">
       <div style="padding:10px 15px;background:var(--surface2);border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;">
-        <span style="font-size:13px;font-weight:600;color:var(--text);">Documented Reasoning</span>
+        <span style="font-size:13px;font-weight:600;color:var(--text);">Chronology</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);">Timeline Test</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule);">
+        <div style="padding:10px 14px;border-right:1px solid var(--rule);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--stop-text);margin-bottom:4px;">Common Failure</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;">The sequence of events cannot be followed from the record. Dates are absent, out of order, or compressed so that cause and effect cannot be established.</div>
+        </div>
+        <div style="padding:10px 14px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Reviewer Test</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;">Can the order of events be reconstructed from the file alone, with enough dates and intervals that one event can be seen to follow another?</div>
+        </div>
+      </div>
+    </div>
+    <div style="border-bottom:1px solid var(--rule);">
+      <div style="padding:10px 15px;background:var(--surface2);border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:13px;font-weight:600;color:var(--text);">Decision-Process Traceability</span>
         <span style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);">Reasoning Trail</span>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule);">
         <div style="padding:10px 14px;border-right:1px solid var(--rule);">
           <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--stop-text);margin-bottom:4px;">Common Failure</div>
-          <div style="font-size:12px;color:var(--muted);line-height:1.6;">The path from evidence to conclusion is in the author's head, not in the document. The record reads smoothly but the basis is not visible.</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;">The path from evidence to conclusion is in the author's head, not in the document. The record reads smoothly, but the decision process is not visible.</div>
         </div>
         <div style="padding:10px 14px;">
           <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Reviewer Test</div>
@@ -1208,17 +1224,17 @@ a.gumroad-button.util-link {
     </div>
     <div style="border-bottom:1px solid var(--rule);">
       <div style="padding:10px 15px;background:var(--surface2);border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;">
-        <span style="font-size:13px;font-weight:600;color:var(--text);">Source Integrity</span>
+        <span style="font-size:13px;font-weight:600;color:var(--text);">Evidentiary Sufficiency</span>
         <span style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);">AI Attestation</span>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule);">
         <div style="padding:10px 14px;border-right:1px solid var(--rule);">
           <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--stop-text);margin-bottom:4px;">Common Failure</div>
-          <div style="font-size:12px;color:var(--muted);line-height:1.6;">AI-assisted wording introduces characterizations not present in the source notes, or source notes are not identified before submission.</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;">The evidence in the record is too thin to carry the conclusion, or AI-assisted wording introduces characterizations the source notes do not support.</div>
         </div>
         <div style="padding:10px 14px;">
           <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Reviewer Test</div>
-          <div style="font-size:12px;color:var(--muted);line-height:1.6;">Where AI-assisted drafting contributed, can each characterization be traced to a specific source record? Is human confirmation documented?</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;">Is the evidence in the file sufficient to support the conclusion at this record's risk level? Where AI-assisted drafting contributed, can each characterization be traced to a specific source record, with human confirmation documented?</div>
         </div>
       </div>
     </div>
