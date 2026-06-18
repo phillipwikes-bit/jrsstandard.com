@@ -43,6 +43,9 @@ p{font-size:15px;line-height:1.8;color:var(--text);margin-bottom:14px}
 .cond-num{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted-soft);padding-top:2px}
 .cond-name{font-size:15px;font-weight:600;color:var(--accent);margin-bottom:4px}
 .cond-def{font-size:14.5px;color:var(--muted);line-height:1.7}
+.idx{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.idx a{border:1px solid var(--rule);background:var(--surface);padding:12px 14px;display:block}
+.idx-t{font-size:13.5px;color:var(--text);font-weight:600}
 .actions{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0 8px}
 .btn{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;padding:11px 18px;border:1px solid var(--accent-dim);color:var(--accent)}
 .btn.solid{background:var(--accent);color:#050505;font-weight:600;border-color:var(--accent)}
@@ -51,7 +54,7 @@ p{font-size:15px;line-height:1.8;color:var(--text);margin-bottom:14px}
 .site-footer-inner{max-width:820px;margin:0 auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
 .footer-link{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft)}
 .footer-copy{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-soft)}
-@media(max-width:600px){h1{font-size:27px}.cond-item{grid-template-columns:1fr}}
+@media(max-width:600px){h1{font-size:27px}.cond-item{grid-template-columns:1fr}.idx{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -71,6 +74,25 @@ p{font-size:15px;line-height:1.8;color:var(--text);margin-bottom:14px}
     <div class="cond-item"><div class="cond-num">03</div><div><div class="cond-name">Chronology</div><div class="cond-def">The sequence of events can be followed from the record.</div></div></div>
     <div class="cond-item"><div class="cond-num">04</div><div><div class="cond-name">Decision-Process Traceability</div><div class="cond-def">The decision process that led to the conclusion can be traced.</div></div></div>
     <div class="cond-item"><div class="cond-num">05</div><div><div class="cond-name">Evidentiary Sufficiency</div><div class="cond-def">The evidence in the record is sufficient to support the conclusion.</div></div></div>
+  </div>
+  <h2>Other JRS reference concepts</h2>
+  <div class="idx">
+    <a href="/reference/traveler-test"><div class="idx-t">The Traveler Test (Cold-File Reconstruction)</div></a>
+    <a href="/reference/unsupported-generalization"><div class="idx-t">Unsupported Generalization</div></a>
+    <a href="/reference/missing-chronology"><div class="idx-t">Missing Chronology (Timeline Anchors)</div></a>
+    <a href="/reference/decision-context-loss"><div class="idx-t">Decision Context Loss</div></a>
+    <a href="/reference/reviewer-worksheet"><div class="idx-t">Reviewer Worksheet</div></a>
+    <a href="/reference/escalation-triggers"><div class="idx-t">Review Escalation Triggers</div></a>
+    <a href="/reference/record-survivability"><div class="idx-t">Record Survivability Analysis</div></a>
+    <a href="/reference/later-review-failure-cascades"><div class="idx-t">Later-Review Failure Cascades</div></a>
+    <a href="/reference/ai-assisted-record-failure-modes"><div class="idx-t">AI-Assisted Record Failure Modes</div></a>
+    <a href="/reference/documentation-risk-tiers"><div class="idx-t">Documentation Risk Tiers</div></a>
+    <a href="/reference/reviewer-responsibility-boundaries"><div class="idx-t">Reviewer Liability and Responsibility Boundaries</div></a>
+    <a href="/reference/deployment-models"><div class="idx-t">Deployment Models</div></a>
+    <a href="/reference/ai-verification-controls"><div class="idx-t">AI Verification Controls</div></a>
+    <a href="/reference/field-conditions"><div class="idx-t">Field Conditions</div></a>
+    <a href="/reference/second-line-review-model"><div class="idx-t">Second-Line Review Model</div></a>
+    <a href="/reference/implementation-maturity-levels"><div class="idx-t">JRS Implementation Maturity Levels</div></a>
   </div>
   <div class="actions">
     <a class="btn solid" href="/jrsstandard.html">Read the Standard</a>
