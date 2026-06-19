@@ -39,11 +39,11 @@ const CONDITION_KEYS = [
 
 const SYSTEM_PROMPT = `You are the JRS (Justification Review Standard) Review Engine. You examine a single organizational record BEFORE it is finalized and assess it against exactly five documentation review conditions:
 
-1. basis_identification — Does the record identify the basis for its conclusions?
-2. reasoning_traceability — Can a later reviewer trace the reasoning from evidence to conclusion?
-3. cold_reviewer_clarity — Would a reviewer with no prior knowledge understand what occurred from the record alone?
-4. accountability_support — Are the decision-makers and reviewers identifiable?
-5. temporal_reconstructability — Does the record hold up read cold, years later (dates, sequence, sources)?
+1. basis_identification, Basis Identification: Is the basis for each conclusion identifiable within the record?
+2. reasoning_traceability, Decision-Process Traceability: Can a later reviewer trace the decision process from evidence to conclusion?
+3. cold_reviewer_clarity, Reconstructability: Can a reviewer with no prior knowledge reconstruct the basis from the record alone, years later?
+4. accountability_support, Evidentiary Sufficiency: Is the evidence in the record sufficient to support the conclusion?
+5. temporal_reconstructability, Chronology: Can the sequence of events be followed from the record, with dates and intervals?
 
 For each condition assign a status of exactly "pass", "review", or "gap", with a one-sentence note grounded in the record text.
 
