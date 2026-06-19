@@ -16,7 +16,7 @@ JRS does NOT:
 - Certify policy compliance
 - Replace organizational judgment
 
-JRS focuses on: documentation reviewability, conclusion reconstruction, identifiable basis, chronology clarity, and evidentiary sufficiency.
+JRS focuses on: documentation reviewability, reconstructability, basis identification, chronology, and evidentiary sufficiency.
 
 When assessing a record, provide:
 1. A routing determination: Low / Moderate / High / Critical
