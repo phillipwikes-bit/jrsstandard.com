@@ -100,7 +100,9 @@ This codebase has several values that must remain consistent across all pages. I
 | Copyright line | `© 2026 Phillip Wikes · JRS™` |
 | localStorage key | `jrs-training-progress` |
 
-**Never use**: any Gmail address, any LinkedIn URL as a primary contact, the filename `JRS-Standard.pdf` in HTML `href` attributes (it is only a source file — public links use the full Wikes filename above).
+**Never use**: any Gmail address, or any LinkedIn URL as a primary contact.
+
+**PDF href policy**: public PDF links generally use the full Wikes filename above. Exception (owner decision, June 2026): the "Review Controls" links, meaning the nav items and the "Review Controls PDF" buttons on `index.html`, `pilot.html`, `enterprise.html`, and `training.html`, intentionally point to `JRS-Standard.pdf`. Do not revert those to the Wikes filename. Other contexts continue to use the Wikes filename.
 
 ### 2. No Orphaned Code
 Dead functions, unused CSS classes, and commented-out blocks must be removed if encountered during an edit. Do not leave `// TODO` comments unless staging a named multi-step refactor explicitly agreed with the user.
