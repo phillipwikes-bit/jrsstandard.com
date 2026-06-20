@@ -154,7 +154,7 @@ function proceed(){
   load();
 }
 function load(){
-  fetch(U+'/rest/v1/bench_records?select=id,text,record_type,ai_function&active=eq.true&order=created_at.asc',{headers:HDR})
+  fetch(U+'/rest/v1/bench_records?select=id,text,record_type,ai_function&active=eq.true&review_open=eq.true&order=created_at.asc',{headers:HDR})
    .then(function(r){return r.json();})
    .then(function(rows){ records=rows||[]; render(); })
    .catch(function(){ document.getElementById('reclist').innerHTML='<div class="note">Could not load records. Run supabase-benchmark-setup.sql and add records in the admin page.</div>'; });
