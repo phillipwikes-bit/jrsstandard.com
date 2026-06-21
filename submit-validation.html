@@ -32,6 +32,13 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent-d
 .note b{color:var(--text)}
 .warn{border-left-color:var(--review-text)}
 .ft{border-top:1px solid var(--rule);padding:18px 20px;margin-top:26px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-soft)}
+.elig{border:1px solid var(--accent-dim);background:rgba(190,148,71,.06);padding:14px 16px;margin:16px 0}
+.elig-h{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.elig-lead{font-size:13px;color:var(--text);margin-bottom:11px;line-height:1.6}
+.elig-item{display:grid;grid-template-columns:24px 1fr;gap:10px;align-items:start;margin-bottom:9px;font-size:13px;color:var(--muted);line-height:1.55}
+.elig-item b{color:var(--text)}
+.elig-n{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);background:var(--surface2);border:1px solid var(--rule);width:22px;height:22px;display:flex;align-items:center;justify-content:center}
+.elig-foot{font-size:12px;color:var(--review-text);margin-top:8px;line-height:1.55}
 </style>
 </head>
 <body>
@@ -40,8 +47,17 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent-d
   <h1>Submit a Validated Case</h1>
   <p class="sub">Rung 3 (validation) tests whether a JRS verdict predicts what actually happened to a record when it was challenged. Each case pairs a de-identified record with its <b>documented real-world outcome</b>, so we can compare the JRS read against reality.</p>
 
+  <div class="elig">
+    <div class="elig-h">Quick eligibility check &middot; read before you start</div>
+    <p class="elig-lead">A case belongs in this study only if you can answer <b>yes</b> to all three questions. If any answer is no, do not enter it.</p>
+    <div class="elig-item"><span class="elig-n">1</span><div><b>Is it public?</b> A published decision, opinion, ruling, or award that anyone could look up. Never an internal company file, even with the names removed.</div></div>
+    <div class="elig-item"><span class="elig-n">2</span><div><b>Does it show the record?</b> The decision quotes the actual record, or the part that mattered: a termination, a write-up, an investigation note, a determination.</div></div>
+    <div class="elig-item"><span class="elig-n">3</span><div><b>Is the outcome written down?</b> The decision states what happened when the record was challenged: upheld, overturned, failed an audit, and so on.</div></div>
+    <p class="elig-foot">When in doubt, leave it out. Your own workplace records do not qualify, no matter how they are edited.</p>
+  </div>
+
   <div class="note warn">
-    <b>Use only public or fully de-identified material.</b> Do not submit any confidential, internal, or non-public record. Good sources: published FOIL appeal determinations, Committee on Open Government opinions, Article 78 and other court rulings, arbitration awards, audit findings, and administrative-hearing decisions where the record was quoted and the outcome is in writing. Remove all names, identifiers, and case numbers that are not part of a public citation.
+    <b>Good public sources.</b> Published FOIL appeal determinations, Committee on Open Government opinions, Article 78 and other court rulings, labor arbitration awards, unemployment appeal decisions, EEOC determinations, audit findings, and administrative-hearing decisions where the record was quoted and the outcome is in writing. Remove all names, identifiers, and case numbers that are not part of a public citation.
   </div>
 
   <label class="f">The record (de-identified text)</label>
