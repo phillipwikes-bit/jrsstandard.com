@@ -166,9 +166,12 @@ function submitCase(){
      st.style.color='var(--review-text)'; btn.disabled=false;
    });
 }
-// Pre-select the domain from a ?domain= link (e.g. ?domain=hr or ?domain=foil) for one-click setup.
+// Pre-fill the domain and contributor code from the link (e.g. ?domain=hr&code=TP) for one-click setup.
 (function(){
-  var p=(new URLSearchParams(location.search).get('domain')||'').toLowerCase();
+  var q=new URLSearchParams(location.search);
+  var c=(q.get('code')||'').trim();
+  if(c){ var ce=document.getElementById('code'); if(ce) ce.value=c; }
+  var p=(q.get('domain')||'').toLowerCase();
   var map={foil:'Public records / FOIL','public-records':'Public records / FOIL',records:'Public records / FOIL',hr:'HR / Employment',employment:'HR / Employment',compliance:'Compliance / Audit',audit:'Compliance / Audit',investigations:'Investigations',legal:'Legal / Litigation'};
   var v=map[p]; if(!v) return;
   var s=document.getElementById('domain');
