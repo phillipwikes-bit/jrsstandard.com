@@ -60,7 +60,7 @@ input,select,textarea{width:100%;background:var(--surface2);border:1px solid var
       <div><label class="f">Your role</label>
         <select id="role"><option value="">Select…</option><option>HR</option><option>Compliance</option><option>Audit</option><option>Investigations</option><option>Employee Relations</option><option>Legal Review</option><option>AI Governance</option><option>Risk Management</option><option>Organizational Psychology</option><option>Records / Information Governance</option><option>Quality Assurance</option><option>Management</option><option>Other</option></select></div>
       <div><label class="f">Review mode</label>
-        <select id="mode"><option value="jrs">JRS (five conditions)</option><option value="normal">Normal review (your usual standard)</option></select></div>
+        <select id="mode"><option value="jrs">JRS (five conditions)</option></select></div>
     </div>
     <div id="expert-fields" style="display:none;border:1px solid var(--accent-dim);background:rgba(190,148,71,.05);padding:12px 14px;margin-top:12px">
       <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:6px">Expert panel — credentials (private)</div>
@@ -70,7 +70,7 @@ input,select,textarea{width:100%;background:var(--surface2);border:1px solid var
       <label class="f">Affiliation (optional)</label><input id="e-aff">
       <label class="f">Email (optional, private)</label><input id="e-email" type="email">
     </div>
-    <p class="sub" style="margin-top:8px;font-size:12px">Normal mode: judge the record the way you ordinarily would, then a later session can compare it to JRS. JRS mode: apply the five conditions below.</p>
+    <p class="sub" style="margin-top:8px;font-size:12px">Apply the five JRS conditions to each record below. Mark each as Pass, Review, or Gap, then submit.</p>
     <button class="btn solid" style="margin-top:14px" onclick="start()">Begin</button>
     <span class="status" id="gate-status" style="margin-left:10px"></span>
   </div>
