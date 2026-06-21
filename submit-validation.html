@@ -146,9 +146,9 @@ function submitCase(){
   st.textContent='Submitting…'; st.style.color='var(--muted-soft)';
   var btn=document.querySelector('.btn.solid'); btn.disabled=true;
   // Self-contained: the full case (record + paired outcome + source) is stored in one row.
-  var payload={record:record, domain:domain, jrs_read:jrs, source:source, contributor:code, notes:notes, status:'pending_deid_review'};
+  var payload={record:record, domain:domain, jrs_read:jrs, outcome:outcome, source:source, contributor:code, note:notes, status:'pending_deid_review'};
   fetch(U+'/rest/v1/bench_outcomes',{method:'POST',headers:Object.assign({'Content-Type':'application/json','Prefer':'return=minimal'},HDR),
-    body:JSON.stringify({outcome:outcome, note:JSON.stringify(payload)})})
+    body:JSON.stringify(payload)})
    .then(function(r){ if(!r.ok) throw 0;
      st.textContent='Recorded. Thank you, this case is pending de-identification review.'; st.style.color='var(--ready-text)';
      ['record','source','notes'].forEach(function(id){document.getElementById(id).value='';});
