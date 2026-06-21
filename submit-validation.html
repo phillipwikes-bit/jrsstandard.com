@@ -46,6 +46,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent-d
 <main><div class="wrap">
   <h1>Submit a Validated Case</h1>
   <p class="sub">Rung 3 (validation) tests whether a JRS verdict predicts what actually happened to a record when it was challenged. Each case pairs a de-identified record with its <b>documented real-world outcome</b>, so we can compare the JRS read against reality.</p>
+  <p class="sub" style="margin-top:8px"><b style="color:var(--text)">How many to aim for:</b> a first set of 5 cases, then 20 to 30 in total, entered in small batches over time. There is no need to do them all at once, and your work saves as you go.</p>
 
   <div class="elig">
     <div class="elig-h">Quick eligibility check &middot; read before you start</div>
@@ -149,7 +150,7 @@ function submitCase(){
   fetch(U+'/rest/v1/bench_outcomes',{method:'POST',headers:Object.assign({'Content-Type':'application/json','Prefer':'return=minimal'},HDR),
     body:JSON.stringify({outcome:outcome, note:JSON.stringify(payload)})})
    .then(function(r){ if(!r.ok) throw 0;
-     st.textContent='Recorded. Thank you — this case is pending de-identification review.'; st.style.color='var(--ready-text)';
+     st.textContent='Recorded. Thank you, this case is pending de-identification review.'; st.style.color='var(--ready-text)';
      ['record','source','notes'].forEach(function(id){document.getElementById(id).value='';});
      btn.disabled=false;
    })
