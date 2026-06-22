@@ -464,6 +464,21 @@ function downloadPayload(payload){
   }catch(e){ return false; }
 }
 
+function jrsSanitizeCheck(text) {
+  var patterns = [
+    {re:/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, label:'email address'},
+    {re:/\b\d{3}[-.\s]?\d{3}[-.\s]?\d{4}\b/g, label:'phone number'},
+    {re:/\b\d{3}-\d{2}-\d{4}\b/g, label:'SSN'},
+    {re:/\b\d{4}[\s-]?\d{4}[\s-]?\d{4}[\s-]?\d{4}\b/g, label:'card number'}
+  ];
+  var found = [];
+  patterns.forEach(function(p){ if (p.re.test(text)) found.push(p.label); });
+  if (found.length) {
+    return confirm('Potential sensitive identifier detected ('+found.join(', ')+'). Confirm all personally identifiable information has been redacted before submission to preserve work-product privileges.');
+  }
+  return true;
+}
+
 function submitReview(){
   var btn=document.getElementById('submit-btn');
   var errEl=document.getElementById('err-summary');
@@ -472,6 +487,8 @@ function submitReview(){
     errEl.style.color='var(--muted-soft)'; errEl.style.display='block';
     showFeedback(); return;
   }
+  var jrsFree = Array.prototype.map.call(document.querySelectorAll('textarea'), function(t){ return t.value || ''; }).join(' ');
+  if(!jrsSanitizeCheck(jrsFree)) return;
   btn.disabled=true; btn.textContent='Submitting...';
   var payload=buildPayload();
   try {

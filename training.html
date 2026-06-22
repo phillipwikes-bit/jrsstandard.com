@@ -2656,10 +2656,21 @@ renderFM();
 </footer>
 <script>
 // Load progress from localStorage
-var progress = JSON.parse(localStorage.getItem('jrs-training-progress') || '{}');
+var progress;
+try { progress = JSON.parse(localStorage.getItem('jrs-training-progress') || '{}'); }
+catch (e) { progress = {}; }
+if (!progress || typeof progress !== 'object') progress = {};
+
+// Count only the six module-completion flags (keys 0-5). Survey and role
+// are also stored in this object, so a generic truthy count over-reports.
+function jrsModulesDone() {
+  var n = 0;
+  for (var i = 0; i < 6; i++) { if (progress[i]) n++; }
+  return n;
+}
 
 function updateProgressDisplay() {
-  var done = Object.values(progress).filter(Boolean).length;
+  var done = jrsModulesDone();
   document.getElementById('progress-display').textContent = done + ' / 6';
   document.getElementById('progress-fill').style.width = (done / 6 * 100) + '%';
   // Update module statuses
@@ -2709,9 +2720,8 @@ function markComplete(idx) {
   var panel = document.getElementById('module-panel-' + idx);
   if (panel) panel.classList.remove('open');
   updateProgressDisplay();
-  // Show certificate section when all done
-  var done = Object.values(progress).filter(Boolean).length;
-  if (done === 6) {
+  // Show certificate section when all six modules are done
+  if (jrsModulesDone() === 6) {
     var certSec = document.getElementById('cert-section');
     if (certSec) { certSec.style.display = 'block'; certSec.scrollIntoView({behavior:'smooth'}); }
   }
@@ -2818,7 +2828,7 @@ if (progress.survey) {
 // Restore persisted role selection
 if (progress.role && ROLE_PATHS[progress.role]) selectRole(progress.role);
 // Show cert section if already all complete
-if (Object.values(progress).filter(Boolean).length === 6) {
+if (jrsModulesDone() === 6) {
   var cs = document.getElementById('cert-section');
   if (cs) cs.style.display = 'block';
 }
