@@ -102,7 +102,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent-d
       </select>
     </div>
     <div>
-      <label class="f">Your code (optional)</label>
+      <label class="f">Your contributor code (required)</label>
       <input id="code" placeholder="e.g. E-08">
     </div>
   </div>
@@ -142,6 +142,7 @@ function submitCase(){
   if(record.length<20||record.length>8000){ st.textContent='Record must be 20 to 8000 characters.'; st.style.color='var(--stop-text)'; return; }
   if(!outcome){ st.textContent='Select the real-world outcome.'; st.style.color='var(--stop-text)'; return; }
   if(!source){ st.textContent='A public source/citation is required.'; st.style.color='var(--stop-text)'; return; }
+  if(!code){ st.textContent='Your contributor code is required. Use the personalized link you were sent, or contact info@jrsstandard.com.'; st.style.color='var(--stop-text)'; return; }
   if(!jrsSanitizeCheck(record+' '+notes)) return;
   st.textContent='Submitting…'; st.style.color='var(--muted-soft)';
   var btn=document.querySelector('.btn.solid'); btn.disabled=true;
