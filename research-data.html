@@ -252,10 +252,10 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
     var cls = state==='data'?'t-ready':(state==='partial'?'t-review_required':'t-gap_identified');
     return '<div class="bm-card"><div class="bm-ck" style="color:var(--accent)">'+rung+'</div><div class="bm-cv" style="font-size:15px;margin-top:4px">'+label+'</div><div style="margin-top:6px"><span class="tag '+cls+'">'+state+'</span></div></div>';
   }
-  function renderRungStatus(rung1HasData, accMet, expertSeen){
+  function renderRungStatus(rung1HasData, accMet, expertSeen, rung3N){
     var s1=statusCard('Rung 1 &middot; Reproducibility','Observation', rung1HasData?'data':'no data');
     var s2=statusCard('Rung 2 &middot; Accuracy', accMet?'Reference-panel accuracy':'Tooling only, no data', accMet?'data':(expertSeen?'partial':'no data'));
-    var s3=statusCard('Rung 3 &middot; Validation','Tooling only, no data','no data');
+    var s3=statusCard('Rung 3 &middot; Validation', rung3N>0?(rung3N+' screened case'+(rung3N===1?'':'s')+' collected (no validity figure computed yet)'):'Tooling only, no data', rung3N>0?'partial':'no data');
     document.getElementById('rung-status').innerHTML=s1+s2+s3;
   }
 
@@ -263,15 +263,17 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
     fetch(U+'/rest/v1/bench_records?select=id,text,record_type&active=eq.true',{headers:HDR}).then(function(r){return r.ok?r.json():[];}),
     fetch(U+'/rest/v1/bench_labels?select=record_id,mode,determination,labeler_code,conditions,role',{headers:HDR}).then(function(r){return r.ok?r.json():[];}),
     fetch(U+'/rest/v1/bench_ai_verdicts?select=record_id,determination,conditions',{headers:HDR}).then(function(r){return r.ok?r.json():[];}),
-    fetch(U+'/rest/v1/findings_history?select=overall_agreement,per_record,k,records,model,metrics,created_at&order=created_at.desc&limit=30',{headers:HDR}).then(function(r){return r.ok?r.json():[];})
+    fetch(U+'/rest/v1/findings_history?select=overall_agreement,per_record,k,records,model,metrics,created_at&order=created_at.desc&limit=30',{headers:HDR}).then(function(r){return r.ok?r.json():[];}),
+    fetch(U+'/rest/v1/bench_outcomes?select=status',{headers:HDR}).then(function(r){return r.ok?r.json():[];})
   ]).then(function(res){
     var recs=res[0]||[],labels=res[1]||[],ai=res[2]||[],hist=res[3]||[];
+    var rung3N=(res[4]||[]).filter(function(o){return o.status==='screened';}).length;
     renderRung1(hist);
 
     if(!recs.length){
       document.getElementById('bm-rows').innerHTML='<tr><td colspan="8">No benchmark records yet. Add records in bench-admin.html (or run the SQL to load the demo set), then have reviewers score them.</td></tr>';
       document.getElementById('bm-cards').innerHTML=card('&mdash;','Panel status')+card('insufficient','Expert agmt')+card('0','Real records (N)');
-      renderRungStatus(hist.length>0, false, false);
+      renderRungStatus(hist.length>0, false, false, rung3N);
       return;
     }
     var aB={};ai.forEach(function(a){aB[a.record_id]=a;});
@@ -365,7 +367,7 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
     } else if(!benchmarkOK){ gn.style.display='block';
       gn.innerHTML='Labelled <b>reference panel</b>: chance-corrected expert agreement (kappa '+((kap&&kap.kappa!=null)?kap.kappa.toFixed(2):'n/a')+', n='+(kap?kap.n:0)+') is below the configured benchmark threshold ('+(gateUnset(BENCHMARK_KAPPA_THRESHOLD)?'unset':BENCHMARK_KAPPA_THRESHOLD.toFixed(2))+'). Raw percent agreement is shown for context but does not govern the label. These figures characterise alignment with informed professional judgment, not correctness against a single truth.';
     } else { gn.style.display='none'; }
-    renderRungStatus(hist.length>0, benchmarkOK, expPct!=null);
+    renderRungStatus(hist.length>0, benchmarkOK, expPct!=null, rung3N);
   }).catch(function(){
     document.getElementById('bm-rows').innerHTML='<tr><td colspan="8">Benchmark tables not available yet. Run supabase-benchmark-setup.sql.</td></tr>';
   });
