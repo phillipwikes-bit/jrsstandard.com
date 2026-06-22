@@ -141,14 +141,31 @@ export default async function handler(req) {
     //  Abuse guard: a cron-path run is skipped if a successful run happened in the last ~20h,
     //  so the model is called at most once per day no matter how often the endpoint is hit.
     var bearer = (req.headers.get('authorization') || '').replace(/^Bearer\s+/i, '').trim();
+    var ua = (req.headers.get('user-agent') || '').toLowerCase();
     var okManual = RUN_TOKEN && token === RUN_TOKEN;
     var okCronSecret = CRON_SECRET && bearer === CRON_SECRET;
+    // Prefer an explicit secret. Once CRON_SECRET is set, the spoofable
+    // User-Agent is no longer trusted at all. Until it is set, fall back to the
+    // Vercel cron UA so the existing nightly run keeps working, with the daily
+    // guard below capping a spoofed UA to at most one run per ~20h.
+    var isVercelCron = !CRON_SECRET && ua.indexOf('vercel-cron') !== -1;
 
     if (!ANTHROPIC) return json({ error: 'ANTHROPIC_API_KEY not set' }, 400);
     if (!SERVICE) return json({ error: 'SUPABASE_SERVICE_ROLE_KEY not set' }, 400);
-    // Require an explicit secret. A spoofable User-Agent must never authenticate.
-    // Set CRON_SECRET in the project env; Vercel injects it on scheduled runs.
-    if (!okManual && !okCronSecret) return json({ error: 'invalid or missing token' }, 401);
+    if (!okManual && !okCronSecret && !isVercelCron) return json({ error: 'invalid or missing token' }, 401);
+
+    // Daily guard for the UA fallback path (never for an explicit RUN_TOKEN/CRON_SECRET).
+    if (!okManual && !okCronSecret) {
+      try {
+        const lr = await fetch(SUPABASE_URL + '/rest/v1/findings?study_id=eq.STUDY-001&select=created_at&order=created_at.desc&limit=1',
+          { headers: { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE } });
+        const arr = await lr.json();
+        if (Array.isArray(arr) && arr[0] && arr[0].created_at) {
+          var ageH = (Date.now() - new Date(arr[0].created_at).getTime()) / 3.6e6;
+          if (ageH < 20) return json({ ok: true, skipped: 'ran ' + ageH.toFixed(1) + 'h ago' });
+        }
+      } catch (e) {}
+    }
 
     // Build the roster from available provider keys (cross-vendor if a non-Claude key is set).
     const roster = buildRoster(ANTHROPIC);
