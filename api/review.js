@@ -43,6 +43,18 @@ Format your response as JSON with this exact structure:
 
 Be specific and direct. Reference actual language from the submitted record. Do not add legal disclaimers inside the JSON, keep it operational.`;
 
+// Best-effort per-instance rate limiter (edge isolates do not share state, so
+// this throttles casual abuse, not a determined attacker; a shared store would
+// be needed for hard limits).
+const JRS_RL = globalThis.__jrs_review_rl || (globalThis.__jrs_review_rl = new Map());
+function jrsRateLimited(ip) {
+  const now = Date.now(), WINDOW = 60000, LIMIT = 15;
+  const rec = JRS_RL.get(ip) || { n: 0, t: now };
+  if (now - rec.t > WINDOW) { rec.n = 0; rec.t = now; }
+  rec.n++; JRS_RL.set(ip, rec);
+  return rec.n > LIMIT;
+}
+
 export default async function handler(req) {
   if (req.method === 'OPTIONS') {
     return new Response(null, {
@@ -62,6 +74,14 @@ export default async function handler(req) {
   }
 
   try {
+    const ip = (req.headers.get('x-forwarded-for') || '').split(',')[0].trim() || 'unknown';
+    if (jrsRateLimited(ip)) {
+      return new Response(JSON.stringify({ error: 'Rate limit exceeded' }), {
+        status: 429,
+        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+      });
+    }
+
     const { text } = await req.json();
     const clean = (typeof text === 'string') ? text.trim() : '';
 

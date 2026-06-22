@@ -163,7 +163,7 @@ window.openRec=function(i){
      +[['ready','Adequate'],['review_required','Needs work'],['gap_identified','Inadequate']].map(function(p){return '<span class="opt" id="n-'+p[0]+'" onclick="npick(\''+p[0]+'\')">'+p[1]+'</span>';}).join('')+'</div></div>';
   }
   html+='<label class="f" style="margin-top:12px">Note (optional, no names or case details)</label><textarea id="rn" rows="3"></textarea>';
-  html+='<div style="margin-top:12px"><button class="btn solid" onclick="submitRec(\''+r.id+'\')">Submit &amp; next</button><span class="status" id="rs"></span></div></div>';
+  html+='<div style="margin-top:12px"><button class="btn solid" onclick="submitRec(\''+r.id+'\',this)">Submit &amp; next</button><span class="status" id="rs"></span></div></div>';
   // replace list with the record card
   document.getElementById('reclist').innerHTML=html;
   window._picks=picks; window._nverdict=null;
@@ -176,15 +176,26 @@ window.pick=function(ci,v){
   var c=window._picks; if(COND.every(function(x){return c[x.k];})) document.getElementById('det').textContent='Determination: '+det(c).replace('_',' ').toUpperCase();
 };
 window.npick=function(v){ window._nverdict=v; ['ready','review_required','gap_identified'].forEach(function(x){document.getElementById('n-'+x).className='opt';}); document.getElementById('n-'+v).className='opt sel-'+(v==='ready'?'pass':(v==='review_required'?'review':'gap')); };
-window.submitRec=function(rid){
+window.submitRec=function(rid,btn){
   var st=document.getElementById('rs'); var conditions=null, determination=null;
   if(mode==='jrs'){ var c=window._picks; if(!COND.every(function(x){return c[x.k];})){st.textContent='Mark all five.';st.style.color='var(--gap)';return;} conditions=c; determination=det(c); }
   else { if(!window._nverdict){st.textContent='Pick a verdict.';st.style.color='var(--gap)';return;} determination=window._nverdict; }
   var note=(document.getElementById('rn').value||'').trim();
+  var payload={record_id:rid,labeler_code:code,role:role,mode:mode,conditions:conditions,determination:determination,note:note};
   st.textContent='Saving…'; st.style.color='var(--muted-soft)';
-  fetch(U+'/rest/v1/bench_labels',{method:'POST',headers:Object.assign({'Content-Type':'application/json','Prefer':'return=minimal'},HDR),body:JSON.stringify({record_id:rid,labeler_code:code,role:role,mode:mode,conditions:conditions,determination:determination,note:note})})
+  if(btn) btn.disabled=true;
+  fetch(U+'/rest/v1/bench_labels',{method:'POST',headers:Object.assign({'Content-Type':'application/json','Prefer':'return=minimal'},HDR),body:JSON.stringify(payload)})
    .then(function(r){ if(!r.ok)throw 0; doneSet[rid]=1; try{localStorage.setItem('bench-done-'+code,JSON.stringify(doneSet));}catch(e){} render(); })
-   .catch(function(){ st.textContent='Could not save. Try again.'; st.style.color='var(--gap)'; });
+   .catch(function(){
+     // Fail-safe: never lose the reviewer's scoring on a transient failure.
+     try{
+       var blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
+       var u=URL.createObjectURL(blob); var a=document.createElement('a'); a.href=u; a.download='jrs-review-'+code+'-'+Date.now()+'.json';
+       document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(u);
+       st.textContent='Could not save. Your scoring was downloaded; send it to info@jrsstandard.com or retry.';
+     }catch(e){ st.textContent='Could not save. Please retry.'; }
+     st.style.color='var(--gap)'; if(btn) btn.disabled=false;
+   });
 };
 </script>
 </body>

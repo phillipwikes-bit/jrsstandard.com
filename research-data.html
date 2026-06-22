@@ -122,7 +122,7 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
   ];
   var host=document.getElementById('datasets');
   var loaded={}, done=0;
-  function esc(t){var d=document.createElement('div');d.textContent=(t==null?'':String(t));return d.innerHTML;}
+  function esc(t){return (t==null?'':String(t)).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
   function cell(v){ if(v==null) return ''; if(typeof v==='object') return JSON.stringify(v); return String(v); }
   function toCSV(rows){
     if(!rows||!rows.length) return '';
@@ -186,7 +186,7 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
   var MIN_EXPERTS_EFF = gateUnset(MIN_EXPERTS) ? Infinity : MIN_EXPERTS;   // fail closed
 
   function tag(d){return d?'<span class="tag t-'+d+'">'+d.replace('_',' ')+'</span>':'<span class="tag">&mdash;</span>';}
-  function esc(t){var d=document.createElement('div');d.textContent=(t==null?'':String(t));return d.innerHTML;}
+  function esc(t){return (t==null?'':String(t)).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
   function det(c){var v=COND.map(function(k){return c[k];});if(v.indexOf('gap')>-1)return'gap_identified';if(v.indexOf('review')>-1)return'review_required';return'ready';}
   function majority(a){var c={};a.forEach(function(x){c[x]=(c[x]||0)+1;});var b=null,n=0;Object.keys(c).forEach(function(k){if(c[k]>n){n=c[k];b=k;}});return{value:b,share:a.length?n/a.length:0,n:a.length};}
   function isExpert(code){return String(code||'').trim().toLowerCase().charAt(0)==='e';}
@@ -361,7 +361,7 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
 
     var gn=document.getElementById('bm-gate-note');
     if(!expertStatsAllowed){ gn.style.display='block';
-      gn.innerHTML='Distribution statistics are withheld. They require at least '+(MIN_EXPERTS_EFF===Infinity?'a configured minimum (currently unset — gate fails closed)':MIN_EXPERTS+' independent experts')+'; the cohort has '+expertCount+'. Until the minimum is met, no expert-agreement, range, or accuracy figure is computed. Thresholds are placeholders pending the study owner.';
+      gn.innerHTML='Distribution statistics are withheld. They require at least '+(MIN_EXPERTS_EFF===Infinity?'a configured minimum (currently unset: gate fails closed)':MIN_EXPERTS+' independent experts')+'; the cohort has '+expertCount+'. Until the minimum is met, no expert-agreement, range, or accuracy figure is computed. Thresholds are placeholders pending the study owner.';
     } else if(!benchmarkOK){ gn.style.display='block';
       gn.innerHTML='Labelled <b>reference panel</b>: chance-corrected expert agreement (kappa '+((kap&&kap.kappa!=null)?kap.kappa.toFixed(2):'n/a')+', n='+(kap?kap.n:0)+') is below the configured benchmark threshold ('+(gateUnset(BENCHMARK_KAPPA_THRESHOLD)?'unset':BENCHMARK_KAPPA_THRESHOLD.toFixed(2))+'). Raw percent agreement is shown for context but does not govern the label. These figures characterise alignment with informed professional judgment, not correctness against a single truth.';
     } else { gn.style.display='none'; }
