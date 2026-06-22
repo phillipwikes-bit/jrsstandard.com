@@ -55,21 +55,40 @@ function jrsRateLimited(ip) {
   return rec.n > LIMIT;
 }
 
+// Only the production site may call this browser-facing endpoint. A spoofable
+// Origin is not real auth, but it stops other sites from using it as a free
+// proxy; the rate limiter and input caps bound the rest.
+const ALLOWED_ORIGINS = new Set(['https://jrsstandard.com', 'https://www.jrsstandard.com']);
+function corsHeaders(req) {
+  const o = req.headers.get('origin') || '';
+  return {
+    'Access-Control-Allow-Origin': ALLOWED_ORIGINS.has(o) ? o : 'https://jrsstandard.com',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Vary': 'Origin'
+  };
+}
+
 export default async function handler(req) {
+  const CORS = corsHeaders(req);
+
   if (req.method === 'OPTIONS') {
-    return new Response(null, {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type',
-      }
-    });
+    return new Response(null, { headers: CORS });
   }
 
   if (req.method !== 'POST') {
     return new Response(JSON.stringify({ error: 'Method not allowed' }), {
       status: 405,
-      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+      headers: { 'Content-Type': 'application/json', ...CORS }
+    });
+  }
+
+  // Reject browser calls from origins other than the production site.
+  const origin = req.headers.get('origin');
+  if (origin && !ALLOWED_ORIGINS.has(origin)) {
+    return new Response(JSON.stringify({ error: 'Forbidden origin' }), {
+      status: 403,
+      headers: { 'Content-Type': 'application/json', ...CORS }
     });
   }
 
@@ -78,7 +97,7 @@ export default async function handler(req) {
     if (jrsRateLimited(ip)) {
       return new Response(JSON.stringify({ error: 'Rate limit exceeded' }), {
         status: 429,
-        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+        headers: { 'Content-Type': 'application/json', ...CORS }
       });
     }
 
@@ -88,13 +107,13 @@ export default async function handler(req) {
     if (clean.length < 10) {
       return new Response(JSON.stringify({ error: 'Record text too short' }), {
         status: 400,
-        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+        headers: { 'Content-Type': 'application/json', ...CORS }
       });
     }
     if (clean.length > 8000) {
       return new Response(JSON.stringify({ error: 'Record text too long' }), {
         status: 413,
-        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+        headers: { 'Content-Type': 'application/json', ...CORS }
       });
     }
 
@@ -102,7 +121,7 @@ export default async function handler(req) {
     if (!apiKey) {
       return new Response(JSON.stringify({ error: 'API not configured' }), {
         status: 500,
-        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+        headers: { 'Content-Type': 'application/json', ...CORS }
       });
     }
 
@@ -130,7 +149,7 @@ export default async function handler(req) {
       const err = await response.text();
       return new Response(JSON.stringify({ error: 'API error', detail: err }), {
         status: 502,
-        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+        headers: { 'Content-Type': 'application/json', ...CORS }
       });
     }
 
@@ -142,7 +161,7 @@ export default async function handler(req) {
     if (!jsonMatch) {
       return new Response(JSON.stringify({ error: 'Invalid response format' }), {
         status: 502,
-        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+        headers: { 'Content-Type': 'application/json', ...CORS }
       });
     }
 
@@ -150,13 +169,13 @@ export default async function handler(req) {
 
     return new Response(JSON.stringify(result), {
       status: 200,
-      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+      headers: { 'Content-Type': 'application/json', ...CORS }
     });
 
   } catch (err) {
     return new Response(JSON.stringify({ error: 'Server error', detail: err.message }), {
       status: 500,
-      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+      headers: { 'Content-Type': 'application/json', ...CORS }
     });
   }
 }
