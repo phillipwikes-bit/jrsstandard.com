@@ -54,21 +54,13 @@ input,select,textarea{width:100%;background:var(--surface2);border:1px solid var
     <h1>Structured Record Review</h1>
     <p class="sub">Invite-only. You will review records one at a time against the five JRS conditions, marking each Pass, Review, or Gap. Work independently: do not confer with other reviewers. Your responses are recorded under your reviewer code (no name or email).</p>
     <label class="f">Reviewer code (optional)</label>
-    <input id="code" oninput="toggleExpert()" placeholder="Leave blank if you were not given a code">
-    <p class="sub" style="font-size:11px;margin-top:4px">Regular reviewers: leave this blank and a private code is created for you automatically. Experts: enter the code from your invitation (it begins with E).</p>
+    <input id="code" placeholder="Leave blank if you were not given a code">
+    <p class="sub" style="font-size:11px;margin-top:4px">Regular reviewers: leave this blank and a private code is created for you automatically. Experts: enter the code from your invitation (it begins with E). Your panel credentials are already on file, so there is nothing else to enter here.</p>
     <div class="row2">
       <div><label class="f">Your role</label>
         <select id="role"><option value="">Select…</option><option>HR</option><option>Compliance</option><option>Audit</option><option>Investigations</option><option>Employee Relations</option><option>Legal Review</option><option>AI Governance</option><option>Risk Management</option><option>Organizational Psychology</option><option>Records / Information Governance</option><option>Quality Assurance</option><option>Management</option><option>Other</option></select></div>
       <div><label class="f">Review mode</label>
         <select id="mode"><option value="jrs">JRS (five conditions)</option></select></div>
-    </div>
-    <div id="expert-fields" style="display:none;border:1px solid var(--accent-dim);background:rgba(190,148,71,.05);padding:12px 14px;margin-top:12px">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:6px">Expert panel — credentials (private)</div>
-      <p class="sub" style="font-size:11.5px;margin-bottom:8px">Your code marks you as an expert whose judgments form the answer key. These credentials document the panel and are kept <b>private</b> — they are never shown publicly or in any export.</p>
-      <div class="row2"><div><label class="f">Name</label><input id="e-name"></div><div><label class="f">Title</label><input id="e-title" placeholder="e.g. Employment Attorney"></div></div>
-      <div class="row2"><div><label class="f">Credential(s)</label><input id="e-cred" placeholder="e.g. JD, SHRM-SCP, PhD"></div><div><label class="f">Years of relevant experience</label><input id="e-years"></div></div>
-      <label class="f">Affiliation (optional)</label><input id="e-aff">
-      <label class="f">Email (optional, private)</label><input id="e-email" type="email">
     </div>
     <p class="sub" style="margin-top:8px;font-size:12px">Apply the five JRS conditions to each record below. Mark each as Pass, Review, or Gap, then submit.</p>
     <button class="btn solid" style="margin-top:14px" onclick="start()">Begin</button>
@@ -99,7 +91,6 @@ function esc(t){var d=document.createElement('div');d.textContent=(t==null?'':St
 function det(c){var v=COND.map(function(x){return c[x.k];});if(v.indexOf('gap')>-1)return'gap_identified';if(v.indexOf('review')>-1)return'review_required';return'ready';}
 function val(id){var e=document.getElementById(id);return e?(e.value||'').trim():'';}
 function isExpert(c){return String(c||'').trim().toLowerCase().charAt(0)==='e';}
-function toggleExpert(){ document.getElementById('expert-fields').style.display=isExpert(document.getElementById('code').value)?'block':'none'; }
 function start(){
   code=(document.getElementById('code').value||'').trim();
   role=document.getElementById('role').value; mode=document.getElementById('mode').value;
@@ -111,10 +102,6 @@ function start(){
       code='R-'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
       try{ localStorage.setItem('bench-auto-code',code); }catch(e){}
     }
-  }
-  if(isExpert(code)){
-    var nm=val('e-name'), ti=val('e-title');
-    if(!nm||!ti){alert('Expert code: please enter your name and title (kept private, never shown publicly).');return;}
   }
   // Fail-loud recording preflight: prove the datastore is reachable AND writable before any data is collected.
   // Uses a dedicated health table (bench_preflight) that is never part of the evidence ladder, and the probe row
@@ -139,13 +126,8 @@ function blockSession(){
     +'<p class="sub" style="margin-top:12px">The datastore could not be reached or is not accepting writes, so your responses would not be saved. To protect the integrity of the study, the session will not start and no data is collected. Run <b>supabase-ALL.sql</b> to provision the benchmark tables, confirm the database is online, then reload this page and try again. If this persists, contact info@jrsstandard.com.</p>';
 }
 function proceed(){
-  // Recording confirmed live. Now (for experts) persist credentials, then open the session.
-  if(isExpert(code)){
-    try{ if(!localStorage.getItem('bench-expert-'+code)){
-      fetch(U+'/rest/v1/bench_experts',{method:'POST',headers:Object.assign({'Content-Type':'application/json','Prefer':'return=minimal'},HDR),body:JSON.stringify({code:code,name:val('e-name'),title:val('e-title'),credential:val('e-cred'),years_experience:val('e-years'),affiliation:val('e-aff'),email:val('e-email')})}).catch(function(){});
-      localStorage.setItem('bench-expert-'+code,'1');
-    }}catch(e){}
-  }
+  // Recording confirmed live. Expert credentials are pre-registered by the program,
+  // so the session opens directly with no client-side credential write.
   try{doneSet=JSON.parse(localStorage.getItem('bench-done-'+code)||'{}');}catch(e){doneSet={};}
   document.getElementById('gate').style.display='none';
   document.getElementById('app').style.display='block';
