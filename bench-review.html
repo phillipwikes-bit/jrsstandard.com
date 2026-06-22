@@ -155,15 +155,15 @@ window.openRec=function(i){
   if(mode==='jrs'){
     COND.forEach(function(c,ci){
       html+='<div class="cond"><div class="cond-q">'+esc(c.q)+'</div><div class="opts">'
-       +['pass','review','gap'].map(function(v){return '<span class="opt" id="o-'+ci+'-'+v+'" onclick="pick('+ci+',\''+v+'\')">'+v+'</span>';}).join('')+'</div></div>';
+       +['pass','review','gap'].map(function(v){return '<span class="opt" id="o-'+ci+'-'+v+'" role="button" tabindex="0" onclick="pick('+ci+',\''+v+'\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();pick('+ci+',\''+v+'\');}">'+v+'</span>';}).join('')+'</div></div>';
     });
     html+='<div class="det" id="det">Determination: —</div>';
   } else {
     html+='<div class="cond"><div class="cond-q">Your overall verdict (normal review)</div><div class="opts">'
-     +[['ready','Adequate'],['review_required','Needs work'],['gap_identified','Inadequate']].map(function(p){return '<span class="opt" id="n-'+p[0]+'" onclick="npick(\''+p[0]+'\')">'+p[1]+'</span>';}).join('')+'</div></div>';
+     +[['ready','Adequate'],['review_required','Needs work'],['gap_identified','Inadequate']].map(function(p){return '<span class="opt" id="n-'+p[0]+'" role="button" tabindex="0" onclick="npick(\''+p[0]+'\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();npick(\''+p[0]+'\');}">'+p[1]+'</span>';}).join('')+'</div></div>';
   }
   html+='<label class="f" style="margin-top:12px">Note (optional, no names or case details)</label><textarea id="rn" rows="3"></textarea>';
-  html+='<div style="margin-top:12px"><button class="btn solid" onclick="submitRec(\''+r.id+'\',this)">Submit &amp; next</button><span class="status" id="rs"></span></div></div>';
+  html+='<div style="margin-top:12px"><button class="btn solid" onclick="submitRec(\''+r.id+'\',this)">Submit &amp; next</button><span class="status" id="rs" role="status" aria-live="polite"></span></div></div>';
   // replace list with the record card
   document.getElementById('reclist').innerHTML=html;
   window._picks=picks; window._nverdict=null;

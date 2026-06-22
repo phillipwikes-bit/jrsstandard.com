@@ -28,7 +28,11 @@ You are operating inside the live `phillipwikes-bit/jrsstandard.com` repository.
 ### Server-Side
 | File | Purpose |
 |---|---|
-| `api/review.js` | Vercel Edge Function — Claude AI record review proxy |
+| `api/review.js` | Vercel Edge Function — Claude AI record review proxy (rate-limited, input-capped) |
+| `api/review-engine.js` | Vercel Edge Function — partner review engine (token-gated, rate-limited) |
+| `api/v1/review-engine.js` | Versioned review-engine endpoint used by the vendor integration preview |
+| `api/run-study.js` | Nightly reproducibility study runner (requires `CRON_SECRET` or `RUN_TOKEN`; no User-Agent auth) |
+| `api/bench-admin.js` | Benchmark admin actions (add/activate records, set gold key, score) behind `BENCH_ADMIN_TOKEN` |
 
 ---
 
@@ -155,7 +159,19 @@ All `fetch()` POST calls must include a `.catch()` handler. For forms where the 
 ```
 
 ### 5. localStorage Persistence Pattern
-`training.html` uses a single localStorage object keyed at `jrs-training-progress`. All new persistent state must be added as sub-keys of this object — do not create additional localStorage keys.
+`training.html` uses a single localStorage object keyed at `jrs-training-progress`. All new training-progress state must be added as sub-keys of this object: do not create additional keys for the training flow.
+
+Other self-contained tools may use their own single scoped key, namespaced to the tool, when their state is unrelated to training progress. These are the only sanctioned keys outside `jrs-training-progress`:
+
+| Key | Owner | Purpose |
+|---|---|---|
+| `jrs_completed`, `jrs_name` | `index.html`, `jrsstandard.html` | homepage completion + certificate name |
+| `omc-submitted` | `one-minute-challenge.html` | one-submission-per-browser guard |
+| `irc-submitted` | `independent-review-challenge.html` | one-submission-per-browser guard |
+| `jrs-poll-voted-<study>` | `finding.html` | one-vote-per-poll guard |
+| `bench-auto-code`, `bench-expert-<code>`, `bench-done-<code>` | `bench-review.html` | reviewer code and per-record completion |
+
+Do not introduce keys beyond this list without adding them here first.
 
 **Sub-keys in use:**
 | Key | Type | Purpose |

@@ -513,7 +513,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
         </div>
         <div style="padding:10px 0 2px;">
           <button type="submit" id="vuln-submit-btn" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:10px 22px;cursor:pointer;font-weight:600;">Submit Observation</button>
-          <span id="vuln-status" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--muted-soft);margin-left:14px;display:none;"></span>
+          <span id="vuln-status" role="status" aria-live="polite" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--muted-soft);margin-left:14px;display:none;"></span>
         </div>
       </form>
       <div style="display:flex;gap:18px;flex-wrap:wrap;border-top:1px solid var(--rule);margin-top:12px;padding-top:12px;">

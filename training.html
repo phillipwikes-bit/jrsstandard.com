@@ -2727,7 +2727,22 @@ function markComplete(idx) {
   }
 }
 
+function jrsSanitizeCheck(text) {
+  var patterns = [
+    {re:/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, label:'email address'},
+    {re:/\b\d{3}[-.\s]?\d{3}[-.\s]?\d{4}\b/g, label:'phone number'},
+    {re:/\b\d{3}-\d{2}-\d{4}\b/g, label:'SSN'},
+    {re:/\b\d{4}[\s-]?\d{4}[\s-]?\d{4}[\s-]?\d{4}\b/g, label:'card number'}
+  ];
+  var found = [];
+  patterns.forEach(function(p){ if (p.re.test(text)) found.push(p.label); });
+  if (found.length) {
+    return confirm('Potential sensitive identifier detected ('+found.join(', ')+'). Confirm all personally identifiable information has been redacted before submission to preserve work-product privileges.');
+  }
+  return true;
+}
 function generateCert() {
+  if (!jrsSanitizeCheck(document.getElementById('cert-name').value || '')) return;
   var name = (document.getElementById('cert-name').value.trim()) || 'Reviewer';
   var canvas = document.getElementById('cert-canvas');
   var W = 900, H = 636;

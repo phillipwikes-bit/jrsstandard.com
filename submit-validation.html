@@ -114,7 +114,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent-d
   <label class="f">Notes (optional, no identifiers)</label>
   <textarea id="notes" style="min-height:80px" placeholder="What about the documentation decided the outcome? Keep it de-identified."></textarea>
 
-  <div style="margin-top:18px"><button class="btn solid" onclick="submitCase()">Submit case</button><span class="status" id="st"></span></div>
+  <div style="margin-top:18px"><button class="btn solid" onclick="submitCase()">Submit case</button><span class="status" id="st" role="status" aria-live="polite"></span></div>
 
   <div class="note">Submitted cases arrive as pending entries for de-identification review before they count toward Rung 3. Validation is domain-specific: a FOIL outcome speaks to records-access decisions, an HR outcome to employment records. Nothing here is published as proof until reviewed.</div>
 </div></main>

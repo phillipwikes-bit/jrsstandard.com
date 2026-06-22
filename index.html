@@ -1099,13 +1099,13 @@ a.gumroad-button.util-link {
  </div>
  <div style="padding:14px 16px 6px;">
   <div style="font-size:13.5px;color:var(--text);font-weight:500;line-height:1.55;margin-bottom:14px;">What review condition appears most operationally significant in documentation environments you've observed?</div>
-  <div id="obs-options" style="display:flex;flex-direction:column;gap:6px;margin-bottom:14px;">
-   <div class="obs-opt" onclick="selectObs(this)" style="padding:9px 13px;border:1px solid var(--rule);font-size:12.5px;color:var(--muted);cursor:pointer;transition:.1s;" data-val="A">A. &nbsp;Chronology instability</div>
-   <div class="obs-opt" onclick="selectObs(this)" style="padding:9px 13px;border:1px solid var(--rule);font-size:12.5px;color:var(--muted);cursor:pointer;transition:.1s;" data-val="B">B. &nbsp;Unsupported escalation</div>
-   <div class="obs-opt" onclick="selectObs(this)" style="padding:9px 13px;border:1px solid var(--rule);font-size:12.5px;color:var(--muted);cursor:pointer;transition:.1s;" data-val="C">C. &nbsp;Reviewer disagreement</div>
-   <div class="obs-opt" onclick="selectObs(this)" style="padding:9px 13px;border:1px solid var(--rule);font-size:12.5px;color:var(--muted);cursor:pointer;transition:.1s;" data-val="D">D. &nbsp;Context fragmentation</div>
-   <div class="obs-opt" onclick="selectObs(this)" style="padding:9px 13px;border:1px solid var(--rule);font-size:12.5px;color:var(--muted);cursor:pointer;transition:.1s;" data-val="E">E. &nbsp;AI-assisted interpretation drift</div>
-   <div class="obs-opt" onclick="selectObs(this)" style="padding:9px 13px;border:1px solid var(--rule);font-size:12.5px;color:var(--muted);cursor:pointer;transition:.1s;" data-val="F">F. &nbsp;All of the above</div>
+  <div id="obs-options" role="radiogroup" aria-label="Observation options" style="display:flex;flex-direction:column;gap:6px;margin-bottom:14px;">
+   <div class="obs-opt" role="radio" tabindex="0" aria-checked="false" onclick="selectObs(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectObs(this);}" style="padding:9px 13px;border:1px solid var(--rule);font-size:12.5px;color:var(--muted);cursor:pointer;transition:.1s;" data-val="A">A. &nbsp;Chronology instability</div>
+   <div class="obs-opt" role="radio" tabindex="0" aria-checked="false" onclick="selectObs(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectObs(this);}" style="padding:9px 13px;border:1px solid var(--rule);font-size:12.5px;color:var(--muted);cursor:pointer;transition:.1s;" data-val="B">B. &nbsp;Unsupported escalation</div>
+   <div class="obs-opt" role="radio" tabindex="0" aria-checked="false" onclick="selectObs(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectObs(this);}" style="padding:9px 13px;border:1px solid var(--rule);font-size:12.5px;color:var(--muted);cursor:pointer;transition:.1s;" data-val="C">C. &nbsp;Reviewer disagreement</div>
+   <div class="obs-opt" role="radio" tabindex="0" aria-checked="false" onclick="selectObs(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectObs(this);}" style="padding:9px 13px;border:1px solid var(--rule);font-size:12.5px;color:var(--muted);cursor:pointer;transition:.1s;" data-val="D">D. &nbsp;Context fragmentation</div>
+   <div class="obs-opt" role="radio" tabindex="0" aria-checked="false" onclick="selectObs(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectObs(this);}" style="padding:9px 13px;border:1px solid var(--rule);font-size:12.5px;color:var(--muted);cursor:pointer;transition:.1s;" data-val="E">E. &nbsp;AI-assisted interpretation drift</div>
+   <div class="obs-opt" role="radio" tabindex="0" aria-checked="false" onclick="selectObs(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectObs(this);}" style="padding:9px 13px;border:1px solid var(--rule);font-size:12.5px;color:var(--muted);cursor:pointer;transition:.1s;" data-val="F">F. &nbsp;All of the above</div>
   </div>
   <textarea id="obs-note" placeholder="Optional: brief operational note. Do not include names or personal identifiers." style="width:100%;box-sizing:border-box;background:var(--surface2);border:1px solid var(--rule);color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:11px;padding:9px 12px;resize:vertical;min-height:56px;margin-bottom:10px;outline:none;"></textarea>
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding-bottom:14px;">
@@ -2702,7 +2702,7 @@ function calcSCS(){
  <div class="kit-hero-inner">
  <div>
  <div class="kit-badge">Deployment Kit</div>
- <h1 class="kit-title">Operational onboarding.<br><span>Reviewer training.</span><br>Implementation resources.</h1>
+ <h2 class="kit-title">Operational onboarding.<br><span>Reviewer training.</span><br>Implementation resources.</h2>
  <p class="kit-subtitle">Operational onboarding, reviewer training, and implementation resources for applying JRS within existing documentation workflows. No dedicated platform required.</p>
  <div class="kit-features">
  <div class="kit-feature"><span class="kit-feature-icon">--</span><span>Reviewer onboarding materials and orientation guides</span></div>
@@ -2883,7 +2883,7 @@ function calcSCS(){
 <div id="section-tools" class="page-section">
 <div class="container">
 <div class="page-eyebrow">Free Downloads</div>
-<h1 class="page-title">Free Review Resources</h1>
+<h2 class="page-title">Free Review Resources</h2>
 <p class="page-subtitle">Three free downloads for reviewers, investigators, and HR. Applied before records enter official systems. No software, no purchase required.</p>
 
 <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;background:var(--rule);border:1px solid var(--rule);margin-bottom:28px;margin-top:8px;">
@@ -3140,7 +3140,7 @@ function calcSCS(){
 <div id="section-scenarios" class="page-section">
 <div class="container">
 <div class="page-eyebrow">Documentation Review Examples</div>
-<h1 class="page-title">Documentation Review Examples</h1>
+<h2 class="page-title">Documentation Review Examples</h2>
 <p class="page-subtitle">Records as they commonly arrive for review. Each example shows the original record, the reviewer analysis identifying gaps, and a supported revision with redlined corrections.</p>
 <div class="callout"><div class="callout-label">How to Use</div><p>Select the record type. Use the tabs to move between the original record, the review analysis, and the supported revision.</p></div>
 
@@ -3655,7 +3655,7 @@ function calcSCS(){
 <div id="section-guidance" class="page-section">
 <div class="container">
 <div class="page-eyebrow">Implementation Guidance</div>
-<h1 class="page-title">Workflow Implementation</h1>
+<h2 class="page-title">Workflow Implementation</h2>
 <p class="page-subtitle">Operational guidance for integrating JRS review practices within existing HR, compliance, investigation, and administrative documentation workflows.</p>
 
 <div class="memo">
@@ -4001,7 +4001,7 @@ function calcSCS(){
 <div id="section-roles" class="page-section">
 <div class="container">
 <div class="page-eyebrow">Role-Based Environments</div>
-<h1 class="page-title">Review Environments</h1>
+<h2 class="page-title">Review Environments</h2>
 <p class="page-subtitle">Documentation review responsibilities, common failure patterns, reconstruction questions, and escalation indicators organized by practitioner role. Each environment reflects the documentation context specific to that function.</p>
 <div id="roles-menu">
  <div class="role-grid">
@@ -4023,7 +4023,7 @@ function calcSCS(){
 <div id="section-maturity" class="page-section">
 <div class="container">
 <div class="page-eyebrow">Review Maturity Framework</div>
-<h1 class="page-title">Implementation Maturity Levels</h1>
+<h2 class="page-title">Implementation Maturity Levels</h2>
 <p class="page-subtitle">Organizations apply JRS at varying levels of integration depending on documentation sensitivity, organizational structure, and available staffing. These levels are illustrative rather than prescriptive.</p>
 <div class="callout"><div class="callout-label">Operational Note</div><p>Review depth varies in practice. These levels identify where secondary review is required, not where it always occurs. Organizations typically operate across multiple levels simultaneously depending on record type.</p></div>
 <div class="maturity-track" style="margin-top:24px;">
@@ -4041,7 +4041,7 @@ function calcSCS(){
 <div id="section-ai" class="page-section">
 <div class="container">
 <div class="page-eyebrow">AI-Assisted Records</div>
-<h1 class="page-title">When AI Drafted the Record: What Review Catches</h1>
+<h2 class="page-title">When AI Drafted the Record: What Review Catches</h2>
 <p class="page-subtitle">AI-assisted drafting introduces a specific failure mode: the record reads confidently. The source notes are thin. A later reviewer finds a conclusion that looks established but isn't anchored to anything in the file. The same five conditions apply - regardless of how the record was drafted.</p>
 <div class="callout"><div class="callout-label">The same five conditions apply</div><p>It doesn't matter how a record was drafted. What matters is whether someone reading the file later can identify the basis without the original author available to explain it. AI tools create a new category of gap - confident language without identifiable source material - but they don't change the review standard.</p></div>
 
@@ -4084,7 +4084,7 @@ function calcSCS(){
 <div id="section-usecases" class="page-section">
 <div class="container">
 <div class="page-eyebrow">Use Cases</div>
-<h1 class="page-title">Operational Use Cases</h1>
+<h2 class="page-title">Operational Use Cases</h2>
 <p class="page-subtitle">Documentation review as it applies in specific operational contexts. Each use case identifies the record type, review applied, common gaps encountered, and what the file needs to hold up during later review.</p>
 
 <div class="scenario-block" style="margin-top:28px;">
@@ -4307,7 +4307,7 @@ function calcSCS(){
 <div id="section-library" class="page-section">
 <div class="container">
 <div class="page-eyebrow">Document Architecture</div>
-<h1 class="page-title">JRS Document Architecture</h1>
+<h2 class="page-title">JRS Document Architecture</h2>
 <p class="page-subtitle">The JRS documentation review structure is organized across a defined document hierarchy. Each layer serves a distinct function within the review structure. Materials are listed by tier, with access links where available.</p>
 
 <div style="margin-bottom:36px;">
@@ -4625,7 +4625,7 @@ function calcSCS(){
 <div id="section-about" class="page-section">
 <div class="container">
 <div class="page-eyebrow">About</div>
-<h1 class="page-title">About JRS</h1>
+<h2 class="page-title">About JRS</h2>
 <p class="page-subtitle">What the JRS operational review tools are, what problem they address, and what they are not.</p>
 
 <div style="margin-bottom:44px;">
@@ -5229,11 +5229,13 @@ updateProgress();
 function selectObs(el){
   document.querySelectorAll('.obs-opt').forEach(function(o){
     o.style.background='';o.style.borderColor='var(--rule)';o.style.color='var(--muted)';
+    o.dataset.selected='';o.setAttribute('aria-checked','false');
   });
   el.style.background='rgba(190,148,71,.07)';
   el.style.borderColor='rgba(190,148,71,.4)';
   el.style.color='var(--text)';
   el.dataset.selected='1';
+  el.setAttribute('aria-checked','true');
 }
 function jrsSanitizeCheck(text){
   var patterns=[
