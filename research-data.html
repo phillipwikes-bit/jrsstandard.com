@@ -76,6 +76,7 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
     <div class="bm-h">&#9654; Evidence Ladder &middot; Current State (derived from data)</div>
     <p class="sub" style="font-size:12.5px;margin-bottom:10px">Each rung&rsquo;s label is derived from the data that actually exists, not asserted. Reproducibility is an observation only and is never promoted. Accuracy and validation stay &ldquo;tooling only, no data&rdquo; until their preconditions are met.</p>
     <div class="bm-cards" id="rung-status"><div class="empty">Loading&hellip;</div></div>
+    <div id="rung3-detail" style="margin-top:10px"></div>
   </div>
   <div class="bm" id="rung1-wrap">
     <div class="bm-h">&#9654; Rung 1 &middot; Reproducibility decomposition (latest nightly run)</div>
@@ -184,6 +185,25 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
   var BENCHMARK_KAPPA_THRESHOLD = 0.6;
   function gateUnset(v){ return !(typeof v==='number' && isFinite(v) && v>0); }
   var MIN_EXPERTS_EFF = gateUnset(MIN_EXPERTS) ? Infinity : MIN_EXPERTS;   // fail closed
+  // Rung 3: minimum screened validation cases before any contingency is shown.
+  var MIN_OUTCOMES = 30;
+  var MIN_OUTCOMES_EFF = gateUnset(MIN_OUTCOMES) ? Infinity : MIN_OUTCOMES;   // fail closed
+  function renderRung3(rows){
+    var el=document.getElementById('rung3-detail'); if(!el) return;
+    var n=rows.length;
+    if(n < MIN_OUTCOMES_EFF){
+      el.innerHTML='<p class="sub" style="font-size:11.5px;margin:0">Rung 3 contingency (JRS read vs documented outcome) is withheld until at least '+(MIN_OUTCOMES_EFF===Infinity?'a configured minimum':MIN_OUTCOMES)+' screened cases; currently '+n+'. No validity figure is computed below the minimum.</p>';
+      return;
+    }
+    var reads=['ready','review_required','gap_identified'];
+    var outs={}; rows.forEach(function(r){ if(r.outcome) outs[r.outcome]=1; });
+    var outcomeList=Object.keys(outs).sort();
+    var cell={}; rows.forEach(function(r){ var k=(r.jrs_read||'?')+'|'+(r.outcome||'?'); cell[k]=(cell[k]||0)+1; });
+    var html='<div class="tablewrap"><table><thead><tr><th>JRS read \\ outcome</th>'+outcomeList.map(function(o){return '<th>'+esc(o)+'</th>';}).join('')+'</tr></thead><tbody>';
+    reads.forEach(function(rd){ html+='<tr><td>'+esc(rd)+'</td>'+outcomeList.map(function(o){return '<td>'+(cell[rd+'|'+o]||0)+'</td>';}).join('')+'</tr>'; });
+    html+='</tbody></table></div><p class="sub" style="font-size:11px;margin-top:6px">Raw contingency, N='+n+'. Counts only: no validity statistic or read-to-outcome mapping is asserted here.</p>';
+    el.innerHTML=html;
+  }
 
   function tag(d){return d?'<span class="tag t-'+d+'">'+d.replace('_',' ')+'</span>':'<span class="tag">&mdash;</span>';}
   function esc(t){return (t==null?'':String(t)).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
@@ -264,10 +284,12 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
     fetch(U+'/rest/v1/bench_labels?select=record_id,mode,determination,labeler_code,conditions,role',{headers:HDR}).then(function(r){return r.ok?r.json():[];}),
     fetch(U+'/rest/v1/bench_ai_verdicts?select=record_id,determination,conditions',{headers:HDR}).then(function(r){return r.ok?r.json():[];}),
     fetch(U+'/rest/v1/findings_history?select=overall_agreement,per_record,k,records,model,metrics,created_at&order=created_at.desc&limit=30',{headers:HDR}).then(function(r){return r.ok?r.json():[];}),
-    fetch(U+'/rest/v1/bench_outcomes?select=status',{headers:HDR}).then(function(r){return r.ok?r.json():[];})
+    fetch(U+'/rest/v1/bench_outcomes?select=jrs_read,outcome,status',{headers:HDR}).then(function(r){return r.ok?r.json():[];})
   ]).then(function(res){
     var recs=res[0]||[],labels=res[1]||[],ai=res[2]||[],hist=res[3]||[];
-    var rung3N=(res[4]||[]).filter(function(o){return o.status==='screened';}).length;
+    var outRows=(res[4]||[]).filter(function(o){return o.status==='screened';});
+    var rung3N=outRows.length;
+    renderRung3(outRows);
     renderRung1(hist);
 
     if(!recs.length){
