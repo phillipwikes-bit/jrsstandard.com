@@ -149,24 +149,6 @@ footer{border-top:1px solid var(--rule);padding:24px 0 40px}
     <div class="eyebrow">Decision Reconstruction Risk</div>
     <h1 id="s1">The decision survived.<br>The reasoning did not.</h1>
     <p class="core">Decisions age. Explanations degrade. A file records <b>who</b> decided and <b>when</b>, rarely <b>why</b> it made sense at the time, and &ldquo;why&rdquo; is the question that outlasts everyone who could have answered it.</p>
-
-    <div class="diagram" role="img" aria-label="Model-layer armor on the left, an unguarded gap in the middle where JRS sits, and the human-approved permanent record on the right.">
-      <div class="dbox">
-        <div class="dbox-k">Model Layer · Partner Coverage</div>
-        <div class="dbox-t">Technology safety controls</div>
-        <div class="dbox-s">Prompt, output, and model behavior are monitored and governed.</div>
-      </div>
-      <div class="dbox mid">
-        <div class="dgap-k">The Gap</div>
-        <div class="dbox-s" style="color:var(--muted)">Draft&nbsp;&rarr;&nbsp;Documentation</div>
-      </div>
-      <div class="dbox">
-        <div class="dbox-k">Record Layer · Human-Finalized</div>
-        <div class="dbox-t">The permanent record</div>
-        <div class="dbox-s">Edited, signed off, and filed. This is where liability is held.</div>
-      </div>
-    </div>
-    <div class="jrs-band"><span class="mono">JRS Documentation Safety Control &mdash; positioned in the gap</span></div>
   </div>
 </section>
 
@@ -201,6 +183,24 @@ footer{border-top:1px solid var(--rule);padding:24px 0 40px}
     <div class="label">02 · The Blind Spot</div>
     <h2 id="s2">The Draft-to-Documentation Gap</h2>
     <p class="muted">Model-layer governance examines what the model produces. The moment that output is handed to a person, edited, and finalized, model-layer visibility drops to zero. The record that carries the organization's exposure is created entirely inside that blind spot. The control coverage and the liability sit in different places.</p>
+
+    <div class="diagram" role="img" aria-label="Model-layer armor on the left, an unguarded gap in the middle where JRS sits, and the human-approved permanent record on the right.">
+      <div class="dbox">
+        <div class="dbox-k">Model Layer · Partner Coverage</div>
+        <div class="dbox-t">Technology safety controls</div>
+        <div class="dbox-s">Prompt, output, and model behavior are monitored and governed.</div>
+      </div>
+      <div class="dbox mid">
+        <div class="dgap-k">The Gap</div>
+        <div class="dbox-s" style="color:var(--muted)">Draft&nbsp;&rarr;&nbsp;Documentation</div>
+      </div>
+      <div class="dbox">
+        <div class="dbox-k">Record Layer · Human-Finalized</div>
+        <div class="dbox-t">The permanent record</div>
+        <div class="dbox-s">Edited, signed off, and filed. This is where liability is held.</div>
+      </div>
+    </div>
+    <div class="jrs-band"><span class="mono">JRS Documentation Safety Control &mdash; positioned in the gap</span></div>
 
     <div class="flow" role="img" aria-label="Handoff sequence: AI output, then human edit, then sign-off, then permanent record. Model-layer governance visibility drops to zero at the human edit step and does not return.">
       <div class="flow-step">
