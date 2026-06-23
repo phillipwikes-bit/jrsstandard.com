@@ -72,6 +72,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent-d
         <option value="">Select&hellip;</option>
         <option>Public records / FOIL</option>
         <option>HR / Employment</option>
+        <option>Industrial Relations / Labor</option>
         <option>Compliance / Audit</option>
         <option>Investigations</option>
         <option>Due-process / Administrative</option>
@@ -188,7 +189,7 @@ function submitCase(){
   var c=(q.get('code')||'').trim();
   if(c){ var ce=document.getElementById('code'); if(ce) ce.value=c; }
   var p=(q.get('domain')||'').toLowerCase();
-  var map={foil:'Public records / FOIL','public-records':'Public records / FOIL',records:'Public records / FOIL',hr:'HR / Employment',employment:'HR / Employment',compliance:'Compliance / Audit',audit:'Compliance / Audit',investigations:'Investigations',legal:'Legal / Litigation'};
+  var map={foil:'Public records / FOIL','public-records':'Public records / FOIL',records:'Public records / FOIL',hr:'HR / Employment',employment:'HR / Employment',ir:'Industrial Relations / Labor',labor:'Industrial Relations / Labor','industrial-relations':'Industrial Relations / Labor',compliance:'Compliance / Audit',audit:'Compliance / Audit',investigations:'Investigations',legal:'Legal / Litigation'};
   var v=map[p]; if(!v) return;
   var s=document.getElementById('domain');
   for(var i=0;i<s.options.length;i++){ if(s.options[i].text===v){ s.selectedIndex=i; break; } }
