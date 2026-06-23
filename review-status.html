@@ -46,7 +46,7 @@ h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:26px;margin:24px 0 
     <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">Results so far &middot; reviewer agreement</div>
     <div id="results"><div class="note" style="margin:0">Need 2 or more reviewers on the same record to measure agreement.</div></div>
   </div>
-  <div class="note">Reviewers are people scoring with an auto code (or any non-E code); experts use a code starting with E and their answers build the answer key. "Finished all records" counts people who have scored every record in the set. To see the full analysis (agreement, accuracy), open the <a href="research-data.html" style="color:var(--accent)">Research Data Room</a>.</div>
+  <div class="note">Reviewers are people scoring with an auto code (or any non-E code); experts use a code starting with E and their answers build the answer key. "Finished all records" counts people who have scored every record in the current open batch. To see the full analysis (agreement, accuracy), open the <a href="research-data.html" style="color:var(--accent)">Research Data Room</a>.</div>
 </div></main>
 <footer class="ft"><div class="wrap" style="padding:0">&#169; 2026 Phillip Wikes &middot; JRS&#8482; &middot; confidential &middot; not indexed</div></footer>
 <script>
@@ -55,16 +55,23 @@ function isExpert(c){return String(c||'').trim().toLowerCase().charAt(0)==='e';}
 function load(){
   document.getElementById('live').textContent='Updating…';
   Promise.all([
-    fetch(U+'/rest/v1/bench_records?select=id,text&active=eq.true',{headers:HDR}).then(function(r){return r.ok?r.json():[];}),
+    fetch(U+'/rest/v1/bench_records?select=id,text,review_open&active=eq.true',{headers:HDR}).then(function(r){return r.ok?r.json():[];}),
     fetch(U+'/rest/v1/bench_labels?select=labeler_code,record_id,determination,mode,created_at&order=created_at.desc',{headers:HDR}).then(function(r){return r.ok?r.json():[];})
   ]).then(function(res){
     var recs=res[0]||[], labels=res[1]||[];
-    var recCount=recs.length;
+    // "Finished" is measured against the open batch (what reviewers can actually
+    // see), not every active record, and only counts the JRS five-condition mode
+    // that feeds the results, consistent with the agreement section below.
+    var openIds=recs.filter(function(r){return r.review_open===true;}).map(function(r){return r.id;});
+    var openCount=openIds.length;
     var byCoder={}; labels.forEach(function(l){ var c=l.labeler_code; if(!byCoder[c])byCoder[c]={}; byCoder[c][l.record_id]=1; });
+    var byCoderJrs={}; labels.forEach(function(l){ if(l.mode!=='jrs')return; var c=l.labeler_code; if(!byCoderJrs[c])byCoderJrs[c]={}; byCoderJrs[c][l.record_id]=1; });
     var reviewers=0, experts=0, finished=0;
     Object.keys(byCoder).forEach(function(c){
       if(isExpert(c)) experts++; else reviewers++;
-      if(recCount>0 && Object.keys(byCoder[c]).length>=recCount) finished++;
+    });
+    Object.keys(byCoderJrs).forEach(function(c){
+      if(openCount>0 && openIds.every(function(id){return byCoderJrs[c][id];})) finished++;
     });
     document.getElementById('reviewers').textContent=reviewers;
     document.getElementById('experts').textContent=experts;
