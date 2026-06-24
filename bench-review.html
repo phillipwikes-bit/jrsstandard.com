@@ -87,6 +87,9 @@ var COND=[
  {k:'temporal_reconstructability',q:'Temporal Reconstructability — does it hold up read cold years later (dates, sequence, sources)?'}
 ];
 var code,role,mode,records=[],doneSet={};
+// Pre-fill the code from the invite link (e.g. ?code=E-11) so experts do not
+// have to type it; a missed code otherwise auto-files their work as a reviewer.
+(function(){ try{ var c=new URLSearchParams(location.search).get('code'); if(c){ var e=document.getElementById('code'); if(e) e.value=c.trim(); } }catch(e){} })();
 function esc(t){var d=document.createElement('div');d.textContent=(t==null?'':String(t));return d.innerHTML;}
 function det(c){var v=COND.map(function(x){return c[x.k];});if(v.indexOf('gap')>-1)return'gap_identified';if(v.indexOf('review')>-1)return'review_required';return'ready';}
 function val(id){var e=document.getElementById(id);return e?(e.value||'').trim():'';}
