@@ -170,6 +170,7 @@ Other self-contained tools may use their own single scoped key, namespaced to th
 | `irc-submitted` | `independent-review-challenge.html` | one-submission-per-browser guard |
 | `jrs-poll-voted-<study>` | `finding.html` | one-vote-per-poll guard |
 | `bench-auto-code`, `bench-expert-<code>`, `bench-done-<code>` | `bench-review.html` | reviewer code and per-record completion |
+| `jrs-ai-pilot` | `ai-records-pilot.html` | AI-records reviewer code + per-record reads (resume progress) |
 
 Do not introduce keys beyond this list without adding them here first.
 

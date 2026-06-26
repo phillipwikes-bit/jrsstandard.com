@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>AI-Assisted Records Review | JRS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#050505;--surface:#121212;--surface2:#1A1A1A;--rule:#2A2A2A;--text:#F2F2F2;--muted:#B3B3B3;--muted-soft:#8A8A8A;--accent:#BE9447;--accent-dim:#7A5E28;--ready-text:#5DBF82;--review-text:#D4A055;--stop-text:#E88080}
+html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+.hd{border-bottom:1px solid var(--rule);padding:16px 20px}
+.hd-in{max-width:760px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+.wm{font-family:'Bodoni Moda',serif;font-size:22px;color:var(--accent);text-decoration:none}
+.meta{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft)}
+h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:27px;margin:24px 0 8px}
+.sub{font-size:14px;color:var(--muted);max-width:660px;margin-bottom:8px}
+.f{display:block;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);margin:16px 0 6px}
+input[type=text]{width:100%;background:var(--surface);border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;padding:11px 12px}
+input:focus{outline:none;border-color:var(--accent-dim)}
+.hint{font-size:11.5px;color:var(--muted-soft);margin-top:4px}
+.btn{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:13px 18px;border:1px solid var(--accent);color:var(--accent);background:none;cursor:pointer}
+.btn.solid{background:var(--accent);color:#050505;font-weight:600}
+.status{font-family:'JetBrains Mono',monospace;font-size:11px;margin-left:10px}
+.note{font-size:12.5px;color:var(--muted-soft);line-height:1.6;border-left:2px solid var(--rule);padding:12px 15px;background:var(--surface);margin:14px 0}
+.note b{color:var(--text)}
+.warn{border-left-color:var(--review-text)}
+.ft{border-top:1px solid var(--rule);padding:18px 20px;margin-top:26px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-soft)}
+.rec{border:1px solid var(--rule);background:var(--surface);padding:16px 18px;margin:14px 0}
+.rec-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:10px}
+.rec-id{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:var(--accent)}
+.rec-ctx{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft)}
+.rec-body{font-size:13.5px;color:var(--text);line-height:1.62;margin-bottom:12px}
+.ctrl{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin:8px 0}
+.ctrl-lab{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-dim);margin-right:2px}
+label.opt{font-size:12.5px;color:var(--muted);display:inline-flex;align-items:center;gap:5px;cursor:pointer}
+label.opt input{accent-color:var(--accent);width:auto}
+.rec textarea{width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:13px;padding:9px 11px;min-height:42px;resize:vertical;margin-top:6px}
+.bar{position:sticky;bottom:0;background:linear-gradient(180deg,rgba(5,5,5,0),var(--bg) 30%);padding:16px 0 22px;margin-top:18px}
+.barline{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.prog{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted)}
+</style>
+</head>
+<body>
+<header class="hd"><div class="hd-in"><a href="/" class="wm">JRS<span style="font-size:9px;vertical-align:super">&#8482;</span></a><div class="meta">AI Governance Pilot &middot; Reviewer</div></div></header>
+<main><div class="wrap">
+  <h1>AI-Assisted Records Review</h1>
+  <p class="sub">Below are AI-generated records, unlabeled and in random order. For each one, give two quick judgments based on the record alone. It takes about five minutes per record, and your work saves on this device as you go. You can return and finish later.</p>
+  <p class="sub" style="margin-top:6px"><b style="color:var(--text)">1) JRS read.</b> Could a later reviewer reconstruct how the conclusion was reached from the record itself? <b style="color:var(--ready-text)">Ready</b> if yes, <b style="color:var(--review-text)">Needs work</b> if partly, <b style="color:var(--stop-text)">Gap</b> if the basis is not visible. <b style="color:var(--text)">2) Reliance.</b> Would you rely on this record in a high-stakes, accountable workflow?</p>
+  <div class="note warn">Judge the record only, not whether the underlying decision was right and not the topic. The set is balanced between grounded and unsupported records. Reference: the five conditions are at <a href="codebook.html" style="color:var(--accent)">the JRS Codebook</a>.</div>
+
+  <label class="f">Your reviewer code</label>
+  <input id="code" type="text" placeholder="e.g. V-AI-01">
+  <div class="hint">Use the personalized link you were sent. If it is blank, contact info@jrsstandard.com.</div>
+
+  <div id="records"></div>
+
+  <div class="bar"><div class="barline">
+    <button class="btn solid" onclick="submitReads()">Submit reads</button>
+    <span class="prog" id="prog">0 of 24 answered</span>
+    <span class="status" id="st" role="status" aria-live="polite"></span>
+  </div></div>
+</div></main>
+<footer class="ft"><div class="wrap" style="padding:0">&#169; 2026 Phillip Wikes &middot; JRS&#8482; &middot; AI governance pilot &middot; confidential &middot; not indexed</div></footer>
+<script>
+var U='https://pjzxkeviouofdseagvpf.supabase.co', K='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e', HDR={'apikey':K,'Authorization':'Bearer '+K};
+var BATCH='batch1', LSKEY='jrs-ai-pilot';
+var RECORDS=[{"ref": "R01", "ctx": "HR / performance", "text": "Performance summary. Since the performance improvement plan began on February 5 (acknowledged in writing that day), three deliverables were submitted past their due dates: Project X (due March 3, delivered March 10), the quarterly report (due March 17, delivered March 24), and the client deck (due April 1, delivered April 4). The account lead documented a resulting client delay in an email dated March 25, on file. Check-ins were held February 5, March 6, and March 20, with notes retained for each. The conclusion that deadline performance has not met the plan's targets rests on the dated deliverables and the check-in record above."}, {"ref": "R02", "ctx": "Investigation", "text": "Investigation summary. Following a complaint, this matter was reviewed, and it is concluded that the respondent engaged in a pattern of inappropriate conduct toward multiple team members over an extended period. The behavior created a hostile environment and reflects disregard for company policy. The complainant's account was credible and consistent. A finding of policy violation is warranted, and disciplinary action up to termination is recommended."}, {"ref": "R03", "ctx": "AI-assisted summary", "text": "AI-assisted meeting summary. The team had a productive discussion and reached strong alignment on the path forward. Several important decisions were made, and clear ownership was established. Overall sentiment was positive, and the group is confident in the direction. Next steps are well understood by all."}, {"ref": "R04", "ctx": "Public records / FOIL", "text": "FOIL appeal determination. The request sought inspection reports for a named property from January to June. The agency located 16 responsive reports and produced 14. Two were withheld, each identified by date, under the attorney-client privilege exemption, with the deliberative content described. The basis for each withholding is stated in the determination. The partial denial rests on the itemized record above."}, {"ref": "R05", "ctx": "HR / termination", "text": "Separation summary. The decision to separate the employee followed a sustained period of performance and behavioral concerns inconsistent with organizational expectations. Despite coaching and repeated opportunities to improve, the employee continued to fall short of the standards required for the role. Leadership determined that separation was the appropriate and well-supported course of action, made in accordance with company policy."}, {"ref": "R06", "ctx": "Investigation", "text": "Incident review. A safety complaint was filed April 3. We interviewed the complainant (April 4), the supervisor (April 5), and two witnesses (April 6), and reviewed the maintenance log and a photograph of the equipment. The log shows the machine guard was removed March 30 and not replaced. The finding that the guard was missing at the time of the incident rests on the log entry and the witness accounts cited."}, {"ref": "R07", "ctx": "Compliance / AML", "text": "Transaction review. The flagged activity was reviewed and determined to be consistent with normal customer behavior. No suspicious indicators were present, and the activity aligns with expectations. The alert is closed with no further action required."}, {"ref": "R08", "ctx": "Compliance / audit", "text": "Control assessment, logical access. We tested all 25 terminations in Q1. Twenty-four were de-provisioned within the three-day SLA (average 1.2 days); one contractor account (ref #4471) remained active for six days post-termination and was remediated during fieldwork. We reviewed the 12 privileged accounts against approved-role mappings, and each tied to an approved access ticket. Based on the single timing exception, the control is rated Effective with one observation; the exception and its remediation are documented above."}, {"ref": "R09", "ctx": "Legal / litigation", "text": "Litigation assessment. Having reviewed the matter, our position is strong and the claim is likely to succeed on the merits. The opposing arguments are without substantial support and are unlikely to withstand scrutiny. We recommend proceeding with confidence toward a favorable resolution."}, {"ref": "R10", "ctx": "Public records / FOIL", "text": "FOIL determination. The request sought body-camera footage from a named date. The agency confirmed footage exists, produced two of three clips, and withheld the third under the exemption for an open investigation, identifying the clip and the related case number. The basis for the partial withholding is stated. Supported by the itemized response above."}, {"ref": "R11", "ctx": "Investigation", "text": "Incident review. Our investigation concluded that the employee acted recklessly and in violation of safety protocol, demonstrating a clear disregard for established procedures. The conduct was serious and warrants significant disciplinary action. The findings are well-documented and conclusive."}, {"ref": "R12", "ctx": "Due-process / administrative", "text": "Benefits eligibility determination. The applicant's income was verified against three pay stubs (January, February, March) and a bank statement, all on file. Documented monthly income of $3,420 exceeds the program threshold of $3,000 stated in the policy cited. The denial, with the applicant's right to appeal noted, rests on the verified income figures above."}, {"ref": "R13", "ctx": "HR / performance", "text": "Annual review. The employee had a strong year and consistently exceeded expectations across all areas. Their contributions were valuable and their performance was exemplary. They are a model team member and a clear asset to the organization. Overall rating: Outstanding."}, {"ref": "R14", "ctx": "Investigation", "text": "Investigation summary, scheduling concern. The complainant raised concerns about weekend-shift distribution. We interviewed the complainant (May 12) and two coworkers (May 13 and 14) and reviewed schedule records for January through April. Records show the complainant was assigned three weekend shifts during the period against a team average of 1.5. The manager attributed the difference to a documented coverage gap. Email exchanges between the complainant and manager (April 2 and April 9) are on file. The finding that scheduling was uneven, with a documented operational explanation, rests on the schedule data and interviews cited."}, {"ref": "R15", "ctx": "Compliance / audit", "text": "Control assessment, logical access. Our review found the access-control environment operating effectively, with access appropriately restricted across critical systems. Quarterly access reviews are performed and provide reasonable assurance that terminated users are removed in a timely manner and that privileged access is limited to authorized personnel. No material weaknesses were identified. The control is rated Effective."}, {"ref": "R16", "ctx": "HR / accommodation", "text": "Accommodation determination. The employee requested a modified schedule. The interactive process included a meeting (May 2), a follow-up email (May 5), and a functional-limitations note from the provider (on file, dated May 1). The approved accommodation, a 9:30 start, and its review date (August 1) are documented. The determination rests on the interactive-process record above."}, {"ref": "R17", "ctx": "Public records / FOIL", "text": "FOIL appeal determination. After review, the request is denied in its entirety. The records sought are exempt from disclosure, and their release would be contrary to the public interest and could compromise agency functions. The determination of the records officer is affirmed. The appellant retains all applicable rights."}, {"ref": "R18", "ctx": "HR / performance", "text": "Probationary review. The employee met four of five onboarding milestones by the 90-day mark (each dated in the record); the fifth, a required certification, was completed two weeks late, on file. The recommendation to confirm employment, with a note on the late milestone, rests on the dated milestone record above."}, {"ref": "R19", "ctx": "Due-process / administrative", "text": "Eligibility determination. The application has been carefully reviewed and is denied. The applicant does not meet the program's requirements based on the information provided. This determination is consistent with policy and prior practice. Appeal rights apply."}, {"ref": "R20", "ctx": "Legal / litigation", "text": "Summary-judgment recommendation. Plaintiff alleges breach for late delivery. The contract (Ex. A, sec. 4.2) sets a March 1 delivery date; the signed receipt (Ex. C) shows delivery March 14; defendant's email (Ex. D, Feb 20) requested an extension that plaintiff did not grant (Ex. E). The recommendation that a material breach is documented rests on the cited exhibits and dates."}, {"ref": "R21", "ctx": "Public records / FOIL", "text": "Records request response. A thorough search was conducted, and the requested records could not be located. The agency has fully complied with its obligations, and no responsive records exist within its custody. The matter is considered closed."}, {"ref": "R22", "ctx": "AI-assisted summary", "text": "AI-assisted meeting summary, human-reviewed. Decisions: the budget was increased to $50,000 (approved by the sponsor, agenda item 4); the launch moved to Q3 (owner: product lead, agenda item 6). Each decision lists the decision-maker and the agenda item. The reviewer confirmed each against the recording timestamps before finalization. The summary's conclusions are traceable to the cited agenda items and the attached recording."}, {"ref": "R23", "ctx": "HR / accommodation", "text": "Accommodation determination. The request was reviewed and denied. After consideration, the requested accommodation is not reasonable and would impose an undue hardship on operations. The decision reflects a careful balancing of relevant factors, and the employee was treated fairly throughout."}, {"ref": "R24", "ctx": "Compliance / AML", "text": "Transaction review. An alert flagged three wires totaling $48,200 over five days. We reviewed the customer profile, the stated source of funds (a property sale, deed on file), and the wire instructions. The activity is consistent with the documented profile and source. The decision to close the alert without filing a SAR rests on the documents cited."}];
+
+function jrsSanitizeCheck(text){
+  var patterns=[
+    {re:/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, label:'email address'},
+    {re:/\b\d{3}[-.\s]?\d{3}[-.\s]?\d{4}\b/g, label:'phone number'},
+    {re:/\b\d{3}-\d{2}-\d{4}\b/g, label:'SSN'},
+    {re:/\b\d{4}[\s-]?\d{4}[\s-]?\d{4}[\s-]?\d{4}\b/g, label:'card number'}
+  ];
+  var found=[];
+  patterns.forEach(function(p){ if(p.re.test(text)) found.push(p.label); });
+  if(found.length){ return confirm('Potential sensitive identifier detected ('+found.join(', ')+'). Confirm there is no personal data in your notes before submitting.'); }
+  return true;
+}
+function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function load(){ try{ return JSON.parse(localStorage.getItem(LSKEY)||'{}'); }catch(e){ return {}; } }
+function save(st){ try{ localStorage.setItem(LSKEY, JSON.stringify(st)); }catch(e){} }
+
+function render(){
+  var saved=load(), host=document.getElementById('records'), html='';
+  RECORDS.forEach(function(r){
+    var s=saved[r.ref]||{};
+    function rb(name,val,cur){ return '<label class="opt"><input type="radio" name="'+name+'-'+r.ref+'" value="'+val+'"'+(cur===val?' checked':'')+' onchange="onChange()"> '+val+'</label>'; }
+    html+='<div class="rec"><div class="rec-h"><span class="rec-id">Record '+r.ref+'</span><span class="rec-ctx">context: '+esc(r.ctx)+'</span></div>'
+      +'<div class="rec-body">'+esc(r.text)+'</div>'
+      +'<div class="ctrl"><span class="ctrl-lab">JRS read</span>'+rb('read','Ready',s.jrs_read)+rb('read','Needs work',s.jrs_read)+rb('read','Gap',s.jrs_read)+'</div>'
+      +'<div class="ctrl"><span class="ctrl-lab">Rely in accountable workflow</span>'+rb('rely','Yes',s.rely)+rb('rely','No',s.rely)+'</div>'
+      +'<textarea id="note-'+r.ref+'" placeholder="Optional: why, or which condition fails" oninput="onChange()">'+esc(s.note||'')+'</textarea>'
+      +'</div>';
+  });
+  host.innerHTML=html;
+  updateProgress();
+}
+function gather(){
+  var out={};
+  RECORDS.forEach(function(r){
+    var read=document.querySelector('input[name=read-'+r.ref+']:checked');
+    var rely=document.querySelector('input[name=rely-'+r.ref+']:checked');
+    var note=document.getElementById('note-'+r.ref);
+    var o={};
+    if(read) o.jrs_read=read.value;
+    if(rely) o.rely=rely.value;
+    if(note && note.value.trim()) o.note=note.value.trim();
+    if(o.jrs_read||o.rely||o.note) out[r.ref]=o;
+  });
+  return out;
+}
+function onChange(){ var st=gather(); st.__code=(document.getElementById('code').value||'').trim(); save(st); updateProgress(); }
+function updateProgress(){
+  var st=gather(), n=0;
+  RECORDS.forEach(function(r){ if(st[r.ref]&&st[r.ref].jrs_read) n++; });
+  document.getElementById('prog').textContent=n+' of '+RECORDS.length+' answered';
+}
+function submitReads(){
+  var st=document.getElementById('st');
+  var code=(document.getElementById('code').value||'').trim();
+  if(!code){ st.textContent='Your reviewer code is required.'; st.style.color='var(--stop-text)'; return; }
+  var data=gather(), rows=[], notesBlob='';
+  RECORDS.forEach(function(r){
+    var o=data[r.ref]; if(!o||!o.jrs_read) return;
+    notesBlob+=' '+(o.note||'');
+    rows.push({record_ref:r.ref, jrs_read:o.jrs_read, rely:o.rely||'', note:o.note||'', reviewer_code:code, batch:BATCH});
+  });
+  if(!rows.length){ st.textContent='Give a JRS read on at least one record before submitting.'; st.style.color='var(--stop-text)'; return; }
+  if(!jrsSanitizeCheck(notesBlob)) return;
+  st.textContent='Submitting '+rows.length+'…'; st.style.color='var(--muted-soft)';
+  var btn=document.querySelector('.btn.solid'); btn.disabled=true;
+  fetch(U+'/rest/v1/ai_pilot_reads',{method:'POST',headers:Object.assign({'Content-Type':'application/json','Prefer':'return=minimal'},HDR),body:JSON.stringify(rows)})
+    .then(function(r){ if(!r.ok) throw 0;
+      st.textContent='Recorded '+rows.length+' reads. Thank you. You can update and resubmit any time.'; st.style.color='var(--ready-text)';
+      btn.disabled=false;
+    })
+    .catch(function(){
+      var obj={type:'jrs-ai-pilot', reviewer:code, batch:BATCH, reads:rows, timestamp:new Date().toISOString()};
+      try{
+        var blob=new Blob([JSON.stringify(obj,null,2)],{type:'application/json'});
+        var u=URL.createObjectURL(blob); var a=document.createElement('a'); a.href=u; a.download='jrs-ai-pilot-'+Date.now()+'.json';
+        document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(u);
+        st.textContent='Server unavailable. Your reads downloaded for manual submission to info@jrsstandard.com.';
+      }catch(e){ st.textContent='Server unavailable. Contact info@jrsstandard.com.'; }
+      st.style.color='var(--review-text)'; btn.disabled=false;
+    });
+}
+// boot: restore code from saved state, then prefill/override from ?code=
+(function(){
+  render();
+  var saved=load();
+  if(saved.__code){ document.getElementById('code').value=saved.__code; }
+  try{ var c=new URLSearchParams(location.search).get('code'); if(c){ document.getElementById('code').value=c.trim(); } }catch(e){}
+})();
+</script>
+</body>
+</html>
