@@ -25,10 +25,26 @@ export const config = { runtime: 'edge' };
 
 const SUPABASE_URL = 'https://pjzxkeviouofdseagvpf.supabase.co';
 
+// Constructed (synthetic) records spanning a weak -> moderate -> strong gradient
+// across several domains. The ambiguous "moderate" records are where independent
+// models legitimately diverge, which keeps the agreement figure honest rather than
+// pinned at 100%. None are real records; all are clearly labeled synthetic.
 const RECORDS = [
-  { id: 'weak', text: 'Michael has demonstrated increasingly unprofessional conduct over the last several weeks. His poor attitude has negatively affected team morale and productivity. Despite previous coaching conversations, meaningful improvement has not been observed.' },
-  { id: 'moderate', text: 'Over the past quarter the employee submitted several reports after the deadline. A meeting was held in March to discuss timeliness. Some improvement was observed, though issues reportedly continued.' },
-  { id: 'strong', text: 'On March 4, 11, and 18 the weekly report was submitted after the Friday 5:00 PM deadline (timestamps in the shared drive). On March 20 the manager met with the employee; notes are on file. Training was scheduled for March 27; from March 27 to April 30 all reports were on time (shared-drive log).' },
+  { id: 'weak',       text: 'Michael has demonstrated increasingly unprofessional conduct over the last several weeks. His poor attitude has negatively affected team morale and productivity. Despite previous coaching conversations, meaningful improvement has not been observed.' },
+  { id: 'moderate',   text: 'Over the past quarter the employee submitted several reports after the deadline. A meeting was held in March to discuss timeliness. Some improvement was observed, though issues reportedly continued.' },
+  { id: 'strong',     text: 'On March 4, 11, and 18 the weekly report was submitted after the Friday 5:00 PM deadline (timestamps in the shared drive). On March 20 the manager met with the employee; notes are on file. Training was scheduled for March 27; from March 27 to April 30 all reports were on time (shared-drive log).' },
+  { id: 'hr_weak2',   text: 'The employee has a difficult personality and is not a team player. Several colleagues have expressed concerns. Management believes the situation is unlikely to improve and recommends action.' },
+  { id: 'hr_term_weak', text: 'The separation followed a sustained period of performance and behavioral concerns inconsistent with expectations. Despite coaching and repeated opportunities to improve, the employee continued to fall short. Leadership determined separation was appropriate and well supported.' },
+  { id: 'hr_perf_mod', text: 'The employee met most onboarding milestones during the probationary period. One required certification was completed later than planned. Overall progress was considered acceptable and employment was confirmed.' },
+  { id: 'comp_strong', text: 'We tested all 25 Q1 terminations; 24 were de-provisioned within the three-day SLA (average 1.2 days), and one contractor account (ref #4471) remained active for six days and was remediated during fieldwork. The 12 privileged accounts each mapped to an approved access ticket.' },
+  { id: 'comp_weak',  text: 'Our review found the access-control environment operating effectively, with access appropriately restricted across critical systems. Quarterly reviews provide reasonable assurance. No material weaknesses were identified. The control is rated Effective.' },
+  { id: 'aml_strong', text: 'An alert flagged three wires totaling $48,200 over five days. We reviewed the customer profile and the stated source of funds (a property sale, deed on file); the activity is consistent with the documented profile. The alert was closed without a SAR, on the documents cited.' },
+  { id: 'foil_weak',  text: 'After review, the request is denied in its entirety. The records sought are exempt from disclosure, and their release would be contrary to the public interest. The determination of the records officer is affirmed.' },
+  { id: 'foil_strong', text: 'The request sought 16 inspection reports for the period January to June. Fourteen were produced; two were withheld, each identified by date under the attorney-client privilege exemption, with the deliberative content described. The basis for each withholding is stated.' },
+  { id: 'inv_mod',    text: 'A witness stated the respondent made inappropriate remarks during meetings. The witness appeared credible and consistent. No dates, documents, or other witness accounts were recorded in the file.' },
+  { id: 'inv_strong', text: 'A safety complaint was filed April 3. We interviewed the complainant (April 4), the supervisor (April 5), and two witnesses (April 6), and reviewed the maintenance log, which shows the machine guard was removed March 30 and not replaced.' },
+  { id: 'ai_weak',    text: 'The team had a productive discussion and reached strong alignment on the path forward. Several important decisions were made and clear ownership was established. Overall sentiment was positive and next steps are well understood.' },
+  { id: 'acc_mod',    text: 'The employee requested a modified schedule. A conversation took place and a determination was reached. The outcome was communicated, though the supporting rationale was not fully documented in the file.' },
 ];
 
 const QUESTION =
