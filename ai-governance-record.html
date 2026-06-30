@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>When the Record Sounds Right but Says Nothing | JRS&#8482; Justification Review Standard</title>
+<meta name="description" content="AI-assisted documentation and the next layer of AI governance. Why governing the model is no longer enough, and what comes after: the reconstructability, evidentiary integrity, and defensibility of the records AI helps produce. By Phillip Wikes and Jake McDonough.">
+<meta property="og:title" content="When the Record Sounds Right but Says Nothing | JRS&#8482;" />
+<meta property="og:description" content="AI-assisted documentation and the next layer of AI governance: the reconstructability and defensibility of the records AI helps produce. By Phillip Wikes and Jake McDonough." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jrsstandard.com/ai-governance-record.html" />
+<meta property="og:site_name" content="JRS&#8482; Justification Review Standard" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="When the Record Sounds Right but Says Nothing | JRS&#8482;" />
+<meta name="twitter:description" content="AI-assisted documentation and the next layer of AI governance. By Phillip Wikes and Jake McDonough." />
+<meta property="og:image" content="https://jrsstandard.com/og-card.svg" />
+<meta name="twitter:image" content="https://jrsstandard.com/og-card.svg" />
+<link rel="canonical" href="https://jrsstandard.com/ai-governance-record.html" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NVYHJ7BJ92"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NVYHJ7BJ92');</script>
+<style>
+:root{--bg:#050505;--surface:#121212;--surface2:#1A1A1A;--rule:#2A2A2A;--text:#F2F2F2;--muted:#B3B3B3;--muted-soft:#8A8A8A;--accent:#BE9447;--accent-dim:#7A5E28;--stop-text:#E88080;--review-text:#D4A055;--ready-text:#5DBF82}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.wrap{max-width:720px;margin:0 auto;padding:0 22px}
+.site-header{border-bottom:1px solid var(--rule);padding:0 22px}
+.site-header-inner{max-width:720px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0;flex-wrap:wrap}
+.wordmark{font-family:'Bodoni Moda',serif;font-size:24px;font-weight:500;color:var(--accent);text-decoration:none}
+.header-meta{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);text-align:right}
+.hero{padding:44px 0 24px;border-bottom:1px solid var(--rule)}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+h1{font-family:'Bodoni Moda',serif;font-size:34px;font-weight:400;line-height:1.16;margin-bottom:14px}
+.dek{font-size:16px;color:var(--muted);line-height:1.6;max-width:620px}
+.byline{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-top:18px}
+.byline strong{color:var(--accent);font-weight:500}
+article{padding:30px 0 8px}
+article p{font-size:15.5px;color:var(--text);line-height:1.75;margin-bottom:18px}
+article p.lead{font-size:17px;color:var(--text)}
+h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--text);line-height:1.25;margin:34px 0 14px}
+.example{border-left:2px solid var(--accent-dim);background:var(--surface);padding:14px 18px;margin:0 0 18px}
+.example p{font-size:14.5px;color:var(--muted);margin-bottom:10px}
+.example p:last-child{margin-bottom:0}
+.chain{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;color:var(--accent);background:var(--surface);border:1px solid var(--rule);padding:14px 18px;margin:0 0 18px;line-height:2}
+.boundary{border:1px solid var(--review-text);background:rgba(212,160,85,.05);padding:18px 20px;margin:24px 0}
+.boundary p{color:var(--muted);font-size:14.5px;margin-bottom:0}
+.boundary .lbl{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--review-text);margin-bottom:8px;display:block}
+.bio{border-top:1px solid var(--rule);margin-top:30px;padding-top:18px;font-size:13px;color:var(--muted-soft);line-height:1.65;font-style:italic}
+.backlink{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);text-decoration:none;display:inline-block;margin-top:20px}
+.site-footer{padding:24px 22px;border-top:1px solid var(--rule);margin-top:24px}
+.site-footer-inner{max-width:720px;margin:0 auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+.footer-link{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none}
+.footer-copy{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-soft)}
+@media(max-width:600px){h1{font-size:27px}article p{font-size:15px}}
+</style>
+</head>
+<body>
+<header class="site-header" role="banner">
+  <div class="site-header-inner">
+    <a href="index.html" class="wordmark">JRS<span style="font-size:10px;vertical-align:super;position:relative;top:-3px;">&#8482;</span></a>
+    <div class="header-meta">Justification Review Standard<br>Perspective</div>
+  </div>
+</header>
+<main>
+<div class="wrap">
+  <div class="hero">
+    <div class="eyebrow">Perspective &middot; AI Governance</div>
+    <h1>When the Record Sounds Right but Says Nothing</h1>
+    <p class="dek">AI-assisted documentation, and the next layer of AI governance. Why governing the model is no longer enough, and what comes after.</p>
+    <div class="byline">By <strong>Phillip Wikes</strong> and <strong>Jake McDonough</strong></div>
+  </div>
+
+  <article>
+    <p class="lead">A growing share of the records that organizations rely on are now drafted with help from AI. Meeting summaries, investigation reports, performance notes, compliance analyses, alert dispositions, eligibility determinations: a model produces a clean first pass, a person edits lightly, and the document goes into the file. The output reads well. It is organized, fluent, and confident. And that is exactly where the problem starts.</p>
+
+    <p>Fluency is not evidence. A record can be well-formed and say almost nothing a later reviewer could verify.</p>
+
+    <p>Consider two versions of the same conclusion.</p>
+    <div class="example">
+      <p>The first: "The team reached strong alignment on the path forward, several important decisions were made, and clear ownership was established."</p>
+      <p>The second: "The budget was increased to 50,000 dollars, approved by the sponsor under agenda item four; the launch moved to Q3, owner the product lead, agenda item six; each decision checked against the recording before finalization."</p>
+    </div>
+    <p>Both sound like competent summaries. Only one of them can be reconstructed by someone who was not in the room. And only one will hold up when it is examined later, which is the only moment that counts.</p>
+
+    <p>This gap is the reason AI governance is entering a second phase that most organizations have not yet built for.</p>
+
+    <h2>Governing the model is no longer the whole job</h2>
+    <p>The first generation of AI governance focused on the technology: model validation, bias mitigation, privacy, cybersecurity, data governance, human oversight. That work was necessary and it remains necessary. But it answers a question regulators, auditors, and courts are increasingly moving past. They are no longer satisfied to ask whether the AI was governed. They ask a harder one: can the organization explain, reconstruct, and defend the decisions it reached with AI's help?</p>
+    <p>That is not a model question. It is a documentation question, and it lives downstream of every governance platform an organization has already bought.</p>
+
+    <h2>The output does not disappear. It becomes evidence.</h2>
+    <p>When AI assists with an investigation write-up, a legal memo, an audit summary, a clinical note, or a board briefing, the output starts its life as a convenience. It rarely stays one. Over time those same documents become litigation exhibits, regulatory submissions, audit trails, public records, and institutional memory.</p>
+    <p>The AI-assisted draft becomes the permanent organizational record. Once that happens, governing the model that produced it is necessary but no longer sufficient. The governance question has moved to the document itself, and it stays there for as long as the record is kept. This is the layer most AI governance programs acknowledge in principle and do not operationalize in practice.</p>
+
+    <h2>The object of explanation has shifted</h2>
+    <p>Early governance focused on explaining the AI. An external reviewer almost never asks an organization to explain how a language model produced a paragraph. They ask something more practical: Why was this recommendation accepted? What evidence supported the conclusion? Which findings came from the AI, and which were independently verified? Who held final decision authority? Can the reasoning be reconstructed from the record alone?</p>
+    <p>Every one of those is a documentation question, and a well-governed model answers none of them. The record either answers them or it does not.</p>
+    <p>This also points to the wrong question many organizations are tempted to chase. Trying to detect whether a document was written by AI is both a losing game and beside the point. A human-written record can be conclusory and unsupported. An AI-assisted record can be fully traceable. What matters is not the author. What matters is whether the reasoning survives separation from the person who wrote it. The right standard is author-blind by design, and for AI-assisted work that is precisely the point.</p>
+
+    <h2>Human oversight has to leave a trace</h2>
+    <p>Nearly every serious AI governance framework calls for meaningful human oversight. The operational problem is that oversight cannot simply occur. It has to be documented, or it cannot be demonstrated later.</p>
+    <p>In practice the record needs to show who reviewed the AI output, what they changed, what they independently verified, why they accepted or rejected a recommendation, and who approved the final decision. Where that trail is missing, an organization may have exercised genuine oversight and still be unable to prove it. Proof that lives only in memory is not proof.</p>
+
+    <h2>Decision-process traceability as a control</h2>
+    <p>The contribution we find most useful here is what JRS calls decision-process traceability. Conventional governance asks whether the AI was appropriately controlled. JRS asks whether an independent reviewer can reconstruct how the organization moved from AI-assisted analysis to a human decision:</p>
+    <div class="chain">evidence &#8594; AI assistance &#8594; human review &#8594; analysis &#8594; recommendation &#8594; decision &#8594; authority &#8594; documentation &#8594; independent review</div>
+    <p>The difference is between procedural accountability, where a process was followed, and documentary accountability, where the record itself can show it. Only the second survives a reviewer who was not there.</p>
+
+    <h2>Why this position is durable</h2>
+    <p>Two features make this more than a point solution.</p>
+    <p>It is technology-agnostic. Organizations will keep changing foundation models, vendors, copilots, and platforms. The documentation remains, and so does the need for it to be reconstructable, evidence-backed, and defensible. A standard that governs records rather than systems does not expire when the model is swapped out.</p>
+    <p>It is cross-functional. AI-assisted drafting now appears in legal, compliance, audit, risk, HR, healthcare, procurement, investigations, and executive work. Each function produces records, and each faces the same downstream question. One review methodology that applies across all of them is more valuable, and more adoptable, than a control bolted to a single department.</p>
+    <p>It is also complementary, not competitive. A record-level standard does not replace AI governance platforms, GRC systems, model inventories, or responsible-AI programs. It evaluates the documentation that flows out of those workflows, which lets an organization strengthen the record layer without redesigning the infrastructure it already paid for.</p>
+
+    <div class="boundary">
+      <span class="lbl">An honest boundary</span>
+      <p>JRS is in a validation phase and makes no assertion of proven effectiveness. It is not a guarantee against an adverse finding, and it should not be sold as one. What it offers is more modest and more defensible: a consistent way to ask whether an AI-assisted record can explain itself before that record becomes permanent. The current work, including the validation pilots behind this piece, exists to test how reliably experienced reviewers can make that judgment. That is the right order of operations. Earn the evidence, then make the claim.</p>
+    </div>
+
+    <h2>Where this lands</h2>
+    <p>AI will keep drafting our records. That is not the risk. The risk is a file full of documents that sound right and say nothing, discovered only when someone finally reads them closely.</p>
+    <p>Organizations are no longer asked only to show that AI was governed responsibly. They are increasingly asked to show how AI-assisted decisions were reviewed, how human judgment was applied, how conclusions were supported, and whether all of it can be reconstructed under later scrutiny. That question is coming for every enterprise that lets AI touch its records. The ones that can answer it will be the ones that wrote the answer down.</p>
+
+    <p class="bio">Phillip Wikes is the author of the JRS (Justification Review Standard). Jake McDonough advises on AI governance and was the founding reviewer of the JRS AI-Assisted Records Validation Pilot. The standard and the pilots are described across this site.</p>
+
+    <a class="backlink" href="research.html">&#8592; Back to Research &amp; Validation</a>
+  </article>
+</div>
+</main>
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer-inner">
+    <div style="display:flex;flex-wrap:wrap;gap:16px">
+      <a href="index.html" class="footer-link">Home</a>
+      <a href="research.html" class="footer-link">Research</a>
+      <a href="codebook.html" class="footer-link">Codebook</a>
+      <a href="pilot.html" class="footer-link">Pilot Program</a>
+    </div>
+    <div style="width:100%;font-family:'Bodoni Moda',serif;font-size:14px;color:var(--accent);margin-bottom:8px;">JRS measures the record, not the tool that produced it.</div>
+    <div class="footer-copy">&#169; 2026 Phillip Wikes &nbsp;&middot;&nbsp; JRS&#8482;</div>
+  </div>
+</footer>
+</body>
+</html>
