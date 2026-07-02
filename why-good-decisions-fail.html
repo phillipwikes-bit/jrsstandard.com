@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Decision Reconstruction Risk: Why Good Decisions Fail on Paper | JRS&#8482;</title>
+<meta name="description" content="A practitioner essay on Decision Reconstruction Risk: the failure mode that turns sound decisions into indefensible records, and why AI is accelerating it. By Phillip Wikes.">
+<meta property="og:title" content="Decision Reconstruction Risk: Why Good Decisions Fail on Paper" />
+<meta property="og:description" content="Sound decisions can leave indefensible records. The failure mode has a name, and AI is accelerating it. By Phillip Wikes." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jrsstandard.com/why-good-decisions-fail.html" />
+<meta property="og:site_name" content="JRS&#8482; Justification Review Standard" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Decision Reconstruction Risk: Why Good Decisions Fail on Paper" />
+<meta name="twitter:description" content="Sound decisions can leave indefensible records. The failure mode has a name, and AI is accelerating it." />
+<meta property="og:image" content="https://jrsstandard.com/og-card.svg" />
+<meta name="twitter:image" content="https://jrsstandard.com/og-card.svg" />
+<link rel="canonical" href="https://jrsstandard.com/why-good-decisions-fail.html" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NVYHJ7BJ92"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NVYHJ7BJ92');</script>
+<style>
+:root{--bg:#050505;--surface:#121212;--surface2:#1A1A1A;--rule:#2A2A2A;--text:#F2F2F2;--muted:#B3B3B3;--muted-soft:#8A8A8A;--accent:#BE9447;--accent-dim:#7A5E28;--stop-text:#E88080;--review-text:#D4A055;--ready-text:#5DBF82}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.wrap{max-width:720px;margin:0 auto;padding:0 22px}
+.site-header{border-bottom:1px solid var(--rule);padding:0 22px}
+.site-header-inner{max-width:720px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0;flex-wrap:wrap}
+.wordmark{font-family:'Bodoni Moda',serif;font-size:24px;font-weight:500;color:var(--accent);text-decoration:none}
+.header-meta{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);text-align:right}
+.hero{padding:44px 0 24px;border-bottom:1px solid var(--rule)}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+h1{font-family:'Bodoni Moda',serif;font-size:34px;font-weight:400;line-height:1.16;margin-bottom:14px}
+.dek{font-size:16px;color:var(--muted);line-height:1.6;max-width:620px}
+.byline{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-top:18px}
+.byline strong{color:var(--accent);font-weight:500}
+article{padding:30px 0 8px}
+article p{font-size:15.5px;color:var(--text);line-height:1.75;margin-bottom:18px}
+article p.lead{font-size:17px;color:var(--text)}
+h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--text);line-height:1.25;margin:34px 0 14px}
+.defbox{border:1px solid var(--accent-dim);background:linear-gradient(180deg,rgba(190,148,71,.08),rgba(190,148,71,.02));padding:18px 22px;margin:6px 0 18px}
+.defbox .lbl{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.defbox p{font-size:18px;line-height:1.45;color:var(--text);font-family:'Bodoni Moda',serif;margin:0}
+.symptoms{border-left:2px solid var(--review-text);background:var(--surface);padding:6px 0;margin:0 0 18px;list-style:none}
+.symptoms li{font-size:14.5px;color:var(--muted);line-height:1.55;padding:9px 16px 9px 34px;position:relative;border-bottom:1px solid var(--rule)}
+.symptoms li:last-child{border-bottom:none}
+.symptoms li::before{content:"\2192";position:absolute;left:14px;color:var(--review-text)}
+.boundary{border:1px solid var(--rule);background:var(--surface);padding:16px 20px;margin:22px 0}
+.boundary a{font-weight:500}
+.bio{border-top:1px solid var(--rule);margin-top:30px;padding-top:18px;font-size:13px;color:var(--muted-soft);line-height:1.65;font-style:italic}
+.backlink{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);text-decoration:none;display:inline-block;margin-top:20px}
+.site-footer{padding:24px 22px;border-top:1px solid var(--rule);margin-top:24px}
+.site-footer-inner{max-width:720px;margin:0 auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+.footer-link{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none}
+.footer-copy{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-soft)}
+@media(max-width:600px){h1{font-size:27px}article p{font-size:15px}}
+</style>
+</head>
+<body>
+<header class="site-header" role="banner">
+  <div class="site-header-inner">
+    <a href="index.html" class="wordmark">JRS<span style="font-size:10px;vertical-align:super;position:relative;top:-3px;">&#8482;</span></a>
+    <div class="header-meta">Justification Review Standard<br>Perspective</div>
+  </div>
+</header>
+<main>
+<div class="wrap">
+  <div class="hero">
+    <div class="eyebrow">Perspective &middot; Decision Reconstruction Risk</div>
+    <h1>Why Good Decisions Fail on Paper</h1>
+    <p class="dek">The failure mode that turns sound decisions into indefensible records, and why AI is accelerating it.</p>
+    <div class="byline">By <strong>Phillip Wikes</strong></div>
+  </div>
+
+  <article>
+    <p class="lead">I have spent much of my career reading records after the fact. In civil-rights investigations, in administrative reviews, in the moment when a decision made months or years earlier is finally examined by someone who was not in the room. And I kept seeing the same thing.</p>
+
+    <p>The decision was often fine. The record was not.</p>
+
+    <p>Not sloppy, not obviously incomplete. It read as professional. It was organized. It reached a conclusion. But when you asked it the only question that matters under scrutiny, <em>how was this conclusion actually reached?</em>, the record could not answer. The reasoning had lived in the decision-maker's head, in a hallway conversation, in context that was obvious at the time and invisible later.</p>
+
+    <p>I had not encountered a term that precisely described this pattern, so I began referring to it as Decision Reconstruction Risk.</p>
+
+    <div class="defbox">
+      <div class="lbl">Decision Reconstruction Risk (DRR)</div>
+      <p>The condition in which a record cannot explain, on its own terms, why a consequential decision was made.</p>
+    </div>
+
+    <p>The definition is deliberately narrow, and the narrowness is the whole point.</p>
+
+    <h2>DRR is not "bad documentation"</h2>
+    <p>This is the distinction most people miss, so it is worth stating plainly: decision quality and record defensibility are different things.</p>
+    <p>A decision can be excellent, reached by an expert, correct on the merits, and the record documenting it can still carry high Decision Reconstruction Risk, because the basis for it was never committed to the page. A different decision can be mediocre and yet fully reconstructable, because every step was anchored.</p>
+    <p>DRR does not measure whether a decision was right. It measures whether an independent reviewer, arriving with no prior knowledge, could rebuild the reasoning from the record alone. That is a separate property, and it is the property that determines whether an organization can defend itself when the decision is later questioned in litigation, audit, investigation, or a public-records request.</p>
+
+    <h2>Why DRR has always existed, and why AI now accelerates it</h2>
+    <p>Context is perishable. The people who made a decision understood why; the evidence was fresh; the reasoning was present. All of that decays. Personnel change, memories fade, informal explanations disappear. What remains is the record. DRR is the gap between what the record says and what it can prove.</p>
+    <p>That gap is not new. What is new is that artificial intelligence has made it both far more common and nearly invisible.</p>
+    <p>AI-assisted drafting produces records that are fluent, confident, and professionally worded at scale. And fluency is not evidence. The old warning signs of a weak record, prose that read as rushed or vague, are exactly what a language model smooths away. The result is a record that looks more finished while being less reconstructable. AI raises the volume of records and the polish of records without guaranteeing the one thing that matters under scrutiny: that the basis for the conclusion is present. DRR now spreads while wearing the appearance of its opposite.</p>
+
+    <h2>How to recognize Decision Reconstruction Risk</h2>
+    <p>A record carries DRR when one or more of these are true:</p>
+    <ul class="symptoms">
+      <li>The basis for a conclusion is asserted but not identifiable in the record.</li>
+      <li>The chronology cannot be rebuilt from the record's own dates.</li>
+      <li>The path from evidence to conclusion, what I call Decision-Process Traceability, is not visible on the page.</li>
+      <li>Evaluative characterizations appear without a documented anchor.</li>
+      <li>The record depends on its author remaining available to explain it.</li>
+    </ul>
+    <p>Each is a symptom. Together they describe a record that looks complete and cannot be defended.</p>
+
+    <h2>The property DRR destroys: documentation defensibility</h2>
+    <p>For a long time, organizations talked about documentation <em>quality</em>: completeness, formatting, policy compliance. Those are real, and they are not the same as documentation <em>defensibility</em>. Defensible documentation contains identifiable evidence, a traceable line of reasoning, an accountable decision path, and a chronology a stranger can follow. It holds up when the author is gone and the context is lost. Decision Reconstruction Risk is precisely the erosion of that property. You can have high quality and high DRR at the same time, which is why quality checklists miss it.</p>
+
+    <h2>Naming the problem is how you begin to manage it</h2>
+    <p>Every discipline has a moment when a diffuse, chronic frustration is finally given a name and becomes a manageable thing. "Technical debt" changed how engineering teams talk about shortcuts. "Alert fatigue" changed how clinicians and analysts design warnings. Naming does not solve the problem, but it makes the problem visible, discussable, and measurable. You cannot manage what you cannot name.</p>
+    <p>Decision Reconstruction Risk is diagnosable before a record is finalized. It can be detected, reduced, and designed out of a workflow. I have built a review discipline for exactly that, the Justification Review Standard, but I want to be clear about the order of importance: the tool matters less than the recognition. The first and most valuable step is to stop treating "the record didn't hold up" as bad luck or bad writing, and to start treating it as a specific, nameable condition with specific causes.</p>
+
+    <h2>The point</h2>
+    <p>The organizations that do well in the AI era will not be the ones that used AI the most. They will be the ones whose records can still explain themselves after the people and the context are gone. That is a solvable problem, but only once you can see it clearly enough to name it.</p>
+    <p>I call it Decision Reconstruction Risk. Now that it has a name, you can look for it, measure it, and reduce it, before the record becomes the only thing that remains.</p>
+
+    <div class="boundary">
+      Read the formal definition and diagnostic symptoms: <a href="decision-reconstruction-risk.html">Decision Reconstruction Risk (DRR) &#8594;</a>
+    </div>
+
+    <p class="bio">Phillip Wikes introduced the term Decision Reconstruction Risk and developed the Justification Review Standard (JRS), a record-level review method for detecting and reducing it. He is a former Lead Civil Rights Officer at the Maryland Commission on Civil Rights. More at jrsstandard.com.</p>
+
+    <a class="backlink" href="research.html">&#8592; Back to Research &amp; Validation</a>
+  </article>
+</div>
+</main>
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer-inner">
+    <div style="display:flex;flex-wrap:wrap;gap:16px">
+      <a href="index.html" class="footer-link">Home</a>
+      <a href="decision-reconstruction-risk.html" class="footer-link">DRR Definition</a>
+      <a href="research.html" class="footer-link">Research</a>
+      <a href="investigator-guides.html" class="footer-link">Field Guides</a>
+    </div>
+    <div style="width:100%;font-family:'Bodoni Moda',serif;font-size:14px;color:var(--accent);margin-bottom:8px;">JRS measures the record, not the tool that produced it.</div>
+    <div class="footer-copy">&#169; 2026 Phillip Wikes &nbsp;&middot;&nbsp; JRS&#8482;</div>
+  </div>
+</footer>
+</body>
+</html>
