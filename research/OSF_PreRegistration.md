@@ -52,8 +52,14 @@ Preflight/test rows excluded. A participant completing fewer than 18 of 24 recor
 ## Blinding
 Records presented unlabeled, in randomized order, without intended determination. Reviewers/participants judge independently, without access to one another's ratings or to the key. Arm B assignment is random and recorded before participation. The verified key is fixed before any accuracy analysis.
 
-## PRIOR DATA DISCLOSURE (integrity)
-Arm A data collection is **in progress** at the time of this registration: two reviewers have completed all 24 records and one is partway. **No accuracy or reliability analysis has been run.** The verified answer key has **not** yet been fixed (independent verification is pending, per the procedure above). Arm B has **not** yet been collected. This registration therefore locks: (a) the answer-key verification procedure before the key is fixed, (b) the full analysis plan before any analysis is run, and (c) the Arm B design before Arm B data exist. Any deviation after this point will be documented and labeled exploratory.
+## PRIOR DATA & PROCEDURE DISCLOSURE (integrity)
+Status at this registration, stated plainly:
+- **Intended construction key:** fixed and git-timestamped (`research/Intended_Key_authorside.md`) before any verification was run.
+- **Answer-key verification:** EXECUTED. Three raters blind to the intended labels and hypotheses applied the operational rule and unanimously reproduced the intended key, 24/24 (`research/Verified_Key.md`). The verified key is fixed. Disclosure: this first pass used independent LLM raters applying the objective rule; human replication with the blind packet is recommended for the peer-reviewed write-up and would be the gold-standard result reported there.
+- **Arm A (JRS reviewers):** data collection in progress (2 of the analyzed reviewers complete, 1 partway). **No accuracy or reliability analysis has been run.**
+- **Arm B (randomized standard-vs-baseline):** instrument built and staged; **no Arm B data collected.**
+
+This registration therefore locks: (a) the full Arm A analysis plan **before any analysis is run**, (b) the Arm B design **before Arm B data exist**, and (c) the fixed verified key against which all accuracy will be scored. The git commit history is the timestamp that the intended key and verification procedure predated the verification result. Any deviation after this point will be documented and labeled exploratory.
 
 ## What would falsify the claims
 - Detection accuracy not clearing Floor 1 → DRR not shown detectable on this set.
