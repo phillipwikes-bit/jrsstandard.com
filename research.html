@@ -203,6 +203,7 @@ h1{font-family:'Bodoni Moda',serif;font-size:32px;font-weight:400;line-height:1.
 
   // Questions Emerging From the Data (registry, with honest fallback list).
   function renderQ(rows){
+    var seen={}; rows=(rows||[]).filter(function(q){ if(seen[q.question])return false; seen[q.question]=1; return true; });
     qEl.innerHTML=rows.map(function(q){
       return '<div class="study"><div class="study-top"><div class="study-title">'+esc(q.question)+'</div><span class="badge '+(q.status==='Research Active'?'b-collect':'b-design')+'">'+esc(q.status||'Open')+'</span></div>'
         +'<div class="study-desc">'+esc(q.evidence||'')+(q.related_study?' <span style="color:var(--accent-dim)">('+esc(q.related_study)+')</span>':'')+'</div></div>';
