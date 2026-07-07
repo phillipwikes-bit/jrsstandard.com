@@ -65,7 +65,7 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
   <div class="hero">
     <div class="eyebrow">Evidence Development Program &middot; De-identified Datasets</div>
     <h1>Research Data Room</h1>
-    <p class="sub">A consolidated, de-identified view of everything the JRS platform records: challenge responses, extended reviews, automated engine reviews, poll votes, free-text responses, observation and survey submissions, findings, and the study registry. Each dataset can be exported as CSV or JSON. Names and email addresses are never shown here: contact identifiers stay in private tables. Data is observational and from a validation-phase program; it is not validated and makes no claim of effectiveness. Where participants gave consent, consent flags are included.</p>
+    <p class="sub">A consolidated, de-identified view of everything the JRS platform records: reviewer and expert labels, real-case outcomes, automated engine reviews, poll votes, free-text responses, observation and survey submissions, findings, and the study registry. Each dataset can be exported as CSV or JSON. Names and email addresses are never shown here: contact identifiers stay in private tables. Data is observational and from a validation-phase program; it is not validated and makes no claim of effectiveness. Where participants gave consent, consent flags are included.</p>
     <div class="topbar">
       <button class="btn solid" onclick="downloadAll()">Download everything (JSON)</button>
       <button class="btn" onclick="location.reload()">Refresh</button>
@@ -104,8 +104,6 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
   var hdr={'apikey':K,'Authorization':'Bearer '+K};
   // dataset definitions: [label, rest-path, note]
   var DS=[
-    ['One-Minute Challenge (de-identified)','/rest/v1/omc_responses_deid?select=*','answer, why, role, consent, attribution'],
-    ['Extended Reviews (de-identified)','/rest/v1/extended_reviews_deid?select=*','per-record responses, role, consent'],
     ['Observation &amp; Survey Submissions','/rest/v1/interaction_events?select=*','homepage / pilot observations + training Likert survey'],
     ['Automated Engine Reviews','/rest/v1/engine_reviews?select=*','five-condition results, determination, variance'],
     ['Finding Poll Votes','/rest/v1/finding_poll_votes?select=*','A/B/C/D tallies'],
