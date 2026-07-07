@@ -2,7 +2,7 @@
 
 ### Rungs 1 and 2 of the JRS Evidence Development Program
 
-*Draft. Reliability results below are computed from collected data. Accuracy results are preliminary (data collection ongoing). Reproducibility (Rung 1) is described as method; data not yet collected. Numbers verified against the study database.*
+*Draft. Reproducibility (Rung 1) and reliability (Rung 2a) results are computed from collected data. Accuracy (Rung 2b) is preliminary (data collection ongoing). All numbers verified against the study database.*
 
 ---
 
@@ -39,7 +39,7 @@ Across **10 records**:
 | Experts | 10 | 3.6 | 88% | **0.74** |
 | Trained reviewers | 10 | 7.2 | 83% | **0.63** |
 
-Both coefficients fall in the "substantial" range. The reviewer coefficient (0.63) clears the pre-registered reliability floor (AC1 ≥ 0.61). Across all JRS-mode determinations, the distribution was Gap 63%, Needs work 21%, Ready 18%, consistent with a record set weighted toward reconstructability problems.
+Both coefficients fall in the "substantial" range. The reviewer coefficient (0.63) clears the pre-registered reliability floor (AC1 ≥ 0.61). Across all JRS-mode determinations (108 labels), the distribution was Gap 69%, Needs work 18%, Ready 13%, consistent with a record set weighted toward reconstructability problems.
 
 ### 4.2 Accuracy (Rung 2b) — preliminary
 The 24-record answer key was independently reproduced by raters blind to the intended labels, 24 of 24, fixing the key against which accuracy is scored. Reviewer completion is in progress; a full accuracy estimate (with sensitivity, specificity, and confidence intervals) is deferred until the pre-registered reviewer sample completes. Early completions are consistent with above-chance separation, reported here as preliminary and not as a confirmed result.
@@ -55,7 +55,7 @@ The reliability result is the substantive finding of this stage: independent rat
 
 - Reliability rests on 10 records; a larger set would tighten the estimate.
 - Accuracy is preliminary pending reviewer completion; no confirmed accuracy claim is made here.
-- Reproducibility (Rung 1) has no data yet.
+- Reproducibility (Rung 1) rests on 15 constructed records and reports raw cross-vendor agreement; chance-corrected coefficients on the model votes are still to be added.
 - Construct validity (whether the five conditions are distinct dimensions) is a separate analysis requiring an organizational-psychology contributor, not addressed here.
 - Records are constructed; external validity on real-world records is a later rung.
 
@@ -67,4 +67,4 @@ Reliability is considered supported only if Gwet's AC1 meets 0.61 with an adequa
 
 The reference-panel design and the chance-corrected reliability framework (joint use of Gwet's AC1, Krippendorff's alpha, and Fleiss' kappa; treatment of the kappa paradox; pre-registered agreement floors) are methodological contributions of **Ubayet Hossain (Model Validation)**. The proportionality principle referenced in the standard was surfaced by pilot reviewer **Saurabh Nanda** and is credited with permission. Responsibility for the framework as presented rests with the author.
 
-*© 2026 Phillip Wikes · JRS™. Reliability figures computed from collected data; accuracy preliminary; reproducibility pending. Preliminary and observational until all rungs clear their pre-set thresholds.*
+*© 2026 Phillip Wikes · JRS™. Reproducibility and reliability figures computed from collected data; accuracy preliminary. Preliminary and observational until all rungs clear their pre-set thresholds.*
