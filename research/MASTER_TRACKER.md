@@ -51,7 +51,7 @@
 | V-AI-14 | Terra Shouse | US | 0/24 | Not started |
 | V-AI-15 | Yetunde Adesiyan | UK | 0/24 | Not started |
 | V-AI-16 | Dr Gabriela Bar | Poland/EU | 0/24 | Not started |
-| V-AI-17 | Shakiba Mahvash | (TBD) | 0/24 | Not started |
+| V-AI-17 | Shakiba Mahvash | Iran | 0/24 | Not started |
 
 **Methodology:** M-01 **Ubayet Hossain, FRM** — Associate Director (Model Validation), KPMG India; 9+ years in credit/market-risk model development and validation. Contributed the reliability/validation framework (the Rung 1–2 statistics and floors). Credited in the analysis plan, both research PDFs, and the article.
 
