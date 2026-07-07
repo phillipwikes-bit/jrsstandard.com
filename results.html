@@ -136,8 +136,8 @@ var SUPABASE_ANON_KEY='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e';
     var rSec=document.getElementById('roles').closest('section');
     if(pSec) pSec.style.display='none';
     if(rSec) rSec.style.display='none';
-    document.getElementById('dist').innerHTML='<p class="sub">Aggregate results will be published once enough responses have been collected. Please check back soon.</p>';
-    document.getElementById('updated').textContent='Results publish once a minimum number of responses is reached.';
+    document.getElementById('dist').innerHTML='<p class="sub">These challenge aggregates publish once a minimum sample is reached. For current evidence, see the reproducibility (84% cross-vendor) and reviewer-reliability (Gwet\'s AC1 0.74 / 0.63) results on the <a href="research.html" style="color:var(--accent)">Research &amp; Validation</a> page.</p>';
+    document.getElementById('updated').textContent='Challenge aggregates publish once a minimum sample is reached; current evidence is on the Research & Validation page.';
     return;
   }
   document.getElementById('n-participants').textContent = d.participants||0;
