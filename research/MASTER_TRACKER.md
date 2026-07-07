@@ -69,13 +69,12 @@ Articles 2–4 (FOIL pilot; HR pilot; capstone with construct validity) — plan
 | # | Thread | Next action | Owner |
 |---|---|---|---|
 | 1 | Finish the 24-record detection study (2/9 done) | Nudge the 6 unfinished reviewers | You send / I draft |
-| 2 | Run the comparison test (checklist vs. no checklist) | Deploy the page + recruit participants | Say "deploy" |
-| 3 | Recruit an organizational psychologist | Find one; hand over the data package (ready) | Not started |
-| 4 | Publish Article 1 (Rungs 1 & 2) | See Section 5 below | Decide path |
-| 5 | Real-case pilot (Rung 3) | Nudge Keith; get more cases | You send / I draft |
-| 6 | Website 404s (~20% of traffic) | Send bad URLs from GA4 → I build redirects | You send URLs |
-| 7 | Dewey / Peter Broida | Send the reply + blurb (drafted) | You |
-| 8 | Rotate the exposed Supabase token | In the Supabase dashboard | You |
+| 2 | Recruit an organizational psychologist | Find one; hand over the data package (ready) | Not started |
+| 3 | Publish Article 1 (Rungs 1 & 2) | See Section 5 below | Decide path |
+| 4 | Real-case pilot (Rung 3) | Nudge Keith; get more cases | You send / I draft |
+| 5 | Website 404s (~20% of traffic) | Send bad URLs from GA4 → I build redirects | You send URLs |
+| 6 | Dewey / Peter Broida | Send the reply + blurb (drafted) | You |
+| 7 | Rotate the exposed Supabase token | In the Supabase dashboard | You |
 
 ---
 
@@ -84,7 +83,7 @@ Articles 2–4 (FOIL pilot; HR pilot; capstone with construct validity) — plan
 1. **Send it to Ubayet Hossain first** — he is the methodology author and is credited; he should review before anything external.
 2. **Preprint** (Zenodo or SSRN) for a citable DOI and a dated record. Optional but low-cost.
 3. **Practitioner journal** (Records Management Journal or ISACA Journal) — the realistic peer-reviewed home while accuracy is still preliminary.
-4. **Hold full academic/conference submission** until the accuracy data and the comparison test mature.
+4. **Hold full academic/conference submission** until the accuracy data matures.
 
 ---
 
