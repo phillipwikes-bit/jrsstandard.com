@@ -178,7 +178,7 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
   var U='https://pjzxkeviouofdseagvpf.supabase.co', K='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e', HDR={'apikey':K,'Authorization':'Bearer '+K};
   var COND=['basis_identification','reasoning_traceability','cold_reviewer_clarity','accountability_support','temporal_reconstructability'];
 
-  // ---- Study-owner config. PLACEHOLDERS; see RUNG2-REFERENCE-PANEL-METHODOLOGY.md. Do not treat as final. ----
+  // ---- Pre-registered thresholds (see the pre-registered analysis plan): 3 experts per record; 30 screened cases. ----
   // TODO(study-owner): minimum distinct experts before ANY distribution statistic is computed. Unset/invalid => gate fails closed (nothing computes).
   var MIN_EXPERTS = 3;
   // TODO(study-owner): chance-corrected agreement (Fleiss kappa) at/above which the panel may be labelled a "benchmark"; below it (or if unset) the label stays "reference panel". The label is governed by the chance-corrected statistic, NEVER by raw percent agreement.
@@ -385,7 +385,7 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
 
     var gn=document.getElementById('bm-gate-note');
     if(!expertStatsAllowed){ gn.style.display='block';
-      gn.innerHTML='Distribution statistics are withheld. They require at least '+(MIN_EXPERTS_EFF===Infinity?'a configured minimum (currently unset: gate fails closed)':MIN_EXPERTS+' independent experts')+'; the cohort has '+expertCount+'. Until the minimum is met, no expert-agreement, range, or accuracy figure is computed. Thresholds are placeholders pending the study owner.';
+      gn.innerHTML='Distribution statistics are withheld. They require at least '+(MIN_EXPERTS_EFF===Infinity?'a configured minimum (currently unset: gate fails closed)':MIN_EXPERTS+' independent experts')+'; the cohort has '+expertCount+'. Until the minimum is met, no expert-agreement, range, or accuracy figure is computed. Thresholds are pre-registered (3 experts per record; 30 screened cases).';
     } else if(!benchmarkOK){ gn.style.display='block';
       gn.innerHTML='Labelled <b>reference panel</b>: chance-corrected expert agreement (kappa '+((kap&&kap.kappa!=null)?kap.kappa.toFixed(2):'n/a')+', n='+(kap?kap.n:0)+') is below the configured benchmark threshold ('+(gateUnset(BENCHMARK_KAPPA_THRESHOLD)?'unset':BENCHMARK_KAPPA_THRESHOLD.toFixed(2))+'). Raw percent agreement is shown for context but does not govern the label. These figures characterise alignment with informed professional judgment, not correctness against a single truth.';
     } else { gn.style.display='none'; }
