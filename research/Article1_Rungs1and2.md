@@ -12,7 +12,7 @@ The Justification Review Standard (JRS) is a record-level review method that ask
 
 ## 1. Background
 
-Records increasingly justify consequential decisions, and increasingly they are drafted with AI assistance that makes them fluent without guaranteeing that the basis for a conclusion is present. JRS evaluates a record on whether its reasoning is reconstructable from the record itself, across five conditions: record self-sufficiency, evidentiary anchoring, chronological integrity, decision-process traceability, and evidentiary sufficiency. Each record receives one of three determinations: Ready, Needs work, or Gap. The property JRS targets, and DRR names, is whether a later reviewer could rebuild the reasoning without the original author present.
+Records increasingly justify consequential decisions, and increasingly they are drafted with AI assistance that makes them fluent without guaranteeing that the basis for a conclusion is present. JRS evaluates a record on whether its reasoning is reconstructable from the record itself, across five conditions: reconstructability, basis identification, chronology, decision-process traceability, and evidentiary sufficiency. Each record receives one of three determinations: Ready, Needs work, or Gap. The property JRS targets, and DRR names, is whether a later reviewer could rebuild the reasoning without the original author present.
 
 ## 2. The evidence program and this paper's scope
 

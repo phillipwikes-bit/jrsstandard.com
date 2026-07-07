@@ -9,16 +9,16 @@
 ## The five conditions AS STORED IN THE DATA
 `basis_identification` · `cold_reviewer_clarity` · `accountability_support` · `reasoning_traceability` · `temporal_reconstructability`
 
-## Condition crosswalk (authoritative — derived from the codebook definitions)
-The data stores the five conditions under working keys. The mapping below to the canonical standard names is derived from the **codebook definitions** (`codebook.html`, RC1–RC5), not from surface names, so it is authoritative. Two mappings are deliberately counter-intuitive by name and correct by definition: `reasoning_traceability` is RC1 (tracing evidence→conclusion), and `accountability_support` is RC4 (who decided, criteria, mitigating information).
+## Condition crosswalk (authoritative — data keys → the standard's five conditions)
+The data stores the five conditions under working keys. The canonical condition names are the standard's (`jrsstandard.html` and `codebook.html`, RC1–RC5). The mapping below is derived from the **codebook definitions**, not surface names, so it is authoritative. Two mappings are counter-intuitive by name and correct by definition: `reasoning_traceability` is RC1 (tracing evidence→conclusion), and `accountability_support` is RC4 (who decided, criteria, mitigating information).
 
-| Data column | Codebook (RC) | Canonical standard name | Definition basis |
-|---|---|---|---|
-| `reasoning_traceability` | RC1 Reconstructability | **Record Self-Sufficiency** | conclusion reconstructable from the record itself |
-| `basis_identification` | RC2 Basis Identification | **Evidentiary Anchoring** | source of each characterization is identified |
-| `temporal_reconstructability` | RC3 Chronology | **Chronological Integrity** | sequence of events followable from dates |
-| `accountability_support` | RC4 Decision-Process Traceability | **Decision-Process Traceability** | who decided, criteria/threshold, mitigating info |
-| `cold_reviewer_clarity` | RC5 Evidentiary Sufficiency | **Evidentiary Sufficiency** | a cold reviewer could assess it unaided |
+| Data column | Standard condition (canonical) | Definition basis |
+|---|---|---|
+| `reasoning_traceability` | **RC1 Reconstructability** | conclusion reconstructable from the record itself |
+| `basis_identification` | **RC2 Basis Identification** | source of each characterization is identified |
+| `temporal_reconstructability` | **RC3 Chronology** | sequence of events followable from dates |
+| `accountability_support` | **RC4 Decision-Process Traceability** | who decided, criteria/threshold, mitigating info |
+| `cold_reviewer_clarity` | **RC5 Evidentiary Sufficiency** | a cold reviewer could assess it unaided |
 
 The raw column names are kept as-collected (renaming mid-study would break continuity with the existing data); use this crosswalk to label factors in the write-up.
 
