@@ -15,12 +15,13 @@
 | **Rung 3 — Criterion validity** | Do flagged records fail in real cases? | 🟡 12 real cases collected. |
 | **External validity** | Does it hold on real (non-constructed) records? | ⬜ Future. |
 
-### Evidence collected across the three pilots (verified live)
-| Pilot | What it collects | Evidence to date |
-|---|---|---|
-| **AI-Assisted Records Detection** (Study 011) | Reviewer reads on the 24-record set vs a verified key | **80 reads; 3 reviewers complete (24/24), 1 at 7/24, 6 registered** |
-| **Bench Reliability** (Studies 003/004) | Expert + reviewer scoring of a shared record set | **8 experts + 13 reviewers, 108 labels, 10 records → AC1 0.74 / 0.63** |
-| **Real-Case Criterion** (Study 010) | Public determinations paired with documented outcomes | **12 real cases (Stacy 7, Tanvi 5)** |
+### The pilots — evidence collected (verified live)
+| # | Pilot | What it collects | Evidence to date |
+|---|---|---|---|
+| 1 | **AI-Assisted Records Detection** (Study 011) | Reviewer reads on the 24-record set vs a verified key | **80 reads; 3 complete (Jake, Frank, Lawal), Saurabh 7/24, 6 registered** |
+| 2 | **Bench Reliability** (Studies 003/004) | Expert + reviewer scoring of a shared record set | **8 experts + 13 reviewers, 108 labels, 10 records → AC1 0.74 / 0.63** |
+| 3 | **Real-Case Criterion** (Study 010, Rung 3) | Real public cases + documented outcomes, in 3 domain pilots | **12 real cases: FOIL/Stacy 7, HR/Tanvi 5, Healthcare/Keith 0 (breakdown in §2)** |
+| 4 | **Extended Review** (Independent Review Challenge) | Longer independent multi-record review | **Live, but 0 real submissions yet — 1 diagnostic-test row only** |
 
 **How the rungs map to the site's study registry (research.html):**
 | Rung / stage | Site study |
@@ -52,7 +53,15 @@
 
 **Methodology:** M-01 **Ubayet Hossain, FRM** — Associate Director (Model Validation), KPMG India; 9+ years in credit/market-risk model development and validation. Contributed the reliability/validation framework (the Rung 1–2 statistics and floors). Credited in the analysis plan, both research PDFs, and the article.
 
-**Real-case contributors (Rung 3):** Stacy Young (7 cases), Tanvi Pokhriyal (5), Keith Carrington (0, healthcare).
+**Rung 3 — Real-Case Criterion pilots (public determinations paired with documented outcomes):**
+
+| Domain pilot | Contributor | Cases | Outcomes recorded | Last activity |
+|---|---|---|---|---|
+| Public Records / FOIL | Stacy Young (E-08) | **7** | challenged, failed appeal | 2026-07-06 |
+| HR / Employment | Tanvi Pokhriyal (V-HR-01) | **5** | challenged, failed appeal, held up | 2026-06-22 |
+| Healthcare Compliance | Keith Carrington, EJD, MBA (V-HC-01) | **0** | — | accepted, not started |
+
+Total: **12 real cases** across two active domain pilots; the healthcare pilot is accepted but not yet started.
 
 **Open seat:** organizational psychologist (construct validity) — not recruited.
 
