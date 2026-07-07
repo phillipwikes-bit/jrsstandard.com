@@ -106,7 +106,7 @@ E-08 Stacy Young · E-09 Dr Nitin Deshpande · E-10 Rahul Potdar · E-12 Saurabh
 | 1 | **Finish Rung 2b detection** | 2/9 done | Nudge 6 reviewers to complete 24 records | You send / I draft |
 | 2 | **Run Arm B** (the money question) | Built, not run | Deploy page + recruit experienced participants | Say "deploy Arm B" |
 | 3 | **Organizational psychologist** | Seat empty | Recruit one; build their construct-validity data package | Not started |
-| 4 | **Four-article plan** | ⚠️ Was never saved to a file | Re-save the plan; then draft Article 1 (Rungs 1+2) | I rebuild it |
+| 4 | **Four-article plan** | Article 1 (Rungs 1+2) **DRAFTED, peer-review-revised, PDF built (`JRS_Reliability_Accuracy.pdf`), linked on research.html**. Articles 2–4 not yet drafted | Draft Articles 2–4 when their data matures | I draft |
 | 5 | **Real-case pilot (Rung 3)** | 12 cases, stalled | Nudge Keith; get more cases from Stacy/Tanvi | You send / I draft |
 | 6 | **OSF pre-registration** | Form ready | You log in and paste (optional, for publication) | You |
 | 7 | **Dewey / Peter Broida** | Warm; awaiting author intros | Send the reply + blurb already drafted | You |
