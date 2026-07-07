@@ -316,7 +316,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
   </div>
 
   <div class="btn-row" style="margin-top:0;">
-    <a href="one-minute-challenge.html" class="btn btn-primary">Take the One-Minute Challenge &#8594;</a>
+    <a href="research.html" class="btn btn-primary">See the Research &amp; Validation &#8594;</a>
     <a href="training.html" class="btn btn-accent">Explore Simulations</a>
     <a href="#findings-block" onclick="var b=document.getElementById('findings-block');if(b)b.scrollIntoView({behavior:'smooth'});return false;" class="btn btn-accent">View Research Findings</a>
     <a href="#contact" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});return false;" class="btn btn-ghost">Join Pilot Program</a>
@@ -332,11 +332,11 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
     <p class="section-big-sub">Four ways to participate. Each is no-cost and carries no commercial commitment. Start where it is operationally useful.</p>
     <div class="start-grid">
       <div class="start-card">
-        <div class="start-k">One-Minute Challenge</div>
-        <div class="start-t">Identify documentation deficiencies in a realistic record.</div>
-        <div class="start-meta">Approx. Time: 60 Seconds</div>
-        <div class="start-d">A short workplace documentation scenario and a single review question. Aggregate responses contribute to ongoing research.</div>
-        <a href="one-minute-challenge.html" class="btn btn-primary" style="align-self:flex-start;">Start Challenge &#8594;</a>
+        <div class="start-k">Research &amp; Validation</div>
+        <div class="start-t">See the evidence: reproducibility, reliability, and current findings.</div>
+        <div class="start-meta">Reviewed research</div>
+        <div class="start-d">Independent AI models apply the standard reproducibly (84% cross-vendor), and independent reviewers apply it reliably (Gwet's AC1 0.74 experts, 0.63 reviewers). Preliminary; not validation.</div>
+        <a href="research.html" class="btn btn-primary" style="align-self:flex-start;">View Research &#8594;</a>
       </div>
       <div class="start-card">
         <div class="start-k">Simulation Training</div>
@@ -390,47 +390,39 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
     </div>
   </div>
 
-  <!-- 4 · ONE-MINUTE CHALLENGE -->
-  <div style="border:1px solid rgba(190,148,71,.4);background:rgba(190,148,71,.04);padding:26px 24px;margin-bottom:44px;">
-    <div class="dash-cap">&#9654; One-Minute Challenge</div>
-    <div class="section-big">Can You Identify the Documentation Issue?</div>
-    <p class="section-big-sub">The One-Minute Challenge presents a short workplace documentation scenario. Your task is to identify the most significant reviewability issue. Your selection is recorded as an aggregate research observation: one record, one question, about sixty seconds.</p>
-    <a href="one-minute-challenge.html" class="btn btn-primary">Start One-Minute Challenge &#8594;</a>
-  </div>
-
   <!-- 5 · ACTIVE RESEARCH PROGRAM -->
   <div style="margin-bottom:44px;">
     <div class="section-big">Active Research Program</div>
     <p class="section-big-sub">The Evidence Development Program runs as a set of registered studies, each with an honest current status. This is active research, not static methodology.</p>
     <div class="rstudy">
       <div class="rstudy-top"><span class="rstudy-title">AI Reproducibility Study</span><span class="rbadge active">Active</span></div>
-      <div class="rstudy-desc">Reviews the same records multiple times with a model and measures answer consistency. An automated nightly run publishes the current self-consistency figure under Current Findings.</div>
+      <div class="rstudy-desc">Three independent AI models from different vendors judge the same constructed records; the nightly run reports how often they agree. Latest: 84% cross-vendor agreement across 15 records.</div>
       <div class="rstudy-meta">Phase: Running &middot; Classification: Reproducibility (not accuracy, not validation)</div>
     </div>
     <div class="rstudy">
-      <div class="rstudy-top"><span class="rstudy-title">Ground-Truth Benchmark Study</span><span class="rbadge planned">Planned</span></div>
-      <div class="rstudy-desc">Compares review outputs against expert benchmark mappings to measure accuracy, distinct from agreement.</div>
-      <div class="rstudy-meta">Phase: Awaiting benchmark dataset &middot; Classification: Accuracy</div>
+      <div class="rstudy-top"><span class="rstudy-title">Reviewer Reliability Study</span><span class="rbadge collect">Result reported</span></div>
+      <div class="rstudy-desc">Independent expert and trained reviewers scored a shared record set. Inter-rater reliability is substantial: Gwet's AC1 0.74 (experts) and 0.63 (reviewers) across 10 records, clearing the pre-registered floor. Reliability, not accuracy.</div>
+      <div class="rstudy-meta">Phase: Collected &middot; Classification: Reliability</div>
     </div>
     <div class="rstudy">
-      <div class="rstudy-top"><span class="rstudy-title">Framework Ambiguity Study</span><span class="rbadge design">Design complete</span></div>
-      <div class="rstudy-desc">Estimates reviewer variance and record ambiguity once multiple reviewers assess the same records.</div>
-      <div class="rstudy-meta">Phase: Awaiting multi-reviewer data &middot; Classification: Reliability</div>
+      <div class="rstudy-top"><span class="rstudy-title">Condition Performance Study</span><span class="rbadge collect">Collecting</span></div>
+      <div class="rstudy-desc">Per-condition data collected (108 determinations across 10 records): Gap 69%, Needs work 18%, Ready 13%. Per-condition agreement continues as volume grows.</div>
+      <div class="rstudy-meta">Phase: Collecting &middot; Classification: Reliability</div>
     </div>
     <div class="rstudy">
-      <div class="rstudy-top"><span class="rstudy-title">Participant Recognition Study</span><span class="rbadge collect">Collecting</span></div>
-      <div class="rstudy-desc">Recognition patterns from the One-Minute Challenge and Extended Review. Data accruing now; reported once the sample is adequate.</div>
-      <div class="rstudy-meta">Phase: Collecting &middot; Classification: Observational</div>
+      <div class="rstudy-top"><span class="rstudy-title">AI-Assisted Records Detection Study</span><span class="rbadge collect">Collecting</span></div>
+      <div class="rstudy-desc">Whether JRS distinguishes grounded from ungrounded AI-generated records, judged blind against a held-out key (independently verified 24/24). Reviewer reads are accruing.</div>
+      <div class="rstudy-meta">Phase: Collecting &middot; Classification: Detection (not validation)</div>
     </div>
     <div class="rstudy">
-      <div class="rstudy-top"><span class="rstudy-title">Professional Reviewer Study</span><span class="rbadge collect">Collecting</span></div>
-      <div class="rstudy-desc">Role and profession are captured at participation; patterns by reviewer type are reported as numbers grow.</div>
-      <div class="rstudy-meta">Phase: Collecting &middot; Classification: Observational</div>
+      <div class="rstudy-top"><span class="rstudy-title">Criterion Validity Study (real-outcome)</span><span class="rbadge collect">Collecting</span></div>
+      <div class="rstudy-desc">De-identified public determinations paired with documented outcomes (upheld, overturned, challenged) to test whether JRS reads correspond to results. Cases accruing; no result until the sample is adequate.</div>
+      <div class="rstudy-meta">Phase: Collecting &middot; Classification: Criterion validity</div>
     </div>
     <div class="rstudy">
-      <div class="rstudy-top"><span class="rstudy-title">Organizational-Psychology Dataset Development</span><span class="rbadge collect">Building dataset</span></div>
-      <div class="rstudy-desc">Assembling reliability, difficulty, agreement, and behavioral datasets for independent organizational-psychology review.</div>
-      <div class="rstudy-meta">Phase: Dataset assembly &middot; Classification: Dataset development</div>
+      <div class="rstudy-top"><span class="rstudy-title">Organizational-Psychology Readiness</span><span class="rbadge collect">Dataset ready</span></div>
+      <div class="rstudy-desc">Per-condition reliability and agreement data (all five conditions scored) assembled and exported for independent organizational-psychology review of construct validity. Awaiting a reviewer.</div>
+      <div class="rstudy-meta">Phase: Dataset ready &middot; Classification: Construct validity</div>
     </div>
     <div class="btn-row" style="margin-top:14px;">
       <a href="research.html" class="btn btn-primary">Research &amp; Validation &#8594;</a>
@@ -563,7 +555,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
     <div class="section-big">Data Handling &amp; Privacy</div>
     <p class="section-big-sub">What leaves your environment, and what does not.</p>
     <div class="scope-list" style="grid-template-columns:1fr;">
-      <div class="scope-item"><span class="scope-dash">&mdash;</span><span class="scope-text">The One-Minute Challenge and the observation widget record only your menu selection. They do not collect free text, names, or identifiers.</span></div>
+      <div class="scope-item"><span class="scope-dash">&mdash;</span><span class="scope-text">The observation widget records only your menu selection. It does not collect free text, names, or identifiers.</span></div>
       <div class="scope-item"><span class="scope-dash">&mdash;</span><span class="scope-text">The contact form forwards your message so you can receive a reply. It is not displayed publicly.</span></div>
       <div class="scope-item"><span class="scope-dash">&mdash;</span><span class="scope-text">Free-text inputs are screened for personal identifiers (email, phone, SSN, card numbers) before submission, and you are asked to redact before sending.</span></div>
       <div class="scope-item"><span class="scope-dash">&mdash;</span><span class="scope-text">JRS asks you not to submit live-record content. Apply the review inside your own environment and share only your menu-level observation. JRS creates no system of record of your organization's documents.</span></div>
@@ -695,7 +687,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
       <a href="enterprise.html" class="footer-link">Enterprise</a>
       <a href="pilot.html" class="footer-link">Pilot Program</a>
       <a href="training.html" class="footer-link">Simulation Training</a>
-      <a href="one-minute-challenge.html" class="footer-link">One-Minute Challenge</a>
+      <a href="research.html" class="footer-link">Research</a>
       <a href="JRS-Standard.pdf" class="footer-link">Review Controls PDF</a>
       <a href="JRS-Reference.pdf" class="footer-link">Reviewer Reference</a>
       <a href="research.html" class="footer-link">Research &amp; Validation</a>
