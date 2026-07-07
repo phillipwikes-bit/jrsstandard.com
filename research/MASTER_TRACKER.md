@@ -52,13 +52,18 @@
 
 ---
 
-## 3. Publications
+## 3. Publications & live research platform
+
+**Deployed to production (jrsstandard.com) — commit `2bdc8b9`, verified live:**
+- research.html shows Early Results (reproducibility 84%, reliability AC1 0.74/0.63), Study 004 "Reviewer Reliability — Result reported", Study 009 "Dataset ready", and the methods-paper link. Duplicate research questions are deduped on display.
+- Live findings feed: reproducibility (STUDY-001) and reliability (STUDY-004).
+- Answer-key docs (`research/`) are deliberately NOT on production — `research/Verified_Key.md` returns 404. Blind study intact.
 
 | Paper | Covers | File | State |
 |---|---|---|---|
-| The Justification Review Standard | Full framework | `JRS_Research_Paper.pdf` | On research page (staged) |
-| Reliability & Accuracy (Rungs 1 & 2) | Repro + reliability + prelim accuracy | `JRS_Reliability_Accuracy.pdf` | Drafted, peer-review-revised, linked (staged) |
-| Decision Reconstruction Risk | The concept (essay) | `DRR_Article.pdf` | Live |
+| The Justification Review Standard | Full framework | `JRS_Research_Paper.pdf` | ✅ Live on research page (Ubayet full title) |
+| Reliability & Accuracy (Rungs 1 & 2) | Repro + reliability + prelim accuracy | `JRS_Reliability_Accuracy.pdf` | ✅ Live on research page |
+| Decision Reconstruction Risk | The concept (essay) | `DRR_Article.pdf` | ✅ Live |
 
 Articles 2–4 (FOIL pilot; HR pilot; capstone with construct validity) — planned, not drafted.
 
