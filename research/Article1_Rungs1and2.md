@@ -99,7 +99,7 @@ The staged program proceeds in order: complete the accuracy analysis on the 24-r
 
 ## 9. Attribution
 
-The reference-panel design and the chance-corrected reliability framework (joint use of Gwet's AC1, Krippendorff's alpha, and Fleiss' kappa; treatment of the kappa paradox; pre-registered agreement floors) are methodological contributions of **Ubayet Hossain, FRM, Associate Director (Model Validation), KPMG India**. The proportionality principle referenced in the standard was surfaced by pilot reviewer **Saurabh Nanda** and is credited with permission. Statistical analyses were completed before interpretation of study findings. Responsibility for the framework as presented rests with the author.
+The reference-panel design and the chance-corrected reliability framework (joint use of Gwet's AC1, Krippendorff's alpha, and Fleiss' kappa; treatment of the kappa paradox; pre-registered agreement floors) are methodological contributions of **Ubayet Hossain, FRM, Associate Director (Model Validation), KPMG India**. The proportionality principle referenced in the standard was surfaced by pilot reviewer **Saurabh Nanda**, General Manager and APAC Business Leader (Align Technology), and is credited with permission. Statistical analyses were completed before interpretation of study findings. Responsibility for the framework as presented rests with the author.
 
 ## 10. Conclusion
 

@@ -8,7 +8,7 @@
 Validated Detection of Decision Reconstruction Risk (DRR): a pre-registered study of whether a documentation-review standard improves detection of ungrounded AI-generated records.
 
 ## Authors
-Phillip Wikes (Creator, Justification Review Standard). Reliability/validation methodology contributed by Ubayet Hossain, FRM, Associate Director (Model Validation), KPMG India. Proportionality principle surfaced by Saurabh Nanda.
+Phillip Wikes (Creator, Justification Review Standard). Reliability/validation methodology contributed by Ubayet Hossain, FRM, Associate Director (Model Validation), KPMG India. Proportionality principle surfaced by Saurabh Nanda, General Manager and APAC Business Leader, Align Technology.
 
 ## Description
 DRR is the condition in which a record cannot explain, on its own terms, why a consequential decision was made. This study tests whether DRR is a detectable property of records and whether applying the five JRS conditions improves detection over unaided judgment, using a set of 24 constructed AI-generated records (12 grounded, 12 ungrounded) and an independently verified answer key.
