@@ -9,18 +9,18 @@
 ## The five conditions AS STORED IN THE DATA
 `basis_identification` · `cold_reviewer_clarity` · `accountability_support` · `reasoning_traceability` · `temporal_reconstructability`
 
-## ⚠️ NAMING MISMATCH TO RESOLVE BEFORE ANALYSIS
-The condition names in the data are **not** the same as the five conditions named in the JRS standard and in Article 1. They must be reconciled so the psychologist knows what each column measures. Below is a **proposed** mapping — it needs your confirmation; do not treat it as authoritative yet.
+## Condition crosswalk (authoritative — derived from the codebook definitions)
+The data stores the five conditions under working keys. The mapping below to the canonical standard names is derived from the **codebook definitions** (`codebook.html`, RC1–RC5), not from surface names, so it is authoritative. Two mappings are deliberately counter-intuitive by name and correct by definition: `reasoning_traceability` is RC1 (tracing evidence→conclusion), and `accountability_support` is RC4 (who decided, criteria, mitigating information).
 
-| Data column | Proposed standard condition (CONFIRM) |
-|---|---|
-| `basis_identification` | Evidentiary Anchoring |
-| `cold_reviewer_clarity` | Record Self-Sufficiency |
-| `reasoning_traceability` | Decision-Process Traceability |
-| `temporal_reconstructability` | Chronological Integrity |
-| `accountability_support` | Evidentiary Sufficiency |
+| Data column | Codebook (RC) | Canonical standard name | Definition basis |
+|---|---|---|---|
+| `reasoning_traceability` | RC1 Reconstructability | **Record Self-Sufficiency** | conclusion reconstructable from the record itself |
+| `basis_identification` | RC2 Basis Identification | **Evidentiary Anchoring** | source of each characterization is identified |
+| `temporal_reconstructability` | RC3 Chronology | **Chronological Integrity** | sequence of events followable from dates |
+| `accountability_support` | RC4 Decision-Process Traceability | **Decision-Process Traceability** | who decided, criteria/threshold, mitigating info |
+| `cold_reviewer_clarity` | RC5 Evidentiary Sufficiency | **Evidentiary Sufficiency** | a cold reviewer could assess it unaided |
 
-If this mapping is wrong, the construct-validity interpretation will be wrong. This is the single thing to fix before the psychologist runs anything.
+The raw column names are kept as-collected (renaming mid-study would break continuity with the existing data); use this crosswalk to label factors in the write-up.
 
 ## What the psychologist can do with this
 1. **Dimensionality:** exploratory/confirmatory factor analysis or PCA on the five condition ratings — do they load on one factor (one underlying "reconstructability") or several distinct dimensions?
@@ -36,5 +36,5 @@ If this mapping is wrong, the construct-validity interpretation will be wrong. T
 
 ## Status
 - Data: **ready and exported.**
-- Naming reconciliation: **pending your confirmation.**
+- Naming reconciliation: **resolved** (authoritative crosswalk above, derived from codebook definitions).
 - Organizational psychologist: **not yet recruited.**

@@ -15,7 +15,18 @@ You are proving JRS works in stages ("rungs"). Each rung answers one question.
 | **Rung 2a — Reliability** | Do independent human experts + reviewers agree when scoring records? | ✅ **Real data: 10 records, 8 experts + 16 reviewers. Experts AC1 = 0.74, reviewers AC1 = 0.63** |
 | **Rung 2b — Accuracy / Detection** | On the 24-record set with a hidden key, can reviewers tell grounded from ungrounded? | 🟡 **2 of 9 reviewers complete; answer key independently verified 24/24** |
 | **Rung 3 — Criterion validity** | Do real cases JRS flags actually fail in real life (appeals, audits)? | 🟡 **12 real cases collected (2 contributors); stalled** |
-| **Construct validity** | Do the five conditions hold together as distinct things? | 🟡 **Per-condition DATA EXISTS (10 records × 21 raters, 108 rows, all 5 conditions scored) — exported to `construct_validity_data.csv`. Blockers: condition names in data ≠ standard's names (needs reconciliation); no psychologist recruited.** |
+| **Construct validity** | Do the five conditions hold together as distinct things? | 🟡 **Per-condition DATA EXISTS (10 records × 21 raters, 108 rows, all 5 conditions scored) — exported to `construct_validity_data.csv`. Naming RECONCILED: codebook titles aligned to the standard's five names; authoritative crosswalk in `CONSTRUCT_VALIDITY_PACKAGE.md`. Remaining blocker: no psychologist recruited.** |
+
+### Condition naming — now consistent (fixed)
+The five conditions had drifted into three different name sets (instrument/data, marketing, codebook). Canonical set = the standard's public names. Codebook titles aligned; research docs carry the authoritative crosswalk below. The live review instrument (`bench-review.html`) keeps its working keys unchanged **on purpose** — reviewers are mid-study, and renaming their form would break continuity with data already collected.
+
+| Data key (as collected) | Codebook RC | Canonical standard name |
+|---|---|---|
+| reasoning_traceability | RC1 | Record Self-Sufficiency |
+| basis_identification | RC2 | Evidentiary Anchoring |
+| temporal_reconstructability | RC3 | Chronological Integrity |
+| accountability_support | RC4 | Decision-Process Traceability |
+| cold_reviewer_clarity | RC5 | Evidentiary Sufficiency |
 
 > CORRECTION (this update): Rung 1 is the **3-AI-model reproducibility** study (Study 001), and it **has live data** (84%, 15 records). An earlier version of this tracker and the Article 1 draft wrongly said Rung 1 had "no data" — that was an error; the reproducibility study runs nightly and its result lives in the `findings` table, not in the human-rater tables.
 
