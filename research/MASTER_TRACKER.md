@@ -44,7 +44,7 @@
 | V-AI-11 | Andrey Ekhmenin | Poland/EU | 0/24 | Not started |
 | V-AI-12 | Kyle McMullan | UK/Ireland | 0/24 | Not started |
 
-**Methodology:** M-01 **Ubayet Hossain** — reliability/validation framework (the Rung 1–2 statistics and floors). Credited in the analysis plan, both research PDFs, and the article.
+**Methodology:** M-01 **Ubayet Hossain, FRM** — Associate Director (Model Validation), KPMG India; 9+ years in credit/market-risk model development and validation. Contributed the reliability/validation framework (the Rung 1–2 statistics and floors). Credited in the analysis plan, both research PDFs, and the article.
 
 **Real-case contributors (Rung 3):** Stacy Young (7 cases), Tanvi Pokhriyal (5), Keith Carrington (0, healthcare).
 

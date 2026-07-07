@@ -113,7 +113,7 @@ The write-up pairs with the DRR definition page as the empirical companion to th
 
 ## 15. Integrity and attribution
 
-Analyses run only after data lock. This protocol is registered before analysis. The reference-panel design and the chance-corrected reliability framework are methodological contributions of Ubayet Hossain (Model Validation). The proportionality of documentation to decision stakes, referenced in the JRS standard, was surfaced by pilot reviewer Saurabh Nanda.
+Analyses run only after data lock. This protocol is registered before analysis. The reference-panel design and the chance-corrected reliability framework are methodological contributions of Ubayet Hossain, FRM, Associate Director (Model Validation), KPMG India. The proportionality of documentation to decision stakes, referenced in the JRS standard, was surfaced by pilot reviewer Saurabh Nanda.
 
 ---
 

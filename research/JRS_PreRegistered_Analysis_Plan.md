@@ -85,7 +85,7 @@ Constructed records, not real ones. Modest samples: three experts and about five
 
 ## 13. Analysis integrity
 
-Analyses are run only after data lock, when the target labels for batches 3 and 4 have been collected. This plan is registered before that point. The reference-panel design and the chance-corrected reliability framework are methodological contributions of Ubayet Hossain (Model Validation).
+Analyses are run only after data lock, when the target labels for batches 3 and 4 have been collected. This plan is registered before that point. The reference-panel design and the chance-corrected reliability framework are methodological contributions of Ubayet Hossain, FRM, Associate Director (Model Validation), KPMG India.
 
 ---
 
