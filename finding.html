@@ -93,7 +93,7 @@ h1{font-family:'Bodoni Moda',serif;font-size:30px;font-weight:400;line-height:1.
 
   <div class="section-label">Participate in Research</div>
   <div class="part-grid">
-    <a class="part-card" href="one-minute-challenge.html"><div class="part-t">Take the One-Minute Challenge</div><div class="part-s">1 record &middot; ~60 sec</div></a>
+    <a class="part-card" href="research.html"><div class="part-t">Research &amp; Validation</div><div class="part-s">Studies &middot; findings &middot; methods</div></a>
     <a class="part-card" href="pilot.html#how-it-begins"><div class="part-t">Complete an Extended Review</div><div class="part-s">Pilot participation paths</div></a>
     <a class="part-card" href="pilot.html#contact"><div class="part-t">Join the Pilot Program</div><div class="part-s">Apply within your workflow</div></a>
     <a class="part-card" href="pilot.html#contact"><div class="part-t">Become a Professional Reviewer</div><div class="part-s">Express interest</div></a>
@@ -211,7 +211,7 @@ window.submitResponse=function(){
      if(f.discussion) prompts+='<div class="prompt"><div class="prompt-k">Discussion</div><div class="prompt-v">'+jrsEsc(f.discussion)+'</div></div>';
      if(f.debate) prompts+='<div class="prompt"><div class="prompt-k">Debate</div><div class="prompt-v">'+jrsEsc(f.debate)+'</div></div>';
      prompts+='<div id="f-poll"></div>';
-     if(f.challenge) prompts+='<div class="prompt"><div class="prompt-k">Challenge</div><div class="prompt-v">'+jrsEsc(f.challenge)+' <a href="one-minute-challenge.html" style="color:var(--accent)">Start &#8594;</a></div></div>';
+     if(f.challenge) prompts+='<div class="prompt"><div class="prompt-k">Challenge</div><div class="prompt-v">'+jrsEsc(f.challenge)+' <a href="research.html" style="color:var(--accent)">Research &#8594;</a></div></div>';
      document.getElementById('f-prompts').innerHTML=prompts;
      if(f.poll&&f.poll.question){ JRS_POLL=f.poll; jrsRenderPoll(); }
      // Count a view (best-effort; RPC is security-definer).
