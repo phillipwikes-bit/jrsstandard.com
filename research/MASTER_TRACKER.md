@@ -21,7 +21,7 @@
 | 1 | **AI-Assisted Records Detection** (Study 011) | Reviewer reads on the 24-record set vs a verified key | **80 reads; 3 complete (Jake, Frank, Lawal), Saurabh 7/24, 6 registered** |
 | 2 | **Bench Reliability** (Studies 003/004) | Expert + reviewer scoring of a shared record set | **8 experts + 13 reviewers, 108 labels, 10 records → AC1 0.74 / 0.63** |
 | 3 | **Real-Case Criterion** (Study 010, Rung 3) | Real public cases + documented outcomes, in 3 domain pilots | **12 real cases: FOIL/Stacy 7, HR/Tanvi 5, Healthcare/Keith 0 (breakdown in §2)** |
-| 4 | **Extended Review** (Independent Review Challenge) | Longer independent multi-record review | **Live, but 0 real submissions yet — 1 diagnostic-test row only** |
+| 4 | **Independent Review Challenge** (`independent-review-challenge.html`; data stored in the `extended_reviews` table) | Independent multi-record review | **Live, but 0 real submissions yet — 1 diagnostic-test row only** |
 
 **How the rungs map to the site's study registry (research.html):**
 | Rung / stage | Site study |
