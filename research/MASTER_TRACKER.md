@@ -15,8 +15,6 @@
 | **Rung 3 — Criterion validity** | Do flagged records fail in real cases? | 🟡 12 real cases collected. Stalled. |
 | **External validity** | Does it hold on real (non-constructed) records? | ⬜ Future. |
 
-**The single unproven result everything commercial depends on:** does JRS help experienced reviewers catch problems they would otherwise miss? This is the *comparison test* (experienced people with the checklist vs. without). It is built but not yet run.
-
 **How the rungs map to the site's study registry (research.html):**
 | Rung / stage | Site study |
 |---|---|
