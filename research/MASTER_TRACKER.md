@@ -54,6 +54,8 @@
 
 **Methodology:** M-01 **Ubayet Hossain, FRM** — Associate Director (Model Validation), KPMG India; 9+ years in credit/market-risk model development and validation. Contributed the reliability/validation framework (the Rung 1–2 statistics and floors). Credited in the analysis plan, both research PDFs, and the article.
 
+**Proportionality principle:** surfaced by **Saurabh Nanda, General Manager and APAC Business Leader (Align Technology)** — also detection reviewer V-AI-07. Credited (with permission) in the research paper, Article 1, and the detection protocol.
+
 **Rung 3 — Real-Case Criterion pilots (public determinations paired with documented outcomes):**
 
 | Domain pilot | Contributor | Cases | Outcomes recorded | Last activity |
