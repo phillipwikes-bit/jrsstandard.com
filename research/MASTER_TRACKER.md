@@ -17,6 +17,15 @@
 
 **The single unproven result everything commercial depends on:** does JRS help experienced reviewers catch problems they would otherwise miss? This is the *comparison test* (experienced people with the checklist vs. without). It is built but not yet run.
 
+**How the rungs map to the site's study registry (research.html):**
+| Rung / stage | Site study |
+|---|---|
+| Rung 1 Reproducibility | Study 001 (AI Reproducibility) |
+| Rung 2a Reliability | Studies 003/004 (condition performance / reviewer agreement) |
+| Rung 2b Accuracy | Study 011 (AI-Assisted Records Detection) |
+| Construct validity | Study 009 (Organizational-Psychology Readiness) |
+| Rung 3 Criterion validity | Study 010 (Criterion Validity, real-outcome) |
+
 ---
 
 ## 2. People
