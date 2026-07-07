@@ -8,7 +8,7 @@
 
 ## Abstract
 
-The Justification Review Standard (JRS) is a record-level review method that asks one question of a record: can a later reviewer reconstruct how a conclusion was reached from the record alone? A record that cannot carries what we term Decision Reconstruction Risk (DRR). This paper reports the first two rungs of a staged validation program. **Reliability (Rung 2a):** across 10 records, independent experts applying JRS reached substantial agreement (Gwet's AC1 = 0.74; 88% raw agreement, mean 3.6 experts per record), and a larger reviewer pool also reached substantial agreement (AC1 = 0.63; 83% raw agreement, mean 7.2 reviewers per record). **Accuracy (Rung 2b, preliminary):** on a 24-record set with an independently verified answer key, early reviewers separated grounded from ungrounded records; full accuracy analysis awaits completion of the reviewer sample. **Reproducibility (Rung 1)** is defined and its procedure specified; data collection is pending. Results are reported against pre-registered thresholds.
+The Justification Review Standard (JRS) is a record-level review method that asks one question of a record: can a later reviewer reconstruct how a conclusion was reached from the record alone? A record that cannot carries what we term Decision Reconstruction Risk (DRR). This paper reports the first two rungs of a staged validation program. **Reliability (Rung 2a):** across 10 records, independent experts applying JRS reached substantial agreement (Gwet's AC1 = 0.74; 88% raw agreement, mean 3.6 experts per record), and a larger reviewer pool also reached substantial agreement (AC1 = 0.63; 83% raw agreement, mean 7.2 reviewers per record). **Accuracy (Rung 2b, preliminary):** on a 24-record set with an independently verified answer key, early reviewers separated grounded from ungrounded records; full accuracy analysis awaits completion of the reviewer sample. **Reproducibility (Rung 1):** on 15 constructed records, three independent AI providers (Anthropic, OpenAI, Google) agreed on the JRS read 84% of the time (nightly automated study; agreement is a reproducibility signal, not accuracy). Results are reported against pre-registered thresholds.
 
 ## 1. Background
 
@@ -27,7 +27,7 @@ Independent raters applied the five JRS conditions to a shared set of records, r
 A separate 24-record set (12 constructed grounded, 12 constructed ungrounded) carries a held-out answer key. The key was fixed by an operational rule and verified by independent raters blind to the intended labels before any accuracy analysis. Reviewers judge each record blind to the key; accuracy is scored against the verified key.
 
 ### 3.3 Reproducibility (Rung 1)
-Multiple independent AI models apply the five conditions to the same records; cross-model agreement is measured with the same coefficients as Section 3.1. This procedure is specified here; data are not yet collected.
+Each synthetic record is judged by three independent AI models, one per provider (Anthropic, OpenAI, Google), cross-vendor. The measure is how often the three independent models return the same JRS read on the same record. This runs as an automated nightly study (Study 001). Cross-vendor (rather than same-provider) models are used because they do not share lineage, giving a stronger independence signal. Agreement here is explicitly not accuracy and not validation.
 
 ## 4. Results
 
@@ -44,8 +44,8 @@ Both coefficients fall in the "substantial" range. The reviewer coefficient (0.6
 ### 4.2 Accuracy (Rung 2b) — preliminary
 The 24-record answer key was independently reproduced by raters blind to the intended labels, 24 of 24, fixing the key against which accuracy is scored. Reviewer completion is in progress; a full accuracy estimate (with sensitivity, specificity, and confidence intervals) is deferred until the pre-registered reviewer sample completes. Early completions are consistent with above-chance separation, reported here as preliminary and not as a confirmed result.
 
-### 4.3 Reproducibility (Rung 1)
-Not yet collected. Reported in a later revision once cross-model data exist.
+### 4.3 Reproducibility (Rung 1) — collected data
+On the same 15 constructed records, three independent providers (Anthropic claude-opus-4-8, OpenAI gpt-5, Google Gemini) agreed on the JRS read **84%** of the time (nightly automated run, latest 2026-07-06; history ranges 78–87% as the record set expanded from 3 to 15). This is a reproducibility signal only: it shows independent models apply the read consistently, not that the read is correct. Chance-corrected coefficients on the model votes are a planned addition.
 
 ## 5. Discussion
 

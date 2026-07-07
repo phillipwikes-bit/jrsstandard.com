@@ -11,11 +11,13 @@ You are proving JRS works in stages ("rungs"). Each rung answers one question.
 
 | Rung | Question it answers | Live status |
 |---|---|---|
-| **Rung 1 — Reproducibility** | Do different AI models apply JRS the same way? | Design ready; not the current focus |
-| **Rung 2a — Reliability** | Do independent experts + reviewers agree when scoring records? | **Real data: 10 records scored by 8 experts + 16 reviewers (124 labels)** |
-| **Rung 2b — Accuracy / Detection** | Using the 24-record set with a hidden key, can reviewers tell grounded from ungrounded? | **2 of 9 reviewers complete; answer key independently verified 24/24** |
-| **Rung 3 — Criterion validity** | Do real cases JRS flags actually fail in real life (appeals, audits)? | **12 real cases collected (2 contributors); stalled** |
-| **Construct validity** | Do the five conditions hold together as distinct things? | **Needs an organizational psychologist — seat EMPTY** |
+| **Rung 1 — Reproducibility** (Study 001) | Do 3 independent AI models (Anthropic Claude, OpenAI GPT, Google Gemini) give the SAME JRS read on the same record? | ✅ **LIVE RESULT: 84% cross-vendor agreement across 15 synthetic records** (nightly auto-run via `api/run-study.js`, updated 2026-07-06). Agreement ≠ accuracy ≠ validation. |
+| **Rung 2a — Reliability** | Do independent human experts + reviewers agree when scoring records? | ✅ **Real data: 10 records, 8 experts + 16 reviewers. Experts AC1 = 0.74, reviewers AC1 = 0.63** |
+| **Rung 2b — Accuracy / Detection** | On the 24-record set with a hidden key, can reviewers tell grounded from ungrounded? | 🟡 **2 of 9 reviewers complete; answer key independently verified 24/24** |
+| **Rung 3 — Criterion validity** | Do real cases JRS flags actually fail in real life (appeals, audits)? | 🟡 **12 real cases collected (2 contributors); stalled** |
+| **Construct validity** | Do the five conditions hold together as distinct things? | ❌ **Needs an organizational psychologist — seat EMPTY** |
+
+> CORRECTION (this update): Rung 1 is the **3-AI-model reproducibility** study (Study 001), and it **has live data** (84%, 15 records). An earlier version of this tracker and the Article 1 draft wrongly said Rung 1 had "no data" — that was an error; the reproducibility study runs nightly and its result lives in the `findings` table, not in the human-rater tables.
 
 The one result that unlocks selling: **does JRS catch what experienced reviewers miss?** That is "Arm B" of Rung 2b, and it is BUILT but NOT YET RUN.
 
