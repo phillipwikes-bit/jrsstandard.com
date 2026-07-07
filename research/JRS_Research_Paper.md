@@ -68,13 +68,13 @@ Not every record requires the same depth of anchoring. The documentation defensi
 
 JRS evaluates a record against five conditions. Each is assessed independently. Failure of any single condition identifies a documentation-traceability gap and is a structured trigger for additional review or return to the originating drafter.
 
-### Condition I — Record Self-Sufficiency
+### Condition I — Reconstructability
 A neutral reviewer can identify the basis for the conclusion using only what the record contains, without verbal explanation or outside context. The operational test is whether the record functions with the original author unavailable to explain it. Self-sufficiency is the master condition; the remaining four specify what a self-sufficient record must contain.
 
-### Condition II — Evidentiary Anchoring
+### Condition II — Basis Identification
 Each material conclusion is supported by specific, identifiable evidence: dated records, correspondence, performance or tenancy records, screening or eligibility criteria, documented interactions, or witness accounts. General impressions and unsupported characterizations do not satisfy this condition. An evaluative term such as "unprofessional," "uncooperative," or "unsuitable" requires a documented behavioral anchor regardless of whether a person or a tool introduced the term.
 
-### Condition III — Chronological Integrity
+### Condition III — Chronology
 Relevant events, dates, and their sequence are identifiable from the record. Missing or unidentified dates are, empirically, the most common single deficiency observed in administrative files. A pattern claim (for example, "a pattern of lateness") requires at least two dated, identified instances; a sequence that cannot be reconstructed cannot be evaluated.
 
 ### Condition IV — Decision-Process Traceability
