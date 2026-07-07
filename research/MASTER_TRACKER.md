@@ -19,6 +19,18 @@ You are proving JRS works in stages ("rungs"). Each rung answers one question.
 
 > CORRECTION (this update): Rung 1 is the **3-AI-model reproducibility** study (Study 001), and it **has live data** (84%, 15 records). An earlier version of this tracker and the Article 1 draft wrongly said Rung 1 had "no data" — that was an error; the reproducibility study runs nightly and its result lives in the `findings` table, not in the human-rater tables.
 
+### Rung 2 — methodology and floors (Ubayet Hossain, M-01)
+Rung 2's methodology is the **pre-registered analysis plan** (`research/JRS_PreRegistered_Analysis_Plan.md`). Per Section 13, the **reference-panel design and the chance-corrected reliability framework are methodological contributions of Ubayet Hossain (Model Validation).** It specifies:
+- **Reference-panel design:** answer key = expert-panel majority, fixed before accuracy is scored.
+- **Chance-corrected reliability:** Gwet's AC1 primary (robust to the kappa paradox), Krippendorff's alpha + Fleiss' kappa reported alongside, all with 95% CIs.
+- **Floor 1 (reliability):** expert AC1 ≥ 0.61, lower CI bound ≥ 0.41, computed on records **pooled across batches 1–4 (~26 records)**.
+- **Floor 2 (detection/accuracy):** agreement with the held-out key on the 24-record set > 0.50 (lower CI > 0.50), target ≥ 0.70.
+
+| Rung 2 part | Data now | vs Ubayet's floor |
+|---|---|---|
+| **2a Reliability** | 10 records: experts AC1 **0.74**, reviewers **0.63** | Experts **clear Floor 1 (0.61)** on data so far; full test needs batches 3–4 labeled (~26 pooled) |
+| **2b Detection** | 24-record set, 2 of 9 reviewers complete | Floor 2 **not yet computable** — needs 4–5 complete |
+
 The one result that unlocks selling: **does JRS catch what experienced reviewers miss?** That is "Arm B" of Rung 2b, and it is BUILT but NOT YET RUN.
 
 ---
