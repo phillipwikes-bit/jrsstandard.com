@@ -1,0 +1,109 @@
+record_id,labeler_code,role,basis_identification,cold_reviewer_clarity,accountability_support,reasoning_traceability,temporal_reconstructability,determination
+19afa4f5-8abe-4373-af97-c9ad729eb422,E-12,Management,pass,pass,pass,pass,review,review_required
+19afa4f5-8abe-4373-af97-c9ad729eb422,E-13,AI Governance,pass,pass,review,pass,pass,review_required
+19afa4f5-8abe-4373-af97-c9ad729eb422,E-14,Compliance / Data Privacy,review,review,review,gap,pass,gap_identified
+19afa4f5-8abe-4373-af97-c9ad729eb422,R-mqq7jo173iob,Other,pass,pass,review,pass,review,review_required
+19afa4f5-8abe-4373-af97-c9ad729eb422,R-mqxqi8i3ukt1,Inny,pass,pass,review,pass,pass,review_required
+2850f5f4-73ad-42ed-a6c2-cb2357443026,E-12,Management,pass,pass,review,pass,review,review_required
+2850f5f4-73ad-42ed-a6c2-cb2357443026,E-13,AI Governance,pass,pass,gap,pass,pass,gap_identified
+2850f5f4-73ad-42ed-a6c2-cb2357443026,E-14,Compliance / Data Privacy,review,gap,pass,pass,pass,gap_identified
+2850f5f4-73ad-42ed-a6c2-cb2357443026,R-mqq7jo173iob,Other,pass,pass,review,pass,pass,review_required
+2850f5f4-73ad-42ed-a6c2-cb2357443026,R-mqxqi8i3ukt1,Inny,pass,pass,gap,pass,pass,gap_identified
+4039cb0f-da8a-499d-8ae7-39084d309dd6,E-12,Management,gap,pass,review,gap,gap,gap_identified
+4039cb0f-da8a-499d-8ae7-39084d309dd6,E-13,AI Governance,review,pass,gap,review,gap,gap_identified
+4039cb0f-da8a-499d-8ae7-39084d309dd6,E-14,Compliance / Data Privacy,review,review,review,gap,review,gap_identified
+4039cb0f-da8a-499d-8ae7-39084d309dd6,R-mqq7jo173iob,Other,review,review,gap,gap,gap,gap_identified
+4039cb0f-da8a-499d-8ae7-39084d309dd6,R-mqxqi8i3ukt1,Inny,review,pass,gap,review,gap,gap_identified
+50340b4c-e212-42f2-80b8-e36bbe3955a7,E-03,AI Governance,gap,review,gap,gap,gap,gap_identified
+50340b4c-e212-42f2-80b8-e36bbe3955a7,E-08,Records / Information Governance,gap,review,gap,gap,review,gap_identified
+50340b4c-e212-42f2-80b8-e36bbe3955a7,E-09,HR,gap,gap,gap,gap,gap,gap_identified
+50340b4c-e212-42f2-80b8-e36bbe3955a7,E-10,Compliance,gap,gap,gap,gap,gap,gap_identified
+50340b4c-e212-42f2-80b8-e36bbe3955a7,R-mqa2qg2g9gtz,AI Governance,pass,review,review,review,review,review_required
+50340b4c-e212-42f2-80b8-e36bbe3955a7,R-mqa4a9ewsfr8,Other,review,review,gap,review,review,gap_identified
+50340b4c-e212-42f2-80b8-e36bbe3955a7,R-mqal7tzzwpy5,Other,pass,pass,gap,pass,pass,gap_identified
+50340b4c-e212-42f2-80b8-e36bbe3955a7,R-mqal7tzzwpy5,Other,review,review,gap,review,review,gap_identified
+50340b4c-e212-42f2-80b8-e36bbe3955a7,R-mqb8ye82rcmw,AI Governance,gap,gap,review,gap,review,gap_identified
+50340b4c-e212-42f2-80b8-e36bbe3955a7,R-mqbsllcmqh6n,HR,gap,gap,gap,gap,gap,gap_identified
+50340b4c-e212-42f2-80b8-e36bbe3955a7,R-mqc70xbh96yc,Other,gap,gap,gap,gap,gap,gap_identified
+50340b4c-e212-42f2-80b8-e36bbe3955a7,R-mqcfb4p9lbji,HR,review,gap,gap,gap,gap,gap_identified
+50340b4c-e212-42f2-80b8-e36bbe3955a7,R-mqgufe1fqup8,Other,review,gap,gap,review,gap,gap_identified
+50340b4c-e212-42f2-80b8-e36bbe3955a7,R-mqifd9ia9dsq,AI Governance,gap,review,gap,gap,review,gap_identified
+50340b4c-e212-42f2-80b8-e36bbe3955a7,R-mqkvqo8kcu04,Quality Assurance,review,review,gap,review,review,gap_identified
+50340b4c-e212-42f2-80b8-e36bbe3955a7,R-mqmhtalpwuhb,Management,review,review,pass,gap,gap,gap_identified
+686028be-84fb-4fee-bf00-cf6b53d664dd,E-03,AI Governance,pass,pass,pass,pass,pass,ready
+686028be-84fb-4fee-bf00-cf6b53d664dd,E-08,Records / Information Governance,pass,pass,pass,pass,pass,ready
+686028be-84fb-4fee-bf00-cf6b53d664dd,E-09,HR,pass,pass,pass,pass,pass,ready
+686028be-84fb-4fee-bf00-cf6b53d664dd,E-10,Compliance,pass,pass,pass,pass,pass,ready
+686028be-84fb-4fee-bf00-cf6b53d664dd,R-mqa2qg2g9gtz,AI Governance,pass,pass,pass,pass,pass,ready
+686028be-84fb-4fee-bf00-cf6b53d664dd,R-mqal7tzzwpy5,Other,review,review,gap,review,review,gap_identified
+686028be-84fb-4fee-bf00-cf6b53d664dd,R-mqal7tzzwpy5,Other,pass,pass,review,pass,pass,review_required
+686028be-84fb-4fee-bf00-cf6b53d664dd,R-mqb8ye82rcmw,AI Governance,pass,pass,pass,pass,pass,ready
+686028be-84fb-4fee-bf00-cf6b53d664dd,R-mqbsllcmqh6n,HR,pass,review,pass,pass,pass,review_required
+686028be-84fb-4fee-bf00-cf6b53d664dd,R-mqc70xbh96yc,Other,pass,pass,pass,pass,pass,ready
+686028be-84fb-4fee-bf00-cf6b53d664dd,R-mqcfb4p9lbji,HR,pass,pass,pass,pass,pass,ready
+686028be-84fb-4fee-bf00-cf6b53d664dd,R-mqgufe1fqup8,Other,gap,gap,gap,review,review,gap_identified
+686028be-84fb-4fee-bf00-cf6b53d664dd,R-mqifd9ia9dsq,AI Governance,pass,pass,pass,pass,pass,ready
+686028be-84fb-4fee-bf00-cf6b53d664dd,R-mqkvqo8kcu04,Quality Assurance,pass,pass,review,pass,pass,review_required
+686028be-84fb-4fee-bf00-cf6b53d664dd,R-mqmhtalpwuhb,Management,pass,pass,pass,pass,pass,ready
+72db33df-0eaa-41c2-8d5b-b9a40a88bb1e,E-03,AI Governance,gap,gap,gap,gap,gap,gap_identified
+72db33df-0eaa-41c2-8d5b-b9a40a88bb1e,E-08,Records / Information Governance,gap,gap,gap,gap,gap,gap_identified
+72db33df-0eaa-41c2-8d5b-b9a40a88bb1e,E-09,HR,gap,gap,gap,gap,gap,gap_identified
+72db33df-0eaa-41c2-8d5b-b9a40a88bb1e,E-10,Compliance,gap,gap,gap,gap,gap,gap_identified
+72db33df-0eaa-41c2-8d5b-b9a40a88bb1e,R-mqa2qg2g9gtz,AI Governance,pass,pass,review,pass,pass,review_required
+72db33df-0eaa-41c2-8d5b-b9a40a88bb1e,R-mqal7tzzwpy5,Other,review,review,gap,review,review,gap_identified
+72db33df-0eaa-41c2-8d5b-b9a40a88bb1e,R-mqb8ye82rcmw,AI Governance,gap,gap,gap,gap,gap,gap_identified
+72db33df-0eaa-41c2-8d5b-b9a40a88bb1e,R-mqbsllcmqh6n,HR,gap,review,gap,gap,gap,gap_identified
+72db33df-0eaa-41c2-8d5b-b9a40a88bb1e,R-mqc70xbh96yc,Other,review,gap,gap,gap,gap,gap_identified
+72db33df-0eaa-41c2-8d5b-b9a40a88bb1e,R-mqcfb4p9lbji,HR,gap,gap,gap,gap,gap,gap_identified
+72db33df-0eaa-41c2-8d5b-b9a40a88bb1e,R-mqgufe1fqup8,Other,pass,review,gap,review,gap,gap_identified
+72db33df-0eaa-41c2-8d5b-b9a40a88bb1e,R-mqifd9ia9dsq,AI Governance,gap,gap,gap,gap,gap,gap_identified
+72db33df-0eaa-41c2-8d5b-b9a40a88bb1e,R-mqkvqo8kcu04,Quality Assurance,review,review,gap,review,review,gap_identified
+72db33df-0eaa-41c2-8d5b-b9a40a88bb1e,R-mqmhtalpwuhb,Management,pass,gap,pass,gap,gap,gap_identified
+844cbe50-e7eb-43fd-8f0f-64b58d3ff9b7,E-03,AI Governance,gap,review,gap,gap,gap,gap_identified
+844cbe50-e7eb-43fd-8f0f-64b58d3ff9b7,E-08,Records / Information Governance,review,review,gap,gap,gap,gap_identified
+844cbe50-e7eb-43fd-8f0f-64b58d3ff9b7,E-09,HR,review,gap,gap,gap,review,gap_identified
+844cbe50-e7eb-43fd-8f0f-64b58d3ff9b7,E-10,Compliance,gap,gap,gap,gap,gap,gap_identified
+844cbe50-e7eb-43fd-8f0f-64b58d3ff9b7,R-mqa2qg2g9gtz,AI Governance,pass,review,review,review,pass,review_required
+844cbe50-e7eb-43fd-8f0f-64b58d3ff9b7,R-mqa4a9ewsfr8,Other,pass,review,pass,gap,gap,gap_identified
+844cbe50-e7eb-43fd-8f0f-64b58d3ff9b7,R-mqal7tzzwpy5,Other,review,review,gap,review,review,gap_identified
+844cbe50-e7eb-43fd-8f0f-64b58d3ff9b7,R-mqal7tzzwpy5,Other,pass,pass,gap,pass,pass,gap_identified
+844cbe50-e7eb-43fd-8f0f-64b58d3ff9b7,R-mqb8ye82rcmw,AI Governance,gap,gap,gap,gap,gap,gap_identified
+844cbe50-e7eb-43fd-8f0f-64b58d3ff9b7,R-mqbsllcmqh6n,HR,review,gap,gap,gap,gap,gap_identified
+844cbe50-e7eb-43fd-8f0f-64b58d3ff9b7,R-mqc70xbh96yc,Other,gap,gap,gap,gap,gap,gap_identified
+844cbe50-e7eb-43fd-8f0f-64b58d3ff9b7,R-mqcfb4p9lbji,HR,gap,gap,gap,gap,gap,gap_identified
+844cbe50-e7eb-43fd-8f0f-64b58d3ff9b7,R-mqcfb4p9lbji,HR,review,gap,review,review,gap,gap_identified
+844cbe50-e7eb-43fd-8f0f-64b58d3ff9b7,R-mqgufe1fqup8,Other,pass,review,gap,pass,gap,gap_identified
+844cbe50-e7eb-43fd-8f0f-64b58d3ff9b7,R-mqgufe1fqup8,Other,pass,review,gap,review,gap,gap_identified
+844cbe50-e7eb-43fd-8f0f-64b58d3ff9b7,R-mqgufe1fqup8,Other,pass,pass,pass,review,gap,gap_identified
+844cbe50-e7eb-43fd-8f0f-64b58d3ff9b7,R-mqifd9ia9dsq,AI Governance,gap,review,review,gap,gap,gap_identified
+844cbe50-e7eb-43fd-8f0f-64b58d3ff9b7,R-mqifd9ia9dsq,AI Governance,gap,review,review,gap,gap,gap_identified
+844cbe50-e7eb-43fd-8f0f-64b58d3ff9b7,R-mqkvqo8kcu04,Quality Assurance,gap,review,gap,gap,gap,gap_identified
+844cbe50-e7eb-43fd-8f0f-64b58d3ff9b7,R-mqmhtalpwuhb,Management,pass,pass,review,review,gap,gap_identified
+abc83ab7-54ef-400e-b2de-95d53265c019,E-03,AI Governance,pass,pass,review,pass,pass,review_required
+abc83ab7-54ef-400e-b2de-95d53265c019,E-08,Records / Information Governance,pass,pass,pass,pass,pass,ready
+abc83ab7-54ef-400e-b2de-95d53265c019,E-09,HR,pass,pass,pass,pass,pass,ready
+abc83ab7-54ef-400e-b2de-95d53265c019,E-10,Compliance,review,pass,pass,review,pass,review_required
+abc83ab7-54ef-400e-b2de-95d53265c019,R-mqa2qg2g9gtz,AI Governance,pass,pass,review,review,review,review_required
+abc83ab7-54ef-400e-b2de-95d53265c019,R-mqa4a9ewsfr8,Other,pass,pass,gap,pass,gap,gap_identified
+abc83ab7-54ef-400e-b2de-95d53265c019,R-mqal7tzzwpy5,Other,pass,pass,gap,pass,pass,gap_identified
+abc83ab7-54ef-400e-b2de-95d53265c019,R-mqal7tzzwpy5,Other,review,review,gap,review,review,gap_identified
+abc83ab7-54ef-400e-b2de-95d53265c019,R-mqb8ye82rcmw,AI Governance,pass,pass,pass,pass,pass,ready
+abc83ab7-54ef-400e-b2de-95d53265c019,R-mqbsllcmqh6n,HR,pass,pass,gap,review,review,gap_identified
+abc83ab7-54ef-400e-b2de-95d53265c019,R-mqc70xbh96yc,Other,pass,pass,review,pass,pass,review_required
+abc83ab7-54ef-400e-b2de-95d53265c019,R-mqcfb4p9lbji,HR,review,review,review,review,gap,gap_identified
+abc83ab7-54ef-400e-b2de-95d53265c019,R-mqcfb4p9lbji,HR,pass,pass,review,pass,pass,review_required
+abc83ab7-54ef-400e-b2de-95d53265c019,R-mqgufe1fqup8,Other,pass,pass,gap,pass,pass,gap_identified
+abc83ab7-54ef-400e-b2de-95d53265c019,R-mqifd9ia9dsq,AI Governance,pass,pass,review,pass,pass,review_required
+abc83ab7-54ef-400e-b2de-95d53265c019,R-mqkvqo8kcu04,Quality Assurance,pass,pass,review,pass,pass,review_required
+abc83ab7-54ef-400e-b2de-95d53265c019,R-mqmhtalpwuhb,Management,pass,pass,pass,pass,pass,ready
+bcee7df1-e5f1-4b4c-817f-8f469d3fcbc8,E-12,Management,pass,gap,gap,gap,gap,gap_identified
+bcee7df1-e5f1-4b4c-817f-8f469d3fcbc8,E-13,AI Governance,gap,gap,gap,gap,gap,gap_identified
+bcee7df1-e5f1-4b4c-817f-8f469d3fcbc8,E-14,Compliance / Data Privacy,review,gap,review,review,review,gap_identified
+bcee7df1-e5f1-4b4c-817f-8f469d3fcbc8,R-mqq7jo173iob,Other,gap,gap,gap,gap,gap,gap_identified
+bcee7df1-e5f1-4b4c-817f-8f469d3fcbc8,R-mqxqi8i3ukt1,Inny,gap,pass,gap,gap,gap,gap_identified
+e726a61c-0776-4ebb-94c5-6e274a433abe,E-11,AI Governance,review,gap,gap,gap,gap,gap_identified
+e726a61c-0776-4ebb-94c5-6e274a433abe,E-12,Management,pass,review,pass,gap,review,gap_identified
+e726a61c-0776-4ebb-94c5-6e274a433abe,E-13,AI Governance,pass,gap,review,review,gap,gap_identified
+e726a61c-0776-4ebb-94c5-6e274a433abe,E-14,Compliance / Data Privacy,gap,gap,pass,review,pass,gap_identified
+e726a61c-0776-4ebb-94c5-6e274a433abe,R-mqq7jo173iob,Other,gap,gap,gap,gap,gap,gap_identified
+e726a61c-0776-4ebb-94c5-6e274a433abe,R-mqxqi8i3ukt1,Inny,review,pass,gap,gap,gap,gap_identified
