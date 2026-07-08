@@ -65,9 +65,9 @@ var U='https://pjzxkeviouofdseagvpf.supabase.co', K='sb_publishable_mkdtg6-NgJ44
 var COND=['basis_identification','reasoning_traceability','cold_reviewer_clarity','accountability_support','temporal_reconstructability'];
 
 // ---- Study-owner config. PLACEHOLDERS; see RUNG2-REFERENCE-PANEL-METHODOLOGY.md. Do not treat as final. ----
-// TODO(study-owner): minimum distinct experts before ANY distribution statistic is computed. If unset/invalid, the gate fails closed and nothing computes.
+// Minimum distinct experts before any distribution statistic is computed; if unset/invalid, the gate fails closed and nothing computes.
 var MIN_EXPERTS = 3;
-// TODO(study-owner): chance-corrected agreement (Fleiss kappa) at/above which the panel may be labelled a "benchmark"; below it (or if unset) the label stays the more conservative "reference panel". The label is governed by the chance-corrected statistic, NEVER by raw percent agreement.
+// Chance-corrected agreement (Fleiss kappa) at/above which the panel may be labeled a "benchmark"; below it (or if unset) the label stays the more conservative "reference panel". The label is governed by the chance-corrected statistic, never by raw percent agreement.
 var BENCHMARK_KAPPA_THRESHOLD = 0.6;
 function gateUnset(v){ return !(typeof v==='number' && isFinite(v) && v>0); }
 var MIN_EXPERTS_EFF = gateUnset(MIN_EXPERTS) ? Infinity : MIN_EXPERTS;   // fail closed
