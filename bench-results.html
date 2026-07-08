@@ -220,9 +220,9 @@ Promise.all([
   if(!expertStatsAllowed){ gn.style.display='block';
     gn.innerHTML='Distribution statistics are withheld. They require at least '+(MIN_EXPERTS_EFF===Infinity?'a configured minimum (currently unset: gate fails closed)':MIN_EXPERTS+' independent experts')+'; the cohort currently has '+expertCount+'. Until the minimum is met, no expert-agreement, range, or accuracy figure is computed or shown. Thresholds are placeholders pending the study owner.';
   } else if(!benchmarkOK){ gn.style.display='block';
-    gn.innerHTML='Labelled <b>reference panel</b>: chance-corrected expert agreement (kappa '+((kap&&kap.kappa!=null)?kap.kappa.toFixed(2):'n/a')+', n='+(kap?kap.n:0)+') is below the configured benchmark threshold ('+(gateUnset(BENCHMARK_KAPPA_THRESHOLD)?'unset':BENCHMARK_KAPPA_THRESHOLD.toFixed(2))+'). Raw percent agreement is shown for context but does not govern the label. These figures characterise alignment with informed professional judgment, not correctness against a single truth.';
+    gn.innerHTML='Labeled <b>reference panel</b>: chance-corrected expert agreement (kappa '+((kap&&kap.kappa!=null)?kap.kappa.toFixed(2):'n/a')+', n='+(kap?kap.n:0)+') is below the configured benchmark threshold ('+(gateUnset(BENCHMARK_KAPPA_THRESHOLD)?'unset':BENCHMARK_KAPPA_THRESHOLD.toFixed(2))+'). Raw percent agreement is shown for context but does not govern the label. These figures characterize alignment with informed professional judgment, not correctness against a single truth.';
   } else { gn.style.display='none'; }
-}).catch(function(){ document.getElementById('rows').innerHTML='<tr><td colspan="8">Could not load. Run supabase-benchmark-setup.sql first.</td></tr>'; });
+}).catch(function(){ document.getElementById('rows').innerHTML='<tr><td colspan="8">Could not load. Please reload the page, and if this persists, contact info@jrsstandard.com.</td></tr>'; });
 
 window.toggleBk=function(){
   var el=document.getElementById('bk'), btn=document.getElementById('bkbtn');

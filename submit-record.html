@@ -60,7 +60,17 @@ function submitRec(e){
   st.textContent='Submitting…'; st.style.color='var(--muted-soft)';
   fetch(U+'/rest/v1/bench_records',{method:'POST',headers:{'apikey':K,'Authorization':'Bearer '+K,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify({text:t,record_type:document.getElementById('rtype').value||null,ai_function:document.getElementById('rfunc').value||null,kind:'real',active:false})})
    .then(function(r){ if(!r.ok)throw 0; document.getElementById('f').reset(); st.textContent='Received. Held privately for de-identification review.'; st.style.color='var(--ready)'; })
-   .catch(function(){ st.textContent='Could not submit. Email info@jrsstandard.com.'; st.style.color='var(--gap)'; });
+   .catch(function(){
+     try {
+       var sessionObj={type:'record-submission',text:t,record_type:document.getElementById('rtype').value||null,ai_function:document.getElementById('rfunc').value||null,source:'submit-record',timestamp:new Date().toISOString()};
+       var blob=new Blob([JSON.stringify(sessionObj,null,2)],{type:'application/json'});
+       var dlUrl=URL.createObjectURL(blob); var dlAnchor=document.createElement('a');
+       dlAnchor.href=dlUrl; dlAnchor.download='jrs-record-'+Date.now()+'.json';
+       document.body.appendChild(dlAnchor); dlAnchor.click(); document.body.removeChild(dlAnchor); URL.revokeObjectURL(dlUrl);
+       st.textContent='Server unavailable. Your record was downloaded for manual submission to info@jrsstandard.com.';
+     } catch(e){ st.textContent='Server unavailable. Contact info@jrsstandard.com to submit your record.'; }
+     st.style.color='var(--accent)';
+   });
   return false;
 }
 </script>

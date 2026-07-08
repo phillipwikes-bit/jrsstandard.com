@@ -177,9 +177,9 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
   var COND=['basis_identification','reasoning_traceability','cold_reviewer_clarity','accountability_support','temporal_reconstructability'];
 
   // ---- Pre-registered thresholds (see the pre-registered analysis plan): 3 experts per record; 30 screened cases. ----
-  // TODO(study-owner): minimum distinct experts before ANY distribution statistic is computed. Unset/invalid => gate fails closed (nothing computes).
+  // Minimum distinct experts before any distribution statistic is computed; unset/invalid => gate fails closed (nothing computes).
   var MIN_EXPERTS = 3;
-  // TODO(study-owner): chance-corrected agreement (Fleiss kappa) at/above which the panel may be labelled a "benchmark"; below it (or if unset) the label stays "reference panel". The label is governed by the chance-corrected statistic, NEVER by raw percent agreement.
+  // Chance-corrected agreement (Fleiss kappa) at/above which the panel may be labeled a "benchmark"; below it (or if unset) the label stays "reference panel". The label is governed by the chance-corrected statistic, never by raw percent agreement.
   var BENCHMARK_KAPPA_THRESHOLD = 0.6;
   function gateUnset(v){ return !(typeof v==='number' && isFinite(v) && v>0); }
   var MIN_EXPERTS_EFF = gateUnset(MIN_EXPERTS) ? Infinity : MIN_EXPERTS;   // fail closed
@@ -332,7 +332,7 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
       }
       var rt=demo?' <span class="bm-ck">(demo)</span>':'';
       var distCell=demo?'<span class="bm-ck">(demo)</span>':(nExp<MIN_EXPERTS_EFF?'<span class="bm-ck">insufficient (n='+nExp+')</span>':rangeSet.map(function(d){return d.split('_')[0]+'×'+counts[d];}).join(' &middot; ')+' <span class="bm-ck">n='+nExp+'</span>');
-      var engCell=demo?'<span class="bm-ck">demo</span>':(!recSufficient?'<span class="bm-ck">insufficient</span>':(!a?'<span class="tag">-</span>':(inRange?'<span class="ok">in range</span>':'<span style="color:var(--review)">out of range &middot; review</span>')));
+      var engCell=demo?'<span class="bm-ck">demo</span>':(!recSufficient?'<span class="bm-ck">insufficient</span>':(!a?'<span class="tag">-</span>':(inRange?'<span class="ok">in range</span>':'<span style="color:var(--review-text)">out of range &middot; review</span>')));
       var expAgmtCell=(nExp>=2?(pw!=null?Math.round(pw*100)+'% <span class="bm-ck">n='+nExp+'</span>':'-'):'<span class="bm-ck">need 2+E</span>');
       rowsH+='<tr><td>'+esc(r.text.slice(0,60))+(r.text.length>60?'…':'')+rt+'</td>'
         +'<td>'+reviewers.length+(nExp?(' <span class="bm-ck">+'+nExp+'E</span>'):'')+'</td>'
@@ -373,11 +373,11 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
     // ---- (d) per-background breakdown (always rendered when computable; pooling without it is a defect) ----
     var bk=document.getElementById('bm-bk');
     if(!expertStatsAllowed){ bk.innerHTML=''; }
-    else if(!anyRoleTagged){ bk.innerHTML='<div class="note" style="border-left-color:var(--review)">Systematic-by-background cannot be computed: no expert carries a background tag. Rendered as missing, never as a pass.</div>'; }
+    else if(!anyRoleTagged){ bk.innerHTML='<div class="note" style="border-left-color:var(--review-text)">Systematic-by-background cannot be computed: no expert carries a background tag. Rendered as missing, never as a pass.</div>'; }
     else {
       var br='', ks=Object.keys(byRole).sort();
       ks.forEach(function(k){var g=byRole[k],nE=Object.keys(g.codes).length;var rate=(nE>=MIN_EXPERTS_EFF&&g.n)?Math.round(g.agree/g.n*100)+'%':'insufficient (n='+nE+'E)';br+='<tr><td>'+esc(k)+'</td><td>'+nE+'</td><td>'+g.n+'</td><td>'+rate+'</td></tr>';});
-      var caveat=untaggedN?'<div class="note" style="border-left-color:var(--review)">Provenance caveat: '+untaggedN+' expert'+(untaggedN===1?'':'s')+' carr'+(untaggedN===1?'ies':'y')+' no background tag and '+(untaggedN===1?'is':'are')+' pooled into the (a)/(b) aggregates above, isolated below as &ldquo;(untagged)&rdquo;.</div>':'';
+      var caveat=untaggedN?'<div class="note" style="border-left-color:var(--review-text)">Provenance caveat: '+untaggedN+' expert'+(untaggedN===1?'':'s')+' carr'+(untaggedN===1?'ies':'y')+' no background tag and '+(untaggedN===1?'is':'are')+' pooled into the (a)/(b) aggregates above, isolated below as &ldquo;(untagged)&rdquo;.</div>':'';
       bk.innerHTML=caveat+'<div style="overflow:auto"><table class="bm-tbl"><thead><tr><th>Background</th><th>Experts</th><th>Expert·record pairs</th><th>Engine agreement</th></tr></thead><tbody>'+br+'</tbody></table></div>';
     }
 

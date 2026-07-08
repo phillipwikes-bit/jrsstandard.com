@@ -68,7 +68,7 @@ input,select,textarea{width:100%;background:var(--surface2);border:1px solid var
   </div>
 
   <div id="app" style="display:none">
-    <div id="rec-indicator" style="display:none;border:1px solid var(--ready-text);background:rgba(93,191,130,.08);color:var(--ready-text);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;padding:8px 12px;margin-bottom:14px">&#9679; Recording ON &middot; responses are being saved to the datastore</div>
+    <div id="rec-indicator" style="display:none;border:1px solid var(--ready);background:rgba(93,191,130,.08);color:var(--ready);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;padding:8px 12px;margin-bottom:14px">&#9679; Recording ON &middot; responses are being saved to the datastore</div>
     <div class="eyebrow" id="who"></div>
     <h1 style="margin-top:4px">Records</h1>
     <p class="sub" id="progress"></p>
@@ -125,8 +125,8 @@ function start(){
 }
 function blockSession(){
   document.getElementById('gate').innerHTML='<h1>Recording is OFF</h1>'
-    +'<div style="border:1px solid var(--stop-text);background:rgba(139,32,32,.12);color:var(--stop-text);font-family:\'JetBrains Mono\',monospace;font-size:12px;letter-spacing:.04em;padding:14px 16px;margin-top:12px">&#9679; Recording is OFF: this session cannot proceed.</div>'
-    +'<p class="sub" style="margin-top:12px">The datastore could not be reached or is not accepting writes, so your responses would not be saved. To protect the integrity of the study, the session will not start and no data is collected. Run <b>supabase-ALL.sql</b> to provision the benchmark tables, confirm the database is online, then reload this page and try again. If this persists, contact info@jrsstandard.com.</p>';
+    +'<div style="border:1px solid var(--gap);background:rgba(139,32,32,.12);color:var(--gap);font-family:\'JetBrains Mono\',monospace;font-size:12px;letter-spacing:.04em;padding:14px 16px;margin-top:12px">&#9679; Recording is OFF: this session cannot proceed.</div>'
+    +'<p class="sub" style="margin-top:12px">The datastore could not be reached or is not accepting writes, so your responses would not be saved. To protect the integrity of the study, the session will not start and no data is collected. Please reload the page and try again. If this persists, contact info@jrsstandard.com.</p>';
 }
 function proceed(){
   // Recording confirmed live. Expert credentials are pre-registered by the program,
@@ -142,7 +142,7 @@ function load(){
   fetch(U+'/rest/v1/bench_records?select=id,text,record_type,ai_function&active=eq.true&review_open=eq.true&order=created_at.asc',{headers:HDR})
    .then(function(r){return r.json();})
    .then(function(rows){ records=rows||[]; render(); })
-   .catch(function(){ document.getElementById('reclist').innerHTML='<div class="note">Could not load records. Run supabase-benchmark-setup.sql and add records in the admin page.</div>'; });
+   .catch(function(){ document.getElementById('reclist').innerHTML='<div class="note">Could not load records. Please reload the page, and if this persists, contact info@jrsstandard.com.</div>'; });
 }
 function render(){
   var d=Object.keys(doneSet).length;
