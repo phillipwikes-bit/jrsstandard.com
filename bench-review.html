@@ -80,11 +80,11 @@ input,select,textarea{width:100%;background:var(--surface2);border:1px solid var
 <script>
 var U='https://pjzxkeviouofdseagvpf.supabase.co', K='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e', HDR={'apikey':K,'Authorization':'Bearer '+K};
 var COND=[
- {k:'basis_identification',q:'Basis Identification — does the record identify the basis for its conclusions?'},
- {k:'reasoning_traceability',q:'Reasoning Traceability — can a later reviewer trace reasoning from evidence to conclusion?'},
- {k:'cold_reviewer_clarity',q:'Cold-Reviewer Clarity — would a reviewer with no prior knowledge understand it from the record alone?'},
- {k:'accountability_support',q:'Accountability Support — are the decision-makers and reviewers identifiable?'},
- {k:'temporal_reconstructability',q:'Temporal Reconstructability — does it hold up read cold years later (dates, sequence, sources)?'}
+ {k:'basis_identification',q:'Basis Identification: does the record identify the basis for its conclusions?'},
+ {k:'reasoning_traceability',q:'Reasoning Traceability: can a later reviewer trace reasoning from evidence to conclusion?'},
+ {k:'cold_reviewer_clarity',q:'Cold-Reviewer Clarity: would a reviewer with no prior knowledge understand it from the record alone?'},
+ {k:'accountability_support',q:'Accountability Support: are the decision-makers and reviewers identifiable?'},
+ {k:'temporal_reconstructability',q:'Temporal Reconstructability: does it hold up read cold years later (dates, sequence, sources)?'}
 ];
 var code,role,mode,records=[],doneSet={};
 // Pre-fill the code from the invite link (e.g. ?code=E-11) so experts do not
@@ -125,7 +125,7 @@ function start(){
 }
 function blockSession(){
   document.getElementById('gate').innerHTML='<h1>Recording is OFF</h1>'
-    +'<div style="border:1px solid var(--stop-text);background:rgba(139,32,32,.12);color:var(--stop-text);font-family:\'JetBrains Mono\',monospace;font-size:12px;letter-spacing:.04em;padding:14px 16px;margin-top:12px">&#9679; Recording is OFF &mdash; this session cannot proceed.</div>'
+    +'<div style="border:1px solid var(--stop-text);background:rgba(139,32,32,.12);color:var(--stop-text);font-family:\'JetBrains Mono\',monospace;font-size:12px;letter-spacing:.04em;padding:14px 16px;margin-top:12px">&#9679; Recording is OFF: this session cannot proceed.</div>'
     +'<p class="sub" style="margin-top:12px">The datastore could not be reached or is not accepting writes, so your responses would not be saved. To protect the integrity of the study, the session will not start and no data is collected. Run <b>supabase-ALL.sql</b> to provision the benchmark tables, confirm the database is online, then reload this page and try again. If this persists, contact info@jrsstandard.com.</p>';
 }
 function proceed(){
@@ -160,7 +160,7 @@ window.openRec=function(i){
       html+='<div class="cond"><div class="cond-q">'+esc(c.q)+'</div><div class="opts">'
        +['pass','review','gap'].map(function(v){return '<span class="opt" id="o-'+ci+'-'+v+'" role="button" tabindex="0" onclick="pick('+ci+',\''+v+'\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();pick('+ci+',\''+v+'\');}">'+v+'</span>';}).join('')+'</div></div>';
     });
-    html+='<div class="det" id="det">Determination: —</div>';
+    html+='<div class="det" id="det">Determination: -</div>';
   } else {
     html+='<div class="cond"><div class="cond-q">Your overall verdict (normal review)</div><div class="opts">'
      +[['ready','Adequate'],['review_required','Needs work'],['gap_identified','Inadequate']].map(function(p){return '<span class="opt" id="n-'+p[0]+'" role="button" tabindex="0" onclick="npick(\''+p[0]+'\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();npick(\''+p[0]+'\');}">'+p[1]+'</span>';}).join('')+'</div></div>';

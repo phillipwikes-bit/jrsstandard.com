@@ -34,7 +34,7 @@ input,select,textarea{width:100%;background:var(--surface2);border:1px solid var
 <body>
 <header class="hd"><div class="hd-in"><a href="/" class="wm">JRS<span style="font-size:9px;vertical-align:super">&#8482;</span></a><div class="meta">Benchmark Admin</div></div></header>
 <main><div class="wrap">
-  <h1>Benchmark Workspace — Admin</h1>
+  <h1>Benchmark Workspace: Admin</h1>
   <p class="sub">Manage the record bank, set the consensus answer key, and run AI scoring. All actions require your admin token (your RUN_TOKEN, or a BENCH_ADMIN_TOKEN if you set one).</p>
   <label class="f">Admin token</label>
   <input id="token" type="password" placeholder="RUN_TOKEN">
@@ -46,7 +46,7 @@ input,select,textarea{width:100%;background:var(--surface2);border:1px solid var
     <div class="row">
       <div><label class="f">Record type</label><input id="rtype" placeholder="e.g. termination"></div>
       <div><label class="f">AI function</label>
-        <select id="rfunc"><option value="">—</option><option>summarization</option><option>recommendation</option><option>analysis</option><option>narrative</option></select></div>
+        <select id="rfunc"><option value="">-</option><option>summarization</option><option>recommendation</option><option>analysis</option><option>narrative</option></select></div>
       <div><label class="f">Kind</label><select id="rkind"><option>constructed</option><option>real</option></select></div>
     </div>
     <button class="btn" onclick="addRec()">Add record</button><span class="status" id="addstatus"></span>

@@ -84,7 +84,7 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
     <div id="rung1-decomp"><div class="empty">Loading&hellip;</div></div>
   </div>
   <div class="bm">
-    <div class="bm-h">&#9654; Reference Panel &middot; Rung 2 accuracy &amp; agreement (computed live) <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--accent-dim);border:1px solid var(--rule);padding:2px 7px;margin-left:6px" id="bm-cohort">cohort &mdash;</span></div>
+    <div class="bm-h">&#9654; Reference Panel &middot; Rung 2 accuracy &amp; agreement (computed live) <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--accent-dim);border:1px solid var(--rule);padding:2px 7px;margin-left:6px" id="bm-cohort">cohort -</span></div>
     <p class="sub" style="font-size:12.5px;margin-bottom:10px">For judgment-heavy records there is often no single correct score, only a distribution of defensible expert judgments. The engine (rung 2) is evaluated by whether it behaves like a competent member of that distribution, not by matching one answer key; <b>agreement among the experts is itself a primary metric</b>, reported with its N. Reviewer agreement (reliability, not a rung) measures how often independent reviewers reach the same verdict. The panel is called a <b>benchmark</b> only when expert-to-expert agreement clears the configured threshold, otherwise a <b>reference panel</b> (alignment with informed professional judgment, not correctness against a single truth). Rows marked <b>(demo)</b> are illustrative placeholders, excluded from the figures. Rung 3 (validation: whether a JRS verdict predicts real-world outcomes) is separate; real cases are accruing, with no validity figure reported until the screened-case minimum is met.</p>
     <div class="bm-cards" id="bm-cards"></div>
     <div class="bm-h" style="font-size:13px;margin-top:14px">Reference-distribution diagnostics (each gated, with N)</div>
@@ -203,14 +203,14 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
     el.innerHTML=html;
   }
 
-  function tag(d){return d?'<span class="tag t-'+d+'">'+d.replace('_',' ')+'</span>':'<span class="tag">&mdash;</span>';}
+  function tag(d){return d?'<span class="tag t-'+d+'">'+d.replace('_',' ')+'</span>':'<span class="tag">-</span>';}
   function esc(t){return (t==null?'':String(t)).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
   function det(c){var v=COND.map(function(k){return c[k];});if(v.indexOf('gap')>-1)return'gap_identified';if(v.indexOf('review')>-1)return'review_required';return'ready';}
   function majority(a){var c={};a.forEach(function(x){c[x]=(c[x]||0)+1;});var b=null,n=0;Object.keys(c).forEach(function(k){if(c[k]>n){n=c[k];b=k;}});return{value:b,share:a.length?n/a.length:0,n:a.length};}
   function isExpert(code){return String(code||'').trim().toLowerCase().charAt(0)==='e';}
   function isDemo(r){return String((r&&r.record_type)||'').indexOf('demo')>-1;}
-  function pct(a,b){return b?Math.round(a/b*100)+'%':'&mdash;';}
-  function p1(x){return (x==null)?'&mdash;':(Math.round(x*100)+'%');}
+  function pct(a,b){return b?Math.round(a/b*100)+'%':'-';}
+  function p1(x){return (x==null)?'-':(Math.round(x*100)+'%');}
   function card(v,k){return '<div class="bm-card"><div class="bm-cv">'+v+'</div><div class="bm-ck">'+k+'</div></div>';}
   // dedupe expert labels to one (latest) per code, so a code cannot inflate its own weight in the distribution
   function dedupeByCode(labels){var by={};labels.forEach(function(l){by[String(l.labeler_code||'').toLowerCase()]=l;});return Object.keys(by).map(function(k){return by[k];});}
@@ -259,7 +259,7 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
     var note='Lowest record: '+esc(loId)+' at '+p1(lo)+'. Sample size: '+nRec+' records, '+detail
       +', '+nNights+' night(s) recorded. Per-condition decomposition is not available (one overall answer per record) and is not synthesized.';
     host.innerHTML=
-      '<div class="bm-cards">'+card(p1(latest.overall_agreement),overallLabel)+card(nRec,'Records (N)')+card(k,unitLabel)+card(p1(lo)+'&ndash;'+p1(hi),'Per-record range')+card(nNights,'Nights on record')+'</div>'
+      '<div class="bm-cards">'+card(p1(latest.overall_agreement),overallLabel)+card(nRec,'Records (N)')+card(k,unitLabel)+card(p1(lo)+'-'+p1(hi),'Per-record range')+card(nNights,'Nights on record')+'</div>'
       +'<div style="overflow:auto"><table class="bm-tbl"><thead><tr><th>Record</th><th>'+colLabel+'</th></tr></thead><tbody>'+rows+'</tbody></table></div>'
       +'<div class="empty">'+note+'</div>';
     window.__jrsReproSample={mode:(mode||'self_consistency'),providers:providers,models:models,overall_agreement:latest.overall_agreement, records:nRec, samples_each:k, nights_recorded:nNights, per_record:per, source:'findings_history (latest run)'};
@@ -292,7 +292,7 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
 
     if(!recs.length){
       document.getElementById('bm-rows').innerHTML='<tr><td colspan="8">No benchmark records yet. Add records in bench-admin.html (or run the SQL to load the demo set), then have reviewers score them.</td></tr>';
-      document.getElementById('bm-cards').innerHTML=card('&mdash;','Panel status')+card('insufficient','Expert agmt')+card('0','Real records (N)');
+      document.getElementById('bm-cards').innerHTML=card('-','Panel status')+card('insufficient','Expert agmt')+card('0','Real records (N)');
       renderRungStatus(hist.length>0, false, false, rung3N);
       return;
     }
@@ -332,8 +332,8 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
       }
       var rt=demo?' <span class="bm-ck">(demo)</span>':'';
       var distCell=demo?'<span class="bm-ck">(demo)</span>':(nExp<MIN_EXPERTS_EFF?'<span class="bm-ck">insufficient (n='+nExp+')</span>':rangeSet.map(function(d){return d.split('_')[0]+'×'+counts[d];}).join(' &middot; ')+' <span class="bm-ck">n='+nExp+'</span>');
-      var engCell=demo?'<span class="bm-ck">demo</span>':(!recSufficient?'<span class="bm-ck">insufficient</span>':(!a?'<span class="tag">&mdash;</span>':(inRange?'<span class="ok">in range</span>':'<span style="color:var(--review)">out of range &middot; review</span>')));
-      var expAgmtCell=(nExp>=2?(pw!=null?Math.round(pw*100)+'% <span class="bm-ck">n='+nExp+'</span>':'&mdash;'):'<span class="bm-ck">need 2+E</span>');
+      var engCell=demo?'<span class="bm-ck">demo</span>':(!recSufficient?'<span class="bm-ck">insufficient</span>':(!a?'<span class="tag">-</span>':(inRange?'<span class="ok">in range</span>':'<span style="color:var(--review)">out of range &middot; review</span>')));
+      var expAgmtCell=(nExp>=2?(pw!=null?Math.round(pw*100)+'% <span class="bm-ck">n='+nExp+'</span>':'-'):'<span class="bm-ck">need 2+E</span>');
       rowsH+='<tr><td>'+esc(r.text.slice(0,60))+(r.text.length>60?'…':'')+rt+'</td>'
         +'<td>'+reviewers.length+(nExp?(' <span class="bm-ck">+'+nExp+'E</span>'):'')+'</td>'
         +'<td>'+tag(maj.value)+'</td>'
@@ -355,7 +355,7 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
     document.getElementById('bm-cards').innerHTML=
       card('<span style="font-size:13px;border:1px solid var(--accent-dim);color:var(--accent);padding:2px 7px">'+panelLabel+'</span>','Panel status (cohort '+COHORT+')')
       +card(expertCount+' / '+(MIN_EXPERTS_EFF===Infinity?'unset':MIN_EXPERTS),'Experts (have / min)')
-      +card(expertStatsAllowed?(expPct!=null?p1(expPct):'&mdash;'):'insufficient','Expert agmt %, n='+(expertStatsAllowed?pwN:0))
+      +card(expertStatsAllowed?(expPct!=null?p1(expPct):'-'):'insufficient','Expert agmt %, n='+(expertStatsAllowed?pwN:0))
       +card(expertStatsAllowed&&kap&&kap.kappa!=null?kap.kappa.toFixed(2):'insufficient','Expert agmt (chance-corr), n='+(kap?kap.n:0))
       +card(pct(revAgrSum,revAgrN),'Reviewer agreement (avg, n='+revAgrN+')')
       +card(realRecs.length,'Real records (N)');
