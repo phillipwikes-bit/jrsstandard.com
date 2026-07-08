@@ -135,6 +135,28 @@ Articles 2–4 (FOIL pilot; HR pilot; capstone with construct validity) — plan
 
 ---
 
+## 6. Collaborations & co-author assignments (private — recruitment planning)
+
+**Standing rule: one article ↔ one co-author. Never offer the same article to two people.**
+
+| Deliverable | Topic / audience | Proposed collaborator | Verified basis | Status |
+|---|---|---|---|---|
+| LinkedIn Article 2 — "When AI Writes the Record" | HR / compliance defensibility | **Sanya Dalal (V-AI-19)** | Ethics & compliance; LLB, MBL, CFE; 8+ yrs internal investigations, GE Vernova | **Recommended**; outreach drafted, NOT yet sent (send after she begins the 24-record review; byline is contingent on real editorial contribution) |
+| LinkedIn Article 4 — "The Evidentiary Deficit" | Legal / governance | **Gabriela Bar (V-AI-16)** | Attorney, PhD; EU AI-ethics advisor | **Offered** (co-credit) per your instruction; persuasive reply drafted, awaiting her response |
+
+**Real-life HR external-validity pilot** (advances the ⬜ External-validity rung — real, non-constructed records):
+- **Host:** Dr Nitin Deshpande (V-AI-06) — HR & industrial relations, Cooper Corporation.
+- **Anchor:** Tanvi Pokhriyal (V-HR-01) — HR/Employment, already supplied 5 real Rung-3 cases.
+- **Independent audit re-scoring:** Kyle McMullan (V-AI-12, Chief Audit Executive) and/or Yetunde Adesiyan (V-AI-15, CISA/CISSP/FCCA).
+- **Design (PII-safe):** partner applies JRS to their own de-identified records in-house and returns only aggregate indicators — % of claims evidenced, % lacking documentation, subjective-language frequency, and Ready/Needs-work/Gap counts. No employee record text enters JRS systems. Legal/DPO sign-off required before any real records are touched.
+- **Status:** recommended, not yet initiated.
+
+**Alternate co-author (hold for a future governance/liability article, not the HR piece):** Shakiba Mahvash (V-AI-17) — aspiring AI & law researcher, bar candidate; would value co-authorship most.
+
+**Already credited (not co-authors, do not re-offer):** Ubayet Hossain (M-01, reliability framework), Saurabh Nanda (V-AI-07, proportionality principle).
+
+---
+
 ## Appendix — condition naming (reference)
 
 Canonical five conditions = the deployed standard (`jrsstandard.html`, `codebook.html`): RC1 Reconstructability · RC2 Basis Identification · RC3 Chronology · RC4 Decision-Process Traceability · RC5 Evidentiary Sufficiency.
