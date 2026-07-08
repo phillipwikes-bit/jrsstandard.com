@@ -1,6 +1,6 @@
 # JRS / DRR — MASTER TRACKER
 
-*Single source of truth. All figures verified against the live database, not memory. Update this file instead of relying on chat history.*
+*Single source of truth. All figures verified against the live database, not memory. Update this file instead of relying on chat history. Last reconciled against the live DB and production site: 2026-07-08.*
 
 ---
 
@@ -75,10 +75,10 @@ Total: **12 real cases** across two active domain pilots; the healthcare pilot i
 
 ## 3. Publications & live research platform
 
-**Deployed to production (jrsstandard.com) — commit `2bdc8b9`, verified live:**
+**Deployed to production (jrsstandard.com) — current commit `62a586a`, verified live 2026-07-08:**
 - research.html shows Early Results (reproducibility 84%, reliability AC1 0.74/0.63), Study 004 "Reviewer Reliability — Result reported", Study 009 "Dataset ready", and the methods-paper link. Duplicate research questions are deduped on display.
 - Live findings feed: reproducibility (STUDY-001) and reliability (STUDY-004).
-- Answer-key docs (`research/`) are deliberately NOT on production — `research/Verified_Key.md` returns 404. Blind study intact.
+- Answer-key docs (`research/`) are deliberately NOT on production — `research/Verified_Key.md` returns 404. Blind study intact (re-verified 2026-07-08: `research/` absent from the deployed tree; selective deploy publishes public HTML only).
 
 | Paper | Covers | File | State |
 |---|---|---|---|
@@ -94,13 +94,44 @@ Articles 2–4 (FOIL pilot; HR pilot; capstone with construct validity) — plan
 
 | # | Thread | Next action | Owner |
 |---|---|---|---|
-| 1 | Finish the 24-record detection study (3/11 done) | Nudge the 8 unfinished reviewers | You send / I draft |
+| 1 | Finish the 24-record detection study (3/15 complete) | Nudge the 12 unfinished reviewers | You send / I draft |
 | 2 | Recruit an organizational psychologist | Find one; hand over the data package (ready) | Not started |
 | 3 | Publish Article 1 (Rungs 1 & 2) | Ubayet reviews first, then preprint/journal | Decide path |
 | 4 | Real-case pilot (Rung 3) | Nudge Keith; get more cases | You send / I draft |
 | 5 | Website 404s (~20% of traffic) | Send bad URLs from GA4 → I build redirects | You send URLs |
-| 6 | Dewey / Peter Broida | Send the reply + blurb (drafted) | You |
+| 6 | Dewey / Peter Broida | Reply + LinkedIn post drafted; hold until he emails (author intros). Do not tag him. | You |
 | 7 | Rotate the exposed Supabase token | In the Supabase dashboard | You |
+
+---
+
+## 5. Platform & deployment activity log — 2026-07-08 (verified)
+
+**Reviewers registered this session (all confirmed in the live DB, 0 reads each, links live):**
+| Code | Name | Country | Panel / perspective |
+|---|---|---|---|
+| V-AI-16 | Gabriela Bar | Poland/EU | Expert — AI law & EU governance (attorney, PhD) |
+| V-AI-17 | Shakiba Mahvash | Iran | AI & law researcher (AI governance & liability) |
+| V-AI-18 | Saad Farooq | UAE | AI governance / regulatory & public policy (e&) |
+| V-AI-19 | Sanya Dalal | India | **Expert panel** — ethics, compliance & investigations (LLB, MBL, CFE, GE Vernova) |
+
+- **Sanya Dalal incident:** her first link (bench-review flow) rejected the write and triggered the fail-safe download; re-issued as V-AI-19 on the expert panel with a working `ai-records-pilot.html?code=V-AI-19` link. Prior downloaded scoring discarded.
+
+**Website conformance audit + production deploys (commits `ac34c45` → `645094e` → `62a586a`, verified live):**
+- Removed all customer-facing prices ($27, $77) → free during validation. Test-record dollar amounts and the private admin cost note intentionally kept.
+- Removed all 150 long dashes site-wide (em/en, literal + entities); re-census = 0.
+- Fixed a homepage structural bug: missing closing `</div>` tags had nested the About section and the site footer inside a hidden section, so both were not rendering on the default homepage. Now div-balanced and rendering (browser-verified).
+- Fixed two self-sabotaging deep-links (enterprise, workflow-fit), undefined CSS-variable colour bugs (bench-review indicators, research-data notes), added the canonical blob fail-safe to submit-record, added missing `.catch()` handlers to bench-admin, corrected a false "saves as you go" claim (submit-validation).
+- Standardised the copyright line to `© 2026 Phillip Wikes · JRS™` (index, jrsstandard).
+- Corrected the investigator-guides edition count in meta tags (two → three); the visible page Broida reviewed was left untouched.
+- Rewrote two broken reference-page sentences (failure-modes "inputs"; escalation-triggers circular).
+- Added GA4 tag `G-NVYHJ7BJ92` to all 52 pages (was missing on 12).
+- Added all 17 `reference/` pages to `sitemap.xml`; linked the reference hub from the homepage footer (was orphaned).
+- Removed the last `TODO` markers from view-source (bench-results).
+- Full conformance audit **PASS on all 52 pages**; `training.html` verified functional (6/6 module progress, cert function, sanctioned localStorage key only, no JS errors).
+
+**Verified private on production:** `research/` (answer key, this tracker, protocols) is absent from the deployed tree — selective deploy publishes public HTML only.
+
+**Security (still open):** the Supabase management token pasted in chat is compromised and should be rotated (open thread #7).
 
 ---
 
