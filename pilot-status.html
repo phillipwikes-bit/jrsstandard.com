@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NVYHJ7BJ92"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NVYHJ7BJ92');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Pilot Submissions | JRS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#050505;--surface:#121212;--surface2:#1A1A1A;--rule:#2A2A2A;--text:#F2F2F2;--muted:#B3B3B3;--muted-soft:#8A8A8A;--accent:#BE9447;--ready:#5DBF82}
+html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+.hd{border-bottom:1px solid var(--rule);padding:16px 20px}
+.hd-in{max-width:720px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+.wm{font-family:'Bodoni Moda',serif;font-size:22px;color:var(--accent);text-decoration:none}
+.meta{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft)}
+h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:26px;margin:24px 0 6px}
+.sub{font-size:13.5px;color:var(--muted);max-width:600px;margin-bottom:6px}
+.bar{display:flex;gap:10px;align-items:center;margin:14px 0;flex-wrap:wrap}
+.btn{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:10px 15px;border:1px solid var(--accent);color:var(--accent);background:none;cursor:pointer;text-decoration:none}
+.live{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ready)}
+.cards{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin:18px 0}
+.card{background:var(--surface);padding:18px 12px;text-align:center}
+.cv{font-family:'Bodoni Moda',serif;font-size:36px;color:var(--accent);line-height:1}
+.cv.hot{color:var(--ready)}
+.ck{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-top:8px}
+.note{font-size:12px;color:var(--muted-soft);border-left:2px solid var(--rule);padding:11px 14px;background:var(--surface);margin:16px 0;line-height:1.6}
+table{width:100%;border-collapse:collapse;margin:8px 0 4px;font-size:13px}
+th{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule)}
+td{padding:10px;border-bottom:1px solid var(--rule);color:var(--text)}
+tr.today td{background:rgba(93,191,130,.07)}
+.pill{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border:1px solid var(--rule);color:var(--muted-soft);border-radius:2px}
+.pill.done{color:var(--ready);border-color:var(--ready)}
+.pill.prog{color:var(--accent);border-color:var(--accent-dim,#7A5E28)}
+.pill.new{color:var(--ready);border-color:var(--ready)}
+.ft{border-top:1px solid var(--rule);padding:18px 20px;margin-top:24px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-soft)}
+@media(max-width:600px){.cards{grid-template-columns:1fr 1fr}.cv{font-size:30px}td,th{padding:8px 6px}}
+</style>
+</head>
+<body>
+<header class="hd"><div class="hd-in"><a href="/" class="wm">JRS<span style="font-size:9px;vertical-align:super">&#8482;</span></a><div class="meta">Pilot Submissions</div></div></header>
+<main><div class="wrap">
+  <h1>AI-Assisted Records Pilot &middot; Submissions</h1>
+  <p class="sub">Who has entered reads on the 24-record detection study, and when. Bookmark this page and open it anytime. It updates automatically every 60 seconds. Aggregate counts only; individual answers are never shown.</p>
+  <div class="bar"><span class="live" id="live">Loading&hellip;</span><button class="btn" onclick="load()">Refresh now</button></div>
+  <div class="cards">
+    <div class="card"><div class="cv hot" id="today">&middot;</div><div class="ck">New today (UTC)</div></div>
+    <div class="card"><div class="cv" id="total">&middot;</div><div class="ck">Total reads</div></div>
+    <div class="card"><div class="cv" id="started">&middot;</div><div class="ck">Reviewers started</div></div>
+    <div class="card"><div class="cv" id="finished">&middot;</div><div class="ck">Finished (24/24)</div></div>
+  </div>
+  <div class="note" id="latest">&nbsp;</div>
+  <table>
+    <thead><tr><th>Reviewer</th><th>Code</th><th>Progress</th><th>Last activity</th></tr></thead>
+    <tbody id="rows"><tr><td colspan="4" style="color:var(--muted-soft)">Loading&hellip;</td></tr></tbody>
+  </table>
+  <div class="note">"New today" counts reads submitted since 00:00 UTC. "Finished" means a reviewer has covered all 24 records. This page shows participation only; to see agreement and accuracy analysis, open the <a href="research-data.html" style="color:var(--accent)">Research Data Room</a>.</div>
+</div></main>
+<footer class="ft"><div class="wrap" style="padding:0">&#169; 2026 Phillip Wikes &middot; JRS&#8482; &middot; confidential &middot; not indexed</div></footer>
+<script>
+var U='https://pjzxkeviouofdseagvpf.supabase.co', K='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e', HDR={'apikey':K,'Authorization':'Bearer '+K};
+function esc(t){var d=document.createElement('div');d.textContent=(t==null?'':String(t));return d.innerHTML;}
+function rel(iso){
+  if(!iso) return 'not started';
+  var t=new Date(iso), now=new Date(), s=Math.floor((now-t)/1000);
+  if(s<0) s=0;
+  var d=Math.floor(s/86400), h=Math.floor((s%86400)/3600), m=Math.floor((s%3600)/60);
+  var ago = d>0 ? (d+'d ago') : h>0 ? (h+'h ago') : m>0 ? (m+'m ago') : 'just now';
+  return ago+' &middot; '+t.toLocaleString();
+}
+function load(){
+  document.getElementById('live').textContent='Updating…';
+  fetch(U+'/rest/v1/pilot_progress?select=code,name,total_reads,reads_today,last_at&order=total_reads.desc,code.asc',{headers:HDR})
+    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+    .then(function(rows){
+      rows = rows || [];
+      var today=0,total=0,started=0,finished=0,latest=null;
+      rows.forEach(function(x){
+        today+=x.reads_today||0; total+=x.total_reads||0;
+        if((x.total_reads||0)>0) started++;
+        if((x.total_reads||0)>=24) finished++;
+        if(x.last_at && (!latest || new Date(x.last_at)>new Date(latest))) latest=x.last_at;
+      });
+      document.getElementById('today').textContent=today;
+      document.getElementById('total').textContent=total;
+      document.getElementById('started').textContent=started+' / '+rows.length;
+      document.getElementById('finished').textContent=finished;
+      document.getElementById('latest').innerHTML = latest
+        ? 'Most recent submission: '+rel(latest)
+        : 'No reads recorded yet. Share the reviewer links to begin.';
+      var html='';
+      rows.forEach(function(x){
+        var n=x.total_reads||0, capped=Math.min(n,24), isNew=(x.reads_today||0)>0;
+        var status = n>=24
+          ? '<span class="pill done">Complete</span>'
+          : n>0
+            ? '<span class="pill prog">'+capped+' / 24</span>'
+            : '<span class="pill">Not started</span>';
+        var newBadge = isNew ? ' <span class="pill new">+'+x.reads_today+' today</span>' : '';
+        html += '<tr'+(isNew?' class="today"':'')+'>'
+             + '<td>'+esc(x.name||'')+'</td>'
+             + '<td style="font-family:\'JetBrains Mono\',monospace;font-size:11px;color:var(--muted-soft)">'+esc(x.code||'')+'</td>'
+             + '<td>'+status+newBadge+'</td>'
+             + '<td style="font-size:11.5px;color:var(--muted-soft)">'+rel(x.last_at)+'</td>'
+             + '</tr>';
+      });
+      document.getElementById('rows').innerHTML = html || '<tr><td colspan="4" style="color:var(--muted-soft)">No reviewers registered yet.</td></tr>';
+      document.getElementById('live').textContent='Live · updated '+new Date().toLocaleTimeString();
+    })
+    .catch(function(){ document.getElementById('live').textContent='Could not load. Tap Refresh.'; });
+}
+load();
+setInterval(load, 60000);
+</script>
+</body>
+</html>
