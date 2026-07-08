@@ -34,7 +34,7 @@ input,select,textarea{width:100%;background:var(--surface2);border:1px solid var
 <body>
 <header class="hd"><div class="hd-in"><a href="/" class="wm">JRS<span style="font-size:9px;vertical-align:super">&#8482;</span></a><div class="meta">Benchmark Admin</div></div></header>
 <main><div class="wrap">
-  <h1>Benchmark Workspace — Admin</h1>
+  <h1>Benchmark Workspace: Admin</h1>
   <p class="sub">Manage the record bank, set the consensus answer key, and run AI scoring. All actions require your admin token (your RUN_TOKEN, or a BENCH_ADMIN_TOKEN if you set one).</p>
   <label class="f">Admin token</label>
   <input id="token" type="password" placeholder="RUN_TOKEN">
@@ -46,7 +46,7 @@ input,select,textarea{width:100%;background:var(--surface2);border:1px solid var
     <div class="row">
       <div><label class="f">Record type</label><input id="rtype" placeholder="e.g. termination"></div>
       <div><label class="f">AI function</label>
-        <select id="rfunc"><option value="">—</option><option>summarization</option><option>recommendation</option><option>analysis</option><option>narrative</option></select></div>
+        <select id="rfunc"><option value="">-</option><option>summarization</option><option>recommendation</option><option>analysis</option><option>narrative</option></select></div>
       <div><label class="f">Kind</label><select id="rkind"><option>constructed</option><option>real</option></select></div>
     </div>
     <button class="btn" onclick="addRec()">Add record</button><span class="status" id="addstatus"></span>
@@ -81,23 +81,23 @@ function addRec(){
   s.textContent='Adding…';
   post({action:'add_record',text:t,record_type:document.getElementById('rtype').value,ai_function:document.getElementById('rfunc').value,kind:document.getElementById('rkind').value}).then(function(j){
     s.textContent=j.error||'Added.'; if(!j.error){document.getElementById('rtext').value='';loadRecs();}
-  });
+  }).catch(function(){ s.textContent='Network error. Please retry.'; });
 }
 function scoreAll(){
   var s=document.getElementById('scorestatus'); s.textContent='Scoring (may take ~30s)…';
-  post({action:'score_all'}).then(function(j){ s.textContent=j.error||('Scored '+j.scored+' of '+j.of+'.'); });
+  post({action:'score_all'}).then(function(j){ s.textContent=j.error||('Scored '+j.scored+' of '+j.of+'.'); }).catch(function(){ s.textContent='Network error. Please retry.'; });
 }
 window.setGold=function(rid){
   var c={}; var ok=COND.every(function(k){var v=window._gold&&window._gold[rid]&&window._gold[rid][k];if(v)c[k]=v;return v;});
   if(!ok){alert('Pick pass/review/gap for all five conditions on this record.');return;}
-  post({action:'set_gold',record_id:rid,conditions:c}).then(function(j){ alert(j.error||'Answer key saved for this record.'); });
+  post({action:'set_gold',record_id:rid,conditions:c}).then(function(j){ alert(j.error||'Answer key saved for this record.'); }).catch(function(){ alert('Network error. Please retry.'); });
 };
 window.goldPick=function(rid,k,v){
   window._gold=window._gold||{}; window._gold[rid]=window._gold[rid]||{}; window._gold[rid][k]=v;
-  COND.forEach(function(kk){}); ['pass','review','gap'].forEach(function(x){var e=document.getElementById('g-'+rid+'-'+k+'-'+x);if(e)e.className='opt';});
+  ['pass','review','gap'].forEach(function(x){var e=document.getElementById('g-'+rid+'-'+k+'-'+x);if(e)e.className='opt';});
   var el=document.getElementById('g-'+rid+'-'+k+'-'+v); if(el)el.className='opt sel-'+v;
 };
-window.toggleActive=function(rid,act){ post({action:'activate',record_id:rid,active:act}).then(function(){loadRecs();}); };
+window.toggleActive=function(rid,act){ post({action:'activate',record_id:rid,active:act}).then(function(){loadRecs();}).catch(function(){ alert('Network error. Please retry.'); }); };
 function renderRecs(){
   document.getElementById('reclist').innerHTML=(window._recs||[]).map(function(r){
     var gold=COND.map(function(k){
