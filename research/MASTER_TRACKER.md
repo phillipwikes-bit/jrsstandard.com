@@ -97,7 +97,7 @@ Articles 2–4 (FOIL pilot; HR pilot; capstone with construct validity) — plan
 
 | # | Thread | Next action | Owner |
 |---|---|---|---|
-| 1 | Finish the 24-record detection study (5/17 complete) | Nudge the 12 unfinished reviewers | You send / I draft |
+| 1 | Finish the 24-record detection study (5/18 complete) | Nudge the 13 unfinished reviewers | You send / I draft |
 | 2 | Recruit an organizational psychologist | Find one; hand over the data package (ready) | Not started |
 | 3 | Publish Article 1 (Rungs 1 & 2) | Ubayet reviews first, then preprint/journal | Decide path |
 | 4 | Real-case pilot (Rung 3) | Nudge Keith; get more cases | You send / I draft |
