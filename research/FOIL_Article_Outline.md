@@ -77,3 +77,4 @@ Once the validation sample is complete, results could be shared with the **Chief
 
 ## Progress log (append-dated; per standing directive, all progress on this article is recorded here)
 - 2026-07-09 — Outline created from the PR-DVP pilot prospectus and verified pilot data (n=7). Co-author: Stacy Young. Next: complete data collection to 20–30 with a spread of outcomes; finalize outcome-coding scheme; then write Results and Abstract.
+- 2026-07-09 — Stacy Young accepted co-authorship (confirmed by message) and committed to building out more cases.
