@@ -37,25 +37,25 @@
 
 **Detection panel (24-record study)** — 5 complete, 1 in progress, 11 not started (17 registered):
 
-| Code | Name | Country | Reads | Status |
-|---|---|---|---|---|
-| V-AI-01 | Jake McDonough | US | 24/24 | ✅ Complete |
-| V-AI-03 | Frank Schouten | Australia | 24/24 | ✅ Complete |
-| V-AI-10 | Lawal Olabanji | Nigeria | 24/24 | ✅ Complete |
-| V-AI-07 | Saurabh Nanda | India | 7/24 | 🟡 In progress |
-| V-AI-05 | Alankar Yaduvanshi | India | 0/24 | Not started |
-| V-AI-06 | Dr Nitin Deshpande | India | 0/24 | Not started |
-| V-AI-08 | Gabriela Cortez | US | 0/24 | Not started |
-| V-AI-11 | Andrey Ekhmenin | Poland/EU | 24/24 | ✅ Complete |
-| V-AI-12 | Kyle McMullan | UK/Ireland | 0/24 | Not started |
-| V-AI-14 | Terra Shouse | US | 0/24 | Not started |
-| V-AI-15 | Yetunde Adesiyan | UK | 0/24 | Not started |
-| V-AI-16 | Dr Gabriela Bar | Poland/EU | 0/24 | Not started |
-| V-AI-17 | Shakiba Mahvash | Iran | 0/24 | Not started |
-| V-AI-18 | Saad Farooq | UAE | 0/24 | Not started |
-| V-AI-19 | Sanya Dalal (Expert Panel) | India | 0/24 | Not started |
-| V-AI-20 | Hekim Colpan (Expert Panel) | Germany | 24/24 | ✅ Complete |
-| V-AI-21 | Tarun Samtani (Expert Panel) | Singapore | 0/24 | Not started |
+| Code | Name | Title / role (verified) | Country | Reads | Status |
+|---|---|---|---|---|---|
+| V-AI-01 | Jake McDonough | AI governance (self-accountable AI runtimes), SAEONYX Global Holdings | US | 24/24 | ✅ Complete |
+| V-AI-03 | Frank Schouten | AI Governance & Assurance; risk & accountability (AEGF) | Australia | 24/24 | ✅ Complete |
+| V-AI-10 | Lawal Olabanji | Operations & records management, ALTV Engineering | Nigeria | 24/24 | ✅ Complete |
+| V-AI-11 | Andrey Ekhmenin | Founder, EAS; governance diagnostics & post-execution review | Poland/EU | 24/24 | ✅ Complete |
+| V-AI-20 | Hekim Colpan (Expert Panel) | AI Governance & Compliance Manager; ISO/IEC 42001 auditor (EU AI Act, GDPR, DORA) | Germany | 24/24 | ✅ Complete |
+| V-AI-07 | Saurabh Nanda | General Manager / APAC business leader (P&L), Align Technology | India | 7/24 | 🟡 In progress |
+| V-AI-05 | Alankar Yaduvanshi | Data Privacy & Corporate Compliance (CIPP-E), WNS | India | 0/24 | Not started |
+| V-AI-06 | Dr Nitin Deshpande | Chief Human Resources Officer; 38+ yrs HR & industrial relations | India | 0/24 | Not started |
+| V-AI-08 | Gabriela Cortez | Civil-rights records; bilingual intake (Maryland Commission on Civil Rights) | US | 0/24 | Not started |
+| V-AI-12 | Kyle McMullan | Chief Audit Executive; internal audit & financial crimes | UK/Ireland | 0/24 | Not started |
+| V-AI-14 | Terra Shouse | Risk analysis & regulatory compliance (FMEA), independent | US | 0/24 | Not started |
+| V-AI-15 | Yetunde Adesiyan | Senior Manager Internal Audit (CISA, CISSP, FCCA), Tate & Lyle | UK | 0/24 | Not started |
+| V-AI-16 | Dr Gabriela Bar | Attorney, PhD; AI ethics advisor (EU), Gabriela Bar Law & AI | Poland/EU | 0/24 | Not started |
+| V-AI-17 | Shakiba Mahvash | AI & Law researcher (governance & liability), Islamic Azad University | Iran | 0/24 | Not started |
+| V-AI-18 | Saad Farooq | Regulatory & Public Policy Leader, AI governance (e& / Etisalat) | UAE | 0/24 | Not started |
+| V-AI-19 | Sanya Dalal (Expert Panel) | Ethics & Compliance; investigations (LLB, MBL, CFE), GE Vernova | India | 0/24 | Not started |
+| V-AI-21 | Tarun Samtani (Expert Panel) | Senior Director, Data & AI Governance; global DPO (CIPM, AIGP, CIPP/A) | Singapore | 0/24 | Not started |
 
 **Methodology:** M-01 **Ubayet Hossain, FRM** — Associate Director (Model Validation), KPMG India; 9+ years in credit/market-risk model development and validation. Contributed the reliability/validation framework (the Rung 1–2 statistics and floors). Credited in the analysis plan, both research PDFs, and the article.
 
