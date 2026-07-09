@@ -10,7 +10,7 @@
 |---|---|---|
 | **Rung 1 — Reproducibility** | Do 3 independent AI models (Claude, GPT, Gemini) give the same JRS read on the same record? | ✅ 84% agreement across 15 records. Auto-runs nightly. |
 | **Rung 2a — Reliability** | Do independent human reviewers agree with each other? | ✅ Experts AC1 0.74, reviewers 0.63 (10 records). |
-| **Rung 2b — Accuracy** | Can reviewers match a hidden answer key on 24 records? | 🟡 4 of 17 reviewers complete (Jake, Frank, Lawal, Hekim); Saurabh 7/24. Key verified 24/24. |
+| **Rung 2b — Accuracy** | Can reviewers match a hidden answer key on 24 records? | 🟡 5 of 17 reviewers complete (Jake, Frank, Lawal, Hekim, Andrey); Saurabh 7/24. Key verified 24/24. |
 | **Construct validity** | Are the five conditions distinct dimensions? | 🟡 Data ready (108 rows). No psychologist recruited. |
 | **Rung 3 — Criterion validity** | Do flagged records fail in real cases? | 🟡 12 real cases collected. |
 | **External validity** | Does it hold on real (non-constructed) records? | ⬜ Future. |
@@ -18,7 +18,7 @@
 ### The pilots — evidence collected (verified live)
 | # | Pilot | What it collects | Evidence to date |
 |---|---|---|---|
-| 1 | **AI-Assisted Records Detection** (Study 011) | Reviewer reads on the 24-record set vs a verified key | **104 reads; 4 complete (Jake, Frank, Lawal, Hekim), Saurabh 7/24, 17 registered** |
+| 1 | **AI-Assisted Records Detection** (Study 011) | Reviewer reads on the 24-record set vs a verified key | **128 reads; 5 complete (Jake, Frank, Lawal, Hekim, Andrey), Saurabh 7/24, 17 registered** |
 | 2 | **Bench Reliability** (Studies 003/004) | Expert + reviewer scoring of a shared record set | **8 experts + 13 reviewers, 108 labels, 10 records → AC1 0.74 / 0.63** |
 | 3 | **Real-Case Criterion** (Study 010, Rung 3) | Real public cases + documented outcomes, in 3 domain pilots | **12 real cases: FOIL/Stacy 7, HR/Tanvi 5, Healthcare/Keith 0 (breakdown in §2)** |
 
@@ -35,7 +35,7 @@
 
 ## 2. People
 
-**Detection panel (24-record study)** — 4 complete, 1 in progress, 12 not started (17 registered):
+**Detection panel (24-record study)** — 5 complete, 1 in progress, 11 not started (17 registered):
 
 | Code | Name | Country | Reads | Status |
 |---|---|---|---|---|
@@ -46,7 +46,7 @@
 | V-AI-05 | Alankar Yaduvanshi | India | 0/24 | Not started |
 | V-AI-06 | Dr Nitin Deshpande | India | 0/24 | Not started |
 | V-AI-08 | Gabriela Cortez | US | 0/24 | Not started |
-| V-AI-11 | Andrey Ekhmenin | Poland/EU | 0/24 | Not started |
+| V-AI-11 | Andrey Ekhmenin | Poland/EU | 24/24 | ✅ Complete |
 | V-AI-12 | Kyle McMullan | UK/Ireland | 0/24 | Not started |
 | V-AI-14 | Terra Shouse | US | 0/24 | Not started |
 | V-AI-15 | Yetunde Adesiyan | UK | 0/24 | Not started |
@@ -96,7 +96,7 @@ Articles 2–4 (FOIL pilot; HR pilot; capstone with construct validity) — plan
 
 | # | Thread | Next action | Owner |
 |---|---|---|---|
-| 1 | Finish the 24-record detection study (4/17 complete) | Nudge the 13 unfinished reviewers | You send / I draft |
+| 1 | Finish the 24-record detection study (5/17 complete) | Nudge the 12 unfinished reviewers | You send / I draft |
 | 2 | Recruit an organizational psychologist | Find one; hand over the data package (ready) | Not started |
 | 3 | Publish Article 1 (Rungs 1 & 2) | Ubayet reviews first, then preprint/journal | Decide path |
 | 4 | Real-case pilot (Rung 3) | Nudge Keith; get more cases | You send / I draft |
