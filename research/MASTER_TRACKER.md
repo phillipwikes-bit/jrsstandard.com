@@ -101,12 +101,12 @@ Articles 2–4 (FOIL pilot; HR pilot; capstone with construct validity) — plan
 
 | # | Thread | Next action | Owner |
 |---|---|---|---|
-| 1 | Finish the 24-record detection study (5/18 complete) | Nudge the 13 unfinished reviewers | You send / I draft |
+| 1 | Finish the 24-record detection study (5/22 complete) | Nudge the 17 unfinished reviewers | You send / I draft |
 | 2 | Recruit an organizational psychologist | Find one; hand over the data package (ready) | Not started |
 | 3 | Publish Article 1 (Rungs 1 & 2) | Ubayet reviews first, then preprint/journal | Decide path |
 | 4 | Real-case pilot (Rung 3) | Nudge Keith; get more cases | You send / I draft |
 | 5 | Website 404s (~20% of traffic) | Send bad URLs from GA4 → I build redirects | You send URLs |
-| 6 | Dewey / Peter Broida | Reply + LinkedIn post drafted; hold until he emails (author intros). Do not tag him. | You |
+| 6 | Dewey / Peter Broida | 2026-07-10: Broida emailed that he forwarded the site to Dewey's investigation-book authors ("glad to be of help"). Reply this round is purely grateful (co-publishing question held for later). Still not an endorsement. | You send grateful reply |
 | 7 | Rotate the exposed Supabase token | In the Supabase dashboard | You |
 
 ---
@@ -188,6 +188,33 @@ Articles 2–4 (FOIL pilot; HR pilot; capstone with construct validity) — plan
 
 **Progress log:**
 - 2026-07-09 — Initial draft created; Rungs 1-2 + Ubayet woven in; Sanya pitched (LinkedIn DM). Next: Sanya yes/no; then define her section and drive HR/public-records pilots toward target.
+
+---
+
+## 9. Field Guide distribution & download counter (built 2026-07-10)
+
+**Why:** the three Investigator Field Guides (EEO, Fair Housing, International) are meant to be shared off-site (emailed, forwarded, mentioned in a Dewey case alert), so on-site GA4 `file_download` events undercount badly. A redirect counter captures every download regardless of where the link is clicked, and tags it by channel.
+
+**How it works:** each download link points at the edge function `/api/dl?e=<edition>&src=<channel>`, which writes one append-only row to `public.guide_downloads` and 302-redirects to the static PDF. The DB write is best-effort: if Supabase is down or the service key is unset, the user still gets the file.
+
+| Piece | Location |
+|---|---|
+| Edge function | `api/dl.js` (Vercel edge; uses `SUPABASE_SERVICE_ROLE_KEY`) |
+| Table + private aggregate view | `public.guide_downloads`, `public.guide_download_counts` (RLS on, no anon read) |
+| Repointed links | `investigator-guides.html` (3 on-site links tagged `src=site`) |
+
+**Edition tokens:** `employment`, `fairhousing`, `international`.
+
+**Per-channel share links** (use the right `src` so you learn which channel works):
+- Site (already wired): `/api/dl?e=employment&src=site`
+- Dewey author intros: `https://www.jrsstandard.com/api/dl?e=employment&src=dewey`
+- LinkedIn post/comment: `https://www.jrsstandard.com/api/dl?e=employment&src=linkedin`
+- AWI: `https://www.jrsstandard.com/api/dl?e=employment&src=awi`
+(swap `employment` for `fairhousing` / `international` as needed)
+
+**Read the counts** (Supabase SQL editor or service role): `select * from public.guide_download_counts;`
+
+**Status:** table applied to Supabase 2026-07-10; code committed to dev branch `claude/html-pilot-L8rC3`. **NOT yet deployed to production** — the counter goes live only when the dev branch is pushed to `main` (function + repointed links deploy together). Until then, production still serves the direct-PDF links.
 
 ---
 
