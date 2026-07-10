@@ -214,7 +214,9 @@ Articles 2–4 (FOIL pilot; HR pilot; capstone with construct validity) — plan
 
 **Read the counts** (Supabase SQL editor or service role): `select * from public.guide_download_counts;`
 
-**Status:** table applied to Supabase 2026-07-10; code committed to dev branch `claude/html-pilot-L8rC3`. **NOT yet deployed to production** — the counter goes live only when the dev branch is pushed to `main` (function + repointed links deploy together). Until then, production still serves the direct-PDF links.
+**Status:** LIVE in production as of 2026-07-10. Table applied to Supabase; `api/dl.js` + repointed `investigator-guides.html` deployed to `main` (commit `57534d8`) via a **selective deploy** — only those two files were taken onto `main` from `origin/main`, so `research/` (answer key included) and the other unreviewed dev changes did NOT ship. Verified live: `GET /api/dl?e=employment` returns 302 → the EEO PDF. Two `deploytest` rows created during verification were deleted; the table starts clean.
+
+**Deploy note (important):** production `main` currently contains **no `research/` files** and there is **no `.vercelignore`**. Do NOT deploy by pushing the whole dev branch to `main` — that would publish the answer key and the private `pilot-status.html` dashboard. Always deploy selected public files only (as was done here).
 
 ---
 
