@@ -220,6 +220,35 @@ Articles 2–4 (FOIL pilot; HR pilot; capstone with construct validity) — plan
 
 ---
 
+## 10. Publication sequencing & strategy (three papers in flight)
+
+**Principle (from the plan review, 2026-07-10):** the *study* is the contribution, not the framework. A publication is a credibility anchor for the IP, not the finish line — pair it with at least one real-org pilot (a demand signal), which a buyer weighs more than any single paper. Post a **preprint** (OSF/SSRN) at submission so credibility exists before peer review clears (realistically 9-15 months). Scope every claim to what the data shows and honor the pre-registered floors.
+
+**The three papers (all already in the tracker — see §6, §7, §8):**
+
+| # | Paper | Venue | Co-author | Data basis | Gating item |
+|---|---|---|---|---|---|
+| A | **Detection** — "Detecting Decision Reconstruction Risk in AI-Assisted Documentation" | AI and Ethics (alt: AI & Society; FAccT/AIES workshop) | panel; Ubayet methodology credited | Study 011: 24-record set vs verified key (+ Arm B if run) | Finish the panel (5/22 complete); decide Arm B |
+| B | **FOIL** — "Documentation as a Governance Layer" | Journal of Civic Information | **Stacy Young (E-08) — CONFIRMED** | Public-records pilot n=7 → target 20-30 | Reach 20-30 cases with a spread (Aug 31, 2026) |
+| C | **Business Ethics** — "Documentation Governance in AI-Assisted Decision-Making" | Journal of Business Ethics | **Sanya Dalal (pending)** | **Tanvi HR pilot n=5** + Rungs 1-2; public-records illustrative only | Sanya yes/no; HR data maturity; no duplication with FOIL |
+
+**Sequence:**
+1. **Submit Paper A (Detection) first.** It is the novel-contribution anchor, and its hard-to-copy asset is the international blind panel + verified answer key. It reaches "submittable" by finishing the panel (recruiting/nudging you control), not by slow real-world case accrual. **Arm B decision:** run it for the strong "JRS beats unaided review" claim, or skip it and scope Paper A to "accuracy against a verified key." Preprint at submission.
+2. **Paper B (FOIL) second.** Co-author confirmed; gated only on case accrual to 20-30 (deadline Aug 31, 2026). Submit once n≥20 with a spread of outcomes.
+3. **Paper C (Business Ethics) third.** Gated on Sanya's acceptance AND the HR/criterion data maturing; must not duplicate FOIL's primary results. Sanya's yes also unblocks telling Tanvi about the paper.
+
+**Immediate actions (parallel, now):**
+- Nudge the 17 unfinished detection reviewers (binding task for Paper A).
+- Decide Arm B (run vs scope-down).
+- Get Sanya's yes/no (unblocks Paper C + Tanvi).
+- Keep FOIL and HR case collection moving toward 20-30 each.
+- Land one real-org pilot (the demand signal that a paper cannot supply).
+
+**Progress log:**
+- 2026-07-10 — Sequencing set: A (Detection) → B (FOIL) → C (Business Ethics). Corrects an earlier omission of the Business Ethics / Tanvi HR-pilot paper from the plan analysis; all three are now sequenced together rather than treating the detection paper as the only one.
+
+---
+
 ## Appendix — condition naming (reference)
 
 Canonical five conditions = the deployed standard (`jrsstandard.html`, `codebook.html`): RC1 Reconstructability · RC2 Basis Identification · RC3 Chronology · RC4 Decision-Process Traceability · RC5 Evidentiary Sufficiency.
