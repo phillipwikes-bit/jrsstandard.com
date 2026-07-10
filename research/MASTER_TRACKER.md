@@ -20,7 +20,7 @@
 |---|---|---|---|
 | 1 | **AI-Assisted Records Detection** (Study 011) | Reviewer reads on the 24-record set vs a verified key | **128 reads; 5 complete (Jake, Frank, Lawal, Hekim, Andrey), Saurabh 7/24, 18 registered** |
 | 2 | **Bench Reliability** (Studies 003/004) | Expert + reviewer scoring of a shared record set | **8 experts + 13 reviewers, 108 labels, 10 records → AC1 0.74 / 0.63** |
-| 3 | **Real-Case Criterion** (Study 010, Rung 3) | Real public cases + documented outcomes, in 4 domain pilots | **12 real cases: FOIL/Stacy 7, HR/Tanvi 5, Healthcare/Keith 0, Financial-Crimes/Jason 0 (breakdown in §2)** |
+| 3 | **Real-Case Criterion** (Study 010, Rung 3) | Real public cases + documented outcomes, in 3 domain pilots | **12 real cases: FOIL/Stacy 7, HR/Tanvi 5, Healthcare/Keith 0 (breakdown in §2)** |
 
 **How the rungs map to the site's study registry (research.html):**
 | Rung / stage | Site study |
@@ -73,9 +73,8 @@
 | Public Records / FOIL | Stacy Young (E-08) | **7** | challenged, failed appeal | 2026-07-06 |
 | HR / Employment | Tanvi Pokhriyal (V-HR-01) | **5** | challenged, failed appeal, held up | 2026-06-22 |
 | Healthcare Compliance | Keith Carrington, EJD, MBA (V-HC-01) | **0** | — | accepted, not started |
-| Financial Crimes / AML | Jason Thibault (V-FC-01) | **0** | — | FC-DVP set up 2026-07-09; ⚠️ NOT in DB (registration never landed — likely applied while token unset); prospectus/link issued |
 
-Total: **12 real cases** across two active domain pilots (FOIL, HR). Two more domains are set up but not started: Healthcare (Keith, accepted) and Financial Crimes (Jason, FC-DVP). ⚠️ Jason's V-FC-01 is not registered in `bench_experts` (verified 2026-07-10) — his collection link will not work until it is applied; also the strongest demand-signal / plausible-acquirer contact, so do not let this lapse.
+Total: **12 real cases** across two active domain pilots; the healthcare pilot is accepted but not yet started.
 
 **Open seat:** organizational psychologist (construct validity) — not recruited.
 
