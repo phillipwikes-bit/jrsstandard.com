@@ -12,7 +12,7 @@
 |---|---|---|
 | **Rung 1: Reproducibility** | Do 3 independent AI models (Claude, GPT, Gemini) give the same JRS read on the same record? | ✅ 84% agreement across 15 records. Auto-runs nightly. |
 | **Rung 2a: Reliability** | Do independent human reviewers agree with each other? | ✅ Experts AC1 0.74, reviewers 0.63 (10 records). |
-| **Rung 2b: Accuracy** | Can reviewers match a hidden answer key on 24 records? | 🟡 5 of 18 reviewers complete (Jake, Frank, Lawal, Hekim, Andrey); Saurabh 7/24. Key verified 24/24. |
+| **Rung 2b: Accuracy** | Can reviewers match a hidden answer key on 24 records? | 🟡 7 of 22 reviewers complete (Jake, Frank, Lawal, Andrey, Hekim, Kyle, SungSoo); Saurabh 7/24. Key verified 24/24. |
 | **Construct validity** | Are the five conditions distinct dimensions? | 🟡 Data ready (108 rows). No psychologist recruited. |
 | **Rung 3: Criterion validity** | Do flagged records fail in real cases? | 🟡 12 real cases collected. |
 | **External validity** | Does it hold on real (non-constructed) records? | ⬜ Future. |
@@ -20,7 +20,7 @@
 ### The pilots: evidence collected (verified live)
 | # | Pilot | What it collects | Evidence to date |
 |---|---|---|---|
-| 1 | **AI-Assisted Records Detection** (Study 011) | Reviewer reads on the 24-record set vs a verified key | **128 reads; 5 complete (Jake, Frank, Lawal, Hekim, Andrey), Saurabh 7/24, 18 registered** |
+| 1 | **AI-Assisted Records Detection** (Study 011) | Reviewer reads on the 24-record set vs a verified key | **176 reads; 7 complete (Jake, Frank, Lawal, Andrey, Hekim, Kyle, SungSoo), Saurabh 7/24, 22 registered** |
 | 2 | **Bench Reliability** (Studies 003/004) | Expert + reviewer scoring of a shared record set | **8 experts + 13 reviewers, 108 labels, 10 records → AC1 0.74 / 0.63** |
 | 3 | **Real-Case Criterion** (Study 010, Rung 3) | Real public cases + documented outcomes, in 3 domain pilots | **12 real cases: FOIL/Stacy 7, HR/Tanvi 5, Healthcare/Keith 0 (breakdown in §2)** |
 
@@ -37,7 +37,7 @@
 
 ## 2. People
 
-**Detection panel (24-record study)**: 5 complete, 1 in progress, 16 not started (22 registered):
+**Detection panel (24-record study)**: 7 complete, 1 in progress, 14 not started (22 registered):
 
 | Code | Name | Title / role (verified) | Country | Reads | Status |
 |---|---|---|---|---|---|
@@ -50,7 +50,7 @@
 | V-AI-05 | Alankar Yaduvanshi | Data Privacy & Corporate Compliance (CIPP-E), WNS | India | 0/24 | Not started |
 | V-AI-06 | Dr Nitin Deshpande | Chief Human Resources Officer; 38+ yrs HR & industrial relations | India | 0/24 | Not started |
 | V-AI-08 | Gabriela Cortez | Civil-rights records; bilingual intake (Maryland Commission on Civil Rights) | US | 0/24 | Not started |
-| V-AI-12 | Kyle McMullan | Chief Audit Executive; internal audit & financial crimes | UK/Ireland | 0/24 | Not started |
+| V-AI-12 | Kyle McMullan | Chief Audit Executive; internal audit & financial crimes | UK/Ireland | 24/24 | ✅ Complete |
 | V-AI-14 | Terra Shouse | Risk analysis & regulatory compliance (FMEA), independent | US | 0/24 | Not started |
 | V-AI-15 | Yetunde Adesiyan | Senior Manager Internal Audit (CISA, CISSP, FCCA), Tate & Lyle | UK | 0/24 | Not started |
 | V-AI-16 | Dr Gabriela Bar | Attorney, PhD; AI ethics advisor (EU), Gabriela Bar Law & AI | Poland/EU | 0/24 | Not started |
@@ -60,7 +60,7 @@
 | V-AI-21 | Tarun Samtani (Expert Panel) | Senior Director, Data & AI Governance; global DPO (CIPM, AIGP, CIPP/A) | Singapore | 0/24 | Not started |
 | V-AI-22 | Ilya Diankoff | Investigations & corporate due diligence (certified PI; SCCE member) | UK | 0/24 | Not started |
 | V-AI-23 | Niloofar Kandi | AI Governance & Strategy Specialist; ISO/IEC 42001 Lead Implementer; PhD Researcher in AI Governance (University of Wollongong) | Australia | 0/24 | Not started |
-| V-AI-24 | SungSoo In (Expert Panel) | AI Governance & Responsible AI; author of the Athena Governance Architecture (Runtime Governance, Authority Drift, accountable Governance Records) | South Korea | 0/24 | Not started |
+| V-AI-24 | SungSoo In (Expert Panel) | AI Governance & Responsible AI; author of the Athena Governance Architecture (Runtime Governance, Authority Drift, accountable Governance Records) | South Korea | 24/24 | ✅ Complete |
 | V-AI-25 | David Grannum (Expert Panel) | Founder, IsleConnect / Vectis ONE; "Sovereign AI" mesh, human-in-the-loop review (note: AI product founder: adjacent commercial interest; keep JRS vendor-neutral) | UK (Isle of Wight) | 0/24 | Not started |
 | V-AI-26 | Anant Rai | Information & Cyber Security and Data Privacy Leader (14+ yrs; IT GRC, NIST CSF, risk & compliance) | India | 0/24 | Invited |
 
@@ -103,7 +103,7 @@ Articles 2-4 (FOIL pilot; HR pilot; capstone with construct validity): planned, 
 
 | # | Thread | Next action | Owner |
 |---|---|---|---|
-| 1 | Finish the 24-record detection study (5/22 complete) | Nudge the 17 unfinished reviewers | You send / I draft |
+| 1 | Finish the 24-record detection study (7/22 complete) | Nudge the 15 unfinished reviewers | You send / I draft |
 | 2 | Recruit an organizational psychologist | Find one; hand over the data package (ready) | Not started |
 | 3 | Publish Article 1 (Rungs 1 & 2) | Ubayet reviews first, then preprint/journal | Decide path |
 | 4 | Real-case pilot (Rung 3) | Nudge Keith; get more cases | You send / I draft |
@@ -230,7 +230,7 @@ Articles 2-4 (FOIL pilot; HR pilot; capstone with construct validity): planned, 
 
 | # | Paper | Venue | Co-author | Data basis | Gating item |
 |---|---|---|---|---|---|
-| A | **Detection**: "Detecting Decision Reconstruction Risk in AI-Assisted Documentation" | AI and Ethics (alt: AI & Society; FAccT/AIES workshop) | panel; Ubayet methodology credited | Study 011: 24-record set vs verified key (+ Arm B if run) | Finish the panel (5/22 complete); decide Arm B |
+| A | **Detection**: "Detecting Decision Reconstruction Risk in AI-Assisted Documentation" | AI and Ethics (alt: AI & Society; FAccT/AIES workshop) | panel; Ubayet methodology credited | Study 011: 24-record set vs verified key (+ Arm B if run) | Finish the panel (7/22 complete); decide Arm B |
 | B | **FOIL**: "Documentation as a Governance Layer" | Journal of Civic Information | **Stacy Young (E-08): CONFIRMED** | Public-records pilot n=7 → target 20-30 | Reach 20-30 cases with a spread (Aug 31, 2026) |
 | C | **Business Ethics**: "Documentation Governance in AI-Assisted Decision-Making" | Journal of Business Ethics | **Sanya Dalal (pending)** | **Tanvi HR pilot n=5** + Rungs 1-2; public-records illustrative only | Sanya yes/no; HR data maturity; no duplication with FOIL |
 
@@ -240,7 +240,7 @@ Articles 2-4 (FOIL pilot; HR pilot; capstone with construct validity): planned, 
 3. **Paper C (Business Ethics) third.** Gated on Sanya's acceptance AND the HR/criterion data maturing; must not duplicate FOIL's primary results. Sanya's yes also unblocks telling Tanvi about the paper.
 
 **Immediate actions (parallel, now):**
-- Nudge the 17 unfinished detection reviewers (binding task for Paper A).
+- Nudge the 15 unfinished detection reviewers (binding task for Paper A).
 - Decide Arm B (run vs scope-down).
 - Get Sanya's yes/no (unblocks Paper C + Tanvi).
 - Keep FOIL and HR case collection moving toward 20-30 each.
