@@ -249,6 +249,34 @@ Articles 2–4 (FOIL pilot; HR pilot; capstone with construct validity) — plan
 
 ---
 
+## 11. Reviewer recruiting workflow (two tracks) — added 2026-07-10
+
+When a profile comes in, it is routed to one of two tracks by a single label ("Panel" or "Comparison"). If no label is given, ask which track before doing anything.
+
+**Track 1 — "Panel" (main JRS reviewers, 24-record detection study, Study 011):**
+- Register a **V-AI-##** code in `bench_experts` (needs the Supabase token).
+- Build a personalized JRS reviewer prospectus + invitation.
+- Link: `ai-records-pilot.html?code=V-AI-##`.
+- Prior JRS exposure is fine here (these reviewers use JRS). Warm post-likers and interested people belong on this track.
+- **Next available code: V-AI-27** (last used: V-AI-26 Anant Rai).
+
+**Track 2 — "Comparison" (Arm B controlled study, `ai-records-arm-b.html`, LIVE in production):**
+- Assign the **next RR-### code** (no `bench_experts` registration needed; the page uses an anon key and writes to `ai_pilot_reads` with batch `armB-B1`/`armB-B2`).
+- Give the neutral invitation + the generic neutral prospectus (`Records_Review_Study.pdf`, no JRS method, no reads, no codebook link).
+- Link: `ai-records-arm-b.html?code=RR-###`.
+- **Next available code: RR-101.** RR-101 and RR-102 shown earlier were illustration only; no real person holds any RR code yet. Batch RR-101 to RR-140 generated (20 land JRS-arm B1, 20 land no-JRS B2).
+
+**Guardrails (these protect the study — do not skip):**
+1. **The Comparison person does NOT get hand-assigned to the JRS or no-JRS half.** The page decides that automatically and at random from the code string (`conditionFor()` = parity of the uppercased code). You only choose the *study*; the tool splits the arms. Hand-sorting the halves would bias the result.
+2. **A Comparison recruit must be JRS-naive:** no liking/commenting on JRS posts, no reading the guides, no prior exposure to the reconstructability idea. If unsure, ask the founder "has this person engaged with your JRS content?" If yes, route to Panel instead.
+3. Keep a running note of which RR/ V-AI code went to whom; never reuse a code.
+
+**Code-to-arm reference (Arm B, from `conditionFor`):**
+- JRS arm (B1): RR-102, 104, 106, 108, 111, 113, 115, 117, 119, 120, 122, 124, 126, 128, 131, 133, 135, 137, 139, 140
+- No-JRS arm (B2): RR-101, 103, 105, 107, 109, 110, 112, 114, 116, 118, 121, 123, 125, 127, 129, 130, 132, 134, 136, 138
+
+---
+
 ## Appendix — condition naming (reference)
 
 Canonical five conditions = the deployed standard (`jrsstandard.html`, `codebook.html`): RC1 Reconstructability · RC2 Basis Identification · RC3 Chronology · RC4 Decision-Process Traceability · RC5 Evidentiary Sufficiency.
