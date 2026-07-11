@@ -1,21 +1,23 @@
-# JRS / DRR — MASTER TRACKER
+# JRS / DRR: MASTER TRACKER
 
 *Single source of truth. All figures verified against the live database, not memory. Update this file instead of relying on chat history. Last reconciled against the live DB and production site: 2026-07-08.*
 
 ---
 
-## 1. Validation ladder — where each stage stands
+**Document conventions (enforced 2026-07-10):** Do not use long dashes (em or en dashes) anywhere in this file, or in any copy produced for JRS (connection notes, invitations, prospectuses, site prose). Use a colon, comma, or parentheses instead. This mirrors the house rule in CLAUDE.md and a standing instruction from Phillip.
+
+## 1. Validation ladder: where each stage stands
 
 | Stage | Question | Status |
 |---|---|---|
-| **Rung 1 — Reproducibility** | Do 3 independent AI models (Claude, GPT, Gemini) give the same JRS read on the same record? | ✅ 84% agreement across 15 records. Auto-runs nightly. |
-| **Rung 2a — Reliability** | Do independent human reviewers agree with each other? | ✅ Experts AC1 0.74, reviewers 0.63 (10 records). |
-| **Rung 2b — Accuracy** | Can reviewers match a hidden answer key on 24 records? | 🟡 5 of 18 reviewers complete (Jake, Frank, Lawal, Hekim, Andrey); Saurabh 7/24. Key verified 24/24. |
+| **Rung 1: Reproducibility** | Do 3 independent AI models (Claude, GPT, Gemini) give the same JRS read on the same record? | ✅ 84% agreement across 15 records. Auto-runs nightly. |
+| **Rung 2a: Reliability** | Do independent human reviewers agree with each other? | ✅ Experts AC1 0.74, reviewers 0.63 (10 records). |
+| **Rung 2b: Accuracy** | Can reviewers match a hidden answer key on 24 records? | 🟡 5 of 18 reviewers complete (Jake, Frank, Lawal, Hekim, Andrey); Saurabh 7/24. Key verified 24/24. |
 | **Construct validity** | Are the five conditions distinct dimensions? | 🟡 Data ready (108 rows). No psychologist recruited. |
-| **Rung 3 — Criterion validity** | Do flagged records fail in real cases? | 🟡 12 real cases collected. |
+| **Rung 3: Criterion validity** | Do flagged records fail in real cases? | 🟡 12 real cases collected. |
 | **External validity** | Does it hold on real (non-constructed) records? | ⬜ Future. |
 
-### The pilots — evidence collected (verified live)
+### The pilots: evidence collected (verified live)
 | # | Pilot | What it collects | Evidence to date |
 |---|---|---|---|
 | 1 | **AI-Assisted Records Detection** (Study 011) | Reviewer reads on the 24-record set vs a verified key | **128 reads; 5 complete (Jake, Frank, Lawal, Hekim, Andrey), Saurabh 7/24, 18 registered** |
@@ -35,7 +37,7 @@
 
 ## 2. People
 
-**Detection panel (24-record study)** — 5 complete, 1 in progress, 16 not started (22 registered):
+**Detection panel (24-record study)**: 5 complete, 1 in progress, 16 not started (22 registered):
 
 | Code | Name | Title / role (verified) | Country | Reads | Status |
 |---|---|---|---|---|---|
@@ -59,33 +61,33 @@
 | V-AI-22 | Ilya Diankoff | Investigations & corporate due diligence (certified PI; SCCE member) | UK | 0/24 | Not started |
 | V-AI-23 | Niloofar Kandi | AI Governance & Strategy Specialist; ISO/IEC 42001 Lead Implementer; PhD Researcher in AI Governance (University of Wollongong) | Australia | 0/24 | Not started |
 | V-AI-24 | SungSoo In (Expert Panel) | AI Governance & Responsible AI; author of the Athena Governance Architecture (Runtime Governance, Authority Drift, accountable Governance Records) | South Korea | 0/24 | Not started |
-| V-AI-25 | David Grannum (Expert Panel) | Founder, IsleConnect / Vectis ONE; "Sovereign AI" mesh, human-in-the-loop review (note: AI product founder — adjacent commercial interest; keep JRS vendor-neutral) | UK (Isle of Wight) | 0/24 | Not started |
+| V-AI-25 | David Grannum (Expert Panel) | Founder, IsleConnect / Vectis ONE; "Sovereign AI" mesh, human-in-the-loop review (note: AI product founder: adjacent commercial interest; keep JRS vendor-neutral) | UK (Isle of Wight) | 0/24 | Not started |
 | V-AI-26 | Anant Rai | Information & Cyber Security and Data Privacy Leader (14+ yrs; IT GRC, NIST CSF, risk & compliance) | India | 0/24 | Invited |
 
-**Methodology:** M-01 **Ubayet Hossain, FRM** — Associate Director (Model Validation), KPMG India; 9+ years in credit/market-risk model development and validation. Contributed the reliability/validation framework (the Rung 1–2 statistics and floors). Credited in the analysis plan, both research PDFs, and the article.
+**Methodology:** M-01 **Ubayet Hossain, FRM**: Associate Director (Model Validation), KPMG India; 9+ years in credit/market-risk model development and validation. Contributed the reliability/validation framework (the Rung 1-2 statistics and floors). Credited in the analysis plan, both research PDFs, and the article.
 
-**Proportionality principle:** surfaced by **Saurabh Nanda, General Manager and APAC Business Leader (Align Technology)** — also detection reviewer V-AI-07. Credited (with permission) in the research paper, Article 1, and the detection protocol.
+**Proportionality principle:** surfaced by **Saurabh Nanda, General Manager and APAC Business Leader (Align Technology)**: also detection reviewer V-AI-07. Credited (with permission) in the research paper, Article 1, and the detection protocol.
 
-**Rung 3 — Real-Case Criterion pilots (public determinations paired with documented outcomes):**
+**Rung 3: Real-Case Criterion pilots (public determinations paired with documented outcomes):**
 
 | Domain pilot | Contributor | Cases | Outcomes recorded | Last activity |
 |---|---|---|---|---|
 | Public Records / FOIL | Stacy Young (E-08) | **7** | challenged, failed appeal | 2026-07-06 |
 | HR / Employment | Tanvi Pokhriyal (V-HR-01) | **5** | challenged, failed appeal, held up | 2026-06-22 |
-| Healthcare Compliance | Keith Carrington, EJD, MBA (V-HC-01) | **0** | — | accepted, not started |
+| Healthcare Compliance | Keith Carrington, EJD, MBA (V-HC-01) | **0** | n/a | accepted, not started |
 
 Total: **12 real cases** across two active domain pilots; the healthcare pilot is accepted but not yet started.
 
-**Open seat:** organizational psychologist (construct validity) — not recruited.
+**Open seat:** organizational psychologist (construct validity): not recruited.
 
 ---
 
 ## 3. Publications & live research platform
 
-**Deployed to production (jrsstandard.com) — current commit `62a586a`, verified live 2026-07-08:**
-- research.html shows Early Results (reproducibility 84%, reliability AC1 0.74/0.63), Study 004 "Reviewer Reliability — Result reported", Study 009 "Dataset ready", and the methods-paper link. Duplicate research questions are deduped on display.
+**Deployed to production (jrsstandard.com): current commit `62a586a`, verified live 2026-07-08:**
+- research.html shows Early Results (reproducibility 84%, reliability AC1 0.74/0.63), Study 004 "Reviewer Reliability: Result reported", Study 009 "Dataset ready", and the methods-paper link. Duplicate research questions are deduped on display.
 - Live findings feed: reproducibility (STUDY-001) and reliability (STUDY-004).
-- Answer-key docs (`research/`) are deliberately NOT on production — `research/Verified_Key.md` returns 404. Blind study intact (re-verified 2026-07-08: `research/` absent from the deployed tree; selective deploy publishes public HTML only).
+- Answer-key docs (`research/`) are deliberately NOT on production: `research/Verified_Key.md` returns 404. Blind study intact (re-verified 2026-07-08: `research/` absent from the deployed tree; selective deploy publishes public HTML only).
 
 | Paper | Covers | File | State |
 |---|---|---|---|
@@ -93,7 +95,7 @@ Total: **12 real cases** across two active domain pilots; the healthcare pilot i
 | Reliability & Accuracy (Rungs 1 & 2) | Repro + reliability + prelim accuracy | `JRS_Reliability_Accuracy.pdf` | ✅ Live on research page |
 | Decision Reconstruction Risk | The concept (essay) | `DRR_Article.pdf` | ✅ Live |
 
-Articles 2–4 (FOIL pilot; HR pilot; capstone with construct validity) — planned, not drafted.
+Articles 2-4 (FOIL pilot; HR pilot; capstone with construct validity): planned, not drafted.
 
 ---
 
@@ -111,15 +113,15 @@ Articles 2–4 (FOIL pilot; HR pilot; capstone with construct validity) — plan
 
 ---
 
-## 5. Platform & deployment activity log — 2026-07-08 (verified)
+## 5. Platform & deployment activity log: 2026-07-08 (verified)
 
 **Reviewers registered this session (all confirmed in the live DB, 0 reads each, links live):**
 | Code | Name | Country | Panel / perspective |
 |---|---|---|---|
-| V-AI-16 | Gabriela Bar | Poland/EU | Expert — AI law & EU governance (attorney, PhD) |
+| V-AI-16 | Gabriela Bar | Poland/EU | Expert: AI law & EU governance (attorney, PhD) |
 | V-AI-17 | Shakiba Mahvash | Iran | AI & law researcher (AI governance & liability) |
 | V-AI-18 | Saad Farooq | UAE | AI governance / regulatory & public policy (e&) |
-| V-AI-19 | Sanya Dalal | India | **Expert panel** — ethics, compliance & investigations (LLB, MBL, CFE, GE Vernova) |
+| V-AI-19 | Sanya Dalal | India | **Expert panel**: ethics, compliance & investigations (LLB, MBL, CFE, GE Vernova) |
 
 - **Sanya Dalal incident:** her first link (bench-review flow) rejected the write and triggered the fail-safe download; re-issued as V-AI-19 on the expert panel with a working `ai-records-pilot.html?code=V-AI-19` link. Prior downloaded scoring discarded.
 
@@ -136,30 +138,30 @@ Articles 2–4 (FOIL pilot; HR pilot; capstone with construct validity) — plan
 - Removed the last `TODO` markers from view-source (bench-results).
 - Full conformance audit **PASS on all 52 pages**; `training.html` verified functional (6/6 module progress, cert function, sanctioned localStorage key only, no JS errors).
 
-**Verified private on production:** `research/` (answer key, this tracker, protocols) is absent from the deployed tree — selective deploy publishes public HTML only.
+**Verified private on production:** `research/` (answer key, this tracker, protocols) is absent from the deployed tree: selective deploy publishes public HTML only.
 
 **Security (still open):** the Supabase management token pasted in chat is compromised and should be rotated (open thread #7).
 
 ---
 
-## 6. Collaborations & co-author assignments (private — recruitment planning)
+## 6. Collaborations & co-author assignments (private: recruitment planning)
 
 **Standing rule: one article ↔ one co-author. Never offer the same article to two people.**
 
 | Deliverable | Topic / audience | Proposed collaborator | Verified basis | Status |
 |---|---|---|---|---|
-| LinkedIn Article 2 — "When AI Writes the Record" | HR / compliance defensibility | **Sanya Dalal (V-AI-19)** | Ethics & compliance; LLB, MBL, CFE; 8+ yrs internal investigations, GE Vernova | **ON HOLD — superseded by the Journal of Business Ethics co-author pitch (do not double-ask Sanya).** |
-| LinkedIn Article 4 — "The Evidentiary Deficit" | Legal / governance | **Gabriela Bar (V-AI-16)** | Attorney, PhD; EU AI-ethics advisor | **Offered** (co-credit) per your instruction; persuasive reply drafted, awaiting her response |
-| **Journal article — FOIL** ("Documentation as a Governance Layer") | Public records / FOIL; *Journal of Civic Information* | **Stacy Young (E-08)** | Records Governance Advisor; FOIL pilot contributor (7 real cases, verified) | **Co-author CONFIRMED — Stacy Young, 2026-07-09**; outline drafted (`research/FOIL_Article_Outline.md`); data collection ongoing (n=7, target 20-30 by Aug 31, 2026). Not submittable until sample target met. |
-| **Journal article — Business Ethics** ("Documentation Governance in AI-Assisted Decision-Making") | Multi-domain governance; *Journal of Business Ethics* | **Sanya Dalal** (pending) | Ethics & Compliance, CFE, GE Vernova, ex-KPMG | **Draft started 2026-07-09** (`research/BusinessEthics_Article_Draft.md`); pitch sent via LinkedIn DM (follow-up; no reply to yesterdays email). Awaiting yes/no. |
+| LinkedIn Article 2: "When AI Writes the Record" | HR / compliance defensibility | **Sanya Dalal (V-AI-19)** | Ethics & compliance; LLB, MBL, CFE; 8+ yrs internal investigations, GE Vernova | **ON HOLD: superseded by the Journal of Business Ethics co-author pitch (do not double-ask Sanya).** |
+| LinkedIn Article 4: "The Evidentiary Deficit" | Legal / governance | **Gabriela Bar (V-AI-16)** | Attorney, PhD; EU AI-ethics advisor | **Offered** (co-credit) per your instruction; persuasive reply drafted, awaiting her response |
+| **Journal article: FOIL** ("Documentation as a Governance Layer") | Public records / FOIL; *Journal of Civic Information* | **Stacy Young (E-08)** | Records Governance Advisor; FOIL pilot contributor (7 real cases, verified) | **Co-author CONFIRMED: Stacy Young, 2026-07-09**; outline drafted (`research/FOIL_Article_Outline.md`); data collection ongoing (n=7, target 20-30 by Aug 31, 2026). Not submittable until sample target met. |
+| **Journal article: Business Ethics** ("Documentation Governance in AI-Assisted Decision-Making") | Multi-domain governance; *Journal of Business Ethics* | **Sanya Dalal** (pending) | Ethics & Compliance, CFE, GE Vernova, ex-KPMG | **Draft started 2026-07-09** (`research/BusinessEthics_Article_Draft.md`); pitch sent via LinkedIn DM (follow-up; no reply to yesterdays email). Awaiting yes/no. |
 
-**Alternate co-author (hold for a future governance/liability article, not the HR piece):** Shakiba Mahvash (V-AI-17) — aspiring AI & law researcher, bar candidate; would value co-authorship most.
+**Alternate co-author (hold for a future governance/liability article, not the HR piece):** Shakiba Mahvash (V-AI-17): aspiring AI & law researcher, bar candidate; would value co-authorship most.
 
 **Already credited (not co-authors, do not re-offer):** Ubayet Hossain (M-01, reliability framework), Saurabh Nanda (V-AI-07, proportionality principle).
 
 ---
 
-## 7. FOIL journal article — Journal of Civic Information (progress-tracked)
+## 7. FOIL journal article: Journal of Civic Information (progress-tracked)
 
 **Standing directive (from 2026-07-09): all progress on this article is documented here and in `research/FOIL_Article_Outline.md`.**
 
@@ -172,22 +174,22 @@ Articles 2–4 (FOIL pilot; HR pilot; capstone with construct validity) — plan
 - **Gate (no fabrication):** not submittable until n reaches the pre-registered target with a spread of outcomes; Results/Abstract remain placeholders until then.
 
 **Progress log:**
-- 2026-07-09 — Outline drafted (`research/FOIL_Article_Outline.md`) from the PR-DVP prospectus and verified n=7 data.
-- 2026-07-09 — **Stacy Young accepted co-authorship** and committed to building out more cases. Next: drive collection toward 20-30 with a spread of outcomes; finalize the upheld/overturned outcome-coding scheme; then write Results and Abstract.
+- 2026-07-09: Outline drafted (`research/FOIL_Article_Outline.md`) from the PR-DVP prospectus and verified n=7 data.
+- 2026-07-09: **Stacy Young accepted co-authorship** and committed to building out more cases. Next: drive collection toward 20-30 with a spread of outcomes; finalize the upheld/overturned outcome-coding scheme; then write Results and Abstract.
 
 ---
 
-## 8. Business Ethics journal article — Journal of Business Ethics (progress-tracked)
+## 8. Business Ethics journal article: Journal of Business Ethics (progress-tracked)
 
 **Deliverable:** empirical, practitioner-informed paper on documentation governance in AI-assisted decision-making. Draft: `research/BusinessEthics_Article_Draft.md`.
 
-- **Spine (established, verified):** Rungs 1-2 evidence woven in — reproducibility 84% (15 records), reliability Gwet's AC1 0.74 experts / 0.63 reviewers (10 records); reliability/validation methodology by **Ubayet Hossain (KPMG India)**, named in-text.
-- **Criterion legs (preliminary):** HR pilot (Tanvi Pokhriyal, **UAE**) n=5, includes one Gap-read record that held up (counter-example) — no criterion claim yet; public-records pilot (Stacy, E-08) n=7 used **illustratively only**.
+- **Spine (established, verified):** Rungs 1-2 evidence woven in: reproducibility 84% (15 records), reliability Gwet's AC1 0.74 experts / 0.63 reviewers (10 records); reliability/validation methodology by **Ubayet Hossain (KPMG India)**, named in-text.
+- **Criterion legs (preliminary):** HR pilot (Tanvi Pokhriyal, **UAE**) n=5, includes one Gap-read record that held up (counter-example): no criterion claim yet; public-records pilot (Stacy, E-08) n=7 used **illustratively only**.
 - **Co-author pitch:** Sanya Dalal (ex-KPMG; GE Vernova; CFE). Pitched via LinkedIn DM 2026-07-09 as a follow-up (she did not reply to yesterday's email). Goal: a clear yes/no. Tanvi is NOT told about the paper until Sanya agrees (per your instruction).
-- **Gates (no fabrication / no duplication):** (1) no criterion claim until HR and public-records pilots reach 20-30 with a spread of outcomes; (2) the public-records primary results live in the FOIL paper only — used illustratively here to avoid duplicate publication; (3) authorship assigned by substantive intellectual contribution (ethics-journal integrity).
+- **Gates (no fabrication / no duplication):** (1) no criterion claim until HR and public-records pilots reach 20-30 with a spread of outcomes; (2) the public-records primary results live in the FOIL paper only: used illustratively here to avoid duplicate publication; (3) authorship assigned by substantive intellectual contribution (ethics-journal integrity).
 
 **Progress log:**
-- 2026-07-09 — Initial draft created; Rungs 1-2 + Ubayet woven in; Sanya pitched (LinkedIn DM). Next: Sanya yes/no; then define her section and drive HR/public-records pilots toward target.
+- 2026-07-09: Initial draft created; Rungs 1-2 + Ubayet woven in; Sanya pitched (LinkedIn DM). Next: Sanya yes/no; then define her section and drive HR/public-records pilots toward target.
 
 ---
 
@@ -214,23 +216,23 @@ Articles 2–4 (FOIL pilot; HR pilot; capstone with construct validity) — plan
 
 **Read the counts** (Supabase SQL editor or service role): `select * from public.guide_download_counts;`
 
-**Status:** LIVE in production as of 2026-07-10. Table applied to Supabase; `api/dl.js` + repointed `investigator-guides.html` deployed to `main` (commit `57534d8`) via a **selective deploy** — only those two files were taken onto `main` from `origin/main`, so `research/` (answer key included) and the other unreviewed dev changes did NOT ship. Verified live: `GET /api/dl?e=employment` returns 302 → the EEO PDF. Two `deploytest` rows created during verification were deleted; the table starts clean.
+**Status:** LIVE in production as of 2026-07-10. Table applied to Supabase; `api/dl.js` + repointed `investigator-guides.html` deployed to `main` (commit `57534d8`) via a **selective deploy**: only those two files were taken onto `main` from `origin/main`, so `research/` (answer key included) and the other unreviewed dev changes did NOT ship. Verified live: `GET /api/dl?e=employment` returns 302 → the EEO PDF. Two `deploytest` rows created during verification were deleted; the table starts clean.
 
-**Deploy note (important):** production `main` currently contains **no `research/` files** and there is **no `.vercelignore`**. Do NOT deploy by pushing the whole dev branch to `main` — that would publish the answer key and the private `pilot-status.html` dashboard. Always deploy selected public files only (as was done here).
+**Deploy note (important):** production `main` currently contains **no `research/` files** and there is **no `.vercelignore`**. Do NOT deploy by pushing the whole dev branch to `main`: that would publish the answer key and the private `pilot-status.html` dashboard. Always deploy selected public files only (as was done here).
 
 ---
 
 ## 10. Publication sequencing & strategy (three papers in flight)
 
-**Principle (from the plan review, 2026-07-10):** the *study* is the contribution, not the framework. A publication is a credibility anchor for the IP, not the finish line — pair it with at least one real-org pilot (a demand signal), which a buyer weighs more than any single paper. Post a **preprint** (OSF/SSRN) at submission so credibility exists before peer review clears (realistically 9-15 months). Scope every claim to what the data shows and honor the pre-registered floors.
+**Principle (from the plan review, 2026-07-10):** the *study* is the contribution, not the framework. A publication is a credibility anchor for the IP, not the finish line: pair it with at least one real-org pilot (a demand signal), which a buyer weighs more than any single paper. Post a **preprint** (OSF/SSRN) at submission so credibility exists before peer review clears (realistically 9-15 months). Scope every claim to what the data shows and honor the pre-registered floors.
 
-**The three papers (all already in the tracker — see §6, §7, §8):**
+**The three papers (all already in the tracker: see §6, §7, §8):**
 
 | # | Paper | Venue | Co-author | Data basis | Gating item |
 |---|---|---|---|---|---|
-| A | **Detection** — "Detecting Decision Reconstruction Risk in AI-Assisted Documentation" | AI and Ethics (alt: AI & Society; FAccT/AIES workshop) | panel; Ubayet methodology credited | Study 011: 24-record set vs verified key (+ Arm B if run) | Finish the panel (5/22 complete); decide Arm B |
-| B | **FOIL** — "Documentation as a Governance Layer" | Journal of Civic Information | **Stacy Young (E-08) — CONFIRMED** | Public-records pilot n=7 → target 20-30 | Reach 20-30 cases with a spread (Aug 31, 2026) |
-| C | **Business Ethics** — "Documentation Governance in AI-Assisted Decision-Making" | Journal of Business Ethics | **Sanya Dalal (pending)** | **Tanvi HR pilot n=5** + Rungs 1-2; public-records illustrative only | Sanya yes/no; HR data maturity; no duplication with FOIL |
+| A | **Detection**: "Detecting Decision Reconstruction Risk in AI-Assisted Documentation" | AI and Ethics (alt: AI & Society; FAccT/AIES workshop) | panel; Ubayet methodology credited | Study 011: 24-record set vs verified key (+ Arm B if run) | Finish the panel (5/22 complete); decide Arm B |
+| B | **FOIL**: "Documentation as a Governance Layer" | Journal of Civic Information | **Stacy Young (E-08): CONFIRMED** | Public-records pilot n=7 → target 20-30 | Reach 20-30 cases with a spread (Aug 31, 2026) |
+| C | **Business Ethics**: "Documentation Governance in AI-Assisted Decision-Making" | Journal of Business Ethics | **Sanya Dalal (pending)** | **Tanvi HR pilot n=5** + Rungs 1-2; public-records illustrative only | Sanya yes/no; HR data maturity; no duplication with FOIL |
 
 **Sequence:**
 1. **Submit Paper A (Detection) first.** It is the novel-contribution anchor, and its hard-to-copy asset is the international blind panel + verified answer key. It reaches "submittable" by finishing the panel (recruiting/nudging you control), not by slow real-world case accrual. **Arm B decision:** run it for the strong "JRS beats unaided review" claim, or skip it and scope Paper A to "accuracy against a verified key." Preprint at submission.
@@ -245,28 +247,28 @@ Articles 2–4 (FOIL pilot; HR pilot; capstone with construct validity) — plan
 - Land one real-org pilot (the demand signal that a paper cannot supply).
 
 **Progress log:**
-- 2026-07-10 — Sequencing set: A (Detection) → B (FOIL) → C (Business Ethics). Corrects an earlier omission of the Business Ethics / Tanvi HR-pilot paper from the plan analysis; all three are now sequenced together rather than treating the detection paper as the only one.
+- 2026-07-10: Sequencing set: A (Detection) → B (FOIL) → C (Business Ethics). Corrects an earlier omission of the Business Ethics / Tanvi HR-pilot paper from the plan analysis; all three are now sequenced together rather than treating the detection paper as the only one.
 
 ---
 
-## 11. Reviewer recruiting workflow (two tracks) — added 2026-07-10
+## 11. Reviewer recruiting workflow (two tracks): added 2026-07-10
 
 When a profile comes in, it is routed to one of two tracks by a single label ("Panel" or "Comparison"). If no label is given, ask which track before doing anything.
 
-**Track 1 — "Panel" (main JRS reviewers, 24-record detection study, Study 011):**
+**Track 1: "Panel" (main JRS reviewers, 24-record detection study, Study 011):**
 - Register a **V-AI-##** code in `bench_experts` (needs the Supabase token).
 - Build a personalized JRS reviewer prospectus + invitation.
 - Link: `ai-records-pilot.html?code=V-AI-##`.
 - Prior JRS exposure is fine here (these reviewers use JRS). Warm post-likers and interested people belong on this track.
 - **Next available code: V-AI-27** (last used: V-AI-26 Anant Rai).
 
-**Track 2 — "Comparison" (Arm B controlled study, `ai-records-arm-b.html`, LIVE in production):**
+**Track 2: "Comparison" (Arm B controlled study, `ai-records-arm-b.html`, LIVE in production):**
 - Assign the **next RR-### code** (no `bench_experts` registration needed; the page uses an anon key and writes to `ai_pilot_reads` with batch `armB-B1`/`armB-B2`).
 - Give the neutral invitation + the generic neutral prospectus (`Records_Review_Study.pdf`, no JRS method, no reads, no codebook link).
 - Link: `ai-records-arm-b.html?code=RR-###`.
 - **Next available code: RR-101.** RR-101 and RR-102 shown earlier were illustration only; no real person holds any RR code yet. Batch RR-101 to RR-140 generated (20 land JRS-arm B1, 20 land no-JRS B2).
 
-**Guardrails (these protect the study — do not skip):**
+**Guardrails (these protect the study: do not skip):**
 1. **The Comparison person does NOT get hand-assigned to the JRS or no-JRS half.** The page decides that automatically and at random from the code string (`conditionFor()` = parity of the uppercased code). You only choose the *study*; the tool splits the arms. Hand-sorting the halves would bias the result.
 2. **A Comparison recruit must be JRS-naive:** no liking/commenting on JRS posts, no reading the guides, no prior exposure to the reconstructability idea. If unsure, ask the founder "has this person engaged with your JRS content?" If yes, route to Panel instead.
 3. Keep a running note of which RR/ V-AI code went to whom; never reuse a code.
@@ -277,7 +279,7 @@ When a profile comes in, it is routed to one of two tracks by a single label ("P
 
 ---
 
-## Appendix — condition naming (reference)
+## Appendix: condition naming (reference)
 
 Canonical five conditions = the deployed standard (`jrsstandard.html`, `codebook.html`): RC1 Reconstructability · RC2 Basis Identification · RC3 Chronology · RC4 Decision-Process Traceability · RC5 Evidentiary Sufficiency.
 
