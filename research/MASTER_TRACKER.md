@@ -8,6 +8,8 @@
 
 **Authorship policy (enforced 2026-07-11):** Reviewers who complete the study are recognized as named contributors only (certificate, named international panel, acknowledgment in any write-up). They are NOT offered co-authorship. Co-authorship is reserved for the specific collaborators doing substantial analysis or writing (currently Stacy Young on the FOIL paper, and Sanya Dalal, pending, on the Business Ethics paper). Future prospectuses omit the co-authorship line entirely: the recognition section ends at "Featured by name among the international panel of professionals in any publication or write-up." with no co-author clause.
 
+**Open co-authorship item:** SungSoo In (V-AI-24) received the earlier conditional offer and has been given a genuine "maybe" (2026-07-11): revisit once the initial detection results are in. He has consented to named panel recognition. If authorship is ultimately not shared, convert his recognition to acknowledged contributor, not a writing seat.
+
 ## 1. Validation ladder: where each stage stands
 
 | Stage | Question | Status |
