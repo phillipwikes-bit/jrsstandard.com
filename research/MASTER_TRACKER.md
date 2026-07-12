@@ -6,6 +6,8 @@
 
 **Document conventions (enforced 2026-07-10):** Do not use long dashes (em or en dashes) anywhere in this file, or in any copy produced for JRS (connection notes, invitations, prospectuses, site prose). Use a colon, comma, or parentheses instead. This mirrors the house rule in CLAUDE.md and a standing instruction from Phillip.
 
+**Authorship policy (enforced 2026-07-11):** Reviewers who complete the study are recognized as named contributors only (certificate, named international panel, acknowledgment in any write-up). They are NOT offered co-authorship. Co-authorship is reserved for the specific collaborators doing substantial analysis or writing (currently Stacy Young on the FOIL paper, and Sanya Dalal, pending, on the Business Ethics paper). Future prospectuses omit the co-authorship line entirely: the recognition section ends at "Featured by name among the international panel of professionals in any publication or write-up." with no co-author clause.
+
 ## 1. Validation ladder: where each stage stands
 
 | Stage | Question | Status |
