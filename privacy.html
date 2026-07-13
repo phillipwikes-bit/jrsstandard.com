@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Privacy Policy | JRS™ Justification Review Standard</title>
+<meta name="description" content="How JRS handles the information you provide: training enrollment details, review-study submissions, guide downloads, form submissions, and analytics. What is collected, why, how it is stored and kept private, your consent choices, and how to access or delete your data.">
+<meta property="og:title" content="JRS™ Privacy Policy" />
+<meta property="og:description" content="What JRS collects, why, how it is stored privately, your consent choices, and how to access or delete your information. Contact info@jrsstandard.com." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://jrsstandard.com/privacy.html" />
+<meta property="og:site_name" content="JRS™ Justification Review Standard" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="JRS™ Privacy Policy" />
+<meta name="twitter:description" content="How JRS handles the information you provide, your consent choices, and your access and deletion rights." />
+<meta property="og:image" content="https://jrsstandard.com/og-card.svg" />
+<meta name="twitter:image" content="https://jrsstandard.com/og-card.svg" />
+<link rel="canonical" href="https://jrsstandard.com/privacy.html" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+.skip-link{position:absolute;left:-9999px;top:4px;z-index:9999;background:var(--accent);color:#050505;padding:8px 16px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none}
+.skip-link:focus{left:4px}
+.nav-toggle{display:none;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);background:none;border:1px solid var(--rule);padding:8px 14px;cursor:pointer;align-items:center;gap:8px;min-height:36px}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0a;--surface:#111;--surface2:#0f0f0f;--rule:#1e1e1e;
+  --accent:#be9447;--accent-dim:#c4963d;
+  --stop:#c04040;--stop-text:#c04040;
+  --review-text:#b8844a;--ready-text:#5dbf82;
+  --text:#e8e8e8;--muted:#888;--muted-soft:#666;
+}
+body{background:var(--bg);color:var(--text);font-family:'JetBrains Mono',monospace;font-size:14px;line-height:1.6;min-height:100vh}
+a{color:inherit;text-decoration:none}
+.container{max-width:860px;margin:0 auto;padding:0 20px}
+.site-header{border-bottom:1px solid var(--rule);padding:14px 0}
+.header-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.wordmark{font-family:'Bodoni Moda',serif;font-size:16px;font-weight:500;letter-spacing:.04em}
+.wordmark span{color:var(--accent)}
+.header-meta{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);line-height:1.8;text-align:right}
+.nav-links{display:flex;gap:16px;flex-wrap:wrap}
+.nav-links a{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);transition:.1s}
+.nav-links a:hover{color:var(--accent)}
+.nav-links a.active{color:var(--text)}
+
+.page-eyebrow{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;margin-top:40px}
+.page-title{font-family:'Bodoni Moda',serif;font-size:26px;font-weight:500;color:var(--text);line-height:1.2;margin-bottom:14px}
+.page-subtitle{font-size:13.5px;color:var(--muted);line-height:1.7;max-width:680px;margin-bottom:8px}
+.updated{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:24px}
+
+.section-head{font-family:'Bodoni Moda',serif;font-size:17px;font-weight:500;color:var(--text);margin-bottom:6px;margin-top:40px}
+.legal p{font-size:12.5px;color:var(--muted);line-height:1.75;margin-bottom:12px;max-width:720px}
+.legal p a{color:var(--accent)}
+.legal ul{list-style:none;margin:6px 0 14px}
+.legal li{display:flex;gap:9px;font-size:12.5px;color:var(--muted);line-height:1.65;margin-bottom:8px;max-width:720px}
+.legal li .d{color:var(--accent-dim);flex-shrink:0}
+.legal b{color:var(--text);font-weight:600}
+
+.data-table{width:100%;border-collapse:collapse;margin:12px 0 6px;font-size:11.5px}
+.data-table td{border:1px solid var(--rule);padding:9px 12px;color:var(--muted);vertical-align:top;line-height:1.6}
+.data-table td.k{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text);width:180px;letter-spacing:.02em}
+
+.disclaimer-block{border:1px solid rgba(190,148,71,.2);background:var(--surface);padding:16px 20px;margin:22px 0}
+.disclaimer-label{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:8px}
+.disclaimer-text{font-size:12.5px;color:var(--muted);line-height:1.7}
+.disclaimer-text b{color:var(--text)}
+
+.contact-line{font-family:'Bodoni Moda',serif;font-size:16px;color:var(--accent);margin:6px 0 4px}
+
+.site-footer{border-top:1px solid var(--rule);padding:24px 0 40px;margin-top:60px}
+.footer-note{margin-top:12px;font-size:11px;color:var(--muted-soft);line-height:1.65;max-width:580px;border-top:1px solid var(--rule);padding-top:12px}
+
+@media(max-width:600px){
+  .header-meta{text-align:left}
+  .nav-toggle{display:flex}
+  .header-meta{display:none}
+  .data-table td.k{width:auto}
+  .nav-links{display:none;flex-direction:column;flex-basis:100%;order:10;border-top:1px solid var(--rule);padding:4px 0;gap:0}
+  .nav-links.nav-open{display:flex}
+  .nav-links a{padding:11px 20px;border-bottom:1px solid var(--rule)}
+  .nav-links a:last-child{border-bottom:none}
+}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NVYHJ7BJ92"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NVYHJ7BJ92');</script>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header class="site-header" role="banner">
+ <div class="container">
+  <div class="header-inner">
+   <a href="index.html"><div class="wordmark">JRS<span style="font-size:8px;vertical-align:super;position:relative;top:-2px;letter-spacing:0;color:var(--accent);">&#8482;</span></div></a>
+   <button class="nav-toggle" id="nav-toggle" onclick="toggleMobileNav()" aria-label="Toggle navigation" aria-expanded="false">&#9776; Menu</button>
+   <nav class="nav-links" id="nav-links" role="navigation" aria-label="Site navigation">
+    <a href="index.html">Home</a>
+    <a href="simulations.html">Simulations</a>
+    <a href="workflow-fit.html">Workflow Fit</a>
+    <a href="implementation-scenarios.html">Implementation</a>
+    <a href="operational-boundaries.html">Boundaries</a>
+    <a href="enterprise.html">Enterprise</a>
+   </nav>
+   <div class="header-meta">Operational Review Tools<br>Pre-Submission Review Controls</div>
+  </div>
+ </div>
+</header>
+
+<div class="container" id="main-content">
+
+<div class="page-eyebrow">Privacy Policy</div>
+<h1 class="page-title">How JRS handles your information</h1>
+<p class="page-subtitle">JRS is a documentation-governance standard, and it holds itself to the same discipline it asks of a record: collect only what is needed, say plainly why, and keep it defensible. This page explains what we collect, how it is stored, the choices you make when you give it, and how to see or delete it.</p>
+<div class="updated">Last updated: 13 July 2026</div>
+
+<h2 class="section-head">1. Who we are</h2>
+<div class="legal">
+<p>JRS (the Justification Review Standard) is operated by Phillip Wikes. For any question about this policy or your information, contact <a href="mailto:info@jrsstandard.com">info@jrsstandard.com</a>. This is the single point of contact for access, correction, and deletion requests.</p>
+</div>
+
+<h2 class="section-head">2. What we collect, and why</h2>
+<div class="legal">
+<p>We collect information only where you actively provide it or where it is needed to run the site. We do not buy personal information, and we do not build advertising profiles. The specific things we collect:</p>
+<table class="data-table">
+  <tr><td class="k">Training enrollment</td><td>If you enroll in JRS training and certification, we store your <b>name, organization, title, and email</b>, together with the consent choices you make on the form. Purpose: to deliver the training, issue a certificate, and, only where you consent, to contact you.</td></tr>
+  <tr><td class="k">Review-study submissions</td><td>If you take part in a JRS review or detection study, we store your <b>reviewer code</b> and your <b>reads</b> (determinations and notes) on the records. Reviewer codes are pseudonymous identifiers, not your name. Purpose: to compute study reliability and accuracy.</td></tr>
+  <tr><td class="k">Form submissions</td><td>Observation, pilot, and contact forms store the <b>text you enter</b> and the choices you select. Purpose: to respond to you and to record the observation you submitted.</td></tr>
+  <tr><td class="k">Guide downloads</td><td>When an Investigator Field Guide is downloaded, we record the <b>edition and the referring page</b> as a count. This is not linked to your identity.</td></tr>
+  <tr><td class="k">Analytics</td><td>We use Google Analytics 4 to understand aggregate site usage (pages viewed, general location, device type). This uses cookies and is not used to identify you personally.</td></tr>
+</table>
+<p>Free-text fields you submit pass a sensitive-identifier screen in your browser before they are sent, which prompts you to redact personal identifiers (such as email addresses, phone numbers, or record numbers) that do not belong in a submission. Please do not enter another person's personal data into any free-text field.</p>
+</div>
+
+<h2 class="section-head">3. The consent choices you make</h2>
+<div class="legal">
+<p>Where we collect your name and email through training enrollment, we ask for consent explicitly rather than assuming it:</p>
+<ul>
+  <li><span class="d">1</span><span><b>Contact and storage (required to enroll):</b> you agree that we may store your enrollment details and contact you about your training and about JRS.</span></li>
+  <li><span class="d">2</span><span><b>Transfer with the asset (optional):</b> you may separately agree that your enrollment record can be transferred to a successor organization if the JRS assets are sold or transferred. This choice is yours and is off unless you turn it on.</span></li>
+</ul>
+<p>You can change or withdraw either choice at any time by emailing <a href="mailto:info@jrsstandard.com">info@jrsstandard.com</a>. Withdrawing consent does not affect anything already done while consent was in place.</p>
+</div>
+
+<h2 class="section-head">4. How your information is stored and kept private</h2>
+<div class="legal">
+<p>Personal information is held in a hosted database with access controls designed so that it stays private by construction, not by promise:</p>
+<ul>
+  <li><span class="d">&middot;</span><span>Personal records (enrollment details, review submissions, form text) are written and read only by our server-side functions. The public website cannot read them.</span></li>
+  <li><span class="d">&middot;</span><span>Row-level security is enabled on these tables with no public read access. A request from the public site for this data returns nothing.</span></li>
+  <li><span class="d">&middot;</span><span>Public dashboards show only aggregate counts. Names, titles, emails, and individual answers never appear in any public page or export.</span></li>
+  <li><span class="d">&middot;</span><span>The connection to the site is encrypted in transit.</span></li>
+</ul>
+</div>
+
+<h2 class="section-head">5. When we share information</h2>
+<div class="legal">
+<p>We do not sell your personal information, and we do not share it for advertising. We share it only in these limited situations:</p>
+<ul>
+  <li><span class="d">&middot;</span><span><b>Service providers</b> that run the site on our behalf (our database host and our analytics provider), which process data only to provide those services.</span></li>
+  <li><span class="d">&middot;</span><span><b>A successor organization</b> in the event of a sale or transfer of the JRS assets, but for enrollment records <b>only where you gave the optional transfer consent</b> described in section 3. If you did not, your enrollment record is not transferred with the assets.</span></li>
+  <li><span class="d">&middot;</span><span><b>Where the law requires it</b>, such as a valid legal request.</span></li>
+</ul>
+<p>Where a reviewer's name is ever shown publicly (for example, on a named study panel), it is shown only with that reviewer's specific, opt-in approval of the exact wording, and any reviewer may withdraw before publication. Being named reflects participation only and is not an endorsement.</p>
+</div>
+
+<h2 class="section-head">6. How long we keep it</h2>
+<div class="legal">
+<p>We keep personal information only as long as it is needed for the purpose it was collected: enrollment and certification records for as long as the certification is meaningful or until you ask us to delete them; study submissions for the life of the research record they belong to; and form submissions until the matter they concern is resolved. Aggregate counts and de-identified data may be kept indefinitely because they do not identify you.</p>
+</div>
+
+<h2 class="section-head">7. Your rights</h2>
+<div class="legal">
+<p>You can ask us to do any of the following with the personal information we hold about you:</p>
+<ul>
+  <li><span class="d">&middot;</span><span><b>Access:</b> get a copy of what we hold.</span></li>
+  <li><span class="d">&middot;</span><span><b>Correct:</b> fix anything that is wrong.</span></li>
+  <li><span class="d">&middot;</span><span><b>Delete:</b> have it removed, subject to any record we are legally required to keep.</span></li>
+  <li><span class="d">&middot;</span><span><b>Withdraw consent:</b> turn off contact or transfer consent at any time.</span></li>
+</ul>
+<div class="contact-line"><a href="mailto:info@jrsstandard.com" style="color:var(--accent);border-bottom:1px solid var(--accent-dim);">info@jrsstandard.com</a></div>
+<p>Email that address and we will action your request. Depending on where you live, you may also have rights under laws such as the GDPR or state privacy laws; this policy is written to respect those rights, and the same contact address serves them.</p>
+</div>
+
+<h2 class="section-head">8. Analytics and cookies</h2>
+<div class="legal">
+<p>We use Google Analytics 4, which sets cookies to measure aggregate usage. You can block cookies in your browser or use a browser extension to opt out of Google Analytics, and the site will still work. We do not use cookies to identify you personally or to serve advertising.</p>
+</div>
+
+<h2 class="section-head">9. Children</h2>
+<div class="legal">
+<p>JRS is a professional tool for organizations and is not directed to children. We do not knowingly collect information from anyone under 16.</p>
+</div>
+
+<h2 class="section-head">10. Changes to this policy</h2>
+<div class="legal">
+<p>If we change how we handle information, we will update this page and change the date at the top. Material changes to how we use personal information will be reflected here before they take effect.</p>
+</div>
+
+<div class="disclaimer-block">
+  <div class="disclaimer-label">Note on scope</div>
+  <div class="disclaimer-text">This policy describes how JRS handles information you provide to it. JRS resources evaluate whether a record can explain a decision; they are <b>not legal advice</b>, and this policy is not a substitute for legal counsel on your own data-protection obligations. Questions go to <b>info@jrsstandard.com</b>.</div>
+</div>
+
+</div>
+
+<footer class="site-footer" role="contentinfo">
+ <div class="container">
+  <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:flex-start;">
+   <div style="font-size:11.5px;color:var(--muted-soft);line-height:1.8;">
+    <div style="font-family:'Bodoni Moda',serif;font-size:14px;margin-bottom:4px;">JRS<span style="color:var(--accent);">.</span></div>
+    <div>Operational Review Tools</div>
+    <div style="margin-top:6px;display:flex;gap:14px;flex-wrap:wrap;">
+     <a href="index.html" style="color:var(--muted-soft);font-size:11px;">Home</a>
+     <a href="simulations.html" style="color:var(--muted-soft);font-size:11px;">Simulations</a>
+     <a href="workflow-fit.html" style="color:var(--muted-soft);font-size:11px;">Workflow Fit</a>
+     <a href="implementation-scenarios.html" style="color:var(--muted-soft);font-size:11px;">Implementation</a>
+     <a href="operational-boundaries.html" style="color:var(--muted-soft);font-size:11px;">Boundaries</a>
+     <a href="enterprise.html" style="color:var(--muted-soft);font-size:11px;">Enterprise</a>
+    </div>
+   </div>
+  </div>
+  <div style="width:100%;font-family:'Bodoni Moda',serif;font-size:14px;color:var(--accent);margin-bottom:8px;">JRS measures the record, not the tool that produced it.</div>
+  <div style="margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-soft);">&#169; 2026 Phillip Wikes &nbsp;&middot;&nbsp; JRS&#8482;</div>
+  <div class="footer-note">JRS resources are designed to supplement existing documentation-review workflows and are not legal advice, compliance certification, workflow replacement systems, automated governance scoring, or enterprise accreditation infrastructure.</div>
+ </div>
+</footer>
+
+<script>
+function toggleMobileNav(){
+  var nav=document.getElementById('nav-links');
+  var btn=document.getElementById('nav-toggle');
+  if(!nav||!btn)return;
+  var isOpen=nav.classList.contains('nav-open');
+  nav.classList.toggle('nav-open');
+  btn.setAttribute('aria-expanded',String(!isOpen));
+  btn.innerHTML=isOpen?'&#9776; Menu':'&#10005; Close';
+}
+</script>
+</body>
+</html>
