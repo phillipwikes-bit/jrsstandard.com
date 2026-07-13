@@ -12,6 +12,8 @@
 
 **Open co-authorship item:** SungSoo In (V-AI-24) received the earlier conditional offer and has been given a genuine "maybe" (2026-07-11): revisit once the initial detection results are in. He has consented to named panel recognition. If authorship is ultimately not shared, convert his recognition to acknowledged contributor, not a writing seat.
 
+**Hekim Colpan (V-AI-20), 2026-07-13:** sent Phillip a reciprocal LinkedIn recommendation (received; Phillip should accept/publish it) and offered to stay involved and contribute to the analysis and development. Same handling as SungSoo: welcome his continued input, no co-authorship promised; revisit only if a substantial written contribution arises. His voluntary recommendation is his own endorsement (fine and valuable); distinct from our naming him, which remains participation-only.
+
 ## 1. Validation ladder: where each stage stands
 
 | Stage | Question | Status |
