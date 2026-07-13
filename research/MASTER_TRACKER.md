@@ -318,6 +318,28 @@ Note on RR-102: Sundeep Mattaparti is Head of Legal and Compliance at bioMérieu
 
 ---
 
+## 13. Training enrollment capture (IP-value asset, built 2026-07-13)
+
+**Goal:** convert interest into named, consented, *trained/certified* users, the strongest demand-and-adoption signal for the sale. Free guides stay ungated (reach preserved); the JRS training is the opt-in that captures name, organization, title, email with consent. A trained-user base is higher value than a raw download list and harder to copy.
+
+**Built (token-free, service-role pattern):**
+| Piece | File | Status |
+|---|---|---|
+| Consented enrollment modal (name/org/title/email + required contact consent + optional transfer consent) | `training.html` | Built on dev; NOT deployed yet |
+| Enrollment relay (service-role insert, PII never exposed) | `api/enroll.js` | DEPLOYED and live (`serviceKey:true`) |
+| Dashboard adoption tile (aggregate counts only) | `pilot-status.html` | Built on dev; NOT deployed yet |
+| PII table + aggregate view SQL | `scratchpad/training-registrations-setup.sql` | **PENDING: user must run once in the SQL editor** |
+
+**The one manual step (DDL cannot be done without the token/SQL editor):** run `training-registrations-setup.sql` in the Supabase SQL editor. It creates `training_registrations` (locked-down PII table, no anon access, only the service role reads/writes) and `training_stats` (aggregate view, no PII, anon-readable for the dashboard). After that, deploy `training.html` + `pilot-status.html` to `main` and the capture is live.
+
+**Consent design (for sellability + compliance):** required checkbox = consent to contact + storage; optional checkbox = consent to transfer to an acquirer (without this the list cannot legally transfer with the IP). Privacy note on the modal; deletion/access via info@jrsstandard.com. A standalone privacy policy page is still recommended before scaling collection.
+
+**Panel angle:** when an international-panel reviewer asks "anything else I can do?", invite them to complete the JRS training + certification (link `training.html?src=panel`, which tags their enrollment as `panel`). High-credential enrollments strengthen the trained-user asset.
+
+**Do NOT deploy `training.html` before the table exists:** without the table, `/api/enroll` returns an error and the modal would block training access. Deploy only after the SQL is run.
+
+---
+
 ## Appendix: condition naming (reference)
 
 Canonical five conditions = the deployed standard (`jrsstandard.html`, `codebook.html`): RC1 Reconstructability · RC2 Basis Identification · RC3 Chronology · RC4 Decision-Process Traceability · RC5 Evidentiary Sufficiency.
