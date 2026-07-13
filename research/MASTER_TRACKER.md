@@ -121,7 +121,8 @@ Articles 2-4 (FOIL pilot; HR pilot; capstone with construct validity): planned, 
 | 4 | Real-case pilot (Rung 3) | Nudge Keith; get more cases | You send / I draft |
 | 5 | Website 404s (~20% of traffic) | Send bad URLs from GA4 → I build redirects | You send URLs |
 | 6 | Dewey / Peter Broida | 2026-07-10: Broida emailed that he forwarded the site to Dewey's investigation-book authors ("glad to be of help"). Reply this round is purely grateful (co-publishing question held for later). Still not an endorsement. | You send grateful reply |
-| 7 | Supabase token ROTATED 2026-07-13 (old token now returns 401, good). A NEW token is needed for DB writes: registering reviewers, applying SQL. Reads on the public dashboard still work (anon key). | Provide a fresh token to apply pending registrations (V-AI-30), or run them yourself | You |
+| 7 | Supabase token ROTATED 2026-07-13 (old token now returns 401, good). A NEW token is needed for DB writes: registering Panel reviewers (bench_experts), applying SQL. Reads on the public dashboard still work (anon key). | Provide a fresh token to apply pending registrations (V-AI-30 Andres), or run them in the SQL editor | You |
+| 8 | Reviewer submissions were failing: anon INSERT on `ai_pilot_reads` got blocked by RLS (change after 07-11). Boris hit the fail-safe. **FIXED 2026-07-13**: submissions now route through server-side relay `api/submit.js` (service-role key in Vercel), deployed and live on both study pages. Boris's answers imported. | (a) Delete the smoke-test row when convenient: `delete from public.ai_pilot_reads where reviewer_code='SMOKE-TEST';`  (b) optional: restore the anon INSERT policy so the direct path works too | You (SQL editor) |
 
 ---
 
@@ -305,7 +306,7 @@ Arm B recruits review the same 24 records at `ai-records-arm-b.html`. Each code 
 
 | Code | Name | Country | Assigned arm | Status |
 |---|---|---|---|---|
-| RR-101 | Boris Khazin | US (North Carolina) | no-JRS (B2) | Invited 2026-07-13; JRS-naive confirmed by Phillip |
+| RR-101 | Boris Khazin | US (North Carolina) | no-JRS (B2) | **COMPLETE 24/24** (submitted 2026-07-13; first submission hit the RLS bug and fail-safe-downloaded, then imported via /api/submit relay). JRS-naive confirmed by Phillip |
 | RR-102 | Sundeep Mattaparti | India (Hyderabad) | JRS (B1) | Invited 2026-07-13; JRS-naive per Arm B direction |
 | RR-103 | Pankaj Kumar Bhagat | India (Chennai) | no-JRS (B2) | Invited 2026-07-13; JRS-naive per Arm B direction (IP & patent strategy, XLSCOUT; ex-Indian Patent Examiner) |
 
