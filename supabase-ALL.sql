@@ -455,3 +455,78 @@ drop policy if exists "register expert" on public.bench_experts;
 create policy "register expert" on public.bench_experts
   for insert to anon with check (char_length(coalesce(code,'')) >= 1);
 -- (no select policy for anon: expert identities stay private)
+
+-- ============================================================
+-- AI-records reviewer reads (Detection panel + Arm B).
+-- Written server-side only, through /api/submit (service role). No anon policy:
+-- reviewer answers stay private. Anon SELECT returns [] (verified).
+-- ============================================================
+create table if not exists public.ai_pilot_reads (
+  id            uuid primary key default gen_random_uuid(),
+  record_ref    text,
+  jrs_read      text,
+  rely          text,
+  note          text,
+  reviewer_code text,
+  batch         text,
+  created_at    timestamptz not null default now()
+);
+alter table public.ai_pilot_reads enable row level security;
+-- No policies: only the service role (via /api/submit) inserts and reads.
+
+-- ============================================================
+-- Field Guide download counter. Written server-side only, through /api/dl
+-- (service role). Aggregate view is public; raw rows are not.
+-- ============================================================
+create table if not exists public.guide_downloads (
+  id         uuid primary key default gen_random_uuid(),
+  edition    text,
+  src        text,
+  created_at timestamptz not null default now()
+);
+alter table public.guide_downloads enable row level security;
+-- No anon policy: raw rows stay private; expose only the aggregate view below.
+create or replace view public.guide_download_stats as
+select
+  edition,
+  count(*)::int                                                     as downloads,
+  count(*) filter (where created_at >= date_trunc('day', now()))::int as today
+from public.guide_downloads
+group by edition;
+grant select on public.guide_download_stats to anon, authenticated;
+
+-- ============================================================
+-- Training enrollment capture (name / organization / title / email).
+-- Written server-side only, through /api/enroll (service role), and only with
+-- explicit contact consent. No policies: the PII list stays private and
+-- transfer-ready. The private dashboard reads the aggregate view only.
+-- ============================================================
+create table if not exists public.training_registrations (
+  id               bigint generated always as identity primary key,
+  name             text,
+  organization     text,
+  title            text,
+  email            text,
+  audience         text,             -- 'public' | 'panel' | 'guide'
+  source           text,
+  consent_contact  boolean default false,
+  consent_transfer boolean default false,
+  created_at       timestamptz not null default now()
+);
+alter table public.training_registrations enable row level security;
+-- No policies on purpose: anon/public cannot read or write this table. Only the
+-- service role (the /api/enroll edge function) inserts, and only the service role
+-- reads the personal data.
+
+create or replace view public.training_stats as
+select
+  count(*)::int                                                      as enrollments,
+  count(distinct lower(nullif(email,'')))::int                       as unique_people,
+  count(distinct nullif(organization,''))::int                      as organizations,
+  count(*) filter (where consent_contact)::int                       as consented_contact,
+  count(*) filter (where consent_transfer)::int                      as consented_transfer,
+  count(*) filter (where created_at >= date_trunc('day', now()))::int as today
+from public.training_registrations;
+grant select on public.training_stats to anon, authenticated;
+
+notify pgrst, 'reload schema';
