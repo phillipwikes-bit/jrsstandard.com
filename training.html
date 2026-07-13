@@ -3095,5 +3095,50 @@ function submitPoll() {
   if (result) { result.style.display='block'; result.scrollIntoView({behavior:'smooth',block:'nearest'}); }
 }
 </script>
+<div id="enroll-overlay" style="display:none;position:fixed;inset:0;background:rgba(5,5,5,.94);z-index:99999;align-items:flex-start;justify-content:center;padding:24px;overflow:auto;font-family:'Inter',sans-serif">
+  <div style="max-width:460px;width:100%;background:var(--surface);border:1px solid var(--accent);padding:26px 24px;margin:24px 0">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:10px">JRS Training &amp; Certification</div>
+    <h2 style="font-family:'Bodoni Moda',serif;font-weight:400;font-size:23px;color:var(--text);margin:0 0 8px">Register to begin</h2>
+    <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 16px">Take the six-module JRS training and earn your certificate. Free for practitioners. Register once, then it is unlocked on this device.</p>
+    <input id="en-name" type="text" placeholder="Full name" autocomplete="name" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;margin-bottom:9px">
+    <input id="en-org" type="text" placeholder="Organization" autocomplete="organization" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;margin-bottom:9px">
+    <input id="en-title" type="text" placeholder="Title or role" autocomplete="organization-title" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;margin-bottom:9px">
+    <input id="en-email" type="email" placeholder="Work email" autocomplete="email" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;margin-bottom:14px">
+    <label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--muted);line-height:1.5;margin-bottom:9px;cursor:pointer"><input type="checkbox" id="en-c1" style="margin-top:2px;flex:0 0 auto"><span>I agree to be contacted about the JRS project and consent to my details being stored securely for that purpose. (required)</span></label>
+    <label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--muted-soft);line-height:1.5;margin-bottom:12px;cursor:pointer"><input type="checkbox" id="en-c2" style="margin-top:2px;flex:0 0 auto"><span>I also consent to my details being transferred to a successor if the JRS project is acquired. (optional)</span></label>
+    <div id="en-msg" style="font-size:12px;color:var(--review-text);min-height:16px;margin-bottom:8px"></div>
+    <button id="en-go" onclick="enrollSubmit()" style="width:100%;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:13px;cursor:pointer">Start the training</button>
+    <p style="font-size:10.5px;color:var(--muted-soft);line-height:1.55;margin:12px 0 0">Your details are stored securely and used only for the JRS project. Request access or deletion any time at info@jrsstandard.com.</p>
+  </div>
+</div>
+<script>
+(function(){
+  try {
+    if (!localStorage.getItem('jrs-training-enrolled')) {
+      var o = document.getElementById('enroll-overlay');
+      if (o) o.style.display = 'flex';
+    }
+  } catch(e){}
+})();
+function enrollSubmit(){
+  var msg = document.getElementById('en-msg');
+  var name = (document.getElementById('en-name').value||'').trim();
+  var org = (document.getElementById('en-org').value||'').trim();
+  var title = (document.getElementById('en-title').value||'').trim();
+  var email = (document.getElementById('en-email').value||'').trim();
+  var c1 = document.getElementById('en-c1').checked;
+  var c2 = document.getElementById('en-c2').checked;
+  if (!name){ msg.textContent = 'Please enter your name.'; return; }
+  if (!email || email.indexOf('@') < 1 || email.indexOf('.') < 0){ msg.textContent = 'Please enter a valid email.'; return; }
+  if (!c1){ msg.textContent = 'Please tick the required consent box to continue.'; return; }
+  var aud = 'public';
+  try { if ((new URLSearchParams(location.search)).get('src') === 'panel') aud = 'panel'; } catch(e){}
+  var btn = document.getElementById('en-go'); btn.disabled = true; msg.style.color = 'var(--muted-soft)'; msg.textContent = 'Submitting...';
+  fetch('/api/enroll', { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify({ name:name, organization:org, title:title, email:email, audience:aud, source:'training.html', consent_contact:c1, consent_transfer:c2 }) })
+    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+    .then(function(){ try{ localStorage.setItem('jrs-training-enrolled','1'); }catch(e){} document.getElementById('enroll-overlay').style.display = 'none'; })
+    .catch(function(){ msg.style.color = 'var(--review-text)'; msg.textContent = 'Could not register just now. Please try again, or email info@jrsstandard.com.'; btn.disabled = false; });
+}
+</script>
 </body>
 </html>
