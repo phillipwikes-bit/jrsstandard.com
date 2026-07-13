@@ -226,6 +226,11 @@ Articles 2-4 (FOIL pilot; HR pilot; capstone with construct validity): planned, 
 
 **Deploy note (important):** production `main` currently contains **no `research/` files** and there is **no `.vercelignore`**. Do NOT deploy by pushing the whole dev branch to `main`: that would publish the answer key and the private `pilot-status.html` dashboard. Always deploy selected public files only (as was done here).
 
+**Dashboard charts (added 2026-07-11, LIVE):** `pilot-status.html` now shows two inline charts (no external library, matching the site's no-dependency convention).
+- **Panel completion:** horizontal stacked bar (Complete / In progress / Not started), computed client-side from `pilot_progress`.
+- **Investigator Guide Downloads by day:** stacked bar chart colored by edition, from a new aggregate-only view `public.guide_downloads_public` (day x edition counts, granted to anon; the raw `guide_downloads` log stays private). Categorical palette validated for the dark surface: EEO `#3987e5`, Fair Housing `#199e70`, International `#c98500`.
+- Deployed to `main` via selective deploy (commit `73b57f1`); only `pilot-status.html` shipped.
+
 ---
 
 ## 10. Publication sequencing & strategy (three papers in flight)
