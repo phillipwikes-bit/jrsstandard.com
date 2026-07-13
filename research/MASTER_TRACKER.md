@@ -277,7 +277,7 @@ When a profile comes in, it is routed to one of two tracks by a single label ("P
 - Assign the **next RR-### code** (no `bench_experts` registration needed; the page uses an anon key and writes to `ai_pilot_reads` with batch `armB-B1`/`armB-B2`).
 - Give the neutral invitation + the generic neutral prospectus (`Records_Review_Study.pdf`, no JRS method, no reads, no codebook link).
 - Link: `ai-records-arm-b.html?code=RR-###`.
-- **Next available code: RR-101.** RR-101 and RR-102 shown earlier were illustration only; no real person holds any RR code yet. Batch RR-101 to RR-140 generated (20 land JRS-arm B1, 20 land no-JRS B2).
+- **Next available comparison code: RR-102** (lands JRS-arm B1 by hash). RR-101 assigned to Boris Khazin on 2026-07-13 (first Arm B participant; see Section 12). Batch RR-101 to RR-140 generated (20 land JRS-arm B1, 20 land no-JRS B2); handed out in sequence, never steered.
 
 **Guardrails (these protect the study: do not skip):**
 1. **The Comparison person does NOT get hand-assigned to the JRS or no-JRS half.** The page decides that automatically and at random from the code string (`conditionFor()` = parity of the uppercased code). You only choose the *study*; the tool splits the arms. Hand-sorting the halves would bias the result.
@@ -287,6 +287,18 @@ When a profile comes in, it is routed to one of two tracks by a single label ("P
 **Code-to-arm reference (Arm B, from `conditionFor`):**
 - JRS arm (B1): RR-102, 104, 106, 108, 111, 113, 115, 117, 119, 120, 122, 124, 126, 128, 131, 133, 135, 137, 139, 140
 - No-JRS arm (B2): RR-101, 103, 105, 107, 109, 110, 112, 114, 116, 118, 121, 123, 125, 127, 129, 130, 132, 134, 136, 138
+
+---
+
+## 12. Comparison group (Arm B) participants (roster)
+
+Arm B recruits review the same 24 records at `ai-records-arm-b.html`. Each code is randomly assigned by the tool to the JRS arm (B1) or the no-JRS baseline (B2); we do not steer people into arms (that would bias the comparison). Only JRS-naive people are eligible (Section 11). No `bench_experts` registration is needed (the page uses the anon key and writes to `ai_pilot_reads` with batch `armB-B1` / `armB-B2`). Live participation is on `pilot-status.html` (aggregate view `armb_progress`, codes not names).
+
+| Code | Name | Country | Assigned arm | Status |
+|---|---|---|---|---|
+| RR-101 | Boris Khazin | US (North Carolina) | no-JRS (B2) | Invited 2026-07-13; JRS-naive confirmed by Phillip |
+
+Note on RR-101: Boris Khazin is an AI Governance, Digital Risk, and GRC leader (ClearView MRI; ex-EPAM Global Head of DRM/GRC; EU AI Act, DORA, NIST AI RMF). He is the first Arm B participant. His code lands in the no-JRS baseline arm by the deterministic hash, not by selection.
 
 ---
 
