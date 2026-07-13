@@ -137,7 +137,7 @@ function submitReads(){
   if(!jrsSanitizeCheck(notesBlob)) return;
   st.textContent='Submitting '+rows.length+'…'; st.style.color='var(--muted-soft)';
   var btn=document.querySelector('.btn.solid'); btn.disabled=true;
-  fetch(U+'/rest/v1/ai_pilot_reads',{method:'POST',headers:Object.assign({'Content-Type':'application/json','Prefer':'return=minimal'},HDR),body:JSON.stringify(rows)})
+  fetch('/api/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({rows:rows})})
     .then(function(r){ if(!r.ok) throw 0;
       st.textContent='Recorded '+rows.length+' reads. Thank you. You can update and resubmit any time.'; st.style.color='var(--ready-text)';
       btn.disabled=false;
