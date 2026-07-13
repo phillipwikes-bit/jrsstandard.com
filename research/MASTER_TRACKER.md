@@ -20,7 +20,7 @@
 |---|---|---|
 | **Rung 1: Reproducibility** | Do 3 independent AI models (Claude, GPT, Gemini) give the same JRS read on the same record? | ✅ 84% agreement across 15 records. Auto-runs nightly. |
 | **Rung 2a: Reliability** | Do independent human reviewers agree with each other? | ✅ Experts AC1 0.74, reviewers 0.63 (10 records). |
-| **Rung 2b: Accuracy** | Can reviewers match a hidden answer key on 24 records? | 🟡 7 of 25 reviewers complete (Jake, Frank, Lawal, Andrey, Hekim, Kyle, SungSoo); Saurabh 7/24. Key verified 24/24. |
+| **Rung 2b: Accuracy** | Can reviewers match a hidden answer key on 24 records? | 🟡 7 of 26 reviewers complete (Jake, Frank, Lawal, Andrey, Hekim, Kyle, SungSoo); Saurabh 7/24. Key verified 24/24. |
 | **Construct validity** | Are the five conditions distinct dimensions? | 🟡 Data ready (108 rows). No psychologist recruited. |
 | **Rung 3: Criterion validity** | Do flagged records fail in real cases? | 🟡 12 real cases collected. |
 | **External validity** | Does it hold on real (non-constructed) records? | ⬜ Future. |
@@ -28,7 +28,7 @@
 ### The pilots: evidence collected (verified live)
 | # | Pilot | What it collects | Evidence to date |
 |---|---|---|---|
-| 1 | **AI-Assisted Records Detection** (Study 011) | Reviewer reads on the 24-record set vs a verified key | **176 reads; 7 complete (Jake, Frank, Lawal, Andrey, Hekim, Kyle, SungSoo), Saurabh 7/24, 25 registered** |
+| 1 | **AI-Assisted Records Detection** (Study 011) | Reviewer reads on the 24-record set vs a verified key | **176 reads; 7 complete (Jake, Frank, Lawal, Andrey, Hekim, Kyle, SungSoo), Saurabh 7/24, 26 registered** |
 | 2 | **Bench Reliability** (Studies 003/004) | Expert + reviewer scoring of a shared record set | **8 experts + 13 reviewers, 108 labels, 10 records → AC1 0.74 / 0.63** |
 | 3 | **Real-Case Criterion** (Study 010, Rung 3) | Real public cases + documented outcomes, in 3 domain pilots | **12 real cases: FOIL/Stacy 7, HR/Tanvi 5, Healthcare/Keith 0 (breakdown in §2)** |
 
@@ -45,7 +45,7 @@
 
 ## 2. People
 
-**Detection panel (24-record study)**: 7 complete, 1 in progress, 17 not started (25 in DB; V-AI-30 Andres assigned, DB write pending new token):
+**Detection panel (24-record study)**: 7 complete, 1 in progress, 18 not started (26 registered):
 
 | Code | Name | Title / role (verified) | Country | Reads | Status |
 |---|---|---|---|---|---|
@@ -74,7 +74,7 @@
 | V-AI-27 | Sidharth Borah | Advocate, High Court of Delhi (13+ yrs); Partner, Gurinder & Partners; litigation & legal defensibility | India | 0/24 | Not started |
 | V-AI-28 | Nigel Hee | AI Ethics, Safety & Governance; AI Policy; Co-founder OpenNexus; researcher, University of Glasgow | Singapore | 0/24 | Not started |
 | V-AI-29 | Marguerite Maroudis, PhD | AI & Law Expert; DPO & AI Governance Consultant; contract law; PhD Private Law; Founder, TechLegalExperts (Arabic/English/French) | UAE (Dubai) | 0/24 | Invited |
-| V-AI-30 | Andres Lage Freire (Expert Panel) | AI Governance Lead / Responsible AI Architect; Responsible AI & Gen AI, RAG, EU AI Act, ISO 42001; SDLC-native governance; Harvard exec-ed | Spain (Madrid) | 0/24 | Invited (DB registration PENDING: old token rotated 2026-07-13; apply `supabase-andres-vai30.sql` with a new token) |
+| V-AI-30 | Andres Lage Freire (Expert Panel) | AI Governance Lead / Responsible AI Architect; Responsible AI & Gen AI, RAG, EU AI Act, ISO 42001; SDLC-native governance; Harvard exec-ed | Spain (Madrid) | 0/24 | Registered 2026-07-13 via the token-free `/api/register` endpoint (service-role); not started |
 
 **Methodology:** M-01 **Ubayet Hossain, FRM**: Associate Director (Model Validation), KPMG India; 9+ years in credit/market-risk model development and validation. Contributed the reliability/validation framework (the Rung 1-2 statistics and floors). Credited in the analysis plan, both research PDFs, and the article.
 
@@ -115,7 +115,7 @@ Articles 2-4 (FOIL pilot; HR pilot; capstone with construct validity): planned, 
 
 | # | Thread | Next action | Owner |
 |---|---|---|---|
-| 1 | Finish the 24-record detection study (7/25 complete) | Nudge the 18 unfinished reviewers | You send / I draft |
+| 1 | Finish the 24-record detection study (7/26 complete) | Nudge the 19 unfinished reviewers | You send / I draft |
 | 2 | Recruit an organizational psychologist | Find one; hand over the data package (ready) | Not started |
 | 3 | Publish Article 1 (Rungs 1 & 2) | Ubayet reviews first, then preprint/journal | Decide path |
 | 4 | Real-case pilot (Rung 3) | Nudge Keith; get more cases | You send / I draft |
@@ -248,7 +248,7 @@ Articles 2-4 (FOIL pilot; HR pilot; capstone with construct validity): planned, 
 
 | # | Paper | Venue | Co-author | Data basis | Gating item |
 |---|---|---|---|---|---|
-| A | **Detection**: "Detecting Decision Reconstruction Risk in AI-Assisted Documentation" | AI and Ethics (alt: AI & Society; FAccT/AIES workshop) | panel; Ubayet methodology credited | Study 011: 24-record set vs verified key (+ Arm B if run) | Finish the panel (7/25 complete); decide Arm B |
+| A | **Detection**: "Detecting Decision Reconstruction Risk in AI-Assisted Documentation" | AI and Ethics (alt: AI & Society; FAccT/AIES workshop) | panel; Ubayet methodology credited | Study 011: 24-record set vs verified key (+ Arm B if run) | Finish the panel (7/26 complete); decide Arm B |
 | B | **FOIL**: "Documentation as a Governance Layer" | Journal of Civic Information | **Stacy Young (E-08): CONFIRMED** | Public-records pilot n=7 → target 20-30 | Reach 20-30 cases with a spread (Aug 31, 2026) |
 | C | **Business Ethics**: "Documentation Governance in AI-Assisted Decision-Making" | Journal of Business Ethics | **Sanya Dalal (pending)** | **Tanvi HR pilot n=5** + Rungs 1-2; public-records illustrative only | Sanya yes/no; HR data maturity; no duplication with FOIL |
 
@@ -258,7 +258,7 @@ Articles 2-4 (FOIL pilot; HR pilot; capstone with construct validity): planned, 
 3. **Paper C (Business Ethics) third.** Gated on Sanya's acceptance AND the HR/criterion data maturing; must not duplicate FOIL's primary results. Sanya's yes also unblocks telling Tanvi about the paper.
 
 **Immediate actions (parallel, now):**
-- Nudge the 18 unfinished detection reviewers (binding task for Paper A).
+- Nudge the 19 unfinished detection reviewers (binding task for Paper A).
 - Decide Arm B (run vs scope-down).
 - Get Sanya's yes/no (unblocks Paper C + Tanvi).
 - Keep FOIL and HR case collection moving toward 20-30 each.
@@ -281,7 +281,9 @@ When a profile comes in, it is routed to one of two tracks by a single label ("P
 - Build a personalized JRS reviewer prospectus + invitation.
 - Link: `ai-records-pilot.html?code=V-AI-##`.
 - Prior JRS exposure is fine here (these reviewers use JRS). Warm post-likers and interested people belong on this track.
-- **Next available code: V-AI-31** (last used: V-AI-30 Andres Lage Freire; note: V-AI-30 DB registration pending a new Supabase token).
+- **Next available code: V-AI-31** (last used: V-AI-30 Andres Lage Freire, registered 2026-07-13 via the token-free endpoint).
+
+**Token-free Panel registration (added 2026-07-13, works with NO Supabase token):** the management token is dead, so Panel reviewers are now registered via `api/register.js`, a Vercel edge function that writes to `bench_experts` using the service-role key already in the Vercel environment. It upserts a FIXED list of reviewers hard-coded in the file (no request input decides what is written, so it is safe and idempotent). To register a new Panel reviewer without a token: (1) add their row to the `REVIEWERS` array in `api/register.js`, (2) deploy that file to `main` (selective deploy), (3) `GET https://www.jrsstandard.com/api/register` once. Verify via `pilot_progress`. This is now the standard Panel-registration path until a working management token exists. (Arm B still needs nothing: no DB write at all.)
 
 **Track 2: "Comparison" (Arm B controlled study, `ai-records-arm-b.html`, LIVE in production):**
 - Assign the **next RR-### code** (no `bench_experts` registration needed; the page uses an anon key and writes to `ai_pilot_reads` with batch `armB-B1`/`armB-B2`).
