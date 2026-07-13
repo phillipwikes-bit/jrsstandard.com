@@ -71,7 +71,7 @@
 | V-AI-26 | Anant Rai | Information & Cyber Security and Data Privacy Leader (14+ yrs; IT GRC, NIST CSF, risk & compliance) | India | 0/24 | Invited |
 | V-AI-27 | Sidharth Borah | Advocate, High Court of Delhi (13+ yrs); Partner, Gurinder & Partners; litigation & legal defensibility | India | 0/24 | Not started |
 | V-AI-28 | Nigel Hee | AI Ethics, Safety & Governance; AI Policy; Co-founder OpenNexus; researcher, University of Glasgow | Singapore | 0/24 | Not started |
-| V-AI-29 | Marguerite Maroudis, PhD | Independent reviewer; governance & accountability focus (field/country to confirm) | (to confirm) | 0/24 | Invited |
+| V-AI-29 | Marguerite Maroudis, PhD | AI & Law Expert; DPO & AI Governance Consultant; contract law; PhD Private Law; Founder, TechLegalExperts (Arabic/English/French) | UAE (Dubai) | 0/24 | Invited |
 
 **Methodology:** M-01 **Ubayet Hossain, FRM**: Associate Director (Model Validation), KPMG India; 9+ years in credit/market-risk model development and validation. Contributed the reliability/validation framework (the Rung 1-2 statistics and floors). Credited in the analysis plan, both research PDFs, and the article.
 
