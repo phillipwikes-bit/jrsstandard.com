@@ -39,6 +39,13 @@ tr.today td{background:rgba(93,191,130,.07)}
 .pill.new{color:var(--ready);border-color:var(--ready)}
 .ft{border-top:1px solid var(--rule);padding:18px 20px;margin-top:24px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-soft)}
 @media(max-width:600px){.cards{grid-template-columns:1fr 1fr}.cv{font-size:30px}td,th{padding:8px 6px}}
+.chart{background:var(--surface);border:1px solid var(--rule);padding:16px;margin:16px 0}
+.chart h2{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);font-weight:500;margin-bottom:14px}
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.05em;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:2px;display:inline-block;flex:0 0 auto}
+.sbar{display:flex;width:100%;height:30px;gap:2px;border-radius:3px;overflow:hidden}
+.sbar>div{height:100%;min-width:2px}
 </style>
 </head>
 <body>
@@ -52,6 +59,11 @@ tr.today td{background:rgba(93,191,130,.07)}
     <div class="card"><div class="cv" id="total">&middot;</div><div class="ck">Total reads</div></div>
     <div class="card"><div class="cv" id="started">&middot;</div><div class="ck">Reviewers started</div></div>
     <div class="card"><div class="cv" id="finished">&middot;</div><div class="ck">Finished (24/24)</div></div>
+  </div>
+  <div class="chart" id="progwrap">
+    <h2>Panel completion</h2>
+    <div class="sbar" id="progbar"></div>
+    <div class="legend" id="proglegend"></div>
   </div>
   <div class="note" id="latest">&nbsp;</div>
   <table>
@@ -73,6 +85,14 @@ tr.today td{background:rgba(93,191,130,.07)}
     <tbody id="rc-rows"><tr><td colspan="6" style="color:var(--muted-soft)">Loading&hellip;</td></tr></tbody>
   </table>
   <div class="note">A healthcare-compliance pilot (Keith Carrington, V-HC-01) is accepted but has not yet contributed cases, so it does not appear above until its first entry.</div>
+
+  <h1 style="font-size:22px;margin-top:34px">Investigator Guide Downloads</h1>
+  <p class="sub">Downloads of the three field guide editions by day. Counted at the redirect endpoint, so emailed and shared links are included too. Aggregate counts only.</p>
+  <div class="chart">
+    <h2>Downloads by day</h2>
+    <div id="dlchart" style="overflow-x:auto">Loading&hellip;</div>
+    <div class="legend" id="dllegend"></div>
+  </div>
 </div></main>
 <footer class="ft"><div class="wrap" style="padding:0">&#169; 2026 Phillip Wikes &middot; JRS&#8482; &middot; confidential &middot; not indexed</div></footer>
 <script>
@@ -103,6 +123,7 @@ function loadDetection(){
       document.getElementById('total').textContent=total;
       document.getElementById('started').textContent=started+' / '+rows.length;
       document.getElementById('finished').textContent=finished;
+      renderProgress(finished, started-finished, rows.length-started, rows.length);
       document.getElementById('latest').innerHTML = latest
         ? 'Most recent submission: '+rel(latest)
         : 'No reads recorded yet. Share the reviewer links to begin.';
@@ -156,7 +177,56 @@ function loadRealcase(){
     })
     .catch(function(){ document.getElementById('rc-rows').innerHTML='<tr><td colspan="6" style="color:var(--muted-soft)">Could not load real-case pilots. Tap Refresh.</td></tr>'; });
 }
-function refresh(){ loadDetection(); loadRealcase(); }
+var EDORDER=['employment','fairhousing','international'];
+var EDCOL={employment:'#3987e5',fairhousing:'#199e70',international:'#c98500'};
+var EDLAB={employment:'EEO',fairhousing:'Fair Housing',international:'International'};
+function renderProgress(comp,prog,ns,total){
+  var wrap=document.getElementById('progwrap');
+  if(!total){ wrap.style.display='none'; return; }
+  wrap.style.display='';
+  function seg(n,col){ return n>0 ? '<div title="'+n+'" style="width:'+(n/total*100)+'%;background:'+col+'"></div>' : ''; }
+  document.getElementById('progbar').innerHTML = seg(comp,'#5DBF82')+seg(prog,'#BE9447')+seg(ns,'#8A8A8A');
+  document.getElementById('proglegend').innerHTML =
+     '<span><i style="background:#5DBF82"></i>Complete '+comp+'</span>'
+    +'<span><i style="background:#BE9447"></i>In progress '+prog+'</span>'
+    +'<span><i style="background:#8A8A8A"></i>Not started '+ns+'</span>'
+    +'<span style="color:var(--muted-soft)">'+total+' registered</span>';
+}
+function fmtDay(d){ var p=(d||'').split('-'); if(p.length<3) return d; var M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']; return M[parseInt(p[1],10)-1]+' '+parseInt(p[2],10); }
+function loadDownloads(){
+  return fetch(U+'/rest/v1/guide_downloads_public?select=day,edition,downloads&order=day.asc',{headers:HDR})
+   .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+   .then(function(rows){
+     rows=rows||[];
+     var byDay={}, days=[], grand=0;
+     rows.forEach(function(x){
+       if(!byDay[x.day]){ byDay[x.day]={employment:0,fairhousing:0,international:0,total:0}; days.push(x.day); }
+       var n=x.downloads||0; byDay[x.day][x.edition]=(byDay[x.day][x.edition]||0)+n; byDay[x.day].total+=n; grand+=n;
+     });
+     days.sort();
+     document.getElementById('dllegend').innerHTML = EDORDER.map(function(e){
+        return '<span><i style="background:'+EDCOL[e]+'"></i>'+EDLAB[e]+'</span>'; }).join('')
+        + '<span style="color:var(--muted-soft)">Total '+grand+'</span>';
+     if(!days.length){ document.getElementById('dlchart').innerHTML='<div style="color:var(--muted-soft);font-size:12px">No downloads recorded yet.</div>'; return; }
+     var W=680,H=210,pl=30,pr=12,pt=16,pb=26,pw=W-pl-pr,ph=H-pt-pb;
+     var maxY=1; days.forEach(function(d){ if(byDay[d].total>maxY) maxY=byDay[d].total; });
+     if(maxY%2!==0) maxY+=1;
+     var band=pw/days.length, bw=Math.min(46,band*0.55);
+     function yv(v){ return pt+ph-(v/maxY*ph); }
+     var svg='<svg viewBox="0 0 '+W+' '+H+'" width="100%" preserveAspectRatio="xMidYMid meet" font-family="JetBrains Mono, monospace" role="img" aria-label="Guide downloads by day">';
+     [0,maxY/2,maxY].forEach(function(g){ var y=yv(g); svg+='<line x1="'+pl+'" y1="'+y+'" x2="'+(W-pr)+'" y2="'+y+'" stroke="#2A2A2A" stroke-width="1"/><text x="'+(pl-6)+'" y="'+(y+3)+'" text-anchor="end" fill="#8A8A8A" font-size="8">'+Math.round(g)+'</text>'; });
+     days.forEach(function(d,i){
+        var cx=pl+band*i+band/2, x=cx-bw/2, yc=yv(0);
+        EDORDER.forEach(function(e){ var v=byDay[d][e]||0; if(v<=0) return; var hgt=v/maxY*ph, drawH=Math.max(1,hgt-2); svg+='<rect x="'+x+'" y="'+(yc-drawH)+'" width="'+bw+'" height="'+drawH+'" rx="2" fill="'+EDCOL[e]+'"><title>'+EDLAB[e]+', '+fmtDay(d)+': '+v+'</title></rect>'; yc-=hgt; });
+        svg+='<text x="'+cx+'" y="'+(yv(byDay[d].total)-5)+'" text-anchor="middle" fill="#C3C2B7" font-size="9">'+byDay[d].total+'</text>';
+        svg+='<text x="'+cx+'" y="'+(H-9)+'" text-anchor="middle" fill="#8A8A8A" font-size="8.5">'+fmtDay(d)+'</text>';
+     });
+     svg+='<line x1="'+pl+'" y1="'+yv(0)+'" x2="'+(W-pr)+'" y2="'+yv(0)+'" stroke="#383835" stroke-width="1"/></svg>';
+     document.getElementById('dlchart').innerHTML=svg;
+   })
+   .catch(function(){ document.getElementById('dlchart').innerHTML='<div style="color:var(--muted-soft);font-size:12px">Could not load downloads. Tap Refresh.</div>'; });
+}
+function refresh(){ loadDetection(); loadRealcase(); loadDownloads(); }
 refresh();
 setInterval(refresh, 60000);
 </script>
