@@ -130,6 +130,14 @@ Articles 2-4 (FOIL pilot; HR pilot; capstone with construct validity): planned, 
 
 ## 5. Platform & deployment activity log: 2026-07-08 (verified)
 
+**Production deploy 2026-07-13 (commit `07ea714` on `main`, selective, verified live):**
+- `privacy.html` (NEW) is LIVE at `https://www.jrsstandard.com/privacy.html` (HTTP 200). Standalone privacy policy: enrollment PII, the required-contact vs optional-transfer consent tiers, the private-by-construction storage model, sharing limits, retention, and access/deletion via `info@jrsstandard.com`. Mirrors the public secondary-page chrome (tokens `--bg:#0a0a0a`, JetBrains Mono body, header nav, footer, mobile nav). 0 em/en dashes; canonical email, GA4 tag, and copyright.
+- `acquisition-9f3c2a7d4b.html` (prospectus) updated live: added sections 05 The Reviewer Panel, 06 The Investigator Field Guides (Dewey mention as a mention, not endorsement), and the partner review API in both the included list and the IP inventory. Confidential, noindex, unlinked.
+- Deploy method: selective (`git checkout -B deploy-X origin/main; git checkout <dev> -- <files>; push deploy-X:main`). The CLAUDE.md `push dev:main` form was rejected because it would publish `research/`. Re-verified post-deploy: `research/MASTER_TRACKER.md` returns HTTP 404 on prod.
+- HELD from this deploy (intentional, to prevent a broken feature): `training.html` and `pilot-status.html`. The `training_registrations` table and `training_stats` view were re-verified missing on the live DB (HTTP 404, PGRST205) and `SUPABASE_ACCESS_TOKEN` is still unset, so enrollment would fail. These deploy only after the table is applied.
+- Follow-up bundled with the eventual training deploy: add a Privacy link to the site footers and point the enrollment modal's privacy note at `privacy.html` (currently reachable by URL but not linked).
+- Note (pre-existing, low risk, flagged not fixed): `supabase-ALL.sql` is served as a static file on prod. It is pure DDL with no keys or data, but it does reveal table shapes; consider removing it from `main` or blocking it if a clean posture is wanted.
+
 **Reviewers registered this session (all confirmed in the live DB, 0 reads each, links live):**
 | Code | Name | Country | Panel / perspective |
 |---|---|---|---|
@@ -330,11 +338,11 @@ Note on RR-102: Sundeep Mattaparti is Head of Legal and Compliance at bioMérieu
 | Consented enrollment modal (name/org/title/email + required contact consent + optional transfer consent) | `training.html` | Built on dev; NOT deployed yet |
 | Enrollment relay (service-role insert, PII never exposed) | `api/enroll.js` | DEPLOYED and live (`serviceKey:true`) |
 | Dashboard adoption tile (aggregate counts only) | `pilot-status.html` | Built on dev; NOT deployed yet |
-| PII table + aggregate view SQL | folded into `supabase-ALL.sql` (also standalone `scratchpad/training-registrations-setup.sql`) | **PENDING apply: needs a valid token via the apply script OR the SQL editor** |
+| PII table + aggregate view SQL | folded into `supabase-ALL.sql` (also standalone `scratchpad/training-registrations-setup.sql`) | **PENDING apply: re-verified missing on the live DB 2026-07-13 (`training_registrations` and `training_stats` both HTTP 404 / PGRST205 via the anon key). Needs a valid token via the apply script OR the SQL editor.** |
 
 **The one manual step (RESOLVED apply path, 2026-07-13):** DDL genuinely needs SOME valid Supabase token or the SQL editor: there is no third way (repurposing a private table for PII was rejected as unsafe). But the clean path is NOT the SQL editor and NOT pasting a token in chat: the repo ships `scripts/supabase-apply.py`, which applies DDL through the Supabase Management API (the network policy blocks Postgres ports but allows api.supabase.com), and a SessionStart hook runs it automatically. To apply `training_registrations` + `training_stats` (now part of `supabase-ALL.sql`, idempotent/no-op-safe), **provision a fresh Supabase personal access token as the `SUPABASE_ACCESS_TOKEN` environment variable in the Claude Code web environment settings.** The hook (or a manual `python3 scripts/supabase-apply.py`, which is in the allow-list) then applies the whole data layer in one safe run. This also closes the token-hygiene item. Fallback remains: paste `training-registrations-setup.sql` into the SQL editor once. After apply, deploy `training.html` + `pilot-status.html` to `main` and the capture is live.
 
-**Consent design (for sellability + compliance):** required checkbox = consent to contact + storage; optional checkbox = consent to transfer to an acquirer (without this the list cannot legally transfer with the IP). Privacy note on the modal; deletion/access via info@jrsstandard.com. A standalone privacy policy page is still recommended before scaling collection.
+**Consent design (for sellability + compliance):** required checkbox = consent to contact + storage; optional checkbox = consent to transfer to an acquirer (without this the list cannot legally transfer with the IP). Privacy note on the modal; deletion/access via info@jrsstandard.com. **Privacy policy page DONE and LIVE 2026-07-13** (`privacy.html`, deployed commit `07ea714`); it documents both consent tiers. When `training.html` deploys, point the modal's privacy note at `privacy.html` and add the footer link.
 
 **Panel angle:** when an international-panel reviewer asks "anything else I can do?", invite them to complete the JRS training + certification (link `training.html?src=panel`, which tags their enrollment as `panel`). High-credential enrollments strengthen the trained-user asset.
 
