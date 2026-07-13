@@ -308,7 +308,7 @@ Arm B recruits review the same 24 records at `ai-records-arm-b.html`. Each code 
 
 | Code | Name | Country | Assigned arm | Status |
 |---|---|---|---|---|
-| RR-101 | Boris Khazin | US (North Carolina) | no-JRS (B2) | **COMPLETE 24/24** (submitted 2026-07-13; first submission hit the RLS bug and fail-safe-downloaded, then imported via /api/submit relay). JRS-naive confirmed by Phillip |
+| RR-101 | Boris Khazin | US (North Carolina) | no-JRS (B2) | **COMPLETE 24/24** (submitted 2026-07-13; first submission hit the RLS bug and fail-safe-downloaded, then imported via /api/submit relay). JRS-naive confirmed. Recognition issued 2026-07-13: Records Review Study certificate + LinkedIn recommendation (participation only, no JRS-method/endorsement claim, since he was the no-JRS arm) |
 | RR-102 | Sundeep Mattaparti | India (Hyderabad) | JRS (B1) | Invited 2026-07-13; JRS-naive per Arm B direction |
 | RR-103 | Pankaj Kumar Bhagat | India (Chennai) | no-JRS (B2) | Invited 2026-07-13; JRS-naive per Arm B direction (IP & patent strategy, XLSCOUT; ex-Indian Patent Examiner) |
 
