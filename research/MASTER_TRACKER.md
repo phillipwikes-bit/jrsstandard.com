@@ -259,6 +259,7 @@ Articles 2-4 (FOIL pilot; HR pilot; capstone with construct validity): planned, 
 
 **Progress log:**
 - 2026-07-10: Sequencing set: A (Detection) → B (FOIL) → C (Business Ethics). Corrects an earlier omission of the Business Ethics / Tanvi HR-pilot paper from the plan analysis; all three are now sequenced together rather than treating the detection paper as the only one.
+- 2026-07-13: Paper A (Detection) now has a **draft manuscript**: `research/Detection_ArmB_Article_Draft.md`, targeted at **AI and Ethics** (Springer). Methods and pre-registered analysis plan are complete; Results are gated (panel 7/24 complete; Arm B not yet run). Introduction incorporates the author's mentorship narrative (Gabi). Ubayet credited for methodology; reviewers acknowledged, not co-authors.
 
 ---
 
