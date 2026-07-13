@@ -6,6 +6,8 @@
 
 **Document conventions (enforced 2026-07-10):** Do not use long dashes (em or en dashes) anywhere in this file, or in any copy produced for JRS (connection notes, invitations, prospectuses, site prose). Use a colon, comma, or parentheses instead. This mirrors the house rule in CLAUDE.md and a standing instruction from Phillip.
 
+**Standing directive (Phillip, 2026-07-13):** always take whatever legitimate steps raise IP value and move toward a sale. Operating plan and prioritized path: `research/IP_Sale_Playbook.md`. Integrity rule governs all of it: only real, verifiable assets and claims (diligence tests every number).
+
 **Authorship policy (enforced 2026-07-11):** Reviewers who complete the study are recognized as named contributors only (certificate, named international panel, acknowledgment in any write-up). They are NOT offered co-authorship. Co-authorship is reserved for the specific collaborators doing substantial analysis or writing (currently Stacy Young on the FOIL paper, and Sanya Dalal, pending, on the Business Ethics paper). Future prospectuses omit the co-authorship line entirely: the recognition section ends at "Featured by name among the international panel of professionals in any publication or write-up." with no co-author clause.
 
 **Acknowledgment is not endorsement (clarified 2026-07-13, prompted by Marguerite Maroudis, PhD):** naming a reviewer reflects participation in the validation study only. Reviewers are credited as independent reviewers or contributors, never as endorsers or validators of JRS. Attribution is opt-in, reviewers approve the exact public wording before it appears, and may withdraw before publication. This distinction is now stated in the prospectus consent section.
