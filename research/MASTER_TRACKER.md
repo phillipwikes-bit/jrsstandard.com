@@ -286,7 +286,7 @@ When a profile comes in, it is routed to one of two tracks by a single label ("P
 - Assign the **next RR-### code** (no `bench_experts` registration needed; the page uses an anon key and writes to `ai_pilot_reads` with batch `armB-B1`/`armB-B2`).
 - Give the neutral invitation + the generic neutral prospectus (`Records_Review_Study.pdf`, no JRS method, no reads, no codebook link).
 - Link: `ai-records-arm-b.html?code=RR-###`.
-- **Next available comparison code: RR-103** (lands no-JRS B2 by hash). Assigned 2026-07-13: RR-101 to Boris Khazin (no-JRS/B2), RR-102 to Sundeep Mattaparti (JRS/B1); see Section 12. Batch RR-101 to RR-140 generated (20 land JRS-arm B1, 20 land no-JRS B2); handed out in sequence, never steered.
+- **Next available comparison code: RR-104** (lands JRS-arm B1 by hash). Assigned 2026-07-13: RR-101 to Boris Khazin (no-JRS/B2), RR-102 to Sundeep Mattaparti (JRS/B1), RR-103 to Pankaj Kumar Bhagat (no-JRS/B2); see Section 12. Batch RR-101 to RR-140 generated (20 land JRS-arm B1, 20 land no-JRS B2); handed out in sequence, never steered. Arm B needs no Supabase token and no `bench_experts` row: just hand out the RR code and the arm-b link.
 
 **Guardrails (these protect the study: do not skip):**
 1. **The Comparison person does NOT get hand-assigned to the JRS or no-JRS half.** The page decides that automatically and at random from the code string (`conditionFor()` = parity of the uppercased code). You only choose the *study*; the tool splits the arms. Hand-sorting the halves would bias the result.
@@ -307,6 +307,7 @@ Arm B recruits review the same 24 records at `ai-records-arm-b.html`. Each code 
 |---|---|---|---|---|
 | RR-101 | Boris Khazin | US (North Carolina) | no-JRS (B2) | Invited 2026-07-13; JRS-naive confirmed by Phillip |
 | RR-102 | Sundeep Mattaparti | India (Hyderabad) | JRS (B1) | Invited 2026-07-13; JRS-naive per Arm B direction |
+| RR-103 | Pankaj Kumar Bhagat | India (Chennai) | no-JRS (B2) | Invited 2026-07-13; JRS-naive per Arm B direction (IP & patent strategy, XLSCOUT; ex-Indian Patent Examiner) |
 
 Note on RR-101: Boris Khazin is an AI Governance, Digital Risk, and GRC leader (ClearView MRI; ex-EPAM Global Head of DRM/GRC; EU AI Act, DORA, NIST AI RMF). He is the first Arm B participant. His code lands in the no-JRS baseline arm by the deterministic hash, not by selection.
 
