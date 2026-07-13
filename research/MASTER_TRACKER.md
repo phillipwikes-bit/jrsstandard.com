@@ -45,7 +45,7 @@
 
 ## 2. People
 
-**Detection panel (24-record study)**: 7 complete, 1 in progress, 17 not started (25 registered):
+**Detection panel (24-record study)**: 7 complete, 1 in progress, 17 not started (25 in DB; V-AI-30 Andres assigned, DB write pending new token):
 
 | Code | Name | Title / role (verified) | Country | Reads | Status |
 |---|---|---|---|---|---|
@@ -74,6 +74,7 @@
 | V-AI-27 | Sidharth Borah | Advocate, High Court of Delhi (13+ yrs); Partner, Gurinder & Partners; litigation & legal defensibility | India | 0/24 | Not started |
 | V-AI-28 | Nigel Hee | AI Ethics, Safety & Governance; AI Policy; Co-founder OpenNexus; researcher, University of Glasgow | Singapore | 0/24 | Not started |
 | V-AI-29 | Marguerite Maroudis, PhD | AI & Law Expert; DPO & AI Governance Consultant; contract law; PhD Private Law; Founder, TechLegalExperts (Arabic/English/French) | UAE (Dubai) | 0/24 | Invited |
+| V-AI-30 | Andres Lage Freire (Expert Panel) | AI Governance Lead / Responsible AI Architect; Responsible AI & Gen AI, RAG, EU AI Act, ISO 42001; SDLC-native governance; Harvard exec-ed | Spain (Madrid) | 0/24 | Invited (DB registration PENDING: old token rotated 2026-07-13; apply `supabase-andres-vai30.sql` with a new token) |
 
 **Methodology:** M-01 **Ubayet Hossain, FRM**: Associate Director (Model Validation), KPMG India; 9+ years in credit/market-risk model development and validation. Contributed the reliability/validation framework (the Rung 1-2 statistics and floors). Credited in the analysis plan, both research PDFs, and the article.
 
@@ -120,7 +121,7 @@ Articles 2-4 (FOIL pilot; HR pilot; capstone with construct validity): planned, 
 | 4 | Real-case pilot (Rung 3) | Nudge Keith; get more cases | You send / I draft |
 | 5 | Website 404s (~20% of traffic) | Send bad URLs from GA4 → I build redirects | You send URLs |
 | 6 | Dewey / Peter Broida | 2026-07-10: Broida emailed that he forwarded the site to Dewey's investigation-book authors ("glad to be of help"). Reply this round is purely grateful (co-publishing question held for later). Still not an endorsement. | You send grateful reply |
-| 7 | Rotate the exposed Supabase token | In the Supabase dashboard | You |
+| 7 | Supabase token ROTATED 2026-07-13 (old token now returns 401, good). A NEW token is needed for DB writes: registering reviewers, applying SQL. Reads on the public dashboard still work (anon key). | Provide a fresh token to apply pending registrations (V-AI-30), or run them yourself | You |
 
 ---
 
@@ -279,7 +280,7 @@ When a profile comes in, it is routed to one of two tracks by a single label ("P
 - Build a personalized JRS reviewer prospectus + invitation.
 - Link: `ai-records-pilot.html?code=V-AI-##`.
 - Prior JRS exposure is fine here (these reviewers use JRS). Warm post-likers and interested people belong on this track.
-- **Next available code: V-AI-30** (last used: V-AI-29 Marguerite Maroudis).
+- **Next available code: V-AI-31** (last used: V-AI-30 Andres Lage Freire; note: V-AI-30 DB registration pending a new Supabase token).
 
 **Track 2: "Comparison" (Arm B controlled study, `ai-records-arm-b.html`, LIVE in production):**
 - Assign the **next RR-### code** (no `bench_experts` registration needed; the page uses an anon key and writes to `ai_pilot_reads` with batch `armB-B1`/`armB-B2`).
