@@ -11,7 +11,7 @@ Not "a standard." A bundle a strategic buyer pays for:
 - A working, self-updating reproducibility engine (nightly cross-vendor, 84%).
 - An international, credentialed reviewer panel (26 registered, 7 complete) across a dozen countries.
 - A methodology authored by a Big-Four model-validation director (Ubayet Hossain, KPMG).
-- A finished investigator Field Guide product line (EEO, Fair Housing, International), favorably mentioned on the Dewey Publications podcast (a non-endorsement, quote it accurately).
+- A finished investigator Field Guide product line (EEO, Fair Housing, International), favorably recommended in writing in Dewey Publications' _News and Case Alert_ (Issue #18-07, July 10 2026, author Peter Broida): a datable, quotable third-party mention, not an endorsement. (Earlier notes called this a "podcast"; the verified artifact is the newsletter. Quote it accurately.)
 - Two co-authored papers in progress (FOIL with Stacy Young; Business Ethics with Sanya/Tanvi) and a drafted Detection/Arm B paper for AI and Ethics.
 - Live web product surface: training + certification, review-engine API, enterprise page, dashboards.
 - A growing consented audience: guide downloads (counter) and training enrollments (name/org/title/email) as demand and adoption proof.

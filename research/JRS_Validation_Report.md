@@ -312,7 +312,7 @@ What transfers, beyond the standard itself:
 - **A self-updating reproducibility engine:** the nightly cross-vendor run and its live figure.
 - **An independent international reviewer panel:** 26 credentialed reviewers across roughly a dozen countries, with enforced attribution and non-endorsement governance.
 - **A model-validation methodology** authored by a Big Four validation professional.
-- **A finished Investigator Field Guide line** in three domains, noted (as a mention, not an endorsement) on an industry podcast.
+- **A finished Investigator Field Guide line** in three domains, favorably mentioned in writing (as a mention, not an endorsement) in Dewey Publications' News and Case Alert, a federal civil-service law newsletter.
 - **A live product surface:** training and certification, a versioned partner review API, an enterprise page, and private and public dashboards.
 - **A disciplined evidence program:** pre-registered plan, verified key, and honest, gated reporting.
 - **A protected data and privacy architecture** that holds PII and the answer key privately by construction.
