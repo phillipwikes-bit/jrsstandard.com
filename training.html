@@ -2780,6 +2780,17 @@ function markComplete(idx) {
   if (jrsModulesDone() === 6) {
     var certSec = document.getElementById('cert-section');
     if (certSec) { certSec.style.display = 'block'; certSec.scrollIntoView({behavior:'smooth'}); }
+    // Record completion once, keyed by the email captured at enrollment.
+    try {
+      if (!localStorage.getItem('jrs-training-completed-sent')) {
+        var em = localStorage.getItem('jrs-training-email') || '';
+        if (em) {
+          fetch('/api/complete', { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify({ email: em }) })
+            .then(function(){ try{ localStorage.setItem('jrs-training-completed-sent','1'); }catch(e){} })
+            .catch(function(){});
+        }
+      }
+    } catch(e){}
   }
 }
 
@@ -3139,7 +3150,7 @@ function enrollSubmit(){
   var btn = document.getElementById('en-go'); btn.disabled = true; msg.style.color = 'var(--muted-soft)'; msg.textContent = 'Submitting...';
   fetch('/api/enroll', { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify({ name:name, organization:org, title:title, email:email, audience:aud, source:enrollSource, consent_contact:c1, consent_transfer:c2 }) })
     .then(function(r){ if(!r.ok) throw 0; return r.json(); })
-    .then(function(){ try{ localStorage.setItem('jrs-training-enrolled','1'); }catch(e){} document.getElementById('enroll-overlay').style.display = 'none'; })
+    .then(function(){ try{ localStorage.setItem('jrs-training-enrolled','1'); localStorage.setItem('jrs-training-email', email); }catch(e){} document.getElementById('enroll-overlay').style.display = 'none'; })
     .catch(function(){ msg.style.color = 'var(--review-text)'; msg.textContent = 'Could not register just now. Please try again, or email info@jrsstandard.com.'; btn.disabled = false; });
 }
 </script>
