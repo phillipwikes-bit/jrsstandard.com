@@ -234,6 +234,7 @@ Articles 2-4 (FOIL pilot; HR pilot; capstone with construct validity): planned, 
 
 **Progress log:**
 - 2026-07-09: Initial draft created; Rungs 1-2 + Ubayet woven in; Sanya pitched (LinkedIn DM). Next: Sanya yes/no; then define her section and drive HR/public-records pilots toward target.
+- 2026-07-14: Ubayet co-author offer now includes this (compliance) paper, contingent on his review/sign-off (see the authorship note in the header). Open housekeeping: `BusinessEthics_Article_Draft.md` still contains pre-existing long dashes (9 em, 6 en as of 2026-07-14) beyond the one fixed on the attribution line; clean them in one pass before this draft advances (house no-dash rule). Not urgent (paper is gated on Sanya + pilot maturity).
 
 ---
 
