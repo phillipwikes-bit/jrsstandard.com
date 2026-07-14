@@ -278,17 +278,17 @@ function loadArmB(){
    .catch(function(){ document.getElementById('ab-rows').innerHTML='<tr><td colspan="4" style="color:var(--muted-soft)">Could not load Arm B. Tap Refresh.</td></tr>'; });
 }
 function loadTraining(){
-  return fetch(U+'/rest/v1/training_stats?select=*',{headers:HDR})
+  return fetch('/api/enroll-stats')
    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
-   .then(function(rows){
-     var s=(rows&&rows[0])||{};
+   .then(function(s){
+     s=s||{};
      document.getElementById('tr-today').textContent=s.today||0;
      document.getElementById('tr-enroll').textContent=s.enrollments||0;
      document.getElementById('tr-orgs').textContent=s.organizations||0;
      document.getElementById('tr-consent').textContent=s.consented_contact||0;
      document.getElementById('tr-note').textContent=(s.consented_transfer||0)+' consented to transfer to a successor; '+(s.unique_people||0)+' unique people. The named list is stored privately.';
    })
-   .catch(function(){ document.getElementById('tr-note').textContent='Training adoption will appear here once enrollment is enabled (run the training_registrations setup SQL).'; });
+   .catch(function(){ document.getElementById('tr-note').textContent='Training adoption will appear here once the first enrollment is captured.'; });
 }
 function refresh(){ loadDetection(); loadRealcase(); loadArmB(); loadTraining(); loadDownloads(); }
 refresh();
