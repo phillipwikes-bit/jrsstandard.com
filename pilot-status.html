@@ -100,6 +100,16 @@ tr.today td{background:rgba(93,191,130,.07)}
   </table>
   <div class="note">Arm assignment is automatic and random from each code. This section fills as Arm B participants submit; it shows participation only, never answers.</div>
 
+  <h1 style="font-size:22px;margin-top:34px">Training &amp; Certification Adoption</h1>
+  <p class="sub">Consented enrollments in the JRS training. Aggregate counts only; no personal data is shown here. The named, consented list is stored privately and is a transfer-ready asset.</p>
+  <div class="cards">
+    <div class="card"><div class="cv hot" id="tr-today">&middot;</div><div class="ck">New today (UTC)</div></div>
+    <div class="card"><div class="cv" id="tr-enroll">&middot;</div><div class="ck">Enrollments</div></div>
+    <div class="card"><div class="cv" id="tr-orgs">&middot;</div><div class="ck">Organizations</div></div>
+    <div class="card"><div class="cv" id="tr-consent">&middot;</div><div class="ck">Contactable</div></div>
+  </div>
+  <div class="note" id="tr-note">Training adoption will appear here once enrollment is enabled.</div>
+
   <h1 style="font-size:22px;margin-top:34px">Investigator Guide Downloads</h1>
   <p class="sub">Downloads of the three field guide editions by day. Counted at the redirect endpoint, so emailed and shared links are included too. Aggregate counts only.</p>
   <div class="chart">
@@ -267,7 +277,20 @@ function loadArmB(){
    })
    .catch(function(){ document.getElementById('ab-rows').innerHTML='<tr><td colspan="4" style="color:var(--muted-soft)">Could not load Arm B. Tap Refresh.</td></tr>'; });
 }
-function refresh(){ loadDetection(); loadRealcase(); loadArmB(); loadDownloads(); }
+function loadTraining(){
+  return fetch('/api/enroll-stats')
+   .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+   .then(function(s){
+     s=s||{};
+     document.getElementById('tr-today').textContent=s.today||0;
+     document.getElementById('tr-enroll').textContent=s.enrollments||0;
+     document.getElementById('tr-orgs').textContent=s.organizations||0;
+     document.getElementById('tr-consent').textContent=s.consented_contact||0;
+     document.getElementById('tr-note').textContent=(s.consented_transfer||0)+' consented to transfer to a successor; '+(s.unique_people||0)+' unique people. The named list is stored privately.';
+   })
+   .catch(function(){ document.getElementById('tr-note').textContent='Training adoption will appear here once the first enrollment is captured.'; });
+}
+function refresh(){ loadDetection(); loadRealcase(); loadArmB(); loadTraining(); loadDownloads(); }
 refresh();
 setInterval(refresh, 60000);
 </script>
