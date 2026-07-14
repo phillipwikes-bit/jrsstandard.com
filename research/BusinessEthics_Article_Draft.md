@@ -8,7 +8,7 @@
 
 **Author / contributor map (to be finalized; authorship = substantive intellectual contribution, per journal integrity norms):**
 - Phillip Wikes — lead author; framework, evidence program.
-- Ubayet Hossain, FRM (Associate Director, Model Validation, KPMG India) — statistical validation methodology (reference-panel design; chance-corrected reliability framework). Co-author or named methodological contributor (confirm).
+- Ubayet Hossain, FRM, Associate Director (Model Validation), KPMG India: statistical validation methodology (reference-panel design; chance-corrected reliability framework). Co-author or named methodological contributor (confirm).
 - Sanya Dalal (Ethics & Compliance; LLB, MBL, CFE; GE Vernova; former KPMG) — **PENDING** co-author, contingent on substantive contribution (enterprise-compliance-investigations interpretation, analysis, manuscript). Pitched via LinkedIn DM 2026-07-09; awaiting yes/no.
 - Tanvi Pokhriyal (UAE) — HR Documentation Validation Pilot lead; acknowledged contributor, co-author if she contributes to analysis/writing.
 - Public-records pilot contributor (Stacy Young, E-08) — acknowledged; **see anti-duplication note below.**

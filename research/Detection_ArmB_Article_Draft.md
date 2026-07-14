@@ -2,7 +2,7 @@
 
 **Author:** Phillip Wikes, Creator of the Justification Review Standard (JRS); former Lead Civil Rights Officer, Maryland Commission on Civil Rights.
 
-**Methodology advisor:** Ubayet Hossain, FRM (Associate Director, Model Validation), who designed the reliability and validation framework (reference-panel design, chance-corrected agreement statistics, and the pre-registered decision floors).
+**Methodology advisor:** Ubayet Hossain, FRM, Associate Director (Model Validation), KPMG India, who designed the reliability and validation framework (reference-panel design, chance-corrected agreement statistics, and the pre-registered decision floors).
 
 **Target journal:** *AI and Ethics* (Springer). Fit: the journal's scope is the ethics and governance of AI in practice, and it publishes both original research and reflective perspective articles, which suits a paper that motivates a governance construct from field experience and then validates it empirically. Alternatives if needed: *AI & Society* (Springer); *Journal of Responsible Technology* (Elsevier, open access); or a FAccT / AIES workshop for speed.
 
