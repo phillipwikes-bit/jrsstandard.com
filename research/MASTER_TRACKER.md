@@ -130,6 +130,8 @@ Articles 2-4 (FOIL pilot; HR pilot; capstone with construct validity): planned, 
 
 ## 5. Platform & deployment activity log: 2026-07-08 (verified)
 
+**Production deploy 2026-07-13 (commit `040e6f8` on `main`, selective, verified live):** enrollment modal consent note now links `privacy.html` (verified: 1 privacy link in live `training.html`, `privacy.html` 200, `/api/enroll-stats` 200). Note: `supabase-ALL.sql` is served on prod (HTTP 200); it is pure DDL with no secrets, deliberately NOT re-deployed (no functional need, and it documents the now-unused `training_registrations`); consider removing it from prod for a clean diligence posture.
+
 **Production deploy 2026-07-13 (commit `5506bf0` on `main`, selective, verified live): token-free training capture:**
 - Directive: "everything to run without Supabase token." Done. The last management-token dependency (DDL for `training_registrations`) is eliminated.
 - `api/enroll.js` repointed to insert into the existing private `pilot_contacts` (service-role), `source='training-enroll'`; title/audience/consent preserved as JSON in `message`.
@@ -354,7 +356,7 @@ Note on RR-102: Sundeep Mattaparti is Head of Legal and Compliance at bioMérieu
 
 **Panel angle:** when an international-panel reviewer asks "anything else I can do?", invite them to complete the JRS training + certification (link `training.html?src=panel`, which tags their enrollment as `panel`). High-credential enrollments strengthen the trained-user asset.
 
-**Resolved (superseded):** the earlier "do not deploy training.html before the table exists" caution no longer applies. There is no table to create: enrollment writes to the existing `pilot_contacts` via the service role, so `training.html` is safely live. Remaining polish (bundled, low priority): add a Privacy link to the site footers and point the enrollment modal's privacy note at `privacy.html`.
+**Resolved (superseded):** the earlier "do not deploy training.html before the table exists" caution no longer applies. There is no table to create: enrollment writes to the existing `pilot_contacts` via the service role, so `training.html` is safely live. Modal privacy link DONE and LIVE 2026-07-13 (deploy `040e6f8`): the enrollment modal's consent note now links `privacy.html`. Remaining polish (low priority, deferred by design): add a Privacy link to the public-page footers. This is a bespoke ~25-file change (footers are NOT uniform: only 5 of 25 pages share the same footer link row), so it is left as a dedicated task rather than a blanket edit, to avoid regressions.
 
 ---
 
