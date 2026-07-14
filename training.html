@@ -2780,18 +2780,27 @@ function markComplete(idx) {
   if (jrsModulesDone() === 6) {
     var certSec = document.getElementById('cert-section');
     if (certSec) { certSec.style.display = 'block'; certSec.scrollIntoView({behavior:'smooth'}); }
-    // Record completion once, keyed by the email captured at enrollment.
-    try {
-      if (!localStorage.getItem('jrs-training-completed-sent')) {
-        var em = localStorage.getItem('jrs-training-email') || '';
-        if (em) {
-          fetch('/api/complete', { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify({ email: em }) })
-            .then(function(){ try{ localStorage.setItem('jrs-training-completed-sent','1'); }catch(e){} })
-            .catch(function(){});
-        }
-      }
-    } catch(e){}
+    recordCompletion(false);
   }
+}
+
+// Record training completion once, server-side, keyed by the enrollee email.
+// Uses the email captured at enrollment; if it is missing (enrolled before that
+// shipped, or a different browser), pass promptIfMissing=true to ask for it.
+function recordCompletion(promptIfMissing) {
+  try {
+    if (localStorage.getItem('jrs-training-completed-sent')) return;
+    if (jrsModulesDone() !== 6) return;
+    var em = localStorage.getItem('jrs-training-email') || '';
+    if (!em && promptIfMissing) {
+      em = ((window.prompt('Enter the email you registered with, so your completion is recorded:') || '').trim());
+      if (em) { try { localStorage.setItem('jrs-training-email', em); } catch(e){} }
+    }
+    if (!em || em.indexOf('@') < 1 || em.indexOf('.') < 0) return;
+    fetch('/api/complete', { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify({ email: em }) })
+      .then(function(){ try{ localStorage.setItem('jrs-training-completed-sent','1'); }catch(e){} })
+      .catch(function(){});
+  } catch(e){}
 }
 
 function jrsSanitizeCheck(text) {
@@ -2888,6 +2897,7 @@ function generateCert() {
 }
 
 function downloadCert() {
+  recordCompletion(true);
   var name = (document.getElementById('cert-name').value.trim().replace(/\s+/g,'-')) || 'JRS-Reviewer';
   var a = document.createElement('a');
   a.download = 'JRS-Completion-' + name + '.png';
@@ -2913,6 +2923,7 @@ if (progress.role && ROLE_PATHS[progress.role]) selectRole(progress.role);
 if (jrsModulesDone() === 6) {
   var cs = document.getElementById('cert-section');
   if (cs) cs.style.display = 'block';
+  recordCompletion(false);
 }
 
 // ── MODULE OBSERVATION ─────────────────────────────────────
