@@ -3132,9 +3132,12 @@ function enrollSubmit(){
   if (!email || email.indexOf('@') < 1 || email.indexOf('.') < 0){ msg.textContent = 'Please enter a valid email.'; return; }
   if (!c1){ msg.textContent = 'Please tick the required consent box to continue.'; return; }
   var aud = 'public';
-  try { if ((new URLSearchParams(location.search)).get('src') === 'panel') aud = 'panel'; } catch(e){}
+  var srcTag = '';
+  try { srcTag = ((new URLSearchParams(location.search)).get('src') || '').toLowerCase().replace(/[^a-z0-9_-]/g,'').slice(0,40); } catch(e){}
+  if (srcTag === 'panel') aud = 'panel';
+  var enrollSource = srcTag ? ('training.html?src=' + srcTag) : 'training.html';
   var btn = document.getElementById('en-go'); btn.disabled = true; msg.style.color = 'var(--muted-soft)'; msg.textContent = 'Submitting...';
-  fetch('/api/enroll', { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify({ name:name, organization:org, title:title, email:email, audience:aud, source:'training.html', consent_contact:c1, consent_transfer:c2 }) })
+  fetch('/api/enroll', { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify({ name:name, organization:org, title:title, email:email, audience:aud, source:enrollSource, consent_contact:c1, consent_transfer:c2 }) })
     .then(function(r){ if(!r.ok) throw 0; return r.json(); })
     .then(function(){ try{ localStorage.setItem('jrs-training-enrolled','1'); }catch(e){} document.getElementById('enroll-overlay').style.display = 'none'; })
     .catch(function(){ msg.style.color = 'var(--review-text)'; msg.textContent = 'Could not register just now. Please try again, or email info@jrsstandard.com.'; btn.disabled = false; });
