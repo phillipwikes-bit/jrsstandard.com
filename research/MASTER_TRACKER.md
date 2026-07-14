@@ -337,6 +337,8 @@ When a profile comes in, it is routed to one of two tracks by a single label ("P
 
 ## 12. Comparison group (Arm B) participants (roster)
 
+Completion thank-you notes (send with the certificate) live in `research/Completion_ThankYou_Templates.md` (Panel variant A; neutral Arm B variant B). Only send after DB-verified 24/24.
+
 Arm B recruits review the same 24 records at `ai-records-arm-b.html`. Each code is randomly assigned by the tool to the JRS arm (B1) or the no-JRS baseline (B2); we do not steer people into arms (that would bias the comparison). Only JRS-naive people are eligible (Section 11). No `bench_experts` registration is needed (the page uses the anon key and writes to `ai_pilot_reads` with batch `armB-B1` / `armB-B2`). Live participation is on `pilot-status.html` (aggregate view `armb_progress`, codes not names).
 
 | Code | Name | Country | Assigned arm | Status |
