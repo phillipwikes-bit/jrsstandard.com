@@ -130,7 +130,7 @@ Articles 2-4 (FOIL pilot; HR pilot; capstone with construct validity): planned, 
 
 ## 5. Platform & deployment activity log: 2026-07-08 (verified)
 
-**Production deploy 2026-07-13 (commit `5506bf0` on `main`, selective, verified live) — token-free training capture:**
+**Production deploy 2026-07-13 (commit `5506bf0` on `main`, selective, verified live): token-free training capture:**
 - Directive: "everything to run without Supabase token." Done. The last management-token dependency (DDL for `training_registrations`) is eliminated.
 - `api/enroll.js` repointed to insert into the existing private `pilot_contacts` (service-role), `source='training-enroll'`; title/audience/consent preserved as JSON in `message`.
 - `api/enroll-stats.js` (NEW): service-role aggregate, returns counts only (no PII), replaces the DDL-only `training_stats` view. Live, returns the correct zero-state.
