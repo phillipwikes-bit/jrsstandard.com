@@ -1,6 +1,8 @@
 # JRS / DRR: MASTER TRACKER
 
-*Single source of truth. All figures verified against the live database, not memory. Update this file instead of relying on chat history. Last reconciled against the live DB and production site: 2026-07-08.*
+*Single source of truth. All figures verified against the live database, not memory. Update this file instead of relying on chat history. Last full reconciliation against the live DB and production site: 2026-07-14.*
+
+*Live snapshot at that reconciliation (pulled from the dashboard's own anon views `pilot_progress`, `armb_progress`, `realcase_progress`, and `/api/enroll-stats`): detection panel 26 registered, 7 complete, 1 in progress (Saurabh 7/24), 18 not started, 200 read-rows (SungSoo 48 and Jake 25 include resubmissions); Arm B RR-101 (Boris, arm B2) complete 24/24, RR-102 and RR-103 assigned with 0 reads; real-case Rung 3 has 12 cases across 2 contributors (FOIL/E-08 7 cases, HR/V-HR-01 5 cases); training enrollments 0. The reliability figures (Gwet's AC1 0.74 experts / 0.63 reviewers, 108 labels, 10 records) are from the fixed, pre-registered Rung 2a analysis and were not re-derived in this reconciliation.*
 
 ---
 
@@ -30,7 +32,7 @@
 ### The pilots: evidence collected (verified live)
 | # | Pilot | What it collects | Evidence to date |
 |---|---|---|---|
-| 1 | **AI-Assisted Records Detection** (Study 011) | Reviewer reads on the 24-record set vs a verified key | **176 reads; 7 complete (Jake, Frank, Lawal, Andrey, Hekim, Kyle, SungSoo), Saurabh 7/24, 26 registered** |
+| 1 | **AI-Assisted Records Detection** (Study 011) | Reviewer reads on the 24-record set vs a verified key | **200 read-rows (SungSoo and Jake include resubmissions); 7 complete (Jake, Frank, Lawal, Andrey, Hekim, Kyle, SungSoo), Saurabh 7/24, 26 registered** (reconciled live 2026-07-14) |
 | 2 | **Bench Reliability** (Studies 003/004) | Expert + reviewer scoring of a shared record set | **8 experts + 13 reviewers, 108 labels, 10 records → AC1 0.74 / 0.63** |
 | 3 | **Real-Case Criterion** (Study 010, Rung 3) | Real public cases + documented outcomes, in 3 domain pilots | **12 real cases: FOIL/Stacy 7, HR/Tanvi 5, Healthcare/Keith 0 (breakdown in §2)** |
 
