@@ -132,6 +132,11 @@ Articles 2-4 (FOIL pilot; HR pilot; capstone with construct validity): planned, 
 
 ## 5. Platform & deployment activity log: 2026-07-08 (verified)
 
+**Reviewer Reference gated to training only (deploy `c2f4a9f`, 2026-07-14):** the 19-page JRS Reviewer Reference is no longer a free public download. Renamed to an opaque filename (`JRS-Reference-9d4f2a7c.pdf`, old `/JRS-Reference.pdf` now 404), removed the 5 public links (index x2, jrsstandard, pilot x2), kept only the two training-page links (behind the blocking enrollment modal). Purpose: make it a training-only package that can be offered exclusively to a partner (e.g. Dewey) or sold. Soft spot: the training page HTML still exposes the opaque link in source, so this is discovery-gating, not a hard gate; a gated download endpoint (server-verified enrollment) would be the hard gate if exclusivity must be enforced. Also note: the companion-workbook callout added `82a2a8e` was repointed to the opaque name.
+
+**Dewey pitch elements to add (2026-07-14):** (1) Ubayet credibility line, see below; (2) the two real-world pilots Dewey does not know about: public records / FOIL with Stacy Young, and HR compliance with Tanvi Pokhriyal, both in progress and each heading to a journal article, in exactly Dewey's domains (EEO, employment, public records). Frame the pilots as in-progress with forthcoming articles, not as proven (criterion claims are gated until n reaches 20 to 30 with a spread of outcomes).
+
+
 **Production deploys 2026-07-14 (on `main`, selective, all verified live):**
 - `d3635b4`: relabeled the generic guide as "Investigator Field Guide (Combined Overview)" across `jrsstandard.html` and `training.html` (6 display spots) and dropped the two "v1.0" tags that made it read as outdated. Context: the three domain editions (`_Employment`, `_FairHousing`, `_International`) are the current v1.1 set; the single generic `JRS_Investigator_Field_Guide.pdf` (v1.0) is kept on purpose as the combined overview. The PDF cover still says "v1.0" internally (the site labels carry the message; regenerate the PDF only on request, since the scratchpad build script outputs a different `_v1.1.pdf`).
 - `8b73892`: corrected `privacy.html` guide-download wording to match the code (records the edition and a hardcoded channel tag `src`, count only, NOT the HTTP referring page).
