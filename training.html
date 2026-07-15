@@ -1868,6 +1868,13 @@ renderFM();
       </div>
       <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
     </div>
+  <div id="preview-banner" style="display:none;background:var(--surface2);border:1px solid var(--accent-dim);border-left:3px solid var(--accent);padding:14px 16px;margin-bottom:16px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:5px">Preview</div>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between">
+      <span style="font-size:12.5px;color:var(--muted);line-height:1.5;flex:1 1 260px">Module 1 is open to read. Register free to unlock all six modules and your certificate.</span>
+      <button onclick="openEnroll()" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:11px 18px;cursor:pointer;flex:0 0 auto">Register free</button>
+    </div>
+  </div>
   <div class="module-list" id="module-list">
 
     <div class="module-row" id="module-row-0">
@@ -2754,6 +2761,9 @@ function toggleModule(idx) {
   var panel = document.getElementById('module-panel-' + idx);
   var btn = document.getElementById('module-btn-' + idx);
   if (!panel) return;
+  // Preview mode: Module 1 (idx 0) is open to invited visitors; opening any
+  // later module prompts registration instead.
+  if (window._jrsPreview && idx >= 1) { openEnroll(); return; }
   var isOpen = panel.classList.contains('open');
   // Close all panels
   document.querySelectorAll('.module-panel').forEach(function(p) { p.classList.remove('open'); });
@@ -3146,6 +3156,7 @@ function submitPoll() {
     <label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--muted-soft);line-height:1.5;margin-bottom:12px;cursor:pointer"><input type="checkbox" id="en-c2" style="margin-top:2px;flex:0 0 auto"><span>I also consent to my details being transferred to a successor if the JRS project is acquired. (optional)</span></label>
     <div id="en-msg" style="font-size:12px;color:var(--review-text);min-height:16px;margin-bottom:8px"></div>
     <button id="en-go" onclick="enrollSubmit()" style="width:100%;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:13px;cursor:pointer">Start the training</button>
+    <div id="en-dismiss" style="display:none;text-align:center;margin-top:12px"><a href="#" onclick="dismissEnroll();return false;" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none">Keep previewing Module 1</a></div>
     <p style="font-size:10.5px;color:var(--muted-soft);line-height:1.55;margin:12px 0 0">Your details are stored securely and used only for the JRS project. Request access or deletion any time at info@jrsstandard.com. See the <a href="privacy.html" style="color:var(--accent-dim)">Privacy Policy</a>.</p>
   </div>
 </div>
@@ -3182,8 +3193,12 @@ function jrsAccessClean(s){ return (s||'').toLowerCase().replace(/[^a-z0-9_-]/g,
     try { localStorage.setItem('jrs-training-access', JSON.stringify({ granted:true, channel: window._jrsChannel })); } catch(e){}
     try {
       if (!localStorage.getItem('jrs-training-enrolled')) {
-        var o = document.getElementById('enroll-overlay');
-        if (o) o.style.display = 'flex';
+        // Preview mode: an invited visitor may read Module 1 before registering.
+        // Modules 2 to 6 and the certificate stay gated behind registration, so
+        // the identity capture still happens, just after a genuine look inside.
+        window._jrsPreview = true;
+        var pb = document.getElementById('preview-banner');
+        if (pb) pb.style.display = 'block';
       }
     } catch(e){}
   } else {
@@ -3191,6 +3206,16 @@ function jrsAccessClean(s){ return (s||'').toLowerCase().replace(/[^a-z0-9_-]/g,
     if (g) g.style.display = 'flex';
   }
 })();
+function openEnroll(){
+  var o = document.getElementById('enroll-overlay');
+  if (o) o.style.display = 'flex';
+  var dl = document.getElementById('en-dismiss');
+  if (dl) dl.style.display = window._jrsPreview ? 'block' : 'none';
+}
+function dismissEnroll(){
+  var o = document.getElementById('enroll-overlay');
+  if (o) o.style.display = 'none';
+}
 function enrollSubmit(){
   var msg = document.getElementById('en-msg');
   var name = (document.getElementById('en-name').value||'').trim();
@@ -3209,7 +3234,7 @@ function enrollSubmit(){
   var btn = document.getElementById('en-go'); btn.disabled = true; msg.style.color = 'var(--muted-soft)'; msg.textContent = 'Submitting...';
   fetch('/api/enroll', { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify({ name:name, organization:org, title:title, email:email, audience:aud, source:enrollSource, consent_contact:c1, consent_transfer:c2 }) })
     .then(function(r){ if(!r.ok) throw 0; return r.json(); })
-    .then(function(){ try{ localStorage.setItem('jrs-training-enrolled','1'); localStorage.setItem('jrs-training-email', email); }catch(e){} document.getElementById('enroll-overlay').style.display = 'none'; })
+    .then(function(){ try{ localStorage.setItem('jrs-training-enrolled','1'); localStorage.setItem('jrs-training-email', email); }catch(e){} window._jrsPreview = false; var pb = document.getElementById('preview-banner'); if (pb) pb.style.display = 'none'; document.getElementById('enroll-overlay').style.display = 'none'; })
     .catch(function(){ msg.style.color = 'var(--review-text)'; msg.textContent = 'Could not register just now. Please try again, or email info@jrsstandard.com.'; btn.disabled = false; });
 }
 </script>
