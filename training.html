@@ -3123,6 +3123,16 @@ function submitPoll() {
   if (result) { result.style.display='block'; result.scrollIntoView({behavior:'smooth',block:'nearest'}); }
 }
 </script>
+<div id="gate-overlay" style="display:none;position:fixed;inset:0;background:rgba(5,5,5,.97);z-index:99999;align-items:flex-start;justify-content:center;padding:24px;overflow:auto;font-family:'Inter',sans-serif">
+  <div style="max-width:460px;width:100%;background:var(--surface);border:1px solid var(--rule);padding:26px 24px;margin:24px 0">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:10px">JRS Training &amp; Certification</div>
+    <h2 style="font-family:'Bodoni Moda',serif;font-weight:400;font-size:23px;color:var(--text);margin:0 0 8px">By invitation</h2>
+    <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 14px">The six-module JRS training and certificate are currently offered to a founding partner organization and to JRS research participants. Access opens through an invitation link from your organization.</p>
+    <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 16px">The JRS review materials are open to everyone: the Review Controls PDF, the Investigator Field Guide, and the Rapid Review Card are free downloads with no invitation required.</p>
+    <a href="index.html#section-tools" style="display:block;text-align:center;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;text-decoration:none;padding:13px;margin-bottom:10px">Open the free materials</a>
+    <a href="mailto:info@jrsstandard.com?subject=JRS%20training%20access" style="display:block;text-align:center;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px solid var(--rule);padding:13px">Request access</a>
+  </div>
+</div>
 <div id="enroll-overlay" style="display:none;position:fixed;inset:0;background:rgba(5,5,5,.94);z-index:99999;align-items:flex-start;justify-content:center;padding:24px;overflow:auto;font-family:'Inter',sans-serif">
   <div style="max-width:460px;width:100%;background:var(--surface);border:1px solid var(--accent);padding:26px 24px;margin:24px 0">
     <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:10px">JRS Training &amp; Certification</div>
@@ -3140,13 +3150,46 @@ function submitPoll() {
   </div>
 </div>
 <script>
+// ── ACCESS GATE ───────────────────────────────────────────
+// The training is offered to one partner organization at a time plus JRS
+// research participants. Access is granted by an opaque code carried in a
+// neutral "JRS training" link (the URL never names the organization). Each
+// code maps to an internal attribution tag so that organization's
+// participation can be measured passively at enrollment. The public field
+// guides remain open to everyone; only this training + certificate are gated.
+// Reversible by design: if a partner declines, a fresh code is issued to the
+// next organization. The first slot is reserved as founding access.
+function jrsAccessParam(k){ try { return (new URLSearchParams(location.search)).get(k) || ''; } catch(e){ return ''; } }
+function jrsAccessClean(s){ return (s||'').toLowerCase().replace(/[^a-z0-9_-]/g,'').slice(0,40); }
 (function(){
-  try {
-    if (!localStorage.getItem('jrs-training-enrolled')) {
-      var o = document.getElementById('enroll-overlay');
-      if (o) o.style.display = 'flex';
-    }
-  } catch(e){}
+  var ACCESS_CODES = {
+    '9f4c2a7db6e1': 'dewey'   // founding access - partner slot 1 (offered first)
+  };
+  var stored = {};
+  try { stored = JSON.parse(localStorage.getItem('jrs-training-access') || '{}'); } catch(e){ stored = {}; }
+
+  var code = jrsAccessClean(jrsAccessParam('access'));
+  var src  = jrsAccessClean(jrsAccessParam('src'));
+  var granted = false, channel = '';
+
+  if (code && ACCESS_CODES[code]) { granted = true; channel = ACCESS_CODES[code]; }
+  else if (src === 'panel') { granted = true; channel = 'panel'; }
+  else if (stored.granted || localStorage.getItem('jrs-training-enrolled') === '1') { granted = true; channel = stored.channel || ''; }
+
+  window._jrsChannel = channel || (stored.channel || '');
+
+  if (granted) {
+    try { localStorage.setItem('jrs-training-access', JSON.stringify({ granted:true, channel: window._jrsChannel })); } catch(e){}
+    try {
+      if (!localStorage.getItem('jrs-training-enrolled')) {
+        var o = document.getElementById('enroll-overlay');
+        if (o) o.style.display = 'flex';
+      }
+    } catch(e){}
+  } else {
+    var g = document.getElementById('gate-overlay');
+    if (g) g.style.display = 'flex';
+  }
 })();
 function enrollSubmit(){
   var msg = document.getElementById('en-msg');
@@ -3160,8 +3203,7 @@ function enrollSubmit(){
   if (!email || email.indexOf('@') < 1 || email.indexOf('.') < 0){ msg.textContent = 'Please enter a valid email.'; return; }
   if (!c1){ msg.textContent = 'Please tick the required consent box to continue.'; return; }
   var aud = 'public';
-  var srcTag = '';
-  try { srcTag = ((new URLSearchParams(location.search)).get('src') || '').toLowerCase().replace(/[^a-z0-9_-]/g,'').slice(0,40); } catch(e){}
+  var srcTag = (window._jrsChannel || jrsAccessClean(jrsAccessParam('src')) || '');
   if (srcTag === 'panel') aud = 'panel';
   var enrollSource = srcTag ? ('training.html?src=' + srcTag) : 'training.html';
   var btn = document.getElementById('en-go'); btn.disabled = true; msg.style.color = 'var(--muted-soft)'; msg.textContent = 'Submitting...';
