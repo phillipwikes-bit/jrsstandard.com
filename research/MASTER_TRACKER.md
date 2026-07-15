@@ -1,8 +1,8 @@
 # JRS / DRR: MASTER TRACKER
 
-*Single source of truth. All figures verified against the live database, not memory. Update this file instead of relying on chat history. Last full reconciliation against the live DB and production site: 2026-07-14.*
+*Single source of truth. All figures verified against the live database, not memory. Update this file instead of relying on chat history. Last full reconciliation against the live DB and production site: 2026-07-14. Training-funnel figures re-pulled live 2026-07-15 (access gate now live; see below).*
 
-*Live snapshot at that reconciliation (pulled from the dashboard's own anon views `pilot_progress`, `armb_progress`, `realcase_progress`, and `/api/enroll-stats`): detection panel 26 registered, 7 complete, 1 in progress (Saurabh 7/24), 18 not started, 200 read-rows (SungSoo 48 and Jake 25 include resubmissions); Arm B RR-101 (Boris, arm B2) complete 24/24, RR-102 and RR-103 assigned with 0 reads; real-case Rung 3 has 12 cases across 2 contributors (FOIL/E-08 7 cases, HR/V-HR-01 5 cases); training enrollments 0. The reliability figures (Gwet's AC1 0.74 experts / 0.63 reviewers, 108 labels, 10 records) are from the fixed, pre-registered Rung 2a analysis and were not re-derived in this reconciliation.*
+*Live snapshot (detection/bench/real-case as of 2026-07-14 pull; training re-pulled 2026-07-15 via `/api/enroll-stats` + roster): detection panel 26 registered, 7 complete, 1 in progress (Saurabh 7/24), 18 not started, 200 read-rows (SungSoo 48 and Jake 25 include resubmissions); Arm B RR-101 (Boris, arm B2) complete 24/24, RR-102 and RR-103 assigned with 0 reads; real-case Rung 3 has 12 cases across 2 contributors (FOIL/E-08 7 cases, HR/V-HR-01 5 cases); **training enrollments 4, completions 1** (Jake, Lawal, Boris via `?src=panel`; Nicholas Evans enrolled+completed 2026-07-14). The reliability figures (Gwet's AC1 0.74 experts / 0.63 reviewers, 108 labels, 10 records) are from the fixed, pre-registered Rung 2a analysis and were not re-derived in this reconciliation.*
 
 ---
 
