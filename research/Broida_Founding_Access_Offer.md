@@ -15,7 +15,7 @@
 
 Peter,
 
-Your mention of the work in Dewey's News and Case Alert, and again on the podcast, landed at a moment that meant more to me than you probably realized, and I've wanted to return the favor ever since, with no strings attached. I know part of what you do is put good resources in your customers' hands, so I'd like to hand you one to offer them, as a genuine thank-you and nothing more.
+Your mention of the work in Dewey's News and Case Alert, and again on the podcast, landed at a moment that meant more to me than you probably realized, and I've wanted to return the favor ever since, with no strings attached. I know part of what you do is put good resources in your customers' hands, so here's mine to offer them: a free JRS training and its companion training guide, yours to give your customers as a genuine thank-you and nothing more.
 
 You brought up the Investigator Field Guide, and that's the perfect place to start, because what I've built since grows straight out of it. The training and its companion guide are new. They take that same guide and carry it further, into a full working method. Someone who finishes can sit down with a record, including one an AI helped draft, and tell whether the decision inside it can actually be reconstructed and defended, or whether it just reads that way. That gap, which I call Decision Reconstruction Risk, is one that AI-drafted documents are quietly opening in high-stakes files, and honestly I don't know of anything else out there, in your catalog or anyone else's, that trains a reviewer to catch it before a record is final. That's the piece I'd want your people to have first.
 
