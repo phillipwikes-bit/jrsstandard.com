@@ -11,13 +11,15 @@
 
 Peter,
 
-Thank you, this is genuinely generous of you. I understand completely: Dewey publishes, it does not route training to subscribers, and I should not have assumed otherwise. My mistake, and no trouble at all.
+This is really kind of you, thank you. And you are right, I misunderstood how Dewey works. You publish, you are not in the business of pushing training out to your subscribers, and I should have realized that before I wrote. No harm meant, and honestly no harm done on my end.
 
-What stays with me is that you took the time to point me toward Deborah Hopkins, Gary Gilbert, and LRP, and that you would describe me as someone worth having as a trainer. Coming from you, that means a great deal. I will reach out to each of them and sort through their contacts as you suggested.
+What got me was that you stopped to point me toward Deborah, Gary, and LRP, and that you would put me forward as someone worth having as a trainer. Coming from you, that lands. I am going to follow up with each of them.
 
-The original note stands on its own terms. Your mention of my work in the Case Alert and on the podcast mattered to me, and the thank-you was only ever that. I hope our paths keep crossing.
+And the reason I wrote in the first place has not changed a bit. That mention in the Case Alert and on the podcast genuinely meant something to me, and I just wanted you to know it. That was the whole point.
 
-With real gratitude,
+Hope we cross paths again before long.
+
+Gratefully,
 Phillip
 
 ---
