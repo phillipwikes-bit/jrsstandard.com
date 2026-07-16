@@ -1,92 +1,73 @@
-# Outreach to Peter Broida's referrals (2026-07-16, donation framing)
+# Outreach to Peter Broida's referrals (plain voice, 2026-07-16)
 
-**Context:** Peter Broida declined founding access for Dewey but suggested Phillip contact three federal-sector training organizations. These drafts follow that suggestion. Phillip's intent: a pure donation, no strings, no angle. Because these orgs are affiliated with Peter, the outreach may be read as a sincerity test; the emails are written so that even if ignored, they read as a genuine gift, and Peter sees the effort was made.
+**Context:** Peter Broida suggested Phillip contact three federal-sector training orgs. Pure donation, no strings. Rewritten plainer/shorter after V-AI-17 withdrew over AI-sounding outreach. Send in Phillip's own voice; type, don't paste-verbatim.
 
-**Research (verified 2026-07-16): none of the three covers AI-drafted documents, DRR, or records defensibility.** JRS is complementary, not competitive.
-- **FELTG:** Deborah J. Hopkins, President (author, *UnCivil Servant*); accountability/MSPB/EEO/"Developing and Defending Discipline"/documenting misconduct.
-- **Gilbert Training Group** (Gilbert Employment Law, P.C.): Gary M. Gilbert, former EEOC Chief Administrative Judge; EEO/investigations/MSPB. Contact (301) 608-0880.
-- **LRP Media Group:** Seth Supran, Editorial Director, Federal Products (conferences@lrp.com); FDR Training + cyberFEDS.
+**Research (2026-07-16): none of the three covers AI-drafted documents, DRR, or records defensibility.** JRS is complementary.
+- **FELTG** (info@feltg.com): Deborah J. Hopkins, President. Accountability/MSPB/EEO/discipline/documenting misconduct.
+- **Gilbert Training Group** (no public email; contact form gilberttraininggroup.com/contact-us, phone 301-608-0880): Gary M. Gilbert, former EEOC Chief Administrative Judge.
+- **LRP** (conferences@lrp.com): Seth Supran, Editorial Director Federal Products; FDR Training + cyberFEDS.
 
-**Integrity guardrails:**
-- Peter is a connector only: one line, off the subject, nothing attributed to his opinion.
-- Pure donation: no cost, no strings, no ask, no need to reply. All "could I contribute / publish / present" lines removed.
-- Validation paragraph is honest (in validation; certificate is completion, not accreditation or endorsement); no proven-effectiveness claim. No em-dashes.
-- Distinct `&src` tag per recipient. Send individually (no shared To/CC).
+**Guardrails:** Peter is a connector only ("suggested I get in touch"), off the subject line, no opinion attributed to him. Complementary, not competitive. Honest validation, no effectiveness claim. Send individually.
 
 ---
 
-## 1. Deborah Hopkins / FELTG  (tag: feltg)
+## 1. FELTG  (To: info@feltg.com; tag: feltg)
 
-**To: info@feltg.com** (no direct address for Deborah Hopkins is published; info@feltg.com is FELTG's published general contact. Address it to Ms. Hopkins in the body.)
 **Subject: A complement to your accountability and defensibility training**
 
 Dear Ms. Hopkins,
 
-Peter Broida suggested I reach out to you. I am Phillip Wikes, a former lead civil rights officer with the Maryland Commission on Civil Rights, and the creator of the Justification Review Standard (JRS), a pre-finalization method for checking whether a consequential record can be defended on its own terms.
+Peter Broida suggested I get in touch. I'm Phillip Wikes, a former lead civil rights officer with the Maryland Commission on Civil Rights, and I built the Justification Review Standard (JRS), a way to check whether a record can stand on its own before it's finalized.
 
-I have followed FELTG's work on building and defending the record, from Developing and Defending Discipline to your writing on how misconduct should be documented. What I am sharing is meant to sit alongside that, not compete with it. When an action is defended before the MSPB, the question is whether the record carries its own basis, and AI-assisted drafting is starting to make that harder to see.
+I've followed FELTG's work on documenting and defending discipline, and I think what I've made sits alongside it rather than competing with it. When an action gets defended at the MSPB, the real question is whether the record carries its own basis, and AI-assisted drafting is quietly making that harder to see.
 
-The free Investigator Field Guides, in EEO, Fair Housing, and International editions, are yours to read and to share with your community, at no cost: https://www.jrsstandard.com/investigator-guides.html
+Two things, both free and yours to share. The Investigator Field Guides (EEO, Fair Housing, International): https://www.jrsstandard.com/investigator-guides.html . And a short training with a companion guide that teaches reviewers to catch when an AI-drafted record only looks complete but you can't actually reconstruct or defend the decision from it, a gap I call Decision Reconstruction Risk: https://www.jrsstandard.com/training.html?access=k7m2p9x4t1c8&src=feltg .
 
-The training and its companion guide are new. They expand on that same guide and develop it into a complete working method. Someone who completes the training can review a record, including one an AI helped draft, and determine whether the decision inside it can actually be reconstructed and justified, or if it just appears that way. That gap, which I call Decision Reconstruction Risk (DRR), is being quietly opened by AI-drafted documents in high-stakes files. Honestly, I don't know of anything else, in your catalog or anyone else's, that trains reviewers to spot it before a record becomes final. That's the skill I want your community to have first. The full six-module training and certificate are here, at no cost and with no strings attached: https://www.jrsstandard.com/training.html?access=k7m2p9x4t1c8&src=feltg
+Straight about where it stands: JRS is still being validated, with the methodology designed and reviewed by a model-validation lead at KPMG and an international panel stress-testing it, so the certificate marks completing the training, not an accreditation.
 
-In the interest of being straightforward: JRS is in an active validation phase. The validation methodology was designed by a model-validation director at KPMG India who has reviewed and approved it, it is being stress-tested by an international panel of experienced reviewers across a range of countries and professional fields, and it is running through international pilots in public records and workplace compliance. The certificate reflects completing the training, not an accreditation or an endorsement, and I say so plainly in the materials.
+I'm not after anything here. I respect what you do and wanted to put this in your hands as a thank-you to the field. Use it or not, no reply needed.
 
-I am offering all of this because I respect the work you do and want to support it. It is a donation to your field, nothing more. There is nothing I am asking for in return, and no need to reply. Use it however it serves your people, or set it aside with my compliments.
-
-With appreciation,
 Phillip Wikes
-Creator, Justification Review Standard (JRS)
 info@jrsstandard.com   ·   jrsstandard.com
 
 ---
 
-## 2. Gary Gilbert / Gilbert Training Group  (tag: ggilbert)
+## 2. Gilbert Training Group  (To: contact form / 301-608-0880; tag: ggilbert)
 
-**To: no public email published.** Send via the contact form https://gilberttraininggroup.com/contact-us/ (paste the body), or phone (301) 608-0880 to ask where to send it. Do NOT guess an address.
 **Subject: A complement to your federal EEO and investigations training**
 
 Dear Mr. Gilbert,
 
-Peter Broida suggested I reach out to you. I am Phillip Wikes, a former lead civil rights officer with the Maryland Commission on Civil Rights, and the creator of the Justification Review Standard (JRS), a pre-finalization method for checking whether a consequential record can be defended on its own terms.
+Peter Broida suggested I get in touch. I'm Phillip Wikes, a former lead civil rights officer with the Maryland Commission on Civil Rights, and I built the Justification Review Standard (JRS), a way to check whether a record can stand on its own before it's finalized.
 
-Your background as a former EEOC administrative judge, and the Gilbert Training Group's work on EEO counseling, investigations, and MSPB practice, is exactly the audience I had in mind. What I am sharing is meant to sit alongside that training, not compete with it. In an EEO investigation, the file has to let a later reviewer reconstruct how the finding was reached, and AI-assisted drafting is starting to make that harder to see.
+Given your years as an EEOC administrative judge and your training group's work on EEO counseling and investigations, I think this fits alongside what you teach rather than competing with it. In an investigation, the file has to let a later reviewer reconstruct how the finding was reached, and AI-assisted drafting is quietly making that harder to see.
 
-The free Investigator Field Guides, in EEO, Fair Housing, and International editions, are yours to read and to share with your practitioners, at no cost: https://www.jrsstandard.com/investigator-guides.html
+Two things, both free and yours to share. The Investigator Field Guides (EEO, Fair Housing, International): https://www.jrsstandard.com/investigator-guides.html . And a short training with a companion guide that teaches reviewers to catch when an AI-drafted record only looks complete but you can't actually reconstruct or defend the decision from it, a gap I call Decision Reconstruction Risk: https://www.jrsstandard.com/training.html?access=k7m2p9x4t1c8&src=ggilbert .
 
-The training and its companion guide are new. They expand on that same guide and develop it into a complete working method. Someone who completes the training can review a record, including one an AI helped draft, and determine whether the decision inside it can actually be reconstructed and justified, or if it just appears that way. That gap, which I call Decision Reconstruction Risk (DRR), is being quietly opened by AI-drafted documents in high-stakes files. Honestly, I don't know of anything else, in your catalog or anyone else's, that trains reviewers to spot it before a record becomes final. That's the skill I want your practitioners to have first. The full six-module training and certificate are here, at no cost and with no strings attached: https://www.jrsstandard.com/training.html?access=k7m2p9x4t1c8&src=ggilbert
+Straight about where it stands: JRS is still being validated, with the methodology designed and reviewed by a model-validation lead at KPMG and an international panel stress-testing it, so the certificate marks completing the training, not an accreditation.
 
-In the interest of being straightforward: JRS is in an active validation phase. The validation methodology was designed by a model-validation director at KPMG India who has reviewed and approved it, it is being stress-tested by an international panel of experienced reviewers across a range of countries and professional fields, and it is running through international pilots in public records and workplace compliance. The certificate reflects completing the training, not an accreditation or an endorsement, and I say so plainly in the materials.
+I'm not after anything here. I respect what you do and wanted to put this in your hands as a thank-you to the field. Use it or not, no reply needed.
 
-I am offering all of this because I respect the work you do and want to support it. It is a donation to your field, nothing more. There is nothing I am asking for in return, and no need to reply. Use it however it serves your people, or set it aside with my compliments.
-
-With appreciation,
 Phillip Wikes
-Creator, Justification Review Standard (JRS)
 info@jrsstandard.com   ·   jrsstandard.com
 
 ---
 
-## 3. Seth Supran / LRP  (tag: lrp)
+## 3. LRP  (To: conferences@lrp.com; tag: lrp)
 
-**To: conferences@lrp.com** (no direct Seth Supran address is published; conferences@lrp.com is LRP's published federal-conference contact. Address it to Mr. Supran in the body.)
 **Subject: A resource for your federal employment audience: reviewing AI-drafted records**
 
 Dear Mr. Supran,
 
-Peter Broida suggested I reach out to you. I am Phillip Wikes, a former lead civil rights officer with the Maryland Commission on Civil Rights, and the creator of the Justification Review Standard (JRS), a pre-finalization method for checking whether a consequential record can be defended on its own terms.
+Peter Broida suggested I get in touch. I'm Phillip Wikes, a former lead civil rights officer with the Maryland Commission on Civil Rights, and I built the Justification Review Standard (JRS), a way to check whether a record can stand on its own before it's finalized.
 
-The practitioners you reach through FDR Training and cyberFEDS are exactly the people facing one newer issue in the field. What I am sharing is meant to complement that, not compete with it. As AI drafts more of the record, the practical question is whether the file still carries its own basis when someone reviews it later.
+The people you reach through FDR Training and cyberFEDS are exactly who this is for, and I mean it as a complement to what you already publish, not competition. As AI drafts more of the record, the practical question is whether the file still carries its own basis when someone reviews it later.
 
-The free Investigator Field Guides, in EEO, Fair Housing, and International editions, are yours to read and to share with your subscribers, at no cost: https://www.jrsstandard.com/investigator-guides.html
+Two things, both free and yours to share with your readers. The Investigator Field Guides (EEO, Fair Housing, International): https://www.jrsstandard.com/investigator-guides.html . And a short training with a companion guide that teaches reviewers to catch when an AI-drafted record only looks complete but you can't actually reconstruct or defend the decision from it, a gap I call Decision Reconstruction Risk: https://www.jrsstandard.com/training.html?access=k7m2p9x4t1c8&src=lrp .
 
-The training and its companion guide are new. They expand on that same guide and develop it into a complete working method. Someone who completes the training can review a record, including one an AI helped draft, and determine whether the decision inside it can actually be reconstructed and justified, or if it just appears that way. That gap, which I call Decision Reconstruction Risk (DRR), is being quietly opened by AI-drafted documents in high-stakes files. Honestly, I don't know of anything else, in your catalog or anyone else's, that trains reviewers to spot it before a record becomes final. That's the skill I want your audience to have first. The full six-module training and certificate are here, at no cost and with no strings attached: https://www.jrsstandard.com/training.html?access=k7m2p9x4t1c8&src=lrp
+Straight about where it stands: JRS is still being validated, with the methodology designed and reviewed by a model-validation lead at KPMG and an international panel stress-testing it, so the certificate marks completing the training, not an accreditation.
 
-In the interest of being straightforward: JRS is in an active validation phase. The validation methodology was designed by a model-validation director at KPMG India who has reviewed and approved it, it is being stress-tested by an international panel of experienced reviewers across a range of countries and professional fields, and it is running through international pilots in public records and workplace compliance. The certificate reflects completing the training, not an accreditation or an endorsement, and I say so plainly in the materials.
+I'm not after anything here. I respect what you do and wanted to put this in front of your audience as a thank-you to the field. Use it or not, no reply needed.
 
-I am offering all of this because I respect the work you do and want to support it. It is a donation to your field, nothing more. There is nothing I am asking for in return, and no need to reply. Use it however it serves your people, or set it aside with my compliments.
-
-With appreciation,
 Phillip Wikes
-Creator, Justification Review Standard (JRS)
 info@jrsstandard.com   ·   jrsstandard.com
