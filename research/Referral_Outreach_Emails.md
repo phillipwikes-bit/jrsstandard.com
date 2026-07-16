@@ -23,7 +23,7 @@ Dear Ms. Hopkins,
 
 Peter Broida suggested I reach out to you. I am Phillip Wikes, a former lead civil rights officer with the Maryland Commission on Civil Rights, and the creator of the Justification Review Standard (JRS), a pre-finalization method for checking whether a consequential record can be defended on its own terms.
 
-I have followed FELTG's work on building and defending the record, from Developing and Defending Discipline to your writing on how misconduct should be documented. What I am offering is meant to sit alongside that, not compete with it: a focused check for one newer failure point your practitioners are beginning to face.
+I have followed FELTG's work on building and defending the record, from Developing and Defending Discipline to your writing on how misconduct should be documented. What I am offering is meant to sit alongside that, not compete with it: a focused check for one newer failure point your practitioners are beginning to face. When an action is defended before the MSPB, the question is whether the record carries its own basis, and AI-assisted drafting is starting to make that harder to see.
 
 Over the past year I have published a set of free Investigator Field Guides, in EEO, Fair Housing, and International editions, for the people who assemble and review investigative records. They are yours to read and to share with your community, at no cost and with no commitment: https://www.jrsstandard.com/investigator-guides.html
 
@@ -48,7 +48,7 @@ Dear Mr. Gilbert,
 
 Peter Broida suggested I reach out to you. I am Phillip Wikes, a former lead civil rights officer with the Maryland Commission on Civil Rights, and the creator of the Justification Review Standard (JRS), a pre-finalization method for checking whether a consequential record can be defended on its own terms.
 
-Your background as a former EEOC administrative judge, and the Gilbert Training Group's work on EEO counseling, investigations, and MSPB practice, is exactly the audience I had in mind. What I am offering is meant to sit alongside that training, not compete with it: a focused check for one newer failure point.
+Your background as a former EEOC administrative judge, and the Gilbert Training Group's work on EEO counseling, investigations, and MSPB practice, is exactly the audience I had in mind. What I am offering is meant to sit alongside that training, not compete with it: a focused check for one newer failure point. In an EEO investigation, the file has to let a later reviewer reconstruct how the finding was reached, and AI-assisted drafting is starting to make that harder to see.
 
 Over the past year I have published a set of free Investigator Field Guides, in EEO, Fair Housing, and International editions, for the people who assemble and review investigative records. They are yours to read and to share with your practitioners, at no cost and with no commitment: https://www.jrsstandard.com/investigator-guides.html
 
@@ -73,7 +73,7 @@ Dear Mr. Supran,
 
 Peter Broida suggested I reach out to you. I am Phillip Wikes, a former lead civil rights officer with the Maryland Commission on Civil Rights, and the creator of the Justification Review Standard (JRS), a pre-finalization method for checking whether a consequential record can be defended on its own terms.
 
-I have in mind LRP's federal employment audience, the practitioners you reach through FDR Training and cyberFEDS. What I am offering is meant to complement that, not compete with it: a focused resource for one newer issue in the field.
+I have in mind LRP's federal employment audience, the practitioners you reach through FDR Training and cyberFEDS. What I am offering is meant to complement that, not compete with it: a focused resource for one newer issue in the field, and one that would make a natural cyberFEDS piece. As AI drafts more of the record, the practical question is whether the file still carries its own basis when someone reviews it later.
 
 Over the past year I have published a set of free Investigator Field Guides, in EEO, Fair Housing, and International editions, for the people who assemble and review investigative records. They are yours to read and to share with your subscribers, at no cost and with no commitment: https://www.jrsstandard.com/investigator-guides.html
 
