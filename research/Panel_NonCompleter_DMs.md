@@ -1,6 +1,6 @@
 # Detection-panel non-completer nudges (personal LinkedIn DMs, 2026-07-16)
 
-**Purpose:** nudge the 19 non-completers of the AI-Assisted Records Detection panel (Study 011, Arm A) to finish their ~1-hour, 24-record review by end of month (2026-07-31), and additionally offer free JRS training + companion-guide access for them and their organization.
+**Purpose:** nudge the 18 non-completers of the AI-Assisted Records Detection panel (Study 011, Arm A) to finish their ~1-hour, 24-record review by end of month (2026-07-31), and additionally offer free JRS training + companion-guide access for them and their organization.
 
 **Training gift link (general invite + panel-org tag):** https://www.jrsstandard.com/training.html?access=k7m2p9x4t1c8&src=panel-org
 
@@ -38,9 +38,6 @@ Hi Yetunde, thank you again for joining the panel. Your internal-audit lens (CIS
 
 ## V-AI-16 Dr Gabriela Bar (Poland/EU) - not started
 Dr Bar, thank you again for joining the panel. As an attorney and AI-ethics advisor, your read on whether a record can be defended on its own terms is one the study values highly. Your set of 24 short records is still open, about an hour, and finishing by the end of the month would let it count. Recognition is as promised: named on the panel, a certificate, and a recommendation on request. Separately, as a thank-you, I would also like to give you and your organization free access to the JRS training and companion guide, yours to keep regardless: https://www.jrsstandard.com/training.html?access=k7m2p9x4t1c8&src=panel-org . If you can, please do your reviewer set first, then the training is yours to explore and to share with your team. No cost, no strings. With appreciation, Phillip
-
-## V-AI-17 Shakiba Mahvash (Iran) - not started
-Hi Shakiba, thank you again for joining the panel. Your AI-and-law research perspective on governance and liability is one the study benefits from. Your set of 24 short records is still open, about an hour, and finishing by the end of the month would let your read count. Recognition is as promised: named on the panel, a certificate, and a recommendation on request. Separately, as a thank-you, I would also like to give you and your organization free access to the JRS training and companion guide, yours to keep regardless: https://www.jrsstandard.com/training.html?access=k7m2p9x4t1c8&src=panel-org . If you can, please do your reviewer set first, then the training is yours to explore and to share with your team. No cost, no strings. Grateful either way. Phillip
 
 ## V-AI-18 Saad Farooq (UAE) - not started
 Hi Saad, thank you again for joining the panel. Your regulatory and public-policy lens on AI governance is exactly the vantage the study needs. Your set of 24 short records is still open, about an hour, and finishing by the end of the month would let your judgments count. Recognition is as promised: named on the panel, a certificate, and a recommendation on request. Separately, as a thank-you, I would also like to give you and your organization free access to the JRS training and companion guide, yours to keep regardless: https://www.jrsstandard.com/training.html?access=k7m2p9x4t1c8&src=panel-org . If you can, please do your reviewer set first, then the training is yours to explore and to share with your team. No cost, no strings. Grateful either way. Phillip

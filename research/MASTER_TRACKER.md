@@ -2,7 +2,7 @@
 
 *Single source of truth. All figures verified against the live database, not memory. Update this file instead of relying on chat history. Last full reconciliation against the live DB and production site: 2026-07-14. Training-funnel figures re-pulled live 2026-07-15 (access gate now live; see below).*
 
-*Live snapshot (detection/bench/real-case as of 2026-07-14 pull; training re-pulled 2026-07-15 via `/api/enroll-stats` + roster): detection panel 26 registered, 7 complete, 1 in progress (Saurabh 7/24), 18 not started, 200 read-rows (SungSoo 48 and Jake 25 include resubmissions); Arm B RR-101 (Boris, arm B2) complete 24/24, RR-102 and RR-103 assigned with 0 reads; real-case Rung 3 has 12 cases across 2 contributors (FOIL/E-08 7 cases, HR/V-HR-01 5 cases); **training enrollments 4, completions 1** (Jake, Lawal, Boris via `?src=panel`; Nicholas Evans enrolled+completed 2026-07-14). The reliability figures (Gwet's AC1 0.74 experts / 0.63 reviewers, 108 labels, 10 records) are from the fixed, pre-registered Rung 2a analysis and were not re-derived in this reconciliation.*
+*Live snapshot (detection/bench/real-case as of 2026-07-14 pull; training re-pulled 2026-07-15 via `/api/enroll-stats` + roster): detection panel 25 registered (V-AI-17 withdrew 2026-07-16), 7 complete, 1 in progress (Saurabh 7/24), 16 not started, 200 read-rows (SungSoo 48 and Jake 25 include resubmissions); Arm B RR-101 (Boris, arm B2) complete 24/24, RR-102 and RR-103 assigned with 0 reads; real-case Rung 3 has 12 cases across 2 contributors (FOIL/E-08 7 cases, HR/V-HR-01 5 cases); **training enrollments 4, completions 1** (Jake, Lawal, Boris via `?src=panel`; Nicholas Evans enrolled+completed 2026-07-14). The reliability figures (Gwet's AC1 0.74 experts / 0.63 reviewers, 108 labels, 10 records) are from the fixed, pre-registered Rung 2a analysis and were not re-derived in this reconciliation.*
 
 ---
 
@@ -26,7 +26,7 @@
 |---|---|---|
 | **Rung 1: Reproducibility** | Do 3 independent AI models (Claude, GPT, Gemini) give the same JRS read on the same record? | ✅ 84% agreement across 15 records. Auto-runs nightly. |
 | **Rung 2a: Reliability** | Do independent human reviewers agree with each other? | ✅ Experts AC1 0.74, reviewers 0.63 (10 records). |
-| **Rung 2b: Accuracy** | Can reviewers match a hidden answer key on 24 records? | 🟡 7 of 26 reviewers complete (Jake, Frank, Lawal, Andrey, Hekim, Kyle, SungSoo); Saurabh 7/24. Key verified 24/24. |
+| **Rung 2b: Accuracy** | Can reviewers match a hidden answer key on 24 records? | 🟡 7 of 25 reviewers complete (Jake, Frank, Lawal, Andrey, Hekim, Kyle, SungSoo); Saurabh 7/24. Key verified 24/24. (V-AI-17 withdrew 2026-07-16.) |
 | **Construct validity** | Are the five conditions distinct dimensions? | 🟡 Data ready (108 rows). No psychologist recruited. |
 | **Rung 3: Criterion validity** | Do flagged records fail in real cases? | 🟡 12 real cases collected. |
 | **External validity** | Does it hold on real (non-constructed) records? | ⬜ Future. |
@@ -34,7 +34,7 @@
 ### The pilots: evidence collected (verified live)
 | # | Pilot | What it collects | Evidence to date |
 |---|---|---|---|
-| 1 | **AI-Assisted Records Detection** (Study 011) | Reviewer reads on the 24-record set vs a verified key | **200 read-rows (SungSoo and Jake include resubmissions); 7 complete (Jake, Frank, Lawal, Andrey, Hekim, Kyle, SungSoo), Saurabh 7/24, 26 registered** (reconciled live 2026-07-14) |
+| 1 | **AI-Assisted Records Detection** (Study 011) | Reviewer reads on the 24-record set vs a verified key | **200 read-rows (SungSoo and Jake include resubmissions); 7 complete (Jake, Frank, Lawal, Andrey, Hekim, Kyle, SungSoo), Saurabh 7/24, 25 registered** (reconciled live 2026-07-14; V-AI-17 withdrew 2026-07-16) |
 | 2 | **Bench Reliability** (Studies 003/004) | Expert + reviewer scoring of a shared record set | **8 experts + 13 reviewers, 108 labels, 10 records → AC1 0.74 / 0.63** |
 | 3 | **Real-Case Criterion** (Study 010, Rung 3) | Real public cases + documented outcomes, in 3 domain pilots | **12 real cases: FOIL/Stacy 7, HR/Tanvi 5, Healthcare/Keith 0 (breakdown in §2)** |
 
@@ -51,7 +51,7 @@
 
 ## 2. People
 
-**Detection panel (24-record study)**: 7 complete, 1 in progress, 18 not started (26 registered):
+**Detection panel (24-record study)**: 7 complete, 1 in progress, 16 not started (25 registered; V-AI-17 withdrew 2026-07-16 at their request):
 
 | Code | Name | Title / role (verified) | Country | Reads | Status |
 |---|---|---|---|---|---|
@@ -68,7 +68,7 @@
 | V-AI-14 | Terra Shouse | Risk analysis & regulatory compliance (FMEA), independent | US | 0/24 | Not started |
 | V-AI-15 | Yetunde Adesiyan | Senior Manager Internal Audit (CISA, CISSP, FCCA), Tate & Lyle | UK | 0/24 | Not started |
 | V-AI-16 | Dr Gabriela Bar | Attorney, PhD; AI ethics advisor (EU), Gabriela Bar Law & AI | Poland/EU | 0/24 | Not started |
-| V-AI-17 | Shakiba Mahvash | AI & Law researcher (governance & liability), Islamic Azad University | Iran | 0/24 | Not started |
+| V-AI-17 | (withdrawn at reviewer's request 2026-07-16; name, affiliation, and personal data removed) | - | - | - | WITHDRAWN. Do not re-invite, list, or name in any write-up. Server-side `bench_experts` row for V-AI-17 to be deleted (see withdrawal note below). |
 | V-AI-18 | Saad Farooq | Regulatory & Public Policy Leader, AI governance (e& / Etisalat) | UAE | 0/24 | Not started |
 | V-AI-19 | Sanya Dalal (Expert Panel) | Ethics & Compliance; investigations (LLB, MBL, CFE), GE Vernova | India | 0/24 | Not started |
 | V-AI-21 | Tarun Samtani (Expert Panel) | Senior Director, Data & AI Governance; global DPO (CIPM, AIGP, CIPP/A) | Singapore | 0/24 | Not started |
@@ -170,7 +170,7 @@ Articles 2-4 (FOIL pilot; HR pilot; capstone with construct validity): planned, 
 | Code | Name | Country | Panel / perspective |
 |---|---|---|---|
 | V-AI-16 | Gabriela Bar | Poland/EU | Expert: AI law & EU governance (attorney, PhD) |
-| V-AI-17 | Shakiba Mahvash | Iran | AI & law researcher (AI governance & liability) |
+| V-AI-17 | (withdrawn 2026-07-16; personal data removed at reviewer's request) | - | - |
 | V-AI-18 | Saad Farooq | UAE | AI governance / regulatory & public policy (e&) |
 | V-AI-19 | Sanya Dalal | India | **Expert panel**: ethics, compliance & investigations (LLB, MBL, CFE, GE Vernova) |
 
@@ -206,7 +206,7 @@ Articles 2-4 (FOIL pilot; HR pilot; capstone with construct validity): planned, 
 | **Journal article: FOIL** ("Documentation as a Governance Layer") | Public records / FOIL; *Journal of Civic Information* | **Stacy Young (E-08)** | Records Governance Advisor; FOIL pilot contributor (7 real cases, verified) | **Co-author CONFIRMED: Stacy Young, 2026-07-09**; outline drafted (`research/FOIL_Article_Outline.md`); data collection ongoing (n=7, target 20-30 by Aug 31, 2026). Not submittable until sample target met. |
 | **Journal article: Business Ethics** ("Documentation Governance in AI-Assisted Decision-Making") | Multi-domain governance; *Journal of Business Ethics* | **Sanya Dalal** (pending) | Ethics & Compliance, CFE, GE Vernova, ex-KPMG | **Draft started 2026-07-09** (`research/BusinessEthics_Article_Draft.md`); pitch sent via LinkedIn DM (follow-up; no reply to yesterdays email). Awaiting yes/no. |
 
-**Alternate co-author (hold for a future governance/liability article, not the HR piece):** Shakiba Mahvash (V-AI-17): aspiring AI & law researcher, bar candidate; would value co-authorship most.
+**Alternate co-author:** (removed 2026-07-16: the reviewer previously noted here withdrew from the project and requested removal of their name and personal data; not to be listed or contacted.)
 
 **Already credited (not co-authors, do not re-offer):** Saurabh Nanda (V-AI-07, proportionality principle). **Ubayet Hossain (M-01): ELEVATED 2026-07-14 from contributor to CO-AUTHOR OFFER on the reliability / Detection paper** (he designed the core reliability/validation methodology the paper reports, and reviewed and approved it, so it is earned authorship, not courtesy, and consistent with the integrity policy). Pending his acceptance. **Broadened 2026-07-14 (Phillip): offer co-authorship on EACH paper that uses his methodology, across HR, compliance, and AI governance (this now INCLUDES the Business Ethics/compliance paper, superseding the earlier "not Business Ethics" note).** Legitimate per-paper provided he reviews and signs off on each manuscript. No paper byline changes until he accepts each.
 
@@ -406,6 +406,8 @@ Note on RR-102: Sundeep Mattaparti is Head of Legal and Compliance at bioMérieu
 8. **Phillip-only, highest value, unchanged:** land one real-org pilot, file the JRS and DRR trademarks, sign contributor IP agreements while relationships are warm.
 - Integrity guardrails on all outreach: JRS is in validation; the certificate is completion, not accreditation; naming reviewers stays participation-only, not endorsement.
 - Outreach messages finalized 2026-07-14 as "donation" framing with working tracked links (A reviewers `?src=panel`; B training/professional orgs `?src=partner` or a per-org tag; C mission orgs `?src=org` or a per-org tag; guides hub `investigator-guides.html`). Full drafts are in chat. Clarification: enrollment already requires name/organization/title/email + consent to start the training, so the `?src` tag is attribution (which channel drove the sign-up), NOT additional data collection. Per-org measurement: give each recipient its own short tag (e.g. `?src=aba`, `?src=hrw`).
+
+**REVIEWER WITHDRAWAL + DELETION REQUEST (V-AI-17, 2026-07-16):** the reviewer at code V-AI-17 withdrew from the panel and asked (1) not to be listed as a reviewer/contributor, (2) that their reviewer access be removed, and (3) that personal information tied to their invitation be deleted. Their stated reason: the outreach and materials read as AI-written, and on a project about AI-assisted-record governance they expected transparency about AI use in communications; the lack of it cost their trust. **Honored in our records (this commit):** name/affiliation/country stripped from the §2 roster, the registered-reviewers table, and the alternate-co-author note; their nudge DM removed; counts corrected (25 registered / 16 not started / non-completer DMs 18). **STILL REQUIRED server-side (needs Supabase service role, which is not held locally):** DELETE the `bench_experts` row where `code = 'V-AI-17'` and any `ai_pilot_reads` where `reviewer_code = 'V-AI-17'` (she had 0 reads). Until that row is deleted, her name persists in the DB and her reviewer link still resolves. Do NOT reissue or re-invite V-AI-17. **LESSON (act on, not just note):** an AI-authored tone in reviewer outreach is a real credibility liability with this audience, and doubly so for an AI-governance study. Future reviewer and partner communications should be visibly personal and in Phillip's own voice; the earlier warning that these messages "could read as AI" has now materialized in a withdrawal.
 
 **PANEL NON-COMPLETER NUDGES DRAFTED (2026-07-16):** 19 personal LinkedIn DMs in `research/Panel_NonCompleter_DMs.md` for the detection-panel non-completers (1 in progress Saurabh, 16 not started, 2 invited Anant Rai + Marguerite Maroudis). Each nudges the ~1-hour, 24-record review to completion by 2026-07-31, restates the already-promised recognition, and adds a free training + companion-guide access link for them and their organization (`?access=k7m2p9x4t1c8&src=panel-org`). Integrity: these are Arm A Panel (JRS-applying), not Arm B blind controls, so training is safe; the training gift is UNCONDITIONAL ("yours to keep regardless"), NOT a reward for completing, to avoid an inducement that would bias participation. Special handling: Gabriela Cortez = "Gabi" from the DRR article (personal, warm), Sanya Dalal = pending co-author (kept separate from the paper), Marguerite Maroudis (endorsement-caution line retained), David Grannum (vendor-neutral). Blind spot closed: offering JRS training to reviewers BEFORE their reads could bias not-yet-completed reads vs already-completed ones; recommended sequencing language now IN each DM ("please do your reviewer set first, then the training is yours to explore and share with your team").
 
