@@ -3162,19 +3162,19 @@ function submitPoll() {
 </div>
 <script>
 // ── ACCESS GATE ───────────────────────────────────────────
-// The training is offered to one partner organization at a time plus JRS
-// research participants. Access is granted by an opaque code carried in a
-// neutral "JRS training" link (the URL never names the organization). Each
-// code maps to an internal attribution tag so that organization's
-// participation can be measured passively at enrollment. The public field
-// guides remain open to everyone; only this training + certificate are gated.
-// Reversible by design: if a partner declines, a fresh code is issued to the
-// next organization. The first slot is reserved as founding access.
+// The training is offered by invitation: distributed to organizations and
+// reviewers via an opaque access code carried in a neutral "JRS training" link
+// (the URL never names anyone). One shared invite code unblocks access for
+// everyone the code is handed to. Per-recipient attribution rides on an
+// optional &src=<tag> appended to the same link, captured passively at
+// enrollment, so each organization or channel can still be measured separately
+// without minting a new code. Cold visitors with no code see the by-invitation
+// screen; the public field guides stay open to everyone.
 function jrsAccessParam(k){ try { return (new URLSearchParams(location.search)).get(k) || ''; } catch(e){ return ''; } }
 function jrsAccessClean(s){ return (s||'').toLowerCase().replace(/[^a-z0-9_-]/g,'').slice(0,40); }
 (function(){
   var ACCESS_CODES = {
-    '9f4c2a7db6e1': 'dewey'   // founding access - partner slot 1 (offered first)
+    'k7m2p9x4t1c8': 'invite'   // general invite code (share with orgs + reviewers)
   };
   var stored = {};
   try { stored = JSON.parse(localStorage.getItem('jrs-training-access') || '{}'); } catch(e){ stored = {}; }
@@ -3183,7 +3183,9 @@ function jrsAccessClean(s){ return (s||'').toLowerCase().replace(/[^a-z0-9_-]/g,
   var src  = jrsAccessClean(jrsAccessParam('src'));
   var granted = false, channel = '';
 
-  if (code && ACCESS_CODES[code]) { granted = true; channel = ACCESS_CODES[code]; }
+  // A valid code grants access; an explicit &src tag (when present) wins for
+  // attribution, otherwise the code's own tag is used.
+  if (code && ACCESS_CODES[code]) { granted = true; channel = src || ACCESS_CODES[code]; }
   else if (src === 'panel') { granted = true; channel = 'panel'; }
   else if (stored.granted || localStorage.getItem('jrs-training-enrolled') === '1') { granted = true; channel = stored.channel || ''; }
 
