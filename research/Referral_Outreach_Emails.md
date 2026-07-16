@@ -17,6 +17,7 @@
 
 ## 1. Deborah Hopkins / FELTG  (tag: feltg)
 
+**To: info@feltg.com** (no direct address for Deborah Hopkins is published; info@feltg.com is FELTG's published general contact. Address it to Ms. Hopkins in the body.)
 **Subject: A complement to your accountability and defensibility training**
 
 Dear Ms. Hopkins,
@@ -42,6 +43,7 @@ info@jrsstandard.com   ·   jrsstandard.com
 
 ## 2. Gary Gilbert / Gilbert Training Group  (tag: ggilbert)
 
+**To: no public email published.** Send via the contact form https://gilberttraininggroup.com/contact-us/ (paste the body), or phone (301) 608-0880 to ask where to send it. Do NOT guess an address.
 **Subject: A complement to your federal EEO and investigations training**
 
 Dear Mr. Gilbert,
@@ -67,6 +69,7 @@ info@jrsstandard.com   ·   jrsstandard.com
 
 ## 3. Seth Supran / LRP  (tag: lrp)
 
+**To: conferences@lrp.com** (no direct Seth Supran address is published; conferences@lrp.com is LRP's published federal-conference contact. Address it to Mr. Supran in the body.)
 **Subject: A resource for your federal employment audience: reviewing AI-drafted records**
 
 Dear Mr. Supran,
