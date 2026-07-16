@@ -1,8 +1,8 @@
-# Outreach to Peter Broida's referrals (2026-07-15, donation framing)
+# Outreach to Peter Broida's referrals (2026-07-16, donation framing)
 
 **Context:** Peter Broida declined founding access for Dewey but suggested Phillip contact three federal-sector training organizations. These drafts follow that suggestion. Phillip's intent: a pure donation, no strings, no angle. Because these orgs are affiliated with Peter, the outreach may be read as a sincerity test; the emails are written so that even if ignored, they read as a genuine gift, and Peter sees the effort was made.
 
-**Research (verified 2026-07-15): none of the three covers AI-drafted documents, DRR, or records defensibility.** JRS is complementary, not competitive.
+**Research (verified 2026-07-16): none of the three covers AI-drafted documents, DRR, or records defensibility.** JRS is complementary, not competitive.
 - **FELTG:** Deborah J. Hopkins, President (author, *UnCivil Servant*); accountability/MSPB/EEO/"Developing and Defending Discipline"/documenting misconduct.
 - **Gilbert Training Group** (Gilbert Employment Law, P.C.): Gary M. Gilbert, former EEOC Chief Administrative Judge; EEO/investigations/MSPB. Contact (301) 608-0880.
 - **LRP Media Group:** Seth Supran, Editorial Director, Federal Products (conferences@lrp.com); FDR Training + cyberFEDS.
