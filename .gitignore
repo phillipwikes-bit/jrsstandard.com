@@ -1,3 +1,6 @@
+# session scratchpad (temporary build scripts and previews)
+scratchpad/
+
 # wrangler files
 .wrangler
 .dev.vars*
