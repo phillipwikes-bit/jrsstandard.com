@@ -55,6 +55,7 @@
 - **Arm A (detection panel): 12 countries, 5 continents.** US, UK, Ireland, Germany, Poland, Spain, Nigeria, India (6 reviewers), Singapore, South Korea, UAE, Australia. (Iran was in Arm A via V-AI-17 but she withdrew and was removed, so Arm A no longer includes Iran.)
 - **Arm B (comparison): 6 countries + 1 regional, 3 continents.** US, Canada, India, Iran, South Africa, Kenya, plus Jean-Luc Adade recorded as "West Africa" (country not yet confirmed).
 - **Combined: 16 countries across all 5 populated continents.** Only US and India appear in both arms.
+- **COMPLETERS ONLY (the defensible/analyzed-sample number, 2026-07-17):** Arm A completers (7): US, Australia, Nigeria, Poland, Germany, UK/Ireland, South Korea = 7 countries, 5 continents (Jake, Frank, Lawal, Andrey, Hekim, Kyle, SungSoo). Arm B completers (3): US (Boris, Nicholas), Iran (Mostafa) = 2 countries, 2 continents. **Combined completers: 8 countries, 5 continents** (US the only overlap). Use the COMPLETER figures for any public/diligence claim, not the registered figures.
 
 
 **Detection panel (24-record study)**: 7 complete, 1 in progress, 16 not started (25 registered; V-AI-17 withdrew 2026-07-16 at their request):
