@@ -10,16 +10,24 @@ export const config = { runtime: 'edge' };
 
 const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 
-// Country backfill for completions recorded BEFORE geo capture went live
-// (2026-07-17). Keyed by SHA-256 of the lowercased completion email so no raw
-// address is stored in source. Values are ISO 3166-1 alpha-2, sourced from the
-// reviewer records. Going forward /api/complete stores the country on the row
-// and this map is bypassed. Remove an entry once its row carries a real country.
+// Known completers from the reviewer records, keyed by SHA-256 of the lowercased
+// enrollment/completion email so no raw address is stored in source. Values are
+// ISO 3166-1 alpha-2. Two uses: (1) backfill the country for completions that
+// predate geo capture (2026-07-17) and so have no country on the row; (2) count
+// reviewers who completed per our records but enrolled via ?src=panel and never
+// wrote a training-complete row. Going forward /api/complete stores the country
+// automatically. Prune an entry once its completion row carries a real country.
 const COMPLETION_COUNTRY_BACKFILL = {
-  // Nicholas Evans (completed 2026-07-14)
+  // Nicholas Evans (completed 2026-07-14, has training-complete row)
   '7f86332345224f64ba2908c402bc289d492903d7eac9f794d7e3983cfabbebc4': 'US',
-  // Andrey Ekhmenin (completed 2026-07-17, pre-geo-deploy)
-  '77d8d7d39070b21e741964745127596924a42140c10cc967faecda9fe7a977cc': 'PL'
+  // Andrey Ekhmenin (completed 2026-07-17, has training-complete row)
+  '77d8d7d39070b21e741964745127596924a42140c10cc967faecda9fe7a977cc': 'PL',
+  // Jake McDonough (panel completer, enrolled ?src=panel, no complete row)
+  'f148f56cc11fdee6017ec1a103be7edaa3aed0a9855de3bfafea609b94c054f9': 'US',
+  // Olabanji Lawal (panel completer, enrolled ?src=panel, no complete row)
+  'c883d56fa7ef4d012574bdc1bbfcd372c54f4c111985070e606ce827be65411b': 'NG',
+  // Boris Khazin (panel completer, enrolled ?src=panel, no complete row)
+  '7fec46f29356da7d765afb4cd1f47776e24b0d237ee3e6801d620f3cbbb993ee': 'US'
 };
 
 function json(o, s){ return new Response(JSON.stringify(o), { status: s||200, headers: { 'Content-Type':'application/json', 'Access-Control-Allow-Origin':'*', 'Cache-Control':'no-store' } }); }
@@ -83,12 +91,22 @@ export default async function handler(req){
         if (cc && !compCountry[em]) compCountry[em] = cc;
       }
     }
-    // Backfill unresolved completions from the email-hash map.
+    // Backfill unresolved completions (rows present but no stored country).
     const emails = Object.keys(compCountry);
     for (let i=0; i<emails.length; i++){
       if (!compCountry[emails[i]]){
         const h = await sha256hex(emails[i]);
         if (COMPLETION_COUNTRY_BACKFILL[h]) compCountry[emails[i]] = COMPLETION_COUNTRY_BACKFILL[h];
+      }
+    }
+    // Add known completers who enrolled but never wrote a training-complete row
+    // (panel reviewers via ?src=panel). Only enrolled emails in the records map
+    // are added, each once, with the recorded country.
+    const enrolled = Object.keys(people);
+    for (let i=0; i<enrolled.length; i++){
+      if (!(enrolled[i] in compCountry)){
+        const h = await sha256hex(enrolled[i]);
+        if (COMPLETION_COUNTRY_BACKFILL[h]) compCountry[enrolled[i]] = COMPLETION_COUNTRY_BACKFILL[h];
       }
     }
   } catch(e){ /* leave compCountry as-is; completions block is best-effort */ }
