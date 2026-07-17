@@ -5,6 +5,9 @@ export const config = { runtime: 'edge' };
 // public.guide_downloads, then 302-redirects to the static PDF. The DB write is
 // best-effort: if Supabase is unreachable or the service key is unset, the user
 // still gets the file. Writes use SUPABASE_SERVICE_ROLE_KEY (bypasses RLS).
+// Country tracking: a second best-effort row goes to public.interaction_events
+// (source 'guide-dl', payload {edition, src, country}) using the table's existing
+// jsonb payload column, so no schema change is required anywhere.
 
 const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 
@@ -33,26 +36,19 @@ export default async function handler(req){
 
   const target = url.origin + '/' + FILES[edition];
 
-  // Best-effort append-only record. Never block the download on it.
-  // Country comes from Vercel's edge geo header (ISO 3166-1 alpha-2). The first
-  // insert includes it; if the guide_downloads.country column does not exist yet,
-  // that insert fails and we retry without it so counts are never lost.
+  // Best-effort append-only records. Never block the download on them.
   const env = (typeof process!=='undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
   if (SERVICE) {
-    const country = String(req.headers.get('x-vercel-ip-country')||'').toUpperCase().replace(/[^A-Z]/g,'').slice(0,2) || null;
     const H = {'apikey':SERVICE,'Authorization':'Bearer '+SERVICE,'Content-Type':'application/json','Prefer':'return=minimal'};
+    const country = String(req.headers.get('x-vercel-ip-country')||'').toUpperCase().replace(/[^A-Z]/g,'').slice(0,2) || null;
     try {
-      const r = await fetch(SB+'/rest/v1/guide_downloads',{
-        method:'POST', headers:H,
-        body:JSON.stringify({ edition: edition, src: src, country: country })
-      });
-      if (!r.ok) {
-        await fetch(SB+'/rest/v1/guide_downloads',{
-          method:'POST', headers:H,
-          body:JSON.stringify({ edition: edition, src: src })
-        });
-      }
+      await Promise.all([
+        fetch(SB+'/rest/v1/guide_downloads',{ method:'POST', headers:H,
+          body:JSON.stringify({ edition: edition, src: src }) }),
+        fetch(SB+'/rest/v1/interaction_events',{ method:'POST', headers:H,
+          body:JSON.stringify({ source:'guide-dl', type:'download', payload:{ edition: edition, src: src, country: country } }) })
+      ]);
     } catch(e){ /* swallow: the file must still be served */ }
   }
 
