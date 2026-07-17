@@ -20,6 +20,10 @@ https://www.jrsstandard.com/investigator-guides.html
 
 Please feel free to grab it, share it, and copy or distribute as many as you want for your investigative team.
 
+If your team wants to go further, there is also a free reviewer training built on the same standard: six short modules plus a companion reviewer reference, ending in a certificate of completion. It is free with a quick registration (so we can issue the certificate), and it is yours to use at your own pace:
+
+https://www.jrsstandard.com/training.html?access=k7m2p9x4t1c8&focus=1
+
 If you're curious, you can also listen to the recent podcast discussion about it, near the end of the episode (around the 23:45 mark), here:
 
 https://podcasts.apple.com/us/podcast/the-dewey-publications-podcast/id888037481?i=1000775802123
@@ -33,7 +37,7 @@ Creator, Justification Review Standard (JRS)
 info@jrsstandard.com
 jrsstandard.com
 
-*(For priority orgs, replace the hub link with a tagged edition link, e.g. EQUINET: https://www.jrsstandard.com/api/dl?e=international&src=equinet )*
+*(For priority orgs, replace the hub link with a tagged edition link, e.g. EQUINET: https://www.jrsstandard.com/api/dl?e=international&src=equinet . For the training link, append the same channel tag for attribution, e.g. `...?access=k7m2p9x4t1c8&focus=1&src=equinet`. `&focus=1` gives the clean six-modules-plus-reference view; completions record the country automatically.)*
 
 ---
 
