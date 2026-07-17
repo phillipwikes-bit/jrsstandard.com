@@ -22,11 +22,14 @@ export default async function handler(req){
   const email = clean(b.email, 200);
   if (!email || email.indexOf('@') < 1 || email.indexOf('.') < 0) return json({ error:'valid_email_required' }, 400);
 
+  // Completer's country from the edge geo header (ISO 3166-1 alpha-2). Best effort;
+  // null if unavailable. Stored in the message JSON, no schema change needed.
+  const country = String(req.headers.get('x-vercel-ip-country')||'').toUpperCase().replace(/[^A-Z]/g,'').slice(0,2) || null;
   const row = {
     name: '',
     email: email,
     organization: '',
-    message: JSON.stringify({ kind:'training-complete', ts:new Date().toISOString() }),
+    message: JSON.stringify({ kind:'training-complete', ts:new Date().toISOString(), country: country }),
     source: 'training-complete'
   };
   const res = await fetch(SB + '/rest/v1/pilot_contacts', {

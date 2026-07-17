@@ -22,14 +22,20 @@ export default async function handler(req){
   try {
     const er = await fetch(SB + "/rest/v1/pilot_contacts?select=name,email,organization,message,created_at&source=eq.training-enroll&order=created_at.asc&limit=10000", { headers:AH });
     enroll = await er.json();
-    const cr = await fetch(SB + "/rest/v1/pilot_contacts?select=email,created_at&source=eq.training-complete&limit=10000", { headers:AH });
+    const cr = await fetch(SB + "/rest/v1/pilot_contacts?select=email,message,created_at&source=eq.training-complete&limit=10000", { headers:AH });
     done = cr.ok ? await cr.json() : [];
   } catch(e){ return new Response('<p>database unreachable</p>', { status:502, headers:H }); }
   if (!Array.isArray(enroll)) enroll = [];
   if (!Array.isArray(done)) done = [];
 
-  const doneMap = {};
-  done.forEach(function(x){ const e=(x.email==null?'':String(x.email)).trim().toLowerCase(); if(e && (!doneMap[e] || x.created_at < doneMap[e])) doneMap[e]=x.created_at; });
+  const doneMap = {}, doneCountry = {};
+  done.forEach(function(x){
+    const e=(x.email==null?'':String(x.email)).trim().toLowerCase();
+    if(!e) return;
+    if(!doneMap[e] || x.created_at < doneMap[e]) doneMap[e]=x.created_at;
+    let cc=''; try { cc=(JSON.parse(x.message||'{}')||{}).country||''; } catch(err){ cc=''; }
+    if(cc && !doneCountry[e]) doneCountry[e]=String(cc).toUpperCase().slice(0,2);
+  });
 
   let rows = '';
   enroll.forEach(function(r, i){
@@ -46,12 +52,18 @@ export default async function handler(req){
       + '<td>'+(p.consent_contact===true?'yes':'no')+'</td>'
       + '<td>'+(p.consent_transfer===true?'yes':'no')+'</td>'
       + '<td>'+d(r.created_at)+'</td>'
-      + '<td>'+(comp?('yes '+d(comp)):'no')+'</td>'
+      + '<td>'+(comp?('yes '+d(comp)+(doneCountry[email.toLowerCase()]?(' ('+esc(doneCountry[email.toLowerCase()])+')'):'')):'no')+'</td>'
       + '</tr>';
   });
   if (!rows) rows = '<tr><td colspan="10" style="color:#888">No enrollments yet.</td></tr>';
 
-  const completed = enroll.filter(function(r){ const e=(r.email==null?'':String(r.email)).trim().toLowerCase(); return !!doneMap[e]; }).length;
+  const completedEmails = enroll.map(function(r){ return (r.email==null?'':String(r.email)).trim().toLowerCase(); }).filter(function(e){ return !!doneMap[e]; });
+  const completed = completedEmails.length;
+  const countrySet = {};
+  completedEmails.forEach(function(e){ if(doneCountry[e]) countrySet[doneCountry[e]]=(countrySet[doneCountry[e]]||0)+1; });
+  const countryList = Object.keys(countrySet).sort();
+  const countryCount = countryList.length;
+  const countryLine = completed ? ('Completions by country: '+(countryCount?countryList.map(function(c){return esc(c)+' '+countrySet[c];}).join(' &middot; '):'(country not recorded for earlier completions)')) : '';
 
   const html = '<!doctype html><html><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow">'
     + '<meta name="viewport" content="width=device-width,initial-scale=1"><title>Training Roster (private)</title>'
@@ -62,7 +74,8 @@ export default async function handler(req){
     + 'th{background:#161616;color:#c4963d;font-weight:600;white-space:nowrap}'
     + 'tr:nth-child(even) td{background:#0f0f0f}.note{color:#666;font-size:11px;margin-top:14px;max-width:640px}</style></head><body>'
     + '<h1>Training Roster</h1>'
-    + '<p class="sub">'+enroll.length+' enrolled &middot; '+completed+' completed &middot; private, do not share this link</p>'
+    + '<p class="sub">'+enroll.length+' enrolled &middot; '+completed+' completed from '+countryCount+' '+(countryCount===1?'country':'countries')+' &middot; private, do not share this link</p>'
+    + (countryLine ? ('<p class="sub" style="color:#c4963d">'+countryLine+'</p>') : '')
     + '<table><thead><tr><th>#</th><th>Name</th><th>Title</th><th>Email</th><th>Organization</th><th>Channel</th>'
     + '<th>Contact</th><th>Transfer</th><th>Enrolled</th><th>Completed</th></tr></thead><tbody>'+rows+'</tbody></table>'
     + '<p class="note">This page is the private, consented list of people who enrolled in the JRS training. It is secured by this unlisted URL. If it ever leaks, ask to have it rotated. Completion is recorded for people who finish all six modules with the current site version.</p>'
