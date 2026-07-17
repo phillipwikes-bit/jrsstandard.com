@@ -463,14 +463,8 @@ a:hover{text-decoration:underline}
 .csn-link.csn-active{color:var(--accent);border-bottom-color:var(--accent)}
 .csn-link:hover{color:var(--text)}
 /* Focus mode: a clean, training-only view (six modules + Reviewer Reference + certificate). Triggered by ?focus=1 in the link. Hides the hero, role paths, simulations, kit docs, survey, and navigation so there is exactly one path. */
-body.focus-mode .site-header,
-body.focus-mode .cross-site-nav,
-body.focus-mode .sticky-nav,
-body.focus-mode .hero-section,
-body.focus-mode #start-here,
-body.focus-mode #roles,
-body.focus-mode #simulator,
-body.focus-mode #toolkit,
+body.focus-mode > *:not(#training-modules):not(#cert-section):not(footer):not(#gate-overlay):not(#enroll-overlay):not(script):not(.skip-link){display:none !important}
+body.focus-mode #module-list ~ *{display:none !important}
 body.focus-mode #participation-survey{display:none !important}
 body.focus-mode #training-modules{border-top:none;padding-top:34px}
 </style>
