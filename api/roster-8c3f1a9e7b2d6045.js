@@ -3,13 +3,31 @@ export const config = { runtime: 'edge' };
 // Private training roster viewer. Secured by this opaque, unlinked, noindex URL
 // (same model as the acquisition page), so it needs NO token. Reads pilot_contacts
 // with the server-side service-role key and renders name, title, email,
-// organization, consents, enrolled date, and completion status. If this URL ever
-// leaks, rename this file to rotate it.
+// organization, consents, enrolled date, country, and completion status. If this
+// URL ever leaks, rename this file to rotate it.
 
 const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 
+// Known completers from the reviewer records, keyed by SHA-256 of the lowercased
+// email (no raw address stored). Two uses: backfill the country for completions
+// that predate geo capture (2026-07-17), and mark reviewers who completed per our
+// records but enrolled via ?src=panel and never wrote a training-complete row.
+// Kept in sync with the same map in api/enroll-stats.js. Prune an entry once its
+// completion row carries a real country.
+const RECORDS = {
+  '7f86332345224f64ba2908c402bc289d492903d7eac9f794d7e3983cfabbebc4': 'US', // Nicholas Evans (has complete row)
+  '77d8d7d39070b21e741964745127596924a42140c10cc967faecda9fe7a977cc': 'PL', // Andrey Ekhmenin (has complete row)
+  'f148f56cc11fdee6017ec1a103be7edaa3aed0a9855de3bfafea609b94c054f9': 'US', // Jake McDonough (panel, no complete row)
+  'c883d56fa7ef4d012574bdc1bbfcd372c54f4c111985070e606ce827be65411b': 'NG', // Olabanji Lawal (panel, no complete row)
+  '7fec46f29356da7d765afb4cd1f47776e24b0d237ee3e6801d620f3cbbb993ee': 'US'  // Boris Khazin (panel, no complete row)
+};
+
 function esc(v){ return String(v==null?'':v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 function d(s){ return s ? String(s).slice(0,10) : ''; }
+async function sha256hex(str){
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(function(b){ return b.toString(16).padStart(2,'0'); }).join('');
+}
 
 export default async function handler(req){
   const env = (typeof process !== 'undefined' && process.env) || {};
@@ -37,30 +55,48 @@ export default async function handler(req){
     if(cc && !doneCountry[e]) doneCountry[e]=String(cc).toUpperCase().slice(0,2);
   });
 
-  let rows = '';
-  enroll.forEach(function(r, i){
+  // Resolve completion + country per enrollee (records map fills the gaps).
+  const resolved = [];
+  const countrySet = {};
+  let completed = 0;
+  for (let i=0; i<enroll.length; i++){
+    const r = enroll[i] || {};
     let p = {}; try { p = JSON.parse(r.message||'{}') || {}; } catch(e){ p = {}; }
     const email = (r.email==null?'':String(r.email)).trim();
-    const comp = doneMap[email.toLowerCase()];
+    const key = email.toLowerCase();
+    const hash = key ? await sha256hex(key) : '';
+    const storedDate = doneMap[key] || null;
+    const inRecords = !!RECORDS[hash];
+    const isComplete = !!storedDate || inRecords;
+    const country = doneCountry[key] || RECORDS[hash] || '';
+    let compCell;
+    if (storedDate) compCell = 'yes '+d(storedDate)+(country?(' ('+esc(country)+')'):'');
+    else if (inRecords) compCell = 'yes (records)';
+    else compCell = 'no';
+    if (isComplete){ completed++; if (country) countrySet[country]=(countrySet[country]||0)+1; }
+    resolved.push({ i:i+1, name:r.name, title:p.title, email:email, org:r.organization, chan:p.page_source,
+      contact:p.consent_contact===true, transfer:p.consent_transfer===true, enrolled:r.created_at,
+      country:country, comp:compCell });
+  }
+
+  let rows = '';
+  resolved.forEach(function(x){
     rows += '<tr>'
-      + '<td>'+(i+1)+'</td>'
-      + '<td>'+esc(r.name)+'</td>'
-      + '<td>'+esc(p.title)+'</td>'
-      + '<td>'+esc(email)+'</td>'
-      + '<td>'+esc(r.organization)+'</td>'
-      + '<td>'+esc(p.page_source)+'</td>'
-      + '<td>'+(p.consent_contact===true?'yes':'no')+'</td>'
-      + '<td>'+(p.consent_transfer===true?'yes':'no')+'</td>'
-      + '<td>'+d(r.created_at)+'</td>'
-      + '<td>'+(comp?('yes '+d(comp)+(doneCountry[email.toLowerCase()]?(' ('+esc(doneCountry[email.toLowerCase()])+')'):'')):'no')+'</td>'
+      + '<td>'+x.i+'</td>'
+      + '<td>'+esc(x.name)+'</td>'
+      + '<td>'+esc(x.title)+'</td>'
+      + '<td>'+esc(x.email)+'</td>'
+      + '<td>'+esc(x.org)+'</td>'
+      + '<td>'+esc(x.chan)+'</td>'
+      + '<td>'+(x.contact?'yes':'no')+'</td>'
+      + '<td>'+(x.transfer?'yes':'no')+'</td>'
+      + '<td>'+d(x.enrolled)+'</td>'
+      + '<td>'+(x.country?esc(x.country):'&mdash;')+'</td>'
+      + '<td>'+x.comp+'</td>'
       + '</tr>';
   });
-  if (!rows) rows = '<tr><td colspan="10" style="color:#888">No enrollments yet.</td></tr>';
+  if (!rows) rows = '<tr><td colspan="11" style="color:#888">No enrollments yet.</td></tr>';
 
-  const completedEmails = enroll.map(function(r){ return (r.email==null?'':String(r.email)).trim().toLowerCase(); }).filter(function(e){ return !!doneMap[e]; });
-  const completed = completedEmails.length;
-  const countrySet = {};
-  completedEmails.forEach(function(e){ if(doneCountry[e]) countrySet[doneCountry[e]]=(countrySet[doneCountry[e]]||0)+1; });
   const countryList = Object.keys(countrySet).sort();
   const countryCount = countryList.length;
   const countryLine = completed ? ('Completions by country: '+(countryCount?countryList.map(function(c){return esc(c)+' '+countrySet[c];}).join(' &middot; '):'(country not recorded for earlier completions)')) : '';
@@ -77,8 +113,8 @@ export default async function handler(req){
     + '<p class="sub">'+enroll.length+' enrolled &middot; '+completed+' completed from '+countryCount+' '+(countryCount===1?'country':'countries')+' &middot; private, do not share this link</p>'
     + (countryLine ? ('<p class="sub" style="color:#c4963d">'+countryLine+'</p>') : '')
     + '<table><thead><tr><th>#</th><th>Name</th><th>Title</th><th>Email</th><th>Organization</th><th>Channel</th>'
-    + '<th>Contact</th><th>Transfer</th><th>Enrolled</th><th>Completed</th></tr></thead><tbody>'+rows+'</tbody></table>'
-    + '<p class="note">This page is the private, consented list of people who enrolled in the JRS training. It is secured by this unlisted URL. If it ever leaks, ask to have it rotated. Completion is recorded for people who finish all six modules with the current site version.</p>'
+    + '<th>Contact</th><th>Transfer</th><th>Enrolled</th><th>Country</th><th>Completed</th></tr></thead><tbody>'+rows+'</tbody></table>'
+    + '<p class="note">This page is the private, consented list of people who enrolled in the JRS training. It is secured by this unlisted URL. If it ever leaks, ask to have it rotated. Completion is recorded when someone finishes all six modules; entries marked "(records)" are reviewers who completed through the panel and whose completion and country are taken from the reviewer records.</p>'
     + '</body></html>';
 
   return new Response(html, { status:200, headers:H });
