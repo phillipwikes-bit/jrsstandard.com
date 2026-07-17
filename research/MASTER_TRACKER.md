@@ -51,6 +51,12 @@
 
 ## 2. People
 
+**GEOGRAPHIC REPRESENTATION (reference for the "international panel" narrative, as of 2026-07-17):**
+- **Arm A (detection panel): 12 countries, 5 continents.** US, UK, Ireland, Germany, Poland, Spain, Nigeria, India (6 reviewers), Singapore, South Korea, UAE, Australia. (Iran was in Arm A via V-AI-17 but she withdrew and was removed, so Arm A no longer includes Iran.)
+- **Arm B (comparison): 6 countries + 1 regional, 3 continents.** US, Canada, India, Iran, South Africa, Kenya, plus Jean-Luc Adade recorded as "West Africa" (country not yet confirmed).
+- **Combined: 16 countries across all 5 populated continents.** Only US and India appear in both arms.
+
+
 **Detection panel (24-record study)**: 7 complete, 1 in progress, 16 not started (25 registered; V-AI-17 withdrew 2026-07-16 at their request):
 
 | Code | Name | Title / role (verified) | Country | Reads | Status |
