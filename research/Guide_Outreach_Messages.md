@@ -1,7 +1,7 @@
 # Investigator Field Guide outreach messages (corrected, 2026-07-17)
 
 **Corrections applied to Phillip's drafts:**
-- Removed the "at the 23:45 mark" podcast claim. That timestamp was already retracted (2026-07-14): the episode header shows 18 min and Apple's auto-transcript carries no timestamps, so no exact mark can be asserted. Link to the episode without a timestamp.
+- Podcast timestamp RESTORED (2026-07-17): Phillip's player screenshot shows 0:02 elapsed / -27:31 remaining, so the episode runs ~27:33 and the "18 min" header was a misprint. The guide is discussed near the END of the episode, around the 23:45 mark (Phillip's own listen). Wording used: "near the end of the episode (around the 23:45 mark)".
 - Fixed typos: "involing" -> "involving"; "Commulission" -> "Commission".
 - Attribution: the bare hub link records downloads but not who drove them. For the priority organizations, use a tagged direct-download link per org (or at least per segment): `https://www.jrsstandard.com/api/dl?e=<edition>&src=<org-tag>` (edition: employment | fairhousing | international). Downloads now also record the downloader's COUNTRY (ISO code) once the `country` column exists (see tracker).
 - Segment-to-edition map (from the distribution plan): International/Global + National human-rights bodies -> international; US civil rights/housing -> fairhousing; Investigation & oversight -> employment; AI governance -> any.
@@ -20,7 +20,7 @@ https://www.jrsstandard.com/investigator-guides.html
 
 Please feel free to grab it, share it, and copy or distribute as many as you want for your investigative team.
 
-If you're curious, you can also listen to the recent podcast discussion about it here:
+If you're curious, you can also listen to the recent podcast discussion about it, near the end of the episode (around the 23:45 mark), here:
 
 https://podcasts.apple.com/us/podcast/the-dewey-publications-podcast/id888037481?i=1000775802123
 
