@@ -18,7 +18,7 @@ I've followed your writing on generative AI and e-discovery for a while, and it'
 
 The argument is simple: AI-assisted employment and HR records read as finished and reasoned, but the narrative often isn't tied back to verifiable evidence. In discovery, that gap can turn a defensible decision into something that looks like post-hoc rationalization. I come at it from a documentation-review standard I built (JRS); you'd bring the evidence and e-discovery authority I don't have.
 
-It's aimed at legal and governance readers, and I'd like to place it well rather than just post it, so I'm open to your channel (EDRM, JDSupra, the e-Discovery Team blog) or a legal outlet, whatever you think fits. I'd want it to be a real co-authorship, your edits on the legal claims included, not a courtesy byline.
+I'd like to place it properly rather than just post it. EDRM feels like the natural home given the topic and your work there, though I'm open to your read on venue. I'd want it to be a real co-authorship, your edits on the legal claims included, not a courtesy byline.
 
 If it's of interest, I'll send the draft and you can judge whether it holds up. Either way, thanks for the work you put out.
 
