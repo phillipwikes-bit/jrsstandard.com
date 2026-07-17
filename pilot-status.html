@@ -109,6 +109,11 @@ tr.today td{background:rgba(93,191,130,.07)}
     <div class="card"><div class="cv" id="tr-consent">&middot;</div><div class="ck">Contactable</div></div>
   </div>
   <div class="note" id="tr-note">Training adoption will appear here once enrollment is enabled.</div>
+  <div class="chart">
+    <h2>Completions by country</h2>
+    <div id="trgeo">Loading&hellip;</div>
+    <div class="note" style="margin-top:8px">Country of each training completion. Recorded automatically at completion (geo live since Jul 17, 2026); completions from before then are backfilled from reviewer records. Aggregate counts only.</div>
+  </div>
 
   <h1 style="font-size:22px;margin-top:34px">Investigator Guide Downloads</h1>
   <p class="sub">Downloads of the three field guide editions by day. Counted at the redirect endpoint, so emailed and shared links are included too. Aggregate counts only.</p>
@@ -292,8 +297,26 @@ function loadTraining(){
      document.getElementById('tr-orgs').textContent=s.organizations||0;
      document.getElementById('tr-consent').textContent=s.consented_contact||0;
      document.getElementById('tr-note').textContent=(s.consented_transfer||0)+' consented to transfer to a successor; '+(s.unique_people||0)+' unique people. The named list is stored privately.';
+     renderCompletions(s);
    })
    .catch(function(){ document.getElementById('tr-note').textContent='Training adoption will appear here once the first enrollment is captured.'; });
+}
+function renderCompletions(s){
+  var el=document.getElementById('trgeo');
+  if(!el) return;
+  var list=(s&&s.completions_by_country)||[];
+  if(!list.length){ el.innerHTML='<div style="color:var(--muted-soft);font-size:12px">No completions yet.</div>'; return; }
+  var max=1; list.forEach(function(x){ if(x.count>max) max=x.count; });
+  var html='<div style="font-size:12px;color:var(--muted);margin-bottom:10px">'+(s.completions||0)+' completed across <b style="color:var(--text)">'+(s.completions_countries||0)+'</b> '+((s.completions_countries===1)?'country':'countries')+'</div>';
+  list.forEach(function(x){
+    var label = x.country==='unknown' ? 'Unknown' : esc(x.country);
+    var w = Math.max(4, Math.round((x.count/max)*100));
+    html+='<div style="display:flex;align-items:center;gap:10px;margin:4px 0">'
+      +'<span style="font-family:\'JetBrains Mono\',monospace;font-size:11px;color:var(--muted);width:64px;flex:0 0 auto">'+label+'</span>'
+      +'<span style="background:var(--accent);height:12px;width:'+w+'%;max-width:60%;display:inline-block"></span>'
+      +'<span style="font-size:12px;color:var(--text)">'+x.count+'</span></div>';
+  });
+  el.innerHTML=html;
 }
 function loadGeo(){
   var el=document.getElementById('geochart');
