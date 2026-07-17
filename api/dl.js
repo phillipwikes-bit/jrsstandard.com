@@ -34,15 +34,25 @@ export default async function handler(req){
   const target = url.origin + '/' + FILES[edition];
 
   // Best-effort append-only record. Never block the download on it.
+  // Country comes from Vercel's edge geo header (ISO 3166-1 alpha-2). The first
+  // insert includes it; if the guide_downloads.country column does not exist yet,
+  // that insert fails and we retry without it so counts are never lost.
   const env = (typeof process!=='undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
   if (SERVICE) {
+    const country = String(req.headers.get('x-vercel-ip-country')||'').toUpperCase().replace(/[^A-Z]/g,'').slice(0,2) || null;
+    const H = {'apikey':SERVICE,'Authorization':'Bearer '+SERVICE,'Content-Type':'application/json','Prefer':'return=minimal'};
     try {
-      await fetch(SB+'/rest/v1/guide_downloads',{
-        method:'POST',
-        headers:{'apikey':SERVICE,'Authorization':'Bearer '+SERVICE,'Content-Type':'application/json','Prefer':'return=minimal'},
-        body:JSON.stringify({ edition: edition, src: src })
+      const r = await fetch(SB+'/rest/v1/guide_downloads',{
+        method:'POST', headers:H,
+        body:JSON.stringify({ edition: edition, src: src, country: country })
       });
+      if (!r.ok) {
+        await fetch(SB+'/rest/v1/guide_downloads',{
+          method:'POST', headers:H,
+          body:JSON.stringify({ edition: edition, src: src })
+        });
+      }
     } catch(e){ /* swallow: the file must still be served */ }
   }
 
