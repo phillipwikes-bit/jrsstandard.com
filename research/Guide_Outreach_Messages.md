@@ -20,13 +20,13 @@ https://www.jrsstandard.com/investigator-guides.html
 
 Please feel free to grab it, share it, and copy or distribute as many as you want for your investigative team.
 
-If your team wants to go further, there is also a free reviewer training built on the same standard: six short modules plus a companion reviewer reference, ending in a certificate of completion. It is free with a quick registration (so we can issue the certificate), and it is yours to use at your own pace:
-
-https://www.jrsstandard.com/training.html?access=k7m2p9x4t1c8&focus=1
-
 If you're curious, you can also listen to the recent podcast discussion about it, near the end of the episode (around the 23:45 mark), here:
 
 https://podcasts.apple.com/us/podcast/the-dewey-publications-podcast/id888037481?i=1000775802123
+
+If your team wants to go further, there is also a free reviewer training built on the same standard: six short modules plus a companion reviewer reference, ending in a certificate of completion. It is free with a quick registration (so we can issue the certificate), and it is yours to use at your own pace:
+
+https://www.jrsstandard.com/training.html?access=k7m2p9x4t1c8&focus=1
 
 Thank you so much for all you do!
 
