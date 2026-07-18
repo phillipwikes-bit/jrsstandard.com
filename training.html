@@ -3179,7 +3179,10 @@ function jrsAccessParam(k){ try { return (new URLSearchParams(location.search)).
 function jrsAccessClean(s){ return (s||'').toLowerCase().replace(/[^a-z0-9_-]/g,'').slice(0,40); }
 (function(){
   var ACCESS_CODES = {
-    'k7m2p9x4t1c8': 'invite'   // general invite code (share with orgs + reviewers)
+    'k7m2p9x4t1c8': 'invite',  // original opaque code: existing links in the wild still work
+    'reviewer':     'invite',  // memorable aliases (the gate is a soft by-invitation screen,
+    'jrs-reviewer': 'invite',  // not a secret, so a friendly word is fine and easier to share)
+    'jrs2026':      'invite'
   };
   var stored = {};
   try { stored = JSON.parse(localStorage.getItem('jrs-training-access') || '{}'); } catch(e){ stored = {}; }

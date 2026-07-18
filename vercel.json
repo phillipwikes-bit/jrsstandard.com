@@ -1,5 +1,9 @@
 {
   "crons": [
     { "path": "/api/run-study", "schedule": "0 6 * * *" }
+  ],
+  "redirects": [
+    { "source": "/reviewer", "destination": "/training.html?access=reviewer&focus=1", "permanent": false },
+    { "source": "/train", "destination": "/training.html?access=reviewer&focus=1", "permanent": false }
   ]
 }
