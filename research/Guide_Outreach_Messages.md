@@ -26,7 +26,7 @@ https://podcasts.apple.com/us/podcast/the-dewey-publications-podcast/id888037481
 
 If your team wants to go further, there is also a free reviewer training built on the same standard: six short modules plus a companion reviewer reference, ending in a certificate of completion. It is free with a quick registration (so we can issue the certificate), and it is yours to use at your own pace:
 
-https://www.jrsstandard.com/training.html?access=k7m2p9x4t1c8&focus=1
+https://www.jrsstandard.com/reviewer
 
 Thank you so much for all you do!
 
@@ -37,7 +37,7 @@ Creator, Justification Review Standard (JRS)
 info@jrsstandard.com
 jrsstandard.com
 
-*(For priority orgs, replace the hub link with a tagged edition link, e.g. EQUINET: https://www.jrsstandard.com/api/dl?e=international&src=equinet . For the training link, append the same channel tag for attribution, e.g. `...?access=k7m2p9x4t1c8&focus=1&src=equinet`. `&focus=1` gives the clean six-modules-plus-reference view; completions record the country automatically.)*
+*(For priority orgs, replace the hub link with a tagged edition link, e.g. EQUINET: https://www.jrsstandard.com/api/dl?e=international&src=equinet . For the training link, append the same channel tag for attribution, e.g. `https://www.jrsstandard.com/reviewer?src=equinet` (the query passes through the redirect, so attribution still works). The `/reviewer` short link resolves to the clean six-modules-plus-reference view; completions record the country automatically. The old `training.html?access=k7m2p9x4t1c8&focus=1` link still works for anything already sent.)*
 
 ---
 
