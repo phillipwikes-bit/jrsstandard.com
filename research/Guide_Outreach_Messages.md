@@ -5,14 +5,21 @@
 - Fixed typos: "involing" -> "involving"; "Commulission" -> "Commission".
 - Attribution: the bare hub link records downloads but not who drove them. For the priority organizations, use a tagged direct-download link per org (or at least per segment): `https://www.jrsstandard.com/api/dl?e=<edition>&src=<org-tag>` (edition: employment | fairhousing | international). Downloads now also record the downloader's COUNTRY (ISO code) once the `country` column exists (see tracker).
 - Segment-to-edition map (from the distribution plan): International/Global + National human-rights bodies -> international; US civil rights/housing -> fairhousing; Investigation & oversight -> employment; AI governance -> any.
+- DRR-framing revision (2026-07-18), corrections to Phillip's draft: "Decision Deconstruction Risk" -> **Decision Reconstruction Risk** (the canonical term; the two Rs in DRR); "dedensibility" -> defensibility; grammar ("I am a leading a global initiative the fight against"); dropped "unintended discriminatory animus" (animus means intent, so "unintended animus" is a contradiction a civil-rights reader will catch; replaced with bias passing through review undetected) and "chronic injury to self-esteem" (overwrought for this audience; replaced with unexplainable, hard-to-challenge outcomes); "global initiative" -> "international effort" (verifiable via the international panel; softer claim, same energy).
 
 ---
 
-## Version 1 (Organizations - full email)
+## Version 1 (Organizations - full email, DRR framing, revised 2026-07-18)
 
 Hi [Organization]:
 
-I am a great admirer of your work in investigations involving [area], especially [their specialty] cases. I've developed a practical investigator field guide focused on a question that's receiving surprisingly little attention: can an AI-assisted record still be independently reconstructed and defended?
+I am a great admirer of your work in investigations involving [area], especially [their specialty] cases.
+
+I am leading an international effort against an emerging AI risk called Decision Reconstruction Risk (DRR), which is spreading with the proliferation of AI-drafted documents, protocols, and procedures in today's workplace.
+
+DRR is the condition in which a record cannot explain, on its own terms, why a consequential decision was made. When that happens, hiring decisions and workplace records become difficult to defend, bias can pass through review undetected, and the people affected are left with outcomes that no one can explain and no fair way to challenge them.
+
+I've developed a practical investigator field guide focused on a question that's receiving surprisingly little attention: can an AI-assisted record still be independently reconstructed and defended?
 
 I'm giving away copies of my new Investigator Field Guide to professionals and organizations at no expense. There's no sign-up or catch, you can download it directly here:
 
@@ -24,7 +31,7 @@ If you're curious, you can also listen to the recent podcast discussion about it
 
 https://podcasts.apple.com/us/podcast/the-dewey-publications-podcast/id888037481?i=1000775802123
 
-If your team wants to go further, there is also a free reviewer training built on the same standard: six short modules plus a companion reviewer reference, ending in a certificate of completion. It is free with a quick registration (so we can issue the certificate), and it is yours to use at your own pace:
+If your team wants to join the effort for defensible documentation and equitable decisions, there is also a free reviewer training built on the same standard: six short modules plus a companion reviewer reference, ending in a certificate of completion. It is free with a quick registration (so we can issue the certificate), and it is yours to use at your own pace:
 
 https://www.jrsstandard.com/reviewer
 
