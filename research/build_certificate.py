@@ -112,6 +112,15 @@ REVIEWERS = [
             "her work at the Maryland Commission on Civil Rights"),
         "out": "/home/user/jrsstandard.com/research/JRS_Certificate_Gabriela_Cortez.pdf",
     },
+    {
+        "name": "Saurabh Nanda",
+        "date": "July 18, 2026",
+        # Pronoun not stated; phrase the perspective without one ("A ... perspective").
+        "body": standard_body(
+            "A", "business-leadership and P&L",
+            "senior general-management leadership across healthcare and FMCG in Asia-Pacific"),
+        "out": "/home/user/jrsstandard.com/research/JRS_Certificate_Saurabh_Nanda.pdf",
+    },
 ]
 
 if __name__ == "__main__":

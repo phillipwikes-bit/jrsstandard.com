@@ -23,7 +23,7 @@
 | V-AI-03 | Frank Schouten | AI governance & assurance / risk | Australia | 24/24 | Complete |
 | V-AI-05 | Alankar Yaduvanshi | Data privacy & compliance (CIPP-E) | India | 0/24 | Not started |
 | V-AI-06 | Dr Nitin Deshpande | HR & industrial relations | India | 0/24 | Not started |
-| V-AI-07 | Saurabh Nanda | Business leadership / P&L | India | 7/24 | In progress |
+| V-AI-07 | Saurabh Nanda | Business leadership / P&L | India | 24/24 | Complete (2026-07-18, per Phillip; DB pull to confirm) |
 | V-AI-08 | Gabriela Cortez | Civil rights / bilingual intake | US (LatinX) | 24/24 | Complete (2026-07-17) |
 | V-AI-10 | Lawal Olabanji | Operations & records management | Nigeria | 0/24 | Not started |
 | V-AI-11 | Andrey Ekhmenin | Governance diagnostics / post-execution | Poland / EU | 0/24 | Not started |
