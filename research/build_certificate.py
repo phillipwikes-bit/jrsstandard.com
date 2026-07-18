@@ -121,6 +121,15 @@ REVIEWERS = [
             "senior general-management leadership across healthcare and FMCG in Asia-Pacific"),
         "out": "/home/user/jrsstandard.com/research/JRS_Certificate_Saurabh_Nanda.pdf",
     },
+    {
+        "name": "Nigel Hee",
+        "date": "July 18, 2026",
+        # Pronoun not stated; phrase the perspective without one ("An ... perspective").
+        "body": standard_body(
+            "An", "AI-governance and policy",
+            "research and public-sector advisory work on responsible AI across Asia-Pacific"),
+        "out": "/home/user/jrsstandard.com/research/JRS_Certificate_Nigel_Hee.pdf",
+    },
 ]
 
 if __name__ == "__main__":
