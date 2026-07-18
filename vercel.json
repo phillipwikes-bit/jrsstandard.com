@@ -4,6 +4,8 @@
   ],
   "redirects": [
     { "source": "/reviewer", "destination": "/training.html?access=reviewer&focus=1", "permanent": false },
-    { "source": "/train", "destination": "/training.html?access=reviewer&focus=1", "permanent": false }
+    { "source": "/train", "destination": "/training.html?access=reviewer&focus=1", "permanent": false },
+    { "source": "/guide", "destination": "/investigator-guides.html", "permanent": false },
+    { "source": "/guides", "destination": "/investigator-guides.html", "permanent": false }
   ]
 }

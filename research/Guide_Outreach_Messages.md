@@ -16,7 +16,7 @@ I am a great admirer of your work in investigations involving [area], especially
 
 I'm giving away copies of my new Investigator Field Guide to professionals and organizations at no expense. There's no sign-up or catch, you can download it directly here:
 
-https://www.jrsstandard.com/investigator-guides.html
+https://www.jrsstandard.com/guide
 
 Please feel free to grab it, share it, and copy or distribute as many as you want for your investigative team.
 
