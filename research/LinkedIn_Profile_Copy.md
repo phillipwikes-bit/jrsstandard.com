@@ -112,3 +112,30 @@ Pin, in order:
 4. The Dewey Publications Podcast episode link (title: "Podcast: discussed near the end, ~23:45")
 
 **Integrity notes:** all figures are the completer/pre-registered numbers the tracker marks diligence-safe; the Dewey items are framed as a mention (Broida explicitly disclaimed endorsement); the CEP line says "scheduled," which is accurate until print. If any figure changes, update the profile with it (the profile is now a public claim surface, same rule as the papers).
+
+---
+
+## Projects section (add each as a LinkedIn Project; short descriptions, links included)
+
+**DO NOT LIST: the blind comparison study (Arm B / "Records Review Study").** Arm B candidates check this profile before deciding (that is exactly how two recruits got JRS-exposed). Publicly tying the neutral study name to JRS on the creator's profile would compromise the blind for every future recruit. It stays off the profile until that arm closes.
+
+**1. Justification Review Standard (JRS)**
+A record-level documentation review standard for AI-assisted environments. JRS asks one question: can an independent reviewer reconstruct, from the record alone, how a consequential decision was reached? Five structured checks (reconstructability, basis identification, chronology, decision-process traceability, evidentiary sufficiency) produce a three-level read: Ready, Needs work, or Gap. Runs inside existing HR, compliance, investigations, audit, and legal workflows. In operational validation. jrsstandard.com
+
+**2. Decision Reconstruction Risk (DRR)**
+Named and defined the failure mode the standard tests for: the condition in which a record cannot explain, on its own terms, why a consequential decision was made. DRR separates decision quality from record defensibility; a sound decision can still carry high DRR because the basis was never committed to the page, and AI-assisted drafting spreads the condition while masking it with polish. Concept essay: jrsstandard.com/DRR_Article.pdf
+
+**3. JRS International Validation Study (Reviewer Panel)**
+A staged, pre-registered evidence program testing whether JRS can be applied reliably and accurately. Reviewers across 8 countries on 5 continents have completed structured record reviews; independent raters reached substantial chance-corrected agreement (Gwet's AC1, pre-registered floors) under a reliability methodology contributed by Ubayet Hossain, FRM (KPMG India). Accuracy testing against an independently verified 24-record answer key is in progress. No effectiveness claims until the corresponding rungs complete.
+
+**4. Cross-Vendor AI Reproducibility Study**
+An automated nightly study in which three independent AI providers (Anthropic, OpenAI, Google) apply JRS to the same constructed records. Cross-vendor agreement averages 84% across 15 records, a reproducibility signal showing the standard is applied consistently by models that share no lineage. Reproducibility only, deliberately distinct from accuracy.
+
+**5. Investigator Field Guide (three domain editions)**
+A practical field guide for investigators reviewing AI-assisted records, in Employment, Fair Housing, and International human-rights editions plus a combined overview. Distributed free, no sign-up, with organizations encouraged to copy and share internally. Featured as a resource in Dewey Publications' investigator newsletter and podcast. Free download: jrsstandard.com/guide
+
+**6. JRS Reviewer Training and Certificate**
+A six-module reviewer training with a companion reviewer reference, ending in a certificate of completion. Teaches the five JRS checks, calibration on worked examples, and escalation triggers, at the reviewer's own pace inside a single focused view. Free with registration while validation runs; completions are recorded by country as part of the adoption evidence. jrsstandard.com/reviewer
+
+**7. Real-Case Criterion Pilots (Public Records and HR Compliance)**
+Two in-progress pilots pairing real, public determinations with documented outcomes to test whether JRS reads correspond to how records fare under challenge: a public-records pilot built on freedom-of-information case files and an HR-compliance pilot. Evidence is preliminary by design; no criterion claims are made until pre-registered sample targets are reached.
