@@ -105,11 +105,23 @@ Reviewer training with certificate: jrsstandard.com/reviewer
 
 ## Featured section (do this too; links here ARE clickable)
 
-Pin, in order:
-1. `jrsstandard.com/guide` (title: "Free Investigator Field Guide")
-2. `jrsstandard.com/reviewer` (title: "Free Reviewer Training + Certificate")
-3. `jrsstandard.com/DRR_Article.pdf` (title: "Decision Reconstruction Risk: the concept")
-4. The Dewey Publications Podcast episode link (title: "Podcast: discussed near the end, ~23:45")
+Pin, in order, with these titles and descriptions (LinkedIn truncates long descriptions in the card view, so the first sentence carries the message):
+
+**1. `jrsstandard.com/guide`**
+Title: Free Investigator Field Guide
+Description: A practical field guide for anyone who reviews AI-assisted records: what to check, what to ask, and how to spot a file that cannot answer "why." Three domain editions (Employment, Fair Housing, International) plus a combined overview. Free, no sign-up. Download it, copy it, and share it with your whole team.
+
+**2. `jrsstandard.com/reviewer`**
+Title: Free Reviewer Training + Certificate
+Description: Six short modules plus a companion reviewer reference, ending in a certificate of completion. Learn the five JRS checks and how to apply them inside the workflows you already use, at your own pace. Free with a quick registration while the validation phase runs.
+
+**3. `jrsstandard.com/DRR_Article.pdf`**
+Title: Decision Reconstruction Risk: the concept
+Description: The short essay that names the failure mode. Decision Reconstruction Risk (DRR) is the condition in which a record cannot explain, on its own terms, why a consequential decision was made. Why sound decisions become indefensible records, how to recognize it, and why AI drafting accelerates it while hiding it.
+
+**4. The Dewey Publications Podcast episode**
+Title: Podcast: discussed near the end, ~23:45
+Description: Peter Broida discusses the Investigator Field Guide and jrsstandard.com as a resource for professionals involved in agency investigations, on the Dewey Publications Podcast. The conversation is near the end of the episode, around the 23:45 mark.
 
 **Integrity notes:** all figures are the completer/pre-registered numbers the tracker marks diligence-safe; the Dewey items are framed as a mention (Broida explicitly disclaimed endorsement); the CEP line says "scheduled," which is accurate until print. If any figure changes, update the profile with it (the profile is now a public claim surface, same rule as the papers).
 
