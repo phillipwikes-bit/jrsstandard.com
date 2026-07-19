@@ -55,6 +55,40 @@ I connect with HR, compliance, investigations, audit, legal, risk, and dispute-r
 
 ---
 
+## About, FINAL 2,600-character version (2,563 chars, fits LinkedIn's limit; use this one)
+
+Most workplace decisions get a second look long after they're made. An investigation is reopened. A complaint is appealed. Litigation is filed. By then someone has to reconstruct what happened and why, working only from what's left in the file.
+
+The conclusion is usually still there. What fades is everything that justified it: the reasoning, the timeline, the evidence. The record still says what was decided. It no longer shows why.
+
+I spent my career reading records after the fact, as a Lead Civil Rights Officer with the Maryland Commission on Civil Rights, and I kept seeing the same pattern. The decision was often fine. The record was not. I call that pattern Decision Reconstruction Risk (DRR): a record that cannot explain, on its own terms, why a consequential decision was made.
+
+AI is making this harder. AI-assisted drafting lands in permanent files as finished documentation while the evidence behind it is often missing. Records look more polished while being less reconstructable.
+
+JRS, the Justification Review Standard, is a documentation review instrument built for that gap: a structured way for HR, compliance, investigations, audit, and legal review to check whether an AI-assisted record will hold up under independent scrutiny, before it is finalized and inside existing workflows.
+
+One question drives it: can the record still be reconstructed and defended? Five checks answer it:
+
+- Can the conclusion be reconstructed from the record alone?
+- Is its basis identifiable?
+- Can the chronology be followed?
+- Can a reviewer trace how the conclusion was reached?
+- Is the evidence sufficient?
+
+JRS is in operational validation with a running evidence program: reviewers across 8 countries on 5 continents have completed structured reviews; independent raters reached substantial agreement under a pre-registered reliability analysis; and three independent AI providers applied the standard with 84% agreement. Discussed on the Dewey Publications Podcast; article scheduled in CEP Magazine (November).
+
+Two resources are free while validation runs:
+
+Investigator Field Guide (download and share freely): jrsstandard.com/guide
+
+Reviewer training (six short modules, certificate of completion): jrsstandard.com/reviewer
+
+Most AI governance focuses on systems. JRS focuses on what is left afterward: the documentation that becomes the record.
+
+I connect with HR, compliance, investigations, audit, legal, risk, and AI governance professionals weighing how AI-assisted content affects the defensibility of the records their organizations keep.
+
+---
+
 ## Experience entry: Creator, Justification Review Standard (JRS) (revised)
 
 I developed the Justification Review Standard (JRS), a documentation review instrument that practitioners can apply inside the workflows they already use in HR, compliance, investigations, audit, and legal review. JRS addresses a specific, recurring problem I named Decision Reconstruction Risk (DRR): AI-generated content lands in permanent records as finished work, but the evidence behind it is often missing, so the record cannot explain, on its own terms, why a consequential decision was made.
