@@ -139,3 +139,22 @@ A six-module reviewer training with a companion reviewer reference, ending in a 
 
 **7. Real-Case Criterion Pilots (Public Records and HR Compliance)**
 Two in-progress pilots pairing real, public determinations with documented outcomes to test whether JRS reads correspond to how records fare under challenge: a public-records pilot built on freedom-of-information case files and an HR-compliance pilot. Evidence is preliminary by design; no criterion claims are made until pre-registered sample targets are reached.
+
+---
+
+## Post-Arm-B Projects (EMBARGOED: publish only after the release checklist below)
+
+**Release checklist, all three must be true before any of this goes on the profile:**
+1. Arm B recruiting is closed and the data is locked (per-arm completer targets met: 5 to 8 per arm).
+2. Every Arm B participant has received the debrief (the standing promise, e.g. to Mostafa, is a proper debrief at study close, not an ad-hoc reveal).
+3. The bracketed [numbers] below are filled from the locked dataset, and if the result is null, the null wording is used. A null is reported, never buried; that is the integrity posture buyers pay for.
+
+**8. Records Review Study (Blind Two-Arm Comparison)** [NEW ENTRY at release]
+A blind, two-arm study testing whether the standard adds measurable value, not just whether it can be applied consistently. Independent professionals reviewed the same 24 records against an independently verified answer key. One arm applied JRS after a brief orientation; the other reviewed unaided. Neither arm was told the study's purpose or the other arm's existence, and assignment was deterministic by participation code, never hand-selected. Completed by reviewers across [N] countries. Result: reviewers using JRS matched the verified key at [X]%, versus [Y]% for unaided reviewers [null variant: the two arms did not differ significantly, reported in full per the pre-registered analysis plan]. Participants learned the standard's identity only at debrief; the blind held for the duration.
+
+**9. Publications: Decision Reconstruction Risk and JRS** [NEW ENTRY at release; start it with whatever has actually printed]
+Writing that carries the evidence program into the professional literature. "When the Record Cannot Speak for Itself" (CEP Magazine, November 2026) on documentation integrity in AI-assisted compliance. [Add at acceptance: the detection/comparison study manuscript, reporting the reviewer panel, the blind two-arm comparison, and the pre-registered reliability results, submitted to [journal].] [Add if accepted: the multi-domain validation paper, Journal of Business Ethics.] Each publication reports only what its underlying rung of evidence supports.
+
+**Revision to existing entry 3 (JRS International Validation Study) at release:** replace its final two sentences with: "Accuracy against an independently verified 24-record answer key: [sensitivity/specificity or percent-correct, with intervals, from the locked Rung 2b analysis]. A blind two-arm comparison (see Records Review Study) tested the standard's added value against unaided review."
+
+**Why these stay embargoed:** Arm B candidates check this profile before deciding. Publishing the study's design, or even its existence under its neutral name, on the JRS creator's profile ties "Records Review Study" to JRS in a web search and breaks the blind for every not-yet-recruited participant. The unlock is study close + debrief, nothing earlier.
