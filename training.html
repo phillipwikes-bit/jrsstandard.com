@@ -2797,11 +2797,14 @@ function markComplete(idx) {
   var panel = document.getElementById('module-panel-' + idx);
   if (panel) panel.classList.remove('open');
   updateProgressDisplay();
-  // Show certificate section when all six modules are done
+  // Show certificate section when all six modules are done. Ask for the email
+  // here too (not only at certificate download): a completer on a different
+  // device, or with cleared storage, has no saved enrollment email, and without
+  // this prompt their completion would never reach the server.
   if (jrsModulesDone() === 6) {
     var certSec = document.getElementById('cert-section');
     if (certSec) { certSec.style.display = 'block'; certSec.scrollIntoView({behavior:'smooth'}); }
-    recordCompletion(false);
+    recordCompletion(true);
   }
 }
 
@@ -2940,11 +2943,13 @@ if (progress.survey) {
 }
 // Restore persisted role selection
 if (progress.role && ROLE_PATHS[progress.role]) selectRole(progress.role);
-// Show cert section if already all complete
+// Show cert section if already all complete. Prompt-if-missing here too, so a
+// completer whose earlier record never posted (dismissed prompt, other device)
+// is asked again on the next visit until the completion reaches the server.
 if (jrsModulesDone() === 6) {
   var cs = document.getElementById('cert-section');
   if (cs) cs.style.display = 'block';
-  recordCompletion(false);
+  recordCompletion(true);
 }
 
 // ── MODULE OBSERVATION ─────────────────────────────────────
