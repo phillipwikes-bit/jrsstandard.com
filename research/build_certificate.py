@@ -130,6 +130,15 @@ REVIEWERS = [
             "research and public-sector advisory work on responsible AI across Asia-Pacific"),
         "out": "/home/user/jrsstandard.com/research/JRS_Certificate_Nigel_Hee.pdf",
     },
+    {
+        "name": "Dr. Nitin Deshpande",
+        "date": "July 20, 2026",
+        # Pronoun not stated; phrase the perspective without one ("A ... perspective").
+        "body": standard_body(
+            "A", "human-resources and industrial-relations",
+            "more than three decades of senior HR leadership in India"),
+        "out": "/home/user/jrsstandard.com/research/JRS_Certificate_Nitin_Deshpande.pdf",
+    },
 ]
 
 if __name__ == "__main__":
