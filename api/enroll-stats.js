@@ -27,7 +27,9 @@ const COMPLETION_COUNTRY_BACKFILL = {
   // Olabanji Lawal (panel completer, enrolled ?src=panel, no complete row)
   'c883d56fa7ef4d012574bdc1bbfcd372c54f4c111985070e606ce827be65411b': 'NG',
   // Boris Khazin (panel completer, enrolled ?src=panel, no complete row)
-  '7fec46f29356da7d765afb4cd1f47776e24b0d237ee3e6801d620f3cbbb993ee': 'US'
+  '7fec46f29356da7d765afb4cd1f47776e24b0d237ee3e6801d620f3cbbb993ee': 'US',
+  // SungSoo In (panel completer, enrolled 2026-07-19, no complete row)
+  'deb4d4bf1f481e75ac94bc2433e34fc9822b8529a85cd0c0f44d05b59b4d5673': 'KR'
 };
 
 function json(o, s){ return new Response(JSON.stringify(o), { status: s||200, headers: { 'Content-Type':'application/json', 'Access-Control-Allow-Origin':'*', 'Cache-Control':'no-store' } }); }
