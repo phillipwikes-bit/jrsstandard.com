@@ -285,3 +285,16 @@ For every task on this repository:
 
 **api/review.js**
 - `handler(req)` — Edge Function entry point; proxies to Claude API
+
+---
+
+## VIII. RESEARCH OPERATIONS (private `research/` workflow)
+
+### Reviewer completion verification (mandatory)
+Before producing ANY reviewer completion recognition (certificate, reference, LinkedIn recommendation, thank-you message, or a "Complete" status in `research/MASTER_TRACKER.md`), verify the completion first:
+
+```
+python3 research/check_completion.py <CODE>    # V-AI-## (Arm A) or RR-### (Arm B)
+```
+
+Exit 0 = complete (>=24 reads); anything else = stop and report the discrepancy instead of building the package. The script reads the anon-readable `pilot_progress` / `armb_progress` aggregate views (the same sources `pilot-status.html` uses), so no service-role key is needed. A verbal "they just finished" is a prompt to run the check, never a substitute for it. Certificates themselves are generated only by `research/build_certificate.py` (canonical issued template).
