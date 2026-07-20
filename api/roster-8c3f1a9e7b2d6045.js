@@ -19,7 +19,8 @@ const RECORDS = {
   '77d8d7d39070b21e741964745127596924a42140c10cc967faecda9fe7a977cc': 'PL', // Andrey Ekhmenin (has complete row)
   'f148f56cc11fdee6017ec1a103be7edaa3aed0a9855de3bfafea609b94c054f9': 'US', // Jake McDonough (panel, no complete row)
   'c883d56fa7ef4d012574bdc1bbfcd372c54f4c111985070e606ce827be65411b': 'NG', // Olabanji Lawal (panel, no complete row)
-  '7fec46f29356da7d765afb4cd1f47776e24b0d237ee3e6801d620f3cbbb993ee': 'US'  // Boris Khazin (panel, no complete row)
+  '7fec46f29356da7d765afb4cd1f47776e24b0d237ee3e6801d620f3cbbb993ee': 'US', // Boris Khazin (panel, no complete row)
+  'deb4d4bf1f481e75ac94bc2433e34fc9822b8529a85cd0c0f44d05b59b4d5673': 'KR'  // SungSoo In (panel, enrolled 2026-07-19, no complete row)
 };
 
 function esc(v){ return String(v==null?'':v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
