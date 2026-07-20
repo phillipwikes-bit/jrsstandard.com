@@ -4,6 +4,22 @@
 
 ---
 
+## Condensed version (use this one)
+
+Stacy, this is exactly the news I was hoping for. Thank you.
+
+Your 13 to 20 on top of the 7 already in puts us at 20 to 27 by August 31, which clears the pre-registered target. And quality wins every time: if the honest count lands at the lower end, the paper simply reports what the evidence supports.
+
+Two quick things: if anything in the case-entry flow is slowing you down, tell me and I will fix it this week. And if a case is borderline (unclear outcome, partial record), flag it rather than dropping it; the spread of outcomes matters as much as the count.
+
+Later this week works for a progress check. Name a day and time and I will make it work. Your cases are the backbone of this paper, and it is a pleasure building it with you.
+
+Phillip
+
+---
+
+## Original longer version
+
 Stacy, this is exactly the news I was hoping for. Thank you.
 
 With your 7 cases already in and another 13 to 20 realistic on your side, we land at 20 to 27 documented cases by August 31, which clears the pre-registered target for the paper. And I want to underline what you said back to me: quality and authenticity win every time. A case with a real, documented outcome and a clear record trail is worth more than three rushed ones, and if the honest count ends up at the lower end of your range, the paper simply reports what the evidence supports.
