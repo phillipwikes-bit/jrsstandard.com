@@ -4,6 +4,24 @@
 
 ---
 
+## Condensed + humanized version (use this one)
+
+Jake,
+
+I read "On Perfection," and it stuck with me.
+
+You built it the hard way, from the ground up, and the core idea got me: that perfection and existence cancel each other, and the first disturbance is not a flaw but the thing that lets anything exist at all. What I liked most is where you ended it, on what is left once the argument lands: play, boredom, love, song. Most people would have cut that. It is the part that made it feel true instead of just clever.
+
+And you argued against yourself before anyone else could. That is the same honesty that made you a sharp reviewer.
+
+Thanks for sending it my way. Happy to talk it through anytime you want a reader to push on it.
+
+Phillip
+
+---
+
+## Longer version (original)
+
 Jake,
 
 I read "On Perfection," and I wanted to tell you it stayed with me.
