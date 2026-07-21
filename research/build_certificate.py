@@ -139,6 +139,15 @@ REVIEWERS = [
             "more than three decades of senior HR leadership in India"),
         "out": "/home/user/jrsstandard.com/research/JRS_Certificate_Nitin_Deshpande.pdf",
     },
+    {
+        "name": "Andres Lage Freire",
+        "date": "July 21, 2026",
+        # Pronoun not stated; phrase the perspective without one ("An ... perspective").
+        "body": standard_body(
+            "An", "AI-governance and responsible-AI",
+            "responsible-AI architecture and EU AI Act governance in enterprise environments"),
+        "out": "/home/user/jrsstandard.com/research/JRS_Certificate_Andres_Lage_Freire.pdf",
+    },
 ]
 
 if __name__ == "__main__":
