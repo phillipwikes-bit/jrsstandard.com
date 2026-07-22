@@ -43,7 +43,7 @@ def _bul(items):
                         bulletType="bullet", start="-", leftIndent=16)
 
 
-def build(name, location, code, out_path):
+def build(name, location, code, out_path, deadline="within two to three weeks"):
     url = "www.jrsstandard.com/ai-records-arm-b.html?code=" + code
     doc = SimpleDocTemplate(out_path, pagesize=letter,
                             leftMargin=0.95*inch, rightMargin=0.95*inch,
@@ -88,7 +88,7 @@ def build(name, location, code, out_path):
     S.append(Paragraph("SCOPE AND TIMELINE", H))
     S.append(_bul([
         "24 records in total. About one hour of work. A first batch of six takes about fifteen to twenty minutes; the full set is roughly an hour.",
-        "Completing the full set within two to three weeks is ideal.",
+        "Completing the full set " + deadline + " is ideal.",
     ]))
 
     S.append(Paragraph("CONFIDENTIALITY AND USE", H))
@@ -115,8 +115,11 @@ def build(name, location, code, out_path):
 CANDIDATES = [
     {"name": "Priyam Dhamankar", "location": "India", "code": "RR-113",
      "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Priyam_Dhamankar.pdf"},
+    {"name": "MacKenzie McCowan", "location": "Australia, Sydney", "code": "RR-114",
+     "deadline": "by July 31, 2026",
+     "out": "/home/user/jrsstandard.com/research/Records_Review_Study_MacKenzie_McCowan.pdf"},
 ]
 
 if __name__ == "__main__":
     for c in CANDIDATES:
-        print("wrote", build(c["name"], c["location"], c["code"], c["out"]))
+        print("wrote", build(c["name"], c["location"], c["code"], c["out"], c.get("deadline", "within two to three weeks")))
