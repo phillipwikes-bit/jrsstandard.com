@@ -121,6 +121,9 @@ CANDIDATES = [
     {"name": "Amir Mahdi Moosavi", "location": "Iran, Hamedan", "code": "RR-115",
      "deadline": "by July 31, 2026",
      "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Amir_Mahdi_Moosavi.pdf"},
+    {"name": "Dr. Eric J. W. Orlowski", "location": "Singapore", "code": "RR-116",
+     "deadline": "by July 31, 2026",
+     "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Eric_Orlowski.pdf"},
 ]
 
 if __name__ == "__main__":
