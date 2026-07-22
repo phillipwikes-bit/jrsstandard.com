@@ -18,6 +18,14 @@ const REVIEWERS = [
     credential: 'Responsible AI and Gen AI Consultant; RAG and EU AI Act alignment; EU AI Act, ISO/IEC 42001; SDLC-native governance; AI Governance Lead / Responsible AI Architect (Madrid).',
     years_experience: 'n/a',
     affiliation: 'Independent consultant (Spain)'
+  },
+  {
+    code: 'V-AI-31',
+    name: 'Alexandria Davis',
+    title: 'AI-Assisted Records Pilot Expert Reviewer',
+    credential: 'Responsible AI & Compliance Leader; AI Governance, Compliance Automation, and Fairness in Financial Systems; DBA Candidate; Founder & Principal Consultant, FIEA Consulting Inc.',
+    years_experience: 'n/a',
+    affiliation: 'FIEA Consulting Inc. (Toronto, Canada)'
   }
 ];
 
