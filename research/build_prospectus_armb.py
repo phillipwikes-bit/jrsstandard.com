@@ -124,6 +124,9 @@ CANDIDATES = [
     {"name": "Dr. Eric J. W. Orlowski", "location": "Singapore", "code": "RR-116",
      "deadline": "by July 31, 2026",
      "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Eric_Orlowski.pdf"},
+    {"name": "Alexandria Davis", "location": "Toronto, Canada", "code": "RR-117",
+     "deadline": "by July 31, 2026",
+     "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Alexandria_Davis.pdf"},
 ]
 
 if __name__ == "__main__":

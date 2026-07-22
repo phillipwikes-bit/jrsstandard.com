@@ -104,10 +104,10 @@ def build(name, location, code, out_path, deadline="within two to three weeks"):
     return out_path
 
 
+# Reusable JRS Panel prospectus generator. Add a REVIEWERS row for a real
+# Panel (Arm A) expert reviewer to issue one. (Alexandria Davis was moved to
+# Arm B, so no Panel row is active.)
 REVIEWERS = [
-    {"name": "Alexandria Davis", "location": "Toronto, Canada", "code": "V-AI-31",
-     "deadline": "by July 31, 2026",
-     "out": "/home/user/jrsstandard.com/research/JRS_Panel_Prospectus_Alexandria_Davis.pdf"},
 ]
 
 if __name__ == "__main__":
