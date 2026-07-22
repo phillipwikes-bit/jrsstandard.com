@@ -118,6 +118,9 @@ CANDIDATES = [
     {"name": "MacKenzie McCowan", "location": "Australia, Sydney", "code": "RR-114",
      "deadline": "by July 31, 2026",
      "out": "/home/user/jrsstandard.com/research/Records_Review_Study_MacKenzie_McCowan.pdf"},
+    {"name": "Amir Mahdi Moosavi", "location": "Iran, Hamedan", "code": "RR-115",
+     "deadline": "by July 31, 2026",
+     "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Amir_Mahdi_Moosavi.pdf"},
 ]
 
 if __name__ == "__main__":
