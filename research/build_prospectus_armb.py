@@ -157,6 +157,9 @@ CANDIDATES = [
     {"name": "Candid Opris", "location": "Canada, Toronto", "code": "RR-127",
      "deadline": "by July 31, 2026",
      "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Candid_Opris.pdf"},
+    {"name": "Sagarika Banerjee", "location": "Canada, Toronto", "code": "RR-128",
+     "deadline": "by the end of the first week of August, 2026",
+     "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Sagarika_Banerjee.pdf"},
 ]
 
 if __name__ == "__main__":
