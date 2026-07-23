@@ -136,6 +136,9 @@ CANDIDATES = [
     {"name": "Madeline Browne", "location": "Australia, Sydney", "code": "RR-120",
      "deadline": "by July 31, 2026",
      "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Madeline_Browne.pdf"},
+    {"name": "Dr Sharon Licqurish", "location": "Australia, Melbourne", "code": "RR-121",
+     "deadline": "by July 31, 2026",
+     "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Sharon_Licqurish.pdf"},
 ]
 
 if __name__ == "__main__":
