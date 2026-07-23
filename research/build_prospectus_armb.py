@@ -133,6 +133,9 @@ CANDIDATES = [
     {"name": "Kebuya Nelson R", "location": "Canada, Toronto", "code": "RR-119",
      "deadline": "by July 31, 2026",
      "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Kebuya_Nelson.pdf"},
+    {"name": "Madeline Browne", "location": "Australia, Sydney", "code": "RR-120",
+     "deadline": "by July 31, 2026",
+     "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Madeline_Browne.pdf"},
 ]
 
 if __name__ == "__main__":
