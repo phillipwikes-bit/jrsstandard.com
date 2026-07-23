@@ -130,6 +130,9 @@ CANDIDATES = [
     {"name": "Fedilia (Faye) Sum", "location": "Canada, Markham", "code": "RR-118",
      "deadline": "by July 31, 2026",
      "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Faye_Sum.pdf"},
+    {"name": "Kebuya Nelson R", "location": "Canada, Toronto", "code": "RR-119",
+     "deadline": "by July 31, 2026",
+     "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Kebuya_Nelson.pdf"},
 ]
 
 if __name__ == "__main__":
