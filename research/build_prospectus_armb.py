@@ -148,6 +148,9 @@ CANDIDATES = [
     {"name": "Adesh Sharma", "location": "Australia, Melbourne", "code": "RR-124",
      "deadline": "by July 31, 2026",
      "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Adesh_Sharma.pdf"},
+    {"name": "Muhammad Dauda", "location": "Nigeria", "code": "RR-125",
+     "deadline": "by July 31, 2026",
+     "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Muhammad_Dauda.pdf"},
 ]
 
 if __name__ == "__main__":
