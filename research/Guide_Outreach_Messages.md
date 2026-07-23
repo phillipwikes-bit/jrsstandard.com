@@ -17,9 +17,9 @@ Hi [Organization],
 
 I am a great admirer of your work in investigations involving [area], especially your [specialty] cases.
 
-I am facilitating the Decision Reconstruction Risk (DRR) Initiative, an independent international effort built on a simple principle: when a decision affects someone's job, housing, or livelihood, that person deserves to know why, and deserves a fair way to question it. We call it protecting the right to know why.
+I am facilitating the Decision Reconstruction Risk (DRR) Initiative, an independent international effort built on a simple principle: when a decision based on an AI-drafted document affects someone's job, housing, or livelihood, that person deserves to know why, and deserves a fair way to question it. We call it protecting the right to know why.
 
-A growing threat to that right is the spread of AI-drafted documents, protocols, and procedures in today's workplace. We call it Decision Reconstruction Risk (DRR): the condition in which a record cannot explain, on its own terms, why a consequential decision was made. When that happens, workplace decisions and records become difficult to defend, bias can pass through review undetected, and the people affected are left with outcomes that no one can explain and no fair way to challenge.
+That threat is growing as AI drafts more of the documents, protocols, and procedures behind everyday decisions. We call it Decision Reconstruction Risk (DRR): the condition in which a record cannot explain, on its own terms, why a consequential decision was made. When that happens, workplace decisions and records become difficult to defend, bias can pass through review undetected, and the people affected are left with outcomes that no one can explain and no fair way to challenge.
 
 I have developed a practical investigator field guide focused on a question that is receiving surprisingly little attention: can an AI-assisted record still be independently reconstructed and defended?
 
