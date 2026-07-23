@@ -105,7 +105,7 @@ Hi [Organization],
 
 I am a great admirer of your work in investigations involving [area], especially your [specialty] cases.
 
-I am leading an international effort against an emerging AI risk called Decision Reconstruction Risk (DRR), which is spreading with the proliferation of AI-drafted documents, protocols, and procedures in today's workplace.
+I am facilitating an international effort against an emerging AI risk called Decision Reconstruction Risk (DRR), which is spreading with the proliferation of AI-drafted documents, protocols, and procedures in today's workplace.
 
 DRR is the condition in which a record cannot explain, on its own terms, why a consequential decision was made. When that happens, workplace decisions and records become difficult to defend, bias can pass through review undetected, and the people affected are left with outcomes that no one can explain and no fair way to challenge.
 
@@ -147,5 +147,5 @@ jrsstandard.com
 
 5. **Verified, not assumed:** /guide and /reviewer both resolve (vercel.json), the contact email matches the SSOT, and the bio line matches investigator-guides.html. The podcast link and 23:45 timestamp are yours as given; I did not alter them.
 
-### One judgment call for you
-The message says "I am leading an international effort." That is fair given the international reviewer panel and study, but if you would rather stay strictly modest, "I am running an independent international effort" reads a touch less self-appointed. Your call; I left your original phrasing in place.
+### Phrasing note
+The message now opens "I am facilitating an international effort" (revised from "I am leading"), for a more modest, convening tone. If you ever want to make your authorship explicit, "I am facilitating an international effort I started against an emerging AI risk called Decision Reconstruction Risk (DRR)" threads both the modesty and the origination.
