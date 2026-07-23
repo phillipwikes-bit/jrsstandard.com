@@ -145,6 +145,9 @@ CANDIDATES = [
     {"name": "Greg Searle", "location": "Australia, Brisbane", "code": "RR-123",
      "deadline": "by July 31, 2026",
      "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Greg_Searle.pdf"},
+    {"name": "Adesh Sharma", "location": "Australia, Melbourne", "code": "RR-124",
+     "deadline": "by July 31, 2026",
+     "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Adesh_Sharma.pdf"},
 ]
 
 if __name__ == "__main__":
