@@ -151,6 +151,9 @@ CANDIDATES = [
     {"name": "Muhammad Dauda", "location": "Nigeria", "code": "RR-125",
      "deadline": "by July 31, 2026",
      "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Muhammad_Dauda.pdf"},
+    {"name": "Joseph Mungai", "location": "Kenya, Kitale", "code": "RR-126",
+     "deadline": "by July 31, 2026",
+     "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Joseph_Mungai.pdf"},
 ]
 
 if __name__ == "__main__":
