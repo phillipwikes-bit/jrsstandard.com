@@ -290,6 +290,9 @@ For every task on this repository:
 
 ## VIII. RESEARCH OPERATIONS (private `research/` workflow)
 
+### Master Tracker update (mandatory, every response)
+On EVERY response in this repo, update `research/MASTER_TRACKER.md` and deliver a fresh copy in the same turn (attach the file). At minimum, add a dated one-line entry to the running session log (Section 15 of the tracker), even on pure question/answer or advice turns with no file artifact: record the decision, analysis, or asset produced. Substantive work also updates the relevant tracker section. This is a standing directive from Phillip (2026-07-23); the running log exists so no turn is skipped.
+
 ### Reviewer completion verification (mandatory)
 Before producing ANY reviewer completion recognition (certificate, reference, LinkedIn recommendation, thank-you message, or a "Complete" status in `research/MASTER_TRACKER.md`), verify the completion first:
 

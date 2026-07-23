@@ -10,6 +10,8 @@
 
 **Standing directive (Phillip, 2026-07-15): every time this tracker is updated, deliver a fresh copy of the file to Phillip in the same turn (attach `research/MASTER_TRACKER.md`), without being asked again.** Applies whenever any edit is made to this file, not only on an explicit "provide copy" request.
 
+**Standing directive (Phillip, 2026-07-23): update this tracker on EVERY response.** Every turn logs a dated one-line entry in the running session log (Section 15), even for pure question/answer or advice turns with no file artifact: record the decision, analysis, or asset produced. Then deliver the fresh copy per the directive above. Mirrored in CLAUDE.md Section VIII so it survives context compaction.
+
 **Standing directive (completion verification, 2026-07-20, after the four-caveat incident):** NO completion recognition of any kind (certificate, reference letter, LinkedIn recommendation, completer thank-you, a tracker "Complete" status, or an aggregate roll-up) may be produced from a verbal or secondhand report alone. FIRST run **`python3 research/check_completion.py <CODE>`** (works for Arm A `V-AI-##` and Arm B `RR-###`; reads the anon-readable `pilot_progress` / `armb_progress` views, no service key needed; exit 0 = complete). If it reports NOT COMPLETE or NO ROW, stop and report the discrepancy to Phillip instead of building the package. Never write "per Phillip; DB pull to confirm" again: the pull takes one command, so do it before writing anything.
 
 **Standing directive (Phillip, 2026-07-13):** always take whatever legitimate steps raise IP value and move toward a sale. Operating plan and prioritized path: `research/IP_Sale_Playbook.md`. Integrity rule governs all of it: only real, verifiable assets and claims (diligence tests every number).
@@ -646,7 +648,18 @@ Public-facing narrative and outreach copy that packages the IP for the sale. Pri
 
 ---
 
-## Appendix: condition naming (reference)
+## 15. Running session log (updated every response): started 2026-07-23
+
+One dated line per response. Keeps the tracker current even on advice-only turns. Newest at the bottom.
+
+- 2026-07-23: RR-121 Sharon Licqurish invite + prospectus; then acceptance reply; then COMPLETE (24/24, verified) with neutral certificate + message + LinkedIn recommendation.
+- 2026-07-23: Arm B invites + prospectuses issued: RR-122 Reshma Devi, RR-123 Greg Searle, RR-124 Adesh Sharma, RR-125 Muhammad Dauda, RR-126 Joseph Mungai, RR-127 Candid Opris, RR-128 Sagarika Banerjee (special extended August deadline). Next code RR-129.
+- 2026-07-23: Verified investigator-guide download recording is live (self-test propagated to `guide_downloads_public` and geo-stats; +1 selftest row noted).
+- 2026-07-23: DRR LinkedIn Project created; outreach opener softened to "I am facilitating."
+- 2026-07-23: DRR human-rights framing + motto ("Protecting the right to know why"); dropped "judges."
+- 2026-07-23: IP asset & rights-of-transfer map; sale-probability read; path-to-sale action plan with two-stage buyer-conversation timing.
+- 2026-07-23: Guide outreach message updated to canonical Version 1a (DRR Initiative + motto integrated).
+- 2026-07-23: Instituted the "update tracker every response" directive (this section + CLAUDE.md Section VIII); no other asset change this turn.
 
 Canonical five conditions = the deployed standard (`jrsstandard.html`, `codebook.html`): RC1 Reconstructability · RC2 Basis Identification · RC3 Chronology · RC4 Decision-Process Traceability · RC5 Evidentiary Sufficiency.
 
