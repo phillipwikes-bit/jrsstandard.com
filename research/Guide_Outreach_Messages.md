@@ -37,6 +37,8 @@ If your team wants to join the Initiative for defensible documentation and decis
 
 https://www.jrsstandard.com/reviewer
 
+That shared standard is the Justification Review Standard (JRS): a practical method for checking whether a record can explain, on its own terms, why a decision was made, before that record is final. The field guide and the training both put JRS to work, and both are yours to use and share freely.
+
 Thank you so much for all you do.
 
 Phillip Wikes

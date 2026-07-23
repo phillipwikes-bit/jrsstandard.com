@@ -663,6 +663,7 @@ One dated line per response. Keeps the tracker current even on advice-only turns
 - 2026-07-23: Guide outreach Version 1a revised to be rights-forward: intro now leads with the person's right to know why (job/housing/livelihood) and frames DRR as the threat to that right.
 - 2026-07-23: Guide outreach Version 1a intro tightened per Phillip: "a decision based on an AI-drafted document affects someone's job, housing, or livelihood"; smoothed the next line to avoid repeating "AI-drafted."
 - 2026-07-23: Evaluated guide outreach Version 1a (advice turn, no edit). Rated ~8/10. Flagged one defect: "That threat is growing" lacks an antecedent (introduced in the prior smoothing edit) and needs a one-line fix. Other suggestions: single primary CTA (demote training to a PS), add a subject line, reduce the double "We call it," optional voice consistency ("the Initiative's" guide). Fix pending Phillip's go-ahead.
+- 2026-07-23: Guide outreach Version 1a: added a closing line naming the Justification Review Standard (JRS) as the shared standard behind both the field guide and the training, positioned before the sign-off. No effectiveness overclaim; no long dashes. ("That threat is growing" antecedent fix still pending Phillip's go-ahead.)
 
 Canonical five conditions = the deployed standard (`jrsstandard.html`, `codebook.html`): RC1 Reconstructability · RC2 Basis Identification · RC3 Chronology · RC4 Decision-Process Traceability · RC5 Evidentiary Sufficiency.
 
