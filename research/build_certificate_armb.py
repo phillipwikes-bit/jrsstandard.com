@@ -114,6 +114,14 @@ REVIEWERS = [
             "research and consulting on AI operations and governance"),
         "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Certificate_Tuneer_Mondal.pdf",
     },
+    {
+        "name": "Dr. Sharon Licqurish",
+        "date": "July 23, 2026",
+        "body": neutral_body(
+            "AI governance, research, and intellectual-property strategy",
+            "senior leadership and applied research in trustworthy AI"),
+        "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Certificate_Sharon_Licqurish.pdf",
+    },
 ]
 
 if __name__ == "__main__":
