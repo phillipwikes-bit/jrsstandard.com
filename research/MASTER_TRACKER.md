@@ -660,6 +660,7 @@ One dated line per response. Keeps the tracker current even on advice-only turns
 - 2026-07-23: IP asset & rights-of-transfer map; sale-probability read; path-to-sale action plan with two-stage buyer-conversation timing.
 - 2026-07-23: Guide outreach message updated to canonical Version 1a (DRR Initiative + motto integrated).
 - 2026-07-23: Instituted the "update tracker every response" directive (this section + CLAUDE.md Section VIII); no other asset change this turn.
+- 2026-07-23: Guide outreach Version 1a revised to be rights-forward: intro now leads with the person's right to know why (job/housing/livelihood) and frames DRR as the threat to that right.
 
 Canonical five conditions = the deployed standard (`jrsstandard.html`, `codebook.html`): RC1 Reconstructability · RC2 Basis Identification · RC3 Chronology · RC4 Decision-Process Traceability · RC5 Evidentiary Sufficiency.
 

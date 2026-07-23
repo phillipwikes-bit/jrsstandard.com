@@ -11,15 +11,15 @@
 
 ## Version 1a (Organizations - CURRENT canonical, DRR Initiative + motto, 2026-07-23)
 
-*Surgical update of Version 1: names the Decision Reconstruction Risk (DRR) Initiative and integrates the motto ("protecting the right to know why") into the intro, and invites joining "the Initiative" at the training line. Also carries the earlier softening "I am facilitating" (was "I am leading") and "workplace decisions and records" (was "hiring decisions"). Links /guide and /reviewer verified live. No long dashes. Use this version going forward; Version 1 below is kept for history.*
+*Surgical update of Version 1: names the Decision Reconstruction Risk (DRR) Initiative and integrates the motto ("protecting the right to know why") into the intro, and invites joining "the Initiative" at the training line. Also carries the earlier softening "I am facilitating" (was "I am leading") and "workplace decisions and records" (was "hiring decisions"). Links /guide and /reviewer verified live. No long dashes. Use this version going forward; Version 1 below is kept for history. RIGHTS-FORWARD REVISION 2026-07-23: the intro now LEADS with the person's right to know why (job/housing/livelihood) and frames DRR as the threat to that right, instead of opening on the AI mechanism.*
 
 Hi [Organization],
 
 I am a great admirer of your work in investigations involving [area], especially your [specialty] cases.
 
-I am facilitating the Decision Reconstruction Risk (DRR) Initiative, an independent international effort built on a simple principle: protecting the right to know why. The Initiative confronts an emerging AI risk, spreading with the proliferation of AI-drafted documents, protocols, and procedures in today's workplace, that we call Decision Reconstruction Risk (DRR).
+I am facilitating the Decision Reconstruction Risk (DRR) Initiative, an independent international effort built on a simple principle: when a decision affects someone's job, housing, or livelihood, that person deserves to know why, and deserves a fair way to question it. We call it protecting the right to know why.
 
-DRR is the condition in which a record cannot explain, on its own terms, why a consequential decision was made. When that happens, workplace decisions and records become difficult to defend, bias can pass through review undetected, and the people affected are left with outcomes that no one can explain and no fair way to challenge.
+A growing threat to that right is the spread of AI-drafted documents, protocols, and procedures in today's workplace. We call it Decision Reconstruction Risk (DRR): the condition in which a record cannot explain, on its own terms, why a consequential decision was made. When that happens, workplace decisions and records become difficult to defend, bias can pass through review undetected, and the people affected are left with outcomes that no one can explain and no fair way to challenge.
 
 I have developed a practical investigator field guide focused on a question that is receiving surprisingly little attention: can an AI-assisted record still be independently reconstructed and defended?
 
