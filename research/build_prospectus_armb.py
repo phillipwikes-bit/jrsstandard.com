@@ -142,6 +142,9 @@ CANDIDATES = [
     {"name": "Reshma Devi", "location": "Australia", "code": "RR-122",
      "deadline": "by July 31, 2026",
      "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Reshma_Devi.pdf"},
+    {"name": "Greg Searle", "location": "Australia, Brisbane", "code": "RR-123",
+     "deadline": "by July 31, 2026",
+     "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Greg_Searle.pdf"},
 ]
 
 if __name__ == "__main__":
