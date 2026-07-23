@@ -628,6 +628,19 @@ Naming: refer to the whole thing as the **JRS Reviewer Program** in outreach. Ou
 
 ---
 
+## 14. Positioning & messaging assets (log): added 2026-07-23
+
+Public-facing narrative and outreach copy that packages the IP for the sale. Private in `research/`, not deployed. All held to house style (no long dashes, no banned phrases) and to the two research guardrails: use COMPLETER figures for public claims, and never describe the Arm B method/arms (blind).
+
+| Asset | File | Purpose | Status |
+|---|---|---|---|
+| DRR Initiative human-rights framing | `research/DRR_HumanRights_Initiative.md` | Converts JRS + DRR into a public-interest / human-rights mission with a motto ("Protecting the right to know why"); maps the four missions to the real research assets (international validation panel, comparison study, org pilots, training, guides); de-personalized with a separate founder line. Judges dropped 2026-07-23 per Phillip. | **Drafted 2026-07-23** |
+| DRR LinkedIn Project | `research/LinkedIn_Project_DRR.md` | Copy-paste LinkedIn Project fields (description trimmed to the 2000-char limit) + full narrative + outreach message (opener "I am facilitating an international effort"). Internal "positioning" rationale kept out of public copy. | **Drafted 2026-07-23** |
+
+**IP-sale strategic read (blindspots + advantages) recorded 2026-07-23** in the delivery to Phillip (see chat). Headline: the human-rights framing is strong for adoption/reach and for a mission-aligned or strategic acquirer, but it introduces tension with a pure IP valuation (public-interest / free-forever positioning can depress willingness to pay and complicate exclusivity). Mitigation on record: keep the human-rights framing as the *community/adoption* layer while preserving a separately licensable *commercial* layer (the standard, the review instrument, the trained-user list with transfer consent, the pilot evidence). Do not promise the standard itself will be free in perpetuity in any public copy.
+
+---
+
 ## Appendix: condition naming (reference)
 
 Canonical five conditions = the deployed standard (`jrsstandard.html`, `codebook.html`): RC1 Reconstructability · RC2 Basis Identification · RC3 Chronology · RC4 Decision-Process Traceability · RC5 Evidentiary Sufficiency.

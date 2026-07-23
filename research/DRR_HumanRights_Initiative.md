@@ -40,7 +40,7 @@ This is not simply a documentation problem. It is a challenge to due process, pr
 
 No single profession can solve this. No single organization can solve this. No single country can solve this. Because AI-assisted decision-making is becoming a global reality, safeguarding fair and explainable decisions requires an international effort built on diverse professional expertise.
 
-The Initiative brings together investigators, HR professionals, attorneys, judges, auditors, compliance leaders, researchers, AI practitioners, civil rights advocates, human rights organizations, public administrators, educators, policymakers, and technologists who believe that consequential decisions should remain understandable, reviewable, and accountable.
+The Initiative brings together investigators, HR professionals, attorneys, auditors, compliance leaders, researchers, AI practitioners, civil rights advocates, human rights organizations, public administrators, educators, policymakers, and technologists who believe that consequential decisions should remain understandable, reviewable, and accountable.
 
 Diversity is one of the Initiative's greatest strengths. Different professions ask different questions. Different cultures recognize different risks. Different disciplines identify different forms of evidence. Different lived experiences reveal blind spots that others may never see. It is precisely this range of knowledge, experience, and professional judgment that strengthens our ability to recognize Decision Reconstruction Risk before it affects people's lives.
 
@@ -147,5 +147,4 @@ Contact: info@jrsstandard.com  ·  jrsstandard.com
 
 7. **No long dashes and no banned prose patterns.** Removed the em dashes and the divider characters from your draft; the single hyphen in "AI-assisted" is fine.
 
-### One judgment call for you
-"Judges" appears in your original list of participating professions. Sitting judges usually cannot join advocacy initiatives without raising impartiality concerns, so I kept the broader list but you may want to drop "judges" or soften it to "former judges and judicial educators" depending on who you are actually recruiting.
+8. **Dropped "judges" from the participant list** (2026-07-23, per request). Sitting judges usually cannot join advocacy initiatives without raising impartiality concerns. If you ever want judicial-adjacent credibility, "former judges and judicial educators" is the safe phrasing to add back.
