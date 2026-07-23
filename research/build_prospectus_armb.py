@@ -154,6 +154,9 @@ CANDIDATES = [
     {"name": "Joseph Mungai", "location": "Kenya, Kitale", "code": "RR-126",
      "deadline": "by July 31, 2026",
      "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Joseph_Mungai.pdf"},
+    {"name": "Candid Opris", "location": "Canada, Toronto", "code": "RR-127",
+     "deadline": "by July 31, 2026",
+     "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Candid_Opris.pdf"},
 ]
 
 if __name__ == "__main__":
