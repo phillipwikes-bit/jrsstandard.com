@@ -122,6 +122,14 @@ REVIEWERS = [
             "senior leadership and applied research in trustworthy AI"),
         "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Certificate_Sharon_Licqurish.pdf",
     },
+    {
+        "name": "Joseph Mungai",
+        "date": "July 24, 2026",
+        "body": neutral_body(
+            "public-interest technology, AI ethics, and governance",
+            "research and practice on technology, governance, and public accountability in Africa"),
+        "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Certificate_Joseph_Mungai.pdf",
+    },
 ]
 
 if __name__ == "__main__":
