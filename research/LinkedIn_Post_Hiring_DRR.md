@@ -1,6 +1,6 @@
 # LinkedIn post: "We selected the better candidate" (DRR / hiring), polished 2026-07-23
 
-*Polished from Phillip's draft. Kept the one-line-per-beat cadence. Tightened wording, removed minor redundancy, and dropped "judges" from the professions list (consistency with the Initiative decision to drop judges, impartiality). No long dashes. No effectiveness/accuracy claim; no blind-study mention. Public-safe. Optional: add a soft CTA with /guide or /reviewer, best placed in the first comment (LinkedIn favors keeping links out of the post body).*
+*Polished from Phillip's draft, then ENGAGEMENT-OPTIMIZED (2026-07-23): the closing call to action ("join the effort") was replaced with specific, easy-to-answer questions that invite practitioners to comment, and the overt "JRS Initiative is bringing together..." org pitch was dropped. Rationale: the 2026 LinkedIn algorithm rewards comments and dwell time and suppresses join-my-thing CTAs and in-body links; a question close drives comments. Kept the one-line cadence, dropped "judges," no long dashes, no effectiveness/accuracy claim, no blind-study mention. Brand still lands via "I call this Decision Reconstruction Risk (DRR)" and Phillip's authorship. Put any link (/guide or /reviewer) in the FIRST COMMENT, not the body. Trade-off flagged to Phillip: the explicit Initiative pitch is gone for reach; add one light brand line back if he prefers.*
 
 ---
 
@@ -72,14 +72,14 @@ Civil rights advocates recognize concerns technologists may overlook.
 
 Researchers, compliance professionals, policymakers, educators, and AI practitioners each bring perspectives that strengthen consequential decisions.
 
-That is why the JRS Initiative is bringing together an international community of professionals committed to one principle:
+Underneath all of it is a simple idea: people deserve decisions they can understand, and a fair chance to question the ones that shape their lives.
 
-People deserve decisions they can understand.
+So I would rather hear from you than talk at you.
 
-People deserve records that can withstand independent review.
+When a decision at your organization gets a second look months later, does the record still explain why it was made?
 
-People deserve a meaningful opportunity to question decisions that affect their rights, livelihoods, and futures.
+Where does the reasoning disappear first: the comparison, the timeline, the evidence, or the rationale?
 
-If that resonates with you, I invite you to join the effort.
+And what have you seen actually keep a record able to answer "why" long after the fact?
 
-Together, we can build documentation that stays transparent, reconstructable, and accountable long after the decision is made.
+If you work in HR, compliance, investigations, audit, law, or AI governance, I would genuinely like to read your experience in the comments.
