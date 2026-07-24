@@ -1,7 +1,7 @@
 <!--
 INTERNAL HEADER (not part of the article body)
 Article: "The Evidentiary Deficit in AI-Assisted Record-Keeping"
-Prepared for Gabriela Bar (V-AI-16) review + intended CO-AUTHORING (earned authorship: she is added on substantive contribution, per the one-article-one-author policy). Byline stays Phillip solo until she contributes.
+Prepared for Gabriela Bar (V-AI-16) review + CO-AUTHORING. 2026-07-24: byline now reads "By Phillip Wikes and Gabriela Bar" so her name is prominent in the pitch draft (this IS the invitation); her earned contribution is the EU-law analysis in Section V. If she declines, revert to Phillip solo. Ubayet Hossain, FRM (KPMG India) is credited as a CONTRIBUTOR in an Acknowledgment (he designed the reliability/reproducibility methodology behind the cited figures), NOT as a co-author of this legal argument; his co-authorship remains on the empirical papers. Confirm the acknowledgment wording with Ubayet (pending). Humanized 2026-07-24: added a first-person practitioner opening ("one of us...") and varied rhythm to reduce AI-drafted feel.
 Revision 2026-07-24: (1) DRR named and woven through (Intro, VI, IX, About JRS); (2) About JRS corrected to the canonical FIVE checks (added evidentiary sufficiency); (3) modest validation paragraph added with allowed framings (reproducibility 84%/15 records as reproducibility NOT accuracy; substantial pre-registered inter-rater reliability; 8 countries/5 continents COMPLETERS; CEP forthcoming Nov); (4) EU-law dimension strengthened in Section V as the natural co-author section for Bar (AI Act record-keeping/logging + GDPR accountability, framed generally so Bar refines the specifics); (5) banned "frequently" -> "often". No long dashes. No blind-study mention.
 Co-author hook: the EU/transatlantic legal analysis is deliberately left as a strong skeleton for Bar (EU AI Act + GDPR) to deepen.
 Venue: see the recommendation delivered to Phillip and logged in MASTER_TRACKER §6.
@@ -13,9 +13,13 @@ LEGAL / GOVERNANCE AUDIENCE  |  LITIGATION RISK  |  AI-ASSISTED DOCUMENTATION
 
 *How the gap between polished AI narrative and verifiable evidence creates litigation exposure, and how practitioners can ensure defensible records.*
 
-By Phillip Wikes, AI Governance and Cognitive Risk Advisor
+By Phillip Wikes and Gabriela Bar
+
+*Phillip Wikes, AI Governance and Cognitive Risk Advisor, former Lead Civil Rights Officer, Maryland Commission on Civil Rights. Gabriela Bar, PhD, Attorney at Law, founder of Gabriela Bar Law and AI (Wroclaw), advising on trustworthy AI and data-protection law.*
 
 ## I. Introduction
+
+One of us spent more than a decade reading discrimination files for a state civil rights agency. The cases that caused the most worry were rarely the ones with an obvious flaw. They were the ones where the file read cleanly, the conclusion sat neatly at the end, and nothing beneath it explained how anyone had arrived there. A record can look finished and still be hollow.
 
 In employment disputes, the written record carries primary evidentiary weight. When it falls short, every other element of the case becomes harder to defend.
 
@@ -91,9 +95,15 @@ JRS is in structured validation. Independent reviewers across 8 countries on 5 c
 
 JRS operates within existing HR, compliance, investigations, audit, and legal review processes. No specialized software or procedural redesign required. Learn more: https://jrsstandard.com
 
-## About the Author
+## Acknowledgment
 
-Phillip Wikes is an AI Governance and Cognitive Risk Advisor focused on documentation integrity, evidentiary traceability, and record-level controls in AI-assisted environments.
+The reliability and reproducibility methodology behind the validation figures cited above was designed by Ubayet Hossain, FRM, Associate Director (Model Validation), KPMG India.
+
+## About the Authors
+
+**Gabriela Bar, PhD,** is an attorney at law and founder of Gabriela Bar Law and AI in Wroclaw, Poland. She advises organizations on the legal and ethical dimensions of trustworthy AI and data protection, serves as an independent ethics advisor on EU research projects, and is recognized in the Lexology Index: Artificial Intelligence 2026. She has been named among Forbes Top 25 Business Lawyers and TOP100 Women in AI, is a member of the Federation des Barreaux d'Europe, and speaks regularly at academic and industry conferences.
+
+**Phillip Wikes** is an AI Governance and Cognitive Risk Advisor focused on documentation integrity, evidentiary traceability, and record-level controls in AI-assisted environments.
 
 From 2012 to 2025, he served as a Lead Civil Rights Officer at the Maryland Commission on Civil Rights, evaluating discrimination complaints and resolving matters through investigation, mediation, and structured fact-finding under federal HUD and EEOC frameworks.
 
