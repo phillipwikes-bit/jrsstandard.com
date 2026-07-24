@@ -42,6 +42,40 @@ info@jrsstandard.com | jrsstandard.com
 
 ---
 
+## Version 4 (Individual professional - CURRENT canonical for 1:1 outreach, 2026-07-23)
+
+*Best message for reaching ONE professional (email or DM), as opposed to an organization. Concise, personal, single primary CTA (free guide). Leads with the person's right to know why; JRS as the method; one compact verified credibility line. Claims verified: 8 countries/5 continents (completers); CEP "forthcoming" Nov (not published). No effectiveness claim; no blind-study mention; no long dashes; no free-forever promise. Links /guide, /reviewer verified live.*
+
+**Subject:** A free field guide on defending AI-assisted records
+
+Hi [Name],
+
+I have admired your work in [specialty], which is why I wanted to put this in front of you directly.
+
+When a decision based on an AI-drafted document affects someone's job, housing, or livelihood, that person deserves to know why, and a fair way to question it. Too often the record cannot answer that: the decision reads as complete, yet months later nothing in the file explains how it was reached. I call this Decision Reconstruction Risk (DRR).
+
+I created the Justification Review Standard (JRS), a practical way for HR, compliance, investigations, audit, and legal teams to check whether an AI-assisted record can be independently reconstructed and defended, before it is finalized and inside the workflows they already use.
+
+I have made a short Investigator Field Guide free, with no sign-up or cost:
+
+https://www.jrsstandard.com/guide
+
+If it earns a place in your work, there is also free reviewer training with a certificate: https://www.jrsstandard.com/reviewer
+
+JRS is in structured validation, with reviewers across 8 countries on 5 continents and an article forthcoming in CEP Magazine this November. I would genuinely value your candid read on the standard itself. If now is not the right time, no worries at all.
+
+Best,
+Phillip Wikes
+Former Lead Civil Rights Officer, Maryland Commission on Civil Rights
+Creator, Justification Review Standard (JRS)
+info@jrsstandard.com
+
+**Shorter LinkedIn DM variant:**
+
+Hi [Name], I have admired your work in [specialty]. I created the Justification Review Standard (JRS), a practical check for whether an AI-assisted record can still be reconstructed and defended before it is finalized. It targets a failure I call Decision Reconstruction Risk (DRR): the decision looks fine, but months later the record cannot explain why it was made. I made a short Investigator Field Guide free, no sign-up or cost: https://www.jrsstandard.com/guide . I would value your candid take. No worries if the timing is off.
+
+---
+
 ## Version 1b (Organizations - JRS-led, 2026-07-23) [lighter guide-giveaway variant]
 
 *Redo per Phillip: the Initiative is now named the Justification Review Standard (JRS) Initiative (was "DRR Initiative"), and the message LEADS with JRS as the method, using Phillip's supplied opening. DRR is kept as the named risk that JRS catches, so the field guide still connects. Also fixes the prior "That threat" antecedent gap (that sentence is gone) and removes the double "We call it." Links /guide and /reviewer verified live. No long dashes. Strategic note: leading with JRS foregrounds the sellable asset but slightly de-emphasizes owning the DRR category term; Phillip's call. Use 1b going forward; 1a below kept for history.*
