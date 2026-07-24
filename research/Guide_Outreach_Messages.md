@@ -9,7 +9,49 @@
 
 ---
 
-## Version 1a (Organizations - CURRENT canonical, DRR Initiative + motto, 2026-07-23)
+## Version 1b (Organizations - CURRENT canonical, JRS-led, 2026-07-23)
+
+*Redo per Phillip: the Initiative is now named the Justification Review Standard (JRS) Initiative (was "DRR Initiative"), and the message LEADS with JRS as the method, using Phillip's supplied opening. DRR is kept as the named risk that JRS catches, so the field guide still connects. Also fixes the prior "That threat" antecedent gap (that sentence is gone) and removes the double "We call it." Links /guide and /reviewer verified live. No long dashes. Strategic note: leading with JRS foregrounds the sellable asset but slightly de-emphasizes owning the DRR category term; Phillip's call. Use 1b going forward; 1a below kept for history.*
+
+Hi [Organization],
+
+I am a great admirer of your work in investigations involving [area], especially your [specialty] cases.
+
+I am facilitating the Justification Review Standard (JRS) Initiative, an independent international effort built on a simple principle: when a decision based on an AI-drafted document affects someone's job, housing, or livelihood, that person deserves to know why, and deserves a fair way to question it.
+
+JRS is a practical method for checking whether a record can explain, on its own terms, why a decision was made, before that record is final. By applying JRS to records, we can protect everyone's right to know why.
+
+The risk it addresses is real and often invisible. When AI drafts the record, a decision can read as complete yet still fail to show why it was reached. Bias can pass through review undetected, and the people affected are left with outcomes that no one can explain and no fair way to challenge. This failure has a name, Decision Reconstruction Risk (DRR), and catching it is exactly what JRS is for.
+
+I have developed a practical investigator field guide focused on a question that is receiving surprisingly little attention: can an AI-assisted record still be independently reconstructed and defended?
+
+I am giving away copies of my new Investigator Field Guide to professionals and organizations at no cost. There is no sign-up or catch, and you can download it directly here:
+
+https://www.jrsstandard.com/guide
+
+Please feel free to grab it, share it, and copy or distribute as many as you want for your investigative team.
+
+If you are curious, you can also listen to the recent podcast discussion about it, near the end of the episode (around the 23:45 mark), here:
+
+https://podcasts.apple.com/us/podcast/the-dewey-publications-podcast/id888037481?i=1000775802123
+
+If your team wants to join the Initiative for defensible documentation and decisions people can understand, there is also a free reviewer training built on JRS: six short modules plus a companion reviewer reference, ending in a certificate of completion. It is free with a quick registration (so we can issue the certificate), and it is yours to use at your own pace:
+
+https://www.jrsstandard.com/reviewer
+
+The field guide and the training both put JRS to work, and both are yours to use and share freely.
+
+Thank you so much for all you do.
+
+Phillip Wikes
+Former Lead Civil Rights Officer, Maryland Commission on Civil Rights
+Creator, Justification Review Standard (JRS)
+info@jrsstandard.com
+jrsstandard.com
+
+---
+
+## Version 1a (Organizations - DRR Initiative + motto, 2026-07-23) [SUPERSEDED by 1b]
 
 *Surgical update of Version 1: names the Decision Reconstruction Risk (DRR) Initiative and integrates the motto ("protecting the right to know why") into the intro, and invites joining "the Initiative" at the training line. Also carries the earlier softening "I am facilitating" (was "I am leading") and "workplace decisions and records" (was "hiring decisions"). Links /guide and /reviewer verified live. No long dashes. Use this version going forward; Version 1 below is kept for history. RIGHTS-FORWARD REVISION 2026-07-23: the intro now LEADS with the person's right to know why (job/housing/livelihood) and frames DRR as the threat to that right, instead of opening on the AI mechanism.*
 
