@@ -13,9 +13,9 @@ LEGAL / GOVERNANCE AUDIENCE  |  LITIGATION RISK  |  AI-ASSISTED DOCUMENTATION
 
 *How the gap between polished AI narrative and verifiable evidence creates litigation exposure, and how practitioners can ensure defensible records.*
 
-By Phillip Wikes and Gabriela Bar
+By Gabriela Bar and Phillip Wikes
 
-*Phillip Wikes, AI Governance and Cognitive Risk Advisor, former Lead Civil Rights Officer, Maryland Commission on Civil Rights. Gabriela Bar, PhD, Attorney at Law, founder of Gabriela Bar Law and AI (Wroclaw), advising on trustworthy AI and data-protection law.*
+*Gabriela Bar, PhD, Attorney at Law, founder of Gabriela Bar Law and AI (Wroclaw), advising on trustworthy AI and data-protection law. Phillip Wikes, AI Governance and Cognitive Risk Advisor, former Lead Civil Rights Officer, Maryland Commission on Civil Rights.*
 
 ## I. Introduction
 
