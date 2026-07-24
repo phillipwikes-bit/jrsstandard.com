@@ -1,17 +1,15 @@
 <!--
 INTERNAL HEADER (not part of the article body)
 Article: "The Evidentiary Deficit in AI-Assisted Record-Keeping"
-Prepared for Gabriela Bar (V-AI-16) review + CO-AUTHORING. 2026-07-24: byline now reads "By Phillip Wikes and Gabriela Bar" so her name is prominent in the pitch draft (this IS the invitation); her earned contribution is the EU-law analysis in Section V. If she declines, revert to Phillip solo. Ubayet Hossain, FRM (KPMG India) is credited as a CONTRIBUTOR in an Acknowledgment (he designed the reliability/reproducibility methodology behind the cited figures), NOT as a co-author of this legal argument; his co-authorship remains on the empirical papers. Confirm the acknowledgment wording with Ubayet (pending). Humanized 2026-07-24: added a first-person practitioner opening ("one of us...") and varied rhythm to reduce AI-drafted feel.
+Prepared for Gabriela Bar (V-AI-16) review + CO-AUTHORING. 2026-07-24: byline now reads "By Phillip Wikes and Gabriela Bar" so her name is prominent in the pitch draft (this IS the invitation); her earned contribution is the EU-law analysis in Section V. If she declines, revert to Phillip solo. Ubayet Hossain, FRM (KPMG India) is credited as a CONTRIBUTOR in an Acknowledgment (he designed the reliability/reproducibility methodology behind the cited figures), NOT as a co-author of this legal argument; his co-authorship remains on the empirical papers. Confirm the acknowledgment wording with Ubayet (pending). Humanized 2026-07-24: added a first-person practitioner opening ("one of us...") and varied rhythm to reduce AI-drafted feel. 2026-07-24b: Bar first + LEAD author; removed the "LEGAL / GOVERNANCE AUDIENCE" label banner; rewrote subtitle + intro + conclusion in Bar's voice (clear, accessible, accountability/trust-forward, EU frame as the anchor with the US analysis as the comparative edge, forward-looking close). Body sections II-VIII substance unchanged. Section V stays her scaffold; once she expands it, consider promoting it earlier.
 Revision 2026-07-24: (1) DRR named and woven through (Intro, VI, IX, About JRS); (2) About JRS corrected to the canonical FIVE checks (added evidentiary sufficiency); (3) modest validation paragraph added with allowed framings (reproducibility 84%/15 records as reproducibility NOT accuracy; substantial pre-registered inter-rater reliability; 8 countries/5 continents COMPLETERS; CEP forthcoming Nov); (4) EU-law dimension strengthened in Section V as the natural co-author section for Bar (AI Act record-keeping/logging + GDPR accountability, framed generally so Bar refines the specifics); (5) banned "frequently" -> "often". No long dashes. No blind-study mention.
 Co-author hook: the EU/transatlantic legal analysis is deliberately left as a strong skeleton for Bar (EU AI Act + GDPR) to deepen.
 Venue: see the recommendation delivered to Phillip and logged in MASTER_TRACKER §6.
 -->
 
-LEGAL / GOVERNANCE AUDIENCE  |  LITIGATION RISK  |  AI-ASSISTED DOCUMENTATION
-
 # The Evidentiary Deficit in AI-Assisted Record-Keeping
 
-*How the gap between polished AI narrative and verifiable evidence creates litigation exposure, and how practitioners can ensure defensible records.*
+*Why records that cannot explain themselves have become a legal and ethical liability on both sides of the Atlantic, and what accountable documentation now requires.*
 
 By Gabriela Bar and Phillip Wikes
 
@@ -19,17 +17,15 @@ By Gabriela Bar and Phillip Wikes
 
 ## I. Introduction
 
-One of us spent more than a decade reading discrimination files for a state civil rights agency. The cases that caused the most worry were rarely the ones with an obvious flaw. They were the ones where the file read cleanly, the conclusion sat neatly at the end, and nothing beneath it explained how anyone had arrived there. A record can look finished and still be hollow.
+A record is a kind of promise. It tells whoever reads it later, a regulator, a court, a colleague, the person whose life it describes, that a decision was made for reasons that can be examined. When artificial intelligence drafts the record, that promise is easy to break without anyone noticing. The text looks complete. The reasoning behind it may already be gone.
 
-In employment disputes, the written record carries primary evidentiary weight. When it falls short, every other element of the case becomes harder to defend.
+This failure has a name we use throughout: Decision Reconstruction Risk (DRR), the condition in which a record cannot explain, on its own terms, why a decision was made. It is not a technology problem in the usual sense. It is an accountability problem, and accountability is where law, ethics, and trust meet.
 
-An AI-assisted draft reads like a finished record. The sentences are confident, the structure is coherent, and the conclusions sound reasoned. The relevant discovery question is whether the document is tied back to the facts it asserts. That gap, between fluent narrative and verifiable evidence, is the central concern of this article.
+One of us spent more than a decade reading such records after the fact, for a civil rights agency, and saw the same pattern repeat: the decision was often sound, and the record could not show why. The other has spent a career helping organizations build governance that anticipates regulation rather than reacting to it. From both vantage points the conclusion is the same. As AI drafts more of the documents behind consequential decisions, the evidence that would let anyone reconstruct those decisions is quietly disappearing.
 
-This failure has a name we use throughout: Decision Reconstruction Risk (DRR), the condition in which a record cannot explain, on its own terms, why a decision was made. The evidentiary deficit is DRR seen from the litigation side: when the reasoning behind a record cannot be reconstructed, the decision cannot be defended.
+We write from both European and United States perspectives, because the exposure is now transatlantic. In Europe, the accountability principle at the heart of the GDPR and the record-keeping expectations of the EU AI Act ask organizations to show, not merely assert, how a decision was reached. In the United States, the same gap surfaces in discovery and in the burden-shifting tests that decide employment and housing disputes. The legal vocabulary differs. The underlying demand is the same: a record must be able to answer for itself.
 
-Courts and regulators have always relied on contemporaneous documentation to test whether a decision was lawful, consistent, and free of bias. As organizations move more of their drafting into AI-assisted tools, the evidentiary integrity of the resulting records becomes a genuine legal issue, not a theoretical one.
-
-AI-assisted documentation is treated as presumptively discoverable. Drafting workflows should be built on that assumption from the start.
+AI-assisted documentation should be treated as presumptively reviewable, whether by a regulator, an auditor, or a court. The most practical moment to meet that standard is before the record is finalized.
 
 ## II. Documentation as Legal Evidence
 
@@ -51,11 +47,11 @@ A defensible record requires that every material assertion can be traced to cont
 
 AI tools reproduce language patterns at scale. Pattern risk emerges when subjective descriptors such as "cultural fit," "struggles with change," or "attitude" recur across individuals sharing protected characteristics. What looks like a stylistic quirk in one file can, in aggregate, support an inference of systemic bias. Aggregate uniformity that would once have taken years of individual drafting to produce can now emerge within a single quarter of AI-assisted writing. Courts have recognized that patterns across records may be used to establish systemic discrimination or discriminatory intent under both disparate treatment and disparate impact analysis.
 
-## V. Data Protection and the Transatlantic Frame
+## V. Data Protection and the European Frame
 
 Public AI tools introduce two related risks. The first is a data processing risk: entering sensitive information into an external interface may not satisfy the lawful basis for processing under the GDPR and similar frameworks, and may conflict with data minimization obligations. The second is a documentation integrity risk: where drafting occurs outside approved systems, organizations may be unable to produce metadata identifying the tool used, the inputs entered, or the timing of the drafting itself. Both risks converge on the same practical point: without visibility into what tool was used, what data was entered, and what came back, the organization cannot defend the provenance of the record.
 
-In the European Union, the same gap intersects two regimes at once. Under the GDPR, the accountability principle expects an organization to demonstrate how personal data was processed; a record whose provenance cannot be shown is difficult to reconcile with that duty and with records-of-processing obligations. Under the EU AI Act, high-risk uses carry record-keeping, logging, and technical-documentation expectations intended to make automated and AI-assisted processing auditable after the fact. An organization that cannot reconstruct how an AI-assisted record was produced faces exposure on both fronts at the same time. The precise contours of these European obligations, and how they map onto records generated with general-purpose AI tools, are developed further below by co-author Gabriela Bar.
+In the European Union, the same gap intersects two regimes at once. Under the GDPR, the accountability principle expects an organization to demonstrate how personal data was processed; a record whose provenance cannot be shown is difficult to reconcile with that duty and with records-of-processing obligations. Under the EU AI Act, high-risk uses carry record-keeping, logging, and technical-documentation expectations intended to make automated and AI-assisted processing auditable after the fact. An organization that cannot reconstruct how an AI-assisted record was produced faces exposure on both fronts at the same time. The precise contours of these European obligations, and how they map onto records generated with general-purpose AI tools, are developed in the analysis that anchors this article.
 
 ## VI. Oversight and Review
 
@@ -81,7 +77,7 @@ Expect discovery requests aimed at the drafting layer itself, including prompt l
 
 ## IX. Conclusion
 
-The drafting tool has changed. The evidentiary test has not. Risk arises where evidentiary traceability is absent, which is to say where Decision Reconstruction Risk is present. Records are evaluated on whether the evidentiary architecture behind them is visible, reproducible, and capable of withstanding scrutiny in both discovery and regulatory review.
+Risk arises where evidentiary traceability is absent, which is to say where Decision Reconstruction Risk is present. The organizations that will weather the next decade are the ones that treat a record as something that must answer for itself: in a courtroom, before a regulator, and to the person whose life it describes. Records will be judged on whether the reasoning behind them is visible, reproducible, and capable of withstanding independent scrutiny, in Europe and the United States alike.
 
 The drafting tool has changed. The evidentiary test has not.
 
