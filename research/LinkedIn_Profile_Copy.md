@@ -1,5 +1,62 @@
 # LinkedIn profile copy, reviewed + revised (2026-07-18)
 
+---
+
+## CURRENT CANONICAL: IP-VALUE REVISION (2026-07-23, Fable-drafted, claim-verified)
+
+*Rewritten to maximize IP value and sale probability (1-2 yr): JRS framed as a defined, ownable documentation-review instrument; DRR as the named category; free guide/training layered visibly on a commercial core (certification, organizational pilots, "enterprise inquiries" to info@jrsstandard.com). All figures verified against the research record before drafting. About = 2,573 chars (under LinkedIn's 2,600). No long dashes. Blind/two-arm study NEVER mentioned. No effectiveness/accuracy claims. Supersedes the 2026-07-18 revision below for the headline/About/Experience; the 2026-07-18 notes and embargoed post-Arm-B section still apply.*
+
+### Headline (189 chars)
+Creator, Justification Review Standard (JRS) | The review standard for Decision Reconstruction Risk (DRR) in AI-assisted records | Former Lead Civil Rights Officer | Founder, JRS Initiative
+
+### About (2,573 chars)
+Most consequential workplace decisions get a second look long after they are made. An investigation reopens. A complaint is appealed. Litigation arrives. Someone then has to reconstruct what happened and why, working only from the file. The conclusion is usually still there. What fades is everything that justified it: the reasoning, the chronology, the evidence. The record still says what was decided. It no longer shows why.
+
+I spent my career reading records after the fact as Lead Civil Rights Officer with the Maryland Commission on Civil Rights, and I kept seeing the same pattern. The decision was often defensible. The record was not. I named that pattern Decision Reconstruction Risk (DRR): a record that cannot explain, on its own terms, why a consequential decision was made.
+
+AI raises the stakes. AI-assisted drafting lands in permanent files as finished documentation while the basis behind it goes missing. Records look more polished while becoming harder to reconstruct.
+
+The Justification Review Standard (JRS) is the documentation review instrument I built for that gap: a defined standard that HR, compliance, investigations, audit, and legal teams apply inside existing workflows, before a record is finalized. One question drives it: could another qualified reviewer independently reconstruct and defend this decision from the record alone? Five checks answer it:
+
+1. Can the conclusion be reconstructed from the record alone?
+2. Is its basis identifiable?
+3. Can the chronology be followed?
+4. Can a reviewer trace how the conclusion was reached?
+5. Is the evidence sufficient?
+
+JRS is in structured validation:
+- Reviewers across 8 countries on 5 continents have completed structured reviews.
+- Independent reviewers reached substantial agreement under a pre-registered analysis (Gwet's AC1 0.74 for experts, 0.63 for trained reviewers, 10 records).
+- Three independent AI providers (across vendors) applied JRS to the same records and agreed 84% of the time (15 constructed records): a reproducibility signal, distinct from accuracy.
+
+JRS and DRR were discussed on the Dewey Publications Podcast, and my article "When the Record Cannot Speak for Itself" is forthcoming in CEP Magazine (November).
+
+Free while validation runs:
+Investigator Field Guide: https://www.jrsstandard.com/guide
+Reviewer training with certificate: https://www.jrsstandard.com/reviewer
+
+Organizational pilots and enterprise inquiries: info@jrsstandard.com
+
+Most AI governance looks at systems. JRS looks at what they leave behind: the documentation that becomes the record.
+
+### Experience entry: Creator, Justification Review Standard (JRS) | Founder, JRS Initiative
+I created the Justification Review Standard (JRS), a defined documentation review instrument for records that support consequential decisions, and named the risk category it addresses: Decision Reconstruction Risk (DRR), the risk that a record cannot explain, on its own terms, why a decision was made.
+
+AI-assisted drafting has made DRR urgent. Generated text lands in permanent files as finished work while the basis behind it goes missing, and the gap surfaces at the worst possible moment: an audit, an escalation, an appeal, an adversarial review. JRS gives HR, compliance, investigations, audit, and legal teams a structured way to test a record before it is finalized, inside the workflows they already use. One question drives it: could another qualified reviewer independently reconstruct and defend this decision from the record alone?
+
+As founder of the JRS Initiative, I lead the standard's validation and adoption program:
+
+- International panel: reviewers across 8 countries on 5 continents have completed structured reviews.
+- Reliability: independent reviewers reached substantial agreement under a pre-registered analysis (Gwet's AC1 0.74 for experts, 0.63 for trained reviewers, 10 records).
+- Reproducibility: three independent AI providers (across vendors) applied JRS to the same records and agreed 84% of the time (15 constructed records), showing the standard supports consistent application across vendors.
+- Field presence: JRS and DRR were discussed on the Dewey Publications Podcast; my article "When the Record Cannot Speak for Itself" is forthcoming in CEP Magazine (November).
+
+Free while validation runs: the Investigator Field Guide (https://www.jrsstandard.com/guide) and reviewer training with certificate (https://www.jrsstandard.com/reviewer). Organizational pilots: info@jrsstandard.com.
+
+---
+
+## Prior revision (2026-07-18), kept for history
+
 **Verdict: REVISE, surgically.** The submitted copy is well-written, on-voice, and consistent with `DRR_Article.pdf`. But measured against the stated goal (validate JRS, maximize guide downloads and training completions, maximize IP value), it has three failures:
 
 1. **Zero links.** The profile is the landing page for everyone who reads a post, gets a DM, or hears the podcast. The submitted About and experience copy send them nowhere. Both memorable links must appear: `jrsstandard.com/guide` and `jrsstandard.com/reviewer`.

@@ -9,7 +9,40 @@
 
 ---
 
-## Version 1b (Organizations - CURRENT canonical, JRS-led, 2026-07-23)
+## Version 1c (Organizations - CURRENT canonical, IP-value optimized, 2026-07-23, Fable-drafted + claim-verified)
+
+*Buyer-value-optimized revision of Phillip's longer "join the JRS Initiative" draft. JRS framed as a defined, ownable documentation-review instrument (the asset); DRR as the named category; one primary CTA (download the free guide) with training + organizational pilots as secondary; enterprise inquiries routed to info@jrsstandard.com. All figures verified against the research record. 84% framed as REPRODUCIBILITY (not accuracy); CEP "forthcoming" (not published); Dewey a mention (not endorsement); completer geography only. No effectiveness claims; no blind-study mention; no long dashes; no free-forever promise. Version 1b below (shorter guide-giveaway) kept as the lighter variant.*
+
+**Suggested subject line:** A free field guide for the records your [area] work depends on
+
+Hi [Organization],
+
+I have long admired your work in [area], particularly in [specialty]. I am writing to share a free resource your team can use immediately, and to introduce the standard behind it.
+
+The principle behind our work is simple: when a consequential decision affects a person's employment, housing, education, benefits, or livelihood, that person deserves to understand why the decision was made, and deserves a meaningful opportunity to question it.
+
+That right runs through documentation, and documentation is changing. Organizations increasingly rely on AI to draft investigative reports, HR records, compliance files, and other documents that support consequential decisions. This creates a quiet failure mode: the decision may be reasonable, and the record may look complete, yet months or years later neither can explain how the conclusion was reached. We call this Decision Reconstruction Risk (DRR).
+
+The Justification Review Standard (JRS) is a defined documentation review instrument built to surface DRR before a record is finalized. It asks one question: could another qualified reviewer independently reconstruct this decision from the record alone? Five structured checks answer it, applied inside the workflows your team already uses.
+
+JRS is in structured international validation. Reviewers across 8 countries on 5 continents have completed structured reviews. Independent reviewers reached substantial agreement under a pre-registered analysis (Gwet's AC1 0.74 for experts, 0.63 for trained reviewers, 10 records). Three independent AI providers (across vendors) applied JRS to the same records and agreed 84% of the time (15 constructed records), a reproducibility signal: consistency of application, distinct from accuracy. JRS and DRR were recently discussed on the Dewey Publications Podcast (around the 23:45 mark), and my article "When the Record Cannot Speak for Itself" is forthcoming in CEP Magazine this November.
+
+The ask is a small one: download the free Investigator Field Guide and put it in front of the people who write or review consequential records.
+
+https://www.jrsstandard.com/guide
+
+If it earns a place in your practice, two further steps are open while validation runs: free reviewer training with a certificate (https://www.jrsstandard.com/reviewer), and structured organizational pilots for teams that want to apply JRS to their own documentation. I would also welcome your critique of the standard itself; the initiative is stronger for every experienced eye on it.
+
+Thank you for the work you do in [area]. I would be glad to talk.
+
+Phillip Wikes
+Former Lead Civil Rights Officer, Maryland Commission on Civil Rights
+Creator, Justification Review Standard (JRS) | Founder, JRS Initiative
+info@jrsstandard.com | jrsstandard.com
+
+---
+
+## Version 1b (Organizations - JRS-led, 2026-07-23) [lighter guide-giveaway variant]
 
 *Redo per Phillip: the Initiative is now named the Justification Review Standard (JRS) Initiative (was "DRR Initiative"), and the message LEADS with JRS as the method, using Phillip's supplied opening. DRR is kept as the named risk that JRS catches, so the field guide still connects. Also fixes the prior "That threat" antecedent gap (that sentence is gone) and removes the double "We call it." Links /guide and /reviewer verified live. No long dashes. Strategic note: leading with JRS foregrounds the sellable asset but slightly de-emphasizes owning the DRR category term; Phillip's call. Use 1b going forward; 1a below kept for history.*
 
