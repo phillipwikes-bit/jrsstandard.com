@@ -1,8 +1,8 @@
 # Detecting Decision Reconstruction Risk in AI-Assisted Documentation: A Record-Level Review Standard and Its Pre-Registered Validation
 
-**Author:** Phillip Wikes, Creator of the Justification Review Standard (JRS); former Lead Civil Rights Officer, Maryland Commission on Civil Rights.
+**Authors:** Phillip Wikes (Creator of the Justification Review Standard; former Lead Civil Rights Officer, Maryland Commission on Civil Rights) and Ubayet Hossain, FRM (Associate Director, Model Validation, KPMG India).
 
-**Methodology advisor:** Ubayet Hossain, FRM, Associate Director (Model Validation), KPMG India, who designed the reliability and validation framework (reference-panel design, chance-corrected agreement statistics, and the pre-registered decision floors).
+**Author contributions:** P.W. conceived Decision Reconstruction Risk and the JRS review method, constructed the validation corpus and the verified answer key, assembled the international reviewer panel, and led the writing. U.H. designed the reliability and validation framework: the reference-panel design, the chance-corrected agreement statistics, and the pre-registered decision floors and analysis plan.
 
 **Target journal:** *AI and Ethics* (Springer). Fit: the journal's scope is the ethics and governance of AI in practice, and it publishes both original research and reflective perspective articles, which suits a paper that motivates a governance construct from field experience and then validates it empirically. Alternatives if needed: *AI & Society* (Springer); *Journal of Responsible Technology* (Elsevier, open access); or a FAccT / AIES workshop for speed.
 
@@ -124,7 +124,7 @@ The drafting tool and the technology stack will keep changing. The evidentiary t
 
 ## Acknowledgments
 
-I am grateful to Gabi, whose insistence that a record must be understandable to the people it affects shaped this work and inspired its international panel. I thank the international reviewer panel for their care and independent judgment, and Ubayet Hossain for the reliability and validation framework. Reviewers are recognized as named contributors with their consent; they are not co-authors of this paper.
+I am grateful to Gabi, whose insistence that a record must be understandable to the people it affects shaped this work and inspired its international panel. I thank the international reviewer panel for their care and independent judgment. Reviewers are recognized as named contributors with their consent; they are not co-authors of this paper.
 
 ## Data availability and pre-registration
 
@@ -132,5 +132,6 @@ The study protocol and analysis plan are pre-registered. Constructed records, th
 
 ## Progress log (per standing directive, all progress on this article is recorded here)
 
+- 2026-07-25 - Ubayet Hossain elevated from "methodology advisor" to CO-AUTHOR (per Phillip), consistent with the standing policy that he is co-author on each paper that uses his methodology; his framework (reference-panel design, chance-corrected statistics, pre-registered floors) is the validation core of this paper. Byline + author-contributions statement updated; acknowledgment of him as a thanked contributor removed. INTEGRITY CONDITION (earned authorship): send him THIS manuscript for review and sign-off before submission; his approval of this specific paper is what makes the co-authorship earned rather than courtesy.
 - 2026-07-25 - Integrated the two outreach-campaign framings as academic significance (NOT marketing): added a dual-stakes paragraph to the Introduction (accountability to the person / defensibility for the institution, one and the same defect) and extended the Discussion to state the two-directional implication. This aligns the paper's significance with the two sister campaigns (The Right to Know Why; The Decisions You Can Defend) in substance. Results remain gated; Arm B blind protected; no effectiveness claim; fixed banned "frequently" -> "often"; no long dashes.
 - 2026-07-13 - Draft created from the pre-registered detection protocol (`DRR_Detection_Validation_Protocol.md`), the Arm B design spec (`ArmB_Design.md`), and the pre-registered analysis plan (`JRS_PreRegistered_Analysis_Plan.md`). Introduction incorporates the author's mentorship narrative (Gabi). Target journal: AI and Ethics. Results gated until the detection panel completes and Arm B is run. Author number for the panel stated as the verified current count (24 registered, 7 complete); the earlier "22" in the author's narrative was updated to keep the manuscript internally consistent with Methods.
