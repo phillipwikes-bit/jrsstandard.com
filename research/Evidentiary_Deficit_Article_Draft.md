@@ -19,7 +19,7 @@ By Gabriela Bar and Phillip Wikes
 
 A record is a kind of promise. It tells whoever reads it later, a regulator, a court, a colleague, the person whose life it describes, that a decision was made for reasons that can be examined. When artificial intelligence drafts the record, that promise is easy to break without anyone noticing. The text looks complete. The reasoning behind it may already be gone.
 
-This failure has a name we use throughout: Decision Reconstruction Risk (DRR), the condition in which a record cannot explain, on its own terms, why a decision was made. It is not a technology problem in the usual sense. It is an accountability problem, and accountability is where law, ethics, and trust meet.
+This failure has a name we use throughout: Decision Reconstruction Risk (DRR), the condition in which a record cannot independently explain why a consequential decision was made. It is not a technology problem in the usual sense. It is an accountability problem, and accountability is where law, ethics, and trust meet.
 
 One of us spent more than a decade reading such records after the fact, for a civil rights agency, and saw the same pattern repeat: the decision was often sound, and the record could not show why. The other has spent a career helping organizations build governance that anticipates regulation rather than reacting to it. From both vantage points the conclusion is the same. As AI drafts more of the documents behind consequential decisions, the evidence that would let anyone reconstruct those decisions is quietly disappearing.
 
@@ -33,19 +33,19 @@ In employment, housing, and administrative adjudication, the written record is t
 
 The burden-shifting analysis in McDonnell Douglas Corp. v. Green illustrates the stakes: the sufficiency of the documented rationale often determines whether a stated reason will be treated as legitimate or as pretext. Administrative law similarly applies a reasoned decision-making standard, under which the quality of the record often determines whether the underlying decision survives review at all.
 
-A record must do more than state a conclusion. It has to show the factual basis behind that conclusion. When the documentation cannot substantiate the reasoning it claims to reflect, the organization loses the very evidence it needs to defend the decision.
+A legally defensible record must do more than state a conclusion. It has to show the factual basis behind that conclusion. When the documentation cannot substantiate the reasoning it claims to reflect, the organization loses the very evidence it needs to defend the decision.
 
 ## III. How AI-Assisted Records Fail in Practice
 
 AI tools generate fluent narrative, but they often lose the link between the narrative and the underlying facts. Three failure modes recur in practice. First, unsupported narrative: conclusions appear with confident framing, even when the input contained only fragmentary facts. Second, missing source linkage: the finished record is no longer traceable to the logs, notes, or communications that would anchor it. Third, weak auditability: the drafting history, reviewer identity, and prompts used to produce the text are not preserved.
 
-When the same tool generates both the narrative and its supporting justification, the record becomes self-referential and can be functionally indistinguishable from post hoc rationalization. A manager prompts the model to draft a termination justification, then prompts the same model to generate the supporting facts. The resulting file is internally consistent but cannot be tied to independent evidence. In discovery, unsupported assertions are treated as post hoc rationalization, particularly where the drafting record shows AI-generated narrative being introduced after the underlying decision was already made.
+When the same tool generates both the narrative and its supporting justification, the record becomes self-referential and can be functionally indistinguishable from post hoc rationalization. Consider a manager who prompts the model to draft a termination justification, then prompts the same model to supply the supporting facts. The resulting file is internally consistent but cannot be tied to independent evidence. In discovery, unsupported assertions are treated as post hoc rationalization, particularly where the drafting record shows AI-generated narrative being introduced after the underlying decision was already made.
 
 A defensible record requires that every material assertion can be traced to contemporaneous evidence.
 
 ## IV. Pattern Risk and Proxy Language
 
-AI tools reproduce language patterns at scale. Pattern risk emerges when subjective descriptors such as "cultural fit," "struggles with change," or "attitude" recur across individuals sharing protected characteristics. What looks like a stylistic quirk in one file can, in aggregate, support an inference of systemic bias. Aggregate uniformity that would once have taken years of individual drafting to produce can now emerge within a single quarter of AI-assisted writing. Courts have recognized that patterns across records may be used to establish systemic discrimination or discriminatory intent under both disparate treatment and disparate impact analysis.
+AI tools reproduce language patterns at scale. Pattern risk emerges when subjective descriptors such as "cultural fit," "struggles with change," or "attitude" recur across individuals sharing protected characteristics. What looks like a stylistic quirk in one file can, in aggregate, support an inference of systemic bias. Aggregate uniformity that would once have taken years of individual drafting to produce can now emerge within a single quarter of AI-assisted writing. Because the risk lives in the aggregate, it can pass every individual review and become visible only when records are examined together. Courts have recognized that patterns across records may be used to establish systemic discrimination or discriminatory intent under both disparate treatment and disparate impact analysis.
 
 ## V. Data Protection and the European Frame
 
@@ -55,7 +55,7 @@ In the European Union, the same gap intersects two regimes at once. Under the GD
 
 ## VI. Oversight and Review
 
-A defensible record should be able to answer three questions on its face. Can the record be understood independently of its author? Are its conclusions supported by verifiable, non-AI-generated evidence? Can a neutral reviewer reconstruct the reasoning without additional explanation? If any of these questions cannot be answered, the record is incomplete, regardless of how polished it reads. These questions operationalize Decision Reconstruction Risk: a record that cannot answer them carries DRR into every proceeding that later relies on it. Periodic sampling across authors and business units helps surface drift before it becomes a pattern.
+A defensible record should be able to answer three questions on its face. **Can the record be understood independently of its author? Are its conclusions supported by verifiable, non-AI-generated evidence? Can a neutral reviewer reconstruct the reasoning without additional explanation?** If any of these questions cannot be answered, the record is incomplete, regardless of how polished it reads. These questions operationalize Decision Reconstruction Risk: a record that cannot answer them carries DRR into every proceeding that later relies on it. Periodic sampling across authors and business units helps surface drift before it becomes a pattern.
 
 ## VII. Litigation and Regulatory Exposure
 
@@ -71,8 +71,8 @@ Expect discovery requests aimed at the drafting layer itself, including prompt l
 4. Document the human review step, including reviewer identity, date, and substantive changes.
 5. Prohibit the use of unapproved external AI tools for official records.
 6. Align records with the applicable data processing inventories, including GDPR Article 30 where relevant.
-7. Audit periodically for repeated subjective language across authors and business units.
-8. Preserve draft history, prompts, and tool-usage records for discovery.
+7. Preserve draft history, prompts, and tool-usage records for discovery.
+8. Audit periodically for repeated subjective language across authors and business units.
 9. Confirm consistency between the record and prior documented performance history.
 
 ## IX. Conclusion
@@ -87,9 +87,9 @@ JRS provides a structured documentation review instrument that practitioners in 
 
 JRS is built around a single question: when AI-assisted content enters a workplace record, does the record remain traceable, evidentiary, and reconstructable under structured review? Five checks answer it. Can the conclusion be reconstructed from the record alone? Is its basis identifiable? Can the chronology be followed? Can a reviewer trace how the conclusion was reached? Is the evidence sufficient?
 
-JRS is in structured validation. Independent reviewers across 8 countries on 5 continents have completed structured reviews. Independent raters reached substantial agreement under a pre-registered analysis. Three independent AI providers applied the standard to the same records and agreed 84% of the time across 15 constructed records, a reproducibility signal that is distinct from accuracy. A related article is forthcoming in CEP Magazine in November. These results support reproducible application; they do not yet establish accuracy or real-world effectiveness, which are later stages of the program.
+JRS is in structured validation. Independent reviewers across 8 countries on 5 continents have completed structured reviews. Independent raters reached substantial agreement under a pre-registered analysis. Three independent AI models, each from a different vendor, applied the standard to the same records and agreed 84% of the time across 15 constructed records, a reproducibility signal that is distinct from accuracy. A related article is forthcoming in CEP Magazine in November. These results support reproducible application; they do not yet establish accuracy or real-world effectiveness, which are later stages of the program.
 
-JRS operates within existing HR, compliance, investigations, audit, and legal review processes. No specialized software or procedural redesign required. Learn more: https://jrsstandard.com
+JRS operates within existing HR, compliance, investigations, audit, and legal review processes. No specialized software or procedural redesign required.
 
 ## Acknowledgment
 
