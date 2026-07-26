@@ -9,7 +9,7 @@ Venue: see the recommendation delivered to Phillip and logged in MASTER_TRACKER 
 
 # The Evidentiary Deficit in AI-Assisted Record-Keeping
 
-*Why records that cannot explain themselves have become a legal and ethical liability on both sides of the Atlantic, and what accountable documentation now requires.*
+*Why AI-assisted records that cannot explain themselves have become a transatlantic governance problem, and what accountable documentation now requires.*
 
 By Gabriela Bar and Phillip Wikes
 
