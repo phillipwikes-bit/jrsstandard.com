@@ -79,6 +79,10 @@ Expect discovery requests aimed at the drafting layer itself, including prompt l
 
 Risk arises where evidentiary traceability is absent, which is to say where Decision Reconstruction Risk is present. The organizations that will weather the next decade are the ones that treat a record as something that must answer for itself: in a courtroom, before a regulator, and to the person whose life it describes. Records will be judged on whether the reasoning behind them is visible, reproducible, and capable of withstanding independent scrutiny, in Europe and the United States alike.
 
+Taken together, these legal and regulatory currents point past any single jurisdiction toward a common governance principle. When AI contributes to a consequential decision, the person affected should be able to understand the basis for it, and the organization should be able to reconstruct and defend it from the record. This expectation can be captured in a single phrase, the Right to Know Why: not a new legal doctrine, but a concise name for accountability expectations that already run through discovery, evidentiary sufficiency, the GDPR's accountability principle, and the record-keeping demands of the EU AI Act.
+
+Whether the question is put through American evidentiary law or European fundamental-rights frameworks, it converges on the same test: can the decision still explain itself? When it cannot, meaningful accountability is compromised, both for the institution that must defend the decision and for the person entitled to understand it. Naming that test plainly is what the Right to Know Why offers to courts, regulators, organizations, and the people whose lives consequential decisions affect.
+
 The drafting tool has changed. The evidentiary test has not.
 
 ## About JRS
