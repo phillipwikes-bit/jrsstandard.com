@@ -19,7 +19,9 @@ By Gabriela Bar and Phillip Wikes
 
 A record is a kind of promise. It tells whoever reads it later, a regulator, a court, a colleague, the person whose life it describes, that a decision was made for reasons that can be examined. When artificial intelligence drafts the record, that promise is easy to break without anyone noticing. The text looks complete. The reasoning behind it may already be gone.
 
-This failure has a name we use throughout: Decision Reconstruction Risk (DRR), the condition in which a record cannot independently explain why a consequential decision was made. It is not a technology problem in the usual sense. It is an accountability problem, and accountability is where law, ethics, and trust meet.
+Every consequential decision is eventually questioned. The only uncertainty is whether the record will still be capable of explaining and defending it.
+
+This failure has a name we use throughout: Decision Reconstruction Risk (DRR), the condition in which a record cannot independently explain why a consequential decision was made. It is not a technology problem in the usual sense. It is an accountability problem, and accountability is where law, ethics, and trust meet. DRR is not simply a documentation problem. It is a governance failure: when the reasoning behind a consequential decision can no longer be independently reconstructed, accountability shifts from contemporaneous evidence to memory, opinion, or institutional credibility, which is precisely the condition modern governance seeks to avoid.
 
 One of us spent more than a decade reading such records after the fact, for a civil rights agency, and saw the same pattern repeat: the decision was often sound, and the record could not show why. The other has spent a career helping organizations build governance that anticipates regulation rather than reacting to it. From both vantage points the conclusion is the same. As AI drafts more of the documents behind consequential decisions, the evidence that would let anyone reconstruct those decisions is quietly disappearing.
 
@@ -34,6 +36,8 @@ In employment, housing, and administrative adjudication, the written record is t
 The burden-shifting analysis in McDonnell Douglas Corp. v. Green illustrates the stakes: the sufficiency of the documented rationale often determines whether a stated reason will be treated as legitimate or as pretext. Administrative law similarly applies a reasoned decision-making standard, under which the quality of the record often determines whether the underlying decision survives review at all.
 
 A legally defensible record must do more than state a conclusion. It has to show the factual basis behind that conclusion. When the documentation cannot substantiate the reasoning it claims to reflect, the organization loses the very evidence it needs to defend the decision.
+
+Reconstructability serves public interests as much as organizational ones. It preserves an affected person's ability to understand how a decision was reached, and it gives reviewers, courts, regulators, and oversight bodies an evidentiary basis for independent evaluation. A well-supported record survives many forms of scrutiny, internal review, complaint investigation, regulatory examination, discovery, judicial proceedings, and later historical review, while a poorly supported one may fail each of them even when the underlying decision was sound.
 
 ## III. How AI-Assisted Records Fail in Practice
 
@@ -62,6 +66,8 @@ A defensible record should be able to answer three questions on its face. **Can 
 Opposing counsel argue two things. First, that fluent AI-generated narrative was produced to justify a decision already made. Second, that the absence of drafting history or reviewer notes confirms the absence of genuine deliberation. Both arguments land harder when the organization cannot produce the underlying material.
 
 Expect discovery requests aimed at the drafting layer itself, including prompt logs, draft versions, tool-usage records, and reviewer activity. ESI obligations now routinely include such material. Regulators tend to arrive at an adjacent conclusion: uniform language across files can be read as evidence of a process rather than of individualized judgment, and the absence of records-of-processing detail is treated as an independent compliance failure.
+
+These failures create risks beyond litigation exposure. They diminish an institution's capacity to explain its decisions to the people affected by them, and with it the transparency, accountability, and public confidence on which the institution depends.
 
 ## VIII. Practitioner's Checklist
 
