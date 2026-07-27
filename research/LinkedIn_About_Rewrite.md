@@ -27,6 +27,6 @@ JRS is in an operational validation phase with a running evidence program. Revie
 Free while validation runs:
 Investigator Field Guide: jrsstandard.com/guide
 Reviewer training with certificate: jrsstandard.com/reviewer
-Podcast discussion (around the 23:45 mark): https://podcasts.apple.com/us/podcast/the-dewey-publications-podcast/id888037481?i=1000775802123
+Podcast (around 23:45): https://podcasts.apple.com/us/podcast/the-dewey-publications-podcast/id888037481?i=1000775802123
 
-I connect with HR, compliance, investigations, audit, legal, risk, and AI governance professionals weighing how AI-assisted content affects the defensibility of the records their organizations keep. If that is your world, I would value the conversation.
+I connect with HR, compliance, investigations, audit, legal, risk, and AI governance professionals weighing how AI-assisted content affects the defensibility of the records their organizations keep.
