@@ -160,6 +160,9 @@ CANDIDATES = [
     {"name": "Sagarika Banerjee", "location": "Canada, Toronto", "code": "RR-128",
      "deadline": "by the end of the first week of August, 2026",
      "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Sagarika_Banerjee.pdf"},
+    {"name": "Wendy Ann Martel", "location": "Canada, Quebec", "code": "RR-129",
+     "deadline": "by the end of the first week of August, 2026",
+     "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Wendy_Ann_Martel.pdf"},
 ]
 
 if __name__ == "__main__":
