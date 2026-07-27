@@ -22,3 +22,21 @@ With respect,
 Phillip Wikes
 Creator, Justification Review Standard (JRS)
 info@jrsstandard.com
+
+---
+
+## Follow-up reply (2026-07-27): Andrey accepted the boundary gracefully; hold one narrow line
+
+*Andrey replied graciously: he conceded ALL core asks (no endorsement/authorization/certification/adoption/formal relationship; will make the distinction clear in any future reference). He holds ONE point: the right to state as fact that "ANDEKS performed an independent assessment of the published JRS documentation." He is right in principle (anyone may review a PUBLIC standard, nominative/fair use); fighting the abstract right is unwinnable and would look heavy-handed for a transparency-focused standard. So CONCEDE the principle, hold the NARROW line: no use of the JRS name/mark as ANDEKS branding/title (the real IP risk; the current package title "ANDEKS-JRS-Assessment-Package" is exactly the overstep). Reinforces the marks-registration priority. Concise, warm, firm. No long dashes.*
+
+Hi Andrey,
+
+Thank you, this is a gracious note and I appreciate it. We are aligned on the essentials: no endorsement, authorization, certification, adoption, or formal relationship, and I am grateful you will keep that distinction clear.
+
+On the remaining point, you are right that anyone may review a public standard and say they did. My only asks: present it as your own independent analysis of the publicly available JRS materials rather than an assessment of JRS as a program; keep the no-affiliation statement prominent rather than a footnote; and please do not use the JRS name or mark as a title or brand element for the work, since that is where an independent review starts to read as a relationship. With those in place, I have no issue with you describing your work accurately.
+
+Thank you again for the professionalism throughout, and I wish you well with it.
+
+Best,
+Phillip Wikes
+Creator, Justification Review Standard (JRS)
