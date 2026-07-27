@@ -45,6 +45,7 @@
 4. **AI features depend on third-party keys that do NOT convey.** `api/review.js` and the review-engine/run-study/bench-admin functions use `ANTHROPIC_API_KEY`; the stack also depends on Supabase, Vercel, GA4 (`G-NVYHJ7BJ92`), and Google Fonts. The buyer must bring their own accounts and keys. Document this so the demo does not look like it breaks at handoff.
 5. **Public "human-rights / free" framing can depress willingness to pay.** Keep the community layer free, but never state in public copy that the core standard or certification is free forever. Preserve the licensable core explicitly.
 6. **Founder-dependency and "movement" intangibles.** Community goodwill and volunteers do not convey. Make sure the sale conveys owned entities (marks, copyrights, data, code, domain), not relationships.
+7. **Third-party "assessment" entanglement.** An unverifiable reviewer (Andrey Ekhmenin / EAS / ANDEKS, 2026-07-27) produced an unsolicited "assessment of JRS" under his own self-styled certification framework and sought to attach it to JRS. It was declined and is NOT part of the validation. Do NOT cite it, or any similar external/self-styled assessment, as JRS validation in diligence or marketing. Registered JRS/DRR marks (blindspot 1) are the enforceable lever if a third party misuses the JRS name to imply endorsement.
 
 ---
 
