@@ -130,6 +130,14 @@ REVIEWERS = [
             "research and practice on technology, governance, and public accountability in Africa"),
         "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Certificate_Joseph_Mungai.pdf",
     },
+    {
+        "name": "Adesh Sharma",
+        "date": "July 27, 2026",
+        "body": neutral_body(
+            "enterprise data and AI governance",
+            "over fifteen years building governance and risk frameworks across regulated sectors"),
+        "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Certificate_Adesh_Sharma.pdf",
+    },
 ]
 
 if __name__ == "__main__":
