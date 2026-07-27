@@ -9,8 +9,6 @@
 
 *Draft. Reproducibility (Rung 1) and reliability (Rung 2a) results are computed from collected data. Accuracy (Rung 2b) is preliminary (data collection ongoing). All numbers verified against the study database.*
 
-> **Editorial note (private, not for submission):** The second byline is earned and reviewer-approved: Ubayet Hossain designed the reliability framework this paper reports and reviewed and approved the manuscript and his attribution on 2026-07-14. Before the manuscript is submitted, obtain his explicit one-line confirmation that he accepts the byline position (distinct from approving the attribution), then delete this note. Author-order rationale: P.W. is first as originator and study lead; U.H. second as methodology architect and validating reviewer.
-
 ---
 
 ## Abstract

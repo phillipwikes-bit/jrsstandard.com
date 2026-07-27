@@ -19,9 +19,9 @@ Bottom line: `Article1_Rungs1and2.md` is the current, canonical, Ubayet-approved
 3. **All six long dashes removed** (house no-dash rule): section headers use a colon; numeric ranges use "to"; Landis-Koch uses a hyphen. Verified zero remaining.
 4. **Figures confirmed current** against the study database: 84% cross-vendor (15 records, latest nightly 2026-07-06), AC1 0.74 experts / 0.63 reviewers (10 records, 108 labels), accuracy explicitly preliminary. Validation-phase framing intact: no effectiveness/accuracy/legal claims.
 
-## 3. The one open gate before it goes out
+## 3. Authorship gate: CLOSED (2026-07-27)
 
-**Ubayet's byline acceptance.** He approved the methodology, the manuscript, and his attribution (2026-07-14) and asked to be told when it is submitted. What is not yet on file is his explicit "yes, add me to the byline in that position." One line from him closes it. The editorial note at the top of the manuscript flags this; delete the note once confirmed. This keeps the authorship legitimate (earned + consented), consistent with the earned-authorship-only rule.
+**Ubayet's byline acceptance is confirmed.** He approved the methodology, the manuscript, and his attribution (2026-07-14), asked to be told at submission, and Phillip confirmed on 2026-07-27 that he approved everything, including the byline. The private editorial hold note has been removed and the byline is final. Authorship is earned (methodology design + review) and consented, consistent with the earned-authorship-only rule. Keep his written confirmation with the study screenshots for the IP record.
 
 ## 4. Where to publish it (recommendation)
 
@@ -42,7 +42,7 @@ Rank order for this specific paper (a reliability/reproducibility methods result
 **Match to the other papers so venues do not collide:** Detection/Arm B -> AI and Ethics; Business Ethics/HR pilot -> Journal of Business Ethics; **Rungs 1 & 2 (this paper) -> Journal of Responsible Technology**, with the SSRN/OSF preprint up first.
 
 ## 5. Pre-submission checklist
-- [ ] Ubayet confirms byline acceptance (one line); delete the editorial note.
+- [x] Ubayet byline acceptance confirmed (Phillip, 2026-07-27); editorial hold note removed.
 - [ ] Add a formal pre-registration link/reference for the pre-registered floors and thresholds (Section 7) if a public registry entry exists; if not, note where the pre-registration is held.
 - [ ] Add a data/materials availability statement (constructed records available on request; nightly reproducibility log summary).
 - [ ] Add a short "Ethics / no human subjects" statement (constructed records, no real records at this stage).
