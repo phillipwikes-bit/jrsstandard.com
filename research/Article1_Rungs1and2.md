@@ -2,7 +2,14 @@
 
 ### Rungs 1 and 2 of the JRS Evidence Development Program
 
+**Phillip Wikes¹ · Ubayet Hossain, FRM²**
+
+¹ Creator, Justification Review Standard (JRS); formerly Lead Civil Rights Officer, Maryland Commission on Civil Rights. Correspondence: info@jrsstandard.com
+² Associate Director (Model Validation), KPMG India
+
 *Draft. Reproducibility (Rung 1) and reliability (Rung 2a) results are computed from collected data. Accuracy (Rung 2b) is preliminary (data collection ongoing). All numbers verified against the study database.*
+
+> **Editorial note (private, not for submission):** The second byline is earned and reviewer-approved: Ubayet Hossain designed the reliability framework this paper reports and reviewed and approved the manuscript and his attribution on 2026-07-14. Before the manuscript is submitted, obtain his explicit one-line confirmation that he accepts the byline position (distinct from approving the attribution), then delete this note. Author-order rationale: P.W. is first as originator and study lead; U.H. second as methodology architect and validating reviewer.
 
 ---
 
@@ -58,10 +65,10 @@ Constructed records were developed to represent realistic administrative documen
 
 ## 4. Results
 
-### 4.1 Reproducibility (Rung 1) — collected data
-On 15 constructed records, three independent providers (Anthropic claude-opus-4-8, OpenAI gpt-5, Google Gemini) agreed on the JRS read **84%** of the time (nightly automated run, latest 2026-07-06; history ranges 78–87% as the record set expanded from 3 to 15). This is a reproducibility signal only: it shows independent models apply the read consistently, not that the read is correct.
+### 4.1 Reproducibility (Rung 1): collected data
+On 15 constructed records, three independent providers (Anthropic claude-opus-4-8, OpenAI gpt-5, Google Gemini) agreed on the JRS read **84%** of the time (nightly automated run, latest 2026-07-06; history ranges 78 to 87% as the record set expanded from 3 to 15). This is a reproducibility signal only: it shows independent models apply the read consistently, not that the read is correct.
 
-### 4.2 Reliability (Rung 2a) — collected data
+### 4.2 Reliability (Rung 2a): collected data
 Across **10 records**:
 
 | Rater group | Records | Mean raters/record | Raw agreement | Gwet's AC1 |
@@ -69,9 +76,9 @@ Across **10 records**:
 | Experts | 10 | 3.6 | 88% | **0.74** |
 | Trained reviewers | 10 | 7.2 | 83% | **0.63** |
 
-Both coefficients fall in the "substantial" range (0.61–0.80 on the Landis–Koch scale, the convention behind the pre-registered floor of 0.61). The reviewer coefficient (0.63) clears that floor; the expert coefficient (0.74) exceeds it. Across all JRS-mode determinations (108 labels), the distribution was Gap 69%, Needs work 18%, Ready 13%, consistent with a record set weighted toward reconstructability problems.
+Both coefficients fall in the "substantial" range (0.61 to 0.80 on the Landis-Koch scale, the convention behind the pre-registered floor of 0.61). The reviewer coefficient (0.63) clears that floor; the expert coefficient (0.74) exceeds it. Across all JRS-mode determinations (108 labels), the distribution was Gap 69%, Needs work 18%, Ready 13%, consistent with a record set weighted toward reconstructability problems.
 
-### 4.3 Accuracy (Rung 2b) — preliminary
+### 4.3 Accuracy (Rung 2b): preliminary
 The 24-record answer key was independently reproduced by raters blind to the intended labels, 24 of 24, fixing the key against which accuracy is scored. Reviewer completion is in progress; a full accuracy estimate (with sensitivity, specificity, and confidence intervals) is deferred until the pre-registered reviewer sample completes. Early completions are consistent with above-chance separation, reported here as preliminary and not as a confirmed result.
 
 ## 5. Discussion
@@ -97,9 +104,11 @@ Reliability is considered supported only if Gwet's AC1 meets 0.61 with an adequa
 
 The staged program proceeds in order: complete the accuracy analysis on the 24-record set; run a standard-versus-baseline comparison to test whether JRS improves on unaided judgment; establish construct validity of the five conditions; and, finally, external validation on real (non-constructed) records with documented outcomes.
 
-## 9. Attribution
+## 9. Author contributions and acknowledgments
 
-The reference-panel design and the chance-corrected reliability framework (joint use of Gwet's AC1, Krippendorff's alpha, and Fleiss' kappa; treatment of the kappa paradox; pre-registered agreement floors) are methodological contributions of **Ubayet Hossain, FRM, Associate Director (Model Validation), KPMG India**. The proportionality principle referenced in the standard was surfaced by pilot reviewer **Saurabh Nanda**, General Manager and APAC Business Leader (Align Technology), and is credited with permission. Statistical analyses were completed before interpretation of study findings. Responsibility for the framework as presented rests with the author.
+**P.W.** conceived the Justification Review Standard, designed the five-condition review method and the staged evidence development program, constructed the study records, and ran the reproducibility and reliability studies. **U.H.** designed the reference-panel and chance-corrected reliability framework (joint use of Gwet's AC1, Krippendorff's alpha, and Fleiss' kappa; treatment of the kappa paradox; pre-registered agreement floors) and reviewed the analysis and its interpretation. Both authors approved the final manuscript.
+
+The proportionality principle referenced in the standard was surfaced by pilot reviewer **Saurabh Nanda**, General Manager and APAC Business Leader (Align Technology), and is credited with permission. Statistical analyses were completed before interpretation of study findings.
 
 ## 10. Conclusion
 
