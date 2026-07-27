@@ -1,6 +1,8 @@
-# Two sister outreach campaigns (reviewed + revised 2026-07-25)
+# Two sister outreach campaigns (reviewed + revised 2026-07-25; aligned to the article 2026-07-27)
 
 *Reviewed Phillip's two-campaign drafts. Fixes: removed em-dashes (house rule); softened "Decisions You Can Always Defend" -> "The Decisions You Can Defend Initiative" ("always" implies a guarantee the validation posture forbids, restore on request); differentiated the two so they read as sister initiatives, not copies. Register split: Campaign 1 = rights/dignity/"deserve" voice, uses "the right to know why", does NOT name DRR; Campaign 2 = risk/defensibility/resilience voice, OWNS the DRR term, "quality-assurance framework". Shared DNA kept (JRS, guide, podcast, training, signature). Claims clean (no effectiveness/proven; podcast a mention). Links /guide, /reviewer verified. No long dashes.*
+
+*2026-07-27 alignment to the finalized Evidentiary-Deficit article + Bar pitch: (C1) added the article's careful framing that the right to know why is an EMERGING expectation drawing together existing due-process / procedural-fairness / accountable-governance obligations, NOT a new legal right; (C2) updated the shared thesis line to the canonical article wording ("Every consequential decision is eventually questioned. The only uncertainty is whether the record will still be able to explain and defend it.") and added the article's DRR-as-governance-failure framing. Sister distinction preserved.*
 
 ---
 
@@ -19,6 +21,8 @@ People deserve decisions they can understand.
 People deserve records that honestly explain how those decisions were reached.
 
 People deserve a real opportunity to question decisions that affect their rights, their dignity, and their future.
+
+We do not present this as a new legal right. We are naming an expectation that already runs through due process, procedural fairness, and accountable governance: that a consequential decision should remain explainable to the person it affects, and that the institution behind it should be able to reconstruct and defend how it was reached. Call it the right to know why.
 
 This matters more every year, as organizations lean on AI to draft the documents behind those decisions. A record can look complete and still fail to show, on its own terms, how a conclusion was reached. When a record cannot be independently reconstructed, accountability slips away, for investigators, advocates, courts, and above all the people whose lives are affected.
 
@@ -56,11 +60,11 @@ I greatly admire your organization's commitment to responsible leadership, sound
 
 I am facilitating The Decisions You Can Defend Initiative, an international effort focused on protecting one of an organization's most underrated assets: documentation that still supports a consequential decision long after the decision was made.
 
-Every important decision is eventually questioned. The only variable is whether the record will still explain and defend it.
+Every consequential decision is eventually questioned. The only uncertainty is whether the record will still be able to explain and defend it.
 
 A strong record survives the complaint, the audit, the investigation, the regulatory review, and the courtroom. A weak one becomes the exposure. The difference is rarely the decision itself; it is whether the reasoning behind it can still be reconstructed from the file.
 
-As organizations increasingly use AI to draft reports, investigations, evaluations, and case files, records can read as complete while quietly losing that reasoning. I call this Decision Reconstruction Risk (DRR), the risk that a decision cannot later be independently reconstructed and defended from the documentation itself.
+As organizations increasingly use AI to draft reports, investigations, evaluations, and case files, records can read as complete while quietly losing that reasoning. I call this Decision Reconstruction Risk (DRR), the risk that a decision cannot later be independently reconstructed and defended from the documentation itself. DRR is not simply a documentation problem; it is a governance failure: when the reasoning behind a decision can no longer be reconstructed, accountability shifts from contemporaneous evidence to memory, opinion, or institutional credibility.
 
 To help organizations reduce that risk, I developed the Justification Review Standard (JRS), a practical quality-assurance framework that checks whether documentation actually supports a consequential decision before the record is finalized.
 
