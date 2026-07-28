@@ -116,6 +116,82 @@ def bootstrap_ci(recmap, reps=B, seed=SEED):
     return lo, hi
 
 
+def fleiss_kappa(recmap):
+    """Fleiss' kappa generalized to a varying number of raters per subject
+    (the pooled estimator, as implemented in irrCAC fleiss.kappa.dist)."""
+    num = den = 0
+    tot = {k: 0 for k in CATS}
+    N = 0
+    for labels in recmap.values():
+        ri = len(labels)
+        if ri < 2:
+            continue
+        cnt = collections.Counter(labels)
+        num += sum(cnt[k] * (cnt[k] - 1) for k in CATS)
+        den += ri * (ri - 1)
+        for k in CATS:
+            tot[k] += cnt[k]
+        N += ri
+    pa = num / den
+    pj = {k: tot[k] / N for k in CATS}
+    pe = sum(pj[k] ** 2 for k in CATS)
+    return (pa - pe) / (1 - pe)
+
+
+def krippendorff_alpha(recmap):
+    """Krippendorff's alpha for nominal data, multiple raters, varying counts.
+    Coincidence-matrix method; each within-unit pair weighted 1/(m_u - 1)."""
+    coin = {(c, k): 0.0 for c in CATS for k in CATS}
+    for labels in recmap.values():
+        m = len(labels)
+        if m < 2:
+            continue
+        cnt = collections.Counter(labels)
+        for c in CATS:
+            for k in CATS:
+                if c == k:
+                    val = cnt[c] * (cnt[c] - 1)
+                else:
+                    val = cnt[c] * cnt[k]
+                coin[(c, k)] += val / (m - 1)
+    n_c = {c: sum(coin[(c, k)] for k in CATS) for c in CATS}
+    n = sum(n_c.values())
+    do = sum(coin[(c, k)] for c in CATS for k in CATS if c != k)
+    de = sum(n_c[c] * n_c[k] for c in CATS for k in CATS if c != k) / (n - 1)
+    return 1 - do / de
+
+
+def per_condition_ac1(rows):
+    out = {}
+    for cond in CONDS:
+        cm = collections.defaultdict(list)
+        for r in rows:
+            cm[r['record_id']].append(r[cond])
+        out[cond] = ac1_generic(cm)
+    return out
+
+
+CONDS = ['basis_identification', 'cold_reviewer_clarity', 'accountability_support',
+         'reasoning_traceability', 'temporal_reconstructability']
+COND_CATS = ['pass', 'review', 'gap']
+
+
+def ac1_generic(recmap, cats=COND_CATS):
+    recs = [l for l in recmap.values() if len(l) >= 2]
+    n = len(recs)
+    q = len(cats)
+    pa_i, pik_i = [], []
+    for labels in recs:
+        ri = len(labels)
+        cnt = collections.Counter(labels)
+        pa_i.append(sum(cnt[k] * (cnt[k] - 1) for k in cats) / (ri * (ri - 1)))
+        pik_i.append({k: cnt[k] / ri for k in cats})
+    pa = sum(pa_i) / n
+    pik = {k: sum(t[k] for t in pik_i) / n for k in cats}
+    pe = sum(pik[k] * (1 - pik[k]) for k in cats) / (q - 1)
+    return (pa - pe) / (1 - pe)
+
+
 def report(name, rows):
     recmap = by_record(rows)
     labels = sum(len(v) for v in recmap.values())
@@ -130,6 +206,9 @@ def report(name, rows):
     print(f"    analytic 95% CI (Gwet linearization) [{max(alo,-1):.3f}, {min(ahi,1):.3f}]  (SE={se:.3f})")
     print(f"    bootstrap 95% CI (subject resample)   [{lo:.3f}, {min(hi,1):.3f}]")
     print(f"  floor check (analytic): point>=0.61 -> {est>=0.61};  CI-low>=0.41 -> {alo>=0.41}")
+    print(f"  secondary: Krippendorff's alpha = {krippendorff_alpha(recmap):.3f}   Fleiss' kappa = {fleiss_kappa(recmap):.3f}")
+    pc = per_condition_ac1(rows)
+    print("  per-condition AC1: " + ", ".join(f"{c.split('_')[0]}={v:.2f}" for c, v in pc.items()))
     return est, alo, ahi, lo, hi
 
 

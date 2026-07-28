@@ -45,7 +45,11 @@ A scholarly-editor pass cross-checked the manuscript against the pre-registratio
 - **Pairwise vs unanimous 84 percent (Rung 1).** The plan lists Rung 1 as "pairwise percent agreement," and the text now says "mean pairwise agreement was 84 percent." The Rung 1 cross-model vote data is not in the repo (it is the nightly Supabase run), so confirm 84 is the pairwise mean, not the unanimous rate.
 - **OSF deposit.** `OSF_PreRegistration.md` is not yet publicly deposited (no DOI found). The manuscript says the plan was "fixed in a written analysis plan before the relevant batches were labeled," which is accurate regardless. To use the word "pre-registered" defensibly, deposit the plan at osf.io and add the DOI; otherwise the paper reads as pre-specified rather than publicly pre-registered.
 
-**Also fixed this pass:** ethics statement corrected to acknowledge human raters as trained annotators (not "no human subjects," which a reviewer would challenge); Methods now defines raw agreement, the AC1 estimator, and the CI method; expert panel set as pre-registered primary; reproducibility framed as pairwise. Both `.docx` rebuilt to match.
+**Pre-registration fidelity pass (added):** the plan (§6) promised Krippendorff's alpha, Fleiss' kappa, and per-condition AC1 "alongside AC1 for transparency"; the draft reported none. All are now computed from the real data and reported: experts alpha 0.62 / kappa 0.65 (track AC1 0.74); reviewers alpha 0.30 / kappa 0.28 (fall far below AC1 0.63, the kappa paradox under 69 percent-Gap marginals, which is precisely why AC1 was pre-registered as primary). New Table 3 gives per-condition AC1. This is presented honestly, with the paradox explanation, and it bounds the reviewer-panel claim to the paradox-robust coefficient. Omitting the promised coefficients would have been the diligence red flag; reporting them is the rigorous move.
+
+**Also fixed earlier passes:** ethics statement corrected to acknowledge human raters as trained annotators; Methods defines raw agreement, the AC1 estimator, and the CI method; expert panel set as pre-registered primary; reproducibility framed as pairwise; analytic + bootstrap CIs reconciled and the floor reported as a boundary result. Both `.docx` rebuilt to match (manuscript now carries Tables 1, 2, and 3).
+
+**On completing the pre-registered ~26-record set (the one genuine strengthener):** this requires REAL additional rater labels and cannot be computed or simulated without fabricating data, which is disqualifying. The pipeline is pre-staged so completion is turnkey: append the new label rows to `research/construct_validity_data.csv`, run `python research/compute_ac1_ci.py` (every coefficient, CI, and per-condition value refreshes deterministically), and the manuscript/Word rebuild follows in one pass. Until those labels exist, the interim paper is complete and honest as written.
 
 ## Pre-send checklist (author actions)
 
@@ -53,7 +57,7 @@ A scholarly-editor pass cross-checked the manuscript against the pre-registratio
 - [x] BLOCKER 2: interim path chosen and labeled in the manuscript (10 records vs pre-registered ~26).
 - [x] Analytic AC1 CIs computed (Gwet linearization) and reconciled with the bootstrap; manuscript corrected to the honest boundary result.
 - [ ] Deposit the pre-registration at osf.io using the ready-to-paste payload in `OSF_Deposit_ReadyToPaste.md`, then send me the DOI for the one-line Methods insert. (Optional: git already timestamps the plan to 2026-07-06.)
-- [ ] STRATEGIC DECISION (recommended before submission): finish labeling to the pre-registered ~26 records so the reliability floor is met decisively rather than on the 0.41 boundary. Say the word and I refresh every number.
+- [ ] STRENGTHENER (data-collection, not a computation): label the remaining records to the pre-registered ~26 so the floor is met decisively rather than on the 0.41 boundary. Turnkey: append rows to `construct_validity_data.csv` -> run `compute_ac1_ci.py` -> I rebuild the paper. Cannot be fabricated.
 - [ ] Confirm 84% (Rung 1) is the pairwise mean, not the unanimous rate.
 - [ ] Get Ubayet's one-line byline confirmation (ready-to-send message is in `MASTER_TRACKER.md` Section 6). Not a blocker, but close it for the record.
 - [ ] Fill `SuggestedReviewers.md` with real, verifiable names and institutional emails (never invent them).
