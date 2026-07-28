@@ -15,6 +15,8 @@
 | 5 | Declaration of interest | `DeclarationOfInterest.md` | Upload or paste in declaration field |
 | 6 | Suggested/opposed reviewers | `SuggestedReviewers.md` (fill in real names first) | Enter in the reviewer-suggestion step |
 | 7 | Data availability + ethics + funding | on the title page | Declaration fields |
+| 8 | OSF deposit payload (optional enhancement) | `OSF_Deposit_ReadyToPaste.md` | not uploaded; used to register the plan and get a DOI |
+| 9 | Reproducibility script (available on request) | `research/compute_ac1_ci.py` | supplementary / on request |
 
 ## Confirm on the guide page before you submit (I could not auto-fetch it; ScienceDirect blocks bots)
 
@@ -35,7 +37,7 @@ A scholarly-editor pass cross-checked the manuscript against the pre-registratio
 - Raw agreement 88 percent / 83 percent = the mean per-record proportion of raters in the modal determination (experts 88.3, reviewers 82.6). Match; the definition is now stated in Methods.
 - 108 labels = 36 expert + 72 reviewer; 10 records; distribution 69 / 18 / 13 (Gap / Needs work / Ready). Match.
 
-**BLOCKER 1 (AC1 confidence intervals): RESOLVED.** Computed directly from the label data with a committed, deterministic script (`research/compute_ac1_ci.py`, 20,000 subject-level bootstrap replicates, fixed seed): experts 0.74, 95 percent CI 0.43 to 1.00; trained reviewers 0.63, 95 percent CI 0.31 to 0.90. Inserted into Table 2, Section 4.2, Section 7, and the abstract. Finding: the EXPERT panel (the pre-registered primary) meets the full floor, point >= 0.61 and CI lower bound (0.43) >= 0.41. The reviewer panel (secondary) clears the point threshold but its CI lower bound (0.31) is below 0.41, stated honestly. Recommended confirmation before final submission: rerun with an analytic AC1 variance (R `irrCAC` or Gwet's AgreeStat); it should return comparable bounds.
+**BLOCKER 1 (AC1 confidence intervals): RESOLVED, and the corroboration changed the claim.** Computed directly from the label data with a committed, deterministic script (`research/compute_ac1_ci.py`) using BOTH Gwet's linearization variance (the estimator the pre-registration implies, as in R `irrCAC`) and a 20,000-replicate subject-level bootstrap. Results: experts 0.74, 95 percent CI 0.40 to 1.00 (analytic) / 0.43 to 1.00 (bootstrap); trained reviewers 0.63, 95 percent CI 0.26 to 1.00 (analytic) / 0.31 to 0.90 (bootstrap). **KEY FINDING: the expert lower bound straddles the pre-registered 0.41 mark, 0.40 analytic vs 0.43 bootstrap, so the reliability floor is NOT robustly met on the interim 10-record set.** The prior draft's "expert meets the floor" was therefore an overclaim under the standard analytic estimator and has been corrected throughout: the manuscript now states the expert point estimate (0.74) clears the 0.61 point threshold decisively while the CI-lower-bound half of the rule sits on the 0.41 boundary and is resolved only by completing the pooled ~26-record set. Point estimates and raw agreement remain exactly as reported (all reproduce from the data). This is the honest, diligence-proof position: a buyer's auditor recomputing 0.40 will find the paper already says so.
 
 **BLOCKER 2 (10 vs ~26 records): DECISION TAKEN = submit as an explicit interim analysis.** The 10-record set is what exists; the manuscript states plainly that it is interim against the pre-registered pooled target of ~26 records and that completing the set will narrow the intervals. This is honest and publishable now. If you prefer the stronger confirmatory estimate, finish labeling to ~26 first; say the word and I will refresh the numbers.
 
@@ -49,8 +51,9 @@ A scholarly-editor pass cross-checked the manuscript against the pre-registratio
 
 - [x] BLOCKER 1: AC1 95% CIs computed (`research/compute_ac1_ci.py`) and inserted (Table 2, Sections 4.2, 7, abstract).
 - [x] BLOCKER 2: interim path chosen and labeled in the manuscript (10 records vs pre-registered ~26).
-- [ ] Optional confirmation: rerun the AC1 CIs with analytic variance (R `irrCAC` / AgreeStat) to corroborate the bootstrap.
-- [ ] Deposit the pre-registration at osf.io and add the DOI (or the paper reads as "pre-specified").
+- [x] Analytic AC1 CIs computed (Gwet linearization) and reconciled with the bootstrap; manuscript corrected to the honest boundary result.
+- [ ] Deposit the pre-registration at osf.io using the ready-to-paste payload in `OSF_Deposit_ReadyToPaste.md`, then send me the DOI for the one-line Methods insert. (Optional: git already timestamps the plan to 2026-07-06.)
+- [ ] STRATEGIC DECISION (recommended before submission): finish labeling to the pre-registered ~26 records so the reliability floor is met decisively rather than on the 0.41 boundary. Say the word and I refresh every number.
 - [ ] Confirm 84% (Rung 1) is the pairwise mean, not the unanimous rate.
 - [ ] Get Ubayet's one-line byline confirmation (ready-to-send message is in `MASTER_TRACKER.md` Section 6). Not a blocker, but close it for the record.
 - [ ] Fill `SuggestedReviewers.md` with real, verifiable names and institutional emails (never invent them).
