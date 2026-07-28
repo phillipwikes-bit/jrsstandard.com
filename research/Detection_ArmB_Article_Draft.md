@@ -76,7 +76,7 @@ JRS is deliberately independent of any vendor, model, or drafting workflow. It i
 
 ## 4. Methods
 
-The validation program is organized as an evidence ladder. This paper centers on the detection rung (does JRS detect DRR) and the randomized comparison (does JRS add value), and it references the reproducibility and reliability rungs as supporting evidence.
+The validation program is organized as an evidence ladder. This paper reports the reproducibility and reliability rungs as complete supporting evidence and centers on the detection rung (does JRS detect DRR) and the randomized comparison (does JRS add value). Two further lines of the program are pursued in companion work and are not part of this paper: criterion validity, which tests whether JRS reads predict how real records hold up when they are later challenged, appealed, or litigated, drawn from real-case pilots in public records and employment; and a governance and legal analysis of the documentation-accountability problem. Construct validity of the five conditions is a separate analysis, deferred until the record set can support it. Keeping these as distinct works lets each paper stay focused and lets each claim be earned on its own evidence rather than asserted alongside stronger ones.
 
 ### 4.1 Design overview
 
