@@ -24,6 +24,6 @@ Ubayet Hossain: Methodology, Formal analysis, Validation, Writing - review and e
 
 **Declaration of competing interest.** P.W. is the creator of the Justification Review Standard and has a commercial interest in its adoption. U.H. contributed the reliability methodology and served as an unpaid methodological reviewer. The study design, pre-registered thresholds, and analysis procedures were fixed in advance to constrain this interest, and all reported figures are computed from the study database.
 
-**Data availability.** Constructed study records and the aggregate reproducibility and reliability data are available from the corresponding author on reasonable request.
+**Data availability.** Constructed study records, the de-identified rater label data, and the deterministic analysis script that computes the agreement coefficients and their confidence intervals are available from the corresponding author on reasonable request.
 
 **Ethics.** The study used only constructed records; no real records or personal data about any individual are analyzed or reported. The human raters took part as trained annotators applying the review instrument rather than as research subjects, did so voluntarily, and no identifying information about them is reported. On this basis the work did not require formal human-subjects ethics review.

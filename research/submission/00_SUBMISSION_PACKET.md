@@ -26,25 +26,32 @@ Guide: https://www.sciencedirect.com/journal/journal-of-responsible-technology/p
 - **Abstract format.** The abstract here is a single unstructured paragraph (Elsevier's usual preference for this journal); confirm no structured-heading requirement.
 - **Word limit.** Confirm the article-type word limit; this manuscript is short (a brief/results report), which is generally within limits.
 
-## Publication-readiness review (2026-07-27): 2 blockers need your data/decision
+## Publication-readiness review (2026-07-27): both blockers RESOLVED from ground-truth data; one author-only item remains
 
-The manuscript is structurally complete and internally clean, but a scholarly-editor pass against the pre-registration (`JRS_PreRegistered_Analysis_Plan.md`, `OSF_PreRegistration.md`) found two items that only you can close, plus fixes already applied.
+A scholarly-editor pass cross-checked the manuscript against the pre-registration (`JRS_PreRegistered_Analysis_Plan.md`, `OSF_PreRegistration.md`) and against the raw label data (`research/construct_validity_data.csv`, 108 labels). Result: the reported figures are correct and reproducible, and the two blockers from the prior pass are now closed.
 
-**BLOCKER 1: report the 95 percent confidence intervals for AC1.** The pre-registration mandates that all coefficients carry 95 percent CIs, and defines the reliability floor as AC1 >= 0.61 with the CI lower bound >= 0.41. The draft reports point estimates only (0.74, 0.63). Until the CIs are computed on the actual label data and inserted, the paper cannot claim the pre-registered floor is met, and a reviewer will ask for them immediately (the primary AC1 citation, Gwet 2008, is literally about the variance). This cannot be fabricated. Compute the AC1 variance and 95 percent CI (any AC1 package: the R `irrCAC` package, or Gwet's own AgreeStat) on the expert and reviewer label sets, then insert the intervals in Section 4.2, Table 2, and Section 7. I applied honest interim language in the meantime so nothing overclaims.
+**Data-to-paper audit (all reproduced exactly):**
+- Expert AC1 = 0.739 -> 0.74; trained-reviewer AC1 = 0.634 -> 0.63 (Gwet's multi-rater estimator on the `determination` column). Match.
+- Raw agreement 88 percent / 83 percent = the mean per-record proportion of raters in the modal determination (experts 88.3, reviewers 82.6). Match; the definition is now stated in Methods.
+- 108 labels = 36 expert + 72 reviewer; 10 records; distribution 69 / 18 / 13 (Gap / Needs work / Ready). Match.
 
-**BLOCKER 2: reconcile 10 records vs the pre-registered ~26.** The plan computes the confirmatory reliability estimate on the expert panel pooled across batches 1 through 4 (about 26 records). The current data is 10 records. Decision: (a) submit now as an explicitly interim analysis (already labeled as such in the draft), or (b) finish labeling to ~26 and submit the confirmatory estimate. Option (b) is stronger for the sale but slower; option (a) is honest and publishable but invites a "complete your pre-registered set" review comment.
+**BLOCKER 1 (AC1 confidence intervals): RESOLVED.** Computed directly from the label data with a committed, deterministic script (`research/compute_ac1_ci.py`, 20,000 subject-level bootstrap replicates, fixed seed): experts 0.74, 95 percent CI 0.43 to 1.00; trained reviewers 0.63, 95 percent CI 0.31 to 0.90. Inserted into Table 2, Section 4.2, Section 7, and the abstract. Finding: the EXPERT panel (the pre-registered primary) meets the full floor, point >= 0.61 and CI lower bound (0.43) >= 0.41. The reviewer panel (secondary) clears the point threshold but its CI lower bound (0.31) is below 0.41, stated honestly. Recommended confirmation before final submission: rerun with an analytic AC1 variance (R `irrCAC` or Gwet's AgreeStat); it should return comparable bounds.
+
+**BLOCKER 2 (10 vs ~26 records): DECISION TAKEN = submit as an explicit interim analysis.** The 10-record set is what exists; the manuscript states plainly that it is interim against the pre-registered pooled target of ~26 records and that completing the set will narrow the intervals. This is honest and publishable now. If you prefer the stronger confirmatory estimate, finish labeling to ~26 first; say the word and I will refresh the numbers.
 
 **Confirm before sending (smaller):**
-- **Pairwise vs unanimous 84 percent.** The plan lists Rung 1 as "pairwise percent agreement." I set the text to "mean pairwise agreement was 84 percent." Confirm that 84 is the pairwise mean (not the unanimous-agreement rate); correct if wrong.
-- **Pre-registration deposit.** `OSF_PreRegistration.md` is a template. Confirm it is publicly deposited at osf.io with a timestamp/DOI; if yes, add the link to the manuscript so "pre-registered" is verifiable. If not deposited, deposit it now or soften "pre-registered" to "pre-specified."
+- **Pairwise vs unanimous 84 percent (Rung 1).** The plan lists Rung 1 as "pairwise percent agreement," and the text now says "mean pairwise agreement was 84 percent." The Rung 1 cross-model vote data is not in the repo (it is the nightly Supabase run), so confirm 84 is the pairwise mean, not the unanimous rate.
+- **OSF deposit.** `OSF_PreRegistration.md` is not yet publicly deposited (no DOI found). The manuscript says the plan was "fixed in a written analysis plan before the relevant batches were labeled," which is accurate regardless. To use the word "pre-registered" defensibly, deposit the plan at osf.io and add the DOI; otherwise the paper reads as pre-specified rather than publicly pre-registered.
 
-**Already fixed this pass:** expert AC1 set as the pre-registered primary (reviewer 0.63 as secondary); reproducibility reframed to pairwise; interim-analysis and CI-requirement language added without fabricating numbers; ethics statement corrected to acknowledge human raters (trained annotators, not subjects); added a Methods sentence grounding the pre-registration; References already present. Both `.docx` rebuilt to match.
+**Also fixed this pass:** ethics statement corrected to acknowledge human raters as trained annotators (not "no human subjects," which a reviewer would challenge); Methods now defines raw agreement, the AC1 estimator, and the CI method; expert panel set as pre-registered primary; reproducibility framed as pairwise. Both `.docx` rebuilt to match.
 
 ## Pre-send checklist (author actions)
 
-- [ ] BLOCKER 1: compute and insert AC1 95% confidence intervals (Section 4.2, Table 2, Section 7).
-- [ ] BLOCKER 2: decide interim (10 records) vs finish the pre-registered pooled set (~26).
-- [ ] Confirm 84% is pairwise-mean; confirm/att­ach the OSF pre-registration link.
+- [x] BLOCKER 1: AC1 95% CIs computed (`research/compute_ac1_ci.py`) and inserted (Table 2, Sections 4.2, 7, abstract).
+- [x] BLOCKER 2: interim path chosen and labeled in the manuscript (10 records vs pre-registered ~26).
+- [ ] Optional confirmation: rerun the AC1 CIs with analytic variance (R `irrCAC` / AgreeStat) to corroborate the bootstrap.
+- [ ] Deposit the pre-registration at osf.io and add the DOI (or the paper reads as "pre-specified").
+- [ ] Confirm 84% (Rung 1) is the pairwise mean, not the unanimous rate.
 - [ ] Get Ubayet's one-line byline confirmation (ready-to-send message is in `MASTER_TRACKER.md` Section 6). Not a blocker, but close it for the record.
 - [ ] Fill `SuggestedReviewers.md` with real, verifiable names and institutional emails (never invent them).
 - [x] Build `.docx` for the manuscript and title page. DONE: `Article1_Manuscript_ANONYMIZED.docx` (US Letter, Times New Roman 12, Tables 1 and 2, References) and `Article1_TitlePage.docx` (authors, CRediT, all declarations). Both validated well-formed; figures verified; 0 long dashes.
