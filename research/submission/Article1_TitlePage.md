@@ -14,6 +14,10 @@ Ubayet Hossain, FRM²
 
 **Author contributions.** P.W. conceived the Justification Review Standard, designed the five-condition review method and the staged evidence development program, constructed the study records, and ran the reproducibility and reliability studies. U.H. designed the reference-panel and chance-corrected reliability framework, including the joint use of Gwet's AC1, Krippendorff's alpha, and Fleiss' kappa, the treatment of the kappa paradox, and the pre-registered agreement floors, and reviewed the analysis and its interpretation. Both authors approved the final manuscript.
 
+**CRediT author statement.**
+Phillip Wikes: Conceptualization, Methodology, Investigation, Data curation, Formal analysis, Writing - original draft, Writing - review and editing.
+Ubayet Hossain: Methodology, Formal analysis, Validation, Writing - review and editing.
+
 **Acknowledgments.** The proportionality principle referenced in the standard was surfaced by pilot reviewer Saurabh Nanda, General Manager and APAC Business Leader (Align Technology), and is credited with permission. Statistical analyses were completed before interpretation of study findings.
 
 **Funding.** This research received no specific grant from any funding agency in the public, commercial, or not-for-profit sectors.
@@ -22,4 +26,4 @@ Ubayet Hossain, FRM²
 
 **Data availability.** Constructed study records and the aggregate reproducibility and reliability data are available from the corresponding author on reasonable request.
 
-**Ethics.** The study used only constructed records. No real records, human subjects, or personal data were involved at this stage; formal ethics review was therefore not required.
+**Ethics.** The study used only constructed records; no real records or personal data about any individual are analyzed or reported. The human raters took part as trained annotators applying the review instrument rather than as research subjects, did so voluntarily, and no identifying information about them is reported. On this basis the work did not require formal human-subjects ethics review.

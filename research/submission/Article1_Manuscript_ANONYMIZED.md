@@ -4,7 +4,7 @@
 
 ## Abstract
 
-Consequential administrative decisions are increasingly documented with AI-assisted drafting, which can make a record fluent without ensuring that the basis for its conclusion is actually present. The Justification Review Standard (JRS) is a record-level review method that asks a single question of a document: can a later, independent reviewer reconstruct the documented basis for the decision from the record alone? A record that fails this test carries what we term Decision Reconstruction Risk (DRR). This paper reports the first two stages of a pre-registered evidence program for JRS. Reproducibility was assessed by having three AI models from different vendors apply JRS to the same constructed records; the models returned the same determination on 84 percent of 15 records. Reliability was assessed with independent panels of expert and trained reviewers, using Gwet's AC1 as the primary chance-corrected coefficient; agreement reached AC1 = 0.74 among experts and 0.63 among trained reviewers across 10 records, both in the substantial range and both meeting a pre-registered floor of 0.61. A preliminary accuracy stage is under way against an independently verified answer key. We interpret these results as evidence that JRS is applied consistently rather than idiosyncratically. They do not, and are not offered to, establish the method's accuracy, practical value, or real-world effectiveness, which are the subject of later stages.
+Consequential administrative decisions are increasingly documented with AI-assisted drafting, which can make a record fluent without ensuring that the basis for its conclusion is actually present. The Justification Review Standard (JRS) is a record-level review method that asks a single question of a document: can a later, independent reviewer reconstruct the documented basis for the decision from the record alone? A record that fails this test carries what we term Decision Reconstruction Risk (DRR). This paper reports the first two stages of a pre-registered evidence program for JRS. Reproducibility was assessed by having three AI models from different vendors apply JRS to the same constructed records; mean pairwise agreement on the determination was 84 percent across 15 records. Reliability was assessed with independent panels of expert and trained reviewers, using Gwet's AC1 as the primary chance-corrected coefficient; agreement reached AC1 = 0.74 among experts and 0.63 among trained reviewers across 10 records, both in the substantial range and both meeting a pre-registered floor of 0.61. A preliminary accuracy stage is under way against an independently verified answer key. We interpret these results as evidence that JRS is applied consistently rather than idiosyncratically. They do not, and are not offered to, establish the method's accuracy, practical value, or real-world effectiveness, which are the subject of later stages.
 
 **Keywords:** documentation quality; inter-rater reliability; Gwet's AC1; AI-assisted decision-making; accountability; responsible technology
 
@@ -35,13 +35,15 @@ This paper reports Rung 1 and Rung 2a in full, presents Rung 2b as preliminary, 
 
 ## 3. Methods
 
+The hypotheses, measures, rater targets, statistics, and decision thresholds reported below were fixed in a written analysis plan before the relevant record batches were labeled, so the results are confirmatory rather than post hoc.
+
 ### 3.1 Reproducibility (Rung 1)
 
 Each constructed record was evaluated by three AI models, one from each of three vendors (Anthropic, OpenAI, and Google), with no shared model lineage. The measure of interest was simple: how often did the three models return the same JRS determination on the same record. Cross-vendor models were chosen deliberately over three instances of a single provider, because independence across lineages is a stronger test of whether the read is a property of the method rather than of one model family. The comparison runs as an automated nightly process. Agreement of this kind speaks to consistency of application; it is not a measure of correctness, and we do not treat it as one.
 
 ### 3.2 Reliability (Rung 2a)
 
-Independent raters applied the five JRS conditions to a shared set of records and recorded a single determination, Ready, Needs work, or Gap, for each record. Raters worked without conferring. Those whose reviewer codes begin with the letter E were designated experts on the basis of relevant professional standing; the remainder were trained reviewers who had completed the standard's structured onboarding. Agreement was assessed with Gwet's AC1 as the primary chance-corrected coefficient. AC1 was chosen for its robustness to the well-documented paradox in which high raw agreement collapses to a low kappa under skewed category marginals, a real hazard here given that constructed records were weighted toward reconstructability problems. Raw percent agreement is reported alongside the coefficient.
+Independent raters applied the five JRS conditions to a shared set of records and recorded a single determination, Ready, Needs work, or Gap, for each record. Raters worked without conferring. Those whose reviewer codes begin with the letter E were designated experts on the basis of relevant professional standing; the remainder were trained reviewers who had completed the standard's structured onboarding. Agreement was assessed with Gwet's AC1 (Gwet, 2008) as the primary chance-corrected coefficient, with Cohen's and Fleiss' kappa (Cohen, 1960; Fleiss, 1971) and Krippendorff's alpha (Krippendorff, 2004) available as secondary references. AC1 was chosen for its robustness to the well-documented paradox in which high raw agreement collapses to a low kappa under skewed category marginals (Feinstein and Cicchetti, 1990; Byrt et al., 1993), a real hazard here given that constructed records were weighted toward reconstructability problems. Raw percent agreement is reported alongside the coefficient.
 
 ### 3.3 Accuracy (Rung 2b)
 
@@ -55,7 +57,7 @@ Constructed records were written to resemble realistic administrative documentat
 
 ### 4.1 Reproducibility
 
-Across 15 constructed records, the three cross-vendor models agreed on the JRS determination 84 percent of the time. The figure is drawn from the automated run of 2026-07-06; as the record set grew from 3 to 15, agreement moved within a band of 78 to 87 percent. The result indicates that independent models apply the read consistently. It does not indicate that the read is correct, and the design does not permit that inference.
+Across 15 constructed records, mean pairwise agreement among the three cross-vendor models on the JRS determination was 84 percent. The figure is drawn from the automated run of 2026-07-06; as the record set grew from 3 to 15, agreement moved within a band of 78 to 87 percent. The result indicates that independent models apply the read consistently. It does not indicate that the read is correct, and the design does not permit that inference.
 
 ### 4.2 Reliability
 
@@ -68,7 +70,7 @@ Results for the two rater groups are shown in Table 2.
 | Experts | 10 | 3.6 | 88 percent | 0.74 |
 | Trained reviewers | 10 | 7.2 | 83 percent | 0.63 |
 
-Both coefficients fall in the substantial range, 0.61 to 0.80 on the Landis and Koch scale that motivates the pre-registered floor of 0.61. The trained-reviewer coefficient clears that floor and the expert coefficient sits well above it. Pooling all determinations made in JRS mode (108 labels), the distribution was 69 percent Gap, 18 percent Needs work, and 13 percent Ready, consistent with a record set built to foreground reconstructability problems.
+The expert panel provides the pre-registered primary reliability statistic. At 0.74 it falls in the substantial range, 0.61 to 0.80 on the Landis and Koch (1977) scale, and clears the pre-registered floor of 0.61; the trained-reviewer coefficient, 0.63, is reported as a secondary panel and also clears it. The analysis plan specifies that each coefficient be accompanied by its 95 percent confidence interval and treats the floor as met only if the lower bound reaches 0.41. The coefficients here are computed on the 10 records labeled to date, against a pre-registered pooled target of approximately 26 records; the present values are therefore interim and their intervals correspondingly wide, and the confidence-interval component of the decision rule is evaluated once labeling of the pooled set is complete. Pooling all determinations made in JRS mode (108 labels), the distribution was 69 percent Gap, 18 percent Needs work, and 13 percent Ready, consistent with a record set built to foreground reconstructability problems.
 
 ### 4.3 Accuracy (preliminary)
 
@@ -82,11 +84,11 @@ Reliability is a precondition, not a conclusion. A review method cannot be sensi
 
 ## 6. Limitations
 
-The reliability estimate rests on 10 records; a larger set would narrow it. Accuracy is preliminary, and no confirmed accuracy claim is made. The reproducibility figure is raw cross-vendor agreement on 15 records, without chance correction on the model votes, which remains to be added. Whether the five conditions are empirically distinct dimensions is a separate construct-validity question, not settled here. The records are constructed, so external validity on real records is a later stage. Finally, nothing in these results shows that JRS improves organizational outcomes, reduces litigation exposure, or raises decision quality; those claims would require their own evaluation and are not advanced.
+The reliability estimate rests on the 10 records labeled to date, short of the pre-registered pooled target of approximately 26 records; the confidence intervals are correspondingly wide and the pooled confirmatory estimate is reported once labeling is complete. Accuracy is preliminary, and no confirmed accuracy claim is made. The reproducibility figure is raw cross-vendor agreement on 15 records, without chance correction on the model votes, which remains to be added. Whether the five conditions are empirically distinct dimensions is a separate construct-validity question, not settled here. The records are constructed, so external validity on real records is a later stage. Finally, nothing in these results shows that JRS improves organizational outcomes, reduces litigation exposure, or raises decision quality; those claims would require their own evaluation and are not advanced.
 
 ## 7. Pre-registered thresholds
 
-Reliability was treated as supported only if Gwet's AC1 met 0.61 with an adequate lower bound. The trained-reviewer result meets that criterion and the expert result exceeds it. Accuracy and value thresholds are likewise pre-registered and are to be evaluated only after data lock. A failed threshold is reported as a null or weak result and is not reinterpreted after the fact.
+The pre-registered rule treats reliability as supported only if Gwet's AC1 reaches 0.61 with the lower bound of its 95 percent confidence interval at 0.41 or above, computed on the expert panel over the pooled record set. The expert point estimate (0.74) and the trained-reviewer point estimate (0.63) both reach the 0.61 threshold; the confidence-interval component of the rule is evaluated once labeling of the pooled set is complete. Accuracy and value thresholds are likewise pre-registered and are evaluated only after data lock. A failed threshold is reported as a null or weak result and is not reinterpreted after the fact.
 
 ## 8. Next steps
 
@@ -95,3 +97,21 @@ The program continues in order. The immediate next step is to complete the accur
 ## 9. Conclusion
 
 These findings support the continued evaluation of JRS through staged validation. They are best read as evidence of reproducible application and substantial inter-rater reliability, and not as a demonstration of accuracy or operational effectiveness, which the program has yet to test.
+
+## References
+
+Byrt, T., Bishop, J., Carlin, J.B., 1993. Bias, prevalence and kappa. Journal of Clinical Epidemiology 46 (5), 423-429.
+
+Cohen, J., 1960. A coefficient of agreement for nominal scales. Educational and Psychological Measurement 20 (1), 37-46.
+
+Feinstein, A.R., Cicchetti, D.V., 1990. High agreement but low kappa: I. The problems of two paradoxes. Journal of Clinical Epidemiology 43 (6), 543-549.
+
+Fleiss, J.L., 1971. Measuring nominal scale agreement among many raters. Psychological Bulletin 76 (5), 378-382.
+
+Gwet, K.L., 2008. Computing inter-rater reliability and its variance in the presence of high agreement. British Journal of Mathematical and Statistical Psychology 61 (1), 29-48.
+
+Gwet, K.L., 2014. Handbook of Inter-Rater Reliability, fourth ed. Advanced Analytics, Gaithersburg, MD.
+
+Krippendorff, K., 2004. Content Analysis: An Introduction to Its Methodology, second ed. Sage, Thousand Oaks, CA.
+
+Landis, J.R., Koch, G.G., 1977. The measurement of observer agreement for categorical data. Biometrics 33 (1), 159-174.
