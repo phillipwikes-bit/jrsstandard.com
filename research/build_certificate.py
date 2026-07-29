@@ -148,6 +148,14 @@ REVIEWERS = [
             "responsible-AI architecture and EU AI Act governance in enterprise environments"),
         "out": "/home/user/jrsstandard.com/research/JRS_Certificate_Andres_Lage_Freire.pdf",
     },
+    {
+        "name": "Dr. Gabriela Bar",
+        "date": "July 29, 2026",
+        "body": standard_body(
+            "Her", "legal and AI-governance",
+            "her practice as an attorney and doctor of laws advising on AI regulation and EU AI governance"),
+        "out": "/home/user/jrsstandard.com/research/JRS_Certificate_Gabriela_Bar.pdf",
+    },
 ]
 
 if __name__ == "__main__":
