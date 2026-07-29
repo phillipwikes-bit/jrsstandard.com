@@ -138,6 +138,14 @@ REVIEWERS = [
             "over fifteen years building governance and risk frameworks across regulated sectors"),
         "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Certificate_Adesh_Sharma.pdf",
     },
+    {
+        "name": "Donavine Smith",
+        "date": "July 28, 2026",
+        "body": neutral_body(
+            "executive strategy and AI-governance",
+            "senior strategy and transformation leadership and frontier AI governance"),
+        "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Certificate_Donavine_Smith.pdf",
+    },
 ]
 
 if __name__ == "__main__":
