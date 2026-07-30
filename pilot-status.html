@@ -123,9 +123,10 @@ tr.today td{background:rgba(93,191,130,.07)}
     <div class="legend" id="dllegend"></div>
   </div>
   <div class="chart">
-    <h2>Downloads by country</h2>
+    <h2>All downloads by country</h2>
     <div id="geochart">Loading&hellip;</div>
-    <div class="note" style="margin-top:8px">Country of download, recorded at the redirect endpoint (geo tracking live since Jul 17, 2026; earlier downloads are counted above without location). Aggregate counts only.</div>
+    <div id="geoasset" style="margin-top:12px"></div>
+    <div class="note" style="margin-top:8px">Every tracked download, by country: Investigator Field Guide editions plus the JRS Standard PDF and the Rapid Review Card. Country recorded at the redirect endpoint (geo tracking live since Jul 17, 2026; earlier guide downloads are counted without location). Aggregate counts only.</div>
   </div>
 </div></main>
 <footer class="ft"><div class="wrap" style="padding:0">&#169; 2026 Phillip Wikes &middot; JRS&#8482; &middot; <a href="privacy.html" style="color:inherit">Privacy</a> &middot; confidential &middot; not indexed</div></footer>
@@ -336,6 +337,37 @@ function loadGeo(){
           +'<span style="font-size:12px;color:var(--text)">'+x.downloads+'</span></div>';
       });
       el.innerHTML=html;
+      var ae=document.getElementById('geoasset');
+      if(ae){
+        var assets=(d.by_asset)||[];
+        if(!assets.length){ ae.innerHTML=''; }
+        else{
+          var amax=1; assets.forEach(function(x){ if(x.downloads>amax) amax=x.downloads; });
+          var ah='<div style="font-size:11px;font-family:\'JetBrains Mono\',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:8px">By asset</div>';
+          assets.forEach(function(x){
+            var w=Math.max(4, Math.round((x.downloads/amax)*100));
+            ah+='<div style="display:flex;align-items:center;gap:10px;margin:4px 0">'
+              +'<span style="font-size:11px;color:var(--muted);width:150px;flex:0 0 auto">'+esc(x.asset)+'</span>'
+              +'<span style="background:var(--accent-dim);height:12px;width:'+w+'%;max-width:55%;display:inline-block"></span>'
+              +'<span style="font-size:12px;color:var(--text)">'+x.downloads+'</span></div>';
+          });
+          ae.innerHTML=ah;
+        }
+        var srcs=(d.by_source)||[];
+        if(srcs.length){
+          var smax=1; srcs.forEach(function(x){ if(x.downloads>smax) smax=x.downloads; });
+          var sh='<div style="font-size:11px;font-family:\'JetBrains Mono\',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-dim);margin:14px 0 8px">By source page</div>';
+          srcs.forEach(function(x){
+            var w=Math.max(4, Math.round((x.downloads/smax)*100));
+            var lbl = x.source==='unknown' ? 'Unknown' : esc(x.source);
+            sh+='<div style="display:flex;align-items:center;gap:10px;margin:4px 0">'
+              +'<span style="font-size:11px;color:var(--muted);width:150px;flex:0 0 auto">'+lbl+'</span>'
+              +'<span style="background:var(--muted-soft);height:12px;width:'+w+'%;max-width:55%;display:inline-block"></span>'
+              +'<span style="font-size:12px;color:var(--text)">'+x.downloads+'</span></div>';
+          });
+          ae.innerHTML += sh;
+        }
+      }
     })
     .catch(function(){ el.innerHTML='<div style="color:var(--muted-soft);font-size:12px">Could not load countries. Tap Refresh.</div>'; });
 }
