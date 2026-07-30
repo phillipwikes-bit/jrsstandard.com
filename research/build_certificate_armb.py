@@ -146,6 +146,14 @@ REVIEWERS = [
             "senior strategy and transformation leadership and frontier AI governance"),
         "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Certificate_Donavine_Smith.pdf",
     },
+    {
+        "name": "Jean-Luc Adade",
+        "date": "July 30, 2026",
+        "body": neutral_body(
+            "IT-leadership and governance",
+            "over a decade of multi-country IT operations, IT governance, and digital transformation across Africa"),
+        "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Certificate_Jean-Luc_Adade.pdf",
+    },
 ]
 
 if __name__ == "__main__":
