@@ -44,7 +44,7 @@ export default async function handler(){
   try {
     const r = await fetch(SB+'/rest/v1/interaction_events?source=in.(guide-dl,pdf-dl,kit-dl)&select=source,payload,created_at&limit=20000',
       { headers:{'apikey':SERVICE,'Authorization':'Bearer '+SERVICE} });
-    if (!r.ok) return json({ total:0, countries:0, by_country:[], by_asset:[], by_source:[], by_day:[], assets:{ total:0, countries:0, by_country:[], by_asset:[] } });
+    if (!r.ok) return json({ total:0, countries:0, by_country:[], by_asset:[], by_source:[], by_day:[], assets:{ total:0, countries:0, by_country:[], by_asset:[] }, assets_detail:[] });
     const allRows = await r.json();
     // Drop internal test/deploy download rows so every total is real traffic.
     const clean = allRows.filter(row => !isTestSrc(row.payload && row.payload.src));
@@ -86,13 +86,38 @@ export default async function handler(){
     const a_by_asset = Object.entries(aA).map(([asset,downloads])=>({asset,downloads})).sort((a,b)=>b.downloads-a.downloads);
     const a_countries = a_by_country.filter(x=>x.country!=='unknown').length;
 
+    // ---- Per-item detail: every asset on its own, with its own country split ----
+    // Nothing shared into a common total. Guides listed first, then the rest.
+    const ORDER = ['Field Guide: EEO','Field Guide: Fair Housing','Field Guide: International','JRS Standard (PDF)','Rapid Review Card','JRS Reviewer Reference','Field Guide (combined)'];
+    const perItem = {};
+    for (const row of clean){
+      const a = assetOf(row);
+      if (a === 'Training kit') continue; // retired, not shown
+      const label = a === 'Reviewer Reference' ? 'JRS Reviewer Reference' : a;
+      if (!perItem[label]) perItem[label] = { asset: label, group: (row.source === 'guide-dl' ? 'guide' : 'asset'), total: 0, byC: {} };
+      const c = (row.payload && row.payload.country) || 'unknown';
+      perItem[label].total += 1;
+      perItem[label].byC[c] = (perItem[label].byC[c] || 0) + 1;
+    }
+    const assets_detail = Object.values(perItem).map(it => ({
+      asset: it.asset,
+      group: it.group,
+      total: it.total,
+      countries: Object.keys(it.byC).filter(c => c !== 'unknown').length,
+      by_country: Object.entries(it.byC).map(([country,downloads])=>({country,downloads})).sort((a,b)=>b.downloads-a.downloads)
+    })).sort((a,b)=>{
+      const ia = ORDER.indexOf(a.asset), ib = ORDER.indexOf(b.asset);
+      return (ia<0?99:ia) - (ib<0?99:ib);
+    });
+
     return json({
       total: guideRows.length, countries: countries,
       by_country: by_country, by_asset: by_asset, by_source: by_source, by_day: by_day,
-      assets: { total: assetRows.length, countries: a_countries, by_country: a_by_country, by_asset: a_by_asset }
+      assets: { total: assetRows.length, countries: a_countries, by_country: a_by_country, by_asset: a_by_asset },
+      assets_detail: assets_detail
     });
   } catch(e){
-    return json({ total:0, countries:0, by_country:[], by_asset:[], by_source:[], by_day:[], assets:{ total:0, countries:0, by_country:[], by_asset:[] } });
+    return json({ total:0, countries:0, by_country:[], by_asset:[], by_source:[], by_day:[], assets:{ total:0, countries:0, by_country:[], by_asset:[] }, assets_detail:[] });
   }
 }
 
