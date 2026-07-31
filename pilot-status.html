@@ -385,7 +385,8 @@ function loadSupport(){
     .then(function(d){
       if(!d || !d.total){ el.innerHTML='<div style="color:var(--muted-soft);font-size:12px">No endorsements yet.</div>'; var ce=document.getElementById('supcampaign'); if(ce) ce.innerHTML=''; return; }
       var max=1; d.by_country.forEach(function(x){ if(x.supporters>max) max=x.supporters; });
-      var html='<div style="font-size:12px;color:var(--muted);margin-bottom:10px">'+d.total+' supporters across <b style="color:var(--text)">'+d.countries+'</b> '+(d.countries===1?'country':'countries')+'</div>';
+      var namedbit=(d.named_supporters)?(' &middot; <b style="color:var(--text)">'+d.named_supporters+'</b> named'):'';
+      var html='<div style="font-size:12px;color:var(--muted);margin-bottom:10px">'+d.total+' supporters across <b style="color:var(--text)">'+d.countries+'</b> '+(d.countries===1?'country':'countries')+namedbit+'</div>';
       d.by_country.forEach(function(x){
         var label=x.country==='unknown'?'Unknown':esc(x.country);
         var w=Math.max(4, Math.round((x.supporters/max)*100));

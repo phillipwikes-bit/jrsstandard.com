@@ -39,7 +39,18 @@ export default async function handler(){
       .sort((a, b) => b.supporters - a.supporters);
     const countries = by_country.filter(x => x.country !== 'unknown').length;
 
-    return json({ total: rows.length, countries: countries, by_country: by_country, by_campaign: by_campaign });
+    // Named supporters: count-only read of the private pilot_contacts table
+    // (source='support'), service-role, no PII returned.
+    let named = 0;
+    try {
+      const nr = await fetch(SB + '/rest/v1/pilot_contacts?source=eq.support&select=id', {
+        headers: { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE, 'Prefer': 'count=exact', 'Range': '0-0' } });
+      const cr = nr.headers.get('content-range') || '';
+      const m = cr.match(/\/(\d+)$/);
+      if (m) named = parseInt(m[1], 10) || 0;
+    } catch (e) { /* count is best-effort */ }
+
+    return json({ total: rows.length, countries: countries, named_supporters: named, by_country: by_country, by_campaign: by_campaign });
   } catch (e) {
     return json({ total: 0, countries: 0, by_country: [], by_campaign: [] });
   }
