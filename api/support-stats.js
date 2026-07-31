@@ -13,6 +13,11 @@ const CAMPAIGN_LABEL = {
   general: 'General'
 };
 
+// Internal test/smoke-test click tags. Rows tagged with these src values were
+// generated during development verification, not by real supporters, so they
+// are excluded from every count the dashboard reports.
+const TEST_SOURCES = { verify: true, test: true, selftest: true };
+
 export default async function handler(){
   const env = (typeof process !== 'undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
@@ -25,7 +30,11 @@ export default async function handler(){
     const rows = await r.json();
 
     const byC = {}, byK = {}, perK = {}, byS = {};
+    let counted = 0;
     for (const row of rows) {
+      const rawSrc = (row.payload && row.payload.src) || 'none';
+      if (TEST_SOURCES[rawSrc]) continue; // drop internal smoke-test clicks
+      counted++;
       const c = (row.payload && row.payload.country) || 'unknown';
       byC[c] = (byC[c] || 0) + 1;
       const k = (row.payload && row.payload.campaign) || 'general';
@@ -106,7 +115,7 @@ export default async function handler(){
       }
     } catch (e) { /* public wall is best-effort */ }
 
-    return json({ total: rows.length, countries: countries, named_supporters: named, public_supporters: public_supporters, by_country: by_country, by_campaign: by_campaign, by_source: by_source, campaigns: campaigns });
+    return json({ total: counted, countries: countries, named_supporters: named, public_supporters: public_supporters, by_country: by_country, by_campaign: by_campaign, by_source: by_source, campaigns: campaigns });
   } catch (e) {
     return json({ total: 0, countries: 0, by_country: [], by_campaign: [], campaigns: [] });
   }
