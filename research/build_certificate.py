@@ -156,6 +156,15 @@ REVIEWERS = [
             "her practice as an attorney and doctor of laws advising on AI regulation and EU AI governance"),
         "out": "/home/user/jrsstandard.com/research/JRS_Certificate_Gabriela_Bar.pdf",
     },
+    {
+        "name": "Sidharth Borah",
+        "date": "July 31, 2026",
+        # Pronoun not stated; phrase the perspective without one ("A ... perspective").
+        "body": standard_body(
+            "A", "litigation and legal-defensibility",
+            "over a decade of practice as an advocate at the High Court of Delhi"),
+        "out": "/home/user/jrsstandard.com/research/JRS_Certificate_Sidharth_Borah.pdf",
+    },
 ]
 
 if __name__ == "__main__":
