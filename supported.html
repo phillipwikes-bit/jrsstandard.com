@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Thank you for your support &middot; JRS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050505;--surface:#121212;--accent:#BE9447;--accent-dim:#7A5E28;--muted:#B3B3B3;--muted-soft:#8A8A8A;--text:#F2F2F2;--rule:#2A2A2A;--ready:#5DBF82}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:640px;margin:0 auto;padding:64px 22px 80px}
+.mark{font-family:'Bodoni Moda',serif;font-size:26px;color:var(--accent);letter-spacing:.02em}
+.mono{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim)}
+h1{font-family:'Bodoni Moda',serif;font-weight:600;font-size:30px;line-height:1.2;margin:18px 0 6px}
+.lede{color:var(--muted);font-size:16px;margin:0 0 28px}
+.tick{display:inline-flex;align-items:center;gap:9px;color:var(--ready);font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+.tick span{display:inline-block;width:18px;height:18px;border-radius:50%;background:rgba(93,191,130,.14);border:1px solid rgba(93,191,130,.5);text-align:center;line-height:17px;color:var(--ready)}
+.card{background:var(--surface);border:1px solid var(--rule);padding:22px;margin:14px 0}
+.card h2{font-family:'Bodoni Moda',serif;font-weight:500;font-size:19px;margin:0 0 6px}
+.card p{color:var(--muted);font-size:14px;margin:0 0 16px}
+.btn{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:11px 18px;border:1px solid var(--accent);color:var(--accent)}
+.btn:hover{background:rgba(190,148,71,.1)}
+.btn.solid{background:var(--accent);color:#0b0b0b;border-color:var(--accent)}
+.foot{margin-top:34px;color:var(--muted-soft);font-size:12px;border-top:1px solid var(--rule);padding-top:18px}
+a.plain{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mark">JRS</div>
+  <div class="mono" style="margin-top:4px">Justification Review Standard</div>
+
+  <div class="tick" style="margin-top:30px"><span>&#10003;</span> Your support is counted</div>
+  <h1 id="headline">Thank you for standing behind this.</h1>
+  <p class="lede" id="sub">You have added your voice to a growing international group of professionals who believe a consequential decision should remain explainable and defensible from the record itself.</p>
+
+  <div class="card">
+    <h2>Take the Investigator Field Guide</h2>
+    <p>A short, practical guide to judging whether a record can be independently reconstructed and defended. Free, no sign-up. Yours to share with your team.</p>
+    <a class="btn solid" href="/api/dl?e=standard&amp;src=supported">Get the guide &#8594;</a>
+  </div>
+
+  <div class="card">
+    <h2>Become a certified reviewer</h2>
+    <p>Six short modules, a companion reference, and a certificate of completion. Learn to apply the review yourself, or train your team.</p>
+    <a class="btn" href="/reviewer">Start the free training &#8594;</a>
+  </div>
+
+  <div class="card">
+    <h2>Pass it on</h2>
+    <p>The fastest way to help is to forward the same one-click link to a colleague who cares about accountable records.</p>
+    <a class="btn" href="/investigator-guides.html">See the field guides &#8594;</a>
+  </div>
+
+  <div class="foot">
+    You can reach the initiative any time at <a class="plain" href="mailto:info@jrsstandard.com">info@jrsstandard.com</a>.<br>
+    &copy; 2026 Phillip Wikes &middot; JRS &middot; <a class="plain" href="/">jrsstandard.com</a>
+  </div>
+</div>
+<script>
+(function(){
+  var c=(new URLSearchParams(location.search).get('c')||'general').toLowerCase();
+  var map={
+    rtkw:{h:'Thank you for defending the right to know why.',s:'You have added your voice to a growing international group who believe that when a decision affects a person’s rights, safety, or livelihood, that person deserves to know why it was made.'},
+    defend:{h:'Thank you for standing behind decisions you can defend.',s:'You have added your voice to a growing international group who believe documentation should still support a consequential decision long after the decision was made.'}
+  };
+  if(map[c]){ document.getElementById('headline').textContent=map[c].h; document.getElementById('sub').textContent=map[c].s; }
+})();
+</script>
+</body>
+</html>
