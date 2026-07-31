@@ -136,11 +136,15 @@ tr.today td{background:rgba(93,191,130,.07)}
   </div>
   <div class="chart" id="ownercard" style="border:1px solid var(--accent-dim)">
     <h2>Owner view: named supporter list</h2>
-    <div class="note" style="margin-bottom:12px">Private. The named, consented supporter records (name, organization, email) live in the RLS-locked <code>pilot_contacts</code> table and are never shown publicly, because supporters were told public pages show counts only. Enter your admin token to load the full list here. The token is checked server-side and no personal data is returned without it.</div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px">
-      <input id="own-token" type="password" placeholder="Admin token" autocomplete="off" style="background:#0d0d0d;border:1px solid var(--rule);color:var(--text);font-family:'JetBrains Mono',monospace;font-size:12px;padding:9px 11px;min-width:220px">
-      <button id="own-load" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:var(--accent);color:#0b0b0b;border:1px solid var(--accent);padding:10px 16px;cursor:pointer">Load list</button>
-      <button id="own-csv" style="display:none;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--accent);border:1px solid var(--accent);padding:10px 16px;cursor:pointer">Download CSV</button>
+    <div class="note" style="margin-bottom:12px">Private. The named, consented supporter records (name, organization, email) live in the RLS-locked <code>pilot_contacts</code> table and are never printed into this page's public source, because supporters were told public pages show counts only. Unlock once with your admin token and this browser remembers it: the list then loads automatically on every future visit, no re-entry.</div>
+    <div id="own-authrow" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px">
+      <input id="own-token" type="password" placeholder="Admin token (entered once)" autocomplete="off" style="background:#0d0d0d;border:1px solid var(--rule);color:var(--text);font-family:'JetBrains Mono',monospace;font-size:12px;padding:9px 11px;min-width:240px">
+      <button id="own-load" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:var(--accent);color:#0b0b0b;border:1px solid var(--accent);padding:10px 16px;cursor:pointer">Unlock &amp; remember</button>
+    </div>
+    <div id="own-toolbar" style="display:none;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:12px">
+      <button id="own-refresh" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:var(--accent);color:#0b0b0b;border:1px solid var(--accent);padding:10px 16px;cursor:pointer">Refresh list</button>
+      <button id="own-csv" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--accent);border:1px solid var(--accent);padding:10px 16px;cursor:pointer">Download CSV</button>
+      <a id="own-forget" href="#" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-soft)">Forget token on this device</a>
     </div>
     <div id="own-msg" style="font-size:12px;min-height:16px;color:var(--muted-soft)"></div>
     <div id="own-list" style="margin-top:10px;overflow-x:auto"></div>
@@ -431,25 +435,35 @@ function refresh(){ loadDetection(); loadRealcase(); loadArmB(); loadTraining();
 refresh();
 setInterval(refresh, 60000);
 
-// ---- Owner view: named supporter list (token-gated, PII, not part of refresh) ----
-var OWN_ROWS=null;
+// ---- Owner view: named supporter list. PII stays out of public page source;
+// the owner unlocks once with the admin token, this browser remembers it
+// (localStorage 'jrs-owner-token'), and the list auto-loads on every visit. ----
+var OWN_ROWS=null, OWN_TKEY='jrs-owner-token';
 function ownEsc(t){ return esc(t); }
-function loadSupportContacts(){
-  var tok=(document.getElementById('own-token').value||'').trim();
+function ownGetToken(){ try { return localStorage.getItem(OWN_TKEY) || ''; } catch(e){ return ''; } }
+function ownSaveToken(t){ try { localStorage.setItem(OWN_TKEY, t); } catch(e){} }
+function ownClearToken(){ try { localStorage.removeItem(OWN_TKEY); } catch(e){} }
+function ownShowAuth(showAuth){
+  var ar=document.getElementById('own-authrow'), tb=document.getElementById('own-toolbar');
+  if(ar) ar.style.display = showAuth ? 'flex' : 'none';
+  if(tb) tb.style.display = showAuth ? 'none' : 'flex';
+}
+function loadSupportContacts(tokenArg){
+  var tok = (tokenArg != null ? tokenArg : (document.getElementById('own-token').value||'')).trim();
   var msg=document.getElementById('own-msg');
   var list=document.getElementById('own-list');
-  var csvBtn=document.getElementById('own-csv');
-  if(!tok){ msg.style.color='var(--accent)'; msg.textContent='Enter your admin token first.'; return; }
+  if(!tok){ msg.style.color='var(--accent)'; msg.textContent='Enter your admin token once to unlock.'; ownShowAuth(true); return; }
   msg.style.color='var(--muted-soft)'; msg.textContent='Loading the named list…';
-  list.innerHTML=''; csvBtn.style.display='none'; OWN_ROWS=null;
   fetch('/api/support-contacts?token='+encodeURIComponent(tok))
     .then(function(r){ return r.json().then(function(d){ return {ok:r.ok,status:r.status,d:d}; }); })
     .then(function(x){
-      if(x.status===401){ msg.style.color='var(--accent)'; msg.textContent='Token rejected. Check the admin token set in Vercel.'; return; }
-      if(!x.ok || !x.d || !x.d.ok){ msg.style.color='var(--accent)'; msg.textContent='Could not load ('+((x.d&&x.d.error)||x.status)+').'; return; }
+      if(x.status===401){ ownClearToken(); ownShowAuth(true); list.innerHTML=''; msg.style.color='var(--accent)'; msg.textContent='Token rejected. Enter the current admin token (BENCH_ADMIN_TOKEN or RUN_TOKEN in Vercel).'; return; }
+      if(!x.ok || !x.d || !x.d.ok){ msg.style.color='var(--accent)'; msg.textContent='Could not load ('+((x.d&&x.d.error)||x.status)+'). Tap Refresh list.'; return; }
+      // Valid token: remember it and switch to the unlocked toolbar.
+      ownSaveToken(tok); ownShowAuth(false);
       var c=x.d.contacts||[];
-      if(!c.length){ msg.style.color='var(--muted-soft)'; msg.textContent='No named supporters yet (0 rows). Counts above may still show anonymous one-click endorsements.'; return; }
       OWN_ROWS=c;
+      if(!c.length){ list.innerHTML=''; msg.style.color='var(--muted-soft)'; msg.textContent='Unlocked. No named supporters yet (0 rows): the list fills as people submit the "Be counted" form on supported.html. Anonymous one-click endorsements show in the counts above.'; return; }
       var bc=x.d.by_campaign||{};
       var bits=Object.keys(bc).map(function(k){ return bc[k]+' '+k; }).join(' · ');
       msg.style.color='var(--ready-text,#5DBF82)'; msg.textContent=x.d.count+' named supporter'+(x.d.count===1?'':'s')+(bits?(' · '+bits):'');
@@ -472,12 +486,11 @@ function loadSupportContacts(){
       });
       h+='</tbody></table>';
       list.innerHTML=h;
-      csvBtn.style.display='inline-block';
     })
-    .catch(function(){ msg.style.color='var(--accent)'; msg.textContent='Network error loading the list. Try again.'; });
+    .catch(function(){ msg.style.color='var(--accent)'; msg.textContent='Network error loading the list. Tap Refresh list.'; });
 }
 function ownCSV(){
-  if(!OWN_ROWS||!OWN_ROWS.length) return;
+  if(!OWN_ROWS||!OWN_ROWS.length){ var m=document.getElementById('own-msg'); m.style.color='var(--muted-soft)'; m.textContent='Nothing to export yet (0 named supporters).'; return; }
   function q(v){ v=(v==null?'':String(v)); return '"'+v.replace(/"/g,'""')+'"'; }
   var head=['name','organization','email','initiative','campaign_key','role','source_page','consent_contact','consent_transfer','consent_listed','created_at'];
   var lines=[head.join(',')];
@@ -490,9 +503,14 @@ function ownCSV(){
   document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(u);
 }
 (function(){
-  var lb=document.getElementById('own-load'); if(lb) lb.addEventListener('click', loadSupportContacts);
+  var lb=document.getElementById('own-load'); if(lb) lb.addEventListener('click', function(){ loadSupportContacts(); });
   var tb=document.getElementById('own-token'); if(tb) tb.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); loadSupportContacts(); } });
+  var rb=document.getElementById('own-refresh'); if(rb) rb.addEventListener('click', function(){ loadSupportContacts(ownGetToken()); });
   var cb=document.getElementById('own-csv'); if(cb) cb.addEventListener('click', ownCSV);
+  var fb=document.getElementById('own-forget'); if(fb) fb.addEventListener('click', function(e){ e.preventDefault(); ownClearToken(); OWN_ROWS=null; document.getElementById('own-list').innerHTML=''; document.getElementById('own-token').value=''; ownShowAuth(true); var m=document.getElementById('own-msg'); m.style.color='var(--muted-soft)'; m.textContent='Token forgotten on this device.'; });
+  // Auto-unlock on load if this browser already holds the token.
+  var saved=ownGetToken();
+  if(saved){ ownShowAuth(false); loadSupportContacts(saved); } else { ownShowAuth(true); }
 })();
 </script>
 </body>
