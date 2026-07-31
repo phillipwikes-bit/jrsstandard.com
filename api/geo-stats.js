@@ -53,7 +53,8 @@ export default async function handler(){
     // section) vs every other asset (JRS Standard PDF, Rapid Review Card,
     // training kit, reviewer reference) which drive enterprise value.
     const guideRows = clean.filter(row => row.source === 'guide-dl');
-    const assetRows = clean.filter(row => row.source !== 'guide-dl');
+    // Enterprise assets exclude the retired training kit (no longer downloadable).
+    const assetRows = clean.filter(row => row.source !== 'guide-dl' && assetOf(row) !== 'Training kit');
 
     // ---- Guide group (3 editions only): total, by_country, by_asset, by_day ----
     const gC = {}, gA = {}, gS = {}, gD = {};
