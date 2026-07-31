@@ -115,8 +115,8 @@ tr.today td{background:rgba(93,191,130,.07)}
     <div class="note" style="margin-top:8px">Country of each training completion. Recorded automatically at completion (geo live since Jul 17, 2026); completions from before then are backfilled from reviewer records. Aggregate counts only.</div>
   </div>
 
-  <h1 style="font-size:22px;margin-top:34px">Investigator Guide Downloads</h1>
-  <p class="sub">Downloads of the three field guide editions by day. Counted at the redirect endpoint, so emailed and shared links are included too. Aggregate counts only.</p>
+  <h1 style="font-size:22px;margin-top:34px">Downloads</h1>
+  <p class="sub">Every tracked download, by day and by country, from one source. The by-day total, the by-country total, and the by-asset total are the same number. Counted at the redirect endpoint, so emailed and shared links are included too. Aggregate counts only.</p>
   <div class="chart">
     <h2>Downloads by day</h2>
     <div id="dlchart" style="overflow-x:auto">Loading&hellip;</div>
@@ -126,7 +126,7 @@ tr.today td{background:rgba(93,191,130,.07)}
     <h2>All downloads by country</h2>
     <div id="geochart">Loading&hellip;</div>
     <div id="geoasset" style="margin-top:12px"></div>
-    <div class="note" style="margin-top:8px">Every tracked download, by country: Investigator Field Guide editions plus the JRS Standard PDF and the Rapid Review Card. Country recorded at the redirect endpoint (geo tracking live since Jul 17, 2026; earlier guide downloads are counted without location). Aggregate counts only.</div>
+    <div class="note" style="margin-top:8px">Every tracked download, by country: Investigator Field Guide editions plus the JRS Standard PDF, Rapid Review Card, and training kit. Same source and same total as the by-day chart above. Aggregate counts only.</div>
   </div>
   <div class="chart">
     <h2>Initiative supporters by country</h2>
@@ -223,9 +223,9 @@ function loadRealcase(){
     })
     .catch(function(){ document.getElementById('rc-rows').innerHTML='<tr><td colspan="6" style="color:var(--muted-soft)">Could not load real-case pilots. Tap Refresh.</td></tr>'; });
 }
-var EDORDER=['employment','fairhousing','international'];
-var EDCOL={employment:'#3987e5',fairhousing:'#199e70',international:'#c98500'};
-var EDLAB={employment:'EEO',fairhousing:'Fair Housing',international:'International'};
+var EDORDER=['employment','fairhousing','international','other'];
+var EDCOL={employment:'#3987e5',fairhousing:'#199e70',international:'#c98500',other:'#8A8A8A'};
+var EDLAB={employment:'EEO',fairhousing:'Fair Housing',international:'International',other:'PDF / Kit'};
 function renderProgress(comp,prog,ns,total){
   var wrap=document.getElementById('progwrap');
   if(!total){ wrap.style.display='none'; return; }
@@ -240,14 +240,14 @@ function renderProgress(comp,prog,ns,total){
 }
 function fmtDay(d){ var p=(d||'').split('-'); if(p.length<3) return d; var M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']; return M[parseInt(p[1],10)-1]+' '+parseInt(p[2],10); }
 function loadDownloads(){
-  return fetch(U+'/rest/v1/guide_downloads_public?select=day,edition,downloads&order=day.asc',{headers:HDR})
+  return fetch('/api/geo-stats')
    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
-   .then(function(rows){
-     rows=rows||[];
-     var byDay={}, days=[], grand=0;
+   .then(function(d){
+     var rows=(d&&d.by_day)||[];
+     var byDay={}, days=[], grand=(d&&d.total)||0;
      rows.forEach(function(x){
-       if(!byDay[x.day]){ byDay[x.day]={employment:0,fairhousing:0,international:0,total:0}; days.push(x.day); }
-       var n=x.downloads||0; byDay[x.day][x.edition]=(byDay[x.day][x.edition]||0)+n; byDay[x.day].total+=n; grand+=n;
+       byDay[x.day]={employment:x.employment||0,fairhousing:x.fairhousing||0,international:x.international||0,other:x.other||0,total:x.total||0};
+       days.push(x.day);
      });
      days.sort();
      document.getElementById('dllegend').innerHTML = EDORDER.map(function(e){
@@ -338,7 +338,7 @@ function loadGeo(){
     .then(function(d){
       if(!d || !d.total){ el.innerHTML='<div style="color:var(--muted-soft);font-size:12px">No geo-tracked downloads yet.</div>'; return; }
       var max=1; d.by_country.forEach(function(x){ if(x.downloads>max) max=x.downloads; });
-      var html='<div style="font-size:12px;color:var(--muted);margin-bottom:10px">'+d.total+' geo-tracked downloads across <b style="color:var(--text)">'+d.countries+'</b> '+(d.countries===1?'country':'countries')+'</div>';
+      var html='<div style="font-size:12px;color:var(--muted);margin-bottom:10px">'+d.total+' downloads across <b style="color:var(--text)">'+d.countries+'</b> '+(d.countries===1?'country':'countries')+'</div>';
       d.by_country.forEach(function(x){
         var label = x.country==='unknown' ? 'Unknown' : esc(x.country);
         var w = Math.max(4, Math.round((x.downloads/max)*100));
