@@ -62,6 +62,12 @@ a.plain{color:var(--accent);text-decoration:none}
     <a class="btn" href="/reviewer">Start the free training &#8594;</a>
   </div>
 
+  <div class="card" id="crosscard">
+    <h2 id="cross-h">Back the other initiative too</h2>
+    <p id="cross-p">There are two open initiatives. You have backed one. The second takes the same one click, and it speaks to the same principle from the other direction.</p>
+    <a class="btn" id="cross-btn" href="/api/support?c=defend&amp;src=supported">Support this too &#8594;</a>
+  </div>
+
   <div class="card">
     <h2>Pass it on</h2>
     <p>The fastest way to help is to forward the same one-click link to a colleague who cares about accountable records.</p>
@@ -81,6 +87,19 @@ a.plain{color:var(--accent);text-decoration:none}
     defend:{h:'Thank you for standing behind decisions you can defend.',s:'You have added your voice to a growing international group who believe documentation should still support a consequential decision long after the decision was made.'}
   };
   if(map[c]){ document.getElementById('headline').textContent=map[c].h; document.getElementById('sub').textContent=map[c].s; }
+
+  var cross={
+    rtkw:{key:'defend',h:'Now back the decisions you can defend.',p:'You have backed the right to know why. The companion initiative asks that a record still support a consequential decision long after it was made, through the complaint, the audit, and the courtroom. It takes the same one click.'},
+    defend:{key:'rtkw',h:'Now back the right to know why.',p:'You have backed decisions you can defend. The companion initiative asks that when a decision affects a person’s rights, safety, or livelihood, that person deserves an honest record of how it was reached. It takes the same one click.'}
+  };
+  var xc=cross[c];
+  if(xc){
+    document.getElementById('cross-h').textContent=xc.h;
+    document.getElementById('cross-p').textContent=xc.p;
+    document.getElementById('cross-btn').setAttribute('href','/api/support?c='+xc.key+'&src=supported');
+  } else {
+    var cc=document.getElementById('crosscard'); if(cc) cc.style.display='none';
+  }
 
   var form=document.getElementById('joinform');
   var msg=document.getElementById('j-msg');
