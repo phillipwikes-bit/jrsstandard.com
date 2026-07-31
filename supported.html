@@ -37,6 +37,19 @@ a.plain{color:var(--accent);text-decoration:none}
   <h1 id="headline">Thank you for standing behind this.</h1>
   <p class="lede" id="sub">You have added your voice to a growing international group of professionals who believe a consequential decision should remain explainable and defensible from the record itself.</p>
 
+  <div class="card" id="joincard">
+    <h2>Be counted among the supporters</h2>
+    <p>Optional. Add your name to a growing list of professionals backing this work. Public status pages show counts only; your details stay private and are never sold or shared without your say-so.</p>
+    <form id="joinform" style="display:grid;gap:10px">
+      <input id="j-name" type="text" placeholder="Your name" autocomplete="name" style="background:#0d0d0d;border:1px solid var(--rule);color:var(--text);font-family:inherit;font-size:14px;padding:10px 12px">
+      <input id="j-org" type="text" placeholder="Organization (optional)" autocomplete="organization" style="background:#0d0d0d;border:1px solid var(--rule);color:var(--text);font-family:inherit;font-size:14px;padding:10px 12px">
+      <input id="j-email" type="email" placeholder="Email (optional)" autocomplete="email" style="background:#0d0d0d;border:1px solid var(--rule);color:var(--text);font-family:inherit;font-size:14px;padding:10px 12px">
+      <label style="display:flex;gap:9px;align-items:flex-start;font-size:12.5px;color:var(--muted);line-height:1.5"><input id="j-consent" type="checkbox" style="margin-top:3px;flex:0 0 auto"> <span>You may contact me about this initiative. I understand my details stay private.</span></label>
+      <button type="submit" class="btn solid" style="justify-self:start;cursor:pointer">Add my support</button>
+      <div id="j-msg" style="font-size:13px;min-height:18px"></div>
+    </form>
+  </div>
+
   <div class="card">
     <h2>Take the Investigator Field Guide</h2>
     <p>A short, practical guide to judging whether a record can be independently reconstructed and defended. Free, no sign-up. Yours to share with your team.</p>
@@ -68,6 +81,27 @@ a.plain{color:var(--accent);text-decoration:none}
     defend:{h:'Thank you for standing behind decisions you can defend.',s:'You have added your voice to a growing international group who believe documentation should still support a consequential decision long after the decision was made.'}
   };
   if(map[c]){ document.getElementById('headline').textContent=map[c].h; document.getElementById('sub').textContent=map[c].s; }
+
+  var form=document.getElementById('joinform');
+  var msg=document.getElementById('j-msg');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=document.getElementById('j-name').value.trim();
+    var email=document.getElementById('j-email').value.trim();
+    var consent=document.getElementById('j-consent').checked;
+    if(!name){ msg.style.color='var(--accent)'; msg.textContent='Please add your name.'; return; }
+    if(!consent){ msg.style.color='var(--accent)'; msg.textContent='Please tick the consent box so we may store your details.'; return; }
+    msg.style.color='var(--muted)'; msg.textContent='Adding...';
+    fetch('/api/support-join',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+      name:name, organization:document.getElementById('j-org').value.trim(), email:email,
+      campaign:c, source:'supported-page', consent_contact:true, consent_transfer:true, consent_listed:true
+    })}).then(function(r){ return r.json().then(function(d){ return {ok:r.ok,d:d}; }); })
+      .then(function(x){
+        if(x.ok && x.d && x.d.ok){ form.innerHTML='<div style="color:var(--ready);font-family:\'JetBrains Mono\',monospace;font-size:12px;letter-spacing:.08em">You are on the list. Thank you.</div>'; }
+        else { msg.style.color='var(--accent)'; msg.textContent=(x.d&&x.d.error==='valid_email_required')?'That email does not look right. Leave it blank or fix it.':'Could not add you just now. Please try again.'; }
+      })
+      .catch(function(){ msg.style.color='var(--accent)'; msg.textContent='Network hiccup. Please try again.'; });
+  });
 })();
 </script>
 </body>
