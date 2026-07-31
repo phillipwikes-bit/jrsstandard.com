@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Named Supporters (private)</title>
+<!--
+  PRIVATE owner page. Not linked from anywhere. noindex,nofollow is set.
+  Shows the named, consented initiative supporters held in the RLS-locked
+  pilot_contacts table (PII: name, organization, email). The URL itself is the
+  secret (unguessable slug, same posture as the acquisition-* / vp-* pages).
+  The access key is NOT committed here: it is read once from the URL fragment
+  (#k=YOUR_RUN_TOKEN), saved to this browser, then reused with no typing. The
+  public pilot-status.html stays counts-only, per the promise made to supporters.
+-->
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050505;--surface:#121212;--surface2:#1A1A1A;--rule:#2A2A2A;--text:#F2F2F2;--muted:#B3B3B3;--muted-soft:#8A8A8A;--accent:#BE9447;--accent-dim:#7A5E28;--ready:#5DBF82;--stop-text:#E88080}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1000px;margin:0 auto;padding:22px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;border-bottom:1px solid var(--rule);padding-bottom:14px}
+.wm{font-family:'Bodoni Moda',serif;font-size:22px;color:var(--accent);text-decoration:none}
+.meta{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft)}
+h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:28px;margin:22px 0 6px}
+.sub{font-size:13px;color:var(--muted);max-width:680px;margin-bottom:18px}
+.btn{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border:1px solid var(--accent);color:#0b0b0b;background:var(--accent);cursor:pointer;text-decoration:none;display:inline-block}
+.btn.ghost{background:none;color:var(--accent)}
+.card{border:1px solid var(--rule);background:var(--surface);padding:18px 20px;margin-top:16px}
+.note{font-size:12px;color:var(--muted-soft);line-height:1.6}
+input{background:#0d0d0d;border:1px solid var(--rule);color:var(--text);font-family:'JetBrains Mono',monospace;font-size:12px;padding:9px 11px;min-width:260px}
+table{border-collapse:collapse;width:100%;font-size:12.5px;margin-top:6px}
+th{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-dim);text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule);white-space:nowrap}
+td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted)}
+td.nm{color:var(--text)}
+.msg{font-size:12.5px;min-height:18px;margin-top:12px}
+.tools{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:14px}
+.foot{margin-top:26px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--muted-soft)}
+code{font-family:'JetBrains Mono',monospace;color:var(--accent);font-size:11px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a href="index.html" class="wm">JRS</a>
+    <div class="meta">Private &middot; not indexed &middot; owner only</div>
+  </div>
+
+  <h1>Named supporters</h1>
+  <p class="sub">The consented supporter records from the private <code>pilot_contacts</code> table: name, organization, email, initiative, and consent flags. This page is not linked or indexed; the URL is the key. Nothing personal is ever shown on the public status page.</p>
+
+  <div id="setup" class="card" style="display:none">
+    <div class="note" style="margin-bottom:10px">One-time setup. Paste your Vercel <b>RUN_TOKEN</b> value once (from Vercel &rarr; Project &rarr; Settings &rarr; Environment Variables). This browser saves it and the list loads automatically from then on. You never type it again.</div>
+    <div class="tools" style="margin-top:0">
+      <input id="k" type="password" placeholder="RUN_TOKEN value" autocomplete="off">
+      <button id="go" class="btn">Load supporters</button>
+    </div>
+  </div>
+
+  <div id="ready" style="display:none">
+    <div class="tools">
+      <button id="refresh" class="btn">Refresh</button>
+      <button id="csv" class="btn ghost">Download CSV</button>
+      <a id="forget" href="#" class="meta" style="color:var(--muted-soft)">Forget key on this device</a>
+    </div>
+    <div id="msg" class="msg"></div>
+    <div style="overflow-x:auto"><div id="list"></div></div>
+  </div>
+
+  <div id="loadmsg" class="msg" style="color:var(--muted-soft)">Loading&hellip;</div>
+
+  <div class="foot">&#169; 2026 Phillip Wikes &middot; JRS&#8482; &middot; confidential</div>
+</div>
+<script>
+var TKEY='jrs-owner-token', ROWS=null;
+function esc(t){var d=document.createElement('div');d.textContent=(t==null?'':String(t));return d.innerHTML;}
+function getKey(){ try{return localStorage.getItem(TKEY)||'';}catch(e){return '';} }
+function setKey(v){ try{localStorage.setItem(TKEY,v);}catch(e){} }
+function clrKey(){ try{localStorage.removeItem(TKEY);}catch(e){} }
+function show(id,on){ var e=document.getElementById(id); if(e) e.style.display=on?'block':'none'; }
+
+function render(d){
+  var msg=document.getElementById('msg'), list=document.getElementById('list');
+  var c=(d&&d.contacts)||[]; ROWS=c;
+  if(!c.length){ list.innerHTML=''; msg.style.color='var(--muted-soft)'; msg.textContent='Unlocked. 0 named supporters so far. Rows appear here the moment someone submits the "Be counted" form on supported.html. The public counts still tally anonymous one-click endorsements.'; return; }
+  var bc=(d&&d.by_campaign)||{}; var bits=Object.keys(bc).map(function(k){return bc[k]+' '+k;}).join(' · ');
+  msg.style.color='var(--ready)'; msg.textContent=d.count+' named supporter'+(d.count===1?'':'s')+(bits?(' · '+bits):'');
+  var h='<table><thead><tr>'+['Name','Organization','Email','Initiative','Source','Contact','Transfer','Date'].map(function(x){return '<th>'+x+'</th>';}).join('')+'</tr></thead><tbody>';
+  c.forEach(function(r){
+    var dt=r.created_at?String(r.created_at).slice(0,10):'';
+    h+='<tr><td class="nm">'+esc(r.name)+'</td><td>'+esc(r.organization)+'</td><td>'+esc(r.email)+'</td><td>'+esc(r.campaign_label||r.campaign)+'</td><td>'+esc(r.page_source)+'</td><td>'+(r.consent_contact?'yes':'—')+'</td><td>'+(r.consent_transfer?'yes':'—')+'</td><td style="white-space:nowrap">'+esc(dt)+'</td></tr>';
+  });
+  h+='</tbody></table>'; list.innerHTML=h;
+}
+function load(key){
+  var k=(key!=null?key:getKey()).trim();
+  show('loadmsg',false);
+  if(!k){ show('setup',true); show('ready',false); return; }
+  document.getElementById('loadmsg').textContent='Loading…'; show('loadmsg',true);
+  fetch('/api/support-contacts?token='+encodeURIComponent(k))
+    .then(function(r){ return r.json().then(function(d){return {ok:r.ok,status:r.status,d:d};}); })
+    .then(function(x){
+      show('loadmsg',false);
+      if(x.status===401){ clrKey(); show('setup',true); show('ready',false);
+        var s=document.getElementById('setup'); var n=s.querySelector('.note');
+        n.innerHTML='That key was rejected. Use your Vercel <b>RUN_TOKEN</b> value (the endpoint reports BENCH_ADMIN_TOKEN is not set, so only RUN_TOKEN works). Paste it once.';
+        return;
+      }
+      if(!x.ok||!x.d||!x.d.ok){ show('ready',true); var m=document.getElementById('msg'); m.style.color='var(--stop-text)'; m.textContent='Could not load ('+((x.d&&x.d.error)||x.status)+'). Tap Refresh.'; return; }
+      setKey(k); show('setup',false); show('ready',true); render(x.d);
+    })
+    .catch(function(){ show('loadmsg',false); show('ready',true); var m=document.getElementById('msg'); m.style.color='var(--stop-text)'; m.textContent='Network error. Tap Refresh.'; });
+}
+function csv(){
+  if(!ROWS||!ROWS.length){ var m=document.getElementById('msg'); m.style.color='var(--muted-soft)'; m.textContent='Nothing to export yet (0 rows).'; return; }
+  function q(v){ v=(v==null?'':String(v)); return '"'+v.replace(/"/g,'""')+'"'; }
+  var head=['name','organization','email','initiative','campaign_key','role','source_page','consent_contact','consent_transfer','consent_listed','created_at'];
+  var lines=[head.join(',')];
+  ROWS.forEach(function(r){ lines.push([q(r.name),q(r.organization),q(r.email),q(r.campaign_label||r.campaign),q(r.campaign),q(r.role),q(r.page_source),q(r.consent_contact),q(r.consent_transfer),q(r.consent_listed),q(r.created_at)].join(',')); });
+  var b=new Blob([lines.join('\n')],{type:'text/csv'}); var u=URL.createObjectURL(b);
+  var a=document.createElement('a'); a.href=u; a.download='jrs-named-supporters-'+Date.now()+'.csv'; document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(u);
+}
+(function(){
+  document.getElementById('go').addEventListener('click', function(){ load(document.getElementById('k').value); });
+  document.getElementById('k').addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); load(document.getElementById('k').value); } });
+  document.getElementById('refresh').addEventListener('click', function(){ load(getKey()); });
+  document.getElementById('csv').addEventListener('click', csv);
+  document.getElementById('forget').addEventListener('click', function(e){ e.preventDefault(); clrKey(); ROWS=null; document.getElementById('list').innerHTML=''; show('ready',false); show('setup',true); });
+  // Key from URL fragment (#k=...) beats stored key: lets you bookmark one link that just works.
+  var frag=''; try{ var m=(location.hash||'').match(/k=([^&]+)/); if(m) frag=decodeURIComponent(m[1]); }catch(e){}
+  if(frag){ setKey(frag); try{ history.replaceState(null,'',location.pathname); }catch(e){} }
+  var k=getKey();
+  if(k){ load(k); } else { show('loadmsg',false); show('setup',true); }
+})();
+</script>
+</body>
+</html>
