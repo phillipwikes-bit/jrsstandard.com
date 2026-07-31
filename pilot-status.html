@@ -123,16 +123,9 @@ tr.today td{background:rgba(93,191,130,.07)}
     <div class="legend" id="dllegend"></div>
   </div>
   <div class="chart">
-    <h2>All downloads by country</h2>
-    <div id="geochart">Loading&hellip;</div>
-    <div id="geoasset" style="margin-top:12px"></div>
-    <div class="note" style="margin-top:8px">The three Investigator Field Guide editions by country: EEO, Fair Housing, and International. Same source and same total as the by-day chart above. Aggregate counts only.</div>
-  </div>
-  <div class="chart">
-    <h2>Standard, Card &amp; Kit downloads by country</h2>
-    <div id="entchart">Loading&hellip;</div>
-    <div id="entasset" style="margin-top:12px"></div>
-    <div class="note" style="margin-top:8px">The enterprise-facing assets, separate from the field guides: JRS Standard PDF, Rapid Review Card, training kit, and reviewer reference. Country recorded at the redirect endpoint. These signal buying interest and support enterprise pricing. Aggregate counts only.</div>
+    <h2>Each item's downloads by country</h2>
+    <div id="itemsbycountry">Loading&hellip;</div>
+    <div class="note" style="margin-top:8px">Every downloadable item on its own, counted by country: the three field guide editions, the JRS Standard PDF, the Rapid Review Card, the JRS Reviewer Reference (training companion), and the combined Field Guide. Nothing is grouped into a shared total. Country recorded at the redirect endpoint. Aggregate counts only.</div>
   </div>
   <div class="chart">
     <h2>Initiative supporters by country</h2>
@@ -336,94 +329,31 @@ function renderCompletions(s){
   });
   el.innerHTML=html;
 }
-function loadGeo(){
-  var el=document.getElementById('geochart');
+function loadItems(){
+  var el=document.getElementById('itemsbycountry');
   if(!el) return;
   fetch('/api/geo-stats')
     .then(function(r){ if(!r.ok) throw 0; return r.json(); })
     .then(function(d){
-      if(!d || !d.total){ el.innerHTML='<div style="color:var(--muted-soft);font-size:12px">No geo-tracked downloads yet.</div>'; return; }
-      var max=1; d.by_country.forEach(function(x){ if(x.downloads>max) max=x.downloads; });
-      var html='<div style="font-size:12px;color:var(--muted);margin-bottom:10px">'+d.total+' downloads across <b style="color:var(--text)">'+d.countries+'</b> '+(d.countries===1?'country':'countries')+'</div>';
-      d.by_country.forEach(function(x){
-        var label = x.country==='unknown' ? 'Unknown' : esc(x.country);
-        var w = Math.max(4, Math.round((x.downloads/max)*100));
-        html+='<div style="display:flex;align-items:center;gap:10px;margin:4px 0">'
-          +'<span style="font-family:\'JetBrains Mono\',monospace;font-size:11px;color:var(--muted);width:64px;flex:0 0 auto">'+label+'</span>'
-          +'<span style="background:var(--accent);height:12px;width:'+w+'%;max-width:60%;display:inline-block"></span>'
-          +'<span style="font-size:12px;color:var(--text)">'+x.downloads+'</span></div>';
+      var items=(d&&d.assets_detail)||[];
+      if(!items.length){ el.innerHTML='<div style="color:var(--muted-soft);font-size:12px">No downloads recorded yet.</div>'; return; }
+      var html='';
+      items.forEach(function(it){
+        var max=1; it.by_country.forEach(function(x){ if(x.downloads>max) max=x.downloads; });
+        html+='<div style="margin:0 0 20px;padding-top:12px;border-top:1px solid var(--rule)">';
+        html+='<div style="font-family:\'Bodoni Moda\',serif;font-size:16px;color:var(--text);margin-bottom:2px">'+esc(it.asset)+'</div>';
+        html+='<div style="font-family:\'JetBrains Mono\',monospace;font-size:11px;letter-spacing:.08em;color:var(--accent-dim);margin-bottom:9px"><b style="color:var(--accent)">'+it.total+'</b> download'+(it.total===1?'':'s')+' &middot; '+it.countries+' '+(it.countries===1?'country':'countries')+'</div>';
+        it.by_country.forEach(function(x){
+          var label = x.country==='unknown' ? 'Unknown' : esc(x.country);
+          var w = Math.max(4, Math.round((x.downloads/max)*100));
+          html+='<div style="display:flex;align-items:center;gap:10px;margin:4px 0">'
+            +'<span style="font-family:\'JetBrains Mono\',monospace;font-size:11px;color:var(--muted);width:64px;flex:0 0 auto">'+label+'</span>'
+            +'<span style="background:var(--accent);height:12px;width:'+w+'%;max-width:60%;display:inline-block"></span>'
+            +'<span style="font-size:12px;color:var(--text)">'+x.downloads+'</span></div>';
+        });
+        html+='</div>';
       });
       el.innerHTML=html;
-      var ae=document.getElementById('geoasset');
-      if(ae){
-        var assets=(d.by_asset)||[];
-        if(!assets.length){ ae.innerHTML=''; }
-        else{
-          var amax=1; assets.forEach(function(x){ if(x.downloads>amax) amax=x.downloads; });
-          var ah='<div style="font-size:11px;font-family:\'JetBrains Mono\',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:8px">By asset</div>';
-          assets.forEach(function(x){
-            var w=Math.max(4, Math.round((x.downloads/amax)*100));
-            ah+='<div style="display:flex;align-items:center;gap:10px;margin:4px 0">'
-              +'<span style="font-size:11px;color:var(--muted);width:150px;flex:0 0 auto">'+esc(x.asset)+'</span>'
-              +'<span style="background:var(--accent-dim);height:12px;width:'+w+'%;max-width:55%;display:inline-block"></span>'
-              +'<span style="font-size:12px;color:var(--text)">'+x.downloads+'</span></div>';
-          });
-          ae.innerHTML=ah;
-        }
-        var srcs=(d.by_source)||[];
-        if(srcs.length){
-          var smax=1; srcs.forEach(function(x){ if(x.downloads>smax) smax=x.downloads; });
-          var sh='<div style="font-size:11px;font-family:\'JetBrains Mono\',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-dim);margin:14px 0 8px">By source page</div>';
-          srcs.forEach(function(x){
-            var w=Math.max(4, Math.round((x.downloads/smax)*100));
-            var lbl = x.source==='unknown' ? 'Unknown' : esc(x.source);
-            sh+='<div style="display:flex;align-items:center;gap:10px;margin:4px 0">'
-              +'<span style="font-size:11px;color:var(--muted);width:150px;flex:0 0 auto">'+lbl+'</span>'
-              +'<span style="background:var(--muted-soft);height:12px;width:'+w+'%;max-width:55%;display:inline-block"></span>'
-              +'<span style="font-size:12px;color:var(--text)">'+x.downloads+'</span></div>';
-          });
-          ae.innerHTML += sh;
-        }
-      }
-    })
-    .catch(function(){ el.innerHTML='<div style="color:var(--muted-soft);font-size:12px">Could not load countries. Tap Refresh.</div>'; });
-}
-function loadEnterprise(){
-  var el=document.getElementById('entchart');
-  if(!el) return;
-  fetch('/api/geo-stats')
-    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
-    .then(function(d){
-      var a=(d&&d.assets)||{total:0,countries:0,by_country:[],by_asset:[]};
-      var ae=document.getElementById('entasset');
-      if(!a.total){ el.innerHTML='<div style="color:var(--muted-soft);font-size:12px">No Standard, Card, or Kit downloads yet.</div>'; if(ae) ae.innerHTML=''; return; }
-      var max=1; a.by_country.forEach(function(x){ if(x.downloads>max) max=x.downloads; });
-      var html='<div style="font-size:12px;color:var(--muted);margin-bottom:10px">'+a.total+' downloads across <b style="color:var(--text)">'+a.countries+'</b> '+(a.countries===1?'country':'countries')+'</div>';
-      a.by_country.forEach(function(x){
-        var label = x.country==='unknown' ? 'Unknown' : esc(x.country);
-        var w = Math.max(4, Math.round((x.downloads/max)*100));
-        html+='<div style="display:flex;align-items:center;gap:10px;margin:4px 0">'
-          +'<span style="font-family:\'JetBrains Mono\',monospace;font-size:11px;color:var(--muted);width:64px;flex:0 0 auto">'+label+'</span>'
-          +'<span style="background:var(--accent);height:12px;width:'+w+'%;max-width:60%;display:inline-block"></span>'
-          +'<span style="font-size:12px;color:var(--text)">'+x.downloads+'</span></div>';
-      });
-      el.innerHTML=html;
-      if(ae){
-        var assets=(a.by_asset)||[];
-        if(!assets.length){ ae.innerHTML=''; }
-        else{
-          var amax=1; assets.forEach(function(x){ if(x.downloads>amax) amax=x.downloads; });
-          var ah='<div style="font-size:11px;font-family:\'JetBrains Mono\',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:8px">By asset</div>';
-          assets.forEach(function(x){
-            var w=Math.max(4, Math.round((x.downloads/amax)*100));
-            ah+='<div style="display:flex;align-items:center;gap:10px;margin:4px 0">'
-              +'<span style="font-size:11px;color:var(--muted);width:150px;flex:0 0 auto">'+esc(x.asset)+'</span>'
-              +'<span style="background:var(--accent-dim);height:12px;width:'+w+'%;max-width:55%;display:inline-block"></span>'
-              +'<span style="font-size:12px;color:var(--text)">'+x.downloads+'</span></div>';
-          });
-          ae.innerHTML=ah;
-        }
-      }
     })
     .catch(function(){ el.innerHTML='<div style="color:var(--muted-soft);font-size:12px">Could not load. Tap Refresh.</div>'; });
 }
@@ -484,7 +414,7 @@ function renderSupWall(d){
   h+='</div>';
   w.innerHTML=h;
 }
-function refresh(){ loadDetection(); loadRealcase(); loadArmB(); loadTraining(); loadDownloads(); loadGeo(); loadEnterprise(); loadSupport(); }
+function refresh(){ loadDetection(); loadRealcase(); loadArmB(); loadTraining(); loadDownloads(); loadItems(); loadSupport(); }
 refresh();
 setInterval(refresh, 60000);
 </script>
