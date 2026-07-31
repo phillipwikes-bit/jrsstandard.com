@@ -11,6 +11,12 @@ const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 
 function assetOf(row){
   const p = row.payload || {};
+  if (row.source === 'kit-dl'){
+    if (p.file === 'JRS_Rapid_Review_Card.pdf') return 'Rapid Review Card';
+    if (p.file === 'JRS_Investigator_Field_Guide.pdf') return 'Field Guide (combined)';
+    if (p.file === 'JRS-Reference-9d4f2a7c.pdf') return 'Reviewer Reference';
+    return 'Training kit';
+  }
   if (row.source === 'pdf-dl'){
     if (p.doc === 'standard') return 'JRS Standard (PDF)';
     if (p.doc === 'card')     return 'Rapid Review Card';
@@ -29,7 +35,7 @@ export default async function handler(){
   if (!SERVICE) return json({ total:0, countries:0, by_country:[], by_asset:[], by_source:[] });
 
   try {
-    const r = await fetch(SB+'/rest/v1/interaction_events?source=in.(guide-dl,pdf-dl)&select=source,payload&limit=20000',
+    const r = await fetch(SB+'/rest/v1/interaction_events?source=in.(guide-dl,pdf-dl,kit-dl)&select=source,payload&limit=20000',
       { headers:{'apikey':SERVICE,'Authorization':'Bearer '+SERVICE} });
     if (!r.ok) return json({ total:0, countries:0, by_country:[], by_asset:[], by_source:[] });
     const rows = await r.json();
