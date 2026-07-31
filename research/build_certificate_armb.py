@@ -154,6 +154,14 @@ REVIEWERS = [
             "over a decade of multi-country IT operations, IT governance, and digital transformation across Africa"),
         "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Certificate_Jean-Luc_Adade.pdf",
     },
+    {
+        "name": "Muhammad Dauda",
+        "date": "July 31, 2026",
+        "body": neutral_body(
+            "program management, sustainability, and governance",
+            "program leadership across sustainability and development work with UN-affiliated youth networks and higher education in Nigeria"),
+        "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Certificate_Muhammad_Dauda.pdf",
+    },
 ]
 
 if __name__ == "__main__":
