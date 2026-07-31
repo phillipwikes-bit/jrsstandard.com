@@ -23,15 +23,10 @@ const DOCS = {
 // Whitelisted training-kit files (and the gated reference). Only these exact
 // basenames are honored via ?f= , so the endpoint cannot be turned into an open
 // redirect. Downloads log to interaction_events (source 'kit-dl').
+// The 8 JRS_Kit_* implementation-kit files are intentionally NOT whitelisted:
+// the training kit is retired and must not be downloadable anywhere. Only the
+// standalone reference assets below remain available via ?f=.
 const KITS = new Set([
-  'JRS_Kit_A1_Worksheet.pdf',
-  'JRS_Kit_A2_Escalation_Form.pdf',
-  'JRS_Kit_A3_Signoff_Template.pdf',
-  'JRS_Kit_B1_Onboarding_Guide.pdf',
-  'JRS_Kit_C1_AI_Checklist.pdf',
-  'JRS_Kit_D1_Redlined_Examples.pdf',
-  'JRS_Kit_E1_Implementation_Playbook.pdf',
-  'JRS_Kit_E1A_Secondary_Review_Triggers.pdf',
   'JRS_Investigator_Field_Guide.pdf',
   'JRS_Rapid_Review_Card.pdf',
   'JRS-Reference-9d4f2a7c.pdf'
