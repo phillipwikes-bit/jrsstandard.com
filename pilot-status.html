@@ -384,35 +384,35 @@ function loadSupport(){
     .then(function(r){ if(!r.ok) throw 0; return r.json(); })
     .then(function(d){
       if(!d || !d.total){ el.innerHTML='<div style="color:var(--muted-soft);font-size:12px">No endorsements yet.</div>'; var ce=document.getElementById('supcampaign'); if(ce) ce.innerHTML=''; return; }
-      var max=1; d.by_country.forEach(function(x){ if(x.supporters>max) max=x.supporters; });
       var namedbit=(d.named_supporters)?(' &middot; <b style="color:var(--text)">'+d.named_supporters+'</b> named'):'';
-      var html='<div style="font-size:12px;color:var(--muted);margin-bottom:10px">'+d.total+' supporters across <b style="color:var(--text)">'+d.countries+'</b> '+(d.countries===1?'country':'countries')+namedbit+'</div>';
-      d.by_country.forEach(function(x){
-        var label=x.country==='unknown'?'Unknown':esc(x.country);
-        var w=Math.max(4, Math.round((x.supporters/max)*100));
-        html+='<div style="display:flex;align-items:center;gap:10px;margin:4px 0">'
-          +'<span style="font-family:\'JetBrains Mono\',monospace;font-size:11px;color:var(--muted);width:64px;flex:0 0 auto">'+label+'</span>'
-          +'<span style="background:var(--ready-text,#5DBF82);height:12px;width:'+w+'%;max-width:60%;display:inline-block"></span>'
-          +'<span style="font-size:12px;color:var(--text)">'+x.supporters+'</span></div>';
-      });
-      el.innerHTML=html;
-      var ce=document.getElementById('supcampaign');
-      if(ce){
-        var ks=(d.by_campaign)||[];
-        if(!ks.length){ ce.innerHTML=''; }
-        else{
-          var kmax=1; ks.forEach(function(x){ if(x.supporters>kmax) kmax=x.supporters; });
-          var ch='<div style="font-size:11px;font-family:\'JetBrains Mono\',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:8px">By initiative</div>';
-          ks.forEach(function(x){
-            var w=Math.max(4, Math.round((x.supporters/kmax)*100));
-            ch+='<div style="display:flex;align-items:center;gap:10px;margin:4px 0">'
-              +'<span style="font-size:11px;color:var(--muted);width:210px;flex:0 0 auto">'+esc(x.campaign)+'</span>'
-              +'<span style="background:var(--accent-dim);height:12px;width:'+w+'%;max-width:45%;display:inline-block"></span>'
+      var html='<div style="font-size:12px;color:var(--muted);margin-bottom:16px">'+d.total+' total supporters across <b style="color:var(--text)">'+d.countries+'</b> '+(d.countries===1?'country':'countries')+namedbit+'</div>';
+      var camps=(d.campaigns)||[];
+      if(!camps.length){
+        var max=1; d.by_country.forEach(function(x){ if(x.supporters>max) max=x.supporters; });
+        d.by_country.forEach(function(x){
+          var label=x.country==='unknown'?'Unknown':esc(x.country);
+          var w=Math.max(4, Math.round((x.supporters/max)*100));
+          html+='<div style="display:flex;align-items:center;gap:10px;margin:4px 0"><span style="font-family:\'JetBrains Mono\',monospace;font-size:11px;color:var(--muted);width:64px;flex:0 0 auto">'+label+'</span><span style="background:var(--ready-text,#5DBF82);height:12px;width:'+w+'%;max-width:60%;display:inline-block"></span><span style="font-size:12px;color:var(--text)">'+x.supporters+'</span></div>';
+        });
+      } else {
+        camps.forEach(function(cm){
+          html+='<div style="margin:0 0 18px;padding-top:12px;border-top:1px solid var(--rule)">';
+          html+='<div style="font-family:\'Bodoni Moda\',serif;font-size:16px;color:var(--text);margin-bottom:3px">'+esc(cm.label)+' Initiative</div>';
+          html+='<div style="font-family:\'JetBrains Mono\',monospace;font-size:11px;letter-spacing:.08em;color:var(--accent-dim);margin-bottom:9px"><b style="color:var(--accent)">'+cm.total+'</b> supporters &middot; '+cm.countries+' '+(cm.countries===1?'country':'countries')+'</div>';
+          var cmax=1; cm.by_country.forEach(function(x){ if(x.supporters>cmax) cmax=x.supporters; });
+          cm.by_country.forEach(function(x){
+            var label=x.country==='unknown'?'Unknown':esc(x.country);
+            var w=Math.max(4, Math.round((x.supporters/cmax)*100));
+            html+='<div style="display:flex;align-items:center;gap:10px;margin:4px 0">'
+              +'<span style="font-family:\'JetBrains Mono\',monospace;font-size:11px;color:var(--muted);width:64px;flex:0 0 auto">'+label+'</span>'
+              +'<span style="background:var(--ready-text,#5DBF82);height:12px;width:'+w+'%;max-width:60%;display:inline-block"></span>'
               +'<span style="font-size:12px;color:var(--text)">'+x.supporters+'</span></div>';
           });
-          ce.innerHTML=ch;
-        }
+          html+='</div>';
+        });
       }
+      el.innerHTML=html;
+      var ce=document.getElementById('supcampaign'); if(ce) ce.innerHTML='';
     })
     .catch(function(){ el.innerHTML='<div style="color:var(--muted-soft);font-size:12px">Could not load supporters. Tap Refresh.</div>'; });
 }
