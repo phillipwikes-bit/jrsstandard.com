@@ -87,6 +87,31 @@ export default async function handler(req){
       }));
       return json({ok:true, scored:done, of:recs.length});
     }
+    if (action==='export_armb'){
+      // Token-gated export of Arm B judgments for accuracy scoring (score_armb.py).
+      // Uses the service role to read the RLS-locked table. Excludes the free-text
+      // `note` column so no reviewer PII leaves the DB; returns only scorer fields.
+      var amap={};
+      try {
+        var pr=await fetch(SB+'/rest/v1/armb_progress?select=code,arm_code',{headers:{'apikey':SERVICE,'Authorization':'Bearer '+SERVICE}});
+        var pj=await pr.json();
+        if(Array.isArray(pj)) pj.forEach(function(r){ if(r&&r.code) amap[r.code]=r.arm_code||null; });
+      } catch(e){}
+      var rows=[], from=0, page=1000;
+      for(;;){
+        var rr2=await fetch(SB+"/rest/v1/ai_pilot_reads?select=reviewer_code,record_ref,jrs_read,rely,batch,created_at&batch=like.armB*&order=created_at.asc",{headers:{'apikey':SERVICE,'Authorization':'Bearer '+SERVICE,'Range-Unit':'items','Range':from+'-'+(from+page-1)}});
+        var chunk=await rr2.json(); if(!Array.isArray(chunk)||!chunk.length) break;
+        chunk.forEach(function(r){
+          var code=r.reviewer_code||'';
+          var cond=amap[code]||null;
+          if(!cond){ var mb=String(r.batch||'').match(/B[12]/); cond=mb?mb[0]:null; }
+          var det=(cond==='B2')?r.rely:r.jrs_read;
+          rows.push({code:code, condition:cond, record:r.record_ref||null, determination:det, jrs_read:r.jrs_read||null, rely:r.rely||null, batch:r.batch||null});
+        });
+        if(chunk.length<page) break; from+=page;
+      }
+      return json({ok:true, count:rows.length, rows:rows});
+    }
     return json({error:'unknown_action'},400);
   } catch(e){ return json({error:String(e&&e.message||e)},500); }
 }
