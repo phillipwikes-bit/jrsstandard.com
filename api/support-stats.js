@@ -24,7 +24,7 @@ export default async function handler(){
     if (!r.ok) return json({ total: 0, countries: 0, by_country: [], by_campaign: [], campaigns: [] });
     const rows = await r.json();
 
-    const byC = {}, byK = {}, perK = {};
+    const byC = {}, byK = {}, perK = {}, byS = {};
     for (const row of rows) {
       const c = (row.payload && row.payload.country) || 'unknown';
       byC[c] = (byC[c] || 0) + 1;
@@ -32,7 +32,12 @@ export default async function handler(){
       byK[k] = (byK[k] || 0) + 1;
       (perK[k] = perK[k] || {});
       perK[k][c] = (perK[k][c] || 0) + 1;
+      const s = (row.payload && row.payload.src) || 'none';
+      byS[s] = (byS[s] || 0) + 1;
     }
+    const by_source = Object.entries(byS)
+      .map(([src, hits]) => ({ src, hits }))
+      .sort((a, b) => b.hits - a.hits);
     const by_country = Object.entries(byC)
       .map(([country, supporters]) => ({ country, supporters }))
       .sort((a, b) => b.supporters - a.supporters);
@@ -101,7 +106,7 @@ export default async function handler(){
       }
     } catch (e) { /* public wall is best-effort */ }
 
-    return json({ total: rows.length, countries: countries, named_supporters: named, public_supporters: public_supporters, by_country: by_country, by_campaign: by_campaign, campaigns: campaigns });
+    return json({ total: rows.length, countries: countries, named_supporters: named, public_supporters: public_supporters, by_country: by_country, by_campaign: by_campaign, by_source: by_source, campaigns: campaigns });
   } catch (e) {
     return json({ total: 0, countries: 0, by_country: [], by_campaign: [], campaigns: [] });
   }
