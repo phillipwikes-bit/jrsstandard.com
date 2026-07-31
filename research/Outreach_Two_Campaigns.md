@@ -26,6 +26,10 @@ We do not present this as a new legal right. We are naming an expectation that a
 
 This matters more every year, as organizations lean on AI to draft the documents behind those decisions. A record can look complete and still fail to show, on its own terms, how a conclusion was reached. When a record cannot be independently reconstructed, accountability slips away, for investigators, advocates, courts, and above all the people whose lives are affected.
 
+If this resonates, you can add your support in one click. It takes a second, it commits you to nothing, and it helps show how widely this expectation is already shared:
+
+https://www.jrsstandard.com/api/support?c=rtkw&src=email
+
 To help close that gap, I developed the Justification Review Standard (JRS), a practical framework that helps reviewers judge whether documentation can be independently reconstructed, understood, and defended before it becomes part of the permanent record.
 
 I am making the JRS Investigator Field Guide available free of charge to professionals and organizations worldwide, including an international edition built for human rights and cross-border documentation. You can download it directly here:
@@ -65,6 +69,10 @@ Every consequential decision is eventually questioned. The only uncertainty is w
 A strong record survives the complaint, the audit, the investigation, the regulatory review, and the courtroom. A weak one becomes the exposure. The difference is rarely the decision itself; it is whether the reasoning behind it can still be reconstructed from the file.
 
 As organizations increasingly use AI to draft reports, investigations, evaluations, and case files, records can read as complete while quietly losing that reasoning. I call this Decision Reconstruction Risk (DRR), the risk that a decision cannot later be independently reconstructed and defended from the documentation itself. DRR is not simply a documentation problem; it is a governance failure: when the reasoning behind a decision can no longer be reconstructed, accountability shifts from contemporaneous evidence to memory, opinion, or institutional credibility.
+
+If this resonates, you can back the initiative in one click. It takes a second, it commits you to nothing, and it helps show how many organizations take documentation defensibility seriously:
+
+https://www.jrsstandard.com/api/support?c=defend&src=email
 
 To help organizations reduce that risk, I developed the Justification Review Standard (JRS), a practical quality-assurance framework that checks whether documentation actually supports a consequential decision before the record is finalized.
 
