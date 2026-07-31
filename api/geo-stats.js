@@ -42,7 +42,7 @@ export default async function handler(){
   if (!SERVICE) return json({ total:0, countries:0, by_country:[], by_asset:[], by_source:[], by_day:[] });
 
   try {
-    const r = await fetch(SB+'/rest/v1/interaction_events?source=in.(guide-dl,pdf-dl,kit-dl)&select=source,payload,created_at&limit=20000',
+    const r = await fetch(SB+'/rest/v1/interaction_events?source=eq.guide-dl&select=source,payload,created_at&limit=20000',
       { headers:{'apikey':SERVICE,'Authorization':'Bearer '+SERVICE} });
     if (!r.ok) return json({ total:0, countries:0, by_country:[], by_asset:[], by_source:[], by_day:[] });
     const allRows = await r.json();
