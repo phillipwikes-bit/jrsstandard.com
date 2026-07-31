@@ -134,6 +134,17 @@ tr.today td{background:rgba(93,191,130,.07)}
     <div id="supcampaign" style="margin-top:12px"></div>
     <div class="note" style="margin-top:8px">One-click endorsements of the two initiatives (The Right to Know Why; The Decisions You Can Defend), by country and by initiative. Recorded at the support link; aggregate counts only, no personal data.</div>
   </div>
+  <div class="chart" id="ownercard" style="border:1px solid var(--accent-dim)">
+    <h2>Owner view: named supporter list</h2>
+    <div class="note" style="margin-bottom:12px">Private. The named, consented supporter records (name, organization, email) live in the RLS-locked <code>pilot_contacts</code> table and are never shown publicly, because supporters were told public pages show counts only. Enter your admin token to load the full list here. The token is checked server-side and no personal data is returned without it.</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px">
+      <input id="own-token" type="password" placeholder="Admin token" autocomplete="off" style="background:#0d0d0d;border:1px solid var(--rule);color:var(--text);font-family:'JetBrains Mono',monospace;font-size:12px;padding:9px 11px;min-width:220px">
+      <button id="own-load" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:var(--accent);color:#0b0b0b;border:1px solid var(--accent);padding:10px 16px;cursor:pointer">Load list</button>
+      <button id="own-csv" style="display:none;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--accent);border:1px solid var(--accent);padding:10px 16px;cursor:pointer">Download CSV</button>
+    </div>
+    <div id="own-msg" style="font-size:12px;min-height:16px;color:var(--muted-soft)"></div>
+    <div id="own-list" style="margin-top:10px;overflow-x:auto"></div>
+  </div>
 </div></main>
 <footer class="ft"><div class="wrap" style="padding:0">&#169; 2026 Phillip Wikes &middot; JRS&#8482; &middot; <a href="privacy.html" style="color:inherit">Privacy</a> &middot; confidential &middot; not indexed</div></footer>
 <script>
@@ -419,6 +430,70 @@ function loadSupport(){
 function refresh(){ loadDetection(); loadRealcase(); loadArmB(); loadTraining(); loadDownloads(); loadGeo(); loadSupport(); }
 refresh();
 setInterval(refresh, 60000);
+
+// ---- Owner view: named supporter list (token-gated, PII, not part of refresh) ----
+var OWN_ROWS=null;
+function ownEsc(t){ return esc(t); }
+function loadSupportContacts(){
+  var tok=(document.getElementById('own-token').value||'').trim();
+  var msg=document.getElementById('own-msg');
+  var list=document.getElementById('own-list');
+  var csvBtn=document.getElementById('own-csv');
+  if(!tok){ msg.style.color='var(--accent)'; msg.textContent='Enter your admin token first.'; return; }
+  msg.style.color='var(--muted-soft)'; msg.textContent='Loading the named list…';
+  list.innerHTML=''; csvBtn.style.display='none'; OWN_ROWS=null;
+  fetch('/api/support-contacts?token='+encodeURIComponent(tok))
+    .then(function(r){ return r.json().then(function(d){ return {ok:r.ok,status:r.status,d:d}; }); })
+    .then(function(x){
+      if(x.status===401){ msg.style.color='var(--accent)'; msg.textContent='Token rejected. Check the admin token set in Vercel.'; return; }
+      if(!x.ok || !x.d || !x.d.ok){ msg.style.color='var(--accent)'; msg.textContent='Could not load ('+((x.d&&x.d.error)||x.status)+').'; return; }
+      var c=x.d.contacts||[];
+      if(!c.length){ msg.style.color='var(--muted-soft)'; msg.textContent='No named supporters yet (0 rows). Counts above may still show anonymous one-click endorsements.'; return; }
+      OWN_ROWS=c;
+      var bc=x.d.by_campaign||{};
+      var bits=Object.keys(bc).map(function(k){ return bc[k]+' '+k; }).join(' · ');
+      msg.style.color='var(--ready-text,#5DBF82)'; msg.textContent=x.d.count+' named supporter'+(x.d.count===1?'':'s')+(bits?(' · '+bits):'');
+      var h='<table style="border-collapse:collapse;width:100%;font-size:12.5px"><thead><tr>'+
+        ['Name','Organization','Email','Initiative','Source','Contact','Transfer','Date'].map(function(th){
+          return '<th style="text-align:left;padding:6px 10px;border-bottom:1px solid var(--rule);font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-dim);white-space:nowrap">'+th+'</th>';
+        }).join('')+'</tr></thead><tbody>';
+      c.forEach(function(r){
+        var d=r.created_at?String(r.created_at).slice(0,10):'';
+        h+='<tr>'+
+          '<td style="padding:6px 10px;border-bottom:1px solid var(--rule);color:var(--text)">'+ownEsc(r.name)+'</td>'+
+          '<td style="padding:6px 10px;border-bottom:1px solid var(--rule);color:var(--muted)">'+ownEsc(r.organization)+'</td>'+
+          '<td style="padding:6px 10px;border-bottom:1px solid var(--rule);color:var(--muted)">'+ownEsc(r.email)+'</td>'+
+          '<td style="padding:6px 10px;border-bottom:1px solid var(--rule);color:var(--muted)">'+ownEsc(r.campaign_label||r.campaign)+'</td>'+
+          '<td style="padding:6px 10px;border-bottom:1px solid var(--rule);color:var(--muted-soft)">'+ownEsc(r.page_source)+'</td>'+
+          '<td style="padding:6px 10px;border-bottom:1px solid var(--rule);color:var(--muted-soft)">'+(r.consent_contact?'yes':'—')+'</td>'+
+          '<td style="padding:6px 10px;border-bottom:1px solid var(--rule);color:var(--muted-soft)">'+(r.consent_transfer?'yes':'—')+'</td>'+
+          '<td style="padding:6px 10px;border-bottom:1px solid var(--rule);color:var(--muted-soft);white-space:nowrap">'+ownEsc(d)+'</td>'+
+        '</tr>';
+      });
+      h+='</tbody></table>';
+      list.innerHTML=h;
+      csvBtn.style.display='inline-block';
+    })
+    .catch(function(){ msg.style.color='var(--accent)'; msg.textContent='Network error loading the list. Try again.'; });
+}
+function ownCSV(){
+  if(!OWN_ROWS||!OWN_ROWS.length) return;
+  function q(v){ v=(v==null?'':String(v)); return '"'+v.replace(/"/g,'""')+'"'; }
+  var head=['name','organization','email','initiative','campaign_key','role','source_page','consent_contact','consent_transfer','consent_listed','created_at'];
+  var lines=[head.join(',')];
+  OWN_ROWS.forEach(function(r){
+    lines.push([q(r.name),q(r.organization),q(r.email),q(r.campaign_label||r.campaign),q(r.campaign),q(r.role),q(r.page_source),q(r.consent_contact),q(r.consent_transfer),q(r.consent_listed),q(r.created_at)].join(','));
+  });
+  var blob=new Blob([lines.join('\n')],{type:'text/csv'});
+  var u=URL.createObjectURL(blob);
+  var a=document.createElement('a'); a.href=u; a.download='jrs-named-supporters-'+Date.now()+'.csv';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(u);
+}
+(function(){
+  var lb=document.getElementById('own-load'); if(lb) lb.addEventListener('click', loadSupportContacts);
+  var tb=document.getElementById('own-token'); if(tb) tb.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); loadSupportContacts(); } });
+  var cb=document.getElementById('own-csv'); if(cb) cb.addEventListener('click', ownCSV);
+})();
 </script>
 </body>
 </html>
