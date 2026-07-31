@@ -37,8 +37,10 @@ export default async function handler(req){
   try { token = new URL(req.url).searchParams.get('token') || ''; } catch(e){ token = ''; }
 
   // Auth gate: a valid owner token is required before any PII is returned.
+  // The unauthorized response reports ONLY whether a token is configured
+  // server-side (booleans, never the value) so a broken gate is diagnosable.
   if (!((ADMIN && token === ADMIN) || (RUN && token === RUN))) {
-    return json({ error:'unauthorized' }, 401);
+    return json({ error:'unauthorized', admin_token_configured: !!ADMIN, run_token_configured: !!RUN, service_key_configured: !!SERVICE }, 401);
   }
   if (!SERVICE) return json({ error:'service_key_missing' }, 503);
 
