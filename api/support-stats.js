@@ -75,7 +75,33 @@ export default async function handler(){
       if (m) named = parseInt(m[1], 10) || 0;
     } catch (e) { /* count is best-effort */ }
 
-    return json({ total: rows.length, countries: countries, named_supporters: named, by_country: by_country, by_campaign: by_campaign, campaigns: campaigns });
+    // Public supporter wall: ONLY rows whose supporter explicitly ticked the
+    // "list my name publicly" box (payload.consent_public_list === true).
+    // Project name + organization + initiative ONLY. Email is never selected,
+    // never returned, never shown. This is the no-token public list: it holds
+    // exactly the people who asked to be listed, and nobody else.
+    let public_supporters = [];
+    try {
+      const pr = await fetch(SB + '/rest/v1/pilot_contacts?source=eq.support&select=name,organization,message&order=created_at.asc', {
+        headers: { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE } });
+      if (pr.ok) {
+        const prows = await pr.json();
+        for (const row of prows) {
+          let p = {};
+          try { p = JSON.parse(row.message || '{}'); } catch (e) { p = {}; }
+          if (p.consent_public_list === true && row.name) {
+            const camp = p.campaign || 'general';
+            public_supporters.push({
+              name: row.name,
+              organization: row.organization || '',
+              initiative: CAMPAIGN_LABEL[camp] || camp
+            });
+          }
+        }
+      }
+    } catch (e) { /* public wall is best-effort */ }
+
+    return json({ total: rows.length, countries: countries, named_supporters: named, public_supporters: public_supporters, by_country: by_country, by_campaign: by_campaign, campaigns: campaigns });
   } catch (e) {
     return json({ total: 0, countries: 0, by_country: [], by_campaign: [], campaigns: [] });
   }

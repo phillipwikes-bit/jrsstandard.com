@@ -45,6 +45,7 @@ a.plain{color:var(--accent);text-decoration:none}
       <input id="j-org" type="text" placeholder="Organization (optional)" autocomplete="organization" style="background:#0d0d0d;border:1px solid var(--rule);color:var(--text);font-family:inherit;font-size:14px;padding:10px 12px">
       <input id="j-email" type="email" placeholder="Email (optional)" autocomplete="email" style="background:#0d0d0d;border:1px solid var(--rule);color:var(--text);font-family:inherit;font-size:14px;padding:10px 12px">
       <label style="display:flex;gap:9px;align-items:flex-start;font-size:12.5px;color:var(--muted);line-height:1.5"><input id="j-consent" type="checkbox" style="margin-top:3px;flex:0 0 auto"> <span>You may contact me about this initiative. I understand my details stay private.</span></label>
+      <label style="display:flex;gap:9px;align-items:flex-start;font-size:12.5px;color:var(--muted);line-height:1.5"><input id="j-public" type="checkbox" style="margin-top:3px;flex:0 0 auto"> <span>List my name publicly on the supporters page. Only your name and organization are shown, never your email. Leave unticked to stay a private count.</span></label>
       <button type="submit" class="btn solid" style="justify-self:start;cursor:pointer">Add my support</button>
       <div id="j-msg" style="font-size:13px;min-height:18px"></div>
     </form>
@@ -113,7 +114,8 @@ a.plain{color:var(--accent);text-decoration:none}
     msg.style.color='var(--muted)'; msg.textContent='Adding...';
     fetch('/api/support-join',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
       name:name, organization:document.getElementById('j-org').value.trim(), email:email,
-      campaign:c, source:'supported-page', consent_contact:true, consent_transfer:true, consent_listed:true
+      campaign:c, source:'supported-page', consent_contact:true, consent_transfer:true, consent_listed:true,
+      consent_public_list:document.getElementById('j-public').checked
     })}).then(function(r){ return r.json().then(function(d){ return {ok:r.ok,d:d}; }); })
       .then(function(x){
         if(x.ok && x.d && x.d.ok){ form.innerHTML='<div style="color:var(--ready);font-family:\'JetBrains Mono\',monospace;font-size:12px;letter-spacing:.08em">You are on the list. Thank you.</div>'; }
