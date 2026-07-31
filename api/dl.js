@@ -70,13 +70,27 @@ export default async function handler(req){
 
   const target = url.origin + '/' + (edition ? FILES[edition] : doc ? DOCS[doc] : kit);
 
+  // Internal smoke/deploy-test tags: never recorded, and any existing ones are
+  // purged server-side so the download counts stay clean automatically.
+  const isTest = !!src && (src === 'verify' || src === 'test' || src === 'selftest' || src.indexOf('deploytest') === 0);
+
   const env = (typeof process!=='undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
   if (SERVICE) {
     const H = {'apikey':SERVICE,'Authorization':'Bearer '+SERVICE,'Content-Type':'application/json','Prefer':'return=minimal'};
     const country = String(req.headers.get('x-vercel-ip-country')||'').toUpperCase().replace(/[^A-Z]/g,'').slice(0,2) || null;
+
+    // Self-healing purge of any test-tagged download rows already stored.
+    // (deploytest* variants are also hidden by the geo-stats read filter.)
     try {
-      if (edition) {
+      await fetch(SB+"/rest/v1/interaction_events?source=in.(guide-dl,pdf-dl,kit-dl)&payload->>src=in.(verify,test,selftest,deploytest-geo2)",
+        { method:'DELETE', headers:H });
+    } catch(e){ /* best-effort */ }
+
+    try {
+      if (isTest) {
+        // skip recording internal test downloads entirely
+      } else if (edition) {
         await Promise.all([
           fetch(SB+'/rest/v1/guide_downloads',{ method:'POST', headers:H,
             body:JSON.stringify({ edition: edition, src: src }) }),

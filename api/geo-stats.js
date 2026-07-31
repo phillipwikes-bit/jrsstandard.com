@@ -9,6 +9,13 @@ export const config = { runtime: 'edge' };
 
 const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 
+// Internal smoke/deploy-test tags. Downloads recorded during development
+// verification, excluded from every count so the dashboard shows real traffic.
+function isTestSrc(s){
+  s = String(s || '');
+  return s === 'verify' || s === 'test' || s === 'selftest' || s.indexOf('deploytest') === 0;
+}
+
 function assetOf(row){
   const p = row.payload || {};
   if (row.source === 'kit-dl'){
@@ -32,15 +39,17 @@ function assetOf(row){
 export default async function handler(){
   const env = (typeof process!=='undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
-  if (!SERVICE) return json({ total:0, countries:0, by_country:[], by_asset:[], by_source:[] });
+  if (!SERVICE) return json({ total:0, countries:0, by_country:[], by_asset:[], by_source:[], by_day:[] });
 
   try {
-    const r = await fetch(SB+'/rest/v1/interaction_events?source=in.(guide-dl,pdf-dl,kit-dl)&select=source,payload&limit=20000',
+    const r = await fetch(SB+'/rest/v1/interaction_events?source=in.(guide-dl,pdf-dl,kit-dl)&select=source,payload,created_at&limit=20000',
       { headers:{'apikey':SERVICE,'Authorization':'Bearer '+SERVICE} });
-    if (!r.ok) return json({ total:0, countries:0, by_country:[], by_asset:[], by_source:[] });
-    const rows = await r.json();
+    if (!r.ok) return json({ total:0, countries:0, by_country:[], by_asset:[], by_source:[], by_day:[] });
+    const allRows = await r.json();
+    // Drop internal test/deploy download rows so every total is real traffic.
+    const rows = allRows.filter(row => !isTestSrc(row.payload && row.payload.src));
 
-    const byC = {}, byA = {}, byS = {};
+    const byC = {}, byA = {}, byS = {}, byD = {};
     for (const row of rows){
       const c = (row.payload && row.payload.country) || 'unknown';
       byC[c] = (byC[c]||0)+1;
@@ -48,6 +57,17 @@ export default async function handler(){
       byA[a] = (byA[a]||0)+1;
       const s = (row.payload && row.payload.src) || 'unknown';
       byS[s] = (byS[s]||0)+1;
+
+      // Per-day stack: guide editions kept separate, every other asset -> 'other'.
+      const day = String(row.created_at || '').slice(0, 10) || 'unknown';
+      if (!byD[day]) byD[day] = { day: day, employment:0, fairhousing:0, international:0, other:0, total:0 };
+      let series = 'other';
+      if (row.source === 'guide-dl'){
+        const ed = row.payload && row.payload.edition;
+        if (ed === 'employment' || ed === 'fairhousing' || ed === 'international') series = ed;
+      }
+      byD[day][series] += 1;
+      byD[day].total += 1;
     }
     const by_country = Object.entries(byC)
       .map(([country,downloads])=>({country,downloads}))
@@ -58,11 +78,14 @@ export default async function handler(){
     const by_source = Object.entries(byS)
       .map(([source,downloads])=>({source,downloads}))
       .sort((a,b)=>b.downloads-a.downloads);
+    const by_day = Object.values(byD)
+      .filter(d => d.day !== 'unknown')
+      .sort((a,b)=> a.day < b.day ? -1 : a.day > b.day ? 1 : 0);
     const countries = by_country.filter(x=>x.country!=='unknown').length;
 
-    return json({ total: rows.length, countries: countries, by_country: by_country, by_asset: by_asset, by_source: by_source });
+    return json({ total: rows.length, countries: countries, by_country: by_country, by_asset: by_asset, by_source: by_source, by_day: by_day });
   } catch(e){
-    return json({ total:0, countries:0, by_country:[], by_asset:[], by_source:[] });
+    return json({ total:0, countries:0, by_country:[], by_asset:[], by_source:[], by_day:[] });
   }
 }
 
