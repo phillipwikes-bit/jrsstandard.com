@@ -446,21 +446,24 @@ function loadArmBScore(){
   if(!tok){ if(gate) gate.style.display=''; out.innerHTML=''; return; }
   if(gate) gate.style.display='none';
   out.innerHTML='<div style="color:var(--muted-soft);font-size:12px">Scoring&hellip;</div>';
-  fetch('/api/bench-admin',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'score_armb',token:tok})})
+  fetch('/api/bench-admin',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'score_all',token:tok})})
     .then(function(r){ if(r.status===401) throw new Error('unauth'); if(!r.ok) throw 0; return r.json(); })
     .then(function(d){
       if(!d||!d.ok) throw 0;
-      var pc=function(v){ return (v==null)?'n/a':(v*100).toFixed(1)+'%'; };
-      var diff=(d.difference==null)?'n/a':((d.difference>=0?'+':'')+(d.difference*100).toFixed(1)+' pts');
-      var inc=d.included||{B1:'-',B2:'-'};
-      var html='<table><thead><tr><th>Arm</th><th>Reviewers</th><th>Mean accuracy</th></tr></thead><tbody>';
-      html+='<tr><td>B1 &middot; JRS</td><td>'+inc.B1+'</td><td>'+pc(d.B1_mean)+'</td></tr>';
-      html+='<tr><td>B2 &middot; baseline</td><td>'+inc.B2+'</td><td>'+pc(d.B2_mean)+'</td></tr>';
+      var row=function(label,s){ if(!s) return '<tr><td>'+label+'</td><td>-</td><td>-</td></tr>'; return '<tr><td>'+label+'</td><td>'+s.reviewers+'</td><td>'+s.mean_pct.toFixed(1)+'%</td></tr>'; };
+      var html='<table><thead><tr><th>Group</th><th>Reviewers</th><th>Mean accuracy</th></tr></thead><tbody>';
+      html+=row('Arm A &middot; expert panel (JRS)', d.ArmA);
+      html+=row('Arm B1 &middot; JRS', d.B1);
+      html+=row('Arm B2 &middot; baseline', d.B2);
       html+='</tbody></table>';
-      html+='<div style="font-family:\'JetBrains Mono\',monospace;font-size:11px;color:var(--accent-dim);margin-top:8px">Difference (JRS - baseline): <b style="color:var(--accent)">'+diff+'</b></div>';
-      if(d.note) html+='<div style="font-size:11px;color:var(--muted-soft);margin-top:4px">'+d.note+'</div>';
+      if(d.difference_pts!=null){
+        var ci=d.difference_ci95?(' &nbsp;95% CI ['+d.difference_ci95[0]+', '+d.difference_ci95[1]+']'):'';
+        var verdict=d.floor3_met? '<span style="color:var(--ready)">excludes 0 (JRS ahead)</span>' : '<span style="color:#D4A055">includes 0: not significant</span>';
+        html+='<div style="font-family:\'JetBrains Mono\',monospace;font-size:11px;color:var(--accent-dim);margin-top:10px">JRS minus baseline (B1 - B2): <b style="color:var(--accent)">'+(d.difference_pts>=0?'+':'')+d.difference_pts+' pts</b>'+ci+' &middot; '+verdict+'</div>';
+        if(d.ci_note) html+='<div style="font-size:10.5px;color:var(--muted-soft);margin-top:3px">'+d.ci_note+'</div>';
+      }
       if((d.unmapped_records&&d.unmapped_records.length)||d.unmapped_answers){
-        html+='<div style="font-size:11px;color:#D4A055;margin-top:6px">Heads up: '+((d.unmapped_records&&d.unmapped_records.length)||0)+' unrecognized record label(s) and '+(d.unmapped_answers||0)+' unrecognized answer(s) were skipped rather than guessed. Tell Claude if this is not 0.</div>';
+        html+='<div style="font-size:11px;color:#D4A055;margin-top:6px">Heads up: '+((d.unmapped_records&&d.unmapped_records.length)||0)+' unrecognized record label(s) and '+(d.unmapped_answers||0)+' unrecognized answer(s) were skipped, not guessed. Tell Claude if this is not 0.</div>';
       }
       html+='<div style="margin-top:8px"><a href="#" onclick="clearArmBToken();return false" style="font-size:10px;color:var(--muted-soft)">clear token</a></div>';
       out.innerHTML=html;

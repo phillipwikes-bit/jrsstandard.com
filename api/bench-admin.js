@@ -149,6 +149,52 @@ export default async function handler(req){
         unmapped_records:Object.keys(unmapRec).filter(Boolean), unmapped_answers:unmapAns,
         note:'preliminary if either arm <5 (design floor 5-8/arm); verify unmapped_* are empty before trusting'});
     }
+    if (action==='score_all'){
+      // Full detection scoring in one call: Arm A (JRS expert/trained panel),
+      // plus Arm B B1 (JRS) and B2 (baseline), each vs the verified key, with a
+      // conservative CI on the B1-B2 difference. Never fabricates: unmapped
+      // records/answers are counted and reported, not guessed.
+      var K3={R01:'G',R02:'U',R03:'U',R04:'G',R05:'U',R06:'G',R07:'U',R08:'G',R09:'U',R10:'G',R11:'U',R12:'G',R13:'U',R14:'G',R15:'U',R16:'G',R17:'U',R18:'G',R19:'U',R20:'G',R21:'U',R22:'G',R23:'U',R24:'G'};
+      var G3={ready:1,yes:1,grounded:1,rely:1,'true':1,'1':1,adequate:1,supported:1};
+      var U3={review_required:1,needs_work:1,'needs work':1,gap:1,gap_identified:1,no:1,ungrounded:1,'false':1,'0':1,not_rely:1,inadequate:1,unsupported:1};
+      var arm3={};
+      try{ var q3=await fetch(SB+'/rest/v1/armb_progress?select=code,arm_code',{headers:{'apikey':SERVICE,'Authorization':'Bearer '+SERVICE}}); var qj3=await q3.json(); if(Array.isArray(qj3)) qj3.forEach(function(r){ if(r&&r.code) arm3[r.code]=r.arm_code||null; }); }catch(e){}
+      var per3={}, unRec={}, unAns=0, tot3=0, f3=0, pg3=1000;
+      for(;;){
+        var rq=await fetch(SB+"/rest/v1/ai_pilot_reads?select=reviewer_code,record_ref,jrs_read,rely,batch",{headers:{'apikey':SERVICE,'Authorization':'Bearer '+SERVICE,'Range-Unit':'items','Range':f3+'-'+(f3+pg3-1)}});
+        var cx=await rq.json(); if(!Array.isArray(cx)||!cx.length) break;
+        cx.forEach(function(r){
+          tot3++;
+          var code=r.reviewer_code||''; var arm=arm3[code]; var grp=arm?arm:'ArmA';
+          var rec=String(r.record_ref||'').trim().toUpperCase();
+          var det=String((grp==='B2'?r.rely:r.jrs_read)||'').trim().toLowerCase();
+          var pred=G3[det]?'G':(U3[det]?'U':null);
+          var kk=grp+'|'+code; if(!per3[kk]) per3[kk]={grp:grp,correct:0,scored:0};
+          if(!K3[rec]){ unRec[rec]=1; return; }
+          if(pred===null){ unAns++; return; }
+          per3[kk].scored++; if(pred===K3[rec]) per3[kk].correct++;
+        });
+        if(cx.length<pg3) break; f3+=pg3;
+      }
+      var grp3={};
+      Object.keys(per3).forEach(function(k){ var p=per3[k]; if(p.scored<18) return; (grp3[p.grp]=grp3[p.grp]||[]).push(p.correct/p.scored); });
+      var st=function(a){ if(!a||!a.length) return null; var n=a.length,m=a.reduce(function(x,y){return x+y;},0)/n; var v=n>1?a.reduce(function(s,x){return s+(x-m)*(x-m);},0)/(n-1):0; return {reviewers:n,mean_pct:Math.round(m*1000)/10,sd:Math.sqrt(v)}; };
+      var A3=st(grp3['ArmA']), B1s=st(grp3['B1']), B2s=st(grp3['B2']);
+      var diff3=null, ci3=null, met3=null;
+      if(B1s&&B2s){
+        diff3=Math.round((B1s.mean_pct-B2s.mean_pct)*10)/10;
+        var se=Math.sqrt((B1s.sd*B1s.sd)/B1s.reviewers+(B2s.sd*B2s.sd)/B2s.reviewers)*100;
+        var dfp=Math.max(1,Math.min(B1s.reviewers,B2s.reviewers)-1);
+        var TT={1:12.71,2:4.303,3:3.182,4:2.776,5:2.571,6:2.447,7:2.365,8:2.306,9:2.262,10:2.228};
+        var tt=TT[dfp]||1.96;
+        ci3=[Math.round((diff3-tt*se)*10)/10, Math.round((diff3+tt*se)*10)/10];
+        met3=ci3[0]>0;
+      }
+      return json({ok:true, total_rows:tot3, ArmA:A3, B1:B1s, B2:B2s,
+        difference_pts:diff3, difference_ci95:ci3, floor3_met:met3,
+        ci_note:'Welch two-sample, conservative t at df=min(n)-1; wide at small n',
+        unmapped_records:Object.keys(unRec).filter(Boolean), unmapped_answers:unAns});
+    }
     return json({error:'unknown_action'},400);
   } catch(e){ return json({error:String(e&&e.message||e)},500); }
 }
