@@ -64,6 +64,10 @@ JRS is a record-level, pre-finalization review method. It evaluates a single rec
 
 **The three reads.** A reviewer assigns each record one of three determinations: Ready (a later reviewer could reconstruct the conclusion from the record alone), Needs work (partly reconstructable, some basis visible with gaps), or Gap (the basis for the conclusion is not visible in the record). A separate would-rely judgment (Yes or No) records whether the reviewer would rely on the record in a high-stakes, accountable decision.
 
+**Author-blind by design.** JRS does not ask, and does not try to detect, whether a record was written by a person or with AI assistance. That distinction is both technically unreliable and beside the point: a human-authored record can be conclusory and unanchored, and an AI-assisted record can be fully traceable. What the standard tests is whether the reasoning survives separation from whoever produced it. This is what keeps the criterion durable as drafting tools change, and it is why the method targets documentation risk rather than authorship.
+
+**Proportionality.** The documentation defensibility a record must carry scales with the stakes of the decision it supports: the tolerable level of Decision Reconstruction Risk falls as the consequence of the decision rises. A routine, low-stakes action may be adequately served by a brief summary, while a termination, a compliance escalation, or a benefits denial requires specific, identifiable evidence, or at least references to where that evidence resides. This principle, surfaced by pilot reviewer Saurabh Nanda, keeps the standard practical by concentrating review effort where exposure is greatest; the constructed corpus used here is deliberately weighted toward high-stakes contexts in which reconstructability matters most.
+
 JRS is deliberately independent of any vendor, model, or drafting workflow. It is a governance layer that sits above the technology stack and evaluates the output the stack produces.
 
 ## 4. Methods
@@ -154,7 +158,7 @@ Landis, J.R., Koch, G.G., 1977. The measurement of observer agreement for catego
 
 ## Acknowledgments
 
-I thank the international reviewer panel for their care and independent judgment. Reviewers are recognized as named contributors with their consent; they are not co-authors of this paper.
+I thank the international reviewer panel for their care and independent judgment. Reviewers are recognized as named contributors with their consent; they are not co-authors of this paper. The proportionality principle described in Section 3 was surfaced by pilot reviewer Saurabh Nanda, General Manager and APAC Business Leader (Align Technology), and is credited with his permission.
 
 ## Data availability and pre-registration
 
