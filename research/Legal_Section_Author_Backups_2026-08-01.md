@@ -16,7 +16,6 @@ Article: "The Evidentiary Deficit in AI-Assisted Record-Keeping." The open seat 
 **Declined (do not re-ask for co-authorship):** Dr. Gabriela Bar (V-AI-16), attorney and doctor of laws, the natural fit, declined on capacity grounds 2026-07-30. Her completed expert-reviewer recognition stands.
 
 ## External candidates (already vetted, from `Legal_CoAuthor_Candidates_EU.md`)
-- Dr. Gabriela Zanfir-Fortuna (currently being withdrawn for non-response)
 - Prof. Lokke Moerel · Prof. Sandra Wachter · Prof. Mireille Hildebrandt · Dr. Sophie Stalla-Bourdillon · Cristina Vanberghen · Dr. Nathalie Smuha · Dr. Katharina Miller
 - Ralph Losey (US attorney; e-discovery/EDRM) — strongest external US-side option.
 

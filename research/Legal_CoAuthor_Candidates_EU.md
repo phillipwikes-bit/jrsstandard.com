@@ -9,9 +9,8 @@
 | 3 | Prof. Mireille Hildebrandt | Belgium / NL | Chair in Law & Technology, VUB / Radboud; automated decision-making, legal agency, profiling. |
 | 4 | Dr. Sophie Stalla-Bourdillon | UK / France | Data protection & AI law; academic (Southampton) + privacy-engineering industry. Evidence/logging/accountability. |
 | 5 | Cristina Vanberghen | EU / Belgium | Senior EU AI Act expert; European Commission / European University Institute. |
-| 6 | Dr. Gabriela Zanfir-Fortuna | US / EU (Romania) | VP Global Privacy, Future of Privacy Forum; GDPR scholar and practitioner. |
-| 7 | Dr. Nathalie Smuha | Belgium | KU Leuven; lawyer-philosopher; EU AI High-Level Expert Group; AI governance and fundamental rights. |
-| 8 | Dr. Katharina Miller | Spain / Germany | Corporate + AI-governance lawyer; Fédération des Barreaux d'Europe network (same circle as Bar). |
+| 6 | Dr. Nathalie Smuha | Belgium | KU Leuven; lawyer-philosopher; EU AI High-Level Expert Group; AI governance and fundamental rights. |
+| 7 | Dr. Katharina Miller | Spain / Germany | Corporate + AI-governance lawyer; Fédération des Barreaux d'Europe network (same circle as Bar). |
 
 ## Next step (pre-staged)
 On selection of one candidate, adapt `research/Bar_CoAuthor_Pitch.md` into a merit-based invitation: the article is near-complete and strong on the US side (discovery, McDonnell Douglas, ESI); it needs a European legal voice to anchor Section V (GDPR accountability, EU AI Act record-keeping/logging for high-risk uses). Earned authorship; venue Oxford Business Law Blog (Lexology/JD Supra backup). Internal-completer fallbacks remain Hekim Colpan (V-AI-20) and external option Ralph Losey.
