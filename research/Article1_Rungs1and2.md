@@ -19,7 +19,7 @@
 
 **Methods.** Reproducibility was assessed by having three independent AI providers apply JRS to the same constructed records. Reliability was assessed among independent expert and trained-reviewer panels using Gwet's AC1 as the primary chance-corrected coefficient. Preliminary accuracy was assessed against a held-out answer key, independently verified before scoring.
 
-**Results and interpretation.** Independent reviewers reached substantial agreement (Gwet's AC1 = 0.74 for experts, 0.63 for trained reviewers, across 10 records). Cross-vendor AI agreement averaged 84% across 15 constructed records. Accuracy testing remains ongoing. The findings support reproducible application and substantial inter-rater reliability; they do not establish accuracy, value, or real-world effectiveness, which are later stages.
+**Results and interpretation.** Cross-vendor AI agreement averaged 84% across 15 constructed records. Inter-rater reliability among independent reviewers is preliminary and not reported here: the reviewer sample is still being collected and has not reached the pre-registered target. Accuracy testing remains ongoing. The findings support reproducible machine application; they do not establish reliability, accuracy, value, or real-world effectiveness, which are later stages.
 
 ## 1. Background
 
@@ -34,7 +34,7 @@ Validation proceeds in staged rungs, each answering one question:
 
    Rung 1   Reproducibility   do independent AI models apply JRS alike?      [84%, 15 records]
      |
-   Rung 2a  Reliability       do independent human reviewers agree?          [AC1 0.74 / 0.63]
+   Rung 2a  Reliability       do independent human reviewers agree?          [reliability preliminary (sample still being collected; not yet reported)]
      |
    Rung 2b  Accuracy          do reads match a verified key?                 [preliminary]
      |
@@ -66,22 +66,15 @@ Constructed records were developed to represent realistic administrative documen
 ### 4.1 Reproducibility (Rung 1): collected data
 On 15 constructed records, three independent providers (Anthropic claude-opus-4-8, OpenAI gpt-5, Google Gemini) agreed on the JRS read **84%** of the time (nightly automated run, latest 2026-07-06; history ranges 78 to 87% as the record set expanded from 3 to 15). This is a reproducibility signal only: it shows independent models apply the read consistently, not that the read is correct.
 
-### 4.2 Reliability (Rung 2a): collected data
-Across **10 records**:
-
-| Rater group | Records | Mean raters/record | Raw agreement | Gwet's AC1 |
-|---|---|---|---|---|
-| Experts | 10 | 3.6 | 88% | **0.74** |
-| Trained reviewers | 10 | 7.2 | 83% | **0.63** |
-
-Inter-rater reliability is preliminary and not reported here: the reviewer sample is still being collected and has not reached the pre-registered pooled target, so no reliability coefficient is claimed at this stage.
+### 4.2 Reliability (Rung 2a): preliminary, not reported
+Inter-rater reliability is preliminary and not reported here: the reviewer sample is still being collected and has not reached the pre-registered pooled target, so no reliability coefficient is claimed at this stage. This analysis will be reported when the pre-registered sample is complete.
 
 ### 4.3 Accuracy (Rung 2b): preliminary
 The 24-record answer key was independently reproduced by raters blind to the intended labels, 24 of 24, fixing the key against which accuracy is scored. Reviewer completion is in progress; a full accuracy estimate (with sensitivity, specificity, and confidence intervals) is deferred until the pre-registered reviewer sample completes. Early completions are consistent with above-chance separation, reported here as preliminary and not as a confirmed result.
 
 ## 5. Discussion
 
-The reliability result is the substantive finding of this stage: independent raters, expert and trained, apply JRS to records with substantial, chance-corrected agreement, and the reviewer coefficient meets the threshold set in advance. This supports the claim that JRS is applied consistently, not idiosyncratically.
+Reliability is a supporting analysis at this stage and is not yet reportable: the reviewer sample is still being collected and has not reached the pre-registered target, so no reliability coefficient is claimed here. Reproducibility (Rung 1) stands on its own.
 
 Reliability is a prerequisite for later validation. Before a review method can be evaluated for accuracy or practical value, independent reviewers must first demonstrate that they can apply it consistently. The findings reported here therefore establish a methodological foundation rather than a final validation of JRS: reliability is necessary but not sufficient for the accuracy, value, and effectiveness questions that follow.
 

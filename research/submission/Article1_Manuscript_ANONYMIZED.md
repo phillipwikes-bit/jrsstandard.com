@@ -4,7 +4,7 @@
 
 ## Abstract
 
-Consequential administrative decisions are increasingly documented with AI-assisted drafting, which can make a record fluent without ensuring that the basis for its conclusion is actually present. The Justification Review Standard (JRS) is a record-level review method that asks a single question of a document: can a later, independent reviewer reconstruct the documented basis for the decision from the record alone? A record that fails this test carries what we term Decision Reconstruction Risk (DRR). This paper reports the first two stages of a pre-registered evidence program for JRS. Reproducibility was assessed by having three AI models from different vendors apply JRS to the same constructed records; mean pairwise agreement on the determination was 84 percent across 15 records. Reliability was assessed with independent panels of expert and trained reviewers, using Gwet's AC1 as the primary chance-corrected coefficient; agreement reached AC1 = 0.74 among experts (95 percent CI 0.40 to 1.00) and 0.63 among trained reviewers (95 percent CI 0.26 to 1.00) across 10 records. Both point estimates reach the substantial range and clear the pre-registered point threshold of 0.61; on this interim record set the intervals are wide and their lower bounds sit at or below the pre-registered 0.41 mark, so the lower-bound half of the reliability rule awaits the pooled confirmatory sample. A preliminary accuracy stage is under way against an independently verified answer key. We interpret these results as evidence that JRS is applied consistently rather than idiosyncratically. They do not, and are not offered to, establish the method's accuracy, practical value, or real-world effectiveness, which are the subject of later stages.
+Consequential administrative decisions are increasingly documented with AI-assisted drafting, which can make a record fluent without ensuring that the basis for its conclusion is actually present. The Justification Review Standard (JRS) is a record-level review method that asks a single question of a document: can a later, independent reviewer reconstruct the documented basis for the decision from the record alone? A record that fails this test carries what we term Decision Reconstruction Risk (DRR). This paper reports the first two stages of a pre-registered evidence program for JRS. Reproducibility was assessed by having three AI models from different vendors apply JRS to the same constructed records; mean pairwise agreement on the determination was 84 percent across 15 records. Inter-rater reliability among independent reviewers is preliminary and is not reported here: the reviewer sample is still being collected and has not reached the pre-registered pooled target, so no reliability coefficient is claimed at this stage; this analysis will be reported when the sample is complete. A preliminary accuracy stage is under way against an independently verified answer key. We interpret the reproducibility result as evidence that JRS is applied consistently by independent machines rather than idiosyncratically. They do not, and are not offered to, establish the method's accuracy, practical value, or real-world effectiveness, which are the subject of later stages.
 
 **Keywords:** documentation quality; inter-rater reliability; Gwet's AC1; AI-assisted decision-making; accountability; responsible technology
 
@@ -25,7 +25,7 @@ The validation of JRS is organized as a sequence of stages, each posing one ques
 | Stage | Question | Status in this paper |
 |---|---|---|
 | Rung 1: Reproducibility | Do independent AI models apply JRS alike? | Reported (84 percent, 15 records) |
-| Rung 2a: Reliability | Do independent human reviewers agree? | Reported (AC1 0.74 experts, 0.63 reviewers) |
+| Rung 2a: Reliability | Do independent human reviewers agree? | Preliminary; sample still being collected, not yet reported |
 | Rung 2b: Accuracy | Do reads match an independently verified key? | Preliminary |
 | Construct validity | Are the five conditions distinct dimensions? | Later stage |
 | Rung 3: Criterion validity | Do flagged records fail in real cases? | Later stage |
@@ -63,20 +63,7 @@ Across 15 constructed records, mean pairwise agreement among the three cross-ven
 
 ### 4.2 Reliability
 
-Results for the two rater groups are shown in Table 2.
-
-**Table 2. Inter-rater agreement across 10 records.**
-
-| Rater group | Records | Mean raters per record | Raw agreement | Gwet's AC1 | 95 percent CI |
-|---|---|---|---|---|---|
-| Experts (primary) | 10 | 3.6 | 88 percent | 0.74 | 0.40 to 1.00 |
-| Trained reviewers (secondary) | 10 | 7.2 | 83 percent | 0.63 | 0.26 to 1.00 |
-
-The expert panel provides the pre-registered primary reliability statistic. Its coefficient, 0.74 (95 percent CI 0.40 to 1.00), falls in the substantial range, 0.61 to 0.80 on the Landis and Koch (1977) scale, and clears the pre-registered point threshold of 0.61. The trained-reviewer panel, a secondary analysis, gives 0.63 (95 percent CI 0.26 to 1.00), also above that threshold. The pre-registered rule additionally requires the lower bound of the 95 percent interval to reach 0.41. On this interim set of 10 records, against a pre-registered pooled target of approximately 26, the intervals are wide and their lower bounds sit at or below that mark, 0.40 for experts and 0.26 for reviewers, so the lower-bound criterion is not yet met; the subject-level bootstrap places the expert lower bound marginally higher, at 0.43, which shows the expert result resting on the 0.41 boundary and turning on completion of the pooled sample. Pooling all determinations made in JRS mode (108 labels), the distribution was 69 percent Gap, 18 percent Needs work, and 13 percent Ready, consistent with a record set built to foreground reconstructability problems.
-
-The marginal-sensitive coefficients behave as the analysis plan anticipated. For the expert panel, Krippendorff's alpha (0.62) and Fleiss' kappa (0.65) track AC1 (0.74) closely. For the trained-reviewer panel they fall well below it, to 0.30 and 0.28, the signature of the kappa paradox under skewed marginals: with 69 percent of determinations in a single category, the chance term these coefficients use is inflated and their values deflate even as observed agreement stays high. This divergence is the reason AC1, which is robust to the paradox, was named in advance as the primary coefficient rather than chosen after the data were seen. It also bounds the strength of the reviewer-panel claim: only under the paradox-robust coefficient does that panel reach the substantial range.
-
-As a secondary, exploratory analysis, AC1 was computed for each of the five conditions (Table 3). Per-condition agreement is lower than agreement on the overall determination, which is expected when raters reach the same determination through different combinations of conditions. No single condition drives the determination-level result, and the conditions applied most consistently differ between the two panels. These values are exploratory and are not part of the pre-registered reliability rule.
+Inter-rater reliability among independent reviewers is preliminary and is not reported here. The reviewer sample is still being collected and has not reached the pre-registered pooled target of approximately 26 records, so no reliability coefficient, determination-level or per-condition, is claimed at this stage. This analysis and its pre-registered floor test will be reported when the sample is complete.
 
 **Table 3. Secondary per-condition AC1 (exploratory).**
 
@@ -104,7 +91,7 @@ The reliability estimate rests on the 10 records labeled to date, short of the p
 
 ## 7. Pre-registered thresholds
 
-The rule set in advance treats reliability as supported only if Gwet's AC1 on the expert panel reaches 0.61 with the lower bound of its 95 percent confidence interval at 0.41 or above. On the interim record set the expert point estimate (0.74) clears the 0.61 threshold decisively, but the lower confidence bound sits on the 0.41 boundary, 0.40 by the linearization variance and 0.43 by the bootstrap, so the lower-bound half of the rule is not yet robustly met and is resolved by completing the pooled record set. The trained-reviewer point estimate (0.63) clears 0.61 while its interval extends well below 0.41. Reporting the boundary result as unsettled rather than as met is itself an application of the pre-registered discipline. Accuracy and value thresholds are likewise set in advance and are evaluated only after data lock. A failed threshold is reported as a null or weak result and is not reinterpreted after the fact.
+The rule set in advance treats reliability as supported only if Gwet's AC1 on the expert panel reaches 0.61 with the lower bound of its 95 percent confidence interval at 0.41 or above. That rule is not yet evaluated here: the reviewer sample is still being collected and has not reached the pre-registered pooled target, so the reliability result is reported as preliminary and pending rather than as met. Accuracy and value thresholds are likewise set in advance and are evaluated only after data lock. A failed threshold is reported as a null or weak result and is not reinterpreted after the fact.
 
 ## 8. Next steps
 
@@ -112,7 +99,7 @@ The program continues in order. The immediate next step is to complete the accur
 
 ## 9. Conclusion
 
-These findings support the continued evaluation of JRS through staged validation. They are best read as evidence of reproducible application and substantial inter-rater reliability, and not as a demonstration of accuracy or operational effectiveness, which the program has yet to test.
+These findings support the continued evaluation of JRS through staged validation. They are best read as evidence of reproducible machine application, and not as a demonstration of reliability, accuracy, or operational effectiveness, which the program has yet to report or test.
 
 ## References
 

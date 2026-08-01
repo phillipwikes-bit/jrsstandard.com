@@ -1,5 +1,8 @@
 # Submission Packet: Journal of Responsible Technology (Elsevier)
 
+> **HOLD 2026-08-01:** The Rung 2a reliability result is withdrawn to preliminary. The reviewer sample is still being collected and has not reached the pre-registered target, so NO reliability coefficient (0.74 / 0.63 or otherwise) is to be reported or submitted. Any AC1 figure below in this internal QA log reflects the earlier interim snapshot and is not a current claim.
+
+
 **Paper:** Reliability and Reproducibility of a Record-Level Review Standard: Rungs 1 and 2 of a Staged Evidence Program
 **Authors:** Phillip Wikes (corresponding), Ubayet Hossain, FRM
 **Prepared:** 2026-07-27. Everything the journal needs is in this folder. Build the `.docx` versions for upload; the `.md` files are the editable masters.

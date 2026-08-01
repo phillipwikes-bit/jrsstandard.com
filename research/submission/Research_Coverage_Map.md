@@ -15,7 +15,7 @@
 |---|---|---|---|
 | DRR construct + JRS five-condition method | conceptual | Combined paper (§1-3) | YES |
 | Rung 1: reproducibility (3 AI vendors, 84%) | complete | Combined paper (§4.7, §5.1) | YES |
-| Rung 2a: reliability (AC1 0.74 / 0.63) | complete | Combined paper (§5.1) | YES |
+| Rung 2a: reliability (reliability preliminary (sample still being collected; not yet reported)) | complete | Combined paper (§5.1) | YES |
 | Rung 2b: detection accuracy (24-record vs verified key) | gated | Combined paper (§5.2) | YES (gated) |
 | Arm B: randomized comparison (JRS vs unaided) | gated | Combined paper (§5.2) | YES (gated) |
 | Rung 3: criterion validity, public records (FOIL, Stacy Young, n=7) | gated/immature | **`FOIL_Article_Outline.md`** (separate; Stacy co-author) | NO, by design |

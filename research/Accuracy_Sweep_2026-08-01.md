@@ -31,7 +31,7 @@ Method: pulled ground-truth counts from the live Supabase database via the conne
 - **Reality:** the nightly run varies. Last three: 88.9% (7/31), 82.2% (7/30), 87.8% (7/29). "15 records" is still correct.
 - **Recommended fix:** stop hard-coding a single number that changes every night. Either state a range ("~82–89% across nightly runs") or pull the latest value live. If a single figure is kept, the latest is ~89%, not 84%.
 
-### 3. Reliability "Gwet's AC1 0.74 experts / 0.63 reviewers" — NEEDS RECOMPUTE
+### 3. Reliability "reliability preliminary (sample still being collected; not yet reported)" — NEEDS RECOMPUTE
 - **Where:** `research.html`, `pilot.html`
 - **Status:** these were computed on the earlier 108-label snapshot. The dataset is now **124 labels** (16 new). The point estimates may have shifted. AC1 is not a one-line SQL calc, so it needs the scorer re-run on the current 124-label pull before the 0.74 / 0.63 figures can be re-certified. Do not assume they still hold.
 

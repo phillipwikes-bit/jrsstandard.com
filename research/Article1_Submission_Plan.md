@@ -6,7 +6,7 @@
 
 | Attached / on file | What it actually is | Role |
 |---|---|---|
-| `research/Article1_Rungs1and2.md` | **Rungs 1 & 2 results paper** (repro 84%, reliability AC1 0.74/0.63, prelim accuracy) | **THIS is the publish-ready paper.** Ubayet reviewed and approved 2026-07-14. |
+| `research/Article1_Rungs1and2.md` | **Rungs 1 & 2 results paper** (repro 84%, reliability reliability preliminary (sample still being collected; not yet reported), prelim accuracy) | **THIS is the publish-ready paper.** Ubayet reviewed and approved 2026-07-14. |
 | `JRS_Research_Paper.pdf` (35 KB, live on site) | Full JRS **framework** paper (what JRS is, the five conditions, DRR) | Background/context, not the results paper. Do not submit this as the empirical paper. |
 | `JRS_Reliability_Accuracy.pdf` (11 KB, live on site) | An earlier **PDF rendering** of the reliability/accuracy material | A public-facing derivative, superseded by the Markdown as the working master. |
 
@@ -17,7 +17,7 @@ Bottom line: `Article1_Rungs1and2.md` is the current, canonical, Ubayet-approved
 1. **Byline added:** Phillip Wikes (first, originator/study lead) · Ubayet Hossain, FRM (second, methodology architect + validating reviewer), with affiliations and corresponding-author line.
 2. **Section 9 converted** from a single-author "Attribution" note to a standard **Author contributions** statement (P.W. / U.H. split), removing the old singular "responsibility rests with the author" line that contradicted co-authorship. Saurabh Nanda credit retained as acknowledgment.
 3. **All six long dashes removed** (house no-dash rule): section headers use a colon; numeric ranges use "to"; Landis-Koch uses a hyphen. Verified zero remaining.
-4. **Figures confirmed current** against the study database: 84% cross-vendor (15 records, latest nightly 2026-07-06), AC1 0.74 experts / 0.63 reviewers (10 records, 108 labels), accuracy explicitly preliminary. Validation-phase framing intact: no effectiveness/accuracy/legal claims.
+4. **Figures confirmed current** against the study database: 84% cross-vendor (15 records, latest nightly 2026-07-06), reliability preliminary (sample still being collected; not yet reported) (10 records, 108 labels), accuracy explicitly preliminary. Validation-phase framing intact: no effectiveness/accuracy/legal claims.
 
 ## 3. Authorship gate: CLOSED (2026-07-27)
 

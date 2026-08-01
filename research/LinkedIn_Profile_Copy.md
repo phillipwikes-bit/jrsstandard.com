@@ -26,7 +26,7 @@ The Justification Review Standard (JRS) is the documentation review instrument I
 
 JRS is in structured validation:
 - Reviewers across 8 countries on 5 continents have completed structured reviews.
-- Independent reviewers reached substantial agreement under a pre-registered analysis (Gwet's AC1 0.74 for experts, 0.63 for trained reviewers, 10 records).
+- Independent reviewers reached a preliminary reliability analysis that is still being collected and not yet reported.
 - Three independent AI providers (across vendors) applied JRS to the same records and agreed 84% of the time (15 constructed records): a reproducibility signal, distinct from accuracy.
 
 JRS and DRR were discussed on the Dewey Publications Podcast, and my article "When the Record Cannot Speak for Itself" is forthcoming in CEP Magazine (November).
@@ -47,7 +47,7 @@ AI-assisted drafting has made DRR urgent. Generated text lands in permanent file
 As founder of the JRS Initiative, I lead the standard's validation and adoption program:
 
 - International panel: reviewers across 8 countries on 5 continents have completed structured reviews.
-- Reliability: independent reviewers reached substantial agreement under a pre-registered analysis (Gwet's AC1 0.74 for experts, 0.63 for trained reviewers, 10 records).
+- Reliability: independent reviewers reached a preliminary reliability analysis that is still being collected and not yet reported.
 - Reproducibility: three independent AI providers (across vendors) applied JRS to the same records and agreed 84% of the time (15 constructed records), showing the standard supports consistent application across vendors.
 - Field presence: JRS and DRR were discussed on the Dewey Publications Podcast; my article "When the Record Cannot Speak for Itself" is forthcoming in CEP Magazine (November).
 
@@ -99,7 +99,7 @@ It comes down to one question. When AI-assisted content enters a workplace recor
 - Can a reviewer trace how the conclusion was reached?
 - Is the evidence sufficient to support it?
 
-JRS is in operational validation, and the evidence program is real and running: an international panel of reviewers spanning 8 countries on 5 continents has completed structured record reviews; independent raters reached substantial agreement under a pre-registered reliability analysis; and three independent AI providers applied the standard to the same records with 84% agreement. The work has been discussed on the Dewey Publications Podcast, and an article on documentation integrity in AI-assisted compliance is scheduled for CEP Magazine's November issue.
+JRS is in operational validation, and the evidence program is real and running: an international panel of reviewers spanning 8 countries on 5 continents has completed structured record reviews; independent raters have a preliminary reliability analysis underway that is not yet reported; and three independent AI providers applied the standard to the same records with 84% agreement. The work has been discussed on the Dewey Publications Podcast, and an article on documentation integrity in AI-assisted compliance is scheduled for CEP Magazine's November issue.
 
 Two resources are free while validation runs:
 
@@ -132,7 +132,7 @@ One question drives it: can the record still be reconstructed and defended? Five
 - Can a reviewer trace how the conclusion was reached?
 - Is the evidence sufficient?
 
-JRS is in operational validation with a running evidence program: reviewers across 8 countries on 5 continents have completed structured reviews; independent raters reached substantial agreement under a pre-registered reliability analysis; and three independent AI providers applied the standard with 84% agreement. Discussed on the Dewey Publications Podcast; article scheduled in CEP Magazine (November).
+JRS is in operational validation with a running evidence program: reviewers across 8 countries on 5 continents have completed structured reviews; independent raters have a preliminary reliability analysis underway that is not yet reported; and three independent AI providers applied the standard with 84% agreement. Discussed on the Dewey Publications Podcast; article scheduled in CEP Magazine (November).
 
 Two resources are free while validation runs:
 
