@@ -99,6 +99,18 @@ tr.today td{background:rgba(93,191,130,.07)}
     <tbody id="ab-rows"><tr><td colspan="4" style="color:var(--muted-soft)">Loading&hellip;</td></tr></tbody>
   </table>
   <div class="note">Arm assignment is automatic and random from each code. This section fills as Arm B participants submit; it shows participation only, never answers.</div>
+  <div class="chart" id="armb-result">
+    <h2>Arm B result &middot; JRS vs baseline accuracy</h2>
+    <div id="armb-score-gate" style="display:none">
+      <p style="font-size:12.5px;color:var(--muted);margin-bottom:10px">Enter your admin token once to load the scored result. It is stored only in this browser and sent only to your own site.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+        <input id="armb-token" type="password" placeholder="admin token" autocomplete="off" style="font-family:'JetBrains Mono',monospace;font-size:12px;padding:9px 11px;background:var(--surface2);border:1px solid var(--rule);color:var(--text);min-width:200px">
+        <button class="btn" onclick="saveArmBToken()">Load result</button>
+      </div>
+    </div>
+    <div id="armb-score-out"><div style="color:var(--muted-soft);font-size:12px">Loading&hellip;</div></div>
+    <div class="note" style="margin-top:8px">Scored live against the verified answer key by your own server (Ready/Yes = grounded, binary Ready-vs-not collapse). Recomputes every time this page loads, so a new Arm B finisher shows up here automatically. No Supabase needed: open this page and it scores itself.</div>
+  </div>
 
   <h1 style="font-size:22px;margin-top:34px">Training &amp; Certification Adoption</h1>
   <p class="sub">Consented enrollments in the JRS training. Aggregate counts only; no personal data is shown here. The named, consented list is stored privately and is a transfer-ready asset.</p>
@@ -414,7 +426,51 @@ function renderSupWall(d){
   h+='</div>';
   w.innerHTML=h;
 }
-function refresh(){ loadDetection(); loadRealcase(); loadArmB(); loadTraining(); loadDownloads(); loadItems(); loadSupport(); }
+function saveArmBToken(){
+  var t=document.getElementById('armb-token');
+  if(!t||!t.value.trim()) return;
+  try{ localStorage.setItem('jrs-owner-token', t.value.trim()); }catch(e){}
+  t.value='';
+  loadArmBScore();
+}
+function clearArmBToken(){
+  try{ localStorage.removeItem('jrs-owner-token'); }catch(e){}
+  var g=document.getElementById('armb-score-gate'); if(g) g.style.display='';
+  var o=document.getElementById('armb-score-out'); if(o) o.innerHTML='';
+}
+function loadArmBScore(){
+  var out=document.getElementById('armb-score-out');
+  var gate=document.getElementById('armb-score-gate');
+  if(!out) return;
+  var tok=''; try{ tok=localStorage.getItem('jrs-owner-token')||''; }catch(e){}
+  if(!tok){ if(gate) gate.style.display=''; out.innerHTML=''; return; }
+  if(gate) gate.style.display='none';
+  out.innerHTML='<div style="color:var(--muted-soft);font-size:12px">Scoring&hellip;</div>';
+  fetch('/api/bench-admin',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'score_armb',token:tok})})
+    .then(function(r){ if(r.status===401) throw new Error('unauth'); if(!r.ok) throw 0; return r.json(); })
+    .then(function(d){
+      if(!d||!d.ok) throw 0;
+      var pc=function(v){ return (v==null)?'n/a':(v*100).toFixed(1)+'%'; };
+      var diff=(d.difference==null)?'n/a':((d.difference>=0?'+':'')+(d.difference*100).toFixed(1)+' pts');
+      var inc=d.included||{B1:'-',B2:'-'};
+      var html='<table><thead><tr><th>Arm</th><th>Reviewers</th><th>Mean accuracy</th></tr></thead><tbody>';
+      html+='<tr><td>B1 &middot; JRS</td><td>'+inc.B1+'</td><td>'+pc(d.B1_mean)+'</td></tr>';
+      html+='<tr><td>B2 &middot; baseline</td><td>'+inc.B2+'</td><td>'+pc(d.B2_mean)+'</td></tr>';
+      html+='</tbody></table>';
+      html+='<div style="font-family:\'JetBrains Mono\',monospace;font-size:11px;color:var(--accent-dim);margin-top:8px">Difference (JRS - baseline): <b style="color:var(--accent)">'+diff+'</b></div>';
+      if(d.note) html+='<div style="font-size:11px;color:var(--muted-soft);margin-top:4px">'+d.note+'</div>';
+      if((d.unmapped_records&&d.unmapped_records.length)||d.unmapped_answers){
+        html+='<div style="font-size:11px;color:#D4A055;margin-top:6px">Heads up: '+((d.unmapped_records&&d.unmapped_records.length)||0)+' unrecognized record label(s) and '+(d.unmapped_answers||0)+' unrecognized answer(s) were skipped rather than guessed. Tell Claude if this is not 0.</div>';
+      }
+      html+='<div style="margin-top:8px"><a href="#" onclick="clearArmBToken();return false" style="font-size:10px;color:var(--muted-soft)">clear token</a></div>';
+      out.innerHTML=html;
+    })
+    .catch(function(e){
+      if(e&&e.message==='unauth'){ out.innerHTML='<div style="font-size:12px;color:#D4A055">Token not accepted. <a href="#" onclick="clearArmBToken();return false" style="color:var(--accent)">Try another</a>.</div>'; if(gate) gate.style.display=''; }
+      else out.innerHTML='<div style="color:var(--muted-soft);font-size:12px">Could not score right now. Tap Refresh.</div>';
+    });
+}
+function refresh(){ loadDetection(); loadRealcase(); loadArmB(); loadArmBScore(); loadTraining(); loadDownloads(); loadItems(); loadSupport(); }
 refresh();
 setInterval(refresh, 60000);
 </script>
