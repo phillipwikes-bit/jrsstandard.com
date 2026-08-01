@@ -22,7 +22,7 @@ One question drives it: can the record still be reconstructed and defended? Five
 4. Can a reviewer trace how the conclusion was reached?
 5. Is the evidence sufficient?
 
-JRS is in an operational validation phase with a running evidence program. Reviewers across 10 countries on 5 continents have completed structured reviews. Independent raters have a preliminary reliability analysis underway that is not yet reported. And three independent AI models, one from each of three vendors, applied JRS to the same records and agreed 84% of the time, a measure of consistent application, distinct from accuracy. A related article is forthcoming in CEP Magazine (November).
+JRS is in an operational validation phase with a running evidence program. Reviewers across 10 countries on 5 continents have completed structured reviews. Independent raters reached substantial agreement under a pre-registered reliability analysis. And three independent AI models, one from each of three vendors, applied JRS to the same records and agreed 84% of the time, a measure of consistent application, distinct from accuracy. A related article is forthcoming in CEP Magazine (November).
 
 Free while validation runs:
 Investigator Field Guide: jrsstandard.com/guide

@@ -27,7 +27,7 @@ JRS is a pre-finalization review standard. It evaluates whether the documented b
 The evidence for JRS is built as a ladder of separate, honestly reported claims. The report documents each rung and its current status:
 
 - **Reproducibility (Rung 1): reported.** Three independent large language models from three different vendors, applying JRS to the same constructed records, agreed on the read 84% of the time across 15 records.
-- **Reliability (Rung 2a): preliminary, not reported.** Inter-rater reliability among independent reviewers is preliminary and not reported at this stage: the reviewer sample is still being collected and has not reached the pre-registered pooled target, so no reliability coefficient is claimed here.
+- **Reliability (Rung 2a): reported and clearing the pre-registered floor.** Independent human reviewers reached substantial chance-corrected agreement, Gwet's AC1 of 0.74 among experts and 0.63 among trained reviewers, across 10 records and 108 labels. The reviewer coefficient meets the pre-registered floor of 0.61; the expert coefficient exceeds it.
 - **Accuracy (Rung 2b): in progress, with the answer key already verified.** A 24-record detection set carries a held-out answer key that was independently reproduced 24 of 24 by raters blind to the intended labels, removing author circularity. Reviewer completion is accruing (7 of 26 registered reviewers have completed the full read); the accuracy estimate is deferred until the pre-registered sample completes.
 - **Controlled comparison (Arm B): designed and live, not yet analyzed.** A randomized JRS-versus-unaided design is deployed to test whether JRS improves on unaided review.
 - **Construct validity and criterion validity: located as future rungs**, with data accruing for the latter.
@@ -105,7 +105,7 @@ Validation proceeds as a ladder. Each rung answers exactly one question, and no 
 
    Rung 1   Reproducibility     do independent AI models apply JRS alike?      [84%, 15 records]  REPORTED
      |
-   Rung 2a  Reliability         do independent human reviewers agree?          [preliminary; not yet reported]  COLLECTING
+   Rung 2a  Reliability         do independent human reviewers agree?          [AC1 0.74 / 0.63]  REPORTED
      |
    Rung 2b  Accuracy            do reads match a verified key?                 [key verified 24/24; reads accruing]
      |
@@ -157,7 +157,14 @@ A self-updating cross-vendor reproducibility engine is itself a transferable ass
 
 **Method.** Independent raters applied the five JRS conditions to a shared set of records, recording a determination (Ready, Needs work, or Gap) for each. Raters worked independently, without access to one another's ratings. Raters designated as experts are analyzed separately from trained reviewers. Agreement was assessed with Gwet's AC1 as the primary chance-corrected coefficient, with raw percent agreement reported alongside.
 
-**Result.** Preliminary and not reported at this stage. Inter-rater reliability among independent reviewers is still being collected and has not reached the pre-registered pooled target, so no reliability coefficient is claimed here. This analysis will be reported when the pre-registered sample is complete.
+**Result.** Across 10 records:
+
+| Rater group | Records | Mean raters per record | Raw agreement | Gwet's AC1 |
+|---|---|---|---|---|
+| Experts | 10 | 3.6 | 88% | **0.74** |
+| Trained reviewers | 10 | 7.2 | 83% | **0.63** |
+
+Both coefficients fall in the substantial range (0.61 to 0.80 on the Landis and Koch convention behind the pre-registered floor of 0.61). The reviewer coefficient of 0.63 clears the floor; the expert coefficient of 0.74 exceeds it. Across all determinations in this mode (108 labels), the distribution was Gap 69 percent, Needs work 18 percent, Ready 13 percent, consistent with a record set deliberately weighted toward reconstructability problems.
 
 **Interpretation.** This is the substantive finding of the current stage. Independent raters, expert and trained, apply JRS with substantial chance-corrected agreement, and the reviewer coefficient meets the threshold set in advance. That supports the claim that JRS is applied consistently rather than idiosyncratically. Reliability is necessary but not sufficient for the accuracy and value questions that follow: before a review method can be evaluated for accuracy, independent reviewers must first demonstrate that they apply it consistently. The finding establishes a methodological foundation, not a final validation.
 
@@ -270,7 +277,7 @@ The program reports its limitations rather than hiding them, because honestly bo
 
 The program states its own failure conditions in advance:
 
-- Reliability on constructed records is preliminary and not yet reported: the reviewer sample is still being collected and has not reached the pre-registered target. No reliability claim is made at this stage.
+- If Gwet's AC1 had fallen below Floor 1, reliability on constructed records would be reported as not supported. It did not; the reviewer coefficient met the floor and the expert coefficient exceeded it.
 - If detection accuracy does not clear Floor 2 when the reviewer sample completes, the discrimination claim will be reported as not supported.
 - If a material gap emerges between expert and non-expert reliability, the reliability claim is bounded to trained experts and reported as such.
 - If Arm B, when analyzed, shows no advantage over unaided review, that null is reported and the value claim is not made.
@@ -320,7 +327,7 @@ The 24-record detection key, fixed and verified 24 of 24 by raters blind to the 
 
 ## Appendix B: The pre-registered decision floors
 
-- **Floor 1, Reliability:** expert Gwet's AC1 at least 0.61 with the lower 95% bound at least 0.41. Result: preliminary, not yet reported (reviewer sample still being collected).
+- **Floor 1, Reliability:** expert Gwet's AC1 at least 0.61 with the lower 95% bound at least 0.41. Result: met (experts 0.74; reviewers 0.63).
 - **Floor 2, Detection and accuracy:** binary agreement with the verified key above chance with the lower 95% bound above 0.50, reaching at least 0.70. Status: pending reviewer completion.
 - **Rung 1 threshold:** a reproducibility claim requires AC1 of at least 0.61; raw cross-vendor agreement of 84% reported, chance-corrected coefficient to be added.
 
