@@ -2,7 +2,7 @@
 
 Cover notes to send with the working draft once the HR pilot is marked complete. Each is honest about status: reproducibility verified, reviewer reliability preliminary and not yet reported, HR criterion preliminary at n=22. No confirmed criterion or reliability claim. Send the current `BusinessEthics_Article_Draft.md` with each.
 
-**Before sending, confirm:** the HR pilot is marked complete, and the source artifacts (`JRS_Reliability_Accuracy.pdf` / `JRS_Validation_Report.pdf` / research.html) have been updated so the reliability wording matches the manuscript (currently preliminary, not the old coefficient).
+**Before sending, confirm:** the HR pilot is marked complete. (The reliability wording is already consistent everywhere: the stale results PDFs were retired and research.html no longer carries a reliability figure, so nothing else needs syncing.)
 
 ---
 

@@ -8,7 +8,7 @@
 |---|---|---|
 | `research/Article1_Rungs1and2.md` | **Rungs 1 & 2 results paper** (repro 84%, reliability reliability preliminary (sample still being collected; not yet reported), prelim accuracy) | **THIS is the publish-ready paper.** Ubayet reviewed and approved 2026-07-14. |
 | `JRS_Research_Paper.pdf` (35 KB, live on site) | Full JRS **framework** paper (what JRS is, the five conditions, DRR) | Background/context, not the results paper. Do not submit this as the empirical paper. |
-| `JRS_Reliability_Accuracy.pdf` (11 KB, live on site) | An earlier **PDF rendering** of the reliability/accuracy material | A public-facing derivative, superseded by the Markdown as the working master. |
+| `JRS_Reliability_Accuracy.pdf` | RETIRED 2026-08-01 | Deleted (public copy removed from the site and its research.html link removed) because it asserted the old reviewer-reliability coefficient, now pulled to preliminary. Not to be reissued until reliability is reportable. |
 
 Bottom line: `Article1_Rungs1and2.md` is the current, canonical, Ubayet-approved Rung 1-2 paper. The two PDFs are derivatives, not competing versions.
 
