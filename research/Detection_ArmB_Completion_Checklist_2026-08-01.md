@@ -8,11 +8,11 @@ Items are ordered by priority. Blocking items (B) must be resolved before submis
 
 ## SECTION 0 — Source-of-truth correction (do this first)
 
-**[B0] Use the corrected repo draft, not the uploaded copy.**
-The uploaded `Detection_ArmB_Article_Draft.md` is an older version. Its Abstract and Section 5.1 still state expert AC1 0.74 and trained-reviewer 0.63 "in the substantial range." That reliability claim was superseded: on the full current data the trained-reviewer coefficient falls to about 0.18 (below the pre-registered 0.61 floor), so the number is not reportable as a passed result. The corrected repo version (`research/Detection_ArmB_Article_Draft.md`) already reads "inter-rater reliability is preliminary and not reported here." Submit from the corrected version. Do not reintroduce 0.74, 0.63, or "substantial" anywhere in the manuscript, the cover letter, or the companion files.
+**[B0] Reliability figures corrected (live re-analysis 2026-08-01): the 0.18 "collapse" was an artifact.**
+See `research/Data_Analysis_2026-08-01.md`. Recomputed live from `bench_labels`, JRS-mode reads only: experts AC1 **0.739**, trained **0.623**, pooled 0.665, both groups clearing the 0.61 point floor. The earlier "trained collapsed to 0.18" was caused by mixing baseline-condition (`mode=normal`) labels into the JRS reliability set; on JRS reads only it does not collapse and reproduces the originally reported 0.74 / 0.63. Decision for the owner: report reliability as an interim result (0.74 expert / 0.62 trained, floor cleared, 10 records, wide CIs, trained CI lower bound 0.30 not yet at the pre-registered 0.41), or continue holding it until the pooled ~26-record set completes. Either is defensible. The current repo draft and the public pages say "preliminary, not reported," which is now more conservative than the data requires; changing them back to the interim-report framing is the owner's call and should not be done unilaterally.
 
-**[B1] Confirm no reliability coefficient survives anywhere.**
-Sweep the manuscript and every companion file for "0.74", "0.63", "substantial", "AC1", and "Gwet" used as a reported result. Per the earlier sweep, these files still need checking: `LinkedIn_Profile_Copy.md`, `IP_Asset_Transfer_Map.md`, everything under `research/submission/`, `Article1_Submission_Plan.md`, and the tracker summary table. Reliability is described only as preliminary and not yet reported until the pooled set is complete.
+**[B1] If reporting reliability, report it as interim and qualify it; do not call it "substantial/passed" unconditionally.**
+If the interim framing is chosen, state: experts AC1 0.74 and trained 0.62 on 10 of about 26 pre-registered pooled records, both clearing the 0.61 point floor, CIs wide, the trained lower bound not yet meeting the 0.41 criterion, to be settled on the full set. Use JRS-mode labels only. Whichever way it is reported, make it consistent across the manuscript, the public pages, and the companion files (`LinkedIn_Profile_Copy.md`, `IP_Asset_Transfer_Map.md`, `research/submission/*`, `Article1_Submission_Plan.md`, the tracker table), so no file contradicts another.
 
 ---
 
