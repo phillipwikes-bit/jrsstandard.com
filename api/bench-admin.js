@@ -112,6 +112,43 @@ export default async function handler(req){
       }
       return json({ok:true, count:rows.length, rows:rows});
     }
+    if (action==='score_armb'){
+      // Server-side Arm B scoring so the private dashboard can display B1 vs B2
+      // with no manual export. Reads locked rows via the service role, scores
+      // against the verified key, and NEVER fabricates: rows whose record or
+      // answer it cannot map are counted as 'unmapped' and reported, not guessed.
+      var VKEY={R01:'G',R02:'U',R03:'U',R04:'G',R05:'U',R06:'G',R07:'U',R08:'G',R09:'U',R10:'G',R11:'U',R12:'G',R13:'U',R14:'G',R15:'U',R16:'G',R17:'U',R18:'G',R19:'U',R20:'G',R21:'U',R22:'G',R23:'U',R24:'G'};
+      var GROK={ready:1,yes:1,grounded:1,rely:1,'true':1,'1':1,adequate:1,supported:1};
+      var UNGROK={review_required:1,needs_work:1,'needs work':1,gap:1,gap_identified:1,no:1,ungrounded:1,'false':1,'0':1,not_rely:1,inadequate:1,unsupported:1};
+      var amap2={};
+      try { var pr2=await fetch(SB+'/rest/v1/armb_progress?select=code,arm_code',{headers:{'apikey':SERVICE,'Authorization':'Bearer '+SERVICE}}); var pj2=await pr2.json(); if(Array.isArray(pj2)) pj2.forEach(function(r){ if(r&&r.code) amap2[r.code]=r.arm_code||null; }); } catch(e){}
+      var per={}, unmapRec={}, unmapAns=0, total=0, from2=0, page2=1000;
+      for(;;){
+        var rr3=await fetch(SB+"/rest/v1/ai_pilot_reads?select=reviewer_code,record_ref,jrs_read,rely,batch&batch=like.armB*",{headers:{'apikey':SERVICE,'Authorization':'Bearer '+SERVICE,'Range-Unit':'items','Range':from2+'-'+(from2+page2-1)}});
+        var ch=await rr3.json(); if(!Array.isArray(ch)||!ch.length) break;
+        ch.forEach(function(r){
+          total++;
+          var code=r.reviewer_code||''; var cond=amap2[code]; if(!cond){ var mb=String(r.batch||'').match(/B[12]/); cond=mb?mb[0]:null; }
+          var rec=String(r.record_ref||'').trim().toUpperCase();
+          var det=String((cond==='B2'?r.rely:r.jrs_read)||'').trim().toLowerCase();
+          var pred=GROK[det]?'G':(UNGROK[det]?'U':null);
+          if(!per[code]) per[code]={cond:cond,correct:0,scored:0};
+          if(!VKEY[rec]){ unmapRec[rec]=1; return; }
+          if(pred===null){ unmapAns++; return; }
+          per[code].scored++; if(pred===VKEY[rec]) per[code].correct++;
+        });
+        if(ch.length<page2) break; from2+=page2;
+      }
+      var parts=Object.keys(per).map(function(c){ var p=per[c]; return {code:c,cond:p.cond,correct:p.correct,scored:p.scored,accuracy:p.scored?p.correct/p.scored:null,included:p.scored>=18}; });
+      var b1=parts.filter(function(p){return p.included&&p.cond==='B1';}).map(function(p){return p.accuracy;});
+      var b2=parts.filter(function(p){return p.included&&p.cond==='B2';}).map(function(p){return p.accuracy;});
+      var mean=function(a){return a.length?a.reduce(function(x,y){return x+y;},0)/a.length:null;};
+      return json({ok:true, total_rows:total, participants:parts,
+        included:{B1:b1.length,B2:b2.length}, B1_mean:mean(b1), B2_mean:mean(b2),
+        difference:(b1.length&&b2.length)?mean(b1)-mean(b2):null,
+        unmapped_records:Object.keys(unmapRec).filter(Boolean), unmapped_answers:unmapAns,
+        note:'preliminary if either arm <5 (design floor 5-8/arm); verify unmapped_* are empty before trusting'});
+    }
     return json({error:'unknown_action'},400);
   } catch(e){ return json({error:String(e&&e.message||e)},500); }
 }
