@@ -49,3 +49,31 @@ Every stale number is a hand-written snapshot that froze while the database kept
 
 ## Recommended next step
 Batch-fix the four files (`research.html`, `pilot.html`, `results.html`, `acquisition-9f3c2a7d4b.html`): apply the exact fixes for #1, reframe #2 as a range or live pull, re-run the reliability scorer for #3, and confirm #4 with the owner. Then one deploy. Await owner go-ahead before editing public pages.
+
+---
+
+## CRITICAL UPDATE (2026-08-01, after recompute) — reliability items are NOT a simple fix
+
+I re-ran your reliability scorer on the CURRENT full database (124 labels) instead of the committed 108-label snapshot. Result:
+
+| Panel | Documented (108 labels, in your article drafts) | Recomputed on live DB (124 labels) |
+|---|---|---|
+| Experts | AC1 0.74 (raw 80–88%) | AC1 0.74 (raw 80%) — UNCHANGED |
+| Trained reviewers | AC1 0.63 (raw 83%) | **AC1 0.18 (raw 43%)** — COLLAPSED |
+
+What changed: the live set has 16 more trained-reviewer labels (3 additional raters: R-mqhv2o4r8nct, R-mqn414vzho7i, R-mqnibu38bbxi) than the 108-label set your papers analyze. Those raters skew Ready/Needs-work while the earlier pool skews Gap; adding them drops trained-reviewer pairwise agreement from ~83% to 43% and AC1 from 0.63 to 0.18 (below the pre-registered 0.61 floor).
+
+**Why this is NOT something I will auto-fix:**
+- The 0.63 / "108 labels" / "Gap 69/18/13" figures are not stray typos. They are the documented Rung 2a analysis, cited consistently across `Article1_Rungs1and2.md`, `BusinessEthics_Article_Draft.md`, and `Detection_ArmB_Article_Draft.md`, all "verified against the study database." The public pages MATCH the documented analysis.
+- Your own drafts describe reliability as INTERIM and accumulating toward a pooled target (~26 records), not locked at 108. If the set is genuinely still accumulating, then the current trained-reviewer reliability really has fallen to ~0.18, and the "clears the 0.61 floor" claim for trained reviewers is no longer true on current data — a material result you must know before the paper or a sale.
+- Alternatively, if the 108-label set was a deliberate/curated analysis set (specific raters or batch), the extra 16 labels may not belong in the confirmatory analysis, and 0.63 stands. I cannot tell which from the data alone.
+
+**Decision needed from owner before ANY reliability number is changed or published:**
+1. Is the reliability analysis dataset (a) still accumulating (use all current labels -> trained AC1 ~0.18, floor now failed), or (b) a curated/locked set (define the inclusion rule; recompute cleanly)?
+2. Until answered, I have changed NOTHING: CSV reverted, no pages edited, no deploy.
+
+## Revised status of the sweep items
+- Reproducibility "84%": genuinely a stale nightly figure (was 84% on 2026-07-06; latest run 88.9%, range 82–89%). Safe to reframe as a range or live pull. LOW RISK.
+- Tanvi 5 -> 22 real cases: genuinely stale progress count. ALREADY FIXED this session.
+- Reliability 0.63 / 108 labels / distribution: BLOCKED pending the dataset decision above. Do not touch.
+- "7 reviewers" on acquisition page: still needs owner confirmation of intended metric.
