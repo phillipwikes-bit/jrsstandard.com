@@ -6,8 +6,6 @@
 
 Hekim Colpan is an AI Governance and Compliance Manager and an ISO/IEC 42001 auditor, working on EU AI Act, GDPR, and DORA compliance for AI-assisted systems. Phillip Wikes is an AI Governance and Cognitive Risk Advisor and a former Lead Civil Rights Officer at the Maryland Commission on Civil Rights.
 
-> *Internal note (not for publication): draft prepared for Hekim's review as lead co-author. Nothing runs under his name until he has read it and confirmed his own bio.*
-
 ---
 
 ## I. Introduction
@@ -104,7 +102,7 @@ The reproducibility and validation methodology behind the figures cited above wa
 
 ## About the Authors
 
-**Hekim Colpan** is an AI Governance and Compliance Manager and Data Protection Manager, and an ISO/IEC 42001 auditor, based in Germany. His work spans AI management systems under ISO/IEC 42001, information-security and compliance management under ISO/IEC 27001 and 37301, the EU AI Act, the GDPR, and DORA, with particular attention to how record-keeping, logging, and technical-documentation requirements land in day-to-day governance practice. *(Bio drawn from Hekim's own profile; adjust to your preferred wording before submission.)*
+**Hekim Colpan** is an AI Governance and Compliance Manager and Data Protection Manager, and an ISO/IEC 42001 auditor, based in Germany. His work spans AI management systems under ISO/IEC 42001, information-security and compliance management under ISO/IEC 27001 and 37301, the EU AI Act, the GDPR, and DORA, with particular attention to how record-keeping, logging, and technical-documentation requirements land in day-to-day governance practice.
 
 **Phillip Wikes** is an AI Governance and Cognitive Risk Advisor focused on documentation integrity, evidentiary traceability, and record-level controls in AI-assisted environments. From 2012 to 2025 he served as a Lead Civil Rights Officer at the Maryland Commission on Civil Rights, evaluating discrimination complaints and resolving matters through investigation, mediation, and structured fact-finding under federal HUD and EEOC frameworks. He developed the Justification Review Standard (JRS) and named the risk it addresses, Decision Reconstruction Risk (DRR), and holds an M.S. in Negotiation and Conflict Management.
 
