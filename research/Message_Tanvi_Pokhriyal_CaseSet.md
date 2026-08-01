@@ -15,6 +15,4 @@ Enter cases here: https://www.jrsstandard.com/submit-validation.html
 Thank you again for the care you have put into this. It is one of the strongest parts of the whole program.
 
 Phillip Wikes
-Creator, Justification Review Standard (JRS)
-The Right to Know Why Initiative
-info@jrsstandard.com | jrsstandard.com
+The Right to Know Why | https://jrsstandard.com/api/support?c=rtkw&src=linkedin

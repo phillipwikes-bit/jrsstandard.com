@@ -74,7 +74,7 @@ Across **10 records**:
 | Experts | 10 | 3.6 | 88% | **0.74** |
 | Trained reviewers | 10 | 7.2 | 83% | **0.63** |
 
-Both coefficients fall in the "substantial" range (0.61 to 0.80 on the Landis-Koch scale, the convention behind the pre-registered floor of 0.61). The reviewer coefficient (0.63) clears that floor; the expert coefficient (0.74) exceeds it. Across all JRS-mode determinations (108 labels), the distribution was Gap 69%, Needs work 18%, Ready 13%, consistent with a record set weighted toward reconstructability problems.
+Inter-rater reliability is preliminary and not reported here: the reviewer sample is still being collected and has not reached the pre-registered pooled target, so no reliability coefficient is claimed at this stage.
 
 ### 4.3 Accuracy (Rung 2b): preliminary
 The 24-record answer key was independently reproduced by raters blind to the intended labels, 24 of 24, fixing the key against which accuracy is scored. Reviewer completion is in progress; a full accuracy estimate (with sensitivity, specificity, and confidence intervals) is deferred until the pre-registered reviewer sample completes. Early completions are consistent with above-chance separation, reported here as preliminary and not as a confirmed result.
