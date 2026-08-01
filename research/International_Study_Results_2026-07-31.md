@@ -80,3 +80,23 @@ Source: owner ran the pre-registered scoring query in the Supabase SQL editor (p
 **What holds up.** All three groups sit well above the 50% chance line (72.9-82.6%), consistent with reviewers detecting groundedness above chance (Floor 2 direction).
 
 **Honest headline for the paper/IP:** reviewers can reliably tell grounded records from ungrounded ones and agree with each other doing it; JRS performs on par with an unaided expert prompt among naive reviewers (no measurable added value yet); experts do best, but that is expertise, not the standard. Preliminary: B1 has only 4 completers (design floor 5-8); more Arm B finishers could move the JRS-vs-baseline number.
+
+---
+
+## EXACT STATS — via connected Supabase integration, 2026-08-01
+
+Per-reviewer accuracy (>=18 records scored), computed directly against the verified key:
+
+| Group | Reviewers | Mean | SD | Range |
+|---|---|---|---|---|
+| Arm A (expert, JRS) | 15 | 82.5% | 21.6 | 37.5–100 |
+| Arm B1 (JRS) | 4 | 74.0% | 24.4 | 45.8–100 |
+| Arm B2 (baseline) | 6 | 72.9% | 31.8 | 33.3–100 |
+
+**JRS minus baseline (B1 - B2) = +1.1 pts.** Welch two-sample: SE ≈ 17.8, df ≈ 7.7,
+**95% CI ≈ [-41, +43] percentage points.** The interval is enormous and straddles
+zero by a wide margin — the null result is not marginal, it is decisive at this n.
+Floor 3 (JRS adds value) remains firmly NOT met.
+
+RR-108 (B1, in progress) has 9 distinct records / 11 reads, unchanged since 2026-07-31;
+still below the 18-record inclusion floor, so B1 stays at n=4.
