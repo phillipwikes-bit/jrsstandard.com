@@ -11,9 +11,12 @@ WHAT IT DOES (one command, zero third-party deps, no token shared with anyone):
   5. Writes research/ArmB_Scored_Results.json and prints B1 vs B2 accuracy with a
      95% CI, plus detection-vs-chance (Floor 2).
 
-RUN IT (locally, or anywhere your key is set):
-    export SUPABASE_SERVICE_ROLE_KEY='...'      # your key; never pasted into chat
+RUN IT (locally, or anywhere your token is set). Either credential works:
+    export SUPABASE_ACCESS_TOKEN='sbp_...'       # Personal Access Token (Management API)
+  or
+    export SUPABASE_SERVICE_ROLE_KEY='...'       # service-role key (REST, bypasses RLS)
     python3 scripts/export_arm_b_data.py
+The token stays in your shell. It is never written to a file and never sent to chat.
 
 If the key is not set, the script prints how to set it and exits WITHOUT inventing
 numbers. It never fabricates: no key or no scorable rows => it says so and stops.
@@ -45,24 +48,72 @@ def die(msg, code=2):
     print(msg); sys.exit(code)
 
 
-def get_key():
-    for name in ('SUPABASE_SERVICE_ROLE_KEY', 'SUPABASE_ACCESS_TOKEN'):
-        v = os.environ.get(name)
-        if v:
-            return v
-    die("No service-role key in the environment. This script does not invent "
-        "results.\nSet it and re-run (the key never touches chat):\n"
-        "    export SUPABASE_SERVICE_ROLE_KEY='<your key from Vercel/Supabase>'\n"
+PROJECT_REF = "pjzxkeviouofdseagvpf"
+MGMT = "https://api.supabase.com/v1/projects/%s/database/query" % PROJECT_REF
+
+
+def get_cred():
+    """Return (kind, token). 'service' = REST bypass-RLS key; 'pat' = sbp_ Personal
+    Access Token used against the Management API SQL endpoint. Either works."""
+    svc = os.environ.get('SUPABASE_SERVICE_ROLE_KEY')
+    if svc:
+        return ('service', svc)
+    pat = os.environ.get('SUPABASE_ACCESS_TOKEN') or os.environ.get('SUPABASE_PAT')
+    if pat:
+        return ('pat', pat)
+    die("No credential in the environment. This script does not invent results.\n"
+        "Set ONE of these and re-run (the token stays in your shell, never in chat):\n"
+        "    export SUPABASE_ACCESS_TOKEN='sbp_...'          # your Personal Access Token\n"
+        "  or\n"
+        "    export SUPABASE_SERVICE_ROLE_KEY='<service key>'\n"
         "    python3 scripts/export_arm_b_data.py")
 
 
-def api(path, key, rng=None):
+def rest(path, key, rng=None):
     h = {"apikey": key, "Authorization": "Bearer " + key}
     if rng:
         h["Range-Unit"] = "items"; h["Range"] = rng
     req = urllib.request.Request(SB + path, headers=h)
     with urllib.request.urlopen(req, timeout=30) as r:
         return json.loads(r.read().decode())
+
+
+def mgmt_sql(query, pat):
+    body = json.dumps({"query": query}).encode()
+    req = urllib.request.Request(MGMT, data=body, method='POST', headers={
+        "Authorization": "Bearer " + pat, "Content-Type": "application/json"})
+    with urllib.request.urlopen(req, timeout=45) as r:
+        return json.loads(r.read().decode())
+
+
+def fetch_all(kind, tok):
+    """Return (armb_rows, arm_map) using whichever credential kind was supplied."""
+    if kind == 'pat':
+        amap = {}
+        for r in mgmt_sql("select code, arm_code from armb_progress", tok):
+            if r.get('code'):
+                amap[r['code']] = r.get('arm_code')
+        rows = mgmt_sql(
+            "select reviewer_code, record_ref, jrs_read, rely, batch, created_at "
+            "from ai_pilot_reads where batch like 'armB%' order by created_at asc", tok)
+        return (rows if isinstance(rows, list) else [], amap)
+    # service-role REST path
+    amap = {}
+    for r in rest("/rest/v1/armb_progress?select=code,arm_code", tok):
+        if r.get('code'):
+            amap[r['code']] = r.get('arm_code')
+    rows, frm, page = [], 0, 1000
+    while True:
+        chunk = rest("/rest/v1/ai_pilot_reads?select=reviewer_code,record_ref,jrs_read,"
+                     "rely,batch,created_at&batch=like.armB*&order=created_at.asc",
+                     tok, rng="%d-%d" % (frm, frm + page - 1))
+        if not chunk:
+            break
+        rows.extend(chunk)
+        if len(chunk) < page:
+            break
+        frm += page
+    return (rows, amap)
 
 
 def predict(det):
@@ -84,24 +135,8 @@ def mean(xs): return sum(xs)/len(xs) if xs else float('nan')
 
 
 def main():
-    key = get_key()
-    # arm assignment map
-    amap = {}
-    for r in api("/rest/v1/armb_progress?select=code,arm_code", key):
-        if r.get('code'):
-            amap[r['code']] = r.get('arm_code')
-    # fetch armB rows, paginated
-    raw, frm, page = [], 0, 1000
-    while True:
-        chunk = api("/rest/v1/ai_pilot_reads?select=reviewer_code,record_ref,jrs_read,"
-                    "rely,batch,created_at&batch=like.armB*&order=created_at.asc",
-                    key, rng="%d-%d" % (frm, frm + page - 1))
-        if not chunk:
-            break
-        raw.extend(chunk)
-        if len(chunk) < page:
-            break
-        frm += page
+    kind, tok = get_cred()
+    raw, amap = fetch_all(kind, tok)
 
     if not raw:
         die("Service role reached the DB but returned 0 Arm B rows. Nothing to "
