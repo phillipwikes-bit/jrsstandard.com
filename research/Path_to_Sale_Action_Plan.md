@@ -76,5 +76,5 @@ Net: warm conversations begin this month; the formal process begins the moment t
 2. **Protect the trade-secret core.** The five-condition scoring and the gold answer key never go into a data room or conveyed code.
 3. **Protect the blind.** Nothing shared with a buyer reveals the Arm B method or that reviewers are split into arms.
 4. **Do not publish sale intent.** No "for sale" signal on the public site or LinkedIn.
-5. **Hold all claims to the completer sample** (8 countries, 5 continents) and the pre-registered reliability numbers.
+5. **Hold all claims to the completer sample** (10 countries, 5 continents) and the pre-registered reliability numbers.
 6. **Do not signal urgency.** Exploratory framing, parallel conversations, no desperation.

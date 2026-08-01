@@ -25,7 +25,7 @@ The Justification Review Standard (JRS) is the documentation review instrument I
 5. Is the evidence sufficient?
 
 JRS is in structured validation:
-- Reviewers across 8 countries on 5 continents have completed structured reviews.
+- Reviewers across 10 countries on 5 continents have completed structured reviews.
 - Independent reviewers reached a preliminary reliability analysis that is still being collected and not yet reported.
 - Three independent AI providers (across vendors) applied JRS to the same records and agreed 84% of the time (15 constructed records): a reproducibility signal, distinct from accuracy.
 
@@ -46,7 +46,7 @@ AI-assisted drafting has made DRR urgent. Generated text lands in permanent file
 
 As founder of the JRS Initiative, I lead the standard's validation and adoption program:
 
-- International panel: reviewers across 8 countries on 5 continents have completed structured reviews.
+- International panel: reviewers across 10 countries on 5 continents have completed structured reviews.
 - Reliability: independent reviewers reached a preliminary reliability analysis that is still being collected and not yet reported.
 - Reproducibility: three independent AI providers (across vendors) applied JRS to the same records and agreed 84% of the time (15 constructed records), showing the standard supports consistent application across vendors.
 - Field presence: JRS and DRR were discussed on the Dewey Publications Podcast; my article "When the Record Cannot Speak for Itself" is forthcoming in CEP Magazine (November).
@@ -61,7 +61,7 @@ Free while validation runs: the Investigator Field Guide (https://www.jrsstandar
 
 1. **Zero links.** The profile is the landing page for everyone who reads a post, gets a DM, or hears the podcast. The submitted About and experience copy send them nowhere. Both memorable links must appear: `jrsstandard.com/guide` and `jrsstandard.com/reviewer`.
 2. **The term "Decision Reconstruction Risk" never appears.** The DRR article's own thesis is that naming the problem is how you manage it; the post series drives people to the profile expecting DRR; the headline says only "Decision Defensibility" and the About never uses the name. The brand term must be planted verbatim.
-3. **No verifiable proof, and the strongest credential is missing.** "I am building evidence" appears twice with no evidence shown, and "Former Lead Civil Rights Officer, Maryland Commission on Civil Rights" (the door-opener in every outreach message) is absent. Added a proof paragraph using ONLY the diligence-safe figures from the tracker: reviewers across 8 countries on 5 continents (completer figures), substantial inter-rater reliability from the pre-registered analysis, 84% cross-vendor reproducibility, the CEP Magazine acceptance (November), and the Dewey Publications podcast mention (a mention, not an endorsement).
+3. **No verifiable proof, and the strongest credential is missing.** "I am building evidence" appears twice with no evidence shown, and "Former Lead Civil Rights Officer, Maryland Commission on Civil Rights" (the door-opener in every outreach message) is absent. Added a proof paragraph using ONLY the diligence-safe figures from the tracker: reviewers across 10 countries on 5 continents (completer figures), substantial inter-rater reliability from the pre-registered analysis, 84% cross-vendor reproducibility, the CEP Magazine acceptance (November), and the Dewey Publications podcast mention (a mention, not an endorsement).
 
 Also dropped: "Pilot Program Advisor" from the headline (vague, unverifiable as a title; the pilot is described in the body).
 
@@ -99,7 +99,7 @@ It comes down to one question. When AI-assisted content enters a workplace recor
 - Can a reviewer trace how the conclusion was reached?
 - Is the evidence sufficient to support it?
 
-JRS is in operational validation, and the evidence program is real and running: an international panel of reviewers spanning 8 countries on 5 continents has completed structured record reviews; independent raters have a preliminary reliability analysis underway that is not yet reported; and three independent AI providers applied the standard to the same records with 84% agreement. The work has been discussed on the Dewey Publications Podcast, and an article on documentation integrity in AI-assisted compliance is scheduled for CEP Magazine's November issue.
+JRS is in operational validation, and the evidence program is real and running: an international panel of reviewers spanning 10 countries on 5 continents has completed structured record reviews; independent raters have a preliminary reliability analysis underway that is not yet reported; and three independent AI providers applied the standard to the same records with 84% agreement. The work has been discussed on the Dewey Publications Podcast, and an article on documentation integrity in AI-assisted compliance is scheduled for CEP Magazine's November issue.
 
 Two resources are free while validation runs:
 
@@ -132,7 +132,7 @@ One question drives it: can the record still be reconstructed and defended? Five
 - Can a reviewer trace how the conclusion was reached?
 - Is the evidence sufficient?
 
-JRS is in operational validation with a running evidence program: reviewers across 8 countries on 5 continents have completed structured reviews; independent raters have a preliminary reliability analysis underway that is not yet reported; and three independent AI providers applied the standard with 84% agreement. Discussed on the Dewey Publications Podcast; article scheduled in CEP Magazine (November).
+JRS is in operational validation with a running evidence program: reviewers across 10 countries on 5 continents have completed structured reviews; independent raters have a preliminary reliability analysis underway that is not yet reported; and three independent AI providers applied the standard with 84% agreement. Discussed on the Dewey Publications Podcast; article scheduled in CEP Magazine (November).
 
 Two resources are free while validation runs:
 
@@ -152,7 +152,7 @@ I developed the Justification Review Standard (JRS), a documentation review inst
 
 My focus is the moment records actually get tested: an audit, an escalation, an investigation, an adversarial review. JRS asks whether each conclusion ties back to identifiable support, whether the reasoning can still be followed, and whether the documentation holds up on its own under later scrutiny. No specialized software, no procedural redesign.
 
-JRS is in operational validation: an international reviewer panel spanning 8 countries on 5 continents, pre-registered reliability testing with substantial inter-rater agreement, and cross-vendor AI reproducibility of 84%. The pilot runs at no cost, with no commercial commitment, and comes with working materials: reviewer references, escalation triggers, investigator field tools, and workflow-oriented review resources.
+JRS is in operational validation: an international reviewer panel spanning 10 countries on 5 continents, pre-registered reliability testing with substantial inter-rater agreement, and cross-vendor AI reproducibility of 84%. The pilot runs at no cost, with no commercial commitment, and comes with working materials: reviewer references, escalation triggers, investigator field tools, and workflow-oriented review resources.
 
 Free while validation runs:
 Investigator Field Guide: jrsstandard.com/guide
@@ -195,7 +195,7 @@ A record-level documentation review standard for AI-assisted environments. JRS a
 Named and defined the failure mode the standard tests for: the condition in which a record cannot explain, on its own terms, why a consequential decision was made. DRR separates decision quality from record defensibility; a sound decision can still carry high DRR because the basis was never committed to the page, and AI-assisted drafting spreads the condition while masking it with polish. Concept essay: jrsstandard.com/DRR_Article.pdf
 
 **3. JRS International Validation Study (Reviewer Panel)**
-A staged, pre-registered evidence program testing whether JRS can be applied reliably and accurately. Reviewers across 8 countries on 5 continents have completed structured record reviews; independent raters reached substantial chance-corrected agreement (Gwet's AC1, pre-registered floors) under a reliability methodology contributed by Ubayet Hossain, FRM (KPMG India). Accuracy testing against an independently verified 24-record answer key is in progress. No effectiveness claims until the corresponding rungs complete.
+A staged, pre-registered evidence program testing whether JRS can be applied reliably and accurately. Reviewers across 10 countries on 5 continents have completed structured record reviews; independent raters reached substantial chance-corrected agreement (Gwet's AC1, pre-registered floors) under a reliability methodology contributed by Ubayet Hossain, FRM (KPMG India). Accuracy testing against an independently verified 24-record answer key is in progress. No effectiveness claims until the corresponding rungs complete.
 
 **4. Cross-Vendor AI Reproducibility Study**
 An automated nightly study in which three independent AI providers (Anthropic, OpenAI, Google) apply JRS to the same constructed records. Cross-vendor agreement averages 84% across 15 records, a reproducibility signal showing the standard is applied consistently by models that share no lineage. Reproducibility only, deliberately distinct from accuracy.

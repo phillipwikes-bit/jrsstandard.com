@@ -25,7 +25,7 @@ That right runs through documentation, and documentation is changing. Organizati
 
 The Justification Review Standard (JRS) is a defined documentation review instrument built to surface DRR before a record is finalized. It asks one question: could another qualified reviewer independently reconstruct this decision from the record alone? Five structured checks answer it, applied inside the workflows your team already uses.
 
-JRS is in structured international validation. Reviewers across 8 countries on 5 continents have completed structured reviews. Independent reviewers reached a preliminary reliability analysis that is still being collected and not yet reported. Three independent AI providers (across vendors) applied JRS to the same records and agreed 84% of the time (15 constructed records), a reproducibility signal: consistency of application, distinct from accuracy. JRS and DRR were recently discussed on the Dewey Publications Podcast (around the 23:45 mark), and my article "When the Record Cannot Speak for Itself" is forthcoming in CEP Magazine this November.
+JRS is in structured international validation. Reviewers across 10 countries on 5 continents have completed structured reviews. Independent reviewers reached a preliminary reliability analysis that is still being collected and not yet reported. Three independent AI providers (across vendors) applied JRS to the same records and agreed 84% of the time (15 constructed records), a reproducibility signal: consistency of application, distinct from accuracy. JRS and DRR were recently discussed on the Dewey Publications Podcast (around the 23:45 mark), and my article "When the Record Cannot Speak for Itself" is forthcoming in CEP Magazine this November.
 
 The ask is a small one: download the free Investigator Field Guide and put it in front of the people who write or review consequential records.
 
@@ -44,7 +44,7 @@ info@jrsstandard.com | jrsstandard.com
 
 ## Version 4 (Individual professional - CURRENT canonical for 1:1 outreach, 2026-07-23)
 
-*Best message for reaching ONE professional (email or DM), as opposed to an organization. Concise, personal, single primary CTA (free guide). Leads with the person's right to know why; JRS as the method; one compact verified credibility line. Claims verified: 8 countries/5 continents (completers); CEP "forthcoming" Nov (not published). No effectiveness claim; no blind-study mention; no long dashes; no free-forever promise. Links /guide, /reviewer verified live.*
+*Best message for reaching ONE professional (email or DM), as opposed to an organization. Concise, personal, single primary CTA (free guide). Leads with the person's right to know why; JRS as the method; one compact verified credibility line. Claims verified: 10 countries/5 continents (completers); CEP "forthcoming" Nov (not published). No effectiveness claim; no blind-study mention; no long dashes; no free-forever promise. Links /guide, /reviewer verified live.*
 
 **Subject:** A free field guide on defending AI-assisted records
 
@@ -62,7 +62,7 @@ https://www.jrsstandard.com/guide
 
 If it earns a place in your work, there is also free reviewer training with a certificate: https://www.jrsstandard.com/reviewer
 
-JRS is in structured validation, with reviewers across 8 countries on 5 continents and an article forthcoming in CEP Magazine this November. I would genuinely value your candid read on the standard itself. If now is not the right time, no worries at all.
+JRS is in structured validation, with reviewers across 10 countries on 5 continents and an article forthcoming in CEP Magazine this November. I would genuinely value your candid read on the standard itself. If now is not the right time, no worries at all.
 
 Best,
 Phillip Wikes

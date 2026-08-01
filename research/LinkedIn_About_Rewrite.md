@@ -1,6 +1,6 @@
 # LinkedIn About (rewrite, 2026-07-27): tightened stats + added closing section
 
-*Copy-paste ready. Incorporates the tightened statistics section (84% framed as reproducibility, not accuracy), dedups the podcast (one mention), and adds a closing "who I connect with" section. All figures verified/defensible (8 countries/5 continents completers; substantial pre-registered reliability; 84% cross-vendor reproducibility; CEP forthcoming Nov; Dewey a mention). No long dashes. This is a public claim surface: keep every figure identical to the papers and validation report, and update same-day on any change.*
+*Copy-paste ready. Incorporates the tightened statistics section (84% framed as reproducibility, not accuracy), dedups the podcast (one mention), and adds a closing "who I connect with" section. All figures verified/defensible (10 countries/5 continents completers; substantial pre-registered reliability; 84% cross-vendor reproducibility; CEP forthcoming Nov; Dewey a mention). No long dashes. This is a public claim surface: keep every figure identical to the papers and validation report, and update same-day on any change.*
 
 ---
 
@@ -22,7 +22,7 @@ One question drives it: can the record still be reconstructed and defended? Five
 4. Can a reviewer trace how the conclusion was reached?
 5. Is the evidence sufficient?
 
-JRS is in an operational validation phase with a running evidence program. Reviewers across 8 countries on 5 continents have completed structured reviews. Independent raters have a preliminary reliability analysis underway that is not yet reported. And three independent AI models, one from each of three vendors, applied JRS to the same records and agreed 84% of the time, a measure of consistent application, distinct from accuracy. A related article is forthcoming in CEP Magazine (November).
+JRS is in an operational validation phase with a running evidence program. Reviewers across 10 countries on 5 continents have completed structured reviews. Independent raters have a preliminary reliability analysis underway that is not yet reported. And three independent AI models, one from each of three vendors, applied JRS to the same records and agreed 84% of the time, a measure of consistent application, distinct from accuracy. A related article is forthcoming in CEP Magazine (November).
 
 Free while validation runs:
 Investigator Field Guide: jrsstandard.com/guide

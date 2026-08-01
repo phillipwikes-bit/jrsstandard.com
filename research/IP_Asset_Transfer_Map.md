@@ -21,7 +21,7 @@
 | **Reviewer Training Program + certificate + Reviewer Reference Guide + worksheets** | Commercial | 6-module training, cert generator, reference materials | Phillip Wikes | Yes | Register copyright; the certification right is a recurring-revenue hook |
 | **Review-instrument software** | Commercial | `ai-records-pilot.html`, `ai-records-arm-b.html`, SCS calculator, dashboards, Edge Functions (`api/*`) | Phillip Wikes | Yes (code) | Clean-room the repo; separate deploy secrets (below) |
 | **Validation dataset + reliability results** | Commercial | Study responses (`ai_pilot_reads`, bench data, de-identified by code), reliability preliminary (sample still being collected; not yet reported) | Phillip Wikes | Yes (de-identified) | Keep the answer key / gold scoring confidential (trade secret); document provenance |
-| **International validation panel (evidence)** | Commercial | Completer sample: 8 countries, 5 continents; named-contributor-only (no reviewer co-authorship in the standard) | Phillip Wikes | Yes as evidence; PII separately | Reviewers hold no rights in the standard (good). Their PII is a separate data asset (below) |
+| **International validation panel (evidence)** | Commercial | Completer sample: 10 countries, 5 continents; named-contributor-only (no reviewer co-authorship in the standard) | Phillip Wikes | Yes as evidence; PII separately | Reviewers hold no rights in the standard (good). Their PII is a separate data asset (below) |
 | **Organizational pilots (evidence)** | Commercial | 12 real cases across 2 active domain pilots; healthcare accepted, not started | Phillip Wikes + pilot orgs (data-sharing terms) | Depends on pilot agreements | Confirm each pilot org agreed their contributed evidence can be used and transferred |
 | **Trained-user / enrollment list** | Commercial | 6 enrolled, 6 unique people, 5 orgs; **6 of 6 consented to transfer to an acquirer**; 6 completions (US 3, PL 1, KR 1, NG 1) | Phillip Wikes (as controller) | Yes, the transfer-consented subset only | Grow it; keep the two-tier consent so every new row stays conveyable |
 | **Domain jrsstandard.com** | Commercial | Apex + www, CNAME configured | Phillip Wikes | Yes | Transfer registrar + DNS at close |
@@ -57,4 +57,4 @@
 4. Get written pilot-org consent to transfer contributed evidence.
 5. Separate all deploy secrets from the repo and prepare a clean-room handoff package (code + de-identified data + provenance doc).
 6. Keep the answer key / gold scoring as documented trade secret, never in public or in the conveyed code.
-7. Hold all public claims to the completer sample (8 countries, 5 continents) and the pre-registered reliability numbers.
+7. Hold all public claims to the completer sample (10 countries, 5 continents) and the pre-registered reliability numbers.
