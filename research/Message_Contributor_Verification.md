@@ -55,8 +55,8 @@ For each person, paste their registered name and title into the two "On file" li
 | Sidharth Borah | V-AI-27 | Advocate, High Court of Delhi; Partner, Gurinder & Partners | send (named-credit wording already pending his approval) |
 | Nigel Hee | V-AI-28 | AI Ethics, Safety & Governance; University of Glasgow | send |
 | Andres Lage Freire | V-AI-30 | AI Governance Lead / Responsible AI Architect | send |
+| Andrey Ekhmenin | V-AI-11 | Founder, EAS; governance diagnostics & post-execution review | send (owner-verified expert) |
 
 **Do not send to / do not name:**
-- Andrey Ekhmenin (V-AI-11): credentials unverifiable; keep as anonymous data contributor only.
 - V-AI-17: withdrawn at the reviewer's request; excluded entirely, do not contact.
 - Any reviewer who already elected anonymity: leave anonymous, do not request a name.

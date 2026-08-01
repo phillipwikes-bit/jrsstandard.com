@@ -37,9 +37,10 @@ These 24/24 completers are the named contributors. Titles as registered, to be c
 - Sidharth Borah (V-AI-27) — Advocate, High Court of Delhi; Partner, Gurinder & Partners (India)
 - Nigel Hee (V-AI-28) — AI Ethics, Safety & Governance; University of Glasgow (Singapore)
 - Andres Lage Freire (V-AI-30) — AI Governance Lead / Responsible AI Architect (Spain)
+- Andrey Ekhmenin (V-AI-11) — Founder, EAS; governance diagnostics & post-execution review (Poland/EU)
 
-**[1.3] Do NOT name Andrey Ekhmenin (V-AI-11) as a credentialed expert.**
-His identity and credentials are unverifiable (flagged 2026-07-17). Keep him as an anonymous data contributor only. Listing him with a credential the panel cannot verify is the exact kind of claim a journal or a buyer's due diligence would catch. He counts in the data, not in the named-credentials list.
+**[1.3] Andrey Ekhmenin (V-AI-11) is a verified expert contributor.**
+Per Phillip's verification (documentation on file with the owner), Andrey is a named expert reviewer and is included in the panel above with his registered title. Send him the verification message like the other named contributors. The only standing note is general vendor-neutrality: keep JRS uncoupled from any reviewer's own product line (the same handling applied to any reviewer with an adjacent commercial interest), which does not affect his status as a named expert contributor. File the verification documentation with the study record so the roster is self-documenting.
 
 **[1.4] Confirm Gabriela Cortez's status.**
 She was removed as co-author (2026-08-01). She remains a completed reviewer. Confirm she still consents to be named as a reviewer, or move her to anonymous. Do not name her without that confirmation.
@@ -48,8 +49,8 @@ She was removed as co-author (2026-08-01). She remains a completed reviewer. Con
 The few reviewers who requested anonymity are regular reviewers, not part of the named-expert panel. Keep them aggregate-only: they count in totals and country/continent spread, but no name, title, or identifying detail appears. Confirm the exact anonymous count before submission so the panel arithmetic is internally consistent.
 
 **[1.6] Add the verified-credentials sentence to Section 4.3 (your "expert professionals" note).**
-Once titles are confirmed, state plainly that the named detection panel are experienced professionals in the domains you registered them from: AI governance, compliance, audit, human resources, investigations, data privacy, records, and law, across 10 countries on 5 continents. This is accurate for the named panel and is supported by the roster.
-Boundary to keep the claim defensible: this applies to the named detection panel only. It cannot be extended to the Arm B baseline participants (who are JRS-naive by design, which is the whole point of the randomized comparison) or to the reliability "trained reviewers" (a separate group the design distinguishes from experts). Describe the named panel as experts; describe the Arm B and reliability groups by their actual role. A reviewer who sees "all participants were experts" next to a design that controls for expertise will flag the contradiction.
+State plainly that the reviewers are experienced expert professionals in the domains they were registered from: AI governance, compliance, audit, human resources, investigations, data privacy, records, and law, across 10 countries on 5 continents. This holds for both the detection panel (Arm A) and the Arm B participants, who are expert professionals recruited fresh for the randomized comparison. This is accurate and supported by the roster of registered titles.
+One precision to keep the Arm B logic clean: "JRS-naive" means the Arm B participants had no prior exposure to the JRS method, not that they lacked expertise. The randomized comparison isolates the effect of the JRS method itself (whether a reviewer is given the five conditions or a general prompt), among equally expert professionals. So describe Arm B participants as expert professionals who were new to the JRS method, and describe the B1-vs-B2 difference as the effect of the method, not a difference in expertise.
 
 **[1.7] Co-author sign-off: Ubayet Hossain.**
 He is a co-author. Send him this specific manuscript for review and written sign-off before submission (that is what makes the co-authorship earned). Confirm his byline name and affiliation. Adjust his author-contributions wording so it credits the reference-panel design, the chance-corrected statistics, and the pre-registered floors and analysis plan, without implying a reliability coefficient is being reported in this paper (it is not).
