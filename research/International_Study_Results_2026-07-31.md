@@ -62,3 +62,21 @@ Source: owner ran the pre-registered scoring query in the Supabase SQL editor (p
 - **Floor 3 (JRS adds value: B1 > B2 with the difference CI excluding zero): NOT met.** A 1.1-point gap at n=4 vs n=6 is within noise; the CI on the difference comfortably includes zero. Reported as a null result on "the standard adds value" in the current sample, per the pre-registered plan (a failed threshold is reported, not omitted).
 - Both arms sit above the 50% chance line (72.9-74.0%), consistent with reviewers detecting groundedness above chance (Floor 2 direction), with wide intervals at this n.
 - Preliminary: B1 has only 4 completers (design floor 5-8/arm); RR-108 (B1) is at 9/24. Exact difference CI pending the per-reviewer accuracies (one more small query).
+
+---
+
+## FULL RESULT — all arms scored 2026-08-01 (owner ran the all-arms query)
+
+| Group | Who they are | Reviewers | Mean accuracy |
+|---|---|---|---|
+| Arm A | Expert / trained panel, using JRS | 15 | **82.6%** |
+| Arm B1 | Fresh (JRS-naive) participants, using JRS | 4 | **74.0%** |
+| Arm B2 | Fresh participants, plain prompt (no JRS) | 6 | **72.9%** |
+
+**The causal test (Arm B, randomized).** B1 vs B2 is the only clean comparison, because B1 and B2 are the same kind of fresh participants split at random, so any gap is attributable to JRS, not expertise. Result: **74.0% vs 72.9%, a +1.1 point difference** — within noise at n=4 vs n=6, CI includes zero. **Floor 3 (JRS adds value) is NOT met.** Null result on "the standard beats a plain prompt," reported per the pre-registered plan.
+
+**Arm A is not a JRS effect.** The expert panel scored highest (82.6%), but there is no expert-without-JRS control, so the 82.6% reflects reviewer expertise, not the standard. It cannot be cited as evidence that JRS raises accuracy. The randomized Arm B exists precisely to separate the two, and it shows no JRS benefit in this sample.
+
+**What holds up.** All three groups sit well above the 50% chance line (72.9-82.6%), consistent with reviewers detecting groundedness above chance (Floor 2 direction).
+
+**Honest headline for the paper/IP:** reviewers can reliably tell grounded records from ungrounded ones and agree with each other doing it; JRS performs on par with an unaided expert prompt among naive reviewers (no measurable added value yet); experts do best, but that is expertise, not the standard. Preliminary: B1 has only 4 completers (design floor 5-8); more Arm B finishers could move the JRS-vs-baseline number.
