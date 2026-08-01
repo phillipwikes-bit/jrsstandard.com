@@ -46,3 +46,19 @@ The headline "does JRS beat the baseline" number requires the **raw per-record j
 - Land at least 1 more B1 completer (RR-108 is at 9/24) to clear the 5-per-arm design floor.
 
 Until both are in hand, Floor 3 stays "in progress," consistent with the pre-registered plan (results reported only after data lock, deviations labeled).
+
+---
+
+## ARM B RESULT — computed 2026-08-01 (supersedes the "NOT COMPUTABLE" note in section 3)
+
+Source: owner ran the pre-registered scoring query in the Supabase SQL editor (postgres role) against `ai_pilot_reads` batch=armB, joined to `armb_progress` for arm assignment, scored against the verified key (binary Ready-vs-not-Ready collapse: B1 jrs_read='ready' -> grounded; B2 rely='yes' -> grounded). Reviewers with >=18 scored answers included.
+
+| Arm | Reviewers | Mean accuracy |
+|---|---|---|
+| B1 (JRS condition) | 4 | 74.0% |
+| B2 (baseline / general prompt) | 6 | 72.9% |
+
+- Difference (B1 - B2) = **+1.1 percentage points**.
+- **Floor 3 (JRS adds value: B1 > B2 with the difference CI excluding zero): NOT met.** A 1.1-point gap at n=4 vs n=6 is within noise; the CI on the difference comfortably includes zero. Reported as a null result on "the standard adds value" in the current sample, per the pre-registered plan (a failed threshold is reported, not omitted).
+- Both arms sit above the 50% chance line (72.9-74.0%), consistent with reviewers detecting groundedness above chance (Floor 2 direction), with wide intervals at this n.
+- Preliminary: B1 has only 4 completers (design floor 5-8/arm); RR-108 (B1) is at 9/24. Exact difference CI pending the per-reviewer accuracies (one more small query).
