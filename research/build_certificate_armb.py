@@ -162,6 +162,14 @@ REVIEWERS = [
             "program leadership across sustainability and development work with UN-affiliated youth networks and higher education in Nigeria"),
         "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Certificate_Muhammad_Dauda.pdf",
     },
+    {
+        "name": "Sagarika Banerjee",
+        "date": "August 1, 2026",
+        "body": neutral_body(
+            "AI governance and software quality assurance",
+            "leadership in AI management systems and quality assurance, including ISO/IEC 42001 and the NIST AI Risk Management Framework"),
+        "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Certificate_Sagarika_Banerjee.pdf",
+    },
 ]
 
 if __name__ == "__main__":
