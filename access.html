@@ -32,6 +32,8 @@ label.chk input{width:auto;margin:2px 0 0;flex:0 0 auto}
 label.chk.soft{color:var(--muted-soft)}
 button{width:100%;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:13px;cursor:pointer}
 button:disabled{opacity:.55;cursor:default}
+button.ghost{background:none;color:var(--accent);border:1px solid var(--accent)}
+.privacy-lite{border-left:3px solid var(--ready-text);padding:12px 14px;margin:0 0 14px;font-size:12.5px;color:var(--muted);line-height:1.6;background:var(--surface2)}
 #msg{font-size:12px;min-height:16px;margin-bottom:8px;color:var(--review-text)}
 .fine{font-size:10.5px;color:var(--muted-soft);line-height:1.55;margin-top:12px}
 footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
@@ -128,6 +130,8 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
   // No edition and no campaign: nothing to gate. Send to the guides page.
   if (!editionRaw && !campaignRaw) { location.replace('investigator-guides.html'); return; }
 
+  function esc(x){ return String(x==null?'':x).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+
   function submit(){
     var msg = document.getElementById('msg');
     var name  = document.getElementById('f-name').value.trim();
@@ -171,8 +175,29 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
         msg.textContent = 'Thank you. Your download is starting.';
         location.href = d.file;
       } else {
+        // Endorsement recorded. Offer the mini-pilot as the next step, carrying
+        // the details already given so they are not retyped. This is the funnel:
+        // an endorsement is a click, a pilot is field evidence.
+        var q = '?src=endorse'
+          + '&org=' + encodeURIComponent(org)
+          + '&name=' + encodeURIComponent(name)
+          + '&title=' + encodeURIComponent(title)
+          + '&email=' + encodeURIComponent(email);
         msg.textContent = 'Thank you. Your support is recorded.';
-        location.href = (d && d.redirect) ? d.redirect : '/supported.html';
+        var card = document.querySelector('.card');
+        if (card) {
+          card.innerHTML =
+            '<div class="eyebrow">Support recorded</div>'
+          + '<h1>Thank you, ' + esc(name.split(' ')[0]) + '</h1>'
+          + '<p class="lede">Your support is on the record. If it is useful, you can also run the standard on your own records right now, free.</p>'
+          + '<div class="privacy-lite">Paste up to ten of your own records, redacted, and get the five-condition read on each one immediately. <b>Your record text is never stored</b>: each record is assessed in memory and discarded. Only the count and the pattern of results is kept.</div>'
+          + '<a href="org-pilot.html' + q + '" style="text-decoration:none"><button type="button" style="margin-bottom:10px">Run it on my records</button></a>'
+          + '<a href="' + ((d && d.redirect) ? d.redirect : '/supported.html') + '" style="text-decoration:none"><button type="button" class="ghost">No thanks, I am done</button></a>'
+          + '<p class="fine">Free, no obligation, and you can stop after one record.</p>';
+          window.scrollTo(0,0);
+        } else {
+          location.href = (d && d.redirect) ? d.redirect : '/supported.html';
+        }
       }
     })
     .catch(function(){
