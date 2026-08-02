@@ -63,6 +63,20 @@ export default async function handler(req){
   // Unknown/missing token: send to the guides page rather than 404.
   if (!edition && !doc && !kit) return Response.redirect(url.origin + '/investigator-guides.html', 302);
 
+  // CHANGED 2026-08-02: the three Investigator Field Guide editions are now
+  // registration-gated. A bare ?e= link no longer releases the file; it forwards
+  // to the consent form, which captures name, organization, email, and consent
+  // and then releases the download itself via /api/access. Every guide link
+  // already distributed in emails and posts keeps working and now lands on the
+  // form. Deploy/smoke tags bypass the gate so checks never create contact rows.
+  // The JRS Standard PDF, the Rapid Review Card (?e=standard|card), and the
+  // whitelisted reference files (?f=) are deliberately NOT gated: those are the
+  // public artifacts that carry citations and should stay frictionless.
+  const isTestTag = !!src && (src === 'verify' || src === 'test' || src === 'selftest' || src.indexOf('deploytest') === 0);
+  if (edition && !isTestTag) {
+    return Response.redirect(url.origin + '/access.html?e=' + encodeURIComponent(edition) + (src ? '&src=' + encodeURIComponent(src) : ''), 302);
+  }
+
   const target = url.origin + '/' + (edition ? FILES[edition] : doc ? DOCS[doc] : kit);
 
   // Internal smoke/deploy-test tags: never recorded, and any existing ones are
