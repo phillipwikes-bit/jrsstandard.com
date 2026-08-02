@@ -100,6 +100,21 @@ tr.today td{background:rgba(93,191,130,.07)}
   </table>
   <div class="note">Arm assignment is automatic and random from each code. This section fills as Arm B participants submit; it shows participation only, never answers.</div>
 
+  <h1 style="font-size:22px;margin-top:34px">Consented Registrations</h1>
+  <p class="sub">Named registrations captured at the field-guide and initiative-support gates. Every row behind these counts is a real person with an organization, an email, and explicit consent, which is what distinguishes them from an anonymous download or an anonymous click. Aggregate counts only; the named list is stored privately.</p>
+  <div class="cards">
+    <div class="card"><div class="cv hot" id="rg-today">&middot;</div><div class="ck">New today (UTC)</div></div>
+    <div class="card"><div class="cv" id="rg-total">&middot;</div><div class="ck">Registrations</div></div>
+    <div class="card"><div class="cv" id="rg-orgs">&middot;</div><div class="ck">Organizations</div></div>
+    <div class="card"><div class="cv" id="rg-transfer">&middot;</div><div class="ck">Transferable</div></div>
+  </div>
+  <div class="note" id="rg-note">Registrations will appear here once the first person registers at a gate.</div>
+  <div class="chart">
+    <h2>What they registered for</h2>
+    <div id="rgsplit">Loading&hellip;</div>
+    <div class="note" style="margin-top:8px">Field guide registrations by edition and initiative support by campaign. The guide and support gates went live on Aug 2, 2026; downloads and support recorded before that date were anonymous and cannot be attributed to a person.</div>
+  </div>
+
   <h1 style="font-size:22px;margin-top:34px">Training &amp; Certification Adoption</h1>
   <p class="sub">Consented enrollments in the JRS training. Aggregate counts only; no personal data is shown here. The named, consented list is stored privately and is a transfer-ready asset.</p>
   <div class="cards">
@@ -298,6 +313,46 @@ function loadArmB(){
    })
    .catch(function(){ document.getElementById('ab-rows').innerHTML='<tr><td colspan="4" style="color:var(--muted-soft)">Could not load Arm B. Tap Refresh.</td></tr>'; });
 }
+function loadRegistrations(){
+  return fetch('/api/access-stats')
+   .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+   .then(function(s){
+     s=s||{};
+     document.getElementById('rg-today').textContent=s.today||0;
+     document.getElementById('rg-total').textContent=s.registrations||0;
+     document.getElementById('rg-orgs').textContent=s.organizations||0;
+     document.getElementById('rg-transfer').textContent=s.transferable_people||0;
+     document.getElementById('rg-note').textContent=
+       (s.unique_people||0)+' unique people, all contactable. '
+       +(s.consented_transfer||0)+' consented to transfer to a successor; '
+       +(s.consented_named||0)+' agreed to be listed publicly by name.';
+     renderRegSplit(s);
+   })
+   .catch(function(){ document.getElementById('rg-note').textContent='Registrations will appear here once the first person registers at a gate.'; });
+}
+function renderRegSplit(s){
+  var el=document.getElementById('rgsplit');
+  if(!el) return;
+  var EDN={employment:'Field Guide: EEO',fairhousing:'Field Guide: Fair Housing',international:'Field Guide: International',unknown:'Field Guide: unspecified'};
+  var CMP={rtkw:'Support: The Right to Know Why',defend:'Support: The Decisions You Can Defend',general:'Support: general'};
+  var list=[];
+  ((s&&s.by_edition)||[]).forEach(function(x){ list.push({label:EDN[x.edition]||('Field Guide: '+x.edition),count:x.count}); });
+  ((s&&s.by_campaign)||[]).forEach(function(x){ list.push({label:CMP[x.campaign]||('Support: '+x.campaign),count:x.count}); });
+  if(!list.length){ el.innerHTML='<div style="color:var(--muted-soft);font-size:12px">No registrations yet.</div>'; return; }
+  list.sort(function(a,b){ return b.count-a.count; });
+  var max=1; list.forEach(function(x){ if(x.count>max) max=x.count; });
+  var html='<div style="font-size:12px;color:var(--muted);margin-bottom:10px">'
+    +'<b style="color:var(--text)">'+(s.guide_registrations||0)+'</b> guide '+((s.guide_registrations===1)?'registration':'registrations')
+    +' &middot; <b style="color:var(--text)">'+(s.support_registrations||0)+'</b> support '+((s.support_registrations===1)?'registration':'registrations')+'</div>';
+  list.forEach(function(x){
+    var w=Math.max(4,Math.round((x.count/max)*100));
+    html+='<div style="display:flex;align-items:center;gap:10px;margin:4px 0">'
+      +'<span style="font-family:\'JetBrains Mono\',monospace;font-size:11px;color:var(--muted);width:190px;flex:0 0 auto">'+esc(x.label)+'</span>'
+      +'<span style="background:var(--accent);height:12px;width:'+w+'%;max-width:45%;display:inline-block"></span>'
+      +'<span style="font-size:12px;color:var(--text)">'+x.count+'</span></div>';
+  });
+  el.innerHTML=html;
+}
 function loadTraining(){
   return fetch('/api/enroll-stats')
    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
@@ -414,7 +469,7 @@ function renderSupWall(d){
   h+='</div>';
   w.innerHTML=h;
 }
-function refresh(){ loadDetection(); loadRealcase(); loadArmB(); loadTraining(); loadDownloads(); loadItems(); loadSupport(); }
+function refresh(){ loadDetection(); loadRealcase(); loadArmB(); loadRegistrations(); loadTraining(); loadDownloads(); loadItems(); loadSupport(); }
 refresh();
 setInterval(refresh, 60000);
 </script>
