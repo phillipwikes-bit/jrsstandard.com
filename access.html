@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Register &middot; JRS</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Register to receive the JRS Investigator Field Guide or to add your support to the initiatives. Free for practitioners.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050505; --surface:#121212; --surface2:#1A1A1A;
+  --accent:#BE9447; --accent-dim:#7A5E28;
+  --muted:#B3B3B3; --muted-soft:#8A8A8A; --text:#F2F2F2;
+  --rule:#2A2A2A; --stop-text:#E88080; --review-text:#D4A055; --ready-text:#5DBF82;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+a{color:var(--accent)}
+.wrap{max-width:520px;width:100%;margin:0 auto;padding:38px 22px 60px;flex:1}
+.wordmark{font-family:'Bodoni Moda',serif;font-size:20px;color:var(--accent);text-decoration:none;letter-spacing:.02em}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:10px}
+h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:26px;color:var(--text);margin:0 0 10px;line-height:1.25}
+.lede{font-size:13.5px;color:var(--muted);line-height:1.65;margin-bottom:20px}
+.card{background:var(--surface);border:1px solid var(--accent);padding:26px 24px;margin-top:24px}
+input{width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;margin-bottom:9px;font-family:'Inter',sans-serif}
+input:focus{outline:none;border-color:var(--accent-dim)}
+label.chk{display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--muted);line-height:1.5;margin-bottom:9px;cursor:pointer}
+label.chk input{width:auto;margin:2px 0 0;flex:0 0 auto}
+label.chk.soft{color:var(--muted-soft)}
+button{width:100%;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:13px;cursor:pointer}
+button:disabled{opacity:.55;cursor:default}
+#msg{font-size:12px;min-height:16px;margin-bottom:8px;color:var(--review-text)}
+.fine{font-size:10.5px;color:var(--muted-soft);line-height:1.55;margin-top:12px}
+footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
+.footer-copy{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a href="index.html" class="wordmark">JRS<span style="font-size:10px;vertical-align:super;position:relative;top:-3px;">&#8482;</span></a>
+
+  <div class="card">
+    <div class="eyebrow" id="eyebrow">JRS Investigator Field Guide</div>
+    <h1 id="headline">Register to download</h1>
+    <p class="lede" id="lede">Free for practitioners. One short registration, then the guide downloads immediately.</p>
+
+    <input id="f-name"  type="text"  placeholder="Full name" autocomplete="name">
+    <input id="f-org"   type="text"  placeholder="Organization" autocomplete="organization">
+    <input id="f-title" type="text"  placeholder="Title or role" autocomplete="organization-title">
+    <input id="f-email" type="email" placeholder="Work email" autocomplete="email" style="margin-bottom:14px">
+
+    <label class="chk"><input type="checkbox" id="c-contact"><span>I agree to be contacted about the JRS project and consent to my details being stored securely for that purpose. (required)</span></label>
+    <label class="chk soft"><input type="checkbox" id="c-transfer"><span>I also consent to my details being transferred to a successor if the JRS project is acquired. (optional)</span></label>
+    <label class="chk soft" id="named-wrap"><input type="checkbox" id="c-named"><span>You may list me publicly by name as a supporter of this initiative. (optional)</span></label>
+
+    <div id="msg"></div>
+    <button id="go" type="button">Continue</button>
+
+    <p class="fine">Your details are stored securely and used only for the JRS project. Request access or deletion any time at <a href="mailto:info@jrsstandard.com">info@jrsstandard.com</a>. See the <a href="privacy.html">Privacy Policy</a>.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-copy">&#169; 2026 Phillip Wikes &nbsp;&middot;&nbsp; JRS&#8482; &middot; <a href="privacy.html" style="color:inherit">Privacy</a></div>
+</footer>
+
+<script>
+(function(){
+  function qp(k){ try { return (new URLSearchParams(location.search)).get(k) || ''; } catch(e){ return ''; } }
+  function tag(s){ return String(s||'').toLowerCase().replace(/[^a-z0-9_-]/g,'').slice(0,40); }
+
+  var editionRaw = qp('e');
+  var campaignRaw = qp('c');
+  var src = tag(qp('src'));
+
+  // Support mode when a campaign is present and no guide edition is requested.
+  var mode = (!editionRaw && campaignRaw) ? 'support' : 'guide';
+
+  var EDITION_LABEL = {
+    employment:'EEO / Employment edition',
+    eeo:'EEO / Employment edition',
+    fairhousing:'Fair Housing edition',
+    housing:'Fair Housing edition',
+    fh:'Fair Housing edition',
+    international:'International edition',
+    intl:'International edition',
+    int:'International edition'
+  };
+  var CAMPAIGN_LABEL = {
+    rtkw:'The Right to Know Why',
+    rights:'The Right to Know Why',
+    righttoknowwhy:'The Right to Know Why',
+    defend:'The Decisions You Can Defend',
+    decisions:'The Decisions You Can Defend',
+    decisionsyoucandefend:'The Decisions You Can Defend'
+  };
+
+  var eyebrow = document.getElementById('eyebrow');
+  var headline = document.getElementById('headline');
+  var lede = document.getElementById('lede');
+  var go = document.getElementById('go');
+  var namedWrap = document.getElementById('named-wrap');
+
+  var edKey = String(editionRaw||'').toLowerCase().replace(/[^a-z]/g,'');
+  var cKey  = String(campaignRaw||'').toLowerCase().replace(/[^a-z]/g,'');
+
+  if (mode === 'support') {
+    var cname = CAMPAIGN_LABEL[cKey] || 'the JRS initiatives';
+    eyebrow.textContent = 'Initiative support';
+    headline.textContent = 'Add your support';
+    lede.textContent = 'Support for ' + cname + ' is recorded with your name and organization so it carries real weight. It takes a moment and commits you to nothing further.';
+    go.textContent = 'Add my support';
+    namedWrap.style.display = 'flex';
+  } else {
+    var ename = EDITION_LABEL[edKey] || '';
+    eyebrow.textContent = 'JRS Investigator Field Guide';
+    headline.textContent = 'Register to download';
+    lede.textContent = ename
+      ? ('Free for practitioners. Register once and the ' + ename + ' downloads immediately.')
+      : 'Free for practitioners. Register once and the guide downloads immediately.';
+    go.textContent = 'Get the guide';
+    namedWrap.style.display = 'none';
+  }
+
+  // No edition and no campaign: nothing to gate. Send to the guides page.
+  if (!editionRaw && !campaignRaw) { location.replace('investigator-guides.html'); return; }
+
+  function submit(){
+    var msg = document.getElementById('msg');
+    var name  = document.getElementById('f-name').value.trim();
+    var org   = document.getElementById('f-org').value.trim();
+    var title = document.getElementById('f-title').value.trim();
+    var email = document.getElementById('f-email').value.trim();
+    var c1 = document.getElementById('c-contact').checked;
+    var c2 = document.getElementById('c-transfer').checked;
+    var c3 = document.getElementById('c-named').checked;
+
+    msg.style.color = 'var(--review-text)';
+    if (!name)  { msg.textContent = 'Please enter your name.'; return; }
+    if (!email || email.indexOf('@') < 1 || email.indexOf('.') < 0) { msg.textContent = 'Please enter a valid email address.'; return; }
+    if (!c1)    { msg.textContent = 'The first consent box is required in order to store your details.'; return; }
+
+    go.disabled = true;
+    msg.style.color = 'var(--muted)';
+    msg.textContent = 'Submitting...';
+
+    fetch('/api/access', {
+      method: 'POST',
+      headers: { 'Content-Type':'application/json' },
+      body: JSON.stringify({
+        mode: mode,
+        name: name,
+        organization: org,
+        title: title,
+        email: email,
+        edition: editionRaw,
+        campaign: campaignRaw,
+        src: src,
+        consent_contact: true,
+        consent_transfer: c2,
+        consent_named: c3
+      })
+    })
+    .then(function(r){ if (!r.ok) throw 0; return r.json(); })
+    .then(function(d){
+      msg.style.color = 'var(--ready-text)';
+      if (mode === 'guide' && d && d.file) {
+        msg.textContent = 'Thank you. Your download is starting.';
+        location.href = d.file;
+      } else {
+        msg.textContent = 'Thank you. Your support is recorded.';
+        location.href = (d && d.redirect) ? d.redirect : '/supported.html';
+      }
+    })
+    .catch(function(){
+      msg.style.color = 'var(--review-text)';
+      msg.textContent = 'Could not complete that just now. Please try again, or email info@jrsstandard.com.';
+      go.disabled = false;
+    });
+  }
+
+  go.addEventListener('click', submit);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Enter') submit(); });
+})();
+</script>
+</body>
+</html>
