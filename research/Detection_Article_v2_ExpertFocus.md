@@ -1,10 +1,8 @@
 # Decision Reconstruction Risk Is Detectable: An International Expert Panel Evaluation of a Record-Level Review Standard
 
-**Authors:** Phillip Wikes (Creator of the Justification Review Standard; former Lead Civil Rights Officer, Maryland Commission on Civil Rights), Gabriela Cortez (Maryland Commission on Civil Rights), and Ubayet Hossain, FRM (Associate Director, Model Validation, KPMG India).
+**Authors:** Phillip Wikes (Creator of the Justification Review Standard; former Lead Civil Rights Officer, Maryland Commission on Civil Rights) and Ubayet Hossain, FRM (Associate Director, Model Validation, KPMG India).
 
-**Author contributions:** P.W. conceived Decision Reconstruction Risk and the JRS review method, constructed the validation corpus and the verified answer key, assembled the international reviewer panel, and led the writing. G.C. developed the paper's normative framing and wrote Section 2.1: documentation accessibility as an accountability property owed to the person a record describes, and the argument that linguistic and jurisdictional range strengthens rather than complicates review, which is the stated rationale for the panel's international composition. U.H. designed the reliability and validation framework: the reference-panel design, the chance-corrected agreement statistics, and the pre-registered decision floors and analysis plan.
-
-**Disclosure of dual role:** G.C. is also one of the reviewers whose reads form part of the study data (participant code V-AI-08). Her authorship rests on her conceptual and written contribution to Sections 1 and 2.1, not on her own reviews. She took no part in the scoring, the analysis, or any decision affecting the treatment of her own data, all of which were completed by P.W. and U.H. under the pre-registered plan.
+**Author contributions:** P.W. conceived Decision Reconstruction Risk and the JRS review method, developed the paper's normative framing, constructed the validation corpus and the verified answer key, assembled the international reviewer panel, and led the writing. U.H. designed the reliability and validation framework: the reference-panel design, the chance-corrected agreement statistics, and the pre-registered decision floors and analysis plan.
 
 **Target journal:** *AI and Ethics* (Springer). Alternatives: *AI & Society* (Springer); *Journal of Responsible Technology* (Elsevier, open access).
 
@@ -55,8 +53,6 @@ Generative AI stresses this assumption in a specific way. Language models are tr
 Existing AI governance instruments, for example model risk frameworks, impact assessments, and technology inventories, largely measure the system and the process. They do not measure whether the resulting record is independently reviewable. That is the measurement gap this work addresses.
 
 ### 2.1 The record and the person it describes
-
-*This section was written by G.C.*
 
 Reconstructability is usually argued for in institutional terms: a defensible file, an auditable trail, a record that survives litigation. Those are real interests, and they are not the only ones. A record is also the only account the affected person may ever receive of a decision that shaped their employment, their housing, their benefits, or their access to justice. A record that cannot be reconstructed cannot be understood or fairly questioned by the person it most concerns, and that person is rarely in the room when the standard for the file is set.
 
@@ -234,7 +230,7 @@ Landis, J.R., Koch, G.G., 1977. The measurement of observer agreement for catego
 
 ## Acknowledgments
 
-We thank the international reviewer panel for their care and independent judgment. Reviewers are recognized as named contributors with their consent; they are not co-authors of this paper. The proportionality principle described in Section 3 was surfaced by pilot reviewer Saurabh Nanda, General Manager and APAC Business Leader (Align Technology), and is credited with his permission.
+We thank the international reviewer panel for their care and independent judgment. Reviewers are recognized as named contributors with their consent; they are not co-authors of this paper. The argument developed in Section 2.1, that a record must remain understandable to the person it describes and that linguistic and jurisdictional range strengthens review, originated in conversations with panel reviewer Gabriela Cortez (Maryland Commission on Civil Rights) and is credited to her with permission. The proportionality principle described in Section 3 was surfaced by pilot reviewer Saurabh Nanda, General Manager and APAC Business Leader (Align Technology), and is credited with his permission.
 
 ## Data availability and pre-registration
 
@@ -242,4 +238,5 @@ The study protocol and analysis plan are pre-registered. Constructed records, th
 
 ## Progress log
 
+- 2026-08-02b: **Byline returned to two authors.** Gabriela Cortez is credited as a named panel reviewer and as the origin of the Section 2.1 argument in the Acknowledgments, at her preference; she is not a co-author at this time. Section 2.1 is retained in the paper's voice. The dual-role disclosure is removed as no longer applicable.
 - 2026-08-02: **Restructured from the previous draft.** The paper is now primarily a detection study, with the expert-panel result as the headline finding (82.8 percent, participant-level CI 71.0 to 94.6, clears the pre-registered threshold on both criteria). The randomized comparison moves from co-primary to a clearly-labeled pre-registered secondary analysis (Section 6), reported in full as an underpowered null with the effect-size estimate and power specification attached. Gabriela Cortez reinstated as co-author with authorship of Section 2.1, which is expanded into a fuller treatment of accessibility as an accountability property and the methodological rationale for an internationally and linguistically diverse panel; dual-role disclosure added. Limitations gained an explicit statement that the expert panel and the randomized arms must not be compared, because that comparison confounds expertise with method. Unit of analysis moved to participant level throughout.
