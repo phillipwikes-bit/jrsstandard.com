@@ -165,6 +165,15 @@ REVIEWERS = [
             "over a decade of practice as an advocate at the High Court of Delhi"),
         "out": "/home/user/jrsstandard.com/research/JRS_Certificate_Sidharth_Borah.pdf",
     },
+    {
+        "name": "Niloofar Kandi",
+        "date": "August 2, 2026",
+        # Pronoun not stated; phrase the perspective without one ("An ... perspective").
+        "body": standard_body(
+            "An", "AI-governance and standards-implementation",
+            "doctoral research in AI governance and hands-on ISO/IEC 42001 implementation"),
+        "out": "/home/user/jrsstandard.com/research/JRS_Certificate_Niloofar_Kandi.pdf",
+    },
 ]
 
 if __name__ == "__main__":
