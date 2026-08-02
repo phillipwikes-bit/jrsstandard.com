@@ -7,3 +7,6 @@ scratchpad/
 !.dev.vars.example
 .env*
 !.env.example
+
+__pycache__/
+*.pyc
