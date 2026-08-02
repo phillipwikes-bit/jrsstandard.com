@@ -69,13 +69,21 @@ function isTestTag(s){
 }
 
 async function purgeTestRows(H){
-  // Delete any registration rows written by a deploy check, matched on the
-  // page_source recorded inside the JSON payload.
-  try {
-    await fetch(SB + "/rest/v1/pilot_contacts?source=in.(guide-register,support-register)"
-      + "&message->>page_source=in.(verify,test,selftest,deploytest)",
-      { method: 'DELETE', headers: H });
-  } catch (e) { /* best-effort */ }
+  // Delete any registration rows written by a deploy check.
+  //
+  // pilot_contacts.message is a TEXT column holding serialized JSON, not jsonb,
+  // so a `message->>page_source` filter matches nothing. Match the serialized
+  // payload as text instead, one exact tag at a time, so the pattern stays
+  // precise and cannot catch a real registration by accident.
+  for (let i = 0; i < TEST_SRC.length; i++){
+    const pat = '*' + encodeURIComponent('"page_source":"' + TEST_SRC[i]) + '*';
+    try {
+      await fetch(SB + '/rest/v1/pilot_contacts'
+        + '?source=in.(guide-register,support-register)'
+        + '&message=like.' + pat,
+        { method: 'DELETE', headers: H });
+    } catch (e) { /* best-effort */ }
+  }
 }
 
 export default async function handler(req){
