@@ -100,6 +100,21 @@ tr.today td{background:rgba(93,191,130,.07)}
   </table>
   <div class="note">Arm assignment is automatic and random from each code. This section fills as Arm B participants submit; it shows participation only, never answers.</div>
 
+  <h1 style="font-size:22px;margin-top:34px">Organization Pilots &middot; Field Use</h1>
+  <p class="sub">Organizations that have applied the standard to their own records. Record text is never stored: each record is assessed in memory and discarded, so only the count of records run and the pattern of results is kept. Organization names appear only where the organization consented to be named.</p>
+  <div class="cards">
+    <div class="card"><div class="cv hot" id="op-today">&middot;</div><div class="ck">New today (UTC)</div></div>
+    <div class="card"><div class="cv" id="op-orgs">&middot;</div><div class="ck">Organizations</div></div>
+    <div class="card"><div class="cv" id="op-records">&middot;</div><div class="ck">Records run</div></div>
+    <div class="card"><div class="cv" id="op-flagged">&middot;</div><div class="ck">Conditions flagged</div></div>
+  </div>
+  <div class="note" id="op-note">Organization pilots will appear here once the first organization runs the standard on its own records.</div>
+  <div class="chart">
+    <h2>Sectors represented</h2>
+    <div id="opsector">Loading&hellip;</div>
+    <div class="note" style="margin-top:8px">Sector of each organization that ran a pilot, and the routing bands their records received. Aggregate only; no organization's individual results are shown.</div>
+  </div>
+
   <h1 style="font-size:22px;margin-top:34px">Consented Registrations</h1>
   <p class="sub">Named registrations captured at the field-guide and initiative-support gates. Every row behind these counts is a real person with an organization, an email, and explicit consent, which is what distinguishes them from an anonymous download or an anonymous click. Aggregate counts only; the named list is stored privately.</p>
   <div class="cards">
@@ -313,6 +328,54 @@ function loadArmB(){
    })
    .catch(function(){ document.getElementById('ab-rows').innerHTML='<tr><td colspan="4" style="color:var(--muted-soft)">Could not load Arm B. Tap Refresh.</td></tr>'; });
 }
+function loadOrgPilots(){
+  return fetch('/api/orgpilot-stats')
+   .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+   .then(function(s){
+     s=s||{};
+     document.getElementById('op-today').textContent=s.today||0;
+     document.getElementById('op-orgs').textContent=s.organizations||0;
+     document.getElementById('op-records').textContent=s.records_run||0;
+     document.getElementById('op-flagged').textContent=(s.flagged_condition_pct==null?'\u00b7':s.flagged_condition_pct+'%');
+     var named=(s.named_organizations||[]);
+     var n=(s.organizations||0);
+     var txt=(s.sessions||0)+' pilot '+((s.sessions===1)?'session':'sessions')+' across '+n+' '+((n===1)?'organization':'organizations')
+       +' in '+(s.countries||0)+' '+((s.countries===1)?'country':'countries')+'. Record text is never stored.';
+     if(named.length) txt+=' Named with consent: '+named.join(', ')+'.';
+     document.getElementById('op-note').textContent=txt;
+     renderOrgSectors(s);
+   })
+   .catch(function(){ document.getElementById('op-note').textContent='Organization pilots will appear here once the first organization runs the standard on its own records.'; });
+}
+function renderOrgSectors(s){
+  var el=document.getElementById('opsector'); if(!el) return;
+  var list=(s&&s.by_sector)||[];
+  var rt=(s&&s.routing)||{};
+  var html='';
+  if(!list.length){ html='<div style="color:var(--muted-soft);font-size:12px">No organization pilots yet.</div>'; }
+  else{
+    var max=1; list.forEach(function(x){ if(x.count>max) max=x.count; });
+    list.forEach(function(x){
+      var w=Math.max(4,Math.round((x.count/max)*100));
+      html+='<div style="display:flex;align-items:center;gap:10px;margin:4px 0">'
+        +'<span style="font-family:\'JetBrains Mono\',monospace;font-size:11px;color:var(--muted);width:210px;flex:0 0 auto">'+esc(x.sector)+'</span>'
+        +'<span style="background:var(--accent);height:12px;width:'+w+'%;max-width:45%;display:inline-block"></span>'
+        +'<span style="font-size:12px;color:var(--text)">'+x.count+'</span></div>';
+    });
+  }
+  var tot=(rt.low||0)+(rt.moderate||0)+(rt.high||0)+(rt.critical||0);
+  if(tot){
+    html+='<div style="margin-top:14px;font-family:\'JetBrains Mono\',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:8px">Routing of records reviewed</div>';
+    [['Low',rt.low||0],['Moderate',rt.moderate||0],['High',rt.high||0],['Critical',rt.critical||0]].forEach(function(p){
+      var w=Math.max(2,Math.round((p[1]/tot)*100));
+      html+='<div style="display:flex;align-items:center;gap:10px;margin:4px 0">'
+        +'<span style="font-family:\'JetBrains Mono\',monospace;font-size:11px;color:var(--muted);width:90px;flex:0 0 auto">'+p[0]+'</span>'
+        +'<span style="background:var(--accent);height:12px;width:'+w+'%;max-width:55%;display:inline-block"></span>'
+        +'<span style="font-size:12px;color:var(--text)">'+p[1]+'</span></div>';
+    });
+  }
+  el.innerHTML=html;
+}
 function loadRegistrations(){
   return fetch('/api/access-stats')
    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
@@ -469,7 +532,7 @@ function renderSupWall(d){
   h+='</div>';
   w.innerHTML=h;
 }
-function refresh(){ loadDetection(); loadRealcase(); loadArmB(); loadRegistrations(); loadTraining(); loadDownloads(); loadItems(); loadSupport(); }
+function refresh(){ loadDetection(); loadRealcase(); loadArmB(); loadOrgPilots(); loadRegistrations(); loadTraining(); loadDownloads(); loadItems(); loadSupport(); }
 refresh();
 setInterval(refresh, 60000);
 </script>

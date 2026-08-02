@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Run JRS on your own records &middot; JRS</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Run the Justification Review Standard on up to ten of your own records, free. Your record text is never stored.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050505; --surface:#121212; --surface2:#1A1A1A;
+  --accent:#BE9447; --accent-dim:#7A5E28;
+  --muted:#B3B3B3; --muted-soft:#8A8A8A; --text:#F2F2F2;
+  --rule:#2A2A2A; --stop:#8B2020; --stop-text:#E88080;
+  --review-text:#D4A055; --ready-text:#5DBF82;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+a{color:var(--accent)}
+.wrap{max-width:760px;width:100%;margin:0 auto;padding:32px 22px 60px;flex:1}
+.wordmark{font-family:'Bodoni Moda',serif;font-size:20px;color:var(--accent);text-decoration:none}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin:22px 0 8px}
+h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:27px;margin:0 0 10px;line-height:1.25}
+.lede{font-size:14px;color:var(--muted);line-height:1.65;margin-bottom:18px}
+.card{background:var(--surface);border:1px solid var(--rule);padding:20px;margin:16px 0}
+.card.gold{border-color:var(--accent)}
+.privacy{border-left:3px solid var(--ready-text);background:var(--surface);padding:14px 16px;margin:16px 0;font-size:12.5px;color:var(--muted);line-height:1.6}
+label.fl{display:block;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px}
+input,select,textarea{width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;font-family:'Inter',sans-serif;margin-bottom:11px}
+textarea{min-height:190px;resize:vertical;line-height:1.6}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent-dim)}
+button{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:13px 20px;cursor:pointer}
+button.ghost{background:none;color:var(--accent);border:1px solid var(--accent)}
+button:disabled{opacity:.5;cursor:default}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.counter{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft)}
+.pill{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border:1px solid var(--rule)}
+.pill.low{color:var(--ready-text);border-color:var(--ready-text)}
+.pill.moderate{color:var(--review-text);border-color:var(--review-text)}
+.pill.high,.pill.critical{color:var(--stop-text);border-color:var(--stop-text)}
+.cond{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--rule);font-size:13px}
+.cond:last-child{border-bottom:none}
+.st{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;flex:0 0 auto;margin-top:2px}
+.st.pass{color:var(--ready-text);border:1px solid var(--ready-text)}
+.st.needs{color:var(--review-text);border:1px solid var(--review-text)}
+.st.fail{color:var(--stop-text);border:1px solid var(--stop-text)}
+.cl{font-weight:500;color:var(--text)}
+.cn{color:var(--muted);font-size:12.5px}
+ul{margin:8px 0 0 18px;color:var(--muted);font-size:13px}
+li{margin-bottom:5px}
+#msg{font-size:12.5px;min-height:18px;margin:8px 0;color:var(--review-text)}
+.fine{font-size:10.5px;color:var(--muted-soft);line-height:1.55;margin-top:10px}
+footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
+.fc{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft)}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a href="index.html" class="wordmark">JRS<span style="font-size:10px;vertical-align:super;position:relative;top:-3px;">&#8482;</span></a>
+
+  <!-- STEP 1: organization details -->
+  <section id="step-org">
+    <div class="eyebrow">Organization mini-pilot</div>
+    <h1>Run JRS on your own records</h1>
+    <p class="lede">Paste up to ten of your own records, one at a time. Each is assessed against the five review conditions and you get the read immediately. Free, no obligation, and you can stop after one.</p>
+
+    <div class="privacy">
+      <b style="color:var(--ready-text)">Your record text is never stored.</b> Each record is assessed in memory and discarded. Nothing you paste is written to any database, and it is not used to train anything. Only the count of records you ran and the pattern of results is kept, so the programme can report that an organization used the standard without ever holding what it looked at.
+      <br><br>
+      Even so, please remove names and other identifying details before pasting. A record works for this purpose with the specifics redacted.
+    </div>
+
+    <div class="card">
+      <label class="fl" for="p-org">Organization</label>
+      <input id="p-org" type="text" placeholder="Organization name" autocomplete="organization">
+      <label class="fl" for="p-sector">Sector</label>
+      <select id="p-sector">
+        <option value="">Select a sector</option>
+        <option>Government or public agency</option>
+        <option>Healthcare</option>
+        <option>Financial services</option>
+        <option>Higher education</option>
+        <option>Technology</option>
+        <option>Manufacturing or industrial</option>
+        <option>Professional services or consulting</option>
+        <option>Legal</option>
+        <option>Nonprofit or NGO</option>
+        <option>Other</option>
+      </select>
+      <label class="fl" for="p-name">Your name</label>
+      <input id="p-name" type="text" placeholder="Full name" autocomplete="name">
+      <label class="fl" for="p-title">Your title or role</label>
+      <input id="p-title" type="text" placeholder="Title or role" autocomplete="organization-title">
+      <label class="fl" for="p-email">Work email</label>
+      <input id="p-email" type="email" placeholder="Work email" autocomplete="email">
+
+      <label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--muted);line-height:1.5;margin:6px 0 8px;cursor:pointer"><input type="checkbox" id="p-c1" style="width:auto;margin:2px 0 0;flex:0 0 auto"><span>I agree to be contacted about the JRS project and consent to my details being stored securely. (required)</span></label>
+      <label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--muted-soft);line-height:1.5;margin-bottom:8px;cursor:pointer"><input type="checkbox" id="p-c2" style="width:auto;margin:2px 0 0;flex:0 0 auto"><span>I consent to my details being transferred to a successor if the JRS project is acquired. (optional)</span></label>
+      <label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--muted-soft);line-height:1.5;margin-bottom:12px;cursor:pointer"><input type="checkbox" id="p-c3" style="width:auto;margin:2px 0 0;flex:0 0 auto"><span>My organization may be named publicly as having piloted the standard. (optional)</span></label>
+
+      <div id="org-msg" style="font-size:12.5px;color:var(--review-text);min-height:16px;margin-bottom:6px"></div>
+      <button id="org-go" type="button">Start the pilot</button>
+    </div>
+  </section>
+
+  <!-- STEP 2: the review workspace -->
+  <section id="step-run" class="hidden">
+    <div class="eyebrow"><span id="run-org"></span> &middot; mini-pilot</div>
+    <h1>Paste a record</h1>
+    <p class="lede">Paste one record, redacted, then run the review. You can do up to ten. Each read appears below.</p>
+
+    <div class="privacy">
+      <b style="color:var(--ready-text)">Not stored.</b> This text is assessed in memory and discarded when the read returns.
+    </div>
+
+    <div class="card">
+      <label class="fl" for="p-text">Record text (redacted)</label>
+      <textarea id="p-text" placeholder="Paste the record here. Remove names, addresses, and identifiers first."></textarea>
+      <div class="row">
+        <button id="run-go" type="button">Run the review</button>
+        <span class="counter" id="run-count">Record 1 of 10</span>
+      </div>
+      <div id="msg"></div>
+    </div>
+
+    <div id="result" class="hidden">
+      <div class="card gold">
+        <div class="row" style="justify-content:space-between;margin-bottom:10px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft)">Review outcome</div>
+          <span class="pill" id="r-routing">&middot;</span>
+        </div>
+        <div style="font-size:13.5px;color:var(--muted);margin-bottom:14px" id="r-rationale"></div>
+        <div id="r-conditions"></div>
+        <div id="r-flags-wrap" class="hidden" style="margin-top:14px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft)">Flagged</div>
+          <ul id="r-flags"></ul>
+        </div>
+        <div id="r-rev-wrap" class="hidden" style="margin-top:14px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft)">Suggested revisions</div>
+          <ul id="r-revisions"></ul>
+        </div>
+        <div style="margin-top:14px;font-size:13.5px;color:var(--text)" id="r-summary"></div>
+      </div>
+      <div class="row">
+        <button id="next-go" type="button" class="ghost">Run another record</button>
+        <button id="finish-go" type="button">Finish and record this pilot</button>
+      </div>
+      <p class="fine">Finishing records that your organization ran the standard, with the count and the pattern of results. It does not send your record text, because that was never kept.</p>
+    </div>
+  </section>
+
+  <!-- STEP 3: done -->
+  <section id="step-done" class="hidden">
+    <div class="eyebrow">Pilot recorded</div>
+    <h1>Thank you</h1>
+    <p class="lede" id="done-line"></p>
+    <div class="card">
+      <p style="font-size:13.5px;color:var(--muted);margin-bottom:12px">Your organization is now counted among those that have applied the standard to their own records. The aggregate appears on the public status page, showing counts only, never your organization's results or text unless you agreed to be named.</p>
+      <div class="row">
+        <a href="pilot-status.html" style="text-decoration:none"><button type="button" class="ghost">View the status page</button></a>
+        <a href="enterprise.html" style="text-decoration:none"><button type="button" class="ghost">Enterprise use</button></a>
+      </div>
+    </div>
+    <p class="fine">If you would like a written read on a larger set of records, reply to the email that brought you here, or write to <a href="mailto:info@jrsstandard.com">info@jrsstandard.com</a>.</p>
+  </section>
+</div>
+
+<footer>
+  <div class="fc">&#169; 2026 Phillip Wikes &nbsp;&middot;&nbsp; JRS&#8482; &middot; <a href="privacy.html" style="color:inherit">Privacy</a></div>
+</footer>
+
+<script>
+(function(){
+  function qp(k){ try { return (new URLSearchParams(location.search)).get(k) || ''; } catch(e){ return ''; } }
+  function el(id){ return document.getElementById(id); }
+  var MAX = 10;
+
+  var src = String(qp('src')||'').toLowerCase().replace(/[^a-z0-9_-]/g,'').slice(0,40);
+  var session = {
+    organization:'', sector:'', name:'', title:'', email:'',
+    c1:false, c2:false, c3:false,
+    run:0,
+    routing:{ low:0, moderate:0, high:0, critical:0 },
+    conditions:{ pass:0, needs_attention:0, fail:0 }
+  };
+
+  // Prefill from the endorsement gate if it passed details through.
+  ['org','name','title','email'].forEach(function(k){
+    var v = qp(k); if (!v) return;
+    var node = el('p-' + k); if (node) node.value = v.slice(0,200);
+  });
+
+  // PII gate, same canonical check used elsewhere on the site.
+  function jrsSanitizeCheck(text){
+    var patterns = [
+      {re:/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, label:'email address'},
+      {re:/\b\d{3}[-.\s]?\d{3}[-.\s]?\d{4}\b/g, label:'phone number'},
+      {re:/\b\d{3}-\d{2}-\d{4}\b/g, label:'SSN'},
+      {re:/\b\d{4}[\s-]?\d{4}[\s-]?\d{4}[\s-]?\d{4}\b/g, label:'card number'}
+    ];
+    var found = [];
+    patterns.forEach(function(p){ if (p.re.test(text)) found.push(p.label); });
+    if (found.length) {
+      return confirm('Potential sensitive identifier detected (' + found.join(', ') + '). Confirm all personally identifiable information has been redacted before submission to preserve work-product privileges.');
+    }
+    return true;
+  }
+
+  el('org-go').addEventListener('click', function(){
+    var m = el('org-msg');
+    session.organization = el('p-org').value.trim();
+    session.sector = el('p-sector').value.trim();
+    session.name = el('p-name').value.trim();
+    session.title = el('p-title').value.trim();
+    session.email = el('p-email').value.trim();
+    session.c1 = el('p-c1').checked;
+    session.c2 = el('p-c2').checked;
+    session.c3 = el('p-c3').checked;
+
+    m.style.color = 'var(--review-text)';
+    if (!session.organization) { m.textContent = 'Please enter your organization.'; return; }
+    if (!session.name) { m.textContent = 'Please enter your name.'; return; }
+    if (!session.email || session.email.indexOf('@') < 1 || session.email.indexOf('.') < 0) { m.textContent = 'Please enter a valid work email.'; return; }
+    if (!session.c1) { m.textContent = 'The first consent box is required.'; return; }
+
+    el('run-org').textContent = session.organization;
+    el('step-org').classList.add('hidden');
+    el('step-run').classList.remove('hidden');
+    window.scrollTo(0,0);
+  });
+
+  function statusClass(s){
+    s = String(s||'').toLowerCase();
+    if (s.indexOf('pass') === 0) return 'pass';
+    if (s.indexOf('fail') === 0) return 'fail';
+    return 'needs';
+  }
+  function statusKey(s){
+    s = String(s||'').toLowerCase();
+    if (s.indexOf('pass') === 0) return 'pass';
+    if (s.indexOf('fail') === 0) return 'fail';
+    return 'needs_attention';
+  }
+
+  el('run-go').addEventListener('click', function(){
+    var msg = el('msg');
+    var text = el('p-text').value.trim();
+    msg.style.color = 'var(--review-text)';
+    if (text.length < 80) { msg.textContent = 'Please paste a record of at least a short paragraph.'; return; }
+    if (text.length > 8000) { msg.textContent = 'That record is longer than the 8,000 character limit. Please shorten or split it.'; return; }
+    if (!jrsSanitizeCheck(text)) return;
+    if (session.run >= MAX) { msg.textContent = 'You have reached the ten record limit for a mini-pilot.'; return; }
+
+    var btn = el('run-go');
+    btn.disabled = true;
+    msg.style.color = 'var(--muted)';
+    msg.textContent = 'Running the five conditions...';
+
+    fetch('/api/review', {
+      method:'POST', headers:{ 'Content-Type':'application/json' },
+      body: JSON.stringify({ text: text })
+    })
+    .then(function(r){ if (!r.ok) throw 0; return r.json(); })
+    .then(function(d){
+      if (!d || !d.conditions) throw 0;
+
+      var routing = String(d.routing||'Moderate').toLowerCase();
+      if (!(routing in session.routing)) routing = 'moderate';
+      session.routing[routing]++;
+      session.run++;
+
+      el('r-routing').textContent = d.routing || 'Moderate';
+      el('r-routing').className = 'pill ' + routing;
+      el('r-rationale').textContent = d.routingRationale || '';
+
+      var ch = '';
+      (d.conditions||[]).forEach(function(c){
+        var k = statusKey(c.status);
+        session.conditions[k]++;
+        ch += '<div class="cond"><span class="st ' + statusClass(c.status) + '">' + esc(c.status||'') + '</span>'
+            + '<span><span class="cl">' + esc(c.label||'') + '.</span> <span class="cn">' + esc(c.note||'') + '</span></span></div>';
+      });
+      el('r-conditions').innerHTML = ch;
+
+      renderList('r-flags', 'r-flags-wrap', d.flags);
+      renderList('r-revisions', 'r-rev-wrap', d.revisions);
+      el('r-summary').textContent = d.summary || '';
+
+      el('result').classList.remove('hidden');
+      el('run-count').textContent = 'Record ' + Math.min(session.run + 1, MAX) + ' of ' + MAX;
+      msg.textContent = '';
+      btn.disabled = false;
+      el('result').scrollIntoView({ behavior:'smooth', block:'start' });
+    })
+    .catch(function(){
+      msg.style.color = 'var(--review-text)';
+      msg.textContent = 'The review could not run just now. Please try again in a moment, or write to info@jrsstandard.com.';
+      btn.disabled = false;
+    });
+  });
+
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function renderList(listId, wrapId, arr){
+    var w = el(wrapId), l = el(listId);
+    if (!arr || !arr.length) { w.classList.add('hidden'); l.innerHTML=''; return; }
+    l.innerHTML = arr.map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('');
+    w.classList.remove('hidden');
+  }
+
+  el('next-go').addEventListener('click', function(){
+    if (session.run >= MAX) { el('msg').style.color='var(--review-text)'; el('msg').textContent='You have reached the ten record limit.'; return; }
+    el('p-text').value = '';
+    el('result').classList.add('hidden');
+    el('p-text').focus();
+    window.scrollTo(0,0);
+  });
+
+  el('finish-go').addEventListener('click', function(){
+    var btn = el('finish-go');
+    btn.disabled = true;
+    el('msg').style.color = 'var(--muted)';
+    el('msg').textContent = 'Recording the pilot...';
+
+    fetch('/api/org-pilot', {
+      method:'POST', headers:{ 'Content-Type':'application/json' },
+      body: JSON.stringify({
+        name: session.name,
+        email: session.email,
+        organization: session.organization,
+        title: session.title,
+        sector: session.sector,
+        src: src,
+        records_run: session.run,
+        routing: session.routing,
+        conditions: session.conditions,
+        consent_contact: session.c1,
+        consent_transfer: session.c2,
+        consent_named_org: session.c3
+      })
+    })
+    .then(function(r){ if (!r.ok) throw 0; return r.json(); })
+    .then(function(){
+      el('done-line').textContent = session.organization + ' applied the Justification Review Standard to '
+        + session.run + (session.run === 1 ? ' record.' : ' records.');
+      el('step-run').classList.add('hidden');
+      el('step-done').classList.remove('hidden');
+      window.scrollTo(0,0);
+    })
+    .catch(function(){
+      el('msg').style.color = 'var(--review-text)';
+      el('msg').textContent = 'Could not record the pilot just now. Please try again, or email info@jrsstandard.com.';
+      btn.disabled = false;
+    });
+  });
+})();
+</script>
+</body>
+</html>
