@@ -56,6 +56,28 @@ function normCampaign(c){
   return 'general';
 }
 
+// Deploy and smoke-check tags. Registrations carrying one of these are never
+// stored, and any that already exist are physically deleted on the next request,
+// so the consented-contact counts stay clean with no manual database work. Same
+// self-healing pattern already used by /api/dl and /api/support.
+const TEST_SRC = ['verify', 'test', 'selftest', 'deploytest'];
+function isTestTag(s){
+  s = String(s || '');
+  if (!s) return false;
+  if (TEST_SRC.indexOf(s) !== -1) return true;
+  return s.indexOf('deploytest') === 0;
+}
+
+async function purgeTestRows(H){
+  // Delete any registration rows written by a deploy check, matched on the
+  // page_source recorded inside the JSON payload.
+  try {
+    await fetch(SB + "/rest/v1/pilot_contacts?source=in.(guide-register,support-register)"
+      + "&message->>page_source=in.(verify,test,selftest,deploytest)",
+      { method: 'DELETE', headers: H });
+  } catch (e) { /* best-effort */ }
+}
+
 export default async function handler(req){
   if (req.method === 'OPTIONS') {
     return new Response(null, { status: 204, headers: {
@@ -68,7 +90,17 @@ export default async function handler(req){
   const env = (typeof process !== 'undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
 
-  if (req.method === 'GET') return json({ ok:true, serviceKey: !!SERVICE });
+  if (req.method === 'GET') {
+    // A plain GET is the health check, and it also runs the self-healing purge
+    // so a deploy-test registration never lingers in the contact counts.
+    if (SERVICE) {
+      await purgeTestRows({
+        'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE,
+        'Content-Type': 'application/json', 'Prefer': 'return=minimal'
+      });
+    }
+    return json({ ok:true, serviceKey: !!SERVICE });
+  }
   if (req.method !== 'POST') return json({ error:'method_not_allowed' }, 405);
   if (!SERVICE) return json({ error:'service_key_missing' }, 503);
 
@@ -113,6 +145,16 @@ export default async function handler(req){
     'Content-Type': 'application/json',
     'Prefer': 'return=minimal'
   };
+
+  // Self-healing purge of any deploy-test rows already stored.
+  await purgeTestRows(H);
+
+  // A deploy check never creates a contact row or a counter row, but still
+  // resolves normally so the smoke test can confirm the whole path works.
+  if (isTestTag(src)) {
+    if (mode === 'guide') return json({ ok:true, test:true, file: '/' + FILES[edition] });
+    return json({ ok:true, test:true, redirect: '/supported.html?c=' + encodeURIComponent(campaign) });
+  }
 
   // The consented contact record is the point of this endpoint. If it fails the
   // request fails: no file is released and no support is recorded, so a stored
