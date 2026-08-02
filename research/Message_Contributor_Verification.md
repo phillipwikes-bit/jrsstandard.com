@@ -20,6 +20,8 @@ Please confirm one of the following:
 
 2. **Keep me anonymous.** Please do not use my name or identifying details; count my contribution in the aggregate only.
 
+You will also receive a summary of the study's results. That goes out once data collection is closed and the analysis is locked, so that no participant sees findings while others are still reviewing. Everything shared will be aggregate; individual results are kept confidential.
+
 To keep the submission on schedule, please reply by [Friday, 8 August 2026]. If I do not hear from you by then, I will list you using the name and professional title you provided when you registered for the study, shown below, so that no contributor is left out by silence alone:
 
 - On file: [name as registered]
