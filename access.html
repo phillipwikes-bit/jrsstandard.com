@@ -33,6 +33,11 @@ label.chk.soft{color:var(--muted-soft)}
 button{width:100%;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:13px;cursor:pointer}
 button:disabled{opacity:.55;cursor:default}
 button.ghost{background:none;color:var(--accent);border:1px solid var(--accent)}
+.qbox{border:1px solid var(--rule);background:var(--surface2);padding:12px 13px;margin-bottom:10px}
+.qbox .q{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:8px}
+.qbox .opts{display:flex;gap:18px}
+.qbox .opts label{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--text);cursor:pointer}
+.qbox .opts input{width:auto;margin:0}
 .privacy-lite{border-left:3px solid var(--ready-text);padding:12px 14px;margin:0 0 14px;font-size:12.5px;color:var(--muted);line-height:1.6;background:var(--surface2)}
 #msg{font-size:12px;min-height:16px;margin-bottom:8px;color:var(--review-text)}
 .fine{font-size:10.5px;color:var(--muted-soft);line-height:1.55;margin-top:12px}
@@ -55,8 +60,22 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     <input id="f-email" type="email" placeholder="Work email" autocomplete="email" style="margin-bottom:14px">
 
     <label class="chk"><input type="checkbox" id="c-contact"><span>I agree to be contacted about the JRS project and consent to my details being stored securely for that purpose. (required)</span></label>
-    <label class="chk soft"><input type="checkbox" id="c-transfer"><span>I also consent to my details being transferred to a successor if the JRS project is acquired. (optional)</span></label>
-    <label class="chk soft" id="named-wrap"><input type="checkbox" id="c-named"><span>You may list me publicly by name as a supporter of this initiative. (optional)</span></label>
+
+    <div class="qbox">
+      <div class="q">If the JRS project is ever acquired, may your details transfer to the successor?</div>
+      <div class="opts">
+        <label><input type="radio" name="c-transfer" value="yes"><span>Yes</span></label>
+        <label><input type="radio" name="c-transfer" value="no"><span>No</span></label>
+      </div>
+    </div>
+
+    <div class="qbox" id="named-wrap">
+      <div class="q" id="named-q">May we list you publicly by name as a supporter of this initiative?</div>
+      <div class="opts">
+        <label><input type="radio" name="c-named" value="yes"><span>Yes</span></label>
+        <label><input type="radio" name="c-named" value="no"><span>No</span></label>
+      </div>
+    </div>
 
     <div id="msg"></div>
     <button id="go" type="button">Continue</button>
@@ -115,7 +134,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     headline.textContent = 'Add your support';
     lede.textContent = 'Support for ' + cname + ' is recorded with your name and organization so it carries real weight. It takes a moment and commits you to nothing further.';
     go.textContent = 'Add my support';
-    namedWrap.style.display = 'flex';
+    namedWrap.style.display = 'block';
   } else {
     var ename = EDITION_LABEL[edKey] || '';
     eyebrow.textContent = 'JRS Investigator Field Guide';
@@ -139,13 +158,18 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     var title = document.getElementById('f-title').value.trim();
     var email = document.getElementById('f-email').value.trim();
     var c1 = document.getElementById('c-contact').checked;
-    var c2 = document.getElementById('c-transfer').checked;
-    var c3 = document.getElementById('c-named').checked;
+    function pick(n){ var el = document.querySelector('input[name="' + n + '"]:checked'); return el ? el.value : ''; }
+    var t = pick('c-transfer');
+    var nmd = (mode === 'support') ? pick('c-named') : 'no';
+    var c2 = (t === 'yes');
+    var c3 = (nmd === 'yes');
 
     msg.style.color = 'var(--review-text)';
     if (!name)  { msg.textContent = 'Please enter your name.'; return; }
     if (!email || email.indexOf('@') < 1 || email.indexOf('.') < 0) { msg.textContent = 'Please enter a valid email address.'; return; }
     if (!c1)    { msg.textContent = 'The first consent box is required in order to store your details.'; return; }
+    if (!t)     { msg.textContent = 'Please answer the transfer question. Either answer is fine.'; return; }
+    if (mode === 'support' && !nmd) { msg.textContent = 'Please answer the public listing question. Either answer is fine.'; return; }
 
     go.disabled = true;
     msg.style.color = 'var(--muted)';
