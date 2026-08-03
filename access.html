@@ -55,7 +55,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
 
   <div class="card">
     <div class="eyebrow" id="eyebrow">JRS Investigator Field Guide</div>
-    <h1 id="headline">Register to download</h1>
+    <h1 id="headline">Join the International Registry</h1>
     <p class="lede" id="lede">Free for practitioners. One short registration, then the guide downloads immediately.</p>
 
     <input id="f-name"  type="text"  placeholder="Full name" autocomplete="name">
@@ -140,14 +140,14 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
   if (mode === 'support') {
     var cname = CAMPAIGN_LABEL[cKey] || 'the JRS initiatives';
     eyebrow.textContent = 'International Registry of Supporters';
-    headline.textContent = 'Join the Registry';
+    headline.textContent = 'Join the International Registry';
     lede.textContent = 'Support for ' + cname + ' is recorded in the International Registry of Supporters with your name and organization, so the count carries professional weight rather than being an anonymous tally.';
     go.textContent = 'Add my support';
     namedWrap.style.display = 'block';
   } else {
     var ename = EDITION_LABEL[edKey] || '';
     eyebrow.textContent = 'JRS Investigator Field Guide';
-    headline.textContent = 'Register to download';
+    headline.textContent = 'Join the International Registry';
     lede.textContent = ename
       ? ('Free for practitioners. Register once and the ' + ename + ' downloads immediately.')
       : 'Free for practitioners. Register once and the guide downloads immediately.';
