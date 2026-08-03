@@ -130,6 +130,16 @@ tr.today td{background:rgba(93,191,130,.07)}
     <div class="note" style="margin-top:8px">Field guide registrations by edition and initiative support by campaign. The guide and support gates went live on Aug 2, 2026; downloads and support recorded before that date were anonymous and cannot be attributed to a person.</div>
   </div>
 
+  <h1 style="font-size:22px;margin-top:34px">Contributor Confirmations</h1>
+  <p class="sub">Per-person confirmation links sent to the reviewers who completed the international detection set, the article co-authors, and the pilot facilitators. Each link captures the exact name and title to print, the naming election, and the continuing-use and transfer permissions. Aggregate counts only; the wording each contributor chose is stored privately.</p>
+  <div class="cards">
+    <div class="card"><div class="cv hot" id="cb-today">&middot;</div><div class="ck">Confirmed today (UTC)</div></div>
+    <div class="card"><div class="cv" id="cb-confirmed">&middot;</div><div class="ck">Confirmed</div></div>
+    <div class="card"><div class="cv" id="cb-outstanding">&middot;</div><div class="ck">Outstanding</div></div>
+    <div class="card"><div class="cv" id="cb-named">&middot;</div><div class="ck">Named in paper</div></div>
+  </div>
+  <div class="note" id="cb-note">Confirmations will appear here once the first contributor opens their link.</div>
+
   <h1 style="font-size:22px;margin-top:34px">Training &amp; Certification Adoption</h1>
   <p class="sub">Consented enrollments in the JRS training. Aggregate counts only; no personal data is shown here. The named, consented list is stored privately and is a transfer-ready asset.</p>
   <div class="cards">
@@ -393,6 +403,26 @@ function loadRegistrations(){
    })
    .catch(function(){ document.getElementById('rg-note').textContent='Registrations will appear here once the first person registers at a gate.'; });
 }
+function loadContributors(){
+  return fetch('/api/contributor-stats')
+   .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+   .then(function(s){
+     s=s||{};
+     document.getElementById('cb-today').textContent=s.today||0;
+     document.getElementById('cb-confirmed').textContent=(s.confirmed||0)+' / '+(s.roster||0);
+     document.getElementById('cb-outstanding').textContent=s.outstanding||0;
+     document.getElementById('cb-named').textContent=s.named_in_paper||0;
+     var codes=(s.confirmed_codes||[]);
+     document.getElementById('cb-note').textContent=
+       (s.confirmed||0)+' confirmed ('+((s.by_role&&s.by_role.panel)||0)+' panel, '
+       +((s.by_role&&s.by_role.author)||0)+' author, '+((s.by_role&&s.by_role.facilitator)||0)+' facilitator). '
+       +(s.named_in_paper||0)+' elected to be named, '+(s.anonymous_in_paper||0)+' anonymous. '
+       +(s.consented_use||0)+' granted continuing use, '+(s.consented_transfer||0)+' granted transfer to a successor. '
+       +'Registry sign-ups from these links: '+(s.support_rtkw||0)+' Right to Know Why, '+(s.support_defend||0)+' Decisions You Can Defend.'
+       +(codes.length?(' Confirmed codes: '+codes.join(', ')+'.'):'');
+   })
+   .catch(function(){ document.getElementById('cb-note').textContent='Confirmations will appear here once the first contributor opens their link.'; });
+}
 function renderRegSplit(s){
   var el=document.getElementById('rgsplit');
   if(!el) return;
@@ -532,7 +562,7 @@ function renderSupWall(d){
   h+='</div>';
   w.innerHTML=h;
 }
-function refresh(){ loadDetection(); loadRealcase(); loadArmB(); loadOrgPilots(); loadRegistrations(); loadTraining(); loadDownloads(); loadItems(); loadSupport(); }
+function refresh(){ loadDetection(); loadRealcase(); loadArmB(); loadOrgPilots(); loadRegistrations(); loadContributors(); loadTraining(); loadDownloads(); loadItems(); loadSupport(); }
 refresh();
 setInterval(refresh, 60000);
 </script>

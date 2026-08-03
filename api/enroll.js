@@ -41,6 +41,7 @@ export default async function handler(req){
     page_source: clean(b.source, 80),
     consent_contact: true,
     consent_transfer: b.consent_transfer === true,
+    consent_named: b.consent_named === true,
     ts: new Date().toISOString()
   };
 

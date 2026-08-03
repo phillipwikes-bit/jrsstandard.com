@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contributor confirmation &middot; JRS</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Confirm how your name and title appear as a contributor to the study, and collect what was promised to contributors.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050505; --surface:#121212; --surface2:#1A1A1A;
+  --accent:#BE9447; --accent-dim:#7A5E28;
+  --muted:#B3B3B3; --muted-soft:#8A8A8A; --text:#F2F2F2;
+  --rule:#2A2A2A; --stop-text:#E88080; --review-text:#D4A055; --ready-text:#5DBF82;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+a{color:var(--accent)}
+.wrap{max-width:600px;width:100%;margin:0 auto;padding:38px 22px 60px;flex:1}
+.wordmark{font-family:'Bodoni Moda',serif;font-size:20px;color:var(--accent);text-decoration:none;letter-spacing:.02em}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:10px}
+h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:26px;color:var(--text);margin:0 0 10px;line-height:1.25}
+h2{font-family:'Bodoni Moda',serif;font-weight:400;font-size:19px;color:var(--text);margin:26px 0 8px;line-height:1.3}
+.lede{font-size:13.5px;color:var(--muted);line-height:1.65;margin-bottom:16px}
+.card{background:var(--surface);border:1px solid var(--accent);padding:26px 24px;margin-top:24px}
+.sect{border-top:1px solid var(--rule);margin-top:22px;padding-top:18px}
+.flabel{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:5px}
+input{width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;margin-bottom:11px;font-family:'Inter',sans-serif}
+input:focus{outline:none;border-color:var(--accent-dim)}
+label.chk{display:flex;gap:9px;align-items:flex-start;font-size:12px;color:var(--muted);line-height:1.55;margin-bottom:9px;cursor:pointer}
+label.chk input{width:auto;margin:3px 0 0;flex:0 0 auto}
+button{width:100%;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:13px;cursor:pointer}
+button:disabled{opacity:.55;cursor:default}
+button.ghost{background:none;color:var(--accent);border:1px solid var(--accent)}
+.qbox{border:1px solid var(--rule);background:var(--surface2);padding:12px 13px;margin-bottom:10px}
+.qbox .q{font-size:12.5px;color:var(--text);line-height:1.55;margin-bottom:6px}
+.qbox .sub{font-size:11px;color:var(--muted-soft);line-height:1.5;margin-bottom:8px}
+.qbox .opts{display:flex;gap:18px}
+.qbox .opts label{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--text);cursor:pointer}
+.qbox .opts input{width:auto;margin:0}
+.onfile{border-left:3px solid var(--accent-dim);padding:11px 13px;margin:0 0 16px;font-size:12px;color:var(--muted);line-height:1.6;background:var(--surface2)}
+.onfile b{color:var(--text);font-weight:500}
+.registry{border:1px solid var(--accent-dim);background:var(--surface2);padding:14px 15px;margin:0 0 14px}
+.registry .rlabel{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:7px}
+.registry p{font-size:12.5px;color:var(--muted);line-height:1.6;margin:0}
+.registry b{color:var(--text);font-weight:500}
+.note{border-left:3px solid var(--ready-text);padding:12px 14px;margin:0 0 14px;font-size:12.5px;color:var(--muted);line-height:1.6;background:var(--surface2)}
+.pend{border-left:3px solid var(--review-text)}
+ul.tight{margin:0 0 0 16px;font-size:12.5px;color:var(--muted);line-height:1.65}
+ul.tight li{margin-bottom:7px}
+.grid2{display:flex;gap:10px;flex-wrap:wrap}
+.grid2 a{flex:1 1 45%;text-decoration:none;min-width:170px}
+#msg{font-size:12px;min-height:16px;margin-bottom:8px;color:var(--review-text)}
+.fine{font-size:10.5px;color:var(--muted-soft);line-height:1.55;margin-top:12px}
+footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
+.footer-copy{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a href="index.html" class="wordmark">JRS<span style="font-size:10px;vertical-align:super;position:relative;top:-3px;">&#8482;</span></a>
+
+  <div class="card" id="card">
+    <div class="eyebrow">Loading</div>
+    <h1>One moment</h1>
+    <p class="lede">Checking your link.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-copy">&#169; 2026 Phillip Wikes &nbsp;&middot;&nbsp; JRS&#8482; &middot; <a href="privacy.html" style="color:inherit">Privacy</a></div>
+</footer>
+
+<script>
+(function(){
+  function qp(k){ try { return (new URLSearchParams(location.search)).get(k) || ''; } catch(e){ return ''; } }
+  function esc(x){ return String(x==null?'':x).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function el(id){ return document.getElementById(id); }
+
+  var key = String(qp('k')||'').toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,20);
+  var card = el('card');
+  var person = null;
+
+  function fail(h, p){
+    card.innerHTML = '<div class="eyebrow">Link not recognized</div><h1>' + esc(h) + '</h1>'
+      + '<p class="lede">' + esc(p) + '</p>'
+      + '<p class="fine">Write to <a href="mailto:info@jrsstandard.com">info@jrsstandard.com</a> and I will send you a working link.</p>';
+  }
+
+  if (!key) { fail('This link is incomplete', 'The personal code is missing from the address, so there is nothing to load. Please use the full link from the message you received.'); return; }
+
+  fetch('/api/contributor?k=' + encodeURIComponent(key))
+    .then(function(r){ if (!r.ok) throw 0; return r.json(); })
+    .then(function(d){ if (!d || !d.ok || !d.person) throw 0; person = d.person; renderForm(); })
+    .catch(function(){ fail('This link did not resolve', 'It may have been copied incompletely, or it may not be current.'); });
+
+  function roleLine(p){
+    if (p.kind === 'author') return 'Co-author and contributor';
+    if (p.kind === 'facil')  return 'Pilot facilitator and contributor';
+    return 'International reviewer panel';
+  }
+
+  function onFileBlock(p){
+    var hasName  = !!p.name_on_file;
+    var hasTitle = !!p.title_on_file;
+    var s = '<div class="onfile">If I do not hear from you by <b>' + esc(p.fallback_date) + '</b>, the paper uses what is already on file for you';
+    if (p.named_on_file === false) {
+      s += ', which is your election to stay <b>anonymous</b>. Your contribution is counted in the aggregate and your name is not printed. You can change that here if you want to.';
+    } else if (!hasName || !hasTitle || p.named_on_file === null) {
+      s += '. There is <b>no confirmed title or naming election</b> on file for you, so silence would mean your contribution is counted in the aggregate without your name. A minute here fixes that.';
+    } else {
+      s += ': <b>' + esc(p.name_on_file) + '</b>, ' + esc(p.title_on_file) + (p.org_on_file ? ', ' + esc(p.org_on_file) : '') + '. If that wording is wrong in any way, correct it below.';
+    }
+    return s + '</div>';
+  }
+
+  function renderForm(){
+    var p = person;
+    card.innerHTML =
+      '<div class="eyebrow">' + esc(roleLine(p)) + ' &middot; ' + esc(p.code) + '</div>'
+    + '<h1>' + esc(p.first) + ', how should your name appear?</h1>'
+    + '<p class="lede">The study paper is being prepared for submission. Rather than transcribe your details from a registration form, I would rather you set them yourself. This takes about a minute, and the results summary I promised you is at the bottom of it.</p>'
+    + onFileBlock(p)
+
+    + '<div class="flabel">Name and title, as printed</div>'
+    + '<input id="f-name"  type="text" placeholder="Full name" autocomplete="name" value="' + esc(p.name_on_file) + '">'
+    + '<input id="f-title" type="text" placeholder="Professional title" autocomplete="organization-title" value="' + esc(p.title_on_file) + '">'
+    + '<input id="f-org"   type="text" placeholder="Organization or affiliation" autocomplete="organization" value="' + esc(p.org_on_file) + '">'
+    + '<div class="flabel" style="margin-top:6px">Contact</div>'
+    + '<input id="f-email" type="email" placeholder="Best email address" autocomplete="email">'
+    + '<input id="f-link"  type="text"  placeholder="Profile or website (optional)" style="margin-bottom:16px">'
+
+    + '<div class="qbox">'
+      + '<div class="q">May your name and title be printed in the paper as a named contributor?</div>'
+      + '<div class="sub">Either answer is fine. No means your contribution is counted in the aggregate and your name appears nowhere.</div>'
+      + '<div class="opts">'
+        + '<label><input type="radio" name="c-named" value="yes"><span>Yes</span></label>'
+        + '<label><input type="radio" name="c-named" value="no"><span>No</span></label>'
+      + '</div>'
+    + '</div>'
+
+    + '<div class="qbox">'
+      + '<div class="q">May the review work you contributed, and your credited name and title, continue to be used in publications and materials about this study?</div>'
+      + '<div class="sub">This covers the paper, follow-up articles, and the study record. It does not give away anything you own outside this study.</div>'
+      + '<div class="opts">'
+        + '<label><input type="radio" name="c-use" value="yes"><span>Yes</span></label>'
+        + '<label><input type="radio" name="c-use" value="no"><span>No</span></label>'
+      + '</div>'
+    + '</div>'
+
+    + '<div class="qbox">'
+      + '<div class="q">If this work transfers to a successor organization, may that permission and your contact details transfer with it?</div>'
+      + '<div class="sub">You can withdraw either permission at any time by writing to info@jrsstandard.com.</div>'
+      + '<div class="opts">'
+        + '<label><input type="radio" name="c-transfer" value="yes"><span>Yes</span></label>'
+        + '<label><input type="radio" name="c-transfer" value="no"><span>No</span></label>'
+      + '</div>'
+    + '</div>'
+
+    + '<div class="sect">'
+      + '<h2 style="margin-top:0">Open Initiatives and the International Registry</h2>'
+      + '<div class="registry">'
+        + '<div class="rlabel">Open Initiatives &amp; International Registry</div>'
+        + '<p>Join the <b>International Registry of Supporters</b> and give visible institutional backing to decision transparency. Registry entries carry your name and organization, so the count reads as professional endorsement rather than an anonymous tally. Optional, and separate from your credit in the paper.</p>'
+      + '</div>'
+      + '<label class="chk"><input type="checkbox" id="s-rtkw"><span><b style="color:var(--text);font-weight:500">The Right to Know Why.</b> When a decision affects a person\'s job, housing, or livelihood, that person deserves to know why it was made and to have a fair way to question it. <a href="decision-reconstruction-risk.html" target="_blank" rel="noopener">Read it</a></span></label>'
+      + '<label class="chk"><input type="checkbox" id="s-defend"><span><b style="color:var(--text);font-weight:500">The Decisions You Can Defend.</b> Every consequential decision is eventually questioned. The only uncertainty is whether the record will still explain and defend it. <a href="decision-reconstruction-risk.html" target="_blank" rel="noopener">Read it</a></span></label>'
+    + '</div>'
+
+    + '<div id="msg" style="margin-top:18px"></div>'
+    + '<button id="go" type="button">Confirm and see the results</button>'
+    + '<p class="fine">Your details are stored securely and used only for this project. Request access or deletion at any time at <a href="mailto:info@jrsstandard.com">info@jrsstandard.com</a>. See the <a href="privacy.html">Privacy Policy</a>.</p>';
+
+    el('go').addEventListener('click', submit);
+  }
+
+  function submit(){
+    var msg = el('msg'), go = el('go');
+    var name  = el('f-name').value.trim();
+    var title = el('f-title').value.trim();
+    var org   = el('f-org').value.trim();
+    var email = el('f-email').value.trim();
+    var link  = el('f-link').value.trim();
+
+    function pick(n){ var e = document.querySelector('input[name="' + n + '"]:checked'); return e ? e.value : ''; }
+    var cNamed = pick('c-named');
+    var cUse = pick('c-use');
+    var cTransfer = pick('c-transfer');
+
+    msg.style.color = 'var(--review-text)';
+    if (!name)  { msg.textContent = 'Please give the name you want printed.'; return; }
+    if (!title) { msg.textContent = 'Please give the title you want printed.'; return; }
+    if (!org)   { msg.textContent = 'Please give your organization or affiliation.'; return; }
+    if (!email || email.indexOf('@') < 1 || email.indexOf('.') < 0) { msg.textContent = 'Please enter a valid email address.'; return; }
+    if (!cNamed)    { msg.textContent = 'Please answer the naming question. Either answer is fine.'; return; }
+    if (!cUse)      { msg.textContent = 'Please answer the continuing use question. Either answer is fine.'; return; }
+    if (!cTransfer) { msg.textContent = 'Please answer the transfer question. Either answer is fine.'; return; }
+
+    go.disabled = true;
+    msg.style.color = 'var(--muted)';
+    msg.textContent = 'Recording your confirmation...';
+
+    fetch('/api/contributor', {
+      method: 'POST',
+      headers: { 'Content-Type':'application/json' },
+      body: JSON.stringify({
+        k: key, name: name, title: title, organization: org, email: email, profile: link,
+        consent_named: cNamed, consent_use: cUse, consent_transfer: cTransfer,
+        support_rtkw: el('s-rtkw').checked,
+        support_defend: el('s-defend').checked
+      })
+    })
+    .then(function(r){ if (!r.ok) throw 0; return r.json(); })
+    .then(function(d){ if (!d || !d.ok) throw 0; renderDone(d, name, title, org, cNamed); })
+    .catch(function(){
+      msg.style.color = 'var(--review-text)';
+      msg.textContent = 'Could not record that just now. Please try again, or email info@jrsstandard.com.';
+      go.disabled = false;
+    });
+  }
+
+  function renderDone(d, name, title, org, cNamed){
+    var r = d.results || {};
+    var body = '<div class="eyebrow">Confirmed</div>'
+      + '<h1>Thank you, ' + esc(d.first || '') + '</h1>'
+      + '<div class="note">'
+        + (cNamed === 'yes'
+            ? 'The paper will credit you as <b style="color:var(--text)">' + esc(name) + '</b>, ' + esc(title) + ', ' + esc(org) + '. That is the exact wording that goes in.'
+            : 'Your election to stay anonymous is recorded. Your contribution is counted in the aggregate and your name will not appear.')
+        + ' If anything changes, write to <a href="mailto:info@jrsstandard.com">info@jrsstandard.com</a> at any time before publication.'
+      + '</div>'
+
+      + '<h2>' + esc(r.heading || 'Your results summary') + '</h2>';
+
+    if (r.status === 'pending') {
+      body += '<div class="note pend">' + esc(r.why || '') + '</div>';
+      body += '<p class="lede" style="margin-bottom:8px">What is already established and public:</p>';
+    }
+    body += '<ul class="tight">';
+    (r.published || []).forEach(function(line){ body += '<li>' + esc(line) + '</li>'; });
+    body += '</ul>';
+    if (r.closing) body += '<p class="lede" style="margin-top:12px">' + esc(r.closing) + '</p>';
+
+    body += '<div class="sect">'
+      + '<h2 style="margin-top:0">The Investigator Field Guide</h2>'
+      + '<p class="lede" style="margin-bottom:12px">Yours to keep and to pass on. Three editions, no further registration since you are already on the record here.</p>'
+      + '<div class="grid2">'
+        + '<a href="' + esc(d.guides.employment) + '"><button type="button" class="ghost">EEO and employment</button></a>'
+        + '<a href="' + esc(d.guides.fairhousing) + '"><button type="button" class="ghost">Fair housing</button></a>'
+        + '<a href="' + esc(d.guides.international) + '"><button type="button" class="ghost">International</button></a>'
+      + '</div>'
+      + '<h2>The training</h2>'
+      + '<p class="lede" style="margin-bottom:12px">Six modules and a certificate on completion. Free, and it stays free.</p>'
+      + '<a href="' + esc(d.training) + '" style="text-decoration:none"><button type="button" class="ghost">Open the training</button></a>'
+      + '<h2>Run it on your own records</h2>'
+      + '<div class="registry">'
+        + '<div class="rlabel">Free private diagnostic</div>'
+        + '<p>Paste up to ten of your own records, redacted, and get the five-condition read on each one immediately. <b>Your record text is never stored</b>: each record is assessed in memory and discarded. Only the count and the pattern of results is kept.</p>'
+      + '</div>'
+      + '<a href="org-pilot.html?src=contributor&org=' + encodeURIComponent(org) + '&name=' + encodeURIComponent(name) + '&title=' + encodeURIComponent(title) + '" style="text-decoration:none"><button type="button">Run the diagnostic on my records</button></a>'
+    + '</div>'
+
+    + '<p class="fine">Nothing further is needed from you. Thank you for the care you brought to the reviews: the independence of this panel is the reason any of it is worth reporting.</p>';
+
+    card.innerHTML = body;
+    window.scrollTo(0,0);
+  }
+})();
+</script>
+</body>
+</html>
