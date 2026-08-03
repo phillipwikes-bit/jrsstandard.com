@@ -38,23 +38,31 @@ a.plain{color:var(--accent);text-decoration:none}
   <p class="lede" id="sub">You have added your voice to a growing international group of professionals who believe a consequential decision should remain explainable and defensible from the record itself.</p>
 
   <div class="card" id="joincard">
-    <h2>Be counted among the supporters</h2>
-    <p>Optional. Add your name to a growing list of professionals backing this work. Public status pages show counts only; your details stay private and are never sold or shared without your say-so.</p>
+    <div class="mono" style="font-size:9px;color:var(--accent);margin-bottom:8px">Open Initiatives &amp; International Registry</div>
+    <h2>Join the International Registry of Supporters</h2>
+    <p>Give visible institutional backing to decision transparency. Registry entries carry a name and an organization, so the count reads as professional endorsement rather than an anonymous tally. Your details stay private unless you tick the public listing box, and they are never sold or shared without your say-so.</p>
     <form id="joinform" style="display:grid;gap:10px">
       <input id="j-name" type="text" placeholder="Your name" autocomplete="name" style="background:#0d0d0d;border:1px solid var(--rule);color:var(--text);font-family:inherit;font-size:14px;padding:10px 12px">
       <input id="j-org" type="text" placeholder="Organization (optional)" autocomplete="organization" style="background:#0d0d0d;border:1px solid var(--rule);color:var(--text);font-family:inherit;font-size:14px;padding:10px 12px">
       <input id="j-email" type="email" placeholder="Email (optional)" autocomplete="email" style="background:#0d0d0d;border:1px solid var(--rule);color:var(--text);font-family:inherit;font-size:14px;padding:10px 12px">
       <label style="display:flex;gap:9px;align-items:flex-start;font-size:12.5px;color:var(--muted);line-height:1.5"><input id="j-consent" type="checkbox" style="margin-top:3px;flex:0 0 auto"> <span>You may contact me about this initiative. I understand my details stay private.</span></label>
-      <label style="display:flex;gap:9px;align-items:flex-start;font-size:12.5px;color:var(--muted);line-height:1.5"><input id="j-public" type="checkbox" style="margin-top:3px;flex:0 0 auto"> <span>List my name publicly on the supporters page. Only your name and organization are shown, never your email. Leave unticked to stay a private count.</span></label>
-      <button type="submit" class="btn solid" style="justify-self:start;cursor:pointer">Add my support</button>
+      <label style="display:flex;gap:9px;align-items:flex-start;font-size:12.5px;color:var(--muted);line-height:1.5"><input id="j-public" type="checkbox" style="margin-top:3px;flex:0 0 auto"> <span>List me in the public International Registry of Supporters. Only your name and organization are shown, never your email. Leave unticked to stay a private count.</span></label>
+      <button type="submit" class="btn solid" style="justify-self:start;cursor:pointer">Join the Registry</button>
       <div id="j-msg" style="font-size:13px;min-height:18px"></div>
     </form>
   </div>
 
   <div class="card">
+    <div class="mono" style="font-size:9px;color:var(--accent);margin-bottom:8px">Immediate access</div>
+    <h2>Run a free, private diagnostic on your records</h2>
+    <p>Your Registry entry opens the JRS diagnostic check. Paste up to ten of your own records, redacted, and get the five-condition read on each one immediately. Your record text is never stored: each record is assessed in memory and discarded. Only the count and the pattern of results is kept.</p>
+    <a class="btn solid" href="/org-pilot.html?src=supported">Run the diagnostic &#8594;</a>
+  </div>
+
+  <div class="card">
     <h2>Take the Investigator Field Guide</h2>
-    <p>A short, practical guide to judging whether a record can be independently reconstructed and defended. Free, no sign-up. Yours to share with your team.</p>
-    <a class="btn solid" href="/api/dl?e=standard&amp;src=supported">Get the guide &#8594;</a>
+    <p>A short, practical guide to judging whether a record can be independently reconstructed and defended. Free for practitioners, and yours to share with your team.</p>
+    <a class="btn" href="/investigator-guides.html">See the field guides &#8594;</a>
   </div>
 
   <div class="card">
@@ -65,14 +73,14 @@ a.plain{color:var(--accent);text-decoration:none}
 
   <div class="card" id="crosscard">
     <h2 id="cross-h">Back the other initiative too</h2>
-    <p id="cross-p">There are two open initiatives. You have backed one. The second takes the same one click, and it speaks to the same principle from the other direction.</p>
+    <p id="cross-p">There are two open initiatives. You have backed one. The second takes the same short registration, and it speaks to the same principle from the other direction.</p>
     <a class="btn" id="cross-btn" href="/api/support?c=defend&amp;src=supported">Support this too &#8594;</a>
   </div>
 
   <div class="card">
     <h2>Pass it on</h2>
-    <p>The fastest way to help is to forward the same one-click link to a colleague who cares about accountable records.</p>
-    <a class="btn" href="/investigator-guides.html">See the field guides &#8594;</a>
+    <p>The fastest way to help is to forward the Registry link to a colleague who cares about accountable records.</p>
+    <a class="btn" href="/decision-reconstruction-risk.html">Read the initiatives &#8594;</a>
   </div>
 
   <div class="foot">
@@ -90,8 +98,8 @@ a.plain{color:var(--accent);text-decoration:none}
   if(map[c]){ document.getElementById('headline').textContent=map[c].h; document.getElementById('sub').textContent=map[c].s; }
 
   var cross={
-    rtkw:{key:'defend',h:'Now back the decisions you can defend.',p:'You have backed the right to know why. The companion initiative asks that a record still support a consequential decision long after it was made, through the complaint, the audit, and the courtroom. It takes the same one click.'},
-    defend:{key:'rtkw',h:'Now back the right to know why.',p:'You have backed decisions you can defend. The companion initiative asks that when a decision affects a person’s rights, safety, or livelihood, that person deserves an honest record of how it was reached. It takes the same one click.'}
+    rtkw:{key:'defend',h:'Now back the decisions you can defend.',p:'You have backed the right to know why. The companion initiative asks that a record still support a consequential decision long after it was made, through the complaint, the audit, and the courtroom. It takes the same moment.'},
+    defend:{key:'rtkw',h:'Now back the right to know why.',p:'You have backed decisions you can defend. The companion initiative asks that when a decision affects a person’s rights, safety, or livelihood, that person deserves an honest record of how it was reached. It takes the same moment.'}
   };
   var xc=cross[c];
   if(xc){

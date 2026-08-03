@@ -38,6 +38,10 @@ button.ghost{background:none;color:var(--accent);border:1px solid var(--accent)}
 .qbox .opts{display:flex;gap:18px}
 .qbox .opts label{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--text);cursor:pointer}
 .qbox .opts input{width:auto;margin:0}
+.registry{border:1px solid var(--accent-dim);background:var(--surface2);padding:14px 15px;margin:0 0 14px}
+.registry .rlabel{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:7px}
+.registry p{font-size:12.5px;color:var(--muted);line-height:1.6;margin:0}
+.registry b{color:var(--text);font-weight:500}
 .privacy-lite{border-left:3px solid var(--ready-text);padding:12px 14px;margin:0 0 14px;font-size:12.5px;color:var(--muted);line-height:1.6;background:var(--surface2)}
 #msg{font-size:12px;min-height:16px;margin-bottom:8px;color:var(--review-text)}
 .fine{font-size:10.5px;color:var(--muted-soft);line-height:1.55;margin-top:12px}
@@ -61,6 +65,11 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
 
     <label class="chk"><input type="checkbox" id="c-contact"><span>I agree to be contacted about the JRS project and consent to my details being stored securely for that purpose. (required)</span></label>
 
+    <div class="registry">
+      <div class="rlabel">Open Initiatives &amp; International Registry</div>
+      <p>Join the <b>International Registry of Supporters</b> and give visible institutional backing to decision transparency. Adding your support also grants immediate access to run a <b>free, private JRS diagnostic check</b> on your own records. Your record text is never stored: each record is assessed in memory and discarded.</p>
+    </div>
+
     <div class="qbox">
       <div class="q">If the JRS project is ever acquired, may your details transfer to the successor?</div>
       <div class="opts">
@@ -70,7 +79,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     </div>
 
     <div class="qbox" id="named-wrap">
-      <div class="q" id="named-q">May we list you publicly by name as a supporter of this initiative?</div>
+      <div class="q" id="named-q">List you and your organization in the public International Registry of Supporters?</div>
       <div class="opts">
         <label><input type="radio" name="c-named" value="yes"><span>Yes</span></label>
         <label><input type="radio" name="c-named" value="no"><span>No</span></label>
@@ -130,9 +139,9 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
 
   if (mode === 'support') {
     var cname = CAMPAIGN_LABEL[cKey] || 'the JRS initiatives';
-    eyebrow.textContent = 'Initiative support';
-    headline.textContent = 'Add your support';
-    lede.textContent = 'Support for ' + cname + ' is recorded with your name and organization so it carries real weight. It takes a moment and commits you to nothing further.';
+    eyebrow.textContent = 'International Registry of Supporters';
+    headline.textContent = 'Join the Registry';
+    lede.textContent = 'Support for ' + cname + ' is recorded in the International Registry of Supporters with your name and organization, so the count carries professional weight rather than being an anonymous tally.';
     go.textContent = 'Add my support';
     namedWrap.style.display = 'block';
   } else {
@@ -143,7 +152,9 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
       ? ('Free for practitioners. Register once and the ' + ename + ' downloads immediately.')
       : 'Free for practitioners. Register once and the guide downloads immediately.';
     go.textContent = 'Get the guide';
-    namedWrap.style.display = 'none';
+    // The registry listing is offered on every gateway, not only the campaign
+    // one: a guide reader is exactly the practitioner the registry is for.
+    namedWrap.style.display = 'block';
   }
 
   // No edition and no campaign: nothing to gate. Send to the guides page.
@@ -160,7 +171,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     var c1 = document.getElementById('c-contact').checked;
     function pick(n){ var el = document.querySelector('input[name="' + n + '"]:checked'); return el ? el.value : ''; }
     var t = pick('c-transfer');
-    var nmd = (mode === 'support') ? pick('c-named') : 'no';
+    var nmd = pick('c-named');
     var c2 = (t === 'yes');
     var c3 = (nmd === 'yes');
 
@@ -169,7 +180,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     if (!email || email.indexOf('@') < 1 || email.indexOf('.') < 0) { msg.textContent = 'Please enter a valid email address.'; return; }
     if (!c1)    { msg.textContent = 'The first consent box is required in order to store your details.'; return; }
     if (!t)     { msg.textContent = 'Please answer the transfer question. Either answer is fine.'; return; }
-    if (mode === 'support' && !nmd) { msg.textContent = 'Please answer the public listing question. Either answer is fine.'; return; }
+    if (!nmd)   { msg.textContent = 'Please answer the Registry listing question. Either answer is fine.'; return; }
 
     go.disabled = true;
     msg.style.color = 'var(--muted)';
@@ -196,8 +207,33 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     .then(function(d){
       msg.style.color = 'var(--ready-text)';
       if (mode === 'guide' && d && d.file) {
-        msg.textContent = 'Thank you. Your download is starting.';
-        location.href = d.file;
+        // Start the download without navigating away, so the release panel and
+        // the diagnostic offer stay in front of the reader.
+        try {
+          var a = document.createElement('a');
+          a.href = d.file; a.download = d.file.replace(/^\//, '');
+          document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        } catch(e) { location.href = d.file; }
+        var gq = '?src=guide'
+          + '&org=' + encodeURIComponent(org)
+          + '&name=' + encodeURIComponent(name)
+          + '&title=' + encodeURIComponent(title)
+          + '&email=' + encodeURIComponent(email);
+        var gcard = document.querySelector('.card');
+        if (gcard) {
+          gcard.innerHTML =
+            '<div class="eyebrow">Registered</div>'
+          + '<h1>Thank you, ' + esc(name.split(' ')[0]) + '</h1>'
+          + '<p class="lede">Your guide is downloading. If it does not start, <a href="' + esc(d.file) + '">use this link</a>.</p>'
+          + '<div class="registry">'
+            + '<div class="rlabel">Open Initiatives &amp; International Registry</div>'
+            + '<p>Your registration also opens the <b>free, private JRS diagnostic check</b>. Paste up to ten of your own records, redacted, and get the five-condition read on each one immediately. <b>Your record text is never stored</b>: each record is assessed in memory and discarded. Only the count and the pattern of results is kept.</p>'
+          + '</div>'
+          + '<a href="org-pilot.html' + gq + '" style="text-decoration:none"><button type="button" style="margin-bottom:10px">Run the diagnostic on my records</button></a>'
+          + '<a href="investigator-guides.html" style="text-decoration:none"><button type="button" class="ghost">No thanks, I am done</button></a>'
+          + '<p class="fine">Free, no obligation, and you can stop after one record.</p>';
+          window.scrollTo(0,0);
+        }
       } else {
         // Endorsement recorded. Offer the mini-pilot as the next step, carrying
         // the details already given so they are not retyped. This is the funnel:
@@ -211,9 +247,9 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
         var card = document.querySelector('.card');
         if (card) {
           card.innerHTML =
-            '<div class="eyebrow">Support recorded</div>'
+            '<div class="eyebrow">Registry entry recorded</div>'
           + '<h1>Thank you, ' + esc(name.split(' ')[0]) + '</h1>'
-          + '<p class="lede">Your support is on the record. If it is useful, you can also run the standard on your own records right now, free.</p>'
+          + '<p class="lede">You are on the International Registry of Supporters. That entry now opens the free, private diagnostic check on your own records.</p>'
           + '<div class="privacy-lite">Paste up to ten of your own records, redacted, and get the five-condition read on each one immediately. <b>Your record text is never stored</b>: each record is assessed in memory and discarded. Only the count and the pattern of results is kept.</div>'
           + '<a href="org-pilot.html' + q + '" style="text-decoration:none"><button type="button" style="margin-bottom:10px">Run it on my records</button></a>'
           + '<a href="' + ((d && d.redirect) ? d.redirect : '/supported.html') + '" style="text-decoration:none"><button type="button" class="ghost">No thanks, I am done</button></a>'
