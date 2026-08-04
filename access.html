@@ -68,6 +68,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     <div class="registry">
       <div class="rlabel">Open Initiatives &amp; International Registry</div>
       <p>Join the <b>International Registry of Supporters</b> and give visible institutional backing to decision transparency. Adding your support also grants immediate access to run a <b>free, private JRS diagnostic check</b> on your own records. Your record text is never stored: each record is assessed in memory and discarded.</p>
+      <p id="registry-live" style="margin-top:8px;color:var(--muted-soft)"></p>
     </div>
 
     <div class="qbox">
@@ -137,6 +138,9 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
   var edKey = String(editionRaw||'').toLowerCase().replace(/[^a-z]/g,'');
   var cKey  = String(campaignRaw||'').toLowerCase().replace(/[^a-z]/g,'');
 
+  var fOrg = document.getElementById('f-org');
+  var fTitle = document.getElementById('f-title');
+
   if (mode === 'support') {
     var cname = CAMPAIGN_LABEL[cKey] || 'the JRS initiatives';
     eyebrow.textContent = 'International Registry of Supporters';
@@ -144,6 +148,17 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     lede.textContent = 'Support for ' + cname + ' is recorded in the International Registry of Supporters with your name and organization, so the count carries professional weight rather than being an anonymous tally. Signing up also opens the free JRS records check: run up to ten of your own records through the standard right away, privately, and the text is never stored.';
     go.textContent = 'Add my support';
     namedWrap.style.display = 'block';
+    // Live registry size and reach. People join a register that visibly exists,
+    // so the count and the country spread are shown rather than described.
+    fetch('/api/support-stats')
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(d){
+        if (!d || !d.total) return;
+        var reg = document.getElementById('registry-live');
+        if (reg) reg.textContent = 'The Registry currently holds ' + d.total + ' supporters across '
+          + d.countries + ' countries. Registered supporters carry the designation Registered International Advocate.';
+      })
+      .catch(function(){});
   } else {
     var ename = EDITION_LABEL[edKey] || '';
     eyebrow.textContent = 'JRS Investigator Field Guide';
@@ -152,6 +167,10 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
       ? ('Free for practitioners. Register once and the ' + ename + ' downloads immediately.')
       : 'Free for practitioners. Register once and the guide downloads immediately.';
     go.textContent = 'Get the guide';
+    // Lowest-commitment route: a named person with an email is worth far more
+    // than an anonymous download, so organization and title stop blocking it.
+    if (fOrg)   fOrg.placeholder = 'Organization (optional)';
+    if (fTitle) fTitle.placeholder = 'Title or role (optional)';
     // The registry listing is offered on every gateway, not only the campaign
     // one: a guide reader is exactly the practitioner the registry is for.
     namedWrap.style.display = 'block';
@@ -234,7 +253,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
           gcard.innerHTML =
             '<div class="eyebrow">Registered</div>'
           + '<h1>Thank you, ' + esc(name.split(' ')[0]) + '</h1>'
-          + '<p class="lede">Your guide is downloading. If it does not start, <a href="' + esc(d.file) + '">use this link</a>.</p>'
+          + '<p class="lede">Your guide is downloading. If it does not start, <a href="' + esc(d.file) + '">use this link</a>. Registered guide holders carry the designation <b style="color:var(--text)">JRS Field Specialist</b>.</p>'
           + '<div class="registry">'
             + '<div class="rlabel">Open Initiatives &amp; International Registry</div>'
             + '<p>Your registration also opens the <b>free, private JRS diagnostic check</b>. Paste up to ten of your own records, redacted, and get the five-condition read on each one immediately. <b>Your record text is never stored</b>: each record is assessed in memory and discarded. Only the count and the pattern of results is kept.</p>'
@@ -259,7 +278,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
           card.innerHTML =
             '<div class="eyebrow">Registry entry recorded</div>'
           + '<h1>Thank you, ' + esc(name.split(' ')[0]) + '</h1>'
-          + '<p class="lede">You are on the International Registry of Supporters. That entry now opens the free, private diagnostic check on your own records.</p>'
+          + '<p class="lede">You are on the International Registry of Supporters, with the designation <b style="color:var(--text)">Registered International Advocate</b>. That entry now opens the free, private diagnostic check on your own records.</p>'
           + '<div class="privacy-lite">Paste up to ten of your own records, redacted, and get the five-condition read on each one immediately. <b>Your record text is never stored</b>: each record is assessed in memory and discarded. Only the count and the pattern of results is kept.</div>'
           + '<a href="org-pilot.html' + q + '" style="text-decoration:none"><button type="button" style="margin-bottom:10px">Run it on my records</button></a>'
           + '<a href="' + ((d && d.redirect) ? d.redirect : '/supported.html') + '" style="text-decoration:none"><button type="button" class="ghost">No thanks, I am done</button></a>'
