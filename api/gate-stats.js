@@ -72,7 +72,7 @@ export default async function handler(req){
   const eventsQ = SB + '/rest/v1/interaction_events'
     + '?select=source,payload,created_at'
     + '&created_at=gte.' + encodeURIComponent(GATE_START)
-    + '&source=in.(guide-dl,support)&limit=20000';
+    + '&source=in.(guide-dl,support,gate-view)&limit=20000';
 
   let rows = [], events = [];
   try {
@@ -157,10 +157,19 @@ export default async function handler(req){
   // moment of the registered download or endorsement.
   const guideCountries = {}, supportCountries = {}, allCountries = {};
   let guideEvents = 0, supportEvents = 0;
+  let viewsGuide = 0, viewsSupport = 0;
   for (let i = 0; i < events.length; i++){
     const e = events[i] || {};
     const p = e.payload || {};
     if (isTestSrc(p.src)) continue;
+
+    // Form opened. Counted separately so the drop-off between opening the form
+    // and finishing it is visible, instead of guessed at.
+    if (String(e.source) === 'gate-view'){
+      if (String(p.mode) === 'support') viewsSupport++; else viewsGuide++;
+      continue;
+    }
+
     if (p.registered !== true) continue;          // pre-gate anonymous rows never counted
     const cc = String(p.country || '').trim().toUpperCase();
     if (String(e.source) === 'guide-dl'){
@@ -173,6 +182,8 @@ export default async function handler(req){
   }
 
   const registrations = guide + support + contributors;
+  const views = viewsGuide + viewsSupport;
+  const rate = views ? Math.round(((guide + support) / views) * 1000) / 10 : null;
 
   return json({
     gate_start: GATE_START,
@@ -190,6 +201,14 @@ export default async function handler(req){
     // What they took.
     by_edition: sortDesc(byEdition, 'edition'),
     by_campaign: sortDesc(byCampaign, 'campaign'),
+
+    // Did anyone reach the form at all, and did they finish it. A null rate
+    // means nobody has opened the form since view tracking was added, which is
+    // a traffic problem rather than a conversion problem.
+    form_views: views,
+    form_views_guide: viewsGuide,
+    form_views_support: viewsSupport,
+    conversion_pct: rate,
 
     // Where they were.
     countries: Object.keys(allCountries).length,

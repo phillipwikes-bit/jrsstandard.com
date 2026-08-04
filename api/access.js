@@ -115,6 +115,31 @@ export default async function handler(req){
   let b; try { b = await req.json(); } catch(e){ return json({ error:'invalid_json' }, 400); }
 
   const mode     = (clean(b.mode, 20) === 'support') ? 'support' : 'guide';
+
+  // Gate view ping. Fired when the registration form is opened, before anyone
+  // types anything. Without it the only measurable outcome is a completed
+  // registration, so a quiet week is indistinguishable from a form nobody
+  // finishes, and there is no way to tell whether traffic or conversion is the
+  // problem. Writes an event row only: no name, no email, no contact record.
+  if (String(b.event || '') === 'view') {
+    try {
+      await fetch(SB + '/rest/v1/interaction_events', {
+        method: 'POST',
+        headers: { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE,
+                   'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+        body: JSON.stringify({ source: 'gate-view', type: 'view', payload: {
+          mode: mode,
+          edition: normEdition(b.edition) || '',
+          campaign: b.campaign ? normCampaign(b.campaign) : '',
+          src: tag(b.src, 40) || '',
+          country: String(req.headers.get('x-vercel-ip-country') || '')
+            .toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2) || ''
+        }})
+      });
+    } catch (e) { /* a view ping must never block the form */ }
+    return json({ ok: true, view: true });
+  }
+
   const name     = clean(b.name, 200);
   const email    = clean(b.email, 200);
   const org      = clean(b.organization, 200);

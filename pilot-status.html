@@ -450,8 +450,10 @@ function loadGate(){
      document.getElementById('gt-train-cp').textContent=tr.completions||0;
      document.getElementById('gt-records').textContent=rec.records_reviewed||0;
      document.getElementById('gt-transfer').textContent=s.transferable_people||0;
+     var conv = (s.conversion_pct==null) ? 'no form opens recorded yet' : (s.conversion_pct+' percent of form opens finished');
      document.getElementById('gt-note').textContent=
-       (s.registrations||0)+' registrations since the gate: '+(s.guide_registrations||0)+' field guide, '
+       'Form opened '+(s.form_views||0)+' times since view tracking began, '+conv+'. '
+       +(s.registrations||0)+' registrations since the gate: '+(s.guide_registrations||0)+' field guide, '
        +(s.support_registrations||0)+' initiative, '+(s.contributor_confirmations||0)+' contributor confirmation. '
        +(s.consented_contact||0)+' contactable, '+(s.consented_transfer||0)+' consented to transfer to a successor, '
        +(s.consented_public_listing||0)+' agreed to be listed publicly by name.';
