@@ -8,7 +8,7 @@ Base: `https://www.jrsstandard.com/contributor.html?k=`
 
 ---
 
-## International detection panel (completion verified 2026-08-03 via `check_completion.py`, all at 24 or more reads)
+## International detection panel (completion verified via `check_completion.py`, all at 24 or more reads; Maroudis V-AI-29 added 2026-08-04 on completing)
 
 | Person | Code | Link |
 |---|---|---|
@@ -27,6 +27,7 @@ Base: `https://www.jrsstandard.com/contributor.html?k=`
 | Sidharth Borah | V-AI-27 | https://www.jrsstandard.com/contributor.html?k=jusnt4chyx |
 | Nigel Hee | V-AI-28 | https://www.jrsstandard.com/contributor.html?k=si81km0m1r |
 | Andres Lage Freire | V-AI-30 | https://www.jrsstandard.com/contributor.html?k=42zgubzfq8 |
+| Marguerite Maroudis, PhD | V-AI-29 | https://www.jrsstandard.com/contributor.html?k=s3ud3trom6 |
 
 ## Authors and pilot facilitators
 

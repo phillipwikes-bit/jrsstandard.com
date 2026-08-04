@@ -170,6 +170,32 @@ REVIEWERS = [
             "leadership in AI management systems and quality assurance, including ISO/IEC 42001 and the NIST AI Risk Management Framework"),
         "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Certificate_Sagarika_Banerjee.pdf",
     },
+    # Dates below are the UTC date of the last read in the database, which is the
+    # record the certificate rests on.
+    {
+        "name": "Dr. Eric J. W. Orlowski",
+        "date": "August 3, 2026",
+        "body": neutral_body(
+            "AI-governance, ethnographic, and technology-policy",
+            "research at a national AI research institute and doctoral work in social and cultural anthropology"),
+        "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Certificate_Eric_Orlowski.pdf",
+    },
+    {
+        "name": "Greg Searle",
+        "date": "August 3, 2026",
+        "body": neutral_body(
+            "AI-governance and model-behaviour research",
+            "research on model behaviour alongside a long career in enterprise systems architecture"),
+        "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Certificate_Greg_Searle.pdf",
+    },
+    {
+        "name": "MacKenzie McCowan",
+        "date": "August 4, 2026",
+        "body": neutral_body(
+            "AI-governance and academic-appeals",
+            "AI governance practice in education technology, doctoral research, and service assessing academic appeals"),
+        "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Certificate_MacKenzie_McCowan.pdf",
+    },
 ]
 
 if __name__ == "__main__":

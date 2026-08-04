@@ -174,6 +174,17 @@ REVIEWERS = [
             "doctoral research in AI governance and hands-on ISO/IEC 42001 implementation"),
         "out": "/home/user/jrsstandard.com/research/JRS_Certificate_Niloofar_Kandi.pdf",
     },
+    {
+        "name": "Marguerite Maroudis, PhD",
+        # Completion date is the UTC date of the last read in the database
+        # (2026-08-03T14:27Z), which is the record the certificate rests on.
+        "date": "August 3, 2026",
+        # Pronoun not stated; phrase the perspective without one ("An ... perspective").
+        "body": standard_body(
+            "An", "AI-and-law and data-protection",
+            "practice as a data protection officer and AI governance consultant, and doctoral research in private law"),
+        "out": "/home/user/jrsstandard.com/research/JRS_Certificate_Marguerite_Maroudis.pdf",
+    },
 ]
 
 if __name__ == "__main__":

@@ -18,7 +18,7 @@ const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 
 // Keep in step with the roster in api/contributor.js. Used only to report how
 // many contributors are still outstanding.
-const ROSTER_SIZE = 19;
+const ROSTER_SIZE = 20;
 
 function json(o, s){
   return new Response(JSON.stringify(o), {
