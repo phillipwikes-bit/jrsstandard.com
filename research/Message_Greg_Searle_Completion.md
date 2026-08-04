@@ -2,7 +2,7 @@
 
 *BLIND-STUDY GUARDRAIL: Greg is Arm B. Recognition is NEUTRAL regardless of arm: "Records Review Study," participation and his own judgment. NO JRS name, NO five-condition method, NO "reconstructability," NO training link, and never reveal which arm he was in. Sign "Phillip Wikes" alone, never "Creator, JRS." He/Him. Completion verified 2026-08-04 via `check_completion.py RR-123` (exit 0, 24 reads, last 2026-08-03T18:25Z).*
 
-*OPEN FLAG carried from his invitation, for the owner not for Greg: he researches model behaviour and has published on "the scaffolding that shapes responses," which is adjacent to this study's framing. His JRS-naivety was to be confirmed before his data counts clean-blind. That confirmation is not recorded anywhere in the study record. Recognition can go out now either way, since it rests on completion; the naivety question only affects whether his reads stay in the blind comparison, and it should be settled before the data are locked. Do not raise it with him in a way that reveals the method.*
+*JRS-NAIVETY: CONFIRMED NAIVE by the owner, 2026-08-04. The flag carried from his invitation (he researches model behaviour and has published on "the scaffolding that shapes responses") is CLOSED. His reads count clean-blind in the comparison arm. No further action.*
 
 *Send with `research/Records_Review_Study_Certificate_Greg_Searle.pdf` attached. No long dashes.*
 
