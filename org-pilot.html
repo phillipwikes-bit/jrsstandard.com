@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Run JRS on your own records &middot; JRS</title>
 <meta name="robots" content="noindex">
-<meta name="description" content="Run the Justification Review Standard on up to ten of your own records, free. Your record text is never stored.">
+<meta name="description" content="Run the Justification Review Standard on up to twenty five of your own records, free. Your record text is never stored.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -71,7 +71,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
   <section id="step-org">
     <div class="eyebrow">Open Initiatives &amp; International Registry</div>
     <h1>Run JRS on your own records</h1>
-    <p class="lede">Paste up to ten of your own records, one at a time. Each is assessed against the five review conditions and you get the read immediately. Free, no obligation, and you can stop after one.</p>
+    <p class="lede">The Organizational Pilot Package. Paste up to twenty five of your own records, one at a time. Each is assessed against the five review conditions and you get the read immediately. Free, no obligation, and you can stop after one.</p>
     <p class="lede">Organizations that run the diagnostic join the International Registry of Supporters, giving visible institutional backing to decision transparency. Your entry carries your name and organization, so it reads as professional endorsement rather than an anonymous tally.</p>
 
     <div class="privacy">
@@ -129,7 +129,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
   <section id="step-run" class="hidden">
     <div class="eyebrow"><span id="run-org"></span> &middot; mini-pilot</div>
     <h1>Paste a record</h1>
-    <p class="lede">Paste one record, redacted, then run the review. You can do up to ten. Each read appears below.</p>
+    <p class="lede">Paste one record, redacted, then run the review. You can do up to twenty five. Each read appears below.</p>
 
     <div class="privacy">
       <b style="color:var(--ready-text)">Not stored.</b> This text is assessed in memory and discarded when the read returns.
@@ -178,7 +178,10 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     <p class="lede" id="done-line"></p>
     <div class="card">
       <p style="font-size:13.5px;color:var(--muted);margin-bottom:12px">Your organization is now counted among those that have applied the standard to their own records. The aggregate appears on the public status page, showing counts only, never your organization's results or text unless you agreed to be named.</p>
+      <p style="font-size:13.5px;color:var(--muted);margin-bottom:12px">The person who runs a pilot for their organization carries the designation <b style="color:var(--text)">JRS Lead Diagnostic Advisor</b>.</p>
+      <p style="font-size:13.5px;color:var(--muted);margin-bottom:12px"><b style="color:var(--text)">Your executive summary is ready.</b> One page, written for internal leadership: what was reviewed, how the records routed, where the five conditions held and where they did not, and what to do next. It is generated in your browser from the counts on screen, so it contains no record text.</p>
       <div class="row">
+        <a href="#" id="exec-dl" style="text-decoration:none"><button type="button">Download the executive summary</button></a>
         <a href="pilot-status.html" style="text-decoration:none"><button type="button" class="ghost">View the status page</button></a>
         <a href="enterprise.html" style="text-decoration:none"><button type="button" class="ghost">Enterprise use</button></a>
       </div>
@@ -195,7 +198,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
 (function(){
   function qp(k){ try { return (new URLSearchParams(location.search)).get(k) || ''; } catch(e){ return ''; } }
   function el(id){ return document.getElementById(id); }
-  var MAX = 10;
+  var MAX = 25;
 
   var src = String(qp('src')||'').toLowerCase().replace(/[^a-z0-9_-]/g,'').slice(0,40);
   var session = {
@@ -275,7 +278,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     if (text.length < 80) { msg.textContent = 'Please paste a record of at least a short paragraph.'; return; }
     if (text.length > 8000) { msg.textContent = 'That record is longer than the 8,000 character limit. Please shorten or split it.'; return; }
     if (!jrsSanitizeCheck(text)) return;
-    if (session.run >= MAX) { msg.textContent = 'You have reached the ten record limit for a mini-pilot.'; return; }
+    if (session.run >= MAX) { msg.textContent = 'You have reached the twenty five record limit for the pilot package.'; return; }
 
     var btn = el('run-go');
     btn.disabled = true;
@@ -334,12 +337,83 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
   }
 
   el('next-go').addEventListener('click', function(){
-    if (session.run >= MAX) { el('msg').style.color='var(--review-text)'; el('msg').textContent='You have reached the ten record limit.'; return; }
+    if (session.run >= MAX) { el('msg').style.color='var(--review-text)'; el('msg').textContent='You have reached the twenty five record limit.'; return; }
     el('p-text').value = '';
     el('result').classList.add('hidden');
     el('p-text').focus();
     window.scrollTo(0,0);
   });
+
+  // Executive summary. Built in the browser from the tallies already on screen,
+  // so it never contains record text and never needs a server round trip. Opens
+  // as a printable page the reader can save as PDF or paste into a memo.
+  function wireExecSummary(){
+    var link = el('exec-dl');
+    if (!link) return;
+    link.addEventListener('click', function(ev){
+      ev.preventDefault();
+      var r = session.routing, c = session.conditions;
+      var totalCond = (c.pass||0) + (c.needs_attention||0) + (c.fail||0);
+      var flagged = totalCond ? Math.round((((c.needs_attention||0) + (c.fail||0)) / totalCond) * 1000) / 10 : 0;
+      var today = new Date().toISOString().slice(0,10);
+      function row(label, n){
+        var pct = session.run ? Math.round((n / session.run) * 100) : 0;
+        return '<tr><td>' + esc(label) + '</td><td class="n">' + n + '</td><td class="n">' + pct + '%</td></tr>';
+      }
+      function crow(label, n){
+        var pct = totalCond ? Math.round((n / totalCond) * 100) : 0;
+        return '<tr><td>' + esc(label) + '</td><td class="n">' + n + '</td><td class="n">' + pct + '%</td></tr>';
+      }
+      var html = '<!DOCTYPE html><html><head><meta charset="utf-8"><title>JRS Executive Summary, '
+        + esc(session.organization) + '</title><style>'
+        + 'body{font-family:Georgia,serif;color:#111;max-width:7.2in;margin:0 auto;padding:0.6in;line-height:1.5}'
+        + 'h1{font-size:20pt;margin:0 0 4px} h2{font-size:12pt;margin:22px 0 6px;border-bottom:1px solid #ccc;padding-bottom:3px}'
+        + '.meta{color:#555;font-size:10pt;margin-bottom:18px} table{width:100%;border-collapse:collapse;font-size:10.5pt;margin:6px 0 4px}'
+        + 'td,th{padding:5px 8px;border-bottom:1px solid #e4e4e4;text-align:left} td.n{text-align:right;width:70px}'
+        + 'p{font-size:10.5pt} .fine{color:#666;font-size:9pt;margin-top:20px;border-top:1px solid #ccc;padding-top:10px}'
+        + '</style></head><body>'
+        + '<h1>Justification Review Standard: Pilot Summary</h1>'
+        + '<div class="meta">' + esc(session.organization) + (session.sector ? ' &middot; ' + esc(session.sector) : '')
+        + ' &middot; Prepared ' + today + ' for internal leadership</div>'
+        + '<h2>What was reviewed</h2>'
+        + '<p>' + esc(session.organization) + ' applied the Justification Review Standard to <b>' + session.run
+        + '</b> of its own records. Each record was assessed against five conditions that together test whether the basis '
+        + 'for a decision can be independently reconstructed from the record itself. <b>No record text was stored or transmitted for retention.</b> '
+        + 'Each record was assessed in memory and discarded; only the counts below were kept.</p>'
+        + '<h2>How the records routed</h2>'
+        + '<table><tr><th>Routing</th><th class="n">Records</th><th class="n">Share</th></tr>'
+        + row('Low concern', r.low||0) + row('Moderate concern', r.moderate||0)
+        + row('High concern', r.high||0) + row('Critical concern', r.critical||0) + '</table>'
+        + '<h2>How the five conditions held</h2>'
+        + '<table><tr><th>Condition result</th><th class="n">Count</th><th class="n">Share</th></tr>'
+        + crow('Passed', c.pass||0) + crow('Needs attention', c.needs_attention||0) + crow('Failed', c.fail||0) + '</table>'
+        + '<p><b>' + flagged + ' percent</b> of all condition checks came back as needing attention or failing. '
+        + 'That figure is the practical headline: it is the share of the reasoning in these records that a later reviewer, '
+        + 'auditor, regulator, or court would not be able to reconstruct from the document alone.</p>'
+        + '<h2>What to do with this</h2>'
+        + '<p>Three steps follow directly from a result like this one. First, treat the conditions that failed most often as a '
+        + 'drafting standard rather than a review finding, since the cheapest place to fix a record is before it is finalized. '
+        + 'Second, apply the review at the point of finalization for the record types that routed to high or critical concern, '
+        + 'rather than across everything. Third, preserve the drafting layer for AI-assisted documents, because the reasoning '
+        + 'that cannot be reconstructed from the final text is often still recoverable from the draft history.</p>'
+        + '<div class="fine">Prepared from the Justification Review Standard pilot run by ' + esc(session.name || 'your team')
+        + (session.title ? ', ' + esc(session.title) : '') + '. The standard is free to use. '
+        + 'Questions: info@jrsstandard.com &middot; jrsstandard.com</div>'
+        + '</body></html>';
+      try {
+        var blob = new Blob([html], { type: 'text/html' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = 'JRS-Executive-Summary-' + String(session.organization || 'pilot').replace(/[^A-Za-z0-9]+/g,'-').slice(0,40) + '.html';
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      } catch(e){
+        var w = window.open('', '_blank');
+        if (w) { w.document.write(html); w.document.close(); }
+      }
+    });
+  }
 
   el('finish-go').addEventListener('click', function(){
     var btn = el('finish-go');
@@ -372,6 +446,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
       el('step-done').classList.remove('hidden');
       window.scrollTo(0,0);
     })
+    .then(function(){ wireExecSummary(); })
     .catch(function(){
       el('msg').style.color = 'var(--review-text)';
       el('msg').textContent = 'Could not record the pilot just now. Please try again, or email info@jrsstandard.com.';
