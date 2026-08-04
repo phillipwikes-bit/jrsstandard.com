@@ -171,7 +171,7 @@ Other self-contained tools may use their own single scoped key, namespaced to th
 | `jrs-poll-voted-<study>` | `finding.html` | one-vote-per-poll guard |
 | `bench-auto-code`, `bench-expert-<code>`, `bench-done-<code>` | `bench-review.html` | reviewer code and per-record completion |
 | `jrs-ai-pilot` | `ai-records-pilot.html` | AI-records reviewer code + per-record reads (resume progress) |
-| `jrs-owner-token` | `pilot-status.html`, `people.html` | owner admin token, entered once, to auto-load the private named-supporter list (PII kept out of public page source) |
+| `jrs-owner-token` | `pilot-status.html` | owner admin token, entered once, to auto-load the private named-supporter list (PII kept out of public page source) |
 
 Do not introduce keys beyond this list without adding them here first.
 
