@@ -425,10 +425,22 @@ function loadRegistrations(){
    .catch(function(){ document.getElementById('rg-note').textContent='Registrations will appear here once the first person registers at a gate.'; });
 }
 function loadGate(){
-  return fetch('/api/gate-stats')
-   .then(function(r){ if(!r.ok) throw 0; return r.json(); })
-   .then(function(s){
-     s=s||{}; var tr=s.training||{}, rec=s.records||{};
+  // Training figures come from /api/enroll-stats, the same endpoint the Training
+  // panel below uses, so one number appears once on this page. gate-stats counts
+  // only recorded completion rows and would otherwise disagree with it.
+  return Promise.all([
+    fetch('/api/gate-stats').then(function(r){ if(!r.ok) throw 0; return r.json(); }),
+    fetch('/api/enroll-stats').then(function(r){ return r.ok ? r.json() : {}; }).catch(function(){ return {}; })
+  ])
+   .then(function(res){
+     var s=res[0]||{}, en=res[1]||{};
+     var tr=s.training||{}, rec=s.records||{};
+     tr = { enrollments: (en.enrollments!=null?en.enrollments:tr.enrollments)||0,
+            completions: (en.completions!=null?en.completions:tr.completions_recorded)||0,
+            unique_people: (en.unique_people!=null?en.unique_people:tr.unique_people)||0,
+            organizations: (en.organizations!=null?en.organizations:tr.organizations)||0,
+            countries: (en.completions_countries!=null?en.completions_countries:tr.countries)||0 };
+     tr.completion_rate_pct = tr.enrollments ? Math.round((tr.completions/tr.enrollments)*1000)/10 : 0;
      document.getElementById('gt-today').textContent=s.today||0;
      document.getElementById('gt-people').textContent=s.unique_people||0;
      document.getElementById('gt-orgs').textContent=s.organizations||0;

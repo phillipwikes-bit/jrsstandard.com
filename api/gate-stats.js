@@ -92,8 +92,8 @@ export default async function handler(req){
   let guide = 0, support = 0, contributors = 0, today = 0;
   let cContact = 0, cTransfer = 0, cNamed = 0;
 
-  let trainEnroll = 0, trainComplete = 0, trainNamedConsent = 0, trainTransfer = 0;
-  const trainPeople = {}, trainOrgs = {}, trainCountries = {};
+  let trainEnroll = 0, trainNamedConsent = 0, trainTransfer = 0;
+  const trainPeople = {}, trainOrgs = {}, trainCountries = {}, trainDone = {};
 
   let pilotSessions = 0, pilotRecords = 0, pilotNamedOrgs = 0;
   const pilotOrgs = {};
@@ -118,7 +118,9 @@ export default async function handler(req){
       continue;
     }
     if (src === 'training-complete'){
-      trainComplete++;
+      // Dedup by email: a completer who reopens the certificate page can write
+      // more than one row, and a person is one completion.
+      if (em) trainDone[em] = 1;
       const cc = String(p.country || '').trim().toUpperCase();
       if (cc) trainCountries[cc] = (trainCountries[cc] || 0) + 1;
       continue;
@@ -207,8 +209,14 @@ export default async function handler(req){
       enrollments: trainEnroll,
       unique_people: Object.keys(trainPeople).length,
       organizations: Object.keys(trainOrgs).length,
-      completions: trainComplete,
-      completion_rate_pct: trainEnroll ? Math.round((trainComplete / trainEnroll) * 1000) / 10 : 0,
+      // Completions with a stored training-complete row. /api/enroll-stats
+      // reports a HIGHER figure because it also credits panel completers who
+      // enrolled through ?src=panel and finished before the completion endpoint
+      // existed, so they never wrote a row. That endpoint stays the single
+      // source of truth for the headline completion number; this field is the
+      // raw recorded count and is labelled as such wherever it is shown.
+      completions_recorded: Object.keys(trainDone).length,
+      completions_note: 'Recorded completion rows only. See /api/enroll-stats for the full completion count, which includes panel completers recorded outside the app.',
       consented_transfer: trainTransfer,
       consented_public_listing: trainNamedConsent,
       countries: Object.keys(trainCountries).length,
