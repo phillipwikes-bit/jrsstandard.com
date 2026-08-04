@@ -76,6 +76,7 @@ const ROSTER = {
   'vxieh79z7v': { code:'V-AI-24', kind:'panel',  first:'SungSoo',   name:'SungSoo In',          title:'AI Governance and Responsible AI',                      org:'',                        named_on_file:true },
   'jusnt4chyx': { code:'V-AI-27', kind:'panel',  first:'Sidharth',  name:'Sidharth Borah',      title:'Advocate, High Court of Delhi; Partner, Gurinder and Partners', org:'',                named_on_file:true },
   'si81km0m1r': { code:'V-AI-28', kind:'panel',  first:'Nigel',     name:'Nigel Hee',           title:'AI Ethics, Safety and Governance',                      org:'University of Glasgow',   named_on_file:true },
+  's3ud3trom6': { code:'V-AI-29', kind:'panel',  first:'Marguerite', name:'Marguerite Maroudis, PhD', title:'AI and law; data protection officer and AI governance consultant', org:'TechLegalExperts', named_on_file:true },
   '42zgubzfq8': { code:'V-AI-30', kind:'panel',  first:'Andres',    name:'Andres Lage Freire',  title:'AI Governance Lead and Responsible AI Architect',       org:'',                        named_on_file:true },
 
   '6dyc0l2757': { code:'M-01',    kind:'author', first:'Ubayet',    name:'Ubayet Hossain, FRM', title:'Associate Director, Model Validation',                  org:'KPMG India',              named_on_file:true, note:'methodology co-author' },
