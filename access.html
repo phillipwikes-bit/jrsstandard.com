@@ -160,6 +160,16 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
   // No edition and no campaign: nothing to gate. Send to the guides page.
   if (!editionRaw && !campaignRaw) { location.replace('investigator-guides.html'); return; }
 
+  // Tell the server the form was opened, so the drop-off between arriving here
+  // and finishing can be measured. No personal data is sent and nothing blocks.
+  try {
+    fetch('/api/access', {
+      method: 'POST',
+      headers: { 'Content-Type':'application/json' },
+      body: JSON.stringify({ event:'view', mode: mode, edition: editionRaw, campaign: campaignRaw, src: src })
+    }).catch(function(){});
+  } catch(e){}
+
   function esc(x){ return String(x==null?'':x).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
 
   function submit(){
