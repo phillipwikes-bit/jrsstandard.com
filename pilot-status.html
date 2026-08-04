@@ -130,6 +130,27 @@ tr.today td{background:rgba(93,191,130,.07)}
     <div class="note" style="margin-top:8px">Field guide registrations by edition and initiative support by campaign. The guide and support gates went live on Aug 2, 2026; downloads and support recorded before that date were anonymous and cannot be attributed to a person.</div>
   </div>
 
+  <h1 style="font-size:22px;margin-top:34px">Since the Registration Gate</h1>
+  <p class="sub">Everything below counts activity from 2 August 2026 forward, the date the guides and the initiative support action moved behind a registration form. Earlier downloads and support clicks were anonymous and cannot be attributed to a person, so they are excluded here rather than blended in. Training is the exception and is shown all-time, because enrollment always required identity and consent. Aggregate counts only; the named list stays private.</p>
+  <div class="cards">
+    <div class="card"><div class="cv hot" id="gt-today">&middot;</div><div class="ck">New today (UTC)</div></div>
+    <div class="card"><div class="cv" id="gt-people">&middot;</div><div class="ck">Named people</div></div>
+    <div class="card"><div class="cv" id="gt-orgs">&middot;</div><div class="ck">Organizations</div></div>
+    <div class="card"><div class="cv" id="gt-countries">&middot;</div><div class="ck">Countries</div></div>
+  </div>
+  <div class="note" id="gt-note">Post-gate activity will appear here once the first person registers.</div>
+  <div class="chart">
+    <h2>What they registered for, and where</h2>
+    <div id="gtsplit">Loading&hellip;</div>
+  </div>
+  <div class="cards" style="margin-top:14px">
+    <div class="card"><div class="cv" id="gt-train-en">&middot;</div><div class="ck">Training enrollments (all time)</div></div>
+    <div class="card"><div class="cv" id="gt-train-cp">&middot;</div><div class="ck">Training completions</div></div>
+    <div class="card"><div class="cv" id="gt-records">&middot;</div><div class="ck">Records reviewed</div></div>
+    <div class="card"><div class="cv" id="gt-transfer">&middot;</div><div class="ck">Transferable</div></div>
+  </div>
+  <div class="note" id="gt-note2">&nbsp;</div>
+
   <h1 style="font-size:22px;margin-top:34px">Contributor Confirmations</h1>
   <p class="sub">Per-person confirmation links sent to the reviewers who completed the international detection set, the article co-authors, and the pilot facilitators. Each link captures the exact name and title to print, the naming election, and the continuing-use and transfer permissions. Aggregate counts only; the wording each contributor chose is stored privately.</p>
   <div class="cards">
@@ -403,6 +424,61 @@ function loadRegistrations(){
    })
    .catch(function(){ document.getElementById('rg-note').textContent='Registrations will appear here once the first person registers at a gate.'; });
 }
+function loadGate(){
+  return fetch('/api/gate-stats')
+   .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+   .then(function(s){
+     s=s||{}; var tr=s.training||{}, rec=s.records||{};
+     document.getElementById('gt-today').textContent=s.today||0;
+     document.getElementById('gt-people').textContent=s.unique_people||0;
+     document.getElementById('gt-orgs').textContent=s.organizations||0;
+     document.getElementById('gt-countries').textContent=s.countries||0;
+     document.getElementById('gt-train-en').textContent=tr.enrollments||0;
+     document.getElementById('gt-train-cp').textContent=tr.completions||0;
+     document.getElementById('gt-records').textContent=rec.records_reviewed||0;
+     document.getElementById('gt-transfer').textContent=s.transferable_people||0;
+     document.getElementById('gt-note').textContent=
+       (s.registrations||0)+' registrations since the gate: '+(s.guide_registrations||0)+' field guide, '
+       +(s.support_registrations||0)+' initiative, '+(s.contributor_confirmations||0)+' contributor confirmation. '
+       +(s.consented_contact||0)+' contactable, '+(s.consented_transfer||0)+' consented to transfer to a successor, '
+       +(s.consented_public_listing||0)+' agreed to be listed publicly by name.';
+     document.getElementById('gt-note2').textContent=
+       'Training completion rate '+(tr.completion_rate_pct||0)+' percent across '+(tr.unique_people||0)
+       +' people and '+(tr.organizations||0)+' organizations in '+(tr.countries||0)+' countries. '
+       +(rec.records_reviewed||0)+' records run through the standard in '+(rec.pilot_sessions||0)
+       +' sessions across '+(rec.organizations||0)+' organizations, '+(rec.orgs_consenting_to_be_named||0)
+       +' of which agreed to be named publicly.';
+     renderGateSplit(s);
+   })
+   .catch(function(){ document.getElementById('gt-note').textContent='Post-gate activity will appear here once the first person registers.'; });
+}
+function renderGateSplit(s){
+  var el=document.getElementById('gtsplit');
+  if(!el) return;
+  var EDN={employment:'Field Guide: EEO',fairhousing:'Field Guide: Fair Housing',international:'Field Guide: International',unknown:'Field Guide: unspecified'};
+  var CMP={rtkw:'Initiative: The Right to Know Why',defend:'Initiative: The Decisions You Can Defend',general:'Initiative: general'};
+  var list=[];
+  ((s&&s.by_edition)||[]).forEach(function(x){ list.push({label:EDN[x.edition]||('Field Guide: '+x.edition),count:x.count}); });
+  ((s&&s.by_campaign)||[]).forEach(function(x){ list.push({label:CMP[x.campaign]||('Initiative: '+x.campaign),count:x.count}); });
+  var html='';
+  if(!list.length){ html+='<div style="color:var(--muted-soft);font-size:12px">No registrations since the gate yet.</div>'; }
+  else {
+    var max=1; list.forEach(function(x){ if(x.count>max) max=x.count; });
+    list.sort(function(a,b){ return b.count-a.count; });
+    list.forEach(function(x){
+      html+='<div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">'
+        +'<div style="flex:0 0 210px;font-size:12px;color:var(--muted)">'+x.label+'</div>'
+        +'<div style="flex:1 1 auto;background:var(--rule);height:10px"><div style="height:10px;background:var(--accent);width:'+Math.round((x.count/max)*100)+'%"></div></div>'
+        +'<div style="flex:0 0 34px;text-align:right;font-size:12px;color:var(--text)">'+x.count+'</div>'
+        +'</div>';
+    });
+  }
+  var cs=(s&&s.by_country)||[];
+  html+='<div style="margin-top:12px;font-size:12px;color:var(--muted)"><b style="color:var(--text)">By country:</b> '
+    +(cs.length? cs.map(function(c){ return c.country+' '+c.count; }).join(' · ') : 'none recorded yet')
+    +'</div>';
+  el.innerHTML=html;
+}
 function loadContributors(){
   return fetch('/api/contributor-stats')
    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
@@ -562,7 +638,7 @@ function renderSupWall(d){
   h+='</div>';
   w.innerHTML=h;
 }
-function refresh(){ loadDetection(); loadRealcase(); loadArmB(); loadOrgPilots(); loadRegistrations(); loadContributors(); loadTraining(); loadDownloads(); loadItems(); loadSupport(); }
+function refresh(){ loadDetection(); loadRealcase(); loadArmB(); loadOrgPilots(); loadGate(); loadRegistrations(); loadContributors(); loadTraining(); loadDownloads(); loadItems(); loadSupport(); }
 refresh();
 setInterval(refresh, 60000);
 </script>
