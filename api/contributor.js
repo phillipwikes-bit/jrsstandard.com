@@ -224,6 +224,8 @@ export default async function handler(req){
     consent_transfer: (cTransfer === 'yes'),
     support_rtkw: b.support_rtkw === true,
     support_defend: b.support_defend === true,
+    country: String(req.headers.get('x-vercel-ip-country') || '')
+      .toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2) || '',
     name_on_file: person.name,
     title_on_file: person.title,
     ts: new Date().toISOString()

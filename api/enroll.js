@@ -39,6 +39,8 @@ export default async function handler(req){
     title: clean(b.title, 200),
     audience: clean(b.audience, 32) || 'public',
     page_source: clean(b.source, 80),
+    country: String(req.headers.get('x-vercel-ip-country') || '')
+      .toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2) || '',
     consent_contact: true,
     consent_transfer: b.consent_transfer === true,
     consent_named: b.consent_named === true,
