@@ -128,9 +128,16 @@ export default async function handler(req){
   if (b.consent_contact !== true) return json({ error:'consent_required' }, 400);
   if (mode === 'guide' && !edition) return json({ error:'edition_required' }, 400);
 
+  // Country from the edge geo header (ISO 3166-1 alpha-2), best effort. Stored
+  // on the contact row so the private people list has a country per person;
+  // pilot_contacts has no country column, so it rides in the JSON like the rest.
+  const geo = String(req.headers.get('x-vercel-ip-country') || '')
+    .toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2) || '';
+
   const payload = {
     kind: (mode === 'support') ? 'support-register' : 'guide-register',
     title: title,
+    country: geo,
     page_source: src || '',
     consent_contact: true,
     consent_transfer: b.consent_transfer === true,
@@ -179,8 +186,7 @@ export default async function handler(req){
   // geo-stats, and support-stats continue to work exactly as before. Best-effort
   // only: the registration above is already durable and must not be undone by a
   // counter write failing.
-  const country = String(req.headers.get('x-vercel-ip-country') || '')
-    .toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2) || null;
+  const country = geo || null;
 
   try {
     if (mode === 'guide') {
