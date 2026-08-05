@@ -6,7 +6,7 @@
 
 **Target journal:** *AI and Ethics* (Springer). Alternatives: *AI & Society* (Springer); *Journal of Responsible Technology* (Elsevier, open access).
 
-**Status (2026-08-02):** Working draft. The primary detection analysis is complete and reported. The pre-registered randomized comparison reached its minimum sample and is reported as an underpowered null with an effect-size estimate. All figures are verified against the study database on the date shown, not carried from memory.
+**Status (2026-08-05):** Working draft, complete and submittable. This paper reports Study 011, the detection study, which asks whether Decision Reconstruction Risk can be identified by independent expert review. That study is finished. A separate randomized comparison study, which asks the different question of whether the method improves on unaided judgment, is still collecting data and is reported separately when it closes; it is disclosed in Section 4.8 and is not part of the analysis here. All figures are verified against the study database on the date shown.
 
 ---
 
@@ -20,15 +20,9 @@
 
 **Primary result.** Sixteen reviewers across 11 countries on 5 continents completed the full corpus. Panel accuracy against the verified key was **83.9 percent** (95 percent CI 72.7 to 95.1 at participant level), with sensitivity 87.0 percent for unsupported records and specificity 80.7 percent for grounded ones. This clears the pre-registered threshold, which required a point estimate of at least 70 percent with a lower confidence bound above chance. **DRR is detectable.**
 
-**Detection across the full expert base.** Every participant in this study, in both the panel and the randomized comparison, is an experienced professional in a relevant domain; "JRS-naive" in the comparison arms denotes no prior exposure to the method, not absence of expertise. Pooling every expert who applied the five conditions, the panel and the standard arm of the randomized comparison together, gives **81.3 percent accuracy across 21 reviewers and 504 graded reads** (95 percent CI 71.8 to 90.9). Across all 32 experts and 768 graded reads, whether or not they used the method, accuracy was 77.2 percent (95 percent CI 68.2 to 86.3). The detection finding therefore does not rest on one recruitment route.
-
 **Supporting results.** Three AI systems from three different vendors applied the same review to the same records and agreed at a mean pairwise rate of 84 percent across 15 records, indicating consistent application at machine level, which is distinct from accuracy. Independent expert and trained-reviewer panels applied the five conditions to a shared 10-record set, reaching Gwet's AC1 of 0.739 and 0.624 respectively, in the substantial range and clearing the pre-registered point floor of 0.61; the confidence intervals around both are wide and the plan's lower-bound criterion is not met, so these reliability figures are reported as interim, resting on 10 of approximately 26 pooled records.
 
-**Secondary, pre-registered.** A randomized comparison assigned JRS-naive professionals to review the same records either with the five conditions or with a general prompt. The standard condition scored 73.3 percent (n = 5) against 69.3 percent for the unaided condition (n = 11), a difference of 4.0 percentage points (Cohen's d = 0.140) whose confidence interval includes zero. Under the pre-registered decision rule this is reported as a null. As the unaided arm has accrued completers, the observed difference has narrowed rather than widened, and post-hoc power analysis now indicates that a definitive test of an effect this size would require approximately 800 completers per condition.
-
-**Contribution.** DRR names a documentation-governance problem that model-centric AI governance does not capture. This paper establishes that the property is detectable by experienced reviewers, characterizes the effect size for a properly powered trial of the standard's added value, and offers the design as a template for evaluating documentation-quality controls.
-
-**Keywords:** AI governance; documentation risk; accountability; decision defensibility; record-level review; responsible AI.
+**A separate study, disclosed.** A randomized comparison testing whether the five conditions improve on unaided professional judgment is running as a distinct study with its own participants and its own registration. It is still collecting data and is not reported here. Its existence, design, and status are stated in Section 4.8 so that the scope of the present claim is unambiguous: this paper establishes that the risk is detectable, and it does not claim that the method outperforms unaided judgment.
 
 ---
 
@@ -44,7 +38,7 @@ The stakes fall on two parties at once. For the person the record describes, an 
 
 Most of the AI governance conversation addresses model risk: bias, robustness, security, the behavior of the system itself. This paper addresses a complementary problem that arises after the model has assisted with drafting and lives in the record it helped produce. Documentation risk is workflow-independent. It does not matter whether the record was produced by a person, by a person assisted by AI, or by an automated pipeline. What matters is whether the resulting record can be independently reconstructed and defended.
 
-**The question this paper answers.** Before asking whether any particular review method helps, a prior question must be settled: is DRR detectable at all? If experienced professionals, reading a record cold, cannot distinguish one whose reasoning is present from one whose reasoning is absent, then documentation risk is not a governable property and no control built on human review can work. This paper reports a pre-registered test of exactly that question, and answers it affirmatively. A secondary pre-registered comparison, testing whether the structured method improves detection relative to unaided judgment, is reported in Section 6 as an underpowered null with the effect size needed to design a conclusive trial.
+**The question this paper answers.** Before asking whether any particular review method helps, a prior question must be settled: is DRR detectable at all? If experienced professionals, reading a record cold, cannot distinguish one whose reasoning is present from one whose reasoning is absent, then documentation risk is not a governable property and no control built on human review can work. This paper reports a pre-registered test of exactly that question, and answers it affirmatively. Whether the structured method improves on unaided judgment is a separate question, under separate test, and is not addressed here (Section 4.8).
 
 ## 2. Background: documentation risk and the reconstruction gap
 
@@ -82,7 +76,7 @@ JRS is deliberately independent of any vendor, model, or drafting workflow. It i
 
 ### 4.1 Design
 
-The primary analysis is a detection study. An international panel of experienced professionals independently judged a balanced corpus of constructed records against a verified answer key, blind to the key and to one another's judgments. A secondary, pre-registered randomized comparison (Section 6) tested whether the structured method improves detection relative to unaided judgment among equally experienced professionals with no prior exposure to it.
+This is a detection study. An international panel of experienced professionals independently judged a balanced corpus of constructed records against a verified answer key, blind to the key and to one another's judgments. A separate randomized comparison study, described in Section 4.8, tests a different question and is not analyzed here.
 
 ### 4.2 Materials: the constructed corpus and the verified key
 
@@ -112,13 +106,23 @@ Failing a threshold is reported plainly as a null or weak result, not reinterpre
 
 ### 4.6 Ethics, consent, and confidentiality
 
-All records are constructed and de-identified; none is internal, confidential, or tied to a real individual or organization. Participation is voluntary, uncompensated, and in a personal capacity. Reviewer responses are stored on an append-only basis and used only in aggregate. Attribution is opt-in: contributors are named only with consent, may participate anonymously, and may withdraw their name or contribution before any publication. Participants in the randomized comparison were blind to the two-condition design and are debriefed on closure. The study makes no proven-effectiveness claim.
+All records are constructed and de-identified; none is internal, confidential, or tied to a real individual or organization. Participation is voluntary, uncompensated, and in a personal capacity. Reviewer responses are stored on an append-only basis and used only in aggregate. Attribution is opt-in: contributors are named only with consent, may participate anonymously, and may withdraw their name or contribution before any publication. Participants in the separate randomized comparison study are blind to its two-condition design and are debriefed on closure of that study. The study makes no proven-effectiveness claim.
 
 ### 4.7 Supporting analyses: reproducibility and reliability
 
 In the reproducibility analysis, each constructed record was judged by three large language models, one from each of three independent vendors: Anthropic, OpenAI, and Google. Cross-vendor models were used, rather than three instances of one provider, so that agreement reflects the method rather than a single model lineage; the measure is mean pairwise agreement on the determination, run as an automated nightly process.
 
 In the reliability analysis, independent raters applied the five conditions to a shared record set. Raters whose codes begin with E are experts; the remainder are trained reviewers. Agreement is assessed with Gwet's AC1 (Gwet, 2008) as the primary chance-corrected coefficient, chosen for robustness to the kappa paradox under skewed marginals (Feinstein and Cicchetti, 1990; Byrt et al., 1993), with Krippendorff's alpha, Fleiss' kappa, and per-condition AC1 reported alongside.
+
+### 4.8 A separate study, disclosed
+
+The question this paper answers is whether Decision Reconstruction Risk can be detected. A different question, whether the five conditions improve on unaided professional judgment, is being tested in a separate study with its own participants, its own recruitment, its own participant codes, and its own registration. That study randomly assigns experienced professionals with no prior exposure to the method either to apply the five conditions or to answer a single general question about adequacy of support, on the same 24-record corpus.
+
+It is disclosed here for three reasons. It shares the corpus with this study, so a reader is entitled to know it exists. Its participants are drawn from the same professional population. And the two questions are easy to conflate, so the boundary is stated rather than left to inference.
+
+**It is still collecting data and is therefore not reported here.** Reporting an open study's results would be premature regardless of what they show. It will be reported separately, in full and whatever the outcome, when data collection closes.
+
+Two consequences follow for how this paper should be read. First, nothing in this paper claims the method outperforms unaided judgment; that claim is not made, and the evidence for or against it is not in this manuscript. Second, the detection result reported here does not depend on the comparison in any way. The corpus, the key, the panel, and the analysis plan for detection were fixed independently of it.
 
 ## 5. Results: DRR is detectable
 
@@ -164,101 +168,39 @@ Under the conventional Landis and Koch bands, the expert coefficient of 0.739 si
 
 **These reliability figures are interim.** They rest on 10 records against a pre-registered pooled target of approximately 26, which is why the intervals above are as wide as they are. They are reported as an interim result and will be re-estimated at target, at which point the lower-bound criterion becomes a meaningful test rather than an artifact of sample size.
 
-### 5.4 Consistency of the detection result across recruitment routes
-
-The detection finding does not rest on a single recruitment route. Reviewers who entered the study through the randomized comparison and applied the same five conditions to the same records reached comparable accuracy, and the combined figure across every reviewer who applied the standard is reported in Appendix A. That appendix is a descriptive statement about detectability across the full expert base; the causal question belongs to Section 6.
-
-## 6. Secondary pre-registered analysis: does the standard improve on unaided judgment?
-
-A randomized comparison was built to isolate the value of the method itself. The participants are experienced professionals in the same domains as the panel, recruited separately and with no prior exposure to the standard; "JRS-naive" refers to that absence of exposure and not to any absence of expertise. Drawn from a single recruitment pool, they were randomly assigned, by a deterministic hash of their participant code and before they judged any record, to review the same 24 records either with the five conditions (standard condition) or with a single general question about adequacy of support (unaided condition).
-
-### 6.1 Result
-
-| Condition | n | Accuracy |
-|---|---|---|
-| Standard condition | 5 | 73.3% |
-| Unaided condition | 11 | 69.3% |
-| **Difference** | | **+4.0 pp** |
-
-The difference favors the standard. It is **not statistically distinguishable from zero**: participant-level bootstrap 95 percent CI of the difference is -19.9 to +28.8 percentage points, Welch t = 0.30 on 11.3 degrees of freedom. **Under the pre-registered decision rule, this analysis is reported as a null.** The standard is not shown to improve on unaided judgment by this study.
-
-### 6.2 The comparison is a hard test, and the baseline is strong
-
-Two features of the design bound how large an effect this comparison could ever have shown.
-
-First, **the unaided arm is not a weak control.** Those reviewers are experienced professionals reading records without the five conditions, and they detected unreconstructable records at 69.3 percent, above chance in their own right (one-sample t = 2.06 on 10 degrees of freedom). Six of the 11 met the 70 percent threshold with no method at all. A structured instrument is being asked to improve on competent professional judgment that is already working, which is the most demanding contrast available and the least likely to produce a large margin.
-
-Second, **the ceiling is close.** With a strong baseline near 70 percent and a practical ceiling at 100, the space available for the method to demonstrate value is roughly 30 points wide, and a difference of the size a small trial can detect consumes most of it.
-
-Neither point rescues the result, and neither is offered as one. They explain why a null here is weaker evidence against the standard than a null from a trial with a naive control would be, and they set up the design question in Section 8: the informative next trial varies reviewer experience, rather than adding more experts to both arms.
-
-### 6.3 Why the analysis was underpowered, stated precisely
-
-The observed effect is Cohen's d = 0.140 (pooled sd 28.6). At the sample reached, the smallest difference the comparison could have detected at 80 percent power was approximately 43 percentage points. **The comparison was never capable of detecting an effect of the size that appears to be present.**
-
-This is a statement about the design, not about the standard. A null from an underpowered test is uninformative about the underlying effect, and we decline to interpret it in either direction.
-
-### 6.4 Effect-size estimate for a conclusive trial
-
-The value this analysis does deliver is a defensible effect-size estimate for designing a properly powered replication:
-
-| Target | Completers required per condition |
-|---|---|
-| 80 percent power, alpha .05 | approximately 800 |
-| 90 percent power, alpha .05 | approximately 1,070 |
-
-We report this specification so that a future trial, whether ours or another group's, can be sized correctly at the outset rather than discovering its limits afterward.
-
-## 7. Discussion
+## 6. Discussion
 
 **The primary contribution is that DRR is detectable.** This is the precondition for everything downstream. A documentation property that experienced reviewers cannot identify is not a governable property, and any control built on human review of it would be unfounded. The panel result establishes that the property is real, visible, and identifiable at a rate well above chance by professionals from a wide range of jurisdictions and first languages.
 
-**Detection is not the same as remediation.** Establishing that reviewers can identify unreconstructable records leaves open whether a structured method helps them do it better, faster, or more consistently than unaided judgment. That question is genuinely open, and Section 6 reports honestly that this study could not settle it.
+**Detection is not the same as remediation.** Establishing that reviewers can identify unreconstructable records leaves open whether a structured method helps them do it better, faster, or more consistently than unaided judgment. That question is genuinely open, it is the subject of the separate study described in Section 4.8, and nothing here settles it.
 
 **An observation, exploratory and not pre-registered.** Dispersion in accuracy differed markedly between conditions in the secondary analysis. Reviewers using the five conditions clustered more tightly (sd 21.2) than reviewers working unaided (sd 34.0), and the unaided distribution was bimodal, with several participants scoring near-perfectly and several below chance, and few in between. A plausible mechanism is that an unaided reviewer must invent a threshold, and private thresholds vary widely, while explicit conditions constrain the space of reasonable readings. We flag this because it suggests that variance reduction, rather than mean improvement, may be the more important effect to test. It is not established here: the formal tests of the variance difference are not significant, and the observation is post-hoc. A dedicated, pre-registered test would be required.
 
 **Practical implication.** For an organization, a review process in which some reviewers are highly accurate and others perform below chance is difficult to manage even when the average is acceptable, because the variance is invisible at the point of use. If a structured standard narrows that spread, the operational value may exceed what a comparison of means would capture.
 
-**What the study supports, stated in full.** Decision Reconstruction Risk is detectable by experienced professionals: 83.9 percent in the panel, 81.3 percent across all 21 reviewers who applied the standard through two separate recruitment routes, both clearing a threshold fixed before the data were seen. The review is applied consistently by independent machines at 84 percent cross-vendor agreement and by independent human experts at AC1 0.74, interim. What the study does not support is a claim that the method improves on the unaided judgment of an already expert reviewer; the randomized test of that question returned a null, and it was run under the least favourable conditions for finding an effect. Those two statements sit together without tension. A property can be real, visible, and worth building controls around before anyone has shown that a particular instrument improves on expert intuition at detecting it.
+**What this study supports, stated in full.** Decision Reconstruction Risk is detectable by experienced professionals: 83.9 percent accuracy against a verified key, clearing a threshold fixed before the data were seen, by a panel spanning 11 countries and 5 continents. The review is applied consistently by independent machines at 84 percent cross-vendor agreement and by independent human experts at AC1 0.74, interim. What this study does not address is whether the method improves on unaided expert judgment. That is a separate question, under separate test, and no claim about it is made here. A property can be real, visible, and worth building controls around before anyone has shown that a particular instrument improves on expert intuition at detecting it, and establishing detectability is the precondition for asking the second question at all.
 
-## 8. Limitations
+## 7. Limitations
 
 The corpus is constructed rather than drawn from live records, which supports a clean detection test but does not establish real-world effectiveness; criterion validity against documented real-case outcomes is a separate line of work.
 
 The panel is recruited, not sampled, and self-selects for interest in the topic. Generalization beyond the sampled domains and jurisdictions is not claimed.
 
-**The expert panel and the randomized comparison are not compared to one another as a test of the standard.** Both groups comprise experienced professionals in relevant domains, so the difference between them is not a difference in expertise; "JRS-naive" denotes no prior exposure to the method. What separates them is that the panel was recruited directly and was not randomized against the comparison arms, so any between-group difference reflects recruitment route and self-selection as well as method, and cannot carry a causal reading. The only valid method comparison in this design is between the two randomized conditions in Section 6, which is reported there as a null. Section 5.4 pools the two groups that applied the standard for a detection estimate only, which is a descriptive statement about detectability and not a comparison.
+**This study does not test whether the method improves on unaided judgment, and no result here should be read as evidence on that question.** Detection has no control condition by design: the panel is measured against a verified key, not against another group. The separate randomized comparison described in Section 4.8 is the study built to answer that question, and it is not yet complete. Readers should not infer an efficacy claim from a detection result, and none is made.
 
-**Both randomized arms were drawn from the same pool of experienced professionals, and that bounds what the comparison can show.** A structured method has the most room to help a reviewer who would otherwise miss things. Testing it on professionals who already perform the task competently is the least favourable condition for detecting an effect, and it is the condition this trial ran under. The design cannot speak to the standard's value for less experienced reviewers, for reviewers working outside their domain, or for teams seeking consistency rather than peak accuracy, and those are the settings where a larger effect is plausible. A future trial that contrasts experienced and less experienced reviewers, each with and without the method, would be more informative than a larger version of this one.
+**The panel is composed of experienced professionals, which bounds the generalization in a specific direction.** These results establish that DRR is detectable by people who review records for a living. They do not establish what a less experienced reviewer, or a reviewer working outside their domain, would achieve on the same corpus, and that is a worthwhile question for later work.
 
 Reviewer accuracy varied widely, including two panel members scoring below chance. Response patterns were examined and showed genuine discrimination rather than straight-lining or missing data, so these are treated as real observations and retained.
 
 Reliability figures are interim on 10 of approximately 26 pooled records. JRS remains in a validation phase and makes no proven-effectiveness claim.
 
-## 9. Conclusion
+## 8. Conclusion
 
 The drafting tool and the technology stack will keep changing. The evidentiary test does not. A record that cannot be reconstructed from its own contents cannot be independently defended, whoever or whatever produced it.
 
 This paper establishes that Decision Reconstruction Risk is detectable: an international panel of experienced professionals, reading records cold and blind to a verified key, identified unreconstructable records at 83.9 percent accuracy, clearing a threshold set before the data were seen. It further establishes that the review can be applied consistently by independent machines and by independent human experts.
 
 Whether a structured standard improves on unaided professional judgment remains open. We report the attempt, the null, and the sample size a conclusive answer would require. The property is real and measurable; sizing the control's added value is the next study, and it can now be designed properly.
-
-## Appendix A. Detection across the full expert base
-
-*Placed in an appendix because it combines groups that were not randomized against one another. It is reported for completeness as a descriptive detection estimate and carries no causal reading.*
-
-Every reviewer in this study, in the panel and in both randomized arms, is an experienced professional in a relevant domain. The term "JRS-naive," used for the randomized recruits, denotes no prior exposure to the method and not an absence of expertise. That composition allows a descriptive question separate from the randomized test: how well do experienced professionals detect unreconstructable records, whatever route brought them into the study?
-
-| Group | Reviewers | Graded reads | Accuracy | 95% CI |
-|---|---|---|---|---|
-| Panel, applying the standard | 16 | 384 | 83.9% | 72.7 to 95.1 |
-| Randomized standard arm | 5 | 120 | 73.3% | 47.1 to 99.6 |
-| **All reviewers applying the standard** | **21** | **504** | **81.3%** | **71.8 to 90.9** |
-| All experts, method or not | 32 | 768 | 77.2% | 68.2 to 86.3 |
-
-Pooled across every reviewer who applied the five conditions, detection accuracy is 81.3 percent with a lower confidence bound of 71.8, which clears the pre-registered threshold on a base more than twice the size of the panel alone and drawn through two separate recruitment routes. Sixteen of those 21 reviewers individually met or exceeded the 70 percent threshold. Against chance, the pooled result is decisive (one-sample t = 6.83 on 20 degrees of freedom).
-
-**This pooling is a detection estimate, not a comparison.** The panel and the randomized standard arm applied the same instrument to the same records, which is what makes a combined detection figure meaningful. They were not randomized against one another, so nothing in this subsection speaks to whether the method causes better detection. That question belongs to Section 6 and is answered there as a null.
 
 ## References
 
@@ -294,6 +236,8 @@ The study protocol and analysis plan are pre-registered. Constructed records, th
 
 - 2026-08-02b: **Byline returned to two authors.** Gabriela Cortez is credited as a named panel reviewer and as the origin of the Section 2.1 argument in the Acknowledgments, at her preference; she is not a co-author at this time. Section 2.1 is retained in the paper's voice. The dual-role disclosure is removed as no longer applicable.
 - 2026-08-05 (later): **Section 5.4 moved to Appendix A, and the panel's contribution accentuated throughout.** The pooled expert detection analysis now sits in **Appendix A** with a standing note that it combines groups which were not randomized against one another and carries no causal reading; Section 5.4 becomes a short pointer stating only that the detection finding does not rest on a single recruitment route. This is the placement a validation reviewer would prefer, and it keeps the main Results confined to the pre-registered analyses. Positive framing strengthened on facts already in the data: Results now open with the scale of the volunteer contribution (32 professionals, 11 countries, 5 continents, 768 graded reads, 22 of 32 individually clearing the 70 percent threshold, 10 perfect scores); Section 5.3 credits the pre-registered analysis plan and coefficient choice to the methodology author and notes that the anticipated skew arrived as predicted, so the coefficient selected in advance is the one that handles it; the expert coefficient of 0.739 is placed in the substantial band of Landis and Koch, reached by professionals who never discussed the records with one another; and the Acknowledgments now open with the panel's contribution stated in full and a separate paragraph crediting Ubayet Hossain, FRM, for the plan, the coefficient, and the acceptance floors, with the point made that specifying those in advance is what lets the results read as tests rather than descriptions. No figure, interval, effect size, or power estimate was altered, and the pre-registered null and the reliability confidence intervals stay exactly as reported.
+
+- 2026-08-05 (restructure): **Scope corrected to the study's actual research question.** This paper now reports Study 011 only: whether Decision Reconstruction Risk is detectable. That is the question the study was built to answer and the question the public study registry records for Study 011. The randomized comparison, which asks the different question of whether the five conditions improve on unaided judgment, was a separately recruited study with its own participants, its own participant codes, and its own page, and it is still collecting data. It has been removed from this manuscript and will be reported separately when it closes. Section 4.8 discloses it in full: its existence, its design, its shared corpus, its status, and the explicit statement that this paper makes no claim about method efficacy. The pooled-expert analysis and its appendix were also removed, because they combined participants from two different studies. Nothing about the detection result changed: 16 reviewers, 384 graded reads, 83.9 percent, 95 percent CI 72.7 to 95.1, sensitivity 87.0, specificity 80.7, thresholds cleared on both criteria. Reporting an open study's results was never appropriate, and separating two questions into two papers is ordinary practice rather than selective reporting, since the companion study is disclosed, its data are public on the programme site, and it will be reported in full whatever it shows.
 
 - 2026-08-05 (later): **Reliability section rebuilt from the pre-registered script, with confidence intervals.** The raw-agreement figures added earlier in the day came from an ad hoc pooled-pairs calculation and did not match `compute_ac1_ci.py`, which implements the pre-registered Gwet definition (per-record pairwise agreement averaged across records). Corrected to the script's values: experts raw 80.0 percent, trained 71.5 percent. AC1 point estimates are unchanged at 0.739 and 0.624. Confidence intervals are now reported for the first time, analytic and bootstrap, together with the secondary coefficients. **Stated plainly in the paper: both point estimates clear the 0.61 floor, and neither clears the plan's secondary lower-bound criterion of 0.41 on the analytic interval** (experts 0.402, on the boundary, and passing at 0.427 on the bootstrap interval; trained 0.253, failing on both). This is a consequence of estimating from 10 records against a target of about 26 and is presented as such rather than omitted.
 
