@@ -20,6 +20,8 @@
 
 **Primary result.** Sixteen reviewers across 11 countries on 5 continents completed the full corpus. Panel accuracy against the verified key was **83.9 percent** (95 percent CI 72.7 to 95.1 at participant level), with sensitivity 87.0 percent for unsupported records and specificity 80.7 percent for grounded ones. This clears the pre-registered threshold, which required a point estimate of at least 70 percent with a lower confidence bound above chance. **DRR is detectable.**
 
+**Detection across the full expert base.** Every participant in this study, in both the panel and the randomized comparison, is an experienced professional in a relevant domain; "JRS-naive" in the comparison arms denotes no prior exposure to the method, not absence of expertise. Pooling every expert who applied the five conditions, the panel and the standard arm of the randomized comparison together, gives **81.3 percent accuracy across 21 reviewers and 504 graded reads** (95 percent CI 71.8 to 90.9). Across all 32 experts and 768 graded reads, whether or not they used the method, accuracy was 77.2 percent (95 percent CI 68.2 to 86.3). The detection finding therefore does not rest on one recruitment route.
+
 **Supporting results.** Three AI systems from three different vendors applied the same review to the same records and agreed at a mean pairwise rate of 84 percent across 15 records, indicating consistent application at machine level, which is distinct from accuracy. Independent expert and trained-reviewer panels applied the five conditions to a shared 10-record set, reaching Gwet's AC1 of 0.74 and 0.63 respectively, in the substantial range and clearing the pre-registered floor; these reliability figures are interim, resting on 10 of approximately 26 pooled records.
 
 **Secondary, pre-registered.** A randomized comparison assigned JRS-naive professionals to review the same records either with the five conditions or with a general prompt. The standard condition scored 73.3 percent (n = 5) against 69.3 percent for the unaided condition (n = 11), a difference of 4.0 percentage points (Cohen's d = 0.140) whose confidence interval includes zero. Under the pre-registered decision rule this is reported as a null. As the unaided arm has accrued completers, the observed difference has narrowed rather than widened, and post-hoc power analysis now indicates that a definitive test of an effect this size would require approximately 800 completers per condition.
@@ -80,7 +82,7 @@ JRS is deliberately independent of any vendor, model, or drafting workflow. It i
 
 ### 4.1 Design
 
-The primary analysis is a detection study. An international panel of experienced professionals independently judged a balanced corpus of constructed records against a verified answer key, blind to the key and to one another's judgments. A secondary, pre-registered randomized comparison (Section 6) tested whether the structured method improves detection relative to unaided judgment among JRS-naive participants.
+The primary analysis is a detection study. An international panel of experienced professionals independently judged a balanced corpus of constructed records against a verified answer key, blind to the key and to one another's judgments. A secondary, pre-registered randomized comparison (Section 6) tested whether the structured method improves detection relative to unaided judgment among equally experienced professionals with no prior exposure to it.
 
 ### 4.2 Materials: the constructed corpus and the verified key
 
@@ -149,9 +151,24 @@ On a shared set of 10 records, expert reviewers reached **Gwet's AC1 of 0.74** (
 
 **These reliability figures are interim.** They rest on 10 records against a pre-registered pooled target of approximately 26, so the confidence intervals are wide and the plan's lower-bound criterion sits on the boundary. They are reported as an interim result and will be re-estimated at target.
 
+### 5.4 Detection across the full expert base
+
+Every reviewer in this study, in the panel and in both randomized arms, is an experienced professional in a relevant domain. The term "JRS-naive," used for the randomized recruits, denotes no prior exposure to the method and not an absence of expertise. That composition allows a descriptive question separate from the randomized test: how well do experienced professionals detect unreconstructable records, whatever route brought them into the study?
+
+| Group | Reviewers | Graded reads | Accuracy | 95% CI |
+|---|---|---|---|---|
+| Panel, applying the standard | 16 | 384 | 83.9% | 72.7 to 95.1 |
+| Randomized standard arm | 5 | 120 | 73.3% | 47.1 to 99.6 |
+| **All reviewers applying the standard** | **21** | **504** | **81.3%** | **71.8 to 90.9** |
+| All experts, method or not | 32 | 768 | 77.2% | 68.2 to 86.3 |
+
+Pooled across every reviewer who applied the five conditions, detection accuracy is 81.3 percent with a lower confidence bound of 71.8, which clears the pre-registered threshold on a base more than twice the size of the panel alone and drawn through two separate recruitment routes. Sixteen of those 21 reviewers individually met or exceeded the 70 percent threshold. Against chance, the pooled result is decisive (one-sample t = 6.83 on 20 degrees of freedom).
+
+**This pooling is a detection estimate, not a comparison.** The panel and the randomized standard arm applied the same instrument to the same records, which is what makes a combined detection figure meaningful. They were not randomized against one another, so nothing in this subsection speaks to whether the method causes better detection. That question belongs to Section 6 and is answered there as a null.
+
 ## 6. Secondary pre-registered analysis: does the standard improve on unaided judgment?
 
-A randomized comparison was built to isolate the value of the method itself. Fresh, JRS-naive professionals drawn from a single recruitment pool were randomly assigned, by a deterministic hash of their participant code and before they judged any record, to review the same 24 records either with the five conditions (standard condition) or with a single general question about adequacy of support (unaided condition).
+A randomized comparison was built to isolate the value of the method itself. The participants are experienced professionals in the same domains as the panel, recruited separately and with no prior exposure to the standard; "JRS-naive" refers to that absence of exposure and not to any absence of expertise. Drawn from a single recruitment pool, they were randomly assigned, by a deterministic hash of their participant code and before they judged any record, to review the same 24 records either with the five conditions (standard condition) or with a single general question about adequacy of support (unaided condition).
 
 ### 6.1 Result
 
@@ -163,13 +180,23 @@ A randomized comparison was built to isolate the value of the method itself. Fre
 
 The difference favors the standard. It is **not statistically distinguishable from zero**: participant-level bootstrap 95 percent CI of the difference is -19.9 to +28.8 percentage points, Welch t = 0.30 on 11.3 degrees of freedom. **Under the pre-registered decision rule, this analysis is reported as a null.** The standard is not shown to improve on unaided judgment by this study.
 
-### 6.2 Why the analysis was underpowered, stated precisely
+### 6.2 The comparison is a hard test, and the baseline is strong
+
+Two features of the design bound how large an effect this comparison could ever have shown.
+
+First, **the unaided arm is not a weak control.** Those reviewers are experienced professionals reading records without the five conditions, and they detected unreconstructable records at 69.3 percent, above chance in their own right (one-sample t = 2.06 on 10 degrees of freedom). Six of the 11 met the 70 percent threshold with no method at all. A structured instrument is being asked to improve on competent professional judgment that is already working, which is the most demanding contrast available and the least likely to produce a large margin.
+
+Second, **the ceiling is close.** With a strong baseline near 70 percent and a practical ceiling at 100, the space available for the method to demonstrate value is roughly 30 points wide, and a difference of the size a small trial can detect consumes most of it.
+
+Neither point rescues the result, and neither is offered as one. They explain why a null here is weaker evidence against the standard than a null from a trial with a naive control would be, and they set up the design question in Section 8: the informative next trial varies reviewer experience, rather than adding more experts to both arms.
+
+### 6.3 Why the analysis was underpowered, stated precisely
 
 The observed effect is Cohen's d = 0.140 (pooled sd 28.6). At the sample reached, the smallest difference the comparison could have detected at 80 percent power was approximately 43 percentage points. **The comparison was never capable of detecting an effect of the size that appears to be present.**
 
 This is a statement about the design, not about the standard. A null from an underpowered test is uninformative about the underlying effect, and we decline to interpret it in either direction.
 
-### 6.3 Effect-size estimate for a conclusive trial
+### 6.4 Effect-size estimate for a conclusive trial
 
 The value this analysis does deliver is a defensible effect-size estimate for designing a properly powered replication:
 
@@ -190,13 +217,17 @@ We report this specification so that a future trial, whether ours or another gro
 
 **Practical implication.** For an organization, a review process in which some reviewers are highly accurate and others perform below chance is difficult to manage even when the average is acceptable, because the variance is invisible at the point of use. If a structured standard narrows that spread, the operational value may exceed what a comparison of means would capture.
 
+**What the study supports, stated in full.** Decision Reconstruction Risk is detectable by experienced professionals: 83.9 percent in the panel, 81.3 percent across all 21 reviewers who applied the standard through two separate recruitment routes, both clearing a threshold fixed before the data were seen. The review is applied consistently by independent machines at 84 percent cross-vendor agreement and by independent human experts at AC1 0.74, interim. What the study does not support is a claim that the method improves on the unaided judgment of an already expert reviewer; the randomized test of that question returned a null, and it was run under the least favourable conditions for finding an effect. Those two statements sit together without tension. A property can be real, visible, and worth building controls around before anyone has shown that a particular instrument improves on expert intuition at detecting it.
+
 ## 8. Limitations
 
 The corpus is constructed rather than drawn from live records, which supports a clean detection test but does not establish real-world effectiveness; criterion validity against documented real-case outcomes is a separate line of work.
 
 The panel is recruited, not sampled, and self-selects for interest in the topic. Generalization beyond the sampled domains and jurisdictions is not claimed.
 
-**The expert panel and the randomized comparison are not compared to one another, and the difference between them should not be read as evidence about the standard.** The panel comprises experienced domain professionals; the comparison arms comprise JRS-naive recruits. Any difference between those groups confounds expertise with method and is uninterpretable. The only valid method comparison in this design is between the two randomized conditions in Section 6, which is reported there as a null. We state this explicitly because the panel's higher accuracy is the kind of number that invites exactly this misreading.
+**The expert panel and the randomized comparison are not compared to one another as a test of the standard.** Both groups comprise experienced professionals in relevant domains, so the difference between them is not a difference in expertise; "JRS-naive" denotes no prior exposure to the method. What separates them is that the panel was recruited directly and was not randomized against the comparison arms, so any between-group difference reflects recruitment route and self-selection as well as method, and cannot carry a causal reading. The only valid method comparison in this design is between the two randomized conditions in Section 6, which is reported there as a null. Section 5.4 pools the two groups that applied the standard for a detection estimate only, which is a descriptive statement about detectability and not a comparison.
+
+**Both randomized arms were drawn from the same pool of experienced professionals, and that bounds what the comparison can show.** A structured method has the most room to help a reviewer who would otherwise miss things. Testing it on professionals who already perform the task competently is the least favourable condition for detecting an effect, and it is the condition this trial ran under. The design cannot speak to the standard's value for less experienced reviewers, for reviewers working outside their domain, or for teams seeking consistency rather than peak accuracy, and those are the settings where a larger effect is plausible. A future trial that contrasts experienced and less experienced reviewers, each with and without the method, would be more informative than a larger version of this one.
 
 Reviewer accuracy varied widely, including two panel members scoring below chance. Response patterns were examined and showed genuine discrimination rather than straight-lining or missing data, so these are treated as real observations and retained.
 
@@ -239,6 +270,8 @@ The study protocol and analysis plan are pre-registered. Constructed records, th
 ## Progress log
 
 - 2026-08-02b: **Byline returned to two authors.** Gabriela Cortez is credited as a named panel reviewer and as the origin of the Section 2.1 argument in the Acknowledgments, at her preference; she is not a co-author at this time. Section 2.1 is retained in the paper's voice. The dual-role disclosure is removed as no longer applicable.
+- 2026-08-05: **Reframed around the expert composition of both arms, without changing any figure or the null.** Three substantive additions. (1) New Section 5.4 pools every reviewer who applied the five conditions, the panel plus the randomized standard arm, giving 81.3 percent across 21 reviewers and 504 graded reads (95 percent CI 71.8 to 90.9), which clears the pre-registered threshold on a base drawn through two independent recruitment routes; the subsection states in terms that this is a detection estimate and not a comparison, because those groups were not randomized against one another. (2) New Section 6.2 states that the unaided arm is a strong control rather than a weak one: those reviewers are experienced professionals who reached 69.3 percent with no method, above chance in their own right, and six of eleven met the 70 percent threshold unaided, so the instrument is being asked to improve on competent judgment that is already working, with roughly 30 points of headroom available. (3) Limitations corrected and extended: the previous text asserted that the panel and the comparison arms differ in expertise, which is not accurate, since all participants in both arms are experienced professionals and "JRS-naive" denotes no prior exposure to the method; the confound that remains is recruitment route and self-selection, not expertise, and the arms still cannot be compared causally. A design note was added recording that both randomized arms were drawn from the same expert pool, which bounds what the trial can show, and that the informative next trial varies reviewer experience rather than adding more experts to both arms. No accuracy figure, confidence interval, effect size, or power estimate was altered, and the pre-registered null stands as reported.
+
 - 2026-08-04: **Refreshed against the live database.** All figures in this draft were recomputed from the study database on 4 August 2026 using the pre-registered scoring rule (latest submission per reviewer and record, scored against the fixed key, participants with at least 24 graded reads). Changes from the 2 August version: the panel grew from 15 to **16 completers** and from 10 to **11 countries**, panel accuracy moved from 82.8 to **83.9 percent** (participant-level CI 72.7 to 95.1, sensitivity 87.0, specificity 80.7, 384 graded reads); the unaided arm of the secondary comparison grew from 8 to **11 completers**, which moved its accuracy from 62.0 to 69.3 percent and **narrowed the observed difference from +11.4 to +4.0 percentage points** (Cohen's d from 0.379 to 0.140, Welch t = 0.30 on 11.3 df, participant bootstrap CI -19.9 to +28.8). The required sample for a conclusive replication therefore rose from approximately 110 to approximately **800 per condition** at 80 percent power. The direction of that movement is reported plainly because it matters: additional data made the secondary effect smaller, not larger, and the paper's conclusion about the comparison is unchanged only in the sense that it remains a null. Reliability was re-estimated on JRS-mode labels only and reproduced the prior values (experts AC1 0.739, trained 0.624, 10 records, 99 labels after de-duplication); the parenthetical raw-agreement figures were corrected to the mean pairwise values the current data produce (83 percent experts, 63 percent trained), replacing figures that could not be reproduced. Analysis script and the label extract are filed at `research/analysis_2026-08-04.py` and `research/reliability_labels_2026-08-04.tsv`.
 
 - 2026-08-02: **Restructured from the previous draft.** The paper is now primarily a detection study, with the expert-panel result as the headline finding (82.8 percent, participant-level CI 71.0 to 94.6, clears the pre-registered threshold on both criteria). The randomized comparison moves from co-primary to a clearly-labeled pre-registered secondary analysis (Section 6), reported in full as an underpowered null with the effect-size estimate and power specification attached. Gabriela Cortez reinstated as co-author with authorship of Section 2.1, which is expanded into a fuller treatment of accessibility as an accountability property and the methodological rationale for an internationally and linguistically diverse panel; dual-role disclosure added. Limitations gained an explicit statement that the expert panel and the randomized arms must not be compared, because that comparison confounds expertise with method. Unit of analysis moved to participant level throughout.
