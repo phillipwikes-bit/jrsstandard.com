@@ -63,7 +63,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     <input id="f-email" type="email" placeholder="Work email" autocomplete="email" style="margin-bottom:14px">
     <input id="f-title" type="hidden" value="">
 
-    <label class="chk"><input type="checkbox" id="c-contact"><span>I agree to be contacted about the JRS project and consent to my details being stored securely for that purpose. (required)</span></label>
+    <label class="chk" id="contact-wrap"><input type="checkbox" id="c-contact"><span>I agree to be contacted about the JRS project and consent to my details being stored securely for that purpose. (required)</span></label>
 
     <div class="registry">
       <div class="rlabel">Open Initiatives &amp; International Registry</div>
@@ -121,6 +121,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
   var go = document.getElementById('go');
   var namedWrap = document.getElementById('named-wrap');
   var registryRequired = false;
+  var combined = false;
 
   var edKey = String(editionRaw||'').toLowerCase().replace(/[^a-z]/g,'');
   var cKey  = String(campaignRaw||'').toLowerCase().replace(/[^a-z]/g,'');
@@ -136,9 +137,16 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     go.textContent = 'Add my support';
     namedWrap.style.display = 'flex';
     registryRequired = true;
+    // One box, not two. Joining the Registry means being listed in it, being
+    // contactable about it, and the entry surviving a change of ownership. Those
+    // are one decision, so they are one click.
+    combined = true;
+    var contactBox = document.getElementById('contact-wrap');
+    if (contactBox) contactBox.style.display = 'none';
     var terms = document.getElementById('registry-terms');
-    if (terms) terms.innerHTML = 'List me and my organization in the public International Registry of Supporters, '
-      + 'and allow my details to transfer with the project if it is ever acquired. <b style="color:var(--text)">(required to join)</b>';
+    if (terms) terms.innerHTML = 'Join the public International Registry of Supporters. List me and my organization, '
+      + 'contact me about the JRS project, store my details securely, and allow them to transfer with the project if it '
+      + 'is ever acquired. <b style="color:var(--text)">(required to join)</b>';
     // Live registry size and reach. People join a register that visibly exists,
     // so the count and the country spread are shown rather than described.
     fetch('/api/support-stats')
@@ -187,18 +195,20 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     var org   = document.getElementById('f-org').value.trim();
     var title = document.getElementById('f-title').value.trim();
     var email = document.getElementById('f-email').value.trim();
-    var c1 = document.getElementById('c-contact').checked;
+    var regBox = document.getElementById('c-registry').checked;
+    // In support mode the one box carries contact consent as well.
+    var c1 = combined ? regBox : document.getElementById('c-contact').checked;
     // One checkbox now carries both registry terms: public listing and transfer
     // with the project. They travel together because joining a public register
     // that a successor would inherit is a single decision, not two.
-    var reg = document.getElementById('c-registry').checked;
+    var reg = regBox;
     var c2 = reg;
     var c3 = reg;
 
     msg.style.color = 'var(--review-text)';
     if (!name)  { msg.textContent = 'Please enter your name.'; return; }
     if (!email || email.indexOf('@') < 1 || email.indexOf('.') < 0) { msg.textContent = 'Please enter a valid email address.'; return; }
-    if (!c1)    { msg.textContent = 'The first consent box is required in order to store your details.'; return; }
+    if (!c1)    { msg.textContent = combined ? 'Please tick the box to join the Registry.' : 'The first consent box is required in order to store your details.'; return; }
     if (registryRequired && !reg) { msg.textContent = 'Joining the Registry means being listed in it. Please tick the box to continue.'; return; }
 
     go.disabled = true;
