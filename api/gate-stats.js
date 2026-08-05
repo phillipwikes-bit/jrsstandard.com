@@ -158,6 +158,7 @@ export default async function handler(req){
   const guideCountries = {}, supportCountries = {}, allCountries = {};
   let guideEvents = 0, supportEvents = 0;
   let viewsGuide = 0, viewsSupport = 0;
+  const viewsByDay = {}, viewsBySrc = {}, viewsByCountry = {};
   for (let i = 0; i < events.length; i++){
     const e = events[i] || {};
     const p = e.payload || {};
@@ -167,6 +168,14 @@ export default async function handler(req){
     // and finishing it is visible, instead of guessed at.
     if (String(e.source) === 'gate-view'){
       if (String(p.mode) === 'support') viewsSupport++; else viewsGuide++;
+      // Break views down by day and by referral tag, so a run of opens from one
+      // person testing the form can be told apart from real traffic.
+      const day = String(e.created_at || '').slice(0, 10);
+      if (day) viewsByDay[day] = (viewsByDay[day] || 0) + 1;
+      const st = String(p.src || '(none)');
+      viewsBySrc[st] = (viewsBySrc[st] || 0) + 1;
+      const vc = String(p.country || '').trim().toUpperCase();
+      if (vc) viewsByCountry[vc] = (viewsByCountry[vc] || 0) + 1;
       continue;
     }
 
@@ -209,6 +218,10 @@ export default async function handler(req){
     form_views_guide: viewsGuide,
     form_views_support: viewsSupport,
     conversion_pct: rate,
+    abandoned: Math.max(0, views - (guide + support)),
+    views_by_day: Object.keys(viewsByDay).sort().map(function(d){ return { day: d, views: viewsByDay[d] }; }),
+    views_by_src: sortDesc(viewsBySrc, 'src'),
+    views_by_country: sortDesc(viewsByCountry, 'country'),
 
     // Where they were.
     countries: Object.keys(allCountries).length,
