@@ -3084,24 +3084,7 @@ function submitPoll() {
     <input id="en-title" type="text" placeholder="Title or role" autocomplete="organization-title" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;margin-bottom:9px">
     <input id="en-email" type="email" placeholder="Work email" autocomplete="email" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;margin-bottom:14px">
     <label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--muted);line-height:1.5;margin-bottom:9px;cursor:pointer"><input type="checkbox" id="en-c1" style="margin-top:2px;flex:0 0 auto"><span>I agree to be contacted about the JRS project and consent to my details being stored securely for that purpose. (required)</span></label>
-    <div style="border:1px solid var(--rule);background:var(--surface2);padding:12px 13px;margin-bottom:12px">
-      <div style="font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:8px">If the JRS project is ever acquired, may your details transfer to the successor?</div>
-      <div style="display:flex;gap:18px">
-        <label style="display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--text);cursor:pointer"><input type="radio" name="en-c2" value="yes" style="margin:0"><span>Yes</span></label>
-        <label style="display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--text);cursor:pointer"><input type="radio" name="en-c2" value="no" style="margin:0"><span>No</span></label>
-      </div>
-    </div>
-    <div style="border:1px solid var(--accent-dim);background:var(--surface2);padding:14px 15px;margin-bottom:12px">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:7px">Open Initiatives &amp; International Registry</div>
-      <p style="font-size:12.5px;color:var(--muted);line-height:1.6;margin:0">Join the <b style="color:var(--text);font-weight:500">International Registry of Supporters</b> and give visible institutional backing to decision transparency. Registering also grants immediate access to run a <b style="color:var(--text);font-weight:500">free, private JRS diagnostic check</b> on your own records. Your record text is never stored: each record is assessed in memory and discarded.</p>
-    </div>
-    <div style="border:1px solid var(--rule);background:var(--surface2);padding:12px 13px;margin-bottom:12px">
-      <div style="font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:8px">List you and your organization in the public International Registry of Supporters?</div>
-      <div style="display:flex;gap:18px">
-        <label style="display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--text);cursor:pointer"><input type="radio" name="en-c3" value="yes" style="margin:0"><span>Yes</span></label>
-        <label style="display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--text);cursor:pointer"><input type="radio" name="en-c3" value="no" style="margin:0"><span>No</span></label>
-      </div>
-    </div>
+    <label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--muted);line-height:1.5;border:1px solid var(--accent-dim);background:var(--surface2);padding:12px 13px;margin-bottom:12px;cursor:pointer"><input type="checkbox" id="en-registry" style="width:auto;margin:2px 0 0;flex:0 0 auto"><span>List me and my organization in the public International Registry of Supporters, and allow my details to transfer with the project if it is ever acquired.</span></label>
     <div id="en-msg" style="font-size:12px;color:var(--review-text);min-height:16px;margin-bottom:8px"></div>
     <button id="en-go" onclick="enrollSubmit()" style="width:100%;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:13px;cursor:pointer">Start the training</button>
     <div id="en-dismiss" style="display:none;text-align:center;margin-top:12px"><a href="#" onclick="dismissEnroll();return false;" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none">Keep previewing Module 1</a></div>
@@ -3176,17 +3159,13 @@ function enrollSubmit(){
   var title = (document.getElementById('en-title').value||'').trim();
   var email = (document.getElementById('en-email').value||'').trim();
   var c1 = document.getElementById('en-c1').checked;
-  var a2el = document.querySelector('input[name="en-c2"]:checked');
-  var a2 = a2el ? a2el.value : '';
-  var c2 = (a2 === 'yes');
-  var a3el = document.querySelector('input[name="en-c3"]:checked');
-  var a3 = a3el ? a3el.value : '';
-  var c3 = (a3 === 'yes');
+  // One checkbox carries both registry terms, listing and transfer together.
+  var regEl = document.getElementById('en-registry');
+  var c2 = !!(regEl && regEl.checked);
+  var c3 = c2;
   if (!name){ msg.textContent = 'Please enter your name.'; return; }
   if (!email || email.indexOf('@') < 1 || email.indexOf('.') < 0){ msg.textContent = 'Please enter a valid email.'; return; }
   if (!c1){ msg.textContent = 'Please tick the required consent box to continue.'; return; }
-  if (!a2){ msg.textContent = 'Please answer the transfer question. Either answer is fine.'; return; }
-  if (!a3){ msg.textContent = 'Please answer the Registry listing question. Either answer is fine.'; return; }
   var aud = 'public';
   var srcTag = (window._jrsChannel || jrsAccessClean(jrsAccessParam('src')) || '');
   if (srcTag === 'panel') aud = 'panel';

@@ -105,20 +105,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
       <input id="p-email" type="email" placeholder="Work email" autocomplete="email">
 
       <label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--muted);line-height:1.5;margin:6px 0 8px;cursor:pointer"><input type="checkbox" id="p-c1" style="width:auto;margin:2px 0 0;flex:0 0 auto"><span>I agree to be contacted about the JRS project and consent to my details being stored securely. (required)</span></label>
-      <div class="qbox">
-        <div class="q">If the JRS project is ever acquired, may your details transfer to the successor?</div>
-        <div class="opts">
-          <label><input type="radio" name="p-c2" value="yes"><span>Yes</span></label>
-          <label><input type="radio" name="p-c2" value="no"><span>No</span></label>
-        </div>
-      </div>
-      <div class="qbox">
-        <div class="q">May your organization be named publicly as having piloted the standard? The pilot is provided free, and being named is how the programme evidences real-world use. Either answer is fine and you still get the full review.</div>
-        <div class="opts">
-          <label><input type="radio" name="p-c3" value="yes"><span>Yes</span></label>
-          <label><input type="radio" name="p-c3" value="no"><span>No</span></label>
-        </div>
-      </div>
+      <label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--muted);line-height:1.5;border:1px solid var(--accent-dim);background:var(--surface2);padding:12px 13px;margin:0 0 10px;cursor:pointer"><input type="checkbox" id="p-registry" style="width:auto;margin:2px 0 0;flex:0 0 auto"><span>List me and my organization in the public International Registry of Supporters as having applied the standard, and allow my details to transfer with the project if it is ever acquired.</span></label>
 
       <div id="org-msg" style="font-size:12.5px;color:var(--review-text);min-height:16px;margin-bottom:6px"></div>
       <button id="org-go" type="button">Start the pilot</button>
@@ -239,18 +226,16 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     session.title = el('p-title').value.trim();
     session.email = el('p-email').value.trim();
     session.c1 = el('p-c1').checked;
-    function pick(n){ var x = document.querySelector('input[name="' + n + '"]:checked'); return x ? x.value : ''; }
-    var a2 = pick('p-c2'), a3 = pick('p-c3');
-    session.c2 = (a2 === 'yes');
-    session.c3 = (a3 === 'yes');
+    // One checkbox carries both registry terms, listing and transfer together.
+    var pReg = el('p-registry').checked;
+    session.c2 = pReg;
+    session.c3 = pReg;
 
     m.style.color = 'var(--review-text)';
     if (!session.organization) { m.textContent = 'Please enter your organization.'; return; }
     if (!session.name) { m.textContent = 'Please enter your name.'; return; }
     if (!session.email || session.email.indexOf('@') < 1 || session.email.indexOf('.') < 0) { m.textContent = 'Please enter a valid work email.'; return; }
     if (!session.c1) { m.textContent = 'The first consent box is required.'; return; }
-    if (!a2) { m.textContent = 'Please answer the transfer question. Either answer is fine.'; return; }
-    if (!a3) { m.textContent = 'Please answer the public naming question. Either answer is fine.'; return; }
 
     el('run-org').textContent = session.organization;
     el('step-org').classList.add('hidden');

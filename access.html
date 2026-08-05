@@ -60,8 +60,8 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
 
     <input id="f-name"  type="text"  placeholder="Full name" autocomplete="name">
     <input id="f-org"   type="text"  placeholder="Organization" autocomplete="organization">
-    <input id="f-title" type="text"  placeholder="Title or role" autocomplete="organization-title">
     <input id="f-email" type="email" placeholder="Work email" autocomplete="email" style="margin-bottom:14px">
+    <input id="f-title" type="hidden" value="">
 
     <label class="chk"><input type="checkbox" id="c-contact"><span>I agree to be contacted about the JRS project and consent to my details being stored securely for that purpose. (required)</span></label>
 
@@ -71,21 +71,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
       <p id="registry-live" style="margin-top:8px;color:var(--muted-soft)"></p>
     </div>
 
-    <div class="qbox">
-      <div class="q">If the JRS project is ever acquired, may your details transfer to the successor?</div>
-      <div class="opts">
-        <label><input type="radio" name="c-transfer" value="yes"><span>Yes</span></label>
-        <label><input type="radio" name="c-transfer" value="no"><span>No</span></label>
-      </div>
-    </div>
-
-    <div class="qbox" id="named-wrap">
-      <div class="q" id="named-q">List you and your organization in the public International Registry of Supporters?</div>
-      <div class="opts">
-        <label><input type="radio" name="c-named" value="yes"><span>Yes</span></label>
-        <label><input type="radio" name="c-named" value="no"><span>No</span></label>
-      </div>
-    </div>
+    <label class="chk" id="named-wrap" style="border:1px solid var(--accent-dim);background:var(--surface2);padding:12px 13px;margin-bottom:10px"><input type="checkbox" id="c-registry"><span id="registry-terms">List me and my organization in the public International Registry of Supporters, and allow my details to transfer with the project if it is ever acquired.</span></label>
 
     <div id="msg"></div>
     <button id="go" type="button">Continue</button>
@@ -134,6 +120,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
   var lede = document.getElementById('lede');
   var go = document.getElementById('go');
   var namedWrap = document.getElementById('named-wrap');
+  var registryRequired = false;
 
   var edKey = String(editionRaw||'').toLowerCase().replace(/[^a-z]/g,'');
   var cKey  = String(campaignRaw||'').toLowerCase().replace(/[^a-z]/g,'');
@@ -147,7 +134,11 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     headline.textContent = 'Join the International Registry';
     lede.textContent = 'Support for ' + cname + ' is recorded in the International Registry of Supporters with your name and organization, so the count carries professional weight rather than being an anonymous tally. Signing up also opens the free JRS records check: run up to ten of your own records through the standard right away, privately, and the text is never stored.';
     go.textContent = 'Add my support';
-    namedWrap.style.display = 'block';
+    namedWrap.style.display = 'flex';
+    registryRequired = true;
+    var terms = document.getElementById('registry-terms');
+    if (terms) terms.innerHTML = 'List me and my organization in the public International Registry of Supporters, '
+      + 'and allow my details to transfer with the project if it is ever acquired. <b style="color:var(--text)">(required to join)</b>';
     // Live registry size and reach. People join a register that visibly exists,
     // so the count and the country spread are shown rather than described.
     fetch('/api/support-stats')
@@ -167,13 +158,12 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
       ? ('Free for practitioners. Register once and the ' + ename + ' downloads immediately.')
       : 'Free for practitioners. Register once and the guide downloads immediately.';
     go.textContent = 'Get the guide';
+    namedWrap.style.display = 'flex';
+    registryRequired = false;
     // Lowest-commitment route: a named person with an email is worth far more
     // than an anonymous download, so organization and title stop blocking it.
     if (fOrg)   fOrg.placeholder = 'Organization (optional)';
     if (fTitle) fTitle.placeholder = 'Title or role (optional)';
-    // The registry listing is offered on every gateway, not only the campaign
-    // one: a guide reader is exactly the practitioner the registry is for.
-    namedWrap.style.display = 'block';
   }
 
   // No edition and no campaign: nothing to gate. Send to the guides page.
@@ -198,18 +188,18 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     var title = document.getElementById('f-title').value.trim();
     var email = document.getElementById('f-email').value.trim();
     var c1 = document.getElementById('c-contact').checked;
-    function pick(n){ var el = document.querySelector('input[name="' + n + '"]:checked'); return el ? el.value : ''; }
-    var t = pick('c-transfer');
-    var nmd = pick('c-named');
-    var c2 = (t === 'yes');
-    var c3 = (nmd === 'yes');
+    // One checkbox now carries both registry terms: public listing and transfer
+    // with the project. They travel together because joining a public register
+    // that a successor would inherit is a single decision, not two.
+    var reg = document.getElementById('c-registry').checked;
+    var c2 = reg;
+    var c3 = reg;
 
     msg.style.color = 'var(--review-text)';
     if (!name)  { msg.textContent = 'Please enter your name.'; return; }
     if (!email || email.indexOf('@') < 1 || email.indexOf('.') < 0) { msg.textContent = 'Please enter a valid email address.'; return; }
     if (!c1)    { msg.textContent = 'The first consent box is required in order to store your details.'; return; }
-    if (!t)     { msg.textContent = 'Please answer the transfer question. Either answer is fine.'; return; }
-    if (!nmd)   { msg.textContent = 'Please answer the Registry listing question. Either answer is fine.'; return; }
+    if (registryRequired && !reg) { msg.textContent = 'Joining the Registry means being listed in it. Please tick the box to continue.'; return; }
 
     go.disabled = true;
     msg.style.color = 'var(--muted)';
