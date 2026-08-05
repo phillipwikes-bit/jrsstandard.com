@@ -145,5 +145,23 @@ h1{font-family:'Bodoni Moda',serif;font-size:33px;font-weight:400;line-height:1.
     <div style="width:100%;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px"><span style="color:var(--accent-dim)">Back the work:</span> <a href="/api/support?c=rtkw&amp;src=footer" style="color:var(--accent);text-decoration:none">The Right to Know Why</a> &middot; <a href="/api/support?c=defend&amp;src=footer" style="color:var(--accent);text-decoration:none">The Decisions You Can Defend</a></div><div class="footer-copy">&#169; 2026 Phillip Wikes &nbsp;&middot;&nbsp; JRS&#8482; &middot; <a href="privacy.html" style="color:inherit">Privacy</a></div>
   </div>
 </footer>
+<script>
+// Page-view ping, once per browser session, no personal data. Without this we
+// cannot tell whether the guide gate is being skipped because nobody reaches
+// this page or because people reach it and do not click through.
+(function(){
+  try {
+    if (sessionStorage.getItem('jrs-guides-view') === '1') return;
+    sessionStorage.setItem('jrs-guides-view', '1');
+  } catch(e){}
+  try {
+    fetch('/api/access', {
+      method: 'POST',
+      headers: { 'Content-Type':'application/json' },
+      body: JSON.stringify({ event:'view', mode:'guidespage' })
+    }).catch(function(){});
+  } catch(e){}
+})();
+</script>
 </body>
 </html>
