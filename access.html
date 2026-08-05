@@ -133,7 +133,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     var cname = CAMPAIGN_LABEL[cKey] || 'the JRS initiatives';
     eyebrow.textContent = 'International Registry of Supporters';
     headline.textContent = 'Join the International Registry';
-    lede.textContent = 'Support for ' + cname + ' is recorded in the International Registry of Supporters with your name and organization, so the count carries professional weight rather than being an anonymous tally. Signing up also opens the free JRS records check: run up to ten of your own records through the standard right away, privately, and the text is never stored.';
+    lede.textContent = 'Support for ' + cname + ' is recorded in the International Registry of Supporters with your name and organization, so the count carries professional weight rather than being an anonymous tally. Signing up also opens the free JRS records check: run up to twenty five of your own records through the standard right away, privately, and the text is never stored.';
     go.textContent = 'Add my support';
     namedWrap.style.display = 'flex';
     registryRequired = true;
@@ -159,6 +159,13 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
       })
       .catch(function(){});
   } else {
+    combined = true;
+    var contactBoxG = document.getElementById('contact-wrap');
+    if (contactBoxG) contactBoxG.style.display = 'none';
+    var termsG = document.getElementById('registry-terms');
+    if (termsG) termsG.innerHTML = 'Join the public International Registry of Supporters. List me and my organization, '
+      + 'contact me about the JRS project, store my details securely, and allow them to transfer with the project if it '
+      + 'is ever acquired. <b style="color:var(--text)">(required)</b>';
     var ename = EDITION_LABEL[edKey] || '';
     eyebrow.textContent = 'JRS Investigator Field Guide';
     headline.textContent = 'Join the International Registry';
@@ -167,7 +174,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
       : 'Free for practitioners. Register once and the guide downloads immediately.';
     go.textContent = 'Get the guide';
     namedWrap.style.display = 'flex';
-    registryRequired = false;
+    registryRequired = true;
     // Lowest-commitment route: a named person with an email is worth far more
     // than an anonymous download, so organization and title stop blocking it.
     if (fOrg)   fOrg.placeholder = 'Organization (optional)';
@@ -256,7 +263,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
           + '<p class="lede">Your guide is downloading. If it does not start, <a href="' + esc(d.file) + '">use this link</a>. Registered guide holders carry the designation <b style="color:var(--text)">JRS Field Specialist</b>.</p>'
           + '<div class="registry">'
             + '<div class="rlabel">Open Initiatives &amp; International Registry</div>'
-            + '<p>Your registration also opens the <b>free, private JRS diagnostic check</b>. Paste up to ten of your own records, redacted, and get the five-condition read on each one immediately. <b>Your record text is never stored</b>: each record is assessed in memory and discarded. Only the count and the pattern of results is kept.</p>'
+            + '<p>Your registration also opens the <b>free, private JRS diagnostic check</b>. Paste up to twenty five of your own records, redacted, and get the five-condition read on each one immediately. <b>Your record text is never stored</b>: each record is assessed in memory and discarded. Only the count and the pattern of results is kept.</p>'
           + '</div>'
           + '<a href="org-pilot.html' + gq + '" style="text-decoration:none"><button type="button" style="margin-bottom:10px">Run the diagnostic on my records</button></a>'
           + '<a href="investigator-guides.html" style="text-decoration:none"><button type="button" class="ghost">No thanks, I am done</button></a>'
@@ -279,7 +286,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
             '<div class="eyebrow">Registry entry recorded</div>'
           + '<h1>Thank you, ' + esc(name.split(' ')[0]) + '</h1>'
           + '<p class="lede">You are on the International Registry of Supporters, with the designation <b style="color:var(--text)">Registered International Advocate</b>. That entry now opens the free, private diagnostic check on your own records.</p>'
-          + '<div class="privacy-lite">Paste up to ten of your own records, redacted, and get the five-condition read on each one immediately. <b>Your record text is never stored</b>: each record is assessed in memory and discarded. Only the count and the pattern of results is kept.</div>'
+          + '<div class="privacy-lite">Paste up to twenty five of your own records, redacted, and get the five-condition read on each one immediately. <b>Your record text is never stored</b>: each record is assessed in memory and discarded. Only the count and the pattern of results is kept.</div>'
           + '<a href="org-pilot.html' + q + '" style="text-decoration:none"><button type="button" style="margin-bottom:10px">Run it on my records</button></a>'
           + '<a href="' + ((d && d.redirect) ? d.redirect : '/supported.html') + '" style="text-decoration:none"><button type="button" class="ghost">No thanks, I am done</button></a>'
           + '<p class="fine">Free, no obligation, and you can stop after one record.</p>';
