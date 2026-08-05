@@ -18,11 +18,11 @@
 
 **Methods.** A balanced corpus of 24 constructed, de-identified AI-generated records (12 grounded, 12 unsupported) was judged by an international panel of experienced professionals against an answer key fixed and independently verified before any scoring. Reviewers worked independently, blind to the key, in a personal capacity. Analysis followed a plan registered before the data were examined, with decision thresholds set in advance. Accuracy is analyzed at the participant level, treating each reviewer rather than each read as the unit of observation.
 
-**Primary result.** Fifteen reviewers across 10 countries on 5 continents completed the full corpus. Panel accuracy against the verified key was **82.8 percent** (95 percent CI 71.0 to 94.6 at participant level), with sensitivity 86.1 percent for unsupported records and specificity 79.4 percent for grounded ones. This clears the pre-registered threshold, which required a point estimate of at least 70 percent with a lower confidence bound above chance. **DRR is detectable.**
+**Primary result.** Sixteen reviewers across 11 countries on 5 continents completed the full corpus. Panel accuracy against the verified key was **83.9 percent** (95 percent CI 72.7 to 95.1 at participant level), with sensitivity 87.0 percent for unsupported records and specificity 80.7 percent for grounded ones. This clears the pre-registered threshold, which required a point estimate of at least 70 percent with a lower confidence bound above chance. **DRR is detectable.**
 
 **Supporting results.** Three AI systems from three different vendors applied the same review to the same records and agreed at a mean pairwise rate of 84 percent across 15 records, indicating consistent application at machine level, which is distinct from accuracy. Independent expert and trained-reviewer panels applied the five conditions to a shared 10-record set, reaching Gwet's AC1 of 0.74 and 0.63 respectively, in the substantial range and clearing the pre-registered floor; these reliability figures are interim, resting on 10 of approximately 26 pooled records.
 
-**Secondary, pre-registered.** A randomized comparison assigned JRS-naive professionals to review the same records either with the five conditions or with a general prompt. The standard condition scored 73.3 percent (n = 5) against 62.0 percent for the unaided condition (n = 8), a difference of 11.4 percentage points (Cohen's d = 0.379) whose confidence interval includes zero. Under the pre-registered decision rule this is reported as a null. Post-hoc power analysis indicates that a definitive test of an effect this size requires approximately 110 completers per condition.
+**Secondary, pre-registered.** A randomized comparison assigned JRS-naive professionals to review the same records either with the five conditions or with a general prompt. The standard condition scored 73.3 percent (n = 5) against 69.3 percent for the unaided condition (n = 11), a difference of 4.0 percentage points (Cohen's d = 0.140) whose confidence interval includes zero. Under the pre-registered decision rule this is reported as a null. As the unaided arm has accrued completers, the observed difference has narrowed rather than widened, and post-hoc power analysis now indicates that a definitive test of an effect this size would require approximately 800 completers per condition.
 
 **Contribution.** DRR names a documentation-governance problem that model-centric AI governance does not capture. This paper establishes that the property is detectable by experienced reviewers, characterizes the effect size for a properly powered trial of the standard's added value, and offers the design as a template for evaluating documentation-quality controls.
 
@@ -60,7 +60,7 @@ Accessibility is part of this property, not separate from it. A record written i
 
 This has a direct methodological consequence for how a documentation standard should be tested. A standard validated by reviewers who share one jurisdiction, one legal culture, and one first language has been tested against a narrow slice of the conditions it will meet in practice. Records are read by people who bring different assumptions about what may be left implicit, what counts as an adequate citation, and what a reader is presumed to already know. Those assumptions are precisely what an unreconstructable record depends on to appear complete.
 
-A decision, a policy, or a principle is only as resilient as the range of people who have pressure-tested it. That is the reason this study recruited an internationally and linguistically diverse reviewer panel rather than a single-jurisdiction one, and it is why the panel's composition is reported as a design feature in Section 4 rather than as incidental demographic detail. If the standard holds when applied by professionals across ten countries, five continents, and multiple first languages and legal traditions, it is being tested against something closer to the real conditions of review. If it held only within one of them, that would be a finding about that jurisdiction and not about records.
+A decision, a policy, or a principle is only as resilient as the range of people who have pressure-tested it. That is the reason this study recruited an internationally and linguistically diverse reviewer panel rather than a single-jurisdiction one, and it is why the panel's composition is reported as a design feature in Section 4 rather than as incidental demographic detail. If the standard holds when applied by professionals across eleven countries, five continents, and multiple first languages and legal traditions, it is being tested against something closer to the real conditions of review. If it held only within one of them, that would be a finding about that jurisdiction and not about records.
 
 ## 3. The Justification Review Standard (JRS)
 
@@ -90,7 +90,7 @@ The answer key was fixed in advance. The author-side intended classification of 
 
 ### 4.3 Participants
 
-The detection panel is an international group of experienced professionals in relevant domains: AI governance, compliance, audit, human resources, investigations, data privacy, records, and law. As of 2 August 2026, **15 reviewers have completed the full 24-record set**. The completed reviewers span **10 countries on 5 continents** and multiple professional domains and first languages, a composition motivated in Section 2.1. Reviewers participate in a personal capacity, without compensation, and are recognized as named contributors with their consent. Participation is voluntary and may be withdrawn before publication.
+The detection panel is an international group of experienced professionals in relevant domains: AI governance, compliance, audit, human resources, investigations, data privacy, records, and law. As of 4 August 2026, **16 reviewers have completed the full 24-record set**. The completed reviewers span **11 countries on 5 continents** (Australia, Germany, India, Nigeria, Poland, Singapore, South Korea, Spain, the United Arab Emirates, the United Kingdom, and the United States) and multiple professional domains and first languages, a composition motivated in Section 2.1. Reviewers participate in a personal capacity, without compensation, and are recognized as named contributors with their consent. Participation is voluntary and may be withdrawn before publication.
 
 ### 4.4 Analysis and unit of observation
 
@@ -122,14 +122,14 @@ In the reliability analysis, independent raters applied the five conditions to a
 
 ### 5.1 Primary detection result
 
-Fifteen reviewers completed the full 24-record corpus, producing 360 graded reads.
+Sixteen reviewers completed the full 24-record corpus, producing 384 graded reads.
 
 | Measure | Result |
 |---|---|
-| Panel accuracy against the verified key | **82.8%** |
-| 95% CI (participant level, n = 15) | **71.0 to 94.6** |
-| Sensitivity (unsupported records correctly flagged) | 86.1% |
-| Specificity (grounded records correctly passed) | 79.4% |
+| Panel accuracy against the verified key | **83.9%** |
+| 95% CI (participant level, n = 16) | **72.7 to 95.1** |
+| Sensitivity (unsupported records correctly flagged) | 87.0% |
+| Specificity (grounded records correctly passed) | 80.7% |
 | Pre-registered threshold: point estimate at least 70% | **Met** |
 | Pre-registered threshold: lower bound above 50% | **Met** |
 
@@ -145,7 +145,7 @@ Across 15 constructed records, three independent vendor models reached a mean pa
 
 ### 5.3 Supporting result: inter-rater reliability
 
-On a shared set of 10 records, expert reviewers reached **Gwet's AC1 of 0.74** (raw agreement 88 percent), above the pre-registered point threshold of 0.61; trained reviewers reached **0.63** (raw agreement 83 percent). The determination distribution was skewed, and under that skew the marginal-sensitive coefficients diverge from AC1 as the analysis plan anticipated, which is the documented reason AC1 was pre-registered as primary.
+On a shared set of 10 records, expert reviewers reached **Gwet's AC1 of 0.74** (0.739 to three decimals, mean pairwise raw agreement 83 percent), above the pre-registered point threshold of 0.61; trained reviewers reached **0.62** (0.624, mean pairwise raw agreement 63 percent). The determination distribution was skewed, and under that skew the marginal-sensitive coefficients diverge from AC1 as the analysis plan anticipated, which is the documented reason AC1 was pre-registered as primary.
 
 **These reliability figures are interim.** They rest on 10 records against a pre-registered pooled target of approximately 26, so the confidence intervals are wide and the plan's lower-bound criterion sits on the boundary. They are reported as an interim result and will be re-estimated at target.
 
@@ -158,14 +158,14 @@ A randomized comparison was built to isolate the value of the method itself. Fre
 | Condition | n | Accuracy |
 |---|---|---|
 | Standard condition | 5 | 73.3% |
-| Unaided condition | 8 | 62.0% |
-| **Difference** | | **+11.4 pp** |
+| Unaided condition | 11 | 69.3% |
+| **Difference** | | **+4.0 pp** |
 
-The difference favors the standard. It is **not statistically distinguishable from zero**: participant-level bootstrap 95 percent CI of the difference is -16.4 to +39.1 percentage points, Welch t = 0.74 on 11 degrees of freedom. **Under the pre-registered decision rule, this analysis is reported as a null.** The standard is not shown to improve on unaided judgment by this study.
+The difference favors the standard. It is **not statistically distinguishable from zero**: participant-level bootstrap 95 percent CI of the difference is -19.9 to +28.8 percentage points, Welch t = 0.30 on 11.3 degrees of freedom. **Under the pre-registered decision rule, this analysis is reported as a null.** The standard is not shown to improve on unaided judgment by this study.
 
 ### 6.2 Why the analysis was underpowered, stated precisely
 
-The observed effect is Cohen's d = 0.379 (pooled sd 29.9). At the sample reached, the smallest difference the comparison could have detected at 80 percent power was approximately 42 to 53 percentage points. **The comparison was never capable of detecting an effect of the size that appears to be present.**
+The observed effect is Cohen's d = 0.140 (pooled sd 28.6). At the sample reached, the smallest difference the comparison could have detected at 80 percent power was approximately 43 percentage points. **The comparison was never capable of detecting an effect of the size that appears to be present.**
 
 This is a statement about the design, not about the standard. A null from an underpowered test is uninformative about the underlying effect, and we decline to interpret it in either direction.
 
@@ -175,8 +175,8 @@ The value this analysis does deliver is a defensible effect-size estimate for de
 
 | Target | Completers required per condition |
 |---|---|
-| 80 percent power, alpha .05 | approximately 110 |
-| 90 percent power, alpha .05 | approximately 147 |
+| 80 percent power, alpha .05 | approximately 800 |
+| 90 percent power, alpha .05 | approximately 1,070 |
 
 We report this specification so that a future trial, whether ours or another group's, can be sized correctly at the outset rather than discovering its limits afterward.
 
@@ -206,7 +206,7 @@ Reliability figures are interim on 10 of approximately 26 pooled records. JRS re
 
 The drafting tool and the technology stack will keep changing. The evidentiary test does not. A record that cannot be reconstructed from its own contents cannot be independently defended, whoever or whatever produced it.
 
-This paper establishes that Decision Reconstruction Risk is detectable: an international panel of experienced professionals, reading records cold and blind to a verified key, identified unreconstructable records at 82.8 percent accuracy, clearing a threshold set before the data were seen. It further establishes that the review can be applied consistently by independent machines and by independent human experts.
+This paper establishes that Decision Reconstruction Risk is detectable: an international panel of experienced professionals, reading records cold and blind to a verified key, identified unreconstructable records at 83.9 percent accuracy, clearing a threshold set before the data were seen. It further establishes that the review can be applied consistently by independent machines and by independent human experts.
 
 Whether a structured standard improves on unaided professional judgment remains open. We report the attempt, the null, and the sample size a conclusive answer would require. The property is real and measurable; sizing the control's added value is the next study, and it can now be designed properly.
 
@@ -239,4 +239,6 @@ The study protocol and analysis plan are pre-registered. Constructed records, th
 ## Progress log
 
 - 2026-08-02b: **Byline returned to two authors.** Gabriela Cortez is credited as a named panel reviewer and as the origin of the Section 2.1 argument in the Acknowledgments, at her preference; she is not a co-author at this time. Section 2.1 is retained in the paper's voice. The dual-role disclosure is removed as no longer applicable.
+- 2026-08-04: **Refreshed against the live database.** All figures in this draft were recomputed from the study database on 4 August 2026 using the pre-registered scoring rule (latest submission per reviewer and record, scored against the fixed key, participants with at least 24 graded reads). Changes from the 2 August version: the panel grew from 15 to **16 completers** and from 10 to **11 countries**, panel accuracy moved from 82.8 to **83.9 percent** (participant-level CI 72.7 to 95.1, sensitivity 87.0, specificity 80.7, 384 graded reads); the unaided arm of the secondary comparison grew from 8 to **11 completers**, which moved its accuracy from 62.0 to 69.3 percent and **narrowed the observed difference from +11.4 to +4.0 percentage points** (Cohen's d from 0.379 to 0.140, Welch t = 0.30 on 11.3 df, participant bootstrap CI -19.9 to +28.8). The required sample for a conclusive replication therefore rose from approximately 110 to approximately **800 per condition** at 80 percent power. The direction of that movement is reported plainly because it matters: additional data made the secondary effect smaller, not larger, and the paper's conclusion about the comparison is unchanged only in the sense that it remains a null. Reliability was re-estimated on JRS-mode labels only and reproduced the prior values (experts AC1 0.739, trained 0.624, 10 records, 99 labels after de-duplication); the parenthetical raw-agreement figures were corrected to the mean pairwise values the current data produce (83 percent experts, 63 percent trained), replacing figures that could not be reproduced. Analysis script and the label extract are filed at `research/analysis_2026-08-04.py` and `research/reliability_labels_2026-08-04.tsv`.
+
 - 2026-08-02: **Restructured from the previous draft.** The paper is now primarily a detection study, with the expert-panel result as the headline finding (82.8 percent, participant-level CI 71.0 to 94.6, clears the pre-registered threshold on both criteria). The randomized comparison moves from co-primary to a clearly-labeled pre-registered secondary analysis (Section 6), reported in full as an underpowered null with the effect-size estimate and power specification attached. Gabriela Cortez reinstated as co-author with authorship of Section 2.1, which is expanded into a fuller treatment of accessibility as an accountability property and the methodological rationale for an internationally and linguistically diverse panel; dual-role disclosure added. Limitations gained an explicit statement that the expert panel and the randomized arms must not be compared, because that comparison confounds expertise with method. Unit of analysis moved to participant level throughout.
