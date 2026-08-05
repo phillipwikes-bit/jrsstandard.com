@@ -6,7 +6,7 @@
 
 **Target journal:** *AI and Ethics* (Springer). Alternatives: *AI & Society* (Springer); *Journal of Responsible Technology* (Elsevier, open access).
 
-**Status (2026-08-05):** Working draft, complete and submittable. This paper reports Study 011, the detection study, which asks whether Decision Reconstruction Risk can be identified by independent expert review. That study is finished. A separate randomized comparison study, which asks the different question of whether the method improves on unaided judgment, is still collecting data and is reported separately when it closes; it is disclosed in Section 4.8 and is not part of the analysis here. All figures are verified against the study database on the date shown.
+**Status (2026-08-05): DRAFT, HELD FOR DATA CLOSE. Do not submit and do not post as a preprint before the study closes, expected 14 August 2026.** Every figure in this manuscript is current as of 5 August 2026 and is provisional until close. Eleven invited panel reviewers have not yet started, and any one of them completing before the close date changes the completer count, the accuracy point estimate, the confidence interval, the sensitivity and specificity figures, and the country count. On the close date every figure is recomputed from the study database in a single pass and this line is replaced with the locked figures and the lock date. This paper reports Study 011, the detection study. A separate randomized comparison study is disclosed in Section 4.8, is still collecting, and is reported separately when it closes.
 
 ---
 
