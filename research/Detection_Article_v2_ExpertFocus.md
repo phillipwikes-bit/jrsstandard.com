@@ -122,6 +122,8 @@ In the reliability analysis, independent raters applied the five conditions to a
 
 ## 5. Results: DRR is detectable
 
+Thirty-two experienced professionals across 11 countries and 5 continents contributed 768 graded reads to this study, unpaid and in a personal capacity, each working through a full 24-record corpus. Twenty-two of them individually met or exceeded the 70 percent detection threshold set before the data were seen, and 10 scored perfectly. What follows rests on that effort.
+
 ### 5.1 Primary detection result
 
 Sixteen reviewers completed the full 24-record corpus, producing 384 graded reads.
@@ -147,6 +149,8 @@ Across 15 constructed records, three independent vendor models reached a mean pa
 
 ### 5.3 Supporting result: inter-rater reliability
 
+The reliability analysis follows the plan and the acceptance floors specified in advance by the study's methodology author, including the choice of Gwet's AC1 as the primary coefficient under an anticipated skewed determination distribution. That specification is doing real work here: the skew arrived as predicted, and the coefficient chosen before the data were seen is the one that handles it.
+
 On a shared set of 10 records, expert reviewers reached **Gwet's AC1 of 0.739** (raw pairwise agreement 80.0 percent, 36 labels, mean 3.6 raters per record), above the pre-registered point threshold of 0.61; trained reviewers reached **0.624** (raw pairwise agreement 71.5 percent, 63 labels, mean 6.3 raters per record). The determination distribution was skewed, and under that skew the marginal-sensitive coefficients diverge from AC1 as the analysis plan anticipated, which is the documented reason AC1 was pre-registered as primary (experts: Krippendorff's alpha 0.617, Fleiss' kappa 0.646; trained: 0.340 and 0.285).
 
 | Panel | Records | Labels | AC1 | 95% CI (analytic) | 95% CI (bootstrap) |
@@ -156,22 +160,13 @@ On a shared set of 10 records, expert reviewers reached **Gwet's AC1 of 0.739** 
 
 **Both point estimates clear the pre-registered floor of 0.61. Neither clears the plan's secondary criterion that the lower confidence bound exceed 0.41**, on the analytic interval: experts fall on the boundary at 0.402 and pass it on the bootstrap interval at 0.427, while trained reviewers do not meet it on either. This is stated rather than omitted, and it is a direct consequence of estimating a coefficient from 10 records.
 
+Under the conventional Landis and Koch bands, the expert coefficient of 0.739 sits in the substantial range, and it was reached by independent professionals who had never discussed these records with one another.
+
 **These reliability figures are interim.** They rest on 10 records against a pre-registered pooled target of approximately 26, which is why the intervals above are as wide as they are. They are reported as an interim result and will be re-estimated at target, at which point the lower-bound criterion becomes a meaningful test rather than an artifact of sample size.
 
-### 5.4 Detection across the full expert base
+### 5.4 Consistency of the detection result across recruitment routes
 
-Every reviewer in this study, in the panel and in both randomized arms, is an experienced professional in a relevant domain. The term "JRS-naive," used for the randomized recruits, denotes no prior exposure to the method and not an absence of expertise. That composition allows a descriptive question separate from the randomized test: how well do experienced professionals detect unreconstructable records, whatever route brought them into the study?
-
-| Group | Reviewers | Graded reads | Accuracy | 95% CI |
-|---|---|---|---|---|
-| Panel, applying the standard | 16 | 384 | 83.9% | 72.7 to 95.1 |
-| Randomized standard arm | 5 | 120 | 73.3% | 47.1 to 99.6 |
-| **All reviewers applying the standard** | **21** | **504** | **81.3%** | **71.8 to 90.9** |
-| All experts, method or not | 32 | 768 | 77.2% | 68.2 to 86.3 |
-
-Pooled across every reviewer who applied the five conditions, detection accuracy is 81.3 percent with a lower confidence bound of 71.8, which clears the pre-registered threshold on a base more than twice the size of the panel alone and drawn through two separate recruitment routes. Sixteen of those 21 reviewers individually met or exceeded the 70 percent threshold. Against chance, the pooled result is decisive (one-sample t = 6.83 on 20 degrees of freedom).
-
-**This pooling is a detection estimate, not a comparison.** The panel and the randomized standard arm applied the same instrument to the same records, which is what makes a combined detection figure meaningful. They were not randomized against one another, so nothing in this subsection speaks to whether the method causes better detection. That question belongs to Section 6 and is answered there as a null.
+The detection finding does not rest on a single recruitment route. Reviewers who entered the study through the randomized comparison and applied the same five conditions to the same records reached comparable accuracy, and the combined figure across every reviewer who applied the standard is reported in Appendix A. That appendix is a descriptive statement about detectability across the full expert base; the causal question belongs to Section 6.
 
 ## 6. Secondary pre-registered analysis: does the standard improve on unaided judgment?
 
@@ -248,6 +243,23 @@ This paper establishes that Decision Reconstruction Risk is detectable: an inter
 
 Whether a structured standard improves on unaided professional judgment remains open. We report the attempt, the null, and the sample size a conclusive answer would require. The property is real and measurable; sizing the control's added value is the next study, and it can now be designed properly.
 
+## Appendix A. Detection across the full expert base
+
+*Placed in an appendix because it combines groups that were not randomized against one another. It is reported for completeness as a descriptive detection estimate and carries no causal reading.*
+
+Every reviewer in this study, in the panel and in both randomized arms, is an experienced professional in a relevant domain. The term "JRS-naive," used for the randomized recruits, denotes no prior exposure to the method and not an absence of expertise. That composition allows a descriptive question separate from the randomized test: how well do experienced professionals detect unreconstructable records, whatever route brought them into the study?
+
+| Group | Reviewers | Graded reads | Accuracy | 95% CI |
+|---|---|---|---|---|
+| Panel, applying the standard | 16 | 384 | 83.9% | 72.7 to 95.1 |
+| Randomized standard arm | 5 | 120 | 73.3% | 47.1 to 99.6 |
+| **All reviewers applying the standard** | **21** | **504** | **81.3%** | **71.8 to 90.9** |
+| All experts, method or not | 32 | 768 | 77.2% | 68.2 to 86.3 |
+
+Pooled across every reviewer who applied the five conditions, detection accuracy is 81.3 percent with a lower confidence bound of 71.8, which clears the pre-registered threshold on a base more than twice the size of the panel alone and drawn through two separate recruitment routes. Sixteen of those 21 reviewers individually met or exceeded the 70 percent threshold. Against chance, the pooled result is decisive (one-sample t = 6.83 on 20 degrees of freedom).
+
+**This pooling is a detection estimate, not a comparison.** The panel and the randomized standard arm applied the same instrument to the same records, which is what makes a combined detection figure meaningful. They were not randomized against one another, so nothing in this subsection speaks to whether the method causes better detection. That question belongs to Section 6 and is answered there as a null.
+
 ## References
 
 Byrt, T., Bishop, J., Carlin, J.B., 1993. Bias, prevalence and kappa. Journal of Clinical Epidemiology 46 (5), 423-429.
@@ -268,6 +280,10 @@ Landis, J.R., Koch, G.G., 1977. The measurement of observer agreement for catego
 
 ## Acknowledgments
 
+This study exists because 32 experienced professionals across 11 countries and 5 continents each read a full corpus of 24 records with care, on their own time, without compensation, and with no stake in the outcome. That is 768 independent judgments contributed to a question none of them had to take an interest in. The quality of the panel is the reason the detection result is worth reporting at all, and the international and linguistic range of that panel is a methodological asset rather than a courtesy, for the reasons set out in Section 2.1.
+
+The reliability and validation methodology, including the pre-registered analysis plan, the choice of coefficient, and the acceptance floors applied in Section 5.3, was designed by Ubayet Hossain, FRM. Specifying those criteria before any data were examined is what allows the results in this paper to be read as tests rather than as descriptions.
+
 We thank the international reviewer panel for their care and independent judgment. Reviewers are recognized as named contributors with their consent; they are not co-authors of this paper. The argument developed in Section 2.1, that a record must remain understandable to the person it describes and that linguistic and jurisdictional range strengthens review, originated in conversations with panel reviewer Gabriela Cortez (Maryland Commission on Civil Rights) and is credited to her with permission. The proportionality principle described in Section 3 was surfaced by pilot reviewer Saurabh Nanda, General Manager and APAC Business Leader (Align Technology), and is credited with his permission.
 
 ## Data availability and pre-registration
@@ -277,6 +293,8 @@ The study protocol and analysis plan are pre-registered. Constructed records, th
 ## Progress log
 
 - 2026-08-02b: **Byline returned to two authors.** Gabriela Cortez is credited as a named panel reviewer and as the origin of the Section 2.1 argument in the Acknowledgments, at her preference; she is not a co-author at this time. Section 2.1 is retained in the paper's voice. The dual-role disclosure is removed as no longer applicable.
+- 2026-08-05 (later): **Section 5.4 moved to Appendix A, and the panel's contribution accentuated throughout.** The pooled expert detection analysis now sits in **Appendix A** with a standing note that it combines groups which were not randomized against one another and carries no causal reading; Section 5.4 becomes a short pointer stating only that the detection finding does not rest on a single recruitment route. This is the placement a validation reviewer would prefer, and it keeps the main Results confined to the pre-registered analyses. Positive framing strengthened on facts already in the data: Results now open with the scale of the volunteer contribution (32 professionals, 11 countries, 5 continents, 768 graded reads, 22 of 32 individually clearing the 70 percent threshold, 10 perfect scores); Section 5.3 credits the pre-registered analysis plan and coefficient choice to the methodology author and notes that the anticipated skew arrived as predicted, so the coefficient selected in advance is the one that handles it; the expert coefficient of 0.739 is placed in the substantial band of Landis and Koch, reached by professionals who never discussed the records with one another; and the Acknowledgments now open with the panel's contribution stated in full and a separate paragraph crediting Ubayet Hossain, FRM, for the plan, the coefficient, and the acceptance floors, with the point made that specifying those in advance is what lets the results read as tests rather than descriptions. No figure, interval, effect size, or power estimate was altered, and the pre-registered null and the reliability confidence intervals stay exactly as reported.
+
 - 2026-08-05 (later): **Reliability section rebuilt from the pre-registered script, with confidence intervals.** The raw-agreement figures added earlier in the day came from an ad hoc pooled-pairs calculation and did not match `compute_ac1_ci.py`, which implements the pre-registered Gwet definition (per-record pairwise agreement averaged across records). Corrected to the script's values: experts raw 80.0 percent, trained 71.5 percent. AC1 point estimates are unchanged at 0.739 and 0.624. Confidence intervals are now reported for the first time, analytic and bootstrap, together with the secondary coefficients. **Stated plainly in the paper: both point estimates clear the 0.61 floor, and neither clears the plan's secondary lower-bound criterion of 0.41 on the analytic interval** (experts 0.402, on the boundary, and passing at 0.427 on the bootstrap interval; trained 0.253, failing on both). This is a consequence of estimating from 10 records against a target of about 26 and is presented as such rather than omitted.
 
 - 2026-08-05: **Reframed around the expert composition of both arms, without changing any figure or the null.** Three substantive additions. (1) New Section 5.4 pools every reviewer who applied the five conditions, the panel plus the randomized standard arm, giving 81.3 percent across 21 reviewers and 504 graded reads (95 percent CI 71.8 to 90.9), which clears the pre-registered threshold on a base drawn through two independent recruitment routes; the subsection states in terms that this is a detection estimate and not a comparison, because those groups were not randomized against one another. (2) New Section 6.2 states that the unaided arm is a strong control rather than a weak one: those reviewers are experienced professionals who reached 69.3 percent with no method, above chance in their own right, and six of eleven met the 70 percent threshold unaided, so the instrument is being asked to improve on competent judgment that is already working, with roughly 30 points of headroom available. (3) Limitations corrected and extended: the previous text asserted that the panel and the comparison arms differ in expertise, which is not accurate, since all participants in both arms are experienced professionals and "JRS-naive" denotes no prior exposure to the method; the confound that remains is recruitment route and self-selection, not expertise, and the arms still cannot be compared causally. A design note was added recording that both randomized arms were drawn from the same expert pool, which bounds what the trial can show, and that the informative next trial varies reviewer experience rather than adding more experts to both arms. No accuracy figure, confidence interval, effect size, or power estimate was altered, and the pre-registered null stands as reported.
