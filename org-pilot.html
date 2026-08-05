@@ -104,8 +104,8 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
       <label class="fl" for="p-email">Work email</label>
       <input id="p-email" type="email" placeholder="Work email" autocomplete="email">
 
-      <label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--muted);line-height:1.5;margin:6px 0 8px;cursor:pointer"><input type="checkbox" id="p-c1" style="width:auto;margin:2px 0 0;flex:0 0 auto"><span>I agree to be contacted about the JRS project and consent to my details being stored securely. (required)</span></label>
-      <label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--muted);line-height:1.5;border:1px solid var(--accent-dim);background:var(--surface2);padding:12px 13px;margin:0 0 10px;cursor:pointer"><input type="checkbox" id="p-registry" style="width:auto;margin:2px 0 0;flex:0 0 auto"><span>List me and my organization in the public International Registry of Supporters as having applied the standard, and allow my details to transfer with the project if it is ever acquired.</span></label>
+
+      <label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--muted);line-height:1.5;border:1px solid var(--accent-dim);background:var(--surface2);padding:12px 13px;margin:0 0 10px;cursor:pointer"><input type="checkbox" id="p-registry" style="width:auto;margin:2px 0 0;flex:0 0 auto"><span>Join the public International Registry of Supporters. List me and my organization as having applied the standard, contact me about the JRS project, store my details securely, and allow them to transfer with the project if it is ever acquired. <b style="color:var(--text)">(required)</b></span></label>
 
       <div id="org-msg" style="font-size:12.5px;color:var(--review-text);min-height:16px;margin-bottom:6px"></div>
       <button id="org-go" type="button">Start the pilot</button>
@@ -225,7 +225,8 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     session.name = el('p-name').value.trim();
     session.title = el('p-title').value.trim();
     session.email = el('p-email').value.trim();
-    session.c1 = el('p-c1').checked;
+    // One box carries contact consent, listing, and transfer together.
+    session.c1 = el('p-registry').checked;
     // One checkbox carries both registry terms, listing and transfer together.
     var pReg = el('p-registry').checked;
     session.c2 = pReg;
@@ -235,7 +236,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     if (!session.organization) { m.textContent = 'Please enter your organization.'; return; }
     if (!session.name) { m.textContent = 'Please enter your name.'; return; }
     if (!session.email || session.email.indexOf('@') < 1 || session.email.indexOf('.') < 0) { m.textContent = 'Please enter a valid work email.'; return; }
-    if (!session.c1) { m.textContent = 'The first consent box is required.'; return; }
+    if (!session.c1) { m.textContent = 'Please tick the box to join the Registry and continue.'; return; }
 
     el('run-org').textContent = session.organization;
     el('step-org').classList.add('hidden');

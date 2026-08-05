@@ -3083,8 +3083,8 @@ function submitPoll() {
     <input id="en-org" type="text" placeholder="Organization" autocomplete="organization" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;margin-bottom:9px">
     <input id="en-title" type="text" placeholder="Title or role" autocomplete="organization-title" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;margin-bottom:9px">
     <input id="en-email" type="email" placeholder="Work email" autocomplete="email" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;margin-bottom:14px">
-    <label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--muted);line-height:1.5;margin-bottom:9px;cursor:pointer"><input type="checkbox" id="en-c1" style="margin-top:2px;flex:0 0 auto"><span>I agree to be contacted about the JRS project and consent to my details being stored securely for that purpose. (required)</span></label>
-    <label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--muted);line-height:1.5;border:1px solid var(--accent-dim);background:var(--surface2);padding:12px 13px;margin-bottom:12px;cursor:pointer"><input type="checkbox" id="en-registry" style="width:auto;margin:2px 0 0;flex:0 0 auto"><span>List me and my organization in the public International Registry of Supporters, and allow my details to transfer with the project if it is ever acquired.</span></label>
+
+    <label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--muted);line-height:1.5;border:1px solid var(--accent-dim);background:var(--surface2);padding:12px 13px;margin-bottom:12px;cursor:pointer"><input type="checkbox" id="en-registry" style="width:auto;margin:2px 0 0;flex:0 0 auto"><span>Join the public International Registry of Supporters. List me and my organization, contact me about the JRS project, store my details securely, and allow them to transfer with the project if it is ever acquired. <b style="color:var(--text)">(required)</b></span></label>
     <div id="en-msg" style="font-size:12px;color:var(--review-text);min-height:16px;margin-bottom:8px"></div>
     <button id="en-go" onclick="enrollSubmit()" style="width:100%;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:13px;cursor:pointer">Start the training</button>
     <div id="en-dismiss" style="display:none;text-align:center;margin-top:12px"><a href="#" onclick="dismissEnroll();return false;" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none">Keep previewing Module 1</a></div>
@@ -3158,14 +3158,16 @@ function enrollSubmit(){
   var org = (document.getElementById('en-org').value||'').trim();
   var title = (document.getElementById('en-title').value||'').trim();
   var email = (document.getElementById('en-email').value||'').trim();
-  var c1 = document.getElementById('en-c1').checked;
+  // One box carries contact consent, listing, and transfer together.
+  var regEl0 = document.getElementById('en-registry');
+  var c1 = !!(regEl0 && regEl0.checked);
   // One checkbox carries both registry terms, listing and transfer together.
   var regEl = document.getElementById('en-registry');
   var c2 = !!(regEl && regEl.checked);
   var c3 = c2;
   if (!name){ msg.textContent = 'Please enter your name.'; return; }
   if (!email || email.indexOf('@') < 1 || email.indexOf('.') < 0){ msg.textContent = 'Please enter a valid email.'; return; }
-  if (!c1){ msg.textContent = 'Please tick the required consent box to continue.'; return; }
+  if (!c1){ msg.textContent = 'Please tick the box to join the Registry and continue.'; return; }
   var aud = 'public';
   var srcTag = (window._jrsChannel || jrsAccessClean(jrsAccessParam('src')) || '');
   if (srcTag === 'panel') aud = 'panel';
