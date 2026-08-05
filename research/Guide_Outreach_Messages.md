@@ -1,7 +1,7 @@
 # Investigator Field Guide outreach messages (corrected, 2026-07-17)
 
 **Corrections applied to Phillip's drafts:**
-- Podcast timestamp RESTORED (2026-07-17): Phillip's player screenshot shows 0:02 elapsed / -27:31 remaining, so the episode runs ~27:33 and the "18 min" header was a misprint. The guide is discussed near the END of the episode, around the 23:45 mark (Phillip's own listen). Wording used: "near the end of the episode (around the 23:45 mark)".
+- Podcast timestamp RESTORED (2026-07-17): Phillip's player screenshot shows 0:02 elapsed / -27:31 remaining, so the episode runs ~27:33 and the "18 min" header was a misprint. The guide is discussed near the END of the episode, around the episode discussion (Phillip's own listen). Wording used: "near the end of the episode (around the episode discussion)".
 - Fixed typos: "involing" -> "involving"; "Commulission" -> "Commission".
 - Attribution: the bare hub link records downloads but not who drove them. For the priority organizations, use a tagged direct-download link per org (or at least per segment): `https://www.jrsstandard.com/api/dl?e=<edition>&src=<org-tag>` (edition: employment | fairhousing | international). Downloads now also record the downloader's COUNTRY (ISO code) once the `country` column exists (see tracker).
 - Segment-to-edition map (from the distribution plan): International/Global + National human-rights bodies -> international; US civil rights/housing -> fairhousing; Investigation & oversight -> employment; AI governance -> any.
@@ -25,7 +25,7 @@ That right runs through documentation, and documentation is changing. Organizati
 
 The Justification Review Standard (JRS) is a defined documentation review instrument built to surface DRR before a record is finalized. It asks one question: could another qualified reviewer independently reconstruct this decision from the record alone? Five structured checks answer it, applied inside the workflows your team already uses.
 
-JRS is in structured international validation. Reviewers across 10 countries on 5 continents have completed structured reviews. Independent reviewers reached substantial agreement under a pre-registered analysis (Gwet's AC1 0.74 for experts, 0.63 for trained reviewers, 10 records). Three independent AI providers (across vendors) applied JRS to the same records and agreed 84% of the time (15 constructed records), a reproducibility signal: consistency of application, distinct from accuracy. JRS and DRR were recently discussed on the Dewey Publications Podcast (around the 23:45 mark), and my article "When the Record Cannot Speak for Itself" is forthcoming in CEP Magazine this November.
+JRS is in structured international validation. Reviewers across 10 countries on 5 continents have completed structured reviews. Independent reviewers reached substantial agreement under a pre-registered analysis (Gwet's AC1 0.74 for experts, 0.63 for trained reviewers, 10 records). Three independent AI providers (across vendors) applied JRS to the same records and agreed 84% of the time (15 constructed records), a reproducibility signal: consistency of application, distinct from accuracy. JRS and DRR were recently discussed on the Dewey Publications Podcast (around the episode discussion), and my article "When the Record Cannot Speak for Itself" is forthcoming in CEP Magazine this November.
 
 The ask is a small one: download the free Investigator Field Guide and put it in front of the people who write or review consequential records.
 
@@ -98,7 +98,7 @@ https://www.jrsstandard.com/guide
 
 Please feel free to grab it, share it, and copy or distribute as many as you want for your investigative team.
 
-If you are curious, you can also listen to the recent podcast discussion about it, near the end of the episode (around the 23:45 mark), here:
+If you are curious, you can also listen to the recent podcast discussion about it, near the end of the episode (around the episode discussion), here:
 
 https://podcasts.apple.com/us/podcast/the-dewey-publications-podcast/id888037481?i=1000775802123
 
@@ -138,7 +138,7 @@ https://www.jrsstandard.com/guide
 
 Please feel free to grab it, share it, and copy or distribute as many as you want for your investigative team.
 
-If you are curious, you can also listen to the recent podcast discussion about it, near the end of the episode (around the 23:45 mark), here:
+If you are curious, you can also listen to the recent podcast discussion about it, near the end of the episode (around the episode discussion), here:
 
 https://podcasts.apple.com/us/podcast/the-dewey-publications-podcast/id888037481?i=1000775802123
 
@@ -176,7 +176,7 @@ https://www.jrsstandard.com/guide
 
 Please feel free to grab it, share it, and copy or distribute as many as you want for your investigative team.
 
-If you're curious, you can also listen to the recent podcast discussion about it, near the end of the episode (around the 23:45 mark), here:
+If you're curious, you can also listen to the recent podcast discussion about it, near the end of the episode (around the episode discussion), here:
 
 https://podcasts.apple.com/us/podcast/the-dewey-publications-podcast/id888037481?i=1000775802123
 

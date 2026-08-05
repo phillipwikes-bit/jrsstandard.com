@@ -40,7 +40,7 @@ JRS Reviewer Training and Certificate
 https://www.jrsstandard.com/reviewer
 (Six short modules, a companion reference guide, and a certificate of completion.)
 
-Framework background, Dewey Publications Podcast, discussion begins around the 23:45 mark:
+Framework background, Dewey Publications Podcast, discussion begins around the episode discussion:
 https://podcasts.apple.com/us/podcast/the-dewey-publications-podcast/id888037481?i=1000775802123
 
 If this idea has a future, it will require leaders who can give it an international voice and help ensure it develops into something intellectually rigorous, practical, and genuinely useful rather than another slogan.
@@ -98,7 +98,7 @@ JRS Reviewer Training and Certificate
 https://www.jrsstandard.com/reviewer
 (Self-paced, six short modules, companion reference guide, and certificate of completion.)
 
-Framework background, discussion begins around the 23:45 mark:
+Framework background, discussion begins around the episode discussion:
 https://podcasts.apple.com/us/podcast/the-dewey-publications-podcast/id888037481?i=1000775802123
 
 If this idea has a future, I believe it will require leaders who can give it an international voice and help ensure it develops into something intellectually rigorous, practical, and genuinely useful rather than becoming another slogan.
@@ -150,7 +150,7 @@ FREE RESOURCES
 
 • Field Guide: jrsstandard.com/guide
 • Reviewer Training and Certificate: jrsstandard.com/reviewer
-• Dewey Podcast, at 23:45: https://podcasts.apple.com/us/podcast/the-dewey-publications-podcast/id888037481?i=1000775802123
+• Dewey Podcast: https://podcasts.apple.com/us/podcast/the-dewey-publications-podcast/id888037481?i=1000775802123
 
 OPEN INITIATIVES AND INTERNATIONAL REGISTRY
 

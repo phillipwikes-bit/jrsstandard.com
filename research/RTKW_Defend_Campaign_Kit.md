@@ -48,7 +48,7 @@ The point is not that a standard solves everything. The point is that the docume
 
 If your organization should be able to defend its decisions, say so where it counts: https://www.jrsstandard.com/api/support?c=defend&src=email
 
-**First comment:** Background discussion on the Dewey Publications Podcast (from ~23:45): https://podcasts.apple.com/us/podcast/the-dewey-publications-podcast/id888037481?i=1000775802123
+**First comment:** JRS discussed on the Dewey Publications Podcast: https://podcasts.apple.com/us/podcast/the-dewey-publications-podcast/id888037481?i=1000775802123
 
 ---
 

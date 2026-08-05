@@ -177,8 +177,8 @@ Title: Decision Reconstruction Risk: the concept
 Description: The short essay that names the failure mode. Decision Reconstruction Risk (DRR) is the condition in which a record cannot explain, on its own terms, why a consequential decision was made. Why sound decisions become indefensible records, how to recognize it, and why AI drafting accelerates it while hiding it.
 
 **4. The Dewey Publications Podcast episode**
-Title: Podcast: discussed near the end, ~23:45
-Description: Peter Broida discusses the Investigator Field Guide and jrsstandard.com as a resource for professionals involved in agency investigations, on the Dewey Publications Podcast. The conversation is near the end of the episode, around the 23:45 mark.
+Title: Dewey Publications Podcast, episode "July 6th, 2026" (JRS discussed; site listed in episode notes)
+Description: Peter Broida discusses the Investigator Field Guide and jrsstandard.com as a resource for professionals involved in agency investigations, on the Dewey Publications Podcast. The conversation is near the end of the episode, around the episode discussion.
 
 **Integrity notes:** all figures are the completer/pre-registered numbers the tracker marks diligence-safe; the Dewey items are framed as a mention (Broida explicitly disclaimed endorsement); the CEP line says "scheduled," which is accurate until print. If any figure changes, update the profile with it (the profile is now a public claim surface, same rule as the papers).
 

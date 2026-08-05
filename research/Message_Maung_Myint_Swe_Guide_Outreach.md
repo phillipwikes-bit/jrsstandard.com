@@ -24,7 +24,7 @@ https://www.jrsstandard.com/guide
 
 Please feel free to grab it, share it, and pass it to your documentation and research teams.
 
-If you are curious, JRS was also discussed on a recent podcast, near the end of the episode (around the 23:45 mark):
+If you are curious, JRS was also discussed on a recent podcast, near the end of the episode (around the episode discussion):
 
 https://podcasts.apple.com/us/podcast/the-dewey-publications-podcast/id888037481?i=1000775802123
 

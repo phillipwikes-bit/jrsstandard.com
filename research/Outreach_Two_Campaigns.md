@@ -38,7 +38,7 @@ https://www.jrsstandard.com/guide
 
 Please share it freely with your investigators, advocates, researchers, legal teams, and partner organizations.
 
-If you would like the thinking behind JRS, it was recently discussed on the Dewey Publications Podcast (around the 23:45 mark):
+If you would like the thinking behind JRS, it was recently discussed on the Dewey Publications Podcast (around the episode discussion):
 
 https://podcasts.apple.com/us/podcast/the-dewey-publications-podcast/id888037481?i=1000775802123
 
@@ -82,7 +82,7 @@ https://www.jrsstandard.com/guide
 
 Please share it with your Human Resources, Compliance, Legal, Risk Management, Internal Audit, Investigations, Quality Assurance, and Governance teams.
 
-If you would like the thinking behind the framework, JRS was recently discussed on the Dewey Publications Podcast (around the 23:45 mark):
+If you would like the thinking behind the framework, JRS was recently discussed on the Dewey Publications Podcast (around the episode discussion):
 
 https://podcasts.apple.com/us/podcast/the-dewey-publications-podcast/id888037481?i=1000775802123
 

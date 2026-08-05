@@ -117,7 +117,7 @@ https://www.jrsstandard.com/guide
 
 Please feel free to grab it, share it, and copy or distribute as many as you want for your investigative team.
 
-If you are curious, you can also listen to the recent podcast discussion about it, near the end of the episode (around the 23:45 mark), here:
+If you are curious, you can also listen to the recent podcast discussion about it, near the end of the episode (around the episode discussion), here:
 
 https://podcasts.apple.com/us/podcast/the-dewey-publications-podcast/id888037481?i=1000775802123
 
@@ -145,7 +145,7 @@ jrsstandard.com
 
 4. **No long dashes and no banned prose patterns** in any of the copy, per the house style.
 
-5. **Verified, not assumed:** /guide and /reviewer both resolve (vercel.json), the contact email matches the SSOT, and the bio line matches investigator-guides.html. The podcast link and 23:45 timestamp are yours as given; I did not alter them.
+5. **Verified, not assumed:** /guide and /reviewer both resolve (vercel.json), the contact email matches the SSOT, and the bio line matches investigator-guides.html. The podcast link is retained; the 23:45 timestamp was REMOVED on 2026-08-05 because the published episode runs 18 minutes, so that timestamp cannot be correct. Cite the episode notes only.
 
 ### Phrasing note
 The message now opens "I am facilitating an international effort" (revised from "I am leading"), for a more modest, convening tone. If you ever want to make your authorship explicit, "I am facilitating an international effort I started against an emerging AI risk called Decision Reconstruction Risk (DRR)" threads both the modesty and the origination.

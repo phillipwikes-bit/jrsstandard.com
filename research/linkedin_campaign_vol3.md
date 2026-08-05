@@ -7,7 +7,7 @@ Campaign edition. Every post below carries the initiative CTAs. Covers the forma
 - Support Defend: https://www.jrsstandard.com/api/support?c=defend&src=linkedin
 - Field Guide: https://www.jrsstandard.com/guide
 - Reviewer training and certificate: https://www.jrsstandard.com/reviewer
-- Podcast (discussion from ~23:45): https://podcasts.apple.com/us/podcast/the-dewey-publications-podcast/id888037481?i=1000775802123
+- Podcast: https://podcasts.apple.com/us/podcast/the-dewey-publications-podcast/id888037481?i=1000775802123
 
 **Claim discipline (non-negotiable in every post)**
 - 84% cross-vendor agreement across 15 constructed records = consistency of application, never accuracy.
@@ -98,7 +98,7 @@ Organized by what you actually need it for. Everything here is free unless noted
 - Landis and Koch (1977) for the agreement benchmarks everyone cites and few read.
 
 **🎧 For the long drive**
-- The Dewey Publications Podcast discussion of this framework, from roughly 23:45.
+- The Dewey Publications Podcast discussion of this framework.
 
 **🧭 For the principle underneath all of it**
 - The Right to Know Why: when a decision touches someone's rights, livelihood, or future, they deserve an explanation that can actually be examined.
@@ -412,7 +412,7 @@ When institutional records fail, the public story is almost always about a perso
 
 Add your name to that standard: https://www.jrsstandard.com/api/support?c=defend&src=linkedin
 
-**First comment:** Background discussion on the Dewey Publications Podcast, from roughly 23:45: https://podcasts.apple.com/us/podcast/the-dewey-publications-podcast/id888037481?i=1000775802123
+**First comment:** JRS discussed on the Dewey Publications Podcast: https://podcasts.apple.com/us/podcast/the-dewey-publications-podcast/id888037481?i=1000775802123
 
 ---
 
