@@ -44,6 +44,10 @@ button.ghost{background:none;color:var(--accent);border:1px solid var(--accent)}
 .registry b{color:var(--text);font-weight:500}
 .privacy-lite{border-left:3px solid var(--ready-text);padding:12px 14px;margin:0 0 14px;font-size:12.5px;color:var(--muted);line-height:1.6;background:var(--surface2)}
 #msg{font-size:12px;min-height:16px;margin-bottom:8px;color:var(--review-text)}
+.trust{font-size:11px;color:var(--ready-text);text-align:center;margin-top:9px}
+.detail-toggle{font-size:11.5px;margin-top:14px}
+.detail-toggle a{color:var(--accent-dim);text-decoration:underline}
+input.bad{border-color:var(--review-text)}
 .fine{font-size:10.5px;color:var(--muted-soft);line-height:1.55;margin-top:12px}
 footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
 .footer-copy{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft)}
@@ -56,25 +60,29 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
   <div class="card">
     <div class="eyebrow" id="eyebrow">JRS Investigator Field Guide</div>
     <h1 id="headline">Join the International Registry</h1>
-    <p class="lede" id="lede">Free for practitioners. One short registration, then the guide downloads immediately.</p>
+    <p class="lede" id="lede">Free for practitioners. Two fields and one box.</p>
 
     <input id="f-name"  type="text"  placeholder="Full name" autocomplete="name">
-    <input id="f-org"   type="text"  placeholder="Organization" autocomplete="organization">
-    <input id="f-email" type="email" placeholder="Work email" autocomplete="email" style="margin-bottom:14px">
+    <input id="f-email" type="email" placeholder="Work email" autocomplete="email">
+    <input id="f-org"   type="text"  placeholder="Organization (optional)" autocomplete="organization" style="margin-bottom:14px">
     <input id="f-title" type="hidden" value="">
 
     <label class="chk" id="contact-wrap"><input type="checkbox" id="c-contact"><span>I agree to be contacted about the JRS project and consent to my details being stored securely for that purpose. (required)</span></label>
 
-    <div class="registry">
-      <div class="rlabel">Open Initiatives &amp; International Registry</div>
-      <p>Join the <b>International Registry of Supporters</b> and give visible institutional backing to decision transparency. Adding your support also grants immediate access to run a <b>free, private JRS diagnostic check</b> on your own records. Your record text is never stored: each record is assessed in memory and discarded.</p>
-      <p id="registry-live" style="margin-top:8px;color:var(--muted-soft)"></p>
-    </div>
-
-    <label class="chk" id="named-wrap" style="border:1px solid var(--accent-dim);background:var(--surface2);padding:12px 13px;margin-bottom:10px"><input type="checkbox" id="c-registry"><span id="registry-terms">List me and my organization in the public International Registry of Supporters, and allow my details to transfer with the project if it is ever acquired.</span></label>
+    <label class="chk" id="named-wrap" style="border:1px solid var(--accent-dim);background:var(--surface2);padding:12px 13px;margin-bottom:10px"><input type="checkbox" id="c-registry"><span id="registry-terms">Join the public International Registry of Supporters.</span></label>
 
     <div id="msg"></div>
     <button id="go" type="button">Continue</button>
+    <p class="trust">Free. No payment, ever. Leave any time by emailing us.</p>
+
+    <p class="detail-toggle"><a href="#" id="what-toggle">What am I agreeing to?</a></p>
+    <div class="registry" id="registry-detail" style="display:none">
+      <div class="rlabel">Open Initiatives &amp; International Registry</div>
+      <p id="registry-longterms">Ticking the box means: list me and my organization in the public Registry, contact me about the JRS project, store my details securely, and allow them to transfer with the project if it is ever acquired.</p>
+      <p style="margin-top:8px">Joining also opens the <b>free, private JRS diagnostic check</b> on your own records. Your record text is never stored: each record is assessed in memory and discarded.</p>
+      <p id="registry-live" style="margin-top:8px;color:var(--muted-soft)"></p>
+      <p style="margin-top:8px">You can leave the Registry at any time by emailing <a href="mailto:info@jrsstandard.com">info@jrsstandard.com</a>. The standard, the research, and the site stay free to read without registering.</p>
+    </div>
 
     <p class="fine">Your details are stored securely and used only for the JRS project. Request access or deletion any time at <a href="mailto:info@jrsstandard.com">info@jrsstandard.com</a>. See the <a href="privacy.html">Privacy Policy</a>.</p>
   </div>
@@ -133,8 +141,9 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     var cname = CAMPAIGN_LABEL[cKey] || 'the JRS initiatives';
     eyebrow.textContent = 'International Registry of Supporters';
     headline.textContent = 'Join the International Registry';
-    lede.textContent = 'Support for ' + cname + ' is recorded in the International Registry of Supporters with your name and organization, so the count carries professional weight rather than being an anonymous tally. Signing up also opens the free JRS records check: run up to twenty five of your own records through the standard right away, privately, and the text is never stored.';
-    go.textContent = 'Add my support';
+    lede.innerHTML = 'Back <b style="color:var(--text)">' + cname + '</b> and get the free records check. '
+      + 'Two fields, one box, about twenty seconds. Your record text is never stored.';
+    go.textContent = 'Join and open my free records check';
     namedWrap.style.display = 'flex';
     registryRequired = true;
     // One box, not two. Joining the Registry means being listed in it, being
@@ -143,10 +152,6 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     combined = true;
     var contactBox = document.getElementById('contact-wrap');
     if (contactBox) contactBox.style.display = 'none';
-    var terms = document.getElementById('registry-terms');
-    if (terms) terms.innerHTML = 'Join the public International Registry of Supporters. List me and my organization, '
-      + 'contact me about the JRS project, store my details securely, and allow them to transfer with the project if it '
-      + 'is ever acquired. <b style="color:var(--text)">(required to join)</b>';
     // Live registry size and reach. People join a register that visibly exists,
     // so the count and the country spread are shown rather than described.
     fetch('/api/support-stats')
@@ -162,17 +167,13 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     combined = true;
     var contactBoxG = document.getElementById('contact-wrap');
     if (contactBoxG) contactBoxG.style.display = 'none';
-    var termsG = document.getElementById('registry-terms');
-    if (termsG) termsG.innerHTML = 'Join the public International Registry of Supporters. List me and my organization, '
-      + 'contact me about the JRS project, store my details securely, and allow them to transfer with the project if it '
-      + 'is ever acquired. <b style="color:var(--text)">(required)</b>';
     var ename = EDITION_LABEL[edKey] || '';
     eyebrow.textContent = 'JRS Investigator Field Guide';
     headline.textContent = 'Join the International Registry';
-    lede.textContent = ename
-      ? ('Free for practitioners. Register once and the ' + ename + ' downloads immediately.')
-      : 'Free for practitioners. Register once and the guide downloads immediately.';
-    go.textContent = 'Get the guide';
+    lede.innerHTML = ename
+      ? ('Free for practitioners. The <b style="color:var(--text)">' + ename + '</b> downloads the moment you submit. Two fields, one box.')
+      : 'Free for practitioners. The guide downloads the moment you submit. Two fields, one box.';
+    go.textContent = 'Download the guide now';
     namedWrap.style.display = 'flex';
     registryRequired = true;
     // Lowest-commitment route: a named person with an email is worth far more
@@ -187,11 +188,16 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
   // Tell the server the form was opened, so the drop-off between arriving here
   // and finishing can be measured. No personal data is sent and nothing blocks.
   try {
-    fetch('/api/access', {
-      method: 'POST',
-      headers: { 'Content-Type':'application/json' },
-      body: JSON.stringify({ event:'view', mode: mode, edition: editionRaw, campaign: campaignRaw, src: src })
-    }).catch(function(){});
+    var seen = false;
+    try { seen = sessionStorage.getItem('jrs-gate-view') === '1'; } catch(e){}
+    if (!seen) {
+      try { sessionStorage.setItem('jrs-gate-view', '1'); } catch(e){}
+      fetch('/api/access', {
+        method: 'POST',
+        headers: { 'Content-Type':'application/json' },
+        body: JSON.stringify({ event:'view', mode: mode, edition: editionRaw, campaign: campaignRaw, src: src })
+      }).catch(function(){});
+    }
   } catch(e){}
 
   function esc(x){ return String(x==null?'':x).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
@@ -213,8 +219,9 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     var c3 = reg;
 
     msg.style.color = 'var(--review-text)';
-    if (!name)  { msg.textContent = 'Please enter your name.'; return; }
-    if (!email || email.indexOf('@') < 1 || email.indexOf('.') < 0) { msg.textContent = 'Please enter a valid email address.'; return; }
+    function mark(id){ var el = document.getElementById(id); if (el){ el.classList.add('bad'); el.focus(); } }
+    if (!name)  { msg.textContent = 'Please enter your name.'; mark('f-name'); return; }
+    if (!email || email.indexOf('@') < 1 || email.indexOf('.') < 0) { msg.textContent = 'Please enter a valid email address.'; mark('f-email'); return; }
     if (!c1)    { msg.textContent = combined ? 'Please tick the box to join the Registry.' : 'The first consent box is required in order to store your details.'; return; }
     if (registryRequired && !reg) { msg.textContent = 'Joining the Registry means being listed in it. Please tick the box to continue.'; return; }
 
@@ -305,6 +312,37 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
 
   go.addEventListener('click', submit);
   document.addEventListener('keydown', function(e){ if (e.key === 'Enter') submit(); });
+
+  // "What am I agreeing to?" opens the full terms rather than putting four lines
+  // of consent text between the reader and the button.
+  var toggle = document.getElementById('what-toggle');
+  if (toggle) toggle.addEventListener('click', function(e){
+    e.preventDefault();
+    var d = document.getElementById('registry-detail');
+    if (!d) return;
+    var open = d.style.display !== 'none';
+    d.style.display = open ? 'none' : 'block';
+    toggle.textContent = open ? 'What am I agreeing to?' : 'Hide the details';
+  });
+
+  // Clear the red border as soon as the reader fixes the field, so the form
+  // stops looking broken while they are still typing.
+  ['f-name','f-email'].forEach(function(id){
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('input', function(){ el.classList.remove('bad'); });
+  });
+  var regEl = document.getElementById('c-registry');
+  if (regEl) regEl.addEventListener('change', function(){
+    var m = document.getElementById('msg'); if (m && regEl.checked) m.textContent = '';
+  });
+
+  // Focus the first field on a real keyboard. Not on touch, where it would throw
+  // the keyboard up and hide the form.
+  try {
+    if (!('ontouchstart' in window) && window.innerWidth > 700) {
+      var fn = document.getElementById('f-name'); if (fn) fn.focus();
+    }
+  } catch(e){}
 })();
 </script>
 </body>
