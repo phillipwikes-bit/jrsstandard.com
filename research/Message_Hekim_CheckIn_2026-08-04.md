@@ -2,6 +2,9 @@
 
 *Context: the Evidentiary Deficit article was sent to him with a co-authorship offer and he has not responded. This is a graceful close with a stated deadline, not a chase. Tone: warm, zero pressure, gives him an easy exit that costs him nothing socially. Send by the same channel the original went out on. If he does not reply by Friday, treat it as a decline and do not send a third message. He remains a valued panel contributor either way, and his contributor confirmation link is a separate matter to be sent when the study closes. No long dashes.*
 
+
+*SUPERSEDED 2026-08-05: Hekim REPLIED and ACCEPTED, asking eleven publication questions before starting work. Do NOT send this check-in. The end-of-week decline deadline is void. The reply that answers his eleven questions is research/Reply_Hekim_Publication_Terms_2026-08-05.md.*
+
 ---
 
 Hi Hekim,
