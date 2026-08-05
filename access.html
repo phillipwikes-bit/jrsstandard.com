@@ -159,8 +159,13 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
       .then(function(d){
         if (!d || !d.total) return;
         var reg = document.getElementById('registry-live');
-        if (reg) reg.textContent = 'The Registry currently holds ' + d.total + ' supporters across '
-          + d.countries + ' countries. Registered supporters carry the designation Registered International Advocate.';
+        // Named entries only. The older one-click links recorded a count and a
+        // country and nothing else, so those people are not Registry members and
+        // are not counted as if they were.
+        var named = d.named_supporters || 0;
+        if (reg) reg.textContent = d.total + ' people have backed the initiatives across '
+          + d.countries + ' countries. ' + named + ' have joined the Registry by name so far, and they carry the '
+          + 'designation Registered International Advocate.';
       })
       .catch(function(){});
   } else {

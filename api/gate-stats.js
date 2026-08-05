@@ -157,7 +157,7 @@ export default async function handler(req){
   // moment of the registered download or endorsement.
   const guideCountries = {}, supportCountries = {}, allCountries = {};
   let guideEvents = 0, supportEvents = 0;
-  let viewsGuide = 0, viewsSupport = 0;
+  let viewsGuide = 0, viewsSupport = 0, viewsGuidesPage = 0;
   const viewsByDay = {}, viewsBySrc = {}, viewsByCountry = {};
   for (let i = 0; i < events.length; i++){
     const e = events[i] || {};
@@ -167,6 +167,7 @@ export default async function handler(req){
     // Form opened. Counted separately so the drop-off between opening the form
     // and finishing it is visible, instead of guessed at.
     if (String(e.source) === 'gate-view'){
+      if (String(p.mode) === 'guidespage') { viewsGuidesPage++; continue; }
       if (String(p.mode) === 'support') viewsSupport++; else viewsGuide++;
       // Break views down by day and by referral tag, so a run of opens from one
       // person testing the form can be told apart from real traffic.
@@ -218,6 +219,7 @@ export default async function handler(req){
     form_views_guide: viewsGuide,
     form_views_support: viewsSupport,
     conversion_pct: rate,
+    guides_page_views: viewsGuidesPage,
     abandoned: Math.max(0, views - (guide + support)),
     views_by_day: Object.keys(viewsByDay).sort().map(function(d){ return { day: d, views: viewsByDay[d] }; }),
     views_by_src: sortDesc(viewsBySrc, 'src'),
