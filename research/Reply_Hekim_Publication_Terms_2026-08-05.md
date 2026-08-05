@@ -32,7 +32,7 @@ On legal review, we are not offering legal advice and the piece should say so. I
 
 **9. Commercial and promotional use.** Yes, and I want to be precise here because it touches my own project. Any use of the article, or of your contribution to it, in commercial, promotional, certification, training, or marketing material requires your prior approval. That covers JRS material specifically. Ordinary linking and citation, saying the article exists and pointing to it, does not require approval each time. Anything beyond that does.
 
-I should also disclose something related. JRS is an asset I may seek to transfer at some point. If that happens, this agreement travels with it: a successor gets no rights over your contribution that I do not have, and your approval requirement survives the transfer. I would rather tell you that now than have you learn it later.
+That approval requirement is not tied to me personally. It binds anyone who may hold the JRS materials in future, so it does not lapse if ownership of them ever changes hands.
 
 **10. Citation style and sources.** The outlet's house style governs, and Corporate Compliance Insights uses inline hyperlinks rather than formal footnotes. I suggest we draft with full citations for our own record, then convert to whatever the outlet requires.
 
