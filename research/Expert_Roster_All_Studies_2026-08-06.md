@@ -2,11 +2,13 @@
 
 **Built 2026-08-06. PRIVATE. `research/` is never deployed to production.**
 
+**Downloadable copies:** `Expert_Roster_All_Studies_2026-08-06.csv` (all 56 rows), `Study004_Raters_2026-08-06.csv` (the 24 reliability raters), and `Expert_Roster_All_Studies_2026-08-06.docx`. All three regenerate from `research/build_expert_roster.py`, which re-verifies completion live on every run.
+
 **Do not publish this list while Arm B is blind.** Naming an Arm B reviewer next to an Arm A reviewer in one public document identifies who was in which study, which is the exact leak the neutral "Records Review Study" recognition track exists to prevent. This file is for the owner, the acquisition data room, and the manuscript acknowledgments after the study closes.
 
 **Source of truth.** Completion status pulled live from `pilot_progress` and `armb_progress` on 2026-08-06 via `research/check_completion.py`. Names, titles, and countries are from the roster tables in `research/MASTER_TRACKER.md` sections 12 and 12B, the recruit notes, `api/contributor.js`, and the two certificate registries. Nothing here is inferred.
 
-**Totals: 32 completers of a full 24-record set. 30 named, 2 anonymous by their own choice.**
+**Totals: 56 reviewers across three studies. 32 completed a full 24-record set. 31 named.**
 
 ---
 
@@ -64,14 +66,59 @@ Arm assignment is by deterministic hash of the participant code, made before any
 
 ---
 
+## Study 004: Reviewer reliability — 24 raters, 1 named
+
+**The names for this study do not exist in reachable form, and no field below is guessed.** `bench_labels` is the only place this study's participation is recorded, and it stores a labeler code, a self-declared domain, and the labels. It stores no name, no title, and no country. `bench_experts`, which would carry the `E-` code identities, returns zero rows through the anon key, so those eight names need a service-role read from the Supabase dashboard. The sixteen `R-` codes were generated in the reviewer's own browser by `bench-review.html` and were never attached to an identity at all, so for those sixteen no name exists anywhere to recover.
+
+The one identity on the study record is E-08.
+
+| # | Code | Class | Name | Self-declared domain or title | Country |
+|---|---|---|---|---|---|
+| 33 | E-08 | expert rater | Stacy Young | Records Governance Advisor; Public-Records Domain Lead; Deputy Records Access Officer | US |
+| 34 | R-mqa2qg2g9gtz | bench reviewer | *anonymous by design* | self-declared domain: AI Governance | not recorded |
+| 35 | R-mqa4a9ewsfr8 | bench reviewer | *anonymous by design* | self-declared domain: Other | not recorded |
+| 36 | E-03 | expert rater | *not recorded* | self-declared domain: AI Governance | not recorded |
+| 37 | R-mqal7tzzwpy5 | bench reviewer | *anonymous by design* | self-declared domain: Other | not recorded |
+| 38 | R-mqb8ye82rcmw | bench reviewer | *anonymous by design* | self-declared domain: AI Governance | not recorded |
+| 39 | R-mqbsllcmqh6n | bench reviewer | *anonymous by design* | self-declared domain: HR | not recorded |
+| 40 | R-mqc70xbh96yc | bench reviewer | *anonymous by design* | self-declared domain: Other | not recorded |
+| 41 | R-mqcfb4p9lbji | bench reviewer | *anonymous by design* | self-declared domain: HR | not recorded |
+| 42 | E-09 | expert rater | *not recorded* | self-declared domain: HR | not recorded |
+| 43 | R-mqgufe1fqup8 | bench reviewer | *anonymous by design* | self-declared domain: Other | not recorded |
+| 44 | R-mqhv2o4r8nct | bench reviewer | *anonymous by design* | self-declared domain: AI Governance | not recorded |
+| 45 | R-mqifd9ia9dsq | bench reviewer | *anonymous by design* | self-declared domain: AI Governance | not recorded |
+| 46 | R-mqkvqo8kcu04 | bench reviewer | *anonymous by design* | self-declared domain: Quality Assurance | not recorded |
+| 47 | E-10 | expert rater | *not recorded* | self-declared domain: Compliance | not recorded |
+| 48 | R-mqmhtalpwuhb | bench reviewer | *anonymous by design* | self-declared domain: Management | not recorded |
+| 49 | R-mqn414vzho7i | bench reviewer | *anonymous by design* | self-declared domain: Management | not recorded |
+| 50 | R-mqnibu38bbxi | bench reviewer | *anonymous by design* | self-declared domain: Other | not recorded |
+| 51 | R-mqq7jo173iob | bench reviewer | *anonymous by design* | self-declared domain: Other | not recorded |
+| 52 | E-11 | expert rater | *not recorded* | self-declared domain: AI Governance | not recorded |
+| 53 | R-mqxqi8i3ukt1 | bench reviewer | *anonymous by design* | self-declared domain: Inny | not recorded |
+| 54 | E-14 | expert rater | *not recorded* | self-declared domain: Compliance / Data Privacy | not recorded |
+| 55 | E-13 | expert rater | *not recorded* | self-declared domain: AI Governance | not recorded |
+| 56 | E-12 | expert rater | *not recorded* | self-declared domain: Management | not recorded |
+
+**Totals: 8 expert raters, 16 bench reviewers, 124 labels on the shared 5-record set.**
+
+**To recover the seven remaining `E-` names**, open the Supabase table editor and read `bench_experts` with the service-role key, matching on `code`. That is the only route: it is a single table read, and it cannot be done from the anon key this repository ships with. Once read, add them to `S004_KNOWN` in `research/build_expert_roster.py` and re-run it; both CSVs regenerate.
+
+---
+
 ## Combined
 
 | | Count |
 |---|---|
-| Completed a full 24-record set | **32** |
-| Named | **30** |
+| Reviewers across all three studies | **56 rows** (48 is the published floor, see below) |
+| Completed a full 24-record set (Studies 011 and 012) | **32** |
+| Study 004 raters | **24** (8 expert, 16 bench) |
+| Named | **31** (30 completers plus E-08) |
 | Anonymous by their own choice | **2** (RR-130, RR-132) |
+| Anonymous by design, no identity ever captured | **16** (the `R-` bench pool) |
+| Name exists but needs a service-role read | **7** (E-03, E-09, E-10, E-11, E-12, E-13, E-14) |
 | Distinct countries recorded | **15**, plus one regional entry |
+
+**Why the site publishes 48 and not 56.** Codes are issued per study, so a person who sat on the panel and also rated the reliability set holds two codes. Arm A and Arm B are disjoint by design, and the 16 bench reviewers are a separately recruited pool, but the 8 `E-` raters may overlap the panel, so they are excluded from the published figure entirely. 48 holds even in the worst case. See `research/count_participants.py`.
 
 Countries: US, Australia, India, Nigeria, Poland, UK/Ireland, Germany, South Korea, Singapore, UAE, Spain, South Africa, Canada, Iran, Kenya, plus West Africa recorded as a region rather than a country.
 
@@ -80,8 +127,6 @@ Countries: US, Australia, India, Nigeria, Poland, UK/Ireland, Germany, South Kor
 ---
 
 ## Not in this list, and why
-
-**Study 004, reviewer reliability: 24 raters, 124 labels.** Eight carry `E-` codes and are described in the manuscript as experts; sixteen are the separately recruited bench pool the manuscript calls trained reviewers. That study runs through a different instrument with its own codes and the anon-readable views expose no names for it, so no reviewer there can be named from the data available here. Those 24 are counted in the published programme figure of 48 but cannot be listed by name.
 
 **Arm A registrants who never started: 11.** V-AI-05 Alankar Yaduvanshi, V-AI-14 Terra Shouse, V-AI-15 Yetunde Adesiyan, V-AI-17 Shakiba Mahvash, V-AI-18 Saad Farooq, V-AI-19 Sanya Dalal, V-AI-21 Tarun Samtani, V-AI-22 Ilya Diankoff, V-AI-25 David Grannum, V-AI-26 Anant Rai, V-AI-31 Alexandria Davis. Registered, zero reads.
 
