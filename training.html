@@ -95,6 +95,7 @@ a:hover{text-decoration:underline}
 .module-num.done{color:var(--ready-text)}
 .module-body{padding:16px 18px}
 .module-title{font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:3px}
+.module-outcome{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:4px;max-width:520px}
 .module-status{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft)}
 .module-status.done{color:var(--ready-text)}
 .module-actions{padding:0 18px;display:flex;gap:10px;align-items:center}
@@ -1790,14 +1791,14 @@ renderFM();
     <h2 style="font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--text);margin-bottom:10px">Training Modules</h2>
     <p style="font-size:14px;color:var(--muted);line-height:1.7;max-width:680px;margin-bottom:20px">Six modules covering the core JRS documentation review methodology. Work through each at your own pace. Progress is saved automatically.</p>
     <div style="border:1px solid var(--rule);background:var(--surface);padding:16px 18px;margin-bottom:22px;border-left:3px solid var(--accent)">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:6px">Companion workbook</div>
-      <div style="font-size:13.5px;color:var(--muted);line-height:1.65;margin-bottom:10px">Download the nineteen-page JRS Reviewer Reference and keep it open as you work through the modules. It covers all five review conditions, submission readiness, escalation triggers, and maturity levels, and doubles as your onboarding workbook.</div>
-      <a href="/api/dl?f=JRS-Reference-9d4f2a7c.pdf&amp;src=training-kit" class="btn-download">Reviewer Reference (PDF)</a>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:6px">Reviewer Desk Reference</div>
+      <div style="font-size:13.5px;color:var(--muted);line-height:1.65;margin-bottom:10px">Download the nineteen-page JRS Reviewer Reference and keep it open as you work through the modules. It covers all five review conditions, submission readiness, escalation triggers, and maturity levels, and stays on your desk as the reference you work from afterwards.</div>
+      <a href="/api/dl?f=JRS-Reference-9d4f2a7c.pdf&amp;src=training-kit" class="btn-download">Desk Reference (PDF, 19 pages)</a>
     </div>
     <div class="progress-block">
       <div class="progress-label-row">
         <span class="progress-section-label">Progress</span>
-        <span class="progress-count" id="progress-display">0 / 6</span>
+        <span class="progress-count" id="progress-display">Step 1 of 6 &middot; Ready to start</span>
       </div>
       <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
     </div>
@@ -1814,6 +1815,7 @@ renderFM();
       <div class="module-num" id="module-num-0">01</div>
       <div class="module-body" onclick="toggleModule(0)">
         <div class="module-title">JRS Review Conditions</div>
+        <div class="module-outcome">By the end you can test any record against the five conditions and say which one it fails.</div>
         <div class="module-status" id="module-status-0">Not Started</div>
       </div>
       <div class="module-actions">
@@ -1859,6 +1861,7 @@ renderFM();
       <div class="module-num" id="module-num-1">02</div>
       <div class="module-body" onclick="toggleModule(1)">
         <div class="module-title">Common Documentation Conditions</div>
+        <div class="module-outcome">By the end you can recognise the documentation failures that show up most often in real files.</div>
         <div class="module-status" id="module-status-1">Not Started</div>
       </div>
       <div class="module-actions">
@@ -1914,6 +1917,7 @@ renderFM();
       <div class="module-num" id="module-num-2">03</div>
       <div class="module-body" onclick="toggleModule(2)">
         <div class="module-title">Secondary Review and Escalation</div>
+        <div class="module-outcome">By the end you know when a record goes to secondary review and when it escalates.</div>
         <div class="module-status" id="module-status-2">Not Started</div>
       </div>
       <div class="module-actions">
@@ -1993,6 +1997,7 @@ renderFM();
       <div class="module-num" id="module-num-3">04</div>
       <div class="module-body" onclick="toggleModule(3)">
         <div class="module-title">AI-Assisted Record Review</div>
+        <div class="module-outcome">By the end you can review an AI-assisted record without guessing what the tool contributed.</div>
         <div class="module-status" id="module-status-3">Not Started</div>
       </div>
       <div class="module-actions">
@@ -2058,6 +2063,7 @@ renderFM();
       <div class="module-num" id="module-num-4">05</div>
       <div class="module-body" onclick="toggleModule(4)">
         <div class="module-title">Investigation Review</div>
+        <div class="module-outcome">By the end you can apply the method to an investigative file from intake to finalization.</div>
         <div class="module-status" id="module-status-4">Not Started</div>
       </div>
       <div class="module-actions">
@@ -2098,6 +2104,7 @@ renderFM();
       <div class="module-num" id="module-num-5">06</div>
       <div class="module-body" onclick="toggleModule(5)">
         <div class="module-title">Implementation Sequence</div>
+        <div class="module-outcome">By the end you have an order of operations for putting JRS into a team's workflow.</div>
         <div class="module-status" id="module-status-5">Not Started</div>
       </div>
       <div class="module-actions">
@@ -2673,7 +2680,13 @@ function jrsModulesDone() {
 
 function updateProgressDisplay() {
   var done = jrsModulesDone();
-  document.getElementById('progress-display').textContent = done + ' / 6';
+  // Framed as a step already underway rather than a zero score. A counter that
+  // opens at 0 / 6 reads as six things not yet done; "Step 1 of 6" reads as one
+  // already begun, which is what keeps people moving through the set.
+  document.getElementById('progress-display').textContent = (done >= 6)
+    ? 'Complete · 6 of 6'
+    : (done === 0 ? 'Step 1 of 6 · Ready to start'
+                  : 'Step ' + (done + 1) + ' of 6 · ' + done + ' complete');
   document.getElementById('progress-fill').style.width = (done / 6 * 100) + '%';
   // Update module statuses
   for (var i = 0; i < 6; i++) {
@@ -3078,15 +3091,17 @@ function submitPoll() {
   <div style="max-width:460px;width:100%;background:var(--surface);border:1px solid var(--accent);padding:26px 24px;margin:24px 0">
     <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:10px">JRS Training &amp; Certification</div>
     <h2 style="font-family:'Bodoni Moda',serif;font-weight:400;font-size:23px;color:var(--text);margin:0 0 8px">Join the International Registry</h2>
-    <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 16px">Take the six-module JRS training and earn your certificate. Free for practitioners. Register once, then it is unlocked on this device.</p>
+    <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 10px">Take the six-module JRS training and earn your certificate. Free for practitioners. Register once, then it is unlocked on this device.</p>
+    <p style="font-size:11.5px;color:var(--muted-soft);line-height:1.6;border-left:2px solid var(--accent-dim);padding-left:10px;margin:0 0 16px">Written by <b style="color:var(--muted);font-weight:500">Phillip Wikes</b>, former Lead Civil Rights Officer, Maryland Commission on Civil Rights. Every reviewer who has started this training has finished it.</p>
     <input id="en-name" type="text" placeholder="Full name" autocomplete="name" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;margin-bottom:9px">
     <input id="en-org" type="text" placeholder="Organization (optional)" autocomplete="organization" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;margin-bottom:9px">
     <input id="en-title" type="text" placeholder="Title or role (optional)" autocomplete="organization-title" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;margin-bottom:9px">
-    <input id="en-email" type="email" placeholder="Work email" autocomplete="email" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;margin-bottom:14px">
+    <input id="en-email" type="email" placeholder="Email" autocomplete="email" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;margin-bottom:14px">
 
-    <label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--muted);line-height:1.5;border:1px solid var(--accent-dim);background:var(--surface2);padding:12px 13px;margin-bottom:12px;cursor:pointer"><input type="checkbox" id="en-registry" style="width:auto;margin:2px 0 0;flex:0 0 auto"><span>Join the public International Registry of Supporters. <a href="privacy.html" target="_blank" rel="noopener" style="color:var(--accent-dim)">What this covers</a></span></label>
+    <label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--muted);line-height:1.5;border:1px solid var(--accent-dim);background:var(--surface2);padding:12px 13px;margin-bottom:12px;cursor:pointer"><input type="checkbox" id="en-registry" style="width:auto;margin:2px 0 0;flex:0 0 auto"><span>Join the public International Registry of Supporters. You sign as an individual practitioner, not on behalf of your employer. <a href="privacy.html" target="_blank" rel="noopener" style="color:var(--accent-dim)">What this covers</a></span></label>
     <div id="en-msg" style="font-size:12px;color:var(--review-text);min-height:16px;margin-bottom:8px"></div>
-    <button id="en-go" onclick="enrollSubmit()" style="width:100%;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:13px;cursor:pointer">Start the training</button>
+    <button id="en-go" onclick="enrollSubmit()" style="width:100%;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:13px;cursor:pointer">Start module 1 now</button>
+    <p style="font-size:11px;color:var(--ready-text);text-align:center;margin:9px 0 0">Free. No payment, ever. Module 1 opens straight away.</p>
     <div id="en-dismiss" style="display:none;text-align:center;margin-top:12px"><a href="#" onclick="dismissEnroll();return false;" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none">Keep previewing Module 1</a></div>
     <p style="font-size:10.5px;color:var(--muted-soft);line-height:1.55;margin:12px 0 0">Your details are stored securely and used only for the JRS project. Request access or deletion any time at info@jrsstandard.com. See the <a href="privacy.html" style="color:var(--accent-dim)">Privacy Policy</a>.</p>
   </div>

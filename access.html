@@ -23,7 +23,10 @@ a{color:var(--accent)}
 .wordmark{font-family:'Bodoni Moda',serif;font-size:20px;color:var(--accent);text-decoration:none;letter-spacing:.02em}
 .eyebrow{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:10px}
 h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:26px;color:var(--text);margin:0 0 10px;line-height:1.25}
-.lede{font-size:13.5px;color:var(--muted);line-height:1.65;margin-bottom:20px}
+.lede{font-size:13.5px;color:var(--muted);line-height:1.65;margin-bottom:12px}
+.cred{font-size:11.5px;color:var(--muted-soft);line-height:1.6;border-left:2px solid var(--accent-dim);padding:0 0 0 10px;margin-bottom:18px}
+.cred b{color:var(--muted);font-weight:500}
+.tip{font-size:11px;color:var(--review-text);line-height:1.55;margin-bottom:12px}
 .card{background:var(--surface);border:1px solid var(--accent);padding:26px 24px;margin-top:24px}
 input{width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;margin-bottom:9px;font-family:'Inter',sans-serif}
 input:focus{outline:none;border-color:var(--accent-dim)}
@@ -61,19 +64,21 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     <div class="eyebrow" id="eyebrow">JRS Investigator Field Guide</div>
     <h1 id="headline">Join the International Registry</h1>
     <p class="lede" id="lede">Free for practitioners. Two fields and one box.</p>
+    <p class="cred">Built by <b>Phillip Wikes</b>, former Lead Civil Rights Officer, Maryland Commission on Civil Rights. <b>32 professionals across 11 countries</b> have each reviewed a full 24-record set for this work.</p>
+    <p class="tip" id="app-tip" style="display:none">Reading inside the LinkedIn app? Tap the &hellip; menu and choose <b>Open in browser</b> first, so the file saves to your device.</p>
 
     <input id="f-name"  type="text"  placeholder="Full name" autocomplete="name">
-    <input id="f-email" type="email" placeholder="Work email" autocomplete="email">
+    <input id="f-email" type="email" placeholder="Email" autocomplete="email">
     <input id="f-org"   type="text"  placeholder="Organization (optional)" autocomplete="organization" style="margin-bottom:14px">
     <input id="f-title" type="hidden" value="">
 
     <label class="chk" id="contact-wrap"><input type="checkbox" id="c-contact"><span>I agree to be contacted about the JRS project and consent to my details being stored securely for that purpose. (required)</span></label>
 
-    <label class="chk" id="named-wrap" style="border:1px solid var(--accent-dim);background:var(--surface2);padding:12px 13px;margin-bottom:10px"><input type="checkbox" id="c-registry"><span id="registry-terms">Join the public International Registry of Supporters.</span></label>
+    <label class="chk" id="named-wrap" style="border:1px solid var(--accent-dim);background:var(--surface2);padding:12px 13px;margin-bottom:10px"><input type="checkbox" id="c-registry"><span id="registry-terms">Join the public International Registry of Supporters. You sign as an individual practitioner, not on behalf of your employer.</span></label>
 
     <div id="msg"></div>
     <button id="go" type="button">Continue</button>
-    <p class="trust">Free. No payment, ever. Leave any time by emailing us.</p>
+    <p class="trust" id="trust">Free. No payment, ever. Instant access. Leave any time by emailing us.</p>
 
     <p class="detail-toggle"><a href="#" id="what-toggle">What am I agreeing to?</a></p>
     <div class="registry" id="registry-detail" style="display:none">
@@ -340,6 +345,16 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
   if (regEl) regEl.addEventListener('change', function(){
     var m = document.getElementById('msg'); if (m && regEl.checked) m.textContent = '';
   });
+
+  // In-app browsers (LinkedIn, Facebook, Instagram) block or silently discard a
+  // programmatic file download, so a guide reader arriving from a post gets the
+  // form, submits it, and receives nothing. Warn before that happens.
+  try {
+    var ua = navigator.userAgent || '';
+    var inApp = /LinkedInApp|FBAN|FBAV|Instagram|Twitter/i.test(ua);
+    var tipEl = document.getElementById('app-tip');
+    if (inApp && mode === 'guide' && tipEl) tipEl.style.display = 'block';
+  } catch(e){}
 
   // Focus the first field on a real keyboard. Not on touch, where it would throw
   // the keyboard up and hide the form.

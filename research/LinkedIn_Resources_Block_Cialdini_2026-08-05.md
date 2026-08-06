@@ -8,7 +8,7 @@ Every number below was pulled from the live database today. Nothing is invented.
 
 **Applied, because it is sound and the facts support it:**
 
-- **Authority first.** Your MCCR credential now opens the block instead of sitting in a footer. It is the strongest trust signal you have and it was buried.
+- **Authority first.** Your MCCR credential now opens the block instead of sitting in a footer. It is the strongest trust signal you have and it was buried. Per your instruction the year range and the "thirteen years reading records after the fact" phrasing are gone: the line is the title and the institution, nothing more.
 - **Real social proof, not registry counts.** The honest, impressive number is the reviewer panel: 32 professionals across 11 countries each completed a full 24-record review, unpaid. That is verifiable and it is what a compliance reader respects.
 - **The discouraging ratio is gone.** Three named Registry members out of forty backers is true, and publishing it tells a reader that most professionals declined. It never appears again in public copy.
 - **Privacy before the ask.** "Never stored" now sits above the link rather than after it.
@@ -25,12 +25,12 @@ Every number below was pulled from the live database today. Nothing is invented.
 
 ## The block, ready to paste
 
-Replaces everything from "FREE RESOURCES" down. 1,361 characters. With your existing opening of about 1,149, the whole About section lands at roughly 2,510 against the 2,600 cap, leaving 90 characters of margin.
+Replaces everything from "FREE RESOURCES" down. 1,290 characters. With your existing opening of about 1,149, the whole About section lands at roughly 2,439 against the 2,600 cap, leaving 161 characters of margin.
 
 ```
 ⬇️ FREE RESOURCES
 
-Built by a former Lead Civil Rights Officer (Maryland Commission on Civil Rights, 2012 to 2025) who spent thirteen years reading records after the fact.
+Built by a former Lead Civil Rights Officer, Maryland Commission on Civil Rights.
 
 📘 Investigator Field Guides
 Five-condition audit framework for EEO, fair housing, and international investigations. 9 pages. Free to use and share.
