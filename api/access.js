@@ -140,6 +140,47 @@ export default async function handler(req){
     return json({ ok: true, view: true });
   }
 
+  // Public-listing opt-in, taken AFTER the guide has been delivered rather than
+  // as the price of delivery. The gate now asks only for contact, storage and
+  // transfer, which is the combination that has to survive an acquisition. Being
+  // named in public is a separate professional decision, so it is a separate
+  // click, made once the reader already has what they came for.
+  //
+  // pilot_contacts.message is TEXT holding serialized JSON, so there is no
+  // server-side JSON patch available: read the newest row for this address,
+  // rewrite the payload, write it back by id.
+  if (String(b.event || '') === 'listing') {
+    const lem = clean(b.email, 200);
+    if (!lem || lem.indexOf('@') < 1) return json({ error:'valid_email_required' }, 400);
+    const LH = { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE,
+                 'Content-Type': 'application/json' };
+    try {
+      const q = SB + '/rest/v1/pilot_contacts'
+        + '?email=eq.' + encodeURIComponent(lem)
+        + '&source=in.(guide-register,support-register,training-enroll,org-pilot)'
+        + '&select=id,message&order=created_at.desc&limit=1';
+      const lr = await fetch(q, { headers: LH });
+      if (!lr.ok) return json({ error:'lookup_failed', status: lr.status }, 502);
+      const rows = await lr.json();
+      if (!rows.length) return json({ error:'no_registration' }, 404);
+      let p = {};
+      try { p = JSON.parse(rows[0].message || '{}'); } catch(e){ p = {}; }
+      p.consent_named = true;
+      p.consent_public_list = true;
+      // org-pilot rows carry the organization-level flag under its own key, and
+      // gate-stats counts named organizations from that key, so set it too.
+      p.consent_named_org = true;
+      p.listing_ts = new Date().toISOString();
+      const ur = await fetch(SB + '/rest/v1/pilot_contacts?id=eq.' + encodeURIComponent(rows[0].id), {
+        method: 'PATCH',
+        headers: Object.assign({ 'Prefer':'return=minimal' }, LH),
+        body: JSON.stringify({ message: JSON.stringify(p) })
+      });
+      if (!ur.ok) return json({ error:'listing_update_failed', status: ur.status }, 502);
+    } catch(e){ return json({ error:'listing_failed' }, 502); }
+    return json({ ok:true, listed:true });
+  }
+
   const name     = clean(b.name, 200);
   const email    = clean(b.email, 200);
   const org      = clean(b.organization, 200);
