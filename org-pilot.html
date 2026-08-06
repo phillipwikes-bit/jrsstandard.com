@@ -56,6 +56,11 @@ li{margin-bottom:5px}
 footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
 .fc{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft)}
 .hidden{display:none}
+.cred{font-size:12px;color:var(--muted-soft);line-height:1.6;border-left:2px solid var(--accent-dim);padding-left:11px;margin-bottom:14px}
+.cred b{color:var(--muted);font-weight:500}
+.teaser{border:1px solid var(--rule);background:var(--surface2);padding:14px 15px;margin-bottom:16px}
+.teaser-lbl{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.teaser p{font-size:12.5px;color:var(--muted);line-height:1.6;margin:0}
 .qbox{border:1px solid var(--rule);background:var(--surface2);padding:12px 13px;margin-bottom:10px}
 .qbox .q{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:8px}
 .qbox .opts{display:flex;gap:18px}
@@ -73,6 +78,13 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     <h1>Run JRS on your own records</h1>
     <p class="lede">The Organizational Pilot Package. Paste up to twenty five of your own records, one at a time. Each is assessed against the five review conditions and you get the read immediately. Free, no obligation, and you can stop after one.</p>
     <p class="lede">Organizations that run the diagnostic join the International Registry of Supporters, giving visible institutional backing to decision transparency. Your entry carries your name and organization, so it reads as professional endorsement rather than an anonymous tally.</p>
+    <p class="cred">Built by <b>Phillip Wikes</b>, former Lead Civil Rights Officer, Maryland Commission on Civil Rights. The five conditions have been applied record by record by <b>32 professionals across 11 countries</b>, each completing a full 24-record set.</p>
+
+    <div class="teaser">
+      <div class="teaser-lbl">One of the five questions your records will be asked</div>
+      <p>Could a reviewer with no access to the author, no institutional memory, and no supplementary explanation identify the basis for each conclusion from the file alone?</p>
+      <p style="margin-top:7px;color:var(--muted-soft)">If the answer is no, the record is reconstructable only by the person who wrote it. That is the gap the diagnostic finds.</p>
+    </div>
 
     <div class="privacy">
       <b style="color:var(--ready-text)">Your record text is never stored.</b> Each record is assessed in memory and discarded. Nothing you paste is written to any database, and it is not used to train anything. Only the count of records you ran and the pattern of results is kept, so the programme can report that an organization used the standard without ever holding what it looked at.
@@ -83,7 +95,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     <div class="card">
       <label class="fl" for="p-org">Organization</label>
       <input id="p-org" type="text" placeholder="Organization name" autocomplete="organization">
-      <label class="fl" for="p-sector">Sector</label>
+      <label class="fl" for="p-sector">Sector (optional)</label>
       <select id="p-sector">
         <option value="">Select a sector</option>
         <option>Government or public agency</option>
@@ -101,14 +113,15 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
       <input id="p-name" type="text" placeholder="Full name" autocomplete="name">
       <label class="fl" for="p-title">Your title or role</label>
       <input id="p-title" type="text" placeholder="Title or role (optional)" autocomplete="organization-title">
-      <label class="fl" for="p-email">Work email</label>
-      <input id="p-email" type="email" placeholder="Work email" autocomplete="email">
+      <label class="fl" for="p-email">Email</label>
+      <input id="p-email" type="email" placeholder="Email" autocomplete="email">
 
 
       <label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--muted);line-height:1.5;border:1px solid var(--accent-dim);background:var(--surface2);padding:12px 13px;margin:0 0 10px;cursor:pointer"><input type="checkbox" id="p-registry" style="width:auto;margin:2px 0 0;flex:0 0 auto"><span>Join the public International Registry of Supporters as having applied the standard. <a href="privacy.html" target="_blank" rel="noopener" style="color:var(--accent-dim)">What this covers</a></span></label>
 
       <div id="org-msg" style="font-size:12.5px;color:var(--review-text);min-height:16px;margin-bottom:6px"></div>
-      <button id="org-go" type="button">Start the pilot</button>
+      <button id="org-go" type="button">Run my free diagnostic check</button>
+      <p class="fine" style="text-align:center;color:var(--ready-text)">Free. No payment details, ever. The first read comes back in seconds.</p>
     </div>
   </section>
 
@@ -127,7 +140,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
       <textarea id="p-text" placeholder="Paste the record here. Remove names, addresses, and identifiers first."></textarea>
       <div class="row">
         <button id="run-go" type="button">Run the review</button>
-        <span class="counter" id="run-count">Record 1 of 10</span>
+        <span class="counter" id="run-count">Record 1 of 25</span>
       </div>
       <div id="msg"></div>
     </div>
@@ -235,7 +248,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     m.style.color = 'var(--review-text)';
     if (!session.organization) { m.textContent = 'Please enter your organization.'; return; }
     if (!session.name) { m.textContent = 'Please enter your name.'; return; }
-    if (!session.email || session.email.indexOf('@') < 1 || session.email.indexOf('.') < 0) { m.textContent = 'Please enter a valid work email.'; return; }
+    if (!session.email || session.email.indexOf('@') < 1 || session.email.indexOf('.') < 0) { m.textContent = 'Please enter a valid email address.'; return; }
     if (!session.c1) { m.textContent = 'Please tick the box to join the Registry and continue.'; return; }
 
     el('run-org').textContent = session.organization;
