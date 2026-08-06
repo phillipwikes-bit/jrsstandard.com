@@ -1,6 +1,6 @@
 export const config = { runtime: 'edge' };
 
-// Consent-capturing registration gate for the field guides and the initiative
+// Consent-capturing registration gate for the Investigator Field Guides and the initiative
 // support action. Both flows previously completed anonymously: guide downloads
 // recorded only an edition and a country code, and support clicks recorded only
 // a campaign. Neither produced a contactable, verifiable, or transferable
@@ -24,7 +24,7 @@ export const config = { runtime: 'edge' };
 
 const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 
-// Field guide editions, mirroring /api/dl. Kept deliberately in sync: this is
+// Investigator Field Guide editions, mirroring /api/dl. Kept deliberately in sync: this is
 // the only place a registration can release a guide file.
 const FILES = {
   employment:    'JRS_Investigator_Field_Guide_Employment.pdf',

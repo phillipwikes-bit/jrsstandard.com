@@ -2,7 +2,7 @@ export const config = { runtime: 'edge' };
 
 // Post-gate activity statistics for the private status dashboard.
 //
-// WHY A SEPARATE ENDPOINT: on 2026-08-02 the field guides and the initiative
+// WHY A SEPARATE ENDPOINT: on 2026-08-02 the Investigator Field Guides and the initiative
 // support action moved behind a registration form. Everything recorded before
 // that date is anonymous: a download count with no person attached, a support
 // click nobody can contact. Mixing the two eras produces a number that looks

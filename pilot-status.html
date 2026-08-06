@@ -127,7 +127,7 @@ tr.today td{background:rgba(93,191,130,.07)}
   <div class="chart">
     <h2>What they registered for</h2>
     <div id="rgsplit">Loading&hellip;</div>
-    <div class="note" style="margin-top:8px">Field guide registrations by edition and initiative support by campaign. The guide and support gates went live on Aug 2, 2026; downloads and support recorded before that date were anonymous and cannot be attributed to a person.</div>
+    <div class="note" style="margin-top:8px">Investigator Field Guide registrations by edition and initiative support by campaign. The guide and support gates went live on Aug 2, 2026; downloads and support recorded before that date were anonymous and cannot be attributed to a person.</div>
   </div>
 
   <h1 style="font-size:22px;margin-top:34px">Since the Registration Gate</h1>
@@ -178,7 +178,7 @@ tr.today td{background:rgba(93,191,130,.07)}
   </div>
 
   <h1 style="font-size:22px;margin-top:34px">Investigator Guide Downloads</h1>
-  <p class="sub">Downloads of the three field guide editions: EEO, Fair Housing, and International. By day and by country, from one source, so the by-day total, the by-country total, and the by-asset total are the same number. Counted at the redirect endpoint, so emailed and shared links are included too. Aggregate counts only.</p>
+  <p class="sub">Downloads of the three Investigator Field Guide editions: EEO, Fair Housing, and International. By day and by country, from one source, so the by-day total, the by-country total, and the by-asset total are the same number. Counted at the redirect endpoint, so emailed and shared links are included too. Aggregate counts only.</p>
   <div class="chart">
     <h2>Downloads by day</h2>
     <div id="dlchart" style="overflow-x:auto">Loading&hellip;</div>
@@ -187,7 +187,7 @@ tr.today td{background:rgba(93,191,130,.07)}
   <div class="chart">
     <h2>Each item's downloads by country</h2>
     <div id="itemsbycountry">Loading&hellip;</div>
-    <div class="note" style="margin-top:8px">Every downloadable item on its own, counted by country: the three field guide editions, the JRS Standard PDF, the Rapid Review Card, the JRS Reviewer Reference (training companion), and the combined Field Guide. Nothing is grouped into a shared total. Country recorded at the redirect endpoint. Aggregate counts only.</div>
+    <div class="note" style="margin-top:8px">Every downloadable item on its own, counted by country: the three Investigator Field Guide editions, the JRS Standard PDF, the Rapid Review Card, the JRS Reviewer Reference (training companion), and the combined Investigator Field Guide. Nothing is grouped into a shared total. Country recorded at the redirect endpoint. Aggregate counts only.</div>
   </div>
   <div class="chart">
     <h2>Initiative supporters by country</h2>
@@ -456,7 +456,7 @@ function loadGate(){
        'Form opened '+(s.form_views||0)+' times since view tracking began ('+(s.form_views_guide||0)+' guide, '
        +(s.form_views_support||0)+' registry), '+(s.abandoned||0)+' opened without finishing, '+conv+'. '
        +(byday? 'Opens by day: '+byday+'. ' : '')
-       +(s.registrations||0)+' registrations since the gate: '+(s.guide_registrations||0)+' field guide, '
+       +(s.registrations||0)+' registrations since the gate: '+(s.guide_registrations||0)+' Investigator Field Guide, '
        +(s.support_registrations||0)+' initiative, '+(s.contributor_confirmations||0)+' contributor confirmation. '
        +(s.consented_contact||0)+' contactable, '+(s.consented_transfer||0)+' consented to transfer to a successor, '
        +(s.consented_public_listing||0)+' agreed to be listed publicly by name.';
@@ -473,10 +473,10 @@ function loadGate(){
 function renderGateSplit(s){
   var el=document.getElementById('gtsplit');
   if(!el) return;
-  var EDN={employment:'Field Guide: EEO',fairhousing:'Field Guide: Fair Housing',international:'Field Guide: International',unknown:'Field Guide: unspecified'};
+  var EDN={employment:'Investigator Field Guide: EEO',fairhousing:'Investigator Field Guide: Fair Housing',international:'Investigator Field Guide: International',unknown:'Investigator Field Guide: unspecified'};
   var CMP={rtkw:'Initiative: The Right to Know Why',defend:'Initiative: The Decisions You Can Defend',general:'Initiative: general'};
   var list=[];
-  ((s&&s.by_edition)||[]).forEach(function(x){ list.push({label:EDN[x.edition]||('Field Guide: '+x.edition),count:x.count}); });
+  ((s&&s.by_edition)||[]).forEach(function(x){ list.push({label:EDN[x.edition]||('Investigator Field Guide: '+x.edition),count:x.count}); });
   ((s&&s.by_campaign)||[]).forEach(function(x){ list.push({label:CMP[x.campaign]||('Initiative: '+x.campaign),count:x.count}); });
   var html='';
   if(!list.length){ html+='<div style="color:var(--muted-soft);font-size:12px">No registrations since the gate yet.</div>'; }
@@ -520,10 +520,10 @@ function loadContributors(){
 function renderRegSplit(s){
   var el=document.getElementById('rgsplit');
   if(!el) return;
-  var EDN={employment:'Field Guide: EEO',fairhousing:'Field Guide: Fair Housing',international:'Field Guide: International',unknown:'Field Guide: unspecified'};
+  var EDN={employment:'Investigator Field Guide: EEO',fairhousing:'Investigator Field Guide: Fair Housing',international:'Investigator Field Guide: International',unknown:'Investigator Field Guide: unspecified'};
   var CMP={rtkw:'Support: The Right to Know Why',defend:'Support: The Decisions You Can Defend',general:'Support: general'};
   var list=[];
-  ((s&&s.by_edition)||[]).forEach(function(x){ list.push({label:EDN[x.edition]||('Field Guide: '+x.edition),count:x.count}); });
+  ((s&&s.by_edition)||[]).forEach(function(x){ list.push({label:EDN[x.edition]||('Investigator Field Guide: '+x.edition),count:x.count}); });
   ((s&&s.by_campaign)||[]).forEach(function(x){ list.push({label:CMP[x.campaign]||('Support: '+x.campaign),count:x.count}); });
   if(!list.length){ el.innerHTML='<div style="color:var(--muted-soft);font-size:12px">No registrations yet.</div>'; return; }
   list.sort(function(a,b){ return b.count-a.count; });
