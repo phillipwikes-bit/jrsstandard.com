@@ -78,11 +78,14 @@ export default async function handler(){
       });
     }
 
-    // Named supporters: count-only read of the private pilot_contacts table
-    // (source='support'), service-role, no PII returned.
+    // Named supporters: count-only read of the private pilot_contacts table,
+    // service-role, no PII returned. Both the legacy source='support' rows and
+    // the registration-gate rows (source='support-register') count, because a
+    // person who registered by name through the gate is a named supporter by
+    // exactly the same standard as one who came through the older route.
     let named = 0;
     try {
-      const nr = await fetch(SB + '/rest/v1/pilot_contacts?source=eq.support&select=id', {
+      const nr = await fetch(SB + '/rest/v1/pilot_contacts?source=in.(support,support-register)&select=id', {
         headers: { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE, 'Prefer': 'count=exact', 'Range': '0-0' } });
       const cr = nr.headers.get('content-range') || '';
       const m = cr.match(/\/(\d+)$/);
@@ -96,7 +99,7 @@ export default async function handler(){
     // exactly the people who asked to be listed, and nobody else.
     let public_supporters = [];
     try {
-      const pr = await fetch(SB + '/rest/v1/pilot_contacts?source=eq.support&select=name,organization,message&order=created_at.asc', {
+      const pr = await fetch(SB + '/rest/v1/pilot_contacts?source=in.(support,support-register,guide-register,training-enroll)&select=name,organization,message&order=created_at.asc', {
         headers: { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE } });
       if (pr.ok) {
         const prows = await pr.json();

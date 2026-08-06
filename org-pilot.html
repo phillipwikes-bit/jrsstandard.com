@@ -77,7 +77,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     <div class="eyebrow">Open Initiatives &amp; International Registry</div>
     <h1>Run JRS on your own records</h1>
     <p class="lede">The Organizational Pilot Package. Paste up to twenty five of your own records, one at a time. Each is assessed against the five review conditions and you get the read immediately. Free, no obligation, and you can stop after one.</p>
-    <p class="lede">Organizations that run the diagnostic join the International Registry of Supporters, giving visible institutional backing to decision transparency. Your entry carries your name and organization, so it reads as professional endorsement rather than an anonymous tally.</p>
+    <p class="lede">Organizations that run the diagnostic join the International Registry of Supporters, giving visible institutional backing to decision transparency. Whether your name and organization appear on the public list is your choice, made after the pilot, not a condition of running it.</p>
     <p class="cred">Built by <b>Phillip Wikes</b>, former Lead Civil Rights Officer, Maryland Commission on Civil Rights. The five conditions have been applied record by record by <b>32 professionals across 11 countries</b>, each completing a full 24-record set.</p>
 
     <div class="teaser">
@@ -117,7 +117,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
       <input id="p-email" type="email" placeholder="Email" autocomplete="email">
 
 
-      <label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--muted);line-height:1.5;border:1px solid var(--accent-dim);background:var(--surface2);padding:12px 13px;margin:0 0 10px;cursor:pointer"><input type="checkbox" id="p-registry" style="width:auto;margin:2px 0 0;flex:0 0 auto"><span>Join the public International Registry of Supporters as having applied the standard. <a href="privacy.html" target="_blank" rel="noopener" style="color:var(--accent-dim)">What this covers</a></span></label>
+      <label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--muted);line-height:1.5;border:1px solid var(--accent-dim);background:var(--surface2);padding:12px 13px;margin:0 0 10px;cursor:pointer"><input type="checkbox" id="p-registry" style="width:auto;margin:2px 0 0;flex:0 0 auto"><span>I agree to be contacted about the JRS project, to my details being stored securely, and to them transferring with the project if it is ever acquired. <b style="color:var(--text);font-weight:500">Your name and organization are not published by ticking this.</b> <a href="privacy.html" target="_blank" rel="noopener" style="color:var(--accent-dim)">What this covers</a></span></label>
 
       <div id="org-msg" style="font-size:12.5px;color:var(--review-text);min-height:16px;margin-bottom:6px"></div>
       <button id="org-go" type="button">Run my free diagnostic check</button>
@@ -180,6 +180,12 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
       <p style="font-size:13.5px;color:var(--muted);margin-bottom:12px">Your organization is now counted among those that have applied the standard to their own records. The aggregate appears on the public status page, showing counts only, never your organization's results or text unless you agreed to be named.</p>
       <p style="font-size:13.5px;color:var(--muted);margin-bottom:12px">The person who runs a pilot for their organization carries the designation <b style="color:var(--text)">JRS Lead Diagnostic Advisor</b>.</p>
       <p style="font-size:13.5px;color:var(--muted);margin-bottom:12px"><b style="color:var(--text)">Your executive summary is ready.</b> One page, written for internal leadership: what was reviewed, how the records routed, where the five conditions held and where they did not, and what to do next. It is generated in your browser from the counts on screen, so it contains no record text.</p>
+      <div class="teaser" style="border-color:var(--accent-dim)">
+        <div class="teaser-lbl">Optional &middot; the public Registry</div>
+        <p>Your organization is <b style="color:var(--text)">not</b> on the public list. If you want it there, one click adds it: organization and name only, never your email address and never your results.</p>
+        <button type="button" id="op-list-go" class="ghost" style="width:auto;margin-top:11px">Add us to the public Registry</button>
+        <p id="op-list-msg" class="fine" style="margin-top:9px">You can be removed at any time by emailing info@jrsstandard.com.</p>
+      </div>
       <div class="row">
         <a href="#" id="exec-dl" style="text-decoration:none"><button type="button">Download the executive summary</button></a>
         <a href="pilot-status.html" style="text-decoration:none"><button type="button" class="ghost">View the status page</button></a>
@@ -238,18 +244,19 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     session.name = el('p-name').value.trim();
     session.title = el('p-title').value.trim();
     session.email = el('p-email').value.trim();
-    // One box carries contact consent, listing, and transfer together.
+    // The one required box carries contact, secure storage, and transfer with
+    // the project. It does NOT publish the organization: public listing is asked
+    // once, optionally, on the completion panel after the pilot has been run.
     session.c1 = el('p-registry').checked;
-    // One checkbox carries both registry terms, listing and transfer together.
     var pReg = el('p-registry').checked;
     session.c2 = pReg;
-    session.c3 = pReg;
+    session.c3 = false;
 
     m.style.color = 'var(--review-text)';
     if (!session.organization) { m.textContent = 'Please enter your organization.'; return; }
     if (!session.name) { m.textContent = 'Please enter your name.'; return; }
     if (!session.email || session.email.indexOf('@') < 1 || session.email.indexOf('.') < 0) { m.textContent = 'Please enter a valid email address.'; return; }
-    if (!session.c1) { m.textContent = 'Please tick the box to join the Registry and continue.'; return; }
+    if (!session.c1) { m.textContent = 'Please tick the box to continue. Nothing is published by ticking it.'; return; }
 
     el('run-org').textContent = session.organization;
     el('step-org').classList.add('hidden');
@@ -414,6 +421,32 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     });
   }
 
+  // Optional public listing, offered once the pilot is already recorded. Nothing
+  // the organization has received depends on this click.
+  function wireOrgListing(addr){
+    var btn = el('op-list-go');
+    var out = el('op-list-msg');
+    if (!btn || !out) return;
+    btn.addEventListener('click', function(){
+      btn.disabled = true;
+      out.style.color = 'var(--muted)';
+      out.textContent = 'Adding your organization...';
+      fetch('/api/access', { method:'POST', headers:{ 'Content-Type':'application/json' },
+        body: JSON.stringify({ event:'listing', email: addr }) })
+        .then(function(r){ if (!r.ok) throw 0; return r.json(); })
+        .then(function(){
+          out.style.color = 'var(--ready-text)';
+          out.textContent = 'Added. Email info@jrsstandard.com to be removed at any time.';
+          btn.textContent = 'You are on the Registry';
+        })
+        .catch(function(){
+          out.style.color = 'var(--review-text)';
+          out.textContent = 'Could not add it just now. Email info@jrsstandard.com and it will be added by hand.';
+          btn.disabled = false;
+        });
+    });
+  }
+
   el('finish-go').addEventListener('click', function(){
     var btn = el('finish-go');
     btn.disabled = true;
@@ -445,7 +478,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
       el('step-done').classList.remove('hidden');
       window.scrollTo(0,0);
     })
-    .then(function(){ wireExecSummary(); })
+    .then(function(){ wireExecSummary(); wireOrgListing(session.email); })
     .catch(function(){
       el('msg').style.color = 'var(--review-text)';
       el('msg').textContent = 'Could not record the pilot just now. Please try again, or email info@jrsstandard.com.';

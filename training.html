@@ -3098,7 +3098,7 @@ function submitPoll() {
     <input id="en-title" type="text" placeholder="Title or role (optional)" autocomplete="organization-title" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;margin-bottom:9px">
     <input id="en-email" type="email" placeholder="Email" autocomplete="email" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;margin-bottom:14px">
 
-    <label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--muted);line-height:1.5;border:1px solid var(--accent-dim);background:var(--surface2);padding:12px 13px;margin-bottom:12px;cursor:pointer"><input type="checkbox" id="en-registry" style="width:auto;margin:2px 0 0;flex:0 0 auto"><span>Join the public International Registry of Supporters. You sign as an individual practitioner, not on behalf of your employer. <a href="privacy.html" target="_blank" rel="noopener" style="color:var(--accent-dim)">What this covers</a></span></label>
+    <label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--muted);line-height:1.5;border:1px solid var(--accent-dim);background:var(--surface2);padding:12px 13px;margin-bottom:12px;cursor:pointer"><input type="checkbox" id="en-registry" style="width:auto;margin:2px 0 0;flex:0 0 auto"><span>I agree to be contacted about the JRS project, to my details being stored securely, and to them transferring with the project if it is ever acquired. <b style="color:var(--text);font-weight:500">Your name is not published by ticking this.</b> <a href="privacy.html" target="_blank" rel="noopener" style="color:var(--accent-dim)">What this covers</a></span></label>
     <div id="en-msg" style="font-size:12px;color:var(--review-text);min-height:16px;margin-bottom:8px"></div>
     <button id="en-go" onclick="enrollSubmit()" style="width:100%;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:13px;cursor:pointer">Start module 1 now</button>
     <p style="font-size:11px;color:var(--ready-text);text-align:center;margin:9px 0 0">Free. No payment, ever. Module 1 opens straight away.</p>
@@ -3167,22 +3167,49 @@ function dismissEnroll(){
   var o = document.getElementById('enroll-overlay');
   if (o) o.style.display = 'none';
 }
+// Optional public listing, offered on the release panel after the training is
+// already unlocked. Nothing the reader has received depends on this click.
+function wireTrainingListing(addr){
+  var btn = document.getElementById('tr-list-go');
+  var out = document.getElementById('tr-list-msg');
+  if (!btn || !out) return;
+  btn.addEventListener('click', function(){
+    btn.disabled = true;
+    out.style.color = 'var(--muted)';
+    out.textContent = 'Adding your name...';
+    fetch('/api/access', { method:'POST', headers:{ 'Content-Type':'application/json' },
+      body: JSON.stringify({ event:'listing', email: addr }) })
+      .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+      .then(function(){
+        out.style.color = 'var(--ready-text)';
+        out.textContent = 'Added. You carry the designation Registered International Advocate. Email info@jrsstandard.com to be removed at any time.';
+        btn.textContent = 'Your name is on the Registry';
+      })
+      .catch(function(){
+        out.style.color = 'var(--review-text)';
+        out.textContent = 'Could not add it just now. Email info@jrsstandard.com and it will be added by hand.';
+        btn.disabled = false;
+      });
+  });
+}
+
 function enrollSubmit(){
   var msg = document.getElementById('en-msg');
   var name = (document.getElementById('en-name').value||'').trim();
   var org = (document.getElementById('en-org').value||'').trim();
   var title = (document.getElementById('en-title').value||'').trim();
   var email = (document.getElementById('en-email').value||'').trim();
-  // One box carries contact consent, listing, and transfer together.
+  // The one required box carries contact, secure storage, and transfer with the
+  // project. It does NOT publish anyone's name: public listing is asked once,
+  // optionally, on the release panel below, after the training is unlocked.
   var regEl0 = document.getElementById('en-registry');
   var c1 = !!(regEl0 && regEl0.checked);
-  // One checkbox carries both registry terms, listing and transfer together.
   var regEl = document.getElementById('en-registry');
   var c2 = !!(regEl && regEl.checked);
-  var c3 = c2;
+  var c3 = false;
   if (!name){ msg.textContent = 'Please enter your name.'; return; }
   if (!email || email.indexOf('@') < 1 || email.indexOf('.') < 0){ msg.textContent = 'Please enter a valid email.'; return; }
-  if (!c1){ msg.textContent = 'Please tick the box to join the Registry and continue.'; return; }
+  if (!c1){ msg.textContent = 'Please tick the box to continue. Your name is not published by ticking it.'; return; }
   var aud = 'public';
   var srcTag = (window._jrsChannel || jrsAccessClean(jrsAccessParam('src')) || '');
   if (srcTag === 'panel') aud = 'panel';
@@ -3207,10 +3234,17 @@ function enrollSubmit(){
       + '<p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 14px">The six modules and the certificate are unlocked on this device. Finish all six and you carry the designation <b style="color:var(--text)">JRS Certified Master Reviewer</b>, and you may request a written LinkedIn recommendation from the creator of the standard.</p>'
       + '<div style="border:1px solid var(--accent-dim);background:var(--surface2);padding:14px 15px;margin-bottom:14px">'
         + '<div style="font-family:\'JetBrains Mono\',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:7px">Open Initiatives &amp; International Registry</div>'
-        + '<p style="font-size:12.5px;color:var(--muted);line-height:1.6;margin:0">Your registration also opens the free, private diagnostic check. Paste up to ten of your own records, redacted, and get the five-condition read on each one immediately. <b style="color:var(--text);font-weight:500">Your record text is never stored</b>: each record is assessed in memory and discarded.</p>'
+        + '<p style="font-size:12.5px;color:var(--muted);line-height:1.6;margin:0">Your registration also opens the free, private diagnostic check. Paste up to twenty five of your own records, redacted, and get the five-condition read on each one immediately. <b style="color:var(--text);font-weight:500">Your record text is never stored</b>: each record is assessed in memory and discarded.</p>'
+      + '</div>'
+      + '<div style="border:1px solid var(--accent-dim);background:var(--surface2);padding:14px 15px;margin-bottom:14px">'
+        + '<div style="font-family:\'JetBrains Mono\',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:7px">Optional &middot; the public Registry</div>'
+        + '<p style="font-size:12.5px;color:var(--muted);line-height:1.6;margin:0">Your name is <b style="color:var(--text);font-weight:500">not</b> on the public list. If you want it there, one click adds it: your name and organization only, never your email address. It reads as a professional position taken as an individual practitioner, not on behalf of your employer.</p>'
+        + '<button type="button" id="tr-list-go" style="width:100%;font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--accent);border:1px solid var(--accent);padding:11px;cursor:pointer;margin-top:11px">Add my name to the public Registry</button>'
+        + '<p id="tr-list-msg" style="font-size:10.5px;color:var(--muted-soft);line-height:1.55;margin:10px 0 0">You can be removed at any time by emailing info@jrsstandard.com.</p>'
       + '</div>'
       + '<a href="org-pilot.html' + q + '" style="text-decoration:none"><button type="button" style="width:100%;font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:13px;cursor:pointer;margin-bottom:10px">Run the diagnostic on my records</button></a>'
       + '<button type="button" onclick="document.getElementById(\'enroll-overlay\').style.display=\'none\'" style="width:100%;font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--accent);border:1px solid var(--accent);padding:13px;cursor:pointer">Start the training</button>';
+      wireTrainingListing(email);
     })
     .catch(function(){ msg.style.color = 'var(--review-text)'; msg.textContent = 'Could not register just now. Please try again, or email info@jrsstandard.com.'; btn.disabled = false; });
 }
