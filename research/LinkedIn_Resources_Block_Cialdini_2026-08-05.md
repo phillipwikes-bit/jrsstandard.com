@@ -9,7 +9,7 @@ Every number below was pulled from the live database today. Nothing is invented.
 **Applied, because it is sound and the facts support it:**
 
 - **Authority first.** Your MCCR credential now opens the block instead of sitting in a footer. It is the strongest trust signal you have and it was buried. Per your instruction the year range and the "thirteen years reading records after the fact" phrasing are gone: the line is the title and the institution, nothing more.
-- **Real social proof, not registry counts.** The honest, impressive number is the expert panel: 32 independent experts across 11 countries each completed a full 24-record review, unpaid. All 32 are credentialed specialists. The "trained reviewer" category in the reliability analysis is the separate anonymous bench pool (R- codes), not these people, so calling all 32 experts is accurate. That is verifiable and it is what a compliance reader respects.
+- **Real social proof, not registry counts.** The honest, impressive number counts every study, not just the two that issue 24-record sets: 48 reviewers have graded records across the three studies, of whom 32 independent experts each completed a full 24-record set, unpaid. All 32 are credentialed specialists. The "trained reviewer" category in the reliability analysis is the separate bench pool (R- codes), not these people, so calling all 32 experts is accurate. 48 is a deliberate floor: see research/count_participants.py. That is verifiable and it is what a compliance reader respects.
 - **The discouraging ratio is gone.** Three named Registry members out of forty backers is true, and publishing it tells a reader that most professionals declined. It never appears again in public copy.
 - **Privacy before the ask.** "Never stored" now sits above the link rather than after it.
 - **Expectation set before the click.** The block says plainly that it takes one short form. A reader who expects a form and finds one converts. A reader promised zero friction who then meets a form leaves and does not come back. That is the same bait-and-switch mechanic Dr. Cialdini identifies, applied to your actual site.
@@ -50,7 +50,7 @@ https://jrsstandard.com/org-pilot.html?src=linkedin
 
 🌐 STAND WITH THE STANDARD
 
-32 independent experts across 11 countries and 5 continents have each reviewed a full 24-record set for this work, unpaid and in a personal capacity.
+48 reviewers across three studies have graded records for this work, unpaid and in a personal capacity, including 32 independent experts across 11 countries and 5 continents who each completed a full 24-record set.
 
 You can add your name as an individual practitioner. It is a professional position, not an employer endorsement.
 
