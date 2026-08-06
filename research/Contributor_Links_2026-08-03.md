@@ -1,6 +1,6 @@
 # Contributor confirmation links (private, do not publish this file)
 
-One unguessable link per person. Each link opens a page that captures how the person wants their name and title printed, their contact address, and three forced-choice permissions, then releases the initiatives, the field guide, the training, the free private diagnostic, and the results summary.
+One unguessable link per person. Each link opens a page that captures how the person wants their name and title printed, their contact address, and three forced-choice permissions, then releases the initiatives, the Investigator Field Guide, the training, the free private diagnostic, and the results summary.
 
 Base: `https://www.jrsstandard.com/contributor.html?k=`
 
@@ -74,7 +74,7 @@ When data collection closes, set `RESULTS_RELEASED = true` and the full summary 
 
 Question 2 and question 3 together are what a buyer's counsel asks for, recorded per person with a timestamp. Note the honest limit: this is a recorded permission, not an executed assignment. For the co-authors specifically, a short countersigned agreement is still the right instrument, and this makes that conversation easier rather than replacing it.
 
-**Released after confirmation:** both initiative sign-ups, all three field guide editions, the training, the free private diagnostic on their own records, and the results summary block.
+**Released after confirmation:** both initiative sign-ups, all three Investigator Field Guide editions, the training, the free private diagnostic on their own records, and the results summary block.
 
 **Comparison-arm reviewers (RR-###) are deliberately not in this roster.** That arm is blind. A JRS-branded page naming the standard would break the blind for anyone still reviewing. Their debrief is the separate message already drafted in `Reviewer_Results_Release_Plan.md`, section 7.
 

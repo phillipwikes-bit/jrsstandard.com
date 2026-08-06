@@ -68,7 +68,7 @@ https://jrsstandard.com/api/support?c=defend&src=linkedin
 | Original | Revised | Principle |
 |---|---|---|
 | "FREE RESOURCES (all free to use)" | Credential line directly beneath the heading | Authority, moved above the fold of the block |
-| "Field Guides:" bare link | Names what the guide contains and its length | Reduces perceived effort; the reader knows what they are opening |
+| "Investigator Field Guides:" bare link | Names what the guide contains and its length | Reduces perceived effort; the reader knows what they are opening |
 | "Training & Certificate:" bare link | "Every reviewer who has started it has finished it" | Social proof, and it is literally true: 7 enrolled, 7 completed |
 | "Run JRS on 25 of your own records, free" | Same, with the privacy guarantee lifted above the link and the form cost stated | Loss aversion answered before the click, expectation set |
 | "Join the International Registry of Supporters" | "Stand with the standard", with the panel figure | Unity and real social proof, replacing an administrative ask |

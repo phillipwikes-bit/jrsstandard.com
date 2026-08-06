@@ -13,7 +13,7 @@
 
 *Buyer-value-optimized revision of Phillip's longer "join the JRS Initiative" draft. JRS framed as a defined, ownable documentation-review instrument (the asset); DRR as the named category; one primary CTA (download the free guide) with training + organizational pilots as secondary; enterprise inquiries routed to info@jrsstandard.com. All figures verified against the research record. 84% framed as REPRODUCIBILITY (not accuracy); CEP "forthcoming" (not published); Dewey a mention (not endorsement); completer geography only. No effectiveness claims; no blind-study mention; no long dashes; no free-forever promise. Version 1b below (shorter guide-giveaway) kept as the lighter variant.*
 
-**Suggested subject line:** A free field guide for the records your [area] work depends on
+**Suggested subject line:** A free Investigator Field Guide for the records your [area] work depends on
 
 Hi [Organization],
 
@@ -46,7 +46,7 @@ info@jrsstandard.com | jrsstandard.com
 
 *Best message for reaching ONE professional (email or DM), as opposed to an organization. Concise, personal, single primary CTA (free guide). Leads with the person's right to know why; JRS as the method; one compact verified credibility line. Claims verified: 10 countries/5 continents (completers); CEP "forthcoming" Nov (not published). No effectiveness claim; no blind-study mention; no long dashes; no free-forever promise. Links /guide, /reviewer verified live.*
 
-**Subject:** A free field guide on defending AI-assisted records
+**Subject:** A free Investigator Field Guide on defending AI-assisted records
 
 Hi [Name],
 
@@ -78,7 +78,7 @@ Hi [Name], I have admired your work in [specialty]. I created the Justification 
 
 ## Version 1b (Organizations - JRS-led, 2026-07-23) [lighter guide-giveaway variant]
 
-*Redo per Phillip: the Initiative is now named the Justification Review Standard (JRS) Initiative (was "DRR Initiative"), and the message LEADS with JRS as the method, using Phillip's supplied opening. DRR is kept as the named risk that JRS catches, so the field guide still connects. Also fixes the prior "That threat" antecedent gap (that sentence is gone) and removes the double "We call it." Links /guide and /reviewer verified live. No long dashes. Strategic note: leading with JRS foregrounds the sellable asset but slightly de-emphasizes owning the DRR category term; Phillip's call. Use 1b going forward; 1a below kept for history.*
+*Redo per Phillip: the Initiative is now named the Justification Review Standard (JRS) Initiative (was "DRR Initiative"), and the message LEADS with JRS as the method, using Phillip's supplied opening. DRR is kept as the named risk that JRS catches, so the Investigator Field Guide still connects. Also fixes the prior "That threat" antecedent gap (that sentence is gone) and removes the double "We call it." Links /guide and /reviewer verified live. No long dashes. Strategic note: leading with JRS foregrounds the sellable asset but slightly de-emphasizes owning the DRR category term; Phillip's call. Use 1b going forward; 1a below kept for history.*
 
 Hi [Organization],
 
@@ -106,7 +106,7 @@ If your team wants to join the Initiative for defensible documentation and decis
 
 https://www.jrsstandard.com/reviewer
 
-The field guide and the training both put JRS to work, and both are yours to use and share freely.
+The Investigator Field Guide and the training both put JRS to work, and both are yours to use and share freely.
 
 Thank you so much for all you do.
 
@@ -146,7 +146,7 @@ If your team wants to join the Initiative for defensible documentation and decis
 
 https://www.jrsstandard.com/reviewer
 
-That shared standard is the Justification Review Standard (JRS): a practical method for checking whether a record can explain, on its own terms, why a decision was made, before that record is final. The field guide and the training both put JRS to work, and both are yours to use and share freely.
+That shared standard is the Justification Review Standard (JRS): a practical method for checking whether a record can explain, on its own terms, why a decision was made, before that record is final. The Investigator Field Guide and the training both put JRS to work, and both are yours to use and share freely.
 
 Thank you so much for all you do.
 
@@ -199,7 +199,7 @@ jrsstandard.com
 
 ## Version 2 (Human Rights & Equality Bodies - short DM)
 
-Hi [Name]. Your work in investigations caught my attention. I've developed a practical AI field guide focused on a question that's receiving surprisingly little attention: can an AI-assisted record still be independently reconstructed and defended? I'd be happy to send you a complimentary copy if it would be useful.
+Hi [Name]. Your work in investigations caught my attention. I've developed a practical Investigator Field Guide for AI-assisted records, focused on a question that's receiving surprisingly little attention: can an AI-assisted record still be independently reconstructed and defended? I'd be happy to send you a complimentary copy if it would be useful.
 
 ## Version 3 (AI Governance Professionals - short DM)
 

@@ -82,7 +82,7 @@ Keep everything above "GROUNDING & VALIDATION" exactly as it is. Replace from th
 
 ⬇️ FREE RESOURCES (all free to use)
 
-📘 Field Guides: https://jrsstandard.com/guide
+📘 Investigator Field Guides: https://jrsstandard.com/guide
 🎓 Training & Certificate: https://jrsstandard.com/reviewer
 
 🚀 Run JRS on 25 of your own records, free. Your record text is never stored: each is assessed in memory and discarded.

@@ -8,7 +8,7 @@ Live figures pulled from the production endpoints behind `pilot-status.html` on 
 
 **Guide downloads (`/api/geo-stats`)**
 - 56 total downloads, 6 countries (US 34, Poland 10, China 5, Singapore 4, Canada 2, Brazil 1)
-- By asset: EEO field guide 21, International 18, Fair Housing 17
+- By asset: EEO Investigator Field Guide 21, International 18, Fair Housing 17
 - Source: 55 from the site, 1 unknown
 - Collection began 2026-07-17, so roughly 16 days at about 3.5 downloads per day
 
@@ -44,7 +44,7 @@ The 100 percent completion rate is a genuine signal in its own right. Free train
 
 **The actual problem is not that the guides are free. It is that 56 downloads produced zero captured identities.** Your training already does this correctly. It captures name, organization, contact consent, and transfer consent, which is why those 7 records are worth something and the 56 are not. The guides do not.
 
-**The fix:** gate the field guides behind the same short registration the training uses, capturing name, organization, and the transfer consent tier. Keep the guides free. Change what you receive in exchange from nothing to a consented contact record.
+**The fix:** gate the Investigator Field Guides behind the same short registration the training uses, capturing name, organization, and the transfer consent tier. Keep the guides free. Change what you receive in exchange from nothing to a consented contact record.
 
 **The cost, stated honestly:** you will lose downloads. A registration step commonly cuts completion by a third to a half. You would trade roughly 3.5 anonymous downloads a day for perhaps 2 named ones. Given that you are trying to build a transferable asset in about four weeks, that trade strongly favours capture over reach.
 
@@ -52,7 +52,7 @@ The 100 percent completion rate is a genuine signal in its own right. Free train
 
 ## 4. What I would change on the page and the funnel
 
-1. **Gate the three field guides** behind the existing enrollment form, or a shortened version of it. Reuse the consent tiers already built, since they work.
+1. **Gate the three Investigator Field Guides** behind the existing enrollment form, or a shortened version of it. Reuse the consent tiers already built, since they work.
 2. **Add the transfer-consent tier to the guide form**, matching the training. This is what makes the resulting list conveyable rather than merely a mailing list.
 3. **Convert anonymous supporters into named ones.** 37 of your 39 supporters are anonymous. A single follow-up asking whether they are willing to be listed by name would likely convert several. Named supporters are citable in a buyer conversation and anonymous counts are not.
 4. **Stop leading with the download number.** In any buyer or diligence material, lead with: 7 trained and certified professionals across 5 countries and 5 organizations, all transfer-consented, 100 percent completion. That is a smaller number and a much stronger claim.

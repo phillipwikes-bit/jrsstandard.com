@@ -108,7 +108,7 @@ Bookmark this for your next consequential write-up.
 
 ## 6. Glossary / Lexicon
 
-The 2026 field guide to AI-assisted record risk. Five terms worth knowing this quarter:
+The 2026 reference for AI-assisted record risk. Five terms worth knowing this quarter:
 
 **Decision Reconstruction Risk (DRR)**
 Textbook: a documentation gap. In practice: the moment no one can rebuild why a decision was made, so accountability moves to memory and opinion.

@@ -74,7 +74,7 @@ Minor: "Spearheaded" is on your banned list. "Open-access pilot environments" is
 >
 > **Open initiatives.** Founded The Right to Know Why and The Decisions You Can Defend, with an International Registry of Supporters open to practitioners and organizations.
 >
-> **Practitioner tools.** Operates a free, zero-retention diagnostic that lets HR, legal, audit, and compliance teams run their own records against the five conditions. Record text is never stored. Also publishes a free field guide in three editions and a free six-module reviewer training with certification.
+> **Practitioner tools.** Operates a free, zero-retention diagnostic that lets HR, legal, audit, and compliance teams run their own records against the five conditions. Record text is never stored. Also publishes a free Investigator Field Guide in three editions and a free six-module reviewer training with certification.
 
 ### Projects
 
@@ -114,7 +114,7 @@ Do not attribute a title to that episode, do not imply you appeared on it, and d
 
 Nothing in the draft says the standard is **free and open**, and that is your strongest differentiator against a reader who assumes this is a product pitch. Add one line to About:
 
-> The standard, the field guide, the training, and the diagnostic are free to use. The validation data and the analysis plan are published.
+> The standard, the Investigator Field Guide, the training, and the diagnostic are free to use. The validation data and the analysis plan are published.
 
 That sentence does more for institutional credibility than any adjective in the original draft.
 

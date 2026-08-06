@@ -10,7 +10,7 @@ The registration gate went live on 2 August. Here is what the endpoints report t
 
 | Measure | Before the gate (17 Jul to 1 Aug) | Since the gate (2 to 4 Aug) |
 |---|---|---|
-| Field guide downloads | 56, across 6 countries | **0** |
+| Investigator Field Guide downloads | 56, across 6 countries | **0** |
 | Initiative supporters | 39, across 7 countries | **0** |
 | Named registrations captured | 0, none were possible | **0** |
 | Organizations running records | 0 | **0** |
@@ -64,7 +64,7 @@ The gate itself is close to neutral on sale probability. It stopped a metric tha
 
 Stated plainly, because a buyer will state it plainly:
 
-- The **written corpus**: three field guide editions, the training with certificates, the standard, the reference card, the papers.
+- The **written corpus**: three Investigator Field Guide editions, the training with certificates, the standard, the reference card, the papers.
 - The **validation dataset**: 24 constructed records with a fixed, independently verified key, and 32 completed reviewer sets across two arms.
 - The **brand**: JRS and Decision Reconstruction Risk, unregistered.
 - The **code and domain**.

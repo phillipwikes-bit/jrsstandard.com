@@ -30,7 +30,7 @@ The single highest-value move is not more research. It is one real organization 
 2. Finish the reviewer panel to a defensible n and run Arm B. This earns the strong "JRS beats unaided review" claim and completes the Detection paper.
 3. Trademark JRS and DRR now (months-long). Category ownership is the durable moat.
 4. Get contributor IP agreements signed. 26 unpaid international reviewers with no signed disclaimer is the biggest late-diligence killer. Cheap to fix now while relationships are warm.
-5. Package the Field Guide as a finished, versioned product line and get the Broida mention in writing (accurately, non-endorsement) plus his author introductions.
+5. Package the Investigator Field Guide as a finished, versioned product line and get the Broida mention in writing (accurately, non-endorsement) plus his author introductions.
 
 ### Tier 2: the evidence package (Claude can draft; Phillip approves)
 6. The 40-60 page JRS Validation Report: one referenceable PDF pulling together reproducibility, reliability, the verified key, the pre-registered plan, and the panel. The highest-leverage document that does not wait on peer review.
@@ -38,7 +38,7 @@ The single highest-value move is not more research. It is one real organization 
 8. Sequence the three papers: Detection (AI and Ethics) first, FOIL second, Business Ethics third.
 
 ### Tier 3: consolidate the storefront (Claude can build; Phillip approves deploy)
-9. Update the acquisition prospectus (acquisition-9f3c2a7d4b.html) to include the Field Guide product line, the Broida mention (non-endorsement), the named panel, the OpenAPI/partner schema, and the dataset/engine. It currently omits these flagships.
+9. Update the acquisition prospectus (acquisition-9f3c2a7d4b.html) to include the Investigator Field Guide product line, the Broida mention (non-endorsement), the named panel, the OpenAPI/partner schema, and the dataset/engine. It currently omits these flagships.
 10. Turn interest into named adoption: the training-enrollment capture (built; awaiting the one-time table SQL) and the download counter. Report enrollments and downloads by organization and title as demand evidence.
 11. One consistent asset list across the homepage, the standard doc, and the prospectus.
 
@@ -49,7 +49,7 @@ The single highest-value move is not more research. It is one real organization 
 
 ## 4. Honest probability of sale
 - As-is today: low. Promising standard, early validation, scattered story, zero demand proof.
-- After Tier 1 (a real-org pilot, panel + Arm B, trademark filed, IP agreements, Field Guide packaged) plus Tier 2 (Validation Report, preprint): moderate-to-good for a strategic buyer (investigations publisher, compliance/GRC, legaltech, AI-governance) who values the dataset, panel, category, and channel.
+- After Tier 1 (a real-org pilot, panel + Arm B, trademark filed, IP agreements, Investigator Field Guide packaged) plus Tier 2 (Validation Report, preprint): moderate-to-good for a strategic buyer (investigations publisher, compliance/GRC, legaltech, AI-governance) who values the dataset, panel, category, and channel.
 - Add real commercial traction (a paying or renewing pilot): good.
 - Biggest single lever remains commercial: one organization actually using it.
 - Most durable value regardless of sale: ownership of the DRR vocabulary.

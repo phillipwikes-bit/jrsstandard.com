@@ -20,7 +20,7 @@ function assetOf(row){
   const p = row.payload || {};
   if (row.source === 'kit-dl'){
     if (p.file === 'JRS_Rapid_Review_Card.pdf') return 'Rapid Review Card';
-    if (p.file === 'JRS_Investigator_Field_Guide.pdf') return 'Field Guide (combined)';
+    if (p.file === 'JRS_Investigator_Field_Guide.pdf') return 'Investigator Field Guide (combined)';
     if (p.file === 'JRS-Reference-9d4f2a7c.pdf') return 'Reviewer Reference';
     return 'Training kit';
   }
@@ -30,10 +30,10 @@ function assetOf(row){
     return 'Document';
   }
   // guide-dl
-  if (p.edition === 'employment')    return 'Field Guide: EEO';
-  if (p.edition === 'fairhousing')   return 'Field Guide: Fair Housing';
-  if (p.edition === 'international')  return 'Field Guide: International';
-  return 'Field Guide';
+  if (p.edition === 'employment')    return 'Investigator Field Guide: EEO';
+  if (p.edition === 'fairhousing')   return 'Investigator Field Guide: Fair Housing';
+  if (p.edition === 'international')  return 'Investigator Field Guide: International';
+  return 'Investigator Field Guide';
 }
 
 export default async function handler(){
@@ -88,7 +88,7 @@ export default async function handler(){
 
     // ---- Per-item detail: every asset on its own, with its own country split ----
     // Nothing shared into a common total. Guides listed first, then the rest.
-    const ORDER = ['Field Guide: EEO','Field Guide: Fair Housing','Field Guide: International','JRS Standard (PDF)','Rapid Review Card','JRS Reviewer Reference','Field Guide (combined)'];
+    const ORDER = ['Investigator Field Guide: EEO','Investigator Field Guide: Fair Housing','Investigator Field Guide: International','JRS Standard (PDF)','Rapid Review Card','JRS Reviewer Reference','Investigator Field Guide (combined)'];
     const perItem = {};
     for (const row of clean){
       const a = assetOf(row);

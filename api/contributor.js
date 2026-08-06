@@ -14,7 +14,7 @@ export const config = { runtime: 'edge' };
 //      the aggregate) as a forced choice, so silence is never read as consent.
 //   3. Records the continuing-use and transfer permissions in writing, which is
 //      what a successor's counsel asks for and what an email thread cannot show.
-//   4. Releases what was promised: the two initiative sign-ups, the field guide,
+//   4. Releases what was promised: the two initiative sign-ups, the Investigator Field Guide,
 //      the training, and the aggregate results summary.
 //
 // DELIBERATE OMISSION: comparison-arm reviewers (RR-### codes) are NOT in this

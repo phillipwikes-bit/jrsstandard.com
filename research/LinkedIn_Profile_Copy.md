@@ -166,7 +166,7 @@ Pin, in order, with these titles and descriptions (LinkedIn truncates long descr
 
 **1. `jrsstandard.com/guide`**
 Title: Free Investigator Field Guide
-Description: A practical field guide for anyone who reviews AI-assisted records: what to check, what to ask, and how to spot a file that cannot answer "why." Three domain editions (Employment, Fair Housing, International) plus a combined overview. Free, no sign-up. Download it, copy it, and share it with your whole team.
+Description: A practical Investigator Field Guide for anyone who reviews AI-assisted records: what to check, what to ask, and how to spot a file that cannot answer "why." Three domain editions (Employment, Fair Housing, International) plus a combined overview. Free, no sign-up. Download it, copy it, and share it with your whole team.
 
 **2. `jrsstandard.com/reviewer`**
 Title: Free Reviewer Training + Certificate
@@ -201,7 +201,7 @@ A staged, pre-registered evidence program testing whether JRS can be applied rel
 An automated nightly study in which three independent AI providers (Anthropic, OpenAI, Google) apply JRS to the same constructed records. Cross-vendor agreement averages 84% across 15 records, a reproducibility signal showing the standard is applied consistently by models that share no lineage. Reproducibility only, deliberately distinct from accuracy.
 
 **5. Investigator Field Guide (three domain editions)**
-A practical field guide for investigators reviewing AI-assisted records, in Employment, Fair Housing, and International human-rights editions plus a combined overview. Distributed free, no sign-up, with organizations encouraged to copy and share internally. Featured as a resource in Dewey Publications' investigator newsletter and podcast. Free download: jrsstandard.com/guide
+A practical Investigator Field Guide for investigators reviewing AI-assisted records, in Employment, Fair Housing, and International human-rights editions plus a combined overview. Distributed free, no sign-up, with organizations encouraged to copy and share internally. Featured as a resource in Dewey Publications' investigator newsletter and podcast. Free download: jrsstandard.com/guide
 
 **6. JRS Reviewer Training and Certificate**
 A six-module reviewer training with a companion reviewer reference, ending in a certificate of completion. Teaches the five JRS checks, calibration on worked examples, and escalation triggers, at the reviewer's own pace inside a single focused view. Free with registration while validation runs; completions are recorded by country as part of the adoption evidence. jrsstandard.com/reviewer

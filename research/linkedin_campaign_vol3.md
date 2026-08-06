@@ -5,7 +5,7 @@ Campaign edition. Every post below carries the initiative CTAs. Covers the forma
 **Campaign links**
 - Support RTKW: https://www.jrsstandard.com/api/support?c=rtkw&src=linkedin
 - Support Defend: https://www.jrsstandard.com/api/support?c=defend&src=linkedin
-- Field Guide: https://www.jrsstandard.com/guide
+- Investigator Field Guide: https://www.jrsstandard.com/guide
 - Reviewer training and certificate: https://www.jrsstandard.com/reviewer
 - Podcast: https://podcasts.apple.com/us/podcast/the-dewey-publications-podcast/id888037481?i=1000775802123
 
@@ -45,7 +45,7 @@ Where the work stands now: three AI models from three different vendors applied 
 
 If you believe a decision that affects someone should be explainable to them, add your name: https://www.jrsstandard.com/api/support?c=rtkw&src=linkedin
 
-**First comment:** The free field guide walks through all five conditions: https://www.jrsstandard.com/guide
+**First comment:** The free Investigator Field Guide walks through all five conditions: https://www.jrsstandard.com/guide
 
 ---
 
@@ -392,7 +392,7 @@ Save this and hold your next consequential record against Panel 2.
 
 The person the decision affects deserves Panel 2. So does your organization: https://www.jrsstandard.com/api/support?c=rtkw&src=linkedin
 
-**First comment:** Field guide, free: https://www.jrsstandard.com/guide
+**First comment:** Investigator Field Guide, free: https://www.jrsstandard.com/guide
 
 ---
 
@@ -482,7 +482,7 @@ The pen marks in this photo are all the same annotation. Every time I circle som
 
 That question does not require software. It requires that somebody ask it before the record is finalized rather than after it is challenged.
 
-If you review records for a living, the field guide is free and it is the version of this question you can hand to a team: https://www.jrsstandard.com/guide
+If you review records for a living, the Investigator Field Guide is free and it is the version of this question you can hand to a team: https://www.jrsstandard.com/guide
 
 And if you believe people deserve to understand decisions made about them, add your name: https://www.jrsstandard.com/api/support?c=rtkw&src=linkedin
 
@@ -513,7 +513,7 @@ Which of these is already in your team's job description, and which one is the g
 
 The reviewer training and certificate cover all five and cost nothing: https://www.jrsstandard.com/reviewer
 
-**First comment:** Field guide: https://www.jrsstandard.com/guide
+**First comment:** Investigator Field Guide: https://www.jrsstandard.com/guide
 
 ---
 

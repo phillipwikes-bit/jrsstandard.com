@@ -148,7 +148,7 @@ JRS is an open standard tested across institutions:
 
 FREE RESOURCES
 
-• Field Guide: jrsstandard.com/guide
+• Investigator Field Guide: jrsstandard.com/guide
 • Reviewer Training and Certificate: jrsstandard.com/reviewer
 • Dewey Podcast: https://podcasts.apple.com/us/podcast/the-dewey-publications-podcast/id888037481?i=1000775802123
 

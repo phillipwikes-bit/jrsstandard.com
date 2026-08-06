@@ -232,7 +232,7 @@ The training platform is more than onboarding. It is a direct lever on reliabili
 
 ## 9. Domain Applications: Administrative Investigations
 
-The investigative setting where JRS originated remains its clearest application. Field guides instantiate the standard for three contexts: employment (EEO/EEOC intake and workplace investigations), fair housing (tenant-screening, availability, and reasonable-accommodation determinations), and a jurisdiction-neutral international edition for equality bodies and national human rights institutions, most of which carry a combined employment-and-housing mandate. In each, the five conditions and the Record Interrogation Framework are applied at intake and before finalization, with elevated-risk records routed to secondary review. The method is jurisdiction-neutral by construction; only the illustrative statutory references change.
+The investigative setting where JRS originated remains its clearest application. Investigator Field Guides instantiate the standard for three contexts: employment (EEO/EEOC intake and workplace investigations), fair housing (tenant-screening, availability, and reasonable-accommodation determinations), and a jurisdiction-neutral international edition for equality bodies and national human rights institutions, most of which carry a combined employment-and-housing mandate. In each, the five conditions and the Record Interrogation Framework are applied at intake and before finalization, with elevated-risk records routed to secondary review. The method is jurisdiction-neutral by construction; only the illustrative statutory references change.
 
 ---
 

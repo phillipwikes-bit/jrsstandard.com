@@ -18,7 +18,7 @@ The most valuable thing you could do is put the ideas to work in your own settin
 
 I would also welcome your perspective on how these ideas translate for African institutions and policymakers. That angle is too often missing from the conversation, and you understand it from the inside.
 
-I will keep you in the loop as the work develops, including the research and writing as it becomes public, and if a written recommendation for your profile would ever be useful, I would be glad to provide one. In the meantime, please share the field guide and the training with any colleagues who might benefit, and my door is open whenever questions come up.
+I will keep you in the loop as the work develops, including the research and writing as it becomes public, and if a written recommendation for your profile would ever be useful, I would be glad to provide one. In the meantime, please share the Investigator Field Guide and the training with any colleagues who might benefit, and my door is open whenever questions come up.
 
 Thank you again for your generosity and your commitment to this. It is a real pleasure having you in this community.
 

@@ -74,7 +74,7 @@ Decision rule to apply once there is data:
 - **Conversion 15 to 40 percent:** normal for a gated download. Trim to name, email, organization, and one consent question, and move the transfer and public listing questions to the thank-you screen where they no longer block the file.
 - **Conversion below 15 percent:** the form is the problem. Reduce to name and email only for the guide, keep the full form for the pilot and the training where the person is more invested.
 
-Regardless of the number, one change is worth making now: the field guide is the lowest-commitment thing you offer and it currently carries the same form as everything else. Consider making organization and title optional on the guide path only. A named person with a personal email is still infinitely more conveyable than an anonymous download.
+Regardless of the number, one change is worth making now: the Investigator Field Guide is the lowest-commitment thing you offer and it currently carries the same form as everything else. Consider making organization and title optional on the guide path only. A named person with a personal email is still infinitely more conveyable than an anonymous download.
 
 ---
 
@@ -84,7 +84,7 @@ What each route offers today, and what would make it worth completing:
 
 | Route | Current incentive | Stronger incentive |
 |---|---|---|
-| Field guide | A PDF | The PDF plus a free read on one of their own records |
+| Investigator Field Guide | A PDF | The PDF plus a free read on one of their own records |
 | Initiative | Being counted | Named in the public registry, with the count and the countries stated |
 | Org pilot | A free assessment | A one-page written summary they can show their own leadership |
 | Training | Certificate | Certificate plus a LinkedIn recommendation from you on completion, which you already do for reviewers |

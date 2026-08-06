@@ -22,7 +22,7 @@ The fix is not less AI. It is a review discipline at the documentation layer: be
 
 If you lead a function where decisions get challenged, this is worth twenty minutes of your attention before it is worth a committee.
 
-**First comment:** The standard, the field guide, and the evidence program: https://www.jrsstandard.com/guide
+**First comment:** The standard, the Investigator Field Guide, and the evidence program: https://www.jrsstandard.com/guide
 
 ---
 
@@ -54,7 +54,7 @@ If your organization should be able to defend its decisions, say so where it cou
 
 ## 3. The Resource-Led Post
 
-Free, and more useful than most paid compliance training: a field guide for anyone who reviews records for a living.
+Free, and more useful than most paid compliance training: a Investigator Field Guide for anyone who reviews records for a living.
 
 Investigators, HR professionals, auditors, records officers, compliance leads: your daily question is the same one a court asks years later. Does this record actually support what it concludes?
 
