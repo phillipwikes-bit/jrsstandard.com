@@ -6,6 +6,8 @@
 
 *Both authors contributed equally to this article. Names appear in alphabetical order.*
 
+*Hekim Colpan contributes to this article in a personal professional capacity. The views expressed are his own and do not represent the position of any employer or institution.*
+
 Hekim Colpan is an AI Governance and Compliance Manager and an ISO/IEC 42001 auditor, working on EU AI Act, GDPR, and DORA compliance for AI-assisted systems. Phillip Wikes is an AI Governance and Cognitive Risk Advisor and a former Lead Civil Rights Officer at the Maryland Commission on Civil Rights.
 
 ---
@@ -94,15 +96,17 @@ JRS is a structured way to review documentation, meant to be run inside the work
 
 One question sits at the center of it. When AI-assisted content goes into a workplace record, does that record stay traceable, evidence-backed, and reconstructable under structured review? Five checks work through the answer: whether the conclusion can be rebuilt from the record alone, whether its basis is identifiable, whether the chronology holds together, whether a reviewer can trace how the conclusion was reached, and whether the evidence behind it is sufficient.
 
-JRS is in structured validation, and the figures below are provisional until data collection closes in mid-August 2026.
+JRS is in structured validation. Every figure below is provisional until data collection closes in mid-August 2026, and each will be updated at close or withdrawn if it cannot be supported.
+
+The method behind them, in short. Reviewers work through a balanced corpus of 24 constructed, de-identified AI-generated records, twelve of which carry traceable support for their conclusions and twelve of which do not. The answer key was fixed before any reviewer saw a record and was then independently reproduced by blind raters, 24 of 24. Reviewers are blind to the key and to one another. Accuracy is computed per reviewer rather than per read, so the interval reflects variation between people rather than between individual judgments, which is the conservative choice. Thresholds were registered before the data were examined.
 
 Fifty three international reviewers across three studies have graded records for this work, unpaid and in a personal capacity. Thirty two independent experts among them completed a full 24-record set, in 16 countries across 5 continents.
 
-On detection, a panel of 16 reviewers drawn from 11 countries read the records blind against a verified answer key and identified unreconstructable records with 83.9% accuracy across 384 graded reads (95% CI 72.7 to 95.1; sensitivity 87.0%, specificity 80.7%), clearing a threshold fixed before any data were examined.
+On detection, a panel of 16 independent experts drawn from 11 countries identified unreconstructable records with 83.9% accuracy across 384 graded reads (95% CI 72.7 to 95.1 at participant level; sensitivity 87.0%, specificity 80.7%). The registered threshold required a point estimate of at least 70% with the lower confidence bound above chance. Both criteria are met.
 
-On reproducibility, three AI models, each from a different vendor, applied the standard to the same 15 constructed records and agreed 84% of the time. That is a signal about consistent application, not about accuracy.
+On reproducibility, three AI models, one each from three independent vendors, applied the standard to the same 15 constructed records and reached a mean pairwise agreement of 84% on the determination. Cross-vendor models were used rather than three instances of one provider, so that agreement reflects the method rather than a single model lineage. This measures consistent application, not accuracy.
 
-On reviewer reliability, independent raters scoring a shared record set reached Gwet's AC1 of 0.739 among expert raters and 0.624 among trained reviewers, both above the floor of 0.61 set in advance. Those figures are interim and rest on 10 records and 99 labels.
+On reviewer reliability, independent raters scoring a shared record set reached Gwet's AC1 of 0.739 among expert raters and 0.624 among trained reviewers, against a floor of 0.61 set in advance. AC1 was chosen in advance rather than kappa because the determination distribution was expected to be skewed, and kappa behaves poorly under skewed marginals. These figures are interim: they rest on 10 records and 99 labels against a target of about 26 records, the intervals around them are wide, and they will be re-estimated at target.
 
 A related article is due in CEP Magazine in November. Detection, reproducibility, and reliability are separate questions from real-world effectiveness, which is a later stage of the program.
 
@@ -110,13 +114,13 @@ JRS runs inside existing HR, compliance, investigations, audit, and legal review
 
 ## Acknowledgment
 
-The reproducibility and validation methodology behind the figures cited above was designed by Ubayet Hossain, FRM, Associate Director (Model Validation), KPMG India.
+The reproducibility and validation methodology behind the figures cited above, including the reference-panel design, the choice of agreement coefficient, and the acceptance floors, was designed by Ubayet Hossain, FRM, Associate Director (Model Validation), KPMG India.
 
-The figures themselves exist because reviewers in sixteen countries read records they were never paid to read. We are grateful to all of them.
+The figures themselves exist because reviewers in sixteen countries read records they were never paid to read. We are grateful to all of them. The argument that a record must stay understandable to the person it describes, which runs through this article, came out of conversations with Gabriela Cortez of the Maryland Commission on Civil Rights and is credited to her with permission.
 
 ## About the Authors
 
-**Hekim Colpan** is an AI Governance and Compliance Manager and Data Protection Manager, and an ISO/IEC 42001 auditor, based in Germany. His work spans AI management systems under ISO/IEC 42001, information-security and compliance management under ISO/IEC 27001 and 37301, the EU AI Act, the GDPR, and DORA, with particular attention to how record-keeping, logging, and technical-documentation requirements land in day-to-day governance practice.
+**Hekim Colpan** is an AI Governance and Compliance Manager, Data Protection Manager, and ISO/IEC 42001 auditor based in Germany. His work focuses on the operational implementation of AI management systems, the EU AI Act, GDPR accountability, DORA, information security and governance controls for AI-assisted systems.
 
 **Phillip Wikes** is an AI Governance and Cognitive Risk Advisor focused on documentation integrity, evidentiary traceability, and record-level controls in AI-assisted environments. He served as a Lead Civil Rights Officer at the Maryland Commission on Civil Rights, evaluating discrimination complaints and resolving matters through investigation, mediation, and structured fact-finding under federal HUD and EEOC frameworks. He developed the Justification Review Standard (JRS) and named the risk it addresses, Decision Reconstruction Risk (DRR), and holds an M.S. in Negotiation and Conflict Management.
 
