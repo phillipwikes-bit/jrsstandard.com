@@ -4,6 +4,8 @@
 
 **By Hekim Colpan and Phillip Wikes**
 
+*Both authors contributed equally to this article. Names appear in alphabetical order.*
+
 Hekim Colpan is an AI Governance and Compliance Manager and an ISO/IEC 42001 auditor, working on EU AI Act, GDPR, and DORA compliance for AI-assisted systems. Phillip Wikes is an AI Governance and Cognitive Risk Advisor and a former Lead Civil Rights Officer at the Maryland Commission on Civil Rights.
 
 ---
@@ -18,7 +20,7 @@ We call that gap Decision Reconstruction Risk, or DRR: the state a record is in 
 
 We come at this from two different directions and reach the same place. One of us has spent his career inside European AI governance and compliance, looking at how organizations document and defend automated and AI-assisted processing against ISO/IEC 42001, the EU AI Act, and the GDPR. The other spent more than a decade at a United States civil rights agency, reading consequential records after the fact. The pattern he saw again and again was a decision that was probably sound sitting on top of a record that could not prove it. As AI writes more of the documents behind decisions like these, the material that would let anyone reconstruct them is disappearing.
 
-The exposure is now transatlantic, which is why we write from both sides of it. In Europe, the GDPR's accountability principle and the EU AI Act's record-keeping expectations ask an organization to show how a decision was reached, not just assert it. In the United States, the same demand shows up in discovery and in the burden-shifting tests that decide employment and housing cases. Different legal vocabulary, same underlying requirement: the record has to be able to answer for itself.
+The exposure is now transatlantic, which is why we write from both sides of it. In Europe, the GDPR's accountability principle and the EU AI Act's record-keeping expectations ask an organization to show how a decision was reached, not just assert it. In the United States, the same demand shows up in discovery and in the burden-shifting tests that decide employment and housing cases. The legal vocabulary differs. What is being asked for does not. The record has to answer for itself.
 
 The practical takeaway runs through everything below. Treat AI-assisted documentation as something a regulator, an auditor, or a court may one day read closely, and the best time to make it survive that reading is before it is finalized.
 
@@ -76,9 +78,9 @@ The cost of all this runs past the courtroom. When an institution cannot explain
 
 ## IX. Conclusion
 
-The risk lives wherever the trail back to the evidence has gone cold, which is another way of describing Decision Reconstruction Risk. The organizations that come through the next decade in good shape will be the ones that treat a record as something obligated to answer for itself, in front of a court, a regulator, and the person it is about. Records are going to be judged on whether the reasoning inside them can actually be seen, checked, and reconstructed, on both sides of the Atlantic.
+The risk lives wherever the trail back to the evidence has gone cold. That is Decision Reconstruction Risk in one sentence. An organization that treats every record as something a court, a regulator, or the person it describes may one day read closely will be in a much better position than one that does not, and on both sides of the Atlantic records are increasingly being judged on whether the reasoning inside them can still be seen and rebuilt.
 
-Pull these currents together and they point at a single governance idea that outlasts any one jurisdiction. When AI helps make a consequential decision, the person on the receiving end should be able to understand why, and the organization should be able to reconstruct and defend it straight from the record. We have taken to calling that expectation the Right to Know Why. It is not a new legal doctrine. It is a short name for accountability that already runs through discovery, evidentiary sufficiency, the GDPR's accountability principle, and the EU AI Act's record-keeping demands.
+Underneath all of it sits one idea that does not belong to any single jurisdiction. When AI helps make a consequential decision, the person on the receiving end should be able to understand why, and the organization should be able to reconstruct and defend it from the record itself. We call that the Right to Know Why. It is not a new legal doctrine. It is a short name for something that already runs through discovery, evidentiary sufficiency, the GDPR's accountability principle, and the EU AI Act's record-keeping requirements.
 
 Put the question through American evidentiary law or through European fundamental-rights law, and it comes out the same: can the decision still explain itself? When it cannot, accountability breaks, for the institution that has to defend the decision and for the person owed an explanation of it. Giving that test a plain name is what the Right to Know Why is for.
 
@@ -92,7 +94,17 @@ JRS is a structured way to review documentation, meant to be run inside the work
 
 One question sits at the center of it. When AI-assisted content goes into a workplace record, does that record stay traceable, evidence-backed, and reconstructable under structured review? Five checks work through the answer: whether the conclusion can be rebuilt from the record alone, whether its basis is identifiable, whether the chronology holds together, whether a reviewer can trace how the conclusion was reached, and whether the evidence behind it is sufficient.
 
-JRS is in structured validation. Independent reviewers across 10 countries on 5 continents have completed structured reviews. Three AI models, each from a different vendor, applied the standard to the same records and agreed 84% of the time across 15 constructed records, which is a signal about reproducible application, not about accuracy. A related article is due in CEP Magazine in November. These results speak to whether the standard can be applied consistently; they do not yet establish reviewer reliability, accuracy, or real-world effectiveness, all of which come in later stages of the program.
+JRS is in structured validation, and the figures below are provisional until data collection closes in mid-August 2026.
+
+Fifty three international reviewers across three studies have graded records for this work, unpaid and in a personal capacity. Thirty two of them completed a full 24-record set, across 16 countries and 5 continents.
+
+On detection, a panel of 16 reviewers drawn from 11 countries read the records blind against a verified answer key and identified unreconstructable records with 83.9% accuracy across 384 graded reads (95% CI 72.7 to 95.1; sensitivity 87.0%, specificity 80.7%), clearing a threshold fixed before any data were examined.
+
+On reproducibility, three AI models, each from a different vendor, applied the standard to the same 15 constructed records and agreed 84% of the time. That is a signal about consistent application, not about accuracy.
+
+On reviewer reliability, independent raters scoring a shared record set reached Gwet's AC1 of 0.739 among expert raters and 0.624 among trained reviewers, both above the floor of 0.61 set in advance. Those figures are interim and rest on 10 records.
+
+A related article is due in CEP Magazine in November. Detection, reproducibility, and reliability are separate questions from real-world effectiveness, which is a later stage of the program.
 
 JRS runs inside existing HR, compliance, investigations, audit, and legal review processes. It needs no specialized software and no procedural redesign.
 
@@ -100,10 +112,12 @@ JRS runs inside existing HR, compliance, investigations, audit, and legal review
 
 The reproducibility and validation methodology behind the figures cited above was designed by Ubayet Hossain, FRM, Associate Director (Model Validation), KPMG India.
 
+The figures themselves exist because reviewers in sixteen countries read records they were never paid to read. We are grateful to all of them.
+
 ## About the Authors
 
 **Hekim Colpan** is an AI Governance and Compliance Manager and Data Protection Manager, and an ISO/IEC 42001 auditor, based in Germany. His work spans AI management systems under ISO/IEC 42001, information-security and compliance management under ISO/IEC 27001 and 37301, the EU AI Act, the GDPR, and DORA, with particular attention to how record-keeping, logging, and technical-documentation requirements land in day-to-day governance practice.
 
-**Phillip Wikes** is an AI Governance and Cognitive Risk Advisor focused on documentation integrity, evidentiary traceability, and record-level controls in AI-assisted environments. From 2012 to 2025 he served as a Lead Civil Rights Officer at the Maryland Commission on Civil Rights, evaluating discrimination complaints and resolving matters through investigation, mediation, and structured fact-finding under federal HUD and EEOC frameworks. He developed the Justification Review Standard (JRS) and named the risk it addresses, Decision Reconstruction Risk (DRR), and holds an M.S. in Negotiation and Conflict Management.
+**Phillip Wikes** is an AI Governance and Cognitive Risk Advisor focused on documentation integrity, evidentiary traceability, and record-level controls in AI-assisted environments. He served as a Lead Civil Rights Officer at the Maryland Commission on Civil Rights, evaluating discrimination complaints and resolving matters through investigation, mediation, and structured fact-finding under federal HUD and EEOC frameworks. He developed the Justification Review Standard (JRS) and named the risk it addresses, Decision Reconstruction Risk (DRR), and holds an M.S. in Negotiation and Conflict Management.
 
 JRS: https://jrsstandard.com

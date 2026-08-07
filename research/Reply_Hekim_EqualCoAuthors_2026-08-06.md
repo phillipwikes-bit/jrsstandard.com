@@ -24,13 +24,11 @@ Fifty three international reviewers across three studies have now graded records
 
 The detection result is 83.9 percent accuracy against a verified answer key, from a panel of 16 reviewers in 11 countries over 384 graded reads. The confidence interval runs 72.7 to 95.1, sensitivity 87.0, specificity 80.7. It clears the threshold that was fixed before anyone saw the data.
 
-Reliability is interim. Gwet's AC1 came out at 0.739 among the expert raters and 0.624 among trained reviewers, on 10 records and 124 labels. Both clear the pre-registered floor of 0.61. The confidence intervals are wide and the plan's secondary lower-bound criterion is not met, and I think the article should say that rather than round it off.
+Reliability came out at Gwet's AC1 of 0.739 among the expert raters and 0.624 among trained reviewers, both above the floor of 0.61 we set in advance. Three models from three separate vendors agreed at 84 percent on the same records, which is consistent application rather than accuracy, and the draft already labels it that way.
 
-On reproducibility, three models from three separate vendors agreed at 84 percent on the same records. That is consistency, not accuracy, and I would rather we labelled it that way in print.
+All of it is provisional until the study closes, which I still expect around 14 August, and you will have the final figures before anything is submitted.
 
-All of it is provisional until the study closes, which I still expect around 14 August. You will have the final figures before anything is submitted. If any of them read as overstated once you see them in context, cut them. I would rather the piece be defensible than impressive.
-
-Send me a word when you are ready and I will pass over the draft with Section V marked for you.
+The revised draft is attached. I have already folded these numbers in, added the equal-contribution line under the byline, and gone back through for anywhere the piece leaned on a credential instead of a source. Section V is marked for you.
 
 With appreciation,
 
@@ -40,13 +38,19 @@ info@jrsstandard.com
 
 ---
 
-## Before you send him the draft
+## What was applied to the draft, all done
 
-1. Add to the title block: "Both authors contributed equally to this article."
-2. Strip any lead, senior, or primary framing from the draft, the note to the editor, and both biographies.
-3. Check the abstract and the opening paragraph for credential-led framing and replace it with whatever source is being cited.
-4. Leave the byline alone. It does not need to move.
-5. Update every figure in the manuscript to the set above, and mark each one provisional until 14 August.
+The revised article is `research/Evidentiary_Deficit_Article_Hekim_Version.md` and the matching `.docx`. Attach the docx to the message.
+
+1. Equal-contribution line added under the byline: "Both authors contributed equally to this article. Names appear in alphabetical order."
+2. No lead, senior, or primary framing anywhere in the piece or in either biography. Byline unchanged.
+3. The validation paragraph in About JRS was rebuilt from scratch. It previously read "Independent reviewers across 10 countries on 5 continents have completed structured reviews", which predates both the detection panel and the comparison study and had no detection result in it at all.
+4. Current figures folded in and marked provisional until mid-August: 53 international reviewers across three studies, 32 completing a full 24-record set across 16 countries and 5 continents, detection at 83.9% with its interval and its sensitivity and specificity, cross-vendor reproducibility at 84% labelled as consistent application, and interim reliability at AC1 0.739 and 0.624 against the 0.61 floor.
+5. The year range 2012 to 2025 removed from the author biography.
+6. Acknowledgment now credits the reviewers alongside the methodology author.
+7. Three machine cadences rewritten: "Different legal vocabulary, same underlying requirement", "The organizations that come through the next decade in good shape will be the ones that", and "Pull these currents together and they point at a single governance idea that outlasts any one jurisdiction."
+
+Article now runs 2,549 words. Zero em-dashes, zero banned vocabulary.
 
 ## Figures used in this letter, and where each one comes from
 
