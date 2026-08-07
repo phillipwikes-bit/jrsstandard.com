@@ -12,13 +12,13 @@ Thank you. Everything you asked for is in the draft attached, so this is confirm
 
 Equal co-authors, as you asked. The byline reads Hekim Colpan and Phillip Wikes in alphabetical order rather than by seniority, with a line under it saying we contributed equally. Nothing in the article, the note to the editor, or either biography calls one of us lead, senior, or primary.
 
-Your biography and your disclosure are in exactly as you wrote them, word for word. The disclosure sits directly under the byline, where a reader meets it early rather than at the end.
+Your biography and your disclosure are in exactly as you wrote them, word for word. The disclosure sits directly under the byline, where a reader meets it early rather than at the end. Your biography appears once, in About the Authors at the foot of the piece. There was a short author line under the byline as well and I have taken it out, because it repeated the same material in wording you did not write.
 
 On the figures, you put your finger on the right thing, and I took the second half of your condition as seriously as the first. Every number now carries its method in the article itself: the corpus is 24 constructed records, twelve with traceable support and twelve without; the answer key was fixed before any reviewer saw a record and then independently reproduced by blind raters, 24 of 24; reviewers are blind to the key and to each other; accuracy is computed per reviewer rather than per read; and the thresholds were registered before the data were examined. The reliability figures now say plainly that they rest on 10 records against a target of about 26, that the intervals are wide, and that they will be re-estimated at target. Anything that still cannot be supported at close comes out. I would rather publish four defensible numbers than six impressive ones.
 
 Where the numbers stand today, all provisional until close on or about 14 August. Fifty three international reviewers across three studies have graded records for this work, unpaid and in a personal capacity, and thirty two independent experts among them completed a full 24-record set in 16 countries across 5 continents. Detection is 83.9 percent against the verified key, from 16 reviewers in 11 countries over 384 graded reads, with a 95 percent interval of 72.7 to 95.1, sensitivity 87.0 and specificity 80.7. Cross-vendor agreement is 84 percent, which is consistent application and not accuracy, and the draft labels it that way. Reliability is Gwet's AC1 of 0.739 among expert raters and 0.624 among trained reviewers on 10 records and 99 labels, against a floor of 0.61. You will have the locked set before anything is submitted.
 
-One more thing I have done rather than left for later. The draft had grown past what Corporate Compliance Insights runs, so I cut it back before sending it to you, and every word of that cut came out of my own material. The Introduction, the Conclusion and the About JRS block are shorter. Section V, the practitioner checklist, your biography and your disclosure are untouched. The article body now runs about 1,800 words, which is inside their range, and the About JRS block and the biographies sit outside it as an author note. That leaves you room to expand the European analysis without either of us having to argue about space.
+One more thing I have done rather than left for later. The draft had grown past what Corporate Compliance Insights runs, so I cut it back before sending it to you, and every word of that cut came out of my own material. The Introduction, the Conclusion and the About JRS block are shorter. Section V, the practitioner checklist, your biography and your disclosure are untouched. The article body now runs about 1,750 words, which is inside their range, and the About JRS block and the biographies sit outside it as an author note. That leaves you room to expand the European analysis without either of us having to argue about space.
 
 Your plan is the right one, and the sequence you describe is the one I would want: your revisions with primary sources first, then both of us over the whole article, then a decision about submission. No deadline from me.
 
@@ -49,15 +49,18 @@ All of it came from Phillip's material. Section V, the checklist, Hekim's biogra
 
 | Section | Before | After | Change |
 |---|---|---|---|
+| Title block | 123 | 73 | -50 |
 | I. Introduction | 428 | 305 | -123 |
 | IX. Conclusion | 256 | 179 | -77 |
 | About JRS | 576 | 430 | -146 |
-| Acknowledgment | 100 | 61 | -39 |
-| **Article body, title block through Conclusion** | 2,181 | **1,796** | **-385** |
-| Back matter (About JRS, Acknowledgment, biographies) | 808 | 623 | -185 |
-| Total file | 2,804 | 2,419 | -385 |
+| Acknowledgment | 100 | 39 | -61 |
+| **Article body, title block through Conclusion** | 2,181 | **1,746** | **-435** |
+| Back matter (About JRS, Acknowledgment, biographies) | 808 | 599 | -209 |
+| Total file | 2,804 | 2,345 | -459 |
 
 The body is now inside Corporate Compliance Insights' 1,200 to 1,800 range. Nothing was dropped from the argument: the Introduction lost a restated paragraph and a summary sentence, the Conclusion lost a second statement of the Right to Know Why, and About JRS lost its lead-in prose while keeping every piece of methodological detail Hekim asked for.
+
+Two further removals: the standfirst biography line under the byline, which duplicated the About the Authors block at the foot of the piece and still carried the old Hekim wording rather than the biography he supplied; and the closing sentence under the Acknowledgment about reviewers reading records they were never paid to read. The disclosure stays under the byline. Hekim's supplied biography stays in About the Authors, where it is the only place his biography now appears.
 
 ## Removed
 

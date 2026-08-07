@@ -8,8 +8,6 @@
 
 *Hekim Colpan contributes to this article in a personal professional capacity. The views expressed are his own and do not represent the position of any employer or institution.*
 
-Hekim Colpan is an AI Governance and Compliance Manager and an ISO/IEC 42001 auditor, working on EU AI Act, GDPR, and DORA compliance for AI-assisted systems. Phillip Wikes is an AI Governance and Cognitive Risk Advisor and a former Lead Civil Rights Officer at the Maryland Commission on Civil Rights.
-
 ---
 
 ## I. Introduction
@@ -103,8 +101,6 @@ Detection, reproducibility, and reliability are separate questions from real-wor
 ## Acknowledgment
 
 The reproducibility and validation methodology behind the figures cited above, including the reference-panel design, the choice of agreement coefficient, and the acceptance floors, was designed by Ubayet Hossain, FRM, Associate Director (Model Validation), KPMG India.
-
-The figures themselves exist because reviewers in sixteen countries read records they were never paid to read. We are grateful to all of them.
 
 ## About the Authors
 
