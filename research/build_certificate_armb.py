@@ -36,14 +36,23 @@ SIGN_LN = "Phillip Wikes, Study Lead"     # NEUTRAL: never "Creator, JRS"
 FOOTER  = "© 2026 Phillip Wikes   ·   Records Review Study"  # no JRS, no domain
 
 
+def _article(word):
+    """Pick "A" or "An" from the first letter of the perspective. Hardcoding
+    "An" produced "An public-interest" and "An data-protection" in earlier
+    certificates; the article is chosen rather than assumed."""
+    first = word.lstrip().lstrip('"\'(')[:1].lower()
+    return "An" if first in "aeiou" else "A"
+
+
 def neutral_body(perspective, source):
     """Neutral participation paragraph. No JRS, no method, no reconstructability.
     `perspective` e.g. 'AI, health-technology, and governance'; `source` e.g.
     'research and consulting on AI operations and governance'."""
     return ("participated as an independent reviewer in the Records Review "
             "Study, completing the review of all 24 records with care, rigor, "
-            "and independent judgment. An " + perspective + " perspective, "
-            "drawn from " + source + ", enriched the international reviewer panel.")
+            "and independent judgment. " + _article(perspective) + " " + perspective +
+            " perspective, drawn from " + source +
+            ", enriched the international reviewer panel.")
 
 
 def make_certificate(name, date, body, out_path):
@@ -195,6 +204,16 @@ REVIEWERS = [
             "AI-governance and academic-appeals",
             "AI governance practice in education technology, doctoral research, and service assessing academic appeals"),
         "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Certificate_MacKenzie_McCowan.pdf",
+    },
+    {
+        "name": "Wendy Ann Martel",
+        # Completion date is the UTC date of the last read in the database
+        # (2026-08-07T21:25Z), which is the record the certificate rests on.
+        "date": "August 7, 2026",
+        "body": neutral_body(
+            "data-protection, privacy, and AI-governance",
+            "twenty five years of public and private sector practice in data, privacy and AI governance"),
+        "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Certificate_Wendy_Ann_Martel.pdf",
     },
 ]
 
