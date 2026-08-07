@@ -8,7 +8,7 @@
 
 **Source of truth.** Completion status pulled live from `pilot_progress` and `armb_progress` on 2026-08-06 via `research/check_completion.py`. Study 004 identities read directly from `bench_experts` with the service-role connection on 2026-08-06. Names, titles, and countries are from the roster tables in `research/MASTER_TRACKER.md` sections 12 and 12B, the recruit notes, `api/contributor.js`, and the two certificate registries. Nothing here is inferred.
 
-**Totals: 52 distinct people across three studies. 32 completed a full 24-record set. 35 named.**
+**Totals: 53 international reviewers have graded records across three studies. 32 completed a full 24-record set. 35 named.**
 
 ---
 
@@ -22,9 +22,9 @@
 | 4 | V-AI-07 | Saurabh Nanda | General Manager, APAC business leader (P&L); Align Technology | India |
 | 5 | V-AI-08 | Gabriela Cortez | Civil-rights records and bilingual intake; Maryland Commission on Civil Rights | US |
 | 6 | V-AI-10 | Lawal Olabanji | Operations and records management; ALTV Engineering | Nigeria |
-| 7 | V-AI-11 | Andrey Ekhmenin | Founder, EAS; governance diagnostics and post-execution review | Poland / EU |
+| 7 | V-AI-11 | Andrey Ekhmenin | Founder, EAS; governance diagnostics and post-execution review | Poland |
 | 8 | V-AI-12 | Kyle McMullan | Chief Audit Executive; internal audit and financial crimes; the audit hub, London | United Kingdom |
-| 9 | V-AI-16 | Dr Gabriela Bar | Attorney, PhD; AI ethics advisor (EU); Gabriela Bar Law & AI | Poland / EU |
+| 9 | V-AI-16 | Dr Gabriela Bar | Attorney, PhD; AI ethics advisor (EU); Gabriela Bar Law & AI | Poland |
 | 10 | V-AI-20 | Hekim Colpan | AI Governance and Compliance Manager; ISO/IEC 42001 auditor; EU AI Act, GDPR, DORA | Germany |
 | 11 | V-AI-23 | Niloofar Kandi | AI Governance and Strategy Specialist; ISO/IEC 42001 Lead Implementer; PhD Researcher in AI Governance, University of Wollongong | Australia |
 | 12 | V-AI-24 | SungSoo In | AI Governance and Responsible AI; author of the Athena Governance Architecture | South Korea |
@@ -48,7 +48,7 @@ Arm assignment is by deterministic hash of the participant code, made before any
 | 19 | RR-106 | Nicholas Evans | AI Governance and Runtime Auditor; adversarial and non-adversarial testing; ex-USMC | US | B1 |
 | 20 | RR-107 | Tuneer Mondal | AI, HealthTech and Governance; Consultant, Operations and AI Solutions; AI Governance Taskforce researcher, Arcadia Impact; University of Cambridge | Canada (Waterloo) | B2 |
 | 21 | RR-109 | Mostafa Mahmoudi | AI Governance Researcher; Founder and Director, Iran Tech Diplomacy Institute; PhD candidate, Technology Governance, University of Tehran | Iran (Tehran) | B2 |
-| 22 | RR-110 | Jean-Luc Adade | Regional IT Leader, West, Central and North Africa; multi-country IT operations, IT governance, digital transformation; 10+ years | West Africa | B2 |
+| 22 | RR-110 | Jean-Luc Adade | Regional IT Leader, West, Central and North Africa; multi-country IT operations, IT governance, digital transformation; 10+ years | Cote d'Ivoire | B2 |
 | 23 | RR-114 | MacKenzie McCowan | AI Governance Specialist, Atomi; PhD candidate, University of Sydney; Sessional Lecturer, Avondale University; former Student Appeals Panel member, University of Sydney | Australia (Sydney) | B2 |
 | 24 | RR-116 | Dr. Eric J. W. Orlowski | AI Governance Specialist, Ethnographer, Tech Policy Researcher; Research Fellow, NUS Artificial Intelligence Institute; PhD Social and Cultural Anthropology, UCL | Singapore | B2 |
 | 25 | RR-121 | Dr Sharon Licqurish, PhD | CEO, Chief Scientist and AI Governance Architect, AIIP | Australia (Melbourne) | B2 |
@@ -62,7 +62,7 @@ Arm assignment is by deterministic hash of the participant code, made before any
 
 **Arm split: B1 (five conditions) 5, B2 (unaided baseline) 11.**
 
-**Arm B countries among the 14 named: 9.** US, South Africa, Canada, Iran, Australia, Singapore, Nigeria, Kenya, plus one recorded only as the West Africa region.
+**Arm B countries among the 14 named: 9.** US, South Africa, Canada, Iran, Australia, Singapore, Nigeria, Kenya, Cote d'Ivoire.
 
 ---
 
@@ -111,22 +111,23 @@ Country is taken from the affiliation field where the affiliation names a place.
 
 | | Count |
 |---|---|
-| **Distinct people across all three studies** | **52** |
+| **International reviewers who have graded records, all three studies** | **53** |
 | Completed a full 24-record set (Studies 011 and 012) | 32 |
-| Study 004 expert raters who are NOT already completers | 4 |
+| Graded records but not yet a full set | 1 (RR-108, Archana Dhinakaran, 9 of 24) |
+| Study 004 expert raters who are NOT already counted | 4 |
 | Anonymous bench reviewers (Study 004) | 16 |
 | Rater codes held by someone already counted | 3 (E-09, E-12, E-13) |
 | Codes that cannot be resolved to a person | 1 (E-11) |
 | Named people | **35** |
 | Anonymous by their own choice | 2 (RR-130, RR-132) |
 | Anonymous by design, no identity ever captured | 16 (the `R-` bench pool) |
-| Distinct countries across the 32 completers | **15**, plus one reviewer recorded only as West Africa |
+| Distinct countries across the 32 completers | **16** |
 
-**52 is a distinct-human count, not a code count.** The earlier published figure of 48 was a floor built when the `E-` identities could not be read and all eight had to be assumed to be panel members already counted. With the identities now read, exactly three are, so four more real people are added. E-11 stays out because it cannot be resolved to a person.
+**53 is a distinct-human count on a graded-records basis.** The public sentence says reviewers have graded records, so the figure counts everyone who submitted at least one graded read rather than only those who finished a full set. That is 16 in Arm A, 17 in Arm B, 4 Study 004 expert raters the other studies never touched, and the 16 anonymous bench reviewers. E-11 stays out because one label and a null identity row cannot be resolved to a person; counting it would give 54. Reproduce with `research/count_participants.py`.
 
-**The 32 completers span 15 countries, not 11.** US, Australia, India, Nigeria, Poland, United Kingdom, Germany, South Korea, Singapore, UAE, Spain, South Africa, Canada, Iran, Kenya. Eleven is the Study 011 detection-panel figure. It is correct for the 16-person panel, which is how the manuscript, research.html and pilot.html use it, and it was wrongly carried onto all 32 in the gate copy. Corrected in public copy on 2026-08-06.
+**The 32 completers span 16 countries, not 11.** US, Australia, India, Nigeria, Poland, United Kingdom, Germany, South Korea, Singapore, UAE, Spain, South Africa, Canada, Iran, Kenya, Cote d'Ivoire. Eleven is the Study 011 detection-panel figure. It is correct for the 16-person panel, which is how the manuscript, research.html and pilot.html use it, and it was wrongly carried onto all 32 in the gate copy. Corrected in public copy on 2026-08-06.
 
-**One country still unresolved.** Jean-Luc Adade is recorded as "West Africa", a region rather than a country, so he sits outside the 15 and the count would rise to 16 if his country were recorded. Kyle McMullan's earlier "UK / Ireland" entry is now resolved to the United Kingdom from his `bench_experts` affiliation, "the audit hub (London, United Kingdom)".
+**Both country gaps are now closed.** Jean-Luc Adade's country is Cote d'Ivoire, supplied by the owner on 2026-08-06, replacing the "West Africa" region entry. Kyle McMullan's earlier "UK / Ireland" entry resolved to the United Kingdom from his `bench_experts` affiliation, "the audit hub (London, United Kingdom)". Every one of the 30 named completers now carries a country; the only two without one are the two anonymous Arm B participants.
 
 ---
 

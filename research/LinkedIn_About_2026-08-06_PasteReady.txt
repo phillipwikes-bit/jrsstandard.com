@@ -15,7 +15,7 @@ Five core questions:
 ⚖️ Is the evidence sufficient?
 
 📊 GROUNDING & VALIDATION
-Independently evaluated by experts across 15 countries, 5 continents, and multiple legal traditions.
+Independently evaluated by experts across 16 countries, 5 continents, and multiple legal traditions.
 
 🎯 Detection: in a blind study against a verified answer key, 16 independent experts identified unreconstructable records at 83.9% accuracy, clearing the threshold set in advance.
 

@@ -44,9 +44,9 @@ ARM_A = [
     ("V-AI-07", "Saurabh Nanda", "General Manager, APAC business leader (P&L); Align Technology", "India"),
     ("V-AI-08", "Gabriela Cortez", "Civil-rights records and bilingual intake; Maryland Commission on Civil Rights", "US"),
     ("V-AI-10", "Lawal Olabanji", "Operations and records management; ALTV Engineering", "Nigeria"),
-    ("V-AI-11", "Andrey Ekhmenin", "Founder, EAS; governance diagnostics and post-execution review", "Poland / EU"),
+    ("V-AI-11", "Andrey Ekhmenin", "Founder, EAS; governance diagnostics and post-execution review", "Poland"),
     ("V-AI-12", "Kyle McMullan", "Chief Audit Executive; internal audit and financial crimes; the audit hub, London", "United Kingdom"),
-    ("V-AI-16", "Dr Gabriela Bar", "Attorney, PhD; AI ethics advisor (EU); Gabriela Bar Law & AI", "Poland / EU"),
+    ("V-AI-16", "Dr Gabriela Bar", "Attorney, PhD; AI ethics advisor (EU); Gabriela Bar Law & AI", "Poland"),
     ("V-AI-20", "Hekim Colpan", "AI Governance and Compliance Manager; ISO/IEC 42001 auditor; EU AI Act, GDPR, DORA", "Germany"),
     ("V-AI-23", "Niloofar Kandi", "AI Governance and Strategy Specialist; ISO/IEC 42001 Lead Implementer; PhD Researcher, University of Wollongong", "Australia"),
     ("V-AI-24", "SungSoo In", "AI Governance and Responsible AI; author, Athena Governance Architecture", "South Korea"),
@@ -63,7 +63,7 @@ ARM_B = [
     ("RR-106", "Nicholas Evans", "AI Governance and Runtime Auditor; adversarial and non-adversarial testing; ex-USMC", "US", "B1"),
     ("RR-107", "Tuneer Mondal", "AI, HealthTech and Governance; Consultant, Operations and AI Solutions; Arcadia Impact; University of Cambridge", "Canada (Waterloo)", "B2"),
     ("RR-109", "Mostafa Mahmoudi", "AI Governance Researcher; Founder and Director, Iran Tech Diplomacy Institute; PhD candidate, University of Tehran", "Iran (Tehran)", "B2"),
-    ("RR-110", "Jean-Luc Adade", "Regional IT Leader, West, Central and North Africa; IT governance and digital transformation", "West Africa", "B2"),
+    ("RR-110", "Jean-Luc Adade", "Regional IT Leader, West, Central and North Africa; IT governance and digital transformation", "Cote d'Ivoire", "B2"),
     ("RR-114", "MacKenzie McCowan", "AI Governance Specialist, Atomi; PhD candidate, University of Sydney; Sessional Lecturer, Avondale University", "Australia (Sydney)", "B2"),
     ("RR-116", "Dr. Eric J. W. Orlowski", "AI Governance Specialist, Ethnographer, Tech Policy Researcher; Research Fellow, NUS AI Institute; PhD, UCL", "Singapore", "B2"),
     ("RR-121", "Dr Sharon Licqurish, PhD", "CEO, Chief Scientist and AI Governance Architect, AIIP", "Australia (Melbourne)", "B2"),
@@ -187,9 +187,13 @@ def main():
     new_experts = sum(1 for r in s004 if r["arm"] == "expert rater"
                       and r["code"] not in CROSS_STUDY_SAME_PERSON
                       and r["name"] != "no identity on record")
-    print("DISTINCT HUMANS: %d = 32 completers + %d Study 004 experts who are not "
-          "already completers + %d anonymous bench reviewers"
-          % (32 + new_experts + bench, new_experts, bench))
+    # Same basis as the published sentence: everyone who graded at least one
+    # record, which includes reviewers partway through a set.
+    graded_011_012 = sum(1 for c, n in list(a_live.items()) + list(b_live.items()) if n > 0)
+    print("INTERNATIONAL REVIEWERS WHO HAVE GRADED RECORDS: %d = %d in Studies 011 and 012 "
+          "+ %d Study 004 experts not already counted + %d anonymous bench reviewers"
+          % (graded_011_012 + new_experts + bench, graded_011_012, new_experts, bench))
+    print("  of whom %d completed a full %d-record set" % (32, NEEDED))
     print("  %d expert rater codes are the same people as Arm A completers: %s"
           % (dup, ", ".join("%s=%s" % (k, v) for k, v in CROSS_STUDY_SAME_PERSON.items())))
     print("  E-11 carries 1 label and no identity on record; excluded from the count.")

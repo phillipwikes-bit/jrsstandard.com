@@ -5,9 +5,9 @@ study,arm,code,name,title,country,labels_or_reads,status
 011 Detection panel,A,V-AI-07,Saurabh Nanda,"General Manager, APAC business leader (P&L); Align Technology",India,31,COMPLETE
 011 Detection panel,A,V-AI-08,Gabriela Cortez,Civil-rights records and bilingual intake; Maryland Commission on Civil Rights,US,24,COMPLETE
 011 Detection panel,A,V-AI-10,Lawal Olabanji,Operations and records management; ALTV Engineering,Nigeria,24,COMPLETE
-011 Detection panel,A,V-AI-11,Andrey Ekhmenin,"Founder, EAS; governance diagnostics and post-execution review",Poland / EU,24,COMPLETE
+011 Detection panel,A,V-AI-11,Andrey Ekhmenin,"Founder, EAS; governance diagnostics and post-execution review",Poland,24,COMPLETE
 011 Detection panel,A,V-AI-12,Kyle McMullan,"Chief Audit Executive; internal audit and financial crimes; the audit hub, London",United Kingdom,24,COMPLETE
-011 Detection panel,A,V-AI-16,Dr Gabriela Bar,"Attorney, PhD; AI ethics advisor (EU); Gabriela Bar Law & AI",Poland / EU,24,COMPLETE
+011 Detection panel,A,V-AI-16,Dr Gabriela Bar,"Attorney, PhD; AI ethics advisor (EU); Gabriela Bar Law & AI",Poland,24,COMPLETE
 011 Detection panel,A,V-AI-20,Hekim Colpan,"AI Governance and Compliance Manager; ISO/IEC 42001 auditor; EU AI Act, GDPR, DORA",Germany,24,COMPLETE
 011 Detection panel,A,V-AI-23,Niloofar Kandi,"AI Governance and Strategy Specialist; ISO/IEC 42001 Lead Implementer; PhD Researcher, University of Wollongong",Australia,46,COMPLETE
 011 Detection panel,A,V-AI-24,SungSoo In,"AI Governance and Responsible AI; author, Athena Governance Architecture",South Korea,48,COMPLETE
@@ -20,7 +20,7 @@ study,arm,code,name,title,country,labels_or_reads,status
 012 Randomized comparison,B1,RR-106,Nicholas Evans,AI Governance and Runtime Auditor; adversarial and non-adversarial testing; ex-USMC,US,24,COMPLETE
 012 Randomized comparison,B2,RR-107,Tuneer Mondal,"AI, HealthTech and Governance; Consultant, Operations and AI Solutions; Arcadia Impact; University of Cambridge",Canada (Waterloo),24,COMPLETE
 012 Randomized comparison,B2,RR-109,Mostafa Mahmoudi,"AI Governance Researcher; Founder and Director, Iran Tech Diplomacy Institute; PhD candidate, University of Tehran",Iran (Tehran),24,COMPLETE
-012 Randomized comparison,B2,RR-110,Jean-Luc Adade,"Regional IT Leader, West, Central and North Africa; IT governance and digital transformation",West Africa,24,COMPLETE
+012 Randomized comparison,B2,RR-110,Jean-Luc Adade,"Regional IT Leader, West, Central and North Africa; IT governance and digital transformation",Cote d'Ivoire,24,COMPLETE
 012 Randomized comparison,B2,RR-114,MacKenzie McCowan,"AI Governance Specialist, Atomi; PhD candidate, University of Sydney; Sessional Lecturer, Avondale University",Australia (Sydney),24,COMPLETE
 012 Randomized comparison,B2,RR-116,Dr. Eric J. W. Orlowski,"AI Governance Specialist, Ethnographer, Tech Policy Researcher; Research Fellow, NUS AI Institute; PhD, UCL",Singapore,24,COMPLETE
 012 Randomized comparison,B2,RR-121,"Dr Sharon Licqurish, PhD","CEO, Chief Scientist and AI Governance Architect, AIIP",Australia (Melbourne),24,COMPLETE

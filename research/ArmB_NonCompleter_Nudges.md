@@ -93,7 +93,7 @@ Phillip
 
 ---
 
-## RR-110 — Jean-Luc Adade (West Africa)
+## RR-110 — Jean-Luc Adade (Cote d'Ivoire)
 
 Hi Jean-Luc,
 
