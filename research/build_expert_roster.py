@@ -76,11 +76,29 @@ ARM_B = [
     ("RR-132", "Anonymous by choice", "JRS-naive expert professional", "not recorded", "B2"),
 ]
 
-# The one Study 004 identity that is on the study record. E-08 is named in the
-# tracker as the public-records domain lead and FOIL co-author.
+# Study 004 expert-rater identities, read from bench_experts with the
+# service-role connection on 2026-08-06. Country is taken from the affiliation
+# field where the affiliation names a place, and left "not recorded" where it
+# does not. Nothing is inferred from a person's name.
+#
+# THREE OF THESE ARE ALSO ARM A COMPLETERS, so they are the same human being
+# holding two study codes: E-09 is V-AI-06, E-12 is V-AI-07, E-13 is V-AI-03.
+# E-14 is V-AI-05, who registered for Arm A but never started, so he is a
+# distinct person from the 32. This is what the "may overlap" caveat in
+# count_participants.py was guarding against, now resolved with actual data.
 S004_KNOWN = {
-    "E-08": ("Stacy Young", "Records Governance Advisor; Public-Records Domain Lead; Deputy Records Access Officer", "US"),
+    "E-03": ("Andrzej Skulski", "Founder, Dom Ciszy - Resonance Lab; AI Governance and Decision Systems", "not recorded"),
+    "E-08": ("Stacy Young", "Deputy Records Access Officer, NYC Dept. of Housing Preservation and Development; records governance and FOIL administration; 22 years", "US"),
+    "E-09": ("Dr Nitin Deshpande", "Chief Human Resources Officer, Cooper Corporation Pvt. Ltd.; 38+ years HR and industrial relations", "India"),
+    "E-10": ("Rahul Potdar", "Independent Director (IICA Certified); Corporate Governance, Risk Management and ESG Strategy; Board Adviser; Leontra Technologies; IIM Raipur", "India"),
+    "E-11": (None, None, None),
+    "E-12": ("Saurabh Nanda", "General Manager, APAC Business Leader, Align Technology; 22+ years P&L leadership", "India"),
+    "E-13": ("Frank Schouten", "AI Governance and Assurance; Interim Steering Committee, AI Execution Governance Forum; CAMA-certified ISO 55001 assessor", "Australia (Perth)"),
+    "E-14": ("Alankar Yaduvanshi", "Data Privacy Professional (CIPP-E), WNS; 8+ years data privacy and corporate compliance", "India"),
 }
+
+# Same person, two study codes. Used to report distinct humans honestly.
+CROSS_STUDY_SAME_PERSON = {"E-09": "V-AI-06", "E-12": "V-AI-07", "E-13": "V-AI-03"}
 
 
 def q(path):
@@ -105,15 +123,19 @@ def study_004_rows():
         is_expert = str(code).startswith("E-")
         name, title, country = S004_KNOWN.get(code, (None, None, None))
         role = "; ".join(sorted(a["roles"])) or "not recorded"
+        dup = CROSS_STUDY_SAME_PERSON.get(code)
+        status = "%d labels on %d records, first %s" % (a["n"], len(a["recs"]), a["first"][:10])
+        if dup:
+            status += "; same person as %s in Study 011" % dup
         rows.append({
             "study": "004 Reviewer reliability",
             "arm": "expert rater" if is_expert else "bench reviewer",
             "code": code,
-            "name": name or ("not recorded" if is_expert else "anonymous by design"),
+            "name": name or ("no identity on record" if is_expert else "anonymous by design"),
             "title": title or ("self-declared domain: " + role),
             "country": country or "not recorded",
             "labels_or_reads": a["n"],
-            "status": "%d labels on %d records, first %s" % (a["n"], len(a["recs"]), a["first"][:10]),
+            "status": status,
         })
     return rows
 
@@ -156,9 +178,21 @@ def main():
     print("wrote %s (%d rows)" % (only4, len(s004)))
     print("Study 011 + 012 completers: %d | Study 004 raters: %d | total rows: %d"
           % (len(ARM_A) + len(ARM_B), len(s004), len(rows)))
-    print("named: %d | not recorded or anonymous: %d"
-          % (sum(1 for r in rows if r["name"] not in ("not recorded", "anonymous by design", "Anonymous by choice")),
-             sum(1 for r in rows if r["name"] in ("not recorded", "anonymous by design", "Anonymous by choice"))))
+    unnamed = ("no identity on record", "anonymous by design", "Anonymous by choice")
+    print("named rows: %d | unnamed rows: %d"
+          % (sum(1 for r in rows if r["name"] not in unnamed),
+             sum(1 for r in rows if r["name"] in unnamed)))
+    dup = len(CROSS_STUDY_SAME_PERSON)
+    bench = sum(1 for r in s004 if r["arm"] == "bench reviewer")
+    new_experts = sum(1 for r in s004 if r["arm"] == "expert rater"
+                      and r["code"] not in CROSS_STUDY_SAME_PERSON
+                      and r["name"] != "no identity on record")
+    print("DISTINCT HUMANS: %d = 32 completers + %d Study 004 experts who are not "
+          "already completers + %d anonymous bench reviewers"
+          % (32 + new_experts + bench, new_experts, bench))
+    print("  %d expert rater codes are the same people as Arm A completers: %s"
+          % (dup, ", ".join("%s=%s" % (k, v) for k, v in CROSS_STUDY_SAME_PERSON.items())))
+    print("  E-11 carries 1 label and no identity on record; excluded from the count.")
     if incomplete:
         print("WARNING, live completion check disagrees with the transcribed roster:")
         for r in incomplete:

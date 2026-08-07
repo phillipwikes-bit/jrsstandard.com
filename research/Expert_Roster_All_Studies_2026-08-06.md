@@ -6,9 +6,9 @@
 
 **Do not publish this list while Arm B is blind.** Naming an Arm B reviewer next to an Arm A reviewer in one public document identifies who was in which study, which is the exact leak the neutral "Records Review Study" recognition track exists to prevent. This file is for the owner, the acquisition data room, and the manuscript acknowledgments after the study closes.
 
-**Source of truth.** Completion status pulled live from `pilot_progress` and `armb_progress` on 2026-08-06 via `research/check_completion.py`. Names, titles, and countries are from the roster tables in `research/MASTER_TRACKER.md` sections 12 and 12B, the recruit notes, `api/contributor.js`, and the two certificate registries. Nothing here is inferred.
+**Source of truth.** Completion status pulled live from `pilot_progress` and `armb_progress` on 2026-08-06 via `research/check_completion.py`. Study 004 identities read directly from `bench_experts` with the service-role connection on 2026-08-06. Names, titles, and countries are from the roster tables in `research/MASTER_TRACKER.md` sections 12 and 12B, the recruit notes, `api/contributor.js`, and the two certificate registries. Nothing here is inferred.
 
-**Totals: 56 reviewers across three studies. 32 completed a full 24-record set. 31 named.**
+**Totals: 52 distinct people across three studies. 32 completed a full 24-record set. 35 named.**
 
 ---
 
@@ -66,42 +66,44 @@ Arm assignment is by deterministic hash of the participant code, made before any
 
 ---
 
-## Study 004: Reviewer reliability — 24 raters, 1 named
+## Study 004: Reviewer reliability - 24 rater codes, expert raters now named
 
-**The names for this study do not exist in reachable form, and no field below is guessed.** `bench_labels` is the only place this study's participation is recorded, and it stores a labeler code, a self-declared domain, and the labels. It stores no name, no title, and no country. `bench_experts`, which would carry the `E-` code identities, returns zero rows through the anon key, so those eight names need a service-role read from the Supabase dashboard. The sixteen `R-` codes were generated in the reviewer's own browser by `bench-review.html` and were never attached to an identity at all, so for those sixteen no name exists anywhere to recover.
+Read from `bench_experts` with the service-role connection on 2026-08-06. Every expert-rater identity is recovered except E-11, which carries one label and no identity row. The sixteen `R-` codes were generated in the reviewer's own browser by `bench-review.html` and were never attached to an identity, so those are anonymous by design and no name exists to recover.
 
-The one identity on the study record is E-08.
+**Three of these codes are the same people as Arm A completers.** E-09 is Dr Nitin Deshpande (V-AI-06), E-12 is Saurabh Nanda (V-AI-07), E-13 is Frank Schouten (V-AI-03). They sat on the detection panel and also rated the reliability set, so each is one human being holding two study codes. E-14, Alankar Yaduvanshi, holds V-AI-05 but never started Arm A, so he is a distinct person from the 32.
 
-| # | Code | Class | Name | Self-declared domain or title | Country |
+Country is taken from the affiliation field where the affiliation names a place. E-03's affiliation names no country, so it is left unrecorded rather than inferred from the name.
+
+| # | Code | Class | Name | Title | Country |
 |---|---|---|---|---|---|
-| 33 | E-08 | expert rater | Stacy Young | Records Governance Advisor; Public-Records Domain Lead; Deputy Records Access Officer | US |
+| 33 | E-08 | expert rater | Stacy Young | Deputy Records Access Officer, NYC Dept. of Housing Preservation and Development; records governance and FOIL administration; 22 years | US |
 | 34 | R-mqa2qg2g9gtz | bench reviewer | *anonymous by design* | self-declared domain: AI Governance | not recorded |
 | 35 | R-mqa4a9ewsfr8 | bench reviewer | *anonymous by design* | self-declared domain: Other | not recorded |
-| 36 | E-03 | expert rater | *not recorded* | self-declared domain: AI Governance | not recorded |
+| 36 | E-03 | expert rater | Andrzej Skulski | Founder, Dom Ciszy - Resonance Lab; AI Governance and Decision Systems | not recorded |
 | 37 | R-mqal7tzzwpy5 | bench reviewer | *anonymous by design* | self-declared domain: Other | not recorded |
 | 38 | R-mqb8ye82rcmw | bench reviewer | *anonymous by design* | self-declared domain: AI Governance | not recorded |
 | 39 | R-mqbsllcmqh6n | bench reviewer | *anonymous by design* | self-declared domain: HR | not recorded |
 | 40 | R-mqc70xbh96yc | bench reviewer | *anonymous by design* | self-declared domain: Other | not recorded |
 | 41 | R-mqcfb4p9lbji | bench reviewer | *anonymous by design* | self-declared domain: HR | not recorded |
-| 42 | E-09 | expert rater | *not recorded* | self-declared domain: HR | not recorded |
+| 42 | E-09 | expert rater | Dr Nitin Deshpande **(same person as V-AI-06)** | Chief Human Resources Officer, Cooper Corporation Pvt. Ltd.; 38+ years HR and industrial relations | India |
 | 43 | R-mqgufe1fqup8 | bench reviewer | *anonymous by design* | self-declared domain: Other | not recorded |
 | 44 | R-mqhv2o4r8nct | bench reviewer | *anonymous by design* | self-declared domain: AI Governance | not recorded |
 | 45 | R-mqifd9ia9dsq | bench reviewer | *anonymous by design* | self-declared domain: AI Governance | not recorded |
 | 46 | R-mqkvqo8kcu04 | bench reviewer | *anonymous by design* | self-declared domain: Quality Assurance | not recorded |
-| 47 | E-10 | expert rater | *not recorded* | self-declared domain: Compliance | not recorded |
+| 47 | E-10 | expert rater | Rahul Potdar | Independent Director (IICA Certified); Corporate Governance, Risk Management and ESG Strategy; Board Adviser; Leontra Technologies; IIM Raipur | India |
 | 48 | R-mqmhtalpwuhb | bench reviewer | *anonymous by design* | self-declared domain: Management | not recorded |
 | 49 | R-mqn414vzho7i | bench reviewer | *anonymous by design* | self-declared domain: Management | not recorded |
 | 50 | R-mqnibu38bbxi | bench reviewer | *anonymous by design* | self-declared domain: Other | not recorded |
 | 51 | R-mqq7jo173iob | bench reviewer | *anonymous by design* | self-declared domain: Other | not recorded |
-| 52 | E-11 | expert rater | *not recorded* | self-declared domain: AI Governance | not recorded |
+| 52 | E-11 | expert rater | *no identity on record* | self-declared domain: AI Governance | not recorded |
 | 53 | R-mqxqi8i3ukt1 | bench reviewer | *anonymous by design* | self-declared domain: Inny | not recorded |
-| 54 | E-14 | expert rater | *not recorded* | self-declared domain: Compliance / Data Privacy | not recorded |
-| 55 | E-13 | expert rater | *not recorded* | self-declared domain: AI Governance | not recorded |
-| 56 | E-12 | expert rater | *not recorded* | self-declared domain: Management | not recorded |
+| 54 | E-14 | expert rater | Alankar Yaduvanshi | Data Privacy Professional (CIPP-E), WNS; 8+ years data privacy and corporate compliance | India |
+| 55 | E-13 | expert rater | Frank Schouten **(same person as V-AI-03)** | AI Governance and Assurance; Interim Steering Committee, AI Execution Governance Forum; CAMA-certified ISO 55001 assessor | Australia (Perth) |
+| 56 | E-12 | expert rater | Saurabh Nanda **(same person as V-AI-07)** | General Manager, APAC Business Leader, Align Technology; 22+ years P&L leadership | India |
 
-**Totals: 8 expert raters, 16 bench reviewers, 124 labels on the shared 5-record set.**
+**Totals: 8 expert raters (7 named, 1 with no identity row), 16 anonymous bench reviewers, 124 labels on the shared 5-record set.**
 
-**To recover the seven remaining `E-` names**, open the Supabase table editor and read `bench_experts` with the service-role key, matching on `code`. That is the only route: it is a single table read, and it cannot be done from the anon key this repository ships with. Once read, add them to `S004_KNOWN` in `research/build_expert_roster.py` and re-run it; both CSVs regenerate.
+**New people this study adds to the programme: 4.** Andrzej Skulski, Stacy Young, Rahul Potdar, Alankar Yaduvanshi. The other three named expert raters are already counted among the 32 completers, and E-11 is excluded because it cannot be resolved to a person.
 
 ---
 
@@ -109,18 +111,18 @@ The one identity on the study record is E-08.
 
 | | Count |
 |---|---|
-| Reviewers across all three studies | **56 rows** (48 is the published floor, see below) |
-| Completed a full 24-record set (Studies 011 and 012) | **32** |
-| Study 004 raters | **24** (8 expert, 16 bench) |
-| Named | **31** (30 completers plus E-08) |
-| Anonymous by their own choice | **2** (RR-130, RR-132) |
-| Anonymous by design, no identity ever captured | **16** (the `R-` bench pool) |
-| Name exists but needs a service-role read | **7** (E-03, E-09, E-10, E-11, E-12, E-13, E-14) |
-| Distinct countries recorded | **15**, plus one regional entry |
+| **Distinct people across all three studies** | **52** |
+| Completed a full 24-record set (Studies 011 and 012) | 32 |
+| Study 004 expert raters who are NOT already completers | 4 |
+| Anonymous bench reviewers (Study 004) | 16 |
+| Rater codes held by someone already counted | 3 (E-09, E-12, E-13) |
+| Codes that cannot be resolved to a person | 1 (E-11) |
+| Named people | **35** |
+| Anonymous by their own choice | 2 (RR-130, RR-132) |
+| Anonymous by design, no identity ever captured | 16 (the `R-` bench pool) |
+| Distinct countries recorded | 15, plus one regional entry |
 
-**Why the site publishes 48 and not 56.** Codes are issued per study, so a person who sat on the panel and also rated the reliability set holds two codes. Arm A and Arm B are disjoint by design, and the 16 bench reviewers are a separately recruited pool, but the 8 `E-` raters may overlap the panel, so they are excluded from the published figure entirely. 48 holds even in the worst case. See `research/count_participants.py`.
-
-Countries: US, Australia, India, Nigeria, Poland, UK/Ireland, Germany, South Korea, Singapore, UAE, Spain, South Africa, Canada, Iran, Kenya, plus West Africa recorded as a region rather than a country.
+**52 is a distinct-human count, not a code count.** The earlier published figure of 48 was a floor built when the `E-` identities could not be read and all eight had to be assumed to be panel members already counted. With the identities now read, exactly three are, so four more real people are added. E-11 stays out because it cannot be resolved to a person.
 
 **Two recording imprecisions, stated rather than smoothed over.** Kyle McMullan is recorded as "UK / Ireland" and Jean-Luc Adade as "West Africa", so neither resolves to a single country in the study record. The published "11 countries" figure is the Arm A panel figure and is unaffected by both.
 
