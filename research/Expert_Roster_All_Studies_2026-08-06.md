@@ -23,7 +23,7 @@
 | 5 | V-AI-08 | Gabriela Cortez | Civil-rights records and bilingual intake; Maryland Commission on Civil Rights | US |
 | 6 | V-AI-10 | Lawal Olabanji | Operations and records management; ALTV Engineering | Nigeria |
 | 7 | V-AI-11 | Andrey Ekhmenin | Founder, EAS; governance diagnostics and post-execution review | Poland / EU |
-| 8 | V-AI-12 | Kyle McMullan | Chief Audit Executive; internal audit and financial crimes | UK / Ireland |
+| 8 | V-AI-12 | Kyle McMullan | Chief Audit Executive; internal audit and financial crimes; the audit hub, London | United Kingdom |
 | 9 | V-AI-16 | Dr Gabriela Bar | Attorney, PhD; AI ethics advisor (EU); Gabriela Bar Law & AI | Poland / EU |
 | 10 | V-AI-20 | Hekim Colpan | AI Governance and Compliance Manager; ISO/IEC 42001 auditor; EU AI Act, GDPR, DORA | Germany |
 | 11 | V-AI-23 | Niloofar Kandi | AI Governance and Strategy Specialist; ISO/IEC 42001 Lead Implementer; PhD Researcher in AI Governance, University of Wollongong | Australia |
@@ -33,7 +33,7 @@
 | 15 | V-AI-29 | Marguerite Maroudis, PhD | AI and Law Expert; DPO and AI Governance Consultant; PhD Private Law; Founder, TechLegalExperts | UAE (Dubai) |
 | 16 | V-AI-30 | Andres Lage Freire | AI Governance Lead and Responsible AI Architect; EU AI Act, ISO 42001; SDLC-native governance | Spain (Madrid) |
 
-**Arm A countries: 11.** US, Australia, India, Nigeria, Poland, UK/Ireland, Germany, South Korea, Singapore, UAE, Spain.
+**Arm A countries: 11.** US, Australia, India, Nigeria, Poland, United Kingdom, Germany, South Korea, Singapore, UAE, Spain. This is the figure the manuscript uses for the detection panel.
 
 ---
 
@@ -120,11 +120,13 @@ Country is taken from the affiliation field where the affiliation names a place.
 | Named people | **35** |
 | Anonymous by their own choice | 2 (RR-130, RR-132) |
 | Anonymous by design, no identity ever captured | 16 (the `R-` bench pool) |
-| Distinct countries recorded | 15, plus one regional entry |
+| Distinct countries across the 32 completers | **15**, plus one reviewer recorded only as West Africa |
 
 **52 is a distinct-human count, not a code count.** The earlier published figure of 48 was a floor built when the `E-` identities could not be read and all eight had to be assumed to be panel members already counted. With the identities now read, exactly three are, so four more real people are added. E-11 stays out because it cannot be resolved to a person.
 
-**Two recording imprecisions, stated rather than smoothed over.** Kyle McMullan is recorded as "UK / Ireland" and Jean-Luc Adade as "West Africa", so neither resolves to a single country in the study record. The published "11 countries" figure is the Arm A panel figure and is unaffected by both.
+**The 32 completers span 15 countries, not 11.** US, Australia, India, Nigeria, Poland, United Kingdom, Germany, South Korea, Singapore, UAE, Spain, South Africa, Canada, Iran, Kenya. Eleven is the Study 011 detection-panel figure. It is correct for the 16-person panel, which is how the manuscript, research.html and pilot.html use it, and it was wrongly carried onto all 32 in the gate copy. Corrected in public copy on 2026-08-06.
+
+**One country still unresolved.** Jean-Luc Adade is recorded as "West Africa", a region rather than a country, so he sits outside the 15 and the count would rise to 16 if his country were recorded. Kyle McMullan's earlier "UK / Ireland" entry is now resolved to the United Kingdom from his `bench_experts` affiliation, "the audit hub (London, United Kingdom)".
 
 ---
 

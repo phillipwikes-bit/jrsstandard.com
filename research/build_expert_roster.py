@@ -45,7 +45,7 @@ ARM_A = [
     ("V-AI-08", "Gabriela Cortez", "Civil-rights records and bilingual intake; Maryland Commission on Civil Rights", "US"),
     ("V-AI-10", "Lawal Olabanji", "Operations and records management; ALTV Engineering", "Nigeria"),
     ("V-AI-11", "Andrey Ekhmenin", "Founder, EAS; governance diagnostics and post-execution review", "Poland / EU"),
-    ("V-AI-12", "Kyle McMullan", "Chief Audit Executive; internal audit and financial crimes", "UK / Ireland"),
+    ("V-AI-12", "Kyle McMullan", "Chief Audit Executive; internal audit and financial crimes; the audit hub, London", "United Kingdom"),
     ("V-AI-16", "Dr Gabriela Bar", "Attorney, PhD; AI ethics advisor (EU); Gabriela Bar Law & AI", "Poland / EU"),
     ("V-AI-20", "Hekim Colpan", "AI Governance and Compliance Manager; ISO/IEC 42001 auditor; EU AI Act, GDPR, DORA", "Germany"),
     ("V-AI-23", "Niloofar Kandi", "AI Governance and Strategy Specialist; ISO/IEC 42001 Lead Implementer; PhD Researcher, University of Wollongong", "Australia"),
