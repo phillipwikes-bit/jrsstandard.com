@@ -1,28 +1,36 @@
-# Reply to Hekim Colpan: equal co-authorship accepted (2026-08-06)
+# Reply to Hekim Colpan: equal co-authorship, with current study figures (2026-08-06)
 
-*He accepted every term and asked for one change: equal co-authors, with the article presented on its substance rather than on either author. Give him a plain yes, say exactly what changes in the manuscript because of it, and confirm the rest stands unaltered. Short. He does not need another long letter, he needs the point settled. Send from info@jrsstandard.com. No long dashes.*
+*He accepted every term and asked for one change: equal co-authors, article presented on its substance rather than on either of you. Give him a plain yes, say what actually changes, and hand him the current numbers so he is drafting from live figures instead of the ones sitting in the manuscript. Send from info@jrsstandard.com. No long dashes.*
 
-*Note for you, not for him: your earlier message put his name first because he carries the European analysis. He is not declining the position, he is declining the framing. Keeping the byline as it stands and restating the reason as alphabetical order solves both: nothing on the page changes, and nobody reads him as the senior authority. Say that explicitly so he is not left wondering whether you quietly demoted him.*
+*Note for you, not for him: your 08-05 letter put his name first because he carries the European analysis. That reason is the thing he is declining, not the position. Keeping the byline where it is and calling it alphabetical order settles both at once, and the letter says so outright so he is not left wondering whether he got quietly demoted for asking.*
 
 ---
 
 Dear Hekim,
 
-Agreed, on all of it. Equal co-authors is the right framing and it is how the article will be presented.
+Yes to all of it, and thank you for saying it plainly.
 
-Here is exactly what that changes.
+Equal co-authors it is. The byline stays Hekim Colpan and Phillip Wikes, but the reason is alphabetical order, not seniority, and I will say so anywhere it comes up. The article will carry a line stating that we contributed equally. Nothing in the piece, in the note to the editor, or in either biography will call one of us lead, senior, or primary.
 
-**The byline stays Hekim Colpan and Phillip Wikes, on alphabetical order rather than seniority.** The names do not move, but the reason does, and I will say so where it matters. The article will carry a line stating that both authors contributed equally. Nothing in the piece, the pitch to the editor, the biographies, or any promotional text will describe either of us as lead, senior, or primary author.
+The European sections are still yours. The EU AI Act, GDPR, DORA and ISO/IEC 42001 analysis is your work, and I will not touch it without sending it back to you first. That is how we split the labour, and the article will not read as though it is a ranking.
 
-**The European sections remain yours to own.** You take responsibility for the EU AI Act, GDPR, DORA, and ISO/IEC 42001 analysis, and I will not edit that material without bringing it back to you. That is a division of work, not a ranking, and the article will not present it as one.
+I am also going back through the draft for anywhere it leans on either of our credentials to carry a point. Where it does, I am replacing it with the source. If a claim needs one of us to vouch for it rather than a clause or a case, we probably should not be making it.
 
-**The framing shifts to the argument.** Anywhere the current draft leans on either author's credentials to carry a point, I will replace it with the source. If a claim needs a person's authority behind it rather than a provision, a clause, or a case, it is not a claim we should be making.
+Everything else from my last message stands: independent publication rather than my site, mutual approval before anything moves, joint copyright with no exclusive assignment without your written agreement, your right to reuse your own contribution, prior approval for commercial or promotional use of any kind including anything JRS, binding on whoever holds those materials in future, primary sources throughout the European analysis, and your personal-capacity line in your own words.
 
-Everything else in my previous message stands unchanged: independent publication rather than my website, mutual approval on everything before it goes anywhere, joint copyright with no exclusive assignment without your written agreement, your right to reuse your own contribution, prior approval for any commercial or promotional use including anything JRS-related and binding on any future holder of those materials, primary sources for the European analysis, and your personal-capacity disclosure in your own words.
+Here is where the study actually stands, so you are drafting from current numbers rather than the ones sitting in the manuscript.
 
-On the JRS figures, as I flagged: they stay provisional until the study closes, which I still expect around 14 August. I will send you the final numbers the moment they are locked, before anything is submitted, so you are never asked to put your name to a figure you have not seen in its final form. If any of them read as overstated to you, cut them.
+Fifty three international reviewers across three studies have now graded records for this work, all unpaid and in a personal capacity. Thirty two of them completed a full 24-record set, across 16 countries and 5 continents.
 
-Whenever you are ready, I will send the current draft with Section V marked for you.
+The detection result is 83.9 percent accuracy against a verified answer key, from a panel of 16 reviewers in 11 countries over 384 graded reads. The confidence interval runs 72.7 to 95.1, sensitivity 87.0, specificity 80.7. It clears the threshold that was fixed before anyone saw the data.
+
+Reliability is interim. Gwet's AC1 came out at 0.739 among the expert raters and 0.624 among trained reviewers, on 10 records and 124 labels. Both clear the pre-registered floor of 0.61. The confidence intervals are wide and the plan's secondary lower-bound criterion is not met, and I think the article should say that rather than round it off.
+
+On reproducibility, three models from three separate vendors agreed at 84 percent on the same records. That is consistency, not accuracy, and I would rather we labelled it that way in print.
+
+All of it is provisional until the study closes, which I still expect around 14 August. You will have the final figures before anything is submitted. If any of them read as overstated once you see them in context, cut them. I would rather the piece be defensible than impressive.
+
+Send me a word when you are ready and I will pass over the draft with Section V marked for you.
 
 With appreciation,
 
@@ -32,9 +40,23 @@ info@jrsstandard.com
 
 ---
 
-## What to change in the manuscript before you send him the draft
+## Before you send him the draft
 
-1. Add the equal-contribution line to the title block: "Both authors contributed equally to this article."
-2. Remove any wording in the draft, the cover note to the editor, or the biographies that positions either author as lead, senior, primary, or the article's authority.
-3. Check the abstract and opening paragraph for credential-led framing and replace it with the source being cited.
-4. Keep the byline as it is. It does not need to move.
+1. Add to the title block: "Both authors contributed equally to this article."
+2. Strip any lead, senior, or primary framing from the draft, the note to the editor, and both biographies.
+3. Check the abstract and the opening paragraph for credential-led framing and replace it with whatever source is being cited.
+4. Leave the byline alone. It does not need to move.
+5. Update every figure in the manuscript to the set above, and mark each one provisional until 14 August.
+
+## Figures used in this letter, and where each one comes from
+
+| Figure | Source |
+|---|---|
+| 53 international reviewers, three studies | `research/count_participants.py`, graded-records basis |
+| 32 completed a full 24-record set | `pilot_progress` and `armb_progress`, 16 per arm |
+| 16 countries, 5 continents | `research/Expert_Roster_All_Studies_2026-08-06.md` |
+| 83.9 percent, CI 72.7 to 95.1, sensitivity 87.0, specificity 80.7, 384 reads, 16 reviewers, 11 countries | Detection paper, Section 5 |
+| AC1 0.739 expert, 0.624 trained, 10 records, 124 labels, floor 0.61 | `compute_ac1_ci.py`, pre-registered plan |
+| 84 percent cross-vendor, three vendors | Reproducibility analysis, nightly run |
+
+The 11-country figure belongs to the 16-person detection panel. The 16-country figure belongs to all 32 completers. Both are correct in their own scope and neither should be swapped for the other.
