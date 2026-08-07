@@ -14,17 +14,13 @@ Hekim Colpan is an AI Governance and Compliance Manager and an ISO/IEC 42001 aud
 
 ## I. Introduction
 
-A record is a kind of promise. It tells whoever reads it later, whether a regulator, a court, a colleague, or the person whose life it describes, that a decision was made for reasons someone can go back and examine. When an AI tool drafts the record, that promise is easy to break, and easy to break quietly. The text reads as finished. The reasoning behind it may already be gone.
+A record is a kind of promise. It tells whoever reads it later, whether a regulator, a court, or the person whose life it describes, that a decision was made for reasons someone can go back and examine. When an AI tool drafts the record, that promise is easy to break quietly. The text reads as finished. The reasoning behind it may already be gone.
 
-Sooner or later, most consequential decisions get questioned. What you cannot know in advance is whether the record will still be able to explain the decision when that day comes.
+We call that gap Decision Reconstruction Risk, or DRR: the state a record is in when it can no longer show, on its own, why a consequential decision was made. Once the reasoning cannot be rebuilt from the file, accountability moves somewhere else, onto memory, onto opinion, onto whoever is trusted in the room. That is the opposite of what governance is supposed to produce.
 
-We call that gap Decision Reconstruction Risk, or DRR: the state a record is in when it can no longer show, on its own, why a consequential decision was made. The problem is less about the technology than about what happens to accountability when the evidence thins out. Once the reasoning behind a decision can no longer be reconstructed from the record, accountability quietly moves somewhere else, onto memory, onto opinion, onto whoever is trusted in the room. That is the opposite of what good governance is supposed to produce.
+We come at this from two directions and reach the same place. One of us works inside European AI governance and compliance, on how organizations document and defend AI-assisted processing under ISO/IEC 42001, the EU AI Act, and the GDPR. The other spent more than a decade at a United States civil rights agency reading consequential records after the fact, and kept finding a decision that was probably sound sitting on a record that could not prove it.
 
-We come at this from two different directions and reach the same place. One of us has spent his career inside European AI governance and compliance, looking at how organizations document and defend automated and AI-assisted processing against ISO/IEC 42001, the EU AI Act, and the GDPR. The other spent more than a decade at a United States civil rights agency, reading consequential records after the fact. The pattern he saw again and again was a decision that was probably sound sitting on top of a record that could not prove it. As AI writes more of the documents behind decisions like these, the material that would let anyone reconstruct them is disappearing.
-
-The exposure is now transatlantic, which is why we write from both sides of it. In Europe, the GDPR's accountability principle and the EU AI Act's record-keeping expectations ask an organization to show how a decision was reached, not just assert it. In the United States, the same demand shows up in discovery and in the burden-shifting tests that decide employment and housing cases. The legal vocabulary differs. What is being asked for does not. The record has to answer for itself.
-
-The practical takeaway runs through everything below. Treat AI-assisted documentation as something a regulator, an auditor, or a court may one day read closely, and the best time to make it survive that reading is before it is finalized.
+The exposure is transatlantic, which is why we write from both sides of it. In Europe, the GDPR's accountability principle and the EU AI Act's record-keeping expectations ask an organization to show how a decision was reached rather than assert it. In the United States the same demand arrives through discovery and through the burden-shifting tests that decide employment and housing cases. The legal vocabulary differs. What is being asked for does not. The record has to answer for itself, and the time to make it capable of that is before it is finalized.
 
 ## II. Documentation as Legal Evidence
 
@@ -80,11 +76,9 @@ The cost of all this runs past the courtroom. When an institution cannot explain
 
 ## IX. Conclusion
 
-The risk lives wherever the trail back to the evidence has gone cold. That is Decision Reconstruction Risk in one sentence. An organization that treats every record as something a court, a regulator, or the person it describes may one day read closely will be in a much better position than one that does not, and on both sides of the Atlantic records are increasingly being judged on whether the reasoning inside them can still be seen and rebuilt.
+The risk lives wherever the trail back to the evidence has gone cold. An organization that treats every record as something a court, a regulator, or the person it describes may one day read closely will be in a far better position than one that does not.
 
-Underneath all of it sits one idea that does not belong to any single jurisdiction. When AI helps make a consequential decision, the person on the receiving end should be able to understand why, and the organization should be able to reconstruct and defend it from the record itself. We call that the Right to Know Why. It is not a new legal doctrine. It is a short name for something that already runs through discovery, evidentiary sufficiency, the GDPR's accountability principle, and the EU AI Act's record-keeping requirements.
-
-Put the question through American evidentiary law or through European fundamental-rights law, and it comes out the same: can the decision still explain itself? When it cannot, accountability breaks, for the institution that has to defend the decision and for the person owed an explanation of it. Giving that test a plain name is what the Right to Know Why is for.
+Underneath it sits one idea that belongs to no single jurisdiction. When AI helps make a consequential decision, the person on the receiving end should be able to understand why, and the organization should be able to reconstruct and defend it from the record itself. We call that the Right to Know Why. It is not a new legal doctrine but a short name for something already running through discovery, evidentiary sufficiency, the GDPR's accountability principle, and the EU AI Act's record-keeping requirements. Put the question through American evidentiary law or European fundamental-rights law and it comes out the same: can the decision still explain itself?
 
 What has changed is the tool doing the drafting. What has not changed is the standard the record still has to meet.
 
@@ -92,31 +86,25 @@ What has changed is the tool doing the drafting. What has not changed is the sta
 
 ## About JRS
 
-JRS is a structured way to review documentation, meant to be run inside the workflows that HR, compliance, investigations, audit, and legal teams already use, to check whether an AI-assisted record will actually hold up when someone examines it independently. It targets a narrow, recurring failure: AI-generated content lands in a permanent record as finished documentation while the evidence that should sit under it is missing. That is Decision Reconstruction Risk, and JRS is built to catch it before the record is closed out.
+JRS is a structured review that runs inside the workflows HR, compliance, investigations, audit, and legal teams already use, to check whether an AI-assisted record will hold up when someone examines it independently. It targets one recurring failure: AI-generated content lands in a permanent record as finished documentation while the evidence that should sit under it is missing.
 
-One question sits at the center of it. When AI-assisted content goes into a workplace record, does that record stay traceable, evidence-backed, and reconstructable under structured review? Five checks work through the answer: whether the conclusion can be rebuilt from the record alone, whether its basis is identifiable, whether the chronology holds together, whether a reviewer can trace how the conclusion was reached, and whether the evidence behind it is sufficient.
+Five checks work through the answer. Can the conclusion be rebuilt from the record alone? Is its basis identifiable? Does the chronology hold together? Can a reviewer trace how the conclusion was reached? Is the evidence behind it sufficient?
 
-JRS is in structured validation. Every figure below is provisional until data collection closes in mid-August 2026, and each will be updated at close or withdrawn if it cannot be supported.
+JRS is in structured validation. Every figure below is provisional until data collection closes in mid-August 2026, and each will be updated at close or withdrawn if it cannot be supported. The design behind them: reviewers work through a balanced corpus of 24 constructed, de-identified AI-generated records, twelve with traceable support and twelve without. The answer key was fixed before any reviewer saw a record and independently reproduced by blind raters, 24 of 24. Reviewers are blind to the key and to one another. Accuracy is computed per reviewer rather than per read. Thresholds were registered before the data were examined.
 
-The method behind them, in short. Reviewers work through a balanced corpus of 24 constructed, de-identified AI-generated records, twelve of which carry traceable support for their conclusions and twelve of which do not. The answer key was fixed before any reviewer saw a record and was then independently reproduced by blind raters, 24 of 24. Reviewers are blind to the key and to one another. Accuracy is computed per reviewer rather than per read, so the interval reflects variation between people rather than between individual judgments, which is the conservative choice. Thresholds were registered before the data were examined.
+**Detection.** A panel of 16 independent experts across 11 countries identified unreconstructable records with 83.9% accuracy over 384 graded reads (95% CI 72.7 to 95.1 at participant level; sensitivity 87.0%, specificity 80.7%). The registered threshold required at least 70% with the lower bound above chance. Both criteria are met. Across the wider programme, 32 independent experts in 16 countries have each completed a full 24-record set, unpaid and in a personal capacity.
 
-Fifty three international reviewers across three studies have graded records for this work, unpaid and in a personal capacity. Thirty two independent experts among them completed a full 24-record set, in 16 countries across 5 continents.
+**Reproducibility.** Three AI models, one each from three independent vendors, applied the standard to the same 15 records and reached mean pairwise agreement of 84%. Cross-vendor models were used rather than three instances of one provider, so agreement reflects the method rather than a single model lineage. This measures consistent application, not accuracy.
 
-On detection, a panel of 16 independent experts drawn from 11 countries identified unreconstructable records with 83.9% accuracy across 384 graded reads (95% CI 72.7 to 95.1 at participant level; sensitivity 87.0%, specificity 80.7%). The registered threshold required a point estimate of at least 70% with the lower confidence bound above chance. Both criteria are met.
+**Reliability.** Independent raters scoring a shared record set reached Gwet's AC1 of 0.739 among expert raters and 0.624 among trained reviewers, against a floor of 0.61 set in advance. AC1 was chosen over kappa in advance because the determination distribution was expected to be skewed. These figures are interim: 10 records and 99 labels against a target of about 26, with wide intervals, and they will be re-estimated at target.
 
-On reproducibility, three AI models, one each from three independent vendors, applied the standard to the same 15 constructed records and reached a mean pairwise agreement of 84% on the determination. Cross-vendor models were used rather than three instances of one provider, so that agreement reflects the method rather than a single model lineage. This measures consistent application, not accuracy.
-
-On reviewer reliability, independent raters scoring a shared record set reached Gwet's AC1 of 0.739 among expert raters and 0.624 among trained reviewers, against a floor of 0.61 set in advance. AC1 was chosen in advance rather than kappa because the determination distribution was expected to be skewed, and kappa behaves poorly under skewed marginals. These figures are interim: they rest on 10 records and 99 labels against a target of about 26 records, the intervals around them are wide, and they will be re-estimated at target.
-
-A related article is due in CEP Magazine in November. Detection, reproducibility, and reliability are separate questions from real-world effectiveness, which is a later stage of the program.
-
-JRS runs inside existing HR, compliance, investigations, audit, and legal review processes. It needs no specialized software and no procedural redesign.
+Detection, reproducibility, and reliability are separate questions from real-world effectiveness, which is a later stage. A related article is due in CEP Magazine in November. JRS needs no specialized software and no procedural redesign.
 
 ## Acknowledgment
 
 The reproducibility and validation methodology behind the figures cited above, including the reference-panel design, the choice of agreement coefficient, and the acceptance floors, was designed by Ubayet Hossain, FRM, Associate Director (Model Validation), KPMG India.
 
-The figures themselves exist because reviewers in sixteen countries read records they were never paid to read. We are grateful to all of them. The argument that a record must stay understandable to the person it describes, which runs through this article, came out of conversations with Gabriela Cortez of the Maryland Commission on Civil Rights and is credited to her with permission.
+The figures themselves exist because reviewers in sixteen countries read records they were never paid to read. We are grateful to all of them.
 
 ## About the Authors
 
