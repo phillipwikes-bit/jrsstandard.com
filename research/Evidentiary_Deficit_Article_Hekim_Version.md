@@ -96,13 +96,13 @@ One question sits at the center of it. When AI-assisted content goes into a work
 
 JRS is in structured validation, and the figures below are provisional until data collection closes in mid-August 2026.
 
-Fifty three international reviewers across three studies have graded records for this work, unpaid and in a personal capacity. Thirty two of them completed a full 24-record set, across 16 countries and 5 continents.
+Fifty three international reviewers across three studies have graded records for this work, unpaid and in a personal capacity. Thirty two independent experts among them completed a full 24-record set, in 16 countries across 5 continents.
 
 On detection, a panel of 16 reviewers drawn from 11 countries read the records blind against a verified answer key and identified unreconstructable records with 83.9% accuracy across 384 graded reads (95% CI 72.7 to 95.1; sensitivity 87.0%, specificity 80.7%), clearing a threshold fixed before any data were examined.
 
 On reproducibility, three AI models, each from a different vendor, applied the standard to the same 15 constructed records and agreed 84% of the time. That is a signal about consistent application, not about accuracy.
 
-On reviewer reliability, independent raters scoring a shared record set reached Gwet's AC1 of 0.739 among expert raters and 0.624 among trained reviewers, both above the floor of 0.61 set in advance. Those figures are interim and rest on 10 records.
+On reviewer reliability, independent raters scoring a shared record set reached Gwet's AC1 of 0.739 among expert raters and 0.624 among trained reviewers, both above the floor of 0.61 set in advance. Those figures are interim and rest on 10 records and 99 labels.
 
 A related article is due in CEP Magazine in November. Detection, reproducibility, and reliability are separate questions from real-world effectiveness, which is a later stage of the program.
 

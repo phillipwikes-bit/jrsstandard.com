@@ -16,9 +16,9 @@
 
 **Background.** Generative AI increasingly drafts high-stakes corporate, administrative, and investigative records. Fluent text can read as complete and well supported while the evidentiary basis for its conclusions is absent from the record itself. A record whose conclusion cannot be reconstructed from the record alone cannot be independently examined or defended. We name this property Decision Reconstruction Risk (DRR).
 
-**Objective.** This paper defines DRR as a measurable property of records rather than an abstract concern, and asks the question that must be answered before any other: **is DRR detectable?** If experienced professionals cannot reliably identify records whose reasoning is missing, no control built on that judgment can work.
+**Objective.** This paper defines DRR as a measurable property of records rather than an abstract concern, and asks the question that must be answered before any other: **is DRR detectable?** If independent experts cannot reliably identify records whose reasoning is missing, no control built on that judgment can work.
 
-**Methods.** A balanced corpus of 24 constructed, de-identified AI-generated records (12 grounded, 12 unsupported) was judged by an international panel of experienced professionals against an answer key fixed and independently verified before any scoring. Reviewers worked independently, blind to the key, in a personal capacity. Analysis followed a plan registered before the data were examined, with decision thresholds set in advance. Accuracy is analyzed at the participant level, treating each reviewer rather than each read as the unit of observation.
+**Methods.** A balanced corpus of 24 constructed, de-identified AI-generated records (12 grounded, 12 unsupported) was judged by an international panel of independent experts against an answer key fixed and independently verified before any scoring. Reviewers worked independently, blind to the key, in a personal capacity. Analysis followed a plan registered before the data were examined, with decision thresholds set in advance. Accuracy is analyzed at the participant level, treating each reviewer rather than each read as the unit of observation.
 
 **Primary result.** Sixteen reviewers across 11 countries on 5 continents completed the full corpus. Panel accuracy against the verified key was **83.9 percent** (95 percent CI 72.7 to 95.1 at participant level), with sensitivity 87.0 percent for unsupported records and specificity 80.7 percent for grounded ones. This clears the pre-registered threshold, which required a point estimate of at least 70 percent with a lower confidence bound above chance. **DRR is detectable.**
 
@@ -40,7 +40,7 @@ The stakes fall on two parties at once. For the person the record describes, an 
 
 Most of the AI governance conversation addresses model risk: bias, robustness, security, the behavior of the system itself. This paper addresses a complementary problem that arises after the model has assisted with drafting and lives in the record it helped produce. Documentation risk is workflow-independent. It does not matter whether the record was produced by a person, by a person assisted by AI, or by an automated pipeline. What matters is whether the resulting record can be independently reconstructed and defended.
 
-Before asking whether any particular review method helps, there is a prior question to settle: is DRR detectable at all? If experienced professionals, reading a record cold, cannot tell one whose reasoning is present from one whose reasoning is absent, then documentation risk is not a governable property and no control built on human review can work. This paper reports a pre-registered test of that question and answers it yes. Whether a structured method improves on unaided judgment is a separate question under separate test, and it is not addressed here (Section 4.8).
+Before asking whether any particular review method helps, there is a prior question to settle: is DRR detectable at all? If independent experts, reading a record cold, cannot tell one whose reasoning is present from one whose reasoning is absent, then documentation risk is not a governable property and no control built on human review can work. This paper reports a pre-registered test of that question and answers it yes. Whether a structured method improves on unaided judgment is a separate question under separate test, and it is not addressed here (Section 4.8).
 
 ## 2. Background: documentation risk and the reconstruction gap
 
@@ -78,7 +78,7 @@ JRS is deliberately independent of any vendor, model, or drafting workflow. It i
 
 ### 4.1 Design
 
-This is a detection study. An international panel of experienced professionals independently judged a balanced corpus of constructed records against a verified answer key, blind to the key and to one another's judgments. A separate randomized comparison study, described in Section 4.8, tests a different question and is not analyzed here.
+This is a detection study. An international panel of independent experts judged a balanced corpus of constructed records against a verified answer key, blind to the key and to one another's judgments. A separate randomized comparison study, described in Section 4.8, tests a different question and is not analyzed here.
 
 ### 4.2 Materials: the constructed corpus and the verified key
 
@@ -88,7 +88,7 @@ The answer key was fixed in advance. The author-side intended classification of 
 
 ### 4.3 Participants
 
-The detection panel is an international group of experienced professionals in relevant domains: AI governance, compliance, audit, human resources, investigations, data privacy, records, and law. As of 4 August 2026, **16 reviewers have completed the full 24-record set**. The completed reviewers span **11 countries on 5 continents** (Australia, Germany, India, Nigeria, Poland, Singapore, South Korea, Spain, the United Arab Emirates, the United Kingdom, and the United States) and multiple professional domains and first languages, a composition motivated in Section 2.1. Reviewers participate in a personal capacity, without compensation, and are recognized as named contributors with their consent. Participation is voluntary and may be withdrawn before publication.
+The detection panel is an international group of independent experts in relevant domains: AI governance, compliance, audit, human resources, investigations, data privacy, records, and law. Every panel member is a credentialed practitioner or researcher in one of those fields, recruited on that basis. As of 4 August 2026, **16 reviewers have completed the full 24-record set**. The completed reviewers span **11 countries on 5 continents** (Australia, Germany, India, Nigeria, Poland, Singapore, South Korea, Spain, the United Arab Emirates, the United Kingdom, and the United States) and multiple professional domains and first languages, a composition motivated in Section 2.1. Reviewers participate in a personal capacity, without compensation, and are recognized as named contributors with their consent. Participation is voluntary and may be withdrawn before publication.
 
 ### 4.4 Analysis and unit of observation
 
@@ -127,7 +127,7 @@ Nothing here claims the method outperforms unaided judgment. The detection resul
 
 ## 5. Results: DRR is detectable
 
-Sixteen experienced professionals, working in 11 countries across 5 continents, each read the full 24-record corpus and returned 384 graded judgments, unpaid and in a personal capacity, none of them having discussed a record with any other. What follows rests on that effort.
+Sixteen independent experts, working in 11 countries across 5 continents, each read the full 24-record corpus and returned 384 graded judgments, unpaid and in a personal capacity, none of them having discussed a record with any other. What follows rests on that effort.
 
 ### 5.1 Primary detection result
 
@@ -187,7 +187,7 @@ The panel is recruited, not sampled, and self-selects for interest in the topic.
 
 The study does not test whether the method improves on unaided judgment, and nothing here should be read as evidence on that question. Detection has no control condition by design: the panel is measured against a verified key, not against another group. No efficacy claim is made and none should be inferred.
 
-The panel is made up of experienced professionals, which bounds the generalization in a particular direction. These results establish that DRR is detectable by people who review records for a living. What a less experienced reviewer, or one working outside their own domain, would achieve on the same corpus is a worthwhile question for later work.
+The panel is made up of credentialed experts, which bounds the generalization in a particular direction. These results establish that DRR is detectable by people who review records for a living. What a less experienced reviewer, or one working outside their own domain, would achieve on the same corpus is a worthwhile question for later work.
 
 Reviewer accuracy varied widely, including two panel members scoring below chance. Response patterns were examined and showed genuine discrimination rather than straight-lining or missing data, so these are treated as real observations and retained.
 
@@ -221,9 +221,9 @@ Landis, J.R., Koch, G.G., 1977. The measurement of observer agreement for catego
 
 ## Acknowledgments
 
-This study exists because sixteen experienced professionals in 11 countries across 5 continents each read a full corpus of 24 records with care, on their own time, without payment, and with nothing at stake in the outcome. That is 384 independent judgments given to a question none of them had to take an interest in. The quality of the panel is why the detection result is worth reporting at all, and its international and linguistic range is a methodological asset rather than a courtesy, for the reasons set out in Section 2.1.
+This study exists because sixteen independent experts in 11 countries across 5 continents each read a full corpus of 24 records with care, on their own time, without payment, and with nothing at stake in the outcome. That is 384 independent judgments given to a question none of them had to take an interest in. The quality of the panel is why the detection result is worth reporting at all, and its international and linguistic range is a methodological asset rather than a courtesy, for the reasons set out in Section 2.1.
 
-The wider programme these reviewers belong to has now drawn 53 international reviewers across three studies, all unpaid and all working in a personal capacity.
+These sixteen are part of a wider effort. Across the programme's two review studies, **32 independent experts have each completed a full 24-record set**, sixteen in the detection panel reported here and sixteen in the separate comparison study, in 16 countries across 5 continents. Counting the reliability study as well, 53 international reviewers have graded records for this work, every one of them unpaid and working in a personal capacity. Those wider figures are context rather than results: the detection finding in Section 5 rests on the sixteen panel members and their 384 graded reads, and on nothing else.
 
 The reliability and validation methodology, including the pre-registered analysis plan, the choice of coefficient, and the acceptance floors applied in Section 5.3, was designed by Ubayet Hossain, FRM. Specifying those criteria before any data were examined is what allows the results in this paper to be read as tests rather than as descriptions.
 
