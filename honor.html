@@ -106,7 +106,8 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
       + '<p class="hint">Optional, and it is the part we cannot write for you. If you give us one, it may appear in the article and in coverage of the work, always attributed and never edited beyond punctuation.</p>'
       + '<label class="chk"><input type="checkbox" id="h-quote-ok"><span>You may use that quote, attributed to me.</span></label>'
       + '<label class="chk"><input type="checkbox" id="h-byline" checked><span>Print my name and title as shown above in the article and its contributor list.</span></label>'
-      + '<label class="chk core"><input type="checkbox" id="h-core"><span>I agree to be contacted about this work, and to my details being stored securely under the <a href="privacy.html#consent" target="_blank" rel="noopener">registration terms</a>. <span style="color:var(--text)">Your name is <b style="color:var(--ready-text);font-weight:600">not published</b> by ticking this.</span></span></label>'
+      + '<label class="chk core"><input type="checkbox" id="h-core"><span>I agree to be contacted about this work, and to my details being stored securely under the <a href="privacy.html#consent" id="h-terms-link">registration terms</a>. <span style="color:var(--text)">Your name is <b style="color:var(--ready-text);font-weight:600">not published</b> by ticking this.</span></span></label>'
+      + '<div id="h-terms" style="display:none;border:1px solid var(--accent-dim);background:var(--surface2);padding:13px 14px;margin:0 0 10px;font-size:12px;color:var(--muted);line-height:1.6">Ticking the box means three things and no more: contact me about this work, store my details securely, and allow that record to travel with the project if the JRS assets are ever transferred to a successor. It does <b style="color:var(--text)">not</b> publish your name. Being listed publicly as an honoree is the separate optional tick below. Full detail in the <a href="privacy.html#consent">Privacy Policy</a>.</div>'
       + '<label class="chk"><input type="checkbox" id="h-public"><span>Optional: list my name publicly as an honoree.</span></label>'
       + '<div id="msg"></div>'
       + '<button id="go" type="button">Accept the Honor</button>'
@@ -115,6 +116,16 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     + '</div>';
 
     el('go').addEventListener('click', function(){ submit(d); });
+
+    // Inline terms rather than a new window: the anchor is inside the consent
+    // label, and in-app browsers block target="_blank" so the link reads as dead.
+    var htl = el('h-terms-link');
+    if (htl) htl.addEventListener('click', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      var p = el('h-terms');
+      if (p) p.style.display = (p.style.display === 'none' || !p.style.display) ? 'block' : 'none';
+    });
   }
 
   function submit(d){
