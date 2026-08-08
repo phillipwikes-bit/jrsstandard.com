@@ -97,7 +97,7 @@ Computed by `research/analysis_foil_2026-08-08.py`.
 | Artifact | File |
 |---|---|
 | Manuscript, submission-ready, she is first author | `research/FOIL_Article_Draft.md` and `.docx` |
-| Companion manuscript supplying the cross-domain result cited in her Section 5.6 | `research/Employment_Records_Article_Draft.md` |
+| Companion manuscript supplying the cross-domain result cited in her Section 5.6 | `research/BusinessEthics_Article_Draft.md` (the employment corpus was consolidated there on 2026-08-08) |
 | Final sweep analysis, all four programme findings | `research/analysis_final_sweep_2026-08-08.py` |
 | Analysis script, standard library only, carries the note-coding frame | `research/analysis_foil_2026-08-08.py` |
 | Message: results, first authorship, Honor, quote request | `research/Message_Stacy_Young_Honor_and_Results_2026-08-08.md` |
