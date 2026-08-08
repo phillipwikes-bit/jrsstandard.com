@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Global Governance and Transparency Honor &middot; JRS</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Accept the Global Governance and Transparency Honor and confirm how your name and title should appear.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050505; --surface:#121212; --surface2:#1A1A1A;
+  --accent:#BE9447; --accent-dim:#7A5E28;
+  --muted:#B3B3B3; --muted-soft:#8A8A8A; --text:#F2F2F2;
+  --rule:#2A2A2A; --stop-text:#E88080; --review-text:#D4A055; --ready-text:#5DBF82;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+a{color:var(--accent)}
+.wrap{max-width:620px;width:100%;margin:0 auto;padding:34px 22px 60px;flex:1}
+.wordmark{font-family:'Bodoni Moda',serif;font-size:20px;color:var(--accent);text-decoration:none}
+.seal{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:26px 0 10px}
+h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:30px;line-height:1.2;margin:0 0 8px}
+.year{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--accent-dim);margin-bottom:16px}
+.lede{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:16px}
+.citation{border-left:3px solid var(--accent);background:var(--surface);padding:16px 18px;margin:0 0 20px;font-size:13.5px;color:var(--muted);line-height:1.7}
+.citation b{color:var(--text);font-weight:500}
+.card{background:var(--surface);border:1px solid var(--accent);padding:24px 22px;margin-top:18px}
+label.fl{display:block;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px}
+input,textarea{width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;font-family:'Inter',sans-serif;margin-bottom:13px}
+textarea{min-height:110px;resize:vertical;line-height:1.6}
+input:focus,textarea:focus{outline:none;border-color:var(--accent-dim)}
+.hint{font-size:11.5px;color:var(--muted-soft);line-height:1.55;margin:-9px 0 13px}
+label.chk{display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--muted);line-height:1.55;margin-bottom:10px;cursor:pointer}
+label.chk input{width:auto;margin:2px 0 0;flex:0 0 auto}
+label.chk.core{border:1px solid var(--accent-dim);background:var(--surface2);padding:12px 13px}
+button{width:100%;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:14px;cursor:pointer}
+button:disabled{opacity:.55;cursor:default}
+#msg{font-size:12.5px;min-height:16px;margin-bottom:8px;color:var(--review-text)}
+.trust{font-size:11px;color:var(--ready-text);text-align:center;margin-top:9px}
+.fine{font-size:10.5px;color:var(--muted-soft);line-height:1.55;margin-top:14px}
+footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
+.fc{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a href="index.html" class="wordmark">JRS<span style="font-size:10px;vertical-align:super;position:relative;top:-3px;">&#8482;</span></a>
+
+  <div id="stage">
+    <div class="seal">Global Governance &amp; Transparency Honor</div>
+    <h1 id="headline">Loading</h1>
+    <div class="year" id="year"></div>
+    <p class="lede" id="lede">One moment.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="fc">&#169; 2026 Phillip Wikes &nbsp;&middot;&nbsp; JRS&#8482; &middot; <a href="privacy.html" style="color:inherit">Privacy</a></div>
+</footer>
+
+<script>
+(function(){
+  function qp(k){ try { return (new URLSearchParams(location.search)).get(k) || ''; } catch(e){ return ''; } }
+  function esc(x){ return String(x==null?'':x).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function el(id){ return document.getElementById(id); }
+
+  var key = qp('k');
+  var stage = el('stage');
+
+  if (!key) { render404(); return; }
+
+  fetch('/api/honor?k=' + encodeURIComponent(key))
+    .then(function(r){ if (!r.ok) throw 0; return r.json(); })
+    .then(function(d){ if (!d || !d.found) throw 0; renderForm(d); })
+    .catch(function(){ render404(); });
+
+  function render404(){
+    stage.innerHTML =
+      '<div class="seal">Global Governance &amp; Transparency Honor</div>'
+    + '<h1>This link is not recognised</h1>'
+    + '<p class="lede">Honor links are issued individually and are not guessable. If you were sent one and it is not working, reply to the message that brought you here, or write to <a href="mailto:info@jrsstandard.com">info@jrsstandard.com</a>.</p>';
+  }
+
+  function renderForm(d){
+    stage.innerHTML =
+      '<div class="seal">' + esc(d.honor) + '</div>'
+    + '<h1>' + esc(d.first) + ', you have been named an honoree.</h1>'
+    + '<div class="year">' + esc(d.year) + ' &middot; ' + esc(d.code) + ' &middot; ' + esc(d.order) + '</div>'
+    + '<p class="lede">This is the citation as it will read on your certificate. Nothing is issued until you confirm it below, and nothing is published without your say-so.</p>'
+    + '<div class="citation">' + esc(d.citation) + '</div>'
+    + '<div class="card">'
+      + '<label class="fl" for="h-name">Name, exactly as it should be printed</label>'
+      + '<input id="h-name" type="text" value="' + esc(d.name) + '">'
+      + '<label class="fl" for="h-title">Title, exactly as it should be printed</label>'
+      + '<input id="h-title" type="text" value="' + esc(d.title) + '">'
+      + '<label class="fl" for="h-org">Organization</label>'
+      + '<input id="h-org" type="text" value="' + esc(d.org) + '">'
+      + '<label class="fl" for="h-email">Email</label>'
+      + '<input id="h-email" type="email" placeholder="Email" autocomplete="email">'
+      + '<label class="fl" for="h-quote">In your own words</label>'
+      + '<textarea id="h-quote" placeholder="A sentence or two on why a public-records determination should be able to explain itself. Yours, not ours."></textarea>'
+      + '<p class="hint">Optional, and it is the part we cannot write for you. If you give us one, it may appear in the article and in coverage of the work, always attributed and never edited beyond punctuation.</p>'
+      + '<label class="chk"><input type="checkbox" id="h-quote-ok"><span>You may use that quote, attributed to me.</span></label>'
+      + '<label class="chk"><input type="checkbox" id="h-byline" checked><span>Print my name and title as shown above in the article and its contributor list.</span></label>'
+      + '<label class="chk core"><input type="checkbox" id="h-core"><span>I agree to be contacted about this work, to my details being stored securely, and to them transferring with the project if it is ever acquired. <span style="color:var(--text)">Your name is <b style="color:var(--ready-text);font-weight:600">not published</b> by ticking this.</span></span></label>'
+      + '<label class="chk"><input type="checkbox" id="h-public"><span>Optional: list my name publicly as an honoree.</span></label>'
+      + '<div id="msg"></div>'
+      + '<button id="go" type="button">Accept the Honor</button>'
+      + '<p class="trust">Takes about a minute. Nothing is published without your approval.</p>'
+      + '<p class="fine">Your details are stored securely and used only for this project. Request access or deletion any time at <a href="mailto:info@jrsstandard.com">info@jrsstandard.com</a>. See the <a href="privacy.html">Privacy Policy</a>.</p>'
+    + '</div>';
+
+    el('go').addEventListener('click', function(){ submit(d); });
+  }
+
+  function submit(d){
+    var msg = el('msg'), go = el('go');
+    var email = el('h-email').value.trim();
+    var core = el('h-core').checked;
+
+    msg.style.color = 'var(--review-text)';
+    if (!email || email.indexOf('@') < 1 || email.indexOf('.') < 0) {
+      msg.textContent = 'Please enter a valid email address so the certificate can reach you.';
+      el('h-email').focus(); return;
+    }
+    if (!core) {
+      msg.textContent = 'Please tick the box so your details can be stored. Your name is not published by ticking it.';
+      return;
+    }
+
+    go.disabled = true;
+    msg.style.color = 'var(--muted)';
+    msg.textContent = 'Recording your acceptance...';
+
+    fetch('/api/honor?k=' + encodeURIComponent(qp('k')), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: el('h-name').value.trim(),
+        title: el('h-title').value.trim(),
+        organization: el('h-org').value.trim(),
+        email: email,
+        quote: el('h-quote').value.trim(),
+        quote_clearance: el('h-quote-ok').checked,
+        byline_ok: el('h-byline').checked,
+        consent_core: true,
+        consent_public_list: el('h-public').checked
+      })
+    })
+    .then(function(r){ if (!r.ok) throw 0; return r.json(); })
+    .then(function(res){
+      stage.innerHTML =
+        '<div class="seal">' + esc(res.honor) + '</div>'
+      + '<h1>Accepted. Thank you, ' + esc(String(res.printed_name).split(' ')[0]) + '.</h1>'
+      + '<div class="year">' + esc(res.year) + ' &middot; ' + esc(res.code) + '</div>'
+      + '<p class="lede">Your certificate will be issued in the name and title you confirmed, and sent to the address you gave. Here is the citation it carries.</p>'
+      + '<div class="citation"><b>' + esc(res.printed_name) + '</b><br>' + esc(res.printed_title) + '<br><br>' + esc(res.citation) + '</div>'
+      + '<p class="lede">If anything above should read differently, reply to the message that brought you here and it will be changed before the certificate is issued.</p>';
+      window.scrollTo(0,0);
+    })
+    .catch(function(){
+      msg.style.color = 'var(--review-text)';
+      msg.textContent = 'Could not record that just now. Please try again, or write to info@jrsstandard.com.';
+      go.disabled = false;
+    });
+  }
+})();
+</script>
+</body>
+</html>
