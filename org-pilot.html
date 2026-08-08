@@ -77,7 +77,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     <div class="eyebrow">Open Initiatives &amp; International Registry</div>
     <h1>Run JRS on your own records</h1>
     <p class="lede">The Organizational Pilot Package. Paste up to twenty five of your own records, one at a time. Each is assessed against the five review conditions and you get the read immediately. Free, no obligation, and you can stop after one.</p>
-    <p class="lede">Organizations that run the diagnostic join the International Registry of Supporters, giving visible institutional backing to decision transparency. Whether your name and organization appear on the public list is your choice, made after the pilot, not a condition of running it.</p>
+    <p class="lede">Running an organizational pilot is confidential. Your records are processed in memory and never stored or retained, and running one carries no public endorsement obligation. After you have your results, you will have the option, only if you want it, to add your organization's name to the public International Registry of Supporters.</p>
     <p class="cred">Built by <b>Phillip Wikes</b>, former Lead Civil Rights Officer, Maryland Commission on Civil Rights. The five conditions have been applied record by record by <b>53 international reviewers across three studies</b>, including an expert panel of <b>32 independent experts across 16 countries</b>, each completing a full 24-record set.</p>
 
     <div class="teaser">
@@ -93,35 +93,19 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     </div>
 
     <div class="card">
-      <label class="fl" for="p-org">Organization</label>
-      <input id="p-org" type="text" placeholder="Organization name" autocomplete="organization">
-      <label class="fl" for="p-sector">Sector (optional)</label>
-      <select id="p-sector">
-        <option value="">Select a sector</option>
-        <option>Government or public agency</option>
-        <option>Healthcare</option>
-        <option>Financial services</option>
-        <option>Higher education</option>
-        <option>Technology</option>
-        <option>Manufacturing or industrial</option>
-        <option>Professional services or consulting</option>
-        <option>Legal</option>
-        <option>Nonprofit or NGO</option>
-        <option>Other</option>
-      </select>
       <label class="fl" for="p-name">Your name</label>
       <input id="p-name" type="text" placeholder="Full name" autocomplete="name">
-      <label class="fl" for="p-title">Your title or role</label>
-      <input id="p-title" type="text" placeholder="Title or role (optional)" autocomplete="organization-title">
-      <label class="fl" for="p-email">Email</label>
-      <input id="p-email" type="email" placeholder="Email" autocomplete="email">
+      <label class="fl" for="p-email">Work email</label>
+      <input id="p-email" type="email" placeholder="Work email" autocomplete="email">
+      <label class="fl" for="p-org">Organization (optional)</label>
+      <input id="p-org" type="text" placeholder="Organization name" autocomplete="organization">
 
 
       <label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--muted);line-height:1.5;border:1px solid var(--accent-dim);background:var(--surface2);padding:12px 13px;margin:0 0 10px;cursor:pointer"><input type="checkbox" id="p-registry" style="width:auto;margin:2px 0 0;flex:0 0 auto"><span>I agree to receive my diagnostic results and updates on the JRS standard, and to my details being stored securely under the <a href="privacy.html#consent" id="p-terms-link" style="color:var(--accent);text-decoration:underline">registration terms</a>. <span style="color:var(--text)">No record text is ever stored, and your name and organization are <b style="color:var(--ready-text);font-weight:600">not published</b> by ticking this.</span></span></label>
       <div id="p-terms" style="display:none;border:1px solid var(--accent-dim);background:var(--surface2);padding:13px 14px;margin:0 0 10px;font-size:12px;color:var(--muted);line-height:1.6">Ticking the box means three things and no more: contact me about the JRS project, store my details securely, and allow that record to travel with the project if the JRS assets are ever transferred to a successor. It does <b style="color:var(--text)">not</b> publish your name or your organization. Your record text is never stored: each record is assessed in memory and discarded. Full detail in the <a href="privacy.html#consent" style="color:var(--accent)">Privacy Policy</a>.</div>
 
       <div id="org-msg" style="font-size:12.5px;color:var(--review-text);min-height:16px;margin-bottom:6px"></div>
-      <button id="org-go" type="button">Run my free diagnostic check</button>
+      <button id="org-go" type="button" style="width:100%">Launch private pilot workspace →</button>
       <p class="fine" style="text-align:center;color:var(--ready-text)">Free access &middot; No credit card &middot; Memory-only record processing</p>
     </div>
   </section>
@@ -163,6 +147,25 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
           <ul id="r-revisions"></ul>
         </div>
         <div style="margin-top:14px;font-size:13.5px;color:var(--text)" id="r-summary"></div>
+      </div>
+      <!-- Sector is asked here rather than at the gate: by this point the reader
+           has run a record and seen a read, so the question costs a completion
+           it would have cost before any value was delivered. -->
+      <div style="margin-top:14px">
+        <label class="fl" for="p-sector">Sector (optional)</label>
+        <select id="p-sector">
+          <option value="">Select a sector</option>
+          <option>Government or public agency</option>
+          <option>Healthcare</option>
+          <option>Financial services</option>
+          <option>Higher education</option>
+          <option>Technology</option>
+          <option>Manufacturing or industrial</option>
+          <option>Professional services or consulting</option>
+          <option>Legal</option>
+          <option>Nonprofit or NGO</option>
+          <option>Other</option>
+        </select>
       </div>
       <div class="row">
         <button id="next-go" type="button" class="ghost">Run another record</button>
@@ -238,6 +241,10 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     return true;
   }
 
+  // Organization is optional at the gate, so every place that used to print it
+  // needs a neutral fallback rather than an empty string.
+  function orgName(){ return session.organization || 'Your organization'; }
+
   // Inline terms rather than a new window: the anchor is inside the consent
   // label, and in-app browsers block target="_blank" so the link reads as dead.
   var ptl = el('p-terms-link');
@@ -251,9 +258,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
   el('org-go').addEventListener('click', function(){
     var m = el('org-msg');
     session.organization = el('p-org').value.trim();
-    session.sector = el('p-sector').value.trim();
     session.name = el('p-name').value.trim();
-    session.title = el('p-title').value.trim();
     session.email = el('p-email').value.trim();
     // The one required box carries contact, secure storage, and transfer with
     // the project. It does NOT publish the organization: public listing is asked
@@ -264,12 +269,11 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     session.c3 = false;
 
     m.style.color = 'var(--review-text)';
-    if (!session.organization) { m.textContent = 'Please enter your organization.'; return; }
     if (!session.name) { m.textContent = 'Please enter your name.'; return; }
-    if (!session.email || session.email.indexOf('@') < 1 || session.email.indexOf('.') < 0) { m.textContent = 'Please enter a valid email address.'; return; }
+    if (!session.email || session.email.indexOf('@') < 1 || session.email.indexOf('.') < 0) { m.textContent = 'Please enter a valid work email address.'; return; }
     if (!session.c1) { m.textContent = 'Please tick the box to continue. Nothing is published by ticking it.'; return; }
 
-    el('run-org').textContent = session.organization;
+    el('run-org').textContent = orgName();
     el('step-org').classList.add('hidden');
     el('step-run').classList.remove('hidden');
     window.scrollTo(0,0);
@@ -382,7 +386,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
         return '<tr><td>' + esc(label) + '</td><td class="n">' + n + '</td><td class="n">' + pct + '%</td></tr>';
       }
       var html = '<!DOCTYPE html><html><head><meta charset="utf-8"><title>JRS Executive Summary, '
-        + esc(session.organization) + '</title><style>'
+        + esc(orgName()) + '</title><style>'
         + 'body{font-family:Georgia,serif;color:#111;max-width:7.2in;margin:0 auto;padding:0.6in;line-height:1.5}'
         + 'h1{font-size:20pt;margin:0 0 4px} h2{font-size:12pt;margin:22px 0 6px;border-bottom:1px solid #ccc;padding-bottom:3px}'
         + '.meta{color:#555;font-size:10pt;margin-bottom:18px} table{width:100%;border-collapse:collapse;font-size:10.5pt;margin:6px 0 4px}'
@@ -390,10 +394,10 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
         + 'p{font-size:10.5pt} .fine{color:#666;font-size:9pt;margin-top:20px;border-top:1px solid #ccc;padding-top:10px}'
         + '</style></head><body>'
         + '<h1>Justification Review Standard: Pilot Summary</h1>'
-        + '<div class="meta">' + esc(session.organization) + (session.sector ? ' &middot; ' + esc(session.sector) : '')
+        + '<div class="meta">' + esc(orgName()) + (session.sector ? ' &middot; ' + esc(session.sector) : '')
         + ' &middot; Prepared ' + today + ' for internal leadership</div>'
         + '<h2>What was reviewed</h2>'
-        + '<p>' + esc(session.organization) + ' applied the Justification Review Standard to <b>' + session.run
+        + '<p>' + esc(orgName()) + ' applied the Justification Review Standard to <b>' + session.run
         + '</b> of its own records. Each record was assessed against five conditions that together test whether the basis '
         + 'for a decision can be independently reconstructed from the record itself. <b>No record text was stored or transmitted for retention.</b> '
         + 'Each record was assessed in memory and discarded; only the counts below were kept.</p>'
@@ -414,7 +418,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
         + 'rather than across everything. Third, preserve the drafting layer for AI-assisted documents, because the reasoning '
         + 'that cannot be reconstructed from the final text is often still recoverable from the draft history.</p>'
         + '<div class="fine">Prepared from the Justification Review Standard pilot run by ' + esc(session.name || 'your team')
-        + (session.title ? ', ' + esc(session.title) : '') + '. The standard is free to use. '
+        + '. The standard is free to use. '
         + 'Questions: info@jrsstandard.com &middot; jrsstandard.com</div>'
         + '</body></html>';
       try {
@@ -464,13 +468,13 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     el('msg').style.color = 'var(--muted)';
     el('msg').textContent = 'Recording the pilot...';
 
+    session.sector = (el('p-sector') ? el('p-sector').value.trim() : '');
     fetch('/api/org-pilot', {
       method:'POST', headers:{ 'Content-Type':'application/json' },
       body: JSON.stringify({
         name: session.name,
         email: session.email,
         organization: session.organization,
-        title: session.title,
         sector: session.sector,
         src: src,
         records_run: session.run,
@@ -483,7 +487,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     })
     .then(function(r){ if (!r.ok) throw 0; return r.json(); })
     .then(function(){
-      el('done-line').textContent = session.organization + ' applied the Justification Review Standard to '
+      el('done-line').textContent = orgName() + ' applied the Justification Review Standard to '
         + session.run + (session.run === 1 ? ' record.' : ' records.');
       el('step-run').classList.add('hidden');
       el('step-done').classList.remove('hidden');
