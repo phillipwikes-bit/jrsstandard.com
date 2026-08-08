@@ -65,7 +65,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
 
   <div class="card">
     <div class="eyebrow" id="eyebrow">JRS Investigator Field Guide</div>
-    <h1 id="headline">Join the International Registry</h1>
+    <h1 id="headline">Free Record Defensibility Check</h1>
     <p class="lede" id="lede">Free for practitioners. Two fields and one box.</p>
     <p class="cred">Built by <b>Phillip Wikes</b>, former Lead Civil Rights Officer, Maryland Commission on Civil Rights. <b>53 international reviewers across three studies</b> have graded records for this work, including <b>32 independent experts across 16 countries</b> who each completed a full 24-record set.</p>
     <p class="tip" id="app-tip" style="display:none">Reading inside the LinkedIn app? Tap the &hellip; menu and choose <b>Open in browser</b> first, so the file saves to your device.</p>
@@ -77,17 +77,17 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
 
     <label class="chk" id="contact-wrap"><input type="checkbox" id="c-contact"><span>I agree to be contacted about the JRS project and consent to my details being stored securely for that purpose. (required)</span></label>
 
-    <label class="chk" id="named-wrap" style="border:1px solid var(--accent-dim);background:var(--surface2);padding:12px 13px;margin-bottom:10px"><input type="checkbox" id="c-registry"><span id="registry-terms">I agree to be contacted about the JRS project, to my details being stored securely, and to them transferring with the project if it is ever acquired. <span style="color:var(--text)">Your name is <b style="color:var(--ready-text);font-weight:600">not published</b> by ticking this.</span></span></label>
+    <label class="chk" id="named-wrap" style="border:1px solid var(--accent-dim);background:var(--surface2);padding:12px 13px;margin-bottom:10px"><input type="checkbox" id="c-registry"><span id="registry-terms">I agree to receive my results and updates on the JRS standard, and to my details being stored securely under the <a href="#" id="terms-link">registration terms</a>. <span style="color:var(--text)">No record text is ever stored, and your name is <b style="color:var(--ready-text);font-weight:600">not published</b> by ticking this.</span></span></label>
 
     <div id="msg"></div>
     <button id="go" type="button">Continue</button>
-    <p class="trust" id="trust">Free. No payment, ever. Instant access. Leave any time by emailing us.</p>
+    <p class="trust" id="trust">Free access &middot; No credit card &middot; Memory-only record processing</p>
 
     <p class="detail-toggle"><a href="#" id="what-toggle">What am I agreeing to?</a></p>
     <div class="registry" id="registry-detail" style="display:none">
-      <div class="rlabel">Open Initiatives &amp; International Registry</div>
-      <p id="registry-longterms">Ticking the box means three things and no more: contact me about the JRS project, store my details securely, and allow them to transfer with the project if it is ever acquired. It does <b>not</b> publish your name. Being listed in the public Registry is a separate, optional choice offered after you have what you came for.</p>
-      <p style="margin-top:8px">Joining also opens the <b>free, private JRS diagnostic check</b> on your own records. Your record text is never stored: each record is assessed in memory and discarded.</p>
+      <div class="rlabel">Registration terms</div>
+      <p id="registry-longterms">Ticking the box means three things and no more: contact me about the JRS project, store my details securely, and allow that record to travel with the project if the JRS assets are ever transferred to a successor. It does <b>not</b> publish your name. Being listed in the public Registry is a separate, optional choice offered after you have what you came for.</p>
+      <p style="margin-top:8px">Registering opens the <b>free, private JRS diagnostic check</b> on your own records. Your record text is never stored: each record is assessed in memory and discarded.</p>
       <p id="registry-live" style="margin-top:8px;color:var(--muted-soft)"></p>
       <p style="margin-top:8px">You can leave the Registry at any time by emailing <a href="mailto:info@jrsstandard.com">info@jrsstandard.com</a>. The standard, the research, and the site stay free to read without registering.</p>
     </div>
@@ -147,11 +147,15 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
 
   if (mode === 'support') {
     var cname = CAMPAIGN_LABEL[cKey] || 'the JRS initiatives';
-    eyebrow.textContent = 'International Registry of Supporters';
-    headline.textContent = 'Join the International Registry';
-    lede.innerHTML = 'Back <b style="color:var(--text)">' + cname + '</b> and get the free records check. '
-      + 'Two fields, one box, about twenty seconds. Your name is not published unless you choose it on the next screen.';
-    go.textContent = 'Join and open my free records check';
+    // The page leads with the tool, not with the register. People arrive wanting
+    // to know whether their own records hold up; the campaign entry is what the
+    // registration records, and it is stated plainly, second.
+    eyebrow.textContent = 'Free diagnostic access';
+    headline.textContent = 'Free Record Defensibility Check';
+    lede.innerHTML = 'Paste up to twenty five of your own records, redacted, and get a five-condition read on each one straight away. '
+      + 'Registering takes about twenty seconds and records you as backing <b style="color:var(--text)">' + cname + '</b>. '
+      + 'Your name is not published unless you choose it on the next screen.';
+    go.textContent = 'Launch free record check →';
     namedWrap.style.display = 'flex';
     registryRequired = true;
     // One box, not two. Joining the Registry means being listed in it, being
@@ -182,11 +186,13 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     if (contactBoxG) contactBoxG.style.display = 'none';
     var ename = EDITION_LABEL[edKey] || '';
     eyebrow.textContent = 'JRS Investigator Field Guide';
-    headline.textContent = 'Join the International Registry';
+    headline.textContent = ename || 'Free Investigator Field Guide';
     lede.innerHTML = ename
-      ? ('Free for practitioners. The <b style="color:var(--text)">' + ename + '</b> downloads the moment you submit. Two fields, one box, and your name is not published.')
-      : 'Free for practitioners. The guide downloads the moment you submit. Two fields, one box, and your name is not published.';
+      ? ('Free for practitioners. The <b style="color:var(--text)">' + ename + '</b> downloads the moment you submit, and your registration also opens the free record check. Your name is not published.')
+      : 'Free for practitioners. The guide downloads the moment you submit, and your registration also opens the free record check. Your name is not published.';
     go.textContent = 'Download the guide now';
+    var trustG = document.getElementById('trust');
+    if (trustG) trustG.textContent = 'Free access · No credit card · Instant download';
     namedWrap.style.display = 'flex';
     registryRequired = true;
     // Lowest-commitment route: a named person with an email is worth far more
@@ -220,8 +226,8 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
   // condition of anything they have already received.
   function listingBlock(){
     return '<div class="listing" id="listing-block">'
-      + '<div class="rlabel">Optional &middot; the public Registry</div>'
-      + '<p>Your name is <b style="color:var(--text)">not</b> on the public list. If you want it there, one click adds it: your name and organization only, never your email address. It reads as a professional position taken as an individual practitioner, not on behalf of your employer.</p>'
+      + '<div class="rlabel">Optional &middot; International Registry of Supporters</div>'
+      + '<p>Your name is <b style="color:var(--text)">not</b> on the public Registry. If you want it there, one click adds it: your name and organization only, never your email address. Members carry the designation <b style="color:var(--text)">Registered International Advocate</b>, and it reads as a professional position taken as an individual practitioner, not on behalf of your employer.</p>'
       + '<button type="button" id="list-go" class="ghost" style="margin-top:11px">Add my name to the public Registry</button>'
       + '<p class="fine" id="list-msg">You can be removed at any time by emailing info@jrsstandard.com.</p>'
       + '</div>';
@@ -277,7 +283,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     function mark(id){ var el = document.getElementById(id); if (el){ el.classList.add('bad'); el.focus(); } }
     if (!name)  { msg.textContent = 'Please enter your name.'; mark('f-name'); return; }
     if (!email || email.indexOf('@') < 1 || email.indexOf('.') < 0) { msg.textContent = 'Please enter a valid email address.'; mark('f-email'); return; }
-    if (!c1)    { msg.textContent = combined ? 'Please tick the box so your details can be stored.' : 'The first consent box is required in order to store your details.'; return; }
+    if (!c1)    { msg.textContent = combined ? 'Please tick the box so your results can be sent to you.' : 'The first consent box is required in order to store your details.'; return; }
     if (registryRequired && !reg) { msg.textContent = 'Please tick the box to continue. Your name is not published by ticking it.'; return; }
 
     go.disabled = true;
@@ -347,9 +353,9 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
         var card = document.querySelector('.card');
         if (card) {
           card.innerHTML =
-            '<div class="eyebrow">Registry entry recorded</div>'
+            '<div class="eyebrow">Your record check is open</div>'
           + '<h1>Thank you, ' + esc(name.split(' ')[0]) + '</h1>'
-          + '<p class="lede">Your support is on the International Registry. That entry now opens the free, private diagnostic check on your own records.</p>'
+          + '<p class="lede">Your registration is recorded and the free, private diagnostic check on your own records is now open.</p>'
           + listingBlock()
           + '<div class="privacy-lite">Paste up to twenty five of your own records, redacted, and get the five-condition read on each one immediately. <b>Your record text is never stored</b>: each record is assessed in memory and discarded. Only the count and the pattern of results is kept.</div>'
           + '<a href="org-pilot.html' + q + '" style="text-decoration:none"><button type="button" style="margin-bottom:10px">Run it on my records</button></a>'
@@ -375,13 +381,27 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
   // "What am I agreeing to?" opens the full terms rather than putting four lines
   // of consent text between the reader and the button.
   var toggle = document.getElementById('what-toggle');
+  function setTerms(open){
+    var d = document.getElementById('registry-detail');
+    if (!d) return;
+    d.style.display = open ? 'block' : 'none';
+    if (toggle) toggle.textContent = open ? 'Hide the details' : 'What am I agreeing to?';
+  }
   if (toggle) toggle.addEventListener('click', function(e){
     e.preventDefault();
     var d = document.getElementById('registry-detail');
     if (!d) return;
-    var open = d.style.display !== 'none';
-    d.style.display = open ? 'none' : 'block';
-    toggle.textContent = open ? 'What am I agreeing to?' : 'Hide the details';
+    setTerms(d.style.display === 'none');
+  });
+  // The tick line names the registration terms rather than reciting them, so the
+  // link has to open the same panel and put them in front of the reader.
+  var termsLink = document.getElementById('terms-link');
+  if (termsLink) termsLink.addEventListener('click', function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    setTerms(true);
+    var d = document.getElementById('registry-detail');
+    if (d && d.scrollIntoView) d.scrollIntoView({block:'nearest'});
   });
 
   // Clear the red border as soon as the reader fixes the field, so the form
