@@ -153,8 +153,9 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     eyebrow.textContent = 'Free diagnostic access';
     headline.textContent = 'Free Record Defensibility Check';
     lede.innerHTML = 'Paste up to twenty five of your own records, redacted, and get a five-condition read on each one straight away. '
-      + 'Registering takes about twenty seconds and records you as backing <b style="color:var(--text)">' + cname + '</b>. '
-      + 'Your name is not published unless you choose it on the next screen.';
+      + 'Registering takes about twenty seconds and gives you immediate, confidential access. '
+      + 'Your entry is recorded against <b style="color:var(--text)">' + cname + '</b> as an individual practitioner, never on behalf of your employer, '
+      + 'and your name is not published unless you choose it on the next screen.';
     go.textContent = 'Launch free record check →';
     namedWrap.style.display = 'flex';
     registryRequired = true;
@@ -188,8 +189,8 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     eyebrow.textContent = 'JRS Investigator Field Guide';
     headline.textContent = ename || 'Free Investigator Field Guide';
     lede.innerHTML = ename
-      ? ('Free for practitioners. The <b style="color:var(--text)">' + ename + '</b> downloads the moment you submit, and your registration also opens the free record check. Your name is not published.')
-      : 'Free for practitioners. The guide downloads the moment you submit, and your registration also opens the free record check. Your name is not published.';
+      ? ('Free for practitioners. The <b style="color:var(--text)">' + ename + '</b> downloads the moment you submit. Your name is not published.')
+      : 'Free for practitioners. The guide downloads the moment you submit. Your name is not published.';
     go.textContent = 'Download the guide now';
     var trustG = document.getElementById('trust');
     if (trustG) trustG.textContent = 'Free access · No credit card · Instant download';
