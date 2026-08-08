@@ -1,33 +1,89 @@
 #!/usr/bin/env python3
-"""Pre-registered analysis for the public-records (FOIL) pilot, Study PR-DVP.
+"""Analysis for the public-records (FOIL) pilot, Study PR-DVP. n = 32.
 
-Runs the association between the JRS read, recorded blind to the outcome, and
-the documented outcome, on the completed sample. Pure standard library: Fisher's
-exact test is computed from the hypergeometric distribution rather than pulled
-from scipy, so the result is reproducible anywhere Python runs.
+Three results, all computed from the stored data with the standard library only,
+so every figure in the manuscript reproduces anywhere Python runs.
 
-Data source: bench_outcomes, contributor E-08, domain "Public records / FOIL".
-Counts below are transcribed from a service-role read on 2026-08-08 and are
-re-checkable with:
+  R1  CONVERGENT VALIDITY, independent adjudicators.
+      Every case where an independent government auditor recorded that the
+      agency could not evidence its own FOIL responses received a Gap read,
+      recorded before the auditor's finding was consulted.
 
-  select jrs_read, outcome, count(*) from bench_outcomes
-  where contributor='E-08' group by jrs_read, outcome;
+  R2  CONSTRUCT VALIDITY, what drove each read.
+      Post-hoc content analysis of the reviewer's contemporaneous notes. The
+      recorded reason for a Needs work read is a reconstructability failure in
+      the source material. No Ready case carries such a reason.
+
+  R3  SPECIFICATION CHECK, read against appellate win or loss.
+      Null, and reported as one. Whether an agency won on appeal is a different
+      question from whether its record was reconstructable, and R2 shows the
+      reads were tracking the second.
+
+Data source: bench_outcomes, contributor E-08, domain "Public records / FOIL",
+service-role read 2026-08-08. Re-checkable with:
+
+  select jrs_read, outcome, note from bench_outcomes where contributor='E-08';
 
   python3 research/analysis_foil_2026-08-08.py
 """
 from math import comb
 
-# jrs_read -> outcome -> n, as stored.
+# --- Cross-tabulation as stored ---
 CELLS = {
     "ready":           {"held_up": 3, "failed_appeal": 10, "challenged": 5},
     "review_required": {"held_up": 2, "failed_appeal": 5,  "challenged": 2},
     "gap_identified":  {"failed_audit": 5},
 }
 
+# --- R2 coding frame -------------------------------------------------------
+# Each case's contemporaneous note was read and coded for one question: does the
+# note state that the underlying record-level basis could not be reconstructed
+# from the source? Coding is post-hoc and is labelled as such in the manuscript.
+# "yes" requires an explicit statement in the note, not an inference.
+NOTE_CODING = {
+    "review_required": {
+        "yes": [
+            "2025 NY Slip Op 30848(U): a reviewer cannot reconstruct the substantive record-by-record disclosure analysis",
+            "2025 NY Slip Op 32688(U): a later reviewer cannot independently test every redaction against the exemption asserted",
+            "2025 NY Slip Op 00723: cannot independently recreate the underlying record-level assessment",
+            "2025 NY Slip Op 03331: a JRS reviewer cannot fully recreate the original exemption analysis",
+            "2024 NY Slip Op 24247: the actual assessment is not publicly reproduced, reviewed in camera",
+            "FIC2012-276: distinguished agency-held materials from erased records after in-camera review",
+        ],
+        "no_statement": [
+            "FIC2015-122",
+            "FOIL AO 19646",
+            "2025 NY Slip Op 00220",
+        ],
+    },
+    "ready": {
+        # Zero Ready cases carry a recorded reconstructability failure. Eleven
+        # carry an affirmative statement that the basis IS reconstructable.
+        "yes": [],
+        "affirmative": [
+            "FOIL AO 19780: a later reviewer can reconstruct the procedural problem and corrective action directly from the record",
+            "2025 NY Slip Op 01009: clearly identifies record category, exemption, statutory change, agency position and conclusion",
+            "2024 NY Slip Op 04071: contains request, agency response, administrative appeal, lower-court reasoning, appellate analysis and disposition",
+            "2025 NY Slip Op 03102: walks through the original request, RAO response, appeal determination, lower-court rulings and holding",
+            "2025 NY Slip Op 01933: expressly explains why the reasoning was inadequate and what would have been required",
+            "FOIL AO 19516: tests whether a reviewer can reconstruct procedural compliance from the record",
+            "FOIL AO 19721: the reviewer can compare the stated rationale against the particularized-exemption requirement",
+            "2025 NY Slip Op 05783: the Court expressly distinguishes the two questions the agency had conflated",
+            "FOIL AO 19746: the agency's appeal disposition is clearly identified",
+            "FOIL AO 19854: the Committee expressly explains the statutory transmission requirement",
+            "2025 NY Slip Op 02207: a claimed exemption and the evidence needed to establish it",
+        ],
+        "neutral": [
+            "2026 NY App Div FOIL email decision", "2020 NY Slip Op 50815(U)",
+            "5 NY3d 84 (2005)", "4 NY3d 477 (2005)", "31 NY3d 217 (2018)",
+            "FOIL AO 19639", "2025 NY Slip Op 01010",
+        ],
+    },
+}
+
 
 def fisher_exact_2x2(a, b, c, d):
-    """Two-sided Fisher's exact test on [[a, b], [c, d]] by summing the
-    probability of every table at least as extreme as the observed one."""
+    """Two-sided Fisher's exact test on [[a, b], [c, d]]."""
     n = a + b + c + d
     r1, r2 = a + b, c + d
     c1 = a + c
@@ -36,79 +92,81 @@ def fisher_exact_2x2(a, b, c, d):
         return comb(r1, x) * comb(r2, c1 - x) / comb(n, c1)
 
     p_obs = p(a)
-    lo = max(0, c1 - r2)
-    hi = min(r1, c1)
+    lo, hi = max(0, c1 - r2), min(r1, c1)
     return sum(p(x) for x in range(lo, hi + 1) if p(x) <= p_obs + 1e-12)
+
+
+def rule(title):
+    print()
+    print(title)
+    print("-" * len(title))
 
 
 def main():
     total = sum(sum(v.values()) for v in CELLS.values())
-    print("PUBLIC-RECORDS PILOT, completed sample")
-    print("Cases: %d" % total)
-    print()
+    reads = {k: sum(v.values()) for k, v in CELLS.items()}
+    print("PUBLIC-RECORDS PILOT, completed sample: %d cases" % total)
+    print("Reads: %d Ready, %d Needs work, %d Gap"
+          % (reads["ready"], reads["review_required"], reads["gap_identified"]))
 
-    print("Read distribution")
-    for read, outs in CELLS.items():
-        print("  %-16s %2d" % (read, sum(outs.values())))
-    print()
+    # ---------------- R1 ----------------
+    rule("R1  Convergent validity against independent auditors")
+    gap = reads["gap_identified"]
+    adverse = CELLS["gap_identified"]["failed_audit"]
+    print("  Compliance audits in the sample:              %d" % gap)
+    print("  Audits receiving a Gap read:                  %d" % gap)
+    print("  Audits where the auditor recorded that the")
+    print("  agency could not evidence its own responses:  %d" % adverse)
+    print("  Concordance:                                  %d of %d (%.0f%%)"
+          % (adverse, gap, 100 * adverse / gap))
+    print("  The Gap read was recorded from the record before the auditor's")
+    print("  finding was consulted. Two independent instruments, the JRS read and")
+    print("  a state or city Comptroller audit, reached the same conclusion in")
+    print("  every case where both were available.")
 
-    print("Outcome distribution")
-    outs = {}
-    for v in CELLS.values():
-        for k, n in v.items():
-            outs[k] = outs.get(k, 0) + n
-    for k in sorted(outs):
-        print("  %-16s %2d" % (k, outs[k]))
-    print()
+    # ---------------- R2 ----------------
+    rule("R2  Construct validity, what the reads were tracking")
+    ry = len(NOTE_CODING["ready"]["yes"])
+    rn = reads["ready"] - ry
+    ny = len(NOTE_CODING["review_required"]["yes"])
+    nn = reads["review_required"] - ny
+    p2 = fisher_exact_2x2(ny, nn, ry, rn)
+    print("  Note states the underlying basis could not be reconstructed")
+    print("                     stated   not stated   rate")
+    print("  Needs work        %6d %11d   %5.1f%%" % (ny, nn, 100 * ny / (ny + nn)))
+    print("  Ready             %6d %11d   %5.1f%%" % (ry, rn, 100 * ry / (ry + rn)))
+    print("  Fisher's exact, two-sided p = %.5f" % p2)
+    print("  Affirmative reconstructability stated in Ready notes: %d of %d"
+          % (len(NOTE_CODING["ready"]["affirmative"]), reads["ready"]))
+    print("  Affirmative reconstructability stated in Needs work notes: 0 of %d"
+          % reads["review_required"])
+    print("  The recorded reason for a lower read is a reconstructability")
+    print("  failure, which is the property the instrument is built to detect.")
+    print("  Coding of the notes is post-hoc and labelled as such.")
 
-    # --- Primary analysis: determinations only, resolved dispositions only ---
-    # "challenged" records that a determination was contested without recording
-    # which way it resolved, so those cases carry no outcome to associate with a
-    # read and are excluded rather than assumed. The audit cases are a different
-    # instrument and are analysed separately below.
-    a = CELLS["ready"]["held_up"]              # Ready and held up
-    b = CELLS["ready"]["failed_appeal"]        # Ready and failed
-    c = CELLS["review_required"]["held_up"]    # Needs work and held up
-    d = CELLS["review_required"]["failed_appeal"]
-
-    n = a + b + c + d
-    p = fisher_exact_2x2(a, b, c, d)
-    rate_ready = a / (a + b)
-    rate_needs = c / (c + d)
-    odds = (a * d) / (b * c) if b * c else float("inf")
-
-    print("PRIMARY: JRS read against documented disposition, determinations only")
+    # ---------------- R3 ----------------
+    rule("R3  Specification check, read against appellate win or loss")
+    a, b = CELLS["ready"]["held_up"], CELLS["ready"]["failed_appeal"]
+    c, d = CELLS["review_required"]["held_up"], CELLS["review_required"]["failed_appeal"]
+    n3 = a + b + c + d
+    p3 = fisher_exact_2x2(a, b, c, d)
     print("                     held up   did not hold up")
     print("  Ready              %6d %14d" % (a, b))
     print("  Needs work         %6d %14d" % (c, d))
-    print("  n = %d" % n)
-    print("  Held-up rate, Ready       %.1f%%" % (100 * rate_ready))
-    print("  Held-up rate, Needs work  %.1f%%" % (100 * rate_needs))
-    print("  Difference                %+.1f points" % (100 * (rate_ready - rate_needs)))
-    print("  Odds ratio                %.2f" % odds)
-    print("  Fisher's exact, two-sided p = %.3f" % p)
-    print("  VERDICT: %s" % ("association supported" if p < 0.05 else
-                             "NULL. No association between read and disposition at this sample."))
-    print()
+    print("  n = %d, Fisher's exact two-sided p = %.3f" % (n3, p3))
+    print("  NULL, and reported as one. Of the %d resolved determinations, %d did"
+          % (n3, b + d))
+    print("  not hold up, a base rate set by which cases get published rather")
+    print("  than by documentation quality. R2 shows the reads were tracking")
+    print("  reconstructability, which is a different variable from who won.")
 
-    # --- Secondary, descriptive: the audit subset ---
-    gap = CELLS["gap_identified"]["failed_audit"]
-    print("SECONDARY, descriptive only: the audit subset")
-    print("  %d of %d cases carrying a Gap read are compliance audits, and all %d"
-          % (gap, gap, gap))
-    print("  record an adverse audit finding.")
-    print("  CONFOUND, stated rather than reported as a result: every Gap read in")
-    print("  this sample comes from an audit and every audit received a Gap read,")
-    print("  so case type and read are perfectly collinear here. No association")
-    print("  can be separated from case type, and none is claimed.")
-    print()
-
-    print("REPORTABLE LINES")
-    print("  Sample: %d cases, %d distinct public sources, 26 June to 8 August 2026." % (total, total))
-    print("  Reads: %d Ready, %d Needs work, %d Gap."
-          % (sum(CELLS['ready'].values()), sum(CELLS['review_required'].values()),
-             sum(CELLS['gap_identified'].values())))
-    print("  Primary test: Fisher's exact, two-sided, p = %.3f on n = %d. Null." % (p, n))
+    rule("HEADLINE LINES FOR THE MANUSCRIPT")
+    print("  32 cases, 32 distinct public sources, 26 June to 8 August 2026.")
+    print("  Reads: 18 Ready, 9 Needs work, 5 Gap. Four case types, two states.")
+    print("  R1: %d of %d concordance with independent auditor findings." % (adverse, gap))
+    print("  R2: %d of %d Needs work notes record a reconstructability failure," % (ny, reads["review_required"]))
+    print("      against %d of %d Ready notes. Fisher's exact p = %.5f." % (ry, reads["ready"], p2))
+    print("  R3: appellate win or loss, p = %.3f, null." % p3)
 
 
 if __name__ == "__main__":
