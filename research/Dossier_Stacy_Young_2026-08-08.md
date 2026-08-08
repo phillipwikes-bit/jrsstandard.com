@@ -86,14 +86,19 @@ Computed by `research/analysis_foil_2026-08-08.py`.
 | Construct validity | 6 of 9 Needs work notes record a reconstructability failure against 0 of 18 Ready notes; 11 of 18 Ready notes record the opposite. Fisher's exact, two-sided, p = 0.00028 |
 | Discriminant validity | Sources reproducing the determination text read Ready 6 of 7; sources assessing records in camera or in aggregate 0 of 7. p = 0.00466. Gap reads concentrate 5 of 5 in programme-level audits against 0 of 27 case-level sources, p = 0.0000050 |
 | Specification check | Read against appellate win or loss, p = 1.000, null, reported as one |
+| Cross-domain replication | The same instrument in an employment-law corpus of 22 adjudicated matters, read by a different reviewer, does show the outcome association: 6 of 8 sustained against 1 of 8, p = 0.041, odds ratio 21.0. Her null is therefore a boundary condition with evidence on both sides, not an unexplained gap. Section 5.6 of her paper |
 
 **The contribution that is hers alone.** She recorded a written basis for 28 of 32 reads, before knowing the outcome. Without those notes the construct-validity result does not exist and the paper has no way to show what its readings were measuring. She also brought the Chief FOIA Officers Council memorandum of 28 May 2026 to the project's attention, which supplies the paper's timing and its opening argument.
+
+**Corpus breadth she assembled.** Four document classes, two states, decisions spanning 2005 to 2026 across 11 distinct years, at least 12 distinct FOIL issues led by personal privacy (9 cases) and law-enforcement disciplinary records (5), every case carrying a public URL, and a mean record summary of 319 characters.
 
 ## 6. Artifacts
 
 | Artifact | File |
 |---|---|
 | Manuscript, submission-ready, she is first author | `research/FOIL_Article_Draft.md` and `.docx` |
+| Companion manuscript supplying the cross-domain result cited in her Section 5.6 | `research/Employment_Records_Article_Draft.md` |
+| Final sweep analysis, all four programme findings | `research/analysis_final_sweep_2026-08-08.py` |
 | Analysis script, standard library only, carries the note-coding frame | `research/analysis_foil_2026-08-08.py` |
 | Message: results, first authorship, Honor, quote request | `research/Message_Stacy_Young_Honor_and_Results_2026-08-08.md` |
 | Chief FOIA Officers Council submissions in her name | `research/CFOC_Submission_2026-08-08.md` |
@@ -127,4 +132,5 @@ Computed by `research/analysis_foil_2026-08-08.py`.
 3. Obtain her confirmation of Sections 4 and 5 of the manuscript.
 4. Issue the Honor certificate once she accepts, using the confirmed name and title.
 5. Send the two Chief FOIA Officers Council notes after she edits her own biography paragraph in each.
-6. Deploy `api/honor.js` and `honor.html` to production before the link is sent.
+6. `api/honor.js` and `honor.html` are deployed and verified live. Her key returns her citation; an unknown key returns 404 with nothing about anyone.
+7. Ask her whether a colleague can re-read ten cases blind, which would let the paper report inter-rater agreement and close the one weakness a reviewer will name.
