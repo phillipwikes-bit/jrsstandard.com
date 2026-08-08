@@ -1,13 +1,6 @@
-# Chief FOIA Officers Council: two submissions, both in Stacy Young's name
+# Email 1 of 2
 
-*Drawn from the Council's 28 May 2026 memorandum from Alina M. Semo and Sean D. Glendening, which does two things this work maps onto: Dr. Jeremy Frazier at Interior is building a government-wide inventory of FOIA technology solutions, and the Council is recruiting volunteers for its Technology Committee and its Committee on Cross-Agency Collaboration and Innovation. Both notes below go out in Stacy's name with Phillip second, because she is the federal-adjacent public-records practitioner and the memo is addressed to people in her role. Send after she approves. No long dashes.*
-
-*Addresses from the memorandum: jeremy.frazier@sol.doi.gov, (803) 586-5040, and CFOCouncil@nara.gov.*
-
----
-
-## 1. To Dr. Jeremy Frazier, on the technology inventory
-
+**To:** jeremy.frazier@sol.doi.gov
 **Subject:** Documentation-quality data that may be useful alongside the FOIA technology inventory
 
 Dear Dr. Frazier,
@@ -45,8 +38,9 @@ Creator of the Justification Review Standard; former Lead Civil Rights Officer, 
 
 ---
 
-## 2. To CFOCouncil@nara.gov, volunteering for the Technology Committee
+# Email 2 of 2
 
+**To:** CFOCouncil@nara.gov
 **Subject:** Volunteer interest, Technology Committee
 
 Dear Co-Chairs,
@@ -66,15 +60,3 @@ Thank you for the opportunity.
 Stacy Young
 Deputy Records Access Officer
 NYC Department of Housing Preservation and Development
-
----
-
-## Notes for Phillip, not for sending
-
-Both notes are deliberately short and lead with her role rather than with the standard. A memorandum addressed to Chief FOIA Officers is answered by a FOIA officer, not by a vendor, and the fastest way to lose the room is to arrive selling something.
-
-Neither note names the standard by its trademark or links the site. The work is described by what it does. If Dr. Frazier or the Council asks what the instrument is, that is the moment to name it, and the answer lands better as a response to a question than as an opening claim.
-
-The submission to Dr. Frazier offers the protocol, the case set and the analysis without charge. The asset here is the category and the evidence base, and a federal inventory citing the work is worth considerably more than a licence fee from any single agency.
-
-Send after Stacy approves both, and let her edit her own biography paragraph in either note.
