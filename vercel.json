@@ -1,11 +1,245 @@
 {
   "crons": [
-    { "path": "/api/run-study", "schedule": "0 6 * * *" }
+    {
+      "path": "/api/run-study",
+      "schedule": "0 6 * * *"
+    }
   ],
   "redirects": [
-    { "source": "/reviewer", "destination": "/training.html?access=reviewer&focus=1", "permanent": false },
-    { "source": "/train", "destination": "/training.html?access=reviewer&focus=1", "permanent": false },
-    { "source": "/guide", "destination": "/investigator-guides.html", "permanent": false },
-    { "source": "/guides", "destination": "/investigator-guides.html", "permanent": false }
+    {
+      "source": "/reviewer",
+      "destination": "/training.html?access=reviewer&focus=1",
+      "permanent": false
+    },
+    {
+      "source": "/train",
+      "destination": "/training.html?access=reviewer&focus=1",
+      "permanent": false
+    },
+    {
+      "source": "/guide",
+      "destination": "/investigator-guides.html",
+      "permanent": false
+    },
+    {
+      "source": "/guides",
+      "destination": "/investigator-guides.html",
+      "permanent": false
+    },
+    {
+      "source": "/about",
+      "destination": "/about.html",
+      "permanent": false
+    },
+    {
+      "source": "/access",
+      "destination": "/access.html",
+      "permanent": false
+    },
+    {
+      "source": "/acquisition-9f3c2a7d4b",
+      "destination": "/acquisition-9f3c2a7d4b.html",
+      "permanent": false
+    },
+    {
+      "source": "/ai-governance-record",
+      "destination": "/ai-governance-record.html",
+      "permanent": false
+    },
+    {
+      "source": "/ai-records-arm-b",
+      "destination": "/ai-records-arm-b.html",
+      "permanent": false
+    },
+    {
+      "source": "/ai-records-pilot",
+      "destination": "/ai-records-pilot.html",
+      "permanent": false
+    },
+    {
+      "source": "/bench-admin",
+      "destination": "/bench-admin.html",
+      "permanent": false
+    },
+    {
+      "source": "/bench-results",
+      "destination": "/bench-results.html",
+      "permanent": false
+    },
+    {
+      "source": "/bench-review",
+      "destination": "/bench-review.html",
+      "permanent": false
+    },
+    {
+      "source": "/codebook",
+      "destination": "/codebook.html",
+      "permanent": false
+    },
+    {
+      "source": "/contributor",
+      "destination": "/contributor.html",
+      "permanent": false
+    },
+    {
+      "source": "/datasets",
+      "destination": "/datasets.html",
+      "permanent": false
+    },
+    {
+      "source": "/decision-reconstruction-risk",
+      "destination": "/decision-reconstruction-risk.html",
+      "permanent": false
+    },
+    {
+      "source": "/engine-activity",
+      "destination": "/engine-activity.html",
+      "permanent": false
+    },
+    {
+      "source": "/enterprise",
+      "destination": "/enterprise.html",
+      "permanent": false
+    },
+    {
+      "source": "/evidence-ledger",
+      "destination": "/evidence-ledger.html",
+      "permanent": false
+    },
+    {
+      "source": "/finding",
+      "destination": "/finding.html",
+      "permanent": false
+    },
+    {
+      "source": "/honor",
+      "destination": "/honor.html",
+      "permanent": false
+    },
+    {
+      "source": "/implementation-scenarios",
+      "destination": "/implementation-scenarios.html",
+      "permanent": false
+    },
+    {
+      "source": "/investigator-guides",
+      "destination": "/investigator-guides.html",
+      "permanent": false
+    },
+    {
+      "source": "/jrsstandard",
+      "destination": "/jrsstandard.html",
+      "permanent": false
+    },
+    {
+      "source": "/methodology",
+      "destination": "/methodology.html",
+      "permanent": false
+    },
+    {
+      "source": "/operational-boundaries",
+      "destination": "/operational-boundaries.html",
+      "permanent": false
+    },
+    {
+      "source": "/org-pilot",
+      "destination": "/org-pilot.html",
+      "permanent": false
+    },
+    {
+      "source": "/people",
+      "destination": "/people.html",
+      "permanent": false
+    },
+    {
+      "source": "/people-9dd1ecdf6f8cdfd4",
+      "destination": "/people-9dd1ecdf6f8cdfd4.html",
+      "permanent": false
+    },
+    {
+      "source": "/pilot",
+      "destination": "/pilot.html",
+      "permanent": false
+    },
+    {
+      "source": "/pilot-status",
+      "destination": "/pilot-status.html",
+      "permanent": false
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy.html",
+      "permanent": false
+    },
+    {
+      "source": "/questions",
+      "destination": "/questions.html",
+      "permanent": false
+    },
+    {
+      "source": "/research",
+      "destination": "/research.html",
+      "permanent": false
+    },
+    {
+      "source": "/research-data",
+      "destination": "/research-data.html",
+      "permanent": false
+    },
+    {
+      "source": "/results",
+      "destination": "/results.html",
+      "permanent": false
+    },
+    {
+      "source": "/review-status",
+      "destination": "/review-status.html",
+      "permanent": false
+    },
+    {
+      "source": "/simulations",
+      "destination": "/simulations.html",
+      "permanent": false
+    },
+    {
+      "source": "/submit-record",
+      "destination": "/submit-record.html",
+      "permanent": false
+    },
+    {
+      "source": "/submit-validation",
+      "destination": "/submit-validation.html",
+      "permanent": false
+    },
+    {
+      "source": "/supported",
+      "destination": "/supported.html",
+      "permanent": false
+    },
+    {
+      "source": "/supporters-b78f5ff2c08d",
+      "destination": "/supporters-b78f5ff2c08d.html",
+      "permanent": false
+    },
+    {
+      "source": "/training",
+      "destination": "/training.html",
+      "permanent": false
+    },
+    {
+      "source": "/vp-7c1f9a4e8d2b6035",
+      "destination": "/vp-7c1f9a4e8d2b6035.html",
+      "permanent": false
+    },
+    {
+      "source": "/why-good-decisions-fail",
+      "destination": "/why-good-decisions-fail.html",
+      "permanent": false
+    },
+    {
+      "source": "/workflow-fit",
+      "destination": "/workflow-fit.html",
+      "permanent": false
+    }
   ]
 }
