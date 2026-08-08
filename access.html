@@ -75,9 +75,9 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     <input id="f-org"   type="text"  placeholder="Organization (optional)" autocomplete="organization" style="margin-bottom:14px">
     <input id="f-title" type="hidden" value="">
 
-    <label class="chk" id="contact-wrap"><input type="checkbox" id="c-contact"><span>I agree to be contacted about the JRS project and consent to my details being stored securely for that purpose. (required)</span></label>
+    <label class="chk" id="contact-wrap"><input type="checkbox" id="c-contact"><span>I agree to receive what I asked for and updates on the JRS standard, and to my details being stored securely under the registration terms. (required)</span></label>
 
-    <label class="chk" id="named-wrap" style="border:1px solid var(--accent-dim);background:var(--surface2);padding:12px 13px;margin-bottom:10px"><input type="checkbox" id="c-registry"><span id="registry-terms">I agree to receive my results and updates on the JRS standard, and to my details being stored securely under the <a href="#" id="terms-link">registration terms</a>. <span style="color:var(--text)">No record text is ever stored, and your name is <b style="color:var(--ready-text);font-weight:600">not published</b> by ticking this.</span></span></label>
+    <label class="chk" id="named-wrap" style="border:1px solid var(--accent-dim);background:var(--surface2);padding:12px 13px;margin-bottom:10px"><input type="checkbox" id="c-registry"><span id="registry-terms"><span id="consent-lead">I agree to receive my results</span> and updates on the JRS standard, and to my details being stored securely under the <a href="#" id="terms-link">registration terms</a>. <span style="color:var(--text)" id="privacy-note">No record text is ever stored, and your name is <b style="color:var(--ready-text);font-weight:600">not published</b> by ticking this.</span></span></label>
 
     <div id="msg"></div>
     <button id="go" type="button">Continue</button>
@@ -193,6 +193,12 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     go.textContent = 'Download the guide now';
     var trustG = document.getElementById('trust');
     if (trustG) trustG.textContent = 'Free access · No credit card · Instant download';
+    // A guide route delivers a file, not a diagnostic result. The tick line has
+    // to name what the reader is actually about to be sent.
+    var leadG = document.getElementById('consent-lead');
+    if (leadG) leadG.textContent = ename ? ('I agree to receive the ' + ename) : 'I agree to receive my guide';
+    var pnote = document.getElementById('privacy-note');
+    if (pnote) pnote.innerHTML = 'Your name is <b style="color:var(--ready-text);font-weight:600">not published</b> by ticking this.';
     namedWrap.style.display = 'flex';
     registryRequired = true;
     // Lowest-commitment route: a named person with an email is worth far more
