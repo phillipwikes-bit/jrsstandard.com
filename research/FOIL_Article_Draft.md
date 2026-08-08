@@ -26,7 +26,7 @@ The read tracked reconstructability rather than outcome. Six of nine Needs work 
 
 The read separated document classes by how much basis each one exposes. Sources that reproduce the determination text read Ready in six of seven cases; sources that assessed the underlying records in camera or in aggregate read Ready in none of seven (p = 0.00466). Gap reads concentrate entirely in programme-level audits, five of five, against none of twenty-seven case-level sources (p = 0.0000050).
 
-A fourth analysis, testing the read against whether the agency prevailed on appeal, is null (p = 1.000). Given the first three findings that is the expected relationship: reconstructability and appellate disposition measure different things, and published decisions are selected for contested legal questions rather than for thin files.
+A fourth analysis, testing the read against whether the agency prevailed on appeal, is null (p = 1.000). Given the first three findings that is the expected relationship: reconstructability and appellate disposition measure different things, and published decisions are selected for contested legal questions rather than for thin files. Applied by a different reviewer in an employment-law corpus that is not filtered by publication, the same instrument does show the association (6 of 8 against 1 of 8 sustained, p = 0.041), which is consistent with that boundary condition rather than with a weak instrument.
 
 The pilot contributes a working protocol for measuring documentation quality in a public-records programme, a completed and citable 32-case set, and evidence that the read measures the property it claims to measure.
 
@@ -168,9 +168,17 @@ Odds ratio 0.75. Fisher's exact test, two-sided: p = 1.000. Null.
 
 Read alongside Sections 5.3 and 5.4, this is the expected result and it is informative. Fifteen of the 20 resolved determinations did not survive, a base rate set by which cases reach publication rather than by how agencies generally document. A case reaches a published opinion because a legal question was live, and that question is usually about the scope of an exemption rather than about the sufficiency of the file. The reads were measuring reconstructability. Appellate outcome measures something else. Two variables that measure different things are not expected to correlate, and establishing that before a larger study is built on the opposite assumption is worth the space it takes.
 
+### 5.6 The same instrument, a different corpus, and the association appears
+
+That explanation can be tested rather than asserted. The same instrument has been applied in a second domain, employment and labour matters, by a different reviewer working independently of this study, on 22 cases from 22 distinct sources including United States Supreme Court decisions, Federal Labor Relations Authority decisions, and United Kingdom Employment Tribunal judgments. Those cases are not selected for published freedom-of-information controversy, and the base rate of adverse outcomes in that set is close to even rather than three to one.
+
+In that corpus the read is associated with the documented outcome. Determinations read as Ready were sustained in 6 of 8 resolved cases (75.0 percent, 95 percent Wilson interval 40.9 to 92.9); determinations read as Needs work or Gap were sustained in 1 of 8 (12.5 percent, interval 2.2 to 47.1). Fisher's exact test, two-sided, p = 0.041, odds ratio 21.0.
+
+That result belongs to the second study and is reported in full there, with its own limits, which include a small resolved sample and a single reviewer. It is cited here for one narrow purpose: the boundary condition proposed in this section is not a post-hoc rescue of a null. Where the corpus is not filtered by publication, the association the present corpus could not show is present. Both observations are consistent with a read that measures documentation quality and a publication process that selects on something else.
+
 ## 6. Discussion
 
-The pilot establishes three things. The instrument can be applied to real public-records material across document classes and jurisdictions and returns a full range of reads. Where an independent government auditor assessed the same records, the read and the audit agreed in every case. And the reads are driven by reconstructability rather than by outcome, shown twice, once from the reviewer's contemporaneous notes and once from a structural feature of the sources.
+The pilot establishes three things. The instrument can be applied to real public-records material across document classes and jurisdictions and returns a full range of reads. Where an independent government auditor assessed the same records, the read and the audit agreed in every case. And the reads are driven by reconstructability rather than by outcome, shown twice, once from the reviewer's contemporaneous notes and once from a structural feature of the sources. Section 5.6 adds a fourth observation from outside this corpus: in a domain where cases are not filtered by publication, the read does track the documented outcome.
 
 Reviewability is a property of the record, measurable regardless of the software or system that produced it. That is what makes a documentation-quality read portable across agencies and across workflows: it applies to a hand-typed denial and an AI-drafted one alike, and Section 5.2 shows it lands where a professional auditor lands.
 
@@ -190,6 +198,8 @@ The convergent-validity result rests on five audits, and in this corpus document
 
 The corpus is two states, New York and Connecticut. Generalization beyond them is not claimed.
 
+The cross-domain observation in Section 5.6 is not a result of this study. It belongs to a separate employment-law corpus collected by a different reviewer, rests on 8 resolved cases, and is reported in full elsewhere. It is cited here only as a test of the boundary condition proposed in Section 5.5.
+
 Seven cases record a contest without a resolved disposition, which reduces the specification check from 27 determinations to 20.
 
 The reviewer read the determination as reported in a published decision or audit, which is not identical to the file the original decision-maker produced.
@@ -202,7 +212,7 @@ The drafting tool and the technology stack will keep changing. The evidentiary t
 
 This pilot delivers a working protocol, a completed and citable 32-case set spanning four document classes, two states and twenty-one years of decisions, agreement with independent government auditors in every case where both instruments were available, and two independent lines of evidence that the read tracks reconstructability rather than outcome.
 
-It also makes the follow-on study specific. Agency determinations as issued, sampled without regard to whether they were later contested, read blind by at least two reviewers with basis notes recorded, and matched afterwards to audit findings rather than to appellate dispositions. The audit finding is the outcome variable the read demonstrably agrees with, and it is the one a records programme can act on.
+It also makes the follow-on study specific. Agency determinations as issued, sampled without regard to whether they were later contested, read blind by at least two reviewers with basis notes recorded, and matched afterwards to audit findings rather than to appellate dispositions. The employment-law corpus described in Section 5.6 suggests the same design will detect an outcome association wherever the case set is not filtered by publication. The audit finding is the outcome variable the read demonstrably agrees with, and it is the one a records programme can act on.
 
 ## References
 

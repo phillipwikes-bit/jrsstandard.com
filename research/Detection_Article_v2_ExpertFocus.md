@@ -169,6 +169,24 @@ Under the conventional Landis and Koch bands, the expert coefficient of 0.739 si
 
 These reliability figures are interim. They rest on 10 records against a pre-registered pooled target of about 26, which is why the intervals above are as wide as they are. They will be re-estimated at target, and at that point the lower-bound criterion becomes a real test rather than an artifact of sample size.
 
+### 5.4 Supporting result: every condition carries discriminating information
+
+The reliability instrument records a pass or review judgment on each of the five conditions separately, not only the overall determination. Across the 108 structured labels in that corpus, contributed by 21 raters on the same 10 records, each condition separates the two ends of the scale.
+
+| Condition | Pass rate, Ready determinations | Pass rate, Gap determinations | Fisher's exact, two-sided |
+|---|---|---|---|
+| Reconstructability | 14 of 14 (100%, 95% CI 78 to 100) | 15 of 75 (20%, CI 13 to 30) | 1.0e-08 |
+| Basis identification | 14 of 14 (100%, CI 78 to 100) | 18 of 75 (24%, CI 16 to 35) | 6.2e-08 |
+| Chronological integrity | 14 of 14 (100%, CI 78 to 100) | 9 of 75 (12%, CI 6 to 21) | 1.1e-10 |
+| Decision-process traceability | 14 of 14 (100%, CI 78 to 100) | 9 of 75 (12%, CI 6 to 21) | 1.1e-10 |
+| Evidentiary sufficiency | 14 of 14 (100%, CI 78 to 100) | 7 of 75 (9%, CI 5 to 18) | 1.5e-11
+
+Intervals are Wilson score intervals, used because several cells are small.
+
+Two things follow. None of the five conditions is decorative: each one moves with the determination rather than sitting alongside it, which is the minimum a multi-condition instrument has to demonstrate before its composite read means anything. And the conditions are not interchangeable. Evidentiary sufficiency is both the most frequently unmet across all 108 labels, at 52.9 percent not passing, and the sharpest discriminator between Ready and Gap. Reconstructability, decision-process traceability, chronological integrity and basis identification follow at 40.0, 40.6, 37.3 and 35.1 percent respectively.
+
+One feature of the coding is worth recording because it bounds the range observed here. The instrument offers pass, review and fail on each condition, and across all 108 structured labels no rater used fail. Raters worked entirely in the upper two levels, so the separations above are between pass and review rather than across the full scale, and the instrument's behaviour at its lowest level is untested in this corpus.
+
 ## 6. Discussion
 
 The contribution is that DRR is detectable, and that is the precondition for everything downstream. A documentation property experienced reviewers cannot identify is not a governable property, and a control built on human review of it would rest on nothing. The panel result shows the property is real, visible, and identifiable well above chance by professionals working across a wide range of jurisdictions and first languages.
@@ -191,13 +209,13 @@ The panel is made up of credentialed experts, which bounds the generalization in
 
 Reviewer accuracy varied widely, including two panel members scoring below chance. Response patterns were examined and showed genuine discrimination rather than straight-lining or missing data, so these are treated as real observations and retained.
 
-Reliability figures are interim on 10 of approximately 26 pooled records. JRS remains in a validation phase and makes no proven-effectiveness claim.
+Reliability figures are interim on 10 of approximately 26 pooled records, and the per-condition analysis in Section 5.4 rests on the same 10 records. No rater in that corpus used the lowest coding level on any condition, so the reported separations are between the upper two levels rather than across the full scale. JRS remains in a validation phase and makes no proven-effectiveness claim.
 
 ## 8. Conclusion
 
 Drafting tools change and the technology stack underneath them changes faster. The evidentiary test does not move. A record that cannot be reconstructed from its own contents cannot be independently defended, whoever or whatever produced it.
 
-This paper establishes that Decision Reconstruction Risk is detectable: an international panel of independent experts, reading records cold and blind to a verified key, identified unreconstructable records at 83.9 percent accuracy, clearing a threshold set before the data were seen. It further establishes that the review can be applied consistently by independent machines and by independent human experts.
+This paper establishes that Decision Reconstruction Risk is detectable: an international panel of independent experts, reading records cold and blind to a verified key, identified unreconstructable records at 83.9 percent accuracy, clearing a threshold set before the data were seen. It further establishes that the review can be applied consistently by independent machines and by independent human experts, and that all five of its conditions carry information that separates a reconstructable record from an unreconstructable one.
 
 Whether a structured standard improves on unaided professional judgment remains open, and this paper does not attempt to answer it. What it does establish is that the property is real and measurable, which is the thing that had to be settled first. Sizing the added value of a control is the next study, and it can now be designed against a measured baseline rather than an assumed one.
 
