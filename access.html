@@ -422,9 +422,11 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
   if (termsLink) termsLink.addEventListener('click', function(e){
     e.preventDefault();
     e.stopPropagation();
-    setTerms(true);
     var d = document.getElementById('registry-detail');
-    if (d && d.scrollIntoView) d.scrollIntoView({block:'nearest'});
+    var open = !d || d.style.display === 'none' || !d.style.display;
+    setTerms(open);
+    termsLink.textContent = open ? 'hide the details' : 'registration terms';
+    if (open && d && d.scrollIntoView) d.scrollIntoView({ behavior:'smooth', block:'nearest' });
   });
 
   // Clear the red border as soon as the reader fixes the field, so the form

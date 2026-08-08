@@ -3205,7 +3205,13 @@ function wireTrainingListing(addr){
     e.preventDefault();
     e.stopPropagation();
     var p = document.getElementById('en-terms');
-    if (p) p.style.display = (p.style.display === 'none' || !p.style.display) ? 'block' : 'none';
+    if (!p) return;
+    var open = (p.style.display === 'none' || !p.style.display);
+    p.style.display = open ? 'block' : 'none';
+    // The panel opens below the tick box, which on a phone is usually below the
+    // fold. Without this the tap produces no visible change and reads as dead.
+    tl.textContent = open ? 'hide the details' : 'registration terms';
+    if (open && p.scrollIntoView) p.scrollIntoView({ behavior:'smooth', block:'nearest' });
   });
 })();
 
