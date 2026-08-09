@@ -34,7 +34,7 @@ Base: `https://www.jrsstandard.com/contributor.html?k=`
 | Person | Code | Role | Link |
 |---|---|---|---|
 | Ubayet Hossain, FRM | M-01 | Methodology co-author | https://www.jrsstandard.com/contributor.html?k=6dyc0l2757 |
-| Stacy Young | E-08 | Co-author and facilitator, public records pilot | https://www.jrsstandard.com/contributor.html?k=1wlgcn02gn |
+| Stacyann Young | E-08 | Co-author and facilitator, public records pilot | https://www.jrsstandard.com/contributor.html?k=1wlgcn02gn |
 | Tanvi Pokhriyal | V-HR-01 | Facilitator, HR and employment pilot | https://www.jrsstandard.com/contributor.html?k=zobi7fgt8q |
 | Keith Carrington, EJD, MBA | V-HC-01 | Facilitator, healthcare compliance pilot | https://www.jrsstandard.com/contributor.html?k=qtgiiqlcqk |
 
