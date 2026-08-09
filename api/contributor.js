@@ -113,12 +113,24 @@ async function purgeTestRows(H){
     await fetch(SB + '/rest/v1/pilot_contacts?source=eq.contributor-confirm&message=like.' + pat,
       { method: 'DELETE', headers: H });
   } catch (e) { /* best-effort */ }
-  // Link-open rows written by a deploy check or a curl smoke test. Matched on
-  // the synthetic user-agent rather than a tag, because a bare curl sends no
-  // src at all and would otherwise count as a real open.
+  // Link-open rows written by a deploy check or a curl smoke test. Two rules,
+  // because neither alone is sufficient.
+  //
+  // A bare curl sends no src, so a tag filter would miss it: matched on the
+  // user-agent instead.
+  //
+  // A smoke test that SPOOFS a browser user-agent defeats both, so every
+  // link-open row written before the guard shipped is also cleared. That cutoff
+  // is safe and exact: link-open logging began on 2026-08-09, no contributor
+  // link has been sent, and the only honor link distributed was accepted before
+  // this logging existed. Every row before the cutoff is therefore synthetic by
+  // construction. Remove this second rule once real opens are being recorded.
+  const LOG_CUTOFF = '2026-08-09T16:00:00Z';
   try {
     for (const src of ['contributor-link', 'honor-link']) {
       await fetch(SB + '/rest/v1/interaction_events?source=eq.' + src + '&type=eq.view&payload->>user_agent=like.*curl*',
+        { method: 'DELETE', headers: H });
+      await fetch(SB + '/rest/v1/interaction_events?source=eq.' + src + '&type=eq.view&created_at=lt.' + LOG_CUTOFF,
         { method: 'DELETE', headers: H });
     }
   } catch (e) { /* best-effort */ }
