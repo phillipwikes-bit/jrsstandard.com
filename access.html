@@ -244,6 +244,34 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     }
   } catch(e){}
 
+  // First-focus ping. The gate previously fired one event on load and the next
+  // possible event was a completed POST, so an abandonment could not be resolved
+  // to a stage: someone who never touched the form and someone who filled three
+  // fields and left looked identical. This fires ONCE per page session, on the
+  // first focus of any field, and records which field that was. No value is read
+  // from the input, only its name.
+  try {
+    var touched = false;
+    try { touched = sessionStorage.getItem('jrs-gate-touch') === '1'; } catch(e){}
+    var FIELDS = ['f-name','f-email','f-org','f-title','c-registry','c-contact'];
+    FIELDS.forEach(function(id){
+      var el = document.getElementById(id);
+      if (!el) return;
+      var evt = (el.type === 'checkbox') ? 'change' : 'focus';
+      el.addEventListener(evt, function(){
+        if (touched) return;
+        touched = true;
+        try { sessionStorage.setItem('jrs-gate-touch', '1'); } catch(e){}
+        fetch('/api/access', {
+          method: 'POST',
+          headers: { 'Content-Type':'application/json' },
+          body: JSON.stringify({ event:'field_touched', field_name: id, mode: mode,
+                                 edition: editionRaw, campaign: campaignRaw, src: src })
+        }).catch(function(){});
+      }, { once: false });
+    });
+  } catch(e){}
+
   function esc(x){ return String(x==null?'':x).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
 
   // The optional public listing, offered on the thank-you screen only, once the

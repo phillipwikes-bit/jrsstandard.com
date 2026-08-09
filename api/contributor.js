@@ -177,6 +177,28 @@ export default async function handler(req){
     if (!k) return json({ ok:true, serviceKey: !!SERVICE });
     const p = (k === TEST_KEY) ? TEST_PERSON : ROSTER[k];
     if (!p) return json({ ok:false, error:'unknown_key' }, 404);
+
+    // Link-open ping. Without it a contributor link that returns nothing is
+    // indistinguishable from one nobody clicked, so "0 of 20 confirmed" cannot
+    // be read. Records the participant code and never the key, so the event log
+    // cannot be turned back into a set of working links. Best-effort: a failed
+    // ping must never stop the page rendering. The internal test key is skipped
+    // so deploy checks do not inflate the count.
+    if (SERVICE && H && k !== TEST_KEY) {
+      try {
+        const ua = String(req.headers.get('user-agent') || '').slice(0, 300);
+        await fetch(SB + '/rest/v1/interaction_events', { method:'POST', headers:H,
+          body: JSON.stringify({ source:'contributor-link', type:'view', payload:{
+            code: p.code || '',
+            kind: p.kind || '',
+            country: String(req.headers.get('x-vercel-ip-country') || '')
+              .toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2) || '',
+            user_agent: ua,
+            is_mobile: /Mobi|Android|iPhone|iPad|iPod|Windows Phone|IEMobile|BlackBerry|Opera Mini/i.test(ua)
+          }}) });
+      } catch (e) { /* never block the page */ }
+    }
+
     return json({ ok:true, person: publicPerson(p) });
   }
 

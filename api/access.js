@@ -121,6 +121,40 @@ export default async function handler(req){
   // registration, so a quiet week is indistinguishable from a form nobody
   // finishes, and there is no way to tell whether traffic or conversion is the
   // problem. Writes an event row only: no name, no email, no contact record.
+  // User-agent capture. The event log has never carried a device signal, so
+  // mobile against desktop was unanswerable from the database even though the
+  // traffic is overwhelmingly phone-sourced. Truncated to 300 characters: enough
+  // to identify a browser and platform, short enough not to become a fingerprint
+  // store. is_mobile is computed server-side so every row is classified the same
+  // way regardless of what the client reports.
+  const uaRaw = String(req.headers.get('user-agent') || '').slice(0, 300);
+  const isMobile = /Mobi|Android|iPhone|iPad|iPod|Windows Phone|IEMobile|BlackBerry|Opera Mini/i.test(uaRaw);
+
+  // First-focus ping. Fires once per page session when a reader touches any
+  // field. Pairs with the view ping above to split an abandonment into "never
+  // engaged" and "started and left". Writes an event row only.
+  if (String(b.event || '') === 'field_touched') {
+    try {
+      await fetch(SB + '/rest/v1/interaction_events', {
+        method: 'POST',
+        headers: { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE,
+                   'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+        body: JSON.stringify({ source: 'gate-view', type: 'field_touched', payload: {
+          field_name: tag(b.field_name, 40) || '',
+          mode: mode,
+          edition: normEdition(b.edition) || '',
+          campaign: b.campaign ? normCampaign(b.campaign) : '',
+          src: tag(b.src, 40) || '',
+          country: String(req.headers.get('x-vercel-ip-country') || '')
+            .toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2) || '',
+          user_agent: uaRaw,
+          is_mobile: isMobile
+        }})
+      });
+    } catch (e) { /* a telemetry ping must never block the form */ }
+    return json({ ok: true, field_touched: true });
+  }
+
   if (String(b.event || '') === 'view') {
     try {
       await fetch(SB + '/rest/v1/interaction_events', {
@@ -133,7 +167,9 @@ export default async function handler(req){
           campaign: b.campaign ? normCampaign(b.campaign) : '',
           src: tag(b.src, 40) || '',
           country: String(req.headers.get('x-vercel-ip-country') || '')
-            .toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2) || ''
+            .toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2) || '',
+          user_agent: uaRaw,
+          is_mobile: isMobile
         }})
       });
     } catch (e) { /* a view ping must never block the form */ }
@@ -261,12 +297,14 @@ export default async function handler(req){
           body: JSON.stringify({ edition: edition, src: src }) }),
         fetch(SB + '/rest/v1/interaction_events', { method:'POST', headers:H,
           body: JSON.stringify({ source:'guide-dl', type:'download',
-            payload:{ edition: edition, src: src, country: country, registered: true } }) })
+            payload:{ edition: edition, src: src, country: country, registered: true,
+                      user_agent: uaRaw, is_mobile: isMobile } }) })
       ]);
     } else {
       await fetch(SB + '/rest/v1/interaction_events', { method:'POST', headers:H,
         body: JSON.stringify({ source:'support', type:'endorse',
-          payload:{ campaign: campaign, src: src, country: country, registered: true } }) });
+          payload:{ campaign: campaign, src: src, country: country, registered: true,
+                    user_agent: uaRaw, is_mobile: isMobile } }) });
     }
   } catch(e){ /* swallow: the consented record is already stored */ }
 

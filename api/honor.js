@@ -628,6 +628,32 @@ export default async function handler(req){
   // about anyone, so a guessed link is a dead end rather than a directory.
   if (req.method === 'GET') {
     if (!person) return json({ ok: false, found: false }, 404);
+
+    // Link-open ping. Same reason as /api/contributor: without it an honor link
+    // that has not been accepted is indistinguishable from one nobody opened.
+    // Records the honor code and never the key, so the event log cannot be
+    // turned back into a set of working links. Best-effort, and silent on
+    // failure, so a telemetry problem never stops an honoree seeing their
+    // citation.
+    if (SERVICE) {
+      try {
+        const ua = String(req.headers.get('user-agent') || '').slice(0, 300);
+        await fetch(SB + '/rest/v1/interaction_events', {
+          method: 'POST',
+          headers: { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE,
+                     'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+          body: JSON.stringify({ source: 'honor-link', type: 'view', payload: {
+            honor_code: person.code,
+            study: person.study,
+            country: String(req.headers.get('x-vercel-ip-country') || '')
+              .toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2) || '',
+            user_agent: ua,
+            is_mobile: /Mobi|Android|iPhone|iPad|iPod|Windows Phone|IEMobile|BlackBerry|Opera Mini/i.test(ua)
+          }})
+        });
+      } catch (e) { /* never block the page */ }
+    }
+
     return json({
       ok: true, found: true,
       honor: HONOR_NAME, year: HONOR_YEAR,
