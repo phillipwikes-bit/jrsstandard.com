@@ -78,13 +78,41 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     <h1>Run JRS on your own records</h1>
     <p class="lede">The Organizational Pilot Package. Paste up to twenty five of your own records, one at a time. Each is assessed against the five review conditions and you get the read immediately. Free, no obligation, and you can stop after one.</p>
     <p class="lede">Running an organizational pilot is confidential. Your records are processed in memory and never stored or retained, and running one carries no public endorsement obligation. After you have your results, you will have the option, only if you want it, to add your organization's name to the public International Registry of Supporters.</p>
-    <p class="cred">Built by <b>Phillip Wikes</b>, former Lead Civil Rights Officer, Maryland Commission on Civil Rights. The five conditions have been applied record by record by <b>53 international reviewers across three studies</b>, including an expert panel of <b>32 independent experts across 16 countries</b>, each completing a full 24-record set.</p>
+    <p class="cred">Built by <b>Phillip Wikes</b>, former Lead Civil Rights Officer, Maryland Commission on Civil Rights. The five conditions have been applied record by record by <b>54 international reviewers across three studies</b>, including an expert panel of <b>33 independent experts across 16 countries</b>, each completing a full 24-record set.</p>
 
     <div class="teaser">
       <div class="teaser-lbl">One of the five questions your records will be asked</div>
       <p>Could a reviewer with no access to the author, no institutional memory, and no supplementary explanation identify the basis for each conclusion from the file alone?</p>
       <p style="margin-top:7px;color:var(--muted-soft)">If the answer is no, the record is reconstructable only by the person who wrote it. That is the gap the diagnostic finds.</p>
     </div>
+
+    <!-- ZERO-FIELD INSTANT TEST. No name, no email, no consent, nothing stored.
+         A visitor who clicked a link about checking a record can check one here,
+         immediately, and decide on the evidence rather than on a promise. -->
+    <section class="card gold" id="sandbox" aria-labelledby="sandbox-h">
+      <div class="teaser-lbl" style="color:var(--accent)">Try it now &middot; no sign-up</div>
+      <h2 id="sandbox-h" style="font-family:'Bodoni Moda',serif;font-weight:400;font-size:20px;margin:0 0 8px">Run one record, right here</h2>
+      <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 12px">Paste one record, redacted, and get the five-condition read. No name, no email, no account. Nothing you paste is stored: it is assessed in memory and discarded.</p>
+      <label class="fl" for="sb-text">Your record</label>
+      <textarea id="sb-text" style="min-height:130px" placeholder="Paste a redacted record. A short paragraph is enough to see the read work."></textarea>
+      <div id="sb-msg" style="font-size:12.5px;min-height:18px;margin:4px 0 8px;color:var(--review-text)"></div>
+      <button id="sb-go" type="button" style="width:100%">Run the free check &rarr;</button>
+      <p class="fine" style="text-align:center;color:var(--ready-text)">No sign-up &middot; No credit card &middot; Memory-only processing</p>
+
+      <div id="sb-result" class="hidden" style="margin-top:16px;border-top:1px solid var(--rule);padding-top:16px">
+        <div class="row" style="justify-content:space-between;margin-bottom:10px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft)">Review outcome</div>
+          <span class="pill" id="sb-routing">&middot;</span>
+        </div>
+        <div style="font-size:13.5px;color:var(--muted);margin-bottom:14px" id="sb-rationale"></div>
+        <div id="sb-conditions"></div>
+        <div style="margin-top:14px;font-size:13.5px;color:var(--text)" id="sb-summary"></div>
+        <div class="teaser" style="border-color:var(--accent-dim);margin-top:16px;margin-bottom:0">
+          <div class="teaser-lbl">That was one record</div>
+          <p>The workspace below runs up to twenty five in one session, keeps a running tally, and produces a one-page executive summary you can take to leadership. It asks for a name and a work email so the summary can reach you.</p>
+        </div>
+      </div>
+    </section>
 
     <div class="privacy">
       <b style="color:var(--ready-text)">Your record text is never stored.</b> Each record is assessed in memory and discarded. Nothing you paste is written to any database, and it is not used to train anything. Only the count of records you ran and the pattern of results is kept, so the programme can report that an organization used the standard without ever holding what it looked at.
@@ -259,6 +287,51 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     // fold. Without this the tap produces no visible change and reads as dead.
     ptl.textContent = open ? 'hide the details' : 'registration terms';
     if (open && p.scrollIntoView) p.scrollIntoView({ behavior:'smooth', block:'nearest' });
+  });
+
+  // Zero-field instant test. Deliberately shares nothing with `session`: it does
+  // not increment the run counter, does not touch /api/org-pilot, and records
+  // nothing anywhere. It exists so someone can see the instrument work before
+  // being asked for an identity.
+  var sbGo = el('sb-go');
+  if (sbGo) sbGo.addEventListener('click', function(){
+    var m = el('sb-msg'), t = (el('sb-text').value || '').trim();
+    m.style.color = 'var(--review-text)';
+    if (t.length < 80) { m.textContent = 'Please paste a record of at least a short paragraph.'; return; }
+    if (t.length > 8000) { m.textContent = 'That record is longer than the 8,000 character limit. Please shorten or split it.'; return; }
+    if (!jrsSanitizeCheck(t)) return;
+    sbGo.disabled = true;
+    m.style.color = 'var(--muted)';
+    m.textContent = 'Running the five conditions...';
+    fetch('/api/review', {
+      method:'POST', headers:{ 'Content-Type':'application/json' },
+      body: JSON.stringify({ text: t })
+    })
+    .then(function(r){ if (!r.ok) throw 0; return r.json(); })
+    .then(function(d){
+      if (!d || !d.conditions) throw 0;
+      var routing = String(d.routing||'Moderate').toLowerCase();
+      el('sb-routing').textContent = d.routing || 'Moderate';
+      el('sb-routing').className = 'pill ' + routing;
+      el('sb-rationale').textContent = d.routingRationale || '';
+      var ch = '';
+      (d.conditions||[]).forEach(function(c){
+        ch += '<div class="cond"><span class="st ' + statusClass(c.status) + '">' + esc(c.status||'') + '</span>'
+            + '<span><span class="cl">' + esc(c.label||'') + '.</span> <span class="cn">' + esc(c.note||'') + '</span></span></div>';
+      });
+      el('sb-conditions').innerHTML = ch;
+      el('sb-summary').textContent = d.summary || '';
+      el('sb-result').classList.remove('hidden');
+      m.textContent = '';
+      sbGo.disabled = false;
+      sbGo.textContent = 'Run another';
+      el('sb-result').scrollIntoView({ behavior:'smooth', block:'nearest' });
+    })
+    .catch(function(){
+      m.style.color = 'var(--review-text)';
+      m.textContent = 'Could not run that just now. Please try again, or email info@jrsstandard.com.';
+      sbGo.disabled = false;
+    });
   });
 
   el('org-go').addEventListener('click', function(){
