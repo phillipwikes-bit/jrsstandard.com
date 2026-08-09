@@ -63,17 +63,29 @@ export default async function handler(req){
   // Unknown/missing token: send to the guides page rather than 404.
   if (!edition && !doc && !kit) return Response.redirect(url.origin + '/investigator-guides.html', 302);
 
-  // CHANGED 2026-08-02: the three Investigator Field Guide editions are now
-  // registration-gated. A bare ?e= link no longer releases the file; it forwards
-  // to the consent form, which captures name, organization, email, and consent
-  // and then releases the download itself via /api/access. Every guide link
-  // already distributed in emails and posts keeps working and now lands on the
-  // form. Deploy/smoke tags bypass the gate so checks never create contact rows.
+  // CHANGED 2026-08-09: the three Investigator Field Guide editions are open
+  // access again. A bare ?e= link releases the file directly, counted but not
+  // gated, which is what the guides page now links to. Nobody is asked for a
+  // name to read a free reference document.
+  //
+  // The registration route is NOT removed, it is opt-in. ?gate=1 forwards to the
+  // consent form, which captures name and email and releases the file itself via
+  // /api/access. The guides page offers that as a labelled second choice under
+  // each download, and every link already distributed with src=site keeps
+  // pointing at the form, so nothing sent out before today changes behaviour.
+  //
+  // Rationale: 18 people opened the guide form between 2026-08-02 and
+  // 2026-08-09 and 0 completed it. A gate returning zero is not capturing
+  // anything, it is only losing readers. The capture ask now sits after the
+  // download instead of in front of it.
+  //
   // The JRS Standard PDF, the Rapid Review Card (?e=standard|card), and the
-  // whitelisted reference files (?f=) are deliberately NOT gated: those are the
-  // public artifacts that carry citations and should stay frictionless.
+  // whitelisted reference files (?f=) were never gated and remain open: those
+  // are the public artifacts that carry citations.
+  const wantsGate = url.searchParams.get('gate') === '1'
+                 || src === 'site' || src === 'email' || src === 'signature' || src === 'footer';
   const isTestTag = !!src && (src === 'verify' || src === 'test' || src === 'selftest' || src.indexOf('deploytest') === 0);
-  if (edition && !isTestTag) {
+  if (edition && wantsGate && !isTestTag) {
     return Response.redirect(url.origin + '/access.html?e=' + encodeURIComponent(edition) + (src ? '&src=' + encodeURIComponent(src) : ''), 302);
   }
 

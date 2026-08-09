@@ -87,7 +87,15 @@ Making organization optional broke four printed strings: the workspace eyebrow, 
 
 **The guide lede was cut to a single deliverable.** It previously carried *"and your registration also opens the free record check,"* a second offer competing with the file the reader came for. The diagnostic offer now appears only on the thank-you screen, after the file is delivered.
 
-**Status against the directive, stated precisely.** The directive's heading says "1-Click Open Access" and its body says the PDF should download "instantly upon submission without forcing public registry sign-ups." Those two are not the same requirement. What is implemented matches the body: a name, a work email and one consent tick, then the file downloads without navigation, and **no public registry sign-up is required or implied at any point**. Public listing is a separate optional click on the thank-you screen. If the intent was the heading rather than the body, a genuinely form-free download is a further change and is listed as open in section D.
+**One-click open access implemented, and the email capture kept.** The directive's heading and its body asked for different things: the heading said one click, the body said instant download upon submission. Both are now satisfied without trading one for the other.
+
+The primary button on each card is **Download now**, pointing straight at `/api/dl?e=<edition>&src=guides`, which counts the download and serves the file. No form, no name, no email, no tick. `api/dl.js` gated the three editions on 2026-08-02; that branch is now opt-in rather than default, triggered by `?gate=1` or by the legacy `src` values (`site`, `email`, `signature`, `footer`), so every guide link already distributed keeps landing on the form and nothing sent before today changes behaviour.
+
+Underneath each button sits a labelled second choice, **Email it to me instead, with the free record check**, which requests the gate explicitly at `/api/dl?e=<edition>&gate=1&src=site`.
+
+The capture ask moved behind the delivery rather than disappearing. Clicking a direct download reveals a panel headed *Your download has started*, offering the `JRS Field Specialist` designation and the free record check, with a retry link for anyone whose download did not fire and two routes onward: register, or run one record with no sign-up.
+
+**The evidence for making this change rather than defending the gate:** between 2026-08-02 and 2026-08-09, 18 people opened the guide form and 0 completed it. A gate returning zero registrations is not capturing anything, it is only losing readers.
 
 ### A.4 `/reviewer`: training and certification
 
@@ -168,7 +176,6 @@ Every figure below was recomputed from the study database during this audit rath
 | Item | Type | Note |
 |---|---|---|
 | Content-Security-Policy | Security | Requires nonce injection at the edge or extracting all inline assets. A project, not a header |
-| Genuinely form-free guide download | Conversion | Only if the brief's heading was intended over its body text. Would cost the email capture entirely |
 | LinkedIn card re-scrape | Distribution | Existing posts will keep showing the pre-fix grey row until each campaign URL is run through the LinkedIn Post Inspector |
 | Honor roster expansion | Programme | `ROSTER` in `api/honor.js` holds one entry and needs 33, each with an unguessable key and a citation naming what that person did |
 | RR-129 country | Data | Not recoverable from a public read. Requires a service-role query |
