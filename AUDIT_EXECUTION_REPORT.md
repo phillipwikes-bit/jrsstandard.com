@@ -49,7 +49,7 @@
 | `research/Dossier_Stacy_Young_2026-08-08.md` + `.docx` | Updated |
 | `research/MASTER_TRACKER.md` | 15 entries appended |
 
-### A.2 `/pilot` — how the diagnostic was de-risked
+### A.2 `/pilot`: how the diagnostic was de-risked
 
 **Route corrected first.** `/pilot` resolved to `pilot.html`, the legacy Pilot Program marketing page, because the 43 bare-path redirects were generated mechanically from filenames. It now resolves to `org-pilot.html`, the screen a person handed that link can actually act on. `pilot.html` keeps a bare path at `/pilot-program`, and `/check` and `/diagnostic` were added as aliases.
 
@@ -77,7 +77,7 @@ Making organization optional broke four printed strings: the workspace eyebrow, 
 
 **Acquisition and data-transfer copy is off every tick line on the site**, on `access.html`, `org-pilot.html`, `training.html` and `honor.html`. It was not deleted, because `consent_transfer` is still recorded on those rows and dropping the disclosure while keeping the field would be misrepresentation. It moved one tap behind a live "registration terms" link that opens an inline panel carrying the full three-part disclosure, deep-linked to `privacy.html#consent`.
 
-### A.3 `/guide` — open access and asset presentation
+### A.3 `/guide`: open access and asset presentation
 
 **Asset metadata added** to all three guide cards: `Instant PDF · 9 pages · printable audit matrix · free to use and share`.
 
@@ -89,7 +89,7 @@ Making organization optional broke four printed strings: the workspace eyebrow, 
 
 **Status against the directive, stated precisely.** The directive's heading says "1-Click Open Access" and its body says the PDF should download "instantly upon submission without forcing public registry sign-ups." Those two are not the same requirement. What is implemented matches the body: a name, a work email and one consent tick, then the file downloads without navigation, and **no public registry sign-up is required or implied at any point**. Public listing is a separate optional click on the thank-you screen. If the intent was the heading rather than the body, a genuinely form-free download is a further change and is listed as open in section D.
 
-### A.4 `/reviewer` — training and certification
+### A.4 `/reviewer`: training and certification
 
 **Progress framing was already endowed** and was verified rather than changed. `updateProgressDisplay()` renders `Step 1 of 6 · Ready to start` at zero, `Step N of 6 · N complete` in progress, and `Complete · 6 of 6` at the end. No `0 / 6` deficit counter exists in the codebase.
 
@@ -99,7 +99,7 @@ Making organization optional broke four printed strings: the workspace eyebrow, 
 
 **Headline reframed.** The enrolment overlay read *"Join the International Registry"* over a certification form, the same mismatch the campaign gate had. It now reads **Start Your JRS Certification**, with a lede written from what the reader gets.
 
-### A.5 `/api/support` — clean routes and downstream advocacy
+### A.5 `/api/support`: clean routes and downstream advocacy
 
 **Clean campaign URLs added**, so nothing shared in a post, an email signature or a slide has to look like a developer query string.
 
