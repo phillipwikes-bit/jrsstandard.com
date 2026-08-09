@@ -74,6 +74,11 @@ ARM_B = [
     ("RR-128", "Sagarika Banerjee", "AI Governance and Software QA Leader; ISO/IEC 42001, NIST AI RMF", "Canada (Toronto)", "B1"),
     ("RR-130", "Anonymous by choice", "JRS-naive expert professional", "not recorded", "B2"),
     ("RR-132", "Anonymous by choice", "JRS-naive expert professional", "not recorded", "B2"),
+    # RR-129 completed 2026-08-07. Identity is in bench_experts, which is RLS-locked
+    # to the anon key, so the country is not recoverable from a public read and is
+    # recorded as unknown rather than guessed. This is why the published country
+    # figure of 16 is a floor and not an exact count.
+    ("RR-129", "Wendy Ann Martel", "Data protection, privacy and AI governance; twenty five years of public and private sector practice", "not recorded", "B2"),
 ]
 
 # Study 004 expert-rater identities, read from bench_experts with the
@@ -193,7 +198,7 @@ def main():
     print("INTERNATIONAL REVIEWERS WHO HAVE GRADED RECORDS: %d = %d in Studies 011 and 012 "
           "+ %d Study 004 experts not already counted + %d anonymous bench reviewers"
           % (graded_011_012 + new_experts + bench, graded_011_012, new_experts, bench))
-    print("  of whom %d completed a full %d-record set" % (32, NEEDED))
+    print("  of whom %d completed a full %d-record set" % (len(ARM_A) + len(ARM_B), NEEDED))
     print("  %d expert rater codes are the same people as Arm A completers: %s"
           % (dup, ", ".join("%s=%s" % (k, v) for k, v in CROSS_STUDY_SAME_PERSON.items())))
     print("  E-11 carries 1 label and no identity on record; excluded from the count.")

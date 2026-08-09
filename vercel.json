@@ -255,6 +255,31 @@
       "source": "/diagnostic",
       "destination": "/org-pilot.html",
       "permanent": false
+    },
+    {
+      "source": "/right-to-know-why",
+      "destination": "/api/support?c=rtkw",
+      "permanent": false
+    },
+    {
+      "source": "/rtkw",
+      "destination": "/api/support?c=rtkw",
+      "permanent": false
+    },
+    {
+      "source": "/decisions-you-can-defend",
+      "destination": "/api/support?c=defend",
+      "permanent": false
+    },
+    {
+      "source": "/defend",
+      "destination": "/api/support?c=defend",
+      "permanent": false
+    },
+    {
+      "source": "/support",
+      "destination": "/api/support",
+      "permanent": false
     }
   ],
   "headers": [

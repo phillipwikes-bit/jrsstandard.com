@@ -75,8 +75,53 @@ h1{font-family:'Bodoni Moda',serif;font-size:32px;font-weight:400;line-height:1.
   <div class="hero">
     <div class="eyebrow">Evidence Development Program</div>
     <h1>Research &amp; Validation</h1>
-    <p class="sub">JRS is in a staged validation program that tests whether structured pre-finalization review can identify Decision Reconstruction Risk, the condition in which a record cannot explain why a consequential decision was made. Three stages have now produced data. As of 5 August 2026, an international panel of 16 independent experts across 11 countries and 5 continents detected unreconstructable records at 83.9% accuracy against a verified key, clearing the threshold set before any data were examined; these figures are provisional until the study closes and are recomputed at that point. Independent AI models apply the standard reproducibly (84% cross-vendor agreement), and independent human reviewers apply it reliably (Gwet's AC1 0.74 experts, 0.62 trained reviewers, interim on 10 records). Detection, reproducibility, and reliability are distinct from real-world validation, which is a later stage, and nothing here is presented as validated until pre-registered thresholds are met. This page registers the program's studies and reports their honest current status.</p>
+    <p class="sub">JRS is in a staged validation program that tests whether structured pre-finalization review can identify Decision Reconstruction Risk, the condition in which a record cannot explain why a consequential decision was made. Three stages have now produced data. As of 5 August 2026, an international panel of 16 independent experts across 11 countries and 5 continents detected unreconstructable records at 83.9% accuracy against a verified key, clearing the threshold set before any data were examined; these figures are provisional until the study closes and are recomputed at that point. Independent AI models apply the standard reproducibly (86.7% cross-vendor agreement on the latest nightly run, range 82.2 to 93.3 percent across 37 runs at the full 15-record set), and independent human reviewers apply it reliably (Gwet's AC1 0.739 experts, 0.624 trained reviewers, interim on 10 records). Detection, reproducibility, and reliability are distinct from real-world validation, which is a later stage, and nothing here is presented as validated until pre-registered thresholds are met. This page registers the program's studies and reports their honest current status.</p>
   </div>
+
+  <!-- EMPIRICAL VALIDATION DASHBOARD.
+       Every figure here is computed from the study database, not transcribed.
+       The date each rests on is printed beside it so a reader can tell a live
+       number from a stale one. -->
+  <section aria-labelledby="vd-h">
+  <div class="section-label" id="vd-h">Empirical Validation: Headline Metrics</div>
+  <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(215px,1fr))">
+    <div class="card">
+      <div class="card-k">Expert Detection Accuracy</div>
+      <div class="card-v" style="color:var(--accent)">83.9%</div>
+      <div class="card-n">Against a verified answer key, read blind. 16 independent experts, 11 countries, 5 continents, 384 determinations. 95% CI 72.7 to 95.1 at participant level. Sensitivity 87.0%, specificity 80.7%. Clears the pre-registered threshold of 70% fixed before any data were seen.</div>
+    </div>
+    <div class="card">
+      <div class="card-k">Inter-Rater Reliability</div>
+      <div class="card-v" style="color:var(--accent)">0.739 / 0.624</div>
+      <div class="card-n">Gwet&#39;s AC1, experts and trained reviewers, on a shared 10-record set carrying 99 retained labels. Both clear the pre-registered floor of 0.61 and sit in the substantial band under Landis and Koch. Intervals are wide and the plan&#39;s secondary lower-bound criterion is not met, so both are reported as interim.</div>
+    </div>
+    <div class="card">
+      <div class="card-k">Cross-Vendor Model Consistency</div>
+      <div class="card-v" style="color:var(--accent)">86.7%</div>
+      <div class="card-n">Mean pairwise agreement across three vendors, Anthropic, OpenAI and Google, applying the same five conditions to the same 15 records. Latest nightly run 9 August 2026; range 82.2 to 93.3 percent across 37 runs at the full record set. Recomputed every night, not transcribed.</div>
+    </div>
+    <div class="card">
+      <div class="card-k">Reviewer Base</div>
+      <div class="card-v" style="color:var(--accent)">54 reviewers</div>
+      <div class="card-n">Have graded at least one record across the three studies, unpaid and in a personal capacity. 33 of them completed a full 24-record set, spanning 16 countries and 5 continents. Counted from the study database on 9 August 2026, not from a mailing list.</div>
+    </div>
+  </div>
+  <p class="sub" style="font-size:12px;margin-top:10px">Detection, reproducibility and reliability are distinct from real-world validation, which is a later stage. Nothing above is presented as validated until its pre-registered threshold is met, and the two figures that have not met theirs say so.</p>
+  </section>
+
+  <!-- THE STANDARD ITSELF -->
+  <section aria-labelledby="fc-h">
+  <div class="section-label" id="fc-h">The Five Review Conditions</div>
+  <p class="sub" style="font-size:13px;margin-bottom:12px">The standard is these five conditions and the rules for applying them. Every figure above was produced by human reviewers and independent AI models applying this same set, unchanged, to the same records. The conditions are versioned, documented in the <a href="codebook.html">Codebook</a>, and implemented identically in the review engine, which is what makes a result from one reviewer comparable to a result from another.</p>
+  <div class="cards" style="grid-template-columns:1fr">
+    <div class="card"><div class="card-k">Condition 1 &middot; Reconstructability</div><div class="card-n">Can the conclusion be reconstructed from the record? A future reviewer must be able to trace the path from documented evidence to the conclusion reached, without relying on the author&#39;s recollection or added explanation.</div></div>
+    <div class="card"><div class="card-k">Condition 2 &middot; Basis Identification</div><div class="card-n">Is the basis for the conclusion identifiable? The source of each characterization must be visible and traceable, not implied or summarized without attribution.</div></div>
+    <div class="card"><div class="card-k">Condition 3 &middot; Chronology</div><div class="card-n">Is the chronology understandable? The sequence of events must be followable from the record alone, including the timing of prior interventions, escalation steps, and the period under review.</div></div>
+    <div class="card"><div class="card-k">Condition 4 &middot; Decision-Process Traceability</div><div class="card-n">Can a future reviewer determine how the conclusion was reached? Who reviewed the matter, what criteria or threshold triggered the conclusion, and whether responsive or mitigating information was considered before finalization.</div></div>
+    <div class="card"><div class="card-k">Condition 5 &middot; Evidentiary Sufficiency</div><div class="card-n">Could a reviewer with no prior knowledge evaluate the evidentiary sufficiency of this record? The record must stand on its own so an independent reviewer can assess whether the conclusion is supported by the documented evidence.</div></div>
+  </div>
+  <p class="sub" style="font-size:12px;margin-top:10px">Each condition returns Pass, Needs Attention or Fail with a written note, and the five combine into a routing band. Section 5.4 of the detection study reports that all five carry information separating a reconstructable record from an unreconstructable one, at p between 1.0e-08 and 1.5e-11 on 108 labels from 21 raters.</p>
+  </section>
 
   <!-- THIS WEEK'S OBSERVATION -->
   <div class="section-label">This Week's Observation</div>
@@ -94,7 +139,7 @@ h1{font-family:'Bodoni Moda',serif;font-size:32px;font-weight:400;line-height:1.
   <div class="section-label">Validation Maturity</div>
   <div class="cards">
     <div class="card"><div class="card-k">Current Stage</div><div class="card-v">Operational Validation</div><div class="card-n">Early results in (reproducibility and reliability); no claim validated yet.</div></div>
-    <div class="card"><div class="card-k">Evidence Base</div><div class="card-v">Detection Reported</div><div class="card-n">Programme-wide, 53 international reviewers have graded records across the three studies. Panel detection 83.9% against a verified key (16 independent experts, 11 countries); reproducibility 84% (cross-vendor); reviewer reliability Gwet&#39;s AC1 0.74 experts / 0.62 trained, interim. Not real-world validation.</div></div>
+    <div class="card"><div class="card-k">Evidence Base</div><div class="card-v">Detection Reported</div><div class="card-n">Programme-wide, 54 international reviewers have graded records across the three studies. Panel detection 83.9% against a verified key (16 independent experts, 11 countries); reproducibility 86.7% on the latest nightly cross-vendor run; reviewer reliability Gwet&#39;s AC1 0.74 experts / 0.62 trained, interim. Not real-world validation.</div></div>
     <div class="card"><div class="card-k">Condition Maturity</div><div class="card-v">Experimental</div><div class="card-n">All five conditions. See the <a href="codebook.html">Codebook</a>.</div></div>
     <div class="card"><div class="card-k">Readiness Scores</div><div class="card-v">Not Established</div><div class="card-n">Pending accuracy-benchmark data and larger samples.</div></div>
   </div>
@@ -105,7 +150,7 @@ h1{font-family:'Bodoni Moda',serif;font-size:32px;font-weight:400;line-height:1.
   <div class="section-label">Study Registry</div>
   <div class="study"><div class="study-top"><div><span class="study-id">Study 001</span> &middot; <span class="study-title">AI Reproducibility (cross-vendor, synthetic)</span></div><span class="badge b-collect">Active</span></div><div class="study-desc">Three independent AI models from different vendors each judge the same set of constructed (synthetic) records, and the nightly run reports how often the models agree. It involves no human reviewers and no ground-truth labels, so it cannot speak to accuracy or to real records. Independent vendors agreeing is a stronger signal than one model repeating itself, but agreement is still not accuracy and not validation.</div></div>
   <div class="study"><div class="study-top"><div><span class="study-id">Study 003</span> &middot; <span class="study-title">Condition Performance</span></div><span class="badge b-collect">Collecting</span></div><div class="study-desc">Per-condition data now collected: 108 scored determinations across 10 records, distributed Gap 69%, Needs work 18%, Ready 13%. Per-condition agreement analysis continues as volume grows.</div></div>
-  <div class="study"><div class="study-top"><div><span class="study-id">Study 004</span> &middot; <span class="study-title">Reviewer Reliability</span></div><span class="badge b-collect">Result reported</span></div><div class="study-desc">Independent reviewers have scored a shared record set; inter-rater reliability is substantial (Gwet&#39;s AC1 0.74 experts, 0.62 trained reviewers, 10 records), clearing the pre-registered point floor of 0.61. These figures are interim: they rest on 10 records against a pooled target of about 26, the confidence intervals are wide, and the plan&#39;s secondary lower-bound criterion is not yet met. Reliability, not accuracy. See the Reliability &amp; Accuracy methods paper below.</div></div>
+  <div class="study"><div class="study-top"><div><span class="study-id">Study 004</span> &middot; <span class="study-title">Reviewer Reliability</span></div><span class="badge b-collect">Result reported</span></div><div class="study-desc">Independent reviewers have scored a shared record set; inter-rater reliability is substantial (Gwet&#39;s AC1 0.739 experts, 0.624 trained reviewers, 10 records), clearing the pre-registered point floor of 0.61. These figures are interim: they rest on 10 records against a pooled target of about 26, the confidence intervals are wide, and the plan&#39;s secondary lower-bound criterion is not yet met. Reliability, not accuracy. See the Reliability &amp; Accuracy methods paper below.</div></div>
   <div class="study"><div class="study-top"><div><span class="study-id">Study 008</span> &middot; <span class="study-title">Professional Reviewer</span></div><span class="badge b-collect">Collecting</span></div><div class="study-desc">Role and profession are captured at participation; patterns by reviewer type are reported as numbers grow.</div></div>
   <div class="study"><div class="study-top"><div><span class="study-id">Study 009</span> &middot; <span class="study-title">Organizational-Psychology Readiness</span></div><span class="badge b-collect">Dataset ready</span></div><div class="study-desc">Per-condition reliability and agreement data (10 records, multiple raters, all five conditions scored) have been assembled and exported for independent organizational-psychology review of construct validity. Awaiting an organizational-psychology reviewer.</div></div>
   <div class="study"><div class="study-top"><div><span class="study-id">Study 010</span> &middot; <span class="study-title">Criterion Validity (real-outcome)</span></div><span class="badge b-collect">Collecting</span></div><div class="study-desc">De-identified public determinations are paired with their documented real-world outcomes (upheld, overturned, challenged) to test whether JRS reads correspond to results when a record is contested. Cases are accruing across HR, public-records, and related domains in small batches. No results are reported until the sample is adequate.</div></div>
@@ -135,7 +180,7 @@ h1{font-family:'Bodoni Moda',serif;font-size:32px;font-weight:400;line-height:1.
   </a>
   <a class="study" href="JRS_Reliability_Accuracy.pdf" style="display:block;text-decoration:none">
     <div class="study-top"><div><span class="study-id">Methods Paper</span> &middot; <span class="study-title">Reliability and Accuracy of JRS (Rungs 1 &amp; 2)</span></div><span class="badge b-design">PDF</span></div>
-    <div class="study-desc">Cross-vendor AI reproducibility (84%, 15 records) and human inter-rater reliability (Gwet&#39;s AC1 0.74 experts, 0.62 trained reviewers, 10 records), with accuracy reported as preliminary. Pre-registered thresholds; preliminary and observational. <span style="color:var(--accent)">Download &#8594;</span></div>
+    <div class="study-desc">Cross-vendor AI reproducibility (86.7% latest nightly, 15 records) and human inter-rater reliability (Gwet&#39;s AC1 0.739 experts, 0.624 trained reviewers, 10 records), with accuracy reported as preliminary. Pre-registered thresholds; preliminary and observational. <span style="color:var(--accent)">Download &#8594;</span></div>
   </a>
   <a class="study" href="ai-governance-record.html" style="display:block;text-decoration:none">
     <div class="study-top"><div><span class="study-id">Perspective</span> &middot; <span class="study-title">When the Record Sounds Right but Says Nothing</span></div><span class="badge b-design">AI Governance</span></div>
