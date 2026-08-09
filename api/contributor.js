@@ -80,7 +80,7 @@ const ROSTER = {
   '42zgubzfq8': { code:'V-AI-30', kind:'panel',  first:'Andres',    name:'Andres Lage Freire',  title:'AI Governance Lead and Responsible AI Architect',       org:'',                        named_on_file:true },
 
   '6dyc0l2757': { code:'M-01',    kind:'author', first:'Ubayet',    name:'Ubayet Hossain, FRM', title:'Associate Director, Model Validation',                  org:'KPMG India',              named_on_file:true, note:'methodology co-author' },
-  '1wlgcn02gn': { code:'E-08',    kind:'author', first:'Stacy',     name:'Stacy Young',         title:'Public records and FOIL practice',                      org:'',                        named_on_file:true, note:'co-author and facilitator, public records pilot' },
+  '1wlgcn02gn': { code:'E-08',    kind:'author', first:'Stacyann', name:'Stacyann Young',      title:'Public records and FOIL practice',                      org:'',                        named_on_file:true, note:'co-author and facilitator, public records pilot' },
   'zobi7fgt8q': { code:'V-HR-01', kind:'facil',  first:'Tanvi',     name:'Tanvi Pokhriyal',     title:'HR and employment compliance',                          org:'',                        named_on_file:true, note:'facilitator, HR and employment pilot' },
   'qtgiiqlcqk': { code:'V-HC-01', kind:'facil',  first:'Keith',     name:'Keith Carrington, EJD, MBA', title:'Healthcare compliance',                          org:'',                        named_on_file:true, note:'facilitator, healthcare compliance pilot' }
 };

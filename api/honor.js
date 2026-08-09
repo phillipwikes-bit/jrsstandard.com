@@ -31,7 +31,7 @@ export const config = { runtime: 'edge' };
 // the full completer list and each entry keeps its own citation, because the
 // citation states what that person actually did and no two are the same.
 //
-// Stacy Young is H-2026-01 because she is first named, not because she is the
+// Stacyann Young is H-2026-01 because she is first named, not because she is the
 // only one. Nothing in the copy anywhere may describe this as one recipient a
 // year or imply exclusivity.
 //
@@ -51,7 +51,7 @@ const HONOR_YEAR = '2026';
 //
 // THREE STUDIES, THREE CITATION FORMS, AND THE DIFFERENCE IS NOT COSMETIC:
 //
-//   study: 'public-records'  Stacy Young. Names the 32-case documentation study
+//   study: 'public-records'  Stacyann Young. Names the 32-case documentation study
 //                            because that study is hers and is being published
 //                            under her name.
 //
@@ -85,16 +85,24 @@ const ROSTER = {
   'q7m2vd9xk4': {
     code: 'H-2026-01',
     study: 'public-records',
-    first: 'Stacy',
-    name: 'Stacy Young',
-    title: 'Deputy Records Access Officer, New York City Department of Housing Preservation and Development',
-    org: 'NYC Department of Housing Preservation and Development',
+    first: 'Stacyann',
+    name: 'Stacyann Young',
+    // TITLE AND ORGANIZATION ARE DELIBERATELY EMPTY, at her written request of
+    // 2026-08-09: the work was volunteer, done in a personal capacity on public
+    // materials, and she asked that her agency title and employer be removed
+    // entirely from the certificate and from any public-facing recognition.
+    // Do not repopulate these from the study record.
+    title: '',
+    org: '',
     order: 'first honoree named under this designation',
-    citation: 'For designing and completing the public-records documentation study: '
-            + '32 real determinations, advisory opinions and compliance audits, drawn from four '
-            + 'document classes and two states and spanning twenty-one years of decisions, each '
-            + 'assessed from the source alone and each accompanied by a written record of the '
-            + 'basis for that assessment.'
+    // Citation wording supplied by the honoree on 2026-08-09 and used as she
+    // wrote it. 'voluntarily' and 'public' are hers and carry the point: the
+    // study was volunteer work on already-public materials.
+    citation: 'In recognition of voluntarily designing and completing a public-records '
+            + 'documentation study of 32 public determinations, advisory opinions, and '
+            + 'compliance audits, drawn from four document classes and two states and spanning '
+            + 'twenty-one years of decisions, each assessed from the source alone and each '
+            + 'accompanied by a written record of the basis for that assessment.'
   },
   'e7m9x03lgo': {
     code: 'H-2026-02',
