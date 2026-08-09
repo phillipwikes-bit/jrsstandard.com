@@ -25,8 +25,17 @@ export const config = { runtime: 'edge' };
 // message column, matching the /api/enroll, /api/access and /api/contributor
 // convention.
 //
-// NOTE ON SCOPE: honorees are named for public-records and governance work.
-// Comparison-arm reviewers (RR-### codes) are NOT eligible and must not be
+// NOTE ON SCOPE, revised 2026-08-08: the Honor is not a single-recipient award.
+// Every completer of the detection study receives one, alongside honorees named
+// for public-records and governance work. The ROSTER below therefore grows to
+// the full completer list and each entry keeps its own citation, because the
+// citation states what that person actually did and no two are the same.
+//
+// Stacy Young is H-2026-01 because she is first named, not because she is the
+// only one. Nothing in the copy anywhere may describe this as one recipient a
+// year or imply exclusivity.
+//
+// Comparison-arm reviewers (RR-### codes) remain NOT eligible and must not be
 // added, because that arm is blind and a page naming the standard would break
 // it for anyone still reviewing.
 
