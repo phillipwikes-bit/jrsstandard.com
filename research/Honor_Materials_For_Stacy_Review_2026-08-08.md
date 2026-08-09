@@ -14,12 +14,6 @@ If any of it reads as overstated, tell me and I will change it.
 
 ---
 
-## What it is
-
-A recognition given by the JRS research programme, not by a university or a government body. No fee, no membership, no obligation. One person a year for work on documentation quality in public records.
-
----
-
 ## The certificate
 
 Attached, drafted in your name. It prints:

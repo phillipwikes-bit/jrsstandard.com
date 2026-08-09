@@ -50,7 +50,7 @@ Everything the project holds on Stacy Young in one place: identity and role, stu
 | Registered in `bench_experts` | 2026-06-13 |
 | Role in the programme | Public-Records Domain Lead; co-author; reliability rater |
 | Reliability study (Study 004) | 5 labels on 5 records, 2026-06-11, self-declared domain "Records / Information Governance" |
-| Honor code | H-2026-01, first honoree named |
+| Honor code | H-2026-01, first honoree named. The Honor is not single-recipient: every detection-study completer receives one |
 | Honor link | `https://jrsstandard.com/honor.html?k=q7m2vd9xk4` |
 
 ## 4. What she produced
