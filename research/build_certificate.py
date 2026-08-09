@@ -10,7 +10,8 @@ To issue a new one, add an entry to REVIEWERS and run this file.
 Template facts (locked, from the reference PDF):
   page 792x612 landscape; ivory bg (0.99,0.985,0.975); double gold border
   (#BE9447, 2.2pt outer / 0.7pt inner); JRS(TM) Times-Bold 30 gold; wordmark
-  Times-Roman 9.5 letter-spaced (#7A5E28); "Certificate of Completion"
+  Times-Roman 9.5 letter-spaced (#7A5E28); title line (default
+  "Certificate of Completion")
   Times-Italic 26 ink; name Times-Bold 30 ink + gold underline; body
   Times-Roman 12.5 ink; date + signature blocks with gray rules; footer.
 
@@ -47,7 +48,10 @@ def standard_body(possessive, perspective, source):
             "reconstructability and evidentiary integrity.")
 
 
-def make_certificate(name, date, body, out_path):
+def make_certificate(name, date, body, out_path, title="Certificate of Completion"):
+    """`title` defaults to the reviewer wording so every certificate already
+    issued regenerates byte-identical. An award or honor passes its own, because
+    a recipient did not complete anything."""
     c = canvas.Canvas(out_path, pagesize=(W, H))
     def top(y): return H - y
     def ctext(cx, by, text, font, size, color):
@@ -72,7 +76,7 @@ def make_certificate(name, date, body, out_path):
 
     c.setStrokeColorRGB(*GOLD); c.setLineWidth(0.6); c.line(306, top(116), 486, top(116))
 
-    ctext(396, 158, "Certificate of Completion", "Times-Italic", 26, INK)
+    ctext(396, 158, title, "Times-Italic", 26, INK)
     ctext(396, 196, "This certifies that", "Times-Roman", 12, MUTED)
     ctext(396, 238, name, "Times-Bold", 30, INK)
     c.setStrokeColorRGB(*GOLD); c.setLineWidth(0.8); c.line(246, top(250), 546, top(250))
@@ -186,6 +190,13 @@ REVIEWERS = [
         "out": "/home/user/jrsstandard.com/research/JRS_Certificate_Marguerite_Maroudis.pdf",
     },
 ]
+
+
+# HONOR CERTIFICATES ARE NOT COMPLETION CERTIFICATES.
+# An honoree did not complete a 24-record set, so the title line must be passed
+# explicitly: make_certificate(..., title="Certificate of Recognition").
+# The default stays "Certificate of Completion" so the 21 reviewer certificates
+# already issued regenerate unchanged.
 
 if __name__ == "__main__":
     for r in REVIEWERS:
