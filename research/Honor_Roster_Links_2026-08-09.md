@@ -6,7 +6,7 @@ Each link is unguessable and returns only that person's own citation. An unknown
 
 | Honor code | Study | Participant | Name | Link |
 |---|---|---|---|---|
-| H-2026-01 | public-records | E-08 | Stacy Young | https://jrsstandard.com/honor.html?k=q7m2vd9xk4 |
+| H-2026-01 | public-records | E-08 | Stacyann Young | https://jrsstandard.com/honor.html?k=q7m2vd9xk4 |
 | H-2026-02 | detection | V-AI-01 | Jake McDonough | https://jrsstandard.com/honor.html?k=e7m9x03lgo |
 | H-2026-03 | detection | V-AI-03 | Frank Schouten | https://jrsstandard.com/honor.html?k=cuh3yreh99 |
 | H-2026-04 | detection | V-AI-06 | Dr Nitin Deshpande | https://jrsstandard.com/honor.html?k=gxbnsiu779 |

@@ -1,6 +1,6 @@
 # Global Governance and Transparency Honor, 2026
 
-**Stacy Young · H-2026-01 · first honoree**
+**Stacyann Young · H-2026-01 · first honoree**
 
 ---
 
@@ -8,7 +8,7 @@
 
 This is the text that would be printed on the certificate.
 
-> For designing and completing the public-records documentation study: 32 real determinations, advisory opinions and compliance audits, drawn from four document classes and two states and spanning twenty-one years of decisions, each assessed from the source alone and each accompanied by a written record of the basis for that assessment.
+> In recognition of voluntarily designing and completing a public-records documentation study of 32 public determinations, advisory opinions, and compliance audits, drawn from four document classes and two states and spanning twenty-one years of decisions, each assessed from the source alone and each accompanied by a written record of the basis for that assessment.
 
 If any of it reads as overstated, tell me and I will change it.
 
@@ -16,12 +16,11 @@ If any of it reads as overstated, tell me and I will change it.
 
 ## The certificate
 
-Attached, drafted in your name. It prints:
+Attached, drafted in your name. It prints your name alone, with no title line and no employer:
 
-**Stacy Young**
-Deputy Records Access Officer, NYC Department of Housing Preservation and Development
+**Stacyann Young**
 
-Both are editable. If your agency would rather your title not appear, it can print your name alone.
+Your agency title and employer are removed from the certificate and from every public-facing item, at your request of 2026-08-09.
 
 ---
 
