@@ -1,6 +1,6 @@
 # Stacyann Young: complete record
 
-**Compiled 2026-08-08. PRIVATE. `research/` is never deployed to production.**
+**Compiled 2026-08-08, updated 2026-08-09. PRIVATE. `research/` is never deployed to production.**
 
 Everything the project holds on Stacy Young in one place: identity and role, study codes, her contribution, every artifact she produced or that names her, and the open items. Sources are named for each block so nothing here rests on memory.
 
@@ -105,12 +105,14 @@ Computed by `research/analysis_foil_2026-08-08.py`.
 | Honor acceptance endpoint | `api/honor.js` |
 | Honor acceptance page | `honor.html` |
 | Honor disclosure pack, citation with sources, every stop point | `research/Honor_Materials_For_Stacy_Review_2026-08-08.md` and `.docx` |
-| Draft honor certificate rendered in her name | `research/DRAFT_Honor_Certificate_Stacy_Young.pdf` |
+| Honor certificate, issued | `research/JRS_Honor_Certificate_Stacyann_Young.pdf` |
 | Blind second-reader packet, ten cases, no key | `research/Blind_Recheck_Packet_E08.md` and `.docx` |
 | Answer key for the blind re-read, NOT to be sent | `research/Blind_Recheck_KEY_E08.md` |
 | Packet generator, stdlib only, reproducible selection | `research/build_blind_recheck_packet.py` |
-| Reply to her 2026-08-08 message, drafted, not sent | `research/Message_Stacy_Young_Reply_2026-08-08b.md` and `.docx` |
-| This dossier | `research/Dossier_Stacy_Young_2026-08-08.md` |
+| Reply to her 2026-08-08 message | `research/Message_Stacy_Young_Reply_2026-08-08b.md` and `.docx` |
+| Reply to her 2026-08-09 messages, drafted, not sent | `research/Message_Stacyann_Young_Reply_2026-08-09.md`, `...-09b.md` and `.docx` |
+| Blind second-read links, three slots | `research/Blind_Recheck_Links_2026-08-09.md` |
+| This dossier | `research/Dossier_Stacyann_Young_2026-08-09.md` |
 
 ## 7. Correspondence on file
 
