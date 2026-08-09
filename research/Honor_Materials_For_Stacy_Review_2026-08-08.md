@@ -106,7 +106,22 @@ Write your own. That one is a prompt, not a draft for your signature.
 
 ---
 
-## 7. Where you can stop it
+## 7. If your agency needs to clear this
+
+You work for a New York City agency, and your title and employer would appear alongside your name. That puts this in the same category as any other outside recognition a city employee receives, and it is normal to check before accepting rather than after.
+
+A few points that may be useful if you raise it with your agency or with the Conflicts of Interest Board:
+
+- There is no money involved in any direction. No fee, no honorarium, no payment, no gift of value.
+- The Justification Review Standard does not hold, and has never held, a contract or any other business relationship with New York City or with HPD.
+- The work was done in your personal capacity, on public documents that were already public.
+- Nothing requires your title to appear at all. If your agency prefers, the certificate can print your name alone, and any public listing can show your name with no employer.
+
+If clearance takes time, the timing is yours. Nothing here expires.
+
+---
+
+## 8. Where you can stop it
 
 At every one of these points, and each one is a real stop rather than a formality.
 
@@ -118,7 +133,7 @@ At every one of these points, and each one is a real stop rather than a formalit
 
 ---
 
-## 8. Sequence, since you asked to review before anything goes out
+## 9. Sequence, since you asked to review before anything goes out
 
 Nothing in the list below happens until the step above it is done and you have said so.
 
