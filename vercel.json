@@ -290,6 +290,16 @@
       "source": "/second-read",
       "destination": "/recheck.html",
       "permanent": false
+    },
+    {
+      "source": "/certificate",
+      "destination": "/api/honor-cert",
+      "permanent": false
+    },
+    {
+      "source": "/asset-stats",
+      "destination": "/api/asset-stats",
+      "permanent": false
     }
   ],
   "headers": [
