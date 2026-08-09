@@ -636,7 +636,9 @@ export default async function handler(req){
     // failure, so a telemetry problem never stops an honoree seeing their
     // citation.
     const tsrc = String(url.searchParams.get('src') || '').toLowerCase();
-    const isCheck = tsrc === 'verify' || tsrc === 'test' || tsrc === 'selftest' || tsrc.indexOf('deploytest') === 0;
+    // ?src=owner or ?owner=1 suppresses the log, so Phillip can open any link to
+    // check it without inflating a figure a buyer will read as external engagement.
+    const isCheck = tsrc === 'owner' || url.searchParams.get('owner') === '1' || tsrc === 'verify' || tsrc === 'test' || tsrc === 'selftest' || tsrc.indexOf('deploytest') === 0;
     if (SERVICE && !isCheck) {
       try {
         const ua = String(req.headers.get('user-agent') || '').slice(0, 300);

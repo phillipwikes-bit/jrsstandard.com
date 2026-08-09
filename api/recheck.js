@@ -105,7 +105,9 @@ export default async function handler(req){
     // opened and was abandoned. Records the anonymous slot, never the key.
     // Deploy checks are skipped, matching the convention used elsewhere.
     const tsrc = String(url.searchParams.get('src') || '').toLowerCase();
-    const isCheck = tsrc === 'verify' || tsrc === 'test' || tsrc === 'selftest' || tsrc.indexOf('deploytest') === 0;
+    // ?src=owner or ?owner=1 suppresses the log, so an owner preview never counts
+    // as a reader opening the packet.
+    const isCheck = tsrc === 'owner' || url.searchParams.get('owner') === '1' || tsrc === 'verify' || tsrc === 'test' || tsrc === 'selftest' || tsrc.indexOf('deploytest') === 0;
     if (SERVICE && !isCheck) {
       try {
         const ua = String(req.headers.get('user-agent') || '').slice(0, 300);
