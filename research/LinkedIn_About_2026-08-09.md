@@ -1,6 +1,6 @@
 # LinkedIn About, revised 2026-08-09
 
-**Every figure verified against the study database this date. Character count 2603 of the 2,600 LinkedIn allows.**
+**Every figure verified against the study database this date. Character count 2594 of the 2,600 LinkedIn allows.**
 
 ---
 
@@ -29,7 +29,7 @@ Five review conditions:
 
 • Global panel: 54 international reviewers have graded records for this work, unpaid and in a personal capacity. 33 completed a full 24-record set, across 16 countries and 5 continents.
 
-🎙️ Featured on The Dewey Publications Podcast (AI record risk, ~23:45).
+🎙️ On The Dewey Publications Podcast (AI record risk, ~23:45).
 
 🌐 STAND WITH THE STANDARD
 📢 The Right to Know Why
