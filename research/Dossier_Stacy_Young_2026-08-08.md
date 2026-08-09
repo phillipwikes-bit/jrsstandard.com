@@ -104,9 +104,17 @@ Computed by `research/analysis_foil_2026-08-08.py`.
 | Chief FOIA Officers Council submissions in her name | `research/CFOC_Submission_2026-08-08.md` |
 | Honor acceptance endpoint | `api/honor.js` |
 | Honor acceptance page | `honor.html` |
+| Honor disclosure pack, citation with sources, every stop point | `research/Honor_Materials_For_Stacy_Review_2026-08-08.md` and `.docx` |
+| Draft honor certificate rendered in her name | `research/DRAFT_Honor_Certificate_Stacy_Young.pdf` |
+| Blind second-reader packet, ten cases, no key | `research/Blind_Recheck_Packet_E08.md` and `.docx` |
+| Answer key for the blind re-read, NOT to be sent | `research/Blind_Recheck_KEY_E08.md` |
+| Packet generator, stdlib only, reproducible selection | `research/build_blind_recheck_packet.py` |
+| Reply to her 2026-08-08 message, drafted, not sent | `research/Message_Stacy_Young_Reply_2026-08-08b.md` and `.docx` |
 | This dossier | `research/Dossier_Stacy_Young_2026-08-08.md` |
 
 ## 7. Correspondence on file
+
+**2026-08-08, from her, after receiving the results and the Honor offer.** Encouraged by the results, singling out the agreement between her initial reads and the Comptroller findings and the way the notes strengthened the analysis. Will review Sections 4 and 5 and the full manuscript before approving submission. Agrees a blind review of ten cases would strengthen the study. Asks to review the drafts to Dr. Frazier and the Council, and the honor materials, before anything is submitted or published in her name. Signs "Stacyann".
 
 **2026-08-07, from her.** Reports completing "25+ cases (sorry, I lost count!)" ready for review; asks for thoughts on how they look and whether the format and level of detail are working for the project; thanks him for congratulations to pass to her mother, who is "very excited about this next chapter"; says she is looking forward to feedback and to continuing to build. Signs "Stacyann".
 
@@ -127,10 +135,14 @@ Computed by `research/analysis_foil_2026-08-08.py`.
 
 ## 9. Open items
 
-1. Send the message with the manuscript attached and the Honor link.
-2. Obtain the quote. It is needed for the article, for any coverage, and for the data room, and nobody else can supply it.
-3. Obtain her confirmation of Sections 4 and 5 of the manuscript.
-4. Issue the Honor certificate once she accepts, using the confirmed name and title.
-5. Send the two Chief FOIA Officers Council notes after she edits her own biography paragraph in each.
-6. `api/honor.js` and `honor.html` are deployed and verified live. Her key returns her citation; an unknown key returns 404 with nothing about anyone.
-7. Ask her whether a colleague can re-read ten cases blind, which would let the paper report inter-rater agreement and close the one weakness a reviewer will name.
+Her 2026-08-08 reply set three explicit conditions, and each one now has a gate rather than a promise.
+
+1. **Send the reply and the review pack.** Drafted at `research/Message_Stacy_Young_Reply_2026-08-08b.md`, not sent. Attachments: manuscript, both Council drafts, the honor disclosure pack, the draft certificate.
+2. **Hold both Council notes until she approves them.** She asked to review them and specifically to rewrite her own biography paragraph rather than correct it.
+3. **Hold the Honor until she approves the citation.** The acceptance link stays live and she uses it when ready. Certificate is issued only after she accepts, in the name and title she confirms.
+4. **Hold submission until she confirms Sections 4 and 5.** One figure flagged for her memory rather than the data pull: 28 of 32 cases carrying a written basis note, which is what Section 5.3 rests on.
+5. **Blind re-read: she agreed, the packet is built, waiting on a name.** Ten of her 32 cases, six Ready, three Needs work, one Gap, stratified and reproducible. Send `Blind_Recheck_Packet_E08` to the reader she names, never to her. Never send `Blind_Recheck_KEY_E08.md`.
+6. **Obtain the quote.** Optional for her, needed for coverage and the data room, and nobody else can supply it. Asked on the acceptance page with a separate attribution tick.
+7. `api/honor.js` and `honor.html` are deployed and verified live. Her key returns her citation; an unknown key returns 404 with nothing about anyone.
+
+Approval is required separately for the manuscript, the Council notes, and the Honor. Approving one is not approving the others.
