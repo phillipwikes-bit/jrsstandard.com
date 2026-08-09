@@ -635,7 +635,9 @@ export default async function handler(req){
     // turned back into a set of working links. Best-effort, and silent on
     // failure, so a telemetry problem never stops an honoree seeing their
     // citation.
-    if (SERVICE) {
+    const tsrc = String(url.searchParams.get('src') || '').toLowerCase();
+    const isCheck = tsrc === 'verify' || tsrc === 'test' || tsrc === 'selftest' || tsrc.indexOf('deploytest') === 0;
+    if (SERVICE && !isCheck) {
       try {
         const ua = String(req.headers.get('user-agent') || '').slice(0, 300);
         await fetch(SB + '/rest/v1/interaction_events', {

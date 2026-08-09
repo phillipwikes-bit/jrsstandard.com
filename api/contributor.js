@@ -113,6 +113,15 @@ async function purgeTestRows(H){
     await fetch(SB + '/rest/v1/pilot_contacts?source=eq.contributor-confirm&message=like.' + pat,
       { method: 'DELETE', headers: H });
   } catch (e) { /* best-effort */ }
+  // Link-open rows written by a deploy check or a curl smoke test. Matched on
+  // the synthetic user-agent rather than a tag, because a bare curl sends no
+  // src at all and would otherwise count as a real open.
+  try {
+    for (const src of ['contributor-link', 'honor-link']) {
+      await fetch(SB + '/rest/v1/interaction_events?source=eq.' + src + '&type=eq.view&payload->>user_agent=like.*curl*',
+        { method: 'DELETE', headers: H });
+    }
+  } catch (e) { /* best-effort */ }
 }
 
 // Results block. Pending state still carries the figures already published on
@@ -184,7 +193,9 @@ export default async function handler(req){
     // cannot be turned back into a set of working links. Best-effort: a failed
     // ping must never stop the page rendering. The internal test key is skipped
     // so deploy checks do not inflate the count.
-    if (SERVICE && H && k !== TEST_KEY) {
+    const tsrc = String(url.searchParams.get('src') || '').toLowerCase();
+    const isCheck = tsrc === 'verify' || tsrc === 'test' || tsrc === 'selftest' || tsrc.indexOf('deploytest') === 0;
+    if (SERVICE && H && k !== TEST_KEY && !isCheck) {
       try {
         const ua = String(req.headers.get('user-agent') || '').slice(0, 300);
         await fetch(SB + '/rest/v1/interaction_events', { method:'POST', headers:H,
