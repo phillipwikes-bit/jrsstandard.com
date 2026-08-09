@@ -5,9 +5,9 @@
 
 Dear Dr. Frazier,
 
-I am the Deputy Records Access Officer at the New York City Department of Housing Preservation and Development, and I have spent more than twenty years in New York City public-records operations across housing, transportation and environmental agencies.
+I have more than 20 years of experience working in New York City government, including extensive experience in public records access, FOIL administration, records management, and document review. My work has included reviewing records for disclosure, applying statutory exemptions, developing records access procedures, and working with complex public records requests. That experience informed my interest in examining whether the reasoning behind records access decisions can be reconstructed from the records themselves.
 
-I am writing about the inventory of FOIA technology solutions described in the Council's 28 May memorandum. I have just completed a study that sits directly alongside it and that may be useful as the inventory takes shape.
+I am writing in a personal capacity about the inventory of FOIA technology solutions described in the Council's 28 May memorandum. I have just completed a study that sits directly alongside it and that may be useful as the inventory takes shape.
 
 The inventory answers what tools agencies use. The study asks a companion question: whether the determinations coming out of those tools remain independently reviewable. Two agencies can run the same case-management system and produce determinations of very different defensibility, and nothing in a technology inventory would show the difference.
 
@@ -29,9 +29,8 @@ The manuscript is under submission and I can send the current draft on request.
 
 With respect,
 
-Stacy Young
-Deputy Records Access Officer
-NYC Department of Housing Preservation and Development
+Stacyann Young
+Independent Researcher
 
 Phillip Wikes
 Creator of the Justification Review Standard; former Lead Civil Rights Officer, Maryland Commission on Civil Rights
@@ -47,16 +46,15 @@ Dear Co-Chairs,
 
 I am writing in response to the Council's 28 May memorandum seeking volunteers, to express interest in the Technology Committee, and secondarily in the Committee on Cross-Agency Collaboration and Innovation.
 
-I am the Deputy Records Access Officer at the New York City Department of Housing Preservation and Development, where I lead cross-divisional public-records and regulatory operations. I have worked in New York City public-records administration since 2004, including as Assistant Freedom of Information Law Officer at the NYC Taxi and Limousine Commission and as Records Manager at the NYC Department of Environmental Protection, and I hold professional certifications through SUNY and the New York State Archives. My work sits where records operations, legal compliance and executive decision support meet.
+I have more than 20 years of experience working in New York City government, including extensive experience in public records access, FOIL administration, records management, and document review. My work has included reviewing records for disclosure, applying statutory exemptions, developing records access procedures, and working with complex public records requests, and I hold professional certifications through SUNY and the New York State Archives. I am writing in a personal capacity.
 
 I have just completed an empirical study of documentation quality in public-records determinations, covering 32 real cases across court decisions, open-government advisory opinions, state commission decisions and Comptroller compliance audits, with decisions spanning 2005 to 2026. The central result is that a structured read of the record agreed with independent government auditors in every case where both assessments existed, five of five. A manuscript is under submission, and a companion study in a second domain finds the same read associated with whether a decision was sustained on review.
 
-What I would bring to the Technology Committee is the perspective that sits next to the technology question rather than inside it: whether the determinations produced through any given system remain reviewable and defensible after the fact. As the Council builds its inventory of FOIA technology solutions, that companion measure seems worth having in the room, and I would be glad to contribute it alongside the operational experience of running a large city FOIL programme.
+What I would bring to the Technology Committee is the perspective that sits next to the technology question rather than inside it: whether the determinations produced through any given system remain reviewable and defensible after the fact. As the Council builds its inventory of FOIA technology solutions, that companion measure seems worth having in the room, and I would be glad to contribute it alongside two decades of operational experience in municipal public-records administration.
 
 I can attend monthly meetings and take on interim individual or small-group work.
 
 Thank you for the opportunity.
 
-Stacy Young
-Deputy Records Access Officer
-NYC Department of Housing Preservation and Development
+Stacyann Young
+Independent Researcher

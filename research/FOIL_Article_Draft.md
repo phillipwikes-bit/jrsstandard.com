@@ -1,14 +1,14 @@
 # A Documentation-Quality Read for Public-Records Determinations: Convergent, Construct, and Discriminant Evidence from 32 Real FOIL Cases
 
-**Stacy Young**
-Records Governance Advisor and Public-Records Domain Lead; Deputy Records Access Officer, New York City Department of Housing Preservation and Development
+**Stacyann Young**
+Independent Researcher
 
 **Phillip Wikes**
 Creator of the Justification Review Standard; former Lead Civil Rights Officer, Maryland Commission on Civil Rights
 
 **Author contributions.** S.Y. designed the public-records case protocol, selected and screened all 32 determinations, recorded the read and its contemporaneous basis note for each case blind to the documented outcome, recorded the outcomes and citations, and leads the public-records framing. P.W. developed the review standard and the Decision Reconstruction Risk construct, designed the pilot, ran the analyses, and co-wrote the manuscript.
 
-**Disclosure.** Both authors contribute in a personal professional capacity. The views expressed are their own and do not represent the position of any employer or institution. No funding was received for this work.
+**Disclosure.** Both authors contribute in a personal professional capacity. S.Y. conducted this work voluntarily and independently, on public materials, and is named without institutional affiliation at her request. The views expressed are the authors' own and do not represent the position of any employer or institution. No funding was received for this work.
 
 ---
 

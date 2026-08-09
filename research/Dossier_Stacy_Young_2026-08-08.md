@@ -1,4 +1,4 @@
-# Stacy Young: complete record
+# Stacyann Young: complete record
 
 **Compiled 2026-08-08. PRIVATE. `research/` is never deployed to production.**
 
@@ -10,8 +10,8 @@ Everything the project holds on Stacy Young in one place: identity and role, stu
 
 | Field | Value | Source |
 |---|---|---|
-| Name | Stacy Young | study record; LinkedIn |
-| Preferred informal name | Stacyann (signs messages this way) | her message, 2026-08-07 |
+| Name | Stacyann Young (corrected by her on the acceptance page, 2026-08-09; the study record held Stacy Young) | her acceptance, 2026-08-09 |
+| Preferred informal name | Stacyann | her messages |
 | Pronouns | She/Her | LinkedIn |
 | Current role | Deputy Records Access Officer, NYC Department of Housing Preservation and Development | `bench_experts`; LinkedIn |
 | Tenure in role | February 2017 to present | LinkedIn |
@@ -132,6 +132,20 @@ Computed by `research/analysis_foil_2026-08-08.py`.
 | Transfer permission | To be captured via the Honor link, as one required tick covering contact, storage and transfer |
 | Public listing as honoree | Separate optional tick, her choice |
 | Honor certificate | To be issued after she accepts, in the name and title she confirms |
+
+## 8a. Affiliation policy, set by her on 2026-08-09
+
+She asked that her HPD title and agency be removed from the certificate, from any public-facing recognition, from the manuscript author line, and from both Council notes. The work was voluntary, done in her personal capacity, on public materials.
+
+| Artifact | How she is named |
+|---|---|
+| Honor certificate | Stacyann Young, no title line, no employer |
+| `api/honor.js` | title and org fields empty, with a comment saying not to repopulate them |
+| Manuscript | Stacyann Young, Independent Researcher, with the reason stated in the disclosure |
+| Council letters | her background paragraph in place of a title; signed Independent Researcher |
+| `api/contributor.js` | Stacyann Young, title "Public records and FOIL practice", no org |
+
+Nothing in the programme should reintroduce her employer. The study record still holds it, which is why the roster carries a comment.
 
 ## 9. Open items
 
