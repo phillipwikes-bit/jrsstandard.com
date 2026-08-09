@@ -18,11 +18,19 @@ One line in the second letter needed rewriting rather than deleting: it previous
 
 Both letters are attached. Nothing goes to Dr. Frazier or the Council until you tell me they are ready.
 
+**One more thing, and I want to put it plainly: we do not have to send the Council letters at all.** If writing to a federal council about public-records practice creates any question for you at work, or you would rather not have your name in front of that particular audience right now, say so and neither letter goes. The research stands on its own and the manuscript does not depend on them. There is no version of this where you have to weigh a professional risk against a favour to me.
+
 **On the attorney reading your case notes: yes, and it may be worth more than a second opinion.** The paper's one open weakness is that all 32 reads came from one person. If your friend is willing to do it in a structured way rather than informally, ten of your cases re-read blind would let the paper report inter-rater agreement, which is the first thing a referee will ask for.
 
-What that means in practice: they get ten cases, the public source and a short summary of each, and nothing else. Not your reads, not your notes, not the outcomes, not how many of each category to expect. They answer one question per case and take about two hours. The packet is already built and I can send it the moment you say who it goes to.
+Here is the link to send them:
 
-If they would rather just read your notes informally, that is useful too and no packet is needed. Either way it is your call.
+**https://jrsstandard.com/recheck.html?k=llfmfn3rb2**
+
+It opens ten of your cases, each with its public source and a short description of what the record is, and nothing else. Not your reads, not your notes, not the outcomes, not how many of each category to expect. They pick one of three labels per case, add a sentence on why, and it saves as they go so they can stop and come back. About two hours.
+
+One request, and it is the only thing that makes the result usable: **please do not tell them how you read any of these cases.** The link cannot leak your answers because it does not contain them, but a conversation can. If they already know how a case came out there is a tick for that on each case, so it gets recorded rather than dropped.
+
+If they would rather just read your notes informally, that is useful too and no link is needed. Either way it is your call.
 
 Phillip
 
@@ -50,7 +58,11 @@ Zero occurrences of "Deputy Records Access", "Housing Preservation", "HPD", "Tax
 
 ## Open, pending her answer
 
-1. **Who reads the ten cases blind**, if her attorney friend is willing to do it structured. `Blind_Recheck_Packet_E08` goes to that person, never to her, and `Blind_Recheck_KEY_E08.md` goes to nobody.
-2. **Her approval of the two Council notes** before either is sent.
+1. **Whether the Council letters go at all.** The message now offers to drop both if they create any question for her at work, with no counter-argument attached. If she declines, delete `CFOC_Submission_2026-08-08` rather than holding it.
+2. **Whether her attorney friend takes the R1 link.** If she names them, mark R1 assigned in `research/Blind_Recheck_Links_2026-08-09.md`. R2 and R3 stay spare.
 3. **Her approval of the full manuscript** before submission.
 4. **A quote**, still optional, for the article and the data room.
+
+## Handling
+
+The R1 link goes to her to forward, because she has the relationship and a cold link from a stranger would not be answered. That is a deliberate trade: it puts the packet one step from the person who knows the answers, so the message asks her directly not to discuss her reads. `Blind_Recheck_KEY_E08.md` goes to nobody, ever.
