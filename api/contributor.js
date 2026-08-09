@@ -130,7 +130,7 @@ async function purgeTestRows(H){
     for (const src of ['contributor-link', 'honor-link']) {
       await fetch(SB + '/rest/v1/interaction_events?source=eq.' + src + '&type=eq.view&payload->>user_agent=like.*curl*',
         { method: 'DELETE', headers: H });
-      await fetch(SB + '/rest/v1/interaction_events?source=eq.' + src + '&type=eq.view&created_at=lt.' + LOG_CUTOFF,
+      await fetch(SB + '/rest/v1/interaction_events?source=eq.' + src + '&type=eq.view&created_at=lt.' + encodeURIComponent(LOG_CUTOFF),
         { method: 'DELETE', headers: H });
     }
   } catch (e) { /* best-effort */ }
