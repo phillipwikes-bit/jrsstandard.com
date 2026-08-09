@@ -125,12 +125,16 @@ async function purgeTestRows(H){
   // link has been sent, and the only honor link distributed was accepted before
   // this logging existed. Every row before the cutoff is therefore synthetic by
   // construction. Remove this second rule once real opens are being recorded.
-  const LOG_CUTOFF = '2026-08-09T16:00:00Z';
+  // Everything before this stamp is an owner preview by construction: only one
+  // honor link had been distributed at that point, and it was accepted before
+  // link logging existed. Advance this stamp only when it is again true that
+  // nothing real sits behind it.
+  const LOG_CUTOFF = '2026-08-09T18:00:00Z';
   try {
-    for (const src of ['contributor-link', 'honor-link']) {
-      await fetch(SB + '/rest/v1/interaction_events?source=eq.' + src + '&type=eq.view&payload->>user_agent=like.*curl*',
+    for (const src of ['contributor-link', 'honor-link', 'recheck-link', 'honor-cert']) {
+      await fetch(SB + '/rest/v1/interaction_events?source=eq.' + src + '&payload->>user_agent=like.*curl*',
         { method: 'DELETE', headers: H });
-      await fetch(SB + '/rest/v1/interaction_events?source=eq.' + src + '&type=eq.view&created_at=lt.' + encodeURIComponent(LOG_CUTOFF),
+      await fetch(SB + '/rest/v1/interaction_events?source=eq.' + src + '&created_at=lt.' + encodeURIComponent(LOG_CUTOFF),
         { method: 'DELETE', headers: H });
     }
   } catch (e) { /* best-effort */ }
@@ -206,7 +210,9 @@ export default async function handler(req){
     // ping must never stop the page rendering. The internal test key is skipped
     // so deploy checks do not inflate the count.
     const tsrc = String(url.searchParams.get('src') || '').toLowerCase();
-    const isCheck = tsrc === 'verify' || tsrc === 'test' || tsrc === 'selftest' || tsrc.indexOf('deploytest') === 0;
+    // ?src=owner or ?owner=1 suppresses the log, so an owner preview never counts
+    // as external engagement.
+    const isCheck = tsrc === 'owner' || url.searchParams.get('owner') === '1' || tsrc === 'verify' || tsrc === 'test' || tsrc === 'selftest' || tsrc.indexOf('deploytest') === 0;
     if (SERVICE && H && k !== TEST_KEY && !isCheck) {
       try {
         const ua = String(req.headers.get('user-agent') || '').slice(0, 300);

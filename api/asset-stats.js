@@ -153,6 +153,12 @@ export default async function handler(req){
     note: 'Aggregate counts only. No name, email, organization or key is exposed by this endpoint. '
         + 'Every figure is computed at request time from interaction_events, pilot_contacts, '
         + 'pilot_progress, armb_progress, bench_labels and bench_outcomes.',
+    link_metrics_basis: 'Per-person link opens count from 2026-08-09T18:00Z forward. Owner '
+        + 'previews and deploy checks are suppressed at write time and any earlier rows were '
+        + 'cleared, so an open in these figures is a third party opening a link that was sent '
+        + 'to them. The counts are small because 33 of the 34 honor links and all 20 '
+        + 'contributor links are deliberately unsent, not because engagement was measured '
+        + 'and found low.',
 
     named_professional_engagement: {
       honor: {

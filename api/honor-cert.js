@@ -185,7 +185,9 @@ export default async function handler(req){
   // cannot be turned back into a set of working links. Deploy checks are skipped
   // by the same convention used across the other endpoints.
   const tsrc = String(url.searchParams.get('src') || '').toLowerCase();
-  const isCheck = tsrc === 'verify' || tsrc === 'test' || tsrc === 'selftest' || tsrc.indexOf('deploytest') === 0;
+  // ?src=owner or ?owner=1 suppresses the log, so an owner preview never counts
+  // as an honoree collecting their certificate.
+  const isCheck = tsrc === 'owner' || url.searchParams.get('owner') === '1' || tsrc === 'verify' || tsrc === 'test' || tsrc === 'selftest' || tsrc.indexOf('deploytest') === 0;
   if (SERVICE && !isCheck) {
     try {
       const ua = String(req.headers.get('user-agent') || '').slice(0, 300);
