@@ -280,6 +280,16 @@
       "source": "/support",
       "destination": "/api/support",
       "permanent": false
+    },
+    {
+      "source": "/recheck",
+      "destination": "/recheck.html",
+      "permanent": false
+    },
+    {
+      "source": "/second-read",
+      "destination": "/recheck.html",
+      "permanent": false
     }
   ],
   "headers": [

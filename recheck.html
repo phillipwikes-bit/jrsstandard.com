@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Independent second read &middot; JRS</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="A structured second read of ten public-records cases for the JRS public-records documentation study.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050505; --surface:#121212; --surface2:#1A1A1A;
+  --accent:#BE9447; --accent-dim:#7A5E28;
+  --muted:#B3B3B3; --muted-soft:#8A8A8A; --text:#F2F2F2;
+  --rule:#2A2A2A; --stop-text:#E88080;
+  --review-text:#D4A055; --ready-text:#5DBF82;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+a{color:var(--accent)}
+.wrap{max-width:720px;width:100%;margin:0 auto;padding:32px 22px 60px;flex:1}
+.wordmark{font-family:'Bodoni Moda',serif;font-size:20px;color:var(--accent);text-decoration:none}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin:22px 0 8px}
+h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:27px;margin:0 0 10px;line-height:1.25}
+h2{font-family:'Bodoni Moda',serif;font-weight:400;font-size:19px;margin:0 0 8px;line-height:1.3}
+.lede{font-size:14px;color:var(--muted);line-height:1.65;margin-bottom:16px}
+.card{background:var(--surface);border:1px solid var(--rule);padding:20px;margin:16px 0}
+.card.gold{border-color:var(--accent)}
+.rulebox{border-left:3px solid var(--ready-text);background:var(--surface);padding:14px 16px;margin:16px 0;font-size:12.5px;color:var(--muted);line-height:1.6}
+label.fl{display:block;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px}
+input,textarea{width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;font-family:'Inter',sans-serif;margin-bottom:11px}
+textarea{min-height:74px;resize:vertical;line-height:1.6}
+input:focus,textarea:focus{outline:none;border-color:var(--accent-dim)}
+button{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:13px 20px;cursor:pointer;width:100%}
+button:disabled{opacity:.5;cursor:default}
+.deftable{width:100%;border-collapse:collapse;margin:10px 0 0;font-size:12.5px}
+.deftable td{border:1px solid var(--rule);padding:9px 11px;color:var(--muted);vertical-align:top;line-height:1.55}
+.deftable td.k{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text);width:112px}
+.caseno{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.srcline{font-size:12.5px;color:var(--muted);line-height:1.6;margin-bottom:10px;word-break:break-word}
+.recline{font-size:13.5px;color:var(--text);line-height:1.6;margin-bottom:14px}
+.opts{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.opts label{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--text);cursor:pointer;border:1px solid var(--rule);background:var(--surface2);padding:9px 13px;flex:1;min-width:118px}
+.opts label.sel{border-color:var(--accent);color:var(--accent)}
+.opts input{width:auto;margin:0}
+.chk{display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--muted);line-height:1.5;margin-bottom:10px;cursor:pointer}
+.chk input{width:auto;margin:2px 0 0;flex:0 0 auto}
+.chk.core{border:1px solid var(--accent-dim);background:var(--surface2);padding:12px 13px}
+.knew{font-size:11.5px;color:var(--muted-soft)}
+#msg{font-size:12.5px;min-height:18px;margin:8px 0;color:var(--review-text)}
+.fine{font-size:10.5px;color:var(--muted-soft);line-height:1.55;margin-top:10px}
+.counter{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-align:center;margin-top:9px}
+footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
+.fc{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft)}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a href="index.html" class="wordmark">JRS<span style="font-size:10px;vertical-align:super;position:relative;top:-3px;">&#8482;</span></a>
+
+  <div id="gate" class="card gold" style="margin-top:26px">
+    <div class="eyebrow">Independent second read</div>
+    <h1 id="head">Loading your packet</h1>
+    <p class="lede" id="gate-msg">One moment.</p>
+  </div>
+
+  <main id="app" class="hidden">
+    <div class="eyebrow">Independent second read &middot; <span id="slot"></span></div>
+    <h1>Ten public-records cases</h1>
+    <p class="lede">You are being asked to read ten records and answer one question about each. You are not checking anyone's work, and you are not being shown anyone else's answers. There is no right total: some sets are mostly one category and some are mixed.</p>
+
+    <div class="card">
+      <h2>What you are deciding</h2>
+      <p class="lede" style="margin-bottom:12px">For each case, read the source and answer this:</p>
+      <p class="recline" style="border-left:2px solid var(--accent-dim);padding-left:11px">Could a reviewer with no access to the author, no institutional memory, and no supplementary explanation identify the basis for each conclusion from the record alone?</p>
+      <table class="deftable">
+        <tr><td class="k">Ready</td><td>The basis for each conclusion is present in the record and can be rebuilt from it without asking anyone.</td></tr>
+        <tr><td class="k">Needs work</td><td>The record states conclusions whose basis is partly present, so a cold reader could reconstruct some of it and would have to assume the rest.</td></tr>
+        <tr><td class="k">Gap</td><td>The record does not carry a reconstructable basis at all. A cold reader could not say why the conclusion was reached.</td></tr>
+      </table>
+    </div>
+
+    <div class="rulebox">
+      <b style="color:var(--ready-text)">Ground rules.</b>
+      Read the source before deciding; the summary is orientation, not the record.
+      Do not look up how a case came out. If you already know one, tick the box on that case and answer anyway: it will be noted rather than dropped.
+      Do not discuss the cases with anyone else on the study until your answers are in.
+      If a source is unreachable, leave that case blank and say so in the reason box.
+      <br><br>
+      It takes about two hours. Your answers save in this browser as you go, so you can stop and come back.
+    </div>
+
+    <div id="cases"></div>
+
+    <div class="card gold">
+      <h2>Your details</h2>
+      <p class="lede" style="margin-bottom:14px">Needed so the study can record who produced the second read. Nothing is published without your say-so.</p>
+      <label class="fl" for="r-name">Your name</label>
+      <input id="r-name" type="text" placeholder="Full name" autocomplete="name">
+      <label class="fl" for="r-email">Email</label>
+      <input id="r-email" type="email" placeholder="Email" autocomplete="email">
+      <label class="fl" for="r-org">Organization (optional)</label>
+      <input id="r-org" type="text" placeholder="Organization" autocomplete="organization">
+      <label class="fl" for="r-fam">Prior familiarity with this study (optional)</label>
+      <textarea id="r-fam" placeholder="For example: none, or a sentence on how you know the person who collected the cases."></textarea>
+
+      <label class="chk core"><input type="checkbox" id="r-consent"><span>I agree to be contacted about this study and to my details being stored securely under the <a href="privacy.html#consent" id="r-terms-link">registration terms</a>. <span style="color:var(--text)">Your name is <b style="color:var(--ready-text);font-weight:600">not published</b> by ticking this.</span></span></label>
+      <div id="r-terms" style="display:none;border:1px solid var(--accent-dim);background:var(--surface2);padding:13px 14px;margin:0 0 10px;font-size:12px;color:var(--muted);line-height:1.6">Ticking the box means three things and no more: contact me about this study, store my details securely, and allow that record to travel with the project if the JRS assets are ever transferred to a successor. It does <b style="color:var(--text)">not</b> publish your name. Full detail in the <a href="privacy.html#consent" style="color:var(--accent)">Privacy Policy</a>.</div>
+
+      <label class="chk"><input type="checkbox" id="r-named"><span>Optional: you may name me in the paper as the independent second reader.</span></label>
+
+      <div id="msg"></div>
+      <button id="go" type="button">Submit my read &rarr;</button>
+      <p class="counter" id="count">0 of 10 answered</p>
+      <p class="fine">A partial return is still useful. If you can only do some, submit what you have.</p>
+    </div>
+  </main>
+
+  <section id="done" class="hidden">
+    <div class="eyebrow">Recorded</div>
+    <h1>Thank you</h1>
+    <p class="lede" id="done-line"></p>
+    <div class="card">
+      <p style="font-size:13.5px;color:var(--muted)">Your read is recorded against an anonymous slot. It will be compared with the original reads to produce an agreement statistic for the paper, and the comparison is reported whichever way it comes out. Nothing about you is published unless you ticked the optional box, and you can change that at any time by emailing <a href="mailto:info@jrsstandard.com">info@jrsstandard.com</a>.</p>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="fc">&copy; 2026 Phillip Wikes &middot; JRS&#8482;</div>
+</footer>
+
+<script>
+(function(){
+  var qs = new URLSearchParams(location.search);
+  var key = (qs.get('k') || '').replace(/[^a-z0-9]/gi, '').slice(0, 40);
+  var el = function(id){ return document.getElementById(id); };
+  var esc = function(x){ return String(x==null?'':x).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); };
+  var LS = 'jrs-recheck-' + key;
+  var DATA = null;
+  var state = {};
+
+  try { state = JSON.parse(localStorage.getItem(LS) || '{}'); } catch(e) { state = {}; }
+  function save(){ try { localStorage.setItem(LS, JSON.stringify(state)); } catch(e){} }
+
+  if (!key) {
+    el('head').textContent = 'This link is incomplete';
+    el('gate-msg').textContent = 'Use the full link you were sent. It ends in a code after k=.';
+    return;
+  }
+
+  fetch('/api/recheck?k=' + encodeURIComponent(key))
+    .then(function(r){ if (!r.ok) throw 0; return r.json(); })
+    .then(function(d){
+      if (!d || !d.found) throw 0;
+      DATA = d;
+      el('gate').classList.add('hidden');
+      el('app').classList.remove('hidden');
+      el('slot').textContent = d.slot;
+      render(d);
+      restore();
+      updateCount();
+    })
+    .catch(function(){
+      el('head').textContent = 'This link is not recognised';
+      el('gate-msg').textContent = 'Check that you copied the whole link. If it still does not open, email info@jrsstandard.com.';
+    });
+
+  function render(d){
+    var html = '';
+    d.cases.forEach(function(c){
+      html += '<section class="card" id="case-' + c.n + '">'
+        + '<div class="caseno">Case ' + c.n + ' of ' + d.cases.length + '</div>'
+        + '<div class="srcline"><b style="color:var(--text)">Source.</b> ' + linkify(c.source) + '</div>'
+        + '<div class="recline"><b style="color:var(--muted-soft);font-weight:500">What the record is.</b> ' + esc(c.record) + '</div>'
+        + '<div class="opts" data-case="' + c.n + '">';
+      d.labels.forEach(function(lab){
+        html += '<label><input type="radio" name="c' + c.n + '" value="' + esc(lab) + '"> ' + esc(lab) + '</label>';
+      });
+      html += '</div>'
+        + '<label class="fl" for="why-' + c.n + '">One sentence on what drove the call</label>'
+        + '<textarea id="why-' + c.n + '" data-case="' + c.n + '" placeholder="What was present, or what was missing."></textarea>'
+        + '<label class="chk knew"><input type="checkbox" id="knew-' + c.n + '" data-case="' + c.n + '"><span>I already knew how this case came out.</span></label>'
+        + '</section>';
+    });
+    el('cases').innerHTML = html;
+
+    el('cases').addEventListener('change', function(e){
+      var t = e.target;
+      if (t.type === 'radio') {
+        var n = t.closest('.opts').getAttribute('data-case');
+        state['label' + n] = t.value;
+        t.closest('.opts').querySelectorAll('label').forEach(function(l){ l.classList.remove('sel'); });
+        t.parentNode.classList.add('sel');
+        save(); updateCount();
+      } else if (t.type === 'checkbox' && t.getAttribute('data-case')) {
+        state['knew' + t.getAttribute('data-case')] = t.checked; save();
+      }
+    });
+    el('cases').addEventListener('input', function(e){
+      var t = e.target;
+      if (t.tagName === 'TEXTAREA' && t.getAttribute('data-case')) {
+        state['why' + t.getAttribute('data-case')] = t.value; save();
+      }
+    });
+  }
+
+  // Sources are plain text with a URL in them. Render the URL as a link without
+  // trusting the rest of the string.
+  function linkify(s){
+    var out = esc(s);
+    return out.replace(/(https?:\/\/[^\s<]+)/g, function(u){
+      return '<a href="' + u + '" target="_blank" rel="noopener">' + u + '</a>';
+    });
+  }
+
+  function restore(){
+    DATA.cases.forEach(function(c){
+      var lab = state['label' + c.n];
+      if (lab) {
+        var r = document.querySelector('input[name="c' + c.n + '"][value="' + lab + '"]');
+        if (r) { r.checked = true; r.parentNode.classList.add('sel'); }
+      }
+      var why = el('why-' + c.n); if (why && state['why' + c.n]) why.value = state['why' + c.n];
+      var kn = el('knew-' + c.n); if (kn && state['knew' + c.n]) kn.checked = true;
+    });
+    ['name','email','org','fam'].forEach(function(f){
+      var e2 = el('r-' + f); if (e2 && state['r_' + f]) e2.value = state['r_' + f];
+    });
+  }
+
+  ['name','email','org','fam'].forEach(function(f){
+    var e2 = el('r-' + f);
+    if (e2) e2.addEventListener('input', function(){ state['r_' + f] = e2.value; save(); });
+  });
+
+  function updateCount(){
+    if (!DATA) return;
+    var n = DATA.cases.filter(function(c){ return state['label' + c.n]; }).length;
+    el('count').textContent = n + ' of ' + DATA.cases.length + ' answered';
+  }
+
+  // Inline terms rather than a new window: the anchor sits inside the consent
+  // label, and in-app browsers block target="_blank" so the link reads as dead.
+  var tl = el('r-terms-link');
+  if (tl) tl.addEventListener('click', function(e){
+    e.preventDefault(); e.stopPropagation();
+    var p = el('r-terms');
+    if (!p) return;
+    var open = (p.style.display === 'none' || !p.style.display);
+    p.style.display = open ? 'block' : 'none';
+    tl.textContent = open ? 'hide the details' : 'registration terms';
+    if (open && p.scrollIntoView) p.scrollIntoView({ behavior:'smooth', block:'nearest' });
+  });
+
+  el('go').addEventListener('click', function(){
+    var m = el('msg'), go = el('go');
+    m.style.color = 'var(--review-text)';
+    var name = (el('r-name').value || '').trim();
+    var email = (el('r-email').value || '').trim();
+    if (!name) { m.textContent = 'Please enter your name.'; return; }
+    if (!email || email.indexOf('@') < 1 || email.indexOf('.') < 0) { m.textContent = 'Please enter a valid email address.'; return; }
+    if (!el('r-consent').checked) { m.textContent = 'Please tick the box to continue. Nothing is published by ticking it.'; return; }
+
+    var answers = DATA.cases.map(function(c){
+      return { label: state['label' + c.n] || '', reason: state['why' + c.n] || '',
+               knew_outcome: !!state['knew' + c.n] };
+    });
+    var answered = answers.filter(function(a){ return a.label; }).length;
+    if (answered === 0) { m.textContent = 'Please answer at least one case before submitting.'; return; }
+
+    go.disabled = true;
+    m.style.color = 'var(--muted)';
+    m.textContent = 'Recording your read...';
+
+    fetch('/api/recheck?k=' + encodeURIComponent(key), {
+      method: 'POST', headers: { 'Content-Type':'application/json' },
+      body: JSON.stringify({
+        name: name, email: email,
+        organization: (el('r-org').value || '').trim(),
+        familiarity: (el('r-fam').value || '').trim(),
+        answers: answers,
+        consent_core: true,
+        consent_named_in_paper: el('r-named').checked
+      })
+    })
+    .then(function(r){ if (!r.ok) throw 0; return r.json(); })
+    .then(function(d){
+      el('app').classList.add('hidden');
+      el('done').classList.remove('hidden');
+      el('done-line').textContent = 'Your read of ' + d.answered + ' of ' + d.total + ' cases is recorded.';
+      window.scrollTo(0,0);
+    })
+    .catch(function(){
+      m.style.color = 'var(--review-text)';
+      m.textContent = 'Could not record that just now. Your answers are still saved in this browser. Please try again, or email info@jrsstandard.com.';
+      go.disabled = false;
+    });
+  });
+})();
+</script>
+</body>
+</html>
