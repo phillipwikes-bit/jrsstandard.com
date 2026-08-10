@@ -94,7 +94,9 @@ function linkedIn(v){
   if (/^[a-zA-Z0-9._-]{3,100}$/.test(s)) return 'https://www.linkedin.com/in/' + s;
   if (!/^([a-z]{2,3}\.)?linkedin\.com\//i.test(s)) return '';
   if (/[<>"'\\]/.test(s)) return '';
-  return 'https://www.' + s.replace(/^www\./i, '');
+  // Only prepend www when there is no regional subdomain already: uk.linkedin.com
+  // must not become www.uk.linkedin.com, which is not a host that resolves.
+  return 'https://' + (/^linkedin\.com\//i.test(s) ? 'www.' : '') + s;
 }
 
 // Completion code. Derived from the submission time and a short random tail so
@@ -165,14 +167,39 @@ export default async function handler(req){
   if (answered === 0) return json({ error: 'no_answers' }, 400);
   if (b.consent_research !== true) return json({ error: 'consent_required' }, 400);
 
+  // Contact validation runs BEFORE the test-mode branch. Otherwise a malformed
+  // name or email returns 200 whenever a test tag is present, which means the
+  // validation cannot be verified by the audit that is supposed to verify it.
+  const wantsCert = b.want_certificate === true;
+  const certName  = clean(b.name, 200);
+  const certEmail = clean(b.email, 200);
+  if (wantsCert) {
+    if (!certName) return json({ error: 'name_required' }, 400);
+    if (!certEmail || certEmail.indexOf('@') < 1 || certEmail.indexOf('.') < 0) {
+      return json({ error: 'valid_email_required' }, 400);
+    }
+    if (b.consent_contact !== true) return json({ error: 'consent_contact_required' }, 400);
+  }
+
+  const wantsRec = b.want_recommendation === true;
+  const recName  = clean(b.rec_name, 200);
+  const recEmail = clean(b.rec_email, 200);
+  const recLi    = linkedIn(b.linkedin_url);
+  if (wantsRec) {
+    if (!recName) return json({ error: 'rec_name_required' }, 400);
+    if (!recEmail || recEmail.indexOf('@') < 1 || recEmail.indexOf('.') < 0) {
+      return json({ error: 'rec_valid_email_required' }, 400);
+    }
+  }
+
   // ROW 1: the anonymous research record. No identity of any kind.
   if (isCheck) {
     return json({ ok: true, recorded: false, check: true, answered: answered,
                   total: Object.keys(QUESTIONS).length,
-                  certificate: b.want_certificate === true,
-                  incentive: b.want_recommendation === true,
-                  incentive_linkedin_normalised: linkedIn(b.linkedin_url),
-                  code: b.want_certificate === true ? completionCode() : '' });
+                  certificate: wantsCert,
+                  incentive: wantsRec,
+                  incentive_linkedin_normalised: recLi,
+                  code: wantsCert ? completionCode() : '' });
   }
   try {
     await fetch(SB + '/rest/v1/interaction_events', {
@@ -196,16 +223,9 @@ export default async function handler(req){
   // ROW 2: identity, only if a certificate was asked for, and never with the
   // answers attached.
   let code = '';
-  const wantsCert = b.want_certificate === true;
   if (wantsCert) {
-    const name  = clean(b.name, 200);
-    const email = clean(b.email, 200);
-    if (!name) return json({ error: 'name_required', recorded: true }, 400);
-    if (!email || email.indexOf('@') < 1 || email.indexOf('.') < 0) {
-      return json({ error: 'valid_email_required', recorded: true }, 400);
-    }
-    if (b.consent_contact !== true) return json({ error: 'consent_contact_required', recorded: true }, 400);
-
+    const name  = certName;
+    const email = certEmail;
     code = completionCode();
     const payload = {
       kind: 'reviewer-cert',
@@ -243,16 +263,10 @@ export default async function handler(req){
   // so the two cannot be joined by any value, only by a coarse timestamp, and a
   // timestamp shared by every submission in the same minute is not an identifier.
   let incentive = false;
-  if (b.want_recommendation === true) {
-    const iName  = clean(b.rec_name, 200);
-    const iEmail = clean(b.rec_email, 200);
-    const iLi    = linkedIn(b.linkedin_url);
-
-    if (!iName) return json({ error: 'rec_name_required', recorded: true }, 400);
-    if (!iEmail || iEmail.indexOf('@') < 1 || iEmail.indexOf('.') < 0) {
-      return json({ error: 'rec_valid_email_required', recorded: true }, 400);
-    }
-
+  if (wantsRec) {
+    const iName  = recName;
+    const iEmail = recEmail;
+    const iLi    = recLi;
     const iPayload = {
       kind: 'reviewer-eval-incentive',
       request: 'linkedin-peer-reviewer-recommendation',
