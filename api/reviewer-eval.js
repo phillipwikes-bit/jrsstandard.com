@@ -123,10 +123,38 @@ export default async function handler(req){
 
   const env = (typeof process !== 'undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
+  const url = new URL(req.url);
 
   // GET serves the instrument, so the page renders from one definition rather
   // than duplicating the question set in markup.
+  //
+  // It also logs the open. Without this, "how many people clicked the
+  // evaluation" was unanswerable: the first event the system could see was a
+  // completed submission, so a page nobody finished and a page nobody opened
+  // looked identical. The event carries no answer and no identity, only the
+  // source tag, country and device, and it is guarded against deploy checks.
   if (req.method === 'GET') {
+    const gsrc = String(url.searchParams.get('src') || '').toLowerCase().replace(/[^a-z0-9_-]/g, '');
+    const gCheck = gsrc === 'owner' || url.searchParams.get('owner') === '1'
+                || gsrc === 'verify' || gsrc === 'test' || gsrc === 'selftest'
+                || gsrc.indexOf('deploytest') === 0;
+    if (SERVICE && !gCheck) {
+      try {
+        const ua = String(req.headers.get('user-agent') || '').slice(0, 300);
+        await fetch(SB + '/rest/v1/interaction_events', {
+          method: 'POST',
+          headers: { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE,
+                     'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+          body: JSON.stringify({ source: 'eval-view', type: 'view', payload: {
+            src: gsrc,
+            country: String(req.headers.get('x-vercel-ip-country') || '')
+              .toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2) || '',
+            user_agent: ua,
+            is_mobile: /Mobi|Android|iPhone|iPad|iPod|Windows Phone|IEMobile|BlackBerry|Opera Mini/i.test(ua)
+          }})
+        });
+      } catch (e) { /* a view ping must never block the instrument loading */ }
+    }
     return json({ ok: true, questions: QUESTIONS, sectors: SECTORS, sizes: SIZES, roles: ROLES });
   }
 

@@ -148,6 +148,36 @@ export default async function handler(req){
   let downloads = 0;
   events.forEach(function(e){ if (e.type === 'download' && e.source !== 'honor-cert') downloads++; });
 
+  // THE REVIEWER EVALUATION FUNNEL. Three numbers, and they answer three
+  // different questions that were previously collapsed into one:
+  //
+  //   opened     how many people clicked through to the instrument
+  //   completed  how many submitted answers at all, and how many answered all 9
+  //   contacts   how many gave details that can transfer with the asset
+  //
+  // Opened counts events rather than distinct people, because the evaluation
+  // page has no per-person key: there is nothing to deduplicate on and inventing
+  // one would mean fingerprinting the reader, which the rest of this system
+  // deliberately does not do. Stated here rather than implied.
+  let evalOpened = 0;
+  events.forEach(function(e){ if (e.source === 'eval-view' && e.type === 'view') evalOpened++; });
+
+  let evalSubmitted = 0, evalFull = 0, evalAnswerSum = 0;
+  events.forEach(function(e){
+    if (e.source !== 'reviewer-eval' || e.type !== 'evaluation') return;
+    const p = e.payload || {};
+    evalSubmitted++;
+    evalAnswerSum += (p.answered_count || 0);
+    if ((p.answered_count || 0) >= (p.total_questions || 9)) evalFull++;
+  });
+
+  let evalIncentive = 0, evalCert = 0;
+  contacts.forEach(function(c){
+    if (c.source === 'reviewer-eval-incentive') evalIncentive++;
+    if (c.source === 'reviewer-cert') evalCert++;
+  });
+  const evalContacts = evalIncentive + evalCert;
+
   return json({
     generated_at: new Date().toISOString(),
     note: 'Aggregate counts only. No name, email, organization or key is exposed by this endpoint. '
@@ -195,6 +225,25 @@ export default async function handler(req){
       case_corpora: corpora,
       note: 'A completer graded all 24 records in their set. Counted live from the '
           + 'progress views, not from a roster file.'
+    },
+
+    reviewer_evaluation_funnel: {
+      opened: evalOpened,
+      submitted: evalSubmitted,
+      completed_all_questions: evalFull,
+      mean_questions_answered: evalSubmitted ? Math.round((evalAnswerSum / evalSubmitted) * 10) / 10 : 0,
+      contacts_captured: evalContacts,
+      contacts_via_recommendation: evalIncentive,
+      contacts_via_certificate: evalCert,
+      open_to_submit_pct: pct(evalSubmitted, evalOpened),
+      submit_to_contact_pct: pct(evalContacts, evalSubmitted),
+      open_to_contact_pct: pct(evalContacts, evalOpened),
+      note: 'opened counts page opens, not distinct people: the evaluation page carries no '
+          + 'per-person key and inventing one would mean fingerprinting the reader. '
+          + 'contacts_captured is the number of transferable contact records produced, which '
+          + 'is the figure that matters for an asset sale. The answer rows and the contact '
+          + 'rows are stored in different tables with no shared identifier, so these two '
+          + 'counts cannot be joined to say which respondent gave which answers.'
     },
 
     open_engagement: {

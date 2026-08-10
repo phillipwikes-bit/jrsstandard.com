@@ -214,7 +214,13 @@ button:disabled{opacity:.55;cursor:default}
     } catch(e) { return 0; }
   }
 
-  fetch('/api/reviewer-eval')
+  var pageSrc = '';
+  try { pageSrc = (new URLSearchParams(location.search)).get('src') || ''; } catch(e){}
+  var ownerFlag = '';
+  try { ownerFlag = (new URLSearchParams(location.search)).get('owner') || ''; } catch(e){}
+
+  fetch('/api/reviewer-eval?src=' + encodeURIComponent(pageSrc)
+        + (ownerFlag ? '&owner=' + encodeURIComponent(ownerFlag) : ''))
     .then(function(r){ if (!r.ok) throw 0; return r.json(); })
     .then(function(d){ META = d; render(d); restore(); updateCount(); })
     .catch(function(){
@@ -368,8 +374,7 @@ button:disabled{opacity:.55;cursor:default}
     m.style.color = 'var(--muted)';
     m.textContent = 'Recording your evaluation...';
 
-    var src = '';
-    try { src = (new URLSearchParams(location.search)).get('src') || ''; } catch(e){}
+    var src = pageSrc;
 
     fetch('/api/reviewer-eval', {
       method: 'POST', headers: { 'Content-Type':'application/json' },
