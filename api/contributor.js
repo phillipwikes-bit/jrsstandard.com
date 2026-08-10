@@ -138,6 +138,16 @@ async function purgeTestRows(H){
         { method: 'DELETE', headers: H });
     }
   } catch (e) { /* best-effort */ }
+  // Reviewer-evaluation rows carrying a deploy-check tag. The guard in
+  // /api/reviewer-eval stops new ones, but a row written before that guard
+  // deployed would otherwise sit permanently in the research baseline, which is
+  // the one table in the programme that must hold only real answers.
+  try {
+    for (const tag of ['selftest', 'test', 'verify', 'owner']) {
+      await fetch(SB + '/rest/v1/interaction_events?source=eq.reviewer-eval&payload->>src=eq.' + tag,
+        { method: 'DELETE', headers: H });
+    }
+  } catch (e) { /* best-effort */ }
 }
 
 // Results block. Pending state still carries the figures already published on
