@@ -125,10 +125,24 @@ export default async function handler(req){
   const size   = oneOf(b.org_size, SIZES);
   const role   = oneOf(b.role, ROLES);
 
+  // A smoke test of this endpoint would otherwise write a fabricated row into the
+  // research baseline, which is the one table in the programme that must contain
+  // only real answers. src=selftest, test, verify, owner or deploytest* validates
+  // the whole path and writes nothing.
+  const srcTag = clean(b.src, 40).toLowerCase().replace(/[^a-z0-9_-]/g, '');
+  const isCheck = srcTag === 'owner' || srcTag === 'verify' || srcTag === 'test'
+               || srcTag === 'selftest' || srcTag.indexOf('deploytest') === 0;
+
   if (answered === 0) return json({ error: 'no_answers' }, 400);
   if (b.consent_research !== true) return json({ error: 'consent_required' }, 400);
 
   // ROW 1: the anonymous research record. No identity of any kind.
+  if (isCheck) {
+    return json({ ok: true, recorded: false, check: true, answered: answered,
+                  total: Object.keys(QUESTIONS).length,
+                  certificate: b.want_certificate === true,
+                  code: b.want_certificate === true ? completionCode() : '' });
+  }
   try {
     await fetch(SB + '/rest/v1/interaction_events', {
       method: 'POST', headers: H,
