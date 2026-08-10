@@ -159,10 +159,15 @@ tr.today td{background:rgba(93,191,130,.07)}
     <div class="card"><div class="cv" id="ev-submitted">&middot;</div><div class="ck">Submitted</div></div>
     <div class="card"><div class="cv" id="ev-complete">&middot;</div><div class="ck">Answered all nine</div></div>
     <div class="card"><div class="cv" id="ev-contacts">&middot;</div><div class="ck">Contacts captured</div></div>
+    <div class="card"><div class="cv" id="ev-countries">&middot;</div><div class="ck">Countries reached</div></div>
   </div>
   <div class="chart">
     <h2>Where the funnel loses people</h2>
     <div id="evfunnel">Loading&hellip;</div>
+  </div>
+  <div class="chart">
+    <h2>Country of reviewer</h2>
+    <div id="evcountries">Loading&hellip;</div>
   </div>
   <div class="note" id="ev-note">Evaluation activity will appear here once the first reviewer opens the instrument.</div>
 
@@ -545,6 +550,40 @@ function loadEvalFunnel(){
        el.innerHTML=html;
      }
 
+     // Country of reviewer, per stage. Opens, submissions and contacts are shown
+     // side by side rather than as one total, because a country that opens and
+     // never submits is a different signal from one that converts.
+     var cOpen=(f.countries_opened||[]), cSub=(f.countries_submitted||[]), cCon=(f.countries_contacts||[]);
+     document.getElementById('ev-countries').textContent=(f.distinct_countries_opened||0);
+     var idx={};
+     function add(list,key){ list.forEach(function(x){ idx[x.country]=idx[x.country]||{country:x.country,opened:0,submitted:0,contacts:0}; idx[x.country][key]=x.count; }); }
+     add(cOpen,'opened'); add(cSub,'submitted'); add(cCon,'contacts');
+     var rows=Object.keys(idx).map(function(k){ return idx[k]; })
+       .sort(function(a,b){ return (b.opened-a.opened) || (b.submitted-a.submitted) || (a.country<b.country?-1:1); });
+     var ce=document.getElementById('evcountries');
+     if(!rows.length){
+       ce.innerHTML='<div style="color:var(--muted-soft);font-size:12px">No country recorded yet. The two-letter code is written on every evaluation row from the edge, so this fills in with the first open.</div>';
+     } else {
+       var cmax=1; rows.forEach(function(r){ if(r.opened>cmax) cmax=r.opened; });
+       var ch='<div style="display:flex;gap:10px;font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:8px">'
+         +'<span style="width:52px;flex:0 0 auto">Country</span><span style="flex:1">Opened</span>'
+         +'<span style="width:74px;flex:0 0 auto;text-align:right">Submitted</span>'
+         +'<span style="width:64px;flex:0 0 auto;text-align:right">Contacts</span></div>';
+       rows.forEach(function(r){
+         var w=Math.max(4,Math.round((r.opened/cmax)*100));
+         ch+='<div style="display:flex;align-items:center;gap:10px;margin:4px 0">'
+           +'<span style="font-family:\'JetBrains Mono\',monospace;font-size:11px;color:var(--text);width:52px;flex:0 0 auto">'+esc(r.country)+'</span>'
+           +'<span style="flex:1;display:flex;align-items:center;gap:8px">'
+             +'<span style="background:var(--accent);height:11px;width:'+w+'%;max-width:60%;display:inline-block"></span>'
+             +'<span style="font-size:12px;color:var(--muted)">'+r.opened+'</span></span>'
+           +'<span style="width:74px;flex:0 0 auto;text-align:right;font-size:12px;color:var(--muted)">'+r.submitted+'</span>'
+           +'<span style="width:64px;flex:0 0 auto;text-align:right;font-size:12px;color:'+(r.contacts?'var(--ready-text)':'var(--muted-soft)')+'">'+r.contacts+'</span></div>';
+       });
+       ch+='<div style="margin-top:11px;font-size:11.5px;color:var(--muted-soft);line-height:1.6">'
+         +esc(f.country_note||'')+'</div>';
+       ce.innerHTML=ch;
+     }
+
      document.getElementById('ev-note').textContent=
        (f.opened||0)+' opened, '+(f.submitted||0)+' submitted ('+(f.open_to_submit_pct||0)+'% of opens), '
        +(f.completed_all_questions||0)+' answered all nine, mean '+(f.mean_questions_answered||0)+' of 9 per submission. '
@@ -553,7 +592,11 @@ function loadEvalFunnel(){
        +(f.submit_to_contact_pct||0)+'% of submissions and '+(f.open_to_contact_pct||0)+'% of opens. '
        +'Opens count page opens rather than distinct people: the evaluation page carries no per-person key.';
    })
-   .catch(function(){ document.getElementById('ev-note').textContent='Evaluation activity will appear here once the first reviewer opens the instrument.'; });
+   .catch(function(){
+     document.getElementById('ev-note').textContent='Evaluation activity will appear here once the first reviewer opens the instrument.';
+     var ce=document.getElementById('evcountries');
+     if(ce) ce.innerHTML='<div style="color:var(--muted-soft);font-size:12px">Country data will appear here with the first open.</div>';
+   });
 }
 function loadContributors(){
   return fetch('/api/contributor-stats')
