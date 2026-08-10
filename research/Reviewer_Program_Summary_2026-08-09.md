@@ -4,6 +4,38 @@
 
 ---
 
+## When contacts get collected
+
+**Four moments. Only four. Everything else in this programme collects nothing about a person.**
+
+| # | Moment | What is captured | Required? |
+|---|---|---|---|
+| 1 | Registering to unlock modules 2 to 6 | Name, work email | Yes, to see modules 2 to 6. Module 1 needs nothing |
+| 2 | Ticking **Issue me a certificate** at the end of the evaluation | Name, printed title, work email, organization | No. Off by default |
+| 3 | Ticking **Request a LinkedIn Peer Reviewer Recommendation** at the end of the evaluation | Name, work email, LinkedIn URL | No. Off by default |
+| 4 | Running the full record check on `/pilot` | Identity carried from the access gate, plus what the diagnostic found | No. The one-record test above it asks for nothing |
+
+### The single most important line in this document
+
+**Answering the nine questions collects nothing about you.** A person can open the evaluation, answer all nine, hit submit, and leave no name, no email and no contact record of any kind. That is not an oversight. It is the reason the answers are worth having: question 2 asks whether their own employer has a formal second reader, and a name attached to that answer buys a careful answer instead of a true one.
+
+### So where do contacts actually come from?
+
+Moments 2 and 3 sit side by side on the same screen, both unticked, both at the foot of the evaluation. A respondent can tick neither, either, or both.
+
+- **Neither ticked** → one anonymous answer row. Research value, no contact.
+- **Certificate ticked** → answer row, plus a contact row with a completion code.
+- **Recommendation ticked** → answer row, plus a contact row with a LinkedIn URL.
+- **Both ticked** → answer row, plus **two** contact rows, which is why the funnel counts them separately.
+
+The recommendation tick exists because before it, a respondent who did not want a certificate produced a data point and nothing that transfers with the asset.
+
+### There is no registration link on the evaluation page
+
+The evaluation never sends anyone to a gate and never asks anyone to register. The only required tick on that page is consent to anonymous research use of the answers, and it captures no identity.
+
+---
+
 ## What it is
 
 A free, six-module self-paced training in the five JRS review conditions, ending in an anonymized reviewer evaluation and a certificate. It is an open educational standard, not a licence or an accreditation, and the pages say so in those words.
@@ -18,7 +50,7 @@ A free, six-module self-paced training in the five JRS review conditions, ending
 | 4 | Submit the reviewer evaluation | Nine questions, about four minutes |
 | 5 | Collect the certificate | Optional. Name and title as they should print |
 
-There is also an optional exchange offered at the end of the evaluation, described in the next section, which does not require the training or the certificate.
+Steps 4 and 5 can be taken without steps 1 to 3. The evaluation is a standalone link, and the two optional contact ticks sit on it.
 
 ## The six modules
 
@@ -56,8 +88,6 @@ The programme can already state how consistently the five conditions are applied
 Context captured alongside: function, sector, and a coarse organization size. All three optional, none of them identifying an employer.
 
 **Why this is the asset piece.** Questions 1, 2, 3 and 8 measure whether the control this standard describes exists anywhere today. Questions 5 and 6 measure how fast the problem is arriving. Question 9 is a stated demand signal from named professional functions. A buyer can price a market they can see the shape of; they cannot price an assertion.
-
----
 
 ---
 
@@ -104,7 +134,7 @@ Four numbers, answering four different questions that were previously collapsed 
 
 ---
 
-## Two unlinked rows: the design decision the whole instrument rests on
+## Three unlinked rows: the design decision the whole instrument rests on
 
 A submission writes up to **three separate records that share nothing linking them**.
 
