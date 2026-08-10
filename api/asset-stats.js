@@ -178,6 +178,45 @@ export default async function handler(req){
   });
   const evalContacts = evalIncentive + evalCert;
 
+  // COUNTRY OF REVIEWER, at each stage of the funnel.
+  //
+  // The two-letter code has been written on every one of these rows since they
+  // were built, from the Vercel edge header, and it has never been surfaced. It
+  // is the one dimension that tells a buyer whether the demand for this standard
+  // is domestic or international, which is a different question from where the
+  // research panel came from and cannot be answered by the panel roster.
+  //
+  // Counts only, per stage. Answers are NOT cross-tabulated by country here and
+  // must not be: with a handful of responses, "the single respondent from
+  // Iceland says their employer has no second reader" is a re-identification,
+  // and the whole instrument depends on that being impossible.
+  function tally(rows, pick){
+    const m = {};
+    rows.forEach(function(r){
+      const c = pick(r);
+      if (!c) return;
+      m[c] = (m[c] || 0) + 1;
+    });
+    return Object.keys(m).sort(function(a, b){ return m[b] - m[a] || (a < b ? -1 : 1); })
+      .map(function(k){ return { country: k, count: m[k] }; });
+  }
+
+  const evalOpenCountries = tally(
+    events.filter(function(e){ return e.source === 'eval-view' && e.type === 'view'; }),
+    function(e){ return (e.payload || {}).country; });
+
+  const evalSubmitCountries = tally(
+    events.filter(function(e){ return e.source === 'reviewer-eval' && e.type === 'evaluation'; }),
+    function(e){ return (e.payload || {}).country; });
+
+  const evalContactCountries = tally(
+    contacts.filter(function(c){ return c.source === 'reviewer-eval-incentive' || c.source === 'reviewer-cert'; }),
+    function(c){
+      let m = null;
+      try { m = JSON.parse(c.message || '{}'); } catch (e) { m = null; }
+      return m && m.country;
+    });
+
   return json({
     generated_at: new Date().toISOString(),
     note: 'Aggregate counts only. No name, email, organization or key is exposed by this endpoint. '
@@ -238,6 +277,15 @@ export default async function handler(req){
       open_to_submit_pct: pct(evalSubmitted, evalOpened),
       submit_to_contact_pct: pct(evalContacts, evalSubmitted),
       open_to_contact_pct: pct(evalContacts, evalOpened),
+      countries_opened: evalOpenCountries,
+      countries_submitted: evalSubmitCountries,
+      countries_contacts: evalContactCountries,
+      distinct_countries_opened: evalOpenCountries.length,
+      distinct_countries_submitted: evalSubmitCountries.length,
+      country_note: 'Two-letter code from the edge, per stage. Counts only. Answers are '
+          + 'deliberately not broken down by country: with a handful of responses that '
+          + 'becomes a re-identification, and the instrument depends on that being '
+          + 'impossible. Where a reviewer sits is not necessarily where their employer is.',
       note: 'opened counts page opens, not distinct people: the evaluation page carries no '
           + 'per-person key and inventing one would mean fingerprinting the reader. '
           + 'contacts_captured is the number of transferable contact records produced, which '
