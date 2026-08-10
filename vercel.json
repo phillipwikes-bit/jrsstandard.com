@@ -8,7 +8,7 @@
   "redirects": [
     {
       "source": "/reviewer",
-      "destination": "/training.html?access=reviewer&focus=1",
+      "destination": "/reviewer/index.html",
       "permanent": false
     },
     {
@@ -299,6 +299,21 @@
     {
       "source": "/asset-stats",
       "destination": "/api/asset-stats",
+      "permanent": false
+    },
+    {
+      "source": "/reviewer/",
+      "destination": "/reviewer/index.html",
+      "permanent": false
+    },
+    {
+      "source": "/evaluation",
+      "destination": "/reviewer/evaluation.html",
+      "permanent": false
+    },
+    {
+      "source": "/completion",
+      "destination": "/reviewer/completion.html",
       "permanent": false
     }
   ],

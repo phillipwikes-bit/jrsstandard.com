@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reviewer Evaluation | JRS&#8482; Justification Review Standard</title>
+<meta name="description" content="A short anonymized baseline on how records are reviewed where you work. Nine questions, about four minutes. Your answers are stored with no name attached.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://jrsstandard.com/reviewer/evaluation.html" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NVYHJ7BJ92"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NVYHJ7BJ92');</script>
+<style>
+:root{
+  --bg:#050505; --surface:#121212; --surface2:#1A1A1A;
+  --accent:#BE9447; --accent-dim:#7A5E28;
+  --muted:#B3B3B3; --muted-soft:#8A8A8A; --text:#F2F2F2;
+  --rule:#2A2A2A; --stop-text:#E88080;
+  --review-text:#D4A055; --ready-text:#5DBF82;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.7;min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.wrap{max-width:720px;width:100%;margin:0 auto;padding:0 22px 60px;flex:1}
+.site-header{border-bottom:1px solid var(--rule);padding:0 22px}
+.site-header-inner{max-width:720px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0;flex-wrap:wrap}
+.wordmark{font-family:'Bodoni Moda',serif;font-size:22px;color:var(--accent);text-decoration:none}
+.header-meta{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);text-align:right}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:34px 0 12px}
+h1{font-family:'Bodoni Moda',serif;font-size:30px;font-weight:400;line-height:1.18;margin-bottom:12px}
+h2{font-family:'Bodoni Moda',serif;font-size:20px;font-weight:400;line-height:1.25;margin-bottom:10px}
+.sub{font-size:14.5px;color:var(--muted);line-height:1.68;margin-bottom:16px}
+.privacy{border-left:3px solid var(--ready-text);background:var(--surface);padding:15px 17px;margin:18px 0;font-size:12.5px;color:var(--muted);line-height:1.65}
+.privacy b{color:var(--ready-text)}
+.card{border:1px solid var(--rule);background:var(--surface);padding:22px 24px;margin:16px 0}
+.card.gold{border-color:var(--accent)}
+.q{margin-bottom:22px}
+.q:last-child{margin-bottom:0}
+.q .n{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:7px}
+.q .t{font-size:14.5px;color:var(--text);line-height:1.55;margin-bottom:11px}
+.opts{display:flex;flex-direction:column;gap:7px}
+.opts label{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--muted);line-height:1.5;border:1px solid var(--rule);background:var(--surface2);padding:11px 13px;cursor:pointer}
+.opts label.sel{border-color:var(--accent);color:var(--text)}
+.opts input{width:auto;margin:3px 0 0;flex:0 0 auto}
+.scale{display:flex;gap:7px;flex-wrap:wrap}
+.scale label{flex:1;min-width:56px;justify-content:center;text-align:center}
+.scale-ends{display:flex;justify-content:space-between;font-size:11px;color:var(--muted-soft);margin-top:7px}
+label.fl{display:block;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px}
+input[type=text],input[type=email],select{width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;font-family:'Inter',sans-serif;margin-bottom:12px}
+input:focus,select:focus{outline:none;border-color:var(--accent-dim)}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:12px;color:var(--muted);line-height:1.55;margin-bottom:11px;cursor:pointer}
+.chk input{width:auto;margin:3px 0 0;flex:0 0 auto}
+.chk.core{border:1px solid var(--accent-dim);background:var(--surface2);padding:13px 14px}
+button{width:100%;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:15px;cursor:pointer;font-weight:600}
+button:disabled{opacity:.55;cursor:default}
+#msg{font-size:12.5px;min-height:18px;margin:10px 0 6px;color:var(--review-text)}
+.trust{font-size:11.5px;color:var(--ready-text);text-align:center;margin-top:10px}
+.counter{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-align:center;margin-top:9px}
+.fine{font-size:10.5px;color:var(--muted-soft);line-height:1.55;margin-top:12px}
+.site-footer{border-top:1px solid var(--rule);padding:22px;text-align:center}
+.fc{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft)}
+.fc a{color:inherit;text-decoration:none}
+.hidden{display:none}
+@media(max-width:600px){h1{font-size:25px}}
+</style>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="site-header-inner">
+    <a href="/index.html" class="wordmark">JRS<span style="font-size:10px;vertical-align:super;position:relative;top:-3px;">&#8482;</span></a>
+    <div class="header-meta">Justification Review Standard<br>Reviewer Evaluation</div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section id="intro">
+    <div class="eyebrow">Step 4 of 5 &middot; Reviewer Evaluation</div>
+    <h1>How are records reviewed where you work?</h1>
+    <p class="sub">Nine questions, about four minutes. This is the research contribution the certificate records. The programme can already say how consistently the five conditions are applied under study conditions; it cannot yet say what record review actually looks like inside working organizations, and that is the gap these answers fill.</p>
+
+    <div class="privacy">
+      <b>Your answers are stored with no name attached.</b> They are written as an anonymous row carrying only the answers, your sector, a coarse organization size and a two-letter country code. No name, no email, no employer and no free text goes into that row.
+      <br><br>
+      If you want a certificate, your name and email are written as a <b style="color:var(--text)">separate</b> record that does not contain your answers. The two share nothing that links them. You are not trading candour for a certificate, and nothing you say here can be traced back to you.
+      <br><br>
+      Please answer for the organization as it is, not as policy says it should be. A guarded answer is worth less than no answer.
+    </div>
+  </section>
+
+  <form id="form" autocomplete="off">
+    <div class="card">
+      <h2>Your context</h2>
+      <p class="sub" style="font-size:13px;margin-bottom:14px">All three are optional and all three are coarse on purpose. None of them identifies an employer.</p>
+      <label class="fl" for="f-role">Your function</label>
+      <select id="f-role"></select>
+      <label class="fl" for="f-sector">Sector</label>
+      <select id="f-sector"></select>
+      <label class="fl" for="f-size">Organization size</label>
+      <select id="f-size"></select>
+    </div>
+
+    <div class="card" id="questions"></div>
+
+    <div class="card gold">
+      <h2>Certificate</h2>
+      <p class="sub" style="font-size:13.5px">Optional. Tick this and the next screen issues a certificate in the name you give, with a LinkedIn entry you can add to your profile.</p>
+
+      <label class="chk core"><input type="checkbox" id="want-cert"><span>Issue me a certificate for completing the training and this evaluation.</span></label>
+
+      <div id="cert-fields" class="hidden">
+        <label class="fl" for="f-name">Name, exactly as it should be printed</label>
+        <input id="f-name" type="text" placeholder="Full name">
+        <label class="fl" for="f-title">Title, exactly as it should be printed (optional)</label>
+        <input id="f-title" type="text" placeholder="Leave blank to print your name alone">
+        <label class="fl" for="f-email">Work email</label>
+        <input id="f-email" type="email" placeholder="Work email">
+        <label class="fl" for="f-org">Organization (optional)</label>
+        <input id="f-org" type="text" placeholder="Organization">
+        <label class="chk core"><input type="checkbox" id="c-contact"><span>I agree to be contacted about the JRS standard and to my details being stored securely under the <a href="/privacy.html#consent" id="terms-link">registration terms</a>. <span style="color:var(--text)">Your name is <b style="color:var(--ready-text);font-weight:600">not published</b> by ticking this.</span></span></label>
+        <div id="terms-panel" style="display:none;border:1px solid var(--accent-dim);background:var(--surface2);padding:13px 14px;margin:0 0 11px;font-size:12px;color:var(--muted);line-height:1.6">Ticking the box means three things and no more: contact me about the JRS project, store my details securely, and allow that record to travel with the project if the JRS assets are ever transferred to a successor. It does <b style="color:var(--text)">not</b> publish your name. Full detail in the <a href="/privacy.html#consent" style="color:var(--accent)">Privacy Policy</a>.</div>
+        <label class="chk"><input type="checkbox" id="c-public"><span>Optional: list my name publicly as a JRS-trained reviewer.</span></label>
+      </div>
+
+      <label class="chk core" style="margin-top:4px"><input type="checkbox" id="c-research"><span>My answers above may be used, anonymously and in aggregate only, in JRS research and reporting. (Required)</span></label>
+
+      <div id="msg"></div>
+      <button id="go" type="button">Submit my evaluation &rarr;</button>
+      <p class="counter" id="count">0 of 9 answered</p>
+      <p class="trust">Free &middot; No credit card &middot; Answers stored with no name attached</p>
+      <p class="fine">A partial return is still useful. If a question does not apply to your organization, leave it blank rather than guessing.</p>
+    </div>
+  </form>
+
+  <section id="done" class="hidden">
+    <div class="eyebrow">Recorded</div>
+    <h1>Thank you</h1>
+    <p class="sub" id="done-line"></p>
+    <div class="card gold" id="cert-block"></div>
+    <div class="card">
+      <p class="sub" style="margin:0">Your answers are now part of the anonymized baseline reported on the <a href="/research.html">research page</a>. Individual responses are never published, and the aggregate is reported whichever way it comes out.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="fc">&copy; 2026 Phillip Wikes &nbsp;&middot;&nbsp; JRS&#8482; &nbsp;&middot;&nbsp; <a href="/privacy.html">Privacy</a> &nbsp;&middot;&nbsp; <a href="/reviewer/">Training</a></div>
+</footer>
+
+<script>
+(function(){
+  var el = function(id){ return document.getElementById(id); };
+  var esc = function(x){ return String(x==null?'':x).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); };
+  var LS = 'jrs-reviewer-eval';
+  var state = {};
+  var META = null;
+
+  // The wording of each question lives here; the OPTIONS live in the endpoint, so
+  // one file is the record of what was asked and the page cannot quietly submit a
+  // different instrument.
+  var TEXT = {
+    q_readers:     'Before a consequential record is finalized where you work, how many people read it?',
+    q_second:      'Is there a formal second reader before finalization?',
+    q_returned:    'How often is a record returned to its drafter because the basis for a conclusion is missing or unclear?',
+    q_basis:       'When a conclusion is reached, is the basis for it recorded in the file at the time?',
+    q_ai:          'Is AI-assisted drafting used on records where you work?',
+    q_ai_policy:   'Is there a written policy covering AI-assisted drafting of records?',
+    q_reconstruct: 'If a record from two years ago were questioned today, how confident are you that the file alone would explain why the decision was made?',
+    q_audited:     'Has record documentation quality been audited or sampled where you work?',
+    q_useful:      'How useful would a pre-finalization review of the five conditions be in your workflow?'
+  };
+  var SCALE_ENDS = { q_useful: ['1 = not usable', '5 = highly usable'] };
+
+  try { state = JSON.parse(localStorage.getItem(LS) || '{}'); } catch(e) { state = {}; }
+  function save(){ try { localStorage.setItem(LS, JSON.stringify(state)); } catch(e){} }
+
+  function modulesDone(){
+    try {
+      var p = JSON.parse(localStorage.getItem('jrs-training-progress') || '{}');
+      var n = 0;
+      for (var i = 0; i < 6; i++) if (p[i]) n++;
+      return n;
+    } catch(e) { return 0; }
+  }
+
+  fetch('/api/reviewer-eval')
+    .then(function(r){ if (!r.ok) throw 0; return r.json(); })
+    .then(function(d){ META = d; render(d); restore(); updateCount(); })
+    .catch(function(){
+      el('msg').textContent = 'Could not load the evaluation just now. Please reload, or email info@jrsstandard.com.';
+    });
+
+  function fill(sel, list){
+    var h = '<option value="">Prefer not to say</option>';
+    list.forEach(function(v){ if (v !== 'Prefer not to say') h += '<option>' + esc(v) + '</option>'; });
+    sel.innerHTML = h;
+  }
+
+  function render(d){
+    fill(el('f-role'), d.roles);
+    fill(el('f-sector'), d.sectors);
+    fill(el('f-size'), d.sizes);
+
+    var keys = Object.keys(d.questions);
+    var h = '<h2>The nine questions</h2>';
+    keys.forEach(function(k, i){
+      var isScale = !!SCALE_ENDS[k];
+      h += '<div class="q" data-q="' + k + '">'
+         + '<div class="n">Question ' + (i + 1) + ' of ' + keys.length + '</div>'
+         + '<div class="t">' + esc(TEXT[k] || k) + '</div>'
+         + '<div class="opts' + (isScale ? ' scale' : '') + '" data-key="' + k + '">';
+      d.questions[k].forEach(function(opt){
+        h += '<label><input type="radio" name="' + k + '" value="' + esc(opt) + '"><span>' + esc(opt) + '</span></label>';
+      });
+      h += '</div>';
+      if (isScale) {
+        h += '<div class="scale-ends"><span>' + esc(SCALE_ENDS[k][0]) + '</span><span>' + esc(SCALE_ENDS[k][1]) + '</span></div>';
+      }
+      h += '</div>';
+    });
+    el('questions').innerHTML = h;
+    el('count').textContent = '0 of ' + keys.length + ' answered';
+
+    el('questions').addEventListener('change', function(e){
+      var t = e.target;
+      if (t.type !== 'radio') return;
+      var box = t.closest('.opts');
+      state[box.getAttribute('data-key')] = t.value;
+      box.querySelectorAll('label').forEach(function(l){ l.classList.remove('sel'); });
+      t.closest('label').classList.add('sel');
+      save(); updateCount();
+    });
+  }
+
+  ['role','sector','size'].forEach(function(f){
+    var e2 = el('f-' + f);
+    if (e2) e2.addEventListener('change', function(){ state['meta_' + f] = e2.value; save(); });
+  });
+  ['name','title','email','org'].forEach(function(f){
+    var e2 = el('f-' + f);
+    if (e2) e2.addEventListener('input', function(){ state['cert_' + f] = e2.value; save(); });
+  });
+
+  function restore(){
+    if (!META) return;
+    Object.keys(META.questions).forEach(function(k){
+      var v = state[k];
+      if (!v) return;
+      var r = document.querySelector('input[name="' + k + '"][value="' + v.replace(/"/g, '\\"') + '"]');
+      if (r) { r.checked = true; r.closest('label').classList.add('sel'); }
+    });
+    ['role','sector','size'].forEach(function(f){
+      if (state['meta_' + f]) el('f-' + f).value = state['meta_' + f];
+    });
+    ['name','title','email','org'].forEach(function(f){
+      if (state['cert_' + f]) el('f-' + f).value = state['cert_' + f];
+    });
+  }
+
+  function updateCount(){
+    if (!META) return;
+    var keys = Object.keys(META.questions);
+    var n = keys.filter(function(k){ return state[k]; }).length;
+    el('count').textContent = n + ' of ' + keys.length + ' answered';
+  }
+
+  el('want-cert').addEventListener('change', function(){
+    el('cert-fields').classList.toggle('hidden', !this.checked);
+  });
+
+  // Inline terms rather than a new window: the anchor sits inside the consent
+  // label, and in-app browsers block target="_blank" so the link reads as dead.
+  var tl = el('terms-link');
+  if (tl) tl.addEventListener('click', function(e){
+    e.preventDefault(); e.stopPropagation();
+    var p = el('terms-panel');
+    if (!p) return;
+    var open = (p.style.display === 'none' || !p.style.display);
+    p.style.display = open ? 'block' : 'none';
+    tl.textContent = open ? 'hide the details' : 'registration terms';
+    if (open && p.scrollIntoView) p.scrollIntoView({ behavior:'smooth', block:'nearest' });
+  });
+
+  el('go').addEventListener('click', function(){
+    if (!META) return;
+    var m = el('msg'), go = el('go');
+    m.style.color = 'var(--review-text)';
+
+    var answers = {};
+    var answered = 0;
+    Object.keys(META.questions).forEach(function(k){
+      answers[k] = state[k] || '';
+      if (state[k]) answered++;
+    });
+    if (answered === 0) { m.textContent = 'Please answer at least one question before submitting.'; return; }
+    if (!el('c-research').checked) { m.textContent = 'Please tick the research box. Your answers are stored with no name attached.'; return; }
+
+    var wantsCert = el('want-cert').checked;
+    var name = (el('f-name').value || '').trim();
+    var email = (el('f-email').value || '').trim();
+    if (wantsCert) {
+      if (!name) { m.textContent = 'Please enter the name to print on the certificate.'; el('f-name').focus(); return; }
+      if (!email || email.indexOf('@') < 1 || email.indexOf('.') < 0) { m.textContent = 'Please enter a valid work email address.'; el('f-email').focus(); return; }
+      if (!el('c-contact').checked) { m.textContent = 'Please tick the contact box so the certificate can be issued. Your name is not published by ticking it.'; return; }
+    }
+
+    go.disabled = true;
+    m.style.color = 'var(--muted)';
+    m.textContent = 'Recording your evaluation...';
+
+    var src = '';
+    try { src = (new URLSearchParams(location.search)).get('src') || ''; } catch(e){}
+
+    fetch('/api/reviewer-eval', {
+      method: 'POST', headers: { 'Content-Type':'application/json' },
+      body: JSON.stringify({
+        answers: answers,
+        role: el('f-role').value,
+        sector: el('f-sector').value,
+        org_size: el('f-size').value,
+        modules_completed: modulesDone(),
+        src: src,
+        consent_research: true,
+        want_certificate: wantsCert,
+        name: name,
+        title: (el('f-title').value || '').trim(),
+        email: email,
+        organization: (el('f-org').value || '').trim(),
+        consent_contact: el('c-contact').checked,
+        consent_public_list: el('c-public').checked
+      })
+    })
+    .then(function(r){ if (!r.ok) throw 0; return r.json(); })
+    .then(function(d){
+      el('intro').classList.add('hidden');
+      el('form').classList.add('hidden');
+      el('done').classList.remove('hidden');
+      el('done-line').textContent = 'Your evaluation is recorded: ' + d.answered + ' of ' + d.total
+        + ' questions answered. It is stored with no name attached.';
+      if (d.certificate && d.code) {
+        try { localStorage.setItem('jrs-reviewer-code', d.code); } catch(e){}
+        try { localStorage.setItem('jrs-reviewer-name', name); } catch(e){}
+        el('cert-block').innerHTML =
+            '<h2>Your certificate is ready</h2>'
+          + '<p class="sub">Completion code <b style="color:var(--accent);font-family:\'JetBrains Mono\',monospace">' + esc(d.code) + '</b>. Keep it: it is the only handle you need to quote.</p>'
+          + '<a href="/reviewer/completion.html?code=' + encodeURIComponent(d.code) + '&name=' + encodeURIComponent(name) + '&title=' + encodeURIComponent((el('f-title').value||'').trim()) + '" style="text-decoration:none"><button type="button">Open my certificate &rarr;</button></a>';
+      } else {
+        el('cert-block').classList.add('hidden');
+      }
+      window.scrollTo(0,0);
+    })
+    .catch(function(){
+      m.style.color = 'var(--review-text)';
+      m.textContent = 'Could not record that just now. Your answers are still saved in this browser. Please try again, or email info@jrsstandard.com.';
+      go.disabled = false;
+    });
+  });
+})();
+</script>
+</body>
+</html>
