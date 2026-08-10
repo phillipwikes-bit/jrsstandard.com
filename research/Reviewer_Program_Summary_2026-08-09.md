@@ -1,6 +1,6 @@
 # JRS Reviewer Training and Certificate: programme summary
 
-**2026-08-09. Live at https://jrsstandard.com/reviewer**
+**Revised 2026-08-10. Live at https://jrsstandard.com/reviewer**
 
 ---
 
@@ -17,6 +17,8 @@ A free, six-module self-paced training in the five JRS review conditions, ending
 | 3 | Work the six modules | Progress saves in the browser |
 | 4 | Submit the reviewer evaluation | Nine questions, about four minutes |
 | 5 | Collect the certificate | Optional. Name and title as they should print |
+
+There is also an optional exchange offered at the end of the evaluation, described in the next section, which does not require the training or the certificate.
 
 ## The six modules
 
@@ -57,14 +59,62 @@ Context captured alongside: function, sector, and a coarse organization size. Al
 
 ---
 
+---
+
+## The optional exchange: LinkedIn Peer Reviewer Recommendation
+
+At the foot of the evaluation, above the submit button, sits one optional tick:
+
+> Request a **LinkedIn Peer Reviewer Recommendation** for contributing to this research baseline.
+
+Ticking it reveals three fields: full name, work email, LinkedIn profile URL. Beneath them:
+
+> By checking this box, you consent to research follow-up and secure storage and transfer of your contact information if JRS assets are transferred to a successor project.
+
+**Why it exists.** Before this, an evaluation submitted with the certificate box unticked produced one row of anonymous answers and no contact record at all. That is a market data point with no `consent_transfer`, and `consent_transfer` is the field that makes a contact record travel with the assets rather than being a list that dies with the seller. The recommendation is the exchange that converts an anonymous respondent into a transferable contact.
+
+**What the recommendation says, and what it does not.** It is offered for the contribution to the research baseline. The page states in the same block that it does not assert anything about the person's professional performance, which has not been observed. A recommendation claiming otherwise would be an endorsement written about work nobody saw, and the first person to notice would be whoever reads it on their profile.
+
+**The LinkedIn field is not stored as typed.** A URL field that later renders in any dashboard is an injection surface. Input passes a host allowlist: a bare handle normalises to `linkedin.com/in/`, a bare domain gains the scheme, a regional subdomain keeps its own host, and anything that is not a LinkedIn host or contains a quote, angle bracket or backslash is dropped rather than stored.
+
+---
+
+## Measurement: opened, submitted, completed, captured
+
+Four numbers, answering four different questions that were previously collapsed into one. All live at `https://jrsstandard.com/api/asset-stats` under `reviewer_evaluation_funnel`.
+
+| Metric | What it counts |
+|---|---|
+| `opened` | People who clicked through to the evaluation |
+| `submitted` | Submissions with at least one answer |
+| `completed_all_questions` | Submissions answering all nine |
+| `mean_questions_answered` | Average answered per submission |
+| `contacts_captured` | Transferable contact records produced |
+| `contacts_via_recommendation` | Of those, from the incentive block |
+| `contacts_via_certificate` | Of those, from the certificate tick |
+| `open_to_submit_pct` | Did they start and finish? |
+| `submit_to_contact_pct` | Did a respondent give details? |
+| `open_to_contact_pct` | End-to-end yield from a click |
+
+**The open count was not being recorded until 2026-08-10.** The endpoint served the question set on a GET and logged nothing, so the first event the system could see was a completed submission: a page nobody finished and a page nobody opened were indistinguishable. The GET now writes an `eval-view` row carrying the source tag, country and device, guarded against deploy checks and owner previews.
+
+**`opened` counts page opens, not distinct people.** The evaluation page carries no per-person key, and inventing one would mean fingerprinting the reader, which the rest of this system deliberately does not do. That is stated inside the endpoint response rather than left for a reader to assume.
+
+**Source attribution.** Any link can carry `?src=`, and the page passes it through to the open event, so `?src=linkedin` and `?src=email` are separable in the funnel. An untagged link is counted but not attributed.
+
+---
+
 ## Two unlinked rows: the design decision the whole instrument rests on
 
-Every submission writes **two separate records that share nothing linking them**.
+A submission writes up to **three separate records that share nothing linking them**.
 
 | Row | Table | Contains | Does not contain |
 |---|---|---|---|
 | Evaluation | `interaction_events`, source `reviewer-eval` | Answers, sector, coarse org size, country code | Any name, email, employer, or free text |
 | Certificate | `pilot_contacts`, source `reviewer-cert` | Name, email, printed title, completion code | Any answer |
+| Recommendation | `pilot_contacts`, source `reviewer-eval-incentive` | Name, work email, LinkedIn URL, consent flags | Any answer, and no completion code, no evaluation id, no sector, size or role |
+
+Isolation is enforced by omission rather than by a filter: the incentive payload contains no value that also appears on the evaluation row, so there is no foreign key, join key or shared identifier of any kind. The only thing the rows have in common is a coarse timestamp, and a timestamp shared by every submission in the same minute is not an identifier.
 
 This is what lets question 2 ask a compliance officer whether their own employer has no second reader and get a truthful answer. If the two rows were joined, every answer would be a statement attributable to a named person about their employer's weaknesses, and the honest answer rate would collapse.
 
@@ -83,6 +133,7 @@ Answer options are validated server-side against the question set, so a hand-cra
 | Enrolment | `pilot_contacts`, source `training-enroll` | Yes: name, work email | Contact, and the record that they registered |
 | Evaluation | `interaction_events`, source `reviewer-eval` | **No** | The anonymized research baseline |
 | Certificate | `pilot_contacts`, source `reviewer-cert` | Yes: name, printed title, completion code | Proof of completion, reissue if lost |
+| Recommendation request | `pilot_contacts`, source `reviewer-eval-incentive` | Yes: name, work email, LinkedIn URL | Transferable contact, and the basis for writing the recommendation |
 | Certificate collected | `interaction_events`, source `reviewer-cert-render` | Code only | Engagement signal: who came back for the artifact |
 | Public listing | Only if separately ticked | Yes, name and organization only | The public reviewer list |
 
@@ -134,6 +185,6 @@ It does **not** verify a credential and does **not** endorse a skill, because Li
 
 ## Open items
 
-1. **Nobody has taken the evaluation yet.** The baseline is empty by construction; the instrument shipped today.
+1. **Nobody has taken the evaluation yet.** The baseline reads zero on every funnel metric. The instrument shipped 2026-08-09 and the incentive block and open counter shipped 2026-08-10, so a zero here is the expected state and not a measured result.
 2. **The certificate is issued on a completion code checked for shape, not looked up.** A certificate grants access to nothing, so protecting it like a credential would add friction without protecting anything. The verifiable record is the database row. If that ever needs to change, the row already exists to check against.
 3. **Sample size.** The commercial value of the evaluation is a function of how many are collected. One is an anecdote. Fifty is a market description.
