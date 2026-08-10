@@ -148,6 +148,15 @@ async function purgeTestRows(H){
         { method: 'DELETE', headers: H });
     }
   } catch (e) { /* best-effort */ }
+  // Gate telemetry rows carrying a deploy-check tag. Same reason: a test view or
+  // field_touched row lands in the funnel denominator that the conversion report
+  // is computed from, where it reads as a real visitor who abandoned.
+  try {
+    for (const tag of ['selftest', 'test', 'verify', 'owner']) {
+      await fetch(SB + '/rest/v1/interaction_events?source=eq.gate-view&payload-%3E%3Esrc=eq.' + tag,
+        { method: 'DELETE', headers: H });
+    }
+  } catch (e) { /* best-effort */ }
 }
 
 // Results block. Pending state still carries the figures already published on
