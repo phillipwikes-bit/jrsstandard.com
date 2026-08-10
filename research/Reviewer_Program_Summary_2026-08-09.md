@@ -109,9 +109,9 @@ Ticking it reveals three fields: full name, work email, LinkedIn profile URL. Be
 
 ---
 
-## Measurement: opened, submitted, completed, captured
+## Measurement: opened, submitted, completed, captured, and from where
 
-Four numbers, answering four different questions that were previously collapsed into one. All live at `https://jrsstandard.com/api/asset-stats` under `reviewer_evaluation_funnel`.
+Five things, answering five different questions that were previously collapsed into one. All live at `https://jrsstandard.com/api/asset-stats` under `reviewer_evaluation_funnel`.
 
 | Metric | What it counts |
 |---|---|
@@ -125,6 +125,16 @@ Four numbers, answering four different questions that were previously collapsed 
 | `open_to_submit_pct` | Did they start and finish? |
 | `submit_to_contact_pct` | Did a respondent give details? |
 | `open_to_contact_pct` | End-to-end yield from a click |
+| `countries_opened` | Country of reviewer at the open stage, counts per country |
+| `countries_submitted` | Country of reviewer at the submission stage |
+| `countries_contacts` | Country of reviewer for the contacts captured |
+| `distinct_countries_opened` | How many countries the instrument has reached |
+
+**Country of reviewer is tracked at every stage.** The two-letter code has been written on all four row types from the edge since they were built and was surfaced on 2026-08-10. Opens, submissions and contacts are reported side by side per country, because a country that opens and never submits is a different signal from one that converts, and a single total hides both.
+
+**Answers are deliberately not broken down by country.** With a handful of responses, "the one respondent from Iceland says their employer has no second reader" is a re-identification, and the whole instrument depends on that being impossible. Counts per country, never answers per country.
+
+**Where a reviewer sits is not necessarily where their employer is.** The code comes from the network edge at the moment of the request, so it reports the reader's location and not the organization's.
 
 **The open count was not being recorded until 2026-08-10.** The endpoint served the question set on a GET and logged nothing, so the first event the system could see was a completed submission: a page nobody finished and a page nobody opened were indistinguishable. The GET now writes an `eval-view` row carrying the source tag, country and device, guarded against deploy checks and owner previews.
 
