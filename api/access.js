@@ -130,10 +130,19 @@ export default async function handler(req){
   const uaRaw = String(req.headers.get('user-agent') || '').slice(0, 300);
   const isMobile = /Mobi|Android|iPhone|iPad|iPod|Windows Phone|IEMobile|BlackBerry|Opera Mini/i.test(uaRaw);
 
+  // Deploy-check guard. Without it, any test of the gate telemetry writes rows
+  // into the funnel figures the conversion report is computed from, and a view
+  // that was a curl becomes an abandonment in the denominator. src=verify, test,
+  // selftest, owner or deploytest* validates the whole path and writes nothing.
+  const gateSrc = tag(b.src, 40);
+  const gateCheck = gateSrc === 'owner' || gateSrc === 'verify' || gateSrc === 'test'
+                 || gateSrc === 'selftest' || gateSrc.indexOf('deploytest') === 0;
+
   // First-focus ping. Fires once per page session when a reader touches any
   // field. Pairs with the view ping above to split an abandonment into "never
   // engaged" and "started and left". Writes an event row only.
   if (String(b.event || '') === 'field_touched') {
+    if (gateCheck) return json({ ok: true, field_touched: true, recorded: false, check: true, is_mobile: isMobile });
     try {
       await fetch(SB + '/rest/v1/interaction_events', {
         method: 'POST',
@@ -156,6 +165,7 @@ export default async function handler(req){
   }
 
   if (String(b.event || '') === 'view') {
+    if (gateCheck) return json({ ok: true, view: true, recorded: false, check: true, is_mobile: isMobile });
     try {
       await fetch(SB + '/rest/v1/interaction_events', {
         method: 'POST',
