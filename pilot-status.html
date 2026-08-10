@@ -152,6 +152,20 @@ tr.today td{background:rgba(93,191,130,.07)}
   </div>
   <div class="note" id="gt-note2">&nbsp;</div>
 
+  <h1 style="font-size:22px;margin-top:34px">Reviewer Evaluation Funnel</h1>
+  <p class="sub">The anonymized baseline on how records are reviewed inside working organizations. Four stages: how many opened the evaluation, how many submitted, how many answered all nine questions, and how many left contact details that can transfer with the asset. Answers and contact details are stored in different tables with no shared identifier, so these counts cannot be joined to say which respondent gave which answers.</p>
+  <div class="cards">
+    <div class="card"><div class="cv hot" id="ev-opened">&middot;</div><div class="ck">Opened the evaluation</div></div>
+    <div class="card"><div class="cv" id="ev-submitted">&middot;</div><div class="ck">Submitted</div></div>
+    <div class="card"><div class="cv" id="ev-complete">&middot;</div><div class="ck">Answered all nine</div></div>
+    <div class="card"><div class="cv" id="ev-contacts">&middot;</div><div class="ck">Contacts captured</div></div>
+  </div>
+  <div class="chart">
+    <h2>Where the funnel loses people</h2>
+    <div id="evfunnel">Loading&hellip;</div>
+  </div>
+  <div class="note" id="ev-note">Evaluation activity will appear here once the first reviewer opens the instrument.</div>
+
   <h1 style="font-size:22px;margin-top:34px">Contributor Confirmations</h1>
   <p class="sub">Per-person confirmation links sent to the reviewers who completed the international detection set, the article co-authors, and the pilot facilitators. Each link captures the exact name and title to print, the naming election, and the continuing-use and transfer permissions. Aggregate counts only; the wording each contributor chose is stored privately.</p>
   <div class="cards">
@@ -497,6 +511,50 @@ function renderGateSplit(s){
     +'</div>';
   el.innerHTML=html;
 }
+function loadEvalFunnel(){
+  return fetch('/api/asset-stats')
+   .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+   .then(function(d){
+     var f=(d&&d.reviewer_evaluation_funnel)||{};
+     document.getElementById('ev-opened').textContent=f.opened||0;
+     document.getElementById('ev-submitted').textContent=f.submitted||0;
+     document.getElementById('ev-complete').textContent=f.completed_all_questions||0;
+     document.getElementById('ev-contacts').textContent=f.contacts_captured||0;
+
+     // Stage bars scaled to the widest stage, so the drop between stages is the
+     // thing the eye reads rather than the absolute counts.
+     var stages=[
+       {label:'Opened the evaluation',n:f.opened||0},
+       {label:'Submitted answers',n:f.submitted||0},
+       {label:'Answered all nine',n:f.completed_all_questions||0},
+       {label:'Left contact details',n:f.contacts_captured||0}
+     ];
+     var max=1; stages.forEach(function(x){ if(x.n>max) max=x.n; });
+     var el=document.getElementById('evfunnel');
+     if(!(f.opened||f.submitted||f.contacts_captured)){
+       el.innerHTML='<div style="color:var(--muted-soft);font-size:12px">No evaluation activity recorded yet. The instrument opened on 9 August 2026 and the open counter on 10 August, so a zero here is the expected state rather than a measured result.</div>';
+     } else {
+       var html='';
+       stages.forEach(function(x){
+         var w=Math.max(4,Math.round((x.n/max)*100));
+         html+='<div style="display:flex;align-items:center;gap:10px;margin:5px 0">'
+           +'<span style="font-family:\'JetBrains Mono\',monospace;font-size:11px;color:var(--muted);width:170px;flex:0 0 auto">'+esc(x.label)+'</span>'
+           +'<span style="background:var(--accent);height:12px;width:'+w+'%;max-width:45%;display:inline-block"></span>'
+           +'<span style="font-size:12px;color:var(--text)">'+x.n+'</span></div>';
+       });
+       el.innerHTML=html;
+     }
+
+     document.getElementById('ev-note').textContent=
+       (f.opened||0)+' opened, '+(f.submitted||0)+' submitted ('+(f.open_to_submit_pct||0)+'% of opens), '
+       +(f.completed_all_questions||0)+' answered all nine, mean '+(f.mean_questions_answered||0)+' of 9 per submission. '
+       +(f.contacts_captured||0)+' contact '+(((f.contacts_captured||0)===1)?'record':'records')+' captured ('
+       +(f.contacts_via_recommendation||0)+' via the LinkedIn recommendation, '+(f.contacts_via_certificate||0)+' via the certificate), '
+       +(f.submit_to_contact_pct||0)+'% of submissions and '+(f.open_to_contact_pct||0)+'% of opens. '
+       +'Opens count page opens rather than distinct people: the evaluation page carries no per-person key.';
+   })
+   .catch(function(){ document.getElementById('ev-note').textContent='Evaluation activity will appear here once the first reviewer opens the instrument.'; });
+}
 function loadContributors(){
   return fetch('/api/contributor-stats')
    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
@@ -656,7 +714,7 @@ function renderSupWall(d){
   h+='</div>';
   w.innerHTML=h;
 }
-function refresh(){ loadDetection(); loadRealcase(); loadArmB(); loadOrgPilots(); loadGate(); loadRegistrations(); loadContributors(); loadTraining(); loadDownloads(); loadItems(); loadSupport(); }
+function refresh(){ loadDetection(); loadRealcase(); loadArmB(); loadOrgPilots(); loadGate(); loadRegistrations(); loadEvalFunnel(); loadContributors(); loadTraining(); loadDownloads(); loadItems(); loadSupport(); }
 refresh();
 setInterval(refresh, 60000);
 </script>
