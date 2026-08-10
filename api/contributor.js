@@ -132,7 +132,7 @@ async function purgeTestRows(H){
   const LOG_CUTOFF = '2026-08-09T18:00:00Z';
   try {
     for (const src of ['contributor-link', 'honor-link', 'recheck-link', 'honor-cert']) {
-      await fetch(SB + '/rest/v1/interaction_events?source=eq.' + src + '&payload->>user_agent=like.*curl*',
+      await fetch(SB + '/rest/v1/interaction_events?source=eq.' + src + '&payload-%3E%3Euser_agent=like.*curl*',
         { method: 'DELETE', headers: H });
       await fetch(SB + '/rest/v1/interaction_events?source=eq.' + src + '&created_at=lt.' + encodeURIComponent(LOG_CUTOFF),
         { method: 'DELETE', headers: H });
@@ -144,7 +144,7 @@ async function purgeTestRows(H){
   // the one table in the programme that must hold only real answers.
   try {
     for (const tag of ['selftest', 'test', 'verify', 'owner']) {
-      await fetch(SB + '/rest/v1/interaction_events?source=eq.reviewer-eval&payload->>src=eq.' + tag,
+      await fetch(SB + '/rest/v1/interaction_events?source=eq.reviewer-eval&payload-%3E%3Esrc=eq.' + tag,
         { method: 'DELETE', headers: H });
     }
   } catch (e) { /* best-effort */ }
