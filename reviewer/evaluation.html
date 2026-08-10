@@ -64,6 +64,12 @@ button:disabled{opacity:.55;cursor:default}
 .fc{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft)}
 .fc a{color:inherit;text-decoration:none}
 .hidden{display:none}
+.reveal{max-height:0;overflow:hidden;opacity:0;transition:max-height .35s ease,opacity .3s ease}
+.reveal.open{max-height:760px;opacity:1}
+.incentive{border:1px solid var(--accent);background:linear-gradient(180deg,rgba(190,148,71,.07),rgba(190,148,71,.02));padding:20px 22px;margin:16px 0}
+.incentive .lbl{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:9px}
+.incentive .why{font-size:12.5px;color:var(--muted-soft);line-height:1.6;margin:10px 0 0}
+.consentnote{font-size:11.5px;color:var(--muted);line-height:1.6;border-left:2px solid var(--accent-dim);padding-left:11px;margin:4px 0 2px}
 @media(max-width:600px){h1{font-size:25px}}
 </style>
 </head>
@@ -125,6 +131,26 @@ button:disabled{opacity:.55;cursor:default}
         <div id="terms-panel" style="display:none;border:1px solid var(--accent-dim);background:var(--surface2);padding:13px 14px;margin:0 0 11px;font-size:12px;color:var(--muted);line-height:1.6">Ticking the box means three things and no more: contact me about the JRS project, store my details securely, and allow that record to travel with the project if the JRS assets are ever transferred to a successor. It does <b style="color:var(--text)">not</b> publish your name. Full detail in the <a href="/privacy.html#consent" style="color:var(--accent)">Privacy Policy</a>.</div>
         <label class="chk"><input type="checkbox" id="c-public"><span>Optional: list my name publicly as a JRS-trained reviewer.</span></label>
       </div>
+
+      <section class="incentive" aria-labelledby="inc-h">
+        <div class="lbl" id="inc-h">Optional &middot; In return for your time</div>
+        <label class="chk core" style="border:none;background:none;padding:0;margin-bottom:10px"><input type="checkbox" id="want-rec"><span style="font-size:13.5px;color:var(--text);line-height:1.55">Request a <b>LinkedIn Peer Reviewer Recommendation</b> for contributing to this research baseline.</span></label>
+
+        <div class="reveal" id="rec-fields">
+          <div style="padding-top:6px">
+            <label class="fl" for="rec-name">Full name</label>
+            <input id="rec-name" type="text" placeholder="Full name" autocomplete="name">
+            <label class="fl" for="rec-email">Work email</label>
+            <input id="rec-email" type="email" placeholder="Work email" autocomplete="email">
+            <label class="fl" for="rec-li">LinkedIn profile URL</label>
+            <input id="rec-li" type="text" placeholder="linkedin.com/in/yourname" autocomplete="url">
+
+            <div class="consentnote">By checking this box, you consent to research follow-up and secure storage and transfer of your contact information if JRS assets are transferred to a successor project.</div>
+
+            <p class="why">Your contact details are stored as a <b style="color:var(--text)">separate record that does not contain your answers</b>. The two cannot be joined. The recommendation describes your contribution to this research and does not assert anything about your professional performance, which has not been observed.</p>
+          </div>
+        </div>
+      </section>
 
       <label class="chk core" style="margin-top:4px"><input type="checkbox" id="c-research"><span>My answers above may be used, anonymously and in aggregate only, in JRS research and reporting. (Required)</span></label>
 
@@ -245,6 +271,10 @@ button:disabled{opacity:.55;cursor:default}
     var e2 = el('f-' + f);
     if (e2) e2.addEventListener('input', function(){ state['cert_' + f] = e2.value; save(); });
   });
+  ['name','email','li'].forEach(function(f){
+    var e2 = el('rec-' + f);
+    if (e2) e2.addEventListener('input', function(){ state['rec_' + f] = e2.value; save(); });
+  });
 
   function restore(){
     if (!META) return;
@@ -260,6 +290,10 @@ button:disabled{opacity:.55;cursor:default}
     ['name','title','email','org'].forEach(function(f){
       if (state['cert_' + f]) el('f-' + f).value = state['cert_' + f];
     });
+    ['name','email','li'].forEach(function(f){
+      if (state['rec_' + f]) el('rec-' + f).value = state['rec_' + f];
+    });
+    if (state.want_rec) { el('want-rec').checked = true; el('rec-fields').classList.add('open'); }
   }
 
   function updateCount(){
@@ -271,6 +305,19 @@ button:disabled{opacity:.55;cursor:default}
 
   el('want-cert').addEventListener('change', function(){
     el('cert-fields').classList.toggle('hidden', !this.checked);
+  });
+
+  // Smooth reveal rather than a display toggle, so the block does not jump the
+  // page under the reader's thumb on a phone.
+  el('want-rec').addEventListener('change', function(){
+    state.want_rec = this.checked; save();
+    el('rec-fields').classList.toggle('open', this.checked);
+    if (this.checked) {
+      setTimeout(function(){
+        var r = el('rec-fields');
+        if (r && r.scrollIntoView) r.scrollIntoView({ behavior:'smooth', block:'nearest' });
+      }, 260);
+    }
   });
 
   // Inline terms rather than a new window: the anchor sits inside the consent
@@ -299,6 +346,14 @@ button:disabled{opacity:.55;cursor:default}
     });
     if (answered === 0) { m.textContent = 'Please answer at least one question before submitting.'; return; }
     if (!el('c-research').checked) { m.textContent = 'Please tick the research box. Your answers are stored with no name attached.'; return; }
+
+    var wantsRec = el('want-rec').checked;
+    var recName = (el('rec-name').value || '').trim();
+    var recEmail = (el('rec-email').value || '').trim();
+    if (wantsRec) {
+      if (!recName) { m.textContent = 'Please enter your name for the recommendation, or untick that box.'; el('rec-name').focus(); return; }
+      if (!recEmail || recEmail.indexOf('@') < 1 || recEmail.indexOf('.') < 0) { m.textContent = 'Please enter a valid work email for the recommendation, or untick that box.'; el('rec-email').focus(); return; }
+    }
 
     var wantsCert = el('want-cert').checked;
     var name = (el('f-name').value || '').trim();
@@ -332,7 +387,11 @@ button:disabled{opacity:.55;cursor:default}
         email: email,
         organization: (el('f-org').value || '').trim(),
         consent_contact: el('c-contact').checked,
-        consent_public_list: el('c-public').checked
+        consent_public_list: el('c-public').checked,
+        want_recommendation: wantsRec,
+        rec_name: recName,
+        rec_email: recEmail,
+        linkedin_url: (el('rec-li').value || '').trim()
       })
     })
     .then(function(r){ if (!r.ok) throw 0; return r.json(); })
@@ -341,7 +400,8 @@ button:disabled{opacity:.55;cursor:default}
       el('form').classList.add('hidden');
       el('done').classList.remove('hidden');
       el('done-line').textContent = 'Your evaluation is recorded: ' + d.answered + ' of ' + d.total
-        + ' questions answered. It is stored with no name attached.';
+        + ' questions answered. It is stored with no name attached.'
+        + (d.incentive ? ' Your recommendation request is recorded as a separate contact record that does not contain your answers.' : '');
       if (d.certificate && d.code) {
         try { localStorage.setItem('jrs-reviewer-code', d.code); } catch(e){}
         try { localStorage.setItem('jrs-reviewer-name', name); } catch(e){}

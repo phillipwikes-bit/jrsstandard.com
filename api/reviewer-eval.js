@@ -25,6 +25,21 @@ export const config = { runtime: 'edge' };
 //      email and the printed title, and it carries a completion code. It does
 //      NOT carry the answers.
 //
+//   3. The INCENTIVE CONTACT, only if the reviewer asks for a peer-reviewer
+//      recommendation, goes to pilot_contacts as source='reviewer-eval-incentive'.
+//      It carries name, work email, LinkedIn URL and the consent flags. It does
+//      NOT carry the answers, and it carries NO completion code, NO row id and no
+//      other value present on the evaluation row. There is deliberately no
+//      foreign key, join key or shared identifier of any kind between the two:
+//      the only thing they have in common is a coarse timestamp, and that is the
+//      whole point.
+//
+//      This exists because an evaluation submitted without the certificate box
+//      produced a research data point and no transferable contact at all. The
+//      recommendation is the exchange, and it is offered for the contribution
+//      itself rather than as an endorsement of professional competence that has
+//      not been observed.
+//
 // The two rows share nothing that links them beyond a coarse timestamp. A person
 // who wants a certificate is therefore not trading their candour for it, and the
 // aggregate baseline cannot be turned back into "this named person said their
@@ -67,6 +82,20 @@ function json(o, s){
 }
 function clean(v, n){ return (v == null ? '' : String(v)).trim().slice(0, n || 200); }
 function oneOf(v, list){ const s = clean(v, 80); return list.indexOf(s) >= 0 ? s : ''; }
+
+// LinkedIn URL. Accepted only if it is a LinkedIn host, so the field cannot be
+// used to store an arbitrary link or a javascript: payload that a later
+// dashboard might render. A bare handle or a linkedin.com/in/ path is
+// normalised; anything else is dropped rather than stored.
+function linkedIn(v){
+  let s = clean(v, 300).replace(/\s+/g, '');
+  if (!s) return '';
+  s = s.replace(/^https?:\/\//i, '').replace(/^www\./i, '');
+  if (/^[a-zA-Z0-9._-]{3,100}$/.test(s)) return 'https://www.linkedin.com/in/' + s;
+  if (!/^([a-z]{2,3}\.)?linkedin\.com\//i.test(s)) return '';
+  if (/[<>"'\\]/.test(s)) return '';
+  return 'https://www.' + s.replace(/^www\./i, '');
+}
 
 // Completion code. Derived from the submission time and a short random tail so
 // two reviewers finishing in the same second do not collide. It is printed on the
@@ -141,6 +170,8 @@ export default async function handler(req){
     return json({ ok: true, recorded: false, check: true, answered: answered,
                   total: Object.keys(QUESTIONS).length,
                   certificate: b.want_certificate === true,
+                  incentive: b.want_recommendation === true,
+                  incentive_linkedin_normalised: linkedIn(b.linkedin_url),
                   code: b.want_certificate === true ? completionCode() : '' });
   }
   try {
@@ -203,7 +234,53 @@ export default async function handler(req){
     }
   }
 
+  // ROW 3: the incentive contact. Written only when the reviewer asks for a peer
+  // reviewer recommendation. Carries identity and consent and nothing else.
+  //
+  // ISOLATION IS ENFORCED BY WHAT THIS OBJECT DOES NOT CONTAIN. There is no
+  // completion code, no evaluation id, no answer, no answered_count, no sector,
+  // no org size and no role. Nothing written here appears on the evaluation row,
+  // so the two cannot be joined by any value, only by a coarse timestamp, and a
+  // timestamp shared by every submission in the same minute is not an identifier.
+  let incentive = false;
+  if (b.want_recommendation === true) {
+    const iName  = clean(b.rec_name, 200);
+    const iEmail = clean(b.rec_email, 200);
+    const iLi    = linkedIn(b.linkedin_url);
+
+    if (!iName) return json({ error: 'rec_name_required', recorded: true }, 400);
+    if (!iEmail || iEmail.indexOf('@') < 1 || iEmail.indexOf('.') < 0) {
+      return json({ error: 'rec_valid_email_required', recorded: true }, 400);
+    }
+
+    const iPayload = {
+      kind: 'reviewer-eval-incentive',
+      request: 'linkedin-peer-reviewer-recommendation',
+      printed_name: iName,
+      linkedin_url: iLi,
+      country: country,
+      consent_contact: true,
+      consent_research_followup: true,
+      consent_transfer: true,
+      ts: new Date().toISOString()
+    };
+    const iRes = await fetch(SB + '/rest/v1/pilot_contacts', {
+      method: 'POST',
+      headers: { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE,
+                 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+      body: JSON.stringify({ name: iName, email: iEmail, organization: '',
+                             message: JSON.stringify(iPayload),
+                             source: 'reviewer-eval-incentive' })
+    });
+    if (!iRes.ok) {
+      const t = await iRes.text();
+      return json({ error: 'incentive_insert_failed', recorded: true,
+                    status: iRes.status, detail: String(t).slice(0, 300) }, 502);
+    }
+    incentive = true;
+  }
+
   return json({ ok: true, recorded: true, answered: answered,
                 total: Object.keys(QUESTIONS).length,
-                certificate: wantsCert, code: code });
+                certificate: wantsCert, code: code, incentive: incentive });
 }
