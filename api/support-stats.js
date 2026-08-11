@@ -24,12 +24,12 @@ export default async function handler(){
   if (!SERVICE) return json({ total: 0, countries: 0, by_country: [], by_campaign: [], campaigns: [] });
 
   try {
-    const r = await fetch(SB + '/rest/v1/interaction_events?source=eq.support&select=payload&limit=20000',
+    const r = await fetch(SB + '/rest/v1/interaction_events?source=eq.support&select=payload,created_at&order=created_at.asc&limit=20000',
       { headers: { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE } });
     if (!r.ok) return json({ total: 0, countries: 0, by_country: [], by_campaign: [], campaigns: [] });
     const rows = await r.json();
 
-    const byC = {}, byK = {}, perK = {}, byS = {};
+    const byC = {}, byK = {}, perK = {}, byS = {}, byDay = {};
     let counted = 0;
     for (const row of rows) {
       const rawSrc = (row.payload && row.payload.src) || 'none';
@@ -43,7 +43,29 @@ export default async function handler(){
       perK[k][c] = (perK[k][c] || 0) + 1;
       const s = (row.payload && row.payload.src) || 'none';
       byS[s] = (byS[s] || 0) + 1;
+      // Endorsements per calendar day, UTC. The endorsement is a single GET with
+      // no form behind it, so one row is one click and the daily series needs no
+      // deduplication to mean what it says.
+      const day = String(row.created_at || '').slice(0, 10);
+      if (day) byDay[day] = (byDay[day] || 0) + 1;
     }
+
+    // Dense series: every date between the first and last endorsement is present,
+    // zeros included. A sparse series drawn as a bar chart silently closes the
+    // gaps and makes a quiet week look like a busy one.
+    const days = Object.keys(byDay).sort();
+    const by_day = [];
+    if (days.length) {
+      const cur = new Date(days[0] + 'T00:00:00Z');
+      const end = new Date(days[days.length - 1] + 'T00:00:00Z');
+      while (cur <= end) {
+        const k = cur.toISOString().slice(0, 10);
+        by_day.push({ day: k, endorsements: byDay[k] || 0 });
+        cur.setUTCDate(cur.getUTCDate() + 1);
+      }
+    }
+    const peak = by_day.reduce((m, d) => d.endorsements > m ? d.endorsements : m, 0);
+    const activeDays = by_day.filter(d => d.endorsements > 0).length;
     const by_source = Object.entries(byS)
       .map(([src, hits]) => ({ src, hits }))
       .sort((a, b) => b.hits - a.hits);
@@ -118,7 +140,16 @@ export default async function handler(){
       }
     } catch (e) { /* public wall is best-effort */ }
 
-    return json({ total: counted, countries: countries, named_supporters: named, public_supporters: public_supporters, by_country: by_country, by_campaign: by_campaign, by_source: by_source, campaigns: campaigns });
+    return json({ total: counted, countries: countries, named_supporters: named, public_supporters: public_supporters, by_country: by_country, by_campaign: by_campaign, by_source: by_source, campaigns: campaigns,
+      by_day: by_day,
+      days_span: by_day.length,
+      days_with_activity: activeDays,
+      peak_day_endorsements: peak,
+      mean_per_active_day: activeDays ? Math.round((counted / activeDays) * 10) / 10 : 0,
+      day_note: 'One row is one endorsement click, counted by UTC calendar day. The '
+              + 'endorsement is a bare GET with no form behind it, so no deduplication '
+              + 'is applied and none is needed. Days with no endorsements are present '
+              + 'with a zero rather than omitted.' });
   } catch (e) {
     return json({ total: 0, countries: 0, by_country: [], by_campaign: [], campaigns: [] });
   }
