@@ -242,6 +242,9 @@ The gate is not underperforming because of a field, a label, or a consent checkb
 |---|---|---|---|
 | `field_touched` rows counted as form views | `api/gate-stats.js` | Inflated the conversion denominator; would have compounded with real traffic | **Fixed.** Type check added; touches reported separately |
 | `f-title` listed in the field-touch array | `access.html` | Hidden input, cannot receive focus, could never fire the ping | **Fixed.** Removed from `FIELDS` |
+| The fix above did not work on first deploy | `api/gate-stats.js` | The events query selected `source, payload, created_at` only, so `e.type` was always undefined and the new guard never fired | **Fixed.** `type` added to the select |
+
+The third row is worth keeping rather than tidying away. The first fix was logically correct, passed a syntax check, and changed nothing in production, because the column it tested was never fetched. It was caught only by reading the live endpoint after deploy and seeing `form_views` still at 102 with `field_touches` at 0. Verified after the second deploy: `form_views` 101, `field_touches` 1, reported separately.
 
 ---
 
