@@ -785,7 +785,10 @@ function renderEndorseDays(d){
   days.forEach(function(x){
     var px = x.endorsements ? Math.max(3, Math.round((x.endorsements/max)*H)) : 0;
     var col = x.endorsements ? 'var(--ready-text,#5DBF82)' : 'var(--rule)';
-    var label = x.day.slice(5).replace('-','/');
+    // Today is always the final column now, even when it is empty. Marking it
+    // in gold separates "today, nothing yet" from "a day that had nothing",
+    // which are the same bar height and completely different statements.
+    if (!x.endorsements && x.day === new Date().toISOString().slice(0,10)) col = 'var(--accent-dim)';
     h+='<div title="'+esc(x.day)+': '+x.endorsements+'" style="flex:1 1 14px;min-width:14px;max-width:46px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:'+H+'px">'
       +(x.endorsements?'<span style="font-family:\'JetBrains Mono\',monospace;font-size:8.5px;color:var(--muted);margin-bottom:3px">'+x.endorsements+'</span>':'')
       +'<span style="width:100%;height:'+(px||1)+'px;background:'+col+';display:block"></span>'

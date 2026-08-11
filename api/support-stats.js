@@ -55,11 +55,21 @@ export default async function handler(){
     // Dense series: every date between the first and last endorsement is present,
     // zeros included. A sparse series drawn as a bar chart silently closes the
     // gaps and makes a quiet week look like a busy one.
+    // THE SERIES RUNS TO TODAY, NOT TO THE LAST EVENT.
+    //
+    // It previously ended on the date of the most recent endorsement, so after
+    // a quiet week the chart simply stopped on 2026-08-04 and today had no
+    // column at all. A reader looking for today's endorsements found nothing to
+    // look at, which reads as a broken panel rather than as a quiet week. Seven
+    // days of zero is a finding and it has to be drawn.
     const days = Object.keys(byDay).sort();
     const by_day = [];
     if (days.length) {
+      const todayISO = new Date().toISOString().slice(0, 10);
       const cur = new Date(days[0] + 'T00:00:00Z');
-      const end = new Date(days[days.length - 1] + 'T00:00:00Z');
+      const lastEvent = days[days.length - 1];
+      const endKey = (todayISO > lastEvent) ? todayISO : lastEvent;
+      const end = new Date(endKey + 'T00:00:00Z');
       while (cur <= end) {
         const k = cur.toISOString().slice(0, 10);
         by_day.push({ day: k, endorsements: byDay[k] || 0 });
