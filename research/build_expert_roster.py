@@ -65,6 +65,7 @@ ARM_B = [
     ("RR-109", "Mostafa Mahmoudi", "AI Governance Researcher; Founder and Director, Iran Tech Diplomacy Institute; PhD candidate, University of Tehran", "Iran (Tehran)", "B2"),
     ("RR-110", "Jean-Luc Adade", "Regional IT Leader, West, Central and North Africa; IT governance and digital transformation", "Cote d'Ivoire", "B2"),
     ("RR-114", "MacKenzie McCowan", "AI Governance Specialist, Atomi; PhD candidate, University of Sydney; Sessional Lecturer, Avondale University", "Australia (Sydney)", "B2"),
+    ("RR-117", "Alexandria Davis", "Responsible AI and Compliance Leader; Founder and Principal Consultant, FIEA Consulting Inc.; DBA candidate", "Canada (Toronto)", "B1"),
     ("RR-116", "Dr. Eric J. W. Orlowski", "AI Governance Specialist, Ethnographer, Tech Policy Researcher; Research Fellow, NUS AI Institute; PhD, UCL", "Singapore", "B2"),
     ("RR-121", "Dr Sharon Licqurish, PhD", "CEO, Chief Scientist and AI Governance Architect, AIIP", "Australia (Melbourne)", "B2"),
     ("RR-123", "Greg Searle", "AI Governance and Model Behaviour Researcher; Master's candidate", "Australia (Brisbane)", "B2"),
@@ -181,7 +182,7 @@ def main():
     incomplete = [r for r in rows if r["status"].startswith("NOT COMPLETE")]
     print("wrote %s (%d rows)" % (full, len(rows)))
     print("wrote %s (%d rows)" % (only4, len(s004)))
-    print("Study 011 + 012 completers: %d | Study 004 raters: %d | total rows: %d"
+    print("Study 011 + 012 roster entries: %d | Study 004 raters: %d | total rows: %d"
           % (len(ARM_A) + len(ARM_B), len(s004), len(rows)))
     unnamed = ("no identity on record", "anonymous by design", "Anonymous by choice")
     print("named rows: %d | unnamed rows: %d"
@@ -198,7 +199,17 @@ def main():
     print("INTERNATIONAL REVIEWERS WHO HAVE GRADED RECORDS: %d = %d in Studies 011 and 012 "
           "+ %d Study 004 experts not already counted + %d anonymous bench reviewers"
           % (graded_011_012 + new_experts + bench, graded_011_012, new_experts, bench))
-    print("  of whom %d completed a full %d-record set" % (len(ARM_A) + len(ARM_B), NEEDED))
+    # Counted live, not from the length of the transcribed roster. The roster
+    # length was standing in for this figure and the two silently diverged the
+    # moment a reviewer completed before being transcribed: RR-117 finished on
+    # 2026-08-11 and the roster kept reporting 33 while the database held 34.
+    live_complete = (sum(1 for n in a_live.values() if n >= NEEDED)
+                     + sum(1 for n in b_live.values() if n >= NEEDED))
+    print("  of whom %d completed a full %d-record set" % (live_complete, NEEDED))
+    if live_complete != len(ARM_A) + len(ARM_B):
+        print("WARNING, %d live completers against %d transcribed roster entries. "
+              "A completer is missing from ARM_A/ARM_B above."
+              % (live_complete, len(ARM_A) + len(ARM_B)))
     print("  %d expert rater codes are the same people as Arm A completers: %s"
           % (dup, ", ".join("%s=%s" % (k, v) for k, v in CROSS_STUDY_SAME_PERSON.items())))
     print("  E-11 carries 1 label and no identity on record; excluded from the count.")
