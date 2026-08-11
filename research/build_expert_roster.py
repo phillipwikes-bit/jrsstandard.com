@@ -65,6 +65,7 @@ ARM_B = [
     ("RR-109", "Mostafa Mahmoudi", "AI Governance Researcher; Founder and Director, Iran Tech Diplomacy Institute; PhD candidate, University of Tehran", "Iran (Tehran)", "B2"),
     ("RR-110", "Jean-Luc Adade", "Regional IT Leader, West, Central and North Africa; IT governance and digital transformation", "Cote d'Ivoire", "B2"),
     ("RR-114", "MacKenzie McCowan", "AI Governance Specialist, Atomi; PhD candidate, University of Sydney; Sessional Lecturer, Avondale University", "Australia (Sydney)", "B2"),
+    ("RR-127", "Candid Opris", "Founder and Managing Partner, Opris & Associates; two decades in AI and data governance and digital trust", "Canada (Greater Toronto Area)", "B2"),
     ("RR-117", "Alexandria Davis", "Responsible AI and Compliance Leader; Founder and Principal Consultant, FIEA Consulting Inc.; DBA candidate", "Canada (Toronto)", "B1"),
     ("RR-116", "Dr. Eric J. W. Orlowski", "AI Governance Specialist, Ethnographer, Tech Policy Researcher; Research Fellow, NUS AI Institute; PhD, UCL", "Singapore", "B2"),
     ("RR-121", "Dr Sharon Licqurish, PhD", "CEO, Chief Scientist and AI Governance Architect, AIIP", "Australia (Melbourne)", "B2"),
