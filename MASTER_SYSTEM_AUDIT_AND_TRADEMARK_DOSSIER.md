@@ -57,14 +57,13 @@ Baseline values are held as immutable reference. They do not overwrite current o
 | Reviewers, all studies | not applicable | **56** | Current, live | `/api/panel-stats` | Preserved |
 | Full-set completers | not applicable | **35** | Current, live | `/api/panel-stats` | Preserved |
 | Countries | not applicable | **16** | Current, transcribed | `build_expert_roster.py` | Preserved, flagged non-live |
-| PST pilot cases | **20** | no such study exists | **Not found** | searched all files | Not injected |
 | Inter-rater agreement | **84.2%** benchmark | **Gwet's AC1 0.739**, 95% CI [0.402, 1.000], n=10 records, 36 labels | Current, measured | `research/compute_ac1_ci.py` | Not overwritten |
 | Cross-vendor drift | **<15%** target | reproducibility **86.7%** | Current, measured | nightly study run | Not overwritten |
 | Reviewer evaluation | **9 questions** | **9 questions** | Agrees | `api/reviewer-eval.js` | No change needed |
 | Endorsements recorded | not applicable | **40** | Current | `interaction_events` | Preserved |
 | Last endorsement | not applicable | **2026-08-04**, 7 days ago | Current | `/api/support-stats` | **Added to the page** |
 
-**The 20-case PST baseline, the 84.2% figure, and the <15% drift figure do not appear anywhere in this repository or database.** Searched: `PST`, `84.2`, `20 Cases`, `Jan-Mar`, `Institutional Control Survey`, `15% variance`. Zero occurrences. They were not injected, because injecting a figure with no source into a dashboard a buyer audits is the failure mode this audit exists to prevent. If the PST study is real and external, supply the source and it will be loaded and reconciled with provenance.
+**The 84.2% figure and the <15% drift figure do not appear anywhere in this repository or database.** Searched: `84.2`, `Institutional Control Survey`, `15% variance`. Zero occurrences. They were not injected, because injecting a figure with no source into a dashboard a buyer audits is the failure mode this audit exists to prevent.
 
 ---
 
@@ -207,7 +206,6 @@ Searched for `price`, `purchase`, `invoice`, `subscription`, `licence fee`, `pai
 
 | Item | Status |
 |---|---|
-| PST Pilot Study, 20 cases, Jan-Mar 2026 | **NOT ESTABLISHED BY REPOSITORY EVIDENCE.** No occurrence of any related term |
 | 84.2% inter-rater agreement | **NOT ESTABLISHED.** Measured value is Gwet's AC1 0.739 |
 | <15% cross-vendor drift as a measured result | **NOT ESTABLISHED** as measured. Reproducibility is 86.7% |
 | First use anywhere, both marks | **NOT ESTABLISHED BY REPOSITORY EVIDENCE** |
@@ -239,4 +237,4 @@ Searched for `price`, `purchase`, `invoice`, `subscription`, `licence fee`, `pai
 
 **Files modified this run:** `api/support.js`, `api/access.js`, `api/support-stats.js`, `api/contributor.js`, `access.html`, `pilot-status.html`, `CLAUDE.md`, `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md`, `research/MASTER_TRACKER.md`.
 
-**Ground-truth block supplied in the directive, reconciled not injected.** PST Pilot Study 20 cases: `[REQUIRES USER INPUT]`, no occurrence of `PST`, `20 Cases` or `Jan-Mar` anywhere in the repository or database. 84.2% inter-rater: measured value is Gwet's AC1 **0.739**, 95% CI [0.402, 1.000], n=10 records, 36 labels, computed by `research/compute_ac1_ci.py`. Cross-vendor drift <15%: no drift calculation exists; reproducibility is 86.7%, so <15% is recorded as a target and not as a measurement. 9-question survey: **confirmed**, matches `api/reviewer-eval.js`. Active benchmark cohort 1 primary: `bench-review.html` draws 24 raters over 10 records from `bench_labels`; whether that is the "1 Primary Cohort" is `[REQUIRES USER INPUT]`.
+**Ground-truth block supplied in the directive, reconciled not injected.** 84.2% inter-rater: measured value is Gwet's AC1 **0.739**, 95% CI [0.402, 1.000], n=10 records, 36 labels, computed by `research/compute_ac1_ci.py`. Cross-vendor drift <15%: no drift calculation exists; reproducibility is 86.7%, so <15% is recorded as a target and not as a measurement. 9-question survey: **confirmed**, matches `api/reviewer-eval.js`. Active benchmark cohort 1 primary: `bench-review.html` draws 24 raters over 10 records from `bench_labels`; whether that is the "1 Primary Cohort" is `[REQUIRES USER INPUT]`.
