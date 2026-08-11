@@ -148,6 +148,17 @@ async function purgeTestRows(H){
         { method: 'DELETE', headers: H });
     }
   } catch (e) { /* best-effort */ }
+  // Endorsement rows written by an end-to-end check of /api/support. The write
+  // there is suppressed for the standard test tags, but proving the write path
+  // works at all requires a tag that is NOT suppressed, so e2echeck writes a
+  // real row on purpose and this removes it afterwards. Without this the only
+  // way to verify the endorsement counter is to permanently inflate it by one.
+  try {
+    for (const tag of ['e2echeck', 'selftest', 'test', 'verify', 'owner']) {
+      await fetch(SB + '/rest/v1/interaction_events?source=eq.support&payload-%3E%3Esrc=eq.' + tag,
+        { method: 'DELETE', headers: H });
+    }
+  } catch (e) { /* best-effort */ }
   // Gate telemetry rows carrying a deploy-check tag. Same reason: a test view or
   // field_touched row lands in the funnel denominator that the conversion report
   // is computed from, where it reads as a real visitor who abandoned.
