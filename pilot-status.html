@@ -56,6 +56,20 @@ tr.today td{background:rgba(93,191,130,.07)}
 <body>
 <header class="hd"><div class="hd-in"><a href="/" class="wm">JRS<span style="font-size:9px;vertical-align:super">&#8482;</span></a><div class="meta">Pilot Submissions</div></div></header>
 <main><div class="wrap">
+  <h1 style="font-size:22px">Today <span id="td-date" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--muted-soft);vertical-align:middle">&middot;</span></h1>
+  <p class="sub">Every surface, counted for the current UTC day. The other Today figures on this page count a completed action: a registration, an enrolment, a confirmation. None of them counts an arrival, so a day could carry real traffic on every link and every one of them would still read zero. This block counts arrivals.</p>
+  <div class="cards" style="grid-template-columns:repeat(4,1fr)">
+    <div class="card"><div class="cv hot" id="td-campaign">&middot;</div><div class="ck">Campaign screen arrivals</div></div>
+    <div class="card"><div class="cv" id="td-reviewer">&middot;</div><div class="ck">Reviewer landing arrivals</div></div>
+    <div class="card"><div class="cv" id="td-training">&middot;</div><div class="ck">Training page arrivals</div></div>
+    <div class="card"><div class="cv" id="td-endorse">&middot;</div><div class="ck">Endorsements</div></div>
+    <div class="card"><div class="cv" id="td-evopen">&middot;</div><div class="ck">Evaluation opens</div></div>
+    <div class="card"><div class="cv" id="td-evsub">&middot;</div><div class="ck">Evaluation submissions</div></div>
+    <div class="card"><div class="cv" id="td-dl">&middot;</div><div class="ck">Guide downloads</div></div>
+    <div class="card"><div class="cv" id="td-reads">&middot;</div><div class="ck">Records reviewed</div></div>
+  </div>
+  <div class="note" id="td-note">Loading today&hellip;</div>
+
   <h1>AI-Assisted Records Pilot &middot; Submissions</h1>
   <p class="sub">Who has entered reads on the 24-record detection study, and when. Bookmark this page and open it anytime. It updates automatically every 60 seconds. Aggregate counts only; individual answers are never shown.</p>
   <div class="bar"><span class="live" id="live">Loading&hellip;</span><button class="btn" onclick="refresh()">Refresh now</button></div>
@@ -532,6 +546,26 @@ function renderGateSplit(s){
     +'</div>';
   el.innerHTML=html;
 }
+function loadToday(){
+  fetch('/api/asset-stats')
+    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+    .then(function(d){
+      var t=(d&&d.today)||null;
+      function setv(id,v){ var e=document.getElementById(id); if(e) e.textContent=(v===undefined||v===null)?'0':v; }
+      if(!t){ document.getElementById('td-note').textContent='Could not load today. Tap Refresh.'; return; }
+      document.getElementById('td-date').textContent=t.date;
+      setv('td-campaign',t.campaign_screen_arrivals); setv('td-reviewer',t.reviewer_landing_arrivals);
+      setv('td-training',t.training_page_arrivals);   setv('td-endorse',t.endorsements);
+      setv('td-evopen',t.evaluation_opens);           setv('td-evsub',t.evaluation_submissions);
+      setv('td-dl',t.guide_downloads);                setv('td-reads',t.records_reviewed);
+      var parts=[];
+      parts.push((t.total_human_events||0)+' human '+(((t.total_human_events||0)===1)?'event':'events')+' recorded today');
+      if(t.crawler_rows_excluded) parts.push(t.crawler_rows_excluded+' crawler '+((t.crawler_rows_excluded===1)?'row':'rows')+' excluded');
+      if(t.records_reviewed) parts.push(t.records_reviewed+' records reviewed ('+(t.records_reviewed_detection||0)+' detection, '+(t.records_reviewed_comparison||0)+' comparison)');
+      document.getElementById('td-note').textContent=parts.join(' \u00b7 ')+'. '+t.note;
+    })
+    .catch(function(){ var n=document.getElementById('td-note'); if(n) n.textContent='Could not load today. Tap Refresh.'; });
+}
 function loadEvalFunnel(){
   return fetch('/api/asset-stats')
    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
@@ -831,7 +865,7 @@ function renderSupWall(d){
   h+='</div>';
   w.innerHTML=h;
 }
-function refresh(){ loadDetection(); loadRealcase(); loadArmB(); loadOrgPilots(); loadGate(); loadRegistrations(); loadEvalFunnel(); loadContributors(); loadTraining(); loadDownloads(); loadItems(); loadSupport(); }
+function refresh(){ loadToday(); loadDetection(); loadRealcase(); loadArmB(); loadOrgPilots(); loadGate(); loadRegistrations(); loadEvalFunnel(); loadContributors(); loadTraining(); loadDownloads(); loadItems(); loadSupport(); }
 refresh();
 setInterval(refresh, 60000);
 </script>
