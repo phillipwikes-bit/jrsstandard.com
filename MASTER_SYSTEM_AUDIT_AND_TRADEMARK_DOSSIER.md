@@ -367,3 +367,102 @@ Both were verified against production: a browser user agent records, a non-brows
 **Files updated this run:** `api/asset-stats.js`, `pilot-status.html`, `MASTER_TRACKER.md`, `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md`, `research/MASTER_TRACKER.md`.
 
 **TEAS status unchanged:** JRS PENDING USER INPUTS, DRR PENDING USER INPUTS. First Use Anywhere, First Use in Commerce and USPTO identification acceptability all remain `[REQUIRES USER INPUT]`.
+
+### 2026-08-11T21:28:42Z : LINK-CLICK TELEMETRY AUDIT AND REPAIR
+
+#### A. Executive audit status
+
+| Item | Status |
+|---|---|
+| Link-click telemetry | **PATCHED AND LOCALLY VERIFIED** |
+| Failure class | **NAVIGATION RACE CONDITION** |
+| Link inventory | **VERIFIED**, 785 navigating links across 66 pages |
+| Counter audit | **VERIFIED**, previous run: 28 endpoint checks and 23 rendered tiles, 0 mismatches |
+| Metric reconciliation | **VERIFIED** |
+| JRS dossier | **REQUIRES USER INPUT** |
+| DRR dossier | **REQUIRES USER INPUT** |
+| Live external event ingestion | **NOT LOCALLY VERIFIABLE** for a real visitor's browser. See section F |
+
+#### B. Telemetry architecture, as it exists
+
+The repository uses **two mechanisms**, not one, and this is deliberate:
+
+1. **Server-side write on request.** `/api/support` and `/api/dl` are edge functions. They write the row and then issue a 302. **These cannot be lost to a navigation race, cannot be blocked by CORS or CSP, and do not require JavaScript.** 117 of the 785 navigating links resolve through them.
+2. **Client-side arrival ping on the destination.** `access.html`, `reviewer/index.html`, `training.html` and `investigator-guides.html` POST to `/api/access` on load. This is the mechanism that was defective.
+
+No `sendBeacon`, `XMLHttpRequest`, GTM, Plausible, PostHog, Umami or Matomo is present anywhere. GA4 (`G-NVYHJ7BJ92`) is loaded on 57 pages but **zero files call `gtag('event', ...)`**, so GA4 records pageviews only and is not part of the click pipeline.
+
+#### C. Link inventory
+
+| Link class | Count | Tracking mechanism | Fires on |
+|---|---|---|---|
+| Internal navigation | 628 | Destination arrival ping, where the destination is instrumented | Destination load |
+| Campaign link (`/api/support`) | 79 | Server-side write, then 302 | Request, not click |
+| Download link (`/api/dl`) | 38 | Server-side write, then 302 | Request, not click |
+| Training CTA (`/train`) | 35 | `train-view` arrival ping | Destination load |
+| Evaluation CTA | 3 | `eval-view` logged server-side on GET | Destination load |
+| External / absolute | 2 | **None. Outbound clicks are not tracked** | n/a |
+
+#### D. Failure diagnosis
+
+**Classification: NAVIGATION RACE CONDITION.**
+
+Five telemetry pings fired on page load using a plain `fetch` with no `keepalive` and no `sendBeacon`, on pages whose entire purpose is to be clicked through:
+
+| File | Line | Event | Consequence of the race |
+|---|---|---|---|
+| `access.html` | 158 | `endorse` | **The endorsement itself is lost** |
+| `access.html` | 175 | `view` | Campaign arrival lost |
+| `reviewer/index.html` | 246 | `view` | Reviewer landing arrival lost |
+| `training.html` | 3295 | `view` | Training arrival lost |
+| `investigator-guides.html` | 183 | `view` | Guides arrival lost |
+
+A plain `fetch` is cancelled when the browser navigates. `access.html` carries a single gold CTA that navigates to `/reviewer/evaluation.html`. A reader who lands and taps within the few hundred milliseconds the request needs loses **both their arrival and their endorsement**, with no error surfaced anywhere.
+
+**This is the most likely reason a visitor can report reaching the page while no row exists for them.** It is not the only possible reason, and it is not proven to be the cause of any specific past visit.
+
+#### E. Repair performed
+
+`keepalive: true` added to all five pings. `keepalive` instructs the browser to complete the request even after the page is unloaded.
+
+Chosen because it is the minimal repair that preserves the existing architecture: no new dependency, no `sendBeacon` rewrite, no change to payload, endpoint, or counting methodology. Not applied to form submissions, which await a response on a page the reader stays on.
+
+#### F. End-to-end verification
+
+| Layer | Result |
+|---|---|
+| 1. Source | **VERIFIED** by fresh disk read: `access.html` 2 occurrences, the other three files 1 each |
+| 2. Implementation | **VERIFIED**, inline scripts parse with 0 errors across all four files |
+| 3. Data flow | **VERIFIED**, payload unchanged; `event`, `page`, `campaign`, `src` |
+| 4. Persistence | **VERIFIED** on production earlier this session: a browser user agent posting `event:endorse` moved the total 40 to 41; a non-browser agent did not |
+| 5. Display | **VERIFIED**, 28 endpoint checks and 23 rendered tiles against direct SQL, 0 mismatches |
+| 6. Deployment | **VERIFIED**, `keepalive` present in all four files fetched from `jrsstandard.com` |
+| 7. Race eliminated for a real visitor | **NOT LOCALLY VERIFIABLE.** Proving it requires a real browser navigating away mid-request against production. The browser in this environment has no outbound network |
+
+**LIVE EXTERNAL EVENT INGESTION: NOT LOCALLY VERIFIABLE.** What remains to be externally verified: open a campaign link on a phone, tap the CTA immediately, and confirm the Today panel increments. The reconciliation line on that panel is the readout.
+
+#### G. Counters, metrics and cohorts
+
+No change this run. 53 counter spans, 0 blank, 0 unwritten, 0 orphaned. Six cohorts carry explicit `SUPPRESSED` / `INACTIVE` / `WITHHELD` designation with anti-inflation disclaimers, published at `/api/asset-stats` under `suppressed_cohorts` and rendered on the page.
+
+**Baseline reconciliation, unchanged.** Inter-rater agreement 84.2% is a benchmark; the measured value is **Gwet's AC1 0.739**, 95% CI [0.402, 1.000], n=10 records, 36 labels. Cross-vendor drift <15% is a target; no drift calculation exists and measured reproducibility is 86.7%. The 9-question survey is confirmed. Active benchmark cohort: `bench-review.html` draws 24 raters over 10 records; whether that is the intended primary cohort is `[REQUIRES USER INPUT]`.
+
+#### H. Files modified this run
+
+`access.html` · `reviewer/index.html` · `training.html` · `investigator-guides.html` · `MASTER_TRACKER.md` · `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md` · `research/MASTER_TRACKER.md`
+
+#### I. Outstanding defects
+
+| Defect | Status |
+|---|---|
+| Outbound clicks to the 2 external links are not tracked | **PRESENT, NOT REPAIRED.** No requirement established for tracking them |
+| GA4 is loaded on 57 pages but no page emits a `gtag('event')` | **PRESENT.** GA4 records pageviews only; it is not part of the click pipeline and was not made part of it |
+| Race elimination for a real visitor | **REQUIRES EXTERNAL VERIFICATION** |
+
+#### J. TEAS dossier status
+
+Unchanged. **JRS: REQUIRES USER INPUT. DRR: REQUIRES USER INPUT.** First Use Anywhere, First Use in Commerce and USPTO identification acceptability all remain `[REQUIRES USER INPUT]`. No new repository evidence was found for any of them this run.
+
+#### K. Final QA certification
+
+Fresh disk reads performed on all four modified HTML files, `pilot-status.html`, `bench-review.html`, `MASTER_TRACKER.md` and this file. All contain the changes reported. **The word "complete" is not used for the trademark dossiers or for live ingestion, because the evidence does not support it.**

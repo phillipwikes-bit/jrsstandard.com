@@ -95,3 +95,68 @@ Unchanged this run. No new repository evidence was found for either blocking fie
 | `research/MASTER_TRACKER.md` | Matching research-log entry |
 
 ---
+
+## Run: 2026-08-11T21:28:42Z
+
+**Overall execution status:** PATCHED AND LOCALLY VERIFIED. One engineering defect found and repaired. One layer requires external verification.
+
+| # | Item | Status |
+|---|---|---|
+| 3 | Link-click telemetry | **PATCHED AND LOCALLY VERIFIED** |
+| 4 | Link-click repair | **NAVIGATION RACE CONDITION** fixed with `keepalive: true` on 5 pings |
+| 5 | Link inventory | **VERIFIED**, 785 navigating links, 66 pages, classified into 6 classes |
+| 6 | Counter audit | **VERIFIED**, 53 spans, 0 blank, 0 unwritten, 0 orphaned |
+| 7 | Metric reconciliation | **VERIFIED**, 28 endpoint checks and 23 rendered tiles vs direct SQL, 0 mismatches |
+| 8 | JRS trademark dossier | **REQUIRES USER INPUT** |
+| 9 | DRR trademark dossier | **REQUIRES USER INPUT** |
+
+### The defect
+
+Five telemetry pings fired on page load with a plain `fetch`, no `keepalive`, no `sendBeacon`, on pages built to be clicked through. A plain fetch is cancelled by navigation. On `access.html` this dropped **the endorsement itself**, not only the arrival.
+
+| File | Event | Repaired |
+|---|---|---|
+| `access.html` | `endorse` | Yes |
+| `access.html` | `view` | Yes |
+| `reviewer/index.html` | `view` | Yes |
+| `training.html` | `view` | Yes |
+| `investigator-guides.html` | `view` | Yes |
+
+Server-side writes in `/api/support` and `/api/dl` were **never** exposed to this failure: they write before issuing the 302 and need no JavaScript. 117 of 785 links resolve through them.
+
+### Required user inputs
+
+| Item | Needed |
+|---|---|
+| First Use Anywhere, both marks | `[REQUIRES USER INPUT]` |
+| First Use in Commerce, both marks | `[REQUIRES USER INPUT]` |
+| USPTO identification acceptability | `[REQUIRES USER INPUT]` |
+| Active benchmark cohort definition | `[REQUIRES USER INPUT]` : `bench-review.html` holds 24 raters over 10 records; whether that is the intended single primary cohort is not established |
+
+### Requires external verification
+
+**LIVE EXTERNAL EVENT INGESTION: NOT LOCALLY VERIFIABLE.** The browser in this environment has no outbound network, so a real navigate-away-mid-request cannot be reproduced against production. To close it: open a campaign link on a phone, tap the CTA immediately, and confirm the Today panel increments.
+
+### Files inspected
+
+All 66 HTML files · `api/*.js` (33 endpoints) · `bench-review.html` · `pilot-status.html` · `MASTER_TRACKER.md` · `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md` · git history · `interaction_events`, `pilot_progress`, `armb_progress`, `bench_labels` by direct SQL
+
+### Files modified
+
+`access.html` · `reviewer/index.html` · `training.html` · `investigator-guides.html` · `MASTER_TRACKER.md` · `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md` · `research/MASTER_TRACKER.md`
+
+### Files created
+
+None this run. Both master files already existed and were appended to.
+
+### Known limitations
+
+1. Outbound clicks to the 2 external links are not tracked. No requirement for tracking them has been established.
+2. GA4 is loaded on 57 pages but no page emits `gtag('event')`. It records pageviews only and is not part of the click pipeline.
+3. Arrival logging began on different dates per surface, so a zero before a surface's start date is unknown rather than zero.
+
+### Outstanding defects
+
+None repairable from repository evidence. The three items above are stated limitations, not unrepaired faults.
+
+---
