@@ -79,8 +79,13 @@ const HONOR_YEAR = '2026';
 // wish to be printed rather than guessing.
 //
 // 34 entries: 1 public-records + 16 detection + 17 records-review.
-// The 33 completers are the figure published on the site, verified against
-// pilot_progress and armb_progress on 2026-08-09.
+//
+// THE ROSTER IS ONE SHORT OF THE COMPLETERS AS OF 2026-08-11. RR-117 finished
+// on that date, taking records-review completers from 17 to 18 and the
+// programme total from 33 to 34, and no honor entry has been added for her.
+// Adding one means writing a citation and issuing a link, which is an owner
+// decision rather than a count correction, so it is recorded here instead of
+// being made silently. Verified against pilot_progress and armb_progress.
 const ROSTER = {
   'q7m2vd9xk4': {
     code: 'H-2026-01',
