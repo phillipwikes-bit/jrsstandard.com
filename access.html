@@ -137,6 +137,28 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
   var evalLink = document.getElementById('cta-eval');
   if (evalLink) evalLink.href = '/reviewer/evaluation.html' + (pass ? '?' + pass.slice(1) : '');
 
+  // ENDORSEMENT FALLBACK. /api/support records the endorsement server-side and
+  // marks its redirect with r=1. Arriving without that marker means the reader
+  // reached this screen some other way, a copied URL, a forwarded link, a
+  // bookmark, or a link a platform expanded, and nothing has been recorded for
+  // them yet. The screen says their support is recorded, so it has to be true
+  // for them as well. Fires once per session per campaign.
+  try {
+    if (qp('r') !== '1') {
+      var ekey = 'jrs-endorsed-' + cKey;
+      var already = false;
+      try { already = sessionStorage.getItem(ekey) === '1'; } catch(e){}
+      if (!already) {
+        try { sessionStorage.setItem(ekey, '1'); } catch(e){}
+        fetch('/api/access', {
+          method: 'POST',
+          headers: { 'Content-Type':'application/json' },
+          body: JSON.stringify({ event:'endorse', campaign: campaignRaw, src: src })
+        }).catch(function(){});
+      }
+    }
+  } catch(e){}
+
   // Tell the server the screen was opened, so the drop-off between arriving and
   // reaching the evaluation can be measured. No personal data is sent, and a
   // failure here never blocks the page.

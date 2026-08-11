@@ -68,6 +68,7 @@ export default async function handler(req){
   // click, so the redirect is issued whatever happens here.
   const env = (typeof process !== 'undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
+  let wrote = false;
   if (SERVICE && !isAgent) {
     try {
       const country = String(req.headers.get('x-vercel-ip-country') || '')
@@ -86,9 +87,18 @@ export default async function handler(req){
           country: country
         }})
       });
+      wrote = true;
     } catch (e) { /* never block the redirect */ }
   }
 
-  const q = '?c=' + encodeURIComponent(campaign) + (src ? '&src=' + encodeURIComponent(src) : '');
+  // r=1 tells the campaign screen the endorsement is already on record, so it
+  // does not write a second one. Its absence is how the screen knows a reader
+  // arrived by some other route: a copied address-bar URL, a forwarded link, a
+  // bookmark, or a link expanded by a platform. Those readers see the same
+  // screen saying their support is recorded, and before this they were the one
+  // case where that sentence was still untrue.
+  const q = '?c=' + encodeURIComponent(campaign)
+          + (src ? '&src=' + encodeURIComponent(src) : '')
+          + (wrote ? '&r=1' : '');
   return Response.redirect(url.origin + '/access.html' + q, 302);
 }
