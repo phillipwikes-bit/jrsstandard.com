@@ -50,11 +50,25 @@ export default async function handler(req){
     return Response.redirect(url.origin + '/supported.html?c=' + encodeURIComponent(campaign), 302);
   }
 
+  // NON-BROWSER AGENTS DO NOT ENDORSE ANYTHING.
+  //
+  // Added 2026-08-11 after four separate rounds of self-inflicted pollution:
+  // every verification of this endpoint wrote a real endorsement that then had
+  // to be purged by hand with a timestamp bracket. A crawler following the
+  // campaign link from an indexed page would do exactly the same thing and
+  // nobody would notice.
+  //
+  // The redirect still happens for everyone. Only the count is protected, so a
+  // crawler still reaches the page and simply is not recorded as a supporter.
+  const ua = String(req.headers.get('user-agent') || '');
+  const NOT_A_PERSON = /googlebot|bingbot|baiduspider|yandexbot|duckduckbot|applebot|GoogleOther|facebookexternalhit|bot|spider|crawl|slurp|preview|headless|curl|wget|python-requests|libwww|okhttp|java\/|go-http/i;
+  const isAgent = !ua || NOT_A_PERSON.test(ua);
+
   // Best-effort write. A database failure must never cost the reader their
   // click, so the redirect is issued whatever happens here.
   const env = (typeof process !== 'undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
-  if (SERVICE) {
+  if (SERVICE && !isAgent) {
     try {
       const country = String(req.headers.get('x-vercel-ip-country') || '')
         .toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2) || null;

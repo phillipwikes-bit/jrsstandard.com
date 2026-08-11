@@ -168,11 +168,19 @@ async function purgeTestRows(H){
   // window. Nothing genuine can fall inside these bounds.
   const E2E_FROM = '2026-08-11T08:36:45Z';
   const E2E_TO   = '2026-08-11T08:37:00Z';
+  // Second bracket: three rows written at 20:18Z while confirming the endorsement
+  // redirect was not being served from edge cache. Same six-second signature, and
+  // the last one is the reason /api/support now refuses to record a non-browser
+  // agent at all, so this list should not need extending again.
+  const E2E2_FROM = '2026-08-11T20:18:35Z';
+  const E2E2_TO   = '2026-08-11T20:18:45Z';
   try {
-    await fetch(SB + '/rest/v1/interaction_events?source=eq.support'
-      + '&created_at=gte.' + encodeURIComponent(E2E_FROM)
-      + '&created_at=lte.' + encodeURIComponent(E2E_TO),
-      { method: 'DELETE', headers: H });
+    for (const w of [[E2E_FROM, E2E_TO], [E2E2_FROM, E2E2_TO]]) {
+      await fetch(SB + '/rest/v1/interaction_events?source=eq.support'
+        + '&created_at=gte.' + encodeURIComponent(w[0])
+        + '&created_at=lte.' + encodeURIComponent(w[1]),
+        { method: 'DELETE', headers: H });
+    }
   } catch (e) { /* best-effort */ }
   // The five guide-download rows written on 2026-08-11 while verifying that
   // every shape of ?e= link had stopped redirecting to the consent form. They
