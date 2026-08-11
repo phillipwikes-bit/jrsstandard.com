@@ -145,11 +145,16 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
   // for them as well. Fires once per session per campaign.
   try {
     if (qp('r') !== '1') {
+      // localStorage, not sessionStorage. sessionStorage is per tab, so the
+      // same person opening the link in a second tab would be counted twice.
+      // This path exists to catch forwarded and copied URLs, which are exactly
+      // the links people open more than once, so it is deduped per browser per
+      // campaign rather than per tab.
       var ekey = 'jrs-endorsed-' + cKey;
       var already = false;
-      try { already = sessionStorage.getItem(ekey) === '1'; } catch(e){}
+      try { already = localStorage.getItem(ekey) === '1'; } catch(e){}
       if (!already) {
-        try { sessionStorage.setItem(ekey, '1'); } catch(e){}
+        try { localStorage.setItem(ekey, '1'); } catch(e){}
         fetch('/api/access', {
           method: 'POST',
           headers: { 'Content-Type':'application/json' },
