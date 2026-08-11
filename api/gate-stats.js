@@ -158,7 +158,8 @@ export default async function handler(req){
   const guideCountries = {}, supportCountries = {}, allCountries = {};
   let guideEvents = 0, supportEvents = 0;
   let viewsGuide = 0, viewsSupport = 0, viewsGuidesPage = 0;
-  const viewsByDay = {}, viewsBySrc = {}, viewsByCountry = {};
+  let touches = 0;
+  const viewsByDay = {}, viewsBySrc = {}, viewsByCountry = {}, touchesByField = {};
   for (let i = 0; i < events.length; i++){
     const e = events[i] || {};
     const p = e.payload || {};
@@ -167,6 +168,16 @@ export default async function handler(req){
     // Form opened. Counted separately so the drop-off between opening the form
     // and finishing it is visible, instead of guessed at.
     if (String(e.source) === 'gate-view'){
+      // The gate-view source carries two event types. Only 'view' is a form
+      // open; 'field_touched' is the first-focus ping and counting it here put
+      // it in the conversion denominator, so every reader who touched a field
+      // registered as an extra abandonment and drove the reported rate down.
+      if (String(e.type) === 'field_touched'){
+        touches++;
+        const fn = String(p.field_name || '(unnamed)');
+        touchesByField[fn] = (touchesByField[fn] || 0) + 1;
+        continue;
+      }
       if (String(p.mode) === 'guidespage') { viewsGuidesPage++; continue; }
       if (String(p.mode) === 'support') viewsSupport++; else viewsGuide++;
       // Break views down by day and by referral tag, so a run of opens from one
@@ -224,6 +235,15 @@ export default async function handler(req){
     views_by_day: Object.keys(viewsByDay).sort().map(function(d){ return { day: d, views: viewsByDay[d] }; }),
     views_by_src: sortDesc(viewsBySrc, 'src'),
     views_by_country: sortDesc(viewsByCountry, 'country'),
+
+    // First-focus pings. Splits an abandonment into "opened and never typed"
+    // and "started and left". field_touched fires once per page session on the
+    // first field touched, so this reports the entry point, not the depth
+    // reached: a reader who filled three fields and left is recorded under the
+    // first one. Read it as where people begin, not where they stop.
+    field_touches: touches,
+    field_touches_by_field: sortDesc(touchesByField, 'field'),
+    started_form_pct: views ? Math.round((touches / views) * 1000) / 10 : null,
 
     // Where they were.
     countries: Object.keys(allCountries).length,

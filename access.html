@@ -253,7 +253,9 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
   try {
     var touched = false;
     try { touched = sessionStorage.getItem('jrs-gate-touch') === '1'; } catch(e){}
-    var FIELDS = ['f-name','f-email','f-org','f-title','c-registry','c-contact'];
+    // f-title is deliberately absent: it is a hidden input set in script and
+    // never surfaced, so it cannot receive focus and could never fire this ping.
+    var FIELDS = ['f-name','f-email','f-org','c-registry','c-contact'];
     FIELDS.forEach(function(id){
       var el = document.getElementById(id);
       if (!el) return;
