@@ -11,8 +11,8 @@
      arrives from LinkedIn, where a link with no OpenGraph block renders as a
      bare grey row. noindex keeps it out of search; it does not stop a share
      card, and the two are unrelated settings. -->
-<meta property="og:title" content="Free Record Defensibility Check" />
-<meta property="og:description" content="Run the Justification Review Standard on up to twenty five of your own records, free and private. Your record text is never stored: each record is assessed in memory and discarded." />
+<meta property="og:title" content="Pressure-test the standard" />
+<meta property="og:description" content="A decision, a policy, or a principle is only as resilient as the range of people who have pressure-tested it. This evaluation recruits an internationally and linguistically diverse panel of reviewers rather than relying on a single jurisdiction. No registration, no email required." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://jrsstandard.com/access.html" />
 <meta property="og:image" content="https://jrsstandard.com/og-card.png" />
@@ -20,8 +20,8 @@
 <meta property="og:image:height" content="630" />
 <meta property="og:site_name" content="JRS&#8482; Justification Review Standard" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Free Record Defensibility Check" />
-<meta name="twitter:description" content="Run the Justification Review Standard on up to twenty five of your own records, free and private. Your record text is never stored." />
+<meta name="twitter:title" content="Pressure-test the standard" />
+<meta name="twitter:description" content="An internationally and linguistically diverse reviewer panel, recruited rather than assumed. No registration, no email required." />
 <meta name="twitter:image" content="https://jrsstandard.com/og-card.png" />
 <link rel="canonical" href="https://jrsstandard.com/access.html" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,6 +70,11 @@ button.ghost{background:none;color:var(--accent);border:1px solid var(--accent)}
 .detail-toggle a{color:var(--accent-dim);text-decoration:underline}
 input.bad{border-color:var(--review-text)}
 .fine{font-size:10.5px;color:var(--muted-soft);line-height:1.55;margin-top:12px}
+/* Campaign route CTAs. Same declarations as reviewer/index.html so the two
+   entry points to the reviewer pathway are visually the same control. */
+.cta{display:block;width:100%;text-align:center;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;text-decoration:none;padding:15px;font-weight:600}
+.cta.ghost{background:none;color:var(--accent);border:1px solid var(--accent);margin-top:10px}
+.hook{border-left:3px solid var(--accent-dim);background:var(--surface2);padding:14px 16px;margin:0 0 16px;font-size:13px;color:var(--muted);line-height:1.65}
 .listing{border:1px solid var(--accent-dim);background:var(--surface2);padding:14px 15px;margin:0 0 14px}
 .listing .rlabel{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:7px}
 .listing p{font-size:12.5px;color:var(--muted);line-height:1.6;margin:0}
@@ -88,6 +93,19 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     <p class="cred">Built by <b>Phillip Wikes</b>, former Lead Civil Rights Officer, Maryland Commission on Civil Rights. <b>54 international reviewers across three studies</b> have graded records for this work, including <b>33 independent experts across 16 countries</b> who each completed a full 24-record set.</p>
     <p class="tip" id="app-tip" style="display:none">Reading inside the LinkedIn app? Tap the &hellip; menu and choose <b>Open in browser</b> first, so the file saves to your device.</p>
 
+    <!-- Campaign route only. Two clicks instead of a form: the endorsement is
+         already recorded by /api/support before this page loads, so a second
+         multi-field ask was a second price for something already paid. Hidden
+         on the guide route, where the form is the delivery mechanism. -->
+    <div id="cta-block" style="display:none">
+      <p class="hook" id="hook"></p>
+      <a id="cta-train" class="cta" href="/train">Open Module 1 now &rarr;</a>
+      <a id="cta-eval" class="cta ghost" href="/reviewer/evaluation.html">Go straight to the reviewer evaluation</a>
+      <p class="trust" id="cta-trust">No registration &middot; No email required &middot; Stop at any point</p>
+      <p class="fine" id="cta-proof" style="text-align:center"></p>
+      <p class="fine" id="cta-fine">The evaluation is anonymous. It asks nine questions about how records are reviewed where you work, and it does not ask who you are. Contact details are requested at the end, optionally, only if you want a recommendation or a certificate in return. See the <a href="privacy.html">Privacy Policy</a>.</p>
+    </div>
+
     <input id="f-name"  type="text"  placeholder="Full name" autocomplete="name">
     <input id="f-email" type="email" placeholder="Email" autocomplete="email">
     <input id="f-org"   type="text"  placeholder="Organization (optional)" autocomplete="organization" style="margin-bottom:14px">
@@ -101,16 +119,15 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     <button id="go" type="button">Continue</button>
     <p class="trust" id="trust">Free access &middot; No credit card &middot; Memory-only record processing</p>
 
-    <p class="detail-toggle"><a href="#" id="what-toggle">What am I agreeing to?</a></p>
+    <p class="detail-toggle" id="what-wrap"><a href="#" id="what-toggle">What am I agreeing to?</a></p>
     <div class="registry" id="registry-detail" style="display:none">
       <div class="rlabel">Registration terms</div>
       <p id="registry-longterms">Ticking the box means three things and no more: contact me about the JRS project, store my details securely, and allow that record to travel with the project if the JRS assets are ever transferred to a successor. It does <b>not</b> publish your name. Being listed in the public Registry is a separate, optional choice offered after you have what you came for.</p>
       <p style="margin-top:8px">Registering opens the <b>free, private JRS diagnostic check</b> on your own records. Your record text is never stored: each record is assessed in memory and discarded.</p>
-      <p id="registry-live" style="margin-top:8px;color:var(--muted-soft)"></p>
       <p style="margin-top:8px">You can leave the Registry at any time by emailing <a href="mailto:info@jrsstandard.com">info@jrsstandard.com</a>. The standard, the research, and the site stay free to read without registering.</p>
     </div>
 
-    <p class="fine">Your details are stored securely and used only for the JRS project. Request access or deletion any time at <a href="mailto:info@jrsstandard.com">info@jrsstandard.com</a>. See the <a href="privacy.html">Privacy Policy</a>.</p>
+    <p class="fine" id="form-fine">Your details are stored securely and used only for the JRS project. Request access or deletion any time at <a href="mailto:info@jrsstandard.com">info@jrsstandard.com</a>. See the <a href="privacy.html">Privacy Policy</a>.</p>
   </div>
 </div>
 
@@ -165,38 +182,57 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
 
   if (mode === 'support') {
     var cname = CAMPAIGN_LABEL[cKey] || 'the JRS initiatives';
-    // The page leads with the tool, not with the register. People arrive wanting
-    // to know whether their own records hold up; the campaign entry is what the
-    // registration records, and it is stated plainly, second.
-    eyebrow.textContent = 'Free diagnostic access';
-    headline.textContent = 'Free Record Defensibility Check';
-    lede.innerHTML = 'Paste up to twenty five of your own records, redacted, and get a five-condition read on each one straight away. '
-      + 'Registering takes about twenty seconds and gives you immediate, confidential access. '
-      + 'Your entry is recorded against <b style="color:var(--text)">' + cname + '</b> as an individual practitioner, never on behalf of your employer, '
-      + 'and your name is not published unless you choose it on the next screen.';
-    go.textContent = 'Launch free record check →';
-    namedWrap.style.display = 'flex';
-    registryRequired = true;
-    // One box, not two. Joining the Registry means being listed in it, being
-    // contactable about it, and the entry surviving a change of ownership. Those
-    // are one decision, so they are one click.
-    combined = true;
-    var contactBox = document.getElementById('contact-wrap');
-    if (contactBox) contactBox.style.display = 'none';
+    // The endorsement is already written by /api/support on the way in, so by
+    // the time this page renders the reader has done the thing the link asked
+    // for. Asking them to fill a four-field form to continue charged them twice
+    // for it, and the measured result was one registration against a hundred
+    // opens. The campaign route now offers the two reviewer entry points and
+    // nothing else. Contact capture moves downstream to the evaluation, where
+    // it is optional and paid for with a recommendation or a certificate.
+    eyebrow.textContent = 'Your support is recorded';
+    headline.textContent = 'Now pressure-test it';
+    lede.innerHTML = 'Your entry against <b style="color:var(--text)">' + cname + '</b> is recorded as an individual practitioner, '
+      + 'never on behalf of your employer, and your name is not published. '
+      + 'The next thing the work needs is reviewers, and there is no form between you and either route below.';
+
+    var hook = document.getElementById('hook');
+    if (hook) hook.textContent = 'A decision, a policy, or a principle is only as resilient as the range of people who have '
+      + 'pressure-tested it. That is why this evaluation recruits an internationally and linguistically diverse panel of '
+      + 'reviewers rather than relying on a single jurisdiction.';
+
+    // Attribution has to survive the hop, otherwise every reviewer who arrives
+    // this way is logged as direct traffic and the campaign looks like it sent
+    // nobody. Campaign is carried too, so a reviewer can be traced to the
+    // initiative that recruited them.
+    var pass = '';
+    if (src)   pass += '&src=' + encodeURIComponent(src);
+    if (cKey)  pass += '&c=' + encodeURIComponent(cKey);
+    var train = document.getElementById('cta-train');
+    var evalv = document.getElementById('cta-eval');
+    if (train) train.href = '/train?access=reviewer&focus=1' + pass;
+    if (evalv) evalv.href = '/reviewer/evaluation.html?' + (pass ? pass.slice(1) : '');
+
+    // Swap the form out for the two buttons. Everything the form needed goes
+    // with it, so no orphaned consent line or submit handler is left on screen.
+    var ctaBlock = document.getElementById('cta-block');
+    if (ctaBlock) ctaBlock.style.display = 'block';
+    // The static title says Register, which is what this route no longer asks
+    // anyone to do. Set per mode rather than left contradicting the screen.
+    document.title = 'Pressure-test the standard · JRS';
+    ['f-name','f-email','f-org','contact-wrap','named-wrap','msg','go','trust','what-wrap','registry-detail','form-fine']
+      .forEach(function(id){ var el = document.getElementById(id); if (el) el.style.display = 'none'; });
     // Live registry size and reach. People join a register that visibly exists,
     // so the count and the country spread are shown rather than described.
     fetch('/api/support-stats')
       .then(function(r){ return r.ok ? r.json() : null; })
       .then(function(d){
         if (!d || !d.total) return;
-        var reg = document.getElementById('registry-live');
-        // Named entries only. The older one-click links recorded a count and a
-        // country and nothing else, so those people are not Registry members and
-        // are not counted as if they were.
-        var named = d.named_supporters || 0;
+        // Written under the buttons now, not into the registration terms panel:
+        // that panel belongs to a form this route no longer shows, so text
+        // placed there would never be seen.
+        var reg = document.getElementById('cta-proof');
         if (reg) reg.textContent = d.total + ' people have backed the initiatives across '
-          + d.countries + ' countries. ' + named + ' have joined the Registry by name so far, and they carry the '
-          + 'designation Registered International Advocate.';
+          + d.countries + ' countries.';
       })
       .catch(function(){});
   } else {
@@ -431,7 +467,10 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
   }
 
   go.addEventListener('click', submit);
-  document.addEventListener('keydown', function(e){ if (e.key === 'Enter') submit(); });
+  // Guarded on mode: the campaign route hides the form, and an unguarded
+  // document-level Enter would still run submit() against empty inputs, writing
+  // a validation message into a hidden element and disabling a hidden button.
+  document.addEventListener('keydown', function(e){ if (e.key === 'Enter' && mode !== 'support') submit(); });
 
   // "What am I agreeing to?" opens the full terms rather than putting four lines
   // of consent text between the reader and the button.
