@@ -166,12 +166,23 @@ export default async function handler(req){
 
   if (String(b.event || '') === 'view') {
     if (gateCheck) return json({ ok: true, view: true, recorded: false, check: true, is_mobile: isMobile });
+    // ADDED 2026-08-11: arrivals on the reviewer landing page and on the
+    // training page were recorded NOWHERE. reviewer/index.html made no logging
+    // call at all, and training.html recorded only a completed enrolment, so a
+    // reader who clicked the link, opened Module 1 in preview and left produced
+    // no row anywhere. Both were invisible surfaces: a click could happen and
+    // nothing would show up, which is exactly what it looked like.
+    //
+    // Written under their own source values so gate-stats, which counts
+    // source='gate-view' as a campaign form open, is untouched by the change.
+    const PAGE_SOURCE = { reviewer: 'reviewer-view', training: 'train-view' };
+    const viewSource = PAGE_SOURCE[String(b.page || '')] || 'gate-view';
     try {
       await fetch(SB + '/rest/v1/interaction_events', {
         method: 'POST',
         headers: { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE,
                    'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
-        body: JSON.stringify({ source: 'gate-view', type: 'view', payload: {
+        body: JSON.stringify({ source: viewSource, type: 'view', payload: {
           mode: mode,
           edition: normEdition(b.edition) || '',
           campaign: b.campaign ? normCampaign(b.campaign) : '',

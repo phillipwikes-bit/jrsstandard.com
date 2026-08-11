@@ -187,6 +187,16 @@ export default async function handler(req){
   // deliberately does not do. Stated here rather than implied.
   // Crawler opens are excluded here for the same reason as the device split: a
   // search engine rendering the page is not a reviewer considering it.
+  // Arrivals on the two surfaces that used to record nothing. Same crawler
+  // treatment as everywhere else, and the exclusion is published rather than
+  // silent so a low number is never mistaken for a filtered one.
+  let reviewerViews = 0, reviewerViewCrawlers = 0, trainViews = 0, trainViewCrawlers = 0;
+  events.forEach(function(e){
+    if (e.type !== 'view') return;
+    if (e.source === 'reviewer-view') { isCrawler(e.payload) ? reviewerViewCrawlers++ : reviewerViews++; }
+    if (e.source === 'train-view')    { isCrawler(e.payload) ? trainViewCrawlers++    : trainViews++; }
+  });
+
   let evalOpened = 0, evalOpenedCrawlers = 0;
   events.forEach(function(e){
     if (e.source !== 'eval-view' || e.type !== 'view') return;
@@ -325,6 +335,18 @@ export default async function handler(req){
       case_corpora: corpora,
       note: 'A completer graded all 24 records in their set. Counted live from the '
           + 'progress views, not from a roster file.'
+    },
+
+    entry_points: {
+      reviewer_landing_views: reviewerViews,
+      reviewer_landing_crawlers_excluded: reviewerViewCrawlers,
+      training_page_views: trainViews,
+      training_page_crawlers_excluded: trainViewCrawlers,
+      note: 'Arrivals, not actions. Logging on these two pages began 2026-08-11: '
+          + 'before that date the reviewer landing page made no logging call at all '
+          + 'and the training page recorded only a completed enrolment, so a click '
+          + 'that did not convert produced no row anywhere and the arrival count for '
+          + 'both pages is unknown for every date before then rather than zero.'
     },
 
     reviewer_evaluation_funnel: {
