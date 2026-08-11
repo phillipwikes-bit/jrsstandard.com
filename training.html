@@ -3293,6 +3293,7 @@ function enrollSubmit(){
     if (!skip && !seen) {
       try { sessionStorage.setItem('jrs-training-view', '1'); } catch(e){}
       fetch('/api/access', {
+        keepalive: true,
         method: 'POST',
         headers: { 'Content-Type':'application/json' },
         body: JSON.stringify({ event:'view', page:'training', src:s,

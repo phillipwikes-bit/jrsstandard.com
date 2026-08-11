@@ -156,7 +156,8 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
       if (!already) {
         try { localStorage.setItem(ekey, '1'); } catch(e){}
         fetch('/api/access', {
-          method: 'POST',
+          keepalive: true,
+        method: 'POST',
           headers: { 'Content-Type':'application/json' },
           body: JSON.stringify({ event:'endorse', campaign: campaignRaw, src: src })
         }).catch(function(){});
@@ -173,6 +174,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     if (!seen) {
       try { sessionStorage.setItem('jrs-gate-view', '1'); } catch(e){}
       fetch('/api/access', {
+        keepalive: true,
         method: 'POST',
         headers: { 'Content-Type':'application/json' },
         body: JSON.stringify({ event:'view', mode:'support', edition:'', campaign: campaignRaw, src: src })
