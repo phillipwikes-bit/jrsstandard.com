@@ -39,13 +39,13 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
 
     <p class="hook" id="hook"></p>
     <a id="cta-eval" class="cta" href="/reviewer/evaluation.html">Take the 4-minute reviewer evaluation &rarr;</a>
-    <p class="trust" id="cta-trust">No registration required &middot; 100% Anonymous &middot; Optional LinkedIn Recommendation included</p>
+    <p class="trust" id="cta-trust">&#10003; No registration required &middot; 100% Anonymous &middot; Optional LinkedIn Recommendation included</p>
     <p class="fine" id="cta-proof" style="text-align:center"></p>
 
     <!-- Credentials moved below the button on 2026-08-11. They are supporting
          evidence, not a precondition, and at 110px tall they were the single
          largest thing standing between the hook and the ask on a phone. -->
-    <p class="cred">Built by <b>Phillip Wikes</b>, former Lead Civil Rights Officer, Maryland Commission on Civil Rights. <b>55 international reviewers across three studies</b> have graded records for this work, including <b>34 independent experts across 16 countries</b> who each completed a full 24-record set.</p>
+    <p class="cred">Built by <b>Phillip Wikes</b>, former Lead Civil Rights Officer, Maryland Commission on Civil Rights. <b><span data-panel="reviewers">55</span> international reviewers across three studies</b> have graded records for this work, including <b><span data-panel="completers">34</span> independent experts across <span data-panel="countries">16</span> countries</b> who each completed a full 24-record set.</p>
 
     <p class="fine" id="cta-fine">Your answers are anonymous. Contact information is only requested at the end if you choose to receive a LinkedIn Peer Reviewer Recommendation or Certificate. See the <a href="privacy.html">Privacy Policy</a>.</p>
   </div>
@@ -142,6 +142,27 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
       var tip = document.getElementById('app-tip');
       if (tip) tip.style.display = 'block';
     }
+  } catch(e){}
+})();
+</script>
+<script>
+(function(){
+  // The published reviewer figures read from /api/panel-stats so the sentence
+  // cannot drift from the database again. The numbers in the markup are the
+  // fallback: if the fetch fails, or returns something that is not a positive
+  // number, the page keeps the value it shipped with rather than blanking.
+  try {
+    fetch('/api/panel-stats')
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(d){
+        if (!d) return;
+        var els = document.querySelectorAll('[data-panel]');
+        for (var i = 0; i < els.length; i++) {
+          var v = d[els[i].getAttribute('data-panel')];
+          if (typeof v === 'number' && v > 0) els[i].textContent = v;
+        }
+      })
+      .catch(function(){});
   } catch(e){}
 })();
 </script>

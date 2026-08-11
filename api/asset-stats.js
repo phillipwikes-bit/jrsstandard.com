@@ -146,7 +146,7 @@ export default async function handler(req){
   // Applied to the public view and device aggregates only. It is a user-agent
   // match, so it catches declared crawlers and nothing else; it is not a
   // fraud control and does not pretend to be one.
-  const CRAWLER = /bot|spider|crawl|slurp|GoogleOther|bingpreview|facebookexternalhit|preview|headless|python-requests|curl|wget/i;
+  const CRAWLER = /googlebot|bingbot|baiduspider|yandexbot|duckduckbot|applebot|GoogleOther|bingpreview|facebookexternalhit|bot|spider|crawl|slurp|preview|headless|python-requests|curl|wget/i;
   function isCrawler(p){ return CRAWLER.test(String((p || {}).user_agent || '')); }
 
   // Device split, now that user-agent is captured. Only rows written since that
@@ -161,8 +161,18 @@ export default async function handler(req){
 
   // Downloads of the public artifacts, which is the one engagement signal that
   // has never been gated and therefore has the cleanest denominator.
-  let downloads = 0;
-  events.forEach(function(e){ if (e.type === 'download' && e.source !== 'honor-cert') downloads++; });
+  // Crawlers are excluded here too, but only where the row can be tested: user
+  // agent was not captured on download rows until 2026-08-11, so the older rows
+  // carry no flag and are counted. That is stated in the payload rather than
+  // left for a reader to assume the filter is total.
+  let downloads = 0, downloadsCrawlers = 0, downloadsUnattributed = 0;
+  events.forEach(function(e){
+    if (e.type !== 'download' || e.source === 'honor-cert') return;
+    const p = e.payload || {};
+    if (isCrawler(p)) { downloadsCrawlers++; return; }
+    if (!p.user_agent) downloadsUnattributed++;
+    downloads++;
+  });
 
   // THE REVIEWER EVALUATION FUNNEL. Three numbers, and they answer three
   // different questions that were previously collapsed into one:
@@ -360,6 +370,11 @@ export default async function handler(req){
 
     open_engagement: {
       public_artifact_downloads: downloads,
+      downloads_crawlers_excluded: downloadsCrawlers,
+      downloads_predating_user_agent_capture: downloadsUnattributed,
+      downloads_basis: 'Declared crawlers are excluded where the row can be tested. '
+             + 'User agent was not written on download rows until 2026-08-11, so rows '
+             + 'before that date carry no flag and are still counted.',
       device_split: {
         mobile: mobile,
         desktop: desktop,
