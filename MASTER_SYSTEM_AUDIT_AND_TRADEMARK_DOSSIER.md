@@ -216,3 +216,27 @@ Searched for `price`, `purchase`, `invoice`, `subscription`, `licence fee`, `pai
 | Specimen acceptability | **NOT ESTABLISHED.** Candidates inventoried, none assessed as acceptable |
 | Trademark ownership and priority | **NOT ESTABLISHED.** Outside repository scope |
 | Countries figure (16) | Live-computable only in part. No country is stored in any anon-readable table; the value is transcribed and published with `geo_source: "transcribed"` and a rederivation path |
+
+---
+
+## 10. Run log
+
+### 2026-08-11T20:50:49Z
+
+**Counter audit: PATCHED, then PASSED.** All 20 panel metrics reconciled against direct SQL. 0 mismatches.
+
+| Defect found this run | Resolution |
+|---|---|
+| Endorsement chart ended on the last event date, so after a quiet week it stopped at 2026-08-04 and today had no column at all | Series now always runs to the current UTC day. Today's empty column is drawn in gold so a day with nothing yet is distinguishable from a past day that had nothing |
+| A reader arriving by copied, forwarded or bookmarked URL was never recorded, while the screen told them their support was recorded | `/api/support` marks its redirect `r=1` when it wrote; the campaign screen fires a fallback endorsement when that marker is absent, deduped per browser per campaign |
+| `sessionStorage` dedupe was per tab, so a forwarded link opened twice counted twice | Switched to `localStorage`; key added to the sanctioned list in `CLAUDE.md` |
+| One stale `deploytest` guide-download row sat in the table, filtered on read but never removed | Deleted by direct SQL |
+| Non-browser agents could record an endorsement | `/api/support` and the fallback both refuse an absent or non-browser user agent |
+
+**Reconciliation, endpoint against direct SQL, all 20 match:** endorsements 40 / today 0 / chart reaches today / campaign arrivals today 23 / gate views 124 / guide downloads 65 / today 2 / evaluation opens 0 / submissions 0 / detection completers 16 / comparison completers 19 / records reviewed today 48 / reliability raters 24 / reliability records 10 / panel reviewers 56 / completers 35 / registered 47 / training enrolments 7 / completions 7 / contributor outstanding 20.
+
+**Trademark dossiers:** JRS PENDING INPUTS, DRR PENDING INPUTS. Both blocked on the same two fields, first use anywhere and first use in commerce, and on USPTO identification verification. See sections 5, 6 and 7.
+
+**Files modified this run:** `api/support.js`, `api/access.js`, `api/support-stats.js`, `api/contributor.js`, `access.html`, `pilot-status.html`, `CLAUDE.md`, `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md`, `research/MASTER_TRACKER.md`.
+
+**Ground-truth block supplied in the directive, reconciled not injected.** PST Pilot Study 20 cases: `[REQUIRES USER INPUT]`, no occurrence of `PST`, `20 Cases` or `Jan-Mar` anywhere in the repository or database. 84.2% inter-rater: measured value is Gwet's AC1 **0.739**, 95% CI [0.402, 1.000], n=10 records, 36 labels, computed by `research/compute_ac1_ci.py`. Cross-vendor drift <15%: no drift calculation exists; reproducibility is 86.7%, so <15% is recorded as a target and not as a measurement. 9-question survey: **confirmed**, matches `api/reviewer-eval.js`. Active benchmark cohort 1 primary: `bench-review.html` draws 24 raters over 10 records from `bench_labels`; whether that is the "1 Primary Cohort" is `[REQUIRES USER INPUT]`.
