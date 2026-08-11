@@ -68,26 +68,23 @@ export default async function handler(req){
   // gated, which is what the guides page now links to. Nobody is asked for a
   // name to read a free reference document.
   //
-  // The registration route is NOT removed, it is opt-in. ?gate=1 forwards to the
-  // consent form, which captures name and email and releases the file itself via
-  // /api/access. The guides page offers that as a labelled second choice under
-  // each download, and every link already distributed with src=site keeps
-  // pointing at the form, so nothing sent out before today changes behaviour.
+  // CHANGED 2026-08-11: the opt-in registration route is gone too. ?gate=1 and
+  // the src=site|email|signature|footer tags used to forward an edition link to
+  // the consent form; they no longer do, and every shape of ?e= link now
+  // releases the file directly. Links already distributed with those tags keep
+  // working and simply stop asking for a name.
   //
-  // Rationale: 18 people opened the guide form between 2026-08-02 and
-  // 2026-08-09 and 0 completed it. A gate returning zero is not capturing
-  // anything, it is only losing readers. The capture ask now sits after the
-  // download instead of in front of it.
+  // Rationale: the form took 20 opens and returned 0 completions between
+  // 2026-08-02 and 2026-08-11. A gate returning zero is not capturing anything,
+  // it is only losing readers.
+  //
+  // Measurement is unaffected. Country, edition and src are written on the
+  // download itself below, not on the registration, so the geography of guide
+  // readership is still counted exactly as before.
   //
   // The JRS Standard PDF, the Rapid Review Card (?e=standard|card), and the
   // whitelisted reference files (?f=) were never gated and remain open: those
   // are the public artifacts that carry citations.
-  const wantsGate = url.searchParams.get('gate') === '1'
-                 || src === 'site' || src === 'email' || src === 'signature' || src === 'footer';
-  const isTestTag = !!src && (src === 'verify' || src === 'test' || src === 'selftest' || src.indexOf('deploytest') === 0);
-  if (edition && wantsGate && !isTestTag) {
-    return Response.redirect(url.origin + '/access.html?e=' + encodeURIComponent(edition) + (src ? '&src=' + encodeURIComponent(src) : ''), 302);
-  }
 
   const target = url.origin + '/' + (edition ? FILES[edition] : doc ? DOCS[doc] : kit);
 
