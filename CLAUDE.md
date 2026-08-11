@@ -172,6 +172,7 @@ Other self-contained tools may use their own single scoped key, namespaced to th
 | `bench-auto-code`, `bench-expert-<code>`, `bench-done-<code>` | `bench-review.html` | reviewer code and per-record completion |
 | `jrs-ai-pilot` | `ai-records-pilot.html` | AI-records reviewer code + per-record reads (resume progress) |
 | `jrs-owner-token` | `pilot-status.html` | owner admin token, entered once, to auto-load the private named-supporter list (PII kept out of public page source) |
+| `jrs-endorsed-<campaign>` | `access.html` | one-endorsement-per-browser guard on the fallback write, used only when a reader reaches the campaign screen without passing through `/api/support` |
 
 Do not introduce keys beyond this list without adding them here first.
 
