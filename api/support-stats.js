@@ -68,6 +68,49 @@ export default async function handler(){
     }
     const peak = by_day.reduce((m, d) => d.endorsements > m ? d.endorsements : m, 0);
     const activeDays = by_day.filter(d => d.endorsements > 0).length;
+
+    // WHEN DID THE LAST ONE ACTUALLY ARRIVE. A total with no date attached
+    // cannot answer "is this thing still receiving clicks", which is the
+    // question that matters and the one this endpoint kept failing to answer.
+    const lastAt = days.length ? days[days.length - 1] : null;
+    const todayKey = new Date().toISOString().slice(0, 10);
+    const daysSince = lastAt
+      ? Math.round((Date.parse(todayKey + 'T00:00:00Z') - Date.parse(lastAt + 'T00:00:00Z')) / 86400000)
+      : null;
+
+    // THE OUTAGE, PUBLISHED RATHER THAN LEFT AS A GAP IN THE SERIES.
+    //
+    // /api/support stopped writing on 2026-08-02 and handed the write to the
+    // registration form. That form was removed on 2026-08-11 at 03:45Z, and
+    // from then until the write was restored at 08:30Z the campaign screen told
+    // every reader "Your support is recorded" and recorded nothing. Those
+    // clicks are real and they are gone.
+    //
+    // Counted from the arrival log rather than reconstructed into this table:
+    // a gate-view row carrying a campaign is one browser loading the campaign
+    // screen, which is one click. They are NOT written back as endorsements,
+    // because a derived row and a recorded row must never sit in the same
+    // column of the same total.
+    const OUTAGE_FROM = '2026-08-11T03:45:00Z';
+    const OUTAGE_TO   = '2026-08-11T08:30:00Z';
+    let lostClicks = 0;
+    const lostDevices = {};
+    try {
+      const gr = await fetch(SB + '/rest/v1/interaction_events'
+        + '?source=eq.gate-view&select=payload,created_at'
+        + '&created_at=gte.' + encodeURIComponent(OUTAGE_FROM)
+        + '&created_at=lt.' + encodeURIComponent(OUTAGE_TO) + '&limit=5000',
+        { headers: { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE } });
+      if (gr.ok) {
+        const grows = await gr.json();
+        for (const g of grows) {
+          const gp = g.payload || {};
+          if (!gp.campaign) continue;
+          lostClicks++;
+          lostDevices[String(gp.user_agent || 'unknown')] = 1;
+        }
+      }
+    } catch (e) { /* the rest of the payload must still return */ }
     const by_source = Object.entries(byS)
       .map(([src, hits]) => ({ src, hits }))
       .sort((a, b) => b.hits - a.hits);
@@ -148,6 +191,22 @@ export default async function handler(){
       days_with_activity: activeDays,
       peak_day_endorsements: peak,
       mean_per_active_day: activeDays ? Math.round((counted / activeDays) * 10) / 10 : 0,
+      last_endorsement_at: lastAt,
+      days_since_last_endorsement: daysSince,
+      outage: {
+        from: OUTAGE_FROM,
+        to: OUTAGE_TO,
+        clicks_not_recorded: lostClicks,
+        distinct_devices: Object.keys(lostDevices).length,
+        note: 'The endorsement write was broken across this window: the campaign '
+            + 'screen told readers their support was recorded and nothing was '
+            + 'written. These clicks are counted from the arrival log and are '
+            + 'deliberately NOT added to the endorsement total, because a derived '
+            + 'figure and a recorded one must not share a column. Before '
+            + '2026-08-11T03:45Z a campaign click landed on a registration form, '
+            + 'so an arrival there is not a lost endorsement: the reader saw a '
+            + 'form and chose not to complete it.'
+      },
       day_note: 'One row is one endorsement click, counted by UTC calendar day. The '
               + 'endorsement is a bare GET with no form behind it, so no deduplication '
               + 'is applied and none is needed. Days with no endorsements are present '
