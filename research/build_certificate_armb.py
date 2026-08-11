@@ -206,6 +206,17 @@ REVIEWERS = [
         "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Certificate_MacKenzie_McCowan.pdf",
     },
     {
+        "name": "Alexandria Davis",
+        # Completion date is the UTC date of the last read in the database
+        # (2026-08-11T01:59Z), which is the record the certificate rests on.
+        # All 24 completed in a single sitting.
+        "date": "August 11, 2026",
+        "body": neutral_body(
+            "responsible-AI and fairness-in-financial-systems",
+            "practice in responsible AI and fairness in financial systems"),
+        "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Certificate_Alexandria_Davis.pdf",
+    },
+    {
         "name": "Wendy Ann Martel",
         # Completion date is the UTC date of the last read in the database
         # (2026-08-07T21:25Z), which is the record the certificate rests on.
