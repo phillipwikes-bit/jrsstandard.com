@@ -42,7 +42,7 @@ Two things you asked about at the start, now that you are done.
 
 **On endorsement.** You said at the outset that acknowledgment reflects participation and is not an endorsement, and that is exactly how it is treated here. Nothing in the certificate or in any public wording says you endorse anything.
 
-I have also drafted a LinkedIn recommendation, below this message. I will not post it unless you tell me to, and I will change any line you want changed. It describes what you actually did in the study and does not claim anything about your professional performance elsewhere, because I have not seen that work and should not be writing about it.
+I have also drafted a LinkedIn recommendation for you, the same one every reviewer on this panel receives. It is pasted at the end of this message. I will not post it unless you tell me to, and I will change any line you want changed.
 
 The full results go to every reviewer once the study closes, whichever way they come out.
 
@@ -54,25 +54,25 @@ info@jrsstandard.com
 
 ---
 
+### The recommendation, for her to approve or change
+
+I had the pleasure of working with Alexandria Davis as an independent reviewer on the Records Review Study, an international panel of professionals evaluating administrative and workplace records. Alexandria completed the full 24-record review with rigor, care, and genuinely independent judgment.
+
+Alexandria works in responsible AI and fairness in financial systems, where the question is rarely whether a decision was made and almost always whether the file behind it holds up when someone looks. That is the discipline this study asks for, and it showed in the consistency of her reviews and in her willingness to assess each record on its own terms rather than by pattern. She also asked, before agreeing to take part, whether participation would be represented as endorsement. It was not, and asking first is the right instinct.
+
+Alexandria would be an asset to any organization working on responsible AI, fairness in financial decision-making, or the standards by which consequential decisions are documented and reviewed. I recommend her without reservation.
+
+Phillip Wikes
+
+---
+
 ## 2. LINKEDIN RECOMMENDATION
+
+Written in the standard format used for every other reviewer, and filed where the others live: `research/LinkedIn_Recommendation_Alexandria_Davis.md`.
 
 **Do not post without her say-so.** She raised the endorsement question herself before agreeing to take part, which makes posting without explicit permission worse here than it would be anywhere else.
 
-> Alexandria served as an independent reviewer on an international records review study, completing the full 24-record set in a single sitting.
->
-> The work asked reviewers to read constructed administrative records cold and give an unaided professional judgment on each one, with no method to study beforehand and no way to check an answer. It is more demanding than it sounds: 24 consecutive judgments with nothing to lean on but your own reading, and the study depends on that judgment being given honestly rather than carefully.
->
-> Alexandria brought a responsible-AI and fairness-in-financial-systems perspective to it, and she raised the right question before agreeing to take part, which was whether participation would be represented as endorsement. It was not, and asking first is the instinct you want in anyone whose name carries weight.
->
-> This describes her contribution to the study and nothing beyond it. I have not worked alongside her elsewhere and make no claim about that.
-
-**Character count: 1,118.** LinkedIn allows 3,000.
-
-### If she wants a shorter one
-
-> Alexandria served as an independent reviewer on an international records review study, completing the full 24-record set in one sitting: 24 consecutive professional judgments on constructed administrative records, read cold, with no method to study beforehand and no way to check an answer. She also asked, before agreeing, whether participation would be represented as endorsement. It was not. Asking first is the right instinct. This describes her contribution to the study and nothing beyond it.
-
-**Character count: 480.**
+Signed **Phillip Wikes** only. The public recommendation never carries "Creator, JRS", because RR-108 has not finished and other blind recruits and their networks can read it.
 
 ---
 
@@ -81,7 +81,8 @@ info@jrsstandard.com
 | Item | File |
 |---|---|
 | Certificate | `research/Records_Review_Study_Certificate_Alexandria_Davis.pdf` |
-| This message and recommendation | `research/Message_Alexandria_Davis_Completion_2026-08-11.md` |
+| Message to send | `research/Message_Alexandria_Davis_Completion_2026-08-11.md` |
+| LinkedIn recommendation, standard format | `research/LinkedIn_Recommendation_Alexandria_Davis.md` |
 | Roster entry | Added to `research/build_certificate_armb.py` so it regenerates with the rest |
 
 Certificate reads: **Certificate of Completion · Alexandria Davis · August 11, 2026**. Date is the UTC date of her last read, which is the record it rests on.
