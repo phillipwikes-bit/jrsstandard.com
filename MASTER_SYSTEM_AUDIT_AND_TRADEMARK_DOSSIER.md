@@ -297,3 +297,46 @@ Searched for `price`, `purchase`, `invoice`, `subscription`, `licence fee`, `pai
 **Trademark dossiers:** JRS PENDING INPUTS, DRR PENDING INPUTS. Unchanged.
 
 **Files modified this run:** `pilot-status.html`, `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md`, `research/MASTER_TRACKER.md`.
+
+### 2026-08-11T21:10:34Z
+
+**Counter audit: PATCHED.** No data drift. One structural gap closed.
+
+`MASTER_EXECUTION_PROMPT.md` does not exist in this workspace. Execution proceeded from the directive supplied inline. No file of that name was created.
+
+#### Gap found
+
+`pilot-status.html` contained **zero occurrences** of "Suppressed", "Inactive", or any anti-inflation disclaimer. Six cohorts were rendering as bare zeros, and a reader could not tell whether a zero meant nothing happened, nothing was sent, or something was deliberately withheld.
+
+#### Patch applied, `api/asset-stats.js`, new `suppressed_cohorts` block
+
+| Cohort | State | Counts | Excluded from totals |
+|---|---|---|---|
+| Organization pilots | INACTIVE | 0 orgs, 0 sessions, 0 records | Yes |
+| Contributor confirmation links | SUPPRESSED | 20 issued, 0 sent, 0 opened, 0 confirmed | Yes |
+| Honor links | PARTIALLY SUPPRESSED | 34 issued, 1 sent, 1 opened, 1 accepted | No |
+| Blind second-read links | SUPPRESSED | 3 issued, 0 sent, 0 opened, 0 submitted | Yes |
+| Reviewer evaluation funnel | INACTIVE | 0 opened, 0 submitted, 0 contacts | Yes |
+| Evaluation sub-group breakdowns | WITHHELD | threshold 30, current 0, released false | Yes |
+
+#### Patch applied, `pilot-status.html`
+
+New panel, **Suppressed & Inactive Cohorts**, rendering each cohort with a colour-coded state chip, its counts, the reason, an excluded-from-totals marker, and its disclaimer. Wired into `loadToday` with a failure state. Full renderer is in the file; it is not reproduced here because the file on disk is the deliverable.
+
+#### Anti-inflation statement, now published on the page
+
+Rates for the per-person link programmes are computed against links **sent**, never against links **issued**. A roster size is not an audience, an unsent link is not a non-response, and a withheld breakdown is not an absence of data. Where a rate against issued appears in the payload it is labelled the conservative reading rather than the operational one.
+
+#### TEAS filing sheets
+
+Both sheets are in sections 5, 6 and 7 above. Status this run: **JRS PENDING USER INPUTS**, **DRR PENDING USER INPUTS**. The two blocking fields are identical for both marks and neither can be derived from repository evidence:
+
+| Field | Status |
+|---|---|
+| First Use Anywhere | `[REQUIRES USER INPUT]` |
+| First Use in Commerce | `[REQUIRES USER INPUT]` |
+| USPTO identification acceptability | `[REQUIRES USER INPUT]`, no verified ID Manual read performed |
+
+Repository evidence that **is** established, and its limit: earliest appearance of JRS in an HTML file is commit `06e99ce`, 2026-04-14; earliest appearance of DRR is commit `9ea3687`, 2026-06-23; earliest appearance of both on the production branch is commit `40e6cdd`, 2026-07-07. A commit is internal drafting and is not public use, and `40e6cdd` is a 110-file bulk import that begins that branch's history, so 2026-07-07 is a floor rather than a proven first public date. Live public use of both marks was verified by HTTP fetch on 2026-08-11.
+
+**Files updated this run:** `api/asset-stats.js`, `pilot-status.html`, `MASTER_TRACKER.md` (created at workspace root), `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md`, `research/MASTER_TRACKER.md`.
