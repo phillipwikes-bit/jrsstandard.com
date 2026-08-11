@@ -129,6 +129,9 @@ export default async function handler(req){
   // way regardless of what the client reports.
   const uaRaw = String(req.headers.get('user-agent') || '').slice(0, 300);
   const isMobile = /Mobi|Android|iPhone|iPad|iPod|Windows Phone|IEMobile|BlackBerry|Opera Mini/i.test(uaRaw);
+  // Same non-browser list as /api/support: a crawler reaching the campaign
+  // screen is not a supporter and must not be counted as one.
+  const isCrawler = !uaRaw || /googlebot|bingbot|baiduspider|yandexbot|duckduckbot|applebot|GoogleOther|facebookexternalhit|bot|spider|crawl|slurp|preview|headless|curl|wget|python-requests|libwww|okhttp|java\/|go-http/i.test(uaRaw);
 
   // Deploy-check guard. Without it, any test of the gate telemetry writes rows
   // into the funnel figures the conversion report is computed from, and a view
@@ -162,6 +165,41 @@ export default async function handler(req){
       });
     } catch (e) { /* a telemetry ping must never block the form */ }
     return json({ ok: true, field_touched: true });
+  }
+
+  // FALLBACK ENDORSEMENT WRITE, for readers who reach the campaign screen
+  // without passing through /api/support.
+  //
+  // The server-side write in /api/support covers the campaign links as posted.
+  // It does NOT cover a reader who arrives with a copied address-bar URL, a
+  // forwarded link, a bookmark, or a link a platform expanded on their behalf.
+  // Those readers saw a screen saying "Your support is recorded" while nothing
+  // was recorded, which is the same false statement the outage produced, just
+  // from a different direction.
+  //
+  // /api/support marks its own redirect with r=1. This fires only when that
+  // marker is absent, so the two paths cannot both count the same person, and
+  // the page fires it once per session.
+  if (String(b.event || '') === 'endorse') {
+    const camp = b.campaign ? normCampaign(b.campaign) : '';
+    if (!camp) return json({ ok: true, endorse: false, reason: 'no_campaign' });
+    if (gateCheck || isCrawler) {
+      return json({ ok: true, endorse: true, recorded: false, check: true });
+    }
+    try {
+      await fetch(SB + '/rest/v1/interaction_events', {
+        method: 'POST',
+        headers: { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE,
+                   'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+        body: JSON.stringify({ source: 'support', type: 'endorse', payload: {
+          campaign: camp,
+          src: tag(b.src, 40) || 'none',
+          country: String(req.headers.get('x-vercel-ip-country') || '')
+            .toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2) || null
+        }})
+      });
+    } catch (e) { /* never block the page */ }
+    return json({ ok: true, endorse: true, recorded: true });
   }
 
   if (String(b.event || '') === 'view') {
