@@ -244,6 +244,7 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:400;line-height:1.
     if (!skip && !seen) {
       try { sessionStorage.setItem('jrs-reviewer-view', '1'); } catch(e){}
       fetch('/api/access', {
+        keepalive: true,
         method: 'POST',
         headers: { 'Content-Type':'application/json' },
         body: JSON.stringify({ event:'view', page:'reviewer', src:s,
