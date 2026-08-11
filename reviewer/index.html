@@ -224,5 +224,34 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:400;line-height:1.
   } catch(e){}
 })();
 </script>
+<script>
+(function(){
+  // ARRIVAL PING. Before 2026-08-11 this page recorded nothing when someone
+  // reached it: it made no logging call at all. A click could happen and no row
+  // would exist anywhere, so the honest answer to "how many people came here"
+  // was that it could not be known.
+  //
+  // Fires once per page session and carries no identity: the referral tag, the
+  // country the edge reports, and the user agent so crawlers can be filtered
+  // out of the count later. Deploy checks and owner previews are suppressed.
+  try {
+    var q = new URLSearchParams(location.search);
+    var s = String(q.get('src') || '').toLowerCase().replace(/[^a-z0-9_-]/g,'').slice(0,40);
+    var skip = q.get('owner') === '1' || s === 'owner' || s === 'verify'
+            || s === 'test' || s === 'selftest' || s.indexOf('deploytest') === 0;
+    var seen = false;
+    try { seen = sessionStorage.getItem('jrs-reviewer-view') === '1'; } catch(e){}
+    if (!skip && !seen) {
+      try { sessionStorage.setItem('jrs-reviewer-view', '1'); } catch(e){}
+      fetch('/api/access', {
+        method: 'POST',
+        headers: { 'Content-Type':'application/json' },
+        body: JSON.stringify({ event:'view', page:'reviewer', src:s,
+                               campaign:String(q.get('c')||''), edition:'' })
+      }).catch(function(){});
+    }
+  } catch(e){}
+})();
+</script>
 </body>
 </html>
