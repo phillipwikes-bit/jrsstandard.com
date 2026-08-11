@@ -199,6 +199,17 @@ async function purgeTestRows(H){
         { method: 'DELETE', headers: H });
     }
   } catch (e) { /* best-effort */ }
+  // Arrival rows from an end-to-end check of the two counters added on
+  // 2026-08-11. Same reason as the others: proving a counter writes requires a
+  // tag the write guard does not suppress.
+  try {
+    for (const src of ['reviewer-view', 'train-view']) {
+      for (const tag of ['e2echeck', 'selftest', 'test', 'verify', 'owner']) {
+        await fetch(SB + '/rest/v1/interaction_events?source=eq.' + src + '&payload-%3E%3Esrc=eq.' + tag,
+          { method: 'DELETE', headers: H });
+      }
+    }
+  } catch (e) { /* best-effort */ }
   // Gate telemetry rows carrying a deploy-check tag. Same reason: a test view or
   // field_touched row lands in the funnel denominator that the conversion report
   // is computed from, where it reads as a real visitor who abandoned.
