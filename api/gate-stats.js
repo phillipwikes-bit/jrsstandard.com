@@ -70,7 +70,7 @@ export default async function handler(req){
 
   // Event rows carry the country, which the contact row does not.
   const eventsQ = SB + '/rest/v1/interaction_events'
-    + '?select=source,payload,created_at'
+    + '?select=source,type,payload,created_at'
     + '&created_at=gte.' + encodeURIComponent(GATE_START)
     + '&source=in.(guide-dl,support,gate-view)&limit=20000';
 
