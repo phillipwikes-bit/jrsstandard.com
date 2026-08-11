@@ -805,6 +805,22 @@ function renderEndorseDays(d){
     +'<b style="color:var(--text)">'+(d.total||0)+'</b> endorsements over <b style="color:var(--text)">'+days.length+'</b> '
     +(days.length===1?'day':'days')+', of which <b style="color:var(--text)">'+(d.days_with_activity||0)+'</b> had any activity. '
     +'Busiest day <b style="color:var(--text)">'+(d.peak_day_endorsements||0)+'</b>. First '+esc(days[0].day)+', latest '+esc(days[days.length-1].day)+'.</div>';
+  // The question a total cannot answer on its own: is this still receiving
+  // clicks. Stated in days rather than left to be worked out from the chart.
+  if (d.last_endorsement_at) {
+    var ds = (d.days_since_last_endorsement === null || d.days_since_last_endorsement === undefined) ? null : d.days_since_last_endorsement;
+    var col = (ds !== null && ds >= 3) ? 'var(--review-text)' : 'var(--ready-text)';
+    h+='<div style="font-size:11.5px;color:'+col+';margin-top:6px">Last endorsement recorded <b>'+esc(d.last_endorsement_at)+'</b>'
+      +((ds!==null)?(', '+ds+' '+(ds===1?'day':'days')+' ago'):'')+'.</div>';
+  }
+  var o = d.outage;
+  if (o && o.clicks_not_recorded) {
+    h+='<div style="font-size:11.5px;color:var(--stop-text);margin-top:6px;border-left:2px solid var(--stop-text);padding-left:9px">'
+      +'<b>'+o.clicks_not_recorded+'</b> campaign '+((o.clicks_not_recorded===1)?'click':'clicks')+' from <b>'+(o.distinct_devices||0)+'</b> '
+      +(((o.distinct_devices||0)===1)?'device':'devices')+' reached the screen while the endorsement write was broken ('
+      +esc(String(o.from).slice(0,16))+'Z to '+esc(String(o.to).slice(11,16))+'Z on the same day) and were not recorded. '
+      +'Counted from the arrival log, not added to the total above.</div>';
+  }
   el.innerHTML=h;
 }
 function loadSupport(){
