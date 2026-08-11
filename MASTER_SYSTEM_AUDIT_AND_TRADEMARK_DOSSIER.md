@@ -273,3 +273,27 @@ Searched for `price`, `purchase`, `invoice`, `subscription`, `licence fee`, `pai
 **Files modified this run:** none. The audit found no drift, so nothing was patched. `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md` and `research/MASTER_TRACKER.md` were updated with this run log.
 
 **Directive reconciliation, unchanged from the previous run.** 84.2%: measured value is Gwet's AC1 **0.739**, 95% CI [0.402, 1.000], n=10 records, 36 labels. Cross-vendor drift <15%: no drift calculation exists, so it stands as a target against a measured reproducibility of 86.7%. 9-question survey: **confirmed**. Active benchmark cohort: `bench-review.html` draws 24 raters over 10 records from `bench_labels`; whether that constitutes the intended primary cohort is `[REQUIRES USER INPUT]`.
+
+### 2026-08-11T21:04:55Z
+
+**Counter audit: PATCHED.** One presentation defect, no data drift. All figures remained correct throughout.
+
+**Defect:** on the endorsements-per-day chart, today rendered as a bare one-pixel gold line with no figure attached. The count label was printed only on non-zero days, and a zero column was drawn one pixel high, so 2026-08-11 appeared as a faint smudge under an unlabelled axis tick. It read as a rendering fault rather than as a measurement of zero.
+
+**Patch, in `pilot-status.html`, function `renderEndorseDays`:**
+
+| Change | Reason |
+|---|---|
+| Every column now prints its number, zeros included | A zero is a result and is labelled like one. Zeros render in `--muted-soft`, today's in `--accent` |
+| Zero columns draw a 2px floor line, was 1px | One pixel is not readable as a bar on a phone |
+| Today sits on a faint `--surface2` track | The slot is visible before anything fills it |
+| Today's axis tick always reads `TODAY` | Previously it could be blank, because the axis thins labels to at most twelve and today's tick could fall in a gap |
+| Today restated in words below the chart | The figure no longer depends on reading a short bar correctly |
+
+**Verified on the deployed page at 390px:** 12 columns, **12 of 12 numbered**, final column title `2026-08-11: 0 (today)`, one `TODAY` axis tick, and the sentence `Today, 2026-08-11: 0 endorsement` present.
+
+**Live figures unchanged this run:** endorsements 40 total, last 2026-08-04, 7 days ago; series 2026-07-31 to 2026-08-11, 12 days, 4 with activity, peak 28; today 0.
+
+**Trademark dossiers:** JRS PENDING INPUTS, DRR PENDING INPUTS. Unchanged.
+
+**Files modified this run:** `pilot-status.html`, `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md`, `research/MASTER_TRACKER.md`.
