@@ -174,8 +174,13 @@ async function purgeTestRows(H){
   // agent at all, so this list should not need extending again.
   const E2E2_FROM = '2026-08-11T20:18:35Z';
   const E2E2_TO   = '2026-08-11T20:18:45Z';
+  // Third bracket: one row at 20:20:46Z, the demonstration that a real browser
+  // user agent DOES record while curl does not. It proved the fix and it is not
+  // a supporter, so it comes out like the others.
+  const E2E3_FROM = '2026-08-11T20:20:40Z';
+  const E2E3_TO   = '2026-08-11T20:20:52Z';
   try {
-    for (const w of [[E2E_FROM, E2E_TO], [E2E2_FROM, E2E2_TO]]) {
+    for (const w of [[E2E_FROM, E2E_TO], [E2E2_FROM, E2E2_TO], [E2E3_FROM, E2E3_TO]]) {
       await fetch(SB + '/rest/v1/interaction_events?source=eq.support'
         + '&created_at=gte.' + encodeURIComponent(w[0])
         + '&created_at=lte.' + encodeURIComponent(w[1]),
