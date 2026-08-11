@@ -380,6 +380,76 @@ export default async function handler(req){
           + 'date forward.'
     },
 
+    // SUPPRESSED AND INACTIVE COHORTS, DECLARED RATHER THAN LEFT AS ZEROS.
+    //
+    // A zero on this dashboard can mean three different things and a buyer
+    // cannot tell them apart by looking: nothing happened, nothing was sent, or
+    // something is deliberately withheld. Each cohort below states which of the
+    // three it is and whether it contributes to any denominator.
+    //
+    // ANTI-INFLATION: none of these cohorts is counted in an active total. A
+    // roster size is not engagement, an unsent link is not a non-response, and a
+    // withheld breakdown is not an absence of data. Rates for the link
+    // programmes are computed against links SENT, never against links issued.
+    suppressed_cohorts: [
+      {
+        cohort: 'Organization pilots',
+        state: 'INACTIVE',
+        counts: { organizations: 0, sessions: 0, records_run: 0 },
+        reason: 'Never sent to any organization. No invitation has been issued.',
+        excluded_from_totals: true,
+        disclaimer: 'A true zero from a surface that has never been offered. It is not a '
+                  + 'conversion failure and must not be read as one.'
+      },
+      {
+        cohort: 'Contributor confirmation links',
+        state: 'SUPPRESSED',
+        counts: { issued: ISSUED.contributor, sent: 0, opened: contribOpened, confirmed: contribConfirmed },
+        reason: 'Held pending close of the comparison study. None has been sent.',
+        excluded_from_totals: true,
+        disclaimer: 'Issued is a roster size, not an audience. Open and confirmation rates '
+                  + 'are undefined against a denominator of zero sent links and are not published.'
+      },
+      {
+        cohort: 'Honor links',
+        state: 'PARTIALLY SUPPRESSED',
+        counts: { issued: ISSUED.honor, sent: 1, opened: honorOpened, accepted: honorAccepted },
+        reason: '33 of 34 held pending close of the comparison study while RR-108 is unfinished.',
+        excluded_from_totals: false,
+        disclaimer: 'Rates are computed against the single link SENT, not against the 34 '
+                  + 'issued. The 2.9 percent figure elsewhere in this payload divides by '
+                  + 'issued and is the conservative reading, not the operational one.'
+      },
+      {
+        cohort: 'Blind second-read links',
+        state: 'SUPPRESSED',
+        counts: { issued: ISSUED.recheck, sent: 0, opened: recheckOpened, submitted: recheckSubmitted },
+        reason: 'Awaiting the second reader being named. None has been sent.',
+        excluded_from_totals: true,
+        disclaimer: 'Roster size only. No denominator exists.'
+      },
+      {
+        cohort: 'Reviewer evaluation funnel',
+        state: 'INACTIVE',
+        counts: { opened: evalOpened, submitted: evalSubmitted, contacts: evalContacts },
+        reason: 'Built, instrumented and verified end to end. Never sent to anyone.',
+        excluded_from_totals: true,
+        disclaimer: 'Every stage is a true zero rather than a missing measurement. The '
+                  + 'write path was tested against production and confirmed working.'
+      },
+      {
+        cohort: 'Evaluation sub-group breakdowns',
+        state: 'WITHHELD',
+        counts: { threshold: MIN_CELL_N, current_submissions: evalSubmitted, released: breakdownsOk },
+        reason: 'Sector, role, organization size and country breakdowns are released at '
+              + MIN_CELL_N + ' submissions.',
+        excluded_from_totals: true,
+        disclaimer: 'Withheld, not empty. Below the threshold a breakdown identifies '
+                  + 'individual respondents rather than describing a group. The threshold '
+                  + 'was fixed before the first response arrived.'
+      }
+    ],
+
     entry_points: {
       reviewer_landing_views: reviewerViews,
       reviewer_landing_crawlers_excluded: reviewerViewCrawlers,
