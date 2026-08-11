@@ -29,6 +29,11 @@ h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:26px;margin:24px 0 
 .cv.hot{color:var(--ready)}
 .ck{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-top:8px}
 .note{font-size:12px;color:var(--muted-soft);border-left:2px solid var(--rule);padding:11px 14px;background:var(--surface);margin:16px 0;line-height:1.6}
+/* The table scrolls, the page does not. Before this the widest table pushed
+   documentElement.scrollWidth to 400px against a 390px viewport, which made
+   the whole page scroll sideways and clipped the left edge of every heading
+   on a phone. */
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
 table{width:100%;border-collapse:collapse;margin:8px 0 4px;font-size:13px}
 th{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule)}
 td{padding:10px;border-bottom:1px solid var(--rule);color:var(--text)}
@@ -66,10 +71,10 @@ tr.today td{background:rgba(93,191,130,.07)}
     <div class="legend" id="proglegend"></div>
   </div>
   <div class="note" id="latest">&nbsp;</div>
-  <table>
+  <div class="tablewrap"><table>
     <thead><tr><th>Reviewer</th><th>Code</th><th>Progress</th><th>Last activity</th></tr></thead>
     <tbody id="rows"><tr><td colspan="4" style="color:var(--muted-soft)">Loading&hellip;</td></tr></tbody>
-  </table>
+  </table></div>
   <div class="note">"New today" counts reads submitted since 00:00 UTC. "Finished" means a reviewer has covered all 24 records. This page shows participation only; to see agreement and accuracy analysis, open the <a href="research-data.html" style="color:var(--accent)">Research Data Room</a>.</div>
 
   <h1 style="font-size:22px;margin-top:34px">Real-Case Pilots &middot; Rung 3</h1>
@@ -80,10 +85,10 @@ tr.today td{background:rgba(93,191,130,.07)}
     <div class="card"><div class="cv" id="rc-domains">&middot;</div><div class="ck">Domains active</div></div>
     <div class="card"><div class="cv" id="rc-contributors">&middot;</div><div class="ck">Contributors</div></div>
   </div>
-  <table>
+  <div class="tablewrap"><table>
     <thead><tr><th>Domain</th><th>Contributor</th><th>Cases</th><th>Outcomes</th><th>JRS reads</th><th>Last activity</th></tr></thead>
     <tbody id="rc-rows"><tr><td colspan="6" style="color:var(--muted-soft)">Loading&hellip;</td></tr></tbody>
-  </table>
+  </table></div>
   <div class="note">A healthcare-compliance pilot (Keith Carrington, V-HC-01) is accepted but has not yet contributed cases, so it does not appear above until its first entry.</div>
 
   <h1 style="font-size:22px;margin-top:34px">Comparison Study &middot; Arm B</h1>
@@ -94,10 +99,10 @@ tr.today td{background:rgba(93,191,130,.07)}
     <div class="card"><div class="cv" id="ab-jrs">&middot;</div><div class="ck">JRS arm</div></div>
     <div class="card"><div class="cv" id="ab-nojrs">&middot;</div><div class="ck">No-JRS arm</div></div>
   </div>
-  <table>
+  <div class="tablewrap"><table>
     <thead><tr><th>Code</th><th>Arm</th><th>Progress</th><th>Last activity</th></tr></thead>
     <tbody id="ab-rows"><tr><td colspan="4" style="color:var(--muted-soft)">Loading&hellip;</td></tr></tbody>
-  </table>
+  </table></div>
   <div class="note">Arm assignment is automatic and random from each code. This section fills as Arm B participants submit; it shows participation only, never answers.</div>
 
   <h1 style="font-size:22px;margin-top:34px">Organization Pilots &middot; Field Use</h1>

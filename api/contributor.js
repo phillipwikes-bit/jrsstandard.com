@@ -188,6 +188,17 @@ async function purgeTestRows(H){
       + '&created_at=lte.' + encodeURIComponent(DL_TO),
       { method: 'DELETE', headers: H });
   } catch (e) { /* best-effort */ }
+  // eval-view rows from an end-to-end check of the evaluation open counter.
+  // Same reason as the endorsement check: proving the counter writes at all
+  // needs a tag the write guard does not suppress, so e2echeck writes a real
+  // row on purpose and this removes it. Without it, confirming that a zero is
+  // a true zero would permanently add one to the funnel denominator.
+  try {
+    for (const tag of ['e2echeck', 'selftest', 'test', 'verify', 'owner']) {
+      await fetch(SB + '/rest/v1/interaction_events?source=eq.eval-view&payload-%3E%3Esrc=eq.' + tag,
+        { method: 'DELETE', headers: H });
+    }
+  } catch (e) { /* best-effort */ }
   // Gate telemetry rows carrying a deploy-check tag. Same reason: a test view or
   // field_touched row lands in the funnel denominator that the conversion report
   // is computed from, where it reads as a real visitor who abandoned.
