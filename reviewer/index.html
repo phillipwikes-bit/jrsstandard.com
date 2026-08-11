@@ -97,7 +97,7 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:400;line-height:1.
     <div class="eyebrow">Open Educational Standard &middot; Free for Practitioners</div>
     <h1>Reviewer Training and Certificate</h1>
     <p class="sub">Six self-paced modules and a companion desk reference for deciding whether a record can still explain its own conclusion, particularly where AI-assisted drafting has contributed to it. Built for compliance, HR, audit, legal, AI governance and investigative reviewers. Module 1 opens with no sign-up.</p>
-    <p class="cred">Written by <b>Phillip Wikes</b>, former Lead Civil Rights Officer, Maryland Commission on Civil Rights, M.S. Negotiation and Conflict Management. The five review conditions taught here have been applied record by record by <b>55 international reviewers across three studies</b>, including <b>34 independent experts across 16 countries</b> who each completed a full 24-record set.</p>
+    <p class="cred">Written by <b>Phillip Wikes</b>, former Lead Civil Rights Officer, Maryland Commission on Civil Rights, M.S. Negotiation and Conflict Management. The five review conditions taught here have been applied record by record by <b><span data-panel="reviewers">55</span> international reviewers across three studies</b>, including <b><span data-panel="completers">34</span> independent experts across <span data-panel="countries">16</span> countries</b> who each completed a full 24-record set.</p>
   </section>
 
   <div class="section-label">Curriculum</div>
@@ -167,7 +167,7 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:400;line-height:1.
       </div>
       <div class="fact">
         <div class="k">Reviewer base</div>
-        <div class="v">55</div>
+        <div class="v" data-panel="reviewers">55</div>
         <div class="n">International reviewers have graded records for this work, unpaid and in a personal capacity.</div>
       </div>
     </div>
@@ -203,5 +203,26 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:400;line-height:1.
   <div class="fc">&copy; 2026 Phillip Wikes &nbsp;&middot;&nbsp; JRS&#8482; &nbsp;&middot;&nbsp; <a href="/privacy.html">Privacy</a> &nbsp;&middot;&nbsp; <a href="/research.html">Research</a> &nbsp;&middot;&nbsp; <a href="mailto:info@jrsstandard.com">info@jrsstandard.com</a></div>
 </footer>
 
+<script>
+(function(){
+  // The published reviewer figures read from /api/panel-stats so the sentence
+  // cannot drift from the database again. The numbers in the markup are the
+  // fallback: if the fetch fails, or returns something that is not a positive
+  // number, the page keeps the value it shipped with rather than blanking.
+  try {
+    fetch('/api/panel-stats')
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(d){
+        if (!d) return;
+        var els = document.querySelectorAll('[data-panel]');
+        for (var i = 0; i < els.length; i++) {
+          var v = d[els[i].getAttribute('data-panel')];
+          if (typeof v === 'number' && v > 0) els[i].textContent = v;
+        }
+      })
+      .catch(function(){});
+  } catch(e){}
+})();
+</script>
 </body>
 </html>

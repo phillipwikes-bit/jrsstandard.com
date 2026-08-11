@@ -97,6 +97,11 @@ export default async function handler(req){
   if (SERVICE) {
     const H = {'apikey':SERVICE,'Authorization':'Bearer '+SERVICE,'Content-Type':'application/json','Prefer':'return=minimal'};
     const country = String(req.headers.get('x-vercel-ip-country')||'').toUpperCase().replace(/[^A-Z]/g,'').slice(0,2) || null;
+    // ADDED 2026-08-11 so download counts can have crawlers filtered out of
+    // them. Until now the download row carried no user agent, which meant the
+    // public artifact-download figure could not be separated from search-engine
+    // fetches at all. Truncated, and no other request header is read.
+    const ua = String(req.headers.get('user-agent')||'').slice(0,300);
 
     // Self-healing purge of any test-tagged download rows already stored.
     // (deploytest* variants are also hidden by the geo-stats read filter.)
@@ -113,14 +118,14 @@ export default async function handler(req){
           fetch(SB+'/rest/v1/guide_downloads',{ method:'POST', headers:H,
             body:JSON.stringify({ edition: edition, src: src }) }),
           fetch(SB+'/rest/v1/interaction_events',{ method:'POST', headers:H,
-            body:JSON.stringify({ source:'guide-dl', type:'download', payload:{ edition: edition, src: src, country: country } }) })
+            body:JSON.stringify({ source:'guide-dl', type:'download', payload:{ edition: edition, src: src, country: country, user_agent: ua } }) })
         ]);
       } else if (doc) {
         await fetch(SB+'/rest/v1/interaction_events',{ method:'POST', headers:H,
-          body:JSON.stringify({ source:'pdf-dl', type:'download', payload:{ doc: doc, file: DOCS[doc], src: src, country: country } }) });
+          body:JSON.stringify({ source:'pdf-dl', type:'download', payload:{ doc: doc, file: DOCS[doc], src: src, country: country, user_agent: ua } }) });
       } else {
         await fetch(SB+'/rest/v1/interaction_events',{ method:'POST', headers:H,
-          body:JSON.stringify({ source:'kit-dl', type:'download', payload:{ file: kit, src: src, country: country } }) });
+          body:JSON.stringify({ source:'kit-dl', type:'download', payload:{ file: kit, src: src, country: country, user_agent: ua } }) });
       }
     } catch(e){ /* swallow: the file must still be served */ }
   }

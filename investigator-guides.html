@@ -83,7 +83,7 @@ h1{font-family:'Bodoni Moda',serif;font-size:33px;font-weight:400;line-height:1.
     <div class="eyebrow">Technical Supplements &middot; Open Reference</div>
     <h1>Investigator Field Guides</h1>
     <p class="sub">A free, operational method for assessing whether an administrative record contains sufficient, traceable support for its conclusions, particularly where AI-assisted drafting has contributed to the record. Three editions, for employment (EEO), fair-housing, and international equality and human-rights investigations, each built around five review conditions and a Record Interrogation Framework a reviewer can apply at intake or before finalization.</p>
-    <p class="cred">Written by <b>Phillip Wikes</b>, former Lead Civil Rights Officer, Maryland Commission on Civil Rights, M.S. Negotiation and Conflict Management. The method behind these guides has been graded record by record by <b>55 international reviewers across three studies</b>, including an expert panel of <b>34 independent experts across 16 countries</b>, each completing a full 24-record set.</p>
+    <p class="cred">Written by <b>Phillip Wikes</b>, former Lead Civil Rights Officer, Maryland Commission on Civil Rights, M.S. Negotiation and Conflict Management. The method behind these guides has been graded record by record by <b><span data-panel="reviewers">55</span> international reviewers across three studies</b>, including an expert panel of <b><span data-panel="completers">34</span> independent experts across <span data-panel="countries">16</span> countries</b>, each completing a full 24-record set.</p>
   </div>
 
   <div class="section-label">Download</div>
@@ -133,13 +133,13 @@ h1{font-family:'Bodoni Moda',serif;font-size:33px;font-weight:400;line-height:1.
      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:9px;">The Right to Know Why</div>
      <h3 style="font-family:'Bodoni Moda',serif;font-weight:600;font-size:19px;line-height:1.25;margin:0 0 12px;color:var(--text);">When a decision changes a life, the person deserves to know why.</h3>
      <p style="color:var(--muted);font-size:13.5px;line-height:1.6;margin:0 0 18px;flex:1 1 auto;">When a decision affects someone's rights, safety, livelihood, or ability to seek justice, they deserve a record that honestly explains how it was reached. Back the principle that consequential decisions stay explainable to the people they affect.</p>
-     <a href="/api/support?c=rtkw&amp;src=guide" style="align-self:flex-start;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:12px 20px;background:var(--accent);color:#0b0b0b;border:1px solid var(--accent);">Join the Registry &#8594;</a>
+     <a href="/api/support?c=rtkw&amp;src=field_guides" style="align-self:flex-start;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:12px 20px;background:var(--accent);color:#0b0b0b;border:1px solid var(--accent);">Pressure-test the standard (4-min evaluation) &#8594;</a>
     </div>
     <div style="background:var(--surface);border:1px solid var(--rule);padding:22px;display:flex;flex-direction:column;">
      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:9px;">The Decisions You Can Defend</div>
      <h3 style="font-family:'Bodoni Moda',serif;font-weight:600;font-size:19px;line-height:1.25;margin:0 0 12px;color:var(--text);">Every decision is eventually questioned. Will the record still hold?</h3>
      <p style="color:var(--muted);font-size:13.5px;line-height:1.6;margin:0 0 18px;flex:1 1 auto;">A strong record survives the complaint, the audit, the investigation, and the courtroom. A weak one becomes the exposure. Back the standard that documentation should still support a consequential decision long after the decision was made.</p>
-     <a href="/api/support?c=defend&amp;src=guide" style="align-self:flex-start;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:12px 20px;background:var(--accent);color:#0b0b0b;border:1px solid var(--accent);">Join the Registry &#8594;</a>
+     <a href="/api/support?c=defend&amp;src=field_guides" style="align-self:flex-start;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:12px 20px;background:var(--accent);color:#0b0b0b;border:1px solid var(--accent);">Pressure-test the standard (4-min evaluation) &#8594;</a>
     </div>
    </div>
   </div>
@@ -204,6 +204,27 @@ h1{font-family:'Bodoni Moda',serif;font-size:33px;font-weight:400;line-height:1.
       setTimeout(function(){ panel.scrollIntoView({ behavior:'smooth', block:'nearest' }); }, 220);
     });
   });
+})();
+</script>
+<script>
+(function(){
+  // The published reviewer figures read from /api/panel-stats so the sentence
+  // cannot drift from the database again. The numbers in the markup are the
+  // fallback: if the fetch fails, or returns something that is not a positive
+  // number, the page keeps the value it shipped with rather than blanking.
+  try {
+    fetch('/api/panel-stats')
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(d){
+        if (!d) return;
+        var els = document.querySelectorAll('[data-panel]');
+        for (var i = 0; i < els.length; i++) {
+          var v = d[els[i].getAttribute('data-panel')];
+          if (typeof v === 'number' && v > 0) els[i].textContent = v;
+        }
+      })
+      .catch(function(){});
+  } catch(e){}
 })();
 </script>
 </body>
