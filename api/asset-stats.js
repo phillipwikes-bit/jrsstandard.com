@@ -71,8 +71,8 @@ export default async function handler(req){
   const [events, contacts, armA, armB, labels, outcomes] = await Promise.all([
     get('interaction_events?select=source,type,payload,created_at&limit=20000'),
     get('pilot_contacts?select=source,message,created_at&limit=5000'),
-    get('pilot_progress?select=code,total_reads&limit=500'),
-    get('armb_progress?select=code,reads&limit=500'),
+    get('pilot_progress?select=code,total_reads,reads_today&limit=500'),
+    get('armb_progress?select=code,reads,reads_today&limit=500'),
     get('bench_labels?select=labeler_code,record_id&limit=5000'),
     get('bench_outcomes?select=contributor,domain&limit=5000')
   ]);
@@ -187,6 +187,20 @@ export default async function handler(req){
   // deliberately does not do. Stated here rather than implied.
   // Crawler opens are excluded here for the same reason as the device split: a
   // search engine rendering the page is not a reviewer considering it.
+  // Today's activity across every surface, computed once here so the block
+  // below reads as a set of lookups rather than repeating the filter.
+  const todayKey = new Date().toISOString().slice(0, 10);
+  function isToday(e){ return String(e.created_at || '').slice(0, 10) === todayKey; }
+  function todayCount(src, type){
+    return events.filter(function(e){
+      return e.source === src && e.type === type && isToday(e) && !isCrawler(e.payload);
+    }).length;
+  }
+  const todayCrawlers = events.filter(function(e){ return isToday(e) && isCrawler(e.payload); }).length;
+  const todayHuman    = events.filter(function(e){ return isToday(e) && !isCrawler(e.payload); }).length;
+  const todayReadsA = armA.reduce(function(n, r){ return n + (r.reads_today || 0); }, 0);
+  const todayReadsB = armB.reduce(function(n, r){ return n + (r.reads_today || 0); }, 0);
+
   // Arrivals on the two surfaces that used to record nothing. Same crawler
   // treatment as everywhere else, and the exclusion is published rather than
   // silent so a low number is never mistaken for a filtered one.
@@ -335,6 +349,35 @@ export default async function handler(req){
       case_corpora: corpora,
       note: 'A completer graded all 24 records in their set. Counted live from the '
           + 'progress views, not from a roster file.'
+    },
+
+    // TODAY. Every surface, counted for the current UTC day.
+    //
+    // WHY THIS BLOCK EXISTS. Every other "today" figure on the dashboard counts
+    // a completed ACTION: a registration, an enrolment, a confirmation. None of
+    // them counts an ARRIVAL, so a day could contain real traffic on every link
+    // and every today tile would still read zero. That is not a broken counter,
+    // it is a missing one, and it is why the page looked frozen.
+    today: {
+      date: todayKey,
+      campaign_screen_arrivals: todayCount('gate-view', 'view'),
+      reviewer_landing_arrivals: todayCount('reviewer-view', 'view'),
+      training_page_arrivals: todayCount('train-view', 'view'),
+      endorsements: todayCount('support', 'endorse'),
+      evaluation_opens: todayCount('eval-view', 'view'),
+      evaluation_submissions: todayCount('reviewer-eval', 'evaluation'),
+      guide_downloads: todayCount('guide-dl', 'download'),
+      other_downloads: todayCount('pdf-dl', 'download') + todayCount('kit-dl', 'download'),
+      records_reviewed: todayReadsA + todayReadsB,
+      records_reviewed_detection: todayReadsA,
+      records_reviewed_comparison: todayReadsB,
+      crawler_rows_excluded: todayCrawlers,
+      total_human_events: todayHuman,
+      note: 'Current UTC day, crawlers removed by user agent and counted separately. '
+          + 'Arrival logging began on different dates per surface: campaign screen '
+          + '2026-08-02, evaluation 2026-08-10, reviewer landing and training page '
+          + '2026-08-11. A zero on a surface is a real zero only from its own start '
+          + 'date forward.'
     },
 
     entry_points: {
