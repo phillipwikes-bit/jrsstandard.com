@@ -33,7 +33,9 @@ export default async function handler(){
     let counted = 0;
     for (const row of rows) {
       const rawSrc = (row.payload && row.payload.src) || 'none';
-      if (TEST_SOURCES[rawSrc]) continue; // drop internal smoke-test clicks
+      // Suppressed at write time too; filtered here as well so any row that
+      // predates the write guard stays out of the public count.
+      if (TEST_SOURCES[rawSrc] || String(rawSrc).indexOf('deploytest') === 0) continue;
       counted++;
       const c = (row.payload && row.payload.country) || 'unknown';
       byC[c] = (byC[c] || 0) + 1;
