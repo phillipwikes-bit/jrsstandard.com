@@ -206,6 +206,18 @@ REVIEWERS = [
         "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Certificate_MacKenzie_McCowan.pdf",
     },
     {
+        "name": "Candid Opris",
+        # Completion date is the UTC date of the last read in the database
+        # (2026-08-11T18:23Z), which is the record the certificate rests on.
+        # All 24 completed in a single sitting. Verified with
+        # check_completion.py RR-127, exit 0, before this entry was written.
+        "date": "August 11, 2026",
+        "body": neutral_body(
+            "AI governance and digital-trust",
+            "two decades of practice in AI and data governance"),
+        "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Certificate_Candid_Opris.pdf",
+    },
+    {
         "name": "Alexandria Davis",
         # Completion date is the UTC date of the last read in the database
         # (2026-08-11T01:59Z), which is the record the certificate rests on.
