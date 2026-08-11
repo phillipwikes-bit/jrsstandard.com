@@ -340,3 +340,30 @@ Both sheets are in sections 5, 6 and 7 above. Status this run: **JRS PENDING USE
 Repository evidence that **is** established, and its limit: earliest appearance of JRS in an HTML file is commit `06e99ce`, 2026-04-14; earliest appearance of DRR is commit `9ea3687`, 2026-06-23; earliest appearance of both on the production branch is commit `40e6cdd`, 2026-07-07. A commit is internal drafting and is not public use, and `40e6cdd` is a 110-file bulk import that begins that branch's history, so 2026-07-07 is a floor rather than a proven first public date. Live public use of both marks was verified by HTTP fetch on 2026-08-11.
 
 **Files updated this run:** `api/asset-stats.js`, `pilot-status.html`, `MASTER_TRACKER.md` (created at workspace root), `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md`, `research/MASTER_TRACKER.md`.
+
+### 2026-08-11T21:21:03Z
+
+**Counter audit: DRIFT DETECTED, then PATCHED.**
+
+**Question that triggered this run:** why do 23 campaign arrivals on 2026-08-11 show 0 endorsements, when there is no gate and every arrival is an endorsement.
+
+**Answer, in two parts.**
+
+**Part one, the tile was wrong.** There were not 23 campaign arrivals. There were **18**. `campaign_screen_arrivals` counted every `gate-view` row, and 5 of them carried no campaign at all: those readers hit `access.html` with no `?c=` and were redirected straight to the guides page without seeing the campaign screen. The figure has always been filtered on campaign in `/api/support-stats`, which is why the outage note read 18 while the tile read 23. Two numbers describing the same event, disagreeing. Patched: the tile now requires a campaign, and non-campaign hits are reported separately as `access_page_hits_without_campaign`.
+
+**Part two, the 18 predate both writes and cannot be recovered.** All 18 arrived between **03:47:03Z and 04:45:13Z**, from **one device**. The endorsement write was restored at **08:30Z** and the fallback for copied and forwarded URLs at **20:45Z**. **Zero arrivals occurred after either fix.** So 18 arrivals produced 0 endorsements because nothing was writing at the time, not because the link is gated and not because a write is failing now.
+
+**The reasoning in the question is correct and is now enforced by two writes:**
+
+| Arrival route | What records it | Since |
+|---|---|---|
+| Campaign link as posted, through `/api/support` | Server-side write, fires without JavaScript | 2026-08-11 08:30Z |
+| Copied, forwarded or bookmarked URL landing on `access.html` | Fallback write from the page, deduped per browser per campaign | 2026-08-11 20:45Z |
+
+Both were verified against production: a browser user agent records, a non-browser agent does not, and the two paths cannot double count because `/api/support` marks its redirect `r=1` and the fallback fires only when that marker is absent.
+
+**Reconciliation now published on the page.** `arrivals_vs_endorsements` states arrivals, endorsements recorded, the difference and the reason. Current reading: **18 arrivals, 0 endorsements, difference 18**, entirely accounted for by the pre-fix window. **From 2026-08-12 a non-zero difference on that line is a defect and should be treated as one.**
+
+**Files updated this run:** `api/asset-stats.js`, `pilot-status.html`, `MASTER_TRACKER.md`, `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md`, `research/MASTER_TRACKER.md`.
+
+**TEAS status unchanged:** JRS PENDING USER INPUTS, DRR PENDING USER INPUTS. First Use Anywhere, First Use in Commerce and USPTO identification acceptability all remain `[REQUIRES USER INPUT]`.

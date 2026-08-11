@@ -54,3 +54,44 @@ Class 042 and 035 identifications are recorded verbatim as supplied. Repository 
 The PST Pilot Study baseline is **not** carried in either file. It was removed on instruction after the owner confirmed no such study exists. It has not been reintroduced.
 
 ---
+
+## Run: 2026-08-11T21:21:03Z
+
+### 1. Trademark dossier status
+
+| Mark | Status | Blocking |
+|---|---|---|
+| JUSTIFICATION REVIEW STANDARD (JRS) | **PENDING USER INPUTS** | First Use Anywhere; First Use in Commerce; USPTO identification verification |
+| DECISION RECONSTRUCTION RISK (DRR) | **PENDING USER INPUTS** | First Use Anywhere; First Use in Commerce; USPTO identification verification |
+
+Unchanged this run. No new repository evidence was found for either blocking field.
+
+### 2. pilot-status.html counter audit
+
+**Status: DRIFT DETECTED, then PATCHED.**
+
+**The drift:** `campaign_screen_arrivals` counted every `gate-view` row, including readers who reached `access.html` with no campaign parameter. Those are redirected straight to the guides page and never see the campaign screen. The tile read **23** while the outage figure in `/api/support-stats`, which has always filtered on campaign, read **18**. Both describe the same event and they disagreed.
+
+| Metric | Before | After |
+|---|---|---|
+| `campaign_screen_arrivals` | 23 | **18** |
+| `access_page_hits_without_campaign` | not reported | **5** |
+| Agreement with the outage figure | no | **yes** |
+
+**Also added:** an `arrivals_vs_endorsements` reconciliation block, published on the Today panel, stating arrivals, endorsements recorded, the difference, and the reason for it. Live reading: **18 arrivals, 0 endorsements, difference 18**, all of which predate both endorsement writes.
+
+### 3. Files inspected this run
+
+`pilot-status.html` · `bench-review.html` · `api/asset-stats.js` · `api/support-stats.js` · `api/support.js` · `api/access.js` · `MASTER_TRACKER.md` · `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md` · `interaction_events`, `pilot_progress`, `armb_progress` by direct SQL
+
+### 4. Files updated this run
+
+| File | Change |
+|---|---|
+| `api/asset-stats.js` | `campaign_screen_arrivals` now requires a campaign; added `access_page_hits_without_campaign` and `arrivals_vs_endorsements` |
+| `pilot-status.html` | Reconciliation line added to the Today panel with its own failure state |
+| `MASTER_TRACKER.md` | This run appended |
+| `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md` | Run log appended |
+| `research/MASTER_TRACKER.md` | Matching research-log entry |
+
+---
