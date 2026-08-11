@@ -236,7 +236,7 @@ tr.today td{background:rgba(93,191,130,.07)}
   <div class="chart">
     <h2>Endorsements per day</h2>
     <div id="endorseday">Loading&hellip;</div>
-    <div class="note" style="margin-top:8px">One column per calendar day, UTC. The endorsement is a single click with no form behind it, so one row is one click and nothing is deduplicated. Days with no endorsements are drawn as empty columns rather than skipped, so a quiet stretch stays visible instead of being closed up.</div>
+    <div class="note" style="margin-top:8px">One column per calendar day, UTC, running to today rather than to the last event. Every column carries its number, zeros included, so a quiet day reads as a measured zero rather than as a missing bar. Today is drawn on a faint track and labelled TODAY on the axis, so the slot is visible before anything fills it. The endorsement is a single click with no form behind it, so one row is one click and nothing is deduplicated.</div>
   </div>
   <div class="chart">
     <h2>Initiative supporters by country</h2>
@@ -774,48 +774,75 @@ function renderEndorseDays(d){
   setv('en-active', d.days_with_activity||0);
   setv('en-mean', d.mean_per_active_day||0);
 
+  var todayKey = new Date().toISOString().slice(0,10);
   var max=1;
   days.forEach(function(x){ if(x.endorsements>max) max=x.endorsements; });
 
   // Columns rather than rows: the series is a time axis and reads left to right.
-  // Height is scaled against the busiest day, and a day with zero keeps its slot
-  // so the gaps stay honest.
+  //
+  // EVERY COLUMN CARRIES ITS NUMBER, INCLUDING THE ZEROS. Printing the count
+  // only on non-zero days left today rendering as a bare one-pixel line with no
+  // figure attached, which reads as a smudge or a rendering fault rather than
+  // as a measurement of zero. A zero is a result and it is labelled like one.
+  //
+  // Today also gets a faint full-height track behind it so the slot is visible
+  // before anything fills it, and its own tick label on the axis.
   var H=118;
-  var h='<div style="display:flex;align-items:flex-end;gap:3px;height:'+(H+4)+'px;overflow-x:auto;padding-bottom:2px">';
+  var h='<div style="display:flex;align-items:flex-end;gap:3px;height:'+(H+18)+'px;overflow-x:auto;padding-bottom:2px">';
   days.forEach(function(x){
-    var px = x.endorsements ? Math.max(3, Math.round((x.endorsements/max)*H)) : 0;
-    var col = x.endorsements ? 'var(--ready-text,#5DBF82)' : 'var(--rule)';
-    // Today is always the final column now, even when it is empty. Marking it
-    // in gold separates "today, nothing yet" from "a day that had nothing",
-    // which are the same bar height and completely different statements.
-    if (!x.endorsements && x.day === new Date().toISOString().slice(0,10)) col = 'var(--accent-dim)';
-    h+='<div title="'+esc(x.day)+': '+x.endorsements+'" style="flex:1 1 14px;min-width:14px;max-width:46px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:'+H+'px">'
-      +(x.endorsements?'<span style="font-family:\'JetBrains Mono\',monospace;font-size:8.5px;color:var(--muted);margin-bottom:3px">'+x.endorsements+'</span>':'')
-      +'<span style="width:100%;height:'+(px||1)+'px;background:'+col+';display:block"></span>'
+    var isToday = (x.day === todayKey);
+    var n = x.endorsements || 0;
+    // Zero days keep a 2px floor line so the slot is unmistakably a slot.
+    var px = n ? Math.max(3, Math.round((n/max)*H)) : 2;
+    var col = n ? 'var(--ready-text,#5DBF82)' : 'var(--rule)';
+    if (isToday) col = n ? 'var(--ready-text,#5DBF82)' : 'var(--accent-dim)';
+    var numCol = n ? 'var(--muted)' : 'var(--muted-soft)';
+    if (isToday) numCol = n ? 'var(--ready-text,#5DBF82)' : 'var(--accent)';
+    var track = isToday ? 'background:linear-gradient(var(--surface2),var(--surface2));' : '';
+    h+='<div title="'+esc(x.day)+': '+n+(isToday?' (today)':'')+'" style="flex:1 1 14px;min-width:16px;max-width:46px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:'+(H+14)+'px;'+track+'">'
+      +'<span style="font-family:\'JetBrains Mono\',monospace;font-size:9px;color:'+numCol+';margin-bottom:3px;line-height:1">'+n+'</span>'
+      +'<span style="width:100%;height:'+px+'px;background:'+col+';display:block"></span>'
       +'</div>';
   });
   h+='</div>';
 
-  // Date axis, thinned so the labels never collide on a narrow screen.
+  // Date axis. Thinned so labels never collide on a narrow screen, except that
+  // today is always labelled whatever the thinning interval works out to.
   var step=Math.ceil(days.length/12);
   h+='<div style="display:flex;gap:3px;margin-top:5px;overflow-x:auto">';
   days.forEach(function(x,i){
-    var lab=(i%step===0||i===days.length-1)?x.day.slice(5).replace('-','/'):'';
-    h+='<div style="flex:1 1 14px;min-width:14px;max-width:46px;text-align:center;font-family:\'JetBrains Mono\',monospace;font-size:7.5px;color:var(--muted-soft);white-space:nowrap">'+lab+'</div>';
+    var isToday = (x.day === todayKey);
+    var lab = isToday ? 'TODAY' : ((i%step===0||i===days.length-1)?x.day.slice(5).replace('-','/'):'');
+    var c = isToday ? 'var(--accent)' : 'var(--muted-soft)';
+    h+='<div style="flex:1 1 14px;min-width:16px;max-width:46px;text-align:center;font-family:\'JetBrains Mono\',monospace;font-size:7.5px;color:'+c+';white-space:nowrap">'+lab+'</div>';
   });
   h+='</div>';
+
   h+='<div style="font-size:11.5px;color:var(--muted-soft);margin-top:10px">'
     +'<b style="color:var(--text)">'+(d.total||0)+'</b> endorsements over <b style="color:var(--text)">'+days.length+'</b> '
     +(days.length===1?'day':'days')+', of which <b style="color:var(--text)">'+(d.days_with_activity||0)+'</b> had any activity. '
     +'Busiest day <b style="color:var(--text)">'+(d.peak_day_endorsements||0)+'</b>. First '+esc(days[0].day)+', latest '+esc(days[days.length-1].day)+'.</div>';
+
+  // Today, stated in words as well as drawn, so the figure does not depend on
+  // reading a short bar correctly.
+  var todayRow = null;
+  for (var ti=0; ti<days.length; ti++){ if(days[ti].day===todayKey) todayRow=days[ti]; }
+  if (todayRow) {
+    var tn = todayRow.endorsements || 0;
+    h+='<div style="font-size:11.5px;color:'+(tn?'var(--ready-text)':'var(--accent)')+';margin-top:6px">'
+      +'Today, '+esc(todayKey)+': <b>'+tn+'</b> '+(tn===1?'endorsement':'endorsements')
+      +(tn?'.':'. The column is drawn empty rather than omitted, so the slot is visible before anything fills it.')+'</div>';
+  }
+
   // The question a total cannot answer on its own: is this still receiving
   // clicks. Stated in days rather than left to be worked out from the chart.
   if (d.last_endorsement_at) {
     var ds = (d.days_since_last_endorsement === null || d.days_since_last_endorsement === undefined) ? null : d.days_since_last_endorsement;
-    var col = (ds !== null && ds >= 3) ? 'var(--review-text)' : 'var(--ready-text)';
-    h+='<div style="font-size:11.5px;color:'+col+';margin-top:6px">Last endorsement recorded <b>'+esc(d.last_endorsement_at)+'</b>'
+    var lcol = (ds !== null && ds >= 3) ? 'var(--review-text)' : 'var(--ready-text)';
+    h+='<div style="font-size:11.5px;color:'+lcol+';margin-top:6px">Last endorsement recorded <b>'+esc(d.last_endorsement_at)+'</b>'
       +((ds!==null)?(', '+ds+' '+(ds===1?'day':'days')+' ago'):'')+'.</div>';
   }
+
   var o = d.outage;
   if (o && o.clicks_not_recorded) {
     h+='<div style="font-size:11.5px;color:var(--stop-text);margin-top:6px;border-left:2px solid var(--stop-text);padding-left:9px">'
