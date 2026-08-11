@@ -1,32 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Register &middot; JRS</title>
-<meta name="robots" content="noindex">
-<meta name="description" content="Register to receive the JRS Investigator Field Guide or to add your support to the initiatives. Free for practitioners.">
-<link rel="icon" type="image/svg+xml" href="favicon.svg" />
-<!-- This page is the most-shared URL on the site and most of its traffic
-     arrives from LinkedIn, where a link with no OpenGraph block renders as a
-     bare grey row. noindex keeps it out of search; it does not stop a share
-     card, and the two are unrelated settings. -->
-<meta property="og:title" content="Pressure-test the standard" />
-<meta property="og:description" content="A decision, a policy, or a principle is only as resilient as the range of people who have pressure-tested it. This evaluation recruits an internationally and linguistically diverse panel of reviewers rather than relying on a single jurisdiction. No registration, no email required." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://jrsstandard.com/access.html" />
-<meta property="og:image" content="https://jrsstandard.com/og-card.png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:site_name" content="JRS&#8482; Justification Review Standard" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Pressure-test the standard" />
-<meta name="twitter:description" content="An internationally and linguistically diverse reviewer panel, recruited rather than assumed. No registration, no email required." />
-<meta name="twitter:image" content="https://jrsstandard.com/og-card.png" />
-<link rel="canonical" href="https://jrsstandard.com/access.html" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#050505; --surface:#121212; --surface2:#1A1A1A;
@@ -46,38 +17,12 @@ h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:26px;color:var(--te
 .cred b{color:var(--muted);font-weight:500}
 .tip{font-size:11px;color:var(--review-text);line-height:1.55;margin-bottom:12px}
 .card{background:var(--surface);border:1px solid var(--accent);padding:26px 24px;margin-top:24px}
-input{width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;margin-bottom:9px;font-family:'Inter',sans-serif}
-input:focus{outline:none;border-color:var(--accent-dim)}
-label.chk{display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--muted);line-height:1.5;margin-bottom:9px;cursor:pointer}
-label.chk input{width:auto;margin:2px 0 0;flex:0 0 auto}
-label.chk.soft{color:var(--muted-soft)}
-button{width:100%;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:13px;cursor:pointer}
-button:disabled{opacity:.55;cursor:default}
-button.ghost{background:none;color:var(--accent);border:1px solid var(--accent)}
-.qbox{border:1px solid var(--rule);background:var(--surface2);padding:12px 13px;margin-bottom:10px}
-.qbox .q{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:8px}
-.qbox .opts{display:flex;gap:18px}
-.qbox .opts label{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--text);cursor:pointer}
-.qbox .opts input{width:auto;margin:0}
-.registry{border:1px solid var(--accent-dim);background:var(--surface2);padding:14px 15px;margin:0 0 14px}
-.registry .rlabel{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:7px}
-.registry p{font-size:12.5px;color:var(--muted);line-height:1.6;margin:0}
-.registry b{color:var(--text);font-weight:500}
-.privacy-lite{border-left:3px solid var(--ready-text);padding:12px 14px;margin:0 0 14px;font-size:12.5px;color:var(--muted);line-height:1.6;background:var(--surface2)}
-#msg{font-size:12px;min-height:16px;margin-bottom:8px;color:var(--review-text)}
 .trust{font-size:11px;color:var(--ready-text);text-align:center;margin-top:9px}
-.detail-toggle{font-size:11.5px;margin-top:14px}
-.detail-toggle a{color:var(--accent-dim);text-decoration:underline}
-input.bad{border-color:var(--review-text)}
 .fine{font-size:10.5px;color:var(--muted-soft);line-height:1.55;margin-top:12px}
 /* Campaign route CTAs. Same declarations as reviewer/index.html so the two
    entry points to the reviewer pathway are visually the same control. */
 .cta{display:block;width:100%;text-align:center;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;text-decoration:none;padding:15px;font-weight:600}
-.cta.ghost{background:none;color:var(--accent);border:1px solid var(--accent);margin-top:10px}
 .hook{border-left:3px solid var(--accent-dim);background:var(--surface2);padding:14px 16px;margin:0 0 16px;font-size:13px;color:var(--muted);line-height:1.65}
-.listing{border:1px solid var(--accent-dim);background:var(--surface2);padding:14px 15px;margin:0 0 14px}
-.listing .rlabel{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:7px}
-.listing p{font-size:12.5px;color:var(--muted);line-height:1.6;margin:0}
 footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
 .footer-copy{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft)}
 </style>
@@ -91,43 +36,13 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     <h1 id="headline">Free Record Defensibility Check</h1>
     <p class="lede" id="lede">Free for practitioners. Two fields and one box.</p>
     <p class="cred">Built by <b>Phillip Wikes</b>, former Lead Civil Rights Officer, Maryland Commission on Civil Rights. <b>55 international reviewers across three studies</b> have graded records for this work, including <b>34 independent experts across 16 countries</b> who each completed a full 24-record set.</p>
-    <p class="tip" id="app-tip" style="display:none">Reading inside the LinkedIn app? Tap the &hellip; menu and choose <b>Open in browser</b> first, so the file saves to your device.</p>
+    <p class="tip" id="app-tip" style="display:none">Reading inside the LinkedIn app? Tap the &hellip; menu and choose <b>Open in browser</b> first, so links open properly.</p>
 
-    <!-- Campaign route only. Two clicks instead of a form: the endorsement is
-         already recorded by /api/support before this page loads, so a second
-         multi-field ask was a second price for something already paid. Hidden
-         on the guide route, where the form is the delivery mechanism. -->
-    <div id="cta-block" style="display:none">
-      <p class="hook" id="hook"></p>
-      <a id="cta-train" class="cta" href="/train">Open Module 1 now &rarr;</a>
-      <a id="cta-eval" class="cta ghost" href="/reviewer/evaluation.html">Go straight to the reviewer evaluation</a>
-      <p class="trust" id="cta-trust">No registration &middot; No email required &middot; Stop at any point</p>
-      <p class="fine" id="cta-proof" style="text-align:center"></p>
-      <p class="fine" id="cta-fine">The evaluation is anonymous. It asks nine questions about how records are reviewed where you work, and it does not ask who you are. Contact details are requested at the end, optionally, only if you want a recommendation or a certificate in return. See the <a href="privacy.html">Privacy Policy</a>.</p>
-    </div>
-
-    <input id="f-name"  type="text"  placeholder="Full name" autocomplete="name">
-    <input id="f-email" type="email" placeholder="Email" autocomplete="email">
-    <input id="f-org"   type="text"  placeholder="Organization (optional)" autocomplete="organization" style="margin-bottom:14px">
-    <input id="f-title" type="hidden" value="">
-
-    <label class="chk" id="contact-wrap"><input type="checkbox" id="c-contact"><span>I agree to receive what I asked for and updates on the JRS standard, and to my details being stored securely under the registration terms. (required)</span></label>
-
-    <label class="chk" id="named-wrap" style="border:1px solid var(--accent-dim);background:var(--surface2);padding:12px 13px;margin-bottom:10px"><input type="checkbox" id="c-registry"><span id="registry-terms"><span id="consent-lead">I agree to receive my results</span> and updates on the JRS standard, and to my details being stored securely under the <a href="#" id="terms-link">registration terms</a>. <span style="color:var(--text)" id="privacy-note">No record text is ever stored, and your name is <b style="color:var(--ready-text);font-weight:600">not published</b> by ticking this.</span></span></label>
-
-    <div id="msg"></div>
-    <button id="go" type="button">Continue</button>
-    <p class="trust" id="trust">Free access &middot; No credit card &middot; Memory-only record processing</p>
-
-    <p class="detail-toggle" id="what-wrap"><a href="#" id="what-toggle">What am I agreeing to?</a></p>
-    <div class="registry" id="registry-detail" style="display:none">
-      <div class="rlabel">Registration terms</div>
-      <p id="registry-longterms">Ticking the box means three things and no more: contact me about the JRS project, store my details securely, and allow that record to travel with the project if the JRS assets are ever transferred to a successor. It does <b>not</b> publish your name. Being listed in the public Registry is a separate, optional choice offered after you have what you came for.</p>
-      <p style="margin-top:8px">Registering opens the <b>free, private JRS diagnostic check</b> on your own records. Your record text is never stored: each record is assessed in memory and discarded.</p>
-      <p style="margin-top:8px">You can leave the Registry at any time by emailing <a href="mailto:info@jrsstandard.com">info@jrsstandard.com</a>. The standard, the research, and the site stay free to read without registering.</p>
-    </div>
-
-    <p class="fine" id="form-fine">Your details are stored securely and used only for the JRS project. Request access or deletion any time at <a href="mailto:info@jrsstandard.com">info@jrsstandard.com</a>. See the <a href="privacy.html">Privacy Policy</a>.</p>
+    <p class="hook" id="hook"></p>
+    <a id="cta-eval" class="cta" href="/reviewer/evaluation.html">Take the 4-minute reviewer evaluation &rarr;</a>
+    <p class="trust" id="cta-trust">&#10003; No registration required &middot; 100% Anonymous &middot; Optional LinkedIn Recommendation included</p>
+    <p class="fine" id="cta-proof" style="text-align:center"></p>
+    <p class="fine" id="cta-fine">Nine questions about how records are reviewed where you work. It does not ask who you are. Contact details are requested at the end, optionally, only if you want a recommendation or a certificate in return. See the <a href="privacy.html">Privacy Policy</a>.</p>
   </div>
 </div>
 
@@ -144,19 +59,19 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
   var campaignRaw = qp('c');
   var src = tag(qp('src'));
 
-  // Support mode when a campaign is present and no guide edition is requested.
-  var mode = (!editionRaw && campaignRaw) ? 'support' : 'guide';
+  // The Investigator Field Guides are open access as of 2026-08-11. Any ?e=
+  // link still in circulation, in an email footer or a signature, lands here
+  // and is sent straight to the file instead of to a form. /api/dl counts the
+  // download and its country, so the geography of guide readership survives
+  // the change intact.
+  if (editionRaw) {
+    location.replace('/api/dl?e=' + encodeURIComponent(editionRaw) + (src ? '&src=' + encodeURIComponent(src) : ''));
+    return;
+  }
 
-  var EDITION_LABEL = {
-    employment:'EEO / Employment edition',
-    eeo:'EEO / Employment edition',
-    fairhousing:'Fair Housing edition',
-    housing:'Fair Housing edition',
-    fh:'Fair Housing edition',
-    international:'International edition',
-    intl:'International edition',
-    int:'International edition'
-  };
+  // Nothing to show without a campaign. Send them to the guides.
+  if (!campaignRaw) { location.replace('investigator-guides.html'); return; }
+
   var CAMPAIGN_LABEL = {
     rtkw:'The Right to Know Why',
     rights:'The Right to Know Why',
@@ -165,108 +80,32 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     decisions:'The Decisions You Can Defend',
     decisionsyoucandefend:'The Decisions You Can Defend'
   };
-
-  var eyebrow = document.getElementById('eyebrow');
-  var headline = document.getElementById('headline');
-  var lede = document.getElementById('lede');
-  var go = document.getElementById('go');
-  var namedWrap = document.getElementById('named-wrap');
-  var registryRequired = false;
-  var combined = false;
-
-  var edKey = String(editionRaw||'').toLowerCase().replace(/[^a-z]/g,'');
   var cKey  = String(campaignRaw||'').toLowerCase().replace(/[^a-z]/g,'');
+  var cname = CAMPAIGN_LABEL[cKey] || 'the JRS initiatives';
 
-  var fOrg = document.getElementById('f-org');
-  var fTitle = document.getElementById('f-title');
+  document.title = 'Pressure-test the standard \u00b7 JRS';
+  document.getElementById('eyebrow').textContent = 'Your support is recorded';
+  document.getElementById('headline').textContent = 'Now pressure-test it';
+  document.getElementById('lede').innerHTML = 'Your entry against <b style="color:var(--text)">' + cname + '</b> is recorded as an '
+    + 'individual practitioner, never on behalf of your employer, and your name is not published. '
+    + 'The next thing the work needs is reviewers, and there is no form between you and the evaluation.';
+  document.getElementById('hook').textContent = 'A decision, a policy, or a principle is only as resilient as the range of people who have '
+    + 'pressure-tested it. That is why this evaluation recruits an internationally and linguistically diverse panel of '
+    + 'reviewers rather than relying on a single jurisdiction.';
 
-  if (mode === 'support') {
-    var cname = CAMPAIGN_LABEL[cKey] || 'the JRS initiatives';
-    // The endorsement is already written by /api/support on the way in, so by
-    // the time this page renders the reader has done the thing the link asked
-    // for. Asking them to fill a four-field form to continue charged them twice
-    // for it, and the measured result was one registration against a hundred
-    // opens. The campaign route now offers the two reviewer entry points and
-    // nothing else. Contact capture moves downstream to the evaluation, where
-    // it is optional and paid for with a recommendation or a certificate.
-    eyebrow.textContent = 'Your support is recorded';
-    headline.textContent = 'Now pressure-test it';
-    lede.innerHTML = 'Your entry against <b style="color:var(--text)">' + cname + '</b> is recorded as an individual practitioner, '
-      + 'never on behalf of your employer, and your name is not published. '
-      + 'The next thing the work needs is reviewers, and there is no form between you and either route below.';
+  // Attribution has to survive the hop, otherwise every reviewer who arrives
+  // this way is logged as direct traffic and the campaign looks like it sent
+  // nobody. Campaign travels too, so a reviewer can be traced to the initiative
+  // that recruited them.
+  var pass = '';
+  if (src)  pass += '&src=' + encodeURIComponent(src);
+  if (cKey) pass += '&c=' + encodeURIComponent(cKey);
+  var evalLink = document.getElementById('cta-eval');
+  if (evalLink) evalLink.href = '/reviewer/evaluation.html' + (pass ? '?' + pass.slice(1) : '');
 
-    var hook = document.getElementById('hook');
-    if (hook) hook.textContent = 'A decision, a policy, or a principle is only as resilient as the range of people who have '
-      + 'pressure-tested it. That is why this evaluation recruits an internationally and linguistically diverse panel of '
-      + 'reviewers rather than relying on a single jurisdiction.';
-
-    // Attribution has to survive the hop, otherwise every reviewer who arrives
-    // this way is logged as direct traffic and the campaign looks like it sent
-    // nobody. Campaign is carried too, so a reviewer can be traced to the
-    // initiative that recruited them.
-    var pass = '';
-    if (src)   pass += '&src=' + encodeURIComponent(src);
-    if (cKey)  pass += '&c=' + encodeURIComponent(cKey);
-    var train = document.getElementById('cta-train');
-    var evalv = document.getElementById('cta-eval');
-    if (train) train.href = '/train?access=reviewer&focus=1' + pass;
-    if (evalv) evalv.href = '/reviewer/evaluation.html?' + (pass ? pass.slice(1) : '');
-
-    // Swap the form out for the two buttons. Everything the form needed goes
-    // with it, so no orphaned consent line or submit handler is left on screen.
-    var ctaBlock = document.getElementById('cta-block');
-    if (ctaBlock) ctaBlock.style.display = 'block';
-    // The static title says Register, which is what this route no longer asks
-    // anyone to do. Set per mode rather than left contradicting the screen.
-    document.title = 'Pressure-test the standard · JRS';
-    ['f-name','f-email','f-org','contact-wrap','named-wrap','msg','go','trust','what-wrap','registry-detail','form-fine']
-      .forEach(function(id){ var el = document.getElementById(id); if (el) el.style.display = 'none'; });
-    // Live registry size and reach. People join a register that visibly exists,
-    // so the count and the country spread are shown rather than described.
-    fetch('/api/support-stats')
-      .then(function(r){ return r.ok ? r.json() : null; })
-      .then(function(d){
-        if (!d || !d.total) return;
-        // Written under the buttons now, not into the registration terms panel:
-        // that panel belongs to a form this route no longer shows, so text
-        // placed there would never be seen.
-        var reg = document.getElementById('cta-proof');
-        if (reg) reg.textContent = d.total + ' people have backed the initiatives across '
-          + d.countries + ' countries.';
-      })
-      .catch(function(){});
-  } else {
-    combined = true;
-    var contactBoxG = document.getElementById('contact-wrap');
-    if (contactBoxG) contactBoxG.style.display = 'none';
-    var ename = EDITION_LABEL[edKey] || '';
-    eyebrow.textContent = 'JRS Investigator Field Guide';
-    headline.textContent = ename || 'Free Investigator Field Guide';
-    lede.innerHTML = ename
-      ? ('Free for practitioners. The <b style="color:var(--text)">' + ename + '</b> downloads the moment you submit. Your name is not published.')
-      : 'Free for practitioners. The guide downloads the moment you submit. Your name is not published.';
-    go.textContent = 'Download the guide now';
-    var trustG = document.getElementById('trust');
-    if (trustG) trustG.textContent = 'Free access · No credit card · Instant download';
-    // A guide route delivers a file, not a diagnostic result. The tick line has
-    // to name what the reader is actually about to be sent.
-    var leadG = document.getElementById('consent-lead');
-    if (leadG) leadG.textContent = ename ? ('I agree to receive the ' + ename) : 'I agree to receive my guide';
-    var pnote = document.getElementById('privacy-note');
-    if (pnote) pnote.innerHTML = 'Your name is <b style="color:var(--ready-text);font-weight:600">not published</b> by ticking this.';
-    namedWrap.style.display = 'flex';
-    registryRequired = true;
-    // Lowest-commitment route: a named person with an email is worth far more
-    // than an anonymous download, so organization and title stop blocking it.
-    if (fOrg)   fOrg.placeholder = 'Organization (optional)';
-    if (fTitle) fTitle.placeholder = 'Title or role (optional)';
-  }
-
-  // No edition and no campaign: nothing to gate. Send to the guides page.
-  if (!editionRaw && !campaignRaw) { location.replace('investigator-guides.html'); return; }
-
-  // Tell the server the form was opened, so the drop-off between arriving here
-  // and finishing can be measured. No personal data is sent and nothing blocks.
+  // Tell the server the screen was opened, so the drop-off between arriving and
+  // reaching the evaluation can be measured. No personal data is sent, and a
+  // failure here never blocks the page.
   try {
     var seen = false;
     try { seen = sessionStorage.getItem('jrs-gate-view') === '1'; } catch(e){}
@@ -275,257 +114,28 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
       fetch('/api/access', {
         method: 'POST',
         headers: { 'Content-Type':'application/json' },
-        body: JSON.stringify({ event:'view', mode: mode, edition: editionRaw, campaign: campaignRaw, src: src })
+        body: JSON.stringify({ event:'view', mode:'support', edition:'', campaign: campaignRaw, src: src })
       }).catch(function(){});
     }
   } catch(e){}
 
-  // First-focus ping. The gate previously fired one event on load and the next
-  // possible event was a completed POST, so an abandonment could not be resolved
-  // to a stage: someone who never touched the form and someone who filled three
-  // fields and left looked identical. This fires ONCE per page session, on the
-  // first focus of any field, and records which field that was. No value is read
-  // from the input, only its name.
-  try {
-    var touched = false;
-    try { touched = sessionStorage.getItem('jrs-gate-touch') === '1'; } catch(e){}
-    // f-title is deliberately absent: it is a hidden input set in script and
-    // never surfaced, so it cannot receive focus and could never fire this ping.
-    var FIELDS = ['f-name','f-email','f-org','c-registry','c-contact'];
-    FIELDS.forEach(function(id){
-      var el = document.getElementById(id);
-      if (!el) return;
-      var evt = (el.type === 'checkbox') ? 'change' : 'focus';
-      el.addEventListener(evt, function(){
-        if (touched) return;
-        touched = true;
-        try { sessionStorage.setItem('jrs-gate-touch', '1'); } catch(e){}
-        fetch('/api/access', {
-          method: 'POST',
-          headers: { 'Content-Type':'application/json' },
-          body: JSON.stringify({ event:'field_touched', field_name: id, mode: mode,
-                                 edition: editionRaw, campaign: campaignRaw, src: src })
-        }).catch(function(){});
-      }, { once: false });
-    });
-  } catch(e){}
-
-  function esc(x){ return String(x==null?'':x).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
-
-  // The optional public listing, offered on the thank-you screen only, once the
-  // reader already has the guide or the recorded endorsement. Nothing here is a
-  // condition of anything they have already received.
-  function listingBlock(){
-    return '<div class="listing" id="listing-block">'
-      + '<div class="rlabel">Optional &middot; International Registry of Supporters</div>'
-      + '<p>Your name is <b style="color:var(--text)">not</b> on the public Registry. If you want it there, one click adds it: your name and organization only, never your email address. Members carry the designation <b style="color:var(--text)">Registered International Advocate</b>, and it reads as a professional position taken as an individual practitioner, not on behalf of your employer.</p>'
-      + '<button type="button" id="list-go" class="ghost" style="margin-top:11px">Add my name to the public Registry</button>'
-      + '<p class="fine" id="list-msg">You can be removed at any time by emailing info@jrsstandard.com.</p>'
-      + '</div>';
-  }
-
-  function wireListing(addr){
-    var btn = document.getElementById('list-go');
-    var out = document.getElementById('list-msg');
-    if (!btn || !out) return;
-    btn.addEventListener('click', function(){
-      btn.disabled = true;
-      out.style.color = 'var(--muted)';
-      out.textContent = 'Adding your name...';
-      fetch('/api/access', {
-        method: 'POST',
-        headers: { 'Content-Type':'application/json' },
-        body: JSON.stringify({ event:'listing', email: addr })
-      })
-      .then(function(r){ if (!r.ok) throw 0; return r.json(); })
-      .then(function(){
-        out.style.color = 'var(--ready-text)';
-        out.textContent = 'Added. You carry the designation Registered International Advocate. Email info@jrsstandard.com to be removed at any time.';
-        btn.textContent = 'Your name is on the Registry';
-      })
-      .catch(function(){
-        out.style.color = 'var(--review-text)';
-        out.textContent = 'Could not add it just now. Email info@jrsstandard.com and it will be added by hand.';
-        btn.disabled = false;
-      });
-    });
-  }
-
-  function submit(){
-    var msg = document.getElementById('msg');
-    var name  = document.getElementById('f-name').value.trim();
-    var org   = document.getElementById('f-org').value.trim();
-    var title = document.getElementById('f-title').value.trim();
-    var email = document.getElementById('f-email').value.trim();
-    var regBox = document.getElementById('c-registry').checked;
-    // In support mode the one box carries contact consent as well.
-    var c1 = combined ? regBox : document.getElementById('c-contact').checked;
-    // The one required box covers contact, secure storage, and transfer with the
-    // project. It does NOT publish anyone's name. Public listing is a separate
-    // professional decision with a separate cost to the person making it, so it
-    // is asked once, optionally, after delivery. Bundling an unrelated public
-    // listing into the price of a free download is also the kind of forced
-    // consent that does not survive scrutiny.
-    var reg = regBox;
-    var c2 = reg;
-    var c3 = false;
-
-    msg.style.color = 'var(--review-text)';
-    function mark(id){ var el = document.getElementById(id); if (el){ el.classList.add('bad'); el.focus(); } }
-    if (!name)  { msg.textContent = 'Please enter your name.'; mark('f-name'); return; }
-    if (!email || email.indexOf('@') < 1 || email.indexOf('.') < 0) { msg.textContent = 'Please enter a valid email address.'; mark('f-email'); return; }
-    if (!c1)    { msg.textContent = combined ? 'Please tick the box so your results can be sent to you.' : 'The first consent box is required in order to store your details.'; return; }
-    if (registryRequired && !reg) { msg.textContent = 'Please tick the box to continue. Your name is not published by ticking it.'; return; }
-
-    go.disabled = true;
-    msg.style.color = 'var(--muted)';
-    msg.textContent = 'Submitting...';
-
-    fetch('/api/access', {
-      method: 'POST',
-      headers: { 'Content-Type':'application/json' },
-      body: JSON.stringify({
-        mode: mode,
-        name: name,
-        organization: org,
-        title: title,
-        email: email,
-        edition: editionRaw,
-        campaign: campaignRaw,
-        src: src,
-        consent_contact: true,
-        consent_transfer: c2,
-        consent_named: c3
-      })
-    })
-    .then(function(r){ if (!r.ok) throw 0; return r.json(); })
+  // Live reach. People join something that visibly exists, so the count and the
+  // country spread are shown rather than described.
+  fetch('/api/support-stats')
+    .then(function(r){ return r.ok ? r.json() : null; })
     .then(function(d){
-      msg.style.color = 'var(--ready-text)';
-      if (mode === 'guide' && d && d.file) {
-        // Start the download without navigating away, so the release panel and
-        // the diagnostic offer stay in front of the reader.
-        try {
-          var a = document.createElement('a');
-          a.href = d.file; a.download = d.file.replace(/^\//, '');
-          document.body.appendChild(a); a.click(); document.body.removeChild(a);
-        } catch(e) { location.href = d.file; }
-        var gq = '?src=guide'
-          + '&org=' + encodeURIComponent(org)
-          + '&name=' + encodeURIComponent(name)
-          + '&title=' + encodeURIComponent(title)
-          + '&email=' + encodeURIComponent(email);
-        var gcard = document.querySelector('.card');
-        if (gcard) {
-          gcard.innerHTML =
-            '<div class="eyebrow">Registered</div>'
-          + '<h1>Thank you, ' + esc(name.split(' ')[0]) + '</h1>'
-          + '<p class="lede">Your guide is downloading. If it does not start, <a href="' + esc(d.file) + '">use this link</a>. Registered guide holders carry the designation <b style="color:var(--text)">JRS Field Specialist</b>.</p>'
-          + listingBlock()
-          + '<div class="registry">'
-            + '<div class="rlabel">Open Initiatives &amp; International Registry</div>'
-            + '<p>Your registration also opens the <b>free, private JRS diagnostic check</b>. Paste up to twenty five of your own records, redacted, and get the five-condition read on each one immediately. <b>Your record text is never stored</b>: each record is assessed in memory and discarded. Only the count and the pattern of results is kept.</p>'
-          + '</div>'
-          + '<a href="org-pilot.html' + gq + '" style="text-decoration:none"><button type="button" style="margin-bottom:10px">Run the diagnostic on my records</button></a>'
-          + '<a href="investigator-guides.html" style="text-decoration:none"><button type="button" class="ghost">No thanks, I am done</button></a>'
-          + '<p class="fine">Free, no obligation, and you can stop after one record.</p>';
-          wireListing(email);
-          window.scrollTo(0,0);
-        }
-      } else {
-        // Endorsement recorded. Offer the mini-pilot as the next step, carrying
-        // the details already given so they are not retyped. This is the funnel:
-        // an endorsement is a click, a pilot is field evidence.
-        var q = '?src=endorse'
-          + '&org=' + encodeURIComponent(org)
-          + '&name=' + encodeURIComponent(name)
-          + '&title=' + encodeURIComponent(title)
-          + '&email=' + encodeURIComponent(email);
-        msg.textContent = 'Thank you. Your support is recorded.';
-        var card = document.querySelector('.card');
-        if (card) {
-          card.innerHTML =
-            '<div class="eyebrow">Your record check is open</div>'
-          + '<h1>Thank you, ' + esc(name.split(' ')[0]) + '</h1>'
-          + '<p class="lede">Your registration is recorded and the free, private diagnostic check on your own records is now open.</p>'
-          + listingBlock()
-          + '<div class="privacy-lite">Paste up to twenty five of your own records, redacted, and get the five-condition read on each one immediately. <b>Your record text is never stored</b>: each record is assessed in memory and discarded. Only the count and the pattern of results is kept.</div>'
-          + '<a href="org-pilot.html' + q + '" style="text-decoration:none"><button type="button" style="margin-bottom:10px">Run it on my records</button></a>'
-          + '<a href="' + ((d && d.redirect) ? d.redirect : '/supported.html') + '" style="text-decoration:none"><button type="button" class="ghost">No thanks, I am done</button></a>'
-          + '<p class="fine">Free, no obligation, and you can stop after one record.</p>';
-          wireListing(email);
-          window.scrollTo(0,0);
-        } else {
-          location.href = (d && d.redirect) ? d.redirect : '/supported.html';
-        }
-      }
+      if (!d || !d.total) return;
+      var reg = document.getElementById('cta-proof');
+      if (reg) reg.textContent = d.total + ' people have backed the initiatives across ' + d.countries + ' countries.';
     })
-    .catch(function(){
-      msg.style.color = 'var(--review-text)';
-      msg.textContent = 'Could not complete that just now. Please try again, or email info@jrsstandard.com.';
-      go.disabled = false;
-    });
-  }
+    .catch(function(){});
 
-  go.addEventListener('click', submit);
-  // Guarded on mode: the campaign route hides the form, and an unguarded
-  // document-level Enter would still run submit() against empty inputs, writing
-  // a validation message into a hidden element and disabling a hidden button.
-  document.addEventListener('keydown', function(e){ if (e.key === 'Enter' && mode !== 'support') submit(); });
-
-  // "What am I agreeing to?" opens the full terms rather than putting four lines
-  // of consent text between the reader and the button.
-  var toggle = document.getElementById('what-toggle');
-  function setTerms(open){
-    var d = document.getElementById('registry-detail');
-    if (!d) return;
-    d.style.display = open ? 'block' : 'none';
-    if (toggle) toggle.textContent = open ? 'Hide the details' : 'What am I agreeing to?';
-  }
-  if (toggle) toggle.addEventListener('click', function(e){
-    e.preventDefault();
-    var d = document.getElementById('registry-detail');
-    if (!d) return;
-    setTerms(d.style.display === 'none');
-  });
-  // The tick line names the registration terms rather than reciting them, so the
-  // link has to open the same panel and put them in front of the reader.
-  var termsLink = document.getElementById('terms-link');
-  if (termsLink) termsLink.addEventListener('click', function(e){
-    e.preventDefault();
-    e.stopPropagation();
-    var d = document.getElementById('registry-detail');
-    var open = !d || d.style.display === 'none' || !d.style.display;
-    setTerms(open);
-    termsLink.textContent = open ? 'hide the details' : 'registration terms';
-    if (open && d && d.scrollIntoView) d.scrollIntoView({ behavior:'smooth', block:'nearest' });
-  });
-
-  // Clear the red border as soon as the reader fixes the field, so the form
-  // stops looking broken while they are still typing.
-  ['f-name','f-email'].forEach(function(id){
-    var el = document.getElementById(id);
-    if (el) el.addEventListener('input', function(){ el.classList.remove('bad'); });
-  });
-  var regEl = document.getElementById('c-registry');
-  if (regEl) regEl.addEventListener('change', function(){
-    var m = document.getElementById('msg'); if (m && regEl.checked) m.textContent = '';
-  });
-
-  // In-app browsers (LinkedIn, Facebook, Instagram) block or silently discard a
-  // programmatic file download, so a guide reader arriving from a post gets the
-  // form, submits it, and receives nothing. Warn before that happens.
+  // In-app browsers (LinkedIn, Facebook, Instagram) are the majority of this
+  // page's traffic and handle navigation poorly, so the escape hatch stays.
   try {
-    var ua = navigator.userAgent || '';
-    var inApp = /LinkedInApp|FBAN|FBAV|Instagram|Twitter/i.test(ua);
-    var tipEl = document.getElementById('app-tip');
-    if (inApp && mode === 'guide' && tipEl) tipEl.style.display = 'block';
-  } catch(e){}
-
-  // Focus the first field on a real keyboard. Not on touch, where it would throw
-  // the keyboard up and hide the form.
-  try {
-    if (!('ontouchstart' in window) && window.innerWidth > 700) {
-      var fn = document.getElementById('f-name'); if (fn) fn.focus();
+    if (/(FBAN|FBAV|Instagram|LinkedInApp)/i.test(navigator.userAgent)) {
+      var tip = document.getElementById('app-tip');
+      if (tip) tip.style.display = 'block';
     }
   } catch(e){}
 })();

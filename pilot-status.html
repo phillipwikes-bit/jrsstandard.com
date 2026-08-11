@@ -590,7 +590,16 @@ function loadEvalFunnel(){
        +(f.contacts_captured||0)+' contact '+(((f.contacts_captured||0)===1)?'record':'records')+' captured ('
        +(f.contacts_via_recommendation||0)+' via the LinkedIn recommendation, '+(f.contacts_via_certificate||0)+' via the certificate), '
        +(f.submit_to_contact_pct||0)+'% of submissions and '+(f.open_to_contact_pct||0)+'% of opens. '
-       +'Opens count page opens rather than distinct people: the evaluation page carries no per-person key.';
+       +'Opens count page opens rather than distinct people: the evaluation page carries no per-person key.'
+       // Without this line the submitted and contacts columns read as zeros when
+       // they are actually withheld, which is a different and worse claim.
+       +((f.breakdowns_released===false && (f.submitted||0)>0)
+          ? ' The submitted and contacts columns above are withheld, not empty: breakdowns by country, sector and role are released at '
+            +(f.breakdown_min_n||30)+' submissions, below which they identify individual respondents.'
+          : '')
+       +(((f.opened_crawlers_excluded||0)>0)
+          ? ' '+f.opened_crawlers_excluded+' crawler '+((f.opened_crawlers_excluded===1)?'open':'opens')+' excluded.'
+          : '');
    })
    .catch(function(){
      document.getElementById('ev-note').textContent='Evaluation activity will appear here once the first reviewer opens the instrument.';

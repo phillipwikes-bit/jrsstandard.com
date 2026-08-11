@@ -50,8 +50,6 @@ h1{font-family:'Bodoni Moda',serif;font-size:33px;font-weight:400;line-height:1.
 .gcard-meta{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:14px}
 .dl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#050505;background:var(--accent);padding:11px 16px;text-decoration:none;display:inline-block;font-weight:600;text-align:center}
 .dl:hover{background:#d0a659}
-.dl-alt{display:block;margin-top:9px;font-size:11.5px;color:var(--accent-dim);text-decoration:underline;text-align:center}
-.dl-alt:hover{color:var(--accent)}
 #post-dl{display:none;margin-top:20px;border:1px solid var(--accent);background:var(--surface);padding:20px 22px}
 #post-dl .pd-lbl{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
 #post-dl h2{font-family:'Bodoni Moda',serif;font-weight:400;font-size:21px;color:var(--text);margin:0 0 8px}
@@ -97,7 +95,6 @@ h1{font-family:'Bodoni Moda',serif;font-size:33px;font-weight:400;line-height:1.
       <div class="gcard-text">For investigators, fact-finders, and EEO counselors. Covers EEO / EEOC intake and workplace investigations: performance, discipline, accommodation, and investigative records, with AI-documentation risk patterns and a record-interrogation framework tuned to employment files.</div>
       <div class="gcard-meta">Instant PDF &middot; 9 pages &middot; printable audit matrix &middot; free to use and share</div>
       <a class="dl dl-direct" data-ed="employment" href="/api/dl?e=employment&amp;src=guides" download>Download now &#8595;</a>
-      <a class="dl-alt" href="/api/dl?e=employment&amp;gate=1&amp;src=site">Email it to me instead, with the free record check</a>
     </div>
     <div class="gcard">
       <div class="gcard-tag">001-INV-H &middot; v1.1</div>
@@ -105,7 +102,6 @@ h1{font-family:'Bodoni Moda',serif;font-size:33px;font-weight:400;line-height:1.
       <div class="gcard-text">For fair-housing investigators, FHAP intake staff, housing providers, and compliance personnel. Covers tenant-screening denials, availability records, and reasonable-accommodation and modification determinations, with a record-interrogation framework tuned to housing files.</div>
       <div class="gcard-meta">Instant PDF &middot; 9 pages &middot; printable audit matrix &middot; free to use and share</div>
       <a class="dl dl-direct" data-ed="fairhousing" href="/api/dl?e=fairhousing&amp;src=guides" download>Download now &#8595;</a>
-      <a class="dl-alt" href="/api/dl?e=fairhousing&amp;gate=1&amp;src=site">Email it to me instead, with the free record check</a>
     </div>
     <div class="gcard">
       <div class="gcard-tag">001-INV-INT &middot; v1.1</div>
@@ -113,7 +109,6 @@ h1{font-family:'Bodoni Moda',serif;font-size:33px;font-weight:400;line-height:1.
       <div class="gcard-text">Jurisdiction-neutral, for equality bodies and national human rights institutions. Covers discrimination investigations across employment, housing, and access to goods and services under one method, with a record-interrogation framework free of country-specific statutes.</div>
       <div class="gcard-meta">Instant PDF &middot; 9 pages &middot; printable audit matrix &middot; free to use and share</div>
       <a class="dl dl-direct" data-ed="international" href="/api/dl?e=international&amp;src=guides" download>Download now &#8595;</a>
-      <a class="dl-alt" href="/api/dl?e=international&amp;gate=1&amp;src=site">Email it to me instead, with the free record check</a>
     </div>
   </div>
 
@@ -123,9 +118,9 @@ h1{font-family:'Bodoni Moda',serif;font-size:33px;font-weight:400;line-height:1.
     <div class="pd-lbl">Your download has started</div>
     <h2 id="pd-h">That one is yours. Two things that go with it.</h2>
     <p>If the file did not start, <a id="pd-retry" href="#">use this link</a>. Nothing was asked of you for it and nothing was recorded about you.</p>
-    <p>Registered guide holders carry the designation <b style="color:var(--text)">JRS Field Specialist</b>, and registration also opens the free, private record check: paste up to twenty five of your own records, redacted, and get the five-condition read on each one. Your record text is never stored.</p>
+    <p>Nothing further is required of you. If you want to give something back, the reviewer evaluation asks nine questions about how records are reviewed where you work. It takes about four minutes, it is anonymous, and it does not ask who you are.</p>
     <div class="pd-row">
-      <a class="dl" id="pd-register" href="/access.html?e=employment&amp;src=guide-dl" style="flex:1;min-width:210px">Register and open the record check</a>
+      <a class="dl" id="pd-register" href="/reviewer/evaluation.html?src=guide-dl" style="flex:1;min-width:210px">Take the 4-minute reviewer evaluation &rarr;</a>
       <a class="dl" href="/org-pilot.html?src=guide-dl" style="flex:1;min-width:210px;background:none;color:var(--accent);border:1px solid var(--accent)">Run one record now, no sign-up</a>
     </div>
   </section>
@@ -199,13 +194,11 @@ h1{font-family:'Bodoni Moda',serif;font-size:33px;font-weight:400;line-height:1.
   // counts the download and 302s to the file. No form stands in front of it.
   // The panel below is revealed afterwards so the ask follows the gift.
   var panel = document.getElementById('post-dl');
-  var reg = document.getElementById('pd-register');
   var retry = document.getElementById('pd-retry');
   document.querySelectorAll('.dl-direct').forEach(function(a){
     a.addEventListener('click', function(){
       var ed = a.getAttribute('data-ed') || 'employment';
-      if (reg) reg.href = '/access.html?e=' + encodeURIComponent(ed) + '&src=guide-dl';
-      if (retry) retry.href = '/api/dl?e=' + encodeURIComponent(ed) + '&src=guides' + '&src=guides' + '&src=guides';
+      if (retry) retry.href = '/api/dl?e=' + encodeURIComponent(ed) + '&src=guides';
       if (!panel) return;
       panel.style.display = 'block';
       setTimeout(function(){ panel.scrollIntoView({ behavior:'smooth', block:'nearest' }); }, 220);

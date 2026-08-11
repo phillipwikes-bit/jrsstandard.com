@@ -135,12 +135,28 @@ export default async function handler(req){
     corpora[d] = (corpora[d] || 0) + 1;
   });
 
+  // CRAWLERS ARE NOT ENGAGEMENT AND MUST NOT BE COUNTED AS IT.
+  //
+  // Googlebot's smartphone user agent classifies as mobile. On 2026-08-11 that
+  // single fact was carrying the published device split to 80 percent mobile on
+  // ten flagged rows, of which seven were bots and the remaining three were one
+  // person on one iPhone. A buyer reading that number would have been reading
+  // Google's crawl schedule.
+  //
+  // Applied to the public view and device aggregates only. It is a user-agent
+  // match, so it catches declared crawlers and nothing else; it is not a
+  // fraud control and does not pretend to be one.
+  const CRAWLER = /bot|spider|crawl|slurp|GoogleOther|bingpreview|facebookexternalhit|preview|headless|python-requests|curl|wget/i;
+  function isCrawler(p){ return CRAWLER.test(String((p || {}).user_agent || '')); }
+
   // Device split, now that user-agent is captured. Only rows written since that
   // change carry the flag, so the denominator is stated rather than implied.
-  let mobile = 0, desktop = 0;
+  let mobile = 0, desktop = 0, crawlerRows = 0;
   events.forEach(function(e){
     const p = e.payload || {};
-    if (typeof p.is_mobile === 'boolean') { p.is_mobile ? mobile++ : desktop++; }
+    if (typeof p.is_mobile !== 'boolean') return;
+    if (isCrawler(p)) { crawlerRows++; return; }
+    p.is_mobile ? mobile++ : desktop++;
   });
 
   // Downloads of the public artifacts, which is the one engagement signal that
@@ -159,8 +175,14 @@ export default async function handler(req){
   // page has no per-person key: there is nothing to deduplicate on and inventing
   // one would mean fingerprinting the reader, which the rest of this system
   // deliberately does not do. Stated here rather than implied.
-  let evalOpened = 0;
-  events.forEach(function(e){ if (e.source === 'eval-view' && e.type === 'view') evalOpened++; });
+  // Crawler opens are excluded here for the same reason as the device split: a
+  // search engine rendering the page is not a reviewer considering it.
+  let evalOpened = 0, evalOpenedCrawlers = 0;
+  events.forEach(function(e){
+    if (e.source !== 'eval-view' || e.type !== 'view') return;
+    if (isCrawler(e.payload)) { evalOpenedCrawlers++; return; }
+    evalOpened++;
+  });
 
   let evalSubmitted = 0, evalFull = 0, evalAnswerSum = 0;
   events.forEach(function(e){
@@ -201,8 +223,37 @@ export default async function handler(req){
       .map(function(k){ return { country: k, count: m[k] }; });
   }
 
+  // MINIMUM CELL SIZE FOR ANY BREAKDOWN OF THE ANSWERS.
+  //
+  // Set before the first response arrived, on purpose. Below this threshold a
+  // breakdown stops being a statistic and becomes an identification: "the one
+  // respondent in financial services says their employer has no second reader"
+  // names a person to anyone who knows who was asked. The instrument's whole
+  // promise to the reader is that this cannot happen, and a threshold chosen
+  // after the data is on screen is not a threshold.
+  //
+  // Below N, the sub-group arrays return empty and the flag says why. The
+  // scalar distinct-country counts survive, because a count of how many
+  // countries responded identifies nobody.
+  const MIN_CELL_N = 30;
+  const breakdownsOk = evalSubmitted >= MIN_CELL_N;
+  function gated(rows){ return breakdownsOk ? rows : []; }
+
+  function tallyKey(rows, pick){
+    const m = {};
+    rows.forEach(function(r){ const k = pick(r); if (k) m[k] = (m[k] || 0) + 1; });
+    return Object.keys(m).sort(function(a, b){ return m[b] - m[a] || (a < b ? -1 : 1); })
+      .map(function(k){ return { key: k, count: m[k] }; });
+  }
+  const evalRows = events.filter(function(e){
+    return e.source === 'reviewer-eval' && e.type === 'evaluation';
+  });
+
+  // Opens are not gated: a page open carries no answer and no identity, so it
+  // cannot re-identify a respondent. Only breakdowns touching the answers or
+  // the contacts sit behind the threshold.
   const evalOpenCountries = tally(
-    events.filter(function(e){ return e.source === 'eval-view' && e.type === 'view'; }),
+    events.filter(function(e){ return e.source === 'eval-view' && e.type === 'view' && !isCrawler(e.payload); }),
     function(e){ return (e.payload || {}).country; });
 
   const evalSubmitCountries = tally(
@@ -268,6 +319,7 @@ export default async function handler(req){
 
     reviewer_evaluation_funnel: {
       opened: evalOpened,
+      opened_crawlers_excluded: evalOpenedCrawlers,
       submitted: evalSubmitted,
       completed_all_questions: evalFull,
       mean_questions_answered: evalSubmitted ? Math.round((evalAnswerSum / evalSubmitted) * 10) / 10 : 0,
@@ -278,14 +330,26 @@ export default async function handler(req){
       submit_to_contact_pct: pct(evalContacts, evalSubmitted),
       open_to_contact_pct: pct(evalContacts, evalOpened),
       countries_opened: evalOpenCountries,
-      countries_submitted: evalSubmitCountries,
-      countries_contacts: evalContactCountries,
+      countries_submitted: gated(evalSubmitCountries),
+      countries_contacts: gated(evalContactCountries),
       distinct_countries_opened: evalOpenCountries.length,
       distinct_countries_submitted: evalSubmitCountries.length,
-      country_note: 'Two-letter code from the edge, per stage. Counts only. Answers are '
-          + 'deliberately not broken down by country: with a handful of responses that '
-          + 'becomes a re-identification, and the instrument depends on that being '
-          + 'impossible. Where a reviewer sits is not necessarily where their employer is.',
+      by_sector: gated(tallyKey(evalRows, function(e){ return (e.payload || {}).sector; })),
+      by_role:   gated(tallyKey(evalRows, function(e){ return (e.payload || {}).role; })),
+      by_org_size: gated(tallyKey(evalRows, function(e){ return (e.payload || {}).org_size; })),
+      breakdown_min_n: MIN_CELL_N,
+      breakdowns_released: breakdownsOk,
+      breakdown_note: breakdownsOk
+          ? 'Sub-group breakdowns are released: submissions have passed the minimum of '
+            + MIN_CELL_N + '.'
+          : 'Sub-group breakdowns by sector, role, organization size and country are '
+            + 'withheld until submissions reach ' + MIN_CELL_N + '. At ' + evalSubmitted
+            + ' they would identify individual respondents rather than describe a group. '
+            + 'The threshold was fixed before the first response arrived, not chosen once '
+            + 'the data was visible. Distinct-country counts are shown because a count of '
+            + 'how many countries responded identifies nobody.',
+      country_note: 'Two-letter code from the edge, per stage. Counts only. Where a '
+          + 'reviewer sits is not necessarily where their employer is.',
       note: 'opened counts page opens, not distinct people: the evaluation page carries no '
           + 'per-person key and inventing one would mean fingerprinting the reader. '
           + 'contacts_captured is the number of transferable contact records produced, which '
@@ -300,8 +364,12 @@ export default async function handler(req){
         mobile: mobile,
         desktop: desktop,
         mobile_pct: pct(mobile, mobile + desktop),
-        basis: 'Rows carrying a device flag. Capture began 2026-08-09, so this is a '
-             + 'partial denominator and not the full event history.'
+        crawler_rows_excluded: crawlerRows,
+        basis: 'Rows carrying a device flag, with declared crawlers removed by user '
+             + 'agent. Capture began 2026-08-09, so this is a partial denominator and '
+             + 'not the full event history. Crawlers are excluded because Googlebot '
+             + 'presents a smartphone user agent and would otherwise be counted as '
+             + 'mobile engagement.'
       }
     }
   });
