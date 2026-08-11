@@ -68,6 +68,7 @@ tr.today td{background:rgba(93,191,130,.07)}
     <div class="card"><div class="cv" id="td-dl">&middot;</div><div class="ck">Guide downloads</div></div>
     <div class="card"><div class="cv" id="td-reads">&middot;</div><div class="ck">Records reviewed</div></div>
   </div>
+  <div class="note" id="td-recon" style="border-left-width:3px">Reconciling arrivals against endorsements&hellip;</div>
   <div class="note" id="td-note">Loading today&hellip;</div>
 
   <h1>AI-Assisted Records Pilot &middot; Submissions</h1>
@@ -597,9 +598,23 @@ function loadToday(){
       if(t.crawler_rows_excluded) parts.push(t.crawler_rows_excluded+' crawler '+((t.crawler_rows_excluded===1)?'row':'rows')+' excluded');
       if(t.records_reviewed) parts.push(t.records_reviewed+' records reviewed ('+(t.records_reviewed_detection||0)+' detection, '+(t.records_reviewed_comparison||0)+' comparison)');
       document.getElementById('td-note').textContent=parts.join(' \u00b7 ')+'. '+t.note;
+      // Arrivals against endorsements, stated explicitly. Without this the two
+      // tiles sit side by side inviting the reader to subtract them and draw
+      // the wrong conclusion from the answer.
+      var rec=t.arrivals_vs_endorsements;
+      var rel=document.getElementById('td-recon');
+      if(rel && rec){
+        var diff=rec.difference||0;
+        rel.style.borderLeftColor = diff ? 'var(--review-text)' : 'var(--ready-text)';
+        rel.innerHTML='<b style="color:var(--text)">'+rec.campaign_arrivals+'</b> campaign '
+          +((rec.campaign_arrivals===1)?'arrival':'arrivals')+' &rarr; <b style="color:var(--text)">'
+          +rec.endorsements_recorded+'</b> '+((rec.endorsements_recorded===1)?'endorsement':'endorsements')
+          +' recorded'+(diff?(', <b style="color:var(--review-text)">'+diff+' unrecorded</b>'):', reconciled')
+          +'. '+esc(rec.explanation);
+      }
       renderSuppressed(d.suppressed_cohorts);
     })
-    .catch(function(){ var n=document.getElementById('td-note'); if(n) n.textContent='Could not load today. Tap Refresh.'; var sp=document.getElementById('suppressed'); if(sp) sp.innerHTML='<div style="color:var(--muted-soft);font-size:12px">Could not load. Tap Refresh.</div>'; });
+    .catch(function(){ var n=document.getElementById('td-note'); if(n) n.textContent='Could not load today. Tap Refresh.'; var rr=document.getElementById('td-recon'); if(rr) rr.textContent='Could not load. Tap Refresh.'; var sp=document.getElementById('suppressed'); if(sp) sp.innerHTML='<div style="color:var(--muted-soft);font-size:12px">Could not load. Tap Refresh.</div>'; });
 }
 function loadEvalFunnel(){
   return fetch('/api/asset-stats')

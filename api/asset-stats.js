@@ -196,6 +196,20 @@ export default async function handler(req){
       return e.source === src && e.type === type && isToday(e) && !isCrawler(e.payload);
     }).length;
   }
+  // A CAMPAIGN ARRIVAL MUST CARRY A CAMPAIGN.
+  //
+  // This counted every gate-view row, which includes readers who reached
+  // access.html with no ?c= at all. Those are redirected straight to the guides
+  // page and never see the campaign screen, so counting them here overstated
+  // the figure and, worse, put it out of step with the outage count in
+  // /api/support-stats, which has always filtered on campaign. On 2026-08-11
+  // the two read 23 and 18 while describing the same event.
+  function todayCampaignArrivals(){
+    return events.filter(function(e){
+      return e.source === 'gate-view' && e.type === 'view' && isToday(e)
+          && !isCrawler(e.payload) && (e.payload || {}).campaign;
+    }).length;
+  }
   const todayCrawlers = events.filter(function(e){ return isToday(e) && isCrawler(e.payload); }).length;
   const todayHuman    = events.filter(function(e){ return isToday(e) && !isCrawler(e.payload); }).length;
   const todayReadsA = armA.reduce(function(n, r){ return n + (r.reads_today || 0); }, 0);
@@ -360,7 +374,9 @@ export default async function handler(req){
     // it is a missing one, and it is why the page looked frozen.
     today: {
       date: todayKey,
-      campaign_screen_arrivals: todayCount('gate-view', 'view'),
+      campaign_screen_arrivals: todayCampaignArrivals(),
+      // Non-campaign hits on the same page, kept separate rather than folded in.
+      access_page_hits_without_campaign: todayCount('gate-view', 'view') - todayCampaignArrivals(),
       reviewer_landing_arrivals: todayCount('reviewer-view', 'view'),
       training_page_arrivals: todayCount('train-view', 'view'),
       endorsements: todayCount('support', 'endorse'),
@@ -371,6 +387,20 @@ export default async function handler(req){
       records_reviewed: todayReadsA + todayReadsB,
       records_reviewed_detection: todayReadsA,
       records_reviewed_comparison: todayReadsB,
+      arrivals_vs_endorsements: {
+        campaign_arrivals: todayCampaignArrivals(),
+        endorsements_recorded: todayCount('support', 'endorse'),
+        difference: todayCampaignArrivals() - todayCount('support', 'endorse'),
+        explanation: 'Every arrival on the campaign screen should record one endorsement. '
+                   + 'Two writes cover it: /api/support records server-side for anyone who '
+                   + 'follows a campaign link, and the screen itself records a fallback for '
+                   + 'anyone arriving by a copied, forwarded or bookmarked URL, deduped per '
+                   + 'browser. Both went live on 2026-08-11, the server write at 08:30Z and '
+                   + 'the fallback at 20:45Z. Arrivals BEFORE those times produced no '
+                   + 'endorsement and cannot be recovered as one, which is the whole of any '
+                   + 'difference shown here on 2026-08-11. From 2026-08-12 a difference on '
+                   + 'this line is a defect and should be treated as one.'
+      },
       crawler_rows_excluded: todayCrawlers,
       total_human_events: todayHuman,
       note: 'Current UTC day, crawlers removed by user agent and counted separately. '
