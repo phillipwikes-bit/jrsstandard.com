@@ -159,6 +159,21 @@ async function purgeTestRows(H){
         { method: 'DELETE', headers: H });
     }
   } catch (e) { /* best-effort */ }
+  // The twelve endorsement rows written on 2026-08-11 while verifying that the
+  // /api/support redirect chain worked for both campaigns across six referral
+  // tags. They carry genuine src tags, so no tag filter can reach them. They are
+  // bracketed by timestamp instead, and the bracket is exact: the previous real
+  // endorsement is dated 2026-08-04T09:03Z, nothing was recorded in between
+  // because the write was broken, and the twelve landed inside a six second
+  // window. Nothing genuine can fall inside these bounds.
+  const E2E_FROM = '2026-08-11T08:36:45Z';
+  const E2E_TO   = '2026-08-11T08:37:00Z';
+  try {
+    await fetch(SB + '/rest/v1/interaction_events?source=eq.support'
+      + '&created_at=gte.' + encodeURIComponent(E2E_FROM)
+      + '&created_at=lte.' + encodeURIComponent(E2E_TO),
+      { method: 'DELETE', headers: H });
+  } catch (e) { /* best-effort */ }
   // Gate telemetry rows carrying a deploy-check tag. Same reason: a test view or
   // field_touched row lands in the funnel denominator that the conversion report
   // is computed from, where it reads as a real visitor who abandoned.
