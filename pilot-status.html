@@ -190,6 +190,14 @@ tr.today td{background:rgba(93,191,130,.07)}
   </div>
   <div class="note" id="ev-note">Evaluation activity will appear here once the first reviewer opens the instrument.</div>
 
+  <h1 style="font-size:22px;margin-top:34px">Suppressed &amp; Inactive Cohorts</h1>
+  <p class="sub">A zero on this page can mean three different things and you cannot tell them apart by looking: nothing happened, nothing was sent, or something is deliberately withheld. Every cohort below states which of the three it is. None of them is counted in an active total: a roster size is not an audience, an unsent link is not a non-response, and a withheld breakdown is not an absence of data.</p>
+  <div class="chart">
+    <h2>Declared exclusions</h2>
+    <div id="suppressed">Loading&hellip;</div>
+    <div class="note" style="margin-top:8px">Anti-inflation statement. Rates for the per-person link programmes are computed against links <b>sent</b>, never against links <b>issued</b>. Where a rate against issued appears elsewhere in the payload it is labelled as the conservative reading and is not the operational one.</div>
+  </div>
+
   <h1 style="font-size:22px;margin-top:34px">Contributor Confirmations</h1>
   <p class="sub">Per-person confirmation links sent to the reviewers who completed the international detection set, the article co-authors, and the pilot facilitators. Each link captures the exact name and title to print, the naming election, and the continuing-use and transfer permissions. Aggregate counts only; the wording each contributor chose is stored privately.</p>
   <div class="cards">
@@ -546,6 +554,32 @@ function renderGateSplit(s){
     +'</div>';
   el.innerHTML=html;
 }
+function renderSuppressed(list){
+  var el=document.getElementById('suppressed');
+  if(!el) return;
+  if(!list || !list.length){ el.innerHTML='<div style="color:var(--muted-soft);font-size:12px">No cohort is currently suppressed or inactive.</div>'; return; }
+  var COL={ 'INACTIVE':'var(--muted-soft)', 'SUPPRESSED':'var(--review-text)',
+            'PARTIALLY SUPPRESSED':'var(--review-text)', 'WITHHELD':'var(--accent)' };
+  var h='';
+  list.forEach(function(c){
+    var col=COL[c.state]||'var(--muted-soft)';
+    var counts=Object.keys(c.counts||{}).map(function(k){
+      var v=c.counts[k]; if(v===true)v='yes'; if(v===false)v='no';
+      return '<span style="white-space:nowrap"><span style="color:var(--muted-soft)">'+esc(k.replace(/_/g,' '))+'</span> <b style="color:var(--text)">'+esc(String(v))+'</b></span>';
+    }).join('<span style="color:var(--rule)"> &middot; </span>');
+    h+='<div style="border-left:2px solid '+col+';padding:10px 0 10px 12px;margin-bottom:12px">'
+      +'<div style="display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:5px">'
+        +'<span style="font-size:13.5px;color:var(--text)">'+esc(c.cohort)+'</span>'
+        +'<span style="font-family:\'JetBrains Mono\',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:'+col+';border:1px solid '+col+';padding:2px 6px">'+esc(c.state)+'</span>'
+        +(c.excluded_from_totals?'<span style="font-family:\'JetBrains Mono\',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft)">excluded from totals</span>':'')
+      +'</div>'
+      +'<div style="font-size:11.5px;margin-bottom:5px">'+counts+'</div>'
+      +'<div style="font-size:12px;color:var(--muted);line-height:1.55">'+esc(c.reason)+'</div>'
+      +'<div style="font-size:11.5px;color:var(--muted-soft);line-height:1.55;margin-top:4px">'+esc(c.disclaimer)+'</div>'
+      +'</div>';
+  });
+  el.innerHTML=h;
+}
 function loadToday(){
   fetch('/api/asset-stats')
     .then(function(r){ if(!r.ok) throw 0; return r.json(); })
@@ -563,8 +597,9 @@ function loadToday(){
       if(t.crawler_rows_excluded) parts.push(t.crawler_rows_excluded+' crawler '+((t.crawler_rows_excluded===1)?'row':'rows')+' excluded');
       if(t.records_reviewed) parts.push(t.records_reviewed+' records reviewed ('+(t.records_reviewed_detection||0)+' detection, '+(t.records_reviewed_comparison||0)+' comparison)');
       document.getElementById('td-note').textContent=parts.join(' \u00b7 ')+'. '+t.note;
+      renderSuppressed(d.suppressed_cohorts);
     })
-    .catch(function(){ var n=document.getElementById('td-note'); if(n) n.textContent='Could not load today. Tap Refresh.'; });
+    .catch(function(){ var n=document.getElementById('td-note'); if(n) n.textContent='Could not load today. Tap Refresh.'; var sp=document.getElementById('suppressed'); if(sp) sp.innerHTML='<div style="color:var(--muted-soft);font-size:12px">Could not load. Tap Refresh.</div>'; });
 }
 function loadEvalFunnel(){
   return fetch('/api/asset-stats')
