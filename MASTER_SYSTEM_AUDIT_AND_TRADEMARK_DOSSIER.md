@@ -238,3 +238,38 @@ Searched for `price`, `purchase`, `invoice`, `subscription`, `licence fee`, `pai
 **Files modified this run:** `api/support.js`, `api/access.js`, `api/support-stats.js`, `api/contributor.js`, `access.html`, `pilot-status.html`, `CLAUDE.md`, `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md`, `research/MASTER_TRACKER.md`.
 
 **Ground-truth block supplied in the directive, reconciled not injected.** 84.2% inter-rater: measured value is Gwet's AC1 **0.739**, 95% CI [0.402, 1.000], n=10 records, 36 labels, computed by `research/compute_ac1_ci.py`. Cross-vendor drift <15%: no drift calculation exists; reproducibility is 86.7%, so <15% is recorded as a target and not as a measurement. 9-question survey: **confirmed**, matches `api/reviewer-eval.js`. Active benchmark cohort 1 primary: `bench-review.html` draws 24 raters over 10 records from `bench_labels`; whether that is the "1 Primary Cohort" is `[REQUIRES USER INPUT]`.
+
+### 2026-08-11T20:59:34Z
+
+**Counter audit: PASSED.** No drift. No patch required this run.
+
+**Verified two ways, independently.**
+
+1. **Endpoint against direct SQL, 28 checks, 0 mismatches.** Every figure served by `/api/asset-stats`, `/api/support-stats`, `/api/gate-stats`, `/api/geo-stats`, `/api/panel-stats`, `/api/enroll-stats`, `/api/contributor-stats`, `/api/orgpilot-stats` and `/api/access-stats` was compared to a query run straight against the database.
+2. **Rendered page against SQL, 23 tiles, 0 mismatches.** The deployed `pilot-status.html` was loaded in a browser with live production payloads and every stat tile read back. This covers the four tiles computed client-side from `pilot_progress`, `realcase_progress` and `armb_progress`, which no endpoint check can reach.
+
+**Page health:** 0 panels stuck on Loading, 0 horizontal overflow, 0 page JS errors.
+
+**Live figures at this timestamp**
+
+| Panel | Value |
+|---|---|
+| Today: campaign arrivals / endorsements / records reviewed / guide downloads | 23 / 0 / 48 / 2 |
+| Today: reviewer arrivals / training arrivals / evaluation opens / submissions | 0 / 0 / 0 / 0 |
+| Detection study: reads / started / completers | 510 / 16 of 27 / 16 |
+| Comparison study: reads / today / completers / JRS arm / no-JRS arm | 465 / 48 / 19 / 7 / 13 |
+| Real-case pilots: cases / contributors | 54 / 2 |
+| Endorsements: total / last / days since / chart reaches today | 40 / 2026-08-04 / 7 / yes |
+| Guide downloads: total / today | 65 / 2 |
+| Evaluation funnel: opened / submitted / contacts | 0 / 0 / 0 |
+| Training: enrolments / completions | 7 / 7 |
+| Registrations / organizations / contributor outstanding | 1 / 0 / 20 |
+| Reliability: raters / records | 24 / 10 |
+| Credentials line: reviewers / completers / countries | 56 / 35 / 16 |
+| Device split (crawlers removed) | 26 mobile, 0 desktop, 7 crawler rows excluded |
+
+**Trademark dossiers:** JRS PENDING INPUTS, DRR PENDING INPUTS. Unchanged this run. Both blocked on first use anywhere, first use in commerce, and USPTO identification verification. See sections 5, 6 and 7.
+
+**Files modified this run:** none. The audit found no drift, so nothing was patched. `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md` and `research/MASTER_TRACKER.md` were updated with this run log.
+
+**Directive reconciliation, unchanged from the previous run.** 84.2%: measured value is Gwet's AC1 **0.739**, 95% CI [0.402, 1.000], n=10 records, 36 labels. Cross-vendor drift <15%: no drift calculation exists, so it stands as a target against a measured reproducibility of 86.7%. 9-question survey: **confirmed**. Active benchmark cohort: `bench-review.html` draws 24 raters over 10 records from `bench_labels`; whether that constitutes the intended primary cohort is `[REQUIRES USER INPUT]`.
