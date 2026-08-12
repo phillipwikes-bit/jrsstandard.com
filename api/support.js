@@ -101,10 +101,19 @@ export default async function handler(req){
         method: 'POST',
         headers: { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE,
                    'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+        // user_agent is stored so the downstream crawler filter in
+        // /api/asset-stats can actually apply to these rows. Until now this
+        // write stored no agent at all, so isCrawler() tested an empty string
+        // and every server-written endorsement passed the filter no matter what
+        // fetched it. That is why 7 rows on 2026-08-12 were indistinguishable
+        // from human clicks after the fact: the one field that could have told
+        // them apart was never kept. Capped, and it is a client hint, not an
+        // identifier: no address, no cookie value, nothing joinable to a person.
         body: JSON.stringify({ source: 'support', type: 'endorse', payload: {
           campaign: campaign,
           src: src || 'none',
-          country: country
+          country: country,
+          user_agent: ua.slice(0, 300)
         }})
       });
       wrote = true;
