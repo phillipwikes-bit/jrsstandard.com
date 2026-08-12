@@ -1,5 +1,7 @@
 export const config = { runtime: 'edge' };
 
+import { resolvePanelGeo } from './_panel-countries.js';
+
 // THE PUBLISHED REVIEWER FIGURES, COMPUTED LIVE.
 //
 // These four numbers appear in the credentials line on six public pages. They
@@ -40,9 +42,13 @@ const UNRESOLVABLE = ['E-11'];
 // than live. A number that cannot refresh itself should say so instead of
 // sitting next to three that can and borrowing their credibility.
 // Rederive with: python3 research/build_expert_roster.py
-const COUNTRIES = 16;
-const CONTINENTS = 5;
-const GEO_AS_OF = '2026-08-11';
+// SUPERSEDED 2026-08-13. Countries and continents are now COMPUTED at request
+// time from the codes that actually completed. These remain only as a fallback
+// if the resolver returns nothing, and as the values the computation was
+// validated against: resolving from api/_panel-countries.js reproduces 16 and 5
+// exactly, which is what made the replacement safe.
+const COUNTRIES_FALLBACK = 16;
+const CONTINENTS_FALLBACK = 5;
 
 function json(o, s){
   return new Response(JSON.stringify(o), {
@@ -92,6 +98,13 @@ export default async function handler(req){
   const completersA = readsA.filter(function(n){ return n >= NEEDED; }).length;
   const completersB = readsB.filter(function(n){ return n >= NEEDED; }).length;
 
+  // The codes that actually completed, which is what the country count is now
+  // derived from. Previously this was a hand-maintained constant.
+  const completerCodes = []
+    .concat(armA.filter(function(r){ return (r.total_reads || 0) >= NEEDED; }).map(function(r){ return r.code; }))
+    .concat(armB.filter(function(r){ return (r.reads || 0) >= NEEDED; }).map(function(r){ return r.code; }));
+  const geo = resolvePanelGeo(completerCodes);
+
   // Everyone who has graded at least one record, which is the basis of the
   // published sentence and deliberately includes reviewers partway through.
   const graded = readsA.filter(function(n){ return n > 0; }).length
@@ -117,8 +130,8 @@ export default async function handler(req){
     // The four figures the public pages render.
     reviewers: reviewers,
     completers: completers,
-    countries: COUNTRIES,
-    continents: CONTINENTS,
+    countries: geo.countries || COUNTRIES_FALLBACK,
+    continents: geo.continents || CONTINENTS_FALLBACK,
 
     // The components, so a figure can be checked without re-deriving it.
     detection_completers: completersA,
@@ -132,10 +145,19 @@ export default async function handler(req){
          + 'three studies. completers graded all ' + NEEDED + ' records in their set. '
          + 'Both are computed at request time from pilot_progress, armb_progress and '
          + 'bench_labels, not transcribed from a roster.',
-    geo_source: 'transcribed',
-    geo_as_of: GEO_AS_OF,
-    geo_note: 'countries and continents are maintained constants, not live. No country '
-            + 'is stored in any anon-readable table, and the identities that carry one '
-            + 'are RLS-locked. Rederive with research/build_expert_roster.py.'
+    geo_source: 'computed',
+    geo_resolved: geo.resolved,
+    geo_unresolved: geo.unresolved,
+    geo_note: 'countries and continents are COMPUTED at request time from the codes that '
+            + 'actually completed, mapped to ISO 3166-1 alpha-2 in api/_panel-countries.js. '
+            + 'They were maintained constants until 2026-08-13 and could drift; they no '
+            + 'longer can. Add a completer and the count moves by itself. '
+            + (geo.unresolved.length
+                ? ('geo_unresolved lists ' + geo.unresolved.length + ' completer code(s) with no '
+                   + 'country on file, counted as completers and never guessed: the two anonymous '
+                   + 'Arm B participants and one whose country was not recorded.')
+                : 'Every completer code resolved to a country.')
+            + ' The map is bundled into this function and is never served, so no '
+            + 'code-to-country pair leaves the server. Regenerate with research/build_expert_roster.py.'
   });
 }

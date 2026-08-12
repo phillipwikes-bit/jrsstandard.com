@@ -1442,16 +1442,23 @@ function loadPanel(){
         +'These are <b style="color:var(--text)">five different populations</b>, not five attempts at the same number. '
         +'None of them is wrong and they are not meant to agree.</p>'
         +'<div style="overflow-x:auto"><table style="min-width:560px;width:100%;border-collapse:collapse">'
-        +row(P.countries,'Reviewer panel','Countries the '+P.completers+' completers come from',false)
+        +row(P.countries,'Reviewer panel','Countries the '+P.completers+' completers come from',P.geo_source==='computed')
         +row(PE.countries,'Named contacts','Countries of the '+PE.unique_people+' people in the private contact table',true)
         +row(S.countries,'Endorsements','Countries endorsement clicks came from',true)
         +row(G.countries,'Guide downloads','Countries guides were downloaded from',true)
         +row(EN.completions_countries,'Training completions','Countries with a recorded training completion',true)
         +'</table></div>'
         +'<p style="margin:10px 0 0;font-size:12px;color:var(--muted-soft);line-height:1.65">'
-        +'<b style="color:var(--review-text)">The panel figure is a maintained constant, not a live count.</b> '
-        +esc(P.geo_note||'')+' Last transcribed <b>'+esc(P.geo_as_of||'unknown')+'</b>. '
-        +'The other four are computed at request time. <b style="color:var(--text)">Use the panel figure, '+P.countries
+        +(P.geo_source==='computed'
+            ? ('<b style="color:var(--ready-text)">All five are now computed at request time. None is hand-maintained.</b> '
+               + 'The panel figure was a transcribed constant until 2026-08-13 and could drift; it is now derived from the codes '
+               + 'that actually completed, so adding a completer moves it by itself.'
+               + ((P.geo_unresolved && P.geo_unresolved.length)
+                   ? (' <b style="color:var(--review-text)">' + P.geo_unresolved.length + ' completer(s) have no country on file</b> ('
+                      + P.geo_unresolved.map(esc).join(', ') + ') and are counted as completers but never guessed.')
+                   : ' Every completer code resolved to a country.'))
+            : ('<b style="color:var(--review-text)">The panel figure is a maintained constant, not a live count.</b> ' + esc(P.geo_note||'')))
+        +' <b style="color:var(--text)">Use the panel figure, '+P.countries
         +' countries, in any buyer-facing claim</b>: the others describe website traffic and contacts, not the reviewer bench.</p>';
     }
   });
