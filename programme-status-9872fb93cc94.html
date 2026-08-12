@@ -10,8 +10,8 @@
   and never the table contents, so no personal data was ever transmitted, but a
   page displaying third-party personal data is not a place for a third-party
   analytics beacon and this page's traffic is not a marketing metric.
-  Do not reinstate it. The same rule applies to supporters-b78f5ff2c08d.html,
-  which has never carried the tag.
+  Do not reinstate it. This is the only private owner surface: the separate
+  owner sheet was merged into this page and deleted on 2026-08-12.
 -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -168,7 +168,7 @@ tr.today td{background:rgba(93,191,130,.07)}
   </div>
 
   <h2 style="font-size:22px;margin-top:34px">Since the Registration Gate</h2>
-  <div class="note" style="border-left-color:var(--accent)"><b style="color:var(--text)">Need the actual names?</b> The counts in this section are aggregate, but the named roster is now on this page: see <a href="#everyone-on-the-record" style="color:var(--accent)">Everyone on the record</a> below, which lists every person with their organization, title, country, what they did, and what they consented to. Email addresses and the honor quotes stay on the <a href="/supporters-b78f5ff2c08d.html" style="color:var(--accent)">owner sheet</a>. Neither needs a token.</div>
+  <div class="note" style="border-left-color:var(--accent)"><b style="color:var(--text)">Need the actual names?</b> The counts in this section are aggregate. The named roster is further down this page: see <a href="#everyone-on-the-record" style="color:var(--accent)">Everyone on the record</a>, which lists every person with their organization, title, country, email, what they did and what they consented to. Recommendation and certificate requests and the honor quotes are under <b>Private Contact Detail</b> below that. Everything is on this one page.</div>
   <p class="sub">Everything below counts activity from 2 August 2026 forward, the date the guides and the initiative support action moved behind a registration form. Earlier downloads and support clicks were anonymous and cannot be attributed to a person, so they are excluded here rather than blended in. Training is the exception and is shown all-time, because enrollment always required identity and consent. Aggregate counts only; the named list stays private.</p>
   <div class="cards">
     <div class="card"><div class="cv hot" id="gt-today">&middot;</div><div class="ck">New today (UTC)</div></div>
@@ -189,17 +189,9 @@ tr.today td{background:rgba(93,191,130,.07)}
   </div>
   <div class="note" id="gt-note2">&nbsp;</div>
 
-  <h2 style="font-size:22px;margin-top:34px">Owner Sheet</h2>
-  <div class="chart" style="border-color:var(--accent)">
-    <h3>Where the names, emails and quotes live</h3>
-    <p style="font-size:13px;color:var(--muted);line-height:1.65;margin:0 0 12px">
-      The full record is below on this page. The owner sheet carries the same roster plus the honor quotes,
-      recommendation and certificate requests, and the CSV export. It needs no token, no key and no typing.
-    </p>
-    <a href="/supporters-b78f5ff2c08d.html" style="display:inline-block;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;text-decoration:none;padding:13px 20px;font-weight:600">Open the owner sheet &rarr;</a>
-    <div class="note" style="margin-top:10px">Bookmark it. Reachable only from here and from a direct link: this page carries
-      <b>noindex,nofollow</b> and, as of 2026-08-12, is no longer linked from any public page.</div>
-  </div>
+  <!-- The Owner Sheet panel was removed on 2026-08-12 when supporters-b78f5ff2c08d.html
+     was deleted. Its unique content is now the Private Contact Detail section below
+     and the Email column in the roster. There is one private page, not two. -->
 
   <!-- EVERY PERSON, WITH THEIR COUNTRY, ON THIS PAGE.
        Placed here on the owner's explicit instruction (2026-08-12). This page is
@@ -223,6 +215,25 @@ tr.today td{background:rgba(93,191,130,.07)}
     <div id="ppl-cnt" class="note" style="margin:0 0 6px"></div>
     <div style="overflow-x:auto"><table id="ppl-tbl" style="min-width:940px"></table></div>
     <div class="note" id="ppl-note" style="margin-top:10px"></div>
+    <div style="margin-top:12px"><button class="btn" type="button" id="ppl-csv">Download full CSV</button></div>
+  </div>
+
+  <!-- MERGED FROM THE OWNER SHEET 2026-08-12. That page duplicated this one's
+       roster and Today tiles while holding these four blocks nowhere else, so
+       the unique parts moved here and the duplicate page was deleted. One URL. -->
+  <h2 style="font-size:22px;margin-top:34px">Private Contact Detail</h2>
+  <p class="sub">The parts of the record that are not counts: who asked for a recommendation or a certificate, and the quotes honorees wrote with their publication clearance. Nothing here appears on any other page.</p>
+  <div class="chart">
+    <h3>Asked for a LinkedIn recommendation</h3>
+    <div id="ppl-rec">Loading&hellip;</div>
+  </div>
+  <div class="chart">
+    <h3>Asked for a certificate</h3>
+    <div id="ppl-cert">Loading&hellip;</div>
+  </div>
+  <div class="chart">
+    <h3>Honor acceptances, with their quote</h3>
+    <div id="ppl-honor">Loading&hellip;</div>
   </div>
 
   <h2 style="font-size:22px;margin-top:34px">Completed Evaluations</h2>
@@ -1133,10 +1144,10 @@ function drawPeople(){
   // column each cell belongs to. Without them this reads as 8 unlabelled columns.
   var h='<caption style="caption-side:top;text-align:left;font-size:12px;color:var(--muted-soft);padding:0 0 8px">'
       + 'Every person on the record, with their country, what they did and what they consented to.</caption>'
-      + '<thead><tr>'+['Date','Name','Organization','Country','What they did','Completed','Public','Transfer']
+      + '<thead><tr>'+['Date','Name','Organization','Country','Email','What they did','Completed','Public','Transfer']
     .map(function(x){return '<th scope="col" style="font-family:\'JetBrains Mono\',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule);white-space:nowrap">'+x+'</th>';}).join('')+'</tr></thead><tbody>';
   if(!list.length){
-    h+='<tr><td colspan="8" style="padding:10px;color:var(--muted-soft);font-size:12.5px">Nothing matches that filter.</td></tr>';
+    h+='<tr><td colspan="9" style="padding:10px;color:var(--muted-soft);font-size:12.5px">Nothing matches that filter.</td></tr>';
   } else {
     list.forEach(function(p){
       var inferred=(p.country_source==='reviewer records');
@@ -1149,6 +1160,8 @@ function drawPeople(){
         +'<td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--text);font-size:12.5px">'+esc(p.name||'(not given)')+'</td>'
         +'<td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--muted);font-size:12px">'+esc(p.organization)+'</td>'
         +'<td style="padding:8px 10px;border-bottom:1px solid var(--rule);font-size:12px;white-space:nowrap">'+ctry+'</td>'
+        +'<td style="padding:8px 10px;border-bottom:1px solid var(--rule);font-size:12px">'
+          +(p.email?('<a href="mailto:'+esc(p.email)+'" style="color:var(--accent)">'+esc(p.email)+'</a>'):'<span style="color:var(--muted-soft)">&middot;</span>')+'</td>'
         +'<td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--muted);font-size:12px">'+esc(p.activity||p.source)+'</td>'
         +'<td style="padding:8px 10px;border-bottom:1px solid var(--rule);font-size:12px;white-space:nowrap;color:'+(p.training_completed?'var(--ready-text)':'var(--muted-soft)')+'">'
           +(p.training_completed?esc(String(p.training_completed_on||'').slice(0,10)||'yes'):'·')+'</td>'
@@ -1158,6 +1171,70 @@ function drawPeople(){
     });
   }
   t.innerHTML=h+'</tbody>';
+}
+// MERGED FROM supporters-b78f5ff2c08d.html, which was deleted on 2026-08-12
+// because it duplicated this page's roster and Today tiles. These three blocks
+// existed only there. A quote ALWAYS travels with its clearance flag: a quote
+// shown without it could be treated as publishable when it is not.
+function personCard(list, kind){
+  if(!list || !list.length) return '<div style="color:var(--muted-soft);font-size:12.5px">None yet.</div>';
+  var h='';
+  list.forEach(function(p){
+    h+='<div style="border-left:2px solid var(--accent-dim);padding:10px 0 10px 12px;margin-bottom:12px">'
+      +'<div style="font-size:13.5px;color:var(--text)">'+esc(p.name||'(not given)')+'</div>'
+      +(p.title?('<div style="font-size:12px;color:var(--muted-soft)">'+esc(p.title)+'</div>'):'')
+      +(p.organization?('<div style="font-size:12px;color:var(--muted-soft)">'+esc(p.organization)+'</div>'):'')
+      +(p.email?('<div style="font-size:12px"><a href="mailto:'+esc(p.email)+'" style="color:var(--accent)">'+esc(p.email)+'</a></div>'):'')
+      +(p.linkedin_url?('<div style="font-size:12px"><a href="'+esc(p.linkedin_url)+'" target="_blank" rel="noopener" style="color:var(--accent)">'+esc(p.linkedin_url)+'</a></div>'):'');
+    if(kind==='honor'){
+      if(p.quote){
+        var ok=p.quote_cleared_for_publication;
+        h+='<div style="border-left:3px solid '+(ok?'var(--ready-text)':'var(--stop-text)')+';background:rgba(255,255,255,.03);padding:10px 12px;margin-top:8px;font-size:12.5px;color:var(--text);line-height:1.6">&ldquo;'+esc(p.quote)+'&rdquo;</div>'
+          +'<div style="font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;margin-top:5px;color:'+(ok?'var(--ready-text)':'var(--stop-text)')+'">'
+          +(ok?'Cleared for publication':'NOT cleared, do not publish')+' &middot; byline '+(p.byline_ok?'ok':'not ok')+'</div>';
+      } else { h+='<div style="font-size:12px;color:var(--muted-soft);margin-top:6px">No quote supplied.</div>'; }
+      h+='<div style="font-size:10px;color:var(--muted-soft);margin-top:5px">'+esc(p.honor_code||'')
+        +(p.country?(' &middot; '+esc(p.country)):'')+(p.date?(' &middot; '+esc(String(p.date).slice(0,10))):'')+'</div>';
+    } else {
+      h+='<div style="font-size:10px;color:var(--muted-soft);margin-top:5px">'
+        +(p.completion_code?('code '+esc(p.completion_code)+' &middot; '):'')
+        +(p.country?(esc(p.country)+' &middot; '):'')+(p.date?esc(String(p.date).slice(0,10)):'')+'</div>';
+    }
+    h+='</div>';
+  });
+  return h;
+}
+function renderContactDetail(rows){
+  function by(src){ return (rows||[]).filter(function(r){ return r.source===src; }); }
+  function put(id, list, kind){
+    var el=document.getElementById(id); if(!el) return;
+    var head=el.parentElement.querySelector('h3');
+    if(head && head.textContent.indexOf('(')===-1) head.textContent=head.textContent+' ('+list.length+')';
+    el.innerHTML=personCard(list, kind);
+  }
+  put('ppl-rec',   by('reviewer-eval-incentive'), 'rec');
+  put('ppl-cert',  by('reviewer-cert'),           'cert');
+  put('ppl-honor', by('honor-accept'),            'honor');
+}
+// Every stream, 18 columns, respecting whatever filter is set on the roster.
+function pplCsv(){
+  var list=(PPL&&PPL.length)?pplFiltered():[];
+  if(!list.length) return;
+  function q(v){ v=(v==null?'':String(v)); return '"'+v.replace(/"/g,'""')+'"'; }
+  var head=['date','name','organization','title','country','country_source','activity','detail','email',
+            'training_completed','training_completed_on','consent_public','consent_transfer','consent_contact',
+            'campaign','completion_code','honor_code','linkedin_url','source'];
+  var lines=[head.join(',')];
+  list.forEach(function(r){
+    lines.push([q(String(r.date||'').slice(0,10)),q(r.name),q(r.organization),q(r.title),q(r.country),
+      q(r.country_source),q(r.activity||r.source),q(r.detail),q(r.email),q(r.training_completed?'yes':'no'),
+      q(String(r.training_completed_on||'').slice(0,10)),q(r.consent_public?'yes':'no'),
+      q(r.consent_transfer?'yes':'no'),q(r.consent_contact?'yes':'no'),q(r.campaign),
+      q(r.completion_code),q(r.honor_code),q(r.linkedin_url),q(r.source)].join(','));
+  });
+  var b=new Blob([lines.join('\n')],{type:'text/csv'}); var u=URL.createObjectURL(b);
+  var a=document.createElement('a'); a.href=u; a.download='jrs-everyone-on-the-record.csv';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(u);
 }
 function loadPeople(){
   var tiles=document.getElementById('ppl-tiles'); if(!tiles) return;
@@ -1185,9 +1262,11 @@ function loadPeople(){
         sel.addEventListener('change', drawPeople);
       }
       var q=document.getElementById('ppl-q'); if(q) q.addEventListener('input', drawPeople);
+      var cs=document.getElementById('ppl-csv'); if(cs && !cs.dataset.wired){ cs.dataset.wired='1'; cs.addEventListener('click', pplCsv); }
       var note=document.getElementById('ppl-note');
       if(note){
         var miss=(d.people_without_country)||[];
+        renderContactDetail(PPL);
         note.innerHTML='Country resolved for <b>'+(d.unique_people-miss.length)+'</b> of <b>'+d.unique_people
           +'</b> people across <b>'+Object.keys(ctry).length+'</b> countries. Rows marked ROSTER predate geo capture on '
           +'2026-07-17 and were read from the dated reviewer roster, not inferred.'

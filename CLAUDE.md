@@ -28,13 +28,15 @@ You are operating inside the live `phillipwikes-bit/jrsstandard.com` repository.
 ### Private owner surfaces (opaque slugs, no token, never linked from a public page)
 | File | Purpose |
 |---|---|
-| `programme-status-9872fb93cc94.html` | Programme status dashboard and the full named roster. **Renamed from `pilot-status.html` on 2026-08-12** because the old slug was guessable while the data on it is not public. Carries `noindex,nofollow`, `referrer: no-referrer`, and **no analytics tag**. |
-| `supporters-b78f5ff2c08d.html` | Owner sheet: the same roster plus emails, honor quotes with clearance flags, and the full CSV export |
+| `programme-status-9872fb93cc94.html` | **THE ONLY private owner page.** Programme status, the full named roster with emails, recommendation and certificate requests, honor quotes with clearance flags, and the CSV export. **Renamed from `pilot-status.html` on 2026-08-12** because the old slug was guessable while the data on it is not public. Carries `noindex,nofollow`, `referrer: no-referrer`, and **no analytics tag**. |
+
 | `api/people-9dd1ecdf6f8cdfd4.js` | The endpoint both surfaces read. Secured by its own opaque URL, no token |
 
-**Removed 2026-08-12:** `people-9dd1ecdf6f8cdfd4.html`. Its table now renders on both surfaces above, so the third page was redundant. **The endpoint of the same name is still live and must not be deleted.**
+**Removed 2026-08-12:** `people-9dd1ecdf6f8cdfd4.html` and `supporters-b78f5ff2c08d.html`. Both duplicated the roster now on the single page above. **There is ONE private owner page. Do not create a second.**
 
-**Rule for these three:** never add an analytics tag, never link them from a public page, and never add a token control. If a slug leaks, rename the file and its route to rotate it.
+**Superseded note:** `people-9dd1ecdf6f8cdfd4.html`. Its table now renders on both surfaces above, so the third page was redundant. **The endpoint of the same name is still live and must not be deleted.**
+
+**Rule for these:** never add an analytics tag, never link them from a public page, and never add a token control. If a slug leaks, rename the file and its route to rotate it.
 
 ### Server-Side
 | File | Purpose |
