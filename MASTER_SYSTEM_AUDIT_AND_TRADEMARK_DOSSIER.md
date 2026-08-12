@@ -575,3 +575,15 @@ The owner view rejected the token. The endpoint's own diagnostic, which the page
 **Repaired:** the screen now names which variables are configured, states explicitly when `BENCH_ADMIN_TOKEN` is unset, tells the reader which value to use, and warns separately if the service key is missing. Booleans only; no token value is ever rendered or logged.
 
 **Verified** against the exact production 401 payload in a real browser. **Populated view remains `[REQUIRES USER INPUT]`**: it needs the `RUN_TOKEN` value, which is not readable from this environment.
+
+### 2026-08-12T13:35:29Z : TOKEN BOX REMOVED, PRIVATE PAGE COMPLETED
+
+**Counter audit: PATCHED.**
+
+**I rebuilt something the tracker had already deleted on purpose.** Commit `7cca77e` removed a token control from `pilot-status.html` and replaced it with `supporters-b78f5ff2c08d.html`, a private page at an unguessable URL that reads the key once from a `#k=` fragment, strips it from the address bar, saves it to the browser, and auto-loads with no typing thereafter. I added a token box back to the public page.
+
+**Repaired:** the Owner View block and its functions are removed from `pilot-status.html`, which drops from 86,719 to 77,732 bytes with zero token controls remaining. `supporters-b78f5ff2c08d.html` now renders recommendation requests, certificate requests and honor acceptances with their quotes; it already called the endpoint carrying them and was not displaying them.
+
+**Verified by walking the owner journey in a browser with `#k=` in the fragment:** fragment stripped, key saved, all four sections rendered, quote text shown, cleared quote marked cleared, uncleared quote marked "NOT cleared, do not publish", LinkedIn URL shown. Public page confirmed at 0 token-control occurrences.
+
+**`[REQUIRES USER INPUT]`:** the `RUN_TOKEN` value once, to open the bookmark. Not readable from this environment. `BENCH_ADMIN_TOKEN` confirmed unset.

@@ -499,3 +499,54 @@ Unchanged. **JRS REQUIRES USER INPUT. DRR REQUIRES USER INPUT.**
 `pilot-status.html`, `MASTER_TRACKER.md`, `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md`, `research/MASTER_TRACKER.md`.
 
 ---
+
+## Run: 2026-08-12T13:35:29Z
+
+**Counter audit: PATCHED. Link-click telemetry: VERIFIED, no defect found.**
+
+### The defect was mine: I rebuilt something the tracker had already deleted on purpose
+
+The owner asked for no more tokens. **Searching `research/MASTER_TRACKER.md` as instructed found that this was already solved and I had undone it.**
+
+Commit **`7cca77e`, "Remove token box from public status page; private no-typing supporter page at unguessable URL"**, deliberately removed a token control from `pilot-status.html` and replaced it with `supporters-b78f5ff2c08d.html`, which the tracker describes as working **"with NO typing: the access key is read once from the URL fragment `#k=<RUN_TOKEN>`, never committed, stripped from the address bar and saved to the browser."**
+
+**I added a token box back to the public page.** That is the defect. The mechanism that avoids typing already existed and already worked.
+
+### Repair
+
+| File | Change |
+|---|---|
+| `pilot-status.html` | Owner View block, its three render functions and its init removed. **86,719 to 77,732 bytes.** Zero occurrences of `Owner View`, `ov-token`, `ovInit`, `ovLoad`, `jrs-owner-token` remain. The public page is counts-only again |
+| `supporters-b78f5ff2c08d.html` | Now renders recommendation requests, certificate requests and honor acceptances with quotes. It already called `/api/support-contacts`, which already carried them; it simply was not showing them |
+
+### Verified by walking the owner's actual journey in a browser
+
+Opened the page with `#k=` in the fragment, exactly as a bookmark would:
+
+| Check | Result |
+|---|---|
+| Fragment stripped from the address bar | **yes** |
+| Key saved to the browser for next time | **yes** |
+| Sections rendered | Named supporters, Asked for a LinkedIn recommendation (1), Asked for a certificate (1), Honor acceptances with their quote (2) |
+| Quote text displayed | **yes** |
+| Cleared quote marked cleared | **yes** |
+| Uncleared quote marked "NOT cleared, do not publish" | **yes** |
+| LinkedIn URL shown | **yes** |
+
+**Public page confirmed counts-only:** 0 occurrences of any token control.
+
+### What the owner does, once, ever
+
+Open **`https://www.jrsstandard.com/supporters-b78f5ff2c08d.html#k=<RUN_TOKEN value>`** once and bookmark the page. The key is stripped from the URL and saved. Every later visit loads everything with no typing.
+
+**`[REQUIRES USER INPUT]`:** the `RUN_TOKEN` value itself, once. It is a Vercel environment variable and is not readable from this environment. `BENCH_ADMIN_TOKEN` is confirmed unset, so `RUN_TOKEN` is the only accepted value.
+
+### Trademark dossiers
+
+Unchanged. **JRS REQUIRES USER INPUT. DRR REQUIRES USER INPUT.**
+
+### Files modified
+
+`pilot-status.html`, `supporters-b78f5ff2c08d.html`, `MASTER_TRACKER.md`, `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md`, `research/MASTER_TRACKER.md`.
+
+---
