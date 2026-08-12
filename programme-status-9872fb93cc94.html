@@ -71,7 +71,27 @@ tr.today td{background:rgba(93,191,130,.07)}
 <main><div class="wrap">
   <h1>JRS Programme Status</h1>
   <p class="sub">Live participation, adoption and reach across every JRS study, pilot and initiative. Figures refresh automatically every 60 seconds and are read from the production database at the moment you open the page.</p>
-  <h2 style="font-size:22px">Today <span id="td-date" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--muted-soft);vertical-align:middle">&middot;</span></h2>
+  <!-- THE REVIEWER PANEL. Added 2026-08-13. This page never called
+       /api/panel-stats, so the single largest asset in the programme, the
+       international reviewer bench, appeared nowhere on the owner's own
+       dashboard. Everything else on the page counts contacts, clicks or
+       downloads, which is why the country figures looked contradictory. -->
+  <h2 style="font-size:22px">The Reviewer Panel</h2>
+  <p class="sub">The international bench across all three studies. This is the asset. Every other figure on this page counts a click, a contact or a download; this one counts credentialed people who graded records.</p>
+  <div class="cards" id="panel-cards" style="grid-template-columns:repeat(4,1fr)">
+    <div class="card"><div class="cv hot" id="pn-completers">&middot;</div><div class="ck">Completed a full 24-record set</div></div>
+    <div class="card"><div class="cv" id="pn-countries">&middot;</div><div class="ck">Countries</div></div>
+    <div class="card"><div class="cv" id="pn-reviewers">&middot;</div><div class="ck">Graded at least one record</div></div>
+    <div class="card"><div class="cv" id="pn-registered">&middot;</div><div class="ck">Registered</div></div>
+  </div>
+  <div class="note" id="pn-note" style="border-left-width:3px">Loading the panel&hellip;</div>
+
+  <div class="chart">
+    <h3>Why the country numbers on this page differ</h3>
+    <div class="note" id="pn-recon" style="margin:0">Reconciling&hellip;</div>
+  </div>
+
+  <h2 style="font-size:22px;margin-top:34px">Today <span id="td-date" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--muted-soft);vertical-align:middle">&middot;</span></h2>
   <p class="sub">Every surface, counted for the current UTC day. The other Today figures on this page count a completed action: a registration, an enrolment, a confirmation. None of them counts an arrival, so a day could carry real traffic on every link and every one of them would still read zero. This block counts arrivals.</p>
   <div class="cards" style="grid-template-columns:repeat(4,1fr)">
     <div class="card"><div class="cv hot" id="td-campaign">&middot;</div><div class="ck">Campaign screen arrivals</div></div>
@@ -1381,7 +1401,62 @@ function loadPeople(){
     })
     .catch(function(){ tiles.innerHTML='<div class="note">Could not load the record just now.</div>'; });
 }
-function refresh(){ loadToday(); loadDetection(); loadRealcase(); loadArmB(); loadOrgPilots(); loadGate(); loadRegistrations(); loadEvalFunnel(); loadContributors(); loadTraining(); loadDownloads(); loadItems(); loadSupport(); loadPeople(); }
+// THE REVIEWER PANEL, plus the reconciliation of every country figure on this
+// page. Five endpoints report a country count and they measure five DIFFERENT
+// populations, which is why they look contradictory when read side by side.
+// Stating each denominator is the fix; making them agree would be wrong.
+function loadPanel(){
+  var tgt=document.getElementById('pn-completers'); if(!tgt) return;
+  // setv is defined locally inside each loader in this file, not globally.
+  // Calling the outer one threw "setv is not defined" and left the panel blank.
+  function setv(id,v){ var e=document.getElementById(id); if(e) e.textContent=(v===undefined||v===null)?'0':v; }
+  Promise.all([
+    fetch('/api/panel-stats').then(function(r){return r.ok?r.json():null;}).catch(function(){return null;}),
+    fetch('/api/people-9dd1ecdf6f8cdfd4').then(function(r){return r.ok?r.json():null;}).catch(function(){return null;}),
+    fetch('/api/support-stats').then(function(r){return r.ok?r.json():null;}).catch(function(){return null;}),
+    fetch('/api/enroll-stats').then(function(r){return r.ok?r.json():null;}).catch(function(){return null;}),
+    fetch('/api/geo-stats').then(function(r){return r.ok?r.json():null;}).catch(function(){return null;})
+  ]).then(function(a){
+    var P=a[0], PE=a[1]||{}, S=a[2]||{}, EN=a[3]||{}, G=a[4]||{};
+    var note=document.getElementById('pn-note'), rec=document.getElementById('pn-recon');
+    if(!P){ if(note) note.textContent='Could not load the panel. Tap Refresh.'; return; }
+    setv('pn-completers',P.completers); setv('pn-countries',P.countries);
+    setv('pn-reviewers',P.reviewers);   setv('pn-registered',P.registered);
+    if(note){
+      note.style.borderLeftColor='var(--ready-text)';
+      note.innerHTML='<b style="color:var(--text)">'+P.completers+'</b> completed a full 24-record set across <b style="color:var(--text)">'
+        +P.countries+'</b> countries and <b style="color:var(--text)">'+P.continents+'</b> continents &middot; '
+        +'detection panel <b style="color:var(--text)">'+P.detection_completers+'</b>, comparison study <b style="color:var(--text)">'
+        +P.comparison_completers+'</b>, reliability raters <b style="color:var(--text)">'+P.reliability_raters+'</b>. '
+        +esc(P.basis||'');
+    }
+    if(rec){
+      // Every country figure the site publishes, with its denominator named.
+      function row(n,label,src,live){
+        return '<tr><td style="padding:6px 10px;border-bottom:1px solid var(--rule);color:var(--accent);font-family:\'JetBrains Mono\',monospace;font-size:13px;text-align:right;width:44px">'+n+'</td>'
+             +'<td style="padding:6px 10px;border-bottom:1px solid var(--rule);color:var(--text);font-size:12.5px">'+label+'</td>'
+             +'<td style="padding:6px 10px;border-bottom:1px solid var(--rule);color:var(--muted-soft);font-size:11px">'+src+'</td>'
+             +'<td style="padding:6px 10px;border-bottom:1px solid var(--rule);font-size:11px;color:'+(live?'var(--ready-text)':'var(--review-text)')+'">'+(live?'computed live':'maintained constant')+'</td></tr>';
+      }
+      rec.innerHTML='<p style="margin:0 0 10px;font-size:12.5px;color:var(--muted);line-height:1.7">'
+        +'These are <b style="color:var(--text)">five different populations</b>, not five attempts at the same number. '
+        +'None of them is wrong and they are not meant to agree.</p>'
+        +'<div style="overflow-x:auto"><table style="min-width:560px;width:100%;border-collapse:collapse">'
+        +row(P.countries,'Reviewer panel','Countries the '+P.completers+' completers come from',false)
+        +row(PE.countries,'Named contacts','Countries of the '+PE.unique_people+' people in the private contact table',true)
+        +row(S.countries,'Endorsements','Countries endorsement clicks came from',true)
+        +row(G.countries,'Guide downloads','Countries guides were downloaded from',true)
+        +row(EN.completions_countries,'Training completions','Countries with a recorded training completion',true)
+        +'</table></div>'
+        +'<p style="margin:10px 0 0;font-size:12px;color:var(--muted-soft);line-height:1.65">'
+        +'<b style="color:var(--review-text)">The panel figure is a maintained constant, not a live count.</b> '
+        +esc(P.geo_note||'')+' Last transcribed <b>'+esc(P.geo_as_of||'unknown')+'</b>. '
+        +'The other four are computed at request time. <b style="color:var(--text)">Use the panel figure, '+P.countries
+        +' countries, in any buyer-facing claim</b>: the others describe website traffic and contacts, not the reviewer bench.</p>';
+    }
+  });
+}
+function refresh(){ loadToday(); loadDetection(); loadRealcase(); loadArmB(); loadOrgPilots(); loadGate(); loadRegistrations(); loadEvalFunnel(); loadContributors(); loadTraining(); loadDownloads(); loadItems(); loadSupport(); loadPeople(); loadPanel(); }
 refresh();
 setInterval(refresh, 60000);
 </script>
