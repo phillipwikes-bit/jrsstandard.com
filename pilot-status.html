@@ -68,6 +68,7 @@ tr.today td{background:rgba(93,191,130,.07)}
     <div class="card"><div class="cv" id="td-dl">&middot;</div><div class="ck">Guide downloads</div></div>
     <div class="card"><div class="cv" id="td-reads">&middot;</div><div class="ck">Records reviewed</div></div>
   </div>
+  <div class="note" id="td-revfunnel" style="border-left-width:3px">Reconciling the reviewer funnel&hellip;</div>
   <div class="note" id="td-recon" style="border-left-width:3px">Reconciling arrivals against endorsements&hellip;</div>
   <div class="note" id="td-note">Loading today&hellip;</div>
 
@@ -601,6 +602,19 @@ function loadToday(){
       // Arrivals against endorsements, stated explicitly. Without this the two
       // tiles sit side by side inviting the reader to subtract them and draw
       // the wrong conclusion from the answer.
+      // Reviewer funnel, stated as a chain. Four tiles side by side do not show
+      // where people stop; this does.
+      var rf=t.reviewer_funnel, rfe=document.getElementById('td-revfunnel');
+      if(rfe && rf){
+        var drop=rf.drop_landing_to_open||0;
+        rfe.style.borderLeftColor = drop ? 'var(--review-text)' : 'var(--ready-text)';
+        rfe.innerHTML='<b style="color:var(--text)">'+rf.landed_on_reviewer_page+'</b> landed on the reviewer page &rarr; <b style="color:var(--text)">'
+          +rf.opened_evaluation+'</b> opened the evaluation &rarr; <b style="color:var(--text)">'
+          +rf.submitted_evaluation+'</b> submitted &rarr; <b style="color:var(--text)">'
+          +rf.contacts_captured+'</b> left contact details'
+          +(drop?(' &middot; <b style="color:var(--review-text)">'+drop+' stopped at the landing page</b>'):'')
+          +'. '+esc(rf.note);
+      }
       var rec=t.arrivals_vs_endorsements;
       var rel=document.getElementById('td-recon');
       if(rel && rec){
