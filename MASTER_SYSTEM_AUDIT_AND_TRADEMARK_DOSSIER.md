@@ -599,3 +599,13 @@ Extended it with `reviewer-eval-incentive`, `reviewer-cert` and `honor-accept`, 
 **Verified by opening the URL and doing nothing else:** no password input anywhere, all four sections render, **Stacyann Young's two quotes display, both marked cleared for publication.** Neither had been readable anywhere before.
 
 **`[REQUIRES USER INPUT]` on the token: withdrawn. There is no token.**
+
+### 2026-08-12T13:56:38Z : THE PRIVATE PAGE IS NOW THE WHOLE SHEET
+
+**`supporters-b78f5ff2c08d.html` was linked from nowhere**, which is why it could not be found from the dashboard. It cannot simply be linked from there: `org-pilot.html` carries a real anchor to `pilot-status.html` and is itself linked from 5 pages, so the dashboard is publicly reachable. Linking the opaque URL from it would destroy the only protection the names and quotes have.
+
+**Repaired by moving the numbers to the private page rather than the names to the public one.** The owner sheet now carries Today's figures, the reviewer funnel, endorsements all time and last recorded, and the panel totals, above the named supporters, recommendation requests, certificate requests and honor quotes. Four endpoints, none requiring a key.
+
+**Verified by opening the URL and nothing else:** no password input, 7 Today tiles, five sections rendered, Stacyann Young present with her quote text.
+
+**The division holds:** `pilot-status.html` stays public and counts-only. Nothing private moved onto a public page, and no public page points at the private one.

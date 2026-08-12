@@ -600,3 +600,54 @@ Unchanged. **JRS REQUIRES USER INPUT. DRR REQUIRES USER INPUT.**
 `api/people-9dd1ecdf6f8cdfd4.js`, `supporters-b78f5ff2c08d.html`, `MASTER_TRACKER.md`, `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md`, `research/MASTER_TRACKER.md`.
 
 ---
+
+## Run: 2026-08-12T13:56:38Z
+
+**Counter audit: PATCHED. Link-click telemetry: VERIFIED, no defect found.**
+
+### Why it could not be found on the sheet
+
+**`supporters-b78f5ff2c08d.html` was linked from nowhere.** Zero pages referenced it. There was no path to it from anything the owner looks at.
+
+**It cannot simply be linked from the dashboard.** `org-pilot.html` carries a real anchor to `pilot-status.html`, and `org-pilot.html` is itself linked from 5 pages, so **the dashboard is publicly reachable**. Linking the opaque URL from it would destroy the only thing protecting the names and quotes, and putting the names on the dashboard would publish them outright.
+
+### Repair: the private page is now the whole sheet
+
+Rather than link a public page to a private one, the private page carries the numbers as well:
+
+| Section | Source |
+|---|---|
+| Today: campaign arrivals, reviewer landings, endorsements, evaluation opens, evaluations done, guide downloads, records reviewed | `/api/asset-stats` |
+| Reviewer funnel: landed, opened, submitted | `/api/asset-stats` |
+| Endorsements all time and last recorded | `/api/support-stats` |
+| Panel: reviewers, completers, countries | `/api/panel-stats` |
+| Named supporters | `/api/people-9dd1ecdf6f8cdfd4` |
+| Asked for a LinkedIn recommendation | same |
+| Asked for a certificate | same |
+| **Honor acceptances with their quote** | same |
+
+All four endpoints require no key. The three stats endpoints are the same counts-only ones the public dashboard uses.
+
+### Verified by opening the URL and doing nothing else
+
+| Check | Result |
+|---|---|
+| Title | Owner sheet, JRS |
+| Password or token input | **none** |
+| Today tiles rendered | **7** |
+| Headings | Today 2026-08-12; Named supporters; Asked for a LinkedIn recommendation (0); Asked for a certificate (0); **Honor acceptances, with their quote (2)** |
+| Stacyann Young present with quote text | **yes** |
+
+### The division that holds
+
+`pilot-status.html` stays **public and counts-only**. The owner sheet at the opaque URL carries the same numbers **plus** the names, emails, LinkedIn URLs and quotes. Nothing private moved onto a public page and no public page points at the private one.
+
+### Trademark dossiers
+
+Unchanged. **JRS REQUIRES USER INPUT. DRR REQUIRES USER INPUT.**
+
+### Files modified
+
+`supporters-b78f5ff2c08d.html`, `MASTER_TRACKER.md`, `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md`, `research/MASTER_TRACKER.md`.
+
+---
