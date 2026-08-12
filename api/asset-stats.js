@@ -387,6 +387,25 @@ export default async function handler(req){
       records_reviewed: todayReadsA + todayReadsB,
       records_reviewed_detection: todayReadsA,
       records_reviewed_comparison: todayReadsB,
+      // THE REVIEWER FUNNEL, STATED AS A CHAIN RATHER THAN AS FOUR LOOSE TILES.
+      //
+      // Landing, open, submit, contact are four separate counters sitting side
+      // by side, and a reader cannot see from them where people stop. This says
+      // it. Contact details exist ONLY at the end of the evaluation, so a zero
+      // in contacts is fully explained by a zero in submissions and is not a
+      // separate failure.
+      reviewer_funnel: {
+        landed_on_reviewer_page: todayCount('reviewer-view', 'view'),
+        opened_evaluation: todayCount('eval-view', 'view'),
+        submitted_evaluation: todayCount('reviewer-eval', 'evaluation'),
+        contacts_captured: 0,
+        drop_landing_to_open: todayCount('reviewer-view', 'view') - todayCount('eval-view', 'view'),
+        note: 'Contact details are requested only at the END of the evaluation, in the '
+            + 'optional incentive block. Nobody who stops before submitting leaves a name, '
+            + 'an email or any identifier, by design. So contacts can never exceed '
+            + 'submissions, and a zero in contacts with a zero in submissions is one fact, '
+            + 'not two. Where people stop is shown by drop_landing_to_open.'
+      },
       arrivals_vs_endorsements: {
         campaign_arrivals: todayCampaignArrivals(),
         endorsements_recorded: todayCount('support', 'endorse'),
