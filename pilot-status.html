@@ -66,7 +66,8 @@ tr.today td{background:rgba(93,191,130,.07)}
     <div class="card"><div class="cv hot" id="td-campaign">&middot;</div><div class="ck">Campaign screen arrivals</div></div>
     <div class="card"><div class="cv" id="td-reviewer">&middot;</div><div class="ck">Reviewer landing arrivals</div></div>
     <div class="card"><div class="cv" id="td-training">&middot;</div><div class="ck">Training page arrivals</div></div>
-    <div class="card"><div class="cv" id="td-endorse">&middot;</div><div class="ck">Endorsements</div></div>
+    <div class="card"><div class="cv" id="td-endorse">&middot;</div><div class="ck">Campaign endorsements</div>
+      <div id="td-endorse-all" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.06em;color:var(--muted-soft);margin-top:5px;line-height:1.5">&nbsp;</div></div>
     <div class="card"><div class="cv" id="td-evopen">&middot;</div><div class="ck">Evaluation opens</div></div>
     <div class="card"><div class="cv" id="td-evsub">&middot;</div><div class="ck">Evaluation submissions</div></div>
     <div class="card"><div class="cv" id="td-dl">&middot;</div><div class="ck">Guide downloads</div></div>
@@ -298,7 +299,8 @@ tr.today td{background:rgba(93,191,130,.07)}
   <h2 style="font-size:22px;margin-top:34px">Initiative Support</h2>
   <p class="sub">One-click endorsements of the two public initiatives, by day, by country and by initiative. These sit outside the guide downloads above and are counted separately.</p>
   <div class="cards" id="endorse-cards" style="grid-template-columns:1fr 1fr 1fr 1fr">
-    <div class="card"><div class="cv hot" id="en-total">&middot;</div><div class="ck">Endorsements</div></div>
+    <div class="card"><div class="cv hot" id="en-total">&middot;</div><div class="ck">Endorsements, all sources</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.06em;color:var(--muted-soft);margin-top:5px;line-height:1.5">campaign, home page<br>and footer combined</div></div>
     <div class="card"><div class="cv" id="en-peak">&middot;</div><div class="ck">Best single day</div></div>
     <div class="card"><div class="cv" id="en-active">&middot;</div><div class="ck">Days with activity</div></div>
     <div class="card"><div class="cv" id="en-mean">&middot;</div><div class="ck">Mean per active day</div></div>
@@ -683,7 +685,19 @@ function loadToday(){
       if(!t){ document.getElementById('td-note').textContent='Could not load today. Tap Refresh.'; return; }
       document.getElementById('td-date').textContent=t.date;
       setv('td-campaign',t.campaign_screen_arrivals); setv('td-reviewer',t.reviewer_landing_arrivals);
-      setv('td-training',t.training_page_arrivals);   setv('td-endorse',t.endorsements);
+      // The endorsement tile shows CAMPAIGN endorsements, because it sits beside
+      // campaign arrivals and a reader will compare them. The all-source total
+      // and its split are printed under it so nothing is hidden by the change.
+      var rec0=t.arrivals_vs_endorsements||{};
+      var campEnd=(typeof rec0.campaign_sourced_endorsements==='number')?rec0.campaign_sourced_endorsements:t.endorsements;
+      setv('td-training',t.training_page_arrivals);   setv('td-endorse',campEnd);
+      var allEl=document.getElementById('td-endorse-all');
+      if(allEl){
+        var bysrc=rec0.endorsements_by_source||{};
+        var keys=Object.keys(bysrc).sort(function(a,b){return bysrc[b]-bysrc[a];});
+        allEl.innerHTML = (t.endorsements||0)+' all sources'
+          + (keys.length?('<br>'+keys.map(function(k){return bysrc[k]+' '+k;}).join(' · ')):'');
+      }
       setv('td-evopen',t.evaluation_opens);           setv('td-evsub',t.evaluation_submissions);
       setv('td-dl',t.guide_downloads);                setv('td-reads',t.records_reviewed);
       var parts=[];
@@ -710,13 +724,29 @@ function loadToday(){
       var rec=t.arrivals_vs_endorsements;
       var rel=document.getElementById('td-recon');
       if(rel && rec){
-        var diff=rec.difference||0;
-        rel.style.borderLeftColor = diff ? 'var(--review-text)' : 'var(--ready-text)';
-        rel.innerHTML='<b style="color:var(--text)">'+rec.campaign_arrivals+'</b> campaign '
-          +((rec.campaign_arrivals===1)?'arrival':'arrivals')+' &rarr; <b style="color:var(--text)">'
-          +rec.endorsements_recorded+'</b> '+((rec.endorsements_recorded===1)?'endorsement':'endorsements')
-          +' recorded'+(diff?(', <b style="color:var(--review-text)">'+diff+' unrecorded</b>'):', reconciled')
-          +'. '+esc(rec.explanation);
+        // COMPARE LIKE WITH LIKE. This line previously set all endorsements
+        // against campaign arrivals and labelled the gap "unrecorded", which
+        // told the reader that ordinary home-page and footer clicks were lost
+        // data. They were never campaign traffic and were never missing.
+        var cArr=rec.campaign_arrivals||0;
+        var cEnd=(typeof rec.campaign_sourced_endorsements==='number')?rec.campaign_sourced_endorsements:rec.endorsements_recorded;
+        var md=(typeof rec.matched_difference==='number')?rec.matched_difference:(cArr-cEnd);
+        var offsite=(rec.endorsements_recorded||0)-cEnd;
+        rel.style.borderLeftColor='var(--ready-text)';
+        var bysrc=rec.endorsements_by_source||{};
+        var srcTxt=Object.keys(bysrc).sort(function(a,b){return bysrc[b]-bysrc[a];})
+                    .map(function(k){return bysrc[k]+' from '+k;}).join(', ');
+        rel.innerHTML='<b style="color:var(--text)">'+cArr+'</b> campaign '
+          +((cArr===1)?'arrival':'arrivals')+' &rarr; <b style="color:var(--text)">'+cEnd+'</b> campaign '
+          +((cEnd===1)?'endorsement':'endorsements')
+          +(md===0?', reconciled exactly'
+                 :(md>0?(' &middot; '+md+' more '+((md===1)?'arrival':'arrivals')+' than '+((cEnd===1)?'endorsement':'endorsements')+', which is one reader opening the screen in more than one session')
+                       :(' &middot; <b style="color:var(--review-text)">'+Math.abs(md)+' more endorsements than arrivals</b>, which needs checking')))
+          +'. '
+          +(offsite>0?('<b style="color:var(--text)">'+(rec.endorsements_recorded||0)+'</b> endorsements were recorded in total ('+esc(srcTxt)
+                      +'). The other '+offsite+' came from the endorsement links on the home page and in the site footer, not from a campaign, '
+                      +'so they are counted here but were never going to produce a campaign arrival. '):'')
+          +esc(rec.explanation);
       }
       renderCompletedEvaluations(d.completed_evaluations);
       renderSuppressed(d.suppressed_cohorts);
