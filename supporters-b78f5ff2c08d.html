@@ -62,6 +62,18 @@ code{font-family:'JetBrains Mono',monospace;color:var(--accent);font-size:11px}
   <h1 style="margin-top:30px">Owner sheet</h1>
   <p class="sub">Every person in the private <code>pilot_contacts</code> table on one page: name, organization, title, country, what they did, email, and what they consented to, together with today's counts. Consolidated so a buyer reads one document. This page is not linked or indexed; the URL is the key. The programme status page carries the same roster and moved to an opaque slug on 12 August 2026, so neither surface is publicly addressable and no public page shows anything personal.</p>
 
+  <!-- CROSS-LINK BETWEEN THE TWO PRIVATE SURFACES.
+       Both carry opaque slugs, so losing one bookmark previously stranded the
+       owner with no way to reach the other. Linking them to each other costs
+       nothing: a reader who is already on this page has the secret URL by
+       definition, so this discloses nothing that page did not already have. -->
+  <div class="card" style="border-color:var(--accent-dim);margin-top:18px">
+    <div class="meta" style="margin-bottom:8px">The other private page</div>
+    <a class="btn ghost" href="/programme-status-9872fb93cc94.html">Open the programme status dashboard &rarr;</a>
+    <div class="note" style="margin-top:10px">Charts, daily counts, study progress and the same roster.
+      Bookmark both. Neither is linked from any public page and neither needs a token.</div>
+  </div>
+
   <div id="ready" style="display:none">
     <div class="tools">
       <button id="refresh" class="btn">Refresh</button>
