@@ -758,3 +758,76 @@ Unchanged. **JRS REQUIRES USER INPUT. DRR REQUIRES USER INPUT.**
 `REQUIRES EXTERNAL VERIFICATION`: click loss beyond the proven 2026-08-02 to 2026-08-11 08:30Z window.
 
 ---
+
+---
+
+## RUN 2026-08-12T15:40Z — Everyone on the record ported onto the owner sheet
+
+**Request (received twice, verbatim):** "Add this list to it and make sure it notes the people who completed training. https://www.jrsstandard.com/people-9dd1ecdf6f8cdfd4.html This should all be consolidated for potential buyer, stop sabotaging me!!!!!"
+
+### What was actually wrong
+
+Two owner pages existed and neither one was the whole picture.
+
+| Page | Carried | Missing |
+|---|---|---|
+| `supporters-b78f5ff2c08d.html` (the sheet) | Today's counts, supporters, training, recommendation and certificate requests, honor quotes | Title, activity, detail, email, public-consent and transfer-consent columns |
+| `people-9dd1ecdf6f8cdfd4.html` (the people page) | All ten columns, all 16 records | Every count, every quote, every training completion state |
+
+A buyer had to read two unlinked private URLs and hold the join in their head.
+
+**Second defect, found while porting:** the four `training-complete` rows returned `name: ""`. `api/complete.js` writes them nameless by design, keyed on email so the row carries no PII on its own. The endpoint had already been taught to join completions to enrolments for the *Training* table, but the raw rows still rendered as "(not given)".
+
+### What was done
+
+**`supporters-b78f5ff2c08d.html`** — new **Everyone on the record** section, placed directly under Today and above every other section:
+
+| Element | Detail |
+|---|---|
+| Columns | Date, Name, Organization, Title, Country, What they did, Detail, Email, **Completed**, Public, Transfer |
+| Rows | all 16, no filter applied by default |
+| Tiles | Records, Unique people, Organizations, Countries, **Completed training** |
+| Filters | free-text search, activity (11 options incl. "Completed training"), consent (public / transfer) |
+| CSV | now exports **every stream** with 18 columns, respecting the active filter, not just named supporters |
+
+**`api/people-9dd1ecdf6f8cdfd4.js`** — a blank `name` is filled from the row that shares the email, flagged `name_from_join: true` so an inferred name is distinguishable from a submitted one.
+
+**Removed as orphaned:** the "Forget key on this device" anchor and the `ROWS` global, both left behind when the token machinery was deleted.
+
+### Counting rule, stated because it is easy to get wrong
+
+Completed training is counted **by person, not by row**. A completion writes its own row beside the enrolment row, so counting rows reports every completer twice. The tile reads **4**, matching `training_completed_named_count`.
+
+### Verification (rendered in a real browser against the deployed page and the live endpoint)
+
+| Check | Result |
+|---|---|
+| Section present | **Everyone on the record** |
+| Columns rendered | all 11, in order |
+| Rows rendered | **16 of 16** |
+| Tiles | 16 records · 11 unique people · 7 organizations · 3 countries · **4 completed training** |
+| Completions named | Joseph Munge 2026-07-27 · SungSoo In 2026-07-22 · Andrey Ekhmenin 2026-07-17 · Nicholas Evans 2026-07-14 |
+| Blank names remaining | **0** (4 backfilled by join, confirmed on live `/api/people-9dd1ecdf6f8cdfd4`) |
+| Console errors | none |
+| Horizontal page scroll | none (the table scrolls inside its own container) |
+| Token or password input | **none anywhere on the page** |
+
+### Deploy
+
+Selective deploy: temp branch off `origin/main`, two public files checked out, `research/` staged count verified **0** before commit, pushed to `main`, temp branch deleted. Live sheet 25,400 bytes, live endpoint 11,266 bytes, both HTTP 200.
+
+### Files modified
+
+`supporters-b78f5ff2c08d.html`, `api/people-9dd1ecdf6f8cdfd4.js`, `MASTER_TRACKER.md`, `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md`, `research/MASTER_TRACKER.md`.
+
+### Trademark dossiers
+
+Unchanged. **JRS REQUIRES USER INPUT. DRR REQUIRES USER INPUT.**
+
+### Outstanding
+
+- `people-9dd1ecdf6f8cdfd4.html` is now redundant with the sheet. Left in place deliberately rather than deleted, so any bookmark the owner already holds keeps working. Say the word and it goes.
+- Country is blank on all four named completions: those rows predate geo capture on 2026-07-17. `enroll-stats` backfills country from its documented map; the people endpoint does not, so the sheet shows blank rather than an inferred value.
+- `[REQUIRES USER INPUT]`: First Use Anywhere, First Use in Commerce, USPTO identification acceptability, both marks.
+
+---

@@ -629,3 +629,46 @@ Extended it with `reviewer-eval-incentive`, `reviewer-cert` and `honor-accept`, 
 **The 7 vs 4 gap is documented, not drift.** `enroll-stats` adds panel reviewers who enrolled via `?src=panel` and completed per the reviewer records without writing a completion row, held in a SHA-256 backfill map keyed by hashed email. The sheet shows the conservative row-verified 4 and prints the reason.
 
 **Verified in a rendered browser:** no token input, six sections, completers named as Joseph Munge, SungSoo In, Andrey Ekhmenin and Nicholas Evans, Stacyann Young present with her quote, 16 records total.
+
+---
+
+## AMENDMENT 2026-08-12T15:40Z — Owner sheet consolidation (asset inventory surface)
+
+**Bearing on the asset:** the private owner sheet is the single document a buyer reads to see who the programme reached. Until this run it was two documents.
+
+### State before
+
+| Surface | URL | What it proved | What it could not prove |
+|---|---|---|---|
+| Owner sheet | `/supporters-b78f5ff2c08d.html` | daily counts, funnel, supporters, training state, honor quotes with clearance flags | who each person is: no title, no country, no email, no consent columns |
+| People page | `/people-9dd1ecdf6f8cdfd4.html` | full identity and consent record for all 16 rows | nothing about counts, completions or quotes |
+
+Both are private by opaque URL, both carry `noindex,nofollow`, neither is referenced by any public page. Neither alone supported diligence.
+
+### State after
+
+One surface. `/supporters-b78f5ff2c08d.html` now carries, in order: Today's seven counts and the reviewer funnel; **Everyone on the record** (16 rows, 11 columns, filterable, CSV-exportable across all 18 fields); Named supporters; Training with per-person completion; recommendation requests; certificate requests; honor acceptances with quote text and publication clearance.
+
+### Consent evidence, which is the part that matters at transfer
+
+Two columns are now visible per person on the same row as their identity:
+
+| Column | Meaning | Live count |
+|---|---|---|
+| Public | agreed to be listed publicly by name | `consent_public_rows` on the endpoint |
+| Transfer | **agreed their details may pass to a successor if the project is acquired** | `consent_transfer_rows` on the endpoint |
+
+The transfer column is the operative one for an acquirer: it is the record of who consented, per person, per date, exportable. It was previously visible only on the page that carried no counts.
+
+### Data-protection posture, unchanged by this run
+
+- No token, key, JWT or OAuth flow anywhere in this path. Security is the opaque unlinked URL, the same posture as `api/roster-8c3f1a9e7b2d6045.js` and `api/geo-4e8b2d7f9a1c3065.js`. If the URL leaks, rename the page and the endpoint to rotate both.
+- `pilot-status.html` remains public and counts-only with zero public inbound references. Nothing personal moved onto a public page in this run.
+- Email is used as a join key inside the endpoint and is exposed only on rows that already carried it.
+- Inferred names are flagged `name_from_join: true` and are never presented as submitted values.
+
+### Trademark position
+
+**Unchanged by this run. JRS: REQUIRES USER INPUT. DRR: REQUIRES USER INPUT.** Outstanding across both marks: First Use Anywhere date, First Use in Commerce date, and confirmation that the drafted USPTO identifications are acceptable as written.
+
+---
