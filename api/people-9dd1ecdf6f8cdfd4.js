@@ -106,6 +106,11 @@ export default async function handler(req){
     try { p = JSON.parse(r.message || '{}') || {}; } catch(e){ p = {}; }
     if (isTest(p.page_source) || isTest(p.src)) continue;
     if (String(p.code || '') === 'TEST-00') continue;
+    // A DIAGNOSTIC TEST row from 2026-06-03 sat in this list as if it were a
+    // person. An owner list is a work list, so a row nobody has to act on does
+    // not belong in it.
+    if (String(r.source || '') === 'diagnostic') continue;
+    if (String(r.name || '').toUpperCase() === 'DIAGNOSTIC TEST') continue;
 
     const src = String(r.source || '');
 
