@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Named Supporters (private)</title>
+<title>Owner sheet &middot; JRS</title>
 <!--
   PRIVATE owner page. Not linked from anywhere. noindex,nofollow is set.
   Shows the named, consented initiative supporters held in the RLS-locked
@@ -50,7 +50,7 @@ code{font-family:'JetBrains Mono',monospace;color:var(--accent);font-size:11px}
     <div class="meta">Private &middot; not indexed &middot; owner only</div>
   </div>
 
-  <h1>Named supporters</h1>
+  <h1 style="margin-top:30px">Named supporters</h1>
   <p class="sub">The consented supporter records from the private <code>pilot_contacts</code> table: name, organization, email, initiative, and consent flags. This page is not linked or indexed; the URL is the key. Nothing personal is ever shown on the public status page.</p>
 
   <div id="ready" style="display:none">
@@ -61,6 +61,7 @@ code{font-family:'JetBrains Mono',monospace;color:var(--accent);font-size:11px}
     </div>
     <div id="msg" class="msg"></div>
     <div style="overflow-x:auto"><div id="list"></div>
+  <div id="today"></div>
   <div id="extras"></div></div>
   </div>
 
@@ -101,6 +102,7 @@ function render(d){
   // supporters the recommendation, certificate and honor sections never drew at
   // all, which is the state the page was actually in.
   renderExtras(d);
+  renderToday();
 }
 // Recommendation requests, certificate requests, and honor acceptances with
 // the quote the honoree wrote. All three come from the same no-token call
@@ -136,6 +138,42 @@ function people(list, kind){
     h+='</div>';
   });
   return h;
+}
+function renderToday(){
+  var el=document.getElementById('today'); if(!el) return;
+  // The dashboard numbers, on the same page as the names, so this one bookmark
+  // is the whole sheet. These come from the public counts-only endpoints and
+  // need no key either. pilot-status.html stays public and stays counts-only,
+  // which is why the names and quotes below are here and not there.
+  Promise.all([
+    fetch('/api/asset-stats').then(function(r){return r.ok?r.json():null;}).catch(function(){return null;}),
+    fetch('/api/panel-stats').then(function(r){return r.ok?r.json():null;}).catch(function(){return null;}),
+    fetch('/api/support-stats').then(function(r){return r.ok?r.json():null;}).catch(function(){return null;})
+  ]).then(function(a){
+    var A=a[0]||{}, P=a[1]||{}, S=a[2]||{};
+    var t=A.today||{}, f=A.reviewer_evaluation_funnel||{}, rf=(t.reviewer_funnel)||{};
+    function cell(v,k){ return '<div style="border:1px solid var(--rule);padding:12px;text-align:center">'
+      +'<div style="font-family:\'Bodoni Moda\',serif;font-size:26px;color:var(--accent);line-height:1">'+(v==null?'0':v)+'</div>'
+      +'<div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);margin-top:6px">'+k+'</div></div>'; }
+    el.innerHTML =
+       '<h1 style="margin-top:6px">Today <span style="font-size:12px;color:var(--muted-soft)">'+(t.date||'')+'</span></h1>'
+     + '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-bottom:14px">'
+     + cell(t.campaign_screen_arrivals,'Campaign arrivals')
+     + cell(t.reviewer_landing_arrivals,'Reviewer landings')
+     + cell(t.endorsements,'Endorsements')
+     + cell(t.evaluation_opens,'Evaluation opens')
+     + cell(t.evaluation_submissions,'Evaluations done')
+     + cell(t.guide_downloads,'Guide downloads')
+     + cell(t.records_reviewed,'Records reviewed')
+     + '</div>'
+     + '<div class="note" style="margin-bottom:16px">'
+     + 'Reviewer funnel today: <b>'+(rf.landed_on_reviewer_page||0)+'</b> landed &rarr; <b>'+(rf.opened_evaluation||0)
+     + '</b> opened the evaluation &rarr; <b>'+(rf.submitted_evaluation||0)+'</b> submitted.'
+     + ' Endorsements all time <b>'+(S.total||0)+'</b>, last recorded <b>'+(S.last_endorsement_at||'never')+'</b>.'
+     + ' Panel: <b>'+(P.reviewers||0)+'</b> reviewers, <b>'+(P.completers||0)+'</b> completers, <b>'+(P.countries||0)+'</b> countries.'
+     + ' Evaluation all time: <b>'+(f.opened||0)+'</b> opened, <b>'+(f.submitted||0)+'</b> submitted.'
+     + '</div>';
+  });
 }
 function renderExtras(d){
   var el=document.getElementById('extras');
