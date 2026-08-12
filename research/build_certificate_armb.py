@@ -206,6 +206,18 @@ REVIEWERS = [
         "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Certificate_MacKenzie_McCowan.pdf",
     },
     {
+        "name": "Priyam Dhamankar",
+        # Completion date is the UTC date of the last read in the database
+        # (2026-08-12T10:33Z), which is the record the certificate rests on.
+        # Verified with check_completion.py RR-113, exit 0, before this entry
+        # was written.
+        "date": "August 12, 2026",
+        "body": neutral_body(
+            "ethics-and-compliance and investigations",
+            "seventeen years of legal, compliance and investigations practice"),
+        "out": "/home/user/jrsstandard.com/research/Records_Review_Study_Certificate_Priyam_Dhamankar.pdf",
+    },
+    {
         "name": "Candid Opris",
         # Completion date is the UTC date of the last read in the database
         # (2026-08-11T18:23Z), which is the record the certificate rests on.
