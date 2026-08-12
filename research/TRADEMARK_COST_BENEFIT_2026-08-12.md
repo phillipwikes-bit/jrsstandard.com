@@ -4,9 +4,13 @@
 
 ---
 
-## Short answer
+## SUPERSEDED 2026-08-13: file on a trigger, not now
 
-**Yes, file. But file $700 worth, not $1,050. Both marks in Class 042 only. Drop Class 035.**
+**The owner pushed back on filing now and he was right.** An intent-to-use application cannot be freely assigned before a Statement of Use, so filing now creates an asset that is harder to transfer cleanly during a sale, and a buyer's own filing would carry stronger bona fide intent than his. **File only when one of three triggers fires: a buyer asks, he decides to commercialize, or a quarterly USPTO check shows someone filing close.** See `research/IP_VALUE_PLAYS_2026-08-13.md`. The class and cost analysis below stands and applies whenever a trigger does fire.
+
+## Original short answer, superseded on timing only
+
+**File $700 worth, not $1,050. Both marks in Class 042 only. Drop Class 035.**
 
 This corrects my earlier recommendation, which was to file JRS in both 042 and 035. The reason for the change is in section 4 and it is a real legal point, not a cost trim.
 
