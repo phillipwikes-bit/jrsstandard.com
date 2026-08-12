@@ -21,7 +21,6 @@ You are operating inside the live `phillipwikes-bit/jrsstandard.com` repository.
 | `workflow-fit.html` | Workflow integration reference |
 | `operational-boundaries.html` | JRS scope and limitations |
 | `implementation-scenarios.html` | Use-case scenario library |
-| `mccr-simulator.html` | MCCR interactive simulator |
 | `jrsstandard.html` | Full standard documentation |
 | `404.html` | Error page |
 
@@ -309,6 +308,13 @@ For every task on this repository:
 
 ### Master Tracker update (mandatory, every response)
 On EVERY response in this repo, update `research/MASTER_TRACKER.md` and deliver a fresh copy in the same turn (attach the file). At minimum, add a dated one-line entry to the running session log (Section 15 of the tracker), even on pure question/answer or advice turns with no file artifact: record the decision, analysis, or asset produced. Substantive work also updates the relevant tracker section. This is a standing directive from Phillip (2026-07-23); the running log exists so no turn is skipped.
+
+### IP Sale Tracker (mandatory, every turn)
+`research/IP_SALE_TRACKER.md` is the standing record of the JRS/DRR sale and **must be revised and attached on every turn that touches the sale, the IP, buyers, outreach, trademarks, publications or asset value**. Increment the revision number and add a row to the Revision Log (Section 10) each time. Standing directive from Phillip, 2026-08-13, given because prior work was not being carried forward between turns.
+
+**ATTACH THE TRACKER EVERY TURN, NO EXCEPTIONS (Phillip, 2026-08-13).** Attach `MASTER_TRACKER.md` on every single response, including short answers and advice-only turns. The tracker is **not deployed to `main`** by design, so a chat attachment is the only way he can reach it. Do not ask whether to attach; attach.
+
+**Do not re-run a full audit pass just because the standing MASTER EXECUTION PROMPT is pasted again.** If the previous pass is recorded in the tracker and nothing has changed since, say so in one line and answer the actual question in the message. Re-running a clean audit burns his usage, which he has objected to explicitly.
 
 ### Reviewer completion verification (mandatory)
 Before producing ANY reviewer completion recognition (certificate, reference, LinkedIn recommendation, thank-you message, or a "Complete" status in `research/MASTER_TRACKER.md`), verify the completion first:
