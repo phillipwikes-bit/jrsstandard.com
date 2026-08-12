@@ -561,3 +561,17 @@ Unchanged. **JRS REQUIRES USER INPUT. DRR REQUIRES USER INPUT.** First Use Anywh
 **Verified:** no token returns four booleans and no private keys; wrong token returns HTTP 401; the page before unlock reads "Not unlocked. Nothing private is loaded."
 
 **Not verifiable here:** the populated view, which needs the real token from Vercel. `[REQUIRES USER INPUT]`
+
+### 2026-08-12T13:27:00Z : OWNER VIEW TOKEN REJECTION DIAGNOSED
+
+**Counter audit: PATCHED.**
+
+The owner view rejected the token. The endpoint's own diagnostic, which the page was discarding, gives the reason: **`admin_token_configured: false`, `run_token_configured: true`.**
+
+**`BENCH_ADMIN_TOKEN` is not set in the Vercel environment.** No value entered against it could ever work. `RUN_TOKEN` is set and is the only accepted value. **I had instructed the owner to use the variable that does not exist.**
+
+**Classification:** `ANALYTICS CONFIGURATION FAILURE` in the environment, plus `DISPLAY / REPORTING FAILURE` on the page for discarding a diagnostic it was already receiving. **Not a telemetry failure. Not an endpoint failure.** The gate correctly refused a token that did not match.
+
+**Repaired:** the screen now names which variables are configured, states explicitly when `BENCH_ADMIN_TOKEN` is unset, tells the reader which value to use, and warns separately if the service key is missing. Booleans only; no token value is ever rendered or logged.
+
+**Verified** against the exact production 401 payload in a real browser. **Populated view remains `[REQUIRES USER INPUT]`**: it needs the `RUN_TOKEN` value, which is not readable from this environment.

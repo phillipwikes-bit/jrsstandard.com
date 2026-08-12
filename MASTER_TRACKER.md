@@ -438,3 +438,64 @@ Unchanged. **JRS REQUIRES USER INPUT. DRR REQUIRES USER INPUT.**
 `api/support-contacts.js`, `pilot-status.html`, `MASTER_TRACKER.md`, `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md`, `research/MASTER_TRACKER.md`.
 
 ---
+
+## Run: 2026-08-12T13:27:00Z
+
+**Counter audit: PATCHED. Link-click telemetry: VERIFIED, no defect found.**
+
+### Reported: the owner view rejected the token
+
+**Root cause found in the endpoint's own diagnostic, which the page was discarding.**
+
+```
+GET /api/support-contacts   (no token)
+{"error":"unauthorized",
+ "admin_token_configured": false,
+ "run_token_configured":   true,
+ "service_key_configured": true}
+```
+
+**`BENCH_ADMIN_TOKEN` is not set in the Vercel environment.** No value entered against it could ever have worked. **`RUN_TOKEN` is set** and is the only accepted value.
+
+**The defect is mine at two layers:**
+
+1. I told the owner to use `BENCH_ADMIN_TOKEN`, a variable that does not exist server-side.
+2. The screen said only "Token rejected. Nothing private was loaded." That does not distinguish a wrong value from a variable that was never configured, so there was no way to discover the real cause from the page.
+
+**Classification: not a telemetry failure and not an endpoint failure.** The gate behaved correctly and refused a token that genuinely did not match. `ANALYTICS CONFIGURATION FAILURE` in the environment, plus a `DISPLAY / REPORTING FAILURE` on the page for discarding the diagnostic it was already receiving.
+
+### Repair
+
+`pilot-status.html` now reads the booleans the endpoint already returns and reports them:
+
+> Token rejected. Nothing private was loaded. **Configured on the server right now: RUN_TOKEN.** BENCH_ADMIN_TOKEN is not set, so no value entered against it can work. **Use the value of RUN_TOKEN.**
+
+It also handles the case where neither is configured, and warns separately if the service key is missing so a valid token would still return nothing. The field placeholder now names both accepted variables.
+
+**Booleans only. No token value is ever rendered, logged or transmitted anywhere but the gated endpoint.**
+
+### Verification
+
+| Layer | Result |
+|---|---|
+| Source | **VERIFIED** by fresh disk read |
+| Implementation | **VERIFIED**, 2 inline blocks, 0 parse errors |
+| Data flow | **VERIFIED**, rendered against the exact production 401 payload |
+| Display | **VERIFIED**, message reproduced in a real browser |
+| Deployment | **VERIFIED** live |
+| Populated owner view | **REQUIRES USER INPUT.** Needs the `RUN_TOKEN` value, which is a Vercel environment variable and is not readable from this environment |
+
+### Two options for the owner
+
+1. **Use the `RUN_TOKEN` value** in the field. It works today.
+2. **Set `BENCH_ADMIN_TOKEN`** in Vercel if a separate token for this purpose is preferred. The screen will start naming it the moment it exists.
+
+### Trademark dossiers
+
+Unchanged. **JRS REQUIRES USER INPUT. DRR REQUIRES USER INPUT.**
+
+### Files modified
+
+`pilot-status.html`, `MASTER_TRACKER.md`, `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md`, `research/MASTER_TRACKER.md`.
+
+---
