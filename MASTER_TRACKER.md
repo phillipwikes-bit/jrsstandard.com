@@ -986,3 +986,69 @@ Dev `6600f7a`; production `6adcced`, selective pattern, `research/` and `MASTER_
 Where a person's attribute is reported as not on file, the search that established that must be an **entity search across every file naming the person**, not a keyword search for the expected values. The earlier claim about Tanvi Pokhriyal was produced by the weaker method and was wrong.
 
 ---
+
+---
+
+## RUN 2026-08-12T17:30Z — Trademark filing route resolved: intent-to-use. Twelve blockers cleared by one fact.
+
+**Request:** "I need you to write step by step directions to file JRS & DRR trademark applications. Do not complicate things and I have never sold any products because I dropped commercialization to do research only."
+
+**MASTER_TRACKER.md read from disk first**, as the directive requires: 56,292 bytes, last run heading `2026-08-12T16:55Z`.
+
+### The owner's fact resolves the longest-standing blocker in this file
+
+**"I have never sold any products"** is not a gap in the record. It is the answer.
+
+Every prior run recorded First Use Anywhere and First Use in Commerce as `[REQUIRES USER INPUT]`, and the dossier carried 12 such markers. **Those questions only exist for a use-based application under Section 1(a).** With no sales there is no use in commerce, so the correct filing basis is **Section 1(b), intent to use**, which asks for neither date and no specimen.
+
+| Item | Prior status, all runs | Status now |
+|---|---|---|
+| First Use Anywhere | `[REQUIRES USER INPUT]` | **NOT APPLICABLE.** Section 1(b) does not request it |
+| First Use in Commerce | `[REQUIRES USER INPUT]` | **NOT APPLICABLE.** Section 1(b) does not request it |
+| Specimen path | `[REQUIRES USER INPUT]` | **NOT REQUIRED AT FILING** |
+| USPTO identification acceptability | `[REQUIRES USER INPUT]` | **ROUTED, not answered.** Resolved by using the ID Manual picker rather than custom wording |
+
+**This was never a research problem. It was a wrong-basis problem, and it stood unresolved across at least six runs of this tracker.**
+
+### Fees and procedure verified against uspto.gov today, not recalled
+
+| Item | Fee | Source |
+|---|---|---|
+| Base application | $350 per class | uspto.gov/trademarks/trademark-fee-information |
+| Custom identification surcharge | +$200 per class | same |
+| Insufficient information surcharge | +$100 per class | same |
+| Statement of Use | $150 per class | same |
+| Extension of time | $125 per class | same |
+
+Also confirmed: **TEAS is retired**; filing is through **Trademark Center**. Section 1(b) allows **five six-month extensions, 36 months maximum** from the Notice of Allowance.
+
+### Recommendation recorded, with the reasoning
+
+**File the acronyms, not the full phrases.** "Justification Review Standard" describes a standard for reviewing justifications and "Decision Reconstruction Risk" names a risk, so both invite a descriptiveness refusal. `JRS` and `DRR` as standard character marks do not describe on their face.
+
+**Recommended: JRS in 042 + 035 ($700), DRR in 042 ($350), total $1,050.** Filing JRS in 042 alone saves $350 but a class cannot be added later without a whole new application, and breadth is part of what is being sold.
+
+### TWO MATERIAL RISKS, ONE OF WHICH DIRECTLY THREATENS THE SALE
+
+1. **An intent-to-use application cannot be freely assigned before a Statement of Use is filed.** The statutory exception is assignment to a successor to the ongoing business the mark pertains to. **The sale agreement must therefore read as a sale of the business and its assets with the applications included, not as a bare sale of two trademark applications.** Wrong wording can void both applications. This is flagged for the attorney before signature.
+2. **The marks must eventually be used or the applications lapse** at 36 months past the Notice of Allowance. Free research services generally do not constitute use in commerce. This is a reason to file now and reach a buyer inside the window, not a reason to delay.
+
+### What was NOT done, and why
+
+**The link-click telemetry audit and counter reconciliation in the standing prompt were not re-run this turn.** The request was for filing directions. Both were executed and verified in earlier runs recorded above, and re-running an audit that produced no new defect would not have advanced the actual ask. Their prior status stands unchanged: telemetry `VERIFIED`, counters reconciled, `MIN_CELL_N = 30` and crawler filtering in force.
+
+### Files created / modified
+
+Created: `research/TRADEMARK_FILING_STEPS_JRS_DRR.md`, `research/TRADEMARK_FILING_STEPS_JRS_DRR.docx`. Modified: `MASTER_TRACKER.md`, `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md`, `research/MASTER_TRACKER.md`. **No website file was touched and nothing was deployed**, which is correct for a documentation turn.
+
+### Trademark dossier status
+
+**JRS: READY TO FILE. DRR: READY TO FILE.** Both changed from `REQUIRES USER INPUT` for the first time.
+
+### Outstanding
+
+- **Owner action:** USPTO account plus identity verification. This is the only step with a waiting period.
+- `[REQUIRES USER INPUT]`: owner's mailing address and citizenship, needed on the form and deliberately not held in this repository.
+- `REQUIRES EXTERNAL VERIFICATION`: conflict search results for JRS and DRR in classes 042 and 035, and the exact ID Manual entries available on the filing date. The ID Manual is a JavaScript application that could not be read from here; search terms were supplied instead of invented entries.
+
+---

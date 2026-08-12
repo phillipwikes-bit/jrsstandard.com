@@ -712,3 +712,49 @@ The full roster now renders on `pilot-status.html` at the owner's explicit instr
 **Unchanged. JRS: REQUIRES USER INPUT. DRR: REQUIRES USER INPUT.** Outstanding for both marks: First Use Anywhere, First Use in Commerce, and confirmation the drafted USPTO identifications are acceptable as written.
 
 ---
+
+---
+
+## AMENDMENT 2026-08-12T17:30Z: Trademark dossiers move to READY TO FILE
+
+**Section S revision.** Both dossiers leave `REQUIRES USER INPUT` for the first time.
+
+### Filing basis corrected
+
+The owner has confirmed he has never sold any product or service, having dropped commercialization in favour of research. **The correct basis is Section 1(b), intent to use, for both marks.** Every prior amendment of this dossier assumed a Section 1(a) use-based filing, which is why First Use Anywhere, First Use in Commerce and specimen path were carried as blockers across six runs. Under Section 1(b) none of the three is requested at filing.
+
+| Dossier field | Prior | Revised |
+|---|---|---|
+| Filing basis | assumed 1(a) | **Section 1(b), intent to use** |
+| First Use Anywhere | `[REQUIRES USER INPUT]` | **NOT APPLICABLE at filing** |
+| First Use in Commerce | `[REQUIRES USER INPUT]` | **NOT APPLICABLE at filing** |
+| Specimen | `[REQUIRES USER INPUT]` | **NOT REQUIRED at filing** |
+| Overall | `REQUIRES USER INPUT` | **READY TO FILE** |
+
+### Mark revision
+
+| Dossier entry | Prior mark | Revised mark | Reason |
+|---|---|---|---|
+| JRS | "Justification Review Standard (JRS)" | **`JRS`**, standard characters | The full phrase describes a standard for reviewing justifications and invites a descriptiveness refusal |
+| DRR | "Decision Reconstruction Risk (DRR)" | **`DRR`**, standard characters | The full phrase names a risk and invites the same refusal |
+
+### Identification strategy revision
+
+The custom Class 042 and 035 strings drafted in earlier amendments are **demoted to fallback**. Custom wording carries a **$200 per class surcharge**, which is **$600 across the three classes proposed**, and the earlier amendment already recorded that the software-as-a-service framing is the weakest point in both applications given `org-pilot.html` has 0 sessions all time. **Pre-approved ID Manual wording avoids both the surcharge and that exposure.** No ID Manual entry is quoted in this dossier, because the manual could not be read from this environment and inventing an entry would produce a surcharge and an office action.
+
+### Encumbrance on the asset, recorded for diligence
+
+**An intent-to-use application cannot be assigned before a Statement of Use is filed, except to a successor to the ongoing business to which the mark pertains.** This is a genuine restriction on transferring the marks and it must be reflected in the sale instrument: the transaction has to read as a sale of the business and its assets including the applications, not as a bare assignment of two applications. A buyer's counsel will look for this. It is disclosed here rather than discovered later.
+
+**Second encumbrance:** the applications lapse if no Statement of Use is filed within 36 months of the Notice of Allowance, and free research activity generally does not constitute use in commerce. The priority date has real value; the window on it is finite and dated from an event that has not yet occurred.
+
+### Status
+
+| Dossier | Status |
+|---|---|
+| JRS | **READY TO FILE**, Section 1(b), classes 042 and 035 |
+| DRR | **READY TO FILE**, Section 1(b), class 042 |
+
+Remaining owner inputs are administrative only: mailing address, citizenship, and completion of USPTO identity verification. Filing procedure is set out in `research/TRADEMARK_FILING_STEPS_JRS_DRR.md`.
+
+---
