@@ -100,10 +100,17 @@ export default async function handler(req){
 
   // The codes that actually completed, which is what the country count is now
   // derived from. Previously this was a hand-maintained constant.
-  const completerCodes = []
-    .concat(armA.filter(function(r){ return (r.total_reads || 0) >= NEEDED; }).map(function(r){ return r.code; }))
-    .concat(armB.filter(function(r){ return (r.reads || 0) >= NEEDED; }).map(function(r){ return r.code; }));
+  const codesA = armA.filter(function(r){ return (r.total_reads || 0) >= NEEDED; }).map(function(r){ return r.code; });
+  const codesB = armB.filter(function(r){ return (r.reads || 0) >= NEEDED; }).map(function(r){ return r.code; });
+  const completerCodes = codesA.concat(codesB);
   const geo = resolvePanelGeo(completerCodes);
+
+  // TWO SCOPES, BOTH COMPUTED, BECAUSE ATTACHING THE WRONG ONE HAS ALREADY GONE
+  // WRONG ONCE. The tracker records "54 international reviewers across 16
+  // countries" as a defect: 16 belongs to the full-set COMPLETERS, never to all
+  // reviewers. The manuscript and research.html publish 11 for the detection
+  // panel alone. Publishing both, each labelled, removes the choice.
+  const geoDetection = resolvePanelGeo(codesA);
 
   // Everyone who has graded at least one record, which is the basis of the
   // published sentence and deliberately includes reviewers partway through.
@@ -135,6 +142,7 @@ export default async function handler(req){
 
     // The components, so a figure can be checked without re-deriving it.
     detection_completers: completersA,
+    detection_countries: geoDetection.countries,
     comparison_completers: completersB,
     registered: armA.length + armB.length,
     reliability_raters: rater.length,
@@ -146,6 +154,10 @@ export default async function handler(req){
          + 'Both are computed at request time from pilot_progress, armb_progress and '
          + 'bench_labels, not transcribed from a roster.',
     geo_source: 'computed',
+    countries_scope: 'the ' + completers + ' reviewers who completed a full ' + NEEDED
+                   + '-record set. NOT all ' + reviewers + ' reviewers: attaching this figure to the '
+                   + 'reviewer total is a recorded past defect. detection_countries is the same '
+                   + 'figure for the detection panel alone, which is what the manuscript publishes.',
     geo_resolved: geo.resolved,
     geo_unresolved: geo.unresolved,
     geo_note: 'countries and continents are COMPUTED at request time from the codes that '

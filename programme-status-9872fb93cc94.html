@@ -80,7 +80,7 @@ tr.today td{background:rgba(93,191,130,.07)}
   <p class="sub">The international bench across all three studies. This is the asset. Every other figure on this page counts a click, a contact or a download; this one counts credentialed people who graded records.</p>
   <div class="cards" id="panel-cards" style="grid-template-columns:repeat(4,1fr)">
     <div class="card"><div class="cv hot" id="pn-completers">&middot;</div><div class="ck">Completed a full 24-record set</div></div>
-    <div class="card"><div class="cv" id="pn-countries">&middot;</div><div class="ck">Countries</div></div>
+    <div class="card"><div class="cv" id="pn-countries">&middot;</div><div class="ck">Countries <b style="color:var(--review-text)">of the completers</b></div><div id="pn-scope" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.06em;color:var(--muted-soft);margin-top:5px;line-height:1.5">&nbsp;</div></div>
     <div class="card"><div class="cv" id="pn-reviewers">&middot;</div><div class="ck">Graded at least one record</div></div>
     <div class="card"><div class="cv" id="pn-registered">&middot;</div><div class="ck">Registered</div></div>
   </div>
@@ -1422,10 +1422,19 @@ function loadPanel(){
     if(!P){ if(note) note.textContent='Could not load the panel. Tap Refresh.'; return; }
     setv('pn-completers',P.completers); setv('pn-countries',P.countries);
     setv('pn-reviewers',P.reviewers);   setv('pn-registered',P.registered);
+    // The scope travels with the number. A bare "Countries" card beside a
+    // reviewer total is how "54 reviewers across 16 countries" was published
+    // once already, and 16 belongs to the completers, never to all reviewers.
+    var sc=document.getElementById('pn-scope');
+    if(sc) sc.innerHTML='not of all '+P.reviewers+' reviewers'
+      + (typeof P.detection_countries==='number' ? ('<br>detection panel alone: '+P.detection_countries) : '');
     if(note){
       note.style.borderLeftColor='var(--ready-text)';
       note.innerHTML='<b style="color:var(--text)">'+P.completers+'</b> completed a full 24-record set across <b style="color:var(--text)">'
-        +P.countries+'</b> countries and <b style="color:var(--text)">'+P.continents+'</b> continents &middot; '
+        +P.countries+'</b> countries and <b style="color:var(--text)">'+P.continents+'</b> continents. '
+        +'<b style="color:var(--review-text)">That country figure belongs to the '+P.completers+' completers, not to all '+P.reviewers
+        +' reviewers</b>, and the detection panel alone spans <b style="color:var(--text)">'+(P.detection_countries||'?')
+        +'</b>, which is the figure the manuscript publishes. &middot; '
         +'detection panel <b style="color:var(--text)">'+P.detection_completers+'</b>, comparison study <b style="color:var(--text)">'
         +P.comparison_completers+'</b>, reliability raters <b style="color:var(--text)">'+P.reliability_raters+'</b>. '
         +esc(P.basis||'');
