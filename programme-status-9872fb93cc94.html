@@ -343,6 +343,110 @@ tr.today td{background:rgba(93,191,130,.07)}
     <div id="supwall">Loading&hellip;</div>
     <div class="note" style="margin-top:8px">Only people who ticked "list my name publicly" when they added their support. Name and organization only, never email. Everyone else stays a private count.</div>
   </div>
+
+  <!-- SALE DOSSIER. Added 2026-08-13 on the owner's request for one detailed
+       summary at a single link. Placed on THIS page rather than a new one,
+       because CLAUDE.md records that there is one private owner page and a
+       second must not be created. Static content: it does not refresh. -->
+  <h2 id="sale-dossier" style="font-size:22px;margin-top:44px;border-top:1px solid var(--accent-dim);padding-top:26px">Sale Dossier</h2>
+  <p class="sub">Everything built for the sale of the JRS / DRR asset, what each piece contains, and its state as of 13 August 2026. Assembled from the files on disk, not from memory. The live tracker is <code>research/IP_SALE_TRACKER.md</code>, which is revised every turn.</p>
+
+  <div class="chart" style="border-color:var(--accent)">
+    <h3>The one thing to know</h3>
+    <p style="font-size:13.5px;color:var(--muted);line-height:1.7;margin:0">
+      <b style="color:var(--text)">Ten sale artifacts are finished. None has a recorded recipient. No buyer has ever been approached.</b>
+      That is not an execution failure: <b style="color:var(--text)">the plan written on 1 August set three prerequisites before buyer
+      outreach</b> (a publication accepted, marks filed, one paying pilot) and a later recommendation to hold the trademark filings
+      made the second unreachable. <b style="color:var(--review-text)">That gate was withdrawn on 13 August.</b> None of the three is
+      a real prerequisite for talking to a buyer. There is now no gate at all.
+    </p>
+  </div>
+
+  <div class="chart">
+    <h3>The ten artifacts</h3>
+    <div style="overflow-x:auto"><table style="min-width:780px">
+      <caption style="caption-side:top;text-align:left;font-size:12px;color:var(--muted-soft);padding:0 0 8px">Every sale-facing asset on disk, what it holds, and whether anyone outside has seen it.</caption>
+      <thead><tr>
+        <th scope="col" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule)">Artifact</th>
+        <th scope="col" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule)">What it contains</th>
+        <th scope="col" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule);white-space:nowrap">Shown to a buyer</th>
+      </tr></thead><tbody>
+      <tr><td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--text);font-size:12.5px">acquisition-9f3c2a7d4b.html</td><td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--muted);font-size:12px">The prospectus. 20,095 bytes, <b style="color:var(--ready-text)">live, HTTP 200</b>. Sections include the reviewer panel, the Field Guides, the Dewey mention and the partner review API</td><td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--stop-text);font-size:12px">No record</td></tr>
+      <tr><td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--text);font-size:12.5px">vp-7c1f9a4e8d2b6035.html</td><td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--muted);font-size:12px">Second buyer-facing page. <b style="color:var(--ready-text)">Live, HTTP 200</b></td><td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--stop-text);font-size:12px">No record</td></tr>
+      <tr><td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--text);font-size:12.5px">JRS_Validation_Report.md / .pdf</td><td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--muted);font-size:12px">36,731 bytes. The evidence dossier: DRR problem statement, five conditions, Decision Defensibility Score, seven AI failure modes, pre-registration, reproducibility and reliability rungs</td><td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--stop-text);font-size:12px">No record</td></tr>
+      <tr><td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--text);font-size:12.5px">IP_Sale_Playbook.md</td><td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--muted);font-size:12px">What is being sold as a bundle, honest value grades, four prioritised tiers, probability of sale, and the split between owner tasks and assistant tasks</td><td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--muted-soft);font-size:12px">Internal</td></tr>
+      <tr><td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--text);font-size:12.5px">IP_Asset_Transfer_Map.md</td><td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--muted);font-size:12px">Asset inventory, data-consent analysis, <b style="color:var(--review-text)">seven conveyance blindspots</b>, and a five-item pre-sale checklist</td><td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--muted-soft);font-size:12px">Internal</td></tr>
+      <tr><td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--text);font-size:12.5px">Path_to_Sale_Action_Plan.md</td><td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--muted);font-size:12px">Probability anchors, the Stage 1 / Stage 2 rule (<b style="color:var(--review-text)">gate withdrawn 13 Aug</b>), five buyer archetypes, six guardrails</td><td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--muted-soft);font-size:12px">Internal</td></tr>
+      <tr><td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--text);font-size:12.5px">Sale_Likelihood_Assessment 08-02</td><td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--muted);font-size:12px">Why cutting the price helps less than expected, what actually blocks a sale, the realistic low-price buyer pool</td><td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--muted-soft);font-size:12px">Internal</td></tr>
+      <tr><td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--text);font-size:12.5px">Sale_Likelihood_Assessment 08-04</td><td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--muted);font-size:12px">Supersedes the above. Post-gate collapse in downloads and supporters, and what it does and does not prove</td><td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--muted-soft);font-size:12px">Internal</td></tr>
+      <tr><td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--text);font-size:12.5px">build_prospectus_panel.py</td><td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--muted);font-size:12px">Generates the panel prospectus from the live roster</td><td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--muted-soft);font-size:12px">Internal</td></tr>
+      <tr><td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--text);font-size:12.5px">build_prospectus_armb.py</td><td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--muted);font-size:12px">Generates the Arm B prospectus</td><td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--muted-soft);font-size:12px">Internal</td></tr>
+      </tbody></table></div>
+  </div>
+
+  <div class="chart">
+    <h3>What is actually being sold</h3>
+    <div class="note" style="line-height:1.8">
+      Not "a standard". A bundle:<br>
+      <b style="color:var(--text)">1.</b> A coined, ownable problem category, <b style="color:var(--text)">Decision Reconstruction Risk</b>, plus the five conditions, the three-read scale and the seven AI failure modes.<br>
+      <b style="color:var(--text)">2.</b> A labelled, blind-verified <b style="color:var(--text)">24-record dataset with an independently reproduced answer key</b>. A benchmark asset.<br>
+      <b style="color:var(--text)">3.</b> A self-updating <b style="color:var(--text)">reproducibility engine</b> running nightly cross-vendor.<br>
+      <b style="color:var(--text)">4.</b> An international credentialed <b style="color:var(--text)">reviewer panel: 32 completers across 16 countries</b>.<br>
+      <b style="color:var(--text)">5.</b> Methodology authored with a Big-Four model-validation director.<br>
+      <b style="color:var(--text)">6.</b> A finished <b style="color:var(--text)">Investigator Field Guide product line</b> (EEO, Fair Housing, International), mentioned in two verified Dewey Publications places.<br>
+      <b style="color:var(--text)">7.</b> Papers in progress plus one <b style="color:var(--ready-text)">accepted</b> for November.<br>
+      <b style="color:var(--text)">8.</b> Live product surface: training and certification, review-engine API, dashboards.
+    </div>
+  </div>
+
+  <div class="chart">
+    <h3>Value grades, stated honestly</h3>
+    <div class="note" style="line-height:1.9">
+      Research credibility: <b style="color:var(--ready-text)">strong and improving</b>. Reproducibility, reliability, verified key, pre-registration.<br>
+      Commercial proof: <b style="color:var(--stop-text)">weak. Zero paying or piloting organizations. This is the binding constraint.</b><br>
+      Acquisition readiness: <b style="color:var(--review-text)">middling</b>. The assets are real but scattered.
+    </div>
+  </div>
+
+  <div class="chart" style="border-color:var(--review-text)">
+    <h3>Seven conveyance blindspots, from the transfer map</h3>
+    <div class="note" style="line-height:1.85">
+      <b style="color:var(--text)">1. Marks are unregistered.</b> JRS is used as &trade; only.<br>
+      <b style="color:var(--text)">2. Co-authored papers carry shared copyright.</b> Position them as evidence, not conveyed assets.<br>
+      <b style="color:var(--text)">3. Reviewer and pilot PII lack the transfer-consent tier.</b> Only part of the list has it. Do not represent the full panel as transferable.<br>
+      <b style="color:var(--text)">4. AI features depend on third-party keys that do NOT convey.</b> The buyer brings their own Anthropic, Supabase, Vercel and analytics accounts. Document it so the demo does not look broken at handoff.<br>
+      <b style="color:var(--text)">5. Public "free" framing can depress willingness to pay.</b> Keep the community layer free; never say the core is free forever.<br>
+      <b style="color:var(--text)">6. Founder dependency.</b> Goodwill and volunteers do not convey. Sell owned entities: marks, copyrights, data, code, domain.<br>
+      <b style="color:var(--text)">7. Third-party assessment entanglement.</b> An unsolicited external "assessment" under a self-styled framework was declined on 2026-07-27 and is NOT part of the validation. <b style="color:var(--stop-text)">Do not cite it as validation in diligence or marketing.</b>
+    </div>
+  </div>
+
+  <div class="chart">
+    <h3>Buyer archetypes, and the guardrails that protect the price</h3>
+    <div class="note" style="line-height:1.8">
+      <b style="color:var(--text)">Targets:</b> GRC and compliance software vendors &middot; e-discovery and legal-tech &middot; HR-tech and people-analytics &middot; AI-governance platforms &middot; standards bodies and foundations. <b style="color:var(--stop-text)">No named target list exists yet.</b><br><br>
+      <b style="color:var(--text)">Guardrails:</b> NDA before specifics &middot; the five-condition scoring and the gold answer key never enter a data room &middot; protect the blind, nothing reveals the Arm B method or the arm split &middot; no "for sale" signal on the public site or LinkedIn &middot; hold all claims to the completer sample and the pre-registered figures &middot; no urgency signalling.
+    </div>
+  </div>
+
+  <div class="chart">
+    <h3>Where it stands today</h3>
+    <div class="note" style="line-height:1.9">
+      Revenue <b style="color:var(--stop-text)">$0</b>, and no payment mechanism exists anywhere on the site &middot;
+      organization pilots <b style="color:var(--stop-text)">0</b> &middot;
+      reviewer evaluations submitted <b style="color:var(--stop-text)">0</b> &middot;
+      named people on record <b style="color:var(--text)">11</b> across <b style="color:var(--text)">7</b> countries &middot;
+      transfer-consent rows <b style="color:var(--text)">12</b> &middot;
+      row-verified training completions <b style="color:var(--text)">4</b> &middot;
+      named supporters <b style="color:var(--text)">3</b> &middot;
+      <b style="color:var(--ready-text)">reviewers completing a full study set: 32, across 16 countries</b>.<br><br>
+      <b style="color:var(--text)">Channels tested:</b> federal-sector training <b style="color:var(--stop-text)">closed</b>, no response from any of three &middot;
+      Dewey founding access <b style="color:var(--stop-text)">soft no</b>, relationship intact &middot;
+      public product demand <b style="color:var(--stop-text)">none</b> &middot;
+      <b style="color:var(--review-text)">buyer outreach: never attempted, and now ungated</b>.<br><br>
+      <b style="color:var(--text)">Strongest credential:</b> <b style="color:var(--ready-text)">CEP Magazine (SCCE) accepted "When the Record Cannot Speak for Itself" on 16 July 2026 for the November issue.</b> Accepted counts. Two Dewey mentions are quotable but are explicitly <b>not</b> endorsements.
+    </div>
+  </div>
 </div></main>
 <footer class="ft"><div class="wrap" style="padding:0">&#169; 2026 Phillip Wikes &middot; JRS&#8482; &middot; <a href="privacy.html" style="color:inherit">Privacy</a> &middot; confidential &middot; not indexed</div></footer>
 <script>
