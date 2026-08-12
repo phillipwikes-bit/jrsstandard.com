@@ -2,11 +2,13 @@
 
 **The standing record of the JRS / DRR sale. Revised every turn. This is the file to read first.**
 
+**Web version:** `https://jrsstandard.com/programme-status-9872fb93cc94.html#sale-dossier`
+
 | | |
 |---|---|
 | **Created** | 2026-08-13 |
-| **Last revised** | 2026-08-13 (rev 2) |
-| **Revisions** | 2 |
+| **Last revised** | 2026-08-13 (rev 3) |
+| **Revisions** | 3 |
 | **Current stage** | **Zero buyer conversations held, because I advised waiting. Gate withdrawn 2026-08-13** |
 | **Sale probability, as-is** | **5 to 10%** over ~12 months (owner's own anchor, `Path_to_Sale_Action_Plan.md`, unchanged) |
 
@@ -148,5 +150,6 @@ GRC / compliance software vendors · E-discovery and legal-tech · HR-tech and p
 
 | # | Date | Change |
 |---|---|---|
+| 3 | 2026-08-13 | Published the dossier as a web section at `programme-status-9872fb93cc94.html#sale-dossier`. Placed on the existing private page rather than a new one, per the CLAUDE.md rule that there is one private owner page. Verified live: all seven blocks present, 43 headings, 0 level skips, 0 console errors. |
 | 2 | 2026-08-13 | **Withdrew the three-gate rule.** Owner stated he did not approach buyers because I told him it was too early. Verified: `Path_to_Sale_Action_Plan.md` set three prerequisites before buyer outreach, and my 2026-08-13 trademark hold made gate 2 unreachable. Reclassified from owner execution gap to my advice error. No gate now stands between him and a buyer conversation. |
 | 1 | 2026-08-13 | Created. Corrected my own understatement of prior sale work. Inventoried 10 sale artifacts, all finished, none with a recorded recipient. Recorded 1 of 3 Stage 2 gates met and Stage 1 not started. Federal training channel recorded CLOSED on owner's determination. |
