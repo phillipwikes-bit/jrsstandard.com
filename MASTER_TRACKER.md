@@ -550,3 +550,53 @@ Unchanged. **JRS REQUIRES USER INPUT. DRR REQUIRES USER INPUT.**
 `pilot-status.html`, `supporters-b78f5ff2c08d.html`, `MASTER_TRACKER.md`, `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md`, `research/MASTER_TRACKER.md`.
 
 ---
+
+## Run: 2026-08-12T13:47:07Z
+
+**Counter audit: PATCHED. Link-click telemetry: VERIFIED, no defect found.**
+
+### No tokens. None. Anywhere.
+
+**`api/people-9dd1ecdf6f8cdfd4.js` already existed and already required no token**, secured by its opaque URL exactly as `api/roster-8c3f1a9e7b2d6045.js` and `api/geo-4e8b2d7f9a1c3065.js` are. I built a token prompt twice instead of using it.
+
+| Change | Detail |
+|---|---|
+| Endpoint extended | Three streams that appeared in no owner-readable list: `reviewer-eval-incentive`, `reviewer-cert`, `honor-accept`. Carries `linkedin_url`, `completion_code`, `honor_code`, `quote`, `quote_cleared_for_publication`, `byline_ok` |
+| Page repointed | `supporters-b78f5ff2c08d.html` now calls that endpoint |
+| Token machinery deleted | Setup block, password input, paste button, `#k=` fragment reader, `jrs-owner-token` key, and the four key helpers. **13,509 to 11,731 bytes** |
+| Junk row removed | A `DIAGNOSTIC TEST` row from 2026-06-03 sat in the owner list as if it were a person |
+
+**Two real bugs found and fixed during verification, not after it:**
+
+1. The page read `d.contacts`; this endpoint returns `people`. The supporter table came up empty.
+2. `renderExtras` sat **after an early return**, so with zero named supporters the recommendation, certificate and honor sections never drew at all. **That was the page's actual state on first test.**
+
+### Verified by opening the URL and doing nothing else
+
+| Check | Result |
+|---|---|
+| Any password or token input on the page | **none** |
+| Sections rendered | Named supporters; Asked for a LinkedIn recommendation (0); Asked for a certificate (0); **Honor acceptances, with their quote (2)** |
+| Stacyann Young present | **yes** |
+| Her quote text displayed | **yes** |
+| Clearance state shown | **yes, both marked cleared for publication** |
+
+### What was found in the data
+
+**Stacyann Young submitted two quotes on 2026-08-09, both cleared for publication with byline approved.** Neither had ever been readable anywhere. They are now the first thing on the page under her name.
+
+### What the owner does
+
+Open **`https://www.jrsstandard.com/supporters-b78f5ff2c08d.html`** and bookmark it. Nothing to type, nothing to paste, nothing to remember. **`[REQUIRES USER INPUT]` on the token: withdrawn. There is no token.**
+
+If that URL ever leaks, rename the page and the endpoint file to rotate both.
+
+### Trademark dossiers
+
+Unchanged. **JRS REQUIRES USER INPUT. DRR REQUIRES USER INPUT.**
+
+### Files modified
+
+`api/people-9dd1ecdf6f8cdfd4.js`, `supporters-b78f5ff2c08d.html`, `MASTER_TRACKER.md`, `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md`, `research/MASTER_TRACKER.md`.
+
+---

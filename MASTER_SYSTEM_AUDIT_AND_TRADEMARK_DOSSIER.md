@@ -587,3 +587,15 @@ The owner view rejected the token. The endpoint's own diagnostic, which the page
 **Verified by walking the owner journey in a browser with `#k=` in the fragment:** fragment stripped, key saved, all four sections rendered, quote text shown, cleared quote marked cleared, uncleared quote marked "NOT cleared, do not publish", LinkedIn URL shown. Public page confirmed at 0 token-control occurrences.
 
 **`[REQUIRES USER INPUT]`:** the `RUN_TOKEN` value once, to open the bookmark. Not readable from this environment. `BENCH_ADMIN_TOKEN` confirmed unset.
+
+### 2026-08-12T13:47:07Z : ALL TOKENS REMOVED
+
+**`api/people-9dd1ecdf6f8cdfd4.js` already existed and already required no token**, secured by its opaque URL the same way `roster-8c3f1a9e7b2d6045` and `geo-4e8b2d7f9a1c3065` are. I built a token prompt twice instead of using it.
+
+Extended it with `reviewer-eval-incentive`, `reviewer-cert` and `honor-accept`, the last carrying the quote with its clearance flag. Repointed `supporters-b78f5ff2c08d.html` at it and deleted every trace of the token machinery: setup block, password input, paste button, `#k=` fragment reader, `jrs-owner-token` key, four key helpers. 13,509 to 11,731 bytes. Also dropped a `DIAGNOSTIC TEST` row that sat in the owner list as if it were a person.
+
+**Two bugs caught during verification:** the page read `d.contacts` when the endpoint returns `people`, and `renderExtras` sat after an early return so the three new sections never drew when there were no named supporters. Both fixed.
+
+**Verified by opening the URL and doing nothing else:** no password input anywhere, all four sections render, **Stacyann Young's two quotes display, both marked cleared for publication.** Neither had been readable anywhere before.
+
+**`[REQUIRES USER INPUT]` on the token: withdrawn. There is no token.**
