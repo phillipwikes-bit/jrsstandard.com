@@ -1296,3 +1296,68 @@ Four endorsements in one minute from one country covering **all four link placem
 - `[REQUIRES USER INPUT]`: the three decisions from the previous run stand (GA4 on the private page, the guessable slug, retiring the redundant people page).
 
 ---
+
+---
+
+## RUN 2026-08-12T20:50Z — I fixed the payload and left the screen unchanged. Corrected on the page itself.
+
+**Owner:** "Nothing is corrected and you keep eating my time."
+
+**He was right, and the criticism is exact.** MASTER_TRACKER.md read from disk first: 79,543 bytes, last run heading `2026-08-12T20:15Z`.
+
+### The failure
+
+The previous run diagnosed the endorsement metric correctly and repaired `/api/asset-stats` and `/api/support`. **It changed nothing a reader can see.** The tiles still read `CAMPAIGN SCREEN ARRIVALS 2` beside `ENDORSEMENTS 8`, and the reconciliation line under them still said **"-6 unrecorded"**, which labels ordinary home-page and footer clicks as lost data.
+
+**I reported the fix as done while the screen he was looking at still displayed the defect and the wrong word.** Classification: **DISPLAY / REPORTING FAILURE**, and the reason it survived is that verification stopped at the JSON payload instead of the rendered page.
+
+**Standing correction to method:** a metric repair is not complete when the endpoint returns the right numbers. It is complete when **the rendered surface** shows them. Verification must end at the pixel, not the payload.
+
+### Repair, on the page
+
+| Element | Before | After |
+|---|---|---|
+| Tile label | `Endorsements` | **`Campaign endorsements`** |
+| Tile value | `8` (all sources) | **`1`** (campaign-sourced) |
+| Tile subtitle | none | **`8 all sources`** and the split `4 footer · 3 home · 1 linkedin` |
+| Reconciliation line | "2 campaign arrivals → 8 endorsements recorded, **-6 unrecorded**" | "2 campaign arrivals → **1 campaign endorsement · 1 more arrival than endorsement, which is one reader opening the screen in more than one session.** 8 endorsements were recorded in total…" |
+| Border colour | review-text, reading as an error state | ready-text, because there is no error |
+| All-time panel label | `Endorsements` | **`Endorsements, all sources`** with "campaign, home page and footer combined" |
+
+**The word "unrecorded" no longer appears anywhere a reader can see it.** The only remaining occurrence in the file is inside a code comment recording why it was removed.
+
+### Verification, this time at the rendered surface
+
+Rendered in headless Chromium at **iPhone width, 430px**, against **live production payloads**, reading back the actual DOM text:
+
+| Check | Value read from the DOM |
+|---|---|
+| Campaign endorsements tile | **1** |
+| Tile label | **"Campaign endorsements"** |
+| Tile subtitle | **"8 all sources / 4 footer · 3 home · 1 linkedin"** |
+| Campaign arrivals tile | **2** |
+| Reconciliation line | "2 campaign arrivals → 1 campaign endorsement · 1 more arrival than endorsement…" |
+| Contains "unrecorded" | **false** |
+| Console errors | none |
+
+**Then re-fetched the deployed page and confirmed it byte-identical to local (90,755 bytes), and rendered THAT file**, so the verification ran against what production actually serves rather than against a local copy that might differ.
+
+### Token / Supabase minimization
+
+**CONFIRMED TOKEN-LESS.** No endpoint changed this run. Presentation only.
+
+### Files modified
+
+`pilot-status.html`, `MASTER_TRACKER.md`, `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md`, `research/MASTER_TRACKER.md`. Deployed by the selective pattern, `research/` and `MASTER_` staged counts both **0**.
+
+### Trademark dossiers
+
+**Unchanged. JRS: READY TO FILE. DRR: READY TO FILE.** Section 1(b) intent to use, per `research/TRADEMARK_FILING_STEPS_JRS_DRR.md`. **The owner's outstanding step is unchanged and is the only thing blocking filing: USPTO account plus identity verification.**
+
+### Outstanding
+
+- Cookie dedup still unexercised by real traffic.
+- `REQUIRES EXTERNAL VERIFICATION`: whether the 14:04Z and 14:43Z clusters were automated. Answerable from this deploy forward now that the user agent is stored.
+- `[REQUIRES USER INPUT]`: GA4 on the private page; the guessable slug; retiring the redundant people page.
+
+---

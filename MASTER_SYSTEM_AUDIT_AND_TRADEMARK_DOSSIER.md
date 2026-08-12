@@ -875,3 +875,29 @@ This changes what the endorsement figure means for a buyer. **It is a count of i
 **Unchanged. JRS: READY TO FILE. DRR: READY TO FILE.**
 
 ---
+
+---
+
+## AMENDMENT 2026-08-12T20:50Z: Endorsement correction carried through to the rendered page
+
+**The 20:15Z amendment recorded the metric correction at the API layer. It was not visible to a reader.** The dashboard still displayed all-source endorsements beside campaign arrivals and described the difference as "unrecorded".
+
+### Display corrections
+
+| Surface | Now reads |
+|---|---|
+| Today tile | **Campaign endorsements: 1**, with "8 all sources" and the split beneath it |
+| Reconciliation line | 2 campaign arrivals to 1 campaign endorsement, reconciled, with the off-campaign 7 stated explicitly |
+| All-time panel | **Endorsements, all sources**: campaign, home page and footer combined |
+
+**"Unrecorded" is removed from all reader-facing text.** No figure was changed by this amendment; only what the page says each figure is.
+
+### Process finding, applicable to every metric in this dossier
+
+**An endpoint returning a corrected value is not a corrected metric.** This defect survived a full diagnosis, a repair and a verification pass because verification ended at the JSON payload. Every metric correction recorded in this dossier should be read as complete only where the rendered surface was checked. From this amendment forward, verification of a reported figure ends at the rendered DOM.
+
+### Trademark position
+
+**Unchanged. JRS: READY TO FILE. DRR: READY TO FILE.**
+
+---
