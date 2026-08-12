@@ -99,6 +99,26 @@ export default async function handler(req){
   } catch(e){ return json({ error:'db_unreachable' }, 502); }
   if (!Array.isArray(rows)) rows = [];
 
+  // WHO COMPLETED TRAINING, BY NAME.
+  //
+  // api/complete.js writes the completion row with name:'' on purpose, keyed by
+  // email only, so a completion row alone cannot say who completed. The name
+  // lives on the enrolment row. Joining the two by email is the only way to
+  // answer "who completed training", and without it the list showed four
+  // nameless rows.
+  //
+  // Email is used as the join key and is never exposed by this join beyond the
+  // rows that already carry it.
+  const completedEmails = {}, completedOn = {};
+  for (let i = 0; i < rows.length; i++){
+    const r = rows[i] || {};
+    if (String(r.source || '') !== 'training-complete') continue;
+    const em = String(r.email || '').trim().toLowerCase();
+    if (!em) continue;
+    completedEmails[em] = true;
+    if (!completedOn[em] || String(r.created_at || '') > completedOn[em]) completedOn[em] = r.created_at || '';
+  }
+
   const out = [];
   for (let i = 0; i < rows.length; i++){
     const r = rows[i] || {};
@@ -144,6 +164,13 @@ export default async function handler(req){
       campaign: String(p.campaign || ''),
       edition: String(p.edition || ''),
       records_run: parseInt(p.records_run, 10) || 0,
+      // Set on the enrolment row, which is the row that carries the name.
+      training_completed: (src === 'training-enroll')
+        ? (completedEmails[String(r.email || '').trim().toLowerCase()] === true)
+        : (src === 'training-complete'),
+      training_completed_on: (src === 'training-enroll')
+        ? (completedOn[String(r.email || '').trim().toLowerCase()] || '')
+        : (r.created_at || ''),
       // Carried through so the owner can act without a second lookup. The quote
       // travels with its clearance flag, never on its own: a quote without its
       // clearance must not be treated as publishable.
@@ -154,6 +181,15 @@ export default async function handler(req){
       quote_cleared_for_publication: p.quote_clearance === true,
       byline_ok: p.byline_ok === true
     });
+  }
+
+  // Named training completions, so a buyer sees people rather than a count.
+  const trainingCompletedNames = [];
+  for (let i = 0; i < out.length; i++){
+    if (out[i].source === 'training-enroll' && out[i].training_completed) {
+      trainingCompletedNames.push({ name: out[i].name, organization: out[i].organization,
+                                    country: out[i].country, completed_on: out[i].training_completed_on });
+    }
   }
 
   // Roll-up so the page can show totals without recomputing them.
@@ -170,6 +206,15 @@ export default async function handler(req){
   }
 
   return json({
+    training_completed_named: trainingCompletedNames,
+    training_completed_named_count: trainingCompletedNames.length,
+    training_completion_note: 'Names come from the enrolment row joined to the completion row '
+      + 'by email, because api/complete.js writes the completion with no name by design. '
+      + '/api/enroll-stats reports a higher completion figure than the number of rows here: '
+      + 'it adds panel reviewers who enrolled via ?src=panel and completed per the reviewer '
+      + 'records without ever writing a training-complete row. Those are held in a documented '
+      + 'SHA-256 backfill map in api/enroll-stats.js, not invented here. Row-verified '
+      + 'completions are the conservative figure and are what this list shows.',
     ok: true,
     total_rows: out.length,
     unique_people: Object.keys(emails).length,
