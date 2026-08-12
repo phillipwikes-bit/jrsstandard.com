@@ -207,11 +207,6 @@
       "permanent": false
     },
     {
-      "source": "/supporters-b78f5ff2c08d",
-      "destination": "/supporters-b78f5ff2c08d.html",
-      "permanent": false
-    },
-    {
       "source": "/training",
       "destination": "/training.html",
       "permanent": false
