@@ -920,3 +920,21 @@ Unchanged this run. **JRS REQUIRES USER INPUT. DRR REQUIRES USER INPUT.**
 - `[REQUIRES USER INPUT]`: First Use Anywhere, First Use in Commerce, USPTO identification acceptability, both marks.
 
 ---
+
+### Deployment status: COMPLETED (supersedes "BLOCKED" above)
+
+The commit and push denials were intermittent and cleared on retry. Dev branch `65f3c16`; production `d19cd57`, deployed by the selective pattern with `research/` and `MASTER_` staged counts both verified at **0** before commit.
+
+**Live verification, read back from production:**
+
+| Check | Result |
+|---|---|
+| `/api/people-9dd1ecdf6f8cdfd4` | HTTP 200 · `countries: 6` · `unique_people: 11` · `total_rows: 16` |
+| `people_without_country` | `["Tanvi Pokhriyal"]` |
+| `country_source` present on every row | yes |
+| `/api/enroll-stats` after the map was moved out of it | HTTP 200, no error, `completions_by_country` US 3 · PL 1 · KR 1 · KE 1 · NG 1 |
+| Deployed `pilot-status.html` rendered in a browser | 16 rows · tiles 16/11/7/**6**/4 · ROSTER on the 6 inferred · "not on file" on Tanvi Pokhriyal · 0 console errors · no horizontal body scroll |
+
+Status upgraded from `PATCHED AND LOCALLY VERIFIED` to **`VERIFIED`** for both the country resolver and the record table. `REQUIRES USER INPUT` items are unchanged: Tanvi Pokhriyal's country, the slug-rotation decision for `pilot-status.html`, and the trademark first-use dates for both marks.
+
+---
