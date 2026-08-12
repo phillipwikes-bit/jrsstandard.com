@@ -1218,3 +1218,81 @@ Created: `research/PILOT_STATUS_AUDIT_2026-08-12.md`. Modified: `pilot-status.ht
 - Trademark items unchanged: mailing address, citizenship, USPTO identity verification.
 
 ---
+
+---
+
+## RUN 2026-08-12T20:15Z — 8 endorsements against 2 campaign arrivals: I gave the wrong explanation last time
+
+**Owner asked the same question twice.** The second time he was right to, because my first answer was incomplete and did not reconcile against the data.
+
+**MASTER_TRACKER.md read from disk first:** 74,423 bytes, last run heading `2026-08-12T19:10Z`.
+
+### What I said last time, and why it was not good enough
+
+I attributed the gap to repeat clicks, prefetching and in-app browser preloads. **Those effects are real but they are second order, and I asserted them without ever looking at the rows.** So the explanation could not be checked, which is why it did not settle anything.
+
+### What the rows actually say
+
+A row-by-row reconciliation was added to `/api/asset-stats` and read back from production. Today's eight endorsements:
+
+| Time | Campaign | src | Country |
+|---|---|---|---|
+| 05:19Z | defend | **linkedin** | US |
+| 14:04Z | rtkw | **home** | CA |
+| 14:04Z | defend | **home** | CA |
+| 14:04Z | rtkw | **footer** | CA |
+| 14:04Z | defend | **footer** | CA |
+| 14:43Z | rtkw | **home** | FR |
+| 14:43Z | rtkw | **footer** | FR |
+| 15:36Z | defend | **footer** | FR |
+
+**THE ROOT CAUSE IS THAT THE TILE COMPARED TWO DIFFERENT POPULATIONS.** Endorsement links sit in three places: the LinkedIn campaign posts, the **home page**, and the **site footer**. Only the first can ever produce a campaign-screen arrival. **Seven of the eight were tagged `src=home` or `src=footer` and never touched a campaign.** Counting them against campaign arrivals guaranteed a mismatch that reads as lost data and is not.
+
+**The one campaign-sourced endorsement reconciles exactly.** 05:19Z LinkedIn US, with campaign arrivals at 05:19Z and 05:20Z from Chrome on iOS: one person, two browser sessions, one endorsement. That is the session dedup working correctly.
+
+**A crawler arrival at 04:45Z was correctly excluded** (`counted: false`), which independently confirms the arrival-side filter works.
+
+### The 14:04Z cluster, stated as a pattern rather than a conclusion
+
+Four endorsements in one minute from one country covering **all four link placements**, both campaigns times both positions, then two more in one minute from another country. **No arrival followed any of them.** That is the signature of something fetching every link on a page, not a person choosing to endorse two different initiatives twice each inside sixty seconds.
+
+**It cannot be proven, and the reason it cannot is a second real defect:** `api/support.js` stored **no user agent** on the rows it wrote, so `isCrawler()` downstream tested an empty string and every server-written endorsement passed the filter regardless of what fetched it. **The one field that could have identified these was never kept.**
+
+### Repairs
+
+1. **`api/asset-stats.js`:** added `campaign_sourced_endorsements` and `matched_difference`, which compare like with like, plus `endorsements_by_source` and a row-by-row `endorsement_reconciliation` carrying time, campaign, referral tag, country and browser family. No personal data: hour of day, tag, ISO country and a derived browser family, never the agent string.
+2. **`api/support.js`:** the server write now stores the user agent, capped at 300 characters, so the crawler filter applies to these rows and the next occurrence is diagnosable rather than a black box.
+
+### Corrected reading, live on production
+
+| Figure | Value |
+|---|---|
+| Endorsements today, all sources | 8 |
+| By source | **linkedin 1, home 3, footer 4** |
+| **Campaign-sourced endorsements** | **1** |
+| **Campaign arrivals** | **2** |
+| **Matched difference** | **+1**, fully explained: one person, two sessions |
+
+### Note on the dedup fix from the previous run
+
+**All eight rows predate it.** The cookie deduplication went live at roughly 18:00Z; the latest row is 15:36Z. **It has not yet been exercised by real traffic and is not being reported as proven.** It would not have prevented these in any case: the four at 14:04Z span two campaigns, and the cookie is per campaign.
+
+### Files modified
+
+`api/asset-stats.js`, `api/support.js`, `MASTER_TRACKER.md`, `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md`, `research/MASTER_TRACKER.md`. Deployed to production by the selective pattern, `research/` and `MASTER_` staged counts both **0**. Verified live: `campaign_sourced_endorsements: 1`, `matched_difference: 1`, `endorsements_by_source: {linkedin: 1, home: 3, footer: 4}`.
+
+### Token / Supabase minimization
+
+**CONFIRMED TOKEN-LESS.** No token, JWT, OAuth flow or SDK added or touched.
+
+### Trademark dossiers
+
+**Unchanged. JRS: READY TO FILE. DRR: READY TO FILE.**
+
+### Outstanding
+
+- `REQUIRES EXTERNAL VERIFICATION`: whether the 14:04Z and 14:43Z clusters are automated. **Now answerable**, because the user agent is stored from this deploy forward. It was not answerable before and no claim is made about them.
+- Cookie dedup still unexercised by real traffic.
+- `[REQUIRES USER INPUT]`: the three decisions from the previous run stand (GA4 on the private page, the guessable slug, retiring the redundant people page).
+
+---

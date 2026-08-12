@@ -839,3 +839,39 @@ Two figures in the same record are unaffected and are the ones that bear weight:
 **Unchanged. JRS: READY TO FILE. DRR: READY TO FILE.**
 
 ---
+
+---
+
+## AMENDMENT 2026-08-12T20:15Z: Endorsement metric corrected to compare like with like
+
+**Supersedes the endorsement reclassification in the 18:05Z amendment**, which identified the deduplication defect correctly but attributed the whole gap to it. The dominant cause was different.
+
+### The metric was comparing two populations
+
+Endorsement links exist in **three placements**: LinkedIn campaign posts (`src=linkedin`), the home page (`src=home`), and the site footer (`src=footer`). **Only campaign-sourced clicks can produce a campaign-screen arrival.** The dashboard compared *all* endorsements against *campaign* arrivals, which cannot reconcile by construction.
+
+Measured on 2026-08-12:
+
+| Source | Endorsements | Can produce a campaign arrival |
+|---|---|---|
+| `linkedin` | **1** | yes |
+| `home` | 3 | no |
+| `footer` | 4 | no |
+
+**Corrected comparison: 1 campaign-sourced endorsement against 2 campaign arrivals**, the +1 being one reader in two browser sessions. **The metric now reconciles.**
+
+### Diligence significance
+
+This changes what the endorsement figure means for a buyer. **It is a count of interest across the whole site, not a campaign-response rate**, and it must not be presented as evidence of campaign performance. Campaign performance today was **one** endorsement from one reader.
+
+`endorsements_by_source` is now published on `/api/asset-stats` so the split is readable rather than assumed.
+
+### Second defect: the rows were not diagnosable
+
+`api/support.js` wrote endorsement rows with **no user agent**, so the crawler filter in `/api/asset-stats` tested an empty string and every server-written row passed regardless of origin. Seven rows on 2026-08-12 therefore cannot be classified as human or automated after the fact. **The user agent is stored from this deploy forward**, capped at 300 characters, so the same question is answerable next time. **No retroactive claim is made about those seven rows.**
+
+### Trademark position
+
+**Unchanged. JRS: READY TO FILE. DRR: READY TO FILE.**
+
+---
