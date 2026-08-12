@@ -1,5 +1,9 @@
 export const config = { runtime: 'edge' };
 
+// Country resolution is shared with api/enroll-stats.js so the two endpoints can
+// never report a different country for the same person.
+import { resolveCountries } from './_country-backfill.js';
+
 // OWNER-ONLY named list of every person in the private contact table.
 //
 // Secured by this opaque, unlinked, noindex URL, so it needs NO token. Same
@@ -121,6 +125,11 @@ export default async function handler(req){
     if (!completedOn[em] || String(r.created_at || '') > completedOn[em]) completedOn[em] = r.created_at || '';
   }
 
+  // COUNTRY FOR EVERY PERSON, NOT JUST THE ROWS THAT HAPPENED TO CAPTURE ONE.
+  // Resolved per person across all their rows, then from the documented
+  // reviewer-records backfill, then reported as not on file. Never invented.
+  const geo = await resolveCountries(rows);
+
   const out = [];
   for (let i = 0; i < rows.length; i++){
     const r = rows[i] || {};
@@ -160,7 +169,14 @@ export default async function handler(req){
       email: (r.email == null ? '' : String(r.email)),
       organization: (r.organization == null ? '' : String(r.organization)),
       title: String(p.title || p.display_title || ''),
-      country: String(p.country || '').toUpperCase(),
+      country: String(p.country || '').toUpperCase()
+               || geo.code[String(r.email || '').trim().toLowerCase()] || '',
+      // 'captured'        recorded at submission on one of this person's rows
+      // 'reviewer records' read from the dated roster, row predates geo capture
+      // 'not on file'      established nowhere in the repository
+      country_source: String(p.country || '')
+        ? 'captured'
+        : (geo.source[String(r.email || '').trim().toLowerCase()] || 'not on file'),
       activity: LABEL[src] || src,
       source: src,
       detail: detail,
@@ -199,17 +215,20 @@ export default async function handler(req){
   }
 
   // Roll-up so the page can show totals without recomputing them.
-  const emails = {}, orgs = {}, countries = {};
+  const emails = {}, orgs = {}, countries = {}, noCountry = {};
   let publicOk = 0, transferOk = 0, recordsRun = 0;
   for (let i = 0; i < out.length; i++){
     const e = out[i];
     if (e.email) emails[e.email.toLowerCase()] = 1;
     if (e.organization) orgs[e.organization.toLowerCase()] = 1;
     if (e.country) countries[e.country] = 1;
+    else if (e.name) noCountry[e.name] = 1;
     if (e.consent_public) publicOk++;
     if (e.consent_transfer) transferOk++;
     recordsRun += e.records_run;
   }
+  // Named, so an unresolved country is a work item rather than a silent blank.
+  const peopleNoCountry = Object.keys(noCountry).sort();
 
   return json({
     training_completed_named: trainingCompletedNames,
@@ -219,8 +238,15 @@ export default async function handler(req){
       + '/api/enroll-stats reports a higher completion figure than the number of rows here: '
       + 'it adds panel reviewers who enrolled via ?src=panel and completed per the reviewer '
       + 'records without ever writing a training-complete row. Those are held in a documented '
-      + 'SHA-256 backfill map in api/enroll-stats.js, not invented here. Row-verified '
+      + 'SHA-256 backfill map in api/_country-backfill.js, not invented here. Row-verified '
       + 'completions are the conservative figure and are what this list shows.',
+    country_note: 'Every person carries a country and country_source. "captured" means it was '
+      + 'recorded at submission on one of that person\'s rows. "reviewer records" means the row '
+      + 'predates geo capture on 2026-07-17 and the country was read from '
+      + 'research/Expert_Roster_All_Studies_2026-08-06.csv, cited per entry in '
+      + 'api/_country-backfill.js. "not on file" means it is established nowhere in the '
+      + 'repository and REQUIRES USER INPUT; no country is ever inferred to fill one of those.',
+    people_without_country: peopleNoCountry,
     ok: true,
     total_rows: out.length,
     unique_people: Object.keys(emails).length,

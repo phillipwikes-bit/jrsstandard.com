@@ -10,34 +10,13 @@ export const config = { runtime: 'edge' };
 
 const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 
-// Known completers from the reviewer records, keyed by SHA-256 of the lowercased
-// enrollment/completion email so no raw address is stored in source. Values are
-// ISO 3166-1 alpha-2. Two uses: (1) backfill the country for completions that
-// predate geo capture (2026-07-17) and so have no country on the row; (2) count
-// reviewers who completed per our records but enrolled via ?src=panel and never
-// wrote a training-complete row. Going forward /api/complete stores the country
-// automatically. Prune an entry once its completion row carries a real country.
-const COMPLETION_COUNTRY_BACKFILL = {
-  // Nicholas Evans (completed 2026-07-14, has training-complete row)
-  '7f86332345224f64ba2908c402bc289d492903d7eac9f794d7e3983cfabbebc4': 'US',
-  // Andrey Ekhmenin (completed 2026-07-17, has training-complete row)
-  '77d8d7d39070b21e741964745127596924a42140c10cc967faecda9fe7a977cc': 'PL',
-  // Jake McDonough (panel completer, enrolled ?src=panel, no complete row)
-  'f148f56cc11fdee6017ec1a103be7edaa3aed0a9855de3bfafea609b94c054f9': 'US',
-  // Olabanji Lawal (panel completer, enrolled ?src=panel, no complete row)
-  'c883d56fa7ef4d012574bdc1bbfcd372c54f4c111985070e606ce827be65411b': 'NG',
-  // Boris Khazin (panel completer, enrolled ?src=panel, no complete row)
-  '7fec46f29356da7d765afb4cd1f47776e24b0d237ee3e6801d620f3cbbb993ee': 'US',
-  // SungSoo In (panel completer, enrolled 2026-07-19, no complete row)
-  'deb4d4bf1f481e75ac94bc2433e34fc9822b8529a85cd0c0f44d05b59b4d5673': 'KR'
-};
+// Country backfill for rows that predate geo capture (2026-07-17) lives in
+// api/_country-backfill.js, shared with api/people-9dd1ecdf6f8cdfd4.js so the
+// two endpoints cannot report different countries for the same person.
+import { COMPLETION_COUNTRY_BACKFILL, sha256hex } from './_country-backfill.js';
 
 function json(o, s){ return new Response(JSON.stringify(o), { status: s||200, headers: { 'Content-Type':'application/json', 'Access-Control-Allow-Origin':'*', 'Cache-Control':'no-store' } }); }
 
-async function sha256hex(str){
-  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
-  return Array.from(new Uint8Array(buf)).map(function(b){ return b.toString(16).padStart(2,'0'); }).join('');
-}
 
 export default async function handler(req){
   if (req.method === 'OPTIONS') return new Response(null, { status:204, headers:{ 'Access-Control-Allow-Origin':'*', 'Access-Control-Allow-Methods':'GET, OPTIONS', 'Access-Control-Allow-Headers':'Content-Type' } });

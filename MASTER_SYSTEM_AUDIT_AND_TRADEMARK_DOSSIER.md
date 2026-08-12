@@ -672,3 +672,43 @@ The transfer column is the operative one for an acquirer: it is the record of wh
 **Unchanged by this run. JRS: REQUIRES USER INPUT. DRR: REQUIRES USER INPUT.** Outstanding across both marks: First Use Anywhere date, First Use in Commerce date, and confirmation that the drafted USPTO identifications are acceptable as written.
 
 ---
+
+---
+
+## AMENDMENT 2026-08-12T16:20Z — Geographic coverage of the reviewer base (asset evidence)
+
+**Bearing on the asset:** a buyer asks how far the programme reached. Until this run the record answered "3 countries" because 13 of 16 rows had a blank country field, not because the reach was three countries.
+
+### Corrected geographic coverage
+
+| Country | People | Basis |
+|---|---|---|
+| US | 5 | 2 captured at submission, 3 reviewer roster |
+| Kenya | 1 | captured |
+| South Korea | 1 | captured |
+| Canada | 1 | reviewer roster (RR-128) |
+| Poland | 1 | reviewer roster (V-AI-11) |
+| Nigeria | 1 | reviewer roster (V-AI-10) |
+| **Not established** | 1 | Tanvi Pokhriyal — `[REQUIRES USER INPUT]` |
+
+**6 countries across 4 continents, 10 of 11 people resolved.** Previously reported as 3.
+
+### Evidentiary standard applied
+
+Each inferred country cites a row in `research/Expert_Roster_All_Studies_2026-08-06.csv` by reviewer code. The endpoint returns `country_source` on every record, so a diligence reader can separate the 4 countries captured by instrument from the 6 people resolved from study records, without taking either on trust. `people_without_country` names the unresolved person rather than leaving a blank that reads like a capture failure.
+
+**No country is derived from IP geolocation, name, organization or timezone.** The count is defensible because every element of it is traceable to a dated artifact.
+
+### Anti-inflation statement
+
+The 6-country figure counts **people**, not rows and not sessions. Two rows for the same person in the same country count once. Suppressed and inactive cohorts contribute nothing to it.
+
+### Data-protection change recorded, not glossed
+
+The full roster now renders on `pilot-status.html` at the owner's explicit instruction. That page carries `noindex,nofollow` and zero public inbound references, but its slug is guessable. Names, organizations and consent flags for people who did **not** consent to public listing are therefore readable by anyone reaching that address, and the opaque endpoint URL is now visible in its source. Email addresses were withheld from that page and remain on the owner sheet only. **Remedy: rename the page to an opaque slug.** Recorded here because it changes the disclosure posture described in earlier amendments.
+
+### Trademark position
+
+**Unchanged. JRS: REQUIRES USER INPUT. DRR: REQUIRES USER INPUT.** Outstanding for both marks: First Use Anywhere, First Use in Commerce, and confirmation the drafted USPTO identifications are acceptable as written.
+
+---

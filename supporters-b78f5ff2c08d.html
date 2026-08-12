@@ -79,6 +79,7 @@ code{font-family:'JetBrains Mono',monospace;color:var(--accent);font-size:11px}
   <div class="foot">&#169; 2026 Phillip Wikes &middot; JRS&#8482; &middot; confidential</div>
 </div>
 <script>
+var LASTD=null;  // last endpoint payload, for the roll-ups it already computed
 var ALL=[];      // every record, for the full "Everyone on the record" table
 function esc(t){var d=document.createElement('div');d.textContent=(t==null?'':String(t));return d.innerHTML;}
 function show(id,on){ var e=document.getElementById(id); if(e) e.style.display=on?'block':'none'; }
@@ -89,7 +90,7 @@ function render(d){
   // table filters it rather than expecting its own array. It previously read
   // d.contacts, which this endpoint does not return, so the table came up empty.
   var all=(d && (d.people||d.rows||d.contacts))||[];
-  ALL=all;
+  ALL=all; LASTD=d;
   var c=all.filter(function(r){ return r.source==='support'||r.source==='support-register'; });
   list.innerHTML='';
   if(!c.length){
@@ -151,7 +152,11 @@ function drawEveryone(){
       +'<td class="nm">'+esc(p.name||'(not given)')+'</td>'
       +'<td>'+esc(p.organization)+'</td>'
       +'<td>'+esc(p.title)+'</td>'
-      +'<td>'+esc(p.country)+'</td>'
+      +'<td style="white-space:nowrap">'+(p.country
+          ? (esc(p.country) + (p.country_source==='reviewer records'
+              ? '<span title="Row predates geo capture on 2026-07-17; read from the dated reviewer roster" style="font-family:\'JetBrains Mono\',monospace;font-size:7.5px;letter-spacing:.1em;color:var(--accent-dim);margin-left:5px">ROSTER</span>'
+              : ''))
+          : '<span style="color:var(--muted-soft);font-size:11px">not on file</span>')+'</td>'
       +'<td><span class="pill">'+esc(p.activity||p.source)+'</span></td>'
       +'<td>'+esc(p.detail)+'</td>'
       +'<td>'+esc(p.email)+'</td>'
@@ -208,7 +213,20 @@ function renderEveryone(){
    + ['Date','Name','Organization','Title','Country','What they did','Detail','Email','Completed','Public','Transfer']
        .map(function(x){ return '<th>'+x+'</th>'; }).join('')
    + '</tr></thead><tbody id="e-rows"></tbody></table></div>'
-   + '<div class="note" style="margin-top:8px">"Completed" carries the date the person finished the six training modules, joined to their enrolment by email. "Public" means they agreed to be listed publicly by name. "Transfer" means their details may pass to a successor if the project is acquired. Country is captured at submission; rows recorded before country capture was added on 2026-07-17 show blank.</div>';
+   + '<div class="note" style="margin-top:8px" id="e-note"></div>';
+  var note=document.getElementById('e-note');
+  if(note){
+    var miss=(LASTD && LASTD.people_without_country)||[];
+    var npeople=(LASTD && LASTD.unique_people)||Object.keys(uniq).length;
+    note.innerHTML='"Completed" carries the date the person finished the six training modules, joined to their '
+      + 'enrolment by email. "Public" means they agreed to be listed publicly by name. "Transfer" means their '
+      + 'details may pass to a successor if the project is acquired. '
+      + 'Country is resolved for <b>'+(npeople-miss.length)+'</b> of <b>'+npeople+'</b> people across <b>'
+      + Object.keys(ctry).length+'</b> countries: captured at submission where the row carries one, otherwise read '
+      + 'from research/Expert_Roster_All_Studies_2026-08-06.csv and marked <b>ROSTER</b>, because rows written before '
+      + 'geo capture on 2026-07-17 carry none.'
+      + (miss.length?(' Not on file anywhere in the record: <b>'+miss.map(esc).join(', ')+'</b>. Nothing is invented to fill that.'):'');
+  }
   var q=document.getElementById('e-q'); if(q) q.addEventListener('input', drawEveryone);
   var a=document.getElementById('e-act'); if(a) a.addEventListener('change', drawEveryone);
   var cc=document.getElementById('e-consent'); if(cc) cc.addEventListener('change', drawEveryone);
