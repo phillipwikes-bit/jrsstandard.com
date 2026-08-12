@@ -173,6 +173,24 @@ tr.today td{background:rgba(93,191,130,.07)}
   </div>
   <div class="note" id="gt-note2">&nbsp;</div>
 
+  <h1 style="font-size:22px;margin-top:34px">Completed Evaluations</h1>
+  <p class="sub">How many people completed the reviewer evaluation, who they are where they chose to be named, and what the results are collected for.</p>
+  <div class="cards" style="grid-template-columns:repeat(4,1fr)">
+    <div class="card"><div class="cv hot" id="ce-submitted">&middot;</div><div class="ck">Evaluations completed</div></div>
+    <div class="card"><div class="cv" id="ce-all9">&middot;</div><div class="ck">Answered all nine</div></div>
+    <div class="card"><div class="cv" id="ce-named">&middot;</div><div class="ck">Chose to be named</div></div>
+    <div class="card"><div class="cv" id="ce-anon">&middot;</div><div class="ck">Chose to stay anonymous</div></div>
+  </div>
+  <div class="chart">
+    <h2>Who completed one</h2>
+    <div id="ce-names">Loading&hellip;</div>
+    <div class="note" style="margin-top:8px" id="ce-limit"></div>
+  </div>
+  <div class="chart">
+    <h2>What the results are collected for</h2>
+    <div id="ce-purpose" style="font-size:13px;color:var(--muted);line-height:1.65">Loading&hellip;</div>
+  </div>
+
   <h1 style="font-size:22px;margin-top:34px">Reviewer Evaluation Funnel</h1>
   <p class="sub">The anonymized baseline on how records are reviewed inside working organizations. Four stages: how many opened the evaluation, how many submitted, how many answered all nine questions, and how many left contact details that can transfer with the asset. Answers and contact details are stored in different tables with no shared identifier, so these counts cannot be joined to say which respondent gave which answers.</p>
   <div class="cards">
@@ -556,6 +574,38 @@ function renderGateSplit(s){
     +'</div>';
   el.innerHTML=html;
 }
+function renderCompletedEvaluations(ce){
+  function setv(id,v){ var e=document.getElementById(id); if(e) e.textContent=(v===undefined||v===null)?'0':v; }
+  var box=document.getElementById('ce-names'), lim=document.getElementById('ce-limit'), pur=document.getElementById('ce-purpose');
+  if(!ce){ if(box) box.innerHTML='<div style="color:var(--muted-soft);font-size:12px">Could not load. Tap Refresh.</div>'; return; }
+  setv('ce-submitted', ce.submitted); setv('ce-all9', ce.answered_all_nine);
+  setv('ce-named', ce.named_publicly); setv('ce-anon', ce.chose_to_stay_anonymous);
+  var names=ce.names||[];
+  if(!ce.submitted){
+    box.innerHTML='<div style="color:var(--muted-soft);font-size:12.5px;line-height:1.6">'
+      +'No evaluation has been completed yet, so there is nobody to list. This is a true zero: '
+      +'the instrument is live, the write path was tested against production and confirmed working, '
+      +'and it has not yet been sent to anyone.</div>';
+  } else if(!names.length){
+    box.innerHTML='<div style="color:var(--muted-soft);font-size:12.5px;line-height:1.6"><b style="color:var(--text)">'
+      +ce.submitted+'</b> completed, and none chose to be listed publicly. Everyone who completes is '
+      +'asked separately whether to be named, and the default is no.</div>';
+  } else {
+    var h='';
+    names.forEach(function(p){
+      h+='<div style="border-left:2px solid var(--accent-dim);padding:8px 0 8px 12px;margin-bottom:9px">'
+        +'<div style="font-size:13.5px;color:var(--text)">'+esc(p.name)+'</div>'
+        +(p.title?('<div style="font-size:12px;color:var(--muted-soft);line-height:1.5">'+esc(p.title)+'</div>'):'')
+        +(p.country?('<div style="font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.12em;color:var(--muted-soft);margin-top:3px">'+esc(p.country)+'</div>'):'')
+        +'</div>';
+    });
+    h+='<div style="font-size:11.5px;color:var(--muted-soft);margin-top:6px"><b style="color:var(--text)">'
+      +names.length+'</b> of <b style="color:var(--text)">'+ce.submitted+'</b> chose to be listed. The rest completed anonymously and are not shown.</div>';
+    box.innerHTML=h;
+  }
+  if(lim) lim.textContent=ce.identity_limit||'';
+  if(pur) pur.textContent=ce.purpose||'';
+}
 function renderSuppressed(list){
   var el=document.getElementById('suppressed');
   if(!el) return;
@@ -626,9 +676,10 @@ function loadToday(){
           +' recorded'+(diff?(', <b style="color:var(--review-text)">'+diff+' unrecorded</b>'):', reconciled')
           +'. '+esc(rec.explanation);
       }
+      renderCompletedEvaluations(d.completed_evaluations);
       renderSuppressed(d.suppressed_cohorts);
     })
-    .catch(function(){ var n=document.getElementById('td-note'); if(n) n.textContent='Could not load today. Tap Refresh.'; var rr=document.getElementById('td-recon'); if(rr) rr.textContent='Could not load. Tap Refresh.'; var sp=document.getElementById('suppressed'); if(sp) sp.innerHTML='<div style="color:var(--muted-soft);font-size:12px">Could not load. Tap Refresh.</div>'; });
+    .catch(function(){ var n=document.getElementById('td-note'); if(n) n.textContent='Could not load today. Tap Refresh.'; var rr=document.getElementById('td-recon'); if(rr) rr.textContent='Could not load. Tap Refresh.'; var cn=document.getElementById('ce-names'); if(cn) cn.innerHTML='<div style="color:var(--muted-soft);font-size:12px">Could not load. Tap Refresh.</div>'; var sp=document.getElementById('suppressed'); if(sp) sp.innerHTML='<div style="color:var(--muted-soft);font-size:12px">Could not load. Tap Refresh.</div>'; });
 }
 function loadEvalFunnel(){
   return fetch('/api/asset-stats')
