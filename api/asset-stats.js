@@ -229,6 +229,27 @@ export default async function handler(req){
     if (/Safari/i.test(ua))                          return 'Safari';
     return 'other';
   }
+  // Endorsements that actually came from a campaign link. Anything tagged with
+  // an on-site placement came from the home page or the footer, not a campaign.
+  const ON_SITE_SRC = { home: 1, footer: 1, nav: 1, none: 1, '': 1 };
+  function todayEndorsementRows(){
+    return events.filter(function(e){
+      return e.source === 'support' && e.type === 'endorse' && isToday(e) && !isCrawler(e.payload);
+    });
+  }
+  function todayCampaignEndorsements(){
+    return todayEndorsementRows().filter(function(e){
+      return !ON_SITE_SRC[String((e.payload || {}).src || 'none')];
+    }).length;
+  }
+  function todayEndorsementsBySource(){
+    const by = {};
+    todayEndorsementRows().forEach(function(e){
+      const s = String((e.payload || {}).src || 'none');
+      by[s] = (by[s] || 0) + 1;
+    });
+    return by;
+  }
   // Today's rows on both sides of the gap, ordered by time.
   function todayReconciliation(){
     function rows(src, type){
@@ -508,26 +529,36 @@ export default async function handler(req){
       arrivals_vs_endorsements: {
         campaign_arrivals: todayCampaignArrivals(),
         endorsements_recorded: todayCount('support', 'endorse'),
+        // COMPARING LIKE WITH LIKE. The two figures above are different
+        // populations and lining them up was the defect, not the gap between
+        // them. Endorsement links also sit on the home page and in the site
+        // footer, tagged src=home and src=footer. Those readers never came from
+        // a campaign and were never going to appear as a campaign arrival, so
+        // counting them against campaign arrivals guarantees a mismatch that
+        // reads as lost data. Only campaign-sourced endorsements belong here.
+        campaign_sourced_endorsements: todayCampaignEndorsements(),
+        matched_difference: todayCampaignArrivals() - todayCampaignEndorsements(),
+        endorsements_by_source: todayEndorsementsBySource(),
         difference: todayCampaignArrivals() - todayCount('support', 'endorse'),
-        explanation: 'THESE TWO NUMBERS DO NOT COUNT THE SAME THING, AND MORE '
-                   + 'ENDORSEMENTS THAN ARRIVALS IS NOT LOST CLICKS. An endorsement '
-                   + 'counts a HIT on the campaign link. An arrival counts a BROWSER '
-                   + 'SESSION that actually rendered the screen, deduped per session in '
-                   + 'sessionStorage, and it needs JavaScript to run. So one person who '
-                   + 'clicks the link, goes back and clicks again, or whose browser '
-                   + 'prefetches the address bar, produced several endorsements and one '
-                   + 'arrival. Anything that fetches the URL without rendering the page, '
-                   + 'such as an in-app browser preload, produced an endorsement and no '
-                   + 'arrival at all, because the server write happens before the '
-                   + 'redirect is even issued. On 2026-08-12 this read 7 against 2 for '
-                   + 'exactly that reason. FIXED THE SAME DAY: /api/support now writes at '
-                   + 'most one endorsement per browser per campaign, marked by a '
-                   + 'first-party cookie holding the single character 1 and no '
-                   + 'identifier of any kind, which is the same rule the screen fallback '
-                   + 'already used. Rows written BEFORE that fix are undeduped link hits '
-                   + 'and cannot be deduplicated retroactively, because no per-visitor '
-                   + 'field was ever stored, deliberately. Endorsements dated on or after '
-                   + '2026-08-13 count distinct browsers; earlier ones count hits.',
+        explanation: 'THE ORIGINAL COMPARISON WAS BETWEEN TWO DIFFERENT '
+                   + 'POPULATIONS, WHICH IS WHY IT NEVER RECONCILED. Endorsement '
+                   + 'links sit in three places: the LinkedIn campaign posts, the home '
+                   + 'page, and the site footer. Only the first produces a campaign '
+                   + 'arrival. On 2026-08-12, 7 of 8 endorsements were tagged src=home '
+                   + 'or src=footer and never touched a campaign at all, so counting '
+                   + 'them against campaign arrivals guaranteed a gap that looked like '
+                   + 'lost data and was not. Use campaign_sourced_endorsements and '
+                   + 'matched_difference, which compare like with like. Two smaller '
+                   + 'effects also apply to any residual gap: an endorsement is written '
+                   + 'server-side the instant the link is fetched, while an arrival '
+                   + 'needs the destination page to render and run JavaScript and is '
+                   + 'deduplicated per browser session; and before 2026-08-13 the '
+                   + 'server write had no per-visitor deduplication, so a reload or a '
+                   + 'prefetch each wrote a row. From 2026-08-13 it writes at most one '
+                   + 'per browser per campaign, marked by a first-party cookie holding '
+                   + 'the single character 1 and no identifier of any kind. Rows written '
+                   + 'earlier cannot be deduplicated retroactively because no '
+                   + 'per-visitor field was ever stored, deliberately.',
         counting_basis: {
           endorsements_recorded: 'link hits before 2026-08-13, distinct browsers per campaign from 2026-08-13',
           campaign_arrivals: 'browser sessions that rendered the screen and ran JavaScript'
