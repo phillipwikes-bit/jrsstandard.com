@@ -7,8 +7,8 @@
 | | |
 |---|---|
 | **Created** | 2026-08-13 |
-| **Last revised** | 2026-08-13 (rev 3) |
-| **Revisions** | 3 |
+| **Last revised** | 2026-08-13 (rev 4) |
+| **Revisions** | 4 |
 | **Current stage** | **Zero buyer conversations held, because I advised waiting. Gate withdrawn 2026-08-13** |
 | **Sale probability, as-is** | **5 to 10%** over ~12 months (owner's own anchor, `Path_to_Sale_Action_Plan.md`, unchanged) |
 
@@ -28,9 +28,9 @@ An earlier statement of mine said "the sale itself has never been attempted" and
 
 | Asset | State | Ever shown to a buyer |
 |---|---|---|
-| `acquisition-9f3c2a7d4b.html` prospectus | **LIVE**, HTTP 200, 20,095 bytes | **No record** |
-| `vp-7c1f9a4e8d2b6035.html` | **LIVE**, HTTP 200 | **No record** |
-| `JRS_Validation_Report.md` / `.pdf` | Written | **No record** |
+| `acquisition-9f3c2a7d4b.html` prospectus | **LIVE**, HTTP 200. **Rev 4: anchors 2 to 8.** Now links the guides, training, vendor preview, OpenAPI, Standard PDF and simulations. Panel figures pull live from `/api/panel-stats` | **No record** |
+| `vp-7c1f9a4e8d2b6035.html` | **LIVE**, HTTP 200. **Rev 4: now cross-links the prospectus** | **No record** |
+| `JRS_Validation_Report.md` / `.pdf` | Written. **Confidential: its own statement says not for public distribution. Released under NDA only, named on the prospectus but not linked** | **No record** |
 | `IP_Sale_Playbook.md` | Written | Internal |
 | `IP_Asset_Transfer_Map.md` | Written | Internal |
 | `Path_to_Sale_Action_Plan.md` | Written, sound | Internal |
@@ -150,6 +150,7 @@ GRC / compliance software vendors · E-discovery and legal-tech · HR-tech and p
 
 | # | Date | Change |
 |---|---|---|
+| 4 | 2026-08-13 | Buyer pages repaired. Prospectus was a dead end at 2 anchors, now 8, all verified 200. Vendor preview cross-linked. Validation Report deliberately NOT linked, per its own confidentiality statement and guardrail 1. Two of my own audit findings withdrawn as wrong: the page already pulled panel figures live and already rendered 48. A draft link to `mccr-simulator.html` failed the on-disk check before deploy; that file does not exist and was removed from the CLAUDE.md platform map. |
 | 3 | 2026-08-13 | Published the dossier as a web section at `programme-status-9872fb93cc94.html#sale-dossier`. Placed on the existing private page rather than a new one, per the CLAUDE.md rule that there is one private owner page. Verified live: all seven blocks present, 43 headings, 0 level skips, 0 console errors. |
 | 2 | 2026-08-13 | **Withdrew the three-gate rule.** Owner stated he did not approach buyers because I told him it was too early. Verified: `Path_to_Sale_Action_Plan.md` set three prerequisites before buyer outreach, and my 2026-08-13 trademark hold made gate 2 unreachable. Reclassified from owner execution gap to my advice error. No gate now stands between him and a buyer conversation. |
 | 1 | 2026-08-13 | Created. Corrected my own understatement of prior sale work. Inventoried 10 sale artifacts, all finished, none with a recorded recipient. Recorded 1 of 3 Stage 2 gates met and Stage 1 not started. Federal training channel recorded CLOSED on owner's determination. |

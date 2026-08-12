@@ -12,8 +12,8 @@
 | **Broken links** | **0 of 36.** Every anchor, asset and fragment resolves |
 | **Broken fragments** | **0 of 3** |
 | **Structural gap** | **SEVERE.** The prospectus has **2 anchors in the whole document** |
-| **Claim drift** | **1 stale figure** on the live prospectus |
-| **My own error** | **1 figure I have been under-reporting all session** |
+| **Claim drift** | **NONE. My finding was wrong, see section 8** |
+| **My own errors** | **2, both corrected: an under-reported panel figure, and a claim-drift finding that was not real** |
 
 **Link health is perfect and it is not the problem. The prospectus is a dead end and one of its numbers is out of date.**
 
@@ -21,14 +21,14 @@
 
 ## 2. Link matrix
 
-### `acquisition-9f3c2a7d4b.html` (20,074 bytes) — **2 anchors**
+### `acquisition-9f3c2a7d4b.html` (20,074 bytes): **2 anchors**
 
 | Link | Status | Issue |
 |---|---|---|
 | `mailto:info@jrsstandard.com` | valid | The only forward path in the entire prospectus |
 | `privacy.html` | **200** | none |
 
-### `vp-7c1f9a4e8d2b6035.html` (39,035 bytes) — **3 anchors**
+### `vp-7c1f9a4e8d2b6035.html` (39,035 bytes): **3 anchors**
 
 | Link | Status | Issue |
 |---|---|---|
@@ -36,7 +36,7 @@
 | `openapi-review-engine.json` | **200** | none |
 | `mailto:...?subject=JRS%20Integration%20Fit` | valid | none |
 
-### `enterprise.html` (63,297 bytes) — **31 anchors**
+### `enterprise.html` (63,297 bytes): **31 anchors**
 
 | Destination | Count | Status |
 |---|---|---|
@@ -128,3 +128,31 @@ Live also reports **57 reviewers** who have graded at least one record, a figure
 Live pages fetched from production. 36 anchors extracted by parsing, not by reading. Every unique destination tested with `curl -IL`, following redirects and recording the effective URL. All 3 fragments checked against the DOM ids of their target pages. Panel figures reconciled against live `/api/panel-stats`. Prospectus claims extracted by regex over the rendered text.
 
 `REQUIRES USER INPUT`: whether to apply fixes 1 to 5, and whether the prospectus should link to the private dashboard for a buyer under NDA. **No change has been made to any buyer-facing page in this pass.**
+
+
+---
+
+## 8. CORRECTION TO THIS AUDIT, same day
+
+**Two of my five findings were wrong, and both were the same mistake: I read the HTML source instead of the rendered page.**
+
+**Finding 4, "claim drift, 46 vs 48": WRONG.** The prospectus already pulls panel figures live from `/api/panel-stats` through a `data-panel` mechanism built before this audit. **The rendered page has always shown 48.** The `46` in the markup is the no-fetch fallback and is never displayed when the endpoint responds. Confirmed by rendering the page in a browser against the live endpoint: `registered 48, completers 36`. The fallback was updated to 48 anyway, so a failed fetch shows a current number.
+
+**Finding 5, "pull panel figures live": ALREADY BUILT.** Withdrawn rather than implemented a second time.
+
+**This is the third time in this repository that checking source rather than rendered output has produced a false finding.** The rule already recorded, verification ends at the rendered DOM, applies to audits of my own as much as to metric repairs.
+
+### What WAS applied
+
+| Fix | Status |
+|---|---|
+| Section 11 "See It For Yourself" on the prospectus | **APPLIED.** Anchors **2 to 8** |
+| Links: Field Guides, training, vendor preview, OpenAPI, Standard PDF, simulations | **APPLIED**, all 200 |
+| Validation Report link | **DELIBERATELY NOT APPLIED.** Its own confidentiality statement reads "not for public distribution" and guardrail 1 requires an NDA before specifics. The section names it and offers it under NDA |
+| Cross-link vendor preview to prospectus | **APPLIED** |
+| Fallback figure 46 to 48 | **APPLIED** |
+| Live panel figures | **ALREADY EXISTED**, withdrawn |
+
+### A defect caught before it shipped
+
+A draft link to `mccr-simulator.html` **failed the on-disk check**. That file does not exist and returns **404**, yet it was listed in the `CLAUDE.md` platform map. The link was changed to `simulations.html` and **the stale entry was removed from `CLAUDE.md`**. I nearly shipped the exact defect this audit exists to find.

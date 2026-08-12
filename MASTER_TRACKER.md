@@ -1656,3 +1656,63 @@ https://jrsstandard.com/programme-status-9872fb93cc94.html
 **JRS: READY TO FILE, Class 042. DRR: READY TO FILE, Class 042.** $700. Blocked only on USPTO identity verification.
 
 ---
+
+---
+
+## RUN 2026-08-13T02:10Z — Buyer pages repaired. Two of my own audit findings withdrawn.
+
+**Request:** apply all five fixes from the buyer-page link audit.
+
+**MASTER_TRACKER.md read from disk first.** Code first; this document written after every edit was deployed and verified live.
+
+### Applied
+
+**The prospectus was a dead end: 2 anchors in the entire document, a privacy notice and an email address.** New section 11, "See It For Yourself", takes it to **8 anchors**, every one verified **200** on production: Investigator Field Guides, training and certification, vendor integration preview, OpenAPI spec, JRS Standard PDF through the counting endpoint, and the simulation library.
+
+**Cross-link added** from the vendor preview back to the prospectus. The two buyer pages did not reference each other.
+
+### Deliberately NOT applied, and why
+
+**The Validation Report is not linked.** Its own confidentiality statement reads *"This document is confidential and is prepared for named recipients under diligence. It is not for public distribution."* Playbook guardrail 1 requires an NDA before specifics. **Linking it would have violated both.** The prospectus now names it, describes what it contains, and says it is released under NDA on request. That is the correct handling and it was checked before writing the link, not after.
+
+### TWO OF MY FIVE AUDIT FINDINGS WERE WRONG
+
+| Finding | Verdict |
+|---|---|
+| "Claim drift: 46 registered vs 48 live" | **WRONG.** The page already pulls panel figures from `/api/panel-stats`. **The rendered page has always shown 48.** The `46` is the no-fetch fallback and is never displayed when the endpoint answers |
+| "Fix: pull panel figures live" | **ALREADY BUILT.** Withdrawn rather than implemented twice |
+
+Confirmed by rendering the page in a browser against the live endpoint: **registered 48, completers 36**. The fallback was corrected to 48 anyway so a failed fetch shows a current number.
+
+**Cause: I read the HTML source instead of the rendered page. That is the third time in this repository the same shortcut has produced a false finding.** The rule already recorded, verification ends at the rendered DOM, applies to my own audits as much as to metric repairs.
+
+### A defect caught before it shipped
+
+A draft link to **`mccr-simulator.html` failed the on-disk check**. The file does not exist and returns **404**, yet it was listed in the `CLAUDE.md` platform map. Link changed to `simulations.html`; **the stale entry removed from `CLAUDE.md`**. I nearly shipped the exact defect this audit exists to find.
+
+### §0.2 verification
+
+`node --check`: **4 of 4 inline blocks pass** across both pages. Static grep: every new link confirmed present on disk **before** deploy. Live after deploy: **8 of 8 prospectus links resolve**, cross-link present, **0 references to the confidential report on either buyer page**, fallback figure renders 48.
+
+### Token / Supabase minimization
+
+**CONFIRMED TOKEN-LESS.** No endpoint touched. Markup and links only.
+
+### Counter audit and cohorts
+
+Unchanged this run and previously verified. Four suppressed cohorts intact with anti-inflation language. Baseline reconciliation unchanged: 84.2% and the 20-case figure appear nowhere in the repository, measured AC1 is 0.739, drift under 15% is a target against measured reproducibility of 86.7%.
+
+### Trademark dossiers
+
+**JRS: READY TO FILE, Class 042. DRR: READY TO FILE, Class 042.** $700. On the owner's trigger rule, not a schedule.
+
+### Files modified
+
+`acquisition-9f3c2a7d4b.html`, `vp-7c1f9a4e8d2b6035.html`, `CLAUDE.md`, `research/Buyer_Pages_Link_Audit_2026-08-13.md`, `research/IP_SALE_TRACKER.md` (rev 4), `research/MASTER_TRACKER.md`.
+
+### Outstanding
+
+- `[REQUIRES USER INPUT]`: whether the prospectus should link the private dashboard for a buyer under NDA. Not done unilaterally.
+- Buyer outreach remains the only untried channel, and is now ungated.
+
+---
