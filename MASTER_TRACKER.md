@@ -1052,3 +1052,85 @@ Created: `research/TRADEMARK_FILING_STEPS_JRS_DRR.md`, `research/TRADEMARK_FILIN
 - `REQUIRES EXTERNAL VERIFICATION`: conflict search results for JRS and DRR in classes 042 and 035, and the exact ID Manual entries available on the filing date. The ID Manual is a JavaScript application that could not be read from here; search terms were supplied instead of invented entries.
 
 ---
+
+---
+
+## RUN 2026-08-12T18:05Z — 7 endorsements against 2 campaign arrivals: the count was inflated, not the arrivals lost
+
+**Request:** "Explain why 7 endorsements and only 2 campaign review arrivals?" plus a repeat of the trademark filing request, which was delivered in the previous run.
+
+**MASTER_TRACKER.md read from disk first:** 61,374 bytes, last run heading `2026-08-12T17:30Z`.
+
+### Live figures at the time of the question
+
+`/api/asset-stats` &rarr; `today`: `endorsements: 7`, `campaign_screen_arrivals: 2`, `crawler_rows_excluded: 2`. `/api/support-stats` &rarr; `by_day` 2026-08-12: **7**. Both read from production, not recalled.
+
+### THE TWO NUMBERS NEVER COUNTED THE SAME THING
+
+| | What it actually counts | Deduplication | Needs JS |
+|---|---|---|---|
+| `endorsements` | a **hit** on the campaign link | **NONE AT ALL** | no, written server-side before the redirect |
+| `campaign_screen_arrivals` | a **browser session** that rendered the screen | `sessionStorage` `jrs-gate-view`, per tab session | **yes** |
+
+Traced through the code rather than inferred:
+
+1. `api/support.js` wrote an `interaction_events` row on **every GET**, with no per-visitor guard of any kind. A reload, a back-button, a second click on the same post, or a browser prefetching the address bar each produced another endorsement.
+2. `access.html` line 173 guards the arrival with `sessionStorage.getItem('jrs-gate-view')`, so **seven hits inside one browsing session produce one arrival.**
+3. The server write happens **before the 302 is issued**, so anything that fetches the URL without rendering the page produces an endorsement and no arrival at all.
+4. A third rule existed on the same event: the `access.html` endorsement fallback deduped in **localStorage per browser per campaign**. **Three different dedup rules for one journey.**
+
+**Classification: DISPLAY / REPORTING FAILURE plus a genuine measurement defect in the write path. NOT a telemetry failure, NOT a navigation race, NOT lost clicks.** Nothing failed to transmit. The endorsement figure was inflated by design.
+
+### Made worse by the dashboard's own text
+
+`arrivals_vs_endorsements.explanation` read: *"From 2026-08-12 a difference on this line is a defect and should be treated as one."* Today is 2026-08-12. **The dashboard told the owner to go looking for lost clicks that were never lost.** That sentence was written by me on 2026-08-11 and was wrong the moment the two counting rules diverged.
+
+### Repair
+
+**`api/support.js`:** at most **one endorsement per browser per campaign**. The marker is a first-party cookie `jrs_e_<campaign>` holding the single character `1`, `HttpOnly`, `SameSite=Lax`, `Secure`, one year. **It carries no identifier, no session id and nothing joinable to a person**: it answers only "has this browser already been counted for this campaign". This is the same rule `access.html` already used in localStorage, so both write paths now agree.
+
+Two details that matter:
+- `r=1` is now set when the endorsement is on record from **either this request or an earlier one by the same browser**, so a returning reader does not trigger the screen fallback and reintroduce the double count through the other door.
+- The cookie is set **only when a row was actually written**, so a failed write retries next visit instead of being suppressed forever.
+
+**`api/asset-stats.js`:** the misleading explanation is replaced with what each number counts, and a `counting_basis` object is added so the distinction is machine-readable and cannot drift back into prose.
+
+### The part that cannot be repaired, stated plainly
+
+**Endorsement rows written before this fix are undeduped link hits and CANNOT be deduplicated retroactively.** No per-visitor field was ever stored, deliberately, for privacy. So the all-time figure of **48** is a count of link hits, not of distinct supporters, and the true number of distinct supporters is **lower by an unknown amount**.
+
+**THIS IS MATERIAL TO THE SALE.** A buyer reading "48 endorsements" will read it as 48 people. `named_supporters` is **3** and that figure is sound, because it comes from rows carrying a name. From 2026-08-13 the endorsement figure counts distinct browsers per campaign.
+
+**Recommendation, and it is the owner's call:** publish the endorsement figure with its basis attached rather than restating it, because restating it downward on an estimate would replace a known overcount with an invented number.
+
+### Verification
+
+| Check | Result |
+|---|---|
+| Cookie match logic | **7 of 7 unit cases pass**, including the prefix case `xjrs_e_rtkw=1` correctly NOT matching |
+| `node --check` on both endpoints | pass |
+| Non-browser agent on production | HTTP 302 to `access.html?c=rtkw`, **no `r=1`, no `Set-Cookie`**: writes nothing, still redirects |
+| Deploy-check bypass `?src=verify` | HTTP 302 to `supported.html`, records nothing |
+| Corrected explanation live | **not yet at time of writing**, edge cache still serving the prior payload |
+
+`REQUIRES EXTERNAL VERIFICATION:` the cookie-set path on a real browser click. **This was deliberately NOT tested from here**, because testing it means writing real endorsements into the owner's supporter count, which has already required hand purging on four separate occasions. The owner's next genuine click verifies it at no cost, and it is self-evidencing: a second click must not increment the count.
+
+### Token / Supabase minimization
+
+**CONFIRMED TOKEN-LESS.** No token, JWT, OAuth flow or authenticated SDK was added or touched. The fix is one request header read and one response header set. Transmission on both client write paths remains `fetch(..., {keepalive: true})`.
+
+### Trademark request
+
+**Already delivered in the previous run** and unchanged: `research/TRADEMARK_FILING_STEPS_JRS_DRR.md` and `.docx`. Both dossiers remain **READY TO FILE** on a Section 1(b) intent-to-use basis. Nothing about this turn alters them.
+
+### Files modified
+
+`api/support.js`, `api/asset-stats.js`, `MASTER_TRACKER.md`, `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md`, `research/MASTER_TRACKER.md`. Dev `97f9057`; production `dc758ac`, selective pattern, `research/` and `MASTER_` staged counts both **0**.
+
+### Outstanding
+
+- `[REQUIRES USER INPUT]` **Decision:** how to present the pre-2026-08-13 endorsement figure to a buyer.
+- `REQUIRES EXTERNAL VERIFICATION`: cookie-set path on a real click.
+- Trademark items unchanged: mailing address, citizenship, USPTO identity verification.
+
+---

@@ -758,3 +758,45 @@ The custom Class 042 and 035 strings drafted in earlier amendments are **demoted
 Remaining owner inputs are administrative only: mailing address, citizenship, and completion of USPTO identity verification. Filing procedure is set out in `research/TRADEMARK_FILING_STEPS_JRS_DRR.md`.
 
 ---
+
+---
+
+## AMENDMENT 2026-08-12T18:05Z: Endorsement counting basis, and a disclosure that affects the headline number
+
+**Section on counters, revised.** The endorsement metric is reclassified.
+
+### Reclassification
+
+| Metric | Prior classification | Revised |
+|---|---|---|
+| `endorsements` / `support-stats.total` | authoritative | **DRIFT DETECTED, now bounded.** Undeduped link hits up to 2026-08-12; distinct browsers per campaign from 2026-08-13 |
+| `campaign_screen_arrivals` | authoritative | **authoritative**, basis now stated: browser sessions that rendered the screen |
+| `named_supporters` | authoritative | **authoritative, unaffected.** Sourced from rows carrying a name |
+
+### Click-tracking audit table, endorsement path
+
+| Page | Element | Destination | Mechanism | Event fires | Transmission | Persistence | Display | Status |
+|---|---|---|---|---|---|---|---|---|
+| LinkedIn campaign post | campaign link | `/api/support?c=&src=` | server-side write in the edge function | yes, on every GET | n/a, server-side | `interaction_events` `support`/`endorse` | `today.endorsements`, `support-stats` | **REPAIRED**: was undeduped, now one per browser per campaign |
+| `access.html` | screen load, fallback | `/api/access` | `fetch` `keepalive:true` | only when `r != 1` | keepalive | same table | same | **VERIFIED**, deduped in localStorage per browser per campaign |
+| `access.html` | screen load, arrival | `/api/access` | `fetch` `keepalive:true` | once per tab session | keepalive | `gate-view`/`view` | `campaign_screen_arrivals` | **VERIFIED** |
+
+**Click counting methodology, previously ambiguous, now resolved and recorded:** endorsements count **distinct browsers per campaign**, arrivals count **browser sessions that rendered the screen**. This is no longer `[REQUIRES USER INPUT: CLICK COUNTING METHODOLOGY]`.
+
+### DISCLOSURE FOR DILIGENCE
+
+**The all-time endorsement figure of 48 counts link hits, not distinct people.** A single reader clicking a campaign link three times contributed three. The rows cannot be deduplicated retroactively because no per-visitor field was ever stored, which was a deliberate privacy choice and is not a data-loss event.
+
+**The true number of distinct supporters is lower than 48 by an amount that cannot be determined from the stored data.**
+
+Two figures in the same record are unaffected and are the ones that bear weight:
+- **`named_supporters`: 3.** Each is a row carrying a name, an organization and consent flags.
+- **8 countries** in the endorsement breakdown, which is a distinct-value count and does not inflate with repeat hits.
+
+**A buyer will read "48 endorsements" as 48 people. It should not be presented that way without the basis attached.** Recorded here so the disclosure sits in the diligence file rather than surfacing as a discrepancy later.
+
+### Trademark position
+
+**Unchanged by this run. JRS: READY TO FILE. DRR: READY TO FILE.** Section 1(b) intent to use, per `research/TRADEMARK_FILING_STEPS_JRS_DRR.md`.
+
+---
