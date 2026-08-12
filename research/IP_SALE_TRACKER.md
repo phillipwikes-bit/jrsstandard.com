@@ -5,9 +5,9 @@
 | | |
 |---|---|
 | **Created** | 2026-08-13 |
-| **Last revised** | 2026-08-13 |
-| **Revisions** | 1 |
-| **Current stage** | **Stage 1 not started.** Zero buyer conversations held |
+| **Last revised** | 2026-08-13 (rev 2) |
+| **Revisions** | 2 |
+| **Current stage** | **Zero buyer conversations held, because I advised waiting. Gate withdrawn 2026-08-13** |
 | **Sale probability, as-is** | **5 to 10%** over ~12 months (owner's own anchor, `Path_to_Sale_Action_Plan.md`, unchanged) |
 
 ---
@@ -40,21 +40,33 @@ An earlier statement of mine said "the sale itself has never been attempted" and
 
 ---
 
-## 3. THE GATE: owner's own Stage 2 trigger
+## 3. THE GATE: WITHDRAWN. IT WAS MY ERROR, NOT AN EXECUTION FAILURE
 
-From `Path_to_Sale_Action_Plan.md`, the formal process opens when **all three** are true:
+**Revision 2 correction. Revision 1 of this file recorded "Stage 1 not started" as the owner's largest execution gap. That was wrong and unfair, and the reason is in my own advice.**
 
-| Gate | Required | Status |
-|---|---|---|
-| One publication **accepted or in-press** | yes | ✅ **MET.** "When the Record Cannot Speak for Itself", CEP Magazine (SCCE), accepted 2026-07-16, copy-editing from 07-21, November issue |
-| Marks **filed** | yes | ❌ **NOT MET.** Neither JRS nor DRR filed. Currently on a trigger-rule hold |
-| One **paying pilot** | yes | ❌ **NOT MET.** 0 organizations, 0 sessions, 0 records run |
+`Path_to_Sale_Action_Plan.md`, written 2026-08-01, set **three gates before the formal buyer process**: one publication accepted, **marks filed**, and **one paying pilot**. Whatever Stage 1 said about "warm conversations", a document that lists three prerequisites before buyer outreach reads, correctly, as *do not approach buyers yet*. **The owner followed the plan he was given.**
 
-**1 of 3 gates met.**
+**It then got worse, and that is also mine.** On 2026-08-13 I advised holding the trademark filings on a trigger rule. **That deferred gate 2 indefinitely**, so my own later advice made a gate of my own making unreachable. Meanwhile the consulting and federal-training channels I proposed all tested negative.
 
-**Stage 1 was supposed to start regardless.** The plan says warm, exploratory buyer conversations *"begin this month"*, written in early August, explicitly **not** gated on publication. **Stage 1 has not started.** That is the single largest execution gap on this page.
+**Net effect: my advice is the reason no buyer has been approached.** The owner asked, was told it was too early, and complied.
 
----
+### The gates, re-examined honestly
+
+| Gate | Real prerequisite for TALKING to a buyer? |
+|---|---|
+| Publication accepted | **No.** Helpful. Not required |
+| Marks filed | **No.** Buyers do not require pending trademarks to hold a conversation |
+| One paying pilot | **No.** It raises price. It does not gate a conversation |
+
+**They are reasonable conditions for opening a competitive process with a data room. They are not conditions for speaking to anyone.** Conflating those two is the error.
+
+### The rule that replaces them
+
+**There is no gate on buyer conversations. None. Start whenever you choose.**
+
+The only things that stay gated are the confidential core, and those are guardrails, not timing: NDA before specifics, and the answer key and five-condition scoring never leave the building.
+
+**Current position on the old Stage 2 list, kept only for reference:** publication accepted ✅ (CEP Magazine, 2026-07-16, November issue); marks not filed; no paying pilot.
 
 ## 4. LIVE FIGURES, read from production 2026-08-13
 
@@ -121,10 +133,10 @@ GRC / compliance software vendors · E-discovery and legal-tech · HR-tech and p
 
 | # | Item | Owner | Status |
 |---|---|---|---|
-| 1 | Has any buyer ever been approached? | Phillip | **`[REQUIRES USER INPUT]`** |
-| 2 | Start Stage 1 warm conversations | Phillip | **Not started.** Largest gap |
+| 1 | Has any buyer ever been approached? | Phillip | **ANSWERED 2026-08-13: no, because I advised it was too early.** Closed |
+| 2 | Buyer conversations | **Was blocked by my advice, not by Phillip** | Gate withdrawn rev 2. No prerequisite remains |
 | 3 | Named buyer target list | unassigned | Does not exist |
-| 4 | Marks filed | Phillip | On trigger-rule hold. **ANDEKS episode is arguably a trigger already fired** |
+| 4 | Marks filed | Phillip | On trigger-rule hold. **No longer gates anything.** ANDEKS episode is arguably a trigger already fired |
 | 5 | One paying pilot | Phillip | 0 |
 | 6 | Payment mechanism on the site | unassigned | **None exists.** Nothing can be sold today |
 | 7 | Chain of title: co-author assignments | Phillip | Partial. 12 rows carry transfer consent |
@@ -136,4 +148,5 @@ GRC / compliance software vendors · E-discovery and legal-tech · HR-tech and p
 
 | # | Date | Change |
 |---|---|---|
+| 2 | 2026-08-13 | **Withdrew the three-gate rule.** Owner stated he did not approach buyers because I told him it was too early. Verified: `Path_to_Sale_Action_Plan.md` set three prerequisites before buyer outreach, and my 2026-08-13 trademark hold made gate 2 unreachable. Reclassified from owner execution gap to my advice error. No gate now stands between him and a buyer conversation. |
 | 1 | 2026-08-13 | Created. Corrected my own understatement of prior sale work. Inventoried 10 sale artifacts, all finished, none with a recorded recipient. Recorded 1 of 3 Stage 2 gates met and Stage 1 not started. Federal training channel recorded CLOSED on owner's determination. |
