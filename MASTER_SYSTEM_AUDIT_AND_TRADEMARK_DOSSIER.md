@@ -545,3 +545,19 @@ Unchanged. **JRS REQUIRES USER INPUT. DRR REQUIRES USER INPUT.** First Use Anywh
 #### Files modified
 
 `api/support-contacts.js`, `research/Outreach_Message_Check_Priyam_2026-08-12.md`, `research/Outreach_Template_Reviewer_Evaluation.md`, `MASTER_TRACKER.md`, `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md`, `research/MASTER_TRACKER.md`.
+
+### 2026-08-12T13:17:21Z : OWNER VIEW AND HONOR QUOTES
+
+**Counter audit: PATCHED.** Three reported problems, one cause: private data existed with no usable way to reach it.
+
+1. **The token URL I supplied could not work.** It carried a literal `<BENCH_ADMIN_TOKEN>` placeholder. My communication defect.
+2. **Recommendation requests** were reachable only by hand-constructing a JSON URL.
+3. **Honor acceptance quotes were readable nowhere.** `api/honor.js` stores a `quote`, `quote_clearance` and `byline_ok`; `asset-stats` counted the acceptance and stopped. A person could write a quote for publication and the owner could not read it back.
+
+**Repaired:** `api/support-contacts.js` now returns `honor_acceptances` including the quote and its clearance state. `pilot-status.html` gains an **Owner View** taking the token in a field, held in `sessionStorage` for the tab only, with a Forget control.
+
+**Uncleared quotes are rendered in stop-text and labelled not publishable.** A quote without its clearance must never be treated as if it were cleared.
+
+**Verified:** no token returns four booleans and no private keys; wrong token returns HTTP 401; the page before unlock reads "Not unlocked. Nothing private is loaded."
+
+**Not verifiable here:** the populated view, which needs the real token from Vercel. `[REQUIRES USER INPUT]`

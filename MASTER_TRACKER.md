@@ -396,3 +396,45 @@ Whether any click loss occurs beyond the proven 2026-08-02 to 2026-08-11 08:30Z 
 **This file was not maintained on three consecutive runs while the research log was.** Two trackers exist and only one was being kept current. Both are updated in the same step from here.
 
 ---
+
+## Run: 2026-08-12T13:17:21Z
+
+**Counter audit: PATCHED. Link-click telemetry: VERIFIED, no defect found.**
+
+### Three reported problems, one cause: private data existed with no usable way to reach it
+
+**1. The link did not work.** I supplied `https://jrsstandard.com/api/support-contacts?token=<BENCH_ADMIN_TOKEN>` with a literal angle-bracket placeholder. Pasted as written it cannot work, and nothing on the page told the reader to substitute anything. **My communication defect, not an endpoint defect.**
+
+**2. Recommendation requests had no readable surface.** The count was published; the names were reachable only by hand-constructing a JSON URL.
+
+**3. Honor acceptance quotes were readable nowhere.** `api/honor.js` stores `printed_name`, `printed_title`, `organization`, `country`, **`quote`**, `quote_clearance`, `byline_ok` and consents. `api/asset-stats.js` counted the acceptance with `submitted('honor-accept','honor_code')` and stopped there. **A person could write a quote for publication and the owner had no way to read it back.**
+
+### Repairs
+
+| File | Change |
+|---|---|
+| `api/support-contacts.js` | Query widened to `source=in.(reviewer-eval-incentive,reviewer-cert,honor-accept)`. Returns `honor_acceptances` with honoree, email, organization, printed title, honor code, study, participant code, country, **quote**, `quote_cleared_for_publication`, `byline_ok`, consent and acceptance date |
+| `pilot-status.html` | New **Owner View** block: token entered in a field, not a URL. Held in `sessionStorage` for the tab only, with a Forget control. Renders recommendation requests, certificate requests and honor acceptances |
+
+**Quotes render with their clearance state.** A cleared quote is bordered in `--ready-text`; an uncleared quote is bordered in `--stop-text` and labelled "NOT cleared for publication, do not publish". A quote without its clearance must never be treated as if it were cleared.
+
+### Verification
+
+| Check | Result |
+|---|---|
+| No token | Four boolean diagnostics only. No `contacts`, no `recommendation_requests`, no `honor_acceptances` |
+| Wrong token | **HTTP 401** |
+| Page before unlock | Renders "Not unlocked. Nothing private is loaded." |
+| Token storage | `sessionStorage` only, discarded when the tab closes, never sent anywhere but the gated endpoint |
+
+**LIVE EXTERNAL EVENT INGESTION: NOT LOCALLY VERIFIABLE.** The owner view was verified against the live endpoint for its refusal paths. Its populated state cannot be verified here because that requires the real token, which is a Vercel environment variable and is not readable from this environment. **`[REQUIRES USER INPUT: enter the token on the page to confirm the populated view]`**
+
+### Trademark dossiers
+
+Unchanged. **JRS REQUIRES USER INPUT. DRR REQUIRES USER INPUT.**
+
+### Files modified
+
+`api/support-contacts.js`, `pilot-status.html`, `MASTER_TRACKER.md`, `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md`, `research/MASTER_TRACKER.md`.
+
+---
