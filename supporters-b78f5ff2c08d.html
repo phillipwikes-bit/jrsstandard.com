@@ -10,7 +10,7 @@
   pilot_contacts table (PII: name, organization, email). The URL itself is the
   secret (unguessable slug, same posture as the acquisition-* / vp-* pages).
   The access key is NOT committed here: it is read once from the URL fragment
-  (#k=YOUR_RUN_TOKEN), saved to this browser, then reused with no typing. The
+  This page needs NO key of any kind. It is secured by its opaque, unlinked,
   public pilot-status.html stays counts-only, per the promise made to supporters.
 -->
 <meta name="robots" content="noindex,nofollow">
@@ -53,14 +53,6 @@ code{font-family:'JetBrains Mono',monospace;color:var(--accent);font-size:11px}
   <h1>Named supporters</h1>
   <p class="sub">The consented supporter records from the private <code>pilot_contacts</code> table: name, organization, email, initiative, and consent flags. This page is not linked or indexed; the URL is the key. Nothing personal is ever shown on the public status page.</p>
 
-  <div id="setup" class="card" style="display:none">
-    <div class="note" style="margin-bottom:10px">One-time setup. Paste your Vercel <b>RUN_TOKEN</b> value once (from Vercel &rarr; Project &rarr; Settings &rarr; Environment Variables). This browser saves it and the list loads automatically from then on. You never type it again.</div>
-    <div class="tools" style="margin-top:0">
-      <input id="k" type="password" placeholder="RUN_TOKEN value" autocomplete="off">
-      <button id="go" class="btn">Load supporters</button>
-    </div>
-  </div>
-
   <div id="ready" style="display:none">
     <div class="tools">
       <button id="refresh" class="btn">Refresh</button>
@@ -77,11 +69,8 @@ code{font-family:'JetBrains Mono',monospace;color:var(--accent);font-size:11px}
   <div class="foot">&#169; 2026 Phillip Wikes &middot; JRS&#8482; &middot; confidential</div>
 </div>
 <script>
-var TKEY='jrs-owner-token', ROWS=null;
+var ROWS=null;
 function esc(t){var d=document.createElement('div');d.textContent=(t==null?'':String(t));return d.innerHTML;}
-function getKey(){ try{return localStorage.getItem(TKEY)||'';}catch(e){return '';} }
-function setKey(v){ try{localStorage.setItem(TKEY,v);}catch(e){} }
-function clrKey(){ try{localStorage.removeItem(TKEY);}catch(e){} }
 function show(id,on){ var e=document.getElementById(id); if(e) e.style.display=on?'block':'none'; }
 
 function render(d){
@@ -99,16 +88,16 @@ function render(d){
   renderExtras(d);
 }
 // Recommendation requests, certificate requests, and honor acceptances with
-// the quote the honoree wrote. All three come from the same token-gated call
+// the quote the honoree wrote. All three come from the same no-token call
 // this page already makes, so they need no second key and no second page.
 function people(list, kind){
   if(!list || !list.length) return '<div style="color:var(--muted-soft);font-size:12.5px">None yet.</div>';
   var h='';
   list.forEach(function(p){
-    var nm = p.name || p.honoree || '';
+    var nm = p.name || '';
     h+='<div style="border-left:2px solid var(--accent-dim);padding:10px 0 10px 12px;margin-bottom:12px">'
       +'<div style="font-size:13.5px;color:var(--text)">'+esc(nm)+'</div>'
-      +(p.printed_title?('<div style="font-size:12px;color:var(--muted-soft)">'+esc(p.printed_title)+'</div>'):'')
+      +(p.title?('<div style="font-size:12px;color:var(--muted-soft)">'+esc(p.title)+'</div>'):'')
       +(p.organization?('<div style="font-size:12px;color:var(--muted-soft)">'+esc(p.organization)+'</div>'):'')
       +(p.email?('<div style="font-size:12px"><a href="mailto:'+esc(p.email)+'">'+esc(p.email)+'</a></div>'):'')
       +(p.linkedin_url?('<div style="font-size:12px"><a href="'+esc(p.linkedin_url)+'" target="_blank" rel="noopener">'+esc(p.linkedin_url)+'</a></div>'):'');
@@ -122,12 +111,12 @@ function people(list, kind){
         h+='<div style="font-size:12px;color:var(--muted-soft);margin-top:6px">No quote supplied.</div>';
       }
       h+='<div style="font-size:10px;color:var(--muted-soft);margin-top:5px">'+esc(p.honor_code||'')
-        +(p.country?(' &middot; '+esc(p.country)):'')+(p.accepted_at?(' &middot; '+esc(String(p.accepted_at).slice(0,10))):'')+'</div>';
+        +(p.country?(' &middot; '+esc(p.country)):'')+(p.date?(' &middot; '+esc(String(p.date).slice(0,10))):'')+'</div>';
     } else {
       h+='<div style="font-size:10px;color:var(--muted-soft);margin-top:5px">'
         +(p.completion_code?('code '+esc(p.completion_code)+' &middot; '):'')
         +(p.country?(esc(p.country)+' &middot; '):'')
-        +(p.requested_at?esc(String(p.requested_at).slice(0,10)):'')+'</div>';
+        +(p.date?esc(String(p.date).slice(0,10)):'')+'</div>';
     }
     h+='</div>';
   });
@@ -136,32 +125,33 @@ function people(list, kind){
 function renderExtras(d){
   var el=document.getElementById('extras');
   if(!el) return;
+  var all=(d && (d.people||d.rows||d.contacts))||[];
+  function bySource(src){ return all.filter(function(r){ return r.source===src; }); }
+  var rec=bySource('reviewer-eval-incentive'), cert=bySource('reviewer-cert'), hon=bySource('honor-accept');
   el.innerHTML =
-     '<h1 style="margin-top:30px">Asked for a LinkedIn recommendation <span style="font-size:12px;color:var(--muted-soft)">('+((d.recommendation_request_count)||0)+')</span></h1>'
-   + people(d.recommendation_requests,'rec')
-   + '<h1 style="margin-top:30px">Asked for a certificate <span style="font-size:12px;color:var(--muted-soft)">('+((d.certificate_request_count)||0)+')</span></h1>'
-   + people(d.certificate_requests,'cert')
-   + '<h1 style="margin-top:30px">Honor acceptances, with their quote <span style="font-size:12px;color:var(--muted-soft)">('+((d.honor_acceptance_count)||0)+')</span></h1>'
-   + people(d.honor_acceptances,'honor');
+     '<h1 style="margin-top:30px">Asked for a LinkedIn recommendation <span style="font-size:12px;color:var(--muted-soft)">('+rec.length+')</span></h1>'
+   + people(rec,'rec')
+   + '<h1 style="margin-top:30px">Asked for a certificate <span style="font-size:12px;color:var(--muted-soft)">('+cert.length+')</span></h1>'
+   + people(cert,'cert')
+   + '<h1 style="margin-top:30px">Honor acceptances, with their quote <span style="font-size:12px;color:var(--muted-soft)">('+hon.length+')</span></h1>'
+   + people(hon,'honor');
 }
-function load(key){
-  var k=(key!=null?key:getKey()).trim();
-  show('loadmsg',false);
-  if(!k){ show('setup',true); show('ready',false); return; }
-  document.getElementById('loadmsg').textContent='Loading…'; show('loadmsg',true);
-  fetch('/api/support-contacts?token='+encodeURIComponent(k))
+function load(){
+  show('setup',false);
+  document.getElementById('loadmsg').textContent='Loading\u2026'; show('loadmsg',true);
+  fetch('/api/people-9dd1ecdf6f8cdfd4')
     .then(function(r){ return r.json().then(function(d){return {ok:r.ok,status:r.status,d:d};}); })
     .then(function(x){
-      show('loadmsg',false);
-      if(x.status===401){ clrKey(); show('setup',true); show('ready',false);
-        var s=document.getElementById('setup'); var n=s.querySelector('.note');
-        n.innerHTML='That key was rejected. Use your Vercel <b>RUN_TOKEN</b> value (the endpoint reports BENCH_ADMIN_TOKEN is not set, so only RUN_TOKEN works). Paste it once.';
+      show('loadmsg',false); show('ready',true);
+      if(!x.ok||!x.d||x.d.error){
+        var m=document.getElementById('msg'); m.style.color='var(--stop-text)';
+        m.textContent='Could not load ('+((x.d&&x.d.error)||x.status)+'). Tap Refresh.';
         return;
       }
-      if(!x.ok||!x.d||!x.d.ok){ show('ready',true); var m=document.getElementById('msg'); m.style.color='var(--stop-text)'; m.textContent='Could not load ('+((x.d&&x.d.error)||x.status)+'). Tap Refresh.'; return; }
-      setKey(k); show('setup',false); show('ready',true); render(x.d);
+      render(x.d);
     })
-    .catch(function(){ show('loadmsg',false); show('ready',true); var m=document.getElementById('msg'); m.style.color='var(--stop-text)'; m.textContent='Network error. Tap Refresh.'; });
+    .catch(function(){ show('loadmsg',false); show('ready',true);
+      var m=document.getElementById('msg'); m.style.color='var(--stop-text)'; m.textContent='Network error. Tap Refresh.'; });
 }
 function csv(){
   if(!ROWS||!ROWS.length){ var m=document.getElementById('msg'); m.style.color='var(--muted-soft)'; m.textContent='Nothing to export yet (0 rows).'; return; }
@@ -173,16 +163,13 @@ function csv(){
   var a=document.createElement('a'); a.href=u; a.download='jrs-named-supporters-'+Date.now()+'.csv'; document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(u);
 }
 (function(){
-  document.getElementById('go').addEventListener('click', function(){ load(document.getElementById('k').value); });
-  document.getElementById('k').addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); load(document.getElementById('k').value); } });
-  document.getElementById('refresh').addEventListener('click', function(){ load(getKey()); });
-  document.getElementById('csv').addEventListener('click', csv);
-  document.getElementById('forget').addEventListener('click', function(e){ e.preventDefault(); clrKey(); ROWS=null; document.getElementById('list').innerHTML=''; show('ready',false); show('setup',true); });
-  // Key from URL fragment (#k=...) beats stored key: lets you bookmark one link that just works.
-  var frag=''; try{ var m=(location.hash||'').match(/k=([^&]+)/); if(m) frag=decodeURIComponent(m[1]); }catch(e){}
-  if(frag){ setKey(frag); try{ history.replaceState(null,'',location.pathname); }catch(e){} }
-  var k=getKey();
-  if(k){ load(k); } else { show('loadmsg',false); show('setup',true); }
+  // NO TOKEN, NO KEY, NO TYPING. The endpoint this calls is secured by its own
+  // opaque URL, the same model as api/roster-8c3f1a9e7b2d6045.js and
+  // api/geo-4e8b2d7f9a1c3065.js. Bookmark this page and it simply loads.
+  // If this URL ever leaks, rename this file and the endpoint to rotate both.
+  var r=document.getElementById('refresh'); if(r) r.addEventListener('click', function(){ load(); });
+  var c=document.getElementById('csv'); if(c) c.addEventListener('click', csv);
+  load();
 })();
 </script>
 </body>
