@@ -1597,3 +1597,62 @@ Created: `research/TRADEMARK_COST_BENEFIT_2026-08-12.md` and `.docx`. Modified: 
 - The assignment restriction must be raised with whoever drafts the sale agreement **before signature**.
 
 ---
+
+---
+
+## RUN 2026-08-13T00:10Z — The two private pages were the same page. Merged to one.
+
+**Owner:** "They are both the same." **Correct, and it was my duplication.**
+
+**MASTER_TRACKER.md read from disk first:** 97,816 bytes, last run heading `2026-08-12T23:15Z`.
+
+### Verified rather than argued
+
+Diffed both pages by section heading:
+
+| | |
+|---|---|
+| **Duplicated on both** | Everyone on the record, Today tiles |
+| Only on the sheet | Email column, recommendation requests, certificate requests, honor quotes, CSV |
+
+The two duplicated blocks are the largest on the sheet, so the pages read as the same document.
+
+### Cause, traceable to my own sequencing
+
+Two of his instructions were satisfied **separately instead of together**. He asked for the roster consolidated onto one page for a buyer, so it went on the sheet. He then asked for access on the status link, so the same roster went there too. **I never removed the first.** Satisfying two instructions separately violated both.
+
+### Fix: one page, not two better-differentiated pages
+
+Merged into `programme-status-9872fb93cc94.html`: **Email column, recommendation requests, certificate requests, honor acceptances with quote and clearance, and the 19-column CSV export.**
+
+**Deleted `supporters-b78f5ff2c08d.html`**, its `vercel.json` route, and the Owner Sheet panel pointing at it.
+
+**Quote clearance carried across intact:** a quote is never rendered without its flag, and an uncleared quote shows in stop-text reading NOT cleared, do not publish.
+
+### Verification
+
+Before deploy, in a browser against live payloads: **16 roster rows, 9 columns including Email, 16 mailto links, 2 honor quotes with 4 clearance labels, CSV button present, 0 links to the deleted page, 1 h1, zero console errors.**
+
+After deploy, live: merged page **200** with all five merged blocks present; `supporters-b78f5ff2c08d.html`, `pilot-status.html` and `people-9dd1ecdf6f8cdfd4.html` all **404**.
+
+### THE SINGLE PRIVATE URL
+
+```
+https://jrsstandard.com/programme-status-9872fb93cc94.html
+```
+
+**There is now exactly one. `CLAUDE.md` states this and instructs future sessions not to create a second**, because this is the third private surface created and removed in two days and the governing document is the only thing that stops a repeat.
+
+### Token / Supabase minimization
+
+**CONFIRMED TOKEN-LESS.** No endpoint changed. Presentation and deletion only.
+
+### Files modified
+
+`programme-status-9872fb93cc94.html`, `vercel.json`, `CLAUDE.md`. **Deleted:** `supporters-b78f5ff2c08d.html`.
+
+### Trademark
+
+**JRS: READY TO FILE, Class 042. DRR: READY TO FILE, Class 042.** $700. Blocked only on USPTO identity verification.
+
+---
