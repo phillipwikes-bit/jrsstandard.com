@@ -75,16 +75,31 @@ function show(id,on){ var e=document.getElementById(id); if(e) e.style.display=o
 
 function render(d){
   var msg=document.getElementById('msg'), list=document.getElementById('list');
-  var c=(d&&d.contacts)||[]; ROWS=c;
-  if(!c.length){ list.innerHTML=''; msg.style.color='var(--muted-soft)'; msg.textContent='Unlocked. 0 named supporters so far. Rows appear here the moment someone submits the "Be counted" form on supported.html. The public counts still tally anonymous one-click endorsements.'; return; }
-  var bc=(d&&d.by_campaign)||{}; var bits=Object.keys(bc).map(function(k){return bc[k]+' '+k;}).join(' · ');
-  msg.style.color='var(--ready)'; msg.textContent=d.count+' named supporter'+(d.count===1?'':'s')+(bits?(' · '+bits):'');
-  var h='<table><thead><tr>'+['Name','Organization','Email','Initiative','Source','Contact','Transfer','Date'].map(function(x){return '<th>'+x+'</th>';}).join('')+'</tr></thead><tbody>';
-  c.forEach(function(r){
-    var dt=r.created_at?String(r.created_at).slice(0,10):'';
-    h+='<tr><td class="nm">'+esc(r.name)+'</td><td>'+esc(r.organization)+'</td><td>'+esc(r.email)+'</td><td>'+esc(r.campaign_label||r.campaign)+'</td><td>'+esc(r.page_source)+'</td><td>'+(r.consent_contact?'yes':'—')+'</td><td>'+(r.consent_transfer?'yes':'—')+'</td><td style="white-space:nowrap">'+esc(dt)+'</td></tr>';
-  });
-  h+='</tbody></table>'; list.innerHTML=h;
+  // The endpoint returns a flat people[] covering every stream, so the supporter
+  // table filters it rather than expecting its own array. It previously read
+  // d.contacts, which this endpoint does not return, so the table came up empty.
+  var all=(d && (d.people||d.rows||d.contacts))||[];
+  var c=all.filter(function(r){ return r.source==='support'||r.source==='support-register'; });
+  ROWS=c;
+  if(!c.length){
+    list.innerHTML='<div style="color:var(--muted-soft);font-size:12.5px">No named supporters yet. Rows appear here the moment someone submits the "Be counted" form on supported.html. The public counts still tally anonymous one-click endorsements.</div>';
+    msg.style.color='var(--muted-soft)';
+    msg.textContent=all.length+' record'+(all.length===1?'':'s')+' loaded across all streams.';
+  } else {
+    var bc={}; c.forEach(function(r){ var k=r.campaign||r.detail||'other'; bc[k]=(bc[k]||0)+1; });
+    var bits=Object.keys(bc).map(function(k){return bc[k]+' '+k;}).join(' \u00b7 ');
+    msg.style.color='var(--ready)';
+    msg.textContent=c.length+' named supporter'+(c.length===1?'':'s')+(bits?(' \u00b7 '+bits):'');
+    var h='<table><thead><tr>'+['Name','Organization','Email','Initiative','Contact','Transfer','Date'].map(function(x){return '<th>'+x+'</th>';}).join('')+'</tr></thead><tbody>';
+    c.forEach(function(r){
+      var dt=r.date?String(r.date).slice(0,10):'';
+      h+='<tr><td class="nm">'+esc(r.name)+'</td><td>'+esc(r.organization)+'</td><td>'+esc(r.email)+'</td><td>'+esc(r.detail||r.campaign)+'</td><td>'+(r.consent_contact?'yes':'\u2014')+'</td><td>'+(r.consent_transfer?'yes':'\u2014')+'</td><td style="white-space:nowrap">'+esc(dt)+'</td></tr>';
+    });
+    h+='</tbody></table>'; list.innerHTML=h;
+  }
+  // Always runs. It previously sat after an early return, so with zero named
+  // supporters the recommendation, certificate and honor sections never drew at
+  // all, which is the state the page was actually in.
   renderExtras(d);
 }
 // Recommendation requests, certificate requests, and honor acceptances with
@@ -158,7 +173,7 @@ function csv(){
   function q(v){ v=(v==null?'':String(v)); return '"'+v.replace(/"/g,'""')+'"'; }
   var head=['name','organization','email','initiative','campaign_key','role','source_page','consent_contact','consent_transfer','consent_listed','created_at'];
   var lines=[head.join(',')];
-  ROWS.forEach(function(r){ lines.push([q(r.name),q(r.organization),q(r.email),q(r.campaign_label||r.campaign),q(r.campaign),q(r.role),q(r.page_source),q(r.consent_contact),q(r.consent_transfer),q(r.consent_listed),q(r.created_at)].join(',')); });
+  ROWS.forEach(function(r){ lines.push([q(r.name),q(r.organization),q(r.email),q(r.detail||r.campaign),q(r.campaign),q(r.activity),q(r.source),q(r.consent_contact),q(r.consent_transfer),q(r.consent_public),q(r.date)].join(',')); });
   var b=new Blob([lines.join('\n')],{type:'text/csv'}); var u=URL.createObjectURL(b);
   var a=document.createElement('a'); a.href=u; a.download='jrs-named-supporters-'+Date.now()+'.csv'; document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(u);
 }
