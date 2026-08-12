@@ -152,18 +152,8 @@
       "permanent": false
     },
     {
-      "source": "/people-9dd1ecdf6f8cdfd4",
-      "destination": "/people-9dd1ecdf6f8cdfd4.html",
-      "permanent": false
-    },
-    {
       "source": "/pilot",
       "destination": "/org-pilot.html",
-      "permanent": false
-    },
-    {
-      "source": "/pilot-status",
-      "destination": "/pilot-status.html",
       "permanent": false
     },
     {

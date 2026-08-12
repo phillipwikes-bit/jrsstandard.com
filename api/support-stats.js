@@ -1,7 +1,7 @@
 export const config = { runtime: 'edge' };
 
 // Aggregate initiative-support endorsements (counts only, no PII) for the
-// pilot-status dashboard. Reads the 'support' rows from interaction_events via
+// programme status dashboard. Reads the 'support' rows from interaction_events via
 // the service role and returns { total, countries, by_country, by_campaign }.
 // Same public-aggregate policy as /api/geo-stats and /api/enroll-stats.
 

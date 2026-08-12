@@ -1,7 +1,7 @@
 export const config = { runtime: 'edge' };
 
 // Aggregate ALL download geography (counts only, no PII), for the
-// pilot-status dashboard. Reads both 'guide-dl' (Investigator Field Guide
+// programme status dashboard. Reads both 'guide-dl' (Investigator Field Guide
 // editions) and 'pdf-dl' (JRS Standard PDF, Rapid Review Card) rows from
 // interaction_events via the service role and returns
 // { total, countries, by_country, by_asset }.
