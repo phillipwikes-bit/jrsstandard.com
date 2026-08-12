@@ -1134,3 +1134,87 @@ Two details that matter:
 - Trademark items unchanged: mailing address, citizenship, USPTO identity verification.
 
 ---
+
+---
+
+## RUN 2026-08-12T19:10Z — pilot-status.html: content revision and link integrity audit
+
+**Request:** word-by-word content revision and link-by-link integrity audit of `pilot-status.html`, five phases.
+
+**MASTER_TRACKER.md read from disk first:** 67,849 bytes, last run heading `2026-08-12T18:05Z`.
+
+### Ground truth established before any edit
+
+Live page fetched and confirmed **byte-identical** to the local source: SHA-256 `b46a6af615bba0c2…`, 86,433 bytes both sides. The local file was therefore used as ground truth with no risk of auditing a stale copy.
+
+### Link audit: 10 of 10 resolve, zero broken
+
+All 5 `<a href>` targets, both font hosts, the GA4 script and the favicon were tested with `curl -IL`. **No 404, no timeout, no mixed content.** The apex-to-`www` 301 on internal links is the site-wide canonical host normalisation and is not a defect. **Anchor text was already descriptive throughout**: no "click here", no "learn more", no raw URLs. That is recorded as a pass rather than padded into a finding.
+
+**One asset was genuinely missing:** the page carried **no favicon** while every other page on the site does. Added.
+
+### THE TWO REAL FINDINGS WERE FALSE STATEMENTS, NOT BROKEN LINKS
+
+1. **"one row is one click and nothing is deduplicated"** on the endorsements chart. **This was made false by my own deploy earlier the same day**, which added one-endorsement-per-browser-per-campaign to `/api/support`. The page was telling the owner the opposite of what the code does. Replaced with text that states the 13 August cutover and discloses that earlier rows are undeduplicated raw clicks.
+2. **"Everything below is aggregate"** in the named-list callout. **Made false by my own change the previous turn**, which put the full named roster on this page. The same paragraph also pointed at `people-9dd1ecdf6f8cdfd4.html`, now redundant with both this page and the owner sheet. Rewritten to point at the in-page anchor and the owner sheet.
+
+**Both defects were self-inflicted within the last 48 hours, and neither would have been caught by a link checker.** A page can be 100% green on links and still assert two things that are not true.
+
+### Semantic HTML: the largest structural defect
+
+**14 `<h1>` elements, 16 `<h2>`, no `<h3>`, and no page-level heading at all.** A screen reader user navigating by heading got 14 equal-weight items and no outline.
+
+Rebuilt to **1 H1, 14 H2, 16 H3, 33 headings, zero level skips**, verified programmatically. Achieved with **no visual change**: the CSS rule that styled `h1` now styles `h1, h2`, and `.chart h2` became `.chart h3`.
+
+**Fixing the outline exposed two mis-groupings the flat structure had hidden:** the endorsement charts sat under "Investigator Guide Downloads", and the owner-sheet panel sat under "Since the Registration Gate". Both given their own H2 sections.
+
+### Accessibility
+
+| Finding | WCAG | Fix |
+|---|---|---|
+| 14 H1, no outline | 1.3.1 | single H1, sequential tree |
+| Search input had a placeholder but **no accessible name** | 4.1.2 | `aria-label`, `type="search"` |
+| Country select had **no accessible name** | 4.1.2 | `aria-label` |
+| Status text updates every 60s with **no live region** | 4.1.3 | `role="status" aria-live="polite"` |
+| Roster table had no caption, no `scope` | 1.3.1 | `<caption>` plus `scope="col"` on all 8 |
+| `--accent-dim` `#7A5E28` at 7.5px measured **3.09:1**, fails AA | 1.4.3 | ROSTER marker to `--review-text` at **7.99:1**, 9px, in both files |
+| `<button>` defaulted to `type="submit"` | robustness | `type="button"` |
+
+**Full contrast sweep computed, not eyeballed:** 7 of 9 tokens pass AA on both backgrounds; `--accent-dim` fails for text and is safe for large or decorative use only; `--rule` is borders only. **Zero `<img>` elements**, so no missing `alt`: every chart is inline SVG already carrying `<title>` on its marks.
+
+### SEO metadata: deliberately NOT added
+
+The page has no `meta description`, no canonical and no Open Graph tags. **It carries `noindex,nofollow` and is private, so adding them would be pointless work on a page no search engine will index.** Recorded as a deliberate non-action rather than an unfixed finding.
+
+### Advisory raised, not acted on unilaterally
+
+`pilot-status.html` loads GA4 while displaying named participants including people whose `consent_public` is false. **GA4 receives the URL and title only, so no personal data reaches Google**, but a page showing third-party PII is an unusual host for third-party analytics. Two options given; **the owner's call**.
+
+### A correction to my own process, recorded because it nearly produced a false finding
+
+The first render showed **zero roster rows**. **That was a bug in my test harness, not the page.** Same-origin `/api/` requests matched the `continue` branch before the stub route and 404'd against the static file server. Fixed by matching `/api/` first, after which all 16 rows rendered. **The page was never at fault and was not "repaired" for a defect it did not have.** This is the third time route ordering in a Playwright harness has produced a misleading first result.
+
+### Verification
+
+Rendered in headless Chromium against **live production API payloads**, not fixtures: 1 H1, 0 level skips across 33 headings, 16 of 16 roster rows, caption present, 8 of 8 scoped headers, both accessible names present, live region set, anchor target resolves, stale dedup text gone, corrected text present, no horizontal body scroll, **zero console errors**. `node --check` passes on all inline scripts.
+
+### Token / Supabase minimization
+
+**CONFIRMED TOKEN-LESS.** No token, JWT, OAuth flow or SDK was added or touched. No endpoint was modified this run.
+
+### Files created / modified
+
+Created: `research/PILOT_STATUS_AUDIT_2026-08-12.md`. Modified: `pilot-status.html`, `supporters-b78f5ff2c08d.html`, `MASTER_TRACKER.md`, `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md`, `research/MASTER_TRACKER.md`. Dev `bfe31f1`; production `d7bc967`, selective pattern, `research/` and `MASTER_` staged counts both **0**.
+
+### Trademark dossiers
+
+**Unchanged. JRS: READY TO FILE. DRR: READY TO FILE.** Section 1(b) intent to use.
+
+### Outstanding
+
+- `[REQUIRES USER INPUT]` Remove GA4 from this private page, or record the assessment and leave it.
+- `[REQUIRES USER INPUT]` Rename `pilot-status.html` to an opaque slug, or accept the guessable address.
+- `[REQUIRES USER INPUT]` Retire `people-9dd1ecdf6f8cdfd4.html`, now redundant and no longer linked from anywhere.
+- Trademark items unchanged: mailing address, citizenship, USPTO identity verification.
+
+---

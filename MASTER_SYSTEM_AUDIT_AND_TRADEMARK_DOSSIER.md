@@ -800,3 +800,42 @@ Two figures in the same record are unaffected and are the ones that bear weight:
 **Unchanged by this run. JRS: READY TO FILE. DRR: READY TO FILE.** Section 1(b) intent to use, per `research/TRADEMARK_FILING_STEPS_JRS_DRR.md`.
 
 ---
+
+---
+
+## AMENDMENT 2026-08-12T19:10Z: pilot-status.html content and accessibility audit
+
+**Link integrity: 10 of 10 URLs resolve 200.** No broken links, no timeouts, no mixed content, no non-descriptive anchor text. Tested with `curl -IL` against the live page after confirming it byte-identical to source.
+
+### Click-tracking audit table, page assets
+
+| Page | Link / Element | Destination | Mechanism | Status |
+|---|---|---|---|---|
+| `pilot-status.html` | `JRS™` wordmark | `/` | plain anchor, untracked | **VERIFIED** 200 |
+| `pilot-status.html` | "Research Data Room" | `research-data.html` | plain anchor, untracked | **VERIFIED** 200 |
+| `pilot-status.html` | "Open the owner sheet" | `/supporters-b78f5ff2c08d.html` | plain anchor, untracked | **VERIFIED** 200 |
+| `pilot-status.html` | "Everyone on the record" | `#everyone-on-the-record` | in-page anchor, added this pass | **VERIFIED**, target ID exists |
+| `pilot-status.html` | "the private people list" | `people-9dd1ecdf6f8cdfd4.html` | plain anchor | **REMOVED**, redundant |
+| `pilot-status.html` | "Refresh now" | `refresh()` | inline handler | **VERIFIED**, `type="button"` added |
+
+**These links are deliberately untracked.** This is a private owner page, not a conversion surface, and adding click telemetry to it would pollute the campaign metrics it exists to report.
+
+### Accessibility conformance
+
+**Seven defects found, seven fixed.** Full detail in `research/PILOT_STATUS_AUDIT_2026-08-12.md`. The material ones for a diligence reader:
+
+- The document had **14 `<h1>` elements and no page-level heading**. Now a single H1 with a sequential tree, 33 headings, zero level skips.
+- Two interactive controls had **no accessible name at all**.
+- One design token, `--accent-dim` `#7A5E28`, measures **3.09:1** and fails WCAG AA for text. Corrected where used at small sizes; documented as large-text-and-decorative-only elsewhere.
+
+### Content accuracy
+
+**Two statements on the page were false at audit time**, both introduced by changes made within the previous 48 hours: the endorsement chart described the pre-deduplication behaviour, and the named-list callout said "everything below is aggregate" after the named roster was added to the page. Both corrected.
+
+**This is the finding worth carrying forward: link health and content accuracy are independent.** The page scored 10 of 10 on links while asserting two untrue things. A buyer reads the sentences, not the status codes.
+
+### Trademark position
+
+**Unchanged. JRS: READY TO FILE. DRR: READY TO FILE.**
+
+---
