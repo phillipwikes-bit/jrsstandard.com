@@ -17,7 +17,13 @@ const FILES = {
 
 const DOCS = {
   standard: 'JRS-Standard.pdf',
-  card:     'JRS_Rapid_Review_Card.pdf'
+  card:     'JRS_Rapid_Review_Card.pdf',
+  // Added 2026-08-12. These three were linked directly from their pages, so
+  // every download of them was invisible in the counts. Routing them here makes
+  // them countable without changing what the reader receives.
+  drr:      'DRR_Article.pdf',
+  paper:    'JRS_Research_Paper.pdf',
+  accuracy: 'JRS_Reliability_Accuracy.pdf'
 };
 
 // Whitelisted training-kit files (and the gated reference). Only these exact
@@ -26,6 +32,10 @@ const DOCS = {
 // The 8 JRS_Kit_* implementation-kit files are intentionally NOT whitelisted:
 // the training kit is retired and must not be downloadable anywhere. Only the
 // standalone reference assets below remain available via ?f=.
+// JRS-Reference-9d4f2a7c.pdf is served here because the 16 reference pages
+// linked /JRS-Reference.pdf, a basename that DOES NOT EXIST and returned HTTP
+// 404 on every one of them. Those pages now point at this endpoint, which both
+// fixes the broken download and counts it.
 const KITS = new Set([
   'JRS_Investigator_Field_Guide.pdf',
   'JRS_Rapid_Review_Card.pdf',
@@ -44,6 +54,9 @@ function normDoc(e){
   e = String(e||'').toLowerCase().replace(/[^a-z]/g,'');
   if (e==='standard'||e==='std'||e==='jrs') return 'standard';
   if (e==='card'||e==='rapidcard'||e==='rrc'||e==='reviewcard') return 'card';
+  if (e==='drr'||e==='drrarticle') return 'drr';
+  if (e==='paper'||e==='researchpaper') return 'paper';
+  if (e==='accuracy'||e==='reliability') return 'accuracy';
   return '';
 }
 
