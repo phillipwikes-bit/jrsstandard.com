@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
 <title>Pilot Submissions | JRS</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -18,7 +19,8 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 .hd-in{max-width:720px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
 .wm{font-family:'Bodoni Moda',serif;font-size:22px;color:var(--accent);text-decoration:none}
 .meta{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft)}
-h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:26px;margin:24px 0 6px}
+h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:30px;margin:24px 0 4px}
+h2{font-family:'Bodoni Moda',serif;font-weight:400;font-size:26px;margin:24px 0 6px}
 .sub{font-size:13.5px;color:var(--muted);max-width:600px;margin-bottom:6px}
 .bar{display:flex;gap:10px;align-items:center;margin:14px 0;flex-wrap:wrap}
 .btn{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:10px 15px;border:1px solid var(--accent);color:var(--accent);background:none;cursor:pointer;text-decoration:none}
@@ -45,7 +47,7 @@ tr.today td{background:rgba(93,191,130,.07)}
 .ft{border-top:1px solid var(--rule);padding:18px 20px;margin-top:24px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-soft)}
 @media(max-width:600px){.cards{grid-template-columns:1fr 1fr}.cv{font-size:30px}td,th{padding:8px 6px}}
 .chart{background:var(--surface);border:1px solid var(--rule);padding:16px;margin:16px 0}
-.chart h2{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);font-weight:500;margin-bottom:14px}
+.chart h3{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);font-weight:500;margin-bottom:14px}
 .legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.05em;color:var(--muted)}
 .legend span{display:inline-flex;align-items:center;gap:6px}
 .legend i{width:10px;height:10px;border-radius:2px;display:inline-block;flex:0 0 auto}
@@ -56,7 +58,9 @@ tr.today td{background:rgba(93,191,130,.07)}
 <body>
 <header class="hd"><div class="hd-in"><a href="/" class="wm">JRS<span style="font-size:9px;vertical-align:super">&#8482;</span></a><div class="meta">Pilot Submissions</div></div></header>
 <main><div class="wrap">
-  <h1 style="font-size:22px">Today <span id="td-date" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--muted-soft);vertical-align:middle">&middot;</span></h1>
+  <h1>JRS Programme Status</h1>
+  <p class="sub">Live participation, adoption and reach across every JRS study, pilot and initiative. Figures refresh automatically every 60 seconds and are read from the production database at the moment you open the page.</p>
+  <h2 style="font-size:22px">Today <span id="td-date" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--muted-soft);vertical-align:middle">&middot;</span></h2>
   <p class="sub">Every surface, counted for the current UTC day. The other Today figures on this page count a completed action: a registration, an enrolment, a confirmation. None of them counts an arrival, so a day could carry real traffic on every link and every one of them would still read zero. This block counts arrivals.</p>
   <div class="cards" style="grid-template-columns:repeat(4,1fr)">
     <div class="card"><div class="cv hot" id="td-campaign">&middot;</div><div class="ck">Campaign screen arrivals</div></div>
@@ -72,9 +76,9 @@ tr.today td{background:rgba(93,191,130,.07)}
   <div class="note" id="td-recon" style="border-left-width:3px">Reconciling arrivals against endorsements&hellip;</div>
   <div class="note" id="td-note">Loading today&hellip;</div>
 
-  <h1>AI-Assisted Records Pilot &middot; Submissions</h1>
+  <h2>AI-Assisted Records Pilot &middot; Submissions</h2>
   <p class="sub">Who has entered reads on the 24-record detection study, and when. Bookmark this page and open it anytime. It updates automatically every 60 seconds. Aggregate counts only; individual answers are never shown.</p>
-  <div class="bar"><span class="live" id="live">Loading&hellip;</span><button class="btn" onclick="refresh()">Refresh now</button></div>
+  <div class="bar"><span class="live" id="live" role="status" aria-live="polite">Loading&hellip;</span><button class="btn" type="button" onclick="refresh()">Refresh now</button></div>
   <div class="cards">
     <div class="card"><div class="cv hot" id="today">&middot;</div><div class="ck">New today (UTC)</div></div>
     <div class="card"><div class="cv" id="total">&middot;</div><div class="ck">Total reads</div></div>
@@ -82,7 +86,7 @@ tr.today td{background:rgba(93,191,130,.07)}
     <div class="card"><div class="cv" id="finished">&middot;</div><div class="ck">Finished (24/24)</div></div>
   </div>
   <div class="chart" id="progwrap">
-    <h2>Panel completion</h2>
+    <h3>Panel completion</h3>
     <div class="sbar" id="progbar"></div>
     <div class="legend" id="proglegend"></div>
   </div>
@@ -93,7 +97,7 @@ tr.today td{background:rgba(93,191,130,.07)}
   </table></div>
   <div class="note">"New today" counts reads submitted since 00:00 UTC. "Finished" means a reviewer has covered all 24 records. This page shows participation only; to see agreement and accuracy analysis, open the <a href="research-data.html" style="color:var(--accent)">Research Data Room</a>.</div>
 
-  <h1 style="font-size:22px;margin-top:34px">Real-Case Pilots &middot; Rung 3</h1>
+  <h2 style="font-size:22px;margin-top:34px">Real-Case Pilots &middot; Rung 3</h2>
   <p class="sub">Real public determinations paired with documented outcomes. Aggregate counts only; no case text is shown here.</p>
   <div class="cards">
     <div class="card"><div class="cv hot" id="rc-today">&middot;</div><div class="ck">New today (UTC)</div></div>
@@ -107,7 +111,7 @@ tr.today td{background:rgba(93,191,130,.07)}
   </table></div>
   <div class="note">A healthcare-compliance pilot (Keith Carrington, V-HC-01) is accepted but has not yet contributed cases, so it does not appear above until its first entry.</div>
 
-  <h1 style="font-size:22px;margin-top:34px">Comparison Study &middot; Arm B</h1>
+  <h2 style="font-size:22px;margin-top:34px">Comparison Study &middot; Arm B</h2>
   <p class="sub">A separate, JRS-naive batch reviewing the same 24 records. Each participant is randomly assigned by their code to the JRS arm or the no-JRS baseline. Aggregate counts only; codes, not names.</p>
   <div class="cards">
     <div class="card"><div class="cv hot" id="ab-today">&middot;</div><div class="ck">New today (UTC)</div></div>
@@ -121,7 +125,7 @@ tr.today td{background:rgba(93,191,130,.07)}
   </table></div>
   <div class="note">Arm assignment is automatic and random from each code. This section fills as Arm B participants submit; it shows participation only, never answers.</div>
 
-  <h1 style="font-size:22px;margin-top:34px">Organization Pilots &middot; Field Use</h1>
+  <h2 style="font-size:22px;margin-top:34px">Organization Pilots &middot; Field Use</h2>
   <p class="sub">Organizations that have applied the standard to their own records. Record text is never stored: each record is assessed in memory and discarded, so only the count of records run and the pattern of results is kept. Organization names appear only where the organization consented to be named.</p>
   <div class="cards">
     <div class="card"><div class="cv hot" id="op-today">&middot;</div><div class="ck">New today (UTC)</div></div>
@@ -131,12 +135,12 @@ tr.today td{background:rgba(93,191,130,.07)}
   </div>
   <div class="note" id="op-note">Organization pilots will appear here once the first organization runs the standard on its own records.</div>
   <div class="chart">
-    <h2>Sectors represented</h2>
+    <h3>Sectors represented</h3>
     <div id="opsector">Loading&hellip;</div>
     <div class="note" style="margin-top:8px">Sector of each organization that ran a pilot, and the routing bands their records received. Aggregate only; no organization's individual results are shown.</div>
   </div>
 
-  <h1 style="font-size:22px;margin-top:34px">Consented Registrations</h1>
+  <h2 style="font-size:22px;margin-top:34px">Consented Registrations</h2>
   <p class="sub">Named registrations captured at the field-guide and initiative-support gates. Every row behind these counts is a real person with an organization, an email, and explicit consent, which is what distinguishes them from an anonymous download or an anonymous click. Aggregate counts only; the named list is stored privately.</p>
   <div class="cards">
     <div class="card"><div class="cv hot" id="rg-today">&middot;</div><div class="ck">New today (UTC)</div></div>
@@ -146,13 +150,13 @@ tr.today td{background:rgba(93,191,130,.07)}
   </div>
   <div class="note" id="rg-note">Registrations will appear here once the first person registers at a gate.</div>
   <div class="chart">
-    <h2>What they registered for</h2>
+    <h3>What they registered for</h3>
     <div id="rgsplit">Loading&hellip;</div>
     <div class="note" style="margin-top:8px">Investigator Field Guide registrations by edition and initiative support by campaign. The guide and support gates went live on Aug 2, 2026; downloads and support recorded before that date were anonymous and cannot be attributed to a person.</div>
   </div>
 
-  <h1 style="font-size:22px;margin-top:34px">Since the Registration Gate</h1>
-  <div class="note" style="border-left-color:var(--accent)"><b style="color:var(--text)">Need the actual names?</b> Everything below is aggregate. The named list, with organization, title, country, what each person took, and what they consented to, is on the private page: <a href="people-9dd1ecdf6f8cdfd4.html" style="color:var(--accent)">the private people list</a>. It opens straight away, no token.</div>
+  <h2 style="font-size:22px;margin-top:34px">Since the Registration Gate</h2>
+  <div class="note" style="border-left-color:var(--accent)"><b style="color:var(--text)">Need the actual names?</b> The counts in this section are aggregate, but the named roster is now on this page: see <a href="#everyone-on-the-record" style="color:var(--accent)">Everyone on the record</a> below, which lists every person with their organization, title, country, what they did, and what they consented to. Email addresses and the honor quotes stay on the <a href="/supporters-b78f5ff2c08d.html" style="color:var(--accent)">owner sheet</a>. Neither needs a token.</div>
   <p class="sub">Everything below counts activity from 2 August 2026 forward, the date the guides and the initiative support action moved behind a registration form. Earlier downloads and support clicks were anonymous and cannot be attributed to a person, so they are excluded here rather than blended in. Training is the exception and is shown all-time, because enrollment always required identity and consent. Aggregate counts only; the named list stays private.</p>
   <div class="cards">
     <div class="card"><div class="cv hot" id="gt-today">&middot;</div><div class="ck">New today (UTC)</div></div>
@@ -162,7 +166,7 @@ tr.today td{background:rgba(93,191,130,.07)}
   </div>
   <div class="note" id="gt-note">Post-gate activity will appear here once the first person registers.</div>
   <div class="chart">
-    <h2>What they registered for, and where</h2>
+    <h3>What they registered for, and where</h3>
     <div id="gtsplit">Loading&hellip;</div>
   </div>
   <div class="cards" style="margin-top:14px">
@@ -173,8 +177,9 @@ tr.today td{background:rgba(93,191,130,.07)}
   </div>
   <div class="note" id="gt-note2">&nbsp;</div>
 
+  <h2 style="font-size:22px;margin-top:34px">Owner Sheet</h2>
   <div class="chart" style="border-color:var(--accent)">
-    <h2>Owner sheet</h2>
+    <h3>Where the names, emails and quotes live</h3>
     <p style="font-size:13px;color:var(--muted);line-height:1.65;margin:0 0 12px">
       The full record is below on this page. The owner sheet carries the same roster plus the honor quotes,
       recommendation and certificate requests, and the CSV export. It needs no token, no key and no typing.
@@ -190,24 +195,26 @@ tr.today td{background:rgba(93,191,130,.07)}
        guessable, unlike the owner sheet's. Consequence recorded in MASTER_TRACKER.md:
        the roster and the opaque endpoint URL are now readable by anyone who reaches
        this address. Rotate this filename to an opaque slug to close that. -->
-  <h1 style="font-size:22px;margin-top:34px">Everyone on the record</h1>
+  <h2 id="everyone-on-the-record" style="font-size:22px;margin-top:34px">Everyone on the record</h2>
   <div class="note" style="margin-bottom:10px">Every person in the private contact table with their country, what they did,
     and what they consented to. Country is shown for every person it is established for: captured at submission where the
     row carries one, otherwise read from the dated reviewer roster and marked as such.</div>
   <div class="chart">
     <div id="ppl-tiles" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin-bottom:12px"></div>
     <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px">
-      <input id="ppl-q" type="text" placeholder="Search name, organization, country"
+      <input id="ppl-q" type="search" placeholder="Search name, organization, country"
+             aria-label="Search the record by name, organization or country"
              style="flex:1 1 240px;background:#0d0d0d;border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:12.5px;padding:9px 11px">
-      <select id="ppl-country" style="background:#0d0d0d;border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:12.5px;padding:9px 11px"></select>
+      <select id="ppl-country" aria-label="Filter the record by country"
+              style="background:#0d0d0d;border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:12.5px;padding:9px 11px"></select>
     </div>
     <div id="ppl-cnt" class="note" style="margin:0 0 6px"></div>
     <div style="overflow-x:auto"><table id="ppl-tbl" style="min-width:940px"></table></div>
     <div class="note" id="ppl-note" style="margin-top:10px"></div>
   </div>
 
-  <h1 style="font-size:22px;margin-top:34px">Completed Evaluations</h1>
-  <p class="sub">How many people completed the reviewer evaluation, who they are where they chose to be named, and what the results are collected for.</p>
+  <h2 style="font-size:22px;margin-top:34px">Completed Evaluations</h2>
+  <p class="sub">How many people completed the reviewer evaluation, who they are where they chose to be named, and what the results are collected for. Nobody appears by name who did not tick that box.</p>
   <div class="cards" style="grid-template-columns:repeat(4,1fr)">
     <div class="card"><div class="cv hot" id="ce-submitted">&middot;</div><div class="ck">Evaluations completed</div></div>
     <div class="card"><div class="cv" id="ce-all9">&middot;</div><div class="ck">Answered all nine</div></div>
@@ -215,16 +222,16 @@ tr.today td{background:rgba(93,191,130,.07)}
     <div class="card"><div class="cv" id="ce-anon">&middot;</div><div class="ck">Chose to stay anonymous</div></div>
   </div>
   <div class="chart">
-    <h2>Who completed one</h2>
+    <h3>Who completed one</h3>
     <div id="ce-names">Loading&hellip;</div>
     <div class="note" style="margin-top:8px" id="ce-limit"></div>
   </div>
   <div class="chart">
-    <h2>What the results are collected for</h2>
+    <h3>What the results are collected for</h3>
     <div id="ce-purpose" style="font-size:13px;color:var(--muted);line-height:1.65">Loading&hellip;</div>
   </div>
 
-  <h1 style="font-size:22px;margin-top:34px">Reviewer Evaluation Funnel</h1>
+  <h2 style="font-size:22px;margin-top:34px">Reviewer Evaluation Funnel</h2>
   <p class="sub">The anonymized baseline on how records are reviewed inside working organizations. Four stages: how many opened the evaluation, how many submitted, how many answered all nine questions, and how many left contact details that can transfer with the asset. Answers and contact details are stored in different tables with no shared identifier, so these counts cannot be joined to say which respondent gave which answers.</p>
   <div class="cards">
     <div class="card"><div class="cv hot" id="ev-opened">&middot;</div><div class="ck">Opened the evaluation</div></div>
@@ -234,24 +241,24 @@ tr.today td{background:rgba(93,191,130,.07)}
     <div class="card"><div class="cv" id="ev-countries">&middot;</div><div class="ck">Countries reached</div></div>
   </div>
   <div class="chart">
-    <h2>Where the funnel loses people</h2>
+    <h3>Where the funnel loses people</h3>
     <div id="evfunnel">Loading&hellip;</div>
   </div>
   <div class="chart">
-    <h2>Country of reviewer</h2>
+    <h3>Country of reviewer</h3>
     <div id="evcountries">Loading&hellip;</div>
   </div>
   <div class="note" id="ev-note">Evaluation activity will appear here once the first reviewer opens the instrument.</div>
 
-  <h1 style="font-size:22px;margin-top:34px">Suppressed &amp; Inactive Cohorts</h1>
+  <h2 style="font-size:22px;margin-top:34px">Suppressed &amp; Inactive Cohorts</h2>
   <p class="sub">A zero on this page can mean three different things and you cannot tell them apart by looking: nothing happened, nothing was sent, or something is deliberately withheld. Every cohort below states which of the three it is. None of them is counted in an active total: a roster size is not an audience, an unsent link is not a non-response, and a withheld breakdown is not an absence of data.</p>
   <div class="chart">
-    <h2>Declared exclusions</h2>
+    <h3>Declared exclusions</h3>
     <div id="suppressed">Loading&hellip;</div>
     <div class="note" style="margin-top:8px">Anti-inflation statement. Rates for the per-person link programmes are computed against links <b>sent</b>, never against links <b>issued</b>. Where a rate against issued appears elsewhere in the payload it is labelled as the conservative reading and is not the operational one.</div>
   </div>
 
-  <h1 style="font-size:22px;margin-top:34px">Contributor Confirmations</h1>
+  <h2 style="font-size:22px;margin-top:34px">Contributor Confirmations</h2>
   <p class="sub">Per-person confirmation links sent to the reviewers who completed the international detection set, the article co-authors, and the pilot facilitators. Each link captures the exact name and title to print, the naming election, and the continuing-use and transfer permissions. Aggregate counts only; the wording each contributor chose is stored privately.</p>
   <div class="cards">
     <div class="card"><div class="cv hot" id="cb-today">&middot;</div><div class="ck">Confirmed today (UTC)</div></div>
@@ -261,7 +268,7 @@ tr.today td{background:rgba(93,191,130,.07)}
   </div>
   <div class="note" id="cb-note">Confirmations will appear here once the first contributor opens their link.</div>
 
-  <h1 style="font-size:22px;margin-top:34px">Training &amp; Certification Adoption</h1>
+  <h2 style="font-size:22px;margin-top:34px">Training &amp; Certification Adoption</h2>
   <p class="sub">Consented enrollments in the JRS training. Aggregate counts only; no personal data is shown here. The named, consented list is stored privately and is a transfer-ready asset.</p>
   <div class="cards">
     <div class="card"><div class="cv hot" id="tr-today">&middot;</div><div class="ck">New today (UTC)</div></div>
@@ -271,23 +278,25 @@ tr.today td{background:rgba(93,191,130,.07)}
   </div>
   <div class="note" id="tr-note">Training adoption will appear here once enrollment is enabled.</div>
   <div class="chart">
-    <h2>Completions by country</h2>
+    <h3>Completions by country</h3>
     <div id="trgeo">Loading&hellip;</div>
     <div class="note" style="margin-top:8px">Country of each training completion. Recorded automatically at completion (geo live since Jul 17, 2026); completions from before then are backfilled from reviewer records. Aggregate counts only.</div>
   </div>
 
-  <h1 style="font-size:22px;margin-top:34px">Investigator Guide Downloads</h1>
+  <h2 style="font-size:22px;margin-top:34px">Investigator Guide Downloads</h2>
   <p class="sub">Downloads of the three Investigator Field Guide editions: EEO, Fair Housing, and International. By day and by country, from one source, so the by-day total, the by-country total, and the by-asset total are the same number. Counted at the redirect endpoint, so emailed and shared links are included too. Aggregate counts only.</p>
   <div class="chart">
-    <h2>Downloads by day</h2>
+    <h3>Downloads by day</h3>
     <div id="dlchart" style="overflow-x:auto">Loading&hellip;</div>
     <div class="legend" id="dllegend"></div>
   </div>
   <div class="chart">
-    <h2>Each item's downloads by country</h2>
+    <h3>Each item's downloads by country</h3>
     <div id="itemsbycountry">Loading&hellip;</div>
     <div class="note" style="margin-top:8px">Every downloadable item on its own, counted by country: the three Investigator Field Guide editions, the JRS Standard PDF, the Rapid Review Card, the JRS Reviewer Reference (training companion), and the combined Investigator Field Guide. Nothing is grouped into a shared total. Country recorded at the redirect endpoint. Aggregate counts only.</div>
   </div>
+  <h2 style="font-size:22px;margin-top:34px">Initiative Support</h2>
+  <p class="sub">One-click endorsements of the two public initiatives, by day, by country and by initiative. These sit outside the guide downloads above and are counted separately.</p>
   <div class="cards" id="endorse-cards" style="grid-template-columns:1fr 1fr 1fr 1fr">
     <div class="card"><div class="cv hot" id="en-total">&middot;</div><div class="ck">Endorsements</div></div>
     <div class="card"><div class="cv" id="en-peak">&middot;</div><div class="ck">Best single day</div></div>
@@ -295,18 +304,18 @@ tr.today td{background:rgba(93,191,130,.07)}
     <div class="card"><div class="cv" id="en-mean">&middot;</div><div class="ck">Mean per active day</div></div>
   </div>
   <div class="chart">
-    <h2>Endorsements per day</h2>
+    <h3>Endorsements per day</h3>
     <div id="endorseday">Loading&hellip;</div>
-    <div class="note" style="margin-top:8px">One column per calendar day, UTC, running to today rather than to the last event. Every column carries its number, zeros included, so a quiet day reads as a measured zero rather than as a missing bar. Today is drawn on a faint track and labelled TODAY on the axis, so the slot is visible before anything fills it. The endorsement is a single click with no form behind it, so one row is one click and nothing is deduplicated.</div>
+    <div class="note" style="margin-top:8px">One column per calendar day, UTC, running to today rather than to the last event. Every column carries its number, zeros included, so a quiet day reads as a measured zero rather than as a missing bar. Today is drawn on a faint track and labelled TODAY on the axis, so the slot is visible before anything fills it. The endorsement is a single click with no form behind it. Columns dated 13 August 2026 onward count one endorsement per browser per initiative; earlier columns count raw clicks, so a reader who clicked twice was counted twice and those rows cannot be deduplicated now.</div>
   </div>
   <div class="chart">
-    <h2>Initiative supporters by country</h2>
+    <h3>Initiative supporters by country</h3>
     <div id="supchart">Loading&hellip;</div>
     <div id="supcampaign" style="margin-top:12px"></div>
     <div class="note" style="margin-top:8px">One-click endorsements of the two initiatives (The Right to Know Why; The Decisions You Can Defend), by country and by initiative. Recorded at the support link; aggregate counts only, no personal data.</div>
   </div>
   <div class="chart">
-    <h2>Supporters who chose to be listed</h2>
+    <h3>Supporters who chose to be listed</h3>
     <div id="supwall">Loading&hellip;</div>
     <div class="note" style="margin-top:8px">Only people who ticked "list my name publicly" when they added their support. Name and organization only, never email. Everyone else stays a private count.</div>
   </div>
@@ -1079,8 +1088,12 @@ function drawPeople(){
   if(!t) return;
   var list=pplFiltered();
   if(cnt) cnt.textContent='Showing '+list.length+' of '+PPL.length+' records.';
-  var h='<thead><tr>'+['Date','Name','Organization','Country','What they did','Completed','Public','Transfer']
-    .map(function(x){return '<th style="font-family:\'JetBrains Mono\',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule);white-space:nowrap">'+x+'</th>';}).join('')+'</tr></thead><tbody>';
+  // caption and scope="col": a screen reader announces what the table is and which
+  // column each cell belongs to. Without them this reads as 8 unlabelled columns.
+  var h='<caption style="caption-side:top;text-align:left;font-size:12px;color:var(--muted-soft);padding:0 0 8px">'
+      + 'Every person on the record, with their country, what they did and what they consented to.</caption>'
+      + '<thead><tr>'+['Date','Name','Organization','Country','What they did','Completed','Public','Transfer']
+    .map(function(x){return '<th scope="col" style="font-family:\'JetBrains Mono\',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule);white-space:nowrap">'+x+'</th>';}).join('')+'</tr></thead><tbody>';
   if(!list.length){
     h+='<tr><td colspan="8" style="padding:10px;color:var(--muted-soft);font-size:12.5px">Nothing matches that filter.</td></tr>';
   } else {
@@ -1088,7 +1101,7 @@ function drawPeople(){
       var inferred=(p.country_source==='reviewer records');
       var ctry=p.country
         ? ('<span style="color:var(--text)">'+esc(p.country)+'</span>'
-           + (inferred?'<span title="Row predates geo capture on 2026-07-17; read from the dated reviewer roster" style="font-family:\'JetBrains Mono\',monospace;font-size:7.5px;letter-spacing:.1em;color:var(--accent-dim);margin-left:5px">ROSTER</span>':''))
+           + (inferred?'<span title="Row predates geo capture on 2026-07-17; read from the dated reviewer roster" style="font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.1em;color:var(--review-text);margin-left:5px">ROSTER</span>':''))
         : '<span style="color:var(--muted-soft);font-size:11px">not on file</span>';
       h+='<tr>'
         +'<td style="padding:8px 10px;border-bottom:1px solid var(--rule);white-space:nowrap;color:var(--muted-soft);font-size:12px">'+esc(String(p.date||'').slice(0,10))+'</td>'

@@ -154,7 +154,7 @@ function drawEveryone(){
       +'<td>'+esc(p.title)+'</td>'
       +'<td style="white-space:nowrap">'+(p.country
           ? (esc(p.country) + (p.country_source==='reviewer records'
-              ? '<span title="Row predates geo capture on 2026-07-17; read from the dated reviewer roster" style="font-family:\'JetBrains Mono\',monospace;font-size:7.5px;letter-spacing:.1em;color:var(--accent-dim);margin-left:5px">ROSTER</span>'
+              ? '<span title="Row predates geo capture on 2026-07-17; read from the dated reviewer roster" style="font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.1em;color:var(--review-text);margin-left:5px">ROSTER</span>'
               : ''))
           : '<span style="color:var(--muted-soft);font-size:11px">not on file</span>')+'</td>'
       +'<td><span class="pill">'+esc(p.activity||p.source)+'</span></td>'
