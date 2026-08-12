@@ -1716,3 +1716,65 @@ Unchanged this run and previously verified. Four suppressed cohorts intact with 
 - Buyer outreach remains the only untried channel, and is now ungated.
 
 ---
+
+---
+
+## RUN 2026-08-13T03:05Z — The reviewer panel was not on the dashboard at all, and five country figures were unreconciled
+
+**Owner:** "Your reviewer country numbers are all off and why are they not on this [dashboard]."
+
+**Both parts were correct. MASTER_TRACKER.md read from disk first. Code first, this written after deploy and live verification.**
+
+### Defect 1: the dashboard never called `/api/panel-stats`
+
+**Zero references.** `grep -c "panel-stats" programme-status-9872fb93cc94.html` returned **0**.
+
+So the largest asset in the programme, the international reviewer bench, appeared **nowhere on the owner's own dashboard**: not the 36 completers, not the 57 reviewers, not the 16 countries, not the 5 continents, not the study split. Every figure the page did show counts a click, a contact or a download.
+
+### Defect 2: five country figures, five different populations, no denominator stated
+
+| Figure | Population | Basis |
+|---|---|---|
+| **16** | **Reviewer panel**, countries the 36 completers come from | **maintained constant** |
+| 7 | Named contacts in `pilot_contacts` (11 people) | computed live |
+| 8 | Endorsement clicks | computed live |
+| 7 | Guide downloads | computed live |
+| 5 | Training completions | computed live |
+
+**None is wrong and they are not meant to agree.** The page displayed several of them without naming the denominator, so they read as contradictions. **Making them match would have been the wrong fix.**
+
+### Repair
+
+Added a **Reviewer Panel** section with four cards and the study split, and a **reconciliation table** naming every country figure and the population it measures.
+
+**The panel figure is flagged on the page as a MAINTAINED CONSTANT, not a live count.** `panel-stats` reports `geo_source: transcribed`, `geo_as_of: 2026-08-11`, because no country is stored in any anon-readable table and the identities that carry one are RLS-locked. The other four are computed at request time. The page states which is which, and says plainly that **16 is the figure to use in a buyer-facing claim** because the others describe website traffic, not the bench.
+
+### A defect found during verification, not after
+
+The first version threw **`setv is not defined`** and left the panel blank. `setv()` is defined **locally inside each loader** in this file, never globally. Fixed by declaring a local one, matching the file's own convention. **Caught by rendering in a browser rather than by reading the source**, which is the rule this repository has now had to learn three times.
+
+### §0.2 verification
+
+`node --check` passes. Rendered against live payloads: **completers 36, countries 16, reviewers 57, registered 48**, 5 reconciliation rows, **zero console errors**, 45 headings with 0 level skips. Live after deploy: panel section present, `panel-stats` called, reconciliation block present, page 116,163 bytes.
+
+### Token / Supabase minimization
+
+**CONFIRMED TOKEN-LESS.** No endpoint created or modified. The page now reads five existing keyless endpoints instead of four.
+
+### Counter audit
+
+`panel-stats` countries reclassified: **maintained constant, drift-vulnerable, last transcribed 2026-08-11**, and now labelled as such on the page rather than presented as live. The other four country figures are **authoritative and computed at request time**. Suppressed cohorts unchanged and intact.
+
+### Trademark dossiers
+
+**JRS: READY TO FILE, Class 042. DRR: READY TO FILE, Class 042.** Unchanged.
+
+### Files modified
+
+`programme-status-9872fb93cc94.html`, `research/MASTER_TRACKER.md`, `MASTER_TRACKER.md`.
+
+### Outstanding
+
+- `REQUIRES EXTERNAL VERIFICATION`: the 16-country panel figure is transcribed. Rederive with `research/build_expert_roster.py` when the panel next changes.
+
+---
