@@ -210,6 +210,63 @@ export default async function handler(req){
           && !isCrawler(e.payload) && (e.payload || {}).campaign;
     }).length;
   }
+  // Browser family from a user agent, for diagnosis only. In-app browsers are
+  // named first because they are the ones that fetch a link without ever
+  // rendering the destination, which is the single most likely cause of an
+  // endorsement with no matching arrival.
+  function agentFamily(ua){
+    ua = String(ua || '');
+    if (!ua) return 'not recorded';
+    if (/LinkedInApp|LinkedIn/i.test(ua))            return 'LinkedIn in-app browser';
+    if (/FBAN|FBAV|Instagram/i.test(ua))             return 'Meta in-app browser';
+    if (/Twitter|X-Client/i.test(ua))                return 'X in-app browser';
+    if (/Slack|Discord|WhatsApp|Teams/i.test(ua))    return 'chat app preview';
+    if (CRAWLER.test(ua))                            return 'declared crawler';
+    if (/CriOS/i.test(ua))                           return 'Chrome on iOS';
+    if (/EdgA?|Edge/i.test(ua))                      return 'Edge';
+    if (/Firefox|FxiOS/i.test(ua))                   return 'Firefox';
+    if (/Chrome/i.test(ua))                          return 'Chrome';
+    if (/Safari/i.test(ua))                          return 'Safari';
+    return 'other';
+  }
+  // Today's rows on both sides of the gap, ordered by time.
+  function todayReconciliation(){
+    function rows(src, type){
+      return events.filter(function(e){
+        return e.source === src && e.type === type && isToday(e);
+      }).sort(function(a, b){
+        return String(a.created_at).localeCompare(String(b.created_at));
+      }).map(function(e){
+        const p = e.payload || {};
+        return {
+          at: String(e.created_at || '').slice(11, 16) + 'Z',
+          campaign: p.campaign || 'none',
+          src: p.src || 'none',
+          country: p.country || 'not recorded',
+          browser: agentFamily(p.user_agent),
+          counted: !isCrawler(p)
+        };
+      });
+    }
+    const ends = rows('support', 'endorse');
+    const arrs = rows('gate-view', 'view').filter(function(r){ return r.campaign !== 'none'; });
+    return {
+      endorsements_today: ends,
+      campaign_arrivals_today: arrs,
+      how_to_read: 'Line the two lists up by the "at" time. An endorsement with no '
+                 + 'arrival within a minute or two of it is a link that was fetched '
+                 + 'without the destination page ever rendering, which is what an '
+                 + 'in-app browser preload looks like. Several endorsements at the '
+                 + 'same minute from the same country and browser are one person '
+                 + 'clicking more than once. "not recorded" under browser means the '
+                 + 'row was written server-side by /api/support, which stores no user '
+                 + 'agent by design, so those rows can only be identified by time.',
+      why_they_differ: 'An endorsement is written server-side the instant the link is '
+                     + 'fetched. An arrival is written by the destination page and '
+                     + 'needs JavaScript to run, and is deduplicated per browser '
+                     + 'session. The two can never be expected to match exactly.'
+    };
+  }
   const todayCrawlers = events.filter(function(e){ return isToday(e) && isCrawler(e.payload); }).length;
   const todayHuman    = events.filter(function(e){ return isToday(e) && !isCrawler(e.payload); }).length;
   const todayReadsA = armA.reduce(function(n, r){ return n + (r.reads_today || 0); }, 0);
@@ -438,6 +495,16 @@ export default async function handler(req){
             + 'submissions, and a zero in contacts with a zero in submissions is one fact, '
             + 'not two. Where people stop is shown by drop_landing_to_open.'
       },
+      // ROW-BY-ROW RECONCILIATION, so the gap is readable instead of argued
+      // about. The owner has asked twice why endorsements exceed arrivals; a
+      // prose explanation did not settle it because it could not be checked
+      // against anything. This lists today's rows on both sides with the hour,
+      // the referral tag, the country and the browser family, so the two
+      // columns can be lined up by eye and the answer read off directly.
+      //
+      // No personal data: hour of day, referral tag, ISO country and a browser
+      // FAMILY derived from the user agent, never the agent string itself.
+      endorsement_reconciliation: todayReconciliation(),
       arrivals_vs_endorsements: {
         campaign_arrivals: todayCampaignArrivals(),
         endorsements_recorded: todayCount('support', 'endorse'),
