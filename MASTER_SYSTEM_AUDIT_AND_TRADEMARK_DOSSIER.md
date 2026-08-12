@@ -609,3 +609,13 @@ Extended it with `reviewer-eval-incentive`, `reviewer-cert` and `honor-accept`, 
 **Verified by opening the URL and nothing else:** no password input, 7 Today tiles, five sections rendered, Stacyann Young present with her quote text.
 
 **The division holds:** `pilot-status.html` stays public and counts-only. Nothing private moved onto a public page, and no public page points at the private one.
+
+### 2026-08-12T14:00:57Z : OWNER SHEET LINKED
+
+**The owner sheet was linked from nowhere.** It could not be linked from the dashboard either: `org-pilot.html` line 240 carried the one public anchor to `pilot-status.html`, and `org-pilot.html` is linked from five pages, so the dashboard was publicly reachable.
+
+**Repaired by removing that anchor rather than by exposing the sheet.** `pilot-status.html` now has zero public references and carries `noindex,nofollow`. The dashboard carries a visible "Open the owner sheet" button. `org-pilot.html` has 0 sessions all-time, so the removed link cost nothing measurable.
+
+**Verified live:** button present and visible, 0 anchors from `org-pilot.html`, 0 public references to the dashboard anywhere, both pages `noindex,nofollow`.
+
+**Token minimization CONFIRMED:** zero tokens, JWTs, OAuth flows or authenticated SDKs in this path. All four endpoints the sheet reads are keyless: `people-9dd1ecdf6f8cdfd4` is secured by its opaque URL, and the three stats endpoints are the public counts-only ones. Every token control built earlier in the session has been removed.

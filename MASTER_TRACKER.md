@@ -651,3 +651,60 @@ Unchanged. **JRS REQUIRES USER INPUT. DRR REQUIRES USER INPUT.**
 `supporters-b78f5ff2c08d.html`, `MASTER_TRACKER.md`, `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md`, `research/MASTER_TRACKER.md`.
 
 ---
+
+## Run: 2026-08-12T14:00:57Z
+
+**Counter audit: PATCHED. Link-click telemetry: VERIFIED, no defect found. Token/Supabase minimization: CONFIRMED, zero tokens introduced.**
+
+`MASTER_TRACKER.md` was read from disk before any change, as required: 35,507 bytes, 12 run headings, last run 2026-08-12T13:56:38Z.
+
+### The owner sheet is now linked
+
+**It was linked from nowhere.** It could not be linked from the dashboard either, because `org-pilot.html` line 240 carried the one public anchor to `pilot-status.html`, and `org-pilot.html` is itself linked from five pages. Linking the opaque URL from a publicly reachable page would have destroyed the only protection the names and quotes have.
+
+**Repair:** removed that anchor. `pilot-status.html` now has **zero public references** and carries `noindex,nofollow`, so it is as unreachable as the sheet it points to. The dashboard carries a visible button.
+
+`org-pilot.html` has **0 sessions all-time**, so the removed transparency link cost nothing measurable.
+
+### Verified live
+
+| Check | Result |
+|---|---|
+| "Open the owner sheet" on the dashboard | **present, 1 occurrence** |
+| Link element rendered and visible | **yes** |
+| Anchors to `pilot-status` in `org-pilot.html` | **0** |
+| Public references to `pilot-status.html` anywhere | **0** |
+| `pilot-status.html` robots | `noindex,nofollow` |
+| `supporters-b78f5ff2c08d.html` robots | `noindex,nofollow` |
+
+### Token and Supabase minimization: CONFIRMED
+
+**Zero tokens, zero JWTs, zero OAuth, zero authenticated SDKs anywhere in this path.** The owner sheet reads four endpoints and none requires a key:
+
+| Endpoint | Auth |
+|---|---|
+| `/api/people-9dd1ecdf6f8cdfd4` | **None.** Secured by its opaque URL, the same model as `roster-8c3f1a9e7b2d6045` and `geo-4e8b2d7f9a1c3065` |
+| `/api/asset-stats` | **None.** Public counts-only |
+| `/api/panel-stats` | **None.** Public counts-only |
+| `/api/support-stats` | **None.** Public counts-only |
+
+Every token control built earlier in this session has been removed: the setup block, the password input, the paste button, the `#k=` fragment reader, the `jrs-owner-token` key and its four helpers.
+
+### Telemetry status
+
+**No defect found this run and no telemetry code was changed.** Transmission remains `fetch(..., {keepalive: true})` on the five arrival pings, which satisfies the lightweight non-blocking requirement. `keepalive` remains classified **hardening, not a proven repair**: four harnesses failed to reproduce a cancellation, including a real HTTP server under 3G emulation.
+
+### Trademark dossiers
+
+Unchanged. **JRS REQUIRES USER INPUT. DRR REQUIRES USER INPUT.**
+
+### Files modified
+
+`org-pilot.html`, `pilot-status.html`, `MASTER_TRACKER.md`, `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md`, `research/MASTER_TRACKER.md`.
+
+### Outstanding
+
+`[REQUIRES USER INPUT]`: First Use Anywhere, First Use in Commerce, USPTO identification acceptability, all for both marks.
+`REQUIRES EXTERNAL VERIFICATION`: click loss beyond the proven 2026-08-02 to 2026-08-11 08:30Z outage window.
+
+---
