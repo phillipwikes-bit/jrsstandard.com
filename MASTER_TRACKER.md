@@ -938,3 +938,51 @@ The commit and push denials were intermittent and cleared on retry. Dev branch `
 Status upgraded from `PATCHED AND LOCALLY VERIFIED` to **`VERIFIED`** for both the country resolver and the record table. `REQUIRES USER INPUT` items are unchanged: Tanvi Pokhriyal's country, the slug-rotation decision for `pilot-status.html`, and the trademark first-use dates for both marks.
 
 ---
+
+---
+
+## RUN 2026-08-12T16:55Z — Tanvi Pokhriyal: UAE. The country was in the repository and my search missed it.
+
+**Owner:** "Tanvi is from UAE she was reviewer in previous study. You were too lazy to look it up."
+
+### The defect was mine and it was a search defect, not a data gap
+
+The previous run reported Tanvi Pokhriyal's country as `[REQUIRES USER INPUT]`, "established nowhere in the repository". **That was wrong.** It is stated plainly in three files:
+
+| File | Line | Text |
+|---|---|---|
+| `research/Tanvi_Pilot_Summary.md` | 3 | "Tanvi Pokhriyal (reviewer ID V-HR-01), HR/employment practitioner, **UAE**" |
+| `research/Pilot_Programs_and_Methodology_Summary.md` | 18 | "HR and employment practitioner (**UAE**)" |
+| `research/MASTER_TRACKER.md` | 284 | "HR pilot (Tanvi Pokhriyal, **UAE**) n=5" |
+
+**I opened the right file and used the wrong pattern.** The grep enumerated candidate countries literally: `india|united states|canada|uk|country|based in|location`. UAE and Emirates were not in the list, so `Tanvi_Pilot_Summary.md` matched the file filter, returned nothing, and I concluded the data did not exist.
+
+**Root cause: an enumerated-candidate search was used where an entity search was required.** Searching for a fixed list of country names can only ever find countries already guessed. The correct method was to read every file that names the person, which is 14 files and was affordable.
+
+### Why she is not in the roster CSV
+
+`research/Expert_Roster_All_Studies_2026-08-06.csv` covers studies **011 and 012**. Tanvi led the **HR real-case pilot** under reviewer ID **V-HR-01**, an earlier and separate study, so she was never in that file. **The owner's phrase "previous study" was the missing piece and it was correct.** The resolver's provenance comment now records that the roster is not the only source and that earlier-pilot reviewers are cited to their own file and line.
+
+### Correction applied
+
+`api/_country-backfill.js`: Tanvi Pokhriyal &rarr; **AE**, citing all three source lines plus owner confirmation dated 2026-08-12. `COUNTRY_NOT_ON_FILE` is now empty and is kept deliberately, because a genuine unknown must still have somewhere to be recorded rather than degrading into a silent blank.
+
+### Result
+
+| | Before | After |
+|---|---|---|
+| People with a country | 10 of 11 | **11 of 11** |
+| Distinct countries | 6 | **7** — AE, CA, KE, KR, NG, PL, US |
+| `people_without_country` | `["Tanvi Pokhriyal"]` | **`[]`** |
+
+**Every person on the record now carries a country.** Verified by running the real resolver over the live 16 rows before deploy.
+
+### Deploy
+
+Dev `6600f7a`; production `6adcced`, selective pattern, `research/` and `MASTER_` staged counts both **0**.
+
+### Standing correction to method
+
+Where a person's attribute is reported as not on file, the search that established that must be an **entity search across every file naming the person**, not a keyword search for the expected values. The earlier claim about Tanvi Pokhriyal was produced by the weaker method and was wrong.
+
+---
