@@ -12,7 +12,9 @@
 // research artifact in the repository, cited per entry.
 //
 // PROVENANCE: research/Expert_Roster_All_Studies_2026-08-06.csv, the reviewer
-// roster built from the study records, column `country`.
+// roster built from the study records, column `country`. That roster covers
+// studies 011 and 012 only. Reviewers from earlier pilots are cited to the
+// specific research file and line that records their country, per entry below.
 //
 // RULE: an entry is pruned once the person's own row carries a real country.
 // Row-captured country ALWAYS wins over anything in this map.
@@ -30,18 +32,25 @@ export const COMPLETION_COUNTRY_BACKFILL = {
   // SungSoo In, V-AI-24, roster country "South Korea" (enrolled 2026-07-19, no complete row)
   'deb4d4bf1f481e75ac94bc2433e34fc9822b8529a85cd0c0f44d05b59b4d5673': 'KR',
   // Sagarika Banerjee, RR-128, roster country "Canada (Toronto)" (endorsed 2026-08-02, pre-geo row)
-  'c5dcaf40ebce570624518e963d3cc924eab1179951039e50866b4a5fe93c9a00': 'CA'
+  'c5dcaf40ebce570624518e963d3cc924eab1179951039e50866b4a5fe93c9a00': 'CA',
+  // Tanvi Pokhriyal, reviewer ID V-HR-01, lead of the HR real-case pilot.
+  // Source: research/Tanvi_Pilot_Summary.md line 3, "HR/employment practitioner,
+  // UAE"; research/Pilot_Programs_and_Methodology_Summary.md line 18, "HR and
+  // employment practitioner (UAE)"; research/MASTER_TRACKER.md line 284, "HR
+  // pilot (Tanvi Pokhriyal, UAE)". Confirmed by the owner 2026-08-12.
+  // She sits outside Expert_Roster_All_Studies_2026-08-06.csv because that roster
+  // covers studies 011 and 012, and her review was a separate earlier pilot.
+  'f0d55578ea6444100a57993ea610f3065f38743c0879a532f5f9074e59938ab9': 'AE'
 };
 
 // People whose country is genuinely not established anywhere in the repository.
-// Listed by hash so the endpoint can say "asked for, not on file" instead of
-// showing a blank that reads like a bug. An inferred country is never invented
-// to fill one of these.
-export const COUNTRY_NOT_ON_FILE = {
-  // Tanvi Pokhriyal: appears in research/ as a pilot contributor but carries no
-  // country in any roster, message or row. REQUIRES USER INPUT.
-  'f0d55578ea6444100a57993ea610f3065f38743c0879a532f5f9074e59938ab9': true
-};
+// Listed by hash so the endpoint can say "not on file" instead of showing a blank
+// that reads like a bug. A country is never invented to fill one of these.
+//
+// EMPTY AS OF 2026-08-12: every person on the record carries a country. Kept
+// because the resolver still needs somewhere to record a genuine unknown, and a
+// blank must never be silently indistinguishable from an unasked question.
+export const COUNTRY_NOT_ON_FILE = {};
 
 export async function sha256hex(str){
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
