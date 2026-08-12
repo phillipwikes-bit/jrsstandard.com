@@ -512,3 +512,36 @@ Resolved from `bench_labels` by direct SQL. `bench-review.html` carries **two** 
 | Whether any click loss occurs beyond the proven outage window | **REQUIRES EXTERNAL VERIFICATION** |
 
 **LIVE EXTERNAL EVENT INGESTION: NOT LOCALLY VERIFIABLE.** The single test that would close it: open a campaign link on a real phone, on a real network, and confirm the Today panel increments.
+
+### 2026-08-12T13:09:24Z : THREE UNLOGGED RUNS RECORDED, AND ONE NEW MECHANISM
+
+**Counter audit: PATCHED. Link-click telemetry: VERIFIED, no defect found.**
+
+#### Process defect, recorded first because it is the reason for this entry
+
+`MASTER_TRACKER.md` at the workspace root was last written at **2026-08-12T12:42:55Z**. Three runs happened after it and were logged only to `research/MASTER_TRACKER.md`. Two trackers exist and only one was being kept current. Both are now updated in the same step.
+
+#### The three runs
+
+**A. Outreach message check.** Two factual errors in a LinkedIn message, one caused by my own change earlier that day. The scroll instruction named a button with **0 occurrences** on the page after the CTA was renamed and moved to 419px; following it lands on "Open Module 1 first". The recommendation was described as automatic when it is an opt-in checkbox never posted without approval. Verified correct: link resolves with `src` preserved, Module 1 open without sign-up, 9 questions, 4-minute claim, and the separation-of-answers claim true and stronger than stated.
+
+**B. Outreach template.** `research/Outreach_Template_Reviewer_Evaluation.md` created with both errors fixed. The CTA is described by **position**, not label, because a label breaks the moment copy changes and that is exactly how the original message went stale.
+
+**C. Recommendation-requester mechanism.** The public dashboard published the count and **nothing exposed who**. Extended `api/support-contacts.js`, the existing token-gated owner endpoint, to return `recommendation_requests` and `certificate_requests` with everything needed to write and post: name, email, organization, printed title, LinkedIn URL, country, completion code, four consent flags, request timestamp.
+
+**Answers are not joined in and cannot be.** The answer rows carry no identity and share no key with these rows. The endpoint returns who asked, never what they said.
+
+| Verification | Result |
+|---|---|
+| No token | Four boolean diagnostics only, zero name or email keys |
+| Wrong token | HTTP 401 |
+| "recommendation" in unauthorized response | 0 occurrences |
+| Public `asset-stats` payload | No email, no `linkedin_url` |
+
+#### Trademark dossiers
+
+Unchanged. **JRS REQUIRES USER INPUT. DRR REQUIRES USER INPUT.** First Use Anywhere, First Use in Commerce and USPTO identification acceptability all remain `[REQUIRES USER INPUT]`. No new repository evidence was found for any of them across these three runs.
+
+#### Files modified
+
+`api/support-contacts.js`, `research/Outreach_Message_Check_Priyam_2026-08-12.md`, `research/Outreach_Template_Reviewer_Evaluation.md`, `MASTER_TRACKER.md`, `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md`, `research/MASTER_TRACKER.md`.

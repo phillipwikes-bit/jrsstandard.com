@@ -316,3 +316,83 @@ Unchanged: **JRS REQUIRES USER INPUT, DRR REQUIRES USER INPUT.**
 `api/asset-stats.js`, `pilot-status.html`, `research/Reviewer_Evaluation_Summary_2026-08-11.md`, `research/Reviewer_Program_Summary_2026-08-09.md`, `MASTER_TRACKER.md`, `research/MASTER_TRACKER.md`.
 
 ---
+
+## Run: 2026-08-12T13:08:51Z
+
+**Overall execution status:** three prior runs were logged to `research/MASTER_TRACKER.md` and NOT to this file. That gap is closed here. All three are recorded below with their real status.
+
+**Root tracker was last updated at 2026-08-12T12:42:55Z. Three runs happened after it and were not written here.** The research log carried them; this file did not. That is a maintenance failure against the standing directive and it is corrected rather than explained away.
+
+| # | Item | Status |
+|---|---|---|
+| 3 | Link-click telemetry | **VERIFIED**, no defect found across the three runs |
+| 4 | Link-click repair | **None required.** `keepalive` from 2026-08-11 remains, classified hardening not proven repair |
+| 5 | Link inventory | **VERIFIED**, 785 navigating links, 66 pages |
+| 6 | Counter audit | **PATCHED**, two new publications added |
+| 7 | Metric reconciliation | **VERIFIED** |
+| 8 | JRS trademark dossier | **REQUIRES USER INPUT** |
+| 9 | DRR trademark dossier | **REQUIRES USER INPUT** |
+
+### Run A, previously unlogged here: outreach message check
+
+Checked a LinkedIn outreach message against the live site. **Two factual errors found, one of them caused by my own change earlier the same day.**
+
+| Error | Detail |
+|---|---|
+| Scroll instruction | Told the reader to scroll to the bottom and click "GO STRAIGHT TO THE REVIEWER EVALUATION". That string has **0 occurrences** on the page; the CTA was renamed and moved to the top at 419px. Following it lands on "Open Module 1 first", the opposite direction |
+| Recommendation described as automatic | It is an opt-in checkbox and nothing is posted without the person approving the wording |
+
+Verified correct: link resolves 307 with `src` preserved; Module 1 genuinely open without sign-up; 9 questions confirmed in `api/reviewer-eval.js`; 4-minute claim matches the page; separation-of-answers claim true and stronger than stated.
+
+**Standing risk recorded:** outreach copy hardcodes button labels and labels change. Describing a CTA by **position** survives a copy change; naming the exact label does not.
+
+### Run B, previously unlogged here: outreach template
+
+`research/Outreach_Template_Reviewer_Evaluation.md` created, both errors fixed, CTA described by position. Carries a pre-send check: run `check_completion.py <CODE>` against anyone on a reviewer roster, because a completer should receive their completion package rather than a recruitment message.
+
+### Run C, previously unlogged here: recommendation-requester mechanism
+
+**Gap found:** the public dashboard has always published `contacts_via_recommendation`, the count. **Nothing anywhere exposed who.** A count of three would tell the owner three people are owed a recommendation and give him no way to write any of them.
+
+**Repair:** extended `api/support-contacts.js`, the existing token-gated owner endpoint, to return `recommendation_requests` and `certificate_requests` with name, email, organization, printed title, LinkedIn URL, country, completion code, four consent flags and request timestamp.
+
+**Answers are not joined in and cannot be.** The answer rows carry no identity and share no key with these rows. The endpoint returns who asked, never what they said.
+
+**Verified on production, four ways:**
+
+| Check | Result |
+|---|---|
+| No token | Four boolean diagnostics only, zero name or email keys |
+| Wrong token | HTTP 401 |
+| Word "recommendation" in unauthorized response | 0, the gate leaks nothing about the new fields |
+| Public `asset-stats` payload | No email address, no `linkedin_url` |
+
+### Live figures at this timestamp
+
+| Metric | Value |
+|---|---|
+| Reviewers / completers / countries | 57 / 36 / 16 |
+| Today: campaign arrivals / reviewer landings / training arrivals | 2 / 3 / 0 |
+| Today: endorsements / guide downloads / records reviewed | 1 / 4 / 24 |
+| Endorsements total / last recorded | 42 / 2026-08-12 |
+| Evaluation opened / submitted | 0 / 0 |
+| Reviewer funnel: landed / opened evaluation / stopped at landing | 3 / 0 / 3 |
+| Completed evaluations / named publicly | 0 / 0 |
+
+### Required user inputs
+
+First Use Anywhere, First Use in Commerce, USPTO identification acceptability. All three, both marks.
+
+### Requires external verification
+
+Whether any click loss occurs beyond the proven 2026-08-02 to 2026-08-11 08:30Z outage window. Test: open a campaign link on a real phone and confirm the Today panel increments.
+
+### Files modified across the three runs
+
+`api/support-contacts.js` · `research/Outreach_Message_Check_Priyam_2026-08-12.md` · `research/Outreach_Template_Reviewer_Evaluation.md` · `research/MASTER_TRACKER.md` · `MASTER_TRACKER.md` · `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md`
+
+### Outstanding defect, process
+
+**This file was not maintained on three consecutive runs while the research log was.** Two trackers exist and only one was being kept current. Both are updated in the same step from here.
+
+---
