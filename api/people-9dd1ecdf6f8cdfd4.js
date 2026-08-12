@@ -34,7 +34,15 @@ const LABEL = {
   'training-complete':   'Training completed',
   'org-pilot':           'Ran records',
   'support':             'Initiative (pre-gate)',
-  'pilot':               'Pilot contact'
+  'pilot':               'Pilot contact',
+  // Added 2026-08-12. These three streams existed in the table and appeared in
+  // no owner-readable list, so a recommendation request, a certificate request
+  // and an honor quote were all invisible unless a token was typed into a URL
+  // by hand. This endpoint needs no token: it is secured by its opaque URL, the
+  // same model the roster, geo and supporters pages already use.
+  'reviewer-eval-incentive': 'Asked for a LinkedIn recommendation',
+  'reviewer-cert':           'Asked for a certificate',
+  'honor-accept':            'Accepted the Honor'
 };
 
 const EDITION = {
@@ -109,6 +117,11 @@ export default async function handler(req){
     else if (src === 'org-pilot')      detail = (p.records_run || 0) + ' records run' + (p.sector ? ', ' + p.sector : '');
     else if (src === 'training-enroll') detail = p.audience === 'panel' ? 'Panel channel' : 'Public channel';
     else if (src === 'training-complete') detail = 'Certificate issued';
+    else if (src === 'reviewer-eval-incentive') detail = 'Wants a recommendation written' + (p.linkedin_url ? '' : ', no LinkedIn URL supplied');
+    else if (src === 'reviewer-cert') detail = 'Completion code ' + (p.completion_code || 'not recorded');
+    else if (src === 'honor-accept') detail = (p.honor_code || 'Honor')
+      + (p.quote ? (p.quote_clearance === true ? ', quote CLEARED for publication' : ', quote NOT cleared')
+                 : ', no quote supplied');
 
     out.push({
       date: r.created_at || '',
@@ -125,7 +138,16 @@ export default async function handler(req){
       consent_public: (p.consent_named === true) || (p.consent_named_org === true) || (p.consent_public_list === true),
       campaign: String(p.campaign || ''),
       edition: String(p.edition || ''),
-      records_run: parseInt(p.records_run, 10) || 0
+      records_run: parseInt(p.records_run, 10) || 0,
+      // Carried through so the owner can act without a second lookup. The quote
+      // travels with its clearance flag, never on its own: a quote without its
+      // clearance must not be treated as publishable.
+      linkedin_url: String(p.linkedin_url || ''),
+      completion_code: String(p.completion_code || ''),
+      honor_code: String(p.honor_code || ''),
+      quote: String(p.quote || ''),
+      quote_cleared_for_publication: p.quote_clearance === true,
+      byline_ok: p.byline_ok === true
     });
   }
 
