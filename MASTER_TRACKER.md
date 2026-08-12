@@ -198,3 +198,68 @@ Whether any click loss occurs beyond the proven outage window. Test: open a camp
 `MASTER_TRACKER.md` · `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md` · `research/MASTER_TRACKER.md`. **No code was changed this run.** `keepalive` from the previous run is retained.
 
 ---
+
+## Run: 2026-08-12T12:32:13Z
+
+**Counter audit: DRIFT DETECTED (presentation), then PATCHED. Link-click telemetry: no defect found this run.**
+
+### The question
+
+What does "3 reviewer landing arrivals" mean, did they open the evaluation, and did we capture their information.
+
+### The answer, from the database
+
+| Time (UTC) | Source | Country | Device | Crawler |
+|---|---|---|---|---|
+| 05:40:04 | linkedin | IN | Windows desktop, Chrome 151 | no |
+| 12:07:33 | linkedin | IN | Windows desktop, Chrome 149 | no |
+| 12:08:30 | linkedin | IN | Windows desktop, Chrome 149 | no |
+
+**2 distinct devices, 3 page loads. Both real people, both from India, both arriving from LinkedIn.**
+
+| Stage | Count |
+|---|---|
+| Landed on the reviewer page | **3** |
+| Opened the evaluation | **0** |
+| Submitted | **0** |
+| Contact details captured | **0** |
+
+**They did not open the evaluation.** `eval-view` rows today: 0. `pilot_contacts` rows today: 0.
+
+**No, we did not get their information, and could not have.** Contact details are requested only at the END of the evaluation, in the optional incentive block. Anyone who stops before submitting leaves no name, no email and no identifier, by design. Contacts can never exceed submissions.
+
+### Why they left, measured not guessed
+
+`reviewer/index.html` was rendered at both sizes matching the visitors' actual user agent:
+
+| Viewport | Page height | Evaluation CTA position | Above fold |
+|---|---|---|---|
+| 1366x768 | 2416px | **2149px and 2205px** | **No** |
+| 1920x1080 | 2416px | **2149px and 2205px** | **No** |
+
+**The only links to the evaluation sat 89 percent of the way down the page.** A visitor had to scroll the entire page to find one.
+
+### Repair
+
+| Change | Result |
+|---|---|
+| Primary CTA inserted above the fold | Now at **419px**, above the fold at both 1366x768 and 1920x1080, verified by re-render |
+| Bottom CTA pair reordered | Evaluation is primary, Module 1 becomes the ghost secondary |
+| `reviewer_funnel` block added to `asset-stats` | Landed, opened, submitted, contacts, plus where people stop |
+| Today panel states the chain | "3 landed to 0 opened to 0 submitted to 0 contacts, 3 stopped at the landing page" |
+
+**Verified live:** `drop_landing_to_open` reads 3, above-fold CTA present on the deployed page.
+
+### Link-click telemetry
+
+**No defect found this run.** The `reviewer-view` arrival counter recorded all three visits correctly, with source, country, device and user agent. The telemetry worked; the page did not.
+
+### Trademark dossiers
+
+Unchanged: **JRS REQUIRES USER INPUT, DRR REQUIRES USER INPUT.**
+
+### Files modified
+
+`reviewer/index.html`, `api/asset-stats.js`, `pilot-status.html`, `MASTER_TRACKER.md`, `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md`, `research/MASTER_TRACKER.md`.
+
+---
