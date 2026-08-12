@@ -52,7 +52,7 @@ So, plainly: **would FELTG consider a guest session on what AI-assisted drafting
 
 The short version of the problem: an AI-drafted record can be complete on its face and still leave a reviewer unable to reconstruct why the decision was made. That is the gap that surfaces at the MSPB, and it is not what current documentation training is aimed at.
 
-I have an article on it coming in CEP Magazine in November, and an international panel of 32 reviewers has stress-tested the method.
+I have an article on it coming in CEP Magazine in November, and an international panel of 36 reviewers has stress-tested the method.
 
 Happy to send an outline, or to talk for twenty minutes if that is easier.
 
@@ -74,7 +74,7 @@ Directly, then: **would your training group have room for a guest session on AI-
 
 Coming from the EEOC bench you will have seen records that read as complete and still could not show why the finding was reached. AI-assisted drafting is making that failure more common and harder to spot, because the output reads well.
 
-I ran a 24-record study on it with 32 reviewers across 16 countries. An article is out in CEP Magazine in November.
+I ran a 24-record study on it with 36 reviewers across 16 countries. An article is out in CEP Magazine in November.
 
 Twenty minutes on the phone if it is worth a look.
 
@@ -96,7 +96,7 @@ I wrote in July on Peter Broida's suggestion, and ended by saying no reply was n
 
 The session: how to tell, before a record is finalized, whether a reader could reconstruct the basis for the decision from the file alone. It is a growing problem specifically because AI-assisted drafts read as complete.
 
-Basis for it: a 24-record study, 32 reviewers across 16 countries, scored against a key fixed before scoring. Article in CEP Magazine, November.
+Basis for it: a 24-record study, 36 reviewers across 16 countries, scored against a key fixed before scoring. Article in CEP Magazine, November.
 
 If sessions are set further out than that, I would rather know and come back at the right time.
 

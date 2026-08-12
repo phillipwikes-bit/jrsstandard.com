@@ -82,9 +82,9 @@ The only things that stay gated are the confidential core, and those are guardra
 | Training completions, row-verified | **4** |
 | Endorsements, all sources, all time | **50** across 8 countries (link hits before 08-13, not 50 people) |
 | Named supporters | **3** |
-| Reviewers completing a full study set | **32, across 16 countries** |
+| Reviewers completing a full study set | **36, across 16 countries** |
 
-**The 32-reviewer panel is the asset. Everything else on this table is small.**
+**The 36-reviewer panel is the asset. Everything else on this table is small.**
 
 ---
 

@@ -29,7 +29,7 @@ A trademark protects **a name used to sell something**. Nothing else.
 
 **This is the single most important thing to understand before spending money.** People file trademarks believing they are protecting their invention. They are not. If someone reads your standard, implements it exactly, and calls it something else, a trademark stops none of that.
 
-**What you own that has value is the research, the 32-reviewer evidence base across 16 countries, the method, and the domain. The trademark is a label on the outside of that box.**
+**What you own that has value is the research, the 36-reviewer evidence base across 16 countries, the method, and the domain. The trademark is a label on the outside of that box.**
 
 ---
 
@@ -44,7 +44,7 @@ You have never sold anything. You dropped commercialization to do research. Read
 | Completed reviewer evaluations | **0** |
 | Named supporters | **3** |
 | Endorsement clicks | 49 across 8 countries (link hits, not 49 people) |
-| Reviewers who completed a full study set | **32, across 16 countries** |
+| Reviewers who completed a full study set | **36, across 16 countries** |
 
 **That last line is the real asset.** The rest is why a use-based trademark application is impossible and an intent-to-use application is the only route.
 

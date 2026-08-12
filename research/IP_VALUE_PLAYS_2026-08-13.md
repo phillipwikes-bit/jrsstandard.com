@@ -65,7 +65,7 @@ You are partway there already: **12 of 16 records carry a transfer consent flag.
 
 **This is your most under-exploited asset and I do not think you are seeing it.**
 
-You have a 24-record set, graded by **32 independent experts across 16 countries**, scored against an answer key that was **fixed and independently verified before any scoring took place**, with **measured inter-rater reliability (Gwet's AC1 0.739, with a confidence interval)**.
+You have a 24-record set, graded by **36 independent experts across 16 countries**, scored against an answer key that was **fixed and independently verified before any scoring took place**, with **measured inter-rater reliability (Gwet's AC1 0.739, with a confidence interval)**.
 
 That is roughly **768 expert-graded reads on a pre-registered key.** Labelled evaluation data of that quality, with real credentialed raters and published reliability, is scarce and expensive to produce. AI governance vendors, model evaluators and audit firms need exactly this kind of set and cannot easily build one.
 
@@ -104,7 +104,7 @@ Bundle: the scripts, the dated result series, and a README that lets a stranger 
 
 ### 7. Document the reviewer panel as a re-activatable asset
 
-**32 credentialed experts across 16 countries who have already completed a full set for you**, most with transfer consent. That is a recruited, proven panel, and recruiting one is expensive and slow.
+**36 credentialed experts across 16 countries who have already completed a full set for you**, most with transfer consent. That is a recruited, proven panel, and recruiting one is expensive and slow.
 
 Write it up as an asset: size, countries, seniority, consent status, and what it would cost to rebuild. **Do not publish names while the comparison study is blind.**
 
