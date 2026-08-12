@@ -1843,3 +1843,76 @@ Created `api/_panel-countries.js`. Modified `api/panel-stats.js`, `programme-sta
 - `[REQUIRES USER INPUT]`: country for RR-129, if it exists. RR-130 and RR-132 are deliberately anonymous and should stay unresolved.
 
 ---
+
+---
+
+## RUN 2026-08-13T04:35Z — The country figure was unscoped, which is a defect already recorded in this tracker
+
+**Owner:** "The last time it was this. What is going on, are you looking at all the studies, are you reviewing master tracker?"
+
+**Answer to the second question: I had not been, and doing so found that I was repeating a defect this file already records.**
+
+### What the tracker already said
+
+> *"'54 international reviewers across 16 countries' attached the country figure to the wrong group: 16 countries is verified for the 33 full-set completers, not for all 54 reviewers, so the line now separates the two."*
+
+The same entry records two legitimate, differently-scoped figures: **16 programme-wide** and **11 for the detection panel**, the latter being what the manuscript and `research.html` publish.
+
+### I was repeating it
+
+The dashboard card read a bare **"Countries: 16"** sitting in a row with **"Graded at least one record: 57"** and **"Registered: 48"**. **That adjacency is exactly what produced the original error.** A reader lands on "57 reviewers across 16 countries", which is the wrong claim.
+
+### Why the number looked like it kept changing
+
+**It never changed. Three correctly-scoped figures exist and were being shown without their scope:**
+
+| Figure | Population |
+|---|---|
+| **11** | Detection panel (Study 011), 16 completers. What the manuscript publishes |
+| **16** | All full-set completers, 36 people. Programme-wide |
+| **57** | Everyone who graded at least one record. **Carries no country figure of its own** |
+
+### Study coverage, checked rather than assumed
+
+The roster holds **three** studies:
+
+| Study | Rows | Complete | Contributes countries |
+|---|---|---|---|
+| 011 Detection panel | 16 | **16** | yes, 11 countries |
+| 012 Randomized comparison | 20 | **20** | yes |
+| 004 Reviewer reliability | 24 | **0** | **no** |
+
+**Study 004's 24 raters are counted in the 57 reviewers but complete no 24-record set.** Their recorded countries are India, US and Australia, **all already inside the 16**, so Study 004 adds no country and the 16 holds programme-wide. That was verified, not assumed.
+
+### Repair
+
+`api/panel-stats.js` now computes **both** scopes from the same map: `countries` (16) and **`detection_countries` (11)**. A new `countries_scope` field states in words which population the figure belongs to and that attaching it to the reviewer total is a recorded past defect.
+
+The dashboard card is relabelled **"Countries of the completers"**, with **"not of all 57 reviewers"** and the detection figure printed underneath it. **The scope now travels with the number.**
+
+### Verification
+
+Computing from the map reproduces **both** published figures exactly: **11** for the detection panel, **16** for all completers. Live after deploy: `countries 16 · detection_countries 11 · detection_completers 16 · reviewers 57 · geo_source computed`. Dashboard re-rendered against the live payload, zero console errors. `node --check` passes on the endpoint and the page.
+
+### Counter audit
+
+`panel-stats.detection_countries` added as **authoritative, computed at request time**. `panel-stats.countries` remains authoritative and now carries an explicit scope string. **No hand-maintained figure remains anywhere in the counter set.**
+
+### Token / Supabase minimization
+
+**CONFIRMED TOKEN-LESS.** No token, key or SDK. One additional in-memory resolution over codes the endpoint already reads.
+
+### Trademark dossiers
+
+**JRS: READY TO FILE, Class 042. DRR: READY TO FILE, Class 042.** Unchanged.
+
+### Files modified
+
+`api/panel-stats.js`, `programme-status-9872fb93cc94.html`, `research/IP_SALE_TRACKER.md` (rev 5), both trackers.
+
+### Outstanding
+
+- `[REQUIRES USER INPUT]`: country for RR-129. RR-130 and RR-132 are deliberately anonymous and stay unresolved.
+- **Standing rule now recorded: never publish a country figure without naming the population it belongs to.**
+
+---

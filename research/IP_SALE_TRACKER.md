@@ -7,8 +7,8 @@
 | | |
 |---|---|
 | **Created** | 2026-08-13 |
-| **Last revised** | 2026-08-13 (rev 4) |
-| **Revisions** | 4 |
+| **Last revised** | 2026-08-13 (rev 5) |
+| **Revisions** | 5 |
 | **Current stage** | **Zero buyer conversations held, because I advised waiting. Gate withdrawn 2026-08-13** |
 | **Sale probability, as-is** | **5 to 10%** over ~12 months (owner's own anchor, `Path_to_Sale_Action_Plan.md`, unchanged) |
 
@@ -83,8 +83,12 @@ The only things that stay gated are the confidential core, and those are guardra
 | Endorsements, all sources, all time | **50** across 8 countries (link hits before 08-13, not 50 people) |
 | Named supporters | **3** |
 | Reviewers completing a full study set | **36, across 16 countries** |
+| Detection panel alone | **16 completers, 11 countries** (the figure the manuscript publishes) |
+| Everyone who graded at least one record | **57 reviewers.** **The 16-country figure does NOT belong to this number** |
 
 **The 36-reviewer panel is the asset. Everything else on this table is small.**
+
+**COUNTRY SCOPE RULE, binding on every buyer-facing claim:** 16 countries belongs to the **36 full-set completers**. 11 belongs to the **detection panel alone**. Neither belongs to the 57 reviewers. Attaching the country figure to the reviewer total is a **recorded past defect** in `research/MASTER_TRACKER.md`, and both figures are now computed live by `/api/panel-stats` as `countries` and `detection_countries` so neither can be transcribed wrongly again.
 
 ---
 
@@ -150,6 +154,7 @@ GRC / compliance software vendors · E-discovery and legal-tech · HR-tech and p
 
 | # | Date | Change |
 |---|---|---|
+| 5 | 2026-08-13 | Country scope pinned. Both published figures, 16 for all completers and 11 for the detection panel, are now computed from one map by `/api/panel-stats`, and the dashboard card carries its own scope. Checked all three studies: 004's 24 reliability raters count toward the 57 reviewers but add no country, their recorded countries being India, US and Australia, all already inside the 16. |
 | 4 | 2026-08-13 | Buyer pages repaired. Prospectus was a dead end at 2 anchors, now 8, all verified 200. Vendor preview cross-linked. Validation Report deliberately NOT linked, per its own confidentiality statement and guardrail 1. Two of my own audit findings withdrawn as wrong: the page already pulled panel figures live and already rendered 48. A draft link to `mccr-simulator.html` failed the on-disk check before deploy; that file does not exist and was removed from the CLAUDE.md platform map. |
 | 3 | 2026-08-13 | Published the dossier as a web section at `programme-status-9872fb93cc94.html#sale-dossier`. Placed on the existing private page rather than a new one, per the CLAUDE.md rule that there is one private owner page. Verified live: all seven blocks present, 43 headings, 0 level skips, 0 console errors. |
 | 2 | 2026-08-13 | **Withdrew the three-gate rule.** Owner stated he did not approach buyers because I told him it was too early. Verified: `Path_to_Sale_Action_Plan.md` set three prerequisites before buyer outreach, and my 2026-08-13 trademark hold made gate 2 unreachable. Reclassified from owner execution gap to my advice error. No gate now stands between him and a buyer conversation. |
