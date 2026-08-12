@@ -1778,3 +1778,68 @@ The first version threw **`setv is not defined`** and left the panel blank. `set
 - `REQUIRES EXTERNAL VERIFICATION`: the 16-country panel figure is transcribed. Rederive with `research/build_expert_roster.py` when the panel next changes.
 
 ---
+
+---
+
+## RUN 2026-08-13T03:50Z — Root cause of the country mess removed. No hand-maintained figure remains.
+
+**Owner:** "Fix this mess once and for all."
+
+**MASTER_TRACKER.md read from disk first. Code first; this written after deploy and live verification.**
+
+### Root cause, not the symptom
+
+`/api/panel-stats` reported countries and continents as **hand-maintained constants** carrying a `geo_source: 'transcribed'` flag and a date. **A number updated by hand drifts**, and this one sat beside four live figures borrowing their credibility. Every earlier pass in this session treated a symptom: relabelling the figure, explaining the figure, reconciling the figure. **None removed the reason it could go wrong.**
+
+**The endpoint's own comment said countries "CANNOT BE COMPUTED HERE". That was wrong.** `pilot_progress` and `armb_progress` already expose reviewer **codes**, and the roster maps code to country. **The join was simply never made.**
+
+### The fix
+
+**`api/_panel-countries.js` (new):** 33 reviewer codes mapped to ISO 3166-1 alpha-2, a continent table, and `resolvePanelGeo()`. Free-text roster values normalised: "UAE (Dubai)" to `AE`, "US (North Carolina)" to `US`, "Cote d'Ivoire" to `CI`.
+
+**`api/panel-stats.js`:** collects the codes that **actually completed** and derives countries and continents **at request time**. The old constants survive only as a no-resolve fallback.
+
+**Privacy:** the map is **bundled into the edge function and never served as a static file**, so no code-to-country pair leaves the server. Only the aggregate and the unresolved-code list are returned. The map holds no name, email or organization.
+
+**Honesty:** three completer codes have **no country on file**, the two anonymous Arm B participants and one unrecorded. They are counted as completers and reported in `geo_unresolved`, **never guessed**. An unknown code can no longer silently under-count.
+
+### Three tests, all passed before deploy
+
+| Test | Result |
+|---|---|
+| Does computing reproduce the transcribed constants? | **YES, exactly: 16 countries, 5 continents.** This is what made the swap safe |
+| Does it move by itself when a completer in a new country is added? | **YES, 16 to 17** |
+| Does an unknown code corrupt the count? | **No.** Lands in `unresolved`, count unchanged |
+
+### Live after deploy
+
+`completers 36 · countries 16 · continents 5 · reviewers 57 · registered 48 · geo_source **computed** · geo_resolved 33 · geo_unresolved [RR-129, RR-130, RR-132]`. `geo_as_of` is gone, because there is no longer a transcription date to report.
+
+Dashboard re-rendered against the live payload: **all five country rows now read "computed live"**, and the note reads *"All five are now computed at request time. None is hand-maintained."* Zero console errors.
+
+### Counter audit: the classification changes
+
+`panel-stats.countries` moves from **drift-vulnerable / maintained constant** to **authoritative / computed at request time**. **There is now no hand-maintained figure anywhere in the counter set.**
+
+### §0.2 verification
+
+`node --check` passes on `api/_panel-countries.js`, `api/panel-stats.js` and the dashboard's inline script. Static grep confirms no orphaned constant: the two fallbacks are referenced at the point of use.
+
+### Token / Supabase minimization
+
+**CONFIRMED TOKEN-LESS.** No token, key or SDK added. The endpoint reads the same three anon-readable views it already read, and resolves geography in memory.
+
+### Trademark dossiers
+
+**JRS: READY TO FILE, Class 042. DRR: READY TO FILE, Class 042.** Unchanged.
+
+### Files modified
+
+Created `api/_panel-countries.js`. Modified `api/panel-stats.js`, `programme-status-9872fb93cc94.html`, both trackers.
+
+### Outstanding
+
+- Regenerate the map with `research/build_expert_roster.py` when the panel changes. **If it is not regenerated, new codes appear in `geo_unresolved` rather than corrupting the count**, which is the failure mode this design chooses on purpose.
+- `[REQUIRES USER INPUT]`: country for RR-129, if it exists. RR-130 and RR-132 are deliberately anonymous and should stay unresolved.
+
+---
