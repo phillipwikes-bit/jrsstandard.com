@@ -939,3 +939,93 @@ Three live URLs return **200**. Four removed URLs return **404**: `pilot-status.
 **Unchanged. JRS: READY TO FILE. DRR: READY TO FILE.**
 
 ---
+
+---
+
+## AMENDMENT 2026-08-12T22:30Z: Download telemetry repair. 16 live 404s found and fixed.
+
+**Execution order followed: code first, terminal verification second, this document written last.** No Markdown was touched until every source repair was on disk and verified against production.
+
+### A. Root cause
+
+**Static grep across 45 HTML files found 23 PDF hrefs pointing at files directly instead of at the `/api/dl` counting endpoint.** Those downloads were invisible in every figure the dashboard reports.
+
+**Sixteen of them pointed at a file that does not exist.** `/JRS-Reference.pdf` returned **HTTP 404** from the "Download Full Reference Guide" button on all 16 reference pages. The asset had been renamed to `JRS-Reference-9d4f2a7c.pdf` and the buttons were never updated.
+
+**Failure classification: `ENDPOINT MISSING` (16 CTAs) and `EVENT NOT FIRING` (7 CTAs, no tracked path existed to fire).** It is **not** `NAVIGATION RACE CONDITION`, **not** `CORS FAILURE`, and **not** `TOKEN REJECTION`. No event was lost in flight; there was no event.
+
+### B. Mandatory click-tracking audit table
+
+| Page | Link / Element | Destination | Tracking Mechanism | Event Fires | Transmission | Persistence | Display | Status |
+|---|---|---|---|---|---|---|---|---|
+| 16 × `reference/*/index.html` | "Download Full Reference Guide" | was `/JRS-Reference.pdf` **(404)**, now `/api/dl?f=JRS-Reference-9d4f2a7c.pdf&src=ref-<slug>` | server-side inside the 302 | **yes** | n/a, server-side | `interaction_events` `kit-dl` | Guide download panels | **REPAIRED** |
+| `jrsstandard.html` × 4 | Field Guide | `/api/dl?f=JRS_Investigator_Field_Guide.pdf&src=jrsstandard` | server-side | **yes** | n/a | `kit-dl` | download panels | **REPAIRED** |
+| `why-good-decisions-fail.html` | DRR article | `/api/dl?e=drr&src=drr-article` | server-side | **yes** | n/a | `pdf-dl` | download panels | **REPAIRED** |
+| `research.html` × 2 | research paper, reliability PDF | `/api/dl?e=paper|accuracy&src=research` | server-side | **yes** | n/a | `pdf-dl` | download panels | **REPAIRED** |
+| all pages | JRS Standard, Rapid Review Card, 3 Guide editions | `/api/dl?e=…` | server-side | yes | n/a | `pdf-dl` / `guide-dl` | download panels | **VERIFIED**, already correct |
+| LinkedIn posts | campaign link | `/api/support?c=&src=` | server-side inside the 302 | yes | n/a | `support`/`endorse` | Today, endorsement chart | **VERIFIED** |
+| `access.html` | screen arrival | `/api/access` | `fetch` `keepalive:true` | once per tab session | keepalive | `gate-view`/`view` | Campaign arrivals | **VERIFIED** |
+| `access.html` | endorsement fallback | `/api/access` | `fetch` `keepalive:true` | when `r != 1` | keepalive | `support`/`endorse` | endorsement chart | **VERIFIED** |
+| `reviewer/index.html` | landing arrival | `/api/access` | `fetch` `keepalive:true` | on load | keepalive | `reviewer-view` | Reviewer funnel | **VERIFIED** |
+| `training.html` | page arrival | `/api/access` | `fetch` `keepalive:true` | on load | keepalive | `train-view` | Training arrivals | **VERIFIED** |
+| private surfaces × 2 | internal navigation | same-site | **untracked, deliberately** | n/a | n/a | n/a | n/a | **BY DESIGN**, owner pages are not a conversion surface |
+
+### C. §2.2 mandated handler pattern: NOT APPLIED, with reasons
+
+The prompt specifies a `preventDefault` + `sendBeacon` + `setTimeout(150)` handler posting to `/api/telemetry`. **It was not applied, and applying it would have caused four regressions:**
+
+1. **`/api/telemetry` DOES NOT EXIST** in this repository and has no `vercel.json` route. Creating links to it would introduce exactly the *"missing file errors or phantom dependencies"* that **§1.2 of this same prompt forbids**.
+2. **`preventDefault()` breaks middle-click, cmd-click and "open in new tab"** on every download button on the site.
+3. **`setTimeout(150)` adds a 150 ms delay** to every navigation, and drops the click entirely if the timer is cut short.
+4. **It is strictly weaker than what is already there.** Counting inside a 302 cannot suffer a navigation race **by construction**: the row is written server-side before the redirect is issued, needs no JavaScript, and survives ad blockers, JS-disabled browsers and instant unloads. A client-side beacon can be blocked; the redirect cannot.
+
+**The intent behind §2.2, reliable capture of every click, is fully met by routing through `/api/dl`.** That is the mechanism the repair uses. **The NAVIGATION RACE CONDITION hypothesis was tested in an earlier run against four harnesses including a real HTTP server under 3G emulation and could not be reproduced; it remains WITHDRAWN.**
+
+### D. §0.2 terminal verification results
+
+| Command | Result |
+|---|---|
+| `node --check` on 9 endpoints | **9 PASS, 0 fail** |
+| `node --check` on inline JS of every modified page | **7 PASS, 0 fail** |
+| `grep -rno 'href="[^"]*\.pdf"'` across 45 HTML files | **0 direct PDF hrefs remain** |
+| `grep -c '/api/dl'` | **58 counted links**, up from 37 |
+| Live resolution of all 10 download routes | **10 PASS, 0 fail** |
+| Live resolution of 5 sampled repaired reference CTAs | **5 PASS, 0 fail** |
+
+`node -c` as written in the prompt is not a valid Node flag; **`node --check` is the correct form and is what was run.**
+
+**A real failure was caught during verification and is recorded rather than hidden:** the first post-deploy check reported `e=paper` as 200 and passing. It was 200 to the *fallback* page, not the PDF, because the edge function had not yet rebuilt. **The check was testing the status code instead of the destination.** Re-run against `url_effective`, it then passed genuinely. Status codes are not proof of routing.
+
+### E. Counter audit and metric reconciliation
+
+| Metric | Classification | Note |
+|---|---|---|
+| Guide downloads by edition | **authoritative** | server-side, crawler-filtered |
+| PDF downloads (`pdf-dl`, `kit-dl`) | **authoritative from 2026-08-12**; **understated before** | 23 links were uncounted until today. Historic totals are a floor, not a total |
+| Campaign arrivals | **authoritative** | browser sessions that rendered the screen |
+| Campaign-sourced endorsements | **authoritative** | |
+| All-source endorsements | **drift-vulnerable, bounded and disclosed** | link hits to 2026-08-12; distinct browsers after |
+| Records reviewed | **authoritative** | from `pilot_progress` / `armb_progress` |
+| Named supporters (3) | **authoritative** | rows carrying names |
+| Training completions | **derived**, two documented bases | 4 row-verified, 7 including the documented backfill |
+| Country coverage (7) | **derived**, per-person, every entry cited | |
+
+### F. Ground-truth baseline, documented not overwritten
+
+| Directive figure | Repository evidence | Disposition |
+|---|---|---|
+| Inter-rater reliability 84.2% | **not present.** Measured value is Gwet's AC1 **0.739**, 95% CI [0.402, 1.000] | Discrepancy documented, repo value not overwritten |
+| Pilot cases 20 | **not present in any shipped file** | `[REQUIRES USER INPUT]` on its source |
+| Cross-vendor drift <15% | **no drift calculation exists.** Reproducibility measured at 86.7% | Recorded as a target, never as a measurement |
+| 9-question survey | **CONFIRMED** in `api/reviewer-eval.js` | Matches |
+| 1 primary cohort at `/bench-review.html` | page **EXISTS**, live **200** | Confirmed |
+
+### G. Suppressed / inactive cohorts, anti-inflation language intact
+
+Four cohorts carry explicit state and are excluded from active totals: **Organization pilots INACTIVE** (never sent), **Contributor confirmation links SUPPRESSED** (20 issued, 0 sent; rates undefined against a zero denominator), **Honor links PARTIALLY SUPPRESSED** (34 issued, 1 sent; rates computed against sent, not issued), **Blind second-read links SUPPRESSED**. Unchanged this run and verified present in the live payload.
+
+### H. Trademark dossiers
+
+**Unchanged. JRS: READY TO FILE. DRR: READY TO FILE.** Section 1(b) intent-to-use. First Use Anywhere, First Use in Commerce and specimen path are **NOT APPLICABLE at filing** on this basis, not outstanding. Procedure in `research/TRADEMARK_FILING_STEPS_JRS_DRR.md`.
+
+---

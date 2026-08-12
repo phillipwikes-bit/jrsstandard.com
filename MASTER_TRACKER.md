@@ -1447,3 +1447,68 @@ Renamed: `pilot-status.html` &rarr; `programme-status-9872fb93cc94.html`. Delete
 - Trademark: mailing address, citizenship, USPTO identity verification.
 
 ---
+
+---
+
+## RUN 2026-08-12T22:30Z — Download telemetry: 23 uncounted links, 16 of them dead
+
+**Execution order honoured: every source repair was written to disk and verified against production BEFORE either Markdown file was touched.**
+
+**MASTER_TRACKER.md read from disk first:** 88,568 bytes, 9 run headings, last `2026-08-12T21:30Z`.
+
+### Root cause
+
+Static grep over 45 HTML files: **23 PDF hrefs bypassed `/api/dl`**, so those downloads were counted nowhere. **Sixteen pointed at `/JRS-Reference.pdf`, which does not exist and returns HTTP 404.** The "Download Full Reference Guide" button on all 16 reference pages has been dead.
+
+**Classification: `ENDPOINT MISSING` (16) and `EVENT NOT FIRING` (7).** Not a race, not CORS, not auth. No event was lost in flight; there was no event.
+
+### Repairs, all on disk and live
+
+| Fix | Files | Result |
+|---|---|---|
+| `/JRS-Reference.pdf` 404 &rarr; `/api/dl?f=JRS-Reference-9d4f2a7c.pdf&src=ref-<slug>` | 16 reference pages | **404 fixed and download counted, in one change** |
+| Field Guide direct link &rarr; `/api/dl?f=…` | `jrsstandard.html` (4) | counted |
+| DRR article &rarr; `/api/dl?e=drr` | `why-good-decisions-fail.html` | counted |
+| Research paper, reliability PDF &rarr; `/api/dl?e=paper|accuracy` | `research.html` (2) | counted |
+| 3 new `DOCS` entries + `normDoc` aliases | `api/dl.js` | `?f=` whitelist unchanged, still not an open redirect |
+
+### §2.2 mandated handler: DELIBERATELY NOT APPLIED
+
+`/api/telemetry` **does not exist** in this repo, so wiring links to it would create the phantom dependency **§1.2 of the same prompt forbids**. The pattern also `preventDefault()`s, which **breaks middle-click and cmd-click**, and adds a **150 ms delay** to every navigation.
+
+**Counting inside a 302 cannot race by construction** and needs no JavaScript, so it is strictly stronger than a client beacon. The intent of §2.2 is met; the implementation is not, and the reason is recorded rather than silently skipped.
+
+### Verification (§0.2)
+
+`node --check`: **9/9 endpoints PASS, 7/7 inline scripts PASS**. Static grep: **0 direct PDF hrefs remain**; `/api/dl` links **37 &rarr; 58**. Live: **10/10 download routes resolve to the correct file**, **5/5 sampled repaired reference CTAs resolve**.
+
+**A false pass was caught and is recorded:** the first post-deploy check read `e=paper` as 200 and green. It was 200 to the *fallback page*, not the PDF, because the edge function had not rebuilt. **The check tested the status code, not the destination.** Re-run against `url_effective` it passed genuinely. **Status codes are not proof of routing** — the same class of error as verifying a payload instead of a screen.
+
+`node -c` from the prompt is not a valid Node flag; **`node --check` was used.**
+
+### Token / Supabase minimization
+
+**CONFIRMED TOKEN-LESS.** No token, JWT, OAuth flow or authenticated SDK added or touched. No client SDK introduced. The repair is href changes plus three server-side dictionary entries.
+
+`LIVE EXTERNAL EVENT INGESTION: VERIFIED` for routing on all 10 routes. **Row-level persistence of a real download was deliberately not tested**, because doing so writes rows into the owner's download counts; `?src=verify` is the sanctioned bypass and records nothing by design.
+
+### Counters, baseline, cohorts
+
+`pdf-dl` and `kit-dl` reclassified: **authoritative from 2026-08-12, understated before it.** Historic download totals are a floor, not a total. Baseline reconciled without overwriting: **84.2% and the 20-case figure are not in the repository**; measured AC1 is **0.739**; drift <15% is a target against measured reproducibility of 86.7%; the 9-question survey is **confirmed**; `bench-review.html` is live at 200. Four suppressed cohorts verified intact with anti-inflation language.
+
+### Files modified on disk
+
+`api/dl.js`, `jrsstandard.html`, `why-good-decisions-fail.html`, `research.html`, and 16 × `reference/*/index.html`. **20 source files, then these two Markdown files last.**
+
+### Trademark
+
+**JRS: READY TO FILE. DRR: READY TO FILE.** Section 1(b).
+
+### Outstanding
+
+- `[REQUIRES USER INPUT]` source of the "20 pilot cases" and "84.2%" baseline figures; neither appears in any shipped file.
+- `[REQUIRES USER INPUT]` USPTO account and identity verification, the only thing blocking both filings.
+- `REQUIRES EXTERNAL VERIFICATION`: row-level download persistence, untestable without polluting live counts.
+- Cookie dedup on `/api/support` still unexercised by real traffic.
+
+---
