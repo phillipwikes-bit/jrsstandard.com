@@ -619,3 +619,13 @@ Extended it with `reviewer-eval-incentive`, `reviewer-cert` and `honor-accept`, 
 **Verified live:** button present and visible, 0 anchors from `org-pilot.html`, 0 public references to the dashboard anywhere, both pages `noindex,nofollow`.
 
 **Token minimization CONFIRMED:** zero tokens, JWTs, OAuth flows or authenticated SDKs in this path. All four endpoints the sheet reads are keyless: `people-9dd1ecdf6f8cdfd4` is secured by its opaque URL, and the three stats endpoints are the public counts-only ones. Every token control built earlier in the session has been removed.
+
+### 2026-08-12T14:08:51Z : OWNER SHEET CONSOLIDATED, TRAINING COMPLETIONS NAMED
+
+**Two defects.** The sheet filtered to support rows and hid 13 of 16 records, including every training enrolment and completion, on the page meant to consolidate the asset for a buyer. And all four training completions rendered blank, because `api/complete.js` writes the completion row with `name: ''` by design, keyed by email, so the row alone cannot say who completed.
+
+**Repaired:** `api/people-9dd1ecdf6f8cdfd4.js` joins completion to enrolment by email and returns `training_completed_named`. `supporters-b78f5ff2c08d.html` shows every stream, adds a Training table with per-person completion state, adds a catch-all Other records section so a new stream can never be silently dropped, and prints the total record count.
+
+**The 7 vs 4 gap is documented, not drift.** `enroll-stats` adds panel reviewers who enrolled via `?src=panel` and completed per the reviewer records without writing a completion row, held in a SHA-256 backfill map keyed by hashed email. The sheet shows the conservative row-verified 4 and prints the reason.
+
+**Verified in a rendered browser:** no token input, six sections, completers named as Joseph Munge, SungSoo In, Andrey Ekhmenin and Nicholas Evans, Stacyann Young present with her quote, 16 records total.

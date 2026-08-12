@@ -708,3 +708,53 @@ Unchanged. **JRS REQUIRES USER INPUT. DRR REQUIRES USER INPUT.**
 `REQUIRES EXTERNAL VERIFICATION`: click loss beyond the proven 2026-08-02 to 2026-08-11 08:30Z outage window.
 
 ---
+
+## Run: 2026-08-12T14:08:51Z
+
+**Counter audit: PATCHED. Link-click telemetry: VERIFIED, no defect found. Token/Supabase minimization: CONFIRMED, zero tokens.**
+
+`MASTER_TRACKER.md` read from disk before any change: 38,552 bytes, 13 run headings, last run 2026-08-12T14:00:57Z.
+
+### Two defects found
+
+**1. The owner sheet was hiding 13 of 16 records.** It filtered to `support` and `support-register` only, so every training enrolment and every training completion was invisible on the page meant to consolidate the asset for a buyer.
+
+**2. Training completions had no name.** All four rendered blank. `api/complete.js` writes the completion row with `name: ''` **by design**, keyed by email, so a completion row alone cannot say who completed. The name lives on the enrolment row and the two were never joined.
+
+### Repairs
+
+| File | Change |
+|---|---|
+| `api/people-9dd1ecdf6f8cdfd4.js` | Joins `training-complete` to `training-enroll` by email. Each enrolment row now carries `training_completed` and `training_completed_on`. Returns `training_completed_named` and `training_completed_named_count` |
+| `supporters-b78f5ff2c08d.html` | Shows every stream. New Training table with completion state per person. Catch-all "Other records" section so a new stream can never be silently dropped. Prints the total record count |
+
+### The 7 vs 4 discrepancy, resolved not papered over
+
+`/api/enroll-stats` reports **7 completions**; only **4** completion rows exist. **This is correct and documented, not drift.** `enroll-stats` adds panel reviewers who enrolled via `?src=panel` and completed per the reviewer records without ever writing a completion row. They are held in a SHA-256 backfill map in `api/enroll-stats.js`, keyed by hashed email so no raw address sits in source.
+
+**The sheet shows the conservative, row-verified figure of 4 and prints the reason**, so a buyer reading both numbers sees why they differ instead of finding a contradiction.
+
+### Verified live, rendered in a browser
+
+| Check | Result |
+|---|---|
+| Password or token input | **none** |
+| Sections | Today 2026-08-12 · Training (4 of 7 completed) · Named supporters · Asked for a LinkedIn recommendation (0) · Asked for a certificate (0) · **Honor acceptances with their quote (2)** |
+| Training completers named | **Joseph Munge, SungSoo In, Andrey Ekhmenin, Nicholas Evans** |
+| Stacyann Young with quote | **present** |
+| Total record line | 16 records across every stream |
+
+### Trademark dossiers
+
+Unchanged. **JRS REQUIRES USER INPUT. DRR REQUIRES USER INPUT.**
+
+### Files modified
+
+`api/people-9dd1ecdf6f8cdfd4.js`, `supporters-b78f5ff2c08d.html`, `MASTER_TRACKER.md`, `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md`, `research/MASTER_TRACKER.md`.
+
+### Outstanding
+
+`[REQUIRES USER INPUT]`: First Use Anywhere, First Use in Commerce, USPTO identification acceptability, both marks. Country is blank on all four named completions because completion rows predate geo capture on 2026-07-17; `enroll-stats` backfills country from the same documented map, the people endpoint does not.
+`REQUIRES EXTERNAL VERIFICATION`: click loss beyond the proven 2026-08-02 to 2026-08-11 08:30Z window.
+
+---
