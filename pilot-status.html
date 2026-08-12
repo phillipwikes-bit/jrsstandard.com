@@ -176,12 +176,34 @@ tr.today td{background:rgba(93,191,130,.07)}
   <div class="chart" style="border-color:var(--accent)">
     <h2>Owner sheet</h2>
     <p style="font-size:13px;color:var(--muted);line-height:1.65;margin:0 0 12px">
-      This page is counts only. Names, emails, LinkedIn URLs, who asked for a recommendation or a certificate,
-      and the quotes honorees wrote all live on the owner sheet. It needs no token, no key and no typing.
+      The full record is below on this page. The owner sheet carries the same roster plus the honor quotes,
+      recommendation and certificate requests, and the CSV export. It needs no token, no key and no typing.
     </p>
     <a href="/supporters-b78f5ff2c08d.html" style="display:inline-block;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;text-decoration:none;padding:13px 20px;font-weight:600">Open the owner sheet &rarr;</a>
     <div class="note" style="margin-top:10px">Bookmark it. Reachable only from here and from a direct link: this page carries
       <b>noindex,nofollow</b> and, as of 2026-08-12, is no longer linked from any public page.</div>
+  </div>
+
+  <!-- EVERY PERSON, WITH THEIR COUNTRY, ON THIS PAGE.
+       Placed here on the owner's explicit instruction (2026-08-12). This page is
+       noindex,nofollow and carries zero public inbound references, but its slug is
+       guessable, unlike the owner sheet's. Consequence recorded in MASTER_TRACKER.md:
+       the roster and the opaque endpoint URL are now readable by anyone who reaches
+       this address. Rotate this filename to an opaque slug to close that. -->
+  <h1 style="font-size:22px;margin-top:34px">Everyone on the record</h1>
+  <div class="note" style="margin-bottom:10px">Every person in the private contact table with their country, what they did,
+    and what they consented to. Country is shown for every person it is established for: captured at submission where the
+    row carries one, otherwise read from the dated reviewer roster and marked as such.</div>
+  <div class="chart">
+    <div id="ppl-tiles" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin-bottom:12px"></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px">
+      <input id="ppl-q" type="text" placeholder="Search name, organization, country"
+             style="flex:1 1 240px;background:#0d0d0d;border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:12.5px;padding:9px 11px">
+      <select id="ppl-country" style="background:#0d0d0d;border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:12.5px;padding:9px 11px"></select>
+    </div>
+    <div id="ppl-cnt" class="note" style="margin:0 0 6px"></div>
+    <div style="overflow-x:auto"><table id="ppl-tbl" style="min-width:940px"></table></div>
+    <div class="note" id="ppl-note" style="margin-top:10px"></div>
   </div>
 
   <h1 style="font-size:22px;margin-top:34px">Completed Evaluations</h1>
@@ -1037,7 +1059,92 @@ function renderSupWall(d){
   h+='</div>';
   w.innerHTML=h;
 }
-function refresh(){ loadToday(); loadDetection(); loadRealcase(); loadArmB(); loadOrgPilots(); loadGate(); loadRegistrations(); loadEvalFunnel(); loadContributors(); loadTraining(); loadDownloads(); loadItems(); loadSupport(); }
+// EVERYONE ON THE RECORD, WITH COUNTRY.
+// Reads the same no-token endpoint the owner sheet reads. Country arrives
+// already resolved per person by api/_country-backfill.js, with country_source
+// saying whether it was captured at submission or read from the reviewer roster,
+// so an inferred country is never displayed as a measured one.
+var PPL = [];
+function pplFiltered(){
+  var q=((document.getElementById('ppl-q')||{}).value||'').trim().toLowerCase();
+  var c=((document.getElementById('ppl-country')||{}).value||'');
+  return PPL.filter(function(p){
+    if(c && (p.country||'')!==c) return false;
+    if(!q) return true;
+    return [p.name,p.organization,p.country,p.title,p.activity,p.detail].join(' ').toLowerCase().indexOf(q)!==-1;
+  });
+}
+function drawPeople(){
+  var t=document.getElementById('ppl-tbl'), cnt=document.getElementById('ppl-cnt');
+  if(!t) return;
+  var list=pplFiltered();
+  if(cnt) cnt.textContent='Showing '+list.length+' of '+PPL.length+' records.';
+  var h='<thead><tr>'+['Date','Name','Organization','Country','What they did','Completed','Public','Transfer']
+    .map(function(x){return '<th style="font-family:\'JetBrains Mono\',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule);white-space:nowrap">'+x+'</th>';}).join('')+'</tr></thead><tbody>';
+  if(!list.length){
+    h+='<tr><td colspan="8" style="padding:10px;color:var(--muted-soft);font-size:12.5px">Nothing matches that filter.</td></tr>';
+  } else {
+    list.forEach(function(p){
+      var inferred=(p.country_source==='reviewer records');
+      var ctry=p.country
+        ? ('<span style="color:var(--text)">'+esc(p.country)+'</span>'
+           + (inferred?'<span title="Row predates geo capture on 2026-07-17; read from the dated reviewer roster" style="font-family:\'JetBrains Mono\',monospace;font-size:7.5px;letter-spacing:.1em;color:var(--accent-dim);margin-left:5px">ROSTER</span>':''))
+        : '<span style="color:var(--muted-soft);font-size:11px">not on file</span>';
+      h+='<tr>'
+        +'<td style="padding:8px 10px;border-bottom:1px solid var(--rule);white-space:nowrap;color:var(--muted-soft);font-size:12px">'+esc(String(p.date||'').slice(0,10))+'</td>'
+        +'<td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--text);font-size:12.5px">'+esc(p.name||'(not given)')+'</td>'
+        +'<td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--muted);font-size:12px">'+esc(p.organization)+'</td>'
+        +'<td style="padding:8px 10px;border-bottom:1px solid var(--rule);font-size:12px;white-space:nowrap">'+ctry+'</td>'
+        +'<td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--muted);font-size:12px">'+esc(p.activity||p.source)+'</td>'
+        +'<td style="padding:8px 10px;border-bottom:1px solid var(--rule);font-size:12px;white-space:nowrap;color:'+(p.training_completed?'var(--ready-text)':'var(--muted-soft)')+'">'
+          +(p.training_completed?esc(String(p.training_completed_on||'').slice(0,10)||'yes'):'·')+'</td>'
+        +'<td style="padding:8px 10px;border-bottom:1px solid var(--rule);font-size:12px;color:'+(p.consent_public?'var(--ready-text)':'var(--muted-soft)')+'">'+(p.consent_public?'Yes':'No')+'</td>'
+        +'<td style="padding:8px 10px;border-bottom:1px solid var(--rule);font-size:12px;color:'+(p.consent_transfer?'var(--ready-text)':'var(--muted-soft)')+'">'+(p.consent_transfer?'Yes':'No')+'</td>'
+        +'</tr>';
+    });
+  }
+  t.innerHTML=h+'</tbody>';
+}
+function loadPeople(){
+  var tiles=document.getElementById('ppl-tiles'); if(!tiles) return;
+  fetch('/api/people-9dd1ecdf6f8cdfd4')
+    .then(function(r){ return r.ok?r.json():null; })
+    .then(function(d){
+      if(!d||!d.people){ tiles.innerHTML='<div class="note">Could not load the record just now.</div>'; return; }
+      PPL=d.people;
+      var done={}, ctry={};
+      PPL.forEach(function(p){
+        var k=String(p.email||p.name||'').trim().toLowerCase();
+        if(p.training_completed&&k) done[k]=1;
+        if(p.country) ctry[p.country]=(ctry[p.country]||0)+1;
+      });
+      function cell(v,k){ return '<div style="border:1px solid var(--rule);padding:11px;text-align:center">'
+        +'<div style="font-family:\'Bodoni Moda\',serif;font-size:24px;color:var(--accent);line-height:1">'+v+'</div>'
+        +'<div style="font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);margin-top:6px">'+k+'</div></div>'; }
+      tiles.innerHTML=cell(d.total_rows||PPL.length,'Records')+cell(d.unique_people||0,'People')
+        +cell(d.organizations||0,'Organizations')+cell(Object.keys(ctry).length,'Countries')
+        +cell(Object.keys(done).length,'Completed training');
+      var sel=document.getElementById('ppl-country');
+      if(sel){
+        sel.innerHTML='<option value="">All countries</option>'+Object.keys(ctry).sort().map(function(c){
+          return '<option value="'+esc(c)+'">'+esc(c)+' ('+ctry[c]+')</option>'; }).join('');
+        sel.addEventListener('change', drawPeople);
+      }
+      var q=document.getElementById('ppl-q'); if(q) q.addEventListener('input', drawPeople);
+      var note=document.getElementById('ppl-note');
+      if(note){
+        var miss=(d.people_without_country)||[];
+        note.innerHTML='Country resolved for <b>'+(d.unique_people-miss.length)+'</b> of <b>'+d.unique_people
+          +'</b> people across <b>'+Object.keys(ctry).length+'</b> countries. Rows marked ROSTER predate geo capture on '
+          +'2026-07-17 and were read from the dated reviewer roster, not inferred.'
+          +(miss.length?(' Still not on file anywhere in the record: <b>'+miss.map(esc).join(', ')
+            +'</b>. No country is invented to fill that.'):'');
+      }
+      drawPeople();
+    })
+    .catch(function(){ tiles.innerHTML='<div class="note">Could not load the record just now.</div>'; });
+}
+function refresh(){ loadToday(); loadDetection(); loadRealcase(); loadArmB(); loadOrgPilots(); loadGate(); loadRegistrations(); loadEvalFunnel(); loadContributors(); loadTraining(); loadDownloads(); loadItems(); loadSupport(); loadPeople(); }
 refresh();
 setInterval(refresh, 60000);
 </script>
