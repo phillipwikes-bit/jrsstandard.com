@@ -442,15 +442,29 @@ export default async function handler(req){
         campaign_arrivals: todayCampaignArrivals(),
         endorsements_recorded: todayCount('support', 'endorse'),
         difference: todayCampaignArrivals() - todayCount('support', 'endorse'),
-        explanation: 'Every arrival on the campaign screen should record one endorsement. '
-                   + 'Two writes cover it: /api/support records server-side for anyone who '
-                   + 'follows a campaign link, and the screen itself records a fallback for '
-                   + 'anyone arriving by a copied, forwarded or bookmarked URL, deduped per '
-                   + 'browser. Both went live on 2026-08-11, the server write at 08:30Z and '
-                   + 'the fallback at 20:45Z. Arrivals BEFORE those times produced no '
-                   + 'endorsement and cannot be recovered as one, which is the whole of any '
-                   + 'difference shown here on 2026-08-11. From 2026-08-12 a difference on '
-                   + 'this line is a defect and should be treated as one.'
+        explanation: 'THESE TWO NUMBERS DO NOT COUNT THE SAME THING, AND MORE '
+                   + 'ENDORSEMENTS THAN ARRIVALS IS NOT LOST CLICKS. An endorsement '
+                   + 'counts a HIT on the campaign link. An arrival counts a BROWSER '
+                   + 'SESSION that actually rendered the screen, deduped per session in '
+                   + 'sessionStorage, and it needs JavaScript to run. So one person who '
+                   + 'clicks the link, goes back and clicks again, or whose browser '
+                   + 'prefetches the address bar, produced several endorsements and one '
+                   + 'arrival. Anything that fetches the URL without rendering the page, '
+                   + 'such as an in-app browser preload, produced an endorsement and no '
+                   + 'arrival at all, because the server write happens before the '
+                   + 'redirect is even issued. On 2026-08-12 this read 7 against 2 for '
+                   + 'exactly that reason. FIXED THE SAME DAY: /api/support now writes at '
+                   + 'most one endorsement per browser per campaign, marked by a '
+                   + 'first-party cookie holding the single character 1 and no '
+                   + 'identifier of any kind, which is the same rule the screen fallback '
+                   + 'already used. Rows written BEFORE that fix are undeduped link hits '
+                   + 'and cannot be deduplicated retroactively, because no per-visitor '
+                   + 'field was ever stored, deliberately. Endorsements dated on or after '
+                   + '2026-08-13 count distinct browsers; earlier ones count hits.',
+        counting_basis: {
+          endorsements_recorded: 'link hits before 2026-08-13, distinct browsers per campaign from 2026-08-13',
+          campaign_arrivals: 'browser sessions that rendered the screen and ran JavaScript'
+        }
       },
       crawler_rows_excluded: todayCrawlers,
       total_human_events: todayHuman,
