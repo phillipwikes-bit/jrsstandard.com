@@ -109,12 +109,14 @@ export default async function handler(req){
   //
   // Email is used as the join key and is never exposed by this join beyond the
   // rows that already carry it.
-  const completedEmails = {}, completedOn = {};
+  const completedEmails = {}, completedOn = {}, nameByEmail = {};
   for (let i = 0; i < rows.length; i++){
     const r = rows[i] || {};
-    if (String(r.source || '') !== 'training-complete') continue;
     const em = String(r.email || '').trim().toLowerCase();
     if (!em) continue;
+    // Any row that carries a name can supply it to a row that does not.
+    if (!nameByEmail[em] && String(r.name || '').trim()) nameByEmail[em] = String(r.name).trim();
+    if (String(r.source || '') !== 'training-complete') continue;
     completedEmails[em] = true;
     if (!completedOn[em] || String(r.created_at || '') > completedOn[em]) completedOn[em] = r.created_at || '';
   }
@@ -150,7 +152,11 @@ export default async function handler(req){
 
     out.push({
       date: r.created_at || '',
-      name: (r.name == null ? '' : String(r.name)),
+      // A completion row is written with no name, so it is filled from the
+      // enrolment row that shares the email. Without this the four completions
+      // read as four blanks on the owner sheet.
+      name: (String(r.name || '').trim() || nameByEmail[String(r.email || '').trim().toLowerCase()] || ''),
+      name_from_join: !String(r.name || '').trim() && !!nameByEmail[String(r.email || '').trim().toLowerCase()],
       email: (r.email == null ? '' : String(r.email)),
       organization: (r.organization == null ? '' : String(r.organization)),
       title: String(p.title || p.display_title || ''),
