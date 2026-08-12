@@ -64,12 +64,32 @@ export default async function handler(req){
   const NOT_A_PERSON = /googlebot|bingbot|baiduspider|yandexbot|duckduckbot|applebot|GoogleOther|facebookexternalhit|bot|spider|crawl|slurp|preview|headless|curl|wget|python-requests|libwww|okhttp|java\/|go-http/i;
   const isAgent = !ua || NOT_A_PERSON.test(ua);
 
+  // ONE ENDORSEMENT PER BROWSER PER CAMPAIGN.
+  //
+  // This write previously had NO deduplication of any kind. Every GET wrote a
+  // row, so a reload, a back-button, a second click on the same post, or a
+  // browser prefetching the address bar each produced another endorsement,
+  // while the campaign-screen arrival it should pair with is deduped per
+  // session. On 2026-08-12 that read 7 endorsements against 2 arrivals and the
+  // dashboard called the gap a defect, which sent the owner looking for lost
+  // clicks that were never lost. THE COUNT WAS INFLATED, NOT THE ARRIVALS
+  // UNDERCOUNTED.
+  //
+  // The marker is a first-party cookie holding the single character '1'. It
+  // carries no identifier, no session id and nothing that can be joined to a
+  // person; it only answers "has this browser already been counted for this
+  // campaign". access.html deduplicates its own fallback the same way, in
+  // localStorage under jrs-endorsed-<campaign>, so both paths now agree.
+  const COOKIE = 'jrs_e_' + campaign;
+  const cookies = String(req.headers.get('cookie') || '');
+  const alreadyCounted = new RegExp('(?:^|;\\s*)' + COOKIE + '=1(?:;|$)').test(cookies);
+
   // Best-effort write. A database failure must never cost the reader their
   // click, so the redirect is issued whatever happens here.
   const env = (typeof process !== 'undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
   let wrote = false;
-  if (SERVICE && !isAgent) {
+  if (SERVICE && !isAgent && !alreadyCounted) {
     try {
       const country = String(req.headers.get('x-vercel-ip-country') || '')
         .toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2) || null;
@@ -97,8 +117,21 @@ export default async function handler(req){
   // bookmark, or a link expanded by a platform. Those readers see the same
   // screen saying their support is recorded, and before this they were the one
   // case where that sentence was still untrue.
+  //
+  // r=1 is now set when the endorsement is on record from EITHER this request or
+  // an earlier one by the same browser. A returning reader must not trigger the
+  // screen's fallback write, which would reintroduce the double count through
+  // the other door.
+  const onRecord = wrote || alreadyCounted;
   const q = '?c=' + encodeURIComponent(campaign)
           + (src ? '&src=' + encodeURIComponent(src) : '')
-          + (wrote ? '&r=1' : '');
-  return Response.redirect(url.origin + '/access.html' + q, 302);
+          + (onRecord ? '&r=1' : '');
+
+  // Set the marker only when a row was actually written, so a failed write is
+  // retried on the next visit rather than being silently suppressed forever.
+  const headers = { 'Location': url.origin + '/access.html' + q };
+  if (wrote) {
+    headers['Set-Cookie'] = COOKIE + '=1; Path=/; Max-Age=31536000; SameSite=Lax; Secure; HttpOnly';
+  }
+  return new Response(null, { status: 302, headers: headers });
 }
