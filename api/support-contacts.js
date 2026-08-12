@@ -64,10 +64,10 @@ export default async function handler(req){
   // Answers are NOT joined in and cannot be: the answer rows carry no identity
   // and share no key with these rows. This returns who asked, never what they
   // said.
-  let recommendation_requests = [], certificate_requests = [];
+  let recommendation_requests = [], certificate_requests = [], honor_acceptances = [];
   try {
     const rr = await fetch(
-      SB + '/rest/v1/pilot_contacts?source=in.(reviewer-eval-incentive,reviewer-cert)'
+      SB + '/rest/v1/pilot_contacts?source=in.(reviewer-eval-incentive,reviewer-cert,honor-accept)'
          + '&select=source,name,email,organization,message,created_at&order=created_at.desc',
       { headers: AH }
     );
@@ -90,8 +90,29 @@ export default async function handler(req){
           consent_research_followup: p.consent_research_followup === true,
           requested_at: r.created_at || ''
         };
-        if (r.source === 'reviewer-eval-incentive') recommendation_requests.push(rec);
-        else certificate_requests.push(rec);
+        if (r.source === 'reviewer-eval-incentive') { recommendation_requests.push(rec); return; }
+        if (r.source === 'reviewer-cert') { certificate_requests.push(rec); return; }
+        // HONOR ACCEPTANCES CARRY A QUOTE THE HONOREE WROTE, AND IT WAS
+        // READABLE NOWHERE. asset-stats counted the acceptance and stopped
+        // there, so a person could write a quote for publication and the
+        // owner had no way to read it back. The clearance and byline flags
+        // travel with it, because a quote without its clearance is not
+        // publishable and must never be treated as if it were.
+        honor_acceptances.push({
+          honoree: r.name || p.printed_name || '',
+          email: r.email || '',
+          organization: r.organization || '',
+          printed_title: p.printed_title || '',
+          honor_code: p.honor_code || '',
+          study: p.study || '',
+          participant_code: p.participant_code || '',
+          country: p.country || '',
+          quote: p.quote || '',
+          quote_cleared_for_publication: p.quote_clearance === true,
+          byline_ok: p.byline_ok === true,
+          consent_public_list: p.consent_public_list === true,
+          accepted_at: r.created_at || ''
+        });
       });
     }
   } catch (e) { /* the supporter list must still return */ }
@@ -130,6 +151,12 @@ export default async function handler(req){
     recommendation_request_count: recommendation_requests.length,
     certificate_requests: certificate_requests,
     certificate_request_count: certificate_requests.length,
+    honor_acceptances: honor_acceptances,
+    honor_acceptance_count: honor_acceptances.length,
+    honor_note: 'Each acceptance carries the wording the honoree chose to be printed, and '
+              + 'where they supplied one, the quote they wrote. quote_cleared_for_publication '
+              + 'and byline_ok are their own answers: a quote without clearance is not '
+              + 'publishable and must not be used as if it were.',
     reviewer_note: 'Anyone listed under recommendation_requests ticked "Request a LinkedIn '
                  + 'Peer Reviewer Recommendation" at the end of the evaluation and is owed '
                  + 'one. Nothing is posted for them until they have approved the exact '
