@@ -21,7 +21,6 @@ You are operating inside the live `phillipwikes-bit/jrsstandard.com` repository.
 | `workflow-fit.html` | Workflow integration reference |
 | `operational-boundaries.html` | JRS scope and limitations |
 | `implementation-scenarios.html` | Use-case scenario library |
-| `mccr-simulator.html` | MCCR interactive simulator |
 | `jrsstandard.html` | Full standard documentation |
 | `404.html` | Error page |
 
