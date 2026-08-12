@@ -263,3 +263,56 @@ Unchanged: **JRS REQUIRES USER INPUT, DRR REQUIRES USER INPUT.**
 `reviewer/index.html`, `api/asset-stats.js`, `pilot-status.html`, `MASTER_TRACKER.md`, `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md`, `research/MASTER_TRACKER.md`.
 
 ---
+
+## Run: 2026-08-12T12:42:55Z
+
+**Counter audit: PASSED. New publication added. No telemetry defect found this run.**
+
+### Request
+
+Publish on `pilot-status.html` how many evaluations were completed and who completed them, plus the purpose of collecting the results. Update the two summary documents.
+
+### Delivered
+
+New **Completed Evaluations** panel, live, with four tiles and two blocks:
+
+| Element | Source |
+|---|---|
+| Evaluations completed | `completed_evaluations.submitted` |
+| Answered all nine | `completed_evaluations.answered_all_nine` |
+| Chose to be named | `completed_evaluations.named_publicly` |
+| Chose to stay anonymous | `completed_evaluations.chose_to_stay_anonymous` |
+| Who completed one | `completed_evaluations.names`, consent-gated |
+| What the results are collected for | `completed_evaluations.purpose` |
+
+All four tiles read **0**. True zero: the instrument is live, the write path was verified against production, and it has not been sent to anyone.
+
+### The constraint on "who completed them", stated rather than worked around
+
+**Only the names of people who ticked "Optional: list my name publicly as a JRS-trained reviewer" can be published, and those are what the panel shows.**
+
+Answers live in `interaction_events` with no identity on the row. Identities live in `pilot_contacts` with no answers on the row. **The two tables share no key.** Nobody, including the person running the study, can say which respondent gave which answers. That is the promise the instrument makes on its own page.
+
+Publishing who gave which answers would require rebuilding the instrument to collect something it was specifically built not to collect. The panel publishes the identity limit alongside the names so a reader is never left to assume the omission is an oversight.
+
+### Purpose of collection, now published
+
+Aggregate reporting in the research write-up; full results to every reviewer once the study closes; evidence base describing the problem the standard addresses. **Not used to evaluate, rank or identify any respondent or their employer.**
+
+### Documents updated
+
+`research/Reviewer_Evaluation_Summary_2026-08-11.md` 8,538 to 11,526 bytes. `research/Reviewer_Program_Summary_2026-08-09.md` 16,768 to 19,756 bytes. Both carry the same section, so the documents and the site read from one source.
+
+### Link-click telemetry
+
+**No defect found this run.** No code path was changed.
+
+### Trademark dossiers
+
+Unchanged: **JRS REQUIRES USER INPUT, DRR REQUIRES USER INPUT.**
+
+### Files modified
+
+`api/asset-stats.js`, `pilot-status.html`, `research/Reviewer_Evaluation_Summary_2026-08-11.md`, `research/Reviewer_Program_Summary_2026-08-09.md`, `MASTER_TRACKER.md`, `research/MASTER_TRACKER.md`.
+
+---

@@ -228,3 +228,49 @@ It does **not** verify a credential and does **not** endorse a skill, because Li
 1. **Nobody has taken the evaluation yet.** The baseline reads zero on every funnel metric. The instrument shipped 2026-08-09 and the incentive block and open counter shipped 2026-08-10, so a zero here is the expected state and not a measured result.
 2. **The certificate is issued on a completion code checked for shape, not looked up.** A certificate grants access to nothing, so protecting it like a credential would add friction without protecting anything. The verifiable record is the database row. If that ever needs to change, the row already exists to check against.
 3. **Sample size.** The commercial value of the evaluation is a function of how many are collected. One is an anecdote. Fifty is a market description.
+
+---
+
+## Who completed an evaluation, and what the results are for
+
+*Added 2026-08-12. Now published live at `jrsstandard.com/pilot-status.html` under **Completed Evaluations**, so this section and the site read from the same source.*
+
+### The counts, live
+
+| Figure | Source |
+|---|---|
+| Evaluations completed | `/api/asset-stats` &rarr; `completed_evaluations.submitted` |
+| Answered all nine questions | `completed_evaluations.answered_all_nine` |
+| Chose to be named publicly | `completed_evaluations.named_publicly` |
+| Chose to stay anonymous | `completed_evaluations.chose_to_stay_anonymous` |
+| The named list itself | `completed_evaluations.names` |
+
+**At the time of writing all five read zero.** The instrument is live, the write path was tested against production and confirmed working, and it has not yet been sent to anyone. That is a true zero, not a missing measurement.
+
+### Who completed one: what can and cannot be published
+
+**Only one thing can be published, and it is published: the names of people who ticked "Optional: list my name publicly as a JRS-trained reviewer."**
+
+Nothing is published for anyone who did not tick it. A name is never shown beside an answer.
+
+**This is a hard limit of the design, not a reporting gap.** The answers live in `interaction_events` with no identity on the row. The identities live in `pilot_contacts` with no answers on the row. The two tables share **no key**. Nobody, including the person running the study, can say which respondent gave which answers. That is the promise the instrument makes on its own page: *it does not ask who you are.*
+
+A request to publish who gave which answers cannot be met without breaking that promise and without rebuilding the instrument so that it collects something it was specifically built not to collect.
+
+### What the results are collected for
+
+The evaluation establishes a baseline on how consequential records are reviewed inside working organizations: how many people read a record before it is final, whether a second reader exists, whether the basis for a conclusion is written down at the time, and whether AI-assisted drafting is governed by a written policy.
+
+**The results are used in three ways and no others:**
+
+1. Reported **in aggregate** in the research write-up.
+2. Sent **in full to every reviewer** once the study closes.
+3. Held as part of the **evidence base** describing the problem the standard addresses.
+
+**They are not used to evaluate, rank or identify any respondent or their employer.**
+
+### Where contact details come from, and why a zero here is one fact not two
+
+Contact details are requested **only at the end** of the evaluation, in the optional incentive block, in exchange for a certificate or a LinkedIn recommendation. Anyone who stops before submitting leaves no name, no email and no identifier.
+
+So **contacts can never exceed submissions**, and a zero in contacts alongside a zero in submissions is a single fact rather than two separate failures.
