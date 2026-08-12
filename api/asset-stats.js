@@ -215,6 +215,38 @@ export default async function handler(req){
   const todayReadsA = armA.reduce(function(n, r){ return n + (r.reads_today || 0); }, 0);
   const todayReadsB = armB.reduce(function(n, r){ return n + (r.reads_today || 0); }, 0);
 
+  // WHO COMPLETED AN EVALUATION, AND THE HARD LIMIT ON ANSWERING THAT.
+  //
+  // The answers live in interaction_events with no identity on the row. The
+  // identities live in pilot_contacts with no answers on the row. The two
+  // tables share NO key, deliberately, so that no one including the person
+  // running the study can say which respondent gave which answers. That is the
+  // promise the instrument makes on its own page: "It does not ask who you
+  // are." It is not a limitation to be worked around.
+  //
+  // So this publishes exactly one thing: the names of people who ticked
+  // "Optional: list my name publicly as a JRS-trained reviewer." Nothing is
+  // published for anyone who did not tick it, and no name is ever placed
+  // beside an answer.
+  const namedRespondents = [];
+  let respondentsNamed = 0, respondentsAnonymous = 0;
+  contacts.forEach(function(c){
+    if (c.source !== 'reviewer-cert') return;
+    let m = null;
+    try { m = JSON.parse(c.message || '{}'); } catch (e) { m = null; }
+    if (!m) { respondentsAnonymous++; return; }
+    if (m.consent_public_list === true && m.printed_name) {
+      respondentsNamed++;
+      namedRespondents.push({
+        name: String(m.printed_name).slice(0, 120),
+        title: String(m.printed_title || '').slice(0, 160),
+        country: String(m.country || '').slice(0, 2)
+      });
+    } else {
+      respondentsAnonymous++;
+    }
+  });
+
   // Arrivals on the two surfaces that used to record nothing. Same crawler
   // treatment as everywhere else, and the exclusion is published rather than
   // silent so a low number is never mistaken for a filtered one.
@@ -498,6 +530,29 @@ export default async function handler(req){
                   + 'was fixed before the first response arrived.'
       }
     ],
+
+    // WHO COMPLETED THE EVALUATION, AND WHAT THE RESULTS ARE FOR.
+    completed_evaluations: {
+      submitted: evalSubmitted,
+      answered_all_nine: evalFull,
+      named_publicly: respondentsNamed,
+      chose_to_stay_anonymous: respondentsAnonymous,
+      names: namedRespondents,
+      purpose: 'The evaluation establishes a baseline on how consequential records are '
+             + 'reviewed inside working organizations: how many people read a record before '
+             + 'it is final, whether a second reader exists, whether the basis for a '
+             + 'conclusion is written down at the time, and whether AI-assisted drafting is '
+             + 'governed by a written policy. The results are used in three ways and no '
+             + 'others: they are reported in aggregate in the research write-up, they are '
+             + 'sent in full to every reviewer once the study closes, and they form part of '
+             + 'the evidence base describing the problem the standard addresses. They are '
+             + 'not used to evaluate, rank or identify any respondent or their employer.',
+      identity_limit: 'Answers and identities are stored in separate tables with no shared '
+             + 'identifier. Nobody, including the person running the study, can say which '
+             + 'respondent gave which answers. Names appear here only where the respondent '
+             + 'ticked "list my name publicly as a JRS-trained reviewer", and a name is '
+             + 'never shown beside an answer.'
+    },
 
     entry_points: {
       reviewer_landing_views: reviewerViews,
