@@ -179,15 +179,56 @@ function renderExtras(d){
   var el=document.getElementById('extras');
   if(!el) return;
   var all=(d && (d.people||d.rows||d.contacts))||[];
-  function bySource(src){ return all.filter(function(r){ return r.source===src; }); }
-  var rec=bySource('reviewer-eval-incentive'), cert=bySource('reviewer-cert'), hon=bySource('honor-accept');
-  el.innerHTML =
-     '<h1 style="margin-top:30px">Asked for a LinkedIn recommendation <span style="font-size:12px;color:var(--muted-soft)">('+rec.length+')</span></h1>'
-   + people(rec,'rec')
-   + '<h1 style="margin-top:30px">Asked for a certificate <span style="font-size:12px;color:var(--muted-soft)">('+cert.length+')</span></h1>'
-   + people(cert,'cert')
-   + '<h1 style="margin-top:30px">Honor acceptances, with their quote <span style="font-size:12px;color:var(--muted-soft)">('+hon.length+')</span></h1>'
-   + people(hon,'honor');
+  function by(src){ return all.filter(function(r){ return r.source===src; }); }
+
+  // CONSOLIDATED FOR A BUYER: every stream on one page, nothing hidden behind a
+  // filter. The sheet previously showed three sections and silently dropped 13
+  // of 16 rows, including every training enrolment and completion.
+  var enrol=by('training-enroll'), done=(d.training_completed_named)||[];
+  var h='';
+
+  h+='<h1 style="margin-top:30px">Training <span style="font-size:12px;color:var(--muted-soft)">('
+    +done.length+' of '+enrol.length+' completed)</span></h1>';
+  if(!enrol.length){ h+='<div style="color:var(--muted-soft);font-size:12.5px">No enrolments yet.</div>'; }
+  else {
+    h+='<table><thead><tr><th>Name</th><th>Organization</th><th>Country</th><th>Enrolled</th><th>Completed</th></tr></thead><tbody>';
+    enrol.forEach(function(r){
+      h+='<tr><td class="nm">'+esc(r.name)+'</td><td>'+esc(r.organization)+'</td><td>'+esc(r.country)+'</td>'
+        +'<td style="white-space:nowrap">'+esc(String(r.date||'').slice(0,10))+'</td>'
+        +'<td style="white-space:nowrap;color:'+(r.training_completed?'var(--ready)':'var(--muted-soft)')+'">'
+        +(r.training_completed?esc(String(r.training_completed_on||'').slice(0,10)||'yes'):'not yet')+'</td></tr>';
+    });
+    h+='</tbody></table>';
+  }
+  if(d.training_completion_note){
+    h+='<div class="note" style="margin-top:8px">'+esc(d.training_completion_note)+'</div>';
+  }
+
+  h+='<h1 style="margin-top:30px">Asked for a LinkedIn recommendation <span style="font-size:12px;color:var(--muted-soft)">('+by('reviewer-eval-incentive').length+')</span></h1>'
+   + people(by('reviewer-eval-incentive'),'rec')
+   + '<h1 style="margin-top:30px">Asked for a certificate <span style="font-size:12px;color:var(--muted-soft)">('+by('reviewer-cert').length+')</span></h1>'
+   + people(by('reviewer-cert'),'cert')
+   + '<h1 style="margin-top:30px">Honor acceptances, with their quote <span style="font-size:12px;color:var(--muted-soft)">('+by('honor-accept').length+')</span></h1>'
+   + people(by('honor-accept'),'honor');
+
+  // Anything not covered above, so a new stream can never be silently dropped.
+  var KNOWN={'support':1,'support-register':1,'training-enroll':1,'training-complete':1,
+             'reviewer-eval-incentive':1,'reviewer-cert':1,'honor-accept':1};
+  var other=all.filter(function(r){ return !KNOWN[r.source]; });
+  if(other.length){
+    h+='<h1 style="margin-top:30px">Other records <span style="font-size:12px;color:var(--muted-soft)">('+other.length+')</span></h1>'
+      +'<table><thead><tr><th>Name</th><th>Activity</th><th>Detail</th><th>Date</th></tr></thead><tbody>';
+    other.forEach(function(r){
+      h+='<tr><td class="nm">'+esc(r.name)+'</td><td>'+esc(r.activity||r.source)+'</td><td>'+esc(r.detail||'')+'</td>'
+        +'<td style="white-space:nowrap">'+esc(String(r.date||'').slice(0,10))+'</td></tr>';
+    });
+    h+='</tbody></table>';
+  }
+
+  h+='<div class="note" style="margin-top:16px"><b>'+all.length+'</b> records in total across every stream: '
+    +'named supporters, training enrolments and completions, recommendation and certificate requests, and honor acceptances. '
+    +'Nothing on this page is filtered out.</div>';
+  el.innerHTML=h;
 }
 function load(){
   show('setup',false);
