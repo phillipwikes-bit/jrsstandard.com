@@ -1512,3 +1512,88 @@ Static grep over 45 HTML files: **23 PDF hrefs bypassed `/api/dl`**, so those do
 - Cookie dedup on `/api/support` still unexercised by real traffic.
 
 ---
+
+---
+
+## RUN 2026-08-12T23:15Z — Trademark cost-benefit. Recommendation revised down to $700.
+
+**Request:** "Should I file trademark applications. Explain in plain English and perform cost benefit analysis."
+
+**MASTER_TRACKER.md read from disk first:** 93,069 bytes, last run heading `2026-08-12T22:30Z`.
+
+### Recommendation
+
+**File. Both marks, Class 042 only, $700. This is a revision down from the $1,050 recommended earlier today.**
+
+### The revision, and why it is a legal point rather than a cost trim
+
+An intent-to-use application requires a sworn **bona fide intention to use the mark in commerce in every class claimed**. That statement can be challenged, and a class the applicant had no genuine plan for is attackable on exactly that ground.
+
+**Class 035 is business consulting. The owner dropped commercialization to do research only.** On that record it is the weakest and most attackable claim in the filing. Dropping it saves $350 and removes the weak link in the same move. **Class 042, technical and scientific services, is where the entire body of work sits and is the strong claim.**
+
+### Traction read live before writing, not assumed
+
+| | |
+|---|---|
+| Revenue | **$0**, no payment surface exists anywhere on the site |
+| Organization pilots | **0** organizations, 0 sessions, 0 records run |
+| Completed reviewer evaluations | **0** |
+| Named supporters | **3** |
+| Reviewers completing a full study set | **32 across 16 countries** |
+
+The last line is the asset. The rest is why a use-based application is impossible.
+
+### Cost stated in full, including what goes wrong
+
+| Stage | Cost |
+|---|---|
+| Filing, 2 marks × 1 class | **$700** |
+| Statement of Use, $150/class | $300 |
+| **Best case total** | **$1,000** |
+| Office action response, per mark | $500 to $1,500, **moderate to high likelihood** |
+| Extensions, $125/class every 6 months, up to 5 | up to $1,250 |
+| **Realistic worst case** | **$3,000 to $4,500** |
+
+**The $700 figure was NOT presented as the final number.** Descriptiveness refusal is a live risk for both marks and the budget says so.
+
+### The decision arithmetic
+
+| Scenario | Was $700 well spent? |
+|---|---|
+| Sale completes, buyer values the name | **Yes, decisively** |
+| Sale completes, buyer rebrands | roughly neutral, still cleared a diligence question |
+| No sale, owner commercializes later | **Yes**, priority held from 2026 |
+| No sale, nothing happens | **No.** $700 spent, lapses in ~3 years |
+
+**Three of four outcomes favour filing and the downside is capped at $700.** The priority date is the only benefit that cannot be bought back later at any price.
+
+**A stop condition was given rather than a one-way recommendation:** if the sale is not going to complete and there is no intention to commercialize, **do not file**, and if a buyer appears inside 60 days wanting to file under their own name, **let them**, because their bona fide intent statement will be stronger than his.
+
+### What the analysis refused to overstate
+
+**A trademark protects the name, not the work.** The standard, the methodology and the five conditions are not protected by it; copyright already covers the writing automatically and for free. This is stated first in the document because it is the most common and most expensive misunderstanding about what a filing buys.
+
+### Document drift prevented
+
+`research/TRADEMARK_FILING_STEPS_JRS_DRR.md` was **reconciled in the same turn** so the two trademark documents cannot disagree: class table, form field, payment amount and checklist all updated to 042 only and $350 per mark, with a dated revision note explaining the change. Verified: **zero unqualified `$1,050` or `042 and 035` recommendations remain in either file**; the only surviving mentions are inside the revision notes.
+
+### Files created / modified
+
+Created: `research/TRADEMARK_COST_BENEFIT_2026-08-12.md` and `.docx`. Modified: `research/TRADEMARK_FILING_STEPS_JRS_DRR.md` and `.docx`, plus the three tracker files. **No website file was touched and nothing was deployed**, which is correct for an advisory turn.
+
+### Token / Supabase minimization
+
+**CONFIRMED TOKEN-LESS.** No code changed. Two live read-only endpoint fetches to ground the traction figures.
+
+### Trademark dossiers
+
+**JRS: READY TO FILE, Class 042. DRR: READY TO FILE, Class 042.** Section 1(b) intent to use.
+
+### Outstanding
+
+- `[REQUIRES USER INPUT]` USPTO account and identity verification. **The only thing blocking filing**, and it has a waiting period.
+- `[REQUIRES USER INPUT]` mailing address and citizenship.
+- `REQUIRES EXTERNAL VERIFICATION` conflict search in Class 042, free, about 30 minutes.
+- The assignment restriction must be raised with whoever drafts the sale agreement **before signature**.
+
+---

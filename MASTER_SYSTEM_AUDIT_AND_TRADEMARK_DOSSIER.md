@@ -1029,3 +1029,40 @@ Four cohorts carry explicit state and are excluded from active totals: **Organiz
 **Unchanged. JRS: READY TO FILE. DRR: READY TO FILE.** Section 1(b) intent-to-use. First Use Anywhere, First Use in Commerce and specimen path are **NOT APPLICABLE at filing** on this basis, not outstanding. Procedure in `research/TRADEMARK_FILING_STEPS_JRS_DRR.md`.
 
 ---
+
+---
+
+## AMENDMENT 2026-08-12T23:15Z: Filing recommendation revised to Class 042 only
+
+**Section on trademark dossiers, revised. Supersedes the class recommendation in the 17:30Z amendment.**
+
+| | Prior | Revised |
+|---|---|---|
+| JRS | Class 042 **and 035**, $700 | **Class 042 only, $350** |
+| DRR | Class 042, $350 | Class 042, $350 |
+| **Total** | $1,050 | **$700** |
+
+### Basis for the revision
+
+A Section 1(b) application carries a sworn **bona fide intention to use the mark in commerce in every class claimed**. The owner has confirmed he dropped commercialization in favour of research and has **$0 revenue with no payment surface on the site**. A Class 035 business-consulting claim is therefore the weakest element of the filing and is challengeable on bona fide intent grounds.
+
+**Class 042 carries the entire evidentiary weight of the programme**: technical evaluation, standards development and research services, supported by 32 reviewers completing full study sets across 16 countries.
+
+### Cost disclosure for diligence
+
+Filing cost is **$700**. **Realistic total exposure is $3,000 to $4,500** once office-action responses and extension requests are counted. Descriptiveness refusal is a live risk for both marks, mitigated by filing the acronyms rather than the full phrases.
+
+### Encumbrance, restated because it bears on the sale
+
+An intent-to-use application **cannot be freely assigned before a Statement of Use is filed**, except to a successor to the ongoing business. **The sale instrument must be a sale of the business and its assets with the applications included.** A bare assignment of the applications can void them.
+
+### Status
+
+| Dossier | Status |
+|---|---|
+| JRS | **READY TO FILE**, Section 1(b), Class 042 |
+| DRR | **READY TO FILE**, Section 1(b), Class 042 |
+
+Remaining inputs are administrative: USPTO identity verification, mailing address, citizenship.
+
+---

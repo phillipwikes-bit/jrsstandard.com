@@ -36,13 +36,13 @@ You are filing **two separate applications**, one per mark. One application can 
 
 **Recommended plan:**
 
-| Application | Classes | Cost |
+| Application | Class | Cost |
 |---|---|---|
-| JRS | 042 + 035 | $700 |
+| JRS | 042 | $350 |
 | DRR | 042 | $350 |
-| **Total** | | **$1,050** |
+| **Total** | | **$700** |
 
-You could file JRS in Class 042 only and save $350. I would not. You cannot add a class to an application later: you would have to file a whole new application. Since the point is selling the asset, broader coverage is worth $350 today.
+**REVISED 2026-08-12: Class 035 is dropped.** An earlier version of this document recommended filing JRS in 042 and 035 for broader coverage. That was wrong for your situation. Class 035 is business consulting, and an intent-to-use application requires a sworn **bona fide intention to use** the mark in every class claimed. You dropped commercialization to do research only, so a business-consulting claim is the weakest and most attackable part of the filing. Dropping it saves $350 and removes the weak link. Full reasoning in `research/TRADEMARK_COST_BENEFIT_2026-08-12.md`.
 
 ---
 
@@ -106,12 +106,6 @@ The picker is built into Trademark Center. There is also a standalone search at 
 - `technological consultation` and `information technology`
 - `research` and `technology`
 
-**For JRS, Class 035**: search these terms:
-- `business consultation`
-- `business auditing`
-- `compliance auditing`
-- `business risk assessment`
-
 **For DRR, Class 042**: search these terms:
 - `technical consultation`
 - `technological analysis`
@@ -119,7 +113,7 @@ The picker is built into Trademark Center. There is also a standalone search at 
 
 **I have not verified these exact entries exist today, and I am not going to pretend otherwise.** The ID Manual is a live database that changes, and I could not read it directly. Search the terms, read what actually comes back, and pick from what you see on the day.
 
-The draft custom wording sitting in `TRADEMARK_FILING_DOSSIER_JRS_DRR.md` is only a fallback. Using it costs $200 per class, so **$600 extra across all three classes.** Use the picker.
+The draft custom wording sitting in `TRADEMARK_FILING_DOSSIER_JRS_DRR.md` is only a fallback. Using it costs $200 per class, so **$400 extra across both classes.** Use the picker.
 
 ---
 
@@ -139,12 +133,12 @@ Fill in exactly this:
 | Citizenship | your country of citizenship |
 | Email | `info@jrsstandard.com` |
 | Filing basis | **Section 1(b), intent to use** |
-| Classes | 042 and 035 |
+| Class | 042 |
 | Descriptions | the ID Manual entries you picked in Step 4 |
 
 **Do not** enter a date of first use. **Do not** upload a specimen. There is no field asking you for either, and if you find yourself looking at one, you have selected the wrong filing basis. Go back and choose Section 1(b).
 
-Sign the declaration, pay **$700**, and submit.
+Sign the declaration, pay **$350**, and submit.
 
 **Save the serial number.** It is your reference for everything that follows.
 
@@ -206,7 +200,7 @@ The clock is real: 36 months maximum after the Notice of Allowance, then the app
 - [ ] **Step 2**: Searched JRS, DRR and both full phrases; noted any live 042 or 035 conflicts
 - [ ] **Step 3**: Confirmed you are filing the acronyms as standard character marks
 - [ ] **Step 4**: Picked descriptions from the ID Manual picker, not free text
-- [ ] **Step 5**: JRS filed, Section 1(b), classes 042 and 035, $700, serial number saved
+- [ ] **Step 5**: JRS filed, Section 1(b), Class 042, $350, serial number saved
 - [ ] **Step 6**: DRR filed, Section 1(b), class 042, $350, serial number saved
 - [ ] **Step 7**: Calendar reminder set for 9 months to check status
 - [ ] **Sale**: Attorney told about the intent-to-use assignment restriction
