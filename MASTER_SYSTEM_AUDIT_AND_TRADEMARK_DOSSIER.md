@@ -901,3 +901,41 @@ This changes what the endorsement figure means for a buyer. **It is a count of i
 **Unchanged. JRS: READY TO FILE. DRR: READY TO FILE.**
 
 ---
+
+---
+
+## AMENDMENT 2026-08-12T21:30Z: Private-surface exposure closed on all three fronts
+
+**All three disclosures raised in the 19:10Z and earlier amendments are now remediated.** This supersedes the advisory status of each.
+
+### Remediation summary
+
+| Exposure raised | Status |
+|---|---|
+| Third-party analytics on a page displaying participant personal data | **CLOSED.** Tag removed, 0 `gtag` calls in the deployed file. `referrer: no-referrer` added |
+| Status page reachable at a guessable slug while linking to two opaque ones | **CLOSED.** Renamed to `programme-status-9872fb93cc94.html`, `/pilot-status` route removed, old URL 404, no redirect left |
+| Third private page carrying the same roster | **CLOSED.** `people-9dd1ecdf6f8cdfd4.html` and its route deleted. The endpoint of the same name is retained and live |
+
+### Current private-surface inventory, for diligence
+
+| Surface | Protection | Analytics | Public inbound links |
+|---|---|---|---|
+| `programme-status-9872fb93cc94.html` | opaque slug, `noindex,nofollow`, `no-referrer` | **none** | **zero**, swept across 8 public pages |
+| `supporters-b78f5ff2c08d.html` | opaque slug, `noindex,nofollow` | **none** | **zero** |
+| `api/people-9dd1ecdf6f8cdfd4.js` | opaque slug | n/a | **zero** |
+
+**No token, JWT, OAuth flow or authenticated SDK protects any of these, by design.** Security is the opaque unlinked URL. Rotation is a rename of the file and its route, and has now been exercised once successfully.
+
+### Verified against production after deployment
+
+Three live URLs return **200**. Four removed URLs return **404**: `pilot-status.html`, `/pilot-status`, `people-9dd1ecdf6f8cdfd4.html`, `/people-9dd1ecdf6f8cdfd4`. Eight public pages fetched and searched for either private slug: **zero references**.
+
+### Governance record updated
+
+`CLAUDE.md` now carries a **Private owner surfaces** section with the standing rule for all three, and the `jrs-owner-token` entry was removed from the sanctioned localStorage table, that key having been deleted from the codebase earlier.
+
+### Trademark position
+
+**Unchanged. JRS: READY TO FILE. DRR: READY TO FILE.**
+
+---

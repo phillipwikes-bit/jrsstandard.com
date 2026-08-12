@@ -1361,3 +1361,89 @@ Rendered in headless Chromium at **iPhone width, 430px**, against **live product
 - `[REQUIRES USER INPUT]`: GA4 on the private page; the guessable slug; retiring the redundant people page.
 
 ---
+
+---
+
+## RUN 2026-08-12T21:30Z — All three outstanding owner decisions executed
+
+**Request:** "Fix this all" against the three items I had recorded as the owner's call. All three now authorised and done.
+
+**MASTER_TRACKER.md read from disk first:** 83,517 bytes, last run heading `2026-08-12T20:50Z`.
+
+### THE NEW URL, WHICH IS THE ONE THING TO KEEP
+
+```
+https://jrsstandard.com/programme-status-9872fb93cc94.html
+```
+
+**Replace the old bookmark. `pilot-status.html` now returns 404 and there is no redirect.**
+
+### 1. Analytics removed from the private surface
+
+`programme-status-9872fb93cc94.html` no longer loads Google Analytics. **0 `gtag(` calls and 0 googletagmanager references** in the deployed file, confirmed by fetching production.
+
+The page renders names, organizations, titles and countries of real participants, including people whose `consent_public` is false. GA4 only ever received the URL and title and never the table, so **no personal data was ever transmitted** and no breach occurred. It was removed because a page displaying third-party personal data is not a host for a third-party beacon, and this page's traffic is not a marketing metric.
+
+Also added `<meta name="referrer" content="no-referrer">`, so the opaque URL is not leaked in the `Referer` header of any outbound click.
+
+`supporters-b78f5ff2c08d.html` was checked and **has never carried the tag**.
+
+### 2. Slug rotated, and the guessable route closed with it
+
+| | Before | After |
+|---|---|---|
+| File | `pilot-status.html` | **`programme-status-9872fb93cc94.html`** |
+| Short route | `/pilot-status` rewrite in `vercel.json` | **removed** |
+| Old URL | 200 | **404** |
+
+**NO REDIRECT WAS LEFT BEHIND, DELIBERATELY.** A redirect from the old slug would hand the new URL to anyone who guessed the old one, which is precisely the exposure being closed. The 12-hex suffix was generated with `secrets.token_hex(6)`, matching the posture of the other opaque surfaces.
+
+**This was the weakest point protecting all three private surfaces**, because the guessable page carried links to both opaque ones.
+
+### 3. Redundant page removed, endpoint kept
+
+`people-9dd1ecdf6f8cdfd4.html` deleted, and its `vercel.json` route with it. **Its table renders on both surviving surfaces**, so the third page added nothing and was linked from nowhere.
+
+**`api/people-9dd1ecdf6f8cdfd4.js` IS KEPT AND MUST NOT BE DELETED.** It shares the name but is the endpoint both surfaces read. Verified live at 200 after the deploy. **A `vercel.json` route still pointing at the deleted page was caught during the sweep and removed; it would have been a live 404 route.**
+
+### Verification, against production after deploy
+
+| URL | Expected | Actual |
+|---|---|---|
+| `programme-status-9872fb93cc94.html` | 200 | **200** |
+| `supporters-b78f5ff2c08d.html` | 200 | **200** |
+| `api/people-9dd1ecdf6f8cdfd4` | 200 | **200** |
+| `pilot-status.html` | 404 | **404** |
+| `/pilot-status` | 404 | **404** |
+| `people-9dd1ecdf6f8cdfd4.html` | 404 | **404** |
+| `/people-9dd1ecdf6f8cdfd4` | 404 | **404** |
+
+**Public-page leak sweep:** eight public pages fetched from production and searched for either private slug. **Zero references.** Page renders correctly under the new name, verified in a browser against live payloads: campaign endorsements tile 1, arrivals 2, reconciliation line correct, roster present, zero console errors.
+
+### Governance drift corrected in CLAUDE.md
+
+Three items were stale and are now fixed rather than left to rot:
+- **New section: Private owner surfaces**, listing all three with the standing rule: never add an analytics tag, never link from a public page, never add a token control, rotate by renaming if a slug leaks.
+- **`jrs-owner-token` row removed** from the sanctioned localStorage table. That key was deleted from the codebase days ago and the table still listed it.
+- Stale `pilot-status.html` references updated in the completion-verification section and in two endpoint header comments.
+
+### Token / Supabase minimization
+
+**CONFIRMED TOKEN-LESS.** Nothing added. The point of this run was removal.
+
+### Files modified
+
+Renamed: `pilot-status.html` &rarr; `programme-status-9872fb93cc94.html`. Deleted: `people-9dd1ecdf6f8cdfd4.html`. Modified: `vercel.json`, `CLAUDE.md`, `supporters-b78f5ff2c08d.html`, `api/geo-stats.js`, `api/support-stats.js`, plus the three tracker files. Dev `5a3c3a3`; production pushed by the selective pattern, `research/` and `MASTER_` staged counts both **0**.
+
+### Trademark dossiers
+
+**Unchanged. JRS: READY TO FILE. DRR: READY TO FILE.** The only thing blocking filing remains the owner's USPTO account and identity verification.
+
+### Outstanding
+
+**All three previously recorded `[REQUIRES USER INPUT]` decisions are now CLOSED.** Remaining:
+- Cookie dedup still unexercised by real traffic.
+- `REQUIRES EXTERNAL VERIFICATION`: whether the 14:04Z and 14:43Z endorsement clusters were automated. Answerable from now on, since the user agent is stored.
+- Trademark: mailing address, citizenship, USPTO identity verification.
+
+---
