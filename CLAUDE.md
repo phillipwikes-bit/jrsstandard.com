@@ -25,6 +25,17 @@ You are operating inside the live `phillipwikes-bit/jrsstandard.com` repository.
 | `jrsstandard.html` | Full standard documentation |
 | `404.html` | Error page |
 
+### Private owner surfaces (opaque slugs, no token, never linked from a public page)
+| File | Purpose |
+|---|---|
+| `programme-status-9872fb93cc94.html` | Programme status dashboard and the full named roster. **Renamed from `pilot-status.html` on 2026-08-12** because the old slug was guessable while the data on it is not public. Carries `noindex,nofollow`, `referrer: no-referrer`, and **no analytics tag**. |
+| `supporters-b78f5ff2c08d.html` | Owner sheet: the same roster plus emails, honor quotes with clearance flags, and the full CSV export |
+| `api/people-9dd1ecdf6f8cdfd4.js` | The endpoint both surfaces read. Secured by its own opaque URL, no token |
+
+**Removed 2026-08-12:** `people-9dd1ecdf6f8cdfd4.html`. Its table now renders on both surfaces above, so the third page was redundant. **The endpoint of the same name is still live and must not be deleted.**
+
+**Rule for these three:** never add an analytics tag, never link them from a public page, and never add a token control. If a slug leaks, rename the file and its route to rotate it.
+
 ### Server-Side
 | File | Purpose |
 |---|---|
@@ -171,6 +182,10 @@ Other self-contained tools may use their own single scoped key, namespaced to th
 | `jrs-poll-voted-<study>` | `finding.html` | one-vote-per-poll guard |
 | `bench-auto-code`, `bench-expert-<code>`, `bench-done-<code>` | `bench-review.html` | reviewer code and per-record completion |
 | `jrs-ai-pilot` | `ai-records-pilot.html` | AI-records reviewer code + per-record reads (resume progress) |
+| `jrs-endorsed-<campaign>` | `access.html` | one-endorsement-per-browser guard on the fallback write, used only when a reader reaches the campaign screen without passing through `/api/support` |
+| `jrs-gate-view` | `access.html` | `sessionStorage`, one campaign-screen arrival per tab session |
+
+**Removed 2026-08-12:** `jrs-owner-token`. The owner surfaces need no key of any kind; both are secured by opaque, unlinked slugs. Do not reintroduce a token control.
 
 Do not introduce keys beyond this list without adding them here first.
 
@@ -285,3 +300,19 @@ For every task on this repository:
 
 **api/review.js**
 - `handler(req)` — Edge Function entry point; proxies to Claude API
+
+---
+
+## VIII. RESEARCH OPERATIONS (private `research/` workflow)
+
+### Master Tracker update (mandatory, every response)
+On EVERY response in this repo, update `research/MASTER_TRACKER.md` and deliver a fresh copy in the same turn (attach the file). At minimum, add a dated one-line entry to the running session log (Section 15 of the tracker), even on pure question/answer or advice turns with no file artifact: record the decision, analysis, or asset produced. Substantive work also updates the relevant tracker section. This is a standing directive from Phillip (2026-07-23); the running log exists so no turn is skipped.
+
+### Reviewer completion verification (mandatory)
+Before producing ANY reviewer completion recognition (certificate, reference, LinkedIn recommendation, thank-you message, or a "Complete" status in `research/MASTER_TRACKER.md`), verify the completion first:
+
+```
+python3 research/check_completion.py <CODE>    # V-AI-## (Arm A) or RR-### (Arm B)
+```
+
+Exit 0 = complete (>=24 reads); anything else = stop and report the discrepancy instead of building the package. The script reads the anon-readable `pilot_progress` / `armb_progress` aggregate views (the same sources the programme status page uses), so no service-role key is needed. A verbal "they just finished" is a prompt to run the check, never a substitute for it. Certificates themselves are generated only by `research/build_certificate.py` (canonical issued template).
