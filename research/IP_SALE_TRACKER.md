@@ -7,8 +7,8 @@
 | | |
 |---|---|
 | **Created** | 2026-08-13 |
-| **Last revised** | 2026-08-13 (rev 6) |
-| **Revisions** | 6 |
+| **Last revised** | 2026-08-13 (rev 7) |
+| **Revisions** | 7 |
 | **Current stage** | **Zero buyer conversations held, because I advised waiting. Gate withdrawn 2026-08-13** |
 | **Sale probability, as-is** | **5 to 10%** over ~12 months (owner's own anchor, `Path_to_Sale_Action_Plan.md`, unchanged) |
 
@@ -124,6 +124,22 @@ GRC / compliance software vendors · E-discovery and legal-tech · HR-tech and p
 
 ---
 
+## 7b. COMMERCIAL PACKAGING: what to sell before the whole asset sells (rev 7)
+
+`IP_COMMERCIALIZATION_AUDIT.md` (repo root, 2026-08-13) audited every local file for saleable IP. **The disconnect it found: the public site sells participation, and the two assets an enterprise buyer would actually pay for are not on it at all.**
+
+| Rank | Package | Source asset | Public pages today | Persona | Speed |
+|---|---|---|---|---|---|
+| **1** | **Seven-Point Record Defensibility Check** | Seven named AI failure modes, `research/JRS_Validation_Report.md` s4 | **0 of 45** | General Counsel, Head of ER / Investigations | **Days** |
+| **2** | **Model-Agreement Evidence Pack** | Cross-vendor nightly harness, `api/run-study.js`, 86.7% agreement over 37 runs | **0 of 45** | Chief AI Officer, Model Risk | Weeks |
+| **3** | **Benchmark Access and Calibration** | 24-record set + held-out key, `api/bench-admin.js` | Named, never offered | AI assurance vendors, audit firms | Months. **Highest ceiling** |
+
+**Why this belongs in the sale record.** Rank 3 is the only one that touches the guardrails: the answer key stays with the holder and scoring is returned by the holder, which is what makes the benchmark licensable more than once rather than sold once. Ranks 1 and 2 are demand tests, not asset disposals: they cost nothing to run and they produce the buyer conversations this tracker has recorded zero of.
+
+**Constraint that still blocks all three: there is no payment mechanism anywhere on the site.** Open item 6, unchanged.
+
+---
+
 ## 8. GUARDRAILS (binding, from the playbook)
 
 1. **NDA before specifics.** Dataset, method, answer key, transfer map and buyer list are not public.
@@ -154,6 +170,7 @@ GRC / compliance software vendors · E-discovery and legal-tech · HR-tech and p
 
 | # | Date | Change |
 |---|---|---|
+| 7 | 2026-08-13 | **Commercial packaging audit**, `IP_COMMERCIALIZATION_AUDIT.md`. Grep across 45 public HTML files and 36 API endpoints found the two highest-value assets carry **zero public surface**: the seven named AI failure modes and the cross-vendor reproducibility harness. Three packages ranked by demand and speed to market, new Section 7b. Rank 1 is buildable in days and is the first offer in the programme that delivers value before asking for anything. Live figures re-read, not carried: 36 completers, 16 countries, 1 evaluation open, 0 submissions, 0 org pilots, $0 revenue. |
 | 6 | 2026-08-13 | Consent and release audit completed, `research/CONSENT_AND_RELEASE_AUDIT_2026-08-13.md`. **Nothing is signed anywhere; every permission is a tick plus a stored boolean.** Seven real protections identified, led by no-record-text-ever-stored and the answers/identity table split. **Four gaps, two of which cost money at sale: no copyright assignment from co-authors (consent is not assignment), and the contributor confirmation instrument that captures continuing-use and transfer rights has been sent to 0 of 20.** No terms version is stored against any consent row, so the wording a person saw cannot be proven. |
 | 5 | 2026-08-13 | Country scope pinned. Both published figures, 16 for all completers and 11 for the detection panel, are now computed from one map by `/api/panel-stats`, and the dashboard card carries its own scope. Checked all three studies: 004's 24 reliability raters count toward the 57 reviewers but add no country, their recorded countries being India, US and Australia, all already inside the 16. |
 | 4 | 2026-08-13 | Buyer pages repaired. Prospectus was a dead end at 2 anchors, now 8, all verified 200. Vendor preview cross-linked. Validation Report deliberately NOT linked, per its own confidentiality statement and guardrail 1. Two of my own audit findings withdrawn as wrong: the page already pulled panel figures live and already rendered 48. A draft link to `mccr-simulator.html` failed the on-disk check before deploy; that file does not exist and was removed from the CLAUDE.md platform map. |

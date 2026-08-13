@@ -2194,3 +2194,50 @@ This chain took four passes because **four different mechanisms produced the sam
 - `link-click` telemetry is recorded but still not surfaced on any dashboard.
 
 ---
+
+## RUN 2026-08-13T11:20Z: Commercial packaging audit. The two best assets have zero public surface.
+
+**Request.** Audit every local file as a commercial strategist, find the demand disconnect, extract the underutilized IP, and write `IP_COMMERCIALIZATION_AUDIT.md` in the root, ranked by demand and speed to market.
+
+**Not re-run.** The standing prompt's telemetry and metric-reconciliation phases were completed and verified earlier this session, closing at 09:55Z with 5 of 5 live cross-endpoint assertions passing. Per the CLAUDE.md rule, a repeated prompt does not trigger a repeated audit.
+
+### The disconnect
+
+The public site asks a stranger to become a research subject or a certificate holder. Measured live: **1 evaluation open, 0 submissions, 0 organization pilots, 0 records run, $0 revenue, and no payment mechanism anywhere.** Every current call to action asks for effort before delivering anything.
+
+**Meanwhile grep across all 45 public HTML files and 36 API endpoints established the finding of this run:**
+
+| Asset | Public pages |
+|---|---|
+| The seven named AI failure modes, `research/JRS_Validation_Report.md` s4 | **0** |
+| Cross-vendor reproducibility harness, `api/run-study.js` | **0** |
+
+Neither of the two assets an enterprise buyer would pay for appears anywhere a buyer can see.
+
+### The three packages, ranked
+
+| Rank | Package | Persona | Speed | Ceiling |
+|---|---|---|---|---|
+| 1 | **Seven-Point Record Defensibility Check**: seven named failure modes, the question that detects each, the sentence pattern that gives it away. Run against your own closed matters, nothing sent anywhere | General Counsel | **Days** | Moderate. Door opener |
+| 2 | **Model-Agreement Evidence Pack**: the harness design, the two-vendor escalation rule and the reporting format. 86.7% agreement, range 82.2 to 93.3 across 37 dated runs | Chief AI Officer, Model Risk | Weeks | High |
+| 3 | **Benchmark Access and Calibration**: licensed access to the 24-record set, **answer key held back and scoring returned by the holder** | AI assurance vendors, audit firms | Months | **Highest** |
+
+**Rank 1 is the recommendation.** It is the only offer in the programme that delivers value before asking for anything, it uses the reader's own files, and it needs no registration, upload or trust.
+
+### Files
+
+- `IP_COMMERCIALIZATION_AUDIT.md` created in the repo root, plus `.docx`.
+- `research/IP_SALE_TRACKER.md` to rev 7, new Section 7b.
+- `research/MASTER_TRACKER.md` session log appended.
+
+### Validation
+
+House style clean: 0 em-dashes, 0 banned phrases. Every figure read live from `/api/panel-stats` and `/api/asset-stats` on the day, none carried forward. No HTML, JS or endpoint changed this run, so no orphaned ID, href or localStorage key was introduced.
+
+### Outstanding
+
+- **No payment mechanism exists.** None of the three can be sold until one does.
+- Pricing for Ranks 2 and 3: `[REQUIRES USER INPUT]`.
+- This is a packaging audit, not a demand forecast. Repackaging improves the offer; it does not prove anyone will buy.
+
+---
