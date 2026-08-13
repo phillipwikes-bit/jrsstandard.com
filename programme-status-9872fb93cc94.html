@@ -355,6 +355,10 @@ tr.today td{background:rgba(93,191,130,.07)}
     <div id="lcorigins">Loading&hellip;</div>
   </div>
   <div class="note" id="lc-note">Link-click activity will appear here once a reader clicks an instrumented link.</div>
+  <div class="chart" style="margin-top:14px">
+    <h3>Certificate renders</h3>
+    <div class="note" id="cert-renders">Loading&hellip;</div>
+  </div>
 
   <h2 style="font-size:22px;margin-top:34px">Initiative Support</h2>
   <p class="sub">One-click endorsements of the two public initiatives, by day, by country and by initiative. These sit outside the guide downloads above and are counted separately.</p>
@@ -1049,6 +1053,18 @@ function loadLinkClicks(){
      }
      bars('lctargets',lc.by_target,'No click recorded yet. The dispatcher is live on every public page, so a zero here means nobody has clicked an instrumented link since it went in, not that clicks are being lost.');
      bars('lcorigins',lc.by_origin,'No origin recorded yet.');
+
+     // Certificate renders. Counted apart from artifact downloads on purpose:
+     // opening your own certificate is not a download of a guide.
+     var cr=d.certificate_renders, ce=document.getElementById('cert-renders');
+     if(ce){
+       if(!cr){ ce.textContent='Certificate render data unavailable.'; }
+       else {
+         ce.innerHTML='<b style="color:var(--text)">'+(cr.total||0)+'</b> certificate '
+           +(((cr.total||0)===1)?'render':'renders')+' ('+(cr.honor||0)+' honor, '
+           +(cr.reviewer||0)+' reviewer). '+esc(cr.counting_basis||'');
+       }
+     }
 
      var n=document.getElementById('lc-note');
      if(n){

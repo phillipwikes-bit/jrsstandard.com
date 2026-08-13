@@ -165,9 +165,22 @@ export default async function handler(req){
   // agent was not captured on download rows until 2026-08-11, so the older rows
   // carry no flag and are counted. That is stated in the payload rather than
   // left for a reader to assume the filter is total.
+  // CERTIFICATE RENDERS ARE NOT ARTIFACT DOWNLOADS. Both certificate sources are
+  // excluded here and counted separately below.
+  //
+  // honor-cert was excluded from the day this counter was written. reviewer-cert
+  // -render was added later and the exclusion was not extended with it, so every
+  // reviewer certificate render was landing in the public download total. Found
+  // 2026-08-13 by a dead-pipeline sweep looking for event sources with no reader:
+  // this one had no reader of its own AND was silently inflating a figure that
+  // belongs to the guides and the standard. It is zero today only because no
+  // evaluation has been submitted yet, so nothing was ever miscounted in
+  // practice; the defect was live and waiting.
+  const CERT_SOURCES = { 'honor-cert': 1, 'reviewer-cert-render': 1 };
+
   let downloads = 0, downloadsCrawlers = 0, downloadsUnattributed = 0;
   events.forEach(function(e){
-    if (e.type !== 'download' || e.source === 'honor-cert') return;
+    if (e.type !== 'download' || CERT_SOURCES[e.source]) return;
     const p = e.payload || {};
     if (isCrawler(p)) { downloadsCrawlers++; return; }
     if (!p.user_agent) downloadsUnattributed++;
@@ -457,6 +470,15 @@ export default async function handler(req){
   // excluded by the client on purpose, because a 302 cannot be blocked or
   // raced and is the stronger record. So this figure is NOT total site clicks
   // and must never be presented as one.
+  // Tallied here, beside the other request-time aggregates, so the figure is
+  // computed from the rows rather than stored.
+  const certRenders = {};
+  events.forEach(function(e){
+    if (e.type !== 'download' || !CERT_SOURCES[e.source]) return;
+    if (isCrawler(e.payload)) return;
+    certRenders[e.source] = (certRenders[e.source] || 0) + 1;
+  });
+
   const clickRows = events.filter(function(e){
     return e.source === 'link-click' && e.type === 'click' && !isCrawler(e.payload);
   });
@@ -488,6 +510,20 @@ export default async function handler(req){
         + 'to them. The counts are small because 33 of the 34 honor links and all 20 '
         + 'contributor links are deliberately unsent, not because engagement was measured '
         + 'and found low.',
+
+    // Certificate renders, counted in their own right rather than folded into
+    // artifact downloads. This also gives reviewer-cert-render a reader: before
+    // 2026-08-13 it was written by api/reviewer-cert.js and consumed by nothing,
+    // which is the dead-pipeline condition.
+    certificate_renders: {
+      honor: certRenders['honor-cert'] || 0,
+      reviewer: certRenders['reviewer-cert-render'] || 0,
+      total: (certRenders['honor-cert'] || 0) + (certRenders['reviewer-cert-render'] || 0),
+      counting_basis: 'Renders of an issued certificate, by source. Excluded from the '
+          + 'artifact download total on purpose: a person opening their own certificate '
+          + 'is not a download of a guide or the standard, and counting it as one '
+          + 'inflates the figure a buyer reads. Crawler rows are filtered.'
+    },
 
     link_clicks: {
       total: clickRows.length,
