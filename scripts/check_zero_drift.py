@@ -27,6 +27,7 @@ import re
 import subprocess
 import sys
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PANEL = "https://jrsstandard.com/api/panel-stats"
@@ -91,22 +92,51 @@ def run(cmd):
 #    zero-discrepancy rule broken.
 # ---------------------------------------------------------------------------
 def check_telemetry_parity(offline):
-    emits = set(re.findall(r"source:\s*'([a-z-]+)'", read("api/telemetry.js")))
-    stats = read("api/asset-stats.js")
-    page = read("programme-status-9872fb93cc94.html")
-    for src in sorted(emits):
-        key = src.replace("-", "_")
-        ingested = ("'%s'" % src) in stats
-        rendered = (key in page) or (src in page)
-        check("telemetry '%s' has an ingestion point" % src, ingested,
-              "written by api/telemetry.js, read by api/asset-stats.js")
-        check("telemetry '%s' has a panel" % src, rendered,
-              "rendered on the private status page")
+    """Every event source WRITTEN anywhere in api/ must have a reader.
+
+    Widened 2026-08-13 from api/telemetry.js alone to every writer in api/. The
+    narrow version passed clean while api/reviewer-cert.js wrote
+    'reviewer-cert-render' that no endpoint read, and which was silently landing
+    in the public artifact-download total.
+
+    Matches the event field `source: '...'` only. `page_source:` and `src:` are
+    different fields carrying different values, and treating them as event
+    sources produced a false positive on 'contributor'.
+    """
+    writers = {}
+    api = os.path.join(ROOT, "api")
+    for name in sorted(os.listdir(api)):
+        if not name.endswith(".js"):
+            continue
+        body = read("api/" + name)
+        for m in re.finditer(r"(?<![a-z_])source:\s*'([a-z0-9-]+)'", body):
+            writers.setdefault(m.group(1), set()).add(name)
+
+    readers = {}
+    for name in sorted(os.listdir(api)):
+        if not name.endswith(".js"):
+            continue
+        body = read("api/" + name)
+        for src in writers:
+            # A reader compares against the source; a writer assigns it.
+            # A reader compares, indexes, keys, or PASSES the source as an
+            # argument. The argument form was missed at first, which produced
+            # four false orphans: asset-stats reads them via opened('honor-link',
+            # ...) rather than a direct comparison.
+            if re.search(r"===\s*'%s'|\['%s'\]|'%s':|\(\s*'%s'\s*," % (src, src, src, src), body):
+                readers.setdefault(src, set()).add(name)
+
+    orphans = sorted(s for s in writers if not readers.get(s))
+    check("every event source written in api/ has a reader", not orphans,
+          ("orphaned: " + ", ".join(orphans)) if orphans
+          else "%d sources, all consumed" % len(writers))
+
     if not offline:
         d = live(ASSET)
-        check("live /api/asset-stats exposes link_clicks",
-              SKIPPED if d is None else ("link_clicks" in d),
-              "endpoint unreachable" if d is None else "present")
+        if d is None:
+            check("live /api/asset-stats exposes link_clicks", SKIPPED, "endpoint unreachable")
+        else:
+            check("live /api/asset-stats exposes link_clicks", "link_clicks" in d, "present")
 
 
 # ---------------------------------------------------------------------------
@@ -142,6 +172,36 @@ def check_no_handwritten_counts(offline):
     check("no hand-written count constants in api/", not offenders,
           "; ".join(offenders) if offenders
           else "all derived (%d allowlisted design constants)" % len(COUNT_ALLOW))
+
+
+# ---------------------------------------------------------------------------
+# 2b. NO MASKING FALLBACKS. A published metric field that falls back to a
+#     numeric literal publishes a hand-typed number dressed as a computed one.
+#     api/panel-stats.js did exactly this with `geo.countries || COUNTRIES_FALLBACK`
+#     while geo_source still reported "computed". Status codes and slice limits
+#     are not facts and are allowed.
+# ---------------------------------------------------------------------------
+FALLBACK_ALLOW = re.compile(r"\b(status|limit|max_tokens|slice|timeout|runs|n)\b", re.I)
+
+
+def check_no_masking_fallbacks(offline):
+    offenders = []
+    api = os.path.join(ROOT, "api")
+    for name in sorted(os.listdir(api)):
+        if not name.endswith(".js"):
+            continue
+        for line in read("api/" + name).splitlines():
+            stripped = line.strip()
+            if stripped.startswith("//"):
+                continue
+            # A response field assigned `<expr> || <number>`.
+            # `|| 0` is a zero default: absence really is zero and no figure is
+            # invented. Only a NON-ZERO literal substitutes a fact.
+            m = re.search(r"^([a-z_][a-z0-9_]*)\s*:\s*[^,;]*\|\|\s*([1-9]\d*)", stripped)
+            if m and not FALLBACK_ALLOW.search(m.group(1)):
+                offenders.append("%s: %s falls back to %s" % (name, m.group(1), m.group(2)))
+    check("no published metric falls back to a numeric literal", not offenders,
+          "; ".join(offenders) if offenders else "none")
 
 
 # ---------------------------------------------------------------------------
@@ -197,31 +257,52 @@ GENERATED = [
 #    fired a false failure during any ordinary editing session. Reading the file,
 #    regenerating, comparing and restoring needs no git at all and works on a
 #    dirty tree.
+def _rebuild_one(builder, doc, offline):
+    """Read, rebuild, compare, restore. Returns (doc, builder, ok_rebuild, detail, identical)."""
+    path = os.path.join(ROOT, doc)
+    try:
+        with open(path, "rb") as fh:
+            before = fh.read()
+    except Exception:
+        return (doc, builder, False, "file missing; run %s" % builder, None)
+    env = dict(os.environ, JRS_OFFLINE="1") if offline else None
+    r = subprocess.run([sys.executable, builder], cwd=ROOT,
+                       capture_output=True, text=True, env=env)
+    try:
+        with open(path, "rb") as fh:
+            after = fh.read()
+    finally:
+        # Always put the original back. The guard must never be the thing that
+        # changes the file it is checking.
+        with open(path, "wb") as fh:
+            fh.write(before)
+    tail = (r.stderr.strip() or r.stdout.strip()).splitlines()
+    detail = "builder exited %d: %s" % (r.returncode, tail[-1] if tail else "no output")
+    return (doc, builder, r.returncode == 0, detail, before == after)
+
+
 def check_generated_docs_current(offline):
-    for builder, doc in GENERATED:
-        path = os.path.join(ROOT, doc)
-        try:
-            with open(path, "rb") as fh:
-                before = fh.read()
-        except Exception:
-            check("%s exists" % doc, False, "file missing; run %s" % builder)
-            continue
-        r = run([sys.executable, builder])
-        try:
-            with open(path, "rb") as fh:
-                after = fh.read()
-        finally:
-            # Always put the original back. The guard must never be the thing
-            # that changes the file it is checking.
-            with open(path, "wb") as fh:
-                fh.write(before)
-        if r.returncode != 0:
-            tail = (r.stderr.strip() or r.stdout.strip()).splitlines()
-            check("%s rebuilds cleanly" % os.path.basename(builder), False,
-                  "builder exited %d: %s" % (r.returncode, tail[-1] if tail else "no output"))
-        check("%s matches its builder" % doc, before == after,
-              "regenerating changed it, so the on-disk copy had drifted"
-              if before != after else "byte-identical")
+    """Compares BYTES, not git state.
+
+    The first version asked git whether the file was dirty and bailed out when it
+    was, which reported "uncommitted edits present" instead of finding the drift
+    and would have fired a false failure during any ordinary editing session.
+
+    The builders run in parallel: two Python interpreter starts in series put the
+    guard over the one-second budget the pre-commit hook has to meet.
+    """
+    with ThreadPoolExecutor(max_workers=len(GENERATED)) as pool:
+        futures = [pool.submit(_rebuild_one, b, d, offline) for b, d in GENERATED]
+        for f in futures:
+            doc, builder, built, detail, identical = f.result()
+            if identical is None:
+                check("%s exists" % doc, False, detail)
+                continue
+            if not built:
+                check("%s rebuilds cleanly" % os.path.basename(builder), False, detail)
+            check("%s matches its builder" % doc, identical,
+                  "regenerating changed it, so the on-disk copy had drifted"
+                  if not identical else "byte-identical")
 
 
 # ---------------------------------------------------------------------------
@@ -248,7 +329,8 @@ def check_cross_endpoint(offline):
 
 def main():
     offline = "--offline" in sys.argv
-    for fn in (check_telemetry_parity, check_no_handwritten_counts, check_panel_geo,
+    for fn in (check_telemetry_parity, check_no_handwritten_counts,
+               check_no_masking_fallbacks, check_panel_geo,
                check_generated_docs_current, check_cross_endpoint):
         try:
             fn(offline)

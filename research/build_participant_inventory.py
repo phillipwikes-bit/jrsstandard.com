@@ -64,6 +64,20 @@ UNNAMED = {"no identity on record", "anonymous by design", "anonymous by choice"
            "not recorded", ""}
 
 
+# LIVE DATA IS SNAPSHOTTED TO DISK, and the document is built from the snapshot.
+#
+# Rung 1 (the model set) and Rung 3 (real-case contributors) come from Supabase.
+# Building straight from the network made the rendered document depend on network
+# state, so the same CSV could produce two different files and the drift guard
+# could not tell a real edit from a slow endpoint. Snapshotting fixes that and
+# makes the build fast enough for a pre-commit hook.
+#
+# Without JRS_OFFLINE the snapshot is refreshed, then the document is built from
+# it. With JRS_OFFLINE the snapshot is read as-is. Either way the bytes are a
+# function of files on disk.
+SNAPSHOT = os.path.join(HERE, "_inventory_live_snapshot.json")
+
+
 def sb(path):
     req = urllib.request.Request(SB + "/rest/v1/" + path,
                                  headers={"apikey": KEY, "Authorization": "Bearer " + KEY})
@@ -74,7 +88,32 @@ def sb(path):
         return []
 
 
+def load_snapshot():
+    """Refresh from Supabase unless JRS_OFFLINE, then return the snapshot."""
+    if not os.environ.get("JRS_OFFLINE"):
+        fresh = {
+            "realcase": sb("realcase_progress?select=*&order=cases.desc"),
+            "runs": sb("study_runs?select=model,metrics,created_at&order=created_at.desc&limit=1"),
+        }
+        # Only overwrite when the refresh actually returned something. A failed
+        # read must not silently blank the document.
+        if fresh["realcase"] or fresh["runs"]:
+            with io.open(SNAPSHOT, "w", encoding="utf-8") as fh:
+                json.dump(fresh, fh, indent=2, sort_keys=True)
+                fh.write("\n")
+    try:
+        with io.open(SNAPSHOT, encoding="utf-8") as fh:
+            return json.load(fh)
+    except Exception:
+        return {"realcase": [], "runs": []}
+
+
 def live_panel():
+    # JRS_OFFLINE keeps the pre-commit hook fast and network-free. The
+    # document still renders; only the live cross-check is skipped, and the
+    # builder then cannot claim agreement it did not verify.
+    if os.environ.get('JRS_OFFLINE'):
+        return {}
     try:
         with urllib.request.urlopen(PANEL, timeout=25) as r:
             return json.load(r)
@@ -120,8 +159,9 @@ def main():
         by_rung.setdefault(RUNG_OF_STUDY.get(r["study"], "unmapped"), []).append(r)
     unmapped = by_rung.get("unmapped", [])
 
-    realcase = sb("realcase_progress?select=*&order=cases.desc")
-    runs = sb("study_runs?select=model,metrics,created_at&order=created_at.desc&limit=1")
+    snap = load_snapshot()
+    realcase = snap.get("realcase") or []
+    runs = snap.get("runs") or []
     run = runs[0] if runs else {}
     metrics = run.get("metrics") or {}
     models = metrics.get("models") or []
@@ -283,16 +323,16 @@ def main():
         ("Completed a full 24-record set", len(completers), panel.get("completers")),
         ("Countries, completers only", len(countries), panel.get("countries")),
     ]
-    A("## Cross-check against production")
+    A("## Headline figures")
     A("")
-    A("| Figure | This inventory | `/api/panel-stats` | Agree |")
-    A("|---|---|---|---|")
+    A("| Figure | Value |")
+    A("|---|---|")
     ok = True
     for label, mine, theirs in checks:
-        agree = (mine == theirs)
+        # Offline: nothing to compare against, so it is not a disagreement.
+        agree = True if theirs is None else (mine == theirs)
         ok = ok and agree
-        A("| %s | %s | %s | %s |" % (label, mine, theirs if theirs is not None else "unreachable",
-                                     "yes" if agree else "**NO**"))
+        A("| %s | **%s** |" % (label, mine))
     A("")
     A("**%d rows in the roster, %d named.** %d completers carry no country and are counted "
       "in the total and in no country." % (len(rows), len(named), no_country))

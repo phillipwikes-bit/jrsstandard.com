@@ -153,13 +153,13 @@ The randomized comparison. **The B1 / B2 split is the blind and must not leave t
 
 ---
 
-## Cross-check against production
+## Headline figures
 
-| Figure | This inventory | `/api/panel-stats` | Agree |
-|---|---|---|---|
-| Reviewers who have graded records | 58 | 58 | yes |
-| Completed a full 24-record set | 36 | 36 | yes |
-| Countries, completers only | 16 | 16 | yes |
+| Figure | Value |
+|---|---|
+| Reviewers who have graded records | **58** |
+| Completed a full 24-record set | **36** |
+| Countries, completers only | **16** |
 
 **61 rows in the roster, 41 named.** 0 completers carry no country and are counted in the total and in no country.
 
