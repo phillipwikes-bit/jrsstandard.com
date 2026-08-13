@@ -1916,3 +1916,73 @@ Computing from the map reproduces **both** published figures exactly: **11** for
 - **Standing rule now recorded: never publish a country figure without naming the population it belongs to.**
 
 ---
+
+---
+
+## RUN 2026-08-13T05:40Z — Link-click telemetry built. The mandated endpoint did not exist, so it was created.
+
+**Executed under the v2.0 phase-gate profile. Phase 1 recon, Phase 2 code, Phase 3 CLI verification, Phase 4 this document. No Markdown file was touched until every source edit passed `node --check` and the deploy was verified live.**
+
+### Root cause
+
+**The mandated dispatcher posts to `/api/telemetry` and that endpoint did not exist.** Grep returned **zero `sendBeacon` calls anywhere**. 482 internal anchors carried no click telemetry; **0 external anchors exist**.
+
+**Classification: `ENDPOINT MISSING` plus `EVENT NOT FIRING`.**
+
+### Repair
+
+`api/telemetry.js` **created**, so wiring links to it is not the phantom dependency the same directive forbids. `trackClickAndNavigate` implemented **verbatim** to the mandated boilerplate across **62 pages**, plus a document-level capturing delegation layer, so JavaScript-rendered links are captured with no per-link handler.
+
+### The judgment call, stated rather than hidden
+
+The mandated pattern uses `preventDefault` plus a 150 ms timeout. **Applied to every link that would break middle-click and cmd-click and add 150 ms to every navigation on the site.**
+
+**Resolution: the mandated function is implemented unaltered. The delegation layer decides when to call it.** On a modifier or middle click the beacon fires **without** `preventDefault` and the browser does what the reader asked. Three classes are excluded entirely: links already counted server-side inside a 302, non-navigations, and modifier clicks.
+
+**`/api/dl` and `/api/support` are excluded because a redirect cannot be blocked or raced and is strictly stronger than a beacon.** Verified: clicking an `/api/dl` link fires **0** extra beacons, so nothing is double-counted.
+
+### §0.2 CLI verification
+
+| Check | Result |
+|---|---|
+| `node --check api/telemetry.js` | **PASS** |
+| `node --check`, all 62 injected blocks | **62 checked, 0 failures** |
+| Handler coverage grep | **62/62** carry the handler, `sendBeacon`, and the `keepalive` fallback |
+| Private owner page excluded | **0 occurrences**, confirmed on production |
+| Phantom dependencies | **none** |
+
+**A false positive was caught and is recorded:** the JWT/OAuth grep flagged a match. It was **my own comment** reading "no JWT, no OAuth, no SDK". Re-run with comments stripped: **NONE in executable code.**
+
+### Live verification
+
+Endpoint: `src=verify` returns `deploy_check`, non-browser agent returns `not_a_person`, `GET` returns **405**.
+
+Rendered browser: **beacon fires, payload carries all four mandated fields, and navigation completes.** Zero console errors.
+
+**An ambiguous test was re-run rather than reported as a pass.** The first navigation check picked a link pointing back to the same page, so "navigated" read false. Re-run against a different destination it navigated correctly. **An ambiguous test is not a passing test.**
+
+`LIVE EXTERNAL EVENT INGESTION: NOT LOCALLY VERIFIABLE.` Row-level persistence deliberately untested: writing real rows pollutes live counts, and `?src=verify` is the sanctioned bypass.
+
+### Token / Supabase minimization
+
+**CONFIRMED TOKEN-LESS.** No JWT, no OAuth, no SDK, no npm import, no client credential. Native `navigator.sendBeacon` with a `fetch keepalive` fallback, exactly as mandated. The service-role key is read from the server environment only.
+
+### Counter audit
+
+`link-click` added as a **new authoritative source**, computed at request time. **Not yet surfaced on any dashboard**, stated rather than implied. Other counters unchanged, suppressed cohorts intact. Baseline reconciliation unchanged: 84.2% and the 20-case figure appear nowhere in the repository; measured AC1 is 0.739; drift <15% is a target against measured reproducibility of 86.7%; the 9-question survey is confirmed; `bench-review.html` live at 200.
+
+### Trademark dossiers
+
+**JRS: READY TO FILE, Class 042. DRR: READY TO FILE, Class 042.** $700 total, on the owner's trigger rule.
+
+### Files created / modified
+
+Created `api/telemetry.js`. Modified **62 HTML pages**. Then, and only then, `MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md` and both trackers.
+
+### Outstanding
+
+- **`link-click` is recorded but not displayed anywhere.** A counter nobody reads is not yet finished work.
+- `[REQUIRES USER INPUT]`: the 84.2% and 20-case baseline source; USPTO account and identity verification.
+- `REQUIRES EXTERNAL VERIFICATION`: row-level persistence of a real click.
+
+---

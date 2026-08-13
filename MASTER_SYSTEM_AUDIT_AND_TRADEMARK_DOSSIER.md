@@ -1066,3 +1066,76 @@ An intent-to-use application **cannot be freely assigned before a Statement of U
 Remaining inputs are administrative: USPTO identity verification, mailing address, citizenship.
 
 ---
+
+---
+
+## AMENDMENT 2026-08-13T05:40Z: Link-click telemetry implemented. Endpoint created, dispatcher deployed.
+
+**Executed under the v2.0 phase-gate profile: recon, then code, then CLI verification, then this document. No Markdown was touched until every source edit passed `node --check` and the deploy was verified live.**
+
+### Root cause
+
+**The mandated dispatcher posts to `/api/telemetry`, and that endpoint did not exist.** Grep also returned **zero `sendBeacon` calls anywhere in the repository**. 482 internal anchors carried no click telemetry; **0 external anchors exist**, so there was no outbound-link gap to close.
+
+**Classification: `ENDPOINT MISSING` plus `EVENT NOT FIRING`.** Not a navigation race, not CORS, not token rejection.
+
+### Repair
+
+**`api/telemetry.js` created**, so wiring links to it is not the phantom dependency the same directive forbids. Writes `source: 'link-click'` to `interaction_events`.
+
+**`trackClickAndNavigate` implemented verbatim** to the mandated boilerplate and injected into **62 pages**, plus a document-level capturing delegation layer so links rendered by JavaScript after load are captured with no per-link handler.
+
+### Mandatory click-tracking audit table
+
+| Page | Link / Element | Destination | Tracking Mechanism | Event Fires | Transmission | Persistence | Display | Status |
+|---|---|---|---|---|---|---|---|---|
+| 62 pages | any `<a href>` not already counted | internal pages | `trackClickAndNavigate` via delegation | **yes, verified in browser** | `sendBeacon`, `fetch keepalive` fallback | `interaction_events` `link-click` | not yet surfaced | **REPAIRED** |
+| all pages | `/api/dl?…` | PDFs | server-side inside the 302 | yes | n/a | `guide-dl` / `pdf-dl` / `kit-dl` | download panels | **VERIFIED**, excluded from the beacon |
+| all pages | `/api/support?c=` | campaign screen | server-side inside the 302 | yes | n/a | `support` / `endorse` | endorsement chart | **VERIFIED**, excluded from the beacon |
+| `access.html` | screen arrival | `/api/access` | `fetch keepalive` | once per tab | keepalive | `gate-view` | Campaign arrivals | **VERIFIED** |
+| `reviewer/index.html` | landing arrival | `/api/access` | `fetch keepalive` | on load | keepalive | `reviewer-view` | Reviewer funnel | **VERIFIED** |
+| `training.html` | page arrival | `/api/access` | `fetch keepalive` | on load | keepalive | `train-view` | Training arrivals | **VERIFIED** |
+| `programme-status-…html` | all links | internal | **none, deliberately** | n/a | n/a | n/a | n/a | **EXCLUDED.** Standing rule: no analytics on the private owner page. Verified at 0 occurrences |
+
+### Three exclusions, each with a reason
+
+1. **`/api/dl` and `/api/support`** already count **inside their own 302**. A redirect cannot be blocked or raced, so it is strictly stronger than a client beacon. Routing them through the dispatcher would **double-count**. Verified: clicking an `/api/dl` link fires **0** extra beacons.
+2. **`mailto:`, `tel:`, `javascript:`, in-page anchors, `download` attributes.** Not navigations to count.
+3. **Modifier and middle clicks.** `preventDefault` on those breaks "open in new tab", so the beacon fires **without** `preventDefault` and the browser does what the reader asked. **The mandated function is unaltered; the guard lives in the delegation layer.**
+
+### Privacy controls on the sink
+
+Query strings are **stripped from both URLs** before storage, because a URL is the commonest place an identifier leaks into a log. 4KB body cap before parsing. Crawler filter by user agent. Same `?src=verify` deploy-check bypass as `/api/dl` and `/api/support`, so verification cannot pollute live counts.
+
+### CLI verification results
+
+| Check | Result |
+|---|---|
+| `node --check api/telemetry.js` | **PASS** |
+| `node --check` on all 62 injected blocks | **62 checked, 0 failures** |
+| Static grep, handler coverage | **62/62** files carry `trackClickAndNavigate`, `navigator.sendBeacon` and the `keepalive` fallback |
+| Private owner page excluded | **0 occurrences**, confirmed live |
+| Phantom dependencies | **none.** No `require`, no `import`, no npm package |
+| JWT / OAuth / SDK in executable code | **NONE.** An initial grep flagged a match; it was **my own comment** reading "no JWT, no OAuth, no SDK". Re-checked with comments stripped |
+
+### Live verification, endpoint
+
+`POST` with `src=verify` returns `{"recorded":false,"reason":"deploy_check"}`. Non-browser agent returns `{"recorded":false,"reason":"not_a_person"}`. `GET` returns **405**.
+
+### Live verification, rendered browser
+
+Clicking a real internal link: **beacon fires**, payload carries `timestamp, origin_url, target_url, meta`, meta carries the link label and `src`, **and navigation completes** to the new page. **Zero console errors.**
+
+**One ambiguous result was re-run rather than reported as a pass:** the first navigation test picked a link pointing back to the same page, so "navigated" read false. Re-run against a different destination, it navigated correctly. **An ambiguous test is not a passing test.**
+
+`LIVE EXTERNAL EVENT INGESTION: NOT LOCALLY VERIFIABLE.` Row-level persistence was deliberately not tested, because writing real rows pollutes the owner's counts; `?src=verify` is the sanctioned bypass and records nothing by design.
+
+### Counter audit
+
+`link-click` added as a **new authoritative source**, computed at request time. **It is not yet surfaced on any dashboard**, which is stated rather than implied. All other counters unchanged. Suppressed cohorts intact.
+
+### Trademark dossiers
+
+**JRS: READY TO FILE, Class 042. DRR: READY TO FILE, Class 042.** Unchanged by this run.
+
+---
