@@ -2893,3 +2893,55 @@ Every figure in the posts and proposals was checked against `/api/panel-stats` a
 - Report recommendations 1, 3 and 4 unchanged and still owner decisions.
 
 ---
+
+## RUN 2026-08-14T05:00Z: Payment path live. Three directive premises were wrong on disk and are corrected here.
+
+### Built and deployed
+
+| Asset | State |
+|---|---|
+| `api/_offer-config.js` | Prices $250 / $500 / $750, declared once |
+| `api/checkout.js` | **LIVE.** Verified 503 fail-safe, 404 on unknown offer |
+| `api/bench-score.js` | **LIVE.** Verified 503 `licensing_not_provisioned` |
+| `checkout-click` telemetry + dashboard panel | **LIVE.** `checkout_intent` present in `/api/asset-stats` |
+| Ephemeral-memory disclaimer | On all three intake pages |
+| `scripts/test_bench_score.mjs`, `scripts/test_checkout.mjs` | 15 and 12 assertions |
+
+### Three things the directive asserted that the filesystem contradicts
+
+**1. `bench_outcomes` is not the answer key.** The directive said to score against "the hidden 24-record key (`bench_outcomes`)". That table's columns are `record_id, outcome, note, record, domain, jrs_read, source, contributor, status`: it is the **Rung 3 real-case outcomes table**, holding FOIL and HR cases with documented results. It is also **anon-readable**, so it is not hidden. The real detection key is in `research/`, which is not deployed.
+
+**`bench-score` therefore refuses rather than scoring.** It returns 503 `key_not_provisioned` and **does not fall back** to `bench_outcomes` or to `bench_gold` (three synthetic placeholder rows). Scoring a paying licensee against either would return a confident, meaningless number. Provisioning is `BENCH_KEY_JSON` plus `BENCH_SCORE_TOKENS`.
+
+**2. Checkout URLs cannot be created from here.** A Stripe or Lemon Squeezy link exists only inside the owner's payment account. **A plausible-looking URL written into the config would be a fabricated payment destination.** `checkout_url` is empty per offer and `/api/checkout` fails safe: 503 carrying the price and an invoice-by-email path, **no Location header, no guessed destination**. Verified live. Going live is pasting three URLs.
+
+**3. The contributor roster is 19, not 34, and Arm B must not be added.** The directive asks to finalize 34 slots including "Arm B: 17/18". The roster holds 16 V-AI plus M-01, E-08 and V-HR-01. **`api/contributor.js` states that RR-### codes are excluded because that arm is blind and a JRS-branded page naming the standard would break it for anyone still reviewing.** Adding them would destroy the comparison study. **Not done, and it should not be done while Arm B is live.**
+
+**Also checked:** the confirmation deadline is already `Friday, 14 August 2026`. No change needed.
+
+**And a fourth, smaller one:** the directive asks to reframe a "12-month organizational deployment grant promised to volunteers". **No such promise exists anywhere in this repository.** The evaluator outreach template offers a LinkedIn recommendation and answer/identity separation, nothing more, and the contributor portal asks only about naming, continuing use and transfer. **I did not add a licence grant that was never made.** The correct scoping is recorded in the tracker for if he offers one.
+
+### Verification
+
+| Check | Result |
+|---|---|
+| `bench-score` assertions | **15 of 15**, including three proving no key material reaches the response |
+| `checkout` assertions | **12 of 12** |
+| Scout suite against fixtures | **passes** |
+| Price drift across intake pages | **0**, every page shows only its configured price |
+| Guard | **10 of 10** |
+| **Adversarial: `AUDIT_PRICE_TOTAL = 250`** | **caught**, reverted |
+| **Adversarial: orphaned `checkout-click`** | **caught**, reverted |
+| Live: unconfigured checkout | **503, price shown, no Location** |
+| Live: unknown offer | **404** |
+| Live: bench-score without licence | **503 `licensing_not_provisioned`** |
+| Live: `checkout_intent` in asset-stats | **present** |
+
+### Outstanding
+
+- **Three checkout URLs.** `[REQUIRES USER INPUT]`. Nothing else blocks selling.
+- **`BENCH_KEY_JSON` and `BENCH_SCORE_TOKENS`.** `[REQUIRES USER INPUT]`.
+- **Revenue $0. No offer has been shown to a named buyer.** LIVE means reachable, not sold.
+- Arm B contributor slots: **do not add while the blind holds.**
+
+---

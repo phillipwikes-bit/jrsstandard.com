@@ -7,8 +7,8 @@ Companion to `IP_COMMERCIALIZATION_AUDIT.md`, which holds the analysis. **This f
 | | |
 |---|---|
 | **Created** | 2026-08-13 |
-| **Last revised** | 2026-08-13 (rev 3) |
-| **Revisions** | 3 |
+| **Last revised** | 2026-08-13 (rev 4) |
+| **Revisions** | 4 |
 | **Packages defined** | 3 |
 | **Packages built** | **0** |
 | **Packages published** | **0** |
@@ -22,11 +22,15 @@ Companion to `IP_COMMERCIALIZATION_AUDIT.md`, which holds the analysis. **This f
 
 | # | Package | Built | Published | Shown to anyone | Revenue |
 |---|---|---|---|---|---|
-| 1 | Seven-Point Record Defensibility Check | **No** | No | No | $0 |
-| 2 | Model-Agreement Evidence Pack | **No** | No | No | $0 |
-| 3 | Benchmark Access and Calibration | **No** | No | No | $0 |
+| 1 | Seven-Point Check (free) + 5-record audit, **$250** | **Yes** | **LIVE** | No | $0 |
+| 2 | Governance Documentation Review, **$500** | **Yes** | **LIVE** | No | $0 |
+| 3 | Benchmark Access and Calibration, **$750** | **Yes** | **LIVE** | No | $0 |
 
-**Nothing has been built yet. This tracker starts at zero on purpose**, so the first entry that changes is a real change and not a restatement.
+**LIVE means the offer page, price and buy path are on the site and reachable.** It does not mean anyone has bought one. **Revenue is $0 and no offer has been shown to a named buyer.**
+
+**One thing stands between LIVE and sellable: the three checkout URLs.** `api/_offer-config.js` holds an empty `checkout_url` per offer. Paste the real payment links and deploy; nothing else changes.
+
+**Built and live as of 2026-08-13.** The tracker started at zero deliberately; this is the first entry that moved, and it moved because code was written and deployed, not because intent changed.
 
 ---
 
@@ -161,6 +165,40 @@ Built 2026-08-13. **These are the things that had to exist before a single offer
 
 ---
 
+## 3e. PAYMENT PATH (rev 4)
+
+| | |
+|---|---|
+| **Prices** | $250 / $500 / $750, declared once in `api/_offer-config.js` |
+| **Buy path** | `/api/checkout?o=<offer>` from each intake page |
+| **Checkout URLs** | **`[REQUIRES USER INPUT]`. Empty on purpose** |
+| **Behaviour today** | 503 with the price and an invoice-by-email path. **No Location header, no guessed destination** |
+| **Telemetry** | `checkout-click`, state `redirected` or `unconfigured`, read by `/api/asset-stats`, shown on the dashboard |
+
+**Why the URLs are empty rather than filled with something plausible.** A Stripe Payment Link or Lemon Squeezy checkout can only be created inside the owner's own payment account. Nothing in this repository can mint one. **A realistic-looking URL written here would be a fabricated payment destination**: a dead link shown to a paying customer at best, money sent somewhere unintended at worst.
+
+**The `unconfigured` counter is the number to watch.** A non-zero value means somebody tried to pay and could not.
+
+### Going live
+
+1. Create one payment link per offer in the provider dashboard: $250, $500, $750.
+2. Paste each into `checkout_url` in `api/_offer-config.js`.
+3. Deploy. `/api/checkout` starts redirecting the moment a valid https URL is present.
+
+---
+
+## 3f. BENCHMARK SCORING (rev 4)
+
+`api/bench-score.js`. A licensee POSTs determinations and receives **aggregate calibration only**: agreement with the key, chance-corrected AC1, their own distribution, and the detection-panel figures read live.
+
+**It never returns the key, per-record results, or the condition logic**, by construction rather than by filtering the response at the end. Per-record feedback across a few runs is exactly how a licensee would reconstruct the key.
+
+**It returns 503 `key_not_provisioned` today, and that is correct.** The detection key is in `research/`, which is deliberately not deployed. The endpoint **refuses to fall back** to `bench_gold` (three synthetic placeholder rows, anon-readable) or `bench_outcomes` (the Rung 3 real-case outcome table). Either would produce a confident, meaningless number.
+
+**To provision:** set `BENCH_KEY_JSON` and `BENCH_SCORE_TOKENS` in the server environment. `[REQUIRES USER INPUT]`
+
+---
+
 ## 4. LIVE BASELINE, THE NUMBERS EVERY PACKAGE INHERITS
 
 Read from `/api/panel-stats` and `/api/asset-stats` on 2026-08-13. **Anything published under these packages must reconcile to this table.**
@@ -222,6 +260,7 @@ The case for doing it anyway is narrow and it is the honest one: **the two stron
 
 | # | Date | Change |
 |---|---|---|
+| 4 | 2026-08-13 | **Packages moved to LIVE.** Prices fixed at $250 / $500 / $750 from one config; buy path, checkout telemetry and benchmark scoring endpoint written and deployed. New sections 3e and 3f. **Checkout URLs deliberately left empty**: they can only be minted in the owner's payment account, and a plausible-looking one would be a fabricated payment destination, so `/api/checkout` fails safe to an invoice path instead of guessing. `bench-score` refuses to score without the real key rather than falling back to synthetic or unrelated tables. **Revenue still $0 and no offer shown to a named buyer.** |
 | 3 | 2026-08-13 | **Operational assets built**, new section 3d: three offer intake pages live with a Data Isolation Guarantee generated from one source, three Upwork proposal scripts, a four-section diagnostic report template, and five LinkedIn launch posts. **Prices set by the owner**: Offer 1 free at the door, Offer 2 $500 to $1,000, Offer 3 $750 to $1,500. The guarantee is true because the pages carry no form and no file input at all. **Nothing sent, used or posted yet, and no package has moved off NOT STARTED.** Payment mechanism remains the standing blocker. |
 | 2 | 2026-08-13 | **Opportunity scout built**, `scripts/scout_opportunities.py` plus a 17-assertion suite, new sections 3b and 3c. Scores supplied postings against the asset inventory, routes them to one of the three packages, and hard-blocks anything that trips a guardrail. **Deliberately does not scrape Upwork:** that breaches their terms, needs credentials this repository does not hold, and a script that faked it would fabricate its own inputs. Two new open items: no real postings scored yet, and whether the channel is worth his time at all remains undecided. **No package moved off NOT STARTED.** |
 | 1 | 2026-08-13 | Created, at the owner's instruction, alongside revision 2 of `IP_COMMERCIALIZATION_AUDIT.md`. Records all three packages at **NOT STARTED**, the live baseline every package must reconcile to, the seven binding guardrails, and seven open items of which two are the pricing and payment decisions that block Ranks 2 and 3. Integrates the funnel measurement of the same day: **the refusal is at the door, 6 of 7 never clicked**, which rules out an instrument-level explanation and supports the ranking that was already set before the measurement existed. |
