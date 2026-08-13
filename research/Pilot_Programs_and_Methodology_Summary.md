@@ -21,13 +21,14 @@ The pilots test JRS against reality. For each real record, a reviewer records th
 - **Status and home:** in progress, preliminary. Supplies the real-case evidence for the empirical paper "Documentation Governance in AI-Assisted Decision-Making: A Multi-Domain Validation of a Record-Level Review Standard" (confirmed target: *Journal of Business Ethics*), where Kyle McMullan contributes the compliance and investigations perspective and Ubayet Hossain is the methodology co-author.
 
 ### Pilot 3. Healthcare Compliance
+- **WITHDRAWN 2026-08-13** at the owner's instruction. Accepted 2026-07, never started, zero cases contributed across its whole life, so no published figure changes with its removal.
 - **Lead:** Keith Carrington, EJD, MBA (reviewer ID V-HC-01).
 - **Mission:** extend the criterion test into healthcare compliance records, the third regulated domain, to show the pattern is not specific to one field.
 - **Verified evidence:** 0 cases. The pilot is accepted but not yet started.
 - **Status:** the standing action is to nudge Keith and open case collection; this pilot is the thinnest of the three and is the clearest near-term recruiting need.
 
 ### Portfolio status
-- **Total verified: 12 real cases across two active pilots** (FOIL 7, HR 5); the healthcare pilot is accepted but not started.
+- **Total verified: 12 real cases across two active pilots** (FOIL 7, HR 5); the healthcare pilot was accepted, never started, and was withdrawn on 2026-08-13.
 - **What maturing these pilots unlocks:** real-case criterion evidence is the strongest form of validation in the program and the one a prospective buyer weighs most. Reaching target in even one domain converts the criterion claim from "in progress" to demonstrated.
 
 ---

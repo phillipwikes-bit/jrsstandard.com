@@ -2498,3 +2498,61 @@ The builder **exits non-zero if any cross-check disagrees or any roster row cann
 - 17 bench reviewers remain unnamed by design; `bench_experts` still returns nothing through the anon key.
 
 ---
+
+## RUN 2026-08-13T21:40Z: Healthcare pilot withdrawn. Removing it exposed a hand-maintained count.
+
+### The removal
+
+`V-HC-01` (Keith Carrington, healthcare compliance) removed at the owner's instruction.
+
+| Surface | Action |
+|---|---|
+| `api/_contributor-roster.js` | entry removed |
+| Contributor link `?k=qtgiiqlcqk` | **now 404, verified live** |
+| `programme-status` Rung 3 note | replaced with a withdrawal line |
+| `research/` pilot docs | marked **WITHDRAWN**, history kept rather than erased |
+
+**No published figure changes.** The pilot was accepted and never started: zero cases in `realcase_progress` across its whole life, so the Rung 3 totals of 2 contributors and 54 cases are untouched.
+
+**Removing the link orphans no consent.** `contributor-stats` reported **0 confirmed of 20** at the time, so nothing was stored against that link to strand.
+
+### The defect the removal exposed, and it was mine
+
+`api/contributor-stats.js` carried:
+
+```
+// Keep in step with the roster in api/contributor.js.
+const ROSTER_SIZE = 20;
+```
+
+**A second copy of a number, with a comment asking a future editor to maintain it by hand.** That is the same class as the country figure and the endorsement figure that both drifted earlier this month. Left alone, this endpoint would have reported a roster of 20 against an actual roster of 19, and the outstanding-chase count with it.
+
+**Fixed structurally, not by decrementing.** The roster moved to `api/_contributor-roster.js`, matching the existing `_country-backfill.js` and `_panel-countries.js` convention, and both endpoints import it. `ROSTER_SIZE` is now `Object.keys(ROSTER).length`.
+
+**Convention check that changed the approach mid-build.** My first version exported `ROSTER_SIZE` from `api/contributor.js` and imported it into the stats endpoint, which is one route importing another. The repo's established pattern is an underscore-prefixed shared module, so it was rebuilt that way before deploy.
+
+### Verification
+
+| Check | Result |
+|---|---|
+| `node --check` on all three endpoints | **PASS** |
+| Roster size derived | **19**, V-HC-01 absent, keys unique |
+| Live `/api/contributor-stats` after deploy | **roster 19, outstanding 19** |
+| Withdrawn link | **404 `unknown_key`** |
+| `V-HR-01` link unaffected | **200** |
+| Inventory rebuild after the change | **exit 0**, 58/36/16 still agree, 0 unmapped |
+| `research/` and `MASTER_` staged before deploy | **0 and 0** |
+
+### The three completers with no country
+
+All **Arm B, arm B2, all at 24 of 24 reads**:
+
+| Code | Name |
+|---|---|
+| `RR-129` | **Wendy Ann Martel**, data protection, privacy and AI governance, twenty five years |
+| `RR-130` | *Anonymous by choice*, JRS-naive expert professional |
+| `RR-132` | *Anonymous by choice*, JRS-naive expert professional |
+
+**This is a collection gap, not a lookup failure.** Country was never captured at Arm B enrolment, so it exists nowhere to recover. RR-129's country was already an open owner-side item. For RR-130 and RR-132, anonymity was an election about naming, not about country, so asking them is legitimate.
+
+---
