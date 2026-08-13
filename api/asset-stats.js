@@ -231,7 +231,22 @@ export default async function handler(req){
   }
   // Endorsements that actually came from a campaign link. Anything tagged with
   // an on-site placement came from the home page or the footer, not a campaign.
-  const ON_SITE_SRC = { home: 1, footer: 1, nav: 1, none: 1, '': 1 };
+  // CAMPAIGN SOURCES ARE AN ALLOW LIST, NOT A DENY LIST.
+  //
+  // This was previously ON_SITE_SRC, a deny list of on-site placements, and
+  // anything NOT on it was counted as campaign-sourced. That default is
+  // backwards: adding a new endorsement link to a page silently inflated the
+  // campaign figure. On 2026-08-13 the tile read "2 campaign endorsements"
+  // while its own breakdown listed only home, footer and field_guides, because
+  // field_guides was missing from the deny list. drr and supported had the same
+  // defect and would have surfaced next.
+  //
+  // Verified against every src tag ever recorded: footer, home, field_guides,
+  // drr and supported all appear as <a href> on the site. linkedin, email and
+  // signature appear nowhere in the markup, so they can only have arrived from a
+  // distributed link. An unknown tag now counts as ON-SITE, which understates
+  // the campaign rather than inflating it.
+  const CAMPAIGN_SRC = { linkedin: 1, email: 1, signature: 1, post: 1, dm: 1, newsletter: 1 };
   function todayEndorsementRows(){
     return events.filter(function(e){
       return e.source === 'support' && e.type === 'endorse' && isToday(e) && !isCrawler(e.payload);
@@ -239,7 +254,7 @@ export default async function handler(req){
   }
   function todayCampaignEndorsements(){
     return todayEndorsementRows().filter(function(e){
-      return !ON_SITE_SRC[String((e.payload || {}).src || 'none')];
+      return !!CAMPAIGN_SRC[String((e.payload || {}).src || 'none')];
     }).length;
   }
   function todayEndorsementsBySource(){
