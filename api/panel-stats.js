@@ -42,13 +42,20 @@ const UNRESOLVABLE = ['E-11'];
 // than live. A number that cannot refresh itself should say so instead of
 // sitting next to three that can and borrowing their credibility.
 // Rederive with: python3 research/build_expert_roster.py
-// SUPERSEDED 2026-08-13. Countries and continents are now COMPUTED at request
-// time from the codes that actually completed. These remain only as a fallback
-// if the resolver returns nothing, and as the values the computation was
-// validated against: resolving from api/_panel-countries.js reproduces 16 and 5
-// exactly, which is what made the replacement safe.
-const COUNTRIES_FALLBACK = 16;
-const CONTINENTS_FALLBACK = 5;
+// SUPERSEDED 2026-08-13. Countries and continents are COMPUTED at request time
+// from the codes that actually completed.
+//
+// The transcribed constants that used to live here were kept as a fallback, and
+// a standing drift check found them still in place on 2026-08-13. They were a
+// hidden drift vector, not a safety net: if the resolver returned nothing, the
+// endpoint published two hand-typed numbers while `geo_source` still said
+// "computed", which is a stale figure wearing a live figure's clothes. That is
+// the exact defect this endpoint was rewritten to remove.
+//
+// A figure that cannot be computed now reports null and says why, so a reader
+// sees an absence rather than a number they cannot trust. The values the
+// computation was validated against, 16 and 5, are recorded in the tracker and
+// reproducible with: python3 research/build_expert_roster.py
 
 function json(o, s){
   return new Response(JSON.stringify(o), {
@@ -137,8 +144,9 @@ export default async function handler(req){
     // The four figures the public pages render.
     reviewers: reviewers,
     completers: completers,
-    countries: geo.countries || COUNTRIES_FALLBACK,
-    continents: geo.continents || CONTINENTS_FALLBACK,
+    // null, never a substituted constant, when resolution produced nothing.
+    countries: geo.resolved > 0 ? geo.countries : null,
+    continents: geo.resolved > 0 ? geo.continents : null,
 
     // The components, so a figure can be checked without re-deriving it.
     detection_completers: completersA,
@@ -153,7 +161,10 @@ export default async function handler(req){
          + 'three studies. completers graded all ' + NEEDED + ' records in their set. '
          + 'Both are computed at request time from pilot_progress, armb_progress and '
          + 'bench_labels, not transcribed from a roster.',
-    geo_source: 'computed',
+    // Never claims "computed" over a figure that was not computed. Until
+    // 2026-08-13 this said computed unconditionally while the two figures beside
+    // it could silently be hand-typed fallbacks.
+    geo_source: geo.resolved > 0 ? 'computed' : 'unresolved',
     countries_scope: 'the ' + completers + ' reviewers who completed a full ' + NEEDED
                    + '-record set. NOT all ' + reviewers + ' reviewers: attaching this figure to the '
                    + 'reviewer total is a recorded past defect. detection_countries is the same '
