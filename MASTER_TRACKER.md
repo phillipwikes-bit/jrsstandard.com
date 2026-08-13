@@ -2841,3 +2841,55 @@ The footer markup is not shared, which is why one edit could not do it last time
 Report recommendations 1, 3 and 4 remain open and are owner decisions: the `research-data.html` derivability question, the two missing `ANON_CODES`, and whether to run the first diagnostic manually.
 
 ---
+
+## RUN 2026-08-14T03:30Z: Commercial validation assets. Everything needed to make an offer now exists.
+
+### Built
+
+| Asset | State |
+|---|---|
+| `audit-request.html`, `governance-request.html`, `calibration-request.html` | **LIVE**, noindex |
+| `UPWORK_PROPOSAL_TEMPLATES.md` | 3 scripts |
+| `templates/DIAGNOSTIC_REPORT_TEMPLATE.md` | 4 sections |
+| `LINKEDIN_LAUNCH_POSTS.md` | 5 posts |
+
+### The Data Isolation Guarantee, and why it is true
+
+Generated from **one string** used by all three pages, so it cannot drift between them. Verified identical after generation.
+
+**It is true because of what the pages do not contain.** There is no form and no file input anywhere on them: **0 `<form>` elements and 0 file inputs across all three.** Nothing on those pages could store a record even by accident. Scope is agreed by email before anything is sent. A guarantee about data handling on a page that accepts uploads would be a promise; on a page that cannot accept anything it is a property.
+
+### One decision worth recording
+
+`UPWORK_PROPOSAL_TEMPLATES.md` originally listed the prohibited hype terms inside its own rules section. **That put the banned strings inside the very file a compliance grep scans**, and made a second copy of a list that must not drift. The rule now references `CLAIMS_REGISTER.md` claim C-09 instead. Verified: **0 of 10 prohibited terms across all four new files.**
+
+### One departure from the brief, stated rather than silently made
+
+The brief said the launch posts run 14 to 18 August. **In 2026 that window holds only three weekdays**: the 15th and 16th are the weekend. Five posts inside it would mean posting into a Saturday and a Sunday. The sequence runs 14, 17, 18, 19, 20 instead, and the file says so and says how to compress it back.
+
+### Figures
+
+Every figure in the posts and proposals was checked against `/api/panel-stats` at write time and tied to its population. **The detection panel is 16 experts across 11 countries; the completer panel is 36 across 16 countries.** These are different numbers for different groups and the templates keep them apart.
+
+### Verification
+
+| Check | Result |
+|---|---|
+| Renders, 55 pages at 390px and 1280px | **110 checks, no overflow, link present and visible** |
+| Disclaimer identical across the three pages | **yes** |
+| Forms and file inputs on the intake pages | **0 and 0** |
+| Prohibited terms in the four new files | **0 of 10** |
+| Inline JS, duplicate IDs, tag balance | clean on all three |
+| `noindex` on all three | yes |
+| Zero-drift guard | **10 of 10** |
+| **Adversarial: injected `OFFER_COUNT_LEGACY = 3`** | **caught, exit 1; reverted, clean pass** |
+| Pre-commit hook | reinstalled, **0.19s** |
+| House style, all new files | 0 em-dashes |
+
+### Outstanding
+
+- **Nothing has been sent, used or posted.** 0 proposals, 0 reports, 0 posts. No package has moved off NOT STARTED.
+- **No payment mechanism.** Scoping is by email, which is the deliberate smallest viable path.
+- Report recommendations 1, 3 and 4 unchanged and still owner decisions.
+
+---

@@ -7,8 +7,8 @@ Companion to `IP_COMMERCIALIZATION_AUDIT.md`, which holds the analysis. **This f
 | | |
 |---|---|
 | **Created** | 2026-08-13 |
-| **Last revised** | 2026-08-13 (rev 2) |
-| **Revisions** | 2 |
+| **Last revised** | 2026-08-13 (rev 3) |
+| **Revisions** | 3 |
 | **Packages defined** | 3 |
 | **Packages built** | **0** |
 | **Packages published** | **0** |
@@ -41,7 +41,7 @@ Companion to `IP_COMMERCIALIZATION_AUDIT.md`, which holds the analysis. **This f
 | **Persona** | General Counsel, Head of Employee Relations and Investigations |
 | **Format** | Diagnostic blueprint. One page, no registration, nothing sent anywhere |
 | **Speed** | **Days.** The content is written; the work is extraction and one page |
-| **Price** | **`[REQUIRES USER INPUT]`.** Free is defensible here: it is the door opener |
+| **Price** | **Free.** It is the door opener and stays ungated |
 | **Blocked on** | Nothing. **This is the only package with no dependency** |
 | **State** | **NOT STARTED** |
 
@@ -57,8 +57,8 @@ Companion to `IP_COMMERCIALIZATION_AUDIT.md`, which holds the analysis. **This f
 | **Format** | Turnkey governance kit: harness design, escalation rule, run schedule, reporting format |
 | **Evidence it carries** | 86.7% cross-vendor agreement on the latest nightly run, range 82.2 to 93.3 across 37 runs on the 15-record set |
 | **Speed** | **Weeks.** The engineering runs; the work is documenting it as a transferable design |
-| **Price** | **`[REQUIRES USER INPUT]`** |
-| **Blocked on** | Pricing, and a payment mechanism if it is not free |
+| **Price** | **$500 to $1,000**, set by the owner 2026-08-13 |
+| **Blocked on** | A payment mechanism. Scoping is by email until one exists |
 | **State** | **NOT STARTED** |
 
 ### Rank 3: Benchmark Access and Calibration
@@ -71,8 +71,8 @@ Companion to `IP_COMMERCIALIZATION_AUDIT.md`, which holds the analysis. **This f
 | **Format** | Executive retainer / advisory entry point. Licensed access, **key held back, scoring returned by the holder** |
 | **Evidence it carries** | 24-record detection set, key verified 24 of 24 by blind raters, 36 completers across 16 countries and 5 continents, Gwet's AC1 0.739 experts and 0.624 trained, detection 83.9% across 16 experts and 384 graded reads, 95% CI 72.7 to 95.1 |
 | **Speed** | **Months.** Needs a licence term, a scoring workflow and a price |
-| **Price** | **`[REQUIRES USER INPUT]`** |
-| **Blocked on** | Licence terms, scoring workflow, pricing, payment mechanism |
+| **Price** | **$750 to $1,500**, set by the owner 2026-08-13 |
+| **Blocked on** | Licence terms, scoring workflow, payment mechanism |
 | **State** | **NOT STARTED. Highest ceiling of the three** |
 
 ---
@@ -138,6 +138,29 @@ python3 scripts/test_scout_opportunities.py                       # 17 assertion
 
 ---
 
+## 3d. OPERATIONAL ASSETS (rev 3)
+
+Built 2026-08-13. **These are the things that had to exist before a single offer could be made.**
+
+| Asset | Path | State |
+|---|---|---|
+| Offer 1 intake | `audit-request.html` | **LIVE.** $250 to $500 |
+| Offer 2 intake | `governance-request.html` | **LIVE.** $500 to $1,000 |
+| Offer 3 intake | `calibration-request.html` | **LIVE.** $750 to $1,500 |
+| Proposal scripts | `UPWORK_PROPOSAL_TEMPLATES.md` | Written, **0 sent** |
+| Deliverable template | `templates/DIAGNOSTIC_REPORT_TEMPLATE.md` | Written, **0 used** |
+| Launch posts | `LINKEDIN_LAUNCH_POSTS.md` | Written, **0 posted** |
+
+**The Data Isolation Guarantee** appears on all three intake pages, generated from one string so the wording cannot drift between them, and verified identical after generation.
+
+**It is true because of what the pages do not contain.** There is no form and no file input anywhere on them. Nothing on those pages could store a record even by accident. Scope is agreed by email before anything is sent.
+
+**Prices are now set.** Open items 2 and 4 of section 6 close on the offer pricing; the payment mechanism is still absent, which is the standing blocker.
+
+**Nothing has been sent, used or posted.** That is the honest state, and the first entry that changes it will be a real change.
+
+---
+
 ## 4. LIVE BASELINE, THE NUMBERS EVERY PACKAGE INHERITS
 
 Read from `/api/panel-stats` and `/api/asset-stats` on 2026-08-13. **Anything published under these packages must reconcile to this table.**
@@ -199,5 +222,6 @@ The case for doing it anyway is narrow and it is the honest one: **the two stron
 
 | # | Date | Change |
 |---|---|---|
+| 3 | 2026-08-13 | **Operational assets built**, new section 3d: three offer intake pages live with a Data Isolation Guarantee generated from one source, three Upwork proposal scripts, a four-section diagnostic report template, and five LinkedIn launch posts. **Prices set by the owner**: Offer 1 free at the door, Offer 2 $500 to $1,000, Offer 3 $750 to $1,500. The guarantee is true because the pages carry no form and no file input at all. **Nothing sent, used or posted yet, and no package has moved off NOT STARTED.** Payment mechanism remains the standing blocker. |
 | 2 | 2026-08-13 | **Opportunity scout built**, `scripts/scout_opportunities.py` plus a 17-assertion suite, new sections 3b and 3c. Scores supplied postings against the asset inventory, routes them to one of the three packages, and hard-blocks anything that trips a guardrail. **Deliberately does not scrape Upwork:** that breaches their terms, needs credentials this repository does not hold, and a script that faked it would fabricate its own inputs. Two new open items: no real postings scored yet, and whether the channel is worth his time at all remains undecided. **No package moved off NOT STARTED.** |
 | 1 | 2026-08-13 | Created, at the owner's instruction, alongside revision 2 of `IP_COMMERCIALIZATION_AUDIT.md`. Records all three packages at **NOT STARTED**, the live baseline every package must reconcile to, the seven binding guardrails, and seven open items of which two are the pricing and payment decisions that block Ranks 2 and 3. Integrates the funnel measurement of the same day: **the refusal is at the door, 6 of 7 never clicked**, which rules out an instrument-level explanation and supports the ranking that was already set before the measurement existed. |
