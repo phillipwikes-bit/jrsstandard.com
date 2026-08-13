@@ -191,13 +191,25 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     var cTransfer = pick('c-transfer');
 
     msg.style.color = 'var(--review-text)';
-    if (!name)  { msg.textContent = 'Please give the name you want printed.'; return; }
-    if (!title) { msg.textContent = 'Please give the title you want printed.'; return; }
-    if (!org)   { msg.textContent = 'Please give your organization or affiliation.'; return; }
-    if (!email || email.indexOf('@') < 1 || email.indexOf('.') < 0) { msg.textContent = 'Please enter a valid email address.'; return; }
+    // The three permission questions come first and are always required. Nobody
+    // is asked to identify themselves before answering them.
     if (!cNamed)    { msg.textContent = 'Please answer the naming question. Either answer is fine.'; return; }
     if (!cUse)      { msg.textContent = 'Please answer the continuing use question. Either answer is fine.'; return; }
     if (!cTransfer) { msg.textContent = 'Please answer the transfer question. Either answer is fine.'; return; }
+
+    // ANONYMITY IS NOT CONDITIONAL ON IDENTIFYING YOURSELF. Name, title and
+    // organization are required only from someone who has asked to be named.
+    // Choosing anonymity used to be blocked behind the same four fields, which
+    // made the offer of anonymity one you could accept only by disclosing who
+    // you are. Kept in step with the same rule in api/contributor.js.
+    if (cNamed === 'yes') {
+      if (!name)  { msg.textContent = 'Please give the name you want printed.'; return; }
+      if (!title) { msg.textContent = 'Please give the title you want printed.'; return; }
+      if (!org)   { msg.textContent = 'Please give your organization or affiliation.'; return; }
+      if (!email || email.indexOf('@') < 1 || email.indexOf('.') < 0) { msg.textContent = 'Please enter a valid email address.'; return; }
+    } else if (email && (email.indexOf('@') < 1 || email.indexOf('.') < 0)) {
+      msg.textContent = 'That email address does not look valid. You can also leave it blank.'; return;
+    }
 
     go.disabled = true;
     msg.style.color = 'var(--muted)';
