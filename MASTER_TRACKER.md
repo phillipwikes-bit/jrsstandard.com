@@ -2340,3 +2340,51 @@ Also mine: the first live `?src=verify` POST returned `no_answers` because I inv
 - Partial-progress reporting on the evaluation: owner decision, above.
 
 ---
+
+## RUN 2026-08-13T19:20Z: Funnel evidence folded into the audit; commercialization tracker created.
+
+**Request.** Integrate the session's findings into `IP_COMMERCIALIZATION_AUDIT.md`, then create an IP Commercialization Tracker.
+
+### Audit to revision 2
+
+New **section 0b**, built from the per-CTA click attribution that went live earlier the same day. The first version recorded "1 open, 0 submissions" as a flat fact. The attribution locates the failure:
+
+| Stage | All-time |
+|---|---|
+| Reached the reviewer landing page | **7** |
+| Clicked the 4-minute evaluation CTA | **1**, India |
+| Opened | **1** |
+| Submitted | **0** |
+
+**6 of 7 never clicked.** That rules out the comfortable reading that the instrument is too long or badly written, because the loss is upstream of the instrument. Sections 3 and 6 updated to match.
+
+**The ranking did not change, and it was set before the funnel was measured.** Recorded explicitly in the audit so a later reader cannot mistake it for hindsight fitted to the data.
+
+**Caveat carried in the document itself, not just here:** landing-page logging began 2026-08-11, so 7 is a floor rather than a total, and 1 click is one person. A direction, not a rate, and it must never be quoted as a conversion figure.
+
+### New file: `IP_COMMERCIALIZATION_TRACKER.md`
+
+Standing state record, revised on every turn that touches packaging, pricing, publishing an asset or a buyer-facing surface. Eight sections: status at a glance, the three packages with per-package build state and blockers, the measured funnel, the live baseline every published figure must reconcile to, seven binding guardrails, seven open items, an honest-position section, and a revision log.
+
+**It starts at zero on purpose.** All three packages are NOT STARTED, 0 published, 0 shown, $0. The first entry that changes will be a real change rather than a restatement.
+
+**Kept separate from `research/IP_SALE_TRACKER.md` deliberately.** The sale is one buyer and carries a guardrail against any public "for sale" signal; commercialization is many buyers and is deliberately public. Merging them would put those two guardrails in the same document.
+
+### Validation
+
+| Check | Result |
+|---|---|
+| Documented figures asserted against live `/api/panel-stats` and `/api/asset-stats` | **8 of 8, drift count 0** |
+| House style, both files | **0 em-dashes, 0 banned phrases** |
+| Cross-references resolve in both directions | **yes** |
+| `.docx` generated for both | yes |
+
+No source code changed this run, so no endpoint, ID or localStorage key was touched and nothing was deployed.
+
+### Outstanding
+
+- **Rank 1 is buildable in a day and nothing blocks it.** It has not been started.
+- Pricing for Ranks 2 and 3, and whether to build a payment path: both `[REQUIRES USER INPUT]`.
+- Historic endorsement prefetches before 2026-08-13 remain unidentifiable. Unchanged.
+
+---

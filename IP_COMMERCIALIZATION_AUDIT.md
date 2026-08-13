@@ -21,6 +21,44 @@ The public surface asks a stranger to **become a research subject or a certifica
 
 ---
 
+## 0b. The funnel was measured on 2026-08-13, and it fails at the door
+
+The first version of this audit recorded "1 open, 0 submissions" as a flat fact. **Per-CTA click attribution went live the same day, and it locates the failure precisely.** All-time, read from production:
+
+| Stage | Count | What survives to the next stage |
+|---|---|---|
+| Reached the reviewer landing page | **7** | |
+| Clicked "Take the 4-minute reviewer evaluation" | **1** | **1 of 7** |
+| Opened the instrument | **1** | 1 of 1 |
+| **Submitted anything** | **0** | **0 of 1** |
+| Answered all nine | **0** | |
+| Left contact details | **0** | |
+
+**Six of seven people who reached the page never clicked the button.** The single person who did click is in India, and the click came from `/reviewer/index.html`.
+
+### Why this matters more than the raw zero
+
+The zero was previously open to a comfortable reading: *the instrument is too long, or the questions are wrong, or people start and give up.* **The measurement rules that out.** The loss is almost entirely upstream of the instrument. Nobody is abandoning the evaluation. **Almost nobody agrees to begin it.**
+
+That distinction decides what to build:
+
+| If the failure were | The fix would be | Evidence |
+|---|---|---|
+| Inside the instrument | Shorten it, cut questions, save progress | **Contradicted.** 1 of 1 who opened it did not abandon partway, they never submitted at all, and only 1 person ever opened it |
+| At the door | **Change the offer, not the form** | **Supported.** 6 of 7 refused at the click |
+
+**Every one of the three packages below is a door-level fix.** That is not a coincidence and it is not hindsight: the ranking was written before this measurement and the measurement did not change it. It raised the confidence behind Rank 1 specifically, because Rank 1 is the only proposal that removes the door entirely by delivering the value on the page.
+
+### The honest caveat on these seven
+
+Landing-page logging began **2026-08-11**. Arrivals before that date are **unknown, not zero**, and the endpoint says so itself. So 7 is a floor on arrivals, not a total, and the 1-in-7 click rate is drawn from a sample small enough that it indicates a direction and nothing more. **It is not a conversion rate and must not be quoted as one.**
+
+### One thing still unmeasurable
+
+**Nothing records partial progress inside the instrument.** Someone who answers six of nine and closes the tab leaves no row. Their place is saved in `localStorage` and never leaves the browser. Reporting it would mean new telemetry on a research instrument whose participants consent at submission, not before it, so it was flagged rather than built. `[REQUIRES USER INPUT]`.
+
+---
+
 ## 1. Asset index, and where each one lives
 
 | # | Asset | Location on disk | Public surface today |
@@ -133,7 +171,7 @@ The public surface asks a stranger to **become a research subject or a certifica
 
 | Current offer | Problem | Replace with |
 |---|---|---|
-| "Complete the reviewer evaluation" | Asks 4 minutes before giving anything. **1 open, 0 submissions** | The Seven-Point Check, value first |
+| "Complete the reviewer evaluation" | Asks 4 minutes before giving anything. **6 of 7 arrivals never clicked the button; of the 1 who opened it, 0 submitted.** The refusal is at the door, not inside the form | The Seven-Point Check, value first |
 | "Get certified" | A certificate from an unknown issuer carries no weight with a GC | Rank 1 diagnostic |
 | "Download the Field Guide" | A PDF is not a diagnosis. No urgency, no next step | Rank 1 diagnostic |
 | "Request a pilot" | **0 organizations in the programme's lifetime** | Rank 3 licence conversation |
@@ -171,12 +209,16 @@ From `research/IP_Sale_Playbook.md` and `research/IP_Asset_Transfer_Map.md`, unc
 
 **This is a packaging audit, not a demand forecast.** Every channel tested to date has returned close to zero: federal training closed with no response from three organisations, organization pilots at zero for the programme's life, and $0 revenue. **Repackaging improves the offer. It does not prove anyone will buy it.**
 
-The strongest evidence that Rank 1 is right is negative: **the current offers have been live for weeks and produced 1 evaluation open and 0 submissions.** The asset that has never been shown is the one with a name for the buyer's problem.
+The strongest evidence that Rank 1 is right is negative, and section 0b sharpened it: **the current offers have been live for weeks, and 6 of the 7 people who reached the reviewer page would not click a button that asked for four minutes.** The refusal happens before the instrument, which means the instrument is not the problem and rewriting it would not help. The asset that has never been shown is the one with a name for the buyer's problem.
+
+**Held to its own standard, that evidence is thin.** Seven arrivals is a floor from a log that started on 11 August, and one click is one person. It points in a direction; it does not carry a rate. Any figure quoted from section 0b outside this document must carry that qualification with it.
 
 `[REQUIRES USER INPUT]`: pricing for Ranks 2 and 3, and whether to build a payment path at all.
 
 ---
 
 ## 7. Provenance
+
+**Revision 2, 2026-08-13.** Section 0b added from the per-CTA click attribution that went live the same day, plus the three-way verification that no evaluation has been submitted: the writer's source string is unchanged across every commit, synthetic rows through the live reader count correctly with breakdowns releasing at the pre-registered n=30, and a check-mode POST of all nine answers returns 200. Sections 3 and 6 updated to match. **The ranking is unchanged, and it was set before the funnel was measured.** Progress against this document is tracked in `IP_COMMERCIALIZATION_TRACKER.md`.
 
 Asset index built by grep across 45 public HTML files, 36 API endpoints and the `research/` directory. Failure-mode text quoted verbatim from `research/JRS_Validation_Report.md` §4. Panel figures read live from `/api/panel-stats` on 2026-08-13: 36 completers, 16 countries, 5 continents, 58 reviewers, 48 registered, 16 detection completers across 11 countries, 20 comparison completers, 25 reliability raters. Traction figures read live from `/api/asset-stats`. Reproducibility figure read from `research.html`. **No figure in this document was carried forward from an earlier note.**
