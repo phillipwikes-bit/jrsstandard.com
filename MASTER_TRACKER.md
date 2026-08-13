@@ -2447,3 +2447,54 @@ One failure during the pass was my own: the assertion harness sliced posting tit
 - Rank 1 remains buildable in a day with nothing blocking it, and remains not started.
 
 ---
+
+## RUN 2026-08-13T21:05Z: The roster was organized by study. The inventory needed rungs.
+
+**Owner correction, and it was right.** `REVIEWER_ROSTER_COMPLETE.md` listed people by study number (011, 012, 004). That shape omits the two rungs with no human panel of their own, so **Rung 1 and Rung 3 were absent from the record entirely** rather than shown as empty of reviewers.
+
+### The ladder, now inventoried end to end
+
+| Rung | Question | Judged by | Participants |
+|---|---|---|---|
+| **Rung 1** | Do independent AI models apply JRS alike? | **AI models, no humans** | 3 models, 3 vendors |
+| **Rung 2a** | Do human reviewers agree with one another? | Humans | 25 |
+| **Rung 2b** | Do reads match a key fixed before scoring? | Humans | 16 |
+| **Arm B** | Does JRS improve on unaided review? | Humans | 20 |
+| **Rung 3** | Do flagged records fail when challenged? | **Case contributors, not reviewers** | 2 contributors, 54 cases |
+
+**Rung 1 and Rung 3 carrying no reviewer panel is a property of the design, not a gap in the record.** The new file says so explicitly instead of leaving a reader to infer it from an absence.
+
+### Built
+
+`research/build_participant_inventory.py`, emitting `research/PARTICIPANT_INVENTORY_BY_RUNG.md` and `.docx`.
+
+**Single transcription, deliberately.** Human rows are read from the CSV that `build_expert_roster.py` emits rather than re-typed, so the roster and the inventory **cannot disagree about a person.** Study-to-rung mapping lives in exactly one dict. Real-case rows, the Rung 1 model set and the run mode are read live.
+
+**Rung 1 panel, from the most recent `study_runs` row (2026-08-12T06:29Z), cross-vendor mode:** `anthropic:claude-opus-4-8`, `openai:gpt-5`, `google:gemini-flash-latest`.
+
+**Rung 3, live from `realcase_progress`:** `E-08` public records / FOIL, 32 cases; `V-HR-01` HR and employment, 22 cases. 54 cases total.
+
+### Carried forward as code, not as a warning
+
+The city-qualifier normalization that caused my 23-versus-16 country error earlier today is now **a function in the builder**, with the reason in its docstring. A fix that lives only in a document is a fix that gets made again.
+
+### Phase 3 verification, exit 0
+
+| Check | Result |
+|---|---|
+| `ast.parse` on the builder | **PASS** |
+| Reviewers against `/api/panel-stats` | 58 vs 58, **OK** |
+| Completers | 36 vs 36, **OK** |
+| Countries, completers only | 16 vs 16, **OK** |
+| Rungs covered | **5 of 5** |
+| **Unmapped roster rows** | **0** |
+| House style, document and script | 0 em-dashes |
+
+The builder **exits non-zero if any cross-check disagrees or any roster row cannot be placed on the ladder**, so a future study that is added without a rung mapping fails the run instead of vanishing from the inventory.
+
+### Outstanding
+
+- `V-HC-01` Keith Carrington is registered as the healthcare pilot facilitator and has **no cases in `realcase_progress`**, so he appears in the contributor registry and not in the Rung 3 table. Not an error, but it is the gap to close if that pilot is meant to be live.
+- 17 bench reviewers remain unnamed by design; `bench_experts` still returns nothing through the anon key.
+
+---

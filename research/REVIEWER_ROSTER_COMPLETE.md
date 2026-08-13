@@ -2,6 +2,8 @@
 
 **Every person who has graded records for JRS, across all three studies. Built 2026-08-13 by `research/build_expert_roster.py`, with completion re-verified live against `pilot_progress` and `armb_progress` on this run.**
 
+**This roster covers the human reviewer panels only.** For the full evidence ladder, including **Rung 1** (judged by AI models, no human panel) and **Rung 3** (carried by real-case contributors, not reviewers), see `research/PARTICIPANT_INVENTORY_BY_RUNG.md`. Both files read the same CSV for their human rows, so they cannot disagree about a person.
+
 > **OWNER COPY. DO NOT FORWARD.** This table shows which study and which arm each reviewer sat in, and **the arm split is the blind on the comparison study.** Sending this file to a reviewer, or naming an Arm A reviewer beside an Arm B reviewer in one message, breaks it. Everything public or buyer-facing is counts only, never this table.
 
 ---
