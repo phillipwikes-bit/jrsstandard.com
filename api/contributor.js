@@ -316,11 +316,6 @@ export default async function handler(req){
   const email = clean(b.email, 200);
   const link  = clean(b.profile, 300);
 
-  if (!name)  return json({ error:'name_required' }, 400);
-  if (!title) return json({ error:'title_required' }, 400);
-  if (!org)   return json({ error:'organization_required' }, 400);
-  if (!email || email.indexOf('@') < 1 || email.indexOf('.') < 0) return json({ error:'valid_email_required' }, 400);
-
   // Forced choices. Each must be an explicit yes or no; an unanswered question
   // is rejected rather than defaulted, so a permission can never be inferred.
   function choice(v){ v = String(v || '').toLowerCase(); return (v === 'yes' || v === 'no') ? v : ''; }
@@ -330,6 +325,31 @@ export default async function handler(req){
   if (!cName)     return json({ error:'naming_choice_required' }, 400);
   if (!cUse)      return json({ error:'use_choice_required' }, 400);
   if (!cTransfer) return json({ error:'transfer_choice_required' }, 400);
+
+  // ANONYMITY IS NOT CONDITIONAL ON IDENTIFYING YOURSELF.
+  //
+  // Until 2026-08-13 name, title, organization and email were hard-required
+  // before this endpoint would accept a confirmation, including from a person
+  // whose election on file was anonymous. That made "you may stay anonymous"
+  // an offer you could only accept by first disclosing who you are.
+  //
+  // A contributor electing anonymity now confirms with the three permission
+  // choices alone. Nothing else is demanded, and the fields they omit are
+  // stored empty rather than inferred from the roster.
+  const wantsNamed = (cName === 'yes');
+  if (wantsNamed) {
+    if (!name)  return json({ error:'name_required' }, 400);
+    if (!title) return json({ error:'title_required' }, 400);
+    if (!org)   return json({ error:'organization_required' }, 400);
+    if (!email || email.indexOf('@') < 1 || email.indexOf('.') < 0) {
+      return json({ error:'valid_email_required' }, 400);
+    }
+  } else if (email && (email.indexOf('@') < 1 || email.indexOf('.') < 0)) {
+    // An anonymous contributor may still leave an address so the results can
+    // reach them. If they do, it has to be a real one; if they do not, that is
+    // an accepted answer and not an error.
+    return json({ error:'valid_email_required' }, 400);
+  }
 
   const payload = {
     kind: 'contributor-confirm',
