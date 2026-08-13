@@ -356,6 +356,10 @@ tr.today td{background:rgba(93,191,130,.07)}
   </div>
   <div class="note" id="lc-note">Link-click activity will appear here once a reader clicks an instrumented link.</div>
   <div class="chart" style="margin-top:14px">
+    <h3>Checkout intent</h3>
+    <div class="note" id="checkout-intent">Loading&hellip;</div>
+  </div>
+  <div class="chart" style="margin-top:14px">
     <h3>Certificate renders</h3>
     <div class="note" id="cert-renders">Loading&hellip;</div>
   </div>
@@ -1053,6 +1057,23 @@ function loadLinkClicks(){
      }
      bars('lctargets',lc.by_target,'No click recorded yet. The dispatcher is live on every public page, so a zero here means nobody has clicked an instrumented link since it went in, not that clicks are being lost.');
      bars('lcorigins',lc.by_origin,'No origin recorded yet.');
+
+     // Attempts to buy. The 'unconfigured' count is the one that matters most:
+     // it is somebody trying to pay while no payment link is live.
+     var ci=d.checkout_intent, cie=document.getElementById('checkout-intent');
+     if(cie){
+       if(!ci){ cie.textContent='Checkout data unavailable.'; }
+       else {
+         var st=ci.by_state||{}, off=ci.by_offer||{};
+         var offTxt=Object.keys(off).sort().map(function(k){return off[k]+' '+k;}).join(' · ');
+         cie.innerHTML='<b style="color:var(--text)">'+(ci.total||0)+'</b> checkout '
+           +(((ci.total||0)===1)?'attempt':'attempts')
+           +(st.unconfigured?(' · <b style="color:var(--review-text)">'+st.unconfigured+' hit a path with no payment link live</b>'):'')
+           +(st.redirected?(' · '+st.redirected+' reached the payment provider'):'')
+           +(offTxt?('<br>'+esc(offTxt)):'')
+           +'<br><span style="color:var(--muted-soft)">'+esc(ci.counting_basis||'')+'</span>';
+       }
+     }
 
      // Certificate renders. Counted apart from artifact downloads on purpose:
      // opening your own certificate is not a download of a guide.

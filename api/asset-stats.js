@@ -479,6 +479,21 @@ export default async function handler(req){
     certRenders[e.source] = (certRenders[e.source] || 0) + 1;
   });
 
+  // CHECKOUT INTENT. Written by /api/checkout on every attempt to buy, with a
+  // state of 'redirected' or 'unconfigured'. Read here so the write is not an
+  // orphan, and split by state because the two mean opposite things: one is a
+  // buyer reaching a payment page, the other is a buyer hitting a payment path
+  // that is not switched on yet. The second is the more urgent number.
+  const checkoutRows = events.filter(function(e){
+    return e.source === 'checkout-click' && e.type === 'click' && !isCrawler(e.payload);
+  });
+  const checkoutByOffer = {}, checkoutByState = {};
+  checkoutRows.forEach(function(e){
+    const p = e.payload || {};
+    if (p.offer) checkoutByOffer[p.offer] = (checkoutByOffer[p.offer] || 0) + 1;
+    if (p.state) checkoutByState[p.state] = (checkoutByState[p.state] || 0) + 1;
+  });
+
   const clickRows = events.filter(function(e){
     return e.source === 'link-click' && e.type === 'click' && !isCrawler(e.payload);
   });
@@ -523,6 +538,21 @@ export default async function handler(req){
           + 'artifact download total on purpose: a person opening their own certificate '
           + 'is not a download of a guide or the standard, and counting it as one '
           + 'inflates the figure a buyer reads. Crawler rows are filtered.'
+    },
+
+    // Attempts to buy. Zero is the expected reading today: no payment link is
+    // configured, so a non-zero 'unconfigured' count means somebody tried to
+    // pay and could not.
+    checkout_intent: {
+      total: checkoutRows.length,
+      today: checkoutRows.filter(isToday).length,
+      by_offer: checkoutByOffer,
+      by_state: checkoutByState,
+      counting_basis: 'Clicks on a paid-offer checkout link, recorded by /api/checkout. '
+          + 'state=redirected means the buyer reached the payment provider; '
+          + 'state=unconfigured means no payment link is live for that offer yet and '
+          + 'the buyer was shown the invoice-by-email path instead. Crawler rows and '
+          + 'deploy-check tags are excluded, and a browser prefetch is not recorded as intent.'
     },
 
     link_clicks: {
