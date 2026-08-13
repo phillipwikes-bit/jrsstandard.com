@@ -2294,3 +2294,49 @@ The first render run reported 4 console errors. They were my own harness abortin
 - **Emit points now equal ingestion points at 1 and 1.** The previously standing item is closed.
 
 ---
+
+## RUN 2026-08-13T18:40Z: "Are you sure nobody completed it?" Checked three ways. Yes, zero.
+
+**No code changed this run.** The chain was tested end to end and no defect was found, so nothing was repaired. Inventing a fix to satisfy the prompt would be worse than reporting the zero.
+
+### The question
+
+Whether anyone has completed the 4-minute reviewer evaluation. Answered from live production, not from the tile and not from memory.
+
+### The live figures
+
+| Stage | All-time | Source |
+|---|---|---|
+| Arrivals on `/reviewer/` landing | **7** | `entry_points.reviewer_landing_views` |
+| Clicked "Take the 4-minute reviewer evaluation" | **1**, from India | `link_clicks.by_label`, the panel added at 12:40Z |
+| Opened the evaluation | **1** | `reviewer_evaluation_funnel.opened` |
+| **Submitted** | **0** | funnel, `completed_evaluations`, and `today` all agree |
+| Answered all nine | **0** | |
+| Contact records captured | **0** | |
+
+Landing-page logging began 2026-08-11. Arrivals before that date are **unknown, not zero**, and the endpoint says so in its own note.
+
+### Why the zero is trustworthy, tested rather than asserted
+
+**1. The source string never changed.** `git log --follow` on `api/reviewer-eval.js` across all 5 commits: `source: 'reviewer-eval', type: 'evaluation'` from the first commit that built the suite. **No submissions are stranded under an old name.**
+
+**2. The reader counts real rows.** Synthetic rows shaped exactly as the writer emits them, pushed through the real `api/asset-stats.js` handler: `funnel.submitted` 30, `completed_all_questions` 30, `contacts_captured` 2, `completed_evaluations.submitted` 30, `today.evaluation_submissions` 30, `countries_submitted` released at n=30, `breakdowns_released` true. **7 of 7.**
+
+**3. The writer accepts a real submission, live.** `POST /api/reviewer-eval?src=verify` with all nine answers returned **200, `answered: 9, total: 9`, `recorded: false`**. Check mode, so nothing was written to the owner's counts.
+
+**Correction, mine.** The first run of check 2 reported a FAIL on `countries_submitted`. That was my own wrong expectation: sub-group breakdowns are withheld below 30 submissions by design, a threshold fixed before the first response arrived. Re-running at n=30 released them. The code was right; the assertion was not.
+
+Also mine: the first live `?src=verify` POST returned `no_answers` because I invented question keys. The real keys are `q_readers`, `q_second`, `q_returned`, `q_basis`, `q_ai`, `q_ai_policy`, `q_reconstruct`, `q_audited`, `q_useful`, and the client builds its payload from the server's own map, so **a client/server key mismatch cannot occur by construction.**
+
+### The one real blind spot, flagged and deliberately not built
+
+**Nothing records partial progress.** Someone who answers 6 of 9 and leaves produces no row anywhere. The page saves progress to `localStorage` under `jrs-reviewer-eval`, but that state is never reported. So the funnel can show that a person opened and did not submit, and can never show **where inside the instrument they stopped**.
+
+**Not fixed unilaterally.** Reporting partial answers would be new telemetry on a research instrument whose participants consent at submission, not before it. That is a consent-surface decision for the owner, not a defect for me to close. `[REQUIRES USER INPUT]`.
+
+### Outstanding
+
+- Historic endorsement rows before 2026-08-13 still contain unidentifiable prefetches. Unchanged.
+- Partial-progress reporting on the evaluation: owner decision, above.
+
+---
