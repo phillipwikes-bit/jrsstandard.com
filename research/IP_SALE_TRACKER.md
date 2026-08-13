@@ -7,8 +7,8 @@
 | | |
 |---|---|
 | **Created** | 2026-08-13 |
-| **Last revised** | 2026-08-13 (rev 7) |
-| **Revisions** | 7 |
+| **Last revised** | 2026-08-13 (rev 8) |
+| **Revisions** | 8 |
 | **Current stage** | **Zero buyer conversations held, because I advised waiting. Gate withdrawn 2026-08-13** |
 | **Sale probability, as-is** | **5 to 10%** over ~12 months (owner's own anchor, `Path_to_Sale_Action_Plan.md`, unchanged) |
 
@@ -170,6 +170,7 @@ GRC / compliance software vendors · E-discovery and legal-tech · HR-tech and p
 
 | # | Date | Change |
 |---|---|---|
+| 8 | 2026-08-13 | Link-click telemetry surfaced on the owner dashboard. Bears on the sale only as diligence hygiene: the asset now demonstrates a closed measurement loop from click to panel, with every figure computed at request time and none stored. First live read attributed the sole evaluation open to India. **No change to the packaging in Section 7b, to the guardrails, or to any open item.** |
 | 7 | 2026-08-13 | **Commercial packaging audit**, `IP_COMMERCIALIZATION_AUDIT.md`. Grep across 45 public HTML files and 36 API endpoints found the two highest-value assets carry **zero public surface**: the seven named AI failure modes and the cross-vendor reproducibility harness. Three packages ranked by demand and speed to market, new Section 7b. Rank 1 is buildable in days and is the first offer in the programme that delivers value before asking for anything. Live figures re-read, not carried: 36 completers, 16 countries, 1 evaluation open, 0 submissions, 0 org pilots, $0 revenue. |
 | 6 | 2026-08-13 | Consent and release audit completed, `research/CONSENT_AND_RELEASE_AUDIT_2026-08-13.md`. **Nothing is signed anywhere; every permission is a tick plus a stored boolean.** Seven real protections identified, led by no-record-text-ever-stored and the answers/identity table split. **Four gaps, two of which cost money at sale: no copyright assignment from co-authors (consent is not assignment), and the contributor confirmation instrument that captures continuing-use and transfer rights has been sent to 0 of 20.** No terms version is stored against any consent row, so the wording a person saw cannot be proven. |
 | 5 | 2026-08-13 | Country scope pinned. Both published figures, 16 for all completers and 11 for the detection panel, are now computed from one map by `/api/panel-stats`, and the dashboard card carries its own scope. Checked all three studies: 004's 24 reliability raters count toward the 57 reviewers but add no country, their recorded countries being India, US and Australia, all already inside the 16. |

@@ -2241,3 +2241,56 @@ House style clean: 0 em-dashes, 0 banned phrases. Every figure read live from `/
 - This is a packaging audit, not a demand forecast. Repackaging improves the offer; it does not prove anyone will buy.
 
 ---
+
+## RUN 2026-08-13T12:40Z: The last unmatched panel. Link clicks were recorded and read by nothing.
+
+**Not re-run.** The v3.0 prompt was pasted again unchanged. The telemetry build closed at 05:40Z, the metric reconciliation at 09:55Z, and the commercialization audit at 11:20Z. Per the CLAUDE.md rule, a repeated prompt does not trigger a repeated audit. **What was executed instead is the one open item those passes left behind**, recorded in this tracker's own Outstanding line: *"`link-click` telemetry is recorded but still not surfaced on any dashboard."*
+
+### The defect, stated exactly
+
+| | |
+|---|---|
+| Emit points for `source: 'link-click'` | **1** (`api/telemetry.js:102`) |
+| Pages carrying the dispatcher | **62** |
+| Panel ingestion points | **0** |
+
+`api/asset-stats.js` already fetched `interaction_events` at line 72 and never filtered for `link-click`. Every click the site recorded went into the table and came back out nowhere. That is a direct violation of the prompt's own zero-discrepancy rule, and it was mine.
+
+### Phase 2, code
+
+- **`api/asset-stats.js`**: new `link_clicks` block computed at request time. `total`, `today`, `distinct_targets`, `distinct_origins`, and breakdowns by target, origin, label and country. Crawler rows filtered with the existing `isCrawler` and reported separately as `crawler_rows_excluded` rather than silently dropped.
+- **`programme-status-9872fb93cc94.html`**: new **Link Clicks Across the Site** section, four cards and two bar lists, reading the same endpoint as every other panel. `setv` declared inside the loader, not globally, which is the defect that broke the reviewer panel at 03:05Z.
+
+**Scope stated in the payload and on the page, not left implied:** this is **not** total site clicks. `/api/dl` and `/api/support` record inside their own 302, which cannot be blocked or raced and is the stronger record, so they are counted in their own sections. A reader who added the two would double-count, so the page says so.
+
+### Phase 3, CLI verification
+
+| Check | Result |
+|---|---|
+| `node --check` on both modified endpoints | **exit 0** |
+| Inline page JS extracted and syntax-checked | **exit 0** |
+| Duplicate element IDs | **none** |
+| All 7 new IDs present in markup and referenced in JS | **7 of 7** |
+| **Metric equivalence: 37 synthetic clicks through the real handler** | **37 rendered. by_target, by_origin and by_country each sum to 37** |
+| 2 crawler rows and 1 foreign-source row excluded | **correctly excluded** |
+| Headless render, populated state | **passed, 0 console errors** |
+| Headless render, empty state | **passed, 0 console errors** |
+| Live production `/api/asset-stats` after deploy | **200, `link_clicks` present** |
+| Live payload rendered through the page | **passed, 0 console errors** |
+
+The first render run reported 4 console errors. They were my own harness aborting off-origin font requests, not a page defect; fulfilling them instead returned 0. Recorded because the first number was wrong and it was mine.
+
+### What the panel surfaced on its first live read
+
+**1 click, from India, `/reviewer/index.html` to `/reviewer/evaluation.html`.** That is the single evaluation open the funnel already showed, now with an origin and a country attached to it. It was in the table the whole time.
+
+### Deployed
+
+`api/asset-stats.js` and `programme-status-9872fb93cc94.html` pushed to `main` via the selective-deploy pattern. `research/` and `MASTER_` staged counts verified 0 before the push. No analytics tag added to the private page; confirmed still absent.
+
+### Outstanding
+
+- Historic endorsement rows before 2026-08-13 still contain prefetches that cannot be identified retroactively. **Unchanged and not fixable retroactively.**
+- **Emit points now equal ingestion points at 1 and 1.** The previously standing item is closed.
+
+---

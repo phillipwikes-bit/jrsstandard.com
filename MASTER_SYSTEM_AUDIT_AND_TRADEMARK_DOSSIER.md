@@ -1089,7 +1089,7 @@ Remaining inputs are administrative: USPTO identity verification, mailing addres
 
 | Page | Link / Element | Destination | Tracking Mechanism | Event Fires | Transmission | Persistence | Display | Status |
 |---|---|---|---|---|---|---|---|---|
-| 62 pages | any `<a href>` not already counted | internal pages | `trackClickAndNavigate` via delegation | **yes, verified in browser** | `sendBeacon`, `fetch keepalive` fallback | `interaction_events` `link-click` | not yet surfaced | **REPAIRED** |
+| 62 pages | any `<a href>` not already counted | internal pages | `trackClickAndNavigate` via delegation | **yes, verified in browser** | `sendBeacon`, `fetch keepalive` fallback | `interaction_events` `link-click` | **`/api/asset-stats` -> Link Clicks Across the Site panel, added 2026-08-13T12:40Z** | **REPAIRED AND SURFACED** |
 | all pages | `/api/dl?…` | PDFs | server-side inside the 302 | yes | n/a | `guide-dl` / `pdf-dl` / `kit-dl` | download panels | **VERIFIED**, excluded from the beacon |
 | all pages | `/api/support?c=` | campaign screen | server-side inside the 302 | yes | n/a | `support` / `endorse` | endorsement chart | **VERIFIED**, excluded from the beacon |
 | `access.html` | screen arrival | `/api/access` | `fetch keepalive` | once per tab | keepalive | `gate-view` | Campaign arrivals | **VERIFIED** |
@@ -1132,7 +1132,7 @@ Clicking a real internal link: **beacon fires**, payload carries `timestamp, ori
 
 ### Counter audit
 
-`link-click` added as a **new authoritative source**, computed at request time. **It is not yet surfaced on any dashboard**, which is stated rather than implied. All other counters unchanged. Suppressed cohorts intact.
+`link-click` added as a **new authoritative source**, computed at request time. **SUPERSEDED 2026-08-13T12:40Z: it is now surfaced.** At the time of this run it was written and read by nothing, which is stated here rather than quietly corrected. See the amendment of 2026-08-13T12:40Z. All other counters unchanged. Suppressed cohorts intact.
 
 ### Trademark dossiers
 
@@ -1241,5 +1241,65 @@ Re-asserted against production after deploy: **5 of 5 cross-endpoint checks pass
 ### Trademark dossiers
 
 **JRS: READY TO FILE, Class 042. DRR: READY TO FILE, Class 042.** Unchanged.
+
+---
+
+## AMENDMENT 2026-08-13T12:40Z: Link clicks surfaced. Emit points now equal ingestion points.
+
+**The v3.0 prompt was pasted again unchanged and was not re-run.** The telemetry build closed at 05:40Z, metric reconciliation at 09:55Z, the commercialization audit at 11:20Z. What was executed is the single open item those runs left behind.
+
+### The defect
+
+| | |
+|---|---|
+| Emit points for `source: 'link-click'` | **1**, `api/telemetry.js:102` |
+| Public pages carrying the dispatcher | **62** |
+| Panel ingestion points | **0** |
+
+`api/asset-stats.js` fetched `interaction_events` and never filtered for `link-click`. **Prompt section 3.2 requires emit points to equal ingestion points. They were 1 and 0.** The gap was recorded in `MASTER_TRACKER.md` as an outstanding line at 05:40Z and stayed open across three subsequent runs.
+
+### Repair
+
+| File | Change |
+|---|---|
+| `api/asset-stats.js` | `link_clicks` block: `total`, `today`, `distinct_targets`, `distinct_origins`, `by_target`, `by_origin`, `by_label`, `by_country`, `crawler_rows_excluded`, `counting_basis`. Computed at request time from `interaction_events`. No stored or hand-maintained figure |
+| `programme-status-9872fb93cc94.html` | **Link Clicks Across the Site**: four cards, two bar lists, one basis note. Reads `/api/asset-stats` like every other panel |
+
+**Field mapping verified 1:1 against the dispatcher payload.** `origin_url` to `payload.origin`, `target_url` to `payload.target`, `meta.label` to `payload.label`, `meta.src` to `payload.src`, plus edge-header country and truncated user agent. Query strings are stripped at write time, so a destination is a path only and cannot carry an identifier.
+
+**Boundary stated on the endpoint and on the page:** this is **not** total site clicks. `/api/dl` and `/api/support` record inside their own 302, which cannot be blocked or raced, and are counted in their own panels. Adding the two would double-count, so the page says so rather than leaving the reader to discover it.
+
+### CLI verification, all exit 0
+
+| Check | Result |
+|---|---|
+| `node --check api/asset-stats.js`, `node --check api/telemetry.js` | **PASS** |
+| Inline page JS extracted, `node --check` | **PASS** |
+| Duplicate element IDs on the page | **none** |
+| New IDs present in markup and referenced in JS | **7 of 7** |
+| **Metric equivalence, 37 synthetic clicks through the real handler** | **37 rendered.** `by_target`, `by_origin`, `by_country` each sum to 37 |
+| 2 crawler rows, 1 foreign-source row | **excluded, as designed** |
+| Headless render, populated and empty states | **PASS, 0 console errors each** |
+| Live `/api/asset-stats` after deploy | **200, `link_clicks` present** |
+| Live payload rendered through the page | **PASS, 0 console errors** |
+
+The first render run reported 4 console errors that were my own harness aborting off-origin font requests. Fulfilling them returned 0. Recorded because the first figure was wrong and it was mine.
+
+### First live read
+
+**1 click: India, `/reviewer/index.html` to `/reviewer/evaluation.html`.** The single evaluation open the funnel already reported, now carrying an origin and a country. `LIVE EXTERNAL EVENT INGESTION: VERIFIED` on this endpoint, from a row written by a real reader rather than a test.
+
+### Private-surface guardrails, re-checked after the edit
+
+| Guardrail | State |
+|---|---|
+| No analytics tag on the private page | **absent, confirmed in the rendered DOM** |
+| Page not linked from any public page | unchanged |
+| No token control | unchanged |
+| One private owner page | unchanged, no page created |
+
+### Trademark dossiers
+
+**JRS: READY TO FILE, Class 042. DRR: READY TO FILE, Class 042.** Unchanged by this run. Owner-side blockers unchanged: USPTO account and identity verification, mailing address and citizenship, both `[REQUIRES USER INPUT]`.
 
 ---
