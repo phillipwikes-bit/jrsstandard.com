@@ -2388,3 +2388,62 @@ No source code changed this run, so no endpoint, ID or localStorage key was touc
 - Historic endorsement prefetches before 2026-08-13 remain unidentifiable. Unchanged.
 
 ---
+
+## RUN 2026-08-13T20:10Z: Opportunity scout built. Upwork scraping deliberately not built.
+
+**Not re-run.** The telemetry repair, panel reconciliation and trademark dossiers were completed earlier in this session and re-verified in one command rather than re-audited: **1 emit source, 1 ingesting endpoint, 1 rendering panel, live `link_clicks.total` = 1.** Parity holds. The new scope in this prompt is the client scouting engine.
+
+### What was built
+
+| File | Purpose |
+|---|---|
+| `scripts/scout_opportunities.py` | Scores supplied postings against the asset inventory, routes to a package, applies guardrails as hard blocks, drafts a proposal opening from live figures |
+| `scripts/test_scout_opportunities.py` | 17 assertions, self-contained fixture, no external file dependency |
+
+### What was deliberately NOT built, and why
+
+**An automated Upwork scraper.** Three independent reasons, any one of which is sufficient:
+
+1. **It breaches Upwork's terms of service.** Automated scraping of their listings is prohibited.
+2. **It needs credentials this repository does not hold**, and it must never hold them.
+3. **A script that faked it would fabricate its own inputs**, which is the exact failure the prompt's own ground-truth rule forbids.
+
+**Recorded rather than silently omitted.** The alternative shape, which is what was built, moves the one step a machine cannot legitimately do onto the owner: he pastes the listings he is already reading, and the engine does the scoring, routing, guardrail checking and drafting.
+
+### Design decisions worth keeping
+
+- **Every signal weight is visible in the source.** A score that cannot be argued with is a score that gets trusted more than it deserves.
+- **A guardrail block beats any score.** A posting asking for the answer key scored 5 and still returns DO NOT BID, with the reason printed rather than the row silently dropped.
+- **Generic signals never assign a package.** "Standard", "framework", "policy writing" are common enough to route everything to Rank 1 if they were allowed to decide.
+- **Cached figures are labelled in the output.** If `/api/panel-stats` is unreachable the proposal opening carries a visible warning, so a stale number cannot be pasted into a real bid by accident.
+- **stdlib only.** No packages, no keys, and scoring needs no network at all.
+
+### Phase 3 CLI verification, exit 0
+
+| Check | Result |
+|---|---|
+| `ast.parse` on the scout | **PASS** |
+| Package routing, all three packages | **3 of 3 correct** |
+| Guardrail disqualifiers, both classes | **caught** |
+| Blocked beats score | **PASS** |
+| Generic-only signals assign no package | **PASS** |
+| Empty posting handled safely | **PASS** |
+| **Metric equivalence: 42 postings in, 42 scored out** | **PASS**, verdict counts sum to 42 |
+| Cache fallback visibly labelled | **PASS** |
+| CLI modes text, `--json`, `--markdown` | **3 of 3 exit 0** |
+| `--json` emits exactly as many results as postings | **PASS** |
+| **Total** | **17 of 17** |
+
+One failure during the pass was my own: the assertion harness sliced posting titles one character short and raised a `KeyError`. Harness bug, not a script defect, fixed and re-run.
+
+### Honest limit on the whole thing
+
+**The scout ranks reading time. It does not measure demand and it does not predict who will hire anyone.** It makes testing a channel cheap; it is not an argument that the channel is worth testing. That decision is recorded as open item 9 and is the owner's.
+
+### Outstanding
+
+- **No real postings scored yet.** The only run was the synthetic fixture, which is test data and is not logged as pipeline activity.
+- Whether freelance marketplace work is worth his time: undecided, and the scout does not settle it.
+- Rank 1 remains buildable in a day with nothing blocking it, and remains not started.
+
+---

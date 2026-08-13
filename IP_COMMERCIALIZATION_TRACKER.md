@@ -7,8 +7,8 @@ Companion to `IP_COMMERCIALIZATION_AUDIT.md`, which holds the analysis. **This f
 | | |
 |---|---|
 | **Created** | 2026-08-13 |
-| **Last revised** | 2026-08-13 (rev 1) |
-| **Revisions** | 1 |
+| **Last revised** | 2026-08-13 (rev 2) |
+| **Revisions** | 2 |
 | **Packages defined** | 3 |
 | **Packages built** | **0** |
 | **Packages published** | **0** |
@@ -98,6 +98,46 @@ Verified three ways before being recorded here: the writer's source string is un
 
 ---
 
+## 3b. THE OPPORTUNITY SCOUT (rev 2)
+
+`scripts/scout_opportunities.py`, with its assertion suite at `scripts/test_scout_opportunities.py`.
+
+**What it is not.** It does not log into Upwork, scrape any marketplace, or fetch listings from anywhere. **Automated scraping of Upwork breaches their terms of service, needs credentials this repository does not hold, and a script that pretended to do it would be fabricating its own inputs.** That was a deliberate build decision, recorded here so it is not mistaken for an omission.
+
+**What it does.** You paste the postings you are already reading into a JSON file. The script scores each one against what JRS can actually evidence, routes it to one of the three packages, applies the binding guardrails as hard disqualifiers, and writes a proposal opening built only from figures read live from `/api/panel-stats`.
+
+| Capability | Detail |
+|---|---|
+| Signal scoring | 11 weighted signals, **every weight visible in the source** so a score can be argued with |
+| Package routing | Highest-weighted package with at least one package-specific hit. Generic signals never decide it |
+| Guardrail disqualifiers | 4 hard blocks: asking for the answer key or scoring internals, requiring a proven-effectiveness claim, asking for identifiable case material, ghostwriting or white-labelling the research |
+| Blocked beats scored | A posting that trips a guardrail is **DO NOT BID regardless of score**, and the reason is printed rather than the posting silently dropped |
+| Proposal opening | Three sentences per package, evidence figures pulled live. **If the endpoint is unreachable the cached figures are labelled in the output**, so a stale number cannot be sent by accident |
+| Output modes | text, `--json`, `--markdown` for pasting into this tracker |
+| Dependencies | **stdlib only.** No packages, no keys, no network required for scoring |
+
+**Run it:**
+
+```
+python3 scripts/scout_opportunities.py postings.json
+python3 scripts/scout_opportunities.py postings.json --markdown   # paste result into section 3c
+python3 scripts/test_scout_opportunities.py                       # 17 assertions
+```
+
+**What it does not tell you.** It ranks reading time. **It is a keyword heuristic over text you supplied, it does not predict who will hire anyone, and it measures no demand.** The honest position in section 7 is unchanged by its existence.
+
+---
+
+## 3c. SCOUT RUN LOG
+
+| Date | Postings scored | Qualified | Blocked | Bids sent | Replies |
+|---|---|---|---|---|---|
+| | | | | | |
+
+**No real postings have been scored yet.** The row above is deliberately empty: the only run so far was the six-posting synthetic fixture in the assertion suite, which is test data and is not recorded as pipeline activity.
+
+---
+
 ## 4. LIVE BASELINE, THE NUMBERS EVERY PACKAGE INHERITS
 
 Read from `/api/panel-stats` and `/api/asset-stats` on 2026-08-13. **Anything published under these packages must reconcile to this table.**
@@ -139,6 +179,8 @@ Carried unchanged from `research/IP_Sale_Playbook.md` and `research/IP_Asset_Tra
 | 2 | Pricing for Ranks 2 and 3 | Phillip | **`[REQUIRES USER INPUT]`** |
 | 3 | Whether to build a payment path at all | Phillip | **`[REQUIRES USER INPUT]`.** Until this exists, nothing here can be sold |
 | 4 | Licence terms for Rank 3 | Phillip, likely with an attorney | Not started |
+| 8 | **Score a first batch of real postings** through `scripts/scout_opportunities.py` | Phillip supplies the postings | **NOT STARTED.** The engine is built and tested; it has no real input yet |
+| 9 | Whether freelance marketplace work is a channel worth his time at all | Phillip | Undecided. The scout makes it cheap to test, it does not argue that he should |
 | 5 | Scoring workflow for Rank 3 | unassigned | Not started |
 | 6 | Partial-progress telemetry on the evaluation | Phillip | **Flagged, deliberately not built.** It is a consent-surface decision on a research instrument, not a defect |
 | 7 | Whether any package replaces the current CTAs or sits beside them | Phillip | Undecided |
@@ -157,4 +199,5 @@ The case for doing it anyway is narrow and it is the honest one: **the two stron
 
 | # | Date | Change |
 |---|---|---|
+| 2 | 2026-08-13 | **Opportunity scout built**, `scripts/scout_opportunities.py` plus a 17-assertion suite, new sections 3b and 3c. Scores supplied postings against the asset inventory, routes them to one of the three packages, and hard-blocks anything that trips a guardrail. **Deliberately does not scrape Upwork:** that breaches their terms, needs credentials this repository does not hold, and a script that faked it would fabricate its own inputs. Two new open items: no real postings scored yet, and whether the channel is worth his time at all remains undecided. **No package moved off NOT STARTED.** |
 | 1 | 2026-08-13 | Created, at the owner's instruction, alongside revision 2 of `IP_COMMERCIALIZATION_AUDIT.md`. Records all three packages at **NOT STARTED**, the live baseline every package must reconcile to, the seven binding guardrails, and seven open items of which two are the pricing and payment decisions that block Ranks 2 and 3. Integrates the funnel measurement of the same day: **the refusal is at the door, 6 of 7 never clicked**, which rules out an instrument-level explanation and supports the ranking that was already set before the measurement existed. |
