@@ -97,7 +97,7 @@ tr.today td{background:rgba(93,191,130,.07)}
     <div class="card"><div class="cv hot" id="td-campaign">&middot;</div><div class="ck">Campaign screen arrivals</div></div>
     <div class="card"><div class="cv" id="td-reviewer">&middot;</div><div class="ck">Reviewer landing arrivals</div></div>
     <div class="card"><div class="cv" id="td-training">&middot;</div><div class="ck">Training page arrivals</div></div>
-    <div class="card"><div class="cv" id="td-endorse">&middot;</div><div class="ck">Campaign endorsements</div>
+    <div class="card"><div class="cv" id="td-endorse">&middot;</div><div class="ck">Endorsements <b style="color:var(--muted-soft)">all sources</b></div>
       <div id="td-endorse-all" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.06em;color:var(--muted-soft);margin-top:5px;line-height:1.5">&nbsp;</div></div>
     <div class="card"><div class="cv" id="td-evopen">&middot;</div><div class="ck">Evaluation opens</div></div>
     <div class="card"><div class="cv" id="td-evsub">&middot;</div><div class="ck">Evaluation submissions</div></div>
@@ -836,12 +836,17 @@ function loadToday(){
       // and its split are printed under it so nothing is hidden by the change.
       var rec0=t.arrivals_vs_endorsements||{};
       var campEnd=(typeof rec0.campaign_sourced_endorsements==='number')?rec0.campaign_sourced_endorsements:t.endorsements;
-      setv('td-training',t.training_page_arrivals);   setv('td-endorse',campEnd);
+      // LEAD WITH THE REAL NUMBER. The tile used to show campEnd, which is 0 on
+      // almost every day because nearly all endorsements are on-site. A headline
+      // 0 on a day with 9 endorsements is misreporting by emphasis, even though
+      // every underlying figure was correct.
+      setv('td-training',t.training_page_arrivals);   setv('td-endorse',t.endorsements);
       var allEl=document.getElementById('td-endorse-all');
       if(allEl){
         var bysrc=rec0.endorsements_by_source||{};
         var keys=Object.keys(bysrc).sort(function(a,b){return bysrc[b]-bysrc[a];});
-        allEl.innerHTML = (t.endorsements||0)+' all sources'
+        allEl.innerHTML = '<b style="color:'+(campEnd>0?'var(--ready-text)':'var(--muted-soft)')+'">'
+          + campEnd + ' from a campaign</b>'
           + (keys.length?('<br>'+keys.map(function(k){return bysrc[k]+' '+k;}).join(' · ')):'');
       }
       setv('td-evopen',t.evaluation_opens);           setv('td-evsub',t.evaluation_submissions);
