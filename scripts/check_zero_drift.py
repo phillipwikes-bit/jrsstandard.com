@@ -34,11 +34,19 @@ ASSET = "https://jrsstandard.com/api/asset-stats"
 CONTRIB = "https://jrsstandard.com/api/contributor-stats"
 
 results = []
+SKIPPED = object()
 
 
 def check(name, ok, detail=""):
-    results.append((name, bool(ok), detail))
-    return bool(ok)
+    """ok may be True, False, or SKIPPED. A skip is not a failure.
+
+    An unreachable endpoint is not drift, and reporting it as a failure trains
+    a reader to ignore the guard. That happened on the first run: one of two
+    calls to the same endpoint blipped and produced a red line beside nine
+    green ones for no real reason.
+    """
+    results.append((name, ok, detail))
+    return ok is True
 
 
 def read(path):
@@ -49,12 +57,28 @@ def read(path):
         return ""
 
 
-def live(url):
-    try:
-        with urllib.request.urlopen(url, timeout=25) as r:
-            return json.load(r)
-    except Exception:
-        return None
+_live_cache = {}
+
+
+def live(url, attempts=3):
+    """Fetch once per URL per run, retrying a transient failure.
+
+    Cached because several checks read the same endpoint, and without the cache
+    one blip could fail one check while another passed on the same data, which
+    reads as an inconsistency in the system rather than in the network.
+    """
+    if url in _live_cache:
+        return _live_cache[url]
+    got = None
+    for _ in range(attempts):
+        try:
+            with urllib.request.urlopen(url, timeout=25) as r:
+                got = json.load(r)
+                break
+        except Exception:
+            continue
+    _live_cache[url] = got
+    return got
 
 
 def run(cmd):
@@ -81,8 +105,8 @@ def check_telemetry_parity(offline):
     if not offline:
         d = live(ASSET)
         check("live /api/asset-stats exposes link_clicks",
-              d is not None and "link_clicks" in d,
-              "" if d else "endpoint unreachable")
+              SKIPPED if d is None else ("link_clicks" in d),
+              "endpoint unreachable" if d is None else "present")
 
 
 # ---------------------------------------------------------------------------
@@ -148,7 +172,7 @@ def check_panel_geo(offline):
     if not offline:
         d = live(PANEL)
         if d is None:
-            check("live panel geo fully resolved", False, "endpoint unreachable")
+            check("live panel geo fully resolved", SKIPPED, "endpoint unreachable")
         else:
             unresolved = d.get("geo_unresolved") or []
             check("live panel geo fully resolved", not unresolved,
@@ -209,7 +233,7 @@ def check_cross_endpoint(offline):
         return
     p, c = live(PANEL), live(CONTRIB)
     if p is None:
-        check("live panel figures readable", False, "endpoint unreachable")
+        check("live panel figures readable", SKIPPED, "endpoint unreachable")
         return
     check("countries belong to completers, not all reviewers",
           p.get("countries", 0) <= p.get("completers", 0),
@@ -232,12 +256,19 @@ def main():
             check(fn.__name__, False, "check itself raised: %r" % (e,))
 
     width = max(len(n) for n, _, _ in results)
-    failed = 0
+    failed = skipped = 0
     for name, ok, detail in results:
-        if not ok:
+        if ok is SKIPPED:
+            label = "SKIP"
+            skipped += 1
+        elif ok is True:
+            label = "PASS"
+        else:
+            label = "FAIL"
             failed += 1
-        print("%s  %-*s  %s" % ("PASS" if ok else "FAIL", width, name, detail))
-    print("\n%d checks, %d failed" % (len(results), failed))
+        print("%s  %-*s  %s" % (label, width, name, detail))
+    tail = ", %d skipped (not reachable, not drift)" % skipped if skipped else ""
+    print("\n%d checks, %d failed%s" % (len(results), failed, tail))
     return 0 if failed == 0 else 1
 
 
