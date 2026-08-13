@@ -2556,3 +2556,58 @@ All **Arm B, arm B2, all at 24 of 24 reads**:
 **This is a collection gap, not a lookup failure.** Country was never captured at Arm B enrolment, so it exists nowhere to recover. RR-129's country was already an open owner-side item. For RR-130 and RR-132, anonymity was an election about naming, not about country, so asking them is legitimate.
 
 ---
+
+## RUN 2026-08-13T22:15Z: Last three countries resolved. The roster document is now generated.
+
+### The data
+
+Owner supplied the three missing completer countries. `RR-129` is corroborated independently by her public professional profile, which gives Canada. `RR-130` and `RR-132` are owner-stated only, and that difference in provenance is written into both source files rather than flattened.
+
+| Code | Country | Provenance |
+|---|---|---|
+| `RR-129` Wendy Ann Martel | **Canada** | Owner, corroborated by public profile |
+| `RR-130` | **US** | Owner-stated only |
+| `RR-132` | **US** | Owner-stated only |
+
+Recording a country for the two anonymous completers respects their election: **anonymity was a choice about naming, not about country.**
+
+### Written to both sources that carry country
+
+`research/build_expert_roster.py` and `api/_panel-countries.js`, so the CSV and the live endpoint cannot disagree.
+
+**No country count changed, as predicted before the edit.** CA and US were already represented. Live confirms after deploy:
+
+| | Before | After |
+|---|---|---|
+| countries | 16 | **16** |
+| continents | 5 | **5** |
+| geo_resolved | 33 | **36** |
+| geo_unresolved | `[RR-129, RR-130, RR-132]` | **`[]`** |
+
+Per-country counts moved as expected: US 4 to 6, Canada 4 to 5.
+
+### The defect this exposed, and it was mine
+
+**`REVIEWER_ROSTER_COMPLETE.md` was produced by an ad-hoc script I never saved.** So resolving the countries meant patching it by hand, and my patch missed: three rows kept saying `not recorded` while the CSV beside them said Canada and US. It drifted **within a single turn.**
+
+**A document that must be hand-edited to stay true is the same defect as a hand-written count**, and this repository has now hit that class four times: the transcribed country constants, the endorsement classifier, `ROSTER_SIZE = 20`, and now this.
+
+**Fixed the same way as the others: made it generated.** `research/build_reviewer_roster_doc.py` renders the document from the CSV, cross-checks its own headline figures against `/api/panel-stats`, and **exits non-zero if any disagree.** The city-qualifier normalization travels with it.
+
+### Verification
+
+| Check | Result |
+|---|---|
+| `node --check api/_panel-countries.js` | **PASS** |
+| Map: RR-129 CA, RR-130 US, RR-132 US, no duplicate keys | **PASS**, 36 entries |
+| Rebuilt CSV | 36 completers, **16 countries, 0 without a country** |
+| Live `/api/panel-stats` after deploy | **geo_resolved 36, geo_unresolved empty, countries 16** |
+| Regenerated roster document | **3 of 3 cross-checks OK** |
+| Rebuilt by-rung inventory | **exit 0**, 58/36/16, 0 unmapped |
+| House style | 0 em-dashes in both new files |
+
+### Outstanding
+
+- `RR-130` and `RR-132` countries rest on the owner's word alone. Recorded as such in the roster builder, the panel map and the document, so nobody later reads them as system-derived.
+
+---

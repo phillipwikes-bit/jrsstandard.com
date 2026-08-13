@@ -132,9 +132,9 @@ The randomized comparison. **The B1 / B2 split is the blind and must not leave t
 | `RR-123` | B2 | Greg Searle | AI Governance and Model Behaviour Researcher; Master's candidate | Australia (Brisbane) | 24 | COMPLETE |
 | `RR-125` | B2 | Muhammad Dauda | Programme leadership, sustainability and governance; UN SDSN Youth Nigeria; Miva Open University; PgMP | Nigeria | 24 | COMPLETE |
 | `RR-127` | B2 | Candid Opris | Founder and Managing Partner, Opris & Associates; two decades in AI and data governance and digital trust | Canada (Greater Toronto Area) | 24 | COMPLETE |
-| `RR-129` | B2 | Wendy Ann Martel | Data protection, privacy and AI governance; twenty five years of public and private sector practice | not recorded | 24 | COMPLETE |
-| `RR-130` | B2 | *Anonymous by choice* | JRS-naive expert professional | not recorded | 24 | COMPLETE |
-| `RR-132` | B2 | *Anonymous by choice* | JRS-naive expert professional | not recorded | 24 | COMPLETE |
+| `RR-129` | B2 | Wendy Ann Martel | Data protection, privacy and AI governance; twenty five years of public and private sector practice | Canada | 24 | COMPLETE |
+| `RR-130` | B2 | *Anonymous by choice* | JRS-naive expert professional | US | 24 | COMPLETE |
+| `RR-132` | B2 | *Anonymous by choice* | JRS-naive expert professional | US | 24 | COMPLETE |
 
 ---
 
@@ -161,7 +161,7 @@ The randomized comparison. **The B1 / B2 split is the blind and must not leave t
 | Completed a full 24-record set | 36 | 36 | yes |
 | Countries, completers only | 16 | 16 | yes |
 
-**61 rows in the roster, 41 named.** 3 completers carry no country and are counted in the total and in no country.
+**61 rows in the roster, 41 named.** 0 completers carry no country and are counted in the total and in no country.
 
 **The country figure belongs to the completers, never to the 58 reviewers.** That is a recorded past defect and it still binds.
 
