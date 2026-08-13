@@ -2676,3 +2676,69 @@ One further failure was my test harness, not the guard: a one-line `open(p,'w').
 - The guard is not wired into anything. Running it is manual: `python3 scripts/check_zero_drift.py`. Whether to make it a commit hook is the owner's call.
 
 ---
+
+## RUN 2026-08-14T00:05Z: v4.0. A dead-pipeline sweep found certificate renders counted as downloads.
+
+### The defect, and it is a real one
+
+Widening the dead-pipeline check from `api/telemetry.js` to **every event source written anywhere in `api/`** surfaced `reviewer-cert-render`: written by `api/reviewer-cert.js`, read by no endpoint, and falling through into the generic artifact-download tally.
+
+```
+if (e.type !== 'download' || e.source === 'honor-cert') return;
+```
+
+**`honor-cert` was excluded the day that counter was written. `reviewer-cert-render` was added later and the exclusion was never extended with it.** So every reviewer certificate render counted as a public download of a guide or the standard, in the figure a buyer reads.
+
+**It is zero today only because no evaluation has been submitted**, so nothing was miscounted in practice. The defect was live and waiting for the first completion.
+
+**Fixed:** both certificate sources excluded from downloads, surfaced as `certificate_renders` with its own dashboard panel, which also gives the orphaned write a reader. Deployed.
+
+### Guard upgrades for v4.0
+
+| Requirement | Done |
+|---|---|
+| Dead-pipeline detection | Widened to every writer in `api/`. Matches the event field `source:` only, so `page_source:` and `src:` no longer produce false orphans |
+| Anti-fallback law | New check: **no published metric falls back to a non-zero literal.** `\|\| 0` is allowed, since absence really is zero and no figure is invented |
+| Broad naming | `*_LEGACY`, `N_*`, `ROSTER_*` and more, adversarially proven |
+| Dirty-tree resilience | Byte comparison, no git dependency, proven on a dirty tree |
+| Zero false reds | Live reads cached and retried; unreachable reports **SKIP** |
+| Hook under 1 second | **0.23s**, down from 5s |
+
+### The design flaw I introduced and then had to fix
+
+Making the builders offline-capable exposed that **the generated documents embedded live figures**, so the same CSV produced different bytes depending on network state. The guard could not distinguish a hand edit from a slow endpoint.
+
+**A generated document must be a function of files on disk.** Live values moved to stdout as a check rather than into the document, and the Rung 1 and Rung 3 data the inventory needs is snapshotted to `research/_inventory_live_snapshot.json`. **Proven: online and offline builds are byte-identical.** The snapshot is only overwritten when a refresh actually returns rows, so a failed read cannot blank the document.
+
+### Adversarial validation, 7 of 7
+
+| Injected defect | Outcome |
+|---|---|
+| `const ROSTER_SIZE_LEGACY = 20` | **caught** |
+| `const N_COMPLETERS = 36` | **caught** |
+| `reliability_raters: rater.length \|\| 25` | **caught** |
+| Event source with no reader | **caught** |
+| Generated document hand-edited, **dirty tree** | **caught** |
+| Completer dropped from the country map | **caught, named** |
+| **Clean tree** | **passes, no false reds** |
+
+### Hook integration
+
+`scripts/setup_hooks.sh`, installed and exercised. **Non-destructive:** an existing unmanaged `pre-commit` is backed up with a timestamp and the path printed. Offline only, so a commit never fails because an endpoint blipped. `--uninstall` removes only a hook this script wrote. Bypass is `git commit --no-verify`.
+
+**Proven end to end:** the commit for this run printed `zero-drift: 6 checks, 0 failed` from the hook itself.
+
+### Final state
+
+| | |
+|---|---|
+| Guard, online | **10 checks, 0 failed** |
+| Guard, offline | **6 checks, 0 failed, 0.23s** |
+| Event sources in `api/` | **22, all consumed** |
+| Adversarial outcomes | **7 of 7** |
+
+### Outstanding
+
+- The hook lives in `.git/hooks/`, which git does not distribute. Anyone cloning the repository has to run `bash scripts/setup_hooks.sh` once.
+
+---
