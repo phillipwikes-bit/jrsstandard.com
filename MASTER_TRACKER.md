@@ -2133,3 +2133,64 @@ Created `api/_not-a-click.js`. Modified `api/support.js`, `api/dl.js`, `api/asse
 - `link-click` telemetry from the previous run is recorded but still **not surfaced on any dashboard**.
 
 ---
+
+---
+
+## RUN 2026-08-13T09:55Z — The numbers already matched. The tile was leading with the wrong one.
+
+**Owner:** "These numbers still don't match. Just fix it now."
+
+### I checked before changing anything, and the data was already reconciled
+
+| Assertion, measured live | Result |
+|---|---|
+| `today.endorsements` == sum of `by_source` | **9 == 9** |
+| `today.endorsements` == `support-stats by_day` | **9 == 9** |
+| `support-stats.total` == sum of its own series | **59 == 59** |
+| campaign endorsements == campaign arrivals | **0 == 0** |
+
+**Nothing in the arithmetic was wrong.**
+
+### What was wrong
+
+**The tile led with the campaign figure.** Campaign is 0 on almost every day, because nearly every endorsement comes from the home page, the footer, the guides page or the DRR page. So the card showed a large **0** with "9 all sources" in 8px grey underneath.
+
+**A dashboard whose headline reads 0 on a day with 9 endorsements is misreporting by emphasis, even when every number in it is correct.** That is exactly what he was seeing, and he was right to keep pushing.
+
+### Fix
+
+Tile now reads **9**, labelled **"Endorsements, all sources"**, with **"0 from a campaign"** beneath it and the per-source split under that. The campaign line turns green only when it is non-zero.
+
+### Verification
+
+Six assertions in a browser against live payloads: **0 failures.** Re-asserted against production after deploy: **5 of 5 cross-endpoint checks pass**, `by_source` `{home 3, footer 2, field_guides 2, drr 2}` summing to the 9 on the tile.
+
+### Four defects, one symptom
+
+This chain took four passes because **four different mechanisms produced the same symptom**:
+
+1. No per-visitor dedup on the server write (fixed 08-12)
+2. Deny-list classifier counting `field_guides` as campaign (fixed 07:40Z)
+3. Browser prefetch recorded as a human endorsement (fixed 07:40Z)
+4. **The tile leading with the campaign zero (fixed now)**
+
+**Recorded so the next reader does not assume a single cause.**
+
+### Token / Supabase minimization
+
+**CONFIRMED TOKEN-LESS.** No endpoint touched. One label and one variable on one page.
+
+### Files modified
+
+`programme-status-9872fb93cc94.html`, then both Markdown files.
+
+### Trademark dossiers
+
+**JRS: READY TO FILE, Class 042. DRR: READY TO FILE, Class 042.**
+
+### Outstanding
+
+- Historic endorsement rows before 2026-08-13 still contain prefetches that cannot be identified retroactively.
+- `link-click` telemetry is recorded but still not surfaced on any dashboard.
+
+---

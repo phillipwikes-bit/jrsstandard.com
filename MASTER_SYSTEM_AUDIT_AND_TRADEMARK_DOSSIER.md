@@ -1199,3 +1199,47 @@ Chrome, Firefox and Safari prefetch and prerender links **while sending a normal
 **JRS: READY TO FILE, Class 042. DRR: READY TO FILE, Class 042.** Unchanged.
 
 ---
+
+---
+
+## AMENDMENT 2026-08-13T09:55Z: Endorsement panel closed out. Data was already correct; the display was not.
+
+### What was actually wrong this time
+
+**Every underlying figure already reconciled** after the 07:40Z fix. Measured live before touching anything:
+
+| Assertion | Result |
+|---|---|
+| `today.endorsements` == sum of `by_source` | **9 == 9** |
+| `today.endorsements` == `support-stats` `by_day` | **9 == 9** |
+| `support-stats.total` == sum of its own `by_day` series | **59 == 59** |
+| `campaign_sourced_endorsements` == `campaign_screen_arrivals` | **0 == 0** |
+
+**The remaining defect was emphasis, not arithmetic.** The tile led with the **campaign** figure, which is 0 on almost every day because nearly all endorsements are on-site, and put the real activity in 8px grey beneath it. **A headline reading 0 on a day with 9 endorsements is misreporting even when every number in it is correct.** That is what read as a mismatch.
+
+### Fix
+
+The tile now reads **9**, labelled **"Endorsements, all sources"**. The campaign figure sits beneath as **"0 from a campaign"**, turning green only when non-zero, with the per-source split under that.
+
+### Panel-to-source assertion, run in a browser against live payloads
+
+**Six assertions, zero failures.** Tile equals `asset-stats today.endorsements`; equals the sum of `by_source`; equals `support-stats by_day` for today; the all-time tile equals `support-stats.total`; that total equals the sum of its own series; and the campaign figure is shown rather than led with.
+
+Re-asserted against production after deploy: **5 of 5 cross-endpoint checks pass, 0 failures.**
+
+### The three defects in this endorsement chain, now all closed
+
+| # | Defect | Fixed |
+|---|---|---|
+| 1 | Server write had no per-visitor deduplication | 2026-08-12, first-party cookie |
+| 2 | Classifier was a deny list, so `field_guides` counted as campaign | 2026-08-13 07:40Z, flipped to an allow list |
+| 3 | Browser prefetch recorded as a human endorsement | 2026-08-13 07:40Z, `api/_not-a-click.js` |
+| 4 | Tile led with the campaign zero | **2026-08-13 09:55Z, this amendment** |
+
+**Every one of the four was a different mechanism producing the same symptom.** That is why it took four passes, and it is recorded here so the next reader does not assume a single cause.
+
+### Trademark dossiers
+
+**JRS: READY TO FILE, Class 042. DRR: READY TO FILE, Class 042.** Unchanged.
+
+---
