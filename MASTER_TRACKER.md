@@ -2796,3 +2796,48 @@ Making the builders offline-capable exposed that **the generated documents embed
 - No payment path; the diagnostic CTA opens a scoped email, which is deliberate.
 
 ---
+
+## RUN 2026-08-14T02:40Z: Report items 2 and 14.2 closed. Link coverage is repo-wide.
+
+### Coverage
+
+**52 public pages, exactly one link each, anchor text normalised to "Record Defensibility Check" across all 53 occurrences.** Was 3 pages before this run.
+
+The footer markup is not shared, which is why one edit could not do it last time. Three patterns, three insertions: `footer-link` nav (30 pages), inline-styled nav (2), copyright-only footers where the link joins the run beside Privacy (14). Four pages had no usable footer: `404.html`, `people.html` and `supported.html` were given a minimal one built from the shared tokens, and `recheck.html` had its copyright line extended.
+
+### Twelve pages deliberately excluded
+
+**The one that is not a judgment call: `ai-records-arm-b.html`.** That is the Arm B blind surface, and a JRS-branded link would tell an unaided-arm reviewer that the standard exists. The rest are self-declared confidential study surfaces, the token-gated admin console, and the three opaque private slugs. **Verified live: 0 of them carries the link.**
+
+### Two defects found while verifying, both mine
+
+1. **`jrsstandard.html` hides its footer container.** Its parent div computes to `display:none`, so the link I placed there was unreachable. Moved to the visible util bar and the dead copy removed, leaving exactly one reachable link.
+2. **That sixth util-bar link overflowed the desktop viewport.** Only the mobile media query wrapped the bar. Checked the pre-edit page to be sure: the overflow did **not** pre-exist, so I caused it. Base rule now wraps.
+
+### Item 2 of the directive: attribution
+
+`check.html` contains exactly one link to the evaluation and it carries **`?src=check`**. No evaluation link on that page lacks it.
+
+### Verification
+
+| Test | Result |
+|---|---|
+| Pages with exactly one link | **52 of 52** |
+| Anchor text consistent | **53 of 53** |
+| Excluded pages carrying the link | **0 of 11** |
+| Renders, 390px and 1280px | **104 checks, one visible link each, no horizontal overflow** |
+| Inline JS blocks | **174 parsed, 0 failures** |
+| JSON-LD | **1, valid** |
+| Tag balance | no mismatches |
+| Live spot check after deploy | **17 of 17 pages, one link each; 4 excluded surfaces clean** |
+| Zero-drift guard | **10 of 10** |
+
+**One of my own checks was wrong twice and both are recorded.** A first pass flagged a JS syntax failure that was a JSON-LD block being fed to a JavaScript parser. A live verification loop reported `about.html` at zero links, which was shell escaping in my own command; the page carries the link correctly.
+
+**Pre-existing issues left alone rather than silently changed:** duplicate footer hrefs in `index.html` and `pilot.html`, both confirmed to pre-date this pass, and a null-reference JS error on `jrsstandard.html` from a training script referencing elements that page does not contain.
+
+### Outstanding
+
+Report recommendations 1, 3 and 4 remain open and are owner decisions: the `research-data.html` derivability question, the two missing `ANON_CODES`, and whether to run the first diagnostic manually.
+
+---

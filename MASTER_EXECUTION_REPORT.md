@@ -2,7 +2,9 @@
 
 **Market Validation, Claims Control, Public Diagnostic, Research Integrity and Commercialization. 2026-08-13.**
 
-**Status: NOT COMPLETE.** Two items are unfinished and one is a decision for the owner. They are named in sections 11 and 13 rather than rounded up.
+**Status: item 2 CLOSED 2026-08-13. Item 1 remains open and is a decision for the owner.**
+
+**Item 2, link coverage, is closed.** The record check is now linked from **52 public pages, one link each**, anchor text normalised to "Record Defensibility Check". Twelve pages are deliberately excluded with a stated reason each. See section 15.
 
 ---
 
@@ -83,7 +85,7 @@ Now: the three permission questions are always required and always come first. *
 ## 11. Remaining risks
 
 1. **`research-data.html` publishes record text and human labels together**, making a majority-vote pseudo-key derivable for 10 of the 15 reliability records. Owner decision. `[REQUIRES USER INPUT]`
-2. **The record check is linked from only 3 pages.** The footer markup is not shared across the site, so a single edit could not reach all 63. Full coverage needs a per-page pass.
+2. ~~The record check is linked from only 3 pages.~~ **CLOSED 2026-08-13. 52 pages, one link each.** See section 15.
 3. **`ANON_CODES` is empty.** Two completers elected anonymity and their codes are recorded nowhere in the repository, so the safe fallback is doing the work. `[REQUIRES USER INPUT]`
 4. **No payment mechanism.** The diagnostic CTA opens a scoped email. That is the smallest viable path and is deliberate under directive 15.
 
@@ -122,3 +124,59 @@ Now: the three permission questions are always required and always come first. *
 ---
 
 **This report does not state that the directive is complete.** Sections 11 and 13 name what is not.
+
+---
+
+## 15. Item 2 closure: repo-wide link coverage (2026-08-13)
+
+### Coverage
+
+**52 public pages, exactly one link each, anchor text "Record Defensibility Check" on all 53 occurrences including the target page's own footer.**
+
+Three footer patterns needed three different insertions, because the markup is not shared:
+
+| Pattern | Pages | Insertion |
+|---|---|---|
+| `class="footer-link"` nav | 30 | Sibling anchor after the last one |
+| Inline-styled JetBrains Mono nav | 2 | Matching anchor, neutral colour so it does not read as the active page |
+| Copyright-only footer | 14 | Joined the existing inline run beside Privacy |
+| Already present | 2 | Left alone, text normalised |
+| No usable footer | 4 | See below |
+
+**The four without a usable footer.** `404.html`, `people.html` and `supported.html` had no `<footer>` at all and were given a minimal one built from the shared design tokens. `recheck.html` had a copyright line only, which was extended.
+
+### Deliberate exclusions, twelve pages
+
+| Page | Reason |
+|---|---|
+| `ai-records-arm-b.html` | **ARM B BLIND.** A JRS-branded link would tell an unaided-arm reviewer the standard exists. This one is not a judgment call |
+| `ai-records-pilot.html`, `bench-review.html`, `bench-results.html`, `review-status.html`, `submit-record.html`, `submit-validation.html` | Self-declared confidential study surfaces, not indexed |
+| `bench-admin.html` | Token-gated admin console |
+| `programme-status-9872fb93cc94.html`, `acquisition-9f3c2a7d4b.html`, `vp-7c1f9a4e8d2b6035.html` | Private opaque slugs |
+| `check.html` | Is the target |
+
+**Verified: none of the eleven excluded pages contains the link.**
+
+### Two defects found while verifying, both mine
+
+1. **`jrsstandard.html` hides its footer container.** The parent div computes to `display:none`, so the link placed there was unreachable. Moved to the visible util bar; the dead copy removed, leaving exactly one reachable link.
+2. **That sixth util-bar link overflowed the desktop viewport.** Only the mobile media query wrapped the bar. The base rule now wraps too. Confirmed against the pre-edit page that the overflow did not pre-exist: **I caused it, and it is fixed.**
+
+### Item 2 verification
+
+| Test | Result |
+|---|---|
+| Pages with exactly one link | **52 of 52** |
+| Anchor text consistent | **53 of 53** occurrences |
+| Excluded pages containing the link | **0 of 11** |
+| Renders at 390px and 1280px | **104 checks: one visible link each, no horizontal overflow** |
+| Inline JS blocks parsed | **174, 0 failures** |
+| JSON-LD blocks parsed | **1, valid** |
+| Anchor and footer tag balance | **no mismatches** |
+| Zero-drift guard | **10 of 10** |
+
+**Pre-existing issues left alone and reported rather than silently changed:** duplicate footer hrefs in `index.html` (`mailto:`) and `pilot.html` (`research.html`), both confirmed to pre-date this pass; and a pre-existing null-reference JS error on `jrsstandard.html` from a training script referencing elements that page does not contain.
+
+### Item 14 recommendation 2, closed
+
+Recommended action 2 was "extend the record-check link to the remaining public pages." **Done.** Recommendations 1, 3 and 4 remain open and are owner decisions.
