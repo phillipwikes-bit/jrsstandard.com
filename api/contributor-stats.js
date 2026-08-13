@@ -16,9 +16,12 @@ export const config = { runtime: 'edge' };
 
 const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 
-// Keep in step with the roster in api/contributor.js. Used only to report how
-// many contributors are still outstanding.
-const ROSTER_SIZE = 20;
+// Roster size is IMPORTED from the roster itself, not restated here. This was a
+// hand-written 20 with a comment asking a future editor to keep it in step by
+// hand, which is the same defect class as the country and endorsement figures
+// that drifted earlier this month. Removing V-HC-01 on 2026-08-13 would have
+// silently left this at 20 against a roster of 19.
+import { ROSTER_SIZE } from './_contributor-roster.js';
 
 function json(o, s){
   return new Response(JSON.stringify(o), {
