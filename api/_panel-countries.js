@@ -42,6 +42,15 @@ export const CODE_COUNTRY = {
   'RR-126': 'KE',
   'RR-127': 'CA',
   'RR-128': 'CA',
+  // Owner-supplied 2026-08-13, closing the last three unresolved completers.
+  // Arm B enrolment never captured a country and bench_experts is RLS-locked, so
+  // nothing public could resolve these. RR-129 is corroborated by her public
+  // professional profile; RR-130 and RR-132 are owner-stated only. Neither adds a
+  // new country: CA and US were already represented, so the count stays at 16 and
+  // only geo_resolved moves.
+  'RR-129': 'CA',
+  'RR-130': 'US',
+  'RR-132': 'US',
   'V-AI-01': 'US',
   'V-AI-03': 'AU',
   'V-AI-06': 'IN',

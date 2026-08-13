@@ -32,9 +32,9 @@ study,arm,code,name,title,country,labels_or_reads,status
 012 Randomized comparison,B2,RR-125,Muhammad Dauda,"Programme leadership, sustainability and governance; UN SDSN Youth Nigeria; Miva Open University; PgMP",Nigeria,24,COMPLETE
 012 Randomized comparison,B1,RR-126,Joseph Mungai,Public-Interest Technology and AI Ethics/Governance Professional; Maasai Mara University,Kenya (Kitale),24,COMPLETE
 012 Randomized comparison,B1,RR-128,Sagarika Banerjee,"AI Governance and Software QA Leader; ISO/IEC 42001, NIST AI RMF",Canada (Toronto),24,COMPLETE
-012 Randomized comparison,B2,RR-130,Anonymous by choice,JRS-naive expert professional,not recorded,24,COMPLETE
-012 Randomized comparison,B2,RR-132,Anonymous by choice,JRS-naive expert professional,not recorded,24,COMPLETE
-012 Randomized comparison,B2,RR-129,Wendy Ann Martel,"Data protection, privacy and AI governance; twenty five years of public and private sector practice",not recorded,24,COMPLETE
+012 Randomized comparison,B2,RR-130,Anonymous by choice,JRS-naive expert professional,US,24,COMPLETE
+012 Randomized comparison,B2,RR-132,Anonymous by choice,JRS-naive expert professional,US,24,COMPLETE
+012 Randomized comparison,B2,RR-129,Wendy Ann Martel,"Data protection, privacy and AI governance; twenty five years of public and private sector practice",Canada,24,COMPLETE
 004 Reviewer reliability,expert rater,E-08,Stacy Young,"Deputy Records Access Officer, NYC Dept. of Housing Preservation and Development; records governance and FOIL administration; 22 years",US,5,"5 labels on 5 records, first 2026-06-11"
 004 Reviewer reliability,bench reviewer,R-mqa2qg2g9gtz,anonymous by design,self-declared domain: AI Governance,not recorded,5,"5 labels on 5 records, first 2026-06-11"
 004 Reviewer reliability,bench reviewer,R-mqa4a9ewsfr8,anonymous by design,self-declared domain: Other,not recorded,3,"3 labels on 3 records, first 2026-06-11"

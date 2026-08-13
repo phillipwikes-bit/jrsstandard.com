@@ -75,13 +75,19 @@ ARM_B = [
     ("RR-125", "Muhammad Dauda", "Programme leadership, sustainability and governance; UN SDSN Youth Nigeria; Miva Open University; PgMP", "Nigeria", "B2"),
     ("RR-126", "Joseph Mungai", "Public-Interest Technology and AI Ethics/Governance Professional; Maasai Mara University", "Kenya (Kitale)", "B1"),
     ("RR-128", "Sagarika Banerjee", "AI Governance and Software QA Leader; ISO/IEC 42001, NIST AI RMF", "Canada (Toronto)", "B1"),
-    ("RR-130", "Anonymous by choice", "JRS-naive expert professional", "not recorded", "B2"),
-    ("RR-132", "Anonymous by choice", "JRS-naive expert professional", "not recorded", "B2"),
-    # RR-129 completed 2026-08-07. Identity is in bench_experts, which is RLS-locked
-    # to the anon key, so the country is not recoverable from a public read and is
-    # recorded as unknown rather than guessed. This is why the published country
-    # figure of 16 is a floor and not an exact count.
-    ("RR-129", "Wendy Ann Martel", "Data protection, privacy and AI governance; twenty five years of public and private sector practice", "not recorded", "B2"),
+    # COUNTRIES SUPPLIED BY THE OWNER 2026-08-13, closing the last three gaps.
+    # These three were the only completers with no country on record, because
+    # Arm B enrolment never captured one and bench_experts is RLS-locked to the
+    # anon key, so nothing public could resolve them. They are owner-supplied
+    # rather than system-derived, which is why the provenance is written here.
+    # RR-129 is corroborated independently: her public professional profile
+    # gives Canada. RR-130 and RR-132 are owner-stated and not independently
+    # checkable, which is stated rather than implied. Their anonymity was an
+    # election about NAMING, not about country, so recording a country here
+    # respects it.
+    ("RR-130", "Anonymous by choice", "JRS-naive expert professional", "US", "B2"),
+    ("RR-132", "Anonymous by choice", "JRS-naive expert professional", "US", "B2"),
+    ("RR-129", "Wendy Ann Martel", "Data protection, privacy and AI governance; twenty five years of public and private sector practice", "Canada", "B2"),
 ]
 
 # Study 004 expert-rater identities, read from bench_experts with the
