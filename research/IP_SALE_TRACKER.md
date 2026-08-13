@@ -7,8 +7,8 @@
 | | |
 |---|---|
 | **Created** | 2026-08-13 |
-| **Last revised** | 2026-08-13 (rev 5) |
-| **Revisions** | 5 |
+| **Last revised** | 2026-08-13 (rev 6) |
+| **Revisions** | 6 |
 | **Current stage** | **Zero buyer conversations held, because I advised waiting. Gate withdrawn 2026-08-13** |
 | **Sale probability, as-is** | **5 to 10%** over ~12 months (owner's own anchor, `Path_to_Sale_Action_Plan.md`, unchanged) |
 
@@ -154,6 +154,7 @@ GRC / compliance software vendors · E-discovery and legal-tech · HR-tech and p
 
 | # | Date | Change |
 |---|---|---|
+| 6 | 2026-08-13 | Consent and release audit completed, `research/CONSENT_AND_RELEASE_AUDIT_2026-08-13.md`. **Nothing is signed anywhere; every permission is a tick plus a stored boolean.** Seven real protections identified, led by no-record-text-ever-stored and the answers/identity table split. **Four gaps, two of which cost money at sale: no copyright assignment from co-authors (consent is not assignment), and the contributor confirmation instrument that captures continuing-use and transfer rights has been sent to 0 of 20.** No terms version is stored against any consent row, so the wording a person saw cannot be proven. |
 | 5 | 2026-08-13 | Country scope pinned. Both published figures, 16 for all completers and 11 for the detection panel, are now computed from one map by `/api/panel-stats`, and the dashboard card carries its own scope. Checked all three studies: 004's 24 reliability raters count toward the 57 reviewers but add no country, their recorded countries being India, US and Australia, all already inside the 16. |
 | 4 | 2026-08-13 | Buyer pages repaired. Prospectus was a dead end at 2 anchors, now 8, all verified 200. Vendor preview cross-linked. Validation Report deliberately NOT linked, per its own confidentiality statement and guardrail 1. Two of my own audit findings withdrawn as wrong: the page already pulled panel figures live and already rendered 48. A draft link to `mccr-simulator.html` failed the on-disk check before deploy; that file does not exist and was removed from the CLAUDE.md platform map. |
 | 3 | 2026-08-13 | Published the dossier as a web section at `programme-status-9872fb93cc94.html#sale-dossier`. Placed on the existing private page rather than a new one, per the CLAUDE.md rule that there is one private owner page. Verified live: all seven blocks present, 43 headings, 0 level skips, 0 console errors. |
