@@ -4,11 +4,19 @@
 
 **Web version:** `https://jrsstandard.com/programme-status-9872fb93cc94.html#sale-dossier`
 
+**WHERE THE THREE TRACKERS LIVE.** Asked for on 2026-08-13, recorded here so it never has to be asked again.
+
+| Tracker | Path | Reachable how |
+|---|---|---|
+| **IP Sale Tracker** (this file) | `research/IP_SALE_TRACKER.md` | **Chat attachment only.** `research/` is deliberately not deployed, so it is not on the website. The Sale Dossier section of the private status page carries the public-facing version |
+| IP Commercialization Tracker | `IP_COMMERCIALIZATION_TRACKER.md` (repo root) | Chat attachment; in the repository on the dev branch |
+| Master Tracker | `MASTER_TRACKER.md` (repo root) | Chat attachment; in the repository |
+
 | | |
 |---|---|
 | **Created** | 2026-08-13 |
-| **Last revised** | 2026-08-13 (rev 8) |
-| **Revisions** | 8 |
+| **Last revised** | 2026-08-13 (rev 9) |
+| **Revisions** | 9 |
 | **Current stage** | **Zero buyer conversations held, because I advised waiting. Gate withdrawn 2026-08-13** |
 | **Sale probability, as-is** | **5 to 10%** over ~12 months (owner's own anchor, `Path_to_Sale_Action_Plan.md`, unchanged) |
 
@@ -126,7 +134,7 @@ GRC / compliance software vendors · E-discovery and legal-tech · HR-tech and p
 
 ## 7b. COMMERCIAL PACKAGING: what to sell before the whole asset sells (rev 7)
 
-`IP_COMMERCIALIZATION_AUDIT.md` (repo root, 2026-08-13) audited every local file for saleable IP. **The disconnect it found: the public site sells participation, and the two assets an enterprise buyer would actually pay for are not on it at all.**
+`IP_COMMERCIALIZATION_AUDIT.md` (repo root, 2026-08-13) audited every local file for saleable IP. **Live state for these three packages is tracked in `IP_COMMERCIALIZATION_TRACKER.md`, not here.** That file is newer wherever the two disagree, and as of its revision 2 all three packages remain NOT STARTED. **The disconnect it found: the public site sells participation, and the two assets an enterprise buyer would actually pay for are not on it at all.**
 
 | Rank | Package | Source asset | Public pages today | Persona | Speed |
 |---|---|---|---|---|---|
@@ -170,6 +178,7 @@ GRC / compliance software vendors · E-discovery and legal-tech · HR-tech and p
 
 | # | Date | Change |
 |---|---|---|
+| 9 | 2026-08-13 | Owner asked where this file lives. Answer recorded in the header rather than only in chat: `research/IP_SALE_TRACKER.md`, **reachable only as a chat attachment because `research/` is deliberately not deployed.** Added the three-tracker location table and pointed Section 7b at `IP_COMMERCIALIZATION_TRACKER.md` as the live state record for the packages, a cross-reference this file was missing. **No change to sale status, guardrails, probability or any open item.** |
 | 8 | 2026-08-13 | Link-click telemetry surfaced on the owner dashboard. Bears on the sale only as diligence hygiene: the asset now demonstrates a closed measurement loop from click to panel, with every figure computed at request time and none stored. First live read attributed the sole evaluation open to India. **No change to the packaging in Section 7b, to the guardrails, or to any open item.** |
 | 7 | 2026-08-13 | **Commercial packaging audit**, `IP_COMMERCIALIZATION_AUDIT.md`. Grep across 45 public HTML files and 36 API endpoints found the two highest-value assets carry **zero public surface**: the seven named AI failure modes and the cross-vendor reproducibility harness. Three packages ranked by demand and speed to market, new Section 7b. Rank 1 is buildable in days and is the first offer in the programme that delivers value before asking for anything. Live figures re-read, not carried: 36 completers, 16 countries, 1 evaluation open, 0 submissions, 0 org pilots, $0 revenue. |
 | 6 | 2026-08-13 | Consent and release audit completed, `research/CONSENT_AND_RELEASE_AUDIT_2026-08-13.md`. **Nothing is signed anywhere; every permission is a tick plus a stored boolean.** Seven real protections identified, led by no-record-text-ever-stored and the answers/identity table split. **Four gaps, two of which cost money at sale: no copyright assignment from co-authors (consent is not assignment), and the contributor confirmation instrument that captures continuing-use and transfer rights has been sent to 0 of 20.** No terms version is stored against any consent row, so the wording a person saw cannot be proven. |
