@@ -441,6 +441,42 @@ export default async function handler(req){
       return m && m.country;
     });
 
+  // LINK-CLICK TELEMETRY: the panel side of /api/telemetry.
+  //
+  // Written 2026-08-13 to close a real unmatched-panel defect. The dispatcher
+  // was instrumented across the site and the sink was built, but nothing read
+  // the rows back, so every click landed in interaction_events and was never
+  // surfaced. One emit point, zero ingestion points.
+  //
+  // Everything here is computed from the rows at request time. No count is
+  // stored, restated or hand-maintained, which is the failure mode that put
+  // the country and endorsement figures out of agreement twice already.
+  //
+  // SCOPE, stated rather than implied: this counts only clicks the client
+  // beacons. /api/dl and /api/support record inside their own redirect and are
+  // excluded by the client on purpose, because a 302 cannot be blocked or
+  // raced and is the stronger record. So this figure is NOT total site clicks
+  // and must never be presented as one.
+  const clickRows = events.filter(function(e){
+    return e.source === 'link-click' && e.type === 'click' && !isCrawler(e.payload);
+  });
+  const clickCrawlerRows = events.filter(function(e){
+    return e.source === 'link-click' && e.type === 'click' && isCrawler(e.payload);
+  }).length;
+
+  function clickTally(pick, limit){
+    const m = {};
+    clickRows.forEach(function(e){
+      const k = pick(e.payload || {});
+      if (!k) return;
+      m[k] = (m[k] || 0) + 1;
+    });
+    return Object.keys(m)
+      .sort(function(a, b){ return m[b] - m[a] || (a < b ? -1 : 1); })
+      .slice(0, limit || 25)
+      .map(function(k){ return { key: k, count: m[k] }; });
+  }
+
   return json({
     generated_at: new Date().toISOString(),
     note: 'Aggregate counts only. No name, email, organization or key is exposed by this endpoint. '
@@ -452,6 +488,24 @@ export default async function handler(req){
         + 'to them. The counts are small because 33 of the 34 honor links and all 20 '
         + 'contributor links are deliberately unsent, not because engagement was measured '
         + 'and found low.',
+
+    link_clicks: {
+      total: clickRows.length,
+      today: clickRows.filter(isToday).length,
+      crawler_rows_excluded: clickCrawlerRows,
+      distinct_targets: clickTally(function(p){ return p.target; }, 9999).length,
+      distinct_origins: clickTally(function(p){ return p.origin; }, 9999).length,
+      by_target: clickTally(function(p){ return p.target; }, 25),
+      by_origin: clickTally(function(p){ return p.origin; }, 25),
+      by_label: clickTally(function(p){ return p.label; }, 25),
+      by_country: clickTally(function(p){ return p.country; }, 25),
+      counting_basis: 'Clicks beaconed by the client dispatcher to /api/telemetry, '
+          + 'computed at request time from interaction_events. This is NOT total site '
+          + 'clicks: /api/dl and /api/support record inside their own redirect and are '
+          + 'excluded by the client on purpose, because a 302 is a stronger record than '
+          + 'a beacon. Declared crawlers are filtered at write time and again here. '
+          + 'Query strings are stripped before storage, so a target is a path only.'
+    },
 
     named_professional_engagement: {
       honor: {

@@ -338,6 +338,24 @@ tr.today td{background:rgba(93,191,130,.07)}
     <div id="itemsbycountry">Loading&hellip;</div>
     <div class="note" style="margin-top:8px">Every downloadable item on its own, counted by country: the three Investigator Field Guide editions, the JRS Standard PDF, the Rapid Review Card, the JRS Reviewer Reference (training companion), and the combined Investigator Field Guide. Nothing is grouped into a shared total. Country recorded at the redirect endpoint. Aggregate counts only.</div>
   </div>
+  <h2 style="font-size:22px;margin-top:34px">Link Clicks Across the Site</h2>
+  <p class="sub">Every link click beaconed by the site dispatcher, by destination, by page of origin and by country. This is not total site clicks: guide downloads and endorsements are recorded inside their own redirect, which is a stronger record than a beacon, and are counted in the two sections above instead of here. Query strings are stripped before storage, so a destination is a path only. Aggregate counts only.</p>
+  <div class="cards" style="grid-template-columns:1fr 1fr 1fr 1fr">
+    <div class="card"><div class="cv hot" id="lc-total">&middot;</div><div class="ck">Clicks recorded</div></div>
+    <div class="card"><div class="cv" id="lc-today">&middot;</div><div class="ck">Today</div></div>
+    <div class="card"><div class="cv" id="lc-targets">&middot;</div><div class="ck">Distinct destinations</div></div>
+    <div class="card"><div class="cv" id="lc-countries">&middot;</div><div class="ck">Countries</div></div>
+  </div>
+  <div class="chart">
+    <h3>Where readers go</h3>
+    <div id="lctargets">Loading&hellip;</div>
+  </div>
+  <div class="chart">
+    <h3>Which page they leave from</h3>
+    <div id="lcorigins">Loading&hellip;</div>
+  </div>
+  <div class="note" id="lc-note">Link-click activity will appear here once a reader clicks an instrumented link.</div>
+
   <h2 style="font-size:22px;margin-top:34px">Initiative Support</h2>
   <p class="sub">One-click endorsements of the two public initiatives, by day, by country and by initiative. These sit outside the guide downloads above and are counted separately.</p>
   <div class="cards" id="endorse-cards" style="grid-template-columns:1fr 1fr 1fr 1fr">
@@ -995,6 +1013,63 @@ function loadEvalFunnel(){
      if(ce) ce.innerHTML='<div style="color:var(--muted-soft);font-size:12px">Country data will appear here with the first open.</div>';
    });
 }
+// LINK CLICKS. The panel side of /api/telemetry. Added 2026-08-13 because the
+// dispatcher and the sink both existed and nothing read the rows back, so every
+// recorded click was invisible. Reads /api/asset-stats like the rest of this
+// page; no figure is stored on the client.
+function loadLinkClicks(){
+  return fetch('/api/asset-stats')
+   .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+   .then(function(d){
+     var lc=(d&&d.link_clicks)||null;
+     // setv is declared inside each loader on this page, never globally.
+     function setv(id,v){ var e=document.getElementById(id); if(e) e.textContent=(v===undefined||v===null)?'0':v; }
+     if(!lc) throw 0;
+     setv('lc-total',lc.total); setv('lc-today',lc.today);
+     setv('lc-targets',lc.distinct_targets); setv('lc-countries',(lc.by_country||[]).length);
+
+     function bars(elId,rows,emptyMsg){
+       var el=document.getElementById(elId);
+       if(!el) return;
+       if(!rows || !rows.length){
+         el.innerHTML='<div style="color:var(--muted-soft);font-size:12px">'+esc(emptyMsg)+'</div>';
+         return;
+       }
+       var max=1; rows.forEach(function(r){ if(r.count>max) max=r.count; });
+       var h='';
+       rows.forEach(function(r){
+         var w=Math.max(4,Math.round((r.count/max)*100));
+         h+='<div style="display:flex;align-items:center;gap:10px;margin:4px 0">'
+           +'<span style="font-family:\'JetBrains Mono\',monospace;font-size:11px;color:var(--text);width:190px;flex:0 0 auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+esc(r.key)+'</span>'
+           +'<span style="flex:1;display:flex;align-items:center;gap:8px">'
+             +'<span style="background:var(--accent);height:11px;width:'+w+'%;max-width:60%;display:inline-block"></span>'
+             +'<span style="font-size:12px;color:var(--muted)">'+r.count+'</span></span></div>';
+       });
+       el.innerHTML=h;
+     }
+     bars('lctargets',lc.by_target,'No click recorded yet. The dispatcher is live on every public page, so a zero here means nobody has clicked an instrumented link since it went in, not that clicks are being lost.');
+     bars('lcorigins',lc.by_origin,'No origin recorded yet.');
+
+     var n=document.getElementById('lc-note');
+     if(n){
+       var cn=(lc.by_country||[]).map(function(c){ return c.count+' '+c.key; }).join(' · ');
+       n.textContent=(lc.total||0)+' '+(((lc.total||0)===1)?'click':'clicks')+' recorded across '
+         +(lc.distinct_targets||0)+' '+(((lc.distinct_targets||0)===1)?'destination':'destinations')+' and '
+         +(lc.distinct_origins||0)+' '+(((lc.distinct_origins||0)===1)?'page':'pages')+' of origin'
+         +(cn?('. By country: '+cn):'')
+         +((lc.crawler_rows_excluded||0)>0?('. '+lc.crawler_rows_excluded+' crawler '+((lc.crawler_rows_excluded===1)?'row':'rows')+' excluded'):'')
+         +'. '+(lc.counting_basis||'');
+     }
+   })
+   .catch(function(){
+     var n=document.getElementById('lc-note');
+     if(n) n.textContent='Could not load link clicks. Tap Refresh.';
+     ['lctargets','lcorigins'].forEach(function(id){
+       var e=document.getElementById(id);
+       if(e) e.innerHTML='<div style="color:var(--muted-soft);font-size:12px">Could not load. Tap Refresh.</div>';
+     });
+   });
+}
 function loadContributors(){
   return fetch('/api/contributor-stats')
    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
@@ -1477,7 +1552,7 @@ function loadPanel(){
     }
   });
 }
-function refresh(){ loadToday(); loadDetection(); loadRealcase(); loadArmB(); loadOrgPilots(); loadGate(); loadRegistrations(); loadEvalFunnel(); loadContributors(); loadTraining(); loadDownloads(); loadItems(); loadSupport(); loadPeople(); loadPanel(); }
+function refresh(){ loadToday(); loadDetection(); loadRealcase(); loadArmB(); loadOrgPilots(); loadGate(); loadRegistrations(); loadEvalFunnel(); loadContributors(); loadTraining(); loadDownloads(); loadItems(); loadSupport(); loadLinkClicks(); loadPeople(); loadPanel(); }
 refresh();
 setInterval(refresh, 60000);
 </script>
