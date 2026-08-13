@@ -134,5 +134,112 @@ function dl(fmt){
 }
 load();
 </script>
+<script>
+/* JRS LINK-CLICK TELEMETRY. Added 2026-08-13. Token-less, no dependencies.
+   Posts to /api/telemetry, which is a real endpoint in this repository. */
+/**
+ * Zero-Drift Telemetry Dispatcher
+ * Guarantees event delivery without delaying navigation or blocking the main thread.
+ */
+function trackClickAndNavigate(event, targetUrl, eventMetaData) {
+  eventMetaData = eventMetaData || {};
+  // 1. Prevent default immediate navigation
+  if (event && typeof event.preventDefault === 'function') {
+    event.preventDefault();
+  }
+
+  // 2. Construct immutable telemetry payload
+  var payload = JSON.stringify({
+    timestamp: new Date().toISOString(),
+    origin_url: window.location.href,
+    target_url: targetUrl,
+    meta: eventMetaData
+  });
+
+  // 3. Primary Dispatch: Non-blocking navigator.sendBeacon
+  var isDispatched = false;
+  if (typeof navigator !== 'undefined' && navigator.sendBeacon) {
+    var blob = new Blob([payload], { type: 'application/json' });
+    isDispatched = navigator.sendBeacon('/api/telemetry', blob);
+  }
+
+  // 4. Secondary Dispatch: Fetch API with keepalive flag
+  if (!isDispatched && typeof fetch === 'function') {
+    fetch('/api/telemetry', {
+      method: 'POST',
+      body: payload,
+      headers: { 'Content-Type': 'application/json' },
+      keepalive: true
+    }).catch(function() {
+      /* Swallowing non-critical network drops to prioritize UX */
+    });
+  }
+
+  // 5. Deterministic Fail-safe Navigation Fallback (150ms timeout)
+  setTimeout(function() {
+    window.location.href = targetUrl;
+  }, 150);
+}
+
+/* DELEGATION LAYER.
+   One document-level listener, so links rendered by JavaScript after load are
+   captured too and no per-link handler is needed anywhere.
+
+   It decides WHEN to call the dispatcher. It does not alter it.
+
+   Three classes of link are deliberately NOT routed through the dispatcher:
+     - /api/dl and /api/support already count inside their own 302. A redirect
+       cannot be blocked or raced, so it is strictly stronger than a beacon and
+       routing them here would double-count.
+     - mailto, tel, in-page anchors and downloads are not navigations to count.
+     - modifier and middle clicks. preventDefault on those would break "open in
+       new tab", so the beacon is sent WITHOUT preventDefault and the browser is
+       left to do what the reader asked for. */
+(function(){
+  var COUNTED_SERVER_SIDE = /^\/api\/(dl|support)\b/;
+  function beacon(target, meta){
+    try {
+      var payload = JSON.stringify({
+        timestamp: new Date().toISOString(),
+        origin_url: window.location.href,
+        target_url: target,
+        meta: meta || {}
+      });
+      var sent = false;
+      if (navigator.sendBeacon) {
+        sent = navigator.sendBeacon('/api/telemetry', new Blob([payload], { type: 'application/json' }));
+      }
+      if (!sent && typeof fetch === 'function') {
+        fetch('/api/telemetry', { method: 'POST', body: payload,
+          headers: { 'Content-Type': 'application/json' }, keepalive: true }).catch(function(){});
+      }
+    } catch (e) { /* never let telemetry break a click */ }
+  }
+  document.addEventListener('click', function(ev){
+    try {
+      var a = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
+      if (!a) return;
+      var href = a.getAttribute('href') || '';
+      if (!href || href.charAt(0) === '#') return;
+      if (/^(mailto:|tel:|javascript:)/i.test(href)) return;
+      if (a.hasAttribute('download')) return;
+      if (COUNTED_SERVER_SIDE.test(href)) return;
+
+      var label = (a.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 80);
+      var meta = { label: label, src: 'link' };
+
+      // Modifier or middle click: the reader wants a new tab. Record it, do not
+      // hijack it.
+      if (ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey || ev.button !== 0) {
+        beacon(a.href, meta);
+        return;
+      }
+      if (a.target && a.target !== '_self') { beacon(a.href, meta); return; }
+
+      trackClickAndNavigate(ev, a.href, meta);
+    } catch (e) { /* a telemetry fault must never block navigation */ }
+  }, true);
+})();
+</script>
 </body>
 </html>
