@@ -1,5 +1,7 @@
 export const config = { runtime: 'edge' };
 
+import { isNotAClick } from './_not-a-click.js';
+
 // Support entry point for the JRS initiatives.
 //
 // CHANGED 2026-08-02: support stopped being recorded on a bare GET and was
@@ -64,6 +66,11 @@ export default async function handler(req){
   const NOT_A_PERSON = /googlebot|bingbot|baiduspider|yandexbot|duckduckbot|applebot|GoogleOther|facebookexternalhit|bot|spider|crawl|slurp|preview|headless|curl|wget|python-requests|libwww|okhttp|java\/|go-http/i;
   const isAgent = !ua || NOT_A_PERSON.test(ua);
 
+  // A PREFETCH IS NOT AN ENDORSEMENT. The browser sends a normal user agent
+  // while prefetching, so the regex above cannot see it. The signal is a
+  // request header. The redirect still happens: only the count is protected.
+  const prefetched = isNotAClick(req);
+
   // ONE ENDORSEMENT PER BROWSER PER CAMPAIGN.
   //
   // This write previously had NO deduplication of any kind. Every GET wrote a
@@ -89,7 +96,7 @@ export default async function handler(req){
   const env = (typeof process !== 'undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
   let wrote = false;
-  if (SERVICE && !isAgent && !alreadyCounted) {
+  if (SERVICE && !isAgent && !alreadyCounted && !prefetched) {
     try {
       const country = String(req.headers.get('x-vercel-ip-country') || '')
         .toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2) || null;

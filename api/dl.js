@@ -1,5 +1,7 @@
 export const config = { runtime: 'edge' };
 
+import { isNotAClick } from './_not-a-click.js';
+
 // JRS download counter + redirect. Three tracked link shapes, one endpoint:
 //   /api/dl?e=<edition>  Investigator Field Guide editions -> guide_downloads + interaction_events (source 'guide-dl')
 //   /api/dl?e=standard|card  JRS Standard PDF / Rapid Review Card -> interaction_events (source 'pdf-dl')
@@ -104,6 +106,9 @@ export default async function handler(req){
   // Internal smoke/deploy-test tags: never recorded, and any existing ones are
   // purged server-side so the download counts stay clean automatically.
   const isTest = !!src && (src === 'verify' || src === 'test' || src === 'selftest' || src.indexOf('deploytest') === 0);
+  // A prefetched download link is not a download. Same reasoning as
+  // /api/support: the file is still served, only the count is protected.
+  const prefetched = isNotAClick(req);
 
   const env = (typeof process!=='undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
@@ -124,7 +129,7 @@ export default async function handler(req){
     } catch(e){ /* best-effort */ }
 
     try {
-      if (isTest) {
+      if (isTest || prefetched) {
         // skip recording internal test downloads entirely
       } else if (edition) {
         await Promise.all([
