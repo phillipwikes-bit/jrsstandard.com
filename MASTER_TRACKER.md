@@ -2742,3 +2742,57 @@ Making the builders offline-capable exposed that **the generated documents embed
 - The hook lives in `.git/hooks/`, which git does not distribute. Anyone cloning the repository has to run `bash scripts/setup_hooks.sh` once.
 
 ---
+
+## RUN 2026-08-14T01:30Z: Market validation directive. Two real defects, one false alarm of mine.
+
+### Built
+
+**`check.html`**, the ungated public diagnostic. Seven named failure modes each with a detection question, the five review conditions, and a seven-box single-record self-assessment. **No form, no email, no account, no upload, no contact capture**, verified by inspection. The self-assessment block contains no `fetch`, no beacon and no storage, which is what makes the "nothing is sent anywhere" line true rather than a promise.
+
+**Terminology decision.** The directive named the five conditions differently from `codebook.html`. **The page uses the codebook names.** A second set of names for the same five conditions is precisely the duplicated-fact defect this month has been spent removing.
+
+### Defect 1: a false anonymity claim
+
+**"100% Anonymous"** on `reviewer/index.html` and `access.html`. It was **false**: opting into a certificate or a LinkedIn recommendation requires a name and an email. Replaced with wording verified against `api/reviewer-eval.js`: answers write to `interaction_events`, contact details to `pilot_contacts`, two tables with no shared identifier.
+
+**The other ten prohibited terms were already absent.** Verified count across all HTML, JS and JSON: **0 of 11**.
+
+### Defect 2: anonymity you could only accept by identifying yourself
+
+`api/contributor.js` required name, title, organization and email before it would accept **any** confirmation, including from a contributor whose election on file was anonymous.
+
+**Fixed.** The three permission questions come first and are always required. Name, title and organization are required **only from someone asking to be named**. An anonymous contributor may leave an email so results can reach them, or leave it blank. Same rule enforced client-side in `contributor.html`.
+
+### My false alarm, corrected
+
+`bench_gold` is readable through the public anon key, and I first called it a critical exposure of the answer key. **It is not.** It holds **3 rows with synthetic placeholder record IDs**, one per determination, matching no real record. The page label "provisional/illustrative" was accurate and I should have checked the rows before raising it.
+
+**The real keys are in `research/`, verified absent from the deployed branch.**
+
+### A real exposure, narrower than the one I imagined
+
+`research-data.html` publishes open-data exports of **both** `bench_records` (record text) and `bench_labels` (human scores). Measured: **129 labels across 15 records, 10 of them carrying 3 or more labels**, so a majority-vote pseudo-key is derivable for those 10.
+
+**Scope stated precisely:** these are the **Rung 2a reliability** records, **not** the 24-record detection set. The licensable asset is intact. The consequence is that **the reliability set cannot be described or sold as a blind benchmark.**
+
+**Not changed.** Withdrawing a published open-data set is a research-transparency decision for the owner.
+
+### Verified
+
+| Check | Result |
+|---|---|
+| Prohibited claims, 11 terms, repo-wide | **0** |
+| `/check` gating | no form, email, file input or account |
+| Render, 390px and 1280px | 7 modes, 5 conditions, **no overflow, 0 console errors** |
+| Sub-group suppression, live | server-side, empty arrays at n=0 |
+| Real answer keys reachable publicly | **no**; `research/` absent from `main` |
+| Zero-drift guard | **10 of 10** |
+
+### Outstanding
+
+- `research-data.html` derivability: owner decision.
+- **The record check is linked from 3 pages, not all 63.** The footer markup is not shared, so one edit could not reach them all. Honest limit, not a completed repo-wide pass.
+- `ANON_CODES` still empty.
+- No payment path; the diagnostic CTA opens a scoped email, which is deliberate.
+
+---
