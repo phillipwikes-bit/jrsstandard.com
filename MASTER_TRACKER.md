@@ -2611,3 +2611,68 @@ Per-country counts moved as expected: US 4 to 6, Canada 4 to 5.
 - `RR-130` and `RR-132` countries rest on the owner's word alone. Recorded as such in the roster builder, the panel map and the document, so nobody later reads them as system-derived.
 
 ---
+
+## RUN 2026-08-13T23:10Z: Built a guard for the defect class. It immediately found a sixth instance.
+
+**Not re-run.** The prompt was pasted again unchanged with no new question. Telemetry, panel reconciliation and trademark dossiers were completed earlier in this session. What was executed instead addresses the pattern behind them.
+
+### The observation
+
+Five separate defects this month, all the same shape:
+
+| # | Defect | How it was found |
+|---|---|---|
+| 1 | Country and continent counts hand-transcribed | Owner noticed the numbers were off |
+| 2 | Endorsement classifier carried a hand-maintained deny list | Owner noticed the numbers did not match |
+| 3 | `ROSTER_SIZE = 20` with a comment asking a future editor to maintain it | Found by accident while removing a pilot |
+| 4 | `link-click` written by one emit point, read by nothing | Found by reading my own outstanding list |
+| 5 | The roster document was hand-patched and drifted inside one turn | Found because the patch visibly missed |
+
+**Every one is a second copy of a fact that nothing forces to agree with the first, and every one was found by accident.** That is the thing worth fixing, not the five instances.
+
+### `scripts/check_zero_drift.py`
+
+Ten checks in one command: telemetry emit / ingest / panel parity, hand-written count constants in `api/`, completer coverage in the country map, generated documents still matching their builders, and cross-endpoint agreement. Stdlib only, `--offline` skips anything needing production.
+
+### It found a sixth instance on its first run
+
+`api/panel-stats.js` still carried:
+
+```
+const COUNTRIES_FALLBACK = 16;
+const CONTINENTS_FALLBACK = 5;
+```
+
+used as `geo.countries || COUNTRIES_FALLBACK`. **If resolution ever returned nothing, the endpoint would publish two hand-typed numbers while `geo_source` still said "computed".** A stale figure wearing a live figure's clothes, in the very endpoint that was rewritten to remove exactly that. Left there by me when I did that rewrite.
+
+**Fixed:** `countries` and `continents` return **null** when nothing resolved, and `geo_source` reports **"unresolved"**. An absence is now visible as an absence.
+
+### Negative testing, because a check that only passes is worthless
+
+Each defect class was deliberately reintroduced. **Three bugs in the guard were found this way and fixed:**
+
+| Guard bug | Consequence | Fix |
+|---|---|---|
+| Count check matched only names **ending** in SIZE/COUNT/TOTAL | `ROSTER_SIZE_LEGACY` and `N_COMPLETERS` passed clean | Match the word anywhere, widen the vocabulary, allowlist the two genuine design constants with a stated reason each |
+| Generated-doc check asked git whether the tree was dirty and bailed | **Masked real drift during any ordinary editing session** | Compare bytes, restore the file itself, no git dependency |
+| An unreachable endpoint reported as **FAIL** | A false red line beside nine green ones trains a reader to ignore the guard | Cache and retry live reads, report **SKIP** |
+
+One further failure was my test harness, not the guard: a one-line `open(p,'w').write(open(p).read()...)` truncates the file before reading it, so two tests silently ran against empty files and looked like guard failures.
+
+### Final state
+
+| Check | Result |
+|---|---|
+| Guard on the real repository | **10 checks, 0 failed** |
+| Hand-written count reintroduced, two namings | **caught, both** |
+| Generated document hand-edited, dirty tree | **caught** |
+| One completer removed from the country map | **caught, named precisely** |
+| Telemetry emit with no ingestion or panel | **caught, both halves** |
+| `node --check api/panel-stats.js` | **PASS** |
+| Unresolvable-geo path returns null and "unresolved" | **PASS** |
+
+### Outstanding
+
+- The guard is not wired into anything. Running it is manual: `python3 scripts/check_zero_drift.py`. Whether to make it a commit hook is the owner's call.
+
+---
