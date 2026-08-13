@@ -2066,3 +2066,70 @@ The owner messaged an Indian advocate earlier today who replied saying she was u
 - `[REQUIRES USER INPUT]`: whether to follow up with the Indian opener.
 
 ---
+
+---
+
+## RUN 2026-08-13T07:40Z — The numbers were inconsistent for two reasons. Both are now removed.
+
+**Owner:** "Why are all of these numbers inconsistent? Assess fully and fix the problem internally."
+
+**v3.0 phase-gate profile followed. Recon, code, CLI verification, then documentation.**
+
+### What he was looking at
+
+The tile read **"2 CAMPAIGN ENDORSEMENTS"**, its own subtitle read **"6 all sources: 3 home, 2 field_guides, 1 footer"**, and campaign arrivals read **0**. **Three numbers on one card that could not all be true.**
+
+### CAUSE 1: the source classifier was a deny list
+
+`ON_SITE_SRC = {home, footer, nav, none}`. **Anything not on that list was counted as campaign-sourced.** `field_guides` was missing, so the two Field Guides endorsements were counted as campaign traffic. `drr` and `supported` had the same defect waiting.
+
+**The default was inverted: a new endorsement link on any page silently inflated the campaign number.**
+
+Flipped to an allow list **built from evidence**: every `src` tag ever recorded, checked against the markup. `footer, home, field_guides, drr, supported` all exist as `<a href>` on the site. `linkedin, email, signature` appear nowhere in the markup and can only have come from a distributed link. **An unknown tag now defaults to on-site, which understates rather than inflates.**
+
+### CAUSE 2: browser prefetch counted as a person
+
+**Six endorsements, four countries, zero arrivals.** Every endorsement link 302s to a screen that logs an arrival. Six fetches that produced no page load are not six people.
+
+**Chrome, Firefox and Safari prefetch links while sending a normal browser user agent.** That is precisely why the crawler regex never caught this, and why the cookie deduplication added yesterday could not help: **a prefetch carries no prior cookie, and each campaign has its own marker.**
+
+`api/_not-a-click.js` reads `Sec-Purpose`, `Purpose`, `X-Moz`, `X-Purpose` and `Sec-Fetch-Dest`. Applied to `/api/support` and `/api/dl`. **The redirect and the file are still served; only the count is protected.** A miss defaults to a real click.
+
+**This retrospectively explains the 14:04Z cluster of 2026-08-12** that I could not classify at the time: four endorsements in one minute across all four link placements with no arrival. That was prefetch.
+
+### Result, live on production
+
+| | Before | After |
+|---|---|---|
+| campaign arrivals | 0 | **0** |
+| campaign endorsements | **2** | **0** |
+| matched_difference | 2 | **0** |
+
+**It reconciles exactly.** The panel and its own breakdown now agree.
+
+### CLI verification
+
+`node --check`: **5 of 5 endpoints pass.** Classifier assertion against the real rows: **old rule 2, new rule 0.** Prefetch header logic: **8 of 8 cases pass**, including both negatives. Live: a prefetch to `/api/support` still receives its 302 and records nothing; a prefetch to `/api/dl` still receives the PDF and records nothing.
+
+### The limit, stated rather than buried
+
+**The prefetch guard is forward-only.** Rows written before today cannot be cleaned, because the headers that identify a prefetch were never stored. **The all-time figure of 56 still contains an unknown number of prefetches.** Only the series from 2026-08-13 forward is clean.
+
+### Token / Supabase minimization
+
+**CONFIRMED TOKEN-LESS.** The fix is three request-header reads and one dictionary flip. No token, key, SDK or dependency.
+
+### Files created / modified
+
+Created `api/_not-a-click.js`. Modified `api/support.js`, `api/dl.js`, `api/asset-stats.js`. Then, and only then, both Markdown files.
+
+### Trademark dossiers
+
+**JRS: READY TO FILE, Class 042. DRR: READY TO FILE, Class 042.**
+
+### Outstanding
+
+- **Historic endorsement totals cannot be cleaned.** Present the figure with its basis, as already recorded.
+- `link-click` telemetry from the previous run is recorded but still **not surfaced on any dashboard**.
+
+---

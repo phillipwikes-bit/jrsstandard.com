@@ -1139,3 +1139,63 @@ Clicking a real internal link: **beacon fires**, payload carries `timestamp, ori
 **JRS: READY TO FILE, Class 042. DRR: READY TO FILE, Class 042.** Unchanged by this run.
 
 ---
+
+---
+
+## AMENDMENT 2026-08-13T07:40Z: Endorsement metric reconciled. Two root causes removed.
+
+**Executed under the v3.0 phase-gate profile. Recon, code, CLI verification, then this document. No Markdown touched until every source edit passed `node --check` and the deploy was verified live.**
+
+### The contradiction the owner saw
+
+The tile read **"2 CAMPAIGN ENDORSEMENTS"** while its own breakdown listed **"3 home, 2 field_guides, 1 footer"**, containing no campaign source at all, against **0 campaign arrivals**.
+
+### Cause 1: the classifier was a DENY list
+
+`ON_SITE_SRC` listed `home, footer, nav, none`. **Anything not on it counted as campaign-sourced.** `field_guides` was missing, so the 2 endorsements from the Investigator Field Guides page were counted as campaign. `drr` and `supported` carried the same defect and would have surfaced next.
+
+**The default was backwards. Adding an endorsement link to any new page silently inflated the campaign figure.**
+
+Flipped to `CAMPAIGN_SRC`, an allow list, **built from evidence rather than guesswork**: every `src` tag ever recorded was checked against the markup. `footer`, `home`, `field_guides`, `drr` and `supported` all appear as `<a href>` on the site. `linkedin`, `email` and `signature` appear nowhere, so they can only have arrived from a distributed link. **An unknown tag now counts as on-site, which understates the campaign rather than inflating it.**
+
+### Cause 2: browser prefetch recorded as human endorsement
+
+**Six endorsements today, from four countries, produced ZERO arrivals on the screen every one of those links redirects to.** An endorsement is written server-side the instant the link is fetched; the arrival needs the destination page to load and run JavaScript. **Six fetches with no page load is not six people.**
+
+Chrome, Firefox and Safari prefetch and prerender links **while sending a normal browser user agent**, which is exactly why the crawler regex never caught it. **The signal is a request header, not the agent string.**
+
+`api/_not-a-click.js` checks `Sec-Purpose`, `Purpose`, `X-Moz`, `X-Purpose` and `Sec-Fetch-Dest`, and is applied to `/api/support` and `/api/dl`. **The redirect and the file are still served: only the count is protected.** A miss defaults to "real click", so a browser sending nothing is treated as a person.
+
+**This also explains the 14:04Z cluster of 2026-08-12**: four endorsements in one minute covering all four link placements, with no arrival. The cookie deduplication added that day could not help, because **a prefetch carries no prior cookie and each campaign has its own marker.**
+
+### Panel reconciliation, live after deploy
+
+| Figure | Before | After |
+|---|---|---|
+| campaign_screen_arrivals | 0 | **0** |
+| campaign_sourced_endorsements | **2** | **0** |
+| matched_difference | 2 | **0** |
+| endorsements, all sources | 6 | 6 |
+| endorsements_by_source | home 3, footer 1, field_guides 2 | unchanged |
+
+**The panel and its own breakdown now agree. `matched_difference` is 0.**
+
+### CLI verification
+
+| Check | Result |
+|---|---|
+| `node --check` on 5 endpoints | **5 PASS, 0 fail** |
+| Classifier assertion on the real rows | old rule **2**, new rule **0**, reconciles against 0 arrivals |
+| Prefetch header cases | **8 of 8 PASS**, including both negative cases |
+| Live: prefetch to `/api/support` | **302 issued, nothing recorded** |
+| Live: prefetch to `/api/dl` | **200, PDF served, nothing recorded** |
+
+### The limit, stated plainly
+
+**The prefetch guard is forward-only.** Endorsement rows written before 2026-08-13 cannot be cleaned, because the request headers that would identify a prefetch were never stored. **The all-time figure of 56 therefore still contains an unknown number of prefetches.** The daily series from 2026-08-13 forward counts clicks that a browser did not make on its own.
+
+### Trademark dossiers
+
+**JRS: READY TO FILE, Class 042. DRR: READY TO FILE, Class 042.** Unchanged.
+
+---
