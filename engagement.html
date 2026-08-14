@@ -171,7 +171,7 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
 
   <div class="qa"><div class="q">Does it establish regulatory compliance?</div><p class="a">No. JRS is designed to support organizational governance, auditability, documentation traceability, and review processes that may be relevant to frameworks and regulatory requirements such as the EU AI Act and NIST AI RMF. <b>It does not establish compliance with any of them, and no framework requires it.</b></p></div>
 
-  <div class="qa"><div class="q">Is the method proven?</div><p class="a">Not yet, and the evidence is published rather than summarised. Reproducibility and reliability are reported. Accuracy on the detection set is 83.9% across 16 independent experts and 384 graded reads, <b>95% confidence interval 72.7 to 95.1</b>, scored against a key fixed before any scoring took place under a pre-registered analysis plan. Controlled comparison against unaided review is deployed and has <b>not</b> reached its enrollment target, so no claim of improvement over careful reading is made.</p></div>
+  <div class="qa"><div class="q">Is the method proven?</div><p class="a">Not yet, and the evidence is published rather than summarised. Reproducibility and reliability are reported. Accuracy on the detection set is 83.9% across <span data-panel="completers_detection">16</span> independent experts and 384 graded reads, <b>95% confidence interval 72.7 to 95.1</b>, scored against a key fixed before any scoring took place under a pre-registered analysis plan. Controlled comparison against unaided review is deployed and has <b>not</b> reached its enrollment target, so no claim of improvement over careful reading is made.</p></div>
 
   <div class="qa"><div class="q">Who does the work?</div><p class="a">Phillip Wikes, formerly Lead Civil Rights Officer at the Maryland Commission on Civil Rights. Engagements are not subcontracted.</p></div>
 
@@ -324,5 +324,66 @@ function trackClickAndNavigate(event, targetUrl, eventMetaData) {
   }, true);
 })();
 </script>
+<!-- JRS PANEL BINDER v2 :: CANONICAL BLOCK. Byte-identical on every page that
+     publishes a panel figure, and scripts/check_zero_drift.py fails the commit
+     if two copies differ. Do not edit one copy; edit all of them together.
+     Background: research/FIGURE_DRIFT_ROOT_CAUSE.md -->
+<style>
+  [data-panel][data-panel-state="stale"]{border-bottom:1px dotted var(--review-text);cursor:help}
+</style>
+<script>
+(function(){
+  // Every published reviewer figure reads from /api/panel-stats so a sentence
+  // cannot drift from the database. Two rules that were not here before:
+  //
+  //   SCOPE. Keys are scoped (completers_all vs completers_detection). A bare
+  //   `countries` meant two different populations in two paragraphs of the same
+  //   page, which is the whole of the top-versus-bottom mismatch.
+  //
+  //   FALLBACK IS MARKED, NEVER SILENT. The number in the markup is still the
+  //   fallback, because blanking a figure mid-sentence is worse than showing the
+  //   last known one. But a fallback now says so: data-panel-state="stale", a
+  //   dotted underline and a title explaining it. A stale figure wearing a live
+  //   figure's clothes is the defect this whole exercise exists to remove.
+  function mark(el, state, title){
+    el.setAttribute('data-panel-state', state);
+    if (title) el.setAttribute('title', title);
+  }
+  function stale(why){
+    var els = document.querySelectorAll('[data-panel]');
+    for (var i = 0; i < els.length; i++) {
+      mark(els[i], 'stale', 'Last known value. The live figure could not be read (' + why + ').');
+    }
+  }
+  try {
+    fetch('/api/panel-stats')
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(d){
+        if (!d) { stale('endpoint returned an error'); return; }
+        var when = d.generated_at ? new Date(d.generated_at).toLocaleString() : 'just now';
+        var labels = d.scope_labels || {};
+        var els = document.querySelectorAll('[data-panel]');
+        for (var i = 0; i < els.length; i++) {
+          var k = els[i].getAttribute('data-panel'), v = d[k];
+          if (typeof v === 'number' && v > 0) {
+            els[i].textContent = v;
+            mark(els[i], 'live', 'Read from the study database at ' + when + '. Scope: ' + (labels[k] || k) + '.');
+          } else {
+            mark(els[i], 'stale', 'Last known value. The live figure is not available for ' + k + '.');
+          }
+        }
+        var sc = document.querySelectorAll('[data-panel-scope]');
+        for (var j = 0; j < sc.length; j++) {
+          var sk = sc[j].getAttribute('data-panel-scope');
+          if (labels[sk]) sc[j].textContent = labels[sk];
+        }
+        var st = document.querySelectorAll('[data-panel-generated]');
+        for (var m = 0; m < st.length; m++) st[m].textContent = when;
+      })
+      .catch(function(){ stale('the request failed'); });
+  } catch(e){ stale('the request could not be started'); }
+})();
+</script>
+<!-- /JRS PANEL BINDER v2 -->
 </body>
 </html>

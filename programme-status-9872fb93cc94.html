@@ -437,7 +437,7 @@ tr.today td{background:rgba(93,191,130,.07)}
       <b style="color:var(--text)">1.</b> A coined, ownable problem category, <b style="color:var(--text)">Decision Reconstruction Risk</b>, plus the five conditions, the three-read scale and the seven AI failure modes.<br>
       <b style="color:var(--text)">2.</b> A labelled, blind-verified <b style="color:var(--text)">24-record dataset with an independently reproduced answer key</b>. A benchmark asset.<br>
       <b style="color:var(--text)">3.</b> A self-updating <b style="color:var(--text)">reproducibility engine</b> running nightly cross-vendor.<br>
-      <b style="color:var(--text)">4.</b> An international credentialed <b style="color:var(--text)">reviewer panel: 36 completers across 16 countries</b>.<br>
+      <b style="color:var(--text)">4.</b> An international credentialed <b style="color:var(--text)">reviewer panel: <span data-panel="completers_all">36</span> completers (<span data-panel-scope="completers_all">all completers, both arms</span>) across <span data-panel="countries_all">16</span> countries</b>.<br>
       <b style="color:var(--text)">5.</b> Methodology authored with a Big-Four model-validation director.<br>
       <b style="color:var(--text)">6.</b> A finished <b style="color:var(--text)">Investigator Field Guide product line</b> (EEO, Fair Housing, International), mentioned in two verified Dewey Publications places.<br>
       <b style="color:var(--text)">7.</b> Papers in progress plus one <b style="color:var(--ready-text)">accepted</b> for November.<br>
@@ -481,11 +481,11 @@ tr.today td{background:rgba(93,191,130,.07)}
       Revenue <b style="color:var(--stop-text)">$0</b>, and no payment mechanism exists anywhere on the site &middot;
       organization pilots <b style="color:var(--stop-text)">0</b> &middot;
       reviewer evaluations submitted <b style="color:var(--stop-text)">0</b> &middot;
-      named people on record <b style="color:var(--text)">11</b> across <b style="color:var(--text)">7</b> countries &middot;
+      named people on record <b style="color:var(--text)" id="sd-people" data-bound="api/people-9dd1ecdf6f8cdfd4">11</b> across <b style="color:var(--text)" id="sd-people-countries" data-bound="api/people-9dd1ecdf6f8cdfd4">7</b> countries &middot;
       transfer-consent rows <b style="color:var(--text)">12</b> &middot;
       row-verified training completions <b style="color:var(--text)">4</b> &middot;
       named supporters <b style="color:var(--text)">3</b> &middot;
-      <b style="color:var(--ready-text)">reviewers completing a full study set: 36, across 16 countries</b>.<br><br>
+      <b style="color:var(--ready-text)">reviewers completing a full study set: <span data-panel="completers_all">36</span>, across <span data-panel="countries_all">16</span> countries</b>.<br><br>
       <b style="color:var(--text)">Channels tested:</b> federal-sector training <b style="color:var(--stop-text)">closed</b>, no response from any of three &middot;
       Dewey founding access <b style="color:var(--stop-text)">soft no</b>, relationship intact &middot;
       public product demand <b style="color:var(--stop-text)">none</b> &middot;
@@ -1508,6 +1508,13 @@ function loadPeople(){
       if(note){
         var miss=(d.people_without_country)||[];
         renderContactDetail(PPL);
+        // The Sale Dossier states the same two figures in prose. They were
+        // hand-typed and could not move; they are set from the values computed
+        // right here so the dossier cannot disagree with the table above it.
+        var sdP=document.getElementById('sd-people');
+        if(sdP) sdP.textContent=d.unique_people;
+        var sdC=document.getElementById('sd-people-countries');
+        if(sdC) sdC.textContent=Object.keys(ctry).length;
         note.innerHTML='Country resolved for <b>'+(d.unique_people-miss.length)+'</b> of <b>'+d.unique_people
           +'</b> people across <b>'+Object.keys(ctry).length+'</b> countries. Rows marked ROSTER predate geo capture on '
           +'2026-07-17 and were read from the dated reviewer roster, not inferred.'
@@ -1593,5 +1600,66 @@ function refresh(){ loadToday(); loadDetection(); loadRealcase(); loadArmB(); lo
 refresh();
 setInterval(refresh, 60000);
 </script>
+<!-- JRS PANEL BINDER v2 :: CANONICAL BLOCK. Byte-identical on every page that
+     publishes a panel figure, and scripts/check_zero_drift.py fails the commit
+     if two copies differ. Do not edit one copy; edit all of them together.
+     Background: research/FIGURE_DRIFT_ROOT_CAUSE.md -->
+<style>
+  [data-panel][data-panel-state="stale"]{border-bottom:1px dotted var(--review-text);cursor:help}
+</style>
+<script>
+(function(){
+  // Every published reviewer figure reads from /api/panel-stats so a sentence
+  // cannot drift from the database. Two rules that were not here before:
+  //
+  //   SCOPE. Keys are scoped (completers_all vs completers_detection). A bare
+  //   `countries` meant two different populations in two paragraphs of the same
+  //   page, which is the whole of the top-versus-bottom mismatch.
+  //
+  //   FALLBACK IS MARKED, NEVER SILENT. The number in the markup is still the
+  //   fallback, because blanking a figure mid-sentence is worse than showing the
+  //   last known one. But a fallback now says so: data-panel-state="stale", a
+  //   dotted underline and a title explaining it. A stale figure wearing a live
+  //   figure's clothes is the defect this whole exercise exists to remove.
+  function mark(el, state, title){
+    el.setAttribute('data-panel-state', state);
+    if (title) el.setAttribute('title', title);
+  }
+  function stale(why){
+    var els = document.querySelectorAll('[data-panel]');
+    for (var i = 0; i < els.length; i++) {
+      mark(els[i], 'stale', 'Last known value. The live figure could not be read (' + why + ').');
+    }
+  }
+  try {
+    fetch('/api/panel-stats')
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(d){
+        if (!d) { stale('endpoint returned an error'); return; }
+        var when = d.generated_at ? new Date(d.generated_at).toLocaleString() : 'just now';
+        var labels = d.scope_labels || {};
+        var els = document.querySelectorAll('[data-panel]');
+        for (var i = 0; i < els.length; i++) {
+          var k = els[i].getAttribute('data-panel'), v = d[k];
+          if (typeof v === 'number' && v > 0) {
+            els[i].textContent = v;
+            mark(els[i], 'live', 'Read from the study database at ' + when + '. Scope: ' + (labels[k] || k) + '.');
+          } else {
+            mark(els[i], 'stale', 'Last known value. The live figure is not available for ' + k + '.');
+          }
+        }
+        var sc = document.querySelectorAll('[data-panel-scope]');
+        for (var j = 0; j < sc.length; j++) {
+          var sk = sc[j].getAttribute('data-panel-scope');
+          if (labels[sk]) sc[j].textContent = labels[sk];
+        }
+        var st = document.querySelectorAll('[data-panel-generated]');
+        for (var m = 0; m < st.length; m++) st[m].textContent = when;
+      })
+      .catch(function(){ stale('the request failed'); });
+  } catch(e){ stale('the request could not be started'); }
+})();
+</script>
+<!-- /JRS PANEL BINDER v2 -->
 </body>
 </html>
