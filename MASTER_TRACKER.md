@@ -2990,7 +2990,9 @@ The old sheet is kept and marked **SUPERSEDED**, as the record of what it said.
 
 ---
 
-## RUN 2026-08-14T12:00Z: Recipient set corrected. Every expert evaluator, all rungs, both arms.
+## RUN 2026-08-14T12:00Z: Recipient set, added then removed the same day.
+
+> **REVERSED later on 2026-08-14 by Phillip: remove the Rung 2a expert raters.** They took part in the research; they are not part of this invitation. The list is **36**: 16 Rung 2b (Arm A) + 20 Arm B. Roster back to 39, the three surplus links verified dead in production. The section below is kept because two fixes found during it still stand, and because the reversal is easier to read next to what it reversed.
 
 **Phillip's correction: the invitation goes to all evaluators who were experts from Rung 2 and Rung 2b, Arm A and B.** My list was 36 and omitted the reliability study's expert raters entirely.
 
@@ -3019,13 +3021,15 @@ Also corrected in `api/honor.js`: a comment reading *"comparison-arm reviewers m
 ### Verification
 
 ```
-message files            40  (A 16 | B 20 | 2a 4)
-dual-role merged          3   duplicate letters: 0
-contributor roster       42   links rendered 42   missing keys 0
-outreach suite           26 of 26
+FINAL STATE after the reversal:
+message files            36  (A 16 | B 20 | 2a 0)
+contributor roster       39   links rendered 39   missing keys 0
+outreach suite           21 of 21   (asserts no Rung 2a file can reappear)
 drift guard               8 of 8 offline
-live E-03 / E-10 / E-14  all three resolve
+live E-03 / E-10 / E-14  all three rejected;  V-AI-01 still resolves
 ```
+
+**Kept from this pass, because both apply to Arm B and not to Rung 2a:** the blind-token assertion, and the rule that an explicitly empty title on the honor roster is a removal request rather than missing data. The second is what keeps `JRS-naive expert professional` out of the RR-130 and RR-132 messages.
 
 ---
 

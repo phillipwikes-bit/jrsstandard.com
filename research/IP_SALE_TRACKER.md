@@ -15,8 +15,8 @@
 | | |
 |---|---|
 | **Created** | 2026-08-13 |
-| **Last revised** | 2026-08-14 (rev 11) |
-| **Revisions** | 11 |
+| **Last revised** | 2026-08-14 (rev 12) |
+| **Revisions** | 12 |
 | **Current stage** | **Zero buyer conversations held, because I advised waiting. Gate withdrawn 2026-08-13** |
 | **Sale probability, as-is** | **5 to 10%** over ~12 months (owner's own anchor, `Path_to_Sale_Action_Plan.md`, unchanged) |
 
@@ -178,6 +178,7 @@ GRC / compliance software vendors · E-discovery and legal-tech · HR-tech and p
 
 | # | Date | Change |
 |---|---|---|
+| 12 | 2026-08-14 | **Rung 2a removed from the outreach on the owner's instruction; the list is 36, not 40.** Rung 2a took part in the research but is not part of this invitation. Roster back to 39 and the three surplus links verified dead in production. **Bears on Section 6 (consent and release):** the continuing-use and transfer permissions this instrument captures will cover the 36 detection and comparison evaluators, not the reliability raters. **No change to sale status, probability, packaging or any open item.** |
 | 11 | 2026-08-14 | **Outreach recipient set corrected, and a blind leak caught inside it.** The invitation goes to every evaluator who served as an EXPERT across Rung 2, Rung 2b and both arms; my list was 36 and omitted the reliability study's expert raters. **Now 40, built person-centric so the three people who served in two studies each receive one letter rather than two.** **Bears directly on Section 6, the consent and release gap:** this instrument is what captures continuing-use and transfer permissions in writing, the thing a successor's counsel asks for, and it now reaches 40 of the evaluators instead of 36. **Guardrail 4 (protect the blind) was being breached by the outreach itself:** RR-130 and RR-132 carry the study-internal title "JRS-naive expert professional" and the message printed it back to them, telling an unaided-arm reviewer that a comparison exists while the study is open. Fixed and asserted. **No change to sale status, probability, packaging or any open item.** |
 | 10 | 2026-08-14 | **Two of my own fabrications corrected, both bearing on the evaluator outreach that carries the paid tiers to 36 people.** (1) I invented "the owner closed the study on 2026-08-14" from an angry aside and wrote it into five files as fact. **The comparison study is OPEN and closes 2026-08-15.** Purged everywhere. Arm B remains on the contributor roster on the owner's explicit instruction, which stands without a closure date behind it. (2) I conflated the send date with the due date: **15 August is when the messages go out, 31 August 2026 is when a response is due.** `FALLBACK_DATE` corrected to `Monday, 31 August 2026`, weekday verified with `datetime`; 36 of 36 messages and the live endpoint moved with it. **Bears on the sale as diligence hygiene only:** the outreach is the instrument that captures continuing-use and transfer permissions (Section 6 gap, 0 of 20 sent), and it would have gone out quoting a deadline two weeks early and a study status that was not true. **No change to sale status, guardrails, probability, packaging or any open item.** |
 | 9 | 2026-08-13 | Owner asked where this file lives. Answer recorded in the header rather than only in chat: `research/IP_SALE_TRACKER.md`, **reachable only as a chat attachment because `research/` is deliberately not deployed.** Added the three-tracker location table and pointed Section 7b at `IP_COMMERCIALIZATION_TRACKER.md` as the live state record for the packages, a cross-reference this file was missing. **No change to sale status, guardrails, probability or any open item.** |
