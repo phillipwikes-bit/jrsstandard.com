@@ -3537,3 +3537,35 @@ Three checkout URLs, `BENCH_KEY_JSON` and `BENCH_SCORE_TOKENS`, the registered a
 **P0** four defects, all corrected during the audit and verified live. **P1** three checkout URLs. **P2** registered address and governing jurisdiction. **P3** 36 unsent messages, deadline passed. **P4** bench key and tokens. **P5** the 16 orphaned `reference/` pages. **P6** the pre-existing `jrsstandard.html` error.
 
 ---
+
+## RUN 2026-08-14T23:20Z: Remediation prompt written. Two of its six items executed instead.
+
+`SURGICAL_REMEDIATION_PROMPT.md` and `.docx` on disk: P1 to P6, exact file paths, exact variables, verification commands and a do-not list per item.
+
+**P5 and P6 were closed rather than described**, because neither needed owner input.
+
+### P6, root cause found. The audit had said "confirmed but not diagnosed"
+
+`jrsstandard.html` carried **an entire training and certificate subsystem in JavaScript whose markup lives on `training.html` and was never on this page.** Twenty element IDs referenced by `getElementById` did not exist. `updateProgress()` ran on load against that empty DOM, which threw the null-reference on every visit.
+
+**Twelve functions and the `jrs_completed` state they alone used removed, 8,481 bytes**, after confirming no call site outside the block. **The page now loads with zero errors.**
+
+**The 2-div imbalance was a separate defect**: `section-library` and its `.container` never closed, so every later `page-section` nested one level deeper than intended. Two closers added; markup balances at 3106.
+
+### P5, a correction to my own audit
+
+The audit said to **build** a `/reference/` hub. **One already existed** and links all sixteen pages. My check used a relative-path regex and missed absolute `href="/reference/<slug>"` links, reporting 0 of 16.
+
+**The real gap was that only `index.html` linked the hub.** Now linked from **38 footers**. `AUDIT_REPORT.md` corrected on both points rather than left standing.
+
+### What the prompt says that matters most
+
+**P1 is three URLs and nothing else.** **P2 must not infer jurisdiction from employment history**: a former post at the Maryland Commission on Civil Rights is not evidence of where a practice is registered. **P3 says a message whose deadline passed yesterday is worse than no message**, and gives both the extend and the drop-the-deadline routes. **P4 must not fall back to `bench_gold` or `bench_outcomes`.**
+
+**Every step carries the same gate: 72 assertions across six suites plus the 12-check guard, with the note that a step reducing that number is wrong rather than the test.**
+
+### Recommended order
+
+**P3 first**, because its deadline has already passed and every day makes the message worse. Then P1, P2, P4.
+
+---
