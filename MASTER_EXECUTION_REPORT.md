@@ -86,7 +86,7 @@ Now: the three permission questions are always required and always come first. *
 
 1. **`research-data.html` publishes record text and human labels together**, making a majority-vote pseudo-key derivable for 10 of the 15 reliability records. Owner decision. `[REQUIRES USER INPUT]`
 2. ~~The record check is linked from only 3 pages.~~ **CLOSED 2026-08-13. 52 pages, one link each.** See section 15.
-3. **`ANON_CODES` is empty.** Two completers elected anonymity and their codes are recorded nowhere in the repository, so the safe fallback is doing the work. `[REQUIRES USER INPUT]`
+3. ~~`ANON_CODES` is empty.~~ **CLOSED 2026-08-14.** The codes were recoverable after all: the roster CSV records **RR-130 and RR-132** as "Anonymous by choice", and both joined the contributor roster the same day. `ANON_CODES` now holds them, so the confirmation page tells each of them that an election to stay anonymous is on file and offers to change it, rather than telling two people who explicitly chose anonymity that they had never made a choice. Verified live: both resolve `named_on_file: false`.
 4. **No payment mechanism.** The diagnostic CTA opens a scoped email. That is the smallest viable path and is deliberate under directive 15.
 
 ## 12. Tests performed

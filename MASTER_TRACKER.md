@@ -3089,3 +3089,49 @@ It says "zero live packages" and that payment integration still needs doing. **A
 4. Revenue **$0**.
 
 ---
+
+## RUN 2026-08-14T10:15Z: One open item stopped requiring user input, so it was closed.
+
+### What changed
+
+`ANON_CODES` in `api/contributor.js` had been empty since it was written, with a comment saying the two anonymity elections **"are not recorded in this repository"**. That was true when it was written. It stopped being true yesterday: the roster CSV records **RR-130 and RR-132** as "Anonymous by choice", and both joined the contributor roster when Arm B was added.
+
+**Marked `[REQUIRES USER INPUT]` in the execution report. It no longer does, so it is closed.**
+
+### Why it was worth fixing rather than leaving
+
+The value is user-visible on the confirmation page:
+
+| Value | What the page tells the person |
+|---|---|
+| `false` | "your election to stay **anonymous** is on file. You can change that here if you want to." |
+| `null` | "there is **no confirmed title or naming election** on file for you." |
+
+Both fall back to anonymous, so **nothing was ever at risk of being printed**. But at `null`, two people who explicitly chose anonymity would have opened their link today and been told they had never made a choice. That is simply false, and it is the kind of thing a careful reviewer notices and distrusts.
+
+### Verified
+
+| Check | Result |
+|---|---|
+| Assertions on the resolution | **7 of 7** |
+| Only those two change | **yes**, nobody else moves |
+| `V-AI-23` stays `null` | **yes**, no election genuinely exists for her |
+| Nobody flips to named | **0** |
+| Live after deploy | `RR-130` and `RR-132` both **false**; `RR-121` still **true** |
+| Outreach regenerated and re-asserted | **16 of 16** |
+| Zero-drift guard | **11 of 11** |
+
+### Live state, unchanged
+
+| | |
+|---|---|
+| Contributor roster | **39**, confirmed **0** |
+| Checkout attempts | **0** |
+| Evaluation submissions | **0** |
+| Revenue | **$0** |
+
+### Nothing further is executable here
+
+Every remaining item needs something only the owner holds: three payment URLs from his own account, the benchmark key and tokens, a decision on `research-data.html`, and the dispatch of 36 messages whose deadline is today.
+
+---
