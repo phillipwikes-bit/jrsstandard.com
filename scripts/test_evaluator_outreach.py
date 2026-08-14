@@ -4,10 +4,11 @@
 Run:  python3 scripts/test_evaluator_outreach.py
 Exit: 0 if every assertion passes, 1 otherwise.
 
-Checks that every completer in both arms got a file, that each file carries a
-confirmation key which actually exists in the roster, that the template blocks
-are present, and above all that the two anonymous completers are NOT addressed
-by an invented name.
+Checks that every expert evaluator got a file, across Rung 2a, Rung 2b and both
+arms; that each file carries a confirmation key which actually exists in the
+roster; that the template blocks are present; that nothing in a message reveals
+the blind; and above all that the two anonymous completers are NOT addressed by
+an invented name.
 """
 import glob
 import io
@@ -33,6 +34,14 @@ FORBIDDEN_GRANTS = ("Founding Auditor", "Commercial Practice License",
                     "12-month organizational deployment", "Founding Panelist")
 ANON_CODES = ("RR-130", "RR-132")
 
+# THE BLIND. The comparison study is open until 2026-08-15 and the B1/B2 split is
+# what protects it. These tokens must never reach a message: RR-130 and RR-132
+# carry the study-internal title "JRS-naive expert professional" in the roster
+# CSV, and printing it back would tell an unaided-arm reviewer that a comparison
+# exists, in writing, to the one person it protects.
+BLIND_TOKENS = ("naive", "unaided", "randomiz", "arm b", "b1 ", "b2 ",
+                "comparison study", "control arm")
+
 checks = []
 
 
@@ -45,12 +54,19 @@ def main():
     idx = io.open(INDEX, encoding="utf-8").read()
     roster_keys = set(re.findall(r"'([a-z0-9]{10})':", io.open(ROSTER, encoding="utf-8").read()))
 
-    t("message files", len(files), 36)
-    t("Arm A files", len([f for f in files if os.path.basename(f).startswith("A_")]), 16)
+    # The owner's instruction, 2026-08-14: every evaluator who served as an
+    # EXPERT across Rung 2a, Rung 2b and both arms. 16 + 20 + 4, with three
+    # dual-role people merged onto their Arm A row so nobody gets two letters.
+    t("message files", len(files), 40)
+    t("Rung 2b (Arm A) files", len([f for f in files if os.path.basename(f).startswith("A_")]), 16)
     t("Arm B files", len([f for f in files if os.path.basename(f).startswith("B_")]), 20)
+    t("Rung 2a expert files", len([f for f in files if os.path.basename(f).startswith("2a_")]), 4)
+    t("no duplicate letter to a dual-role person",
+      sorted(os.path.basename(f) for f in files if os.path.basename(f)[3:] in
+             ("E-09.md", "E-12.md", "E-13.md")), [])
 
     bad_key, no_sub, no_desig, no_lic, no_date = [], [], [], [], []
-    grants, no_price = [], []
+    grants, no_price, blind = [], [], []
     for f in files:
         s = io.open(f, encoding="utf-8").read()
         m = re.search(r"contributor\.html\?k=([a-z0-9]{10})", s)
@@ -70,6 +86,10 @@ def main():
                 no_price.append("%s missing %s" % (os.path.basename(f), price))
         if "Monday, 31 August 2026" not in s:
             no_date.append(os.path.basename(f))
+        low = s.lower()
+        for tok in BLIND_TOKENS:
+            if tok in low:
+                blind.append("%s: %s" % (os.path.basename(f), tok.strip()))
 
     t("every file carries a key that exists in the roster", bad_key, [])
     t("subject line present everywhere", no_sub, [])
@@ -78,6 +98,16 @@ def main():
     t("NO free-grant language anywhere", grants, [])
     t("all three paid tiers quoted everywhere", no_price, [])
     t("deadline present everywhere", no_date, [])
+    t("NO blind-revealing token in any message", blind, [])
+
+    # E-08 asked IN WRITING on 2026-08-09 that her agency title and employer be
+    # removed from every piece of recognition, and api/honor.js records the
+    # request with "Do not repopulate these from the study record." The roster CSV
+    # still carries both, so this asserts the removal survives regeneration.
+    e08 = io.open(os.path.join(OUT, "2a_E-08.md"), encoding="utf-8").read()
+    t("E-08 agency title stays removed", "Deputy Records Access Officer" in e08, False)
+    t("E-08 employer stays removed", "Housing Preservation" in e08, False)
+    t("E-08 uses the spelling she confirmed", "Stacyann Young" in e08, True)
 
     # THE ONE THAT MATTERS MOST. Two people completed anonymously. A citation
     # printing a name they never gave would be the worst failure of this whole
@@ -88,7 +118,10 @@ def main():
         t("%s citation is not name-filled" % code, "[Evaluator Name]" in s, True)
         t("%s states the election holds" % code, "that election holds" in s, True)
 
-    t("index rows", len(re.findall(r"^\| [AB] \| `", idx, re.M)), 36)
+    t("index rows", len(re.findall(r"^\| (?:A|B|2a) \| `", idx, re.M)), 40)
+    t("index records who was NOT invited", "## Not invited, and why" in idx, True)
+    t("index shows the dual-role second code", idx.count("| `E-09` |") +
+      idx.count("| `E-12` |") + idx.count("| `E-13` |"), 3)
     t("index reports no missing keys", "NO KEY" in idx, False)
 
     fail = 0
