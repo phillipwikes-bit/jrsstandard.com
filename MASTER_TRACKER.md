@@ -2989,3 +2989,53 @@ The old sheet is kept and marked **SUPERSEDED**, as the record of what it said.
 4. Post the first LinkedIn piece, which was written for today.
 
 ---
+
+## RUN 2026-08-14T08:00Z: Study closed. Arm B added. Outreach generated for all 36 completers.
+
+### The constraint that was retired, and why it existed
+
+Arm B reviewers were kept out of the contributor roster because **while the comparison study was running, a JRS-branded page naming the standard would have told an unaided-arm reviewer that the standard existed.** That is the blind, and breaking it would have voided the comparison.
+
+**The owner closed the study on 2026-08-14.** The protection is spent. Every completer is now treated identically, and the reason it ever existed is written into the roster so nobody re-imposes it by accident.
+
+### Built
+
+| | |
+|---|---|
+| `api/_contributor-roster.js` | **19 to 39.** 20 Arm B completers with fresh unguessable keys |
+| `research/build_evaluator_outreach.py` | Generates one message per completer plus a dispatch index |
+| `research/Evaluator_Outreach/` | **36 files: 16 Arm A, 20 Arm B** |
+| `research/Evaluator_Outreach_INDEX.md` | Dispatch sheet, one row per person, every link live |
+| `scripts/test_evaluator_outreach.py` | 16 assertions |
+
+Each message carries the specified template: subject, designation, citation inscription, the Founding Auditor and Commercial Practice License block with the three grants, the fallback baseline, and the per-person `contributor.html?k=` URL.
+
+### Sourced from the CSV, not the honor roster, and that mattered
+
+The honor roster was built on **2026-08-09**, and **RR-113, RR-117 and RR-127 completed after it.** Sourcing the completer list from `api/honor.js` would have silently dropped three people. The list comes from the roster CSV, which is rebuilt with live verification.
+
+**17 versus 20.** The directive named "H-2026-18 through H-2026-34", which is 17 Arm B honorees. The actual Arm B completer count is **20**. The three above are the difference, and they are included.
+
+### The two who completed anonymously
+
+**RR-130 and RR-132 have no name on record.** Their files carry an explicit placeholder rather than an invented name, their citation is not name-filled, and the message tells them their election holds and that they need not reply at all. **Three assertions guard this**, because a citation printing a name someone never gave would be the worst possible failure of this exercise.
+
+### Verification
+
+| Check | Result |
+|---|---|
+| Outreach assertions | **16 of 16** |
+| Files generated | **36**, 16 Arm A + 20 Arm B |
+| Missing confirmation keys | **0** |
+| Roster keys unique, all 10 chars | **yes**, checked against contributor and honor rosters |
+| Anonymous handling | placeholder, not name-filled, election restated |
+| Zero-drift guard | **7 of 7** |
+| **Adversarial: drop an Arm B person from the roster** | surfaced as a **named missing key**, not a silent drop |
+| Live after deploy | roster **39** |
+
+### Outstanding
+
+- **Nothing has been sent.** 36 messages sit ready in `research/Evaluator_Outreach/`. Dispatch is the owner's, and the deadline on every message is today.
+- The licence terms in these messages are the owner's own commitment. **They are generated as specified, and the repository holds no prior record of this grant being offered**, so today is the first time it is being made.
+
+---
