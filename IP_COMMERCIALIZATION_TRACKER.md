@@ -7,8 +7,8 @@ Companion to `IP_COMMERCIALIZATION_AUDIT.md`, which holds the analysis. **This f
 | | |
 |---|---|
 | **Created** | 2026-08-13 |
-| **Last revised** | 2026-08-14 (rev 5) |
-| **Revisions** | 5 |
+| **Last revised** | 2026-08-14 (rev 6) |
+| **Revisions** | 6 |
 | **Packages defined** | 3 |
 | **Packages built** | **0** |
 | **Packages published** | **0** |
@@ -240,6 +240,34 @@ Two assertions were added so the grant language cannot creep back and a price ca
 
 ---
 
+## 3h. COMMERCIAL PACKAGING STATUS, VERIFIED 2026-08-14 (rev 6)
+
+**All four directives verified against disk and production rather than re-run.** Nothing needed repair.
+
+| Directive | Evidence |
+|---|---|
+| Completer pivot enforced | **0 files** carry any of the six free-grant phrases outside the trackers that record their removal and the test that guards against their return. **36 of 36** messages carry the Award Citation and the Registry ID |
+| Batch payloads regenerated | 36 files, 16 Arm A + 20 Arm B, **0 missing keys**, all 36 carry the deadline. Honors span **H-2026-02 to H-2026-37** with **no completer left without one** |
+| Monetization paths intact | Live: `audit` 503 fail-safe / `$250`, `governance` 503 / `$500`, `calibration` 503 / `$750`, unknown offer 404, **zero Location headers on an unconfigured offer** |
+| System integrity | **69 assertions across 5 suites, all passing.** Guard 12 of 12. **0 of 11** prohibited claims across every HTML, JS and JSON file |
+
+**Regeneration produced no diff**, which is the property that matters: the generator is deterministic from its sources, so running it again cannot quietly change what 36 people are sent.
+
+### Security constraints re-confirmed
+
+| | |
+|---|---|
+| `/api/bench-score` without a licence | **503 `licensing_not_provisioned`** |
+| Key, per-record results or condition logic in any response | **none**, by construction |
+| Routes storing submitted record text | **zero.** Every remaining mention is a comment recording the removal |
+| `/api/checkout` on an unconfigured offer | **503 with the price and an invoice path. No redirect, no guessed destination** |
+
+### Adversarial validation
+
+`OFFER_TOTAL_LEGACY = 3` injected into `api/checkout.js`: **caught, exit 1**. Reverted: **8 of 8, exit 0**. Hook runs in **0.19s**.
+
+---
+
 ## 4. LIVE BASELINE, THE NUMBERS EVERY PACKAGE INHERITS
 
 Read from `/api/panel-stats` and `/api/asset-stats` on 2026-08-13. **Anything published under these packages must reconcile to this table.**
@@ -301,6 +329,7 @@ The case for doing it anyway is narrow and it is the honest one: **the two stron
 
 | # | Date | Change |
 |---|---|---|
+| 6 | 2026-08-14 | **Commercial packaging verified active, not re-run.** All four directives checked against disk and production: 0 free-grant phrases in any sendable or live surface, 36 of 36 messages carrying the Award Citation and Registry ID, honors spanning H-2026-02 to H-2026-37 with every completer covered, all three paid tiers routing correctly with a 503 fail-safe and no Location header, and 69 assertions across 5 suites passing with 0 of 11 prohibited claims repo-wide. Regeneration produced no diff, confirming the generator is deterministic. New section 3h. |
 | 5 | 2026-08-14 | **Free promotional grants eliminated.** The outreach had offered all 36 completers a Founding Auditor and Commercial Practice License, Commercial Practice Rights and a 12-month Institutional Enterprise Grant at no charge, which gives the product away to the largest group of qualified buyers the programme has. Confirming now unlocks the Appointed Expert Award Citation and Official Panelist Registry ID only, the message states that boundary plainly, and anyone wanting practice use is routed to the $250 / $500 / $750 tiers. Prices parsed from `api/_offer-config.js`, never restated. Honors completed at H-2026-35 to 37 so all 36 completers hold one. New section 3g. Two regression assertions added and adversarially confirmed. |
 | 4 | 2026-08-13 | **Packages moved to LIVE.** Prices fixed at $250 / $500 / $750 from one config; buy path, checkout telemetry and benchmark scoring endpoint written and deployed. New sections 3e and 3f. **Checkout URLs deliberately left empty**: they can only be minted in the owner's payment account, and a plausible-looking one would be a fabricated payment destination, so `/api/checkout` fails safe to an invoice path instead of guessing. `bench-score` refuses to score without the real key rather than falling back to synthetic or unrelated tables. **Revenue still $0 and no offer shown to a named buyer.** |
 | 3 | 2026-08-13 | **Operational assets built**, new section 3d: three offer intake pages live with a Data Isolation Guarantee generated from one source, three Upwork proposal scripts, a four-section diagnostic report template, and five LinkedIn launch posts. **Prices set by the owner**: Offer 1 free at the door, Offer 2 $500 to $1,000, Offer 3 $750 to $1,500. The guarantee is true because the pages carry no form and no file input at all. **Nothing sent, used or posted yet, and no package has moved off NOT STARTED.** Payment mechanism remains the standing blocker. |

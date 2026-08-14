@@ -3224,3 +3224,38 @@ Their citations were written rather than templated. The templated version produc
 - Three checkout URLs, and `BENCH_KEY_JSON` plus `BENCH_SCORE_TOKENS`. Owner-held.
 
 ---
+
+## RUN 2026-08-14T13:40Z: Four directives verified against disk and production. Nothing needed repair.
+
+**Not re-run.** All four were executed in the previous pass. This pass checked each one against the filesystem and the live site, which is the useful thing to do with a verification directive.
+
+| Directive | Result |
+|---|---|
+| 1. Completer pivot, award only | **0 files** carry any of the six free-grant phrases outside the trackers recording their removal and the test guarding their return. `contributor.html`, `api/contributor.js` and `LINKEDIN_LAUNCH_POSTS.md` all clean. **36 of 36** messages carry the Award Citation and the Registry ID |
+| 2. Batch payloads regenerated | 36 files, 16 Arm A + 20 Arm B, **0 missing keys**, 36 of 36 carry the deadline, prices parsed from `api/_offer-config.js`. Honors **H-2026-02 to H-2026-37**, **no completer without one** |
+| 3. Monetization paths | Live: `$250` / `$500` / `$750` on their pages, checkout **503 fail-safe with zero Location headers**, unknown offer **404**, bench-score **503 `licensing_not_provisioned`**, **zero routes storing record text** |
+| 4. System integrity | **69 assertions across 5 suites, all pass.** Guard **12 of 12**. **0 of 11** prohibited claims across every HTML, JS and JSON file |
+
+### The result worth naming
+
+**Regenerating produced no diff.** The generator is deterministic from its sources, so running it again cannot quietly change what 36 people are sent. That is the property that makes a batch of personal messages safe to rebuild at all.
+
+### Adversarial validation, per 0.4
+
+`OFFER_TOTAL_LEGACY = 3` injected into `api/checkout.js`: **caught, exit 1**. Reverted: **8 of 8, exit 0**. Hook **0.19s**.
+
+### Telemetry
+
+**66 public pages** carry `trackClickAndNavigate`. **23 event sources, all consumed.** No orphan writers.
+
+### Two corrections to my own checks in this pass
+
+A grep for routes storing record text reported **1**; it was matching my own comment recording the removal. Re-run against non-comment lines only: **zero**. A second grep reported 4 key-related hits in `bench-score.js`; all four are comments explaining what the endpoint refuses to return.
+
+### Outstanding, unchanged and none of it code
+
+- **36 messages regenerated and unsent.** Deadline today.
+- Three checkout URLs; `BENCH_KEY_JSON` and `BENCH_SCORE_TOKENS`. Owner-held.
+- Revenue **$0**.
+
+---
