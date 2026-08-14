@@ -2945,3 +2945,47 @@ Every figure in the posts and proposals was checked against `/api/panel-stats` a
 - Arm B contributor slots: **do not add while the blind holds.**
 
 ---
+
+## RUN 2026-08-14T06:20Z: Deadline day. The link sheet he would have sent contained a dead link.
+
+### The finding
+
+**Today is the contributor confirmation deadline** (`FALLBACK_DATE = 'Friday, 14 August 2026'`, read from `api/contributor.js`). Live state: **roster 19, confirmed 0, outstanding 19, today 0.**
+
+`research/Contributor_Links_2026-08-03.md`, the sheet the owner would send, was hand-maintained and had drifted. **It still listed `V-HC-01`, whose contributor link was removed on 2026-08-13 and now returns 404.** Sending it today would have handed one contributor a dead link on the last day they could respond.
+
+**Caused by my own change yesterday.** I removed the pilot from the roster and did not update the sheet, because the sheet was a hand-maintained copy and nothing forced it to follow.
+
+### Fixed structurally
+
+`research/build_contributor_links.py` renders `research/Contributor_Links.md` from `api/_contributor-roster.js`, and reads the fallback date from `api/contributor.js` rather than restating it. **19 roster entries, 19 links, equal by construction.** A contributor whose `kind` has no heading is listed under Ungrouped rather than dropped, because a silently omitted person is exactly how this file went wrong.
+
+The old sheet is kept and marked **SUPERSEDED**, as the record of what it said.
+
+**The guard now checks this document too**, so a hand edit or a roster change without a rebuild fails the pre-commit hook.
+
+### Adversarial verification, both directions
+
+| Injection | Result |
+|---|---|
+| Edited the generated sheet by hand | **caught**, "regenerating changed it" |
+| Removed a person from the roster | **sheet followed automatically**, 19 to 18, name gone |
+| Restored | clean, 19 rows, **7 checks 0 failed, 0.19s** |
+
+### Live state, unchanged and stated plainly
+
+| | |
+|---|---|
+| Contributor confirmations | **0 of 19**, deadline today |
+| Checkout attempts | **0** |
+| Evaluation submissions | **0** |
+| Revenue | **$0** |
+
+### What only the owner can do, and today is the day for the first one
+
+1. **Send the 19 contributor links, or accept the fallback.** The links have never been sent. With no response by today the paper uses what is on file, and anonymity is the fallback wherever no naming election exists. **Nothing in this repository can send them.**
+2. **Paste three checkout URLs** into `api/_offer-config.js`. Only they stand between the offers and taking money.
+3. **Provision `BENCH_KEY_JSON` and `BENCH_SCORE_TOKENS`** for Offer 3.
+4. Post the first LinkedIn piece, which was written for today.
+
+---
