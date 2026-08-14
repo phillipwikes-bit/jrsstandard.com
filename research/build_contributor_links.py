@@ -34,7 +34,6 @@ BASE = "https://www.jrsstandard.com/contributor.html?k="
 # Group label per roster `kind`. Order is the order they appear in the sheet.
 GROUPS = [
     ("panel", "International detection panel"),
-    ("rater", "Reliability study expert raters"),
     ("author", "Co-authors"),
     ("facil", "Domain pilot facilitators"),
 ]
@@ -132,9 +131,9 @@ def main():
     A("**%d people on the roster, %d links listed.** These two numbers are the same by "
       "construction: every roster entry is rendered and nothing else is." % (len(people), total))
     A("")
-    A("**Comparison-arm reviewers (RR-### codes) are deliberately absent and must not be "
-      "added.** That arm is blind, and a JRS-branded page naming the standard would break it "
-      "for anyone still reviewing. Their debrief is a separate message.")
+    A("**Comparison-arm reviewers (RR-### codes) are on this sheet since 2026-08-14**, on the "
+      "owner's instruction. The line here used to say they were absent and must not be added, "
+      "which stopped being true the day they were added.")
 
     out = os.path.join(HERE, "Contributor_Links.md")
     io.open(out, "w", encoding="utf-8").write("\n".join(L) + "\n")

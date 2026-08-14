@@ -4,11 +4,13 @@
 Run:  python3 scripts/test_evaluator_outreach.py
 Exit: 0 if every assertion passes, 1 otherwise.
 
-Checks that every expert evaluator got a file, across Rung 2a, Rung 2b and both
-arms; that each file carries a confirmation key which actually exists in the
-roster; that the template blocks are present; that nothing in a message reveals
-the blind; and above all that the two anonymous completers are NOT addressed by
-an invented name.
+Checks that every completer in both arms got a file, that each file carries a
+confirmation key which actually exists in the roster, that the template blocks
+are present, that nothing in a message reveals the blind, and above all that the
+two anonymous completers are NOT addressed by an invented name.
+
+Rung 2a is deliberately not on this list. Its expert raters took part in the
+research; the owner removed them from the invitation on 2026-08-14.
 """
 import glob
 import io
@@ -54,16 +56,13 @@ def main():
     idx = io.open(INDEX, encoding="utf-8").read()
     roster_keys = set(re.findall(r"'([a-z0-9]{10})':", io.open(ROSTER, encoding="utf-8").read()))
 
-    # The owner's instruction, 2026-08-14: every evaluator who served as an
-    # EXPERT across Rung 2a, Rung 2b and both arms. 16 + 20 + 4, with three
-    # dual-role people merged onto their Arm A row so nobody gets two letters.
-    t("message files", len(files), 40)
+    t("message files", len(files), 36)
     t("Rung 2b (Arm A) files", len([f for f in files if os.path.basename(f).startswith("A_")]), 16)
     t("Arm B files", len([f for f in files if os.path.basename(f).startswith("B_")]), 20)
-    t("Rung 2a expert files", len([f for f in files if os.path.basename(f).startswith("2a_")]), 4)
-    t("no duplicate letter to a dual-role person",
-      sorted(os.path.basename(f) for f in files if os.path.basename(f)[3:] in
-             ("E-09.md", "E-12.md", "E-13.md")), [])
+    # Rung 2a was on this list for part of 2026-08-14 and the owner removed it.
+    # Asserted so a regeneration cannot quietly put it back.
+    t("no Rung 2a files", [os.path.basename(f) for f in files
+                           if os.path.basename(f).startswith("2a_")], [])
 
     bad_key, no_sub, no_desig, no_lic, no_date = [], [], [], [], []
     grants, no_price, blind = [], [], []
@@ -100,15 +99,6 @@ def main():
     t("deadline present everywhere", no_date, [])
     t("NO blind-revealing token in any message", blind, [])
 
-    # E-08 asked IN WRITING on 2026-08-09 that her agency title and employer be
-    # removed from every piece of recognition, and api/honor.js records the
-    # request with "Do not repopulate these from the study record." The roster CSV
-    # still carries both, so this asserts the removal survives regeneration.
-    e08 = io.open(os.path.join(OUT, "2a_E-08.md"), encoding="utf-8").read()
-    t("E-08 agency title stays removed", "Deputy Records Access Officer" in e08, False)
-    t("E-08 employer stays removed", "Housing Preservation" in e08, False)
-    t("E-08 uses the spelling she confirmed", "Stacyann Young" in e08, True)
-
     # THE ONE THAT MATTERS MOST. Two people completed anonymously. A citation
     # printing a name they never gave would be the worst failure of this whole
     # exercise, so it is asserted rather than assumed.
@@ -118,10 +108,8 @@ def main():
         t("%s citation is not name-filled" % code, "[Evaluator Name]" in s, True)
         t("%s states the election holds" % code, "that election holds" in s, True)
 
-    t("index rows", len(re.findall(r"^\| (?:A|B|2a) \| `", idx, re.M)), 40)
+    t("index rows", len(re.findall(r"^\| [AB] \| `", idx, re.M)), 36)
     t("index records who was NOT invited", "## Not invited, and why" in idx, True)
-    t("index shows the dual-role second code", idx.count("| `E-09` |") +
-      idx.count("| `E-12` |") + idx.count("| `E-13` |"), 3)
     t("index reports no missing keys", "NO KEY" in idx, False)
 
     fail = 0

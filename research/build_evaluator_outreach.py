@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate confirmation links and outreach text for EVERY expert evaluator.
+"""Generate confirmation links and outreach text for every completer, both arms.
 
 WHAT THIS PRODUCES
     research/Evaluator_Outreach/            one .md per evaluator, ready to send
@@ -16,23 +16,16 @@ built on 2026-08-09 and three Arm B reviewers finished after that date, so
 sourcing the list from it would have silently dropped RR-113, RR-117 and
 RR-127. The CSV is rebuilt with live verification on every roster build.
 
-WHO IS ON THE LIST, on the owner's explicit instruction (2026-08-14): every
-evaluator who served as an EXPERT, across **Rung 2a (reliability expert
-raters), Rung 2b (detection panel, Arm A) and Arm B (randomized comparison)**.
-Rung 2a's bench reviewers are the one band excluded, because their codes were
-generated in the browser and were never bound to an identity: there is no
-person to write to, and no name exists anywhere to recover.
+WHO IS ON THE LIST, per the owner (2026-08-14): the Rung 2b detection panel
+(Arm A) and the Arm B randomized comparison. Rung 2a is NOT on the list. Its
+expert raters were briefly added on 2026-08-14 and removed the same day on the
+owner's instruction. Do not add them back.
 
-**The comparison study is OPEN and closes 2026-08-15.** Everyone generated here
-has already submitted their records, so the message cannot change work they
-have already done. The B1 / B2 split never reaches a file name, an index row or
-a message: the band is derived from the participant code, never from the CSV's
-arm column, because that split is the blind.
-
-ONE PERSON, ONE INVITATION. Three evaluators served in two studies each. Their
-roles are merged onto one record so nobody receives two near-identical award
-letters. Merging is by name and only where a name exists: RR-130 and RR-132
-both read "Anonymous by choice" and are two different people.
+The comparison study is OPEN and closes 2026-08-15. Everyone generated here has
+already submitted their records, so the message cannot change work they have
+already done. The B1 / B2 split never reaches a file name, an index row or a
+message: the band comes from the participant code, never from the CSV's arm
+column, because that split is the blind.
 
 WHAT IS STILL NOT GUESSED. Two Arm B completers finished anonymously and have
 no name on record. Their files are generated with the salutation and the
@@ -151,8 +144,6 @@ def arm_of(participant):
         return "A"          # Rung 2b, detection panel
     if participant.startswith("RR-"):
         return "B"          # Arm B, randomized comparison
-    if participant.startswith("E-"):
-        return "2a"         # Rung 2a, reliability study expert rater
     return "other"
 
 
@@ -259,22 +250,18 @@ def main():
 
     ANON = ("anonymous by choice", "no identity on record", "not recorded", "anonymous by design")
 
-    # ELIGIBILITY. The owner's instruction, 2026-08-14: the invitation goes to
-    # every evaluator who served as an EXPERT, across Rung 2, Rung 2b and both
-    # arms. Three bands qualify and one does not:
+    # ELIGIBILITY, set by the owner on 2026-08-14:
     #
-    #   Rung 2a  expert raters      IN. CSV arm == 'expert rater', codes E-##.
-    #   Rung 2a  bench reviewers    OUT. Codes R-############ were generated in
-    #                               the browser and were never bound to an
-    #                               identity, so no name exists anywhere to
-    #                               recover and there is no person to write to.
-    #                               Anonymous by design, not by omission.
-    #   Rung 2b  detection panel    IN. Codes V-AI-##.
-    #   Arm B    randomized compare IN. Codes RR-###.
+    #   Rung 2b  detection panel    IN.  Codes V-AI-##.
+    #   Arm B    randomized compare IN.  Codes RR-###.
+    #   Rung 2a  everyone           OUT. Codes E-## and R-############.
     #
-    # Exclusions are recorded and printed in the index rather than applied
-    # silently: a person quietly dropped from an invitation list is the same
-    # defect as a person quietly added to it.
+    # Rung 2a took part in the research; it is not on this invitation. The expert
+    # raters were added here on 2026-08-14 and removed the same day on the
+    # owner's instruction. Do not add them back.
+    #
+    # Exclusions are printed in the index rather than applied silently, so the
+    # list can be checked against the roster without reading this file.
     eligible, excluded = [], []
     with io.open(newest_csv(), encoding="utf-8") as fh:
         for row in csv.DictReader(fh):
@@ -284,29 +271,14 @@ def main():
             display = nm if nm.lower() not in ANON else ""
 
             if band == "other":
-                excluded.append((code, row["name"].strip(),
-                                 "reliability bench reviewer: code was never bound to an "
-                                 "identity, so there is no person to write to"))
+                why = ("Rung 2a expert rater: took part in the research, not on this "
+                       "invitation (owner, 2026-08-14)"
+                       if row["arm"].strip() == "expert rater" else
+                       "Rung 2a bench reviewer: the code was never bound to an identity, "
+                       "so there is no person to write to")
+                excluded.append((code, row["name"].strip(), why))
                 continue
-            if band == "2a" and row["arm"].strip() != "expert rater":
-                excluded.append((code, row["name"].strip(),
-                                 "Rung 2a but not an expert rater"))
-                continue
-            # The pre-registration's own bar, JRS_PreRegistered_Analysis_Plan.md
-            # line 74: a reviewer completing fewer than 3 of the 5 records is
-            # excluded from that batch's reliability estimate. Applied here as
-            # written rather than invented for this list.
-            if band == "2a":
-                try:
-                    reads = int(row["labels_or_reads"])
-                except ValueError:
-                    reads = 0
-                if reads < 3:
-                    excluded.append((code, row["name"].strip(),
-                                     "%d of 5 records: below the pre-registered inclusion "
-                                     "bar (plan line 74), and no identity on record" % reads))
-                    continue
-            if band in ("A", "B") and row["status"] != "COMPLETE":
+            if row["status"] != "COMPLETE":
                 excluded.append((code, row["name"].strip(), "not COMPLETE"))
                 continue
 
@@ -348,35 +320,7 @@ def main():
                 "code": extra.get("honor", "not on the honor roster"),
             })
 
-    # ONE PERSON, ONE INVITATION. Three people served in two studies each
-    # (E-09/V-AI-06, E-12/V-AI-07, E-13/V-AI-03). Sending each of them two
-    # near-identical award letters would read as a mailmerge fault, so the roles
-    # are merged onto one record and both codes are carried into the index.
-    #
-    # Merging is BY NAME AND ONLY WHERE A NAME EXISTS. RR-130 and RR-132 both
-    # read "Anonymous by choice" and are two different people; keying anonymous
-    # rows on their display text would silently delete one of them.
-    by_name, completers = {}, []
-    for p in eligible:
-        nm = p["name"].strip().lower()
-        if nm and nm in by_name:
-            prior = by_name[nm]
-            # The detection or comparison code leads, because that is the study
-            # the paper is being written about. The Rung 2a code rides along.
-            keep, other = (prior, p) if arm_of(prior["participant"]) != "2a" else (p, prior)
-            keep["also"] = sorted(set(keep.get("also", []) + other.get("also", [])
-                                      + [other["participant"]]))
-            if not keep["org"]:
-                keep["org"] = other["org"]
-            if keep["code"] == "not on the honor roster":
-                keep["code"] = other["code"]
-            completers[completers.index(prior)] = keep
-            by_name[nm] = keep
-            continue
-        if nm:
-            by_name[nm] = p
-        completers.append(p)
-
+    completers = eligible
     completers.sort(key=lambda p: (arm_of(p["participant"]), p["participant"]))
 
     if not os.path.isdir(OUTDIR):
@@ -398,7 +342,6 @@ def main():
         rows.append({
             "arm": arm_of(p["participant"]),
             "participant": p["participant"],
-            "also": ", ".join("`%s`" % c for c in p.get("also", [])) or "",
             "honor": p["code"],
             "name": p["name"] or "*anonymous, no name on record*",
             "org": p["org"] or "",
@@ -416,38 +359,32 @@ def main():
       "Names, titles and organizations come from `api/honor.js`; confirmation keys from "
       "`api/_contributor-roster.js`; the deadline from `api/contributor.js`.")
     A("")
-    A("**WHO IS ON THIS LIST, on the owner's explicit instruction (2026-08-14):** every "
-      "evaluator who served as an EXPERT, across **Rung 2a (reliability expert raters), "
-      "Rung 2b (detection panel, Arm A) and Arm B (randomized comparison)**.")
+    A("**Who is on this list, set by the owner on 2026-08-14:** the Rung 2b detection "
+      "panel (Arm A) and the Arm B randomized comparison. **Rung 2a is not on it.** Its "
+      "expert raters took part in the research but are not part of this invitation.")
     A("")
-    A("**The comparison study is OPEN and closes 2026-08-15.** Everyone listed here has "
+    A("**The comparison study is open and closes 2026-08-15.** Everyone listed here has "
       "already submitted their records, so the message cannot change work they have "
       "already done. **The B1 / B2 split never appears in this file or in any message**: "
-      "the band column is derived from the participant code, never from the roster CSV's "
-      "arm column, because that split is the blind.")
-    A("")
-    A("**One person, one invitation.** Three evaluators served in two studies each; their "
-      "roles are merged onto a single row and the second code is shown in `Also`.")
+      "the band column comes from the participant code, never from the roster CSV's arm "
+      "column, because that split is the blind.")
     A("")
     A("**Deadline on every message: %s.**" % date)
     A("")
-    A("| Band | Code | Also | Honor | Evaluator | Organization | Confirmation link | File |")
-    A("|---|---|---|---|---|---|---|---|")
+    A("| Band | Code | Honor | Evaluator | Organization | Confirmation link | File |")
+    A("|---|---|---|---|---|---|---|")
     for r in rows:
         link = (BASE + r["key"]) if r["key"] else "**NO KEY**"
-        A("| %s | `%s` | %s | `%s` | %s | %s | %s | `%s` |"
-          % (r["arm"], r["participant"], r["also"] or "", r["honor"], r["name"],
+        A("| %s | `%s` | `%s` | %s | %s | %s | `%s` |"
+          % (r["arm"], r["participant"], r["honor"], r["name"],
              r["org"], link, r["file"]))
     A("")
     a_n = sum(1 for r in rows if r["arm"] == "A")
     b_n = sum(1 for r in rows if r["arm"] == "B")
-    r_n = sum(1 for r in rows if r["arm"] == "2a")
-    dual = sum(1 for r in rows if r["also"])
     anon = sum(1 for r in rows if r["name"].startswith("*anonymous"))
-    A("**%d evaluators: %d Rung 2b (Arm A), %d Arm B, %d Rung 2a expert raters.** "
-      "%d of them served in two studies and receive one message, not two. "
-      "%d completed anonymously and their files carry a placeholder rather than an "
-      "invented name." % (len(rows), a_n, b_n, r_n, dual, anon))
+    A("**%d evaluators: %d Rung 2b (Arm A), %d Arm B.** %d completed anonymously and "
+      "their files carry a placeholder rather than an invented name."
+      % (len(rows), a_n, b_n, anon))
     A("")
     A("## Not invited, and why")
     A("")
@@ -474,8 +411,7 @@ def main():
 
     print("wrote %d message files to %s" % (len(rows), OUTDIR))
     print("wrote %s" % os.path.join(HERE, "Evaluator_Outreach_INDEX.md"))
-    print("  Rung 2b/Arm A: %d | Arm B: %d | Rung 2a experts: %d | dual-role merged: %d"
-          % (a_n, b_n, r_n, dual))
+    print("  Rung 2b/Arm A: %d | Arm B: %d" % (a_n, b_n))
     print("  anonymous: %d | not invited: %d | missing keys: %d"
           % (anon, len(excluded), len(missing)))
     if missing:
