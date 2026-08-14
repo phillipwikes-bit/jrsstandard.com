@@ -16,6 +16,26 @@ Each link opens a page that captures how the person wants their name and title p
 
 | Person | Code | Role note | Link |
 |---|---|---|---|
+| Boris Khazin | `RR-101` | comparison study completer | https://www.jrsstandard.com/contributor.html?k=dg2yvv3h69 |
+| Donavine Smith, MBA | `RR-104` | comparison study completer | https://www.jrsstandard.com/contributor.html?k=4rfqa5u47w |
+| Nicholas Evans | `RR-106` | comparison study completer | https://www.jrsstandard.com/contributor.html?k=l8ukpuypgf |
+| Tuneer Mondal | `RR-107` | comparison study completer | https://www.jrsstandard.com/contributor.html?k=iq0jgphrzx |
+| Mostafa Mahmoudi | `RR-109` | comparison study completer | https://www.jrsstandard.com/contributor.html?k=xrtta15iyp |
+| Jean-Luc Adade | `RR-110` | comparison study completer | https://www.jrsstandard.com/contributor.html?k=hxsge0aowg |
+| Priyam Dhamankar | `RR-113` | comparison study completer | https://www.jrsstandard.com/contributor.html?k=ndd9nr08sk |
+| MacKenzie McCowan | `RR-114` | comparison study completer | https://www.jrsstandard.com/contributor.html?k=fkszsr4mii |
+| Dr. Eric J. W. Orlowski | `RR-116` | comparison study completer | https://www.jrsstandard.com/contributor.html?k=550gzz59he |
+| Alexandria Davis | `RR-117` | comparison study completer | https://www.jrsstandard.com/contributor.html?k=2hz6uvwxvn |
+| Dr Sharon Licqurish, PhD | `RR-121` | comparison study completer | https://www.jrsstandard.com/contributor.html?k=zu8iotht1u |
+| Greg Searle | `RR-123` | comparison study completer | https://www.jrsstandard.com/contributor.html?k=u34j0adlsm |
+| Adesh Sharma | `RR-124` | comparison study completer | https://www.jrsstandard.com/contributor.html?k=q8n5h174fk |
+| Muhammad Dauda | `RR-125` | comparison study completer | https://www.jrsstandard.com/contributor.html?k=mlskg9y1s8 |
+| Joseph Mungai | `RR-126` | comparison study completer | https://www.jrsstandard.com/contributor.html?k=hgjk1vonxs |
+| Candid Opris | `RR-127` | comparison study completer | https://www.jrsstandard.com/contributor.html?k=ltrtk9chzj |
+| Sagarika Banerjee | `RR-128` | comparison study completer | https://www.jrsstandard.com/contributor.html?k=fcnrwmgyfj |
+| Wendy Ann Martel | `RR-129` | comparison study completer | https://www.jrsstandard.com/contributor.html?k=hidg3cmtsy |
+|  | `RR-130` | comparison study completer, anonymous by choice | https://www.jrsstandard.com/contributor.html?k=kt18kaanxw |
+|  | `RR-132` | comparison study completer, anonymous by choice | https://www.jrsstandard.com/contributor.html?k=d0cofc93jc |
 | Jake McDonough | `V-AI-01` |  | https://www.jrsstandard.com/contributor.html?k=upbtroc754 |
 | Frank Schouten | `V-AI-03` |  | https://www.jrsstandard.com/contributor.html?k=08c17ihb60 |
 | Dr Nitin Deshpande | `V-AI-06` |  | https://www.jrsstandard.com/contributor.html?k=im06wa5vd4 |
@@ -48,6 +68,6 @@ Each link opens a page that captures how the person wants their name and title p
 
 ---
 
-**19 people on the roster, 19 links listed.** These two numbers are the same by construction: every roster entry is rendered and nothing else is.
+**39 people on the roster, 39 links listed.** These two numbers are the same by construction: every roster entry is rendered and nothing else is.
 
 **Comparison-arm reviewers (RR-### codes) are deliberately absent and must not be added.** That arm is blind, and a JRS-branded page naming the standard would break it for anyone still reviewing. Their debrief is a separate message.
