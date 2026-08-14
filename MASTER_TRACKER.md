@@ -3339,3 +3339,38 @@ Guard **12 of 12**. Renders clean at 390px and 1280px on both pages. Live: fees 
 4. **The 20-minute scoping call** that reads one record on the call. The bridge from free check to $250 engagement is still missing.
 
 ---
+
+## RUN 2026-08-14T16:20Z: v4.1 script pasted again, unchanged. Not run. Health verified instead.
+
+**The script is identical to the one analysed on 2026-08-14 and nothing in the repository has changed to alter that assessment.** It overwrites `scripts/check_zero_drift.py` with a 38-line stub and overwrites the pre-commit hook. Tested in a sandbox against all six real defects found this month, it reported **"SUCCESS: Zero drift defects detected"** while sitting on every one, including the `COUNTRIES_FALLBACK = 16` it names as its own example. It scans only `.py` files; every real defect was in `.js` or `.html`.
+
+**Its one good idea was already taken on 2026-08-14**: the guard now covers `research/` and `scripts/` Python as well as `api/` JavaScript, which is why the count is 12 and not 11.
+
+### Health, verified this run
+
+| | |
+|---|---|
+| Zero-drift guard | **12 checks, 0 failed** |
+| `test_scout_opportunities.py` | pass |
+| `test_evaluator_outreach.py` | **18 of 18** |
+| `test_bench_score.mjs` | **15 of 15** |
+| `test_checkout.mjs` | **15 of 15** |
+| `test_anon_election.mjs` | **7 of 7** |
+| `engagement.html` | **200** |
+
+**55 assertions across five suites, all passing.**
+
+### Live state, unchanged
+
+| | |
+|---|---|
+| Contributor roster | **39**, confirmed **0**, today **0** |
+| Checkout attempts | **0** |
+| Evaluation submissions | **0** |
+| Link clicks | 4 |
+
+### Nothing was built this run, deliberately
+
+The four remaining items are owner decisions, not code: name an entity, write terms of service, un-`noindex` the intake pages, and add the scoping call. **36 outreach messages remain generated and unsent.**
+
+---
