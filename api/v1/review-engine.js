@@ -184,7 +184,10 @@ async function logReview(SERVICE, rid, text, out) {
         finding: r.finding || null,
         runs: out.runs || 1,
         overall_consistency: out.variance ? out.variance.overall_consistency : null,
-        input_preview: (text || '').slice(0, 200),
+        // NO RECORD TEXT IS STORED. See the same removal in api/review-engine.js.
+        // This stored the first 200 characters of the submitted record and a
+        // public page rendered it, contradicting the Data Isolation Guarantee.
+        // Removed 2026-08-14 while the table still held 0 rows.
         engine_version: out.engine_version || null,
       }),
     });
