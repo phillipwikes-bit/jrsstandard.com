@@ -3838,6 +3838,10 @@ a.gumroad-button.util-link {
   </div>
 </div>
 
+     opened inside them, nesting every later section one level deeper. Fixed 2026-08-14. -->
+<!-- section-library and its .container were never closed; the next page-section
+</div>
+</div>
 <div id="section-about" class="page-section">
 <div class="container">
 <div class="page-eyebrow">About</div>
@@ -4133,119 +4137,15 @@ lessons:[
 {q:"JRS requires organizations to adopt dedicated documentation management software.",options:["True","False"],correct:1,explanation:"JRS operates within existing organizational workflows. No system replacement required."}
 ]}
 ];
-
-let currentModule=-1,currentLesson=0,quizAnswers=[],quizSubmitted=false;
-let completed=(()=>{try{const s=localStorage.getItem('jrs_completed');return s?JSON.parse(s):new Array(MODULES.length).fill(false);}catch(e){return new Array(MODULES.length).fill(false);}})();
-
-function saveProgress(){try{localStorage.setItem('jrs_completed',JSON.stringify(completed));}catch(e){}}
-
-function updateProgress(){
- const count=completed.filter(Boolean).length;
- document.getElementById('progress-fill').style.width=(count/MODULES.length*100)+'%';
- document.getElementById('progress-label').textContent=count+' of '+MODULES.length+' modules complete';
- MODULES.forEach((_,i)=>{
- const el=document.getElementById('nav-status-'+i);if(!el)return;
- if(completed[i]){el.textContent='Complete';el.className='module-nav-status complete';}
- else if(i===currentModule){el.textContent='In Progress';el.className='module-nav-status active';}
- else{el.textContent='Start';el.className='module-nav-status';}
- });
- if(completed.every(Boolean))document.getElementById('course-complete').classList.add('visible');
-}
-
-function openModule(idx){
- currentModule=idx;currentLesson=0;
- quizAnswers=new Array(MODULES[idx].quiz.length).fill(-1);quizSubmitted=false;
- const mod=MODULES[idx];
- document.getElementById('panel-module-tag').textContent=mod.tag;
- document.getElementById('panel-title').textContent=mod.title;
- document.getElementById('lesson-tabs').innerHTML=mod.lessons.map((l,i)=>`<button class="lesson-tab ${i===0?'active':''}" onclick="switchLesson(${i})">${l.title}</button>`).join('')+(mod.quiz.length?`<button class="lesson-tab" onclick="switchLesson(${mod.lessons.length})">Review Questions</button>`:'');
- document.getElementById('lesson-content-area').innerHTML=mod.lessons.map((l,i)=>`<div class="lesson-body ${i===0?'active':''}" id="lb-${i}">${l.html}</div>`).join('')+(mod.quiz.length?`<div class="lesson-body" id="lb-${mod.lessons.length}"></div>`:'');
- buildQuiz(idx);
- document.getElementById('quiz-section').style.display='none';
- document.getElementById('quiz-score-block').classList.remove('visible');
- document.getElementById('module-nav').style.display='none';
- document.getElementById('course-panel').style.display='block';
- updateProgress();window.scrollTo(0,0);
-}
-
-function switchLesson(idx){
- const mod=MODULES[currentModule];currentLesson=idx;
- document.querySelectorAll('#lesson-tabs .lesson-tab').forEach((t,i)=>t.classList.toggle('active',i===idx));
- mod.lessons.forEach((_,i)=>document.getElementById('lb-'+i).classList.toggle('active',i===idx));
- const qb=document.getElementById('lb-'+mod.lessons.length);
- if(qb)qb.classList.toggle('active',idx===mod.lessons.length);
- document.getElementById('quiz-section').style.display=(idx===mod.lessons.length&&mod.quiz.length)?'block':'none';
- window.scrollTo(0,document.querySelector('#lesson-tabs').offsetTop-20);
-}
-
-function buildQuiz(idx){
- const quiz=MODULES[idx].quiz;
- document.getElementById('quiz-title').textContent='Module '+(idx+1)+' Review Questions';
- document.getElementById('quiz-questions').innerHTML=quiz.map((q,qi)=>`<div class="quiz-question-block" id="qblock-${qi}"><div class="quiz-q-num">Question ${qi+1} of ${quiz.length}</div><div class="quiz-q-text">${q.q}</div><div class="quiz-options">${q.options.map((opt,oi)=>`<button class="quiz-option" id="opt-${qi}-${oi}" onclick="selectAnswer(${qi},${oi})"><span class="quiz-option-marker" id="marker-${qi}-${oi}"></span>${opt}</button>`).join('')}</div><div class="quiz-feedback" id="feedback-${qi}">${q.explanation}</div></div>`).join('')+`<div class="btn-row"><button class="btn btn-accent" onclick="submitQuiz()">Submit</button></div>`;
-}
-
-function selectAnswer(qi,oi){
- if(quizSubmitted)return;
- quizAnswers[qi]=oi;
- MODULES[currentModule].quiz[qi].options.forEach((_,i)=>{
- document.getElementById('opt-'+qi+'-'+i).classList.toggle('selected',i===oi);
- document.getElementById('marker-'+qi+'-'+i).textContent=i===oi?'\u25C6':'';
- });
-}
-
-function submitQuiz(){
- const quiz=MODULES[currentModule].quiz;
- if(quizAnswers.some(a=>a===-1)){const v=document.getElementById('quiz-validation');v.style.display='block';setTimeout(()=>v.style.display='none',3000);return;}
- quizSubmitted=true;let correct=0;
- quiz.forEach((q,qi)=>{
- const ok=quizAnswers[qi]===q.correct;if(ok)correct++;
- q.options.forEach((_,oi)=>{const btn=document.getElementById('opt-'+qi+'-'+oi);btn.classList.remove('selected');if(oi===q.correct)btn.classList.add('correct');else if(oi===quizAnswers[qi]&&!ok)btn.classList.add('wrong');});
- document.getElementById('feedback-'+qi).classList.add('visible');
- });
- const pct=Math.round(correct/quiz.length*100);
- document.getElementById('score-number').textContent=correct+'/'+quiz.length;
- document.getElementById('score-msg').textContent=pct===100?'All questions correct.':pct>=80?'Review explanations above for any missed questions.':'Review the lesson content before continuing.';
- document.getElementById('next-module-btn').textContent=currentModule<MODULES.length-1?'Next Module \u2192':'Return to Course Index';
- document.getElementById('quiz-score-block').classList.add('visible');
- if(pct>=80){completed[currentModule]=true;saveProgress();updateProgress();}
-}
-
-function retakeQuiz(){quizAnswers=new Array(MODULES[currentModule].quiz.length).fill(-1);quizSubmitted=false;buildQuiz(currentModule);document.getElementById('quiz-score-block').classList.remove('visible');}
-function nextModule(){if(currentModule<MODULES.length-1){openModule(currentModule+1);switchLesson(0);}else closeModule();}
-function closeModule(){currentModule=-1;document.getElementById('module-nav').style.display='block';document.getElementById('course-panel').style.display='none';updateProgress();window.scrollTo(0,0);}
-
-// ── CERTIFICATE ───────────────────────────────────
-function openCertificate(){
- const name=document.getElementById('cert-name-input').value.trim();
- if(!name){const inp=document.getElementById('cert-name-input');inp.focus();inp.style.borderColor='#C0392B';setTimeout(()=>inp.style.borderColor='',1400);return;}
- try{localStorage.setItem('jrs_name',name);}catch(e){}
- drawCertificate(name);document.getElementById('cert-overlay').classList.add('visible');document.body.style.overflow='hidden';
-}
-function closeCertificate(){document.getElementById('cert-overlay').classList.remove('visible');document.body.style.overflow='';}
-function drawCertificate(name){
- const canvas=document.getElementById('cert-canvas'),ctx=canvas.getContext('2d'),W=1100,H=778;
- canvas.width=W;canvas.height=H;
- ctx.fillStyle='#0C0B09';ctx.fillRect(0,0,W,H);
- const B=30;ctx.strokeStyle='#8A6E2A';ctx.lineWidth=1;ctx.strokeRect(B,B,W-B*2,H-B*2);
- ctx.fillStyle='#8A6E2A';ctx.fillRect(B,B,W-B*2,2);
- ctx.fillStyle='#6A6A6A';ctx.font='400 11px "JetBrains Mono",monospace';ctx.textAlign='center';ctx.fillText('COMPLETION RECORD',W/2,100);
- ctx.fillStyle='#8A8A8A';ctx.font='italic 16px "Bodoni Moda","Georgia",serif';ctx.fillText('This acknowledges that',W/2,148);
- const nfs=name.length>32?46:name.length>22?52:58;
- ctx.fillStyle='#E8E0CC';ctx.font=`400 ${nfs}px "Bodoni Moda","Georgia",serif`;ctx.fillText(name,W/2,222);
- ctx.fillStyle='#8A8A8A';ctx.font='italic 16px "Bodoni Moda","Georgia",serif';ctx.fillText('has completed',W/2,270);
- ctx.fillStyle='#BE9447';ctx.font='500 21px "Inter","Helvetica Neue",sans-serif';ctx.fillText('JRS\u2122 DOCUMENTATION REVIEW FOUNDATIONS',W/2,308);
- ctx.fillStyle='#666';ctx.font='400 12px "Inter",sans-serif';ctx.fillText('DOCUMENTATION REVIEW LEARNING PROGRAM \u00B7 v1.0',W/2,332);
- ctx.fillStyle='#505050';ctx.font='400 11px "Inter",sans-serif';ctx.fillText('Educational material. Does not constitute professional certification, legal qualification, or compliance accreditation.',W/2,420);
- ctx.fillStyle='#6A6A6A';ctx.font='400 12px "Inter",sans-serif';ctx.fillText('Completed '+new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'}),W/2,450);
- ctx.fillStyle='#8A6E2A';ctx.font='400 20px "Bodoni Moda","Georgia",serif';ctx.fillText('JRS\u2122',W/2,570);
- ctx.fillStyle='#555';ctx.font='400 9px "JetBrains Mono",monospace';ctx.fillText('JUSTIFICATION REVIEW STANDARD',W/2,588);
- ctx.fillStyle='#3A3A3A';ctx.font='400 10.5px "Inter",sans-serif';ctx.fillText('JRS\u2122 is a trademark of Phillip Wikes. \u00A92026 Phillip Wikes',W/2,700);
- ctx.fillStyle='#8A6E2A';ctx.fillRect(B,H-B-2,W-B*2,1);
-}
-function downloadCertificate(){const name=document.getElementById('cert-name-input').value.trim().replace(/\s+/g,'-')||'JRS-Completion';const a=document.createElement('a');a.download='JRS-Completion-Record-'+name+'.png';a.href=document.getElementById('cert-canvas').toDataURL('image/png');a.click();}
-function printCertificate(){const d=document.getElementById('cert-canvas').toDataURL('image/png'),w=window.open('','_blank');w.document.write(`<!DOCTYPE html><html><head><title>JRS Completion Record</title><style>*{margin:0;padding:0}body{background:#fff}img{max-width:100%;display:block}</style></head><body><img src="${d}" onload="window.print();window.close()"></body></html>`);w.document.close();}
-
-updateProgress();
+// The training and certificate subsystem that lived here was removed on
+// 2026-08-14. It referenced twenty element IDs that do not exist on this page:
+// module-nav, course-panel, quiz-section, cert-canvas and the rest. Its markup
+// lives on training.html; only the JavaScript had been copied here.
+//
+// updateProgress() ran on load against a DOM that had none of those elements,
+// which is what threw 'Cannot read properties of null (reading style)' on every
+// visit. Twelve functions and the jrs_completed localStorage state they alone
+// used went with it; neither is referenced anywhere else in this file.
 </script>
 
 <script>
