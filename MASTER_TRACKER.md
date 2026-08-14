@@ -3569,3 +3569,31 @@ The audit said to **build** a `/reference/` hub. **One already existed** and lin
 **P3 first**, because its deadline has already passed and every day makes the message worse. Then P1, P2, P4.
 
 ---
+
+## RUN 2026-08-14T23:55Z: Two defects the owner caught that I had missed.
+
+### 1. Duplicated navigation item
+
+`index.html` lines 882 and 883 carried **two adjacent nav items, both linking to `research.html` with identical text**, one accented and one plain. Removed the plain one. **12 nav items, no duplicates.**
+
+**My audit missed this.** The duplicate-content check compared `<title>` values across files and found none, which is a between-page check. **A repeated item inside one page's nav is a within-page duplicate and nothing was looking for it.** The check now exists as a one-off; it is not yet in the guard.
+
+### 2. The deadline is 15 August, and it is a Saturday
+
+The send date is **15 August**, not 14. `FALLBACK_DATE` in `api/contributor.js` is the single source, so one edit moved the confirmation page and all 36 messages together.
+
+**15 August 2026 is a Saturday.** Carrying the previous "Friday" prefix forward would have put a wrong weekday in front of 36 reviewers. Verified with `datetime` rather than assumed.
+
+The outreach suite asserts the literal date string on purpose, so it moved with it. **36 of 36 messages carry the new date, 0 carry the old.** Live confirmation endpoint returns `Saturday, 15 August 2026`.
+
+### 3. A comment that had become false
+
+`api/contributor.js` still read **"comparison-arm reviewers are NOT in this roster and must not be added."** They were added on 2026-08-14 when the study closed. A future editor following that comment would have removed 20 people.
+
+Rewritten as superseded, **keeping the reasoning rather than deleting it**, because it is the constraint that applies if a blind study is ever run again.
+
+### Verification
+
+Guard **12 of 12**, outreach **18 of 18**, `index.html` divs balanced at 3406. Both fixes confirmed live.
+
+---
