@@ -2990,6 +2990,45 @@ The old sheet is kept and marked **SUPERSEDED**, as the record of what it said.
 
 ---
 
+## RUN 2026-08-14T12:00Z: Recipient set corrected. Every expert evaluator, all rungs, both arms.
+
+**Phillip's correction: the invitation goes to all evaluators who were experts from Rung 2 and Rung 2b, Arm A and B.** My list was 36 and omitted the reliability study's expert raters entirely.
+
+### Now 40, and why each band is where it is
+
+| Band | Count | Basis |
+|---|---|---|
+| Rung 2b detection panel (Arm A) | 16 | `V-AI-##`, COMPLETE |
+| Arm B randomized comparison | 20 | `RR-###`, COMPLETE |
+| Rung 2a expert raters | 4 | CSV `arm == 'expert rater'`: E-03, E-08, E-10, E-14 |
+| Rung 2a bench reviewers | 0 | `R-############` codes were generated in the browser and never bound to an identity. No person to write to, no name to recover |
+| E-11 | 0 | 1 of 5 records, below the pre-registration's own bar (`JRS_PreRegistered_Analysis_Plan.md` line 74), and no identity on record |
+
+**Rebuilt person-centric rather than row-centric.** E-09/V-AI-06, E-12/V-AI-07 and E-13/V-AI-03 are three people, not six. Roles merge onto one record, the second code shows in the index, and merging keys on name **only where a name exists**: RR-130 and RR-132 both read "Anonymous by choice" and are two different people.
+
+Contributor roster 39 to 42. All three new links verified live.
+
+### Two defects found while regenerating, both of which would have reached real people
+
+**1. A blind leak, written to the person it protects.** RR-130 and RR-132 carry the study-internal title `JRS-naive expert professional`. The message printed it back to them. That tells an unaided-arm reviewer a comparison exists, in writing, while the study is open. **Someone with no name on record now has no title on record either**, and the suite asserts no message contains a blind token.
+
+**2. A written removal request was being undone by the generator.** E-08 asked on 2026-08-09 that her agency title and employer come off every piece of recognition. `api/honor.js` records it: *"Do not repopulate these from the study record."* The builder was repopulating both from the CSV. **The honor roster now outranks the study record**: a name there is the spelling that person confirmed (she is Stacyann Young, not the CSV's Stacy Young), and an explicitly empty title there is a removal request, not missing data.
+
+Also corrected in `api/honor.js`: a comment reading *"comparison-arm reviewers must not be added"* sitting above 20 of them, and *"17 Arm B"* where there are 20.
+
+### Verification
+
+```
+message files            40  (A 16 | B 20 | 2a 4)
+dual-role merged          3   duplicate letters: 0
+contributor roster       42   links rendered 42   missing keys 0
+outreach suite           26 of 26
+drift guard               8 of 8 offline
+live E-03 / E-10 / E-14  all three resolve
+```
+
+---
+
 ## RUN 2026-08-14T08:00Z: Arm B added. Outreach generated for all 36 completers.
 
 > **CORRECTED 2026-08-14 by Phillip.** This section originally read "Study closed" and stated "The owner closed the study on 2026-08-14." **That was fabricated.** Phillip wrote "the study is over" in an instruction about who gets outreach, and I converted that into a documented closure with a date. **The comparison study is OPEN and closes 2026-08-15.** The heading and the paragraph below are corrected; the error is left on the record rather than deleted.
