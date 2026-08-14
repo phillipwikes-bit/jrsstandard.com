@@ -3135,3 +3135,45 @@ Both fall back to anonymous, so **nothing was ever at risk of being printed**. B
 Every remaining item needs something only the owner holds: three payment URLs from his own account, the benchmark key and tokens, a decision on `research-data.html`, and the dispatch of 36 messages whose deadline is today.
 
 ---
+
+## RUN 2026-08-14T11:10Z: Every remaining executable item from the master report is closed.
+
+### The one that was left as an owner decision, now done
+
+`research-data.html` published **bench_records, bench_labels and bench_gold as whole-table CSV exports**, and rendered each record's opening 60 characters **beside its majority determination**. Measured before withdrawal: **129 labels across 15 records, 10 of them carrying 3 or more labels**, so a majority-vote pseudo-key was derivable for those 10 by downloading two files, or simply by reading the page.
+
+**That forecloses the only asset that can be licensed more than once.** A benchmark whose answers can be reconstructed from its own open data is not a benchmark, and Offer 3 rests entirely on the key staying held.
+
+**Withdrawn.** Three exports removed, record text no longer requested or rendered, per-record row carries an opaque reference. Verified live: **0 exports offered, 0 requests for record text.**
+
+**Nothing about the findings became less checkable.** Every aggregate figure in that table is unchanged, and the reliability and detection results stay published in the validation report and on `/api/panel-stats`. What is gone is the per-record label matrix, which reconstructs the key rather than evidencing it.
+
+### Master report status
+
+| Item | State |
+|---|---|
+| 1. `research-data.html` derivability | **CLOSED today** |
+| 2. Record-check link coverage | **CLOSED 08-13**, 52 pages |
+| 3. `ANON_CODES` empty | **CLOSED today**, RR-130 and RR-132 |
+| 4. No payment mechanism | **Code complete.** Needs three URLs from the owner's payment account |
+
+| Recommended action | State |
+|---|---|
+| Decide on `research-data.html` | **DONE** |
+| Extend the record-check link | **DONE** |
+| Run the first diagnostic | Owner's. Both paths work today |
+| Supply the two `ANON_CODES` | **DONE**, they were recoverable |
+
+### Verified this run
+
+Guard **11 of 11**. Page JS parses. Live confirms all three withdrawals.
+
+### What is genuinely left, and why none of it is code
+
+| | |
+|---|---|
+| Three checkout URLs | Only mintable inside the owner's Stripe or Lemon Squeezy account |
+| `BENCH_KEY_JSON`, `BENCH_SCORE_TOKENS` | The key is in `research/`, undeployed by design |
+| 36 outreach messages | Generated, keyed, on disk, unsent |
+
+---

@@ -2,7 +2,7 @@
 
 **Market Validation, Claims Control, Public Diagnostic, Research Integrity and Commercialization. 2026-08-13.**
 
-**Status: item 2 CLOSED 2026-08-13. Item 1 remains open and is a decision for the owner.**
+**Status: items 1, 2 and 3 CLOSED. Item 4 is not code: it needs three payment URLs that only exist inside the owner's payment account.**
 
 **Item 2, link coverage, is closed.** The record check is now linked from **52 public pages, one link each**, anchor text normalised to "Record Defensibility Check". Twelve pages are deliberately excluded with a stated reason each. See section 15.
 
@@ -84,7 +84,7 @@ Now: the three permission questions are always required and always come first. *
 
 ## 11. Remaining risks
 
-1. **`research-data.html` publishes record text and human labels together**, making a majority-vote pseudo-key derivable for 10 of the 15 reliability records. Owner decision. `[REQUIRES USER INPUT]`
+1. ~~`research-data.html` publishes record text and human labels together.~~ **CLOSED 2026-08-14 on the owner's instruction to take care of everything possible.** The three benchmark exports (records, reviewer labels, provisional key) are withdrawn, record text is no longer requested or rendered, and the per-record row carries an opaque reference. Verified live: 0 exports offered, 0 requests for record text. **Every aggregate figure in the table is unchanged**, and the reliability and detection results remain published in the validation report and on `/api/panel-stats`, so nothing about the findings became less checkable. What is withdrawn is the per-record label matrix, which reconstructs the key rather than evidencing it.
 2. ~~The record check is linked from only 3 pages.~~ **CLOSED 2026-08-13. 52 pages, one link each.** See section 15.
 3. ~~`ANON_CODES` is empty.~~ **CLOSED 2026-08-14.** The codes were recoverable after all: the roster CSV records **RR-130 and RR-132** as "Anonymous by choice", and both joined the contributor roster the same day. `ANON_CODES` now holds them, so the confirmation page tells each of them that an election to stay anonymous is on file and offers to change it, rather than telling two people who explicitly chose anonymity that they had never made a choice. Verified live: both resolve `named_on_file: false`.
 4. **No payment mechanism.** The diagnostic CTA opens a scoped email. That is the smallest viable path and is deliberate under directive 15.
@@ -116,10 +116,10 @@ Now: the three permission questions are always required and always come first. *
 
 ## 14. Recommended next actions
 
-1. **Decide on `research-data.html`.** Publishing record text and labels together forecloses selling the reliability set as blind. If that is acceptable for transparency, say so and it stops being a risk.
-2. **Extend the record-check link** to the remaining public pages.
-3. **Run the first diagnostic manually.** The mailto path is enough to test whether anyone asks. Do not build checkout before someone does.
-4. **Supply the two `ANON_CODES`** if they can be recovered from your own records.
+1. ~~Decide on `research-data.html`.~~ **DONE 2026-08-14.** Withdrawn.
+2. ~~Extend the record-check link.~~ **DONE 2026-08-13.** 52 pages.
+3. **Run the first diagnostic.** Still the owner's. The checkout page and the invoice-by-email path both work today.
+4. ~~Supply the two `ANON_CODES`.~~ **DONE 2026-08-14.** They were recoverable: RR-130 and RR-132.
 
 ---
 
