@@ -35,9 +35,11 @@ export const config = { runtime: 'edge' };
 // only one. Nothing in the copy anywhere may describe this as one recipient a
 // year or imply exclusivity.
 //
-// Comparison-arm reviewers (RR-### codes) remain NOT eligible and must not be
-// added, because that arm is blind and a page naming the standard would break
-// it for anyone still reviewing.
+// SUPERSEDED. This block used to read "Comparison-arm reviewers (RR-### codes)
+// remain NOT eligible and must not be added." Twenty RR entries sit below it, so
+// an editor following the comment would have deleted twenty people. Comparison-arm
+// reviewers ARE on this roster; what protects the blind is the NEUTRAL citation
+// wording under study:'records-review', not their absence. Corrected 2026-08-14.
 
 const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 
@@ -61,18 +63,18 @@ const HONOR_YEAR = '2026';
 //                            Arm A reviewers applied the standard knowingly and
 //                            nothing about it is hidden from them.
 //
-//   study: 'records-review'  The 17 Arm B completers of the randomized
+//   study: 'records-review'  The 20 Arm B completers of the randomized
 //                            comparison. Their citations are DELIBERATELY
 //                            NEUTRAL and must stay that way: no mention of JRS,
 //                            of the five conditions, of reconstructability, or
 //                            of the fact that a comparison is running. That arm
-//                            is blind, RR-108 has not finished, and a page
-//                            naming the standard would break the blind for that
-//                            person. This matches the wording already used on
-//                            the twelve Arm B certificates issued from
-//                            research/build_certificate_armb.py. When RR-108
-//                            completes or the study closes, these may be
-//                            revised; until then they do not change.
+//                            is blind and the study is OPEN until 2026-08-15, so
+//                            a page naming the standard would still break it for
+//                            anyone reviewing. This matches the wording already
+//                            used on the Arm B certificates issued from
+//                            research/build_certificate_armb.py. These may be
+//                            revised after the study closes; until then they do
+//                            not change.
 //
 // RR-130 and RR-132 completed anonymously by choice. Their entries carry the
 // code and the citation with no name, so the acceptance page asks them how they
@@ -90,6 +92,11 @@ const ROSTER = {
   'q7m2vd9xk4': {
     code: 'H-2026-01',
     study: 'public-records',
+    // Bound to her study code 2026-08-14. Every other entry carries a
+    // `participant`, and tooling that joins the honor roster to the study record
+    // keys on it, so without this her row read as "not on the honor roster" in
+    // the evaluator outreach index. She is E-08 in the reliability study.
+    participant: 'E-08',
     first: 'Stacyann',
     name: 'Stacyann Young',
     // TITLE AND ORGANIZATION ARE DELIBERATELY EMPTY, at her written request of
