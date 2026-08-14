@@ -26,7 +26,7 @@
 
 - **Paths:** `reference/ai-assisted-record-failure-modes/`, `ai-verification-controls/`, `decision-context-loss/`, `deployment-models/`, `documentation-risk-tiers/`, `escalation-triggers/`, `field-conditions/`, `implementation-maturity-levels/`, `later-review-failure-cascades/`, `missing-chronology/`, `record-survivability/`, `reviewer-responsibility-boundaries/`, `reviewer-worksheet/`, `second-line-review-model/`, `traveler-test/`, `unsupported-generalization/`
 - **Effect:** they are crawlable via `sitemap.xml` but carry almost no internal link equity, so they will not rank for the terms they were written to own.
-- **Remediation:** build a `/reference/` hub page linking all 16, and link that hub from the footer alongside Record Check and Engagement Terms. **Not done in this pass**: this is an information-architecture decision, not a defect.
+- **CORRECTION, 2026-08-14.** This finding's remedy was wrong. **A hub already exists** at `reference/index.html` and links all sixteen pages; the check that produced this finding used a relative-path regex and missed absolute `href="/reference/<slug>"` links. The real gap was that only `index.html` linked the hub. **CLOSED: the hub is now linked from 38 page footers.**
 
 ### 1.3 Indexing
 
@@ -102,7 +102,7 @@ All 21 are study surfaces, private opaque slugs, or admin consoles. **`org-pilot
 
 ### 2.4 Known pre-existing defect, not introduced and not fixed
 
-**`jrsstandard.html`** throws `Cannot read properties of null (reading 'style')` on load, from a training script referencing `progress-fill`, `quiz-section`, `module-nav` and `course-panel`, none of which exist on that page. It also carries a 2-div imbalance. **Both pre-date the current work** and were confirmed by comparing against the pre-edit file. Fixing it means repairing an unrelated training UI and was out of scope for this pass.
+**CLOSED 2026-08-14, root cause found.** `jrsstandard.html` threw `Cannot read properties of null (reading 'style')` on load. **Root cause: an entire training and certificate subsystem in JavaScript whose markup lives on `training.html` and was never present here.** Twenty element IDs referenced by `getElementById` did not exist, and `updateProgress()` ran on load against that empty DOM. Twelve functions and the `jrs_completed` state they alone used were removed, **8,481 bytes**, after confirming no external call site. **The 2-div imbalance was separate**: `section-library` and its container never closed, so every later `page-section` nested one level deeper. Both fixed; the page now loads with **zero errors**, and markup balances at 3106.
 
 ---
 
@@ -175,13 +175,13 @@ All four verified live after deploy.
 
 **`BENCH_KEY_JSON` and `BENCH_SCORE_TOKENS`** in the server environment. Until then `/api/bench-score` correctly refuses rather than scoring a paying licensee against substitute data.
 
-### P5: optional, information architecture
+### P5: CLOSED 2026-08-14
 
-**Link the 16 `reference/` pages from a hub.** They are crawlable but carry almost no internal link equity.
+The hub already existed and links all sixteen. It is now linked from **38 page footers** so it pools equity site-wide.
 
-### P6: pre-existing, unrelated
+### P6: CLOSED 2026-08-14
 
-**Repair the `jrsstandard.html` null-reference error** and its 2-div imbalance. Neither affects the commercial path.
+Root cause found and fixed. See 2.4.
 
 ---
 
@@ -190,6 +190,6 @@ All four verified live after deploy.
 - **No load, performance or accessibility audit** was run. Renders were checked at 390px and 1280px for overflow and console errors only.
 - **No penetration testing.** Key isolation was verified by inspecting code paths and live responses, not by attacking the endpoints.
 - **RLS policy configuration was not audited** beyond confirming which tables return rows through the public anon key.
-- **The `jrsstandard.html` defect was confirmed but not diagnosed to root cause.**
+- ~~The `jrsstandard.html` defect was confirmed but not diagnosed to root cause.~~ **Diagnosed and fixed 2026-08-14. See 2.4.**
 
 *Produced 2026-08-14. Every command underlying these findings is reproducible from the repository.*
