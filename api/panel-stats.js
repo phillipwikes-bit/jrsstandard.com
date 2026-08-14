@@ -138,21 +138,70 @@ export default async function handler(req){
   const reviewers = graded + newExperts + bench;
   const completers = completersA + completersB;
 
+  // null, never a substituted constant, when resolution produced nothing.
+  const countriesAll  = geo.resolved > 0 ? geo.countries : null;
+  const continentsAll = geo.resolved > 0 ? geo.continents : null;
+  const registered    = armA.length + armB.length;
+
   return json({
     generated_at: new Date().toISOString(),
 
-    // The four figures the public pages render.
+    // ---------------------------------------------------------------------
+    // SCOPED KEYS. Added 2026-08-14, and every published figure should use
+    // these rather than the aliases below.
+    //
+    // WHY. `countries` meant "countries of all completers" in one paragraph
+    // and "countries of the detection panel" in another, and a reader could
+    // not tell which from the sentence. That ambiguity is the whole of the
+    // top-versus-bottom mismatch documented in
+    // research/FIGURE_DRIFT_ROOT_CAUSE.md: research.html said 36 completers
+    // across 16 countries at the top and 16 completers across 11 countries
+    // further down, both true, neither naming its population.
+    //
+    // No new figure is computed here. Every value below already existed under
+    // a less precise name. The `_scope` strings travel with the numbers so a
+    // page can print the denominator instead of leaving it to be inferred.
+    // ---------------------------------------------------------------------
+    completers_all: completers,
+    completers_detection: completersA,
+    completers_comparison: completersB,
+    countries_all: countriesAll,
+    countries_detection: geoDetection.countries,
+    continents_all: continentsAll,
+    // The manuscript and several public pages state the detection panel's
+    // continent span in prose. It was the one figure of the set with no key, so
+    // it stayed hardcoded. It is the same resolver call already made above.
+    continents_detection: geoDetection.continents,
+    reviewers_all: reviewers,
+    registered_all: registered,
+
+    // The words a page prints next to each figure. Held here so 18 pages
+    // cannot describe the same population 18 slightly different ways.
+    scope_labels: {
+      completers_all: 'all completers, both arms',
+      completers_detection: 'detection panel',
+      completers_comparison: 'comparison study',
+      countries_all: 'all completers',
+      countries_detection: 'detection panel',
+      continents_all: 'all completers',
+      continents_detection: 'detection panel',
+      reviewers_all: 'all three studies',
+      registered_all: 'all three studies'
+    },
+
+    // ---------------------------------------------------------------------
+    // ALIASES. The original key names, kept so nothing breaks mid-migration.
+    // They are the SAME values, not a second computation. Prefer the scoped
+    // names above in any new markup.
+    // ---------------------------------------------------------------------
     reviewers: reviewers,
     completers: completers,
-    // null, never a substituted constant, when resolution produced nothing.
-    countries: geo.resolved > 0 ? geo.countries : null,
-    continents: geo.resolved > 0 ? geo.continents : null,
-
-    // The components, so a figure can be checked without re-deriving it.
+    countries: countriesAll,
+    continents: continentsAll,
     detection_completers: completersA,
     detection_countries: geoDetection.countries,
     comparison_completers: completersB,
-    registered: armA.length + armB.length,
+    registered: registered,
     reliability_raters: rater.length,
     reliability_bench_reviewers: bench,
     reliability_experts_counted: newExperts,

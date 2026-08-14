@@ -77,7 +77,7 @@ h1{font-family:'Bodoni Moda',serif;font-size:32px;font-weight:400;line-height:1.
   <div class="hero">
     <div class="eyebrow">Evidence Development Program</div>
     <h1>Research &amp; Validation</h1>
-    <p class="sub">JRS is in a staged validation program that tests whether structured pre-finalization review can identify Decision Reconstruction Risk, the condition in which a record cannot explain why a consequential decision was made. Three stages have now produced data. As of 5 August 2026, an international panel of 16 independent experts across 11 countries and 5 continents detected unreconstructable records at 83.9% accuracy against a verified key, clearing the threshold set before any data were examined; these figures are provisional until the study closes and are recomputed at that point. Independent AI models apply the standard reproducibly (86.7% cross-vendor agreement on the latest nightly run, range 82.2 to 93.3 percent across 37 runs at the full 15-record set), and independent human reviewers apply it reliably (Gwet's AC1 0.739 experts, 0.624 trained reviewers, interim on 10 records). Detection, reproducibility, and reliability are distinct from real-world validation, which is a later stage, and nothing here is presented as validated until pre-registered thresholds are met. This page registers the program's studies and reports their honest current status.</p>
+    <p class="sub">JRS is in a staged validation program that tests whether structured pre-finalization review can identify Decision Reconstruction Risk, the condition in which a record cannot explain why a consequential decision was made. Three stages have now produced data. The detection panel, <span data-panel="completers_detection">16</span> independent experts across <span data-panel="countries_detection">11</span> countries and <span data-panel="continents_detection">5</span> continents, detected unreconstructable records at 83.9% accuracy against a verified key, clearing the threshold set before any data were examined; these figures are provisional until the study closes and are recomputed at that point. Independent AI models apply the standard reproducibly (86.7% cross-vendor agreement on the latest nightly run, range 82.2 to 93.3 percent across 37 runs at the full 15-record set), and independent human reviewers apply it reliably (Gwet's AC1 0.739 experts, 0.624 trained reviewers, interim on 10 records). Detection, reproducibility, and reliability are distinct from real-world validation, which is a later stage, and nothing here is presented as validated until pre-registered thresholds are met. This page registers the program's studies and reports their honest current status.</p>
   </div>
 
   <!-- EMPIRICAL VALIDATION DASHBOARD.
@@ -90,7 +90,7 @@ h1{font-family:'Bodoni Moda',serif;font-size:32px;font-weight:400;line-height:1.
     <div class="card">
       <div class="card-k">Expert Detection Accuracy</div>
       <div class="card-v" style="color:var(--accent)">83.9%</div>
-      <div class="card-n">Against a verified answer key, read blind. 16 independent experts, 11 countries, 5 continents, 384 determinations. 95% CI 72.7 to 95.1 at participant level. Sensitivity 87.0%, specificity 80.7%. Clears the pre-registered threshold of 70% fixed before any data were seen.</div>
+      <div class="card-n">Against a verified answer key, read blind. <span data-panel="completers_detection">16</span> independent experts on the detection panel, <span data-panel="countries_detection">11</span> countries, <span data-panel="continents_detection">5</span> continents, 384 determinations. 95% CI 72.7 to 95.1 at participant level. Sensitivity 87.0%, specificity 80.7%. Clears the pre-registered threshold of 70% fixed before any data were seen.</div>
     </div>
     <div class="card">
       <div class="card-k">Inter-Rater Reliability</div>
@@ -104,8 +104,8 @@ h1{font-family:'Bodoni Moda',serif;font-size:32px;font-weight:400;line-height:1.
     </div>
     <div class="card">
       <div class="card-k">Reviewer Base</div>
-      <div class="card-v" style="color:var(--accent)"><span data-panel="reviewers">58</span> reviewers</div>
-      <div class="card-n">Have graded at least one record across the three studies, unpaid and in a personal capacity. <span data-panel="completers">36</span> of them completed a full 24-record set, spanning <span data-panel="countries">16</span> countries and <span data-panel="continents">5</span> continents. Counted from the study database on 11 August 2026, not from a mailing list.</div>
+      <div class="card-v" style="color:var(--accent)"><span data-panel="reviewers_all">58</span> reviewers</div>
+      <div class="card-n">Have graded at least one record across the three studies, unpaid and in a personal capacity. <span data-panel="completers_all">36</span> of them (<span data-panel-scope="completers_all">all completers, both arms</span>) completed a full 24-record set, spanning <span data-panel="countries_all">16</span> countries and <span data-panel="continents_all">5</span> continents. Counted from the study database at <span data-panel-generated>11 August 2026</span>, not from a mailing list.</div>
     </div>
   </div>
   <p class="sub" style="font-size:12px;margin-top:10px">Detection, reproducibility and reliability are distinct from real-world validation, which is a later stage. Nothing above is presented as validated until its pre-registered threshold is met, and the two figures that have not met theirs say so.</p>
@@ -141,7 +141,7 @@ h1{font-family:'Bodoni Moda',serif;font-size:32px;font-weight:400;line-height:1.
   <div class="section-label">Validation Maturity</div>
   <div class="cards">
     <div class="card"><div class="card-k">Current Stage</div><div class="card-v">Operational Validation</div><div class="card-n">Early results in (reproducibility and reliability); no claim validated yet.</div></div>
-    <div class="card"><div class="card-k">Evidence Base</div><div class="card-v">Detection Reported</div><div class="card-n">Programme-wide, <span data-panel="reviewers">58</span> international reviewers have graded records across the three studies. Panel detection 83.9% against a verified key (16 independent experts, 11 countries); reproducibility 86.7% on the latest nightly cross-vendor run; reviewer reliability Gwet&#39;s AC1 0.74 experts / 0.62 trained, interim. Not real-world validation.</div></div>
+    <div class="card"><div class="card-k">Evidence Base</div><div class="card-v">Detection Reported</div><div class="card-n">Programme-wide, <span data-panel="reviewers_all">58</span> international reviewers have graded records across the three studies. Panel detection 83.9% against a verified key (<span data-panel="completers_detection">16</span> independent experts on the detection panel, <span data-panel="countries_detection">11</span> countries); reproducibility 86.7% on the latest nightly cross-vendor run; reviewer reliability Gwet&#39;s AC1 0.74 experts / 0.62 trained, interim. Not real-world validation.</div></div>
     <div class="card"><div class="card-k">Condition Maturity</div><div class="card-v">Experimental</div><div class="card-n">All five conditions. See the <a href="codebook.html">Codebook</a>.</div></div>
     <div class="card"><div class="card-k">Readiness Scores</div><div class="card-v">Not Established</div><div class="card-n">Pending accuracy-benchmark data and larger samples.</div></div>
   </div>
@@ -157,7 +157,7 @@ h1{font-family:'Bodoni Moda',serif;font-size:32px;font-weight:400;line-height:1.
   <div class="study"><div class="study-top"><div><span class="study-id">Study 009</span> &middot; <span class="study-title">Organizational-Psychology Readiness</span></div><span class="badge b-collect">Dataset ready</span></div><div class="study-desc">Per-condition reliability and agreement data (10 records, multiple raters, all five conditions scored) have been assembled and exported for independent organizational-psychology review of construct validity. Awaiting an organizational-psychology reviewer.</div></div>
   <div class="study"><div class="study-top"><div><span class="study-id">Study 010</span> &middot; <span class="study-title">Criterion Validity (real-outcome)</span></div><span class="badge b-collect">Collecting</span></div><div class="study-desc">De-identified public determinations are paired with their documented real-world outcomes (upheld, overturned, challenged) to test whether JRS reads correspond to results when a record is contested. Cases are accruing across HR, public-records, and related domains in small batches. No results are reported until the sample is adequate.</div></div>
   <div class="study"><div class="study-top"><div><span class="study-id">Study 012</span> &middot; <span class="study-title">Randomized Comparison: structured review versus unaided judgment</span></div><span class="badge b-collect">Collecting</span></div><div class="study-desc">A separate study, with its own participants and its own recruitment, testing whether applying the five conditions improves detection relative to unaided professional judgment on the same 24-record corpus. Independent experts with no prior exposure to the method are randomly assigned by a deterministic hash of their participant code, before they judge any record, either to the five conditions or to a single general question about adequacy of support. Participants are blind to the two-condition design and are debriefed when the study closes. <b style="color:var(--text)">Data collection is still open and no result is reported.</b> It will be reported separately and in full when it closes, whatever the outcome. This study asks a different question from Study 011 and neither result substitutes for the other.</div></div>
-  <div class="study"><div class="study-top"><div><span class="study-id">Study 011</span> &middot; <span class="study-title">AI-Assisted Records Detection</span></div><span class="badge b-collect">Result reported</span></div><div class="study-desc">Whether JRS distinguishes AI-generated records whose conclusions are grounded in their source from records that read convincingly but are not, judged blind by independent reviewers against a held-out key. Constructed stimuli with known ground truth. <b style="color:var(--text)">Sixteen reviewers across 11 countries and 5 continents have completed the full 24-record set, producing 384 graded reads. Panel detection accuracy against the verified key is 83.9% (95% confidence interval 72.7 to 95.1 at participant level; sensitivity 87.0%, specificity 80.7%), clearing the pre-registered threshold on both criteria.</b> Detection of a known AI documentation risk. Reviewers took part in a personal capacity, unpaid. <b style="color:var(--text)">Figures are current as of 5 August 2026 and remain provisional until the study closes, expected 14 August 2026.</b> Invited reviewers may still complete, which would change the counts and the point estimate. Every figure is recomputed at close. A manuscript reporting this result in full is in preparation.</div></div>
+  <div class="study"><div class="study-top"><div><span class="study-id">Study 011</span> &middot; <span class="study-title">AI-Assisted Records Detection</span></div><span class="badge b-collect">Result reported</span></div><div class="study-desc">Whether JRS distinguishes AI-generated records whose conclusions are grounded in their source from records that read convincingly but are not, judged blind by independent reviewers against a held-out key. Constructed stimuli with known ground truth. <b style="color:var(--text)">The detection panel, <span data-panel="completers_detection">16</span> reviewers across <span data-panel="countries_detection">11</span> countries and <span data-panel="continents_detection">5</span> continents, has completed the full 24-record set, producing 384 graded reads. Panel detection accuracy against the verified key is 83.9% (95% confidence interval 72.7 to 95.1 at participant level; sensitivity 87.0%, specificity 80.7%), clearing the pre-registered threshold on both criteria.</b> Detection of a known AI documentation risk. Reviewers took part in a personal capacity, unpaid. <b style="color:var(--text)">Figures are current as of 5 August 2026 and remain provisional until the study closes, expected 14 August 2026.</b> Invited reviewers may still complete, which would change the counts and the point estimate. Every figure is recomputed at close. A manuscript reporting this result in full is in preparation.</div></div>
 
   <div class="note"><strong style="color:var(--text)">Status legend.</strong> <strong style="color:var(--ready-text)">Active, Collecting, Result reported, Dataset ready</strong> = real data accruing or reported from live participation. This is a validation-phase program; no claim is presented as validated.</div>
 
@@ -219,77 +219,67 @@ h1{font-family:'Bodoni Moda',serif;font-size:32px;font-weight:400;line-height:1.
     <div style="width:100%;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px"><span style="color:var(--accent-dim)">Back the work:</span> <a href="/api/support?c=rtkw&amp;src=footer" style="color:var(--accent);text-decoration:none">The Right to Know Why</a> &middot; <a href="/api/support?c=defend&amp;src=footer" style="color:var(--accent);text-decoration:none">The Decisions You Can Defend</a></div><div class="footer-copy">&#169; 2026 JRS&#8482; &middot; Justification Review Standard &nbsp;&middot;&nbsp; Phillip Wikes, principal &middot; <a href="privacy.html" style="color:inherit">Privacy</a></div>
   </div>
 </footer>
+<!-- JRS PANEL BINDER v2 :: CANONICAL BLOCK. Byte-identical on every page that
+     publishes a panel figure, and scripts/check_zero_drift.py fails the commit
+     if two copies differ. Do not edit one copy; edit all of them together.
+     Background: research/FIGURE_DRIFT_ROOT_CAUSE.md -->
+<style>
+  [data-panel][data-panel-state="stale"]{border-bottom:1px dotted var(--review-text);cursor:help}
+</style>
 <script>
 (function(){
-  var U='https://pjzxkeviouofdseagvpf.supabase.co';
-  var K='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e';
-  var hdr={'apikey':K,'Authorization':'Bearer '+K};
-  var el=document.getElementById('findings');
-  var twEl=document.getElementById('tw-observation');
-  var qEl=document.getElementById('emerging-questions');
-  function esc(t){var d=document.createElement('div');d.textContent=t;return d.innerHTML;}
-
-  // Findings -> Current Findings list + This Week's Observation.
-  fetch(U+'/rest/v1/findings?select=id,headline,body,created_at,evidence_class,observation,supporting_data,research_question,classification&published=eq.true&order=created_at.desc',{headers:hdr})
-   .then(function(r){ if(!r.ok) throw 0; return r.json(); })
-   .then(function(rows){
-     if(!rows||!rows.length){ el.innerHTML='<p class="sub" style="font-size:13px">No findings have been published yet. Findings appear here automatically once studies run.</p>'; return; }
-     el.innerHTML=rows.map(function(fd){
-       var fid=fd.id?('finding.html?id='+encodeURIComponent(fd.id)):'finding.html';
-       return '<div class="study"><div class="study-top"><div><span class="study-id">'+esc(fd.classification||fd.evidence_class||'observational')+'</span></div><span class="badge b-design">'+esc((fd.created_at||'').slice(0,10))+'</span></div><div class="study-title" style="margin-bottom:6px">'+esc(fd.headline||'')+'</div><div class="study-desc">'+esc(fd.body||'')+'</div><div style="margin-top:8px"><a href="'+fid+'" style="font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);text-decoration:none">Discuss this finding &#8594;</a></div></div>';
-     }).join('');
-     var f=rows[0];
-     twEl.innerHTML=
-       '<div style="font-family:\'JetBrains Mono\',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">'+esc(f.classification||'Observation')+' &middot; '+esc((f.created_at||'').slice(0,10))+'</div>'
-      +'<div style="font-family:\'JetBrains Mono\',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px">Observation</div>'
-      +'<div style="font-size:15px;color:var(--text);line-height:1.6;margin-bottom:12px">'+esc(f.observation||f.headline||'')+'</div>'
-      +(f.supporting_data?'<div style="font-family:\'JetBrains Mono\',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px">Supporting Data</div><div style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:12px">'+esc(f.supporting_data)+'</div>':'')
-      +(f.research_question?'<div style="font-family:\'JetBrains Mono\',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px">Research Question</div><div style="font-size:13.5px;color:var(--text);line-height:1.6;margin-bottom:14px">'+esc(f.research_question)+'</div>':'')
-      +'<a href="'+(f.id?('finding.html?id='+encodeURIComponent(f.id)):'finding.html')+'" style="font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#050505;background:var(--accent);padding:9px 16px;text-decoration:none;display:inline-block;font-weight:600">Explore Current Findings &#8594;</a>';
-   })
-   .catch(function(){ el.innerHTML='<p class="sub" style="font-size:13px">No findings have been published yet.</p>'; });
-
-  // Questions Emerging From the Data (registry, with honest fallback list).
-  function renderQ(rows){
-    var seen={}; rows=(rows||[]).filter(function(q){ if(seen[q.question])return false; seen[q.question]=1; return true; });
-    qEl.innerHTML=rows.map(function(q){
-      return '<div class="study"><div class="study-top"><div class="study-title">'+esc(q.question)+'</div><span class="badge '+(q.status==='Research Active'?'b-collect':'b-design')+'">'+esc(q.status||'Open')+'</span></div>'
-        +'<div class="study-desc">'+esc(q.evidence||'')+(q.related_study?' <span style="color:var(--accent-dim)">('+esc(q.related_study)+')</span>':'')+'</div></div>';
-    }).join('');
+  // Every published reviewer figure reads from /api/panel-stats so a sentence
+  // cannot drift from the database. Two rules that were not here before:
+  //
+  //   SCOPE. Keys are scoped (completers_all vs completers_detection). A bare
+  //   `countries` meant two different populations in two paragraphs of the same
+  //   page, which is the whole of the top-versus-bottom mismatch.
+  //
+  //   FALLBACK IS MARKED, NEVER SILENT. The number in the markup is still the
+  //   fallback, because blanking a figure mid-sentence is worse than showing the
+  //   last known one. But a fallback now says so: data-panel-state="stale", a
+  //   dotted underline and a title explaining it. A stale figure wearing a live
+  //   figure's clothes is the defect this whole exercise exists to remove.
+  function mark(el, state, title){
+    el.setAttribute('data-panel-state', state);
+    if (title) el.setAttribute('title', title);
   }
-  var fallbackQ=[
-    {question:'Can reviewers agree a record has a problem while disagreeing about which problem it is?',status:'Collecting Data',related_study:'STUDY-004',evidence:'Multi-reviewer data now collected; substantial inter-rater reliability (AC1 0.74 experts, 0.62 trained reviewers).'},
-    {question:'Why might chronology deficiencies be identified less often than unsupported conclusions?',status:'Collecting Data',related_study:'STUDY-003',evidence:'Per-condition data now collected (108 determinations across 10 records).'},
-    {question:'Do different professions identify different documentation weaknesses?',status:'Collecting Data',related_study:'STUDY-008',evidence:'Role captured at participation; reported as numbers grow.'},
-    {question:'Does repeated exposure improve recognition accuracy?',status:'Collecting Data',related_study:'STUDY-007',evidence:'Requires repeat-participant identification across sessions.'}
-  ];
-  fetch(U+'/rest/v1/research_questions?select=question,status,related_study,evidence&order=sort.asc',{headers:hdr})
-   .then(function(r){ if(!r.ok) throw 0; return r.json(); })
-   .then(function(rows){ renderQ(rows&&rows.length?rows:fallbackQ); })
-   .catch(function(){ renderQ(fallbackQ); });
-})();
-</script>
-<script>
-(function(){
-  // The published reviewer figures read from /api/panel-stats so the sentence
-  // cannot drift from the database again. The numbers in the markup are the
-  // fallback: if the fetch fails, or returns something that is not a positive
-  // number, the page keeps the value it shipped with rather than blanking.
+  function stale(why){
+    var els = document.querySelectorAll('[data-panel]');
+    for (var i = 0; i < els.length; i++) {
+      mark(els[i], 'stale', 'Last known value. The live figure could not be read (' + why + ').');
+    }
+  }
   try {
     fetch('/api/panel-stats')
       .then(function(r){ return r.ok ? r.json() : null; })
       .then(function(d){
-        if (!d) return;
+        if (!d) { stale('endpoint returned an error'); return; }
+        var when = d.generated_at ? new Date(d.generated_at).toLocaleString() : 'just now';
+        var labels = d.scope_labels || {};
         var els = document.querySelectorAll('[data-panel]');
         for (var i = 0; i < els.length; i++) {
-          var v = d[els[i].getAttribute('data-panel')];
-          if (typeof v === 'number' && v > 0) els[i].textContent = v;
+          var k = els[i].getAttribute('data-panel'), v = d[k];
+          if (typeof v === 'number' && v > 0) {
+            els[i].textContent = v;
+            mark(els[i], 'live', 'Read from the study database at ' + when + '. Scope: ' + (labels[k] || k) + '.');
+          } else {
+            mark(els[i], 'stale', 'Last known value. The live figure is not available for ' + k + '.');
+          }
         }
+        var sc = document.querySelectorAll('[data-panel-scope]');
+        for (var j = 0; j < sc.length; j++) {
+          var sk = sc[j].getAttribute('data-panel-scope');
+          if (labels[sk]) sc[j].textContent = labels[sk];
+        }
+        var st = document.querySelectorAll('[data-panel-generated]');
+        for (var m = 0; m < st.length; m++) st[m].textContent = when;
       })
-      .catch(function(){});
-  } catch(e){}
+      .catch(function(){ stale('the request failed'); });
+  } catch(e){ stale('the request could not be started'); }
 })();
 </script>
+<!-- /JRS PANEL BINDER v2 -->
 <script>
 /* JRS LINK-CLICK TELEMETRY. Added 2026-08-13. Token-less, no dependencies.
    Posts to /api/telemetry, which is a real endpoint in this repository. */

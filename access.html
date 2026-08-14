@@ -74,7 +74,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     <!-- Credentials moved below the button on 2026-08-11. They are supporting
          evidence, not a precondition, and at 110px tall they were the single
          largest thing standing between the hook and the ask on a phone. -->
-    <p class="cred">Built by <b>Phillip Wikes</b>, former Lead Civil Rights Officer, Maryland Commission on Civil Rights. <b><span data-panel="reviewers">58</span> international reviewers across three studies</b> have graded records for this work, including <b><span data-panel="completers">36</span> independent experts across <span data-panel="countries">16</span> countries</b> who each completed a full 24-record set.</p>
+    <p class="cred">Built by <b>Phillip Wikes</b>, former Lead Civil Rights Officer, Maryland Commission on Civil Rights. <b><span data-panel="reviewers_all">58</span> international reviewers across three studies</b> have graded records for this work, including <b><span data-panel="completers_all">36</span> independent experts across <span data-panel="countries_all">16</span> countries</b> who each completed a full 24-record set.</p>
 
     <p class="fine" id="cta-fine">Your answers are anonymous. Contact information is only requested at the end if you choose to receive a LinkedIn Peer Reviewer Recommendation or Certificate. See the <a href="privacy.html">Privacy Policy</a>.</p>
   </div>
@@ -84,146 +84,67 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
   <div class="footer-copy">&#169; 2026 JRS&#8482; &middot; Justification Review Standard &nbsp;&middot;&nbsp; Phillip Wikes, principal &middot; <a href="privacy.html" style="color:inherit">Privacy</a> &nbsp;&middot;&nbsp; <a href="check.html" style="color:inherit">Record Defensibility Check</a></div>
 </footer>
 
+<!-- JRS PANEL BINDER v2 :: CANONICAL BLOCK. Byte-identical on every page that
+     publishes a panel figure, and scripts/check_zero_drift.py fails the commit
+     if two copies differ. Do not edit one copy; edit all of them together.
+     Background: research/FIGURE_DRIFT_ROOT_CAUSE.md -->
+<style>
+  [data-panel][data-panel-state="stale"]{border-bottom:1px dotted var(--review-text);cursor:help}
+</style>
 <script>
 (function(){
-  function qp(k){ try { return (new URLSearchParams(location.search)).get(k) || ''; } catch(e){ return ''; } }
-  function tag(s){ return String(s||'').toLowerCase().replace(/[^a-z0-9_-]/g,'').slice(0,40); }
-
-  var editionRaw = qp('e');
-  var campaignRaw = qp('c');
-  var src = tag(qp('src'));
-
-  // The Investigator Field Guides are open access as of 2026-08-11. Any ?e=
-  // link still in circulation, in an email footer or a signature, lands here
-  // and is sent straight to the file instead of to a form. /api/dl counts the
-  // download and its country, so the geography of guide readership survives
-  // the change intact.
-  if (editionRaw) {
-    location.replace('/api/dl?e=' + encodeURIComponent(editionRaw) + (src ? '&src=' + encodeURIComponent(src) : ''));
-    return;
+  // Every published reviewer figure reads from /api/panel-stats so a sentence
+  // cannot drift from the database. Two rules that were not here before:
+  //
+  //   SCOPE. Keys are scoped (completers_all vs completers_detection). A bare
+  //   `countries` meant two different populations in two paragraphs of the same
+  //   page, which is the whole of the top-versus-bottom mismatch.
+  //
+  //   FALLBACK IS MARKED, NEVER SILENT. The number in the markup is still the
+  //   fallback, because blanking a figure mid-sentence is worse than showing the
+  //   last known one. But a fallback now says so: data-panel-state="stale", a
+  //   dotted underline and a title explaining it. A stale figure wearing a live
+  //   figure's clothes is the defect this whole exercise exists to remove.
+  function mark(el, state, title){
+    el.setAttribute('data-panel-state', state);
+    if (title) el.setAttribute('title', title);
   }
-
-  // Nothing to show without a campaign. Send them to the guides.
-  if (!campaignRaw) { location.replace('investigator-guides.html'); return; }
-
-  var CAMPAIGN_LABEL = {
-    rtkw:'The Right to Know Why',
-    rights:'The Right to Know Why',
-    righttoknowwhy:'The Right to Know Why',
-    defend:'The Decisions You Can Defend',
-    decisions:'The Decisions You Can Defend',
-    decisionsyoucandefend:'The Decisions You Can Defend'
-  };
-  var cKey  = String(campaignRaw||'').toLowerCase().replace(/[^a-z]/g,'');
-  var cname = CAMPAIGN_LABEL[cKey] || 'the JRS initiatives';
-
-  document.title = 'Pressure-test the standard \u00b7 JRS';
-  document.getElementById('eyebrow').textContent = 'Your support is recorded';
-  document.getElementById('headline').textContent = 'Now pressure-test it';
-  document.getElementById('lede').innerHTML = 'Your entry against <b style="color:var(--text)">' + cname + '</b> is recorded as an '
-    + 'individual practitioner, never on behalf of your employer, and your name is not published. '
-    + 'The next thing the work needs is reviewers, and there is no form between you and the evaluation.';
-  document.getElementById('hook').textContent = 'A decision, a policy, or a principle is only as resilient as the range of people who have '
-    + 'pressure-tested it. That is why this evaluation recruits an internationally and linguistically diverse panel of '
-    + 'reviewers rather than relying on a single jurisdiction.';
-
-  // Attribution has to survive the hop, otherwise every reviewer who arrives
-  // this way is logged as direct traffic and the campaign looks like it sent
-  // nobody. Campaign travels too, so a reviewer can be traced to the initiative
-  // that recruited them.
-  var pass = '';
-  if (src)  pass += '&src=' + encodeURIComponent(src);
-  if (cKey) pass += '&c=' + encodeURIComponent(cKey);
-  var evalLink = document.getElementById('cta-eval');
-  if (evalLink) evalLink.href = '/reviewer/evaluation.html' + (pass ? '?' + pass.slice(1) : '');
-
-  // ENDORSEMENT FALLBACK. /api/support records the endorsement server-side and
-  // marks its redirect with r=1. Arriving without that marker means the reader
-  // reached this screen some other way, a copied URL, a forwarded link, a
-  // bookmark, or a link a platform expanded, and nothing has been recorded for
-  // them yet. The screen says their support is recorded, so it has to be true
-  // for them as well. Fires once per session per campaign.
-  try {
-    if (qp('r') !== '1') {
-      // localStorage, not sessionStorage. sessionStorage is per tab, so the
-      // same person opening the link in a second tab would be counted twice.
-      // This path exists to catch forwarded and copied URLs, which are exactly
-      // the links people open more than once, so it is deduped per browser per
-      // campaign rather than per tab.
-      var ekey = 'jrs-endorsed-' + cKey;
-      var already = false;
-      try { already = localStorage.getItem(ekey) === '1'; } catch(e){}
-      if (!already) {
-        try { localStorage.setItem(ekey, '1'); } catch(e){}
-        fetch('/api/access', {
-          keepalive: true,
-        method: 'POST',
-          headers: { 'Content-Type':'application/json' },
-          body: JSON.stringify({ event:'endorse', campaign: campaignRaw, src: src })
-        }).catch(function(){});
-      }
+  function stale(why){
+    var els = document.querySelectorAll('[data-panel]');
+    for (var i = 0; i < els.length; i++) {
+      mark(els[i], 'stale', 'Last known value. The live figure could not be read (' + why + ').');
     }
-  } catch(e){}
-
-  // Tell the server the screen was opened, so the drop-off between arriving and
-  // reaching the evaluation can be measured. No personal data is sent, and a
-  // failure here never blocks the page.
-  try {
-    var seen = false;
-    try { seen = sessionStorage.getItem('jrs-gate-view') === '1'; } catch(e){}
-    if (!seen) {
-      try { sessionStorage.setItem('jrs-gate-view', '1'); } catch(e){}
-      fetch('/api/access', {
-        keepalive: true,
-        method: 'POST',
-        headers: { 'Content-Type':'application/json' },
-        body: JSON.stringify({ event:'view', mode:'support', edition:'', campaign: campaignRaw, src: src })
-      }).catch(function(){});
-    }
-  } catch(e){}
-
-  // Live reach. People join something that visibly exists, so the count and the
-  // country spread are shown rather than described.
-  fetch('/api/support-stats')
-    .then(function(r){ return r.ok ? r.json() : null; })
-    .then(function(d){
-      if (!d || !d.total) return;
-      var reg = document.getElementById('cta-proof');
-      if (reg) reg.textContent = d.total + ' people have backed the initiatives across ' + d.countries + ' countries.';
-    })
-    .catch(function(){});
-
-  // In-app browsers (LinkedIn, Facebook, Instagram) are the majority of this
-  // page's traffic and handle navigation poorly, so the escape hatch stays.
-  try {
-    if (/(FBAN|FBAV|Instagram|LinkedInApp)/i.test(navigator.userAgent)) {
-      var tip = document.getElementById('app-tip');
-      if (tip) tip.style.display = 'block';
-    }
-  } catch(e){}
-})();
-</script>
-<script>
-(function(){
-  // The published reviewer figures read from /api/panel-stats so the sentence
-  // cannot drift from the database again. The numbers in the markup are the
-  // fallback: if the fetch fails, or returns something that is not a positive
-  // number, the page keeps the value it shipped with rather than blanking.
+  }
   try {
     fetch('/api/panel-stats')
       .then(function(r){ return r.ok ? r.json() : null; })
       .then(function(d){
-        if (!d) return;
+        if (!d) { stale('endpoint returned an error'); return; }
+        var when = d.generated_at ? new Date(d.generated_at).toLocaleString() : 'just now';
+        var labels = d.scope_labels || {};
         var els = document.querySelectorAll('[data-panel]');
         for (var i = 0; i < els.length; i++) {
-          var v = d[els[i].getAttribute('data-panel')];
-          if (typeof v === 'number' && v > 0) els[i].textContent = v;
+          var k = els[i].getAttribute('data-panel'), v = d[k];
+          if (typeof v === 'number' && v > 0) {
+            els[i].textContent = v;
+            mark(els[i], 'live', 'Read from the study database at ' + when + '. Scope: ' + (labels[k] || k) + '.');
+          } else {
+            mark(els[i], 'stale', 'Last known value. The live figure is not available for ' + k + '.');
+          }
         }
+        var sc = document.querySelectorAll('[data-panel-scope]');
+        for (var j = 0; j < sc.length; j++) {
+          var sk = sc[j].getAttribute('data-panel-scope');
+          if (labels[sk]) sc[j].textContent = labels[sk];
+        }
+        var st = document.querySelectorAll('[data-panel-generated]');
+        for (var m = 0; m < st.length; m++) st[m].textContent = when;
       })
-      .catch(function(){});
-  } catch(e){}
+      .catch(function(){ stale('the request failed'); });
+  } catch(e){ stale('the request could not be started'); }
 })();
 </script>
+<!-- /JRS PANEL BINDER v2 -->
 <script>
 /* JRS LINK-CLICK TELEMETRY. Added 2026-08-13. Token-less, no dependencies.
    Posts to /api/telemetry, which is a real endpoint in this repository. */

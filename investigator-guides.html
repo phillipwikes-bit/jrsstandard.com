@@ -83,7 +83,7 @@ h1{font-family:'Bodoni Moda',serif;font-size:33px;font-weight:400;line-height:1.
     <div class="eyebrow">Technical Supplements &middot; Open Reference</div>
     <h1>Investigator Field Guides</h1>
     <p class="sub">A free, operational method for assessing whether an administrative record contains sufficient, traceable support for its conclusions, particularly where AI-assisted drafting has contributed to the record. Three editions, for employment (EEO), fair-housing, and international equality and human-rights investigations, each built around five review conditions and a Record Interrogation Framework a reviewer can apply at intake or before finalization.</p>
-    <p class="cred">Written by <b>Phillip Wikes</b>, former Lead Civil Rights Officer, Maryland Commission on Civil Rights, M.S. Negotiation and Conflict Management. The method behind these guides has been graded record by record by <b><span data-panel="reviewers">58</span> international reviewers across three studies</b>, including an expert panel of <b><span data-panel="completers">36</span> independent experts across <span data-panel="countries">16</span> countries</b>, each completing a full 24-record set.</p>
+    <p class="cred">Written by <b>Phillip Wikes</b>, former Lead Civil Rights Officer, Maryland Commission on Civil Rights, M.S. Negotiation and Conflict Management. The method behind these guides has been graded record by record by <b><span data-panel="reviewers_all">58</span> international reviewers across three studies</b>, including an expert panel of <b><span data-panel="completers_all">36</span> independent experts across <span data-panel="countries_all">16</span> countries</b>, each completing a full 24-record set.</p>
   </div>
 
   <div class="section-label">Download</div>
@@ -175,45 +175,67 @@ h1{font-family:'Bodoni Moda',serif;font-size:33px;font-weight:400;line-height:1.
   } catch(e){}
 })();
 </script>
+<!-- JRS PANEL BINDER v2 :: CANONICAL BLOCK. Byte-identical on every page that
+     publishes a panel figure, and scripts/check_zero_drift.py fails the commit
+     if two copies differ. Do not edit one copy; edit all of them together.
+     Background: research/FIGURE_DRIFT_ROOT_CAUSE.md -->
+<style>
+  [data-panel][data-panel-state="stale"]{border-bottom:1px dotted var(--review-text);cursor:help}
+</style>
 <script>
 (function(){
-  // True one-click open access: the anchor points straight at /api/dl, which
-  // counts the download and 302s to the file. No form stands in front of it.
-  // The panel below is revealed afterwards so the ask follows the gift.
-  var panel = document.getElementById('post-dl');
-  var retry = document.getElementById('pd-retry');
-  document.querySelectorAll('.dl-direct').forEach(function(a){
-    a.addEventListener('click', function(){
-      var ed = a.getAttribute('data-ed') || 'employment';
-      if (retry) retry.href = '/api/dl?e=' + encodeURIComponent(ed) + '&src=guides';
-      if (!panel) return;
-      panel.style.display = 'block';
-      setTimeout(function(){ panel.scrollIntoView({ behavior:'smooth', block:'nearest' }); }, 220);
-    });
-  });
-})();
-</script>
-<script>
-(function(){
-  // The published reviewer figures read from /api/panel-stats so the sentence
-  // cannot drift from the database again. The numbers in the markup are the
-  // fallback: if the fetch fails, or returns something that is not a positive
-  // number, the page keeps the value it shipped with rather than blanking.
+  // Every published reviewer figure reads from /api/panel-stats so a sentence
+  // cannot drift from the database. Two rules that were not here before:
+  //
+  //   SCOPE. Keys are scoped (completers_all vs completers_detection). A bare
+  //   `countries` meant two different populations in two paragraphs of the same
+  //   page, which is the whole of the top-versus-bottom mismatch.
+  //
+  //   FALLBACK IS MARKED, NEVER SILENT. The number in the markup is still the
+  //   fallback, because blanking a figure mid-sentence is worse than showing the
+  //   last known one. But a fallback now says so: data-panel-state="stale", a
+  //   dotted underline and a title explaining it. A stale figure wearing a live
+  //   figure's clothes is the defect this whole exercise exists to remove.
+  function mark(el, state, title){
+    el.setAttribute('data-panel-state', state);
+    if (title) el.setAttribute('title', title);
+  }
+  function stale(why){
+    var els = document.querySelectorAll('[data-panel]');
+    for (var i = 0; i < els.length; i++) {
+      mark(els[i], 'stale', 'Last known value. The live figure could not be read (' + why + ').');
+    }
+  }
   try {
     fetch('/api/panel-stats')
       .then(function(r){ return r.ok ? r.json() : null; })
       .then(function(d){
-        if (!d) return;
+        if (!d) { stale('endpoint returned an error'); return; }
+        var when = d.generated_at ? new Date(d.generated_at).toLocaleString() : 'just now';
+        var labels = d.scope_labels || {};
         var els = document.querySelectorAll('[data-panel]');
         for (var i = 0; i < els.length; i++) {
-          var v = d[els[i].getAttribute('data-panel')];
-          if (typeof v === 'number' && v > 0) els[i].textContent = v;
+          var k = els[i].getAttribute('data-panel'), v = d[k];
+          if (typeof v === 'number' && v > 0) {
+            els[i].textContent = v;
+            mark(els[i], 'live', 'Read from the study database at ' + when + '. Scope: ' + (labels[k] || k) + '.');
+          } else {
+            mark(els[i], 'stale', 'Last known value. The live figure is not available for ' + k + '.');
+          }
         }
+        var sc = document.querySelectorAll('[data-panel-scope]');
+        for (var j = 0; j < sc.length; j++) {
+          var sk = sc[j].getAttribute('data-panel-scope');
+          if (labels[sk]) sc[j].textContent = labels[sk];
+        }
+        var st = document.querySelectorAll('[data-panel-generated]');
+        for (var m = 0; m < st.length; m++) st[m].textContent = when;
       })
-      .catch(function(){});
-  } catch(e){}
+      .catch(function(){ stale('the request failed'); });
+  } catch(e){ stale('the request could not be started'); }
 })();
 </script>
+<!-- /JRS PANEL BINDER v2 -->
 <script>
 /* JRS LINK-CLICK TELEMETRY. Added 2026-08-13. Token-less, no dependencies.
    Posts to /api/telemetry, which is a real endpoint in this repository. */

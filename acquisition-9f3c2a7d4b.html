@@ -99,7 +99,7 @@ footer{border-top:1px solid var(--rule);padding:22px 0 40px}
   <ul>
     <li><span class="d">R1</span><span><b style="color:var(--text)">Reproducibility</b>: do independent AI models from different vendors apply JRS the same way. <b style="color:var(--text)">Reported: 84% cross-vendor agreement across 15 constructed records.</b></span></li>
     <li><span class="d">R2</span><span><b style="color:var(--text)">Reliability</b>: do independent human reviewers reach the same judgment, measured with chance-corrected agreement. <b style="color:var(--text)">Reported: Gwet's AC1 0.74 (experts) and 0.62 (trained reviewers) on 10 records, clearing the pre-registered point floor of 0.61. Interim: intervals are wide and the secondary lower-bound criterion is not yet met.</b></span></li>
-    <li><span class="d">R3</span><span><b style="color:var(--text)">Accuracy</b>: does a read match a held-out, independently verified answer key. <b style="color:var(--text)">Reported: 83.9% panel accuracy across 16 independent experts and 384 graded reads (95% CI 72.7 to 95.1; sensitivity 87.0%, specificity 80.7%), clearing the pre-registered threshold on both criteria. Manuscript in preparation.</b></span></li>
+    <li><span class="d">R3</span><span><b style="color:var(--text)">Accuracy</b>: does a read match a held-out, independently verified answer key. <b style="color:var(--text)">Reported: 83.9% panel accuracy across the <span data-panel="completers_detection">16</span> independent experts of the detection panel and 384 graded reads (95% CI 72.7 to 95.1; sensitivity 87.0%, specificity 80.7%), clearing the pre-registered threshold on both criteria. Manuscript in preparation.</b></span></li>
     <li><span class="d">R4</span><span><b style="color:var(--text)">Outcome association</b>: does the read track what happened when the record was tested. <b style="color:var(--text)">Reported: in an employment-law corpus of 22 adjudicated matters across three jurisdictional systems, records read Ready before the outcome was known were sustained in 6 of 8 resolved cases against 1 of 8 for records read as incomplete (Fisher's exact p = 0.041, odds ratio 21.0).</b> In a public-records corpus of 32 cases the same test is null, because published appellate decisions are selected for contested legal questions rather than for thin files; in that corpus the read instead agreed with independent government auditors in 5 of 5 cases where both assessments existed. Two manuscripts in preparation.</span></li>
     <li><span class="d">R5</span><span><b style="color:var(--text)">Instrument effect</b>, the earliest and least mature signal on this ladder. <b style="color:var(--text)">Observed: on a shared 10-record corpus, 21 reviewers using the five conditions returned an unreconstructable determination on 69.4% of 108 labels (95% CI 60.2 to 77.3), against 6.2% of 16 labels from 3 reviewers working without them (95% CI 1.1 to 28.3). Fisher's exact p = 1.6e-06, a rate ratio of 11.1.</b> Stated precisely because it matters: reviewers were not randomly assigned to a method, the unstructured group is 3 people and 16 labels, and its interval is wide. This is a signal worth a randomized test, not a trial result, and it is not published as one.</span></li>
     <li><span class="d">R4</span><span><b style="color:var(--text)">Criterion validity</b>: do JRS reads correspond to documented real-world outcomes in public cases, scored blind to the outcome. Cases accruing.</span></li>
@@ -113,8 +113,8 @@ footer{border-top:1px solid var(--rule);padding:22px 0 40px}
   <p class="muted">The validation program is carried by a panel of credentialed independent experts recruited across professional networks, not by the founder alone. That independent bench is one of the hardest parts of this asset to copy: it is the source of the reliability and accuracy evidence, and it travels with the sale.</p>
   <p class="muted">Two domain case sets sit alongside the panel and are separately owned research assets: 32 adjudicated public-records determinations, advisory opinions and compliance audits across four document classes and two states, and 22 adjudicated employment and labour matters across three jurisdictional systems. Both are fully cited, both were read blind to outcome, and both are the basis of manuscripts under preparation with the domain leads as first authors.</p>
   <div class="grid2">
-    <div class="card"><div class="card-k">Scale</div><div class="card-b"><span data-panel="registered">48</span> credentialed reviewers registered and <span data-panel="completers">36</span> completed a full 24-record set as of 11 August 2026. The 16 completers on the named detection panel span 11 countries and 5 continents, across AI governance, compliance, internal audit, investigations, law, human resources, and records management. Reviewers take part in a personal capacity, unpaid.</div></div>
-    <div class="card"><div class="card-k">Progress</div><div class="card-b">As of 5 August 2026, 16 independent experts have finished the full 24-record blind read against a held-out answer key that is independently verified 24 of 24, producing 384 graded reads. The study closes on or about 14 August 2026; invited reviewers may still complete, so these counts are provisional and are recomputed at close. A manuscript reporting the result is in preparation.</div></div>
+    <div class="card"><div class="card-k">Scale</div><div class="card-b"><span data-panel="registered_all">48</span> credentialed reviewers registered and <span data-panel="completers_all">36</span> completed a full 24-record set (<span data-panel-scope="completers_all">all completers, both arms</span>) as of <span data-panel-generated>11 August 2026</span>. The <span data-panel="completers_detection">16</span> completers on the named detection panel span <span data-panel="countries_detection">11</span> countries and <span data-panel="continents_detection">5</span> continents, across AI governance, compliance, internal audit, investigations, law, human resources, and records management. Reviewers take part in a personal capacity, unpaid.</div></div>
+    <div class="card"><div class="card-k">Progress</div><div class="card-b">As of <span data-panel-generated>5 August 2026</span>, <span data-panel="completers_detection">16</span> independent experts on the detection panel have finished the full 24-record blind read against a held-out answer key that is independently verified 24 of 24, producing 384 graded reads. The study closes on or about 14 August 2026; invited reviewers may still complete, so these counts are provisional and are recomputed at close. A manuscript reporting the result is in preparation.</div></div>
   </div>
   <div class="note"><b>Acknowledgment is not endorsement.</b> Naming a reviewer reflects participation in the validation study only. Reviewers are credited as independent reviewers, never as endorsers or validators of JRS. Attribution is opt-in, each reviewer approves the exact public wording before it appears, and may withdraw before publication.</div>
 </section>
@@ -197,27 +197,67 @@ footer{border-top:1px solid var(--rule);padding:22px 0 40px}
 <footer><div class="wrap">
   <div class="foot">© 2026 Phillip Wikes · JRS™ &middot; <a href="privacy.html" style="color:inherit">Privacy</a> &nbsp;·&nbsp; Confidential · Prepared for prospective acquirers and licensees · Not for distribution</div>
 </div></footer>
+<!-- JRS PANEL BINDER v2 :: CANONICAL BLOCK. Byte-identical on every page that
+     publishes a panel figure, and scripts/check_zero_drift.py fails the commit
+     if two copies differ. Do not edit one copy; edit all of them together.
+     Background: research/FIGURE_DRIFT_ROOT_CAUSE.md -->
+<style>
+  [data-panel][data-panel-state="stale"]{border-bottom:1px dotted var(--review-text);cursor:help}
+</style>
 <script>
 (function(){
-  // The published reviewer figures read from /api/panel-stats so the sentence
-  // cannot drift from the database again. The numbers in the markup are the
-  // fallback: if the fetch fails, or returns something that is not a positive
-  // number, the page keeps the value it shipped with rather than blanking.
+  // Every published reviewer figure reads from /api/panel-stats so a sentence
+  // cannot drift from the database. Two rules that were not here before:
+  //
+  //   SCOPE. Keys are scoped (completers_all vs completers_detection). A bare
+  //   `countries` meant two different populations in two paragraphs of the same
+  //   page, which is the whole of the top-versus-bottom mismatch.
+  //
+  //   FALLBACK IS MARKED, NEVER SILENT. The number in the markup is still the
+  //   fallback, because blanking a figure mid-sentence is worse than showing the
+  //   last known one. But a fallback now says so: data-panel-state="stale", a
+  //   dotted underline and a title explaining it. A stale figure wearing a live
+  //   figure's clothes is the defect this whole exercise exists to remove.
+  function mark(el, state, title){
+    el.setAttribute('data-panel-state', state);
+    if (title) el.setAttribute('title', title);
+  }
+  function stale(why){
+    var els = document.querySelectorAll('[data-panel]');
+    for (var i = 0; i < els.length; i++) {
+      mark(els[i], 'stale', 'Last known value. The live figure could not be read (' + why + ').');
+    }
+  }
   try {
     fetch('/api/panel-stats')
       .then(function(r){ return r.ok ? r.json() : null; })
       .then(function(d){
-        if (!d) return;
+        if (!d) { stale('endpoint returned an error'); return; }
+        var when = d.generated_at ? new Date(d.generated_at).toLocaleString() : 'just now';
+        var labels = d.scope_labels || {};
         var els = document.querySelectorAll('[data-panel]');
         for (var i = 0; i < els.length; i++) {
-          var v = d[els[i].getAttribute('data-panel')];
-          if (typeof v === 'number' && v > 0) els[i].textContent = v;
+          var k = els[i].getAttribute('data-panel'), v = d[k];
+          if (typeof v === 'number' && v > 0) {
+            els[i].textContent = v;
+            mark(els[i], 'live', 'Read from the study database at ' + when + '. Scope: ' + (labels[k] || k) + '.');
+          } else {
+            mark(els[i], 'stale', 'Last known value. The live figure is not available for ' + k + '.');
+          }
         }
+        var sc = document.querySelectorAll('[data-panel-scope]');
+        for (var j = 0; j < sc.length; j++) {
+          var sk = sc[j].getAttribute('data-panel-scope');
+          if (labels[sk]) sc[j].textContent = labels[sk];
+        }
+        var st = document.querySelectorAll('[data-panel-generated]');
+        for (var m = 0; m < st.length; m++) st[m].textContent = when;
       })
-      .catch(function(){});
-  } catch(e){}
+      .catch(function(){ stale('the request failed'); });
+  } catch(e){ stale('the request could not be started'); }
 })();
 </script>
+<!-- /JRS PANEL BINDER v2 -->
 <script>
 /* JRS LINK-CLICK TELEMETRY. Added 2026-08-13. Token-less, no dependencies.
    Posts to /api/telemetry, which is a real endpoint in this repository. */
