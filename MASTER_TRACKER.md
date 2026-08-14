@@ -3177,3 +3177,50 @@ Guard **11 of 11**. Page JS parses. Live confirms all three withdrawals.
 | 36 outreach messages | Generated, keyed, on disk, unsent |
 
 ---
+
+## RUN 2026-08-14T12:30Z: Free grants stripped. Award only, paid conversion beside it. Honors completed.
+
+### What was being given away
+
+Every one of the 36 completers was offered, free, on confirmation: a **Founding Auditor and Commercial Practice License**, **Commercial Practice Rights** to use the rubrics and field guides in their own client work, and a **12-month Institutional Enterprise Grant**.
+
+**That is the product, given to the largest group of qualified buyers the programme has.** Thirty-six governance and compliance professionals across 16 countries is the customer list, not a promotional audience.
+
+### What it is now
+
+| Confirming unlocks | |
+|---|---|
+| Appointed Expert Award Citation | in their name |
+| Official Panelist Registry ID | verifiable reference |
+| A licence | **no** |
+
+**The message says the boundary out loud**: "Confirming does not grant a licence to use JRS materials in your own work, and I would rather say so here than let you discover it later." Then it routes anyone who wants practice use to the three paid tiers, and names the free seven-point check as the way to judge the method first.
+
+**Prices are parsed from `api/_offer-config.js` at generation time.** Three prices reproduced across 36 files is the worst possible place for a second copy of a fact.
+
+### Honors completed
+
+`RR-113`, `RR-117` and `RR-127` finished after the roster was built on 2026-08-09 and were the only completers without an Honor. Added as **H-2026-35 to 37**, verified live: Priyam Dhamankar, Alexandria Davis, Candid Opris. **All 36 completers now hold one.**
+
+Their citations were written rather than templated. The templated version produced **"A ethics and compliance leader perspective"** and **"A responsible ai and compliance leader perspective"**, which are ungrammatical and describe a job rather than a domain.
+
+### Verification
+
+| Check | Result |
+|---|---|
+| Outreach assertions | **18 of 18**, two of them new |
+| Free-grant strings in any sendable file | **0** |
+| Every message quotes all three tiers | **yes** |
+| Honors covering completers | **36 of 36**, unique codes and keys |
+| Intake tiers | $250 / $500 / $750 |
+| Scout | **17 assertions** |
+| Guard | **12 of 12** |
+| **Adversarial: reintroduce a grant** | **caught in all 36 files** |
+| **Adversarial: drift a price in the config** | **caught in all 36 files** |
+
+### Outstanding
+
+- **36 messages regenerated and unsent.** Deadline today.
+- Three checkout URLs, and `BENCH_KEY_JSON` plus `BENCH_SCORE_TOKENS`. Owner-held.
+
+---

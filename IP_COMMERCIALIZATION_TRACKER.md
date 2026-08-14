@@ -7,8 +7,8 @@ Companion to `IP_COMMERCIALIZATION_AUDIT.md`, which holds the analysis. **This f
 | | |
 |---|---|
 | **Created** | 2026-08-13 |
-| **Last revised** | 2026-08-13 (rev 4) |
-| **Revisions** | 4 |
+| **Last revised** | 2026-08-14 (rev 5) |
+| **Revisions** | 5 |
 | **Packages defined** | 3 |
 | **Packages built** | **0** |
 | **Packages published** | **0** |
@@ -199,6 +199,47 @@ Built 2026-08-13. **These are the things that had to exist before a single offer
 
 ---
 
+## 3g. COMPLETER INCENTIVE: FROM FREE GRANT TO AWARD PLUS PAID CONVERSION (rev 5)
+
+**The outreach was giving the product away to the people most likely to buy it.**
+
+Every one of the 36 completers was offered, on confirmation and at no charge:
+
+- a Founding Auditor and Commercial Practice License
+- Commercial Practice Rights, to use the rubrics and field guides in their own client work
+- an Institutional Enterprise Grant, a 12-month organizational deployment licence
+
+**That is a blanket giveaway of the only thing being sold, to the largest single group of qualified buyers this programme has.** Thirty-six governance and compliance professionals in 16 countries is precisely the customer list.
+
+### What confirming unlocks now
+
+| | |
+|---|---|
+| **Appointed Expert Award Citation** | Issued in their name |
+| **Official Panelist Registry ID** | A verifiable reference |
+| **Anything else** | **Nothing.** No licence, and the message says so plainly |
+
+**The message states the boundary rather than leaving it to be discovered**, then routes anyone who wants to use JRS in practice to the three paid tiers, with the free seven-point check named as the way to evaluate the method first.
+
+### Prices are read, never restated
+
+The three tiers now appear in 36 messages. **They are parsed from `api/_offer-config.js` at generation time.** Three prices copied into 36 files is the worst possible place for a second copy of a fact.
+
+### Honors completed
+
+`RR-113`, `RR-117` and `RR-127` finished after the honor roster was built on 2026-08-09 and were the only completers without one. Added as **H-2026-35 to 37**, verified live. **All 36 completers now hold an Honor.**
+
+### Guarding the pivot
+
+Two assertions were added so the grant language cannot creep back and a price cannot drift:
+
+| Injection | Result |
+|---|---|
+| Reintroduce an Institutional Enterprise Grant | **caught in all 36 files** |
+| Change a price in the config only | **caught in all 36 files** |
+
+---
+
 ## 4. LIVE BASELINE, THE NUMBERS EVERY PACKAGE INHERITS
 
 Read from `/api/panel-stats` and `/api/asset-stats` on 2026-08-13. **Anything published under these packages must reconcile to this table.**
@@ -260,6 +301,7 @@ The case for doing it anyway is narrow and it is the honest one: **the two stron
 
 | # | Date | Change |
 |---|---|---|
+| 5 | 2026-08-14 | **Free promotional grants eliminated.** The outreach had offered all 36 completers a Founding Auditor and Commercial Practice License, Commercial Practice Rights and a 12-month Institutional Enterprise Grant at no charge, which gives the product away to the largest group of qualified buyers the programme has. Confirming now unlocks the Appointed Expert Award Citation and Official Panelist Registry ID only, the message states that boundary plainly, and anyone wanting practice use is routed to the $250 / $500 / $750 tiers. Prices parsed from `api/_offer-config.js`, never restated. Honors completed at H-2026-35 to 37 so all 36 completers hold one. New section 3g. Two regression assertions added and adversarially confirmed. |
 | 4 | 2026-08-13 | **Packages moved to LIVE.** Prices fixed at $250 / $500 / $750 from one config; buy path, checkout telemetry and benchmark scoring endpoint written and deployed. New sections 3e and 3f. **Checkout URLs deliberately left empty**: they can only be minted in the owner's payment account, and a plausible-looking one would be a fabricated payment destination, so `/api/checkout` fails safe to an invoice path instead of guessing. `bench-score` refuses to score without the real key rather than falling back to synthetic or unrelated tables. **Revenue still $0 and no offer shown to a named buyer.** |
 | 3 | 2026-08-13 | **Operational assets built**, new section 3d: three offer intake pages live with a Data Isolation Guarantee generated from one source, three Upwork proposal scripts, a four-section diagnostic report template, and five LinkedIn launch posts. **Prices set by the owner**: Offer 1 free at the door, Offer 2 $500 to $1,000, Offer 3 $750 to $1,500. The guarantee is true because the pages carry no form and no file input at all. **Nothing sent, used or posted yet, and no package has moved off NOT STARTED.** Payment mechanism remains the standing blocker. |
 | 2 | 2026-08-13 | **Opportunity scout built**, `scripts/scout_opportunities.py` plus a 17-assertion suite, new sections 3b and 3c. Scores supplied postings against the asset inventory, routes them to one of the three packages, and hard-blocks anything that trips a guardrail. **Deliberately does not scrape Upwork:** that breaches their terms, needs credentials this repository does not hold, and a script that faked it would fabricate its own inputs. Two new open items: no real postings scored yet, and whether the channel is worth his time at all remains undecided. **No package moved off NOT STARTED.** |
