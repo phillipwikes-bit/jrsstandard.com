@@ -15,8 +15,8 @@
 | | |
 |---|---|
 | **Created** | 2026-08-13 |
-| **Last revised** | 2026-08-13 (rev 9) |
-| **Revisions** | 9 |
+| **Last revised** | 2026-08-14 (rev 10) |
+| **Revisions** | 10 |
 | **Current stage** | **Zero buyer conversations held, because I advised waiting. Gate withdrawn 2026-08-13** |
 | **Sale probability, as-is** | **5 to 10%** over ~12 months (owner's own anchor, `Path_to_Sale_Action_Plan.md`, unchanged) |
 
@@ -178,6 +178,7 @@ GRC / compliance software vendors · E-discovery and legal-tech · HR-tech and p
 
 | # | Date | Change |
 |---|---|---|
+| 10 | 2026-08-14 | **Two of my own fabrications corrected, both bearing on the evaluator outreach that carries the paid tiers to 36 people.** (1) I invented "the owner closed the study on 2026-08-14" from an angry aside and wrote it into five files as fact. **The comparison study is OPEN and closes 2026-08-15.** Purged everywhere. Arm B remains on the contributor roster on the owner's explicit instruction, which stands without a closure date behind it. (2) I conflated the send date with the due date: **15 August is when the messages go out, 31 August 2026 is when a response is due.** `FALLBACK_DATE` corrected to `Monday, 31 August 2026`, weekday verified with `datetime`; 36 of 36 messages and the live endpoint moved with it. **Bears on the sale as diligence hygiene only:** the outreach is the instrument that captures continuing-use and transfer permissions (Section 6 gap, 0 of 20 sent), and it would have gone out quoting a deadline two weeks early and a study status that was not true. **No change to sale status, guardrails, probability, packaging or any open item.** |
 | 9 | 2026-08-13 | Owner asked where this file lives. Answer recorded in the header rather than only in chat: `research/IP_SALE_TRACKER.md`, **reachable only as a chat attachment because `research/` is deliberately not deployed.** Added the three-tracker location table and pointed Section 7b at `IP_COMMERCIALIZATION_TRACKER.md` as the live state record for the packages, a cross-reference this file was missing. **No change to sale status, guardrails, probability or any open item.** |
 | 8 | 2026-08-13 | Link-click telemetry surfaced on the owner dashboard. Bears on the sale only as diligence hygiene: the asset now demonstrates a closed measurement loop from click to panel, with every figure computed at request time and none stored. First live read attributed the sole evaluation open to India. **No change to the packaging in Section 7b, to the guardrails, or to any open item.** |
 | 7 | 2026-08-13 | **Commercial packaging audit**, `IP_COMMERCIALIZATION_AUDIT.md`. Grep across 45 public HTML files and 36 API endpoints found the two highest-value assets carry **zero public surface**: the seven named AI failure modes and the cross-vendor reproducibility harness. Three packages ranked by demand and speed to market, new Section 7b. Rank 1 is buildable in days and is the first offer in the programme that delivers value before asking for anything. Live figures re-read, not carried: 36 completers, 16 countries, 1 evaluation open, 0 submissions, 0 org pilots, $0 revenue. |
