@@ -55,10 +55,21 @@ const RESULTS_EXPECTED = 'late August 2026';
 // many there are. Its field semantics, including the named_on_file fallback
 // rule, are documented there.
 //
-// Two completers elected anonymity and the specific codes are not recorded in
-// this repository. Add them here and their fallback becomes anonymous and the
-// naming question is phrased as a chance to change it.
-const ANON_CODES = [];
+// The two completers who elected anonymity. Empty until 2026-08-14, when the
+// codes surfaced: the roster CSV records RR-130 and RR-132 as "Anonymous by
+// choice", and both joined the contributor roster the same day.
+//
+// THE DISTINCTION IS USER-VISIBLE AND IT WAS WRONG FOR THESE TWO.
+//
+//   false  an election to stay anonymous IS on file. The page says so and
+//          offers to change it.
+//   null   NO election is on file. The page says silence means the aggregate
+//          without a name.
+//
+// Both fall back to anonymous, so nothing was ever at risk of being printed.
+// But leaving these two at null would have told two people who explicitly
+// chose anonymity that they had never made a choice, which is simply false.
+const ANON_CODES = ['RR-130', 'RR-132'];
 
 const FILES = {
   employment:    'JRS_Investigator_Field_Guide_Employment.pdf',
