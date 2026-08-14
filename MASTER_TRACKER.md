@@ -3508,3 +3508,32 @@ A balanced-div cut on `org-pilot.html` removed **157 lines including the page's 
 Three checkout URLs, `BENCH_KEY_JSON` and `BENCH_SCORE_TOKENS`, the registered address and governing jurisdiction for `terms.html`, and **36 outreach messages still unsent**.
 
 ---
+
+## RUN 2026-08-14T22:10Z: Audit written to disk as AUDIT_REPORT.md.
+
+**The previous pass ran this audit and delivered it in chat only.** The deliverable now exists: `AUDIT_REPORT.md` and `.docx`, 195 lines, four sections plus a closing statement of what was **not** tested.
+
+### State re-verified for the report, not restated
+
+| | |
+|---|---|
+| HTML files | 69, **0 duplicate titles** |
+| `noindex` pages | 21, **0 of them conversion pages** |
+| Sitemap | **72 URLs, single host**, XML valid |
+| Apex canonicals remaining | **0** |
+| Practice identity | 53 pages |
+| Live endpoints | checkout 404 / 200-no-Location, bench-score 503, panel-stats 200 |
+| Suites | **72 assertions across six, zero regressions** |
+| Guard | **12 of 12** |
+
+### The section that matters most in the report
+
+**"What this audit did not test."** No load, performance or accessibility audit. No penetration testing: key isolation was verified by inspecting code paths and live responses, not by attacking endpoints. RLS policy configuration not audited beyond which tables return rows through the anon key. The `jrsstandard.html` null-reference confirmed but not diagnosed to root cause.
+
+**An audit that lists only what it found, and not what it never looked at, overstates its own coverage.**
+
+### Remediation plan as written
+
+**P0** four defects, all corrected during the audit and verified live. **P1** three checkout URLs. **P2** registered address and governing jurisdiction. **P3** 36 unsent messages, deadline passed. **P4** bench key and tokens. **P5** the 16 orphaned `reference/` pages. **P6** the pre-existing `jrsstandard.html` error.
+
+---
