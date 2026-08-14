@@ -37,7 +37,40 @@ export const ROSTER = {
 
   '6dyc0l2757': { code:'M-01',    kind:'author', first:'Ubayet',    name:'Ubayet Hossain, FRM', title:'Associate Director, Model Validation',                  org:'KPMG India',              named_on_file:true, note:'methodology co-author' },
   '1wlgcn02gn': { code:'E-08',    kind:'author', first:'Stacyann', name:'Stacyann Young',      title:'Public records and FOIL practice',                      org:'',                        named_on_file:true, note:'co-author and facilitator, public records pilot' },
-  'zobi7fgt8q': { code:'V-HR-01', kind:'facil',  first:'Tanvi',     name:'Tanvi Pokhriyal',     title:'HR and employment compliance',                          org:'',                        named_on_file:true, note:'facilitator, HR and employment pilot' }
+  'zobi7fgt8q': { code:'V-HR-01', kind:'facil',  first:'Tanvi',     name:'Tanvi Pokhriyal',     title:'HR and employment compliance',                          org:'',                        named_on_file:true, note:'facilitator, HR and employment pilot' },
+
+  // COMPARISON STUDY COMPLETERS, added 2026-08-14.
+  //
+  // These were deliberately absent while Arm B was running: a JRS-branded page
+  // naming the standard would have told an unaided-arm reviewer that the
+  // standard existed, breaking the blind mid-study.
+  //
+  // THE OWNER CLOSED THE STUDY ON 2026-08-14. The blind is spent, so every
+  // completer is treated identically and these 20 join the roster.
+  //
+  // RR-130 and RR-132 completed anonymously. They carry no name and
+  // named_on_file:null, so the fallback is anonymous and the confirmation page
+  // asks how they wish to be printed rather than assuming.
+  'dg2yvv3h69': { code:'RR-101', kind:'panel',  first:'Boris', name:'Boris Khazin', title:'AI Governance, Digital Risk and GRC leader; ClearView MRI; ex-EPAM Global Head of DRM/GRC', org:'', named_on_file:true, note:'comparison study completer' },
+  '4rfqa5u47w': { code:'RR-104', kind:'panel',  first:'Donavine', name:'Donavine Smith, MBA', title:'Chief Strategy and Transformation Officer; frontier AI strategy and governance; NED, Rape Crisis Cape Town Trust', org:'', named_on_file:true, note:'comparison study completer' },
+  'l8ukpuypgf': { code:'RR-106', kind:'panel',  first:'Nicholas', name:'Nicholas Evans', title:'AI Governance and Runtime Auditor; adversarial and non-adversarial testing; ex-USMC', org:'', named_on_file:true, note:'comparison study completer' },
+  'iq0jgphrzx': { code:'RR-107', kind:'panel',  first:'Tuneer', name:'Tuneer Mondal', title:'AI, HealthTech and Governance; Consultant, Operations and AI Solutions; Arcadia Impact; University of Cambridge', org:'', named_on_file:true, note:'comparison study completer' },
+  'xrtta15iyp': { code:'RR-109', kind:'panel',  first:'Mostafa', name:'Mostafa Mahmoudi', title:'AI Governance Researcher; Founder and Director, Iran Tech Diplomacy Institute; PhD candidate, University of Tehran', org:'', named_on_file:true, note:'comparison study completer' },
+  'hxsge0aowg': { code:'RR-110', kind:'panel',  first:'Jean-Luc', name:'Jean-Luc Adade', title:'Regional IT Leader, West, Central and North Africa; IT governance and digital transformation', org:'', named_on_file:true, note:'comparison study completer' },
+  'ndd9nr08sk': { code:'RR-113', kind:'panel',  first:'Priyam', name:'Priyam Dhamankar', title:'Ethics and Compliance Leader, Cummins India; 17+ years legal, compliance and investigations', org:'', named_on_file:true, note:'comparison study completer' },
+  'fkszsr4mii': { code:'RR-114', kind:'panel',  first:'MacKenzie', name:'MacKenzie McCowan', title:'AI Governance Specialist, Atomi; PhD candidate, University of Sydney; Sessional Lecturer, Avondale University', org:'', named_on_file:true, note:'comparison study completer' },
+  '550gzz59he': { code:'RR-116', kind:'panel',  first:'Eric', name:'Dr. Eric J. W. Orlowski', title:'AI Governance Specialist, Ethnographer, Tech Policy Researcher; Research Fellow, NUS AI Institute; PhD, UCL', org:'', named_on_file:true, note:'comparison study completer' },
+  '2hz6uvwxvn': { code:'RR-117', kind:'panel',  first:'Alexandria', name:'Alexandria Davis', title:'Responsible AI and Compliance Leader; Founder and Principal Consultant, FIEA Consulting Inc.; DBA candidate', org:'', named_on_file:true, note:'comparison study completer' },
+  'zu8iotht1u': { code:'RR-121', kind:'panel',  first:'Sharon', name:'Dr Sharon Licqurish, PhD', title:'CEO, Chief Scientist and AI Governance Architect, AIIP', org:'', named_on_file:true, note:'comparison study completer' },
+  'u34j0adlsm': { code:'RR-123', kind:'panel',  first:'Greg', name:'Greg Searle', title:'AI Governance and Model Behaviour Researcher; Master\'s candidate', org:'', named_on_file:true, note:'comparison study completer' },
+  'q8n5h174fk': { code:'RR-124', kind:'panel',  first:'Adesh', name:'Adesh Sharma', title:'Data and AI Governance Leader, Digital Frontier Partners; IAPP AIGP', org:'', named_on_file:true, note:'comparison study completer' },
+  'mlskg9y1s8': { code:'RR-125', kind:'panel',  first:'Muhammad', name:'Muhammad Dauda', title:'Programme leadership, sustainability and governance; UN SDSN Youth Nigeria; Miva Open University; PgMP', org:'', named_on_file:true, note:'comparison study completer' },
+  'hgjk1vonxs': { code:'RR-126', kind:'panel',  first:'Joseph', name:'Joseph Mungai', title:'Public-Interest Technology and AI Ethics/Governance Professional; Maasai Mara University', org:'', named_on_file:true, note:'comparison study completer' },
+  'ltrtk9chzj': { code:'RR-127', kind:'panel',  first:'Candid', name:'Candid Opris', title:'Founder and Managing Partner, Opris & Associates; two decades in AI and data governance and digital trust', org:'', named_on_file:true, note:'comparison study completer' },
+  'fcnrwmgyfj': { code:'RR-128', kind:'panel',  first:'Sagarika', name:'Sagarika Banerjee', title:'AI Governance and Software QA Leader; ISO/IEC 42001, NIST AI RMF', org:'', named_on_file:true, note:'comparison study completer' },
+  'hidg3cmtsy': { code:'RR-129', kind:'panel',  first:'Wendy', name:'Wendy Ann Martel', title:'Data protection, privacy and AI governance; twenty five years of public and private sector practice', org:'', named_on_file:true, note:'comparison study completer' },
+  'kt18kaanxw': { code:'RR-130', kind:'panel',  first:'', name:'', title:'JRS-naive expert professional', org:'', named_on_file:null, note:'comparison study completer, anonymous by choice' },
+  'd0cofc93jc': { code:'RR-132', kind:'panel',  first:'', name:'', title:'JRS-naive expert professional', org:'', named_on_file:null, note:'comparison study completer, anonymous by choice' }
 };
 
 // DERIVED, never restated. api/contributor-stats.js previously carried a
