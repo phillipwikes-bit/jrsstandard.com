@@ -183,7 +183,18 @@ async function logReview(SERVICE, rid, text, out) {
         finding: r.finding || null,
         runs: out.runs || 1,
         overall_consistency: out.variance ? out.variance.overall_consistency : null,
-        input_preview: (text || '').slice(0, 200),
+        // NO RECORD TEXT IS STORED. This carried input_preview, the first 200
+        // characters of the submitted record, and engine-activity.html rendered
+        // it on a PUBLIC page as "Record preview". That directly contradicts the
+        // Data Isolation Guarantee published on the intake pages, which promises
+        // customer records are never stored or logged to public sets.
+        //
+        // Removed 2026-08-14. The table held 0 rows at the time, so no customer
+        // text was ever exposed, but the mechanism was live and would have
+        // published the opening of the first real record submitted.
+        //
+        // The determination, the conditions and the consistency figure are kept:
+        // they are the engine's own output about a record, not the record.
         engine_version: out.engine_version || null,
       }),
     });

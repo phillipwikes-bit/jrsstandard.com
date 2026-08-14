@@ -76,7 +76,12 @@ h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:30px;line-height:1.
   var log=document.getElementById('log'), stats=document.getElementById('stats');
   function esc(t){var d=document.createElement('div');d.textContent=(t==null?'':String(t));return d.innerHTML;}
   function detLabel(d){return d==='ready'?'READY':(d==='review_required'?'REVIEW REQUIRED':(d==='gap_identified'?'GAP IDENTIFIED':esc(d||'')));}
-  fetch(U+'/rest/v1/engine_reviews?select=created_at,determination,conditions,finding,runs,overall_consistency,input_preview,engine_version&order=created_at.desc&limit=100',{headers:hdr})
+  // input_preview is NOT selected. This page is public, and that column held the
+  // first 200 characters of a submitted record. Rendering it here contradicted
+  // the Data Isolation Guarantee, which promises customer records are never
+  // stored or logged to a public set. The column stopped being written on
+  // 2026-08-14 and is no longer read.
+  fetch(U+'/rest/v1/engine_reviews?select=created_at,determination,conditions,finding,runs,overall_consistency,engine_version&order=created_at.desc&limit=100',{headers:hdr})
    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
    .then(function(rows){
      if(!rows||!rows.length){ log.innerHTML='<p class="sub" style="margin-top:18px">No reviews recorded yet. Run a review on the engine and it will appear here.</p>'; return; }
@@ -94,7 +99,6 @@ h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:30px;line-height:1.
          +(f.ai_function?'<div class="kv"><b>AI function:</b> '+esc(f.ai_function)+'</div>':'')
          +(f.condition_triggered?'<div class="kv"><b>Triggered:</b> '+esc(f.condition_triggered)+'</div>':'')
          +(f.compliant_version?'<div class="kv"><b>Compliant version would:</b> '+esc(f.compliant_version)+'</div>':'')
-         +(x.input_preview?'<div class="prev">Record preview: '+esc(x.input_preview)+(x.input_preview.length>=200?'…':'')+'</div>':'')
          +'</div>';
      }).join('');
    })
