@@ -234,9 +234,27 @@ def check_no_masking_fallbacks(offline):
 # 3. PANEL GEOGRAPHY. Every completer resolves to a country, and the map covers
 #    every completer code in the roster CSV.
 # ---------------------------------------------------------------------------
+def _has_research():
+    """research/ is deliberately excluded from the deploy, so it does not exist
+    on the production branch. Its absence there is the design working, not drift.
+
+    Without this, the pre-commit hook blocked a deploy commit on a temp branch
+    cut from origin/main with three "file missing" failures and a
+    FileNotFoundError, none of which was a real defect. A guard that fires on
+    correct state is a guard that gets bypassed.
+    """
+    return os.path.isdir(os.path.join(ROOT, "research"))
+
+
 def check_panel_geo(offline):
     mapped = set(re.findall(r"'([A-Z]{1,2}-[A-Za-z0-9-]+)'\s*:\s*'[A-Z]{2}'",
                             read("api/_panel-countries.js")))
+    if not _has_research():
+        check("every completer code is in the panel country map", SKIPPED,
+              "research/ is not on this branch by design, so the roster CSV is absent")
+        if not offline:
+            _panel_geo_live()
+        return
     csv_path = None
     research = os.path.join(ROOT, "research")
     names = sorted(n for n in os.listdir(research)
@@ -256,14 +274,18 @@ def check_panel_geo(offline):
           ("missing: " + ", ".join(missing)) if missing else "%d codes mapped" % len(mapped))
 
     if not offline:
-        d = live(PANEL)
-        if d is None:
-            check("live panel geo fully resolved", SKIPPED, "endpoint unreachable")
-        else:
-            unresolved = d.get("geo_unresolved") or []
-            check("live panel geo fully resolved", not unresolved,
-                  ("unresolved: " + ", ".join(unresolved)) if unresolved
-                  else "geo_resolved=%s" % d.get("geo_resolved"))
+        _panel_geo_live()
+
+
+def _panel_geo_live():
+    d = live(PANEL)
+    if d is None:
+        check("live panel geo fully resolved", SKIPPED, "endpoint unreachable")
+        return
+    unresolved = d.get("geo_unresolved") or []
+    check("live panel geo fully resolved", not unresolved,
+          ("unresolved: " + ", ".join(unresolved)) if unresolved
+          else "geo_resolved=%s" % d.get("geo_resolved"))
 
 
 # ---------------------------------------------------------------------------
@@ -318,6 +340,11 @@ def check_generated_docs_current(offline):
     The builders run in parallel: two Python interpreter starts in series put the
     guard over the one-second budget the pre-commit hook has to meet.
     """
+    if not _has_research():
+        for _, doc in GENERATED:
+            check("%s matches its builder" % doc, SKIPPED,
+                  "research/ is not on this branch by design")
+        return
     with ThreadPoolExecutor(max_workers=len(GENERATED)) as pool:
         futures = [pool.submit(_rebuild_one, b, d, offline) for b, d in GENERATED]
         for f in futures:
