@@ -115,10 +115,21 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
     ['Research Questions','/rest/v1/research_questions?select=*','open questions under investigation'],
     ['Study Registry','/rest/v1/studies?select=*','study statuses'],
     ['Study Runs','/rest/v1/study_runs?select=*','automated run metrics'],
-    ['Benchmark · Records','/rest/v1/bench_records?select=*&active=eq.true','the shared record set (rungs 2&3)'],
-    ['Benchmark · Reviewer Labels','/rest/v1/bench_labels?select=*','human five-condition scores (reliability)'],
-    ['Benchmark · Provisional Key','/rest/v1/bench_gold?select=*','provisional/illustrative verdicts (not the live expert distribution)'],
-    ['Benchmark · AI Verdicts','/rest/v1/bench_ai_verdicts?select=*','engine verdict per record (accuracy)'],
+    // BENCHMARK EXPORTS WITHDRAWN 2026-08-14.
+    //
+    // Records, per-record human labels and the provisional key were published
+    // together. Measured before withdrawal: 129 labels across 15 records, 10 of
+    // them carrying 3 or more labels, so a majority-vote pseudo-key was
+    // derivable for those 10 by anyone who downloaded two CSVs.
+    //
+    // That forecloses the one asset that can be licensed more than once. A
+    // benchmark whose answers can be reconstructed from its own open data is
+    // not a benchmark, and Offer 3 rests entirely on the key staying held.
+    //
+    // The aggregate reliability and detection figures remain published in the
+    // validation report and on /api/panel-stats, so nothing about the FINDINGS
+    // becomes less checkable. What is withdrawn is the per-record label matrix,
+    // which is the part that reconstructs the key rather than evidencing it.
     ['Benchmark · Outcomes','/rest/v1/bench_outcomes?select=*','downstream outcomes (criterion validity)']
   ];
   var host=document.getElementById('datasets');
@@ -280,7 +291,10 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
   }
 
   Promise.all([
-    fetch(U+'/rest/v1/bench_records?select=id,text,record_type&active=eq.true',{headers:HDR}).then(function(r){return r.ok?r.json():[];}),
+    // text is NOT selected: the page no longer needs it, and not requesting it
+    // means it never reaches the browser at all rather than being fetched and
+    // then not shown.
+    fetch(U+'/rest/v1/bench_records?select=id,record_type&active=eq.true',{headers:HDR}).then(function(r){return r.ok?r.json():[];}),
     fetch(U+'/rest/v1/bench_labels?select=record_id,mode,determination,labeler_code,conditions,role',{headers:HDR}).then(function(r){return r.ok?r.json():[];}),
     fetch(U+'/rest/v1/bench_ai_verdicts?select=record_id,determination,conditions',{headers:HDR}).then(function(r){return r.ok?r.json():[];}),
     fetch(U+'/rest/v1/findings_history?select=overall_agreement,per_record,k,records,model,metrics,created_at&order=created_at.desc&limit=30',{headers:HDR}).then(function(r){return r.ok?r.json():[];}),
@@ -336,7 +350,12 @@ td{padding:7px 10px;border-bottom:1px solid var(--rule);color:var(--muted);verti
       var distCell=demo?'<span class="bm-ck">(demo)</span>':(nExp<MIN_EXPERTS_EFF?'<span class="bm-ck">insufficient (n='+nExp+')</span>':rangeSet.map(function(d){return d.split('_')[0]+'×'+counts[d];}).join(' &middot; ')+' <span class="bm-ck">n='+nExp+'</span>');
       var engCell=demo?'<span class="bm-ck">demo</span>':(!recSufficient?'<span class="bm-ck">insufficient</span>':(!a?'<span class="tag">-</span>':(inRange?'<span class="ok">in range</span>':'<span style="color:var(--review-text)">out of range &middot; review</span>')));
       var expAgmtCell=(nExp>=2?(pw!=null?Math.round(pw*100)+'% <span class="bm-ck">n='+nExp+'</span>':'-'):'<span class="bm-ck">need 2+E</span>');
-      rowsH+='<tr><td>'+esc(r.text.slice(0,60))+(r.text.length>60?'…':'')+rt+'</td>'
+      // RECORD TEXT WITHDRAWN 2026-08-14. This cell printed the opening 60
+      // characters of the record beside its majority determination in the next
+      // columns, which is a readable record paired with its answer: the
+      // pseudo-key, rendered on a public page. An opaque reference keeps every
+      // aggregate figure in this table intact while breaking that pairing.
+      rowsH+='<tr><td><span class="bm-ck">record '+esc(String(r.id||'').slice(0,8))+'</span>'+rt+'</td>'
         +'<td>'+reviewers.length+(nExp?(' <span class="bm-ck">+'+nExp+'E</span>'):'')+'</td>'
         +'<td>'+tag(maj.value)+'</td>'
         +'<td>'+(maj.n>=2?Math.round(maj.share*100)+'% <span class="bm-ck">n='+maj.n+'</span>':'<span class="bm-ck">need 2+</span>')+'</td>'
