@@ -3,17 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Benchmark Calibration | JRS&#8482;</title>
-<meta name="description" content="What did you test your detection claim against? Scope, price and turnaround agreed in writing before any record is sent.">
-<meta name="robots" content="noindex,follow">
-<link rel="canonical" href="https://jrsstandard.com/calibration-request.html" />
+<title>How an engagement works | JRS&#8482;</title>
+<meta name="description" content="Scope, fees, data handling, de-identification, retention and deliverable ownership for JRS record-defensibility engagements. Written to be forwarded to procurement and counsel.">
+<meta property="og:title" content="How a JRS engagement works" />
+<meta property="og:description" content="Scope, fixed fees, data handling, retention and deliverable ownership. Written to be forwarded to procurement." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jrsstandard.com/engagement.html" />
+<meta property="og:site_name" content="JRS&#8482; Justification Review Standard" />
+<meta property="og:image" content="https://jrsstandard.com/og-card.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://jrsstandard.com/og-card.png" />
+<link rel="canonical" href="https://jrsstandard.com/engagement.html" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVYHJ7BJ92"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NVYHJ7BJ92');</script>
 <style>
-<style>
+
 
 :root{--bg:#050505;--surface:#121212;--surface2:#1A1A1A;--rule:#2A2A2A;--text:#F2F2F2;--muted:#B3B3B3;--muted-soft:#8A8A8A;--accent:#BE9447;--accent-dim:#7A5E28;--stop-text:#E88080;--review-text:#D4A055;--ready-text:#5DBF82}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -75,21 +82,34 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
 .cta-primary{display:inline-block;background:var(--accent);color:#0A0A0A;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:16px 26px;text-decoration:none;border-radius:2px;font-weight:500;line-height:1.5}
 .cta-primary:hover{background:#D2A855}
 .cta-secondary{display:inline-block;color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;padding:14px 0;text-decoration:none;border-bottom:1px solid var(--accent-dim)}
+.evidence-strip{border:1px solid var(--accent-dim);background:var(--surface);padding:18px 20px;border-radius:2px;margin:26px 0}
+.ev-lead{font-family:'Bodoni Moda',serif;font-size:17px;color:var(--text);margin-bottom:14px;line-height:1.4}
+.ev-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-bottom:13px}
+.ev-grid b{display:block;font-family:'Bodoni Moda',serif;font-size:23px;color:var(--accent);line-height:1.15;margin-bottom:4px}
+.ev-grid span{display:block;font-size:12.5px;color:var(--muted);line-height:1.5}
+.ev-note{font-size:13px;color:var(--muted-soft);line-height:1.6;border-top:1px solid var(--rule);padding-top:11px}
 .status-strip{border:1px solid var(--accent-dim);background:var(--surface);padding:13px 16px;border-radius:2px;font-size:13.5px;line-height:1.65;color:var(--muted)}
 
-</style>
+
+
 .lede{font-family:'Bodoni Moda',serif;font-size:clamp(25px,5vw,38px);line-height:1.2;color:var(--text);margin:0 0 14px}
 .kicker{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
-.spec{width:100%;border-collapse:collapse;margin:20px 0}
-.spec td{border-bottom:1px solid var(--rule);padding:11px 0;font-size:15px;line-height:1.6;vertical-align:top}
-.spec td:first-child{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);width:150px;padding-right:16px}
-.isolation{border:1px solid var(--accent-dim);background:var(--surface);padding:16px 18px;border-radius:2px;margin:24px 0;font-size:14.5px;line-height:1.7;color:var(--muted)}
-.isolation b{color:var(--accent);display:block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:7px}
+.tt{width:100%;border-collapse:collapse;margin:18px 0 8px}
+.tt th{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);text-align:left;padding:0 12px 9px 0;border-bottom:1px solid var(--rule)}
+.tt td{border-bottom:1px solid var(--rule);padding:14px 12px 14px 0;font-size:14.5px;line-height:1.55;vertical-align:top;color:var(--muted)}
+.tt td b{color:var(--text);font-size:15.5px}
+.t-scope{font-size:13px;color:var(--muted-soft)}
+.t-fee{font-family:'Bodoni Moda',serif;font-size:21px;color:var(--accent);white-space:nowrap}
+.qa{border-left:2px solid var(--rule);padding:0 0 0 16px;margin:0 0 20px}
+.qa .q{font-family:'Bodoni Moda',serif;font-size:17px;color:var(--text);margin-bottom:6px;line-height:1.35}
+.qa .a{font-size:14.5px;color:var(--muted);line-height:1.7;margin:0}
+.iso{border:1px solid var(--accent-dim);background:var(--surface);padding:17px 19px;border-radius:2px;margin:22px 0}
+.iso b.h{display:block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:9px}
+.iso li{font-size:14.5px;color:var(--muted);line-height:1.7;margin:0 0 6px 18px}
 .cta-primary{display:inline-block;background:var(--accent);color:#0A0A0A;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:16px 26px;text-decoration:none;border-radius:2px;font-weight:500;line-height:1.5}
 .cta-primary:hover{background:#D2A855}
 .status-strip{border:1px solid var(--rule);background:var(--surface2);padding:13px 16px;border-radius:2px;font-size:13.5px;line-height:1.65;color:var(--muted)}
-ul.deliver{margin:0 0 22px;padding-left:20px}
-ul.deliver li{color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:7px}
+
 </style>
 </head>
 <body>
@@ -101,48 +121,74 @@ ul.deliver li{color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:7p
 </header>
 <main>
 <article>
-  <div class="kicker">Offer 3 &middot; $750</div>
-  <h1 class="lede">What did you test your detection claim against?</h1>
-  <p>A tool that claims it can spot documentation which will not survive review needs something independent to be measured against. You run a held-out record set; scoring is returned by the holder, and you receive a calibration report against credentialed human raters.</p>
 
-  <table class="spec">
-    <tr><td>What is read</td><td>Your tool or your team runs a held-out record set; scoring is returned by the holder</td></tr>
-    <tr><td>Turnaround</td><td>Agreed at scoping; depends on your run schedule</td></tr>
-    <tr><td>Price</td><td><b style="color:var(--accent)">$750</b>, fixed. No hourly rate and no scope creep</td></tr>
-    <tr><td>Written for</td><td>AI assurance vendors, model evaluation teams, audit firms</td></tr>
+  <div class="kicker">Engagement terms</div>
+  <h1 class="lede">How an engagement works.</h1>
+
+  <p><b>This page exists to be forwarded.</b> If you are considering a record-defensibility review, your procurement team and your counsel will want the fee basis, the data handling, and who owns the output. All three are below, on one page, with nothing held back for a call.</p>
+
+  <h2>Fees</h2>
+
+  <p>Every engagement is <b>fixed fee, agreed in writing before any work begins.</b> There is no hourly rate, no retainer, and no scope creep clause, because the scope is a fixed number of records.</p>
+
+  <table class="tt">
+    <thead><tr><th>Engagement</th><th>Fee</th><th>Turnaround</th><th></th></tr></thead>
+    <tbody>
+    <tr><td><b>AI Documentation Defensibility Review</b><br><span class="t-scope">Five de-identified records, read against the five conditions and the seven failure modes</span></td><td class="t-fee">$250</td><td>Five working days</td><td><a href="audit-request.html">Scope it</a></td></tr>
+    <tr><td><b>AI Governance Documentation Review</b><br><span class="t-scope">A documentation standard or template set, plus up to five records produced under it</span></td><td class="t-fee">$500</td><td>Ten working days</td><td><a href="governance-request.html">Scope it</a></td></tr>
+    <tr><td><b>Benchmark Access and Calibration</b><br><span class="t-scope">One licensed run of the held-out record set, scoring returned by the holder</span></td><td class="t-fee">$750</td><td>Agreed at scoping</td><td><a href="calibration-request.html">Scope it</a></td></tr>
+    </tbody>
   </table>
 
-  <h2>What you receive</h2>
-  <ul class="deliver">
-    <li>Licensed access to the record set for one run</li>
-    <li>Scoring returned by the holder. The answer key is never released</li>
-    <li>A calibration report against the human rater distribution</li>
-    <li>A written statement of what the result does and does not support</li>
+  <p><b>Invoiced on agreement. Purchase orders accepted.</b> Payment terms are net 30 unless your procurement process requires otherwise, in which case they follow yours.</p>
+
+  <h2>Data handling</h2>
+
+  <div class="iso">
+    <b class="h">Data Isolation Guarantee</b>
+    <p style="margin:0 0 11px;font-size:14.5px;line-height:1.7;color:var(--muted)">All customer files and sample records submitted for diagnostic evaluation are processed in ephemeral working memory and deleted upon delivery of the diagnostic report. Customer records are never stored, logged to public research sets, or used for model training.</p>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.04em;color:var(--muted-soft)">Processed in ephemeral memory and purged immediately upon report generation.</div>
+  </div>
+
+  <p><b>The mechanism, not just the promise.</b> There is no upload form anywhere on this site. No page accepts a file, and no intake page has a form of any kind. Records arrive by whatever channel your organization already approves for material of that sensitivity, and de-identification is agreed in writing before the first one is sent.</p>
+
+  <ul style="margin:0 0 18px 20px">
+    <li style="font-size:14.5px;color:var(--muted);line-height:1.7;margin-bottom:7px"><b style="color:var(--text)">De-identification.</b> Records are supplied de-identified by you, to a standard agreed at scoping. If a record arrives carrying an identifier, it is returned rather than redacted, so the decision about your data stays with you.</li>
+    <li style="font-size:14.5px;color:var(--muted);line-height:1.7;margin-bottom:7px"><b style="color:var(--text)">Retention.</b> Records are held only for the duration of the read and destroyed on delivery. The finding is retained; the records are not.</li>
+    <li style="font-size:14.5px;color:var(--muted);line-height:1.7;margin-bottom:7px"><b style="color:var(--text)">No sub-processing.</b> Records are read by one person. They are not sent to a third-party service, and they are not put through the public review engine or any model for training.</li>
+    <li style="font-size:14.5px;color:var(--muted);line-height:1.7;margin-bottom:7px"><b style="color:var(--text)">Confidentiality.</b> An NDA on your paper is welcome and is signed before scoping if you prefer that order.</li>
   </ul>
 
-  <div class="isolation">
-    <b>Data Isolation Guarantee</b>
-    All customer files and sample records submitted for diagnostic evaluation are processed in ephemeral working memory and deleted upon delivery of the diagnostic report. Customer records are never stored, logged to public research sets, or used for model training.
-  <div style="margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.04em;color:var(--muted-soft)">Processed in ephemeral memory and purged immediately upon report generation.</div>
-  </div>
+  <h2>The deliverable</h2>
 
-  <p style="font-size:13.5px;color:var(--muted-soft);line-height:1.7;margin:0 0 4px">Procurement or counsel need the fee basis, data handling and deliverable ownership on one page? That is <a href="engagement.html">how an engagement works</a>.</p>
+  <p><b>You own it outright.</b> The written finding is your work product on delivery: no licence back, no reuse of your material in research or marketing, no case study without your separate written agreement.</p>
 
-  <h2>How to start</h2>
-  <p style="font-size:13.5px;color:var(--muted-soft);line-height:1.7;margin:10px 0 0">Prefer an invoice, a purchase order, or a scoping call first? Email <a href="mailto:info@jrsstandard.com?subject=Benchmark%20Access%20and%20Calibration">info@jrsstandard.com</a> and you will get scope and an invoice in one reply.</p>
+  <p>The finding is structured in four parts: an executive summary and defensibility assessment, the failure modes observed with the passage that shows each one, findings against each of the five review conditions, and a prioritised list of documentation controls.</p>
 
-  <p>There is no form on this page and nothing to upload here. <strong>Scope, price and turnaround are agreed in writing before any record is sent</strong>, and de-identification is agreed at the same time.</p>
-  <p style="margin:24px 0 10px">
-    <a class="cta-primary" href="/api/checkout?o=calibration&amp;src=calibration-request">Pay $750 and start &rarr;</a>
+  <h2>What this is not</h2>
+
+  <div class="qa"><div class="q">Is this legal advice?</div><p class="a">No. It is a structured read of documentation quality. It does not assess whether a decision was correct, lawful, or defensible in law, and it is not a substitute for counsel.</p></div>
+
+  <div class="qa"><div class="q">Does it establish regulatory compliance?</div><p class="a">No. JRS is designed to support organizational governance, auditability, documentation traceability, and review processes that may be relevant to frameworks and regulatory requirements such as the EU AI Act and NIST AI RMF. <b>It does not establish compliance with any of them, and no framework requires it.</b></p></div>
+
+  <div class="qa"><div class="q">Is the method proven?</div><p class="a">Not yet, and the evidence is published rather than summarised. Reproducibility and reliability are reported. Accuracy on the detection set is 83.9% across 16 independent experts and 384 graded reads, <b>95% confidence interval 72.7 to 95.1</b>, scored against a key fixed before any scoring took place under a pre-registered analysis plan. Controlled comparison against unaided review is deployed and has <b>not</b> reached its enrollment target, so no claim of improvement over careful reading is made.</p></div>
+
+  <div class="qa"><div class="q">Who does the work?</div><p class="a">Phillip Wikes, formerly Lead Civil Rights Officer at the Maryland Commission on Civil Rights. Engagements are not subcontracted.</p></div>
+
+  <h2>Starting</h2>
+
+  <p>Email with your record type, approximate volume and timeframe. <b>You receive scope, the fixed fee, turnaround and an invoice in one reply, within one business day.</b> No discovery call is required, and none will be proposed unless you ask for one.</p>
+
+  <p style="margin:22px 0 10px">
+    <a class="cta-primary" href="mailto:info@jrsstandard.com?subject=Engagement%20scoping&amp;body=Record%20type%3A%0AApproximate%20volume%3A%0ATimeframe%3A%0APurchase%20order%20required%3A%0ANDA%20required%20before%20scoping%3A">Request scope and invoice &rarr;</a>
   </p>
+
+  <p style="font-size:13.5px;color:var(--muted-soft);line-height:1.7">Not ready for that? The <a href="check.html">seven-point record check</a> is public and ungated, requires nothing from you, and transmits nothing. Most people should read that first.</p>
 
   <div class="status-strip" style="margin-top:26px">
-    <strong>Where this stands.</strong> JRS is under operational validation. <strong>Market validation is in progress and commercial demand has not yet been established.</strong> Current offers are being tested through controlled market experiments. This is a paid test service being offered for the first time, not an established product, and no claim of proven effectiveness is made.
+    <b>Operational validation.</b> JRS is under operational validation and is offered as such. <b>Commercial demand has not yet been established, and these engagements are being tested through controlled market experiments.</b> You would be among the first, which is stated because it is relevant to your decision.
   </div>
 
-  <p style="font-size:13.5px;color:var(--muted-soft);line-height:1.7;border-top:1px solid var(--rule);padding-top:18px;margin-top:26px">
-    Want to see the method before you ask for anything? The <a href="check.html">Record Defensibility Check</a> is public, ungated, and requires nothing from you.
-  </p>
 </article>
 </main>
 <footer class="site-footer" role="contentinfo">
