@@ -248,6 +248,7 @@ def check_panel_geo(offline):
 GENERATED = [
     ("research/build_reviewer_roster_doc.py", "research/REVIEWER_ROSTER_COMPLETE.md"),
     ("research/build_participant_inventory.py", "research/PARTICIPANT_INVENTORY_BY_RUNG.md"),
+    ("research/build_contributor_links.py", "research/Contributor_Links.md"),
 ]
 
 

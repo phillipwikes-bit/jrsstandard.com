@@ -1,3 +1,11 @@
+# SUPERSEDED 2026-08-14
+
+**Do not send from this file.** It is hand-maintained and it drifted: it still lists `V-HC-01`, whose contributor link was removed on 2026-08-13 and now returns 404. Sending it would have handed one contributor a dead link on the confirmation deadline.
+
+**Use `research/Contributor_Links.md`**, generated from `api/_contributor-roster.js` by `research/build_contributor_links.py`. Kept here only as the record of what the sheet said before it was replaced.
+
+---
+
 # Contributor confirmation links (private, do not publish this file)
 
 One unguessable link per person. Each link opens a page that captures how the person wants their name and title printed, their contact address, and three forced-choice permissions, then releases the initiatives, the Investigator Field Guide, the training, the free private diagnostic, and the results summary.
