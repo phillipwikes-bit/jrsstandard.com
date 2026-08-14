@@ -3421,3 +3421,46 @@ Ten clauses written to be read by counsel rather than by a marketer: who you con
 - **Registered address and governing jurisdiction** for `terms.html`.
 
 ---
+
+## RUN 2026-08-14T19:00Z: Free-participation copy removed. It was undercutting the paid tiers.
+
+### What was removed and why it mattered
+
+Two families of copy that told a buyer the framework is free while three tiers at $250, $500 and $750 sit on the same site.
+
+| Copy | Removed from |
+|---|---|
+| **"No commercial commitment"** | `index.html` (visible block **and** a gold badge), `jrsstandard.html` (kit price note, no-cost CTA note), `pilot.html`, `training.html` (hero eyebrow), and the **meta descriptions** on index, pilot and training |
+| **"Open Initiatives & International Registry"** promo blocks | `index.html`, `investigator-guides.html`, `decision-reconstruction-risk.html`, `training.html` (two blocks in the release panel), `org-pilot.html`, `contributor.html` |
+
+**The registry blocks were the worse of the two.** They offered a free records check for up to twenty five records. That is the $250 audit, given away, on the same site that sells it.
+
+### One page treated differently, deliberately
+
+**`supported.html` IS the registry page**, not a page carrying a registry block, and it holds live consent records. It is **unlinked** rather than gutted: nothing on the site now drives traffic to it, and no consent record is destroyed. An empty page would have been worse than an unlinked one.
+
+### An orphan created and cleaned in the same pass
+
+Removing the training release panel orphaned **`wireTrainingListing`** and its two element IDs. The function and its call site were removed with it, so no dead handler remains.
+
+### An error I made and caught
+
+A balanced-div cut on `org-pilot.html` removed **157 lines including the page's intake form.** Caught by the byte count (13,008 removed for what should have been a one-line label), reverted from git, and redone as the two-line change it actually was.
+
+### Verification
+
+| Check | Result |
+|---|---|
+| Visible removed copy, repo-wide | **0**, outside `supported.html` itself |
+| Renders, 9 pages at 390px and 1280px | clean, **no overflow** |
+| Tag balance and inline JS | all touched pages OK |
+| Guard | **12 of 12** |
+| Live after deploy | **0 hits on all 7 deployed pages** |
+
+**A live verification of mine reported 5 hits on `pilot.html`.** It was a stale fetch: my wait loop gated only on `index.html` and then read the others immediately. Re-checked properly: zero.
+
+### Pre-existing and untouched
+
+`jrsstandard.html` carries a null-reference JS error and a 2-div imbalance. **Both pre-date this change** (3115/3113 divs before, 3114/3112 after, so a balanced pair was removed) and neither was introduced here.
+
+---
