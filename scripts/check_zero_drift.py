@@ -154,6 +154,9 @@ COUNT_WORDS = r"SIZE|COUNT|TOTAL|N_|NUM|REVIEWERS|COMPLETERS|COUNTRIES|CONTINENT
 COUNT_ALLOW = {
     "MIN_CELL_N": "disclosure threshold, deliberately fixed before data arrived",
     "NEEDED": "study design constant, the 24-record completion bar",
+    "N_SELECT": "study design constant, the blind-recheck sample size used for "
+                "stratified quotas in build_blind_recheck_packet.py. Not a copy "
+                "of a figure held anywhere else",
 }
 
 
@@ -172,6 +175,29 @@ def check_no_handwritten_counts(offline):
     check("no hand-written count constants in api/", not offenders,
           "; ".join(offenders) if offenders
           else "all derived (%d allowlisted design constants)" % len(COUNT_ALLOW))
+
+    # The Python builders can hold a duplicated fact just as easily as the
+    # endpoints can. Added 2026-08-14: a proposed replacement guard scanned
+    # only .py files and none of the .js where every real defect actually was,
+    # so it passed while sitting on all six. The right answer was not to swap
+    # one blind spot for the other, it was to cover both.
+    py_offenders = []
+    for base in ("research", "scripts"):
+        d = os.path.join(ROOT, base)
+        if not os.path.isdir(d):
+            continue
+        for name in sorted(os.listdir(d)):
+            if not name.endswith(".py") or name.startswith("check_zero_drift"):
+                continue
+            for m in re.finditer(r"^([A-Z][A-Z0-9_]*)\s*=\s*(\d+)\s*$",
+                                 read(base + "/" + name), re.M):
+                const, val = m.group(1), m.group(2)
+                if const in COUNT_ALLOW:
+                    continue
+                if re.search(COUNT_WORDS, const):
+                    py_offenders.append("%s/%s: %s = %s" % (base, name, const, val))
+    check("no hand-written count constants in research/ or scripts/", not py_offenders,
+          "; ".join(py_offenders) if py_offenders else "none")
 
 
 # ---------------------------------------------------------------------------
