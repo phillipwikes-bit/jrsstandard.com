@@ -3039,3 +3039,53 @@ The honor roster was built on **2026-08-09**, and **RR-113, RR-117 and RR-127 co
 - The licence terms in these messages are the owner's own commitment. **They are generated as specified, and the repository holds no prior record of this grant being offered**, so today is the first time it is being made.
 
 ---
+
+## RUN 2026-08-14T09:30Z: Verification pass. Step 3 found a live contradiction of the privacy guarantee.
+
+### The five steps, verified against disk and production
+
+| Step | State |
+|---|---|
+| 1. Evaluator outreach batch | **DONE.** 36 files, 16 Arm A + 20 Arm B, all 36 carry a key URL and the deadline |
+| 2. Checkout on the three intake pages | **DONE.** `$250 / $500 / $750` wired to `/api/checkout` |
+| 3. Ephemeral data handling | **DEFECT FOUND AND FIXED. See below** |
+| 4. `/api/bench-score.js` | **DONE.** Live, refuses safely with 503 |
+| 5. Full test suite | **DONE.** 17 scout assertions, dry run clean |
+
+### Step 3 was the one worth running, and it failed
+
+`api/review-engine.js` and `api/v1/review-engine.js` both wrote **`input_preview: (text || '').slice(0, 200)`** into `engine_reviews`: **the first 200 characters of the customer's submitted record.**
+
+**`engine-activity.html` is a public page, and it selected that column and rendered it as "Record preview".**
+
+The Data Isolation Guarantee published on all three intake pages says customer records are **"never stored, logged to public research sets, or used for model training"**. The code contradicted all three clauses of that sentence at once.
+
+**Nothing was exposed.** `engine_reviews` held **0 rows** when this was found, verified against the live table. The mechanism was armed and would have published the opening of the first real record submitted through either engine.
+
+**Fixed:** the column is no longer written by either engine, and no longer selected or rendered by the page. The determination, the conditions and the consistency figure stay, because those are the engine's output *about* a record rather than the record.
+
+**Swept the rest:** no other route stores submitted record text. `api/review.js`, the public diagnostic proxy, writes nothing at all. `api/org-pilot.js` already declares `record_text_stored: false`.
+
+### Test suite, after the fix
+
+| Suite | Result |
+|---|---|
+| `test_scout_opportunities.py` | **17 assertions, all pass** |
+| Scout dry run against a mock file | **2 scored, 1 qualified, 1 DO NOT BID** on an answer-key request |
+| `test_evaluator_outreach.py` | **16 of 16** |
+| `test_bench_score.mjs` | **15 of 15** |
+| `test_checkout.mjs` | **12 of 12** |
+| `check_zero_drift.py` | **11 checks, 0 failed** |
+
+### The executive summary in the directive is out of date on two counts
+
+It says "zero live packages" and that payment integration still needs doing. **All three packages have been LIVE since 2026-08-13** and the checkout path is deployed and verified. What remains is not code.
+
+### Outstanding, and none of it is executable here
+
+1. **Three checkout URLs.** Only mintable in the owner's payment account.
+2. **`BENCH_KEY_JSON` and `BENCH_SCORE_TOKENS`.**
+3. **36 outreach messages, unsent.** The deadline on every one is today.
+4. Revenue **$0**.
+
+---
