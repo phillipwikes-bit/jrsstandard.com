@@ -602,6 +602,61 @@ const ROSTER = {
             + 'and completing the review of all 24 records with care, rigor and '
             + 'independent judgment. A independent professional perspective enriched the '
             + 'international reviewer panel.'
+  },
+
+  // ADDED 2026-08-14. Every completer now holds an Honor.
+  //
+  // The roster stopped at H-2026-34 because it was built on 2026-08-09 and
+  // these three finished the comparison study after that date. They were the
+  // only completers without one, so the roster and the completer list are now
+  // the same 36 people.
+  //
+  // Citations are written rather than templated from their job titles: an
+  // auto-generated version produced "A ethics and compliance leader
+  // perspective" and "A responsible ai and compliance leader perspective",
+  // which is both ungrammatical and describes a job rather than a domain.
+  '9do9i1xcv0': {
+    code: 'H-2026-35',
+    study: 'records-review',
+    participant: 'RR-113',
+    first: 'Priyam',
+    name: 'Priyam Dhamankar',
+    title: 'Ethics and Compliance Leader, Cummins India',
+    org: 'Cummins India',
+    order: 'named for completing the Records Review Study',
+    citation: 'For participating as an independent reviewer in the Records Review Study '
+            + 'and completing the review of all 24 records with care, rigor and '
+            + 'independent judgment. An ethics, compliance and investigations perspective '
+            + 'from industrial and pharmaceutical practice enriched the international '
+            + 'reviewer panel.'
+  },
+  '9seqsx2h0f': {
+    code: 'H-2026-36',
+    study: 'records-review',
+    participant: 'RR-117',
+    first: 'Alexandria',
+    name: 'Alexandria Davis',
+    title: 'Responsible AI and Compliance Leader; Founder and Principal Consultant, FIEA Consulting Inc.',
+    org: 'FIEA Consulting Inc.',
+    order: 'named for completing the Records Review Study',
+    citation: 'For participating as an independent reviewer in the Records Review Study '
+            + 'and completing the review of all 24 records with care, rigor and '
+            + 'independent judgment. A responsible-AI and compliance consulting '
+            + 'perspective enriched the international reviewer panel.'
+  },
+  '1r0fvup7s3': {
+    code: 'H-2026-37',
+    study: 'records-review',
+    participant: 'RR-127',
+    first: 'Candid',
+    name: 'Candid Opris',
+    title: 'Founder and Managing Partner, Opris & Associates',
+    org: 'Opris & Associates',
+    order: 'named for completing the Records Review Study',
+    citation: 'For participating as an independent reviewer in the Records Review Study '
+            + 'and completing the review of all 24 records with care, rigor and '
+            + 'independent judgment. Two decades of AI and data governance and digital '
+            + 'trust practice enriched the international reviewer panel.'
   }
 };
 

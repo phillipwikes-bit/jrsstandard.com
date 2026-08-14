@@ -64,6 +64,30 @@ CITATION = (
 ANON_PLACEHOLDER = "[EVALUATOR NAME: not on record, this person completed anonymously]"
 
 
+def offer_config():
+    """Prices and scopes from api/_offer-config.js. Never restated here.
+
+    The pivot from free grants to paid conversion put three prices into every
+    outreach message. A second copy of a price is exactly the defect class this
+    repository keeps hitting, and a price is the worst place for it.
+    """
+    src = io.open(os.path.join(ROOT, "api", "_offer-config.js"), encoding="utf-8").read()
+    out = {}
+    for m in re.finditer(r"(\w+):\s*\{\s*slug:\s*'([^']+)',\s*name:\s*'([^']+)',\s*"
+                         r"price_usd:\s*(\d+),\s*price_label:\s*'([^']+)',\s*"
+                         r"scope:\s*'([^']+)'", src):
+        out[m.group(1)] = {"slug": m.group(2), "name": m.group(3),
+                           "price_usd": int(m.group(4)), "price_label": m.group(5),
+                           "scope": m.group(6)}
+    if set(out) != {"audit", "governance", "calibration"}:
+        sys.stderr.write("Could not read all three offers from api/_offer-config.js\n")
+        sys.exit(2)
+    return out
+
+
+OFFERS = offer_config()
+
+
 def js_entries(path):
     """Parse the honor roster out of api/honor.js.
 
@@ -124,7 +148,7 @@ def message(p, key, date):
 
     L = []
     A = L.append
-    A("**Subject:** Citation Preference & Founding License Confirmation, Action Required")
+    A("**Subject:** Award Citation & Panelist Registry Confirmation, Action Required")
     A("")
     A("---")
     A("")
@@ -132,7 +156,7 @@ def message(p, key, date):
     A("")
     A("Your work on the Justification Review Standard evaluation is complete, and the "
       "study paper is being prepared. Before it is finalized I need your confirmation on "
-      "two things: how you wish to be cited, and the license that comes with your service.")
+      "one thing: how you wish to be cited.")
     A("")
     A("**Designation:** %s" % DESIGNATION)
     A("")
@@ -140,17 +164,32 @@ def message(p, key, date):
     A("")
     A("> " + CITATION.format(name=(p["name"] if named else "[Evaluator Name]")))
     A("")
-    A("**Unlocking the Founding Auditor & Commercial Practice License.** On confirmation "
-      "you receive:")
+    A("**What confirming unlocks.** Two things, both recognition:")
     A("")
-    A("- **Commercial Practice Rights.** Authorization to use the JRS diagnostic rubrics "
-      "and investigator field guides within your own client engagements.")
-    A("- **Institutional Enterprise Grant.** A 12-month organizational deployment license "
-      "for %s." % org)
-    A("- **Founding Panelist Credentials.** A verifiable registry ID confirming your status "
-      "on the inaugural panel.")
+    A("- **Your Appointed Expert Award Citation**, in the wording above, issued in your name.")
+    A("- **Your Official Panelist Registry ID**, a verifiable reference confirming your "
+      "place on the panel.")
     A("")
-    A("**Confirm Details & View Results Summary:**")
+    A("**That is the whole of it, and it is deliberate.** Confirming does not grant a "
+      "licence to use JRS materials in your own work, and I would rather say so here than "
+      "let you discover it later.")
+    A("")
+    A("**If you do want to use JRS in practice**, that is a separate, paid arrangement and "
+      "you are welcome to it:")
+    A("")
+    # NOT `key`: that is this function's confirmation-key parameter, and
+    # shadowing it here would be one edit away from putting an offer name into
+    # somebody's personal link.
+    for offer_key in ("audit", "governance", "calibration"):
+        o = OFFERS[offer_key]
+        A("- **%s, %s.** %s. https://jrsstandard.com/%s.html"
+          % (o["name"], o["price_label"], o["scope"], o["slug"]))
+    A("")
+    A("The seven-point check at https://jrsstandard.com/check.html is free, ungated and "
+      "always will be, so you can see the method before deciding whether any of that is "
+      "worth paying for.")
+    A("")
+    A("**Confirm your citation and claim your Registry ID:**")
     A("")
     A(url)
     A("")

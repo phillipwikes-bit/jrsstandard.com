@@ -20,9 +20,17 @@ OUT = os.path.join(ROOT, "research", "Evaluator_Outreach")
 INDEX = os.path.join(ROOT, "research", "Evaluator_Outreach_INDEX.md")
 ROSTER = os.path.join(ROOT, "api", "_contributor-roster.js")
 
-SUBJECT = "Citation Preference & Founding License Confirmation"
+SUBJECT = "Award Citation & Panelist Registry Confirmation"
 DESIGNATION = "Appointed Expert, Global AI Resilience & Governance International Evaluator Panel"
-LICENSE = "Founding Auditor & Commercial Practice License"
+AWARD = "Appointed Expert Award Citation"
+REGISTRY = "Official Panelist Registry ID"
+
+# The free grants that were removed on 2026-08-14. Any reappearance is a
+# regression: a blanket enterprise licence to 36 people is an unmonetized
+# giveaway of the only thing being sold.
+FORBIDDEN_GRANTS = ("Founding Auditor", "Commercial Practice License",
+                    "Commercial Practice Rights", "Institutional Enterprise Grant",
+                    "12-month organizational deployment", "Founding Panelist")
 ANON_CODES = ("RR-130", "RR-132")
 
 checks = []
@@ -42,6 +50,7 @@ def main():
     t("Arm B files", len([f for f in files if os.path.basename(f).startswith("B_")]), 20)
 
     bad_key, no_sub, no_desig, no_lic, no_date = [], [], [], [], []
+    grants, no_price = [], []
     for f in files:
         s = io.open(f, encoding="utf-8").read()
         m = re.search(r"contributor\.html\?k=([a-z0-9]{10})", s)
@@ -51,15 +60,23 @@ def main():
             no_sub.append(os.path.basename(f))
         if DESIGNATION not in s:
             no_desig.append(os.path.basename(f))
-        if LICENSE not in s:
+        if AWARD not in s or REGISTRY not in s:
             no_lic.append(os.path.basename(f))
+        for g in FORBIDDEN_GRANTS:
+            if g in s:
+                grants.append("%s: %s" % (os.path.basename(f), g))
+        for price in ("$250", "$500", "$750"):
+            if price not in s:
+                no_price.append("%s missing %s" % (os.path.basename(f), price))
         if "Friday, 14 August 2026" not in s:
             no_date.append(os.path.basename(f))
 
     t("every file carries a key that exists in the roster", bad_key, [])
     t("subject line present everywhere", no_sub, [])
     t("designation present everywhere", no_desig, [])
-    t("license block present everywhere", no_lic, [])
+    t("award and registry block present everywhere", no_lic, [])
+    t("NO free-grant language anywhere", grants, [])
+    t("all three paid tiers quoted everywhere", no_price, [])
     t("deadline present everywhere", no_date, [])
 
     # THE ONE THAT MATTERS MOST. Two people completed anonymously. A citation
