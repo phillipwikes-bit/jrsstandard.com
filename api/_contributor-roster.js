@@ -39,25 +39,6 @@ export const ROSTER = {
   '1wlgcn02gn': { code:'E-08',    kind:'author', first:'Stacyann', name:'Stacyann Young',      title:'Public records and FOIL practice',                      org:'',                        named_on_file:true, note:'co-author and facilitator, public records pilot' },
   'zobi7fgt8q': { code:'V-HR-01', kind:'facil',  first:'Tanvi',     name:'Tanvi Pokhriyal',     title:'HR and employment compliance',                          org:'',                        named_on_file:true, note:'facilitator, HR and employment pilot' },
 
-  // RELIABILITY STUDY EXPERT RATERS (Rung 2a), added 2026-08-14.
-  //
-  // The owner's instruction: the invitation goes to every evaluator who served
-  // as an EXPERT, across Rung 2, Rung 2b and both arms. The reliability study's
-  // expert raters were missing from this roster entirely.
-  //
-  // ONLY the `expert rater` rows are here. Rung 2a also carries 17 `bench
-  // reviewer` rows whose codes were generated in the browser and were never
-  // bound to an identity, so there is no person to invite and no name to
-  // recover. They are anonymous by design, not by omission.
-  //
-  // E-08 is NOT repeated below: she is already on this roster as an author.
-  // E-09, E-12 and E-13 are NOT repeated either: they are the same people as
-  // V-AI-06, V-AI-07 and V-AI-03 and already hold a key. One person, one link.
-  // E-11 has no identity on record at all and cannot be given a link.
-  '8g35408va0': { code:'E-03', kind:'rater', first:'Andrzej', name:'Andrzej Skulski', title:'Founder, Dom Ciszy - Resonance Lab; AI Governance and Decision Systems', org:'', named_on_file:true, note:'reliability study expert rater' },
-  '999cw3iw4i': { code:'E-10', kind:'rater', first:'Rahul', name:'Rahul Potdar', title:'Independent Director (IICA Certified); Corporate Governance, Risk Management and ESG Strategy; Board Adviser; Leontra Technologies; IIM Raipur', org:'', named_on_file:true, note:'reliability study expert rater' },
-  '2u7s9to5ta': { code:'E-14', kind:'rater', first:'Alankar', name:'Alankar Yaduvanshi', title:'Data Privacy Professional (CIPP-E), WNS; 8+ years data privacy and corporate compliance', org:'', named_on_file:true, note:'reliability study expert rater' },
-
   // COMPARISON STUDY COMPLETERS, added 2026-08-14.
   //
   // These were deliberately absent because a JRS-branded page naming the
