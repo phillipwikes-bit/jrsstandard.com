@@ -3259,3 +3259,36 @@ A grep for routes storing record text reported **1**; it was matching my own com
 - Revenue **$0**.
 
 ---
+
+## RUN 2026-08-14T14:30Z: Conversion architecture briefing. And a directive I broke.
+
+### First, my failure
+
+**The previous turn delivered the briefing in chat and did not write it to disk or attach the tracker.** The standing directive is to attach `MASTER_TRACKER.md` on every single response, no exceptions, because the tracker is not deployed and a chat attachment is the only way the owner can reach it. I skipped it. He had to ask.
+
+**Both are now corrected in this run**: `CONVERSION_ARCHITECTURE_BRIEFING.md` and `.docx` are on disk, and the tracker is attached.
+
+### The defect found and fixed during the review
+
+`/api/checkout` opened with **"Payment link not live yet."** That is the last screen a buyer sees before a $500 purchase, and it told a General Counsel the product is unfinished. **It was the worst enterprise signal on the site, and it was my own copy from two days ago.**
+
+Rewritten as what is actually true and is the normal posture at this price: engagements scoped in writing, fixed fee, invoiced, **purchase orders accepted**, no records exchanged at that stage. Returns 200 rather than 503, because scoping is the intended path and not a failure. Three assertions added including a guard against the old wording. Deployed.
+
+### The four findings, measured rather than asserted
+
+| Dimension | Finding |
+|---|---|
+| **Door-level** | The status strip carrying "commercial demand has not been established" sits **above** the seven modes. Claims control is right, placement is inverted. The **95% CI 72.7 to 95.1** appears nowhere on `/check.html`, and a published confidence interval is the credential no governance vendor offers |
+| **Trust architecture** | **Zero** security, DPA, trust or terms pages exist. There is nothing a buyer can forward to their own counsel. `/engagement.html` is the highest-value page that does not exist |
+| **Friction** | Manual scoping is **correct** at this price. Self-serve card checkout at $750 would cost credibility. The problem is silence, not friction: no stated response time, and no bridge between the free check and the $250 engagement |
+| **Structural leaks** | "Phillip Wikes" on **65 pages** with **no entity named anywhere**; personal mailto on **20 pages** with no stated process; **0** terms of service; all three intake pages `noindex` so no inbound buyer can find them |
+
+### Recommendation, single
+
+**Build `/engagement.html`.** Everything else is optimisation. That page is the difference between a General Counsel being interested and being able to act.
+
+### Verification
+
+Guard **12 of 12**. Checkout suite **15 of 15** including the three new assertions. Live checkout verified serving the new copy.
+
+---
