@@ -41,12 +41,13 @@ export const ROSTER = {
 
   // COMPARISON STUDY COMPLETERS, added 2026-08-14.
   //
-  // These were deliberately absent while Arm B was running: a JRS-branded page
-  // naming the standard would have told an unaided-arm reviewer that the
-  // standard existed, breaking the blind mid-study.
+  // These were deliberately absent because a JRS-branded page naming the
+  // standard tells an unaided-arm reviewer that the standard exists.
   //
-  // THE OWNER CLOSED THE STUDY ON 2026-08-14. The blind is spent, so every
-  // completer is treated identically and these 20 join the roster.
+  // THE COMPARISON STUDY IS OPEN AND CLOSES 2026-08-15. The owner directed on
+  // 2026-08-14 that every completer is treated identically and receives the same
+  // confirmation link, so these 20 join the roster. Everyone listed here has
+  // already submitted all 24 records, so the link cannot alter their reviews.
   //
   // RR-130 and RR-132 completed anonymously. They carry no name and
   // named_on_file:null, so the fallback is anonymous and the confirmation page

@@ -31,7 +31,7 @@ The seven-point check at https://jrsstandard.com/check.html is free, ungated and
 
 https://jrsstandard.com/contributor.html?k=xoam4zq6yh
 
-**If I do not hear from you by Saturday, 15 August 2026**, the paper uses the baseline data already on file for you:
+**If I do not hear from you by Monday, 31 August 2026**, the paper uses the baseline data already on file for you:
 
 - **Name:** Kyle McMullan
 - **Title:** Chief Audit Executive; internal audit and financial crimes; the audit hub, London

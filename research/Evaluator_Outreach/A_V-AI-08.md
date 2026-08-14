@@ -31,7 +31,7 @@ The seven-point check at https://jrsstandard.com/check.html is free, ungated and
 
 https://jrsstandard.com/contributor.html?k=agbhlh6n4d
 
-**If I do not hear from you by Saturday, 15 August 2026**, the paper uses the baseline data already on file for you:
+**If I do not hear from you by Monday, 31 August 2026**, the paper uses the baseline data already on file for you:
 
 - **Name:** Gabriela Cortez
 - **Title:** Civil-rights records and bilingual intake; Maryland Commission on Civil Rights

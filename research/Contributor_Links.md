@@ -6,7 +6,7 @@
 
 Each link opens a page that captures how the person wants their name and title printed, a contact address, and three forced-choice permissions, then releases the initiatives, the Investigator Field Guide, the training, the private diagnostic and the results summary.
 
-**Fallback date, read from `api/contributor.js`: Saturday, 15 August 2026.** If a person does not respond by then the paper uses what is on file. Where there is no naming election on file the fallback is anonymous: **a name is never printed on silence alone.**
+**Fallback date, read from `api/contributor.js`: Monday, 31 August 2026.** If a person does not respond by then the paper uses what is on file. Where there is no naming election on file the fallback is anonymous: **a name is never printed on silence alone.**
 
 **Anonymity does not require identifying yourself.** Since 2026-08-13 a contributor electing anonymity confirms with the three permission choices alone; name, title and organization are requested only from someone who has asked to be named.
 

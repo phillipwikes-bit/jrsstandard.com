@@ -16,11 +16,12 @@ built on 2026-08-09 and three Arm B reviewers finished after that date, so
 sourcing the list from it would have silently dropped RR-113, RR-117 and
 RR-127. The CSV is rebuilt with live verification on every roster build.
 
-BOTH ARMS ARE INCLUDED. The Arm B exclusion that used to sit in this pipeline
-was a blind protection: while the comparison study was running, a JRS-branded
-page naming the standard would have told an unaided-arm reviewer that the
-standard existed. **The owner closed the study on 2026-08-14, so that
-protection is retired and every completer is treated identically.**
+BOTH ARMS ARE INCLUDED, ON THE OWNER'S EXPLICIT INSTRUCTION (2026-08-14). The
+Arm B exclusion that used to sit in this pipeline was a blind protection: a
+JRS-branded page naming the standard tells an unaided-arm reviewer that the
+standard exists. **The comparison study is OPEN and closes 2026-08-15.** Every
+person generated here has already submitted all 24 of their records, so the
+message cannot change work they have already done.
 
 WHAT IS STILL NOT GUESSED. Two Arm B completers finished anonymously and have
 no name on record. Their files are generated with the salutation and the
@@ -294,9 +295,10 @@ def main():
       "Names, titles and organizations come from `api/honor.js`; confirmation keys from "
       "`api/_contributor-roster.js`; the deadline from `api/contributor.js`.")
     A("")
-    A("**Both arms included.** The Arm B exclusion was a blind protection while the "
-      "comparison study was running. **The owner closed the study on 2026-08-14**, so it "
-      "is retired and every completer is treated identically.")
+    A("**Both arms included, on the owner's explicit instruction (2026-08-14).** The Arm B "
+      "exclusion was a blind protection. **The comparison study is open and closes "
+      "2026-08-15**; everyone listed here has already submitted all 24 records, so the "
+      "message cannot change work they have already done.")
     A("")
     A("**Deadline on every message: %s.**" % date)
     A("")
