@@ -1,133 +1,179 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://jrsstandard.com/</loc>
+    <loc>https://www.jrsstandard.com/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://jrsstandard.com/training.html</loc>
+    <loc>https://www.jrsstandard.com/training.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://jrsstandard.com/pilot.html</loc>
+    <loc>https://www.jrsstandard.com/pilot.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://jrsstandard.com/enterprise.html</loc>
+    <loc>https://www.jrsstandard.com/enterprise.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://jrsstandard.com/simulations.html</loc>
+    <loc>https://www.jrsstandard.com/simulations.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://jrsstandard.com/jrsstandard.html</loc>
+    <loc>https://www.jrsstandard.com/jrsstandard.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://jrsstandard.com/workflow-fit.html</loc>
+    <loc>https://www.jrsstandard.com/workflow-fit.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jrsstandard.com/implementation-scenarios.html</loc>
+    <loc>https://www.jrsstandard.com/implementation-scenarios.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://jrsstandard.com/operational-boundaries.html</loc>
+    <loc>https://www.jrsstandard.com/operational-boundaries.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://jrsstandard.com/reference/</loc>
+    <loc>https://www.jrsstandard.com/reference/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://jrsstandard.com/reference/ai-assisted-record-failure-modes/</loc>
+    <loc>https://www.jrsstandard.com/reference/ai-assisted-record-failure-modes/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://jrsstandard.com/reference/ai-verification-controls/</loc>
+    <loc>https://www.jrsstandard.com/reference/ai-verification-controls/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://jrsstandard.com/reference/decision-context-loss/</loc>
+    <loc>https://www.jrsstandard.com/reference/decision-context-loss/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://jrsstandard.com/reference/deployment-models/</loc>
+    <loc>https://www.jrsstandard.com/reference/deployment-models/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://jrsstandard.com/reference/documentation-risk-tiers/</loc>
+    <loc>https://www.jrsstandard.com/reference/documentation-risk-tiers/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://jrsstandard.com/reference/escalation-triggers/</loc>
+    <loc>https://www.jrsstandard.com/reference/escalation-triggers/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://jrsstandard.com/reference/field-conditions/</loc>
+    <loc>https://www.jrsstandard.com/reference/field-conditions/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://jrsstandard.com/reference/implementation-maturity-levels/</loc>
+    <loc>https://www.jrsstandard.com/reference/implementation-maturity-levels/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://jrsstandard.com/reference/later-review-failure-cascades/</loc>
+    <loc>https://www.jrsstandard.com/reference/later-review-failure-cascades/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://jrsstandard.com/reference/missing-chronology/</loc>
+    <loc>https://www.jrsstandard.com/reference/missing-chronology/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://jrsstandard.com/reference/record-survivability/</loc>
+    <loc>https://www.jrsstandard.com/reference/record-survivability/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://jrsstandard.com/reference/reviewer-responsibility-boundaries/</loc>
+    <loc>https://www.jrsstandard.com/reference/reviewer-responsibility-boundaries/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://jrsstandard.com/reference/reviewer-worksheet/</loc>
+    <loc>https://www.jrsstandard.com/reference/reviewer-worksheet/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://jrsstandard.com/reference/second-line-review-model/</loc>
+    <loc>https://www.jrsstandard.com/reference/second-line-review-model/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://jrsstandard.com/reference/traveler-test/</loc>
+    <loc>https://www.jrsstandard.com/reference/traveler-test/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://jrsstandard.com/reference/unsupported-generalization/</loc>
+    <loc>https://www.jrsstandard.com/reference/unsupported-generalization/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
+  <url><loc>https://www.jrsstandard.com/about.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/ai-governance-record.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/audit-request.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.jrsstandard.com/calibration-request.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.jrsstandard.com/check.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.jrsstandard.com/codebook.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/datasets.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/decision-reconstruction-risk.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/engagement.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.jrsstandard.com/enterprise.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/evidence-ledger.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/finding.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/governance-request.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.jrsstandard.com/implementation-scenarios.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/index.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/investigator-guides.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/jrsstandard.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/methodology.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/operational-boundaries.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/pilot.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/privacy.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/questions.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/reference/ai-assisted-record-failure-modes/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/reference/ai-verification-controls/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/reference/decision-context-loss/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/reference/deployment-models/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/reference/documentation-risk-tiers/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/reference/escalation-triggers/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/reference/field-conditions/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/reference/implementation-maturity-levels/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/reference/later-review-failure-cascades/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/reference/missing-chronology/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/reference/record-survivability/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/reference/reviewer-responsibility-boundaries/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/reference/reviewer-worksheet/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/reference/second-line-review-model/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/reference/traveler-test/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/reference/unsupported-generalization/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/research.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/results.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/reviewer/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/simulations.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/terms.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.jrsstandard.com/training.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/why-good-decisions-fail.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.jrsstandard.com/workflow-fit.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>
