@@ -10,12 +10,17 @@ let r=await mod.default(get('https://x/api/checkout?o=nope'));
 t('unknown offer -> 404', r.status, 404);
 
 r=await mod.default(get('https://x/api/checkout?o=audit&src=verify'));
-t('unconfigured -> 503 not a redirect', r.status, 503);
+t('unconfigured -> 200 scoping page, not a redirect', r.status, 200);
 t('unconfigured sends no Location', r.headers.get('location'), null);
 const html=await r.text();
 t('names the price', html.includes('$250'), true);
 t('offers the invoice path', html.includes('info@jrsstandard.com'), true);
-t('says nothing was charged', html.includes('Nothing was charged'), true);
+t('says nothing was charged', html.includes('Nothing has been charged'), true);
+// The old copy opened with "Payment link not live yet", which told a buyer at
+// the moment of purchase that the product was unfinished. Guard against it.
+t('never says the payment link is not live', /not live yet|not switched on/i.test(html), false);
+t('states records are not sent at this stage', html.includes('No records are sent at this stage'), true);
+t('accepts a purchase order', html.includes('Purchase orders accepted'), true);
 
 t('POST rejected', (await mod.default(new Request('https://x/api/checkout?o=audit',{method:'POST'}))).status, 405);
 t('isConfigured false on empty', cfg.isConfigured(cfg.OFFERS.audit), false);
