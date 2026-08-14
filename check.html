@@ -83,6 +83,12 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
 .cta-primary{display:inline-block;background:var(--accent);color:#0A0A0A;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:16px 26px;text-decoration:none;border-radius:2px;font-weight:500;line-height:1.5}
 .cta-primary:hover{background:#D2A855}
 .cta-secondary{display:inline-block;color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;padding:14px 0;text-decoration:none;border-bottom:1px solid var(--accent-dim)}
+.evidence-strip{border:1px solid var(--accent-dim);background:var(--surface);padding:18px 20px;border-radius:2px;margin:26px 0}
+.ev-lead{font-family:'Bodoni Moda',serif;font-size:17px;color:var(--text);margin-bottom:14px;line-height:1.4}
+.ev-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-bottom:13px}
+.ev-grid b{display:block;font-family:'Bodoni Moda',serif;font-size:23px;color:var(--accent);line-height:1.15;margin-bottom:4px}
+.ev-grid span{display:block;font-size:12.5px;color:var(--muted);line-height:1.5}
+.ev-note{font-size:13px;color:var(--muted-soft);line-height:1.6;border-top:1px solid var(--rule);padding-top:11px}
 .status-strip{border:1px solid var(--accent-dim);background:var(--surface);padding:13px 16px;border-radius:2px;font-size:13.5px;line-height:1.65;color:var(--muted)}
 
 </style>
@@ -105,8 +111,15 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
 
   <p>Below are seven named ways that failure shows up in writing, each with the question that detects it. <strong>Nothing here is sent anywhere.</strong> There is no registration, no account, no upload, and no form. Open five of your own closed matters and read them against this page.</p>
 
-  <div class="status-strip">
-    <strong>Where this stands.</strong> JRS is under operational validation. Reproducibility and reliability are reported; accuracy, controlled comparison and real-case criterion validity are still accruing. <strong>Commercial demand has not yet been established, and current offers are being tested through controlled market experiments.</strong> Nothing on this page is a claim that JRS has been proven effective.
+  <div class="evidence-strip">
+    <div class="ev-lead">These seven modes are not a checklist someone wrote down. They were tested.</div>
+    <div class="ev-grid">
+      <div><b>83.9%</b><span>detection accuracy against a key fixed before scoring</span></div>
+      <div><b>72.7 to 95.1</b><span>95% confidence interval, participant level</span></div>
+      <div><b>384</b><span>graded reads by 16 independent experts in 11 countries</span></div>
+      <div><b>0.739</b><span>Gwet's AC1 among experts, chance corrected</span></div>
+    </div>
+    <div class="ev-note">Scored under a pre-registered analysis plan fixed before the data was inspected. <b>The interval is published because a point estimate without one is not a measurement.</b></div>
   </div>
 
   <h2>The seven failure modes</h2>
@@ -133,6 +146,10 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
 
   <div id="sa-out">Tick the boxes that apply to the record in front of you.</div>
 
+  <div class="status-strip">
+    <strong>Where this stands, stated plainly.</strong> JRS is under operational validation. Reproducibility and reliability are reported and are shown above; accuracy, controlled comparison and real-case criterion validity are still accruing. <strong>Commercial demand has not yet been established, and current offers are being tested through controlled market experiments.</strong> Nothing on this page claims JRS has been proven effective, and the confidence interval above is wide precisely because the expert panel is small.
+  </div>
+
   <h2>The five conditions behind the check</h2>
 
   <p>The seven modes are symptoms. The five review conditions are what a JRS reader assesses, defined in the <a href="codebook.html">JRS Codebook</a>. Each is at <strong>Experimental</strong> maturity, which is stated plainly rather than implied away.</p>
@@ -153,6 +170,8 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
     <a class="cta-primary" href="mailto:info@jrsstandard.com?subject=5-Record%20Decision%20Reconstruction%20Diagnostic&amp;body=I%20would%20like%20to%20scope%20a%205-record%20diagnostic.%20Please%20send%20scope%2C%20price%20and%20turnaround.%0A%0AOrganization%3A%0ARecord%20type%3A%0ATimeframe%3A" id="cta-diag">Request a 5-record Decision Reconstruction Diagnostic &rarr;</a>
   </p>
   <p style="font-size:13.5px;color:var(--muted-soft);line-height:1.65;margin:0 0 30px">Five de-identified records, read against the five conditions, returned as a written finding. Scope and price agreed in writing before any record is sent. <strong>This is a paid test service being offered for the first time, not an established product.</strong></p>
+
+  <p style="font-size:13.5px;color:var(--muted-soft);line-height:1.7">Fee basis, data handling, retention and deliverable ownership are on one page at <a href="engagement.html">how an engagement works</a>, written to be forwarded to procurement.</p>
 
   <h2>Not what you came for?</h2>
   <p style="margin-bottom:18px">If you would rather stress-test the standard itself than have your records read, the research pathway is separate and always will be.</p>
