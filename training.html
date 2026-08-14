@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JRS Reviewer Training | Decision Defensibility Calibration | JRS™ Justification Review Standard</title>
 <meta property="og:title" content="JRS™ Reviewer Training | Decision Defensibility Calibration" />
-<meta property="og:description" content="JRS provides simulation-based reviewer calibration exercises that examine decision reconstruction risk: whether a record can explain why a consequential decision was made before it is finalized. No registration required. No commercial commitment." />
+<meta property="og:description" content="JRS provides simulation-based reviewer calibration exercises that examine decision reconstruction risk: whether a record can explain why a consequential decision was made before it is finalized." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://jrsstandard.com/training.html" />
 <meta property="og:site_name" content="JRS™ Justification Review Standard" />
@@ -509,10 +509,9 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
 <!-- HERO -->
 <section class="hero-section">
   <div class="hero-inner">
-    <div class="hero-eyebrow">JRS Reviewer Certification Program &nbsp;&middot;&nbsp; Decision Defensibility &nbsp;&middot;&nbsp; No Commercial Commitment Required</div>
+    <div class="hero-eyebrow">JRS Reviewer Certification Program &nbsp;&middot;&nbsp; Decision Defensibility</div>
     <h1 class="hero-h1">Calibrate for Decision Defensibility<br>Before Records Are Finalized</h1>
-    <p class="hero-sub">When a consequential decision is questioned long after it is made, the record becomes the only witness. JRS provides simulation-based calibration exercises that examine decision reconstruction risk across the four AI functions most commonly present in workplace documentation: summarization, recommendation, analysis, and narrative drafting. Each exercise examines whether a record can explain why a decision was made and produces a structured finding that reflects what the JRS pilot program is designed to collect. No registration required. No commercial commitment.</p>
-    <div style="margin-bottom:18px;"><div style="display:inline-block;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:7px 16px;font-weight:600;">No Commercial Commitment Necessary</div></div>
+    <p class="hero-sub">When a consequential decision is questioned long after it is made, the record becomes the only witness. JRS provides simulation-based calibration exercises that examine decision reconstruction risk across the four AI functions most commonly present in workplace documentation: summarization, recommendation, analysis, and narrative drafting. Each exercise examines whether a record can explain why a decision was made and produces a structured finding that reflects what the JRS pilot program is designed to collect.</p>
     <div class="hero-ctas">
       <a href="#simulator" onclick="showSimTab(0)" class="btn-hero-primary">&#9654; Explore Simulation Exercises</a>
       <a href="#roles" class="btn-hero-secondary">Explore by Role</a>
@@ -3171,31 +3170,6 @@ function dismissEnroll(){
   var o = document.getElementById('enroll-overlay');
   if (o) o.style.display = 'none';
 }
-// Optional public listing, offered on the release panel after the training is
-// already unlocked. Nothing the reader has received depends on this click.
-function wireTrainingListing(addr){
-  var btn = document.getElementById('tr-list-go');
-  var out = document.getElementById('tr-list-msg');
-  if (!btn || !out) return;
-  btn.addEventListener('click', function(){
-    btn.disabled = true;
-    out.style.color = 'var(--muted)';
-    out.textContent = 'Adding your name...';
-    fetch('/api/access', { method:'POST', headers:{ 'Content-Type':'application/json' },
-      body: JSON.stringify({ event:'listing', email: addr }) })
-      .then(function(r){ if(!r.ok) throw 0; return r.json(); })
-      .then(function(){
-        out.style.color = 'var(--ready-text)';
-        out.textContent = 'Added. You carry the designation Registered International Advocate. Email info@jrsstandard.com to be removed at any time.';
-        btn.textContent = 'Your name is on the Registry';
-      })
-      .catch(function(){
-        out.style.color = 'var(--review-text)';
-        out.textContent = 'Could not add it just now. Email info@jrsstandard.com and it will be added by hand.';
-        btn.disabled = false;
-      });
-  });
-}
 
 // The terms link sits inside the consent label, so a bare anchor does two wrong
 // things: the label swallows the tap and toggles the box, and target="_blank" is
@@ -3257,19 +3231,8 @@ function enrollSubmit(){
         '<div style="font-family:\'JetBrains Mono\',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:10px">Registered</div>'
       + '<h2 style="font-family:\'Bodoni Moda\',serif;font-weight:400;font-size:23px;color:var(--text);margin:0 0 8px">You are in</h2>'
       + '<p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 14px">The six modules and the certificate are unlocked on this device. Finish all six and you carry the designation <b style="color:var(--text)">JRS Certified Master Reviewer</b>, and you may request a written LinkedIn recommendation from the creator of the standard.</p>'
-      + '<div style="border:1px solid var(--accent-dim);background:var(--surface2);padding:14px 15px;margin-bottom:14px">'
-        + '<div style="font-family:\'JetBrains Mono\',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:7px">Open Initiatives &amp; International Registry</div>'
-        + '<p style="font-size:12.5px;color:var(--muted);line-height:1.6;margin:0">Your registration also opens the free, private diagnostic check. Paste up to twenty five of your own records, redacted, and get the five-condition read on each one immediately. <b style="color:var(--text);font-weight:500">Your record text is never stored</b>: each record is assessed in memory and discarded.</p>'
-      + '</div>'
-      + '<div style="border:1px solid var(--accent-dim);background:var(--surface2);padding:14px 15px;margin-bottom:14px">'
-        + '<div style="font-family:\'JetBrains Mono\',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:7px">Optional &middot; the public Registry</div>'
-        + '<p style="font-size:12.5px;color:var(--muted);line-height:1.6;margin:0">Your name is <b style="color:var(--text);font-weight:500">not</b> on the public list. If you want it there, one click adds it: your name and organization only, never your email address. It reads as a professional position taken as an individual practitioner, not on behalf of your employer.</p>'
-        + '<button type="button" id="tr-list-go" style="width:100%;font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--accent);border:1px solid var(--accent);padding:11px;cursor:pointer;margin-top:11px">Add my name to the public Registry</button>'
-        + '<p id="tr-list-msg" style="font-size:10.5px;color:var(--muted-soft);line-height:1.55;margin:10px 0 0">You can be removed at any time by emailing info@jrsstandard.com.</p>'
-      + '</div>'
       + '<a href="org-pilot.html' + q + '" style="text-decoration:none"><button type="button" style="width:100%;font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:13px;cursor:pointer;margin-bottom:10px">Run the diagnostic on my records</button></a>'
       + '<button type="button" onclick="document.getElementById(\'enroll-overlay\').style.display=\'none\'" style="width:100%;font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--accent);border:1px solid var(--accent);padding:13px;cursor:pointer">Start the training</button>';
-      wireTrainingListing(email);
     })
     .catch(function(){ msg.style.color = 'var(--review-text)'; msg.textContent = 'Could not register just now. Please try again, or email info@jrsstandard.com.'; btn.disabled = false; });
 }
