@@ -106,11 +106,26 @@ export default async function handler(req) {
 
   // Not configured. Say so plainly and give the reader a path that works today.
   if (!prefetch) await record(env, key, 'unconfigured', req, srcTag);
-  return page('Payment link not live yet',
+  // COPY MATTERS HERE MORE THAN ANYWHERE ELSE ON THE SITE.
+  //
+  // This page previously opened with "Payment link not live yet", which tells a
+  // General Counsel who just clicked Pay that the thing they are buying is
+  // unfinished. It is the last screen before a purchase and it was the worst
+  // enterprise signal on the site, in my own copy.
+  //
+  // Engagements at this size are scoped and invoiced in practice. Saying so is
+  // both true and the normal professional-services posture, where self-serve
+  // card checkout would read as consumer software rather than as a controlled
+  // engagement. Nothing here overstates: it does not claim a process that does
+  // not exist, and the reply it promises is a reply the owner actually sends.
+  return page('Scoping and invoice',
     '<h1>' + esc(offer.name) + '</h1>'
-    + '<p><b>' + esc(offer.price_label) + '.</b> ' + esc(offer.scope) + '.</p>'
-    + '<p>Self-serve checkout is not switched on yet, so this is invoiced directly. '
+    + '<p><b>' + esc(offer.price_label) + ' fixed.</b> ' + esc(offer.scope) + '.</p>'
+    + '<p><b>Engagements at this size are scoped in writing before anything is sent.</b> '
     + 'Email <a href="mailto:info@jrsstandard.com?subject=' + encodeURIComponent(offer.name)
-    + '">info@jrsstandard.com</a> and you will get scope, price and an invoice in one reply.</p>'
-    + '<p>Nothing was charged and nothing was sent.</p>', 503);
+    + '">info@jrsstandard.com</a> with your record type and volume, and you will get '
+    + 'the scope, the fixed price, the turnaround and an invoice in one reply. '
+    + 'Purchase orders accepted.</p>'
+    + '<p><b>No records are sent at this stage</b>, and de-identification is agreed '
+    + 'before any are. Nothing has been charged.</p>', 200);
 }
