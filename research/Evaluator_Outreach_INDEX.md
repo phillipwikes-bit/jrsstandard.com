@@ -6,7 +6,7 @@
 
 **Both arms included.** The Arm B exclusion was a blind protection while the comparison study was running. **The owner closed the study on 2026-08-14**, so it is retired and every completer is treated identically.
 
-**Deadline on every message: Friday, 14 August 2026.**
+**Deadline on every message: Saturday, 15 August 2026.**
 
 | Arm | Code | Honor | Evaluator | Organization | Confirmation link | File |
 |---|---|---|---|---|---|---|

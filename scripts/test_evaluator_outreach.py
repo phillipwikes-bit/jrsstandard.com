@@ -68,7 +68,7 @@ def main():
         for price in ("$250", "$500", "$750"):
             if price not in s:
                 no_price.append("%s missing %s" % (os.path.basename(f), price))
-        if "Friday, 14 August 2026" not in s:
+        if "Saturday, 15 August 2026" not in s:
             no_date.append(os.path.basename(f))
 
     t("every file carries a key that exists in the roster", bad_key, [])

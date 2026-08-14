@@ -31,7 +31,7 @@ The seven-point check at https://jrsstandard.com/check.html is free, ungated and
 
 https://jrsstandard.com/contributor.html?k=42zgubzfq8
 
-**If I do not hear from you by Friday, 14 August 2026**, the paper uses the baseline data already on file for you:
+**If I do not hear from you by Saturday, 15 August 2026**, the paper uses the baseline data already on file for you:
 
 - **Name:** Andres Lage Freire
 - **Title:** AI Governance Lead and Responsible AI Architect; EU AI Act, ISO 42001

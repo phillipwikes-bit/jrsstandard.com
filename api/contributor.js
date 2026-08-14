@@ -17,10 +17,14 @@ export const config = { runtime: 'edge' };
 //   4. Releases what was promised: the two initiative sign-ups, the Investigator Field Guide,
 //      the training, and the aggregate results summary.
 //
-// DELIBERATE OMISSION: comparison-arm reviewers (RR-### codes) are NOT in this
-// roster and must not be added. That arm is blind; a JRS-branded page naming the
-// standard would break the blind for anyone still reviewing, and the debrief for
-// that group is a separate message drafted in research/Reviewer_Results_Release_Plan.md.
+// SUPERSEDED 2026-08-14: comparison-arm reviewers ARE now in this roster.
+// They were excluded while Arm B was running, because a JRS-branded page naming
+// the standard would have told an unaided-arm reviewer the standard existed and
+// broken the blind mid-study. The owner closed the study on 2026-08-14, so the
+// protection is spent and all 20 comparison completers were added.
+//
+// The reasoning is kept rather than deleted: if a blind study is ever run again,
+// this is the constraint that applies and the reason it applies.
 //
 // RESULTS GATE: the results summary is served by this endpoint, never embedded
 // in the page source, and only when RESULTS_RELEASED is true. The release rule
@@ -42,7 +46,7 @@ const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 // Fallback date. If a contributor does not respond by this date, the paper uses
 // the name and title already on file for them (or anonymity where that is the
 // election on file). Shown on the page so the rule is visible, not implied.
-const FALLBACK_DATE = 'Friday, 14 August 2026';
+const FALLBACK_DATE = 'Saturday, 15 August 2026';
 
 // Flip to true ONLY when both conditions in the results plan are met:
 // comparison-arm recruitment closed AND the analysis locked. Until then the

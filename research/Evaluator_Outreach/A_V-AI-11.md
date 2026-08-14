@@ -31,7 +31,7 @@ The seven-point check at https://jrsstandard.com/check.html is free, ungated and
 
 https://jrsstandard.com/contributor.html?k=h5dypgmtdu
 
-**If I do not hear from you by Friday, 14 August 2026**, the paper uses the baseline data already on file for you:
+**If I do not hear from you by Saturday, 15 August 2026**, the paper uses the baseline data already on file for you:
 
 - **Name:** Andrey Ekhmenin
 - **Title:** Founder, EAS; governance diagnostics and post-execution review
