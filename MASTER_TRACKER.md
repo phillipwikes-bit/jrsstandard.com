@@ -3464,3 +3464,47 @@ A balanced-div cut on `org-pilot.html` removed **157 lines including the page's 
 `jrsstandard.html` carries a null-reference JS error and a 2-div imbalance. **Both pre-date this change** (3115/3113 divs before, 3114/3112 after, so a balanced pair was removed) and neither was introduced here.
 
 ---
+
+## RUN 2026-08-14T21:00Z: End-to-end audit. Four defects found, all fixed and deployed.
+
+### 1. Structural
+
+| Finding | Detail |
+|---|---|
+| **22 public pages absent from `sitemap.xml`** | Including **every commercial page**: `check.html`, `engagement.html`, `terms.html` and all three intake pages. Un-`noindex`ing them last pass gave crawlers permission but no path. **46 URLs added, XML validated, 72 live** |
+| **Canonical pointed at a redirect, site-wide** | Every canonical and `og:url` declared `https://jrsstandard.com`, and the server **307-redirects apex to www**. Every page told a crawler its canonical version lives at a URL that immediately redirects away. **Normalised to www on 51 pages**; the sitemap carried two hosts (26 apex, 46 www) and now carries one |
+| **`org-pilot.html` was `noindex`** | A conversion page with an intake flow, hidden from discovery. Now `index,follow` |
+| **16 `reference/` pages have one inbound link** | Only `index.html` links into `/reference/`. They are in the sitemap, so they are crawlable, but they carry almost no internal link equity. **Reported, not changed**: this is an information-architecture decision |
+
+### 2. Technical and security
+
+| Check | Result |
+|---|---|
+| `/api/checkout` unknown offer | **404** |
+| `/api/checkout` unconfigured offer | **200 scoping page**, no `Location` header, no guessed destination |
+| `/api/bench-score` unlicensed | **503 `licensing_not_provisioned`** |
+| Key, per-record results or condition logic in any response | **none** |
+| Routes storing submitted record text | **zero** |
+| Test suites | **4 suites, all pass**: checkout 15, bench-score 15, outreach 18, scout |
+| Zero-drift guard | **12 of 12** |
+
+**No new security defect found.** The record-text and benchmark-derivability exposures found earlier this month remain closed.
+
+### 3. Commercial architecture
+
+| Finding | Detail |
+|---|---|
+| Price sync | **Clean.** Only $250 / $500 / $750 appear on commercial pages, all read from `api/_offer-config.js`. The dollar figures on `ai-records-*.html` are constructed study-record content, not offers |
+| **`check.html` CTA was a raw mailto** | The free diagnostic's primary CTA skipped the intake page carrying the price, the Data Isolation Guarantee and the checkout route. **Now routes to `audit-request.html`** |
+| Journey | `check` to `engagement` to intake to checkout, **no dead ends** |
+| Procurement readiness | `terms.html`, `engagement.html`, `privacy.html` all present; purchase orders and invoicing stated; Data Isolation Guarantee on all three intake pages |
+
+### Verified live after deploy
+
+72 sitemap URLs on one host; commercial pages present; `check.html` canonical reads `www`; `org-pilot.html` `index,follow`; `check.html` CTA points at `audit-request.html`.
+
+### Still outstanding, unchanged
+
+Three checkout URLs, `BENCH_KEY_JSON` and `BENCH_SCORE_TOKENS`, the registered address and governing jurisdiction for `terms.html`, and **36 outreach messages still unsent**.
+
+---
