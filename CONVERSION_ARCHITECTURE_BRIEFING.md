@@ -2,6 +2,15 @@
 
 **Prepared 2026-08-14. Every finding checked against the live site and the files on disk.**
 
+## STATUS: the two headline remedies are BUILT AND LIVE
+
+| Remedy | State |
+|---|---|
+| Re-architect the `/check.html` fold | **LIVE.** Evidence above the modes, caveat below the self-assessment. Verified order on the rendered page: evidence 347px, modes 571px, caveat 2116px |
+| Build `/engagement.html` | **LIVE**, linked from 36 pages |
+
+**Still open** are the entity name, terms of service, the `noindex` decision on the intake pages, and the scoping-call bridge. Those are owner decisions, not build work.
+
 **Fixed before this was written:** `/api/checkout` opened with *"Payment link not live yet."* That was the last screen before a $500 purchase, telling a General Counsel the product is unfinished. It now reads as scoping and invoicing: fixed price, purchase orders accepted, no records exchanged at that stage. Deployed and verified live. **That was my copy, not a recommendation.**
 
 ---

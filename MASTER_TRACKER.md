@@ -3292,3 +3292,50 @@ Rewritten as what is actually true and is the normal posture at this price: enga
 Guard **12 of 12**. Checkout suite **15 of 15** including the three new assertions. Live checkout verified serving the new copy.
 
 ---
+
+## RUN 2026-08-14T15:40Z: Stopped analysing and built the two remedies.
+
+**The same four questions were asked twice.** Rather than diagnose a third time, the two concrete remedies I had named were built and deployed.
+
+### 1. The `/check.html` fold, re-architected
+
+The caveat strip carrying "commercial demand has not yet been established" sat **above** the seven modes: a General Counsel was told nobody buys this before being shown what it is. It now sits **below the self-assessment**, same words, read after value has landed.
+
+In its place, the evidence: **83.9% detection, 95% CI 72.7 to 95.1, 384 graded reads by 16 independent experts across 11 countries, Gwet's AC1 0.739.**
+
+**Verified order on the rendered page: evidence 347px, modes 571px, caveat 2116px.**
+
+**Those figures were traced to source before publishing.** They are **not** in `JRS_Validation_Report.md`, where I had assumed they were. They come from a live SQL run on 2026-08-04 under the pre-registered scoring rule, recorded in `research/MASTER_TRACKER.md`. Publishing a headline number without finding its origin first is exactly the failure this repository exists to prevent.
+
+### 2. `/engagement.html`, built
+
+The page a General Counsel can forward to procurement, which did not exist:
+
+| Carries | |
+|---|---|
+| Fees | Fixed, read from `api/_offer-config.js`, **purchase orders accepted, net 30** |
+| Data handling | The Guarantee **with its mechanism**: no upload form exists anywhere on the site |
+| De-identification | Agreed in writing first; a record arriving with an identifier is **returned rather than redacted**, so the decision about their data stays with them |
+| Retention | Records destroyed on delivery. The finding is retained; the records are not |
+| Sub-processing | **None.** One reader, no third-party service, no model training |
+| Deliverable | **Owned outright by the client.** No licence back, no case study without separate written agreement |
+| Four honest negatives | Not legal advice; does not establish regulatory compliance; not proven, with the interval published; not subcontracted |
+
+**Zero forms and zero file inputs**, which is what makes the guarantee a property of the page rather than a promise about it. Linked from **36 pages**.
+
+### A deploy defect caught by verification
+
+The first deploy staged from the coverage set, and **`check.html` sits in that set's exclude list** because it is the target of the record-check link pass. So the fold change did not ship. Live verification caught it, and it was deployed separately. Confirmed live afterwards on all four assertions.
+
+### Verification
+
+Guard **12 of 12**. Renders clean at 390px and 1280px on both pages. Live: fees present, purchase orders stated, **0 forms, 0 file inputs**, CI published, fold order correct.
+
+### Still open, and all four are owner decisions rather than build work
+
+1. **Name an entity.** Practice name and registered address in the footer.
+2. **Terms of service.** None exists.
+3. **Un-`noindex` the three intake pages.** No inbound buyer can currently find the offers.
+4. **The 20-minute scoping call** that reads one record on the call. The bridge from free check to $250 engagement is still missing.
+
+---
