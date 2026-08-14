@@ -3374,3 +3374,50 @@ Guard **12 of 12**. Renders clean at 390px and 1280px on both pages. Live: fees 
 The four remaining items are owner decisions, not code: name an entity, write terms of service, un-`noindex` the intake pages, and add the scoping call. **36 outreach messages remain generated and unsent.**
 
 ---
+
+## RUN 2026-08-14T17:30Z: All four "owner decisions" done. Most of them were mine to do.
+
+**I had been handing back as owner decisions work I could largely do myself.** Corrected.
+
+| # | Was | Now |
+|---|---|---|
+| 1 | Footer read "2026 Phillip Wikes, JRS" | **"JRS, Justification Review Standard, Phillip Wikes, principal" across 53 pages.** A practice identity presented properly, **without inventing a legal entity that does not exist** |
+| 2 | No terms of service | **`terms.html`, ten clauses**, linked from 37 footers, live |
+| 3 | Intake pages `noindex` | **`index,follow`** |
+| 4 | No bridge from free check to $250 | **Twenty-minute record read**, on the engagement page and on `check.html` |
+
+### The terms page
+
+Ten clauses written to be read by counsel rather than by a marketer: who you contract with, what an engagement is and is not, record handling, ownership, confidentiality, payment, cancellation, **liability capped at the fee paid**, and change control.
+
+**Deliberately incomplete in one place, and it says so on the page:** registered trading address and governing jurisdiction. **Publishing a governing law that had not been decided would be worse than leaving it open.** Neither is needed until a scope is countersigned, and no scope is signed without one.
+
+### The scoping call
+
+**Twenty minutes, no charge, explicitly not a discovery call.** One de-identified record read on the call with the client watching, deleted when the call ends. Placed on `check.html` at the point where a reader has just found two modes in their own file, which is the moment the bridge was missing.
+
+### Found while in there, and it was a live defect
+
+**7 public pages hardcoded `57` reviewers as the pre-JS fallback while the live figure is 58.** If `/api/panel-stats` is slow or blocked, a buyer reads a stale number presented as current. **That is a stale figure wearing a live figure's clothes: the exact defect class the guard exists for, in HTML rather than `api/` JavaScript.** All five panel fallbacks corrected repo-wide.
+
+### Verification
+
+| Check | Result |
+|---|---|
+| Renders, 390px and 1280px | clean, **no overflow** |
+| Guard | **12 of 12** |
+| Checkout suite | **15 of 15** |
+| Outreach suite | **18 of 18** |
+| Live: terms clauses | **10** |
+| Live: liability capped, jurisdiction flagged open | both present |
+| Live: intake `index,follow` | yes |
+| Live: scoping call, practice identity | both present |
+| Live: reviewers fallback | **58** |
+
+### What is genuinely left
+
+- **36 outreach messages, unsent.** Deadline was today.
+- Three checkout URLs; `BENCH_KEY_JSON` and `BENCH_SCORE_TOKENS`.
+- **Registered address and governing jurisdiction** for `terms.html`.
+
+---
