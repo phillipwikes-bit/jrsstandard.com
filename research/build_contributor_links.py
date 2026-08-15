@@ -81,6 +81,18 @@ def main():
       "initiatives, the Investigator Field Guide, the training, the private diagnostic and "
       "the results summary.")
     A("")
+    A("**THE RESULTS SUMMARY IS GATED AND THE GATE IS STRUCTURAL, NOT COSMETIC.** "
+      "`api/contributor.js` returns the summary only from the POST branch, after all "
+      "three forced choices validate. A GET on the same link returns the person and "
+      "nothing else, so opening the URL, sharing it, or fetching it does not disclose "
+      "the findings. Verified by position in the source: the GET branch contains no "
+      "reference to results at all.")
+    A("")
+    A("**Released 2026-08-15.** Both studies are closed and the analysis is locked, so "
+      "`RESULTS_RELEASED` is now true and a contributor who submits sees the full "
+      "finding, including the comparison result that did not meet its pre-registered "
+      "bar. Everyone gets the same summary on the same terms.")
+    A("")
     A("**Fallback date, read from `api/contributor.js`: %s.** If a person does not respond "
       "by then the paper uses what is on file. Where there is no naming election on file "
       "the fallback is anonymous: **a name is never printed on silence alone.**" % date)
