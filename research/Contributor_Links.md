@@ -57,6 +57,14 @@ Each link opens a page that captures how the person wants their name and title p
 | Marguerite Maroudis, PhD | `V-AI-29` |  | https://www.jrsstandard.com/contributor.html?k=s3ud3trom6 |
 | Andres Lage Freire | `V-AI-30` |  | https://www.jrsstandard.com/contributor.html?k=42zgubzfq8 |
 
+## Reliability study expert raters
+
+| Person | Code | Role note | Link |
+|---|---|---|---|
+| Andrzej Skulski | `E-03` | reliability study expert rater | https://www.jrsstandard.com/contributor.html?k=8g35408va0 |
+| Rahul Potdar | `E-10` | reliability study expert rater | https://www.jrsstandard.com/contributor.html?k=999cw3iw4i |
+| Alankar Yaduvanshi | `E-14` | reliability study expert rater | https://www.jrsstandard.com/contributor.html?k=2u7s9to5ta |
+
 ## Co-authors
 
 | Person | Code | Role note | Link |
@@ -72,6 +80,6 @@ Each link opens a page that captures how the person wants their name and title p
 
 ---
 
-**39 people on the roster, 39 links listed.** These two numbers are the same by construction: every roster entry is rendered and nothing else is.
+**42 people on the roster, 42 links listed.** These two numbers are the same by construction: every roster entry is rendered and nothing else is.
 
 **Comparison-arm reviewers (RR-### codes) are on this sheet since 2026-08-14**, on the owner's instruction. The line here used to say they were absent and must not be added, which stopped being true the day they were added.

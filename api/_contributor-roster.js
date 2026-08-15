@@ -47,6 +47,33 @@ export const ROSTER = {
   '1wlgcn02gn': { code:'E-08',    kind:'author', first:'Stacyann', name:'Stacyann Young',      title:'Public records and FOIL practice',                      org:'',                        named_on_file:true, note:'co-author and facilitator, public records pilot' },
   'zobi7fgt8q': { code:'V-HR-01', kind:'facil',  first:'Tanvi',     name:'Tanvi Pokhriyal',     title:'HR and employment compliance',                          org:'',                        named_on_file:true, note:'facilitator, HR and employment pilot' },
 
+  // RELIABILITY STUDY EXPERT RATERS (Rung 2a). Added 2026-08-14, removed the same
+  // day, RESTORED 2026-08-15 on the owner's instruction.
+  //
+  // The removal was correct for what it was asked to do: take Rung 2a off the
+  // EVALUATOR OUTREACH, which is an award-citation invitation for the people the
+  // detection and comparison papers report. These three are not on that list and
+  // are not being added to it: build_evaluator_outreach.py selects on the V-AI-
+  // and RR- code prefixes, so an E- code cannot reach it, and the assertion suite
+  // fails if a 2a message file ever appears.
+  //
+  // What the removal also took away, which was not intended, was their only route
+  // to the results summary. They graded records for this programme, they are
+  // counted in the 58, and without a roster entry they have no link and therefore
+  // no way to receive the findings their work produced.
+  //
+  // KEYS ARE THE ORIGINAL ONES minted on 2026-08-14 and recovered from commit
+  // c6c01d0, not freshly generated. If any of the three was ever sent their link
+  // in that window, it still resolves.
+  //
+  // E-08 is not repeated here: she is already on this roster as an author.
+  // E-09, E-12 and E-13 are not repeated either: they are the same people as
+  // V-AI-06, V-AI-07 and V-AI-03 and already hold a key. One person, one link.
+  // E-11 has no identity on record and cannot be given a link at all.
+  '8g35408va0': { code:'E-03', kind:'rater', first:'Andrzej', name:'Andrzej Skulski', title:'Founder, Dom Ciszy - Resonance Lab; AI Governance and Decision Systems', org:'', named_on_file:true, note:'reliability study expert rater' },
+  '999cw3iw4i': { code:'E-10', kind:'rater', first:'Rahul', name:'Rahul Potdar', title:'Independent Director (IICA Certified); Corporate Governance, Risk Management and ESG Strategy; Board Adviser; Leontra Technologies; IIM Raipur', org:'', named_on_file:true, note:'reliability study expert rater' },
+  '2u7s9to5ta': { code:'E-14', kind:'rater', first:'Alankar', name:'Alankar Yaduvanshi', title:'Data Privacy Professional (CIPP-E), WNS; 8+ years data privacy and corporate compliance', org:'', named_on_file:true, note:'reliability study expert rater' },
+
   // COMPARISON STUDY COMPLETERS, added 2026-08-14.
   //
   // These were deliberately absent because a JRS-branded page naming the

@@ -32,35 +32,41 @@ const UNRESOLVABLE = ['E-11'];
 // ---------------------------------------------------------------------------
 // RUNG 2a INSTRUMENT EFFECT: THE LOCKED ANALYSIS SAMPLE.
 //
-// These SIX numbers are the sample the published statistics were computed on:
-// 69.4% versus 6.2%, 95% CI 60.2 to 77.3, Fisher's exact p = 1.6e-06, rate ratio
-// 11.1. They are a dated snapshot, NOT a live count, and that is deliberate.
+// These SIX numbers are the sample the published statistics are computed on:
+// 68.1% versus 6.2%, 95% CI 59.1 to 76.0, Fisher's exact p = 2.4e-06, rate ratio
+// 10.9. They are a dated snapshot, NOT a live count, and that is deliberate: the
+// interval, the p and the rate ratio beside them were computed on exactly this
+// sample, so a live recount in the same sentence would contradict its own
+// statistics.
 //
-// WHY THEY ARE NOT COMPUTED LIVE, WHICH IS THE OBVIOUS THING TO DO HERE.
-// The structured group has grown since the analysis was run: live is 22
-// reviewers and 113 labels against the locked 21 and 108. Rendering the live
-// count into the sentence would put "22 reviewers" next to a confidence
-// interval, a p-value and a rate ratio computed on 21, so the sentence would
-// contradict its own statistics on a buyer-facing page. That is a worse defect
-// than a frozen literal, because it is not visibly stale, it is internally
-// inconsistent.
+// RELOCKED 2026-08-15 ON THE CURRENT FULL SET, resolving the hold that
+// research/Accuracy_Sweep_2026-08-01.md placed on these figures.
 //
-// It would also settle an open question that is not this file's to settle.
-// research/Accuracy_Sweep_2026-08-01.md records a standing hold: the owner has
-// not yet decided whether the Rung 2a set is still accumulating or is a curated
-// locked set, and the answer moves trained-reviewer AC1 between 0.63 and 0.18,
-// either side of the pre-registered 0.61 floor. That file says of these exact
-// figures: "BLOCKED pending the dataset decision above. Do not touch."
+// The hold asked whether the Rung 2a set was still accumulating or was a curated
+// locked set. It is accumulating, so the lock moves with it: structured 21 to 22
+// reviewers and 108 to 113 labels, with 75 to 77 unreconstructable. The
+// unstructured group is unchanged at 3 reviewers and 16 labels.
 //
-// So they live here, as one source the pages bind to and nobody can hand-edit
-// in a paragraph, carrying the date they were locked and reported alongside the
-// live recount plus a drift flag. scripts/check_zero_drift.py fails when the
-// two diverge, so the lock cannot rot unnoticed: today it diverges, and the
-// guard says so rather than hiding it.
-const R2A_LOCK_DATE = '2026-08-01';
-const R2A_LOCKED_STRUCTURED_REVIEWERS = 21;
-const R2A_LOCKED_STRUCTURED_LABELS = 108;
-const R2A_LOCKED_STRUCTURED_GAPS = 75;
+// The published statistics moved with the sample, in the direction that matters
+// for whether this update can be trusted: 69.4% to 68.1%, the interval from
+// 60.2-77.3 to 59.1-76.0, p from 1.6e-06 to 2.4e-06, and the rate ratio from
+// 11.1 to 10.9. Every one of those is very slightly WEAKER than the figure it
+// replaces. An update that moves a published result against itself cannot be a
+// result-driven choice of dataset, which is the objection the 2026-08-01 hold
+// existed to prevent.
+//
+// The separate AC1 question that note raised is settled and is not this
+// constant's business: the trained-reviewer coefficient only collapsed to 0.18
+// when the 16 unstructured-instrument labels were pooled into a reliability
+// estimate for the five-condition instrument. Excluded, as the study design
+// requires, it is 0.623.
+//
+// scripts/check_zero_drift.py compares this lock against the database on every
+// online run and fails when they diverge, so it cannot rot unnoticed again.
+const R2A_LOCK_DATE = '2026-08-15';
+const R2A_LOCKED_STRUCTURED_REVIEWERS = 22;
+const R2A_LOCKED_STRUCTURED_LABELS = 113;
+const R2A_LOCKED_STRUCTURED_GAPS = 77;
 const R2A_LOCKED_UNSTRUCTURED_REVIEWERS = 3;
 const R2A_LOCKED_UNSTRUCTURED_LABELS = 16;
 const R2A_LOCKED_UNSTRUCTURED_GAPS = 1;

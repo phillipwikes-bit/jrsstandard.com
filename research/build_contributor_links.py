@@ -34,6 +34,7 @@ BASE = "https://www.jrsstandard.com/contributor.html?k="
 # Group label per roster `kind`. Order is the order they appear in the sheet.
 GROUPS = [
     ("panel", "International detection panel"),
+    ("rater", "Reliability study expert raters"),
     ("author", "Co-authors"),
     ("facil", "Domain pilot facilitators"),
 ]
