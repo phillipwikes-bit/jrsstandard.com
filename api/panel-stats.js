@@ -29,6 +29,51 @@ const SAME_PERSON_AS_ARM_A = ['E-09', 'E-12', 'E-13'];
 // left out rather than inflating the figure by one.
 const UNRESOLVABLE = ['E-11'];
 
+// ---------------------------------------------------------------------------
+// RUNG 2a INSTRUMENT EFFECT: THE LOCKED ANALYSIS SAMPLE.
+//
+// These SIX numbers are the sample the published statistics were computed on:
+// 69.4% versus 6.2%, 95% CI 60.2 to 77.3, Fisher's exact p = 1.6e-06, rate ratio
+// 11.1. They are a dated snapshot, NOT a live count, and that is deliberate.
+//
+// WHY THEY ARE NOT COMPUTED LIVE, WHICH IS THE OBVIOUS THING TO DO HERE.
+// The structured group has grown since the analysis was run: live is 22
+// reviewers and 113 labels against the locked 21 and 108. Rendering the live
+// count into the sentence would put "22 reviewers" next to a confidence
+// interval, a p-value and a rate ratio computed on 21, so the sentence would
+// contradict its own statistics on a buyer-facing page. That is a worse defect
+// than a frozen literal, because it is not visibly stale, it is internally
+// inconsistent.
+//
+// It would also settle an open question that is not this file's to settle.
+// research/Accuracy_Sweep_2026-08-01.md records a standing hold: the owner has
+// not yet decided whether the Rung 2a set is still accumulating or is a curated
+// locked set, and the answer moves trained-reviewer AC1 between 0.63 and 0.18,
+// either side of the pre-registered 0.61 floor. That file says of these exact
+// figures: "BLOCKED pending the dataset decision above. Do not touch."
+//
+// So they live here, as one source the pages bind to and nobody can hand-edit
+// in a paragraph, carrying the date they were locked and reported alongside the
+// live recount plus a drift flag. scripts/check_zero_drift.py fails when the
+// two diverge, so the lock cannot rot unnoticed: today it diverges, and the
+// guard says so rather than hiding it.
+const R2A_LOCK_DATE = '2026-08-01';
+const R2A_LOCKED_STRUCTURED_REVIEWERS = 21;
+const R2A_LOCKED_STRUCTURED_LABELS = 108;
+const R2A_LOCKED_STRUCTURED_GAPS = 75;
+const R2A_LOCKED_UNSTRUCTURED_REVIEWERS = 3;
+const R2A_LOCKED_UNSTRUCTURED_LABELS = 16;
+const R2A_LOCKED_UNSTRUCTURED_GAPS = 1;
+
+// bench_labels.mode carries the arm: 'jrs' applied the five conditions,
+// 'normal' did not. determination 'gap_identified' is the unreconstructable
+// call. Both mappings are confirmed by reproduction: the locked sample's
+// unstructured group reproduces exactly at 3 reviewers, 16 labels, 1 gap,
+// which is the 6.2% in the published sentence.
+const R2A_STRUCTURED_MODE = 'jrs';
+const R2A_UNSTRUCTURED_MODE = 'normal';
+const R2A_UNRECONSTRUCTABLE = 'gap_identified';
+
 // COUNTRIES AND CONTINENTS CANNOT BE COMPUTED HERE AND ARE NOT PRETENDED TO BE.
 //
 // No country is stored in any anon-readable table: pilot_progress and
@@ -92,7 +137,7 @@ export default async function handler(req){
     const out = await Promise.all([
       get('pilot_progress?select=code,total_reads&limit=5000'),
       get('armb_progress?select=code,reads&limit=5000'),
-      get('bench_labels?select=labeler_code&limit=20000')
+      get('bench_labels?select=labeler_code,mode,determination&limit=20000')
     ]);
     armA = out[0]; armB = out[1]; labels = out[2];
   } catch (e) {
@@ -138,6 +183,24 @@ export default async function handler(req){
   const reviewers = graded + newExperts + bench;
   const completers = completersA + completersB;
 
+  // Rung 2a instrument effect, recounted live so the locked sample above is
+  // compared against the database on every request rather than taken on trust.
+  function r2a(mode){
+    const rows = labels.filter(function(r){ return r.mode === mode; });
+    const who = {};
+    rows.forEach(function(r){ if (r.labeler_code) who[r.labeler_code] = true; });
+    const gaps = rows.filter(function(r){ return r.determination === R2A_UNRECONSTRUCTABLE; }).length;
+    return { reviewers: Object.keys(who).length, labels: rows.length, gaps: gaps };
+  }
+  const liveStructured = r2a(R2A_STRUCTURED_MODE);
+  const liveUnstructured = r2a(R2A_UNSTRUCTURED_MODE);
+  const r2aDrift = (liveStructured.reviewers !== R2A_LOCKED_STRUCTURED_REVIEWERS
+                 || liveStructured.labels !== R2A_LOCKED_STRUCTURED_LABELS
+                 || liveStructured.gaps !== R2A_LOCKED_STRUCTURED_GAPS
+                 || liveUnstructured.reviewers !== R2A_LOCKED_UNSTRUCTURED_REVIEWERS
+                 || liveUnstructured.labels !== R2A_LOCKED_UNSTRUCTURED_LABELS
+                 || liveUnstructured.gaps !== R2A_LOCKED_UNSTRUCTURED_GAPS);
+
   // null, never a substituted constant, when resolution produced nothing.
   const countriesAll  = geo.resolved > 0 ? geo.countries : null;
   const continentsAll = geo.resolved > 0 ? geo.continents : null;
@@ -175,6 +238,38 @@ export default async function handler(req){
     reviewers_all: reviewers,
     registered_all: registered,
 
+    // RUNG 2a INSTRUMENT EFFECT. The LOCKED analysis sample, which is what the
+    // published sentence and its statistics rest on. Pages bind to these four.
+    rung2a_structured_reviewers: R2A_LOCKED_STRUCTURED_REVIEWERS,
+    rung2a_structured_labels: R2A_LOCKED_STRUCTURED_LABELS,
+    rung2a_unstructured_reviewers: R2A_LOCKED_UNSTRUCTURED_REVIEWERS,
+    rung2a_unstructured_labels: R2A_LOCKED_UNSTRUCTURED_LABELS,
+
+    // The same six figures recounted from the database right now, the date the
+    // lock was taken, and whether the two still agree. Bound to no page: this is
+    // the material the drift guard and the owner read.
+    rung2a_locked_on: R2A_LOCK_DATE,
+    rung2a_live: {
+      structured_reviewers: liveStructured.reviewers,
+      structured_labels: liveStructured.labels,
+      structured_gaps: liveStructured.gaps,
+      unstructured_reviewers: liveUnstructured.reviewers,
+      unstructured_labels: liveUnstructured.labels,
+      unstructured_gaps: liveUnstructured.gaps
+    },
+    rung2a_sample_drift: r2aDrift,
+    rung2a_note: 'The published rung2a_* keys are the LOCKED analysis sample of '
+               + R2A_LOCK_DATE + ', not a live count, because the confidence interval, '
+               + 'Fisher p and rate ratio quoted beside them were computed on it. '
+               + 'rung2a_live is that same sample recounted now. '
+               + (r2aDrift
+                   ? 'THEY DISAGREE. The set has grown since the analysis was run, so '
+                     + 'the published statistics have to be recomputed before the '
+                     + 'figures beside them can move. Held pending an owner decision on '
+                     + 'whether the Rung 2a set is accumulating or curated: see '
+                     + 'research/Accuracy_Sweep_2026-08-01.md.'
+                   : 'They agree, so the lock still describes the current database.'),
+
     // The words a page prints next to each figure. Held here so 18 pages
     // cannot describe the same population 18 slightly different ways.
     scope_labels: {
@@ -186,7 +281,11 @@ export default async function handler(req){
       continents_all: 'all completers',
       continents_detection: 'detection panel',
       reviewers_all: 'all three studies',
-      registered_all: 'all three studies'
+      registered_all: 'all three studies',
+      rung2a_structured_reviewers: 'reliability set, applied the five conditions',
+      rung2a_structured_labels: 'reliability set, applied the five conditions',
+      rung2a_unstructured_reviewers: 'reliability set, worked without the conditions',
+      rung2a_unstructured_labels: 'reliability set, worked without the conditions'
     },
 
     // ---------------------------------------------------------------------
