@@ -25,7 +25,15 @@ export const ROSTER = {
   'agbhlh6n4d': { code:'V-AI-08', kind:'panel',  first:'Gabriela',  name:'Gabriela Cortez',     title:'Civil rights records and bilingual intake',             org:'',                        named_on_file:true },
   's3ln3ud13s': { code:'V-AI-10', kind:'panel',  first:'Lawal',     name:'Lawal Olabanji',      title:'Operations and records management',                     org:'ALTV',                    named_on_file:true },
   'h5dypgmtdu': { code:'V-AI-11', kind:'panel',  first:'Andrey',    name:'Andrey Ekhmenin',     title:'Founder, EAS; governance diagnostics and post-execution review', org:'EAS',            named_on_file:true },
-  'xoam4zq6yh': { code:'V-AI-12', kind:'author', first:'Kyle',      name:'Kyle McMullan',       title:'Chief Audit Executive',                                 org:'',                        named_on_file:true, note:'panel reviewer and co-author, Business Ethics paper' },
+  // RECLASSIFIED 2026-08-15 from kind:'author' to kind:'panel'. He is a Study
+  // 011 detection completer: Arm A, 24 of 24 reads, status COMPLETE in
+  // research/Expert_Roster_All_Studies_2026-08-06.csv. Carrying kind:'author'
+  // made contributor.html greet him as "Co-author and contributor" rather than
+  // "International reviewer panel" and filed him under Co-authors on the link
+  // sheet, so the one person who is both was the only completer not receiving
+  // the regular study link. The co-author fact is kept in the note; it is
+  // additional to his panel role, not a replacement for it.
+  'xoam4zq6yh': { code:'V-AI-12', kind:'panel',  first:'Kyle',      name:'Kyle McMullan',       title:'Chief Audit Executive',                                 org:'',                        named_on_file:true, note:'detection panel completer; also co-author, Business Ethics paper' },
   'hpyvpad2sk': { code:'V-AI-16', kind:'panel',  first:'Gabriela',  name:'Dr Gabriela Bar',     title:'Attorney, PhD; AI ethics advisor',                      org:'',                        named_on_file:true },
   '2s7eencte4': { code:'V-AI-20', kind:'panel',  first:'Hekim',     name:'Hekim Colpan',        title:'AI Governance and Compliance Manager; ISO/IEC 42001 auditor', org:'',                  named_on_file:true },
   'h7a376209q': { code:'V-AI-23', kind:'panel',  first:'Niloofar',  name:'Niloofar Kandi',      title:'',                                                      org:'',                        named_on_file:null },

@@ -47,6 +47,7 @@ Each link opens a page that captures how the person wants their name and title p
 | Gabriela Cortez | `V-AI-08` |  | https://www.jrsstandard.com/contributor.html?k=agbhlh6n4d |
 | Lawal Olabanji | `V-AI-10` |  | https://www.jrsstandard.com/contributor.html?k=s3ln3ud13s |
 | Andrey Ekhmenin | `V-AI-11` |  | https://www.jrsstandard.com/contributor.html?k=h5dypgmtdu |
+| Kyle McMullan | `V-AI-12` | detection panel completer; also co-author, Business Ethics paper | https://www.jrsstandard.com/contributor.html?k=xoam4zq6yh |
 | Dr Gabriela Bar | `V-AI-16` |  | https://www.jrsstandard.com/contributor.html?k=hpyvpad2sk |
 | Hekim Colpan | `V-AI-20` |  | https://www.jrsstandard.com/contributor.html?k=2s7eencte4 |
 | Niloofar Kandi | `V-AI-23` |  | https://www.jrsstandard.com/contributor.html?k=h7a376209q |
@@ -62,7 +63,6 @@ Each link opens a page that captures how the person wants their name and title p
 |---|---|---|---|
 | Stacyann Young | `E-08` | co-author and facilitator, public records pilot | https://www.jrsstandard.com/contributor.html?k=1wlgcn02gn |
 | Ubayet Hossain, FRM | `M-01` | methodology co-author | https://www.jrsstandard.com/contributor.html?k=6dyc0l2757 |
-| Kyle McMullan | `V-AI-12` | panel reviewer and co-author, Business Ethics paper | https://www.jrsstandard.com/contributor.html?k=xoam4zq6yh |
 
 ## Domain pilot facilitators
 
