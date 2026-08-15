@@ -154,18 +154,59 @@ export default async function handler(req) {
     }
 
     const data = await response.json();
+
+    // DEFENSIVE HANDLING FOR AN INCOMPLETE MODEL RESPONSE.
+    //
+    // Everything below reports on the SHAPE of the response: the provider's stop
+    // reason, token counts, and character lengths. No part of the model's text
+    // and no part of the submitted record is ever echoed back or logged, because
+    // both are derived from a user's record and this endpoint's whole premise is
+    // that record text is not retained.
+    const stop = data.stop_reason || 'unknown';
+    const out = (data.usage && data.usage.output_tokens) || null;
+    const shape = { stop_reason: stop, output_tokens: out };
+
+    if (!Array.isArray(data.content) || !data.content.length || typeof data.content[0].text !== 'string') {
+      return new Response(JSON.stringify({
+        error: 'The review could not be completed. Please try again.',
+        reason: 'empty_model_response', diagnostic: shape
+      }), { status: 502, headers: { 'Content-Type': 'application/json', ...CORS } });
+    }
+
     const content = data.content[0].text;
+    shape.content_chars = content.length;
+
+    // A response cut off at the output limit is INCOMPLETE, whatever it parses
+    // to. Caught before parsing so a truncated analysis can never be returned as
+    // if it were a finished one.
+    if (stop === 'max_tokens') {
+      return new Response(JSON.stringify({
+        error: 'The review could not be completed. Please try again.',
+        reason: 'model_output_truncated', diagnostic: shape
+      }), { status: 502, headers: { 'Content-Type': 'application/json', ...CORS } });
+    }
 
     // Extract JSON from response
     const jsonMatch = content.match(/\{[\s\S]*\}/);
     if (!jsonMatch) {
-      return new Response(JSON.stringify({ error: 'Invalid response format' }), {
-        status: 502,
-        headers: { 'Content-Type': 'application/json', ...CORS }
-      });
+      return new Response(JSON.stringify({
+        error: 'Invalid response format',
+        reason: 'no_json_object', diagnostic: shape
+      }), { status: 502, headers: { 'Content-Type': 'application/json', ...CORS } });
     }
 
-    const result = JSON.parse(jsonMatch[0]);
+    // Parsing failure is reported as a controlled error, never as a raw
+    // exception, and no field is invented to fill a gap in what the model
+    // returned.
+    let result;
+    try {
+      result = JSON.parse(jsonMatch[0]);
+    } catch (parseErr) {
+      return new Response(JSON.stringify({
+        error: 'The review could not be completed. Please try again.',
+        reason: 'model_json_unparseable', diagnostic: shape
+      }), { status: 502, headers: { 'Content-Type': 'application/json', ...CORS } });
+    }
 
     return new Response(JSON.stringify(result), {
       status: 200,
