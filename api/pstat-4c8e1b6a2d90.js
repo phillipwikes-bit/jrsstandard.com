@@ -41,6 +41,18 @@ function predict(v){
   return null;
 }
 
+// THE B2 ANSWER IS IN A DIFFERENT COLUMN. B1 applied the five conditions and
+// their determination is in jrs_read. B2 answered a general reliance prompt and
+// their answer is in rely; jrs_read is empty for every B2 row. Reading jrs_read
+// for both dropped all 408 B2 rows as unscorable and excluded all 13 B2
+// participants, which left by_arm with B1 only and no comparison at all.
+// Matches scripts/export_arm_b_data.py line 154:
+//   det = row.get('rely') if cond == 'B2' else row.get('jrs_read')
+function answerOf(row){
+  const b = String(row.batch == null ? '' : row.batch).toUpperCase();
+  return b.indexOf('B2') >= 0 ? row.rely : row.jrs_read;
+}
+
 function mean(a){ return a.reduce(function(s,x){ return s+x; }, 0) / a.length; }
 
 function sd(a){
@@ -83,7 +95,7 @@ async function pull(H){
   const page = 1000;
   for (;;){
     const url = SB + '/rest/v1/ai_pilot_reads'
-              + '?select=reviewer_code,record_ref,jrs_read,batch,created_at'
+              + '?select=reviewer_code,record_ref,jrs_read,rely,batch,created_at'
               + '&order=created_at.asc';
     const r = await fetch(url, { headers: Object.assign({}, H, { Range: from + '-' + (from + page - 1) }) });
     if (!r.ok) throw new Error('upstream ' + r.status);
@@ -118,13 +130,14 @@ function score(rows, armMap){
   for (const code in by){
     const pairs = [];
     for (const r of by[code]){
-      const p = predict(r.jrs_read);
+      const raw = answerOf(r);
+      const p = predict(raw);
       const t = KEY[String(r.record_ref || '').toUpperCase()];
       if (p && t){
         pairs.push([p, t]);
       } else {
         unscorable++;
-        if (!p) unmapped[String(r.jrs_read)] = (unmapped[String(r.jrs_read)] || 0) + 1;
+        if (!p) unmapped[String(raw)] = (unmapped[String(raw)] || 0) + 1;
       }
     }
     if (pairs.length < NEEDED_MIN){ excluded++; continue; }
@@ -216,11 +229,15 @@ export default async function handler(){
   const batches = {};
   const readVals = {};
   const refs = {};
+  const refsUnmatched = {};
   for (const r of all){
     const b = r.batch == null ? '(null)' : r.batch;
     batches[b] = (batches[b] || 0) + 1;
-    readVals[String(r.jrs_read)] = (readVals[String(r.jrs_read)] || 0) + 1;
-    refs[String(r.record_ref).toUpperCase()] = 1;
+    const v = String(answerOf(r));
+    readVals[v] = (readVals[v] || 0) + 1;
+    const rr = String(r.record_ref).toUpperCase();
+    refs[rr] = 1;
+    if (!KEY[rr]) refsUnmatched[rr] = (refsUnmatched[rr] || 0) + 1;
   }
   let matching = 0;
   for (const k in refs){ if (KEY[k]) matching++; }
@@ -250,7 +267,8 @@ export default async function handler(){
       batches: batches,
       distinct_record_refs: Object.keys(refs).length,
       record_refs_matching_key: matching,
-      jrs_read_values: readVals
+      record_refs_NOT_in_key: refsUnmatched,
+      answer_values: readVals
     },
     detection_panel: score(detection, null),
     arm_b: score(armb, armMap),
