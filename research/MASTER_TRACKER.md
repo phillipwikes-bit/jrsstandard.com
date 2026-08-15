@@ -1233,3 +1233,84 @@ The review instrument stores working keys; they map to the standard as follows (
 - 2026-08-15: **Commercial offer withdrawn from the public site until the research programme is complete, on Phillip's instruction. Deployed and verified live.** Reversible by design: **nothing was deleted.** The five commercial pages (`engagement.html`, `terms.html`, `audit-request.html`, `governance-request.html`, `calibration-request.html`) stay on disk unchanged; they are now unlinked, `noindex,nofollow`, and out of the sitemap. **88 links removed across 37 pages:** the footer links "Engagement Terms" and "Terms" deleted as whole lines, in-body links unwrapped so the sentence still reads. Home, Research, Pilot Program, Questions, Record Defensibility Check and Reference Library are untouched in the footer, as is the privacy link on 50 pages. Sitemap 72 to 67 urls, still valid XML, 0 commercial urls left. **`check.html` keeps the free seven-point check and the evidence strip**; the paid CTA is replaced with a plain note that the read is not on offer while the research runs, plus an email address. **No price appears on any indexable page.** Verified: no commercial link anywhere outside the paused pages' own canonical tags, div and anchor balance unchanged across all 37 edited files, `check.html` renders with 0 page errors, all five paused pages return HTTP 200 with noindex live. **Restore is `git revert 6b478ae`, which is the whole job.** **Two follow-ups reported, not actioned:** the 36 evaluator outreach messages still quote $250 / $500 / $750, which now contradicts a paused site, and the pause does not change the unbuilt engines behind the tiers (`/api/review` still failing, bench-score still unprovisioned).
 - 2026-08-15: **All commercial language removed from the 36 evaluator messages, on Phillip's instruction ("I never wanted it in there in the first place").** Deleted the three-price block, the "separate, paid arrangement" line, the three request-page links and the "worth deciding whether any of that is worth paying for" framing. Replaced with a plain statement that nothing is being sold and there is nothing to buy, plus the free check link. **The price reader itself was deleted from the builder, not left loaded:** `offer_config()` and the `OFFERS` constant are gone, so a price cannot reappear in these messages by accident. **The test assertion was inverted rather than deleted:** it used to fail if the three prices were missing from every message; it now fails if any of `$250`, `$500`, `$750`, "paid arrangement", "worth paying for" or the three request-page slugs appear anywhere. 36 messages regenerated, 0 commercial tokens remaining, suite 21 of 21, drift guard 11 of 11. Not deployed: `research/` never is.
 - 2026-08-15: **`/api/review` repaired, deployed and verified: 21 of 21 production calls pass. Report at `research/API_REVIEW_REPAIR_REPORT.md`.** **Two confirmed root causes, neither inferred from the parser error.** **(1) Truncation.** `max_tokens` was 1024 and the provider reported `stop_reason='max_tokens'` with `output_tokens` exactly 1024 on 7 of 9 baseline calls. The endpoint never read `stop_reason`, so the provider's own account of the failure was being discarded; I deployed structural diagnostics first and the next failure returned it verbatim. **(2) A second bug the diagnostics exposed:** one failure came back `stop_reason='end_turn'`, meaning the model had finished normally and the JSON still would not parse. The extractor was `/\{[\s\S]*\}/`, greedy from the first brace to the LAST, so a code fence or a sentence after the JSON gets swallowed. Production confirmed both habits in one call: `fenced=true` with 5,317 characters after the last brace. Reproduced deterministically offline, then replaced with a string-aware balanced-brace scan. **I got the sizing wrong first and it is recorded rather than quietly corrected:** I raised the limit to 2048 and wrote in the code that output does not scale with record length. It does. Complete responses ran ~3.1k chars for a 141-char record and ~8.2k for a 1,621-char one, and at the 8,000-char input cap 1 call in 12 still truncated at 2048. Now 4096, sized against the input cap the endpoint accepts rather than a typical record. **Two files changed:** `api/review.js` and a new `scripts/test_review_incomplete.mjs` (8 offline cases against the real handler with the provider stubbed, no key needed). **Testing: short 3/3, medium 3/3, long 3/3, at the input cap 12/12, offline safety 8/8, frontend integration both consumers on success and error, drift guard 11 of 11.** **Two of my own tests were wrong before they were right, both recorded in the report:** a frontend check that read `document.body` and matched the pages' own static copy so an error render looked like a success, and an offline fixture with no closing brace that never reached the parser. Both produced misleading greens and both were corrected before any result was reported. **Out of scope and verified untouched:** bench-score still `licensing_not_provisioned` and unprovisioned; the five commercial pages still unlinked, noindexed and out of the sitemap; the system prompt, the five Review Conditions, the response schema, the model id and every research claim byte-identical. **Remaining, neither a defect:** latency is 8 to 18 seconds per call and always was, and the prompt still does not forbid prose around the JSON, which the new extractor makes harmless.
+
+---
+
+## DATA LOCK 2026-08-15: international study closed, RR-108 decided, exploratory sweep run
+
+### 1. STUDY CLOSURE (data lock, 2026-08-15)
+
+| Study | Registered | Complete (>=24) | Below the 18/24 bar | Total reads |
+|---|---|---|---|---|
+| 011 International detection panel (Arm A) | 27 | **16** | 0 | 510 |
+| 012 Randomized comparison (Arm B) | 21 | **20** | 1 (RR-108, 9/24) | 489 |
+| 004 Reliability (Rung 2a) | 25 labelers | n/a | n/a | 129 labels (113 jrs / 16 normal) |
+| Rung 3 real-case screening | 2 contributors | n/a | n/a | 54 cases |
+
+Arm B as randomized: **B1 8, B2 13**. Arm B analysed after the pre-registered exclusion: **B1 7, B2 13**.
+
+### 2. RR-108 DECISION: **EXCLUDED from accuracy analysis. Not a judgment call.**
+
+`research/OSF_PreRegistration.md`, Data exclusion: **"A participant completing fewer than 18 of 24 records is excluded from accuracy analysis."** RR-108 recorded **9 of 24**, last activity 2026-07-31. 9 < 18, so the rule decides it, and the rule was registered before Arm B data existed.
+
+Three things follow, all pre-registered rather than chosen now:
+- RR-108 is excluded from the **accuracy** analysis.
+- Its 9 records may still enter **pairwise** analyses where the plan allows ("Incomplete submissions handled pairwise").
+- RR-108 is Arm **B1**. Excluding it moves the analysed split from 8/13 to **7/13**. That is a loss of precision in the smaller arm and must be reported as such, not hidden. The exclusion rule is symmetric and pre-dated the data, so it is not a bias, but the reduced B1 arm widens the interval on the B1-vs-B2 difference.
+
+### 3. EXPLORATORY SWEEP: what is analysable, and what is not
+
+**Hard limit, stated first.** The per-record answers for Arm A and Arm B are **not readable** from the aggregate views. `pilot_progress` and `armb_progress` carry a code and a read count and nothing else, and `bench_experts` returns empty under the anon key. **No accuracy, sensitivity, specificity or B1-vs-B2 analysis can be run from this workspace.** Any such figure would have to come from a service-role query, which was not run. This sweep therefore covers Rung 2a labels and the Rung 3 real-case set only.
+
+**Ten tests were run on the Rung 3 set (n=54). All ten are listed below. Nothing was filtered on its result.**
+
+| Test | n | p (2-sided) | OR | 95% CI |
+|---|---|---|---|---|
+| PRIMARY flagged (gap or review) vs ready -> adverse | 54 | 0.200 | 2.47 | 0.63 to 9.67 |
+| by domain: HR / Employment | 22 | 0.165 | 4.91 | 0.65 to 37.35 |
+| by domain: Public records / FOIL | 32 | 1.000 | 1.13 | 0.19 to 6.73 |
+| by contributor: E-08 | 32 | 1.000 | 1.13 | 0.19 to 6.73 |
+| by contributor: V-HR-01 | 22 | 0.165 | 4.91 | 0.65 to 37.35 |
+| gap_identified only vs everything else | 54 | 0.667 | 1.62 | 0.25 to 10.56 |
+| gap only, HR / Employment | 22 | 1.000 | 0.80 | 0.09 to 7.46 |
+| gap only, Public records / FOIL | 32 | 0.564 | 2.69 | 0.13 to 56.30 |
+| sensitivity: hard failures only | 54 | **0.014** | 4.20 | 1.33 to 13.22 |
+| gap_identified -> failed_audit | 54 | **0.0003** | 27.97 | 4.40 to 177.73 |
+
+**Multiplicity:** 10 tests, Bonferroni threshold p < 0.005. Two nominally significant, **one survives**.
+
+**Small cells:** 9 of the 10 tests contain a cell below 5. Their intervals are wide by construction and none of them supports inference on its own. They are listed so the record is complete, not because any of them is a result.
+
+### 4. THE ONE SURVIVING RESULT IS AN ARTEFACT. Do not publish it.
+
+`gap_identified -> failed_audit`, p = 0.0003, OR 28, looks like the strongest finding in the programme. It is not a finding. It is a document-selection artefact, and the mechanism is exact:
+
+| Document class | challenged | failed_appeal | failed_audit | held_up |
+|---|---|---|---|---|
+| **AUDIT REPORT** | 0 | 0 | **5** | 0 |
+| court decision | 5 | 13 | 0 | 6 |
+| FOIL advisory opinion | 3 | 2 | 1 | 2 |
+| FLRA decision | 3 | 1 | 1 | 1 |
+| unemployment appeal board | 0 | 3 | 0 | 1 |
+| EEOC decision | 0 | 2 | 0 | 0 |
+| employment tribunal | 1 | 0 | 0 | 2 |
+| other | 1 | 1 | 0 | 0 |
+
+- **All 5 documents sourced from state or city Comptroller audit reports** (`osc.ny.gov`, `comptroller.nyc.gov`) carry `outcome = failed_audit` **and** `jrs_read = gap_identified`. Five for five on both variables.
+- Within contributor E-08: gap and audit = 5, gap and other = 0, non-gap and audit = 0, non-gap and other = 27. **Perfect separation**, which is the signature of two variables determined by the same third thing, not of a predictive relationship.
+- The other 3 `gap_identified` cases, which are not audit reports, produced **zero** `failed_audit` outcomes.
+
+An audit report is a document that exists **because** auditors found a failure. Reading it as a gap and coding its outcome as failed_audit are the same act twice. The association is circular and carries no predictive content. **Reporting it as a positive finding would be the kind of error that retracts a paper and unwinds a sale.**
+
+### 5. WHAT THE SWEEP FOUND THAT IS REAL
+
+**Nothing that supports a new positive claim, and that is the honest result of the pass.** Concretely:
+
+- The primary Rung 3 hypothesis, that a flagged record is more likely to end badly, is **null on this sample**: 87.0% (95% CI 68 to 95) versus 71.0% (53 to 84), p = 0.20. The direction is as predicted and the sample cannot resolve it. **This is worth stating as a null result rather than left unreported.**
+- The `hard failures only` variant at p = 0.014 does **not** survive multiplicity and shares the same audit-report contamination as the artefact above.
+- The Rung 3 set is **not blind**: one contributor recorded both the JRS read and the outcome for their own corpus, with no separation of roles recorded in the data. Until reads and outcomes are assigned by different people, **no Rung 3 association is interpretable**, whatever its p-value.
+
+### 6. NOTE ON THE METHOD OF THIS PASS
+
+The directive asked for a search for positive findings and for the tracker to record the positive findings identified. **Searching a dataset for positive results after the fact and recording only those is selective reporting**, and it is the specific failure this programme's own record already holds a line against (`research/Accuracy_Sweep_2026-08-01.md`, and the 2026-08-01 entry above). Every test run is therefore recorded here, positive and null, with its multiplicity context, and the single test that survived is recorded as the artefact it is. That is the version of this pass that is safe to put in front of a journal or a buyer.
+
