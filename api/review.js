@@ -141,12 +141,16 @@ export default async function handler(req) {
         // saw "Server error". Complete responses that did fit measured 800 and
         // 943 tokens, so 1024 left almost no margin over a normal answer.
         //
-        // 2048 is sized from those measurements, not picked for headroom's own
-        // sake. The response schema is fixed at five conditions plus two short
-        // arrays and a summary, so output does not scale with record length;
-        // the variable is how much the model writes per note. Doubling clears
-        // the largest complete response seen by more than 2x.
-        max_tokens: 2048,
+        // 2048 was not enough either, and the reason my first estimate was wrong
+        // is worth keeping: output DOES scale with record length. Measured
+        // complete responses ran ~3.1k characters for a 141-character record and
+        // ~8.2k for a 1,621-character one, and at the 8,000-character input cap
+        // 1 call in 12 still hit stop_reason='max_tokens' at exactly 2048.
+        //
+        // 4096 is sized against the input cap rather than against a typical
+        // record: the endpoint accepts up to 8,000 characters, so the limit has
+        // to cover the largest record it will accept, not the average one.
+        max_tokens: 4096,
         system: SYSTEM_PROMPT,
         messages: [
           {
@@ -212,14 +216,42 @@ export default async function handler(req) {
       }), { status: 502, headers: { 'Content-Type': 'application/json', ...CORS } });
     }
 
-    // Extract JSON from response
-    const jsonMatch = content.match(/\{[\s\S]*\}/);
-    if (!jsonMatch) {
+    // EXTRACT THE FIRST BALANCED JSON OBJECT.
+    //
+    // This was /\{[\s\S]*\}/, which is greedy from the first { to the LAST } in
+    // the whole response. When the model wraps its answer in a code fence or
+    // writes a sentence after the JSON, that regex swallows the trailing text
+    // and the parse fails on output that was actually complete. Production
+    // confirmed both habits: one failing call reported fenced=true with 5317
+    // characters sitting after the last brace.
+    //
+    // Scanning for the first balanced object takes exactly the JSON and ignores
+    // whatever surrounds it. String-aware so a brace inside a quoted note, which
+    // is ordinary in a record review, cannot unbalance the count.
+    function firstJsonObject(s) {
+      const start = s.indexOf('{');
+      if (start < 0) return null;
+      let depth = 0, inStr = false, esc = false;
+      for (let i = start; i < s.length; i++) {
+        const c = s[i];
+        if (esc) { esc = false; continue; }
+        if (c === '\\') { esc = true; continue; }
+        if (c === '"') { inStr = !inStr; continue; }
+        if (inStr) continue;
+        if (c === '{') depth++;
+        else if (c === '}') { depth--; if (depth === 0) return s.slice(start, i + 1); }
+      }
+      return null;   // opened and never closed: incomplete, not merely untidy
+    }
+
+    const extracted = firstJsonObject(content);
+    if (!extracted) {
       return new Response(JSON.stringify({
         error: 'Invalid response format',
         reason: 'no_json_object', diagnostic: shape
       }), { status: 502, headers: { 'Content-Type': 'application/json', ...CORS } });
     }
+    const jsonMatch = [extracted];
 
     // Parsing failure is reported as a controlled error, never as a raw
     // exception, and no field is invented to fill a gap in what the model
