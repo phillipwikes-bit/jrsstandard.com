@@ -17,15 +17,9 @@ Your work on the Justification Review Standard evaluation is complete, and the s
 - **Your Appointed Expert Award Citation**, in the wording above, issued in your name.
 - **Your Official Panelist Registry ID**, a verifiable reference confirming your place on the panel.
 
-**That is the whole of it, and it is deliberate.** Confirming does not grant a licence to use JRS materials in your own work, and I would rather say so here than let you discover it later.
+**That is the whole of it, and it is deliberate.** Nothing is being sold to you here and there is nothing to buy: this asks for a confirmation and gives you the citation, and that is the entire exchange.
 
-**If you do want to use JRS in practice**, that is a separate, paid arrangement and you are welcome to it:
-
-- **AI Documentation Defensibility Review, $250.** Five de-identified records, read against the five conditions and the seven failure modes. https://jrsstandard.com/audit-request.html
-- **AI Governance Documentation Review, $500.** A documentation standard or template set, plus up to five records produced under it. https://jrsstandard.com/governance-request.html
-- **Benchmark Access and Calibration, $750.** One licensed run of the held-out record set, scoring returned by the holder. https://jrsstandard.com/calibration-request.html
-
-The seven-point check at https://jrsstandard.com/check.html is free, ungated and always will be, so you can see the method before deciding whether any of that is worth paying for.
+The seven-point check at https://jrsstandard.com/check.html is free and ungated, if you want to see the method itself.
 
 **Confirm your citation and claim your Registry ID:**
 

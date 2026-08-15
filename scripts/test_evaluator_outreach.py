@@ -80,9 +80,14 @@ def main():
         for g in FORBIDDEN_GRANTS:
             if g in s:
                 grants.append("%s: %s" % (os.path.basename(f), g))
-        for price in ("$250", "$500", "$750"):
-            if price not in s:
-                no_price.append("%s missing %s" % (os.path.basename(f), price))
+        # INVERTED 2026-08-15. This used to assert the three prices were present
+        # in every message. The owner never wanted them there, and the site's
+        # commercial offer is withdrawn while the research runs, so their
+        # presence is now the failure.
+        for token in ("$250", "$500", "$750", "paid arrangement", "worth paying for",
+                      "audit-request", "governance-request", "calibration-request"):
+            if token in s:
+                no_price.append("%s contains %s" % (os.path.basename(f), token))
         if "Monday, 31 August 2026" not in s:
             no_date.append(os.path.basename(f))
         low = s.lower()
@@ -95,7 +100,7 @@ def main():
     t("designation present everywhere", no_desig, [])
     t("award and registry block present everywhere", no_lic, [])
     t("NO free-grant language anywhere", grants, [])
-    t("all three paid tiers quoted everywhere", no_price, [])
+    t("NO price or paid-offer language anywhere", no_price, [])
     t("deadline present everywhere", no_date, [])
     t("NO blind-revealing token in any message", blind, [])
 

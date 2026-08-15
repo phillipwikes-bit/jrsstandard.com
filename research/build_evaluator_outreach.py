@@ -27,6 +27,13 @@ already done. The B1 / B2 split never reaches a file name, an index row or a
 message: the band comes from the participant code, never from the CSV's arm
 column, because that split is the blind.
 
+NO COMMERCIAL LANGUAGE. These messages quoted three prices and pointed at three
+paid pages. Removed 2026-08-15 at the owner's instruction: he did not want it in
+there, the site's commercial offer is withdrawn until the research programme is
+complete, and a price list inside an award citation reads as a sales letter to
+the people who did the work unpaid. The price reader was deleted with it rather
+than left loaded, so a price cannot reappear here by accident.
+
 WHAT IS STILL NOT GUESSED. Two Arm B completers finished anonymously and have
 no name on record. Their files are generated with the salutation and the
 citation left as explicit placeholders rather than filled with an invented
@@ -67,30 +74,6 @@ CITATION = (
 )
 
 ANON_PLACEHOLDER = "[EVALUATOR NAME: not on record, this person completed anonymously]"
-
-
-def offer_config():
-    """Prices and scopes from api/_offer-config.js. Never restated here.
-
-    The pivot from free grants to paid conversion put three prices into every
-    outreach message. A second copy of a price is exactly the defect class this
-    repository keeps hitting, and a price is the worst place for it.
-    """
-    src = io.open(os.path.join(ROOT, "api", "_offer-config.js"), encoding="utf-8").read()
-    out = {}
-    for m in re.finditer(r"(\w+):\s*\{\s*slug:\s*'([^']+)',\s*name:\s*'([^']+)',\s*"
-                         r"price_usd:\s*(\d+),\s*price_label:\s*'([^']+)',\s*"
-                         r"scope:\s*'([^']+)'", src):
-        out[m.group(1)] = {"slug": m.group(2), "name": m.group(3),
-                           "price_usd": int(m.group(4)), "price_label": m.group(5),
-                           "scope": m.group(6)}
-    if set(out) != {"audit", "governance", "calibration"}:
-        sys.stderr.write("Could not read all three offers from api/_offer-config.js\n")
-        sys.exit(2)
-    return out
-
-
-OFFERS = offer_config()
 
 
 def js_entries(path):
@@ -178,24 +161,12 @@ def message(p, key, date):
     A("- **Your Official Panelist Registry ID**, a verifiable reference confirming your "
       "place on the panel.")
     A("")
-    A("**That is the whole of it, and it is deliberate.** Confirming does not grant a "
-      "licence to use JRS materials in your own work, and I would rather say so here than "
-      "let you discover it later.")
+    A("**That is the whole of it, and it is deliberate.** Nothing is being sold to you "
+      "here and there is nothing to buy: this asks for a confirmation and gives you the "
+      "citation, and that is the entire exchange.")
     A("")
-    A("**If you do want to use JRS in practice**, that is a separate, paid arrangement and "
-      "you are welcome to it:")
-    A("")
-    # NOT `key`: that is this function's confirmation-key parameter, and
-    # shadowing it here would be one edit away from putting an offer name into
-    # somebody's personal link.
-    for offer_key in ("audit", "governance", "calibration"):
-        o = OFFERS[offer_key]
-        A("- **%s, %s.** %s. https://jrsstandard.com/%s.html"
-          % (o["name"], o["price_label"], o["scope"], o["slug"]))
-    A("")
-    A("The seven-point check at https://jrsstandard.com/check.html is free, ungated and "
-      "always will be, so you can see the method before deciding whether any of that is "
-      "worth paying for.")
+    A("The seven-point check at https://jrsstandard.com/check.html is free and ungated, "
+      "if you want to see the method itself.")
     A("")
     A("**Confirm your citation and claim your Registry ID:**")
     A("")
