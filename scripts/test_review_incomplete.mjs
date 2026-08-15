@@ -3,7 +3,7 @@
 // Stubs global fetch so the handler receives a provider payload we control, then
 // asserts the endpoint fails safely instead of throwing a raw exception or
 // presenting a partial JRS analysis as a finished one.
-import handler from new URL('../api/review.js', import.meta.url).href;
+import handler from '../api/review.js';
 
 process.env.ANTHROPIC_API_KEY = 'test-not-a-real-key';
 
