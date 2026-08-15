@@ -267,3 +267,64 @@ Live data pulled from 10 endpoints and 4 database views. Both pages rendered in
 headless Chromium against stubbed responses with zero network access, so nothing
 in this report depends on my reading the code correctly: the sentinel test shows
 what the browser actually does.
+
+---
+
+## IMPLEMENTED 2026-08-15, all six parts, approved by Phillip
+
+| Part | Done | Where |
+|---|---|---|
+| 1 Scope naming | yes | `api/panel-stats.js`, 9 scoped keys + `scope_labels`, every old key kept as an alias assigned from the same expression |
+| 2 Bind prose and show the scope | yes | 13 frozen claims bound across 7 pages; 45 bound spans on 10 pages |
+| 3 Unify binders | yes | one canonical delimited block, byte-identical on 10 pages, asserted by the guard |
+| 4 Extend the guard | yes | 2 new offline checks over all 70 HTML files |
+| 5 Fallback policy | **mark**, with the reason | `data-panel-state=live\|stale`, dotted underline when stale, `title` giving the read time and scope or the reason it is missing |
+| 6 As-of dates | yes | `data-panel-generated` renders `generated_at` |
+
+### The headline case, before and after
+
+**Before.** `research.html` line 108 said *"36 of them completed a full 24-record set, spanning 16 countries"* (bound). Line 160 said *"Sixteen reviewers across 11 countries and 5 continents have completed the full 24-record set"* (frozen).
+
+**After.** Line 108 reads *"36 of them (all completers, both arms) completed a full 24-record set, spanning 16 countries and 5 continents. Counted from the study database at [generated_at]."* Line 160 reads *"The detection panel, 16 reviewers across 11 countries and 5 continents, has completed the full 24-record set."* Every figure in both sentences is live, and each sentence names its population.
+
+### `continents_detection` was new
+
+Eight of the nine scoped keys are renames of values the endpoint already returned. `continents_detection` was the one figure of the set with no key at all, which is precisely why it stayed hardcoded on four pages. It is the same `resolvePanelGeo(codesA)` call the endpoint already made.
+
+### The guard was validated adversarially, and two real bugs in it were found that way
+
+Eight defects were injected one at a time; all eight failed the guard, and the tree passed clean before and after each.
+
+| Injected | Caught by |
+|---|---|
+| A frozen prose figure on a line that also holds a bound span | unbound panel figure |
+| A spelled-out figure ("Thirty-six completers") | unbound panel figure |
+| A numeric figure in fresh prose | unbound panel figure |
+| One binder copy edited | binder copies are byte-identical |
+| Binder deleted, spans left behind | has data-panel spans but no binder block |
+| A key the endpoint does not return | not returned by api/panel-stats.js |
+| `data-bound` marker with no script feeding the id | no script on this page assigns it |
+| `data-panel-scope` with no entry in `scope_labels` | no entry in scope_labels |
+
+**Case A passed on the first attempt, which was the check being wrong.** It was line-granular, so one bound span shielded every frozen figure sharing its line: exactly the shape of `acquisition-9f3c2a7d4b.html` line 116, half bound and half frozen in a single sentence. Bound elements are now removed from the text before scanning, and replaced with a marker rather than whitespace, because a plain space let a match run through a bound span and report "384 graded reads" as an expert count.
+
+Two further corrections came out of the same pass: the scan read only the 50 pages in the repository root and missed `reviewer/` and the whole `reference/` hub, which is where a sixth binder copy and one more frozen figure were sitting; and `re.I`, added for the spelled-out numbers, silently made `[a-z]` match capitals and brought 12 headings back as false failures. Only the number words are case-insensitive now, because a published claim is lowercase and a heading is not.
+
+### One correct-state failure fixed
+
+The pre-commit hook blocked the deploy commit: `research/` is deliberately excluded from the deploy, so on a branch cut from `main` the three generated-document checks reported "file missing" and the geo check raised `FileNotFoundError`. None was a defect. Those checks now skip when `research/` is absent, with the reason printed. Verified on a tree with `research/` removed: 10 checks, 0 failed, 4 skipped.
+
+### Verification
+
+```
+guard                    10 checks, 0 failed (dev)  |  0 failed, 4 skipped (deploy branch)
+adversarial injections   8 of 8 caught
+headless, data present   45 of 45 spans live, 0 unmarked, sentinels visible on all 9 pages
+headless, endpoint 503   45 of 45 spans marked stale with a reason, 0 silently live
+live endpoint            9 scoped keys present, all 8 aliases equal to their scoped twin
+deployed pages           45 spans and 1 binder each, 0 copies of the frozen sentence
+```
+
+### Still open, deliberately
+
+Four figures next to panel vocabulary are allowlisted rather than bound, each with a written reason: the Rung 2a comparison results (`21 reviewers`, `16 labels from 3 reviewers`), the reliability set size (`62 trained reviewers`), and one count of failure patterns. `api/panel-stats.js` returns no key for any of them, so there is nothing to bind them to. Binding them would mean adding Rung 2a figures to the endpoint, which is a separate decision.
