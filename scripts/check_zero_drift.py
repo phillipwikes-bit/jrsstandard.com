@@ -151,12 +151,24 @@ COUNT_WORDS = r"SIZE|COUNT|TOTAL|N_|NUM|REVIEWERS|COMPLETERS|COUNTRIES|CONTINENT
 
 # Numbers that are configuration rather than a duplicated fact. Each needs a
 # reason, so the allowlist cannot quietly become a place to hide drift.
+_R2A_WHY = ("the Rung 2a analysis sample as locked on 2026-08-01, which is what the "
+            "published confidence interval, Fisher p and rate ratio were computed on. "
+            "A dated snapshot is not a duplicated live fact, and this one is not taken "
+            "on trust: check_rung2a_lock compares it against the database on every "
+            "online run and fails when they diverge.")
+
 COUNT_ALLOW = {
     "MIN_CELL_N": "disclosure threshold, deliberately fixed before data arrived",
     "NEEDED": "study design constant, the 24-record completion bar",
     "N_SELECT": "study design constant, the blind-recheck sample size used for "
                 "stratified quotas in build_blind_recheck_packet.py. Not a copy "
                 "of a figure held anywhere else",
+    "R2A_LOCKED_STRUCTURED_REVIEWERS": _R2A_WHY,
+    "R2A_LOCKED_STRUCTURED_LABELS": _R2A_WHY,
+    "R2A_LOCKED_STRUCTURED_GAPS": _R2A_WHY,
+    "R2A_LOCKED_UNSTRUCTURED_REVIEWERS": _R2A_WHY,
+    "R2A_LOCKED_UNSTRUCTURED_LABELS": _R2A_WHY,
+    "R2A_LOCKED_UNSTRUCTURED_GAPS": _R2A_WHY,
 }
 
 
@@ -435,18 +447,22 @@ PANEL_CLAIM = re.compile(
 # is a literal fragment plus the reason it is exempt. A bare number is never
 # allowlisted; the surrounding words have to make the exemption checkable.
 PANEL_ALLOWLIST = [
-    ("21 reviewers using the five conditions",
-     "Rung 2a comparison result. api/panel-stats returns no key for it, so there "
-     "is nothing to bind it to. Binding it would require a new endpoint figure."),
-    ("16 labels from 3 reviewers",
-     "Rung 2a unstructured-group size, quoted as a stated limitation beside its "
-     "confidence interval. Not a panel figure."),
     ("2 or more reviewers", "an escalation rule, not a count of anyone"),
-    ("62 trained reviewers", "Rung 2a reliability set size, not a panel-stats figure"),
     ("Eleven failure patterns with reviewer",
      "a count of documented failure patterns; 'reviewer' here modifies 'prompts', "
      "it is not a count of people"),
 ]
+# REMOVED 2026-08-15, and worth recording why each one went:
+#
+#   "21 reviewers using the five conditions" and "16 labels from 3 reviewers"
+#   are now bound to rung2a_* keys on api/panel-stats.
+#
+#   "62 trained reviewers" was never a figure at all. Every occurrence is the
+#   decimal half of Gwet's AC1 0.62 or 0.624, a reliability coefficient. No
+#   count of 62 people exists anywhere in this programme, and the entry was
+#   already dead: removing it changed nothing, because the tightened gap rule
+#   never reached it. Adding an endpoint key for it would have published a
+#   number that does not exist.
 
 
 def _html_files():
@@ -578,11 +594,66 @@ def check_panel_binder_identical(offline):
               ("; pages with != 1 copy: " + ", ".join(many)) if many else ""))
 
 
+def check_rung2a_lock(offline):
+    """The locked Rung 2a sample must still match the database, or say it does not.
+
+    The published sentence quotes 69.4% versus 6.2% with a confidence interval, a
+    Fisher p and a rate ratio, all computed on 21 reviewers and 108 labels. Those
+    four figures are bound to constants in api/panel-stats.js rather than to a
+    live recount, deliberately: rendering the live count beside statistics
+    computed on a different sample would make the sentence contradict itself.
+
+    A frozen constant is only defensible while somebody is watching it. This is
+    that watch. The endpoint recounts the same sample on every request and sets
+    rung2a_sample_drift; this check reads it, so a divergence is reported
+    continuously instead of being found by accident a month later.
+
+    A divergence is NOT a code defect. It means the analysis needs re-running,
+    which is held pending the owner's decision in
+    research/Accuracy_Sweep_2026-08-01.md on whether the Rung 2a set is
+    accumulating or curated. It is reported as a failure because a published
+    figure no longer describing the database is exactly what this guard exists
+    to surface.
+    """
+    if offline:
+        check("Rung 2a locked sample still matches the database", SKIPPED,
+              "needs production; the lock itself is offline-checkable only for syntax")
+        return
+    d = live(PANEL)
+    if d is None:
+        check("Rung 2a locked sample still matches the database", SKIPPED,
+              "endpoint unreachable")
+        return
+    if "rung2a_sample_drift" not in d:
+        check("Rung 2a locked sample still matches the database", False,
+              "api/panel-stats no longer reports rung2a_sample_drift")
+        return
+    lv = d.get("rung2a_live") or {}
+    detail = ("locked %s/%s structured, %s/%s unstructured, taken %s"
+              % (d.get("rung2a_structured_reviewers"), d.get("rung2a_structured_labels"),
+                 d.get("rung2a_unstructured_reviewers"), d.get("rung2a_unstructured_labels"),
+                 d.get("rung2a_locked_on")))
+    if d["rung2a_sample_drift"]:
+        detail = ("the set has GROWN since the analysis was locked on %s: live is "
+                  "%s reviewers / %s labels structured and %s / %s unstructured, against "
+                  "locked %s / %s and %s / %s. The published CI, Fisher p and rate ratio "
+                  "need recomputing. Held pending the owner decision in "
+                  "research/Accuracy_Sweep_2026-08-01.md"
+                  % (d.get("rung2a_locked_on"),
+                     lv.get("structured_reviewers"), lv.get("structured_labels"),
+                     lv.get("unstructured_reviewers"), lv.get("unstructured_labels"),
+                     d.get("rung2a_structured_reviewers"), d.get("rung2a_structured_labels"),
+                     d.get("rung2a_unstructured_reviewers"), d.get("rung2a_unstructured_labels")))
+    check("Rung 2a locked sample still matches the database",
+          not d["rung2a_sample_drift"], detail)
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
                check_no_masking_fallbacks, check_panel_geo,
                check_html_figures_bound, check_panel_binder_identical,
+               check_rung2a_lock,
                check_generated_docs_current, check_cross_endpoint):
         try:
             fn(offline)
