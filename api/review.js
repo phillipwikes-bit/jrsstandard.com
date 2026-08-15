@@ -188,6 +188,20 @@ export default async function handler(req) {
     const content = data.content[0].text;
     shape.content_chars = content.length;
 
+    // STRUCTURAL SHAPE ONLY. Where the braces are, and whether anything sits
+    // outside them. Not one character of the model's text or the submitted
+    // record appears in any of these fields, which is what makes it safe to
+    // return them: a truncation and a wrapper-prose failure look identical from
+    // the outside, and telling them apart without this meant guessing.
+    const first = content.indexOf('{');
+    const last = content.lastIndexOf('}');
+    shape.first_brace = first;
+    shape.last_brace = last;
+    shape.chars_after_last_brace = last >= 0 ? content.length - 1 - last : null;
+    shape.open_braces = (content.match(/\{/g) || []).length;
+    shape.close_braces = (content.match(/\}/g) || []).length;
+    shape.fenced = content.indexOf('```') >= 0;
+
     // A response cut off at the output limit is INCOMPLETE, whatever it parses
     // to. Caught before parsing so a truncated analysis can never be returned as
     // if it were a finished one.
