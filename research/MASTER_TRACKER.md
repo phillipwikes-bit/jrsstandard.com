@@ -1421,3 +1421,45 @@ Also added on the fix: `record_refs_NOT_in_key` now names them. The output shows
 ### Still open
 
 B1 vs B2: mean difference, CI, Welch t, df, Cohen's d, Floor 3 verdict. Needs one more read of the same URL now the fix is deployed. **Delete `api/pstat-4c8e1b6a2d90.js` immediately after.**
+
+---
+
+## ARM B RESULT AT CLOSE 2026-08-15: PRE-REGISTERED FLOOR 3 IS NOT MET
+
+Second read returned complete data: **20 participants analysed, 1 excluded (RR-108), 480 judgments, 0 unscorable.** The `rely` fix worked; every B2 row now scores.
+
+| | n | mean accuracy | SD | 95% CI |
+|---|---|---|---|---|
+| **B1**, five JRS conditions | 7 | **75.00%** | 18.16 | 58.20 to 91.80 |
+| **B2**, general prompt | 13 | **67.63%** | 29.91 | 49.55 to 85.70 |
+
+| Statistic | Value |
+|---|---|
+| Mean difference | **+7.37 points**, B1 higher |
+| 95% CI of the difference | **-15.25 to +29.99** |
+| Welch t | 0.684 on 17.6 df |
+| Two-sided p | **0.503** |
+| Cohen's d | 0.277 |
+
+**Floor 3, as pre-registered in `research/OSF_PreRegistration.md`: "B1 accuracy exceeds B2, CI of the difference excluding zero."**
+
+- Part 1, B1 exceeds B2: **MET** (75.00 > 67.63)
+- Part 2, CI excludes zero: **NOT MET** (the interval spans zero)
+- **FLOOR 3: NOT MET**
+
+**The instrument-effect claim is not supported by this study.** The direction is as predicted and the sample cannot resolve it. This is the outcome the pre-registration was written to make unambiguous, and it is recorded as a null rather than as a near miss.
+
+**Power.** Detecting d = 0.277 at 80% power needs about **205 participants per arm**. The study has 7 and 13. The smallest effect this sample could have detected at 80% power is **d = 1.31**, roughly five times the observed effect. The comparison was never powered to find an effect of this size, which is a design limitation to state in the paper rather than a surprise.
+
+**Consistent with the interim.** `research/analysis_2026-08-04.py` had B1 n=5 mean 73.3, B2 n=11 mean 69.3, difference +4.0, t=0.30, d=0.140. At close the gap widened to +7.4 with d=0.277 and the conclusion did not change.
+
+**What this does NOT touch.** Study 011, the detection paper, stands verified: 83.85% accuracy, CI 72.66 to 95.05, sensitivity 86.98%, specificity 80.73%. Detection and instrument effect are separate questions on separate rungs, and the draft already says so in its Scope paragraph: *"Whether a structured method improves on unaided professional judgment is a different question, tested in a separate study."* That sentence is now load-bearing and should stay exactly as written.
+
+### Two data-integrity items from the same output
+
+1. **`POSTHOC-NOTE`** is the 25th `record_ref`, 1 row, and it is the single unscorable judgment in the detection panel. Not a record, not a defect, but it should be excluded explicitly in any future scorer rather than being silently dropped by a key lookup.
+2. **Answer-value inventory is clean**: `Ready` 339, `Gap` 255, `Needs work` 142 for the JRS instrument; `Yes` 223, `No` 185 for the baseline; one empty string, which is the POSTHOC-NOTE row. **No unmapped value in either arm**, so no judgment was lost to a vocabulary gap.
+
+### Endpoint removed
+
+`api/pstat-4c8e1b6a2d90.js` deleted from `main` in commit 120c11e, immediately after the second read. It existed for roughly thirteen minutes. Nothing links to it, it was never indexed, and it never emitted a participant code, a per-person row, the code-to-arm map, record text or the answer key.
