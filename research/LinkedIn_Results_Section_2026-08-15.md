@@ -45,7 +45,7 @@ Whether the method beats unaided expert judgment is still open. That comparison 
 | The spread, 37.5% to 100% | Real and important to a practitioner, but it needs a paragraph to land and reads as a weakness without one. Keep it for the paper and the deck. |
 | Reliability, AC1 0.739 / 0.623 | Interim on 10 records. A coefficient with a wide interval is not a LinkedIn fact. |
 | Per-condition separation, p < 1.5e-07 | Meaningless without the table under it. |
-| Cross-vendor 87.8% | Invites "so the AI agrees with itself", which is the wrong reading. It measures consistency, not correctness, and that distinction does not survive a LinkedIn skim. |
+| Cross-vendor agreement, 87.2% mean over 41 runs | Invites "so the AI agrees with itself", which is the wrong reading. It measures consistency, not correctness, and that distinction does not survive a LinkedIn skim. |
 | Any superiority claim | The comparison did not meet its pre-registered bar. |
 
 ## What was kept and must stay

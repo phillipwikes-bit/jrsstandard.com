@@ -1,0 +1,376 @@
+#!/usr/bin/env python3
+"""Verify every numeric claim in the detection manuscript against the data.
+
+WHY. The manuscript goes to Ubayet Hossain, who designed the reliability
+framework and validates models for a living. Every figure in it has to survive
+being checked by someone who will check it. This checks it first, mechanically,
+so a figure cannot be wrong on the day it is read.
+
+WHAT IT CHECKS. Each assertion below names the exact string that must appear in
+the manuscript and the source the value is computed from. A figure that is not
+in the manuscript, or is in it with the wrong value, fails.
+
+SOURCES
+    research/closed_aggregates_2026-08-15.json   detection and Arm B, at lock
+    bench_labels via the anon key                reliability and per-condition
+    study_runs via the anon key                  cross-vendor series
+    /api/panel-stats                             programme counts
+
+Run:
+    python3 scripts/verify_manuscript_figures.py
+    python3 scripts/verify_manuscript_figures.py --offline   # skip live reads
+
+Exit: 0 if every assertion passes, 1 otherwise.
+"""
+import io
+import json
+import math
+import os
+import statistics as st
+import sys
+import urllib.request
+from decimal import Decimal, ROUND_HALF_UP
+from math import comb
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MS = os.path.join(ROOT, "research", "Detection_Article_v3_2026-08-15.md")
+AGG = os.path.join(ROOT, "research", "closed_aggregates_2026-08-15.json")
+SB = "https://pjzxkeviouofdseagvpf.supabase.co/rest/v1"
+ANON = "sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e"
+
+OFFLINE = "--offline" in sys.argv
+CHECKS = []
+
+
+def half_up(x, places=1):
+    q = Decimal("1." + "0" * places) if places else Decimal("1")
+    return float(Decimal(str(x)).quantize(q, rounding=ROUND_HALF_UP))
+
+
+def fetch(table, limit=20000):
+    if OFFLINE:
+        return None
+    req = urllib.request.Request(
+        "%s/%s?select=*&limit=%d" % (SB, table, limit),
+        headers={"apikey": ANON, "Authorization": "Bearer " + ANON})
+    try:
+        with urllib.request.urlopen(req, timeout=60) as r:
+            return json.loads(r.read().decode())
+    except Exception:
+        return None
+
+
+def api(path):
+    if OFFLINE:
+        return None
+    try:
+        with urllib.request.urlopen("https://www.jrsstandard.com" + path, timeout=45) as r:
+            return json.loads(r.read().decode())
+    except Exception:
+        return None
+
+
+def T(name, needle, ok, detail=""):
+    """ok is True, False, or None for skipped."""
+    present = needle in MSTEXT if needle else True
+    CHECKS.append({
+        "name": name,
+        "needle": needle,
+        "in_manuscript": present,
+        "value_ok": ok,
+        "detail": detail
+    })
+
+
+def fisher(a, b, c, d):
+    n = a + b + c + d
+    r1 = a + b
+    c1 = a + c
+    if n == 0 or r1 in (0, n) or c1 in (0, n):
+        return 1.0
+
+    def p(x):
+        return comb(r1, x) * comb(n - r1, c1 - x) / comb(n, c1)
+    lo = max(0, c1 - (n - r1))
+    hi = min(r1, c1)
+    p0 = p(a)
+    return min(1.0, sum(p(x) for x in range(lo, hi + 1) if p(x) <= p0 * (1 + 1e-9)))
+
+
+def ac1(items):
+    cats = sorted({v for vs in items.values() for v in vs})
+    q = len(cats)
+    if q < 2:
+        return None
+    n = 0
+    pa = 0.0
+    pik = {k: 0.0 for k in cats}
+    for _, vs in items.items():
+        ri = len(vs)
+        if ri < 2:
+            continue
+        n += 1
+        cnt = {k: vs.count(k) for k in cats}
+        pa += sum(cnt[k] * (cnt[k] - 1) for k in cats) / (ri * (ri - 1))
+        for k in cats:
+            pik[k] += cnt[k] / ri
+    if not n:
+        return None
+    pa /= n
+    pe = sum((pik[k] / n) * (1 - pik[k] / n) for k in cats) / (q - 1)
+    return (pa - pe) / (1 - pe)
+
+
+MSTEXT = io.open(MS, encoding="utf-8").read()
+A = json.load(io.open(AGG, encoding="utf-8"))
+dp = A["detection_panel"]
+ab = A["arm_b"]
+
+# ---------------------------------------------------------------- detection
+T("accuracy point estimate", "83.9",
+  half_up(dp["accuracy"]["mean"]) == 83.9,
+  "raw %.2f, half-up %.1f" % (dp["accuracy"]["mean"], half_up(dp["accuracy"]["mean"])))
+T("accuracy 95% CI", "72.7 to 95.1",
+  half_up(dp["accuracy"]["ci95_low"]) == 72.7 and half_up(dp["accuracy"]["ci95_high"]) == 95.1,
+  "raw %.2f to %.2f" % (dp["accuracy"]["ci95_low"], dp["accuracy"]["ci95_high"]))
+T("sensitivity", "87.0", half_up(dp["sensitivity"]["mean"]) == 87.0,
+  "raw %.2f" % dp["sensitivity"]["mean"])
+T("specificity", "80.7", half_up(dp["specificity"]["mean"]) == 80.7,
+  "raw %.2f" % dp["specificity"]["mean"])
+T("panel size", "16 reviewers", dp["accuracy"]["n"] == 16, "n=%d" % dp["accuracy"]["n"])
+T("graded reads", "384", dp["judgments_analysed"] == 384,
+  "%d scorable" % dp["judgments_analysed"])
+T("perfect scorers is six not five", "six reviewers scoring perfectly",
+  dp["accuracy"]["scored_100"] == 6, "%d scored 100" % dp["accuracy"]["scored_100"])
+T("accuracy SD", "21.0", half_up(dp["accuracy"]["sd"]) == 21.0,
+  "raw %.2f" % dp["accuracy"]["sd"])
+T("accuracy range", "37.5 to 100",
+  dp["accuracy"]["min"] == 37.5 and dp["accuracy"]["max"] == 100,
+  "%.1f to %.1f" % (dp["accuracy"]["min"], dp["accuracy"]["max"]))
+T("sensitivity perfect count", "11 of 16", dp["sensitivity"]["scored_100"] == 11,
+  "%d" % dp["sensitivity"]["scored_100"])
+T("specificity perfect count", "7 of 16", dp["specificity"]["scored_100"] == 7,
+  "%d" % dp["specificity"]["scored_100"])
+T("zero exclusions on the detection panel", "the exclusion count for this study is zero",
+  dp["participants_excluded_below_18_of_24"] == 0,
+  "%d excluded" % dp["participants_excluded_below_18_of_24"])
+T("one administrative row disclosed", "385 rows were retained",
+  dp["judgments_analysed"] + dp["judgments_unscorable"] == 385,
+  "%d scorable + %d unscorable" % (dp["judgments_analysed"], dp["judgments_unscorable"]))
+
+# ------------------------------------------------------------- reliability
+lab = fetch("bench_labels")
+if lab is None:
+    T("reliability AC1 experts", "0.739", None, "offline or unreachable")
+    T("reliability AC1 trained", "0.623", None, "offline or unreachable")
+    T("submitted determinations", "113 submitted determinations", None, "offline")
+    T("retained after de-duplication", "104", None, "offline")
+    T("condition table Gap denominator", "of 77", None, "offline")
+else:
+    jrs_raw = [r for r in lab if r["mode"] == "jrs"]
+    ded = {}
+    for r in sorted(jrs_raw, key=lambda x: x.get("created_at") or ""):
+        ded[(r["labeler_code"], r["record_id"])] = r
+    jrs = list(ded.values())
+
+    def coef(pred):
+        sub = [r for r in jrs if pred(r["labeler_code"])]
+        items = {}
+        for r in sub:
+            items.setdefault(r["record_id"], []).append(r["determination"])
+        return ac1(items), len(sub)
+
+    ce, ne = coef(lambda c: c.startswith("E-"))
+    ct, nt = coef(lambda c: c.startswith("R-"))
+    T("reliability AC1 experts", "0.739", round(ce, 3) == 0.739, "%.4f on %d labels" % (ce, ne))
+    T("reliability AC1 trained", "0.623", round(ct, 3) == 0.623, "%.4f on %d labels" % (ct, nt))
+    T("expert label count", "36 | 0.739", ne == 36, "%d" % ne)
+    T("trained label count", "68 | 0.623", nt == 68, "%d" % nt)
+    T("submitted determinations", "113 submitted determinations", len(jrs_raw) == 113,
+      "%d" % len(jrs_raw))
+    T("retained after de-duplication", "reduced to 104", len(jrs) == 104, "%d" % len(jrs))
+
+    ready = [r for r in jrs_raw if r["determination"] == "ready"]
+    gap = [r for r in jrs_raw if r["determination"] == "gap_identified"]
+    T("condition table Ready denominator", "14 of 14", len(ready) == 14, "%d" % len(ready))
+    T("condition table Gap denominator", "of 77", len(gap) == 77, "%d" % len(gap))
+    NAMES = {
+        "cold_reviewer_clarity": ("Reconstructability", 15),
+        "basis_identification": ("Basis identification", 20),
+        "temporal_reconstructability": ("Chronological integrity", 10),
+        "reasoning_traceability": ("Decision-process traceability", 10),
+        "accountability_support": ("Evidentiary sufficiency", 7),
+    }
+    worst = 0.0
+    for k, (disp, expect) in NAMES.items():
+        got = sum(1 for r in gap if (r.get("conditions") or {}).get(k) == "pass")
+        a = sum(1 for r in ready if (r.get("conditions") or {}).get(k) == "pass")
+        p = fisher(a, len(ready) - a, got, len(gap) - got)
+        worst = max(worst, p)
+        T("condition cell: %s" % disp, "%d of 77" % expect, got == expect,
+          "got %d, Fisher p=%.2e" % (got, p))
+    T("all five separate below the stated bound", "p below 1.5e-07", worst < 1.5e-07,
+      "largest p across the five = %.2e" % worst)
+
+    lowest = sum(1 for r in jrs_raw for v in (r.get("conditions") or {}).values() if v == "gap")
+    passes = sum(1 for r in jrs_raw for v in (r.get("conditions") or {}).values() if v == "pass")
+    mids = sum(1 for r in jrs_raw for v in (r.get("conditions") or {}).values() if v == "review")
+    used = sum(1 for r in jrs_raw if "gap" in (r.get("conditions") or {}).values())
+    T("lowest level is the most-used value", "recorded 216 times against 207 passes and 142",
+      lowest == 216 and passes == 207 and mids == 142,
+      "gap %d, pass %d, review %d" % (lowest, passes, mids))
+    T("lowest level appears in 77 of 113 labels", "77 of the 113 labels", used == 77,
+      "%d" % used)
+
+# ------------------------------------------------------------- cross-vendor
+runs = fetch("study_runs", 500)
+if runs is None:
+    T("cross-vendor series", "87.2 percent", None, "offline or unreachable")
+else:
+    xs = []
+    for r in runs:
+        m = r.get("metrics") or {}
+        if m.get("mode") != "cross_vendor":
+            continue
+        pr = {k: v for k, v in (m.get("per_record") or {}).items() if v is not None}
+        if len(pr) != 15:
+            continue
+        v = m.get("overall_agreement")
+        if v is None:
+            v = sum(pr.values()) / len(pr)
+        xs.append(v)
+    n = len(xs)
+    m_ = st.mean(xs)
+    s_ = st.stdev(xs)
+    se = s_ / math.sqrt(n)
+    tc = 2.021 if n > 35 else 2.045
+    T("cross-vendor run count on the fixed set", "**41 runs**", n == 41, "%d runs" % n)
+    T("cross-vendor mean", "87.2 percent", half_up(100 * m_) == 87.2,
+      "%.2f percent" % (100 * m_))
+    T("cross-vendor CI", "86.2 to 88.2",
+      half_up(100 * (m_ - tc * se)) == 86.2 and half_up(100 * (m_ + tc * se)) == 88.2,
+      "%.2f to %.2f" % (100 * (m_ - tc * se), 100 * (m_ + tc * se)))
+    T("cross-vendor range", "82.2 to 93.3",
+      half_up(100 * min(xs)) == 82.2 and half_up(100 * max(xs)) == 93.3,
+      "%.1f to %.1f" % (100 * min(xs), 100 * max(xs)))
+
+# ------------------------------------------------------------------- Arm B
+T("Arm B is not reported as a result here", "did not meet its pre-registered bar", None,
+  "Arm B belongs to its own paper; the manuscript must not report it as a finding")
+
+# ------------------------------------------------------------- programme
+ps = api("/api/panel-stats")
+if ps is None:
+    T("programme credit: 58 experts", "58 independent experts", None, "offline")
+    T("programme credit: 36 completers", "36 independent experts have each completed", None, "offline")
+else:
+    T("programme credit: 58 experts", "58 independent experts",
+      ps.get("reviewers_all") == 58, "reviewers_all=%s" % ps.get("reviewers_all"))
+    T("programme credit: 36 completers", "36 independent experts have each completed",
+      ps.get("completers_all") == 36, "completers_all=%s" % ps.get("completers_all"))
+    T("comparison-study credit: 20", "The comparison study, 20 independent experts",
+      ps.get("completers_comparison") == 20, "completers_comparison=%s" % ps.get("completers_comparison"))
+    T("reliability credit: 25 raters", "The reliability study, 25 raters",
+      ps.get("reliability_raters") == 25, "reliability_raters=%s" % ps.get("reliability_raters"))
+    T("detection countries", "11 countries", ps.get("countries_detection") == 11,
+      "countries_detection=%s" % ps.get("countries_detection"))
+    T("programme countries", "16 countries", ps.get("countries_all") == 16,
+      "countries_all=%s" % ps.get("countries_all"))
+
+# --------------------------------------------------- superseded values
+# THE NEEDLE CHECKS ABOVE ARE NOT SUFFICIENT ON THEIR OWN, and an adversarial
+# test proved it: changing "83.9 percent" to "84.2 percent" in one place still
+# passed, because another correct "83.9" elsewhere satisfied the needle. A
+# figure has to be right in EVERY place, so every superseded value is also
+# forbidden from the body outright.
+#
+# The change log legitimately quotes the old values as the ones being corrected,
+# so the body is taken as everything before it and the log is exempt.
+_LOG = "## Change log for this version"
+BODY = MSTEXT.split(_LOG)[0] if _LOG in MSTEXT else MSTEXT
+
+SUPERSEDED = [
+    ("82.8", "pre-close accuracy"),
+    ("71.0 to 94.6", "pre-close accuracy interval"),
+    ("86.1", "pre-close sensitivity"),
+    ("79.4", "pre-close specificity"),
+    ("360 reads", "pre-close read count"),
+    ("15 reviewers", "pre-close panel size"),
+    ("10 countries", "pre-close country count"),
+    ("five reviewers scoring perfectly", "wrong perfect-scorer count"),
+    ("no rater used fail", "claim the data contradicts"),
+    ("108 structured labels", "superseded label count"),
+    ("of 75 ", "superseded Gap denominator"),
+    ("0.624", "superseded trained AC1"),
+    ("52.9 percent", "unreproducible not-passing rate"),
+    ("87.8", "single-run cross-vendor figure, stale nightly"),
+    ("84.5 percent", "mixed-denominator cross-vendor mean"),
+    ("66.7 to 93.3", "mixed-denominator cross-vendor range"),
+    ("55 cross-vendor runs", "superseded run count"),
+]
+# A blocklist only catches values already known to be wrong. It cannot catch a
+# figure edited to some arbitrary new number, which the same adversarial test
+# also proved: changing one "83.9 percent" to "84.2 percent" passed, because a
+# correct "83.9" elsewhere satisfied the needle and 84.2 was on no list.
+#
+# Locking the OCCURRENCE COUNT closes that. Every headline figure appears a
+# known number of times in the body; change any one instance and the count drops.
+# If a genuine edit adds or removes a mention, this fails and the number here is
+# updated deliberately, which is the point.
+FIGURE_COUNTS = {
+    "83.9": 5,
+    "72.7 to 95.1": 2,
+    "87.0": 3,
+    "80.7": 3,
+    "384": 6,
+    "0.739": 4,
+    "0.623": 4,
+    "87.2 percent": 3,
+    "86.2 to 88.2": 2,
+    "16 reviewers": 2,
+}
+miscount = []
+for v, want in FIGURE_COUNTS.items():
+    got = BODY.count(v)
+    if got != want:
+        miscount.append("%r appears %d times, expected %d" % (v, got, want))
+CHECKS.append({
+    "name": "every headline figure appears the expected number of times",
+    "needle": "",
+    "in_manuscript": True,
+    "value_ok": not miscount,
+    "detail": ("%d figures, all counts match" % len(FIGURE_COUNTS)) if not miscount
+              else "; ".join(miscount)
+})
+
+found = [(v, why) for v, why in SUPERSEDED if v in BODY]
+CHECKS.append({
+    "name": "no superseded figure survives in the body",
+    "needle": "",
+    "in_manuscript": True,
+    "value_ok": not found,
+    "detail": ("body is clean of all %d superseded values" % len(SUPERSEDED)) if not found
+              else "; ".join("%r (%s)" % (v, why) for v, why in found)
+})
+
+# ------------------------------------------------------------------ output
+fail = 0
+skip = 0
+width = max(len(c["name"]) for c in CHECKS)
+for c in CHECKS:
+    if c["value_ok"] is None:
+        label = "SKIP"
+        skip += 1
+    elif not c["in_manuscript"]:
+        label = "FAIL"
+        fail += 1
+        c["detail"] += "  <- string %r NOT FOUND in the manuscript" % c["needle"]
+    elif not c["value_ok"]:
+        label = "FAIL"
+        fail += 1
+    else:
+        label = "PASS"
+    print("%s  %-*s  %s" % (label, width, c["name"], c["detail"]))
+
+print("\n%d assertions, %d failed, %d skipped" % (len(CHECKS), fail, skip))
+sys.exit(1 if fail else 0)

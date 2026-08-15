@@ -24,7 +24,7 @@
 
 **Judged by machines.** Each constructed record is put to one model per provider, and the measure is how often independent vendors return the same read. Runs nightly from `api/run-study.js`, so the figure is continuously re-checked rather than frozen.
 
-**The panel, from the most recent recorded run (2026-08-12T06:29:06.488173+00:00):**
+**The panel, from the most recent recorded run (2026-08-15T06:06:08.448977+00:00):**
 
 | Vendor | Model |
 |---|---|
