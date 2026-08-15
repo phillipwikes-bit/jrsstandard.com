@@ -1708,3 +1708,47 @@ Rewritten to the locked figures and expanded from three bullets to a full result
 **The people who did the reading get the real answer, including the part that did not work.** A summary that reported only the detection win to the same people whose unpaid work produced the null would be the worst possible use of their goodwill.
 
 Closing invites disagreement and offers the analysis plan, the answer key and the verification packet on request.
+
+---
+
+## 2026-08-15: Kyle McMullan's link, origin-study audit, results summary as a document
+
+### 1. Kyle McMullan now gets the regular study link
+
+`V-AI-12` carried `kind:'author'` in `api/_contributor-roster.js`. He is a Study 011 detection completer: **Arm A, 24 of 24 reads, status COMPLETE** in `research/Expert_Roster_All_Studies_2026-08-06.csv`. The wrong `kind` had two visible effects, both now fixed:
+
+- `contributor.html` line 101 greeted him as **"Co-author and contributor"** instead of "International reviewer panel". He was the only completer whose page did not name him as a panel reviewer.
+- The link sheet filed him under **Co-authors** rather than the detection panel.
+
+Reclassified to `kind:'panel'`. His key and URL are unchanged, so nothing already sent breaks. The co-author fact moves into his note as `detection panel completer; also co-author, Business Ethics paper`, because it is additional to his panel role rather than a replacement for it. Deployed and verified live: the endpoint now returns `V-AI-12 | panel`.
+
+Link sheet detection-panel group goes **34 to 36 rows**, which is the full completer set (16 Arm A + 20 Arm B, 2 of them unnamed by choice). Totals unchanged at 39.
+
+### 2. Does the link sheet contain the origin-study experts? Partly, and here is exactly who
+
+Study 004, the Rung 2a reliability study, has **8 expert raters** and **17 bench reviewers**.
+
+| Code | Name | On the sheet? |
+|---|---|---|
+| E-08 | Stacy Young | **Yes**, under E-08 |
+| E-09 | Dr Nitin Deshpande | **Yes**, under `V-AI-06`, same person |
+| E-12 | Saurabh Nanda | **Yes**, under `V-AI-07`, same person |
+| E-13 | Frank Schouten | **Yes**, under `V-AI-03`, same person |
+| E-03 | Andrzej Skulski | **No** |
+| E-10 | Rahul Potdar | **No** |
+| E-14 | Alankar Yaduvanshi | **No** |
+| E-11 | no identity on record | **No**, and cannot be: no name exists anywhere to send a link to |
+
+**Reachable: 4 of 8.** Three of those four are on the sheet under their detection-panel code because they are the same people.
+
+**Not reachable: 4.** E-03, E-10 and E-14 had roster entries created on 2026-08-14 and removed the same day on Phillip's instruction to take Rung 2a off the invitation. E-11 has no identity on record.
+
+**The 17 bench reviewers are not on the sheet and cannot be.** Their `R-############` codes were generated in the browser and never bound to an identity, so no name exists to recover.
+
+**Open decision for Phillip:** E-03, E-10 and E-14 are named, credentialed people who graded records for this programme and are counted in the 58. They currently have no link and therefore no route to the results summary. Restoring three roster entries is a two-minute change if he wants them included; it is left undone because he explicitly removed them.
+
+### 3. Results summary now exists as a document, generated not retyped
+
+`research/build_results_summary_doc.py` posts the same submission a contributor's browser posts, using the endpoint's built-in self-test key so **no row is written and no counter moves**, and renders whatever comes back to `research/Completer_Results_Summary_2026-08-15.md`.
+
+It refuses to write in three cases rather than emitting a stale copy: the endpoint is unreachable, the response is not flagged as a test submission, or results are not released. The summary text therefore has exactly one source, `api/contributor.js`, and the document cannot drift from what the 36 completers actually see.
