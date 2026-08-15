@@ -70,7 +70,7 @@
 >
 > Building an independent benchmark means recruiting credentialed raters across jurisdictions and fixing a key before anyone scores anything. That is months of work and the part that cannot be shortcut.
 >
-> **What exists:** a 24-record detection set with a held-out answer key, independently verified 24 of 24 by raters blind to it, graded by **16 independent experts across 11 countries over 384 graded reads**, with measured inter-rater reliability (Gwet's AC1 0.739 among experts, 0.624 among trained reviewers).
+> **What exists:** a 24-record detection set with a held-out answer key, independently verified 24 of 24 by raters blind to it, graded by **16 independent experts across 11 countries over 384 graded reads**, part of **58 independent experts across three studies, 36 of whom completed a full 24-record set in 16 countries**,, with measured inter-rater reliability (Gwet's AC1 0.739 among experts, 0.624 among trained reviewers).
 >
 > **What I would do:** license the set for one run. Your tool or your team scores it; scoring is returned by me and **the answer key never leaves my hands**, which is the only way the benchmark stays worth anything to the next person who uses it. You receive a calibration report against the human rater distribution, and a written statement of what your result does and does not support.
 >

@@ -1,5 +1,7 @@
 # Positioning lines: slides, LinkedIn, decks
 
+**SCOPE RULE, applies to every line below.** A line citing **16** describes the detection study alone. A line citing **36** describes both review arms. A line citing **58** describes every independent expert who has graded records for this programme, across all three studies. Never use a detection-only figure where the subject is the programme: it under-credits 42 people who did the work. The verified figures at lock are `reviewers_all` 58, `completers_all` 36, `completers_detection` 16, `completers_comparison` 20, `countries_all` 16, `countries_detection` 11.
+
 **These are marketing copy. They do not go in the manuscript.** The paper makes no efficacy claim and clears a detection threshold only; a line like "bulletproof standard" would contradict Section 4.8 and hand a reviewer an easy objection. Two lines from the supplied set are already in the paper at academic register: the epigraph, and the local-versus-global contrast in Section 2.1.
 
 Each line below is marked for what the evidence actually supports at data lock 2026-08-15.
@@ -12,8 +14,10 @@ Each line below is marked for what the evidence actually supports at data lock 2
 |---|---|
 | **A policy is only as resilient as the diversity of the minds that test it.** | Epigraph. In the paper. A claim about method, not about outcome. |
 | **Local review builds a standard. A global panel stress-tests it.** | In Section 2.1. Describes the design, claims no result. |
-| **Tested across 11 countries and 5 continents.** | 16 completers, verified at lock. Literal. |
+| **Tested across 11 countries and 5 continents.** | The 16 detection completers, verified at lock. Literal. |
 | **384 independent judgments. 11 countries. One verified answer key.** | All three verified. Literal. |
+| **58 independent experts across three studies. 36 of them completed a full 24-record set, in 16 countries.** | Verified at lock: `reviewers_all` 58, `completers_all` 36, `countries_all` 16, every completer code resolved to a country. **This is the line to lead with when the subject is the programme rather than the detection result.** |
+| **Graded record by record by 58 independent experts. Not one of them paid.** | Verified. Covers all three studies rather than one arm. |
 | **Blind spots fade when global minds test.** | Design claim, no outcome claim. |
 | **Multi-jurisdictional insight. Uncompromising rigour.** | "Rigour" describes the pre-registration and the fixed key, both real. |
 | **Resilience through global rigour.** | Same. |
@@ -57,7 +61,9 @@ That version carries the number, names the blind, names the pre-registration, an
 
 ## Short forms
 
-- **11 countries. 5 continents. 384 blind judgments. 83.9% accuracy against a pre-set key.**
+- **11 countries. 5 continents. 384 blind judgments. 83.9% accuracy against a pre-set key.** (detection study only)
+- **58 independent experts. Three studies. 16 countries. Nobody paid.** (whole programme)
+- **36 experts each completed a full 24-record set. 16 countries, 5 continents.** (both arms)
 - **Stress-tested across borders, not reviewed in a silo.**
 - **A standard tested by one jurisdiction has been tested by nobody.**
 - **The key was fixed before anyone scored. That is the whole point.**

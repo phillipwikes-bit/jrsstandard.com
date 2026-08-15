@@ -594,6 +594,62 @@ def check_panel_binder_identical(offline):
               ("; pages with != 1 copy: " + ", ".join(many)) if many else ""))
 
 
+# Files that speak about the PROGRAMME rather than about one study, and must
+# therefore credit every independent expert who graded records, not only the 16
+# on the detection panel. Added 2026-08-15 after the owner found the manuscript
+# acknowledging Arm A alone.
+#
+# The rule is not "mention 58 somewhere". It is: if the file cites a
+# detection-only reviewer figure, it must ALSO carry the programme figure, so a
+# reader is never handed 16 as though it were the whole panel.
+PROGRAMME_SCOPE_FILES = [
+    "research/Detection_Article_v3_2026-08-15.md",
+    "research/Positioning_Lines_2026-08-15.md",
+    "LINKEDIN_LAUNCH_POSTS.md",
+    "UPWORK_PROPOSAL_TEMPLATES.md",
+]
+
+# Any of these counts as crediting the whole programme.
+PROGRAMME_MARKERS = (
+    "58 independent experts",
+    "58 international reviewers",
+    "58 reviewers",
+    "across three studies",
+)
+
+# Any of these is a detection-only reviewer figure.
+DETECTION_ONLY = (
+    "16 independent experts",
+    "sixteen independent experts",
+    "Sixteen independent experts",
+)
+
+
+def check_all_experts_credited(offline):
+    """A file citing the detection panel must also credit the whole programme.
+
+    The manuscript credited the 16 detection reviewers in full and mentioned the
+    other 42 only as a count, in a sentence that called them context. The owner's
+    standing instruction, on the record repeatedly, is that recognition covers
+    every completer in both arms and is not scoped to whichever study a given
+    document happens to report. This check makes that mechanical.
+    """
+    bad = []
+    for rel in PROGRAMME_SCOPE_FILES:
+        src = read(rel)
+        if not src:
+            bad.append("%s: missing" % rel)
+            continue
+        cites_detection = any(m in src for m in DETECTION_ONLY)
+        credits_all = any(m in src for m in PROGRAMME_MARKERS)
+        if cites_detection and not credits_all:
+            bad.append("%s: cites the 16-expert detection figure and never credits "
+                       "the full programme" % rel)
+    check("programme-scope files credit every independent expert", not bad,
+          "%d files checked, all credit the whole programme" % len(PROGRAMME_SCOPE_FILES)
+          if not bad else "; ".join(bad))
+
+
 def check_rung2a_lock(offline):
     """The locked Rung 2a sample must still match the database, or say it does not.
 
@@ -653,7 +709,7 @@ def main():
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
                check_no_masking_fallbacks, check_panel_geo,
                check_html_figures_bound, check_panel_binder_identical,
-               check_rung2a_lock,
+               check_all_experts_credited, check_rung2a_lock,
                check_generated_docs_current, check_cross_endpoint):
         try:
             fn(offline)

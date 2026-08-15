@@ -136,7 +136,7 @@ That study has now closed and will be reported separately and in full, whatever 
 
 ## 5. Results: DRR is detectable
 
-Sixteen independent experts, working in 11 countries across 5 continents, each read the full 24-record corpus and returned 384 graded judgments, unpaid and in a personal capacity, none of them having discussed a record with any other. What follows rests on that effort.
+Sixteen independent experts, working in 11 countries across 5 continents, each read the full 24-record corpus and returned 384 graded judgments, unpaid and in a personal capacity, none of them having discussed a record with any other. What follows rests on that effort. They are 16 of the 58 independent experts who have graded records for this programme; all 58 are credited in the Acknowledgments, and the results below are scoped to these 16 alone.
 
 ### 5.1 Primary detection result
 
@@ -256,13 +256,23 @@ Landis, J.R., Koch, G.G., 1977. The measurement of observer agreement for catego
 
 ## Acknowledgments
 
-This study exists because sixteen independent experts in 11 countries across 5 continents each read a full corpus of 24 records with care, on their own time, without payment, and with nothing at stake in the outcome. That is 384 independent judgments given to a question none of them had to take an interest in. The quality of the panel is why the detection result is worth reporting at all, and its international and linguistic range is a methodological asset rather than a courtesy, for the reasons set out in Section 2.1.
+**Fifty-eight independent experts have graded records for this programme.** Every one of them worked unpaid, in a personal capacity, with nothing at stake in the outcome, and none of them had to take an interest in the question. They are acknowledged here together, because the programme is one body of work and the people who carried it do not become less relevant to a reader depending on which study a given paper reports.
 
-These sixteen are part of a wider effort. Across the programme's two review studies, 36 independent experts have each completed a full 24-record set, sixteen in the detection panel reported here and twenty in the separate comparison study, in 16 countries across 5 continents. Counting the reliability study as well, 58 international reviewers have graded records for this work, every one of them unpaid and working in a personal capacity. Those wider figures are context rather than results: the detection finding in Section 5 rests on the sixteen panel members and their 384 graded reads, and on nothing else.
+They divide as follows, and each group did something the others did not.
+
+**The detection panel, 16 independent experts across 11 countries and 5 continents.** Each read the full 24-record corpus cold, blind to a verified key, and returned 384 graded judgments. This paper's result is theirs. Its international and linguistic range is a methodological asset rather than a courtesy, for the reasons set out in Section 2.1.
+
+**The comparison study, 20 independent experts.** Each completed the same full 24-record corpus under the design described in Section 4.8, and did so without knowing what the comparison was testing, which is what made the comparison possible at all. Their work closed on 15 August 2026 and will be reported in full in its own paper, whatever it shows. A reviewer who completes twenty-four blind reads to answer a question they cannot be told about has done the harder version of this job, and it would be wrong to acknowledge them only in the paper their data happens to appear in.
+
+**The reliability study, 25 raters.** Eight worked as expert raters and seventeen as trained reviewers on the shared record set, producing the labels behind the coefficients in Section 5.3 and the per-condition analysis in Section 5.4. Section 5.4 exists only because they recorded a judgment on each of the five conditions separately rather than only the overall read.
+
+Across the two review studies, 36 independent experts have each completed a full 24-record set, in 16 countries across 5 continents. Every completer code resolved to a country; none was estimated.
+
+Those wider figures are acknowledgment, not results. The detection finding in Section 5 rests on the sixteen panel members and their 384 graded reads, and on nothing else. Keeping the credit wide and the claim narrow is deliberate, and both halves of that sentence are meant.
 
 The reliability and validation methodology, including the pre-registered analysis plan, the choice of coefficient, and the acceptance floors applied in Section 5.3, was designed by Ubayet Hossain, FRM. Specifying those criteria before any data were examined is what allows the results in this paper to be read as tests rather than as descriptions.
 
-We thank the international reviewer panel for their care and their independent judgment. Reviewers are recognized as named contributors with their consent; they are not co-authors of this paper.
+We thank every reviewer across all three studies for their care and their independent judgment. Reviewers in all three are recognized as named contributors with their consent, on the same terms and with the same standing; none is a co-author of this paper. Recognition is not scoped to the study a given paper reports.
 
 Gabriela Cortez (Maryland Commission on Civil Rights) is named as a contributor to this paper. The argument in Section 2.1, that a record must stay understandable to the person it describes and that linguistic and jurisdictional range is part of what makes review real, came out of conversations with her and is credited to her with permission. It is not a decorative point in this manuscript. It is the reason the panel was built across eleven countries and several first languages instead of one, and that design choice is what the detection result rests on.
 

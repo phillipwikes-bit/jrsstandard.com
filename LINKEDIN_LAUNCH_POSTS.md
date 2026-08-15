@@ -85,7 +85,7 @@
 >
 > Then I asked practitioners to read them. **36 reviewers completed the full set, across 16 countries and 5 continents.** Lawyers, HR directors, compliance leaders, auditors.
 >
-> On the detection question, **16 independent experts across 11 countries produced 384 graded reads and identified weak records 83.9% of the time (95% CI 72.7 to 95.1).**
+> On the detection question, **16 independent experts across 11 countries produced 384 graded reads and identified weak records 83.9% of the time (95% CI 72.7 to 95.1).** Those 16 are part of a larger group: **58 independent experts across three studies have graded records for this work, 36 of them completing a full 24-record set across 16 countries.** The detection figure belongs to the 16; the programme belongs to all 58, and a post about the programme should say 58.
 >
 > Agreement between reviewers was substantial: Gwet's AC1 of 0.739 among experts and 0.624 among trained reviewers.
 >
