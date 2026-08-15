@@ -55,8 +55,12 @@ const FALLBACK_DATE = 'Monday, 31 August 2026';
 // Flip to true ONLY when both conditions in the results plan are met:
 // comparison-arm recruitment closed AND the analysis locked. Until then the
 // page tells contributors plainly why the summary is not there yet.
-const RESULTS_RELEASED = false;
+// RELEASED 2026-08-15. Both conditions in the results plan are met: the
+// comparison arm closed on 2026-08-15 and the analysis is locked. Every figure
+// below was recomputed from the study database on the lock date.
+const RESULTS_RELEASED = true;
 const RESULTS_EXPECTED = 'late August 2026';
+const RESULTS_LOCKED_ON = '15 August 2026';
 
 // The roster itself lives in ./_contributor-roster.js, shared with
 // api/contributor-stats.js so the two can never disagree on who is on it or how
@@ -238,22 +242,56 @@ function resultsBlock(){
       heading: 'Your results summary',
       why: 'Data collection is not closed yet. The summary goes to every contributor on a single date once collection closes and the analysis is locked, so that nobody sees findings while other reviewers are still working. That is a design safeguard, not a delay for its own sake.',
       published: [
-        'An international panel of experienced professionals independently reviewed the same set of 24 constructed records, spanning 10 countries on 5 continents.',
+        'An international panel of independent experts reviewed the same set of 24 constructed records, spanning 11 countries on 5 continents.',
         'Reads were scored against an answer key fixed and independently verified before any scoring took place.',
-        'Three AI systems from three different vendors applied the same review to the same records and agreed 84 percent of the time. That figure measures consistency of application, not correctness, and the two are kept apart deliberately.'
+        'Three AI systems from three different vendors applied the same review to the same records. That figure measures consistency of application, not correctness, and the two are kept apart deliberately.'
       ],
       closing: 'You are on the list to receive the full summary in ' + RESULTS_EXPECTED + '. It will be aggregate. Individual results are held confidentially, and if you want your own, ask and it goes to you privately and to nobody else.'
     };
   }
   return {
     status: 'released',
+    locked_on: RESULTS_LOCKED_ON,
     heading: 'What the study found',
-    published: [
-      'Reviewers on the panel identified the records correctly 82.8 percent of the time (95 percent confidence interval 71.0 to 94.6, 15 reviewers, 360 reads, sensitivity 86.1, specificity 79.4). That clears the threshold set in advance, before any data were examined. Experienced professionals working independently across 10 countries can identify records whose reasoning cannot be reconstructed.',
-      'Three AI systems from three different vendors applied the same review to the same records and agreed 84 percent of the time. That is consistency of application rather than correctness.',
-      'What the study did not establish: it did not show that the standard improves on unaided professional judgment. A separate comparison was built to test exactly that, and at the sample size reached the result is not statistically conclusive. It is reported as an open question rather than a win.'
+
+    opening: 'Both studies closed on 15 August 2026 and every figure below was '
+           + 'recomputed from the study database on that date. This is the whole '
+           + 'result, including the part that did not work. You did the reading; '
+           + 'you get the finding as it came out.',
+
+    scale: [
+      '58 independent experts have graded records across the three studies. Not one was paid.',
+      '36 of them each completed a full 24-record set, across 16 countries and 5 continents.',
+      'The detection panel reported below is 16 of those 36, working in 11 countries on 5 continents.'
     ],
-    closing: 'Results are reported in aggregate only. Individual results are held confidentially and are not included here. If you would like to know your own, ask and it goes to you privately.'
+
+    published: [
+      'DETECTION, the headline result. The panel identified records correctly 83.9 percent of the time (95 percent confidence interval 72.7 to 95.1; 16 reviewers, 384 graded reads; sensitivity 87.0 percent on unsupported records, specificity 80.7 percent on grounded ones). That clears the threshold fixed in advance, which required at least 70 percent with the lower bound above chance. Independent experts, reading cold and blind to the key, can identify records whose reasoning cannot be reconstructed. That was the question the study existed to answer, and the answer is yes.',
+
+      'THE SPREAD, which matters more than the average. Individual accuracy ran from 37.5 percent to 100 percent. Six reviewers scored perfectly. Eleven of 16 caught every unsupported record. A review process where some reviewers are excellent and others are below chance is hard to run even when the mean looks fine, because the spread is invisible at the point of use.',
+
+      'RELIABILITY. On a shared 10-record set, expert raters reached Gwet\'s AC1 of 0.739 and trained reviewers 0.623, both above the 0.61 floor set in advance and both in the substantial range. The confidence intervals are wide and the plan\'s secondary lower-bound criterion is not met, so these are interim figures resting on 10 records against a target of about 26.',
+
+      'ALL FIVE CONDITIONS CARRY INFORMATION. Each of the five separates a Ready record from a Gap record at p below 1.5e-07. None of them is decorative. Evidentiary sufficiency is both the most often unmet and the sharpest discriminator.',
+
+      'MACHINE CONSISTENCY. Three AI systems from three different vendors applied the same review to the same records and agreed 87.8 percent of the time on the most recent nightly run. Across 55 runs the mean is 84.5 percent and the range is 66.7 to 93.3. This is consistency of application, not correctness, and the two are kept apart on purpose.',
+
+      'WHAT DID NOT WORK, stated plainly. The separate randomized comparison asked whether applying the five conditions beats unaided professional judgment. It did not meet its pre-registered bar. Reviewers using the conditions averaged 75.0 percent and reviewers using a general prompt averaged 67.6 percent, a difference of 7.4 points with a 95 percent confidence interval of minus 15.3 to plus 30.0 (p = 0.50). The bar required the interval to exclude zero. It does not. The direction is as predicted and the sample cannot resolve it: detecting an effect that size at 80 percent power needs roughly 205 people per arm and this study had 7 and 13. It was never powered to find it. That is a design limitation, not a finding against the method, and it is reported as a null rather than dressed up.',
+
+      'SO THE HONEST SUMMARY IS: the problem is real and experts can see it. Whether this particular instrument beats expert intuition at spotting it is still open, and the next study can now be designed against a measured baseline instead of an assumed one.'
+    ],
+
+    what_your_work_supports: [
+      '11 countries. 5 continents. 384 blind judgments. 83.9 percent accuracy against a pre-set key.',
+      'The key was fixed before anyone scored, and independently reproduced 24 of 24 by raters blind to it. That is the whole point.',
+      'A standard tested by one jurisdiction has been tested by nobody. This one was stress-tested across borders.'
+    ],
+
+    closing: 'Results are aggregate only. Your individual scores are not in this '
+           + 'summary and are not shared with anyone. If you want your own, ask and '
+           + 'they go to you privately and to nobody else. If you disagree with any '
+           + 'reading of this data, say so: the analysis plan, the answer key and its '
+           + 'verification packet are available to you on request.'
   };
 }
 
