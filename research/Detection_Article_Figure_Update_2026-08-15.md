@@ -24,8 +24,9 @@ The status line says:
 | 11 countries | **11** | unchanged |
 | 5 continents | **5** | unchanged |
 | 384 graded reads | **384** (16 × 24 after keeping the latest submission per record; 510 raw rows including resubmissions) | unchanged |
-| Panel accuracy 83.9%, 95% CI 72.7 to 95.1 | **not recomputed, see section 4** | verify before submission |
-| Sensitivity 87.0%, specificity 80.7% | **not recomputed, see section 4** | verify before submission |
+| Panel accuracy 83.9%, 95% CI 72.7 to 95.1 | **83.9%, 72.7 to 95.1 — VERIFIED, see section 4** | unchanged |
+| Sensitivity 87.0%, specificity 80.7% | **still unverified, see section 4** | one step outstanding |
+| "five reviewers scoring perfectly" | **six scored 100%** | **CORRECT THIS** |
 | Cross-vendor 84%, 15 records, latest run 2026-07-06, band 78 to 87% | **87.8% on 15 records, latest run 2026-08-12. 55 runs on record, range 66.7 to 93.3%, mean 84.5%** | **STALE, must be updated** |
 | Reliability corpus: 108 submitted, 99 after one label per rater per record | **113 submitted, 104 after the same rule** | **update the counts** |
 | Experts Gwet's AC1 **0.739**, 36 labels, 10 records | **0.739, 36 labels, 8 raters, 10 records** | **reproduces exactly** |
@@ -67,15 +68,56 @@ The 2026-08-01 note observed that "those raters skew Ready/Needs-work while the 
 
 ---
 
-## 4. What could NOT be recomputed, and why that matters before submission
+## 4. Accuracy is verified. Only sensitivity and specificity are outstanding.
 
-**The accuracy figures cannot be verified from the aggregate views.** `pilot_progress` carries a participant code and a read count and nothing else. The per-record judgments needed for accuracy, sensitivity and specificity sit in a table that is RLS-locked and returns empty under the anon key.
+**Correcting what I told you earlier.** I said the whole headline needed a service-role
+re-run. That was more than the situation requires: two thirds of it is already verified
+without any credential.
 
-So **83.9%, the 72.7 to 95.1 interval, sensitivity 87.0% and specificity 80.7% are carried forward from the 6 August computation and have not been re-verified at close.** They are the headline result of the paper.
+**Accuracy 83.9% and the 72.7 to 95.1 interval are VERIFIED at close.**
 
-They almost certainly have not moved, because the inputs did not: the same 16 reviewers, the same 384 reads, nobody new started. But "almost certainly" is not what a locked figure means. **Re-run the accuracy pass with a service-role query before submission**, and if it agrees, the paper is locked. If it does not, you need to know that before a reviewer does.
+`research/analysis_2026-08-04.py` holds the sixteen per-reviewer accuracy scores as
+returned by the database, so the figure is reproducible offline. Running it prints
+`n=16, mean 83.9%, SD 21.0, 95% CI 72.7 to 95.1` — the manuscript's numbers exactly.
 
----
+The only question was whether those scores are still current, and they are:
+
+| Reviewer activity | Latest |
+|---|---|
+| Last Arm A submission of any kind | V-AI-29, **2026-08-03** |
+| Snapshot the analysis was taken from | **2026-08-04** |
+| Completers with any activity after 2026-08-04 | **0 of 16** |
+
+No reviewer touched their data after the snapshot, so the scores cannot have moved and
+the accuracy figure is locked as published.
+
+**Sensitivity 87.0% and specificity 80.7% are still unverified.** They cannot be derived
+from participant-level accuracies: they need the per-record judgments, and those live in
+`ai_pilot_reads` behind row-level security. No saved file in the repository holds them.
+
+**How to close that last item without putting a key anywhere it should not be:**
+`scripts/verify_detection_accuracy.py` was written for exactly this. Run it on your own
+machine:
+
+```
+export SUPABASE_SERVICE_ROLE_KEY='<service key>'
+python3 scripts/verify_detection_accuracy.py
+```
+
+It reads the key from your environment, never prints it, never writes it to a file, and
+never sends it anywhere except Supabase. It prints per-reviewer accuracy, sensitivity and
+specificity, then compares all three against the manuscript and marks each MATCHES or
+DIFFERS. With no key set it explains how to set one and stops rather than inventing a
+number. It mirrors `scripts/export_arm_b_data.py`, which already does this for Arm B.
+
+**A discrepancy found while checking.** The draft says *"with five reviewers scoring
+perfectly."* The saved scores are
+`[100, 100, 100, 100, 100, 100, 95.83, 95.83, 91.67, 87.5, 79.17, 79.17, 75, 58.33, 41.67, 37.5]`.
+**Six reviewers scored 100%, not five.** Correct the sentence.
+
+**Unrelated but worth knowing:** the same file carries Arm B figures at `B1 n=5, B2 n=11`.
+At close Arm B is `B1 7, B2 13`. Those numbers belong to the comparison paper, not this
+one, but do not reuse them from that file without recomputing.
 
 ## 5. One claim in the draft is contradicted by the data
 
@@ -121,7 +163,9 @@ All five still separate at p < 1.5e-07. The conclusion in the draft holds; only 
 
 ## 8. Checklist before submission
 
-- [ ] Re-run the accuracy pass (service-role) and confirm 83.9%, 72.7 to 95.1, 87.0%, 80.7%.
+- [x] Accuracy 83.9% and CI 72.7 to 95.1 VERIFIED at close, no credential needed.
+- [ ] Run `scripts/verify_detection_accuracy.py` with your key to confirm sensitivity 87.0% and specificity 80.7%.
+- [ ] Correct "five reviewers scoring perfectly" to **six**.
 - [ ] Replace cross-vendor 84% / 2026-07-06 with **87.8% / 2026-08-12**, and the band 78 to 87 with the observed **66.7 to 93.3 across 55 runs**.
 - [ ] Update reliability counts 108 to **113** submitted, 99 to **104** retained; trained-reviewer labels 63 to **68**.
 - [ ] Update the condition table Gap denominator 75 to **77** and the three changed cells.
