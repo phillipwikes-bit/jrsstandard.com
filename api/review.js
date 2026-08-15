@@ -134,7 +134,19 @@ export default async function handler(req) {
       },
       body: JSON.stringify({
         model: 'claude-haiku-4-5-20251001',
-        max_tokens: 1024,
+        // Raised from 1024 on 2026-08-15. At 1024 this endpoint failed 7 of 9
+        // test calls, every one with the provider reporting
+        // stop_reason='max_tokens' at exactly output_tokens=1024: the model was
+        // still mid-JSON when it was cut off, so JSON.parse threw and the user
+        // saw "Server error". Complete responses that did fit measured 800 and
+        // 943 tokens, so 1024 left almost no margin over a normal answer.
+        //
+        // 2048 is sized from those measurements, not picked for headroom's own
+        // sake. The response schema is fixed at five conditions plus two short
+        // arrays and a summary, so output does not scale with record length;
+        // the variable is how much the model writes per note. Doubling clears
+        // the largest complete response seen by more than 2x.
+        max_tokens: 2048,
         system: SYSTEM_PROMPT,
         messages: [
           {
