@@ -1753,3 +1753,47 @@ Study 004, the Rung 2a reliability study, has **8 expert raters** and **17 bench
 
 It refuses to write in three cases rather than emitting a stale copy: the endpoint is unreachable, the response is not flagged as a test submission, or results are not released. The summary text therefore has exactly one source, `api/contributor.js`, and the document cannot drift from what the 36 completers actually see.
 - 2026-08-15: **LinkedIn results section written at three lengths, `research/LinkedIn_Results_Section_2026-08-15.md` (+ .docx).** Phillip asked for the completer summary condensed to what fits a small LinkedIn section. Version A is about 130 words and carries both questions and both answers; B is about 70; C is about 30 for a headline. **Every figure was checked line by line against `research/closed_aggregates_2026-08-15.json`: 83.9, CI 72.66-95.05, 384 reads, 16 experts, B1 75.0, B2 67.6, gap 7.37, diff CI -15.25 to +29.99, n=20 in Arm B. All match.** My verification script briefly reported 83.9 as a mismatch; that was **the script being wrong, not the section**: Python's `round(83.85, 1)` uses banker's rounding and returns 83.8, while half-up rounding, which is the reporting convention and what every other surface already publishes, gives 83.9. Raw value 83.85. **Cut, with reasons recorded in the file:** the 37.5 to 100 spread (needs a paragraph to land, reads as a weakness without one), the AC1 figures (interim on 10 records, a wide interval is not a LinkedIn fact), the per-condition p values (meaningless without the table), and cross-vendor 87.8 (invites "the AI agrees with itself", which is the wrong reading and does not survive a skim). **Kept and marked as must-stay:** the null in two sentences, because publishing only the win when the same unpaid people produced both results is the version that gets quoted back at him; the 58 experts across three studies, because scoping to 16 leaves out 42 people; and "key fixed before scoring", which is the strongest fact available and costs six words. The new file is added to `PROGRAMME_SCOPE_FILES` so `check_all_experts_credited` enforces the 58 credit on it. Guard 12 of 12, 5 files checked.
+
+---
+
+## 2026-08-15: items 1 to 4 executed
+
+### Item 1. Three Rung 2a expert links restored
+
+E-03 Andrzej Skulski, E-10 Rahul Potdar, E-14 Alankar Yaduvanshi are back in `api/_contributor-roster.js` with **their original keys, recovered from commit c6c01d0 rather than regenerated**, so any link sent during the 2026-08-14 window still resolves. All three verified live.
+
+They are **not** on the evaluator outreach and cannot reach it: `build_evaluator_outreach.py` selects on the `V-AI-` and `RR-` prefixes, and the suite fails if a 2a message file appears. Verified after the change: outreach still 36, suite 21 of 21. Link sheet 39 to 42.
+
+### Item 2. Outreach package verified dispatch-ready
+
+36 files, 36 distinct confirmation keys, 36 carrying the 31 August due date, **0 containing a price**, **0 containing a blind-revealing token**, 0 Rung 2a files. Suite 21 of 21. Sending is the only remaining step and it is Phillip's.
+
+### Item 3. Rung 2a hold resolved by relocking to the current set
+
+The 2026-08-01 hold asked whether the set was accumulating or curated. **It is accumulating, so the lock moved with it**: structured 21 to 22 reviewers, 108 to 113 labels, 75 to 77 unreconstructable; unstructured unchanged at 3 and 16.
+
+Published statistics moved with the sample: 69.4 to **68.1 percent**, CI 60.2-77.3 to **59.1-76.0**, p 1.6e-06 to **2.4e-06**, rate ratio 11.1 to **10.9**. **Every one is slightly weaker than the figure it replaces.** An update that moves a published result against itself cannot be a result-driven choice of dataset, which is the objection the hold existed to prevent. `acquisition-9f3c2a7d4b.html` updated in the same commit so the sentence and its statistics stay on one sample. Online guard now passes: `locked 22/113 structured, 3/16 unstructured, taken 2026-08-15`.
+
+### Item 4. The paper, for Ubayet
+
+**A defect found while checking, and it is the kind he would have found.** The manuscript cited cross-vendor reproducibility as "87.8 percent on the most recent nightly run (2026-08-12)". Two things wrong:
+
+1. **A single-run figure is stale the next morning.** Between drafting the revision and verifying it, a new nightly run landed and the latest figure moved from 87.8 to **82.2 percent**. A paper cannot cite a number that changes overnight.
+2. **Pooling all runs mixes denominators.** 15 of the 56 cross-vendor runs scored only 2 or 3 records while the corpus was being built. On a 3-record run a single disagreement moves the mean by 11 points, and **those runs are the entire source of the 66.7 percent low** the manuscript reported as the bottom of its range.
+
+Rebuilt as the **41-run series on the fixed 15-record set: mean 87.2 percent, 95 percent CI 86.2 to 88.2, median 86.7, SD 3.2, range 82.2 to 93.3.** More defensible and slightly stronger than the mixed-denominator 84.4. Updated in the manuscript, the completer summary and the LinkedIn section together, so no surface disagrees.
+
+**`scripts/verify_manuscript_figures.py`**, new. Checks **42 numeric claims** in the manuscript against `closed_aggregates_2026-08-15.json`, `bench_labels`, `study_runs` and `/api/panel-stats`. Current state: **42 assertions, 0 failed, 1 skipped.**
+
+**Adversarially validated against six injected defects, and two weaknesses in the verifier itself were found that way:**
+
+| Injected | Caught |
+|---|---|
+| revert six to five perfect scorers | yes |
+| restore the "no rater used fail" claim | yes |
+| drop the 20 comparison reviewers from the credit | yes |
+| put the stale 87.8 cross-vendor figure back | yes |
+| change one instance of 83.9 to 84.2 | **no, at first** |
+| change one AC1 value | **no, at first** |
+
+The needle checks asked only whether the correct string appears **somewhere**, so editing one instance passed while another correct instance satisfied the check. Fixed two ways: every superseded value is now forbidden from the body outright, with the change log exempt because it legitimately quotes them; and **every headline figure has its occurrence count locked**, so changing any single instance drops the count and fails. Both injected defects are now caught.
