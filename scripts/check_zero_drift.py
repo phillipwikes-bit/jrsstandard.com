@@ -605,6 +605,7 @@ def check_panel_binder_identical(offline):
 PROGRAMME_SCOPE_FILES = [
     "research/Detection_Article_v3_2026-08-15.md",
     "research/Positioning_Lines_2026-08-15.md",
+    "research/LinkedIn_Results_Section_2026-08-15.md",
     "LINKEDIN_LAUNCH_POSTS.md",
     "UPWORK_PROPOSAL_TEMPLATES.md",
 ]
