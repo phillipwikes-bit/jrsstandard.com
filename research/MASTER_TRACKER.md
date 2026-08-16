@@ -871,6 +871,7 @@ The review instrument stores working keys; they map to the standard as follows (
 - 2026-08-01: LIVE DATA ANALYSIS pulled today (anon views: check_completion.py + bench_labels), full report in research/Data_Analysis_2026-08-01.md. (1) COMPLETION as of today: Arm A detection panel 14 complete (V-AI-01,03,06,07,08,10,11,12,16,20,24,27,28,30) + Niloofar V-AI-23 22/24 IP; 10 countries/5 continents. Arm B 11 complete (B1/JRS=4: RR-104,106,124,126; B2/baseline=7: RR-101,107,109,110,121,125,130) + RR-108 IP 9/24. Total 25 completers. Draft's "12 / ArmB 7 (3/4)" is stale -> update to 14 / 11 (4/7). (2) RELIABILITY CORRECTED — the earlier "trained collapsed to 0.18" was MY ERROR: it mixed mode=normal (baseline, no-JRS) labels into the JRS reliability set. Recomputed live on mode=jrs reads only, deduped, Gwet AC1: EXPERTS 0.739 (95% CI [0.43,1.00], raw 0.80, 36 labels/8 raters/10 rec); TRAINED 0.623 (CI [0.30,0.88], raw 0.71, 63/13/10); POOLED 0.665 (CI [0.41,0.88]). Both clear the 0.61 point floor and reproduce the ORIGINAL 0.74/0.63. Reproduced the artifact: trained with mode=normal mixed in = AC1 0.157 (~0.18). CONSEQUENCE: reliability does NOT collapse; the pull-to-"preliminary/not-reported" was based on the mistaken 0.18. Reliability is reportable as INTERIM (0.74/0.62, floor cleared, 10 of ~26 records, wide CIs, trained CI lower bound 0.30 < 0.41 criterion). Owner's call whether to restore interim reporting to pages/paper (currently "not reported"); not changed unilaterally. Checklist [B0]/[B1] updated to this corrected finding. (3) GATED (anon can't reach; need BENCH_ADMIN_TOKEN/service role): detection accuracy (Arm A), Arm B B1-vs-B2 accuracy (answer tables RLS-locked, armb_answers 404), and the reproducibility nightly run table. Last known owner-run accuracy (prior session, elevated SQL): Arm A 82.6%, B1 74.0%, B2 72.9%, B1-B2 +1.1pp n.s.; reproducibility locked 84%/15 records. Did NOT use chat-pasted service credentials.
 - 2026-08-01: Plain-English "what happened + corrections" written to research/What_Happened_And_Corrections_2026-08-01.md. Core admission: MY earlier reliability "collapse to 0.18" was a computation error (mixed baseline mode=normal labels into the JRS reliability set); on JRS reads only the reliability is valid and clears the floor (experts 0.74, trained 0.62), matching the original figures. Because I believed the false 0.18, I had the owner pull reliability from public pages (research/pilot/results/acquisition), from drafts (Detection_ArmB, Article1_Rungs1and2, BusinessEthics), delete two PDFs (JRS_Reliability_Accuracy.pdf, JRS_Validation_Report.pdf; recoverable from git), and remove the LinkedIn reliability sentence. Those changes were based on my error and can be reversed to the honest interim reliability. NUMBERS restated: Arm A 14 complete (+1 at 22/24), accuracy ~82.6% (owner-run, in tracker, not re-verifiable from this env); Arm B 11 complete (B1/JRS=4, B2/baseline=7, +1 IP), accuracy B1 74.0% / B2 72.9% (+1.1pp n.s., owner-run); reliability experts 0.74 / trained 0.62 (verified today, interim, floor cleared); reproducibility 84%/15 (locked, consistency not accuracy). ACCESS NOTE: Supabase MCP is NOT available as a tool in this remote environment; I can read the public anon aggregate views (completion + bench_labels) but not the RLS-locked accuracy answer tables, so accuracy figures remain owner-run and not re-verified here. Did not edit public pages/drafts this turn (owner deciding whether to move forward); restoration offered.
 - 2026-08-15: Condensed the completer results summary in `api/contributor.js` (rhetorical framing removed, every figure and the Floor 3 null kept), deployed to main, verified live, regenerated `research/Completer_Results_Summary_2026-08-15.md`/`.docx` from the live endpoint. Audited the owner's supplied EMPIRICAL VALIDATION block: **2 of 4 lines wrong** (AI consistency 84% is a stale single run; "58 reviewers across 16 countries" is the recorded scope defect). Corrected block written to `research/Empirical_Validation_Block_2026-08-15.md`. Detail in the section at the end of this file.
+- 2026-08-16: Owner: remove the research summaries. Scope confirmed as the LIVE GATED SUMMARY only. `resultsBlock()`, `RESULTS_RELEASED`, `RESULTS_EXPECTED`, `RESULTS_LOCKED_ON` removed from `api/contributor.js`; the results render, the two promise lines and the orphaned `.pend`/`ul.tight` rules removed from `contributor.html`. New offline guard `check_contributor_carries_no_findings`, adversarially tested 3/3. Deployed to main and verified live: results key absent on 5 consecutive POSTs, forced choices and anonymous path unaffected. `research/build_results_summary_doc.py` is now dead and was left in place because the owner's scope choice excluded it.
 
 ## CONSOLIDATED ERROR LOG (assistant errors this session — recorded 2026-08-01 at owner's instruction so they are not repeated)
 1. **Reliability miscalculation (most damaging).** Recomputed Rung 2a reliability with baseline-condition labels (mode=normal) wrongly mixed into the JRS reliability set, producing a false "collapse" to AC1 0.18. CORRECT value (JRS reads only, verified live 2026-08-01): experts 0.74, trained 0.62-0.63, both clear the 0.61 floor. PREVENTION RULE: reliability of the JRS read is computed ONLY on mode=jrs labels; never mix mode=normal (baseline) labels; always print n, modes, and rater codes before reporting a coefficient.
@@ -1825,3 +1826,44 @@ Owner supplied a four-line marketing block and asked for it to be updated, along
 **One line offered, owner's call.** The block reports four wins and no null. The comparison study closed on 15 August and missed its pre-registered bar (75.0 vs 67.6, CI -15.3 to +30.0). An optional fifth line stating it is included in the file. Not added to the block itself without instruction.
 
 Artifact: `research/Empirical_Validation_Block_2026-08-15.md` (+ `.docx`).
+
+## 2026-08-16: results summary removed from the contributor path
+
+Owner instruction: "remove all research summaries. They are not needed." The phrase reached two different things, so the scope was confirmed before anything was touched: **the live gated summary only.** The internal `research/*_Summary_*.md` analysis records were explicitly left alone.
+
+### What the summary was
+
+`api/contributor.js` served an aggregate findings block from the POST branch, released 2026-08-15. Seven findings paragraphs, the three-line scale statement, the three-line "what your work supports" list and a closing. It reached a contributor only after all three forced-choice permissions validated. A GET on the same link never carried it.
+
+### What came out
+
+| File | Removed |
+|---|---|
+| `api/contributor.js` | `resultsBlock()` (60 lines), `RESULTS_RELEASED`, `RESULTS_EXPECTED`, `RESULTS_LOCKED_ON`, the `results:` key on the POST response, the gate comment block |
+| `contributor.html` | the results render in `renderDone()`, `var r = d.results`, the button label "Confirm and see the results", the lede promising "the results summary I promised you is at the bottom of it" |
+| `contributor.html` CSS | `.pend` and `ul.tight`, orphaned by the render removal and used by nothing else |
+| `research/build_contributor_links.py` | the two paragraphs documenting the gate, replaced with a paragraph recording the removal; `Contributor_Links.md` regenerated, guard confirms byte-identical |
+
+### What did not change
+
+The naming election, the three forced-choice permissions, the anonymity path that does not require identifying yourself, the two initiative sign-ups, the three field guides, the training link, the private diagnostic, the fallback date of Monday 31 August 2026, and the link-open telemetry. Verified live after deploy: `transfer_choice_required` still returned on an incomplete submission, the anonymous path still accepts three choices with no name, an unknown key still 404s.
+
+### The guard
+
+`check_contributor_carries_no_findings` in `scripts/check_zero_drift.py`. The summary was invisible in page source by design, which means its accidental return would also be invisible. The check greps `api/contributor.js` and `contributor.html` for sixteen strings specific to a study finding, plus the `results:` key and the `d.results` read. Generic numbers such as 58 and 16 are deliberately not listed: they appear in legitimate credit lines.
+
+Adversarially tested with three injected regressions, all three caught:
+
+| Injected | Caught |
+|---|---|
+| a findings figure on the response (`83.9 percent`) | yes |
+| a `results:` key with entirely new wording and no old figures | yes |
+| `var r = d.results` restored in `contributor.html` | yes |
+
+### Verification after deploy
+
+Edge function propagation confirmed by polling, not assumed. Five consecutive POSTs: `results` key absent on all five, zero occurrences of `83.9`, `0.739`, `87.2` or `67.6`. Served page contains zero occurrences of `d.results`, `results summary` or `83.9`. Full online drift guard: **17 checks, 0 failed.**
+
+### One thing left in place, deliberately
+
+`research/build_results_summary_doc.py` pulled the summary from the live endpoint to produce the delivered document. Its source no longer exists, so the script is dead. It was NOT deleted: the owner's scope choice explicitly excluded the summary documents and their builder. Removing it is one command when wanted: `git rm research/build_results_summary_doc.py`.
