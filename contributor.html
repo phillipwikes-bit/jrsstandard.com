@@ -48,9 +48,6 @@ button.ghost{background:none;color:var(--accent);border:1px solid var(--accent)}
 .registry p{font-size:12.5px;color:var(--muted);line-height:1.6;margin:0}
 .registry b{color:var(--text);font-weight:500}
 .note{border-left:3px solid var(--ready-text);padding:12px 14px;margin:0 0 14px;font-size:12.5px;color:var(--muted);line-height:1.6;background:var(--surface2)}
-.pend{border-left:3px solid var(--review-text)}
-ul.tight{margin:0 0 0 16px;font-size:12.5px;color:var(--muted);line-height:1.65}
-ul.tight li{margin-bottom:7px}
 .grid2{display:flex;gap:10px;flex-wrap:wrap}
 .grid2 a{flex:1 1 45%;text-decoration:none;min-width:170px}
 #msg{font-size:12px;min-height:16px;margin-bottom:8px;color:var(--review-text)}
@@ -122,7 +119,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     card.innerHTML =
       '<div class="eyebrow">' + esc(roleLine(p)) + ' &middot; ' + esc(p.code) + '</div>'
     + '<h1>' + esc(p.first) + ', how should your name appear?</h1>'
-    + '<p class="lede">The study paper is being prepared for submission. Rather than transcribe your details from a registration form, I would rather you set them yourself. This takes about a minute, and the results summary I promised you is at the bottom of it.</p>'
+    + '<p class="lede">The study paper is being prepared for submission. Rather than transcribe your details from a registration form, I would rather you set them yourself. This takes about a minute.</p>'
     + onFileBlock(p)
 
     + '<div class="flabel">Name and title, as printed</div>'
@@ -166,7 +163,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     + '</div>'
 
     + '<div id="msg" style="margin-top:18px"></div>'
-    + '<button id="go" type="button">Confirm and see the results</button>'
+    + '<button id="go" type="button">Confirm my details</button>'
     + '<p class="fine">Your details are stored securely and used only for this project. Request access or deletion at any time at <a href="mailto:info@jrsstandard.com">info@jrsstandard.com</a>. See the <a href="privacy.html">Privacy Policy</a>.</p>';
 
     el('go').addEventListener('click', submit);
@@ -230,7 +227,6 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
   }
 
   function renderDone(d, name, title, org, cNamed){
-    var r = d.results || {};
     var body = '<div class="eyebrow">Confirmed</div>'
       + '<h1>Thank you, ' + esc(d.first || '') + '</h1>'
       + '<div class="note">'
@@ -241,18 +237,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
         + ' If anything changes, write to <a href="mailto:info@jrsstandard.com">info@jrsstandard.com</a> at any time before publication.'
       + '</div>'
 
-      + '<h2>' + esc(r.heading || 'Your results summary') + '</h2>';
-
-    if (r.status === 'pending') {
-      body += '<div class="note pend">' + esc(r.why || '') + '</div>';
-      body += '<p class="lede" style="margin-bottom:8px">What is already established and public:</p>';
-    }
-    body += '<ul class="tight">';
-    (r.published || []).forEach(function(line){ body += '<li>' + esc(line) + '</li>'; });
-    body += '</ul>';
-    if (r.closing) body += '<p class="lede" style="margin-top:12px">' + esc(r.closing) + '</p>';
-
-    body += '<div class="sect">'
+      + '<div class="sect">'
       + '<h2 style="margin-top:0">The Investigator Field Guide</h2>'
       + '<p class="lede" style="margin-bottom:12px">Yours to keep and to pass on. Three editions, no further registration since you are already on the record here.</p>'
       + '<div class="grid2">'
