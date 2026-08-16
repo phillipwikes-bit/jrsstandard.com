@@ -863,6 +863,71 @@ def check_honor_roster_composition(offline):
     check("honor roster composition matches its own comment", not bad, detail)
 
 
+# Text on the JRS-R certificate path that would assert a credential the
+# completion code does not prove. Each entry is a literal fragment plus the
+# reason. Found 2026-08-16: the certificate said the holder "completed the
+# six-module JRS Reviewer Training", the code is issued on submitting the
+# evaluation, and the evaluation is reachable without enrolling in the training
+# at all. The one person holding a rendered certificate had no training row.
+CERT_OVERCLAIMS = [
+    ("completed the six-module JRS Reviewer Training",
+     "the JRS-R code proves an evaluation submission, not a training completion"),
+    ("completed the JRS Reviewer Training",
+     "same overclaim, share-snippet wording"),
+    ("The certificate records that you completed the training",
+     "same overclaim, reviewer landing boundary note"),
+]
+
+CERT_PATH_FILES = [
+    "api/reviewer-cert.js",
+    "reviewer/index.html",
+    "reviewer/completion.html",
+    "reviewer/evaluation.html",
+]
+
+
+def check_certificate_claims_supported(offline):
+    """The reviewer certificate may only assert what its code proves.
+
+    A certificate is a record making a claim about a person. This programme
+    exists to measure whether a record's claim is supported by the record, so a
+    certificate of its own that overstates is not an irony, it is a defect of
+    the exact class under study.
+
+    api/reviewer-cert.js is credential-free by design and cannot look up a
+    training completion, so it cannot condition on one. The only safe wording is
+    the one bounded by what the JRS-R code proves: the evaluation submission.
+    """
+    hits = []
+    for rel in CERT_PATH_FILES:
+        body = read(rel)
+        if not body:
+            check("reviewer certificate claims only what the code proves", False,
+                  "%s is unreadable" % rel)
+            return
+        for frag, why in CERT_OVERCLAIMS:
+            # The correction note in api/reviewer-cert.js quotes the old wording
+            # to say it was removed. Quoting it inside a comment that records the
+            # removal is the opposite of asserting it.
+            for idx in _all_indexes(body, frag):
+                line_start = body.rfind("\n", 0, idx) + 1
+                line = body[line_start:body.find("\n", idx)]
+                if line.lstrip().startswith("//") or line.lstrip().startswith("#"):
+                    continue
+                hits.append("%s: %r (%s)" % (rel, frag[:46], why))
+    check("reviewer certificate claims only what the code proves", not hits,
+          "; ".join(hits) if hits
+          else "%d files, no unsupported credential claim" % len(CERT_PATH_FILES))
+
+
+def _all_indexes(hay, needle):
+    out, i = [], hay.find(needle)
+    while i != -1:
+        out.append(i)
+        i = hay.find(needle, i + 1)
+    return out
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -872,6 +937,7 @@ def main():
                check_contributor_carries_no_findings,
                check_withdrawn_contributors_absent,
                check_honor_roster_composition,
+               check_certificate_claims_supported,
                check_generated_docs_current, check_cross_endpoint):
         try:
             fn(offline)

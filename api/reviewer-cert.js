@@ -24,10 +24,30 @@ const SIGNER = 'Phillip Wikes';
 const SIGN_LN = 'Phillip Wikes, Creator, JRS';
 const FOOTER = '© 2026 Phillip Wikes   ·   JRS   ·   jrsstandard.com';
 
-const BODY = 'completed the six-module JRS Reviewer Training and submitted the reviewer '
-           + 'evaluation, applying the five review conditions of the Justification Review '
-           + 'Standard to the question of whether a consequential record can still explain, '
-           + 'on its own terms, how and why a decision was reached.';
+// WHAT THIS CERTIFICATE MAY ASSERT IS BOUNDED BY WHAT THE COMPLETION CODE
+// PROVES, AND THAT IS THE EVALUATION SUBMISSION AND NOTHING ELSE.
+//
+// CORRECTED 2026-08-16. This read "completed the six-module JRS Reviewer
+// Training and submitted the reviewer evaluation". The training clause was an
+// overclaim: /api/reviewer-eval issues a JRS-R- code on submission of the
+// evaluation, and the evaluation is reachable without enrolling in the
+// training at all. On the day this was found, the one person holding a
+// rendered certificate had no training-enroll row and no training-complete row
+// in pilot_contacts. The certificate asserted a credential the database
+// contradicted.
+//
+// That is the exact defect this programme measures in other people's records:
+// a document stating a conclusion its own evidence does not support. Issuing
+// one would have been indefensible.
+//
+// Do not restore the training clause here. This endpoint is credential-free by
+// design and cannot look up a training completion, so it cannot condition on
+// one. If a training-inclusive certificate is ever wanted, it needs its own
+// endpoint reading training_completions, and its own code prefix.
+const BODY = 'submitted the JRS reviewer evaluation, applying the five review '
+           + 'conditions of the Justification Review Standard to the question of '
+           + 'whether a consequential record can still explain, on its own terms, '
+           + 'how and why a decision was reached.';
 
 function esc(v){
   return String(v == null ? '' : v).replace(/[&<>"']/g, function(c){
