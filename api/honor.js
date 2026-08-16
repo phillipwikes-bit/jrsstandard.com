@@ -80,14 +80,22 @@ const HONOR_YEAR = '2026';
 // code and the citation with no name, so the acceptance page asks them how they
 // wish to be printed rather than guessing.
 //
-// 34 entries: 1 public-records + 16 detection + 17 records-review.
+// 36 entries: 1 public-records + 15 detection + 20 records-review.
+// Codes run H-2026-01 to H-2026-37 with H-2026-06 retired, so the code numbers
+// and the entry count deliberately do not agree. See the retirement note at
+// H-2026-06 for why the sequence is not closed up.
+// scripts/check_zero_drift.py recomputes this composition and fails if the
+// comment above stops describing the roster.
 //
-// THE ROSTER IS ONE SHORT OF THE COMPLETERS AS OF 2026-08-11. RR-117 finished
-// on that date, taking records-review completers from 17 to 18 and the
-// programme total from 33 to 34, and no honor entry has been added for her.
-// Adding one means writing a citation and issuing a link, which is an owner
-// decision rather than a count correction, so it is recorded here instead of
-// being made silently. Verified against pilot_progress and armb_progress.
+// THE ROSTER IS TWO SHORT OF THE COMPLETERS AS OF 2026-08-16. RR-117 finished
+// on 2026-08-11, taking records-review completers from 17 to 18, and no honor
+// entry has been added for her. The detection group is one short of its 16
+// completers because H-2026-06 was withdrawn on 2026-08-16 at the owner's
+// instruction; that participant's reads still count in the study, unnamed.
+// Adding an entry means writing a citation and issuing a link, which is an
+// owner decision rather than a count correction, so it is recorded here
+// instead of being made silently. Verified against pilot_progress and
+// armb_progress.
 const ROSTER = {
   'q7m2vd9xk4': {
     code: 'H-2026-01',
@@ -180,22 +188,19 @@ const ROSTER = {
             + 'across Asia-Pacific perspective contributed to the evidence that Decision '
             + 'Reconstruction Risk is detectable by independent experts.'
   },
-  'apuyyioat6': {
-    code: 'H-2026-06',
-    study: 'detection',
-    participant: 'V-AI-08',
-    first: 'Gabriela',
-    name: 'Gabriela Cortez',
-    title: 'Civil-rights records and bilingual intake',
-    org: 'Maryland Commission on Civil Rights',
-    order: 'named for completing the international detection study',
-    citation: 'For completing the full 24-record set of the international detection study '
-            + 'as an independent reviewer, reading every record cold and blind to the '
-            + 'verified key, and applying the five review conditions with care, rigor and '
-            + 'independent judgment. A civil-rights intake and records practice '
-            + 'perspective contributed to the evidence that Decision Reconstruction Risk '
-            + 'is detectable by independent experts.'
-  },
+  // H-2026-06 WITHDRAWN 2026-08-16 at the owner's instruction. The honoree who
+  // held this code, participant V-AI-08, is not to appear as a contributor
+  // anywhere in the programme, and the honor roster is a contributor-facing
+  // surface. Her contributor roster entry was removed from
+  // api/_contributor-roster.js in the same change.
+  //
+  // THE CODE IS RETIRED, NOT REUSED, AND THE SEQUENCE IS NOT RENUMBERED.
+  // H-2026-01 through H-2026-26 are issued designations that appear on
+  // certificates already in the honorees' hands. Closing the gap would silently
+  // reassign every code above this one to a different person.
+  //
+  // Do not repopulate from research/Expert_Roster_All_Studies_2026-08-06.csv or
+  // any study-record export; those carry participation, not consent.
   'f6t7aw2wya': {
     code: 'H-2026-07',
     study: 'detection',
