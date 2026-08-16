@@ -872,6 +872,7 @@ The review instrument stores working keys; they map to the standard as follows (
 - 2026-08-01: Plain-English "what happened + corrections" written to research/What_Happened_And_Corrections_2026-08-01.md. Core admission: MY earlier reliability "collapse to 0.18" was a computation error (mixed baseline mode=normal labels into the JRS reliability set); on JRS reads only the reliability is valid and clears the floor (experts 0.74, trained 0.62), matching the original figures. Because I believed the false 0.18, I had the owner pull reliability from public pages (research/pilot/results/acquisition), from drafts (Detection_ArmB, Article1_Rungs1and2, BusinessEthics), delete two PDFs (JRS_Reliability_Accuracy.pdf, JRS_Validation_Report.pdf; recoverable from git), and remove the LinkedIn reliability sentence. Those changes were based on my error and can be reversed to the honest interim reliability. NUMBERS restated: Arm A 14 complete (+1 at 22/24), accuracy ~82.6% (owner-run, in tracker, not re-verifiable from this env); Arm B 11 complete (B1/JRS=4, B2/baseline=7, +1 IP), accuracy B1 74.0% / B2 72.9% (+1.1pp n.s., owner-run); reliability experts 0.74 / trained 0.62 (verified today, interim, floor cleared); reproducibility 84%/15 (locked, consistency not accuracy). ACCESS NOTE: Supabase MCP is NOT available as a tool in this remote environment; I can read the public anon aggregate views (completion + bench_labels) but not the RLS-locked accuracy answer tables, so accuracy figures remain owner-run and not re-verified here. Did not edit public pages/drafts this turn (owner deciding whether to move forward); restoration offered.
 - 2026-08-15: Condensed the completer results summary in `api/contributor.js` (rhetorical framing removed, every figure and the Floor 3 null kept), deployed to main, verified live, regenerated `research/Completer_Results_Summary_2026-08-15.md`/`.docx` from the live endpoint. Audited the owner's supplied EMPIRICAL VALIDATION block: **2 of 4 lines wrong** (AI consistency 84% is a stale single run; "58 reviewers across 16 countries" is the recorded scope defect). Corrected block written to `research/Empirical_Validation_Block_2026-08-15.md`. Detail in the section at the end of this file.
 - 2026-08-16: Owner: remove the research summaries. Scope confirmed as the LIVE GATED SUMMARY only. `resultsBlock()`, `RESULTS_RELEASED`, `RESULTS_EXPECTED`, `RESULTS_LOCKED_ON` removed from `api/contributor.js`; the results render, the two promise lines and the orphaned `.pend`/`ul.tight` rules removed from `contributor.html`. New offline guard `check_contributor_carries_no_findings`, adversarially tested 3/3. Deployed to main and verified live: results key absent on 5 consecutive POSTs, forced choices and anonymous path unaffected. `research/build_results_summary_doc.py` is now dead and was left in place because the owner's scope choice excluded it.
+- 2026-08-16: **V-AI-08 withdrawn as a contributor across the whole programme** at the owner's instruction. Live: roster 42 to 41, honor entry H-2026-06 retired (code not reused, sequence not renumbered), both deployed and verified. Naming only: her reads still count, unnamed, so 58/36/16 are unchanged. New `scripts/withdraw_contributor.py` (28 rules, 20 files, idempotent) plus two guards, adversarially tested 4/4. **Manuscript v4 written to the senior editor's review**: all 10 Tier 1 and all 8 Tier 2 items applied, 6 Tier 3 items entered in a new research-programme section because they need new data. 44 figure assertions pass, 9 injected regressions caught. Detail in the section at the end of this file.
 
 ## CONSOLIDATED ERROR LOG (assistant errors this session — recorded 2026-08-01 at owner's instruction so they are not repeated)
 1. **Reliability miscalculation (most damaging).** Recomputed Rung 2a reliability with baseline-condition labels (mode=normal) wrongly mixed into the JRS reliability set, producing a false "collapse" to AC1 0.18. CORRECT value (JRS reads only, verified live 2026-08-01): experts 0.74, trained 0.62-0.63, both clear the 0.61 floor. PREVENTION RULE: reliability of the JRS read is computed ONLY on mode=jrs labels; never mix mode=normal (baseline) labels; always print n, modes, and rater codes before reporting a coefficient.
@@ -1867,3 +1868,58 @@ Edge function propagation confirmed by polling, not assumed. Five consecutive PO
 ### One thing left in place, deliberately
 
 `research/build_results_summary_doc.py` pulled the summary from the live endpoint to produce the delivered document. Its source no longer exists, so the script is dead. It was NOT deleted: the owner's scope choice explicitly excluded the summary documents and their builder. Removing it is one command when wanted: `git rm research/build_results_summary_doc.py`.
+
+## 2026-08-16: contributor withdrawal, and the manuscript rebuilt to editorial review
+
+### Part 1. V-AI-08 withdrawn as a contributor
+
+Owner instruction: remove all traces as a contributor. Executed across 24 files.
+
+**The distinction that governs the whole change.** This is a **naming and credit withdrawal, not a data withdrawal.** Her graded reads remain in the study database and remain counted, unnamed, in the detection panel of 16 and the 384 graded reads. Every programme total is unchanged and was verified live afterwards: **58 reviewers, 36 completers, 16 countries.** If the data is ever to be withdrawn as well, every published figure resting on the panel has to be recomputed. That is a separate instruction and has not been given.
+
+| Surface class | Rule applied |
+|---|---|
+| Credit: acknowledgments, bylines, honor roster, contributor link, certificate, invitations | entry removed entirely |
+| Study record: rosters, completion tables, inventories | **row stays, name goes.** Deleting the row would understate the panel and falsify the counts every published figure rests on |
+| Decision log: the tracker, draft progress logs | decision stays, name goes. A tracker that erases its own decisions cannot later show a withdrawal was honoured |
+
+**Live, deployed and verified:** her contributor roster entry removed (42 to 41, link now returns `unknown_key`); honor entry H-2026-06 removed (link now returns `found:false`, a control honor link still resolves). **The honor code is retired, not reused, and the sequence is NOT renumbered.** H-2026-01 to H-2026-37 are issued designations on certificates already in honorees' hands; closing the gap would silently reassign every code above it to a different person.
+
+**`scripts/withdraw_contributor.py`, new.** The withdrawal is a rerunnable register, not an edit pass: 28 exact rules plus 3 bulk rules, 20 files, idempotent (verified by checksum across two runs), with a repo-wide trace scan that exits non-zero if any name form survives. The next withdrawal is a one-line change and a re-run.
+
+**Two guards added, adversarially tested 4 of 4:**
+
+| Injected | Caught |
+|---|---|
+| a builder repopulates the name into a study record | yes |
+| the honor entry restored from the study record | yes |
+| the name left only in a source comment | yes |
+| an honor entry added with no name at all (composition drift) | yes |
+
+The first guard exists because **this defect class has already happened here**: E-08 asked in writing that her agency title come off every piece of recognition, `api/honor.js` said "Do not repopulate these from the study record", and a builder repopulated it from the roster CSV anyway, because the CSV records participation and knows nothing about consent.
+
+**One false positive found and removed on the first run.** The obvious identifier to block alongside the name was "Maryland Commission on Civil Rights". It is wrong: that is the **first author's** former post, and it appears in 20 outreach files, the reviewer page, the training page and the manuscript byline. Blocking it produced 20 false positives. It was stripped from her own rows individually instead.
+
+### Part 2. Manuscript v4, written to the senior editor's review
+
+Disposition received: **major revision before submission**, 8 to 15 percent acceptance as-is, 25 to 40 after manuscript-level revision on the existing dataset.
+
+`research/Detection_Article_v4_2026-08-16.md`, 10,838 words, 32 references (was 8). **No figure changed.** Full change record in `research/Detection_Article_v4_CHANGES.md`, which exists because the editor's item 20 required the progress log out of the manuscript.
+
+**All 10 Tier 1 items and all 8 Tier 2 items applied.** The four that most change the paper's standing:
+
+**The circularity.** Section 5.4 claimed all five conditions discriminate at p below 1.5e-07 and that "none is decorative". The conditions are the components the composite determination is built from, so that tested components against their own composite. Moved to Appendix B, all five p-values removed, the circularity stated in terms. The guard now **fails if the p-values come back**, and still verifies the association against the database so the decision to report descriptively was made on a known result.
+
+**The failed criterion.** The pre-registered reliability floor had two parts. The point estimates clear 0.61; the **analytic lower bounds are 0.402 and 0.253 against a required 0.41 and do not.** The bootstrap puts the expert bound at 0.427. v3 presented that as clearing. v4 states *"The pre-registered reliability criterion was not met"* and *"We do not treat that as satisfying the pre-registration"*, and reports the bootstrap as a sensitivity analysis. Landis and Koch bands dropped entirely.
+
+**The spectrum problem.** 12 clearly grounded and 12 clearly unsupported records is a corpus of easy cases. v4 states that **the 83.9 percent is an upper bound and not an estimate of field performance**, cites the diagnostic-accuracy literature on spectrum bias, and reads the answer key's 24-of-24 unanimity as a second symptom of it.
+
+**Three claims withdrawn outright.** Workflow independence (all 24 records are AI-generated, so what was shown is AI-generated-record detectability). Proportionality as a validated feature (no experiment varied stakes). Higher sensitivity as the preferable direction of error (no cost model exists; false positives carry real costs).
+
+**Six Tier 3 items cannot be done by editing a manuscript.** Ambiguous records, human-authored records, independent adjudication, real-world criterion validity, incremental value, reviewer calibration. All six are now named studies in a new Section 10 programme table with their status, so the paper states the programme rather than implying it is complete.
+
+**Appendix C is specified and empty, deliberately.** The crossed reviewer-and-item model the editor asked for needs the per-read table, which is behind row-level security and unreachable without the service key. `scripts/analyze_item_and_reviewer_variance.py` computes it, in pure Python with no numpy or R available, and **refuses to run without the key rather than estimating anything.** The appendix states the two questions the analysis will answer, in advance, so the result cannot be read selectively later.
+
+**That script caught two of my own errors before anything was quoted.** Its self-test recovers known variance components from simulated data of the real 16-by-24 shape. First version: the Laplace log-determinant used a diagonal Hessian, dropping the only term coupling the two random factors, and the optimiser drove the record SD to **0.000 against a truth of 0.600**. That would have supported "record difficulty does not matter", the exact opposite of the answer. Replaced with the exact crossed Hessian via Schur complement and Cholesky, validated against 4-dimensional Gauss-Hermite quadrature on a tiny case (agreement to 0.025 nats). Second: a single-seed self-test then reported FAIL on the now-correct estimator, because **1 in 6 fits at this sample size lands on the boundary**. Rewritten to six seeds and median recovery, and the script now reports singular fits and profile intervals rather than a point estimate near zero.
+
+**Nine injected regressions, and the first pass caught only four of five.** Softening *"the criterion was not met"* to *"was substantially met"* passed every check, because every figure was still correct and nothing was watching the sentence around them. Two claim-level guards were added for that: one on the failed criterion and the bootstrap disavowal, one on the three scope limits. Second pass caught all nine.

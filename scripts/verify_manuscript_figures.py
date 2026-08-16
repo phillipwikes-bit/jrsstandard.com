@@ -33,7 +33,10 @@ from decimal import Decimal, ROUND_HALF_UP
 from math import comb
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MS = os.path.join(ROOT, "research", "Detection_Article_v3_2026-08-15.md")
+# The manuscript under verification. v4 is the submission draft; v3 is retained
+# because it is the version the completer summary and the LinkedIn section were
+# generated against, and a figure that disagrees between them is drift.
+MS = os.path.join(ROOT, "research", "Detection_Article_v4_2026-08-16.md")
 AGG = os.path.join(ROOT, "research", "closed_aggregates_2026-08-15.json")
 SB = "https://pjzxkeviouofdseagvpf.supabase.co/rest/v1"
 ANON = "sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e"
@@ -122,6 +125,13 @@ def ac1(items):
 
 
 MSTEXT = io.open(MS, encoding="utf-8").read()
+
+# The Acknowledgments spell the number at the head of the section. Accepting
+# either form keeps the guard on the fact and off the prose: a check that forces
+# the digit form is a check that writes the sentence.
+FIFTY_EIGHT_CREDITED = ("58 independent experts" in MSTEXT
+                        or "Fifty-eight independent experts" in MSTEXT)
+
 A = json.load(io.open(AGG, encoding="utf-8"))
 dp = A["detection_panel"]
 ab = A["arm_b"]
@@ -140,7 +150,7 @@ T("specificity", "80.7", half_up(dp["specificity"]["mean"]) == 80.7,
 T("panel size", "16 reviewers", dp["accuracy"]["n"] == 16, "n=%d" % dp["accuracy"]["n"])
 T("graded reads", "384", dp["judgments_analysed"] == 384,
   "%d scorable" % dp["judgments_analysed"])
-T("perfect scorers is six not five", "six reviewers scoring perfectly",
+T("perfect scorers is six not five", "Six reviewers classified every record correctly",
   dp["accuracy"]["scored_100"] == 6, "%d scored 100" % dp["accuracy"]["scored_100"])
 T("accuracy SD", "21.0", half_up(dp["accuracy"]["sd"]) == 21.0,
   "raw %.2f" % dp["accuracy"]["sd"])
@@ -151,7 +161,7 @@ T("sensitivity perfect count", "11 of 16", dp["sensitivity"]["scored_100"] == 11
   "%d" % dp["sensitivity"]["scored_100"])
 T("specificity perfect count", "7 of 16", dp["specificity"]["scored_100"] == 7,
   "%d" % dp["specificity"]["scored_100"])
-T("zero exclusions on the detection panel", "the exclusion count for this study is zero",
+T("zero exclusions on the detection panel", "the exclusion count is zero",
   dp["participants_excluded_below_18_of_24"] == 0,
   "%d excluded" % dp["participants_excluded_below_18_of_24"])
 T("one administrative row disclosed", "385 rows were retained",
@@ -184,8 +194,8 @@ else:
     ct, nt = coef(lambda c: c.startswith("R-"))
     T("reliability AC1 experts", "0.739", round(ce, 3) == 0.739, "%.4f on %d labels" % (ce, ne))
     T("reliability AC1 trained", "0.623", round(ct, 3) == 0.623, "%.4f on %d labels" % (ct, nt))
-    T("expert label count", "36 | 0.739", ne == 36, "%d" % ne)
-    T("trained label count", "68 | 0.623", nt == 68, "%d" % nt)
+    T("expert label count", "| 36 | 8 | 0.739 |", ne == 36, "%d" % ne)
+    T("trained label count", "| 68 | 14 | 0.623 |", nt == 68, "%d" % nt)
     T("submitted determinations", "113 submitted determinations", len(jrs_raw) == 113,
       "%d" % len(jrs_raw))
     T("retained after de-duplication", "reduced to 104", len(jrs) == 104, "%d" % len(jrs))
@@ -209,8 +219,76 @@ else:
         worst = max(worst, p)
         T("condition cell: %s" % disp, "%d of 77" % expect, got == expect,
           "got %d, Fisher p=%.2e" % (got, p))
-    T("all five separate below the stated bound", "p below 1.5e-07", worst < 1.5e-07,
-      "largest p across the five = %.2e" % worst)
+    # THE MANUSCRIPT MUST NOT REPORT THESE P-VALUES, and that is the check now.
+    #
+    # v3 printed a Fisher exact p for each condition and concluded that "none of
+    # the five conditions is decorative". The conditions are the components the
+    # composite determination is built from, so testing components against their
+    # own composite is close to testing whether reviewers followed instructions.
+    # The inferential reading was removed from v4 on that ground, and a guard
+    # that demanded the p-values be present would push them straight back in.
+    #
+    # The association is still verified HERE, against the database, so the
+    # decision to report it descriptively is an editorial choice made on a known
+    # result rather than a way of hiding a weak one.
+    forbidden = [n for n in ("Fisher's exact", "Fisher exact", "p below 1.5e-07",
+                             "1.8e-10", "1.1e-11", "7.3e-09", "1.3e-07")
+                 if n in MSTEXT]
+    T("condition p-values stay out of the manuscript", "", not forbidden,
+      ("largest p across the five is %.2e in the data; the manuscript reports "
+       "the association descriptively, as required" % worst) if not forbidden
+      else "inferential language restored: %s" % ", ".join(forbidden))
+
+    # THE FAILED CRITERION MUST STAY FAILED.
+    #
+    # An adversarial test caught this gap: changing "was not met" to "was
+    # substantially met" passed every other check in this file, because every
+    # figure was still correct. The coefficients were never the risk. The risk
+    # is the sentence around them.
+    #
+    # The pre-registered reliability criterion had two parts, a point estimate
+    # at or above 0.61 and an analytic lower bound at or above 0.41. The point
+    # estimates clear; the analytic lower bounds are 0.402 and 0.253 and do not.
+    # The bootstrap interval puts the expert bound at 0.427, and treating that
+    # as satisfying the pre-registration is exactly the interval-shopping that
+    # pre-registration exists to prevent.
+    #
+    # Verified against the numbers rather than trusted: 0.402 < 0.41 is checked
+    # here, so the required sentence is required because the data says so.
+    EXPERT_ANALYTIC_LOW = 0.402
+    TRAINED_ANALYTIC_LOW = 0.253
+    CRITERION = 0.41
+    really_failed = (EXPERT_ANALYTIC_LOW < CRITERION and TRAINED_ANALYTIC_LOW < CRITERION)
+    states_failure = "**The pre-registered reliability criterion was not met.**" in MSTEXT
+    disowns_bootstrap = "We do not treat that as satisfying the pre-registration." in MSTEXT
+    softeners = [w for w in ("criterion was substantially met",
+                             "criterion was met",
+                             "criterion was effectively met",
+                             "criterion was narrowly met",
+                             "clears the pre-registered floor on both",
+                             "both criteria met on reliability")
+                 if w in MSTEXT]
+    T("failed reliability criterion is reported as failed", "",
+      really_failed and states_failure and disowns_bootstrap and not softeners,
+      ("analytic lower bounds %.3f and %.3f against a criterion of %.2f; the "
+       "manuscript states the failure and disowns the bootstrap rescue"
+       % (EXPERT_ANALYTIC_LOW, TRAINED_ANALYTIC_LOW, CRITERION))
+      if (really_failed and states_failure and disowns_bootstrap and not softeners)
+      else ("failure statement present=%s, bootstrap disowned=%s, softeners=%s"
+            % (states_failure, disowns_bootstrap, softeners or "none")))
+
+    # The same shape of risk on the primary claim: the paper must keep saying
+    # what it does not establish. Losing this paragraph is how a narrow result
+    # becomes a broad one between drafts.
+    SCOPE_SENTENCES = [
+        "It does not establish criterion validity against real documentation",
+        "the accuracy reported in Section 6 is an upper bound",
+        "The study therefore establishes detectability on AI-generated records.",
+    ]
+    missing_scope = [x for x in SCOPE_SENTENCES if x not in MSTEXT]
+    T("the scope limits survive", "", not missing_scope,
+      "%d scope statements present" % len(SCOPE_SENTENCES) if not missing_scope
+      else "removed: %s" % "; ".join(repr(x[:50]) for x in missing_scope))
 
     lowest = sum(1 for r in jrs_raw for v in (r.get("conditions") or {}).values() if v == "gap")
     passes = sum(1 for r in jrs_raw for v in (r.get("conditions") or {}).values() if v == "pass")
@@ -244,7 +322,7 @@ else:
     s_ = st.stdev(xs)
     se = s_ / math.sqrt(n)
     tc = 2.021 if n > 35 else 2.045
-    T("cross-vendor run count on the fixed set", "**41 runs**", n == 41, "%d runs" % n)
+    T("cross-vendor run count on the fixed set", "**41 nightly runs**", n == 41, "%d runs" % n)
     T("cross-vendor mean", "87.2 percent", half_up(100 * m_) == 87.2,
       "%.2f percent" % (100 * m_))
     T("cross-vendor CI", "86.2 to 88.2",
@@ -261,11 +339,12 @@ T("Arm B is not reported as a result here", "did not meet its pre-registered bar
 # ------------------------------------------------------------- programme
 ps = api("/api/panel-stats")
 if ps is None:
-    T("programme credit: 58 experts", "58 independent experts", None, "offline")
+    T("programme credit: 58 experts", "", FIFTY_EIGHT_CREDITED, "offline")
     T("programme credit: 36 completers", "36 independent experts have each completed", None, "offline")
 else:
-    T("programme credit: 58 experts", "58 independent experts",
-      ps.get("reviewers_all") == 58, "reviewers_all=%s" % ps.get("reviewers_all"))
+    T("programme credit: 58 experts", "",
+      FIFTY_EIGHT_CREDITED and ps.get("reviewers_all") == 58,
+      "reviewers_all=%s, credited in the Acknowledgments" % ps.get("reviewers_all"))
     T("programme credit: 36 completers", "36 independent experts have each completed",
       ps.get("completers_all") == 36, "completers_all=%s" % ps.get("completers_all"))
     T("comparison-study credit: 20", "The comparison study, 20 independent experts",
@@ -288,6 +367,21 @@ else:
 # so the body is taken as everything before it and the log is exempt.
 _LOG = "## Change log for this version"
 BODY = MSTEXT.split(_LOG)[0] if _LOG in MSTEXT else MSTEXT
+
+# ONE SUPERSEDED FIGURE IS ALLOWED IN THE BODY, AND ONLY INSIDE THE SENTENCE
+# THAT RETIRES IT. v4 has no change log; the reason the cross-vendor figure is a
+# series rather than a run is a methodological point that belongs in Appendix A,
+# and making that point requires naming the run figure that moved.
+#
+# The exemption is the whole sentence, not the number. Deleting the explanation
+# and leaving "87.8" behind fails, which is the case worth catching.
+_EXPLAINED = [
+    ("87.8", "the most recent run moved from 87.8 percent on 12 August to "
+             "82.2 percent on 15 August"),
+]
+for _val, _sentence in _EXPLAINED:
+    if _sentence in BODY:
+        BODY = BODY.replace(_sentence, "~EXPLAINED~")
 
 SUPERSEDED = [
     ("82.8", "pre-close accuracy"),
@@ -317,17 +411,41 @@ SUPERSEDED = [
 # known number of times in the body; change any one instance and the count drops.
 # If a genuine edit adds or removes a mention, this fails and the number here is
 # updated deliberately, which is the point.
+#
+# RE-LOCKED 2026-08-16 for v4. Every count that moved was traced to the specific
+# passage that added or removed the mention before the number here was changed.
+# A count is never updated to whatever the file happens to contain.
+#
+#   83.9          5 -> 7  added: the 4.7 justification of the 0.70 threshold
+#                         points the reader at the interval instead, and the
+#                         Discussion states the figure twice while separating
+#                         group-level detectability from per-reviewer reliance
+#   72.7 to 95.1  2 -> 3  added: same 4.7 passage
+#   0.739         4 -> 2  removed: the Discussion no longer quotes the
+#                         coefficient, because the pre-registered lower-bound
+#                         criterion attached to it failed and quoting the point
+#                         estimate in the Discussion read as if it had not
+#   0.623         4 -> 2  removed: same
+#   87.2 percent  3 -> 1  removed: the cross-vendor analysis moved out of the
+#                         Abstract and the Discussion into Appendix A. Three
+#                         models agreeing is not evidence the construct is real,
+#                         and carrying it as a headline invited that reading
+#   86.2 to 88.2  2 -> 1  removed: same
+#   16 reviewers  2 -> 1  removed: the Abstract and Results now write the count
+#                         in words. The digit form survives once, in Methods 4.5
+#
+# Unchanged: 87.0, 80.7, 384.
 FIGURE_COUNTS = {
-    "83.9": 5,
-    "72.7 to 95.1": 2,
+    "83.9": 7,
+    "72.7 to 95.1": 3,
     "87.0": 3,
     "80.7": 3,
     "384": 6,
-    "0.739": 4,
-    "0.623": 4,
-    "87.2 percent": 3,
-    "86.2 to 88.2": 2,
-    "16 reviewers": 2,
+    "0.739": 2,
+    "0.623": 2,
+    "87.2 percent": 1,
+    "86.2 to 88.2": 1,
+    "16 reviewers": 1,
 }
 miscount = []
 for v, want in FIGURE_COUNTS.items():

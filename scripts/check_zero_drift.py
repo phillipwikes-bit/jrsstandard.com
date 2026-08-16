@@ -169,6 +169,13 @@ COUNT_ALLOW = {
     "R2A_LOCKED_UNSTRUCTURED_REVIEWERS": _R2A_WHY,
     "R2A_LOCKED_UNSTRUCTURED_LABELS": _R2A_WHY,
     "R2A_LOCKED_UNSTRUCTURED_GAPS": _R2A_WHY,
+    "MIN_READS": "the PRE-REGISTERED exclusion rule, 18 of 24, in "
+                 "scripts/analyze_item_and_reviewer_variance.py. It is a design "
+                 "constant fixed before data collection, not a copy of a count "
+                 "held anywhere else, and deriving it from the data is exactly "
+                 "what a pre-registered rule must not do",
+    "CORPUS_SIZE": "the study design constant, 24 records. Same reasoning as "
+                   "NEEDED above, which is the same number in the builders",
 }
 
 
@@ -603,6 +610,7 @@ def check_panel_binder_identical(offline):
 # detection-only reviewer figure, it must ALSO carry the programme figure, so a
 # reader is never handed 16 as though it were the whole panel.
 PROGRAMME_SCOPE_FILES = [
+    "research/Detection_Article_v4_2026-08-16.md",
     "research/Detection_Article_v3_2026-08-15.md",
     "research/Positioning_Lines_2026-08-15.md",
     "research/LinkedIn_Results_Section_2026-08-15.md",
@@ -613,6 +621,10 @@ PROGRAMME_SCOPE_FILES = [
 # Any of these counts as crediting the whole programme.
 PROGRAMME_MARKERS = (
     "58 independent experts",
+    # v4 opens the Acknowledgments by spelling the number. The guard is on the
+    # fact that the whole programme is credited, not on how the sentence is
+    # written, so the spelled form counts.
+    "Fifty-eight independent experts",
     "58 international reviewers",
     "58 reviewers",
     "across three studies",
