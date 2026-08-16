@@ -79,20 +79,13 @@ def main():
     A("")
     A("Each link opens a page that captures how the person wants their name and title "
       "printed, a contact address, and three forced-choice permissions, then releases the "
-      "initiatives, the Investigator Field Guide, the training, the private diagnostic and "
-      "the results summary.")
+      "initiatives, the Investigator Field Guide, the training and the private diagnostic.")
     A("")
-    A("**THE RESULTS SUMMARY IS GATED AND THE GATE IS STRUCTURAL, NOT COSMETIC.** "
-      "`api/contributor.js` returns the summary only from the POST branch, after all "
-      "three forced choices validate. A GET on the same link returns the person and "
-      "nothing else, so opening the URL, sharing it, or fetching it does not disclose "
-      "the findings. Verified by position in the source: the GET branch contains no "
-      "reference to results at all.")
-    A("")
-    A("**Released 2026-08-15.** Both studies are closed and the analysis is locked, so "
-      "`RESULTS_RELEASED` is now true and a contributor who submits sees the full "
-      "finding, including the comparison result that did not meet its pre-registered "
-      "bar. Everyone gets the same summary on the same terms.")
+    A("**THE RESULTS SUMMARY WAS REMOVED ON 2026-08-16** on the owner's instruction. "
+      "`api/contributor.js` served a gated aggregate findings summary from the POST "
+      "branch between 2026-08-15 and that date. The endpoint now returns no study "
+      "findings on either branch. Nothing else about the link changed: the naming "
+      "election, the three permissions, the guides and the training are unaffected.")
     A("")
     A("**Fallback date, read from `api/contributor.js`: %s.** If a person does not respond "
       "by then the paper uses what is on file. Where there is no naming election on file "

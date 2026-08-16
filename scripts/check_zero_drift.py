@@ -705,12 +705,63 @@ def check_rung2a_lock(offline):
           not d["rung2a_sample_drift"], detail)
 
 
+# Figures the results summary carried. Any one of them reappearing in the
+# contributor path means the summary is back. Chosen because each is specific
+# to a study finding rather than to general site copy: a generic number such
+# as 58 or 16 also appears in credit lines, so it is deliberately not listed.
+CONTRIBUTOR_FINDING_STRINGS = [
+    "83.9", "72.7 to 95.1", "87.0 percent", "80.7 percent",
+    "0.739", "0.623", "87.2 percent", "86.2 to 88.2",
+    "75.0 percent", "67.6 percent", "384 graded reads",
+    "PRE-REGISTERED BAR NOT MET", "pre-registered bar",
+    "resultsBlock", "RESULTS_RELEASED", "RESULTS_LOCKED_ON",
+]
+
+CONTRIBUTOR_PATH = ["api/contributor.js", "contributor.html"]
+
+
+def check_contributor_carries_no_findings(offline):
+    """The contributor path must return no study findings.
+
+    Removed 2026-08-16 on the owner's instruction. The summary was gated behind
+    the POST branch, which made it invisible to anyone reading the page source,
+    which in turn makes its accidental return invisible too. This is the check
+    that would catch it: a findings figure reappearing anywhere in the endpoint
+    or the page it feeds.
+
+    Offline by construction. It reads the two files, so it is the same check on
+    a laptop, in a hook and in a deploy branch.
+    """
+    hits = []
+    for path in CONTRIBUTOR_PATH:
+        body = read(path)
+        if not body:
+            check("contributor path carries no study findings", False,
+                  "%s is unreadable" % path)
+            return
+        for needle in CONTRIBUTOR_FINDING_STRINGS:
+            if needle in body:
+                hits.append("%s contains %r" % (path, needle))
+    # The POST response shape is the other half. A `results` key returning from
+    # the handler is the exact thing that was removed, and a grep for the
+    # figures alone would miss a summary rewritten in different numbers.
+    api = read("api/contributor.js")
+    if re.search(r"^\s*results\s*:", api, re.M):
+        hits.append("api/contributor.js emits a `results:` key from the handler")
+    html = read("contributor.html")
+    if re.search(r"\bd\.results\b", html):
+        hits.append("contributor.html reads d.results")
+    check("contributor path carries no study findings", not hits,
+          "; ".join(hits) if hits else "2 files, no findings figure and no results key")
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
                check_no_masking_fallbacks, check_panel_geo,
                check_html_figures_bound, check_panel_binder_identical,
                check_all_experts_credited, check_rung2a_lock,
+               check_contributor_carries_no_findings,
                check_generated_docs_current, check_cross_endpoint):
         try:
             fn(offline)

@@ -14,8 +14,8 @@ export const config = { runtime: 'edge' };
 //      the aggregate) as a forced choice, so silence is never read as consent.
 //   3. Records the continuing-use and transfer permissions in writing, which is
 //      what a successor's counsel asks for and what an email thread cannot show.
-//   4. Releases what was promised: the two initiative sign-ups, the Investigator Field Guide,
-//      the training, and the aggregate results summary.
+//   4. Releases what was promised: the two initiative sign-ups, the Investigator
+//      Field Guide, and the training.
 //
 // SUPERSEDED 2026-08-14: comparison-arm reviewers ARE now in this roster.
 // They were excluded because a JRS-branded page naming the standard tells an
@@ -30,12 +30,11 @@ export const config = { runtime: 'edge' };
 // The original reasoning is kept rather than deleted: if a blind study is ever
 // run again, this is the constraint that applies and the reason it applies.
 //
-// RESULTS GATE: the results summary is served by this endpoint, never embedded
-// in the page source, and only when RESULTS_RELEASED is true. The release rule
-// set in the results plan is a single date after comparison-arm recruitment
-// closes and the data are locked, so that no participant sees findings while
-// others are still reviewing. Until then a submission returns the honest pending
-// notice plus the figures that are already published on the site.
+// RESULTS SUMMARY REMOVED 2026-08-16 on the owner's instruction. This endpoint
+// previously served a gated aggregate findings summary from the POST branch. It
+// returns no study findings of any kind now. If a summary is ever restored it
+// must go back on the same terms it came off: POST branch only, after all three
+// forced choices validate, never in the page source and never on GET.
 //
 // Writes to the EXISTING private pilot_contacts table (RLS on, no anon read)
 // via the service-role key, tagged source='contributor-confirm' so it never
@@ -51,16 +50,6 @@ const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 // the name and title already on file for them (or anonymity where that is the
 // election on file). Shown on the page so the rule is visible, not implied.
 const FALLBACK_DATE = 'Monday, 31 August 2026';
-
-// Flip to true ONLY when both conditions in the results plan are met:
-// comparison-arm recruitment closed AND the analysis locked. Until then the
-// page tells contributors plainly why the summary is not there yet.
-// RELEASED 2026-08-15. Both conditions in the results plan are met: the
-// comparison arm closed on 2026-08-15 and the analysis is locked. Every figure
-// below was recomputed from the study database on the lock date.
-const RESULTS_RELEASED = true;
-const RESULTS_EXPECTED = 'late August 2026';
-const RESULTS_LOCKED_ON = '15 August 2026';
 
 // The roster itself lives in ./_contributor-roster.js, shared with
 // api/contributor-stats.js so the two can never disagree on who is on it or how
@@ -232,66 +221,6 @@ async function purgeTestRows(H){
   } catch (e) { /* best-effort */ }
 }
 
-// Results block. Pending state still carries the figures already published on
-// the public research pages, so the page has something real on it either way.
-function resultsBlock(){
-  if (!RESULTS_RELEASED) {
-    return {
-      status: 'pending',
-      expected: RESULTS_EXPECTED,
-      heading: 'Your results summary',
-      why: 'Data collection is not closed yet. The summary goes to every contributor on a single date once collection closes and the analysis is locked, so that nobody sees findings while other reviewers are still working. That is a design safeguard, not a delay for its own sake.',
-      published: [
-        'An international panel of independent experts reviewed the same set of 24 constructed records, spanning 11 countries on 5 continents.',
-        'Reads were scored against an answer key fixed and independently verified before any scoring took place.',
-        'Three AI systems from three different vendors applied the same review to the same records. That figure measures consistency of application, not correctness, and the two are kept apart deliberately.'
-      ],
-      closing: 'You are on the list to receive the full summary in ' + RESULTS_EXPECTED + '. It will be aggregate. Individual results are held confidentially, and if you want your own, ask and it goes to you privately and to nobody else.'
-    };
-  }
-  return {
-    status: 'released',
-    locked_on: RESULTS_LOCKED_ON,
-    heading: 'What the study found',
-
-    opening: 'Both studies closed on 15 August 2026. Every figure below was '
-           + 'recomputed from the study database on that date, including the '
-           + 'comparison result that did not meet its pre-registered bar.',
-
-    scale: [
-      '58 independent experts graded records across the three studies. None was paid.',
-      '36 completed a full 24-record set, across 16 countries and 5 continents.',
-      'The detection panel below is 16 of those 36, in 11 countries on 5 continents.'
-    ],
-
-    published: [
-      'DETECTION. 83.9 percent accuracy against the verified key (95 percent CI 72.7 to 95.1; 16 reviewers, 384 graded reads; sensitivity 87.0 percent, specificity 80.7 percent). The pre-registered threshold required at least 70 percent with the lower bound above chance. Both criteria met.',
-
-      'SPREAD. Individual accuracy 37.5 to 100 percent, SD 21.0. Six reviewers scored 100 percent. Eleven of 16 identified every unsupported record. The mean conceals a wide range, which matters to anyone staffing a review process.',
-
-      'RELIABILITY. Gwet AC1 0.739 experts, 0.623 trained reviewers, on 10 records. Both clear the pre-registered floor of 0.61. Neither clears the secondary criterion that the lower confidence bound exceed 0.41. Interim, against a pooled target of about 26 records.',
-
-      'CONDITIONS. All five separate Ready from Gap at p below 1.5e-07. Evidentiary sufficiency is the most often unmet and the strongest discriminator.',
-
-      'MACHINE CONSISTENCY. 87.2 percent mean pairwise agreement across 41 nightly runs on a fixed 15-record set (95 percent CI 86.2 to 88.2, range 82.2 to 93.3), three models from three vendors. Consistency of application, not correctness.',
-
-      'COMPARISON STUDY: PRE-REGISTERED BAR NOT MET. Five conditions 75.0 percent, general prompt 67.6 percent. Difference 7.4 points, 95 percent CI minus 15.3 to plus 30.0, p = 0.50. The bar required the interval to exclude zero; it does not. Detecting an effect of this size at 80 percent power requires about 205 per arm; this study had 7 and 13. Underpowered by design, reported as a null.',
-
-      'POSITION. Detection is established. Whether the instrument improves on unaided expert judgment is unresolved and now has a measured baseline.'
-    ],
-
-    what_your_work_supports: [
-      '11 countries, 5 continents, 384 blind judgments, 83.9 percent against a pre-set key.',
-      'The key was fixed before scoring and independently reproduced 24 of 24 by raters blind to it.',
-      'Tested across jurisdictions rather than within one.'
-    ],
-
-    closing: 'Aggregate only. Individual scores are not included here and are not '
-           + 'shared. Ask and yours goes to you privately. The analysis plan, the '
-           + 'answer key and its verification packet are available on request.'
-  };
-}
-
 function publicPerson(p){
   return {
     code: p.code, kind: p.kind, first: p.first,
@@ -437,8 +366,8 @@ export default async function handler(req){
 
   if (!isTest) {
     // The confirmation record is the point of this endpoint. If it fails the
-    // request fails, so a results summary is never released against a
-    // confirmation that was not stored.
+    // request fails, so nothing is released against a confirmation that was
+    // not stored.
     const res = await fetch(SB + '/rest/v1/pilot_contacts', {
       method: 'POST', headers: H, body: JSON.stringify(row)
     });
@@ -486,7 +415,6 @@ export default async function handler(req){
       fairhousing:   '/' + FILES.fairhousing,
       international: '/' + FILES.international
     },
-    training: '/training.html?access=reviewer&focus=1',
-    results: resultsBlock()
+    training: '/training.html?access=reviewer&focus=1'
   });
 }
