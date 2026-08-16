@@ -1,6 +1,6 @@
 # LinkedIn recommendation: Sidharth Borah (V-AI-27, Arm A expert reviewer)
 
-*STANDARD (named) recommendation. Sidharth is an ARM A EXPERT reviewer, so this may name JRS and his reviewer role openly, consistent with the Kyle McMullan / Gabriela Cortez / Gabriela Bar precedent. Truthful: he completed the full 24-record expert review (DB-verified 2026-07-31). Details from the roster: Advocate, High Court of Delhi (13+ years); Partner, Gurinder & Partners; litigation and legal defensibility; India. Pronoun-free by design (not stated); approve wording with him before posting. First person from Phillip. No long dashes. Within LinkedIn's 3,000-character limit.*
+*STANDARD (named) recommendation. Sidharth is an ARM A EXPERT reviewer, so this may name JRS and his reviewer role openly, consistent with the Kyle McMullan / Gabriela Bar precedent. Truthful: he completed the full 24-record expert review (DB-verified 2026-07-31). Details from the roster: Advocate, High Court of Delhi (13+ years); Partner, Gurinder & Partners; litigation and legal defensibility; India. Pronoun-free by design (not stated); approve wording with him before posting. First person from Phillip. No long dashes. Within LinkedIn's 3,000-character limit.*
 
 ---
 

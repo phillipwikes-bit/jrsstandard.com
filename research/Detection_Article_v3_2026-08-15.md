@@ -4,8 +4,6 @@
 
 **Author contributions.** P.W. conceived Decision Reconstruction Risk and the JRS review method, constructed the validation corpus and the verified answer key, assembled the international reviewer panel, and led the writing. U.H. designed the reliability and validation framework: the reference-panel design, the chance-corrected agreement statistics, and the pre-registered decision floors and analysis plan.
 
-**Contributor.** Gabriela Cortez (Maryland Commission on Civil Rights) contributed the argument developed in Section 2.1, that a record must remain understandable to the person it describes and that linguistic and jurisdictional range is a property of review rather than a courtesy. That argument is the reason this study was designed around an international panel rather than a single-jurisdiction one. She reviewed the corpus as a panel member and is credited here with her permission.
-
 **Target journal.** *AI and Ethics* (Springer). Alternatives: *AI & Society* (Springer); *Journal of Responsible Technology* (Elsevier, open access).
 
 **Status: FINAL. Data locked 2026-08-15.** Every figure below was recomputed from the study database on the lock date. The eleven invited panel reviewers who had not started as of 6 August 2026 did not start before the close, so the completer count, the country count and the continent count are unchanged from the pre-close draft. This manuscript reports Study 011, the detection study, and nothing else.
@@ -277,8 +275,6 @@ Those wider figures are acknowledgment, not results. The detection finding in Se
 The reliability and validation methodology, including the pre-registered analysis plan, the choice of coefficient, and the acceptance floors applied in Section 5.3, was designed by Ubayet Hossain, FRM. Specifying those criteria before any data were examined is what allows the results in this paper to be read as tests rather than as descriptions.
 
 We thank every reviewer across all three studies for their care and their independent judgment. Reviewers in all three are recognized as named contributors with their consent, on the same terms and with the same standing; none is a co-author of this paper. Recognition is not scoped to the study a given paper reports.
-
-Gabriela Cortez (Maryland Commission on Civil Rights) is named as a contributor to this paper. The argument in Section 2.1, that a record must stay understandable to the person it describes and that linguistic and jurisdictional range is part of what makes review real, came out of conversations with her and is credited to her with permission. It is not a decorative point in this manuscript. It is the reason the panel was built across eleven countries and several first languages instead of one, and that design choice is what the detection result rests on.
 
 The proportionality principle described in Section 3 was surfaced by pilot reviewer Saurabh Nanda, General Manager and APAC Business Leader (Align Technology), and is credited with his permission.
 

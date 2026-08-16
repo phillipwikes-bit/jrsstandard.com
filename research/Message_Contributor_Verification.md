@@ -48,7 +48,6 @@ For each person, paste their registered name and title into the two "On file" li
 | Frank Schouten | V-AI-03 | AI Governance & Assurance, AEGF | send |
 | Dr Nitin Deshpande | V-AI-06 | Chief Human Resources Officer | send |
 | Saurabh Nanda | V-AI-07 | General Manager / APAC leader | send |
-| Gabriela Cortez | V-AI-08 | Civil-rights records, bilingual intake | confirm she still consents to be named |
 | Lawal Olabanji | V-AI-10 | Operations & records management, ALTV | send |
 | Kyle McMullan | V-AI-12 | Chief Audit Executive | send |
 | Dr Gabriela Bar | V-AI-16 | Attorney, PhD; AI ethics advisor (EU) | send (named-credit wording already pending her approval) |

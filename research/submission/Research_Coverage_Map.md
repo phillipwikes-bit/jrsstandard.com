@@ -4,7 +4,7 @@
 
 ## Ubayet Hossain's methodology: YES, and he is a co-author
 
-- **Byline co-author** of the combined paper (Phillip Wikes, Gabriela Cortez, Ubayet Hossain, FRM).
+- **Byline co-author** of the combined paper (Phillip Wikes, Ubayet Hossain, FRM).
 - **Credited in author contributions** with the reliability and validation framework: reference-panel design, chance-corrected agreement statistics, and the pre-registered decision floors and analysis plan.
 - **Used throughout:** Gwet's AC1 as the primary coefficient, the pre-registered floors, the linearization variance, the reference-panel design. It is the validation spine of the paper, not an acknowledgment.
 - Integrity condition still open: send him THIS manuscript for sign-off before submission (the ready-to-send confirmation line is in `MASTER_TRACKER.md` Section 6).

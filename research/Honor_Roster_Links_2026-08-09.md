@@ -11,7 +11,6 @@ Each link is unguessable and returns only that person's own citation. An unknown
 | H-2026-03 | detection | V-AI-03 | Frank Schouten | https://jrsstandard.com/honor.html?k=cuh3yreh99 |
 | H-2026-04 | detection | V-AI-06 | Dr Nitin Deshpande | https://jrsstandard.com/honor.html?k=gxbnsiu779 |
 | H-2026-05 | detection | V-AI-07 | Saurabh Nanda | https://jrsstandard.com/honor.html?k=psbts5lwlt |
-| H-2026-06 | detection | V-AI-08 | Gabriela Cortez | https://jrsstandard.com/honor.html?k=apuyyioat6 |
 | H-2026-07 | detection | V-AI-10 | Lawal Olabanji | https://jrsstandard.com/honor.html?k=f6t7aw2wya |
 | H-2026-08 | detection | V-AI-11 | Andrey Ekhmenin | https://jrsstandard.com/honor.html?k=jnmye9ecx3 |
 | H-2026-09 | detection | V-AI-12 | Kyle McMullan | https://jrsstandard.com/honor.html?k=6qojookcu2 |

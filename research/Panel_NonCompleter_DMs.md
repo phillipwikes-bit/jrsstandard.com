@@ -19,9 +19,6 @@ Hi Alankar, quick nudge: your 24-record set for the JRS study is still open. It'
 ## V-AI-06 Dr Nitin Deshpande (India) - not started
 Dr Deshpande, a quick nudge on the JRS review: your 24 records are still open, about an hour of work, and finishing by month-end would let your read count. You'd be named on the panel with a certificate. Afterward, you and your team are welcome to the training and guide for free, with my thanks: https://www.jrsstandard.com/training.html?access=k7m2p9x4t1c8&src=panel-org . No pressure. Phillip
 
-## V-AI-08 Gabriela Cortez ("Gabi", US) - not started  [SPECIAL: DRR-article inspiration]
-Gabi, this whole thing started with you and "stand on business," so it would mean a lot to have your name on the study. Your 24 records are still open, about an hour, and finishing by month-end gets your read counted. Panel credit, a certificate, and a recommendation whenever you want one. And I would love for you and the Commission's folks to have the training and guide, free: https://www.jrsstandard.com/training.html?access=k7m2p9x4t1c8&src=panel-org . Thank you, always. Phillip
-
 ## V-AI-14 Terra Shouse (US) - not started
 Hi Terra, quick nudge: your JRS review (24 records, about an hour) is still open, and finishing by month-end would let your read count. Named on the panel with a certificate. Once you're done, the training and guide are yours and your team's, free: https://www.jrsstandard.com/training.html?access=k7m2p9x4t1c8&src=panel-org . No pressure. Phillip
 

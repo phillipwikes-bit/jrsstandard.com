@@ -36,7 +36,7 @@ Arm A, the detection panel. All 16 complete.
 | `V-AI-03` | A | Frank Schouten | AI Governance and Assurance; risk and accountability; AEGF | Australia | 24 | COMPLETE |
 | `V-AI-06` | A | Dr Nitin Deshpande | Chief Human Resources Officer; 38+ years HR and industrial relations | India | 24 | COMPLETE |
 | `V-AI-07` | A | Saurabh Nanda | General Manager, APAC business leader (P&L); Align Technology | India | 31 | COMPLETE |
-| `V-AI-08` | A | Gabriela Cortez | Civil-rights records and bilingual intake; Maryland Commission on Civil Rights | US | 24 | COMPLETE |
+| `V-AI-08` | A | (name withheld) | (withheld) | US | 24 | COMPLETE |
 | `V-AI-10` | A | Lawal Olabanji | Operations and records management; ALTV Engineering | Nigeria | 24 | COMPLETE |
 | `V-AI-11` | A | Andrey Ekhmenin | Founder, EAS; governance diagnostics and post-execution review | Poland | 24 | COMPLETE |
 | `V-AI-12` | A | Kyle McMullan | Chief Audit Executive; internal audit and financial crimes; the audit hub, London | United Kingdom | 24 | COMPLETE |

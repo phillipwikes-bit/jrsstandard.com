@@ -42,7 +42,6 @@ Each link opens a page that captures how the person wants their name and title p
 | Frank Schouten | `V-AI-03` |  | https://www.jrsstandard.com/contributor.html?k=08c17ihb60 |
 | Dr Nitin Deshpande | `V-AI-06` |  | https://www.jrsstandard.com/contributor.html?k=im06wa5vd4 |
 | Saurabh Nanda | `V-AI-07` |  | https://www.jrsstandard.com/contributor.html?k=u63k28aizs |
-| Gabriela Cortez | `V-AI-08` |  | https://www.jrsstandard.com/contributor.html?k=agbhlh6n4d |
 | Lawal Olabanji | `V-AI-10` |  | https://www.jrsstandard.com/contributor.html?k=s3ln3ud13s |
 | Andrey Ekhmenin | `V-AI-11` |  | https://www.jrsstandard.com/contributor.html?k=h5dypgmtdu |
 | Kyle McMullan | `V-AI-12` | detection panel completer; also co-author, Business Ethics paper | https://www.jrsstandard.com/contributor.html?k=xoam4zq6yh |
@@ -78,6 +77,6 @@ Each link opens a page that captures how the person wants their name and title p
 
 ---
 
-**42 people on the roster, 42 links listed.** These two numbers are the same by construction: every roster entry is rendered and nothing else is.
+**41 people on the roster, 41 links listed.** These two numbers are the same by construction: every roster entry is rendered and nothing else is.
 
 **Comparison-arm reviewers (RR-### codes) are on this sheet since 2026-08-14**, on the owner's instruction. The line here used to say they were absent and must not be added, which stopped being true the day they were added.

@@ -8,7 +8,7 @@ All figures below are computed from the live Supabase anon-readable aggregate vi
 
 **Detection panel (Arm A): 14 complete** (24/24 reads), 1 in progress, 10 countries on 5 continents.
 
-Complete: Jake McDonough (V-AI-01), Frank Schouten (V-AI-03), Dr Nitin Deshpande (V-AI-06), Saurabh Nanda (V-AI-07), Gabriela Cortez (V-AI-08), Lawal Olabanji (V-AI-10), Andrey Ekhmenin (V-AI-11), Kyle McMullan (V-AI-12), Gabriela Bar (V-AI-16), Hekim Colpan (V-AI-20), SungSoo In (V-AI-24), Sidharth Borah (V-AI-27), Nigel Hee (V-AI-28), Andres Lage Freire (V-AI-30). In progress: Niloofar Kandi (V-AI-23) at 22/24.
+Complete: Jake McDonough (V-AI-01), Frank Schouten (V-AI-03), Dr Nitin Deshpande (V-AI-06), Saurabh Nanda (V-AI-07), (name withheld) (V-AI-08), Lawal Olabanji (V-AI-10), Andrey Ekhmenin (V-AI-11), Kyle McMullan (V-AI-12), Gabriela Bar (V-AI-16), Hekim Colpan (V-AI-20), SungSoo In (V-AI-24), Sidharth Borah (V-AI-27), Nigel Hee (V-AI-28), Andres Lage Freire (V-AI-30). In progress: Niloofar Kandi (V-AI-23) at 22/24.
 
 Countries represented by completers: United States, United Kingdom/Ireland, Germany, Poland, Spain (Europe); India, Singapore, South Korea (Asia); Nigeria (Africa); Australia (Oceania); United States (North America). Ten countries, five continents.
 

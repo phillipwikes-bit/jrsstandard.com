@@ -221,6 +221,15 @@ def main():
 
     ANON = ("anonymous by choice", "no identity on record", "not recorded", "anonymous by design")
 
+    # Participants withdrawn as contributors on the owner's instruction. This is
+    # NOT the same as anonymous. An anonymous completer still receives an
+    # invitation addressed to nobody; a withdrawn one receives nothing at all,
+    # because every file this script writes is a contributor-facing artefact.
+    # Their CSV row stays so the completion counts hold. Removing a code from
+    # this set restores the invitation, the link and the recognition, so it is
+    # not a list to prune casually.
+    WITHDRAWN = {"V-AI-08"}
+
     # ELIGIBILITY, set by the owner on 2026-08-14:
     #
     #   Rung 2b  detection panel    IN.  Codes V-AI-##.
@@ -240,6 +249,13 @@ def main():
             band = arm_of(code)
             nm = row["name"].strip()
             display = nm if nm.lower() not in ANON else ""
+
+            if code in WITHDRAWN:
+                excluded.append((code, "(name withheld)",
+                                 "withdrawn as a contributor on the owner's "
+                                 "instruction, 2026-08-16; reads still count in "
+                                 "the study, unnamed"))
+                continue
 
             if band == "other":
                 why = ("Rung 2a expert rater: took part in the research, not on this "

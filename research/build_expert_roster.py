@@ -42,7 +42,13 @@ ARM_A = [
     ("V-AI-03", "Frank Schouten", "AI Governance and Assurance; risk and accountability; AEGF", "Australia"),
     ("V-AI-06", "Dr Nitin Deshpande", "Chief Human Resources Officer; 38+ years HR and industrial relations", "India"),
     ("V-AI-07", "Saurabh Nanda", "General Manager, APAC business leader (P&L); Align Technology", "India"),
-    ("V-AI-08", "Gabriela Cortez", "Civil-rights records and bilingual intake; Maryland Commission on Civil Rights", "US"),
+    # NAME AND TITLE WITHHELD 2026-08-16 at the owner's instruction: this
+    # participant is not to appear as a contributor anywhere in the programme.
+    # The ROW STAYS because this file is a study record and she completed the
+    # full 24-record set; deleting it would understate the panel and falsify
+    # the completion counts every published figure rests on. Naming consent is
+    # withdrawn, participation is not. Do not restore the name or the agency.
+    ("V-AI-08", "(name withheld)", "(withheld)", "US"),
     ("V-AI-10", "Lawal Olabanji", "Operations and records management; ALTV Engineering", "Nigeria"),
     ("V-AI-11", "Andrey Ekhmenin", "Founder, EAS; governance diagnostics and post-execution review", "Poland"),
     ("V-AI-12", "Kyle McMullan", "Chief Audit Executive; internal audit and financial crimes; the audit hub, London", "United Kingdom"),

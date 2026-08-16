@@ -22,7 +22,21 @@ export const ROSTER = {
   '08c17ihb60': { code:'V-AI-03', kind:'panel',  first:'Frank',     name:'Frank Schouten',      title:'AI Governance and Assurance',                           org:'AEGF',                    named_on_file:true },
   'im06wa5vd4': { code:'V-AI-06', kind:'panel',  first:'Nitin',     name:'Dr Nitin Deshpande',  title:'Chief Human Resources Officer',                         org:'',                        named_on_file:true },
   'u63k28aizs': { code:'V-AI-07', kind:'panel',  first:'Saurabh',   name:'Saurabh Nanda',       title:'General Manager, APAC',                                 org:'',                        named_on_file:true },
-  'agbhlh6n4d': { code:'V-AI-08', kind:'panel',  first:'Gabriela',  name:'Gabriela Cortez',     title:'Civil rights records and bilingual intake',             org:'',                        named_on_file:true },
+  // V-AI-08 REMOVED 2026-08-16 at the owner's instruction: this person is not to
+  // appear as a contributor anywhere in the programme. Her contributor link is
+  // withdrawn with the entry, and her honor roster entry H-2026-06 was removed
+  // from api/honor.js in the same change.
+  //
+  // THIS IS A NAMING AND CREDIT REMOVAL, NOT A DATA WITHDRAWAL. Her graded reads
+  // remain in the study database and remain counted, unnamed, in the detection
+  // panel of 16 and the 384 graded reads. If the study data is ever to be
+  // withdrawn as well, every published figure that rests on the panel has to be
+  // recomputed; that is a separate instruction and has not been given.
+  //
+  // Do not repopulate this entry from research/Expert_Roster_All_Studies_2026-08-06.csv
+  // or from any study-record export. The roster CSV is a study record and does
+  // not carry consent state. scripts/check_zero_drift.py fails if the name
+  // reappears anywhere in api/, the served pages, or the research deliverables.
   's3ln3ud13s': { code:'V-AI-10', kind:'panel',  first:'Lawal',     name:'Lawal Olabanji',      title:'Operations and records management',                     org:'ALTV',                    named_on_file:true },
   'h5dypgmtdu': { code:'V-AI-11', kind:'panel',  first:'Andrey',    name:'Andrey Ekhmenin',     title:'Founder, EAS; governance diagnostics and post-execution review', org:'EAS',            named_on_file:true },
   // RECLASSIFIED 2026-08-15 from kind:'author' to kind:'panel'. He is a Study

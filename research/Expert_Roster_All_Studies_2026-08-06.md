@@ -20,7 +20,7 @@
 | 2 | V-AI-03 | Frank Schouten | AI Governance and Assurance; risk and accountability; AEGF | Australia |
 | 3 | V-AI-06 | Dr Nitin Deshpande | Chief Human Resources Officer; 38+ years HR and industrial relations | India |
 | 4 | V-AI-07 | Saurabh Nanda | General Manager, APAC business leader (P&L); Align Technology | India |
-| 5 | V-AI-08 | Gabriela Cortez | Civil-rights records and bilingual intake; Maryland Commission on Civil Rights | US |
+| 5 | V-AI-08 | (name withheld) | (withheld) | US |
 | 6 | V-AI-10 | Lawal Olabanji | Operations and records management; ALTV Engineering | Nigeria |
 | 7 | V-AI-11 | Andrey Ekhmenin | Founder, EAS; governance diagnostics and post-execution review | Poland |
 | 8 | V-AI-12 | Kyle McMullan | Chief Audit Executive; internal audit and financial crimes; the audit hub, London | United Kingdom |

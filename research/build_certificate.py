@@ -108,14 +108,10 @@ def make_certificate(name, date, body, out_path, title="Certificate of Completio
 
 # Registry of issued certificates. Add a row to issue a new one.
 REVIEWERS = [
-    {
-        "name": "Gabriela Cortez",
-        "date": "July 17, 2026",
-        "body": standard_body(
-            "Her", "civil-rights and bilingual-intake",
-            "her work at the Maryland Commission on Civil Rights"),
-        "out": "/home/user/jrsstandard.com/research/JRS_Certificate_Gabriela_Cortez.pdf",
-    },
+    # CERTIFICATE WITHDRAWN 2026-08-16 at the owner's instruction. The row for
+    # participant V-AI-08 is removed from this registry so the certificate
+    # cannot be regenerated, and her certificate PDF is deleted in the same
+    # change. Do not re-add from the study record.
     {
         "name": "Saurabh Nanda",
         "date": "July 18, 2026",

@@ -28,7 +28,7 @@ These 24/24 completers are the named contributors. Titles as registered, to be c
 - Frank Schouten (V-AI-03) — AI Governance & Assurance, AEGF (Australia)
 - Dr Nitin Deshpande (V-AI-06) — Chief Human Resources Officer, 38+ years HR (India)
 - Saurabh Nanda (V-AI-07) — General Manager / APAC business leader (India)
-- Gabriela Cortez (V-AI-08) — civil-rights records, bilingual intake (US) [see 1.4]
+- (name withheld) (V-AI-08) — withdrawn as a contributor 2026-08-16 [see 1.4]
 - Lawal Olabanji (V-AI-10) — operations & records management (Nigeria)
 - Kyle McMullan (V-AI-12) — Chief Audit Executive, internal audit & financial crimes (UK/Ireland)
 - Dr Gabriela Bar (V-AI-16) — attorney, PhD; AI ethics advisor (Poland/EU)
@@ -42,7 +42,7 @@ These 24/24 completers are the named contributors. Titles as registered, to be c
 **[1.3] Andrey Ekhmenin (V-AI-11) is a verified expert contributor.**
 Per Phillip's verification (documentation on file with the owner), Andrey is a named expert reviewer and is included in the panel above with his registered title. Send him the verification message like the other named contributors. The only standing note is general vendor-neutrality: keep JRS uncoupled from any reviewer's own product line (the same handling applied to any reviewer with an adjacent commercial interest), which does not affect his status as a named expert contributor. File the verification documentation with the study record so the roster is self-documenting.
 
-**[1.4] Confirm Gabriela Cortez's status.**
+**[1.4] SUPERSEDED. V-AI-08 was withdrawn as a contributor on 2026-08-16 at the owner's instruction; there is no status left to confirm.**
 She was removed as co-author (2026-08-01). She remains a completed reviewer. Confirm she still consents to be named as a reviewer, or move her to anonymous. Do not name her without that confirmation.
 
 **[1.5] Anonymity handling.**

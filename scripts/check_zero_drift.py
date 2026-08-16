@@ -755,6 +755,102 @@ def check_contributor_carries_no_findings(offline):
           "; ".join(hits) if hits else "2 files, no findings figure and no results key")
 
 
+def check_withdrawn_contributors_absent(offline):
+    """No withdrawn contributor's name survives anywhere in the repository.
+
+    THE DEFECT THIS CATCHES HAS ALREADY HAPPENED ONCE. E-08 asked in writing on
+    2026-08-09 that her agency title and employer come off every piece of
+    recognition. api/honor.js said so in terms, "Do not repopulate these from
+    the study record", and a builder repopulated them from the roster CSV
+    anyway, because the CSV records participation and knows nothing about
+    consent. A written removal request was undone by a script.
+
+    A withdrawal is therefore not a state you reach by editing files. It is a
+    state something has to keep checking, because every builder in research/
+    reads a study record that still contains the person.
+
+    scripts/withdraw_contributor.py owns the register and the scan. This runs it
+    rather than re-implementing it, so there is one list of withdrawn names and
+    not two that can disagree.
+    """
+    sys.path.insert(0, os.path.join(ROOT, "scripts"))
+    try:
+        import withdraw_contributor as wc
+    except Exception as e:
+        check("no withdrawn contributor name survives", False,
+              "scripts/withdraw_contributor.py did not import: %r" % (e,))
+        return
+    traces = wc.scan_traces()
+    names = sorted(n for w in wc.WITHDRAWALS for n in w["names"])
+    if traces:
+        shown = "; ".join("%s:%d %s" % t for t in traces[:6])
+        if len(traces) > 6:
+            shown += " (+%d more)" % (len(traces) - 6)
+        check("no withdrawn contributor name survives", False, shown)
+        return
+    check("no withdrawn contributor name survives", True,
+          "%d withdrawn name forms, 0 occurrences outside the register"
+          % len(names))
+
+
+# The honor roster's header comment states its composition. A comment is not a
+# constant, so the hand-written-count check cannot see it, and it went stale the
+# moment an entry was withdrawn: it still claimed 34 entries and 16 detection
+# honorees after the count moved to 36 and 15.
+HONOR_COMPOSITION_RE = re.compile(
+    r"^// (\d+) entries: (\d+) public-records \+ (\d+) detection \+ (\d+) records-review\.",
+    re.M)
+
+
+def check_honor_roster_composition(offline):
+    """api/honor.js's stated composition must match the roster it sits above."""
+    body = read("api/honor.js")
+    if not body:
+        check("honor roster composition matches its own comment", False,
+              "api/honor.js is unreadable")
+        return
+    m = HONOR_COMPOSITION_RE.search(body)
+    if not m:
+        check("honor roster composition matches its own comment", False,
+              "the composition comment is gone; restore it or drop this check")
+        return
+    claimed_total, claimed_pr, claimed_det, claimed_rr = (int(g) for g in m.groups())
+
+    start = body.index("const ROSTER = {")
+    i = body.index("{", start)
+    depth = 0
+    for j in range(i, len(body)):
+        if body[j] == "{":
+            depth += 1
+        elif body[j] == "}":
+            depth -= 1
+            if depth == 0:
+                break
+    block = body[i:j + 1]
+    keys = re.findall(r"^  '[a-z0-9]{10}': \{", block, re.M)
+    studies = re.findall(r"^    study: '([a-z-]+)'", block, re.M)
+    actual = {
+        "total": len(keys),
+        "public-records": studies.count("public-records"),
+        "detection": studies.count("detection"),
+        "records-review": studies.count("records-review"),
+    }
+    claimed = {
+        "total": claimed_total,
+        "public-records": claimed_pr,
+        "detection": claimed_det,
+        "records-review": claimed_rr,
+    }
+    bad = [k for k in claimed if claimed[k] != actual[k]]
+    detail = ("%d entries: %d public-records + %d detection + %d records-review"
+              % (actual["total"], actual["public-records"],
+                 actual["detection"], actual["records-review"]))
+    if bad:
+        detail = ("the comment says %r but the roster is %r; disagreeing on %s"
+                  % (claimed, actual, ", ".join(sorted(bad))))
+    check("honor roster composition matches its own comment", not bad, detail)
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -762,6 +858,8 @@ def main():
                check_html_figures_bound, check_panel_binder_identical,
                check_all_experts_credited, check_rung2a_lock,
                check_contributor_carries_no_findings,
+               check_withdrawn_contributors_absent,
+               check_honor_roster_composition,
                check_generated_docs_current, check_cross_endpoint):
         try:
             fn(offline)

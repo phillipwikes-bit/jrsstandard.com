@@ -7,7 +7,7 @@ Computed from real collected data this date. Two things are separated deliberate
 ## 1. Enrollment / completion (live, Supabase anon aggregate views)
 
 - **Arm A (expert + trained panel, V-AI-##): 14 complete** (>=24 reads), 1 in progress (Niloofar Kandi, 22/24).
-  Complete: SungSoo In, Sidharth Borah, Nigel Hee, Saurabh Nanda, Jake McDonough, Frank Schouten, Nitin Deshpande, Gabriela Cortez, Lawal Olabanji, Andrey Ekhmenin, Kyle McMullan, Gabriela Bar, Hekim Colpan, Andres Lage Freire.
+  Complete: SungSoo In, Sidharth Borah, Nigel Hee, Saurabh Nanda, Jake McDonough, Frank Schouten, Nitin Deshpande, (name withheld, V-AI-08), Lawal Olabanji, Andrey Ekhmenin, Kyle McMullan, Gabriela Bar, Hekim Colpan, Andres Lage Freire.
 - **Arm B (randomized comparison, RR-###): 10 complete.**
   - **B1 (JRS condition): 4** — RR-104, RR-106, RR-124, RR-126
   - **B2 (baseline / general prompt): 6** — RR-101, RR-107, RR-109, RR-110, RR-121, RR-125

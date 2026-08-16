@@ -16,7 +16,6 @@
 | A | `V-AI-03` | `H-2026-03` | Frank Schouten | AEGF | https://jrsstandard.com/contributor.html?k=08c17ihb60 | `Evaluator_Outreach/A_V-AI-03.md` |
 | A | `V-AI-06` | `H-2026-04` | Dr Nitin Deshpande |  | https://jrsstandard.com/contributor.html?k=im06wa5vd4 | `Evaluator_Outreach/A_V-AI-06.md` |
 | A | `V-AI-07` | `H-2026-05` | Saurabh Nanda | Align Technology | https://jrsstandard.com/contributor.html?k=u63k28aizs | `Evaluator_Outreach/A_V-AI-07.md` |
-| A | `V-AI-08` | `H-2026-06` | Gabriela Cortez | Maryland Commission on Civil Rights | https://jrsstandard.com/contributor.html?k=agbhlh6n4d | `Evaluator_Outreach/A_V-AI-08.md` |
 | A | `V-AI-10` | `H-2026-07` | Lawal Olabanji | ALTV Engineering | https://jrsstandard.com/contributor.html?k=s3ln3ud13s | `Evaluator_Outreach/A_V-AI-10.md` |
 | A | `V-AI-11` | `H-2026-08` | Andrey Ekhmenin | EAS | https://jrsstandard.com/contributor.html?k=h5dypgmtdu | `Evaluator_Outreach/A_V-AI-11.md` |
 | A | `V-AI-12` | `H-2026-09` | Kyle McMullan | the audit hub, London | https://jrsstandard.com/contributor.html?k=xoam4zq6yh | `Evaluator_Outreach/A_V-AI-12.md` |
@@ -49,7 +48,7 @@
 | B | `RR-130` | `H-2026-33` | *anonymous, no name on record* |  | https://jrsstandard.com/contributor.html?k=kt18kaanxw | `Evaluator_Outreach/B_RR-130.md` |
 | B | `RR-132` | `H-2026-34` | *anonymous, no name on record* |  | https://jrsstandard.com/contributor.html?k=d0cofc93jc | `Evaluator_Outreach/B_RR-132.md` |
 
-**36 evaluators: 16 Rung 2b (Arm A), 20 Arm B.** 2 completed anonymously and their files carry a placeholder rather than an invented name.
+**35 evaluators: 15 Rung 2b (Arm A), 20 Arm B.** 2 completed anonymously and their files carry a placeholder rather than an invented name.
 
 ## Not invited, and why
 
@@ -57,6 +56,7 @@
 
 | Code | Name on record | Reason |
 |---|---|---|
+| `V-AI-08` | (name withheld) | withdrawn as a contributor on the owner's instruction, 2026-08-16; reads still count in the study, unnamed |
 | `E-08` | Stacy Young | Rung 2a expert rater: took part in the research, not on this invitation (owner, 2026-08-14) |
 | `R-mqa2qg2g9gtz` | anonymous by design | Rung 2a bench reviewer: the code was never bound to an identity, so there is no person to write to |
 | `R-mqa4a9ewsfr8` | anonymous by design | Rung 2a bench reviewer: the code was never bound to an identity, so there is no person to write to |

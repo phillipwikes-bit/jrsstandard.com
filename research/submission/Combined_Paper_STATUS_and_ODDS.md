@@ -7,7 +7,7 @@ Combining was the right call. The international paper already had empty "reprodu
 
 ## What the combined paper is
 - **Title:** Detecting Decision Reconstruction Risk in AI-Assisted Documentation: A Record-Level Review Standard and Its Pre-Registered Validation
-- **Authors:** Phillip Wikes, Gabriela Cortez, Ubayet Hossain (FRM)
+- **Authors:** Phillip Wikes, Ubayet Hossain (FRM)
 - **Target journal:** AI and Ethics (Springer). Alternatives: AI & Society; Journal of Responsible Technology.
 - **What it does:** defines DRR (a novel governance construct), introduces JRS, and validates it in stages: reproducibility (three AI vendors) + reliability (expert/reviewer panels) are DONE and reported; detection accuracy + the randomized Arm B comparison are GATED until the pre-registered sample completes.
 
@@ -43,4 +43,4 @@ Post the combined paper as a **preprint now** (SSRN or OSF), with the supporting
 ## What is genuinely blocking, and what is not
 - NOT blocking: the writing. The manuscript is complete, honest, internally consistent, and reference-backed.
 - Blocking submission to a journal: the gated primary data (detection panel + Arm B). This needs real reviewers, not more drafting, and cannot be fabricated.
-- One-line items: Ubayet's byline confirmation (message ready); Gabi's confirmation of her Section 2.1 contribution and first-person voice; OSF deposit for the pre-registration DOI (payload ready).
+- One-line items: Ubayet's byline confirmation (message ready); V-AI-08's confirmation of her Section 2.1 contribution and first-person voice; OSF deposit for the pre-registration DOI (payload ready).

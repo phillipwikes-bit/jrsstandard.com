@@ -128,7 +128,7 @@ Landis, J.R., Koch, G.G. (1977). The measurement of observer agreement for categ
 
 ## Acknowledgment
 
-The reliability and validation methodology underlying the agreement statistics reported here was designed by Ubayet Hossain, FRM, Associate Director (Model Validation), KPMG India. The proportionality principle was surfaced by pilot reviewer Saurabh Nanda. The argument that a record must remain understandable to the person it describes originated in conversations with panel reviewer Gabriela Cortez. Each is credited with permission. I thank the international reviewer panel for their independent judgment.
+The reliability and validation methodology underlying the agreement statistics reported here was designed by Ubayet Hossain, FRM, Associate Director (Model Validation), KPMG India. The proportionality principle was surfaced by pilot reviewer Saurabh Nanda. Each is credited with permission. I thank the international reviewer panel for their independent judgment.
 
 ---
 
@@ -141,7 +141,7 @@ The reliability and validation methodology underlying the agreement statistics r
 **Overlap management.** This piece and the detection paper share the construct and the validation figures. That is acceptable because the audiences and contributions differ: the detection paper is an empirical report for an academic AI ethics readership, this is a control-design article for an audit and governance practitioner readership. To keep the distinction clean, cite the detection paper as forthcoming once it is under review, and do not reproduce its methods section verbatim. Disclose the related submission in the cover letter, which editors expect and which costs nothing.
 
 **Before submitting:**
-- Confirm Ubayet's acknowledgment wording, and Nanda's and Cortez's, all of which are already agreed in principle.
+- Confirm Ubayet's acknowledgment wording and Nanda's, both of which are already agreed in principle.
 - Re-verify the panel figures against the database on the submission date.
 - Check the target venue's current author guidelines for reference style and length.
 - Keep the null reported as a null. It is the credibility anchor of the piece for this readership, and audit practitioners are precisely the audience most likely to notice if it were softened.

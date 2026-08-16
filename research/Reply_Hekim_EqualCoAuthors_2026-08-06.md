@@ -64,7 +64,7 @@ Two further removals: the standfirst biography line under the byline, which dupl
 
 ## Removed
 
-The Gabriela Cortez credit added earlier today is out. She did not contribute to this article. Her credit stands in the detection paper, where the contribution is real.
+The V-AI-08 credit added earlier today is out. That reviewer did not contribute to this article. (SUPERSEDED 2026-08-16: withdrawn as a contributor from the detection paper as well, on the owner's instruction.)
 
 ## Figures in the letter and the article, and where each comes from
 

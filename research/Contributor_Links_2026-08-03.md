@@ -24,7 +24,6 @@ Base: `https://www.jrsstandard.com/contributor.html?k=`
 | Frank Schouten | V-AI-03 | https://www.jrsstandard.com/contributor.html?k=08c17ihb60 |
 | Dr Nitin Deshpande | V-AI-06 | https://www.jrsstandard.com/contributor.html?k=im06wa5vd4 |
 | Saurabh Nanda | V-AI-07 | https://www.jrsstandard.com/contributor.html?k=u63k28aizs |
-| Gabriela Cortez | V-AI-08 | https://www.jrsstandard.com/contributor.html?k=agbhlh6n4d |
 | Lawal Olabanji | V-AI-10 | https://www.jrsstandard.com/contributor.html?k=s3ln3ud13s |
 | Andrey Ekhmenin | V-AI-11 | https://www.jrsstandard.com/contributor.html?k=h5dypgmtdu |
 | Kyle McMullan | V-AI-12 | https://www.jrsstandard.com/contributor.html?k=xoam4zq6yh |
