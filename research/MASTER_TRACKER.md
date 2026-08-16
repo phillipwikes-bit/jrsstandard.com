@@ -873,6 +873,7 @@ The review instrument stores working keys; they map to the standard as follows (
 - 2026-08-15: Condensed the completer results summary in `api/contributor.js` (rhetorical framing removed, every figure and the Floor 3 null kept), deployed to main, verified live, regenerated `research/Completer_Results_Summary_2026-08-15.md`/`.docx` from the live endpoint. Audited the owner's supplied EMPIRICAL VALIDATION block: **2 of 4 lines wrong** (AI consistency 84% is a stale single run; "58 reviewers across 16 countries" is the recorded scope defect). Corrected block written to `research/Empirical_Validation_Block_2026-08-15.md`. Detail in the section at the end of this file.
 - 2026-08-16: Owner: remove the research summaries. Scope confirmed as the LIVE GATED SUMMARY only. `resultsBlock()`, `RESULTS_RELEASED`, `RESULTS_EXPECTED`, `RESULTS_LOCKED_ON` removed from `api/contributor.js`; the results render, the two promise lines and the orphaned `.pend`/`ul.tight` rules removed from `contributor.html`. New offline guard `check_contributor_carries_no_findings`, adversarially tested 3/3. Deployed to main and verified live: results key absent on 5 consecutive POSTs, forced choices and anonymous path unaffected. `research/build_results_summary_doc.py` is now dead and was left in place because the owner's scope choice excluded it.
 - 2026-08-16: **V-AI-08 withdrawn as a contributor across the whole programme** at the owner's instruction. Live: roster 42 to 41, honor entry H-2026-06 retired (code not reused, sequence not renumbered), both deployed and verified. Naming only: her reads still count, unnamed, so 58/36/16 are unchanged. New `scripts/withdraw_contributor.py` (28 rules, 20 files, idempotent) plus two guards, adversarially tested 4/4. **Manuscript v4 written to the senior editor's review**: all 10 Tier 1 and all 8 Tier 2 items applied, 6 Tier 3 items entered in a new research-programme section because they need new data. 44 figure assertions pass, 9 injected regressions caught. Detail in the section at the end of this file.
+- 2026-08-16: **Aigul Moiseeva (KZ, CGEM AI Safety) verified before recognition. Did NOT review 18 records: records_run=0.** The 18 is `total_rows` on the roster tile, 18 rows across 12 people. Not in the detection study; `check_completion.py JRS-R-DOGUUVV9` returns NO ROW. What they did do: submitted the reviewer evaluation on 16 Aug, 8 of 9 questions, the first submission the evaluation has ever received. Certificate already self-served (`certificate_renders.reviewer=1`), no second one created. LinkedIn recommendation written, truthfully scoped, pronoun-free. **Found and fixed a live overclaim while checking: the reviewer certificate asserted training completion the database contradicts.** Corrected on three surfaces, deployed, verified live, guarded, adversarially tested 3/3. New `research/verify_participant.py`. Detail at the end of this file.
 
 ## CONSOLIDATED ERROR LOG (assistant errors this session — recorded 2026-08-01 at owner's instruction so they are not repeated)
 1. **Reliability miscalculation (most damaging).** Recomputed Rung 2a reliability with baseline-condition labels (mode=normal) wrongly mixed into the JRS reliability set, producing a false "collapse" to AC1 0.18. CORRECT value (JRS reads only, verified live 2026-08-01): experts 0.74, trained 0.62-0.63, both clear the 0.61 floor. PREVENTION RULE: reliability of the JRS read is computed ONLY on mode=jrs labels; never mix mode=normal (baseline) labels; always print n, modes, and rater codes before reporting a coefficient.
@@ -1923,3 +1924,65 @@ Disposition received: **major revision before submission**, 8 to 15 percent acce
 **That script caught two of my own errors before anything was quoted.** Its self-test recovers known variance components from simulated data of the real 16-by-24 shape. First version: the Laplace log-determinant used a diagonal Hessian, dropping the only term coupling the two random factors, and the optimiser drove the record SD to **0.000 against a truth of 0.600**. That would have supported "record difficulty does not matter", the exact opposite of the answer. Replaced with the exact crossed Hessian via Schur complement and Cholesky, validated against 4-dimensional Gauss-Hermite quadrature on a tiny case (agreement to 0.025 nats). Second: a single-seed self-test then reported FAIL on the now-correct estimator, because **1 in 6 fits at this sample size lands on the boundary**. Rewritten to six seeds and median recovery, and the script now reports singular fits and profile intervals rather than a point estimate near zero.
 
 **Nine injected regressions, and the first pass caught only four of five.** Softening *"the criterion was not met"* to *"was substantially met"* passed every check, because every figure was still correct and nothing was watching the sentence around them. Two claim-level guards were added for that: one on the failed criterion and the bootstrap disavowal, one on the three scope limits. Second pass caught all nine.
+
+## 2026-08-16: Aigul Moiseeva verified, and a certificate overclaim found and fixed
+
+### The question asked
+
+"Can you confirm that Aigul Moiseeva reviewed 18 records. Provide LinkedIn reference. Was he issued certificate if not. Create one for him."
+
+### Answer to the first part: NO, and the 18 is not a per-person figure
+
+**`records_run` is 0 on both of their rows.** The "18 RECORDS" tile on `programme-status-9872fb93cc94.html` is `d.total_rows` (line 1496): **18 rows in the private contact table across 12 people.** Aigul holds 2 of those 18. Neither is a record review.
+
+Had that tile been read as one person's review count, a fabricated record review would have gone into a public LinkedIn recommendation under the programme's name. That is the failure this whole programme exists to prevent, committed by us.
+
+### What they actually did, verified
+
+| Fact | Value |
+|---|---|
+| Records reviewed | **0** |
+| In `pilot_progress` (detection study, 27 rows) | **absent** |
+| `check_completion.py JRS-R-DOGUUVV9` | **NO ROW. Do NOT issue recognition** |
+| Submitted the reviewer evaluation | **yes**, 2026-08-16 05:42 UTC |
+| Questions answered | **8 of 9** |
+| Certificate | **already rendered**, `certificate_renders.reviewer = 1` |
+| Training enrolment / completion rows | **neither exists** |
+| `consent_public` | **false** |
+| Country / org | KZ, CGEM AI Safety |
+
+They are the **first submission the reviewer evaluation has ever received**, from Kazakhstan. `reviewer_evaluation_funnel.submitted = 1`.
+
+### The certificate: already issued, and it was wrong
+
+No second certificate was created. `api/reviewer-cert.js` is self-serve from the completion code and one render is already logged, so they have it.
+
+**But the certificate asserted a credential the database contradicts.** It read *"completed the six-module JRS Reviewer Training and submitted the reviewer evaluation"*. The `JRS-R-` code is issued by `/api/reviewer-eval` on submitting the **evaluation**, and the evaluation is reachable without enrolling in the training at all. Aigul has no `training-enroll` row and no `training-complete` row. The four people who did complete training are Joseph Munge, SungSoo In, Andrey Ekhmenin and Nicholas Evans, which is the "4 COMPLETED TRAINING" tile.
+
+**A document stating a conclusion its own evidence does not support is the exact defect class this programme measures in other people's records.** Issuing one under this name would have been indefensible.
+
+Corrected on three surfaces, deployed to main, verified live (old wording returns 0 occurrences on all three):
+
+| File | Was | Now |
+|---|---|---|
+| `api/reviewer-cert.js` | "completed the six-module JRS Reviewer Training and submitted the reviewer evaluation" | "submitted the JRS reviewer evaluation" |
+| `reviewer/index.html` | "The certificate records that you completed the training and submitted the evaluation." | "...records that you submitted the reviewer evaluation... It does not certify that you worked through the six modules, because nothing here checks that you did." |
+| `reviewer/completion.html` | share snippet claiming training completion | rewritten to the evaluation submission |
+
+The endpoint is credential-free by design and cannot look up a training completion, so it cannot condition on one. A training-inclusive certificate needs its own endpoint reading `training_completions` and its own code prefix. Recorded in the source so it is not re-broken.
+
+**`check_certificate_claims_supported`** added to `scripts/check_zero_drift.py` over the four files on the JRS-R path. Adversarially tested against all three restorations, all caught, plus a control confirming the correction comment quoting the old wording does not trip it.
+
+### `research/verify_participant.py`, new
+
+`check_completion.py` answers "did this study code complete 24 records" and answers it well. It cannot answer "what did this person actually do", and **most people in this programme never held a study code**. This reads the no-token roster endpoint and prints every row a person holds, what each row's source attests, and explicitly **which claims the data does not support**. The refusals are the output that matters.
+
+It also prints the roster tile context first, so `total_rows` can never again be read as a per-person count from this tool's output.
+
+One trap it encodes: `training_completed` is only set on training rows. On any other row type it defaults to `false`, which reads as "did not complete" when it means "not applicable". The script says so rather than letting the field be quoted.
+
+### Consent limit recorded
+
+`consent_public` is **false**: they did not tick "list my name publicly as a JRS-trained reviewer". They *did* ask for a recommendation, which is consent for that one artifact. **Post the recommendation; do not add them to any public reviewer list.**
+
+Pronouns are not on file. The recommendation is written pronoun-free.
