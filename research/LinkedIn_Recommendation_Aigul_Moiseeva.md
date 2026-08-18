@@ -55,17 +55,51 @@
 
 ## THE CERTIFICATE
 
-**They already have it. Do not create a second one.**
+**A handover PDF now exists. It is attached and it is yours to send.**
 
-The certificate is self-serve. `api/reviewer-cert.js` renders it from the completion code, and `certificate_renders.reviewer = 1` confirms one has been rendered. Aigul is the only holder of a `reviewer-cert` contact row, so that render is theirs.
+```
+research/JRS_Reviewer_Evaluation_Certificate_Aigul_Moiseeva.pdf
+```
 
-**Their link, unchanged:**
+Built by `research/build_reviewer_eval_certificate.py`, which is new. Verified content, extracted from the PDF itself:
+
+> JRS (TM) &middot; JUSTIFICATION REVIEW STANDARD
+> **Certificate of Participation**
+> This certifies that **Aigul Moiseeva**
+> submitted the JRS reviewer evaluation, applying the five review conditions of the Justification Review Standard to the question of whether a consequential record can still explain, on its own terms, how and why a decision was reached.
+> August 16, 2026
+> Phillip Wikes, Creator, JRS
+
+Confirmed absent from the rendered file: "24 records", "six-module", "Reviewer Training", "all 24", "Completion".
+
+### Why it is not from `build_certificate.py`
+
+That registry is the 24-record study completers and its `standard_body()` prints *"completed the independent review of all 24 records"*. Adding an evaluation respondent to it would print a record review that did not happen onto the canonical issued template.
+
+The new builder renders through the **same locked layout** (`make_certificate()` from `build_certificate.py`, taken from the issued reference PDF). Nothing about the design is re-decided. Only the title and the body sentence differ, because the thing being certified differs. The title is **Certificate of Participation**, not "of Completion", because nothing was completed.
+
+### It refuses rather than guessing
+
+The builder looks the person up on the live roster before rendering and stops if anything fails. All four refusal paths tested:
+
+| Input | Result |
+|---|---|
+| `"Aigul Moiseeva" JRS-R-WRONG99` | REFUSED: the code on record is JRS-R-DOGUUVV9 |
+| `"Stacyann Young" JRS-R-DOGUUVV9` | REFUSED: no `reviewer-cert` row; sources held: honor-accept |
+| `"Nobody Here" JRS-R-DOGUUVV9` | NOT FOUND: nothing is issued for a name not in the record |
+| `"Aigul Moiseeva" NOTACODE` | REFUSED: not a completion code |
+
+It also refuses if `records_run` is non-zero, because a person who reviewed records is a study participant and gets the study certificate instead.
+
+The body sentence is **parsed out of `api/reviewer-cert.js`, not copied**, so the printed certificate and the self-served one cannot tell the holder different things. `check_printed_certificate_matches_endpoint` in `scripts/check_zero_drift.py` fails if that parse stops resolving or if the parsed body regains a training claim. Both cases tested.
+
+### The self-serve link still works and is now correct
 
 ```
 https://www.jrsstandard.com/api/reviewer-cert?code=JRS-R-DOGUUVV9&name=Aigul%20Moiseeva
 ```
 
-`research/build_certificate.py` is **not** the right tool here and was not used. Its registry is the 24-record study completers, and adding a non-completer to it would put an unearned certificate into the canonical issued template.
+**On whether they should have been issued one automatically:** they were, and by design. `reviewer/evaluation.html` tells the respondent at Step 4 of 5 that the evaluation "is the research contribution the certificate records", and `/api/reviewer-eval` issues the code on submission. Nothing was bypassed. What was wrong is what the certificate then said, which is below.
 
 ### A defect was found while checking this, and it was corrected
 
@@ -85,7 +119,7 @@ Corrected on three surfaces:
 
 Guarded by `check_certificate_claims_supported` in `scripts/check_zero_drift.py`, adversarially tested against all three restorations plus a control confirming the correction comment quoting the old wording does not trip it.
 
-**Aigul's certificate will now render with the corrected wording.** They rendered the old one before the fix; if you want them to hold the accurate version, send the link again.
+**Aigul rendered the old, incorrect certificate before the fix.** The attached PDF carries the corrected wording, and so does the live link. Send them the PDF.
 
 ---
 

@@ -305,7 +305,23 @@ runs = fetch("study_runs", 500)
 if runs is None:
     T("cross-vendor series", "87.2 percent", None, "offline or unreachable")
 else:
-    xs = []
+    # THE SERIES IS BOUNDED AT THE DATA LOCK, AND IT HAS TO BE.
+    #
+    # The nightly job keeps running. Without this bound the check compares a
+    # manuscript locked on 2026-08-15 against a query that grows every morning,
+    # so it fails on a day when nothing about the manuscript changed. It did:
+    # on 2026-08-18 the query returned 43 runs and a mean of 87.26 against the
+    # locked 41 and 87.2, purely because two more nights had passed.
+    #
+    # This is the same defect the manuscript documents in Appendix A about
+    # single-run figures, reappearing one level up in the verifier. "Data
+    # closed 15 August 2026" is a statement about which rows are in scope, and
+    # the check now applies it.
+    #
+    # Runs after the lock are counted and reported, so a growing series is
+    # visible rather than silently discarded.
+    LOCK_DATE = "2026-08-15"
+    xs, post_lock = [], 0
     for r in runs:
         m = r.get("metrics") or {}
         if m.get("mode") != "cross_vendor":
@@ -316,8 +332,16 @@ else:
         v = m.get("overall_agreement")
         if v is None:
             v = sum(pr.values()) / len(pr)
+        if (r.get("created_at") or "")[:10] > LOCK_DATE:
+            post_lock += 1
+            continue
         xs.append(v)
     n = len(xs)
+    if post_lock:
+        T("cross-vendor runs since the data lock", "", None,
+          "%d run(s) after %s, excluded from the locked series. Re-lock the "
+          "Appendix A figures only on a deliberate decision to move the lock "
+          "date, never to make this check pass" % (post_lock, LOCK_DATE))
     m_ = st.mean(xs)
     s_ = st.stdev(xs)
     se = s_ / math.sqrt(n)

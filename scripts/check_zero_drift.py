@@ -928,6 +928,43 @@ def _all_indexes(hay, needle):
     return out
 
 
+def check_printed_certificate_matches_endpoint(offline):
+    """The handover PDF and the browser certificate must say the same thing.
+
+    research/build_reviewer_eval_certificate.py parses BODY out of
+    api/reviewer-cert.js instead of holding its own copy, so a person handed a
+    printed certificate and a person who self-serves one cannot be told
+    different things about what they did. This confirms the parse still
+    resolves, because a silent parse failure is how the two would drift apart
+    without anyone noticing.
+    """
+    try:
+        sys.path.insert(0, os.path.join(ROOT, "research"))
+        import build_reviewer_eval_certificate as brec
+    except Exception as e:
+        check("printed certificate wording matches the endpoint", False,
+              "research/build_reviewer_eval_certificate.py did not import: %r" % (e,))
+        return
+    src = read("api/reviewer-cert.js")
+    if not src:
+        check("printed certificate wording matches the endpoint", False,
+              "api/reviewer-cert.js is unreadable")
+        return
+    try:
+        body = brec.endpoint_body()
+    except SystemExit:
+        check("printed certificate wording matches the endpoint", False,
+              "the BODY parse in build_reviewer_eval_certificate.py no longer "
+              "resolves against api/reviewer-cert.js")
+        return
+    ok = bool(body) and body in src.replace("'\n           + '", "")
+    inline = ("submitted the JRS reviewer evaluation" in body
+              and "six-module" not in body)
+    check("printed certificate wording matches the endpoint", bool(body) and inline,
+          "%d chars, parsed from the endpoint, no training claim" % len(body)
+          if inline else "parsed body carries an unsupported claim: %r" % body[:90])
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -938,6 +975,7 @@ def main():
                check_withdrawn_contributors_absent,
                check_honor_roster_composition,
                check_certificate_claims_supported,
+               check_printed_certificate_matches_endpoint,
                check_generated_docs_current, check_cross_endpoint):
         try:
             fn(offline)

@@ -874,6 +874,7 @@ The review instrument stores working keys; they map to the standard as follows (
 - 2026-08-16: Owner: remove the research summaries. Scope confirmed as the LIVE GATED SUMMARY only. `resultsBlock()`, `RESULTS_RELEASED`, `RESULTS_EXPECTED`, `RESULTS_LOCKED_ON` removed from `api/contributor.js`; the results render, the two promise lines and the orphaned `.pend`/`ul.tight` rules removed from `contributor.html`. New offline guard `check_contributor_carries_no_findings`, adversarially tested 3/3. Deployed to main and verified live: results key absent on 5 consecutive POSTs, forced choices and anonymous path unaffected. `research/build_results_summary_doc.py` is now dead and was left in place because the owner's scope choice excluded it.
 - 2026-08-16: **V-AI-08 withdrawn as a contributor across the whole programme** at the owner's instruction. Live: roster 42 to 41, honor entry H-2026-06 retired (code not reused, sequence not renumbered), both deployed and verified. Naming only: her reads still count, unnamed, so 58/36/16 are unchanged. New `scripts/withdraw_contributor.py` (28 rules, 20 files, idempotent) plus two guards, adversarially tested 4/4. **Manuscript v4 written to the senior editor's review**: all 10 Tier 1 and all 8 Tier 2 items applied, 6 Tier 3 items entered in a new research-programme section because they need new data. 44 figure assertions pass, 9 injected regressions caught. Detail in the section at the end of this file.
 - 2026-08-16: **Aigul Moiseeva (KZ, CGEM AI Safety) verified before recognition. Did NOT review 18 records: records_run=0.** The 18 is `total_rows` on the roster tile, 18 rows across 12 people. Not in the detection study; `check_completion.py JRS-R-DOGUUVV9` returns NO ROW. What they did do: submitted the reviewer evaluation on 16 Aug, 8 of 9 questions, the first submission the evaluation has ever received. Certificate already self-served (`certificate_renders.reviewer=1`), no second one created. LinkedIn recommendation written, truthfully scoped, pronoun-free. **Found and fixed a live overclaim while checking: the reviewer certificate asserted training completion the database contradicts.** Corrected on three surfaces, deployed, verified live, guarded, adversarially tested 3/3. New `research/verify_participant.py`. Detail at the end of this file.
+- 2026-08-16: **Handover certificate built for Aigul Moiseeva.** New `research/build_reviewer_eval_certificate.py`: renders through the locked `make_certificate()` layout, titled **Certificate of Participation** (not Completion, because nothing was completed), body **parsed out of `api/reviewer-cert.js`** so the printed and self-served certificates cannot diverge. Verifies the holder against the live roster and refuses on a wrong code, a missing `reviewer-cert` row, an unknown name, a malformed code, or `records_run > 0`; all five paths tested. PDF text extracted and confirmed. New guard `check_printed_certificate_matches_endpoint`, 2/2 injections caught.
 
 ## CONSOLIDATED ERROR LOG (assistant errors this session — recorded 2026-08-01 at owner's instruction so they are not repeated)
 1. **Reliability miscalculation (most damaging).** Recomputed Rung 2a reliability with baseline-condition labels (mode=normal) wrongly mixed into the JRS reliability set, producing a false "collapse" to AC1 0.18. CORRECT value (JRS reads only, verified live 2026-08-01): experts 0.74, trained 0.62-0.63, both clear the 0.61 floor. PREVENTION RULE: reliability of the JRS read is computed ONLY on mode=jrs labels; never mix mode=normal (baseline) labels; always print n, modes, and rater codes before reporting a coefficient.
@@ -1986,3 +1987,25 @@ One trap it encodes: `training_completed` is only set on training rows. On any o
 `consent_public` is **false**: they did not tick "list my name publicly as a JRS-trained reviewer". They *did* ask for a recommendation, which is consent for that one artifact. **Post the recommendation; do not add them to any public reviewer list.**
 
 Pronouns are not on file. The recommendation is written pronoun-free.
+
+## 2026-08-16: handover certificate for Aigul Moiseeva
+
+The self-serve certificate was already issued, by design: `reviewer/evaluation.html` tells the respondent at Step 4 of 5 that the evaluation "is the research contribution the certificate records", and `/api/reviewer-eval` issues the `JRS-R-` code on submission. Nothing was bypassed. What was wrong was the wording, corrected earlier the same day.
+
+Owner asked for a certificate **he can hand over**. Built.
+
+### `research/build_reviewer_eval_certificate.py`, new
+
+| Decision | Reason |
+|---|---|
+| Not added to `build_certificate.py`'s REVIEWERS list | That registry is the 24-record completers and its `standard_body()` prints "completed the independent review of all 24 records". Adding an evaluation respondent would print a record review that did not happen onto the canonical issued template |
+| Renders through `make_certificate()` from that same file | The layout is locked from the issued reference PDF. Nothing about the design is re-decided here |
+| Title **Certificate of Participation** | Not "of Completion". Nothing was completed |
+| Body **parsed** from `api/reviewer-cert.js`, not copied | Two copies of the sentence would eventually disagree, and a person handed a printed certificate would be told something different from a person who self-serves one |
+| Verifies against the live roster before rendering | A certificate that can be produced for a name not in the record is not a certificate |
+
+**Five refusal paths, all tested:** wrong code for the name, no `reviewer-cert` row (tried Stacyann Young, who holds only `honor-accept`), unknown name, malformed code, and `records_run > 0`.
+
+**Output verified by extracting the text from the PDF**, after the first extraction attempt returned MISSING on everything. That was my extractor, not the file: reportlab writes `/Filter [ /ASCII85Decode /FlateDecode ]` and the script only tried Flate. Corrected extractor confirms: "Certificate of Participation", "Aigul Moiseeva", "submitted the JRS reviewer evaluation...", "August 16, 2026", "Phillip Wikes, Creator, JRS", and confirms **absent**: "24 records", "six-module", "Reviewer Training", "all 24", "Completion".
+
+**`check_printed_certificate_matches_endpoint`** added to `scripts/check_zero_drift.py`. Caught both injections: restoring the training claim to the endpoint BODY, and renaming the const so the parse silently stops resolving. The second is the dangerous one, because a silent parse failure is how the printed and live certificates would drift apart with nobody noticing.
