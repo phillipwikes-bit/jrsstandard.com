@@ -882,6 +882,7 @@ The review instrument stores working keys; they map to the standard as follows (
 - 2026-08-18: **Surgical revision set applied to v4** from the second editorial review (disposition: not quite ready, precision surgery not expansion; acceptance 45-55 percent now, 50-60 after). All 17 instructed items executed as 24 exact-match rules via `scripts/apply_surgical_revisions_2026-08-18.py`, idempotent, with a before/after report. **The reviewer found one real arithmetic error and he was right**: Appendix B called 113 determinations and 565 condition-level labels by the same word. Verified against `bench_labels` before correcting (113 rows x 5 = 565 = 216 gap + 207 pass + 142 review). **No figure changed.** Claim-consistency audit made permanent as 13 enforced claim pairs; **an adversarial test then showed the 113/565 conflation could come straight back undetected, so a 14th pair closes it.** Two defects of my own caught by my own guards: a banned word introduced in a replacement, and a credit marker widened in one guard but not the other. 23 checks 0 failed, 47 assertions 0 failed, lock holds.
 - 2026-08-18: Owner asked whether **both arms are labelled as experts** in the paper. **Audit: Arm A yes in three places, Arm B only in the Acknowledgments and nowhere in the body.** Sections 4.2 and 5 left a reader to infer an expert-versus-novice comparison, which is the confound the randomisation exists to avoid, and is the same conflation the programme corrected on 2026-08-05. Verified from `Expert_Roster_All_Studies_2026-08-06.csv` (credentialed Arm B titles) and `ArmB_Design.md:3,32` ("do not put experts in one and novices in the other") before writing it in. Both sections now state expertise parity and that JRS-naive is about exposure, not expertise; "unaided professional judgment" standardised to "expert". 15th claim pair guards it. **Two ordering defects in my own revision script, both caught by its own checks: a false non-unique report, then a duplicated sentence on re-run.**
 - 2026-08-18: **v5 surgical revision executed.** All six instructed revisions applied as 21 exact-match rules via `scripts/apply_v5_revisions.py`; **v4 read, not overwritten**; `Detection_Article_v5_2026-08-18.docx` and `Detection_Article_v5_CHANGE_LOG.md` produced. **Two instructed numbers disagree with the manuscript and the database and were NOT changed**: trained AC1 given as 0.624 CI 0.349-0.898, actual 0.623 CI 0.253-0.994; 0.624 is the pre-2026-08-15 value and is on the superseded blocklist. Flagged for decision. Final QA caught **six bare 'the key' references that survived after 'answer key' reached zero**; all standardised and added to the forbidden list. 47 assertions 0 failed, 23 checks 0 failed, idempotent, docx validated.
+- 2026-08-18: **v6 surgical revision executed.** All six instructed revisions applied as 10 exact-match rules via `scripts/apply_v6_revisions.py`; v5 read, not overwritten. **One consistency defect caught by the mandated audit**: Section 8.3 restated revision 6's claim in different words and would have contradicted the corrected Appendix C; aligned, all figures preserved. Numerical integrity PASS (31 values), claim boundary PASS (18 absent, 20 present, 2 exactly-once), document integrity PASS (headings 45, table rows 91, References and Appendices A and B byte-identical to v5). Idempotent. 47 assertions 0 failed, 23 checks 0 failed.
 
 ## CONSOLIDATED ERROR LOG (assistant errors this session — recorded 2026-08-01 at owner's instruction so they are not repeated)
 1. **Reliability miscalculation (most damaging).** Recomputed Rung 2a reliability with baseline-condition labels (mode=normal) wrongly mixed into the JRS reliability set, producing a false "collapse" to AC1 0.18. CORRECT value (JRS reads only, verified live 2026-08-01): experts 0.74, trained 0.62-0.63, both clear the 0.61 floor. PREVENTION RULE: reliability of the JRS read is computed ONLY on mode=jrs labels; never mix mode=normal (baseline) labels; always print n, modes, and rater codes before reporting a coefficient.
@@ -2300,3 +2301,41 @@ A search for one phrase leaves exactly that gap. All six standardised, and each 
 | House style | 0 em-dashes, 0 banned words, 11,679 words, 45 headings |
 
 Every occurrence of "workflow independence", "criterion validity" and "cross-cultural" in v5 was read in context: all are limitations, none is a claim. "effectiveness" and "superiority" appear zero times.
+
+## 2026-08-18: v6 surgical revision
+
+Six instructed revisions, executed as **10 exact-match rules**. **v5 read and not overwritten**; v4 and v5 both remain unmodified on disk.
+
+| # | Revision | Status |
+|---|---|---|
+| 1 | Abstract Objective: "the first one a measurement programme has to answer" to "an initial question a measurement programme must address" | APPLIED |
+| 2 | Section 3: "demonstrated per-condition association" to "descriptive per-condition association" | APPLIED |
+| 3 | Section 4.4 opening: "The key is the foundation of every number in this paper" to "The reference classification is the comparison standard underlying the primary accuracy estimates" | APPLIED |
+| 4 | Section 4.7: "held-out reference classification" to "pre-specified reference classification"; thresholds 0.50 and 0.70 untouched | APPLIED |
+| 5 | Section 6.3: precise chance-benchmark wording moved to the earlier paragraph, duplicate removed from the later one, finding now appears exactly once | APPLIED |
+| 6 | Appendix C: boundary wording, item-difficulty conclusion, simulation clause deleted | APPLIED |
+
+### One consistency defect the mandated audit caught
+
+Revision 6 replaced the Appendix C conclusion. **Section 8.3 restated the same claim in different words**, and would have left the Limitations section contradicting the corrected appendix. Aligned to the instructed wording with every figure in the sentence preserved. Not an unrelated edit: it is the same claim the instruction ordered changed.
+
+### Audits
+
+| Audit | Result |
+|---|---|
+| Numerical integrity, 31 values | **PASS**. 216 + 142 + 207 = 565; 113 x 5 = 565 |
+| Global terminology, 11 instructed search terms | all at **zero** |
+| Claim boundary, 18 must-be-absent | **PASS** |
+| Claim boundary, 20 must-be-present | **PASS** |
+| Exactly-once statements, 2 | **PASS** |
+| Document integrity | **PASS**. Headings 45 to 45, table rows 91 to 91, one References section, Appendices A/B/C all present |
+| References section | byte-identical to v5 |
+| Appendix A | byte-identical to v5 |
+| Appendix B | byte-identical to v5, no revision was requested there |
+| Duplicate paragraphs | 0 |
+| Idempotency | re-run is a no-op |
+| `.docx` | valid zip, 158,665 chars of document XML, all six revisions present, all four retired terms absent |
+| `verify_manuscript_figures.py`, retargeted to v6 | **47 assertions, 0 failed** |
+| `check_zero_drift.py`, v6 added to programme scope | **23 checks, 0 failed** |
+
+Outputs: `research/Detection_Article_v6_2026-08-18.md`/`.docx`, `research/Detection_Article_v6_CHANGE_LOG.md`/`.docx`.

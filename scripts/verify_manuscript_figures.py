@@ -39,7 +39,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # v5 is the current manuscript. v4 is retained on disk unmodified, per the
 # revision instruction, and stays in check_zero_drift's PROGRAMME_SCOPE_FILES so
 # a figure that disagrees between the two is still caught as drift.
-MS = os.path.join(ROOT, "research", "Detection_Article_v5_2026-08-18.md")
+MS = os.path.join(ROOT, "research", "Detection_Article_v6_2026-08-18.md")
 AGG = os.path.join(ROOT, "research", "closed_aggregates_2026-08-15.json")
 SB = "https://pjzxkeviouofdseagvpf.supabase.co/rest/v1"
 ANON = "sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e"
@@ -460,7 +460,8 @@ CLAIM_PAIRS = [
      ["de-identified participant-level response data"],
      ["coded participant-level response data"]),
     ("ICC reported on the latent scale",
-     ["close to half the variance in whether a read is correct is attributable"],
+     ["close to half the variance in whether a read is correct is attributable",
+      "cannot be distinguished from zero"],
      ["On the model's latent logistic scale"]),
     ("no 'fourth variety' taxonomy",
      ["The variety at issue here is a fourth"],
