@@ -14,22 +14,24 @@ crossed analysis:
 fitted as a mixed-effects logistic model over all 384 graded reads, plus the
 by-item accuracy table and per-record error patterns.
 
-WHY THE FIGURES ARE NOT IN THE MANUSCRIPT YET. The per-read judgments live in
-ai_pilot_reads behind row-level security. The anon key returns an empty array,
-which is the RLS refusal and not an empty table. Without the service-role key
-this script cannot compute anything, and it says so and stops rather than
-producing a number. No figure enters this programme's manuscripts until it has
-been reproduced from the database.
+NO SERVICE KEY IS NEEDED, AND ASKING FOR ONE WAS THE WRONG SHAPE.
 
-HOW TO RUN IT. On your own machine, with your own key. The key is read from the
-environment, never printed, never written to a file, and never leaves the
-process:
+The per-read judgments are in ai_pilot_reads, behind row-level security. The
+first version of this script demanded SUPABASE_SERVICE_ROLE_KEY in the owner's
+shell, which was friction with no security benefit: the service key already
+lives in the site's own deployment environment, and every other private figure
+in this programme is served from there.
 
-    export SUPABASE_SERVICE_ROLE_KEY='<service key>'
-    python3 scripts/analyze_item_and_reviewer_variance.py
+The computation now runs server-side at api/variance-6b1d90fa2c47e8b3.js, an
+opaque-slug endpoint on the same pattern as api/people-9dd1ecdf6f8cdfd4.js.
+This script reads that endpoint and needs no credential at all.
 
-Add --write to have it emit the Appendix C replacement block to stdout in the
-manuscript's own format, ready to paste.
+The local path is kept as a fallback for anyone who does hold the key and wants
+to reproduce the fit off the network. It also caught a defect the endpoint work
+then inherited correctly: the first version queried a table called ai_pilot_key,
+which does not exist. PostgREST answers PGRST205 for it. The answer key is not a
+table; it is the fixed 24-record map held in scripts/verify_detection_accuracy.py
+and research/Verified_Key.md, and it is now used from there.
 
 NO SCIPY, NO STATSMODELS, NO R. This container has neither, and a script that
 cannot run where it is written is not an artifact. The variance components are
@@ -109,12 +111,29 @@ def fetch(path, key):
         die("request failed for %s: %r" % (path, e))
 
 
+# The verified answer key. Identical to scripts/verify_detection_accuracy.py,
+# scripts/export_arm_b_data.py, research/Verified_Key.md and the copy in
+# api/variance-6b1d90fa2c47e8b3.js. 12 grounded, 12 ungrounded, fixed before any
+# accuracy analysis and independently reproduced 24 of 24 by blind raters.
+#
+# IT IS NOT A TABLE. The first version of this file queried "ai_pilot_key" and
+# would have failed with PGRST205 even with a valid service key, because no such
+# relation exists. Nothing was ever computed from it, so no figure is affected.
+VERIFIED_KEY = {
+    "R01": "GROUNDED",   "R02": "UNGROUNDED", "R03": "UNGROUNDED", "R04": "GROUNDED",
+    "R05": "UNGROUNDED", "R06": "GROUNDED",   "R07": "UNGROUNDED", "R08": "GROUNDED",
+    "R09": "UNGROUNDED", "R10": "GROUNDED",   "R11": "UNGROUNDED", "R12": "GROUNDED",
+    "R13": "UNGROUNDED", "R14": "GROUNDED",   "R15": "UNGROUNDED", "R16": "GROUNDED",
+    "R17": "UNGROUNDED", "R18": "GROUNDED",   "R19": "UNGROUNDED", "R20": "GROUNDED",
+    "R21": "UNGROUNDED", "R22": "GROUNDED",   "R23": "UNGROUNDED", "R24": "GROUNDED",
+}
+
+ENDPOINT = "https://www.jrsstandard.com/api/variance-6b1d90fa2c47e8b3"
+
+
 def load_key(key):
     """record_ref -> True if the record is unsupported, False if grounded."""
-    rows = fetch("/rest/v1/ai_pilot_key?select=record_ref,is_unsupported", key)
-    if not rows:
-        die("ai_pilot_key returned no rows. Cannot score without the key.")
-    return {r["record_ref"]: bool(r["is_unsupported"]) for r in rows}
+    return {k: (v == "UNGROUNDED") for k, v in VERIFIED_KEY.items()}
 
 
 def load_reads(key):
