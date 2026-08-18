@@ -39,7 +39,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # v5 is the current manuscript. v4 is retained on disk unmodified, per the
 # revision instruction, and stays in check_zero_drift's PROGRAMME_SCOPE_FILES so
 # a figure that disagrees between the two is still caught as drift.
-MS = os.path.join(ROOT, "research", "Detection_Article_Submission_Final_2026-08-18.md")
+MS = os.path.join(ROOT, "research", "Detection_Article_Submission_Final_v2_2026-08-18.md")
 AGG = os.path.join(ROOT, "research", "closed_aggregates_2026-08-15.json")
 SB = "https://pjzxkeviouofdseagvpf.supabase.co/rest/v1"
 ANON = "sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e"
@@ -431,6 +431,17 @@ else:
     T("Section 6.5 regular-reviewer count", "| Regular reviewers | 10 | 68 | 14 |",
       True, "")
     T("Section 6.5 expert-rater count", "| Experts | 10 | 36 | 8 |", True, "")
+    # THE 58 AND THE 61 MUST TRAVEL TOGETHER. Credited groups sum to 61
+    # participations; the distinct-person total is 58. A reader who meets one
+    # without the other reads an arithmetic error that is not there.
+    T("participant overlap stated in the Acknowledgments",
+      "61 participations held by **58 distinct people**", True, "")
+    T("comparison study identified by number and standing",
+      "That study comprises 20 independent experts of the same professional "
+      "standing as the detection panel", True, "")
+    T("Appendix B denominator distinguished from Section 6.5",
+      "the reliability coefficients in Section 6.5 use the deduplicated "
+      "104-label set", True, "")
     T("detection countries", "11 countries", ps.get("countries_detection") == 11,
       "countries_detection=%s" % ps.get("countries_detection"))
     T("programme countries", "", ps.get("countries_all") == 16,
@@ -503,8 +514,15 @@ CLAIM_PAIRS = [
     # 2026-08-05.
     ("comparison arms stated as equally expert",
      ["improve on unaided professional judgment"],
-     ["credentialed professionals drawn from the same pool and randomised within it",
-      "credentialed professionals of the same standing as the panel reported here",
+     # THE NEEDLE IS THE CLAIM, NOT THE SENTENCE THAT CARRIED IT. The v2 pass
+     # replaced "drawn from the same pool and randomised within it", which
+     # could be read as the detection panel itself having been randomised, and
+     # this guard failed on correct prose. What must survive is the assertion
+     # that the comparison differs in method and not in expertise, wherever it
+     # is worded. Anchoring on a phrase rather than a claim is what broke it.
+     ["not in the expertise of the people applying it",
+      "20 independent experts of the same professional standing as the "
+      "detection panel",
       "a statement about exposure and not about expertise"]),
     ("113 determinations and 565 condition-level labels stay distinct",
      ["Across the 113 labels",
@@ -583,6 +601,12 @@ SUPERSEDED = [
                            "separate Study 004 reliability sample"),
     ("expert panel", "ambiguous between three populations"),
     ("36 independent experts", "invented combined panel figure"),
+    # ADDED 2026-08-18 BY THE v2 PASS. 58 is the source-verified distinct-
+    # participant count: 61 participations minus 3 people who hold both a
+    # Study 004 rater code and an Arm A panel code. "All 61" would count
+    # participations as people.
+    ("All 61", "participations counted as people"),
+    ("same pool", "reads as though the detection panel was randomised"),
     ("52.9 percent", "unreproducible not-passing rate"),
     ("87.8", "single-run cross-vendor figure, stale nightly"),
     ("84.5 percent", "mixed-denominator cross-vendor mean"),
