@@ -1,8 +1,12 @@
 name: JRS Site Maintenance
 
+# SCHEDULE DISARMED 2026-08-18. This ran on the 1st of every month and pushed
+# straight to main unreviewed. Two of the SSOT values it enforced were the exact
+# opposite of CLAUDE.md Section III.1, so each run would have rewritten every
+# page to a wrong contact address and relinked a PDF deleted in June 2026. Both
+# are corrected below. The schedule stays off until a run has been watched end
+# to end on workflow_dispatch and its diff reviewed.
 on:
-  schedule:
-    - cron: '0 10 1 * *'   # 1st of every month at 10:00 UTC
   workflow_dispatch:
     inputs:
       task:
@@ -32,8 +36,8 @@ jobs:
 
             1. SSOT CONSISTENCY
                Verify these canonical values appear correctly across every .html file:
-               - Contact: governance@jrsstandard.com (no Gmail addresses)
-               - PDF: Wikes_Record-Level-Controls_AI-Assisted-Documentation.pdf (no JRS-Standard.pdf in href)
+               - Contact: info@jrsstandard.com (no Gmail addresses, no LinkedIn URL as primary contact)
+               - PDF: JRS-Standard.pdf. The file Wikes_Record-Level-Controls_AI-Assisted-Documentation.pdf was REMOVED from the repository in June 2026. Do NOT reintroduce it and do NOT link to it. Flag any href that still points at it.
                - Endpoint: https://api.jrsstandard.com/v1/verify-drift
                - GA4: G-NVYHJ7BJ92 tag present in every .html file
                - Copyright: © 2026 Phillip Wikes · JRS™ (canonical form)
@@ -63,6 +67,7 @@ jobs:
             For each issue found: apply the minimal surgical fix, following the editing standards in CLAUDE.md Section II exactly.
 
             After all fixes (or if none needed):
+            - Run `python3 scripts/check_zero_drift.py` and `python3 scripts/verify_manuscript_figures.py`. If either reports a failure, STOP and do not commit.
             - Commit with a message in the format: "Monthly maintenance [YYYY-MM-DD]: <summary of fixes or 'no issues found'>"
-            - Push to branch: claude/mobile-site-responsive-xg5tT
-            - Then push that branch to main: git push origin claude/mobile-site-responsive-xg5tT:main
+            - Push to branch: claude/html-pilot-L8rC3
+            - DO NOT PUSH TO MAIN. Open a pull request instead and stop there. An unattended agent pushing unreviewed edits to production is how the two wrong SSOT values in an earlier version of this file would have reached every page on the site.

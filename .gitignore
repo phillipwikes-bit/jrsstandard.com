@@ -1,6 +1,15 @@
-# wrangler files
+# session scratchpad (temporary build scripts and previews)
+scratchpad/
+
+# Cloudflare wrangler artifacts. Kept as ignore rules only, after the legacy
+# Cloudflare Pages files were deleted on 2026-08-18: no wrangler config has ever
+# existed in this repository, and these lines stop a stray local one from being
+# committed and making the dead Workers build look intentional.
 .wrangler
 .dev.vars*
 !.dev.vars.example
 .env*
 !.env.example
+
+__pycache__/
+*.pyc

@@ -251,9 +251,10 @@ The key is stored exclusively in `process.env.ANTHROPIC_API_KEY` on the Vercel s
 
 ## V. DEPLOYMENT
 
-- **Host**: Vercel (static assets + `api/*` edge functions; nightly cron via `vercel.json`). Confirmed live by `server: Vercel` on the apex, `www`, and `/api/*`. The repo's `functions/` directory is legacy Cloudflare Pages format and is not the active deployment.
+- **Host**: Vercel (static assets + `api/*` edge functions; nightly cron via `vercel.json`). Confirmed live by `server: Vercel` on the apex, `www`, and `/api/*`.
+- **Cloudflare is severed from this repository as of 2026-08-18.** Deleted: `functions/record.js` and `functions/results.js` (Cloudflare Pages Function format, referencing a KV binding `JRS_RESULTS` that this deployment does not have, and `record.js` was being served publicly as a static file at `/functions/record.js`), and `_headers` (Cloudflare Pages / Netlify header format, verified inert on Vercel, which honours the `headers` block in `vercel.json` instead). No `wrangler` config has ever existed here. **Deleting these does not stop the failing "Workers Builds" check on pull requests**: that build is driven by a Cloudflare-to-GitHub integration configured in the Cloudflare dashboard, not by anything in this repository, and only disconnecting it there will stop it. `scripts/check_zero_drift.py` fails if a Cloudflare Pages artifact reappears.
 - **Production branch**: `main`
-- **Development branch**: `claude/mobile-site-responsive-xg5tT`
+- **Development branch**: `claude/html-pilot-L8rC3`. (Was `claude/mobile-site-responsive-xg5tT`; corrected 2026-08-18 because every deploy since has used the current branch and the stale name was still being copied into `.github/workflows/maintenance.yml`.)
 - **Push to production**: `git push -u origin <dev-branch>:main`
 - **Domain**: `jrsstandard.com` (CNAME configured)
 - No build step — all files are deployed as-is. Changes are live on push to `main`.
