@@ -628,7 +628,7 @@ def check_panel_binder_identical(offline):
 # detection-only reviewer figure, it must ALSO carry the programme figure, so a
 # reader is never handed 16 as though it were the whole panel.
 PROGRAMME_SCOPE_FILES = [
-    "research/Detection_Article_Submission_Final_v2_2026-08-18.md",
+    "research/Detection_Article_Submission_Final_v3_2026-08-18.md",
     "research/Detection_Article_v7_2026-08-18.md",
     "research/Detection_Article_v6_2026-08-18.md",
     "research/Detection_Article_v5_2026-08-18.md",

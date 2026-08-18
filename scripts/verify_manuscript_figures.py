@@ -39,7 +39,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # v5 is the current manuscript. v4 is retained on disk unmodified, per the
 # revision instruction, and stays in check_zero_drift's PROGRAMME_SCOPE_FILES so
 # a figure that disagrees between the two is still caught as drift.
-MS = os.path.join(ROOT, "research", "Detection_Article_Submission_Final_v2_2026-08-18.md")
+MS = os.path.join(ROOT, "research", "Detection_Article_Submission_Final_v3_2026-08-18.md")
 AGG = os.path.join(ROOT, "research", "closed_aggregates_2026-08-15.json")
 SB = "https://pjzxkeviouofdseagvpf.supabase.co/rest/v1"
 ANON = "sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e"
@@ -431,6 +431,21 @@ else:
     T("Section 6.5 regular-reviewer count", "| Regular reviewers | 10 | 68 | 14 |",
       True, "")
     T("Section 6.5 expert-rater count", "| Experts | 10 | 36 | 8 |", True, "")
+    # THE AUTOMATED REFERENCE CHECK MUST STAY LABELLED AS AUTOMATED, AND ITS
+    # DENOMINATOR MUST STAY AT 72. A later compression of Section 4.4 that
+    # drops either turns a machine reproducibility check back into what a
+    # reviewer reads as independent human validation.
+    T("reference raters identified as automated",
+      "These were automated raters, not human raters", True, "")
+    T("reference judgment denominator",
+      "**72 record-level classifications**", True, "")
+    T("pre-registration deviation disclosed",
+      "the executed procedure used three", True, "")
+    T("human validation explicitly disclaimed",
+      "does not constitute independent human validation", True, "")
+    T("no human replication claimed",
+      "No human replication of the reference classification has been "
+      "performed.", True, "")
     # THE 58 AND THE 61 MUST TRAVEL TOGETHER. Credited groups sum to 61
     # participations; the distinct-person total is 58. A reader who meets one
     # without the other reads an arithmetic error that is not there.
@@ -607,6 +622,17 @@ SUPERSEDED = [
     # participations as people.
     ("All 61", "participations counted as people"),
     ("same pool", "reads as though the detection panel was randomised"),
+    # ADDED 2026-08-18 BY THE v3 REFERENCE-CLASSIFICATION REPAIR.
+    # The reference key was reproduced by three large-language-model
+    # instances, not people. Every phrasing below reads as human to a
+    # reviewer, and one of them asserted a form of blinding the briefing
+    # packet contradicts.
+    ("blind raters", "reference raters were automated, not human"),
+    ("blinded raters", "reference raters were automated, not human"),
+    ("were not told that a reference classification existed",
+     "contradicted by AnswerKey_Verification_Packet.md:3-5"),
+    ("Nothing about the reference classification is withheld",
+     "no model name, version, per-pass sheet or date was retained"),
     ("52.9 percent", "unreproducible not-passing rate"),
     ("87.8", "single-run cross-vendor figure, stale nightly"),
     ("84.5 percent", "mixed-denominator cross-vendor mean"),
