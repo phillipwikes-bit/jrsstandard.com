@@ -169,6 +169,13 @@ COUNT_ALLOW = {
     "R2A_LOCKED_UNSTRUCTURED_REVIEWERS": _R2A_WHY,
     "R2A_LOCKED_UNSTRUCTURED_LABELS": _R2A_WHY,
     "R2A_LOCKED_UNSTRUCTURED_GAPS": _R2A_WHY,
+    "MIN_READS": "the PRE-REGISTERED exclusion rule, 18 of 24, in "
+                 "scripts/analyze_item_and_reviewer_variance.py. It is a design "
+                 "constant fixed before data collection, not a copy of a count "
+                 "held anywhere else, and deriving it from the data is exactly "
+                 "what a pre-registered rule must not do",
+    "CORPUS_SIZE": "the study design constant, 24 records. Same reasoning as "
+                   "NEEDED above, which is the same number in the builders",
 }
 
 
@@ -254,8 +261,26 @@ def _has_research():
     cut from origin/main with three "file missing" failures and a
     FileNotFoundError, none of which was a real defect. A guard that fires on
     correct state is a guard that gets bypassed.
+
+    A BARE os.path.isdir IS NOT ENOUGH, and it blocked a deploy on 2026-08-18.
+    research/__pycache__/ is gitignored, so checking out the deploy branch
+    removes every tracked file under research/ and leaves the directory standing
+    with nothing in it but bytecode. isdir then returned True on a branch that
+    has no research tree, the generated-doc checks looked for three .md files
+    that are not on main by design, and all three failed as "file missing".
+
+    Nothing was wrong with the repository. The predicate was wrong. It now asks
+    whether any real research file is present, ignoring caches, so a directory
+    containing only compiled artifacts reads as absent, which is what it is.
     """
-    return os.path.isdir(os.path.join(ROOT, "research"))
+    d = os.path.join(ROOT, "research")
+    if not os.path.isdir(d):
+        return False
+    for name in os.listdir(d):
+        if name in ("__pycache__", ".DS_Store") or name.endswith(".pyc"):
+            continue
+        return True
+    return False
 
 
 def check_panel_geo(offline):
@@ -594,6 +619,82 @@ def check_panel_binder_identical(offline):
               ("; pages with != 1 copy: " + ", ".join(many)) if many else ""))
 
 
+# Files that speak about the PROGRAMME rather than about one study, and must
+# therefore credit every independent expert who graded records, not only the 16
+# on the detection panel. Added 2026-08-15 after the owner found the manuscript
+# acknowledging Arm A alone.
+#
+# The rule is not "mention 58 somewhere". It is: if the file cites a
+# detection-only reviewer figure, it must ALSO carry the programme figure, so a
+# reader is never handed 16 as though it were the whole panel.
+PROGRAMME_SCOPE_FILES = [
+    "research/Detection_Article_v4_2026-08-16.md",
+    "research/Detection_Article_v3_2026-08-15.md",
+    "research/Positioning_Lines_2026-08-15.md",
+    "research/LinkedIn_Results_Section_2026-08-15.md",
+    "LINKEDIN_LAUNCH_POSTS.md",
+    "UPWORK_PROPOSAL_TEMPLATES.md",
+]
+
+# Any of these counts as crediting the whole programme.
+PROGRAMME_MARKERS = (
+    "58 independent experts",
+    # v4 opens the Acknowledgments by spelling the number. The guard is on the
+    # fact that the whole programme is credited, not on how the sentence is
+    # written, so the spelled form counts.
+    "Fifty-eight independent experts",
+    "58 international reviewers",
+    "58 reviewers",
+    "across three studies",
+)
+
+# Any of these is a detection-only reviewer figure.
+DETECTION_ONLY = (
+    "16 independent experts",
+    "sixteen independent experts",
+    "Sixteen independent experts",
+)
+
+
+def check_all_experts_credited(offline):
+    """A file citing the detection panel must also credit the whole programme.
+
+    The manuscript credited the 16 detection reviewers in full and mentioned the
+    other 42 only as a count, in a sentence that called them context. The owner's
+    standing instruction, on the record repeatedly, is that recognition covers
+    every completer in both arms and is not scoped to whichever study a given
+    document happens to report. This check makes that mechanical.
+    """
+    bad, missing = [], []
+    for rel in PROGRAMME_SCOPE_FILES:
+        src = read(rel)
+        if not src:
+            # ABSENT BY DESIGN ON THE DEPLOY BRANCH, NOT DRIFT. Every file in
+            # this list lives only on the dev branch; none is deployed. Counting
+            # their absence as a failure blocked a deploy on 2026-08-18 with six
+            # "missing" lines and nothing actually wrong. A file that is present
+            # and fails to credit the programme is still a failure.
+            missing.append(rel)
+            continue
+        cites_detection = any(m in src for m in DETECTION_ONLY)
+        credits_all = any(m in src for m in PROGRAMME_MARKERS)
+        if cites_detection and not credits_all:
+            bad.append("%s: cites the 16-expert detection figure and never credits "
+                       "the full programme" % rel)
+    if bad:
+        check("programme-scope files credit every independent expert", False,
+              "; ".join(bad))
+    elif len(missing) == len(PROGRAMME_SCOPE_FILES):
+        check("programme-scope files credit every independent expert", SKIPPED,
+              "none of the %d scope files is on this branch by design"
+              % len(PROGRAMME_SCOPE_FILES))
+    else:
+        check("programme-scope files credit every independent expert", True,
+              "%d files checked, all credit the whole programme%s"
+              % (len(PROGRAMME_SCOPE_FILES) - len(missing),
+                 "" if not missing else "; %d absent on this branch" % len(missing)))
+
+
 def check_rung2a_lock(offline):
     """The locked Rung 2a sample must still match the database, or say it does not.
 
@@ -648,12 +749,345 @@ def check_rung2a_lock(offline):
           not d["rung2a_sample_drift"], detail)
 
 
+# Figures the results summary carried. Any one of them reappearing in the
+# contributor path means the summary is back. Chosen because each is specific
+# to a study finding rather than to general site copy: a generic number such
+# as 58 or 16 also appears in credit lines, so it is deliberately not listed.
+CONTRIBUTOR_FINDING_STRINGS = [
+    "83.9", "72.7 to 95.1", "87.0 percent", "80.7 percent",
+    "0.739", "0.623", "87.2 percent", "86.2 to 88.2",
+    "75.0 percent", "67.6 percent", "384 graded reads",
+    "PRE-REGISTERED BAR NOT MET", "pre-registered bar",
+    "resultsBlock", "RESULTS_RELEASED", "RESULTS_LOCKED_ON",
+]
+
+CONTRIBUTOR_PATH = ["api/contributor.js", "contributor.html"]
+
+
+def check_contributor_carries_no_findings(offline):
+    """The contributor path must return no study findings.
+
+    Removed 2026-08-16 on the owner's instruction. The summary was gated behind
+    the POST branch, which made it invisible to anyone reading the page source,
+    which in turn makes its accidental return invisible too. This is the check
+    that would catch it: a findings figure reappearing anywhere in the endpoint
+    or the page it feeds.
+
+    Offline by construction. It reads the two files, so it is the same check on
+    a laptop, in a hook and in a deploy branch.
+    """
+    hits = []
+    for path in CONTRIBUTOR_PATH:
+        body = read(path)
+        if not body:
+            check("contributor path carries no study findings", False,
+                  "%s is unreadable" % path)
+            return
+        for needle in CONTRIBUTOR_FINDING_STRINGS:
+            if needle in body:
+                hits.append("%s contains %r" % (path, needle))
+    # The POST response shape is the other half. A `results` key returning from
+    # the handler is the exact thing that was removed, and a grep for the
+    # figures alone would miss a summary rewritten in different numbers.
+    api = read("api/contributor.js")
+    if re.search(r"^\s*results\s*:", api, re.M):
+        hits.append("api/contributor.js emits a `results:` key from the handler")
+    html = read("contributor.html")
+    if re.search(r"\bd\.results\b", html):
+        hits.append("contributor.html reads d.results")
+    check("contributor path carries no study findings", not hits,
+          "; ".join(hits) if hits else "2 files, no findings figure and no results key")
+
+
+def check_withdrawn_contributors_absent(offline):
+    """No withdrawn contributor's name survives anywhere in the repository.
+
+    THE DEFECT THIS CATCHES HAS ALREADY HAPPENED ONCE. E-08 asked in writing on
+    2026-08-09 that her agency title and employer come off every piece of
+    recognition. api/honor.js said so in terms, "Do not repopulate these from
+    the study record", and a builder repopulated them from the roster CSV
+    anyway, because the CSV records participation and knows nothing about
+    consent. A written removal request was undone by a script.
+
+    A withdrawal is therefore not a state you reach by editing files. It is a
+    state something has to keep checking, because every builder in research/
+    reads a study record that still contains the person.
+
+    scripts/withdraw_contributor.py owns the register and the scan. This runs it
+    rather than re-implementing it, so there is one list of withdrawn names and
+    not two that can disagree.
+    """
+    # scripts/ IS NOT DEPLOYED, so the register is absent on the production
+    # branch. Its absence there is the design working, exactly as research/ is,
+    # and failing on it blocked a deploy. The dev branch runs this check on
+    # every commit, which is where a name could actually be reintroduced.
+    reg = os.path.join(ROOT, "scripts", "withdraw_contributor.py")
+    if not os.path.isfile(reg):
+        check("no withdrawn contributor name survives", SKIPPED,
+              "scripts/withdraw_contributor.py is not on this branch by design")
+        return
+    sys.path.insert(0, os.path.join(ROOT, "scripts"))
+    try:
+        import withdraw_contributor as wc
+    except Exception as e:
+        check("no withdrawn contributor name survives", False,
+              "scripts/withdraw_contributor.py did not import: %r" % (e,))
+        return
+    traces = wc.scan_traces()
+    names = sorted(n for w in wc.WITHDRAWALS for n in w["names"])
+    if traces:
+        shown = "; ".join("%s:%d %s" % t for t in traces[:6])
+        if len(traces) > 6:
+            shown += " (+%d more)" % (len(traces) - 6)
+        check("no withdrawn contributor name survives", False, shown)
+        return
+    check("no withdrawn contributor name survives", True,
+          "%d withdrawn name forms, 0 occurrences outside the register"
+          % len(names))
+
+
+# The honor roster's header comment states its composition. A comment is not a
+# constant, so the hand-written-count check cannot see it, and it went stale the
+# moment an entry was withdrawn: it still claimed 34 entries and 16 detection
+# honorees after the count moved to 36 and 15.
+HONOR_COMPOSITION_RE = re.compile(
+    r"^// (\d+) entries: (\d+) public-records \+ (\d+) detection \+ (\d+) records-review\.",
+    re.M)
+
+
+def check_honor_roster_composition(offline):
+    """api/honor.js's stated composition must match the roster it sits above."""
+    body = read("api/honor.js")
+    if not body:
+        check("honor roster composition matches its own comment", False,
+              "api/honor.js is unreadable")
+        return
+    m = HONOR_COMPOSITION_RE.search(body)
+    if not m:
+        check("honor roster composition matches its own comment", False,
+              "the composition comment is gone; restore it or drop this check")
+        return
+    claimed_total, claimed_pr, claimed_det, claimed_rr = (int(g) for g in m.groups())
+
+    start = body.index("const ROSTER = {")
+    i = body.index("{", start)
+    depth = 0
+    for j in range(i, len(body)):
+        if body[j] == "{":
+            depth += 1
+        elif body[j] == "}":
+            depth -= 1
+            if depth == 0:
+                break
+    block = body[i:j + 1]
+    keys = re.findall(r"^  '[a-z0-9]{10}': \{", block, re.M)
+    studies = re.findall(r"^    study: '([a-z-]+)'", block, re.M)
+    actual = {
+        "total": len(keys),
+        "public-records": studies.count("public-records"),
+        "detection": studies.count("detection"),
+        "records-review": studies.count("records-review"),
+    }
+    claimed = {
+        "total": claimed_total,
+        "public-records": claimed_pr,
+        "detection": claimed_det,
+        "records-review": claimed_rr,
+    }
+    bad = [k for k in claimed if claimed[k] != actual[k]]
+    detail = ("%d entries: %d public-records + %d detection + %d records-review"
+              % (actual["total"], actual["public-records"],
+                 actual["detection"], actual["records-review"]))
+    if bad:
+        detail = ("the comment says %r but the roster is %r; disagreeing on %s"
+                  % (claimed, actual, ", ".join(sorted(bad))))
+    check("honor roster composition matches its own comment", not bad, detail)
+
+
+# Text on the JRS-R certificate path that would assert a credential the
+# completion code does not prove. Each entry is a literal fragment plus the
+# reason. Found 2026-08-16: the certificate said the holder "completed the
+# six-module JRS Reviewer Training", the code is issued on submitting the
+# evaluation, and the evaluation is reachable without enrolling in the training
+# at all. The one person holding a rendered certificate had no training row.
+CERT_OVERCLAIMS = [
+    ("completed the six-module JRS Reviewer Training",
+     "the JRS-R code proves an evaluation submission, not a training completion"),
+    ("completed the JRS Reviewer Training",
+     "same overclaim, share-snippet wording"),
+    ("The certificate records that you completed the training and submitted",
+     "same overclaim, reviewer landing boundary note"),
+]
+
+# THE CERTIFICATE OFFER IS OFF THE EVALUATION, 2026-08-18, on the owner's
+# instruction: a certificate is issued for completing the training only.
+#
+# THE FIRST VERSION OF THE GUARD ABOVE MISSED THIS ENTIRELY. It listed three
+# exact overclaim fragments and scanned reviewer/evaluation.html among its
+# files, and the checkbox on that page read "Issue me a certificate for
+# completing the training and this evaluation" the whole time. The fragment was
+# not on the list, so the check passed while sitting on the offer itself. A
+# blocklist only catches what somebody already thought of.
+#
+# This pair closes it from the other side: the control ids cannot come back, and
+# the endpoint cannot issue a code. Neither depends on guessing the wording.
+CERT_OFFER_CONTROLS = [
+    ("want-cert", "the certificate opt-in checkbox on the evaluation"),
+    ("cert-fields", "the certificate name and email block it revealed"),
+    ("Issue me a certificate", "the checkbox label, in any wording"),
+    ("what the certificate records", "copy tying the certificate to the evaluation"),
+    ("it is what the certificate records", "same, reviewer landing step"),
+]
+
+CERT_OFFER_FILES = ["reviewer/evaluation.html", "access.html"]
+
+CERT_PATH_FILES = [
+    "api/reviewer-cert.js",
+    "reviewer/index.html",
+    "reviewer/completion.html",
+    "reviewer/evaluation.html",
+]
+
+
+def check_certificate_claims_supported(offline):
+    """The reviewer certificate may only assert what its code proves.
+
+    A certificate is a record making a claim about a person. This programme
+    exists to measure whether a record's claim is supported by the record, so a
+    certificate of its own that overstates is not an irony, it is a defect of
+    the exact class under study.
+
+    api/reviewer-cert.js is credential-free by design and cannot look up a
+    training completion, so it cannot condition on one. The only safe wording is
+    the one bounded by what the JRS-R code proves: the evaluation submission.
+    """
+    hits = []
+    for rel in CERT_PATH_FILES:
+        body = read(rel)
+        if not body:
+            check("reviewer certificate claims only what the code proves", False,
+                  "%s is unreadable" % rel)
+            return
+        for frag, why in CERT_OVERCLAIMS:
+            # The correction note in api/reviewer-cert.js quotes the old wording
+            # to say it was removed. Quoting it inside a comment that records the
+            # removal is the opposite of asserting it.
+            for idx in _all_indexes(body, frag):
+                line_start = body.rfind("\n", 0, idx) + 1
+                line = body[line_start:body.find("\n", idx)]
+                if line.lstrip().startswith("//") or line.lstrip().startswith("#"):
+                    continue
+                hits.append("%s: %r (%s)" % (rel, frag[:46], why))
+    check("reviewer certificate claims only what the code proves", not hits,
+          "; ".join(hits) if hits
+          else "%d files, no unsupported credential claim" % len(CERT_PATH_FILES))
+
+
+def check_evaluation_offers_no_certificate(offline):
+    """The evaluation must not offer a certificate, and the endpoint must refuse.
+
+    The evaluation sits at the end of a public funnel: /api/support?c=rtkw and
+    ?c=defend go to access.html, which links straight to it. A reader following
+    an initiative link from LinkedIn could obtain a certificate without opening
+    a single training module, and one did.
+
+    Two independent conditions, because copy can be reworded and a control can
+    be re-added under a different label:
+      1. no certificate control or offer copy on the funnel pages, and
+      2. api/reviewer-eval.js pins wantsCert false rather than reading the body.
+    """
+    hits = []
+    for rel in CERT_OFFER_FILES:
+        body = read(rel)
+        if not body:
+            check("the evaluation offers no certificate", False,
+                  "%s is unreadable" % rel)
+            return
+        for frag, why in CERT_OFFER_CONTROLS:
+            for idx in _all_indexes(body, frag):
+                line_start = body.rfind("\n", 0, idx) + 1
+                line = body[line_start:body.find("\n", idx)]
+                stripped = line.lstrip()
+                if stripped.startswith("//") or stripped.startswith("#"):
+                    continue
+                hits.append("%s: %r (%s)" % (rel, frag, why))
+
+    api = read("api/reviewer-eval.js")
+    if not api:
+        check("the evaluation offers no certificate", False,
+              "api/reviewer-eval.js is unreadable")
+        return
+    if not re.search(r"^\s*const wantsCert = false;\s*$", api, re.M):
+        hits.append("api/reviewer-eval.js no longer pins wantsCert to false, so "
+                    "the endpoint can issue a completion code again")
+
+    check("the evaluation offers no certificate", not hits,
+          "; ".join(hits) if hits
+          else "%d funnel pages clean, endpoint pins wantsCert false"
+               % len(CERT_OFFER_FILES))
+
+
+def _all_indexes(hay, needle):
+    out, i = [], hay.find(needle)
+    while i != -1:
+        out.append(i)
+        i = hay.find(needle, i + 1)
+    return out
+
+
+def check_printed_certificate_matches_endpoint(offline):
+    """The handover PDF and the browser certificate must say the same thing.
+
+    research/build_reviewer_eval_certificate.py parses BODY out of
+    api/reviewer-cert.js instead of holding its own copy, so a person handed a
+    printed certificate and a person who self-serves one cannot be told
+    different things about what they did. This confirms the parse still
+    resolves, because a silent parse failure is how the two would drift apart
+    without anyone noticing.
+    """
+    if not _has_research():
+        check("printed certificate wording matches the endpoint", SKIPPED,
+              "research/ is not on this branch by design, so the builder is absent")
+        return
+    try:
+        sys.path.insert(0, os.path.join(ROOT, "research"))
+        import build_reviewer_eval_certificate as brec
+    except Exception as e:
+        check("printed certificate wording matches the endpoint", False,
+              "research/build_reviewer_eval_certificate.py did not import: %r" % (e,))
+        return
+    src = read("api/reviewer-cert.js")
+    if not src:
+        check("printed certificate wording matches the endpoint", False,
+              "api/reviewer-cert.js is unreadable")
+        return
+    try:
+        body = brec.endpoint_body()
+    except SystemExit:
+        check("printed certificate wording matches the endpoint", False,
+              "the BODY parse in build_reviewer_eval_certificate.py no longer "
+              "resolves against api/reviewer-cert.js")
+        return
+    ok = bool(body) and body in src.replace("'\n           + '", "")
+    inline = ("submitted the JRS reviewer evaluation" in body
+              and "six-module" not in body)
+    check("printed certificate wording matches the endpoint", bool(body) and inline,
+          "%d chars, parsed from the endpoint, no training claim" % len(body)
+          if inline else "parsed body carries an unsupported claim: %r" % body[:90])
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
                check_no_masking_fallbacks, check_panel_geo,
                check_html_figures_bound, check_panel_binder_identical,
-               check_rung2a_lock,
+               check_all_experts_credited, check_rung2a_lock,
+               check_contributor_carries_no_findings,
+               check_withdrawn_contributors_absent,
+               check_honor_roster_composition,
+               check_certificate_claims_supported,
+               check_printed_certificate_matches_endpoint,
+               check_evaluation_offers_no_certificate,
                check_generated_docs_current, check_cross_endpoint):
         try:
             fn(offline)
