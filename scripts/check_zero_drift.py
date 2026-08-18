@@ -261,8 +261,26 @@ def _has_research():
     cut from origin/main with three "file missing" failures and a
     FileNotFoundError, none of which was a real defect. A guard that fires on
     correct state is a guard that gets bypassed.
+
+    A BARE os.path.isdir IS NOT ENOUGH, and it blocked a deploy on 2026-08-18.
+    research/__pycache__/ is gitignored, so checking out the deploy branch
+    removes every tracked file under research/ and leaves the directory standing
+    with nothing in it but bytecode. isdir then returned True on a branch that
+    has no research tree, the generated-doc checks looked for three .md files
+    that are not on main by design, and all three failed as "file missing".
+
+    Nothing was wrong with the repository. The predicate was wrong. It now asks
+    whether any real research file is present, ignoring caches, so a directory
+    containing only compiled artifacts reads as absent, which is what it is.
     """
-    return os.path.isdir(os.path.join(ROOT, "research"))
+    d = os.path.join(ROOT, "research")
+    if not os.path.isdir(d):
+        return False
+    for name in os.listdir(d):
+        if name in ("__pycache__", ".DS_Store") or name.endswith(".pyc"):
+            continue
+        return True
+    return False
 
 
 def check_panel_geo(offline):
