@@ -39,7 +39,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # v5 is the current manuscript. v4 is retained on disk unmodified, per the
 # revision instruction, and stays in check_zero_drift's PROGRAMME_SCOPE_FILES so
 # a figure that disagrees between the two is still caught as drift.
-MS = os.path.join(ROOT, "research", "Detection_Article_v9_2026-08-18.md")
+MS = os.path.join(ROOT, "research", "Detection_Article_Final_2026-08-18.md")
 AGG = os.path.join(ROOT, "research", "closed_aggregates_2026-08-15.json")
 SB = "https://pjzxkeviouofdseagvpf.supabase.co/rest/v1"
 ANON = "sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e"
@@ -424,11 +424,11 @@ else:
     # from REVIEWER_ROSTER_COMPLETE.md section 004 and
     # Detection_Article_Figure_Update_2026-08-15.md.
     T("reliability analysed sample named beside the credit",
-      "Twenty-two of them, eight expert and fourteen trained", True, "")
+      "Twenty-two of them, eight experts and fourteen regular reviewers", True, "")
     T("the three excluded raters are disclosed in the Acknowledgments",
-      "the other three trained raters worked under the unstructured baseline prompt",
+      "the other three regular reviewers worked under the unstructured baseline prompt",
       True, "")
-    T("Section 6.5 trained-rater count", "| Trained reviewers | 10 | 68 | 14 |",
+    T("Section 6.5 regular-reviewer count", "| Regular reviewers | 10 | 68 | 14 |",
       True, "")
     T("Section 6.5 expert-rater count", "| Experts | 10 | 36 | 8 |", True, "")
     T("detection countries", "11 countries", ps.get("countries_detection") == 11,
@@ -572,6 +572,12 @@ SUPERSEDED = [
     ("108 structured labels", "superseded label count"),
     ("of 75 ", "superseded Gap denominator"),
     ("0.624", "superseded trained AC1"),
+    # RETIRED 2026-08-18 BY THE FINAL REPAIR. These are the 63-label
+    # intervals. They were printed beside the 68-label point estimate
+    # until the recomputation against live bench_labels replaced them.
+    ("0.253 to 0.994", "63-label analytic interval"),
+    ("0.301 to 0.886", "63-label bootstrap interval"),
+    ("trained reviewer", "rater class unsupported by any source"),
     ("52.9 percent", "unreproducible not-passing rate"),
     ("87.8", "single-run cross-vendor figure, stale nightly"),
     ("84.5 percent", "mixed-denominator cross-vendor mean"),
