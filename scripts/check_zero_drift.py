@@ -665,20 +665,34 @@ def check_all_experts_credited(offline):
     every completer in both arms and is not scoped to whichever study a given
     document happens to report. This check makes that mechanical.
     """
-    bad = []
+    bad, missing = [], []
     for rel in PROGRAMME_SCOPE_FILES:
         src = read(rel)
         if not src:
-            bad.append("%s: missing" % rel)
+            # ABSENT BY DESIGN ON THE DEPLOY BRANCH, NOT DRIFT. Every file in
+            # this list lives only on the dev branch; none is deployed. Counting
+            # their absence as a failure blocked a deploy on 2026-08-18 with six
+            # "missing" lines and nothing actually wrong. A file that is present
+            # and fails to credit the programme is still a failure.
+            missing.append(rel)
             continue
         cites_detection = any(m in src for m in DETECTION_ONLY)
         credits_all = any(m in src for m in PROGRAMME_MARKERS)
         if cites_detection and not credits_all:
             bad.append("%s: cites the 16-expert detection figure and never credits "
                        "the full programme" % rel)
-    check("programme-scope files credit every independent expert", not bad,
-          "%d files checked, all credit the whole programme" % len(PROGRAMME_SCOPE_FILES)
-          if not bad else "; ".join(bad))
+    if bad:
+        check("programme-scope files credit every independent expert", False,
+              "; ".join(bad))
+    elif len(missing) == len(PROGRAMME_SCOPE_FILES):
+        check("programme-scope files credit every independent expert", SKIPPED,
+              "none of the %d scope files is on this branch by design"
+              % len(PROGRAMME_SCOPE_FILES))
+    else:
+        check("programme-scope files credit every independent expert", True,
+              "%d files checked, all credit the whole programme%s"
+              % (len(PROGRAMME_SCOPE_FILES) - len(missing),
+                 "" if not missing else "; %d absent on this branch" % len(missing)))
 
 
 def check_rung2a_lock(offline):
@@ -803,6 +817,15 @@ def check_withdrawn_contributors_absent(offline):
     rather than re-implementing it, so there is one list of withdrawn names and
     not two that can disagree.
     """
+    # scripts/ IS NOT DEPLOYED, so the register is absent on the production
+    # branch. Its absence there is the design working, exactly as research/ is,
+    # and failing on it blocked a deploy. The dev branch runs this check on
+    # every commit, which is where a name could actually be reintroduced.
+    reg = os.path.join(ROOT, "scripts", "withdraw_contributor.py")
+    if not os.path.isfile(reg):
+        check("no withdrawn contributor name survives", SKIPPED,
+              "scripts/withdraw_contributor.py is not on this branch by design")
+        return
     sys.path.insert(0, os.path.join(ROOT, "scripts"))
     try:
         import withdraw_contributor as wc
@@ -1022,6 +1045,10 @@ def check_printed_certificate_matches_endpoint(offline):
     resolves, because a silent parse failure is how the two would drift apart
     without anyone noticing.
     """
+    if not _has_research():
+        check("printed certificate wording matches the endpoint", SKIPPED,
+              "research/ is not on this branch by design, so the builder is absent")
+        return
     try:
         sys.path.insert(0, os.path.join(ROOT, "research"))
         import build_reviewer_eval_certificate as brec
