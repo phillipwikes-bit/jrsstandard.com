@@ -878,6 +878,7 @@ The review instrument stores working keys; they map to the standard as follows (
 - 2026-08-18: **Certificate offer removed from the reviewer evaluation** on the owner's instruction: certificates are for training completions only. The evaluation sits at the end of a public funnel (`/api/support?c=rtkw|defend` to `access.html` to `/reviewer/evaluation.html`), so anyone following an initiative link from LinkedIn could get one without opening a module. Checkbox and its contact fields removed; `api/reviewer-eval.js` pins `wantsCert` false so a cached page or replayed POST cannot issue a code; copy fixed on five more lines; `access.html` no longer promises one. Already-issued codes stay valid. Deployed and verified live. New guard, 4/4 injections caught including a relabelled checkbox. **Three of my own guards then blocked the deploy twice on correct state; all three fixed.**
 - 2026-08-18: Standing MASTER EXECUTION PROMPT re-pasted with no task attached. **No audit re-run** per CLAUDE.md VIII: the previous pass is recorded above and nothing has changed since. State confirmed unchanged: working tree clean, dev head `71be8cd`, main head `d6e28c3`, every live surface in sync with main except the two pre-existing undeployed files already flagged (`api/register.js`, `reference/index.html`). Guards at last run: 22 checks 0 failed, 45 manuscript assertions 0 failed, withdrawal register clean. This entry exists so the turn is logged.
 - 2026-08-18: **Owner was right: no service key is needed.** Built `api/variance-6b1d90fa2c47e8b3.js`, an opaque-slug endpoint that computes the Appendix C crossed-variance model server-side using the service key already in Vercel's environment. **Appendix C is now filled in with real figures**: reviewer SD 1.769 (ICC 0.488), record SD 0.011 at the boundary (profile 0.001 to 0.556). Reviewer variation dominates; item difficulty is small. Section 8.3's limitation is smaller than it claimed and Section 6.3 is strengthened. The endpoint independently reproduces the published 83.9 percent and the six perfect scorers from the raw reads. **Also fixed a defect in my own script: it queried a table `ai_pilot_key` that does not exist (PGRST205) and would have failed even with a valid key.** Manuscript verifier 45 assertions 0 failed.
+- 2026-08-18: **Cloudflare severed from the repo** (`functions/record.js` was being served publicly at `/functions/record.js`, 200, 1814 bytes; `functions/results.js`; `_headers`, verified inert on Vercel). Guard added, 5/5 injections caught. Deployed and verified: all three now 404. **The Workers check still failed on the very next commit, which confirms the integration is dashboard-side and no repo change can stop it.** **SEPARATE HIGH-SEVERITY FIND: `.github/workflows/maintenance.yml` was armed to push two SSOT violations straight to `main` on 1 September 2026** (wrong contact address; relinking a PDF deleted in June 2026). Schedule removed, values corrected, main-push replaced with a PR. **Deployment lock set**: 17 files hashed, 15 live probes, drift-tested. **Ubayet package assembled.**
 
 ## CONSOLIDATED ERROR LOG (assistant errors this session — recorded 2026-08-01 at owner's instruction so they are not repeated)
 1. **Reliability miscalculation (most damaging).** Recomputed Rung 2a reliability with baseline-condition labels (mode=normal) wrongly mixed into the JRS reliability set, producing a false "collapse" to AC1 0.18. CORRECT value (JRS reads only, verified live 2026-08-01): experts 0.74, trained 0.62-0.63, both clear the 0.61 floor. PREVENTION RULE: reliability of the JRS read is computed ONLY on mode=jrs labels; never mix mode=normal (baseline) labels; always print n, modes, and rater codes before reporting a coefficient.
@@ -2097,3 +2098,54 @@ It queried a table called `ai_pilot_key`. **No such relation exists.** PostgREST
 The endpoint scores the raw reads from scratch and reproduces **83.9 percent participant-level mean, range 37.5 to 100, six perfect scorers** exactly. That is the published headline recomputed by a second implementation from the underlying data.
 
 `FIGURE_COUNTS` re-locked: `83.9` 7 to 9 and `16 reviewers` 1 to 2, each traced to the specific new Appendix C sentence before the number was changed.
+
+## 2026-08-18: Cloudflare severed, a live cron defused, deployment lock set
+
+### Cloudflare, repository side
+
+Owner asked whether anything in the repo could be cleaned up to sever the legacy pipeline. Full inventory found three artifacts, all deleted:
+
+| Deleted | Why it mattered |
+|---|---|
+| `functions/record.js` | Cloudflare Pages Function binding a KV namespace `JRS_RESULTS` this deployment does not have. **It was being served publicly as a static file: `GET /functions/record.js` returned 200 and 1814 bytes** |
+| `functions/results.js` | Same dead pipeline, same binding |
+| `_headers` | Cloudflare and Netlify header format. **Verified inert on Vercel**: the live response carries `public, max-age=0, must-revalidate` from `vercel.json`, not the `no-cache, no-store` the file declared. It read as an active caching policy while doing nothing |
+
+No `wrangler` config has ever existed here. `.gitignore` keeps its wrangler ignore rules, now annotated. `scripts/supabase-apply.py` keeps its Cloudflare mention, which is about Supabase's own CDN and unrelated.
+
+`check_no_cloudflare_artifacts` added over eight paths plus any non-empty `functions/`. Adversarially tested against five regressions **including a `functions/` file under a name not on the list**; all five caught.
+
+**THE FAILING CHECK IS NOT FIXED BY THIS AND CANNOT BE.** Deployed the severance and the Workers build failed again on the very next commit, `0ee8f7a5`, with the repository containing zero Cloudflare artifacts. That is the proof: the build is driven by a Cloudflare-to-GitHub integration in the Cloudflare dashboard. Only disconnecting it there stops it. Recorded in CLAUDE.md Section V so nobody repeats the search.
+
+### The more serious find, which was not Cloudflare
+
+`.github/workflows/maintenance.yml`, cron `0 10 1 * *`, **next firing 1 September 2026**, ending in `git push origin <branch>:main`. Unattended, unreviewed, straight to production.
+
+**Two of the SSOT values it enforced were the exact opposite of CLAUDE.md Section III.1:**
+
+| It enforced | Canonical |
+|---|---|
+| `Contact: governance@jrsstandard.com` | `info@jrsstandard.com` |
+| `PDF: Wikes_Record-Level-Controls_AI-Assisted-Documentation.pdf`, treating `JRS-Standard.pdf` in an href as the defect | `JRS-Standard.pdf`. The Wikes file was **removed in June 2026** with a standing instruction not to reintroduce or link to it. Confirmed still absent |
+
+Each monthly run would have rewritten every page on the site to a wrong contact address and relinked a deleted PDF, in production. Roughly two weeks from firing.
+
+Schedule removed so it runs only on `workflow_dispatch`. Both values corrected. The push to main is replaced with a pull request, and the run now aborts if either verifier fails. The stale dev branch name it carried is corrected in the workflow and in CLAUDE.md Section V.
+
+### Deployment lock
+
+`scripts/deployment_lock.py`, new. `research/DEPLOYMENT_LOCK.json` records the production commit, SHA-256 of **17 deployed files**, and **15 live probes** run against production at lock time.
+
+A git tag records what was committed. It does not record that `/api/reviewer-eval` actually refuses to issue a certificate, or that a withdrawn contributor's link actually 404s. Those are properties of the running system and they are exactly what was verified by hand this month. The lock captures them so it does not have to be done by hand again.
+
+Probes cover: roster at 41, both withdrawn links dead, a control honor link still alive so the previous probe cannot be a false pass, no study findings on the contributor POST, no certificate and no code from the evaluation even when the request asks for one, an already-issued certificate still rendering, no training claim on it, no certificate control on the evaluation page, no certificate promise on access.html, the legacy Cloudflare function no longer served, 58/36/16 holding, the variance endpoint computing, and the variance endpoint withholding the answer key.
+
+**It refuses to set over a failing probe**, because a lock recorded over a failure is a record that the failure is normal. Verified: 15 of 15 passing, lock holds. Drift-tested by modifying a locked file; reported CHANGED and LOCK BROKEN.
+
+`research/` is deliberately outside the lock. It is not deployed, and including it would make the lock a statement about something other than production.
+
+### Ubayet package
+
+`research/Ubayet_CoAuthor_Package_2026-08-18.md`. Carries the four claim-level changes, the Appendix C result, what is deliberately withheld and why, his attribution as it currently stands, and the verification state.
+
+**One open question is put to him and only him:** whether the analysis plan specified the analytic or the bootstrap interval as primary for the reliability floor. The paper says analytic and therefore reports the criterion as failed. If the plan said bootstrap, the expert panel clears at 0.427 and Section 6.5 is rewritten.
