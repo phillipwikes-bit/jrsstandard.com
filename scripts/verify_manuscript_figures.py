@@ -467,6 +467,17 @@ CLAIM_PAIRS = [
     # every other check, because the arithmetic check above verifies the
     # DATABASE and the figure-count lock only counts headline figures. The very
     # error this revision set was written to fix could have come straight back.
+    # Arm A and Arm B are equally credentialed and the paper must say so in the
+    # BODY, not only in the Acknowledgments. Before 2026-08-18 it said so only
+    # there, and Sections 4.2 and 5 left a reader to infer an expert-versus-
+    # novice comparison, which is the confound the randomisation exists to
+    # avoid. The programme corrected this same conflation once before, on
+    # 2026-08-05.
+    ("comparison arms stated as equally expert",
+     ["improve on unaided professional judgment"],
+     ["credentialed professionals drawn from the same pool and randomised within it",
+      "credentialed professionals of the same standing as the panel reported here",
+      "a statement about exposure and not about expertise"]),
     ("113 determinations and 565 condition-level labels stay distinct",
      ["Across the 113 labels",
       "recorded 216 times against 207 passes and 142",

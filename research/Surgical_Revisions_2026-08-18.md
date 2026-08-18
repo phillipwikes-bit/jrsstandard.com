@@ -7,7 +7,7 @@ Constraint set enforced: no restructuring, no new claims, **no numerical result 
 | Result | Count |
 |---|---|
 | Edits applied | 0 |
-| Already applied on a prior run | 24 |
+| Already applied on a prior run | 26 |
 | Rules that failed to match | 0 |
 
 ## The one arithmetic error, verified against the database before correcting
@@ -44,6 +44,8 @@ So **113 is the count of overall determinations** and **565 is the count of cond
 - Item 12, Data availability: coded not de-identified
 - Item 13, Acknowledgments: compressed
 - Item 10, Conclusion: no 'can be real'
+- Item 18, Section 4.2: comparison arms are matched experts
+- Item 18, Section 5: JRS-naive is not non-expert
 
 ## Not done, and why
 

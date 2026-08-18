@@ -880,6 +880,7 @@ The review instrument stores working keys; they map to the standard as follows (
 - 2026-08-18: **Owner was right: no service key is needed.** Built `api/variance-6b1d90fa2c47e8b3.js`, an opaque-slug endpoint that computes the Appendix C crossed-variance model server-side using the service key already in Vercel's environment. **Appendix C is now filled in with real figures**: reviewer SD 1.769 (ICC 0.488), record SD 0.011 at the boundary (profile 0.001 to 0.556). Reviewer variation dominates; item difficulty is small. Section 8.3's limitation is smaller than it claimed and Section 6.3 is strengthened. The endpoint independently reproduces the published 83.9 percent and the six perfect scorers from the raw reads. **Also fixed a defect in my own script: it queried a table `ai_pilot_key` that does not exist (PGRST205) and would have failed even with a valid key.** Manuscript verifier 45 assertions 0 failed.
 - 2026-08-18: **Cloudflare severed from the repo** (`functions/record.js` was being served publicly at `/functions/record.js`, 200, 1814 bytes; `functions/results.js`; `_headers`, verified inert on Vercel). Guard added, 5/5 injections caught. Deployed and verified: all three now 404. **The Workers check still failed on the very next commit, which confirms the integration is dashboard-side and no repo change can stop it.** **SEPARATE HIGH-SEVERITY FIND: `.github/workflows/maintenance.yml` was armed to push two SSOT violations straight to `main` on 1 September 2026** (wrong contact address; relinking a PDF deleted in June 2026). Schedule removed, values corrected, main-push replaced with a PR. **Deployment lock set**: 17 files hashed, 15 live probes, drift-tested. **Ubayet package assembled.**
 - 2026-08-18: **Surgical revision set applied to v4** from the second editorial review (disposition: not quite ready, precision surgery not expansion; acceptance 45-55 percent now, 50-60 after). All 17 instructed items executed as 24 exact-match rules via `scripts/apply_surgical_revisions_2026-08-18.py`, idempotent, with a before/after report. **The reviewer found one real arithmetic error and he was right**: Appendix B called 113 determinations and 565 condition-level labels by the same word. Verified against `bench_labels` before correcting (113 rows x 5 = 565 = 216 gap + 207 pass + 142 review). **No figure changed.** Claim-consistency audit made permanent as 13 enforced claim pairs; **an adversarial test then showed the 113/565 conflation could come straight back undetected, so a 14th pair closes it.** Two defects of my own caught by my own guards: a banned word introduced in a replacement, and a credit marker widened in one guard but not the other. 23 checks 0 failed, 47 assertions 0 failed, lock holds.
+- 2026-08-18: Owner asked whether **both arms are labelled as experts** in the paper. **Audit: Arm A yes in three places, Arm B only in the Acknowledgments and nowhere in the body.** Sections 4.2 and 5 left a reader to infer an expert-versus-novice comparison, which is the confound the randomisation exists to avoid, and is the same conflation the programme corrected on 2026-08-05. Verified from `Expert_Roster_All_Studies_2026-08-06.csv` (credentialed Arm B titles) and `ArmB_Design.md:3,32` ("do not put experts in one and novices in the other") before writing it in. Both sections now state expertise parity and that JRS-naive is about exposure, not expertise; "unaided professional judgment" standardised to "expert". 15th claim pair guards it. **Two ordering defects in my own revision script, both caught by its own checks: a false non-unique report, then a duplicated sentence on re-run.**
 
 ## CONSOLIDATED ERROR LOG (assistant errors this session — recorded 2026-08-01 at owner's instruction so they are not repeated)
 1. **Reliability miscalculation (most damaging).** Recomputed Rung 2a reliability with baseline-condition labels (mode=normal) wrongly mixed into the JRS reliability set, producing a false "collapse" to AC1 0.18. CORRECT value (JRS reads only, verified live 2026-08-01): experts 0.74, trained 0.62-0.63, both clear the 0.61 floor. PREVENTION RULE: reliability of the JRS read is computed ONLY on mode=jrs labels; never mix mode=normal (baseline) labels; always print n, modes, and rater codes before reporting a coefficient.
@@ -2213,3 +2214,39 @@ Adversarially tested with five injections. **Four were caught. Restoring the exa
 | `deployment_lock.py --verify` | **LOCK HOLDS**, 17 files, 15 probes |
 | House style | 0 em-dashes, 0 banned words |
 | Manuscript | 11,536 words |
+
+## 2026-08-18: Arm A and Arm B expertise labelling
+
+**Question:** were both arms labelled as experts in the paper?
+
+**Answer: no.** Arm A was, three times. Arm B was named as experts **only in the Acknowledgments**. The two places in the body where the comparison study is introduced, Sections 4.2 and 5, said nothing about who is in it, and Section 5 said the comparison tests improvement over "unaided **professional** judgment" while Section 10 and the Abstract said "unaided **expert** judgment".
+
+A reader of Section 5 alone would infer an expert-versus-novice comparison. **That is the confound the randomisation exists to avoid**, and it is the same conflation the programme corrected on 2026-08-05, recorded at tracker line 870: *"ALL ARM B PARTICIPANTS ARE EXPERT PROFESSIONALS ... JRS-naive = no prior exposure to the JRS method, NOT lack of expertise."*
+
+### Verified before writing it in
+
+| Source | Evidence |
+|---|---|
+| `research/Expert_Roster_All_Studies_2026-08-06.csv` | study 012 rows carry credentialed titles: Chief Strategy and Transformation Officer; AI Governance and Runtime Auditor; AI Governance, Digital Risk and GRC leader; Cambridge-affiliated consultant |
+| `research/ArmB_Design.md:3` | "any accuracy difference is attributable to the standard, not to expertise" |
+| `research/ArmB_Design.md:32` | "do not put experts in one and novices in the other ... B1 and B2 are matched, so randomization does the work" |
+
+### Applied
+
+**Section 4.2** now adds that the comparison participants are credentialed professionals drawn from the same pool and randomised within it, so the arms differ in method and not in expertise.
+
+**Section 5** now states they are of the same standing as the panel reported here, and that **JRS-naive describes exposure, not expertise**.
+
+**"unaided professional judgment" standardised to "unaided expert judgment"**, so Sections 5, 10 and the Abstract agree. Zero occurrences of the old form remain.
+
+This adds no new claim: it states in the body a fact the paper's own Acknowledgments already carried.
+
+**15th claim pair** added to `verify_manuscript_figures.py`, guarding all three statements and the standardised wording. Injection tested by deleting the Section 5 parity sentences; caught.
+
+### Two ordering defects in my own revision script
+
+**A false non-unique report.** The uniqueness check tested whether the old text was still present *after* the replace. Where a replacement **appends** to the original, the new text contains the old text as a prefix, so a correct rule was reported as matching more than once. Now counted before replacing.
+
+**Then a duplicated sentence.** With the count fixed, the old-text test still matched on a second run for the same reason, and the script **appended the Section 4.2 sentence twice**. Caught by the idempotency check, the duplicate removed from the manuscript, and the test order corrected so "already applied" is evaluated first.
+
+Both were defects in the tool, not in the manuscript, and both were caught by checks the tool already carried.

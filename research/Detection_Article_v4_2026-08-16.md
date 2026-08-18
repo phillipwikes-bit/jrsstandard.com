@@ -153,7 +153,7 @@ The study is one stage of a validation chain, and stating the whole chain is the
 
 ### 4.2 Design
 
-A detection study. An international panel of independent experts judged a balanced corpus of constructed records against a pre-specified reference classification independently reproduced by blinded raters, blind to that classification and to one another's judgments. There is no control arm by design: the panel is measured against a reference classification, not against another group. A separate randomised comparison study, which does have arms, tests a different question, closed on 15 August 2026, and is reported separately.
+A detection study. An international panel of independent experts judged a balanced corpus of constructed records against a pre-specified reference classification independently reproduced by blinded raters, blind to that classification and to one another's judgments. There is no control arm by design: the panel is measured against a reference classification, not against another group. A separate randomised comparison study, which does have arms, tests a different question, closed on 15 August 2026, and is reported separately. Its participants are credentialed professionals drawn from the same pool and randomised within it, so the two arms differ in the method applied and not in the expertise of the people applying it.
 
 ### 4.3 Materials: the constructed corpus
 
@@ -225,7 +225,7 @@ Reviewer responses are stored on an append-only basis and used only in aggregate
 
 ## 5. Scope of the claim
 
-This study asks whether DRR, as operationalised, can be detected. Whether the five conditions improve on unaided professional judgment is a different question, tested in a separate study with its own participants, recruitment, participant codes, and registration. That study shares this corpus, which is why it is named here rather than left for a reader to discover. It closed on 15 August 2026 and will be reported separately and in full, whatever it shows.
+This study asks whether DRR, as operationalised, can be detected. Whether the five conditions improve on unaided expert judgment is a different question, tested in a separate study with its own participants, recruitment, participant codes, and registration. Those participants are credentialed professionals of the same standing as the panel reported here, randomised between applying the five conditions and applying a general prompt. They are described as JRS-naive because they had no prior exposure to the method, which is a statement about exposure and not about expertise. That study shares this corpus, which is why it is named here rather than left for a reader to discover. It closed on 15 August 2026 and will be reported separately and in full, whatever it shows.
 
 Nothing in this paper bears on that question. The boundary is stated once, here, and not repeated.
 

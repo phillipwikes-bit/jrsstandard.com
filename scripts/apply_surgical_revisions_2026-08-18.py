@@ -191,6 +191,40 @@ Reviewers are recognised as named contributors with their consent; none is a co-
  "What the paper does not establish is longer than what it does, and Section 10 lists it. A property can be real, visible, and worth building controls around long before anyone has shown that a particular instrument beats expert intuition at spotting it, that it survives contact with ambiguous cases, or that using it improves anything. Establishing that the property can be seen at all is what makes the rest of those questions askable, and it is the only thing claimed here.",
  "What the paper does not establish is longer than what it does, and Section 10 lists it. An operationalised property can be detectable before its criterion validity, generalisability, or intervention value has been established. Establishing detectability is what makes those subsequent questions empirically testable, and it is the only thing claimed here.",
  "Section 2.4 states the study has not established the construct exists independently of the definition; 'can be real' reaches past that"),
+
+# --- 18. ARM B EXPERTISE PARITY, added 2026-08-18 on the owner's question -----
+# "Arm A and Arm B were all experts. Are they labelled as such in this paper?"
+#
+# AUDIT RESULT: Arm A yes, in three places (Section 4.5, Section 6 opening, the
+# Acknowledgments). Arm B ONLY in the Acknowledgments. Sections 4.2 and 5, the
+# two places in the body where the comparison study is introduced, said nothing
+# about who is in it.
+#
+# That is the exact conflation the programme corrected on 2026-08-05 and the
+# tracker records at line 870: "ALL ARM B PARTICIPANTS ARE EXPERT PROFESSIONALS
+# ... JRS-naive = no prior exposure to the JRS method, NOT lack of expertise."
+#
+# Verified before writing it in, not assumed:
+#   research/Expert_Roster_All_Studies_2026-08-06.csv rows for study 012 carry
+#   credentialed titles (Chief Strategy and Transformation Officer; AI Governance
+#   and Runtime Auditor; AI Governance, Digital Risk and GRC leader).
+#   research/ArmB_Design.md:3  "any accuracy difference is attributable to the
+#   standard, not to expertise".
+#   research/ArmB_Design.md:32 "do not put experts in one and novices in the
+#   other ... B1 and B2 are matched, so randomization does the work."
+#
+# A reader of Section 5 alone would otherwise infer the comparison is expert
+# against novice, which is the confound the design exists to avoid. This states
+# a fact already in the paper's own Acknowledgments; it adds no new claim.
+(18, "Section 4.2: comparison arms are matched experts",
+ "A separate randomised comparison study, which does have arms, tests a different question, closed on 15 August 2026, and is reported separately.",
+ "A separate randomised comparison study, which does have arms, tests a different question, closed on 15 August 2026, and is reported separately. Its participants are credentialed professionals drawn from the same pool and randomised within it, so the two arms differ in the method applied and not in the expertise of the people applying it.",
+ "the body never said who is in the comparison arms"),
+
+(18, "Section 5: JRS-naive is not non-expert",
+ "This study asks whether DRR, as operationalised, can be detected. Whether the five conditions improve on unaided professional judgment is a different question, tested in a separate study with its own participants, recruitment, participant codes, and registration.",
+ "This study asks whether DRR, as operationalised, can be detected. Whether the five conditions improve on unaided expert judgment is a different question, tested in a separate study with its own participants, recruitment, participant codes, and registration. Those participants are credentialed professionals of the same standing as the panel reported here, randomised between applying the five conditions and applying a general prompt. They are described as JRS-naive because they had no prior exposure to the method, which is a statement about exposure and not about expertise.",
+ "prevents the reader inferring an expert-versus-novice comparison, which is the confound the randomisation exists to avoid"),
 ]
 
 
@@ -202,16 +236,28 @@ def run(apply_changes):
     body = read()
     applied, already, failed = [], [], []
     for num, title, old, new, why in RULES:
-        if old in body:
-            body = body.replace(old, new, 1)
-            if old in body:
-                failed.append((num, title, "matched more than once; rule is not unique"))
-            else:
-                applied.append((num, title, old, new, why))
-        elif new in body:
+        # COUNT BEFORE REPLACING. The first version checked whether `old` was
+        # still present AFTER the replace and called that a duplicate match. That
+        # is wrong whenever a replacement APPENDS to the original, because the
+        # new text then contains the old text as a prefix. Item 18's Section 4.2
+        # rule does exactly that and was reported as non-unique when it was fine.
+        # ORDER MATTERS AND GETTING IT WRONG DUPLICATED TEXT IN THE MANUSCRIPT.
+        # "already applied" must be tested FIRST. Where a replacement appends to
+        # the original, the new text contains the old text, so an old-first test
+        # matches on every run and appends the sentence again. That happened once
+        # to item 18's Section 4.2 rule and was caught by the idempotency check.
+        if new in body:
             already.append((num, title))
+            continue
+        n = body.count(old)
+        if n == 1:
+            body = body.replace(old, new, 1)
+            applied.append((num, title, old, new, why))
+        elif n > 1:
+            failed.append((num, title, "matched %d times; rule is not unique" % n))
         else:
             failed.append((num, title, "no match for the old text"))
+
     if apply_changes and not failed:
         io.open(MS, "w", encoding="utf-8").write(body)
     return applied, already, failed, body
