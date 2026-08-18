@@ -195,7 +195,7 @@ For each reviewer, the latest submission per record is used; resubmissions super
 
 One stored row carries an administrative marker rather than a record judgment and is excluded from scoring. It is reported rather than dropped silently: 385 rows were retained after de-duplication, of which 384 are scorable graded reads.
 
-**Item variance is not modelled in the primary analysis, and that is a limitation rather than a choice we defend.** The participant-level analysis correctly treats reviewers as a random factor and correctly avoids pseudo-replication. It does not account for the records themselves being a second source of variance: some records are plausibly much easier than others, and a panel mean computed over a corpus containing a few very easy items will sit higher than the same panel's performance on a harder draw from the same construct. The appropriate analysis crosses both random factors, for example a mixed-effects logistic model of the form `correct ~ 1 + (1 | reviewer) + (1 | record)` (Bates et al., 2015; Barr et al., 2013), from which the reviewer and item variance components can be read directly. That analysis is specified in the amended analysis plan and is reported in Appendix C; it was added after the pre-registration and is therefore labelled exploratory throughout.
+**Item variance is not modelled in the primary analysis, and that is a limitation rather than a choice we defend.** The participant-level analysis correctly treats reviewers as a random factor and correctly avoids pseudo-replication. It does not account for the records themselves being a second source of variance: some records are plausibly much easier than others, and a panel mean computed over a corpus containing a few very easy items will sit higher than the same panel's performance on a harder draw from the same construct. The appropriate analysis crosses both random factors, for example a mixed-effects logistic model of the form `correct ~ 1 + (1 | reviewer) + (1 | record)` (Bates et al., 2015; Barr et al., 2013), from which the reviewer and item variance components can be read directly. That analysis is specified in the amended analysis plan and is reported in Appendix C; it was added after the pre-registration and is therefore labelled exploratory throughout. It finds the reviewer component to be the dominant source of variance and the record component to be small and not distinguishable from zero at this sample size.
 
 ### 4.7 Pre-registered thresholds, and why they are where they are
 
@@ -311,7 +311,7 @@ Three things in the result deserve emphasis over the headline figure.
 
 **8.2 The corpus is bimodal.** Twelve clearly grounded and twelve clearly unsupported records. The reported accuracy is an upper bound on performance against realistic documentation, for the reasons in Section 4.3.
 
-**8.3 Item variance is unmodelled in the primary analysis.** See Section 4.6 and Appendix C. The participant-level interval accounts for reviewer variation and not for the possibility that this particular draw of 24 records was easier or harder than another draw would be.
+**8.3 Item variance is not in the primary analysis, and is small.** The participant-level interval accounts for reviewer variation and not for the possibility that this particular draw of 24 records was easier or harder than another draw would be. That remains formally true. Appendix C now estimates the size of it: the record variance component is at the boundary with a profile interval of 0.001 to 0.556, against a reviewer SD of 1.769 and a reviewer intraclass correlation of 0.488. Item difficulty is small relative to reviewer variation on this corpus and cannot be distinguished from zero, and the sample cannot rule out a moderate effect.
 
 **8.4 The international composition does not establish cross-cultural validity.** Eleven countries across five continents is a real design feature and it does what Section 2.5 says it does: it reduces the chance that a blind spot shared by one professional culture went undetected. It does not establish measurement invariance. With one to three participants per country there is no power to estimate jurisdictional effects, and we did not test whether first language, legal tradition, or professional background predicted classification. The correct statement is that the construct was not tested exclusively within one jurisdictional and professional environment. Any stronger reading is unsupported.
 
@@ -478,21 +478,91 @@ Two descriptive observations, offered as such. Every condition moves with the de
 
 The instrument's three levels are all exercised. Across the 113 labels the lowest level is the most-used value of the three, recorded 216 times against 207 passes and 142 middle-level judgments, and it appears at least once in 77 of the 113 labels. The separations above are therefore across the full scale rather than between the top two levels.
 
-## Appendix C. Exploratory reviewer and item variance analysis
+## Appendix C. Reviewer and item variance
 
-**Status: specified, not yet reported. This appendix states the analysis and the reason it is absent, rather than omitting the question.**
+**Status: exploratory.** Specified after the pre-registration, in response to peer critique, and labelled exploratory throughout. It does not bear on the pre-registered primary criterion in Section 6.1, which is unchanged.
 
-The primary analysis treats reviewers as the unit of observation and does not model record difficulty (Section 4.6). The appropriate crossed-random-effects analysis is:
+The primary analysis treats the reviewer as the unit of observation and does not model record difficulty. The crossed analysis adds the records as a second random factor (Bates et al., 2015; Barr et al., 2013):
 
 ```
 correct ~ 1 + (1 | reviewer) + (1 | record)
 ```
 
-fitted as a mixed-effects logistic model over all 384 graded reads, from which the reviewer and record variance components, the intraclass correlations, and a by-item accuracy table with per-record error patterns can be read directly (Bates et al., 2015; Barr et al., 2013).
+Fitted as a mixed-effects logistic model by Laplace-approximated maximum likelihood over all 384 graded reads from 16 reviewers and 24 records, with no participant excluded by the pre-registered rule.
 
-This analysis was specified after the pre-registration, in response to peer critique, and is therefore exploratory. It requires the per-read response table, which is held under row-level security and is reachable only by the data custodian. The analysis script that produces every figure in this appendix is released with the materials and is deterministic: it takes the per-read export and emits the variance components, the intraclass correlations, and the by-item table. **The results are not stated here because they have not been computed, and a figure is not reported in this programme until it has been reproduced from the database.** They will be added before submission or the appendix will be removed; it will not be filled with an estimate.
+| Component | Estimate | Profile 95% interval |
+|---|---|---|
+| Intercept (logit) | 2.106 | |
+| Intercept as a probability, average reviewer on an average record | 89.2% | |
+| Reviewer SD | **1.769** | 1.292 to 3.000 |
+| Record SD | **0.011** | 0.001 to 0.556 |
+| Reviewer variance | 3.130 | |
+| Record variance | 0.0001 | |
+| Intraclass correlation, reviewer | **0.488** | |
+| Intraclass correlation, record | 0.0000 | |
 
-Two questions this analysis is expected to bear on, stated in advance so the result cannot be read selectively afterwards: whether the panel accuracy estimate is materially altered once item difficulty is modelled, and how much of the total variance sits between reviewers rather than between records. If item variance is large relative to reviewer variance, the corpus-dependence of the headline figure is greater than Section 4.6 assumes, and Section 8.3 understates the limitation.
+### What this answers
+
+Appendix C was written before the analysis was run, and it named two questions in advance so the result could not be read selectively afterwards. Both now have answers, and they point the same way.
+
+**Does modelling item difficulty materially alter the panel accuracy estimate?** No. The intercept places an average reviewer on an average record at 89.2 percent, and the participant-level mean of 83.9 percent reported in Section 6.1 sits inside the reviewer-level spread the model estimates. Nothing about the headline figure depends on the particular draw of 24 records in a way this analysis can detect.
+
+**How much of the variance sits between reviewers rather than between records?** Almost all of it. The reviewer intraclass correlation is **0.488**: close to half the variance in whether a read is correct is attributable to which reviewer read it, once the logistic residual is accounted for. The record intraclass correlation is **0.0000**.
+
+The raw tables say the same thing without any model. Reviewer accuracy runs from 37.5 to 100 percent, a range of 62.5 points. Record accuracy runs from 62.5 to 93.8 percent, a range of 31.3 points, and every record was classified correctly by at least ten of the sixteen reviewers. **No record in this corpus was hard. Several reviewers were.**
+
+### The record component is a singular fit and must not be read as a zero
+
+The record SD is estimated at 0.011, which is on the boundary. **That is not evidence that record difficulty does not exist.** At sixteen reviewers by twenty-four records the record component is weakly identified, and a correct estimator lands on the boundary on roughly one dataset in six when the true value is genuinely non-zero; that rate was measured by simulation on data of this exact shape before the real fit was run. The profile-likelihood interval, **0.001 to 0.556**, is the informative quantity and it does not exclude a moderate record effect.
+
+The defensible statement is therefore narrow: on this corpus, item difficulty is small relative to reviewer variation and cannot be distinguished from zero, and the sample cannot rule out a moderate effect.
+
+### Consequence for Section 8.3
+
+**Section 8.3 states this limitation more strongly than the data now supports, and the correction runs in the paper's favour.** That section warns that the participant-level interval does not account for the possibility that this draw of 24 records was easier or harder than another draw would be. That remains formally true. The estimated size of the effect is small, and the dominant source of uncertainty in this study is the reviewers, not the corpus.
+
+**Section 6.3 is strengthened.** Reviewer heterogeneity was reported there as the operationally important result on the strength of the raw spread alone. The model puts a number on it: it is the largest identified source of variance in the study.
+
+### Item-level accuracy, hardest first
+
+Records are constructed and de-identified, and their identifiers carry no information about a person.
+
+| Record | Correct | Accuracy |
+|---|---|---|
+| R04 | 10 of 16 | 62.5% |
+| R01 | 11 of 16 | 68.8% |
+| R10 | 12 of 16 | 75.0% |
+| R15 | 12 of 16 | 75.0% |
+| R17 | 12 of 16 | 75.0% |
+| R06 | 13 of 16 | 81.2% |
+| R11 | 13 of 16 | 81.2% |
+| R12 | 13 of 16 | 81.2% |
+| R14 | 13 of 16 | 81.2% |
+| R18 | 13 of 16 | 81.2% |
+| R20 | 13 of 16 | 81.2% |
+| R24 | 13 of 16 | 81.2% |
+| R07 | 14 of 16 | 87.5% |
+| R13 | 14 of 16 | 87.5% |
+| R16 | 14 of 16 | 87.5% |
+| R19 | 14 of 16 | 87.5% |
+| R21 | 14 of 16 | 87.5% |
+| R23 | 14 of 16 | 87.5% |
+| R02 | 15 of 16 | 93.8% |
+| R03 | 15 of 16 | 93.8% |
+| R05 | 15 of 16 | 93.8% |
+| R08 | 15 of 16 | 93.8% |
+| R09 | 15 of 16 | 93.8% |
+| R22 | 15 of 16 | 93.8% |
+
+**The grounded and unsupported classification of each record is deliberately not printed beside these rates.** Publishing accuracy next to the class would publish the answer key, which the data-availability terms release on request under the study's conditions rather than in the body of a paper.
+
+### Reviewer-level accuracy is reported as a distribution, not a table
+
+Section 6.2 gives the mean, standard deviation, range and perfect-scorer count. A per-reviewer table keyed to study codes is not printed here and will not be, because the contributor roster maps those codes to named people who volunteered unpaid. Publishing a code-labelled ranking would identify the lowest-scoring named professional in the panel, which is not a result and was never a condition of their participation.
+
+### Reproducibility
+
+Every figure in this appendix is computed by `api/variance-6b1d90fa2c47e8b3`, which reads the per-read table server-side and returns aggregates only. The estimator was validated by simulation against known variance components before use, and its JavaScript implementation was checked for numeric parity against an independent Python implementation on identical data, agreeing to four decimal places. The endpoint reproduces the Section 6.1 participant-level mean of 83.9 percent and the six perfect scorers exactly, from the raw reads, which is an independent check on the primary analysis.
 
 ## Acknowledgments
 

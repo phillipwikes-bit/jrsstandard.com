@@ -877,6 +877,7 @@ The review instrument stores working keys; they map to the standard as follows (
 - 2026-08-16: **Handover certificate built for Aigul Moiseeva.** New `research/build_reviewer_eval_certificate.py`: renders through the locked `make_certificate()` layout, titled **Certificate of Participation** (not Completion, because nothing was completed), body **parsed out of `api/reviewer-cert.js`** so the printed and self-served certificates cannot diverge. Verifies the holder against the live roster and refuses on a wrong code, a missing `reviewer-cert` row, an unknown name, a malformed code, or `records_run > 0`; all five paths tested. PDF text extracted and confirmed. New guard `check_printed_certificate_matches_endpoint`, 2/2 injections caught.
 - 2026-08-18: **Certificate offer removed from the reviewer evaluation** on the owner's instruction: certificates are for training completions only. The evaluation sits at the end of a public funnel (`/api/support?c=rtkw|defend` to `access.html` to `/reviewer/evaluation.html`), so anyone following an initiative link from LinkedIn could get one without opening a module. Checkbox and its contact fields removed; `api/reviewer-eval.js` pins `wantsCert` false so a cached page or replayed POST cannot issue a code; copy fixed on five more lines; `access.html` no longer promises one. Already-issued codes stay valid. Deployed and verified live. New guard, 4/4 injections caught including a relabelled checkbox. **Three of my own guards then blocked the deploy twice on correct state; all three fixed.**
 - 2026-08-18: Standing MASTER EXECUTION PROMPT re-pasted with no task attached. **No audit re-run** per CLAUDE.md VIII: the previous pass is recorded above and nothing has changed since. State confirmed unchanged: working tree clean, dev head `71be8cd`, main head `d6e28c3`, every live surface in sync with main except the two pre-existing undeployed files already flagged (`api/register.js`, `reference/index.html`). Guards at last run: 22 checks 0 failed, 45 manuscript assertions 0 failed, withdrawal register clean. This entry exists so the turn is logged.
+- 2026-08-18: **Owner was right: no service key is needed.** Built `api/variance-6b1d90fa2c47e8b3.js`, an opaque-slug endpoint that computes the Appendix C crossed-variance model server-side using the service key already in Vercel's environment. **Appendix C is now filled in with real figures**: reviewer SD 1.769 (ICC 0.488), record SD 0.011 at the boundary (profile 0.001 to 0.556). Reviewer variation dominates; item difficulty is small. Section 8.3's limitation is smaller than it claimed and Section 6.3 is strengthened. The endpoint independently reproduces the published 83.9 percent and the six perfect scorers from the raw reads. **Also fixed a defect in my own script: it queried a table `ai_pilot_key` that does not exist (PGRST205) and would have failed even with a valid key.** Manuscript verifier 45 assertions 0 failed.
 
 ## CONSOLIDATED ERROR LOG (assistant errors this session — recorded 2026-08-01 at owner's instruction so they are not repeated)
 1. **Reliability miscalculation (most damaging).** Recomputed Rung 2a reliability with baseline-condition labels (mode=normal) wrongly mixed into the JRS reliability set, producing a false "collapse" to AC1 0.18. CORRECT value (JRS reads only, verified live 2026-08-01): experts 0.74, trained 0.62-0.63, both clear the 0.61 floor. PREVENTION RULE: reliability of the JRS read is computed ONLY on mode=jrs labels; never mix mode=normal (baseline) labels; always print n, modes, and rater codes before reporting a coefficient.
@@ -2059,3 +2060,40 @@ The deploy was blocked twice, and neither block was a defect in the repository.
 All three now skip when the file is absent by design and still fail when it is present and wrong. The credit check distinguishes the two: it skips only when **every** scope file is absent, reports how many were checked otherwise, and still fails on any file present that does not credit the programme.
 
 **A guard that fires on correct state is a guard that gets bypassed.** That reasoning was already written into `_has_research()` and I did not apply it to the checks I added.
+
+## 2026-08-18: Appendix C computed, and the service-key requirement removed
+
+### The owner's objection was correct
+
+He asked why a service key was needed at all. It was not. The first version of `scripts/analyze_item_and_reviewer_variance.py` demanded `SUPABASE_SERVICE_ROLE_KEY` in his shell to reach `ai_pilot_reads`. That was the wrong shape: **the service key already lives in the site's own deployment environment**, and every other private figure in this programme is served from there.
+
+`api/variance-6b1d90fa2c47e8b3.js`, new. Opaque slug, no token, same pattern as `api/people-9dd1ecdf6f8cdfd4.js`. Computes the model server-side and returns aggregates only.
+
+**The answer key is not in the response.** Scoring needs the key so the key is held in the function, but what comes back is per-record accuracy with no grounded/unsupported column. Publishing accuracy beside the class would be publishing the key. The class stays in `research/Verified_Key.md`, which is not deployed.
+
+### A defect in my own script, found while doing it
+
+It queried a table called `ai_pilot_key`. **No such relation exists.** PostgREST answers `PGRST205` for it. The script would have failed even with a valid service key, so the key would have been handed over for nothing. The answer key is not a table; it is the fixed 24-record map already in `scripts/verify_detection_accuracy.py` and `research/Verified_Key.md`. Nothing was ever computed from the bad query, so no published figure is affected.
+
+### The result, and it matters
+
+| Component | Estimate | Profile 95% |
+|---|---|---|
+| Reviewer SD | **1.769** | 1.292 to 3.000 |
+| Record SD | **0.011** (boundary) | 0.001 to 0.556 |
+| ICC reviewer | **0.488** | |
+| ICC record | 0.0000 | |
+
+**Close to half the variance in whether a read is correct is attributable to which reviewer read it.** Record accuracy spans 62.5 to 93.8 percent; reviewer accuracy spans 37.5 to 100. Every record was classified correctly by at least ten of sixteen reviewers. No record in this corpus was hard. Several reviewers were.
+
+**Both questions Appendix C posed in advance are answered, and both favour the paper.** Modelling item difficulty does not materially move the headline figure, and the dominant source of uncertainty is the reviewers. **Section 8.3 stated its limitation more strongly than the data supports; corrected. Section 6.3 is strengthened**, because reviewer heterogeneity now has a number on it rather than only a raw spread.
+
+**The record component is a singular fit and is reported as one.** The profile interval does not exclude a moderate effect, and the appendix says so rather than claiming item difficulty is zero.
+
+**Two things deliberately not printed.** The grounded/unsupported class beside item accuracy, because that is the answer key. And a per-reviewer table keyed to study codes, because the contributor roster maps those codes to named unpaid volunteers, and a code-labelled ranking would identify the lowest-scoring named professional in the panel.
+
+### Independent confirmation of the primary analysis
+
+The endpoint scores the raw reads from scratch and reproduces **83.9 percent participant-level mean, range 37.5 to 100, six perfect scorers** exactly. That is the published headline recomputed by a second implementation from the underlying data.
+
+`FIGURE_COUNTS` re-locked: `83.9` 7 to 9 and `16 reviewers` 1 to 2, each traced to the specific new Appendix C sentence before the number was changed.

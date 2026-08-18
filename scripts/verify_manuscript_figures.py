@@ -459,8 +459,16 @@ SUPERSEDED = [
 #                         in words. The digit form survives once, in Methods 4.5
 #
 # Unchanged: 87.0, 80.7, 384.
+# RE-LOCKED 2026-08-18 when Appendix C was filled in with the real fit. Both
+# increases were traced to the specific new sentence before the number moved:
+#
+#   83.9         7 -> 9  Appendix C states the participant-level mean twice, once
+#                        when answering whether modelling item difficulty alters
+#                        it, and once recording that the endpoint reproduces it
+#                        from the raw reads as an independent check
+#   16 reviewers 1 -> 2  Appendix C states the model's N alongside the 384 reads
 FIGURE_COUNTS = {
-    "83.9": 7,
+    "83.9": 9,
     "72.7 to 95.1": 3,
     "87.0": 3,
     "80.7": 3,
@@ -469,7 +477,7 @@ FIGURE_COUNTS = {
     "0.623": 2,
     "87.2 percent": 1,
     "86.2 to 88.2": 1,
-    "16 reviewers": 1,
+    "16 reviewers": 2,
 }
 miscount = []
 for v, want in FIGURE_COUNTS.items():
