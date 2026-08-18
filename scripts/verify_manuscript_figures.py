@@ -39,7 +39,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # v5 is the current manuscript. v4 is retained on disk unmodified, per the
 # revision instruction, and stays in check_zero_drift's PROGRAMME_SCOPE_FILES so
 # a figure that disagrees between the two is still caught as drift.
-MS = os.path.join(ROOT, "research", "Detection_Article_Final_2026-08-18.md")
+MS = os.path.join(ROOT, "research", "Detection_Article_Submission_Final_2026-08-18.md")
 AGG = os.path.join(ROOT, "research", "closed_aggregates_2026-08-15.json")
 SB = "https://pjzxkeviouofdseagvpf.supabase.co/rest/v1"
 ANON = "sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e"
@@ -578,6 +578,11 @@ SUPERSEDED = [
     ("0.253 to 0.994", "63-label analytic interval"),
     ("0.301 to 0.886", "63-label bootstrap interval"),
     ("trained reviewer", "rater class unsupported by any source"),
+    # ADDED 2026-08-18 BY THE SUBMISSION-FINAL PASS.
+    ("those same experts", "conflates the detection panel with the "
+                           "separate Study 004 reliability sample"),
+    ("expert panel", "ambiguous between three populations"),
+    ("36 independent experts", "invented combined panel figure"),
     ("52.9 percent", "unreproducible not-passing rate"),
     ("87.8", "single-run cross-vendor figure, stale nightly"),
     ("84.5 percent", "mixed-denominator cross-vendor mean"),
