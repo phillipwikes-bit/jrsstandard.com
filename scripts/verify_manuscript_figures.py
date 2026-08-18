@@ -39,7 +39,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # v5 is the current manuscript. v4 is retained on disk unmodified, per the
 # revision instruction, and stays in check_zero_drift's PROGRAMME_SCOPE_FILES so
 # a figure that disagrees between the two is still caught as drift.
-MS = os.path.join(ROOT, "research", "Detection_Article_v8_2026-08-18.md")
+MS = os.path.join(ROOT, "research", "Detection_Article_v9_2026-08-18.md")
 AGG = os.path.join(ROOT, "research", "closed_aggregates_2026-08-15.json")
 SB = "https://pjzxkeviouofdseagvpf.supabase.co/rest/v1"
 ANON = "sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e"
@@ -407,6 +407,30 @@ else:
       ps.get("completers_comparison") == 20, "completers_comparison=%s" % ps.get("completers_comparison"))
     T("reliability credit: 25 raters", "The reliability study, 25 raters",
       ps.get("reliability_raters") == 25, "reliability_raters=%s" % ps.get("reliability_raters"))
+    # THE 25 AND THE 22 MUST TRAVEL TOGETHER, PERMANENTLY.
+    #
+    # v9 reconciliation, 2026-08-18. The Acknowledgments credit 25 raters and
+    # Section 6.5 analyses 22. Both are correct and they differ by the
+    # pre-registered inclusion rule: three trained raters used the unstructured
+    # baseline prompt, not the five conditions, contributing the sixteen labels
+    # the Methods already exclude by name. A reader who meets 25 and then 22
+    # with no bridge between them reads a contradiction that is not there, and
+    # a reviewer reads it as an undisclosed exclusion. The bridge sentence is
+    # therefore load-bearing and is asserted here so a later compression of the
+    # Acknowledgments cannot quietly drop it.
+    #
+    # Derivation and evidence: research/Detection_Article_v9_CHANGE_LOG.md,
+    # section 1, computed at run time by scripts/apply_v9_reconciliation.py
+    # from REVIEWER_ROSTER_COMPLETE.md section 004 and
+    # Detection_Article_Figure_Update_2026-08-15.md.
+    T("reliability analysed sample named beside the credit",
+      "Twenty-two of them, eight expert and fourteen trained", True, "")
+    T("the three excluded raters are disclosed in the Acknowledgments",
+      "the other three trained raters worked under the unstructured baseline prompt",
+      True, "")
+    T("Section 6.5 trained-rater count", "| Trained reviewers | 10 | 68 | 14 |",
+      True, "")
+    T("Section 6.5 expert-rater count", "| Experts | 10 | 36 | 8 |", True, "")
     T("detection countries", "11 countries", ps.get("countries_detection") == 11,
       "countries_detection=%s" % ps.get("countries_detection"))
     T("programme countries", "", ps.get("countries_all") == 16,
