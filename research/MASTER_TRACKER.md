@@ -875,6 +875,7 @@ The review instrument stores working keys; they map to the standard as follows (
 - 2026-08-16: **V-AI-08 withdrawn as a contributor across the whole programme** at the owner's instruction. Live: roster 42 to 41, honor entry H-2026-06 retired (code not reused, sequence not renumbered), both deployed and verified. Naming only: her reads still count, unnamed, so 58/36/16 are unchanged. New `scripts/withdraw_contributor.py` (28 rules, 20 files, idempotent) plus two guards, adversarially tested 4/4. **Manuscript v4 written to the senior editor's review**: all 10 Tier 1 and all 8 Tier 2 items applied, 6 Tier 3 items entered in a new research-programme section because they need new data. 44 figure assertions pass, 9 injected regressions caught. Detail in the section at the end of this file.
 - 2026-08-16: **Aigul Moiseeva (KZ, CGEM AI Safety) verified before recognition. Did NOT review 18 records: records_run=0.** The 18 is `total_rows` on the roster tile, 18 rows across 12 people. Not in the detection study; `check_completion.py JRS-R-DOGUUVV9` returns NO ROW. What they did do: submitted the reviewer evaluation on 16 Aug, 8 of 9 questions, the first submission the evaluation has ever received. Certificate already self-served (`certificate_renders.reviewer=1`), no second one created. LinkedIn recommendation written, truthfully scoped, pronoun-free. **Found and fixed a live overclaim while checking: the reviewer certificate asserted training completion the database contradicts.** Corrected on three surfaces, deployed, verified live, guarded, adversarially tested 3/3. New `research/verify_participant.py`. Detail at the end of this file.
 - 2026-08-16: **Handover certificate built for Aigul Moiseeva.** New `research/build_reviewer_eval_certificate.py`: renders through the locked `make_certificate()` layout, titled **Certificate of Participation** (not Completion, because nothing was completed), body **parsed out of `api/reviewer-cert.js`** so the printed and self-served certificates cannot diverge. Verifies the holder against the live roster and refuses on a wrong code, a missing `reviewer-cert` row, an unknown name, a malformed code, or `records_run > 0`; all five paths tested. PDF text extracted and confirmed. New guard `check_printed_certificate_matches_endpoint`, 2/2 injections caught.
+- 2026-08-18: **Certificate offer removed from the reviewer evaluation** on the owner's instruction: certificates are for training completions only. The evaluation sits at the end of a public funnel (`/api/support?c=rtkw|defend` to `access.html` to `/reviewer/evaluation.html`), so anyone following an initiative link from LinkedIn could get one without opening a module. Checkbox and its contact fields removed; `api/reviewer-eval.js` pins `wantsCert` false so a cached page or replayed POST cannot issue a code; copy fixed on five more lines; `access.html` no longer promises one. Already-issued codes stay valid. Deployed and verified live. New guard, 4/4 injections caught including a relabelled checkbox. **Three of my own guards then blocked the deploy twice on correct state; all three fixed.**
 
 ## CONSOLIDATED ERROR LOG (assistant errors this session — recorded 2026-08-01 at owner's instruction so they are not repeated)
 1. **Reliability miscalculation (most damaging).** Recomputed Rung 2a reliability with baseline-condition labels (mode=normal) wrongly mixed into the JRS reliability set, producing a false "collapse" to AC1 0.18. CORRECT value (JRS reads only, verified live 2026-08-01): experts 0.74, trained 0.62-0.63, both clear the 0.61 floor. PREVENTION RULE: reliability of the JRS read is computed ONLY on mode=jrs labels; never mix mode=normal (baseline) labels; always print n, modes, and rater codes before reporting a coefficient.
@@ -2009,3 +2010,51 @@ Owner asked for a certificate **he can hand over**. Built.
 **Output verified by extracting the text from the PDF**, after the first extraction attempt returned MISSING on everything. That was my extractor, not the file: reportlab writes `/Filter [ /ASCII85Decode /FlateDecode ]` and the script only tried Flate. Corrected extractor confirms: "Certificate of Participation", "Aigul Moiseeva", "submitted the JRS reviewer evaluation...", "August 16, 2026", "Phillip Wikes, Creator, JRS", and confirms **absent**: "24 records", "six-module", "Reviewer Training", "all 24", "Completion".
 
 **`check_printed_certificate_matches_endpoint`** added to `scripts/check_zero_drift.py`. Caught both injections: restoring the training claim to the endpoint BODY, and renaming the const so the parse silently stops resolving. The second is the dangerous one, because a silent parse failure is how the printed and live certificates would drift apart with nobody noticing.
+
+## 2026-08-18: certificate offer removed from the reviewer evaluation
+
+Owner: *"Please remove certificate box from the following links. A certificate should be only issued for training completions."*
+
+### The funnel, traced
+
+`/api/support?c=rtkw&src=linkedin` and `?c=defend&src=linkedin` both 302 to `access.html`, which links at line 70 straight to `/reviewer/evaluation.html`. That page carried a gold Certificate card whose checkbox read **"Issue me a certificate for completing the training and this evaluation."** Nothing in the path touches the training. A reader arriving from either LinkedIn initiative post could obtain a certificate without opening a single module, and one did.
+
+### Removed
+
+| Surface | Change |
+|---|---|
+| `reviewer/evaluation.html` | Certificate heading, blurb, opt-in checkbox, and the name / title / email / organization / contact-consent / public-listing fields it revealed. Plus the reveal listener, the terms-panel handler that lived inside that block, the certificate validation, the certificate fields on the POST body, and the success branch offering the completion code |
+| `api/reviewer-eval.js` | `wantsCert` is **pinned false** rather than read from the body |
+| `reviewer/evaluation.html` copy | two lines that called the evaluation "what the certificate records" |
+| `reviewer/index.html` | steps 04 and 05 swapped so the certificate follows the modules and the evaluation is marked optional; the boundary note now says the certificate records completing the six modules |
+| `access.html` | no longer promises a certificate at the end |
+
+**Pinned, not flagged.** A stale cached page, a replayed request or a hand-rolled POST cannot issue a code either. Verified against production with `want_certificate: true` and full contact details supplied: the response is `certificate: false`, `code: ""`, `certificate_withdrawn: "issued for training completion only, 2026-08-18"`.
+
+**Codes already issued stay valid.** `/api/reviewer-cert` is untouched and still renders from the code; confirmed live for JRS-R-DOGUUVV9. Withdrawing an offer does not retract what was given.
+
+The row-2 block in `api/reviewer-eval.js` is left standing and documented as dead by construction, because it is the exact shape a training-gated certificate would need and its consent handling should not be rewritten from scratch later.
+
+### My earlier guard missed this completely
+
+`check_certificate_claims_supported`, written two days ago, listed three exact overclaim fragments and **scanned `reviewer/evaluation.html` among its files**. The checkbox label was not on the list, so the check passed while sitting directly on the offer. A blocklist only catches what somebody already thought of.
+
+`check_evaluation_offers_no_certificate` closes it from the other side and does not depend on guessing wording: it fails on the control ids and on the endpoint no longer pinning `wantsCert` false. Adversarially tested against four regressions, **including one that re-adds the checkbox under an unrelated label ("Send me my award document")**; all four caught.
+
+### Three of my own guards blocked the deploy on correct state
+
+The deploy was blocked twice, and neither block was a defect in the repository.
+
+**First block.** `research/__pycache__/` is gitignored, so checking out the deploy branch removes every tracked file under `research/` and leaves the directory standing with nothing but bytecode. `_has_research()` used a bare `os.path.isdir` and read that as a present research tree, so three generated-doc checks failed as "file missing". The directory existed only because the new certificate builder imports `build_certificate`, which is why earlier deploys the same day passed. The predicate now ignores caches; verified in both states.
+
+**Second block.** Three further checks had no deploy-branch skip at all, two of them mine from this session:
+
+| Check | Failure on the deploy branch |
+|---|---|
+| no withdrawn contributor name survives | import error: `scripts/` is not deployed |
+| printed certificate wording matches the endpoint | import error: `research/` is not deployed |
+| programme-scope files credit every expert | six "missing" lines: none of the scope files is deployed |
+
+All three now skip when the file is absent by design and still fail when it is present and wrong. The credit check distinguishes the two: it skips only when **every** scope file is absent, reports how many were checked otherwise, and still fails on any file present that does not credit the programme.
+
+**A guard that fires on correct state is a guard that gets bypassed.** That reasoning was already written into `_has_research()` and I did not apply it to the checks I added.
