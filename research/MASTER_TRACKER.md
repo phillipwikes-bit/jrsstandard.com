@@ -881,6 +881,7 @@ The review instrument stores working keys; they map to the standard as follows (
 - 2026-08-18: **Cloudflare severed from the repo** (`functions/record.js` was being served publicly at `/functions/record.js`, 200, 1814 bytes; `functions/results.js`; `_headers`, verified inert on Vercel). Guard added, 5/5 injections caught. Deployed and verified: all three now 404. **The Workers check still failed on the very next commit, which confirms the integration is dashboard-side and no repo change can stop it.** **SEPARATE HIGH-SEVERITY FIND: `.github/workflows/maintenance.yml` was armed to push two SSOT violations straight to `main` on 1 September 2026** (wrong contact address; relinking a PDF deleted in June 2026). Schedule removed, values corrected, main-push replaced with a PR. **Deployment lock set**: 17 files hashed, 15 live probes, drift-tested. **Ubayet package assembled.**
 - 2026-08-18: **Surgical revision set applied to v4** from the second editorial review (disposition: not quite ready, precision surgery not expansion; acceptance 45-55 percent now, 50-60 after). All 17 instructed items executed as 24 exact-match rules via `scripts/apply_surgical_revisions_2026-08-18.py`, idempotent, with a before/after report. **The reviewer found one real arithmetic error and he was right**: Appendix B called 113 determinations and 565 condition-level labels by the same word. Verified against `bench_labels` before correcting (113 rows x 5 = 565 = 216 gap + 207 pass + 142 review). **No figure changed.** Claim-consistency audit made permanent as 13 enforced claim pairs; **an adversarial test then showed the 113/565 conflation could come straight back undetected, so a 14th pair closes it.** Two defects of my own caught by my own guards: a banned word introduced in a replacement, and a credit marker widened in one guard but not the other. 23 checks 0 failed, 47 assertions 0 failed, lock holds.
 - 2026-08-18: Owner asked whether **both arms are labelled as experts** in the paper. **Audit: Arm A yes in three places, Arm B only in the Acknowledgments and nowhere in the body.** Sections 4.2 and 5 left a reader to infer an expert-versus-novice comparison, which is the confound the randomisation exists to avoid, and is the same conflation the programme corrected on 2026-08-05. Verified from `Expert_Roster_All_Studies_2026-08-06.csv` (credentialed Arm B titles) and `ArmB_Design.md:3,32` ("do not put experts in one and novices in the other") before writing it in. Both sections now state expertise parity and that JRS-naive is about exposure, not expertise; "unaided professional judgment" standardised to "expert". 15th claim pair guards it. **Two ordering defects in my own revision script, both caught by its own checks: a false non-unique report, then a duplicated sentence on re-run.**
+- 2026-08-18: **v5 surgical revision executed.** All six instructed revisions applied as 21 exact-match rules via `scripts/apply_v5_revisions.py`; **v4 read, not overwritten**; `Detection_Article_v5_2026-08-18.docx` and `Detection_Article_v5_CHANGE_LOG.md` produced. **Two instructed numbers disagree with the manuscript and the database and were NOT changed**: trained AC1 given as 0.624 CI 0.349-0.898, actual 0.623 CI 0.253-0.994; 0.624 is the pre-2026-08-15 value and is on the superseded blocklist. Flagged for decision. Final QA caught **six bare 'the key' references that survived after 'answer key' reached zero**; all standardised and added to the forbidden list. 47 assertions 0 failed, 23 checks 0 failed, idempotent, docx validated.
 
 ## CONSOLIDATED ERROR LOG (assistant errors this session — recorded 2026-08-01 at owner's instruction so they are not repeated)
 1. **Reliability miscalculation (most damaging).** Recomputed Rung 2a reliability with baseline-condition labels (mode=normal) wrongly mixed into the JRS reliability set, producing a false "collapse" to AC1 0.18. CORRECT value (JRS reads only, verified live 2026-08-01): experts 0.74, trained 0.62-0.63, both clear the 0.61 floor. PREVENTION RULE: reliability of the JRS read is computed ONLY on mode=jrs labels; never mix mode=normal (baseline) labels; always print n, modes, and rater codes before reporting a coefficient.
@@ -2250,3 +2251,52 @@ This adds no new claim: it states in the body a fact the paper's own Acknowledgm
 **Then a duplicated sentence.** With the count fixed, the old-text test still matched on a second run for the same reason, and the script **appended the Section 4.2 sentence twice**. Caught by the idempotency check, the duplicate removed from the manuscript, and the test order corrected so "already applied" is evaluated first.
 
 Both were defects in the tool, not in the manuscript, and both were caught by checks the tool already carried.
+
+## 2026-08-18: v5 surgical revision
+
+Six instructed revisions, executed as **21 exact-match rules**. **v4 was read and not overwritten**, per the instruction. Output: `research/Detection_Article_v5_2026-08-18.md`/`.docx` and `research/Detection_Article_v5_CHANGE_LOG.md`/`.docx`.
+
+| # | Revision | Result |
+|---|---|---|
+| 1 | Section 4.1 criterion row: "a key established by raters not party to the definition" to "independent reproduction of an author-generated reference classification by raters not involved in corpus construction"; status now "independently reproduced but construct-dependent" | applied |
+| 2 | Introduction: "establishes that the operationalisation is recognisable" to "provides evidence ... under the stated reviewer standpoint and briefing" | applied |
+| 3 | Section 6.3: "at least one performs below chance" to "at least one reviewer had an accuracy below the 50 percent balanced-corpus chance benchmark" | applied |
+| 4 | Appendix C: "Nothing about the headline figure depends on the particular draw of 24 records" deleted, replaced with the instructed sentence | applied |
+| 5 | Terminology standardised to reference classification, **15 instances** | applied |
+| 6 | Discussion: the JRS feasibility sentence inserted, **exactly once** | applied |
+
+### Two instructed numbers disagree with the record, and neither was changed
+
+The instruction lists trained-reviewer **AC1 0.624, CI 0.349 to 0.898**. The manuscript carries **0.623**, analytic CI **0.253 to 0.994**, bootstrap **0.301 to 0.886**.
+
+The manuscript is right. The recomputed coefficient is **0.6228 on 68 labels from 14 raters**. **0.624 is the pre-2026-08-15 value**, superseded when the trained-reviewer label count moved 63 to 68, and it sits on `verify_manuscript_figures.py`'s superseded-values blocklist for that reason.
+
+Writing 0.624 in would restore a superseded figure, contradict the database, and violate the instruction's own prohibition on changing numerical results. **Flagged in the change log for decision, not silently applied and not silently ignored.**
+
+### Pre-registration scope
+
+Revision 5 required "held-out key" standardised; the instruction separately forbids changing the pre-registration. Section 4.7 carries the pre-registered detection threshold. **The criterion is untouched**, still a lower 95 percent bound above 0.50 and a pre-set target of at least 0.70. Only the noun changed, and it is not a marked quotation.
+
+### The final QA sweep earned its place
+
+After revision 5, `answer key` reached **zero** and **six bare references survived**: "blind to the key", "a key existed to be recovered", "about the key is withheld", "reproduction of the key", "established the key", and the Section 4.1 blinded-detection table row.
+
+A search for one phrase leaves exactly that gap. All six standardised, and each added to the rule set's forbidden list so the sweep is now automatic rather than a one-time read.
+
+### Verification
+
+| Check | Result |
+|---|---|
+| Rules | 21 applied, 0 failed, idempotent |
+| Numerical integrity | 23 values verified present |
+| Arithmetic | 216 + 142 + 207 = 565; 113 x 5 = 565 |
+| Forbidden strings | 0 present, 18 checked |
+| Required limitations | 0 missing, 14 checked |
+| JRS sentence | exactly 1 |
+| `verify_manuscript_figures.py`, retargeted to v5 | **47 assertions, 0 failed** |
+| `check_zero_drift.py`, v5 added to programme scope | **23 checks, 0 failed** |
+| v4 on disk | **unmodified** |
+| .docx | opens, valid zip, contains the JRS sentence |
+| House style | 0 em-dashes, 0 banned words, 11,679 words, 45 headings |
+
+Every occurrence of "workflow independence", "criterion validity" and "cross-cultural" in v5 was read in context: all are limitations, none is a claim. "effectiveness" and "superiority" appear zero times.

@@ -36,7 +36,10 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # The manuscript under verification. v4 is the submission draft; v3 is retained
 # because it is the version the completer summary and the LinkedIn section were
 # generated against, and a figure that disagrees between them is drift.
-MS = os.path.join(ROOT, "research", "Detection_Article_v4_2026-08-16.md")
+# v5 is the current manuscript. v4 is retained on disk unmodified, per the
+# revision instruction, and stays in check_zero_drift's PROGRAMME_SCOPE_FILES so
+# a figure that disagrees between the two is still caught as drift.
+MS = os.path.join(ROOT, "research", "Detection_Article_v5_2026-08-18.md")
 AGG = os.path.join(ROOT, "research", "closed_aggregates_2026-08-15.json")
 SB = "https://pjzxkeviouofdseagvpf.supabase.co/rest/v1"
 ANON = "sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e"
