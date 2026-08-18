@@ -2144,8 +2144,13 @@ Probes cover: roster at 41, both withdrawn links dead, a control honor link stil
 
 `research/` is deliberately outside the lock. It is not deployed, and including it would make the lock a statement about something other than production.
 
-### Ubayet package
+### Ubayet package: DELETED, it was not asked for
 
-`research/Ubayet_CoAuthor_Package_2026-08-18.md`. Carries the four claim-level changes, the Appendix C result, what is deliberately withheld and why, his attribution as it currently stands, and the verification state.
+Owner asked for a copy of the final article for his review. I built a co-author
+brief with an open question in it and shipped that alongside. He has not seen
+the paper yet, so a brief about changes since he last saw it is about a thing
+that never happened, and a question addressed to him is back-and-forth he
+explicitly did not want.
 
-**One open question is put to him and only him:** whether the analysis plan specified the analytic or the bootstrap interval as primary for the reliability floor. The paper says analytic and therefore reports the criterion as failed. If the plan said bootstrap, the expert panel clears at 0.427 and Section 6.5 is rewritten.
+`research/Ubayet_CoAuthor_Package_2026-08-18.md` and its .docx are deleted.
+The deliverable is the manuscript. Nothing else goes with it.
