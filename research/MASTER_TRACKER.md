@@ -879,6 +879,7 @@ The review instrument stores working keys; they map to the standard as follows (
 - 2026-08-18: Standing MASTER EXECUTION PROMPT re-pasted with no task attached. **No audit re-run** per CLAUDE.md VIII: the previous pass is recorded above and nothing has changed since. State confirmed unchanged: working tree clean, dev head `71be8cd`, main head `d6e28c3`, every live surface in sync with main except the two pre-existing undeployed files already flagged (`api/register.js`, `reference/index.html`). Guards at last run: 22 checks 0 failed, 45 manuscript assertions 0 failed, withdrawal register clean. This entry exists so the turn is logged.
 - 2026-08-18: **Owner was right: no service key is needed.** Built `api/variance-6b1d90fa2c47e8b3.js`, an opaque-slug endpoint that computes the Appendix C crossed-variance model server-side using the service key already in Vercel's environment. **Appendix C is now filled in with real figures**: reviewer SD 1.769 (ICC 0.488), record SD 0.011 at the boundary (profile 0.001 to 0.556). Reviewer variation dominates; item difficulty is small. Section 8.3's limitation is smaller than it claimed and Section 6.3 is strengthened. The endpoint independently reproduces the published 83.9 percent and the six perfect scorers from the raw reads. **Also fixed a defect in my own script: it queried a table `ai_pilot_key` that does not exist (PGRST205) and would have failed even with a valid key.** Manuscript verifier 45 assertions 0 failed.
 - 2026-08-18: **Cloudflare severed from the repo** (`functions/record.js` was being served publicly at `/functions/record.js`, 200, 1814 bytes; `functions/results.js`; `_headers`, verified inert on Vercel). Guard added, 5/5 injections caught. Deployed and verified: all three now 404. **The Workers check still failed on the very next commit, which confirms the integration is dashboard-side and no repo change can stop it.** **SEPARATE HIGH-SEVERITY FIND: `.github/workflows/maintenance.yml` was armed to push two SSOT violations straight to `main` on 1 September 2026** (wrong contact address; relinking a PDF deleted in June 2026). Schedule removed, values corrected, main-push replaced with a PR. **Deployment lock set**: 17 files hashed, 15 live probes, drift-tested. **Ubayet package assembled.**
+- 2026-08-18: **Surgical revision set applied to v4** from the second editorial review (disposition: not quite ready, precision surgery not expansion; acceptance 45-55 percent now, 50-60 after). All 17 instructed items executed as 24 exact-match rules via `scripts/apply_surgical_revisions_2026-08-18.py`, idempotent, with a before/after report. **The reviewer found one real arithmetic error and he was right**: Appendix B called 113 determinations and 565 condition-level labels by the same word. Verified against `bench_labels` before correcting (113 rows x 5 = 565 = 216 gap + 207 pass + 142 review). **No figure changed.** Claim-consistency audit made permanent as 13 enforced claim pairs; **an adversarial test then showed the 113/565 conflation could come straight back undetected, so a 14th pair closes it.** Two defects of my own caught by my own guards: a banned word introduced in a replacement, and a credit marker widened in one guard but not the other. 23 checks 0 failed, 47 assertions 0 failed, lock holds.
 
 ## CONSOLIDATED ERROR LOG (assistant errors this session — recorded 2026-08-01 at owner's instruction so they are not repeated)
 1. **Reliability miscalculation (most damaging).** Recomputed Rung 2a reliability with baseline-condition labels (mode=normal) wrongly mixed into the JRS reliability set, producing a false "collapse" to AC1 0.18. CORRECT value (JRS reads only, verified live 2026-08-01): experts 0.74, trained 0.62-0.63, both clear the 0.61 floor. PREVENTION RULE: reliability of the JRS read is computed ONLY on mode=jrs labels; never mix mode=normal (baseline) labels; always print n, modes, and rater codes before reporting a coefficient.
@@ -2154,3 +2155,61 @@ explicitly did not want.
 
 `research/Ubayet_CoAuthor_Package_2026-08-18.md` and its .docx are deleted.
 The deliverable is the manuscript. Nothing else goes with it.
+
+## 2026-08-18: second editorial review, surgical revisions applied
+
+Reviewer read the actual v4, not the change log. Disposition: **not quite ready, surgical revision recommended**, explicitly not another broad rewrite. Acceptance 45 to 55 percent as it stood, 50 to 60 after. Overall publication potential 8.5/10, construct validity the weakest dimension at 6.0.
+
+`scripts/apply_surgical_revisions_2026-08-18.py`. 24 exact-match rules covering all 17 instructed items, each asserted to match exactly once, idempotent, emitting `research/Surgical_Revisions_2026-08-18.md` with every before and after.
+
+### The one real error, verified before it was accepted
+
+Appendix B used **"labels" for two different units**. `bench_labels` with `mode='jrs'` returns **113 rows**, each carrying five condition values. Live recount: **pass 207, review 142, gap 216 = 565**, and 113 x 5 = 565.
+
+So 113 counts **overall determinations** and 565 counts **condition-level labels**. The manuscript said "across the 113 labels ... recorded 216 times", which cannot be right. **The reviewer's arithmetic was correct. No figure changed; the unit each figure counts is now stated.**
+
+### The other sixteen, applied
+
+| # | Change |
+|---|---|
+| 2 | "verified answer key" to "pre-specified reference classification independently reproduced by blinded raters", six places. Section 4.4 already conceded the key is not construct-independent; "verified" partly undid that |
+| 3 | "the circularity that would be fatal" removed. Naming one circularity fatal invites the question of whether all were defined |
+| 4 | "is an upper bound" to "may overstate performance". Bimodality shows the task is likely easier; it does not establish a mathematical bound |
+| 5 | The uncited "0.70 is the conventional floor in several adjacent applied literatures" removed. The threshold is pre-specified; that is sufficient, and the sentence was a literature fight the paper does not need |
+| 6 | "JRS is independent of any vendor, model, or drafting workflow" to "designed to be vendor-, model-, and workflow-agnostic". It contradicted Section 8.5 |
+| 7 | Reviewer ICC now stated on the model's latent logistic scale. "Almost all of it" removed |
+| 8 | "No record in this corpus was hard. Several reviewers were." removed. Rhetorically memorable, operationally undefined, and the hardest record at 62.5 percent is not trivial |
+| 9 | Conclusion and Section 7 now say the **operationalised distinction** is detectable, preserving Section 2.4 |
+| 10 | The "fourth variety" opacity taxonomy dropped; "documentation-layer opacity" keeps the contribution without a new formal category. Closing "A property can be real" replaced with "An operationalised property can be detectable" |
+| 11 | Ethics: the "no deception was used" construction replaced with what participants were actually told in advance |
+| 12 | "de-identified participant-level response data" to "coded participant-level response data, released subject to the study's access and confidentiality terms". With 16 experts, domain and country can re-identify |
+| 13 | Programme-level acknowledgments compressed. **The credit to all 58 survives**; the wider accounting moves to the repository |
+
+### Not done, and why
+
+**Appendix A was not removed.** The reviewer raised it as an option conditional on whether automated implementation consistency belongs to the validation programme, and **did not put it in the numbered set**, whose item 17 is "do not make any other substantive changes". Removing an appendix is structural and is the owner's call.
+
+**Section 6.3 untouched**, on the reviewer's explicit instruction to retain reviewer heterogeneity as a major finding.
+
+### Item 15 made permanent, then hardened
+
+The claim-consistency audit is now **13 enforced claim pairs** in `verify_manuscript_figures.py`, each naming text that must be absent and text that must be present. A one-off consistency read is worth exactly as much as the day it was run.
+
+Adversarially tested with five injections. **Four were caught. Restoring the exact 113/565 conflation was not**, because the arithmetic check verifies the database and the figure-count lock only counts headline figures. **The very error this revision set existed to fix could have come straight back undetected.** A fourteenth pair closes it; re-tested and caught.
+
+### Two defects of mine, caught by my own guards
+
+**A banned word.** My replacement text for item 1 introduced "most frequently recorded", and CLAUDE.md III.7 bans "frequently". Fixed in the manuscript **and in the rule**, so a re-run agrees rather than reintroducing it.
+
+**A marker widened in one place and not the other.** Item 13's compression changed the acknowledgment wording. I widened the accepted forms in `verify_manuscript_figures.py` and forgot `PROGRAMME_MARKERS` in `check_zero_drift.py`, so the credit-to-all-58 guard failed. The requirement never changed, only the phrasing carrying it. Caught by the guard, fixed.
+
+### Final state
+
+| Check | Result |
+|---|---|
+| `verify_manuscript_figures.py` | **47 assertions, 0 failed** |
+| `check_zero_drift.py` | **23 checks, 0 failed** |
+| `withdraw_contributor.py --check` | clean |
+| `deployment_lock.py --verify` | **LOCK HOLDS**, 17 files, 15 probes |
+| House style | 0 em-dashes, 0 banned words |
+| Manuscript | 11,536 words |

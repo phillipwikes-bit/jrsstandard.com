@@ -639,10 +639,17 @@ PROGRAMME_SCOPE_FILES = [
 # Any of these counts as crediting the whole programme.
 PROGRAMME_MARKERS = (
     "58 independent experts",
-    # v4 opens the Acknowledgments by spelling the number. The guard is on the
+    # v4 opened the Acknowledgments by spelling the number. The guard is on the
     # fact that the whole programme is credited, not on how the sentence is
     # written, so the spelled form counts.
     "Fifty-eight independent experts",
+    # 2026-08-18: an editorial review required the programme-level
+    # acknowledgments compressed, on the ground that a journal manuscript is not
+    # a programme report. THE CREDIT TO ALL 58 SURVIVED THAT COMPRESSION and is
+    # still required here; only the phrasing carrying it changed. This marker was
+    # missed when the same widening was applied to verify_manuscript_figures.py,
+    # and this guard caught the omission.
+    "All 58 worked unpaid",
     "58 international reviewers",
     "58 reviewers",
     "across three studies",

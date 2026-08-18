@@ -129,8 +129,15 @@ MSTEXT = io.open(MS, encoding="utf-8").read()
 # The Acknowledgments spell the number at the head of the section. Accepting
 # either form keeps the guard on the fact and off the prose: a check that forces
 # the digit form is a check that writes the sentence.
+# Item 13 of the surgical set compressed the programme-level acknowledgments on
+# the reviewer's instruction that a journal manuscript is not a programme report.
+# The credit to all 58 SURVIVES that compression and this check still enforces
+# it: the owner's standing instruction is that recognition covers every completer
+# and is not scoped to whichever study a paper reports. Only the accepted
+# phrasings widened; the requirement did not.
 FIFTY_EIGHT_CREDITED = ("58 independent experts" in MSTEXT
-                        or "Fifty-eight independent experts" in MSTEXT)
+                        or "Fifty-eight independent experts" in MSTEXT
+                        or "All 58 worked unpaid" in MSTEXT)
 
 A = json.load(io.open(AGG, encoding="utf-8"))
 dp = A["detection_panel"]
@@ -282,7 +289,12 @@ else:
     # becomes a broad one between drafts.
     SCOPE_SENTENCES = [
         "It does not establish criterion validity against real documentation",
-        "the accuracy reported in Section 6 is an upper bound",
+        # RETARGETED 2026-08-18. Item 4 of the surgical set replaced "is an upper
+        # bound" with "may overstate performance": bimodality shows the task is
+        # likely easier, it does not establish a mathematical upper bound. The
+        # limit is still asserted, in weaker and more defensible words, and this
+        # needle still fails if the admission is deleted outright.
+        "may overstate performance on a corpus containing ambiguous records",
         "The study therefore establishes detectability on AI-generated records.",
     ]
     missing_scope = [x for x in SCOPE_SENTENCES if x not in MSTEXT]
@@ -294,11 +306,21 @@ else:
     passes = sum(1 for r in jrs_raw for v in (r.get("conditions") or {}).values() if v == "pass")
     mids = sum(1 for r in jrs_raw for v in (r.get("conditions") or {}).values() if v == "review")
     used = sum(1 for r in jrs_raw if "gap" in (r.get("conditions") or {}).values())
-    T("lowest level is the most-used value", "recorded 216 times against 207 passes and 142",
+    # THE UNITS ARE NOW DISTINGUISHED, AND THE ARITHMETIC IS CHECKED HERE.
+    # 113 rows each carry five condition values, so there are 565 condition-level
+    # labels and 113 overall determinations. v4 called both "labels" and an
+    # editorial review caught it: 216 + 207 + 142 = 565, which cannot be 113 of
+    # anything. Verified against bench_labels before the manuscript was changed.
+    T("condition-level labels total 565, not 113", "565 condition-level labels",
+      lowest + passes + mids == 565 and len(jrs_raw) * 5 == 565,
+      "%d rows x 5 = %d; gap %d + pass %d + review %d = %d"
+      % (len(jrs_raw), len(jrs_raw) * 5, lowest, passes, mids, lowest + passes + mids))
+    T("lowest level is the most-used value",
+      "the lowest coding level was recorded 216 times, the pass level 207 times, and the middle level 142 times",
       lowest == 216 and passes == 207 and mids == 142,
       "gap %d, pass %d, review %d" % (lowest, passes, mids))
-    T("lowest level appears in 77 of 113 labels", "77 of the 113 labels", used == 77,
-      "%d" % used)
+    T("lowest level appears in 77 of 113 determinations",
+      "77 of the 113 overall determinations", used == 77, "%d" % used)
 
 # ------------------------------------------------------------- cross-vendor
 runs = fetch("study_runs", 500)
@@ -369,16 +391,107 @@ else:
     T("programme credit: 58 experts", "",
       FIFTY_EIGHT_CREDITED and ps.get("reviewers_all") == 58,
       "reviewers_all=%s, credited in the Acknowledgments" % ps.get("reviewers_all"))
-    T("programme credit: 36 completers", "36 independent experts have each completed",
-      ps.get("completers_all") == 36, "completers_all=%s" % ps.get("completers_all"))
+    # MOVED OUT OF THE MANUSCRIPT BY DESIGN, 2026-08-18. Item 13 of the surgical
+    # set moved the programme-level participation figures to the study repository
+    # on the reviewer's instruction. The FACT is still verified against the live
+    # endpoint; what is no longer required is a sentence carrying it in the paper.
+    # The needle is dropped, not the assertion.
+    T("programme credit: 36 completers", "",
+      ps.get("completers_all") == 36,
+      "completers_all=%s, recorded in the repository rather than the manuscript "
+      "since the acknowledgments were compressed" % ps.get("completers_all"))
     T("comparison-study credit: 20", "The comparison study, 20 independent experts",
       ps.get("completers_comparison") == 20, "completers_comparison=%s" % ps.get("completers_comparison"))
     T("reliability credit: 25 raters", "The reliability study, 25 raters",
       ps.get("reliability_raters") == 25, "reliability_raters=%s" % ps.get("reliability_raters"))
     T("detection countries", "11 countries", ps.get("countries_detection") == 11,
       "countries_detection=%s" % ps.get("countries_detection"))
-    T("programme countries", "16 countries", ps.get("countries_all") == 16,
-      "countries_all=%s" % ps.get("countries_all"))
+    T("programme countries", "", ps.get("countries_all") == 16,
+      "countries_all=%s, recorded in the repository rather than the manuscript "
+      "since the acknowledgments were compressed" % ps.get("countries_all"))
+
+# ------------------------------------------------- claim consistency
+# ITEM 15 OF THE 2026-08-18 SURGICAL SET, MADE PERMANENT.
+#
+# A one-off consistency read is worth exactly as much as the day it was run. Each
+# pair below is a claim the manuscript settled and the wording on both sides of
+# it: text that must NOT be present, and text that must be. A future edit that
+# reintroduces a withdrawn claim, or deletes the sentence that withdrew it,
+# fails here.
+#
+# These are not style rules. Every pair is a place where two sections of the
+# paper could contradict each other, which is the failure an editorial reviewer
+# found in v4 and the reason this exists.
+CLAIM_PAIRS = [
+    ("workflow independence",
+     ["JRS is independent of any vendor"],
+     ["designed to be vendor-, model-, and workflow-agnostic",
+      "Workflow independence is a design intention, not a result"]),
+    ("no externally verified key",
+     ["verified key", "verified answer key"],
+     ["pre-specified reference classification"]),
+    ("bimodality may overstate, is not an upper bound",
+     ["is an upper bound"],
+     ["may overstate performance"]),
+    ("operationalisation, not the construct",
+     ["A property can be real"],
+     ["operationalised Decision Reconstruction Risk distinction is detectable",
+      "An operationalised property can be detectable"]),
+    ("reliability criterion stays failed",
+     ["criterion was substantially met", "criterion was met"],
+     ["The pre-registered reliability criterion was not met.",
+      "We do not treat that as satisfying the pre-registration."]),
+    ("condition p-values stay out",
+     ["Fisher's exact", "1.8e-10", "1.1e-11", "p below 1.5e-07"],
+     ["This descriptive association does not establish independent discriminating validity"]),
+    ("proportionality untested",
+     ["proportionality is a validated"],
+     ["**It is untested.**"]),
+    ("no cross-cultural validity claim",
+     ["establishes cross-cultural validity", "demonstrates measurement invariance"],
+     ["It does not establish measurement invariance"]),
+    ("ethics states blinding, not absence of deception",
+     ["no deception was used"],
+     ["Participants were informed in advance that the reference classification"]),
+    ("coded, not de-identified",
+     ["de-identified participant-level response data"],
+     ["coded participant-level response data"]),
+    ("ICC reported on the latent scale",
+     ["close to half the variance in whether a read is correct is attributable"],
+     ["On the model's latent logistic scale"]),
+    ("no 'fourth variety' taxonomy",
+     ["The variety at issue here is a fourth"],
+     ["The variety at issue here is documentation-layer opacity"]),
+    # ADDED AFTER AN ADVERSARIAL TEST GOT THROUGH. Restoring the exact sentence
+    # that conflated 113 determinations with 565 condition-level labels passed
+    # every other check, because the arithmetic check above verifies the
+    # DATABASE and the figure-count lock only counts headline figures. The very
+    # error this revision set was written to fix could have come straight back.
+    ("113 determinations and 565 condition-level labels stay distinct",
+     ["Across the 113 labels",
+      "recorded 216 times against 207 passes and 142",
+      "77 of the 113 labels",
+      "unmet across all 113 labels"],
+     ["Across the 113 overall determinations recorded under the five-condition instrument",
+      "Across the 565 condition-level labels, the lowest coding level was recorded 216 times",
+      "77 of the 113 overall determinations"]),
+]
+_claim_bad = []
+for _name, _absent, _present in CLAIM_PAIRS:
+    _hit = [x for x in _absent if x in MSTEXT]
+    _gone = [x for x in _present if x not in MSTEXT]
+    if _hit:
+        _claim_bad.append("%s: reintroduced %r" % (_name, _hit[0][:44]))
+    if _gone:
+        _claim_bad.append("%s: withdrawal sentence deleted, %r" % (_name, _gone[0][:44]))
+CHECKS.append({
+    "name": "settled claims stay settled",
+    "needle": "",
+    "in_manuscript": True,
+    "value_ok": not _claim_bad,
+    "detail": ("%d claim pairs, none contradicted" % len(CLAIM_PAIRS)) if not _claim_bad
+              else "; ".join(_claim_bad)
+})
 
 # --------------------------------------------------- superseded values
 # THE NEEDLE CHECKS ABOVE ARE NOT SUFFICIENT ON THEIR OWN, and an adversarial
