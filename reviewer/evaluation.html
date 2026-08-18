@@ -87,12 +87,12 @@ button:disabled{opacity:.55;cursor:default}
   <section id="intro">
     <div class="eyebrow">Step 4 of 5 &middot; Reviewer Evaluation</div>
     <h1>How are records reviewed where you work?</h1>
-    <p class="sub">Nine questions, about four minutes. This is the research contribution the certificate records. The programme can already say how consistently the five conditions are applied under study conditions; it cannot yet say what record review actually looks like inside working organizations, and that is the gap these answers fill.</p>
+    <p class="sub">Nine questions, about four minutes. This is the research contribution, and it carries no certificate: the certificate is issued for completing the training. The programme can already say how consistently the five conditions are applied under study conditions; it cannot yet say what record review actually looks like inside working organizations, and that is the gap these answers fill.</p>
 
     <div class="privacy">
       <b>Your answers are stored with no name attached.</b> They are written as an anonymous row carrying only the answers, your sector, a coarse organization size and a two-letter country code. No name, no email, no employer and no free text goes into that row.
       <br><br>
-      If you want a certificate, your name and email are written as a <b style="color:var(--text)">separate</b> record that does not contain your answers. The two share nothing that links them. You are not trading candour for a certificate, and nothing you say here can be traced back to you.
+      If you ask for a LinkedIn recommendation at the end, your name and email are written as a <b style="color:var(--text)">separate</b> record that does not contain your answers. The two share nothing that links them. You are not trading candour for anything, and nothing you say here can be traced back to you.
       <br><br>
       Please answer for the organization as it is, not as policy says it should be. A guarded answer is worth less than no answer.
     </div>
@@ -113,24 +113,8 @@ button:disabled{opacity:.55;cursor:default}
     <div class="card" id="questions"></div>
 
     <div class="card gold">
-      <h2>Certificate</h2>
-      <p class="sub" style="font-size:13.5px">Optional. Tick this and the next screen issues a certificate in the name you give, with a LinkedIn entry you can add to your profile.</p>
-
-      <label class="chk core"><input type="checkbox" id="want-cert"><span>Issue me a certificate for completing the training and this evaluation.</span></label>
-
-      <div id="cert-fields" class="hidden">
-        <label class="fl" for="f-name">Name, exactly as it should be printed</label>
-        <input id="f-name" type="text" placeholder="Full name">
-        <label class="fl" for="f-title">Title, exactly as it should be printed (optional)</label>
-        <input id="f-title" type="text" placeholder="Leave blank to print your name alone">
-        <label class="fl" for="f-email">Work email</label>
-        <input id="f-email" type="email" placeholder="Work email">
-        <label class="fl" for="f-org">Organization (optional)</label>
-        <input id="f-org" type="text" placeholder="Organization">
-        <label class="chk core"><input type="checkbox" id="c-contact"><span>I agree to be contacted about the JRS standard and to my details being stored securely under the <a href="/privacy.html#consent" id="terms-link">registration terms</a>. <span style="color:var(--text)">Your name is <b style="color:var(--ready-text);font-weight:600">not published</b> by ticking this.</span></span></label>
-        <div id="terms-panel" style="display:none;border:1px solid var(--accent-dim);background:var(--surface2);padding:13px 14px;margin:0 0 11px;font-size:12px;color:var(--muted);line-height:1.6">Ticking the box means three things and no more: contact me about the JRS project, store my details securely, and allow that record to travel with the project if the JRS assets are ever transferred to a successor. It does <b style="color:var(--text)">not</b> publish your name. Full detail in the <a href="/privacy.html#consent" style="color:var(--accent)">Privacy Policy</a>.</div>
-        <label class="chk"><input type="checkbox" id="c-public"><span>Optional: list my name publicly as a JRS-trained reviewer.</span></label>
-      </div>
+      <h2>In return for your time</h2>
+      <p class="sub" style="font-size:13.5px">Optional. The evaluation itself asks for no identifying detail; anything below is a separate record.</p>
 
       <section class="incentive" aria-labelledby="inc-h">
         <div class="lbl" id="inc-h">Optional &middot; In return for your time</div>
@@ -309,10 +293,6 @@ button:disabled{opacity:.55;cursor:default}
     el('count').textContent = n + ' of ' + keys.length + ' answered';
   }
 
-  el('want-cert').addEventListener('change', function(){
-    el('cert-fields').classList.toggle('hidden', !this.checked);
-  });
-
   // Smooth reveal rather than a display toggle, so the block does not jump the
   // page under the reader's thumb on a phone.
   el('want-rec').addEventListener('change', function(){
@@ -324,19 +304,6 @@ button:disabled{opacity:.55;cursor:default}
         if (r && r.scrollIntoView) r.scrollIntoView({ behavior:'smooth', block:'nearest' });
       }, 260);
     }
-  });
-
-  // Inline terms rather than a new window: the anchor sits inside the consent
-  // label, and in-app browsers block target="_blank" so the link reads as dead.
-  var tl = el('terms-link');
-  if (tl) tl.addEventListener('click', function(e){
-    e.preventDefault(); e.stopPropagation();
-    var p = el('terms-panel');
-    if (!p) return;
-    var open = (p.style.display === 'none' || !p.style.display);
-    p.style.display = open ? 'block' : 'none';
-    tl.textContent = open ? 'hide the details' : 'registration terms';
-    if (open && p.scrollIntoView) p.scrollIntoView({ behavior:'smooth', block:'nearest' });
   });
 
   el('go').addEventListener('click', function(){
@@ -361,15 +328,6 @@ button:disabled{opacity:.55;cursor:default}
       if (!recEmail || recEmail.indexOf('@') < 1 || recEmail.indexOf('.') < 0) { m.textContent = 'Please enter a valid work email for the recommendation, or untick that box.'; el('rec-email').focus(); return; }
     }
 
-    var wantsCert = el('want-cert').checked;
-    var name = (el('f-name').value || '').trim();
-    var email = (el('f-email').value || '').trim();
-    if (wantsCert) {
-      if (!name) { m.textContent = 'Please enter the name to print on the certificate.'; el('f-name').focus(); return; }
-      if (!email || email.indexOf('@') < 1 || email.indexOf('.') < 0) { m.textContent = 'Please enter a valid work email address.'; el('f-email').focus(); return; }
-      if (!el('c-contact').checked) { m.textContent = 'Please tick the contact box so the certificate can be issued. Your name is not published by ticking it.'; return; }
-    }
-
     go.disabled = true;
     m.style.color = 'var(--muted)';
     m.textContent = 'Recording your evaluation...';
@@ -386,13 +344,10 @@ button:disabled{opacity:.55;cursor:default}
         modules_completed: modulesDone(),
         src: src,
         consent_research: true,
-        want_certificate: wantsCert,
-        name: name,
-        title: (el('f-title').value || '').trim(),
-        email: email,
-        organization: (el('f-org').value || '').trim(),
-        consent_contact: el('c-contact').checked,
-        consent_public_list: el('c-public').checked,
+        // NO CERTIFICATE FIELDS. The certificate offer was removed from this
+        // page on 2026-08-18: a certificate is issued for completing the
+        // training, and this page cannot observe that. See api/reviewer-eval.js.
+        want_certificate: false,
         want_recommendation: wantsRec,
         rec_name: recName,
         rec_email: recEmail,
@@ -407,16 +362,11 @@ button:disabled{opacity:.55;cursor:default}
       el('done-line').textContent = 'Your evaluation is recorded: ' + d.answered + ' of ' + d.total
         + ' questions answered. It is stored with no name attached.'
         + (d.incentive ? ' Your recommendation request is recorded as a separate contact record that does not contain your answers.' : '');
-      if (d.certificate && d.code) {
-        try { localStorage.setItem('jrs-reviewer-code', d.code); } catch(e){}
-        try { localStorage.setItem('jrs-reviewer-name', name); } catch(e){}
-        el('cert-block').innerHTML =
-            '<h2>Your certificate is ready</h2>'
-          + '<p class="sub">Completion code <b style="color:var(--accent);font-family:\'JetBrains Mono\',monospace">' + esc(d.code) + '</b>. Keep it: it is the only handle you need to quote.</p>'
-          + '<a href="/reviewer/completion.html?code=' + encodeURIComponent(d.code) + '&name=' + encodeURIComponent(name) + '&title=' + encodeURIComponent((el('f-title').value||'').trim()) + '" style="text-decoration:none"><button type="button">Open my certificate &rarr;</button></a>';
-      } else {
-        el('cert-block').classList.add('hidden');
-      }
+      // The certificate block is always hidden. Removed 2026-08-18: a
+      // certificate is issued for completing the training, and submitting this
+      // evaluation is not that. The element is left in place so an older cached
+      // copy of this page cannot render an empty gold card.
+      el('cert-block').classList.add('hidden');
       window.scrollTo(0,0);
     })
     .catch(function(){

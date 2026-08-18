@@ -198,16 +198,29 @@ export default async function handler(req){
   // Contact validation runs BEFORE the test-mode branch. Otherwise a malformed
   // name or email returns 200 whenever a test tag is present, which means the
   // validation cannot be verified by the audit that is supposed to verify it.
-  const wantsCert = b.want_certificate === true;
-  const certName  = clean(b.name, 200);
-  const certEmail = clean(b.email, 200);
-  if (wantsCert) {
-    if (!certName) return json({ error: 'name_required' }, 400);
-    if (!certEmail || certEmail.indexOf('@') < 1 || certEmail.indexOf('.') < 0) {
-      return json({ error: 'valid_email_required' }, 400);
-    }
-    if (b.consent_contact !== true) return json({ error: 'consent_contact_required' }, 400);
-  }
+  // THE CERTIFICATE OFFER IS WITHDRAWN FROM THIS ENDPOINT, 2026-08-18, on the
+  // owner's instruction: a certificate is issued for completing the training,
+  // and submitting this evaluation is not that.
+  //
+  // The evaluation is reachable without touching the training at all. It sits
+  // at the end of a public funnel that starts at /api/support?c=rtkw and
+  // /api/support?c=defend, goes through access.html and lands here, so anyone
+  // following an initiative link from LinkedIn could obtain a certificate
+  // without opening a single module. One person did, which is how this was
+  // found.
+  //
+  // HARD REFUSAL, NOT A FLAG. wantsCert is pinned false regardless of what the
+  // request body says, so a stale cached page, a replayed request or a hand-
+  // rolled POST cannot issue a code either. The certificate fields are no
+  // longer read at all, so no name or email arrives here through this path.
+  //
+  // Codes ALREADY ISSUED stay valid: /api/reviewer-cert renders from the code
+  // and is untouched. Withdrawing the offer does not retract what was given.
+  //
+  // If a training-gated certificate is wanted, it belongs to the training flow,
+  // which is the only surface that can observe a training completion. It does
+  // not belong here.
+  const wantsCert = false;
 
   const wantsRec = b.want_recommendation === true;
   const recName  = clean(b.rec_name, 200);
@@ -224,10 +237,11 @@ export default async function handler(req){
   if (isCheck) {
     return json({ ok: true, recorded: false, check: true, answered: answered,
                   total: Object.keys(QUESTIONS).length,
-                  certificate: wantsCert,
+                  certificate: false,
+                  certificate_withdrawn: 'issued for training completion only, 2026-08-18',
                   incentive: wantsRec,
                   incentive_linkedin_normalised: recLi,
-                  code: wantsCert ? completionCode() : '' });
+                  code: '' });
   }
   try {
     await fetch(SB + '/rest/v1/interaction_events', {
@@ -250,6 +264,12 @@ export default async function handler(req){
 
   // ROW 2: identity, only if a certificate was asked for, and never with the
   // answers attached.
+  //
+  // DEAD BY CONSTRUCTION since 2026-08-18: wantsCert is pinned false above, so
+  // this block never runs and no reviewer-cert row is written from here any
+  // more. It is left standing rather than deleted because it is the exact
+  // shape a training-gated certificate would need, and rewriting it from
+  // scratch later is how the consent handling in it would get lost.
   let code = '';
   if (wantsCert) {
     const name  = certName;
@@ -324,5 +344,7 @@ export default async function handler(req){
 
   return json({ ok: true, recorded: true, answered: answered,
                 total: Object.keys(QUESTIONS).length,
-                certificate: wantsCert, code: code, incentive: incentive });
+                certificate: false,
+                certificate_withdrawn: 'issued for training completion only, 2026-08-18',
+                code: '', incentive: incentive });
 }

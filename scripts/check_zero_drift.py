@@ -874,9 +874,31 @@ CERT_OVERCLAIMS = [
      "the JRS-R code proves an evaluation submission, not a training completion"),
     ("completed the JRS Reviewer Training",
      "same overclaim, share-snippet wording"),
-    ("The certificate records that you completed the training",
+    ("The certificate records that you completed the training and submitted",
      "same overclaim, reviewer landing boundary note"),
 ]
+
+# THE CERTIFICATE OFFER IS OFF THE EVALUATION, 2026-08-18, on the owner's
+# instruction: a certificate is issued for completing the training only.
+#
+# THE FIRST VERSION OF THE GUARD ABOVE MISSED THIS ENTIRELY. It listed three
+# exact overclaim fragments and scanned reviewer/evaluation.html among its
+# files, and the checkbox on that page read "Issue me a certificate for
+# completing the training and this evaluation" the whole time. The fragment was
+# not on the list, so the check passed while sitting on the offer itself. A
+# blocklist only catches what somebody already thought of.
+#
+# This pair closes it from the other side: the control ids cannot come back, and
+# the endpoint cannot issue a code. Neither depends on guessing the wording.
+CERT_OFFER_CONTROLS = [
+    ("want-cert", "the certificate opt-in checkbox on the evaluation"),
+    ("cert-fields", "the certificate name and email block it revealed"),
+    ("Issue me a certificate", "the checkbox label, in any wording"),
+    ("what the certificate records", "copy tying the certificate to the evaluation"),
+    ("it is what the certificate records", "same, reviewer landing step"),
+]
+
+CERT_OFFER_FILES = ["reviewer/evaluation.html", "access.html"]
 
 CERT_PATH_FILES = [
     "api/reviewer-cert.js",
@@ -918,6 +940,50 @@ def check_certificate_claims_supported(offline):
     check("reviewer certificate claims only what the code proves", not hits,
           "; ".join(hits) if hits
           else "%d files, no unsupported credential claim" % len(CERT_PATH_FILES))
+
+
+def check_evaluation_offers_no_certificate(offline):
+    """The evaluation must not offer a certificate, and the endpoint must refuse.
+
+    The evaluation sits at the end of a public funnel: /api/support?c=rtkw and
+    ?c=defend go to access.html, which links straight to it. A reader following
+    an initiative link from LinkedIn could obtain a certificate without opening
+    a single training module, and one did.
+
+    Two independent conditions, because copy can be reworded and a control can
+    be re-added under a different label:
+      1. no certificate control or offer copy on the funnel pages, and
+      2. api/reviewer-eval.js pins wantsCert false rather than reading the body.
+    """
+    hits = []
+    for rel in CERT_OFFER_FILES:
+        body = read(rel)
+        if not body:
+            check("the evaluation offers no certificate", False,
+                  "%s is unreadable" % rel)
+            return
+        for frag, why in CERT_OFFER_CONTROLS:
+            for idx in _all_indexes(body, frag):
+                line_start = body.rfind("\n", 0, idx) + 1
+                line = body[line_start:body.find("\n", idx)]
+                stripped = line.lstrip()
+                if stripped.startswith("//") or stripped.startswith("#"):
+                    continue
+                hits.append("%s: %r (%s)" % (rel, frag, why))
+
+    api = read("api/reviewer-eval.js")
+    if not api:
+        check("the evaluation offers no certificate", False,
+              "api/reviewer-eval.js is unreadable")
+        return
+    if not re.search(r"^\s*const wantsCert = false;\s*$", api, re.M):
+        hits.append("api/reviewer-eval.js no longer pins wantsCert to false, so "
+                    "the endpoint can issue a completion code again")
+
+    check("the evaluation offers no certificate", not hits,
+          "; ".join(hits) if hits
+          else "%d funnel pages clean, endpoint pins wantsCert false"
+               % len(CERT_OFFER_FILES))
 
 
 def _all_indexes(hay, needle):
@@ -976,6 +1042,7 @@ def main():
                check_honor_roster_composition,
                check_certificate_claims_supported,
                check_printed_certificate_matches_endpoint,
+               check_evaluation_offers_no_certificate,
                check_generated_docs_current, check_cross_endpoint):
         try:
             fn(offline)
