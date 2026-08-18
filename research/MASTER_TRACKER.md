@@ -883,6 +883,7 @@ The review instrument stores working keys; they map to the standard as follows (
 - 2026-08-18: Owner asked whether **both arms are labelled as experts** in the paper. **Audit: Arm A yes in three places, Arm B only in the Acknowledgments and nowhere in the body.** Sections 4.2 and 5 left a reader to infer an expert-versus-novice comparison, which is the confound the randomisation exists to avoid, and is the same conflation the programme corrected on 2026-08-05. Verified from `Expert_Roster_All_Studies_2026-08-06.csv` (credentialed Arm B titles) and `ArmB_Design.md:3,32` ("do not put experts in one and novices in the other") before writing it in. Both sections now state expertise parity and that JRS-naive is about exposure, not expertise; "unaided professional judgment" standardised to "expert". 15th claim pair guards it. **Two ordering defects in my own revision script, both caught by its own checks: a false non-unique report, then a duplicated sentence on re-run.**
 - 2026-08-18: **v5 surgical revision executed.** All six instructed revisions applied as 21 exact-match rules via `scripts/apply_v5_revisions.py`; **v4 read, not overwritten**; `Detection_Article_v5_2026-08-18.docx` and `Detection_Article_v5_CHANGE_LOG.md` produced. **Two instructed numbers disagree with the manuscript and the database and were NOT changed**: trained AC1 given as 0.624 CI 0.349-0.898, actual 0.623 CI 0.253-0.994; 0.624 is the pre-2026-08-15 value and is on the superseded blocklist. Flagged for decision. Final QA caught **six bare 'the key' references that survived after 'answer key' reached zero**; all standardised and added to the forbidden list. 47 assertions 0 failed, 23 checks 0 failed, idempotent, docx validated.
 - 2026-08-18: **v6 surgical revision executed.** All six instructed revisions applied as 10 exact-match rules via `scripts/apply_v6_revisions.py`; v5 read, not overwritten. **One consistency defect caught by the mandated audit**: Section 8.3 restated revision 6's claim in different words and would have contradicted the corrected Appendix C; aligned, all figures preserved. Numerical integrity PASS (31 values), claim boundary PASS (18 absent, 20 present, 2 exactly-once), document integrity PASS (headings 45, table rows 91, References and Appendices A and B byte-identical to v5). Idempotent. 47 assertions 0 failed, 23 checks 0 failed.
+- 2026-08-18: **v7 surgical corrections executed.** All four instructed fixes applied via `scripts/apply_v7_revisions.py`; v6 read, not overwritten; v4, v5 and v6 all verified unmodified. Fix 1 resolved the Section 4.6 contradiction with Appendix C on the record component; fix 2 removed the unpaired p = 0.48; fix 3 corrected the Section 4.9 grammatical defect; fix 4 removed the internal API identifier from Appendix C while preserving the simulation and parity statement verbatim. Numerical integrity PASS (34 values), statistical consistency PASS (5 forbidden phrases at zero, all 7 required statements communicated), claim boundary PASS (18 absent, 22 present), document integrity PASS (headings 45, table rows 91, paragraphs 181, References and Appendices A and B byte-identical). Idempotent. 47 assertions 0 failed, 23 checks 0 failed.
 
 ## CONSOLIDATED ERROR LOG (assistant errors this session — recorded 2026-08-01 at owner's instruction so they are not repeated)
 1. **Reliability miscalculation (most damaging).** Recomputed Rung 2a reliability with baseline-condition labels (mode=normal) wrongly mixed into the JRS reliability set, producing a false "collapse" to AC1 0.18. CORRECT value (JRS reads only, verified live 2026-08-01): experts 0.74, trained 0.62-0.63, both clear the 0.61 floor. PREVENTION RULE: reliability of the JRS read is computed ONLY on mode=jrs labels; never mix mode=normal (baseline) labels; always print n, modes, and rater codes before reporting a coefficient.
@@ -2339,3 +2340,40 @@ Revision 6 replaced the Appendix C conclusion. **Section 8.3 restated the same c
 | `check_zero_drift.py`, v6 added to programme scope | **23 checks, 0 failed** |
 
 Outputs: `research/Detection_Article_v6_2026-08-18.md`/`.docx`, `research/Detection_Article_v6_CHANGE_LOG.md`/`.docx`.
+
+## 2026-08-18: v7 surgical corrections
+
+Four instructed fixes. **v6 read and not overwritten**; v4, v5 and v6 all remain unmodified on disk.
+
+| Fix | Section | Status |
+|---|---|---|
+| 1 | Section 4.6, record-component interpretation | APPLIED |
+| 2 | Section 6.4, unpaired p-value removed | APPLIED |
+| 3 | Section 4.9, grammatical defect | APPLIED |
+| 4 | Appendix C, internal API identifier removed | APPLIED |
+
+**Fix 1 resolved a real contradiction.** Section 4.6 said the record component was "small and not distinguishable from zero at this sample size" while the corrected Appendix C said it is estimated at the boundary and that the profile interval permits a materially larger effect. The two sections disagreed. Section 4.6 now states the reviewer component is dominant on this corpus and the record component is weakly identified.
+
+**Fix 4 removed `api/variance-6b1d90fa2c47e8b3` from the manuscript.** No repository URL, DOI or external package was invented in its place, and no availability claim was added. The simulation and numeric-parity statement is preserved verbatim, as instructed.
+
+### Audits
+
+| Audit | Result |
+|---|---|
+| Numerical integrity, 34 instructed values | **PASS**. 216 + 142 + 207 = 565; 113 x 5 = 565 |
+| Post-edit forbidden phrases, 5 | all at **zero** |
+| Statistical consistency, 7 required statements | all **communicated** |
+| Claim boundary, 18 must-be-absent | **PASS** |
+| Claim boundary, 22 must-be-present | **PASS** |
+| Document integrity | **PASS**. Headings 45 to 45, table rows 91 to 91, paragraphs 181 to 181, 0 duplicates |
+| References and citations | byte-identical to v6 |
+| Appendix A | byte-identical to v6 |
+| Appendix B | byte-identical to v6 |
+| Idempotency | re-run is a no-op |
+| `.docx` | valid zip, 158,573 chars of document XML, all four fixes present, all four retired phrases absent |
+| `verify_manuscript_figures.py`, retargeted to v7 | **47 assertions, 0 failed** |
+| `check_zero_drift.py`, v7 added to programme scope | **23 checks, 0 failed** |
+
+Only four line groups differ between v6 and v7.
+
+Outputs: `research/Detection_Article_v7_2026-08-18.md`/`.docx`, `research/Detection_Article_v7_CHANGE_LOG.md`/`.docx`.
