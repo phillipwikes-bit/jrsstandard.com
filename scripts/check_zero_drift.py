@@ -1076,6 +1076,53 @@ def check_printed_certificate_matches_endpoint(offline):
           if inline else "parsed body carries an unsupported claim: %r" % body[:90])
 
 
+# Cloudflare Pages artifacts. Deleted 2026-08-18 when the legacy pipeline was
+# severed from this repository. Each entry is a path plus why it must not return.
+CLOUDFLARE_ARTIFACTS = [
+    ("functions/record.js",
+     "Cloudflare Pages Function; was served publicly as a static file at "
+     "/functions/record.js and binds a KV namespace this deployment lacks"),
+    ("functions/results.js",
+     "Cloudflare Pages Function; same KV binding, same dead pipeline"),
+    ("_headers",
+     "Cloudflare Pages and Netlify header format. Vercel ignores it and honours "
+     "the headers block in vercel.json, so it reads as active policy while "
+     "doing nothing"),
+    ("wrangler.toml", "no wrangler config has ever existed here"),
+    ("wrangler.json", "no wrangler config has ever existed here"),
+    ("wrangler.jsonc", "no wrangler config has ever existed here"),
+    ("_worker.js", "Cloudflare Workers advanced-mode entry point"),
+    ("_routes.json", "Cloudflare Pages routing manifest"),
+]
+
+
+def check_no_cloudflare_artifacts(offline):
+    """No Cloudflare Pages or Workers artifact is back in the repository.
+
+    Severed on 2026-08-18. The risk is not that any of these does damage on
+    Vercel; it is that they read as live configuration and do nothing.
+    _headers in particular declares no-store on every HTML page and Vercel
+    never applied one line of it, so anyone reading the repo would conclude
+    the caching policy was set when it was not.
+
+    THIS DOES NOT STOP THE FAILING WORKERS BUILD ON PULL REQUESTS. That build
+    comes from a Cloudflare-to-GitHub integration held in the Cloudflare
+    dashboard, outside this repository. Only disconnecting it there stops it.
+    This check exists so the repository side stays severed, not to fix the
+    dashboard side.
+    """
+    back = []
+    for rel, why in CLOUDFLARE_ARTIFACTS:
+        if os.path.exists(os.path.join(ROOT, rel)):
+            back.append("%s is back (%s)" % (rel, why))
+    fn = os.path.join(ROOT, "functions")
+    if os.path.isdir(fn) and os.listdir(fn):
+        back.append("functions/ exists again with %d entries" % len(os.listdir(fn)))
+    check("no Cloudflare Pages artifact is back", not back,
+          "; ".join(back) if back
+          else "%d paths checked, all absent" % len(CLOUDFLARE_ARTIFACTS))
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -1088,6 +1135,7 @@ def main():
                check_certificate_claims_supported,
                check_printed_certificate_matches_endpoint,
                check_evaluation_offers_no_certificate,
+               check_no_cloudflare_artifacts,
                check_generated_docs_current, check_cross_endpoint):
         try:
             fn(offline)
