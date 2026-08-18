@@ -884,6 +884,7 @@ The review instrument stores working keys; they map to the standard as follows (
 - 2026-08-18: **v5 surgical revision executed.** All six instructed revisions applied as 21 exact-match rules via `scripts/apply_v5_revisions.py`; **v4 read, not overwritten**; `Detection_Article_v5_2026-08-18.docx` and `Detection_Article_v5_CHANGE_LOG.md` produced. **Two instructed numbers disagree with the manuscript and the database and were NOT changed**: trained AC1 given as 0.624 CI 0.349-0.898, actual 0.623 CI 0.253-0.994; 0.624 is the pre-2026-08-15 value and is on the superseded blocklist. Flagged for decision. Final QA caught **six bare 'the key' references that survived after 'answer key' reached zero**; all standardised and added to the forbidden list. 47 assertions 0 failed, 23 checks 0 failed, idempotent, docx validated.
 - 2026-08-18: **v6 surgical revision executed.** All six instructed revisions applied as 10 exact-match rules via `scripts/apply_v6_revisions.py`; v5 read, not overwritten. **One consistency defect caught by the mandated audit**: Section 8.3 restated revision 6's claim in different words and would have contradicted the corrected Appendix C; aligned, all figures preserved. Numerical integrity PASS (31 values), claim boundary PASS (18 absent, 20 present, 2 exactly-once), document integrity PASS (headings 45, table rows 91, References and Appendices A and B byte-identical to v5). Idempotent. 47 assertions 0 failed, 23 checks 0 failed.
 - 2026-08-18: **v7 surgical corrections executed.** All four instructed fixes applied via `scripts/apply_v7_revisions.py`; v6 read, not overwritten; v4, v5 and v6 all verified unmodified. Fix 1 resolved the Section 4.6 contradiction with Appendix C on the record component; fix 2 removed the unpaired p = 0.48; fix 3 corrected the Section 4.9 grammatical defect; fix 4 removed the internal API identifier from Appendix C while preserving the simulation and parity statement verbatim. Numerical integrity PASS (34 values), statistical consistency PASS (5 forbidden phrases at zero, all 7 required statements communicated), claim boundary PASS (18 absent, 22 present), document integrity PASS (headings 45, table rows 91, paragraphs 181, References and Appendices A and B byte-identical). Idempotent. 47 assertions 0 failed, 23 checks 0 failed.
+- 2026-08-18: **v8 final surgical edits executed.** Four instructed edits applied via `scripts/apply_v8_revisions.py`; v7 read, not overwritten; v4 through v7 all verified unmodified. **Edit 4 CI method VERIFIED, not assumed**: the producer is named inside `closed_aggregates_2026-08-15.json` as `api/pstat-4c8e1b6a2d90.js`, recovered from git at `120c11e^`, whose `stats()` computes mean +/- tcrit(n-1)*sd/sqrt(n) with a sample SD and t(15)=2.131; reproduced arithmetically to 72.66 and 95.05. Method sentence added to Section 4.6. **Three false positives in my own audit lists, corrected rather than the manuscript**: the limitation heading 8.6 flagged as a prohibited claim, 'random factor' flagged where the instruction permits it beside the mixed-effects model, and a no-superiority needle that never existed. Numerical PASS (34), statistical PASS (12), claim boundary PASS, document integrity PASS. Idempotent. 47 assertions 0 failed, 23 checks 0 failed.
 
 ## CONSOLIDATED ERROR LOG (assistant errors this session — recorded 2026-08-01 at owner's instruction so they are not repeated)
 1. **Reliability miscalculation (most damaging).** Recomputed Rung 2a reliability with baseline-condition labels (mode=normal) wrongly mixed into the JRS reliability set, producing a false "collapse" to AC1 0.18. CORRECT value (JRS reads only, verified live 2026-08-01): experts 0.74, trained 0.62-0.63, both clear the 0.61 floor. PREVENTION RULE: reliability of the JRS read is computed ONLY on mode=jrs labels; never mix mode=normal (baseline) labels; always print n, modes, and rater codes before reporting a coefficient.
@@ -2377,3 +2378,55 @@ Four instructed fixes. **v6 read and not overwritten**; v4, v5 and v6 all remain
 Only four line groups differ between v6 and v7.
 
 Outputs: `research/Detection_Article_v7_2026-08-18.md`/`.docx`, `research/Detection_Article_v7_CHANGE_LOG.md`/`.docx`.
+
+## 2026-08-18: v8 final surgical edits
+
+Four instructed edits. **v7 read and not overwritten**; v4, v5, v6 and v7 all remain unmodified.
+
+| Edit | Section | Status |
+|---|---|---|
+| 1 | Section 4.6, "random factor" to "unit of observation" for the primary analysis | APPLIED |
+| 2 | Abstract, "pre-registered threshold" to "pre-registered **detection** threshold" | APPLIED |
+| 3 | Appendix C, variance distinguished from uncertainty | APPLIED |
+| 4 | Section 4.6, CI method sentence added after verification | APPLIED |
+
+### Edit 4 was a verification task and the method was found, not assumed
+
+`research/closed_aggregates_2026-08-15.json` **names its own producer**: `api/pstat-4c8e1b6a2d90.js`, deleted after the read at commit `120c11e`. Recovered from git at `120c11e^`:
+
+- `sd()` lines 58 to 62, sample standard deviation, n-1 denominator
+- `tcrit()` lines 69 to 72, lookup table, df 15 maps to 2.131
+- `stats()` lines 74 to 90, `h = tcrit(n-1) * sd / sqrt(n)`, `ci95_low = mean - h`, `ci95_high = mean + h`
+
+Corroborated independently by `scripts/verify_detection_accuracy.py`, whose `ci95_t()` carries the same table.
+
+**Reproduced arithmetically:** 2.131 x 21.02 / 4 = 11.198; 83.85 - 11.198 = 72.65 and 83.85 + 11.198 = 95.05, matching the stored 72.66 and 95.05 to the rounding of the stored SD, and giving 72.7 and 95.1 at one decimal exactly as reported.
+
+Sentence added: *"The 95 percent confidence interval for the panel mean was calculated using a Student t interval across the sixteen reviewer accuracy scores, with reviewers as the independent sampling units."* No value was recalculated.
+
+### Three false positives in my own audit lists
+
+All three were defects in the checks, not the manuscript, and each was corrected in the check.
+
+**A limitation flagged as a prohibited claim.** `psychometrically validated` sat on the prohibited list as a bare substring. Section 8.6 reads *"The five conditions are **not** psychometrically validated"*, which is required and is on the must-be-present list at the same time. The two lists contradicted each other. Prohibited entries now carry the negating wording that makes an occurrence legitimate.
+
+**A permitted phrase flagged.** `random factor` survives twice, both beside the mixed-effects model formula, which the instruction explicitly permits. Replaced the blanket ban with a positional check: every occurrence must sit within 400 characters of `(1 | reviewer) + (1 | record)` or the words "mixed-effects".
+
+**A needle that never existed.** The no-superiority check searched for "no advantage of the instrument over unaided expert judgment". The manuscript says "or **any** advantage". Needle corrected.
+
+### Audits
+
+| Audit | Result |
+|---|---|
+| Numerical integrity, 34 values | **PASS**. 216 + 142 + 207 = 565; 113 x 5 = 565 |
+| Statistical hierarchy, 12 elements | **PASS**. Primary, exploratory and reliability tiers all explicit |
+| Prohibited phrases, 11 | none introduced |
+| Claim boundary, 20 absent / 22 present | **PASS** |
+| Document integrity | **PASS**. Headings 45 to 45, table rows 91 to 91, paragraphs 181 to 181, 0 duplicates |
+| References, Appendix A, Appendix B | byte-identical to v7 |
+| Idempotency | re-run is a no-op |
+| `.docx` | valid zip, 158,753 chars, all four edits present, no bracket placeholder |
+| `verify_manuscript_figures.py`, retargeted to v8 | **47 assertions, 0 failed** |
+| `check_zero_drift.py`, v8 in programme scope | **23 checks, 0 failed** |
+
+Only four line groups differ between v7 and v8.
