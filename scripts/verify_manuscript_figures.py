@@ -39,7 +39,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # v5 is the current manuscript. v4 is retained on disk unmodified, per the
 # revision instruction, and stays in check_zero_drift's PROGRAMME_SCOPE_FILES so
 # a figure that disagrees between the two is still caught as drift.
-MS = os.path.join(ROOT, "research", "Detection_Article_Submission_Final_v3_2026-08-18.md")
+MS = os.path.join(ROOT, "research", "Detection_Article_Submission_FINAL5_2026-08-18.md")
 AGG = os.path.join(ROOT, "research", "closed_aggregates_2026-08-15.json")
 SB = "https://pjzxkeviouofdseagvpf.supabase.co/rest/v1"
 ANON = "sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e"
@@ -443,6 +443,39 @@ else:
       "the executed procedure used three", True, "")
     T("human validation explicitly disclaimed",
       "does not constitute independent human validation", True, "")
+    # ADDED 2026-08-18 BY THE SUBMISSION FREEZE. The novelty claim is a
+    # universal negative over the literature and must stay qualified; the
+    # chronology is narrowed to what the retained record supports, because
+    # the repository cannot date the author-side key against the first
+    # recruitment (key committed 2026-07-06, V-AI-01 page 2026-06-26).
+    T("novelty claim stays qualified",
+      "It is that, to our knowledge, reconstructability of the individual "
+      "record has not been operationalised", True, "")
+    # ADDED 2026-08-18 BY FINAL2. The Abstract and Section 4.2 must state the
+    # SAME chronology. The previous pass narrowed 4.2 and left the Abstract
+    # saying "fixed before recruitment", which put one manuscript in
+    # contradiction with itself. Both needles below must hold together.
+    # ADDED 2026-08-18 BY FINAL5. The data-availability list must contain
+    # only things that are actually released; the provenance limitation is a
+    # separate sentence, not a list item.
+    T("data-availability list contains only released items",
+      "Released under the study's data-availability terms are the 24 "
+      "constructed records;", True, "")
+    T("corpus provenance limitation disclosed in 4.3",
+      "Record-level generation provenance was not retained in a separate "
+      "construction log", True, "")
+    T("corpus provenance limitation disclosed in data availability",
+      "cannot be independently reconstructed for each record from the "
+      "retained study materials", True, "")
+    T("data-availability names the automated instances",
+      "the instructions given to the automated reference-classification "
+      "instances", True, "")
+    T("mitigations list names automated raters",
+      "by automated raters not involved in corpus construction", True, "")
+    T("Abstract chronology matches the Methods",
+      "reference classification fixed before independent verification", True, "")
+    T("chronology narrowed to the supported form",
+      "**Author-side classification.** Before verification began,", True, "")
     T("no human replication claimed",
       "No human replication of the reference classification has been "
       "performed.", True, "")
@@ -633,6 +666,23 @@ SUPERSEDED = [
      "contradicted by AnswerKey_Verification_Packet.md:3-5"),
     ("Nothing about the reference classification is withheld",
      "no model name, version, per-pass sheet or date was retained"),
+    ("fixed before recruitment", "recruitment is undated in every retained source"),
+    # ADDED 2026-08-18 BY FINAL3. Two descriptions of the automated
+    # reference-classification instances survived outside Section 4.4, in the
+    # data-availability list and the mitigations list. Both read as human.
+    ("blind reference raters", "the reference raters were automated"),
+    ("blinded reference raters", "the reference raters were automated"),
+    ("expert raters", "no expert status is claimed for the automated raters"),
+    # ADDED 2026-08-18 BY FINAL4. The author confirmed no corpus construction
+    # log was retained. The manuscript must never again promise one, and must
+    # never carry a reconstructed generation date, model version or editing
+    # percentage in its place.
+    ("are recorded in the corpus construction log",
+     "no such log was retained; the promise was withdrawn in FINAL4"),
+    ("the corpus construction log, including generation model",
+     "release commitment withdrawn in FINAL4"),
+    ("Before any reviewer was recruited",
+     "recruitment is undated in every retained source"),
     ("52.9 percent", "unreproducible not-passing rate"),
     ("87.8", "single-run cross-vendor figure, stale nightly"),
     ("84.5 percent", "mixed-denominator cross-vendor mean"),

@@ -8,7 +8,7 @@ Each link opens a page that captures how the person wants their name and title p
 
 **THE RESULTS SUMMARY WAS REMOVED ON 2026-08-16** on the owner's instruction. `api/contributor.js` served a gated aggregate findings summary from the POST branch between 2026-08-15 and that date. The endpoint now returns no study findings on either branch. Nothing else about the link changed: the naming election, the three permissions, the guides and the training are unaffected.
 
-**Fallback date, read from `api/contributor.js`: Monday, 31 August 2026.** If a person does not respond by then the paper uses what is on file. Where there is no naming election on file the fallback is anonymous: **a name is never printed on silence alone.**
+**Fallback date, read from `api/contributor.js`: Saturday, 5 September 2026.** If a person does not respond by then the paper uses what is on file. Where there is no naming election on file the fallback is anonymous: **a name is never printed on silence alone.**
 
 **Anonymity does not require identifying yourself.** Since 2026-08-13 a contributor electing anonymity confirms with the three permission choices alone; name, title and organization are requested only from someone who has asked to be named.
 

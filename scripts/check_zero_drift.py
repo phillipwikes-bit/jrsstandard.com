@@ -628,7 +628,7 @@ def check_panel_binder_identical(offline):
 # detection-only reviewer figure, it must ALSO carry the programme figure, so a
 # reader is never handed 16 as though it were the whole panel.
 PROGRAMME_SCOPE_FILES = [
-    "research/Detection_Article_Submission_Final_v3_2026-08-18.md",
+    "research/Detection_Article_Submission_FINAL5_2026-08-18.md",
     "research/Detection_Article_v7_2026-08-18.md",
     "research/Detection_Article_v6_2026-08-18.md",
     "research/Detection_Article_v5_2026-08-18.md",
@@ -891,6 +891,16 @@ def check_honor_roster_composition(offline):
             if depth == 0:
                 break
     block = body[i:j + 1]
+    # THE SYNTHETIC DEPLOY KEY IS NOT AN HONOREE AND IS EXCLUDED FROM THE COUNT.
+    # api/honor.js carries a 'selftest00' row with study 'deploy-check' so the
+    # citation screen and the certificate endpoint can be exercised without
+    # opening a real person's link. The composition comment describes real
+    # honorees, so the comment must NOT absorb this row: the alternative would
+    # publish a count that includes a record recognising nobody. Excised from
+    # the block before anything is counted, which is why the key regex is
+    # anchored and the study line is dropped alongside it.
+    block = re.sub(r"^  'selftest00': \{.*?^  \},\n", "", block,
+                   flags=re.M | re.S)
     keys = re.findall(r"^  '[a-z0-9]{10}': \{", block, re.M)
     studies = re.findall(r"^    study: '([a-z-]+)'", block, re.M)
     actual = {
