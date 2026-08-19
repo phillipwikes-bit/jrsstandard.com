@@ -176,6 +176,18 @@ COUNT_ALLOW = {
                  "what a pre-registered rule must not do",
     "CORPUS_SIZE": "the study design constant, 24 records. Same reasoning as "
                    "NEEDED above, which is the same number in the builders",
+    # THESE ARE SOMEONE ELSE'S PUBLISHED REQUIREMENTS, NOT COUNTS OF ANYTHING
+    # HERE. They come from CCI's contributor-guidelines PDF and exist so
+    # scripts/apply_cci_publication_pass.py checks the article against the
+    # publisher's stated numbers instead of a remembered target, which is the
+    # exact defect that pass was written to fix. Deriving them from the
+    # repository would be meaningless: the repository is not the authority.
+    # Update them only when CCI updates the guidelines.
+    "CCI_MIN_WORDS": "CCI's stated length floor, 1,000 words, from their "
+                     "contributor-guidelines PDF last updated 05/15/26",
+    "CCI_PREFERRED_FLOOR": "CCI's stated preferred floor, 1,200 words, same source",
+    "CCI_MAX_COAUTHORS": "CCI's stated maximum of two co-authors per article, "
+                         "same source",
 }
 
 
