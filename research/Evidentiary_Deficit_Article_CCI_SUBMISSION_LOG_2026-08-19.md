@@ -12,9 +12,9 @@ Retrieved 2026-08-19 from CCI's own contributor-guidelines PDF, `Writer-guidelin
 
 | Requirement | CCI's text | Status |
 |---|---|---|
-| Length | 1,000-1,200 words minimum (preferred) | **1627 words.** Clears the floor |
+| Length | 1,000-1,200 words minimum (preferred) | **1636 words.** Clears the floor |
 | Style | AP style, no Oxford comma, in-text hyperlinks for citations, no footnotes | **Conformed.** 21 serial commas removed, 9 embedded links, 0 footnotes |
-| Subheadings | Use 2-3 subheadings per 1,000 words | **4 over 1627 words = 2.5 per 1,000.** Was 10 = 5.7, a violation |
+| Subheadings | Use 2-3 subheadings per 1,000 words | **4 over 1636 words = 2.4 per 1,000.** Was 10 = 5.7, a violation |
 | Case | Main headlines title case; subheadings sentence case | **Conformed.** All 4 subheadings converted from title case |
 | Links | Include embedded links (not footnotes) | Conformed |
 | Promotion | No promotional links to employer sites | Conformed, 0 present |
@@ -76,7 +76,7 @@ CCI reserves the right to reject a contribution its editors read as machine-gene
 
 ## 3. Structural consolidation
 
-Ten numbered sections became 4 sentence-case subheadings. Nothing was deleted in the merge; the propositions from the folded sections are asserted individually in the check and all 26 are present.
+Ten numbered sections became 4 sentence-case subheadings. Nothing was deleted in the merge; the propositions from the folded sections are asserted individually in the check and all 29 are present.
 
 | Was | Now |
 |---|---|
@@ -97,6 +97,7 @@ Section V arrived in Hekim Colpan's British spelling while the rest of the artic
 
 - `scrutinised` to `scrutinized`
 - `Organisations` to `Organizations`
+- `organisations to demonstrate` to `organizations to demonstrate`
 
 Serial commas were removed at 21 sites for AP conformity, including inside the nine practitioner controls. **The Oxford comma carries no meaning in any of these lists**; each is a plain enumeration with no ambiguity that the comma was resolving.
 
@@ -131,7 +132,7 @@ Every citation is an in-text hyperlink, per CCI's rule. There are no footnotes a
 
 ## 6. What did not change
 
-26 legal propositions and required elements are asserted by needle and all are present. 20 banned terms are asserted absent and none appears.
+29 legal propositions and required elements are asserted by needle and all are present. 23 banned terms are asserted absent and none appears.
 
 - McDonnell Douglas holding distinction
 - pretext observation kept separate from the holding
@@ -155,6 +156,9 @@ Every citation is an in-text hyperlink, per CCI's rule. There are no footnotes a
 - neutral validation sentence, no statistics
 - the contemporaneous-evidence rule, carried over from Section III
 - institutional trust paragraph, carried over from Section VII
+- GDPR accountability stated as a demonstration duty, not a decision-explanation duty. Hekim Colpan's correction, 2026-08-19
+- AI Act documentation obligations kept distinct from GDPR accountability and bounded to the regimes that apply. Hekim Colpan's correction, 2026-08-19
+- control 3. AI-generated material is not excluded from the record; the conclusion must not rest on it alone. Hekim Colpan's correction, 2026-08-19
 - control 1
 - control 9
 - Colpan bio

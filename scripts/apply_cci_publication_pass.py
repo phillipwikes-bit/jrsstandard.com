@@ -89,7 +89,7 @@ A record makes a promise to whoever reads it later. It tells a regulator, a cour
 
 We call that gap Decision Reconstruction Risk: the state a record is in when it can no longer show, on its own, why a consequential decision was made. Once the reasoning cannot be rebuilt from the file, accountability shifts to memory and opinion.
 
-One of us works inside European AI governance and compliance. The other spent more than a decade at a U.S. civil rights agency reading consequential records after the fact, and kept finding a decision that was probably sound sitting on a record that could not prove it. In Europe, the GDPR's accountability principle and the EU AI Act's record-keeping expectations ask an organization to show how a decision was reached rather than assert it. In the United States no equivalent general obligation applies, but discovery and the burden-shifting frameworks that structure employment and housing cases can put an organization in the same position, needing to substantiate a consequential decision from the record it kept. The legal mechanisms differ. The demand on the record often converges.
+One of us works inside European AI governance and compliance. The other spent more than a decade at a U.S. civil rights agency reading consequential records after the fact, and kept finding a decision that was probably sound sitting on a record that could not prove it. In Europe, the GDPR's accountability principle requires organizations to demonstrate compliance with applicable data-protection obligations, while the EU AI Act introduces more specific documentation, logging and oversight requirements where its relevant regimes apply. In the United States no equivalent general obligation applies, but discovery and the burden-shifting frameworks that structure employment and housing cases can put an organization in the same position, needing to substantiate a consequential decision from the record it kept. The legal mechanisms differ. The demand on the record often converges.
 
 ## The record is the evidence
 
@@ -131,7 +131,7 @@ The organizing principle for controls is to preserve what is necessary to recons
 
 1. Identify the human author and any AI tools used in drafting.
 2. Preserve the underlying source materials, including notes, logs and communications, on which conclusions rest.
-3. Link conclusions to verifiable evidence that was not itself AI-generated.
+3. Link conclusions to independently verifiable source evidence rather than to AI-generated assertions alone.
 4. Document the human review step, including reviewer identity, date and substantive changes.
 5. Restrict the use of unapproved external AI tools for official records.
 6. Reflect AI-assisted processing in applicable data-processing inventories, including GDPR Article 30 where it applies.
@@ -256,6 +256,11 @@ def scan_oxford_source():
 SPELLING_SYNC = [
     ("scrutinised", "scrutinized"),
     ("Organisations", "Organizations"),
+    # Third site, 2026-08-19. Hekim Colpan's accepted correction to the introduction
+    # reads "requires organisations to demonstrate". Carried as "organizations" for the
+    # same reason as the other two: AP style is American and the article must not switch
+    # convention mid-page. SPELLING ONLY. His wording is otherwise verbatim.
+    ("organisations to demonstrate", "organizations to demonstrate"),
 ]
 
 # ---------------------------------------------------------------------------
@@ -303,6 +308,18 @@ PROTECTED = [
      "the contemporaneous-evidence rule, carried over from Section III"),
     ("When an institution cannot explain its own decisions to the people they affect",
      "institutional trust paragraph, carried over from Section VII"),
+    ("the GDPR's accountability principle requires organizations to demonstrate "
+     "compliance with applicable data-protection obligations",
+     "GDPR accountability stated as a demonstration duty, not a decision-explanation "
+     "duty. Hekim Colpan's correction, 2026-08-19"),
+    ("the EU AI Act introduces more specific documentation, logging and oversight "
+     "requirements where its relevant regimes apply",
+     "AI Act documentation obligations kept distinct from GDPR accountability and "
+     "bounded to the regimes that apply. Hekim Colpan's correction, 2026-08-19"),
+    ("Link conclusions to independently verifiable source evidence rather than to "
+     "AI-generated assertions alone",
+     "control 3. AI-generated material is not excluded from the record; the conclusion "
+     "must not rest on it alone. Hekim Colpan's correction, 2026-08-19"),
     ("Identify the human author and any AI tools used in drafting",
      "control 1"),
     ("Confirm consistency between the record and prior documented history",
@@ -313,6 +330,14 @@ PROTECTED = [
 
 # BANNED. Nothing on this list may appear in the submission text.
 BANNED = [
+    ("and the EU AI Act's record-keeping expectations ask an organization",
+     "superseded intro wording. It collapsed GDPR accountability and AI Act "
+     "documentation into one obligation. Corrected by Hekim Colpan 2026-08-19"),
+    ("verifiable evidence that was not itself AI-generated",
+     "superseded control 3. It implied AI-generated material can never form part of an "
+     "evidentiary record. Corrected by Hekim Colpan 2026-08-19"),
+    ("organisations to demonstrate",
+     "British spelling in the accepted correction. AP style is American"),
     (u"—", "em-dash, banned in body prose by CLAUDE.md III.7"),
     ("Designed for", "AI fingerprint opener, banned by CLAUDE.md III.7"),
     ("frequently", "filler adverb, banned by CLAUDE.md III.7"),

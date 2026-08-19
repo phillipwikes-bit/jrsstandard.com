@@ -10,7 +10,7 @@ A record makes a promise to whoever reads it later. It tells a regulator, a cour
 
 We call that gap Decision Reconstruction Risk: the state a record is in when it can no longer show, on its own, why a consequential decision was made. Once the reasoning cannot be rebuilt from the file, accountability shifts to memory and opinion.
 
-One of us works inside European AI governance and compliance. The other spent more than a decade at a U.S. civil rights agency reading consequential records after the fact, and kept finding a decision that was probably sound sitting on a record that could not prove it. In Europe, the GDPR's accountability principle and the EU AI Act's record-keeping expectations ask an organization to show how a decision was reached rather than assert it. In the United States no equivalent general obligation applies, but discovery and the burden-shifting frameworks that structure employment and housing cases can put an organization in the same position, needing to substantiate a consequential decision from the record it kept. The legal mechanisms differ. The demand on the record often converges.
+One of us works inside European AI governance and compliance. The other spent more than a decade at a U.S. civil rights agency reading consequential records after the fact, and kept finding a decision that was probably sound sitting on a record that could not prove it. In Europe, the GDPR's accountability principle requires organizations to demonstrate compliance with applicable data-protection obligations, while the EU AI Act introduces more specific documentation, logging and oversight requirements where its relevant regimes apply. In the United States no equivalent general obligation applies, but discovery and the burden-shifting frameworks that structure employment and housing cases can put an organization in the same position, needing to substantiate a consequential decision from the record it kept. The legal mechanisms differ. The demand on the record often converges.
 
 ## The record is the evidence
 
@@ -52,7 +52,7 @@ The organizing principle for controls is to preserve what is necessary to recons
 
 1. Identify the human author and any AI tools used in drafting.
 2. Preserve the underlying source materials, including notes, logs and communications, on which conclusions rest.
-3. Link conclusions to verifiable evidence that was not itself AI-generated.
+3. Link conclusions to independently verifiable source evidence rather than to AI-generated assertions alone.
 4. Document the human review step, including reviewer identity, date and substantive changes.
 5. Restrict the use of unapproved external AI tools for official records.
 6. Reflect AI-assisted processing in applicable data-processing inventories, including GDPR Article 30 where it applies.
