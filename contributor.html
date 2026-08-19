@@ -36,6 +36,18 @@ button{width:100%;font-family:'JetBrains Mono',monospace;font-size:9px;letter-sp
 button:disabled{opacity:.55;cursor:default}
 button.ghost{background:none;color:var(--accent);border:1px solid var(--accent)}
 .qbox{border:1px solid var(--rule);background:var(--surface2);padding:12px 13px;margin-bottom:10px}
+/* Consolidated consent. One block, one decision. Rows are full-width
+   tap targets at 44px minimum so a thumb cannot miss on mobile, and the
+   group stacks rather than sitting in a row, which removes the
+   horizontal cramping the three yes/no rows had at 360px. */
+.consent{border:1px solid var(--rule);background:var(--surface2);padding:13px 13px 5px;margin-bottom:14px}
+.consent .q{font-size:12.5px;color:var(--text);line-height:1.55;margin-bottom:5px}
+.consent .sub{font-size:11px;color:var(--muted-soft);line-height:1.5;margin-bottom:10px}
+.consent label{display:flex;gap:10px;align-items:flex-start;min-height:44px;padding:9px 10px;margin:0 -4px 8px;border:1px solid transparent;border-radius:2px;font-size:12.5px;color:var(--text);line-height:1.5;cursor:pointer}
+.consent label:has(input:checked){border-color:var(--accent-dim);background:rgba(190,148,71,.07)}
+.consent label input{width:auto;margin:2px 0 0;flex:0 0 auto}
+.consent label b{font-weight:500}
+.consent label .d{display:block;font-size:11px;color:var(--muted-soft);line-height:1.5;margin-top:2px}
 .qbox .q{font-size:12.5px;color:var(--text);line-height:1.55;margin-bottom:6px}
 .qbox .sub{font-size:11px;color:var(--muted-soft);line-height:1.5;margin-bottom:8px}
 .qbox .opts{display:flex;gap:18px}
@@ -103,7 +115,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
   function onFileBlock(p){
     var hasName  = !!p.name_on_file;
     var hasTitle = !!p.title_on_file;
-    var s = '<div class="onfile">If I do not hear from you by <b>' + esc(p.fallback_date) + '</b>, the paper uses what is already on file for you';
+    var s = '<div class="onfile">If I do not hear back from you by <b>' + esc(p.fallback_date) + '</b>, the paper uses what is on file for you';
     if (p.named_on_file === false) {
       s += ', which is your election to stay <b>anonymous</b>. Your contribution is counted in the aggregate and your name is not printed. You can change that here if you want to.';
     } else if (!hasName || !hasTitle || p.named_on_file === null) {
@@ -130,36 +142,12 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     + '<input id="f-email" type="email" placeholder="Best email address" autocomplete="email">'
     + '<input id="f-link"  type="text"  placeholder="Profile or website (optional)" style="margin-bottom:16px">'
 
-    + '<div class="qbox">'
-      + '<div class="q">May your name and title be printed in the paper as a named contributor?</div>'
-      + '<div class="sub">Either answer is fine. No means your contribution is counted in the aggregate and your name appears nowhere.</div>'
-      + '<div class="opts">'
-        + '<label><input type="radio" name="c-named" value="yes"><span>Yes</span></label>'
-        + '<label><input type="radio" name="c-named" value="no"><span>No</span></label>'
-      + '</div>'
-    + '</div>'
-
-    + '<div class="qbox">'
-      + '<div class="q">May the review work you contributed, and your credited name and title, continue to be used in publications and materials about this study?</div>'
-      + '<div class="sub">This covers the paper, follow-up articles, and the study record. It does not give away anything you own outside this study.</div>'
-      + '<div class="opts">'
-        + '<label><input type="radio" name="c-use" value="yes"><span>Yes</span></label>'
-        + '<label><input type="radio" name="c-use" value="no"><span>No</span></label>'
-      + '</div>'
-    + '</div>'
-
-    + '<div class="qbox">'
-      + '<div class="q">If this work transfers to a successor organization, may that permission and your contact details transfer with it?</div>'
-      + '<div class="sub">You can withdraw either permission at any time by writing to info@jrsstandard.com.</div>'
-      + '<div class="opts">'
-        + '<label><input type="radio" name="c-transfer" value="yes"><span>Yes</span></label>'
-        + '<label><input type="radio" name="c-transfer" value="no"><span>No</span></label>'
-      + '</div>'
-    + '</div>'
-
-    + '<div class="sect">'
-      + '<label class="chk"><input type="checkbox" id="s-rtkw"><span><b style="color:var(--text);font-weight:500">The Right to Know Why.</b> When a decision affects a person\'s job, housing, or livelihood, that person deserves to know why it was made and to have a fair way to question it. <a href="decision-reconstruction-risk.html" target="_blank" rel="noopener">Read it</a></span></label>'
-      + '<label class="chk"><input type="checkbox" id="s-defend"><span><b style="color:var(--text);font-weight:500">The Decisions You Can Defend.</b> Every consequential decision is eventually questioned. The only uncertainty is whether the record will still explain and defend it. <a href="decision-reconstruction-risk.html" target="_blank" rel="noopener">Read it</a></span></label>'
+    + '<div class="consent">'
+      + '<div class="q">How may your contribution be used?</div>'
+      + '<div class="sub">One answer covers all of it: whether you are named in the paper, whether your credited name and the review work you contributed may keep appearing in publications and materials about this study, and whether those permissions travel with the work if it passes to a successor organization. Nothing here touches anything you own outside this study, and you can change or withdraw it at any time by writing to info@jrsstandard.com.</div>'
+      + '<label><input type="radio" name="c-all" value="named"><span><b>Credit me by name.</b><span class="d">Your name and title are printed in the paper, and your credited name and contributed work may continue to be used in study publications, including by a successor organization.</span></span></label>'
+      + '<label><input type="radio" name="c-all" value="anon"><span><b>Use my work, but keep me anonymous.</b><span class="d">Your contribution is counted in the aggregate on the same terms. Your name appears nowhere.</span></span></label>'
+      + '<label><input type="radio" name="c-all" value="none"><span><b>Do not use my contribution in publications.</b><span class="d">Nothing you contributed is used in the paper or in later study materials.</span></span></label>'
     + '</div>'
 
     + '<div id="msg" style="margin-top:18px"></div>'
@@ -178,16 +166,21 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     var link  = el('f-link').value.trim();
 
     function pick(n){ var e = document.querySelector('input[name="' + n + '"]:checked'); return e ? e.value : ''; }
-    var cNamed = pick('c-named');
-    var cUse = pick('c-use');
-    var cTransfer = pick('c-transfer');
+
+    // ONE ANSWER, THREE PERMISSIONS, STILL SENT EXPLICITLY.
+    // The three yes/no blocks were consolidated into a single choice. The
+    // server contract is unchanged: it still receives an explicit yes or no
+    // for naming, continuing use, and transfer, and still rejects a missing
+    // one. Nothing is preselected, so silence is never read as consent.
+    var choice = pick('c-all');
+    var cNamed    = (choice === 'named') ? 'yes' : (choice ? 'no' : '');
+    var cUse      = (choice === 'none')  ? 'no'  : (choice ? 'yes' : '');
+    var cTransfer = (choice === 'none')  ? 'no'  : (choice ? 'yes' : '');
 
     msg.style.color = 'var(--review-text)';
-    // The three permission questions come first and are always required. Nobody
-    // is asked to identify themselves before answering them.
-    if (!cNamed)    { msg.textContent = 'Please answer the naming question. Either answer is fine.'; return; }
-    if (!cUse)      { msg.textContent = 'Please answer the continuing use question. Either answer is fine.'; return; }
-    if (!cTransfer) { msg.textContent = 'Please answer the transfer question. Either answer is fine.'; return; }
+    // The permission question comes first and is always required. Nobody is
+    // asked to identify themselves before answering it.
+    if (!choice) { msg.textContent = 'Please choose how your contribution may be used. Any of the three is fine.'; return; }
 
     // ANONYMITY IS NOT CONDITIONAL ON IDENTIFYING YOURSELF. Name, title and
     // organization are required only from someone who has asked to be named.
@@ -212,9 +205,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
       headers: { 'Content-Type':'application/json' },
       body: JSON.stringify({
         k: key, name: name, title: title, organization: org, email: email, profile: link,
-        consent_named: cNamed, consent_use: cUse, consent_transfer: cTransfer,
-        support_rtkw: el('s-rtkw').checked,
-        support_defend: el('s-defend').checked
+        consent_named: cNamed, consent_use: cUse, consent_transfer: cTransfer
       })
     })
     .then(function(r){ if (!r.ok) throw 0; return r.json(); })

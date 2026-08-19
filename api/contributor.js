@@ -49,7 +49,7 @@ const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 // Fallback date. If a contributor does not respond by this date, the paper uses
 // the name and title already on file for them (or anonymity where that is the
 // election on file). Shown on the page so the rule is visible, not implied.
-const FALLBACK_DATE = 'Monday, 31 August 2026';
+const FALLBACK_DATE = 'Saturday, 5 September 2026';
 
 // The roster itself lives in ./_contributor-roster.js, shared with
 // api/contributor-stats.js so the two can never disagree on who is on it or how
