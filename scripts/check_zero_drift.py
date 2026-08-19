@@ -628,6 +628,10 @@ def check_panel_binder_identical(offline):
 # detection-only reviewer figure, it must ALSO carry the programme figure, so a
 # reader is never handed 16 as though it were the whole panel.
 PROGRAMME_SCOPE_FILES = [
+    "research/Detection_Article_Submission_FINAL5_2026-08-18.md",
+    "research/Detection_Article_v7_2026-08-18.md",
+    "research/Detection_Article_v6_2026-08-18.md",
+    "research/Detection_Article_v5_2026-08-18.md",
     "research/Detection_Article_v4_2026-08-16.md",
     "research/Detection_Article_v3_2026-08-15.md",
     "research/Positioning_Lines_2026-08-15.md",
@@ -639,10 +643,17 @@ PROGRAMME_SCOPE_FILES = [
 # Any of these counts as crediting the whole programme.
 PROGRAMME_MARKERS = (
     "58 independent experts",
-    # v4 opens the Acknowledgments by spelling the number. The guard is on the
+    # v4 opened the Acknowledgments by spelling the number. The guard is on the
     # fact that the whole programme is credited, not on how the sentence is
     # written, so the spelled form counts.
     "Fifty-eight independent experts",
+    # 2026-08-18: an editorial review required the programme-level
+    # acknowledgments compressed, on the ground that a journal manuscript is not
+    # a programme report. THE CREDIT TO ALL 58 SURVIVED THAT COMPRESSION and is
+    # still required here; only the phrasing carrying it changed. This marker was
+    # missed when the same widening was applied to verify_manuscript_figures.py,
+    # and this guard caught the omission.
+    "All 58 worked unpaid",
     "58 international reviewers",
     "58 reviewers",
     "across three studies",
@@ -880,6 +891,14 @@ def check_honor_roster_composition(offline):
             if depth == 0:
                 break
     block = body[i:j + 1]
+    # NO SYNTHETIC ROW MAY ENTER THIS COUNT. A demonstration key was added to
+    # api/honor.js on 2026-08-18 and stripped again before production deploy,
+    # because a fake honoree in the live roster is a record recognising nobody.
+    # The exclusion is kept as a standing rule rather than removed with the row:
+    # if a synthetic key is ever reintroduced, the stated composition must not
+    # silently absorb it.
+    block = re.sub(r"^  '(?:selftest\d*|test\w*)': \{.*?^  \},\n", "", block,
+                   flags=re.M | re.S)
     keys = re.findall(r"^  '[a-z0-9]{10}': \{", block, re.M)
     studies = re.findall(r"^    study: '([a-z-]+)'", block, re.M)
     actual = {
