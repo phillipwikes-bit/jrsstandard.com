@@ -862,7 +862,8 @@ def check_withdrawn_contributors_absent(offline):
 # moment an entry was withdrawn: it still claimed 34 entries and 16 detection
 # honorees after the count moved to 36 and 15.
 HONOR_COMPOSITION_RE = re.compile(
-    r"^// (\d+) entries: (\d+) public-records \+ (\d+) detection \+ (\d+) records-review\.",
+    r"^// (\d+) entries: (\d+) public-records \+ (\d+) detection \+ (\d+) records-review"
+    r"(?: \+ (\d+) methodology)?\.",
     re.M)
 
 
@@ -878,7 +879,12 @@ def check_honor_roster_composition(offline):
         check("honor roster composition matches its own comment", False,
               "the composition comment is gone; restore it or drop this check")
         return
-    claimed_total, claimed_pr, claimed_det, claimed_rr = (int(g) for g in m.groups())
+    gs = m.groups()
+    claimed_total, claimed_pr, claimed_det, claimed_rr = (int(x) for x in gs[:4])
+    # METHODOLOGY IS A REAL HONOREE AND MUST BE COUNTED. It is optional in the
+    # pattern only so the check still parses a roster written before the
+    # category existed; absent means zero, never means ignore.
+    claimed_meth = int(gs[4]) if len(gs) > 4 and gs[4] else 0
 
     start = body.index("const ROSTER = {")
     i = body.index("{", start)
@@ -906,17 +912,21 @@ def check_honor_roster_composition(offline):
         "public-records": studies.count("public-records"),
         "detection": studies.count("detection"),
         "records-review": studies.count("records-review"),
+        "methodology": studies.count("methodology"),
     }
     claimed = {
         "total": claimed_total,
         "public-records": claimed_pr,
         "detection": claimed_det,
         "records-review": claimed_rr,
+        "methodology": claimed_meth,
     }
     bad = [k for k in claimed if claimed[k] != actual[k]]
     detail = ("%d entries: %d public-records + %d detection + %d records-review"
+              " + %d methodology"
               % (actual["total"], actual["public-records"],
-                 actual["detection"], actual["records-review"]))
+                 actual["detection"], actual["records-review"],
+                 actual["methodology"]))
     if bad:
         detail = ("the comment says %r but the roster is %r; disagreeing on %s"
                   % (claimed, actual, ", ".join(sorted(bad))))
