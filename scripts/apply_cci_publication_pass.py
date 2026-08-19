@@ -109,6 +109,12 @@ The problem compounds when one tool writes both the narrative and the justificat
 
 A second failure shows up only in aggregate. AI reproduces language at scale, and when subjective descriptors such as "cultural fit," "struggles with change" or "attitude" recur across individuals who share a protected characteristic, what looked like one author's stylistic habit becomes something an adverse inference can be built on. Uniformity that once took years of individual writing to accumulate can now appear across a single quarter. Because the pattern lives in the aggregate, it passes every file-by-file review and surfaces only when records are read side by side. Disparate treatment and disparate impact are distinct theories with different elements and proof structures, and recurring language does not by itself establish either. The aggregate visibility is what makes it worth monitoring.
 
+Opposing counsel tends to make two moves: that the fluent AI narrative was written to dress up a decision already made, and that missing drafting history and reviewer notes show there was no real deliberation. Both land harder when the organization cannot produce the underlying material.
+
+Depending on the dispute, preservation obligations and discovery requests may extend to materials showing how an AI-assisted record was created, reviewed, modified and finalized, including prompt logs, draft versions, tool-usage records and reviewer activity. Potential discoverability is not the same as an obligation to retain everything, and the two should not be conflated in policy. Regulators come at it differently. Uniform language across files can suggest a process running without individualized judgment, and gaps in processing documentation raise questions of their own.
+
+When an institution cannot explain its own decisions to the people they affect, it loses some of the accountability and public confidence it depends on to function.
+
 ## The European frame
 
 In Europe the governance problem begins the moment AI-assisted drafting severs the link between a consequential record and the information, human judgment and controls that produced it. Under the GDPR, the [accountability principle in Article 5(2)](https://eur-lex.europa.eu/eli/reg/2016/679/oj) requires controllers not only to comply with the data-protection principles but to be able to demonstrate that compliance when scrutinized. Article 30's record of processing activities is part of that framework, but a modest part: it does not require every prompt or draft to be retained, and it does not become a decision log simply because a model was involved upstream. What it asks for is proportionate controls capable of showing how the processing was governed and, where the risk warrants it, assessed.
@@ -116,12 +122,6 @@ In Europe the governance problem begins the moment AI-assisted drafting severs t
 The timing of the [EU AI Act](https://eur-lex.europa.eu/eli/reg/2024/1689/oj) makes that distinction more than academic. The Regulation now generally applies, while its core high-risk requirements on risk management, data governance, technical documentation, logging and human oversight have been postponed by [Regulation (EU) 2026/1744](https://eur-lex.europa.eu/eli/reg/2026/1744/oj): Annex III high-risk systems from 2 December 2027, and high-risk systems linked to regulated products under Annex I from 2 August 2028. Organizations are deploying AI-assisted workflows today while some of the Act's strongest statutory traceability controls remain pending. Many of those workflows will not fall within the high-risk regime at all. The practical question is broader than formal classification: has enough reliable evidence been preserved to reconstruct what the AI contributed, what a human verified and why the final record was accepted?
 
 [ISO/IEC 42001](https://www.iso.org/standard/42001) can support structured governance across that gap through defined responsibilities, risk management and monitoring. In financial services, [DORA](https://eur-lex.europa.eu/eli/reg/2022/2554/oj) adds a documented ICT-risk and governance framework where applicable. Neither establishes any particular record-level control. The aim is not to retain everything but to preserve the right evidence, under the right controls, for the right period, so a consequential record can still account for itself when someone asks it to.
-
-Opposing counsel tends to make two moves: that the fluent AI narrative was written to dress up a decision already made, and that missing drafting history and reviewer notes show there was no real deliberation. Both land harder when the organization cannot produce the underlying material.
-
-Depending on the dispute, preservation obligations and discovery requests may extend to materials showing how an AI-assisted record was created, reviewed, modified and finalized, including prompt logs, draft versions, tool-usage records and reviewer activity. Potential discoverability is not the same as an obligation to retain everything, and the two should not be conflated in policy. Regulators come at it differently. Uniform language across files can suggest a process running without individualized judgment, and gaps in processing documentation raise questions of their own.
-
-When an institution cannot explain its own decisions to the people they affect, it loses some of the accountability and public confidence it depends on to function.
 
 ## What to do before the record is final
 
@@ -335,6 +335,55 @@ BANNED = [
     ("It is the aggregate visibility", "cleft-sentence AI fingerprint"),
 ]
 
+# PARAGRAPH PLACEMENT. Which section each load-bearing paragraph must sit under.
+#
+# THIS CHECK EXISTS BECAUSE THE PASS SHIPPED A REAL DEFECT WITHOUT IT. Folding
+# "What it costs when the record is tested" into another section was done by
+# deleting its heading. Deleting a heading does not move the paragraphs under
+# it; they simply reattach to whatever section precedes them. Three paragraphs
+# of US discovery and opposing-counsel argument ended up under "The European
+# frame", and the change log recorded a merge that had not happened.
+#
+# Every one of the 17 checks passed, because all 17 tested the document as a
+# bag of strings: word count, heading count, heading case, needles present,
+# needles absent. Not one of them tested WHERE anything was. A structural edit
+# needs a structural assertion.
+PLACEMENT = [
+    ("The record is the evidence", "McDonnell Douglas Corp. v. Green"),
+    ("The record is the evidence", "administrative record"),
+    ("Where AI-assisted records break down", "AI tools write fluent narrative"),
+    ("Where AI-assisted records break down", "A second failure shows up only in aggregate"),
+    ("Where AI-assisted records break down", "Opposing counsel tends to make two moves"),
+    ("Where AI-assisted records break down",
+     "preservation obligations and discovery requests"),
+    ("Where AI-assisted records break down",
+     "When an institution cannot explain its own decisions"),
+    ("The European frame", "accountability principle in Article 5(2)"),
+    ("The European frame", "Regulation (EU) 2026/1744"),
+    ("The European frame", "ISO/IEC 42001"),
+    ("The European frame", "DORA"),
+    ("What to do before the record is final", "A record worth trusting answers three"),
+    ("What to do before the record is final", "The organizing principle for controls"),
+    ("What to do before the record is final", "The Justification Review Standard"),
+    ("What to do before the record is final", "right to know why"),
+]
+
+
+def section_of(text, needle):
+    """The subheading the needle sits under, or None if it is above them all."""
+    i = text.find(needle)
+    if i < 0:
+        return "<<ABSENT>>"
+    heads = [(m.start(), m.group(1)) for m in re.finditer(r"^##\s+(.*)$", text, re.M)]
+    current = None
+    for pos, title in heads:
+        if pos < i:
+            current = title
+        else:
+            break
+    return current
+
+
 RESULTS = []
 
 
@@ -522,6 +571,16 @@ def run_checks(text):
     ok &= check("nine practitioner controls intact",
                 len(re.findall(r"^\d+\. ", text, re.M)) == 9,
                 "%d numbered controls" % len(re.findall(r"^\d+\. ", text, re.M)))
+
+    misplaced = []
+    for want, needle in PLACEMENT:
+        got = section_of(text, needle)
+        if got != want:
+            misplaced.append("%r is under %r, expected %r" % (needle[:40], got, want))
+    ok &= check("every load-bearing paragraph is under its own section",
+                not misplaced, "; ".join(misplaced[:3]) if misplaced
+                else "%d paragraphs anchored to %d sections"
+                % (len(PLACEMENT), len(set(w for w, _ in PLACEMENT))))
 
     dup = [h for h in hs if hs.count(h) > 1]
     ok &= check("no duplicated subheading", not dup, "; ".join(set(dup)) if dup
@@ -736,7 +795,7 @@ def write_log(text):
     W("| IV. Pattern and Proxy Risk | folded into the same section |")
     W("| V. European Governance Context | The European frame |")
     W("| VI. Oversight and Reconstruction | folded into the closing section |")
-    W("| VII. Litigation and Regulatory Exposure | folded into "
+    W("| VII. Litigation and Regulatory Exposure | folded into the end of "
       "\"Where AI-assisted records break down\" |")
     W("| VIII. Practitioner Controls | What to do before the record is final |")
     W("| IX. JRS as an Operational Example | folded into the same section |")

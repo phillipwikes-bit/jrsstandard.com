@@ -86,7 +86,7 @@ Ten numbered sections became 4 sentence-case subheadings. Nothing was deleted in
 | IV. Pattern and Proxy Risk | folded into the same section |
 | V. European Governance Context | The European frame |
 | VI. Oversight and Reconstruction | folded into the closing section |
-| VII. Litigation and Regulatory Exposure | folded into "Where AI-assisted records break down" |
+| VII. Litigation and Regulatory Exposure | folded into the end of "Where AI-assisted records break down" |
 | VIII. Practitioner Controls | What to do before the record is final |
 | IX. JRS as an Operational Example | folded into the same section |
 | X. Conclusion | folded into the same section |
