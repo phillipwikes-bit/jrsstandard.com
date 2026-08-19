@@ -58,6 +58,24 @@ WITHDRAWALS = [
         # identifier produced 20 false positives on the first run. It was
         # removed from her own rows individually instead, by the rules below.
         "identifiers": [],
+        # PARTIALLY REINSTATED 2026-08-19 at the owner's instruction: "She did
+        # not withdraw from study ... should get a link ... just like all the
+        # rest of the Arm A, Arm B, and Study 004 completers."
+        #
+        # The reinstatement is SCOPED TO THE CONTRIBUTOR LINK and nothing else.
+        # Her link is the mechanism by which she elects how she is named, so it
+        # has to carry her name to resolve to her at all; the credit surfaces
+        # rewritten on 2026-08-16 (the manuscript acknowledgments, the byline
+        # history, the honor entry H-2026-06) STAY REMOVED until a separate
+        # instruction says otherwise. Restoring the link first and the printed
+        # credit second is the right order: it lets her make the election
+        # rather than having one made for her.
+        "name_allowed_in": [
+            "api/_contributor-roster.js",
+            "research/Contributor_Links.md",
+            "research/build_contributor_links.py",
+            "research/Outreach_Emails_2026-08-19.md",
+        ],
     },
 ]
 
@@ -353,6 +371,8 @@ def scan_traces():
         if body is None:
             continue
         for w in WITHDRAWALS:
+            if rel in w.get("name_allowed_in", []):
+                continue
             for name in w["names"]:
                 # Whole-word match so "Cortez" does not fire on a substring and
                 # "Gabi" does not fire inside "Gabriela Bar", a different person.

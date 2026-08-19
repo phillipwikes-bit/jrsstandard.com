@@ -80,10 +80,14 @@ const HONOR_YEAR = '2026';
 // code and the citation with no name, so the acceptance page asks them how they
 // wish to be printed rather than guessing.
 //
-// 36 entries: 1 public-records + 15 detection + 20 records-review.
-// Codes run H-2026-01 to H-2026-37 with H-2026-06 retired, so the code numbers
+// 37 entries: 1 public-records + 15 detection + 20 records-review + 1 methodology.
+// Codes run H-2026-01 to H-2026-38 with H-2026-06 retired, so the code numbers
 // and the entry count deliberately do not agree. See the retirement note at
 // H-2026-06 for why the sequence is not closed up.
+//
+// The methodology entry is the only one that does not recognise a completed
+// review. It is counted separately for that reason rather than folded into a
+// study bucket, so the reviewer counts stay readable as reviewer counts.
 // scripts/check_zero_drift.py recomputes this composition and fails if the
 // comment above stops describing the roster.
 //
@@ -97,6 +101,38 @@ const HONOR_YEAR = '2026';
 // instead of being made silently. Verified against pilot_progress and
 // armb_progress.
 const ROSTER = {
+  // METHODOLOGY AND CO-AUTHORSHIP, not a completed review. Every other entry
+  // on this roster recognises someone who graded records. This one does not,
+  // and the citation says so plainly rather than borrowing the reviewer
+  // wording. He designed the measurement apparatus the study is scored
+  // against, which is why the entry exists at all.
+  //
+  // Sources, all pre-existing and none written for this entry:
+  //   research/DRR_Detection_Validation_Protocol.md:116  reference-panel design
+  //                                                      and the chance-corrected
+  //                                                      reliability framework
+  //   research/MASTER_TRACKER.md:98                      Rung 1-2 statistics and
+  //                                                      acceptance floors
+  //   api/_contributor-roster.js:60                      M-01, kind 'author',
+  //                                                      'methodology co-author'
+  'b3874haudg': {
+    code: 'H-2026-38',
+    study: 'methodology',
+    participant: 'M-01',
+    first: 'Ubayet',
+    name: 'Ubayet Hossain, FRM',
+    title: 'Associate Director, Model Validation',
+    org: 'KPMG India',
+    order: 'named for the methodology rather than for a completed review',
+    citation: 'In recognition of designing the validation methodology on which '
+            + 'this programme rests: the reference-panel design, the '
+            + 'chance-corrected reliability framework, and the acceptance '
+            + 'thresholds fixed in advance of any analysis. That work decided '
+            + 'what the study would accept as evidence before it knew what the '
+            + 'evidence would say, which is the part of a validation that has '
+            + 'to be settled first and is hardest to add afterwards. He is named '
+            + 'as a co-author of the methodology on that basis.'
+  },
   // SYNTHETIC. Deploy and demonstration key, mirroring TEST_KEY 'selftest00'
   // in api/contributor.js. Exists so the citation screen and the certificate
   // can be exercised end to end without opening a real honoree's link, which

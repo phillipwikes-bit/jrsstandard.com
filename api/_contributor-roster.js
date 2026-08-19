@@ -22,6 +22,20 @@ export const ROSTER = {
   '08c17ihb60': { code:'V-AI-03', kind:'panel',  first:'Frank',     name:'Frank Schouten',      title:'AI Governance and Assurance',                           org:'AEGF',                    named_on_file:true },
   'im06wa5vd4': { code:'V-AI-06', kind:'panel',  first:'Nitin',     name:'Dr Nitin Deshpande',  title:'Chief Human Resources Officer',                         org:'',                        named_on_file:true },
   'u63k28aizs': { code:'V-AI-07', kind:'panel',  first:'Saurabh',   name:'Saurabh Nanda',       title:'General Manager, APAC',                                 org:'',                        named_on_file:true },
+  // V-AI-08's LINK REINSTATED 2026-08-19 at the owner's instruction: "She did
+  // not withdraw from study ... should get a link ... just like all the rest of
+  // the Arm A, Arm B, and Study 004 completers." The entry below is the one
+  // removed on 2026-08-16, restored under its original key so any link she
+  // already holds still resolves.
+  //
+  // THE REINSTATEMENT IS THE LINK AND ONLY THE LINK. Her honor entry H-2026-06
+  // stays retired from api/honor.js and the manuscript acknowledgments stay
+  // removed, because the same instruction says the only special certificate is
+  // Ubayet Hossain's. The link is how she elects how she is named; it is
+  // restored first so the election is hers to make.
+  //
+  // The 2026-08-16 removal is recorded below and kept for the record.
+  //
   // V-AI-08 REMOVED 2026-08-16 at the owner's instruction: this person is not to
   // appear as a contributor anywhere in the programme. Her contributor link is
   // withdrawn with the entry, and her honor roster entry H-2026-06 was removed
@@ -37,6 +51,7 @@ export const ROSTER = {
   // or from any study-record export. The roster CSV is a study record and does
   // not carry consent state. scripts/check_zero_drift.py fails if the name
   // reappears anywhere in api/, the served pages, or the research deliverables.
+  'agbhlh6n4d': { code:'V-AI-08', kind:'panel',  first:'Gabriela',  name:'Gabriela Cortez',     title:'Civil rights records and bilingual intake',             org:'',                        named_on_file:true },
   's3ln3ud13s': { code:'V-AI-10', kind:'panel',  first:'Lawal',     name:'Lawal Olabanji',      title:'Operations and records management',                     org:'ALTV',                    named_on_file:true },
   'h5dypgmtdu': { code:'V-AI-11', kind:'panel',  first:'Andrey',    name:'Andrey Ekhmenin',     title:'Founder, EAS; governance diagnostics and post-execution review', org:'EAS',            named_on_file:true },
   // RECLASSIFIED 2026-08-15 from kind:'author' to kind:'panel'. He is a Study
