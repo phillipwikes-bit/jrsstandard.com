@@ -891,15 +891,13 @@ def check_honor_roster_composition(offline):
             if depth == 0:
                 break
     block = body[i:j + 1]
-    # THE SYNTHETIC DEPLOY KEY IS NOT AN HONOREE AND IS EXCLUDED FROM THE COUNT.
-    # api/honor.js carries a 'selftest00' row with study 'deploy-check' so the
-    # citation screen and the certificate endpoint can be exercised without
-    # opening a real person's link. The composition comment describes real
-    # honorees, so the comment must NOT absorb this row: the alternative would
-    # publish a count that includes a record recognising nobody. Excised from
-    # the block before anything is counted, which is why the key regex is
-    # anchored and the study line is dropped alongside it.
-    block = re.sub(r"^  'selftest00': \{.*?^  \},\n", "", block,
+    # NO SYNTHETIC ROW MAY ENTER THIS COUNT. A demonstration key was added to
+    # api/honor.js on 2026-08-18 and stripped again before production deploy,
+    # because a fake honoree in the live roster is a record recognising nobody.
+    # The exclusion is kept as a standing rule rather than removed with the row:
+    # if a synthetic key is ever reintroduced, the stated composition must not
+    # silently absorb it.
+    block = re.sub(r"^  '(?:selftest\d*|test\w*)': \{.*?^  \},\n", "", block,
                    flags=re.M | re.S)
     keys = re.findall(r"^  '[a-z0-9]{10}': \{", block, re.M)
     studies = re.findall(r"^    study: '([a-z-]+)'", block, re.M)

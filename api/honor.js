@@ -97,28 +97,6 @@ const HONOR_YEAR = '2026';
 // instead of being made silently. Verified against pilot_progress and
 // armb_progress.
 const ROSTER = {
-  // SYNTHETIC. Deploy and demonstration key, mirroring TEST_KEY 'selftest00'
-  // in api/contributor.js. Exists so the citation screen and the certificate
-  // can be exercised end to end without opening a real honoree's link, which
-  // would render their citation and could issue their certificate.
-  //
-  // INERT BY CONSTRUCTION. honor.js already suppresses telemetry for
-  // src=selftest, and nothing is written unless the confirmation form is
-  // submitted. This row is not a person, is not counted, and must never reach
-  // a roster export or a published count.
-  'selftest00': {
-    code: 'H-TEST-00',
-    study: 'deploy-check',
-    participant: 'TEST-00',
-    first: 'Test',
-    name: 'Test Honoree',
-    title: 'Deploy check',
-    org: 'Not a real record',
-    order: 'synthetic entry used to exercise the certificate path',
-    citation: 'This is a synthetic citation used to confirm that the honor '
-            + 'screen, the confirmation step, and the certificate endpoint all '
-            + 'render correctly. It recognises nobody and is issued to nobody.'
-  },
   'q7m2vd9xk4': {
     code: 'H-2026-01',
     study: 'public-records',
