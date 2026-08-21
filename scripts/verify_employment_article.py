@@ -67,9 +67,25 @@ foil = [r for r in bo if r["domain"] == "Public records / FOIL"]
 ms = io.open(MS, encoding="utf-8").read()
 
 # ---- AUTHORSHIP, checked before anything else ----
-for name in ("Phillip Wikes", "Tanvi Pokhriyal", "Kyle McMullan",
-             "Ubayet Hossain, FRM"):
-    check("author of record present: %s" % name, name in ms)
+# AUTHOR ORDER CHANGED 2026-08-21 on the owner's instruction: Pokhriyal first
+# because the research is hers, McMullan second, Wikes last as senior author,
+# and Hossain moved from co-author to NAMED CONTRIBUTOR. The order is asserted
+# positionally, not just by presence, because a byline that merely contains four
+# names in any order is not the same paper.
+byline = ms[:ms.index("**Author contributions.**")]
+order = [byline.index("**Tanvi Pokhriyal**"), byline.index("**Kyle McMullan**"),
+         byline.index("**Phillip Wikes**"), byline.index("**Contributor**")]
+check("byline order: Pokhriyal, McMullan, Wikes, then Contributor",
+      order == sorted(order), "positions %s" % order)
+check("Wikes is marked senior author", "**Phillip Wikes**\nSenior author." in ms)
+check("Hossain is a named CONTRIBUTOR, not an author",
+      "**Ubayet Hossain, FRM**, Associate Director" in byline
+      and "Ubayet Hossain" not in byline[:byline.index("**Contributor**")],
+      "appears only under the Contributor heading")
+check("Hossain's methodology credit is intact",
+      "reference-panel design" in ms and "acceptance floors fixed in advance" in ms)
+check("Hossain must confirm contributor credit before submission",
+      "confirm he accepts named-contributor credit rather than co-authorship" in ms)
 # The author block ONLY, which ends where the scope note begins. The first
 # version of this check sliced to "## Abstract", which swallowed the scope note
 # and therefore flagged the one legitimate mention of Young as an authorship
@@ -82,6 +98,8 @@ check("Young credited as companion first author in the scope note",
       "first-authored by Stacyann Young" in ms)
 check("Kyle McMullan holds Section 6.4",
       "K.M. contributed Section 6.4" in ms and "### 6.4" in ms)
+check("the research is attributed to Pokhriyal",
+      "The research reported in Section 5 is hers." in ms)
 check("no unresolved co-author bracket asks", "[Kyle:" not in ms)
 
 # ---- CRITERION FIGURES, recomputed from live rows ----

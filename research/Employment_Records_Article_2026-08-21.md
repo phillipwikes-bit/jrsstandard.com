@@ -1,22 +1,23 @@
 # Documentation Reviewability in AI-Assisted Employment Records: Evidence from 22 Adjudicated Matters
 
-**Phillip Wikes**
-AI Governance and Cognitive Risk Advisor; Creator of the Justification Review Standard; Lead Civil Rights Officer, Maryland Commission on Civil Rights, 2012 to 2025
-
 **Tanvi Pokhriyal**
 Human Resources Manager, REIL Innovative Solutions
 
 **Kyle McMullan**
 Chief Audit Executive; internal audit and financial crimes; former Chief Auditor, AML International and Financial Crimes International, Citi; Chartered Accountants Ireland
 
-**Ubayet Hossain, FRM**
-Associate Director, Model Validation, KPMG India
+**Phillip Wikes**
+Senior author. AI Governance and Cognitive Risk Advisor; Creator of the Justification Review Standard; Lead Civil Rights Officer, Maryland Commission on Civil Rights, 2012 to 2025
 
-**Author contributions.** P.W. developed the review standard and the Decision Reconstruction Risk construct, designed the evidence programme, specified and ran every analysis reported here, and led the writing. T.P. designed the employment case protocol, selected and screened all 22 adjudicated matters, recorded every read from the decision record alone before the documented outcome was consulted, and recorded the outcomes and citations. **The criterion evidence in Section 5 is her case set.** K.M. contributed Section 6.4, the audit and investigations lens, and reviewed the full manuscript. U.H. designed the validation methodology reported in Section 4: the reference-panel design, the chance-corrected agreement framework with Gwet's AC1 as the primary coefficient, and the acceptance floors fixed in advance of any analysis.
+**Contributor**
+
+**Ubayet Hossain, FRM**, Associate Director, Model Validation, KPMG India. Designed the validation methodology reported in Section 4: the reference-panel design, the chance-corrected agreement framework with Gwet's AC1 as the primary coefficient, and the acceptance floors fixed in advance of any analysis. Credited as a named contributor at the authors' request and with his agreement.
+
+**Author contributions.** T.P. designed the employment case protocol, selected and screened all 22 adjudicated matters, recorded every read from the decision record alone before the documented outcome was consulted, and recorded the outcomes and citations. **The research reported in Section 5 is hers.** K.M. contributed Section 6.4, the audit and investigations lens, and reviewed the full manuscript. P.W. developed the review standard and the Decision Reconstruction Risk construct, designed the evidence programme, specified and ran every analysis reported here, and prepared the manuscript. U.H.'s methodological contribution is described under Contributor above.
 
 **Competing interests.** P.W. created the construct and the instrument under study and would benefit from its adoption. **That is a material conflict and it is not mitigated by the design alone.** What was done about it: he read no case in this corpus and recorded no read and no outcome; the case set, the reads and the outcomes are T.P.'s, recorded under contributor code V-HR-01 in the study database. What was not done about it: he specified and ran every test reported here, and no independent statistician replicated them before submission.
 
-[REQUIRED_ENV_PARAM: co-author declarations. T.P., K.M. and U.H. must each confirm in writing whether they hold any financial or commercial interest in the Justification Review Standard, and any funding received. These are not assumed here. Replace this block with their confirmed declarations before submission.]
+[REQUIRED_ENV_PARAM: declarations. T.P. and K.M. must each confirm in writing whether they hold any financial or commercial interest in the Justification Review Standard, and any funding received. U.H. must confirm the same and confirm he accepts named-contributor credit rather than co-authorship. These are not assumed here. Replace this block with their confirmed words before submission.]
 
 **Scope, and what this paper does not duplicate.** Two companion papers hold their own primary results and are cited here rather than reproduced. The detection study reports panel accuracy against a verified key and is under preparation for a separate venue. The public-records study, first-authored by Stacyann Young, holds a 32-case corpus of freedom-of-information determinations and is under preparation separately. **This paper's primary result is the employment criterion evidence in Section 5.** Public-records material appears here only in Section 6.3, as a comparison that tests this paper's own boundary condition.
 
@@ -80,7 +81,7 @@ The programme runs in stages: reproducibility, then reliability, then accuracy a
 
 **A limitation at condition level, reported rather than omitted.** Chance-corrected agreement on the five conditions taken individually ranges from 0.236 to 0.413, all below the 0.61 floor. **The determination agrees better than any single condition that composes it.** No claim is made that the individual conditions are separately reliable, and an earlier version of this manuscript reported a per-condition discrimination analysis which has been withdrawn: because the determination is a deterministic function of the conditions, that analysis tested a variable against a function of itself.
 
-**Methodology attribution.** The reference-panel design, the chance-corrected agreement framework with Gwet's AC1 as the primary coefficient, and the acceptance floors are the methodological contribution of Ubayet Hossain, FRM, and were fixed before any analysis was run. The proportionality principle referenced in the standard was surfaced by pilot reviewer Saurabh Nanda and is credited with permission.
+**Methodology attribution.** The reference-panel design, the chance-corrected agreement framework with Gwet's AC1 as the primary coefficient, and the acceptance floors are the methodological contribution of Ubayet Hossain, FRM, credited as a contributor above, and were fixed before any analysis was run. The proportionality principle referenced in the standard was surfaced by pilot reviewer Saurabh Nanda and is credited with permission.
 
 ## 5. Criterion evidence: adjudicated employment matters
 

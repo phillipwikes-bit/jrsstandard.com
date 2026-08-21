@@ -5,14 +5,28 @@ manuscript carries no venue line by design.
 
 ---
 
-## 1. Correction of record
+## 1. Byline, as it now stands
 
-**The author set is Wikes, Pokhriyal, McMullan, Hossain.** That is what
-`research/BusinessEthics_Article_Draft.md` lines 5-10 has always said. A previous draft of
-mine merged this paper with the public-records corpus and put **Stacyann Young first**,
-which was wrong: she is first author of the **companion** public-records paper and is cited
-here, not co-authored. Those files are deleted. `scripts/verify_employment_article.py` now
-asserts the author block on every run and fails if Young reappears in it.
+**Tanvi Pokhriyal first, Kyle McMullan second, Phillip Wikes last as senior author. Ubayet
+Hossain, FRM, is a named Contributor rather than a co-author.** Changed 2026-08-21 on the
+owner's instruction: the research is Pokhriyal's, so she leads.
+
+**ONE COMMITMENT TO SETTLE BEFORE THIS GOES OUT.** Hossain was promised co-authorship in
+writing, twice. `BusinessEthics_Article_Draft.md:10` reads "Co-authorship final on his
+review and approval of this manuscript", and `Author_Review_Package_2026-08-01.md:58` reads
+"Your co-authorship is final on your review and approval of this manuscript, **as we
+agreed**." He also holds honor `H-2026-38`, whose public citation names him "a co-author of
+the methodology."
+
+Moving him to Contributor is the owner's call and the credit itself is undiminished: his
+methodology is described in full in the byline block and again in Section 4. **But it walks
+back a written promise that used the words "as we agreed", and he should hear it from
+Phillip directly before he reads it on a title page.** The manuscript's declaration stub
+requires him to confirm he accepts contributor credit. If he would rather keep
+co-authorship, restoring him is a one-line change and the honor citation stays accurate.
+
+**Stacyann Young is not an author here.** She is first author of the companion
+public-records paper and is cited once, in the scope note. `scripts/verify_employment_article.py` asserts the byline positionally on every run and fails if the order changes or if Young reappears in it.
 
 **Kyle McMullan is a co-author and Section 6.4 is his.** It is written out in full in the
 manuscript with his four bracketed placeholder asks removed, because internal instructions
@@ -73,15 +87,16 @@ plus 280 per table). Confirm both on the journal page before submitting.
 
 ## 5. Order of operations
 
-1. **Kyle McMullan.** Confirm 6.4 reads correctly in his voice and, if he is willing, add
-   one or two short de-identified examples. His authorship was recorded as final on that
-   substantive pass (`BusinessEthics_Article_Draft.md:9`).
-2. **Tanvi Pokhriyal.** Confirm Sections 5.1 and 5.2 describe the pilot as she ran it, and
-   confirm she has seen the dual-role disclosure. See the message drafted for her.
-3. **Ubayet Hossain.** Confirm Section 4 represents his methodology accurately, including
-   the new condition-level agreement figures.
-4. **All three:** replace the `[REQUIRED_ENV_PARAM]` block with their own words on financial
-   interest and funding. Do not write it for them.
+1. **Ubayet Hossain, first and separately.** Tell him about the change from co-author to
+   Contributor yourself, before he sees the title page. Then confirm Section 4 represents
+   his methodology accurately, including the new condition-level agreement figures.
+2. **Tanvi Pokhriyal.** Send `Email_Tanvi_Pokhriyal_2026-08-21.md`. It asks for her printed
+   name, confirmation of Sections 5.1 and 5.2, both declarations, and her agreement to first
+   authorship, in one reply.
+3. **Kyle McMullan.** Send `Email_Kyle_McMullan_2026-08-21.md`. It asks for his printed
+   name, his 6.4 pass, his optional de-identified examples, and both declarations, in one
+   reply. His authorship condition is that pass (`BusinessEthics_Article_Draft.md:9`).
+4. Replace the `[REQUIRED_ENV_PARAM]` block with their own words. Do not write it for them.
 5. Confirm RMJ's word ceiling and hybrid status.
 6. Submit.
 
@@ -109,6 +124,7 @@ analysis is explicitly withdrawn as circular.
 - Do not put the venue back into the manuscript.
 - Do not restore the withdrawn per-condition analysis.
 - Do not add Stacyann Young to this paper.
+- Do not move Hossain to Contributor on the title page before he has been told directly.
 - Do not reopen the pilot to reach 30 cases. It closed at 22 on 29 July and adding cases
   after the analysis is known is a worse defect than n=22.
 - Do not submit this and the EDPACS piece to Records Management Journal.
