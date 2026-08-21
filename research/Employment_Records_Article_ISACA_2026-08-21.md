@@ -92,7 +92,7 @@ A formal test of homogeneity shows the two results do not differ significantly f
 
 Internal audit and financial-crime work test records the way litigation does, only sooner and more often. An examiner reads the file and asks whether its stated basis can be rebuilt from the record itself. That is the same question the review asks, put before the examiner arrives rather than after.
 
-Three failure patterns recur, and each maps to a specific way AI-assisted drafting introduces the risk.
+Three failure patterns recur, and each maps to a specific way AI-assisted drafting introduces the risk. **They are described here as general patterns in audit and investigations practice. They are not drawn from, and do not describe, the records or examinations of any identified organisation.**
 
 **Manager convenience.** A decision is challenged and the organisation cannot produce underlying documentation beyond the drafted narrative. The source material, the logs, communications and measurable observations that would have supported the conclusion, was never attached, because the narrative read as complete without it. In discovery or audit the absence of source material becomes the central issue and shifts the burden onto the organisation: a sound decision now has to be defended without the evidence that made it sound.
 
@@ -168,6 +168,6 @@ The drafting tool is new. The examiner's question is not: the file still has to 
 
 **Tanvi Pokhriyal** is a Human Resources Manager at REIL Innovative Solutions, working in employment and industrial relations. She designed the case protocol for this study and conducted every record review reported in it.
 
-**Kyle McMullan** is a Chief Audit Executive working in internal audit and financial crimes. He was previously Chief Auditor, AML International and Financial Crimes International, at Citi, and is a member of Chartered Accountants Ireland.
+**Kyle McMullan** is a Chief Audit Executive working in internal audit and financial crime.
 
 **Phillip Wikes** is an AI Governance and Cognitive Risk Advisor focused on documentation integrity and record-level controls in AI-assisted environments. He served as a Lead Civil Rights Officer at the Maryland Commission on Civil Rights, evaluating discrimination complaints under federal HUD and EEOC frameworks. He developed the Justification Review Standard and named Decision Reconstruction Risk.
