@@ -62,10 +62,21 @@ function page(o){
     + '.notice{max-width:1000px;margin:0 auto 16px;background:#1A1A1A;color:#D4A055;border:1px solid #7A5E28;padding:12px 15px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:13px;line-height:1.6}'
     + '.bar{max-width:1000px;margin:0 auto 16px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}'
     + '.bar button{font-family:"Courier New",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:#BE9447;color:#050505;border:none;padding:12px 22px;cursor:pointer}'
-    + '.cert{max-width:1000px;margin:0 auto;aspect-ratio:792/612;background:#FCFBF8;position:relative;padding:5.2% 6%;box-shadow:0 10px 40px rgba(0,0,0,.45)}'
+    // CONTAINER-RELATIVE SIZING. Every size below was in vw, which is a
+    // fraction of the VIEWPORT. On a phone the certificate box keeps its
+    // 792/612 aspect ratio while vw collapses, so the type shrank and the
+    // content sat in the top third with a void beneath it. cqw is a fraction
+    // of THIS BOX, so the certificate composes identically at any width.
+    // The vw value stays as a first declaration for any engine without
+    // container queries; cqw overrides it where supported.
+    + '.cert{max-width:1000px;margin:0 auto;aspect-ratio:792/612;background:#FCFBF8;position:relative;padding:5.2% 6%;box-shadow:0 10px 40px rgba(0,0,0,.45);container-type:inline-size}'
     + '.cert::before{content:"";position:absolute;inset:3.5% 3.5%;border:2.2px solid #BE9447;pointer-events:none}'
     + '.cert::after{content:"";position:absolute;inset:4.6% 4.4%;border:.7px solid #BE9447;pointer-events:none}'
     + '.inner{position:relative;height:100%;display:flex;flex-direction:column;align-items:center;text-align:center}'
+    // The name and citation are now centred in the space left between the
+    // header and the signature line instead of stacking from the top. The
+    // bottom padding clears .feet, which is absolutely positioned at 5.5%.
+    + '.core{flex:1;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-bottom:14%}'
     + '.mark{font-size:2.6vw;font-weight:700;color:#BE9447;letter-spacing:.02em;margin-top:1.6%}'
     + '.wordmark{font-size:.95vw;letter-spacing:.34em;color:#7A5E28;text-transform:uppercase;margin-top:.5%}'
     + '.kind{font-style:italic;font-size:2.3vw;color:#121212;margin-top:3.4%}'
@@ -81,7 +92,7 @@ function page(o){
     // that element is optional and its absence is what gives the reference
     // certificate its open space under the rule.
     + '.body{color:#121212;max-width:80%;text-wrap:balance;hyphens:none}'
-    + '.body.len-a{font-size:1.16vw;line-height:1.72;margin-top:2.4%}'
+    + '.body.len-a{font-size:1.16vw;line-height:1.72;margin-top:2.6%}'
     + '.body.len-b{font-size:1.09vw;line-height:1.66;margin-top:2.0%;max-width:82%}'
     + '.body.len-c{font-size:1.02vw;line-height:1.60;margin-top:1.7%;max-width:84%}'
     + '.has-title .body{margin-top:1.5%}'
@@ -91,6 +102,19 @@ function page(o){
     + '.foot .sig{font-style:italic;font-size:2.2vw;color:#121212}'
     + '.foot .r{border-top:1px solid #999;padding-top:.6%;font-size:.9vw;color:#666}'
     + '.credit{position:absolute;bottom:2%;left:0;right:0;text-align:center;font-size:.78vw;color:#666}'
+    + '.mark{font-size:2.6cqw}'
+    + '.wordmark{font-size:.95cqw}'
+    + '.kind{font-size:2.3cqw}'
+    + '.certifies{font-size:1.15cqw}'
+    + '.name{font-size:2.7cqw}'
+    + '.title-line{font-size:1.1cqw}'
+    + '.body.len-a{font-size:1.16cqw}'
+    + '.body.len-b{font-size:1.09cqw}'
+    + '.body.len-c{font-size:1.02cqw}'
+    + '.foot .v{font-size:1.1cqw}'
+    + '.foot .sig{font-size:2.2cqw}'
+    + '.foot .r{font-size:.9cqw}'
+    + '.credit{font-size:.78cqw}'
     + '@media print{body{background:#fff;padding:0}.bar,.notice{display:none}'
     + '.cert{box-shadow:none;max-width:none;width:100%;aspect-ratio:792/612}'
     + '@page{size:letter landscape;margin:0}}'
@@ -102,10 +126,12 @@ function page(o){
     + '<div class="wordmark">Justification Review Standard</div>'
     + '<div class="kind">Certificate of Recognition</div>'
     + '<div class="certifies">This certifies that</div>'
+    + '<div class="core">'
     + '<div class="name">' + esc(o.name) + '</div>'
     + '<div class="rule"></div>'
     + titleLine
     + '<div class="body ' + lenClass + '">' + esc(o.body) + '</div>'
+    + '</div>'
     + '<div class="feet">'
     + '<div class="foot"><div class="v">' + esc(o.date) + '</div><div class="r">Date</div></div>'
     + '<div class="foot"><div class="sig">' + esc(SIGNER) + '</div><div class="r">' + esc(SIGN_LN) + '</div></div>'
