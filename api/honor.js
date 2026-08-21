@@ -170,7 +170,7 @@ const ROSTER = {
     // api/honor-cert.js already uses.
     title: '',
     org: '',
-    order: 'named for leading the employment arm of the validation programme',
+    order: 'named for leading the employment arm of the validation program',
     citation: 'In recognition of independently selecting and reviewing 22 '
             + 'adjudicated employment and labor matters across three '
             + 'jurisdictional systems, recording her assessment of each record '

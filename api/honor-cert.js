@@ -44,11 +44,6 @@ function page(o){
   const titleLine = o.title
     ? '<div class="title-line">' + esc(o.title) + '</div>'
     : '';
-  // Chosen by measured length rather than by eye. The thresholds sit either
-  // side of the two citations already issued so neither of them changes size.
-  const n = String(o.body || '').length;
-  const lenClass = n <= 520 ? 'len-a' : (n <= 660 ? 'len-b' : 'len-c');
-  const innerClass = 'inner' + (o.title ? ' has-title' : '');
   const notice = o.pending
     ? '<div class="notice">This is a preview. Accept the honor on your link and the certificate below prints in the name and title you confirm.</div>'
     : '';
@@ -62,30 +57,10 @@ function page(o){
     + '.notice{max-width:1000px;margin:0 auto 16px;background:#1A1A1A;color:#D4A055;border:1px solid #7A5E28;padding:12px 15px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:13px;line-height:1.6}'
     + '.bar{max-width:1000px;margin:0 auto 16px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}'
     + '.bar button{font-family:"Courier New",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:#BE9447;color:#050505;border:none;padding:12px 22px;cursor:pointer}'
-    // CONTAINER-RELATIVE SIZING. Every size below was in vw, which is a
-    // fraction of the VIEWPORT. On a phone the certificate box keeps its
-    // 792/612 aspect ratio while vw collapses, so the type shrank and the
-    // content sat in the top third with a void beneath it. cqw is a fraction
-    // of THIS BOX, so the certificate composes identically at any width.
-    // The vw value stays as a first declaration for any engine without
-    // container queries; cqw overrides it where supported.
-    + '.cert{max-width:1000px;margin:0 auto;aspect-ratio:792/612;background:#FCFBF8;position:relative;padding:5.2% 6%;box-shadow:0 10px 40px rgba(0,0,0,.45);container-type:inline-size}'
+    + '.cert{max-width:1000px;margin:0 auto;aspect-ratio:792/612;background:#FCFBF8;position:relative;padding:5.2% 6%;box-shadow:0 10px 40px rgba(0,0,0,.45)}'
     + '.cert::before{content:"";position:absolute;inset:3.5% 3.5%;border:2.2px solid #BE9447;pointer-events:none}'
     + '.cert::after{content:"";position:absolute;inset:4.6% 4.4%;border:.7px solid #BE9447;pointer-events:none}'
     + '.inner{position:relative;height:100%;display:flex;flex-direction:column;align-items:center;text-align:center}'
-    // The name and citation are centred in the space left between the header
-    // and the signature line instead of stacking from the top. The bottom
-    // padding clears .feet, which is absolutely positioned at 5.5%.
-    //
-    // THE PADDING AND THE THREE BODY SIZES BELOW WERE MEASURED, NOT CHOSEN BY
-    // EYE. A headless browser rendered every issued certificate at 390px and
-    // 1280px while sweeping both values, reporting line count, body height as a
-    // percentage of the card, the gap above the name and the gap below the
-    // body. At the shipped values the citation sets to five lines and the air
-    // above and below it is 16 and 17 percent, which is the balance of the
-    // reference certificate. The earlier values left the body at 6.6 percent of
-    // the card height with a 24 percent void beneath it.
-    + '.core{flex:1;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-bottom:10%}'
     + '.mark{font-size:2.6vw;font-weight:700;color:#BE9447;letter-spacing:.02em;margin-top:1.6%}'
     + '.wordmark{font-size:.95vw;letter-spacing:.34em;color:#7A5E28;text-transform:uppercase;margin-top:.5%}'
     + '.kind{font-style:italic;font-size:2.3vw;color:#121212;margin-top:3.4%}'
@@ -93,54 +68,28 @@ function page(o){
     + '.name{font-size:2.7vw;font-weight:700;color:#121212;margin-top:1.6%;line-height:1.15}'
     + '.rule{width:44%;height:1.6px;background:#BE9447;margin:.9% auto 0}'
     + '.title-line{font-size:1.1vw;color:#666;margin-top:1.2%;max-width:78%}'
-    // COMPOSITION. The original block was sized around a single citation and
-    // any longer one ran toward the signature line. Three things fix it:
-    // text-wrap:balance so the last line is never one orphaned word; a length
-    // class so a long citation is set slightly smaller and tighter rather than
-    // taller; and a reduced top margin when a title line is present, because
-    // that element is optional and its absence is what gives the reference
-    // certificate its open space under the rule.
-    + '.body{color:#121212;max-width:80%;text-wrap:balance;hyphens:none}'
-    + '.body.len-a{font-size:1.16vw;line-height:1.72;margin-top:2.6%}'
-    + '.body.len-b{font-size:1.09vw;line-height:1.66;margin-top:2.0%;max-width:82%}'
-    + '.body.len-c{font-size:1.02vw;line-height:1.60;margin-top:1.7%;max-width:84%}'
-    + '.has-title .body{margin-top:1.5%}'
+    + '.body{font-size:1.16vw;color:#121212;line-height:1.72;margin-top:2.4%;max-width:80%}'
     + '.feet{position:absolute;bottom:5.5%;left:0;right:0;display:flex;justify-content:space-between;padding:0 6%}'
     + '.foot{width:36%;text-align:center}'
     + '.foot .v{font-size:1.1vw;color:#121212;padding-bottom:.5%}'
     + '.foot .sig{font-style:italic;font-size:2.2vw;color:#121212}'
     + '.foot .r{border-top:1px solid #999;padding-top:.6%;font-size:.9vw;color:#666}'
     + '.credit{position:absolute;bottom:2%;left:0;right:0;text-align:center;font-size:.78vw;color:#666}'
-    + '.mark{font-size:2.6cqw}'
-    + '.wordmark{font-size:.95cqw}'
-    + '.kind{font-size:2.3cqw}'
-    + '.certifies{font-size:1.15cqw}'
-    + '.name{font-size:2.7cqw}'
-    + '.title-line{font-size:1.1cqw}'
-    + '.body.len-a{font-size:1.74cqw}'
-    + '.body.len-b{font-size:1.63cqw}'
-    + '.body.len-c{font-size:1.53cqw}'
-    + '.foot .v{font-size:1.1cqw}'
-    + '.foot .sig{font-size:2.2cqw}'
-    + '.foot .r{font-size:.9cqw}'
-    + '.credit{font-size:.78cqw}'
     + '@media print{body{background:#fff;padding:0}.bar,.notice{display:none}'
     + '.cert{box-shadow:none;max-width:none;width:100%;aspect-ratio:792/612}'
     + '@page{size:letter landscape;margin:0}}'
     + '</style></head><body>'
     + notice
     + '<div class="bar"><button type="button" onclick="window.print()">Print or save as PDF</button></div>'
-    + '<div class="cert"><div class="' + innerClass + '">'
+    + '<div class="cert"><div class="inner">'
     + '<div class="mark">JRS</div>'
     + '<div class="wordmark">Justification Review Standard</div>'
     + '<div class="kind">Certificate of Recognition</div>'
     + '<div class="certifies">This certifies that</div>'
-    + '<div class="core">'
     + '<div class="name">' + esc(o.name) + '</div>'
     + '<div class="rule"></div>'
     + titleLine
-    + '<div class="body ' + lenClass + '">' + esc(o.body) + '</div>'
-    + '</div>'
+    + '<div class="body">' + esc(o.body) + '</div>'
     + '<div class="feet">'
     + '<div class="foot"><div class="v">' + esc(o.date) + '</div><div class="r">Date</div></div>'
     + '<div class="foot"><div class="sig">' + esc(SIGNER) + '</div><div class="r">' + esc(SIGN_LN) + '</div></div>'
