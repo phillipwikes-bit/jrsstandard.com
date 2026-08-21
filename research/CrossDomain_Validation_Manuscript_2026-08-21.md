@@ -1,7 +1,5 @@
 # Documentation Reviewability as a Measurable Record Property: Convergent, Construct, Discriminant and Criterion Evidence from 54 Adjudicated Records Across Two Domains
 
-**Working draft. Target: Records Management Journal (Emerald), subscription route.**
-
 **Stacyann Young**
 Independent Researcher
 
@@ -16,7 +14,7 @@ Senior author. Creator of the Justification Review Standard; former Lead Civil R
 
 **Author contributions.** S.Y. designed the public-records case protocol, selected and screened all 32 determinations, recorded each read and its contemporaneous basis note before the documented outcome was consulted, and recorded the outcomes and citations. T.P. designed the employment case protocol, selected and screened all 22 adjudicated matters, and recorded each read before the documented outcome was consulted, and the outcomes afterwards. **The two corpora were built independently, by reviewers who did not confer, in different domains, on different jurisdictions, at overlapping times.** U.H. designed the validation methodology: the reference-panel design, the chance-corrected agreement framework, and the acceptance floors fixed in advance of analysis. P.W. developed the review standard and the Decision Reconstruction Risk construct, specified the pooled analysis, ran every test reported here, and prepared the manuscript.
 
-**Competing interests.** P.W. created the instrument evaluated here and is an interested party in its evaluation. **He read no record in either corpus and recorded no read and no outcome.** S.Y. conducted her work voluntarily and independently, on public materials, and is named without institutional affiliation at her request. Both domain reviewers contribute in a personal professional capacity; the views expressed are the authors' own and do not represent the position of any employer or institution.
+**Competing interests.** P.W. created the construct and the instrument under study and would benefit from its adoption. **That is a material conflict and it is not mitigated by the design alone.** What was done about it: he read no record in either corpus, recorded no read and no outcome, and had no contact with either domain reviewer about the other's cases. What was not done about it: he specified the pooled analysis and ran every test reported here, and no independent statistician replicated them before submission. S.Y. conducted her work voluntarily and independently, on public materials, and is named without institutional affiliation at her request. Both domain reviewers contribute in a personal professional capacity; the views expressed are the authors' own and do not represent the position of any employer or institution.
 
 [REQUIRED_ENV_PARAM: co-author declarations. S.Y., T.P. and U.H. must each confirm in writing whether they hold any financial or commercial interest in the Justification Review Standard, and any funding received. These are not assumed here. Replace this block with their confirmed declarations before submission.]
 

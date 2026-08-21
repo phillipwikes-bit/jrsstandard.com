@@ -159,7 +159,12 @@ for claim, why in (
          "dual role"),
         ("The determination is a deterministic function of the five conditions",
          "circularity bound"),
-        ("He read no record in either corpus", "creator interest"),
+        # NEEDLE UPDATED 2026-08-21 when the competing-interests statement was
+        # hardened to the standard set by Detection_Article_Submission_FINAL5
+        # Section 9: state the conflict, then what was and was NOT done about it.
+        ("he read no record in either corpus", "creator interest, mitigation"),
+        ("and no independent statistician replicated them before submission",
+         "creator interest, what was NOT mitigated"),
         ("[REQUIRED_ENV_PARAM", "unresolved co-author declarations")):
     check("disclosure present: %s" % why, claim in ms)
 
