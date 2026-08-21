@@ -70,7 +70,7 @@ Public material only, de-identified as to any private individual, each case carr
 
 ### 4.3 Sample
 
-The pre-registered target was 20 to 30 cases with a deliberate spread of outcomes. The achieved sample is 32 cases from 32 distinct public sources, collected 26 June to 8 August 2026, spanning decisions issued between 2005 and 2026 across eleven distinct years.
+The stated target was 20 to 30 cases with a deliberate spread of outcomes. The achieved sample is 32 cases from 32 distinct public sources, collected 26 June to 8 August 2026, spanning decisions issued between 2005 and 2026 across eleven distinct years.
 
 Four document classes are represented: New York appellate and trial-level decisions (n = 18); New York Committee on Open Government advisory opinions (n = 7); Connecticut Freedom of Information Commission final decisions (n = 2); and compliance audits issued by the New York State Comptroller and the New York City Comptroller (n = 5).
 
@@ -92,7 +92,7 @@ Discriminant validity tests the read against document class, using a structural 
 
 The specification check tests the read against appellate disposition. Cases where the source records no resolved disposition are excluded rather than assigned one.
 
-All reads were recorded by a single domain reviewer, so no inter-rater agreement is estimated. Section 7 treats that as a limitation. All figures are computed from the stored data by a standard-library script, cited in the data-availability statement, which also carries the note-coding frame case by case.
+All reads were recorded by a single domain reviewer, who also recorded the outcomes, so no inter-rater agreement is estimated and the reads are not independent of the person assigning the outcome. Section 7 treats that as a limitation. All figures are computed from the stored data by a standard-library script, cited in the data-availability statement, which also carries the note-coding frame case by case.
 
 ## 5. Results
 
@@ -172,7 +172,7 @@ Read alongside Sections 5.3 and 5.4, this is the expected result and it is infor
 
 That explanation can be tested rather than asserted. The same instrument has been applied in a second domain, employment and labour matters, by a different reviewer working independently of this study, on 22 cases from 22 distinct sources including United States Supreme Court decisions, Federal Labor Relations Authority decisions, and United Kingdom Employment Tribunal judgments. Those cases are not selected for published freedom-of-information controversy, and the base rate of adverse outcomes in that set is close to even rather than three to one.
 
-In that corpus the read is associated with the documented outcome. On that study's pre-registered outcome coding, which asks whether a matter drew an adverse finding, records read as Needs work or Gap did so in 7 of 9 cases (77.8 percent, 95 percent Wilson interval 45.3 to 93.7) against 2 of 13 records read as Ready (15.4 percent, interval 4.3 to 42.2); Fisher's exact test, two-sided, p = 0.0073, odds ratio 19.25. On the coding that matches the specification check above, restricted to resolved dispositions, determinations read as Ready were sustained in 6 of 8 (75.0 percent, interval 40.9 to 92.9) against 1 of 8 for records read as incomplete (12.5 percent, interval 2.2 to 47.1); p = 0.041, odds ratio 21.0.
+In that corpus the read is associated with the documented outcome. On the outcome coding that asks whether a matter drew an adverse finding, one of three codings that study reports with equal standing because no analysis plan fixing a primary coding was recorded before its data closed, records read as Needs work or Gap did so in 7 of 9 cases (77.8 percent, 95 percent Wilson interval 45.3 to 93.7) against 2 of 13 records read as Ready (15.4 percent, interval 4.3 to 42.2); Fisher's exact test, two-sided, p = 0.0073, odds ratio 19.25. On the coding that matches the specification check above, restricted to resolved dispositions, determinations read as Ready were sustained in 6 of 8 (75.0 percent, interval 40.9 to 92.9) against 1 of 8 for records read as incomplete (12.5 percent, interval 2.2 to 47.1); p = 0.041, odds ratio 21.0.
 
 That result belongs to the second study and is reported in full there, with its own limits, which include a small resolved sample and a single reviewer. It is cited here for one narrow purpose: the boundary condition proposed in this section is not a post-hoc rescue of a null. Where the corpus is not filtered by publication, the association the present corpus could not show is present. Both observations are consistent with a read that measures documentation quality and a publication process that selects on something else.
 

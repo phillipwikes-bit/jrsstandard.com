@@ -23,8 +23,9 @@ Where the paper stands, so nothing surprises you. Cross-vendor reproducibility
 is verified at 84 percent across three independent providers. Reliability is
 reported as interim on 10 records, with the coefficients above the floor set in
 advance. The employment criterion pilot is complete at 22 adjudicated matters
-and shows a significant association on the pre-registered outcome coding, p =
-0.0073, with both alternative codings reported as sensitivity analyses and one
+and shows a significant association on one of three outcome codings, p =
+0.0073, with all three reported with equal standing because no analysis plan
+fixing a primary coding was recorded before the data closed, and one
 counter-example retained. The paper stays in a validation-phase frame
 throughout and makes no claim that the standard improves outcomes.
 
