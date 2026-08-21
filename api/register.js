@@ -1,4 +1,5 @@
 export const config = { runtime: 'edge' };
+import { STUDIES_CLOSED, closedResponse } from './_study-status.js';
 
 // Token-free reviewer registration. Ensures a FIXED list of reviewers (defined
 // below, in code) exists in bench_experts, using the server-side service-role key.
@@ -29,6 +30,9 @@ const REVIEWERS = [
 function json(o, s){ return new Response(JSON.stringify(o), { status: s||200, headers: { 'Content-Type':'application/json', 'Access-Control-Allow-Origin':'*' } }); }
 
 export default async function handler(req){
+  // STUDIES CLOSED 2026-08-21. No new reviewer may be registered and no read
+  // may be recorded after closure.
+  if (STUDIES_CLOSED) return closedResponse();
   const env = (typeof process !== 'undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
   if (!SERVICE) return json({ error:'service_key_missing' }, 503);
