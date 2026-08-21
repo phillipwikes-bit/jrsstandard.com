@@ -44,6 +44,11 @@ function page(o){
   const titleLine = o.title
     ? '<div class="title-line">' + esc(o.title) + '</div>'
     : '';
+  // Chosen by measured length rather than by eye. The thresholds sit either
+  // side of the two citations already issued so neither of them changes size.
+  const n = String(o.body || '').length;
+  const lenClass = n <= 520 ? 'len-a' : (n <= 660 ? 'len-b' : 'len-c');
+  const innerClass = 'inner' + (o.title ? ' has-title' : '');
   const notice = o.pending
     ? '<div class="notice">This is a preview. Accept the honor on your link and the certificate below prints in the name and title you confirm.</div>'
     : '';
@@ -68,7 +73,18 @@ function page(o){
     + '.name{font-size:2.7vw;font-weight:700;color:#121212;margin-top:1.6%;line-height:1.15}'
     + '.rule{width:44%;height:1.6px;background:#BE9447;margin:.9% auto 0}'
     + '.title-line{font-size:1.1vw;color:#666;margin-top:1.2%;max-width:78%}'
-    + '.body{font-size:1.16vw;color:#121212;line-height:1.72;margin-top:2.4%;max-width:80%}'
+    // COMPOSITION. The original block was sized around a single citation and
+    // any longer one ran toward the signature line. Three things fix it:
+    // text-wrap:balance so the last line is never one orphaned word; a length
+    // class so a long citation is set slightly smaller and tighter rather than
+    // taller; and a reduced top margin when a title line is present, because
+    // that element is optional and its absence is what gives the reference
+    // certificate its open space under the rule.
+    + '.body{color:#121212;max-width:80%;text-wrap:balance;hyphens:none}'
+    + '.body.len-a{font-size:1.16vw;line-height:1.72;margin-top:2.4%}'
+    + '.body.len-b{font-size:1.09vw;line-height:1.66;margin-top:2.0%;max-width:82%}'
+    + '.body.len-c{font-size:1.02vw;line-height:1.60;margin-top:1.7%;max-width:84%}'
+    + '.has-title .body{margin-top:1.5%}'
     + '.feet{position:absolute;bottom:5.5%;left:0;right:0;display:flex;justify-content:space-between;padding:0 6%}'
     + '.foot{width:36%;text-align:center}'
     + '.foot .v{font-size:1.1vw;color:#121212;padding-bottom:.5%}'
@@ -81,7 +97,7 @@ function page(o){
     + '</style></head><body>'
     + notice
     + '<div class="bar"><button type="button" onclick="window.print()">Print or save as PDF</button></div>'
-    + '<div class="cert"><div class="inner">'
+    + '<div class="cert"><div class="' + innerClass + '">'
     + '<div class="mark">JRS</div>'
     + '<div class="wordmark">Justification Review Standard</div>'
     + '<div class="kind">Certificate of Recognition</div>'
@@ -89,7 +105,7 @@ function page(o){
     + '<div class="name">' + esc(o.name) + '</div>'
     + '<div class="rule"></div>'
     + titleLine
-    + '<div class="body">' + esc(o.body) + '</div>'
+    + '<div class="body ' + lenClass + '">' + esc(o.body) + '</div>'
     + '<div class="feet">'
     + '<div class="foot"><div class="v">' + esc(o.date) + '</div><div class="r">Date</div></div>'
     + '<div class="foot"><div class="sig">' + esc(SIGNER) + '</div><div class="r">' + esc(SIGN_LN) + '</div></div>'

@@ -161,8 +161,15 @@ const ROSTER = {
     participant: 'V-HR-01',
     first: 'Tanvi',
     name: 'Tanvi Pokhriyal',
-    title: 'Human Resources Manager',
-    org: 'REIL Innovative Solutions',
+    // TITLE AND ORGANIZATION DELIBERATELY EMPTY, matching H-2026-01. The
+    // reference certificate the owner supplied as the model carries no title
+    // line under the gold rule, and that open space is what gives it its
+    // composition. A title line here crowded the block against the signature.
+    // If she asks for a title on the certificate, she sets it herself on the
+    // honor page and the accepted value overrides this, which is the mechanism
+    // api/honor-cert.js already uses.
+    title: '',
+    org: '',
     order: 'named for leading the employment arm of the validation programme',
     citation: 'In recognition of independently selecting and reviewing 22 '
             + 'adjudicated employment and labor matters across three '
