@@ -80,8 +80,8 @@ const HONOR_YEAR = '2026';
 // code and the citation with no name, so the acceptance page asks them how they
 // wish to be printed rather than guessing.
 //
-// 37 entries: 1 public-records + 15 detection + 20 records-review + 1 methodology.
-// Codes run H-2026-01 to H-2026-38 with H-2026-06 retired, so the code numbers
+// 38 entries: 1 public-records + 15 detection + 20 records-review + 1 methodology + 1 employment.
+// Codes run H-2026-01 to H-2026-39 with H-2026-06 retired, so the code numbers
 // and the entry count deliberately do not agree. See the retirement note at
 // H-2026-06 for why the sequence is not closed up.
 //
@@ -154,6 +154,22 @@ const ROSTER = {
     citation: 'This is a synthetic citation used to confirm that the honor '
             + 'screen, the confirmation step, and the certificate endpoint all '
             + 'render correctly. It recognises nobody and is issued to nobody.'
+  },
+  'af98slpmfa': {
+    code: 'H-2026-39',
+    study: 'employment',
+    participant: 'V-HR-01',
+    first: 'Tanvi',
+    name: 'Tanvi Pokhriyal',
+    title: 'Human Resources Manager',
+    org: 'REIL Innovative Solutions',
+    order: 'named for leading the employment arm of the validation programme',
+    citation: 'In recognition of independently selecting and reviewing 22 '
+            + 'adjudicated employment and labor matters across three '
+            + 'jurisdictional systems, recording her assessment of each record '
+            + 'before knowing the outcome of the case, and completing that work '
+            + 'on her own time while maintaining a full-time human resources '
+            + 'role.'
   },
   'q7m2vd9xk4': {
     code: 'H-2026-01',
