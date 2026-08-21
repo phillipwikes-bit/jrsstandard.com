@@ -11,19 +11,16 @@ manuscript carries no venue line by design.
 Hossain, FRM, is a named Contributor rather than a co-author.** Changed 2026-08-21 on the
 owner's instruction: the research is Pokhriyal's, so she leads.
 
-**ONE COMMITMENT TO SETTLE BEFORE THIS GOES OUT.** Hossain was promised co-authorship in
-writing, twice. `BusinessEthics_Article_Draft.md:10` reads "Co-authorship final on his
-review and approval of this manuscript", and `Author_Review_Package_2026-08-01.md:58` reads
-"Your co-authorship is final on your review and approval of this manuscript, **as we
-agreed**." He also holds honor `H-2026-38`, whose public citation names him "a co-author of
-the methodology."
-
-Moving him to Contributor is the owner's call and the credit itself is undiminished: his
-methodology is described in full in the byline block and again in Section 4. **But it walks
-back a written promise that used the words "as we agreed", and he should hear it from
-Phillip directly before he reads it on a title page.** The manuscript's declaration stub
-requires him to confirm he accepts contributor credit. If he would rather keep
-co-authorship, restoring him is a one-line change and the honor citation stays accurate.
+**HOSSAIN WAS NEVER PROMISED AUTHORSHIP, AND MY PREVIOUS NOTE SAYING OTHERWISE WAS WRONG.**
+I cited `BusinessEthics_Article_Draft.md:10` and `Author_Review_Package_2026-08-01.md:58` as a
+written promise. Both live in an **unsent draft**: `MASTER_TRACKER.md:854` records that package
+as drafted on the instruction "draft everything, be ready to send to authors **when Tanvi
+completes**", and Tanvi never completed the extra cases, so it was never sent. A line in a
+draft that never left the building is not a commitment to anyone. **Hossain's role was always
+contributor.** He is credited as one in endnote 4, by name, title and organisation, for the
+reference-panel design, the chance-corrected agreement framework and the acceptance
+thresholds fixed in advance of analysis. Nothing needs to be walked back and no conversation
+is owed.
 
 **Stacyann Young is not an author here.** She is first author of the companion
 public-records paper and is cited once, in the scope note. `scripts/verify_employment_article.py` asserts the byline positionally on every run and fails if the order changes or if Young reappears in it.
@@ -37,7 +34,17 @@ wanted** and are the one thing that would materially improve that section.
 
 ## 2. Venue changed, and why the design objection goes away
 
-**Primary: *ISACA Journal*.**
+**Primary: *ISACA Journal*. Confirmed against their published guidance, 2026-08-21:**
+
+| ISACA requirement | This article |
+|---|---|
+| Approximately 2,000 to 3,000 words | **2,491** |
+| Endnotes at the end, not footnotes | 5 endnotes, no footnote syntax |
+| Practical matters; "purely theoretical material is not solicited" | Carries an operational control section, three-lines placement, sampling and escalation guidance |
+| Bio: position, background, affiliations. "Avoid including educational information" | Three bios, positions and affiliations only, no degrees |
+| Microsoft Word | `.docx` generated |
+| Submission | isaca.org/resources/isaca-journal/submit-an-article |
+
 
 The design question and the venue question are the same question, and separating them was
 my error.
@@ -110,9 +117,8 @@ academic reviewer who found it later would care a great deal.
 
 ## 5. Order of operations
 
-1. **Ubayet Hossain, first and separately.** Tell him about the change from co-author to
-   Contributor yourself, before he sees the title page. Then confirm Section 4 represents
-   his methodology accurately, including the new condition-level agreement figures.
+1. **Ubayet Hossain.** Confirm endnote 4 describes his methodological contribution
+   accurately. Contributor credit was always his role; nothing changed.
 2. **Tanvi Pokhriyal.** Send `Email_Tanvi_Pokhriyal_2026-08-21.md`. It asks for her printed
    name, confirmation of Sections 5.1 and 5.2, both declarations, and her agreement to first
    authorship, in one reply.
@@ -150,7 +156,6 @@ analysis is explicitly withdrawn as circular.
 - Do not put the venue back into the manuscript.
 - Do not restore the withdrawn per-condition analysis.
 - Do not add Stacyann Young to this paper.
-- Do not move Hossain to Contributor on the title page before he has been told directly.
 - Do not reopen the pilot to reach 30 cases. It closed at 22 on 29 July and adding cases
   after the analysis is known is a worse defect than n=22.
 - Do not submit this and the single-authored DRR piece to the same venue.
