@@ -176,6 +176,18 @@ COUNT_ALLOW = {
                  "what a pre-registered rule must not do",
     "CORPUS_SIZE": "the study design constant, 24 records. Same reasoning as "
                    "NEEDED above, which is the same number in the builders",
+    # THESE ARE SOMEONE ELSE'S PUBLISHED REQUIREMENTS, NOT COUNTS OF ANYTHING
+    # HERE. They come from CCI's contributor-guidelines PDF and exist so
+    # scripts/apply_cci_publication_pass.py checks the article against the
+    # publisher's stated numbers instead of a remembered target, which is the
+    # exact defect that pass was written to fix. Deriving them from the
+    # repository would be meaningless: the repository is not the authority.
+    # Update them only when CCI updates the guidelines.
+    "CCI_MIN_WORDS": "CCI's stated length floor, 1,000 words, from their "
+                     "contributor-guidelines PDF last updated 05/15/26",
+    "CCI_PREFERRED_FLOOR": "CCI's stated preferred floor, 1,200 words, same source",
+    "CCI_MAX_COAUTHORS": "CCI's stated maximum of two co-authors per article, "
+                         "same source",
 }
 
 
@@ -863,7 +875,7 @@ def check_withdrawn_contributors_absent(offline):
 # honorees after the count moved to 36 and 15.
 HONOR_COMPOSITION_RE = re.compile(
     r"^// (\d+) entries: (\d+) public-records \+ (\d+) detection \+ (\d+) records-review"
-    r"(?: \+ (\d+) methodology)?\.",
+    r"(?: \+ (\d+) methodology)?(?: \+ (\d+) employment)?\.",
     re.M)
 
 
@@ -885,6 +897,10 @@ def check_honor_roster_composition(offline):
     # pattern only so the check still parses a roster written before the
     # category existed; absent means zero, never means ignore.
     claimed_meth = int(gs[4]) if len(gs) > 4 and gs[4] else 0
+    # EMPLOYMENT IS A REAL HONOREE BUCKET, added 2026-08-21 with H-2026-39.
+    # Optional in the pattern only so a roster written before the category
+    # existed still parses; absent means zero, never means ignore.
+    claimed_emp = int(gs[5]) if len(gs) > 5 and gs[5] else 0
 
     start = body.index("const ROSTER = {")
     i = body.index("{", start)
@@ -913,6 +929,7 @@ def check_honor_roster_composition(offline):
         "detection": studies.count("detection"),
         "records-review": studies.count("records-review"),
         "methodology": studies.count("methodology"),
+        "employment": studies.count("employment"),
     }
     claimed = {
         "total": claimed_total,
@@ -920,13 +937,14 @@ def check_honor_roster_composition(offline):
         "detection": claimed_det,
         "records-review": claimed_rr,
         "methodology": claimed_meth,
+        "employment": claimed_emp,
     }
     bad = [k for k in claimed if claimed[k] != actual[k]]
     detail = ("%d entries: %d public-records + %d detection + %d records-review"
-              " + %d methodology"
+              " + %d methodology + %d employment"
               % (actual["total"], actual["public-records"],
                  actual["detection"], actual["records-review"],
-                 actual["methodology"]))
+                 actual["methodology"], actual["employment"]))
     if bad:
         detail = ("the comment says %r but the roster is %r; disagreeing on %s"
                   % (claimed, actual, ", ".join(sorted(bad))))
