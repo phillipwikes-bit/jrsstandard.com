@@ -1,4 +1,5 @@
 export const config = { runtime: 'edge' };
+import { STUDIES_CLOSED, closedResponse } from './_study-status.js';
 
 // Token-free reviewer registration. Ensures a FIXED list of reviewers (defined
 // below, in code) exists in bench_experts, using the server-side service-role key.
@@ -18,20 +19,20 @@ const REVIEWERS = [
     credential: 'Responsible AI and Gen AI Consultant; RAG and EU AI Act alignment; EU AI Act, ISO/IEC 42001; SDLC-native governance; AI Governance Lead / Responsible AI Architect (Madrid).',
     years_experience: 'n/a',
     affiliation: 'Independent consultant (Spain)'
-  },
-  {
-    code: 'V-AI-31',
-    name: 'Alexandria Davis',
-    title: 'AI-Assisted Records Pilot Expert Reviewer',
-    credential: 'Responsible AI & Compliance Leader; AI Governance, Compliance Automation, and Fairness in Financial Systems; DBA Candidate; Founder & Principal Consultant, FIEA Consulting Inc.',
-    years_experience: 'n/a',
-    affiliation: 'FIEA Consulting Inc. (Toronto, Canada)'
   }
+  // NOTE: V-AI-31 (Alexandria Davis) was registered here on 2026-07-22 then MOVED
+  // to Arm B (RR-117) on Phillip's call (brief profile-only JRS recognition, not
+  // method exposure). Her bench_experts V-AI-31 row (0 reads) is now a stray;
+  // delete it server-side with the service role, like the V-AI-17 case. Do not
+  // reuse V-AI-31; next Panel code is V-AI-32.
 ];
 
 function json(o, s){ return new Response(JSON.stringify(o), { status: s||200, headers: { 'Content-Type':'application/json', 'Access-Control-Allow-Origin':'*' } }); }
 
 export default async function handler(req){
+  // STUDIES CLOSED 2026-08-21. No new reviewer may be registered and no read
+  // may be recorded after closure.
+  if (STUDIES_CLOSED) return closedResponse();
   const env = (typeof process !== 'undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
   if (!SERVICE) return json({ error:'service_key_missing' }, 503);

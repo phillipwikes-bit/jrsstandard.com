@@ -1,4 +1,5 @@
 export const config = { runtime: 'edge' };
+import { STUDIES_CLOSED, closedResponse } from './_study-status.js';
 
 // JRS submission relay. The reviewer study pages POST their reads here, and this
 // function inserts them into ai_pilot_reads using the server-side service-role key.
@@ -19,6 +20,8 @@ export default async function handler(req){
   if (req.method === 'GET') return json({ ok:true, serviceKey: !!SERVICE });
 
   if (req.method !== 'POST') return json({ error:'method_not_allowed' }, 405);
+  // STUDIES CLOSED 2026-08-21. No read may be recorded after closure.
+  if (STUDIES_CLOSED) return closedResponse();
   if (!SERVICE) return json({ error:'service_key_missing' }, 503);
 
   let body; try { body = await req.json(); } catch(e){ return json({ error:'invalid_json' }, 400); }

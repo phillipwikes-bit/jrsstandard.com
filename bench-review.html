@@ -2,7 +2,23 @@
 <html lang="en">
 <head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVYHJ7BJ92"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NVYHJ7BJ92');</script>
+<script>
+// STUDY CLOSED 2026-08-21. This is the reliability corpus (bench_labels and
+// bench_preflight), not the public-records study, which stays open on
+// submit-validation.html for contributor E-08.
+//
+// The page writes straight to the REST API with the anon key, so closing api/*
+// was not sufficient on its own. Both write paths return early here, the
+// controls are disabled and a banner says so. Front-door close only; see
+// api/_study-status.js for the database revoke that would make it absolute.
+var STUDIES_CLOSED = true;
+function closedNotice(el){
+  if (el) { try { el.disabled = true; } catch(e){} }
+  var s = document.getElementById('rs');
+  if (s) { s.textContent = 'This study closed on 21 August 2026. Nothing was submitted.'; s.style.color = '#D4A055'; }
+  return false;
+}
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NVYHJ7BJ92');</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
@@ -50,6 +66,7 @@ input,select,textarea{width:100%;background:var(--surface2);border:1px solid var
 </style>
 </head>
 <body>
+<div id="studies-closed" style="background:#1A1A1A;color:#D4A055;border:1px solid #7A5E28;padding:14px 16px;margin:14px auto;max-width:900px;line-height:1.6;font-size:14px"><strong>This study is closed.</strong> The reliability study stopped accepting reviews on 21 August 2026. Nothing submitted from this page will be recorded. Thank you to everyone who took part. Questions: <a href="mailto:info@jrsstandard.com" style="color:#BE9447">info@jrsstandard.com</a></div>
 <header class="hd"><div class="hd-in"><a href="/" class="wm">JRS<span style="font-size:9px;vertical-align:super">&#8482;</span></a><div class="meta">Benchmark Review</div></div></header>
 <main><div class="wrap">
   <div id="gate">
@@ -97,6 +114,7 @@ function det(c){var v=COND.map(function(x){return c[x.k];});if(v.indexOf('gap')>
 function val(id){var e=document.getElementById(id);return e?(e.value||'').trim():'';}
 function isExpert(c){return String(c||'').trim().toLowerCase().charAt(0)==='e';}
 function start(){
+  if (STUDIES_CLOSED) return closedNotice(null);
   code=(document.getElementById('code').value||'').trim();
   role=document.getElementById('role').value; mode=document.getElementById('mode').value;
   if(!code){
@@ -182,6 +200,7 @@ window.pick=function(ci,v){
 };
 window.npick=function(v){ window._nverdict=v; ['ready','review_required','gap_identified'].forEach(function(x){document.getElementById('n-'+x).className='opt';}); document.getElementById('n-'+v).className='opt sel-'+(v==='ready'?'pass':(v==='review_required'?'review':'gap')); };
 window.submitRec=function(rid,btn){
+  if (STUDIES_CLOSED) return closedNotice(btn);
   var st=document.getElementById('rs'); var conditions=null, determination=null;
   if(mode==='jrs'){ var c=window._picks; if(!COND.every(function(x){return c[x.k];})){st.textContent='Mark all five.';st.style.color='var(--gap)';return;} conditions=c; determination=det(c); }
   else { if(!window._nverdict){st.textContent='Pick a verdict.';st.style.color='var(--gap)';return;} determination=window._nverdict; }
@@ -310,5 +329,6 @@ function trackClickAndNavigate(event, targetUrl, eventMetaData) {
   }, true);
 })();
 </script>
+<script>document.addEventListener("DOMContentLoaded",function(){if(typeof STUDIES_CLOSED==="undefined"||!STUDIES_CLOSED)return;var l=document.querySelectorAll("button");for(var i=0;i<l.length;i++){var t=(l[i].textContent||"").toLowerCase();if(t.indexOf("submit")>=0||t.indexOf("begin")>=0){l[i].disabled=true;l[i].style.opacity=".45";l[i].style.cursor="not-allowed";}}});</script>
 </body>
 </html>

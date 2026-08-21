@@ -1,4 +1,5 @@
 export const config = { runtime: 'edge' };
+import { STUDIES_CLOSED, CLOSED_AT } from './_study-status.js';
 
 // JRS Evidence Development Program — automated study runner (Study 001: AI Reproducibility).
 // Deploys automatically alongside api/review.js and REUSES the same ANTHROPIC_API_KEY.
@@ -140,6 +141,15 @@ function modalAgreement(answers) {
 
 export default async function handler(req) {
   const json = (o, s = 200) => new Response(JSON.stringify(o), { status: s, headers: { 'Content-Type': 'application/json' } });
+  // STUDIES CLOSED 2026-08-21. The nightly cross-vendor run writes study_runs
+  // every morning at 06:00 UTC, which is study data, so it stops with the rest.
+  // Returning 200 rather than an error is deliberate: Vercel Cron retries and
+  // alerts on failures, and a closed study is not a failure. The run is skipped,
+  // nothing is written, and the reason is stated in the response body.
+  if (STUDIES_CLOSED) {
+    return json({ ok: true, skipped: 'studies_closed', closed_at: CLOSED_AT,
+                  note: 'Nightly reproducibility run suspended. No rows written.' });
+  }
   try {
     const url = new URL(req.url);
     const token = url.searchParams.get('token') || '';
