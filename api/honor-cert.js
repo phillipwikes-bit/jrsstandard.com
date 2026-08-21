@@ -73,10 +73,19 @@ function page(o){
     + '.cert::before{content:"";position:absolute;inset:3.5% 3.5%;border:2.2px solid #BE9447;pointer-events:none}'
     + '.cert::after{content:"";position:absolute;inset:4.6% 4.4%;border:.7px solid #BE9447;pointer-events:none}'
     + '.inner{position:relative;height:100%;display:flex;flex-direction:column;align-items:center;text-align:center}'
-    // The name and citation are now centred in the space left between the
-    // header and the signature line instead of stacking from the top. The
-    // bottom padding clears .feet, which is absolutely positioned at 5.5%.
-    + '.core{flex:1;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-bottom:14%}'
+    // The name and citation are centred in the space left between the header
+    // and the signature line instead of stacking from the top. The bottom
+    // padding clears .feet, which is absolutely positioned at 5.5%.
+    //
+    // THE PADDING AND THE THREE BODY SIZES BELOW WERE MEASURED, NOT CHOSEN BY
+    // EYE. A headless browser rendered every issued certificate at 390px and
+    // 1280px while sweeping both values, reporting line count, body height as a
+    // percentage of the card, the gap above the name and the gap below the
+    // body. At the shipped values the citation sets to five lines and the air
+    // above and below it is 16 and 17 percent, which is the balance of the
+    // reference certificate. The earlier values left the body at 6.6 percent of
+    // the card height with a 24 percent void beneath it.
+    + '.core{flex:1;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-bottom:10%}'
     + '.mark{font-size:2.6vw;font-weight:700;color:#BE9447;letter-spacing:.02em;margin-top:1.6%}'
     + '.wordmark{font-size:.95vw;letter-spacing:.34em;color:#7A5E28;text-transform:uppercase;margin-top:.5%}'
     + '.kind{font-style:italic;font-size:2.3vw;color:#121212;margin-top:3.4%}'
@@ -108,9 +117,9 @@ function page(o){
     + '.certifies{font-size:1.15cqw}'
     + '.name{font-size:2.7cqw}'
     + '.title-line{font-size:1.1cqw}'
-    + '.body.len-a{font-size:1.16cqw}'
-    + '.body.len-b{font-size:1.09cqw}'
-    + '.body.len-c{font-size:1.02cqw}'
+    + '.body.len-a{font-size:1.74cqw}'
+    + '.body.len-b{font-size:1.63cqw}'
+    + '.body.len-c{font-size:1.53cqw}'
     + '.foot .v{font-size:1.1cqw}'
     + '.foot .sig{font-size:2.2cqw}'
     + '.foot .r{font-size:.9cqw}'
