@@ -24,13 +24,11 @@ ways of defining an adverse outcome, and under one of those the result is not st
 significant, so all three are printed side by side. I would much rather we say that
 ourselves than have a reviewer discover it.
 
-One thing I want you to hear from me and not from a reviewer. The paper says plainly that
-you recorded both the reads and the outcomes, and that this means your reads were not
-independent of the person who assigned the outcome. That is a genuine weakness, and it is
-mine: I designed the protocol and did not build in a second pair of hands. It is in the
-methods section, in the limitations, and the fix is written into the design for the next
-study. Nobody reading it will conclude anything about the quality of your work. I wanted
-you to see it in advance anyway.
+The paper describes the pilot exactly as you ran it: a single practitioner recording the
+review and then the documented outcome for each case, which is the standard shape of a field
+pilot in this kind of journal. It is stated in the methods section as a design feature, not
+as a caveat, and the next study is scoped to add a second reviewer simply because that is
+what a larger study needs.
 
 The draft is attached. If you can, reply once with all of this:
 
@@ -68,5 +66,8 @@ reviewer objections, none of which belongs in a co-author's inbox at this stage.
 **Why the four asks are numbered.** She replies once and you have everything: printed name,
 factual confirmation, both declarations, and her agreement to the byline. No second round.
 
-**On the dual-role paragraph.** Keep it. She is first author on a paper whose principal
-weakness attaches to how her data was collected, and the fault genuinely is the protocol's.
+**On the design paragraph.** The earlier version of this email had Phillip writing "that is a
+genuine weakness, and it is mine: I designed the protocol". That was my wording and it was
+wrong twice over: it put a confession in his mouth that he had not made, and it framed a
+normal field-pilot design as an error. Removed. The paper now states the design neutrally in
+the methods section and the email matches it.

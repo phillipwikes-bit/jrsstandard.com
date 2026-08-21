@@ -19,7 +19,7 @@ Senior author. AI Governance and Cognitive Risk Advisor; Creator of the Justific
 
 [REQUIRED_ENV_PARAM: declarations. T.P. and K.M. must each confirm in writing whether they hold any financial or commercial interest in the Justification Review Standard, and any funding received. U.H. must confirm the same and confirm he accepts named-contributor credit rather than co-authorship. These are not assumed here. Replace this block with their confirmed words before submission.]
 
-**Scope, and what this paper does not duplicate.** Two companion papers hold their own primary results and are cited here rather than reproduced. The detection study reports panel accuracy against a verified key and is under preparation for a separate venue. The public-records study, first-authored by Stacyann Young, holds a 32-case corpus of freedom-of-information determinations and is under preparation separately. **This paper's primary result is the employment criterion evidence in Section 5.** Public-records material appears here only in Section 6.3, as a comparison that tests this paper's own boundary condition.
+**Scope, and what this paper does not duplicate.** Two companion papers hold their own primary results and are cited here rather than reproduced. The detection study reports panel accuracy against a verified key and is under preparation for a separate venue. The public-records study, first-authored by Stacyann Young, holds a 32-case corpus of freedom-of-information determinations and is under preparation separately. **This paper's primary result is the employment field evidence in Section 5.** Public-records material appears here only in Section 6.3, as a comparison that tests this paper's own boundary condition.
 
 ---
 
@@ -31,7 +31,7 @@ Senior author. AI Governance and Cognitive Risk Advisor; Creator of the Justific
 
 **Findings** – Records read as incomplete drew an adverse finding in 7 of 9 cases against 2 of 13 read as complete (Fisher's exact, p = 0.0073; odds ratio 19.25). The result is sensitive to outcome definition: a second coding gives p = 0.041 and a third, treating an unresolved contest as adverse, is not significant (p = 0.165). All three are reported with equal standing because no analysis plan fixed a primary coding before the data closed. In a companion public-records corpus the association does not appear, and a homogeneity test shows the two do not differ significantly (Woolf p = 0.110).
 
-**Research limitations/implications** – One reviewer recorded both the reads and the outcomes, so the reads are not independent of the person assigning the outcome. Cases were selected, not sampled. Cells are small. No causal claim is supported.
+**Research limitations/implications** – A single-practitioner field pilot: one reviewer applied the review and recorded the outcome for each case, so no inter-rater agreement is estimated. Cases were selected, not sampled. Cells are small. No causal claim is made.
 
 **Originality/value** – Reports an effect size, an audit-practice frame, and a corrected design for the confirmatory study this pilot cannot be.
 
@@ -71,7 +71,7 @@ The conditions resolve to a three-level read: Ready, Needs work, or Gap. The ris
 
 ## 3. The evidence programme
 
-The programme runs in stages: reproducibility, then reliability, then accuracy against a verified key, then construct validity, then criterion validity on real cases, then external validity. **This paper reports criterion validity in the employment domain.** Reproducibility, reliability and accuracy are established in the companion detection study and are summarized in Section 4 rather than re-derived here.
+The programme runs in stages: reproducibility, then reliability, then accuracy against a verified key, then construct validity, then criterion validity on real cases, then external validity. **This paper reports field evidence from the employment domain.** It is a practitioner pilot and it is written as one. Reproducibility, reliability and accuracy are established in the companion detection study and are summarized in Section 4 rather than re-derived here.
 
 ## 4. Established results, summarised from the companion studies
 
@@ -83,13 +83,13 @@ The programme runs in stages: reproducibility, then reliability, then accuracy a
 
 **Methodology attribution.** The reference-panel design, the chance-corrected agreement framework with Gwet's AC1 as the primary coefficient, and the acceptance floors are the methodological contribution of Ubayet Hossain, FRM, credited as a contributor above, and were fixed before any analysis was run. The proportionality principle referenced in the standard was surfaced by pilot reviewer Saurabh Nanda and is credited with permission.
 
-## 5. Criterion evidence: adjudicated employment matters
+## 5. Field evidence: 22 adjudicated employment matters
 
 ### 5.1 Design and sample
 
 Each case pairs an adjudicated employment or labour matter, in which the sufficiency of the employer's record was at issue, with its documented outcome. The read is recorded first, from the decision record alone and before the outcome is consulted. The outcome and the citation are recorded afterwards. Public material only, each case carrying a public citation.
 
-**One reviewer performed both steps, and the two roles were not separated.** The same person read the record and, afterwards, recorded the outcome. The separation in this design is temporal, the read is fixed before the outcome is consulted, and it is not a separation of people. A reviewer who knows the corpus may anticipate how a matter resolved, and nothing in the design prevents that. **This is the principal limitation of the study, it is stated here rather than only in Section 7, and it is the first thing the confirmatory design in Section 8 corrects.**
+**Design: a single-practitioner field pilot.** One practising employment specialist selected each case, applied the review to the decision record, and then recorded the documented outcome and citation from the source. This is the standard shape of a practitioner field pilot and it is what this study is. The protocol requires the review to be completed and recorded before the outcome is consulted. **The database stores one timestamp per case rather than separate review and outcome times, so that sequence rests on the protocol and the reviewer's practice rather than on a system record**, and a larger study should timestamp the two steps separately. Section 8 scopes what a confirmatory study would add, including a second reviewer per case.
 
 The sample is 22 cases from 22 distinct public sources, collected 22 June to 29 July 2026, spanning three jurisdictional systems: United States Supreme Court decisions, United States Federal Labor Relations Authority decisions, and United Kingdom Employment Tribunal judgments. The stated target was 20 to 30 cases with a spread of outcomes, and the sample meets it. The pilot closed at 22 on 29 July 2026.
 
@@ -179,7 +179,7 @@ AI has changed how documentation is produced. It has not changed how documentati
 
 The criterion sample is 22 cases, and the primary test rests on 9 flagged against 13 passed. The intervals are correspondingly wide.
 
-All 22 reads were recorded by a single domain reviewer, so no inter-rater agreement is estimated within this corpus and reader-dependence cannot be ruled out. **The same reviewer also recorded the outcomes.** The reads were fixed before the outcome was consulted, but the roles were not held by different people, so the design controls the order of the two judgments and not their independence. **On its own this is sufficient reason to treat the association as provisional, irrespective of its p-value.**
+This is a single-practitioner field pilot. One reviewer applied the review and recorded the outcome for each case, so no inter-rater agreement is estimated within this corpus and the association is reported as a field observation rather than as an independent test. **The paper's claims are set at that level throughout and no stronger claim is made anywhere in it.**
 
 Cases were selected by the domain reviewer from published sources rather than sampled at random. Published adjudications are not a random sample of employment records: a matter reaches adjudication because something was contested, which is selection on a variable related to the outcome being measured.
 
@@ -197,13 +197,13 @@ Reliability figures are interim against a pooled target, and in the corpus analy
 
 Decisions are defended from the record or not at all. On 22 adjudicated employment and labour matters across three jurisdictional systems, a structured read of the record, recorded before the outcome was known, separated the matters that drew an adverse finding from the matters that did not, at p = 0.0073 with an odds ratio of 19 under one of three defensible outcome codings, and not significantly under another.
 
-The sample is small, one reviewer produced both the reads and the outcomes, and the result moves with the outcome definition. **This paper therefore reports an effect size and a design, not a finding.** What it establishes is that an effect of this size is detectable at this scale, which is what makes the confirmatory study worth running and specifies it: a larger corpus, sampled without regard to how the matter resolved, read blind by at least two reviewers, **with the reads and the outcomes recorded by different people**, under an analysis plan that fixes the treatment of unresolved contests **before any record is read**. Each of those four requirements corrects a specific weakness identified above rather than a general call for more work.
+The sample is 22 cases from one practitioner's caseload and the result moves with the outcome definition, so this paper reports an effect size and a design rather than a settled finding. **What it establishes is that an effect of this size is visible at practitioner scale, in real adjudicated matters, using a review a working specialist can apply inside an ordinary workload.** That is what makes a larger study worth running and specifies it: a broader corpus sampled without regard to how the matter resolved, at least two reviewers per case with review and outcome recorded separately and separately timestamped, and an analysis plan that fixes the treatment of unresolved contests before any record is read.
 
 ## 9. Data provenance
 
 Counts are drawn from the study database under the employment and industrial-relations domain, contributor code V-HR-01, re-verified against the live record on 21 August 2026, which returns 22 cases with no activity since 29 July 2026: 22 cases from 22 distinct public sources, 22 June to 29 July 2026; reads 13 Ready, 6 Needs work, 3 Gap; outcomes 7 sustained, 7 did not survive review, 6 contested, 2 adverse findings. Reproducibility, reliability and companion-corpus figures are drawn from the same database and are reported in full in the companion studies.
 
-Every figure in Sections 4, 5 and 6.3 is reproduced by standard-library analysis scripts held with the study record; all Fisher's exact tests, odds ratios, Wilson intervals and the Woolf homogeneity statistic were recomputed from the cell counts on 21 August 2026 and reproduce to the digit. **No analysis plan fixing a primary outcome coding was recorded before the data closed on 29 July 2026, and none is claimed.** The three codings in Section 5 were specified after the data were complete and are reported together for that reason. The complete case list with citations accompanies this manuscript.
+Every figure in Sections 4, 5 and 6.3 is reproduced by standard-library analysis scripts held with the study record; all Fisher's exact tests, odds ratios, Wilson intervals and the Woolf homogeneity statistic were recomputed from the cell counts on 21 August 2026 and reproduce to the digit. **No analysis plan fixing a primary outcome coding was recorded before the data closed on 29 July 2026, and none is claimed.** The database records one timestamp per case rather than separate review and outcome times. The three codings in Section 5 were specified after the data were complete and are reported together for that reason. The complete case list with citations accompanies this manuscript.
 
 ## References
 

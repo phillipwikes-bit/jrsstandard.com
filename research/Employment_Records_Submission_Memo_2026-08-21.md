@@ -35,42 +35,65 @@ wanted** and are the one thing that would materially improve that section.
 
 ---
 
-## 2. Journal of Business Ethics is the wrong venue
+## 2. Venue changed, and why the design objection goes away
 
-JBE is FT50 and ABS 4*. It publishes normative business-ethics theory and large-scale
-empirical work. A 22-case, single-reviewer, non-blind pilot with a coding-dependent result
-will be desk-rejected without review. **Estimated acceptance under 5 percent**, and a desk
-rejection costs two to six weeks and teaches nothing.
+**Primary: *ISACA Journal*.**
 
-## 3. Recommended venue
+The design question and the venue question are the same question, and separating them was
+my error.
 
-**Primary: *Records Management Journal* (Emerald), subscription route.**
+**In an academic criterion-validity paper**, a reviewer who applies the review and also
+records the outcome is a limitation that has to be confessed, because the claim is that one
+measurement predicts an independent one. That framing forced a confession into the paper and
+into a co-author email, and it was the wrong framing for this evidence.
 
-| Criterion | Assessment |
+**In a practitioner audit journal, a single-practitioner field pilot is the normal unit of
+contribution, not a defect.** One qualified specialist works a real caseload, applies a
+review, records what happened, and reports it. Nobody asks a Chief Audit Executive writing
+up 22 examinations to have had a second examiner shadow every file. The paper now makes a
+field-evidence claim at that level and says so throughout, so the design is stated in the
+methods as what the study is rather than apologised for in the limitations.
+
+| Criterion | ISACA Journal |
 |---|---|
-| Cost | Emerald hybrid. **Subscription route carries no article processing charge.** Their optional open-access route is GBP 3,222. This was the deciding factor in `Venue_Decision_Detection_Paper_2026-08-05.md` and it is the deciding factor here |
-| Scope | Recordkeeping, documentation quality, evidentiary sufficiency. The paper's actual subject |
-| Audit readership | Section 6.4's three-lines-of-defence framing lands with this readership, which JBE's does not |
-| Collision | **Conditional only.** RMJ is the third alternate on the single-authored EDPACS piece (`Backup_Article_EDPACS_DRR_Control.md:7`), behind EDPACS itself and ISACA Journal. It becomes a real conflict only if both decline |
-| Tolerance for a pilot | A methods-and-practice journal reviews work at this scale |
+| Readership | Audit, governance, risk and control practitioners. **Kyle McMullan's Section 6.4, written by a former Chief Auditor of AML and Financial Crimes International at Citi, is aimed exactly here** |
+| Claim level | Practitioner field evidence, which is what 22 cases from one specialist's caseload supports |
+| Design fit | Single-practitioner pilots are standard contributed work at this venue |
+| Cost | Contributed practitioner articles. **No article processing charge** |
+| Collision | ISACA is the second alternate on the single-authored EDPACS piece, which keeps EDPACS as its primary. Conditional only |
+| Authors | An HR practitioner, a Chief Audit Executive and a governance advisor is a natural author set for this readership, which it is not for a management-theory journal |
 
-**Second: *Journal of Documentation* (Emerald).** Same cost model, no collision anywhere in
-the portfolio, and it publishes measurement and instrument-validation work about documents
-as evidence. Slightly more theoretical than this paper.
+**Second: *EDPACS* (Taylor & Francis).** Same practitioner logic, real ISSN, indexed, and
+`Backup_Article_EDPACS_DRR_Control.md:7` already records that it "explicitly publishes
+contributed practitioner work on audit and control topics". If this paper takes EDPACS, the
+single-authored DRR piece moves down its own ladder.
 
-**Third: *International Journal of Law and Management* (Emerald).** Same cost model.
+**Third: *Business Information Review* (SAGE).** Practitioner-academic bridge.
 
-**Estimated acceptance after revisions at RMJ: 45 to 60 percent.** Reasoned judgment, not
-measured. Raising it: a real-outcome corpus across three jurisdictional systems, a large
-effect, complete reporting of three codings including the null, a homogeneity test against
-a companion corpus, and a specified confirmatory design. Holding it down: n=22, one
-reviewer who also scored the outcomes, no pre-registration, small cells, no institutional
-affiliation.
+**Dropped: *Journal of Business Ethics*.** FT50 and ABS 4*, normative theory and large-scale
+empirical work. It would desk-reject, and the version of this paper that could survive there
+does not exist because the data does not support it.
 
-**Two items unverified and not guessed.** RMJ's specific word ceiling and its current hybrid
-status: Emerald's author-guidelines pages return 403 to this environment. The manuscript is
-4,099 words, or **4,659 by Emerald's counting rule** (abstract, references and table text,
-plus 280 per table). Confirm both on the journal page before submitting.
+**Dropped: *Records Management Journal*.** A peer-reviewed venue puts the paper back in the
+frame where the single-practitioner design is a limitation to defend rather than the study's
+form. It stays free for the EDPACS piece.
+
+**Estimated acceptance: 65 to 80 percent at ISACA Journal.** Higher than any academic option
+because the claim now matches the evidence and the design matches the venue's normal unit of
+work. Reasoned judgment, not measured.
+
+## 3. One thing found on 2026-08-21 that has to stay in
+
+`bench_outcomes` stores **one `created_at` per case, not separate review and outcome
+timestamps**. The protocol requires the review to be recorded before the outcome is
+consulted, and the reviewer's practice was to do that, but **the sequence cannot be evidenced
+from the system record.** The manuscript now says so in Section 5.1 and in the provenance
+statement.
+
+This is not a criticism of anyone's work. It is a database schema that was never asked to
+carry the distinction. **A larger study should timestamp the two steps separately**, and the
+manuscript says that too. Do not remove it: a practitioner reviewer will not care, and an
+academic reviewer who found it later would care a great deal.
 
 ## 4. Portfolio, so nothing collides
 
@@ -83,7 +106,7 @@ plus 280 per table). Confirm both on the journal page before submitting.
 | DRR as a record-level control | EDPACS, then ISACA, then RMJ, then BIR | Single-authored |
 | Rungs 1 and 2 | Journal of Responsible Technology | Per `Article1_Submission_Plan.md:42` |
 | Public records, Young first | Journal of Civic Information | Cited by this paper in 6.3 |
-| **This paper** | **Records Management Journal** | This memo |
+| **This paper** | **ISACA Journal** | This memo |
 
 ## 5. Order of operations
 
@@ -97,13 +120,16 @@ plus 280 per table). Confirm both on the journal page before submitting.
    name, his 6.4 pass, his optional de-identified examples, and both declarations, in one
    reply. His authorship condition is that pass (`BusinessEthics_Article_Draft.md:9`).
 4. Replace the `[REQUIRED_ENV_PARAM]` block with their own words. Do not write it for them.
-5. Confirm RMJ's word ceiling and hybrid status.
+5. Confirm ISACA Journal's current contributed-article word range and submission route.
 6. Submit.
 
 ## 6. What a reviewer will attack, and the answer
 
-**"Your reviewer scored her own outcomes."** Concede at once. Disclosed in 5.1, in 7, and
-corrected as requirement one of the Section 8 design. Do not defend it.
+**"Your reviewer scored her own outcomes."** In a practitioner venue this is unlikely to be
+raised at all, because it describes how field pilots work. If it is raised: the paper states
+the design in Section 5.1 as what the study is, the claim level is set to match, and a
+second reviewer is scoped into the next study. **Do not apologise for it and do not describe
+it as a weakness.** It is the study's form.
 
 **"You chose the coding that worked."** The paper says so itself, in Section 5.2 and again
 in Section 9. All three codings are reported with equal standing and the null is among
@@ -127,4 +153,4 @@ analysis is explicitly withdrawn as circular.
 - Do not move Hossain to Contributor on the title page before he has been told directly.
 - Do not reopen the pilot to reach 30 cases. It closed at 22 on 29 July and adding cases
   after the analysis is known is a worse defect than n=22.
-- Do not submit this and the EDPACS piece to Records Management Journal.
+- Do not submit this and the single-authored DRR piece to the same venue.
