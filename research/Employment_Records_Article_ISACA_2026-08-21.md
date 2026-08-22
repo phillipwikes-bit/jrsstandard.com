@@ -166,8 +166,26 @@ The drafting tool is new. The examiner's question is not: the file still has to 
 
 ---
 
-**Tanvi Pokhriyal** is a Human Resources Manager at REIL Innovative Solutions, working in employment and industrial relations. She designed the case protocol for this study and conducted every record review reported in it.
+**Tanvi Pokhriyal** is an Organisational Psychologist working freelance. She is an HR and organisational psychology professional with over 15 years of experience across human resources, organisational development, business development, and marketing, including experience within the oil and gas sector. Her professional interests include organisational behaviour, employee relations, workplace decision-making, people management, and the evolving role of technology. She designed the case protocol for this study and conducted every record review reported in it.
 
 **Kyle McMullan** is a Chief Audit Executive working in internal audit and financial crime.
 
 **Phillip Wikes** is an AI Governance and Cognitive Risk Advisor focused on documentation integrity and record-level controls in AI-assisted environments. He served as a Lead Civil Rights Officer at the Maryland Commission on Civil Rights, evaluating discrimination complaints under federal HUD and EEOC frameworks. He developed the Justification Review Standard and named Decision Reconstruction Risk.
+
+---
+
+## Declarations
+
+**Financial interests.** Tanvi Pokhriyal declares that she has no financial or commercial
+interest, ownership, investment, or other financial relationship that could influence or be
+perceived to influence the findings, interpretation, or conclusions of this research.
+Phillip Wikes developed the review method described here and would benefit from its
+adoption; that interest is set out in endnote 5.
+**[REQUIRED_ENV_PARAM: KYLE_MCMULLAN_FINANCIAL_DECLARATION]**
+
+**Research funding.** Tanvi Pokhriyal declares that this research was conducted without any
+external financial support or research funding, and that she has not received, directly or
+indirectly, any funding, sponsorship, grants, or commercial financial assistance for the
+preparation or completion of this research paper. No external funding was received by any
+author.
+**[REQUIRED_ENV_PARAM: KYLE_MCMULLAN_FUNDING_DECLARATION]**

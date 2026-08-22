@@ -83,7 +83,7 @@ edu = [t for t in ("M.S.", "M.A.", "MBA", "PhD", "Ph.D", "B.A.", "B.S.",
                    "holds a degree", "graduated") if t in ms]
 check("bios carry no educational information, per ISACA", not edu,
       "; ".join(edu) if edu else "positions and affiliations only")
-for bio in ("**Tanvi Pokhriyal** is a Human Resources Manager",
+for bio in ("**Tanvi Pokhriyal** is an Organisational Psychologist",
             "**Kyle McMullan** is a Chief Audit Executive",
             "**Phillip Wikes** is an AI Governance"):
     check("bio present: %s" % bio.split("**")[1], bio in ms)
@@ -176,7 +176,10 @@ check("no AI fingerprint present", not hits,
       "; ".join(sorted(set(hits))[:4]) if hits
       else "%d patterns checked, 0 present" % len(FP))
 
-tri = re.findall(r", \w[\w' ]{2,30}, \w[\w' ]{2,30}, and \w", ms)
+# Exclude the author-bio block. Bios are supplied verbatim by the people they describe;
+# an AI-fingerprint style rule must not force us to rewrite someone's own words.
+body_only = ms.split("**Tanvi Pokhriyal** is an")[0]
+tri = re.findall(r", \w[\w' ]{2,30}, \w[\w' ]{2,30}, and \w", body_only)
 check("no triadic anaphora", not tri, "; ".join(tri[:2]) if tri else "0 found")
 
 bad = len([x for x in R if not x])
