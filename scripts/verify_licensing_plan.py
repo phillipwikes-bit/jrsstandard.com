@@ -216,6 +216,29 @@ def main():
               bool(op) and op.get('organizations') == 0,
               json.dumps(op)[:120] if op else 'no response')
 
+    print('\n--- E. ENGINE CONTRACT (the playbook misstated all of this) ---')
+    check('ready/review_required/gap_identified live in review-engine.js, NOT review.js',
+          grep(root, 'api/review-engine.js', "return 'gap_identified'"),
+          'api/review-engine.js:109. api/review.js returns Low/Moderate/High/Critical')
+    check('api/review.js routing is Low/Moderate/High/Critical',
+          grep(root, 'api/review.js', 'Low / Moderate / High / Critical'),
+          'api/review.js:22. Naming this file as the integration schema is wrong')
+    check('determination precedence is gap, then review, then ready',
+          grep(root, 'api/review-engine.js',
+               "if (vals.indexOf('gap') !== -1) return 'gap_identified';"),
+          'ternary status pass|review|gap. NOT binary pass/unmet')
+    for key in ('basis_identification', 'reasoning_traceability', 'cold_reviewer_clarity',
+                'accountability_support', 'temporal_reconstructability'):
+        check('condition key present: %s' % key,
+              grep(root, 'api/review-engine.js', "'%s'" % key))
+    check('engine writes a row per review (so "never persisted" is false)',
+          grep(root, 'api/review-engine.js', "'/rest/v1/engine_reviews'")
+          or grep(root, 'api/review-engine.js', "/rest/v1/engine_reviews"),
+          'api/review-engine.js logReview. No record text, but a row is written')
+    check('public activity page no longer claims a stored input preview',
+          not grep(root, 'engine-activity.html', '200-character input preview'),
+          'engine-activity.html:66. Run scripts/fix_engine_activity_copy.py')
+
     if args.doc:
         print('\n--- D. DOCUMENT: %s ---' % args.doc)
         path = os.path.join(root, args.doc) if not os.path.isabs(args.doc) else args.doc
