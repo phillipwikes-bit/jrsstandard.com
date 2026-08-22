@@ -1,29 +1,54 @@
 # Ubayet Hossain: co-authorship likelihood and yes/no preparation
 
-**THE CONVERSATIONS DID NOT ARRIVE.** The message carried the standing mandate and the
-request, with no attachment and no pasted text. **Nothing below is inferred from what he
-said to you recently, because I have not seen it.** Everything here comes from what the
-repository already records. Send the transcripts and I will revise this against his actual
-words, including his last reply, which is the one thing that would most change the estimate.
+**Revision 2, 2026-08-22.** Revised against his actual reply, which arrived as a screenshot
+after revision 1 was written. The open question in revision 1 is now answered: the article is
+the **detection study**. His reply is transcribed verbatim in
+`research/correspondence/Hossain_Ubayet.md`.
 
 ---
 
-## 1. First, a question that has to be settled before the reply is written
+## 1. The question from revision 1 is answered, and it changes the frame
 
-**Which article?** He sits differently on two of them, and the answer changes everything.
+**The article is the detection study.** That settles it, and it makes this a much smaller ask
+than it looked.
 
-| Article | His current status | Source |
-|---|---|---|
-| **Detection / international study** | **Already a full co-author.** Byline reads "Phillip Wikes and Ubayet Hossain, FRM" | `Detection_Article_Submission_FINAL5_2026-08-18.md` |
-| **Employment records (ISACA)** | **Named Contributor, not an author.** Changed on your instruction 2026-08-21 | `Employment_Records_Article_ISACA_2026-08-22.md`, endnote 4 |
+**He already said yes to this, on 2026-07-25** (`MASTER_TRACKER.md:694`). The byline of
+`Detection_Article_Submission_FINAL5_2026-08-18.md` already reads "Phillip Wikes ... and
+Ubayet Hossain, FRM (Associate Director, Model Validation, KPMG India)", with a full
+author-contributions statement crediting him with the reference-panel design, the
+chance-corrected agreement statistics, and the pre-registered decision floors.
 
-If you mean the detection paper, **he already said yes on 2026-07-25** and the live question
-is only sign-off on the final text, not whether he agrees in principle.
+**So you are not asking him to agree to co-authorship. He agreed a month ago.** What is
+outstanding is the single condition he himself attached: **he reviews and signs off on this
+specific manuscript before it is submitted.** That is a review task with a deliverable, not
+a decision about whether to be associated with the work.
 
-If you mean the employment article, you are asking him to move **up** from Contributor to
-co-author, which is a different conversation and a more likely yes than a cold ask.
+### What he actually said
 
----
+At 08:12 on 2026-08-22, to a message that carried both the honor acceptance link and the
+33 KB detection manuscript:
+
+> Hi Philip
+>
+> Let me get back to you on this
+
+**That is the "NOT YET" case, and it is the expected response to a manuscript arriving in an
+inbox.** He is being asked to read a full paper. Nobody signs off on a paper the morning it
+arrives. There is no objection in it, no condition, no mention of his firm, and no attempt to
+narrow what he is agreeing to.
+
+### One thing in the letter he was sent has to be corrected
+
+The letter's fallback sentence told him that on silence "the paper uses what is on file for
+you." **What is on file for him is co-author.** So as written, that sentence would treat
+silence on 5 September as an authorship sign-off, which is precisely what the earned-
+authorship policy forbids. The fallback is a naming-election rule built for contributors; it
+cannot carry an author's sign-off.
+
+**Withdraw the date as to authorship in the reply, explicitly.** Two reasons, and the second
+is the important one. It is the honest position: an unsigned author is not an author. And it
+removes any suspicion on his side that a clock is being run on him, which is the single
+thing most likely to turn a slow yes into a no.
 
 ## 2. What the record shows about how he behaves
 
@@ -53,13 +78,16 @@ is submitted wants his name on it.
 
 ## 3. Likelihood
 
-### On the merits: 80 to 90 percent yes
+### On the merits: 85 to 90 percent yes, revised up slightly
 
-He has already said yes once, to the same request, on the paper his methodology anchors.
-Nothing in the record shows hesitation about association with the work. His only stated
-condition, reviewing the specific manuscript first, is one you can satisfy immediately.
+He has already said yes to this exact paper. His methodology anchors it, the attribution is
+one he read and called accurate, and he asked to be told when it is submitted. Nothing in
+the record, and nothing in his reply, shows hesitation about association with the work.
 
-### Adjusted for the risk that actually matters: 60 to 70 percent
+**His reply does not move this down.** "Let me get back to you on this" against a 33 KB
+manuscript is what a careful reviewer says. Read it as the review beginning, not as a hedge.
+
+### Adjusted for the risk that actually matters: 65 to 75 percent
 
 **The variable is not willingness. It is KPMG.**
 
@@ -88,40 +116,52 @@ credited.** Assume Hossain faces a version of it and it may not be his decision 
 
 ## 4. Prepare for both
 
-### If he says YES
-1. Send the specific manuscript for sign-off before anything is submitted. **This is his
-   stated condition and the whole basis of the earned-authorship policy.** Do not treat a
-   general yes as a yes to a text he has not read.
-2. Ask him directly whether he needs KPMG clearance and whether he wants the firm named at
-   all. **Offer the version without it.** He may prefer "a model-validation professional
-   contributing in a personal capacity."
-3. Get his two declarations in his own words: financial or commercial interest in JRS, and
-   any funding.
-4. Update the byline, the author-contributions statement, and both verifier scripts in the
-   same change. `verify_isaca_article.py` currently asserts he appears **only** under the
-   Contributor heading and will fail if he moves up.
+### If he signs off
+1. **Lock the version.** Record which file he approved, by name and date, in
+   `research/correspondence/Hossain_Ubayet.md`. If the manuscript changes materially after
+   that, he sees it again. A sign-off is on a text, not on a title.
+2. **Ask him directly whether KPMG India should be named at all**, and offer the personal-
+   capacity wording without the firm. Do not wait for him to raise it.
+3. **Get his two declarations in his own words**: any financial or commercial interest in
+   JRS, and any funding. One line each is enough, but it has to be his line.
+4. Tell him the submission date when you have it. He asked to be told on 2026-07-14, and
+   following through on that is worth more than it costs.
 
-### If he says NO
-1. **Nothing breaks.** He is credited in endnote 4 of the employment article for the
-   methodology, and that endnote is accurate whether or not he is an author.
-2. Do not press, and do not ask for a reason. If the reason is his employer, asking puts him
-   in the position of explaining a constraint he may not be free to describe.
-3. His co-authorship on the **detection** paper is a separate agreement already given on
-   2026-07-25 and is unaffected unless he says otherwise. **Confirm that explicitly rather
-   than assuming it**, because a no on one paper is easy to over-read.
-4. Honor H-2026-38 stands regardless. It recognises the methodology, not the authorship.
+### If he declines
+1. **The paper survives it.** His methodology is credited in the text of Section 3 and in
+   the acknowledgments whether or not he is an author, and that credit is accurate either
+   way.
+2. **Do not ask why, and do not ask twice.** If the reason is his employer, asking makes him
+   explain a constraint he may not be free to describe.
+3. Confirm in one line that Honor H-2026-38 is unaffected, so he is not left wondering
+   whether declining costs him the recognition. It does not.
+4. Remove him from the byline **and** from the author-contributions statement in the same
+   change, then re-run `scripts/check_zero_drift.py` before anything is deployed.
 
-### If he says NOT YET, which is the most likely shape of a soft no
-Treat it as a clearance delay rather than a refusal. Ask what timeline his review needs and
-whether an unattributed draft would help him get it approved. **Do not hold the submission
-on it** if he is a Contributor rather than an author.
+### If he stays silent
+Send one short note in the first week of September. Then submit without his name. **Do not
+submit with it.** An author who has not signed off is not an author, and the 5 September
+fallback does not change that: it governs how a contributor's name is printed, not whether
+an author has approved a manuscript.
 
----
+## 5. The realistic shape of the next two weeks
 
-## 5. What I need to sharpen this
+**Most likely (roughly 60 percent):** he reads it over the coming week and comes back with
+methodology comments and a sign-off. His 2026-07-14 review is the template: specific,
+technical, corrective on detail, approving overall.
 
-Send the transcripts. **His last reply is the single highest-value input**, because tone
-there separates the three cases above better than anything in the file. Specifically worth
-knowing: whether he mentioned his firm, whether he asked to see the manuscript, and whether
-he set any condition. I will revise this document against his actual words rather than
-against his history.
+**Next most likely (roughly 20 percent):** he comes back asking how KPMG India is named, or
+asking for it to come out. **Have the answer ready before he asks it.** Offer, unprompted,
+the version that identifies him as a model-validation professional contributing in a
+personal capacity with no firm named. That costs the paper nothing and removes the only
+obstacle with any real weight behind it.
+
+**Silence past 5 September (roughly 15 percent):** send one short note, then submit without
+his name if he has not signed off. Do not submit with it.
+
+**An actual no (roughly 5 percent):** almost certainly employer-driven rather than about the
+work. Then the paper is single-author, his methodology is credited in the text and in the
+acknowledgments, and Honor H-2026-38 stands regardless.
+
+**The one thing that would change this assessment:** if his next message mentions his firm,
+compliance, or a review process. Send it over when it comes.
