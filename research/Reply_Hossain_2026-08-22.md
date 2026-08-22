@@ -40,11 +40,6 @@ And if a marked-up file is more useful than a clean one, or you would rather
 send comments in an email than in the document, whatever is least work for you
 is fine by me.
 
-The two statements I will need at the end, whenever we get there, are short
-ones in your own words: whether you have any financial or commercial interest
-in JRS, and whether any funding supported your work on it. For most people
-that is one sentence each.
-
 Thank you again, genuinely. You built the part of this that had to be right
 before anything else could be.
 
@@ -75,7 +70,9 @@ asking, and it costs the paper nothing.
 **No date is requested.** Asking "when do you think?" converts a deferral into a commitment
 he may not be able to make if a firm review sits behind it.
 
-**The declarations are flagged now but not demanded.** He knows what is coming at the end,
-so nothing lands as a surprise late.
+**No declarations are requested, because none are outstanding.** Section 9 of the manuscript
+already states his interest and states that no external funding was received
+(`Detection_Article_Submission_FINAL5_2026-08-18.md:344`). Asking him to supply what the
+paper already says would have added a task that does not exist.
 
 **Zero em-dashes, per CLAUDE.md III.7.**

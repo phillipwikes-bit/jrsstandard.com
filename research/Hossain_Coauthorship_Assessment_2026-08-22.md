@@ -122,8 +122,9 @@ credited.** Assume Hossain faces a version of it and it may not be his decision 
    that, he sees it again. A sign-off is on a text, not on a title.
 2. **Ask him directly whether KPMG India should be named at all**, and offer the personal-
    capacity wording without the firm. Do not wait for him to raise it.
-3. **Get his two declarations in his own words**: any financial or commercial interest in
-   JRS, and any funding. One line each is enough, but it has to be his line.
+3. **No declarations to collect.** Section 9 already states his interest and states that no
+   external funding was received (`Detection_Article_Submission_FINAL5_2026-08-18.md:344`).
+   Nothing further is needed from him on that.
 4. Tell him the submission date when you have it. He asked to be told on 2026-07-14, and
    following through on that is worth more than it costs.
 
