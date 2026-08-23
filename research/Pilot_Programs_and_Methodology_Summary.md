@@ -9,7 +9,7 @@
 The pilots test JRS against reality. For each real record, a reviewer records the JRS read (Ready, Needs work, or Gap) blind to what actually happened, and that read is later paired with the record's documented outcome (challenged, appealed, upheld, overturned). The question each pilot answers: does a JRS read predict how a real record holds up when it is later contested? This is the highest-value rung of the evidence program and a named lever for the standard's commercial value. Three domain pilots are running.
 
 ### Pilot 1. Public Records / FOIL
-- **Lead and co-author:** Stacy Young (reviewer ID E-08), Records Governance Advisor and Public-Records Domain Lead (Deputy Records Access Officer, NYC HPD). Co-authorship confirmed 2026-07-09.
+- **Lead and first author:** Stacyann Young, Independent Researcher (reviewer ID E-08). Co-authorship confirmed 2026-07-09. **Named without institutional affiliation at her request, per the policy she set 2026-08-09.**
 - **Mission:** assemble real public-records determinations (Freedom of Information requests and responses) paired with their documented outcomes, and test whether the JRS read anticipates which records withstand challenge.
 - **Verified evidence (study database):** 7 real cases from 7 distinct public sources, collected 2026-06-26 to 2026-07-06. JRS reads: 5 Ready, 2 Needs work, 0 Gap. Recorded outcomes to date include challenged and failed appeal.
 - **Status and home:** in progress, preliminary. Feeds the journal article "Documentation as a Governance Layer" (target: *Journal of Civic Information*). Target sample 20 to 30 cases by 31 August 2026; not submittable as a criterion claim until the target and outcome spread are met.

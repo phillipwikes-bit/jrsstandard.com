@@ -12,7 +12,7 @@ Both figures assume the manuscript goes as it currently stands, with Stacy Young
 
 ## Why it is that high
 
-**The venue fit is exact, not approximate.** The Journal of Civic Information exists for empirical work on FOIA, public records and transparency in government. This is empirical work on FOIA, public records and transparency in government, written by a serving Deputy Records Access Officer at a major city agency. Journals with a defined practitioner audience accept at materially higher rates than general social-science journals, because the pool of qualifying submissions is small and the editors want the field populated.
+**The venue fit is exact, not approximate.** The Journal of Civic Information exists for empirical work on FOIA, public records and transparency in government. This is empirical work on FOIA, public records and transparency in government, written by a serving public-records practitioner. **Her title and agency are deliberately not named here or anywhere else, per the affiliation policy she set on 2026-08-09.** Journals with a defined practitioner audience accept at materially higher rates than general social-science journals, because the pool of qualifying submissions is small and the editors want the field populated.
 
 **The first author is the reader they publish for.** Twenty-two years in New York City public-records administration, currently running FOIL operations for a large city agency. That is not a credential the paper leans on for its argument, and it does not need to be. It is the reason an editor takes the submission seriously in the first thirty seconds.
 

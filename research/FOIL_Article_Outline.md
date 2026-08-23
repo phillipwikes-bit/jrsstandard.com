@@ -2,7 +2,12 @@
 
 **Working title:** Documentation as a Governance Layer: Does a Structured Review Standard Identify Characteristics Associated with Defensible Public-Records Determinations?
 
-**Authors:** Phillip Wikes (creator, Justification Review Standard); Stacy Young (Records Governance Advisor and Public-Records Domain Lead; Deputy Records Access Officer, NYC HPD) — co-author.
+**Authors:** Stacyann Young, Independent Researcher (first author); Phillip Wikes (creator, Justification Review Standard).
+
+> **Affiliation policy, set by her on 2026-08-09.** She is named without institutional
+> affiliation at her request. Her title and agency were removed from this line on
+> 2026-08-23 when `scripts/check_affiliation_restrictions.py` found them still present here.
+> Do not reintroduce them.
 
 **Target journal:** *Journal of Civic Information* (FOIA, public records, transparency, government; accepts empirical research).
 

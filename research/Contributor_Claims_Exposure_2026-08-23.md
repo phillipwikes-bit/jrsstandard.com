@@ -84,7 +84,7 @@ rights in that work. None of them has assigned anything.**
 | Ubayet Hossain | Co-author, detection paper. Designed the validation methodology | **Sign-off deferred 2026-08-22.** No assignment |
 | Tanvi Pokhriyal | **First author**, employment records paper. Designed the case protocol and conducted **every record review** | Declarations supplied 2026-08-22. **No assignment** |
 | Kyle McMullan | Co-author, employment records paper | **Raised objections. No sign-off. No declarations.** No assignment |
-| Stacyann Young | First author, public records companion paper | **No assignment** |
+| Stacyann Young | **First author**, public records paper. **Designed the case protocol, selected and screened all 32 determinations, wrote a contemporaneous basis note for every one, and leads the public-records framing** | **No assignment. Her study is still OPEN. Standing affiliation restriction** |
 
 **What they can actually do.** Not sue you for a share of licensing revenue. **Object to the
 use of a paper they co-own**, decline to be associated with a commercial product, or withhold
@@ -98,11 +98,68 @@ who have signed nothing.**
 
 **Tanvi is the one to think about carefully and it is not a legal point.** She designed the
 protocol and personally conducted every record review in that study, as an unpaid volunteer,
-while travelling. If that paper becomes a component of a commercial licence, **she has the
-strongest equitable position of anyone in the programme.** She has already declared no
+while travelling. If that paper becomes a component of a commercial licence, **she and Stacyann Young hold the
+two strongest equitable positions in the programme**, on the same basis: both built a real
+case corpus rather than grading a constructed one. She has already declared no
 financial interest in JRS, which helps you considerably and which she volunteered without
 being pressed. **Do not let the first time she hears about commercialisation be from a press
 release.**
+
+### TIER 1a. The distinction the first pass missed: real-case contributors are not reviewers
+
+**Correction to this document's own first version.** It treated all four co-authors as one
+category and gave Stacyann Young a single line. **That was wrong, and the error was analytic
+rather than clerical.**
+
+**Two people did not grade a corpus. They built one.**
+
+| | Constructed-corpus reviewers (36) | **Real-case contributors (2)** |
+|---|---|---|
+| What they were given | A corpus Phillip built, with a reference classification | **Nothing. They sourced their own cases** |
+| What they produced | A read per record against a rubric | **Case selection, screening, a read, and a written contemporaneous basis note per case** |
+| Nature of the output | Application of someone else's instrument to someone else's material | **Original selection and original written expression** |
+| Volume | 24 records each | **Young 32 cases. Pokhriyal 22 cases** |
+
+`research/FOIL_Article_Draft.md` states her contribution in the author-contributions block:
+**"S.Y. designed the public-records case protocol, selected and screened all 32
+determinations, recorded the read and its contemporaneous basis note for each case blind to
+the documented outcome, recorded the outcomes and citations, and leads the public-records
+framing."**
+
+**Selection plus original written notes is authorship, not rating.** A rubric response is
+thin material for an ownership claim. **Thirty-two screened case selections with an original
+written note attached to each is not.** Young's claim over the public-records dataset is the
+strongest single ownership position held by anyone other than Phillip, and the earlier
+version of this file did not say so.
+
+### TIER 1b. Stacyann Young specifically, and three exposures that are hers alone
+
+**(a) A standing affiliation restriction, documented and agency-specific.**
+`research/Dossier_Stacyann_Young_2026-08-09.md` Section 8a records the policy she set on
+2026-08-09: her title and agency removed from the certificate, from any public-facing
+recognition, from the manuscript author line, and from both Council notes. The section closes:
+**"Nothing in the programme should reintroduce her employer. The study record still holds
+it."**
+
+**She is a public employee who did this voluntarily on public materials.** A commercial
+surface that reintroduces her agency, or that lets it be inferred, is a concrete harm to a
+named individual with an employer who may take a view. **This is the most specific
+person-level obligation in the entire programme and it survives any licence.**
+
+**(b) Her name is on external correspondence to a federal body.** The Chief FOIA Officers
+Council submissions (`research/CFOC_Submission_2026-08-08.md`) carry her background paragraph
+and her signature as Independent Researcher. **Her professional standing in her own field is
+attached to this work.** Commercialisation that she learns about second-hand touches that
+standing, not just her feelings.
+
+**(c) Her study is still open, so the relationship is live.**
+`submit-validation.html:20` reads `var OPEN_CONTRIBUTORS = ['E-08'];`. Every other study was
+closed on 2026-08-21; **hers was deliberately kept open at the owner's instruction so a
+further reader could review ten cases.**
+
+**She may be contributing unpaid work right now.** Announcing a commercial licence while an
+unpaid contributor's study is still accepting her submissions is the single worst sequencing
+available, and it is avoidable by one email.
 
 ### TIER 2. Reviewers and raters. Narrow, and it turns on one sentence
 
@@ -184,7 +241,9 @@ buyer most wants are the ones not yet collected.**
 | 4 | **Draft a short commercial-use notice and licence, and send it to the 36 completers** | $1,000 to $2,500 with counsel | Tier 2. Converts a revocable publication consent into a durable commercial licence, **with an honest offer to opt out** |
 | 5 | **Get written co-author consent to commercial use, separate from authorship sign-off** | Attorney time | Tier 1. Two different permissions. **Do not bundle them into one ask** |
 | 6 | **Add "unpaid, personal capacity" to the five task pages that lack it** | 20 minutes | Section 2.4 |
-| 7 | **Tell Tanvi, Hossain, Kyle and Stacyann directly, before any announcement** | An email each | Not a legal control. The one that actually prevents the problem |
+| 7 | **Tell Stacyann and Tanvi first, then Hossain and Kyle, before any announcement** | An email each | Not a legal control. The one that actually prevents the problem. **Young and Pokhriyal built the case corpora and hear first** |
+| 8 | **Close E-08 or tell Stacyann what is coming before she contributes again** | One email | `submit-validation.html:20`. She is the only contributor whose study is still accepting work |
+| 9 | **Add an affiliation-restriction assertion to `check_zero_drift.py`** | An hour | Her agency must never reappear on any surface, commercial or otherwise. A standing obligation deserves an automated guard rather than memory |
 
 **Item 4 deserves a specific caution.** Going back to 36 volunteers to ask for broader rights
 **after** commercialisation begins reads very differently from asking before. **Ask now, while
@@ -201,7 +260,10 @@ unusually clean: published, repeated, contemporaneous, and never contradicted.
 
 **The exposure is not a bill. It is a veto.** Four co-authors hold joint rights in the papers
 that constitute your validation evidence, and 36 contributors hold revocable publication
-permissions that were never framed as commercial. **Neither group can take your money. Either
+permissions that were never framed as commercial. **Two of those co-authors, Young and
+Pokhriyal, did not grade a corpus; they built one, and their ownership position over 32 and 22
+real cases respectively is materially stronger than a rubric response.** Young additionally
+holds a documented, agency-specific affiliation restriction that no licence can extinguish. **Neither group can take your money. Either
 group can complicate the asset you are trying to license**, and a licensee's counsel will find
 both in diligence.
 

@@ -1,5 +1,13 @@
 # Global Governance and Transparency Honor, 2026
 
+> **SUPERSEDED. Sent to her 2026-08-08, the day before she set her affiliation policy on
+> 2026-08-09.** Agency references were removed on 2026-08-23 when
+> `scripts/check_affiliation_restrictions.py` found them still present. She is named
+> **Stacyann Young, Independent Researcher**, with no title and no employer, on every
+> surface. The decision itself is recorded in
+> `research/Dossier_Stacyann_Young_2026-08-09.md` section 8a.
+
+
 **Stacyann Young · H-2026-01 · first honoree**
 
 ---
@@ -32,10 +40,10 @@ The certificate is yours. Your name appears on the JRS site only if you tick a s
 
 ---
 
-## If HPD or the Conflicts of Interest Board want to look at it
+## If her agency or the Conflicts of Interest Board want to look at it
 
 - No money moves in either direction.
-- JRS has never held a contract or any business relationship with the City or with HPD.
+- JRS has never held a contract or any business relationship with the City or with her agency.
 - The work was done in your personal capacity, on documents that were already public.
 - Your title does not have to appear anywhere.
 
