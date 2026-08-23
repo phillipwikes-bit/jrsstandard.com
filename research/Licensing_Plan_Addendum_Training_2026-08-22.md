@@ -105,42 +105,25 @@ platform architect does not care.
 
 ---
 
-## 3. Missing: Peter Broida, with a hard constraint attached
+## 3. Closed: the federal-sector training referral channel
 
-**What happened.** Twice in July 2026 he referenced JRS publicly: the Dewey Publications
-Podcast episode of 2026-07-06, with jrsstandard.com in the published episode notes, and Dewey
-News and Case Alert **Issue 18-07 of 2026-07-10**, listing it as an **Extra Credit Reading
-Assignment** with a favourable paragraph. He later wrote: **"No offense taken. You've got
-something to offer the civil service world."**
+**Owner determination, 2026-08-23: "They are not at all interested, Broida was just blowing
+me off."**
 
-**The constraint, and it is absolute.** He stated on the record: **"I'm not endorsing it, nor
-is Dewey."** He has declined endorsement twice, in public.
+The channel is closed. It is not a lead source, it is not a demand signal, and it is not part
+of any forward plan. The historical record stays in
+`research/Referral_Outreach_Emails.md` and the tracker; the follow-up drafts are marked
+WITHDRAWN and are not to be sent.
 
-**So the permitted use is narrow and it is still worth something.** It may be cited as
-independent third-party attention from a recognised federal-sector publisher, by naming the
-publication and issue and quoting the Case Alert paragraph. **It may never be presented as an
-endorsement, and his name must never appear as a reference or a supporter.** Presenting it
-otherwise would be falsified by one email to him, and the relationship record says the loop
-closed warmly and should be left that way.
+**What this costs the analysis, stated plainly.** An earlier version of this file treated
+those referrals as the programme's only unsolicited demand signal and built a probability on
+them. **That was wrong on the facts as the owner knows them, and removing it lowers the
+training estimate rather than leaving it where it was.** Section 6 carries the revised
+numbers.
 
-**The larger point the plan misses entirely.** Broida is not the opportunity. **His referrals
-are.** On 2026-07-15 he named three federal-sector training organisations and said they
-"might well be interested in having you as a trainer":
-
-| Organisation | Contact named |
-|---|---|
-| FELTG | Deborah J. Hopkins |
-| Gilbert Training Group | Gary M. Gilbert, former EEOC Chief Administrative Judge |
-| LRP | Seth Supran |
-
-**That is the only unsolicited demand signal anyone has offered this programme.** Emails went
-out in July and all three were silent, and the recorded diagnosis is that the emails caused
-the silence: each ended **"Use it or not, NO REPLY NEEDED"**, two went to general inboxes
-rather than the named person, and **none of them asked to teach anything**, which is the one
-thing Broida actually teed up. `research/Referral_Followups_2026-08-13.md` holds six-line
-rewrites carrying that single ask. **They have not been sent.**
-
----
+**What survives, and it is the substantial part.** The training and certification line does
+not depend on that channel. Section 1's assets are built and deployed, Section 2's credential
+is real, and the live traction below is measured rather than inferred.
 
 ## 4. What these three add up to
 
@@ -152,13 +135,14 @@ rewrites carrying that single ask. **They have not been sent.**
 | Buyer's cost to adopt | Integration project | A purchase order |
 | Assets ready | OpenAPI spec, versioned endpoint, vendor preview | **Curriculum, assessment, certificate, 4 guides, 19-page reference, 17-page library** |
 | Existing traction | 2 dead checkout clicks | **8 enrolled, 5 organisations, 7 completions, 5 countries, 370 downloads** |
-| Named warm leads | 0 | **3, from a federal-sector publisher** |
 | Owner's track record | Created the standard | **16 years training practitioners on structured frameworks** |
 | Time to first dollar | Quarters | **Weeks** |
 
-**The training line is not a consolation prize. It is the shorter path, it has the only warm
-leads in the programme, and it is the one the owner has 16 years of direct experience
-executing.**
+**The training line is not a consolation prize. It is the shorter path, it is the one with a
+complete product already deployed, and it is the one the owner has 16 years of direct
+experience executing.** It has no warm leads. Neither does the API line, and the API line
+also needs an entity, registered marks, a licence instrument and a security review before it
+can be offered at all.
 
 **And it feeds the other line.** A federal training contract produces named organisations
 using JRS in live workflows. That is precisely the reference deployment the API licensing
@@ -176,14 +160,17 @@ route needs and does not have, and it is what moves that estimate from 15 to 25 
 | 1 | Paste the three `checkout_url` values | **Two buyers have already been turned away** |
 | 2 | Add the two lost checkout clicks to the sale record | Direct evidence of demand at $500 and $750 |
 
-### Week 3, and this is the highest-value new action in the plan
+### Week 3. Build the target list the programme does not have
+
+**The referral channel is closed, so the training line starts cold.** That is a real cost and
+it is the honest position.
 
 | # | Step | Detail |
 |---|---|---|
-| 3 | **Send the three Broida referral follow-ups** | `research/Referral_Followups_2026-08-13.md`. Six lines, one ask, to the named person, and the ask is a guest session or a conference slot |
-| 4 | Attach the credential that was never mentioned | 16 years training counselors, educators and clergy on consistent application of structured frameworks. **These organisations buy trainers** |
-| 5 | Cite the Case Alert correctly | Issue 18-07, 2026-07-10, Extra Credit Reading Assignment. **Never as an endorsement. Broida is a connector, with no opinion attributed** |
-| 6 | Observe the stop rule already recorded | Silent again after three weeks means the federal training channel is a measured negative, and no third round is sent |
+| 3 | Build a named list of 20 training buyers | Compliance and HR training providers, professional associations offering CPE, and in-house L&D functions at organisations that already run investigations |
+| 4 | Lead with the credential the site never claims | 16 years training counselors, educators and clergy on consistent application of structured frameworks, then evaluating implementation consistency. **These organisations buy instructors** |
+| 5 | Start with the 5 organisations already on file | `/api/enroll-stats` records **5 organizations** with completed training and **8 people who consented to contact**. **That is a warmer list than any referral, and it is owned rather than borrowed** |
+| 6 | Set a stop rule before starting | 20 approaches, three weeks. Silence across all 20 is a measured negative on the training channel, not a reason for a second round |
 
 ### Weeks 4 to 8. Package the training as an offer
 
@@ -211,12 +198,18 @@ The ladder in `research/Licensing_Execution_Plan_2026-08-22.md` stands for the A
 | Route | Today | With these steps |
 |---|---|---|
 | API licensing to a GRC platform | 15 to 25 percent | 45 to 60 percent after one deployment |
-| **Training or curriculum engagement, 12 months** | **not previously estimated** | **35 to 50 percent** |
-| Any paid engagement of any kind, 6 months | not previously estimated | **55 to 70 percent** |
+| **Training or curriculum engagement, 12 months** | not previously estimated | **20 to 30 percent** |
+| Any paid engagement of any kind, 6 months | not previously estimated | **40 to 55 percent** |
 
-**The training estimate is higher than the API estimate for the near term** because it has
-warm named leads, no legal prerequisites, a complete product, measured completions in five
-countries, and 16 years of the owner's own delivery experience behind it.
+**REVISED DOWN 2026-08-23.** The earlier 35 to 50 percent rested partly on three warm
+referrals that the owner has since determined were never real. **Removing them costs roughly
+15 points**, and the number moves rather than the reasoning being retrofitted to keep it.
+
+**The training estimate still exceeds the API estimate for the near term**, on what remains:
+no legal prerequisites, a complete deployed product, 7 completions across 5 countries, 5
+organisations already on file with contact consent, and 16 years of the owner's own delivery
+experience. **What it no longer has is a warm introduction, so it is now a cold-outreach
+motion and is priced as one.**
 
 **The 2 dead checkout clicks are the most actionable data point in this entire file.** They
 cost nothing to fix and they are evidence, not projection.

@@ -1,5 +1,12 @@
 # Outreach to Peter Broida's referrals (plain voice, 2026-07-16)
 
+> **WITHDRAWN 2026-08-23 ON THE OWNER'S DETERMINATION. DO NOT SEND.**
+>
+> "They are not at all interested, Broida was just blowing me off." The federal-sector
+> training referral channel is closed. These drafts are retained as a record of what was
+> written, not as a queued action. Nothing below is to be sent to FELTG, the Gilbert
+> Training Group, LRP, or Peter Broida.
+
 **Context:** Peter Broida suggested Phillip contact three federal-sector training orgs. Pure donation, no strings. Rewritten plainer/shorter after V-AI-17 withdrew over AI-sounding outreach. Send in Phillip's own voice; type, don't paste-verbatim.
 
 **Research (2026-07-16): none of the three covers AI-drafted documents, DRR, or records defensibility.** JRS is complementary.

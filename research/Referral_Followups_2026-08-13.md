@@ -1,5 +1,12 @@
 # Follow-ups to the three Broida referrals
 
+> **WITHDRAWN 2026-08-23 ON THE OWNER'S DETERMINATION. DO NOT SEND.**
+>
+> "They are not at all interested, Broida was just blowing me off." The federal-sector
+> training referral channel is closed. These drafts are retained as a record of what was
+> written, not as a queued action. Nothing below is to be sent to FELTG, the Gilbert
+> Training Group, LRP, or Peter Broida.
+
 **Prepared 2026-08-13. The July emails got no response from any of the three. This diagnoses why and replaces the ask.**
 
 ---

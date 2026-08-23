@@ -530,13 +530,15 @@ almost entirely unused.**
 | Asset | State |
 |---|---|
 | Training completions | **7 people, 5 organizations, 5 countries** |
-| Federal-sector training referrals | **3 named** (FELTG / Hopkins, Gilbert Training Group / Gilbert, LRP / Supran), offered with the words "might well be interested in having you as a trainer" |
-| Follow-up emails | **Written, in `research/Referral_Followups_2026-08-13.md`, unsent** |
+| Organisations with contact consent | **5**, from completed training, owned rather than borrowed |
 | Owner's track record | **16 years training counselors, educators and clergy on consistent application of structured frameworks within existing operational environments** |
 
 **That is the precedent-backed route.** Practitioner training builds named organisational
 adoption; named adoption is what makes a platform licence rational for the platform.
-**Three unsent emails sit at the front of it.**
+
+**It starts cold.** The federal-sector referral channel was closed by the owner on 2026-08-23
+as never having been real interest. **The warmest list the programme owns is the 5
+organisations that already completed training and the 8 people who consented to contact.**
 
 ## Q3. Does the passive e-commerce flow cover the downside if enterprise licensing yields $0?
 
@@ -560,12 +562,13 @@ form.**
 |---|---|
 | The $7k to $16k ceiling, revised to $12k to $24k | **Real.** The spend is bounded and the plan is right that there is no ruin scenario |
 | Consulting and advisory income continuing | **Real, and outside this plan.** It is the actual floor |
-| Training and certification revenue | **The best available cover and the plan omits it.** 3 warm named leads, a complete curriculum, and 16 years of the owner's delivery experience |
+| Training and certification revenue | **The best available cover and the plan omits it.** A complete deployed curriculum, 5 organisations already trained, and 16 years of the owner's delivery experience. **Cold outreach, no introductions** |
 | Self-service e-commerce | **Weak** at current traffic with human-delivered offers |
 
 **Revised downside statement:** if enterprise licensing yields $0, the recoverable position is
-a training or curriculum engagement, not e-commerce. **Estimated at 35 to 50 percent within 12
-months**, against 15 to 25 percent for the API route, and it requires no entity, no registered
+a training or curriculum engagement, not e-commerce. **Estimated at 20 to 30 percent within 12
+months**, revised down on 2026-08-23 when the referral channel closed, against 15 to 25
+percent for the API route, and it requires no entity, no registered
 marks, no MCLA and no SOC 2.
 
 ---
@@ -576,7 +579,7 @@ marks, no MCLA and no SOC 2.
 |---|---|---|---|
 | 1 | **Paste three `checkout_url` values** | 15 minutes | Two buyers already turned away. Creates first revenue, which is the weak Section 183 factor |
 | 2 | **Deploy `fix_engine_activity_copy.py`** | One deploy | Removes the live contradiction of the one claim that lets you defer SOC 2 |
-| 3 | **Send the three referral follow-ups** | One hour | The only warm named leads in the programme |
+| 3 | **Approach the 5 organisations that already completed training** | One hour | 8 people consented to contact. The warmest list the programme owns |
 | 4 | **Build the compliance crosswalk with clause numbers** | Days | The document a risk team can act on without procurement |
 | 5 | **Engage the practitioner before any spend** | $500 to $1,500 | Sections 2.1 and 2.2 both turn on one date |
 | 6 | Draft the contributor assignment and release | $1,000 to $2,500 | Closes the chain-of-title gap |
@@ -587,3 +590,7 @@ marks, no MCLA and no SOC 2.
 
 **Items 1, 2 and 3 cost under two hours in total and move more than the rest of the list
 combined.**
+
+**Note on a removed item.** An earlier draft ranked sending three federal-sector referral
+follow-ups at position 3. **The owner determined on 2026-08-23 that the interest behind those
+referrals was never real.** The channel is closed and the drafts are withdrawn.

@@ -152,7 +152,7 @@ Licensing an unregistered mark is a materially weaker offer.
 | 2 | Send the free Seven-Point Check as the opener, not the paid offer | `check.html` has 57 inbound links and costs nothing to give |
 | 3 | Follow with `/openapi-review-engine.json` and `vp-7c1f9a4e8d2b6035.html` | **The integration proof already exists.** Send it, do not describe it |
 | 4 | Convert one conversation into a free 5-record diagnostic run | Produces the reference and the first non-zero `orgpilot-stats` row |
-| 5 | Reopen the three Broida referrals if the September stop rule has passed | `research/Referral_Followups_2026-08-13.md` |
+| 5 | Approach the 5 organisations that already completed training | `/api/enroll-stats`: 5 organizations, 8 people consented to contact. **The federal-sector referral channel was closed by the owner on 2026-08-23 and is not part of this plan** |
 
 **Target: one organisation with a non-zero row in `/api/orgpilot-stats` by 16 November.** That
 single row moves the estimate from 15 to 25 percent up to 45 to 60 percent, and no document
