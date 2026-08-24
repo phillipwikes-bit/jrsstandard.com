@@ -77,8 +77,8 @@ ms = io.open(MS, encoding="utf-8").read()
 # The case-list appendix is submission evidence, not article prose, and is excluded from
 # the count the way a reference list is excluded from a word limit. It is counted and
 # reported separately so it can never hide growth in the body.
-_body = ms[:ms.index("## Appendix: case list")] if "## Appendix: case list" in ms else ms
-_appx = ms[ms.index("## Appendix: case list"):] if "## Appendix: case list" in ms else ""
+_body = ms[:ms.index("## Appendix A. Case list")] if "## Appendix A. Case list" in ms else ms
+_appx = ms[ms.index("## Appendix A. Case list"):] if "## Appendix A. Case list" in ms else ""
 words = len(re.sub(r"[*_`|#-]", " ", _body).split())
 check("length inside ISACA's 2,000 to 3,000 words", LO <= words <= HI,
       "%d words in the body, %d in the appendix"
@@ -91,7 +91,7 @@ edu = [t for t in ("M.S.", "M.A.", "MBA", "PhD", "Ph.D", "B.A.", "B.S.",
                    "holds a degree", "graduated") if t in ms]
 check("bios carry no educational information, per ISACA", not edu,
       "; ".join(edu) if edu else "positions and affiliations only")
-for bio in ("**Tanvi Pokhriyal** is an Organisational Psychologist",
+for bio in ("**Tanvi Pokhriyal** is an Organizational Psychologist",
             "**Phillip Wikes** is an AI Governance"):
     check("bio present: %s" % bio.split("**")[1], bio in ms)
 check("practical rather than theoretical framing",
@@ -120,7 +120,9 @@ check("endnotes numbered from 1, grouped, and rendered as paragraphs not a list"
       "**Corpus and sources**" in ms and "**Exclusions**" in ms
       and "**Protocol and classification**" in ms and "**Statistical methods**" in ms
       and "**Contributor methodology**" not in ms
-      and "**1.** The corpus comprises 20" in ms and "**6.** Comparison with" in ms)
+      and "**Comparison corpus**" in ms
+      and "**1.** The 20 analyzed matters come from" in ms
+      and "**7.** Comparison with" in ms)
 check("Wilson intervals attached to the proportions, not the odds ratio",
       "95 percent Wilson score interval 40.9 to 92.9 percent" in ms
       and "95 percent Wilson score interval 4.7 to 44.8 percent" in ms)
@@ -172,8 +174,11 @@ check("Wilson intervals in endnote 5",
       "40.9 to 92.9" in ms and "4.7 to 44.8" in ms
       and abs(f1[0] - 40.9) < .05 and abs(c1[1] - 44.8) < .05,
       "recomputed %.1f-%.1f and %.1f-%.1f" % (f1[0], f1[1], c1[0], c1[1]))
-check("the 22-case figure is reported as the conservative comparison",
-      "returns the corpus to 22 and strengthens the association to p = 0.0073" in ms)
+check("the 22-case figure is reported only as a sensitivity analysis",
+      "are therefore treated only as a sensitivity analysis" in ms
+      and "The sensitivity analysis does not weaken the observed association" in ms
+      and "so the exclusions are conservative" not in ms,
+      "no argumentative framing of the exclusions")
 check("both exclusions are named in the appendix",
       ms.count("**EXCLUDED FROM THE ANALYSIS.**") == EXCLUDED)
 logs = []
@@ -246,14 +251,22 @@ check("outcome categories reconcile to the primary corpus",
 check("what the reviewer read is stated precisely",
       "read the published decision in full" in ms
       and "No employer record was obtained independently of the decision." in ms)
-check("case list appendix present with 22 numbered entries",
-      "## Appendix: case list" in ms
-      and len(re.findall(r"^\d+\. ", ms[ms.index("## Appendix: case list"):], re.M)) == 22)
+check("case list appendix present with 22 A-numbered entries",
+      "## Appendix A. Case list" in ms
+      and len(re.findall(r"^\*\*A\d+\.\*\* ", ms[ms.index("## Appendix A. Case list"):], re.M)) == 22)
 _live_srcs = [ (r.get("source") or "").strip() for r in hr ]
+
+def _disp(src):
+    """Same normalization build_case_citations.py applies when writing the appendix."""
+    out = src.rstrip(".")
+    out = re.sub(r"\.?\s*U\.S\. Supreme Court$", "", out)
+    out = re.sub(r"^Public citation:\s*", "", out)
+    return out
+
 check("every appendix citation matches the study database",
-      all(src.rstrip(".") in ms for src in _live_srcs if src),
+      all(_disp(src) in ms for src in _live_srcs if src),
       "%d of %d live citations found in the manuscript"
-      % (sum(1 for s2 in _live_srcs if s2 and s2.rstrip(".") in ms), len(_live_srcs)))
+      % (sum(1 for s2 in _live_srcs if s2 and _disp(s2) in ms), len(_live_srcs)))
 check("forum count matches the primary corpus",
       "six adjudicating forums" in ms
       and "three jurisdictional systems" not in ms,
@@ -267,9 +280,9 @@ check("the entry lacking a locator is described, not excluded",
       "The tribunal case number is not on file" in ms)
 check("exclusions recorded in an endnote a reader can reconstruct from",
       "**2.** Twenty-two matters were screened into the study database" in ms
-      and "both matters are named in the appendix" in ms)
+      and "both matters are named in appendix A" in ms)
 check("appendix states which entries are outside the analysis",
-      "The two marked EXCLUDED are not part of the 20-case analysis" in ms)
+      _appx.count("**EXCLUDED FROM THE ANALYSIS.**") == 2)
 check("nonsignificance not read as equivalence",
       "did not detect a statistically significant difference" in ms
       and "does not establish equivalence" in ms)

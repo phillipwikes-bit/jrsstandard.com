@@ -193,7 +193,12 @@ def main():
                     "decision is identified by party, forum and year.")
         else:
             flag = ""
-        lines.append("%d. %s (%s)%s" % (i, s.rstrip("."), forum(s), flag))
+        disp = s.rstrip(".")
+        # Drop a forum already stated inside the citation, so the parenthetical is not
+        # duplicated, and drop the "Public citation:" prefix that only one row carries.
+        disp = re.sub(r"\.?\s*U\.S\. Supreme Court$", "", disp)
+        disp = re.sub(r"^Public citation:\s*", "", disp)
+        lines.append("**A%d.** %s (%s)%s" % (i, disp, forum(s), flag))
     block = "\n".join(lines)
 
     if not args.write:
@@ -202,9 +207,9 @@ def main():
         return 1 if bad else 0
 
     ms = io.open(MS, encoding="utf-8").read()
-    start = ms.index("## Appendix: case list")
+    start = ms.index("## Appendix A. Case list")
     end = ms.index("---", start)
-    ms = ms[:start] + "## Appendix: case list\n\n" + block + "\n\n" + ms[end:]
+    ms = ms[:start] + "## Appendix A. Case list\n\n" + block + "\n\n" + ms[end:]
     io.open(MS, "w", encoding="utf-8").write(ms)
     print("wrote appendix into %s" % os.path.relpath(MS, ROOT))
     return 1 if bad else 0
