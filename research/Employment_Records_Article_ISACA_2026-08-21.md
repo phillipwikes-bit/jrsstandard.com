@@ -6,7 +6,7 @@
 
 An examiner reading a file does not have access to the decision-maker's memory. The record is what remains available for review. If it cannot show why a consequential decision was made, the decision may still have been correct, but the organization cannot prove it.
 
-Generative AI can make that gap easier to create: a drafted narrative may read as finished even when the material that would substantiate it has not been preserved. That is a forward-looking concern, not a finding of this study. The corpus was not selected for AI involvement, no case in it is shown to have been AI-drafted, and it spans decisions from 1973 to 2026, most predating generative drafting. The question tested is whether the review distinguishes records that can independently support their conclusions from records that cannot, however produced.
+Generative AI can make that gap easier to create: a drafted narrative may read as finished even when the material that would substantiate it has not been preserved. That is a forward-looking concern, not a finding of this study. The corpus was not selected for AI involvement, no case in it is shown to have been AI-drafted, and it spans decisions from 1973 to 2026, most predating generative drafting. The question tested is whether the review distinguishes records that can independently support their conclusions from records that cannot, regardless of how they were produced.
 
 We call the condition Decision Reconstruction Risk: the state a record is in when it cannot independently show why a consequential decision was reached.
 
@@ -37,8 +37,8 @@ The determination is based on the defined conditions rather than an overall revi
 A record reads **Ready** when the reasoning survives being read by a stranger: the file
 sources each factual claim, shows dates that reconcile, names who decided what and on what
 basis, and carries enough underlying material for a reader to test the conclusion. Ready
-records in this corpus were more likely to preserve quotations or other identifiable
-references to the underlying documentation.
+records in this corpus commonly preserved quotations or other identifiable references to the
+underlying documentation.
 
 A record reads **Needs work** when part of the basis is visible and part is asserted. The
 narrative is coherent, but at least one material claim traces to nothing a reader can check.
@@ -46,7 +46,7 @@ The commonest form here was a conclusion about performance or conduct stated con
 with the underlying observations described only in the drafter's summary.
 
 A record reads **Gap** when the basis is not in the file at all: the conclusion is present
-without the material that produced it. These are rarer and readily identified.
+without the material that produced it.
 
 For AI-assisted drafting, Needs work may be the more difficult failure mode to detect. A Gap
 record looks thin to anyone who opens it. A Needs work record can read well, follow the
@@ -58,7 +58,7 @@ later examined.
 
 Twenty-two matters were screened; 20 met the inclusion criteria and 2 were excluded. The 20 analyzed matters are drawn from 20 distinct published decisions across six adjudicating forums in two countries: the US Federal Labor Relations Authority (6), the New York Unemployment Insurance Appeal Board (4), the New York Appellate Division (4), the US Supreme Court (2), UK Employment Tribunals (2), and the US Equal Employment Opportunity Commission (2).<sup>1</sup>
 
-The 2 excluded matters are identified in appendix A and endnote 2: a public-records advisory opinion rather than an employment adjudication, and an entry identifying no specific decision.<sup>2</sup>
+The 2 excluded matters are identified in appendix A and endnote 2: a public-records advisory opinion, and an entry identifying no specific decision.<sup>2</sup>
 
 For each matter a practicing employment specialist read the published decision in full and applied the five conditions to the employer's contemporaneous documentation, to the extent it was reproduced or characterized in that decision.<sup>3</sup> The classification was recorded before the outcome was consulted, and the outcome and citation were then entered from the decision.
 
@@ -68,11 +68,11 @@ The objection is not answered here and must not be treated as answered. The asso
 
 This is a single-practitioner field pilot: one qualified specialist, one field application within an ordinary professional workflow. The findings are reported at that level.
 
-The classifications were 12 Ready, 5 Needs work and 3 Gap. The documented outcomes were 6 sustained, 7 that did not survive review, 6 contested with no recorded disposition, and 1 adverse audit or compliance finding. The adverse audit or compliance finding is a separate category, not included in the other three, and the four are mutually exclusive and sum to 20.
+The classifications were 12 Ready, 5 Needs work and 3 Gap. The documented outcomes were 6 sustained, 7 that did not survive review, 6 contested with no recorded disposition, and 1 adverse audit or compliance finding. The adverse audit or compliance finding is a separate category, not included in the other three. The four categories are mutually exclusive and sum to 20.
 
 ## What was found
 
-Needs work and Gap are grouped, since both describe a record whose basis is incomplete. An adverse finding means the employer's position did not survive review, or the matter drew an adverse audit or compliance finding.<sup>4</sup>
+Needs work and Gap are grouped, since both describe a record whose basis is incomplete. For the primary analysis, an adverse finding was recorded where the employer's position did not survive review or where the matter drew an adverse audit or compliance finding.<sup>4</sup>
 
 | Read | Adverse finding | No adverse finding | Adverse rate |
 |---|---|---|---|
@@ -83,7 +83,7 @@ Needs work and Gap are grouped, since both describe a record whose basis is inco
 
 Fisher's exact test, two-sided: p = 0.0194.<sup>5</sup>
 
-Records classified as incomplete were associated with an adverse finding in 75.0 percent of cases, against 16.7 percent of those classified Ready.
+Records classified as incomplete were associated with an adverse finding in 75.0 percent of cases, compared with 16.7 percent of those classified Ready.
 
 The result depends on how an adverse outcome is defined, and no rule was fixed before the data closed. The primary association should therefore be interpreted as exploratory rather than confirmatory. Restricting to the 13 matters with a resolved disposition and asking only whether the employer's position was sustained gives p = 0.0291. Including the 2 excluded matters produces p = 0.0073, but those matters do not meet the stated inclusion criteria and are therefore treated only as a sensitivity analysis.
 
@@ -93,9 +93,9 @@ One record read as Gap was sustained anyway. It is kept in the count rather than
 
 ## Why the same review found nothing in a different corpus
 
-The same review was applied by a different practitioner to 32 public-records determinations, where it did not track outcomes at all.<sup>6</sup>
+The same review was applied by a different practitioner to 32 public-records determinations; that corpus did not track outcomes.<sup>6</sup>
 
-Freedom-of-information determinations reach publication because a legal or access question was contested, so publication does not imply the underlying file was typical of the broader record population. Fifteen of the 20 resolved determinations there did not survive, a rate set by the publication process rather than by how those agencies documented. The employment corpus is not filtered that way.
+Freedom-of-information determinations reach publication because a legal or access question was contested, so publication does not imply the underlying file was typical of the broader record population. Fifteen of the 20 resolved determinations there did not survive. That distribution reflects the selection and publication process rather than how those agencies documented. The employment corpus is not filtered that way.
 
 The Woolf test of homogeneity did not detect a statistically significant difference between the two associations, although the small samples limit what can be concluded. The comparison is therefore descriptive rather than evidence that the two corpora behave identically.<sup>7</sup> The difference illustrates how publication and selection processes can influence an outcome-based test of a documentation control.
 
@@ -105,7 +105,7 @@ Internal audit, compliance, investigations and other assurance functions may enc
 
 Three failure patterns are relevant to AI-assisted drafting. They are general patterns in audit and investigations practice. They are not drawn from, and do not describe, any client engagement, examination, or the records of any organization.
 
-**Narrative substitution.** A decision is challenged and the organization cannot produce underlying documentation beyond the drafted narrative. The source material that would have supported the conclusion may not be attached when the narrative is treated as complete without it. In audit or dispute its absence becomes the central issue, and a sound decision has to be defended without the evidence that made it sound.
+**Narrative substitution.** A decision is challenged and the organization cannot produce underlying documentation beyond the drafted narrative. The source material that would have supported the conclusion may not be attached when the narrative is treated as complete without it. In audit or dispute, that absence can become the central issue, and a sound decision has to be defended without the evidence that made it sound.
 
 **Patterned compliance.** A file uses the correct terminology and follows the template, while material claims rest primarily on drafted phrasing rather than documented observation. Examined individually each file looks compliant; examined across a population the same construction repeats. At population level this can indicate a broader control weakness requiring examination, since it suggests the control environment produced the appearance of documentation rather than the substance.
 
@@ -148,14 +148,14 @@ whatever sampling standard the function already applies. The unit of analysis is
 relevant population and weighted toward consequential decisions. These include decisions with
 material employment, financial, legal or compliance implications, such as terminations,
 disciplinary outcomes and denials of accommodation. Such a sample would generally be more
-informative than a larger unweighted sample. The aggregate view matters more than any individual file, because
-patterned compliance is visible only across a population.
+informative than a larger unweighted sample. The aggregate view is more informative than any individual file because
+patterned compliance becomes visible across a population.
 
 **What triggers escalation?** A single Needs work classification can ordinarily trigger
-coaching or remediation. A rising rate, or a persistent concentration by author, business unit
-or decision type, can warrant treatment as a control finding. A rising or clustered rate is
-the more important control signal, but it cannot be identified reliably unless individual
-classifications are recorded consistently.
+coaching or remediation. A rising rate or persistent concentration by author, business unit
+or decision type can warrant treatment as a control finding. Such patterns are more informative than an isolated
+classification, but they can be identified reliably only when individual classifications are
+recorded consistently.
 
 **One caution on adoption.** A review applied by the person who drafted the record carries
 less weight than one applied by somebody else. Where the review is used at the first line,
@@ -164,9 +164,9 @@ independent of the drafters.
 
 ## What this establishes, and what it does not
 
-It demonstrates that an association of this size can be observed at practitioner scale, in adjudicated matters, using a review a working specialist can apply within an ordinary professional workflow. The result should be interpreted as exploratory.
+It demonstrates that an association of this size can be observed at practitioner scale in adjudicated matters using a review that a working specialist can apply within an ordinary professional workflow. The result should be interpreted as exploratory.
 
-It does not establish that the review improves outcomes, reduces litigation risk or increases decision quality, none of which was tested. Twenty cases reviewed by one practitioner, selected from published sources rather than sampled at random, is a field pilot. Published adjudications are not a random sample, since a matter reaches adjudication because something was contested.
+It does not establish that the review improves outcomes, reduces litigation risk or increases decision quality, none of which was tested. Twenty cases reviewed by one practitioner, selected from published sources rather than sampled at random, constitute a field pilot. Published adjudications are not a random sample, since a matter reaches adjudication because something was contested.
 
 A larger study should broaden the corpus without regard to how matters resolved, put at least two reviewers on each case with the classification and outcome recorded separately, fix the treatment of unresolved contests in advance, and where feasible obtain the underlying record independently of the adjudicated decision.
 
@@ -180,7 +180,7 @@ Generative AI changes how records may be produced, but it does not change the un
 
 **Exclusions**
 
-**2.** Twenty-two matters were screened and two are excluded. The first is a New York Committee on Open Government advisory opinion on a public-records request for disciplinary records: its subject is employment records but its forum and legal question are public records, so it belongs to the companion corpus. The second describes a capability dismissal but identifies no party, forum, date or case number, so it cannot be cited. Both exclusions were applied before the analysis, and both matters are named in appendix A so the full screened set can be reconstructed. Including both produces p = 0.0073 with an odds ratio of 19.25. The sensitivity analysis does not weaken the observed association, although the two matters do not meet the stated inclusion criteria.
+**2.** Twenty-two matters were screened and two are excluded. The first is a New York Committee on Open Government advisory opinion on a public-records request for disciplinary records: its subject is employment records but its forum and legal question are public records, so it belongs to the companion corpus. The second describes a capability dismissal but identifies no party, forum, date or case number, so it cannot be cited. Both exclusions were applied before the analysis, and both matters are named in appendix A so the full screened set can be reconstructed. Including both excluded matters produces p = 0.0073 with an odds ratio of 19.25. Because those matters do not meet the stated inclusion criteria, this result is reported only as a sensitivity analysis.
 
 **Protocol and classification**
 

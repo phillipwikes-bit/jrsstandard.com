@@ -26,6 +26,11 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MS = os.path.join(ROOT, "research", "Employment_Records_Article_ISACA_2026-08-21.md")
 SB = "https://pjzxkeviouofdseagvpf.supabase.co"
 ADVERSE = {"failed_appeal", "failed_audit"}
+# The resolved-disposition specification asks only whether the employer's position was
+# SUSTAINED, so it spans held_up and failed_appeal and excludes failed_audit, which is a
+# separate outcome category rather than a disposition. Getting this wrong produces 0.1026
+# on 14 matters instead of 0.0291 on 13.
+RESOLVED_ONLY = {"held_up", "failed_appeal"}
 FLAG = {"review_required", "gap_identified"}
 LO, HI = 2000, 3000
 PRIMARY_N = 20
@@ -176,7 +181,7 @@ check("Wilson intervals in endnote 5",
       "recomputed %.1f-%.1f and %.1f-%.1f" % (f1[0], f1[1], c1[0], c1[1]))
 check("the 22-case figure is reported only as a sensitivity analysis",
       "are therefore treated only as a sensitivity analysis" in ms
-      and "The sensitivity analysis does not weaken the observed association" in ms
+      and "this result is reported only as a sensitivity analysis" in ms
       and "so the exclusions are conservative" not in ms,
       "no argumentative framing of the exclusions")
 check("both exclusions are named in the appendix",
