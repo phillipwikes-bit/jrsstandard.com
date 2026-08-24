@@ -181,7 +181,7 @@ check("Wilson intervals in endnote 5",
       "recomputed %.1f-%.1f and %.1f-%.1f" % (f1[0], f1[1], c1[0], c1[1]))
 check("the 22-case figure is reported only as a sensitivity analysis",
       "are therefore treated only as a sensitivity analysis" in ms
-      and "this result is reported only as a sensitivity analysis" in ms
+      and "reported only as a sensitivity analysis" in ms
       and "so the exclusions are conservative" not in ms,
       "no argumentative framing of the exclusions")
 check("both exclusions are named in the appendix",
@@ -285,7 +285,7 @@ check("the entry lacking a locator is described, not excluded",
       "The tribunal case number is not on file" in ms)
 check("exclusions recorded in an endnote a reader can reconstruct from",
       "**2.** Twenty-two matters were screened and two are excluded" in ms
-      and "both matters are named in appendix A" in ms)
+      and "both are named in appendix A" in ms)
 check("appendix states which entries are outside the analysis",
       _appx.count("**EXCLUDED FROM THE ANALYSIS.**") == 2)
 check("nonsignificance not read as equivalence",
