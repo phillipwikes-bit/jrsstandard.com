@@ -118,6 +118,7 @@ export default async function handler(req){
 
   const contribOpened = opened('contributor-link', 'code');
   const contribConfirmed = submitted('contributor-confirm', 'code');
+  const coauthorConfirmed = submitted('coauthor-confirm', 'code');
 
   const recheckOpened = opened('recheck-link', 'slot');
   const recheckSubmitted = submitted('recheck-submit', 'slot');
@@ -589,6 +590,14 @@ export default async function handler(req){
         links_opened: contribOpened,
         confirmed: contribConfirmed,
         note: 'Held pending study close. Not yet sent.'
+      },
+      coauthor: {
+        links_issued: 3,
+        confirmed: coauthorConfirmed,
+        note: 'Co-author confirmations. A separate instrument from the contributor '
+            + 'link: it records how a co-author is printed AND whether the work may '
+            + 'be used commercially, against a stored terms version. Per-code answers '
+            + 'are at /api/coauthor-stats; no name or email is exposed by either.'
       },
       blind_second_read: {
         links_issued: ISSUED.recheck,
