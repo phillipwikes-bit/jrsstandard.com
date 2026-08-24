@@ -1,16 +1,16 @@
-# When a Defensible Decision Becomes an Indefensible File: Testing AI-Assisted Employment Records Against What Actually Happened
+# When a Defensible Decision Becomes an Indefensible File: Testing a Documentation Review Against What Actually Happened
 
-**Tanvi Pokhriyal, Kyle McMullan and Phillip Wikes**
+**Tanvi Pokhriyal and Phillip Wikes**
 
 ---
 
 An examiner reading a file does not have access to the decision-maker's memory. They have the record. If the record cannot show why a consequential decision was made, the decision may still have been correct, but the organisation can no longer prove it.
 
-That gap is getting wider, and generative AI is why. A drafted narrative reads as finished. The logs, messages and observations that would ground it were never attached, because the text did not look like it needed them.
+Generative AI makes that gap easier to open: a drafted narrative reads as finished, so the material that would ground it is never attached. **That is a forward-looking concern, not a finding of this study.** The corpus was not selected for AI involvement, **no case in it is shown to have been AI-drafted**, and two of the three jurisdictional systems predate generative drafting. **What is tested is whether the review separates records that can carry their own reasoning from records that cannot, whatever produced them.**
 
 We call the condition Decision Reconstruction Risk: the state a record is in when it can no longer show, on its own terms, why a consequential decision was reached.
 
-This article reports what happened when one of us applied a structured review to 22 real adjudicated employment matters, recorded the review before knowing how each matter resolved, and then compared the two.
+This article reports what happened when one of us applied a structured review to 22 real adjudicated employment matters, recorded the review before consulting how each matter resolved, and then compared the two. **The records are not AI-generated and are not claimed to be.**
 
 ## The review
 
@@ -57,6 +57,10 @@ Twenty-two adjudicated employment and labour matters, from 22 distinct public so
 
 For each case, a practising employment specialist read the employer's record as it appeared in the decision, applied the five conditions, and recorded the result. The documented outcome and citation were recorded afterwards, from the source.
 
+**That design carries a circularity objection, and it is the first thing a careful reader should raise.** The employer's record was read as it appears inside the adjudicated decision, and the decision both narrates the outcome and characterises the employer's evidence, so the reviewer worked from a source already containing the thing being predicted. The protocol required the read to be recorded before the outcome was consulted, but the database stores one timestamp per case rather than two, so the ordering rests on the protocol rather than a system record.
+
+**The objection is not answered here and must not be treated as answered.** The association is consistent with a documentation deficiency an adjudicator also noticed, and equally consistent with a reviewer influenced by framing she could not unsee. **Separating those requires a design this study did not use**: independent timestamping of the two steps, a second blinded reader, or employer records obtained before any adjudication.
+
 This is a single-practitioner field pilot: one qualified specialist, one caseload, applied inside an ordinary workload. That is what the study is and the findings are reported at that level.
 
 The reads came out at 13 Ready, 6 Needs work, 3 Gap. The outcomes came out at 7 sustained, 7 that did not survive review, 6 contested with no recorded disposition, and 2 adverse audit or compliance findings.
@@ -92,7 +96,7 @@ A formal test of homogeneity shows the two results do not differ significantly f
 
 Internal audit and financial-crime work test records the way litigation does, only sooner and more often. An examiner reads the file and asks whether its stated basis can be rebuilt from the record itself. That is the same question the review asks, put before the examiner arrives rather than after.
 
-Three failure patterns recur, and each maps to a specific way AI-assisted drafting introduces the risk. **They are described here as general patterns in audit and investigations practice. They are not drawn from, and do not describe, the records or examinations of any identified organisation.**
+Three failure patterns recur, and each maps to a specific way AI-assisted drafting introduces the risk. **They are described here as general patterns in audit and investigations practice. They are not drawn from, and do not describe, any client engagement, examination, or the records of any organisation.**
 
 **Manager convenience.** A decision is challenged and the organisation cannot produce underlying documentation beyond the drafted narrative. The source material, the logs, communications and measurable observations that would have supported the conclusion, was never attached, because the narrative read as complete without it. In discovery or audit the absence of source material becomes the central issue and shifts the burden onto the organisation: a sound decision now has to be defended without the evidence that made it sound.
 
@@ -117,15 +121,25 @@ Three indicators make the set measurable on a sample, flag and remediate cadence
 
 Three practical questions come up whenever this is proposed as an ongoing control.
 
-**Where does it sit in three lines of defence?** It works at the first line as a
-pre-finalisation self-check by the drafter, and at the second line as a sampling control by
-compliance or risk. It is not a third-line activity: by the time internal audit is reading
-the population, the records are already in the system of record and the remediation window
-has closed. The value of the review is that it is cheap to apply before finalisation and
-expensive to apply afterwards.
+**Where does it sit in three lines of defence?** The review is cheapest to apply before a
+record is finalised and most expensive afterwards, so its preventive value sits at the first
+line as a self-check by the drafter and at the second line as a sampling control by
+compliance or risk.
 
-**What sample size?** The unit of analysis is the record, and the signal in this study
-appeared at 22. For a periodic control, a monthly sample sized to the population and
+**That is not an argument that internal audit has no role, and the third line arguably has
+the most useful one.** Applied to a population of closed files, the same five conditions
+yield a measured rate of records that cannot carry their own reasoning, broken out by
+decision type and business unit. That is a finding about the control environment rather than
+any individual file, and it is what justifies putting a preventive check in place at all.
+**Third-line application is diagnostic, first and second-line application is preventive, and
+the diagnosis usually comes first.**
+
+**What sample size?** **Not 22, and this study cannot derive one.** Twenty-two was the entire
+corpus, not a sample drawn from a defined population against a stated tolerable error and
+confidence level, so it supports no inference about how many records a periodic control
+should examine. **Build the sampling plan the ordinary way**, from the population of
+consequential decisions in scope, using whatever sampling standard the function already
+applies. The unit of analysis is the record. For a periodic control, a monthly sample sized to the population and
 weighted toward consequential decisions, terminations, disciplinary outcomes, denials of
 accommodation, will surface the pattern faster than a larger unweighted sample. The
 aggregate view matters more than any individual file, because compliance washing is only
@@ -168,9 +182,14 @@ The drafting tool is new. The examiner's question is not: the file still has to 
 
 **Tanvi Pokhriyal** is an Organisational Psychologist working freelance. She is an HR and organisational psychology professional with over 15 years of experience across human resources, organisational development, business development, and marketing, including experience within the oil and gas sector. Her professional interests include organisational behaviour, employee relations, workplace decision-making, people management, and the evolving role of technology. She designed the case protocol for this study and conducted every record review reported in it.
 
-**Kyle McMullan** is a Chief Audit Executive working in internal audit and financial crime.
-
 **Phillip Wikes** is an AI Governance and Cognitive Risk Advisor focused on documentation integrity and record-level controls in AI-assisted environments. He served as a Lead Civil Rights Officer at the Maryland Commission on Civil Rights, evaluating discrimination complaints under federal HUD and EEOC frameworks. He developed the Justification Review Standard and named Decision Reconstruction Risk.
+
+---
+
+## Acknowledgement
+
+The author thanks Kyle McMullan for comments on audit practice. He did not review the study
+and does not endorse its findings.
 
 ---
 
@@ -181,11 +200,9 @@ interest, ownership, investment, or other financial relationship that could infl
 perceived to influence the findings, interpretation, or conclusions of this research.
 Phillip Wikes developed the review method described here and would benefit from its
 adoption; that interest is set out in endnote 5.
-**[REQUIRED_ENV_PARAM: KYLE_MCMULLAN_FINANCIAL_DECLARATION]**
 
 **Research funding.** Tanvi Pokhriyal declares that this research was conducted without any
 external financial support or research funding, and that she has not received, directly or
 indirectly, any funding, sponsorship, grants, or commercial financial assistance for the
 preparation or completion of this research paper. No external funding was received by any
 author.
-**[REQUIRED_ENV_PARAM: KYLE_MCMULLAN_FUNDING_DECLARATION]**

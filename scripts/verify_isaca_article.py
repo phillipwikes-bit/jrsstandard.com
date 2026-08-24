@@ -84,7 +84,6 @@ edu = [t for t in ("M.S.", "M.A.", "MBA", "PhD", "Ph.D", "B.A.", "B.S.",
 check("bios carry no educational information, per ISACA", not edu,
       "; ".join(edu) if edu else "positions and affiliations only")
 for bio in ("**Tanvi Pokhriyal** is an Organisational Psychologist",
-            "**Kyle McMullan** is a Chief Audit Executive",
             "**Phillip Wikes** is an AI Governance"):
     check("bio present: %s" % bio.split("**")[1], bio in ms)
 check("practical rather than theoretical framing",
@@ -93,8 +92,8 @@ check("practical rather than theoretical framing",
       "carries an operational section and a three-lines placement")
 
 # ---- AUTHORSHIP ----
-check("byline is Pokhriyal, McMullan and Wikes",
-      "**Tanvi Pokhriyal, Kyle McMullan and Phillip Wikes**" in ms)
+check("byline is Pokhriyal and Wikes, McMullan removed at his request 2026-08-23",
+      "**Tanvi Pokhriyal and Phillip Wikes**" in ms)
 check("Hossain credited as a contributor in the endnotes, not the byline",
       "contribution of Ubayet Hossain, FRM" in ms
       and "Hossain" not in ms[:ms.index("---", 200)],
@@ -172,6 +171,29 @@ FP = [
     (u"—", "em-dash"),
 ]
 hits = [why for t, why in FP if t in ms]
+check("McMullan absent from byline and bios",
+      "Kyle McMullan is a Chief Audit Executive" not in ms
+      and "Kyle McMullan and Phillip Wikes" not in ms,
+      "he asked to come off the byline 2026-08-23")
+check("acknowledgement in the exact form he specified",
+      "The author thanks Kyle McMullan for comments on audit practice." in ms
+      and "does not endorse its findings" in ms,
+      "must not imply he reviewed the study")
+check("circularity objection addressed in the body, not only in an endnote",
+      "circularity objection" in ms and "must not be treated as answered" in ms)
+check("sample size does not rest on the corpus size",
+      "Not 22, and this study cannot derive one" in ms
+      and "tolerable error" in ms)
+check("third line credited rather than dismissed",
+      "not an argument that internal audit has no role" in ms
+      and "It is not a third-line activity" not in ms)
+check("disclaimer excludes client engagements, not just identified organisations",
+      "any client engagement, examination, or the records of any organisation" in ms
+      and "any identified organisation" not in ms)
+check("no AI-drafting claim over the corpus",
+      "no case in it is shown to have been AI-drafted" in ms
+      and "Testing AI-Assisted Employment Records" not in ms)
+
 check("no AI fingerprint present", not hits,
       "; ".join(sorted(set(hits))[:4]) if hits
       else "%d patterns checked, 0 present" % len(FP))
