@@ -76,7 +76,7 @@ Needs work and Gap are grouped, since both describe a record whose basis is inco
 | Needs work or Gap (n = 9) | 7 | 2 | 77.8% |
 | Ready (n = 13) | 2 | 11 | 15.4% |
 
-Fisher's exact test, two-sided: **p = 0.0073**.<sup>4</sup>
+Fisher's exact test, two-sided: **p = 0.0073**.<sup>4</sup> The result is unchanged when the two weakest corpus entries are excluded.<sup>6</sup>
 
 Records classified as incomplete were associated with an adverse finding in 77.8 percent of cases, compared with 15.4 percent of records classified as Ready.
 
@@ -185,9 +185,24 @@ Generative AI changes how records may be produced, but it does not change the un
 
 **5.** Comparison with the public-records corpus used the Woolf test of homogeneity of odds ratios: Q = 2.550 on 1 degree of freedom, p = 0.110. The test does not establish equivalence; it fails to detect a difference at this sample size.
 
+**Corpus integrity and sensitivity**
+
+**6.** Two entries in the case list are weaker than the other 20 and are reported rather than
+adjusted. Case 4 identifies no specific decision: its source record is a narrative account of
+a capability dismissal with no party, forum, date or case number, so it cannot be cited.
+Case 5 names a decision but carries no tribunal case number. Because the primary association
+should not rest on entries a reader cannot locate, it was recomputed with each removed. On
+all 22 the association is p = 0.0073 with an odds ratio of 19.25. Excluding case 4, which
+falls in the Ready and no-adverse-finding cell, gives 7 of 9 against 2 of 12, p = 0.0092,
+odds ratio 17.50. Excluding case 15, a public-records advisory opinion that sits in an
+otherwise employment corpus, gives 6 of 8 against 2 of 13, p = 0.0176, odds ratio 16.50.
+Excluding both gives 6 of 8 against 2 of 12, p = 0.0194, odds ratio 15.00. **The direction
+and significance of the association are unchanged under every exclusion, so no reported
+conclusion depends on the two weak entries or on the one out-of-domain matter.**
+
 **Contributor methodology**
 
-**6.** Ubayet Hossain, FRM, provided methodological guidance on the reference-panel design, the chance-corrected agreement framework and the prespecified acceptance thresholds, in a personal professional capacity. His contribution does not represent the views of any employer.
+**7.** Ubayet Hossain, FRM, provided methodological guidance on the reference-panel design, the chance-corrected agreement framework and the prespecified acceptance thresholds, in a personal professional capacity. His contribution does not represent the views of any employer.
 
 ---
 
@@ -196,8 +211,8 @@ Generative AI changes how records may be produced, but it does not change the un
 1. McDonnell Douglas Corp. v. Green, 411 U.S. 792 (1973) (US Supreme Court)
 2. St. Mary’s Honor Center v. Hicks, 509 U.S. 502 (1993). U.S. Supreme Court (US Supreme Court)
 3. Gallon v Sigma Aldrich Ltd, UK Employment Tribunal, Case No. 2500506/2017 (2017) (UK Employment Tribunal)
-4. Published Employment Tribunal and Employment Appeal Tribunal proceedings involving a capability dismissal following a formal performance management process (UK Employment Tribunal)  **[REQUIRED_ENV_PARAM: CASE_04_CITATION]** This entry is a description rather than a citation and must be replaced with the decision reference before submission.
-5. Jones v Vale Curtains and Blinds Ltd (Employment Tribunal, Reading, 2024) (UK Employment Tribunal)
+4. Published Employment Tribunal and Employment Appeal Tribunal proceedings involving a capability dismissal following a formal performance management process (UK Employment Tribunal)  **[REQUIRED_ENV_PARAM: CASE_04_CITATION]** This entry identifies no specific decision and cannot be cited. See endnote 6 for the sensitivity analysis excluding it.
+5. Jones v Vale Curtains and Blinds Ltd (Employment Tribunal, Reading, 2024) (UK Employment Tribunal)  **[REQUIRED_ENV_PARAM: CASE_05_LOCATOR]** Named decision, no case number on file. Supply the tribunal case number before submission.
 6. United States Department of Defense, Department of Defense Dependents Schools, Europe and Federal Education Association, 65 FLRA No. 122 (2011) (US Federal Labor Relations Authority)
 7. Public citation: Appeal Board No. 636070 (N.Y. Unemployment Insurance Appeal Board, Mar. 5, 2025) (New York Unemployment Insurance Appeal Board)
 8. Valentine S. v. U.S. Postal Service, EEOC Appeal No. 2022004565 (Dec. 22, 2022) (US Equal Employment Opportunity Commission)

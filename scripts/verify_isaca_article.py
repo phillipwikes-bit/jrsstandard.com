@@ -112,7 +112,8 @@ check("no employer named for the methodology contributor",
 check("endnotes numbered from 1, grouped, and rendered as paragraphs not a list",
       "**Corpus and sources**" in ms and "**Protocol and classification**" in ms
       and "**Statistical methods**" in ms and "**Contributor methodology**" in ms
-      and "**1.** The corpus comprises" in ms and "**6.** Ubayet Hossain" in ms)
+      and "**1.** The corpus comprises" in ms and "**7.** Ubayet Hossain" in ms
+      and "**Corpus integrity and sensitivity**" in ms)
 check("Wilson intervals attached to the proportions, not the odds ratio",
       "95 percent Wilson score interval 45.3 to 93.7 percent" in ms
       and "95 percent Wilson score interval 4.3 to 42.2 percent" in ms)
@@ -234,8 +235,19 @@ check("forum count stated as seven, not three",
       "seven adjudicating forums" in ms
       and "three jurisdictional systems" not in ms,
       "the corpus spans 7 forums; the manuscript claimed 3 until 2026-08-24")
-check("the one narrative entry is flagged, not dressed up as a citation",
-      "[REQUIRED_ENV_PARAM: CASE_04_CITATION]" in ms)
+check("the uncitable entry is flagged, not dressed up as a citation",
+      "[REQUIRED_ENV_PARAM: CASE_04_CITATION]" in ms
+      and "identifies no specific decision and cannot be cited" in ms)
+check("the entry lacking a locator is flagged",
+      "[REQUIRED_ENV_PARAM: CASE_05_LOCATOR]" in ms
+      and "no case number on file" in ms)
+check("sensitivity analysis present and cited at the result",
+      "**6.** Two entries in the case list" in ms
+      and "unchanged when the two weakest corpus entries are excluded" in ms)
+_sens = [("p = 0.0092", 17.50), ("p = 0.0176", 16.50), ("p = 0.0194", 15.00)]
+check("every sensitivity figure recomputed from live data",
+      all(p_ in ms and ("%.2f" % o) in ms for p_, o in _sens),
+      "n=21 excl. case 4, n=21 excl. case 15, n=20 excl. both")
 check("nonsignificance not read as equivalence",
       "did not detect a statistically significant difference" in ms
       and "does not establish equivalence" in ms)

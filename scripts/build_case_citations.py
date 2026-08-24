@@ -46,11 +46,34 @@ FORUMS = [
     (r"AD3d|Slip Op", "New York Appellate Division"),
 ]
 
-# A citation must identify a decision. A narrative description does not, and one row in the
-# corpus carries a description rather than a citation. It is reported, never silently
-# dressed up as a citation.
+# A citation must identify a decision. Three grades, applied to the source string:
+#
+#   FULL       a named party or docket reference AND a locating number or docket
+#   PARTIAL    a named party or forum but no docket, number or reporter reference
+#   NONE       a narrative description that identifies no specific decision
+#
+# Grading exists because "non-empty" is not the same as "citable", and one row in this
+# corpus carries a description with no identifying feature at all. It is reported as such
+# and never dressed up.
 DESCRIPTION_NOT_CITATION = re.compile(
     r"^Published .* proceedings involving", re.I)
+
+LOCATOR = re.compile(
+    r"\d+\s+U\.S\.\s+\d+"          # US Reports
+    r"|\d+\s+FLRA\s+No\.\s*\d+"     # FLRA
+    r"|\d+\s+AD3d\s+\d+"             # NY Appellate Division
+    r"|Slip Op"                        # NY slip opinion
+    r"|Appeal Board No\.\s*\d+"       # NY UIAB
+    r"|Appeal No\.\s*\d+"             # EEOC
+    r"|FOIL-AO-\d+"                    # NY COOG advisory opinion
+    r"|Case No\.\s*\S+",              # UK ET case number
+    re.I)
+
+
+def grade(src):
+    if not src or DESCRIPTION_NOT_CITATION.match(src):
+        return "NONE"
+    return "FULL" if LOCATOR.search(src) else "PARTIAL"
 
 
 def anon_key():
@@ -108,7 +131,9 @@ def main():
         print("FAIL  duplicate citations present", file=sys.stderr)
         bad += 1
 
-    described = [i + 1 for i, s in enumerate(srcs) if DESCRIPTION_NOT_CITATION.match(s)]
+    grades = [grade(s) for s in srcs]
+    described = [i + 1 for i, g in enumerate(grades) if g == "NONE"]
+    partial = [i + 1 for i, g in enumerate(grades) if g == "PARTIAL"]
 
     counts = collections.Counter(forum(s) for s in srcs)
 
@@ -117,20 +142,33 @@ def main():
     print("      forums represented: %d" % len(counts))
     for name, n in counts.most_common():
         print("        %-46s %d" % (name, n))
+    print("      citation grades: FULL %d, PARTIAL %d, NONE %d"
+          % (grades.count("FULL"), grades.count("PARTIAL"), grades.count("NONE")))
+    if partial:
+        print("WARN  row %s names a decision but carries no docket, reporter or case "
+              "number. Supply the locator before submission."
+              % ", ".join(str(x) for x in partial))
     if described:
-        print("WARN  row %s carries a narrative description rather than a citation. "
-              "It is listed as such and must be resolved before submission."
-              % ", ".join(str(d) for d in described))
+        print("FAIL  row %s identifies no specific decision. It cannot be cited and must "
+              "be resolved or excluded before submission."
+              % ", ".join(str(x) for x in described))
+        bad += 1
 
     if args.check:
         return 1 if bad else 0
 
     lines = []
     for i, (r, s) in enumerate(zip(rows, srcs), 1):
-        flag = "" if not DESCRIPTION_NOT_CITATION.match(s) else \
-            "  **[REQUIRED_ENV_PARAM: CASE_%02d_CITATION]** This entry is a description " \
-            "rather than a citation and must be replaced with the decision reference " \
-            "before submission." % i
+        g = grade(s)
+        if g == "NONE":
+            flag = ("  **[REQUIRED_ENV_PARAM: CASE_%02d_CITATION]** This entry identifies "
+                    "no specific decision and cannot be cited. See endnote 6 for the "
+                    "sensitivity analysis excluding it." % i)
+        elif g == "PARTIAL":
+            flag = ("  **[REQUIRED_ENV_PARAM: CASE_%02d_LOCATOR]** Named decision, no case "
+                    "number on file. Supply the tribunal case number before submission." % i)
+        else:
+            flag = ""
         lines.append("%d. %s (%s)%s" % (i, s.rstrip("."), forum(s), flag))
     block = "\n".join(lines)
 
