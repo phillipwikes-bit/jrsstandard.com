@@ -34,6 +34,7 @@ MS = os.path.join(ROOT, "research", "Employment_Records_Article_ISACA_2026-08-21
 SB = "https://pjzxkeviouofdseagvpf.supabase.co"
 DOMAIN = "HR / Employment"
 EXPECTED = 22
+CORPORA = {"HR / Employment": 22, "Public records / FOIL": 32}
 
 # Forum classification, ordered so the most specific pattern wins.
 FORUMS = [
@@ -58,6 +59,11 @@ FORUMS = [
 DESCRIPTION_NOT_CITATION = re.compile(
     r"^Published .* proceedings involving", re.I)
 
+PRIMARY_URL = re.compile(
+    r"https?://\S*(nycourts\.gov|dos\.ny\.gov|osc\.ny\.gov|comptroller\.nyc\.gov"
+    r"|portal\.ct\.gov|law\.justia\.com|gov\.uk|govinfo\.gov|flra\.gov|eeoc\.gov)\S*",
+    re.I)
+
 LOCATOR = re.compile(
     r"\d+\s+U\.S\.\s+\d+"          # US Reports
     r"|\d+\s+FLRA\s+No\.\s*\d+"     # FLRA
@@ -71,9 +77,17 @@ LOCATOR = re.compile(
 
 
 def grade(src):
+    """FULL if the entry can be located, PARTIAL if it names something without a locator,
+    NONE if it identifies no specific decision at all.
+
+    A resolvable primary-source URL counts as a locator. Marking a row PARTIAL because it
+    links straight to the decision instead of citing a reporter would penalise the more
+    verifiable form."""
     if not src or DESCRIPTION_NOT_CITATION.match(src):
         return "NONE"
-    return "FULL" if LOCATOR.search(src) else "PARTIAL"
+    if LOCATOR.search(src) or PRIMARY_URL.search(src):
+        return "FULL"
+    return "PARTIAL"
 
 
 def anon_key():
@@ -111,11 +125,15 @@ def forum(src):
 
 
 def main():
+    global DOMAIN, EXPECTED
     ap = argparse.ArgumentParser()
     ap.add_argument("--check", action="store_true")
     ap.add_argument("--write", action="store_true")
+    ap.add_argument("--corpus", default=DOMAIN, choices=sorted(CORPORA))
     args = ap.parse_args()
 
+    DOMAIN = args.corpus
+    EXPECTED = CORPORA[DOMAIN]
     rows = fetch()
     srcs = [(r.get("source") or "").strip() for r in rows]
 
