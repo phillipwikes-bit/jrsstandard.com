@@ -300,6 +300,11 @@
       "source": "/completion",
       "destination": "/reviewer/completion.html",
       "permanent": false
+    },
+    {
+      "source": "/coauthor",
+      "destination": "/coauthor.html",
+      "permanent": false
     }
   ],
   "headers": [

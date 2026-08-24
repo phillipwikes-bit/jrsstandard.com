@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Co-author confirmation &middot; JRS</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050505; --surface:#121212; --surface2:#1A1A1A;
+  --accent:#BE9447; --accent-dim:#7A5E28;
+  --muted:#B3B3B3; --muted-soft:#8A8A8A; --text:#F2F2F2;
+  --rule:#2A2A2A; --stop:#8B2020; --stop-text:#E88080;
+  --review-text:#D4A055; --ready-text:#5DBF82;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
+     font-size:14px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:640px;margin:0 auto;padding:38px 20px 70px}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;
+         text-transform:uppercase;color:var(--accent-dim);margin-bottom:12px}
+h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:27px;line-height:1.25;
+   margin:0 0 14px;color:var(--text)}
+.lead{color:var(--muted);font-size:14px;line-height:1.7;margin:0 0 26px}
+.sect{border:1px solid var(--rule);background:var(--surface);padding:17px 16px 6px;
+      margin-bottom:16px;border-radius:2px}
+.sect h2{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.16em;
+         text-transform:uppercase;color:var(--accent-dim);margin:0 0 11px;font-weight:500}
+label.f{display:block;margin-bottom:13px}
+label.f .l{display:block;font-size:12.5px;color:var(--text);margin-bottom:5px}
+label.f .h{display:block;font-size:11px;color:var(--muted-soft);line-height:1.5;
+           margin:-2px 0 6px}
+input[type=text],input[type=email],textarea{
+  width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);
+  font-family:'Inter',sans-serif;font-size:14px;padding:11px 11px;border-radius:2px;
+  min-height:44px}
+textarea{min-height:78px;line-height:1.6;resize:vertical}
+input:focus,textarea:focus{outline:none;border-color:var(--accent-dim)}
+.q{font-size:12.5px;color:var(--text);line-height:1.55;margin-bottom:5px}
+.sub{font-size:11px;color:var(--muted-soft);line-height:1.55;margin-bottom:10px}
+.opt{display:flex;gap:10px;align-items:flex-start;min-height:44px;padding:10px 11px;
+     margin:0 -3px 8px;border:1px solid var(--rule);background:var(--surface2);
+     border-radius:2px;cursor:pointer}
+.opt:has(input:checked){border-color:var(--accent-dim);background:rgba(190,148,71,.07)}
+.opt input{width:auto;margin:3px 0 0;flex:0 0 auto}
+.opt b{font-weight:500;font-size:12.5px;color:var(--text)}
+.opt .d{display:block;font-size:11px;color:var(--muted-soft);line-height:1.5;margin-top:3px}
+.note{border-left:2px solid var(--accent-dim);padding:9px 0 9px 12px;margin:0 0 13px;
+      font-size:11.5px;color:var(--muted);line-height:1.6}
+button{width:100%;background:var(--accent);color:#111;border:0;border-radius:2px;
+       font-family:'Inter',sans-serif;font-size:14px;font-weight:600;padding:14px;
+       min-height:48px;cursor:pointer;margin-top:4px}
+button:disabled{opacity:.5;cursor:default}
+#status{font-size:12.5px;line-height:1.6;margin-top:12px;min-height:18px}
+.foot{margin-top:30px;padding-top:16px;border-top:1px solid var(--rule);
+      font-size:11px;color:var(--muted-soft);line-height:1.65}
+.foot a{color:var(--accent-dim)}
+.mono{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;
+      color:var(--muted-soft)}
+#gate{color:var(--muted);font-size:13.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div id="gate">Loading.</div>
+
+  <form id="form" style="display:none">
+    <div class="eyebrow">Co-author confirmation</div>
+    <h1 id="hd">How you are credited</h1>
+    <p class="lead" id="lead"></p>
+
+    <div class="sect">
+      <h2>How your name is printed</h2>
+      <p class="sub">These are the values on file. Change anything that is not exactly how
+        you want it to appear.</p>
+
+      <label class="f">
+        <span class="l">Name, spelled and punctuated exactly as you want it printed</span>
+        <input type="text" id="name" autocomplete="name">
+      </label>
+
+      <label class="f">
+        <span class="l">Title</span>
+        <span class="h">Optional. Leave blank for no title line.</span>
+        <input type="text" id="title" autocomplete="organization-title">
+      </label>
+
+      <label class="f">
+        <span class="l">Organisation</span>
+        <span class="h" id="orgHelp">Optional. Leave blank to be named without an
+          affiliation.</span>
+        <input type="text" id="org" autocomplete="organization">
+      </label>
+
+      <div class="note" id="orgNote" style="display:none"></div>
+
+      <label class="f">
+        <span class="l">Email</span>
+        <span class="h">So I can reach you about this paper. Not printed anywhere.</span>
+        <input type="email" id="email" autocomplete="email">
+      </label>
+    </div>
+
+    <div class="sect">
+      <h2>Three questions, and nothing is assumed</h2>
+
+      <p class="q"><b>1. Print me as shown above.</b></p>
+      <p class="sub">Confirms the name, title and organisation in the fields above are how
+        you want to appear on this paper.</p>
+      <label class="opt"><input type="radio" name="cp" value="yes">
+        <span><b>Yes, print it as shown.</b></span></label>
+      <label class="opt"><input type="radio" name="cp" value="no">
+        <span><b>No, do not print my name on this paper.</b>
+        <span class="d">Your contribution is described without naming you.</span></span></label>
+
+      <p class="q" style="margin-top:16px"><b>2. May this work be used commercially?</b></p>
+      <p class="sub">The paper and the underlying study may at some point be used beyond
+        academic publication: in training material, in a licensed product, or in materials
+        shown to an organisation paying for the work. <b>That would mean the work earns
+        money and you would not receive a share of it.</b> This asks whether you are willing
+        for your contribution to be used that way. You can say no and remain a full author.</p>
+      <label class="opt"><input type="radio" name="cu" value="yes">
+        <span><b>Yes, including commercial use.</b>
+        <span class="d">My contribution may be used in paid or licensed material.</span></span></label>
+      <label class="opt"><input type="radio" name="cu" value="no">
+        <span><b>No, publication only.</b>
+        <span class="d">Use my work in the paper and academic materials, not in anything
+          sold or licensed.</span></span></label>
+
+      <p class="q" style="margin-top:16px"><b>3. Does your answer travel with the work?</b></p>
+      <p class="sub">If the standard is ever sold or passes to another organisation, does
+        whatever you chose above continue to apply, or does it end there?</p>
+      <label class="opt"><input type="radio" name="ck" value="yes">
+        <span><b>Yes, it carries over.</b></span></label>
+      <label class="opt"><input type="radio" name="ck" value="no">
+        <span><b>No, ask me again.</b>
+        <span class="d">A successor has to come back to you.</span></span></label>
+    </div>
+
+    <div class="sect">
+      <h2>Anything you want on the record</h2>
+      <label class="f">
+        <span class="l">Optional</span>
+        <span class="h">Conditions, corrections, or anything you want recorded alongside
+          your answers.</span>
+        <textarea id="note"></textarea>
+      </label>
+    </div>
+
+    <button type="submit" id="btn">Confirm</button>
+    <div id="status"></div>
+
+    <div class="foot">
+      <b style="color:var(--muted)">You can change any of this at any time</b> by writing to
+      <a href="mailto:info@jrsstandard.com">info@jrsstandard.com</a>. Nothing here transfers
+      ownership of your work, and none of it affects your authorship. Your answers are stored
+      against the exact wording on this page, so what you agreed to stays provable.
+      <div class="mono" style="margin-top:9px" id="tv"></div>
+    </div>
+  </form>
+</div>
+
+<script>
+var q = new URLSearchParams(location.search);
+var KEY = (q.get('k') || '').trim();
+var gate = document.getElementById('gate');
+var form = document.getElementById('form');
+var status = document.getElementById('status');
+var btn = document.getElementById('btn');
+var PERSON = null;
+
+function setStatus(msg, color){
+  if (!status) return;
+  status.textContent = msg;
+  status.style.color = color || 'var(--muted)';
+}
+
+function picked(nm){
+  var el = document.querySelector('input[name="' + nm + '"]:checked');
+  return el ? el.value : '';
+}
+
+// PII gate, required on every free-text input in this codebase. The note field
+// below is free text, so it passes through here before any fetch.
+function jrsSanitizeCheck(text) {
+  var patterns = [
+    {re:/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, label:'email address'},
+    {re:/\b\d{3}[-.\s]?\d{3}[-.\s]?\d{4}\b/g, label:'phone number'},
+    {re:/\b\d{3}-\d{2}-\d{4}\b/g, label:'SSN'},
+    {re:/\b\d{4}[\s-]?\d{4}[\s-]?\d{4}[\s-]?\d{4}\b/g, label:'card number'}
+  ];
+  var found = [];
+  patterns.forEach(function(p){ if (p.re.test(text)) found.push(p.label); });
+  if (found.length) {
+    return confirm('Potential sensitive identifier detected ('+found.join(', ')+'). Confirm all personally identifiable information has been redacted before submission to preserve work-product privileges.');
+  }
+  return true;
+}
+
+if (!KEY) {
+  gate.textContent = 'This page needs the link you were sent. Please open it from your email.';
+} else {
+  fetch('/api/coauthor?k=' + encodeURIComponent(KEY))
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if (!d || !d.ok || !d.found) {
+        gate.textContent = 'That link was not recognised. Write to info@jrsstandard.com and I will send a new one.';
+        return;
+      }
+      PERSON = d;
+      gate.style.display = 'none';
+      form.style.display = 'block';
+
+      var hd = document.getElementById('hd');
+      var lead = document.getElementById('lead');
+      if (hd) hd.textContent = 'How you are credited, ' + (d.first || '') ;
+      if (lead) {
+        lead.textContent = 'You are the ' + (d.role || 'co-author') + ' on ' +
+          (d.paper || 'this study') + '. Two minutes: confirm how your name appears, ' +
+          'and answer three questions about how the work may be used. There are no wrong ' +
+          'answers and nothing here is a condition of your authorship.';
+      }
+
+      var n = document.getElementById('name');
+      var t = document.getElementById('title');
+      var o = document.getElementById('org');
+      if (n) n.value = d.name_on_file || '';
+      if (t) t.value = d.title_on_file || '';
+      if (o) o.value = d.org_on_file || '';
+
+      if (d.org_note) {
+        var box = document.getElementById('orgNote');
+        if (box) { box.textContent = d.org_note; box.style.display = 'block'; }
+      }
+      var tv = document.getElementById('tv');
+      if (tv) tv.textContent = 'Terms ' + (d.terms_version || '');
+    })
+    .catch(function(){
+      gate.textContent = 'Could not load the page. Please retry, or write to info@jrsstandard.com.';
+    });
+}
+
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  if (!PERSON) return;
+
+  var cp = picked('cp'), cu = picked('cu'), ck = picked('ck');
+  if (!cp || !cu || !ck) {
+    setStatus('Please answer all three questions. Nothing is assumed from a blank.',
+              'var(--review-text)');
+    return;
+  }
+
+  var nameEl = document.getElementById('name');
+  var nm = nameEl ? nameEl.value.trim() : '';
+  if (cp === 'yes' && !nm) {
+    setStatus('Please give the name you want printed.', 'var(--review-text)');
+    return;
+  }
+
+  var titleEl = document.getElementById('title');
+  var orgEl   = document.getElementById('org');
+  var emailEl = document.getElementById('email');
+  var noteEl  = document.getElementById('note');
+
+  var noteVal = noteEl ? noteEl.value.trim() : '';
+  if (noteVal && !jrsSanitizeCheck(noteVal)) { return; }
+
+  var body = {
+    k: KEY,
+    name: nm,
+    title: titleEl ? titleEl.value.trim() : '',
+    org: orgEl ? orgEl.value.trim() : '',
+    email: emailEl ? emailEl.value.trim() : '',
+    note: noteVal,
+    consent_print: cp,
+    consent_use: cu,
+    consent_keep: ck
+  };
+
+  btn.disabled = true;
+  setStatus('Saving.');
+
+  fetch('/api/coauthor', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  })
+    .then(function(r){ return r.json().then(function(d){ return { ok: r.ok, d: d }; }); })
+    .then(function(res){
+      if (!res.ok || !res.d || res.d.error) {
+        setStatus('That did not save. Please retry, or send your answers to info@jrsstandard.com.',
+                  'var(--review-text)');
+        btn.disabled = false;
+        return;
+      }
+      form.innerHTML =
+        '<div class="eyebrow">Recorded</div>' +
+        '<h1>Thank you.</h1>' +
+        '<p class="lead">Your answers are on file and I will follow them. If you change your ' +
+        'mind about any of it, write to info@jrsstandard.com and it changes. Nothing here is ' +
+        'permanent and nothing here affects your authorship.</p>';
+    })
+    .catch(function(){
+      // The answers matter more than the transport. If the network is down the
+      // person still gets a copy they can send, rather than losing the work.
+      var obj = { type: 'coauthor-confirmation', answers: body,
+                  timestamp: new Date().toISOString() };
+      try {
+        var blob = new Blob([JSON.stringify(obj, null, 2)], { type: 'application/json' });
+        var dlUrl = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = dlUrl;
+        a.download = 'jrs-coauthor-' + Date.now() + '.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(dlUrl);
+        setStatus('Server unavailable. Your answers downloaded, please send the file to info@jrsstandard.com.',
+                  'var(--review-text)');
+      } catch (err) {
+        setStatus('Server unavailable. Please email your answers to info@jrsstandard.com.',
+                  'var(--review-text)');
+      }
+      btn.disabled = false;
+    });
+});
+</script>
+</body>
+</html>
