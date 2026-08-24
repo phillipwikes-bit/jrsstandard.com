@@ -72,9 +72,15 @@ foil = [r for r in bo if r["domain"] == "Public records / FOIL"]
 ms = io.open(MS, encoding="utf-8").read()
 
 # ---- ISACA SPEC ----
-words = len(re.sub(r"[*_`|#-]", " ", ms).split())
+# The case-list appendix is submission evidence, not article prose, and is excluded from
+# the count the way a reference list is excluded from a word limit. It is counted and
+# reported separately so it can never hide growth in the body.
+_body = ms[:ms.index("## Appendix: case list")] if "## Appendix: case list" in ms else ms
+_appx = ms[ms.index("## Appendix: case list"):] if "## Appendix: case list" in ms else ""
+words = len(re.sub(r"[*_`|#-]", " ", _body).split())
 check("length inside ISACA's 2,000 to 3,000 words", LO <= words <= HI,
-      "%d words" % words)
+      "%d words in the body, %d in the appendix"
+      % (words, len(re.sub(r"[*_`|#-]", " ", _appx).split())))
 check("citations are endnotes, not footnotes",
       "## Endnotes" in ms and "<sup>" in ms and "[^" not in ms,
       "%d superscript markers, an Endnotes section, no footnote syntax"
@@ -216,8 +222,20 @@ check("outcome categories reconcile to 22",
 check("what the reviewer read is stated precisely",
       "read the published decision in full" in ms
       and "No employer record was obtained independently of the decision." in ms)
-check("case citations flagged as outstanding rather than asserted",
-      "[REQUIRED_ENV_PARAM: TWENTY_TWO_CASE_CITATIONS]" in ms)
+check("case list appendix present with 22 numbered entries",
+      "## Appendix: case list" in ms
+      and len(re.findall(r"^\d+\. ", ms[ms.index("## Appendix: case list"):], re.M)) == 22)
+_live_srcs = [ (r.get("source") or "").strip() for r in hr ]
+check("every appendix citation matches the study database",
+      all(src.rstrip(".") in ms for src in _live_srcs if src),
+      "%d of %d live citations found in the manuscript"
+      % (sum(1 for s2 in _live_srcs if s2 and s2.rstrip(".") in ms), len(_live_srcs)))
+check("forum count stated as seven, not three",
+      "seven adjudicating forums" in ms
+      and "three jurisdictional systems" not in ms,
+      "the corpus spans 7 forums; the manuscript claimed 3 until 2026-08-24")
+check("the one narrative entry is flagged, not dressed up as a citation",
+      "[REQUIRED_ENV_PARAM: CASE_04_CITATION]" in ms)
 check("nonsignificance not read as equivalence",
       "did not detect a statistically significant difference" in ms
       and "does not establish equivalence" in ms)

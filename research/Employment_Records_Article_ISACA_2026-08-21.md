@@ -6,7 +6,7 @@
 
 An examiner reading a file does not have access to the decision-maker's memory. The record is what remains available for review. If it cannot show why a consequential decision was made, the decision may still have been correct, but the organization can no longer prove it.
 
-Generative AI can make that gap easier to create. A drafted narrative may read as finished even when the material that would substantiate it has not been preserved. **That is a forward-looking concern, not a finding of this study.** The corpus was not selected for AI involvement, **no case in it is shown to have been AI-drafted**, and two of the three jurisdictional systems predate generative drafting. The question tested is whether the review distinguishes records that can independently support their conclusions from records that cannot, regardless of how the record was produced.
+Generative AI can make that gap easier to create. A drafted narrative may read as finished even when the material that would substantiate it has not been preserved. **That is a forward-looking concern, not a finding of this study.** The corpus was not selected for AI involvement, **no case in it is shown to have been AI-drafted**, and the corpus spans decisions from 1973 to 2026, most of which predate generative drafting. The question tested is whether the review distinguishes records that can independently support their conclusions from records that cannot, regardless of how the record was produced.
 
 We call the condition Decision Reconstruction Risk: the state a record is in when it cannot independently show why a consequential decision was reached.
 
@@ -55,7 +55,7 @@ record is later examined.
 
 ## What was tested
 
-Twenty-two adjudicated employment and labour matters, from 22 distinct public sources, across three jurisdictional systems.<sup>1</sup>
+Twenty-two adjudicated employment and labour matters, from 22 distinct published decisions across seven adjudicating forums in two countries: the US Federal Labor Relations Authority (6), the New York Unemployment Insurance Appeal Board (4), the New York Appellate Division (4), UK Employment Tribunals (3), the US Supreme Court (2), the US Equal Employment Opportunity Commission (2), and the New York Committee on Open Government (1).<sup>1</sup>
 
 For each matter a practicing employment specialist read the published decision in full and applied the five conditions to the employer's contemporaneous documentation as reproduced within it.<sup>2</sup> The classification was recorded before the documented outcome was consulted. The outcome and supporting citation were then entered from the decision.
 
@@ -171,7 +171,7 @@ Generative AI changes how records may be produced, but it does not change the un
 
 **Corpus and sources**
 
-**1.** The corpus comprises 22 adjudicated matters from 22 distinct published decisions across three jurisdictional systems: United States Supreme Court, United States Federal Labor Relations Authority, and United Kingdom Employment Tribunal, collected between 22 June and 29 July 2026. **[REQUIRED_ENV_PARAM: TWENTY_TWO_CASE_CITATIONS]** The full case list, giving decision name, jurisdiction and citation for each matter, must be appended here before submission. It is not held in the study repository. Counts, classifications and outcomes were verified against the study database on 21 August 2026.
+**1.** The corpus comprises 22 adjudicated matters from 22 distinct published decisions, collected between 22 June and 29 July 2026. The full case list, with the adjudicating forum for each matter, is set out in the appendix. Counts, classifications, outcomes and citations were verified against the study database on 24 August 2026.
 
 **Protocol and classification**
 
@@ -188,6 +188,33 @@ Generative AI changes how records may be produced, but it does not change the un
 **Contributor methodology**
 
 **6.** Ubayet Hossain, FRM, provided methodological guidance on the reference-panel design, the chance-corrected agreement framework and the prespecified acceptance thresholds, in a personal professional capacity. His contribution does not represent the views of any employer.
+
+---
+
+## Appendix: case list
+
+1. McDonnell Douglas Corp. v. Green, 411 U.S. 792 (1973) (US Supreme Court)
+2. St. Mary’s Honor Center v. Hicks, 509 U.S. 502 (1993). U.S. Supreme Court (US Supreme Court)
+3. Gallon v Sigma Aldrich Ltd, UK Employment Tribunal, Case No. 2500506/2017 (2017) (UK Employment Tribunal)
+4. Published Employment Tribunal and Employment Appeal Tribunal proceedings involving a capability dismissal following a formal performance management process (UK Employment Tribunal)  **[REQUIRED_ENV_PARAM: CASE_04_CITATION]** This entry is a description rather than a citation and must be replaced with the decision reference before submission.
+5. Jones v Vale Curtains and Blinds Ltd (Employment Tribunal, Reading, 2024) (UK Employment Tribunal)
+6. United States Department of Defense, Department of Defense Dependents Schools, Europe and Federal Education Association, 65 FLRA No. 122 (2011) (US Federal Labor Relations Authority)
+7. Public citation: Appeal Board No. 636070 (N.Y. Unemployment Insurance Appeal Board, Mar. 5, 2025) (New York Unemployment Insurance Appeal Board)
+8. Valentine S. v. U.S. Postal Service, EEOC Appeal No. 2022004565 (Dec. 22, 2022) (US Equal Employment Opportunity Commission)
+9. Matter of Gannett Co., Inc. v City of Mount Vernon Police Department, 248 AD3d 1035, 2026 NY Slip Op 02267 (2d Dept 2026) (New York Appellate Division)
+10. Matter of Kohler-Hausmann v New York City Police Department, 133 AD3d 437 (1st Dept 2015) (New York Appellate Division)
+11. United States Department of Housing and Urban Development and AFGE Local 3320, 73 FLRA No. 67 (Nov. 14, 2022) (US Federal Labor Relations Authority)
+12. AFGE Local 4012 and Social Security Administration, Denver, Colorado, 73 FLRA No. 106 (May 26, 2023) (US Federal Labor Relations Authority)
+13. International Federation of Professional and Technical Engineers, Local 4 and U.S. Department of the Navy, Portsmouth Naval Shipyard, 73 FLRA No. 94 (2023) (US Federal Labor Relations Authority)
+14. Fraternal Order of Police, DC Lodge 1 and U.S. Department of Defense, Pentagon Force Protection Agency, 73 FLRA No. 77 (2023) (US Federal Labor Relations Authority)
+15. FOIL-AO-19774 (N.Y. Committee on Open Government, June 29, 2020) (New York Committee on Open Government)
+16. Matter of Woods v State University of New York, 139 AD3d 1322, 2016 NY Slip Op 04084 (3d Dept 2016) (New York Appellate Division)
+17. United States Small Business Administration and American Federation of Government Employees, Local 228, 71 FLRA No. 124 (2020) (US Federal Labor Relations Authority)
+18. Appeal Board No. 634916 (N.Y. Unemployment Insurance Appeal Board, Jan. 29, 2025) (New York Unemployment Insurance Appeal Board)
+19. Carson v Department of Justice, EEOC Appeal No. 0120100078 (Feb. 16, 2012) (US Equal Employment Opportunity Commission)
+20. Appeal Board No. 637062 (N.Y. Unemployment Insurance Appeal Board, July 22, 2025) (New York Unemployment Insurance Appeal Board)
+21. Appeal Board No. 638160 (N.Y. Unemployment Insurance Appeal Board, Dec. 4, 2025) (New York Unemployment Insurance Appeal Board)
+22. Matter of Spence (State University of New York), 230 AD3d 1559, 2024 NY Slip Op 04677 (4th Dept 2024) (New York Appellate Division)
 
 ---
 
