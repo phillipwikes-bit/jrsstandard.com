@@ -28,6 +28,8 @@ SB = "https://pjzxkeviouofdseagvpf.supabase.co"
 ADVERSE = {"failed_appeal", "failed_audit"}
 FLAG = {"review_required", "gap_identified"}
 LO, HI = 2000, 3000
+PRIMARY_N = 20
+EXCLUDED = 2
 R = []
 
 
@@ -110,13 +112,13 @@ check("no employer named for the methodology contributor",
       "KPMG" not in ms,
       "naming a Big Four firm implies institutional involvement that does not exist")
 check("endnotes numbered from 1, grouped, and rendered as paragraphs not a list",
-      "**Corpus and sources**" in ms and "**Protocol and classification**" in ms
-      and "**Statistical methods**" in ms and "**Contributor methodology**" in ms
-      and "**1.** The corpus comprises" in ms and "**7.** Ubayet Hossain" in ms
-      and "**Corpus integrity and sensitivity**" in ms)
+      "**Corpus and sources**" in ms and "**Exclusions**" in ms
+      and "**Protocol and classification**" in ms and "**Statistical methods**" in ms
+      and "**Contributor methodology**" in ms
+      and "**1.** The corpus comprises 20" in ms and "**7.** Ubayet Hossain" in ms)
 check("Wilson intervals attached to the proportions, not the odds ratio",
-      "95 percent Wilson score interval 45.3 to 93.7 percent" in ms
-      and "95 percent Wilson score interval 4.3 to 42.2 percent" in ms)
+      "95 percent Wilson score interval 40.9 to 92.9 percent" in ms
+      and "95 percent Wilson score interval 4.7 to 44.8 percent" in ms)
 check("figure 1 exhibit present",
       "**Figure 1. Record-Level Documentation Review**" in ms
       and "Failure signal" in ms)
@@ -137,22 +139,38 @@ check("creator interest disclosed once, without a cross-reference",
       "one Declarations statement, no endnote duplicate, no cross-reference")
 
 # ---- FIGURES, RECOMPUTED LIVE ----
-check("live employment corpus is 22", len(hr) == 22, "n=%d" % len(hr))
-a = sum(1 for r in hr if r["jrs_read"] in FLAG and r["outcome"] in ADVERSE)
-b = sum(1 for r in hr if r["jrs_read"] in FLAG and r["outcome"] not in ADVERSE)
-c = sum(1 for r in hr if r["jrs_read"] == "ready" and r["outcome"] in ADVERSE)
-d = sum(1 for r in hr if r["jrs_read"] == "ready" and r["outcome"] not in ADVERSE)
-check("cells 7/9 and 2/13", (a, a + b, c, c + d) == (7, 9, 2, 13),
+check("live screened set is 22", len(hr) == 22, "n=%d" % len(hr))
+# The two excluded matters, identified by their own properties rather than by index.
+_OUT = re.compile(r"Committee on Open Government|FOIL-AO-", re.I)
+_DESC = re.compile(r"^Published .* proceedings involving", re.I)
+excluded = [r for r in hr
+            if _OUT.search(r.get("source") or "")
+            or _DESC.match((r.get("source") or "").strip())]
+primary = [r for r in hr if r not in excluded]
+check("exactly %d matters excluded, identified by rule not by index" % EXCLUDED,
+      len(excluded) == EXCLUDED,
+      "; ".join((r.get("source") or "")[:44] for r in excluded))
+check("primary corpus is %d" % PRIMARY_N, len(primary) == PRIMARY_N,
+      "n=%d" % len(primary))
+a = sum(1 for r in primary if r["jrs_read"] in FLAG and r["outcome"] in ADVERSE)
+b = sum(1 for r in primary if r["jrs_read"] in FLAG and r["outcome"] not in ADVERSE)
+c = sum(1 for r in primary if r["jrs_read"] == "ready" and r["outcome"] in ADVERSE)
+d = sum(1 for r in primary if r["jrs_read"] == "ready" and r["outcome"] not in ADVERSE)
+check("cells 6/8 and 2/12", (a, a + b, c, c + d) == (6, 8, 2, 12),
       "flagged %d/%d ready %d/%d" % (a, a + b, c, c + d))
-check("p = 0.0073", "p = 0.0073" in ms and abs(fisher(a, b, c, d) - .0073) < 1e-4,
+check("p = 0.0194", "p = 0.0194" in ms and abs(fisher(a, b, c, d) - .0194) < 1e-4,
       "recomputed %.4f" % fisher(a, b, c, d))
-check("odds ratio 19.25 in endnote 1",
-      "19.25" in ms and abs(a * d / (b * c) - 19.25) < .01)
+check("odds ratio 15.00 in endnote 5",
+      "15.00" in ms and abs(a * d / (b * c) - 15.00) < .01)
 f1, c1 = wilson(a, a + b), wilson(c, c + d)
-check("Wilson intervals in endnote 1",
-      "45.3 to 93.7" in ms and "4.3 to 42.2" in ms
-      and abs(f1[0] - 45.3) < .05 and abs(c1[1] - 42.2) < .05,
+check("Wilson intervals in endnote 5",
+      "40.9 to 92.9" in ms and "4.7 to 44.8" in ms
+      and abs(f1[0] - 40.9) < .05 and abs(c1[1] - 44.8) < .05,
       "recomputed %.1f-%.1f and %.1f-%.1f" % (f1[0], f1[1], c1[0], c1[1]))
+check("the 22-case figure is reported as the conservative comparison",
+      "returns the corpus to 22 and strengthens the association to p = 0.0073" in ms)
+check("both exclusions are named in the appendix",
+      ms.count("**EXCLUDED FROM THE ANALYSIS.**") == EXCLUDED)
 logs = []
 for rows in (hr, foil):
     x = sum(1 for r in rows if r["jrs_read"] in FLAG and r["outcome"] in ADVERSE) + .5
@@ -175,7 +193,7 @@ check("companion corpus stated as 32", len(foil) == 32
 for t, why in (
         ("no rule was fixed before the data closed",
          "no pre-registered coding"),
-        ("p = 0.165, which is not significant", "the null coding is reported"),
+        ("Restricting to the 13 matters with a resolved disposition", "the alternative coding is reported"),
         ("single-practitioner field pilot", "design stated as scope"),
         ("one timestamp per case rather than separate review and outcome times",
          "timestamp granularity, endnote 3"),
@@ -218,8 +236,8 @@ check("circularity objection addressed in the body, not only in an endnote",
 check("adverse-finding rule disclosed as retrospective",
       "applied retrospectively and was not fixed before the data closed" in ms
       and "should be treated as exploratory" in ms)
-check("outcome categories reconcile to 22",
-      "mutually exclusive and sum to 22" in ms)
+check("outcome categories reconcile to the primary corpus",
+      "mutually exclusive and sum to 20" in ms)
 check("what the reviewer read is stated precisely",
       "read the published decision in full" in ms
       and "No employer record was obtained independently of the decision." in ms)
@@ -231,23 +249,22 @@ check("every appendix citation matches the study database",
       all(src.rstrip(".") in ms for src in _live_srcs if src),
       "%d of %d live citations found in the manuscript"
       % (sum(1 for s2 in _live_srcs if s2 and s2.rstrip(".") in ms), len(_live_srcs)))
-check("forum count stated as seven, not three",
-      "seven adjudicating forums" in ms
+check("forum count matches the primary corpus",
+      "six adjudicating forums" in ms
       and "three jurisdictional systems" not in ms,
-      "the corpus spans 7 forums; the manuscript claimed 3 until 2026-08-24")
-check("the uncitable entry is flagged, not dressed up as a citation",
-      "[REQUIRED_ENV_PARAM: CASE_04_CITATION]" in ms
-      and "identifies no specific decision and cannot be cited" in ms)
-check("the entry lacking a locator is flagged",
-      "[REQUIRED_ENV_PARAM: CASE_05_LOCATOR]" in ms
-      and "no case number on file" in ms)
-check("sensitivity analysis present and cited at the result",
-      "**6.** Two entries in the case list" in ms
-      and "unchanged when the two weakest corpus entries are excluded" in ms)
-_sens = [("p = 0.0092", 17.50), ("p = 0.0176", 16.50), ("p = 0.0194", 15.00)]
-check("every sensitivity figure recomputed from live data",
-      all(p_ in ms and ("%.2f" % o) in ms for p_, o in _sens),
-      "n=21 excl. case 4, n=21 excl. case 15, n=20 excl. both")
+      "20-case corpus spans 6 forums after the public-records matter came out")
+check("the uncitable entry is excluded and said to be",
+      "identifies no specific decision and cannot be cited" in ms
+      and "**EXCLUDED FROM THE ANALYSIS.**" in ms)
+check("the out-of-domain entry is excluded and said to be",
+      "Public-records advisory opinion, not an employment adjudication" in ms)
+check("the entry lacking a locator is described, not excluded",
+      "The tribunal case number is not on file" in ms)
+check("exclusions recorded in an endnote a reader can reconstruct from",
+      "**2.** Twenty-two matters were screened into the study database" in ms
+      and "both matters are named in the appendix" in ms)
+check("appendix states which entries are outside the analysis",
+      "The two marked EXCLUDED are not part of the 20-case analysis" in ms)
 check("nonsignificance not read as equivalence",
       "did not detect a statistically significant difference" in ms
       and "does not establish equivalence" in ms)

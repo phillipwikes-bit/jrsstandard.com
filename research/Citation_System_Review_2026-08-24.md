@@ -1,7 +1,17 @@
 # Is the citation system correct, and did one of Stacy's cases end up in the employment study
 
-**2026-08-24.** Both corpora pulled from `bench_outcomes` and graded by
+**2026-08-24, revised.** Both corpora pulled from `bench_outcomes` and graded by
 `scripts/build_case_citations.py`.
+
+> **WITHDRAWN: my flag on Stacy's rows 28 to 32.** I said her paper described 32 FOIL cases
+> without disclosing that five were compliance audits. **That was wrong. Her methods declare
+> it.** `FOIL_Article_Draft.md:75` names all four document classes with counts: New York
+> appellate and trial decisions 18, Committee on Open Government advisory opinions 7,
+> Connecticut FOIC final decisions 2, compliance audits 5. **I checked all four counts
+> against the database and every one matches exactly.** The audits are not an undisclosed
+> inclusion; they are the basis of her convergent-validity finding at line 23, where all five
+> received a Gap read and the Comptroller had independently recorded the same failure.
+> **Nothing in her article needs changing on this point.**
 
 ---
 

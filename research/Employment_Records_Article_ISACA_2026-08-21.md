@@ -10,7 +10,7 @@ Generative AI can make that gap easier to create. A drafted narrative may read a
 
 We call the condition Decision Reconstruction Risk: the state a record is in when it cannot independently show why a consequential decision was reached.
 
-This article reports what happened when one of us applied a structured review to 22 adjudicated employment matters, recorded the classification before consulting how each matter resolved, and compared the two. The records are not AI-generated and are not claimed to be.
+This article reports what happened when one of us applied a structured review to 20 adjudicated employment matters, recorded the classification before consulting how each matter resolved, and compared the two. The records are not AI-generated and are not claimed to be.
 
 ## The review
 
@@ -55,9 +55,11 @@ record is later examined.
 
 ## What was tested
 
-Twenty-two adjudicated employment and labour matters, from 22 distinct published decisions across seven adjudicating forums in two countries: the US Federal Labor Relations Authority (6), the New York Unemployment Insurance Appeal Board (4), the New York Appellate Division (4), UK Employment Tribunals (3), the US Supreme Court (2), the US Equal Employment Opportunity Commission (2), and the New York Committee on Open Government (1).<sup>1</sup>
+Twenty adjudicated employment and labour matters, from 20 distinct published decisions across six adjudicating forums in two countries: the US Federal Labor Relations Authority (6), the New York Unemployment Insurance Appeal Board (4), the New York Appellate Division (4), the US Supreme Court (2), UK Employment Tribunals (2), and the US Equal Employment Opportunity Commission (2).<sup>1</sup>
 
-For each matter a practicing employment specialist read the published decision in full and applied the five conditions to the employer's contemporaneous documentation as reproduced within it.<sup>2</sup> The classification was recorded before the documented outcome was consulted. The outcome and supporting citation were then entered from the decision.
+**Two matters were screened into the study database and are excluded from the analysis.** One is a public-records advisory opinion rather than an employment adjudication, and belongs to a different domain. The other identifies no specific decision and cannot be cited. Both exclusions were made before the analysis reported here and both are stated so a reader can reconstruct the corpus.<sup>2</sup>
+
+For each matter a practicing employment specialist read the published decision in full and applied the five conditions to the employer's contemporaneous documentation as reproduced within it.<sup>3</sup> The classification was recorded before the documented outcome was consulted. The outcome and supporting citation were then entered from the decision.
 
 **That design carries a circularity objection, and it is the first thing a careful reader should raise.** The decision both narrates the outcome and characterizes the employer's evidence, so the reviewer worked from a source already containing the outcome being assessed. The database stores one timestamp per case rather than two, so the ordering rests on the protocol rather than a system record.
 
@@ -65,22 +67,22 @@ For each matter a practicing employment specialist read the published decision i
 
 This is a single-practitioner field pilot: one qualified specialist, one caseload, applied inside an ordinary workload. The findings are reported at that level.
 
-The classifications were 13 Ready, 6 Needs work and 3 Gap. The documented outcomes were 7 sustained, 7 that did not survive review, 6 contested with no recorded disposition, and 2 adverse audit or compliance findings. The four categories are mutually exclusive and sum to 22.
+The classifications were 12 Ready, 5 Needs work and 3 Gap. The documented outcomes were 6 sustained, 7 that did not survive review, 6 contested with no recorded disposition, and 1 adverse audit or compliance finding. The four categories are mutually exclusive and sum to 20.
 
 ## What was found
 
-Needs work and Gap are grouped, since both describe a record whose basis is incomplete. An adverse finding means a matter in which the employer's position did not survive review, or which drew an adverse audit or compliance finding.<sup>3</sup>
+Needs work and Gap are grouped, since both describe a record whose basis is incomplete. An adverse finding means a matter in which the employer's position did not survive review, or which drew an adverse audit or compliance finding.<sup>4</sup>
 
 | Read | Adverse finding | No adverse finding | Adverse rate |
 |---|---|---|---|
-| Needs work or Gap (n = 9) | 7 | 2 | 77.8% |
-| Ready (n = 13) | 2 | 11 | 15.4% |
+| Needs work or Gap (n = 8) | 6 | 2 | 75.0% |
+| Ready (n = 12) | 2 | 10 | 16.7% |
 
-Fisher's exact test, two-sided: **p = 0.0073**.<sup>4</sup> The result is unchanged when the two weakest corpus entries are excluded.<sup>6</sup>
+Fisher's exact test, two-sided: **p = 0.0194**.<sup>5</sup>
 
-Records classified as incomplete were associated with an adverse finding in 77.8 percent of cases, compared with 15.4 percent of records classified as Ready.
+Records classified as incomplete were associated with an adverse finding in 75.0 percent of cases, compared with 16.7 percent of records classified as Ready.
 
-The result depends on how an adverse outcome is defined, and no rule was fixed before the data closed. **The classification was therefore defined retrospectively and should be treated as exploratory.** Restricting to the 16 matters with a resolved disposition and asking only whether the employer's position was sustained gives p = 0.041. Counting an unresolved contest as not sustained across all 22 gives p = 0.165, which is not significant.
+The result depends on how an adverse outcome is defined, and no rule was fixed before the data closed. **The classification was therefore defined retrospectively and should be treated as exploratory.** Restricting to the 13 matters with a resolved disposition and asking only whether the employer's position was sustained gives p = 0.0291. Including the two excluded matters returns the corpus to 22 and gives p = 0.0073, a stronger result on a weaker corpus.
 
 The direction of the association is unchanged across the three specifications, but the result depends materially on how unresolved matters are treated. The evidence supports treating the finding as a control signal rather than as evidence of predictive validity. How to treat a contested matter with no recorded disposition should be fixed in a protocol before the next set is read.
 
@@ -92,7 +94,7 @@ The same review was applied by a different practitioner to 32 public-records det
 
 Freedom-of-information determinations reach publication because a legal or access question was contested, so publication does not imply the underlying file was typical of the broader record population. Fifteen of the 20 resolved determinations there did not survive, a rate set by the publication process rather than by how those agencies documented. The employment corpus is not filtered that way.
 
-The Woolf test of homogeneity did not detect a statistically significant difference between the two associations, although the small samples limit what can be concluded from that result.<sup>5</sup> The difference illustrates how publication and selection processes can influence an outcome-based test of a documentation control.
+The Woolf test of homogeneity did not detect a statistically significant difference between the two associations, although the small samples limit what can be concluded from that result.<sup>6</sup> The difference illustrates how publication and selection processes can influence an outcome-based test of a documentation control.
 
 ## What this looks like in an examination
 
@@ -161,7 +163,7 @@ independent of the drafters.
 
 It demonstrates that an association of this size can be observed at practitioner scale, in adjudicated matters, using a review a working specialist can apply inside an ordinary workload. The result should therefore be interpreted as exploratory.
 
-It does not establish that the review improves outcomes, reduces litigation risk or increases decision quality, none of which was tested. Twenty-two cases from one practitioner's caseload, selected from published sources rather than sampled at random, is a field pilot. Published adjudications are not a random sample of employment records, since a matter reaches adjudication because something was contested.
+It does not establish that the review improves outcomes, reduces litigation risk or increases decision quality, none of which was tested. Twenty cases from one practitioner's caseload, selected from published sources rather than sampled at random, is a field pilot. Published adjudications are not a random sample of employment records, since a matter reaches adjudication because something was contested.
 
 A larger study should broaden the corpus without regard to how matters resolved, put at least two reviewers on each case with the classification and outcome recorded separately, fix the treatment of unresolved contests in advance, and where feasible obtain the underlying record independently of the adjudicated decision.
 
@@ -171,34 +173,23 @@ Generative AI changes how records may be produced, but it does not change the un
 
 **Corpus and sources**
 
-**1.** The corpus comprises 22 adjudicated matters from 22 distinct published decisions, collected between 22 June and 29 July 2026. The full case list, with the adjudicating forum for each matter, is set out in the appendix. Counts, classifications, outcomes and citations were verified against the study database on 24 August 2026.
+**1.** The corpus comprises 20 adjudicated employment matters from 20 distinct published decisions, collected between 22 June and 29 July 2026. The full case list, with the adjudicating forum for each matter, is set out in the appendix. Counts, classifications, outcomes and citations were verified against the study database on 24 August 2026.
+
+**Exclusions**
+
+**2.** Twenty-two matters were screened into the study database and two are excluded from the analysis. The first is a New York Committee on Open Government advisory opinion concerning a public-records request for disciplinary records. Its subject is employment records but its forum and legal question are public records, so it belongs to the companion public-records corpus rather than this one. The second is an entry whose record describes a capability dismissal but identifies no party, forum, date or case number, so no decision can be located and the matter cannot be cited. **Both exclusions were applied before the analysis reported here, and both matters are named in the appendix so the full screened set can be reconstructed.** Including both returns the corpus to 22 and strengthens the association to p = 0.0073 with an odds ratio of 19.25, so the exclusions are conservative.
 
 **Protocol and classification**
 
-**2.** For each matter the reviewer read the published decision in full and worked from the portions describing the employer's contemporaneous documentation as reproduced or characterized within it. No employer record was obtained independently of the decision. The protocol required the classification to be recorded before the outcome was consulted. The database records one timestamp per case rather than separate review and outcome times, so the sequence rests on the protocol rather than on a system record.
+**3.** For each matter the reviewer read the published decision in full and worked from the portions describing the employer's contemporaneous documentation as reproduced or characterized within it. No employer record was obtained independently of the decision. The protocol required the classification to be recorded before the outcome was consulted. The database records one timestamp per case rather than separate review and outcome times, so the sequence rests on the protocol rather than on a system record.
 
-**3.** An adverse finding was recorded where the employer's position did not survive review, or where the matter drew an adverse audit or compliance finding. The two adverse audit or compliance findings are a separate category that does not overlap the disposition counts, and the four categories sum to 22. **This rule was applied retrospectively and was not fixed before the data closed, so the primary association should be treated as exploratory.**
+**4.** An adverse finding was recorded where the employer's position did not survive review, or where the matter drew an adverse audit or compliance finding. The categories are mutually exclusive and sum to 20. **This rule was applied retrospectively and was not fixed before the data closed, so the primary association should be treated as exploratory.**
 
 **Statistical methods**
 
-**4.** Association between the classification and an adverse finding was tested with Fisher's exact test, two-sided, on the 2 x 2 table shown: p = 0.0073, odds ratio 19.25. The observed proportions with an adverse finding were 77.8 percent for records classified Needs work or Gap (7 of 9, 95 percent Wilson score interval 45.3 to 93.7 percent) and 15.4 percent for records classified Ready (2 of 13, 95 percent Wilson score interval 4.3 to 42.2 percent). Wilson intervals are used for these proportions because the cell counts are small and the normal approximation is unreliable at this sample size.
+**5.** Association between the classification and an adverse finding was tested with Fisher's exact test, two-sided, on the 2 x 2 table shown: p = 0.0194, odds ratio 15.00. The observed proportions with an adverse finding were 75.0 percent for records classified Needs work or Gap (6 of 8, 95 percent Wilson score interval 40.9 to 92.9 percent) and 16.7 percent for records classified Ready (2 of 12, 95 percent Wilson score interval 4.7 to 44.8 percent). Wilson intervals are used for these proportions because the cell counts are small and the normal approximation is unreliable at this sample size.
 
-**5.** Comparison with the public-records corpus used the Woolf test of homogeneity of odds ratios: Q = 2.550 on 1 degree of freedom, p = 0.110. The test does not establish equivalence; it fails to detect a difference at this sample size.
-
-**Corpus integrity and sensitivity**
-
-**6.** Two entries in the case list are weaker than the other 20 and are reported rather than
-adjusted. Case 4 identifies no specific decision: its source record is a narrative account of
-a capability dismissal with no party, forum, date or case number, so it cannot be cited.
-Case 5 names a decision but carries no tribunal case number. Because the primary association
-should not rest on entries a reader cannot locate, it was recomputed with each removed. On
-all 22 the association is p = 0.0073 with an odds ratio of 19.25. Excluding case 4, which
-falls in the Ready and no-adverse-finding cell, gives 7 of 9 against 2 of 12, p = 0.0092,
-odds ratio 17.50. Excluding case 15, a public-records advisory opinion that sits in an
-otherwise employment corpus, gives 6 of 8 against 2 of 13, p = 0.0176, odds ratio 16.50.
-Excluding both gives 6 of 8 against 2 of 12, p = 0.0194, odds ratio 15.00. **The direction
-and significance of the association are unchanged under every exclusion, so no reported
-conclusion depends on the two weak entries or on the one out-of-domain matter.**
+**6.** Comparison with the public-records corpus used the Woolf test of homogeneity of odds ratios: Q = 2.550 on 1 degree of freedom, p = 0.110. The test does not establish equivalence; it fails to detect a difference at this sample size.
 
 **Contributor methodology**
 
@@ -208,11 +199,13 @@ conclusion depends on the two weak entries or on the one out-of-domain matter.**
 
 ## Appendix: case list
 
+All 22 matters screened into the study database are listed. **The two marked EXCLUDED are not part of the 20-case analysis**; they are listed so the full screened set can be reconstructed.
+
 1. McDonnell Douglas Corp. v. Green, 411 U.S. 792 (1973) (US Supreme Court)
 2. St. Mary’s Honor Center v. Hicks, 509 U.S. 502 (1993). U.S. Supreme Court (US Supreme Court)
 3. Gallon v Sigma Aldrich Ltd, UK Employment Tribunal, Case No. 2500506/2017 (2017) (UK Employment Tribunal)
-4. Published Employment Tribunal and Employment Appeal Tribunal proceedings involving a capability dismissal following a formal performance management process (UK Employment Tribunal)  **[REQUIRED_ENV_PARAM: CASE_04_CITATION]** This entry identifies no specific decision and cannot be cited. See endnote 6 for the sensitivity analysis excluding it.
-5. Jones v Vale Curtains and Blinds Ltd (Employment Tribunal, Reading, 2024) (UK Employment Tribunal)  **[REQUIRED_ENV_PARAM: CASE_05_LOCATOR]** Named decision, no case number on file. Supply the tribunal case number before submission.
+4. Published Employment Tribunal and Employment Appeal Tribunal proceedings involving a capability dismissal following a formal performance management process (UK Employment Tribunal)  **EXCLUDED FROM THE ANALYSIS.** This entry identifies no specific decision and cannot be cited. See endnote 2.
+5. Jones v Vale Curtains and Blinds Ltd (Employment Tribunal, Reading, 2024) (UK Employment Tribunal)  Named decision. The tribunal case number is not on file; the decision is identified by party, forum and year.
 6. United States Department of Defense, Department of Defense Dependents Schools, Europe and Federal Education Association, 65 FLRA No. 122 (2011) (US Federal Labor Relations Authority)
 7. Public citation: Appeal Board No. 636070 (N.Y. Unemployment Insurance Appeal Board, Mar. 5, 2025) (New York Unemployment Insurance Appeal Board)
 8. Valentine S. v. U.S. Postal Service, EEOC Appeal No. 2022004565 (Dec. 22, 2022) (US Equal Employment Opportunity Commission)
@@ -222,7 +215,7 @@ conclusion depends on the two weak entries or on the one out-of-domain matter.**
 12. AFGE Local 4012 and Social Security Administration, Denver, Colorado, 73 FLRA No. 106 (May 26, 2023) (US Federal Labor Relations Authority)
 13. International Federation of Professional and Technical Engineers, Local 4 and U.S. Department of the Navy, Portsmouth Naval Shipyard, 73 FLRA No. 94 (2023) (US Federal Labor Relations Authority)
 14. Fraternal Order of Police, DC Lodge 1 and U.S. Department of Defense, Pentagon Force Protection Agency, 73 FLRA No. 77 (2023) (US Federal Labor Relations Authority)
-15. FOIL-AO-19774 (N.Y. Committee on Open Government, June 29, 2020) (New York Committee on Open Government)
+15. FOIL-AO-19774 (N.Y. Committee on Open Government, June 29, 2020) (New York Committee on Open Government)  **EXCLUDED FROM THE ANALYSIS.** Public-records advisory opinion, not an employment adjudication. See endnote 2.
 16. Matter of Woods v State University of New York, 139 AD3d 1322, 2016 NY Slip Op 04084 (3d Dept 2016) (New York Appellate Division)
 17. United States Small Business Administration and American Federation of Government Employees, Local 228, 71 FLRA No. 124 (2020) (US Federal Labor Relations Authority)
 18. Appeal Board No. 634916 (N.Y. Unemployment Insurance Appeal Board, Jan. 29, 2025) (New York Unemployment Insurance Appeal Board)

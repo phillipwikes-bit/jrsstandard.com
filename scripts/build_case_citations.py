@@ -59,6 +59,10 @@ FORUMS = [
 DESCRIPTION_NOT_CITATION = re.compile(
     r"^Published .* proceedings involving", re.I)
 
+# A public-records advisory opinion is not an employment adjudication. Detected so the
+# appendix marks it rather than relying on anyone remembering which row it was.
+OUT_OF_DOMAIN = re.compile(r"Committee on Open Government|FOIL-AO-", re.I)
+
 PRIMARY_URL = re.compile(
     r"https?://\S*(nycourts\.gov|dos\.ny\.gov|osc\.ny\.gov|comptroller\.nyc\.gov"
     r"|portal\.ct\.gov|law\.justia\.com|gov\.uk|govinfo\.gov|flra\.gov|eeoc\.gov)\S*",
@@ -179,12 +183,14 @@ def main():
     for i, (r, s) in enumerate(zip(rows, srcs), 1):
         g = grade(s)
         if g == "NONE":
-            flag = ("  **[REQUIRED_ENV_PARAM: CASE_%02d_CITATION]** This entry identifies "
-                    "no specific decision and cannot be cited. See endnote 6 for the "
-                    "sensitivity analysis excluding it." % i)
+            flag = ("  **EXCLUDED FROM THE ANALYSIS.** This entry identifies no specific "
+                    "decision and cannot be cited. See endnote 2.")
+        elif OUT_OF_DOMAIN.search(s):
+            flag = ("  **EXCLUDED FROM THE ANALYSIS.** Public-records advisory opinion, "
+                    "not an employment adjudication. See endnote 2.")
         elif g == "PARTIAL":
-            flag = ("  **[REQUIRED_ENV_PARAM: CASE_%02d_LOCATOR]** Named decision, no case "
-                    "number on file. Supply the tribunal case number before submission." % i)
+            flag = ("  Named decision. The tribunal case number is not on file; the "
+                    "decision is identified by party, forum and year.")
         else:
             flag = ""
         lines.append("%d. %s (%s)%s" % (i, s.rstrip("."), forum(s), flag))
