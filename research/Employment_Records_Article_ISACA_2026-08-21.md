@@ -96,7 +96,7 @@ The same review was applied by a different practitioner to 32 public-records det
 
 Freedom-of-information determinations reach publication because a legal or access question was contested, so publication does not imply the file was typical of the broader record population. Fifteen of the 20 resolved determinations there did not survive. That distribution reflects the selection and publication process rather than providing a measure of how those agencies documented. The employment corpus is not filtered that way.
 
-The Woolf test of homogeneity did not detect a statistically significant difference between the two associations, although the small samples limit what can be concluded. The comparison is therefore descriptive rather than evidence that the two corpora behave identically.<sup>7</sup> The difference illustrates how publication and selection processes can influence the results of an outcome-based test of a documentation control.
+The Woolf test of homogeneity did not detect a statistically significant difference between the two associations, although the small samples limit what can be concluded. The comparison is therefore descriptive rather than evidence that the two corpora behave identically.<sup>7</sup> The difference illustrates how publication and selection processes can influence an outcome-based test of a documentation control.
 
 ## What this looks like in an examination
 
