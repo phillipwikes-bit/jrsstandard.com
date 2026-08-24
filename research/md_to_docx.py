@@ -16,12 +16,15 @@ W = 'xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"'
 
 def runs(text):
     """Inline markdown to a list of <w:r> strings."""
-    out, tokens = [], re.split(r'(\*\*.+?\*\*|(?<!\*)\*(?!\*).+?(?<!\*)\*(?!\*)|`.+?`)', text)
+    out, tokens = [], re.split(
+        r'(\*\*.+?\*\*|(?<!\*)\*(?!\*).+?(?<!\*)\*(?!\*)|`.+?`|<sup>.+?</sup>)', text)
     for tok in tokens:
         if not tok:
             continue
-        b = i = c = False
-        if tok.startswith('**') and tok.endswith('**') and len(tok) > 4:
+        b = i = c = sup = False
+        if tok.startswith('<sup>') and tok.endswith('</sup>'):
+            tok, sup = tok[5:-6], True
+        elif tok.startswith('**') and tok.endswith('**') and len(tok) > 4:
             tok, b = tok[2:-2], True
         elif tok.startswith('*') and tok.endswith('*') and len(tok) > 2:
             tok, i = tok[1:-1], True
@@ -32,6 +35,7 @@ def runs(text):
         if b: props += '<w:b/>'
         if i: props += '<w:i/>'
         if c: props += '<w:rFonts w:ascii="Consolas" w:hAnsi="Consolas"/>'
+        if sup: props += '<w:vertAlign w:val="superscript"/>'
         rpr = f'<w:rPr>{props}</w:rPr>' if props else ''
         out.append(f'<w:r>{rpr}<w:t xml:space="preserve">{escape(tok)}</w:t></w:r>')
     return ''.join(out) or '<w:r><w:t/></w:r>'

@@ -94,10 +94,33 @@ check("practical rather than theoretical framing",
 # ---- AUTHORSHIP ----
 check("byline is Pokhriyal and Wikes, McMullan removed at his request 2026-08-23",
       "**Tanvi Pokhriyal and Phillip Wikes**" in ms)
-check("Hossain credited as a contributor in the endnotes, not the byline",
-      "contribution of Ubayet Hossain, FRM" in ms
+check("Hossain credited in the endnotes, not the byline, in a personal capacity",
+      "Ubayet Hossain, FRM, provided methodological guidance" in ms
+      and "in a personal professional capacity" in ms
+      and "does not represent the views of any employer" in ms
       and "Hossain" not in ms[:ms.index("---", 200)],
-      "endnote 4")
+      "endnote 5")
+check("no employer named for the methodology contributor",
+      "KPMG" not in ms,
+      "naming a Big Four firm implies institutional involvement that does not exist")
+check("endnotes are numbered from 1 and grouped",
+      "**Statistical methods**" in ms and "**Corpus and sources**" in ms
+      and "**Protocol limitations**" in ms and "**Contributor methodology**" in ms
+      and "**Conflict disclosure**" in ms)
+check("Wilson intervals attached to the proportions, not the odds ratio",
+      "95 percent Wilson score interval 45.3 to 93.7 percent" in ms
+      and "95 percent Wilson score interval 4.3 to 42.2 percent" in ms)
+check("figure 1 exhibit present",
+      "**Figure 1. Record-Level Documentation Review**" in ms
+      and "Failure signal" in ms)
+check("five conditions explicitly operationalized for this study",
+      "For this study, the five conditions were operationalized" in ms)
+check("no repeatability claim from a single reviewer",
+      "Inter-rater repeatability was not tested in this study." in ms
+      and "repeatable between reviewers" not in ms)
+check("association language, not effect language",
+      "an association of this size can be observed" in ms
+      and "an effect of this size is visible" not in ms)
 check("Stacyann Young not named", "Young" not in ms)
 check("creator interest disclosed", "would benefit from its adoption" in ms
       and "He read no case in this corpus" in ms, "endnote 5")
@@ -182,7 +205,7 @@ check("acknowledgement in the exact form he specified",
 check("circularity objection addressed in the body, not only in an endnote",
       "circularity objection" in ms and "must not be treated as answered" in ms)
 check("sample size does not rest on the corpus size",
-      "Not 22, and this study cannot derive one" in ms
+      "This study cannot establish a periodic control sample size" in ms
       and "tolerable error" in ms)
 check("third line credited rather than dismissed",
       "not an argument that internal audit has no role" in ms
