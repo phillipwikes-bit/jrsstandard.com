@@ -88,7 +88,7 @@ for bio in ("**Tanvi Pokhriyal** is an Organisational Psychologist",
     check("bio present: %s" % bio.split("**")[1], bio in ms)
 check("practical rather than theoretical framing",
       "Running it as a control rather than a project" in ms
-      and "three lines of defence" in ms,
+      and "three lines of defense" in ms,
       "carries an operational section and a three-lines placement")
 
 # ---- AUTHORSHIP ----
@@ -103,10 +103,10 @@ check("Hossain credited in the endnotes, not the byline, in a personal capacity"
 check("no employer named for the methodology contributor",
       "KPMG" not in ms,
       "naming a Big Four firm implies institutional involvement that does not exist")
-check("endnotes are numbered from 1 and grouped",
-      "**Statistical methods**" in ms and "**Corpus and sources**" in ms
-      and "**Protocol limitations**" in ms and "**Contributor methodology**" in ms
-      and "**Conflict disclosure**" in ms)
+check("endnotes numbered from 1, grouped, and rendered as paragraphs not a list",
+      "**Corpus and sources**" in ms and "**Protocol and classification**" in ms
+      and "**Statistical methods**" in ms and "**Contributor methodology**" in ms
+      and "**1.** The corpus comprises" in ms and "**6.** Ubayet Hossain" in ms)
 check("Wilson intervals attached to the proportions, not the odds ratio",
       "95 percent Wilson score interval 45.3 to 93.7 percent" in ms
       and "95 percent Wilson score interval 4.3 to 42.2 percent" in ms)
@@ -115,15 +115,19 @@ check("figure 1 exhibit present",
       and "Failure signal" in ms)
 check("five conditions explicitly operationalized for this study",
       "For this study, the five conditions were operationalized" in ms)
-check("no repeatability claim from a single reviewer",
-      "Inter-rater repeatability was not tested in this study." in ms
+check("no reliability claim from a single reviewer",
+      "Inter-rater reliability was not tested in this study." in ms
       and "repeatable between reviewers" not in ms)
 check("association language, not effect language",
       "an association of this size can be observed" in ms
       and "an effect of this size is visible" not in ms)
 check("Stacyann Young not named", "Young" not in ms)
-check("creator interest disclosed", "would benefit from its adoption" in ms
-      and "He read no case in this corpus" in ms, "endnote 5")
+_flat = re.sub(r"\s+", " ", ms)
+check("creator interest disclosed once, without a cross-reference",
+      _flat.count("benefit from its adoption") == 1
+      and "did not participate in the case classifications or outcome recording" in _flat
+      and "set out in endnote" not in _flat,
+      "one Declarations statement, no endnote duplicate, no cross-reference")
 
 # ---- FIGURES, RECOMPUTED LIVE ----
 check("live employment corpus is 22", len(hr) == 22, "n=%d" % len(hr))
@@ -162,7 +166,7 @@ check("companion corpus stated as 32", len(foil) == 32
 
 # ---- DISCLOSURES ----
 for t, why in (
-        ("no rule for defining it was fixed before the data closed",
+        ("no rule was fixed before the data closed",
          "no pre-registered coding"),
         ("p = 0.165, which is not significant", "the null coding is reported"),
         ("single-practitioner field pilot", "design stated as scope"),
@@ -198,21 +202,41 @@ check("McMullan absent from byline and bios",
       "Kyle McMullan is a Chief Audit Executive" not in ms
       and "Kyle McMullan and Phillip Wikes" not in ms,
       "he asked to come off the byline 2026-08-23")
-check("acknowledgement in the exact form he specified",
-      "The author thanks Kyle McMullan for comments on audit practice." in ms
-      and "does not endorse its findings" in ms,
-      "must not imply he reviewed the study")
+check("acknowledgement is plural and bounds his contribution",
+      "The authors thank Kyle McMullan for comments on audit practice." in ms
+      and "did not extend\nto the study, its data or its findings" in ms,
+      "two-author byline, and it must not imply he reviewed the study")
 check("circularity objection addressed in the body, not only in an endnote",
       "circularity objection" in ms and "must not be treated as answered" in ms)
+check("adverse-finding rule disclosed as retrospective",
+      "applied retrospectively and was not fixed before the data closed" in ms
+      and "should be treated as exploratory" in ms)
+check("outcome categories reconcile to 22",
+      "mutually exclusive and sum to 22" in ms)
+check("what the reviewer read is stated precisely",
+      "read the published decision in full" in ms
+      and "No employer record was obtained independently of the decision." in ms)
+check("case citations flagged as outstanding rather than asserted",
+      "[REQUIRED_ENV_PARAM: TWENTY_TWO_CASE_CITATIONS]" in ms)
+check("nonsignificance not read as equivalence",
+      "did not detect a statistically significant difference" in ms
+      and "does not establish equivalence" in ms)
+check("one spelling standard, US English in the body",
+      not [w for w in re.findall(r"\b\w+\b", ms)
+           if (re.search(r"(isation|isations|ised|ises|ising)$", w)
+               and w.lower() not in ("comprised", "comprises", "rising", "raised",
+                                     "raises", "advised", "advises", "revised",
+                                     "revises", "supervised", "supervises"))
+           or w.lower() in ("defence", "behaviour", "practising", "licence", "programme")])
 check("sample size does not rest on the corpus size",
       "This study cannot establish a periodic control sample size" in ms
       and "tolerable error" in ms)
 check("third line credited rather than dismissed",
       "not an argument that internal audit has no role" in ms
       and "It is not a third-line activity" not in ms)
-check("disclaimer excludes client engagements, not just identified organisations",
-      "any client engagement, examination, or the records of any organisation" in ms
-      and "any identified organisation" not in ms)
+check("disclaimer excludes client engagements, not just identified organizations",
+      "any client engagement, examination, or the records of any organization" in ms
+      and "any identified organization" not in ms)
 check("no AI-drafting claim over the corpus",
       "no case in it is shown to have been AI-drafted" in ms
       and "Testing AI-Assisted Employment Records" not in ms)

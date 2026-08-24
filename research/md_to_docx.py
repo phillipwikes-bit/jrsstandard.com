@@ -47,9 +47,19 @@ def para(text, style=None, spacing=True):
     ppr += '</w:pPr>'
     return f'<w:p>{ppr}{runs(text)}</w:p>'
 
+# Numbered lists restart per block. _NUM_STATE holds the id of the block currently being
+# emitted; new_numbered_block() advances it. Bullets always use numId 1.
+_NUM_STATE = {'next': 2, 'current': 2, 'ids': [2]}
+
+def new_numbered_block():
+    _NUM_STATE['next'] += 1
+    _NUM_STATE['current'] = _NUM_STATE['next']
+    _NUM_STATE['ids'].append(_NUM_STATE['current'])
+
 def bullet(text, numbered=False):
+    nid = _NUM_STATE['current'] if numbered else 1
     return ('<w:p><w:pPr><w:numPr><w:ilvl w:val="0"/>'
-            f'<w:numId w:val="{2 if numbered else 1}"/></w:numPr>'
+            f'<w:numId w:val="{nid}"/></w:numPr>'
             '<w:spacing w:after="60"/></w:pPr>' + runs(text) + '</w:p>')
 
 def table(rows):
@@ -94,6 +104,7 @@ def convert(md):
                 body.append(bullet(re.sub(r'^\s*[-*]\s+', '', lines[i]))); i += 1
             continue
         if re.match(r'^\s*\d+\.\s+', ln):
+            new_numbered_block()
             while i < len(lines) and re.match(r'^\s*\d+\.\s+', lines[i]):
                 body.append(bullet(re.sub(r'^\s*\d+\.\s+', '', lines[i]), numbered=True)); i += 1
             continue
@@ -101,7 +112,23 @@ def convert(md):
             body.append('<w:p><w:pPr><w:pBdr><w:bottom w:val="single" w:sz="6" w:space="1" w:color="AAAAAA"/></w:pBdr></w:pPr></w:p>')
             i += 1; continue
         if ln.strip():
-            body.append(para(ln))
+            # Join the wrapped continuation lines of this paragraph. A blank line, a
+            # heading, a list item, a table row or a rule ends it.
+            buf = [ln.strip()]
+            i += 1
+            while i < len(lines):
+                nxt = lines[i]
+                if (not nxt.strip()
+                        or re.match(r'^\s*\|.*\|\s*$', nxt)
+                        or re.match(r'^#{1,4}\s+', nxt)
+                        or re.match(r'^\s*[-*]\s+', nxt)
+                        or re.match(r'^\s*\d+\.\s+', nxt)
+                        or re.match(r'^\s*(---|___|\*\*\*)\s*$', nxt)):
+                    break
+                buf.append(nxt.strip())
+                i += 1
+            body.append(para(' '.join(buf)))
+            continue
         i += 1
     sect = ('<w:sectPr><w:pgSz w:w="12240" w:h="15840"/>'
             '<w:pgMar w:top="1440" w:right="1440" w:bottom="1440" w:left="1440"/></w:sectPr>')
@@ -122,7 +149,7 @@ NUMBERING = f'''<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:number
 <w:abstractNum w:abstractNumId="0"><w:lvl w:ilvl="0"><w:numFmt w:val="bullet"/><w:lvlText w:val="&#8226;"/><w:pPr><w:ind w:left="720" w:hanging="360"/></w:pPr></w:lvl></w:abstractNum>
 <w:abstractNum w:abstractNumId="1"><w:lvl w:ilvl="0"><w:start w:val="1"/><w:numFmt w:val="decimal"/><w:lvlText w:val="%1."/><w:pPr><w:ind w:left="720" w:hanging="360"/></w:pPr></w:lvl></w:abstractNum>
 <w:num w:numId="1"><w:abstractNumId w:val="0"/></w:num>
-<w:num w:numId="2"><w:abstractNumId w:val="1"/></w:num>
+__NUMS__
 </w:numbering>'''
 
 CT = '''<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
@@ -148,7 +175,9 @@ def build(src):
         z.writestr('_rels/.rels', RELS)
         z.writestr('word/document.xml', doc)
         z.writestr('word/styles.xml', STYLES)
-        z.writestr('word/numbering.xml', NUMBERING)
+        nums = ''.join('<w:num w:numId="%d"><w:abstractNumId w:val="1"/></w:num>' % n
+                       for n in _NUM_STATE['ids'])
+        z.writestr('word/numbering.xml', NUMBERING.replace('__NUMS__', nums))
         z.writestr('word/_rels/document.xml.rels', DRELS)
     return out
 
