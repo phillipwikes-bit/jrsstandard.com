@@ -191,10 +191,6 @@ Generative AI changes how records may be produced, but it does not change the un
 
 **6.** Comparison with the public-records corpus used the Woolf test of homogeneity of odds ratios: Q = 2.550 on 1 degree of freedom, p = 0.110. The test does not establish equivalence; it fails to detect a difference at this sample size.
 
-**Contributor methodology**
-
-**7.** Ubayet Hossain, FRM, provided methodological guidance on the reference-panel design, the chance-corrected agreement framework and the prespecified acceptance thresholds, in a personal professional capacity. His contribution does not represent the views of any employer.
-
 ---
 
 ## Appendix: case list

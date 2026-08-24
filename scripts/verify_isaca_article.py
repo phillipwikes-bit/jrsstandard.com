@@ -102,20 +102,25 @@ check("practical rather than theoretical framing",
 # ---- AUTHORSHIP ----
 check("byline is Pokhriyal and Wikes, McMullan removed at his request 2026-08-23",
       "**Tanvi Pokhriyal and Phillip Wikes**" in ms)
-check("Hossain credited in the endnotes, not the byline, in a personal capacity",
-      "Ubayet Hossain, FRM, provided methodological guidance" in ms
-      and "in a personal professional capacity" in ms
-      and "does not represent the views of any employer" in ms
-      and "Hossain" not in ms[:ms.index("---", 200)],
-      "endnote 5")
-check("no employer named for the methodology contributor",
+# The contributor-methodology endnote was removed on 2026-08-24. It credited a
+# reference-panel design, a chance-corrected agreement framework and prespecified
+# thresholds, none of which this study uses, and the third contradicted endnote 4. The
+# guard now asserts the credit stays out while the study lacks those methods.
+check("no methodology credit for methods this study does not use",
+      "Hossain" not in ms,
+      "single reviewer, no panel, no chance-corrected agreement, retrospective rule")
+check("the absent methods really are absent from the study",
+      not re.search(r"\b(Gwet|AC1|Krippendorff|chance-corrected|reference-panel)\b", ms)
+      and "Inter-rater reliability was not tested in this study." in ms
+      and "applied retrospectively and was not fixed before the data closed" in ms)
+check("no employer named anywhere",
       "KPMG" not in ms,
       "naming a Big Four firm implies institutional involvement that does not exist")
 check("endnotes numbered from 1, grouped, and rendered as paragraphs not a list",
       "**Corpus and sources**" in ms and "**Exclusions**" in ms
       and "**Protocol and classification**" in ms and "**Statistical methods**" in ms
-      and "**Contributor methodology**" in ms
-      and "**1.** The corpus comprises 20" in ms and "**7.** Ubayet Hossain" in ms)
+      and "**Contributor methodology**" not in ms
+      and "**1.** The corpus comprises 20" in ms and "**6.** Comparison with" in ms)
 check("Wilson intervals attached to the proportions, not the odds ratio",
       "95 percent Wilson score interval 40.9 to 92.9 percent" in ms
       and "95 percent Wilson score interval 4.7 to 44.8 percent" in ms)
