@@ -59,19 +59,19 @@ Twenty-two matters were screened; 20 met the inclusion criteria and 2 were exclu
 
 The 2 excluded matters are identified in appendix A and endnote 2: a public-records advisory opinion, and an entry identifying no specific decision.<sup>2</sup>
 
-For each matter a practicing employment specialist read the published decision in full and applied the five conditions to the employer's contemporaneous documentation, to the extent it was reproduced or characterized in that decision.<sup>3</sup> The classification was recorded before the outcome was consulted, and the outcome and citation were then entered from the decision.
+For each matter a practicing employment specialist read the published decision in full and applied the five conditions to the employer's contemporaneous documentation, to the extent it was reproduced or characterized in that decision.<sup>3</sup> The classification was recorded before the outcome was consulted; the outcome and citation were then entered from the decision.
 
 That design carries a circularity objection, and it is the first thing a careful reader should raise. The decision narrates the outcome and characterizes the employer's evidence, so the reviewer worked from a source already containing the outcome being assessed. The database stores one timestamp per case, so the ordering rests on the protocol rather than a system record.
 
 The objection is not answered here and must not be treated as answered. The association is consistent with a documentation deficiency an adjudicator also noticed, and equally consistent with reviewer influence from information in the decision. Separating them requires a design this study did not use: independent timestamping, a second blinded reader, or employer records obtained before adjudication.
 
-This is a single-practitioner field pilot: one qualified specialist, one field application within an ordinary professional workflow. Findings are reported at that level.
+This is a single-practitioner field pilot: one qualified specialist applying the review within an ordinary professional workflow. Findings are reported at that level.
 
 The classifications were 12 Ready, 5 Needs work and 3 Gap. The documented outcomes were 6 sustained, 7 that did not survive review, 6 contested with no recorded disposition, and 1 adverse audit or compliance finding. The adverse audit or compliance finding is a separate category, not included in the other three. The four categories are mutually exclusive and sum to 20.
 
 ## What was found
 
-Needs work and Gap are grouped, since both describe an incomplete basis. For the primary analysis, an adverse finding was recorded where the employer's position did not survive review or where the matter drew an adverse audit or compliance finding.<sup>4</sup>
+Needs work and Gap are grouped, since both describe an incomplete basis. For the primary analysis, an adverse finding was recorded when the employer's position did not survive review or the matter drew an adverse audit or compliance finding.<sup>4</sup>
 
 | Read | Adverse finding | No adverse finding | Adverse rate |
 |---|---|---|---|
@@ -84,7 +84,7 @@ Fisher's exact test, two-sided: p = 0.0194.<sup>5</sup>
 
 Records classified as incomplete were associated with an adverse finding in 75.0 percent of cases, compared with 16.7 percent of those classified Ready.
 
-The result depends on how an adverse outcome is defined, and no rule was fixed before the data closed. The primary association should therefore be interpreted as exploratory rather than confirmatory. Restricting to the 13 matters with a resolved disposition and asking only whether the employer's position was sustained gives p = 0.0291. Including the 2 excluded matters produces p = 0.0073, but those matters do not meet the stated inclusion criteria and are therefore treated only as a sensitivity analysis.
+The result depends on how an adverse outcome is defined, and no rule was fixed before the data closed. The primary association should therefore be interpreted as exploratory rather than confirmatory. Restricting to the 13 matters with a resolved disposition and asking only whether the employer's position was sustained gives p = 0.0291. Including the 2 excluded matters produces p = 0.0073. Because those matters do not meet the stated inclusion criteria, this result is reported only as a sensitivity analysis.
 
 The direction of the association is unchanged across the three specifications, but the result depends materially on how unresolved matters are treated. The evidence supports treating the finding as a control signal rather than as evidence of predictive validity. How to treat a contested matter with no disposition should be fixed in a protocol before the next set is read.
 
@@ -96,7 +96,7 @@ The same review was applied by a different practitioner to 32 public-records det
 
 Freedom-of-information determinations reach publication because a legal or access question was contested, so publication does not imply the file was typical of the broader record population. Fifteen of the 20 resolved determinations there did not survive. That distribution reflects the selection and publication process rather than providing a measure of how those agencies documented. The employment corpus is not filtered that way.
 
-The Woolf test of homogeneity did not detect a statistically significant difference between the two associations, although the small samples limit what can be concluded. The comparison is therefore descriptive rather than evidence that the two corpora behave identically.<sup>7</sup> The difference illustrates how publication and selection processes can influence an outcome-based documentation control test.
+The Woolf test of homogeneity did not detect a statistically significant difference between the two associations, although the small samples limit what can be concluded. The comparison is therefore descriptive rather than evidence that the two corpora behave identically.<sup>7</sup> The difference illustrates how publication and selection processes can influence an outcome-based test of documentation control.
 
 ## What this looks like in an examination
 
@@ -104,11 +104,11 @@ Internal audit, compliance, investigations and other assurance functions may enc
 
 Three failure patterns are relevant to AI-assisted drafting. They are general patterns in audit and investigations practice. They are not drawn from, and do not describe, any client engagement, examination, or the records of any organization.
 
-**Narrative substitution.** A decision is challenged and the organization cannot produce underlying documentation beyond the drafted narrative. The source material that would have supported the conclusion may not be attached when the narrative is treated as complete without it. In audit or dispute, that absence can become the central issue, and a sound decision must be defended without the evidence that made it sound.
+**Narrative substitution.** A decision is challenged and the organization cannot produce underlying documentation beyond the drafted narrative. The source material that would support the conclusion may not be attached when the narrative is treated as complete without it. In audit or dispute, that absence can become the central issue, and a sound decision must be defended without the evidence that made it sound.
 
-**Patterned compliance.** A file uses the correct terminology and follows the template, while material claims rest primarily on drafted phrasing rather than documented observation. Examined individually each file looks compliant; examined across a population the same construction repeats. At population level this can indicate a broader control weakness requiring examination, since it suggests the control environment produced the appearance of documentation rather than the substance.
+**Patterned compliance.** A file uses the correct terminology and follows the template, while material claims rest primarily on drafted phrasing rather than documented observation. Examined individually each file looks compliant; examined across a population the same construction repeats. At the population level, this can indicate a broader control weakness requiring examination because the control environment may be producing the appearance of documentation rather than its substance.
 
-**No second-line review.** A record moves from a manager's draft into the system of record without independent review. Nothing shows that a second person tested the basis before it became official. Under examination the absence of a documented review step can weaken confidence in the wider process rather than in that single decision.
+**No second-line review.** A record moves from a manager's draft into the system of record without independent review. Nothing shows that a second person tested the basis before it became official. Under examination, the absence of a documented review step can weaken confidence in the wider process rather than only in that decision.
 
 In audit terms the review functions as a record-level control test with defined review criteria. A file that fails it is not necessarily a wrong decision, but it is an exposure that can be remediated inside the workflow rather than after the record is challenged. That makes documentation quality usable as a control.
 
@@ -116,7 +116,7 @@ In audit terms the review functions as a record-level control test with defined 
 
 Four controls, applied before a record enters the system of record:
 
-1. **Anchor every material claim to independently verifiable source evidence.** A material claim contributes directly to the stated basis for the decision. The evidence must exist independently of the draft, such as logs, communications and measurable data.
+1. **Anchor every material claim to independently verifiable source evidence.** A material claim contributes directly to the stated basis for the decision. The supporting evidence must exist independently of the draft, such as logs, communications or measurable data.
 2. **Treat AI output as unverified draft material** until independently substantiated.
 3. **Replace subjective characterization with observable evidence.** A subjective characterization states a conclusion in place of the observable fact behind it: "displayed a poor attitude" rather than "arrived after the shift start on 14, 19 and 27 March". Repeated subjective characterizations can warrant further review for potential bias or discrimination risk when a population of files is examined side by side.
 4. **Keep drafting inside approved, auditable systems.** The governance concern is not AI use itself, but AI use that cannot be identified, reviewed or reconstructed.
@@ -127,8 +127,8 @@ Three indicators can make the control measurable across a sample-and-remediation
 
 Three practical questions come up whenever this is proposed as an ongoing control.
 
-**Where does it sit in three lines of defense?** The review is most efficient when applied
-before a record is finalized, so its preventive value sits at the first line as a drafter
+**Where does it sit in three lines of defense?** The review is most useful when applied
+before a record is finalized. Its preventive value sits at the first line as a drafter
 self-check and at the second line as a sampling control by compliance or risk.
 
 That is not an argument that internal audit has no role. The third line can provide
@@ -167,7 +167,7 @@ It demonstrates that an association of this size can be observed at practitioner
 
 It does not establish that the review improves outcomes, reduces litigation risk or increases decision quality, none of which was tested. Twenty cases reviewed by one practitioner, selected from published sources rather than sampled at random, constitute a field pilot. Published adjudications are not a random sample, since a matter reaches adjudication because something was contested.
 
-A larger study should broaden the corpus without regard to how matters resolved, put two reviewers on each case with the classification and outcome recorded separately, fix the treatment of unresolved contests in advance, and where feasible obtain the underlying record independently of the decision.
+A larger study should broaden the corpus without regard to how matters resolved, assign two reviewers to each case with classification and outcome recorded separately, fix the treatment of unresolved contests in advance, and, where feasible, obtain the underlying record independently of the decision.
 
 Generative AI changes how records may be produced, but it does not change the underlying examination question: can the record account for the decision it documents?
 
@@ -179,7 +179,7 @@ Generative AI changes how records may be produced, but it does not change the un
 
 **Exclusions**
 
-**2.** Twenty-two matters were screened and two are excluded. The first is a New York Committee on Open Government advisory opinion on a public-records request for disciplinary records: its subject is employment records but its forum and legal question are public records, so it belongs to the companion corpus. The second describes a capability dismissal but identifies no party, forum, date or case number, so it cannot be cited. Both exclusions were applied before the analysis, and both are named in appendix A so the screened set can be reconstructed. Including them produces p = 0.0073 with an odds ratio of 19.25, reported only as a sensitivity analysis because they do not meet the stated inclusion criteria.
+**2.** Twenty-two matters were screened and two are excluded. The first is a New York Committee on Open Government advisory opinion on a public-records request for disciplinary records: its subject is employment records but its forum and legal question are public records, so it belongs to the companion corpus. The second describes a capability dismissal but identifies no party, forum, date or case number, so it cannot be cited. Both exclusions were applied before the analysis, and both are named in appendix A so the screened set can be reconstructed. Including them produces p = 0.0073 with an odds ratio of 19.25. Because they do not meet the stated inclusion criteria, this result is reported only as a sensitivity analysis.
 
 **Protocol and classification**
 

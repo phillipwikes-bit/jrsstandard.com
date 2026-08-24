@@ -179,11 +179,16 @@ check("Wilson intervals in endnote 5",
       "40.9 to 92.9" in ms and "4.7 to 44.8" in ms
       and abs(f1[0] - 40.9) < .05 and abs(c1[1] - 44.8) < .05,
       "recomputed %.1f-%.1f and %.1f-%.1f" % (f1[0], f1[1], c1[0], c1[1]))
+# Wording updated by the Version 9 pass, which split both sentences in two.
+# The requirement is unchanged: the 22-case figure must be framed ONLY as a
+# sensitivity analysis, in the body and in endnote 2, with no argumentative
+# gloss on why the exclusions were made.
 check("the 22-case figure is reported only as a sensitivity analysis",
-      "are therefore treated only as a sensitivity analysis" in ms
-      and "reported only as a sensitivity analysis" in ms
+      ms.count("this result is reported only as a sensitivity analysis") == 2
+      and "Because those matters do not meet the stated inclusion criteria" in ms
+      and "Because they do not meet the stated inclusion criteria" in ms
       and "so the exclusions are conservative" not in ms,
-      "no argumentative framing of the exclusions")
+      "framed as sensitivity in both the body and endnote 2, no argumentative framing")
 check("both exclusions are named in the appendix",
       ms.count("**EXCLUDED FROM THE ANALYSIS.**") == EXCLUDED)
 logs = []
