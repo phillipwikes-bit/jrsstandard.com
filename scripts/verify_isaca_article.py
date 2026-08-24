@@ -182,7 +182,7 @@ check("the 22-case figure is reported only as a sensitivity analysis",
 check("both exclusions are named in the appendix",
       ms.count("**EXCLUDED FROM THE ANALYSIS.**") == EXCLUDED)
 logs = []
-for rows in (hr, foil):
+for rows in (primary, foil):
     x = sum(1 for r in rows if r["jrs_read"] in FLAG and r["outcome"] in ADVERSE) + .5
     y = sum(1 for r in rows if r["jrs_read"] in FLAG and r["outcome"] not in ADVERSE) + .5
     z = sum(1 for r in rows if r["jrs_read"] == "ready" and r["outcome"] in ADVERSE) + .5
@@ -192,9 +192,9 @@ W = sum(w for _, w in logs)
 L = sum(w * l for l, w in logs) / W
 Q = sum(w * (l - L) ** 2 for l, w in logs)
 pq = 2 * (1 - .5 * (1 + erf(sqrt(Q) / sqrt(2))))
-check("Woolf Q = 2.550, p = 0.110 in endnote 2",
-      "Q = 2.550" in ms and "p = 0.110" in ms
-      and abs(Q - 2.550) < 1e-3 and abs(pq - .110) < 1e-3,
+check("Woolf Q = 1.949, p = 0.163 in endnote 2",
+      "Q = 1.949" in ms and "p = 0.163" in ms
+      and abs(Q - 1.949) < 1e-3 and abs(pq - .163) < 1e-3,
       "recomputed Q=%.3f p=%.3f" % (Q, pq))
 check("companion corpus stated as 32", len(foil) == 32
       and "32 public-records determinations" in ms)
@@ -279,7 +279,7 @@ check("the out-of-domain entry is excluded and said to be",
 check("the entry lacking a locator is described, not excluded",
       "The tribunal case number is not on file" in ms)
 check("exclusions recorded in an endnote a reader can reconstruct from",
-      "**2.** Twenty-two matters were screened into the study database" in ms
+      "**2.** Twenty-two matters were screened and two are excluded" in ms
       and "both matters are named in appendix A" in ms)
 check("appendix states which entries are outside the analysis",
       _appx.count("**EXCLUDED FROM THE ANALYSIS.**") == 2)
