@@ -1,0 +1,42 @@
+# FILES THAT MUST NEVER REACH THE PUBLIC ORIGIN.
+#
+# Vercel serves anything in the deployment as a static asset. On 2026-08-25 a
+# live probe confirmed four internal documents were fetchable at the domain
+# root, one of which (CLAUDE.md, 19.9 KB) published the opaque slug of the
+# private owner page. That slug is the ONLY access control on the page that
+# carries the commercial inbox, with names and email addresses on it.
+#
+# Excluding them here stops them being uploaded at all, which is stronger than
+# a redirect: a file that was never deployed cannot be served, cached, indexed,
+# or recovered from a stale edge node.
+#
+# vercel.json also carries a 404 redirect for /*.md as defence in depth, so a
+# markdown file added later is blocked even if this list is not updated.
+
+# ---- internal documentation and working notes -------------------------------
+*.md
+!404.md
+
+# ---- research corpus, never deployed by design ------------------------------
+research/
+
+# ---- build, audit and one-shot maintenance scripts ---------------------------
+# Not served by Vercel as functions, but they are static files under the
+# deployment root and would otherwise be fetchable, and several name internal
+# table structures, opaque endpoint slugs and study codes.
+scripts/
+
+# ---- generated documents ----------------------------------------------------
+*.docx
+
+# ---- data extracts ----------------------------------------------------------
+*.csv
+supabase-ALL.sql
+
+# ---- templates --------------------------------------------------------------
+templates/
+
+# ---- local tooling ----------------------------------------------------------
+.claude/
+__pycache__/
+*.pyc

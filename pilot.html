@@ -256,6 +256,18 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
   .core-q-q{font-size:22px}
   .core-q{padding:24px 18px}
 }
+
+.dual-track{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin:26px 0}
+.dt-card{border:1px solid var(--rule);background:var(--surface);padding:20px 22px}
+.dt-enterprise{border-left:2px solid var(--accent)}
+.dt-public{border-left:2px solid var(--ready-text)}
+.dt-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:8px}
+.dt-public .dt-tag{color:var(--ready-text)}
+.dt-head{font-family:'Bodoni Moda',serif;font-size:20px;color:var(--text);margin-bottom:9px;line-height:1.25}
+.dt-body{font-family:'Inter',sans-serif;font-size:14px;line-height:1.65;color:var(--muted);margin:0 0 12px}
+.dt-links{display:flex;flex-wrap:wrap;gap:14px}
+.dt-links a{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-dim);padding-bottom:2px}
+.dt-links a:hover{color:var(--text)}
 </style>
 </head>
 <body>
@@ -308,6 +320,25 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
   <div class="page-eyebrow" style="padding-top:46px;">Operational Validation &nbsp;&middot;&nbsp; Live Research Program</div>
   <h1 class="page-title">When a Consequential Decision Is Questioned Long After It Is Made, the Record Becomes the Only Witness.</h1>
   <p class="page-subtitle" style="margin-bottom:6px;">Most workplace records tell us what was decided. Far fewer allow a future reviewer to reconstruct why the decision was made from the record alone. That gap is decision reconstruction risk. JRS is evaluating whether pre-finalization review can surface those gaps before records are finalized, when decision defensibility can still be improved.</p>
+
+<!-- JRS DUAL TRACK v1 :: CANONICAL BLOCK. Byte-identical on every page that
+     carries it. Edit once, propagate with scripts/apply_dual_track.py. -->
+<div class="dual-track">
+ <div class="dt-card dt-enterprise">
+  <div class="dt-tag">Track 1 &middot; Enterprise</div>
+  <div class="dt-head">License the review engine</div>
+  <p class="dt-body">A stateless pre-finalization decision gate for GRC platforms, legal-tech vendors and enterprise risk functions. One record in, a structured determination across the five conditions out, with a request identifier for audit correlation on your side. <b>No record text is retained.</b> Per-partner tokens, fail-closed, versioned route.</p>
+  <div class="dt-links"><a href="review-engine.html">Integration schema</a> <a href="enterprise.html#enterprise-inquiry">Request evaluation access</a></div>
+ </div>
+ <div class="dt-card dt-public">
+  <div class="dt-tag">Track 2 &middot; Free and open</div>
+  <div class="dt-head">Guides, training and simulations</div>
+  <p class="dt-body">Investigator field guides, the six-module self-paced training, and live Decision Reconstruction Risk simulations. <b>Free, ungated, and staying that way.</b> No account, no card, no expiry.</p>
+  <div class="dt-links"><a href="investigator-guides.html">Field guides</a> <a href="training.html">Training</a> <a href="check.html">Seven-point check</a></div>
+ </div>
+</div>
+<!-- /JRS DUAL TRACK v1 -->
+
   <a id="finding-hero" href="#findings-block" onclick="var b=document.getElementById('findings-block');if(b)b.scrollIntoView({behavior:'smooth'});return false;" style="display:none;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(190,148,71,.5);background:rgba(190,148,71,.07);padding:10px 15px;margin:18px 0 0;text-decoration:none;"></a>
 
   <div class="hero-status">

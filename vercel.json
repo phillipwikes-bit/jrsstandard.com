@@ -305,6 +305,26 @@
       "source": "/coauthor",
       "destination": "/coauthor.html",
       "permanent": false
+    },
+    {
+      "source": "/:path*.md",
+      "destination": "/404.html",
+      "permanent": false
+    },
+    {
+      "source": "/:path*.docx",
+      "destination": "/404.html",
+      "permanent": false
+    },
+    {
+      "source": "/scripts/:path*",
+      "destination": "/404.html",
+      "permanent": false
+    },
+    {
+      "source": "/research/:path*",
+      "destination": "/404.html",
+      "permanent": false
     }
   ],
   "headers": [

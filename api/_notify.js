@@ -36,6 +36,35 @@
 // REST endpoint, which matches this repository's no-dependency convention and
 // keeps the function edge-compatible.
 
+// ============================================================================
+// EMAIL ALERTS ARE DISABLED. OWNER DIRECTIVE, 2026-08-25.
+//
+// "The owner relies exclusively on the dashboard for leads. Do NOT configure or
+// send email alerts."
+//
+// The switch is HERE, at the single point every caller passes through, rather
+// than by unwiring api/checkout.js and api/enterprise-inquiry.js. Two reasons.
+//
+// 1. Unwiring the callers would leave the capture paths edited for a reason
+//    unrelated to capture, and the next person to read them would have no idea
+//    an alert was ever intended. The wiring documents the decision; the flag
+//    enforces it.
+// 2. A kill switch at one point cannot be partially applied. Removing calls one
+//    file at a time can be, and a half-removed alert path is how a directive
+//    gets silently violated by the endpoint nobody remembered.
+//
+// notify() now returns before reading any key, so setting RESEND_API_KEY or
+// SENDGRID_API_KEY in the environment does NOT re-enable sending. Turning
+// alerts back on is a deliberate code change to this constant, which is a
+// visible act in a diff.
+//
+// NOTHING ELSE CHANGES. Leads still write to pilot_contacts, the visitor still
+// sees success, and the Commercial Inbox on the private status page still shows
+// every row. The alert was always the secondary path; the row was always the
+// durable one.
+// ============================================================================
+const ALERTS_ENABLED = false;
+
 const DEFAULT_TO = 'info@jrsstandard.com';
 const DEFAULT_FROM = 'alerts@jrsstandard.com';
 
@@ -160,6 +189,12 @@ async function sendViaSendGrid(key, to, from, subject, body, replyTo) {
  * @param {string} [replyTo]                  the prospect's own address
  */
 export async function notify(subject, body, replyTo) {
+  // Hard stop, before any key is read. See ALERTS_ENABLED above.
+  if (!ALERTS_ENABLED) {
+    return { sent: false, provider: 'disabled',
+             detail: 'alerts_disabled_by_owner_directive' };
+  }
+
   const E = env();
   const to = E.NOTIFY_TO || DEFAULT_TO;
   const from = E.NOTIFY_FROM || DEFAULT_FROM;
@@ -195,6 +230,16 @@ export async function notify(subject, body, replyTo) {
  * assuming they are because the code exists.
  */
 export function notifyConfigured() {
+  // False whenever alerts are disabled, regardless of environment. A status
+  // surface must report what the system will actually DO, not what it could do
+  // if a flag were flipped.
+  if (!ALERTS_ENABLED) return false;
   const E = env();
   return !!(E.RESEND_API_KEY || E.SENDGRID_API_KEY);
+}
+
+// Exported so a guard or a status endpoint can assert the directive is still in
+// force without parsing this file.
+export function alertsEnabled() {
+  return ALERTS_ENABLED;
 }
