@@ -1613,6 +1613,30 @@ def check_dual_track_band(offline):
           else "missing: %s; duplicated: %s; distinct texts: %d"
                % (", ".join(missing) or "none", ", ".join(many) or "none", len(texts)))
 
+    # PLACEMENT, not just presence. Measured against visible text with script and
+    # style stripped, because a band buried below the fold is a band nobody sees.
+    buried = []
+    for p in DUAL_TRACK_PAGES:
+        try:
+            body = read(p)
+        except Exception:
+            continue
+        if "<body" not in body:
+            continue
+        vis = body[body.index("<body"):]
+        vis = re.sub(r"<script.*?</script>|<style.*?</style>", " ", vis, flags=re.S)
+        vis = re.sub(r"<[^>]+>", " ", vis)
+        vis = re.sub(r"\s+", " ", vis)
+        i = vis.find("The Enterprise Platform Track")
+        if i < 0:
+            buried.append("%s (absent)" % p)
+        elif len(vis) and (100.0 * i / len(vis)) > 12.0:
+            buried.append("%s (%.1f%% down)" % (p, 100.0 * i / len(vis)))
+    check("dual-track band sits near the top of each page", not buried,
+          "; ".join(buried) if buried
+          else "all %d pages place it within the first 12%% of visible text"
+               % len(DUAL_TRACK_PAGES))
+
     # Track 2 is a promise, not decoration. If the band ever stops saying the
     # public material is free, that is a reversal of a locked decision.
     if texts:
