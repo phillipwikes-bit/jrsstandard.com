@@ -51,7 +51,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 
 /* NAV */
 .primary-nav{border-bottom:1px solid var(--rule);background:var(--bg);position:sticky;top:0;z-index:100}
-.primary-nav-inner{max-width:1060px;margin:0 auto;padding:0 28px;display:flex;align-items:stretch;gap:0;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.primary-nav-inner{max-width:1060px;margin:0 auto;padding:0 28px;display:flex;flex-wrap:wrap;align-items:stretch;gap:0;overflow-x:visible;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .primary-nav-inner::-webkit-scrollbar{display:none}
 .nav-item{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);padding:12px 16px;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:.1s;background:none;border-top:none;border-left:none;border-right:none}
 .nav-item:hover{color:var(--text)}
@@ -878,6 +878,41 @@ a.gumroad-button.util-link {
 .cap-f button[disabled]{opacity:.55;cursor:default}
 .cap-m{font-family:'Inter',sans-serif;font-size:14px;min-height:1.3em;margin-top:12px}
 @media (max-width:640px){.cap{padding:18px 16px}.cap-f input,.cap-f select,.cap-f textarea{max-width:100%}}
+
+.hero{padding:40px 0 8px;max-width:820px}
+.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.hero-h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:40px;line-height:1.18;color:var(--text);margin:0 0 16px;letter-spacing:-.01em}
+.hero-sub{font-family:'Inter',sans-serif;font-size:17px;line-height:1.6;color:var(--muted);margin:0;max-width:660px}
+@media (max-width:900px){.hero-h1{font-size:31px}.hero-sub{font-size:16px}.hero{padding:28px 0 4px}}
+@media (max-width:640px){.hero-h1{font-size:26px}.hero-sub{font-size:15px}.hero{padding:20px 0 4px}}
+
+/* HOMEPAGE LAYOUT REPAIRS, 2026-08-25. Measured in a browser, not in source.
+   4. The tablet range carried 346px of horizontal overflow because the earlier
+      mobile pack set overflow-x only below 640px. The nav row was the cause, so
+      it wraps instead of extending past the viewport.
+   5. The content column was 580px inside a 1440px viewport, so 60 percent of a
+      desktop screen was empty and the page read as a phone layout stretched
+      onto a monitor.
+   6. On phone the hamburger and its own contents rendered at the same time.
+   7. Nav links were 21px tall; the earlier 44px rule covered buttons only. */
+@media (max-width:1024px){
+  html,body{overflow-x:hidden;max-width:100%}
+  .primary-nav-inner{flex-wrap:wrap;overflow-x:visible}
+  .nav-item{flex:0 0 auto}
+}
+@media (min-width:1200px){
+  .container{max-width:1060px}
+  .hero{max-width:960px}
+  .hero-sub{max-width:760px}
+}
+.nav-item{min-height:44px;display:inline-flex;align-items:center}
+.dt-links a,.track-links a{display:inline-block;padding:11px 0;min-height:44px;line-height:22px}
+@media (max-width:900px){
+  .primary-nav-inner{display:none}
+  .primary-nav-inner.nav-open{display:flex;flex-direction:column}
+  .primary-nav-mobile-bar{display:flex}
+  .nav-item{width:100%;justify-content:flex-start}
+}
 </style>
 </head>
 <body>
@@ -890,13 +925,6 @@ a.gumroad-button.util-link {
  </div>
 </header>
 
-<div class="cross-site-nav">
- <div class="cross-site-nav-inner">
-  <a href="index.html" class="csn-link csn-active">Home</a>
-  <a href="pilot.html" class="csn-link">Pilot Program</a>
-  <a href="training.html" class="csn-link">Simulations</a>
- </div>
-</div>
 
 <nav class="primary-nav" aria-label="Site navigation">
  
@@ -912,35 +940,48 @@ a.gumroad-button.util-link {
  <button class="nav-item" onclick="showSection('scenarios')">Documentation Failures</button>
  <button class="nav-item" onclick="showSection('tools')">Free Resources</button>
  <button class="nav-item kit-item" onclick="showSection('kit')">Deployment Kit &#8599;</button>
- <a href="simulations.html" class="nav-item" style="text-decoration:none;">Simulations &#8599;</a>
- <a href="training.html" class="nav-item" style="text-decoration:none;">Reviewer Calibration &#8599;</a>
+  <a href="training.html" class="nav-item" style="text-decoration:none;">Reviewer Calibration &#8599;</a>
  <a href="research.html" class="nav-item" style="text-decoration:none;color:var(--accent);">Research &amp; Validation &#8599;</a>
  <button class="nav-item" onclick="showSection('guidance')">Implementation</button>
  <a href="enterprise.html" class="nav-item" style="text-decoration:none;">Enterprise &#8599;</a>
- <a href="workflow-fit.html" class="nav-item" style="text-decoration:none;">Workflow Fit &#8599;</a>
- <a href="implementation-scenarios.html" class="nav-item" style="text-decoration:none;">Implementation &#8599;</a>
+  <a href="implementation-scenarios.html" class="nav-item" style="text-decoration:none;">Scenarios &#8599;</a>
  <button class="nav-item" onclick="showSection('about')">About</button>
  </div>
 </nav>
 
-<div class="util-bar">
- <div class="util-bar-inner">
-  <span class="util-label">Free Resources</span>
-  <a href="/api/dl?e=standard&amp;src=index" class="util-link accent-link">Review Controls PDF</a>
-  <a href="/api/dl?e=card&amp;src=index" class="util-link">Rapid Review Card</a>
-  <a href="investigator-guides.html" class="util-link">Investigator Field Guide</a>
-  <a href="simulations.html" class="util-link">Simulation Library</a>
-  <a href="training.html" class="util-link">Participation Environment</a>
-  <a href="pilot.html" class="util-link accent-link">Pilot Program</a>
- </div>
-</div>
 
 <div id="section-home" class="page-section active" role="main">
 
 <div class="container">
+<div class="hero">
+ <div class="hero-eyebrow">Decision Reconstruction Risk (DRR) &middot; Pre-finalization review</div>
+ <h1 class="hero-h1">Can this record still explain the decision it documents?</h1>
+ <p class="hero-sub">A record that cannot answer that question will not answer it later either, when the people who wrote it are gone and the file is all that remains.</p>
+</div>
+
+<!-- JRS DUAL TRACK v1 :: CANONICAL BLOCK. Byte-identical on every page that
+     carries it. Customer-facing voice only: no pricing, no internal capacity,
+     no claim that any security assessment is avoided. -->
+<div class="dual-track">
+ <div class="dt-card dt-enterprise">
+  <div class="dt-tag">Track 1 &middot; Enterprise Platform</div>
+  <div class="dt-head">The Enterprise Platform Track</div>
+  <p class="dt-body">Dedicated B2B API licensing of the JRS review engine, so mid-market GRC platforms and legal-tech providers can embed a <b>pre-finalization decision gate</b> directly into their own workflows. One record in, a structured determination across the five review conditions out, returned with a request identifier your audit trail can cite.</p>
+  <p class="dt-body"><b>Stateless, with zero data retention at rest.</b> Record text is assessed in memory and discarded. It is not written to any table, not echoed back, and not logged. Per-partner tokens, revocable independently, on a versioned route. This narrows what a vendor security review has to examine; <b>it does not remove the review</b>, and it is not a substitute for any certification your procurement requires.</p>
+  <div class="dt-links"><a href="review-engine.html">Integration schema</a> <a href="enterprise.html#enterprise-inquiry">Enterprise inquiry</a></div>
+ </div>
+ <div class="dt-card dt-public">
+  <div class="dt-tag">Track 2 &middot; Practitioner</div>
+  <div class="dt-head">The Practitioner Track</div>
+  <p class="dt-body">Open, unencumbered access for individual investigators, HR and compliance officers, and researchers: the core standard, live Decision Reconstruction Risk simulations, the six-module self-paced training, and the investigator field guides.</p>
+  <p class="dt-body"><b>Free, ungated, and staying that way.</b> No account, no card, no expiry, no registration wall.</p>
+  <div class="dt-links"><a href="investigator-guides.html">Field guides</a> <a href="training.html">Training</a> <a href="check.html">Seven-point check</a></div>
+ </div>
+</div>
+<!-- /JRS DUAL TRACK v1 -->
+
 
 <div style="margin-top:36px;margin-bottom:32px;">
- <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">Decision Reconstruction Risk (DRR) &nbsp;&middot;&nbsp; Pre-Finalization Review</div>
  <p style="font-size:15px;color:var(--muted);line-height:1.65;max-width:580px;margin-bottom:16px;">When a consequential decision is questioned long after it is made, the record becomes the only witness. JRS is a pre-finalization review standard that evaluates whether a record can still explain why a decision was made, for HR, employee relations, legal review, workplace investigations, compliance, audit, and AI governance. <a href="decision-reconstruction-risk.html" style="color:var(--accent);">What is Decision Reconstruction Risk? &#8594;</a></p>
  <a href="research.html" style="display:block;max-width:580px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:18px 20px;text-decoration:none;font-weight:700;text-align:center;line-height:1.5;margin-bottom:12px;">&#9654; See the Research &amp; Validation<br><span style="font-size:8.5px;letter-spacing:.1em;font-weight:500;">Reproducibility &middot; reliability &middot; findings</span></a>
  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:580px;margin-bottom:20px;">
@@ -969,27 +1010,6 @@ a.gumroad-button.util-link {
  </div>
 </div>
 <div style="font-size:12.5px;color:var(--muted-soft);line-height:1.65;max-width:620px;margin-bottom:24px;">JRS originated from civil rights investigative and documentation-review experience, with a cognitive-behavioral and AI-governance lens. <a href="about.html" style="color:var(--accent);">Origin &amp; approach &#8594;</a></div>
-
-<!-- JRS DUAL TRACK v1 :: CANONICAL BLOCK. Byte-identical on every page that
-     carries it. Customer-facing voice only: no pricing, no internal capacity,
-     no claim that any security assessment is avoided. -->
-<div class="dual-track">
- <div class="dt-card dt-enterprise">
-  <div class="dt-tag">Track 1 &middot; Enterprise Platform</div>
-  <div class="dt-head">The Enterprise Platform Track</div>
-  <p class="dt-body">Dedicated B2B API licensing of the JRS review engine, so mid-market GRC platforms and legal-tech providers can embed a <b>pre-finalization decision gate</b> directly into their own workflows. One record in, a structured determination across the five review conditions out, returned with a request identifier your audit trail can cite.</p>
-  <p class="dt-body"><b>Stateless, with zero data retention at rest.</b> Record text is assessed in memory and discarded. It is not written to any table, not echoed back, and not logged. Per-partner tokens, revocable independently, on a versioned route. This narrows what a vendor security review has to examine; <b>it does not remove the review</b>, and it is not a substitute for any certification your procurement requires.</p>
-  <div class="dt-links"><a href="review-engine.html">Integration schema</a> <a href="enterprise.html#enterprise-inquiry">Enterprise inquiry</a></div>
- </div>
- <div class="dt-card dt-public">
-  <div class="dt-tag">Track 2 &middot; Practitioner</div>
-  <div class="dt-head">The Practitioner Track</div>
-  <p class="dt-body">Open, unencumbered access for individual investigators, HR and compliance officers, and researchers: the core standard, live Decision Reconstruction Risk simulations, the six-module self-paced training, and the investigator field guides.</p>
-  <p class="dt-body"><b>Free, ungated, and staying that way.</b> No account, no card, no expiry, no registration wall.</p>
-  <div class="dt-links"><a href="investigator-guides.html">Field guides</a> <a href="training.html">Training</a> <a href="check.html">Seven-point check</a></div>
- </div>
-</div>
-<!-- /JRS DUAL TRACK v1 -->
 
 <section class="cap" id="enterprise-capture" aria-labelledby="cap-h">
  <h2 class="cap-h" id="cap-h">Licensing or evaluation inquiry</h2>
@@ -1492,7 +1512,7 @@ function calcSCS(){
 
 <div style="margin-bottom:44px;">
  <div class="page-eyebrow" style="padding-top:0;margin-bottom:10px;color:var(--accent);">Core Concept</div>
- <h2 class="section-head" style="margin-bottom:10px;">Decision Reconstruction Risk (DRR)</h2>
+<h2 class="section-head" style="margin-bottom:10px;">Decision Reconstruction Risk (DRR)</h2>
  <div style="border:1px solid var(--accent-dim);background:linear-gradient(180deg,rgba(190,148,71,.08),rgba(190,148,71,.02));padding:18px 20px;margin-bottom:14px;">
   <div style="font-family:'Bodoni Moda',serif;font-size:18px;line-height:1.5;color:var(--text);">The condition in which a record cannot explain, on its own terms, why a consequential decision was made.</div>
  </div>
@@ -2288,7 +2308,7 @@ function calcSCS(){
 <div class="container">
 
 <div class="page-eyebrow">Operational Reference</div>
-<h1 class="page-title">Documentation Conditions That Affect Later Review</h1>
+<h2 class="page-title">Documentation Conditions That Affect Later Review</h2>
 <p class="page-subtitle">Records are often reviewed long after the people who created them are unavailable. The following conditions describe how organizational documentation commonly becomes harder to interpret over time. Not through misconduct, but through the ordinary administrative realities of how records are created, maintained, and eventually examined.</p>
 
 <div class="callout" style="margin-bottom:32px;">
