@@ -421,14 +421,25 @@ if leaked:
     w("**LEAK:** " + ", ".join("`%s`" % x for x in leaked))
     w()
 missing_pub = []
+self_noindex = []
 for p in html:
     if p in PRIVATE_SLUGS or p == "404.html":
         continue
     if os.path.basename(p) not in sm and not p.startswith("reference" + os.sep):
         if p == "index.html" and "<loc>https://www.jrsstandard.com/</loc>" in sm:
             continue
+        # A page carrying its own noindex is not a sitemap gap, it is a page that
+        # asked not to be indexed. Nineteen of these are keyed participant or
+        # blind-study surfaces; listing them as gaps would bury the real one.
+        if 'content="noindex' in read(p):
+            self_noindex.append(p)
+            continue
         missing_pub.append(p)
 w("**Public pages absent from `sitemap.xml`:** %d" % len(missing_pub))
+w()
+w("**Pages carrying their own `noindex` and correctly absent:** %d. These are keyed "
+  "participant surfaces, blind-study arms and owner tools. Indexing any of them would "
+  "be a defect, not a fix." % len(self_noindex))
 w()
 if missing_pub:
     for p in missing_pub:
@@ -677,6 +688,7 @@ summary.append("  sitemap distinct URLs      %d" % len(set(locs)))
 summary.append("  sitemap duplicates         %d" % len(dupes))
 summary.append("  private surfaces leaked    %d" % len(leaked))
 summary.append("  public pages not indexed   %d" % len(missing_pub))
+summary.append("  self-noindex (correct)     %d" % len(self_noindex))
 if not OFFLINE:
     summary.append("  internal docs fetchable    %d" % len(exposed))
 summary.append("")
@@ -697,7 +709,12 @@ if live_leads:
 else:
     summary.append("  identified leads           not probed")
 summary.append("  capture form on drop-off   %s" % ("YES" if "captureLead" in ck else "NO"))
-summary.append("  email alerts                %s" % "code wired, provider key NOT SET")
+_nt = read("api/_notify.js")
+_off = "const ALERTS_ENABLED = false" in _nt
+summary.append("  email alerts               %s"
+               % ("DISABLED by owner directive (ALERTS_ENABLED=false)" if _off
+                  else "ENABLED, provider key %s"
+                       % ("set" if False else "state unknown")))
 summary.append("")
 summary.append("GUARDS")
 summary.append("  check_zero_drift           %s" % guard_result())

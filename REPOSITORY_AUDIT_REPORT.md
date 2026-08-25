@@ -47,20 +47,20 @@ Every figure below is measured from the filesystem or from a live HTTP probe at 
 | `decision-reconstruction-risk.html` | 16.5 KB | Decision Reconstruction Risk (DRR): Definition | JRS&#8482; |
 | `engagement.html` | 28.2 KB | How an engagement works | JRS&#8482; |
 | `engine-activity.html` | 13.5 KB | Review Engine Activity | JRS |
-| `enterprise.html` | 77.2 KB | Decision Defensibility at Enterprise Scale | JRS™ Justification Review |
+| `enterprise.html` | 79.6 KB | Decision Defensibility at Enterprise Scale | JRS™ Justification Review |
 | `evidence-ledger.html` | 13.2 KB | Public Evidence Ledger | JRS™ Justification Review Standard |
 | `finding.html` | 21.7 KB | Finding &amp; Discussion | JRS™ Justification Review Standard |
 | `governance-request.html` | 19.4 KB | AI Governance Documentation Review | JRS&#8482; |
 | `honor.html` | 16.4 KB | Global Governance and Transparency Honor &middot; JRS |
 | `implementation-scenarios.html` | 41.1 KB | Decision Defensibility Scenarios | JRS™ Justification Review Standard |
-| `index.html` | 610.4 KB | JRS™ Justification Review Standard | Safeguarding the Defensibility of |
+| `index.html` | 612.8 KB | JRS™ Justification Review Standard | Safeguarding the Defensibility of |
 | `investigator-guides.html` | 22.2 KB | Investigator Field Guides | JRS&#8482; Justification Review Standard |
 | `jrsstandard.html` | 492.8 KB | JRS Decision Defensibility Methodology | JRS™ Justification Review Sta |
 | `methodology.html` | 13.8 KB | Methodology Archive | JRS™ Justification Review Standard |
 | `operational-boundaries.html` | 35.2 KB | Operational Boundaries | JRS™ Justification Review Standard |
 | `org-pilot.html` | 26.3 KB | Run JRS on your own records &middot; JRS |
 | `people.html` | 5.7 KB | Not found &middot; JRS |
-| `pilot.html` | 78.9 KB | Pilot Program | Decision Defensibility | JRS™ Justification Review Sta |
+| `pilot.html` | 81.3 KB | Pilot Program | Decision Defensibility | JRS™ Justification Review Sta |
 | `privacy.html` | 24.3 KB | Privacy Policy | JRS™ Justification Review Standard |
 | `programme-status-9872fb93cc94.html` | 132.3 KB | Programme Status | JRS |
 | `questions.html` | 13.9 KB | Questions Under Investigation | JRS™ Justification Review Standard |
@@ -85,7 +85,7 @@ Every figure below is measured from the filesystem or from a live HTTP probe at 
 | `research-data.html` | 40.9 KB | Research Data Room | JRS |
 | `research.html` | 36.8 KB | Research &amp; Validation: Decision Defensibility | JRS™ Justification |
 | `results.html` | 16.0 KB | Decision Reconstruction Challenge: Results | JRS™ Justification Review |
-| `review-engine.html` | 32.1 KB | JRS Review Engine API | Justification Review Standard |
+| `review-engine.html` | 34.5 KB | JRS Review Engine API | Justification Review Standard |
 | `review-status.html` | 12.9 KB | Review Status | JRS |
 | `reviewer/completion.html` | 20.0 KB | Reviewer Certificate | JRS&#8482; Justification Review Standard |
 | `reviewer/evaluation.html` | 25.0 KB | Reviewer Evaluation | JRS&#8482; Justification Review Standard |
@@ -95,7 +95,7 @@ Every figure below is measured from the filesystem or from a live HTTP probe at 
 | `submit-validation.html` | 21.5 KB | Submit a Validated Case | JRS |
 | `supported.html` | 15.0 KB | Thank you for your support &middot; JRS |
 | `terms.html` | 21.9 KB | Terms of engagement | JRS&#8482; |
-| `training.html` | 274.7 KB | JRS Reviewer Training | Decision Defensibility Calibration | JRS™ Just |
+| `training.html` | 277.0 KB | JRS Reviewer Training | Decision Defensibility Calibration | JRS™ Just |
 | `vp-7c1f9a4e8d2b6035.html` | 42.5 KB | JRS: Safeguarding Decision Defensibility · Integration Preview |
 | `why-good-decisions-fail.html` | 18.8 KB | Decision Reconstruction Risk: Why Good Decisions Fail on Paper | JRS&# |
 | `workflow-fit.html` | 33.3 KB | Where Decision Defensibility Review Fits | JRS™ Justification Review S |
@@ -108,7 +108,7 @@ Every figure below is measured from the filesystem or from a live HTTP probe at 
 | `/api/_contributor-roster` | 148 | node/module | SHARED contributor roster. Single source of truth for both api/contributor.js |
 | `/api/_country-backfill` | 97 | node/module | SHARED COUNTRY BACKFILL. Single source of truth for both /api/enroll-stats |
 | `/api/_not-a-click` | 56 | node/module | IS THIS REQUEST A HUMAN CLICK, OR A BROWSER FETCHING THE LINK BY ITSELF? |
-| `/api/_notify` | 201 | node/module | TRANSACTIONAL ALERT SENDER. Shared by every endpoint that captures a lead. |
+| `/api/_notify` | 246 | node/module | TRANSACTIONAL ALERT SENDER. Shared by every endpoint that captures a lead. |
 | `/api/_offer-config` | 144 | node/module | OFFER CONFIGURATION. Single source of truth for price and checkout URL. |
 | `/api/_panel-countries` | 100 | node/module | PANEL COUNTRY RESOLUTION, COMPUTED, NOT TRANSCRIBED. |
 | `/api/_study-status` | 61 | node/module | SHARED STUDY-CLOSURE STATE. Single source of truth for whether the validation |
@@ -352,7 +352,7 @@ PDFs are not linked directly. They are served through the alias map in `api/dl.j
 | `finding.html` | 21.7 KB | Finding &amp; Discussion | JRS™ Justification Review Standar |
 | `honor.html` | 16.4 KB | Global Governance and Transparency Honor &middot; JRS |
 | `org-pilot.html` | 26.3 KB | Run JRS on your own records &middot; JRS |
-| `pilot.html` | 78.9 KB | Pilot Program | Decision Defensibility | JRS™ Justification  |
+| `pilot.html` | 81.3 KB | Pilot Program | Decision Defensibility | JRS™ Justification  |
 | `reference/reviewer-responsibility-boundaries/index.html` | 14.9 KB | Reviewer Liability and Responsibility Boundaries | JRS Docum |
 | `reference/reviewer-worksheet/index.html` | 15.0 KB | Reviewer Worksheet | JRS Documentation Review Reference |
 | `reference/unsupported-generalization/index.html` | 14.8 KB | Unsupported Generalization | JRS Documentation Review Refere |
@@ -366,7 +366,7 @@ PDFs are not linked directly. They are served through the alias map in `api/dl.j
 
 ### 3.1 Enterprise Diagnostic Pilot interface
 
-- `pilot.html`: present, 78.9 KB
+- `pilot.html`: present, 81.3 KB
 - `org-pilot.html`: present, 26.3 KB
 
 `api/org-pilot.js` is the recorder. Verified properties, read from source:
@@ -413,8 +413,8 @@ Live probes:
 
 | Asset | Present | Size |
 |---|---|---|
-| `enterprise.html` | yes | 77.2 KB |
-| `review-engine.html` | yes | 32.1 KB |
+| `enterprise.html` | yes | 79.6 KB |
+| `review-engine.html` | yes | 34.5 KB |
 | `engagement.html` | yes | 28.2 KB |
 | `terms.html` | yes | 21.9 KB |
 | `API_INTEGRATION.md` | **NO** | n/a |
@@ -428,12 +428,12 @@ Live probes:
 
 | Page | Training | Research / pilot | Enterprise | Engine API | Paid offers |
 |---|---|---|---|---|---|
-| `index.html` | yes (8) | yes (16) | yes (5) | **no** | **no** |
-| `enterprise.html` | yes (3) | yes (4) | yes (4) | yes (2) | yes (6) |
-| `training.html` | yes (6) | yes (7) | **no** | **no** | **no** |
-| `pilot.html` | yes (7) | yes (11) | yes (2) | **no** | yes (3) |
+| `index.html` | yes (9) | yes (16) | yes (6) | yes (1) | **no** |
+| `enterprise.html` | yes (4) | yes (4) | yes (5) | yes (3) | yes (6) |
+| `training.html` | yes (7) | yes (7) | yes (1) | yes (1) | **no** |
+| `pilot.html` | yes (8) | yes (11) | yes (3) | yes (1) | yes (3) |
 | `check.html` | **no** | yes (1) | **no** | **no** | **no** |
-| `review-engine.html` | yes (2) | yes (4) | yes (4) | yes (1) | yes (3) |
+| `review-engine.html` | yes (3) | yes (4) | yes (5) | yes (2) | yes (3) |
 
 A blank cell means that track has no link from that page. Balance is judged by whether each track is reachable, not by link count.
 
@@ -441,33 +441,14 @@ A blank cell means that track has no link from that page. Balance is judged by w
 
 | Metric | Value |
 |---|---|
-| `<loc>` entries | 49 |
-| Distinct URLs | 49 |
+| `<loc>` entries | 50 |
+| Distinct URLs | 50 |
 | Duplicated URLs | 0 |
 | Private surfaces leaked into sitemap | 0 |
 
-**Public pages absent from `sitemap.xml`:** 20
+**Public pages absent from `sitemap.xml`:** 0
 
-- `access.html`
-- `ai-records-arm-b.html`
-- `ai-records-pilot.html`
-- `bench-admin.html`
-- `bench-results.html`
-- `bench-review.html`
-- `coauthor.html`
-- `contributor.html`
-- `engine-activity.html`
-- `honor.html`
-- `org-pilot.html`
-- `people.html`
-- `recheck.html`
-- `research-data.html`
-- `review-status.html`
-- `reviewer/completion.html`
-- `reviewer/evaluation.html`
-- `submit-record.html`
-- `submit-validation.html`
-- `supported.html`
+**Pages carrying their own `noindex` and correctly absent:** 19. These are keyed participant surfaces, blind-study arms and owner tools. Indexing any of them would be a defect, not a fix.
 
 ### 5.3 Internal documents exposed at the domain root
 
@@ -486,7 +467,7 @@ Root markdown files are static assets on Vercel and are fetchable unless exclude
 
 | Metric | Value |
 |---|---|
-| Internal link targets checked | 841 |
+| Internal link targets checked | 866 |
 | Unresolved targets | 0 |
 
 ---
@@ -541,13 +522,14 @@ INVENTORY
   DOCX                       131
 
 LINK AND SITEMAP HEALTH
-  internal link targets      841 checked
+  internal link targets      866 checked
   BROKEN LINKS               0
-  sitemap <loc> entries      49
-  sitemap distinct URLs      49
+  sitemap <loc> entries      50
+  sitemap distinct URLs      50
   sitemap duplicates         0
   private surfaces leaked    0
-  public pages not indexed   20
+  public pages not indexed   0
+  self-noindex (correct)     19
   internal docs fetchable    4
 
 OFFER CONFIGURATION
@@ -561,8 +543,8 @@ LEAD CAPTURE
   pay-screen attempts        13
   attempts unable to pay     13
   capture form on drop-off   YES
-  email alerts                code wired, provider key NOT SET
+  email alerts               DISABLED by owner directive (ALERTS_ENABLED=false)
 
 GUARDS
-  check_zero_drift           31 checks, 0 failed
+  check_zero_drift           34 checks, 0 failed
 ```

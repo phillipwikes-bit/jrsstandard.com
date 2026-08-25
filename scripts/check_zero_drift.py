@@ -1524,12 +1524,43 @@ def check_no_secrets_in_source(offline):
           else "%d files scanned, %d patterns each" % (len(set(targets)), len(SECRET_PATTERNS)))
 
 
+def check_alerts_disabled(offline):
+    """Email alerts must stay OFF. Owner directive, 2026-08-25.
+
+    "The owner relies exclusively on the dashboard for leads. Do NOT configure or
+    send email alerts."
+
+    The switch is a single constant in api/_notify.js, checked here rather than
+    trusted, and the guard also asserts the early return actually precedes any
+    key read. A flag that is set but not honoured is worse than no flag.
+    """
+    try:
+        src = read("api/_notify.js")
+    except Exception:
+        check("email alerts are disabled", SKIPPED, "api/_notify.js not present")
+        return
+    flag_off = re.search(r"const\s+ALERTS_ENABLED\s*=\s*false", src) is not None
+    guarded = "if (!ALERTS_ENABLED)" in src
+    # The early return must come before the first environment read inside notify().
+    body = src[src.find("export async function notify("):]
+    body = body[:body.find("export function notifyConfigured")] if "export function notifyConfigured" in body else body
+    ret = body.find("alerts_disabled_by_owner_directive")
+    envread = body.find("RESEND_API_KEY")
+    ordered = ret != -1 and (envread == -1 or ret < envread)
+    check("email alerts are disabled", flag_off and guarded and ordered,
+          "ALERTS_ENABLED=false, guarded, and the return precedes any key read"
+          if (flag_off and guarded and ordered)
+          else "flag=%s guarded=%s ordered=%s" % (flag_off, guarded, ordered))
+
+
 def check_notifications_wired(offline):
-    """Every lead-capture endpoint must actually raise an alert.
+    """Every lead-capture endpoint must store first, then attempt any alert.
 
     A capture endpoint that stores silently is what produced thirteen unnoticed
-    purchase attempts. The order is also checked: notify() must be called AFTER
-    the database write, so a mail outage can never cost a lead.
+    purchase attempts. The wiring is kept even though alerts are disabled: it
+    documents the intent, and the kill switch in api/_notify.js is what enforces
+    the directive. What matters here is ORDER, which stays correct whether alerts
+    are on or off, so a future re-enable cannot introduce a lost lead.
     """
     unwired = []
     for rel in ("api/checkout.js", "api/enterprise-inquiry.js"):
@@ -1549,6 +1580,49 @@ def check_notifications_wired(offline):
     check("lead capture raises an alert, after storing", not unwired,
           "; ".join(unwired) if unwired
           else "checkout and enterprise inquiry both wired to api/_notify.js")
+
+
+DUAL_TRACK_PAGES = ("index.html", "enterprise.html", "training.html",
+                    "review-engine.html", "pilot.html")
+
+
+def check_dual_track_band(offline):
+    """The dual-track band must exist on all five core pages and be identical.
+
+    Five hand-editable copies of the same positioning is the defect the panel
+    binder already taught this repository: they drift, and the drift is invisible
+    because nobody reads five pages side by side. Identical copies also mean the
+    Track 2 promise, that guides and training stay free, cannot quietly weaken on
+    one page while holding on the others.
+    """
+    pat = re.compile(r"<!-- JRS DUAL TRACK v1.*?<!-- /JRS DUAL TRACK v1 -->", re.S)
+    found = {}
+    for p in DUAL_TRACK_PAGES:
+        try:
+            blocks = pat.findall(read(p))
+        except Exception:
+            blocks = []
+        if blocks:
+            found[p] = blocks
+    missing = [p for p in DUAL_TRACK_PAGES if p not in found]
+    many = [p for p, v in found.items() if len(v) != 1]
+    texts = set(b for v in found.values() for b in v)
+    ok = not missing and not many and len(texts) == 1
+    check("dual-track band present and identical on core pages", ok,
+          "%d pages, 1 identical block each" % len(found) if ok
+          else "missing: %s; duplicated: %s; distinct texts: %d"
+               % (", ".join(missing) or "none", ", ".join(many) or "none", len(texts)))
+
+    # Track 2 is a promise, not decoration. If the band ever stops saying the
+    # public material is free, that is a reversal of a locked decision.
+    if texts:
+        body = next(iter(texts))
+        check("dual-track band still promises the free public track",
+              "Free, ungated, and staying that way" in body,
+              "Track 2 language intact" )
+    else:
+        check("dual-track band still promises the free public track", False,
+              "no band found")
 
 
 def main():
@@ -1575,6 +1649,8 @@ def main():
                check_sitemap_keeps_free_material,
                check_no_secrets_in_source,
                check_notifications_wired,
+               check_alerts_disabled,
+               check_dual_track_band,
                check_generated_docs_current, check_cross_endpoint):
         try:
             fn(offline)

@@ -178,6 +178,18 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 .ei-i{display:block;width:100%;max-width:520px;margin-top:6px;padding:10px;background:var(--surface);color:var(--text);border:1px solid var(--rule);font-size:15px;font-family:'Inter',sans-serif}
 #ei-b{margin-top:18px}
 #ei-b[disabled]{opacity:.55;cursor:default}
+
+.dual-track{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin:26px 0}
+.dt-card{border:1px solid var(--rule);background:var(--surface);padding:20px 22px}
+.dt-enterprise{border-left:2px solid var(--accent)}
+.dt-public{border-left:2px solid var(--ready-text)}
+.dt-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:8px}
+.dt-public .dt-tag{color:var(--ready-text)}
+.dt-head{font-family:'Bodoni Moda',serif;font-size:20px;color:var(--text);margin-bottom:9px;line-height:1.25}
+.dt-body{font-family:'Inter',sans-serif;font-size:14px;line-height:1.65;color:var(--muted);margin:0 0 12px}
+.dt-links{display:flex;flex-wrap:wrap;gap:14px}
+.dt-links a{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-dim);padding-bottom:2px}
+.dt-links a:hover{color:var(--text)}
 </style>
 </head>
 <body>
@@ -223,6 +235,25 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 <div class="page-eyebrow">Enterprise: Decision Defensibility</div>
 <h1 class="page-title">Decision Defensibility Across Every Department</h1>
 <p class="page-subtitle">When a consequential decision is questioned long after it is made, the record becomes the only witness. For HR teams, compliance programs, and investigation units that must defend such decisions later, JRS examines whether each record can explain why the decision was made: the basis, reasoning, evidence, and chronology, before the record is finalized.</p>
+
+<!-- JRS DUAL TRACK v1 :: CANONICAL BLOCK. Byte-identical on every page that
+     carries it. Edit once, propagate with scripts/apply_dual_track.py. -->
+<div class="dual-track">
+ <div class="dt-card dt-enterprise">
+  <div class="dt-tag">Track 1 &middot; Enterprise</div>
+  <div class="dt-head">License the review engine</div>
+  <p class="dt-body">A stateless pre-finalization decision gate for GRC platforms, legal-tech vendors and enterprise risk functions. One record in, a structured determination across the five conditions out, with a request identifier for audit correlation on your side. <b>No record text is retained.</b> Per-partner tokens, fail-closed, versioned route.</p>
+  <div class="dt-links"><a href="review-engine.html">Integration schema</a> <a href="enterprise.html#enterprise-inquiry">Request evaluation access</a></div>
+ </div>
+ <div class="dt-card dt-public">
+  <div class="dt-tag">Track 2 &middot; Free and open</div>
+  <div class="dt-head">Guides, training and simulations</div>
+  <p class="dt-body">Investigator field guides, the six-module self-paced training, and live Decision Reconstruction Risk simulations. <b>Free, ungated, and staying that way.</b> No account, no card, no expiry.</p>
+  <div class="dt-links"><a href="investigator-guides.html">Field guides</a> <a href="training.html">Training</a> <a href="check.html">Seven-point check</a></div>
+ </div>
+</div>
+<!-- /JRS DUAL TRACK v1 -->
+
 
 <div style="margin-bottom:24px;display:flex;flex-wrap:wrap;gap:7px;">
  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 10px;">No dedicated software</span>
