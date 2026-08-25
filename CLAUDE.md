@@ -30,6 +30,7 @@ You are operating inside the live `phillipwikes-bit/jrsstandard.com` repository.
 | `programme-status-9872fb93cc94.html` | **THE ONLY private owner page.** Programme status, the full named roster with emails, recommendation and certificate requests, honor quotes with clearance flags, and the CSV export. **Renamed from `pilot-status.html` on 2026-08-12** because the old slug was guessable while the data on it is not public. Carries `noindex,nofollow`, `referrer: no-referrer`, and **no analytics tag**. |
 
 | `api/people-9dd1ecdf6f8cdfd4.js` | The endpoint both surfaces read. Secured by its own opaque URL, no token |
+| `api/leads-4b7e2c9af106d385.js` | **Added 2026-08-25.** Owner-only commercial inbox: every checkout-fallback, enterprise-inquiry, org-pilot and direct contact row in full, with name, email and organisation, plus anonymous pay-screen attempts kept in a separate array. Read ONLY by `programme-status-9872fb93cc94.html`. Secured by its own opaque URL, no token. **If either slug leaks, rotate BOTH.** Deliberately separate from `/api/checkout-stats`, which exposes no personal data and must stay that way |
 
 **Removed 2026-08-12:** `people-9dd1ecdf6f8cdfd4.html` and `supporters-b78f5ff2c08d.html`. Both duplicated the roster now on the single page above. **There is ONE private owner page. Do not create a second.**
 
