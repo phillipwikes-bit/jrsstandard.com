@@ -623,9 +623,11 @@ else:
     after = probe_json("/api/leads-4b7e2c9af106d385")
     lead_after = after.get("lead_count") if after else None
 
-    w("A single test row was submitted through the real production endpoint. It is "
-      "**clearly marked and safe to delete**: name `AUDIT TEST DO NOT CONTACT`, "
-      "organisation `AUDIT TEST ROW, safe to delete`.")
+    w("A single test payload was submitted through the real production endpoint. "
+      "Since 2026-08-25 the endpoint RECOGNISES it as a self-test and returns "
+      "`ok:true, stored:false` without writing a row, so the check exercises the "
+      "full path without adding to the owner's queue. A rising `lead_count` here "
+      "would mean the test guard has regressed.")
     w()
     w("| Step | Result |")
     w("|---|---|")
@@ -635,9 +637,10 @@ else:
     w("| `lead_count` after | %s |" % lead_after)
     if lead_before is not None and lead_after is not None:
         delta = lead_after - lead_before
-        verdict = ("**PASS**, the submission incremented Identified Leads"
-                   if delta == 1 else
-                   "**FAIL**, count moved by %d" % delta)
+        stored = bool(post_body.get("stored")) if isinstance(post_body, dict) else True
+        verdict = ("**PASS**, recognised as a self-test, not stored, lead_count unchanged"
+                   if (delta == 0 and stored is False) else
+                   "**FAIL**, delta %d and stored=%s" % (delta, stored))
         w("| Verdict | %s |" % verdict)
     else:
         w("| Verdict | **INDETERMINATE**, the leads endpoint was unreachable |")
