@@ -1947,6 +1947,61 @@ def check_training_modules_are_findable(offline):
               "first link is #%s" % (first.group(1) if first else "none"))
 
 
+def check_dual_track_phone_compaction(offline):
+    """The band must be compacted on phones, identically, on every page that
+    carries it.
+
+    It leads TEN pages, not the five the identity check names. On a 390px phone
+    each card ran about twenty lines, so ten pages opened with roughly a screen
+    and a half of enterprise licensing copy before their own content. The owner
+    reported it as "All sections now begin with this".
+
+    The block itself is untouched, because it is compared for byte identity and
+    carries the Track 2 free promise. Only the phone rendering is compacted, and
+    that compaction must be the same everywhere or the ten pages drift apart the
+    way five hand-edited copies of the block would.
+
+    THE FREE PROMISE IS NOT WHAT GETS CUT. The rule hides the second paragraph
+    of the ENTERPRISE card only. Hiding Track 2's second paragraph would delete
+    "Free, ungated, and staying that way" while keeping the sales pitch, which
+    is the wrong half to cut, so the guard asserts the rule does not target the
+    public card.
+    """
+    import glob
+    pages = []
+    for p in sorted(glob.glob(os.path.join(ROOT, "*.html"))):
+        rel = os.path.relpath(p, ROOT)
+        if "JRS DUAL TRACK v1" in read(rel):
+            pages.append(rel)
+
+    MARKER = "/* JRS DUAL TRACK :: PHONE COMPACTION v1 */"
+    END = "/* /JRS DUAL TRACK :: PHONE COMPACTION v1 */"
+    missing, blocks = [], set()
+    for p in pages:
+        src = read(p)
+        i, j = src.find(MARKER), src.find(END)
+        if i < 0 or j < 0 or j < i:
+            missing.append(p)
+            continue
+        blocks.add(src[i:j + len(END)])
+
+    check("dual-track phone compaction present on every page carrying the band",
+          not missing,
+          "missing on: %s" % ", ".join(missing) if missing
+          else "%d pages carry the band, all compacted" % len(pages))
+
+    check("dual-track phone compaction is identical everywhere",
+          len(blocks) <= 1,
+          "%d distinct compaction blocks" % len(blocks))
+
+    if blocks:
+        rule = next(iter(blocks))
+        check("compaction hides the enterprise detail, not the free promise",
+              ".dt-enterprise .dt-body:nth-of-type(n+2){display:none}" in rule
+              and ".dt-public .dt-body" not in rule,
+              "targets the enterprise card only")
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -1973,6 +2028,7 @@ def main():
                check_notifications_wired,
                check_alerts_disabled,
                check_dual_track_band,
+               check_dual_track_phone_compaction,
                check_no_internal_voice_copy,
                check_retention_claim_is_scoped,
                check_robots_directives_coherent,

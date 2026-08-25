@@ -392,6 +392,17 @@ a:hover{text-decoration:underline}
 }
 
 .dual-track{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin:26px 0}
+/* JRS DUAL TRACK :: PHONE COMPACTION v1 */
+@media(max-width:640px){
+  .dual-track{gap:8px}
+  .dt-card{padding:13px 14px}
+  .dt-tag{margin-bottom:6px}
+  .dt-head{font-size:16px;margin-bottom:6px}
+  .dt-body{font-size:12.5px;line-height:1.5;margin-bottom:6px}
+  .dt-enterprise .dt-body:nth-of-type(n+2){display:none}
+  .dt-enterprise .dt-body:first-of-type{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+}
+/* /JRS DUAL TRACK :: PHONE COMPACTION v1 */
 .dt-card{border:1px solid var(--rule);background:var(--surface);padding:20px 22px}
 .dt-enterprise{border-left:2px solid var(--accent)}
 .dt-public{border-left:2px solid var(--ready-text)}
