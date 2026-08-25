@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JRS Review Engine API | Justification Review Standard</title>
+<meta property="og:title" content="JRS™ Decision Defensibility at Enterprise Scale" />
+<meta property="og:description" content="Reducing Decision Reconstruction Risk across HR, compliance, and investigation functions. JRS examines whether a record can explain why a consequential decision was made, before the record is finalized." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.jrsstandard.com/enterprise.html" />
+<meta property="og:site_name" content="JRS™ Justification Review Standard" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="JRS™ Decision Defensibility at Enterprise Scale" />
+<meta name="twitter:description" content="Reducing Decision Reconstruction Risk across departments. JRS examines whether a record can explain why a consequential decision was made, before it is finalized." />
+<meta property="og:image" content="https://jrsstandard.com/og-card.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:image" content="https://jrsstandard.com/og-card.png" />
+<link rel="canonical" href="https://www.jrsstandard.com/review-engine.html" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<meta name="description" content="Token-authenticated API that examines one record against the five JRS conditions and returns a structured result with an audit correlation identifier.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+ --bg:#050505;--surface:#121212;--surface2:#1A1A1A;--surface3:#1E1E1E;
+ --rule:#2A2A2A;--rule-soft:#1E1E1E;
+ --text:#F2F2F2;--muted:#B3B3B3;--muted-soft:#8A8A8A;
+ --accent:#BE9447;--accent-dim:#7A5E28;
+ --stop:#8B2020;--review-c:#8B5E1A;--ready:#1E5C35;
+ --stop-text:#E88080;--review-text:#D4A055;--ready-text:#5DBF82;
+}
+.skip-link{position:absolute;left:-9999px;top:4px;z-index:9999;background:var(--accent);color:#050505;padding:8px 16px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none}
+.skip-link:focus{left:4px}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased}
+
+.container{max-width:860px;margin:0 auto;padding:52px 28px 96px}
+.container-wide{max-width:1060px;margin:0 auto;padding:0 28px}
+
+/* HEADER */
+.site-header{border-bottom:1px solid var(--rule);padding:0 28px}
+.site-header-inner{max-width:1060px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;padding:20px 0 17px;flex-wrap:wrap}
+.wordmark{font-family:'Bodoni Moda',serif;font-size:30px;font-weight:500;color:var(--accent);line-height:1;text-decoration:none;text-rendering:optimizeLegibility}
+.wordmark .tm{font-size:11px;vertical-align:super}
+.header-meta{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);line-height:1.8;text-align:right}
+
+/* NAV */
+.primary-nav{border-bottom:1px solid var(--rule);background:var(--bg)}
+.primary-nav-inner{max-width:1060px;margin:0 auto;padding:0 28px;display:flex;align-items:stretch;gap:0;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.primary-nav-inner::-webkit-scrollbar{display:none}
+.nav-item{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);padding:12px 16px;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:.1s;background:none;border-top:none;border-left:none;border-right:none;text-decoration:none;display:inline-block}
+.nav-item:hover{color:var(--text)}
+.nav-item.active{color:var(--accent);border-bottom-color:var(--accent)}
+
+/* UTIL BAR */
+.util-bar{border-bottom:1px solid var(--rule);padding:0 28px;background:var(--bg)}
+.util-bar-inner{max-width:1060px;margin:0 auto;display:flex;align-items:center;gap:0;padding:0}
+.util-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);padding:9px 0;margin-right:18px;flex-shrink:0}
+.util-link{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;padding:9px 14px;border-left:1px solid var(--rule);transition:color .1s;white-space:nowrap}
+.util-link:hover{color:var(--text)}
+.util-link.accent-link{color:var(--accent)}
+.util-link.accent-link:hover{color:var(--text)}
+
+/* TYPOGRAPHY */
+.page-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:12px;padding-top:48px}
+.page-title{font-family:'Bodoni Moda',serif;font-size:38px;font-weight:400;line-height:1.1;margin-bottom:14px;letter-spacing:-0.01em}
+.page-subtitle{font-size:16px;color:var(--muted);max-width:640px;margin-bottom:32px;line-height:1.7}
+.section-rule{border:none;border-top:1px solid var(--rule);margin:44px 0}
+.section-head{font-family:'Inter',sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-soft);padding-bottom:10px;margin-bottom:16px;border-bottom:1px solid var(--rule)}
+.body-text{font-size:15.5px;line-height:1.75;color:var(--text);margin-bottom:14px}
+.muted-text{font-size:14px;color:var(--muted);line-height:1.7}
+
+/* CALLOUT */
+.callout{border-left:2px solid var(--accent);background:var(--surface);padding:14px 18px;margin:16px 0}
+.callout-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.callout p,.callout-body{font-size:14.5px;color:var(--text);line-height:1.7;margin:0}
+.callout-gold{border-left-color:var(--accent);background:rgba(190,148,71,.06)}
+.callout-gold .callout-label{color:var(--accent)}
+
+/* REVIEWER NOTE */
+.reviewer-note{background:var(--surface);border-left:2px solid var(--rule);padding:10px 14px;margin:12px 0;font-size:13px;color:var(--muted-soft);line-height:1.6}
+.reviewer-note-label{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px}
+
+/* KIT FLOW */
+.kit-flow{border:1px solid var(--rule);overflow:hidden}
+.kit-flow-step{display:grid;grid-template-columns:44px 1fr;gap:0;border-bottom:1px solid var(--rule)}
+.kit-flow-step:last-child{border-bottom:none}
+.kit-flow-num{background:var(--surface);font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--accent-dim);padding:14px;text-align:center;border-right:1px solid var(--rule);display:flex;align-items:flex-start;justify-content:center;padding-top:16px}
+.kit-flow-content{padding:14px 16px}
+.kit-flow-title{font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:4px}
+.kit-flow-text{font-size:13px;color:var(--muted);line-height:1.65}
+
+/* CASE BLOCK */
+.case-block{border:1px solid var(--rule);overflow:hidden;margin-bottom:14px}
+.case-header{padding:9px 15px;border-bottom:1px solid var(--rule);background:var(--surface2);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.case-title{font-size:13px;font-weight:600;color:var(--text)}
+.case-tag{font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft)}
+.case-body{padding:12px 16px;border-bottom:1px solid var(--rule);font-size:12.5px;color:var(--muted);line-height:1.7}
+.case-meta{display:grid;grid-template-columns:1fr 1fr}
+.case-meta-item{padding:10px 14px}
+.case-meta-item:first-child{border-right:1px solid var(--rule)}
+.case-meta-label{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px}
+.case-meta-val{font-size:12px;color:var(--muted)}
+
+/* BUTTONS */
+.btn{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;padding:12px 22px;cursor:pointer;text-decoration:none;display:inline-block;border:none;transition:.1s}
+.btn-primary{background:var(--accent);color:#050505;font-weight:600}
+.btn-primary:hover{background:#d4a855}
+.btn-ghost{background:none;color:var(--muted-soft);border:1px solid var(--rule)}
+.btn-ghost:hover{color:var(--text);border-color:#555}
+.btn-accent{background:none;color:var(--accent);border:1px solid rgba(190,148,71,.4)}
+.btn-accent:hover{color:var(--text);border-color:rgba(190,148,71,.8)}
+.btn-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+
+/* SCOPE GRID */
+.scope-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0}
+.scope-card{border:1px solid var(--rule);padding:12px 14px;background:var(--surface)}
+.scope-card-label{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:5px}
+.scope-card-text{font-size:12.5px;color:var(--muted);line-height:1.55}
+
+/* PHASE BLOCK */
+.phase-row{display:flex;align-items:stretch;border-bottom:1px solid var(--rule)}
+.phase-row:last-child{border-bottom:none}
+.phase-num{background:var(--surface);padding:12px 16px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent-dim);min-width:38px;border-right:1px solid var(--rule);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.phase-content{padding:12px 16px}
+.phase-title{font-size:13.5px;font-weight:600;color:var(--text);display:inline}
+.phase-text{font-size:13px;color:var(--muted);display:inline}
+
+/* FOOTER */
+.site-footer{border-top:1px solid var(--rule);padding:24px 28px;margin-top:0}
+.site-footer-inner{max-width:1060px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap}
+.footer-links{display:flex;flex-wrap:wrap;gap:18px}
+.footer-link{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none}
+.footer-link:hover{color:var(--text)}
+.footer-copy{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-soft)}
+
+.primary-nav-mobile-bar{display:none;align-items:center;justify-content:space-between;padding:0 20px;height:48px;border-bottom:1px solid var(--rule);max-width:100%}
+.nav-current-section{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft)}
+.nav-hamburger{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);background:none;border:1px solid var(--rule);padding:8px 14px;cursor:pointer;transition:color .15s,border-color .15s;display:flex;align-items:center;gap:6px;min-height:36px}
+.nav-hamburger:hover,.nav-hamburger.open{color:var(--accent);border-color:var(--accent-dim)}
+.nav-hamburger-icon{font-size:14px;line-height:1}
+@media(max-width:760px){
+ .scope-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+ .page-title{font-size:28px}
+ .scope-grid{grid-template-columns:1fr}
+ .case-meta{grid-template-columns:1fr}
+ .case-meta-item:first-child{border-right:none;border-bottom:1px solid var(--rule)}
+ .site-header-inner{padding:14px 0 12px;flex-direction:column;align-items:flex-start;gap:6px}
+ .header-meta{text-align:left}
+ .wordmark{font-size:24px}
+ .primary-nav-inner{padding:0 14px}
+ .util-bar-inner{overflow-x:auto;flex-wrap:nowrap}
+ .util-label{display:none}
+ .container{padding:36px 16px 72px}
+ .btn-row{flex-wrap:wrap;gap:8px}
+ .site-footer-inner{flex-direction:column;gap:14px}
+ .footer-links{gap:12px}
+ .primary-nav-mobile-bar{display:flex}
+ .primary-nav-inner{display:none;flex-direction:column;padding:0;overflow-x:visible;border-top:1px solid var(--rule)}
+ .primary-nav-inner.nav-open{display:flex}
+ .nav-item{padding:14px 20px;text-align:left;font-size:11px;letter-spacing:.12em;border-bottom:1px solid var(--rule)!important;border-left:2px solid transparent!important;border-top:none!important;border-right:none!important;min-height:48px;width:100%;display:block}
+ .nav-item.active{border-left-color:var(--accent)!important;border-bottom-color:var(--rule)!important}
+}
+@media(max-width:400px){
+ .page-title{font-size:24px}
+ .btn{font-size:8.5px;padding:10px 14px}
+ .nav-item{padding:11px 10px;font-size:8.5px}
+}
+
+.code-block{background:var(--surface);border:1px solid var(--rule);padding:14px 16px;overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.7;color:var(--text);white-space:pre;margin:12px 0}
+.spec-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px;display:block;overflow-x:auto}
+.spec-table th{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-dim);text-align:left;padding:8px 12px;border-bottom:1px solid var(--rule);white-space:nowrap}
+.spec-table td{padding:9px 12px;border-bottom:1px solid var(--rule);color:var(--muted);vertical-align:top}
+.spec-table code{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent)}
+.body-text code{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent)}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header class="site-header" role="banner">
+ <div class="site-header-inner">
+  <a href="index.html" class="wordmark">JRS<span style="font-size:11px;vertical-align:super;position:relative;top:-3px;letter-spacing:0;color:var(--accent);">&#8482;</span></a>
+  <div class="header-meta">Justification Review Standard<br>Enterprise Implementation</div>
+ </div>
+</header>
+
+<nav class="primary-nav" aria-label="Site navigation">
+ <div class="primary-nav-mobile-bar">
+  <span class="nav-current-section">Enterprise</span>
+  <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileNav()" aria-label="Toggle navigation" aria-expanded="false">
+   <span class="nav-hamburger-icon">&#9776;</span> Menu
+  </button>
+ </div>
+ <div class="primary-nav-inner" id="primary-nav-items">
+  <a href="/api/dl?e=standard&amp;src=enterprise" class="nav-item">Review Controls</a>
+  <a href="index.html#section-scenarios" class="nav-item">Documentation Failures</a>
+  <a href="index.html" class="nav-item">Free Resources</a>
+  <a href="index.html" class="nav-item" style="color:var(--accent);">Deployment Kit &#8599;</a>
+  <a href="training.html" class="nav-item">Simulation Training &#8599;</a>
+  <a href="index.html" class="nav-item">Implementation</a>
+  <a href="enterprise.html" class="nav-item active">Enterprise</a>
+  <a href="index.html" class="nav-item">About</a>
+ </div>
+</nav>
+
+<div class="util-bar">
+ <div class="util-bar-inner">
+  <span class="util-label">Enterprise</span>
+  <a href="mailto:info@jrsstandard.com?subject=JRS Pilot Program Inquiry" class="util-link accent-link">Apply for Pilot Participation</a>
+  <a href="/api/dl?e=standard&amp;src=enterprise" class="util-link">Review Controls</a>
+  <a href="index.html" class="util-link">Deployment Kit</a>
+ </div>
+</div>
+
+<main class="container" id="main-content">
+
+<div class="page-eyebrow">For integrators</div>
+<h1 class="page-title">JRS Review Engine API</h1>
+<p class="page-subtitle">A token-authenticated endpoint that examines one record against the five JRS conditions and returns a structured result. Every response carries a request identifier so a call can be tied to an entry in your own audit trail.</p>
+
+<div class="callout">
+ <div class="callout-label">Stage and limits, stated first</div>
+ <div class="callout-body">This is an <b>unvalidated, single-model engine in operational validation</b>. Reproducibility is disclosed rather than hidden, and reproducibility is not accuracy and not validation. <b>No effectiveness claim is made.</b> Every response repeats this in its <code>disclaimer</code> field, so the limitation travels with the output rather than living only on this page.</div>
+</div>
+
+<div style="margin-bottom:20px;">
+ <div class="section-head">What it does</div>
+ <p class="body-text">You send the text of one record. The engine reads it against the five conditions: reconstructability, basis identification, chronological integrity, decision-process traceability and evidentiary sufficiency. It returns a structured result describing which conditions the record meets and where its reasoning cannot be reconstructed.</p>
+ <p class="body-text"><b>Ask for more than one run and the spread is returned to you.</b> Set <code>runs</code> above 1 and the response carries a <code>variance</code> block showing how far the runs disagreed. A single-model engine that hides its own instability is worth less than one that reports it.</p>
+</div>
+
+<div style="margin-bottom:20px;">
+ <div class="section-head">Endpoint</div>
+ <p class="body-text"><code>POST https://www.jrsstandard.com/api/v1/review-engine</code></p>
+ <p class="body-text">The unversioned route <code>/api/review-engine</code> is the same implementation. <b>Build against the versioned path.</b></p>
+</div>
+
+<div style="margin-bottom:20px;">
+ <div class="section-head">Authentication</div>
+ <p class="body-text">Send your token as a bearer credential:</p>
+ <pre class="code-block">Authorization: Bearer &lt;your-token&gt;
+Content-Type: application/json</pre>
+ <p class="body-text"><b>The endpoint is fail-closed.</b> No token means no access. Tokens are issued per organisation, so one can be rotated or revoked without affecting anyone else. To request one, email <a href="mailto:info@jrsstandard.com?subject=Review%20Engine%20token" class="accent-link">info@jrsstandard.com</a>.</p>
+</div>
+
+<div style="margin-bottom:20px;">
+ <div class="section-head">Request</div>
+ <pre class="code-block">{
+  "text": "The full text of one record.",
+  "runs": 1
+}</pre>
+ <table class="spec-table">
+  <tr><th>Field</th><th>Type</th><th>Required</th><th>Notes</th></tr>
+  <tr><td><code>text</code></td><td>string</td><td>Yes</td><td>Minimum 40 characters. Longer than 8,000 characters is truncated to 8,000.</td></tr>
+  <tr><td><code>runs</code></td><td>integer</td><td>No</td><td>1 to 5. Defaults to 1. Above 1 adds a <code>variance</code> block.</td></tr>
+ </table>
+</div>
+
+<div style="margin-bottom:20px;">
+ <div class="section-head">Response</div>
+ <pre class="code-block">{
+  "request_id": "f90a631d-8a7c-40c6-8f89-56dc31fbd786",
+  "api_version": "v1",
+  "engine": "JRS Review Engine",
+  "engine_version": "0.1.0-validation",
+  "model": "claude-haiku-4-5-20251001",
+  "evidence_stage": "operational_validation",
+  "disclaimer": "Unvalidated engine in development. Output is from a single model; reproducibility is disclosed, not hidden, and is distinct from accuracy and from validation. No effectiveness claim is made.",
+  "reviewed_at": "2026-08-25T12:00:00.000Z",
+  "runs": 1,
+  "result": { }
+}</pre>
+ <p class="body-text">When <code>runs</code> is above 1, a <code>variance</code> object is added alongside <code>result</code>.</p>
+</div>
+
+<div style="margin-bottom:20px;">
+ <div class="section-head">Audit correlation</div>
+ <p class="body-text">Every response carries a <code>request_id</code> in the body <b>and the same value in the <code>X-Request-Id</code> header</b>. Record it beside whatever your own system writes when the record is reviewed.</p>
+ <p class="body-text">This is the feature that matters in a regulated function. When someone asks months later how a particular record came to be assessed the way it was, the identifier is what connects your entry to this call. Without it, an external service in the middle of a documented process is a gap in the very thing the process is meant to establish.</p>
+</div>
+
+<div style="margin-bottom:20px;">
+ <div class="section-head">Errors</div>
+ <table class="spec-table">
+  <tr><th>Status</th><th><code>error</code></th><th>Meaning</th></tr>
+  <tr><td>400</td><td><code>invalid_json</code></td><td>The body did not parse as JSON.</td></tr>
+  <tr><td>400</td><td><code>record_too_short</code></td><td>Fewer than 40 characters of record text.</td></tr>
+  <tr><td>401</td><td><code>unauthorized</code></td><td>No token, or a token that is not recognised.</td></tr>
+  <tr><td>405</td><td><code>method_not_allowed</code></td><td>Use POST.</td></tr>
+  <tr><td>429</td><td><code>rate_limited</code></td><td>Too many requests. Retry shortly.</td></tr>
+  <tr><td>502</td><td><code>review_failed</code></td><td>The upstream review did not complete.</td></tr>
+  <tr><td>503</td><td><code>engine_not_configured</code></td><td>The engine is not configured to serve.</td></tr>
+ </table>
+ <p class="body-text">Every error response carries a <code>request_id</code> as well, so a failed call can be reported and traced.</p>
+</div>
+
+<div style="margin-bottom:20px;">
+ <div class="section-head">Rate limit</div>
+ <p class="body-text"><b>20 requests per 60 seconds, per IP.</b> The limit is enforced per running instance and is described here exactly as it is implemented: <b>best effort</b>. It is not backed by a shared store, so under horizontal scaling the effective ceiling can be higher than the stated one. Treat it as a guard against runaway loops, not as a quota you can rely on. A firm quota is part of a licence, not of this limiter.</p>
+</div>
+
+<div style="margin-bottom:20px;">
+ <div class="section-head">Governance reporting, and exactly what it does not mean</div>
+ <div class="callout callout-gold">
+  <div class="callout-label">Read this before mapping anything</div>
+  <div class="callout-body"><b>JRS does not establish compliance with ISO/IEC 42001, the NIST AI RMF, the EU AI Act, or any other framework, and no framework requires JRS.</b> It is not a certification, an accreditation, or an audit opinion. What follows describes where the output of a record-level review may be <b>relevant</b> as evidence inside a management system you are already running. Deciding whether it satisfies any control is your organisation's determination and your assessor's, not this engine's.</div>
+ </div>
+ <p class="body-text">With that boundary stated, the practical use is straightforward. A record-level review produces a per-record finding about whether a decision can be reconstructed from its own record, and an aggregate rate across a population. Organisations running an AI management system generally need evidence of two things this speaks to: that AI-assisted outputs are subject to human review with a documented basis, and that the resulting records remain traceable after the fact.</p>
+ <table class="spec-table">
+  <tr><th>Field of an AI management system</th><th>What a JRS review can contribute</th><th>What it does not do</th></tr>
+  <tr><td>Documented human review of AI-assisted output</td><td>A per-record finding on whether the stated basis is traceable to source evidence, and a rate across a sampled population</td><td>Does not evidence that a human reviewed anything, which only your own workflow records can show</td></tr>
+  <tr><td>Operational monitoring and measurement</td><td>A measured rate of records that cannot carry their own reasoning, broken out by decision type or business unit</td><td>Does not set a threshold, a tolerance, or a target. Those are yours to set</td></tr>
+  <tr><td>Traceability and record retention</td><td>Identification of records whose chronology or basis cannot be reconstructed from the record alone</td><td>Does not assess retention periods, storage, or access control</td></tr>
+  <tr><td>Corrective action</td><td>An identified population of records to remediate, with the condition that failed named per record</td><td>Does not perform, verify, or close corrective action</td></tr>
+ </table>
+ <p class="body-text"><b>Decision Reconstruction Risk</b> is the condition a record is in when it cannot independently show why a consequential decision was reached. It is a documentation property, measured from the record. <b>It is not a legal conclusion, a compliance status, or a statement about whether the underlying decision was correct.</b></p>
+ <p class="body-text">There is no separate governance-reporting endpoint today. Aggregate reporting is produced from the results you already receive, and per-record results are yours to retain. <b>Nothing on this page describes a route that does not exist.</b></p>
+</div>
+
+<div style="margin-bottom:20px;">
+ <div class="section-head">Data handling</div>
+ <p class="body-text">Record text is sent to the engine, assessed, and used to produce the response. <b>Send de-identified text.</b> If your records contain personal data, privileged material, or anything you would not want leaving your environment, remove it before the call. De-identification is agreed in writing before any engagement that involves real records.</p>
+ <p class="body-text">If you would rather not send record text to any external service at all, the <a href="org-pilot.html" class="accent-link">Organization Mini-Pilot</a> exists for that: it computes the assessment and sends back only counts and category labels. <b>No record text is stored at any point in that flow.</b></p>
+</div>
+
+<div style="margin-bottom:20px;">
+ <div class="section-head">Getting a token</div>
+ <p class="body-text">Email <a href="mailto:info@jrsstandard.com?subject=Review%20Engine%20token" class="accent-link">info@jrsstandard.com</a> with your organisation, the record type you intend to run, and expected monthly volume. You will get a token, the tier, and an invoice in one reply. <b>Purchase orders accepted.</b></p>
+ <div class="btn-row">
+  <a href="enterprise.html" class="btn btn-ghost">Enterprise overview</a>
+  <a href="org-pilot.html" class="btn btn-accent">Run the Mini-Pilot first &rarr;</a>
+  <a href="terms.html" class="btn btn-ghost">Terms and boundaries</a>
+ </div>
+</div>
+
+</main>
+
+<footer class="site-footer" role="contentinfo">
+ <div class="site-footer-inner">
+  <div class="footer-links">
+   <a href="index.html" class="footer-link">Home</a>
+   <a href="enterprise.html" class="footer-link">Enterprise</a>
+   <a href="training.html" class="footer-link">Simulation Training</a>
+   <a href="/api/dl?e=standard&amp;src=enterprise" class="footer-link">Review Controls PDF</a>
+   <a href="audit-request.html" class="footer-link">Record Review</a>
+   <a href="governance-request.html" class="footer-link">Governance Review</a>
+   <a href="calibration-request.html" class="footer-link">Benchmark Calibration</a>
+   <a href="mailto:info@jrsstandard.com" class="footer-link">Contact</a>
+   <a href="privacy.html" class="footer-link">Privacy</a>
+      <a href="check.html" class="footer-link">Record Defensibility Check</a>
+      <a href="/reference" class="footer-link">Reference Library</a>
+  </div>
+  <div style="width:100%;font-family:'Bodoni Moda',serif;font-size:14px;color:var(--accent);margin-bottom:8px;">JRS measures the record, not the tool that produced it.</div>
+  <div style="width:100%;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px"><span style="color:var(--accent-dim)">Back the work:</span> <a href="/api/support?c=rtkw&amp;src=footer" style="color:var(--accent);text-decoration:none">The Right to Know Why</a> &middot; <a href="/api/support?c=defend&amp;src=footer" style="color:var(--accent);text-decoration:none">The Decisions You Can Defend</a></div><div class="footer-copy">&#169; 2026 JRS&#8482; &middot; Justification Review Standard &nbsp;&middot;&nbsp; Phillip Wikes, principal</div>
+ </div>
+</footer>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NVYHJ7BJ92"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-NVYHJ7BJ92');
+</script>
+<script>
+function toggleMobileNav(){
+  var navItems=document.getElementById('primary-nav-items');
+  var hamburger=document.getElementById('nav-hamburger');
+  if(!navItems||!hamburger)return;
+  var isOpen=navItems.classList.contains('nav-open');
+  navItems.classList.toggle('nav-open');
+  hamburger.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded',String(!isOpen));
+  hamburger.innerHTML=isOpen
+    ?'<span class="nav-hamburger-icon">&#9776;</span> Menu'
+    :'<span class="nav-hamburger-icon">&#10005;</span> Close';
+}
+</script>
+
+<script>
+/* JRS LINK-CLICK TELEMETRY. Added 2026-08-13. Token-less, no dependencies.
+   Posts to /api/telemetry, which is a real endpoint in this repository. */
+/**
+ * Zero-Drift Telemetry Dispatcher
+ * Guarantees event delivery without delaying navigation or blocking the main thread.
+ */
+function trackClickAndNavigate(event, targetUrl, eventMetaData) {
+  eventMetaData = eventMetaData || {};
+  // 1. Prevent default immediate navigation
+  if (event && typeof event.preventDefault === 'function') {
+    event.preventDefault();
+  }
+
+  // 2. Construct immutable telemetry payload
+  var payload = JSON.stringify({
+    timestamp: new Date().toISOString(),
+    origin_url: window.location.href,
+    target_url: targetUrl,
+    meta: eventMetaData
+  });
+
+  // 3. Primary Dispatch: Non-blocking navigator.sendBeacon
+  var isDispatched = false;
+  if (typeof navigator !== 'undefined' && navigator.sendBeacon) {
+    var blob = new Blob([payload], { type: 'application/json' });
+    isDispatched = navigator.sendBeacon('/api/telemetry', blob);
+  }
+
+  // 4. Secondary Dispatch: Fetch API with keepalive flag
+  if (!isDispatched && typeof fetch === 'function') {
+    fetch('/api/telemetry', {
+      method: 'POST',
+      body: payload,
+      headers: { 'Content-Type': 'application/json' },
+      keepalive: true
+    }).catch(function() {
+      /* Swallowing non-critical network drops to prioritize UX */
+    });
+  }
+
+  // 5. Deterministic Fail-safe Navigation Fallback (150ms timeout)
+  setTimeout(function() {
+    window.location.href = targetUrl;
+  }, 150);
+}
+
+/* DELEGATION LAYER.
+   One document-level listener, so links rendered by JavaScript after load are
+   captured too and no per-link handler is needed anywhere.
+
+   It decides WHEN to call the dispatcher. It does not alter it.
+
+   Three classes of link are deliberately NOT routed through the dispatcher:
+     - /api/dl and /api/support already count inside their own 302. A redirect
+       cannot be blocked or raced, so it is strictly stronger than a beacon and
+       routing them here would double-count.
+     - mailto, tel, in-page anchors and downloads are not navigations to count.
+     - modifier and middle clicks. preventDefault on those would break "open in
+       new tab", so the beacon is sent WITHOUT preventDefault and the browser is
+       left to do what the reader asked for. */
+(function(){
+  var COUNTED_SERVER_SIDE = /^\/api\/(dl|support)\b/;
+  function beacon(target, meta){
+    try {
+      var payload = JSON.stringify({
+        timestamp: new Date().toISOString(),
+        origin_url: window.location.href,
+        target_url: target,
+        meta: meta || {}
+      });
+      var sent = false;
+      if (navigator.sendBeacon) {
+        sent = navigator.sendBeacon('/api/telemetry', new Blob([payload], { type: 'application/json' }));
+      }
+      if (!sent && typeof fetch === 'function') {
+        fetch('/api/telemetry', { method: 'POST', body: payload,
+          headers: { 'Content-Type': 'application/json' }, keepalive: true }).catch(function(){});
+      }
+    } catch (e) { /* never let telemetry break a click */ }
+  }
+  document.addEventListener('click', function(ev){
+    try {
+      var a = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
+      if (!a) return;
+      var href = a.getAttribute('href') || '';
+      if (!href || href.charAt(0) === '#') return;
+      if (/^(mailto:|tel:|javascript:)/i.test(href)) return;
+      if (a.hasAttribute('download')) return;
+      if (COUNTED_SERVER_SIDE.test(href)) return;
+
+      var label = (a.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 80);
+      var meta = { label: label, src: 'link' };
+
+      // Modifier or middle click: the reader wants a new tab. Record it, do not
+      // hijack it.
+      if (ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey || ev.button !== 0) {
+        beacon(a.href, meta);
+        return;
+      }
+      if (a.target && a.target !== '_self') { beacon(a.href, meta); return; }
+
+      trackClickAndNavigate(ev, a.href, meta);
+    } catch (e) { /* a telemetry fault must never block navigation */ }
+  }, true);
+})();
+</script>
+</body>
+</html>

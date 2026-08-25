@@ -1170,6 +1170,137 @@ def check_no_cloudflare_artifacts(offline):
           else "%d paths checked, all absent" % len(CLOUDFLARE_ARTIFACTS))
 
 
+# ---------------------------------------------------------------- COMMERCIAL SURFACE
+#
+# Added 2026-08-25. Four guards over the commercial surface, each written because
+# the defect it catches was actually found in this repository on that date, not
+# because it is theoretically possible.
+
+COMMERCIAL_PAGES = ("audit-request.html", "governance-request.html",
+                    "calibration-request.html", "review-engine.html")
+
+# Framework names that may never appear on a page without a non-establishment
+# clause in the same file. terms.html:139 already states in writing that JRS
+# establishes compliance with none of them.
+FRAMEWORK_NAMES = ("ISO/IEC 42001", "ISO 42001", "NIST AI RMF", "EU AI Act",
+                   "AI Act Article 14")
+
+# The phrases that count as an actual disclaimer. A page may use any of them.
+NON_ESTABLISHMENT = ("does not establish compliance",
+                     "does not establish legal or regulatory compliance",
+                     "no framework requires",
+                     # enterprise.html:295 reads "or a substitute for obligations
+                     # under the EU AI Act". The first version of this list held
+                     # "not a substitute for obligations", which never matched it
+                     # and reported a compliant page as a compliance claim.
+                     "substitute for obligations")
+
+
+def check_no_price_literals_in_html(offline):
+    """A price may exist in api/_offer-config.js and nowhere else.
+
+    That file's own header calls a price "the worst possible place" for a value
+    to drift, because a figure that says $250 on one surface and $500 on another
+    is read by a buyer as either a mistake or a bait. Catching it in HTML is the
+    only way the single-source property is actually enforced rather than merely
+    intended.
+    """
+    pat = re.compile(r"\$\s?\d{2,5}(?:[.,]\d{2})?\b")
+    hits = []
+    for rel in _html_files():
+        try:
+            body = read(rel)
+        except Exception:
+            continue
+        # Strip <style> and <script>, where a dollar sign is template syntax
+        # rather than a price, and $ in a regex is not a currency symbol.
+        body = re.sub(r"<style[^>]*>.*?</style>", " ", body, flags=re.S | re.I)
+        body = re.sub(r"<script[^>]*>.*?</script>", " ", body, flags=re.S | re.I)
+        for m in pat.finditer(body):
+            hits.append("%s: %s" % (rel, m.group(0)))
+    check("no price literal in any HTML file", not hits,
+          "; ".join(sorted(set(hits))[:6]) if hits
+          else "%d pages scanned, prices live only in api/_offer-config.js"
+               % len(_html_files()))
+
+
+def check_sitemap_no_duplicates(offline):
+    """sitemap.xml carried 67 <loc> entries for 43 unique URLs on 2026-08-25.
+
+    Canonical tags limited the ranking harm, but a duplicated sitemap wastes
+    crawl budget and reads as unmaintained to anyone auditing the site.
+    """
+    try:
+        sm = read("sitemap.xml")
+    except Exception:
+        check("sitemap has no duplicate <loc>", SKIPPED, "sitemap.xml not present")
+        return
+    locs = re.findall(r"<loc>([^<]+)</loc>", sm)
+    dupes = sorted(set(u for u in locs if locs.count(u) > 1))
+    check("sitemap has no duplicate <loc>", not dupes,
+          "%d duplicated: %s" % (len(dupes), ", ".join(dupes[:3])) if dupes
+          else "%d entries, all unique" % len(locs))
+
+
+def check_commercial_pages_reachable(offline):
+    """Every page that can take money must be linked from somewhere and listed.
+
+    On 2026-08-25 all three request pages had ZERO inbound links from any page in
+    the repository and were absent from sitemap.xml, while carrying 13 recorded
+    purchase attempts. Demand was arriving through a door nobody had built.
+    """
+    pages = _html_files()
+    try:
+        sm = read("sitemap.xml")
+    except Exception:
+        sm = ""
+    orphans, unlisted = [], []
+    for target in COMMERCIAL_PAGES:
+        inbound = 0
+        for rel in pages:
+            if os.path.basename(rel) == target:
+                continue
+            try:
+                if target in read(rel):
+                    inbound += 1
+            except Exception:
+                continue
+        if inbound == 0:
+            orphans.append(target)
+        if target not in sm:
+            unlisted.append(target)
+    check("every commercial page has an inbound link", not orphans,
+          "orphaned: " + ", ".join(orphans) if orphans
+          else "%d pages, all linked" % len(COMMERCIAL_PAGES))
+    check("every commercial page is in sitemap.xml", not unlisted,
+          "missing: " + ", ".join(unlisted) if unlisted
+          else "%d pages, all listed" % len(COMMERCIAL_PAGES))
+
+
+def check_framework_names_qualified(offline):
+    """A framework name without a non-establishment clause is a compliance claim.
+
+    terms.html:139 states that JRS "does not establish compliance with the EU AI
+    Act, NIST AI RMF, ISO/IEC 42001 or any other framework". A page that names one
+    of those and omits the qualifier contradicts the site's own terms, which is a
+    worse position than never mentioning the framework at all.
+    """
+    bad = []
+    for rel in _html_files():
+        try:
+            body = read(rel)
+        except Exception:
+            continue
+        named = [f for f in FRAMEWORK_NAMES if f in body]
+        if not named:
+            continue
+        if not any(q in body for q in NON_ESTABLISHMENT):
+            bad.append("%s (%s)" % (rel, named[0]))
+    check("no framework name appears without a non-establishment clause", not bad,
+          "; ".join(bad[:4]) if bad
+          else "every page naming a framework carries the qualifier")
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -1183,6 +1314,10 @@ def main():
                check_printed_certificate_matches_endpoint,
                check_evaluation_offers_no_certificate,
                check_no_cloudflare_artifacts,
+               check_no_price_literals_in_html,
+               check_sitemap_no_duplicates,
+               check_commercial_pages_reachable,
+               check_framework_names_qualified,
                check_generated_docs_current, check_cross_endpoint):
         try:
             fn(offline)

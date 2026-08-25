@@ -221,7 +221,13 @@ export default async function handler(req) {
     var bearer = (req.headers.get('authorization') || '').replace(/^Bearer\s+/i, '').trim();
     if (allowed.indexOf(bearer) === -1) return J({ error: 'unauthorized', detail: 'Send Authorization: Bearer <token>.' }, 401);
   } else if (SANDBOX_OPEN !== 'true') {
-    return J({ error: 'unauthorized', detail: 'Endpoint requires a token. Set REVIEW_API_TOKEN, or set JRS_SANDBOX_OPEN=true for open sandbox mode.' }, 401);
+    // The public 401 names no environment variable. The previous text read
+    // "Set REVIEW_API_TOKEN, or set JRS_SANDBOX_OPEN=true", which told any
+    // unauthenticated caller exactly which server-side flags govern access to
+    // this endpoint. The operator-facing instruction lives in the header of
+    // this file, where the operator is; it does not belong in a response to a
+    // caller who has just failed authentication.
+    return J({ error: 'unauthorized', detail: 'A token is required. Contact info@jrsstandard.com' }, 401);
   }
 
   // Best-effort rate limit.

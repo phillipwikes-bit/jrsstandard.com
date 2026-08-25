@@ -105,14 +105,14 @@ ul.deliver li{color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:7p
 </header>
 <main>
 <article>
-  <div class="kicker">Offer 3 &middot; $750</div>
+  <div class="kicker">Offer 3 &middot; <span data-offer-price="calibration">see below</span></div>
   <h1 class="lede">What did you test your detection claim against?</h1>
   <p>A tool that claims it can spot documentation which will not survive review needs something independent to be measured against. You run a held-out record set; scoring is returned by the holder, and you receive a calibration report against credentialed human raters.</p>
 
   <table class="spec">
     <tr><td>What is read</td><td>Your tool or your team runs a held-out record set; scoring is returned by the holder</td></tr>
     <tr><td>Turnaround</td><td>Agreed at scoping; depends on your run schedule</td></tr>
-    <tr><td>Price</td><td><b style="color:var(--accent)">$750</b>, fixed. No hourly rate and no scope creep</td></tr>
+    <tr><td>Price</td><td><b style="color:var(--accent)" data-offer-price="calibration">stated below</b>, fixed. No hourly rate and no scope creep</td></tr>
     <tr><td>Written for</td><td>AI assurance vendors, model evaluation teams, audit firms</td></tr>
   </table>
 
@@ -137,7 +137,7 @@ ul.deliver li{color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:7p
 
   <p>There is no form on this page and nothing to upload here. <strong>Scope, price and turnaround are agreed in writing before any record is sent</strong>, and de-identification is agreed at the same time.</p>
   <p style="margin:24px 0 10px">
-    <a class="cta-primary" href="/api/checkout?o=calibration&amp;src=calibration-request">Pay $750 and start &rarr;</a>
+    <a class="cta-primary" href="/api/checkout?o=calibration&amp;src=calibration-request"><span data-offer-price="calibration" data-price-prefix="Pay " data-price-suffix=" and start">Continue</span> &rarr;</a>
   </p>
 
   <div class="status-strip" style="margin-top:26px">
@@ -268,6 +268,27 @@ function trackClickAndNavigate(event, targetUrl, eventMetaData) {
       trackClickAndNavigate(ev, a.href, meta);
     } catch (e) { /* a telemetry fault must never block navigation */ }
   }, true);
+})();
+</script>
+<script>
+/* PRICES COME FROM /api/offer-info, WHICH READS api/_offer-config.js.
+   No price literal exists in this file. Every element below carries the offer
+   key and is filled at load. The no-JS text reads "see below" rather than a
+   blank or a stale number, because a buyer who sees an empty price box assumes
+   the page is broken and a buyer who sees a wrong one assumes worse. */
+(function () {
+  var els = document.querySelectorAll('[data-offer-price]');
+  if (!els.length) return;
+  fetch('/api/offer-info').then(function (r) { return r.json(); }).then(function (d) {
+    if (!d || !d.offers) return;
+    els.forEach(function (el) {
+      var o = d.offers[el.getAttribute('data-offer-price')];
+      if (!o || !o.price_label) return;
+      var pre = el.getAttribute('data-price-prefix') || '';
+      var post = el.getAttribute('data-price-suffix') || '';
+      el.textContent = pre + o.price_label + post;
+    });
+  }).catch(function () { /* the fallback text already reads sensibly */ });
 })();
 </script>
 </body>

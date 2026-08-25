@@ -40,7 +40,14 @@ function page(title, body, status) {
     + '<style>body{background:#050505;color:#F2F2F2;font-family:system-ui,sans-serif;'
     + 'line-height:1.7;max-width:620px;margin:0 auto;padding:56px 22px}'
     + 'h1{font-size:24px;font-weight:500;margin:0 0 16px}p{color:#B3B3B3;font-size:16px}'
-    + 'a{color:#BE9447}</style></head><body>' + body + '</body></html>';
+    + 'a{color:#BE9447}'
+    + 'label{display:block;margin:14px 0 0;font-size:13px;color:#8A8A8A}'
+    + 'input{display:block;width:100%;margin-top:5px;padding:10px;background:#121212;'
+    + 'color:#F2F2F2;border:1px solid #2A2A2A;font-size:15px;font-family:inherit}'
+    + 'button{margin-top:18px;padding:11px 20px;background:#BE9447;color:#050505;'
+    + 'border:0;font-size:15px;cursor:pointer;font-family:inherit}'
+    + 'button[disabled]{opacity:.55;cursor:default}'
+    + '#m{font-size:14px;min-height:1.2em}</style></head><body>' + body + '</body></html>';
   return new Response(html, {
     status: status || 200,
     headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' }
@@ -74,7 +81,97 @@ async function record(env, offerKey, state, req, srcTag) {
   } catch (e) { /* a telemetry failure must never block a purchase */ }
 }
 
+// Posts the form as JSON and reports the outcome in place. No dependency, no
+// redirect, and the button is re-enabled on failure so a network drop does not
+// strand a buyer on a dead page.
+const FORM_JS = "var f=document.getElementById('f'),m=document.getElementById('m');"
+  + "f.addEventListener('submit',function(e){e.preventDefault();"
+  + "var b=f.querySelector('button');b.disabled=true;m.style.color='#B3B3B3';"
+  + "m.textContent='Sending...';var d={};"
+  + "new FormData(f).forEach(function(v,k){d[k]=v;});"
+  + "fetch('/api/checkout',{method:'POST',headers:{'Content-Type':'application/json'},"
+  + "body:JSON.stringify(d)}).then(function(r){return r.json();}).then(function(j){"
+  + "if(j&&j.ok){f.innerHTML='';m.style.color='#5DBF82';"
+  + "m.textContent='Received. You will get the scope, the price and an invoice by email.';}"
+  + "else{m.style.color='#E88080';"
+  + "m.textContent='That did not save. Email info@jrsstandard.com and it will be handled.';"
+  + "b.disabled=false;}}).catch(function(){m.style.color='#E88080';"
+  + "m.textContent='Network error. Email info@jrsstandard.com and it will be handled.';"
+  + "b.disabled=false;});});";
+
+function jsonRes(o, st) {
+  return new Response(JSON.stringify(o), {
+    status: st || 200,
+    headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }
+  });
+}
+
+function trim(v, n) {
+  return String(v == null ? '' : v).replace(/[\u0000-\u001f\u007f]/g, '').trim().slice(0, n);
+}
+
+async function captureLead(req) {
+  let b = {};
+  try { b = await req.json(); } catch (e) { return jsonRes({ error: 'bad_json' }, 400); }
+
+  const key = trim(b.o, 32).toLowerCase().replace(/[^a-z]/g, '');
+  const offer = offerFor(key);
+  const name = trim(b.name, 120);
+  const email = trim(b.email, 160);
+  const org = trim(b.organization, 160);
+
+  // An email that is not an email is a lost lead that looks captured, so it is
+  // rejected here rather than stored and discovered later.
+  if (!name || !org || !email || email.indexOf('@') < 1 || email.indexOf('.') < 0) {
+    return jsonRes({ error: 'name_email_organization_required' }, 400);
+  }
+
+  const env = (typeof process !== 'undefined' && process.env) || {};
+  const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
+  if (!SERVICE) return jsonRes({ error: 'not_configured' }, 503);
+
+  const res = await fetch(SB + '/rest/v1/pilot_contacts', {
+    method: 'POST',
+    headers: {
+      'apikey': SERVICE,
+      'Authorization': 'Bearer ' + SERVICE,
+      'Content-Type': 'application/json',
+      'Prefer': 'return=minimal'
+    },
+    body: JSON.stringify({
+      name: name,
+      email: email,
+      organization: org,
+      source: 'checkout-fallback',
+      message: JSON.stringify({
+        kind: 'checkout-fallback',
+        offer: key,
+        offer_name: offer ? offer.name : '',
+        price_usd: offer ? offer.price_usd : null,
+        record_type: trim(b.record_type, 160),
+        volume: trim(b.volume, 60),
+        country: String(req.headers.get('x-vercel-ip-country') || '')
+          .toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2),
+        ts: new Date().toISOString()
+      })
+    })
+  }).catch(function () { return null; });
+
+  if (!res || !res.ok) {
+    const detail = res ? await res.text().catch(function () { return ''; }) : 'network';
+    return jsonRes({ error: 'db_insert_failed',
+                    status: res ? res.status : 0,
+                    detail: String(detail).slice(0, 200) }, 502);
+  }
+  return jsonRes({ ok: true, stored: true });
+}
+
 export default async function handler(req) {
+  // POST is the fallback lead capture. It is the only write this endpoint makes
+  // that carries a person's details, so it fails LOUD: if the row does not land,
+  // the caller is told, rather than being thanked for a lead that was dropped.
+  if (req.method === 'POST') return captureLead(req);
+
   if (req.method !== 'GET') {
     return page('Method not allowed', '<h1>Method not allowed</h1>', 405);
   }
@@ -104,28 +201,41 @@ export default async function handler(req) {
     });
   }
 
-  // Not configured. Say so plainly and give the reader a path that works today.
+  // Not configured. Say so plainly, give the reader a path that works today, AND
+  // CAPTURE WHO THEY ARE.
+  //
+  // WHY THE FORM EXISTS. The previous version of this branch rendered a static
+  // page with an email address on it. Thirteen people reached this screen
+  // between 14 and 21 August 2026, across four countries, and every one of them
+  // left no name, no email and no organisation. They are unrecoverable. A buyer
+  // who will not send an unprompted cold email is still a buyer, and enterprise
+  // purchasers routinely cannot use a card at all. Losing them silently is a
+  // worse failure than not having a payment link.
+  //
+  // The POST goes to /api/checkout itself, which writes source='checkout-fallback'
+  // into pilot_contacts. Nothing about the record is asked for beyond type and
+  // volume, and the page says plainly that no records are sent at this stage.
   if (!prefetch) await record(env, key, 'unconfigured', req, srcTag);
-  // COPY MATTERS HERE MORE THAN ANYWHERE ELSE ON THE SITE.
-  //
-  // This page previously opened with "Payment link not live yet", which tells a
-  // General Counsel who just clicked Pay that the thing they are buying is
-  // unfinished. It is the last screen before a purchase and it was the worst
-  // enterprise signal on the site, in my own copy.
-  //
-  // Engagements at this size are scoped and invoiced in practice. Saying so is
-  // both true and the normal professional-services posture, where self-serve
-  // card checkout would read as consumer software rather than as a controlled
-  // engagement. Nothing here overstates: it does not claim a process that does
-  // not exist, and the reply it promises is a reply the owner actually sends.
+  const esc_o = esc(offer.name), esc_p = esc(offer.price_label), esc_s = esc(offer.scope);
   return page('Scoping and invoice',
-    '<h1>' + esc(offer.name) + '</h1>'
-    + '<p><b>' + esc(offer.price_label) + ' fixed.</b> ' + esc(offer.scope) + '.</p>'
+    '<h1>' + esc_o + '</h1>'
+    + '<p><b>' + esc_p + ' fixed.</b> ' + esc_s + '.</p>'
     + '<p><b>Engagements at this size are scoped in writing before anything is sent.</b> '
-    + 'Email <a href="mailto:info@jrsstandard.com?subject=' + encodeURIComponent(offer.name)
-    + '">info@jrsstandard.com</a> with your record type and volume, and you will get '
-    + 'the scope, the fixed price, the turnaround and an invoice in one reply. '
-    + 'Purchase orders accepted.</p>'
+    + 'Tell me your record type and volume and you will get the scope, the fixed price, '
+    + 'the turnaround and an invoice in one reply. <b>Purchase orders accepted.</b></p>'
+    + '<form id="f" method="post" action="/api/checkout">'
+    + '<input type="hidden" name="o" value="' + esc(key) + '">'
+    + '<label>Name<input name="name" required maxlength="120" autocomplete="name"></label>'
+    + '<label>Email<input name="email" type="email" required maxlength="160" autocomplete="email"></label>'
+    + '<label>Organisation<input name="organization" required maxlength="160" autocomplete="organization"></label>'
+    + '<label>Record type<input name="record_type" maxlength="160" placeholder="e.g. investigation files, termination records"></label>'
+    + '<label>Approximate volume<input name="volume" maxlength="60" placeholder="e.g. 40 per month"></label>'
+    + '<button type="submit">Request scope and invoice</button>'
+    + '<p id="m" role="status"></p>'
+    + '</form>'
     + '<p><b>No records are sent at this stage</b>, and de-identification is agreed '
-    + 'before any are. Nothing has been charged.</p>', 200);
+    + 'before any are. Nothing has been charged.</p>'
+    + '<p>Prefer email? <a href="mailto:info@jrsstandard.com?subject='
+    + encodeURIComponent(offer.name) + '">info@jrsstandard.com</a></p>'
+    + '<script>' + FORM_JS + '</script>', 200);
 }

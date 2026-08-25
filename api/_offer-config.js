@@ -43,6 +43,86 @@ export const OFFERS = {
   }
 };
 
+// REVIEW ENGINE LICENCE TIERS.
+//
+// The engine is the only offer that scales without the owner's time, so it is
+// the one that belongs in a tier ladder rather than in a fixed-scope engagement.
+//
+// PRICES ARE DELIBERATELY NULL, FOR THE SAME REASON THE CHECKOUT URLS ARE EMPTY.
+// A price nobody has agreed to is not a smaller problem than a payment link
+// nobody minted: it is a number a buyer will hold you to, and inventing one here
+// would put a figure on a public page that no engagement has ever tested. Three
+// engagements at the existing $250, $500 and $750 come first; the tier prices are
+// then set from what those actually closed at.
+//
+// Until a price is set, isPriced() is false and any surface reading these must
+// show "Contact for pricing" rather than a blank or a guess. The evaluation tier
+// is genuinely free and is marked so explicitly, never inferred from a null.
+export const ENGINE_TIERS = {
+  evaluation: {
+    slug: 'engine-evaluation',
+    name: 'Review Engine Evaluation',
+    price_usd: 0,
+    price_label: 'Free on request',
+    free: true,
+    tokens: 1,
+    call_ceiling: 100,
+    term_days: 30,
+    scope: 'One token, 100 calls, 30 days. Lead capture rather than a discount: it exists so an integrator can read real output before committing.'
+  },
+  single_function: {
+    slug: 'engine-single-function',
+    name: 'Review Engine, Single Function',
+    price_usd: null,      // [REQUIRES USER INPUT] annual price, set after 3 closed engagements
+    price_label: '',      // [REQUIRES USER INPUT] must match price_usd exactly
+    free: false,
+    tokens: 1,
+    call_ceiling: null,   // [REQUIRES USER INPUT] stated annual call ceiling
+    term_days: 365,
+    scope: 'One token for one function, annual term, stated call ceiling.'
+  },
+  enterprise: {
+    slug: 'engine-enterprise',
+    name: 'Review Engine, Enterprise',
+    price_usd: null,      // [REQUIRES USER INPUT] annual price
+    price_label: '',      // [REQUIRES USER INPUT] must match price_usd exactly
+    free: false,
+    tokens: null,         // [REQUIRES USER INPUT] number of per-team tokens
+    call_ceiling: null,   // [REQUIRES USER INPUT]
+    term_days: 365,
+    scope: 'Multiple per-team tokens, each independently revocable, higher ceiling, a named contact.'
+  },
+  governance_reporting: {
+    slug: 'engine-governance-reporting',
+    name: 'Governance Reporting',
+    price_usd: null,      // [REQUIRES USER INPUT] annual price
+    price_label: '',      // [REQUIRES USER INPUT] must match price_usd exactly
+    free: false,
+    tokens: null,         // [REQUIRES USER INPUT]
+    call_ceiling: null,   // [REQUIRES USER INPUT]
+    term_days: 365,
+    // WORDING IS LOAD-BEARING HERE. This tier delivers aggregate reporting over
+    // records the licensee has already run. It does NOT deliver compliance, a
+    // certification, an accreditation or an audit opinion, and terms.html states
+    // in writing that JRS establishes compliance with no framework. Any surface
+    // rendering this scope must carry that non-establishment clause in the same
+    // block, which scripts/check_zero_drift.py now enforces.
+    scope: 'Aggregate reporting across a reviewed population: measured rate of records that cannot carry their own reasoning, broken out by decision type and business unit. Evidence for a management system you already run. Not a compliance determination.'
+  }
+};
+
+// True only when a tier has a real, agreed price. A null price is a question that
+// has not been answered, and it must never render as a number or as a blank.
+export function isPriced(tier) {
+  return !!(tier && tier.free === false
+            && typeof tier.price_usd === 'number' && tier.price_usd > 0
+            && typeof tier.price_label === 'string' && tier.price_label.length > 0);
+}
+
+export function tierFor(key) {
+  return Object.prototype.hasOwnProperty.call(ENGINE_TIERS, key) ? ENGINE_TIERS[key] : null;
+}
+
 // The free tier. Named here so nothing downstream has to remember that Offer 1
 // has a free public half, and so no surface can quietly start charging for it.
 export const FREE_TIER = {
