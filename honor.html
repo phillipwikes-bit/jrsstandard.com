@@ -81,6 +81,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
     <p class="lede" id="lede">One moment.</p>
   </div>
 </div>
+</main>
 
 <footer>
   <div class="fc">&#169; 2026 JRS&#8482; &middot; Justification Review Standard &nbsp;&middot;&nbsp; Phillip Wikes, principal &middot; <a href="privacy.html" style="color:inherit">Privacy</a> &nbsp;&middot;&nbsp; <a href="check.html" style="color:inherit">Record Defensibility Check</a></div>
@@ -199,8 +200,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
       + '<h2 class="h1-look">Accepted. Thank you, ' + esc(String(res.printed_name).split(' ')[0]) + '.</h2>'
       + '<div class="year">' + esc(res.year) + ' &middot; ' + esc(res.code) + '</div>'
       + '<p class="lede">Your certificate will be issued in the name and title you confirmed, and sent to the address you gave. Here is the citation it carries.</p>'
-      + '<div class="citation"><b>' + esc(res.printed_name) + '</b><br>' + esc(res.printed_title) + '<br><br>' + esc(res.citation) + '</div>
-</main>'
+      + '<div class="citation"><b>' + esc(res.printed_name) + '</b><br>' + esc(res.printed_title) + '<br><br>' + esc(res.citation) + '</div>'
       + '<a href="/api/honor-cert?k=' + encodeURIComponent(qp('k')) + '" target="_blank" rel="noopener" style="text-decoration:none;display:block;margin:0 0 12px"><button type="button">Open my certificate &rarr;</button></a>'
       + '<p class="lede">It opens as a printable page. Use your browser\'s print option to save it as a PDF. The link keeps working, so you do not have to do it now.</p>'
       + '<p class="lede">If anything above should read differently, reply to the message that brought you here and it will be changed. Reopen the link afterwards and the certificate carries the correction.</p>';
