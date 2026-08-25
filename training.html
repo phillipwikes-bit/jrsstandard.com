@@ -478,7 +478,7 @@ a:hover{text-decoration:underline}
 .csn-link.csn-active{color:var(--accent);border-bottom-color:var(--accent)}
 .csn-link:hover{color:var(--text)}
 /* Focus mode: a clean, training-only view (six modules + Reviewer Reference + certificate). Triggered by ?focus=1 in the link. Hides the hero, role paths, simulations, kit docs, survey, and navigation so there is exactly one path. */
-body.focus-mode > *:not(#training-modules):not(#cert-section):not(footer):not(#gate-overlay):not(#enroll-overlay):not(script):not(.skip-link){display:none !important}
+body.focus-mode > *:not(#training-modules):not(#cert-section):not(footer):not(#enroll-overlay):not(script):not(.skip-link){display:none !important}
 body.focus-mode #module-list ~ *{display:none !important}
 body.focus-mode #participation-survey{display:none !important}
 body.focus-mode #training-modules{border-top:none;padding-top:34px}
@@ -1855,10 +1855,10 @@ renderFM();
       <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
     </div>
   <div id="preview-banner" style="display:none;background:var(--surface2);border:1px solid var(--accent-dim);border-left:3px solid var(--accent);padding:14px 16px;margin-bottom:16px">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:5px">Preview</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:5px">Open access</div>
     <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between">
-      <span style="font-size:12.5px;color:var(--muted);line-height:1.5;flex:1 1 260px">Module 1 is open to read. Register free to unlock all six modules and your certificate.</span>
-      <button onclick="openEnroll()" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:11px 18px;cursor:pointer;flex:0 0 auto">Register free</button>
+      <span style="font-size:12.5px;color:var(--muted);line-height:1.5;flex:1 1 260px">All six modules are open to read right now. Add your name only when you want the certificate issued in it.</span>
+      <button onclick="openEnroll()" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:11px 18px;cursor:pointer;flex:0 0 auto">Name my certificate</button>
     </div>
   </div>
   <div class="module-list" id="module-list">
@@ -2760,9 +2760,8 @@ function toggleModule(idx) {
   var panel = document.getElementById('module-panel-' + idx);
   var btn = document.getElementById('module-btn-' + idx);
   if (!panel) return;
-  // Preview mode: Module 1 (idx 0) is open to invited visitors; opening any
-  // later module prompts registration instead.
-  if (window._jrsPreview && idx >= 1) { openEnroll(); return; }
+  // No module is locked. Registration is asked for at the certificate, which
+  // needs a name on it, and nowhere else.
   var isOpen = panel.classList.contains('open');
   // Close all panels
   document.querySelectorAll('.module-panel').forEach(function(p) { p.classList.remove('open'); });
@@ -3130,21 +3129,11 @@ function submitPoll() {
   if (result) { result.style.display='block'; result.scrollIntoView({behavior:'smooth',block:'nearest'}); }
 }
 </script>
-<div id="gate-overlay" style="display:none;position:fixed;inset:0;background:rgba(5,5,5,.97);z-index:99999;align-items:flex-start;justify-content:center;padding:24px;overflow:auto;font-family:'Inter',sans-serif">
-  <div style="max-width:460px;width:100%;background:var(--surface);border:1px solid var(--rule);padding:26px 24px;margin:24px 0">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:10px">JRS Training &amp; Certification</div>
-    <h2 style="font-family:'Bodoni Moda',serif;font-weight:400;font-size:23px;color:var(--text);margin:0 0 8px">By invitation</h2>
-    <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 14px">The six-module JRS training and certificate are currently offered to a founding partner organization and to JRS research participants. Access opens through an invitation link from your organization.</p>
-    <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 16px">The JRS review materials are open to everyone: the Review Controls PDF, the Investigator Field Guide, and the Rapid Review Card are free downloads with no invitation required.</p>
-    <a href="index.html#section-tools" style="display:block;text-align:center;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;text-decoration:none;padding:13px;margin-bottom:10px">Open the free materials</a>
-    <a href="mailto:info@jrsstandard.com?subject=JRS%20training%20access" style="display:block;text-align:center;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px solid var(--rule);padding:13px">Request access</a>
-  </div>
-</div>
 <div id="enroll-overlay" style="display:none;position:fixed;inset:0;background:rgba(5,5,5,.94);z-index:99999;align-items:flex-start;justify-content:center;padding:24px;overflow:auto;font-family:'Inter',sans-serif">
   <div style="max-width:460px;width:100%;background:var(--surface);border:1px solid var(--accent);padding:26px 24px;margin:24px 0">
     <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:10px">JRS Training &amp; Certification</div>
     <h2 style="font-family:'Bodoni Moda',serif;font-weight:400;font-size:23px;color:var(--text);margin:0 0 8px">Start Your JRS Certification</h2>
-    <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 10px">Six modules, worked at your own pace, ending in a certificate in your name. Free for practitioners. Register once and it stays unlocked on this device.</p>
+    <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 10px">The six modules are already open and stay open. This puts your name on the certificate at the end, which is the only thing it is needed for. Free for practitioners.</p>
     <p style="font-size:11.5px;color:var(--muted-soft);line-height:1.6;border-left:2px solid var(--accent-dim);padding-left:10px;margin:0 0 16px">Written by <b style="color:var(--muted);font-weight:500">Phillip Wikes</b>, former Lead Civil Rights Officer, Maryland Commission on Civil Rights. Every reviewer who has started this training has finished it.</p>
     <input id="en-name" type="text" placeholder="Full name" autocomplete="name" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;margin-bottom:9px">
     <input id="en-email" type="email" placeholder="Work email" autocomplete="email" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;margin-bottom:14px">
@@ -3155,67 +3144,80 @@ function submitPoll() {
     <div id="en-terms" style="display:none;border:1px solid var(--accent-dim);background:var(--surface2);padding:13px 14px;margin:0 0 12px;font-size:12px;color:var(--muted);line-height:1.6">Ticking the box means three things and no more: contact me about the JRS project, store my details securely, and allow that record to travel with the project if the JRS assets are ever transferred to a successor. It does <b style="color:var(--text)">not</b> publish your name. Being listed in the public Registry is a separate, optional choice offered after your certificate is issued. Full detail in the <a href="privacy.html#consent" style="color:var(--accent)">Privacy Policy</a>.</div>
     <div id="en-msg" style="font-size:12px;color:var(--review-text);min-height:16px;margin-bottom:8px"></div>
     <button id="en-go" onclick="enrollSubmit()" style="width:100%;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:13px;cursor:pointer">Start module 1 now</button>
-    <p style="font-size:11px;color:var(--ready-text);text-align:center;margin:9px 0 0">Free access &middot; No credit card &middot; Module 1 opens straight away</p>
-    <div id="en-dismiss" style="display:none;text-align:center;margin-top:12px"><a href="#" onclick="dismissEnroll();return false;" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none">Keep previewing Module 1</a></div>
+    <p style="font-size:11px;color:var(--ready-text);text-align:center;margin:9px 0 0">Free &middot; No credit card &middot; The training is already open below</p>
+    <div id="en-dismiss" style="display:none;text-align:center;margin-top:12px"><a href="#" onclick="dismissEnroll();return false;" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none">Back to the training</a></div>
     <p style="font-size:10.5px;color:var(--muted-soft);line-height:1.55;margin:12px 0 0">Your details are stored securely and used only for the JRS project. Request access or deletion any time at info@jrsstandard.com. See the <a href="privacy.html" style="color:var(--accent-dim)">Privacy Policy</a>.</p>
   </div>
 </div>
 <script>
-// ── ACCESS GATE ───────────────────────────────────────────
-// The training is offered by invitation: distributed to organizations and
-// reviewers via an opaque access code carried in a neutral "JRS training" link
-// (the URL never names anyone). One shared invite code unblocks access for
-// everyone the code is handed to. Per-recipient attribution rides on an
-// optional &src=<tag> appended to the same link, captured passively at
-// enrollment, so each organization or channel can still be measured separately
-// without minting a new code. Cold visitors with no code see the by-invitation
-// screen; the public Investigator Field Guides stay open to everyone.
+// ── CHANNEL ATTRIBUTION ─────────────────────────────
+// THE BY-INVITATION WALL WAS REMOVED ON 2026-08-25 ON THE OWNER'S DIRECTIVE.
+// The training and the guides are given away free, so a cold visitor now lands
+// straight in Module 1 with nothing in front of it: no code, no overlay, no
+// registration. Modules 2 to 6 are open on the same terms.
+//
+// WHAT SURVIVES, AND WHY. The ?access= codes already handed out in DMs, in
+// api/contributor.js:418 and on /reviewer/ are still parsed here, but ONLY to
+// tag the channel. Deleting the parser would not break those links, it would
+// silently stop attributing every enrollment that arrives through one, which is
+// the measurement the roster depends on. A code is now a label, never a key.
+//
+// The 'jrs-training-access' localStorage key is gone with the wall. Its only
+// job was remembering that a visitor had passed the gate, and there is no gate
+// to pass. Channel now lives as a sub-key of 'jrs-training-progress', which is
+// where CLAUDE.md requires training-flow state to live.
 function jrsAccessParam(k){ try { return (new URLSearchParams(location.search)).get(k) || ''; } catch(e){ return ''; } }
 function jrsAccessClean(s){ return (s||'').toLowerCase().replace(/[^a-z0-9_-]/g,'').slice(0,40); }
 (function(){
-  var ACCESS_CODES = {
-    'k7m2p9x4t1c8': 'invite',  // original opaque code: existing links in the wild still work
-    'reviewer':     'invite',  // memorable aliases (the gate is a soft by-invitation screen,
-    'jrs-reviewer': 'invite',  // not a secret, so a friendly word is fine and easier to share)
+  // Labels only. Every one of these still resolves to a channel tag so links
+  // already in the wild keep attributing, and an unknown code is simply ignored
+  // rather than turned away.
+  var CHANNEL_CODES = {
+    'k7m2p9x4t1c8': 'invite',
+    'reviewer':     'invite',
+    'jrs-reviewer': 'invite',
     'jrs2026':      'invite'
   };
-  var stored = {};
-  try { stored = JSON.parse(localStorage.getItem('jrs-training-access') || '{}'); } catch(e){ stored = {}; }
 
   var code = jrsAccessClean(jrsAccessParam('access'));
   var src  = jrsAccessClean(jrsAccessParam('src'));
-  var granted = false, channel = '';
 
-  // A valid code grants access; an explicit &src tag (when present) wins for
-  // attribution, otherwise the code's own tag is used.
-  if (code && ACCESS_CODES[code]) { granted = true; channel = src || ACCESS_CODES[code]; }
-  else if (src === 'panel') { granted = true; channel = 'panel'; }
-  else if (stored.granted || localStorage.getItem('jrs-training-enrolled') === '1') { granted = true; channel = stored.channel || ''; }
-
-  window._jrsChannel = channel || (stored.channel || '');
-
-  if (granted) {
-    try { localStorage.setItem('jrs-training-access', JSON.stringify({ granted:true, channel: window._jrsChannel })); } catch(e){}
-    try {
-      if (!localStorage.getItem('jrs-training-enrolled')) {
-        // Preview mode: an invited visitor may read Module 1 before registering.
-        // Modules 2 to 6 and the certificate stay gated behind registration, so
-        // the identity capture still happens, just after a genuine look inside.
-        window._jrsPreview = true;
-        var pb = document.getElementById('preview-banner');
-        if (pb) pb.style.display = 'block';
-      }
-    } catch(e){}
-  } else {
-    var g = document.getElementById('gate-overlay');
-    if (g) g.style.display = 'flex';
+  // An explicit &src wins, then the code's own tag, then whatever a previous
+  // visit recorded. Nothing here decides whether the page opens.
+  var channel = src || CHANNEL_CODES[code] || '';
+  if (!channel) {
+    try { channel = (progress && progress.channel) || ''; } catch(e) { channel = ''; }
   }
+  window._jrsChannel = channel;
+
+  if (channel) {
+    try {
+      progress.channel = channel;
+      localStorage.setItem('jrs-training-progress', JSON.stringify(progress));
+    } catch(e){}
+  }
+
+  // Nobody is in preview any more. The flag is kept defined so any later
+  // reference reads false rather than undefined.
+  window._jrsPreview = false;
+
+  // The certificate needs a name, so an unregistered reader is offered the
+  // registration once, as a strip above the modules. It is an offer, not a
+  // lock: every module below it is already open.
+  try {
+    if (localStorage.getItem('jrs-training-enrolled') !== '1') {
+      var pb = document.getElementById('preview-banner');
+      if (pb) pb.style.display = 'block';
+    }
+  } catch(e){}
 })();
 function openEnroll(){
   var o = document.getElementById('enroll-overlay');
   if (o) o.style.display = 'flex';
+  // Always offered, never forced. This overlay is now only ever opened by the
+  // reader pressing a button, so it must always carry a way back out.
   var dl = document.getElementById('en-dismiss');
-  if (dl) dl.style.display = window._jrsPreview ? 'block' : 'none';
+  if (dl) dl.style.display = 'block';
 }
 function dismissEnroll(){
   var o = document.getElementById('enroll-overlay');
@@ -3281,7 +3283,7 @@ function enrollSubmit(){
       inner.innerHTML =
         '<div style="font-family:\'JetBrains Mono\',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:10px">Registered</div>'
       + '<h2 style="font-family:\'Bodoni Moda\',serif;font-weight:400;font-size:23px;color:var(--text);margin:0 0 8px">You are in</h2>'
-      + '<p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 14px">The six modules and the certificate are unlocked on this device. Finish all six and you carry the designation <b style="color:var(--text)">JRS Certified Master Reviewer</b>, and you may request a written LinkedIn recommendation from the creator of the standard.</p>'
+      + '<p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 14px">Your certificate will be issued in that name. Finish all six modules and you carry the designation <b style="color:var(--text)">JRS Certified Master Reviewer</b>, and you may request a written LinkedIn recommendation from the creator of the standard.</p>'
       + '<a href="org-pilot.html' + q + '" style="text-decoration:none"><button type="button" style="width:100%;font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:13px;cursor:pointer;margin-bottom:10px">Run the diagnostic on my records</button></a>'
       + '<button type="button" onclick="document.getElementById(\'enroll-overlay\').style.display=\'none\'" style="width:100%;font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--accent);border:1px solid var(--accent);padding:13px;cursor:pointer">Start the training</button>';
     })

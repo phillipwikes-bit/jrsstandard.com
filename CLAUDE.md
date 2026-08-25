@@ -186,8 +186,11 @@ Other self-contained tools may use their own single scoped key, namespaced to th
 | `jrs-ai-pilot` | `ai-records-pilot.html` | AI-records reviewer code + per-record reads (resume progress) |
 | `jrs-endorsed-<campaign>` | `access.html` | one-endorsement-per-browser guard on the fallback write, used only when a reader reaches the campaign screen without passing through `/api/support` |
 | `jrs-gate-view` | `access.html` | `sessionStorage`, one campaign-screen arrival per tab session |
+| `jrs-training-enrolled`, `jrs-training-email` | `training.html` | registration completed on this device, and the address the certificate goes to. **Documented 2026-08-25**: both were already live and in use but had never been entered here, which is the drift this table exists to prevent |
 
 **Removed 2026-08-12:** `jrs-owner-token`. The owner surfaces need no key of any kind; both are secured by opaque, unlinked slugs. Do not reintroduce a token control.
+
+**Removed 2026-08-25:** `jrs-training-access`. It existed only to remember that a visitor had cleared the by-invitation overlay on `training.html`. **That overlay is gone and must not return**: the training and the guides are given away free, so a cold visitor now lands directly in Module 1 and all six modules are open with no code and no registration. Registration is asked for once, as a dismissible offer, because the certificate needs a name on it. The `?access=` codes already handed out in DMs, in `api/contributor.js` and on `/reviewer/` are still parsed, but **only to tag a channel, never to admit anyone**. `scripts/check_zero_drift.py::check_training_is_ungated` fails if the wall, the access-granting logic, the module lock or this key reappears.
 
 Do not introduce keys beyond this list without adding them here first.
 
@@ -197,6 +200,7 @@ Do not introduce keys beyond this list without adding them here first.
 | `0` – `5` | `boolean` | Module completion state |
 | `survey` | `object` | Survey group → selected button text |
 | `role` | `string` | Selected role key (`hr`, `compliance`, `investigator`, `er`, `admin`) |
+| `channel` | `string` | Attribution tag from `?src=` or a legacy `?access=` code. **Added 2026-08-25** when the by-invitation wall was removed, replacing the retired `jrs-training-access` key |
 
 **Restore pattern** (runs after `updateProgressDisplay()` on page load):
 ```javascript

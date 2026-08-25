@@ -1796,6 +1796,68 @@ def check_style_tags_balanced(offline):
           else "%d pages, every <style> opened and closed once" % len(_html_files()))
 
 
+def check_training_is_ungated(offline):
+    """The training must open to a cold visitor with nothing in front of it.
+
+    The owner gives the training and the guides away free and has said so
+    repeatedly. Until 2026-08-25 training.html still put a full-screen
+    "By invitation" overlay in front of every visitor who arrived without a
+    code, and locked modules 2 to 6 behind a registration form. A wall in front
+    of a thing you are giving away costs you the audience without earning
+    anything, and it contradicts the copy on the pages that link to it.
+
+    This guard fails if any part of that wall comes back:
+
+      1. the by-invitation overlay element,
+      2. a code table used to DECIDE access rather than to label a channel,
+      3. the preview lock that sent later modules to the registration form,
+      4. the retired jrs-training-access localStorage key.
+
+    Channel attribution is deliberately NOT checked against, because
+    ?access= links already handed out must keep tagging their source. The
+    distinction this guard enforces is between a code that labels and a code
+    that admits.
+    """
+    src = read("training.html")
+    if not src:
+        check("training.html is readable", False, "file missing or empty")
+        return
+
+    check("no by-invitation overlay in training.html",
+          'id="gate-overlay"' not in src,
+          "gate-overlay element is present" if 'id="gate-overlay"' in src else "absent")
+
+    # A code table is fine as a label map. It is not fine as a gate, and the
+    # tell is the old name plus a granted flag driven by it.
+    gate_shapes = [
+        "ACCESS_CODES",
+        "granted = true",
+        "granted = false",
+        "stored.granted",
+    ]
+    present = [g for g in gate_shapes if g in src]
+    check("no access-granting logic in training.html",
+          not present,
+          ("found " + ", ".join(present)) if present else "channel attribution only")
+
+    check("no module is locked behind registration",
+          "_jrsPreview && idx" not in src,
+          "preview lock re-added" if "_jrsPreview && idx" in src else "all six modules open")
+
+    # The key went with the wall. A write would mean the wall's state machine
+    # is being rebuilt around it.
+    check("retired jrs-training-access key is not written",
+          "setItem('jrs-training-access'" not in src
+          and 'setItem("jrs-training-access"' not in src,
+          "key write re-added" if "setItem('jrs-training-access'" in src else "absent")
+
+    # The offer must survive too. Removing the wall is only correct if the
+    # certificate can still be claimed, which needs a name.
+    check("certificate registration is still reachable",
+          'id="enroll-overlay"' in src and "openEnroll()" in src,
+          "enroll overlay and its trigger present")
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -1826,6 +1888,7 @@ def main():
                check_retention_claim_is_scoped,
                check_robots_directives_coherent,
                check_style_tags_balanced,
+               check_training_is_ungated,
                check_generated_docs_current, check_cross_endpoint):
         try:
             fn(offline)
