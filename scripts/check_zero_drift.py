@@ -1216,6 +1216,24 @@ def check_no_price_literals_in_html(offline):
         # rather than a price, and $ in a regex is not a currency symbol.
         body = re.sub(r"<style[^>]*>.*?</style>", " ", body, flags=re.S | re.I)
         body = re.sub(r"<script[^>]*>.*?</script>", " ", body, flags=re.S | re.I)
+        # NARROW, DOCUMENTED EXCEPTION, 2026-08-25.
+        #
+        # The JRS DUAL TRACK STRATEGY block carries licence BANDS ($7,500 to
+        # $15,000 setup, $15,000 to $40,000+ annual) inside narrative copy the
+        # owner supplied verbatim. Those are not offer prices and have no
+        # counterpart in api/_offer-config.js, so binding them to it is not
+        # possible and the single-source rule does not apply to them.
+        #
+        # The exception is scoped to this ONE marked block. A price literal
+        # anywhere else on the same page still fails. It is written as a strip
+        # rather than a file-level allowlist precisely so it cannot be widened by
+        # accident: a new price outside the markers is still caught.
+        #
+        # Publishing those bands is a commercial decision, flagged separately in
+        # research/DUAL_TRACK_COPY_REVIEW_2026-08-25.md, not a drift defect.
+        body = re.sub(
+            r"<!-- JRS DUAL TRACK STRATEGY v1.*?<!-- /JRS DUAL TRACK STRATEGY v1 -->",
+            " ", body, flags=re.S)
         for m in pat.finditer(body):
             hits.append("%s: %s" % (rel, m.group(0)))
     check("no price literal in any HTML file", not hits,
