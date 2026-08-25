@@ -66,6 +66,37 @@ function str(v, n) {
   return String(v == null ? '' : v).slice(0, n || 300);
 }
 
+// TEST AND OWNER ROWS NEVER APPEAR IN THE INBOX.
+//
+// Three rows landed in the live inbox on 2026-08-25 from the repository audit's
+// end-to-end capture test. They were correctly stored, because the capture path
+// worked exactly as designed, and that is the point: this endpoint cannot tell a
+// real buyer from a self-test by looking at the write path, so it filters on the
+// content the test itself stamps.
+//
+// Filtering here is deliberate and is NOT a substitute for deleting the rows.
+// The dashboard is a queue of people waiting for a reply, and a test row in that
+// queue is noise that trains the reader to skim. Deletion needs the service key
+// and is the owner's action; this makes the queue correct in the meantime.
+const TEST_MARKERS = [
+  'audit test',
+  'do not contact',
+  'safe to delete',
+  'selftest',
+  'deploytest',
+  'test row'
+];
+
+function isTestRow(row) {
+  const hay = [row.name, row.email, row.organization]
+    .map(function (v) { return String(v == null ? '' : v).toLowerCase(); })
+    .join(' | ');
+  for (let i = 0; i < TEST_MARKERS.length; i++) {
+    if (hay.indexOf(TEST_MARKERS[i]) !== -1) return true;
+  }
+  return false;
+}
+
 export default async function handler(req) {
   if (req.method !== 'GET') return json({ error: 'method_not_allowed' }, 405);
 
@@ -101,8 +132,10 @@ export default async function handler(req) {
   if (!Array.isArray(rows)) rows = [];
 
   const leads = [];
+  let suppressed = 0;
   for (let i = 0; i < rows.length; i++) {
     const r = rows[i] || {};
+    if (isTestRow(r)) { suppressed++; continue; }
     let p = {};
     try { p = JSON.parse(r.message || '{}') || {}; } catch (e) { p = {}; }
     const src = str(r.source, 40);
@@ -166,6 +199,10 @@ export default async function handler(req) {
     generated_at: new Date().toISOString(),
     leads: leads,
     lead_count: leads.length,
+    // Reported rather than hidden. A count that silently drops rows is the same
+    // defect this programme measures, so the number of suppressed rows is shown
+    // and the owner can see that suppression is happening at all.
+    suppressed_test_rows: suppressed,
     attempts: attempts,
     attempt_count: attempts.length,
     attempts_unconfigured: unconfigured,

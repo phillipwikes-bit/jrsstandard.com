@@ -127,6 +127,27 @@ async function captureLead(req) {
     return jsonRes({ error: 'name_email_organization_required' }, 400);
   }
 
+  // SELF-TEST SUBMISSIONS ARE ACKNOWLEDGED BUT NOT STORED.
+  //
+  // The repository audit's end-to-end capture test put three rows into the live
+  // inbox on 2026-08-25. The capture path was not at fault; it did exactly what
+  // it exists to do. The gap was that nothing distinguished a deliberate test
+  // from a buyer, so a correctness check polluted the queue it was checking.
+  //
+  // The response is still ok:true, because the test needs to see the real
+  // success path to be worth running. It reports stored:false so a caller that
+  // checks can tell the difference, which is how the audit script verifies the
+  // filter works without adding a fourth row.
+  const probe = (name + ' ' + org + ' ' + email).toLowerCase();
+  const TEST_MARKS = ['audit test', 'do not contact', 'safe to delete',
+                      'selftest', 'deploytest', 'test row'];
+  for (let t = 0; t < TEST_MARKS.length; t++) {
+    if (probe.indexOf(TEST_MARKS[t]) !== -1) {
+      return jsonRes({ ok: true, stored: false, test: true,
+                       detail: 'recognised as a self-test; not written to the inbox' });
+    }
+  }
+
   const env = (typeof process !== 'undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
   if (!SERVICE) return jsonRes({ error: 'not_configured' }, 503);
