@@ -16,7 +16,7 @@ Scoring is mechanical. Every point is tied to something present or absent in the
 | reference | 17 | 87.8% | 17 | 0 | 0 | 0 |
 | keyed-participant | 4 | 82.8% | 0 | 4 | 0 | 0 |
 | internal-tool | 15 | 86.9% | 13 | 2 | 0 | 0 |
-| private-owner | 3 | 72.3% | 1 | 0 | 2 | 0 |
+| private-owner | 3 | 78.4% | 1 | 2 | 0 | 0 |
 
 ## Commercial (9 pages)
 
@@ -117,8 +117,8 @@ Scoring is mechanical. Every point is tied to something present or absent in the
 | Page | Grade | Score | Inbound | Failed dimensions |
 |---|---|---|---|---|
 | `programme-status-9872fb93cc94.html` | **A-** | 90% | 0 | meta description, 40+ chars; canonical link; skip-to-content link |
-| `vp-7c1f9a4e8d2b6035.html` | **C+** | 65% | 2 | meta description, 40+ chars; canonical link; no analytics; referrer suppressed; not linked from any public page (2 inbound) |
-| `acquisition-9f3c2a7d4b.html` | **C+** | 62% | 2 | meta description, 40+ chars; canonical link; skip-to-content link; no analytics; referrer suppressed; not linked from any public page (2 inbound) |
+| `vp-7c1f9a4e8d2b6035.html` | **B** | 74% | 2 | meta description, 40+ chars; canonical link; no analytics; referrer suppressed |
+| `acquisition-9f3c2a7d4b.html` | **B** | 72% | 2 | meta description, 40+ chars; canonical link; skip-to-content link; no analytics; referrer suppressed |
 
 ## Summary Block
 
@@ -126,7 +126,7 @@ Scoring is mechanical. Every point is tied to something present or absent in the
 JRS PAGE GRADE, ENTERPRISE TRACK READINESS
 
   pages graded            72
-  site mean score         86.3%
+  site mean score         86.6%
   COMMERCIAL mean score   80.9%  (9 pages)
 
   commercial page grades

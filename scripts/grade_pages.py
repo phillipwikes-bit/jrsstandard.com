@@ -182,8 +182,15 @@ def grade_page(p, b):
     elif r == "private-owner":
         add("no analytics", "googletagmanager" not in b and "gtag(" not in b, 10)
         add("referrer suppressed", 'name="referrer"' in b, 6)
-        add("not linked from any public page", INBOUND[p] == 0, 8,
-            "%d inbound" % INBOUND[p])
+        # Count PUBLIC inbound only. The first version counted any inbound link,
+        # so acquisition and vp failed for being linked from each other and from
+        # programme-status, which are themselves private. Private surfaces
+        # linking to each other is the design, not a leak.
+        pub_in = sum(1 for q in ALL
+                     if q != p and os.path.basename(q) not in PRIVATE
+                     and os.path.basename(p) in BODIES[q])
+        add("not linked from any PUBLIC page", pub_in == 0, 8,
+            "%d public inbound" % pub_in)
 
     earned = sum(e for _, e, _, _ in pts)
     total = sum(t for _, _, t, _ in pts)
