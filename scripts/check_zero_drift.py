@@ -1615,8 +1615,23 @@ def check_dual_track_band(offline):
 
     # PLACEMENT, not just presence. Measured against visible text with script and
     # style stripped, because a band buried below the fold is a band nobody sees.
+    #
+    # training.html IS DELIBERATELY EXEMPT FROM THE TOP-OF-PAGE RULE, 2026-08-25.
+    # On that page the band is not a positioning statement, it is an obstacle.
+    # It sat between the headline and the first module and, on a 390px phone,
+    # filled a screen and a half of enterprise licensing copy in front of a
+    # reader who had come for the six free modules. The owner opened the page,
+    # saw B2B API copy where the training should be, and reported it broken.
+    #
+    # The band still has to be there and still has to be byte-identical, which
+    # the check above enforces. On this one page it must sit AFTER the module
+    # list instead of before it, and that ordering is asserted below rather than
+    # left to whoever edits the file next.
+    TRAINING_EXEMPT = "training.html"
     buried = []
     for p in DUAL_TRACK_PAGES:
+        if p == TRAINING_EXEMPT:
+            continue
         try:
             body = read(p)
         except Exception:
@@ -1634,8 +1649,18 @@ def check_dual_track_band(offline):
             buried.append("%s (%.1f%% down)" % (p, 100.0 * i / len(vis)))
     check("dual-track band sits near the top of each page", not buried,
           "; ".join(buried) if buried
-          else "all %d pages place it within the first 12%% of visible text"
-               % len(DUAL_TRACK_PAGES))
+          else "all %d pages place it within the first 12%% of visible text "
+               "(training.html exempt, see below)"
+               % (len(DUAL_TRACK_PAGES) - 1))
+
+    # The exemption is not a free pass. On training.html the band must come
+    # AFTER the modules, which is the whole point of exempting it.
+    tsrc = read(TRAINING_EXEMPT)
+    i_mod = tsrc.find('id="module-list"')
+    i_band = tsrc.find("The Enterprise Platform Track")
+    check("on training.html the dual-track band sits after the modules",
+          i_mod > 0 and i_band > i_mod,
+          "module-list=%d band=%d" % (i_mod, i_band))
 
     # Track 2 is a promise, not decoration. If the band ever stops saying the
     # public material is free, that is a reversal of a locked decision.
