@@ -2002,6 +2002,81 @@ def check_dual_track_phone_compaction(offline):
               "targets the enterprise card only")
 
 
+def check_inline_scripts_parse(offline):
+    """Every inline script on every page must parse.
+
+    On 2026-08-25 a rendered-page audit found three pages serving almost nothing:
+    coauthor.html rendered 24 characters of text and no heading, contributor.html
+    175, honor.html 195. The cause was the same on all three: a `</main>` tag had
+    been inserted INSIDE a JavaScript string literal, breaking the string across
+    a newline, so the whole script failed to parse and nothing on the page ran.
+
+    coauthor.html is the co-author confirmation form. Its links were already live
+    and had been sent to three people. Every source checker in this repository
+    passed the whole time, because a broken string is still valid-looking HTML.
+
+    Parsing is delegated to node --check, which is the same parser a browser
+    uses in spirit and does not need the page to load. Script blocks with a
+    non-JavaScript type, notably application/ld+json, are skipped: they are data,
+    not code, and feeding JSON to a JavaScript parser produces a false failure.
+    That false failure was observed on decision-reconstruction-risk.html the
+    first time this ran.
+    """
+    import glob
+    import subprocess
+    import tempfile
+
+    JS_TYPES = ("", "text/javascript", "application/javascript", "module")
+    pages = []
+    for pat in ("*.html", "*/*.html", "*/*/*.html"):
+        for p in glob.glob(os.path.join(ROOT, pat)):
+            rel = os.path.relpath(p, ROOT)
+            if rel.split(os.sep)[0] in ("research", "templates", "scripts",
+                                        "node_modules"):
+                continue
+            pages.append(rel)
+    pages = sorted(set(pages))
+
+    broken, blocks = [], 0
+    for rel in pages:
+        src = read(rel)
+        for i, m in enumerate(re.finditer(
+                r"<script([^>]*)>(.*?)</script>", src, re.S)):
+            attrs, body = m.group(1), m.group(2)
+            if re.search(r"\bsrc\s*=", attrs):
+                continue
+            t = re.search(r'type\s*=\s*["\']([^"\']+)["\']', attrs)
+            if t and t.group(1).strip().lower() not in JS_TYPES:
+                continue
+            if not body.strip():
+                continue
+            blocks += 1
+            fh = tempfile.NamedTemporaryFile("w", suffix=".js", delete=False,
+                                             encoding="utf-8")
+            fh.write(body)
+            fh.close()
+            try:
+                r = subprocess.run(["/opt/node22/bin/node", "--check", fh.name],
+                                   capture_output=True, text=True, timeout=20)
+            except Exception as e:
+                check("inline scripts parse", SKIPPED, "node unavailable: %r" % (e,))
+                return
+            finally:
+                try:
+                    os.unlink(fh.name)
+                except Exception:
+                    pass
+            if r.returncode != 0:
+                msg = [l for l in r.stderr.strip().split("\n")
+                       if "SyntaxError" in l]
+                broken.append("%s block %d: %s"
+                              % (rel, i, (msg[0] if msg else "parse failed")[:60]))
+
+    check("every inline script on every page parses", not broken,
+          "; ".join(broken[:4]) if broken
+          else "%d script blocks across %d pages" % (blocks, len(pages)))
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -2033,6 +2108,7 @@ def main():
                check_retention_claim_is_scoped,
                check_robots_directives_coherent,
                check_style_tags_balanced,
+               check_inline_scripts_parse,
                check_training_is_ungated,
                check_training_modules_are_findable,
                check_generated_docs_current, check_cross_endpoint):
