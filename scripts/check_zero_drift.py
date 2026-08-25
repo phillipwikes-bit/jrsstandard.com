@@ -1761,6 +1761,41 @@ def check_robots_directives_coherent(offline):
           else "sitemap membership agrees with every robots directive")
 
 
+def check_style_tags_balanced(offline):
+    """A page must not carry a nested or orphaned <style> tag.
+
+    Found live on 2026-08-25 on audit-request, governance-request and
+    calibration-request, and pre-existing in HEAD: each opened <style> twice.
+    <style> cannot nest, so the browser closed the element at the first
+    </style> and rendered everything after it, roughly thirty lines of CSS, as
+    VISIBLE TEXT on the page. Those three surfaces carry every recorded
+    purchase attempt on this site.
+
+    Nothing in the grader or the link checker could see it, because the markup
+    was well formed by tag count and every link resolved. Only counting opens
+    against closes catches it.
+    """
+    bad = []
+    for rel in _html_files():
+        try:
+            body = read(rel)
+        except Exception:
+            continue
+        opens = [m.start() for m in re.finditer(r"<style[^>]*>", body)]
+        closes = [m.start() for m in re.finditer(r"</style>", body)]
+        if len(opens) != len(closes):
+            bad.append("%s (%d open, %d close)" % (rel, len(opens), len(closes)))
+            continue
+        for i in range(len(opens) - 1):
+            nxt = [c for c in closes if c > opens[i]]
+            if nxt and opens[i + 1] < nxt[0]:
+                bad.append("%s (nested <style>)" % rel)
+                break
+    check("no nested or orphaned <style> tag", not bad,
+          "; ".join(bad[:4]) if bad
+          else "%d pages, every <style> opened and closed once" % len(_html_files()))
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -1790,6 +1825,7 @@ def main():
                check_no_internal_voice_copy,
                check_retention_claim_is_scoped,
                check_robots_directives_coherent,
+               check_style_tags_balanced,
                check_generated_docs_current, check_cross_endpoint):
         try:
             fn(offline)

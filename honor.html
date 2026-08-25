@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://www.jrsstandard.com/honor.html">
 <title>Global Governance and Transparency Honor &middot; JRS</title>
 <meta name="robots" content="noindex">
 <meta name="description" content="Accept the Global Governance and Transparency Honor and confirm how your name and title should appear.">
@@ -44,10 +45,33 @@ button:disabled{opacity:.55;cursor:default}
 .fine{font-size:10.5px;color:var(--muted-soft);line-height:1.55;margin-top:14px}
 footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
 .fc{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft)}
+
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--accent);color:#050505;padding:10px 16px;z-index:100;font-family:'JetBrains Mono',monospace;font-size:11px}
+.skip-link:focus{left:0}
+
+.h1-look{font-family:'Bodoni Moda',serif;font-weight:400;font-size:27px;margin:0 0 10px;line-height:1.25;color:var(--text);text-transform:none;letter-spacing:0;border:0;padding:0}
+
+/* MOBILE FIX PACK, 2026-08-25. Appended, never editing an existing rule.
+   1. Form fields at 16px. Below 16px iOS Safari zooms the whole page on focus
+      and the visitor lands mid-layout with no way back except pinching.
+   2. Tables scroll inside their own box instead of forcing the page sideways.
+   3. Tap targets reach 44px, the minimum a thumb hits reliably.
+   4. Long tokens wrap instead of pushing the body wider than the screen. */
+input,select,textarea{font-size:16px!important}
+table{display:block;overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+button,.btn,.cta-primary,input[type=submit]{min-height:44px}
+@media (max-width:640px){
+  body{overflow-x:hidden}
+  img,svg,video,pre{max-width:100%;height:auto}
+  pre,code{white-space:pre-wrap;word-break:break-word}
+  h1,.h1-look{font-size:23px;line-height:1.3}
+  .wrap,.container,.container-wide{padding-left:16px;padding-right:16px}
+}
 </style>
 </head>
 <body>
-<div class="wrap">
+<a href="#main-content" class="skip-link">Skip to content</a>
+<main id="main-content"><div class="wrap">
   <a href="index.html" class="wordmark">JRS<span style="font-size:10px;vertical-align:super;position:relative;top:-3px;">&#8482;</span></a>
 
   <div id="stage">
@@ -81,14 +105,14 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
   function render404(){
     stage.innerHTML =
       '<div class="seal">Global Governance &amp; Transparency Honor</div>'
-    + '<h1>This link is not recognised</h1>'
+    + '<h2 class="h1-look">This link is not recognised</h2>'
     + '<p class="lede">Honor links are issued individually and are not guessable. If you were sent one and it is not working, reply to the message that brought you here, or write to <a href="mailto:info@jrsstandard.com">info@jrsstandard.com</a>.</p>';
   }
 
   function renderForm(d){
     stage.innerHTML =
       '<div class="seal">' + esc(d.honor) + '</div>'
-    + '<h1>' + esc(d.first) + ', you have been named an honoree.</h1>'
+    + '<h2 class="h1-look">' + esc(d.first) + ', you have been named an honoree.</h2>'
     + '<div class="year">' + esc(d.year) + ' &middot; ' + esc(d.code) + ' &middot; ' + esc(d.order) + '</div>'
     + '<p class="lede">This is the citation as it will read on your certificate. Nothing is issued until you confirm it below, and nothing is published without your say-so.</p>'
     + '<div class="citation">' + esc(d.citation) + '</div>'
@@ -172,10 +196,11 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     .then(function(res){
       stage.innerHTML =
         '<div class="seal">' + esc(res.honor) + '</div>'
-      + '<h1>Accepted. Thank you, ' + esc(String(res.printed_name).split(' ')[0]) + '.</h1>'
+      + '<h2 class="h1-look">Accepted. Thank you, ' + esc(String(res.printed_name).split(' ')[0]) + '.</h2>'
       + '<div class="year">' + esc(res.year) + ' &middot; ' + esc(res.code) + '</div>'
       + '<p class="lede">Your certificate will be issued in the name and title you confirmed, and sent to the address you gave. Here is the citation it carries.</p>'
-      + '<div class="citation"><b>' + esc(res.printed_name) + '</b><br>' + esc(res.printed_title) + '<br><br>' + esc(res.citation) + '</div>'
+      + '<div class="citation"><b>' + esc(res.printed_name) + '</b><br>' + esc(res.printed_title) + '<br><br>' + esc(res.citation) + '</div>
+</main>'
       + '<a href="/api/honor-cert?k=' + encodeURIComponent(qp('k')) + '" target="_blank" rel="noopener" style="text-decoration:none;display:block;margin:0 0 12px"><button type="button">Open my certificate &rarr;</button></a>'
       + '<p class="lede">It opens as a printable page. Use your browser\'s print option to save it as a PDF. The link keeps working, so you do not have to do it now.</p>'
       + '<p class="lede">If anything above should read differently, reply to the message that brought you here and it will be changed. Reopen the link afterwards and the certificate carries the correction.</p>';

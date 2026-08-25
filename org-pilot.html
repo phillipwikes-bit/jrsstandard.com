@@ -83,10 +83,32 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
 .qbox .opts{display:flex;gap:18px}
 .qbox .opts label{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--text);cursor:pointer}
 .qbox .opts input{width:auto;margin:0}
+
+.step-h{font-family:'Bodoni Moda',serif;font-weight:400;font-size:27px;margin:0 0 10px;line-height:1.25;color:var(--text);text-transform:none;letter-spacing:0;border:0;padding:0}
+
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--accent);color:#050505;padding:10px 16px;z-index:100;font-family:'JetBrains Mono',monospace;font-size:11px}
+.skip-link:focus{left:0}
+
+.dual-track{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin:26px 0}
+.dt-card{border:1px solid var(--rule);background:var(--surface);padding:20px 22px}
+.dt-enterprise{border-left:2px solid var(--accent)}
+.dt-public{border-left:2px solid var(--ready-text)}
+.dt-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:8px}
+.dt-public .dt-tag{color:var(--ready-text)}
+.dt-head{font-family:'Bodoni Moda',serif;font-size:20px;color:var(--text);margin-bottom:9px;line-height:1.25}
+.dt-body{font-family:'Inter',sans-serif;font-size:14px;line-height:1.65;color:var(--muted);margin:0 0 12px}
+.dt-links{display:flex;flex-wrap:wrap;gap:14px}
+.dt-links a{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-dim);padding-bottom:2px}
+.dt-links a:hover{color:var(--text)}
+.track-links{display:flex;flex-wrap:wrap;gap:16px;margin:22px 0;padding-top:16px;border-top:1px solid var(--rule)}
+.track-links a{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);text-decoration:none}
+.track-links a:hover{color:var(--text)}
+.stage-note{border:1px solid var(--rule);background:var(--surface);padding:16px 18px;margin:22px 0;font-family:'Inter',sans-serif;font-size:13.5px;line-height:1.7;color:var(--muted)}
 </style>
 </head>
 <body>
-<div class="wrap">
+<a href="#main-content" class="skip-link">Skip to content</a>
+<main id="main-content"><div class="wrap">
   <a href="index.html" class="wordmark">JRS<span style="font-size:10px;vertical-align:super;position:relative;top:-3px;">&#8482;</span></a>
 
   <!-- STEP 1: organization details -->
@@ -94,7 +116,30 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     <h1>Run JRS on your own records</h1>
     <p class="lede">The Organizational Pilot Package. Paste up to twenty five of your own records, one at a time. Each is assessed against the five review conditions and you get the read immediately. Free, no obligation, and you can stop after one.</p>
     <p class="lede">Running an organizational pilot is confidential. Your records are processed in memory and never stored or retained, and running one carries no public endorsement obligation.</p>
-    <p class="cred">Built by <b>Phillip Wikes</b>, former Lead Civil Rights Officer, Maryland Commission on Civil Rights. The five conditions have been applied record by record by <b><span data-panel="reviewers_all">58</span> international reviewers across three studies</b>, including an expert panel of <b><span data-panel="completers_all">36</span> independent experts across <span data-panel="countries_all">16</span> countries</b>, each completing a full 24-record set.</p>
+    <!-- JRS DUAL TRACK v1 :: CANONICAL BLOCK. Byte-identical on every page that
+     carries it. Customer-facing voice only: no pricing, no internal capacity,
+     no claim that any security assessment is avoided. -->
+<div class="dual-track">
+ <div class="dt-card dt-enterprise">
+  <div class="dt-tag">Track 1 &middot; Enterprise Platform</div>
+  <div class="dt-head">The Enterprise Platform Track</div>
+  <p class="dt-body">Dedicated B2B API licensing of the JRS review engine, so mid-market GRC platforms and legal-tech providers can embed a <b>pre-finalization decision gate</b> directly into their own workflows. One record in, a structured determination across the five review conditions out, returned with a request identifier your audit trail can cite.</p>
+  <p class="dt-body"><b>Stateless, with zero data retention at rest.</b> Record text is assessed in memory and discarded. It is not written to any table, not echoed back, and not logged. Per-partner tokens, revocable independently, on a versioned route. This narrows what a vendor security review has to examine; <b>it does not remove the review</b>, and it is not a substitute for any certification your procurement requires.</p>
+  <div class="dt-links"><a href="review-engine.html">Integration schema</a> <a href="enterprise.html#enterprise-inquiry">Enterprise inquiry</a></div>
+ </div>
+ <div class="dt-card dt-public">
+  <div class="dt-tag">Track 2 &middot; Practitioner</div>
+  <div class="dt-head">The Practitioner Track</div>
+  <p class="dt-body">Open, unencumbered access for individual investigators, HR and compliance officers, and researchers: the core standard, live Decision Reconstruction Risk simulations, the six-module self-paced training, and the investigator field guides.</p>
+  <p class="dt-body"><b>Free, ungated, and staying that way.</b> No account, no card, no expiry, no registration wall.</p>
+  <div class="dt-links"><a href="investigator-guides.html">Field guides</a> <a href="training.html">Training</a> <a href="check.html">Seven-point check</a></div>
+ </div>
+</div>
+<!-- /JRS DUAL TRACK v1 -->
+
+<p class="stage-note"><b style="color:var(--text)">Stage, stated plainly.</b> The review engine behind this pilot is unvalidated and single-model, in operational validation. Reproducibility is disclosed rather than hidden, and reproducibility is not accuracy and not validation. <b>No effectiveness claim is made.</b> What this pilot gives you is a measured distribution across your own records, not a verdict on them.</p>
+
+<p class="cred">Built by <b>Phillip Wikes</b>, former Lead Civil Rights Officer, Maryland Commission on Civil Rights. The five conditions have been applied record by record by <b><span data-panel="reviewers_all">58</span> international reviewers across three studies</b>, including an expert panel of <b><span data-panel="completers_all">36</span> independent experts across <span data-panel="countries_all">16</span> countries</b>, each completing a full 24-record set.</p>
 
     <div class="teaser">
       <div class="teaser-lbl">One of the five questions your records will be asked</div>
@@ -157,7 +202,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
   <!-- STEP 2: the review workspace -->
   <section id="step-run" class="hidden">
     <div class="eyebrow"><span id="run-org"></span> &middot; mini-pilot</div>
-    <h1>Paste a record</h1>
+    <h2 class="step-h">Paste a record</h2>
     <p class="lede">Paste one record, redacted, then run the review. You can do up to twenty five. Each read appears below.</p>
 
     <div class="privacy">
@@ -222,7 +267,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
   <!-- STEP 3: done -->
   <section id="step-done" class="hidden">
     <div class="eyebrow">Pilot recorded</div>
-    <h1>Thank you</h1>
+    <h2 class="step-h">Thank you</h2>
     <p class="lede" id="done-line"></p>
     <div class="card">
       <p style="font-size:13.5px;color:var(--muted);margin-bottom:12px">Your organization is now counted among those that have applied the standard to their own records. The aggregate appears on the public status page, showing counts only, never your organization's results or text unless you agreed to be named.</p>
@@ -245,6 +290,15 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
 
 <footer>
   <div class="fc">&#169; 2026 JRS&#8482; &middot; Justification Review Standard &nbsp;&middot;&nbsp; Phillip Wikes, principal &middot; <a href="privacy.html" style="color:inherit">Privacy</a> &nbsp;&middot;&nbsp; <a href="check.html" style="color:inherit">Record Defensibility Check</a></div>
+<nav class="track-links" aria-label="Related">
+ <a href="review-engine.html">Review Engine API</a>
+ <a href="enterprise.html#enterprise-inquiry">Enterprise inquiry</a>
+ <a href="engagement.html">Engagement terms</a>
+ <a href="terms.html">Terms</a>
+ <a href="check.html">Seven-point check</a>
+</nav>
+
+</main>
 </footer>
 
 <!-- JRS PANEL BINDER v2 :: CANONICAL BLOCK. Byte-identical on every page that
@@ -253,6 +307,23 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
      Background: research/FIGURE_DRIFT_ROOT_CAUSE.md -->
 <style>
   [data-panel][data-panel-state="stale"]{border-bottom:1px dotted var(--review-text);cursor:help}
+
+/* MOBILE FIX PACK, 2026-08-25. Appended, never editing an existing rule.
+   1. Form fields at 16px. Below 16px iOS Safari zooms the whole page on focus
+      and the visitor lands mid-layout with no way back except pinching.
+   2. Tables scroll inside their own box instead of forcing the page sideways.
+   3. Tap targets reach 44px, the minimum a thumb hits reliably.
+   4. Long tokens wrap instead of pushing the body wider than the screen. */
+input,select,textarea{font-size:16px!important}
+table{display:block;overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+button,.btn,.cta-primary,input[type=submit]{min-height:44px}
+@media (max-width:640px){
+  body{overflow-x:hidden}
+  img,svg,video,pre{max-width:100%;height:auto}
+  pre,code{white-space:pre-wrap;word-break:break-word}
+  h1,.h1-look{font-size:23px;line-height:1.3}
+  .wrap,.container,.container-wide{padding-left:16px;padding-right:16px}
+}
 </style>
 <script>
 (function(){

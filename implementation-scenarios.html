@@ -96,6 +96,23 @@ a{color:inherit;text-decoration:none}
   .nav-links a{padding:11px 20px;border-bottom:1px solid var(--rule)}
   .nav-links a:last-child{border-bottom:none}
 }
+
+/* MOBILE FIX PACK, 2026-08-25. Appended, never editing an existing rule.
+   1. Form fields at 16px. Below 16px iOS Safari zooms the whole page on focus
+      and the visitor lands mid-layout with no way back except pinching.
+   2. Tables scroll inside their own box instead of forcing the page sideways.
+   3. Tap targets reach 44px, the minimum a thumb hits reliably.
+   4. Long tokens wrap instead of pushing the body wider than the screen. */
+input,select,textarea{font-size:16px!important}
+table{display:block;overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+button,.btn,.cta-primary,input[type=submit]{min-height:44px}
+@media (max-width:640px){
+  body{overflow-x:hidden}
+  img,svg,video,pre{max-width:100%;height:auto}
+  pre,code{white-space:pre-wrap;word-break:break-word}
+  h1,.h1-look{font-size:23px;line-height:1.3}
+  .wrap,.container,.container-wide{padding-left:16px;padding-right:16px}
+}
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVYHJ7BJ92"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NVYHJ7BJ92');</script>
@@ -198,7 +215,7 @@ a{color:inherit;text-decoration:none}
  <div style="padding:8px 12px;background:var(--surface);border:1px solid var(--rule);border-top:none;font-size:11.5px;color:var(--muted-soft);">All pathways are incremental by design. Organizations typically begin with one reviewer or one record type, not enterprise-wide deployment.</div>
 </div>
 
-<div class="section-head" style="margin-top:28px;">Scenario 01: Single-Team Manager Review</div>
+<h2 class="section-head" style="margin-top:28px;">Scenario 01: Single-Team Manager Review</h2>
 
 <div class="scenario">
  <div class="scenario-head">
@@ -234,7 +251,7 @@ a{color:inherit;text-decoration:none}
  <div class="scenario-note"><span class="scenario-note-label">Boundary</span>This does not establish documentation compliance, eliminate legal risk, or replace HR policy review. It applies a structured question set before the record advances.</div>
 </div>
 
-<div class="section-head">Scenario 02: New Manager Onboarding Calibration</div>
+<h2 class="section-head">Scenario 02: New Manager Onboarding Calibration</h2>
 
 <div class="scenario">
  <div class="scenario-head">
@@ -270,7 +287,7 @@ a{color:inherit;text-decoration:none}
  <div class="scenario-note"><span class="scenario-note-label">Boundary</span>This does not certify reviewers, establish compliance training records, or satisfy regulatory training requirements. It is a reviewer calibration exercise.</div>
 </div>
 
-<div class="section-head">Scenario 03: Escalation-Review Orientation</div>
+<h2 class="section-head">Scenario 03: Escalation-Review Orientation</h2>
 
 <div class="scenario">
  <div class="scenario-head">
@@ -306,7 +323,7 @@ a{color:inherit;text-decoration:none}
  <div class="scenario-note"><span class="scenario-note-label">Boundary</span>This establishes reviewer calibration, not policy. Escalation decisions remain the responsibility of designated organizational reviewers. JRS exercises do not produce routing decisions. Reviewers do.</div>
 </div>
 
-<div class="section-head">Scenario 04: Investigator Reconstruction Workshop</div>
+<h2 class="section-head">Scenario 04: Investigator Reconstruction Workshop</h2>
 
 <div class="scenario">
  <div class="scenario-head">
@@ -342,7 +359,7 @@ a{color:inherit;text-decoration:none}
  <div class="scenario-note"><span class="scenario-note-label">Boundary</span>This does not establish investigative methodology, replace trained investigator judgment, or satisfy formal investigator certification requirements.</div>
 </div>
 
-<div class="section-head">Scenario 05: AI-Assisted Documentation Review Exercise</div>
+<h2 class="section-head">Scenario 05: AI-Assisted Documentation Review Exercise</h2>
 
 <div class="scenario">
  <div class="scenario-head">
@@ -378,7 +395,7 @@ a{color:inherit;text-decoration:none}
  <div class="scenario-note"><span class="scenario-note-label">Boundary</span>The AI-assisted record reviewer is a calibration tool, not an auditing system. It does not produce compliance determinations, legal findings, or formal audit outputs.</div>
 </div>
 
-<div class="section-head">Scenario 06: Cross-Department Comparator Review</div>
+<h2 class="section-head">Scenario 06: Cross-Department Comparator Review</h2>
 
 <div class="scenario">
  <div class="scenario-head">
@@ -414,7 +431,7 @@ a{color:inherit;text-decoration:none}
  <div class="scenario-note"><span class="scenario-note-label">Boundary</span>This establishes reviewer calibration, not policy. It does not resolve pending challenges, establish legal sufficiency, or substitute for organizational HR policy determinations.</div>
 </div>
 
-<div class="section-head">Scenario 07: Chronology Reconstruction Exercise</div>
+<h2 class="section-head">Scenario 07: Chronology Reconstruction Exercise</h2>
 
 <div class="scenario">
  <div class="scenario-head">
@@ -450,7 +467,7 @@ a{color:inherit;text-decoration:none}
  <div class="scenario-note"><span class="scenario-note-label">Boundary</span>This establishes reviewer calibration for chronology documentation, not legal sufficiency, compliance review outcomes, or investigation conclusions. Reviewers remain responsible for their own applicable determinations.</div>
 </div>
 
-<div class="section-head">Scenario 08: Onboarding Review Calibration Exercise</div>
+<h2 class="section-head">Scenario 08: Onboarding Review Calibration Exercise</h2>
 
 <div class="scenario">
  <div class="scenario-head">

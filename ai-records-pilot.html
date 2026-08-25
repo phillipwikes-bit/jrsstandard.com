@@ -5,6 +5,8 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NVYHJ7BJ92');</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="AI-Assisted Records Review. Justification Review Standard: record-level documentation review for HR, compliance and investigation records.">
+<link rel="canonical" href="https://www.jrsstandard.com/ai-records-pilot.html">
 <meta name="robots" content="noindex,nofollow">
 <title>AI-Assisted Records Review | JRS</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,11 +46,32 @@ label.opt input{accent-color:var(--accent);width:auto}
 .bar{position:sticky;bottom:0;background:linear-gradient(180deg,rgba(5,5,5,0),var(--bg) 30%);padding:16px 0 22px;margin-top:18px}
 .barline{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .prog{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted)}
+
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--accent);color:#050505;padding:10px 16px;z-index:100;font-family:'JetBrains Mono',monospace;font-size:11px}
+.skip-link:focus{left:0}
+
+/* MOBILE FIX PACK, 2026-08-25. Appended, never editing an existing rule.
+   1. Form fields at 16px. Below 16px iOS Safari zooms the whole page on focus
+      and the visitor lands mid-layout with no way back except pinching.
+   2. Tables scroll inside their own box instead of forcing the page sideways.
+   3. Tap targets reach 44px, the minimum a thumb hits reliably.
+   4. Long tokens wrap instead of pushing the body wider than the screen. */
+input,select,textarea{font-size:16px!important}
+table{display:block;overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+button,.btn,.cta-primary,input[type=submit]{min-height:44px}
+@media (max-width:640px){
+  body{overflow-x:hidden}
+  img,svg,video,pre{max-width:100%;height:auto}
+  pre,code{white-space:pre-wrap;word-break:break-word}
+  h1,.h1-look{font-size:23px;line-height:1.3}
+  .wrap,.container,.container-wide{padding-left:16px;padding-right:16px}
+}
 </style>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to content</a>
 <header class="hd"><div class="hd-in"><a href="/" class="wm">JRS<span style="font-size:9px;vertical-align:super">&#8482;</span></a><div class="meta">AI Governance Pilot &middot; Reviewer</div></div></header>
-<main><div class="wrap">
+<main id="main-content"><div class="wrap">
   <h1>AI-Assisted Records Review</h1>
   <p class="sub">Below are AI-generated records, unlabeled and in random order. For each one, give two quick judgments based on the record alone. It takes about five minutes per record, and your work saves on this device as you go. You can return and finish later.</p>
   <p class="sub" style="margin-top:6px"><b style="color:var(--text)">1) JRS read.</b> Could a later reviewer reconstruct how the conclusion was reached from the record itself? <b style="color:var(--ready-text)">Ready</b> if yes, <b style="color:var(--review-text)">Needs work</b> if partly, <b style="color:var(--stop-text)">Gap</b> if the basis is not visible. <b style="color:var(--text)">2) Reliance.</b> Would you rely on this record in a high-stakes, accountable workflow?</p>

@@ -13,7 +13,6 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVYHJ7BJ92"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NVYHJ7BJ92');</script>
 <style>
-<style>
 
 :root{--bg:#050505;--surface:#121212;--surface2:#1A1A1A;--rule:#2A2A2A;--text:#F2F2F2;--muted:#B3B3B3;--muted-soft:#8A8A8A;--accent:#BE9447;--accent-dim:#7A5E28;--stop-text:#E88080;--review-text:#D4A055;--ready-text:#5DBF82}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -51,7 +50,6 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
 .footer-copy{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-soft)}
 @media(max-width:600px){h1{font-size:27px}article p{font-size:15px}}
 
-
 .lede{font-family:'Bodoni Moda',serif;font-size:clamp(26px,5vw,40px);line-height:1.2;color:var(--text);margin:0 0 14px}
 .kicker{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
 .fm{border-left:2px solid var(--rule);padding:0 0 0 16px;margin:0 0 22px}
@@ -77,7 +75,24 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
 .cta-secondary{display:inline-block;color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;padding:14px 0;text-decoration:none;border-bottom:1px solid var(--accent-dim)}
 .status-strip{border:1px solid var(--accent-dim);background:var(--surface);padding:13px 16px;border-radius:2px;font-size:13.5px;line-height:1.65;color:var(--muted)}
 
-</style>
+.dual-track{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin:26px 0}
+.dt-card{border:1px solid var(--rule);background:var(--surface);padding:20px 22px}
+.dt-enterprise{border-left:2px solid var(--accent)}
+.dt-public{border-left:2px solid var(--ready-text)}
+.dt-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:8px}
+.dt-public .dt-tag{color:var(--ready-text)}
+.dt-head{font-family:'Bodoni Moda',serif;font-size:20px;color:var(--text);margin-bottom:9px;line-height:1.25}
+.dt-body{font-family:'Inter',sans-serif;font-size:14px;line-height:1.65;color:var(--muted);margin:0 0 12px}
+.dt-links{display:flex;flex-wrap:wrap;gap:14px}
+.dt-links a{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-dim);padding-bottom:2px}
+.dt-links a:hover{color:var(--text)}
+.track-links{display:flex;flex-wrap:wrap;gap:16px;margin:22px 0;padding-top:16px;border-top:1px solid var(--rule)}
+.track-links a{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);text-decoration:none}
+.track-links a:hover{color:var(--text)}
+
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--accent);color:#050505;padding:10px 16px;z-index:100;font-family:'JetBrains Mono',monospace;font-size:11px}
+.skip-link:focus{left:0}
+
 .lede{font-family:'Bodoni Moda',serif;font-size:clamp(25px,5vw,38px);line-height:1.2;color:var(--text);margin:0 0 14px}
 .kicker{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
 .spec{width:100%;border-collapse:collapse;margin:20px 0}
@@ -90,23 +105,62 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
 .status-strip{border:1px solid var(--rule);background:var(--surface2);padding:13px 16px;border-radius:2px;font-size:13.5px;line-height:1.65;color:var(--muted)}
 ul.deliver{margin:0 0 22px;padding-left:20px}
 ul.deliver li{color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:7px}
+
+/* MOBILE FIX PACK, 2026-08-25. Appended, never editing an existing rule.
+   1. Form fields at 16px. Below 16px iOS Safari zooms the whole page on focus
+      and the visitor lands mid-layout with no way back except pinching.
+   2. Tables scroll inside their own box instead of forcing the page sideways.
+   3. Tap targets reach 44px, the minimum a thumb hits reliably.
+   4. Long tokens wrap instead of pushing the body wider than the screen. */
+input,select,textarea{font-size:16px!important}
+table{display:block;overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+button,.btn,.cta-primary,input[type=submit]{min-height:44px}
+@media (max-width:640px){
+  body{overflow-x:hidden}
+  img,svg,video,pre{max-width:100%;height:auto}
+  pre,code{white-space:pre-wrap;word-break:break-word}
+  h1,.h1-look{font-size:23px;line-height:1.3}
+  .wrap,.container,.container-wide{padding-left:16px;padding-right:16px}
+}
 </style>
   <!-- COMMERCIAL PAUSE 2026-08-15: unpublished until the research programme is complete.
        Nothing here is deleted. Remove this meta tag, restore the
        footer links and put the URL back in sitemap.xml to republish. -->
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to content</a>
 <header class="site-header" role="banner">
   <div class="site-header-inner">
     <a href="index.html" class="wordmark">JRS<span style="font-size:10px;vertical-align:super;position:relative;top:-3px;">&#8482;</span></a>
     <div class="header-meta">Justification Review Standard<br>Record Check</div>
   </div>
 </header>
-<main>
+<main id="main-content">
 <article>
   <div class="kicker">Offer 2 &middot; <span data-offer-price="governance">see below</span></div>
   <h1 class="lede">Does your standard produce records that survive review?</h1>
   <p>A documentation policy can be complete on paper and still permit records that cannot be reconstructed. This review reads the standard itself and a sample of what it actually produces, then reports where the two diverge.</p>
+
+<!-- JRS DUAL TRACK v1 :: CANONICAL BLOCK. Byte-identical on every page that
+     carries it. Customer-facing voice only: no pricing, no internal capacity,
+     no claim that any security assessment is avoided. -->
+<div class="dual-track">
+ <div class="dt-card dt-enterprise">
+  <div class="dt-tag">Track 1 &middot; Enterprise Platform</div>
+  <div class="dt-head">The Enterprise Platform Track</div>
+  <p class="dt-body">Dedicated B2B API licensing of the JRS review engine, so mid-market GRC platforms and legal-tech providers can embed a <b>pre-finalization decision gate</b> directly into their own workflows. One record in, a structured determination across the five review conditions out, returned with a request identifier your audit trail can cite.</p>
+  <p class="dt-body"><b>Stateless, with zero data retention at rest.</b> Record text is assessed in memory and discarded. It is not written to any table, not echoed back, and not logged. Per-partner tokens, revocable independently, on a versioned route. This narrows what a vendor security review has to examine; <b>it does not remove the review</b>, and it is not a substitute for any certification your procurement requires.</p>
+  <div class="dt-links"><a href="review-engine.html">Integration schema</a> <a href="enterprise.html#enterprise-inquiry">Enterprise inquiry</a></div>
+ </div>
+ <div class="dt-card dt-public">
+  <div class="dt-tag">Track 2 &middot; Practitioner</div>
+  <div class="dt-head">The Practitioner Track</div>
+  <p class="dt-body">Open, unencumbered access for individual investigators, HR and compliance officers, and researchers: the core standard, live Decision Reconstruction Risk simulations, the six-module self-paced training, and the investigator field guides.</p>
+  <p class="dt-body"><b>Free, ungated, and staying that way.</b> No account, no card, no expiry, no registration wall.</p>
+  <div class="dt-links"><a href="investigator-guides.html">Field guides</a> <a href="training.html">Training</a> <a href="check.html">Seven-point check</a></div>
+ </div>
+</div>
+<!-- /JRS DUAL TRACK v1 -->
 
   <table class="spec">
     <tr><td>What is read</td><td>Your documentation standard, template set or policy, plus up to five records produced under it</td></tr>
@@ -147,6 +201,14 @@ ul.deliver li{color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:7p
     Want to see the method before you ask for anything? The <a href="check.html">Record Defensibility Check</a> is public, ungated, and requires nothing from you.
   </p>
 </article>
+<nav class="track-links" aria-label="Related">
+ <a href="review-engine.html">Review Engine API</a>
+ <a href="enterprise.html#enterprise-inquiry">Enterprise inquiry</a>
+ <a href="engagement.html">Engagement terms</a>
+ <a href="terms.html">Terms</a>
+ <a href="org-pilot.html">Run the Mini-Pilot</a>
+</nav>
+
 </main>
 <footer class="site-footer" role="contentinfo">
   <div class="site-footer-inner">

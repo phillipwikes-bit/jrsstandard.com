@@ -203,6 +203,23 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 .dts-ul li{font-family:'Inter',sans-serif;font-size:14px;line-height:1.7;color:var(--muted);margin-bottom:9px}
 .dts-ul li b{color:var(--text)}
 .dts code{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent)}
+
+/* MOBILE FIX PACK, 2026-08-25. Appended, never editing an existing rule.
+   1. Form fields at 16px. Below 16px iOS Safari zooms the whole page on focus
+      and the visitor lands mid-layout with no way back except pinching.
+   2. Tables scroll inside their own box instead of forcing the page sideways.
+   3. Tap targets reach 44px, the minimum a thumb hits reliably.
+   4. Long tokens wrap instead of pushing the body wider than the screen. */
+input,select,textarea{font-size:16px!important}
+table{display:block;overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+button,.btn,.cta-primary,input[type=submit]{min-height:44px}
+@media (max-width:640px){
+  body{overflow-x:hidden}
+  img,svg,video,pre{max-width:100%;height:auto}
+  pre,code{white-space:pre-wrap;word-break:break-word}
+  h1,.h1-look{font-size:23px;line-height:1.3}
+  .wrap,.container,.container-wide{padding-left:16px;padding-right:16px}
+}
 </style>
 </head>
 <body>
@@ -284,7 +301,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 </div>
 
 <div style="margin-bottom:44px;">
- <div class="section-head">What Enterprise Application Means</div>
+ <h2 class="section-head">What Enterprise Application Means</h2>
  <p class="body-text" style="max-width:600px;">JRS is a pre-finalization review standard that evaluates whether a record can explain why a consequential decision was made: the basis, reasoning, evidence, and chronology, before the record is finalized. Enterprise application is not a software purchase or a formal rollout. It is the structured extension of that review across multiple departments, record types, or organizational functions, using materials that insert into existing review processes without disrupting them.</p>
  <div class="scope-grid">
   <div class="scope-card">
@@ -315,7 +332,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 </div>
 
 <div style="margin-bottom:44px;">
- <div class="section-head">Where Scrutiny Is Shifting</div>
+ <h2 class="section-head">Where Scrutiny Is Shifting</h2>
  <p class="body-text" style="max-width:600px;">As organizations adopt AI across operational work, external review is moving away from the decision alone, and from the AI system alone, toward the documentation those systems help produce. Regulators, auditors, litigants, inspectors general, and public-records professionals rarely examine a model directly. They examine the record. Increasingly the question is not only what was decided, but whether the record can explain how the organization moved from evidence to decision, and whether it can withstand independent review.</p>
  <p class="body-text" style="max-width:600px;">That shift is where JRS sits. Most AI governance controls govern the system: model risk, bias, privacy, validation, oversight. They do not evaluate whether the resulting record adequately explains the organization's reasoning. JRS evaluates that record, regardless of which tool or model produced it.</p>
  <div class="scope-grid">
@@ -351,7 +368,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 </div>
 
 <div style="margin-bottom:44px;">
- <div class="section-head">Across the Enterprise: Sector Applications</div>
+ <h2 class="section-head">Across the Enterprise: Sector Applications</h2>
  <p class="body-text" style="max-width:640px;">The same control applies wherever AI-assisted work becomes a record that must later be reconstructed and defended. The sectors below share one review methodology; JRS evaluates the record, not the sector's compliance obligations.</p>
  <div class="scope-grid" style="margin-top:14px;">
   <div class="scope-card">
@@ -382,7 +399,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 </div>
 
 <div style="margin-bottom:44px;">
- <div class="section-head">Deployment Sequence</div>
+ <h2 class="section-head">Deployment Sequence</h2>
  <p class="body-text" style="max-width:600px;">Most enterprise deployments begin selectively and expand. The sequence below reflects how organizations typically move from initial contact to full-scale operation.</p>
  <div class="kit-flow" style="margin-top:14px;">
   <div class="kit-flow-step">
@@ -425,7 +442,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 </div>
 
 <div style="margin-bottom:44px;">
- <div class="section-head">Deployment Scenarios</div>
+ <h2 class="section-head">Deployment Scenarios</h2>
  <p class="body-text" style="max-width:600px;">Illustrative cases describing how enterprise deployment might be structured within existing organizational workflows. These are hypothetical adoption patterns intended to show how incremental implementation could proceed, not documented organizational outcomes.</p>
 
  <div class="case-block">
@@ -502,7 +519,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 </div>
 
 <div style="margin-bottom:44px;">
- <div class="section-head">Operational Materials for Enterprise Deployment</div>
+ <h2 class="section-head">Operational Materials for Enterprise Deployment</h2>
  <p class="body-text" style="max-width:600px;">The Deployment Kit provides the complete operational layer for multi-department rollout. All materials are print-ready and built to integrate with existing documentation workflows.</p>
  <div style="border:1px solid var(--rule);overflow:hidden;margin-top:14px;">
   <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule);">
@@ -543,7 +560,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 </div>
 
 <div style="margin-bottom:44px;">
- <div class="section-head">Audit Sampling at Scale</div>
+ <h2 class="section-head">Audit Sampling at Scale</h2>
  <p class="body-text" style="max-width:600px;">Enterprise deployment is structured to support periodic record sampling and identify documentation gap patterns across departments. The following is a hypothetical illustration of the kind of gap patterns a structured sampling approach is intended to surface. All figures, record counts, and disposition descriptions below are fictional, created for calibration purposes only and not representative of actual organizational findings.</p>
  <div style="border:1px solid var(--rule);overflow:hidden;margin-bottom:8px;">
   <div style="padding:8px 14px;border-bottom:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);background:var(--surface2);">Q1  /  Supervisory Counseling Records  /  12 Records  /  3 Departments</div>
@@ -615,7 +632,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 </div>
 
 <div style="margin-bottom:44px;">
- <div class="section-head">Pilot Engagement Sequence</div>
+ <h2 class="section-head">Pilot Engagement Sequence</h2>
  <p class="body-text" style="max-width:600px;">Pilot participation follows a defined operational sequence. Each phase has a specific purpose and a natural exit point. Organizations can scope participation at any stage.</p>
  <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:14px;">
   <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--rule);min-width:600px;">
@@ -653,7 +670,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 </div>
 
 <div style="margin-bottom:44px;">
- <div class="section-head">Typical Pilot Structures</div>
+ <h2 class="section-head">Typical Pilot Structures</h2>
  <p class="body-text" style="max-width:600px;">Organizational participation is structured around operational fit, not fixed engagement models. Pilots are scoped based on existing workflows, reviewer availability, and the record types presenting the highest documentation risk.</p>
  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;">
   <div style="border:1px solid var(--rule);background:var(--surface);padding:16px 18px;">
@@ -700,7 +717,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 </div>
 
 <div style="margin-bottom:20px;">
- <div class="section-head">Clean technical integration</div>
+ <h2 class="section-head">Clean technical integration</h2>
  <p class="body-text">The JRS review engine is licensed as a <b>stateless review gate</b>. A partner platform sends the text of one record and receives a structured determination across the five review conditions, together with a request identifier that ties the call to an entry in its own audit trail. There is no session, no accumulated profile, and nothing carried between requests.</p>
 
  <table class="spec-table">
@@ -715,7 +732,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 </div>
 
 <div style="margin-bottom:20px;">
- <div class="section-head">Low-friction deployment</div>
+ <h2 class="section-head">Low-friction deployment</h2>
  <p class="body-text">Most integrations that touch consequential records arrive with a storage question attached: where the data lives, how long it is kept, who can reach it, and how it is destroyed. <b>An engine that holds no customer records has no data at rest to describe</b>, which removes that entire class of question from the integration conversation.</p>
 
  <div class="callout">
@@ -734,7 +751,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 </div>
 
 <div style="margin-bottom:20px;">
- <div class="section-head">Control-evidence mapping</div>
+ <h2 class="section-head">Control-evidence mapping</h2>
  <div class="callout callout-gold">
   <div class="callout-label">Read this before mapping anything</div>
   <div class="callout-body"><b>JRS does not establish compliance with ISO/IEC 42001, the NIST AI RMF, the EU AI Act, or any other framework, and no framework requires JRS.</b> It is not a certification, an accreditation, or an audit opinion. What follows is where a record-level review may be <b>relevant as evidence</b> inside a management system you already run. Whether it satisfies any control is your organisation's determination and your assessor's.</div>
@@ -749,7 +766,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 </div>
 
 <div style="margin-bottom:20px;" id="enterprise-inquiry">
- <div class="section-head">Enterprise and licensing inquiry</div>
+ <h2 class="section-head">Enterprise and licensing inquiry</h2>
  <p class="body-text">Submissions route directly to a private operational dashboard, not to a public queue and not to a mailing list. You will get the integration schema, the tier that fits, and a written scope in one reply. <b>No records are sent at this stage.</b></p>
  <form id="ei-form">
   <label class="ei-l">Name<input class="ei-i" name="name" required maxlength="120" autocomplete="name"></label>
@@ -790,7 +807,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 </div>
 
 <div style="margin-bottom:20px;">
- <div class="section-head">Start here: run it on your own records</div>
+ <h2 class="section-head">Start here: run it on your own records</h2>
  <p class="body-text">The Organization Mini-Pilot runs the five conditions across a set of your own records and returns the distribution: routing bands, and per-condition pass, needs-attention and fail counts. <b>No record text is stored at any point.</b> Records are assessed in memory and discarded; only counts and category labels leave your browser. That is what makes it safe to run on confidential, privileged or personal material.</p>
  <p class="body-text">It produces the one thing an enterprise conversation actually needs, which is evidence from your records rather than someone else's.</p>
  <div class="btn-row">
@@ -800,7 +817,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 </div>
 
 <div style="margin-bottom:20px;">
- <div class="section-head">Engagements</div>
+ <h2 class="section-head">Engagements</h2>
  <p class="body-text">Fixed scope, fixed price, invoiced. Purchase orders accepted. No records are sent at the enquiry stage, and de-identification is agreed before any are.</p>
  <div class="btn-row">
   <a href="audit-request.html" class="btn btn-ghost">Record Defensibility Review &rarr;</a>
@@ -811,7 +828,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 </div>
 
 <div style="margin-bottom:20px;">
- <div class="section-head">For integrators</div>
+ <h2 class="section-head">For integrators</h2>
  <p class="body-text">The JRS Review Engine is a token-authenticated API that examines one record against the five conditions and returns a structured result. Every response carries a request identifier for audit correlation on your side.</p>
  <div class="btn-row">
   <a href="review-engine.html" class="btn btn-ghost">Review Engine API &rarr;</a>
@@ -819,7 +836,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 </div>
 
 <div style="margin-bottom:20px;">
- <div class="section-head">Resources</div>
+ <h2 class="section-head">Resources</h2>
  <div class="btn-row">
   <a href="/api/dl?e=standard&amp;src=enterprise" class="btn btn-ghost">View Review Controls PDF</a>
   <a href="investigator-guides.html" class="btn btn-ghost">Investigator Field Guides &rarr;</a>
