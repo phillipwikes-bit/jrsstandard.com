@@ -508,10 +508,10 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
 
 <!-- ═══ STICKY NAV ════════════════════════════════════════ -->
 <nav class="sticky-nav" aria-label="Quick navigation">
+  <a href="#training-modules" class="sticky-nav-link">Modules</a>
   <a href="#start-here" class="sticky-nav-link">Start Here</a>
   <a href="#roles" class="sticky-nav-link">Enter by Role</a>
   <a href="#simulator" class="sticky-nav-link">Simulations</a>
-  <a href="#training-modules" class="sticky-nav-link">Modules</a>
   <a href="#toolkit" class="sticky-nav-link">Kit Docs</a>
   <a href="#participation-survey" class="sticky-nav-link">Survey</a>
   <a href="pilot.html" class="sticky-nav-link">Pilot Program</a>
@@ -547,8 +547,9 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
 <!-- /JRS DUAL TRACK v1 -->
 
     <div class="hero-ctas">
-      <a href="#simulator" onclick="showSimTab(0)" class="btn-hero-primary">&#9654; Explore Simulation Exercises</a>
-      <a href="#roles" class="btn-hero-secondary">Explore by Role</a>
+      <a href="#training-modules" class="btn-hero-primary">&#9654; Start the Six Modules</a>
+      <a href="#simulator" onclick="showSimTab(0)" class="btn-hero-secondary">Explore Simulation Exercises</a>
+      <a href="#roles" class="btn-hero-ghost">Explore by Role</a>
       <a href="#record-review-workspace" class="btn-hero-ghost">Record Review Workspace</a>
     </div>
     <div class="hero-tags">
@@ -558,6 +559,718 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
     </div>
   </div>
 </section>
+
+<!-- ═══ TRAINING MODULES ═════════════════════════════════ -->
+<div id="training-modules" style="background:var(--bg);border-top:1px solid var(--rule);padding:48px 24px 64px">
+  <div style="max-width:960px;margin:0 auto">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px">Reviewer Training</div>
+    <h2 style="font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--text);margin-bottom:10px">Training Modules</h2>
+    <p style="font-size:14px;color:var(--muted);line-height:1.7;max-width:680px;margin-bottom:20px">Six modules covering the core JRS documentation review methodology. Work through each at your own pace. Progress is saved automatically.</p>
+    <div style="border:1px solid var(--rule);background:var(--surface);padding:16px 18px;margin-bottom:22px;border-left:3px solid var(--accent)">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:6px">Reviewer Desk Reference</div>
+      <div style="font-size:13.5px;color:var(--muted);line-height:1.65;margin-bottom:10px">Download the nineteen-page JRS Reviewer Reference and keep it open as you work through the modules. It covers all five review conditions, submission readiness, escalation triggers, and maturity levels, and stays on your desk as the reference you work from afterwards.</div>
+      <a href="/api/dl?f=JRS-Reference-9d4f2a7c.pdf&amp;src=training-kit" class="btn-download">Desk Reference (PDF, 19 pages)</a>
+    </div>
+    <div class="progress-block">
+      <div class="progress-label-row">
+        <span class="progress-section-label">Progress</span>
+        <span class="progress-count" id="progress-display">Step 1 of 6 &middot; Ready to start</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    </div>
+  <div id="preview-banner" style="display:none;background:var(--surface2);border:1px solid var(--accent-dim);border-left:3px solid var(--accent);padding:14px 16px;margin-bottom:16px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:5px">Open access</div>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between">
+      <span style="font-size:12.5px;color:var(--muted);line-height:1.5;flex:1 1 260px">All six modules are open to read right now. Add your name only when you want the certificate issued in it.</span>
+      <button onclick="openEnroll()" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:11px 18px;cursor:pointer;flex:0 0 auto">Name my certificate</button>
+    </div>
+  </div>
+  <div class="module-list" id="module-list">
+
+    <div class="module-row" id="module-row-0">
+      <div class="module-num" id="module-num-0">01</div>
+      <div class="module-body" onclick="toggleModule(0)">
+        <div class="module-title">JRS Review Conditions</div>
+        <div class="module-outcome">By the end you can test any record against the five conditions and say which one it fails.</div>
+        <div class="module-status" id="module-status-0">Not Started</div>
+      </div>
+      <div class="module-actions">
+        <button class="btn-open" id="module-btn-0" onclick="toggleModule(0)" aria-expanded="false" aria-controls="module-panel-0">&#9658; Open</button>
+      </div>
+    </div>
+    <div class="module-panel" id="module-panel-0">
+      <div class="module-panel-inner">
+        <div style="padding:12px 16px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;background:rgba(190,148,71,.04);border:1px solid rgba(190,148,71,.16);">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);">Start with interaction</span>
+          <a href="#simulator" onclick="document.getElementById('simulator').scrollIntoView({behavior:'smooth'});showSimTab(0)" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:10px 20px;text-decoration:none;display:inline-block;font-weight:600;">&#9654; Run a Simulation</a>
+        </div>
+        <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:16px">The five JRS review conditions establish the baseline standard for documentation sufficiency. Each condition addresses a distinct visibility requirement for retained-record review. Apply to any record that may face later independent scrutiny.</p>
+        <div class="condition-list">
+          <div class="condition-item"><div class="condition-label">Review Condition 1: Reconstructability</div><div class="condition-title">Can the conclusion be reconstructed from the record?</div><div class="condition-body">A future reviewer can trace the path from documented evidence to the conclusion reached, without relying on the author's recollection or added explanation.</div></div>
+          <div class="condition-item"><div class="condition-label">Review Condition 2: Basis Identification</div><div class="condition-title">Is the basis for the conclusion identifiable?</div><div class="condition-body">The source of each characterization (observation, measurement, audit finding, or reported incident) is visible and traceable, not implied or summarized without attribution.</div></div>
+          <div class="condition-item"><div class="condition-label">Review Condition 3: Chronology</div><div class="condition-title">Is the chronology understandable?</div><div class="condition-body">The sequence of events is followable from the record alone, including the timing of prior interventions, escalation steps, and the period under review.</div></div>
+          <div class="condition-item"><div class="condition-label">Review Condition 4: Decision-Process Traceability</div><div class="condition-title">Can a future reviewer determine how the conclusion was reached?</div><div class="condition-body">The decision process is documented: who reviewed the matter, what criteria or threshold triggered the conclusion, and whether responsive or mitigating information was considered before finalization.</div></div>
+          <div class="condition-item"><div class="condition-label">Review Condition 5: Evidentiary Sufficiency</div><div class="condition-title">Could a reviewer with no prior knowledge evaluate the evidentiary sufficiency of this record?</div><div class="condition-body">The aggregate condition. The record stands on its own so an independent reviewer with no prior knowledge can assess whether the conclusion is supported by the documented evidence.</div></div>
+        </div>
+        <div class="reviewer-reminder" style="margin-top:20px">
+          <div class="reviewer-reminder-label">Reviewer Note</div>
+          <p>These five conditions apply regardless of record type. The standard is consistent: can the conclusion be reconstructed, its basis identified, its chronology followed, the decision process traced, and its evidentiary sufficiency judged from the file alone?</p>
+        </div>
+      </div>
+      <div style="padding:14px 24px;border-top:1px solid var(--rule);background:var(--surface2);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:9px;">What appeared most clearly?</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <button onclick="recordModObs(this)" data-val="chronology" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Chronology Instability</button>
+          <button onclick="recordModObs(this)" data-val="escalation" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Unsupported Escalation</button>
+          <button onclick="recordModObs(this)" data-val="disagreement" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Reviewer Disagreement</button>
+          <button onclick="recordModObs(this)" data-val="source" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Source Linkage Failure</button>
+          <button onclick="recordModObs(this)" data-val="drift" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">AI Drift</button>
+        </div>
+      </div>
+      <div class="module-complete-row">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft)">Review complete?</span>
+        <button class="btn-complete" onclick="markComplete(0)">Mark Complete</button>
+      </div>
+    </div>
+
+    <div class="module-row" id="module-row-1">
+      <div class="module-num" id="module-num-1">02</div>
+      <div class="module-body" onclick="toggleModule(1)">
+        <div class="module-title">Common Documentation Conditions</div>
+        <div class="module-outcome">By the end you can recognise the documentation failures that show up most often in real files.</div>
+        <div class="module-status" id="module-status-1">Not Started</div>
+      </div>
+      <div class="module-actions">
+        <button class="btn-open" id="module-btn-1" onclick="toggleModule(1)" aria-expanded="false" aria-controls="module-panel-1">&#9658; Open</button>
+      </div>
+    </div>
+    <div class="module-panel" id="module-panel-1">
+      <div class="module-panel-inner">
+        <div style="padding:12px 16px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;background:rgba(190,148,71,.04);border:1px solid rgba(190,148,71,.16);">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);">Start with interaction</span>
+          <a href="#simulator" onclick="document.getElementById('simulator').scrollIntoView({behavior:'smooth'});showSimTab(0)" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:10px 20px;text-decoration:none;display:inline-block;font-weight:600;">&#9654; Run a Simulation</a>
+        </div>
+        <div class="reviewer-reminder">
+          <div class="reviewer-reminder-label">Reviewer Reminder</div>
+          <p>Pattern conclusions should be tied to documented incidents and dates in the file.</p>
+        </div>
+        <h2 class="section-head" style="font-size:15px;margin-top:20px;margin-bottom:14px">Conditions Affecting Subsequent Review</h2>
+        <div class="condition-list">
+          <div class="condition-item"><div class="condition-label">Condition</div><div class="condition-title">Undocumented Timeline Gaps</div><div class="condition-body">Conduct or events described without specific dates or sequencing. A downstream reviewer cannot independently reconstruct when events occurred or in what order. Common in routine records not expected to face later scrutiny.</div></div>
+          <div class="condition-item"><div class="condition-label">Condition</div><div class="condition-title">Inherited Language Without Source Confirmation</div><div class="condition-body">Wording carried forward from earlier records, templates, or prior review cycles without being verified against current source material. The language survives; the basis it was drawn from may not.</div></div>
+          <div class="condition-item"><div class="condition-label">Condition</div><div class="condition-title">Reconstructed Summaries Replacing Contemporaneous Notes</div><div class="condition-body">Where original notes were not retained, later summaries may have been created from memory or secondary sources. The summary may read as though it reflects direct documentation when the underlying notes are no longer available.</div></div>
+          <div class="condition-item"><div class="condition-label">Condition</div><div class="condition-title">Conclusions Surviving After Source Loss</div><div class="condition-body">Escalation language, pattern claims, or findings that remain in the record after the documents they were drawn from have become inaccessible due to retention schedules, system migration, or staffing changes.</div></div>
+          <div class="condition-item"><div class="condition-label">Condition</div><div class="condition-title">AI-Assisted Smoothing</div><div class="condition-body">Generated wording may omit uncertainty or imply support not visible in the notes. The record may appear complete when the evidentiary basis is partial.</div></div>
+          <div class="condition-item"><div class="condition-label">Condition</div><div class="condition-title">Reviewer Turnover</div><div class="condition-body">Where the original reviewer or drafter is no longer available, an independent reviewer may have no access to the context that was understood at the time of drafting. What was implicit becomes invisible.</div></div>
+          <div class="condition-item"><div class="condition-label">Condition</div><div class="condition-title">Fragmented or Decentralized Systems</div><div class="condition-body">Records originating across multiple systems, supervisory files, HR files, and archived environments that were not consolidated. A subsequent reviewer may not have access to the complete record.</div></div>
+          <div class="condition-item"><div class="condition-label">Condition</div><div class="condition-title">Inconsistent Retention Practices</div><div class="condition-body">Where retention schedules were applied unevenly across departments or record types, some supporting materials may be absent from later review without any indication that they ever existed.</div></div>
+          <div class="condition-item"><div class="condition-label">Condition</div><div class="condition-title">Undocumented Edits and Draft Survival</div><div class="condition-body">Where earlier draft language was not clearly superseded, wording from prior versions may persist in the current record. The edit history may not be reconstructible from the file alone.</div></div>
+          <div class="condition-item"><div class="condition-label">Condition</div><div class="condition-title">Partial Chronology Review</div><div class="condition-body">Where contemporaneous records were not maintained, a subsequent reviewer may be working from a reconstructed timeline rather than a documented one. The timeline may be accurate without being independently verifiable.</div></div>
+        </div>
+        <p style="font-size:12.5px;color:var(--muted-soft);margin-top:16px;font-style:italic">Retained-record review practice should account for what documentation actually survives after system migration, staffing transitions, and retention schedule application.</p>
+        <div class="reviewer-reminder" style="margin-top:16px">
+          <div class="reviewer-reminder-label">Operational Note</div>
+          <p>Where conditions are identified, note them. Do not assume resolution.</p>
+        </div>
+      </div>
+      <div style="padding:14px 24px;border-top:1px solid var(--rule);background:var(--surface2);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:9px;">What appeared most clearly?</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <button onclick="recordModObs(this)" data-val="chronology" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Chronology Instability</button>
+          <button onclick="recordModObs(this)" data-val="escalation" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Unsupported Escalation</button>
+          <button onclick="recordModObs(this)" data-val="disagreement" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Reviewer Disagreement</button>
+          <button onclick="recordModObs(this)" data-val="source" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Source Linkage Failure</button>
+          <button onclick="recordModObs(this)" data-val="drift" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">AI Drift</button>
+        </div>
+      </div>
+      <div class="module-complete-row">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft)">Review complete?</span>
+        <button class="btn-complete" onclick="markComplete(1)">Mark Complete</button>
+      </div>
+    </div>
+
+    <div class="module-row" id="module-row-2">
+      <div class="module-num" id="module-num-2">03</div>
+      <div class="module-body" onclick="toggleModule(2)">
+        <div class="module-title">Secondary Review and Escalation</div>
+        <div class="module-outcome">By the end you know when a record goes to secondary review and when it escalates.</div>
+        <div class="module-status" id="module-status-2">Not Started</div>
+      </div>
+      <div class="module-actions">
+        <button class="btn-open" id="module-btn-2" onclick="toggleModule(2)" aria-expanded="false" aria-controls="module-panel-2">&#9658; Open</button>
+      </div>
+    </div>
+    <div class="module-panel" id="module-panel-2">
+      <div class="module-panel-inner">
+        <div style="padding:12px 16px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;background:rgba(190,148,71,.04);border:1px solid rgba(190,148,71,.16);">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);">Start with interaction</span>
+          <a href="#simulator" onclick="document.getElementById('simulator').scrollIntoView({behavior:'smooth'});showSimTab(0)" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:10px 20px;text-decoration:none;display:inline-block;font-weight:600;">&#9654; Run a Simulation</a>
+        </div>
+        <div class="routing-label">Secondary Review Routing Reference &nbsp;|&nbsp; KIT-REF-01 &nbsp;|&nbsp; For use with Modules 03-05<br><span style="font-size:10px;color:var(--muted-soft);font-style:italic;letter-spacing:0;text-transform:none">Field reference retained from earlier intake version</span></div>
+        <div style="overflow-x:auto">
+        <table class="routing-table">
+          <thead>
+            <tr>
+              <th>Record Type</th>
+              <th>Trigger Condition</th>
+              <th>Routing</th>
+              <th>Known Implementation Variance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="color:var(--text)">Termination</strong></td>
+              <td>No referenced supporting records; generalized characterizations only</td>
+              <td>Secondary review required. Legal consultation required before finalization.</td>
+              <td>Some supporting records may be in archived systems. Where this applies, document the location and accessibility status. Inaccessibility is a finding, not a resolution.</td>
+            </tr>
+            <tr>
+              <td><strong style="color:var(--text)">Formal discipline</strong></td>
+              <td>Conduct dates not identified; no prior counseling referenced</td>
+              <td>Return to drafter. Resubmission requires prior counseling trail identifiable in file.</td>
+              <td>Some departments apply this requirement only to elevated-risk record categories. Where local practice differs, document the basis for the variance.</td>
+            </tr>
+            <tr>
+              <td><strong style="color:var(--text)">Accommodation</strong></td>
+              <td>Interactive process not documented; determination rationale absent</td>
+              <td>Legal or compliance review required. Interactive process documentation must be present.</td>
+              <td>Some environments route through HR only. Where legal review is unavailable, document that condition and the basis for the alternative routing.</td>
+            </tr>
+            <tr>
+              <td><strong style="color:var(--text)">Investigation conclusion</strong></td>
+              <td>Source materials not identified; conflicting accounts not preserved</td>
+              <td>Independent review outside drafting chain required before finalization.</td>
+              <td>Staffing constraints may limit independence. Where they do, document the constraint. The independence gap should appear in the record, not be resolved by silence.</td>
+            </tr>
+            <tr>
+              <td><strong style="color:var(--text)">AI-assisted record</strong></td>
+              <td>Generated wording not reviewed against source notes; no attestation</td>
+              <td>Human reviewer confirmation required. Source verification documented before entry.</td>
+              <td>Some departments maintain supplemental confirmation logs. That practice satisfies this requirement where the log is accessible during later review.</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+        <p class="table-note">Routing conditions reflect documentation sufficiency standards. Local workflow requirements govern implementation sequence. Where local practice differs from a routing condition, document the basis for the variance.</p>
+      </div>
+      <div style="padding:14px 24px;border-top:1px solid var(--rule);background:var(--surface2);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:9px;">What appeared most clearly?</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <button onclick="recordModObs(this)" data-val="chronology" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Chronology Instability</button>
+          <button onclick="recordModObs(this)" data-val="escalation" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Unsupported Escalation</button>
+          <button onclick="recordModObs(this)" data-val="disagreement" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Reviewer Disagreement</button>
+          <button onclick="recordModObs(this)" data-val="source" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Source Linkage Failure</button>
+          <button onclick="recordModObs(this)" data-val="drift" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">AI Drift</button>
+        </div>
+      </div>
+      <div class="module-complete-row">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft)">Review complete?</span>
+        <button class="btn-complete" onclick="markComplete(2)">Mark Complete</button>
+      </div>
+    </div>
+
+    <div class="module-row" id="module-row-3">
+      <div class="module-num" id="module-num-3">04</div>
+      <div class="module-body" onclick="toggleModule(3)">
+        <div class="module-title">AI-Assisted Record Review</div>
+        <div class="module-outcome">By the end you can review an AI-assisted record without guessing what the tool contributed.</div>
+        <div class="module-status" id="module-status-3">Not Started</div>
+      </div>
+      <div class="module-actions">
+        <button class="btn-open" id="module-btn-3" onclick="toggleModule(3)" aria-expanded="false" aria-controls="module-panel-3">&#9658; Open</button>
+      </div>
+    </div>
+    <div class="module-panel" id="module-panel-3">
+      <div class="module-panel-inner">
+        <div style="padding:12px 16px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;background:rgba(190,148,71,.04);border:1px solid rgba(190,148,71,.16);">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);">Start with interaction</span>
+          <a href="#simulator" onclick="document.getElementById('simulator').scrollIntoView({behavior:'smooth'});showSimTab(0)" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:10px 20px;text-decoration:none;display:inline-block;font-weight:600;">&#9654; Run a Simulation</a>
+        </div>
+        <div class="reviewer-reminder">
+          <div class="reviewer-reminder-label">Reviewer Reminder</div>
+          <p>Where AI-assisted drafting was used, wording should be checked against original notes before the record enters the system. Conflicting accounts should remain documented, including where one is credited over another.</p>
+        </div>
+        <h2 class="section-head" style="font-size:15px;margin-top:24px;margin-bottom:14px">AI-Assisted Documentation Verification</h2>
+        <p style="font-size:13.5px;color:var(--muted);margin-bottom:16px">Apply when AI-assisted drafting contributed to a record before system entry.</p>
+        <div class="ai-checklist">
+          <div class="ai-checklist-section">
+            <div class="ai-checklist-header">Source Verification</div>
+            <div class="ai-checklist-item"><span class="ai-check-text">Are generated conclusions traceable to identifiable records in the file?</span></div>
+            <div class="ai-checklist-item"><span class="ai-check-text">Are cited examples visible in the retained materials?</span></div>
+            <div class="ai-checklist-item"><span class="ai-check-text">Were source records reviewed before drafting began?</span></div>
+          </div>
+          <div class="ai-checklist-section">
+            <div class="ai-checklist-header">Characterization Accuracy</div>
+            <div class="ai-checklist-item"><span class="ai-check-text">Did generated wording introduce confidence not reflected in source notes?</span></div>
+            <div class="ai-checklist-item"><span class="ai-check-text">Did generated wording exceed observable support in the available materials?</span></div>
+          </div>
+          <div class="ai-checklist-section">
+            <div class="ai-checklist-header">Conflict and Gap Handling</div>
+            <div class="ai-checklist-item"><span class="ai-check-text">Were conflicting accounts preserved in the record?</span></div>
+            <div class="ai-checklist-item"><span class="ai-check-text">Were chronology gaps identified rather than resolved through assumption?</span></div>
+            <div class="ai-checklist-item"><span class="ai-check-text">Did generated wording omit uncertainty visible in the source notes?</span></div>
+          </div>
+          <div class="ai-checklist-section">
+            <div class="ai-checklist-header">Reviewer Confirmation</div>
+            <div class="ai-checklist-item"><span class="ai-check-text">Was reviewer confirmation completed before finalization?</span></div>
+            <div class="ai-checklist-item"><span class="ai-check-text">Is the human reviewer's confirmation documented in the file?</span></div>
+            <div class="ai-checklist-item"><span class="ai-check-text">Would the record support downstream review without the drafter available?</span></div>
+          </div>
+          <div class="ai-note">Human reviewer confirmation required before system entry.</div>
+        </div>
+      </div>
+      <div style="padding:14px 24px;border-top:1px solid var(--rule);background:var(--surface2);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:9px;">What appeared most clearly?</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <button onclick="recordModObs(this)" data-val="chronology" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Chronology Instability</button>
+          <button onclick="recordModObs(this)" data-val="escalation" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Unsupported Escalation</button>
+          <button onclick="recordModObs(this)" data-val="disagreement" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Reviewer Disagreement</button>
+          <button onclick="recordModObs(this)" data-val="source" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Source Linkage Failure</button>
+          <button onclick="recordModObs(this)" data-val="drift" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">AI Drift</button>
+        </div>
+      </div>
+      <div class="module-complete-row">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft)">Review complete?</span>
+        <button class="btn-complete" onclick="markComplete(3)">Mark Complete</button>
+      </div>
+    </div>
+
+    <div class="module-row" id="module-row-4">
+      <div class="module-num" id="module-num-4">05</div>
+      <div class="module-body" onclick="toggleModule(4)">
+        <div class="module-title">Investigation Review</div>
+        <div class="module-outcome">By the end you can apply the method to an investigative file from intake to finalization.</div>
+        <div class="module-status" id="module-status-4">Not Started</div>
+      </div>
+      <div class="module-actions">
+        <button class="btn-open" id="module-btn-4" onclick="toggleModule(4)" aria-expanded="false" aria-controls="module-panel-4">&#9658; Open</button>
+      </div>
+    </div>
+    <div class="module-panel" id="module-panel-4">
+      <div class="module-panel-inner">
+        <div style="padding:12px 16px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;background:rgba(190,148,71,.04);border:1px solid rgba(190,148,71,.16);">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);">Start with interaction</span>
+          <a href="#simulator" onclick="document.getElementById('simulator').scrollIntoView({behavior:'smooth'});showSimTab(0)" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:10px 20px;text-decoration:none;display:inline-block;font-weight:600;">&#9654; Run a Simulation</a>
+        </div>
+        <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:20px">Investigation records present specific documentation sufficiency challenges. Source materials may be distributed across systems. Witness accounts may conflict. Findings are made under time pressure. This module addresses the review standard for investigation records specifically.</p>
+        <div class="condition-list">
+          <div class="condition-item"><div class="condition-label">Investigation Review Standard</div><div class="condition-title">Witness Accounts</div><div class="condition-body">All accounts obtained during the investigation should be preserved in the file. The credibility determination and its basis should be stated. Accounts not credited should remain accessible to a subsequent reviewer.</div></div>
+          <div class="condition-item"><div class="condition-label">Investigation Review Standard</div><div class="condition-title">Source Materials</div><div class="condition-body">Documents reviewed during the investigation should be identified and confirmed present. Where source materials are in archived or inaccessible systems, that condition should be documented - not assumed resolved.</div></div>
+          <div class="condition-item"><div class="condition-label">Investigation Review Standard</div><div class="condition-title">Timeline</div><div class="condition-body">Investigation open date, interview dates, and close date should be identifiable from the file. The chronology of the investigation itself should be reconstructible independently of the investigator.</div></div>
+          <div class="condition-item"><div class="condition-label">Investigation Review Standard</div><div class="condition-title">Independence</div><div class="condition-body">The review of investigation conclusions should occur outside the drafting chain. Where staffing constraints limit independence, that constraint should be documented - not resolved by silence.</div></div>
+        </div>
+      </div>
+      <div style="padding:14px 24px;border-top:1px solid var(--rule);background:var(--surface2);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:9px;">What appeared most clearly?</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <button onclick="recordModObs(this)" data-val="chronology" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Chronology Instability</button>
+          <button onclick="recordModObs(this)" data-val="escalation" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Unsupported Escalation</button>
+          <button onclick="recordModObs(this)" data-val="disagreement" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Reviewer Disagreement</button>
+          <button onclick="recordModObs(this)" data-val="source" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Source Linkage Failure</button>
+          <button onclick="recordModObs(this)" data-val="drift" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">AI Drift</button>
+        </div>
+      </div>
+      <div class="module-complete-row">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft)">Review complete?</span>
+        <button class="btn-complete" onclick="markComplete(4)">Mark Complete</button>
+      </div>
+    </div>
+
+    <div class="module-row" id="module-row-5">
+      <div class="module-num" id="module-num-5">06</div>
+      <div class="module-body" onclick="toggleModule(5)">
+        <div class="module-title">Implementation Sequence</div>
+        <div class="module-outcome">By the end you have an order of operations for putting JRS into a team's workflow.</div>
+        <div class="module-status" id="module-status-5">Not Started</div>
+      </div>
+      <div class="module-actions">
+        <button class="btn-open" id="module-btn-5" onclick="toggleModule(5)" aria-expanded="false" aria-controls="module-panel-5">&#9658; Open</button>
+      </div>
+    </div>
+    <div class="module-panel" id="module-panel-5">
+      <div class="module-panel-inner">
+        <div style="padding:12px 16px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;background:rgba(190,148,71,.04);border:1px solid rgba(190,148,71,.16);">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);">Start with interaction</span>
+          <a href="#simulator" onclick="document.getElementById('simulator').scrollIntoView({behavior:'smooth'});showSimTab(0)" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:10px 20px;text-decoration:none;display:inline-block;font-weight:600;">&#9654; Run a Simulation</a>
+        </div>
+        <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:20px">The implementation sequence supports phased rollout within existing workflows. Each step can be applied independently. Organizations may begin with the forms and refer back to reviewer materials as questions arise, or proceed through the full sequence before deployment.</p>
+        <div class="sampling-list">
+          <div class="sampling-item"><div class="sampling-num">1</div><div class="sampling-body"><div class="sampling-title">Distribute the Rapid Review Card</div><div class="sampling-desc">Provide all primary reviewers with KIT-F1. Establish it as the baseline reference for the five JRS review conditions.</div></div></div>
+          <div class="sampling-item"><div class="sampling-num">2</div><div class="sampling-body"><div class="sampling-title">Complete Reviewer Onboarding</div><div class="sampling-desc">Work through KIT-B1 with new and returning reviewers. Establish risk-level routing expectations before the first review cycle.</div></div></div>
+          <div class="sampling-item"><div class="sampling-num">3</div><div class="sampling-body"><div class="sampling-title">Apply the Pre-Finalization Worksheet</div><div class="sampling-desc">Use KIT-A1 for all records in scope. Begin with elevated-risk categories if phased rollout is required.</div></div></div>
+          <div class="sampling-item"><div class="sampling-num">4</div><div class="sampling-body"><div class="sampling-title">Establish Escalation Routing</div><div class="sampling-desc">Identify secondary reviewer contacts. Distribute KIT-A2 and KIT-E1A to routing decision-makers. Document any local variance from the reference routing conditions.</div></div></div>
+          <div class="sampling-item"><div class="sampling-num">5</div><div class="sampling-body"><div class="sampling-title">Complete AI Documentation Integration</div><div class="sampling-desc">Apply KIT-C1 to all AI-assisted records. Establish human confirmation as a required step before system entry.</div></div></div>
+          <div class="sampling-item"><div class="sampling-num">6</div><div class="sampling-body"><div class="sampling-title">Initiate Periodic Sampling</div><div class="sampling-desc">Establish a review sampling schedule. See the Periodic Review Sampling reference section below for sampling categories and scope guidance.</div></div></div>
+          <div class="sampling-item"><div class="sampling-num">7</div><div class="sampling-body"><div class="sampling-title">Document Variances</div><div class="sampling-desc">Where local workflow differs from a reference condition, document the basis. Variance documentation supports later review and reduces audit exposure.</div></div></div>
+        </div>
+      </div>
+      <div style="padding:14px 24px;border-top:1px solid var(--rule);background:var(--surface2);">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:9px;">What appeared most clearly?</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <button onclick="recordModObs(this)" data-val="chronology" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Chronology Instability</button>
+          <button onclick="recordModObs(this)" data-val="escalation" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Unsupported Escalation</button>
+          <button onclick="recordModObs(this)" data-val="disagreement" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Reviewer Disagreement</button>
+          <button onclick="recordModObs(this)" data-val="source" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Source Linkage Failure</button>
+          <button onclick="recordModObs(this)" data-val="drift" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">AI Drift</button>
+        </div>
+      </div>
+      <div class="module-complete-row">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft)">Review complete?</span>
+        <button class="btn-complete" onclick="markComplete(5)">Mark Complete</button>
+      </div>
+    </div>
+
+  </div>
+
+  
+
+  <div style="margin:32px 0 44px;padding:20px 24px;border:1px solid rgba(190,148,71,.25);background:rgba(190,148,71,.04);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;">Recurring Participation Loop</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.6;max-width:480px;">Modules explored. Return to simulations and explore a new scenario. The core loop: Explore Simulation &#8594; Observe Ambiguity &#8594; Submit Observation &#8594; Return.</div>
+    </div>
+    <a href="#simulator" onclick="document.getElementById('simulator').scrollIntoView({behavior:'smooth'});showSimTab(0)" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;background:var(--accent);color:#050505;padding:14px 24px;text-decoration:none;display:inline-block;font-weight:600;white-space:nowrap;">&#9654; Explore New Simulation</a>
+  </div>
+  <h2 class="section-head">Reference Review Scenarios</h2>
+  <p class="section-sub">Examples are abbreviated and composite. Local conditions may differ.</p>
+
+  <div class="scenario-list">
+
+    <div class="scenario-item">
+      <div class="scenario-header">
+        <span class="scenario-id">S-01</span>
+        <span class="scenario-title">Unsupported Escalation Wording</span>
+        <span class="scenario-type">Performance / Escalation</span>
+      </div>
+      <div class="scenario-body">
+        <div class="scenario-section">
+          <div class="scenario-section-label">Original Record Language</div>
+          <div class="scenario-text original">"Employee has demonstrated a sustained pattern of resistance to supervisory direction and has failed to meet performance expectations despite repeated intervention."</div>
+        </div>
+        <div class="scenario-section">
+          <div class="scenario-section-label">Suggested Revision</div>
+          <div class="scenario-text revised">"Employee did not submit required project updates on March 4, March 11, and March 18 (meeting notes on file). Supervisor communicated expectations in writing on February 28 (email on file). Verbal coaching documented February 10 and March 3. No improvement noted as of March 19 review."</div>
+        </div>
+        <div class="scenario-section">
+          <div class="scenario-section-label">Reviewer Observation</div>
+          <div class="scenario-text">"Sustained pattern" and "repeated intervention" are evaluative conclusions. Neither is traceable to specific documented interactions in the file. Conduct, dates, and interventions are not identifiable from this record. Source attachment status: unconfirmed.</div>
+        </div>
+        <div class="concern-list">
+          <div class="concern-item">No specific conduct dates identified</div>
+          <div class="concern-item">Intervention trail not referenced or in file</div>
+        </div>
+        <div class="concern-list" style="margin-top:6px">
+          <div class="condition-tag">Secondary review recommended before finalization</div>
+          <div class="condition-tag">Source records should be confirmed present</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scenario-item">
+      <div class="scenario-header">
+        <span class="scenario-id">S-02</span>
+        <span class="scenario-title">AI-Assisted Wording Inflation</span>
+        <span class="scenario-type">AI-Assisted / Characterization</span>
+      </div>
+      <div class="scenario-body">
+        <div class="scenario-section">
+          <div class="scenario-section-label">Original Record Language</div>
+          <div class="scenario-text original">"AI Summary: Employee consistently demonstrates poor judgment, lacks professional accountability, and has created a hostile environment for team members."</div>
+        </div>
+        <div class="scenario-section">
+          <div class="scenario-section-label">Suggested Revision</div>
+          <div class="scenario-text revised">"Supervisor notes from January 14 and February 3 document two incidents of missed project deadlines without advance notice. One team member submitted a written concern on February 10 (on file). No additional documented incidents identified in the reviewed period."</div>
+        </div>
+        <div class="scenario-section">
+          <div class="scenario-section-label">Reviewer Observation</div>
+          <div class="scenario-text">Generated wording introduces three evaluative conclusions without traceable source attribution. The supervisor notes documented two missed deadlines and one written team concern. Generated wording exceeds the documented support.</div>
+        </div>
+        <div class="concern-list">
+          <div class="concern-item">Generated conclusions exceed observable source support</div>
+          <div class="concern-item">Evaluative language unattributed to specific events</div>
+        </div>
+        <div class="concern-list" style="margin-top:6px">
+          <div class="condition-tag">Human confirmation against original notes required</div>
+          <div class="condition-tag">Return to drafter before system entry</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scenario-item">
+      <div class="scenario-header">
+        <span class="scenario-id">S-03</span>
+        <span class="scenario-title">Missing Timeline Anchors</span>
+        <span class="scenario-type">Investigation / Chronology</span>
+      </div>
+      <div class="scenario-body">
+        <div class="scenario-section">
+          <div class="scenario-section-label">Original Record Language</div>
+          <div class="scenario-text original">"Following a series of reported incidents and a subsequent investigation, it was determined that the employee's conduct was inconsistent with workplace policy."</div>
+        </div>
+        <div class="scenario-section">
+          <div class="scenario-section-label">Suggested Revision</div>
+          <div class="scenario-text revised">"Three conduct reports were submitted between October 4 and October 19 (reports on file). Investigation opened October 21. Interviews conducted October 24-28. Investigation concluded November 2. Finding: conduct on October 7 and October 14 inconsistent with Section 4.2 of the Workplace Conduct Policy (policy version on file)."</div>
+        </div>
+        <div class="scenario-section">
+          <div class="scenario-section-label">Reviewer Observation</div>
+          <div class="scenario-text">"A series of reported incidents" - number, dates, and nature unspecified. "Subsequent investigation" - open date, close date, and investigator not identified. "Determined" - basis for determination not stated. The timeline cannot be reconstructed from this record.</div>
+        </div>
+        <div class="concern-list">
+          <div class="concern-item">No incident dates or count identifiable</div>
+          <div class="concern-item">Investigation timeline absent from record</div>
+          <div class="concern-item">Policy basis not identified</div>
+        </div>
+        <div class="concern-list" style="margin-top:6px">
+          <div class="condition-tag">Return to drafter. Secondary review required.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scenario-item">
+      <div class="scenario-header">
+        <span class="scenario-id">S-04</span>
+        <span class="scenario-title">Cross-Record Wording Contamination</span>
+        <span class="scenario-type">Template / Inherited Language</span>
+      </div>
+      <div class="scenario-body">
+        <div class="scenario-section">
+          <div class="scenario-section-label">Original Record Language</div>
+          <div class="scenario-text original">"As previously documented, employee has demonstrated ongoing performance concerns consistent with the findings of earlier review cycles."</div>
+        </div>
+        <div class="scenario-section">
+          <div class="scenario-section-label">Suggested Revision</div>
+          <div class="scenario-text revised">"Performance concern documented April 7 (coaching note on file). No additional performance documentation identified in the current review period. Prior cycle records referenced: [identify specific documents and confirm availability in file]."</div>
+        </div>
+        <div class="scenario-section">
+          <div class="scenario-section-label">Reviewer Observation</div>
+          <div class="scenario-text">"As previously documented" - prior records not identified or confirmed present. "Earlier review cycles" - specific cycles not named. This wording pattern commonly appears in copied templates where earlier conclusions carry forward without the underlying records.</div>
+        </div>
+        <div class="concern-list">
+          <div class="concern-item">Prior records referenced but not identified</div>
+          <div class="concern-item">Template language may have carried forward without verification</div>
+        </div>
+        <div class="concern-list" style="margin-top:6px">
+          <div class="condition-tag">Confirm prior records are present and identifiable</div>
+          <div class="condition-tag">Do not rely on conclusion without traceable support</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scenario-item">
+      <div class="scenario-header">
+        <span class="scenario-id">S-05</span>
+        <span class="scenario-title">Conflicting Witness Descriptions</span>
+        <span class="scenario-type">Investigation / Conflicting Accounts</span>
+      </div>
+      <div class="scenario-body">
+        <div class="scenario-section">
+          <div class="scenario-section-label">Original Record Language</div>
+          <div class="scenario-text original">"Witness accounts were reviewed and the investigator concluded that the incident occurred as described by the complainant."</div>
+        </div>
+        <div class="scenario-section">
+          <div class="scenario-section-label">Suggested Revision</div>
+          <div class="scenario-text revised">"Complainant described the incident as [summary]. Respondent denied the conduct and stated [summary]. Witness A corroborated complainant's account. Witness B was not present. Credibility determination based on complainant's contemporaneous documentation (dated April 3, on file) and Witness A corroboration. Respondent account preserved in file."</div>
+        </div>
+        <div class="scenario-section">
+          <div class="scenario-section-label">Reviewer Observation</div>
+          <div class="scenario-text">The original record omits respondent account, witness account detail, and the stated basis for the credibility determination. "Witness accounts were reviewed" does not identify what accounts were obtained or what they contained.</div>
+        </div>
+        <div class="concern-list">
+          <div class="concern-item">Respondent account not preserved</div>
+          <div class="concern-item">Credibility basis not stated</div>
+        </div>
+        <div class="concern-list" style="margin-top:6px">
+          <div class="condition-tag">Independent review outside drafting chain recommended</div>
+          <div class="condition-tag">All accounts should be retained and identifiable</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  
+  <h2 class="section-head">Pre-Finalization Review Worksheet</h2>
+  <p class="section-sub">Apply before any record enters an official system. Note gaps - do not assume resolution.</p>
+  <div class="worksheet">
+    <div class="worksheet-section">
+      <div class="worksheet-section-header">Chronology and Timeline</div>
+      <div class="worksheet-item"><div class="worksheet-num">1</div><div class="worksheet-content"><div class="worksheet-item-title">Dates identifiable</div><div class="worksheet-item-desc">Each event, conduct instance, or decision has a specific date in the file.</div></div></div>
+      <div class="worksheet-item"><div class="worksheet-num">2</div><div class="worksheet-content"><div class="worksheet-item-title">Timeline sequence visible</div><div class="worksheet-item-desc">Events can be placed in order from the file alone.</div></div></div>
+      <div class="worksheet-item"><div class="worksheet-num">3</div><div class="worksheet-content"><div class="worksheet-item-title">Gaps noted</div><div class="worksheet-item-desc">Where dates or sequences are missing, the gap is acknowledged - not resolved through assumption.</div></div></div>
+    </div>
+    <div class="worksheet-section">
+      <div class="worksheet-section-header">Source and Support</div>
+      <div class="worksheet-item"><div class="worksheet-num">4</div><div class="worksheet-content"><div class="worksheet-item-title">Source records identified</div><div class="worksheet-item-desc">Each conclusion references specific source materials. Records are named and confirmed present in file.</div></div></div>
+      <div class="worksheet-item"><div class="worksheet-num">5</div><div class="worksheet-content"><div class="worksheet-item-title">Attachments confirmed</div><div class="worksheet-item-desc">Referenced attachments are in the file. Missing attachments are noted.</div></div></div>
+      <div class="worksheet-item"><div class="worksheet-num">6</div><div class="worksheet-content"><div class="worksheet-item-title">Policy citation present</div><div class="worksheet-item-desc">Where policy is referenced, the applicable policy version is identified.</div></div></div>
+    </div>
+    <div class="worksheet-section">
+      <div class="worksheet-section-header">Characterization Review</div>
+      <div class="worksheet-item"><div class="worksheet-num">7</div><div class="worksheet-content"><div class="worksheet-item-title">Evaluative language anchored</div><div class="worksheet-item-desc">Each adjective or conclusion is traceable to a specific documented event or source record.</div></div></div>
+      <div class="worksheet-item"><div class="worksheet-num">8</div><div class="worksheet-content"><div class="worksheet-item-title">Escalation wording supported</div><div class="worksheet-item-desc">Escalation conclusions reference identifiable prior documentation in the file.</div></div></div>
+      <div class="worksheet-item"><div class="worksheet-num">9</div><div class="worksheet-content"><div class="worksheet-item-title">Pattern claims dated</div><div class="worksheet-item-desc">Any claim of repeated or ongoing conduct is supported by specific dated instances.</div></div></div>
+    </div>
+    <div class="worksheet-section">
+      <div class="worksheet-section-header">AI-Assisted Content</div>
+      <div class="worksheet-item"><div class="worksheet-num">10</div><div class="worksheet-content"><div class="worksheet-item-title">Generated wording verified</div><div class="worksheet-item-desc">Where AI-assisted drafting was applied, generated wording has been checked against original notes.</div></div></div>
+      <div class="worksheet-item"><div class="worksheet-num">11</div><div class="worksheet-content"><div class="worksheet-item-title">Confidence level accurate</div><div class="worksheet-item-desc">Generated wording does not exceed certainty reflected in source notes.</div></div></div>
+      <div class="worksheet-item"><div class="worksheet-num">12</div><div class="worksheet-content"><div class="worksheet-item-title">Conflicting accounts preserved</div><div class="worksheet-item-desc">Where source notes reflected disagreement or uncertainty, that is reflected in the record.</div></div></div>
+    </div>
+    <div class="worksheet-section">
+      <div class="worksheet-section-header">Reviewer Confirmation</div>
+      <div class="worksheet-item"><div class="worksheet-num">13</div><div class="worksheet-content"><div class="worksheet-item-title">Record stands independently</div><div class="worksheet-item-desc">A downstream reviewer could follow the record without contacting the original drafter.</div></div></div>
+      <div class="worksheet-item"><div class="worksheet-num">14</div><div class="worksheet-content"><div class="worksheet-item-title">Gaps documented</div><div class="worksheet-item-desc">Any unresolved gaps are noted in the record rather than assumed resolved.</div></div></div>
+      <div class="worksheet-item"><div class="worksheet-num">15</div><div class="worksheet-content"><div class="worksheet-item-title">Reviewer confirmation complete</div><div class="worksheet-item-desc">Human reviewer has confirmed wording against available source materials before system entry.</div></div></div>
+    </div>
+    <div class="worksheet-note">Reviewer reference only. Does not establish legal sufficiency.</div>
+  </div>
+
+  
+  <h2 class="section-head">Conditions Requiring Secondary Review</h2>
+  <p class="section-sub">Any single condition is sufficient to route for secondary review. Routing thresholds may vary.</p>
+
+  <div class="section-label" style="margin-top:0">Trigger Conditions</div>
+  <div class="trigger-list">
+    <div class="trigger-item"><span class="trigger-text">Evaluative conclusions without identified source records</span></div>
+    <div class="trigger-item"><span class="trigger-text">Escalation wording without prior counseling trail in file</span></div>
+    <div class="trigger-item"><span class="trigger-text">Conflicting chronology not resolved or noted</span></div>
+    <div class="trigger-item"><span class="trigger-text">Missing source documentation referenced in record</span></div>
+    <div class="trigger-item"><span class="trigger-text">AI-assisted conclusions without identifiable source support</span></div>
+    <div class="trigger-item"><span class="trigger-text">Unresolved factual conflicts between accounts</span></div>
+    <div class="trigger-item"><span class="trigger-text">Protected-category allegations present</span></div>
+    <div class="trigger-item"><span class="trigger-text">Materially incomplete chronology with no gap notation</span></div>
+  </div>
+
+  <div class="severity-grid" style="margin-top:16px">
+    <div class="severity-item"><div class="severity-level low">Low</div><div style="font-size:12px;color:var(--accent);font-weight:600;margin-bottom:4px">Routine documentation.</div><div class="severity-desc">Primary reviewer review sufficient. No trigger conditions present.</div></div>
+    <div class="severity-item"><div class="severity-level moderate">Moderate</div><div style="font-size:12px;color:var(--review-text);font-weight:600;margin-bottom:4px">Evaluative conclusions or escalation indicators present.</div><div class="severity-desc">Clarification review recommended before finalization.</div></div>
+    <div class="severity-item"><div class="severity-level high">High</div><div style="font-size:12px;color:#E8A84A;font-weight:600;margin-bottom:4px">Trigger condition identified.</div><div class="severity-desc">Secondary review required before finalization.</div></div>
+    <div class="severity-item"><div class="severity-level critical">Critical</div><div style="font-size:12px;color:var(--stop-text);font-weight:600;margin-bottom:4px">Termination, protected-category, or AI-assisted documentation.</div><div class="severity-desc">Human source verification and reviewer confirmation required before entry into official record.</div></div>
+  </div>
+
+  
+  <h2 class="section-head">Review Instability Recognition</h2>
+  <p class="section-sub">Recognizable conditions in organizational documentation that create interpretive friction or reconstruction difficulty.</p>
+
+  <div class="failure-list">
+    <div class="failure-item">
+      <div class="failure-title">Operational Amnesia</div>
+      <div class="failure-sub">What reviewers observe</div>
+      <div class="failure-body">A record that was understandable when drafted becomes difficult to follow after the original participants are no longer available. Context that was assumed common knowledge was never written down.</div>
+      <div class="failure-sub">How it develops</div>
+      <div class="failure-body">Drafters often omit context they consider obvious. Over time, that context disappears as personnel change, systems migrate, or institutional memory erodes.</div>
+      <div class="failure-sub">Review guidance</div>
+      <div class="failure-body">If a reviewer with no prior knowledge cannot follow the record, the file-based basis is insufficient.</div>
+    </div>
+    <div class="failure-item">
+      <div class="failure-title">Reinterpretation Drift</div>
+      <div class="failure-sub">What reviewers observe</div>
+      <div class="failure-body">Earlier events are described with increasing clarity or severity in later records, without new evidence being introduced. The original documentation does not support the later characterization.</div>
+      <div class="failure-sub">How it develops</div>
+      <div class="failure-body">Each successive record builds on prior records rather than on primary evidence. Wording migrates through templates. The original source basis becomes increasingly remote.</div>
+      <div class="failure-sub">Review guidance</div>
+      <div class="failure-body">Check original source records against current characterization.</div>
+    </div>
+    <div class="failure-item">
+      <div class="failure-title">Escalation Drift</div>
+      <div class="failure-sub">What reviewers observe</div>
+      <div class="failure-body">Escalation language appears in a record without an identifiable prior counseling trail. "Repeated warnings" or "ongoing concerns" are referenced but not traceable to documents in the file.</div>
+      <div class="failure-sub">How it develops</div>
+      <div class="failure-body">Earlier coaching or verbal guidance was not documented at the time. Later records reference it as though it was. The record accumulates implied history without documented support.</div>
+      <div class="failure-sub">Review guidance</div>
+      <div class="failure-body">Prior intervention claims should reference identifiable documents. If none exist, the escalation basis is not independently verifiable.</div>
+    </div>
+    <div class="failure-item">
+      <div class="failure-title">Cross-Record Contamination</div>
+      <div class="failure-sub">What reviewers observe</div>
+      <div class="failure-body">Wording from one record appears in subsequent records without independent verification. Templates, prior conclusions, or AI-assisted drafting output carry forward language that was never confirmed against primary documentation.</div>
+      <div class="failure-sub">How it develops</div>
+      <div class="failure-body">Records are drafted using prior records as reference rather than returning to primary evidence. Wording accumulates across review cycles without re-verification.</div>
+      <div class="failure-sub">Review guidance</div>
+      <div class="failure-body">Where wording appears across multiple records, verify each instance against independent source materials.</div>
+    </div>
+  </div>
+
+  
+  <h2 class="section-head">Periodic Retained-Record Sampling</h2>
+  <p class="section-sub">Lightweight review of retained organizational records on a periodic basis. Frequency and scope determined by organizational capacity.</p>
+  <div class="sampling-list">
+    <div class="sampling-item"><div class="sampling-num">1</div><div class="sampling-body"><div class="sampling-title">Random Retained-Record Review</div><div class="sampling-desc">Periodically review a sample of finalized records without advance selection criteria. Apply the five JRS review conditions to each. Note patterns.</div></div></div>
+    <div class="sampling-item"><div class="sampling-num">2</div><div class="sampling-body"><div class="sampling-title">Escalation Record Sampling</div><div class="sampling-desc">Review a sample of recent escalation records. Confirm prior counseling trail is identifiable. Confirm source records are present. Note where they are not.</div></div></div>
+    <div class="sampling-item"><div class="sampling-num">3</div><div class="sampling-body"><div class="sampling-title">AI-Assisted Documentation Spot Review</div><div class="sampling-desc">Where AI-assisted drafting was applied, select a sample for source verification. Confirm generated wording against original notes. Note where discrepancies exist.</div></div></div>
+    <div class="sampling-item"><div class="sampling-num">4</div><div class="sampling-body"><div class="sampling-title">Chronology Verification Sample</div><div class="sampling-desc">Select records involving conduct or performance conclusions. Confirm each conclusion has an identifiable date. Note where dates are absent.</div></div></div>
+    <div class="sampling-item"><div class="sampling-num">5</div><div class="sampling-body"><div class="sampling-title">Wording Pattern Review</div><div class="sampling-desc">Where identical or near-identical phrasing appears across multiple records, check whether each instance was verified against independent source materials or carried forward from prior records.</div></div></div>
+  </div>
+  <p class="sampling-note" style="padding:0;border:none;margin-top:0">Sampling findings should be documented and shared with the appropriate reviewer or supervisor. Findings are not final compliance determinations. Identified patterns should be noted. No finding in a given cycle does not eliminate the review obligation in the next.</p>
+
+  
+  <h2 class="section-head">Reviewer Calibration Exercises</h2>
+  <p class="section-sub">Scenarios where reasonable reviewers may reach different conclusions. Purpose: surface interpretive variation.</p>
+
+  <div class="calibration-list">
+    <div class="calibration-item">
+      <div class="calibration-header">
+        <div class="calibration-id">Exercise C-01: Escalation Threshold Interpretation</div>
+        <div class="calibration-title"></div>
+      </div>
+      <div class="calibration-body">
+        <div class="scenario-section-label" style="margin-bottom:8px">Record for Review</div>
+        <div class="calibration-record">"Employee was counseled on three occasions regarding communication style. No written documentation exists for the first two sessions. The third session was documented on April 14. Employee is now being considered for formal discipline."</div>
+        <div class="calibration-position">
+          <div class="calibration-pos-label">Reviewer Position A</div>
+          <div class="calibration-pos-text">Three counseling sessions are referenced. One is documented. The undocumented sessions cannot be independently verified. Escalation to formal discipline without a traceable counseling trail presents a documentation gap. Return to drafter.</div>
+        </div>
+        <div class="calibration-position">
+          <div class="calibration-pos-label">Reviewer Position B</div>
+          <div class="calibration-pos-text">The April 14 documentation is present. The prior sessions, while undocumented, are acknowledged. Secondary review is warranted given the gap, but the file is not necessarily insufficient - it depends on what the April 14 note contains and whether it references the prior sessions.</div>
+        </div>
+      </div>
+      <div class="calibration-note">
+        <div class="calibration-note-label">Calibration Note</div>
+        <div class="calibration-note-text">Both positions reflect legitimate reviewer reasoning. Discussion should focus on what the April 14 note contains and what the downstream review obligation is if prior sessions cannot be independently verified.</div>
+      </div>
+    </div>
+
+    <div class="calibration-item">
+      <div class="calibration-header">
+        <div class="calibration-id">Exercise C-02: Wording Support Disagreement</div>
+        <div class="calibration-title"></div>
+      </div>
+      <div class="calibration-body">
+        <div class="scenario-section-label" style="margin-bottom:8px">Record for Review</div>
+        <div class="calibration-record">"Employee's behavior has become increasingly difficult to manage. The employee has shown little willingness to adapt to team expectations despite supervisor feedback."</div>
+        <div class="calibration-position">
+          <div class="calibration-pos-label">Reviewer Position A</div>
+          <div class="calibration-pos-text">"Increasingly difficult" and "little willingness" are evaluative conclusions without specific behavioral anchors. No dates. No specific incidents. Record should not advance without revision.</div>
+        </div>
+        <div class="calibration-position">
+          <div class="calibration-pos-label">Reviewer Position B</div>
+          <div class="calibration-pos-text">The wording is general but may reflect a pattern documented elsewhere in the file. Before returning the record, confirm whether supporting documentation exists in an attached or referenced supervisory file.</div>
+        </div>
+      </div>
+      <div class="calibration-note">
+        <div class="calibration-note-label">Calibration Note</div>
+        <div class="calibration-note-text">Position A applies the documentation sufficiency standard directly to the submitted text. Position B asks whether supporting context exists elsewhere. Both are reasonable starting points. The operative question: is the supporting basis in this file, or does it require the reviewer to look elsewhere? If elsewhere, is that accessible to a downstream reviewer?</div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="doctrine-block" style="border-color:rgba(190,148,71,.2)">
+    <div class="doctrine-label">AI-Origin Visibility</div>
+    <div class="doctrine-text">Reviewers should distinguish between source-authored observations, imported summaries, AI-assisted drafting, and inferred characterization before finalization. Each origin type carries different evidentiary weight and different reconstruction risk. Records that blend these without identification create downstream review gaps that cannot be resolved after system entry.</div>
+  </div>
+
+  
+  <div class="doctrine-block">
+    <div class="doctrine-label">Review Doctrine</div>
+    <div class="doctrine-text">Structural sufficiency does not independently establish factual or legal correctness. Documentation sufficiency does not establish substantive correctness. Review procedures assess record visibility and evidentiary support - not decision quality or outcome correctness.</div>
+  </div>
+
+  <p style="font-size:12px;color:var(--muted-soft);margin-top:8px;line-height:1.7">These materials support documentation review practice only. No legal determinations. Organizations remain responsible for applicable legal, policy, and compliance determinations. Local workflow requirements govern implementation.</p>
+
+  </div>
+</div>
 
 <!-- ═══ START HERE ════════════════════════════════════════ -->
 <div class="start-here-bar" id="start-here">
@@ -1836,717 +2549,6 @@ renderFM();
   </div>
 </div>
 
-<!-- ═══ TRAINING MODULES ═════════════════════════════════ -->
-<div id="training-modules" style="background:var(--bg);border-top:1px solid var(--rule);padding:48px 24px 64px">
-  <div style="max-width:960px;margin:0 auto">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px">Reviewer Training</div>
-    <h2 style="font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--text);margin-bottom:10px">Training Modules</h2>
-    <p style="font-size:14px;color:var(--muted);line-height:1.7;max-width:680px;margin-bottom:20px">Six modules covering the core JRS documentation review methodology. Work through each at your own pace. Progress is saved automatically.</p>
-    <div style="border:1px solid var(--rule);background:var(--surface);padding:16px 18px;margin-bottom:22px;border-left:3px solid var(--accent)">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:6px">Reviewer Desk Reference</div>
-      <div style="font-size:13.5px;color:var(--muted);line-height:1.65;margin-bottom:10px">Download the nineteen-page JRS Reviewer Reference and keep it open as you work through the modules. It covers all five review conditions, submission readiness, escalation triggers, and maturity levels, and stays on your desk as the reference you work from afterwards.</div>
-      <a href="/api/dl?f=JRS-Reference-9d4f2a7c.pdf&amp;src=training-kit" class="btn-download">Desk Reference (PDF, 19 pages)</a>
-    </div>
-    <div class="progress-block">
-      <div class="progress-label-row">
-        <span class="progress-section-label">Progress</span>
-        <span class="progress-count" id="progress-display">Step 1 of 6 &middot; Ready to start</span>
-      </div>
-      <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
-    </div>
-  <div id="preview-banner" style="display:none;background:var(--surface2);border:1px solid var(--accent-dim);border-left:3px solid var(--accent);padding:14px 16px;margin-bottom:16px">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:5px">Open access</div>
-    <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between">
-      <span style="font-size:12.5px;color:var(--muted);line-height:1.5;flex:1 1 260px">All six modules are open to read right now. Add your name only when you want the certificate issued in it.</span>
-      <button onclick="openEnroll()" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:11px 18px;cursor:pointer;flex:0 0 auto">Name my certificate</button>
-    </div>
-  </div>
-  <div class="module-list" id="module-list">
-
-    <div class="module-row" id="module-row-0">
-      <div class="module-num" id="module-num-0">01</div>
-      <div class="module-body" onclick="toggleModule(0)">
-        <div class="module-title">JRS Review Conditions</div>
-        <div class="module-outcome">By the end you can test any record against the five conditions and say which one it fails.</div>
-        <div class="module-status" id="module-status-0">Not Started</div>
-      </div>
-      <div class="module-actions">
-        <button class="btn-open" id="module-btn-0" onclick="toggleModule(0)" aria-expanded="false" aria-controls="module-panel-0">&#9658; Open</button>
-      </div>
-    </div>
-    <div class="module-panel" id="module-panel-0">
-      <div class="module-panel-inner">
-        <div style="padding:12px 16px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;background:rgba(190,148,71,.04);border:1px solid rgba(190,148,71,.16);">
-          <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);">Start with interaction</span>
-          <a href="#simulator" onclick="document.getElementById('simulator').scrollIntoView({behavior:'smooth'});showSimTab(0)" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:10px 20px;text-decoration:none;display:inline-block;font-weight:600;">&#9654; Run a Simulation</a>
-        </div>
-        <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:16px">The five JRS review conditions establish the baseline standard for documentation sufficiency. Each condition addresses a distinct visibility requirement for retained-record review. Apply to any record that may face later independent scrutiny.</p>
-        <div class="condition-list">
-          <div class="condition-item"><div class="condition-label">Review Condition 1: Reconstructability</div><div class="condition-title">Can the conclusion be reconstructed from the record?</div><div class="condition-body">A future reviewer can trace the path from documented evidence to the conclusion reached, without relying on the author's recollection or added explanation.</div></div>
-          <div class="condition-item"><div class="condition-label">Review Condition 2: Basis Identification</div><div class="condition-title">Is the basis for the conclusion identifiable?</div><div class="condition-body">The source of each characterization (observation, measurement, audit finding, or reported incident) is visible and traceable, not implied or summarized without attribution.</div></div>
-          <div class="condition-item"><div class="condition-label">Review Condition 3: Chronology</div><div class="condition-title">Is the chronology understandable?</div><div class="condition-body">The sequence of events is followable from the record alone, including the timing of prior interventions, escalation steps, and the period under review.</div></div>
-          <div class="condition-item"><div class="condition-label">Review Condition 4: Decision-Process Traceability</div><div class="condition-title">Can a future reviewer determine how the conclusion was reached?</div><div class="condition-body">The decision process is documented: who reviewed the matter, what criteria or threshold triggered the conclusion, and whether responsive or mitigating information was considered before finalization.</div></div>
-          <div class="condition-item"><div class="condition-label">Review Condition 5: Evidentiary Sufficiency</div><div class="condition-title">Could a reviewer with no prior knowledge evaluate the evidentiary sufficiency of this record?</div><div class="condition-body">The aggregate condition. The record stands on its own so an independent reviewer with no prior knowledge can assess whether the conclusion is supported by the documented evidence.</div></div>
-        </div>
-        <div class="reviewer-reminder" style="margin-top:20px">
-          <div class="reviewer-reminder-label">Reviewer Note</div>
-          <p>These five conditions apply regardless of record type. The standard is consistent: can the conclusion be reconstructed, its basis identified, its chronology followed, the decision process traced, and its evidentiary sufficiency judged from the file alone?</p>
-        </div>
-      </div>
-      <div style="padding:14px 24px;border-top:1px solid var(--rule);background:var(--surface2);">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:9px;">What appeared most clearly?</div>
-        <div style="display:flex;flex-wrap:wrap;gap:6px;">
-          <button onclick="recordModObs(this)" data-val="chronology" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Chronology Instability</button>
-          <button onclick="recordModObs(this)" data-val="escalation" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Unsupported Escalation</button>
-          <button onclick="recordModObs(this)" data-val="disagreement" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Reviewer Disagreement</button>
-          <button onclick="recordModObs(this)" data-val="source" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Source Linkage Failure</button>
-          <button onclick="recordModObs(this)" data-val="drift" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">AI Drift</button>
-        </div>
-      </div>
-      <div class="module-complete-row">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft)">Review complete?</span>
-        <button class="btn-complete" onclick="markComplete(0)">Mark Complete</button>
-      </div>
-    </div>
-
-    <div class="module-row" id="module-row-1">
-      <div class="module-num" id="module-num-1">02</div>
-      <div class="module-body" onclick="toggleModule(1)">
-        <div class="module-title">Common Documentation Conditions</div>
-        <div class="module-outcome">By the end you can recognise the documentation failures that show up most often in real files.</div>
-        <div class="module-status" id="module-status-1">Not Started</div>
-      </div>
-      <div class="module-actions">
-        <button class="btn-open" id="module-btn-1" onclick="toggleModule(1)" aria-expanded="false" aria-controls="module-panel-1">&#9658; Open</button>
-      </div>
-    </div>
-    <div class="module-panel" id="module-panel-1">
-      <div class="module-panel-inner">
-        <div style="padding:12px 16px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;background:rgba(190,148,71,.04);border:1px solid rgba(190,148,71,.16);">
-          <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);">Start with interaction</span>
-          <a href="#simulator" onclick="document.getElementById('simulator').scrollIntoView({behavior:'smooth'});showSimTab(0)" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:10px 20px;text-decoration:none;display:inline-block;font-weight:600;">&#9654; Run a Simulation</a>
-        </div>
-        <div class="reviewer-reminder">
-          <div class="reviewer-reminder-label">Reviewer Reminder</div>
-          <p>Pattern conclusions should be tied to documented incidents and dates in the file.</p>
-        </div>
-        <h2 class="section-head" style="font-size:15px;margin-top:20px;margin-bottom:14px">Conditions Affecting Subsequent Review</h2>
-        <div class="condition-list">
-          <div class="condition-item"><div class="condition-label">Condition</div><div class="condition-title">Undocumented Timeline Gaps</div><div class="condition-body">Conduct or events described without specific dates or sequencing. A downstream reviewer cannot independently reconstruct when events occurred or in what order. Common in routine records not expected to face later scrutiny.</div></div>
-          <div class="condition-item"><div class="condition-label">Condition</div><div class="condition-title">Inherited Language Without Source Confirmation</div><div class="condition-body">Wording carried forward from earlier records, templates, or prior review cycles without being verified against current source material. The language survives; the basis it was drawn from may not.</div></div>
-          <div class="condition-item"><div class="condition-label">Condition</div><div class="condition-title">Reconstructed Summaries Replacing Contemporaneous Notes</div><div class="condition-body">Where original notes were not retained, later summaries may have been created from memory or secondary sources. The summary may read as though it reflects direct documentation when the underlying notes are no longer available.</div></div>
-          <div class="condition-item"><div class="condition-label">Condition</div><div class="condition-title">Conclusions Surviving After Source Loss</div><div class="condition-body">Escalation language, pattern claims, or findings that remain in the record after the documents they were drawn from have become inaccessible due to retention schedules, system migration, or staffing changes.</div></div>
-          <div class="condition-item"><div class="condition-label">Condition</div><div class="condition-title">AI-Assisted Smoothing</div><div class="condition-body">Generated wording may omit uncertainty or imply support not visible in the notes. The record may appear complete when the evidentiary basis is partial.</div></div>
-          <div class="condition-item"><div class="condition-label">Condition</div><div class="condition-title">Reviewer Turnover</div><div class="condition-body">Where the original reviewer or drafter is no longer available, an independent reviewer may have no access to the context that was understood at the time of drafting. What was implicit becomes invisible.</div></div>
-          <div class="condition-item"><div class="condition-label">Condition</div><div class="condition-title">Fragmented or Decentralized Systems</div><div class="condition-body">Records originating across multiple systems, supervisory files, HR files, and archived environments that were not consolidated. A subsequent reviewer may not have access to the complete record.</div></div>
-          <div class="condition-item"><div class="condition-label">Condition</div><div class="condition-title">Inconsistent Retention Practices</div><div class="condition-body">Where retention schedules were applied unevenly across departments or record types, some supporting materials may be absent from later review without any indication that they ever existed.</div></div>
-          <div class="condition-item"><div class="condition-label">Condition</div><div class="condition-title">Undocumented Edits and Draft Survival</div><div class="condition-body">Where earlier draft language was not clearly superseded, wording from prior versions may persist in the current record. The edit history may not be reconstructible from the file alone.</div></div>
-          <div class="condition-item"><div class="condition-label">Condition</div><div class="condition-title">Partial Chronology Review</div><div class="condition-body">Where contemporaneous records were not maintained, a subsequent reviewer may be working from a reconstructed timeline rather than a documented one. The timeline may be accurate without being independently verifiable.</div></div>
-        </div>
-        <p style="font-size:12.5px;color:var(--muted-soft);margin-top:16px;font-style:italic">Retained-record review practice should account for what documentation actually survives after system migration, staffing transitions, and retention schedule application.</p>
-        <div class="reviewer-reminder" style="margin-top:16px">
-          <div class="reviewer-reminder-label">Operational Note</div>
-          <p>Where conditions are identified, note them. Do not assume resolution.</p>
-        </div>
-      </div>
-      <div style="padding:14px 24px;border-top:1px solid var(--rule);background:var(--surface2);">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:9px;">What appeared most clearly?</div>
-        <div style="display:flex;flex-wrap:wrap;gap:6px;">
-          <button onclick="recordModObs(this)" data-val="chronology" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Chronology Instability</button>
-          <button onclick="recordModObs(this)" data-val="escalation" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Unsupported Escalation</button>
-          <button onclick="recordModObs(this)" data-val="disagreement" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Reviewer Disagreement</button>
-          <button onclick="recordModObs(this)" data-val="source" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Source Linkage Failure</button>
-          <button onclick="recordModObs(this)" data-val="drift" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">AI Drift</button>
-        </div>
-      </div>
-      <div class="module-complete-row">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft)">Review complete?</span>
-        <button class="btn-complete" onclick="markComplete(1)">Mark Complete</button>
-      </div>
-    </div>
-
-    <div class="module-row" id="module-row-2">
-      <div class="module-num" id="module-num-2">03</div>
-      <div class="module-body" onclick="toggleModule(2)">
-        <div class="module-title">Secondary Review and Escalation</div>
-        <div class="module-outcome">By the end you know when a record goes to secondary review and when it escalates.</div>
-        <div class="module-status" id="module-status-2">Not Started</div>
-      </div>
-      <div class="module-actions">
-        <button class="btn-open" id="module-btn-2" onclick="toggleModule(2)" aria-expanded="false" aria-controls="module-panel-2">&#9658; Open</button>
-      </div>
-    </div>
-    <div class="module-panel" id="module-panel-2">
-      <div class="module-panel-inner">
-        <div style="padding:12px 16px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;background:rgba(190,148,71,.04);border:1px solid rgba(190,148,71,.16);">
-          <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);">Start with interaction</span>
-          <a href="#simulator" onclick="document.getElementById('simulator').scrollIntoView({behavior:'smooth'});showSimTab(0)" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:10px 20px;text-decoration:none;display:inline-block;font-weight:600;">&#9654; Run a Simulation</a>
-        </div>
-        <div class="routing-label">Secondary Review Routing Reference &nbsp;|&nbsp; KIT-REF-01 &nbsp;|&nbsp; For use with Modules 03-05<br><span style="font-size:10px;color:var(--muted-soft);font-style:italic;letter-spacing:0;text-transform:none">Field reference retained from earlier intake version</span></div>
-        <div style="overflow-x:auto">
-        <table class="routing-table">
-          <thead>
-            <tr>
-              <th>Record Type</th>
-              <th>Trigger Condition</th>
-              <th>Routing</th>
-              <th>Known Implementation Variance</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong style="color:var(--text)">Termination</strong></td>
-              <td>No referenced supporting records; generalized characterizations only</td>
-              <td>Secondary review required. Legal consultation required before finalization.</td>
-              <td>Some supporting records may be in archived systems. Where this applies, document the location and accessibility status. Inaccessibility is a finding, not a resolution.</td>
-            </tr>
-            <tr>
-              <td><strong style="color:var(--text)">Formal discipline</strong></td>
-              <td>Conduct dates not identified; no prior counseling referenced</td>
-              <td>Return to drafter. Resubmission requires prior counseling trail identifiable in file.</td>
-              <td>Some departments apply this requirement only to elevated-risk record categories. Where local practice differs, document the basis for the variance.</td>
-            </tr>
-            <tr>
-              <td><strong style="color:var(--text)">Accommodation</strong></td>
-              <td>Interactive process not documented; determination rationale absent</td>
-              <td>Legal or compliance review required. Interactive process documentation must be present.</td>
-              <td>Some environments route through HR only. Where legal review is unavailable, document that condition and the basis for the alternative routing.</td>
-            </tr>
-            <tr>
-              <td><strong style="color:var(--text)">Investigation conclusion</strong></td>
-              <td>Source materials not identified; conflicting accounts not preserved</td>
-              <td>Independent review outside drafting chain required before finalization.</td>
-              <td>Staffing constraints may limit independence. Where they do, document the constraint. The independence gap should appear in the record, not be resolved by silence.</td>
-            </tr>
-            <tr>
-              <td><strong style="color:var(--text)">AI-assisted record</strong></td>
-              <td>Generated wording not reviewed against source notes; no attestation</td>
-              <td>Human reviewer confirmation required. Source verification documented before entry.</td>
-              <td>Some departments maintain supplemental confirmation logs. That practice satisfies this requirement where the log is accessible during later review.</td>
-            </tr>
-          </tbody>
-        </table>
-        </div>
-        <p class="table-note">Routing conditions reflect documentation sufficiency standards. Local workflow requirements govern implementation sequence. Where local practice differs from a routing condition, document the basis for the variance.</p>
-      </div>
-      <div style="padding:14px 24px;border-top:1px solid var(--rule);background:var(--surface2);">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:9px;">What appeared most clearly?</div>
-        <div style="display:flex;flex-wrap:wrap;gap:6px;">
-          <button onclick="recordModObs(this)" data-val="chronology" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Chronology Instability</button>
-          <button onclick="recordModObs(this)" data-val="escalation" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Unsupported Escalation</button>
-          <button onclick="recordModObs(this)" data-val="disagreement" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Reviewer Disagreement</button>
-          <button onclick="recordModObs(this)" data-val="source" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Source Linkage Failure</button>
-          <button onclick="recordModObs(this)" data-val="drift" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">AI Drift</button>
-        </div>
-      </div>
-      <div class="module-complete-row">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft)">Review complete?</span>
-        <button class="btn-complete" onclick="markComplete(2)">Mark Complete</button>
-      </div>
-    </div>
-
-    <div class="module-row" id="module-row-3">
-      <div class="module-num" id="module-num-3">04</div>
-      <div class="module-body" onclick="toggleModule(3)">
-        <div class="module-title">AI-Assisted Record Review</div>
-        <div class="module-outcome">By the end you can review an AI-assisted record without guessing what the tool contributed.</div>
-        <div class="module-status" id="module-status-3">Not Started</div>
-      </div>
-      <div class="module-actions">
-        <button class="btn-open" id="module-btn-3" onclick="toggleModule(3)" aria-expanded="false" aria-controls="module-panel-3">&#9658; Open</button>
-      </div>
-    </div>
-    <div class="module-panel" id="module-panel-3">
-      <div class="module-panel-inner">
-        <div style="padding:12px 16px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;background:rgba(190,148,71,.04);border:1px solid rgba(190,148,71,.16);">
-          <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);">Start with interaction</span>
-          <a href="#simulator" onclick="document.getElementById('simulator').scrollIntoView({behavior:'smooth'});showSimTab(0)" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:10px 20px;text-decoration:none;display:inline-block;font-weight:600;">&#9654; Run a Simulation</a>
-        </div>
-        <div class="reviewer-reminder">
-          <div class="reviewer-reminder-label">Reviewer Reminder</div>
-          <p>Where AI-assisted drafting was used, wording should be checked against original notes before the record enters the system. Conflicting accounts should remain documented, including where one is credited over another.</p>
-        </div>
-        <h2 class="section-head" style="font-size:15px;margin-top:24px;margin-bottom:14px">AI-Assisted Documentation Verification</h2>
-        <p style="font-size:13.5px;color:var(--muted);margin-bottom:16px">Apply when AI-assisted drafting contributed to a record before system entry.</p>
-        <div class="ai-checklist">
-          <div class="ai-checklist-section">
-            <div class="ai-checklist-header">Source Verification</div>
-            <div class="ai-checklist-item"><span class="ai-check-text">Are generated conclusions traceable to identifiable records in the file?</span></div>
-            <div class="ai-checklist-item"><span class="ai-check-text">Are cited examples visible in the retained materials?</span></div>
-            <div class="ai-checklist-item"><span class="ai-check-text">Were source records reviewed before drafting began?</span></div>
-          </div>
-          <div class="ai-checklist-section">
-            <div class="ai-checklist-header">Characterization Accuracy</div>
-            <div class="ai-checklist-item"><span class="ai-check-text">Did generated wording introduce confidence not reflected in source notes?</span></div>
-            <div class="ai-checklist-item"><span class="ai-check-text">Did generated wording exceed observable support in the available materials?</span></div>
-          </div>
-          <div class="ai-checklist-section">
-            <div class="ai-checklist-header">Conflict and Gap Handling</div>
-            <div class="ai-checklist-item"><span class="ai-check-text">Were conflicting accounts preserved in the record?</span></div>
-            <div class="ai-checklist-item"><span class="ai-check-text">Were chronology gaps identified rather than resolved through assumption?</span></div>
-            <div class="ai-checklist-item"><span class="ai-check-text">Did generated wording omit uncertainty visible in the source notes?</span></div>
-          </div>
-          <div class="ai-checklist-section">
-            <div class="ai-checklist-header">Reviewer Confirmation</div>
-            <div class="ai-checklist-item"><span class="ai-check-text">Was reviewer confirmation completed before finalization?</span></div>
-            <div class="ai-checklist-item"><span class="ai-check-text">Is the human reviewer's confirmation documented in the file?</span></div>
-            <div class="ai-checklist-item"><span class="ai-check-text">Would the record support downstream review without the drafter available?</span></div>
-          </div>
-          <div class="ai-note">Human reviewer confirmation required before system entry.</div>
-        </div>
-      </div>
-      <div style="padding:14px 24px;border-top:1px solid var(--rule);background:var(--surface2);">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:9px;">What appeared most clearly?</div>
-        <div style="display:flex;flex-wrap:wrap;gap:6px;">
-          <button onclick="recordModObs(this)" data-val="chronology" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Chronology Instability</button>
-          <button onclick="recordModObs(this)" data-val="escalation" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Unsupported Escalation</button>
-          <button onclick="recordModObs(this)" data-val="disagreement" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Reviewer Disagreement</button>
-          <button onclick="recordModObs(this)" data-val="source" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Source Linkage Failure</button>
-          <button onclick="recordModObs(this)" data-val="drift" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">AI Drift</button>
-        </div>
-      </div>
-      <div class="module-complete-row">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft)">Review complete?</span>
-        <button class="btn-complete" onclick="markComplete(3)">Mark Complete</button>
-      </div>
-    </div>
-
-    <div class="module-row" id="module-row-4">
-      <div class="module-num" id="module-num-4">05</div>
-      <div class="module-body" onclick="toggleModule(4)">
-        <div class="module-title">Investigation Review</div>
-        <div class="module-outcome">By the end you can apply the method to an investigative file from intake to finalization.</div>
-        <div class="module-status" id="module-status-4">Not Started</div>
-      </div>
-      <div class="module-actions">
-        <button class="btn-open" id="module-btn-4" onclick="toggleModule(4)" aria-expanded="false" aria-controls="module-panel-4">&#9658; Open</button>
-      </div>
-    </div>
-    <div class="module-panel" id="module-panel-4">
-      <div class="module-panel-inner">
-        <div style="padding:12px 16px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;background:rgba(190,148,71,.04);border:1px solid rgba(190,148,71,.16);">
-          <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);">Start with interaction</span>
-          <a href="#simulator" onclick="document.getElementById('simulator').scrollIntoView({behavior:'smooth'});showSimTab(0)" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:10px 20px;text-decoration:none;display:inline-block;font-weight:600;">&#9654; Run a Simulation</a>
-        </div>
-        <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:20px">Investigation records present specific documentation sufficiency challenges. Source materials may be distributed across systems. Witness accounts may conflict. Findings are made under time pressure. This module addresses the review standard for investigation records specifically.</p>
-        <div class="condition-list">
-          <div class="condition-item"><div class="condition-label">Investigation Review Standard</div><div class="condition-title">Witness Accounts</div><div class="condition-body">All accounts obtained during the investigation should be preserved in the file. The credibility determination and its basis should be stated. Accounts not credited should remain accessible to a subsequent reviewer.</div></div>
-          <div class="condition-item"><div class="condition-label">Investigation Review Standard</div><div class="condition-title">Source Materials</div><div class="condition-body">Documents reviewed during the investigation should be identified and confirmed present. Where source materials are in archived or inaccessible systems, that condition should be documented - not assumed resolved.</div></div>
-          <div class="condition-item"><div class="condition-label">Investigation Review Standard</div><div class="condition-title">Timeline</div><div class="condition-body">Investigation open date, interview dates, and close date should be identifiable from the file. The chronology of the investigation itself should be reconstructible independently of the investigator.</div></div>
-          <div class="condition-item"><div class="condition-label">Investigation Review Standard</div><div class="condition-title">Independence</div><div class="condition-body">The review of investigation conclusions should occur outside the drafting chain. Where staffing constraints limit independence, that constraint should be documented - not resolved by silence.</div></div>
-        </div>
-      </div>
-      <div style="padding:14px 24px;border-top:1px solid var(--rule);background:var(--surface2);">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:9px;">What appeared most clearly?</div>
-        <div style="display:flex;flex-wrap:wrap;gap:6px;">
-          <button onclick="recordModObs(this)" data-val="chronology" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Chronology Instability</button>
-          <button onclick="recordModObs(this)" data-val="escalation" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Unsupported Escalation</button>
-          <button onclick="recordModObs(this)" data-val="disagreement" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Reviewer Disagreement</button>
-          <button onclick="recordModObs(this)" data-val="source" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Source Linkage Failure</button>
-          <button onclick="recordModObs(this)" data-val="drift" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">AI Drift</button>
-        </div>
-      </div>
-      <div class="module-complete-row">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft)">Review complete?</span>
-        <button class="btn-complete" onclick="markComplete(4)">Mark Complete</button>
-      </div>
-    </div>
-
-    <div class="module-row" id="module-row-5">
-      <div class="module-num" id="module-num-5">06</div>
-      <div class="module-body" onclick="toggleModule(5)">
-        <div class="module-title">Implementation Sequence</div>
-        <div class="module-outcome">By the end you have an order of operations for putting JRS into a team's workflow.</div>
-        <div class="module-status" id="module-status-5">Not Started</div>
-      </div>
-      <div class="module-actions">
-        <button class="btn-open" id="module-btn-5" onclick="toggleModule(5)" aria-expanded="false" aria-controls="module-panel-5">&#9658; Open</button>
-      </div>
-    </div>
-    <div class="module-panel" id="module-panel-5">
-      <div class="module-panel-inner">
-        <div style="padding:12px 16px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;background:rgba(190,148,71,.04);border:1px solid rgba(190,148,71,.16);">
-          <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);">Start with interaction</span>
-          <a href="#simulator" onclick="document.getElementById('simulator').scrollIntoView({behavior:'smooth'});showSimTab(0)" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:10px 20px;text-decoration:none;display:inline-block;font-weight:600;">&#9654; Run a Simulation</a>
-        </div>
-        <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:20px">The implementation sequence supports phased rollout within existing workflows. Each step can be applied independently. Organizations may begin with the forms and refer back to reviewer materials as questions arise, or proceed through the full sequence before deployment.</p>
-        <div class="sampling-list">
-          <div class="sampling-item"><div class="sampling-num">1</div><div class="sampling-body"><div class="sampling-title">Distribute the Rapid Review Card</div><div class="sampling-desc">Provide all primary reviewers with KIT-F1. Establish it as the baseline reference for the five JRS review conditions.</div></div></div>
-          <div class="sampling-item"><div class="sampling-num">2</div><div class="sampling-body"><div class="sampling-title">Complete Reviewer Onboarding</div><div class="sampling-desc">Work through KIT-B1 with new and returning reviewers. Establish risk-level routing expectations before the first review cycle.</div></div></div>
-          <div class="sampling-item"><div class="sampling-num">3</div><div class="sampling-body"><div class="sampling-title">Apply the Pre-Finalization Worksheet</div><div class="sampling-desc">Use KIT-A1 for all records in scope. Begin with elevated-risk categories if phased rollout is required.</div></div></div>
-          <div class="sampling-item"><div class="sampling-num">4</div><div class="sampling-body"><div class="sampling-title">Establish Escalation Routing</div><div class="sampling-desc">Identify secondary reviewer contacts. Distribute KIT-A2 and KIT-E1A to routing decision-makers. Document any local variance from the reference routing conditions.</div></div></div>
-          <div class="sampling-item"><div class="sampling-num">5</div><div class="sampling-body"><div class="sampling-title">Complete AI Documentation Integration</div><div class="sampling-desc">Apply KIT-C1 to all AI-assisted records. Establish human confirmation as a required step before system entry.</div></div></div>
-          <div class="sampling-item"><div class="sampling-num">6</div><div class="sampling-body"><div class="sampling-title">Initiate Periodic Sampling</div><div class="sampling-desc">Establish a review sampling schedule. See the Periodic Review Sampling reference section below for sampling categories and scope guidance.</div></div></div>
-          <div class="sampling-item"><div class="sampling-num">7</div><div class="sampling-body"><div class="sampling-title">Document Variances</div><div class="sampling-desc">Where local workflow differs from a reference condition, document the basis. Variance documentation supports later review and reduces audit exposure.</div></div></div>
-        </div>
-      </div>
-      <div style="padding:14px 24px;border-top:1px solid var(--rule);background:var(--surface2);">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:9px;">What appeared most clearly?</div>
-        <div style="display:flex;flex-wrap:wrap;gap:6px;">
-          <button onclick="recordModObs(this)" data-val="chronology" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Chronology Instability</button>
-          <button onclick="recordModObs(this)" data-val="escalation" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Unsupported Escalation</button>
-          <button onclick="recordModObs(this)" data-val="disagreement" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Reviewer Disagreement</button>
-          <button onclick="recordModObs(this)" data-val="source" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">Source Linkage Failure</button>
-          <button onclick="recordModObs(this)" data-val="drift" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:7px 12px;cursor:pointer;transition:.15s;">AI Drift</button>
-        </div>
-      </div>
-      <div class="module-complete-row">
-        <span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft)">Review complete?</span>
-        <button class="btn-complete" onclick="markComplete(5)">Mark Complete</button>
-      </div>
-    </div>
-
-  </div>
-
-  
-
-  <div style="margin:32px 0 44px;padding:20px 24px;border:1px solid rgba(190,148,71,.25);background:rgba(190,148,71,.04);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
-    <div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;">Recurring Participation Loop</div>
-      <div style="font-size:13px;color:var(--muted);line-height:1.6;max-width:480px;">Modules explored. Return to simulations and explore a new scenario. The core loop: Explore Simulation &#8594; Observe Ambiguity &#8594; Submit Observation &#8594; Return.</div>
-    </div>
-    <a href="#simulator" onclick="document.getElementById('simulator').scrollIntoView({behavior:'smooth'});showSimTab(0)" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;background:var(--accent);color:#050505;padding:14px 24px;text-decoration:none;display:inline-block;font-weight:600;white-space:nowrap;">&#9654; Explore New Simulation</a>
-  </div>
-  <h2 class="section-head">Reference Review Scenarios</h2>
-  <p class="section-sub">Examples are abbreviated and composite. Local conditions may differ.</p>
-
-  <div class="scenario-list">
-
-    <div class="scenario-item">
-      <div class="scenario-header">
-        <span class="scenario-id">S-01</span>
-        <span class="scenario-title">Unsupported Escalation Wording</span>
-        <span class="scenario-type">Performance / Escalation</span>
-      </div>
-      <div class="scenario-body">
-        <div class="scenario-section">
-          <div class="scenario-section-label">Original Record Language</div>
-          <div class="scenario-text original">"Employee has demonstrated a sustained pattern of resistance to supervisory direction and has failed to meet performance expectations despite repeated intervention."</div>
-        </div>
-        <div class="scenario-section">
-          <div class="scenario-section-label">Suggested Revision</div>
-          <div class="scenario-text revised">"Employee did not submit required project updates on March 4, March 11, and March 18 (meeting notes on file). Supervisor communicated expectations in writing on February 28 (email on file). Verbal coaching documented February 10 and March 3. No improvement noted as of March 19 review."</div>
-        </div>
-        <div class="scenario-section">
-          <div class="scenario-section-label">Reviewer Observation</div>
-          <div class="scenario-text">"Sustained pattern" and "repeated intervention" are evaluative conclusions. Neither is traceable to specific documented interactions in the file. Conduct, dates, and interventions are not identifiable from this record. Source attachment status: unconfirmed.</div>
-        </div>
-        <div class="concern-list">
-          <div class="concern-item">No specific conduct dates identified</div>
-          <div class="concern-item">Intervention trail not referenced or in file</div>
-        </div>
-        <div class="concern-list" style="margin-top:6px">
-          <div class="condition-tag">Secondary review recommended before finalization</div>
-          <div class="condition-tag">Source records should be confirmed present</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="scenario-item">
-      <div class="scenario-header">
-        <span class="scenario-id">S-02</span>
-        <span class="scenario-title">AI-Assisted Wording Inflation</span>
-        <span class="scenario-type">AI-Assisted / Characterization</span>
-      </div>
-      <div class="scenario-body">
-        <div class="scenario-section">
-          <div class="scenario-section-label">Original Record Language</div>
-          <div class="scenario-text original">"AI Summary: Employee consistently demonstrates poor judgment, lacks professional accountability, and has created a hostile environment for team members."</div>
-        </div>
-        <div class="scenario-section">
-          <div class="scenario-section-label">Suggested Revision</div>
-          <div class="scenario-text revised">"Supervisor notes from January 14 and February 3 document two incidents of missed project deadlines without advance notice. One team member submitted a written concern on February 10 (on file). No additional documented incidents identified in the reviewed period."</div>
-        </div>
-        <div class="scenario-section">
-          <div class="scenario-section-label">Reviewer Observation</div>
-          <div class="scenario-text">Generated wording introduces three evaluative conclusions without traceable source attribution. The supervisor notes documented two missed deadlines and one written team concern. Generated wording exceeds the documented support.</div>
-        </div>
-        <div class="concern-list">
-          <div class="concern-item">Generated conclusions exceed observable source support</div>
-          <div class="concern-item">Evaluative language unattributed to specific events</div>
-        </div>
-        <div class="concern-list" style="margin-top:6px">
-          <div class="condition-tag">Human confirmation against original notes required</div>
-          <div class="condition-tag">Return to drafter before system entry</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="scenario-item">
-      <div class="scenario-header">
-        <span class="scenario-id">S-03</span>
-        <span class="scenario-title">Missing Timeline Anchors</span>
-        <span class="scenario-type">Investigation / Chronology</span>
-      </div>
-      <div class="scenario-body">
-        <div class="scenario-section">
-          <div class="scenario-section-label">Original Record Language</div>
-          <div class="scenario-text original">"Following a series of reported incidents and a subsequent investigation, it was determined that the employee's conduct was inconsistent with workplace policy."</div>
-        </div>
-        <div class="scenario-section">
-          <div class="scenario-section-label">Suggested Revision</div>
-          <div class="scenario-text revised">"Three conduct reports were submitted between October 4 and October 19 (reports on file). Investigation opened October 21. Interviews conducted October 24-28. Investigation concluded November 2. Finding: conduct on October 7 and October 14 inconsistent with Section 4.2 of the Workplace Conduct Policy (policy version on file)."</div>
-        </div>
-        <div class="scenario-section">
-          <div class="scenario-section-label">Reviewer Observation</div>
-          <div class="scenario-text">"A series of reported incidents" - number, dates, and nature unspecified. "Subsequent investigation" - open date, close date, and investigator not identified. "Determined" - basis for determination not stated. The timeline cannot be reconstructed from this record.</div>
-        </div>
-        <div class="concern-list">
-          <div class="concern-item">No incident dates or count identifiable</div>
-          <div class="concern-item">Investigation timeline absent from record</div>
-          <div class="concern-item">Policy basis not identified</div>
-        </div>
-        <div class="concern-list" style="margin-top:6px">
-          <div class="condition-tag">Return to drafter. Secondary review required.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="scenario-item">
-      <div class="scenario-header">
-        <span class="scenario-id">S-04</span>
-        <span class="scenario-title">Cross-Record Wording Contamination</span>
-        <span class="scenario-type">Template / Inherited Language</span>
-      </div>
-      <div class="scenario-body">
-        <div class="scenario-section">
-          <div class="scenario-section-label">Original Record Language</div>
-          <div class="scenario-text original">"As previously documented, employee has demonstrated ongoing performance concerns consistent with the findings of earlier review cycles."</div>
-        </div>
-        <div class="scenario-section">
-          <div class="scenario-section-label">Suggested Revision</div>
-          <div class="scenario-text revised">"Performance concern documented April 7 (coaching note on file). No additional performance documentation identified in the current review period. Prior cycle records referenced: [identify specific documents and confirm availability in file]."</div>
-        </div>
-        <div class="scenario-section">
-          <div class="scenario-section-label">Reviewer Observation</div>
-          <div class="scenario-text">"As previously documented" - prior records not identified or confirmed present. "Earlier review cycles" - specific cycles not named. This wording pattern commonly appears in copied templates where earlier conclusions carry forward without the underlying records.</div>
-        </div>
-        <div class="concern-list">
-          <div class="concern-item">Prior records referenced but not identified</div>
-          <div class="concern-item">Template language may have carried forward without verification</div>
-        </div>
-        <div class="concern-list" style="margin-top:6px">
-          <div class="condition-tag">Confirm prior records are present and identifiable</div>
-          <div class="condition-tag">Do not rely on conclusion without traceable support</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="scenario-item">
-      <div class="scenario-header">
-        <span class="scenario-id">S-05</span>
-        <span class="scenario-title">Conflicting Witness Descriptions</span>
-        <span class="scenario-type">Investigation / Conflicting Accounts</span>
-      </div>
-      <div class="scenario-body">
-        <div class="scenario-section">
-          <div class="scenario-section-label">Original Record Language</div>
-          <div class="scenario-text original">"Witness accounts were reviewed and the investigator concluded that the incident occurred as described by the complainant."</div>
-        </div>
-        <div class="scenario-section">
-          <div class="scenario-section-label">Suggested Revision</div>
-          <div class="scenario-text revised">"Complainant described the incident as [summary]. Respondent denied the conduct and stated [summary]. Witness A corroborated complainant's account. Witness B was not present. Credibility determination based on complainant's contemporaneous documentation (dated April 3, on file) and Witness A corroboration. Respondent account preserved in file."</div>
-        </div>
-        <div class="scenario-section">
-          <div class="scenario-section-label">Reviewer Observation</div>
-          <div class="scenario-text">The original record omits respondent account, witness account detail, and the stated basis for the credibility determination. "Witness accounts were reviewed" does not identify what accounts were obtained or what they contained.</div>
-        </div>
-        <div class="concern-list">
-          <div class="concern-item">Respondent account not preserved</div>
-          <div class="concern-item">Credibility basis not stated</div>
-        </div>
-        <div class="concern-list" style="margin-top:6px">
-          <div class="condition-tag">Independent review outside drafting chain recommended</div>
-          <div class="condition-tag">All accounts should be retained and identifiable</div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  
-  <h2 class="section-head">Pre-Finalization Review Worksheet</h2>
-  <p class="section-sub">Apply before any record enters an official system. Note gaps - do not assume resolution.</p>
-  <div class="worksheet">
-    <div class="worksheet-section">
-      <div class="worksheet-section-header">Chronology and Timeline</div>
-      <div class="worksheet-item"><div class="worksheet-num">1</div><div class="worksheet-content"><div class="worksheet-item-title">Dates identifiable</div><div class="worksheet-item-desc">Each event, conduct instance, or decision has a specific date in the file.</div></div></div>
-      <div class="worksheet-item"><div class="worksheet-num">2</div><div class="worksheet-content"><div class="worksheet-item-title">Timeline sequence visible</div><div class="worksheet-item-desc">Events can be placed in order from the file alone.</div></div></div>
-      <div class="worksheet-item"><div class="worksheet-num">3</div><div class="worksheet-content"><div class="worksheet-item-title">Gaps noted</div><div class="worksheet-item-desc">Where dates or sequences are missing, the gap is acknowledged - not resolved through assumption.</div></div></div>
-    </div>
-    <div class="worksheet-section">
-      <div class="worksheet-section-header">Source and Support</div>
-      <div class="worksheet-item"><div class="worksheet-num">4</div><div class="worksheet-content"><div class="worksheet-item-title">Source records identified</div><div class="worksheet-item-desc">Each conclusion references specific source materials. Records are named and confirmed present in file.</div></div></div>
-      <div class="worksheet-item"><div class="worksheet-num">5</div><div class="worksheet-content"><div class="worksheet-item-title">Attachments confirmed</div><div class="worksheet-item-desc">Referenced attachments are in the file. Missing attachments are noted.</div></div></div>
-      <div class="worksheet-item"><div class="worksheet-num">6</div><div class="worksheet-content"><div class="worksheet-item-title">Policy citation present</div><div class="worksheet-item-desc">Where policy is referenced, the applicable policy version is identified.</div></div></div>
-    </div>
-    <div class="worksheet-section">
-      <div class="worksheet-section-header">Characterization Review</div>
-      <div class="worksheet-item"><div class="worksheet-num">7</div><div class="worksheet-content"><div class="worksheet-item-title">Evaluative language anchored</div><div class="worksheet-item-desc">Each adjective or conclusion is traceable to a specific documented event or source record.</div></div></div>
-      <div class="worksheet-item"><div class="worksheet-num">8</div><div class="worksheet-content"><div class="worksheet-item-title">Escalation wording supported</div><div class="worksheet-item-desc">Escalation conclusions reference identifiable prior documentation in the file.</div></div></div>
-      <div class="worksheet-item"><div class="worksheet-num">9</div><div class="worksheet-content"><div class="worksheet-item-title">Pattern claims dated</div><div class="worksheet-item-desc">Any claim of repeated or ongoing conduct is supported by specific dated instances.</div></div></div>
-    </div>
-    <div class="worksheet-section">
-      <div class="worksheet-section-header">AI-Assisted Content</div>
-      <div class="worksheet-item"><div class="worksheet-num">10</div><div class="worksheet-content"><div class="worksheet-item-title">Generated wording verified</div><div class="worksheet-item-desc">Where AI-assisted drafting was applied, generated wording has been checked against original notes.</div></div></div>
-      <div class="worksheet-item"><div class="worksheet-num">11</div><div class="worksheet-content"><div class="worksheet-item-title">Confidence level accurate</div><div class="worksheet-item-desc">Generated wording does not exceed certainty reflected in source notes.</div></div></div>
-      <div class="worksheet-item"><div class="worksheet-num">12</div><div class="worksheet-content"><div class="worksheet-item-title">Conflicting accounts preserved</div><div class="worksheet-item-desc">Where source notes reflected disagreement or uncertainty, that is reflected in the record.</div></div></div>
-    </div>
-    <div class="worksheet-section">
-      <div class="worksheet-section-header">Reviewer Confirmation</div>
-      <div class="worksheet-item"><div class="worksheet-num">13</div><div class="worksheet-content"><div class="worksheet-item-title">Record stands independently</div><div class="worksheet-item-desc">A downstream reviewer could follow the record without contacting the original drafter.</div></div></div>
-      <div class="worksheet-item"><div class="worksheet-num">14</div><div class="worksheet-content"><div class="worksheet-item-title">Gaps documented</div><div class="worksheet-item-desc">Any unresolved gaps are noted in the record rather than assumed resolved.</div></div></div>
-      <div class="worksheet-item"><div class="worksheet-num">15</div><div class="worksheet-content"><div class="worksheet-item-title">Reviewer confirmation complete</div><div class="worksheet-item-desc">Human reviewer has confirmed wording against available source materials before system entry.</div></div></div>
-    </div>
-    <div class="worksheet-note">Reviewer reference only. Does not establish legal sufficiency.</div>
-  </div>
-
-  
-  <h2 class="section-head">Conditions Requiring Secondary Review</h2>
-  <p class="section-sub">Any single condition is sufficient to route for secondary review. Routing thresholds may vary.</p>
-
-  <div class="section-label" style="margin-top:0">Trigger Conditions</div>
-  <div class="trigger-list">
-    <div class="trigger-item"><span class="trigger-text">Evaluative conclusions without identified source records</span></div>
-    <div class="trigger-item"><span class="trigger-text">Escalation wording without prior counseling trail in file</span></div>
-    <div class="trigger-item"><span class="trigger-text">Conflicting chronology not resolved or noted</span></div>
-    <div class="trigger-item"><span class="trigger-text">Missing source documentation referenced in record</span></div>
-    <div class="trigger-item"><span class="trigger-text">AI-assisted conclusions without identifiable source support</span></div>
-    <div class="trigger-item"><span class="trigger-text">Unresolved factual conflicts between accounts</span></div>
-    <div class="trigger-item"><span class="trigger-text">Protected-category allegations present</span></div>
-    <div class="trigger-item"><span class="trigger-text">Materially incomplete chronology with no gap notation</span></div>
-  </div>
-
-  <div class="severity-grid" style="margin-top:16px">
-    <div class="severity-item"><div class="severity-level low">Low</div><div style="font-size:12px;color:var(--accent);font-weight:600;margin-bottom:4px">Routine documentation.</div><div class="severity-desc">Primary reviewer review sufficient. No trigger conditions present.</div></div>
-    <div class="severity-item"><div class="severity-level moderate">Moderate</div><div style="font-size:12px;color:var(--review-text);font-weight:600;margin-bottom:4px">Evaluative conclusions or escalation indicators present.</div><div class="severity-desc">Clarification review recommended before finalization.</div></div>
-    <div class="severity-item"><div class="severity-level high">High</div><div style="font-size:12px;color:#E8A84A;font-weight:600;margin-bottom:4px">Trigger condition identified.</div><div class="severity-desc">Secondary review required before finalization.</div></div>
-    <div class="severity-item"><div class="severity-level critical">Critical</div><div style="font-size:12px;color:var(--stop-text);font-weight:600;margin-bottom:4px">Termination, protected-category, or AI-assisted documentation.</div><div class="severity-desc">Human source verification and reviewer confirmation required before entry into official record.</div></div>
-  </div>
-
-  
-  <h2 class="section-head">Review Instability Recognition</h2>
-  <p class="section-sub">Recognizable conditions in organizational documentation that create interpretive friction or reconstruction difficulty.</p>
-
-  <div class="failure-list">
-    <div class="failure-item">
-      <div class="failure-title">Operational Amnesia</div>
-      <div class="failure-sub">What reviewers observe</div>
-      <div class="failure-body">A record that was understandable when drafted becomes difficult to follow after the original participants are no longer available. Context that was assumed common knowledge was never written down.</div>
-      <div class="failure-sub">How it develops</div>
-      <div class="failure-body">Drafters often omit context they consider obvious. Over time, that context disappears as personnel change, systems migrate, or institutional memory erodes.</div>
-      <div class="failure-sub">Review guidance</div>
-      <div class="failure-body">If a reviewer with no prior knowledge cannot follow the record, the file-based basis is insufficient.</div>
-    </div>
-    <div class="failure-item">
-      <div class="failure-title">Reinterpretation Drift</div>
-      <div class="failure-sub">What reviewers observe</div>
-      <div class="failure-body">Earlier events are described with increasing clarity or severity in later records, without new evidence being introduced. The original documentation does not support the later characterization.</div>
-      <div class="failure-sub">How it develops</div>
-      <div class="failure-body">Each successive record builds on prior records rather than on primary evidence. Wording migrates through templates. The original source basis becomes increasingly remote.</div>
-      <div class="failure-sub">Review guidance</div>
-      <div class="failure-body">Check original source records against current characterization.</div>
-    </div>
-    <div class="failure-item">
-      <div class="failure-title">Escalation Drift</div>
-      <div class="failure-sub">What reviewers observe</div>
-      <div class="failure-body">Escalation language appears in a record without an identifiable prior counseling trail. "Repeated warnings" or "ongoing concerns" are referenced but not traceable to documents in the file.</div>
-      <div class="failure-sub">How it develops</div>
-      <div class="failure-body">Earlier coaching or verbal guidance was not documented at the time. Later records reference it as though it was. The record accumulates implied history without documented support.</div>
-      <div class="failure-sub">Review guidance</div>
-      <div class="failure-body">Prior intervention claims should reference identifiable documents. If none exist, the escalation basis is not independently verifiable.</div>
-    </div>
-    <div class="failure-item">
-      <div class="failure-title">Cross-Record Contamination</div>
-      <div class="failure-sub">What reviewers observe</div>
-      <div class="failure-body">Wording from one record appears in subsequent records without independent verification. Templates, prior conclusions, or AI-assisted drafting output carry forward language that was never confirmed against primary documentation.</div>
-      <div class="failure-sub">How it develops</div>
-      <div class="failure-body">Records are drafted using prior records as reference rather than returning to primary evidence. Wording accumulates across review cycles without re-verification.</div>
-      <div class="failure-sub">Review guidance</div>
-      <div class="failure-body">Where wording appears across multiple records, verify each instance against independent source materials.</div>
-    </div>
-  </div>
-
-  
-  <h2 class="section-head">Periodic Retained-Record Sampling</h2>
-  <p class="section-sub">Lightweight review of retained organizational records on a periodic basis. Frequency and scope determined by organizational capacity.</p>
-  <div class="sampling-list">
-    <div class="sampling-item"><div class="sampling-num">1</div><div class="sampling-body"><div class="sampling-title">Random Retained-Record Review</div><div class="sampling-desc">Periodically review a sample of finalized records without advance selection criteria. Apply the five JRS review conditions to each. Note patterns.</div></div></div>
-    <div class="sampling-item"><div class="sampling-num">2</div><div class="sampling-body"><div class="sampling-title">Escalation Record Sampling</div><div class="sampling-desc">Review a sample of recent escalation records. Confirm prior counseling trail is identifiable. Confirm source records are present. Note where they are not.</div></div></div>
-    <div class="sampling-item"><div class="sampling-num">3</div><div class="sampling-body"><div class="sampling-title">AI-Assisted Documentation Spot Review</div><div class="sampling-desc">Where AI-assisted drafting was applied, select a sample for source verification. Confirm generated wording against original notes. Note where discrepancies exist.</div></div></div>
-    <div class="sampling-item"><div class="sampling-num">4</div><div class="sampling-body"><div class="sampling-title">Chronology Verification Sample</div><div class="sampling-desc">Select records involving conduct or performance conclusions. Confirm each conclusion has an identifiable date. Note where dates are absent.</div></div></div>
-    <div class="sampling-item"><div class="sampling-num">5</div><div class="sampling-body"><div class="sampling-title">Wording Pattern Review</div><div class="sampling-desc">Where identical or near-identical phrasing appears across multiple records, check whether each instance was verified against independent source materials or carried forward from prior records.</div></div></div>
-  </div>
-  <p class="sampling-note" style="padding:0;border:none;margin-top:0">Sampling findings should be documented and shared with the appropriate reviewer or supervisor. Findings are not final compliance determinations. Identified patterns should be noted. No finding in a given cycle does not eliminate the review obligation in the next.</p>
-
-  
-  <h2 class="section-head">Reviewer Calibration Exercises</h2>
-  <p class="section-sub">Scenarios where reasonable reviewers may reach different conclusions. Purpose: surface interpretive variation.</p>
-
-  <div class="calibration-list">
-    <div class="calibration-item">
-      <div class="calibration-header">
-        <div class="calibration-id">Exercise C-01: Escalation Threshold Interpretation</div>
-        <div class="calibration-title"></div>
-      </div>
-      <div class="calibration-body">
-        <div class="scenario-section-label" style="margin-bottom:8px">Record for Review</div>
-        <div class="calibration-record">"Employee was counseled on three occasions regarding communication style. No written documentation exists for the first two sessions. The third session was documented on April 14. Employee is now being considered for formal discipline."</div>
-        <div class="calibration-position">
-          <div class="calibration-pos-label">Reviewer Position A</div>
-          <div class="calibration-pos-text">Three counseling sessions are referenced. One is documented. The undocumented sessions cannot be independently verified. Escalation to formal discipline without a traceable counseling trail presents a documentation gap. Return to drafter.</div>
-        </div>
-        <div class="calibration-position">
-          <div class="calibration-pos-label">Reviewer Position B</div>
-          <div class="calibration-pos-text">The April 14 documentation is present. The prior sessions, while undocumented, are acknowledged. Secondary review is warranted given the gap, but the file is not necessarily insufficient - it depends on what the April 14 note contains and whether it references the prior sessions.</div>
-        </div>
-      </div>
-      <div class="calibration-note">
-        <div class="calibration-note-label">Calibration Note</div>
-        <div class="calibration-note-text">Both positions reflect legitimate reviewer reasoning. Discussion should focus on what the April 14 note contains and what the downstream review obligation is if prior sessions cannot be independently verified.</div>
-      </div>
-    </div>
-
-    <div class="calibration-item">
-      <div class="calibration-header">
-        <div class="calibration-id">Exercise C-02: Wording Support Disagreement</div>
-        <div class="calibration-title"></div>
-      </div>
-      <div class="calibration-body">
-        <div class="scenario-section-label" style="margin-bottom:8px">Record for Review</div>
-        <div class="calibration-record">"Employee's behavior has become increasingly difficult to manage. The employee has shown little willingness to adapt to team expectations despite supervisor feedback."</div>
-        <div class="calibration-position">
-          <div class="calibration-pos-label">Reviewer Position A</div>
-          <div class="calibration-pos-text">"Increasingly difficult" and "little willingness" are evaluative conclusions without specific behavioral anchors. No dates. No specific incidents. Record should not advance without revision.</div>
-        </div>
-        <div class="calibration-position">
-          <div class="calibration-pos-label">Reviewer Position B</div>
-          <div class="calibration-pos-text">The wording is general but may reflect a pattern documented elsewhere in the file. Before returning the record, confirm whether supporting documentation exists in an attached or referenced supervisory file.</div>
-        </div>
-      </div>
-      <div class="calibration-note">
-        <div class="calibration-note-label">Calibration Note</div>
-        <div class="calibration-note-text">Position A applies the documentation sufficiency standard directly to the submitted text. Position B asks whether supporting context exists elsewhere. Both are reasonable starting points. The operative question: is the supporting basis in this file, or does it require the reviewer to look elsewhere? If elsewhere, is that accessible to a downstream reviewer?</div>
-      </div>
-    </div>
-  </div>
-
-  
-  <div class="doctrine-block" style="border-color:rgba(190,148,71,.2)">
-    <div class="doctrine-label">AI-Origin Visibility</div>
-    <div class="doctrine-text">Reviewers should distinguish between source-authored observations, imported summaries, AI-assisted drafting, and inferred characterization before finalization. Each origin type carries different evidentiary weight and different reconstruction risk. Records that blend these without identification create downstream review gaps that cannot be resolved after system entry.</div>
-  </div>
-
-  
-  <div class="doctrine-block">
-    <div class="doctrine-label">Review Doctrine</div>
-    <div class="doctrine-text">Structural sufficiency does not independently establish factual or legal correctness. Documentation sufficiency does not establish substantive correctness. Review procedures assess record visibility and evidentiary support - not decision quality or outcome correctness.</div>
-  </div>
-
-  <p style="font-size:12px;color:var(--muted-soft);margin-top:8px;line-height:1.7">These materials support documentation review practice only. No legal determinations. Organizations remain responsible for applicable legal, policy, and compliance determinations. Local workflow requirements govern implementation.</p>
-
-  </div>
-</div>
 
 <div class="survey-outer" id="participation-survey">
   <div class="survey-inner">
@@ -2934,8 +2936,15 @@ if (progress.survey) {
     });
   });
 }
-// Restore persisted role selection
-if (progress.role && ROLE_PATHS[progress.role]) selectRole(progress.role);
+// Restore persisted role selection.
+// ROLE_PATHS is declared further down THIS SAME script block, so reading it
+// here hits the hoisted-but-undefined var and throws, which aborted every
+// remaining top-level statement in the block, including the certificate branch
+// immediately below. One tick's delay runs this after the declarations.
+setTimeout(function() {
+  if (progress.role && typeof ROLE_PATHS !== 'undefined'
+      && ROLE_PATHS[progress.role]) selectRole(progress.role);
+}, 0);
 // Show cert section if already all complete. Prompt-if-missing here too, so a
 // completer whose earlier record never posted (dismissed prompt, other device)
 // is asked again on the next visit until the completion reaches the server.
