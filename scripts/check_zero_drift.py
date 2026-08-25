@@ -1858,6 +1858,70 @@ def check_training_is_ungated(offline):
           "enroll overlay and its trigger present")
 
 
+def check_training_modules_are_findable(offline):
+    """The six modules must be near the top of training.html, not buried.
+
+    On 2026-08-25 the by-invitation overlay was removed so the training would be
+    open to everyone. It was, and the page still read as broken: the modules sat
+    18,870 CSS px down, below the hero, the dual-track band, the simulation
+    cards, the role paths, the simulator, the record workspace, the poll and the
+    kit documents. The wall had been hiding that ordering, so removing the wall
+    turned a hidden problem into a visible one. The owner's report was "the
+    training modules are gone".
+
+    Depth is measured against VISIBLE text with script and style stripped, the
+    same method check_dual_track_band uses, because a section's position in the
+    source says nothing about where a reader meets it.
+    """
+    src = read("training.html")
+    if not src or "<body" not in src:
+        check("training.html is readable", False, "file missing or has no body")
+        return
+
+    vis = src[src.index("<body"):]
+    vis = re.sub(r"<script.*?</script>|<style.*?</style>", " ", vis, flags=re.S)
+    vis = re.sub(r"<[^>]+>", " ", vis)
+    vis = re.sub(r"\s+", " ", vis)
+
+    # Anchored on Module 1's outcome line, which appears exactly once and only
+    # inside the module list. The heading text "Training Modules" is NOT usable:
+    # it also appears as a jump link in the Start Here bar, so measuring it
+    # reported the section as near the top while the section itself was 18,870px
+    # down. That false pass was observed on the pre-fix file.
+    NEEDLE = "By the end you can test any record against the five conditions"
+    i = vis.find(NEEDLE)
+    pct = (100.0 * i / len(vis)) if (i >= 0 and len(vis)) else -1.0
+    check("training modules sit near the top of training.html",
+          0 <= pct <= 12.0,
+          "absent from visible text" if i < 0 else "%.1f%% down" % pct)
+
+    # Source order, checked separately: the modules block must precede the role
+    # paths and the simulator, which is what pushed it down in the first place.
+    im = src.find('id="training-modules"')
+    ir = src.find('id="roles"')
+    isim = src.find('id="simulator"')
+    check("modules block precedes the role paths and the simulator",
+          im >= 0 and ir > im and isim > im,
+          "modules=%d roles=%d simulator=%d" % (im, ir, isim))
+
+    # A reader who lands at the very top must have one obvious way in.
+    check("a hero call to action points at the modules",
+          '<a href="#training-modules" class="btn-hero-primary"' in src,
+          "primary hero CTA targets #training-modules")
+
+    # The sticky nav is the other way in, and it must not contradict the order
+    # of the page it navigates.
+    nav = src.find('class="sticky-nav"')
+    if nav < 0:
+        check("sticky nav lists the modules first", False, "no sticky nav found")
+    else:
+        seg = src[nav:nav + 900]
+        first = re.search(r'<a href="#([a-z-]+)" class="sticky-nav-link"', seg)
+        check("sticky nav lists the modules first",
+              bool(first) and first.group(1) == "training-modules",
+              "first link is #%s" % (first.group(1) if first else "none"))
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -1889,6 +1953,7 @@ def main():
                check_robots_directives_coherent,
                check_style_tags_balanced,
                check_training_is_ungated,
+               check_training_modules_are_findable,
                check_generated_docs_current, check_cross_endpoint):
         try:
             fn(offline)
