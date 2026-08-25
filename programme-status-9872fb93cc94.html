@@ -71,6 +71,43 @@ tr.today td{background:rgba(93,191,130,.07)}
 <main><div class="wrap">
   <h1>JRS Programme Status</h1>
   <p class="sub">Live participation, adoption and reach across every JRS study, pilot and initiative. Figures refresh automatically every 60 seconds and are read from the production database at the moment you open the page.</p>
+  <!-- COMMERCIAL INBOX. Added 2026-08-25, at the TOP, above the reviewer panel.
+       Everything else on this page is a count. This is the only block that is a
+       QUEUE: rows here are people waiting on a reply, and a person waiting is
+       more urgent than any figure below.
+
+       Thirteen buyers reached the pay screen between 14 and 21 August 2026 and
+       the owner found out weeks later by querying a table. That is the failure
+       this block exists to end.
+
+       It reads /api/leads-4b7e2c9af106d385, which returns names, emails and
+       organisations and is secured the same way this page is: an opaque,
+       unlinked, noindex URL with no token. If either slug leaks, rename BOTH. -->
+  <h2 style="font-size:22px">Commercial Inbox</h2>
+  <p class="sub">Everyone who submitted details or tried to pay, newest first. <b style="color:var(--review-text)">This is a queue, not a statistic.</b> Names and emails are shown because a lead you cannot see is a lead you cannot answer.</p>
+  <div class="cards" id="lead-cards" style="grid-template-columns:repeat(4,1fr)">
+    <div class="card"><div class="cv hot" id="ld-leads">&middot;</div><div class="ck">Identified leads</div></div>
+    <div class="card"><div class="cv" id="ld-attempts">&middot;</div><div class="ck">Pay-screen attempts</div></div>
+    <div class="card"><div class="cv" id="ld-lost">&middot;</div><div class="ck">Attempts that <b style="color:var(--stop-text)">could not pay</b></div></div>
+    <div class="card"><div class="cv" id="ld-value">&middot;</div><div class="ck">Stated intent, unpaid</div></div>
+  </div>
+
+  <div class="tablewrap">
+   <table>
+    <thead><tr><th>When</th><th>Type</th><th>Name</th><th>Email</th><th>Organisation</th><th>Detail</th><th>Country</th></tr></thead>
+    <tbody id="ld-rows"><tr><td colspan="7" style="color:var(--muted-soft)">Loading leads...</td></tr></tbody>
+   </table>
+  </div>
+  <p class="note" id="ld-note">&nbsp;</p>
+
+  <div class="tablewrap">
+   <table>
+    <thead><tr><th>When</th><th>Offer</th><th>State</th><th>Arrived from</th><th>Country</th></tr></thead>
+    <tbody id="ld-att"><tr><td colspan="5" style="color:var(--muted-soft)">Loading attempts...</td></tr></tbody>
+   </table>
+  </div>
+  <p class="note"><b>Pay-screen attempts carry no name by design.</b> The person left before giving one. They are listed separately from identified leads so a row here can never be read as a contact you could follow up.</p>
+
   <!-- THE REVIEWER PANEL. Added 2026-08-13. This page never called
        /api/panel-stats, so the single largest asset in the programme, the
        international reviewer bench, appeared nowhere on the owner's own
@@ -1599,6 +1636,108 @@ function loadPanel(){
 function refresh(){ loadToday(); loadDetection(); loadRealcase(); loadArmB(); loadOrgPilots(); loadGate(); loadRegistrations(); loadEvalFunnel(); loadContributors(); loadTraining(); loadDownloads(); loadItems(); loadSupport(); loadLinkClicks(); loadPeople(); loadPanel(); }
 refresh();
 setInterval(refresh, 60000);
+
+/* COMMERCIAL INBOX LOADER.
+   Reads the owner-only endpoint and renders two tables: identified leads, and
+   anonymous pay-screen attempts. Every cell goes through esc(), because a
+   prospect's organisation and free-text note are untrusted input rendered into
+   the owner's own dashboard. */
+var LEADS_URL = '/api/leads-4b7e2c9af106d385';
+
+/* Offer prices are NOT hardcoded here. They come from /api/offer-info, which
+   reads api/_offer-config.js, so the intent total on this page can never
+   disagree with the price a buyer was shown. */
+var LD_PRICES = {};
+
+function ldWhen(iso){
+  if(!iso) return '';
+  var d = new Date(iso);
+  if(isNaN(d.getTime())) return '';
+  return d.toISOString().slice(0,16).replace('T',' ');
+}
+
+function ldRender(d){
+  var leads = (d && d.leads) || [];
+  var att = (d && d.attempts) || [];
+
+  document.getElementById('ld-leads').textContent = leads.length;
+  document.getElementById('ld-attempts').textContent = att.length;
+  document.getElementById('ld-lost').textContent = (d && d.attempts_unconfigured) || 0;
+
+  var intent = 0, priced = true;
+  for(var i=0;i<att.length;i++){
+    if(att[i].state !== 'unconfigured') continue;
+    var p = LD_PRICES[att[i].offer];
+    if(typeof p === 'number'){ intent += p; } else { priced = false; }
+  }
+  /* If a price could not be resolved the total is marked rather than shown as if
+     it were complete. A short total presented as a full one is the exact defect
+     this programme measures. */
+  document.getElementById('ld-value').textContent =
+    priced ? ('$' + intent.toLocaleString()) : ('$' + intent.toLocaleString() + '+');
+
+  var html = '';
+  for(var j=0;j<leads.length;j++){
+    var L = leads[j];
+    html += '<tr>'
+      + '<td style="white-space:nowrap">' + esc(ldWhen(L.at)) + '</td>'
+      + '<td>' + esc(L.label) + '</td>'
+      + '<td><b>' + esc(L.name) + '</b></td>'
+      + '<td><a href="mailto:' + esc(L.email) + '" style="color:var(--accent)">' + esc(L.email) + '</a></td>'
+      + '<td>' + esc(L.organization) + '</td>'
+      + '<td>' + esc(L.detail) + (L.note ? '<br><span style="color:var(--muted-soft)">' + esc(L.note) + '</span>' : '') + '</td>'
+      + '<td>' + esc(L.country) + '</td>'
+      + '</tr>';
+  }
+  document.getElementById('ld-rows').innerHTML = html
+    || '<tr><td colspan="7" style="color:var(--muted-soft)">No leads captured yet.</td></tr>';
+
+  var ah = '';
+  for(var k=0;k<att.length;k++){
+    var A = att[k];
+    var bad = A.state === 'unconfigured';
+    ah += '<tr>'
+      + '<td style="white-space:nowrap">' + esc(ldWhen(A.at)) + '</td>'
+      + '<td>' + esc(A.offer) + '</td>'
+      + '<td style="color:' + (bad ? 'var(--stop-text)' : 'var(--ready-text)') + '">' + esc(A.state) + '</td>'
+      + '<td>' + esc(A.from) + '</td>'
+      + '<td>' + esc(A.country) + '</td>'
+      + '</tr>';
+  }
+  document.getElementById('ld-att').innerHTML = ah
+    || '<tr><td colspan="5" style="color:var(--muted-soft)">No pay-screen attempts recorded.</td></tr>';
+
+  var lost = (d && d.attempts_unconfigured) || 0;
+  document.getElementById('ld-note').innerHTML = lost
+    ? '<b style="color:var(--stop-text)">' + lost + ' of these arrivals could not pay</b>, because no payment link is configured for that offer. Paste the links into api/_offer-config.js to close it.'
+    : 'Every pay-screen arrival reached a working payment link.';
+}
+
+function loadLeads(){
+  /* Prices first, so the intent total is never computed from a stale constant.
+     A failure here is non-fatal: the table still renders and the total is
+     marked as incomplete rather than being silently wrong. */
+  return fetch('/api/offer-info')
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .catch(function(){ return null; })
+    .then(function(o){
+      if(o && o.offers){
+        Object.keys(o.offers).forEach(function(k){
+          if(typeof o.offers[k].price_usd === 'number') LD_PRICES[k] = o.offers[k].price_usd;
+        });
+      }
+      return fetch(LEADS_URL);
+    })
+    .then(function(r){ if(!r.ok) throw new Error('status ' + r.status); return r.json(); })
+    .then(ldRender)
+    .catch(function(){
+      document.getElementById('ld-rows').innerHTML =
+        '<tr><td colspan="7" style="color:var(--stop-text)">Could not load leads. Tap Refresh.</td></tr>';
+      document.getElementById('ld-att').innerHTML =
+        '<tr><td colspan="5" style="color:var(--stop-text)">Could not load attempts.</td></tr>';
+    });
+}
+loadLeads();
 </script>
 <!-- JRS PANEL BINDER v2 :: CANONICAL BLOCK. Byte-identical on every page that
      publishes a panel figure, and scripts/check_zero_drift.py fails the commit

@@ -138,9 +138,9 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
   <table class="tt">
     <thead><tr><th>Engagement</th><th>Fee</th><th>Turnaround</th><th></th></tr></thead>
     <tbody>
-    <tr><td><b>AI Documentation Defensibility Review</b><br><span class="t-scope">Five de-identified records, read against the five conditions and the seven failure modes</span></td><td class="t-fee">$250</td><td>Five working days</td><td>Scope it</td></tr>
-    <tr><td><b>AI Governance Documentation Review</b><br><span class="t-scope">A documentation standard or template set, plus up to five records produced under it</span></td><td class="t-fee">$500</td><td>Ten working days</td><td>Scope it</td></tr>
-    <tr><td><b>Benchmark Access and Calibration</b><br><span class="t-scope">One licensed run of the held-out record set, scoring returned by the holder</span></td><td class="t-fee">$750</td><td>Agreed at scoping</td><td>Scope it</td></tr>
+    <tr><td><b>AI Documentation Defensibility Review</b><br><span class="t-scope">Five de-identified records, read against the five conditions and the seven failure modes</span></td><td class="t-fee" data-offer-price="audit">on request</td><td>Five working days</td><td>Scope it</td></tr>
+    <tr><td><b>AI Governance Documentation Review</b><br><span class="t-scope">A documentation standard or template set, plus up to five records produced under it</span></td><td class="t-fee" data-offer-price="governance">on request</td><td>Ten working days</td><td>Scope it</td></tr>
+    <tr><td><b>Benchmark Access and Calibration</b><br><span class="t-scope">One licensed run of the held-out record set, scoring returned by the holder</span></td><td class="t-fee" data-offer-price="calibration">on request</td><td>Agreed at scoping</td><td>Scope it</td></tr>
     </tbody>
   </table>
 
@@ -387,5 +387,26 @@ function trackClickAndNavigate(event, targetUrl, eventMetaData) {
 })();
 </script>
 <!-- /JRS PANEL BINDER v2 -->
+<script>
+/* PRICES COME FROM /api/offer-info, WHICH READS api/_offer-config.js.
+   No price literal exists in this file. Every element below carries the offer
+   key and is filled at load. The no-JS text reads "see below" rather than a
+   blank or a stale number, because a buyer who sees an empty price box assumes
+   the page is broken and a buyer who sees a wrong one assumes worse. */
+(function () {
+  var els = document.querySelectorAll('[data-offer-price]');
+  if (!els.length) return;
+  fetch('/api/offer-info').then(function (r) { return r.json(); }).then(function (d) {
+    if (!d || !d.offers) return;
+    els.forEach(function (el) {
+      var o = d.offers[el.getAttribute('data-offer-price')];
+      if (!o || !o.price_label) return;
+      var pre = el.getAttribute('data-price-prefix') || '';
+      var post = el.getAttribute('data-price-suffix') || '';
+      el.textContent = pre + o.price_label + post;
+    });
+  }).catch(function () { /* the fallback text already reads sensibly */ });
+})();
+</script>
 </body>
 </html>

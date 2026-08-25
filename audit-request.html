@@ -105,14 +105,14 @@ ul.deliver li{color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:7p
 </header>
 <main>
 <article>
-  <div class="kicker">Offer 1 &middot; $250</div>
+  <div class="kicker">Offer 1 &middot; <span data-offer-price="audit">see below</span></div>
   <h1 class="lede">Can your records still explain themselves?</h1>
   <p>A decision can be sound and its record still unable to show why it was reached. This review reads five of your closed records against the seven documented failure modes and the five review conditions, and returns a written finding naming what is missing and where.</p>
 
   <table class="spec">
     <tr><td>What is read</td><td>Five de-identified records</td></tr>
     <tr><td>Turnaround</td><td>Five working days</td></tr>
-    <tr><td>Price</td><td><b style="color:var(--accent)">$250</b>, fixed. No hourly rate and no scope creep</td></tr>
+    <tr><td>Price</td><td><b style="color:var(--accent)" data-offer-price="audit">stated below</b>, fixed. No hourly rate and no scope creep</td></tr>
     <tr><td>Written for</td><td>General Counsel, Head of Employee Relations, investigations leads</td></tr>
   </table>
 
@@ -137,7 +137,7 @@ ul.deliver li{color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:7p
 
   <p>There is no form on this page and nothing to upload here. <strong>Scope, price and turnaround are agreed in writing before any record is sent</strong>, and de-identification is agreed at the same time.</p>
   <p style="margin:24px 0 10px">
-    <a class="cta-primary" href="/api/checkout?o=audit&amp;src=audit-request">Pay $250 and start &rarr;</a>
+    <a class="cta-primary" href="/api/checkout?o=audit&amp;src=audit-request"><span data-offer-price="audit" data-price-prefix="Pay " data-price-suffix=" and start">Continue</span> &rarr;</a>
   </p>
 
   <div class="status-strip" style="margin-top:26px">
@@ -268,6 +268,27 @@ function trackClickAndNavigate(event, targetUrl, eventMetaData) {
       trackClickAndNavigate(ev, a.href, meta);
     } catch (e) { /* a telemetry fault must never block navigation */ }
   }, true);
+})();
+</script>
+<script>
+/* PRICES COME FROM /api/offer-info, WHICH READS api/_offer-config.js.
+   No price literal exists in this file. Every element below carries the offer
+   key and is filled at load. The no-JS text reads "see below" rather than a
+   blank or a stale number, because a buyer who sees an empty price box assumes
+   the page is broken and a buyer who sees a wrong one assumes worse. */
+(function () {
+  var els = document.querySelectorAll('[data-offer-price]');
+  if (!els.length) return;
+  fetch('/api/offer-info').then(function (r) { return r.json(); }).then(function (d) {
+    if (!d || !d.offers) return;
+    els.forEach(function (el) {
+      var o = d.offers[el.getAttribute('data-offer-price')];
+      if (!o || !o.price_label) return;
+      var pre = el.getAttribute('data-price-prefix') || '';
+      var post = el.getAttribute('data-price-suffix') || '';
+      el.textContent = pre + o.price_label + post;
+    });
+  }).catch(function () { /* the fallback text already reads sensibly */ });
 })();
 </script>
 </body>

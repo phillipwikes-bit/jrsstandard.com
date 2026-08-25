@@ -105,14 +105,14 @@ ul.deliver li{color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:7p
 </header>
 <main>
 <article>
-  <div class="kicker">Offer 2 &middot; $500</div>
+  <div class="kicker">Offer 2 &middot; <span data-offer-price="governance">see below</span></div>
   <h1 class="lede">Does your standard produce records that survive review?</h1>
   <p>A documentation policy can be complete on paper and still permit records that cannot be reconstructed. This review reads the standard itself and a sample of what it actually produces, then reports where the two diverge.</p>
 
   <table class="spec">
     <tr><td>What is read</td><td>Your documentation standard, template set or policy, plus up to five records produced under it</td></tr>
     <tr><td>Turnaround</td><td>Ten working days</td></tr>
-    <tr><td>Price</td><td><b style="color:var(--accent)">$500</b>, fixed. No hourly rate and no scope creep</td></tr>
+    <tr><td>Price</td><td><b style="color:var(--accent)" data-offer-price="governance">stated below</b>, fixed. No hourly rate and no scope creep</td></tr>
     <tr><td>Written for</td><td>Chief AI Officer, Head of AI Governance, Model Risk</td></tr>
   </table>
 
@@ -137,7 +137,7 @@ ul.deliver li{color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:7p
 
   <p>There is no form on this page and nothing to upload here. <strong>Scope, price and turnaround are agreed in writing before any record is sent</strong>, and de-identification is agreed at the same time.</p>
   <p style="margin:24px 0 10px">
-    <a class="cta-primary" href="/api/checkout?o=governance&amp;src=governance-request">Pay $500 and start &rarr;</a>
+    <a class="cta-primary" href="/api/checkout?o=governance&amp;src=governance-request"><span data-offer-price="governance" data-price-prefix="Pay " data-price-suffix=" and start">Continue</span> &rarr;</a>
   </p>
 
   <div class="status-strip" style="margin-top:26px">
@@ -268,6 +268,27 @@ function trackClickAndNavigate(event, targetUrl, eventMetaData) {
       trackClickAndNavigate(ev, a.href, meta);
     } catch (e) { /* a telemetry fault must never block navigation */ }
   }, true);
+})();
+</script>
+<script>
+/* PRICES COME FROM /api/offer-info, WHICH READS api/_offer-config.js.
+   No price literal exists in this file. Every element below carries the offer
+   key and is filled at load. The no-JS text reads "see below" rather than a
+   blank or a stale number, because a buyer who sees an empty price box assumes
+   the page is broken and a buyer who sees a wrong one assumes worse. */
+(function () {
+  var els = document.querySelectorAll('[data-offer-price]');
+  if (!els.length) return;
+  fetch('/api/offer-info').then(function (r) { return r.json(); }).then(function (d) {
+    if (!d || !d.offers) return;
+    els.forEach(function (el) {
+      var o = d.offers[el.getAttribute('data-offer-price')];
+      if (!o || !o.price_label) return;
+      var pre = el.getAttribute('data-price-prefix') || '';
+      var post = el.getAttribute('data-price-suffix') || '';
+      el.textContent = pre + o.price_label + post;
+    });
+  }).catch(function () { /* the fallback text already reads sensibly */ });
 })();
 </script>
 </body>
