@@ -17,9 +17,9 @@ Every figure below is measured from the filesystem or from a live HTTP probe at 
 | API routes | 53 | Vercel Edge Functions under `api/` |
 | Build and audit scripts | 60 | `scripts/`, not served |
 | Root markdown documents | 22 | Internal, see the exposure note in section 5 |
-| Research markdown | 351 | Under `research/` |
+| Research markdown | 352 | Under `research/` |
 | PDF assets | 56 | Served through `/api/dl` alias map |
-| DOCX artefacts | 131 | Generated deliverables |
+| DOCX artefacts | 132 | Generated deliverables |
 | CSV data | 3 | |
 | Other static assets | 11 | SVG, icons, XML, TXT, JSON |
 
@@ -47,20 +47,20 @@ Every figure below is measured from the filesystem or from a live HTTP probe at 
 | `decision-reconstruction-risk.html` | 16.5 KB | Decision Reconstruction Risk (DRR): Definition | JRS&#8482; |
 | `engagement.html` | 28.2 KB | How an engagement works | JRS&#8482; |
 | `engine-activity.html` | 13.5 KB | Review Engine Activity | JRS |
-| `enterprise.html` | 83.3 KB | Decision Defensibility at Enterprise Scale | JRS™ Justification Review |
+| `enterprise.html` | 81.9 KB | Decision Defensibility at Enterprise Scale | JRS™ Justification Review |
 | `evidence-ledger.html` | 13.2 KB | Public Evidence Ledger | JRS™ Justification Review Standard |
 | `finding.html` | 21.7 KB | Finding &amp; Discussion | JRS™ Justification Review Standard |
 | `governance-request.html` | 19.4 KB | AI Governance Documentation Review | JRS&#8482; |
 | `honor.html` | 16.4 KB | Global Governance and Transparency Honor &middot; JRS |
 | `implementation-scenarios.html` | 41.1 KB | Decision Defensibility Scenarios | JRS™ Justification Review Standard |
-| `index.html` | 616.5 KB | JRS™ Justification Review Standard | Safeguarding the Defensibility of |
+| `index.html` | 614.3 KB | JRS™ Justification Review Standard | Safeguarding the Defensibility of |
 | `investigator-guides.html` | 22.2 KB | Investigator Field Guides | JRS&#8482; Justification Review Standard |
 | `jrsstandard.html` | 492.8 KB | JRS Decision Defensibility Methodology | JRS™ Justification Review Sta |
 | `methodology.html` | 13.8 KB | Methodology Archive | JRS™ Justification Review Standard |
 | `operational-boundaries.html` | 35.2 KB | Operational Boundaries | JRS™ Justification Review Standard |
 | `org-pilot.html` | 26.3 KB | Run JRS on your own records &middot; JRS |
 | `people.html` | 5.7 KB | Not found &middot; JRS |
-| `pilot.html` | 81.3 KB | Pilot Program | Decision Defensibility | JRS™ Justification Review Sta |
+| `pilot.html` | 82.0 KB | Pilot Program | Decision Defensibility | JRS™ Justification Review Sta |
 | `privacy.html` | 24.3 KB | Privacy Policy | JRS™ Justification Review Standard |
 | `programme-status-9872fb93cc94.html` | 132.3 KB | Programme Status | JRS |
 | `questions.html` | 13.9 KB | Questions Under Investigation | JRS™ Justification Review Standard |
@@ -85,7 +85,7 @@ Every figure below is measured from the filesystem or from a live HTTP probe at 
 | `research-data.html` | 40.9 KB | Research Data Room | JRS |
 | `research.html` | 36.8 KB | Research &amp; Validation: Decision Defensibility | JRS™ Justification |
 | `results.html` | 16.0 KB | Decision Reconstruction Challenge: Results | JRS™ Justification Review |
-| `review-engine.html` | 34.5 KB | JRS Review Engine API | Justification Review Standard |
+| `review-engine.html` | 35.1 KB | JRS Review Engine API | Justification Review Standard |
 | `review-status.html` | 12.9 KB | Review Status | JRS |
 | `reviewer/completion.html` | 20.0 KB | Reviewer Certificate | JRS&#8482; Justification Review Standard |
 | `reviewer/evaluation.html` | 25.0 KB | Reviewer Evaluation | JRS&#8482; Justification Review Standard |
@@ -95,7 +95,7 @@ Every figure below is measured from the filesystem or from a live HTTP probe at 
 | `submit-validation.html` | 21.5 KB | Submit a Validated Case | JRS |
 | `supported.html` | 15.0 KB | Thank you for your support &middot; JRS |
 | `terms.html` | 21.9 KB | Terms of engagement | JRS&#8482; |
-| `training.html` | 277.0 KB | JRS Reviewer Training | Decision Defensibility Calibration | JRS™ Just |
+| `training.html` | 277.7 KB | JRS Reviewer Training | Decision Defensibility Calibration | JRS™ Just |
 | `vp-7c1f9a4e8d2b6035.html` | 42.5 KB | JRS: Safeguarding Decision Defensibility · Integration Preview |
 | `why-good-decisions-fail.html` | 18.8 KB | Decision Reconstruction Risk: Why Good Decisions Fail on Paper | JRS&# |
 | `workflow-fit.html` | 33.3 KB | Where Decision Defensibility Review Fits | JRS™ Justification Review S |
@@ -352,7 +352,7 @@ PDFs are not linked directly. They are served through the alias map in `api/dl.j
 | `finding.html` | 21.7 KB | Finding &amp; Discussion | JRS™ Justification Review Standar |
 | `honor.html` | 16.4 KB | Global Governance and Transparency Honor &middot; JRS |
 | `org-pilot.html` | 26.3 KB | Run JRS on your own records &middot; JRS |
-| `pilot.html` | 81.3 KB | Pilot Program | Decision Defensibility | JRS™ Justification  |
+| `pilot.html` | 82.0 KB | Pilot Program | Decision Defensibility | JRS™ Justification  |
 | `reference/reviewer-responsibility-boundaries/index.html` | 14.9 KB | Reviewer Liability and Responsibility Boundaries | JRS Docum |
 | `reference/reviewer-worksheet/index.html` | 15.0 KB | Reviewer Worksheet | JRS Documentation Review Reference |
 | `reference/unsupported-generalization/index.html` | 14.8 KB | Unsupported Generalization | JRS Documentation Review Refere |
@@ -366,7 +366,7 @@ PDFs are not linked directly. They are served through the alias map in `api/dl.j
 
 ### 3.1 Enterprise Diagnostic Pilot interface
 
-- `pilot.html`: present, 81.3 KB
+- `pilot.html`: present, 82.0 KB
 - `org-pilot.html`: present, 26.3 KB
 
 `api/org-pilot.js` is the recorder. Verified properties, read from source:
@@ -405,8 +405,8 @@ PDFs are not linked directly. They are served through the alias map in `api/dl.j
 
 | Asset | Present | Size |
 |---|---|---|
-| `enterprise.html` | yes | 83.3 KB |
-| `review-engine.html` | yes | 34.5 KB |
+| `enterprise.html` | yes | 81.9 KB |
+| `review-engine.html` | yes | 35.1 KB |
 | `engagement.html` | yes | 28.2 KB |
 | `terms.html` | yes | 21.9 KB |
 | `API_INTEGRATION.md` | **NO** | n/a |
@@ -502,9 +502,9 @@ INVENTORY
   API routes                 53
   build/audit scripts        60
   root markdown              22
-  research markdown          351
+  research markdown          352
   PDFs                       56
-  DOCX                       131
+  DOCX                       132
 
 LINK AND SITEMAP HEALTH
   internal link targets      866 checked
@@ -528,5 +528,5 @@ LEAD CAPTURE
   email alerts               DISABLED by owner directive (ALERTS_ENABLED=false)
 
 GUARDS
-  check_zero_drift           34 checks, 1 failed
+  check_zero_drift           36 checks, 0 failed
 ```

@@ -1216,24 +1216,6 @@ def check_no_price_literals_in_html(offline):
         # rather than a price, and $ in a regex is not a currency symbol.
         body = re.sub(r"<style[^>]*>.*?</style>", " ", body, flags=re.S | re.I)
         body = re.sub(r"<script[^>]*>.*?</script>", " ", body, flags=re.S | re.I)
-        # NARROW, DOCUMENTED EXCEPTION, 2026-08-25.
-        #
-        # The JRS DUAL TRACK STRATEGY block carries licence BANDS ($7,500 to
-        # $15,000 setup, $15,000 to $40,000+ annual) inside narrative copy the
-        # owner supplied verbatim. Those are not offer prices and have no
-        # counterpart in api/_offer-config.js, so binding them to it is not
-        # possible and the single-source rule does not apply to them.
-        #
-        # The exception is scoped to this ONE marked block. A price literal
-        # anywhere else on the same page still fails. It is written as a strip
-        # rather than a file-level allowlist precisely so it cannot be widened by
-        # accident: a new price outside the markers is still caught.
-        #
-        # Publishing those bands is a commercial decision, flagged separately in
-        # research/DUAL_TRACK_COPY_REVIEW_2026-08-25.md, not a drift defect.
-        body = re.sub(
-            r"<!-- JRS DUAL TRACK STRATEGY v1.*?<!-- /JRS DUAL TRACK STRATEGY v1 -->",
-            " ", body, flags=re.S)
         for m in pat.finditer(body):
             hits.append("%s: %s" % (rel, m.group(0)))
     check("no price literal in any HTML file", not hits,
@@ -1643,6 +1625,82 @@ def check_dual_track_band(offline):
               "no band found")
 
 
+# Internal-voice copy that must never reach a public page. Owner constraints,
+# 2026-08-25. Each entry was actually present in supplied copy on that date and
+# was removed, so this list is a record of what happened rather than a
+# precaution against the hypothetical.
+INTERNAL_VOICE = (
+    # Pricing floors. Publishing a band means every negotiation opens at its
+    # bottom, and these sat above a ladder on which nothing has ever sold.
+    ("$7,500", "licence pricing floor"),
+    ("$15,000", "licence pricing floor"),
+    ("$40,000", "ARR band"),
+    # Internal capacity. Reads to an enterprise buyer as key-person risk.
+    ("10 to 15 hours", "internal bandwidth"),
+    ("weekly time commitment", "internal bandwidth"),
+    ("key-person", "internal capacity framing"),
+    # Describing the free track as a lure, to the audience it describes.
+    ("Trojan Horse", "free-track framed as a lure"),
+    ("trojan horse", "free-track framed as a lure"),
+    # The security-audit avoidance claim, in every phrasing seen so far.
+    ("triggering complex security compliance audits", "audit-avoidance claim"),
+    ("without triggering", "audit-avoidance claim"),
+    ("avoids security review", "audit-avoidance claim"),
+    ("no security review", "audit-avoidance claim"),
+)
+
+
+def check_no_internal_voice_copy(offline):
+    """No public page may carry internal strategy language.
+
+    This catches the class that check_no_false_assurance_claims missed: the
+    audit-avoidance claim written as "without triggering complex security
+    compliance audits" rather than as "SOC 2 bypass". That gap was found by
+    reading supplied copy, not by the guard, which is the reason the guard now
+    matches phrasing as well as branded terms.
+    """
+    hits = []
+    for rel in _html_files():
+        try:
+            body = read(rel)
+        except Exception:
+            continue
+        for phrase, why in INTERNAL_VOICE:
+            if phrase in body:
+                hits.append("%s: %s (%s)" % (rel, phrase, why))
+    check("no internal strategy language on any public page", not hits,
+          "; ".join(hits[:5]) if hits
+          else "%d pages scanned, %d phrases each"
+               % (len(_html_files()), len(INTERNAL_VOICE)))
+
+
+def check_retention_claim_is_scoped(offline):
+    """Wherever zero retention is claimed, the scope limit must sit with it.
+
+    "No data at rest" narrows a vendor security review; it does not remove one.
+    Stating the first without the second is the claim the owner ruled out, and
+    separating them by a page is the same thing as omitting the second.
+    """
+    bad = []
+    for rel in _html_files():
+        try:
+            body = read(rel)
+        except Exception:
+            continue
+        claims = ("no data at rest" in body.lower()
+                  or "zero data retention at rest" in body.lower())
+        if not claims:
+            continue
+        scoped = ("does not remove the review" in body
+                  or "does not remove the assessment" in body
+                  or "not a substitute for any certification" in body)
+        if not scoped:
+            bad.append(rel)
+    check("zero-retention claims carry their scope limit", not bad,
+          "unscoped on: " + ", ".join(bad) if bad
+          else "every page claiming it also states what it does not do")
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -1669,6 +1727,8 @@ def main():
                check_notifications_wired,
                check_alerts_disabled,
                check_dual_track_band,
+               check_no_internal_voice_copy,
+               check_retention_claim_is_scoped,
                check_generated_docs_current, check_cross_endpoint):
         try:
             fn(offline)
