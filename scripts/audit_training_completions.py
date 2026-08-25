@@ -21,6 +21,24 @@ eight entries in that map are annotated in the source as having no complete row.
 This script decomposes the published number into what is evidenced by a row and
 what rests on the constant, and names each person from the source comments.
 
+WHY THE FOUR HAVE NO ROW. Attested by Phillip on 2026-08-25: they completed
+before completion was tracked. The commit history corroborates the mechanism:
+
+  api/enroll.js      first committed 2026-07-13  (b0a6133)
+  api/complete.js    first committed 2026-07-14  (bc0b8e9)
+
+Before 2026-07-14 there was NO endpoint that could write a training-complete
+row, so a completion in that window is unrecordable by construction rather than
+missing through error. Jake McDonough, Olabanji Lawal and Boris Khazin were
+added to the records map on 2026-07-17 (76aa3fa) as completers with no row.
+SungSoo In was added 2026-07-20 (5ed7e6a); his enrolment is dated 2026-07-19,
+which is AFTER complete.js existed, so his gap is the ?src=panel flow not
+writing a completion row rather than the endpoint being absent.
+
+The distinction this script keeps: an unrecordable completion is a real
+completion with no evidence in the system, and it is still not the same fact as
+a recorded one. Both are reported, neither is relabelled as the other.
+
 NAMES AND DATES require the service-role key. pilot_contacts is not anon
 readable. Without SUPABASE_SERVICE_ROLE_KEY this script prints everything it can
 establish and then FAILS CLOSED on the per-person completion dates rather than
@@ -51,13 +69,17 @@ BACKFILL = [
     ("77d8d7d39070b21e741964745127596924a42140c10cc967faecda9fe7a977cc",
      "Andrey Ekhmenin", "V-AI-11", "PL", "has training-complete row", "2026-07-17"),
     ("f148f56cc11fdee6017ec1a103be7edaa3aed0a9855de3bfafea609b94c054f9",
-     "Jake McDonough", "V-AI-01", "US", "PANEL completer, NO complete row", ""),
+     "Jake McDonough", "V-AI-01", "US",
+     "completed pre-tracking (before api/complete.js, 2026-07-14); attested 2026-08-25", ""),
     ("c883d56fa7ef4d012574bdc1bbfcd372c54f4c111985070e606ce827be65411b",
-     "Olabanji Lawal", "V-AI-10", "NG", "PANEL completer, NO complete row", ""),
+     "Olabanji Lawal", "V-AI-10", "NG",
+     "completed pre-tracking (before api/complete.js, 2026-07-14); attested 2026-08-25", ""),
     ("7fec46f29356da7d765afb4cd1f47776e24b0d237ee3e6801d620f3cbbb993ee",
-     "Boris Khazin", "RR-101", "US", "PANEL completer, NO complete row", ""),
+     "Boris Khazin", "RR-101", "US",
+     "completed pre-tracking (before api/complete.js, 2026-07-14); attested 2026-08-25", ""),
     ("deb4d4bf1f481e75ac94bc2433e34fc9822b8529a85cd0c0f44d05b59b4d5673",
-     "SungSoo In", "V-AI-24", "KR", "ENROLLED 2026-07-19, NO complete row", ""),
+     "SungSoo In", "V-AI-24", "KR",
+     "enrolled 2026-07-19 via ?src=panel, that flow wrote no complete row", ""),
     ("c5dcaf40ebce570624518e963d3cc924eab1179951039e50866b4a5fe93c9a00",
      "Sagarika Banerjee", "RR-128", "CA", "endorsed 2026-08-02, pre-geo row", ""),
     ("f0d55578ea6444100a57993ea610f3065f38743c0879a532f5f9074e59938ab9",
@@ -148,7 +170,7 @@ from_map = sum(1 for b in BACKFILL if b[3] in bars and b[3] != "KE")
 check("6 of the 7 completions come from the constant, 1 from a real row",
       from_map == 6 and bars.get("KE") == 1,
       "%d from api/_country-backfill.js, 1 captured" % from_map)
-check("4 of those 6 have NO completion event of any kind",
+check("4 of those 6 have no completion ROW, for a documented reason",
       len([b for b in unevidenced if b[3] in bars]) == 4,
       "Jake McDonough, Olabanji Lawal, Boris Khazin, SungSoo In")
 
@@ -158,11 +180,13 @@ if not SERVICE:
     print("  ESTABLISHED FROM REPOSITORY SOURCES, dated:")
     print("    Nicholas Evans    RR-106    US   training-complete row   2026-07-14")
     print("    Andrey Ekhmenin   V-AI-11   PL   training-complete row   2026-07-17")
-    print("  ASSERTED WITHOUT A DATE OR AN EVENT:")
-    print("    Jake McDonough    V-AI-01   US   panel completer, no training-complete row")
-    print("    Olabanji Lawal    V-AI-10   NG   panel completer, no training-complete row")
-    print("    Boris Khazin      RR-101    US   panel completer, no training-complete row")
-    print("    SungSoo In        V-AI-24   KR   enrolled 2026-07-19, no completion row")
+    print("  COMPLETED BEFORE COMPLETION WAS TRACKABLE (attested by Phillip 2026-08-25;")
+    print("  api/complete.js did not exist until 2026-07-14, commit bc0b8e9):")
+    print("    Jake McDonough    V-AI-01   US   pre-tracking completion, no row possible")
+    print("    Olabanji Lawal    V-AI-10   NG   pre-tracking completion, no row possible")
+    print("    Boris Khazin      RR-101    US   pre-tracking completion, no row possible")
+    print("  RECORDED VIA THE PANEL FLOW, WHICH WROTE NO COMPLETION ROW:")
+    print("    SungSoo In        V-AI-24   KR   enrolled 2026-07-19 via ?src=panel")
     print("  NOT ESTABLISHED:")
     print("    KE completer      unknown   KE   real row exists; identity needs the key")
     print()
