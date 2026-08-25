@@ -106,14 +106,14 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
   function render404(){
     stage.innerHTML =
       '<div class="seal">Global Governance &amp; Transparency Honor</div>'
-    + '<h2 class="h1-look">This link is not recognised</h2>'
+    + '<h1 class="h1-look">This link is not recognised</h1>'
     + '<p class="lede">Honor links are issued individually and are not guessable. If you were sent one and it is not working, reply to the message that brought you here, or write to <a href="mailto:info@jrsstandard.com">info@jrsstandard.com</a>.</p>';
   }
 
   function renderForm(d){
     stage.innerHTML =
       '<div class="seal">' + esc(d.honor) + '</div>'
-    + '<h2 class="h1-look">' + esc(d.first) + ', you have been named an honoree.</h2>'
+    + '<h1 class="h1-look">' + esc(d.first) + ', you have been named an honoree.</h1>'
     + '<div class="year">' + esc(d.year) + ' &middot; ' + esc(d.code) + ' &middot; ' + esc(d.order) + '</div>'
     + '<p class="lede">This is the citation as it will read on your certificate. Nothing is issued until you confirm it below, and nothing is published without your say-so.</p>'
     + '<div class="citation">' + esc(d.citation) + '</div>'
@@ -197,7 +197,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
     .then(function(res){
       stage.innerHTML =
         '<div class="seal">' + esc(res.honor) + '</div>'
-      + '<h2 class="h1-look">Accepted. Thank you, ' + esc(String(res.printed_name).split(' ')[0]) + '.</h2>'
+      + '<h1 class="h1-look">Accepted. Thank you, ' + esc(String(res.printed_name).split(' ')[0]) + '.</h1>'
       + '<div class="year">' + esc(res.year) + ' &middot; ' + esc(res.code) + '</div>'
       + '<p class="lede">Your certificate will be issued in the name and title you confirmed, and sent to the address you gave. Here is the citation it carries.</p>'
       + '<div class="citation"><b>' + esc(res.printed_name) + '</b><br>' + esc(res.printed_title) + '<br><br>' + esc(res.citation) + '</div>'

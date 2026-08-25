@@ -112,6 +112,23 @@ PROBE = r"""
   // tens of thousands, and a full walk turned a 72-page audit into a job that
   // could not finish inside a tool call. Overflow is caught by OVERFLOW anyway;
   // this only names an offender when one exists early in the document.
+  //
+  // AN ELEMENT INSIDE A HORIZONTALLY SCROLLABLE ANCESTOR IS NOT OFFSCREEN.
+  // The first run of this audit reported 9 OFFSCREEN findings and 8 of them
+  // were wide tables, utility bars and sticky navs that scroll on purpose,
+  // which is correct, working design. Reporting those as defects would have
+  // had me "fixing" things that already work, which is how a page gets broken
+  // by an audit. Only one of the nine was real.
+  const scrollAnc = el => {
+    let p = el.parentElement;
+    while (p && p !== document.body) {
+      const s = getComputedStyle(p);
+      if ((s.overflowX === 'auto' || s.overflowX === 'scroll')
+          && p.scrollWidth > p.clientWidth + 2) return true;
+      p = p.parentElement;
+    }
+    return false;
+  };
   const off = [];
   const leaves = document.querySelectorAll('body *');
   const cap = Math.min(leaves.length, 4000);
@@ -122,6 +139,7 @@ PROBE = r"""
     // Reporting the deliberate pattern as a defect trains the reader to skim.
     if (el.classList && el.classList.contains('skip-link')) continue;
     if (!vis(el)) continue;
+    if (scrollAnc(el)) continue;
     const r = el.getBoundingClientRect();
     if (r.width === 0) continue;
     if (r.left < -2000) continue;
@@ -137,9 +155,15 @@ PROBE = r"""
                                   .map(i => i.getAttribute('src') || '(no src)');
   if (bad.length) out.push(['BROKEN-IMG', bad.slice(0, 3).join(', ')]);
 
-  // EMPTY
+  // EMPTY. A short page is only a finding when it ALSO has no visible heading.
+  // Several pages here are deliberately terse: a retired dead-end, and the
+  // no-key states of the three key-gated pages, which correctly say one thing
+  // and offer a way forward. A short page WITH a real heading is a designed
+  // state; a short page WITHOUT one is a render that failed, which is exactly
+  // what the three broken pages looked like at 24, 175 and 195 characters.
   const text = (document.body.innerText || '').trim();
-  if (text.length < 200) out.push(['EMPTY', text.length + ' chars of visible text']);
+  if (text.length < 200 && h1s.length === 0)
+    out.push(['EMPTY', text.length + ' chars of visible text and no heading']);
 
   // NO-VIEWPORT
   const mv = document.querySelector('meta[name="viewport"]');
