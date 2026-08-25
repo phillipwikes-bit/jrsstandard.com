@@ -232,12 +232,64 @@ def check_live():
           "reference %d bytes, rapid card %d bytes" % (want, card))
 
 
+# ---- 6. the implementation surface must not gate the training --------------
+def check_kit_surface_does_not_gate_training():
+    """The Deployment Kit section on index.html sells an implementation package.
+
+    Its headline promise used to be "Reviewer training", obtainable by
+    requesting pilot participation. The training is free, open, in the browser
+    and reachable in one click, so the homepage was routing everyone who wanted
+    it into a request queue for a package api/dl.js:38 will not serve. The
+    section keeps its implementation content; the training is now offered first
+    and named as free wherever the section mentions it.
+    """
+    src = read("index.html")
+    i = src.find('id="section-kit"')
+    if i < 0:
+        check("index.html still has an implementation section", False, "not found")
+        return
+    depth, end = 0, -1
+    start = src.rfind("<", 0, i)
+    for m in re.finditer(r"<div\b|</div>", src[start:]):
+        if m.group(0) == "</div>":
+            depth -= 1
+            if depth == 0:
+                end = start + m.end()
+                break
+        else:
+            depth += 1
+    blk = src[start:end] if end > 0 else ""
+    check("index.html still has an implementation section", bool(blk),
+          "%d chars" % len(blk))
+    if not blk:
+        return
+
+    check("the implementation section links to the free training",
+          'href="training.html"' in blk,
+          "%d training links inside the section" % blk.count('href="training.html"'))
+
+    check("the section names the training as free",
+          "free" in blk.lower() and "training" in blk.lower(),
+          "free-training language present")
+
+    # The retired product name must not be the badge on the section any more.
+    check("the section is not badged as the retired Deployment Kit",
+          '<div class="kit-badge">Deployment Kit</div>' not in blk,
+          "badge is Training & Implementation")
+
+    # No entry point anywhere may still be labelled for the retired product.
+    check("no entry point is labelled View Deployment Kit",
+          "View Deployment Kit" not in src,
+          "absent" if "View Deployment Kit" not in src else "still present")
+
+
 def main():
     offline = "--offline" in sys.argv
     check_nav()
     check_reference_links()
     check_six_modules()
     check_labels()
+    check_kit_surface_does_not_gate_training()
     if not offline:
         check_live()
 
