@@ -106,6 +106,23 @@ a{color:inherit;text-decoration:none}
   .nav-links a{padding:11px 20px;border-bottom:1px solid var(--rule)}
   .nav-links a:last-child{border-bottom:none}
 }
+
+/* MOBILE FIX PACK, 2026-08-25. Appended, never editing an existing rule.
+   1. Form fields at 16px. Below 16px iOS Safari zooms the whole page on focus
+      and the visitor lands mid-layout with no way back except pinching.
+   2. Tables scroll inside their own box instead of forcing the page sideways.
+   3. Tap targets reach 44px, the minimum a thumb hits reliably.
+   4. Long tokens wrap instead of pushing the body wider than the screen. */
+input,select,textarea{font-size:16px!important}
+table{display:block;overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+button,.btn,.cta-primary,input[type=submit]{min-height:44px}
+@media (max-width:640px){
+  body{overflow-x:hidden}
+  img,svg,video,pre{max-width:100%;height:auto}
+  pre,code{white-space:pre-wrap;word-break:break-word}
+  h1,.h1-look{font-size:23px;line-height:1.3}
+  .wrap,.container,.container-wide{padding-left:16px;padding-right:16px}
+}
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVYHJ7BJ92"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NVYHJ7BJ92');</script>
@@ -200,7 +217,7 @@ a{color:inherit;text-decoration:none}
 
 <div style="margin-top:36px;">
 
-<div class="section-head">Chronology Review</div>
+<h2 class="section-head">Chronology Review</h2>
 <div class="cat-label" style="color:var(--review-text);">Category 01: Sequence &amp; Timeline Instability</div>
 <p class="section-sub">Exercises focused on whether the sequence of events can be independently established from the file. The record may describe what happened without establishing when, or compress a multi-month sequence into language that provides no temporal anchoring.</p>
 
@@ -234,7 +251,7 @@ a{color:inherit;text-decoration:none}
  </div>
 </div>
 
-<div class="section-head">Escalation Review</div>
+<h2 class="section-head">Escalation Review</h2>
 <div class="cat-label" style="color:var(--stop-text);">Category 02: Escalation Trail &amp; Counseling Support</div>
 <p class="section-sub">Exercises focused on whether the escalation basis is visible in the file. Escalation failures most often originate from undocumented coaching. The manager remembered the conversations, but the file does not reflect them.</p>
 
@@ -268,7 +285,7 @@ a{color:inherit;text-decoration:none}
  </div>
 </div>
 
-<div class="section-head">AI-Assisted Interpretation</div>
+<h2 class="section-head">AI-Assisted Interpretation</h2>
 <div class="cat-label" style="color:var(--review-text);">Category 03: Generated Language &amp; Source Verification</div>
 <p class="section-sub">Exercises focused on the specific documentation risk introduced by AI drafting tools: confident conclusions without identifiable source support. The generated output reads with equal confidence whether the underlying notes are complete or fragmentary.</p>
 
@@ -302,7 +319,7 @@ a{color:inherit;text-decoration:none}
  </div>
 </div>
 
-<div class="section-head">Comparator Review</div>
+<h2 class="section-head">Comparator Review</h2>
 <div class="cat-label" style="color:var(--accent-dim);">Category 04: Consistency &amp; Treatment Disparity</div>
 <p class="section-sub">Exercises focused on whether similar records received consistent treatment. Comparator review applies when escalation patterns, documentation density, or outcome rationale differ across records that should be internally consistent.</p>
 
@@ -336,7 +353,7 @@ a{color:inherit;text-decoration:none}
  </div>
 </div>
 
-<div class="section-head">Reviewer Disagreement</div>
+<h2 class="section-head">Reviewer Disagreement</h2>
 <div class="cat-label" style="color:var(--accent-dim);">Category 05: Interpretation Divergence &amp; Threshold Variation</div>
 <p class="section-sub">Exercises focused on conditions where reviewers reach different conclusions from the same file. Disagreement typically emerges around escalation thresholds, contextual interpretation, and records where supporting documentation is present but incomplete.</p>
 
@@ -370,7 +387,7 @@ a{color:inherit;text-decoration:none}
  </div>
 </div>
 
-<div class="section-head">Reconstruction Review</div>
+<h2 class="section-head">Reconstruction Review</h2>
 <div class="cat-label" style="color:var(--muted-soft);">Category 06: Reconstructability</div>
 <p class="section-sub">Exercises focused on whether a later reviewer, working from the file alone, can independently reconstruct the basis, chronology, and reasoning of the original record. This is the core test of decision defensibility under JRS review conditions: whether the record can explain why the decision was made.</p>
 

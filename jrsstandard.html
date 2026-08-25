@@ -642,6 +642,25 @@ a.gumroad-button.util-link {
   .visitor-orient-cell{border-right:none;border-bottom:1px solid var(--rule);padding:12px 0;}
   .visitor-orient-cell:last-child{border-bottom:none;}
 }
+
+.h1-look{font-family:'Bodoni Moda',serif;font-weight:400;font-size:27px;margin:0 0 10px;line-height:1.25;color:var(--text);text-transform:none;letter-spacing:0;border:0;padding:0}
+
+/* MOBILE FIX PACK, 2026-08-25. Appended, never editing an existing rule.
+   1. Form fields at 16px. Below 16px iOS Safari zooms the whole page on focus
+      and the visitor lands mid-layout with no way back except pinching.
+   2. Tables scroll inside their own box instead of forcing the page sideways.
+   3. Tap targets reach 44px, the minimum a thumb hits reliably.
+   4. Long tokens wrap instead of pushing the body wider than the screen. */
+input,select,textarea{font-size:16px!important}
+table{display:block;overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+button,.btn,.cta-primary,input[type=submit]{min-height:44px}
+@media (max-width:640px){
+  body{overflow-x:hidden}
+  img,svg,video,pre{max-width:100%;height:auto}
+  pre,code{white-space:pre-wrap;word-break:break-word}
+  h1,.h1-look{font-size:23px;line-height:1.3}
+  .wrap,.container,.container-wide{padding-left:16px;padding-right:16px}
+}
 </style>
 </head>
 <body>
@@ -760,7 +779,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
- <div class="section-head">Overview</div>
+ <h2 class="section-head">Overview</h2>
  <p class="body-text">Most records are eventually read by someone who was not there. That person has the file. They do not have the context, the author, or the conversation that happened before it was written. What the file says is what they have to work with.</p>
  <p class="body-text">The conditions that make records difficult to reconstruct later are not usually the product of intentional falsification or misconduct. They develop through ordinary workflow pressures: personnel turnover that removes the people who understood a file, rushed review cycles that leave conclusions without visible anchors, distributed communications that never consolidate into the formal record, and delayed documentation entry that separates the observation from the written account. Well-intentioned personnel working under normal operational conditions routinely produce records that become difficult to interpret, defend, or reconstruct during later review. That is the problem this structure addresses.</p>
  <p class="body-text">Review is applied at the drafting stage, before records enter formal systems. The review checks whether conclusions are understandable, supportable, and reconstructable from the file alone.</p>
@@ -775,7 +794,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
- <div class="section-head">How Review Works</div>
+ <h2 class="section-head">How Review Works</h2>
  <p class="body-text" style="max-width:620px;">Review focuses on whether conclusions can be understood and reconstructed later from the record itself. The reviewer checks before finalization, not after escalation.</p>
  <div class="kit-flow" style="margin-top:16px;">
  <div class="kit-flow-step"><div class="kit-flow-num">1</div><div class="kit-flow-content"><div class="kit-flow-title">Draft prepared</div><div class="kit-flow-text">Manager, investigator, HR, or automated tool produces the record.</div></div></div>
@@ -799,7 +818,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
- <div class="section-head">Five Review Conditions</div>
+ <h2 class="section-head">Five Review Conditions</h2>
  <p class="body-text">Five conditions apply before a record enters an official system. They apply regardless of record type or how the document was drafted.</p>
  <p class="body-text" style="max-width:600px;">The underlying question across all five conditions is whether the record is independently reconstructable: whether a later reviewer, with no access to the original author, no institutional memory, and no supplementary explanation, can identify the basis for each conclusion from the file alone.</p>
  <div class="cond-grid">
@@ -813,7 +832,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
-  <div class="section-head">Review Lifecycle</div>
+  <h2 class="section-head">Review Lifecycle</h2>
   <p class="body-text" style="max-width:580px;">Applied at the pre-finalization stage, before records enter official systems. The review does not change the substance of the decision. It checks whether the basis is visible in the file.</p>
   <div style="margin-top:14px;border:1px solid var(--rule);overflow:hidden;">
     <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--rule);">
@@ -841,7 +860,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
-  <div class="section-head">Where JRS Fits</div>
+  <h2 class="section-head">Where JRS Fits</h2>
   <p class="body-text" style="max-width:580px;">Review is applied at the pre-finalization stage. The record passes through three layers before it enters the official system.</p>
   <div style="margin-top:14px;display:flex;gap:0;border:1px solid var(--rule);overflow:hidden;">
     <div style="flex:1;padding:16px;border-right:1px solid var(--rule);">
@@ -864,7 +883,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
- <div class="section-head">Typical Reviewer Routing</div>
+ <h2 class="section-head">Typical Reviewer Routing</h2>
  <p class="body-text" style="max-width:620px;">How a record moves through review depends on its risk level. Most records are self-reviewed by the drafter. Elevated-risk records route through a secondary check before system entry. In practice, routing often depends on who is available, not just what the policy says.</p>
  <div style="border:1px solid var(--rule);overflow:hidden;margin-top:16px;">
  <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--rule);">
@@ -893,7 +912,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
- <div class="section-head">Before Finalization, Ask</div>
+ <h2 class="section-head">Before Finalization, Ask</h2>
  <div style="border-top:1px solid var(--rule);">
  <div style="display:grid;grid-template-columns:52px 1fr;gap:14px;padding:18px 0;border-bottom:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-soft);">01</div><div><div style="font-size:14.5px;font-weight:600;margin-bottom:4px;color:var(--text);">Can this record stand on its own?</div><div style="font-size:14px;color:var(--muted);line-height:1.65;">Would a later reviewer understand the basis without relying on institutional memory or additional explanation?</div></div></div>
  <div style="display:grid;grid-template-columns:52px 1fr;gap:14px;padding:18px 0;border-bottom:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-soft);">02</div><div><div style="font-size:14.5px;font-weight:600;margin-bottom:4px;color:var(--text);">What specific evidence anchors this conclusion?</div><div style="font-size:14px;color:var(--muted);line-height:1.65;">Does the record identify specific dates, interactions, logs, or referenced documents? Verify that referenced files are actually attached before submission.</div></div></div>
@@ -904,7 +923,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
- <div class="section-head">Common Documentation Failures</div>
+ <h2 class="section-head">Common Documentation Failures</h2>
  <p class="body-text">These patterns are not unusual. They are the ordinary condition of most organizational records. The file looked complete when it was submitted. It looked complete because the person reading it at the time already knew what it meant.</p>
  <div class="reviewer-note" style="margin-bottom:8px;"><div class="reviewer-note-label">From practice</div>Most escalation files fail at the timeline level. Conduct is described. Dates are not. Without dates, the pattern cannot be independently established.</div>
  <div class="reviewer-note" style="margin-bottom:8px;"><div class="reviewer-note-label">From practice</div>Secondary review most often flags: evaluative adjectives without anchors, escalation without prior counseling trail, and AI summaries without source identification. Pattern claims missing dates are the most common single gap.</div>
@@ -916,7 +935,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
- <div class="section-head">Where JRS Fits</div>
+ <h2 class="section-head">Where JRS Fits</h2>
  <p class="body-text">JRS applies to organizational documentation used in employment, administrative, or compliance review processes. Typical record types:</p>
  <div style="margin-top:10px;border-top:1px solid var(--rule);">
  <div style="padding:11px 0;border-bottom:1px solid #222;font-size:15px;color:var(--text);">Performance Reviews and Evaluations</div>
@@ -930,7 +949,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
- <div class="section-head">Incremental Adoption</div>
+ <h2 class="section-head">Incremental Adoption</h2>
  <div style="border:1px solid var(--rule);padding:18px 20px;margin-bottom:14px;background:var(--surface);">
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
    <div style="display:flex;gap:10px;align-items:flex-start;"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent-dim);margin-top:2px;flex-shrink:0;">--</span><span style="font-size:13px;color:var(--muted);">No dedicated software required</span></div>
@@ -949,7 +968,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
- <div class="section-head">Practitioner References</div>
+ <h2 class="section-head">Practitioner References</h2>
  <p class="body-text">The following practitioner-oriented references are available as part of the public framework layer. Each is organized around a specific review function.</p>
  <div style="border-top:1px solid var(--rule);margin-top:12px;">
   <div style="display:grid;grid-template-columns:52px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--rule);">
@@ -985,7 +1004,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
-  <div class="section-head">Operational Components</div>
+  <h2 class="section-head">Operational Components</h2>
   <p class="body-text">The following materials are available across the public and Deployment Kit layers. Each is designed for practitioner use within existing review workflows.</p>
   <div style="border:1px solid var(--rule);overflow:hidden;margin-top:12px;">
     <div style="display:grid;grid-template-columns:1fr 1fr;">
@@ -1045,7 +1064,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
-  <div class="section-head">Audit Sampling Example</div>
+  <h2 class="section-head">Audit Sampling Example</h2>
   <p class="body-text">Periodic record sampling applies the failure-mode catalog to identify systemic documentation gaps across departments or record types.</p>
   <div style="border:1px solid var(--rule);overflow:hidden;margin-top:12px;">
     <div style="padding:10px 14px;border-bottom:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);">Sampling Finding  /  Supervisory Counseling Records  /  Q1</div>
@@ -1074,7 +1093,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
- <div class="section-head">What JRS Does Not Do</div>
+ <h2 class="section-head">What JRS Does Not Do</h2>
  <p class="body-text">A well-documented record can still reflect a bad decision. These are separate questions. JRS addresses whether the basis is visible in the file. It does not address whether the basis was sound.</p>
  <p class="body-text">JRS is an administrative quality-control structure. It is a review discipline applied at the drafting stage to improve documentation integrity within existing workflows. It is not a fraud-detection system, an investigative accusation framework, or an employee surveillance mechanism. The documentation conditions it addresses most often arise from ordinary workflow pressures, not from intentional conduct. Treating it as a punitive compliance regime would misstate both its purpose and its scope.</p>
  <div class="reviewer-note" style="margin-bottom:12px;"><div class="reviewer-note-label">Incomplete record example</div>Referenced counseling history unavailable at review. Escalation unsupported pending documentation. Record returned to drafter before system entry. This is what the file contained. This is what the next reviewer would have had. -- Secondary reviewer, 4/18/26</div>
@@ -1090,7 +1109,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
-  <div class="section-head">Review Operations Center</div>
+  <h2 class="section-head">Review Operations Center</h2>
   <p class="body-text">Pre-finalization review resources organized by function. Each row represents an operational layer within the review workflow.</p>
   <div style="border:1px solid var(--rule);overflow:hidden;margin-top:12px;">
 
@@ -1158,7 +1177,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
-  <div class="section-head">Operational Review Conditions</div>
+  <h2 class="section-head">Operational Review Conditions</h2>
   <p class="body-text">The five conditions evaluated in every pre-finalization review. Each condition includes common failure modes and the reviewer test applied at the drafting stage.</p>
   <div style="border:1px solid var(--rule);overflow:hidden;margin-top:12px;">
     <div style="border-bottom:1px solid var(--rule);">
@@ -1245,7 +1264,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
-  <div class="section-head">From Practice</div>
+  <h2 class="section-head">From Practice</h2>
   <p class="body-text">Observations from documentation review that reflect recurring patterns across record types and organizational contexts.</p>
   <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px;">
     <div style="border:1px solid var(--rule);padding:11px 15px 11px 18px;background:var(--surface);border-left:3px solid var(--accent-dim);">
@@ -1273,7 +1292,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
-  <div class="section-head">Later Review Conditions</div>
+  <h2 class="section-head">Later Review Conditions</h2>
   <p class="body-text" style="max-width:620px;">Records are most likely to fail independent reconstruction under specific later-review conditions. These are not exceptional circumstances. They are the common conditions under which organizational records are eventually examined.</p>
   <div style="border:1px solid var(--rule);overflow:hidden;margin-top:12px;">
     <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--rule);">
@@ -1305,7 +1324,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
-  <div class="section-head">Conditions That Commonly Complicate Later Review</div>
+  <h2 class="section-head">Conditions That Commonly Complicate Later Review</h2>
   <p class="body-text" style="max-width:620px;">These are not exceptional circumstances. They are the ordinary conditions under which organizational records deteriorate, compress, and become partially reconstructable across institutional time. A record that appears complete at drafting will encounter most of these conditions before it is reviewed by anyone outside the original workflow.</p>
   <div class="reviewer-note" style="margin-bottom:12px;"><div class="reviewer-note-label">Operational note</div>These conditions are observed, not corrective. They describe the reconstruction environment that most records eventually enter.</div>
   <div class="cond-grid">
@@ -1324,7 +1343,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
-  <div class="section-head">Document Version Reference</div>
+  <h2 class="section-head">Document Version Reference</h2>
   <p class="muted-text" style="margin-bottom:10px;">Current published documents as of May 2026. Additional practitioner references are expected to be added through the remainder of 2026.</p>
   <div style="border:1px solid var(--rule);overflow:hidden;margin-top:10px;">
     <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);background:var(--surface2);padding:7px 12px;" class="ver-hdr">
@@ -1422,7 +1441,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
-  <div class="section-head">Version Notes</div>
+  <h2 class="section-head">Version Notes</h2>
   <p class="muted-text" style="margin-bottom:14px;">Changes reflected in v1.0 documents and ongoing reference materials. This section is updated as practitioner references are revised or expanded.</p>
   <div style="border:1px solid var(--rule);overflow:hidden;">
     <div style="display:grid;grid-template-columns:88px 1fr;border-bottom:1px solid var(--rule);background:var(--surface2);">
@@ -1446,7 +1465,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
-  <div class="section-head">Operational FAQ</div>
+  <h2 class="section-head">Operational FAQ</h2>
   <div style="border-top:1px solid var(--rule);">
     <div style="padding:14px 0;border-bottom:1px solid var(--rule);"><div style="font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:5px;">Does implementation require a policy change?</div><div style="font-size:13px;color:var(--muted);line-height:1.6;">No. The review structure operates within existing workflows without requiring policy revisions, system changes, or dedicated software. It can be introduced as a reviewer reference before any formal adoption decision.</div></div>
     <div style="padding:14px 0;border-bottom:1px solid var(--rule);"><div style="font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:5px;">Which records should we start with?</div><div style="font-size:13px;color:var(--muted);line-height:1.6;">Termination records, accommodation documentation, and investigation conclusions are the strongest starting points. Performance records are the most common entry point for teams new to pre-finalization review.</div></div>
@@ -1459,13 +1478,13 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
- <div class="section-head">Disclaimers</div>
+ <h2 class="section-head">Disclaimers</h2>
  <p class="body-text">Not legal advice. Does not establish legal sufficiency or replace applicable policy obligations. Organizations should assess jurisdiction-specific requirements with legal counsel.</p>
  <p class="body-text">Workflow models, failure-mode examples, and implementation descriptions are illustrative. Adapt to organizational context.</p>
 </div>
 
 <div style="margin-bottom:44px;">
- <div class="section-head">Implementation Questions</div>
+ <h2 class="section-head">Implementation Questions</h2>
  <p class="body-text" style="max-width:600px;">Organizations evaluating phased implementation approaches, or with questions about applying the review structure within existing workflows, may request additional operational information.</p>
  <div style="border:1px solid var(--rule);padding:16px 20px;background:var(--surface);margin-top:12px;">
   <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:8px;">Scope of discussion</div>
@@ -1475,7 +1494,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:20px;">
- <div class="section-head">Access</div>
+ <h2 class="section-head">Access</h2>
  <div class="btn-row">
  <a href="/api/dl?e=standard&amp;src=jrsstandard" class="btn btn-primary">View Standard</a>
  <button class="btn btn-ghost" onclick="showSection('kit')">Operational References</button>
@@ -1490,7 +1509,7 @@ a.gumroad-button.util-link {
 <div class="container">
 
 <div class="page-eyebrow">Operational Reference</div>
-<h1 class="page-title">Documentation Conditions That Affect Later Review</h1>
+<h2 class="page-title h1-look">Documentation Conditions That Affect Later Review</h2>
 <p class="page-subtitle">Records are often reviewed long after the people who created them are unavailable. The following conditions describe how organizational documentation commonly becomes harder to interpret over time. Not through misconduct, but through the ordinary administrative realities of how records are created, maintained, and eventually examined.</p>
 
 <div class="callout" style="margin-bottom:32px;">
@@ -1499,7 +1518,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
-  <div class="section-head">Why Later Review Is Often Difficult</div>
+  <h2 class="section-head">Why Later Review Is Often Difficult</h2>
   <p class="body-text" style="max-width:640px;">Documentation quality is partially determined by reconstructability: whether a later reviewer, working from the file alone, can follow the same reasoning the original author used. That capacity erodes over time through ordinary administrative processes, not through exceptional circumstances.</p>
   <p class="body-text" style="max-width:640px;">A manager documents a counseling session from memory three days after it occurred, using language carried over from a prior performance note. An HR coordinator assembles a termination record from emails across two systems and a summary written by someone who has since left the organization. An investigator drafts a conclusion from interview summaries rather than the interview notes, which were not preserved in the case file. These are routine documentation conditions. They are not the product of bad intent. They are the product of how organizational work actually happens under ordinary operational pressures.</p>
   <p class="body-text" style="max-width:640px;">The concern is that ordinary workflow pressures gradually separate conclusions from identifiable supporting context over time. The record that enters the system reflects what the author was able to produce under those conditions. The record that is reviewed later is evaluated without access to those conditions or the people who worked within them.</p>
@@ -1507,7 +1526,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
-  <div class="section-head">The Ten Conditions</div>
+  <h2 class="section-head">The Ten Conditions</h2>
   <p class="body-text" style="max-width:620px;">Each condition is described in terms of how it develops, what it looks like during later review, and why it complicates independent reconstruction of the original evidentiary basis.</p>
 
   <div class="cond-grid">
@@ -1676,7 +1695,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
-  <div class="section-head">What These Conditions Have in Common</div>
+  <h2 class="section-head">What These Conditions Have in Common</h2>
   <p class="body-text" style="max-width:640px;">Each of the ten conditions above reflects a version of the same underlying problem. A record that reads coherently at drafting may not be independently reviewable at a later date by someone who was not present and does not have access to the original participants, the original source materials, or the institutional context in which the record was created.</p>
   <div style="border-top:1px solid var(--rule);margin-top:16px;">
     <div style="display:grid;grid-template-columns:44px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--rule);">
@@ -1703,7 +1722,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
-  <div class="section-head">Connection to Pre-Finalization Review</div>
+  <h2 class="section-head">Connection to Pre-Finalization Review</h2>
   <p class="body-text" style="max-width:640px;">The ten conditions above are not fully preventable. Some degree of timeline compression, system fragmentation, and institutional memory loss is present in most organizational records over time. The question is not whether these conditions will exist, but whether documentation practices at drafting reduce their impact on later reviewability.</p>
   <p class="body-text" style="max-width:640px;">Pre-finalization review applied within existing workflows addresses each of these conditions at the only point where they can be resolved without consequence: before the record enters the official system.</p>
   <div style="border:1px solid var(--rule);overflow:hidden;margin-top:16px;">
@@ -1782,7 +1801,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
-  <div class="section-head">Applicable Review Contexts</div>
+  <h2 class="section-head">Applicable Review Contexts</h2>
   <p class="body-text" style="max-width:640px;">These documentation conditions are relevant across the following review environments. In each context, records created earlier in an organizational process are examined by reviewers who were not present at the time of drafting and who depend on the written record to reconstruct the evidentiary basis for conclusions and decisions.</p>
   <div style="margin-top:14px;border-top:1px solid var(--rule);">
     <div style="padding:10px 0;border-bottom:1px solid var(--rule-soft);font-size:14.5px;color:var(--text);">HR review and employment documentation audit</div>
@@ -1799,7 +1818,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
-  <div class="section-head">Cumulative Operational Effect</div>
+  <h2 class="section-head">Cumulative Operational Effect</h2>
   <p class="body-text" style="max-width:640px;">Documentation failures rarely occur as isolated defects. A single missing date, an inherited characterization, a summary that replaced the original notes: any one of these, reviewed alone, may appear minor. The operational exposure develops through layered accumulation. When several of the ten conditions are present in the same record, or across a sequence of related records, reviewability degrades in ways that are difficult to identify from any single document and increasingly difficult to address the further the review moves from the original events.</p>
   <p class="body-text" style="max-width:640px;">The conditions that produce this accumulation are not usually the product of misconduct or intentional falsification. They are the product of how organizational documentation is actually created: under time pressure, by personnel who are managing multiple priorities, using inherited templates and prior language, across systems that do not communicate with each other, and in advance of events whose significance may not be apparent until much later. The concern is that these ordinary workflow realities can gradually separate conclusions from identifiable supporting context over time, in ways that become consequential during later review.</p>
 
@@ -1977,7 +1996,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
-  <div class="section-head">About This Reference</div>
+  <h2 class="section-head">About This Reference</h2>
   <p class="body-text" style="max-width:640px;">This reference is published as part of the JRS documentation review framework. It is intended for use within HR operational guidance, internal controls documentation, compliance review materials, audit support resources, investigation documentation guidance, and administrative review procedures.</p>
   <p class="body-text" style="max-width:640px;">JRS is a documentation review structure: a lightweight administrative control applied at the pre-finalization stage within existing workflows. It does not replace existing systems, policies, or professional judgment. It provides a structured method for improving record survivability and later review clarity before records enter official systems.</p>
   <div class="btn-row">
@@ -1996,7 +2015,7 @@ a.gumroad-button.util-link {
  <div class="kit-hero-inner">
  <div>
  <div class="kit-badge">Deployment Kit</div>
- <h1 class="kit-title">Operational onboarding.<br><span>Reviewer training.</span><br>Implementation resources.</h1>
+ <h2 class="kit-title h1-look">Operational onboarding.<br><span>Reviewer training.</span><br>Implementation resources.</h2>
  <p class="kit-subtitle">Operational onboarding, reviewer training, and implementation resources for applying JRS within existing documentation workflows. No dedicated platform required.</p>
  <div class="kit-tagline">Operational. Procedural. Implementation-focused.</div>
  <div class="kit-features">
@@ -2177,7 +2196,7 @@ a.gumroad-button.util-link {
 <div id="section-tools" class="page-section">
 <div class="container">
 <div class="page-eyebrow">Field References</div>
-<h1 class="page-title">Pre-Submission Review Worksheets</h1>
+<h2 class="page-title h1-look">Pre-Submission Review Worksheets</h2>
 <p class="page-subtitle">Applied at the drafting stage, before records enter official systems. No software required. Works within existing HR, compliance, and investigation workflows.</p>
 <div class="callout"><div class="callout-label">Usage Note</div><p>These tools structure the questions a later reviewer would ask. Apply the relevant worksheet before submitting documentation into any official system of record.</p></div>
 <div style="margin-top:14px;margin-bottom:0;border:1px solid var(--rule);padding:14px 16px;background:var(--surface);">
@@ -2348,7 +2367,7 @@ a.gumroad-button.util-link {
 <hr class="section-rule">
 
 <div style="margin-bottom:44px;">
-  <div class="section-head">Administrative Intake Conditions</div>
+  <h2 class="section-head">Administrative Intake Conditions</h2>
   <p class="body-text" style="max-width:620px;">Conditions commonly present at intake review that affect the completeness and reconstructability of records entering the review structure. These conditions are routine rather than exceptional. They reflect the practical environment in which most intake review occurs.</p>
   <div class="reviewer-note" style="margin-bottom:10px;"><div class="reviewer-note-label">Intake note</div>Escalation chronology partially reconstructed from available records. Intake characterization retained from prior summary. Underlying intake notes not preserved at secondary review stage.</div>
   <div class="cond-grid">
@@ -2363,7 +2382,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
-  <div class="section-head">Investigator Review Limitations</div>
+  <h2 class="section-head">Investigator Review Limitations</h2>
   <p class="body-text" style="max-width:620px;">Conditions that affect the completeness of investigative records at the point of secondary or later review. These limitations are routine in investigation review environments. They do not indicate procedural failure. They reflect the ordinary conditions under which investigative records are assembled and later examined.</p>
   <div class="reviewer-note" style="margin-bottom:10px;"><div class="reviewer-note-label">Secondary review note</div>Underlying intake notes unavailable during secondary review. Chronology reconstructed from separate interview summaries. Witness terminology inconsistently summarized across accounts. Escalation rationale partially inferred from later notes. Supporting attachments unavailable at this stage of review.</div>
   <div style="border-top:1px solid var(--rule);margin-top:12px;">
@@ -2397,7 +2416,7 @@ a.gumroad-button.util-link {
 <div id="section-scenarios" class="page-section">
 <div class="container">
 <div class="page-eyebrow">Review Examples</div>
-<h1 class="page-title">Review Examples</h1>
+<h2 class="page-title h1-look">Review Examples</h2>
 <p class="page-subtitle">Records as they commonly arrive for review. Each scenario shows the original record, the reviewer analysis identifying gaps, and a supported revision.</p>
 <div class="callout"><div class="callout-label">How to Use</div><p>Select the record type. Use the tabs to move between the original record, the review analysis, and the supported revision.</p></div>
 
@@ -2496,7 +2515,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-top:36px;">
-<div class="section-head">Reviewer Walkthroughs</div>
+<h2 class="section-head">Reviewer Walkthroughs</h2>
 <p class="body-text">Full walkthrough sequences showing a record as received, reviewer analysis, escalation routing where indicated, supported revision, and disposition. Each reflects documentation patterns that appear routinely in organizational review.</p>
 <div style="margin-bottom:20px;border:1px solid var(--rule);overflow:hidden;">
   <div style="padding:9px 15px;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;background:var(--surface2);">
@@ -2615,7 +2634,7 @@ a.gumroad-button.util-link {
 </div></div>
 
 <div style="margin-top:36px;">
-<div class="section-head">Expanded Redlined Library</div>
+<h2 class="section-head">Expanded Redlined Library</h2>
 <p class="body-text">Additional before-and-after documentation examples covering escalation failures, timeline reconstruction gaps, and unsupported policy references.</p>
 
 <div style="margin-bottom:16px;">
@@ -2698,7 +2717,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-top:36px;">
-<div class="section-head">Investigator Review Scenarios</div>
+<h2 class="section-head">Investigator Review Scenarios</h2>
 <p class="body-text">Documentation review scenarios for workplace investigations, EEO intake, and administrative inquiry records. Each shows the reconstruction question, source identification, and evidentiary anchoring as applied before investigation conclusions are filed.</p>
 
 <div style="border:1px solid var(--rule);overflow:hidden;margin-bottom:16px;">
@@ -2750,7 +2769,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-top:24px;">
-<div class="section-head">Conflicting Account Preservation</div>
+<h2 class="section-head">Conflicting Account Preservation</h2>
 <p class="body-text">Where accounts conflict, the conflict should remain visible in the record. Resolving conflicts through omission creates a gap that surfaces during later review.</p>
 <div style="border:1px solid var(--rule);overflow:hidden;margin-top:12px;">
   <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule);">
@@ -2769,7 +2788,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-top:36px;">
-<div class="section-head">Failure Pattern Libraries</div>
+<h2 class="section-head">Failure Pattern Libraries</h2>
 <p class="body-text">Categorized documentation failure patterns organized by type. Each pattern represents a recurring gap identified across review contexts.</p>
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;">
@@ -2839,7 +2858,7 @@ a.gumroad-button.util-link {
 <hr class="section-rule">
 
 <div style="margin-top:0;">
-<div class="section-head">Narrative Harmonization Examples</div>
+<h2 class="section-head">Narrative Harmonization Examples</h2>
 <p class="body-text" style="max-width:620px;">Narrative harmonization occurs when conflicting accounts, ambiguous evidence, or uncertainty are resolved during summary drafting in ways that are not visible in the filed record. The following examples illustrate what harmonized records look like versus records that preserve the underlying complexity.</p>
 <div class="reviewer-note" style="margin-bottom:10px;"><div class="reviewer-note-label">Reconstruction note</div>Harmonized records read more coherently than their source materials. That coherence is often the problem. A later reviewer reads a unified account and does not know what was contested.</div>
 
@@ -2912,7 +2931,7 @@ a.gumroad-button.util-link {
 <div id="section-guidance" class="page-section">
 <div class="container">
 <div class="page-eyebrow">Implementation Guidance</div>
-<h1 class="page-title">Workflow Implementation</h1>
+<h2 class="page-title h1-look">Workflow Implementation</h2>
 <p class="page-subtitle">Operational guidance for integrating JRS review practices within existing HR, compliance, investigation, and administrative documentation workflows.</p>
 
 <div class="memo">
@@ -2967,7 +2986,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-top:36px;">
-<div class="section-head">Implementation Case Examples</div>
+<h2 class="section-head">Implementation Case Examples</h2>
 <p class="body-text">Illustrative scenarios showing how JRS review practices are introduced within existing organizational workflows. Each reflects an incremental adoption path rather than a formal rollout.</p>
 
 <div style="border:1px solid var(--rule);overflow:hidden;margin-bottom:14px;">
@@ -3034,7 +3053,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-top:36px;">
-<div class="section-head">Expanded Audit Sampling</div>
+<h2 class="section-head">Expanded Audit Sampling</h2>
 <p class="body-text">Periodic record sampling identifies systemic documentation gaps. The following illustrates findings from three sampling periods.</p>
 <div style="border:1px solid var(--rule);overflow:hidden;margin-bottom:10px;">
   <div style="padding:8px 14px;border-bottom:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);background:var(--surface2);">Q1  /  Supervisory Counseling Records  /  12 Records  /  3 Departments</div>
@@ -3064,7 +3083,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-top:36px;">
-<div class="section-head">Implementation Maturity Stages</div>
+<h2 class="section-head">Implementation Maturity Stages</h2>
 <p class="body-text">These stages are descriptive, not prescriptive. Organizations may operate at different stages across record types simultaneously.</p>
 <div style="border:1px solid var(--rule);overflow:hidden;margin-top:12px;">
   <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--rule);">
@@ -3093,7 +3112,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-top:36px;">
-<div class="section-head">Reviewer Role Structures</div>
+<h2 class="section-head">Reviewer Role Structures</h2>
 <p class="body-text">Review responsibility varies by record type and risk level. The following describes the primary reviewer roles and their scope.</p>
 <div style="border:1px solid var(--rule);overflow:hidden;margin-top:12px;">
   <div style="border-bottom:1px solid var(--rule);">
@@ -3160,7 +3179,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-top:36px;">
-<div class="section-head">Operational Constraints</div>
+<h2 class="section-head">Operational Constraints</h2>
 <p class="body-text">Documentation review operates under real organizational conditions. The following acknowledges common constraints without eliminating the requirement for identifiable support.</p>
 <div style="border:1px solid var(--rule);overflow:hidden;margin-top:12px;">
   <div style="display:grid;grid-template-columns:160px 1fr;border-bottom:1px solid var(--rule);">
@@ -3188,7 +3207,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-top:36px;">
-<div class="section-head">Department Implementation Examples</div>
+<h2 class="section-head">Department Implementation Examples</h2>
 <p class="body-text">How review practices integrate within different organizational functions. Each reflects a realistic entry point and operational workflow.</p>
 <div style="border:1px solid var(--rule);overflow:hidden;margin-top:10px;">
   <div style="padding:9px 14px;border-bottom:1px solid var(--rule);background:var(--surface2);display:flex;justify-content:space-between;align-items:center;">
@@ -3258,7 +3277,7 @@ a.gumroad-button.util-link {
 <div id="section-roles" class="page-section">
 <div class="container">
 <div class="page-eyebrow">Role-Based Environments</div>
-<h1 class="page-title">Review Environments</h1>
+<h2 class="page-title h1-look">Review Environments</h2>
 <p class="page-subtitle">Documentation review responsibilities, common failure patterns, reconstruction questions, and escalation indicators organized by practitioner role. Each environment reflects the documentation context specific to that function.</p>
 <div id="roles-menu">
  <div class="role-grid">
@@ -3280,7 +3299,7 @@ a.gumroad-button.util-link {
 <div id="section-maturity" class="page-section">
 <div class="container">
 <div class="page-eyebrow">Review Maturity Framework</div>
-<h1 class="page-title">Implementation Maturity Levels</h1>
+<h2 class="page-title h1-look">Implementation Maturity Levels</h2>
 <p class="page-subtitle">Organizations apply JRS at varying levels of integration depending on documentation sensitivity, organizational structure, and available staffing. These levels are illustrative rather than prescriptive.</p>
 <div class="callout"><div class="callout-label">Operational Note</div><p>Review depth varies in practice. These levels identify where secondary review is required, not where it always occurs. Organizations typically operate across multiple levels simultaneously depending on record type.</p></div>
 <div class="maturity-track" style="margin-top:24px;">
@@ -3298,19 +3317,19 @@ a.gumroad-button.util-link {
 <div id="section-ai" class="page-section">
 <div class="container">
 <div class="page-eyebrow">AI-Assisted Review</div>
-<h1 class="page-title">AI-Assisted Documentation Review</h1>
+<h2 class="page-title h1-look">AI-Assisted Documentation Review</h2>
 <p class="page-subtitle">Source verification and reconstruction review for records where AI tools contributed to drafting. Applied at the pre-submission stage, before records enter official systems.</p>
 <div class="callout"><div class="callout-label">Review Standard</div><p>The review conditions apply regardless of how a record was drafted. What matters is whether the supporting basis can be identified by someone reading the file later, without the original author available to explain it.</p></div>
 
 <div style="margin-top:32px;">
-<div class="section-head">Semantic Inflation</div>
+<h2 class="section-head">Semantic Inflation</h2>
 <p class="body-text">AI-assisted drafting may introduce language that appears procedurally complete despite limited underlying evidentiary support. A generated record can read smoothly and confidently while containing characterizations absent from, or inconsistent with, the original source notes.</p>
 <p class="body-text">Common patterns: qualified language in source notes becomes declarative in the generated record; general impressions are stated as findings; conflicts or gaps in source material are smoothed over rather than preserved.</p>
 <div class="reviewer-note" style="margin-bottom:24px;"><div class="reviewer-note-label">Reviewer test</div>If the source notes were removed, would the record still appear equally well-supported? If yes, the record may contain semantic inflation. The supporting basis exists in the wording but not in the underlying file.</div>
 <div class="callout" style="margin-bottom:24px;"><div class="callout-label">Source-Path Visibility</div><p>The relevant question for AI-assisted records is whether a later reviewer can trace the path from conclusion to identified source material. Not whether the record sounds accurate. Whether the path is visible. Confident language is not the same as a traceable source path. Records that provide the first without the second do not satisfy Condition IV.</p></div>
 </div>
 
-<div style="margin-top:0;"><div class="section-head">How AI-Assisted Records Fail Review</div>
+<div style="margin-top:0;"><h2 class="section-head">How AI-Assisted Records Fail Review</h2>
 <div class="cond-grid">
  <div class="cond-row"><div class="cond-num" style="font-size:13px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:5px;">R1</div><div><div class="cond-title">Drafting vs. Attesting</div><div class="cond-text">A tool may assist in drafting. Only a human reviewer can attest that what the record says is grounded in the source material. The wording can sound accurate while the evidentiary support is absent.</div></div></div>
  <div class="cond-row"><div class="cond-num" style="font-size:13px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:5px;">R2</div><div><div class="cond-title">Unsupported Characterization</div><div class="cond-text">AI-generated characterizations must be anchored to specific documented observations before the document enters an official system. Phrases like "appeared resistant" or "uncooperative behavior" are evaluative, not evidentiary.</div></div></div>
@@ -3321,7 +3340,7 @@ a.gumroad-button.util-link {
 </div></div>
 
 <hr class="section-rule">
-<div class="section-head">AI Escalation Indicators</div>
+<h2 class="section-head">AI Escalation Indicators</h2>
 <p class="body-text">The following patterns require secondary review before system entry:</p>
 <div class="list-block">
  <div class="list-item"><span class="list-dash">--</span>AI-generated characterizations without identified behavioral anchors</div>
@@ -3341,7 +3360,7 @@ a.gumroad-button.util-link {
 <div id="section-usecases" class="page-section">
 <div class="container">
 <div class="page-eyebrow">Use Cases</div>
-<h1 class="page-title">Operational Use Cases</h1>
+<h2 class="page-title h1-look">Operational Use Cases</h2>
 <p class="page-subtitle">Documentation review as it applies in specific operational contexts. Each use case identifies the record type, review applied, common gaps encountered, and what the file needs to hold up during later review.</p>
 
 <div class="scenario-block" style="margin-top:28px;">
@@ -3392,7 +3411,7 @@ a.gumroad-button.util-link {
  </div>
 </div>
 <div style="margin-top:36px;">
-<div class="section-head">AI-Assisted Review Verification Flow</div>
+<h2 class="section-head">AI-Assisted Review Verification Flow</h2>
 <p class="body-text">Sequential review steps applied before AI-assisted content enters an official system of record.</p>
 <div style="border:1px solid var(--rule);overflow:hidden;margin-top:12px;">
   <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--rule);">
@@ -3419,7 +3438,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-top:36px;">
-<div class="section-head">Escalation Routing Flow</div>
+<h2 class="section-head">Escalation Routing Flow</h2>
 <p class="body-text">Decision routing when a high-risk indicator is identified during pre-finalization review.</p>
 <div style="border:1px solid var(--rule);overflow:hidden;margin-top:12px;">
   <div style="padding:10px 15px;border-bottom:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);">Trigger Identified During Reviewer Verification</div>
@@ -3442,7 +3461,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-top:36px;">
-<div class="section-head">Investigation Review Flow</div>
+<h2 class="section-head">Investigation Review Flow</h2>
 <p class="body-text">Sequential review steps applied to investigation records before conclusions are filed.</p>
 <div style="border:1px solid var(--rule);overflow:hidden;margin-top:12px;">
   <div style="display:flex;align-items:stretch;border-bottom:1px solid var(--rule);"><div style="background:var(--surface2);padding:11px 14px;min-width:28px;border-right:1px solid var(--rule);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">1</div><div style="padding:11px 15px;"><span style="font-size:13px;font-weight:600;color:var(--text);">Complaint Intake</span><span style="font-size:12px;color:var(--muted);margin-left:10px;">Intake documented. Parties, allegations, and dates recorded before investigation opens.</span></div></div>
@@ -3523,11 +3542,11 @@ a.gumroad-button.util-link {
 <div id="section-library" class="page-section">
 <div class="container">
 <div class="page-eyebrow">Document Architecture</div>
-<h1 class="page-title">JRS Document Architecture</h1>
+<h2 class="page-title h1-look">JRS Document Architecture</h2>
 <p class="page-subtitle">The JRS documentation review structure is organized across a defined document hierarchy. Each layer serves a distinct function within the review structure. Materials are listed by tier, with access links where available.</p>
 
 <div style="margin-bottom:36px;">
-  <div class="section-head">Tier 1: Core Standard</div>
+  <h2 class="section-head">Tier 1: Core Standard</h2>
   <p class="muted-text" style="margin-bottom:14px;">The governing document. Establishes the five review conditions, the review logic, and the minimum standard for pre-finalization documentation review.</p>
   <div style="border:1px solid var(--rule);overflow:hidden;">
     <div style="display:grid;grid-template-columns:140px 1fr 80px;border-bottom:1px solid var(--rule);background:var(--surface2);padding:7px 14px;">
@@ -3544,7 +3563,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:36px;">
-  <div class="section-head">Tier 2: Reference Guides</div>
+  <h2 class="section-head">Tier 2: Reference Guides</h2>
   <p class="muted-text" style="margin-bottom:14px;">Implementation references that apply the core review conditions to specific operational contexts. Each reference addresses a defined reviewer role or record environment.</p>
   <div style="border:1px solid var(--rule);overflow:hidden;">
     <div style="display:grid;grid-template-columns:140px 1fr 80px;border-bottom:1px solid var(--rule);background:var(--surface2);padding:7px 14px;">
@@ -3576,7 +3595,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:36px;">
-  <div class="section-head">Tier 3: Implementation Guidance</div>
+  <h2 class="section-head">Tier 3: Implementation Guidance</h2>
   <p class="muted-text" style="margin-bottom:14px;">Operational materials supporting workflow integration, reviewer onboarding, and deployment within existing documentation environments.</p>
   <div style="border:1px solid var(--rule);overflow:hidden;">
     <div style="display:grid;grid-template-columns:140px 1fr 80px;border-bottom:1px solid var(--rule);background:var(--surface2);padding:7px 14px;">
@@ -3603,7 +3622,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:36px;">
-  <div class="section-head">Tier 4: Reviewer Checklists</div>
+  <h2 class="section-head">Tier 4: Reviewer Checklists</h2>
   <p class="muted-text" style="margin-bottom:14px;">Structured review prompts organized by record type and review context. Applied at the pre-finalization stage within existing workflows.</p>
   <div style="border:1px solid var(--rule);overflow:hidden;">
     <div style="display:grid;grid-template-columns:140px 1fr 80px;border-bottom:1px solid var(--rule);background:var(--surface2);padding:7px 14px;">
@@ -3646,7 +3665,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:36px;">
-  <div class="section-head">Tier 5: Escalation Matrix</div>
+  <h2 class="section-head">Tier 5: Escalation Matrix</h2>
   <p class="muted-text" style="margin-bottom:14px;">Secondary review routing criteria organized by record type and indicator category. Applied when primary review identifies conditions that require elevated review before system entry.</p>
   <div style="border:1px solid var(--rule);overflow:hidden;">
     <div style="display:grid;grid-template-columns:1fr 1fr 100px;border-bottom:1px solid var(--rule);background:var(--surface2);padding:7px 14px;">
@@ -3694,7 +3713,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:36px;">
-  <div class="section-head">Tier 6: Audit Sampling Reference</div>
+  <h2 class="section-head">Tier 6: Audit Sampling Reference</h2>
   <p class="muted-text" style="margin-bottom:14px;">Guidance for periodic documentation quality sampling across record populations. Applied by compliance and audit personnel to identify recurring insufficiency patterns at the department or workflow level.</p>
   <div style="border:1px solid var(--rule);overflow:hidden;">
     <div style="padding:10px 15px;border-bottom:1px solid var(--rule);background:var(--surface2);font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);">Sampling approach</div>
@@ -3720,7 +3739,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:36px;">
-  <div class="section-head">Tier 7: Definitions</div>
+  <h2 class="section-head">Tier 7: Definitions</h2>
   <p class="muted-text" style="margin-bottom:14px;">Operative terms used consistently across JRS documents. Where a term is used in a specific sense within the review structure, that usage is noted.</p>
   <div style="border-top:1px solid var(--rule);">
     <div style="display:grid;grid-template-columns:180px 1fr;padding:11px 0;border-bottom:1px solid var(--rule);gap:16px;">
@@ -3767,7 +3786,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:36px;">
-  <div class="section-head">Tier 8: Change Control and Version History</div>
+  <h2 class="section-head">Tier 8: Change Control and Version History</h2>
   <p class="muted-text" style="margin-bottom:14px;">Version history for the JRS review reference and associated methodology documents. Changes are documented at the document level. Deployment Kit contents are versioned separately.</p>
   <div style="border:1px solid var(--rule);overflow:hidden;">
     <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);background:var(--surface2);padding:7px 12px;" class="ver-hdr">
@@ -3831,7 +3850,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:20px;">
-  <div class="section-head">Review Scenarios and Use Cases</div>
+  <h2 class="section-head">Review Scenarios and Use Cases</h2>
   <div class="library-grid">
   <div class="library-item"><div class="library-item-info"><div class="library-item-label">Interactive Scenarios</div><div class="library-item-title">Documentation Review Scenarios</div><div class="library-item-desc">Annotated review sequences: performance documentation, AI-assisted summary review, termination record review, investigation reconstruction.</div></div><div class="library-item-action"><button class="lib-btn" onclick="showSection('scenarios')">Open</button></div></div>
   <div class="library-item"><div class="library-item-info"><div class="library-item-label">Use Cases</div><div class="library-item-title">Operational Use Cases</div><div class="library-item-desc">Documentation review applied to HR corrective action, AI-assisted documentation review, and audit preparation contexts.</div></div><div class="library-item-action"><button class="lib-btn" onclick="showSection('usecases')">Open</button></div></div>
@@ -3845,18 +3864,18 @@ a.gumroad-button.util-link {
 <div id="section-about" class="page-section">
 <div class="container">
 <div class="page-eyebrow">About</div>
-<h1 class="page-title">About JRS</h1>
+<h2 class="page-title h1-look">About JRS</h2>
 <p class="page-subtitle">What JRS is, what problem it addresses, and what it is not.</p>
 
 <div style="margin-bottom:44px;">
- <div class="section-head">What JRS Is</div>
+ <h2 class="section-head">What JRS Is</h2>
  <p class="body-text">JRS is a pre-finalization review standard that evaluates whether a record can explain why a consequential decision was made: the basis, reasoning, evidence, and chronology, before the record is finalized. It is applied at the pre-finalization stage, before records enter official systems.</p>
  <p class="body-text">The standard addresses a specific problem: Decision Reconstruction Risk. When a consequential decision is questioned long after it is made, the record becomes the only witness, and it is examined by people who were not present when it was created. When that later review occurs, the record must stand on its own. The basis for the decision must be recoverable from the file without access to the original author, institutional memory, or supplementary explanation.</p>
  <p class="body-text">JRS provides a structured set of questions and review conditions that a drafter or reviewer can apply before submission. No dedicated software is required. The structure is designed for use within existing HR, compliance, investigation, and administrative review workflows.</p>
 </div>
 
 <div style="margin-bottom:44px;">
- <div class="section-head">What Problem It Addresses</div>
+ <h2 class="section-head">What Problem It Addresses</h2>
  <p class="body-text">Organizational records often fail during later review not because decisions were wrong, but because documentation was insufficient. Conclusions are stated without identifiable support. Dates are missing. Behavioral claims use evaluative language without observable anchors. Referenced records are not attached. AI-assisted summaries introduce characterizations not present in the source notes.</p>
  <p class="body-text">These conditions develop through ordinary workflow pressures, not through intentional falsification or misconduct. Personnel turnover removes the people who understood a file. Rushed review cycles leave conclusions without visible anchors. Distributed communications across email, case management systems, and shared drives never consolidate into the formal record. Delayed documentation entry separates the observation from the written account. Prior language is copied forward without verification. Summaries replace source materials and are then treated as the primary record. Evolving narratives across departments produce inconsistent characterizations that are inherited rather than resolved.</p>
  <p class="body-text">The result is that well-intentioned personnel working under normal operational conditions routinely produce records that become difficult to interpret, defend, or reconstruct during later review. That is the problem this structure addresses. It is an administrative problem, not a misconduct problem. It requires an administrative response, not an investigative one.</p>
@@ -3865,7 +3884,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
- <div class="section-head">Where It Applies</div>
+ <h2 class="section-head">Where It Applies</h2>
  <p class="body-text">JRS applies to organizational documentation used in employment, administrative, or compliance review processes. It is designed for use within existing workflows and does not require replacement of existing systems or procedures.</p>
  <div style="border:1px solid var(--rule);overflow:hidden;margin-top:12px;">
   <div style="display:grid;grid-template-columns:1fr 1fr;">
@@ -3890,7 +3909,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
- <div class="section-head">What JRS Is Not</div>
+ <h2 class="section-head">What JRS Is Not</h2>
  <div style="border-top:1px solid var(--rule);">
   <div style="padding:12px 0;border-bottom:1px solid #222;font-size:14.5px;color:var(--text);">Not a fraud-detection system or misconduct indicator. JRS identifies documentation conditions, not intent. The conditions it addresses most commonly arise from ordinary workflow pressures, not from deliberate falsification.</div>
   <div style="padding:12px 0;border-bottom:1px solid #222;font-size:14.5px;color:var(--text);">Not an investigative or accusation framework. Pre-finalization review returns records to drafters for clarification. It does not investigate individuals or make findings about conduct.</div>
@@ -3905,7 +3924,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
- <div class="section-head">Development</div>
+ <h2 class="section-head">Development</h2>
  <p class="body-text">Developed by Phillip Wikes, M.S., drawing from experience in administrative review, investigations, and documentation assessment within regulated environments. The review structure reflects recurring documentation failure patterns observed across organizational review contexts, with particular attention to records that appeared complete at drafting but failed during later review.</p>
  <p class="body-text" style="max-width:600px;">JRS v1.0 was published in May 2026. The review structure evolves incrementally through operational use rather than through theoretical expansion.</p>
  <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;">
@@ -3916,7 +3935,7 @@ a.gumroad-button.util-link {
 </div>
 
 <div style="margin-bottom:44px;">
- <div class="section-head">Administrative Notes</div>
+ <h2 class="section-head">Administrative Notes</h2>
  <div style="border:1px solid var(--rule);padding:18px 20px;background:var(--surface);">
   <div style="font-size:13.5px;color:var(--muted);line-height:1.85;">
    JRS&#8482; and Justification Review Standard&#8482; are trademarks of Phillip Wikes.<br>
@@ -3982,19 +4001,19 @@ function toggleMaturity(header){
 // ── ROLE ENVIRONMENTS ─────────────────────────────
 const ROLE_ENVS={
  hr:{title:'HR Reviewer',sub:'Environment 01',content:`
- <div class="section-head">Review Responsibilities</div>
+ <h2 class="section-head">Review Responsibilities</h2>
  <div class="list-block">
  <div class="list-item"><span class="list-dash">--</span>Review performance, disciplinary, termination, and accommodation records before system entry</div>
  <div class="list-item"><span class="list-dash">--</span>Apply the Secondary Review Checklist for elevated-risk records</div>
  <div class="list-item"><span class="list-dash">--</span>Route records showing high-risk indicators back to drafter before system entry</div>
  </div>
- <div class="section-head" style="margin-top:24px;">Common Failure Patterns</div>
+ <h2 class="section-head" style="margin-top:24px;">Common Failure Patterns</h2>
  <div class="failure-block"><div class="failure-head">Termination Without Prior Record References</div><div class="failure-cols"><div class="failure-col"><div class="failure-col-label">Insufficient</div><div class="failure-bad">"Employee terminated due to ongoing performance issues."</div></div><div class="failure-col"><div class="failure-col-label">Required</div><div class="failure-good">References to specific PIPs, counseling dates, warning records, and HR review completion date.</div></div></div></div>
  <div class="callout callout-warn" style="margin-top:16px;"><div class="callout-label">Secondary Review Required</div><p>Termination documentation, accommodation disputes, formal disciplinary actions, and AI-assisted summaries without attestation require secondary HR review before system entry.</p></div>
  `},
  investigator:{title:'Investigator',sub:'Environment 02',content:`
  <div style="margin-bottom:14px;"><a href="/api/dl?f=JRS_Investigator_Field_Guide.pdf&amp;src=jrsstandard" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px solid rgba(190,148,71,.4);padding:5px 12px;display:inline-block;">Download Investigator Field Guide, Combined Overview (PDF)</a></div>
- <div class="section-head">Review Responsibilities</div>
+ <h2 class="section-head">Review Responsibilities</h2>
  <div class="list-block">
  <div class="list-item"><span class="list-dash">--</span>Identify source materials reviewed during investigation in the record</div>
  <div class="list-item"><span class="list-dash">--</span>Acknowledge conflicting accounts and evidentiary limits in conclusions</div>
@@ -4004,7 +4023,7 @@ const ROLE_ENVS={
  <div class="callout" style="margin-top:16px;"><div class="callout-label">Conflict Acknowledgment</div><p>Records that present a clean narrative where source material contains disputes do not satisfy Condition III. Conflicting accounts must be preserved, not resolved by omission.</p></div>
  `},
  compliance:{title:'Compliance Reviewer',sub:'Environment 03',content:`
- <div class="section-head">Review Responsibilities</div>
+ <h2 class="section-head">Review Responsibilities</h2>
  <div class="list-block">
  <div class="list-item"><span class="list-dash">--</span>Evaluate compliance records for policy traceability and documented reasoning</div>
  <div class="list-item"><span class="list-dash">--</span>Conduct periodic audit sampling using the failure-mode catalog</div>
@@ -4013,7 +4032,7 @@ const ROLE_ENVS={
  <p class="body-text" style="margin-top:16px;">Sampling often surfaces patterns across departments where documentation quality is consistently low. Results inform workflow intervention priorities, not individual personnel actions. The review evaluates process quality, not decision correctness.</p>
  `},
  manager:{title:'Manager / Supervisor',sub:'Environment 04',content:`
- <div class="section-head">Review Responsibilities</div>
+ <h2 class="section-head">Review Responsibilities</h2>
  <div class="list-block">
  <div class="list-item"><span class="list-dash">--</span>Apply the Manager Self-Review Prompt Sheet before submitting documentation into HR systems</div>
  <div class="list-item"><span class="list-dash">--</span>Document behavioral observations at or near the time they occur</div>
@@ -4023,7 +4042,7 @@ const ROLE_ENVS={
  <div class="callout" style="margin-top:16px;"><div class="callout-label">Operational Note</div><p>The review structure is intended to improve documentation clarity and reviewability. A brief, specific, dated record is substantially more usable during later review than an extended evaluative narrative without behavioral anchors.</p></div>
  `},
  audit:{title:'Audit Reviewer',sub:'Environment 05',content:`
- <div class="section-head">Review Responsibilities</div>
+ <h2 class="section-head">Review Responsibilities</h2>
  <div class="list-block">
  <div class="list-item"><span class="list-dash">--</span>Sample organizational records using the failure-mode catalog</div>
  <div class="list-item"><span class="list-dash">--</span>Operate independently of the drafting chain for sampled records</div>
@@ -4032,14 +4051,14 @@ const ROLE_ENVS={
  <p class="body-text" style="margin-top:16px;">Sampling results evaluate process quality, not decision correctness. Findings identify where documentation gaps are systemic and where workflow intervention is warranted.</p>
  `},
  'admin':{title:'Administrative Reviewer',sub:'Environment 07',content:`
-  <div class="section-head">Review Responsibilities</div>
+  <h2 class="section-head">Review Responsibilities</h2>
   <div class="list-block">
    <div class="list-item"><span class="list-dash">--</span>Review administrative employment actions before formal processing</div>
    <div class="list-item"><span class="list-dash">--</span>Confirm supporting documentation is referenced and on file</div>
    <div class="list-item"><span class="list-dash">--</span>Apply reconstruction check before records enter official systems</div>
    <div class="list-item"><span class="list-dash">--</span>Route elevated-risk records for secondary HR or legal review</div>
   </div>
-  <div class="section-head" style="margin-top:24px;">Common Failure Patterns</div>
+  <h2 class="section-head" style="margin-top:24px;">Common Failure Patterns</h2>
   <div class="list-block">
    <div class="list-item"><span class="list-dash">--</span>Action documentation references prior process without identifying specific records</div>
    <div class="list-item"><span class="list-dash">--</span>Accommodation records missing interactive process documentation</div>
@@ -4048,14 +4067,14 @@ const ROLE_ENVS={
   <div class="callout" style="margin-top:16px;"><div class="callout-label">Key Check</div><p>If someone reads this file six months from now with no context, can they identify what happened, why the action was taken, and what documentation supported it?</p></div>
  `},
  'intake':{title:'Intake Reviewer',sub:'Environment 08',content:`
-  <div class="section-head">Review Responsibilities</div>
+  <h2 class="section-head">Review Responsibilities</h2>
   <div class="list-block">
    <div class="list-item"><span class="list-dash">--</span>First-line review at document intake before routing or system entry</div>
    <div class="list-item"><span class="list-dash">--</span>Identify high-risk indicators that require secondary review</div>
    <div class="list-item"><span class="list-dash">--</span>Apply the STOP / REVIEW / READY intake classification</div>
    <div class="list-item"><span class="list-dash">--</span>Route STOP records back to drafter before they advance in the workflow</div>
   </div>
-  <div class="section-head" style="margin-top:24px;">Intake Classification</div>
+  <h2 class="section-head" style="margin-top:24px;">Intake Classification</h2>
   <div class="readiness-grid">
    <div class="readiness-row"><div class="readiness-badge stop">STOP</div><div class="readiness-desc"><strong>Return to Drafter</strong>Evaluative language without anchors. Timeline or policy basis absent. Do not advance.</div></div>
    <div class="readiness-row"><div class="readiness-badge review">REVIEW</div><div class="readiness-desc"><strong>Secondary Review Required</strong>Conclusion may be accurate but basis not visible. Route to HR or compliance before system entry.</div></div>
@@ -4064,7 +4083,7 @@ const ROLE_ENVS={
   <div class="reviewer-note" style="margin-top:12px;"><div class="reviewer-note-label">Intake shorthand</div>Referenced attachment unavailable. Timeline unresolved. Pattern claim unsupported. Returned to drafter before routing.</div>
  `},
  'ai-reviewer':{title:'AI Documentation Reviewer',sub:'Environment 06',content:`
- <div class="section-head">Review Responsibilities</div>
+ <h2 class="section-head">Review Responsibilities</h2>
  <div class="list-block">
  <div class="list-item"><span class="list-dash">--</span>Apply the AI-Assisted Draft Verification Worksheet before AI content enters official systems</div>
  <div class="list-item"><span class="list-dash">--</span>Confirm source records reviewed before generation are identifiable</div>

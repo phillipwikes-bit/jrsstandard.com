@@ -15,6 +15,8 @@
 -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Programme Status. Justification Review Standard: record-level documentation review for HR, compliance and investigation records.">
+<link rel="canonical" href="https://www.jrsstandard.com/programme-status-9872fb93cc94.html">
 <meta name="robots" content="noindex,nofollow">
 <meta name="referrer" content="no-referrer">
 <title>Programme Status | JRS</title>
@@ -64,11 +66,15 @@ tr.today td{background:rgba(93,191,130,.07)}
 .legend i{width:10px;height:10px;border-radius:2px;display:inline-block;flex:0 0 auto}
 .sbar{display:flex;width:100%;height:30px;gap:2px;border-radius:3px;overflow:hidden}
 .sbar>div{height:100%;min-width:2px}
+
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--accent);color:#050505;padding:10px 16px;z-index:100;font-family:'JetBrains Mono',monospace;font-size:11px}
+.skip-link:focus{left:0}
 </style>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to content</a>
 <header class="hd"><div class="hd-in"><a href="/" class="wm">JRS<span style="font-size:9px;vertical-align:super">&#8482;</span></a><div class="meta">Pilot Submissions</div></div></header>
-<main><div class="wrap">
+<main id="main-content"><div class="wrap">
   <h1>JRS Programme Status</h1>
   <p class="sub">Live participation, adoption and reach across every JRS study, pilot and initiative. Figures refresh automatically every 60 seconds and are read from the production database at the moment you open the page.</p>
   <!-- COMMERCIAL INBOX. Added 2026-08-25, at the TOP, above the reviewer panel.
@@ -1745,6 +1751,23 @@ loadLeads();
      Background: research/FIGURE_DRIFT_ROOT_CAUSE.md -->
 <style>
   [data-panel][data-panel-state="stale"]{border-bottom:1px dotted var(--review-text);cursor:help}
+
+/* MOBILE FIX PACK, 2026-08-25. Appended, never editing an existing rule.
+   1. Form fields at 16px. Below 16px iOS Safari zooms the whole page on focus
+      and the visitor lands mid-layout with no way back except pinching.
+   2. Tables scroll inside their own box instead of forcing the page sideways.
+   3. Tap targets reach 44px, the minimum a thumb hits reliably.
+   4. Long tokens wrap instead of pushing the body wider than the screen. */
+input,select,textarea{font-size:16px!important}
+table{display:block;overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+button,.btn,.cta-primary,input[type=submit]{min-height:44px}
+@media (max-width:640px){
+  body{overflow-x:hidden}
+  img,svg,video,pre{max-width:100%;height:auto}
+  pre,code{white-space:pre-wrap;word-break:break-word}
+  h1,.h1-look{font-size:23px;line-height:1.3}
+  .wrap,.container,.container-wide{padding-left:16px;padding-right:16px}
+}
 </style>
 <script>
 (function(){

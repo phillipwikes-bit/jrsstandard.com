@@ -5,6 +5,8 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NVYHJ7BJ92');</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Contribute a Record. Justification Review Standard: record-level documentation review for HR, compliance and investigation records.">
+<link rel="canonical" href="https://www.jrsstandard.com/submit-record.html">
 <meta name="robots" content="noindex,nofollow">
 <title>Contribute a Record | JRS Benchmark</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,11 +28,32 @@ input,select,textarea{width:100%;background:var(--surface2);border:1px solid var
 .status{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;margin-left:12px}
 .ft{border-top:1px solid var(--rule);padding:18px 20px;margin-top:26px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-soft)}
 @media(max-width:600px){.row{grid-template-columns:1fr}}
+
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--accent);color:#050505;padding:10px 16px;z-index:100;font-family:'JetBrains Mono',monospace;font-size:11px}
+.skip-link:focus{left:0}
+
+/* MOBILE FIX PACK, 2026-08-25. Appended, never editing an existing rule.
+   1. Form fields at 16px. Below 16px iOS Safari zooms the whole page on focus
+      and the visitor lands mid-layout with no way back except pinching.
+   2. Tables scroll inside their own box instead of forcing the page sideways.
+   3. Tap targets reach 44px, the minimum a thumb hits reliably.
+   4. Long tokens wrap instead of pushing the body wider than the screen. */
+input,select,textarea{font-size:16px!important}
+table{display:block;overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+button,.btn,.cta-primary,input[type=submit]{min-height:44px}
+@media (max-width:640px){
+  body{overflow-x:hidden}
+  img,svg,video,pre{max-width:100%;height:auto}
+  pre,code{white-space:pre-wrap;word-break:break-word}
+  h1,.h1-look{font-size:23px;line-height:1.3}
+  .wrap,.container,.container-wide{padding-left:16px;padding-right:16px}
+}
 </style>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to content</a>
 <header class="hd"><div class="hd-in"><a href="/" class="wm">JRS<span style="font-size:9px;vertical-align:super">&#8482;</span></a><div class="meta">Contribute a Record</div></div></header>
-<main><div class="wrap">
+<main id="main-content"><div class="wrap">
   <h1>Contribute a Record for Review</h1>
   <p class="sub">To move beyond constructed examples, the benchmark needs real, <b>de-identified</b> records. Paste a record with all identifying details removed. It is held privately for a de-identification check before it can enter the shared review set.</p>
   <div class="note"><b>Before you paste:</b> remove names, dates of birth, contact details, employee/case IDs, and anything that could identify a person or organization. The text is screened for common identifiers, but you are responsible for redaction. Do not submit anything privileged or restricted.</div>

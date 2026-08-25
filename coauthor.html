@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Co-author confirmation &middot; JRS. Justification Review Standard: record-level documentation review for HR, compliance and investigation records.">
+<link rel="canonical" href="https://www.jrsstandard.com/coauthor.html">
 <meta name="robots" content="noindex,nofollow">
 <meta name="referrer" content="no-referrer">
 <title>Co-author confirmation &middot; JRS</title>
@@ -63,10 +65,33 @@ button:disabled{opacity:.5;cursor:default}
 .mono{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;
       color:var(--muted-soft)}
 #gate{color:var(--muted);font-size:13.5px}
+
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--accent);color:#050505;padding:10px 16px;z-index:100;font-family:'JetBrains Mono',monospace;font-size:11px}
+.skip-link:focus{left:0}
+
+.h1-look{font-family:'Bodoni Moda',serif;font-weight:400;font-size:27px;margin:0 0 10px;line-height:1.25;color:var(--text);text-transform:none;letter-spacing:0;border:0;padding:0}
+
+/* MOBILE FIX PACK, 2026-08-25. Appended, never editing an existing rule.
+   1. Form fields at 16px. Below 16px iOS Safari zooms the whole page on focus
+      and the visitor lands mid-layout with no way back except pinching.
+   2. Tables scroll inside their own box instead of forcing the page sideways.
+   3. Tap targets reach 44px, the minimum a thumb hits reliably.
+   4. Long tokens wrap instead of pushing the body wider than the screen. */
+input,select,textarea{font-size:16px!important}
+table{display:block;overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+button,.btn,.cta-primary,input[type=submit]{min-height:44px}
+@media (max-width:640px){
+  body{overflow-x:hidden}
+  img,svg,video,pre{max-width:100%;height:auto}
+  pre,code{white-space:pre-wrap;word-break:break-word}
+  h1,.h1-look{font-size:23px;line-height:1.3}
+  .wrap,.container,.container-wide{padding-left:16px;padding-right:16px}
+}
 </style>
 </head>
 <body>
-<div class="wrap">
+<a href="#main-content" class="skip-link">Skip to content</a>
+<main id="main-content"><div class="wrap">
   <div id="gate">Loading.</div>
 
   <form id="form" style="display:none">
@@ -300,8 +325,9 @@ form.addEventListener('submit', function(e){
         return;
       }
       form.innerHTML =
-        '<div class="eyebrow">Recorded</div>' +
-        '<h1>Thank you.</h1>' +
+        '<div class="eyebrow">Recorded</div>
+</main>' +
+        '<h2 class="h1-look">Thank you.</h2>' +
         '<p class="lead">Your answers are on file and I will follow them. If you change your ' +
         'mind about any of it, write to info@jrsstandard.com and it changes. Nothing here is ' +
         'permanent and nothing here affects your authorship.</p>';

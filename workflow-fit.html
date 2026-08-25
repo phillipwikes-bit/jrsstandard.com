@@ -120,6 +120,23 @@ a{color:inherit;text-decoration:none}
   .nav-links a{padding:11px 20px;border-bottom:1px solid var(--rule)}
   .nav-links a:last-child{border-bottom:none}
 }
+
+/* MOBILE FIX PACK, 2026-08-25. Appended, never editing an existing rule.
+   1. Form fields at 16px. Below 16px iOS Safari zooms the whole page on focus
+      and the visitor lands mid-layout with no way back except pinching.
+   2. Tables scroll inside their own box instead of forcing the page sideways.
+   3. Tap targets reach 44px, the minimum a thumb hits reliably.
+   4. Long tokens wrap instead of pushing the body wider than the screen. */
+input,select,textarea{font-size:16px!important}
+table{display:block;overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+button,.btn,.cta-primary,input[type=submit]{min-height:44px}
+@media (max-width:640px){
+  body{overflow-x:hidden}
+  img,svg,video,pre{max-width:100%;height:auto}
+  pre,code{white-space:pre-wrap;word-break:break-word}
+  h1,.h1-look{font-size:23px;line-height:1.3}
+  .wrap,.container,.container-wide{padding-left:16px;padding-right:16px}
+}
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVYHJ7BJ92"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NVYHJ7BJ92');</script>
@@ -163,7 +180,7 @@ a{color:inherit;text-decoration:none}
  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 11px;background:var(--surface);">Onboarding Documentation</span>
 </div>
 
-<div class="section-head" style="margin-top:0;">The Insertion Point</div>
+<h2 class="section-head" style="margin-top:0;">The Insertion Point</h2>
 <p class="body-text">JRS is a pre-finalization review standard that evaluates whether a record can explain why a consequential decision was made: the basis, reasoning, evidence, and chronology, before the record is finalized. It is applied at the stage between drafting and official system entry. This stage already exists in every documentation workflow. It is the point where a reviewer or approver looks at the record before it advances. JRS inserts here as a structured question set. The workflow step does not change. The question applied within it does.</p>
 
 <div class="insertion-diagram">
@@ -186,7 +203,7 @@ a{color:inherit;text-decoration:none}
 
 <div class="reviewer-note"><div class="reviewer-note-label">The control point</div>Once a record enters an official system, the opportunity to resolve a gap without consequence has passed. What gets filed is what the next reviewer will have. There is no practical intervention point after that.</div>
 
-<div class="section-head">By Review Environment</div>
+<h2 class="section-head">By Review Environment</h2>
 <p class="body-text">JRS applies to any organizational documentation environment where records are reviewed before they enter official systems. Below is how it inserts by review context.</p>
 
 <div class="fit-grid">
@@ -240,7 +257,7 @@ a{color:inherit;text-decoration:none}
  </div>
 </div>
 
-<div class="section-head">How Organizations Typically Begin</div>
+<h2 class="section-head">How Organizations Typically Begin</h2>
 <p class="body-text">Most organizations do not begin with enterprise-wide deployment. They begin selectively and expand as reviewers become familiar with the controls.</p>
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0;">
@@ -266,7 +283,7 @@ a{color:inherit;text-decoration:none}
 </div>
 <div style="padding:10px 14px;background:var(--surface);border:1px solid var(--rule);font-size:12.5px;color:var(--muted-soft);line-height:1.65;"><span style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);">Why this matters: </span>Incremental adoption is realistic adoption. Most organizations find that applying the review structure to 3-5 records is sufficient to calibrate reviewer judgment before expanding.</div>
 
-<div class="section-head">Workflow Integration Steps</div>
+<h2 class="section-head">Workflow Integration Steps</h2>
 
 <div class="workflow-strip">
  <div class="workflow-row">
@@ -306,7 +323,7 @@ a{color:inherit;text-decoration:none}
  </div>
 </div>
 
-<div class="section-head">What This Is Not</div>
+<h2 class="section-head">What This Is Not</h2>
 <p class="body-text">Operational boundaries matter for workflow integration decisions.</p>
 <div class="limit-grid">
  <div class="limit-item"><span class="limit-dash">-</span>Does not replace legal review or legal counsel</div>

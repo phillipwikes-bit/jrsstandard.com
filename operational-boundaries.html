@@ -87,6 +87,23 @@ a{color:inherit;text-decoration:none}
   .nav-links a{padding:11px 20px;border-bottom:1px solid var(--rule)}
   .nav-links a:last-child{border-bottom:none}
 }
+
+/* MOBILE FIX PACK, 2026-08-25. Appended, never editing an existing rule.
+   1. Form fields at 16px. Below 16px iOS Safari zooms the whole page on focus
+      and the visitor lands mid-layout with no way back except pinching.
+   2. Tables scroll inside their own box instead of forcing the page sideways.
+   3. Tap targets reach 44px, the minimum a thumb hits reliably.
+   4. Long tokens wrap instead of pushing the body wider than the screen. */
+input,select,textarea{font-size:16px!important}
+table{display:block;overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+button,.btn,.cta-primary,input[type=submit]{min-height:44px}
+@media (max-width:640px){
+  body{overflow-x:hidden}
+  img,svg,video,pre{max-width:100%;height:auto}
+  pre,code{white-space:pre-wrap;word-break:break-word}
+  h1,.h1-look{font-size:23px;line-height:1.3}
+  .wrap,.container,.container-wide{padding-left:16px;padding-right:16px}
+}
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVYHJ7BJ92"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NVYHJ7BJ92');</script>
@@ -139,7 +156,7 @@ a{color:inherit;text-decoration:none}
  </div>
 </div>
 
-<div class="section-head" style="margin-top:28px;">Seven Operational Boundaries</div>
+<h2 class="section-head" style="margin-top:28px;">Seven Operational Boundaries</h2>
 
 <div class="boundary-block">
  <div class="bb-head">
@@ -211,7 +228,7 @@ a{color:inherit;text-decoration:none}
  <div class="bb-implication"><span class="bb-impl-label">Implication</span>No JRS output, including AI-assisted review results, should be treated as an organizational determination. Reviewers exercise judgment. JRS supports that judgment.</div>
 </div>
 
-<div class="section-head" style="margin-top:40px;">Implementation Realities</div>
+<h2 class="section-head" style="margin-top:40px;">Implementation Realities</h2>
 <p class="page-subtitle" style="font-size:12.5px;margin-bottom:16px;">The following describes the operational realities of implementing JRS review materials within organizational workflows. These are not reasons to avoid the methodology. They are conditions any organization considering implementation should understand in advance.</p>
 
 <div class="boundary-block">

@@ -471,7 +471,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 
   <!-- 6 · JRS OVERVIEW -->
   <div style="margin-bottom:44px;">
-    <div class="section-head">What JRS Is</div>
+    <h2 class="section-head">What JRS Is</h2>
     <p class="body-text">JRS is a pre-finalization review standard that evaluates whether a record can explain why a consequential decision was made: the basis, reasoning, evidence, and chronology, before the record is finalized. When AI-assisted content enters a workplace record through summarization, recommendation, analysis, or narrative drafting, that standard examines whether the decision behind the record remains reconstructable under structured review conditions. Practitioners in HR, compliance, investigations, audit, and legal review can apply the instrument within existing workflows to examine decision reconstruction risk and serve decision defensibility.</p>
     <p class="muted-text">The framework addresses a specific and recurring gap: AI-generated content enters permanent records as finished documentation, but the evidentiary foundation behind the decision is often absent. JRS is currently in operational validation, building evidence that the framework surfaces reconstruction gaps practitioners recognize in their own record populations and that existing review processes do not systematically catch.</p>
   </div>
@@ -702,7 +702,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 
   <!-- RESOURCES -->
   <div style="margin-bottom:20px">
-    <div class="section-head">Resources</div>
+    <h2 class="section-head">Resources</h2>
     <p class="muted-text" style="margin-bottom:10px;">The Review Controls PDF covers the five JRS review conditions and how they apply to AI-assisted record populations. Simulations provide calibration exercises organized by AI function before reviewers engage with live records. The Simulation Library contains the full inventory of available scenarios.</p>
     <div class="btn-row">
       <a href="/api/dl?e=standard&amp;src=pilot" class="btn btn-ghost">Review Controls PDF</a>
@@ -1016,6 +1016,23 @@ function trackClickAndNavigate(event, targetUrl, eventMetaData) {
      Background: research/FIGURE_DRIFT_ROOT_CAUSE.md -->
 <style>
   [data-panel][data-panel-state="stale"]{border-bottom:1px dotted var(--review-text);cursor:help}
+
+/* MOBILE FIX PACK, 2026-08-25. Appended, never editing an existing rule.
+   1. Form fields at 16px. Below 16px iOS Safari zooms the whole page on focus
+      and the visitor lands mid-layout with no way back except pinching.
+   2. Tables scroll inside their own box instead of forcing the page sideways.
+   3. Tap targets reach 44px, the minimum a thumb hits reliably.
+   4. Long tokens wrap instead of pushing the body wider than the screen. */
+input,select,textarea{font-size:16px!important}
+table{display:block;overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+button,.btn,.cta-primary,input[type=submit]{min-height:44px}
+@media (max-width:640px){
+  body{overflow-x:hidden}
+  img,svg,video,pre{max-width:100%;height:auto}
+  pre,code{white-space:pre-wrap;word-break:break-word}
+  h1,.h1-look{font-size:23px;line-height:1.3}
+  .wrap,.container,.container-wide{padding-left:16px;padding-right:16px}
+}
 </style>
 <script>
 (function(){

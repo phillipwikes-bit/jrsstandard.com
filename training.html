@@ -744,7 +744,7 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
 
   <!-- ═══ PARTICIPATION FLOW ══════════════════════════════════ -->
   <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px;margin-top:0">Section 2: How Participation Works</div>
-  <div class="section-head" style="margin-top:0">Reviewer Calibration Sequence</div>
+  <h2 class="section-head" style="margin-top:0">Reviewer Calibration Sequence</h2>
   <p class="section-sub">Six steps. Incremental. No deployment commitment required at any stage. Each step can be applied independently within existing workflows.</p>
   <div class="flow-container">
     <div class="flow-step">
@@ -802,7 +802,7 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
   <!-- SIMULATOR SECTION -->
   <div style="border-top:2px solid var(--accent);padding-top:20px;margin-top:0" id="simulator">
     <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:8px">Simulation Environment</div>
-    <div class="section-head" style="margin-top:0;font-size:22px">Simulation-Centered Reviewer Calibration</div>
+    <h2 class="section-head" style="margin-top:0;font-size:22px">Simulation-Centered Reviewer Calibration</h2>
     <p class="section-sub" style="max-width:740px">Three simulation categories covering document reconstruction review, escalation routing decisions, and review instability identification. Scenarios are procedurally realistic: organizations appear fragmented, information incomplete, and reviewer interpretations divergent.</p>
   </div>
 
@@ -1058,6 +1058,23 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
   .sim-tab{font-size:7.5px;padding:10px 10px}
   .fm-options{grid-template-columns:1fr}
   .rt-options{flex-direction:column}
+}
+
+/* MOBILE FIX PACK, 2026-08-25. Appended, never editing an existing rule.
+   1. Form fields at 16px. Below 16px iOS Safari zooms the whole page on focus
+      and the visitor lands mid-layout with no way back except pinching.
+   2. Tables scroll inside their own box instead of forcing the page sideways.
+   3. Tap targets reach 44px, the minimum a thumb hits reliably.
+   4. Long tokens wrap instead of pushing the body wider than the screen. */
+input,select,textarea{font-size:16px!important}
+table{display:block;overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+button,.btn,.cta-primary,input[type=submit]{min-height:44px}
+@media (max-width:640px){
+  body{overflow-x:hidden}
+  img,svg,video,pre{max-width:100%;height:auto}
+  pre,code{white-space:pre-wrap;word-break:break-word}
+  h1,.h1-look{font-size:23px;line-height:1.3}
+  .wrap,.container,.container-wide{padding-left:16px;padding-right:16px}
 }
 </style>
 
@@ -1913,7 +1930,7 @@ renderFM();
           <div class="reviewer-reminder-label">Reviewer Reminder</div>
           <p>Pattern conclusions should be tied to documented incidents and dates in the file.</p>
         </div>
-        <div class="section-head" style="font-size:15px;margin-top:20px;margin-bottom:14px">Conditions Affecting Subsequent Review</div>
+        <h2 class="section-head" style="font-size:15px;margin-top:20px;margin-bottom:14px">Conditions Affecting Subsequent Review</h2>
         <div class="condition-list">
           <div class="condition-item"><div class="condition-label">Condition</div><div class="condition-title">Undocumented Timeline Gaps</div><div class="condition-body">Conduct or events described without specific dates or sequencing. A downstream reviewer cannot independently reconstruct when events occurred or in what order. Common in routine records not expected to face later scrutiny.</div></div>
           <div class="condition-item"><div class="condition-label">Condition</div><div class="condition-title">Inherited Language Without Source Confirmation</div><div class="condition-body">Wording carried forward from earlier records, templates, or prior review cycles without being verified against current source material. The language survives; the basis it was drawn from may not.</div></div>
@@ -2049,7 +2066,7 @@ renderFM();
           <div class="reviewer-reminder-label">Reviewer Reminder</div>
           <p>Where AI-assisted drafting was used, wording should be checked against original notes before the record enters the system. Conflicting accounts should remain documented, including where one is credited over another.</p>
         </div>
-        <div class="section-head" style="font-size:15px;margin-top:24px;margin-bottom:14px">AI-Assisted Documentation Verification</div>
+        <h2 class="section-head" style="font-size:15px;margin-top:24px;margin-bottom:14px">AI-Assisted Documentation Verification</h2>
         <p style="font-size:13.5px;color:var(--muted);margin-bottom:16px">Apply when AI-assisted drafting contributed to a record before system entry.</p>
         <div class="ai-checklist">
           <div class="ai-checklist-section">
@@ -2190,7 +2207,7 @@ renderFM();
     </div>
     <a href="#simulator" onclick="document.getElementById('simulator').scrollIntoView({behavior:'smooth'});showSimTab(0)" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;background:var(--accent);color:#050505;padding:14px 24px;text-decoration:none;display:inline-block;font-weight:600;white-space:nowrap;">&#9654; Explore New Simulation</a>
   </div>
-  <div class="section-head">Reference Review Scenarios</div>
+  <h2 class="section-head">Reference Review Scenarios</h2>
   <p class="section-sub">Examples are abbreviated and composite. Local conditions may differ.</p>
 
   <div class="scenario-list">
@@ -2348,7 +2365,7 @@ renderFM();
   </div>
 
   
-  <div class="section-head">Pre-Finalization Review Worksheet</div>
+  <h2 class="section-head">Pre-Finalization Review Worksheet</h2>
   <p class="section-sub">Apply before any record enters an official system. Note gaps - do not assume resolution.</p>
   <div class="worksheet">
     <div class="worksheet-section">
@@ -2385,7 +2402,7 @@ renderFM();
   </div>
 
   
-  <div class="section-head">Conditions Requiring Secondary Review</div>
+  <h2 class="section-head">Conditions Requiring Secondary Review</h2>
   <p class="section-sub">Any single condition is sufficient to route for secondary review. Routing thresholds may vary.</p>
 
   <div class="section-label" style="margin-top:0">Trigger Conditions</div>
@@ -2408,7 +2425,7 @@ renderFM();
   </div>
 
   
-  <div class="section-head">Review Instability Recognition</div>
+  <h2 class="section-head">Review Instability Recognition</h2>
   <p class="section-sub">Recognizable conditions in organizational documentation that create interpretive friction or reconstruction difficulty.</p>
 
   <div class="failure-list">
@@ -2451,7 +2468,7 @@ renderFM();
   </div>
 
   
-  <div class="section-head">Periodic Retained-Record Sampling</div>
+  <h2 class="section-head">Periodic Retained-Record Sampling</h2>
   <p class="section-sub">Lightweight review of retained organizational records on a periodic basis. Frequency and scope determined by organizational capacity.</p>
   <div class="sampling-list">
     <div class="sampling-item"><div class="sampling-num">1</div><div class="sampling-body"><div class="sampling-title">Random Retained-Record Review</div><div class="sampling-desc">Periodically review a sample of finalized records without advance selection criteria. Apply the five JRS review conditions to each. Note patterns.</div></div></div>
@@ -2463,7 +2480,7 @@ renderFM();
   <p class="sampling-note" style="padding:0;border:none;margin-top:0">Sampling findings should be documented and shared with the appropriate reviewer or supervisor. Findings are not final compliance determinations. Identified patterns should be noted. No finding in a given cycle does not eliminate the review obligation in the next.</p>
 
   
-  <div class="section-head">Reviewer Calibration Exercises</div>
+  <h2 class="section-head">Reviewer Calibration Exercises</h2>
   <p class="section-sub">Scenarios where reasonable reviewers may reach different conclusions. Purpose: surface interpretive variation.</p>
 
   <div class="calibration-list">

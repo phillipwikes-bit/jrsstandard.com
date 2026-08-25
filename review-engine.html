@@ -189,6 +189,33 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 .dt-links{display:flex;flex-wrap:wrap;gap:14px}
 .dt-links a{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-dim);padding-bottom:2px}
 .dt-links a:hover{color:var(--text)}
+
+.cap{border:1px solid var(--rule);background:var(--surface);padding:24px 26px;margin:28px 0}
+.cap-h{font-family:'Bodoni Moda',serif;font-size:22px;color:var(--text);margin:0 0 10px;line-height:1.25;text-transform:none;letter-spacing:0;border:0;padding:0;font-weight:400}
+.cap-p{font-family:'Inter',sans-serif;font-size:14px;line-height:1.7;color:var(--muted);margin:0 0 16px;max-width:680px}
+.cap-f label{display:block;margin:14px 0 0;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-dim)}
+.cap-f input,.cap-f select,.cap-f textarea{display:block;width:100%;max-width:520px;margin-top:6px;padding:11px;background:var(--bg);color:var(--text);border:1px solid var(--rule);font-size:16px;font-family:'Inter',sans-serif}
+.cap-f button{margin-top:18px;padding:13px 22px;background:var(--accent);color:#050505;border:0;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;min-height:44px}
+.cap-f button[disabled]{opacity:.55;cursor:default}
+.cap-m{font-family:'Inter',sans-serif;font-size:14px;min-height:1.3em;margin-top:12px}
+@media (max-width:640px){.cap{padding:18px 16px}.cap-f input,.cap-f select,.cap-f textarea{max-width:100%}}
+
+/* MOBILE FIX PACK, 2026-08-25. Appended, never editing an existing rule.
+   1. Form fields at 16px. Below 16px iOS Safari zooms the whole page on focus
+      and the visitor lands mid-layout with no way back except pinching.
+   2. Tables scroll inside their own box instead of forcing the page sideways.
+   3. Tap targets reach 44px, the minimum a thumb hits reliably.
+   4. Long tokens wrap instead of pushing the body wider than the screen. */
+input,select,textarea{font-size:16px!important}
+table{display:block;overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+button,.btn,.cta-primary,input[type=submit]{min-height:44px}
+@media (max-width:640px){
+  body{overflow-x:hidden}
+  img,svg,video,pre{max-width:100%;height:auto}
+  pre,code{white-space:pre-wrap;word-break:break-word}
+  h1,.h1-look{font-size:23px;line-height:1.3}
+  .wrap,.container,.container-wide{padding-left:16px;padding-right:16px}
+}
 </style>
 </head>
 <body>
@@ -263,19 +290,19 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 </div>
 
 <div style="margin-bottom:20px;">
- <div class="section-head">What it does</div>
+ <h2 class="section-head">What it does</h2>
  <p class="body-text">You send the text of one record. The engine reads it against the five conditions: reconstructability, basis identification, chronological integrity, decision-process traceability and evidentiary sufficiency. It returns a structured result describing which conditions the record meets and where its reasoning cannot be reconstructed.</p>
  <p class="body-text"><b>Ask for more than one run and the spread is returned to you.</b> Set <code>runs</code> above 1 and the response carries a <code>variance</code> block showing how far the runs disagreed. A single-model engine that hides its own instability is worth less than one that reports it.</p>
 </div>
 
 <div style="margin-bottom:20px;">
- <div class="section-head">Endpoint</div>
+ <h2 class="section-head">Endpoint</h2>
  <p class="body-text"><code>POST https://www.jrsstandard.com/api/v1/review-engine</code></p>
  <p class="body-text">The unversioned route <code>/api/review-engine</code> is the same implementation. <b>Build against the versioned path.</b></p>
 </div>
 
 <div style="margin-bottom:20px;">
- <div class="section-head">Authentication</div>
+ <h2 class="section-head">Authentication</h2>
  <p class="body-text">Send your token as a bearer credential:</p>
  <pre class="code-block">Authorization: Bearer &lt;your-token&gt;
 Content-Type: application/json</pre>
@@ -283,7 +310,7 @@ Content-Type: application/json</pre>
 </div>
 
 <div style="margin-bottom:20px;">
- <div class="section-head">Request</div>
+ <h2 class="section-head">Request</h2>
  <pre class="code-block">{
   "text": "The full text of one record.",
   "runs": 1
@@ -296,7 +323,7 @@ Content-Type: application/json</pre>
 </div>
 
 <div style="margin-bottom:20px;">
- <div class="section-head">Response</div>
+ <h2 class="section-head">Response</h2>
  <pre class="code-block">{
   "request_id": "f90a631d-8a7c-40c6-8f89-56dc31fbd786",
   "api_version": "v1",
@@ -313,13 +340,13 @@ Content-Type: application/json</pre>
 </div>
 
 <div style="margin-bottom:20px;">
- <div class="section-head">Audit correlation</div>
+ <h2 class="section-head">Audit correlation</h2>
  <p class="body-text">Every response carries a <code>request_id</code> in the body <b>and the same value in the <code>X-Request-Id</code> header</b>. Record it beside whatever your own system writes when the record is reviewed.</p>
  <p class="body-text">This is the feature that matters in a regulated function. When someone asks months later how a particular record came to be assessed the way it was, the identifier is what connects your entry to this call. Without it, an external service in the middle of a documented process is a gap in the very thing the process is meant to establish.</p>
 </div>
 
 <div style="margin-bottom:20px;">
- <div class="section-head">Errors</div>
+ <h2 class="section-head">Errors</h2>
  <table class="spec-table">
   <tr><th>Status</th><th><code>error</code></th><th>Meaning</th></tr>
   <tr><td>400</td><td><code>invalid_json</code></td><td>The body did not parse as JSON.</td></tr>
@@ -334,12 +361,12 @@ Content-Type: application/json</pre>
 </div>
 
 <div style="margin-bottom:20px;">
- <div class="section-head">Rate limit</div>
+ <h2 class="section-head">Rate limit</h2>
  <p class="body-text"><b>20 requests per 60 seconds, per IP.</b> The limit is enforced per running instance and is described here exactly as it is implemented: <b>best effort</b>. It is not backed by a shared store, so under horizontal scaling the effective ceiling can be higher than the stated one. Treat it as a guard against runaway loops, not as a quota you can rely on. A firm quota is part of a licence, not of this limiter.</p>
 </div>
 
 <div style="margin-bottom:20px;">
- <div class="section-head">Governance reporting, and exactly what it does not mean</div>
+ <h2 class="section-head">Governance reporting, and exactly what it does not mean</h2>
  <div class="callout callout-gold">
   <div class="callout-label">Read this before mapping anything</div>
   <div class="callout-body"><b>JRS does not establish compliance with ISO/IEC 42001, the NIST AI RMF, the EU AI Act, or any other framework, and no framework requires JRS.</b> It is not a certification, an accreditation, or an audit opinion. What follows describes where the output of a record-level review may be <b>relevant</b> as evidence inside a management system you are already running. Deciding whether it satisfies any control is your organisation's determination and your assessor's, not this engine's.</div>
@@ -357,13 +384,13 @@ Content-Type: application/json</pre>
 </div>
 
 <div style="margin-bottom:20px;">
- <div class="section-head">Data handling</div>
+ <h2 class="section-head">Data handling</h2>
  <p class="body-text">Record text is sent to the engine, assessed, and used to produce the response. <b>Send de-identified text.</b> If your records contain personal data, privileged material, or anything you would not want leaving your environment, remove it before the call. De-identification is agreed in writing before any engagement that involves real records.</p>
  <p class="body-text">If you would rather not send record text to any external service at all, the <a href="org-pilot.html" class="accent-link">Organization Mini-Pilot</a> exists for that: it computes the assessment and sends back only counts and category labels. <b>No record text is stored at any point in that flow.</b></p>
 </div>
 
 <div style="margin-bottom:20px;">
- <div class="section-head">Getting a token</div>
+ <h2 class="section-head">Getting a token</h2>
  <p class="body-text">Email <a href="mailto:info@jrsstandard.com?subject=Review%20Engine%20token" class="accent-link">info@jrsstandard.com</a> with your organisation, the record type you intend to run, and expected monthly volume. You will get a token, the tier, and an invoice in one reply. <b>Purchase orders accepted.</b></p>
  <div class="btn-row">
   <a href="enterprise.html" class="btn btn-ghost">Enterprise overview</a>
@@ -371,6 +398,29 @@ Content-Type: application/json</pre>
   <a href="terms.html" class="btn btn-ghost">Terms and boundaries</a>
  </div>
 </div>
+
+<section class="cap" id="enterprise-capture" aria-labelledby="cap-h">
+ <h2 class="cap-h" id="cap-h">Licensing or evaluation inquiry</h2>
+ <p class="cap-p">For GRC platforms, legal-tech vendors and enterprise risk functions. Goes to a private operational dashboard, not a mailing list. You get the integration schema, the tier that fits and a written scope in one reply. <b>No records are sent at this stage.</b></p>
+ <form class="cap-f" data-cap>
+  <label>Name<input name="name" required maxlength="120" autocomplete="name"></label>
+  <label>Work email<input name="email" type="email" required maxlength="160" autocomplete="email"></label>
+  <label>Organisation<input name="organization" required maxlength="160" autocomplete="organization"></label>
+  <label>Role<input name="role" maxlength="120" placeholder="e.g. Head of GRC, Platform Architect"></label>
+  <label>Interest
+   <select name="interest">
+    <option value="engine-licence">Licence the review engine</option>
+    <option value="oem-embed">Embed it in our product</option>
+    <option value="framework-licence">Licence the framework</option>
+    <option value="evaluation">Evaluation access first</option>
+    <option value="other">Something else</option>
+   </select>
+  </label>
+  <label>Anything else<textarea name="note" maxlength="1200" rows="3"></textarea></label>
+  <button type="submit">Send inquiry</button>
+  <p class="cap-m" role="status"></p>
+ </form>
+</section>
 
 </main>
 
@@ -521,6 +571,43 @@ function trackClickAndNavigate(event, targetUrl, eventMetaData) {
       trackClickAndNavigate(ev, a.href, meta);
     } catch (e) { /* a telemetry fault must never block navigation */ }
   }, true);
+})();
+</script>
+<script>
+/* Enterprise capture. Posts to /api/enterprise-inquiry, which stores the row and
+   fails loud if it cannot. Email alerts are disabled by owner directive; the row
+   is the durable record and the Commercial Inbox is where it is read. */
+(function () {
+  var f = document.querySelector('form[data-cap]');
+  if (!f) return;
+  var m = f.querySelector('.cap-m'), b = f.querySelector('button');
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    b.disabled = true;
+    m.style.color = 'var(--muted)';
+    m.textContent = 'Sending...';
+    var d = {};
+    new FormData(f).forEach(function (v, k) { d[k] = v; });
+    fetch('/api/enterprise-inquiry', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(d)
+    }).then(function (r) { return r.json(); }).then(function (j) {
+      if (j && j.ok) {
+        f.innerHTML = '';
+        m.style.color = 'var(--ready-text)';
+        m.textContent = 'Received. You will get the schema, the tier and a written scope by email.';
+      } else {
+        m.style.color = 'var(--stop-text)';
+        m.textContent = 'That did not save. Email info@jrsstandard.com and it will be handled.';
+        b.disabled = false;
+      }
+    }).catch(function () {
+      m.style.color = 'var(--stop-text)';
+      m.textContent = 'Network error. Email info@jrsstandard.com and it will be handled.';
+      b.disabled = false;
+    });
+  });
 })();
 </script>
 </body>
