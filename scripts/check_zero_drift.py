@@ -1725,6 +1725,42 @@ def check_retention_claim_is_scoped(offline):
           else "every page claiming it also states what it does not do")
 
 
+def check_robots_directives_coherent(offline):
+    """No page may carry two robots directives, or noindex plus a sitemap entry.
+
+    Both defects were live on 2026-08-25 and both were invisible from either
+    surface alone. Three request pages carried BOTH index,follow and
+    noindex,nofollow, so they behaved as noindex while the source read as
+    indexable. Four pages sat in sitemap.xml while carrying noindex, which the
+    2026-08-15 withdrawal commit had explicitly avoided: "A noindex page in a
+    sitemap asks to be crawled and then asks not to be indexed."
+
+    The second defect was mine. I added the sitemap entries on 2026-08-25 without
+    checking the robots tag, which is how a deliberate withdrawal got half
+    reversed without anyone deciding to reverse it.
+    """
+    try:
+        sm = read("sitemap.xml")
+    except Exception:
+        sm = ""
+    dupes, conflicts = [], []
+    for rel in _html_files():
+        try:
+            body = read(rel)
+        except Exception:
+            continue
+        tags = re.findall(r'<meta name="robots" content="([^"]+)"', body)
+        if len(set(tags)) > 1:
+            dupes.append("%s (%s)" % (rel, " AND ".join(sorted(set(tags)))))
+        if any("noindex" in t for t in tags) and os.path.basename(rel) in sm:
+            conflicts.append(rel)
+    check("one unambiguous robots directive per page", not dupes,
+          "; ".join(dupes[:4]) if dupes else "no page carries conflicting directives")
+    check("no noindex page sits in the sitemap", not conflicts,
+          "; ".join(conflicts[:4]) if conflicts
+          else "sitemap membership agrees with every robots directive")
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -1753,6 +1789,7 @@ def main():
                check_dual_track_band,
                check_no_internal_voice_copy,
                check_retention_claim_is_scoped,
+               check_robots_directives_coherent,
                check_generated_docs_current, check_cross_endpoint):
         try:
             fn(offline)
