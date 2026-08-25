@@ -1392,6 +1392,165 @@ def check_zero_retention_claim_is_true(offline):
                % len(claimed))
 
 
+# ---------------------------------------------------------------- LOCKED DECISIONS
+#
+# Phillip locked these on 2026-08-25 after a pivot directive proposed reversing
+# all three. They are enforced here rather than remembered, because the previous
+# directive would have removed them silently and a decision that lives only in a
+# chat log is a decision that gets undone by the next chat log.
+#
+#   1. Free training links, desk references and guide downloads stay visible.
+#   2. Checkout and payment pathways stay active. Nobody is turned away.
+#   3. sitemap.xml keeps the free material indexed and discoverable.
+
+FREE_FUNNEL_TARGETS = ("training.html", "investigator-guides.html", "check.html")
+LOCKED_SITEMAP_ENTRIES = ("training.html", "investigator-guides.html",
+                          "check.html", "index.html")
+
+
+def check_free_funnel_preserved(offline):
+    """Item 1. The free top of funnel must remain reachable from the public site.
+
+    It is not charity, it is the funnel: 245 PDF downloads, 195 kit downloads and
+    105 guide downloads against 13 purchase attempts. Removing the free surface
+    removes the only thing currently producing traffic.
+    """
+    pages = _html_files()
+    missing = []
+    for target in FREE_FUNNEL_TARGETS:
+        inbound = 0
+        for rel in pages:
+            if os.path.basename(rel) == target:
+                continue
+            try:
+                if target in read(rel):
+                    inbound += 1
+            except Exception:
+                continue
+        if inbound == 0:
+            missing.append(target)
+    check("free training and guide links stay reachable", not missing,
+          "unreachable: " + ", ".join(missing) if missing
+          else "%d free surfaces, all linked" % len(FREE_FUNNEL_TARGETS))
+
+
+def check_checkout_path_active(offline):
+    """Item 2. The checkout path must stay wired end to end.
+
+    Three request pages each pointing at /api/checkout, an endpoint that resolves
+    an offer and captures a lead when it cannot take a card. A payment link being
+    absent is a configuration gap; the PATH being removed is a decision, and this
+    fails if anyone makes that decision quietly.
+    """
+    try:
+        ck = read("api/checkout.js")
+    except Exception:
+        check("checkout path is active", False, "api/checkout.js is missing")
+        return
+    wired = [p for p in ("audit-request.html", "governance-request.html",
+                         "calibration-request.html")
+             if "api/checkout" in (read(p) if os.path.exists(os.path.join(ROOT, p)) else "")]
+    has_capture = "checkout-fallback" in ck
+    has_offer = "offerFor" in ck
+    check("checkout path is active", len(wired) == 3 and has_capture and has_offer,
+          "%d/3 request pages wired, capture=%s, offer resolution=%s"
+          % (len(wired), has_capture, has_offer))
+
+
+def check_sitemap_keeps_free_material(offline):
+    """Item 3. The free material stays indexed.
+
+    A sitemap trimmed to commercial pages deindexes the material that produces
+    the traffic. Enterprise positioning does not require hiding the free work.
+    """
+    try:
+        sm = read("sitemap.xml")
+    except Exception:
+        check("sitemap keeps free material indexed", SKIPPED, "sitemap.xml not present")
+        return
+    missing = [p for p in LOCKED_SITEMAP_ENTRIES if p not in sm and p != "index.html"]
+    if "index.html" in LOCKED_SITEMAP_ENTRIES:
+        # The homepage is listed as the bare domain rather than as index.html.
+        if "<loc>https://www.jrsstandard.com/</loc>" not in sm:
+            missing.append("homepage")
+    check("sitemap keeps free material indexed", not missing,
+          "missing: " + ", ".join(missing) if missing
+          else "%d free surfaces indexed" % len(LOCKED_SITEMAP_ENTRIES))
+
+
+# Mail provider keys, added 2026-08-25 with api/_notify.js. Same rule as
+# ANTHROPIC_API_KEY: the key lives in the server environment and never in a
+# committed file. A leaked transactional key lets anyone send mail as this
+# domain, which is a deliverability and impersonation problem, not just a bill.
+SECRET_PATTERNS = (
+    (r"re_[A-Za-z0-9]{16,}", "Resend API key"),
+    (r"SG\.[A-Za-z0-9_-]{20,}", "SendGrid API key"),
+    (r"sk-ant-[A-Za-z0-9_-]{20,}", "Anthropic API key"),
+    (r"eyJ[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]{20,}\.", "JWT / service-role key"),
+)
+
+
+def check_no_secrets_in_source(offline):
+    """No provider secret may appear in any committed file.
+
+    Scans api/, scripts/ and every HTML page. The publishable Supabase anon key
+    is deliberately not matched: it is designed to be public and is already in
+    api/*.js by design.
+    """
+    targets = []
+    for sub in ("api", "scripts"):
+        base = os.path.join(ROOT, sub)
+        if not os.path.isdir(base):
+            continue
+        for b, dirs, files in os.walk(base):
+            dirs[:] = [d for d in dirs if d != "__pycache__"]
+            for fn in files:
+                if fn.endswith((".js", ".py", ".mjs", ".sh")):
+                    targets.append(os.path.relpath(os.path.join(b, fn), ROOT))
+    targets += _html_files()
+
+    hits = []
+    for rel in sorted(set(targets)):
+        try:
+            body = read(rel)
+        except Exception:
+            continue
+        for pat, label in SECRET_PATTERNS:
+            m = re.search(pat, body)
+            if m:
+                hits.append("%s: %s" % (rel, label))
+    check("no provider secret in any committed file", not hits,
+          "; ".join(hits[:4]) if hits
+          else "%d files scanned, %d patterns each" % (len(set(targets)), len(SECRET_PATTERNS)))
+
+
+def check_notifications_wired(offline):
+    """Every lead-capture endpoint must actually raise an alert.
+
+    A capture endpoint that stores silently is what produced thirteen unnoticed
+    purchase attempts. The order is also checked: notify() must be called AFTER
+    the database write, so a mail outage can never cost a lead.
+    """
+    unwired = []
+    for rel in ("api/checkout.js", "api/enterprise-inquiry.js"):
+        try:
+            body = read(rel)
+        except Exception:
+            unwired.append(rel + " (missing)")
+            continue
+        if "_notify.js" not in body or "notify(" not in body:
+            unwired.append(rel)
+            continue
+        # The alert must not precede the insert it is alerting about.
+        first_notify = body.find("await notify(")
+        first_insert = body.find("pilot_contacts")
+        if first_notify != -1 and first_insert != -1 and first_notify < first_insert:
+            unwired.append(rel + " (alerts before storing)")
+    check("lead capture raises an alert, after storing", not unwired,
+          "; ".join(unwired) if unwired
+          else "checkout and enterprise inquiry both wired to api/_notify.js")
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -1411,6 +1570,11 @@ def main():
                check_framework_names_qualified,
                check_no_false_assurance_claims,
                check_zero_retention_claim_is_true,
+               check_free_funnel_preserved,
+               check_checkout_path_active,
+               check_sitemap_keeps_free_material,
+               check_no_secrets_in_source,
+               check_notifications_wired,
                check_generated_docs_current, check_cross_endpoint):
         try:
             fn(offline)

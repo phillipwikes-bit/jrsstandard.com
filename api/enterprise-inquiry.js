@@ -17,6 +17,8 @@ export const config = { runtime: 'edge' };
 // silently drops a licensing lead is worse than no form, because it reports
 // success while losing the thing it exists to keep.
 
+import { notify, renderAlert } from './_notify.js';
+
 const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 
 // Named rather than inlined so this file is findable as the writer, and so
@@ -120,5 +122,25 @@ export default async function handler(req) {
                   status: res ? res.status : 0,
                   detail: String(detail).slice(0, 200) }, 502);
   }
-  return json({ ok: true, stored: true });
+  // Alert only after the row is durable. See api/_notify.js for why this order
+  // is not negotiable.
+  const alert = await notify(
+    'Enterprise inquiry: ' + org + ' (' + (oneOf(b.interest, INTEREST) || 'unspecified') + ')',
+    renderAlert('Enterprise licensing inquiry', [
+      ['Name', name],
+      ['Email', email],
+      ['Organisation', org],
+      ['Role', role],
+      ['Interest', oneOf(b.interest, INTEREST)],
+      ['Platform', clean(b.platform, 160)],
+      ['Records per year', oneOf(b.scale, SCALE)],
+      ['Timeline', oneOf(b.timeline, TIMELINE)],
+      ['Country', String(req.headers.get('x-vercel-ip-country') || '')],
+      ['Note', clean(b.note, 1200)],
+      ['Source', SOURCE]
+    ]),
+    email
+  );
+
+  return json({ ok: true, stored: true, alerted: alert.sent === true });
 }

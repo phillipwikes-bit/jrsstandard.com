@@ -19,6 +19,7 @@ export const config = { runtime: 'edge' };
 
 import { offerFor, isConfigured } from './_offer-config.js';
 import { isNotAClick } from './_not-a-click.js';
+import { notify, renderAlert } from './_notify.js';
 
 const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 
@@ -163,7 +164,28 @@ async function captureLead(req) {
                     status: res ? res.status : 0,
                     detail: String(detail).slice(0, 200) }, 502);
   }
-  return jsonRes({ ok: true, stored: true });
+
+  // ALERT AFTER THE ROW LANDS, NEVER BEFORE. The lead is already durable at this
+  // point. notify() cannot throw, and its result deliberately does not change
+  // the response: telling a buyer their submission failed because an email did
+  // not go out would be false, and would lose the lead the row already holds.
+  const alert = await notify(
+    'Lead: ' + (offer ? offer.name : key) + ' from ' + org,
+    renderAlert('Checkout fallback lead', [
+      ['Offer', offer ? offer.name : key],
+      ['Price', offer ? offer.price_label : ''],
+      ['Name', name],
+      ['Email', email],
+      ['Organisation', org],
+      ['Record type', trim(b.record_type, 160)],
+      ['Volume', trim(b.volume, 60)],
+      ['Country', String(req.headers.get('x-vercel-ip-country') || '')],
+      ['Source', 'checkout-fallback']
+    ]),
+    email
+  );
+
+  return jsonRes({ ok: true, stored: true, alerted: alert.sent === true });
 }
 
 export default async function handler(req) {
@@ -215,7 +237,23 @@ export default async function handler(req) {
   // The POST goes to /api/checkout itself, which writes source='checkout-fallback'
   // into pilot_contacts. Nothing about the record is asked for beyond type and
   // volume, and the page says plainly that no records are sent at this stage.
-  if (!prefetch) await record(env, key, 'unconfigured', req, srcTag);
+  if (!prefetch) {
+    await record(env, key, 'unconfigured', req, srcTag);
+    // A pay-screen arrival with no payment link is the exact event that went
+    // unnoticed thirteen times. It carries no contact detail by definition, so
+    // the alert exists to say "somebody just tried to pay and could not",
+    // while the form below is what captures who they were.
+    await notify(
+      'Pay attempt, no payment link: ' + offer.name,
+      renderAlert('Checkout arrival, unconfigured', [
+        ['Offer', offer.name],
+        ['Price', offer.price_label],
+        ['Arrived from', srcTag || '(none)'],
+        ['Country', String(req.headers.get('x-vercel-ip-country') || '')],
+        ['Note', 'No payment link is configured for this offer, so no card could be taken.']
+      ])
+    );
+  }
   const esc_o = esc(offer.name), esc_p = esc(offer.price_label), esc_s = esc(offer.scope);
   return page('Scoping and invoice',
     '<h1>' + esc_o + '</h1>'
