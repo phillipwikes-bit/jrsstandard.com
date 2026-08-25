@@ -1301,6 +1301,97 @@ def check_framework_names_qualified(offline):
           else "every page naming a framework carries the qualifier")
 
 
+# Claims that assert or imply a certification, attestation or audit status this
+# programme does not hold. Added 2026-08-25 after a directive asked for the site
+# to market "SOC 2 bypass via architecture". No architecture bypasses SOC 2: it
+# is an attestation about an organisation's controls, produced by an auditor.
+# Publishing that phrase to a GRC buyer, who is the one audience certain to know
+# it is false, would cost the credibility the rest of the site is built on.
+#
+# The defensible version is a SCOPE claim: an engine holding no records at rest
+# narrows what a vendor security review has to examine. That wording is allowed;
+# these are not.
+FALSE_ASSURANCE = (
+    "SOC 2 bypass", "SOC2 bypass", "bypass SOC 2", "bypasses SOC 2",
+    "SOC 2 compliant", "SOC2 compliant", "SOC 2 certified",
+    "ISO certified", "ISO 42001 certified", "ISO/IEC 42001 certified",
+    "NIST certified", "AI Act compliant", "EU AI Act compliant",
+    "GDPR compliant", "HIPAA compliant",
+    "compliance guaranteed", "guarantees compliance",
+    "pre-packaged compliance", "compliance out of the box",
+)
+
+
+def check_no_false_assurance_claims(offline):
+    """No page may claim a certification, attestation or bypass that does not exist.
+
+    This is the highest-consequence guard in the file. Every other drift here
+    costs tidiness; this one costs the enterprise sale outright, because the
+    reader is a compliance professional and the claim is checkable in seconds.
+    """
+    hits = []
+    for rel in _html_files():
+        try:
+            body = read(rel)
+        except Exception:
+            continue
+        low = body.lower()
+        for phrase in FALSE_ASSURANCE:
+            if phrase.lower() in low:
+                hits.append("%s: %s" % (rel, phrase))
+    check("no certification, attestation or bypass claim", not hits,
+          "; ".join(hits[:5]) if hits
+          else "%d pages scanned, %d phrases each" % (len(_html_files()), len(FALSE_ASSURANCE)))
+
+
+def check_zero_retention_claim_is_true(offline):
+    """A zero-retention claim on any page must match what the engines actually do.
+
+    The claim is currently TRUE: api/review.js states no part of the submitted
+    record is echoed back or logged, and logReview() in both engine routes stores
+    the determination and per-condition results but no record text, after the
+    first-200-characters field was removed on 2026-08-14 while the table held
+    zero rows.
+
+    If someone reinstates record-text storage, the marketing claim silently
+    becomes false. This fails the build at that moment rather than at the moment
+    a licensee's security team finds it.
+    """
+    claimed = []
+    for rel in _html_files():
+        try:
+            body = read(rel).lower()
+        except Exception:
+            continue
+        if ("no record text retained" in body or "zero retention" in body
+                or "record text is assessed and discarded" in body):
+            claimed.append(rel)
+
+    retains = []
+    for route in ("api/review-engine.js", "api/v1/review-engine.js"):
+        try:
+            src = read(route)
+        except Exception:
+            continue
+        block = src[src.find("function logReview"):]
+        block = block[:block.find("export default")] if "export default" in block else block
+        # A body field assigned from the record text is the thing that breaks it.
+        if re.search(r"(record_text|text_excerpt|excerpt|snippet)\s*:", block):
+            retains.append(route)
+        elif re.search(r":\s*text\b", block) or re.search(r"text\.slice\(", block):
+            retains.append(route)
+
+    if not claimed:
+        check("zero-retention claim matches the code", SKIPPED,
+              "no page currently makes the claim")
+        return
+    check("zero-retention claim matches the code", not retains,
+          "CLAIMED on %d page(s) but record text is stored by: %s"
+          % (len(claimed), ", ".join(retains)) if retains
+          else "claimed on %d page(s); neither engine route stores record text"
+               % len(claimed))
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -1318,6 +1409,8 @@ def main():
                check_sitemap_no_duplicates,
                check_commercial_pages_reachable,
                check_framework_names_qualified,
+               check_no_false_assurance_claims,
+               check_zero_retention_claim_is_true,
                check_generated_docs_current, check_cross_endpoint):
         try:
             fn(offline)

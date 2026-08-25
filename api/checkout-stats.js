@@ -29,7 +29,8 @@ const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 // a URL literal is invisible to that check and to anyone grepping for it.
 const SOURCES = {
   'checkout-click': { table: 'interaction_events', select: 'created_at,payload' },
-  'checkout-fallback': { table: 'pilot_contacts', select: 'created_at,message' }
+  'checkout-fallback': { table: 'pilot_contacts', select: 'created_at,message' },
+  'enterprise-inquiry': { table: 'pilot_contacts', select: 'created_at,message' }
 };
 
 function feed(src) {
@@ -117,6 +118,28 @@ export default async function handler(req) {
     if (p.volume) withVolume++;
   }
 
+  // ---- enterprise and licensing inquiries ---------------------------------
+  let inq = [];
+  try {
+    const r = await fetch(SB + feed('enterprise-inquiry'), { headers: H });
+    inq = r.ok ? await r.json() : [];
+  } catch (e) {
+    inq = [];
+  }
+  if (!Array.isArray(inq)) inq = [];
+
+  const inqByInterest = {}, inqByScale = {}, inqByTimeline = {}, inqByCountry = {};
+  let namedPlatform = 0;
+  for (let i = 0; i < inq.length; i++) {
+    let p = {};
+    try { p = JSON.parse((inq[i] || {}).message || '{}') || {}; } catch (e) { p = {}; }
+    bump(inqByInterest, String(p.interest || ''));
+    bump(inqByScale, String(p.scale || ''));
+    bump(inqByTimeline, String(p.timeline || ''));
+    bump(inqByCountry, String(p.country || ''));
+    if (p.platform) namedPlatform++;
+  }
+
   // Which offers can actually take a card right now. A funnel report that does
   // not say this invites the reader to blame the copy for a missing payment link.
   const configured = {};
@@ -134,6 +157,12 @@ export default async function handler(req) {
     leads_by_country: leadsByCountry,
     leads_with_volume: withVolume,
     lead_value_usd: leadValueUsd,
+    enterprise_inquiries: inq.length,
+    inquiries_by_interest: inqByInterest,
+    inquiries_by_scale: inqByScale,
+    inquiries_by_timeline: inqByTimeline,
+    inquiries_by_country: inqByCountry,
+    inquiries_naming_a_platform: namedPlatform,
     checkout_configured: configured,
     note: 'Aggregate only. No name, email or organisation is exposed by this '
         + 'endpoint. unconfigured_intent_usd counts only arrivals that could not '

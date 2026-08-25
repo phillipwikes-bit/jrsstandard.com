@@ -170,6 +170,14 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
  .btn{font-size:8.5px;padding:10px 14px}
  .nav-item{padding:11px 10px;font-size:8.5px}
 }
+
+.spec-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px;display:block;overflow-x:auto}
+.spec-table th{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-dim);text-align:left;padding:8px 12px;border-bottom:1px solid var(--rule);white-space:nowrap}
+.spec-table td{padding:9px 12px;border-bottom:1px solid var(--rule);color:var(--muted);vertical-align:top}
+.ei-l{display:block;margin:14px 0 0;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-dim)}
+.ei-i{display:block;width:100%;max-width:520px;margin-top:6px;padding:10px;background:var(--surface);color:var(--text);border:1px solid var(--rule);font-size:15px;font-family:'Inter',sans-serif}
+#ei-b{margin-top:18px}
+#ei-b[disabled]{opacity:.55;cursor:default}
 </style>
 </head>
 <body>
@@ -646,6 +654,89 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 </div>
 
 <div style="margin-bottom:20px;">
+ <div class="section-head">Licensing the review engine</div>
+ <p class="body-text">For GRC platforms, legal-tech vendors and enterprise risk functions that want the review inside their own product or workflow rather than as a service. The engine runs as a <b>pre-finalization decision gate</b>: a record is examined before it is committed, and the caller receives a structured determination across the five conditions.</p>
+
+ <table class="spec-table">
+  <tr><th>Property</th><th>What it means for your security review</th></tr>
+  <tr><td>Stateless per call</td><td>Each call is independent. No session, no accumulated profile, nothing carried between requests.</td></tr>
+  <tr><td>No record text retained</td><td>Record text is assessed and discarded. It is not written to any table, not echoed back, and not logged. Storage of the first 200 characters was removed on 14 August 2026 while the table still held zero rows.</td></tr>
+  <tr><td>Structured determination only</td><td>What persists is the determination, the per-condition results and a request identifier. Not the record.</td></tr>
+  <tr><td>Per-partner tokens</td><td>Each licensee holds its own credential, independently revocable without affecting any other.</td></tr>
+  <tr><td>Fail-closed</td><td>No token means no access. Open mode requires an explicit server-side flag that is off.</td></tr>
+  <tr><td>Audit correlation</td><td>Every response carries a request identifier, in the body and in a response header, to tie a call to your own audit trail.</td></tr>
+ </table>
+
+ <div class="callout">
+  <div class="callout-label">What zero retention does and does not do for a vendor assessment</div>
+  <div class="callout-body">An engine that holds no customer records has <b>no data at rest to assess</b>, which narrows the scope of a third-party security review to transport and access rather than storage, retention and deletion. <b>It does not remove the assessment, and it is not a substitute for any certification or attestation your procurement process requires.</b> What it changes is how much of that process applies. Your security team makes that determination, not this page.</div>
+ </div>
+
+ <p class="body-text"><b>Stage, stated plainly:</b> the engine is unvalidated and single-model, in operational validation. Reproducibility is disclosed rather than hidden, and reproducibility is not accuracy and not validation. No effectiveness claim is made. Every API response repeats this in its own payload.</p>
+
+ <div class="btn-row">
+  <a href="review-engine.html" class="btn btn-ghost">Integration schema and API contract &rarr;</a>
+  <a href="#enterprise-inquiry" class="btn btn-accent">Request evaluation access &rarr;</a>
+ </div>
+</div>
+
+<div style="margin-bottom:20px;">
+ <div class="section-head">Control-evidence mapping</div>
+ <div class="callout callout-gold">
+  <div class="callout-label">Read this before mapping anything</div>
+  <div class="callout-body"><b>JRS does not establish compliance with ISO/IEC 42001, the NIST AI RMF, the EU AI Act, or any other framework, and no framework requires JRS.</b> It is not a certification, an accreditation, or an audit opinion. What follows is where a record-level review may be <b>relevant as evidence</b> inside a management system you already run. Whether it satisfies any control is your organisation's determination and your assessor's.</div>
+ </div>
+ <table class="spec-table">
+  <tr><th>Area of an AI management system</th><th>What a JRS review can contribute</th><th>What it does not do</th></tr>
+  <tr><td>Documented human review of AI-assisted output</td><td>A per-record finding on whether the stated basis is traceable to source evidence</td><td>Does not evidence that a human reviewed anything; only your workflow records show that</td></tr>
+  <tr><td>Operational monitoring and measurement</td><td>A measured rate of records that cannot carry their own reasoning, by decision type and business unit</td><td>Does not set a threshold, tolerance or target</td></tr>
+  <tr><td>Traceability and retention</td><td>Identification of records whose basis or chronology cannot be reconstructed from the record alone</td><td>Does not assess retention periods, storage or access control</td></tr>
+  <tr><td>Corrective action</td><td>A defined population to remediate, with the failed condition named per record</td><td>Does not perform, verify or close corrective action</td></tr>
+ </table>
+</div>
+
+<div style="margin-bottom:20px;" id="enterprise-inquiry">
+ <div class="section-head">Enterprise and licensing inquiry</div>
+ <p class="body-text">Goes to a private channel, not a public queue. You will get the integration schema, the tier that fits, and a written scope in one reply. <b>No records are sent at this stage.</b></p>
+ <form id="ei-form">
+  <label class="ei-l">Name<input class="ei-i" name="name" required maxlength="120" autocomplete="name"></label>
+  <label class="ei-l">Work email<input class="ei-i" name="email" type="email" required maxlength="160" autocomplete="email"></label>
+  <label class="ei-l">Organisation<input class="ei-i" name="organization" required maxlength="160" autocomplete="organization"></label>
+  <label class="ei-l">Role<input class="ei-i" name="role" maxlength="120" placeholder="e.g. Head of GRC, Platform Architect"></label>
+  <label class="ei-l">Interest
+   <select class="ei-i" name="interest">
+    <option value="engine-licence">Licence the review engine</option>
+    <option value="oem-embed">Embed it in our product</option>
+    <option value="framework-licence">Licence the framework</option>
+    <option value="evaluation">Evaluation access first</option>
+    <option value="other">Something else</option>
+   </select>
+  </label>
+  <label class="ei-l">Platform or environment<input class="ei-i" name="platform" maxlength="160" placeholder="e.g. ServiceNow IRM, in-house case system"></label>
+  <label class="ei-l">Records reviewed per year
+   <select class="ei-i" name="scale">
+    <option value="unknown">Not sure yet</option>
+    <option value="under-1k">Under 1,000</option>
+    <option value="1k-10k">1,000 to 10,000</option>
+    <option value="10k-100k">10,000 to 100,000</option>
+    <option value="over-100k">Over 100,000</option>
+   </select>
+  </label>
+  <label class="ei-l">Timeline
+   <select class="ei-i" name="timeline">
+    <option value="exploratory">Exploratory</option>
+    <option value="this-year">This year</option>
+    <option value="this-quarter">This quarter</option>
+    <option value="immediate">Immediate</option>
+   </select>
+  </label>
+  <label class="ei-l">Anything else<textarea class="ei-i" name="note" maxlength="1200" rows="3"></textarea></label>
+  <button class="btn btn-accent" type="submit" id="ei-b">Send inquiry</button>
+  <p id="ei-m" role="status" class="muted-text"></p>
+ </form>
+</div>
+
+<div style="margin-bottom:20px;">
  <div class="section-head">Start here: run it on your own records</div>
  <p class="body-text">The Organization Mini-Pilot runs the five conditions across a set of your own records and returns the distribution: routing bands, and per-condition pass, needs-attention and fail counts. <b>No record text is stored at any point.</b> Records are assessed in memory and discarded; only counts and category labels leave your browser. That is what makes it safe to run on confidential, privileged or personal material.</p>
  <p class="body-text">It produces the one thing an enterprise conversation actually needs, which is evidence from your records rather than someone else's.</p>
@@ -833,6 +924,44 @@ function trackClickAndNavigate(event, targetUrl, eventMetaData) {
       trackClickAndNavigate(ev, a.href, meta);
     } catch (e) { /* a telemetry fault must never block navigation */ }
   }, true);
+})();
+</script>
+<script>
+/* Enterprise inquiry. Posts to /api/enterprise-inquiry, which fails loud: if the
+   row does not land the visitor is told rather than thanked, because a licensing
+   lead that reports success while being dropped is the failure this whole site
+   is about. */
+(function () {
+  var f = document.getElementById('ei-form');
+  if (!f) return;
+  var m = document.getElementById('ei-m'), b = document.getElementById('ei-b');
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    b.disabled = true;
+    m.style.color = 'var(--muted)';
+    m.textContent = 'Sending...';
+    var d = {};
+    new FormData(f).forEach(function (v, k) { d[k] = v; });
+    fetch('/api/enterprise-inquiry', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(d)
+    }).then(function (r) { return r.json(); }).then(function (j) {
+      if (j && j.ok) {
+        f.innerHTML = '';
+        m.style.color = 'var(--ready-text)';
+        m.textContent = 'Received. You will get the schema, the tier and a written scope by email.';
+      } else {
+        m.style.color = 'var(--stop-text)';
+        m.textContent = 'That did not save. Email info@jrsstandard.com and it will be handled.';
+        b.disabled = false;
+      }
+    }).catch(function () {
+      m.style.color = 'var(--stop-text)';
+      m.textContent = 'Network error. Email info@jrsstandard.com and it will be handled.';
+      b.disabled = false;
+    });
+  });
 })();
 </script>
 </body>
