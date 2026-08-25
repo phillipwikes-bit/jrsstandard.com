@@ -190,6 +190,19 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 .dt-links{display:flex;flex-wrap:wrap;gap:14px}
 .dt-links a{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-dim);padding-bottom:2px}
 .dt-links a:hover{color:var(--text)}
+
+.dts{border:1px solid var(--rule);background:var(--surface);padding:24px 26px;margin:26px 0}
+.dts-h{font-family:'Bodoni Moda',serif;font-size:26px;color:var(--text);margin:0 0 18px;line-height:1.25}
+.dts-track{margin-bottom:22px}
+.dts-track:last-child{margin-bottom:0}
+.dts-t1{border-left:2px solid var(--accent);padding-left:16px}
+.dts-t2{border-left:2px solid var(--ready-text);padding-left:16px}
+.dts-th{font-family:'Bodoni Moda',serif;font-size:19px;color:var(--text);margin:0 0 10px;line-height:1.3}
+.dts-p{font-family:'Inter',sans-serif;font-size:14px;line-height:1.7;color:var(--muted);margin:0 0 12px}
+.dts-ul{margin:0;padding-left:20px}
+.dts-ul li{font-family:'Inter',sans-serif;font-size:14px;line-height:1.7;color:var(--muted);margin-bottom:9px}
+.dts-ul li b{color:var(--text)}
+.dts code{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent)}
 </style>
 </head>
 <body>
@@ -237,23 +250,25 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 <p class="page-subtitle">When a consequential decision is questioned long after it is made, the record becomes the only witness. For HR teams, compliance programs, and investigation units that must defend such decisions later, JRS examines whether each record can explain why the decision was made: the basis, reasoning, evidence, and chronology, before the record is finalized.</p>
 
 <!-- JRS DUAL TRACK v1 :: CANONICAL BLOCK. Byte-identical on every page that
-     carries it. Edit once, propagate with scripts/apply_dual_track.py. -->
+     carries it. Customer-facing voice only: no pricing, no internal capacity,
+     no claim that any security assessment is avoided. -->
 <div class="dual-track">
  <div class="dt-card dt-enterprise">
-  <div class="dt-tag">Track 1 &middot; Enterprise</div>
-  <div class="dt-head">License the review engine</div>
-  <p class="dt-body">A stateless pre-finalization decision gate for GRC platforms, legal-tech vendors and enterprise risk functions. One record in, a structured determination across the five conditions out, with a request identifier for audit correlation on your side. <b>No record text is retained.</b> Per-partner tokens, fail-closed, versioned route.</p>
-  <div class="dt-links"><a href="review-engine.html">Integration schema</a> <a href="enterprise.html#enterprise-inquiry">Request evaluation access</a></div>
+  <div class="dt-tag">Track 1 &middot; Enterprise Platform</div>
+  <div class="dt-head">The Enterprise Platform Track</div>
+  <p class="dt-body">Dedicated B2B API licensing of the JRS review engine, so mid-market GRC platforms and legal-tech providers can embed a <b>pre-finalization decision gate</b> directly into their own workflows. One record in, a structured determination across the five review conditions out, returned with a request identifier your audit trail can cite.</p>
+  <p class="dt-body"><b>Stateless, with zero data retention at rest.</b> Record text is assessed in memory and discarded. It is not written to any table, not echoed back, and not logged. Per-partner tokens, revocable independently, on a versioned route. This narrows what a vendor security review has to examine; <b>it does not remove the review</b>, and it is not a substitute for any certification your procurement requires.</p>
+  <div class="dt-links"><a href="review-engine.html">Integration schema</a> <a href="enterprise.html#enterprise-inquiry">Enterprise inquiry</a></div>
  </div>
  <div class="dt-card dt-public">
-  <div class="dt-tag">Track 2 &middot; Free and open</div>
-  <div class="dt-head">Guides, training and simulations</div>
-  <p class="dt-body">Investigator field guides, the six-module self-paced training, and live Decision Reconstruction Risk simulations. <b>Free, ungated, and staying that way.</b> No account, no card, no expiry.</p>
+  <div class="dt-tag">Track 2 &middot; Practitioner</div>
+  <div class="dt-head">The Practitioner Track</div>
+  <p class="dt-body">Open, unencumbered access for individual investigators, HR and compliance officers, and researchers: the core standard, live Decision Reconstruction Risk simulations, the six-module self-paced training, and the investigator field guides.</p>
+  <p class="dt-body"><b>Free, ungated, and staying that way.</b> No account, no card, no expiry, no registration wall.</p>
   <div class="dt-links"><a href="investigator-guides.html">Field guides</a> <a href="training.html">Training</a> <a href="check.html">Seven-point check</a></div>
  </div>
 </div>
 <!-- /JRS DUAL TRACK v1 -->
-
 
 <div style="margin-bottom:24px;display:flex;flex-wrap:wrap;gap:7px;">
  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 10px;">No dedicated software</span>
@@ -685,29 +700,36 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 </div>
 
 <div style="margin-bottom:20px;">
- <div class="section-head">Licensing the review engine</div>
- <p class="body-text">For GRC platforms, legal-tech vendors and enterprise risk functions that want the review inside their own product or workflow rather than as a service. The engine runs as a <b>pre-finalization decision gate</b>: a record is examined before it is committed, and the caller receives a structured determination across the five conditions.</p>
+ <div class="section-head">Clean technical integration</div>
+ <p class="body-text">The JRS review engine is licensed as a <b>stateless review gate</b>. A partner platform sends the text of one record and receives a structured determination across the five review conditions, together with a request identifier that ties the call to an entry in its own audit trail. There is no session, no accumulated profile, and nothing carried between requests.</p>
 
  <table class="spec-table">
-  <tr><th>Property</th><th>What it means for your security review</th></tr>
-  <tr><td>Stateless per call</td><td>Each call is independent. No session, no accumulated profile, nothing carried between requests.</td></tr>
-  <tr><td>No record text retained</td><td>Record text is assessed and discarded. It is not written to any table, not echoed back, and not logged. Storage of the first 200 characters was removed on 14 August 2026 while the table still held zero rows.</td></tr>
-  <tr><td>Structured determination only</td><td>What persists is the determination, the per-condition results and a request identifier. Not the record.</td></tr>
-  <tr><td>Per-partner tokens</td><td>Each licensee holds its own credential, independently revocable without affecting any other.</td></tr>
-  <tr><td>Fail-closed</td><td>No token means no access. Open mode requires an explicit server-side flag that is off.</td></tr>
-  <tr><td>Audit correlation</td><td>Every response carries a request identifier, in the body and in a response header, to tie a call to your own audit trail.</td></tr>
+  <tr><th>Property</th><th>What it means in your environment</th></tr>
+  <tr><td>Stateless per call</td><td>Each request is independent and self-contained. Nothing is carried forward from one call to the next.</td></tr>
+  <tr><td><b>Zero data retention at rest</b></td><td>Record text is assessed in memory and discarded. It is not written to any table, not echoed back in the response, and not logged. Storage of even a 200-character excerpt was removed on 14 August 2026, while the table still held zero rows.</td></tr>
+  <tr><td>Structured determination only</td><td>What persists is the determination, the per-condition results and the request identifier. Never the record.</td></tr>
+  <tr><td>Per-partner tokens</td><td>Each licensee holds its own credential, rotatable and revocable independently of every other.</td></tr>
+  <tr><td>Fail-closed by default</td><td>No token means no access. Open mode requires an explicit server-side flag that is off.</td></tr>
+  <tr><td>Versioned route</td><td>Build against <code>/api/v1/review-engine</code>. The contract is versioned so an upgrade is your decision, not a surprise.</td></tr>
  </table>
+</div>
+
+<div style="margin-bottom:20px;">
+ <div class="section-head">Low-friction deployment</div>
+ <p class="body-text">Most integrations that touch consequential records arrive with a storage question attached: where the data lives, how long it is kept, who can reach it, and how it is destroyed. <b>An engine that holds no customer records has no data at rest to describe</b>, which removes that entire class of question from the integration conversation.</p>
 
  <div class="callout">
-  <div class="callout-label">What zero retention does and does not do for a vendor assessment</div>
-  <div class="callout-body">An engine that holds no customer records has <b>no data at rest to assess</b>, which narrows the scope of a third-party security review to transport and access rather than storage, retention and deletion. <b>It does not remove the assessment, and it is not a substitute for any certification or attestation your procurement process requires.</b> What it changes is how much of that process applies. Your security team makes that determination, not this page.</div>
+  <div class="callout-label">What that does and does not mean</div>
+  <div class="callout-body">It narrows what a third-party review has to examine, from storage, retention and deletion down to transport and access. <b>It does not remove the review, and it is not a substitute for any certification or attestation your procurement process requires.</b> Your security team makes that determination, not this page. What changes is how much of the process applies, not whether it applies.</div>
  </div>
+
+ <p class="body-text">For a GRC or legal-tech platform, the practical effect is that decision defensibility can be augmented inside an existing workflow: the gate runs before a record is finalized, the determination is returned to your product, and your customer's records never leave your control.</p>
 
  <p class="body-text"><b>Stage, stated plainly:</b> the engine is unvalidated and single-model, in operational validation. Reproducibility is disclosed rather than hidden, and reproducibility is not accuracy and not validation. No effectiveness claim is made. Every API response repeats this in its own payload.</p>
 
  <div class="btn-row">
   <a href="review-engine.html" class="btn btn-ghost">Integration schema and API contract &rarr;</a>
-  <a href="#enterprise-inquiry" class="btn btn-accent">Request evaluation access &rarr;</a>
+  <a href="#enterprise-inquiry" class="btn btn-accent">Enterprise inquiry &rarr;</a>
  </div>
 </div>
 
@@ -728,7 +750,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 
 <div style="margin-bottom:20px;" id="enterprise-inquiry">
  <div class="section-head">Enterprise and licensing inquiry</div>
- <p class="body-text">Goes to a private channel, not a public queue. You will get the integration schema, the tier that fits, and a written scope in one reply. <b>No records are sent at this stage.</b></p>
+ <p class="body-text">Submissions route directly to a private operational dashboard, not to a public queue and not to a mailing list. You will get the integration schema, the tier that fits, and a written scope in one reply. <b>No records are sent at this stage.</b></p>
  <form id="ei-form">
   <label class="ei-l">Name<input class="ei-i" name="name" required maxlength="120" autocomplete="name"></label>
   <label class="ei-l">Work email<input class="ei-i" name="email" type="email" required maxlength="160" autocomplete="email"></label>

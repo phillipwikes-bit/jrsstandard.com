@@ -322,18 +322,21 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
   <p class="page-subtitle" style="margin-bottom:6px;">Most workplace records tell us what was decided. Far fewer allow a future reviewer to reconstruct why the decision was made from the record alone. That gap is decision reconstruction risk. JRS is evaluating whether pre-finalization review can surface those gaps before records are finalized, when decision defensibility can still be improved.</p>
 
 <!-- JRS DUAL TRACK v1 :: CANONICAL BLOCK. Byte-identical on every page that
-     carries it. Edit once, propagate with scripts/apply_dual_track.py. -->
+     carries it. Customer-facing voice only: no pricing, no internal capacity,
+     no claim that any security assessment is avoided. -->
 <div class="dual-track">
  <div class="dt-card dt-enterprise">
-  <div class="dt-tag">Track 1 &middot; Enterprise</div>
-  <div class="dt-head">License the review engine</div>
-  <p class="dt-body">A stateless pre-finalization decision gate for GRC platforms, legal-tech vendors and enterprise risk functions. One record in, a structured determination across the five conditions out, with a request identifier for audit correlation on your side. <b>No record text is retained.</b> Per-partner tokens, fail-closed, versioned route.</p>
-  <div class="dt-links"><a href="review-engine.html">Integration schema</a> <a href="enterprise.html#enterprise-inquiry">Request evaluation access</a></div>
+  <div class="dt-tag">Track 1 &middot; Enterprise Platform</div>
+  <div class="dt-head">The Enterprise Platform Track</div>
+  <p class="dt-body">Dedicated B2B API licensing of the JRS review engine, so mid-market GRC platforms and legal-tech providers can embed a <b>pre-finalization decision gate</b> directly into their own workflows. One record in, a structured determination across the five review conditions out, returned with a request identifier your audit trail can cite.</p>
+  <p class="dt-body"><b>Stateless, with zero data retention at rest.</b> Record text is assessed in memory and discarded. It is not written to any table, not echoed back, and not logged. Per-partner tokens, revocable independently, on a versioned route. This narrows what a vendor security review has to examine; <b>it does not remove the review</b>, and it is not a substitute for any certification your procurement requires.</p>
+  <div class="dt-links"><a href="review-engine.html">Integration schema</a> <a href="enterprise.html#enterprise-inquiry">Enterprise inquiry</a></div>
  </div>
  <div class="dt-card dt-public">
-  <div class="dt-tag">Track 2 &middot; Free and open</div>
-  <div class="dt-head">Guides, training and simulations</div>
-  <p class="dt-body">Investigator field guides, the six-module self-paced training, and live Decision Reconstruction Risk simulations. <b>Free, ungated, and staying that way.</b> No account, no card, no expiry.</p>
+  <div class="dt-tag">Track 2 &middot; Practitioner</div>
+  <div class="dt-head">The Practitioner Track</div>
+  <p class="dt-body">Open, unencumbered access for individual investigators, HR and compliance officers, and researchers: the core standard, live Decision Reconstruction Risk simulations, the six-module self-paced training, and the investigator field guides.</p>
+  <p class="dt-body"><b>Free, ungated, and staying that way.</b> No account, no card, no expiry, no registration wall.</p>
   <div class="dt-links"><a href="investigator-guides.html">Field guides</a> <a href="training.html">Training</a> <a href="check.html">Seven-point check</a></div>
  </div>
 </div>
