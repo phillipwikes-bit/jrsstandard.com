@@ -2077,6 +2077,57 @@ def check_inline_scripts_parse(offline):
           else "%d script blocks across %d pages" % (blocks, len(pages)))
 
 
+def check_nav_links_reach_their_section(offline):
+    """No menu entry may land on the front page instead of what it names.
+
+    index.html is a thirteen-panel tab switcher: every section is display:none
+    until showSection() runs. A page that is not index.html cannot call that
+    function, so ten nav links across enterprise.html, review-engine.html and
+    pilot.html were written as a bare "index.html", or as an #section- fragment
+    that does nothing because a fragment cannot open a hidden element. Whichever
+    menu entry a reader pressed, they arrived at the homepage default panel.
+    The owner's report: "Almost all links to menu are pulling up front page".
+
+    Two things have to hold together, so both are checked. index.html must read
+    the section out of the URL on load, and no nav link anywhere may point at a
+    bare index.html. Either one alone leaves the defect in place.
+    """
+    import glob
+
+    idx = read("index.html")
+    check("index.html opens the section named in its URL",
+          "OPEN A SECTION NAMED IN THE URL" in idx
+          and "hashchange" in idx,
+          "handler and hashchange listener present")
+
+    # Every fragment a nav link points at must be a real section on index.html.
+    sections = set(re.findall(r'id="section-([a-z0-9-]+)"', idx))
+    bare, unknown = [], []
+    for p in sorted(glob.glob(os.path.join(ROOT, "*.html"))):
+        rel = os.path.relpath(p, ROOT)
+        if rel == "index.html":
+            continue
+        src = read(rel)
+        i = src.find('id="primary-nav-items"')
+        if i < 0:
+            continue
+        nav = src[i:src.find("</nav>", i)]
+        for m in re.finditer(r'<a\s[^>]*href="(index\.html[^"]*)"', nav):
+            href = m.group(1)
+            if href == "index.html":
+                bare.append("%s -> %s" % (rel, href))
+            elif "#section-" in href:
+                sid = href.split("#section-", 1)[1]
+                if sid not in sections:
+                    unknown.append("%s -> #section-%s" % (rel, sid))
+
+    check("no nav link lands on the bare front page", not bare,
+          "; ".join(bare) if bare else "every nav link names its destination")
+    check("every nav fragment matches a real section on index.html", not unknown,
+          "; ".join(unknown) if unknown
+          else "%d sections available" % len(sections))
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -2109,6 +2160,7 @@ def main():
                check_robots_directives_coherent,
                check_style_tags_balanced,
                check_inline_scripts_parse,
+               check_nav_links_reach_their_section,
                check_training_is_ungated,
                check_training_modules_are_findable,
                check_generated_docs_current, check_cross_endpoint):

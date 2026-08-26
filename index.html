@@ -4882,6 +4882,41 @@ function showSection(id){
  window.scrollTo(0,0);
 }
 
+// ── OPEN A SECTION NAMED IN THE URL ───────────────
+// Every section on this page is display:none until showSection() runs, so a
+// link from another page could not reach one: a bare href landed on the
+// default panel and a #fragment did nothing, because a fragment cannot open a
+// hidden element. Ten links across enterprise.html, review-engine.html and
+// pilot.html were arriving at the front page whatever they were labelled.
+//
+// Both spellings are honoured. #section-tools is what the existing links use;
+// ?s=tools is accepted too so a link can carry a section without also carrying
+// a fragment that the browser will try to scroll to.
+(function(){
+  function wanted(){
+    try {
+      var h = (location.hash || '').replace(/^#/, '');
+      if (h.indexOf('section-') === 0) return h.slice(8);
+      var q = new URLSearchParams(location.search).get('s') || '';
+      return q.replace(/[^a-z0-9-]/gi, '');
+    } catch (e) { return ''; }
+  }
+  function open(){
+    var id = wanted();
+    if (!id) return;
+    if (!document.getElementById('section-' + id)) return;
+    showSection(id);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', open);
+  } else {
+    open();
+  }
+  // A reader who presses back, or edits the address, should land where the URL
+  // says rather than on whatever panel happened to be open.
+  window.addEventListener('hashchange', open);
+})();
+
 // ── MOBILE NAV TOGGLE ─────────────────────────────
 function toggleMobileNav(){
  const navItems=document.getElementById('primary-nav-items');
