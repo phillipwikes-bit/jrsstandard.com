@@ -323,6 +323,20 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
  <p class="body-text">The call is stateless. Nothing in <code>text</code> is retained, stored, or used for training, so the record never leaves your control and no data-residency obligation transfers to us.</p>
 </div>
 
+<div style="margin-bottom:20px;" id="sandbox">
+ <h2 class="section-head">Run one now, without a token</h2>
+ <p class="body-text">Paste a record and run it. <b>No account, no token, no contact.</b> The sandbox is capped at three records per day per address and truncates at 2,000 characters. <b>Nothing you paste here is stored:</b> the sandbox writes no database row at all, which is a stronger guarantee than the paid route, where per-condition statuses are kept as programme telemetry.</p>
+ <p class="body-text"><b>Redact before you paste.</b> Use a record you are comfortable sending to a third-party model, or the sample below.</p>
+ <textarea id="sb-text" rows="6" maxlength="2000" placeholder="Paste a record, or press Load sample" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-family:'Inter',sans-serif;font-size:13.5px;line-height:1.6;"></textarea>
+ <div class="btn-row" style="margin-top:10px;">
+  <button class="btn btn-primary" id="sb-go" type="button">Run the review &rarr;</button>
+  <button class="btn btn-ghost" id="sb-sample" type="button">Load sample</button>
+  <a href="enterprise.html#enterprise-inquiry" class="btn btn-ghost">Request an unmetered token</a>
+ </div>
+ <p id="sb-msg" role="status" class="muted-text" style="margin-top:10px;"></p>
+ <pre class="code-block" id="sb-out" style="display:none;white-space:pre-wrap;"></pre>
+</div>
+
 <div style="margin-bottom:20px;">
  <h2 class="section-head">Authentication</h2>
  <p class="body-text">Send your token as a bearer credential:</p>
@@ -633,6 +647,87 @@ function trackClickAndNavigate(event, targetUrl, eventMetaData) {
       m.textContent = 'Network error. Email info@jrsstandard.com and it will be handled.';
       b.disabled = false;
     });
+  });
+})();
+</script>
+
+<script>
+// CLAUDE.md III.3: every user-facing free-text input calls this before fetch.
+// Canonical implementation, byte-identical to index.html and pilot.html.
+function jrsSanitizeCheck(text) {
+  var patterns = [
+    {re:/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, label:'email address'},
+    {re:/\b\d{3}[-.\s]?\d{3}[-.\s]?\d{4}\b/g, label:'phone number'},
+    {re:/\b\d{3}-\d{2}-\d{4}\b/g, label:'SSN'},
+    {re:/\b\d{4}[\s-]?\d{4}[\s-]?\d{4}[\s-]?\d{4}\b/g, label:'card number'}
+  ];
+  var found = [];
+  patterns.forEach(function(p){ if (p.re.test(text)) found.push(p.label); });
+  if (found.length) {
+    return confirm('Potential sensitive identifier detected ('+found.join(', ')+'). Confirm all personally identifiable information has been redacted before submission to preserve work-product privileges.');
+  }
+  return true;
+}
+</script>
+<script>
+// ── SANDBOX ─────────────────────────────────────────
+// Removes the last human step from evaluation. Before this, an integrator
+// could read the contract, the example, the spec and the security page, and
+// then had to email someone to obtain a token before running one record.
+(function(){
+  var t = document.getElementById('sb-text');
+  var go = document.getElementById('sb-go');
+  var samp = document.getElementById('sb-sample');
+  var msg = document.getElementById('sb-msg');
+  var out = document.getElementById('sb-out');
+  if (!t || !go || !msg || !out) return;
+
+  var SAMPLE = 'Following review of the incident report dated 11 March and the two witness statements taken on 12 March, and after a meeting with the employee on 14 March at which they were accompanied, the decision was to issue a final written warning. The employee accepted that the safety procedure had not been followed but stated that the shift handover notes were incomplete. The handover notes were not retained. The warning will remain on file for twelve months.';
+
+  if (samp) samp.addEventListener('click', function(){
+    t.value = SAMPLE;
+    msg.textContent = 'Sample loaded. This one has a deliberate chronology gap.';
+    msg.style.color = 'var(--muted-soft)';
+  });
+
+  go.addEventListener('click', function(){
+    var text = (t.value || '').trim();
+    if (text.length < 40) {
+      msg.textContent = 'Provide at least 40 characters of record text.';
+      msg.style.color = 'var(--review-text)';
+      return;
+    }
+    if (typeof jrsSanitizeCheck === 'function' && !jrsSanitizeCheck(text)) return;
+    go.disabled = true;
+    msg.style.color = 'var(--muted-soft)';
+    msg.textContent = 'Running...';
+    out.style.display = 'none';
+    fetch('/api/sandbox', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text: text })
+    })
+      .then(function(r){ return r.json().then(function(j){ return { ok: r.ok, j: j }; }); })
+      .then(function(res){
+        go.disabled = false;
+        out.style.display = 'block';
+        out.textContent = JSON.stringify(res.j, null, 2);
+        if (res.ok) {
+          msg.textContent = 'Routing: ' + (res.j.routing || 'returned') + '. Nothing you pasted was stored.';
+          msg.style.color = 'var(--ready-text)';
+        } else if (res.j && res.j.error === 'sandbox_disabled') {
+          msg.textContent = 'The sandbox is not open right now. Request a token through the enterprise inquiry form.';
+          msg.style.color = 'var(--review-text)';
+        } else {
+          msg.textContent = (res.j && res.j.detail) || 'The request did not complete.';
+          msg.style.color = 'var(--review-text)';
+        }
+      })
+      .catch(function(){
+        go.disabled = false;
+        msg.textContent = 'Network error. The contract and a runnable curl example are above, and info@jrsstandard.com reaches a person.';
+        msg.style.color = 'var(--review-text)';
+      });
   });
 })();
 </script>

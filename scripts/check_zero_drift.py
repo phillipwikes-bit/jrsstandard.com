@@ -2832,6 +2832,141 @@ def check_track1_pages_lead_with_an_action(offline):
           else "enterprise, review-engine and security all act above the fold")
 
 
+def check_sandbox_is_failclosed(offline):
+    """A public unauthenticated route onto a paid model must be fail-closed.
+
+    The sandbox removes the last human step from evaluation: before it, an
+    integrator could read the contract, the runnable example, the OpenAPI
+    spec and the security page, then had to email someone for a token before
+    running one record. That convenience is also cost and abuse surface, so
+    the route must stay off until the owner turns it on, and must carry its
+    own caps rather than inheriting the paid route's.
+    """
+    if not os.path.exists("api/sandbox.js"):
+        check("sandbox is fail-closed", False, "api/sandbox.js missing")
+        return
+    src = read("api/sandbox.js")
+    bad = []
+    if "SANDBOX_ENABLED" not in src:
+        bad.append("no enable flag")
+    elif "!== '1'" not in src.replace('"', "'"):
+        bad.append("enable flag is not a strict opt-in")
+    for cap in ("SANDBOX_PER_IP_PER_DAY", "SANDBOX_GLOBAL_PER_DAY", "SANDBOX_MAX_CHARS"):
+        if cap not in src:
+            bad.append("no %s cap" % cap)
+    if "ANTHROPIC_API_KEY" in src and "process.env.ANTHROPIC_API_KEY" not in src:
+        bad.append("key referenced outside process.env")
+    # The sandbox must never write a row.
+    for sink in ("/rest/v1/", "SUPABASE", "SERVICE_ROLE"):
+        if sink in src:
+            bad.append("writes to a store (%s)" % sink)
+    check("sandbox is fail-closed", not bad,
+          "; ".join(bad) if bad else "opt-in flag, three caps, no store, no key leak")
+
+
+def check_sandbox_is_reachable_and_gated(offline):
+    """The sandbox UI must exist, be linked, and run the PII gate first."""
+    src = read("review-engine.html")
+    bad = []
+    if 'id="sandbox"' not in src:
+        bad.append("no sandbox section")
+    if "'/api/sandbox'" not in src and '"/api/sandbox"' not in src:
+        bad.append("UI does not call /api/sandbox")
+    if "jrsSanitizeCheck" not in src:
+        bad.append("no PII gate before submit")
+    if ".catch(" not in src:
+        bad.append("fetch has no catch handler")
+    ent = read("enterprise.html")
+    if "review-engine.html#sandbox" not in ent:
+        bad.append("not linked from enterprise.html")
+    check("sandbox is reachable and gated", not bad,
+          "; ".join(bad) if bad else "section present, gate applied, catch present, linked")
+
+
+def check_pricing_is_published(offline):
+    """A buyer must be able to size the commitment before a call."""
+    src = read("enterprise.html")
+    bad = []
+    if 'id="pricing"' not in src:
+        bad.append("no pricing section")
+    # NO FIGURES. check_no_internal_strategy_language records an owner
+    # constraint of 2026-08-25 against publishing a licence floor. What is
+    # asserted instead is that the SHAPE of the commitment is stated, which
+    # is what lets a buyer self-qualify without opening a negotiation at its
+    # bottom.
+    for term in ("Integration setup", "Platform licence", "Evaluation",
+                 "What moves it"):
+        if term not in src:
+            bad.append("pricing section does not state %r" % term)
+    if "#pricing" not in src:
+        bad.append("pricing not linked from the page")
+    check("pricing posture is published", not bad,
+          "; ".join(bad) if bad
+          else "commitment shape stated, no floor published per owner constraint")
+
+
+def check_pii_gate_is_identical_everywhere(offline):
+    """One PII gate, byte-identical on every page that accepts free text.
+
+    index.html carried a compact variant and pilot.html the spaced form
+    printed in CLAUDE.md III.3. The drift was invisible until a third copy
+    was added for the sandbox, which is exactly the failure mode this file
+    exists to catch.
+    """
+    def body(text):
+        i = text.find("function jrsSanitizeCheck")
+        if i < 0:
+            return None
+        depth, k = 0, text.find("{", i)
+        while k < len(text):
+            if text[k] == "{":
+                depth += 1
+            elif text[k] == "}":
+                depth -= 1
+                if depth == 0:
+                    return text[i:k + 1]
+            k += 1
+        return None
+
+    pages = ("index.html", "pilot.html", "review-engine.html")
+    got = {}
+    for page in pages:
+        b = body(read(page))
+        if b is None:
+            check("PII gate identical on every text-input page", False,
+                  "%s has no jrsSanitizeCheck" % page)
+            return
+        got[page] = b
+    uniq = set(got.values())
+    check("PII gate identical on every text-input page", len(uniq) == 1,
+          "%d pages, %d distinct copies" % (len(got), len(uniq)))
+
+
+def check_homepage_is_a_landing_page(offline):
+    """The home panel must not carry the whole site.
+
+    Measured 2026-08-26 at 390x844: the home panel was 38,696px of a
+    39,361px page, about forty-six phone screens, with 55 top-level blocks,
+    while twelve other panels existed in the same document for most of those
+    subjects. Thirty-three blocks were moved byte-for-byte into the panel
+    built for each one.
+    """
+    src = read("index.html")
+    i = src.find('id="section-home"')
+    if i < 0:
+        check("homepage is a landing page", False, "section-home not found")
+        return
+    m = re.compile(r'<div\s+id="section-[a-z]+"\s+class="page-section"').search(src, i + 10)
+    if not m:
+        check("homepage is a landing page", False, "no following panel")
+        return
+    home_bytes = m.start() - i
+    total = len(src)
+    share = 100.0 * home_bytes / total
+    check("homepage is a landing page", share < 12.0,
+          "home panel is %.1f%% of the document (%d bytes)" % (share, home_bytes))
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -2882,6 +3017,11 @@ def main():
                check_security_page_exists_and_is_linked,
                check_vendor_question_is_asked_once,
                check_track1_pages_lead_with_an_action,
+               check_sandbox_is_failclosed,
+               check_sandbox_is_reachable_and_gated,
+               check_pricing_is_published,
+               check_pii_gate_is_identical_everywhere,
+               check_homepage_is_a_landing_page,
                check_training_is_ungated,
                check_training_modules_are_findable,
                check_generated_docs_current, check_cross_endpoint):
