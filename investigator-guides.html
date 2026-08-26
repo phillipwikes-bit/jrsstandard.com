@@ -71,6 +71,13 @@ h1{font-family:'Bodoni Moda',serif;font-size:33px;font-weight:400;line-height:1.
 
 .skip-link{position:absolute;left:-9999px;top:0;background:var(--accent);color:#050505;padding:10px 16px;z-index:100;font-family:'JetBrains Mono',monospace;font-size:11px}
 .skip-link:focus{left:0}
+/* JRS SITE NAV v1 */
+.jrs-sitenav{display:flex;align-items:stretch;background:var(--bg);border-bottom:1px solid var(--rule);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.jrs-sitenav::-webkit-scrollbar{display:none}
+.jrs-sitenav a{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;padding:13px 16px;border-right:1px solid var(--rule);white-space:nowrap;flex-shrink:0;display:flex;align-items:center;min-height:44px}
+.jrs-sitenav a:hover{color:var(--accent);background:rgba(190,148,71,.05)}
+@media(max-width:640px){ .jrs-sitenav a{padding:12px 13px;font-size:7.5px} }
+/* /JRS SITE NAV v1 */
 </style>
 </head>
 <body>
@@ -81,6 +88,18 @@ h1{font-family:'Bodoni Moda',serif;font-size:33px;font-weight:400;line-height:1.
     <div class="header-meta">Justification Review Standard<br>Investigator Field Guides</div>
   </div>
 </header>
+<!-- JRS SITE NAV v1 :: CANONICAL BLOCK. Byte-identical on every page that carries it. -->
+<nav class="jrs-sitenav" aria-label="Site">
+ <a href="index.html">Home</a>
+ <a href="training.html">Training</a>
+ <a href="index.html#section-tools">Free Resources</a>
+ <a href="simulations.html">Simulations</a>
+ <a href="pilot.html">Pilot Program</a>
+ <a href="enterprise.html">Enterprise</a>
+ <a href="research.html">Research</a>
+ <a href="jrsstandard.html">The Standard</a>
+</nav>
+<!-- /JRS SITE NAV v1 -->
 <main id="main-content">
 <div class="wrap">
   <div class="hero">
