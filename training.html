@@ -91,6 +91,11 @@ a:hover{text-decoration:underline}
 /* TRAINING MODULES */
 .module-list{display:flex;flex-direction:column;gap:0;border:1px solid var(--rule);overflow:hidden;margin-bottom:36px}
 .module-row{display:grid;grid-template-columns:52px 1fr auto;align-items:center;border-bottom:1px solid var(--rule);background:var(--surface);transition:.15s}
+/* Three simulation categories side by side. On a 390px phone each column came
+   out at about 128px and the third ran 6px past the viewport, and because the
+   container clips rather than scrolls the third card was simply cut off. */
+.sim-cat-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+@media(max-width:640px){ .sim-cat-grid{grid-template-columns:1fr} }
 .module-row:last-child{border-bottom:none}
 .module-row.complete{background:rgba(30,92,53,.08)}
 .module-num{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted-soft);display:flex;align-items:center;justify-content:center;padding:18px 0;border-right:1px solid var(--rule);height:100%}
@@ -1549,7 +1554,7 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
     <p class="section-sub" style="max-width:740px">Three simulation categories covering document reconstruction review, escalation routing decisions, and review instability identification. Scenarios are procedurally realistic: organizations appear fragmented, information incomplete, and reviewer interpretations divergent.</p>
   </div>
 
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);overflow:hidden;margin-bottom:20px;max-width:880px">
+  <div class="sim-cat-grid" style="gap:1px;background:var(--rule);border:1px solid var(--rule);overflow:hidden;margin-bottom:20px;max-width:880px">
     <div style="background:var(--surface);padding:16px 18px">
       <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:6px">Category 1</div>
       <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px">Document Reconstruction Review</div>

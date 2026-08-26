@@ -119,7 +119,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
   var person = null;
 
   function fail(h, p){
-    card.innerHTML = '<div class="eyebrow">Link not recognized</div><h2 class="h1-look">' + esc(h) + '</h2>'
+    card.innerHTML = '<div class="eyebrow">Link not recognized</div><h1 class="h1-look">' + esc(h) + '</h1>'
       + '<p class="lede">' + esc(p) + '</p>'
       + '<p class="fine">Write to <a href="mailto:info@jrsstandard.com">info@jrsstandard.com</a> and I will send you a working link.</p>';
   }
@@ -155,7 +155,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
     var p = person;
     card.innerHTML =
       '<div class="eyebrow">' + esc(roleLine(p)) + ' &middot; ' + esc(p.code) + '</div>'
-    + '<h2 class="h1-look">' + esc(p.first) + ', how should your name appear?</h2>'
+    + '<h1 class="h1-look">' + esc(p.first) + ', how should your name appear?</h1>'
     + '<p class="lede">The study paper is being prepared for submission. Rather than transcribe your details from a registration form, I would rather you set them yourself. This takes about a minute.</p>'
     + onFileBlock(p)
 
@@ -244,7 +244,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 
   function renderDone(d, name, title, org, cNamed){
     var body = '<div class="eyebrow">Confirmed</div>'
-      + '<h2 class="h1-look">Thank you, ' + esc(d.first || '') + '</h2>'
+      + '<h1 class="h1-look">Thank you, ' + esc(d.first || '') + '</h1>'
       + '<div class="note">'
         + (cNamed === 'yes'
             ? 'The paper will credit you as <b style="color:var(--text)">' + esc(name) + '</b>, ' + esc(title) + ', ' + esc(org) + '. That is the exact wording that goes in.'

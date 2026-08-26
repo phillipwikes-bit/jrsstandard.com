@@ -229,7 +229,13 @@ function jrsSanitizeCheck(text) {
 }
 
 if (!KEY) {
-  gate.textContent = 'This page needs the link you were sent. Please open it from your email.';
+  // The no-key state used to print one bare sentence into the gate element and
+  // nothing else, so the page rendered 87 characters with no heading at all: to
+  // a reader, and to a screen reader, an untitled page. It carries the same
+  // level-one heading every other state on this page now carries.
+  gate.innerHTML = '<h1 class="h1-look">This page needs your link</h1>'
+    + '<p class="lead">Open it from the email you were sent. If you no longer '
+    + 'have it, write to info@jrsstandard.com and it will be reissued.</p>';
 } else {
   fetch('/api/coauthor?k=' + encodeURIComponent(KEY))
     .then(function(r){ return r.json(); })
@@ -327,7 +333,7 @@ form.addEventListener('submit', function(e){
       }
       form.innerHTML =
         '<div class="eyebrow">Recorded</div>' +
-        '<h2 class="h1-look">Thank you.</h2>' +
+        '<h1 class="h1-look">Thank you.</h1>' +
         '<p class="lead">Your answers are on file and I will follow them. If you change your ' +
         'mind about any of it, write to info@jrsstandard.com and it changes. Nothing here is ' +
         'permanent and nothing here affects your authorship.</p>';
