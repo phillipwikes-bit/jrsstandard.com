@@ -335,6 +335,16 @@
       "source": "/openapi",
       "destination": "/openapi.json",
       "permanent": false
+    },
+    {
+      "source": "/sandbox",
+      "destination": "/review-engine.html#sandbox",
+      "permanent": false
+    },
+    {
+      "source": "/pricing",
+      "destination": "/enterprise.html#pricing",
+      "permanent": false
     }
   ],
   "headers": [
