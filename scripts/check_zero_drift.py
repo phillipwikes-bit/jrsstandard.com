@@ -2721,9 +2721,11 @@ def check_openapi_matches_the_implementation(offline):
     the spec's enum, and the spec may not invent one the code cannot return.
     """
     import json as _json
-    spec_path = "api/v1/openapi.json"
+    # Served from the repository root: Vercel treats everything under api/
+    # as a function, so a .json placed there is never served as an asset.
+    spec_path = "openapi.json"
     if not os.path.exists(spec_path):
-        check("openapi spec matches the implementation", False, "no api/v1/openapi.json")
+        check("openapi spec matches the implementation", False, "no openapi.json at the repository root")
         return
     try:
         spec = _json.loads(read(spec_path))
