@@ -1,0 +1,220 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "JRS Review Engine API",
+    "version": "1.0.0",
+    "summary": "Stateless pre-finalization decision gate for one record.",
+    "description": "Examines one record against the five JRS conditions and returns a structured, per-condition result with a routing determination.\n\nThe call is stateless. Record text is assessed in memory and discarded: it is not written to any table, not echoed back, and not logged, so no data-residency or retention obligation transfers to the operator of this API.\n\nStage: the engine is unvalidated and single-model, in operational validation. Reproducibility is disclosed rather than hidden. Reproducibility is not accuracy and not validation. No effectiveness claim is made, and every response repeats this in its own payload.",
+    "contact": { "name": "JRS", "email": "info@jrsstandard.com", "url": "https://www.jrsstandard.com/enterprise.html#enterprise-inquiry" },
+    "license": { "name": "Commercial licence", "url": "https://www.jrsstandard.com/terms.html" }
+  },
+  "servers": [
+    { "url": "https://www.jrsstandard.com", "description": "Production" }
+  ],
+  "tags": [
+    { "name": "review", "description": "Record-level pre-finalization review." }
+  ],
+  "paths": {
+    "/api/v1/review-engine": {
+      "post": {
+        "tags": ["review"],
+        "operationId": "reviewRecord",
+        "summary": "Review one record against the five JRS conditions.",
+        "description": "Send the full text of a single record. Returns a per-condition status of pass, review or gap, a routing determination, and a disclosure block.\n\nSet runs above 1 to receive a variance block disclosing the spread across repeated evaluations of the same text.",
+        "security": [ { "bearerAuth": [] } ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ReviewRequest" },
+              "examples": {
+                "single": {
+                  "summary": "One record, one run",
+                  "value": {
+                    "text": "Following review of the incident report and the two witness statements dated 11 March, the decision was to issue a final written warning.",
+                    "runs": 1
+                  }
+                },
+                "withVariance": {
+                  "summary": "Three runs, variance disclosed",
+                  "value": {
+                    "text": "Following review of the incident report and the two witness statements dated 11 March, the decision was to issue a final written warning.",
+                    "runs": 3
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Review completed.",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ReviewResponse" } } }
+          },
+          "400": {
+            "description": "Malformed body, or record text shorter than 40 characters.",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" }, "examples": {
+              "invalidJson": { "value": { "error": "invalid_json" } },
+              "tooShort": { "value": { "error": "record_too_short", "detail": "Provide at least 40 characters of record text." } }
+            } } }
+          },
+          "401": {
+            "description": "Missing or unrecognised bearer token. The endpoint is fail-closed.",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" }, "examples": {
+              "noToken": { "value": { "error": "unauthorized", "detail": "A token is required. Contact info@jrsstandard.com" } },
+              "badToken": { "value": { "error": "unauthorized", "detail": "Send Authorization: Bearer <token>." } }
+            } } }
+          },
+          "405": {
+            "description": "Method not allowed. Use POST.",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" }, "examples": {
+              "wrongMethod": { "value": { "error": "method_not_allowed", "detail": "Use POST." } }
+            } } }
+          },
+          "429": {
+            "description": "Rate limited. Best-effort, per-instance, per-IP: 20 requests per 60 seconds.",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" }, "examples": {
+              "limited": { "value": { "error": "rate_limited", "detail": "Too many requests; retry shortly." } }
+            } } }
+          },
+          "502": {
+            "description": "Upstream model failure.",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" }, "examples": {
+              "failed": { "value": { "error": "review_failed" } }
+            } } }
+          },
+          "503": {
+            "description": "Engine not configured on this deployment.",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" }, "examples": {
+              "unconfigured": { "value": { "error": "engine_not_configured" } }
+            } } }
+          }
+        }
+      },
+      "options": {
+        "tags": ["review"],
+        "operationId": "reviewPreflight",
+        "summary": "CORS preflight.",
+        "responses": { "204": { "description": "No content." } }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Per-organisation token. One token can be rotated or revoked without affecting any other partner. Request one at https://www.jrsstandard.com/enterprise.html#enterprise-inquiry"
+      }
+    },
+    "schemas": {
+      "ReviewRequest": {
+        "type": "object",
+        "required": ["text"],
+        "additionalProperties": false,
+        "properties": {
+          "text": {
+            "type": "string",
+            "minLength": 40,
+            "description": "The full text of one record. Longer than 8,000 characters is truncated to 8,000 before evaluation."
+          },
+          "runs": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5,
+            "default": 1,
+            "description": "Number of independent evaluations of the same text. Above 1 adds a variance block."
+          }
+        }
+      },
+      "ConditionResult": {
+        "type": "object",
+        "required": ["status", "note"],
+        "properties": {
+          "status": { "type": "string", "enum": ["pass", "review", "gap"] },
+          "note": { "type": "string", "maxLength": 400, "description": "One sentence, grounded in the record text." }
+        }
+      },
+      "Conditions": {
+        "type": "object",
+        "description": "The five JRS conditions. Every key is always present.",
+        "required": [
+          "basis_identification",
+          "reasoning_traceability",
+          "cold_reviewer_clarity",
+          "accountability_support",
+          "temporal_reconstructability"
+        ],
+        "properties": {
+          "basis_identification": { "$ref": "#/components/schemas/ConditionResult" },
+          "reasoning_traceability": { "$ref": "#/components/schemas/ConditionResult" },
+          "cold_reviewer_clarity": { "$ref": "#/components/schemas/ConditionResult" },
+          "accountability_support": { "$ref": "#/components/schemas/ConditionResult" },
+          "temporal_reconstructability": { "$ref": "#/components/schemas/ConditionResult" }
+        }
+      },
+      "ConditionVariance": {
+        "type": "object",
+        "properties": {
+          "modal": { "type": "string", "enum": ["pass", "review", "gap"] },
+          "agreement": { "type": "number", "minimum": 0, "maximum": 1, "description": "Share of runs returning the modal status." }
+        }
+      },
+      "Variance": {
+        "type": "object",
+        "description": "Present only when runs is greater than 1. Discloses the spread rather than hiding it.",
+        "properties": {
+          "overall_consistency": { "type": "number", "minimum": 0, "maximum": 1 },
+          "per_condition": {
+            "type": "object",
+            "additionalProperties": { "$ref": "#/components/schemas/ConditionVariance" }
+          },
+          "runs_detail": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": { "type": "string", "enum": ["pass", "review", "gap"] }
+            }
+          }
+        }
+      },
+      "ReviewResponse": {
+        "type": "object",
+        "required": ["request_id", "api_version", "engine", "engine_version", "model", "routing", "conditions"],
+        "properties": {
+          "request_id": { "type": "string", "format": "uuid", "description": "Also returned in the X-Request-Id response header. Use it to correlate with your own audit trail." },
+          "api_version": { "type": "string", "example": "v1" },
+          "engine": { "type": "string", "example": "JRS Review Engine" },
+          "engine_version": { "type": "string", "example": "0.1.0-validation" },
+          "model": { "type": "string", "example": "claude-haiku-4-5-20251001" },
+          "routing": { "type": "string", "enum": ["Ready", "Needs work", "Gap"], "description": "Record-level determination derived from the five condition statuses." },
+          "runs": { "type": "integer", "minimum": 1, "maximum": 5 },
+          "conditions": { "$ref": "#/components/schemas/Conditions" },
+          "variance": { "$ref": "#/components/schemas/Variance" },
+          "disclosure": { "type": "string", "description": "Stage disclosure repeated in every payload: unvalidated, single-model, in operational validation. Reproducibility is not accuracy and not validation." }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "required": ["error"],
+        "properties": {
+          "request_id": { "type": "string", "format": "uuid" },
+          "api_version": { "type": "string", "example": "v1" },
+          "error": {
+            "type": "string",
+            "enum": [
+              "invalid_json",
+              "record_too_short",
+              "unauthorized",
+              "method_not_allowed",
+              "rate_limited",
+              "review_failed",
+              "engine_not_configured"
+            ]
+          },
+          "detail": { "type": "string" }
+        }
+      }
+    }
+  }
+}

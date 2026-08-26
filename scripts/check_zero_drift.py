@@ -2712,6 +2712,89 @@ def check_homepage_hero_offers_both_tracks(offline):
           "free=%s enterprise=%s, between hero-sub and the dual-track block" % (free, ent))
 
 
+def check_openapi_matches_the_implementation(offline):
+    """The published contract must not drift from the endpoint it describes.
+
+    A machine-readable spec that disagrees with the code is worse than no
+    spec, because an integrator builds against it. Both directions are
+    checked: every error string the implementation can emit must appear in
+    the spec's enum, and the spec may not invent one the code cannot return.
+    """
+    import json as _json
+    spec_path = "api/v1/openapi.json"
+    if not os.path.exists(spec_path):
+        check("openapi spec matches the implementation", False, "no api/v1/openapi.json")
+        return
+    try:
+        spec = _json.loads(read(spec_path))
+    except Exception as exc:
+        check("openapi spec matches the implementation", False, "invalid JSON: %s" % exc)
+        return
+    impl_src = read("api/v1/review-engine.js")
+    impl = set(re.findall(r"error:\s*'([a-z_]+)'", impl_src))
+    try:
+        declared = set(spec["components"]["schemas"]["Error"]
+                       ["properties"]["error"]["enum"])
+    except KeyError:
+        check("openapi spec matches the implementation", False, "no Error enum in spec")
+        return
+    missing = impl - declared
+    invented = declared - impl
+    bad = []
+    if missing:
+        bad.append("in code, not in spec: %s" % ", ".join(sorted(missing)))
+    if invented:
+        bad.append("in spec, not in code: %s" % ", ".join(sorted(invented)))
+    path = "/api/v1/review-engine"
+    if path not in spec.get("paths", {}):
+        bad.append("spec does not document %s" % path)
+    check("openapi spec matches the implementation", not bad,
+          "; ".join(bad) if bad else "%d error codes agree, path documented" % len(impl))
+
+
+def check_security_page_exists_and_is_linked(offline):
+    """Procurement asks for a data-handling page; it must exist and be reachable."""
+    if not os.path.exists("security.html"):
+        check("security one-pager exists and is linked", False, "security.html missing")
+        return
+    src = read("security.html")
+    required = ("stateless", "not written to any table", "fail-closed",
+                "Rate limit", "request_id")
+    absent = [t for t in required if t.lower() not in src.lower()]
+    linkers = [p for p in ("enterprise.html", "review-engine.html")
+               if 'href="security.html"' in read(p)]
+    bad = []
+    if absent:
+        bad.append("missing claims: %s" % ", ".join(absent))
+    if len(linkers) < 2:
+        bad.append("linked from only %d of 2 Track 1 pages" % len(linkers))
+    # The key must never be named on a public page.
+    if "ANTHROPIC_API_KEY" in src:
+        bad.append("names the API key environment variable")
+    check("security one-pager exists and is linked", not bad,
+          "; ".join(bad) if bad else "present, linked from both Track 1 pages, key not named")
+
+
+def check_vendor_question_is_asked_once(offline):
+    """The warmest signal in the funnel must be captured, and stay optional."""
+    html = read("training.html")
+    api = read("api/enroll.js")
+    bad = []
+    if 'id="en-builds"' not in html:
+        bad.append("no vendor question on the registration form")
+    if "builds_software:builds" not in html.replace(" ", ""):
+        bad.append("value not sent to the endpoint")
+    if "builds_software" not in api:
+        bad.append("endpoint drops the field")
+    if 'id="en-builds"' in html:
+        block = html[html.find('id="en-builds"'):]
+        block = block[:block.find("</select>") + 9]
+        if "required" in block:
+            bad.append("field is required; it must never block registration")
+    check("vendor question asked once, never blocking", not bad,
+          "; ".join(bad) if bad else "optional select, wired through api/enroll.js")
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -2758,6 +2841,9 @@ def main():
                check_free_track_bridges_to_the_licence,
                check_api_contract_has_a_runnable_example,
                check_homepage_hero_offers_both_tracks,
+               check_openapi_matches_the_implementation,
+               check_security_page_exists_and_is_linked,
+               check_vendor_question_is_asked_once,
                check_training_is_ungated,
                check_training_modules_are_findable,
                check_generated_docs_current, check_cross_endpoint):

@@ -325,6 +325,21 @@
       "source": "/research/:path*",
       "destination": "/404.html",
       "permanent": false
+    },
+    {
+      "source": "/security",
+      "destination": "/security.html",
+      "permanent": false
+    },
+    {
+      "source": "/openapi.json",
+      "destination": "/api/v1/openapi.json",
+      "permanent": false
+    },
+    {
+      "source": "/openapi",
+      "destination": "/api/v1/openapi.json",
+      "permanent": false
     }
   ],
   "headers": [
