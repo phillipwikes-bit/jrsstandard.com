@@ -92,3 +92,19 @@ HOOKEOF
 chmod +x "$HOOK"
 echo "installed $HOOK"
 echo "development branch commits will carry [skip ci]; main deploys are untouched"
+
+# ── 2026-08-26: THE TOKEN IS UNDER TEST, NOT CONFIRMED ────────────────────
+# On 2026-08-26 three commits were pushed to the development branch and all
+# three carried [skip ci], verified by reading each message back. Two of them
+# BUILT AND FAILED (f607e86, d07268e); one was skipped (5e137bb). The token
+# therefore cannot be what separates a skip from a failure.
+#
+# The two commits previously cited as proof that this hook works (c9add51,
+# 2d95a84) both carried the token AND contained no HTML, so they cannot tell
+# the two explanations apart. Every commit that failed touched a root .html
+# file; every commit that was skipped did not.
+#
+# This commit is the discriminating test: one non-HTML file, pushed with
+# --no-verify so NO token is present. If Cloudflare skips it anyway, the
+# trigger is the changed paths and this hook does nothing. If it fails, the
+# token is real and something else explains the two failures above.
