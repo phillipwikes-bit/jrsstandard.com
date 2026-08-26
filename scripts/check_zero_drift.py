@@ -1590,12 +1590,12 @@ def check_notifications_wired(offline):
 # tells them the whole thing is "Free, ungated, and staying that way", which
 # argues against the page it sits on.
 #
-# Removed from enterprise.html and review-engine.html on 2026-08-26 at the
-# owner's objection. It was originally placed on enterprise.html at his own
+# Removed from enterprise.html and review-engine.html, then from pilot.html on
+# 2026-08-26 at the owner's objection. It was originally placed on enterprise.html at his own
 # direction; the direction changed and the guard follows it rather than
 # outranking it. BANNED there now, so it cannot drift back.
-DUAL_TRACK_PAGES = ("index.html", "training.html", "pilot.html")
-DUAL_TRACK_BANNED = ("enterprise.html", "review-engine.html")
+DUAL_TRACK_PAGES = ("index.html", "training.html")
+DUAL_TRACK_BANNED = ("enterprise.html", "review-engine.html", "pilot.html")
 
 
 def check_dual_track_band(offline):
@@ -2394,6 +2394,46 @@ def check_only_the_active_nav_item_is_gold(offline):
           "; ".join(sorted(set(badge))) if badge else "no badge rules remain")
 
 
+def check_no_duplicate_nav_strips(offline):
+    """A page must not stack a navigation strip that duplicates the one below it.
+
+    pilot.html carried FOUR chrome layers before a single line of content: the
+    site header, a cross-site strip (Home | Pilot Program | Training
+    Simulations), the primary nav, and a utility bar. Home, Pilot Program and
+    Training were all present in the primary nav directly beneath the strip, so
+    the word Training appeared three times in three bars. Measured on a 390px
+    phone the chrome ran to y=217 before the page said anything.
+
+    The cross-site strip is removed from the two pages that carried it. This
+    asserts it stays gone, and that no page stacks more than the header plus two
+    navigation surfaces.
+    """
+    import glob
+
+    revived, stacked = [], []
+    for pat in ("*.html", "*/*.html", "*/*/*.html"):
+        for p in sorted(glob.glob(os.path.join(ROOT, pat))):
+            rel = os.path.relpath(p, ROOT)
+            if rel.split(os.sep)[0] in ("research", "templates", "scripts",
+                                        "node_modules"):
+                continue
+            src = read(rel)
+            if 'class="cross-site-nav"' in src or "csn-link" in src:
+                revived.append(rel)
+            layers = sum(1 for marker in ('class="primary-nav"',
+                                          'class="util-bar"',
+                                          "jrs-sitenav",
+                                          'class="cross-site-nav"')
+                         if marker in src)
+            if layers > 2:
+                stacked.append("%s (%d nav surfaces)" % (rel, layers))
+
+    check("the duplicated cross-site strip stays removed", not revived,
+          ", ".join(revived) if revived else "absent from every page")
+    check("no page stacks more than two navigation surfaces", not stacked,
+          "; ".join(stacked) if stacked else "no page exceeds two")
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -2430,6 +2470,7 @@ def main():
                check_site_nav_present,
                check_review_controls_is_the_pdf,
                check_only_the_active_nav_item_is_gold,
+               check_no_duplicate_nav_strips,
                check_training_is_ungated,
                check_training_modules_are_findable,
                check_generated_docs_current, check_cross_endpoint):

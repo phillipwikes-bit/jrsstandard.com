@@ -497,12 +497,6 @@ a:hover{text-decoration:underline}
   .ref-conditions-grid{grid-template-columns:1fr}
   .sticky-nav-link{padding:11px 12px;font-size:7.5px}
 }
-.cross-site-nav{background:var(--bg);border-bottom:1px solid var(--rule);overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
-.cross-site-nav::-webkit-scrollbar{display:none}
-.cross-site-nav-inner{display:flex;align-items:center;padding:0 24px;gap:0;max-width:960px;margin:0 auto}
-.csn-link{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;padding:10px 18px;border-bottom:2px solid transparent;white-space:nowrap;display:inline-block}
-.csn-link.csn-active{color:var(--accent);border-bottom-color:var(--accent)}
-.csn-link:hover{color:var(--text)}
 /* Focus mode: a clean, training-only view (six modules + Reviewer Reference + certificate). Triggered by ?focus=1 in the link. Hides the hero, role paths, simulations, kit docs, survey, and navigation so there is exactly one path. */
 body.focus-mode > *:not(#training-modules):not(#cert-section):not(footer):not(#enroll-overlay):not(script):not(.skip-link){display:none !important}
 body.focus-mode #module-list ~ *{display:none !important}
@@ -524,13 +518,6 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
   </div>
 </header>
 
-<div class="cross-site-nav">
-  <div class="cross-site-nav-inner">
-    <a href="index.html" class="csn-link">Home</a>
-    <a href="pilot.html" class="csn-link">Pilot Program</a>
-    <a href="training.html" class="csn-link csn-active">Simulations</a>
-  </div>
-</div>
 
 <!-- ═══ STICKY NAV ════════════════════════════════════════ -->
 <nav class="sticky-nav" aria-label="Quick navigation">
