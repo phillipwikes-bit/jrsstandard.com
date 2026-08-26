@@ -332,13 +332,8 @@
       "permanent": false
     },
     {
-      "source": "/openapi.json",
-      "destination": "/api/v1/openapi.json",
-      "permanent": false
-    },
-    {
       "source": "/openapi",
-      "destination": "/api/v1/openapi.json",
+      "destination": "/openapi.json",
       "permanent": false
     }
   ],
