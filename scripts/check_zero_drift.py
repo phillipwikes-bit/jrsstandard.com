@@ -2797,6 +2797,36 @@ def check_vendor_question_is_asked_once(offline):
           "; ".join(bad) if bad else "optional select, wired through api/enroll.js")
 
 
+def check_track1_pages_lead_with_an_action(offline):
+    """No Track 1 page may strand its headline.
+
+    Measured on production 2026-08-26: review-engine.html, the page a
+    technical buyer is sent to, had its first button at y=5,884 of a
+    7,916px page, 74% down. enterprise.html and index.html had already been
+    corrected; this one had been audited and missed.
+
+    Checked at the source: on every Track 1 page a .btn-row must appear
+    within 1,200 characters of the h1.
+    """
+    bad = []
+    for page in ("enterprise.html", "review-engine.html", "security.html"):
+        src = read(page)
+        h = src.find("<h1")
+        if h < 0:
+            bad.append("%s: no h1" % page)
+            continue
+        row = src.find('class="btn-row"', h)
+        if row < 0:
+            bad.append("%s: no action row after the h1" % page)
+            continue
+        gap = row - h
+        if gap > 1200:
+            bad.append("%s: first action %d chars after the h1" % (page, gap))
+    check("Track 1 pages lead with an action", not bad,
+          "; ".join(bad) if bad
+          else "enterprise, review-engine and security all act above the fold")
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -2846,6 +2876,7 @@ def main():
                check_openapi_matches_the_implementation,
                check_security_page_exists_and_is_linked,
                check_vendor_question_is_asked_once,
+               check_track1_pages_lead_with_an_action,
                check_training_is_ungated,
                check_training_modules_are_findable,
                check_generated_docs_current, check_cross_endpoint):
