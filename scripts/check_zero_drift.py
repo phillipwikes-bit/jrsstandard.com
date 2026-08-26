@@ -2525,6 +2525,38 @@ def check_a_page_leads_with_its_own_action(offline):
           "primary is %r -> %s" % (label[:34], target or "no href"))
 
 
+def check_util_bar_does_not_hide_links_on_a_phone(offline):
+    """Every link in the utility bar must be reachable at phone width.
+
+    pilot.html, enterprise.html and review-engine.html gave the bar
+    overflow-x:auto. At 390px that put two of pilot's three links, and one
+    of the other two pages', entirely past the right edge. A phone draws no
+    scrollbar on that strip, so it did not read as "drag me", it read as
+    clipped text: the header showed "SIMULATION TRAII" and stopped.
+
+    Checked at the source: the phone-width rule must wrap the bar, and must
+    not restore a horizontal scroll strip. jrsstandard.html has always
+    wrapped and is the pattern the other three now match.
+    """
+    pages = ("pilot.html", "enterprise.html", "review-engine.html",
+             "jrsstandard.html")
+    bad = []
+    for page in pages:
+        src = read(page)
+        rules = re.findall(r"\.util-bar-inner\s*{([^}]*)}", src)
+        if not rules:
+            bad.append("%s: no util bar rule" % page)
+            continue
+        # The last .util-bar-inner rule in the file is the phone override.
+        phone = rules[-1].replace("\n", " ")
+        if "overflow-x:auto" in phone.replace(" ", ""):
+            bad.append("%s: still a scroll strip" % page)
+        elif "flex-wrap:wrap" not in phone.replace(" ", ""):
+            bad.append("%s: phone rule does not wrap" % page)
+    check("util bar wraps instead of hiding links on phones", not bad,
+          "; ".join(bad) if bad else "%d pages wrap, none scroll" % len(pages))
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -2564,6 +2596,7 @@ def main():
                check_no_duplicate_nav_strips,
                check_no_redirect_shadows_a_real_page,
                check_a_page_leads_with_its_own_action,
+               check_util_bar_does_not_hide_links_on_a_phone,
                check_training_is_ungated,
                check_training_modules_are_findable,
                check_generated_docs_current, check_cross_endpoint):

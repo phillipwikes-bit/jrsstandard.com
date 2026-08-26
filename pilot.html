@@ -184,7 +184,14 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
   .primary-nav-inner.nav-open{display:flex}
   .nav-item{padding:14px 20px;text-align:left;font-size:11px;letter-spacing:.12em;border-bottom:1px solid var(--rule)!important;border-left:2px solid transparent!important;border-top:none!important;border-right:none!important;min-height:48px;width:100%;display:block}
   .nav-item.active{border-left-color:var(--accent)!important;border-bottom-color:var(--rule)!important}
-  .util-bar-inner{overflow-x:auto;flex-wrap:nowrap;gap:0}
+  /* The util bar used to be a horizontal scroll strip on phones
+  (overflow-x:auto). At 390px that put two of pilot's three links, and
+  one of enterprise's and review-engine's, entirely past the right edge
+  with no scrollbar for a phone to draw. It did not read as "drag me",
+  it read as clipped text. jrsstandard.html already wraps this bar;
+  these three now match it, so every link is on screen. */
+  .util-bar-inner{flex-wrap:wrap;gap:4px 12px;padding:8px 16px}
+  .util-link{font-size:8px}
   .util-label{display:none}
   .container{padding:36px 16px 72px}
   .apply-block{padding:18px 16px}
