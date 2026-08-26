@@ -38,6 +38,10 @@ export default async function handler(req){
     kind: 'training-enroll',
     title: clean(b.title, 200),
     audience: clean(b.audience, 32) || 'public',
+    // Vendor qualification, asked once at certificate registration. Optional,
+    // never blocking, and the only enterprise signal this funnel can produce
+    // from a practitioner who has already read the standard.
+    builds_software: clean(b.builds_software, 24),
     page_source: clean(b.source, 80),
     country: String(req.headers.get('x-vercel-ip-country') || '')
       .toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2) || '',

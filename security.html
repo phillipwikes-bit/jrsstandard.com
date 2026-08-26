@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JRS Review Engine API | Justification Review Standard</title>
+<title>Security and Data Handling | JRS Standard</title>
 <meta property="og:title" content="JRS™ Decision Defensibility at Enterprise Scale" />
 <meta property="og:description" content="Reducing Decision Reconstruction Risk across HR, compliance, and investigation functions. JRS examines whether a record can explain why a consequential decision was made, before the record is finalized." />
 <meta property="og:type" content="website" />
@@ -18,7 +18,7 @@
 <meta name="twitter:image" content="https://jrsstandard.com/og-card.png" />
 <link rel="canonical" href="https://www.jrsstandard.com/review-engine.html" />
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-<meta name="description" content="Token-authenticated API that examines one record against the five JRS conditions and returns a structured result with an audit correlation identifier.">
+<meta name="description" content="How the JRS review call handles record text: stateless, no retention at rest, no training use, per-organisation tokens, fail-closed authentication. The one-pager a security reviewer asks for.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -246,197 +246,101 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
  </div>
 </header>
 
-<nav class="primary-nav" aria-label="Site navigation">
- <div class="primary-nav-mobile-bar">
-  <span class="nav-current-section">Enterprise</span>
-  <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileNav()" aria-label="Toggle navigation" aria-expanded="false">
-   <span class="nav-hamburger-icon">&#9776;</span> Menu
-  </button>
- </div>
- <div class="primary-nav-inner" id="primary-nav-items">
-  <a href="/api/dl?e=standard&amp;src=enterprise" class="nav-item">Review Controls</a>
-  <a href="index.html#section-scenarios" class="nav-item">Documentation Failures</a>
-  <a href="index.html#section-tools" class="nav-item">Free Resources</a>
-  <a href="index.html#section-kit" class="nav-item">Deployment Kit &#8599;</a>
-  <a href="training.html" class="nav-item">Simulation Training &#8599;</a>
-  <a href="index.html#section-guidance" class="nav-item">Implementation</a>
-  <a href="enterprise.html" class="nav-item active">Enterprise</a>
-  <a href="index.html#section-about" class="nav-item">About</a>
- </div>
+<!-- JRS SITE NAV v1 :: CANONICAL BLOCK. Byte-identical on every page that carries it. -->
+<nav class="jrs-sitenav" aria-label="Site">
+ <a href="index.html">Home</a>
+ <a href="/api/dl?e=standard&amp;src=sitenav">Review Controls PDF</a>
+ <a href="training.html">Training</a>
+ <a href="index.html#section-tools">Free Resources</a>
+ <a href="simulations.html">Simulations</a>
+ <a href="pilot.html">Pilot Program</a>
+ <a href="enterprise.html">Enterprise</a>
+ <a href="research.html">Research</a>
+ <a href="jrsstandard.html">The Standard</a>
 </nav>
-
-<div class="util-bar">
- <div class="util-bar-inner">
-  <span class="util-label">Enterprise</span>
-  <a href="enterprise.html#enterprise-inquiry" class="util-link accent-link">Enterprise inquiry</a>
-  <a href="/api/dl?e=standard&amp;src=enterprise" class="util-link">Review Controls</a>
-  <a href="training.html" class="util-link">Training</a>
- </div>
-</div>
+<!-- /JRS SITE NAV v1 -->
 
 <main class="container" id="main-content">
 
-<div class="page-eyebrow">For integrators</div>
-<h1 class="page-title">JRS Review Engine API</h1>
-<p class="page-subtitle">A token-authenticated endpoint that examines one record against the five JRS conditions and returns a structured result. Every response carries a request identifier so a call can be tied to an entry in your own audit trail.</p>
+<div class="page-eyebrow">Enterprise: Security and Data Handling</div>
+<h1 class="page-title">What happens to a record when it passes through the review call</h1>
+<p class="page-subtitle">This is the page to send to a security reviewer. It states what the endpoint does with record text, what it keeps, what it never sees, and what it does not claim. Every statement here is implemented in <code>api/v1/review-engine.js</code> and is checkable against the response payload you receive.</p>
 
-
-
-<div class="callout">
- <div class="callout-label">Stage and limits, stated first</div>
- <div class="callout-body">This is an <b>unvalidated, single-model engine in operational validation</b>. Reproducibility is disclosed rather than hidden, and reproducibility is not accuracy and not validation. <b>No effectiveness claim is made.</b> Every response repeats this in its <code>disclaimer</code> field, so the limitation travels with the output rather than living only on this page.</div>
+<div class="btn-row" style="margin-top:0;">
+ <a href="enterprise.html#enterprise-inquiry" class="btn btn-primary">Start an integration scoping call &rarr;</a>
+ <a href="review-engine.html" class="btn btn-accent">API contract and integration schema &rarr;</a>
+ <a href="/api/v1/openapi.json" class="btn btn-ghost">OpenAPI 3.1 specification</a>
 </div>
 
 <div style="margin-bottom:20px;">
- <h2 class="section-head">What it does</h2>
- <p class="body-text">You send the text of one record. The engine reads it against the five conditions: reconstructability, basis identification, chronological integrity, decision-process traceability and evidentiary sufficiency. It returns a structured result describing which conditions the record meets and where its reasoning cannot be reconstructed.</p>
- <p class="body-text"><b>Ask for more than one run and the spread is returned to you.</b> Set <code>runs</code> above 1 and the response carries a <code>variance</code> block showing how far the runs disagreed. A single-model engine that hides its own instability is worth less than one that reports it.</p>
+ <h2 class="section-head">The short version</h2>
+ <div class="callout callout-gold">
+  <div class="callout-label">What a reviewer usually needs in one paragraph</div>
+  <div class="callout-body">Record text is sent over TLS, held in memory for the duration of one request, evaluated, and discarded. <b>It is not written to any table, not echoed back in the response, and not logged.</b> Nothing submitted is used to train any model. There is no record store to breach, no retention schedule to agree, and no data-residency obligation that transfers to us, because we do not hold the record.</div>
+ </div>
 </div>
 
 <div style="margin-bottom:20px;">
- <h2 class="section-head">Endpoint</h2>
- <p class="body-text"><code>POST https://www.jrsstandard.com/api/v1/review-engine</code></p>
- <p class="body-text">The unversioned route <code>/api/review-engine</code> is the same implementation. <b>Build against the versioned path.</b></p>
-
- <!-- A technical reader evaluates by pasting into a terminal. Until
-      2026-08-26 this page documented the endpoint, the request, the full
-      response, the errors and the rate limit, and gave them nothing to
-      paste. -->
- <p class="body-text" style="margin-top:18px;"><b>One call, start to finish:</b></p>
- <pre class="code-block">curl -X POST https://www.jrsstandard.com/api/v1/review-engine \
-  -H "Authorization: Bearer $JRS_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "text": "Following review of the incident report and the two witness statements dated 11 March, the decision was to issue a final written warning.",
-    "runs": 1
-  }'</pre>
- <p class="body-text">The call is stateless. Nothing in <code>text</code> is retained, stored, or used for training, so the record never leaves your control and no data-residency obligation transfers to us.</p>
+ <h2 class="section-head">Data handling, field by field</h2>
+ <table class="spec-table">
+  <tr><th>What you send</th><th>What happens to it</th><th>Retained</th></tr>
+  <tr><td><code>text</code>: the full text of one record</td><td>Held in memory for one request, evaluated, discarded when the response is written. Truncated to 8,000 characters before evaluation.</td><td><b>No</b></td></tr>
+  <tr><td><code>runs</code>: 1 to 5</td><td>Controls how many independent evaluations run. Recorded as a count only.</td><td>Count only</td></tr>
+  <tr><td>Bearer token</td><td>Compared against the per-organisation allow list. Identifies the partner, never the individual.</td><td>Not stored with the record</td></tr>
+  <tr><td>Result of the evaluation</td><td>Per-condition statuses, the routing determination and the consistency figure are kept as telemetry so the programme can report reproducibility.</td><td><b>Statuses only, never text</b></td></tr>
+ </table>
+ <p class="body-text"><b>The distinction that matters to a reviewer:</b> what is kept is the shape of the answer, not the record. A stored row can say that one record returned a gap on temporal reconstructability. It cannot reproduce a single sentence of what the record said.</p>
 </div>
 
 <div style="margin-bottom:20px;">
  <h2 class="section-head">Authentication</h2>
- <p class="body-text">Send your token as a bearer credential:</p>
+ <p class="body-text"><b>The endpoint is fail-closed.</b> No token means no access, and no evaluation is performed. Tokens are issued per organisation, so one can be rotated or revoked without affecting any other partner.</p>
  <pre class="code-block">Authorization: Bearer &lt;your-token&gt;
 Content-Type: application/json</pre>
- <p class="body-text"><b>The endpoint is fail-closed.</b> No token means no access. Tokens are issued per organisation, so one can be rotated or revoked without affecting anyone else. To request one, email <a href="mailto:info@jrsstandard.com?subject=Review%20Engine%20token" class="accent-link">info@jrsstandard.com</a>.</p>
+ <p class="body-text">A missing or unrecognised token returns <code>401</code> and names no environment variable, no internal hostname and no configuration detail in the public error body.</p>
 </div>
 
 <div style="margin-bottom:20px;">
- <h2 class="section-head">Request</h2>
- <pre class="code-block">{
-  "text": "The full text of one record.",
-  "runs": 1
-}</pre>
+ <h2 class="section-head">Model provider and key custody</h2>
+ <p class="body-text">The evaluation is performed by a hosted model. <b>The provider API key exists only as a server-side environment variable and is read only inside the edge function.</b> It never appears in any page, any client bundle, any response body, or any committed file. No browser ever holds it, and no partner is ever issued it: partners receive a JRS token, which is a different credential with a different scope and its own revocation path.</p>
+ <p class="body-text">Submitted text is not used for model training.</p>
+</div>
+
+<div style="margin-bottom:20px;">
+ <h2 class="section-head">Availability controls</h2>
  <table class="spec-table">
-  <tr><th>Field</th><th>Type</th><th>Required</th><th>Notes</th></tr>
-  <tr><td><code>text</code></td><td>string</td><td>Yes</td><td>Minimum 40 characters. Longer than 8,000 characters is truncated to 8,000.</td></tr>
-  <tr><td><code>runs</code></td><td>integer</td><td>No</td><td>1 to 5. Defaults to 1. Above 1 adds a <code>variance</code> block.</td></tr>
+  <tr><th>Control</th><th>Value</th><th>Note</th></tr>
+  <tr><td>Rate limit</td><td>20 requests per 60 seconds, per IP</td><td>Best-effort and per-instance. Edge isolates do not share state, so treat it as a guard rail rather than a quota.</td></tr>
+  <tr><td>Maximum record length</td><td>8,000 characters</td><td>Longer input is truncated before evaluation, not rejected.</td></tr>
+  <tr><td>Minimum record length</td><td>40 characters</td><td>Shorter input returns <code>400 record_too_short</code>.</td></tr>
+  <tr><td>Runs per request</td><td>1 to 5</td><td>Above 1 returns a variance block disclosing the spread.</td></tr>
+  <tr><td>Transport</td><td>TLS only</td><td>Served from the edge.</td></tr>
  </table>
-</div>
-
-<div style="margin-bottom:20px;">
- <h2 class="section-head">Response</h2>
- <pre class="code-block">{
-  "request_id": "f90a631d-8a7c-40c6-8f89-56dc31fbd786",
-  "api_version": "v1",
-  "engine": "JRS Review Engine",
-  "engine_version": "0.1.0-validation",
-  "model": "claude-haiku-4-5-20251001",
-  "evidence_stage": "operational_validation",
-  "disclaimer": "Unvalidated engine in development. Output is from a single model; reproducibility is disclosed, not hidden, and is distinct from accuracy and from validation. No effectiveness claim is made.",
-  "reviewed_at": "2026-08-25T12:00:00.000Z",
-  "runs": 1,
-  "result": { }
-}</pre>
- <p class="body-text">When <code>runs</code> is above 1, a <code>variance</code> object is added alongside <code>result</code>.</p>
 </div>
 
 <div style="margin-bottom:20px;">
  <h2 class="section-head">Audit correlation</h2>
- <p class="body-text">Every response carries a <code>request_id</code> in the body <b>and the same value in the <code>X-Request-Id</code> header</b>. Record it beside whatever your own system writes when the record is reviewed.</p>
- <p class="body-text">This is the feature that matters in a regulated function. When someone asks months later how a particular record came to be assessed the way it was, the identifier is what connects your entry to this call. Without it, an external service in the middle of a documented process is a gap in the very thing the process is meant to establish.</p>
+ <p class="body-text">Every response carries a <code>request_id</code>, returned in the body and in the <code>X-Request-Id</code> header. It is the join key between your audit trail and ours. <b>It is an identifier, not a copy of the record</b>, so correlating an event costs you nothing in exposure.</p>
 </div>
 
 <div style="margin-bottom:20px;">
- <h2 class="section-head">Errors</h2>
- <table class="spec-table">
-  <tr><th>Status</th><th><code>error</code></th><th>Meaning</th></tr>
-  <tr><td>400</td><td><code>invalid_json</code></td><td>The body did not parse as JSON.</td></tr>
-  <tr><td>400</td><td><code>record_too_short</code></td><td>Fewer than 40 characters of record text.</td></tr>
-  <tr><td>401</td><td><code>unauthorized</code></td><td>No token, or a token that is not recognised.</td></tr>
-  <tr><td>405</td><td><code>method_not_allowed</code></td><td>Use POST.</td></tr>
-  <tr><td>429</td><td><code>rate_limited</code></td><td>Too many requests. Retry shortly.</td></tr>
-  <tr><td>502</td><td><code>review_failed</code></td><td>The upstream review did not complete.</td></tr>
-  <tr><td>503</td><td><code>engine_not_configured</code></td><td>The engine is not configured to serve.</td></tr>
- </table>
- <p class="body-text">Every error response carries a <code>request_id</code> as well, so a failed call can be reported and traced.</p>
-</div>
-
-<div style="margin-bottom:20px;">
- <h2 class="section-head">Rate limit</h2>
- <p class="body-text"><b>20 requests per 60 seconds, per IP.</b> The limit is enforced per running instance and is described here exactly as it is implemented: <b>best effort</b>. It is not backed by a shared store, so under horizontal scaling the effective ceiling can be higher than the stated one. Treat it as a guard against runaway loops, not as a quota you can rely on. A firm quota is part of a licence, not of this limiter.</p>
-</div>
-
-<div style="margin-bottom:20px;">
- <h2 class="section-head">Governance reporting, and exactly what it does not mean</h2>
+ <h2 class="section-head">What this does not claim</h2>
  <div class="callout callout-gold">
-  <div class="callout-label">Read this before mapping anything</div>
-  <div class="callout-body"><b>JRS does not establish compliance with ISO/IEC 42001, the NIST AI RMF, the EU AI Act, or any other framework, and no framework requires JRS.</b> It is not a certification, an accreditation, or an audit opinion. What follows describes where the output of a record-level review may be <b>relevant</b> as evidence inside a management system you are already running. Deciding whether it satisfies any control is your organisation's determination and your assessor's, not this engine's.</div>
+  <div class="callout-label">Read this before mapping it to a control</div>
+  <div class="callout-body"><b>JRS is not a certification, an accreditation, or an audit opinion, and it does not establish compliance with ISO/IEC 42001, the NIST AI RMF, the EU AI Act, or any other framework.</b> The engine is unvalidated and single-model, in operational validation. Reproducibility is disclosed rather than hidden, and <b>reproducibility is not accuracy and not validation</b>. No effectiveness claim is made. Every API response repeats this in its own payload, so a reviewer reading a raw response sees the same disclosure that appears here.</div>
  </div>
- <p class="body-text">With that boundary stated, the practical use is straightforward. A record-level review produces a per-record finding about whether a decision can be reconstructed from its own record, and an aggregate rate across a population. Organisations running an AI management system generally need evidence of two things this speaks to: that AI-assisted outputs are subject to human review with a documented basis, and that the resulting records remain traceable after the fact.</p>
- <table class="spec-table">
-  <tr><th>Field of an AI management system</th><th>What a JRS review can contribute</th><th>What it does not do</th></tr>
-  <tr><td>Documented human review of AI-assisted output</td><td>A per-record finding on whether the stated basis is traceable to source evidence, and a rate across a sampled population</td><td>Does not evidence that a human reviewed anything, which only your own workflow records can show</td></tr>
-  <tr><td>Operational monitoring and measurement</td><td>A measured rate of records that cannot carry their own reasoning, broken out by decision type or business unit</td><td>Does not set a threshold, a tolerance, or a target. Those are yours to set</td></tr>
-  <tr><td>Traceability and record retention</td><td>Identification of records whose chronology or basis cannot be reconstructed from the record alone</td><td>Does not assess retention periods, storage, or access control</td></tr>
-  <tr><td>Corrective action</td><td>An identified population of records to remediate, with the condition that failed named per record</td><td>Does not perform, verify, or close corrective action</td></tr>
- </table>
- <p class="body-text"><b>Decision Reconstruction Risk</b> is the condition a record is in when it cannot independently show why a consequential decision was reached. It is a documentation property, measured from the record. <b>It is not a legal conclusion, a compliance status, or a statement about whether the underlying decision was correct.</b></p>
- <p class="body-text">There is no separate governance-reporting endpoint today. Aggregate reporting is produced from the results you already receive, and per-record results are yours to retain. <b>Nothing on this page describes a route that does not exist.</b></p>
+ <p class="body-text">A security review of this endpoint is a review of data handling. It is not, and should not be presented internally as, evidence that the determinations are correct.</p>
 </div>
 
 <div style="margin-bottom:20px;">
- <h2 class="section-head">Data handling</h2>
- <div class="btn-row" style="margin:0 0 14px;">
-  <a href="security.html" class="btn btn-accent">Security and data handling one-pager &rarr;</a>
-  <a href="/api/v1/openapi.json" class="btn btn-ghost">OpenAPI 3.1 specification</a>
- </div>
- <p class="body-text">Record text is sent to the engine, assessed, and used to produce the response. <b>Send de-identified text.</b> If your records contain personal data, privileged material, or anything you would not want leaving your environment, remove it before the call. De-identification is agreed in writing before any engagement that involves real records.</p>
- <p class="body-text">If you would rather not send record text to any external service at all, the <a href="org-pilot.html" class="accent-link">Organization Mini-Pilot</a> exists for that: it computes the assessment and sends back only counts and category labels. <b>No record text is stored at any point in that flow.</b></p>
-</div>
-
-<div style="margin-bottom:20px;">
- <h2 class="section-head">Getting a token</h2>
- <p class="body-text">Email <a href="mailto:info@jrsstandard.com?subject=Review%20Engine%20token" class="accent-link">info@jrsstandard.com</a> with your organisation, the record type you intend to run, and expected monthly volume. You will get a token, the tier, and an invoice in one reply. <b>Purchase orders accepted.</b></p>
+ <h2 class="section-head">Questions a reviewer can send directly</h2>
+ <p class="body-text">Scope, token issuance, rotation cadence, subprocessor detail and contractual terms are handled in writing. Submissions route to a private operational dashboard, not to a public queue and not to a mailing list.</p>
  <div class="btn-row">
-  <a href="enterprise.html" class="btn btn-ghost">Enterprise overview</a>
-  <a href="org-pilot.html" class="btn btn-accent">Run the Mini-Pilot first &rarr;</a>
-  <a href="terms.html" class="btn btn-ghost">Terms and boundaries</a>
+  <a href="enterprise.html#enterprise-inquiry" class="btn btn-primary">Send a security question &rarr;</a>
+  <a href="privacy.html" class="btn btn-ghost">Privacy policy</a>
+  <a href="terms.html" class="btn btn-ghost">Terms</a>
  </div>
 </div>
-
-<section class="cap" id="enterprise-capture" aria-labelledby="cap-h">
- <h2 class="cap-h" id="cap-h">Licensing or evaluation inquiry</h2>
- <p class="cap-p">For GRC platforms, legal-tech vendors and enterprise risk functions. Goes to a private operational dashboard, not a mailing list. You get the integration schema, the tier that fits and a written scope in one reply. <b>No records are sent at this stage.</b></p>
- <form class="cap-f" data-cap>
-  <label>Name<input name="name" required maxlength="120" autocomplete="name"></label>
-  <label>Work email<input name="email" type="email" required maxlength="160" autocomplete="email"></label>
-  <label>Organisation<input name="organization" required maxlength="160" autocomplete="organization"></label>
-  <label>Role<input name="role" maxlength="120" placeholder="e.g. Head of GRC, Platform Architect"></label>
-  <label>Interest
-   <select name="interest">
-    <option value="engine-licence">Licence the review engine</option>
-    <option value="oem-embed">Embed it in our product</option>
-    <option value="framework-licence">Licence the framework</option>
-    <option value="evaluation">Evaluation access first</option>
-    <option value="other">Something else</option>
-   </select>
-  </label>
-  <label>Anything else<textarea name="note" maxlength="1200" rows="3"></textarea></label>
-  <button type="submit">Send inquiry</button>
-  <p class="cap-m" role="status"></p>
- </form>
-</section>
 
 </main>
 
