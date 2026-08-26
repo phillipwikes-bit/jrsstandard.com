@@ -203,8 +203,15 @@ def audit_page(path, cache):
 
     # onclick handlers are links in every way that matters to a reader
     for m in re.finditer(r"showSection\('([^']+)'\)", src):
-        stats["onclick"] += 1
         sid = m.group(1)
+        # Skip a handler name assembled at runtime. index.html matches its
+        # active nav item with the literal "showSection('"+id+"')", and reading
+        # that as a section called '"+id+"' reported a broken link that does not
+        # exist. Same rule already applied to runtime-built hrefs.
+        if is_runtime(sid) or '"' in sid or "+" in sid:
+            stats["runtime"] += 1
+            continue
+        stats["onclick"] += 1
         if ("section-" + sid) not in here and sid not in here:
             findings.append((page, line_of(src, m.start()),
                              "showSection target missing", sid))
