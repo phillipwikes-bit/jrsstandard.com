@@ -2638,10 +2638,15 @@ def check_enterprise_page_leads_with_its_own_action(offline):
     if re.search(r'<a\s[^>]*href="review-engine\.html"[^>]*class="btn btn-ghost"', src):
         bad.append("API contract is still btn-ghost")
 
-    for m in re.finditer(r'<a\s[^>]*href="(mailto:[^"]+)"[^>]*class="([^"]*)"', src):
-        cls = m.group(2)
-        if "btn" in cls or "accent-link" in cls:
-            bad.append("mailto call to action: %s" % m.group(1)[:44])
+    # Both Track 1 pages, not just this one: review-engine.html kept two
+    # mailto token requests through the first pass because the guard only
+    # looked at enterprise.html.
+    for page in ("enterprise.html", "review-engine.html"):
+        psrc = read(page)
+        for m in re.finditer(r'<a\s[^>]*href="(mailto:[^"]+)"[^>]*class="([^"]*)"', psrc):
+            cls = m.group(2)
+            if "btn" in cls or "accent-link" in cls:
+                bad.append("%s mailto CTA: %s" % (page, m.group(1)[:40]))
 
     check("enterprise.html leads with its own action", not bad,
           "; ".join(bad) if bad else "primary -> #enterprise-inquiry, contract promoted, no mailto CTA")
