@@ -236,6 +236,22 @@ export default async function handler(req) {
   // not appear in the record as purchase intent.
   const prefetch = isNotAClick(req);
 
+  // RETIRED OFFER GUARD. A retired offer is not an unknown offer: someone
+  // reaching this link followed a real reference, so it explains what changed
+  // and routes them to the licensing conversation rather than a 404.
+  if (offer && offer.retired) {
+    if (!prefetch) await record(env, key, 'retired', req, srcTag);
+    return new Response(null, {
+      status: 302,
+      headers: {
+        'Location': 'https://www.jrsstandard.com/enterprise.html#enterprise-inquiry',
+        'Cache-Control': 'no-store'
+      }
+    });
+  }
+
+
+
   if (isConfigured(offer)) {
     if (!prefetch) await record(env, key, 'redirected', req, srcTag);
     return new Response(null, {
