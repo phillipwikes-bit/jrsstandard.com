@@ -1595,7 +1595,8 @@ def check_notifications_wired(offline):
 # direction; the direction changed and the guard follows it rather than
 # outranking it. BANNED there now, so it cannot drift back.
 DUAL_TRACK_PAGES = ("index.html", "training.html")
-DUAL_TRACK_BANNED = ("enterprise.html", "review-engine.html", "pilot.html")
+DUAL_TRACK_BANNED = ("enterprise.html", "review-engine.html", "pilot.html",
+                     "org-pilot.html")
 
 
 def check_dual_track_band(offline):
@@ -2445,6 +2446,52 @@ def check_no_duplicate_nav_strips(offline):
           "; ".join(stacked) if stacked else "no page exceeds two")
 
 
+def check_no_redirect_shadows_a_real_page(offline):
+    """A redirect must not steal the URL of a page that exists.
+
+    vercel.json sent /pilot to org-pilot.html while pilot.html existed, and
+    /check to org-pilot.html while check.html existed. So the obvious URL for
+    the Pilot Program served the organisation diagnostic, and the Record
+    Defensibility Check was unreachable at its own name. pilot.html had been
+    pushed onto the longer /pilot-program alias to work around the collision,
+    which is the shape of a workaround outliving the reason for it.
+
+    The owner sent the link https://jrsstandard.com/pilot and asked for it to
+    be fixed; what he was looking at was a different page entirely.
+
+    Aliases that point somewhere unrelated are fine and common here: /guides to
+    investigator-guides, /rtkw to an API route, /second-read to recheck. The
+    rule is narrower than that. A redirect may not take a name that a real page
+    already owns.
+    """
+    import glob
+    import json as _json
+
+    try:
+        cfg = _json.loads(read("vercel.json"))
+    except Exception as e:
+        check("vercel.json parses", False, repr(e)[:60])
+        return
+
+    shadowed = []
+    for r in cfg.get("redirects", []):
+        src = (r.get("source") or "").strip("/")
+        dst = r.get("destination") or ""
+        if not src or ":" in src or "/" in src:
+            continue
+        own = src + ".html"
+        if not os.path.exists(os.path.join(ROOT, own)):
+            continue
+        want = "/" + own
+        if dst.split("?")[0].split("#")[0] != want:
+            shadowed.append("/%s -> %s but %s exists" % (src, dst, own))
+
+    check("no redirect shadows a page that exists", not shadowed,
+          "; ".join(shadowed) if shadowed
+          else "%d redirects, none steals an existing page's name"
+               % len(cfg.get("redirects", [])))
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -2482,6 +2529,7 @@ def main():
                check_review_controls_is_the_pdf,
                check_only_the_active_nav_item_is_gold,
                check_no_duplicate_nav_strips,
+               check_no_redirect_shadows_a_real_page,
                check_training_is_ungated,
                check_training_modules_are_findable,
                check_generated_docs_current, check_cross_endpoint):
