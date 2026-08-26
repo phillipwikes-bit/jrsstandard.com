@@ -2123,6 +2123,45 @@ def check_nav_links_reach_their_section(offline):
 
     check("no nav link lands on the bare front page", not bare,
           "; ".join(bare) if bare else "every nav link names its destination")
+
+    # THE NAV IS NOT THE ONLY PLACE THIS HAPPENS. Two links in the body of
+    # enterprise.html were labelled "View Free Resources" and pointed at a bare
+    # index.html, landing on the homepage default panel exactly as the nav
+    # links did. The first version of this guard inspected only the nav and
+    # could not see them. A link whose own text names a section must reach it.
+    #
+    # A bare index.html is still correct for a link that means "the home page":
+    # the logo, and anything labelled Home. Those are listed rather than
+    # pattern-matched, so a new offender cannot hide behind a vague rule.
+    HOME_LABELS = ("jrs", "home", "jrs™", "jrs&trade;")
+    SECTION_WORDS = {
+        "free resources": "tools",
+        "review resources": "tools",
+        "documentation failures": "scenarios",
+        "implementation": "guidance",
+        "about": "about",
+    }
+    mislabelled = []
+    for p in sorted(glob.glob(os.path.join(ROOT, "*.html"))):
+        rel = os.path.relpath(p, ROOT)
+        if rel == "index.html":
+            continue
+        src = read(rel)
+        for m in re.finditer(r'<a\s[^>]*href="index\.html"[^>]*>(.*?)</a>', src, re.S):
+            label = re.sub(r"<[^>]+>|&[a-z]+;|&#\d+;", " ", m.group(1))
+            label = re.sub(r"\s+", " ", label).strip().lower()
+            if not label or label in HOME_LABELS:
+                continue
+            for phrase, sid in SECTION_WORDS.items():
+                if phrase in label:
+                    mislabelled.append("%s: %r should reach #section-%s"
+                                       % (rel, label[:34], sid))
+                    break
+
+    check("no body link names a section then lands on the front page",
+          not mislabelled,
+          "; ".join(mislabelled) if mislabelled
+          else "every section-naming link reaches its section")
     check("every nav fragment matches a real section on index.html", not unknown,
           "; ".join(unknown) if unknown
           else "%d sections available" % len(sections))
