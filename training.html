@@ -353,7 +353,13 @@ a:hover{text-decoration:underline}
 @media(max-width:600px){
   .kit-doc-type,.kit-doc-meta,.section-label,.module-status,.progress-section-label{color:var(--muted-soft)!important}
   .kit-notice{color:var(--muted-soft)!important;border-color:var(--rule)!important}
-  .back-to-site{display:none}
+  /* The way back must never be the thing that gets hidden to save space.
+     These two were display:none below the breakpoint, which was survivable
+     only while the cross-site strip carried a Home link. That strip was
+     removed on 2026-08-26 and this left a phone reader with no visible exit.
+     Kept, wrapped, and given a real touch target. The version metadata beside
+     them is genuinely disposable and stays hidden. */
+  .back-to-site{display:inline-block;margin-top:10px;padding:11px 14px;min-height:44px;box-sizing:border-box}
   .site-header-meta{display:none}
 }
 
@@ -521,6 +527,7 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
 
 <!-- ═══ STICKY NAV ════════════════════════════════════════ -->
 <nav class="sticky-nav" aria-label="Quick navigation">
+  <a href="index.html" class="sticky-nav-link">Home</a>
   <a href="#training-modules" class="sticky-nav-link">Modules</a>
   <a href="#start-here" class="sticky-nav-link">Start Here</a>
   <a href="#roles" class="sticky-nav-link">Enter by Role</a>
