@@ -1582,8 +1582,20 @@ def check_notifications_wired(offline):
           else "checkout and enterprise inquiry both wired to api/_notify.js")
 
 
-DUAL_TRACK_PAGES = ("index.html", "enterprise.html", "training.html",
-                    "review-engine.html", "pilot.html")
+# WHERE THE DUAL-TRACK BAND BELONGS, AND WHERE IT ARGUES AGAINST THE PAGE.
+#
+# The band offers a reader a choice between two tracks. That is useful where the
+# choice is still open. It is not useful on the pages whose entire job is Track
+# 1: a visitor who pressed Enterprise has already chosen, and half the band then
+# tells them the whole thing is "Free, ungated, and staying that way", which
+# argues against the page it sits on.
+#
+# Removed from enterprise.html and review-engine.html on 2026-08-26 at the
+# owner's objection. It was originally placed on enterprise.html at his own
+# direction; the direction changed and the guard follows it rather than
+# outranking it. BANNED there now, so it cannot drift back.
+DUAL_TRACK_PAGES = ("index.html", "training.html", "pilot.html")
+DUAL_TRACK_BANNED = ("enterprise.html", "review-engine.html")
 
 
 def check_dual_track_band(offline):
@@ -1672,6 +1684,14 @@ def check_dual_track_band(offline):
     else:
         check("dual-track band still promises the free public track", False,
               "no band found")
+
+    # The ban is asserted, not assumed. A block that is merely absent today can
+    # be pasted back tomorrow by anyone reading the other four pages.
+    intruders = [p for p in DUAL_TRACK_BANNED
+                 if "The Enterprise Platform Track" in read(p)]
+    check("dual-track band stays off the Track 1 pages", not intruders,
+          ", ".join(intruders) if intruders
+          else "absent from %s" % ", ".join(DUAL_TRACK_BANNED))
 
 
 # Internal-voice copy that must never reach a public page. Owner constraints,
