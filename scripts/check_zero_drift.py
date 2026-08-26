@@ -2132,10 +2132,21 @@ def check_nav_links_reach_their_section(offline):
         if i < 0:
             continue
         nav = src[i:src.find("</nav>", i)]
-        for m in re.finditer(r'<a\s[^>]*href="(index\.html[^"]*)"', nav):
+        for m in re.finditer(r'<a\s[^>]*href="(index\.html[^"]*)"[^>]*>(.*?)</a>',
+                             nav, re.S):
             href = m.group(1)
+            label = re.sub(r"<[^>]+>|&[a-z]+;|&#\d+;", " ", m.group(2))
+            label = re.sub(r"\s+", " ", label).strip().lower()
             if href == "index.html":
-                bare.append("%s -> %s" % (rel, href))
+                # An entry actually LABELLED Home is supposed to reach the bare
+                # homepage. The rule exists to catch an entry named for a
+                # SECTION that lands on the front page instead. The first
+                # version had no such carve-out and fired on the Home entry
+                # added to jrsstandard.html, which is the one page that had no
+                # way back to the site at all.
+                if label in ("home", "jrs", "jrs™", ""):
+                    continue
+                bare.append("%s -> %s (%r)" % (rel, href, label[:22]))
             elif "#section-" in href:
                 sid = href.split("#section-", 1)[1]
                 if sid not in sections:

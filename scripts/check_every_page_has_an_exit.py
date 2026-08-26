@@ -36,9 +36,20 @@ CHROME = "/opt/pw-browsers/chromium-1194/chrome-linux/chrome"
 SKIP_DIRS = {".git", "node_modules", "research", "__pycache__", ".vercel",
              "templates", "scripts"}
 
-# index.html IS the homepage. people.html is a deliberate dead end whose whole
-# content is a link home, and it is checked by that link like any other page.
-EXEMPT = {"index.html"}
+# index.html IS the homepage.
+#
+# The two private owner surfaces are DELIBERATELY stranded. They are unlinked,
+# opaque-slug pages carrying commercial and personal data, and CLAUDE.md
+# requires that they never carry public chrome. Being unreachable in both
+# directions is the point, so they are exempted with the reason recorded rather
+# than quietly passing.
+EXEMPT = {
+    "index.html",
+    "acquisition-9f3c2a7d4b.html",
+    "vp-7c1f9a4e8d2b6035.html",
+    "vp-7c1f9a4e8d2b6035.htm",
+    "programme-status-9872fb93cc94.html",
+}
 
 BASE = "http://127.0.0.1:8811"
 for i, a in enumerate(sys.argv):
