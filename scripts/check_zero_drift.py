@@ -2492,6 +2492,39 @@ def check_no_redirect_shadows_a_real_page(offline):
                % len(cfg.get("redirects", [])))
 
 
+def check_a_page_leads_with_its_own_action(offline):
+    """The loudest button on a page must be that page's own job.
+
+    pilot.html's hero row read, in order: "See the Research & Validation" as the
+    gold primary, "Open the Training Simulations", "View Research Findings",
+    and then "Join Pilot Program" last, in the faintest ghost style. Three of
+    the four sent the reader off the page, and the one action the Pilot Program
+    page exists for was the quietest thing on it.
+
+    Checked structurally rather than by taste: the first .btn-primary in the
+    hero must be an action that stays on this page, not a link to another one.
+    """
+    src = read("pilot.html")
+    i = src.find('<div class="btn-row"')
+    if i < 0:
+        check("pilot.html has a hero button row", False, "not found")
+        return
+    row = src[i:src.find("</div>", i)]
+    m = re.search(r'<a\s[^>]*class="[^"]*btn-primary[^"]*"[^>]*>(.*?)</a>', row, re.S)
+    if not m:
+        check("pilot.html leads with its own action", False,
+              "no primary button in the hero row")
+        return
+    tag = m.group(0)
+    label = re.sub(r"<[^>]+>|&[a-z]+;|&#\d+;", " ", m.group(1))
+    label = re.sub(r"\s+", " ", label).strip()
+    href = re.search(r'href="([^"]+)"', tag)
+    target = href.group(1) if href else ""
+    stays = target.startswith("#")
+    check("pilot.html leads with its own action", stays,
+          "primary is %r -> %s" % (label[:34], target or "no href"))
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -2530,6 +2563,7 @@ def main():
                check_only_the_active_nav_item_is_gold,
                check_no_duplicate_nav_strips,
                check_no_redirect_shadows_a_real_page,
+               check_a_page_leads_with_its_own_action,
                check_training_is_ungated,
                check_training_modules_are_findable,
                check_generated_docs_current, check_cross_endpoint):

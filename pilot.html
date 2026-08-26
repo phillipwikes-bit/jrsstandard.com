@@ -347,11 +347,18 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
     <span class="chip">&#10003; No Cost to Participate</span>
   </div>
 
+  <!-- THE PILOT PAGE NOW LEADS WITH THE PILOT.
+       Until 2026-08-26 this row read, in order: See the Research & Validation
+       as the gold primary, Open the Training Simulations, View Research
+       Findings, and then Join Pilot Program last, in the faintest ghost style.
+       Three of the four sent the reader off this page, and the one action the
+       page exists for was the quietest thing on it. Joining is the primary
+       action now; the rest keep their place as secondary routes. -->
   <div class="btn-row" style="margin-top:0;">
-    <a href="research.html" class="btn btn-primary">See the Research &amp; Validation &#8594;</a>
-    <a href="training.html" class="btn btn-accent">Open the Training Simulations</a>
+    <a href="#contact" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});return false;" class="btn btn-primary">Join the Pilot Program &#8594;</a>
     <a href="#findings-block" onclick="var b=document.getElementById('findings-block');if(b)b.scrollIntoView({behavior:'smooth'});return false;" class="btn btn-accent">View Research Findings</a>
-    <a href="#contact" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});return false;" class="btn btn-ghost">Join Pilot Program</a>
+    <a href="research.html" class="btn btn-accent">See the Research &amp; Validation</a>
+    <a href="training.html" class="btn btn-ghost">Open the Training Simulations</a>
   </div>
 
   <p style="font-size:12.5px;color:var(--muted-soft);line-height:1.65;max-width:600px;margin-top:16px;">JRS originated from civil rights investigative and documentation-review experience, with a cognitive-behavioral and AI-governance lens. <a href="about.html" style="color:var(--accent);">Origin &amp; what JRS is and is not &#8594;</a></p>
