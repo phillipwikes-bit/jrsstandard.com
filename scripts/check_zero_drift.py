@@ -1699,6 +1699,16 @@ def check_dual_track_band(offline):
 # 2026-08-25. Each entry was actually present in supplied copy on that date and
 # was removed, so this list is a record of what happened rather than a
 # precaution against the hypothetical.
+#
+# REVISIT WHEN: the pricing entries below are STAGE-DEPENDENT, not permanent.
+# They hold because nothing has yet transacted on this ladder, so a published
+# band would be a number with no reference behind it and every negotiation
+# would open at its bottom. The condition that ends them is a CLOSED LICENCE
+# that can be pointed at. When there is one, publish the band, delete the three
+# pricing entries from this table, and update
+# check_scope_estimator_qualifies_without_a_price, which currently asserts that
+# no currency figure appears on enterprise.html. The other entries in this
+# table are not stage-dependent and stay.
 INTERNAL_VOICE = (
     # Pricing floors. Publishing a band means every negotiation opens at its
     # bottom, and these sat above a ladder on which nothing has ever sold.
@@ -2967,6 +2977,62 @@ def check_homepage_is_a_landing_page(offline):
           "home panel is %.1f%% of the document (%d bytes)" % (share, home_bytes))
 
 
+def check_scope_estimator_qualifies_without_a_price(offline):
+    """A buyer must be able to size the commitment without a published floor.
+
+    The CRO finding was never "no price". It was that a buyer could not tell
+    whether this was their size of commitment without spending a call to find
+    out. The 2026-08-25 owner constraint blocks publishing a band, and its
+    stated reason is that the figures sat above a ladder on which nothing has
+    ever sold: a number with no transacted reference behind it invites the
+    question of who else pays it.
+
+    The estimator answers the sizing question without answering the price
+    question. This asserts it exists, returns a tier, and carries the answers
+    into the inquiry form, and that it still prints no figure.
+    """
+    src = read("enterprise.html")
+    bad = []
+    for el in ("sc-vol", "sc-types", "sc-exposure", "sc-go", "sc-out", "sc-tier"):
+        if 'id="%s"' % el not in src:
+            bad.append("missing #%s" % el)
+    for tier in ("Pilot integration", "Standard platform licence",
+                 "Extended platform licence", "Custom scope"):
+        if tier not in src:
+            bad.append("tier %r absent" % tier)
+    if 'name="scale"' not in src:
+        bad.append("estimator cannot prefill the inquiry form")
+    # The estimator must never grow a figure of its own.
+    if re.search(r"\$\s?\d", src):
+        bad.append("a currency figure appeared on the page")
+    check("scope estimator qualifies without a price", not bad,
+          "; ".join(bad) if bad
+          else "4 tiers, 3 inputs, prefills the inquiry, no figure printed")
+
+
+def check_pricing_constraint_names_its_trigger(offline):
+    """A standing constraint must say what would end it.
+
+    A constraint with no stated trigger becomes permanent by default, and
+    nobody remembers why. The 2026-08-25 rule against publishing a licence
+    floor is stage-dependent: it holds while nothing has transacted, and the
+    thing that ends it is a closed licence to point at. That trigger is
+    recorded beside the rule so a future editor can act on it rather than
+    guess at it.
+    """
+    src = read(__file__ if False else "scripts/check_zero_drift.py")
+    i = src.find("INTERNAL_VOICE = (")
+    if i < 0:
+        check("pricing constraint names its trigger", False,
+              "INTERNAL_VOICE table not found")
+        return
+    window = src[max(0, i - 1400):i + 400]
+    has_trigger = "REVISIT WHEN" in window
+    check("pricing constraint names its trigger", has_trigger,
+          "trigger recorded beside the rule" if has_trigger
+          else "no REVISIT WHEN condition recorded")
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -3020,6 +3086,8 @@ def main():
                check_sandbox_is_failclosed,
                check_sandbox_is_reachable_and_gated,
                check_pricing_is_published,
+               check_scope_estimator_qualifies_without_a_price,
+               check_pricing_constraint_names_its_trigger,
                check_pii_gate_is_identical_everywhere,
                check_homepage_is_a_landing_page,
                check_training_is_ungated,

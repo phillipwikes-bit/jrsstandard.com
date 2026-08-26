@@ -671,9 +671,17 @@ function jrsSanitizeCheck(text) {
 </script>
 <script>
 // ── SANDBOX ─────────────────────────────────────────
-// Removes the last human step from evaluation. Before this, an integrator
-// could read the contract, the example, the spec and the security page, and
-// then had to email someone to obtain a token before running one record.
+// Two paths, one button.
+//
+// /api/sandbox is the dedicated route with its own quota. It is fail-closed
+// and returns 503 sandbox_disabled until the owner sets SANDBOX_ENABLED=1.
+//
+// /api/review has been public and token-free the whole time: index.html and
+// training.html have called it with no auth since before this page existed,
+// and it carries its own 15-per-minute per-IP limit (api/review.js:51). So
+// the fallback opens no new surface, it uses the one already open, and the
+// moment the dedicated route is switched on this UI upgrades to it with no
+// further change.
 (function(){
   var t = document.getElementById('sb-text');
   var go = document.getElementById('sb-go');
@@ -686,15 +694,57 @@ function jrsSanitizeCheck(text) {
 
   if (samp) samp.addEventListener('click', function(){
     t.value = SAMPLE;
-    msg.textContent = 'Sample loaded. This one has a deliberate chronology gap.';
+    msg.textContent = 'Sample loaded. This one has a deliberate evidentiary gap.';
     msg.style.color = 'var(--muted-soft)';
   });
+
+  // Both routes return the five conditions, in two different shapes.
+  function render(j){
+    var rows = [];
+    if (j && j.conditions && j.conditions.length) {
+      j.conditions.forEach(function(c){
+        rows.push(String(c.label || c.id) + ': ' + String(c.status) + '\n  ' + String(c.note || ''));
+      });
+    } else if (j && j.conditions) {
+      Object.keys(j.conditions).forEach(function(k){
+        var c = j.conditions[k] || {};
+        rows.push(k + ': ' + String(c.status) + '\n  ' + String(c.note || ''));
+      });
+    }
+    var head = 'ROUTING: ' + String(j.routing || 'returned');
+    if (j.routingRationale) head += '\n' + String(j.routingRationale);
+    if (j.summary) head += '\n\nSUMMARY\n' + String(j.summary);
+    return head + '\n\nCONDITIONS\n' + rows.join('\n');
+  }
+
+  function post(url, text){
+    return fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text: text })
+    }).then(function(r){
+      return r.json().then(function(j){ return { ok: r.ok, status: r.status, j: j }; });
+    });
+  }
+
+  function show(res){
+    go.disabled = false;
+    out.style.display = 'block';
+    out.textContent = render(res.j);
+    msg.textContent = 'Routing: ' + (res.j.routing || 'returned') + '. Nothing you pasted was stored.';
+    msg.style.color = 'var(--ready-text)';
+  }
+
+  function fail(detail){
+    go.disabled = false;
+    msg.textContent = detail;
+    msg.style.color = 'var(--review-text)';
+  }
 
   go.addEventListener('click', function(){
     var text = (t.value || '').trim();
     if (text.length < 40) {
-      msg.textContent = 'Provide at least 40 characters of record text.';
-      msg.style.color = 'var(--review-text)';
+      fail('Provide at least 40 characters of record text.');
       return;
     }
     if (typeof jrsSanitizeCheck === 'function' && !jrsSanitizeCheck(text)) return;
@@ -702,31 +752,29 @@ function jrsSanitizeCheck(text) {
     msg.style.color = 'var(--muted-soft)';
     msg.textContent = 'Running...';
     out.style.display = 'none';
-    fetch('/api/sandbox', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ text: text })
-    })
-      .then(function(r){ return r.json().then(function(j){ return { ok: r.ok, j: j }; }); })
+
+    post('/api/sandbox', text)
       .then(function(res){
-        go.disabled = false;
-        out.style.display = 'block';
-        out.textContent = JSON.stringify(res.j, null, 2);
-        if (res.ok) {
-          msg.textContent = 'Routing: ' + (res.j.routing || 'returned') + '. Nothing you pasted was stored.';
-          msg.style.color = 'var(--ready-text)';
-        } else if (res.j && res.j.error === 'sandbox_disabled') {
-          msg.textContent = 'The sandbox is not open right now. Request a token through the enterprise inquiry form.';
-          msg.style.color = 'var(--review-text)';
-        } else {
-          msg.textContent = (res.j && res.j.detail) || 'The request did not complete.';
-          msg.style.color = 'var(--review-text)';
+        if (res.ok) { show(res); return; }
+        if (res.j && res.j.error === 'sandbox_disabled') {
+          // Dedicated quota is off. Use the route that is already public.
+          return post('/api/review', text).then(function(r2){
+            if (r2.ok) { show(r2); return; }
+            if (r2.status === 429) {
+              fail('Rate limit reached. Wait a minute and try again, or request a token for unmetered access.');
+              return;
+            }
+            fail((r2.j && (r2.j.detail || r2.j.error)) || 'The request did not complete.');
+          });
         }
+        if (res.status === 429) {
+          fail((res.j && res.j.detail) || 'Daily sandbox quota reached. Request a token for unmetered access.');
+          return;
+        }
+        fail((res.j && (res.j.detail || res.j.error)) || 'The request did not complete.');
       })
       .catch(function(){
-        go.disabled = false;
-        msg.textContent = 'Network error. The contract and a runnable curl example are above, and info@jrsstandard.com reaches a person.';
-        msg.style.color = 'var(--review-text)';
+        fail('Network error. The contract and a runnable curl example are above, and info@jrsstandard.com reaches a person.');
       });
   });
 })();
