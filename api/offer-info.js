@@ -32,12 +32,20 @@ export default async function handler(req) {
   const offers = {};
   Object.keys(OFFERS).forEach(function (k) {
     const o = OFFERS[k];
+    // A RETIRED OFFER EMITS NO PRICE. The figure stays in _offer-config.js so
+    // historical rows in checkout-stats, the leads inbox and the owner
+    // programme page still resolve a name and an amount, but nothing public
+    // renders it: the offer is not for sale, and a price on a page that
+    // cannot be bought is worse than no price at all. The consuming pages
+    // already guard on an empty price_label and fall back to their own copy.
+    const retired = o.retired === true;
     offers[k] = {
       name: o.name,
-      price_usd: o.price_usd,
-      price_label: o.price_label,
+      price_usd: retired ? null : o.price_usd,
+      price_label: retired ? '' : o.price_label,
       scope: o.scope,
-      checkout_live: isConfigured(o)
+      retired: retired,
+      checkout_live: retired ? false : isConfigured(o)
     };
   });
 

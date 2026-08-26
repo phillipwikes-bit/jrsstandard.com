@@ -1435,27 +1435,58 @@ def check_free_funnel_preserved(offline):
 
 
 def check_checkout_path_active(offline):
-    """Item 2. The checkout path must stay wired end to end.
+    """Item 2. Every request page must still route a reader somewhere real.
 
-    Three request pages each pointing at /api/checkout, an endpoint that resolves
-    an offer and captures a lead when it cannot take a card. A payment link being
-    absent is a configuration gap; the PATH being removed is a decision, and this
-    fails if anyone makes that decision quietly.
+    THE ORIGINAL FORM OF THIS CHECK required all three request pages to point
+    at /api/checkout, and said so for a reason worth preserving: "a payment
+    link being absent is a configuration gap; the PATH being removed is a
+    decision, and this fails if anyone makes that decision quietly."
+
+    THAT DECISION WAS MADE ON 2026-08-26, and not quietly. The revenue model
+    collapsed to engine licensing alone: audit, governance and calibration
+    were fixed-scope engagements consuming owner hours against a recorded
+    weekly capacity of 10 to 15 hours, all three had an empty checkout_url,
+    and none had ever taken a payment. The rationale is recorded in
+    api/_offer-config.js above OFFERS and in research/MASTER_TRACKER.md.
+
+    The purpose survives the change. A reader on one of those pages must
+    still reach something that works, and the lead-capture machinery that
+    catches enterprise buyers who cannot use a card must stay. Only the
+    destination moved, from a checkout to the licensing inquiry.
     """
     try:
         ck = read("api/checkout.js")
     except Exception:
         check("checkout path is active", False, "api/checkout.js is missing")
         return
-    wired = [p for p in ("audit-request.html", "governance-request.html",
-                         "calibration-request.html")
-             if "api/checkout" in (read(p) if os.path.exists(os.path.join(ROOT, p)) else "")]
+
+    pages = ("audit-request.html", "governance-request.html",
+             "calibration-request.html")
+    unrouted = []
+    for page in pages:
+        if not os.path.exists(os.path.join(ROOT, page)):
+            unrouted.append("%s missing" % page)
+            continue
+        src = read(page)
+        if "enterprise.html#enterprise-inquiry" not in src:
+            unrouted.append("%s does not reach the inquiry" % page)
+
     has_capture = "checkout-fallback" in ck
     has_offer = "offerFor" in ck
-    check("checkout path is active", len(wired) == 3 and has_capture and has_offer,
-          "%d/3 request pages wired, capture=%s, offer resolution=%s"
-          % (len(wired), has_capture, has_offer))
+    has_retired_route = "RETIRED OFFER GUARD" in ck
 
+    bad = list(unrouted)
+    if not has_capture:
+        bad.append("lead capture removed from api/checkout.js")
+    if not has_offer:
+        bad.append("offer resolution removed from api/checkout.js")
+    if not has_retired_route:
+        bad.append("no route for a retired offer link")
+
+    check("checkout path is active", not bad,
+          "; ".join(bad) if bad
+          else "%d/%d request pages route to the licensing inquiry, "
+               "capture and retired-offer route intact" % (len(pages), len(pages)))
 
 def check_sitemap_keeps_free_material(offline):
     """Item 3. The free material stays indexed.
@@ -3033,6 +3064,68 @@ def check_pricing_constraint_names_its_trigger(offline):
           else "no REVISIT WHEN condition recorded")
 
 
+def check_revenue_model_is_licensing_only(offline):
+    """One revenue motion: the engine licence ladder.
+
+    api/_offer-config.js:58 states the principle the model now follows: the
+    engine is the only offer that scales without the owner's time, so it is
+    the one that belongs in a tier ladder. Three fixed-scope engagements sat
+    above that line contradicting it (audit $250, governance $500,
+    calibration $750), each consuming owner hours against a recorded weekly
+    capacity of 10 to 15 hours, and each with an empty checkout_url that had
+    never taken a payment.
+
+    They are retired rather than deleted, because four surfaces resolve
+    historical rows through those keys. This asserts the retirement holds:
+    the flags are present, nothing public renders a price for them, and no
+    page still routes a reader into a purchase for one.
+    """
+    cfg = read("api/_offer-config.js")
+    bad = []
+    for key in ("audit", "governance", "calibration"):
+        i = cfg.find("\n  %s: {" % key)
+        if i < 0:
+            bad.append("%s: key deleted, history would orphan" % key)
+            continue
+        if "retired: true" not in cfg[i:i + 500]:
+            bad.append("%s: not marked retired" % key)
+
+    info = read("api/offer-info.js")
+    if "o.retired === true" not in info:
+        bad.append("offer-info still emits prices for retired offers")
+
+    chk = read("api/checkout.js")
+    if "RETIRED OFFER GUARD" not in chk:
+        bad.append("checkout has no retired-offer route")
+
+    import glob
+    for page in sorted(glob.glob(os.path.join(ROOT, "*.html"))):
+        rel = os.path.relpath(page, ROOT)
+        src = read(rel)
+        for key in ("audit", "governance", "calibration"):
+            if "/api/checkout?o=%s" % key in src:
+                bad.append("%s still links a purchase for %s" % (rel, key))
+
+    check("revenue model is licensing only", not bad,
+          "; ".join(bad) if bad
+          else "3 offers retired, no public price, no purchase path, keys kept")
+
+
+def check_engine_ladder_is_intact(offline):
+    """The licence ladder is now the entire revenue model and must stay whole."""
+    cfg = read("api/_offer-config.js")
+    bad = []
+    for tier in ("evaluation", "single_function", "enterprise",
+                 "governance_reporting"):
+        if "\n  %s: {" % tier not in cfg:
+            bad.append("missing tier %s" % tier)
+    i = cfg.find("\n  evaluation: {")
+    if i >= 0 and "price_usd: 0" not in cfg[i:i + 400]:
+        bad.append("evaluation tier is no longer free")
+    check("engine licence ladder intact", not bad,
+          "; ".join(bad) if bad else "4 tiers present, evaluation free at 0")
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -3088,6 +3181,8 @@ def main():
                check_pricing_is_published,
                check_scope_estimator_qualifies_without_a_price,
                check_pricing_constraint_names_its_trigger,
+               check_revenue_model_is_licensing_only,
+               check_engine_ladder_is_intact,
                check_pii_gate_is_identical_everywhere,
                check_homepage_is_a_landing_page,
                check_training_is_ungated,

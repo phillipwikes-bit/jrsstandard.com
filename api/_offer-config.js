@@ -16,8 +16,25 @@
 //
 // TO GO LIVE: create one payment link per offer in your provider's dashboard,
 // paste each URL below, and deploy. Nothing else needs to change.
+// RETIRED 2026-08-26. The revenue model collapsed to a single motion:
+// engine licensing. These three were fixed-scope engagements that consumed
+// owner hours against a recorded weekly capacity of 10 to 15 hours, and the
+// file's own comment below says the engine is the only offer that scales
+// without that time. None of them ever took a payment: every checkout_url was
+// empty for the whole time they were listed.
+//
+// THEY ARE MARKED RATHER THAN DELETED. api/checkout-stats.js,
+// api/leads-4b7e2c9af106d385.js, api/asset-stats.js and the owner programme
+// page resolve historical rows through these keys. Deleting them would orphan
+// records that already exist. retired:true stops anything new being sold while
+// history keeps its names.
+//
+// The audit scope did not disappear. It became the free evaluation step in
+// ENGINE_TIERS below, which is where a five-record read belongs: proof inside
+// a licensing conversation rather than a $250 product competing with it.
 export const OFFERS = {
   audit: {
+    retired: true,   // retired 2026-08-26, licensing-only model
     slug: 'audit-request',
     name: 'AI Documentation Defensibility Review',
     price_usd: 250,
@@ -26,6 +43,7 @@ export const OFFERS = {
     checkout_url: ''   // [REQUIRES USER INPUT] paste the payment link here
   },
   governance: {
+    retired: true,   // retired 2026-08-26, licensing-only model
     slug: 'governance-request',
     name: 'AI Governance Documentation Review',
     price_usd: 500,
@@ -34,6 +52,7 @@ export const OFFERS = {
     checkout_url: ''   // [REQUIRES USER INPUT] paste the payment link here
   },
   calibration: {
+    retired: true,   // retired 2026-08-26, licensing-only model
     slug: 'calibration-request',
     name: 'Benchmark Access and Calibration',
     price_usd: 750,
