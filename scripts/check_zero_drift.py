@@ -2250,7 +2250,23 @@ def check_site_nav_present(offline):
         sections = set(re.findall(r'id="section-([a-z0-9-]+)"', idx))
         broken = []
         for t in targets:
-            if t.startswith("index.html#section-"):
+            t = t.replace("&amp;", "&")
+            if t.startswith("/api/"):
+                # An endpoint, not a file. Its token is checked against the
+                # endpoint's own vocabulary rather than the filesystem: the
+                # first version of this check looked for a file called
+                # "/api/dl?e=standard&src=sitenav" and reported the Review
+                # Controls PDF as broken while it was serving 326,013 bytes.
+                q = t.split("?", 1)[1] if "?" in t else ""
+                params = dict(p.split("=", 1) for p in q.split("&") if "=" in p)
+                dl = read(os.path.join("api", "dl.js"))
+                known = set(re.findall(r"(\w+):\s*'[^']+\.pdf'", dl))
+                e = re.sub(r"[^a-z]", "", (params.get("e") or "").lower())
+                aliases = {"std": "standard", "jrs": "standard"}
+                if not t.startswith("/api/dl") or \
+                   (aliases.get(e, e) not in known and e not in known):
+                    broken.append(t)
+            elif t.startswith("index.html#section-"):
                 if t.split("#section-", 1)[1] not in sections:
                     broken.append(t)
             elif not os.path.exists(os.path.join(ROOT, t.split("#")[0])):
@@ -2258,6 +2274,50 @@ def check_site_nav_present(offline):
         check("every site-nav destination resolves", not broken,
               ", ".join(broken) if broken
               else "%d destinations, all reachable" % len(targets))
+
+
+def check_review_controls_is_the_pdf(offline):
+    """A control labelled "Review Controls" must serve the standard PDF.
+
+    index.html:950 carried this, as the FIRST entry in the primary menu:
+
+        <button class="nav-item active" onclick="showSection('home')">Review Controls</button>
+
+    On every other page a control with that exact label is /api/dl?e=standard,
+    which serves JRS-Standard.pdf, 326,013 bytes, verified live. On the busiest
+    page the same words opened the home panel instead. The owner pressed Review
+    Controls, got the home default panel, and reported exactly that.
+
+    Two words meaning two different things is not a naming quibble here: it is
+    the difference between handing someone the standard and showing them the
+    page they were already on.
+    """
+    import glob
+
+    offenders = []
+    checked = 0
+    for pat in ("*.html", "*/*.html", "*/*/*.html"):
+        for p in sorted(glob.glob(os.path.join(ROOT, pat))):
+            rel = os.path.relpath(p, ROOT)
+            if rel.split(os.sep)[0] in ("research", "templates", "scripts",
+                                        "node_modules"):
+                continue
+            src = read(rel)
+            # Only interactive controls, not prose that mentions the phrase.
+            for m in re.finditer(
+                    r"<(a|button)\b([^>]*)>\s*Review Controls\s*(?:PDF)?\s*</\1>", src):
+                checked += 1
+                attrs = m.group(2)
+                href = re.search(r'href="([^"]+)"', attrs)
+                target = href.group(1).replace("&amp;", "&") if href else ""
+                if not target.startswith("/api/dl?e=standard"):
+                    label = "showSection" if "showSection" in attrs else (target or "no href")
+                    offenders.append("%s: Review Controls -> %s" % (rel, label))
+
+    check("every Review Controls control serves the standard PDF",
+          not offenders,
+          "; ".join(offenders) if offenders
+          else "%d controls, all pointing at /api/dl?e=standard" % checked)
 
 
 def main():
@@ -2294,6 +2354,7 @@ def main():
                check_inline_scripts_parse,
                check_nav_links_reach_their_section,
                check_site_nav_present,
+               check_review_controls_is_the_pdf,
                check_training_is_ungated,
                check_training_modules_are_findable,
                check_generated_docs_current, check_cross_endpoint):

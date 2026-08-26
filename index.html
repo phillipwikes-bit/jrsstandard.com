@@ -947,7 +947,8 @@ a.gumroad-button.util-link {
  </div>
  
  <div class="primary-nav-inner" id="primary-nav-items">
- <button class="nav-item active" onclick="showSection('home')">Review Controls</button>
+ <button class="nav-item active" onclick="showSection('home')">Overview</button>
+ <a href="/api/dl?e=standard&amp;src=index" class="nav-item" style="text-decoration:none;">Review Controls PDF</a>
  <button class="nav-item" onclick="showSection('scenarios')">Documentation Failures</button>
  <button class="nav-item" onclick="showSection('tools')">Free Resources</button>
   <a href="training.html" class="nav-item kit-item" style="text-decoration:none;">Training &#8599;</a>
@@ -4869,9 +4870,13 @@ function showSection(id){
  const sec=document.getElementById('section-'+id);
  if(sec)sec.classList.add('active');
  if(id==='roles'&&typeof showRoleEnv==='function'){setTimeout(()=>showRoleEnv('hr'),30);}
- const sectionMap={'home':0,'scenarios':1,'tools':2,'kit':3,'guidance':5,'about':6,'doccond':99,'roles':99,'maturity':99,'ai':99,'usecases':99,'training':99,'library':99};
- const navItems=document.querySelectorAll('.nav-item');
- if(sectionMap[id]!==undefined&&navItems[sectionMap[id]])navItems[sectionMap[id]].classList.add('active');
+ // Match the nav item by what it DOES, not by where it sits. The previous
+ // version keyed on position in the bar and went stale the first time the bar
+ // was edited, leaving the highlight on an unrelated entry.
+ document.querySelectorAll('.nav-item').forEach(function(n){
+   var oc=n.getAttribute('onclick')||'';
+   if(oc.indexOf("showSection('"+id+"')")!==-1)n.classList.add('active');
+ });
  // Update mobile nav current-section label and close the dropdown
  const labelEl=document.getElementById('nav-current-section');
  if(labelEl)labelEl.textContent=SECTION_LABELS[id]||id;
