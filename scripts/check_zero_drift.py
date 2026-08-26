@@ -2340,6 +2340,60 @@ def check_review_controls_is_the_pdf(offline):
           else "%d controls, all pointing at /api/dl?e=standard" % checked)
 
 
+def check_only_the_active_nav_item_is_gold(offline):
+    """Gold in a menu must mean one thing: the entry you are on.
+
+    It meant three. index.html carried the real rule,
+    .nav-item.active{color:var(--accent)}, plus a permanent badge class
+    .nav-item.kit-item{color:var(--accent)}, plus an inline
+    style="color:var(--accent)" on a third entry. So Training and Research &
+    Validation were gold in every page state, and the genuinely active entry
+    was gold as well: three gold items, one of which meant "you are here". The
+    owner counted them on a phone and asked why.
+
+    The badge colouring was left from when the highlighted entry was
+    "Deployment Kit"; collapsing the bar earlier that day carried the class
+    onto Training rather than removing it.
+
+    Two things are asserted. No nav item may hardcode the accent colour
+    inline, and no rule may paint a nav item accent except through .active.
+    Either one alone leaves a second meaning for the same colour.
+    """
+    import glob
+
+    inline, badge = [], []
+    for pat in ("*.html", "*/*.html", "*/*/*.html"):
+        for p in sorted(glob.glob(os.path.join(ROOT, pat))):
+            rel = os.path.relpath(p, ROOT)
+            if rel.split(os.sep)[0] in ("research", "templates", "scripts",
+                                        "node_modules"):
+                continue
+            src = read(rel)
+            for m in re.finditer(r'<(?:a|button)\s[^>]*class="[^"]*\bnav-item\b[^"]*"[^>]*>', src):
+                tag = m.group(0)
+                if "active" in tag:
+                    continue
+                st = re.search(r'style="([^"]*)"', tag)
+                if st and "var(--accent)" in st.group(1):
+                    label = src[m.end():m.end() + 40]
+                    label = re.sub(r"<[^>]+>|&#\d+;|\s+", " ", label).strip()[:22]
+                    inline.append("%s: %s" % (rel, label))
+
+            # A CSS rule painting a nav item accent without requiring .active.
+            for m in re.finditer(r'(\.nav-item[^{,]*)\{([^}]*)\}', src):
+                sel, body = m.group(1), m.group(2)
+                if "var(--accent)" not in body or "color" not in body:
+                    continue
+                if ".active" in sel:
+                    continue
+                badge.append("%s: %s" % (rel, sel.strip()))
+
+    check("no nav item hardcodes the active colour inline", not inline,
+          "; ".join(inline) if inline else "gold is set only by .active")
+    check("no CSS rule paints a nav item gold except .active", not badge,
+          "; ".join(sorted(set(badge))) if badge else "no badge rules remain")
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -2375,6 +2429,7 @@ def main():
                check_nav_links_reach_their_section,
                check_site_nav_present,
                check_review_controls_is_the_pdf,
+               check_only_the_active_nav_item_is_gold,
                check_training_is_ungated,
                check_training_modules_are_findable,
                check_generated_docs_current, check_cross_endpoint):

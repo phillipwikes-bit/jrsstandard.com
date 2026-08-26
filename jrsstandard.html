@@ -55,9 +55,6 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 .nav-item{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);padding:12px 16px;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:.1s;background:none;border-top:none;border-left:none;border-right:none}
 .nav-item:hover{color:var(--text)}
 .nav-item.active{color:var(--accent);border-bottom-color:var(--accent)}
-.nav-item.kit-item{color:var(--accent);border-color:transparent}
-.nav-item.kit-item:hover{color:var(--text)}
-.nav-item.kit-item.active{border-bottom-color:var(--accent)}
 
 /* UTIL BAR */
 .util-bar{border-bottom:1px solid var(--rule);padding:0 28px;background:var(--bg)}
@@ -693,7 +690,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
  <button class="nav-item" onclick="showSection('training')">Reviewer Guidance</button>
  <button class="nav-item" onclick="showSection('about')">About</button>
  <button class="nav-item" onclick="showSection('library')">Document Architecture</button>
- <button class="nav-item kit-item" onclick="showSection('kit')">Operational References &#8599;</button>
+ <button class="nav-item" onclick="showSection('kit')">Operational References &#8599;</button>
  </div>
 </nav>
 
