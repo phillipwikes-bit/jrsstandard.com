@@ -2167,6 +2167,99 @@ def check_nav_links_reach_their_section(offline):
           else "%d sections available" % len(sections))
 
 
+def check_site_nav_present(offline):
+    """Every public page must carry the same navigation bar.
+
+    Measured on 2026-08-26: of 72 pages, SIX carried any navigation and 66
+    carried none. On those 66 the only header links were the JRS wordmark and,
+    in some footers, "Home", and both correctly go to the front page. So from
+    almost anywhere on the site the only reachable destination WAS the front
+    page. The owner reported it as "almost every link pulls up the home
+    default panel", which is exactly what a missing menu looks like from the
+    outside. Nothing was broken; there was nowhere to go.
+
+    The bar is byte-identical wherever it appears, for the same reason the
+    dual-track block is: a menu maintained separately on sixty pages drifts,
+    and the drift is invisible because nobody reads sixty pages side by side.
+    Pages under reference/ carry the same block with ../../ prefixes, so those
+    are compared after normalising the prefix away rather than excused.
+
+    The exclusion list is explicit. Private owner surfaces and personal
+    key-gated pages must not carry public chrome, and the pages that already
+    have a full menu do not need a second one.
+    """
+    import glob
+
+    OPEN = "<!-- JRS SITE NAV v1"
+    CLOSE = "<!-- /JRS SITE NAV v1 -->"
+    EXCLUDE = {
+        "programme-status-9872fb93cc94.html", "acquisition-9f3c2a7d4b.html",
+        "vp-7c1f9a4e8d2b6035.html", "vp-7c1f9a4e8d2b6035.htm",
+        "bench-admin.html", "coauthor.html", "honor.html", "contributor.html",
+        "access.html", "people.html", "404.html", "index.html",
+        "jrsstandard.html", "enterprise.html", "pilot.html",
+        "review-engine.html", "training.html",
+    }
+
+    pages = []
+    for pat in ("*.html", "*/*.html", "*/*/*.html"):
+        for p in glob.glob(os.path.join(ROOT, pat)):
+            rel = os.path.relpath(p, ROOT)
+            if rel.split(os.sep)[0] in ("research", "templates", "scripts",
+                                        "node_modules"):
+                continue
+            pages.append(rel)
+    pages = sorted(set(pages))
+
+    # Exclusion is by exact path, and by bare filename ONLY at the repository
+    # root. Matching on basename anywhere silently excused all sixteen
+    # reference/<slug>/index.html pages plus reviewer/index.html, because their
+    # basename is index.html: the guard reported 38 of 55 and looked healthy
+    # while quietly checking 17 fewer pages than exist. A denominator that
+    # shrinks without saying so is the defect this file exists to catch.
+    missing, blocks = [], set()
+    carried = 0
+    for rel in pages:
+        at_root = os.sep not in rel
+        if rel in EXCLUDE or (at_root and os.path.basename(rel) in EXCLUDE):
+            continue
+        src = read(rel)
+        i, j = src.find(OPEN), src.find(CLOSE)
+        if i < 0 or j < 0 or j < i:
+            missing.append(rel)
+            continue
+        carried += 1
+        blk = src[i:j + len(CLOSE)]
+        # Normalise the relative prefix so a nested page compares equal.
+        blk = blk.replace('href="../../', 'href="').replace('href="../', 'href="')
+        blocks.add(blk)
+
+    check("site nav present on every public page", not missing,
+          "missing on: %s" % ", ".join(missing[:6]) if missing
+          else "%d of %d pages carry it, the rest excluded by name"
+               % (carried, len(pages)))
+
+    check("site nav is byte-identical everywhere", len(blocks) <= 1,
+          "%d distinct nav blocks" % len(blocks))
+
+    # A menu whose entries do not resolve is worse than no menu.
+    if blocks:
+        nav = next(iter(blocks))
+        targets = re.findall(r'href="([^"]+)"', nav)
+        idx = read("index.html")
+        sections = set(re.findall(r'id="section-([a-z0-9-]+)"', idx))
+        broken = []
+        for t in targets:
+            if t.startswith("index.html#section-"):
+                if t.split("#section-", 1)[1] not in sections:
+                    broken.append(t)
+            elif not os.path.exists(os.path.join(ROOT, t.split("#")[0])):
+                broken.append(t)
+        check("every site-nav destination resolves", not broken,
+              ", ".join(broken) if broken
+              else "%d destinations, all reachable" % len(targets))
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -2200,6 +2293,7 @@ def main():
                check_style_tags_balanced,
                check_inline_scripts_parse,
                check_nav_links_reach_their_section,
+               check_site_nav_present,
                check_training_is_ungated,
                check_training_modules_are_findable,
                check_generated_docs_current, check_cross_endpoint):
