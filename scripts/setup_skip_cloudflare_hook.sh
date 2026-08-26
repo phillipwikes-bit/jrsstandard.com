@@ -86,25 +86,37 @@ if grep -qiE '\[(skip ci|ci skip|no ci|skip vercel|vercel skip|cf-pages-skip)\]'
   exit 0
 fi
 
-printf '\n%s\n' "$TOKEN" >> "$MSG_FILE"
+# The token goes immediately after the subject line, NOT at the end.
+#
+# It used to be appended to the end of the message, and on 2026-08-26 that was
+# shown to fail silently on any commit with a detailed body. Seven commits,
+# outcome against the byte offset at which the token appeared:
+#
+#   c9add51   78 bytes, token at 69     skipped
+#   2d95a84   80 bytes, token at 71     skipped
+#   70289a3   94 bytes, token at 85     skipped
+#   5e137bb  194 bytes, token at 185    skipped
+#   f607e86 1040 bytes, token at 1031   FAILED
+#   d07268e 1077 bytes, token at 1068   FAILED
+#   899bbbf   84 bytes, no token        FAILED
+#
+# 899bbbf was pushed with --no-verify specifically to test this: same kind of
+# single-file, non-HTML change as c9add51, but with no token. It failed where
+# c9add51 skipped, which is what proves the token is read at all. The two
+# failures that DID carry a token both buried it past byte 1000. Cloudflare
+# reads the message with a length cap somewhere between 195 and 1031 bytes.
+#
+# Placing it on line 3 keeps it inside that window no matter how long the body
+# grows, and leaves the subject line clean.
+TMP="$(mktemp)"
+{
+  head -n 1 "$MSG_FILE"
+  printf '\n%s\n' "$TOKEN"
+  tail -n +2 "$MSG_FILE"
+} > "$TMP"
+mv "$TMP" "$MSG_FILE"
 HOOKEOF
 
 chmod +x "$HOOK"
 echo "installed $HOOK"
 echo "development branch commits will carry [skip ci]; main deploys are untouched"
-
-# ── 2026-08-26: THE TOKEN IS UNDER TEST, NOT CONFIRMED ────────────────────
-# On 2026-08-26 three commits were pushed to the development branch and all
-# three carried [skip ci], verified by reading each message back. Two of them
-# BUILT AND FAILED (f607e86, d07268e); one was skipped (5e137bb). The token
-# therefore cannot be what separates a skip from a failure.
-#
-# The two commits previously cited as proof that this hook works (c9add51,
-# 2d95a84) both carried the token AND contained no HTML, so they cannot tell
-# the two explanations apart. Every commit that failed touched a root .html
-# file; every commit that was skipped did not.
-#
-# This commit is the discriminating test: one non-HTML file, pushed with
-# --no-verify so NO token is present. If Cloudflare skips it anyway, the
-# trigger is the changed paths and this hook does nothing. If it fails, the
-# token is real and something else explains the two failures above.

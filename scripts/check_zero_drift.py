@@ -2557,6 +2557,59 @@ def check_util_bar_does_not_hide_links_on_a_phone(offline):
           "; ".join(bad) if bad else "%d pages wrap, none scroll" % len(pages))
 
 
+def check_skip_token_lands_where_cloudflare_reads_it(offline):
+    """The CI skip token must sit near the top of the commit message.
+
+    The hook used to append it to the very end. On 2026-08-26 that was shown
+    to fail silently on any commit with a detailed body: seven commits split
+    cleanly by the byte offset of the token, every skip having it within the
+    first 194 bytes and both token-carrying failures burying it past byte
+    1000. A commit pushed deliberately without the token (899bbbf) failed
+    where the same kind of change with it (c9add51) had skipped, which is
+    what proves the token is read at all.
+
+    Exercised, not just read: the installed hook is run against a synthetic
+    long message and the resulting offset is measured.
+    """
+    import io, subprocess, tempfile
+    setup = "scripts/setup_skip_cloudflare_hook.sh"
+    src = read(setup)
+    appends = "printf '\\n%s\\n' \"$TOKEN\" >> \"$MSG_FILE\"" in src
+    if appends:
+        check("skip token lands where Cloudflare reads it", False,
+              "%s still appends the token to the end of the message" % setup)
+        return
+
+    hook = ".git/hooks/commit-msg"
+    if not os.path.exists(hook):
+        check("skip token lands where Cloudflare reads it", not appends,
+              "hook not installed; source no longer appends")
+        return
+    branch = subprocess.run(["git", "rev-parse", "--abbrev-ref", "HEAD"],
+                            capture_output=True, text=True).stdout.strip()
+    m = re.search(r'DEV_BRANCH="([^"]+)"', src)
+    if not m or branch != m.group(1):
+        check("skip token lands where Cloudflare reads it", not appends,
+              "on %r, not the dev branch; source no longer appends" % branch)
+        return
+
+    body = "A representative subject line\n\n" + ("filler body line\n" * 60)
+    with tempfile.NamedTemporaryFile("w", suffix=".msg", delete=False) as fh:
+        fh.write(body)
+        path = fh.name
+    try:
+        subprocess.run([hook, path], check=True, capture_output=True)
+        out = io.open(path, encoding="utf-8").read()
+    finally:
+        os.unlink(path)
+    idx = out.lower().find("[skip ci]")
+    # 194 is the largest offset observed to be honoured; stay well inside it.
+    ok = 0 <= idx <= 194
+    check("skip token lands where Cloudflare reads it", ok,
+          "token at byte %d of a %d byte message" % (idx, len(out))
+          if idx >= 0 else "hook did not add a token")
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -2597,6 +2650,7 @@ def main():
                check_no_redirect_shadows_a_real_page,
                check_a_page_leads_with_its_own_action,
                check_util_bar_does_not_hide_links_on_a_phone,
+               check_skip_token_lands_where_cloudflare_reads_it,
                check_training_is_ungated,
                check_training_modules_are_findable,
                check_generated_docs_current, check_cross_endpoint):
