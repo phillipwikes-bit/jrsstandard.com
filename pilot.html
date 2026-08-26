@@ -188,7 +188,14 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
   .util-label{display:none}
   .container{padding:36px 16px 72px}
   .apply-block{padding:18px 16px}
-  .btn-row{gap:8px}
+  /* On a 390px phone every button and every status chip was sized to its own
+     text and stacked, so the column had a jagged right edge: buttons measured
+     228, 217, 173 and 148px, chips 171, 196, 233 and 171px. Four controls, four
+     different widths, one under the other. It reads as unfinished.
+     The buttons become one uniform column. The chips stop taking a line each
+     and cluster, which is what a row of short status labels should do. */
+  .btn-row{gap:8px;flex-direction:column;align-items:stretch}
+  .btn-row .btn{width:100%;text-align:center;box-sizing:border-box}
   .phase-sequence{overflow-x:auto;-webkit-overflow-scrolling:touch}
   .site-footer-inner{flex-direction:column;gap:14px}
   .footer-links{gap:12px}
@@ -203,6 +210,17 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 /* Hero status bar */
 .hero-status{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 22px}
 .hero-status .chip{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ready-text);border:1px solid rgba(93,191,130,.35);padding:6px 11px;white-space:nowrap}
+/* On a 390px phone these four chips measured 171, 196, 233 and 171px and took a
+   line each: the container is only 358px wide inside its padding, so no two of
+   them fit side by side and the block came out as four ragged bars. A two
+   column grid makes them uniform and puts them in a tidy 2x2, with the label
+   allowed to wrap inside its own cell rather than forcing the width.
+   This block sits AFTER the rules it overrides on purpose: the first attempt
+   placed it earlier in the sheet and lost on source order, changing nothing. */
+@media(max-width:640px){
+  .hero-status{display:grid;grid-template-columns:1fr 1fr;gap:6px;align-items:stretch}
+  .hero-status .chip{white-space:normal;display:flex;align-items:center;justify-content:flex-start;padding:7px 9px;font-size:8px;letter-spacing:.1em;line-height:1.35}
+}
 /* Section intro headline */
 .section-big{font-family:'Bodoni Moda',serif;font-size:24px;font-weight:400;color:var(--text);margin-bottom:6px;line-height:1.22}
 .section-big-sub{font-size:13.5px;color:var(--muted);line-height:1.65;max-width:660px;margin-bottom:16px}
