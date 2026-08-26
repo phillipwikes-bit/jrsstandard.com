@@ -272,7 +272,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 <div class="util-bar">
  <div class="util-bar-inner">
   <span class="util-label">Enterprise</span>
-  <a href="mailto:info@jrsstandard.com?subject=JRS Pilot Program Inquiry" class="util-link accent-link">Apply for Pilot Participation</a>
+  <a href="#enterprise-inquiry" class="util-link accent-link">Enterprise inquiry</a>
   <a href="/api/dl?e=standard&amp;src=enterprise" class="util-link">Review Controls</a>
   <a href="training.html" class="util-link">Training</a>
  </div>
@@ -280,9 +280,21 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 
 <main class="container" id="main-content">
 
-<div class="page-eyebrow">Enterprise: Decision Defensibility</div>
-<h1 class="page-title">Decision Defensibility Across Every Department</h1>
-<p class="page-subtitle">When a consequential decision is questioned long after it is made, the record becomes the only witness. For HR teams, compliance programs, and investigation units that must defend such decisions later, JRS examines whether each record can explain why the decision was made: the basis, reasoning, evidence, and chronology, before the record is finalized.</p>
+<div class="page-eyebrow">Enterprise: Platform Licensing and Deployment</div>
+<h1 class="page-title">Embed a pre-finalization review gate. One stateless call, nothing stored.</h1>
+<p class="page-subtitle">GRC and legal-tech platforms embed the JRS review call before a record is finalized: the determination returns to your product, and your customer's text is never retained, never stored, and never used for training. Enterprise risk, HR, compliance and investigation functions run the same controls inside the review workflows they already have.</p>
+
+<!-- THE PAGE NOW LEADS WITH THE ACTION IT EXISTS FOR.
+     Until 2026-08-26 the first button on this page sat 5,245px below the
+     headline on desktop and 9,248px below it on a phone, and when it
+     arrived it was btn-primary "Request Pilot Participation" pointing at
+     the free track. The inquiry form was at 86.7% page depth. Measured on
+     the rendered page, not read from source. -->
+<div class="btn-row" style="margin-top:0;">
+ <a href="#enterprise-inquiry" class="btn btn-primary">Start an integration scoping call &rarr;</a>
+ <a href="review-engine.html" class="btn btn-accent">API contract and integration schema &rarr;</a>
+ <a href="org-pilot.html" class="btn btn-ghost">Run it on your own records</a>
+</div>
 
 
 <div style="margin-bottom:24px;display:flex;flex-wrap:wrap;gap:7px;">
@@ -292,6 +304,48 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 10px;">Inserts into existing review workflows</span>
  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 10px;">Start with one record type</span>
 </div>
+
+<div style="margin-bottom:20px;" id="enterprise-inquiry">
+ <h2 class="section-head">Enterprise and licensing inquiry</h2>
+ <p class="body-text">Submissions route directly to a private operational dashboard, not to a public queue and not to a mailing list. You will get the integration schema, the tier that fits, and a written scope in one reply. <b>No records are sent at this stage.</b></p>
+ <form id="ei-form">
+  <label class="ei-l">Name<input class="ei-i" name="name" required maxlength="120" autocomplete="name"></label>
+  <label class="ei-l">Work email<input class="ei-i" name="email" type="email" required maxlength="160" autocomplete="email"></label>
+  <label class="ei-l">Organisation<input class="ei-i" name="organization" required maxlength="160" autocomplete="organization"></label>
+  <label class="ei-l">Role<input class="ei-i" name="role" maxlength="120" placeholder="e.g. Head of GRC, Platform Architect"></label>
+  <label class="ei-l">Interest
+   <select class="ei-i" name="interest">
+    <option value="engine-licence">Licence the review engine</option>
+    <option value="oem-embed">Embed it in our product</option>
+    <option value="framework-licence">Licence the framework</option>
+    <option value="evaluation">Evaluation access first</option>
+    <option value="other">Something else</option>
+   </select>
+  </label>
+  <label class="ei-l">Platform or environment<input class="ei-i" name="platform" maxlength="160" placeholder="e.g. ServiceNow IRM, in-house case system"></label>
+  <label class="ei-l">Records reviewed per year
+   <select class="ei-i" name="scale">
+    <option value="unknown">Not sure yet</option>
+    <option value="under-1k">Under 1,000</option>
+    <option value="1k-10k">1,000 to 10,000</option>
+    <option value="10k-100k">10,000 to 100,000</option>
+    <option value="over-100k">Over 100,000</option>
+   </select>
+  </label>
+  <label class="ei-l">Timeline
+   <select class="ei-i" name="timeline">
+    <option value="exploratory">Exploratory</option>
+    <option value="this-year">This year</option>
+    <option value="this-quarter">This quarter</option>
+    <option value="immediate">Immediate</option>
+   </select>
+  </label>
+  <label class="ei-l">Anything else<textarea class="ei-i" name="note" maxlength="1200" rows="3"></textarea></label>
+  <button class="btn btn-accent" type="submit" id="ei-b">Send inquiry</button>
+  <p id="ei-m" role="status" class="muted-text"></p>
+ </form>
+</div>
+
 
 <div class="callout callout-gold" style="margin-bottom:32px;">
  <div class="callout-label">Who this is for</div>
@@ -552,7 +606,8 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
   </div>
  </div>
  <div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:10px;">
-  <a href="pilot.html" class="btn btn-primary">Request Pilot Participation &rarr;</a>
+  <a href="#enterprise-inquiry" class="btn btn-primary">Start an integration scoping call &rarr;</a>
+  <a href="pilot.html" class="btn btn-ghost">Request Pilot Participation &rarr;</a>
   <a href="index.html#section-tools" class="btn btn-ghost">View Free Review Resources</a>
  </div>
 </div>
@@ -623,7 +678,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
    </div>
   </div>
   <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
-   <a href="mailto:info@jrsstandard.com?subject=JRS Pilot Program Inquiry" class="btn btn-primary">Apply for Pilot Participation →</a>
+   <a href="#enterprise-inquiry" class="btn btn-primary">Apply for Pilot Participation →</a>
    <span style="font-size:12.5px;color:var(--muted-soft);">Availability is limited. Requests are reviewed individually.</span>
   </div>
  </div>
@@ -708,8 +763,8 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
  </div>
  <div style="margin-bottom:10px;font-size:12px;color:var(--muted-soft);font-style:italic;">Requests are reviewed. Response time and availability are not guaranteed.</div>
  <div class="btn-row">
-  <a href="mailto:info@jrsstandard.com?subject=JRS Enterprise Implementation Inquiry" class="btn btn-primary">Send Inquiry →</a>
-  <a href="mailto:info@jrsstandard.com?subject=JRS Pilot Program Inquiry" class="btn btn-accent">Apply for Pilot →</a>
+  <a href="#enterprise-inquiry" class="btn btn-primary">Send Inquiry →</a>
+  <a href="pilot.html" class="btn btn-accent">Apply for Pilot →</a>
   <a href="index.html#section-tools" class="btn btn-ghost">View Free Resources</a>
  </div>
 </div>
@@ -743,8 +798,8 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
  <p class="body-text"><b>Stage, stated plainly:</b> the engine is unvalidated and single-model, in operational validation. Reproducibility is disclosed rather than hidden, and reproducibility is not accuracy and not validation. No effectiveness claim is made. Every API response repeats this in its own payload.</p>
 
  <div class="btn-row">
-  <a href="review-engine.html" class="btn btn-ghost">Integration schema and API contract &rarr;</a>
-  <a href="#enterprise-inquiry" class="btn btn-accent">Enterprise inquiry &rarr;</a>
+  <a href="#enterprise-inquiry" class="btn btn-primary">Enterprise inquiry &rarr;</a>
+  <a href="review-engine.html" class="btn btn-accent">Integration schema and API contract &rarr;</a>
  </div>
 </div>
 
@@ -763,45 +818,13 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
  </table>
 </div>
 
-<div style="margin-bottom:20px;" id="enterprise-inquiry">
+<div style="margin-bottom:20px;">
  <h2 class="section-head">Enterprise and licensing inquiry</h2>
- <p class="body-text">Submissions route directly to a private operational dashboard, not to a public queue and not to a mailing list. You will get the integration schema, the tier that fits, and a written scope in one reply. <b>No records are sent at this stage.</b></p>
- <form id="ei-form">
-  <label class="ei-l">Name<input class="ei-i" name="name" required maxlength="120" autocomplete="name"></label>
-  <label class="ei-l">Work email<input class="ei-i" name="email" type="email" required maxlength="160" autocomplete="email"></label>
-  <label class="ei-l">Organisation<input class="ei-i" name="organization" required maxlength="160" autocomplete="organization"></label>
-  <label class="ei-l">Role<input class="ei-i" name="role" maxlength="120" placeholder="e.g. Head of GRC, Platform Architect"></label>
-  <label class="ei-l">Interest
-   <select class="ei-i" name="interest">
-    <option value="engine-licence">Licence the review engine</option>
-    <option value="oem-embed">Embed it in our product</option>
-    <option value="framework-licence">Licence the framework</option>
-    <option value="evaluation">Evaluation access first</option>
-    <option value="other">Something else</option>
-   </select>
-  </label>
-  <label class="ei-l">Platform or environment<input class="ei-i" name="platform" maxlength="160" placeholder="e.g. ServiceNow IRM, in-house case system"></label>
-  <label class="ei-l">Records reviewed per year
-   <select class="ei-i" name="scale">
-    <option value="unknown">Not sure yet</option>
-    <option value="under-1k">Under 1,000</option>
-    <option value="1k-10k">1,000 to 10,000</option>
-    <option value="10k-100k">10,000 to 100,000</option>
-    <option value="over-100k">Over 100,000</option>
-   </select>
-  </label>
-  <label class="ei-l">Timeline
-   <select class="ei-i" name="timeline">
-    <option value="exploratory">Exploratory</option>
-    <option value="this-year">This year</option>
-    <option value="this-quarter">This quarter</option>
-    <option value="immediate">Immediate</option>
-   </select>
-  </label>
-  <label class="ei-l">Anything else<textarea class="ei-i" name="note" maxlength="1200" rows="3"></textarea></label>
-  <button class="btn btn-accent" type="submit" id="ei-b">Send inquiry</button>
-  <p id="ei-m" role="status" class="muted-text"></p>
- </form>
+ <p class="body-text">The inquiry form is at the top of this page. Submissions route directly to a private operational dashboard, not to a public queue and not to a mailing list.</p>
+ <div class="btn-row">
+  <a href="#enterprise-inquiry" class="btn btn-accent">Go to the inquiry form &uarr;</a>
+  <a href="review-engine.html" class="btn btn-accent">API contract and integration schema &rarr;</a>
+ </div>
 </div>
 
 <div style="margin-bottom:20px;">
@@ -829,7 +852,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
  <h2 class="section-head">For integrators</h2>
  <p class="body-text">The JRS Review Engine is a token-authenticated API that examines one record against the five conditions and returns a structured result. Every response carries a request identifier for audit correlation on your side.</p>
  <div class="btn-row">
-  <a href="review-engine.html" class="btn btn-ghost">Review Engine API &rarr;</a>
+  <a href="review-engine.html" class="btn btn-accent">Review Engine API &rarr;</a>
  </div>
 </div>
 

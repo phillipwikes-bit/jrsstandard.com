@@ -268,7 +268,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 <div class="util-bar">
  <div class="util-bar-inner">
   <span class="util-label">Enterprise</span>
-  <a href="mailto:info@jrsstandard.com?subject=JRS Pilot Program Inquiry" class="util-link accent-link">Apply for Pilot Participation</a>
+  <a href="enterprise.html#enterprise-inquiry" class="util-link accent-link">Enterprise inquiry</a>
   <a href="/api/dl?e=standard&amp;src=enterprise" class="util-link">Review Controls</a>
   <a href="training.html" class="util-link">Training</a>
  </div>
@@ -297,6 +297,20 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
  <h2 class="section-head">Endpoint</h2>
  <p class="body-text"><code>POST https://www.jrsstandard.com/api/v1/review-engine</code></p>
  <p class="body-text">The unversioned route <code>/api/review-engine</code> is the same implementation. <b>Build against the versioned path.</b></p>
+
+ <!-- A technical reader evaluates by pasting into a terminal. Until
+      2026-08-26 this page documented the endpoint, the request, the full
+      response, the errors and the rate limit, and gave them nothing to
+      paste. -->
+ <p class="body-text" style="margin-top:18px;"><b>One call, start to finish:</b></p>
+ <pre class="code-block">curl -X POST https://www.jrsstandard.com/api/v1/review-engine \
+  -H "Authorization: Bearer $JRS_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "text": "Following review of the incident report and the two witness statements dated 11 March, the decision was to issue a final written warning.",
+    "runs": 1
+  }'</pre>
+ <p class="body-text">The call is stateless. Nothing in <code>text</code> is retained, stored, or used for training, so the record never leaves your control and no data-residency obligation transfers to us.</p>
 </div>
 
 <div style="margin-bottom:20px;">

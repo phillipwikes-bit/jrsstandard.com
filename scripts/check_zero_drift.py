@@ -2610,6 +2610,108 @@ def check_skip_token_lands_where_cloudflare_reads_it(offline):
           if idx >= 0 else "hook did not add a token")
 
 
+def check_enterprise_page_leads_with_its_own_action(offline):
+    """The enterprise page must sell the licence, not the free pilot.
+
+    Audited 2026-08-26 on the rendered page: the inquiry form sat at
+    y=17,728 of a 20,458px page (86.7% down, roughly 24 phone screens), and
+    the loudest button above it was btn-primary "Request Pilot
+    Participation" pointing at pilot.html. The API contract link, the one
+    document a technical buyer needs, carried btn-ghost.
+
+    Asserted structurally: the first .btn-primary must target the inquiry
+    form, the API contract must not be the faintest style on the page, and
+    no enterprise call to action may be a mailto.
+    """
+    src = read("enterprise.html")
+    bad = []
+
+    m = re.search(r'<a\s[^>]*class="[^"]*btn-primary[^"]*"[^>]*>', src)
+    if not m:
+        bad.append("no primary button")
+    else:
+        href = re.search(r'href="([^"]+)"', m.group(0))
+        target = href.group(1) if href else ""
+        if target != "#enterprise-inquiry":
+            bad.append("first primary points at %s" % target)
+
+    if re.search(r'<a\s[^>]*href="review-engine\.html"[^>]*class="btn btn-ghost"', src):
+        bad.append("API contract is still btn-ghost")
+
+    for m in re.finditer(r'<a\s[^>]*href="(mailto:[^"]+)"[^>]*class="([^"]*)"', src):
+        cls = m.group(2)
+        if "btn" in cls or "accent-link" in cls:
+            bad.append("mailto call to action: %s" % m.group(1)[:44])
+
+    check("enterprise.html leads with its own action", not bad,
+          "; ".join(bad) if bad else "primary -> #enterprise-inquiry, contract promoted, no mailto CTA")
+
+
+def check_inquiry_form_is_not_buried(offline):
+    """The enterprise inquiry form must sit in the top half of its page."""
+    src = read("enterprise.html")
+    i = src.find('id="enterprise-inquiry"')
+    if i < 0:
+        check("enterprise inquiry form is reachable", False, "form not found")
+        return
+    pct = 100.0 * i / len(src)
+    check("enterprise inquiry form is not buried", pct < 40.0,
+          "form at %.1f%% of source (was 86.7%% of rendered page)" % pct)
+
+
+def check_free_track_bridges_to_the_licence(offline):
+    """Free-track pages must offer a route to the commercial track.
+
+    jrsstandard.html is 505,622 bytes, the flagship standard and the page
+    most likely to be read end to end by the engineer who could specify JRS
+    into a product. Before 2026-08-26 it mentioned the enterprise track zero
+    times and linked to it zero times.
+    """
+    pages = ("jrsstandard.html", "codebook.html", "simulations.html",
+             "investigator-guides.html", "check.html")
+    blocks, missing = {}, []
+    for page in pages:
+        src = read(page)
+        a = src.find("<!-- JRS TRACK BRIDGE v1")
+        if a < 0:
+            missing.append(page)
+            continue
+        b = src.find("<footer", a)
+        blocks[page] = src[a:b]
+    if missing:
+        check("free-track pages bridge to the licence", False,
+              "no bridge on: %s" % ", ".join(missing))
+        return
+    uniq = set(blocks.values())
+    check("free-track pages bridge to the licence", len(uniq) == 1,
+          "%d pages, %d distinct copies" % (len(blocks), len(uniq)))
+
+
+def check_api_contract_has_a_runnable_example(offline):
+    """A technical buyer evaluates by pasting into a terminal."""
+    src = read("review-engine.html")
+    has_curl = "curl -X POST" in src
+    has_auth = "Authorization: Bearer" in src
+    has_resp = '"routing"' in src or "routing" in src
+    check("API contract carries a runnable example", has_curl and has_auth and has_resp,
+          "curl=%s bearer=%s response=%s" % (has_curl, has_auth, has_resp))
+
+
+def check_homepage_hero_offers_both_tracks(offline):
+    """Both doors must sit directly under the headline, one per track."""
+    src = read("index.html")
+    i = src.find('class="hero-sub"')
+    j = src.find('<div class="dual-track">')
+    if i < 0 or j < 0 or j < i:
+        check("homepage hero offers both tracks", False, "hero landmarks not found")
+        return
+    between = src[i:j]
+    free = "check.html" in between
+    ent = "enterprise.html#enterprise-inquiry" in between
+    check("homepage hero offers both tracks", free and ent,
+          "free=%s enterprise=%s, between hero-sub and the dual-track block" % (free, ent))
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -2651,6 +2753,11 @@ def main():
                check_a_page_leads_with_its_own_action,
                check_util_bar_does_not_hide_links_on_a_phone,
                check_skip_token_lands_where_cloudflare_reads_it,
+               check_enterprise_page_leads_with_its_own_action,
+               check_inquiry_form_is_not_buried,
+               check_free_track_bridges_to_the_licence,
+               check_api_contract_has_a_runnable_example,
+               check_homepage_hero_offers_both_tracks,
                check_training_is_ungated,
                check_training_modules_are_findable,
                check_generated_docs_current, check_cross_endpoint):
