@@ -3126,6 +3126,44 @@ def check_engine_ladder_is_intact(offline):
           "; ".join(bad) if bad else "4 tiers present, evaluation free at 0")
 
 
+def check_tracker_logged_today(offline):
+    """The Master Tracker must carry an entry for the day work was committed.
+
+    THE STANDING DIRECTIVE IS THAT EVERY RESPONSE UPDATES THE TRACKER, AND ON
+    2026-08-27 THE OWNER ASKED HOW HE COULD TRUST THAT IT WAS HAPPENING. The
+    measurement proved him right: that date held ONE entry against about five
+    substantive turns, and two of them, a strategic assessment and a delivery
+    defect fix, had no entry at all. They were backfilled and marked as
+    backfilled rather than quietly inserted.
+
+    A promise cannot fix that. A failing commit can. This blocks any commit
+    made on a day the tracker has not been written to.
+
+    WHAT IT CANNOT CATCH, stated plainly: a turn that produces no commit. The
+    repository has no record of conversational turns, so nothing here can
+    count them. scripts/check_tracker_current.py prints the per-day entry
+    count so the owner can judge that himself rather than take my word for it.
+    """
+    import datetime
+    path = os.path.join(ROOT, "research", "MASTER_TRACKER.md")
+    if not os.path.isfile(path):
+        # research/ is absent on the production branch by design, exactly as
+        # scripts/ is. Its absence there is the deploy working.
+        check("Master Tracker written to today", SKIPPED,
+              "research/MASTER_TRACKER.md not present on this branch")
+        return
+    text = read("research/MASTER_TRACKER.md")
+    dates = re.findall(r"\n- (20\d\d-\d\d-\d\d)", text)
+    if not dates:
+        check("Master Tracker written to today", False, "no dated entries")
+        return
+    today = datetime.date.today().isoformat()
+    n = dates.count(today)
+    check("Master Tracker written to today", n > 0,
+          "%d entr%s for %s" % (n, "y" if n == 1 else "ies", today) if n
+          else "NO ENTRY for %s; newest is %s" % (today, max(dates)))
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -3183,6 +3221,7 @@ def main():
                check_pricing_constraint_names_its_trigger,
                check_revenue_model_is_licensing_only,
                check_engine_ladder_is_intact,
+               check_tracker_logged_today,
                check_pii_gate_is_identical_everywhere,
                check_homepage_is_a_landing_page,
                check_training_is_ungated,
