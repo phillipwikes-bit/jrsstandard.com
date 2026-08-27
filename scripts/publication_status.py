@@ -37,23 +37,42 @@ RES = os.path.join(ROOT, "research")
 # record of what is live, and the owner had to correct this by hand.
 # check_superseded_manuscripts_not_listed enforces it.
 #
-# Each entry: key -> (display title, venue, canonical file, co-author, blocker)
+# A STATUS TOOL WITH NO STATUS COLUMN CANNOT DO ITS JOB.
+#
+# The first version of this table had no notion of state, so an ACCEPTED
+# article and an unsubmitted draft rendered identically. It also omitted the
+# only accepted piece in the whole portfolio: "When the Record Cannot Speak
+# for Itself" was accepted by CEP Magazine (SCCE) on 2026-07-16 for the
+# November issue and went to copy-editing on 2026-07-21, and it was invisible
+# here because it lived as a .docx outside research/ and this table was built
+# from research/*.md filenames. Same root cause as the phantom Rungs entry.
+#
+# Each entry: key -> (status, display title, venue, canonical file,
+#                     co-author, note)
 # Venues and co-authors are read from the manuscripts and from
 # MASTER_TRACKER section 10, not assigned here from memory.
 PAPERS = [
-    ("isaca",
+    ("cep", "ACCEPTED",
+     "When the Record Cannot Speak for Itself",
+     "CEP Magazine (SCCE), November 2026 issue",
+     "CEP_When_the_Record_Cannot_Speak_for_Itself_ACCEPTED.md",
+     "single-authored",
+     "Accepted 2026-07-16, editor Bill Anholzer. Copy-editing from "
+     "2026-07-21. Revised file supplied by the author 2026-08-27 and "
+     "preserved as the .docx beside this .md."),
+    ("isaca", "TO SUBMIT",
      "When a Defensible Decision Becomes an Indefensible File",
      "ISACA Journal",
      "Employment_Records_Article_ISACA_2026-08-21.md",
      "Tanvi Pokhriyal (first author)",
      "First author has not seen any version. Package written 2026-08-24."),
-    ("cci",
+    ("cci", "TO SUBMIT",
      "The Evidentiary Deficit in AI-Assisted Record-Keeping",
      "Corporate Compliance Insights",
      "Evidentiary_Deficit_Article_CCI_SUBMISSION_2026-08-19.md",
      "Hekim Colpan (equal contribution)",
      "Submission copy and playbook both complete."),
-    ("detection",
+    ("detection", "TO SUBMIT",
      "Detectability of Decision Reconstruction Risk in AI-Generated Records",
      "AI and Ethics (Springer)",
      "Detection_Article_Submission_FINAL5_2026-08-18.md",
@@ -61,19 +80,19 @@ PAPERS = [
      "Paper A, the flagship. ABSORBED the standalone Rungs 1-2 paper on "
      "2026-07-27 (MASTER_TRACKER.md:750), per the decision to publish ONE "
      "artifact. research/Article1_Rungs1and2.md is SUPERSEDED, not pending."),
-    ("foil",
+    ("foil", "TO SUBMIT",
      "A Documentation-Quality Read for Public-Records Determinations",
      "Journal of Civic Information",
      "FOIL_Article_Draft.md",
      "Stacyann Young (confirmed)",
      "Tracker gates on n>=20 cases; draft reports 32."),
-    ("business_ethics",
+    ("business_ethics", "BLOCKED",
      "Documentation Governance in AI-Assisted Decision-Making",
      "Journal of Business Ethics",
      "BusinessEthics_Article_Draft.md",
      "Sanya Dalal (pending acceptance)",
      "Gated on a co-author who has not accepted."),
-    ("edpacs",
+    ("edpacs", "BACKUP",
      "Decision Reconstruction Risk: A Record-Level Control",
      "EDPACS",
      "Backup_Article_EDPACS_DRR_Control.md",
@@ -122,19 +141,19 @@ def send_recorded(title_key, display):
 
 def main():
     rows = []
-    for key, title, venue, path, coauthor, blocker in PAPERS:
+    for key, status, title, venue, path, coauthor, blocker in PAPERS:
         w = words(path)
-        rows.append((key, title, venue, path, coauthor, blocker, w,
+        rows.append((key, status, title, venue, path, coauthor, blocker, w,
                      send_recorded(key, title)))
 
-    missing = [r for r in rows if r[6] is None]
+    missing = [r for r in rows if r[7] is None]
     print("%d manuscripts tracked, %d files present, %d missing"
           % (len(rows), len(rows) - len(missing), len(missing)))
     print()
 
-    for key, title, venue, path, coauthor, blocker, w, sent in rows:
+    for key, status, title, venue, path, coauthor, blocker, w, sent in rows:
         state = "FILE MISSING" if w is None else "%s words" % format(w, ",")
-        print("%-16s %s" % (key.upper(), title[:64]))
+        print("%-16s [%-9s] %s" % (key.upper(), status, title[:52]))
         print("    venue     : %s" % venue)
         print("    file      : research/%s  (%s)" % (path, state))
         print("    co-author : %s" % coauthor)
@@ -143,6 +162,12 @@ def main():
                                       if sent else "no send recorded in this repository"))
         print()
 
+    by_state = {}
+    for r in rows:
+        by_state[r[1]] = by_state.get(r[1], 0) + 1
+    print("BY STATE: " + " | ".join("%s %d" % (k, v)
+                                    for k, v in sorted(by_state.items())))
+    print()
     print("NOTE. This repository cannot observe a submission. Every 'no send")
     print("recorded' line means the tree holds no evidence either way, not that")
     print("the manuscript is unsent.")

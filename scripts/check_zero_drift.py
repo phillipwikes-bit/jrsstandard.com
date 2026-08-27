@@ -3206,6 +3206,48 @@ def check_superseded_manuscripts_not_listed(offline):
           else "%d declared supersession(s), none listed as pending"
                % len(SUPERSEDED))
 
+def check_accepted_article_is_tracked(offline):
+    """The one accepted article must be present, preserved and marked.
+
+    "When the Record Cannot Speak for Itself" was accepted by CEP Magazine
+    (SCCE) on 2026-07-16 for the November issue and advanced to copy-editing
+    on 2026-07-21. It is the only accepted piece in the portfolio, and
+    scripts/publication_status.py omitted it entirely: the table was built
+    from research/*.md filenames and the article lived as a .docx outside the
+    repository. The same root cause produced the phantom Rungs entry, once in
+    each direction, an invented pending paper and a missing accepted one.
+
+    Three things are asserted. The accepted text is preserved in the
+    repository so it cannot be lost with a laptop. The inventory lists it.
+    And the inventory carries a status column at all, because a publication
+    status tool that renders ACCEPTED and unsubmitted identically is not
+    reporting status.
+    """
+    bad = []
+    docx = "research/CEP_When_the_Record_Cannot_Speak_for_Itself_ACCEPTED.docx"
+    md = "research/CEP_When_the_Record_Cannot_Speak_for_Itself_ACCEPTED.md"
+    for f in (docx, md):
+        if not os.path.isfile(os.path.join(ROOT, f)):
+            bad.append("%s missing" % f)
+
+    status_rel = "scripts/publication_status.py"
+    if not os.path.isfile(os.path.join(ROOT, status_rel)):
+        check("accepted article is tracked", SKIPPED,
+              "scripts/publication_status.py not on this branch")
+        return
+    src = read(status_rel)
+    if '"ACCEPTED"' not in src:
+        bad.append("inventory has no ACCEPTED status")
+    if "CEP Magazine" not in src:
+        bad.append("inventory does not name the venue")
+    if "(status, display title" not in src and "status," not in src:
+        bad.append("inventory has no status column")
+
+    check("accepted article is tracked", not bad,
+          "; ".join(bad) if bad
+          else "CEP accepted piece preserved as .docx + .md and listed ACCEPTED")
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -3265,6 +3307,7 @@ def main():
                check_engine_ladder_is_intact,
                check_tracker_logged_today,
                check_superseded_manuscripts_not_listed,
+               check_accepted_article_is_tracked,
                check_pii_gate_is_identical_everywhere,
                check_homepage_is_a_landing_page,
                check_training_is_ungated,
