@@ -23,6 +23,20 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RES = os.path.join(ROOT, "research")
 
+# SUPERSEDED MANUSCRIPTS ARE NOT PENDING SUBMISSIONS.
+#
+# The first version of this table was hand-built from filenames in research/,
+# and it reported research/Article1_Rungs1and2.md as a seventh manuscript
+# awaiting submission with "[REQUIRED_ENV_PARAM] venue not recorded". It is
+# neither. MASTER_TRACKER.md:750, dated 2026-07-27, records: "CONSOLIDATION
+# EXECUTED: standalone Rungs 1-2 paper merged into the international paper
+# (Detection_ArmB_Article_Draft.md), per Phillip's decision to publish ONE
+# flagship artifact."
+#
+# A file on disk is not evidence of a live submission. The tracker is the
+# record of what is live, and the owner had to correct this by hand.
+# check_superseded_manuscripts_not_listed enforces it.
+#
 # Each entry: key -> (display title, venue, canonical file, co-author, blocker)
 # Venues and co-authors are read from the manuscripts and from
 # MASTER_TRACKER section 10, not assigned here from memory.
@@ -43,8 +57,10 @@ PAPERS = [
      "Detectability of Decision Reconstruction Risk in AI-Generated Records",
      "AI and Ethics (Springer)",
      "Detection_Article_Submission_FINAL5_2026-08-18.md",
-     "international expert panel; Ubayet Hossain methodology credited",
-     "Paper A, the novel-contribution anchor."),
+     "Ubayet Hossain, FRM (co-author); international expert panel",
+     "Paper A, the flagship. ABSORBED the standalone Rungs 1-2 paper on "
+     "2026-07-27 (MASTER_TRACKER.md:750), per the decision to publish ONE "
+     "artifact. research/Article1_Rungs1and2.md is SUPERSEDED, not pending."),
     ("foil",
      "A Documentation-Quality Read for Public-Records Determinations",
      "Journal of Civic Information",
@@ -57,12 +73,6 @@ PAPERS = [
      "BusinessEthics_Article_Draft.md",
      "Sanya Dalal (pending acceptance)",
      "Gated on a co-author who has not accepted."),
-    ("rungs",
-     "Reliability and Accuracy of a Record-Level Review Standard",
-     "[REQUIRED_ENV_PARAM] venue not recorded",
-     "Article1_Rungs1and2.md",
-     "Ubayet Hossain, FRM",
-     "Submission plan dated 2026-07-27; venue never named."),
     ("edpacs",
      "Decision Reconstruction Risk: A Record-Level Control",
      "EDPACS",

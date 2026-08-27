@@ -3164,6 +3164,48 @@ def check_tracker_logged_today(offline):
           else "NO ENTRY for %s; newest is %s" % (today, max(dates)))
 
 
+def check_superseded_manuscripts_not_listed(offline):
+    """A merged manuscript must never be reported as awaiting submission.
+
+    scripts/publication_status.py was hand-built from filenames in research/
+    and reported research/Article1_Rungs1and2.md as a seventh manuscript
+    pending submission with an unrecorded venue. It is neither.
+    MASTER_TRACKER.md:750, dated 2026-07-27: "CONSOLIDATION EXECUTED:
+    standalone Rungs 1-2 paper merged into the international paper
+    (Detection_ArmB_Article_Draft.md), per Phillip's decision to publish ONE
+    flagship artifact." The owner corrected it by hand.
+
+    THE LIST BELOW IS DECLARED, NOT INFERRED, AND THAT IS DELIBERATE. The
+    first version of this check searched the tracker for "merged into" and
+    took any nearby .md filename as the superseded one. It immediately
+    produced a false positive: it flagged BusinessEthics_Article_Draft.md,
+    which is the DESTINATION of a merge, not its subject. In the Rungs entry
+    the opposite holds, the destination is the filename and the source is
+    named only in prose. Prose does not reliably say which side is which.
+
+    A false alarm in a drift checker teaches the reader to ignore it, so
+    inference is replaced with data: each entry cites the tracker line that
+    establishes it, and a human adds entries by reading that line.
+    """
+    # filename -> tracker line establishing supersession
+    SUPERSEDED = {
+        "Article1_Rungs1and2.md":
+            "MASTER_TRACKER.md:750 (2026-07-27) merged into the "
+            "international detection paper",
+    }
+    status_path = os.path.join(ROOT, "scripts", "publication_status.py")
+    if not os.path.isfile(status_path):
+        check("superseded manuscripts are not listed as pending", SKIPPED,
+              "scripts/publication_status.py not on this branch")
+        return
+    src = read("scripts/publication_status.py")
+    bad = [f for f in sorted(SUPERSEDED) if re.search(r'"%s"' % re.escape(f), src)]
+    check("superseded manuscripts are not listed as pending", not bad,
+          "; ".join("%s listed as pending, but %s" % (f, SUPERSEDED[f])
+                    for f in bad) if bad
+          else "%d declared supersession(s), none listed as pending"
+               % len(SUPERSEDED))
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -3222,6 +3264,7 @@ def main():
                check_revenue_model_is_licensing_only,
                check_engine_ladder_is_intact,
                check_tracker_logged_today,
+               check_superseded_manuscripts_not_listed,
                check_pii_gate_is_identical_everywhere,
                check_homepage_is_a_landing_page,
                check_training_is_ungated,
