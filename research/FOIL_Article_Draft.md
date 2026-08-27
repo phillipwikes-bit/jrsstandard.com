@@ -1,4 +1,4 @@
-# A Documentation-Quality Read for Public-Records Determinations: Convergent, Construct, and Discriminant Evidence from 32 Real FOIL Cases
+# A Documentation Quality Read for Public-Records Determinations: Convergent, Construct, and Discriminant Evidence from 32 Public Cases
 
 **Stacyann Young**
 Independent Researcher
@@ -6,9 +6,9 @@ Independent Researcher
 **Phillip Wikes**
 Creator of the Justification Review Standard; former Lead Civil Rights Officer, Maryland Commission on Civil Rights
 
-**Author contributions.** S.Y. designed the public-records case protocol, selected and screened all 32 determinations, recorded the read and its contemporaneous basis note for each case blind to the documented outcome, recorded the outcomes and citations, and leads the public-records framing. P.W. developed the review standard and the Decision Reconstruction Risk construct, designed the pilot, ran the analyses, and co-wrote the manuscript.
+**Author contributions.** S.Y. designed the public-records case protocol, selected and screened all 32 publicly available determinations, recorded the read and its contemporaneous basis note for each case blind to the documented outcome, recorded the outcomes and citations, and leads the public-records framing. P.W. developed the review standard and the Decision Reconstruction Risk construct, designed the pilot, ran the analyses, and co-wrote the manuscript.
 
-**Disclosure.** Both authors contribute in a personal professional capacity. S.Y. conducted this work voluntarily and independently, on public materials, and is named without institutional affiliation at her request. The views expressed are the authors' own and do not represent the position of any employer or institution. No funding was received for this work.
+**Disclosure.** Both authors contributed to this work in their personal professional capacities. S.Y. conducted this research voluntarily and independently, using publicly available materials and without institutional affiliation. The research does not represent the views, positions, policies, or practices of the City of New York, any City agency, or any other government entity. No internal, confidential, privileged, or otherwise nonpublic government materials were used. No funding was received for this work.
 
 ---
 
@@ -66,7 +66,7 @@ Retrospective and records-based. Each case pairs a real public determination or 
 
 ### 4.2 Materials
 
-Public material only, de-identified as to any private individual, each case carrying a public citation or source URL. No internal, confidential, or agency-privileged material was used.
+**Public material only.** Each case was de-identified as to any private individual, and each case carries a public citation or source URL. No internal, confidential, privileged, or otherwise nonpublic government material was used.
 
 ### 4.3 Sample
 
@@ -107,7 +107,7 @@ Reads across the 32 cases: 18 Ready, 9 Needs work, 5 Gap. Documented outcomes: 1
 | Gap | 0 | 0 | 0 | 5 | 5 |
 | **Total** | **5** | **15** | **7** | **5** | **32** |
 
-The conditions were applied to 32 live determinations and audits, across four document classes and two states, over decisions spanning twenty-one years, and returned the full three-level range of reads. Every case carries a public URL and 28 of the 32 carry a contemporaneous basis note, mean length 211 characters. That answers the first research question and supplies the applied case set the field did not previously have.
+The conditions were applied to 32 publicly available determinations and audits, across four document classes and two states, over decisions spanning twenty-one years, and returned the full three-level range of reads. Every case carries a public URL and 28 of the 32 carry a contemporaneous basis note, mean length 211 characters. That answers the first research question and supplies the applied case set the field did not previously have.
 
 ### 5.2 The read agrees with independent auditors, five of five
 
@@ -172,7 +172,7 @@ Read alongside Sections 5.3 and 5.4, this is the expected result and it is infor
 
 That explanation can be tested rather than asserted. The same instrument has been applied in a second domain, employment and labour matters, by a different reviewer working independently of this study, on 22 cases from 22 distinct sources including United States Supreme Court decisions, Federal Labor Relations Authority decisions, and United Kingdom Employment Tribunal judgments. Those cases are not selected for published freedom-of-information controversy, and the base rate of adverse outcomes in that set is close to even rather than three to one.
 
-In that corpus the read is associated with the documented outcome. On the outcome coding that asks whether a matter drew an adverse finding, one of three codings that study reports with equal standing because no analysis plan fixing a primary coding was recorded before its data closed, records read as Needs work or Gap did so in 7 of 9 cases (77.8 percent, 95 percent Wilson interval 45.3 to 93.7) against 2 of 13 records read as Ready (15.4 percent, interval 4.3 to 42.2); Fisher's exact test, two-sided, p = 0.0073, odds ratio 19.25. On the coding that matches the specification check above, restricted to resolved dispositions, determinations read as Ready were sustained in 6 of 8 (75.0 percent, interval 40.9 to 92.9) against 1 of 8 for records read as incomplete (12.5 percent, interval 2.2 to 47.1); p = 0.041, odds ratio 21.0.
+In that corpus the read is associated with the documented outcome. On the outcome coding that asks whether a matter drew an adverse finding, one of three codings that study reports with equal standing because no analysis plan fixing a primary coding was recorded before its data closed, records read as Needs work or Gap did so in 7 of 9 cases (77.8 percent, 95 percent Wilson interval 45.3 to 93.7) against 2 of 13 records read as Ready (15.4 percent, interval 4.3 to 42.2); Fisher's exact test, two-sided, p = 0.0073, odds ratio 19.25. On the coding that matches the specification check above, restricted to resolved dispositions, determinations read as Ready were sustained in 6 of 8 (75.0 percent, interval 40.9 to 92.9) against 1 of 8 for records read as Needs work or Gap (12.5 percent, interval 2.2 to 47.1); p = 0.041, odds ratio 21.0.
 
 That result belongs to the second study and is reported in full there, with its own limits, which include a small resolved sample and a single reviewer. It is cited here for one narrow purpose: the boundary condition proposed in this section is not a post-hoc rescue of a null. Where the corpus is not filtered by publication, the association the present corpus could not show is present. Both observations are consistent with a read that measures documentation quality and a publication process that selects on something else.
 
@@ -182,9 +182,9 @@ The pilot establishes three things. The instrument can be applied to real public
 
 Reviewability is a property of the record, measurable regardless of the software or system that produced it. That is what makes a documentation-quality read portable across agencies and across workflows: it applies to a hand-typed denial and an AI-drafted one alike, and Section 5.2 shows it lands where a professional auditor lands.
 
-That portability is what makes the read a natural companion to a technology inventory rather than a competitor to it. An inventory answers what tools are in use. A documentation read answers whether the outputs hold up. The audit subset shows why both are needed: in all five, the failure the auditor recorded was evidentiary, an agency unable to show what it had done. That failure mode is invisible to an inventory of software and visible to a read of the record. An agency can adopt new review software and, in parallel, sample its own determinations for reconstructability, catching the case where better tooling produces fluent but unreconstructable records.
+That portability is what makes the read a natural companion to a technology inventory rather than a competitor to it. An inventory answers what tools are in use. A documentation read answers whether the outputs hold up. The audit subset shows why both are needed: in all five, the failure the auditor recorded was evidentiary, an agency unable to show what it had done. That failure mode is invisible to an inventory of software and visible to a read of the record. Agencies could, in parallel with technology modernization, sample their own determinations for reconstructability, catching the case where better tooling produces fluent but unreconstructable records.
 
-For records officers the practical form is simpler than the research form. Determinations that rebuild their own basis, that name each exemption, itemize the records located and produced, and connect reasoning to cited authority, are more consistent across officers and cheaper to defend when an auditor or an appeals body asks. The five conditions work as a pre-issuance checklist, not only as a research instrument. This pilot does not establish that using them lowers reversal rates, and no such claim is made.
+For public-records programs, the practical form is simpler than the research form. Determinations that rebuild their own basis, that name each exemption, itemize the records located and produced, and connect reasoning to cited authority, are more consistent across officers and cheaper to defend when an auditor or an appeals body asks. The five conditions work as a pre-issuance checklist, not only as a research instrument. This pilot does not establish that using them lowers reversal rates, and no such claim is made.
 
 ## 7. Limitations
 
@@ -212,7 +212,7 @@ The drafting tool and the technology stack will keep changing. The evidentiary t
 
 This pilot delivers a working protocol, a completed and citable 32-case set spanning four document classes, two states and twenty-one years of decisions, agreement with independent government auditors in every case where both instruments were available, and two independent lines of evidence that the read tracks reconstructability rather than outcome.
 
-It also makes the follow-on study specific. Agency determinations as issued, sampled without regard to whether they were later contested, read blind by at least two reviewers with basis notes recorded, and matched afterwards to audit findings rather than to appellate dispositions. The employment-law corpus described in Section 5.6 suggests the same design will detect an outcome association wherever the case set is not filtered by publication. The audit finding is the outcome variable the read demonstrably agrees with, and it is the one a records programme can act on.
+It also makes the follow-on study specific. Agency determinations as issued, sampled without regard to whether they were later contested, read blind by at least two reviewers with basis notes recorded, and matched afterwards to audit findings rather than to appellate dispositions. The employment-law corpus described in Section 5.6 suggests the same design will detect an outcome association wherever the case set is not filtered by publication. The audit finding is the outcome measure with which the read showed concordance in this sample, and it is the one a records programme can act on.
 
 ## References
 
