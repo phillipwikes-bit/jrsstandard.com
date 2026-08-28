@@ -1,4 +1,4 @@
-Subject: Quick one, there - your name on the JRS write-up
+Subject: Quick one: your name on the JRS write-up
 
 Hi there,
 
