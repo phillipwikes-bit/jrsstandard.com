@@ -28,7 +28,11 @@ The read separated document classes by how much basis each one exposes. Sources 
 
 A fourth analysis, testing the read against whether the agency prevailed on appeal, is null (p = 1.000). Given the first three findings that is the expected relationship: reconstructability and appellate disposition measure different things, and published decisions are selected for contested legal questions rather than for thin files. Applied by a different reviewer in an employment-law corpus that is not filtered by publication, the same instrument does show the association (6 of 8 flagged records drew an adverse finding against 2 of 12 passed records, p = 0.0194), which is consistent with that boundary condition rather than with a weak instrument.
 
+A blind second read of 10 of the 32 cases by an independent reviewer agreed with the original on 7, 70.0 percent, Cohen's kappa 0.474 unweighted and 0.559 linear weighted, Gwet's AC1 0.582. All 3 disagreements were between adjacent categories. Reader dependence is therefore estimated on a subset rather than removed.
+
 The pilot contributes a working protocol for measuring documentation quality in a public-records programme, a completed and citable 32-case set, and evidence that the read measures the property it claims to measure.
+
+The blind second read, its per-case answers and every coefficient reported in Section 5.7 are held in `Blind_Recheck_RESULT_2026-08-28.json`, computed from the reviewer's recorded answers and the original reads by a standard-library script with no external dependency.
 
 **Keywords:** FOIA; FOIL; public records; documentation quality; decision defensibility; records governance; administrative review; convergent validity.
 
@@ -92,7 +96,13 @@ Discriminant validity tests the read against document class, using a structural 
 
 The specification check tests the read against appellate disposition. Cases where the source records no resolved disposition are excluded rather than assigned one.
 
-All reads were recorded by a single domain reviewer, who also recorded the outcomes, so no inter-rater agreement is estimated and the reads are not independent of the person assigning the outcome. Section 7 treats that as a limitation. All figures are computed from the stored data by a standard-library script, cited in the data-availability statement, which also carries the note-coding frame case by case.
+All 32 reads were recorded by a single domain reviewer, who also recorded the outcomes, so the reads are not independent of the person assigning the outcome. Section 7 treats that as a limitation.
+
+### 4.6 Blind second read
+
+To estimate reader dependence, 10 of the 32 cases were re-read by an independent reviewer with no connection to the study and no prior familiarity with the instrument, who recorded his own read and a short reason for each case. The 10 were drawn from the corpus stratified by the original read with a floor of one case per category, ordered by case identifier within each stratum and interleaved so that consecutive cases do not share a category. Six, three and one fell to Ready, Needs work and Gap respectively. No random number generator was used, so the selection is reproducible from the packet builder alone.
+
+The second reader was shown the public source and a short description of what each record is. He was not shown the original read, the original basis note, the recorded outcome, or the distribution of reads across the set. He reported prior familiarity with the instrument as none, and recorded that he knew the documented outcome in 0 of the 10 cases. Agreement was computed after his answers were received, against reads recorded between 26 June and 8 August 2026 and unchanged since. All figures are computed from the stored data by a standard-library script, cited in the data-availability statement, which also carries the note-coding frame case by case.
 
 ## 5. Results
 
@@ -176,6 +186,14 @@ In that corpus the read is associated with the documented outcome. On the outcom
 
 That result belongs to the second study and is reported in full there, with its own limits, which include a small resolved sample and a single reviewer. It is cited here for one narrow purpose: the boundary condition proposed in this section is not a post-hoc rescue of a null. Where the corpus is not filtered by publication, the association the present corpus could not show is present. Both observations are consistent with a read that measures documentation quality and a publication process that selects on something else.
 
+### 5.7 Blind second read
+
+The two readers agreed exactly on 7 of 10 cases, 70.0 percent, 95 percent Wilson interval 39.7 to 89.2. Cohen's kappa is 0.474 unweighted, which is moderate agreement on the conventional scale and is reported here without qualification.
+
+Two further coefficients are reported because the unweighted figure is not the only defensible one for this scale, and reporting only the most favourable of the three would be a choice made after seeing the data. The scale is ordinal, Ready to Needs work to Gap, and **all 3 disagreements were between adjacent categories; none was a Ready against a Gap.** Linear weighted kappa, which credits an adjacent disagreement more than a distant one, is 0.559. Gwet's AC1, which does not collapse when one category holds most of the margin, as Ready does here at 6 of 10, is 0.582. All three rest on 10 cases and none of them should be read as a stable estimate.
+
+The disagreements are not symmetric: the second reader was stricter than the original on 2 cases and more lenient on 1. They were case 1, read Ready originally and Needs work on re-read; case 4, read Ready originally and Needs work on re-read; case 5, read Needs work originally and Ready on re-read. Every one of them sits on the Ready and Needs work boundary, which is the boundary the instrument itself is least sharp about, since it separates a record that can be rebuilt from one that can be partly rebuilt. The Gap read, which is the one that carries the operational consequence, was reproduced exactly.
+
 ## 6. Discussion
 
 The pilot establishes three things. The instrument can be applied to real public-records material across document classes and jurisdictions and returns a full range of reads. Where an independent government auditor assessed the same records, the read and the audit agreed in every case. And the reads are driven by reconstructability rather than by outcome, shown twice, once from the reviewer's contemporaneous notes and once from a structural feature of the sources. Section 5.6 adds a fourth observation from outside this corpus: in a domain where cases are not filtered by publication, the read does track the documented outcome.
@@ -188,7 +206,9 @@ For public-records programs, the practical form is simpler than the research for
 
 ## 7. Limitations
 
-All 32 reads were recorded by a single domain reviewer, so no inter-rater agreement is estimated and reader-dependence cannot be ruled out. The contemporaneous basis notes make the reasoning behind each read auditable by a second reader, which is the mitigation available in a single-reviewer design.
+All 32 reads were recorded by a single domain reviewer. **10 of them, not all 32, were re-read blind by an independent reviewer**, so reader dependence is estimated on a subset and not removed. Agreement on that subset was 70.0 percent with an unweighted kappa of 0.474, which is moderate: it is evidence that the read is not idiosyncratic to one person, and it is not evidence that two readers would classify the full corpus alike. The interval on the agreement proportion, 39.7 to 89.2 percent, is wide because 10 cases cannot make it narrow.
+
+One second reader is not a panel, and a single re-read cannot separate reader dependence from case difficulty: the 3 cases where the reads differed may be cases two careful readers would always split rather than cases either reader got wrong. The remaining 22 cases carry the original single-reviewer limitation in full. Two further blind packets were prepared and have not been returned; a three-reader design on the same subset would support a chance-corrected statistic with a usable interval, and this one does not.
 
 The note coding in Section 5.3 is post-hoc rather than pre-registered, and is reported as construct evidence rather than as a confirmatory test.
 

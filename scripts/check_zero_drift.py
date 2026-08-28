@@ -682,6 +682,53 @@ def check_markdown_pdfs_are_converted(offline):
           if not problems else "; ".join(problems[:3]))
 
 
+def check_second_read_reported_honestly(offline):
+    """The manuscript's agreement figures must match the computed result, and the
+    limitation must narrow rather than vanish.
+
+    Three ways this could go wrong and all three are asserted against:
+
+      1. A figure in the prose drifts from research/Blind_Recheck_RESULT_*.json.
+      2. Only the most favourable of the three coefficients is reported. The
+         unweighted kappa is the lowest and is the one a referee will look for.
+      3. The single-reviewer limitation is deleted rather than narrowed. Ten of
+         thirty-two is not thirty-two, and one reader is not a panel.
+    """
+    import json as _json
+    paper = read("research/FOIL_Article_Draft.md")
+    path = os.path.join(ROOT, "research", "Blind_Recheck_RESULT_2026-08-28.json")
+    problems = []
+    if not os.path.exists(path):
+        problems.append("Blind_Recheck_RESULT_2026-08-28.json is missing, so no "
+                        "figure in the manuscript can be sourced")
+    else:
+        with open(path, encoding="utf-8") as _fh:
+            r = _json.load(_fh)[0]
+        for label, val in (("percent agreement", "%.1f percent" % r["percent_agreement"]),
+                           ("unweighted kappa", "%.3f" % r["kappa_unweighted"]),
+                           ("weighted kappa", "%.3f" % r["kappa_linear_weighted"]),
+                           ("Gwet AC1", "%.3f" % r["gwet_ac1"]),
+                           ("exact agreement", "%d of %d" % (r["agreed"], r["n"]))):
+            if val not in paper:
+                problems.append("manuscript does not carry the computed %s (%s)"
+                                % (label, val))
+        # The lowest coefficient must be present: reporting only the highest is
+        # choosing a statistic after seeing the data.
+        lowest = min(r["kappa_unweighted"], r["kappa_linear_weighted"], r["gwet_ac1"])
+        if ("%.3f" % lowest) not in paper:
+            problems.append("the lowest of the three coefficients (%.3f) is not "
+                            "reported" % lowest)
+    # The limitation narrows; it does not disappear.
+    for phrase in ("not all 32", "is not a panel"):
+        if phrase not in paper:
+            problems.append("Limitations no longer states %r, so a subset re-read "
+                            "is being presented as if it settled the corpus" % phrase)
+    check("second read reported honestly in the manuscript",
+          not problems,
+          "all computed figures present, lowest coefficient reported, limitation narrowed"
+          if not problems else "%d problem(s): %s" % (len(problems), "; ".join(problems[:3])))
+
+
 def check_crossdomain_citation_is_current(offline):
     """The FOIL paper must cite the employment study's analysed set, not its screened one.
 
@@ -3471,6 +3518,7 @@ def main():
                check_completion_date_implies_completion,
                check_second_read_completeness_is_published,
                check_crossdomain_citation_is_current,
+               check_second_read_reported_honestly,
                check_markdown_pdfs_are_converted,
                check_all_experts_credited, check_rung2a_lock,
                check_contributor_carries_no_findings,
