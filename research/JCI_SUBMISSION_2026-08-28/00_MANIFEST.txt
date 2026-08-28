@@ -77,6 +77,13 @@ CONTENTS
         entered the analysis and naming the reason each of the 2 exclusions
         failed that study's inclusion criteria.
 
+        SCOPE. This is a CITATION-BASED verification record for a separately
+        conducted corpus, not a URL-based reproducibility dataset. That study
+        recorded full reporter citations, which are the canonical identifiers
+        for these sources, and did not record URLs. None has been added here,
+        because a URL this study never recorded would be an inference presented
+        as a source. Every matter is locatable from its citation.
+
 WHAT IS NOT IN THIS PACKAGE, AND WHY
 No database credential, no live endpoint and no production infrastructure. The
 journal needs the research data required to evaluate the article, not the

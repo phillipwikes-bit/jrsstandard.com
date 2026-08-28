@@ -729,6 +729,73 @@ def check_second_read_reported_honestly(offline):
           if not problems else "%d problem(s): %s" % (len(problems), "; ".join(problems[:3])))
 
 
+def check_coding_frames_match_the_manuscript(offline):
+    """The packaged coding frames must produce the manuscript's own tables.
+
+    A reviewer opening the supplementary data and recomputing the tables is the
+    single most likely way a discrepancy gets found, and it happened: the
+    structural coding frame put 6 cases in group A where the manuscript reports
+    7, because one advisory opinion's stored citation is missing its leading F
+    and a classifier keyed on "FOIL AO" silently dropped it. The manuscript was
+    right and the frame was wrong. This asserts they agree.
+    """
+    import csv as _csv
+    pkg = os.path.join(ROOT, "research", "JCI_SUBMISSION_2026-08-28", "02_DATA")
+    if not os.path.isdir(pkg):
+        skip("packaged coding frames match the manuscript", "package not built")
+        return
+    paper = re.sub(r"\s+", " ", read("research/FOIL_Article_Draft.md"))
+    problems = []
+
+    def rows_of(name):
+        with open(os.path.join(pkg, name), encoding="utf-8", newline="") as fh:
+            return list(_csv.DictReader(fh))
+
+    struct = rows_of("JCI_JRS_Structural_Coding_Frame.csv")
+    a = [r for r in struct if r["Structural group"].startswith("A")]
+    b = [r for r in struct if r["Structural group"].startswith("B")]
+    a_ready = sum(1 for r in a if r["JRS Read"] == "Ready")
+    b_ready = sum(1 for r in b if r["JRS Read"] == "Ready")
+    if not (len(a) == 7 and a_ready == 6):
+        problems.append("structural group A is %d Ready of %d; the manuscript "
+                        "reports six of seven" % (a_ready, len(a)))
+    if not (len(b) == 7 and b_ready == 0):
+        problems.append("structural group B is %d Ready of %d; the manuscript "
+                        "reports none of seven" % (b_ready, len(b)))
+
+    con = rows_of("JCI_JRS_Construct_Coding_Frame.csv")
+    nw = [r for r in con if r["JRS Read"] == "Needs work"]
+    rd = [r for r in con if r["JRS Read"] == "Ready"]
+    nw_yes = sum(1 for r in nw
+                 if r["Reconstructability Failure Explicitly Stated"] == "Yes")
+    rd_yes = sum(1 for r in rd
+                 if r["Reconstructability Failure Explicitly Stated"] == "Yes")
+    if "Needs work (n = %d)" % len(nw) not in paper:
+        problems.append("construct frame has %d Needs work rows, not the "
+                        "manuscript's table" % len(nw))
+    if "Ready (n = %d)" % len(rd) not in paper:
+        problems.append("construct frame has %d Ready rows, not the "
+                        "manuscript's table" % len(rd))
+    if nw_yes != 6 or rd_yes != 0:
+        problems.append("construct frame codes %d Needs work and %d Ready as "
+                        "stating a failure; the manuscript reports 6 and 0"
+                        % (nw_yes, rd_yes))
+
+    # No dataset row may be left unclassified: N/A for jurisdiction or source
+    # type contradicts this package's own data dictionary.
+    master = rows_of("JCI_JRS_32_Case_Master_Dataset.csv")
+    na = [r["Case ID"] for r in master
+          if r["Jurisdiction"] == "N/A" or r["Source type"] == "N/A"]
+    if na:
+        problems.append("%d row(s) still N/A for jurisdiction or source type: %s"
+                        % (len(na), ", ".join(na)))
+    check("packaged coding frames match the manuscript",
+          not problems,
+          "structural 6/7 and 0/7, construct %d and %d rows, no unclassified row"
+          % (len(nw), len(rd))
+          if not problems else "%d problem(s): %s" % (len(problems), "; ".join(problems[:3])))
+
+
 def check_submission_package_is_self_contained(offline):
     """The package a reviewer receives must not reach outside itself.
 
@@ -3574,6 +3641,7 @@ def main():
                check_second_read_completeness_is_published,
                check_crossdomain_citation_is_current,
                check_submission_package_is_self_contained,
+               check_coding_frames_match_the_manuscript,
                check_second_read_reported_honestly,
                check_markdown_pdfs_are_converted,
                check_all_experts_credited, check_rung2a_lock,

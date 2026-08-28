@@ -93,13 +93,48 @@ def split_source(s):
     return s[:m.start()].strip(), m.group(0).strip()
 
 
+# CITATION CORRECTIONS, each carrying the evidence for the correction. The
+# stored citation stays in the study record; the corrected form is what the
+# package uses, and the source verification index records the change.
+CITATION_CORRECTIONS = {
+    "OIL AO 19746 (July 16, 2019), Committee on Open Government.":
+        ("FOIL AO 19746 (July 16, 2019), Committee on Open Government.",
+         "Stored citation is missing its leading F. The source URL is "
+         "docsopengovernment.dos.ny.gov/coog/ftext/f19746.htm, which is the "
+         "Committee on Open Government's FOIL advisory-opinion path and matches "
+         "the f#### pattern of the other six advisory opinions in this corpus."),
+}
+
+# CITATION DISCREPANCIES: recorded, NOT corrected. The stored citation appears
+# truncated against its own URL, but the publisher refuses automated requests so
+# the actual decision could not be read from here. Silently appending the digit
+# the URL implies would be inference presented as verification, in a package
+# whose whole purpose is to prevent that. Flagged for author confirmation.
+CITATION_DISCREPANCIES = {
+    "2024 NY Slip Op 0407":
+        "Stored citation appears truncated. The source URL ends 2024_04071, "
+        "implying 2024 NY Slip Op 04071. NOT corrected here: nycourts.gov "
+        "refuses automated requests, so the decision could not be read to "
+        "confirm it. Requires author verification against the published source.",
+    "2025 NY Slip Op 0578":
+        "Stored citation appears truncated. The source URL ends 2025_05783, "
+        "implying 2025 NY Slip Op 05783. NOT corrected here, for the same "
+        "reason. Requires author verification against the published source.",
+}
+
+
 def jurisdiction(cit, url):
     t = (cit + " " + url).lower()
     if "portal.ct.gov" in t or "ct foi" in t or re.search(r"\bfic\d{4}", t):
         return "Connecticut"
     if ("slip op" in t or "foil ao" in t or "foil-ao" in t
             or "osc.ny.gov" in t or "comptroller.nyc.gov" in t
-            or "nycourts.gov" in t or "new-york" in t):
+            or "nycourts.gov" in t or "new-york" in t
+            # NY3d and AD3d are the New York Court of Appeals and Appellate
+            # Division reporters. Four cases carry only a reporter citation and
+            # were previously classified N/A, which contradicted this package's
+            # own data dictionary.
+            or re.search(r"\bny3d\b|\bad3d\b|\bmisc ?3d\b", t)):
         return "New York"
     return "N/A"
 
@@ -113,6 +148,11 @@ def source_type(cit, url, outcome):
         return "Committee on Open Government advisory opinion"
     if "portal.ct.gov" in t or re.search(r"\bfic\d{4}", t) or "ct foi" in t:
         return "Connecticut Freedom of Information Commission final decision"
+    if re.search(r"\bny3d\b", t) or "/ctapps/" in t:
+        # NY3d is the Court of Appeals reporter; /ctapps/ is its decision path.
+        return "New York Court of Appeals decision"
+    if re.search(r"\bad3d\b", t):
+        return "New York Appellate Division decision"
     if "slip op" in t:
         # A (U) suffix marks a decision published in the unofficial Miscellaneous
         # Reports, which is trial level; the rest are Appellate Division.
@@ -212,6 +252,12 @@ def corpus(test_urls):
         cit, url = split_source(r.get("source"))
         r["case_id"] = "PR-%02d" % i
         r["url"] = url
+        r["cit_note"] = ""
+        fixed = CITATION_CORRECTIONS.get(cit)
+        if fixed:
+            cit, r["cit_note"] = fixed[0], fixed[1]
+        elif cit in CITATION_DISCREPANCIES:
+            r["cit_note"] = CITATION_DISCREPANCIES[cit]
         r["citation"] = citation_for(cit, url, r["outcome"])
         r["jurisdiction"] = jurisdiction(r["citation"], url)
         r["source_type"] = source_type(r["citation"], url, r["outcome"])
@@ -281,7 +327,14 @@ def main():
     # can check every figure against the manuscript with no external path.
     mtxt = io.open(os.path.join(ROOT, "research", "FOIL_Article_Draft.md"),
                    encoding="utf-8").read()
-    mtxt = re.sub(r"[*_`#>]", "", mtxt)
+    # STRIP MARKDOWN EMPHASIS, NEVER UNDERSCORES. The first version removed _
+    # along with * and `, which silently rewrote every filename in the Data
+    # availability statement: Blind_Recheck_RESULT_2026-08-28.json became
+    # BlindRecheckRESULT2026-08-28.json. A reviewer reading this file reported
+    # the manuscript as naming files that do not exist, and the manuscript was
+    # correct; this generator was corrupting it. Underscores are load-bearing in
+    # a filename and are preserved.
+    mtxt = re.sub(r"[*`#>]", "", mtxt)
     vp = os.path.join(OUT, "01_MANUSCRIPT", "manuscript_verification.txt")
     io.open(vp, "w", encoding="utf-8").write(mtxt)
     rec("01_MANUSCRIPT/manuscript_verification.txt", vp)
@@ -383,7 +436,7 @@ def main():
     ver = [[r["case_id"], r["citation"], r["citation"], r["decision_year"],
             r["source_type"], r["url"], r["url_tested"], r["url_ok"],
             "Yes", "Yes", "Yes", "S.Y. (primary reviewer)",
-            r["url_note"] or "N/A"] for r in rows]
+            r["url_note"] or "N/A", r["cit_note"] or "N/A"] for r in rows]
     rec("05_SOURCE_VERIFICATION/JCI_JRS_Source_Verification_Index.csv",
         write_csv(os.path.join(OUT, "05_SOURCE_VERIFICATION",
                                "JCI_JRS_Source_Verification_Index.csv"),
@@ -391,7 +444,8 @@ def main():
                    "Government/judicial body", "URL", "URL tested on",
                    "Publicly accessible?", "Source supports JRS coding?",
                    "Source supports outcome coding?", "Source in bibliography?",
-                   "Verified by whom?", "URL correction applied"], ver))
+                   "Verified by whom?", "URL correction applied",
+                   "Citation note"], ver))
 
     # ---- 06 COMPANION STUDY ------------------------------------------------
     comp = [r for r in q("/rest/v1/bench_outcomes?select=*")
@@ -408,7 +462,8 @@ def main():
             ok, tested, url, _n = test_url(url)
         else:
             ok, tested = "not tested this run", "N/A"
-        crows.append(["EM-%02d" % i, cit or "N/A", url or "no URL recorded",
+        crows.append(["EM-%02d" % i, cit or "N/A",
+                      url or "N/A, identified by reporter citation",
                       READ_LABEL[r["jrs_read"]], r["outcome"],
                       OUTCOME_LABEL[r["outcome"]], "Yes", included, reason, tested, ok])
     rec("06_COMPANION_STUDY/JCI_Companion_Employment_Corpus_Verification.csv",
@@ -456,6 +511,12 @@ def main():
           % sum(1 for r in rows if r["blind"][0].startswith("Yes")))
     print("  employment: %d screened, %d included, %d excluded"
           % (len(crows), included, len(crows) - included))
+    print("  citation corrections %d, discrepancies flagged for author review %d"
+          % (sum(1 for r in rows if r["cit_note"] and "NOT corrected" not in r["cit_note"]),
+             sum(1 for r in rows if "NOT corrected" in r["cit_note"])))
+    na = [r["case_id"] for r in rows if r["jurisdiction"] == "N/A" or r["source_type"] == "N/A"]
+    print("  rows still N/A for jurisdiction or source type: %d %s"
+          % (len(na), ", ".join(na) if na else ""))
     if test_urls:
         good = sum(1 for r in rows if r["url_ok"].startswith("Yes"))
         blocked = sum(1 for r in rows if "refuses automated" in r["url_ok"])
@@ -554,6 +615,13 @@ CONTENTS
         The employment corpus cited in Section 5.6. 22 rows, showing which 20
         entered the analysis and naming the reason each of the 2 exclusions
         failed that study's inclusion criteria.
+
+        SCOPE. This is a CITATION-BASED verification record for a separately
+        conducted corpus, not a URL-based reproducibility dataset. That study
+        recorded full reporter citations, which are the canonical identifiers
+        for these sources, and did not record URLs. None has been added here,
+        because a URL this study never recorded would be an inference presented
+        as a source. Every matter is locatable from its citation.
 
 WHAT IS NOT IN THIS PACKAGE, AND WHY
 No database credential, no live endpoint and no production infrastructure. The
