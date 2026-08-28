@@ -633,6 +633,80 @@ TRUST_PAGES = {
 PROOF_BINDINGS = ("reviewers_all", "completers_all", "countries_all")
 
 
+# Figures the public-records manuscript cites from the COMPANION employment
+# study, mapped to the line of that study which establishes each one. The paper
+# carried the 22-case screened figures in two places, and the companion
+# manuscript states plainly that the 22-case result "is reported only as a
+# sensitivity analysis" because two matters fail its inclusion criteria. One of
+# those two is a public-records advisory opinion, so the public-records paper
+# was leaning on a public-records case to make its cross-domain point.
+SUPERSEDED_CROSSDOMAIN = {
+    "p = 0.0073":      "22-case sensitivity analysis, not the primary result",
+    "odds ratio 19.25": "22-case sensitivity analysis",
+    "7 of 9":          "22-case cell count, corrected to 6 of 8",
+    "2 of 13":         "22-case cell count, corrected to 2 of 12",
+    "p = 0.041":       "22-case sustained coding, corrected to p = 0.0291",
+    "odds ratio 21.0": "22-case sustained coding",
+    "22 cases from 22": "22 were screened; 20 met the inclusion criteria",
+}
+
+
+def check_markdown_pdfs_are_converted(offline):
+    """A .md source must be converted before it becomes a PDF, never wrapped.
+
+    render_report_pdf.py dropped its source straight into <body>, so a manuscript
+    in Markdown rendered with literal '#', '**' and '---' markers and every
+    heading, table and paragraph collapsed into running text. It was delivered
+    that way once. Two invariants: the renderer must route .md through
+    md_to_html.py, and md_to_html.py must exist and report unconverted markers
+    rather than emitting them silently.
+    """
+    r = read("scripts/render_report_pdf.py")
+    problems = []
+    if ".md" not in r or "md_to_html" not in r:
+        problems.append("render_report_pdf.py does not route a .md source through "
+                        "md_to_html.py, so markdown would be wrapped rather than "
+                        "converted")
+    conv = read("scripts/md_to_html.py")
+    if conv is None:
+        problems.append("scripts/md_to_html.py is missing")
+    else:
+        if "unconverted markers" not in conv:
+            problems.append("md_to_html.py does not report unconverted markers")
+        for feature in ("<h%d>", "<table>", "<blockquote>", "<ol", "<ul>"):
+            if feature not in conv:
+                problems.append("md_to_html.py emits no %s" % feature)
+    check("a markdown manuscript is converted before it is rendered",
+          not problems,
+          "render_report_pdf.py routes .md through md_to_html.py"
+          if not problems else "; ".join(problems[:3]))
+
+
+def check_crossdomain_citation_is_current(offline):
+    """The FOIL paper must cite the employment study's analysed set, not its screened one.
+
+    Every replacement figure is also required to exist in the companion
+    manuscript, so this cannot pass by citing a number nobody can source.
+    """
+    paper = read("research/FOIL_Article_Draft.md")
+    source = read("research/Employment_Records_Article_ISACA_2026-08-21.md")
+    flat = re.sub(r"\s+", " ", source)
+    problems = []
+    for frag, why in sorted(SUPERSEDED_CROSSDOMAIN.items()):
+        if frag in paper:
+            problems.append("FOIL_Article_Draft.md still cites %r (%s)" % (frag, why))
+    for probe in ("p = 0.0194", "odds ratio 15.00", "p = 0.0291", "2 of 12"):
+        if probe not in paper:
+            problems.append("FOIL_Article_Draft.md does not carry %r" % probe)
+        if probe not in flat:
+            problems.append("%r is not in the companion manuscript that must "
+                            "establish it" % probe)
+    check("cross-domain citation matches the companion study",
+          not problems,
+          "4 current figures cited, 7 superseded ones absent"
+          if not problems else "%d problem(s): %s" % (len(problems), "; ".join(problems[:4])))
+
+
 def check_second_read_completeness_is_published(offline):
     """A returned packet must report whether it finished, and no more than that.
 
@@ -3396,6 +3470,8 @@ def main():
                check_trust_pages_carry_their_proof,
                check_completion_date_implies_completion,
                check_second_read_completeness_is_published,
+               check_crossdomain_citation_is_current,
+               check_markdown_pdfs_are_converted,
                check_all_experts_credited, check_rung2a_lock,
                check_contributor_carries_no_findings,
                check_withdrawn_contributors_absent,

@@ -47,6 +47,24 @@ th, td { padding: 7px 9px; }
 
 
 def render(src_path, out_path):
+    # A MARKDOWN SOURCE IS CONVERTED, NOT WRAPPED. This function used to drop
+    # whatever it was given straight into <body>, so a .md file rendered with
+    # literal '#', '**' and '---' markers and every heading, table and paragraph
+    # collapsed into one block of running text. The FOIL manuscript PDF delivered
+    # on 2026-08-27 has that defect: reported as an 11-page paper, actually
+    # unformatted source. Converting here rather than at each call site means no
+    # caller can forget.
+    if src_path.lower().endswith((".md", ".markdown")):
+        import subprocess
+        tmp = out_path + ".src.html"
+        r = subprocess.run([sys.executable,
+                            os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                         "md_to_html.py"), src_path, tmp],
+                           capture_output=True, text=True)
+        if r.returncode != 0 or not os.path.exists(tmp):
+            raise SystemExit("markdown conversion failed for %s:\n%s%s"
+                             % (src_path, r.stdout, r.stderr))
+        src_path = tmp
     src = io.open(src_path, encoding="utf-8").read()
     body = src.replace("</style>", "</style>" + PRINT_CSS, 1)
     doc = ('<!doctype html><html lang="en" data-theme="light"><head>'
