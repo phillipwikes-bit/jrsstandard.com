@@ -605,6 +605,68 @@ def check_html_figures_bound(offline):
           if not problems else "%d problem(s): %s" % (len(problems), "; ".join(problems[:6])))
 
 
+# Pages that ask a cold visitor for trust, mapped to the reason each one needs
+# the proof sentence. A page is on this list because a stranger arrives on it
+# and is asked to act: to check a record, to open an integration conversation,
+# to request a token, or to put a name and a work email into a form.
+#
+# check.html is DELIBERATELY ABSENT and must stay absent. It publishes
+# completers_detection and countries_detection, the DETECTION PANEL figures.
+# Adding completers_all and countries_all beside them puts two populations in
+# one viewport, which is the top-versus-bottom mismatch the scoped keys exist
+# to prevent. Excluding it is the finding, not an omission.
+TRUST_PAGES = {
+    "index.html":          "the homepage: first contact, and it asks for a click into both tracks",
+    "enterprise.html":     "asks a platform buyer to open an integration scoping call",
+    "review-engine.html":  "asks a technical buyer to request a token",
+    "training.html":       "asks for a full name and a work email in the enrolment overlay",
+    "access.html":         "the campaign screen a cold reader lands on from a DM",
+    "org-pilot.html":      "asks an organisation to commit people to a pilot",
+    "investigator-guides.html": "the free guides, entry point for the practitioner track",
+    "reviewer/index.html": "asks a reviewer to grade 24 records unpaid",
+}
+
+# The three figures the sentence stands on, and the scope each one is allowed
+# to claim. A figure attached to the wrong population is the recorded defect
+# this file already guards in check_panel_geo: 16 countries belongs to the 36
+# who COMPLETED, never to the 58 who graded at least one record.
+PROOF_BINDINGS = ("reviewers_all", "completers_all", "countries_all")
+
+
+def check_trust_pages_carry_their_proof(offline):
+    """Every page that asks a stranger to act must show who built this and who checked it.
+
+    The credential alone is not proof and the figures alone are not authority.
+    A page carrying one without the other is a claim with half its support, so
+    both halves are asserted together.
+    """
+    problems = []
+    for name, why in sorted(TRUST_PAGES.items()):
+        src = read(name)
+        if "Lead Civil Rights Officer" not in src:
+            problems.append("%s: no credential (%s)" % (name, why))
+            continue
+        missing = [k for k in PROOF_BINDINGS if 'data-panel="%s"' % k not in src]
+        if missing:
+            problems.append("%s: credential present but unproven, missing %s (%s)"
+                            % (name, ", ".join(missing), why))
+            continue
+        # The figures must be BOUND, never typed into the prose beside them.
+        if "JRS PANEL BINDER v2 ::" not in src:
+            problems.append("%s: proof figures present but no binder, so they never move" % name)
+    # check.html must NOT carry the all-studies figures beside its detection ones.
+    chk = read("check.html")
+    collide = [k for k in ("completers_all", "countries_all") if 'data-panel="%s"' % k in chk]
+    if collide:
+        problems.append("check.html: all-studies figure %s sits beside the detection-panel "
+                        "figures it already publishes; two populations, one viewport"
+                        % ", ".join(collide))
+    check("trust pages carry the credential and its proof",
+          not problems,
+          "%d pages, credential and all 3 bound figures on each" % len(TRUST_PAGES)
+          if not problems else "%d problem(s): %s" % (len(problems), "; ".join(problems[:4])))
+
+
 def check_panel_binder_identical(offline):
     """The five, now nine, copies of the binder must stay byte-identical.
 
@@ -3253,6 +3315,7 @@ def main():
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
                check_no_masking_fallbacks, check_panel_geo,
                check_html_figures_bound, check_panel_binder_identical,
+               check_trust_pages_carry_their_proof,
                check_all_experts_credited, check_rung2a_lock,
                check_contributor_carries_no_findings,
                check_withdrawn_contributors_absent,
