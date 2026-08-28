@@ -1,0 +1,19 @@
+Packet case,Original read,Second read,Result,Scale distance
+1,Ready,Needs work,Disagree,1
+2,Needs work,Needs work,Agree,0
+3,Gap,Gap,Agree,0
+4,Ready,Needs work,Disagree,1
+5,Needs work,Ready,Disagree,1
+6,Ready,Ready,Agree,0
+7,Needs work,Needs work,Agree,0
+8,Ready,Ready,Agree,0
+9,Ready,Ready,Agree,0
+10,Ready,Ready,Agree,0
+TOTAL,,,7 of 10 exact,
+Percent agreement,,,70.0,
+95% Wilson interval,,,39.7 to 89.2,
+"Cohen's kappa, unweighted",,,0.474,
+"Cohen's kappa, linear weighted",,,0.559,
+Gwet's AC1,,,0.582,
+"Disagreements, all adjacent",,,3,
+Ready against Gap disagreements,,,0,

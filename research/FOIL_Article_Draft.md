@@ -127,7 +127,7 @@ All five received a Gap read, recorded from the source before the auditor's conc
 
 Concordance is five of five. Two instruments built with no knowledge of each other, a documentation read applied to the source and a government audit applied to the programme, reached the same conclusion in every case where both were available.
 
-Two things this is not. It is not a test of statistical association, because the comparison is between instruments rather than between groups. And five cases are five cases. What it establishes is that the Gap read is reachable on real material, and that where an independent government auditor assessed the same records, the two assessments matched.
+Two things this is not. It is not a test of statistical association, because the comparison is between instruments rather than between groups. And five cases are five cases. What it demonstrates is that the Gap read is reachable on real material, and that where an independent government auditor assessed the same records, the two assessments matched.
 
 ### 5.3 The read tracks reconstructability, not outcome
 
@@ -254,4 +254,4 @@ Compliance audits: New York State Comptroller, compliance with Freedom of Inform
 
 ## Data availability
 
-Case-level data (public citation, read, contemporaneous basis note, and documented outcome) are held in the study database. Verified counts as of 8 August 2026: 32 cases from 32 distinct public sources, collected 26 June to 8 August 2026; reads 18 Ready, 9 Needs work, 5 Gap; outcomes 15 did not survive review, 7 contested, 5 sustained, 5 adverse audit findings. Every figure in Section 5 is reproduced by an analysis script using only the Python standard library, which also carries the full note-coding frame so the Section 5.3 coding can be audited case by case. The complete case set with citations and notes is available from the authors and will be released with publication.
+Case-level data (public citation, read, contemporaneous basis note, and documented outcome) are held in the study database. Verified counts as of 8 August 2026: 32 cases from 32 distinct public sources, collected 26 June to 8 August 2026; reads 18 Ready, 9 Needs work, 5 Gap; outcomes 15 did not survive review, 7 contested, 5 sustained, 5 adverse audit findings. Every figure in Section 5 is reproduced by `analysis_foil_2026-08-28.py`, which uses only the Python standard library and verifies each figure against the manuscript text on every run, and which carries the note-coding frame so the Section 5.3 coding can be audited case by case. Fisher's exact test, the Wilson interval, Cohen's kappa and Gwet's AC1 are written out in that file rather than imported. The blind second read of Section 5.7, its per-case answers and every coefficient are held in `Blind_Recheck_RESULT_2026-08-28.json`. The complete case set with citations and notes is available from the authors and will be released with publication.
