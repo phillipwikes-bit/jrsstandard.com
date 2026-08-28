@@ -1,6 +1,6 @@
 # JRS Master Tracker, recent activity
 
-**Extract only. The permanent record is `research/MASTER_TRACKER.md`,** 1,702,791 bytes, 665 entries, committed to the development branch and never deployed to `main` by design.
+**Extract only. The permanent record is `research/MASTER_TRACKER.md`,** 1,706,201 bytes, 666 entries, committed to the development branch and never deployed to `main` by design.
 
 Covering the 3 most recent dates: 2026-08-26, 2026-08-27, 2026-08-28. Long lines are rewrapped here for reading; the source is not modified.
 
@@ -2095,5 +2095,45 @@ the flat docx extraction does not satisfy and printed *"prior resubmission draft
 change report meant for a co-author's approval. Corrected to locate the block by content: **312
 words**. **Tenth broken probe in five days.** **Nothing sent. The revision and the change log go
 to Hekim first; the piece does not go back to CCI until he has approved his own section.**
+
+---
+
+## 2026-08-28 — **CCI MICROEDIT PASS APPLIED. ALL 13 NAMED EDITS IN, 14 PROTECTED ELEMENTS ASSERTED INTACT, AND THE WORD TARGET REACHED IN THE DOCX BUT NOT IN THE MARKDOWN.**
+
+`research/Evidentiary_Deficit_CCI_RESUBMISSION_2026-08-28_V3.md`, built by
+`scripts/apply_cci_microedits.py`, which **refuses to write the file if any protected element is
+disturbed**. **EVERY NAMED EDIT APPLIED**: item 2 the duplicate *the*; item 5 *"matters at the
+point where"* to **"can matter when"**, which is the legally disciplined form; item 7 the
+sentence break; **item 8, the highest-value one, replacing *"a drafting tool trained or prompted
+on prior records will tend to produce"* with *"prompted with prior records may reproduce similar
+characterizations"***, removing an unnecessary claim about how drafting systems are trained;
+item 10 and 11 *show* to **identify** and *used* to **applied**; items 15, 16, 17 in the control
+list; item 18 *"hold up under"* to **"can withstand"**; item 19 **"an individual employee's
+wording"**; and the biography cut to his recommended version, **minus the HUD and EEOC clause
+and the *named Decision Reconstruction Risk* construction**. **HEKIM'S BIOGRAPHY WAS NOT
+TOUCHED**, on his instruction, and DORA survives there. Taking a co-author's biography for
+twenty words while he is already being asked to approve a cut to his section would be trading
+his control for a rounding error. **MY OWN CUT SILENTLY UNDID HIS ITEM 18 AND I CAUGHT IT IN THE
+DOCX CHECK.** The JRS compression deleted the very clause item 18 had just been applied to, so
+*"can withstand independent review"* vanished from the built document. Restored inside the
+compression. **Applying an instruction and then removing it in the same pass is worse than not
+applying it, because the change log would have claimed it was done.** **THE WORD TARGET IS MET
+IN THE DELIVERABLE AND MISSED IN THE SOURCE, AND BOTH NUMBERS ARE REPORTED.** The Word document
+is **1,339 words**, inside his 1,250 to 1,350 range. The markdown source is **1,414**, because
+it carries heading syntax, list numerals and emphasis marks that Word does not count as text.
+**99 words came out**, all from the four categories he authorised: transitional sentences,
+repeated explanations, the European section and bio length. **I STOPPED CUTTING AT THAT POINT
+DELIBERATELY.** The remaining 60-odd words would have had to come out of the seven-point
+control, the Before and After pairs, the side-by-side section, the disparate-treatment
+limitation, the DRR definition or the subjective-language examples, **every one of which he
+listed as protected**, or out of Hekim's remaining citations, **which are not mine to cut
+twice**. Balance now: **employment core 656 words, 46.5 percent; European note 157 words, 11.1
+percent**. `audit_cci_revision.py` reports **0 problems**: 9 required elements present, Mobley
+0, NIST 0, ISO/IEC 42001 confined to the author biography. **THREE ITEMS HE MARKED BLOCKING ARE
+STILL OPEN AND NONE IS MINE TO CLOSE**: Hekim's approval of the shortened European section;
+**the AI-use disclosure question, which depends on CCI's submission policy and is not recorded
+anywhere in this repository, so it is a `[REQUIRED_ENV_PARAM]` rather than a guess**; and
+**CCI-compatible hyperlinks, which `research/md_to_docx.py` cannot produce, containing zero
+hyperlink support**. The links must be added in Word or the builder extended.
 
 ---
