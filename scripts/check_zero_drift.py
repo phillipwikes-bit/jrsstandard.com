@@ -633,6 +633,39 @@ TRUST_PAGES = {
 PROOF_BINDINGS = ("reviewers_all", "completers_all", "countries_all")
 
 
+def check_completion_date_implies_completion(offline):
+    """A completion date must never be emitted for someone who did not complete.
+
+    api/people-9dd1ecdf6f8cdfd4.js fell back to the row's own created_at for
+    every non-enrolment row, so 46 of 58 rows carried a training_completed_on
+    value while training_completed was false. The owner table guarded the field
+    and looked right; the CSV export did not, so a downloaded file asserted 46
+    completions that never happened. Checked in the SOURCE, because the live
+    endpoint is not reachable from an offline run.
+    """
+    src = read("api/people-9dd1ecdf6f8cdfd4.js")
+    m = re.search(r"training_completed_on:.*?,\n", src, re.S)
+    problems = []
+    if not m:
+        problems.append("training_completed_on assignment not found")
+    else:
+        expr = m.group(0)
+        if "r.created_at" in expr and "training-complete" not in expr:
+            problems.append("training_completed_on falls back to r.created_at "
+                            "with no completion test, so a row date is emitted "
+                            "as a completion date")
+    # The CSV export must not be the only thing standing between the owner and
+    # a wrong date, so the endpoint is required to be correct at source.
+    page = read("programme-status-9872fb93cc94.html")
+    if "training_completed_on" in page and "r.training_completed_on" not in page:
+        problems.append("owner page references training_completed_on in a form "
+                        "this check cannot verify")
+    check("a completion date implies a completion",
+          not problems,
+          "training_completed_on is empty unless the person completed"
+          if not problems else "; ".join(problems))
+
+
 def check_trust_pages_carry_their_proof(offline):
     """Every page that asks a stranger to act must show who built this and who checked it.
 
@@ -3316,6 +3349,7 @@ def main():
                check_no_masking_fallbacks, check_panel_geo,
                check_html_figures_bound, check_panel_binder_identical,
                check_trust_pages_carry_their_proof,
+               check_completion_date_implies_completion,
                check_all_experts_credited, check_rung2a_lock,
                check_contributor_carries_no_findings,
                check_withdrawn_contributors_absent,
