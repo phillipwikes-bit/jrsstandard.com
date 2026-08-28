@@ -1,23 +1,23 @@
-Case ID,Citation,URL,JRS Read,Outcome,Outcome Category,Excluded under inclusion criteria?
-EM-01,"McDonnell Douglas Corp. v. Green, 411 U.S. 792 (1973).",,Needs work,failed_appeal,Did not survive review,[NOT IN THE DATASET]
-EM-02,"St. Mary’s Honor Center v. Hicks, 509 U.S. 502 (1993). U.S. Supreme Court.",,Gap,held_up,Sustained,[NOT IN THE DATASET]
-EM-03,"Gallon v Sigma Aldrich Ltd, UK Employment Tribunal, Case No. 2500506/2017 (2017).",,Ready,held_up,Sustained,[NOT IN THE DATASET]
-EM-04,Published Employment Tribunal and Employment Appeal Tribunal proceedings involving a capability dismissal following a formal performance management process.,,Ready,held_up,Sustained,[NOT IN THE DATASET]
-EM-05,"Jones v Vale Curtains and Blinds Ltd (Employment Tribunal, Reading, 2024).",,Needs work,challenged,"Contested, no recorded disposition",[NOT IN THE DATASET]
-EM-06,"United States Department of Defense, Department of Defense Dependents Schools, Europe and Federal Education Association, 65 FLRA No. 122 (2011)",,Ready,challenged,"Contested, no recorded disposition",[NOT IN THE DATASET]
-EM-07,"Public citation: Appeal Board No. 636070 (N.Y. Unemployment Insurance Appeal Board, Mar. 5, 2025)",,Needs work,failed_appeal,Did not survive review,[NOT IN THE DATASET]
-EM-08,"Valentine S. v. U.S. Postal Service, EEOC Appeal No. 2022004565 (Dec. 22, 2022)",,Needs work,failed_appeal,Did not survive review,[NOT IN THE DATASET]
-EM-09,"Matter of Gannett Co., Inc. v City of Mount Vernon Police Department, 248 AD3d 1035, 2026 NY Slip Op 02267 (2d Dept 2026)",,Ready,held_up,Sustained,[NOT IN THE DATASET]
-EM-10,"Matter of Kohler-Hausmann v New York City Police Department, 133 AD3d 437 (1st Dept 2015)",,Ready,challenged,"Contested, no recorded disposition",[NOT IN THE DATASET]
-EM-11,"United States Department of Housing and Urban Development and AFGE Local 3320, 73 FLRA No. 67 (Nov. 14, 2022)",,Ready,held_up,Sustained,[NOT IN THE DATASET]
-EM-12,"AFGE Local 4012 and Social Security Administration, Denver, Colorado, 73 FLRA No. 106 (May 26, 2023)",,Ready,challenged,"Contested, no recorded disposition",[NOT IN THE DATASET]
-EM-13,"International Federation of Professional and Technical Engineers, Local 4 and U.S. Department of the Navy, Portsmouth Naval Shipyard, 73 FLRA No. 94 (2023)",,Ready,challenged,"Contested, no recorded disposition",[NOT IN THE DATASET]
-EM-14,"Fraternal Order of Police, DC Lodge 1 and U.S. Department of Defense, Pentagon Force Protection Agency, 73 FLRA No. 77 (2023)",,Ready,failed_audit,Adverse audit or compliance finding,[NOT IN THE DATASET]
-EM-15,"FOIL-AO-19774 (N.Y. Committee on Open Government, June 29, 2020)",,Needs work,failed_audit,Adverse audit or compliance finding,[NOT IN THE DATASET]
-EM-16,"Matter of Woods v State University of New York, 139 AD3d 1322, 2016 NY Slip Op 04084 (3d Dept 2016)",,Ready,held_up,Sustained,[NOT IN THE DATASET]
-EM-17,"United States Small Business Administration and American Federation of Government Employees, Local 228, 71 FLRA No. 124 (2020)",,Gap,failed_appeal,Did not survive review,[NOT IN THE DATASET]
-EM-18,"Appeal Board No. 634916 (N.Y. Unemployment Insurance Appeal Board, Jan. 29, 2025)",,Needs work,failed_appeal,Did not survive review,[NOT IN THE DATASET]
-EM-19,"Carson v Department of Justice, EEOC Appeal No. 0120100078 (Feb. 16, 2012)",,Gap,failed_appeal,Did not survive review,[NOT IN THE DATASET]
-EM-20,"Appeal Board No. 637062 (N.Y. Unemployment Insurance Appeal Board, July 22, 2025)",,Ready,failed_appeal,Did not survive review,[NOT IN THE DATASET]
-EM-21,"Appeal Board No. 638160 (N.Y. Unemployment Insurance Appeal Board, Dec. 4, 2025)",,Ready,held_up,Sustained,[NOT IN THE DATASET]
-EM-22,"Matter of Spence (State University of New York), 230 AD3d 1559, 2024 NY Slip Op 04677 (4th Dept 2024)",,Ready,challenged,"Contested, no recorded disposition",[NOT IN THE DATASET]
+Case ID,Citation,URL,JRS Read,Outcome,Outcome Category,Screened,Included in the analysis,Exclusion reason,URL tested on,Publicly accessible?
+EM-01,"McDonnell Douglas Corp. v. Green, 411 U.S. 792 (1973).",no URL recorded,Needs work,failed_appeal,Did not survive review,Yes,Yes,N/A,N/A,no URL recorded
+EM-02,"St. Mary’s Honor Center v. Hicks, 509 U.S. 502 (1993). U.S. Supreme Court.",no URL recorded,Gap,held_up,Sustained,Yes,Yes,N/A,N/A,no URL recorded
+EM-03,"Gallon v Sigma Aldrich Ltd, UK Employment Tribunal, Case No. 2500506/2017 (2017).",no URL recorded,Ready,held_up,Sustained,Yes,Yes,N/A,N/A,no URL recorded
+EM-04,Published Employment Tribunal and Employment Appeal Tribunal proceedings involving a capability dismissal following a formal performance management process.,no URL recorded,Ready,held_up,Sustained,Yes,No,"Identifies no specific decision, party, forum, date or case number, so it cannot be cited.",N/A,no URL recorded
+EM-05,"Jones v Vale Curtains and Blinds Ltd (Employment Tribunal, Reading, 2024).",no URL recorded,Needs work,challenged,"Contested, no recorded disposition",Yes,Yes,N/A,N/A,no URL recorded
+EM-06,"United States Department of Defense, Department of Defense Dependents Schools, Europe and Federal Education Association, 65 FLRA No. 122 (2011)",no URL recorded,Ready,challenged,"Contested, no recorded disposition",Yes,Yes,N/A,N/A,no URL recorded
+EM-07,"Public citation: Appeal Board No. 636070 (N.Y. Unemployment Insurance Appeal Board, Mar. 5, 2025)",no URL recorded,Needs work,failed_appeal,Did not survive review,Yes,Yes,N/A,N/A,no URL recorded
+EM-08,"Valentine S. v. U.S. Postal Service, EEOC Appeal No. 2022004565 (Dec. 22, 2022)",no URL recorded,Needs work,failed_appeal,Did not survive review,Yes,Yes,N/A,N/A,no URL recorded
+EM-09,"Matter of Gannett Co., Inc. v City of Mount Vernon Police Department, 248 AD3d 1035, 2026 NY Slip Op 02267 (2d Dept 2026)",no URL recorded,Ready,held_up,Sustained,Yes,Yes,N/A,N/A,no URL recorded
+EM-10,"Matter of Kohler-Hausmann v New York City Police Department, 133 AD3d 437 (1st Dept 2015)",no URL recorded,Ready,challenged,"Contested, no recorded disposition",Yes,Yes,N/A,N/A,no URL recorded
+EM-11,"United States Department of Housing and Urban Development and AFGE Local 3320, 73 FLRA No. 67 (Nov. 14, 2022)",no URL recorded,Ready,held_up,Sustained,Yes,Yes,N/A,N/A,no URL recorded
+EM-12,"AFGE Local 4012 and Social Security Administration, Denver, Colorado, 73 FLRA No. 106 (May 26, 2023)",no URL recorded,Ready,challenged,"Contested, no recorded disposition",Yes,Yes,N/A,N/A,no URL recorded
+EM-13,"International Federation of Professional and Technical Engineers, Local 4 and U.S. Department of the Navy, Portsmouth Naval Shipyard, 73 FLRA No. 94 (2023)",no URL recorded,Ready,challenged,"Contested, no recorded disposition",Yes,Yes,N/A,N/A,no URL recorded
+EM-14,"Fraternal Order of Police, DC Lodge 1 and U.S. Department of Defense, Pentagon Force Protection Agency, 73 FLRA No. 77 (2023)",no URL recorded,Ready,failed_audit,Adverse audit or compliance finding,Yes,Yes,N/A,N/A,no URL recorded
+EM-15,"FOIL-AO-19774 (N.Y. Committee on Open Government, June 29, 2020)",no URL recorded,Needs work,failed_audit,Adverse audit or compliance finding,Yes,No,"Public-records advisory opinion, not an employment adjudication. Belongs to the companion public-records corpus.",N/A,no URL recorded
+EM-16,"Matter of Woods v State University of New York, 139 AD3d 1322, 2016 NY Slip Op 04084 (3d Dept 2016)",no URL recorded,Ready,held_up,Sustained,Yes,Yes,N/A,N/A,no URL recorded
+EM-17,"United States Small Business Administration and American Federation of Government Employees, Local 228, 71 FLRA No. 124 (2020)",no URL recorded,Gap,failed_appeal,Did not survive review,Yes,Yes,N/A,N/A,no URL recorded
+EM-18,"Appeal Board No. 634916 (N.Y. Unemployment Insurance Appeal Board, Jan. 29, 2025)",no URL recorded,Needs work,failed_appeal,Did not survive review,Yes,Yes,N/A,N/A,no URL recorded
+EM-19,"Carson v Department of Justice, EEOC Appeal No. 0120100078 (Feb. 16, 2012)",no URL recorded,Gap,failed_appeal,Did not survive review,Yes,Yes,N/A,N/A,no URL recorded
+EM-20,"Appeal Board No. 637062 (N.Y. Unemployment Insurance Appeal Board, July 22, 2025)",no URL recorded,Ready,failed_appeal,Did not survive review,Yes,Yes,N/A,N/A,no URL recorded
+EM-21,"Appeal Board No. 638160 (N.Y. Unemployment Insurance Appeal Board, Dec. 4, 2025)",no URL recorded,Ready,held_up,Sustained,Yes,Yes,N/A,N/A,no URL recorded
+EM-22,"Matter of Spence (State University of New York), 230 AD3d 1559, 2024 NY Slip Op 04677 (4th Dept 2024)",no URL recorded,Ready,challenged,"Contested, no recorded disposition",Yes,Yes,N/A,N/A,no URL recorded

@@ -729,6 +729,61 @@ def check_second_read_reported_honestly(offline):
           if not problems else "%d problem(s): %s" % (len(problems), "; ".join(problems[:3])))
 
 
+def check_submission_package_is_self_contained(offline):
+    """The package a reviewer receives must not reach outside itself.
+
+    The first build shipped a reproduction script that queried a live database,
+    embedded an API key, and verified against a path that does not exist inside
+    the ZIP. For a paper about whether a record can be rebuilt without hidden
+    information, that was the wrong failure to ship. Four invariants:
+
+      1. No credential travels with the submission.
+      2. No path outside the package appears in the analysis script.
+      3. No placeholder text survives in any delivered file.
+      4. The analysis script imports nothing outside the standard library.
+    """
+    pkg = os.path.join(ROOT, "research", "JCI_SUBMISSION_2026-08-28")
+    if not os.path.isdir(pkg):
+        skip("submission package is self-contained", "package not built")
+        return
+    problems = []
+    for base, _dirs, files in os.walk(pkg):
+        for fn in files:
+            p = os.path.join(base, fn)
+            rel = os.path.relpath(p, pkg)
+            if fn.endswith((".pdf", ".docx")):
+                continue
+            try:
+                with open(p, encoding="utf-8") as fh:
+                    body = fh.read()
+            except (UnicodeDecodeError, OSError):
+                continue
+            for bad, why in (("sb_publishable", "a database credential"),
+                             ("supabase", "a live database host"),
+                             ("NOT IN THE DATASET", "placeholder text"),
+                             ("analysis_foil_2026-08-08", "the superseded script")):
+                if bad in body:
+                    problems.append("%s contains %s (%r)" % (rel, why, bad))
+    ana = os.path.join(pkg, "04_REPRODUCTION", "analysis.py")
+    if not os.path.exists(ana):
+        problems.append("04_REPRODUCTION/analysis.py is missing")
+    else:
+        with open(ana, encoding="utf-8") as fh:
+            src = fh.read()
+        if "research/" in src:
+            problems.append("analysis.py references a path outside the package")
+        allowed = {"csv", "io", "json", "os", "re", "sys", "fractions"}
+        for m in re.findall(r"^\s*(?:import|from)\s+([\w.]+)", src, re.M):
+            top = m.split(".")[0]
+            if top not in allowed:
+                problems.append("analysis.py imports %r, which is outside the "
+                                "declared standard-library set" % top)
+    check("submission package is self-contained",
+          not problems,
+          "no credential, no external path, no placeholder, stdlib only"
+          if not problems else "%d problem(s): %s" % (len(problems), "; ".join(problems[:3])))
+
+
 def check_crossdomain_citation_is_current(offline):
     """The FOIL paper must cite the employment study's analysed set, not its screened one.
 
@@ -3518,6 +3573,7 @@ def main():
                check_completion_date_implies_completion,
                check_second_read_completeness_is_published,
                check_crossdomain_citation_is_current,
+               check_submission_package_is_self_contained,
                check_second_read_reported_honestly,
                check_markdown_pdfs_are_converted,
                check_all_experts_credited, check_rung2a_lock,
