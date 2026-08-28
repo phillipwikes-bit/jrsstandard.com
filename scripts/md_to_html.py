@@ -152,13 +152,18 @@ def convert(md):
             out.append("<ul>%s</ul>" % "".join("<li>%s</li>" % inline(x) for x in items))
             continue
 
-        m = re.match(r"^(\d+)[.)]\s+(.*)$", stripped)
+        # A FOUR-DIGIT NUMBER IS A YEAR, NOT A LIST MARKER. A wrapped line
+        # beginning "2026. Source type is recorded from the URL." was parsed as
+        # an ordered list, which broke the paragraph and left an unpaired ** in
+        # the output. Ordered lists in these documents never exceed three
+        # digits, so the marker is bounded rather than the year special-cased.
+        m = re.match(r"^(\d{1,3})[.)]\s+(.*)$", stripped)
         if m:
             flush()
             start = m.group(1)
             items = []
             while i < n:
-                mm = re.match(r"^(\d+)[.)]\s+(.*)$", lines[i].strip())
+                mm = re.match(r"^(\d{1,3})[.)]\s+(.*)$", lines[i].strip())
                 if not mm:
                     if lines[i].strip() and lines[i].startswith(("  ", "\t")) and items:
                         items[-1] += " " + lines[i].strip()
