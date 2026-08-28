@@ -122,6 +122,34 @@ export default async function handler(req){
 
   const recheckOpened = opened('recheck-link', 'slot');
   const recheckSubmitted = submitted('recheck-submit', 'slot');
+  // COMPLETENESS, NOT JUST ARRIVAL. api/recheck.js accepts a partial return by
+  // design ("a partial return is data"), so a submitted row does NOT mean ten
+  // cases were answered. Without this the owner can see that a second read
+  // arrived and cannot see whether it finished, which is exactly the question
+  // that gets asked. Counts only: no label, no case, no agreement figure is
+  // published here, because publishing agreement would leak the answer key and
+  // the blind is the point of the instrument.
+  const recheckReturns = (function(){
+    const rows = [];
+    contacts.forEach(function(c){
+      if (c.source !== 'recheck-submit') return;
+      let m = null;
+      try { m = JSON.parse(c.message || '{}'); } catch (e) { m = null; }
+      if (!m) { rows.push({ answered: null, total: null }); return; }
+      const a = parseInt(m.answered_count, 10);
+      const t = parseInt(m.total_cases, 10);
+      rows.push({ answered: isNaN(a) ? null : a, total: isNaN(t) ? null : t });
+    });
+    const scored = rows.filter(function(r){ return r.answered !== null && r.total !== null; });
+    return {
+      rows: rows.length,
+      answers_recorded: scored.reduce(function(n, r){ return n + r.answered; }, 0),
+      cases_offered: scored.reduce(function(n, r){ return n + r.total; }, 0),
+      complete_returns: scored.filter(function(r){ return r.answered === r.total; }).length,
+      partial_returns: scored.filter(function(r){ return r.answered < r.total; }).length,
+      unparsed_rows: rows.length - scored.length
+    };
+  })();
 
   // Research participation. The figures a buyer is most likely to test, so they
   // are computed from the progress views rather than restated.
@@ -603,8 +631,17 @@ export default async function handler(req){
         links_issued: ISSUED.recheck,
         links_opened: recheckOpened,
         submitted: recheckSubmitted,
+        complete_returns: recheckReturns.complete_returns,
+        partial_returns: recheckReturns.partial_returns,
+        answers_recorded: recheckReturns.answers_recorded,
+        cases_offered: recheckReturns.cases_offered,
+        unparsed_rows: recheckReturns.unparsed_rows,
         note: 'Independent re-read of 10 of the 32 public-records cases, to convert '
-            + 'a single-reader corpus into a measured inter-rater result.'
+            + 'a single-reader corpus into a measured inter-rater result. '
+            + 'A partial return is accepted by design, so submitted counts arrivals '
+            + 'and complete_returns counts finished ones. Counts only: no label, no '
+            + 'case and no agreement figure is published here, because an agreement '
+            + 'figure would leak the answer key.'
       }
     },
 
@@ -759,11 +796,22 @@ export default async function handler(req){
       },
       {
         cohort: 'Blind second-read links',
-        state: 'SUPPRESSED',
-        counts: { issued: ISSUED.recheck, sent: 0, opened: recheckOpened, submitted: recheckSubmitted },
-        reason: 'Awaiting the second reader being named. None has been sent.',
+        // STATE IS DERIVED, NOT DECLARED. This block previously hardcoded
+        // sent:0 with "None has been sent" while submitted sat beside it in the
+        // same object. A returned packet is proof a link reached someone, so a
+        // submission now moves the cohort out of SUPPRESSED by itself.
+        state: recheckSubmitted > 0 ? 'ACTIVE' : 'SUPPRESSED',
+        counts: { issued: ISSUED.recheck, sent: null, opened: recheckOpened,
+                  submitted: recheckSubmitted,
+                  complete_returns: recheckReturns.complete_returns,
+                  partial_returns: recheckReturns.partial_returns },
+        reason: recheckSubmitted > 0
+          ? 'At least one packet has been returned, so at least one link reached a '
+            + 'reader. sent is null rather than 0 because the links are forwarded by '
+            + 'hand and this system never observes the send.'
+          : 'Awaiting the second reader being named. None has been sent.',
         excluded_from_totals: true,
-        disclaimer: 'Roster size only. No denominator exists.'
+        disclaimer: 'Roster size only. No denominator exists: sent is unobserved.'
       },
       {
         cohort: 'Reviewer evaluation funnel',

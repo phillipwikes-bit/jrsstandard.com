@@ -633,6 +633,51 @@ TRUST_PAGES = {
 PROOF_BINDINGS = ("reviewers_all", "completers_all", "countries_all")
 
 
+def check_second_read_completeness_is_published(offline):
+    """A returned packet must report whether it finished, and no more than that.
+
+    api/recheck.js accepts a partial return by design, so `submitted` counts
+    arrivals and says nothing about completion. The owner asked exactly that
+    question and no deployed surface could answer it. Two invariants:
+
+      1. blind_second_read publishes complete_returns, so completeness is
+         readable without a service role key.
+      2. It publishes NO label, case, or agreement figure. An agreement number
+         beside a public case list reconstructs the answer key, and the blind is
+         the whole instrument.
+    """
+    src = read("api/asset-stats.js")
+    problems = []
+    m = re.search(r"blind_second_read: \{(.*?)\n      \}", src, re.S)
+    if not m:
+        problems.append("blind_second_read block not found in api/asset-stats.js")
+    else:
+        block = m.group(1)
+        # FIELD NAMES ONLY, NEVER THE PROSE. The first version of this check
+        # scanned the whole block for the word "agreement" and failed on the
+        # note that explains why no agreement figure is published. A guard that
+        # fires on its own documentation is a broken probe, and acting on it
+        # would have meant deleting a correct explanation to satisfy a bad test.
+        fields = set(re.findall(r"^\s*(\w+):", block, re.M))
+        for field in ("complete_returns", "partial_returns", "answers_recorded"):
+            if field not in fields:
+                problems.append("blind_second_read does not publish %s" % field)
+        for banned in sorted(f for f in fields
+                             if re.search(r"agreement|kappa|label|per_case|answers$|"
+                                          r"score|correct|key", f)):
+            problems.append("blind_second_read publishes the field %r, which "
+                            "leaks the answer key" % banned)
+    # The suppressed-cohort entry must not assert a send it cannot observe.
+    if re.search(r"cohort: 'Blind second-read links',.*?None has been sent\.'\s*,",
+                 src, re.S) and "recheckSubmitted > 0" not in src:
+        problems.append("the blind second-read cohort hardcodes 'None has been "
+                        "sent' with no test against submitted")
+    check("second-read completeness is published, agreement is not",
+          not problems,
+          "complete_returns published; no label, case or agreement figure exposed"
+          if not problems else "; ".join(problems[:4]))
+
+
 def check_completion_date_implies_completion(offline):
     """A completion date must never be emitted for someone who did not complete.
 
@@ -3350,6 +3395,7 @@ def main():
                check_html_figures_bound, check_panel_binder_identical,
                check_trust_pages_carry_their_proof,
                check_completion_date_implies_completion,
+               check_second_read_completeness_is_published,
                check_all_experts_credited, check_rung2a_lock,
                check_contributor_carries_no_findings,
                check_withdrawn_contributors_absent,
