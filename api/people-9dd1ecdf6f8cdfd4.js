@@ -190,9 +190,16 @@ export default async function handler(req){
       training_completed: (src === 'training-enroll')
         ? (completedEmails[String(r.email || '').trim().toLowerCase()] === true)
         : (src === 'training-complete'),
+      // EMPTY UNLESS THEY ACTUALLY COMPLETED. This previously fell back to
+      // r.created_at for every non-enrolment row, so 46 of 58 rows carried a
+      // "training completed on" date for people who never took the training:
+      // the row's own creation time wearing a completion date's name. The
+      // table guards the field on training_completed and looked correct; the
+      // CSV export at programme-status-9872fb93cc94.html:1515 did not, so an
+      // exported file asserted 46 completions that did not happen.
       training_completed_on: (src === 'training-enroll')
         ? (completedOn[String(r.email || '').trim().toLowerCase()] || '')
-        : (r.created_at || ''),
+        : (src === 'training-complete' ? (r.created_at || '') : ''),
       // Carried through so the owner can act without a second lookup. The quote
       // travels with its clearance flag, never on its own: a quote without its
       // clearance must not be treated as publishable.
