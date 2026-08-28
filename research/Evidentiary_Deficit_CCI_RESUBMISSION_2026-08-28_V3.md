@@ -20,7 +20,7 @@ The Supreme Court did not hold that documentation quality determines whether dis
 
 The underlying history may include emails, attendance records, completed work and prior feedback, while the final document contains a polished narrative that does not clearly connect its conclusions to those materials. An employer in that position can articulate its reason. What it may not be able to do is show the reason was the one it actually applied.
 
-The problem is not necessarily that the decision was wrong. It is that the record may be unable to demonstrate why the decision was made.
+The decision may well have been the right one. The record may still be unable to demonstrate why it was made.
 
 ## The pattern may appear only across employees
 
@@ -32,7 +32,7 @@ Examples include "cultural fit," "executive presence," "not adaptable," "communi
 
 Side-by-side review asks two questions: whether the same subjective standards are being applied across employees, and whether the organization can identify the evidence supporting them. Disparate treatment and disparate impact remain distinct theories with different elements and proof structures. Recurring language does not establish either one by itself, but it can become relevant evidence when combined with surrounding facts, employment outcomes and decision history.
 
-The control is not to ban particular phrases. It is to require subjective conclusions to be connected to identifiable evidence before the record becomes final, and to look across records rather than only at each one.
+Banning particular phrases achieves little. What helps is requiring subjective conclusions to be connected to identifiable evidence before the record becomes final, and reading across records rather than only at each one.
 
 ## What a defensible employment record should show
 
@@ -69,7 +69,7 @@ At minimum, the review should require the organization to:
 6. Review records across employees for recurring subjective language or inconsistent standards.
 7. Confirm that the final explanation is consistent with documented history that existed before the decision.
 
-The organizing principle is not "retain everything." It is to preserve enough evidence to reconstruct and defend the record when its author is no longer available to explain it.
+The organizing principle is preservation rather than retention: enough evidence to reconstruct and defend the record when its author is no longer available to explain it.
 
 ## A note for organizations operating in Europe
 

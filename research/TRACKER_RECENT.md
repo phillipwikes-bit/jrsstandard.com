@@ -1,6 +1,6 @@
 # JRS Master Tracker, recent activity
 
-**Extract only. The permanent record is `research/MASTER_TRACKER.md`,** 1,706,201 bytes, 666 entries, committed to the development branch and never deployed to `main` by design.
+**Extract only. The permanent record is `research/MASTER_TRACKER.md`,** 1,709,512 bytes, 667 entries, committed to the development branch and never deployed to `main` by design.
 
 Covering the 3 most recent dates: 2026-08-26, 2026-08-27, 2026-08-28. Long lines are rewrapped here for reading; the source is not modified.
 
@@ -2135,5 +2135,45 @@ STILL OPEN AND NONE IS MINE TO CLOSE**: Hekim's approval of the shortened Europe
 anywhere in this repository, so it is a `[REQUIRED_ENV_PARAM]` rather than a guess**; and
 **CCI-compatible hyperlinks, which `research/md_to_docx.py` cannot produce, containing zero
 hyperlink support**. The links must be added in Word or the builder extended.
+
+---
+
+## 2026-08-28 — **AI-FINGERPRINT AUDIT OF THE CCI ARTICLE. CLEAN ON EVERY WORD TEST AND CAUGHT BY RHYTHM, WHICH IS THE ONE THAT MATTERS.**
+
+The uploaded V3 is **my own V3 returned unchanged**, 0.979 similarity with no sentence added or
+removed; the apparent diffs are list markers Word stores as numbering rather than text.
+**`scripts/audit_ai_fingerprints.py` TESTS THREE FAMILIES BECAUSE THEY FAIL DIFFERENTLY.**
+Lexical: **0 of 21** present, no *delve*, *landscape*, *leverage*, *robust*, *seamless*,
+*underscore*, *crucial*, *comprehensive*, *testament to*, *moreover*. House rules from
+`CLAUDE.md` III.7: **0 em dashes, 0 "Designed for", 0 "frequently", 0 "no policy change
+required"**. Burstiness: **coefficient of variation 0.52**, inside the 0.45 to 0.75 human band,
+sentences running 3 to 48 words. **THE PIECE PASSED EVERY VOCABULARY TEST AND WAS STILL CARRYING
+THE MOST RECOGNISABLE MODEL TELL THERE IS.** **Fourteen of 78 sentences used negation, and six
+were the same antithesis, *"X is not Y. It is Z."*, about one every 230 words.** A compliance
+editor who reads AI-drafted prose all day feels that rhythm before naming it, and this article's
+own subject is AI-assisted documentation, so reading as generated undercuts the argument by
+example. **MY OWN DETECTOR UNDERCOUNTED IT SIX TO THREE AND I FOUND THAT BEFORE ACTING.** Three
+overlapping regexes matched the same sentences, and a deduplicated print certified as clean the
+exact construction the check exists to find. Rewritten to count **sentence by sentence over
+pairs**, so one construction counts once however many patterns hit it. **An undercount there is
+worse than no check at all.** **THREE VARIED, THREE KEPT, AND THE SPLIT IS ARGUED RATHER THAN
+ARBITRARY.** Varied: *"The problem is not necessarily that the decision was wrong"* becomes
+**"The decision may well have been the right one. The record may still be unable to demonstrate
+why it was made"**; *"The control is not to ban particular phrases"* becomes **"Banning
+particular phrases achieves little"**; and *"The organizing principle is not 'retain
+everything'"* becomes **"The organizing principle is preservation rather than retention"**.
+**KEPT**: the risk sentence, because the antithesis *is* the article's central claim; the
+conclusion's framing, which the owner protected; and **"It is not a legal doctrine and not a
+claim of any new entitlement"**, which is the right-to-know-why disclaimer and legally
+load-bearing. **Meaning is identical in all three rewrites; only the shape changed.** **RESULT:
+antithesis 4 to 2 by the corrected counter, 2.8 to 1.4 per 1,000 words. Negation density 17.9 to
+14.1 percent of sentences.** **THE WORD DOCUMENT IS NOW 1,328 WORDS, INSIDE THE OWNER'S 1,250 TO
+1,350 TARGET**, with 11 numbered list items and the case name italicised.
+`audit_cci_revision.py` still reports **0 problems** and every protected element survives: the
+disparate-theories limitation, both Before and After pairs, the seven-point control, *can
+withstand independent review*, *undergoing structured validation*, and Hekim's untouched
+biography. **The three BLOCKING items are unchanged and none is mine to close**: Hekim's
+approval, the AI-use disclosure question which depends on CCI policy not recorded here, and
+hyperlinks which `md_to_docx.py` cannot emit.
 
 ---
