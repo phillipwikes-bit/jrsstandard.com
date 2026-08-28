@@ -48,6 +48,15 @@ WITHDRAWALS = [
     {
         "code": "V-AI-08",
         "date": "2026-08-16",
+        # THE BARE FIRST NAME IS DELIBERATELY NOT LISTED. It was added on
+        # 2026-08-27 and reverted the same hour: the repository contains 62
+        # mentions of GABRIELA BAR, a different person and an active
+        # collaborator, against 3 of Gabriela Cortez. Listing the bare name
+        # produced 77 traces, almost all of them her. The original author
+        # had already written this warning into the file and I overrode it
+        # before checking. The greeting problem it was meant to solve is
+        # handled where it belongs, in the generator, which addresses a
+        # withdrawn contributor by code rather than by name.
         "names": ["Gabriela Cortez", "Gabi Cortez", "Cortez", "Gabi"],
         "withheld": "(name withheld)",
         # NO IDENTIFIER LIST FOR THIS WITHDRAWAL, deliberately. The obvious
@@ -366,6 +375,22 @@ def apply_rules(dry_run):
 def scan_traces():
     """Every surviving occurrence of a withdrawn name or identifier."""
     traces = []
+
+    # FILENAMES ARE SCANNED TOO. Added 2026-08-27: the scan read file contents
+    # only, so a withdrawn name in a PATH was invisible. A generated reminder
+    # file called V-AI-08_Gabriela_Cortez.md sat in the tree and the check
+    # reported clean. A name is exposed by a directory listing just as surely
+    # as by a paragraph.
+    for rel, full in walk_text_files():
+        for w in WITHDRAWALS:
+            if rel in w.get("name_allowed_in", []):
+                continue
+            flat = rel.replace("_", " ").replace("-", " ").replace("/", " ")
+            for name in w["names"]:
+                if re.search(r"\b%s\b" % re.escape(name), flat):
+                    traces.append((rel, 0, "%s (in the filename)" % name))
+                    break
+
     for rel, full in walk_text_files():
         body = read(full)
         if body is None:
