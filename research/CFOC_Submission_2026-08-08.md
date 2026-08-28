@@ -13,13 +13,15 @@ The inventory answers what tools agencies use. The study asks a companion questi
 
 The work is a structured read of the record itself, applied without regard to which system produced it. I applied it to 32 real public-records cases: New York appellate and trial decisions, Committee on Open Government advisory opinions, Connecticut Freedom of Information Commission final decisions, and compliance audits from the New York State Comptroller and the New York City Comptroller. Each case was assessed from the source alone, before I looked at how it came out, and each assessment was recorded with a written basis.
 
-Three findings may be relevant to the Council's work.
+Four findings may be relevant to the Council's work.
 
 The read agreed with independent government auditors in every case where both existed. All five compliance audits in the set were flagged as having no reconstructable basis, and in all five the auditor had separately recorded that the agency could not evidence its own FOIL responses: tracking missing, records of what was provided missing, and in two audits an express statement that the auditor could not determine whether the necessary information had been supplied.
 
-The read was driven by whether the underlying basis was actually present, not by whether the agency won. Six of nine partial assessments carry a contemporaneous note saying the record-level basis could not be rebuilt from the source, against none of the eighteen assessed as complete.
+The read was driven by whether the underlying basis was actually present, not by whether the agency won. Of the seven Needs work assessments carrying a contemporaneous note, six say the record-level basis could not be rebuilt from the source, against none of the seventeen noted Ready assessments. Three case-level sources carry no note and are excluded from that coding rather than assigned one.
 
 The read separated document types by how much basis each exposes, which is the behaviour you would want from a measure of documentation quality.
+
+A blind second read supports the reliability of the read itself. Ten of the thirty-two cases were re-read by an independent reviewer who saw the public source and nothing else: not the original read, not its basis note, not the recorded outcome. The two readers agreed on 7 of 10, 70.0 percent, Cohen's kappa 0.474 unweighted and 0.559 linear weighted. All 3 disagreements were between adjacent categories and none was a Ready against a Gap. That is a subset rather than the corpus, and one reader is not a panel, so it estimates reader dependence rather than removing it.
 
 A fourth check found no relationship between the read and whether an agency prevailed on appeal, and the study reports that plainly. Published cases are selected for contested legal questions rather than thin files, which is why audit findings, and not appellate outcomes, are the measure a records programme can act on. That reading has since been tested. The same instrument applied in a second domain, employment and labour matters, does show the association. Twenty-two matters were screened and 20 met that study's inclusion criteria; among them, records assessed as incomplete drew an adverse finding in six of eight cases against two of twelve assessed as complete, p = 0.0194. Restricted to the 13 matters carrying a resolved disposition and asking only whether the position was sustained, the association holds at p = 0.0291.
 

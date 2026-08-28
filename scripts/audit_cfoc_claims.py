@@ -33,12 +33,21 @@ CLAIMS = [
      "All five compliance audits in the set were flagged"),
     ("audit concordance is total", PAPER, r"all five|five of five",
      "agreed with independent government auditors in every case where both existed"),
-    ("nine partial assessments", PAPER, r"\bnine\b[^.]{0,60}(partial|Needs work)",
-     "Six of nine partial assessments"),
-    ("six of nine carry the note", PAPER, r"[Ss]ix of (the )?nine",
-     "Six of nine partial assessments carry a contemporaneous note"),
-    ("eighteen complete assessments", PAPER, r"eighteen|\b18\b",
-     "against none of the eighteen assessed as complete"),
+    # CORRECTED 2026-08-28. The construct coding runs on the 24 case-level
+    # sources that carry a note, not on all 27: three carry no note and cannot
+    # be coded for what their note states. Both documents now say so.
+    ("seven noted Needs work cases", PAPER, r"Needs work \(n = 7\)|seven Needs work",
+     "Of the seven Needs work assessments carrying a contemporaneous note"),
+    ("seventeen noted Ready cases", PAPER, r"Ready \(n = 17\)|seventeen noted Ready",
+     "against none of the seventeen noted Ready assessments"),
+    ("corrected construct p value", PAPER, r"0\.0000520",
+     "Fisher's exact test, two-sided: p = 0.0000520"),
+    ("three uncoded sources named", PAPER, r"[Tt]hree case-level sources (carry no note|without a note)|3 case-level sources without a note",
+     "Three case-level sources carry no note and are excluded"),
+    ("second read agreement", PAPER, r"70\.0 percent",
+     "The two readers agreed on 7 of 10, 70.0 percent"),
+    ("second read kappa", PAPER, r"0\.474",
+     "Cohen's kappa 0.474 unweighted"),
     # The paper does not use the phrase "no relationship"; it reports the null
     # directly as "is null (p = 1.000)". The first version of this rule searched
     # for the email's wording in the manuscript and reported a real, supported

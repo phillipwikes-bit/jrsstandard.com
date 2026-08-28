@@ -22,15 +22,15 @@ Three findings, none of them about who won.
 
 The read agreed with independent government auditors in every case where both instruments were available. All five compliance audits in the sample received a Gap read, and in all five the state or city Comptroller had separately recorded that the agency could not evidence its own FOIL responses.
 
-The read tracked reconstructability rather than outcome. Six of nine Needs work cases carry a note stating that the underlying record-level basis could not be rebuilt from the source, against none of eighteen Ready cases, and eleven of the eighteen Ready notes state the opposite outright (Fisher's exact, two-sided, p = 0.00028).
+The read tracked reconstructability rather than outcome. Of the 7 Needs work cases carrying a contemporaneous note, 6 state that the underlying record-level basis could not be rebuilt from the source, against none of the 17 noted Ready cases, and eleven of those 17 Ready notes state the opposite outright (Fisher's exact, two-sided, p = 0.0000520). Three case-level sources carry no note and are excluded from that coding rather than assigned one.
 
 The read separated document classes by how much basis each one exposes. Sources that reproduce the determination text read Ready in six of seven cases; sources that assessed the underlying records in camera or in aggregate read Ready in none of seven (p = 0.00466). Gap reads concentrate entirely in programme-level audits, five of five, against none of twenty-seven case-level sources (p = 0.0000050).
 
-A fourth analysis, testing the read against whether the agency prevailed on appeal, is null (p = 1.000). Given the first three findings that is the expected relationship: reconstructability and appellate disposition measure different things, and published decisions are selected for contested legal questions rather than for thin files. Applied by a different reviewer in an employment-law corpus that is not filtered by publication, the same instrument does show the association (6 of 8 flagged records drew an adverse finding against 2 of 12 passed records, p = 0.0194), which is consistent with that boundary condition rather than with a weak instrument.
+A fourth analysis, testing the read against whether the agency prevailed on appeal, is null (p = 1.000). Given the first three findings that is the expected relationship: reconstructability and appellate disposition measure different things, and published decisions are selected for contested legal questions rather than for thin files. Applied by a different reviewer in an employment-law corpus that is not filtered by publication, the same instrument does show the association (6 of 8 records read as Needs work or Gap drew an adverse finding against 2 of 12 read as Ready, p = 0.0194), which is consistent with that boundary condition rather than with a weak instrument.
 
 A blind second read of 10 of the 32 cases by an independent reviewer agreed with the original on 7, 70.0 percent, Cohen's kappa 0.474 unweighted and 0.559 linear weighted, Gwet's AC1 0.582. All 3 disagreements were between adjacent categories. Reader dependence is therefore estimated on a subset rather than removed.
 
-The pilot contributes a working protocol for measuring documentation quality in a public-records programme, a completed and citable 32-case set, and evidence that the read measures the property it claims to measure.
+The pilot contributes a working protocol for measuring documentation quality in a public-records programme, a completed and citable 32-case set, and preliminary evidence that the read responds to the reconstructability property it is designed to assess.
 
 The blind second read, its per-case answers and every coefficient reported in Section 5.7 are held in `Blind_Recheck_RESULT_2026-08-28.json`, computed from the reviewer's recorded answers and the original reads by a standard-library script with no external dependency.
 
@@ -44,14 +44,14 @@ A records officer who denies, redacts, or partially grants a request writes a de
 
 A determination can be facially complete, professionally written, and still fail, because the specific basis for each withholding cannot be rebuilt from the record itself. The exemption relied on, the records located and produced, and the reasoning that connects them may simply not be on the page. That is not a technology problem in the ordinary sense. It is a documentation-quality problem, and it decides whether an agency can show what it actually did when someone asks.
 
-The question is timely. On 28 May 2026 the Chief FOIA Officers Council announced a government-wide effort to inventory FOIA technology solutions across federal agencies, covering case-management systems, eDiscovery platforms, document-review tools, and their costs, so that the inventory can inform acquisition and implementation decisions. An inventory of that kind answers what software agencies run. It does not answer whether the determinations coming out of that software hold up when read cold. Software that produces fluent but unreconstructable determinations does not reduce reversals or audit findings, and may increase them.
+The question is timely. On 28 May 2026 the Chief FOIA Officers Council announced a government-wide effort to inventory FOIA technology solutions across federal agencies, covering case-management systems, eDiscovery platforms, document-review tools, and their costs, so that the inventory can inform acquisition and implementation decisions. An inventory of that kind answers what software agencies run. It does not answer whether the determinations coming out of that software hold up when read cold. Software that produces fluent but unreconstructable determinations does not, by itself, establish that the resulting records are defensible.
 
 Very little measures the second thing. Two agencies can run the same case-management system and produce determinations of very different defensibility. This pilot tests an instrument aimed at that gap: a structured read of the record, applied without regard to the workflow or the tool that produced it.
 
 ## 2. Research questions
 
 1. Can the review conditions be applied to real public-records material across document classes and jurisdictions, and do they produce a full range of reads?
-2. Where an independent adjudicator has assessed the sufficiency of the same records, does the read agree?
+2. Where an independent government auditor has assessed the sufficiency of the same records, does the read agree?
 3. What drives the read, and is it the property the instrument claims to measure?
 
 ## 3. The instrument
@@ -86,9 +86,9 @@ Outcomes are coded from the cited source in four categories: the determination w
 
 ### 4.5 Analyses
 
-Four analyses, in the order reported.
+Five analyses, in the order reported.
 
-Convergent validity compares the read against the independent adjudicator's own conclusion in the subset where an auditor examined the same agency's records. This is a concordance count rather than a significance test, because the comparison is between two instruments and not between groups.
+Convergent validity compares the read against the independent government auditor's own conclusion in the subset where an auditor examined the same agency's records. This is a concordance count rather than a significance test, because the comparison is between two instruments and not between groups.
 
 Construct validity codes the contemporaneous basis notes for one question: does the note state that the underlying record-level basis could not be rebuilt from the source? Coding requires an explicit statement in the note, not an inference. This coding is post-hoc and is labelled as such wherever it appears. Association with the read is tested with Fisher's exact test.
 
@@ -127,24 +127,26 @@ All five received a Gap read, recorded from the source before the auditor's conc
 
 Concordance is five of five. Two instruments built with no knowledge of each other, a documentation read applied to the source and a government audit applied to the programme, reached the same conclusion in every case where both were available.
 
-Two things this is not. It is not a test of statistical association, because the comparison is between instruments rather than between groups. And five cases are five cases. What it establishes is that the Gap read is reachable on real material, and that where an independent professional adjudicator assessed the same records, the two assessments matched.
+Two things this is not. It is not a test of statistical association, because the comparison is between instruments rather than between groups. And five cases are five cases. What it establishes is that the Gap read is reachable on real material, and that where an independent government auditor assessed the same records, the two assessments matched.
 
 ### 5.3 The read tracks reconstructability, not outcome
 
-Every read carries a contemporaneous note giving its basis, written before the outcome was known. Coding those notes for one question, whether the note states that the underlying record-level basis could not be rebuilt from the source, produces the clearest result in the study.
+For the 28 cases with contemporaneous basis notes, the note giving the basis for the read was written before the outcome was known. Coding those notes for one question, whether the note states that the underlying record-level basis could not be rebuilt from the source, produces the clearest result in the study.
+
+The construct comparison is restricted to the 27 case-level sources classified Ready or Needs work; the 5 programme-level audit sources classified Gap are analyzed separately in Section 5.2. It is further restricted to the 24 of those 27 that carry a note, because a case with no note cannot be coded for what its note states, and counting it as not stating a reconstructability failure would inflate the comparison group. The 3 case-level sources without a note are excluded rather than assigned a code.
 
 | | Reconstructability failure stated | Not stated | Rate |
 |---|---|---|---|
-| Needs work (n = 9) | 6 | 3 | 66.7% |
-| Ready (n = 18) | 0 | 18 | 0.0% |
+| Needs work (n = 7) | 6 | 1 | 85.7% |
+| Ready (n = 17) | 0 | 17 | 0.0% |
 
-Fisher's exact test, two-sided: p = 0.00028.
+Fisher's exact test, two-sided: p = 0.0000520.
 
-The direction is uniform. In the Needs work cases the recorded reason is that the source reports the outcome without reproducing the material that would let a reader test it. The redacted contract and its technical schedules were not reproduced. The 165,000 pages and their redaction universe were not available. The record-by-record exemption analysis was never before the court. The security assessment was reviewed in camera and never published. In the Ready cases the opposite is recorded, and eleven of the eighteen notes say so directly: the opinion walks through the original request, the Records Access Officer response, the appeal determination, the lower-court rulings and the holding; the appeal determination is quoted almost verbatim; the source identifies the record category, the exemption, the statutory change, the agency position and the conclusion.
+The direction is uniform. In the Needs work cases the recorded reason is that the source reports the outcome without reproducing the material that would let a reader test it. The redacted contract and its technical schedules were not reproduced. The 165,000 pages and their redaction universe were not available. The record-by-record exemption analysis was never before the court. The security assessment was reviewed in camera and never published. In the Ready cases the opposite is recorded, and eleven of the 17 notes say so directly: the opinion walks through the original request, the Records Access Officer response, the appeal determination, the lower-court rulings and the holding; the appeal determination is quoted almost verbatim; the source identifies the record category, the exemption, the statutory change, the agency position and the conclusion.
 
 No Needs work note contains an affirmative reconstructability statement, and no Ready note contains a reconstructability failure.
 
-That answers the third research question. The reads were driven by the presence or absence of a rebuildable basis, which is the property the instrument is built to detect, and not by who won or by what kind of case it was. The coding is post-hoc, which is why it is reported as construct evidence rather than as a confirmatory test, and the contemporaneous notes are what make it checkable by anyone re-reading the case set.
+These findings provide preliminary evidence addressing the third research question. The reads were driven by the presence or absence of a rebuildable basis, which is the property the instrument is built to detect, and not by who won or by what kind of case it was. The coding is post-hoc, which is why it is reported as construct evidence rather than as a confirmatory test, and the contemporaneous notes are what make it checkable by anyone re-reading the case set.
 
 ### 5.4 The read separates document classes by how much basis they expose
 
@@ -196,7 +198,7 @@ The disagreements are not symmetric: the second reader was stricter than the ori
 
 ## 6. Discussion
 
-The pilot establishes three things. The instrument can be applied to real public-records material across document classes and jurisdictions and returns a full range of reads. Where an independent government auditor assessed the same records, the read and the audit agreed in every case. And the reads are driven by reconstructability rather than by outcome, shown twice, once from the reviewer's contemporaneous notes and once from a structural feature of the sources. Section 5.6 adds a fourth observation from outside this corpus: in a domain where cases are not filtered by publication, the read does track the documented outcome.
+The pilot provides evidence for three propositions. The instrument can be applied to real public-records material across document classes and jurisdictions and returns a full range of reads. Where an independent government auditor assessed the same records, the read and the audit agreed in every case. And the reads are driven by reconstructability rather than by outcome, shown twice, once from the reviewer's contemporaneous notes and once from a structural feature of the sources. Section 5.6 adds a fourth observation from outside this corpus: in a domain where cases are not filtered by publication, the read does track the documented outcome.
 
 Reviewability is a property of the record, measurable regardless of the software or system that produced it. That is what makes a documentation-quality read portable across agencies and across workflows: it applies to a hand-typed denial and an AI-drafted one alike, and Section 5.2 shows it lands where a professional auditor lands.
 
@@ -218,7 +220,7 @@ The convergent-validity result rests on five audits, and in this corpus document
 
 The corpus is two states, New York and Connecticut. Generalization beyond them is not claimed.
 
-The cross-domain observation in Section 5.6 is not a result of this study. It belongs to a separate employment-law corpus of 22 adjudicated matters collected by a different reviewer, is reported in full in a companion manuscript, and is cited here only as a test of the boundary condition proposed in Section 5.5.
+The cross-domain observation in Section 5.6 is not a result of this study. It belongs to a separate employment-law corpus of 20 adjudicated matters, with 22 matters screened before two were excluded under that study's stated inclusion criteria, collected by a different reviewer, is reported in full in a companion manuscript, and is cited here only as a test of the boundary condition proposed in Section 5.5.
 
 Seven cases record a contest without a resolved disposition, which reduces the specification check from 27 determinations to 20.
 
