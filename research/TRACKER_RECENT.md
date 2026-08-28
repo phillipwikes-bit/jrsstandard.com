@@ -1,6 +1,6 @@
 # JRS Master Tracker, recent activity
 
-**Extract only. The permanent record is `research/MASTER_TRACKER.md`,** 1,698,361 bytes, 663 entries, committed to the development branch and never deployed to `main` by design.
+**Extract only. The permanent record is `research/MASTER_TRACKER.md`,** 1,699,069 bytes, 664 entries, committed to the development branch and never deployed to `main` by design.
 
 Covering the 3 most recent dates: 2026-08-26, 2026-08-27, 2026-08-28. Long lines are rewrapped here for reading; the source is not modified.
 
@@ -2040,5 +2040,17 @@ byte-identical before and after. **NOTHING ELSE CHANGED.** Open decisions still 
 and unmoved: whether to cut the European frame in the CCI resubmission from 20.9 percent,
 whether Hekim sees the two sentences added under his byline, Stacy's approval on FOIL, Ubayet on
 Detection, and whether to issue blind packets R2 and R3.
+
+---
+
+## 2026-08-28 — 12 queued PR notifications read and triaged
+
+Twelve routine deployment bots covering three commits, `6465ea1` CCI preservation, `4e379bc` the
+tracker-attachment correction, and `8578a51` the ordered-list fix. **Cloudflare skipped on all
+three, Vercel Ready on all three, check suites clean, 0 actionable, 0 review comments.**
+`4e379bc` was a hash I did not recognise on sight and I verified it against the log rather than
+assuming it was mine; it is the attachment-directive commit whose hash I never printed. None of
+the three reaches production: all touch `research/` and `scripts/` only, and `main` stays at
+`ac43692`. Tracker extract regenerated and attached per the 2026-08-13 directive.
 
 ---
