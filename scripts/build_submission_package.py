@@ -97,6 +97,16 @@ def split_source(s):
 # stored citation stays in the study record; the corrected form is what the
 # package uses, and the source verification index records the change.
 CITATION_CORRECTIONS = {
+    "CT FOIC":
+        ("FIC2012-276 (Conn. Freedom of Information Commission).",
+         "Stored citation is an informal stub. The source URL ends FIC2012-276, "
+         "which is the Commission's formal docket number, and the manuscript's "
+         "reference list already cites the matter in that form."),
+    "CT FOI":
+        ("FIC2015-122 (Conn. Freedom of Information Commission).",
+         "Stored citation is an informal stub. The source URL ends FIC2015-122, "
+         "which is the Commission's formal docket number, and the manuscript's "
+         "reference list already cites the matter in that form."),
     "OIL AO 19746 (July 16, 2019), Committee on Open Government.":
         ("FOIL AO 19746 (July 16, 2019), Committee on Open Government.",
          "Stored citation is missing its leading F. The source URL is "
@@ -111,6 +121,14 @@ CITATION_CORRECTIONS = {
 # the URL implies would be inference presented as verification, in a package
 # whose whole purpose is to prevent that. Flagged for author confirmation.
 CITATION_DISCREPANCIES = {
+    "NY Appellate Division FOIL email disclosure decision (2026)":
+        "The stored citation is a description rather than a reporter citation, "
+        "and it names the Appellate Division while its own source URL is the "
+        "/ctapps/ path, which is the New York COURT OF APPEALS decisions path, "
+        "for opinion 6opn26 of February 2026. Source type is recorded from the "
+        "URL. NOT resolved here: nycourts.gov refuses automated requests, so the "
+        "opinion could not be read to establish the reporter citation or settle "
+        "the court. Requires author verification against the published decision.",
     "2024 NY Slip Op 0407":
         "Stored citation appears truncated. The source URL ends 2024_04071, "
         "implying 2024 NY Slip Op 04071. NOT corrected here: nycourts.gov "

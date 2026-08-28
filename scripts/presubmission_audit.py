@@ -105,8 +105,17 @@ def main():
         ("20 resolved determinations identified for 5.5", len(resolved) == 20,
          "%d resolved" % len(resolved)),
         ("p = 1.000 reproduces", "p = 1.000" in paper, "in manuscript"),
+        # PHRASING-INDEPENDENT. This probed the literal string "22 matters
+        # screened", which a grammar repair in Section 7 rewrote to "screened
+        # from 22". The manuscript was correct and the check was brittle, which
+        # is the failure mode this file exists to avoid. Assert the substance:
+        # both figures must appear in the cross-domain passages, however phrased.
         ("employment corpus = 20 analysed, 22 screened, 2 excluded",
-         len(emp) == 22 and "20 adjudicated matters" in paper and "22 matters screened" in paper,
+         len(emp) == 22
+         and "20 adjudicated matters" in paper
+         and re.search(r"(22 matters screened|screened from 22|Twenty-two matters "
+                       r"were screened)", paper) is not None
+         and re.search(r"two were excluded|2 were excluded|two excluded", paper) is not None,
          "%d screened in the database" % len(emp)),
         ("p = 0.0194 reproduces", "p = 0.0194" in paper, "in manuscript"),
         ("p = 0.0291 reproduces", "p = 0.0291" in paper, "in manuscript"),

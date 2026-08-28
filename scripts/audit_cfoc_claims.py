@@ -79,7 +79,37 @@ CLAIMS = [
 # This matters more than an ordinary stale number because the email went to a
 # federal council under a co-author's name, and one of the two excluded matters
 # is a public-records advisory opinion, which is the corpus the email is about.
+# Figures the emails MUST now carry, because an email preserved in an
+# administrative record and the eventual publication have to describe the same
+# study. Checked against the EMAIL, not the manuscript.
+REQUIRED_IN_EMAIL = [
+    (r"32 publicly available public-records cases|32 publicly available cases",
+     "corpus size and public-source framing"),
+    (r"seven Needs work cases carrying a contemporaneous basis note",
+     "the construct denominator is the noted subset, not all nine"),
+    (r"none of the 17 noted Ready cases", "the Ready denominator is 17, not 18"),
+    (r"p = 0\.0000520", "the corrected construct p value"),
+    (r"six of seven cases", "the structural comparison as the manuscript reports it"),
+    (r"p = 0\.00466", "the structural p value"),
+    (r"p = 1\.000", "the specification check is reported, not omitted"),
+    (r"6 of 8 records read as Needs work or Gap", "companion corpus, instrument labels"),
+    (r"2 of 12 records read as Ready", "companion corpus, instrument labels"),
+    (r"p = 0\.0194", "companion primary result"),
+    (r"p = 0\.0291", "companion resolved-disposition result"),
+    (r"personal professional capacity", "capacity statement"),
+    (r"does not represent the views, policies, or practices of the City of New York",
+     "institutional separation"),
+    (r"No internal or nonpublic government materials were used",
+     "materials statement"),
+    (r"five of five", "auditor concordance in the second email"),
+]
+
 BANNED_IN_EMAIL = [
+    (r"\bpartial assessments\b", "superseded terminology; the instrument codes "
+                                  "Ready, Needs work and Gap"),
+    (r"assessed as complete", "superseded terminology"),
+    (r"\bI applied it to\b", "attributes the whole 32-case study to one author"),
+    (r"can send the current draft on request", "superseded status language"),
     (r"\b0\.041\b", "22-case sustained coding; corrected corpus gives p = 0.0291"),
     (r"one of eight", "22-case cell count; superseded"),
     (r"22 adjudicated", "22 were screened, 20 met the inclusion criteria"),
@@ -124,6 +154,14 @@ def main():
                             % (label, pat, os.path.relpath(src, ROOT), sentence))
 
     email = read(EMAIL)
+    flat_email = re.sub(r"\s+", " ", email)
+    print()
+    print("%-52s %s" % ("REQUIRED IN THE EMAILS", "RESULT"))
+    for pat, why in REQUIRED_IN_EMAIL:
+        ok = re.search(pat, flat_email) is not None
+        print("%-52s %s" % (pat[:52], "present" if ok else "MISSING"))
+        if not ok:
+            failures.append("email is missing %r (%s)" % (pat, why))
     print()
     print("%-34s %s" % ("BANNED VOCABULARY", "RESULT"))
     for pat, why in BANNED_IN_EMAIL:

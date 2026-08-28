@@ -220,7 +220,7 @@ The convergent-validity result rests on five audits, and in this corpus document
 
 The corpus is two states, New York and Connecticut. Generalization beyond them is not claimed.
 
-The cross-domain observation in Section 5.6 is not a result of this study. It belongs to a separate employment-law corpus of 20 adjudicated matters, with 22 matters screened before two were excluded under that study's stated inclusion criteria, collected by a different reviewer, is reported in full in a companion manuscript, and is cited here only as a test of the boundary condition proposed in Section 5.5.
+The cross-domain observation in Section 5.6 is not a result of this study. It belongs to a separate employment-law corpus of 20 adjudicated matters, screened from 22 before two were excluded under that study's stated inclusion criteria. That corpus was collected by a different reviewer and is reported in full in a companion manuscript. It is cited here only as a test of the boundary condition proposed in Section 5.5.
 
 Seven cases record a contest without a resolved disposition, which reduces the specification check from 27 determinations to 20.
 
