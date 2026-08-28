@@ -20,7 +20,7 @@ The inventory answers what tools agencies use. The study asks a companion questi
 
 The study applies a structured read of the record itself, without regard to which system produced it, to 32 publicly available public-records cases: New York appellate and trial decisions, Committee on Open Government advisory opinions, Connecticut Freedom of Information Commission final decisions, and compliance audits from the New York State Comptroller and the New York City Comptroller. Each case was assessed from the source alone, before the documented outcome was consulted, and the assessment was recorded with a contemporaneous written basis.
 
-Three findings may be relevant to the Council's work.
+Three findings may be particularly relevant to the Council's work.
 
 The read agreed with independent government auditors in every case where both existed. All five compliance audits in the set received a Gap read, and in all five the auditor had separately recorded that the agency could not evidence its own FOIL responses: tracking was missing or incomplete, records of what had been provided were missing, and in two audits the auditor expressly stated that it could not determine whether the necessary information had been supplied.
 
