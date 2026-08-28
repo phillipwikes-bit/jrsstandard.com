@@ -12,16 +12,46 @@ Usage: python3 research/md_to_docx.py <file.md> [more.md ...]
 import os, re, sys, zipfile
 from xml.sax.saxutils import escape
 
-W = 'xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"'
+W = ('xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" '
+     'xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"')
+
+# HYPERLINKS. Added 2026-08-28. The builder previously flattened [text](url) to
+# "text (url)", printing the bare URL into the prose, which is precisely what a
+# trade outlet asking for in-text links does not want. Links are now real
+# w:hyperlink elements: the reader sees the instrument name and clicks it.
+#
+# Each link needs a relationship in word/_rels/document.xml.rels, so they are
+# collected during the run and the rels part is written from what was collected
+# rather than from a fixed string.
+_LINKS = []
+
+
+def _link_id(url):
+    for i, u in enumerate(_LINKS):
+        if u == url:
+            return 'rIdL%d' % (i + 1)
+    _LINKS.append(url)
+    return 'rIdL%d' % len(_LINKS)
 
 def runs(text):
     """Inline markdown to a list of <w:r> strings."""
     out, tokens = [], re.split(
-        r'(\*\*.+?\*\*|(?<!\*)\*(?!\*).+?(?<!\*)\*(?!\*)|`.+?`|<sup>.+?</sup>)', text)
+        r'(\[[^\]]+\]\([^)]+\)|\*\*.+?\*\*|(?<!\*)\*(?!\*).+?(?<!\*)\*(?!\*)|`.+?`|<sup>.+?</sup>)',
+        text)
     for tok in tokens:
         if not tok:
             continue
         b = i = c = sup = False
+        m = re.match(r'^\[([^\]]+)\]\(([^)]+)\)$', tok)
+        if m:
+            label, url = m.group(1), m.group(2)
+            # The label may itself carry emphasis, as a case name does.
+            inner = runs(label)
+            inner = inner.replace('<w:r>', '<w:r><w:rPr><w:rStyle w:val="Hyperlink"/></w:rPr>', 1) \
+                if '<w:rPr>' not in inner.split('<w:t')[0] else \
+                inner.replace('<w:rPr>', '<w:rPr><w:rStyle w:val="Hyperlink"/>', 1)
+            out.append('<w:hyperlink r:id="%s">%s</w:hyperlink>' % (_link_id(url), inner))
+            continue
         if tok.startswith('<sup>') and tok.endswith('</sup>'):
             tok, sup = tok[5:-6], True
         elif tok.startswith('**') and tok.endswith('**') and len(tok) > 4:
@@ -30,7 +60,6 @@ def runs(text):
             tok, i = tok[1:-1], True
         elif tok.startswith('`') and tok.endswith('`') and len(tok) > 2:
             tok, c = tok[1:-1], True
-        tok = re.sub(r'\[(.+?)\]\((.+?)\)', r'\1 (\2)', tok)
         props = ''
         if b: props += '<w:b/>'
         if i: props += '<w:i/>'
@@ -135,7 +164,7 @@ def convert(md):
     return (f'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document {W}><w:body>'
             + ''.join(body) + sect + '</w:body></w:document>')
 
-STYLES = f'''<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:styles {W}>
+STYLES = f'''<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:styles {W}><w:style w:type="character" w:styleId="Hyperlink"><w:name w:val="Hyperlink"/><w:rPr><w:color w:val="0563C1"/><w:u w:val="single"/></w:rPr></w:style>
 <w:docDefaults><w:rPrDefault><w:rPr><w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman"/><w:sz w:val="24"/></w:rPr></w:rPrDefault></w:docDefaults>
 <w:style w:type="paragraph" w:styleId="Normal" w:default="1"><w:name w:val="Normal"/></w:style>
 <w:style w:type="paragraph" w:styleId="Heading1"><w:name w:val="heading 1"/><w:basedOn w:val="Normal"/><w:pPr><w:outlineLvl w:val="0"/><w:spacing w:before="240" w:after="120"/></w:pPr><w:rPr><w:b/><w:sz w:val="36"/></w:rPr></w:style>
@@ -178,7 +207,13 @@ def build(src):
         nums = ''.join('<w:num w:numId="%d"><w:abstractNumId w:val="1"/></w:num>' % n
                        for n in _NUM_STATE['ids'])
         z.writestr('word/numbering.xml', NUMBERING.replace('__NUMS__', nums))
-        z.writestr('word/_rels/document.xml.rels', DRELS)
+        rels = ''.join(
+            '<Relationship Id="rIdL%d" '
+            'Type="http://schemas.openxmlformats.org/officeDocument/2006/'
+            'relationships/hyperlink" Target="%s" TargetMode="External"/>'
+            % (i + 1, u.replace('&', '&amp;')) for i, u in enumerate(_LINKS))
+        z.writestr('word/_rels/document.xml.rels',
+                   DRELS.replace('</Relationships>', rels + '</Relationships>'))
     return out
 
 if __name__ == '__main__':

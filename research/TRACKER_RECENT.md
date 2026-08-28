@@ -1,6 +1,6 @@
 # JRS Master Tracker, recent activity
 
-**Extract only. The permanent record is `research/MASTER_TRACKER.md`,** 1,709,512 bytes, 667 entries, committed to the development branch and never deployed to `main` by design.
+**Extract only. The permanent record is `research/MASTER_TRACKER.md`,** 1,712,935 bytes, 668 entries, committed to the development branch and never deployed to `main` by design.
 
 Covering the 3 most recent dates: 2026-08-26, 2026-08-27, 2026-08-28. Long lines are rewrapped here for reading; the source is not modified.
 
@@ -2175,5 +2175,45 @@ withstand independent review*, *undergoing structured validation*, and Hekim's u
 biography. **The three BLOCKING items are unchanged and none is mine to close**: Hekim's
 approval, the AI-use disclosure question which depends on CCI policy not recorded here, and
 hyperlinks which `md_to_docx.py` cannot emit.
+
+---
+
+## 2026-08-28 — **CCI FINAL PASS: FOUR EDITS, FOUR WORKING HYPERLINKS, AND THE DOCX BUILDER EXTENDED TO SUPPORT THEM. ONE INSTRUCTION DELIBERATELY NOT EXECUTED.**
+
+**ALL FOUR TEXT EDITS APPLIED**: *"not that the prose"* to **"not simply that the prose"**,
+which stops the article implying ordinary AI errors are irrelevant; the mechanism sentence to
+**"a drafting tool may reproduce similar characterizations when prompted with prior records"**,
+moving the conditional to the front so it does not read as a claim about how every drafting
+system is built; the **Oxford comma removed** from the side-by-side sentence for AP style; and
+*"follow the reasoning"* to **"reconstruct the reasoning"**, which closes the loop back to
+Decision Reconstruction Risk. **A sweep found 0 remaining Oxford commas** in the whole
+manuscript. **THE HYPERLINK BLOCKER IS CLOSED BY BUILDING THE CAPABILITY, NOT BY WORKING AROUND
+IT.** `research/md_to_docx.py` had none: it flattened `[text](url)` into **"text (url)"**,
+printing bare URLs into the prose, which is exactly what an outlet asking for in-text links does
+not want. It now emits real `w:hyperlink` elements with the `r:` namespace declared, a
+`Hyperlink` character style in blue and underlined, and relationships written from the links
+actually collected rather than a fixed string. **FOUR LINKS EMBEDDED, AND EVERY TARGET WAS
+FETCHED AND ITS CONTENT CHECKED RATHER THAN PINGED.** A EUR-Lex ELI URI **returns HTTP 200 for a
+not-found page**, so a status code proves nothing. Each was retrieved and its document title
+matched: `law.cornell.edu/supremecourt/text/411/792` titled *"McDONNELL DOUGLAS CORPORATION,
+Petitioner, v. Percy GREEN"*; `eli/reg/2016/679/oj` titled *"Regulation - 2016/679 - EN -
+gdpr"*; `eli/reg/2024/1689/oj`; and **`eli/reg/2026/1744/oj`, which resolves and is titled
+correctly**, so the amending regulation the article cites is real and linkable. **Justia was
+rejected**: it returns 403 to automated requests, so it could not be verified from here, and
+Cornell's LII is both authoritative and reachable. **VERIFIED IN THE BUILT DOCUMENT**: 4
+`w:hyperlink` elements, anchor text displaying **"McDonnell Douglas Corp. v. Green", "GDPR", "EU
+AI Act", "Regulation (EU) 2026/1744"**, **zero bare URLs anywhere in the prose**, the case name
+**keeping its italics inside the link**, no footnotes part in the package, and no reference
+list. The nine concepts the owner said not to link, including DRR, JRS and the right-to-know-why
+phrase, are **0 linked**, asserted in code. **ITEM 19 WAS NOT EXECUTED AND THE REASON IS THE
+INSTRUCTION ITSELF.** The owner asks to retitle the European section to *"The European frame"*
+but conditions it on Hekim's approval. **Hekim has approved nothing: the section's length, its
+content and its heading are precisely what he is being asked to sign off.** Changing the heading
+now would pre-empt the approval it is conditioned on. **NO REGRESSION**: the FOIL manuscript and
+the CFOC send copy both rebuild cleanly at 4,984 and 1,048 words with 0 hyperlinks, so the
+tokenizer change is additive. Fingerprint audit **0 findings**, revision audit **0 problems**,
+suite **105 checks, 0 failed**. Word count **1,330**, inside the 1,250 to 1,350 target. **Two of
+the three BLOCKING items are now closed. The remaining one is Hekim's approval, and the AI-use
+disclosure still depends on CCI policy that is not recorded in this repository.**
 
 ---

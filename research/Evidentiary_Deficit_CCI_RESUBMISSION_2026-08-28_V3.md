@@ -8,13 +8,13 @@ By Hekim Colpan and Phillip Wikes
 
 An employment decision does not end when a manager makes it. A performance evaluation, warning, promotion decision or termination memorandum may later become evidence through which someone asks whether the stated reason was legitimate, consistently applied and supported by what was known at the time.
 
-When AI helps draft that record, the risk is not that the prose contains an error. It is that the record can become more polished than the evidence beneath it.
+When AI helps draft that record, the risk is not simply that the prose contains an error. It is that the record can become more polished than the evidence beneath it.
 
 We call that gap Decision Reconstruction Risk: the condition in which a consequential record can no longer show, on its own, why the decision was made. In employment matters that gap matters because discrimination disputes can turn on the reasons an employer gives and the evidence surrounding them.
 
 ## Pretext starts with the record
 
-*McDonnell Douglas Corp. v. Green* established a burden-shifting framework under which, where that framework applies, an employer may articulate a legitimate, nondiscriminatory reason for an employment action and the plaintiff may seek to show that reason is pretextual.
+[*McDonnell Douglas Corp. v. Green*](https://www.law.cornell.edu/supremecourt/text/411/792) established a burden-shifting framework under which, where that framework applies, an employer may articulate a legitimate, nondiscriminatory reason for an employment action and the plaintiff may seek to show that reason is pretextual.
 
 The Supreme Court did not hold that documentation quality determines whether discrimination occurred. Documentation can matter when the stated reason is tested against contemporaneous evidence, prior records and the consistency of the employer's explanation.
 
@@ -26,11 +26,11 @@ The decision may well have been the right one. The record may still be unable to
 
 A single record is reviewed on its own terms. A workforce of records is reviewed together. That is where AI-assisted drafting introduces a risk most organizations do not currently measure.
 
-AI-assisted drafting can reproduce language across performance reviews, disciplinary records and promotion decisions. A phrase that appears neutral in one file may take on a different significance when it recurs across a group. The mechanism is straightforward: a drafting tool prompted with prior records may reproduce similar characterizations, while a reviewer approving one record at a time may have no vantage point from which to notice the pattern.
+AI-assisted drafting can reproduce language across performance reviews, disciplinary records and promotion decisions. A phrase that appears neutral in one file may take on a different significance when it recurs across a group. The mechanism is straightforward: a drafting tool may reproduce similar characterizations when prompted with prior records, while a reviewer approving one record at a time may have no vantage point from which to notice the pattern.
 
 Examples include "cultural fit," "executive presence," "not adaptable," "communication style" and "struggles with change." None establishes discrimination by itself. The issue is what happens when subjective language is repeatedly used to describe employees who share a protected characteristic and the organization cannot identify the evidence behind those descriptions.
 
-Side-by-side review asks two questions: whether the same subjective standards are being applied across employees, and whether the organization can identify the evidence supporting them. Disparate treatment and disparate impact remain distinct theories with different elements and proof structures. Recurring language does not establish either one by itself, but it can become relevant evidence when combined with surrounding facts, employment outcomes and decision history.
+Side-by-side review asks two questions: whether the same subjective standards are being applied across employees and whether the organization can identify the evidence supporting them. Disparate treatment and disparate impact remain distinct theories with different elements and proof structures. Recurring language does not establish either one by itself, but it can become relevant evidence when combined with surrounding facts, employment outcomes and decision history.
 
 Banning particular phrases achieves little. What helps is requiring subjective conclusions to be connected to identifiable evidence before the record becomes final, and reading across records rather than only at each one.
 
@@ -73,9 +73,9 @@ The organizing principle is preservation rather than retention: enough evidence 
 
 ## A note for organizations operating in Europe
 
-The same failure has a data-protection dimension outside the United States. Under the GDPR, the accountability principle in Article 5(2) requires controllers not only to comply with the data-protection principles but to be able to demonstrate that compliance when scrutinized. A record that cannot show how a consequential characterization was reached is weaker on that measure.
+The same failure has a data-protection dimension outside the United States. Under the [GDPR](https://eur-lex.europa.eu/eli/reg/2016/679/oj), the accountability principle in Article 5(2) requires controllers not only to comply with the data-protection principles but to be able to demonstrate that compliance when scrutinized. A record that cannot show how a consequential characterization was reached is weaker on that measure.
 
-The EU AI Act now generally applies, but its core high-risk requirements on risk management, technical documentation, logging and human oversight have been postponed by Regulation (EU) 2026/1744 to 2 December 2027 for Annex III systems and 2 August 2028 for Annex I systems linked to regulated products. Many employment-drafting workflows fall outside the high-risk regime entirely. Organizations are deploying these tools today while the strongest statutory traceability controls are either pending or inapplicable. The practical question is unchanged: has enough evidence been preserved to reconstruct what the AI contributed, what a human verified and why the final record was accepted?
+The [EU AI Act](https://eur-lex.europa.eu/eli/reg/2024/1689/oj) now generally applies, but its core high-risk requirements on risk management, technical documentation, logging and human oversight have been postponed by [Regulation (EU) 2026/1744](https://eur-lex.europa.eu/eli/reg/2026/1744/oj) to 2 December 2027 for Annex III systems and 2 August 2028 for Annex I systems linked to regulated products. Many employment-drafting workflows fall outside the high-risk regime entirely. Organizations are deploying these tools today while the strongest statutory traceability controls are either pending or inapplicable. The practical question is unchanged: has enough evidence been preserved to reconstruct what the AI contributed, what a human verified and why the final record was accepted?
 
 ## JRS as an operational example
 
@@ -87,7 +87,7 @@ The instrument matters less than the discipline: any review that forces those qu
 
 For compliance and HR leaders, the practical question is not whether AI should write employment records. It is whether the organization has a control at the point where AI-assisted language becomes part of the permanent record.
 
-A defensible record lets someone who was not present follow the reasoning and test whether the stated explanation matches the documented history.
+A defensible record lets someone who was not present reconstruct the reasoning and test whether the stated explanation matches the documented history.
 
 When employment records are reviewed side by side, the issue may no longer be an individual employee's wording. It may be whether the organization's records reveal standards that were subjective, inconsistently applied or difficult to defend.
 
