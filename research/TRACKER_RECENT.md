@@ -1,6 +1,6 @@
 # JRS Master Tracker, recent activity
 
-**Extract only. The permanent record is `research/MASTER_TRACKER.md`,** 1,699,069 bytes, 664 entries, committed to the development branch and never deployed to `main` by design.
+**Extract only. The permanent record is `research/MASTER_TRACKER.md`,** 1,702,791 bytes, 665 entries, committed to the development branch and never deployed to `main` by design.
 
 Covering the 3 most recent dates: 2026-08-26, 2026-08-27, 2026-08-28. Long lines are rewrapped here for reading; the source is not modified.
 
@@ -2052,5 +2052,48 @@ three, Vercel Ready on all three, check suites clean, 0 actionable, 0 review com
 assuming it was mine; it is the attachment-directive commit whose hash I never printed. None of
 the three reaches production: all touch `research/` and `scripts/` only, and `main` stays at
 `ac43692`. Tracker extract regenerated and attached per the 2026-08-13 directive.
+
+---
+
+## 2026-08-28 — **CCI ARTICLE REVISED TO THE EDITOR'S BRIEF. THE EUROPEAN SECTION IS CUT FROM 20.9 PERCENT TO 11.5, AND HEKIM GETS A CHANGE LOG RATHER THAN A CLAIM THAT NOTHING MOVED.**
+
+`research/Evidentiary_Deficit_CCI_RESUBMISSION_2026-08-28_REV2.md`, **1,511 words**, plus a Word
+document and an 818-word change log for the co-author. **THE STRUCTURAL PROBLEM IS FIXED.** The
+previous draft answered Jennifer Gaskin's brief in its sections but contradicted it in its
+proportions: the **European frame was the single largest block at 315 words, 20.9 percent**, and
+it was where **ISO/IEC 42001** lived, one of the four topics she said CCI has already covered.
+Now: **employment core 686 words, 45.4 percent; European note 174 words, 11.5 percent**,
+retitled *"A note for organizations operating in Europe"* and **moved after the practical
+control** so pretext, side-by-side review and the defensible-record standard run consecutively.
+**ISO/IEC 42001 appears once in the whole piece, in Hekim's author biography, where it
+identifies a credential rather than making an argument.** **SEVEN DEFECTS IN THE PREVIOUS DRAFT
+WERE FOUND AND FIXED, FIVE MORE THAN I REPORTED LAST TURN.** A **dangling repeated citation**,
+*"is pretextual. McDonnell Douglas Corp. v. Green"*; **two collapsed sentence spaces**; **two
+stray `GDPR` tokens**, one ending the European section and one ending Hekim's biography; the
+**seven-point control list run together in a single paragraph** as *"1. Identify...2.
+Preserve..."*; and the **four reviewer questions as four loose paragraphs**. Only the two
+spacing defects had been reported. **SUBSTANTIVE ADDITIONS, ALL INSIDE THE FRAME SHE ASKED
+FOR**: the mechanism behind cross-employee recurrence, that a tool prompted on prior records
+reproduces the same characterizations while a reviewer approving one record at a time has no
+vantage point to notice it; and in the pretext section, *"An employer in that position can
+articulate its reason. What it may not be able to do is show the reason was the one it actually
+applied."* **HEKIM'S SECTION: EVERY DATE AND INSTRUMENT HE SUPPLIED IS RETAINED.** Article 5(2),
+Regulation (EU) 2026/1744, Annex III from 2 December 2027, Annex I from 2 August 2028, and the
+point that many workflows fall outside the high-risk regime. **Three citations dropped and each
+is named as his call**: Article 30, ISO/IEC 42001, DORA. **AND THE SENTENCE THAT WAS PUT IN HIS
+MOUTH IS OUT.** *"Neither establishes any particular record-level control"* was added to his
+section in the previous draft without his sight of it, and it asserts what ISO/IEC 42001 and
+DORA do **not** do under the byline of a **certified ISO/IEC 42001 auditor**. Removed. The
+change log states that plainly rather than burying it. Similarity to his original is **0.184**,
+which is compression, not disagreement: nothing he wrote is contradicted.
+**`scripts/audit_cci_revision.py` TESTS THE BRIEF RATHER THAN JUDGING IT BY EYE**: 9 required
+elements all present, 3 overlap caps all met (Mobley 0, NIST 0, ISO/IEC 42001 1), 10
+banned-vocabulary and formatting checks all zero, and a hard rule that the European note must be
+both smaller than the employment core and under 12 percent. **0 problems.** **MY OWN AUDITOR HAD
+A REPORTING BUG AND I FIXED IT BEFORE SHIPPING**: it read the prior draft with a heading parser
+the flat docx extraction does not satisfy and printed *"prior resubmission draft 0 words"* in a
+change report meant for a co-author's approval. Corrected to locate the block by content: **312
+words**. **Tenth broken probe in five days.** **Nothing sent. The revision and the change log go
+to Hekim first; the piece does not go back to CCI until he has approved his own section.**
 
 ---
