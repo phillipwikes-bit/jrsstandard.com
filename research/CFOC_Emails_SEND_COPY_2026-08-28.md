@@ -1,11 +1,6 @@
-# Chief FOIA Officers Council correspondence
+# Chief FOIA Officers Council correspondence, send copy
 
-Revised 2026-08-28 against the final 32-case manuscript and its submission
-package. Both emails are sent by Stacyann Young alone, per the owner's decision
-of 2026-08-28: they are addressed to a federal council and to a named Department
-of the Interior attorney about public-records practice, and they are stronger
-from twenty years in New York City government and her certifications than from a
-joint signature.
+Two emails, sent by Stacyann Young.
 
 ---
 
@@ -72,23 +67,3 @@ Thank you for the opportunity.
 
 Stacyann Young
 Independent Researcher
-
----
-
-## Working notes, NOT part of the correspondence
-
-**This file is the working copy. The clean text to send is
-`research/CFOC_Emails_SEND_COPY_2026-08-28.md`, which contains the two emails
-and nothing else.**
-
-**Status language.** Both emails now read *"The manuscript is being submitted
-for publication."* That is the accurate form while the article and the emails go
-out around the same time. If the article has already reached the journal when
-these are sent, the phrase may be changed to *"The manuscript is currently under
-submission."* It should never overstate the status: an email preserved in an
-administrative record and the eventual publication have to describe the same
-thing.
-
-**Signature.** Email 1 previously carried both authors' signatures, which
-contradicted this file's own statement that Stacyann sends both alone. Phillip's
-signature was removed on 2026-08-28. Email 2 was always correct.

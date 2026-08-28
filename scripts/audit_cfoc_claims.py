@@ -128,6 +128,18 @@ BANNED_IN_EMAIL = [
 ]
 
 EMAIL = os.path.join(ROOT, "research", "CFOC_Submission_2026-08-08.md")
+# The clean text that actually goes out. It must carry every required figure and
+# none of the working notes, and it must not carry a second signature: the
+# owner's decision of 2026-08-28 is that Stacyann sends both emails alone.
+SEND_COPY = os.path.join(ROOT, "research", "CFOC_Emails_SEND_COPY_2026-08-28.md")
+BANNED_IN_SEND_COPY = [
+    (r"Phillip Wikes", "Email 1 must not carry a second signature when the "
+                       "stated arrangement is that Stacyann sends alone"),
+    (r"Working notes|Send note", "editorial material must not travel with the "
+                                 "correspondence"),
+    (r"currently under submission", "overstates the article's status while it is "
+                                    "still being submitted"),
+]
 
 
 def read(p):
@@ -169,6 +181,25 @@ def main():
         print("%-34s %s" % (pat, "clean" if not hits else "%d HIT(S)" % len(hits)))
         if hits:
             failures.append("email contains %r (%s)" % (pat, why))
+
+    send = read(SEND_COPY)
+    if send is None:
+        failures.append("the send copy %s does not exist"
+                        % os.path.relpath(SEND_COPY, ROOT))
+    else:
+        flat_send = re.sub(r"\s+", " ", send)
+        print()
+        print("%-52s %s" % ("SEND COPY", "RESULT"))
+        for pat, why in REQUIRED_IN_EMAIL:
+            ok = re.search(pat, flat_send) is not None
+            print("%-52s %s" % ("carries " + pat[:43], "present" if ok else "MISSING"))
+            if not ok:
+                failures.append("send copy is missing %r (%s)" % (pat, why))
+        for pat, why in BANNED_IN_SEND_COPY:
+            hits = re.findall(pat, flat_send)
+            print("%-52s %s" % ("free of " + pat[:43], "clean" if not hits else "%d HIT(S)" % len(hits)))
+            if hits:
+                failures.append("send copy contains %r (%s)" % (pat, why))
 
     print()
     if failures:

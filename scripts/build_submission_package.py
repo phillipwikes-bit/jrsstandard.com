@@ -109,35 +109,65 @@ CITATION_CORRECTIONS = {
          "reference list already cites the matter in that form."),
     "OIL AO 19746 (July 16, 2019), Committee on Open Government.":
         ("FOIL AO 19746 (July 16, 2019), Committee on Open Government.",
-         "Stored citation is missing its leading F. The source URL is "
+         "CORRECTION APPLIED. The stored citation was missing its leading F. "
+         "The source URL is "
          "docsopengovernment.dos.ny.gov/coog/ftext/f19746.htm, which is the "
          "Committee on Open Government's FOIL advisory-opinion path and matches "
          "the f#### pattern of the other six advisory opinions in this corpus."),
 }
 
-# CITATION DISCREPANCIES: recorded, NOT corrected. The stored citation appears
-# truncated against its own URL, but the publisher refuses automated requests so
-# the actual decision could not be read from here. Silently appending the digit
-# the URL implies would be inference presented as verification, in a package
-# whose whole purpose is to prevent that. Flagged for author confirmation.
-CITATION_DISCREPANCIES = {
-    "NY Appellate Division FOIL email disclosure decision (2026)":
-        "The stored citation is a description rather than a reporter citation, "
-        "and it names the Appellate Division while its own source URL is the "
-        "/ctapps/ path, which is the New York COURT OF APPEALS decisions path, "
-        "for opinion 6opn26 of February 2026. Source type is recorded from the "
-        "URL. NOT resolved here: nycourts.gov refuses automated requests, so the "
-        "opinion could not be read to establish the reporter citation or settle "
-        "the court. Requires author verification against the published decision.",
-    "2024 NY Slip Op 0407":
-        "Stored citation appears truncated. The source URL ends 2024_04071, "
-        "implying 2024 NY Slip Op 04071. NOT corrected here: nycourts.gov "
-        "refuses automated requests, so the decision could not be read to "
-        "confirm it. Requires author verification against the published source.",
-    "2025 NY Slip Op 0578":
-        "Stored citation appears truncated. The source URL ends 2025_05783, "
-        "implying 2025 NY Slip Op 05783. NOT corrected here, for the same "
-        "reason. Requires author verification against the published source.",
+# AUTHOR-VERIFIED CORRECTIONS, 2026-08-28. These were flagged as discrepancies
+# and NOT corrected here, because nycourts.gov and portal.ct.gov refuse
+# automated requests and the decisions could not be read from this environment.
+# The author read the official decisions and supplied the verified citations,
+# which is the correct resolution: a human reading the published source is
+# evidence, and appending the digit a URL implies is not.
+#
+# Provenance is recorded on every row so a reviewer can see which corrections
+# rest on machine evidence and which rest on the author's reading.
+AUTHOR_VERIFIED = {
+    "NY Appellate Division FOIL email disclosure decision (2026)": (
+        "Matter of Russell v Town of Mount Pleasant, N.Y., 2026 NY Slip Op 00966",
+        "New York Court of Appeals decision",
+        "Author-verified against the official decision, 19 February 2026, "
+        "In the Matter of James C. Russell v. Town of Mount Pleasant, New York, "
+        "No. 6. The stored entry was a description naming the Appellate Division; "
+        "the source URL's /ctapps/ path was correct and the court is the Court of "
+        "Appeals."),
+    "2024 NY Slip Op 0407": (
+        "Matter of Gannett Co., Inc. v Town of Greenburgh Police Dept., "
+        "2024 NY Slip Op 04071 [229 AD3d 789]",
+        "New York Appellate Division decision",
+        "Author-verified against the official record, decided 31 July 2024, "
+        "Appellate Division, Second Department. The stored citation was truncated "
+        "by one digit."),
+    "2025 NY Slip Op 0578": (
+        "Matter of Wagner v New York City Dept. of Educ., 2025 NY Slip Op 05783",
+        "New York Court of Appeals decision",
+        "Author-verified against the official decision, decided 21 October 2025 "
+        "by the Court of Appeals. The stored citation was truncated by one digit."),
+}
+
+# Decision years the citation and URL do not carry, verified by the author
+# against the official decisions.
+AUTHOR_VERIFIED_YEARS = {
+    "PR-06": ("2013", "Author-verified: FIC2012-276 final decision issued "
+                      "24 April 2013."),
+    "PR-07": ("2015", "Author-verified: FIC2015-122 final decision issued "
+                      "18 November 2015."),
+    "PR-32": ("2025", "Author-verified: New York City Comptroller, Review of the "
+                      "New York City Police Department's Body-Worn Camera Program "
+                      "(MD24-071S), issued 2025."),
+}
+
+# The Connecticut portal serves FIC2015-122 under both the 2015 and the 2016
+# final-decisions paths; both were tested and return HTTP 200. The 2015 path is
+# canonical for a 2015 decision.
+URL_CANONICAL = {
+    "https://portal.ct.gov/FOI/Decisions/Final-Decisions-2016/FIC2015-122":
+        ("https://portal.ct.gov/FOI/Decisions/Final-Decisions-2015/FIC2015-122",
+         "Canonical path for a 2015 final decision. Both paths tested and both "
+         "return HTTP 200."),
 }
 
 
@@ -271,15 +301,27 @@ def corpus(test_urls):
         r["case_id"] = "PR-%02d" % i
         r["url"] = url
         r["cit_note"] = ""
+        r["type_override"] = ""
+        av = AUTHOR_VERIFIED.get(cit)
         fixed = CITATION_CORRECTIONS.get(cit)
-        if fixed:
+        if av:
+            cit, r["type_override"], r["cit_note"] = av[0], av[1], av[2]
+        elif fixed:
             cit, r["cit_note"] = fixed[0], fixed[1]
-        elif cit in CITATION_DISCREPANCIES:
-            r["cit_note"] = CITATION_DISCREPANCIES[cit]
         r["citation"] = citation_for(cit, url, r["outcome"])
         r["jurisdiction"] = jurisdiction(r["citation"], url)
-        r["source_type"] = source_type(r["citation"], url, r["outcome"])
+        r["source_type"] = (r["type_override"]
+                            or source_type(r["citation"], url, r["outcome"]))
         r["decision_year"] = decision_year(r["citation"], url)
+        yv = AUTHOR_VERIFIED_YEARS.get(r["case_id"])
+        if yv and r["decision_year"] == "N/A":
+            r["decision_year"] = yv[0]
+            r["cit_note"] = (r["cit_note"] + " " + yv[1]).strip()
+        canon = URL_CANONICAL.get(url)
+        if canon:
+            url = canon[0]
+            r["url"] = url
+            r["cit_note"] = (r["cit_note"] + " " + canon[1]).strip()
         r["read"] = READ_LABEL[r["jrs_read"]]
         r["outcome_label"] = OUTCOME_LABEL[r["outcome"]]
         r["has_note"] = bool((r.get("note") or "").strip())
@@ -529,9 +571,14 @@ def main():
           % sum(1 for r in rows if r["blind"][0].startswith("Yes")))
     print("  employment: %d screened, %d included, %d excluded"
           % (len(crows), included, len(crows) - included))
-    print("  citation corrections %d, discrepancies flagged for author review %d"
-          % (sum(1 for r in rows if r["cit_note"] and "NOT corrected" not in r["cit_note"]),
-             sum(1 for r in rows if "NOT corrected" in r["cit_note"])))
+    av = sum(1 for r in rows if "Author-verified" in r["cit_note"])
+    mc = sum(1 for r in rows if r["cit_note"] and "Author-verified" not in r["cit_note"])
+    unresolved = sum(1 for r in rows
+                     if "NOT corrected" in r["cit_note"] or "NOT resolved" in r["cit_note"])
+    print("  citations: %d author-verified, %d corrected from machine evidence, "
+          "%d unresolved" % (av, mc, unresolved))
+    ny = [r["case_id"] for r in rows if r["decision_year"] == "N/A"]
+    print("  rows with no decision year: %d %s" % (len(ny), ", ".join(ny)))
     na = [r["case_id"] for r in rows if r["jurisdiction"] == "N/A" or r["source_type"] == "N/A"]
     print("  rows still N/A for jurisdiction or source type: %d %s"
           % (len(na), ", ".join(na) if na else ""))

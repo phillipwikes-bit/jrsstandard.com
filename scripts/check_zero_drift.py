@@ -796,6 +796,39 @@ def check_coding_frames_match_the_manuscript(offline):
           if not problems else "%d problem(s): %s" % (len(problems), "; ".join(problems[:3])))
 
 
+def check_send_copy_is_clean(offline):
+    """The correspondence that goes out must carry no editorial material and no
+    signature the stated arrangement does not authorise.
+
+    Email 1 carried both authors' signatures while the file's own header said
+    Stacyann sends both alone, and the working file ended with an editorial note
+    about status wording. Neither belongs in correspondence to a federal council.
+    A separate send copy now exists and is asserted here.
+    """
+    send = read("research/CFOC_Emails_SEND_COPY_2026-08-28.md")
+    problems = []
+    if send is None:
+        problems.append("research/CFOC_Emails_SEND_COPY_2026-08-28.md is missing")
+    else:
+        flat = re.sub(r"\s+", " ", send)
+        for bad, why in (("Phillip Wikes", "a second signature the stated "
+                                           "arrangement does not authorise"),
+                         ("Working notes", "editorial material"),
+                         ("Send note", "editorial material"),
+                         ("currently under submission", "status language that "
+                                                        "overstates the article")):
+            if bad in flat:
+                problems.append("send copy contains %r (%s)" % (bad, why))
+        for need in ("Stacyann Young", "being submitted for publication",
+                     "personal professional capacity", "p = 0.0000520"):
+            if need not in flat:
+                problems.append("send copy is missing %r" % need)
+    check("correspondence send copy is clean",
+          not problems,
+          "no editorial material, one signature, accurate status language"
+          if not problems else "%d problem(s): %s" % (len(problems), "; ".join(problems[:3])))
+
+
 def check_submission_package_is_self_contained(offline):
     """The package a reviewer receives must not reach outside itself.
 
@@ -3641,6 +3674,7 @@ def main():
                check_second_read_completeness_is_published,
                check_crossdomain_citation_is_current,
                check_submission_package_is_self_contained,
+               check_send_copy_is_clean,
                check_coding_frames_match_the_manuscript,
                check_second_read_reported_honestly,
                check_markdown_pdfs_are_converted,
