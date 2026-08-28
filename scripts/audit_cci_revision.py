@@ -25,7 +25,7 @@ import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-NEW = os.path.join(ROOT, "research", "Evidentiary_Deficit_CCI_RESUBMISSION_2026-08-28_REV2.md")
+NEW = os.path.join(ROOT, "research", "Evidentiary_Deficit_CCI_RESUBMISSION_2026-08-28_V3.md")
 PRIOR = os.path.join(ROOT, "research", "Evidentiary_Deficit_CCI_RESUBMISSION_MASTER_20260828.md")
 HEKIM = os.path.join(ROOT, "research", "Evidentiary_Deficit_Article_Hekim_Version_rev2026-08-18.md")
 
