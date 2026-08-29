@@ -848,10 +848,20 @@ def check_named_contributors_are_only_the_ones_who_elected_it(offline):
         else:
             forbidden[name] = code
 
+    # Membership is checked by NAME against the credit list, not by the whole
+    # string. Since 2026-08-29 the printed string comes from the spelling
+    # authority, so the description a person typed and the description that
+    # prints are deliberately different text for several of them. What must
+    # still hold is that the person printed is a person who confirmed and
+    # elected naming.
+    def nkey(t):
+        return "".join(c for c in t.split(",")[0].lower() if c.isalnum())
+    allowed_names = {nkey(a) for a in allowed}
     for entry in listed:
-        if entry.strip() not in allowed:
-            problems.append("credits an entry that is not a named contributor "
-                            "of the three groups: %s" % entry.strip()[:60])
+        if nkey(entry) not in allowed_names:
+            problems.append("credits someone who is not a named contributor "
+                            "of the three groups: %s"
+                            % entry.strip().split(",")[0])
     for name, code in forbidden.items():
         if name and name in block:
             problems.append("%s (%s) is in the employment pilot, which this "
@@ -900,10 +910,37 @@ def check_named_contributors_are_only_the_ones_who_elected_it(offline):
             problems.append("states %s unnamed; the confirmed-minus-named "
                             "figure is %d" % (m.group(1), expected))
 
-    # Alphabetical, because code order would reassemble the grouping.
-    if listed != sorted(listed, key=lambda x: x.lower()):
+    # Alphabetical, insensitive to punctuation, because code order would
+    # reassemble the grouping and a stray full stop would look like disorder.
+    def akey(t):
+        return "".join(c for c in t.lower() if c.isalnum() or c.isspace())
+    if listed != sorted(listed, key=akey):
         problems.append("the credited names are not in alphabetical order, so "
                         "the ordering may still carry the study grouping")
+
+    # Every printed entry must be exactly what Phillip supplied on 2026-08-29.
+    # The self-entered strings are the record of what each person typed; the
+    # spelling authority is the record of how he approved it printed. Drift
+    # between them is invisible in a diff of the manuscript alone.
+    spell_path = "research/Contributor_Spellings_2026-08-29.md"
+    if not os.path.exists(os.path.join(ROOT, spell_path)):
+        problems.append("the contributor spelling authority is missing at %s"
+                        % spell_path)
+    else:
+        approved = [l[2:].strip() for l in read(spell_path).split("\n")
+                    if l.startswith("- ")]
+        aset = set(approved)
+        off = [e for e in listed if e.strip() not in aset]
+        if off:
+            problems.append("%d credited entr(y/ies) do not match the "
+                            "supplied spelling authority: %s"
+                            % (len(off), "; ".join(x[:44] for x in off[:2])))
+        unused = [a for a in approved if a not in set(x.strip() for x in listed)]
+        if unused:
+            problems.append("%d approved spelling(s) reach no printed entry: "
+                            "%s" % (len(unused),
+                                    "; ".join(x.split(",")[0]
+                                              for x in unused[:3])))
 
     check("named contributors are only the ones who elected it",
           not problems,

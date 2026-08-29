@@ -20,6 +20,16 @@
       "words": 12552,
       "lines": 615,
       "note": "Contributor credits as one alphabetical list with all study-participation language removed, per Phillip's direction of 2026-08-29. No Audit 1 corrections applied yet."
+    },
+    {
+      "name": "v3-approved-spellings",
+      "file": "v3-approved-spellings__Detection_Article.md",
+      "frozen": "2026-08-29",
+      "sha256": "29f77ce89d6225e012c422ad606a8a4fbc81e291f1686a550de435e63b595e58",
+      "bytes": 83112,
+      "words": 12553,
+      "lines": 615,
+      "note": "Contributor display strings bound to Phillip's supplied spelling authority of 2026-08-29. Four corrections applied. Credits remain one alphabetical list with no study named."
     }
   ]
 }

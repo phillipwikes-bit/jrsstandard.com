@@ -584,17 +584,17 @@ Reviewers are recognised as named contributors with their consent; none is a co-
 - Andres Lage Freire, Operational AI Governance Lead & Responsible AI Architect, Independent Consultant
 - Andrey Ekhmenin, Founder, ANDEKS™; Independent Governance Assessment and Diagnostics
 - Andrzej Skulski, Founder | AI Governance & Decision Systems, Dom Ciszy – Resonance Lab
-- Boris Khazin, AI Governance, Digital Risk and GRC leader; ClearView MRI; ex-EPAM Global Head of DRM/GRC, Khazin Consulting llc
+- Boris Khazin, AI Governance, Digital Risk and GRC leader; ClearView MRI; ex-EPAM Global Head of DRM/GRC, Khazin Consulting LLC
 - Candid Opris, Founder and Managing Partner, Opris & Associates; two decades in AI and data governance and digital trust, Opris & Associates Inc.
 - Donavine Smith, Board & Executive Advisor | Frontier AI Strategy & Governance, Independent
-- dr Gabriela Bar, attorney at law, AI ethics advisor, Gabriela Bar Law & AI
+- Dr. Gabriela Bar, attorney at law, AI ethics advisor, Gabriela Bar Law & AI
 - Dr Nitin Deshpande, Chief Human Resources Officer, Cooper Corporation Pvt Limited
 - Dr Sharon Licqurish, PhD, CEO, Chief Scientist and AI Governance Architect, AIIP, AIIP, Ontocore Licencing Authority LLC
 - Franciscus C Schouten, AI Governance and Assurance, The AI Non-Delegation Doctrine
 - Greg Searle, AI Governance and Model Behaviour Researcher, Anypoint Pty Ltd
 - Hekim Colpan, AI Governance and Compliance Manager | Data Protection Manager | ISO/IEC 42001 Auditor
-- Jake McDonough, AI governance, SAEONYX Global Holdings, LLC
-- Joseph Mungai, Ai Governance and public policy researcher, Independent Researcher -Kenya
+- Jake McDonough, AI Governance, SAEONYX Global Holdings, LLC
+- Joseph Mungai, AI Governance and public policy researcher, Independent Researcher - Kenya
 - MacKenzie McCowan, AI Governance Specialist, PhD candidate, Lecturer, Atomi; The University of Sydney; Avondale University
 - Muhammad Dauda, Programme leadership, sustainability and governance; UN SDSN Youth Nigeria; Miva Open University; PgMP, UN SDSN NIGERIA
 - Nigel Hee, AI Ethics, Safety and Governance, University of Glasgow

@@ -50,6 +50,8 @@ import urllib.request
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAPER = os.path.join(ROOT, "research", "Detection_Article_Submission_FINAL5_2026-08-18.md")
 CREDITS = os.path.join(ROOT, "research", "Contributor_Credit_List_2026-08-29.md")
+SPELLINGS = os.path.join(ROOT, "research",
+                         "Contributor_Spellings_2026-08-29.md")
 UA = {"User-Agent": "Mozilla/5.0 (JRS credits)"}
 
 ANCHOR = ("Reviewers are recognised as named contributors with their consent; none "
@@ -81,6 +83,54 @@ def word(n):
                          "WORDS rather than printing a numeral into prose that "
                          "spells every other count out" % n)
     return WORDS[n]
+
+
+def norm_name(text):
+    """Match key for a person: the name before the first comma, lowercased,
+    with punctuation and internal spacing removed.
+
+    Phillip's spelling list changes how several names are printed, including
+    "dr Gabriela Bar" to "Dr. Gabriela Bar". Matching on the raw string would
+    fail on exactly the entries the list exists to correct, so the key ignores
+    the characters that are being corrected.
+    """
+    head = text.split(",")[0]
+    return "".join(c for c in head.lower() if c.isalnum())
+
+
+def sort_key_name(text):
+    """Alphabetical by name, insensitive to case and punctuation.
+
+    Without this "Dr. Gabriela Bar" sorts after "Dr Sharon Licqurish", because
+    a full stop is a higher codepoint than a space. A reader scanning for a
+    name does not know where the author put the punctuation.
+    """
+    return "".join(c for c in text.lower() if c.isalnum() or c.isspace())
+
+
+def spellings():
+    """The supplied display strings, keyed by normalised name.
+
+    Absent file is fail-closed, not a silent fallback to the self-entered
+    strings: a run that quietly prints the old spellings would look identical
+    to a successful one.
+    """
+    if not os.path.exists(SPELLINGS):
+        raise SystemExit("[REQUIRED_ENV_PARAM] the contributor spelling "
+                         "authority is missing at %s. Nothing is printed from "
+                         "the self-entered strings once the authority exists, "
+                         "so a missing file is an error rather than a "
+                         "fallback." % os.path.relpath(SPELLINGS, ROOT))
+    out = {}
+    for line in io.open(SPELLINGS, encoding="utf-8").read().split("\n"):
+        if not line.startswith("- "):
+            continue
+        entry = line[2:].strip()
+        key = norm_name(entry)
+        if key in out:
+            raise SystemExit("the spelling authority lists %r twice" % entry)
+        out[key] = entry
+    return out
 
 
 def sort_key(code):
@@ -126,7 +176,7 @@ def main():
         Sorted by name, never by code, for the reason in the module docstring.
         """
         return "\n".join(
-            "- %s" % v for v in sorted(d.values(), key=lambda x: x.lower()))
+            "- %s" % v for v in sorted(d.values(), key=sort_key_name))
 
     # One population now, so the unnamed figure is the confirmed total across
     # the three credited groups less the named total. Still computed rather
@@ -135,6 +185,31 @@ def main():
     named = dict(panel)
     named.update(rely)
     named.update(comp)
+
+    # Every printed string comes from the spelling authority, and the mapping
+    # must be a bijection. An unmatched authority entry means a name Phillip
+    # supplied belongs to nobody credited; an unmatched contributor means
+    # someone would print with a spelling he did not approve. Neither is
+    # recoverable by guessing, so both stop the run.
+    spell = spellings()
+    used, unmatched = set(), []
+    for code in sorted(named, key=sort_key):
+        key = norm_name(named[code])
+        if key not in spell:
+            unmatched.append("%s (%s) has no entry in the spelling authority"
+                             % (named[code].split(",")[0].strip(), code))
+            continue
+        named[code] = spell[key]
+        used.add(key)
+    leftover = [spell[k] for k in spell if k not in used]
+    if leftover:
+        unmatched.append("%d spelling entr(y/ies) match no credited "
+                         "contributor: %s"
+                         % (len(leftover),
+                            "; ".join(x.split(",")[0] for x in leftover)))
+    if unmatched:
+        raise SystemExit("the spelling authority and the credited set do not "
+                         "correspond: %s" % "; ".join(unmatched))
     confirmed_total = panel_conf + rely_conf + comp_conf
     unnamed = confirmed_total - len(named)
     if unnamed < 0:
@@ -195,6 +270,8 @@ def main():
     print("%s" % ("DRY RUN, nothing written. Re-run with --apply." if dry else "APPLIED"))
     print("  credited          %d named, one list, no study named"
           % len(named))
+    print("  spellings         %d applied from the supplied authority"
+          % len(used))
     print("  confirmed total   %d across the three credited groups"
           % confirmed_total)
     print("  unnamed           %d, counted in every figure" % unnamed)
