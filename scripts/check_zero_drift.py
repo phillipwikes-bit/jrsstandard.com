@@ -797,24 +797,25 @@ def check_coding_frames_match_the_manuscript(offline):
 
 
 def check_named_contributors_are_only_the_ones_who_elected_it(offline):
-    """The detection manuscript may credit only the people who chose to be
-    credited, and only from the two groups this paper reports.
+    """The detection manuscript credits three groups and only those three, and
+    it credits only the people who chose to be credited.
 
-    Three separate ways to publish someone wrongly, all of them silent:
+    Four ways to publish someone wrongly, all of them silent:
 
-      1. A contributor who confirmed and elected anonymity gets swept into the
-         list because the roster records participation and the election lives
-         somewhere else. Four people across the roster chose this.
-      2. A comparison-study or employment-pilot contributor gets credited here.
-         The manuscript itself says of the comparison study that "their work is
-         reported in its own paper", so crediting them here contradicts the
-         page above them.
-      3. The unnamed count is reported roster-wide instead of per group. Four
-         contributors chose anonymity in all, but only two of them sit in these
-         two groups; a reader counting the printed list against the sentence
-         would find it short by two, which reads as a missing name.
+      1. A contributor who confirmed and elected anonymity gets swept in
+         because the roster records participation while the election lives
+         somewhere else. Four people across the roster chose anonymity.
+      2. The employment pilot's contributor gets credited. That is a separate
+         study and is not one of the three groups the Acknowledgments names.
+      3. The unnamed figure is read off the roster total instead of summed per
+         group. It reads correctly today at four only because all three
+         credited groups happen to account for all four; a further election in
+         the employment pilot would break that and nothing else would notice.
+      4. The internal arm nomenclature reaches the page. Each group must be
+         introduced with the label the manuscript already uses in public prose;
+         "Arm A" and "Arm B" name the design under test and must not appear.
 
-    None of the three changes a single number in the results, which is exactly
+    None of the four changes a single number in the results, which is exactly
     why nothing else in this file would catch them.
     """
     paper = "research/Detection_Article_Submission_FINAL5_2026-08-18.md"
@@ -834,25 +835,27 @@ def check_named_contributors_are_only_the_ones_who_elected_it(offline):
     listed = re.findall(r"^- (.+)$", block, re.M)
     problems = []
 
-    # Every code in the credit list carries its study in its prefix, and only
-    # V-AI (detection panel) and E (reliability) belong in this paper.
+    # Every code in the credit list carries its study in its prefix. V-AI
+    # (detection panel), E (reliability) and RR (comparison study) are the three
+    # groups this paper acknowledges; V-HR is the employment pilot and is not.
     rows = re.findall(r"^- \*\*([A-Z-]+\d+)\*\* — (.+)$", read(creds), re.M)
     allowed, forbidden = set(), {}
     for code, desc in rows:
         name = desc.split(",")[0].strip()
-        if code.startswith("V-AI-") or re.match(r"^E-\d+$", code):
+        if (code.startswith("V-AI-") or code.startswith("RR-")
+                or re.match(r"^E-\d+$", code)):
             allowed.add(desc.strip())
         else:
             forbidden[name] = code
 
     for entry in listed:
         if entry.strip() not in allowed:
-            problems.append("credits an entry that is not a named V-AI or E "
-                            "contributor: %s" % entry.strip()[:60])
+            problems.append("credits an entry that is not a named contributor "
+                            "of the three groups: %s" % entry.strip()[:60])
     for name, code in forbidden.items():
         if name and name in block:
-            problems.append("%s (%s) belongs to another study and is credited "
-                            "here" % (name, code))
+            problems.append("%s (%s) is in the employment pilot, which this "
+                            "paper does not credit" % (name, code))
 
     # The four who elected anonymity may appear nowhere in the manuscript.
     for name in ("Kyle McMullan", "Marguerite Maroudis", "Tuneer Mondal",
@@ -861,26 +864,41 @@ def check_named_contributors_are_only_the_ones_who_elected_it(offline):
             problems.append("%s elected anonymity and is named in the paper"
                             % name)
 
-    # The unnamed figure is per group, not roster-wide.
-    m = re.search(r"^(\w+) further contributors? in these two groups confirmed",
-                  block, re.M)
+    # The arm nomenclature names the design under test.
+    for token in ("Arm A", "Arm B"):
+        if token in body:
+            problems.append("the manuscript discloses %r" % token)
+
+    # The unnamed figure is summed per group, never read off the roster total.
+    m = re.search(r"^(\w+) further contributors? across these three groups "
+                  r"confirmed", block, re.M)
     if not m:
         problems.append("the per-group unnamed sentence is missing")
     else:
-        words = {"No": 0, "One": 1, "Two": 2, "Three": 3, "Four": 4}
+        words = {"No": 0, "One": 1, "Two": 2, "Three": 3, "Four": 4,
+                 "Five": 5, "Six": 6}
         stated = words.get(m.group(1))
-        panel_named = len([1 for c, d in rows if c.startswith("V-AI-")])
-        rely_named = len([1 for c, d in rows if re.match(r"^E-\d+$", c)])
-        expected = (13 - panel_named) + (3 - rely_named)
+        named = {"V-AI-": 0, "RR-": 0, "E-": 0}
+        for code, _d in rows:
+            if code.startswith("V-AI-"):
+                named["V-AI-"] += 1
+            elif code.startswith("RR-"):
+                named["RR-"] += 1
+            elif re.match(r"^E-\d+$", code):
+                named["E-"] += 1
+        # Confirmed per group, as reported by /api/contributor-stats on
+        # 2026-08-29 and recorded here so the check runs offline.
+        expected = ((13 - named["V-AI-"]) + (3 - named["E-"])
+                    + (14 - named["RR-"]))
         if stated != expected:
-            problems.append("states %s unnamed in these two groups; the "
+            problems.append("states %s unnamed across the three groups; the "
                             "confirmed-minus-named figure is %d"
                             % (m.group(1), expected))
 
     check("named contributors are only the ones who elected it",
           not problems,
-          "%d credited, all elected, no other study, unnamed count per group"
-          % len(listed)
+          "%d credited across three groups, all elected, no employment pilot, "
+          "no arm nomenclature, unnamed count summed per group" % len(listed)
           if not problems else "%d problem(s): %s"
           % (len(problems), "; ".join(problems[:3])))
 

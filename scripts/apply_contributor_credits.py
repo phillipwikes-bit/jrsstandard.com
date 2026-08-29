@@ -3,27 +3,30 @@
 
 WHO IS NAMED HERE, AND WHO IS NOT.
 
-The manuscript acknowledges three groups: the detection panel of 16, the
-reliability study of 25 raters, and the comparison study of 20 whose "work is
-reported in its own paper". Only the first two belong in this paper's credits.
+The manuscript acknowledges three groups. All three are credited here, by the
+author's direction of 2026-08-29:
 
-  V-AI-##   detection panel      -> named here
-  E-##      reliability raters   -> named here
-  RR-###    comparison study     -> NOT named here; that is the other paper's
-                                    acknowledgment to make
-  V-HR-01   employment pilot     -> NOT named here, different study entirely
+  V-AI-##   detection panel (Arm A)    -> named here
+  E-##      reliability raters         -> named here
+  RR-###    comparison study (Arm B)   -> named here
+  V-HR-01   employment pilot           -> NOT named here. It is a different
+                                          study and is not one of the three
+                                          groups this paper acknowledges.
 
 The code prefix is the study identifier. That mapping was validated on
 2026-08-28 against every roster row carrying a descriptive note: 24 agreed, 0
 disagreed.
 
-NOBODY IS NAMED WHO DID NOT ELECT IT. Four contributors across the whole
-roster confirmed and chose anonymity; two of them are in the two groups this
-paper credits, and the other two are in the comparison study. The paragraph
-reports the per-group figure, not the roster-wide one, because a reader
-counting the list against it would otherwise find it short by two. All four
-are counted in every figure and appear nowhere by name. The election is read
-from each person's own confirmation entry, never from the study roster.
+THE ARM SPLIT IS NOT DISCLOSED BY NAMING ANYONE. Each group is introduced with
+the label the manuscript already uses in public prose ("the comparison study,
+20 independent experts"). The internal arm nomenclature and the Arm B method
+appear nowhere in the generated text.
+
+NOBODY IS NAMED WHO DID NOT ELECT IT. Four contributors confirmed and chose
+anonymity: two in the detection panel and two in the comparison study. With all
+three groups credited, the roster-wide figure and the per-group figure coincide
+at four, but it is still computed as confirmed minus named per group so that it
+cannot drift if a further election arrives.
 
 THE LIST IS PARTIAL AND SAYS SO. 13 of the 16 panel members have confirmed and
 11 elected naming; the sentence states that plainly rather than implying the
@@ -91,8 +94,10 @@ def main():
 
     panel = {c: v for c, v in cred.items() if c.startswith("V-AI-")}
     rely = {c: v for c, v in cred.items() if re.match(r"^E-\d+$", c)}
+    comp = {c: v for c, v in cred.items() if c.startswith("RR-")}
     panel_conf = len([c for c in confirmed if c.startswith("V-AI-")])
     rely_conf = len([c for c in confirmed if re.match(r"^E-\d+$", c)])
+    comp_conf = len([c for c in confirmed if c.startswith("RR-")])
 
     def render(d):
         """One person per line. Several contributors used semicolons inside their
@@ -101,16 +106,17 @@ def main():
         exactly as entered and still shows where each one ends."""
         return "\n".join("- %s" % d[c] for c in sorted(d, key=sort_key))
 
-    # Anonymity is counted per group, not across the whole roster. Four
-    # contributors in all elected not to be named, but two of them sit in the
-    # comparison study, whose credits belong to its own paper. Only the
-    # unnamed confirmations inside these two groups may be reported here.
-    unnamed = (panel_conf - len(panel)) + (rely_conf - len(rely))
+    # Counted per group and summed, never read off the roster total. The two
+    # figures happen to coincide at four now that all three groups are
+    # credited, and they will diverge again the moment a further election
+    # arrives in the employment pilot, which this paper does not credit.
+    unnamed = ((panel_conf - len(panel)) + (rely_conf - len(rely))
+               + (comp_conf - len(comp)))
     if unnamed < 0:
         raise SystemExit("more named than confirmed; the join is wrong")
     count_word = word(unnamed).capitalize()
 
-    tail = ("%s further contributor%s in these two groups confirmed and elected "
+    tail = ("%s further contributor%s across these three groups confirmed and elected "
             "not to be named. Their judgments are counted in every figure "
             "reported here and they appear nowhere by name. Confirmations remain "
             "open, so this is a record of the elections received to date rather "
@@ -121,17 +127,31 @@ def main():
              "**Named contributors, as at 29 August 2026.** Recognition is by each "
              "contributor's own election, recorded through the confirmation "
              "mechanism described in the data availability statement, and each "
-             "name and description below stands as that person entered it. Of the "
-             "sixteen detection panel members, %s have confirmed and %s elected "
-             "to be named:\n\n%s\n\nOf the reliability raters, %s have confirmed "
-             "and %s elected to be named:\n\n%s\n\n%s"
+             "name and description below stands as that person entered it.\n\n"
+             "Of the sixteen detection panel members, %s have confirmed and %s "
+             "elected to be named:\n\n%s\n\n"
+             "Of the twenty-five reliability raters, %s have confirmed and %s "
+             "elected to be named:\n\n%s\n\n"
+             "Of the twenty independent experts in the comparison study, %s have "
+             "confirmed and %s elected to be named:\n\n%s\n\n%s"
              % (word(panel_conf), word(len(panel)), render(panel),
-                word(rely_conf), word(len(rely)), render(rely), tail))
+                word(rely_conf), word(len(rely)), render(rely),
+                word(comp_conf), word(len(comp)), render(comp), tail))
 
+    # Re-entrant by construction. The credits sit between the consent anchor and
+    # the methodology credit, so a re-run replaces that span rather than
+    # inserting a second copy of it. Running this twice must be a no-op, not a
+    # duplicated Acknowledgments.
     n = body.count(ANCHOR)
     if n != 1:
         raise SystemExit("anchor appears %d times, expected 1" % n)
-    out = body.replace(ANCHOR, block, 1)
+    START = body.index(ANCHOR)
+    CLOSER = "\n\nThe reliability and validation methodology"
+    if CLOSER not in body[START:]:
+        raise SystemExit("the methodology credit no longer follows the consent "
+                         "anchor; the Acknowledgments has been restructured")
+    END = body.index(CLOSER, START)
+    out = body[:START] + block + body[END:]
 
     # No contributor who elected anonymity may appear, and no comparison-study
     # or employment-study contributor may be credited in this paper.
@@ -139,10 +159,15 @@ def main():
                   "Alexandria Davis"]
     problems = [nm for nm in anon_names if nm in out]
     for code in cred:
-        if code.startswith("RR-") or code.startswith("V-HR-"):
+        if code.startswith("V-HR-"):
             nm = cred[code].split(",")[0].split(" — ")[0].strip()
             if nm and nm in block:
-                problems.append("%s (%s) credited in the wrong paper" % (nm, code))
+                problems.append("%s (%s) is in the employment pilot, which is "
+                                "not one of this paper's three groups" % (nm, code))
+    # The internal arm nomenclature must not reach the manuscript.
+    for token in ("Arm A", "Arm B"):
+        if token in block:
+            problems.append("the generated credits disclose %r" % token)
     if problems:
         raise SystemExit("this pass would publish someone it must not: %s"
                          % "; ".join(problems))
@@ -151,10 +176,10 @@ def main():
     print("  detection panel   %d confirmed, %d named" % (panel_conf, len(panel)))
     print("  reliability       %d confirmed, %d named" % (rely_conf, len(rely)))
     print("  unnamed here      %d, counted in every figure" % unnamed)
-    print("  comparison study  %d named in the credit list, NOT credited here"
-          % len([c for c in cred if c.startswith("RR-")]))
+    print("  comparison study  %d confirmed, %d named" % (comp_conf, len(comp)))
     print("  employment pilot  %d named in the credit list, NOT credited here"
           % len([c for c in cred if c.startswith("V-HR-")]))
+    print("  credited total    %d" % (len(panel) + len(rely) + len(comp)))
     print("  words %d -> %d" % (len(body.split()), len(out.split())))
     if not dry:
         io.open(PAPER, "w", encoding="utf-8").write(out)
