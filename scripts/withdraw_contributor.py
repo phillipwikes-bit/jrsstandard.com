@@ -59,13 +59,27 @@ WITHDRAWALS = [
         # withdrawn contributor by code rather than by name.
         "names": ["Gabriela Cortez", "Gabi Cortez", "Cortez", "Gabi"],
         "withheld": "(name withheld)",
-        # NO IDENTIFIER LIST FOR THIS WITHDRAWAL, deliberately. The obvious
-        # candidate is "Maryland Commission on Civil Rights", and it is wrong:
-        # that is the FIRST AUTHOR's former post and it appears in 20 outreach
+        # NO IDENTIFIER LIST FOR THIS WITHDRAWAL, deliberately, but NOT for
+        # the reason first written here.
+        #
+        # CORRECTED 2026-08-29. The earlier note said "Maryland Commission on
+        # Civil Rights" is wrong as her identifier because it is the FIRST
+        # AUTHOR's former post. That is half true and it read as denying an
+        # association the record actually shows. It is the first author's
+        # former post AND it is hers: the credit strings this withdrawal
+        # removed read "Gabriela Cortez (Maryland Commission on Civil Rights)"
+        # (see the CREDIT rules below), and the roster line retired on
+        # 2026-08-16 read "Civil-rights records and bilingual intake; Maryland
+        # Commission on Civil Rights". They worked at the same body, which is
+        # how the first author knows her.
+        #
+        # The operational decision is unchanged and still correct. The string
+        # cannot serve as a scan identifier because it appears in 20 outreach
         # files, the reviewer page, the training page and the manuscript byline
-        # for reasons that have nothing to do with her. Treating it as her
-        # identifier produced 20 false positives on the first run. It was
-        # removed from her own rows individually instead, by the rules below.
+        # for the FIRST AUTHOR's reasons, and using it produced 20 false
+        # positives on the first run. It was removed from her own rows
+        # individually instead, by the rules below. The reason is
+        # disambiguation, not absence of association.
         "identifiers": [],
         # PARTIALLY REINSTATED 2026-08-19 at the owner's instruction: "She did
         # not withdraw from study ... should get a link ... just like all the
