@@ -1,6 +1,6 @@
 # JRS Master Tracker, recent activity
 
-**Extract only. The permanent record is `research/MASTER_TRACKER.md`,** 1,717,627 bytes, 670 entries, committed to the development branch and never deployed to `main` by design.
+**Extract only. The permanent record is `research/MASTER_TRACKER.md`,** 1,721,039 bytes, 671 entries, committed to the development branch and never deployed to `main` by design.
 
 Covering the 3 most recent dates: 2026-08-27, 2026-08-28, 2026-08-29. Long lines are rewrapped here for reading; the source is not modified.
 
@@ -1332,5 +1332,46 @@ issued, 1 sent to date. The citation quoted back to him is the one already store
 `api/honor.js`, not a new one written for the occasion. Files:
 `research/Message_Ubayet_Hossain_2026-08-29.md` and `.docx`. Verified clean of *KPMG*,
 *Associate Director*, and any co-author or contributor link chase.
+
+---
+
+## 2026-08-29 — **UBAYET'S CERTIFICATE ISSUED, THE MESSAGE REWRITTEN AROUND IT, AND HIS AFFILIATION FOUND ON A SECOND LIVE MANUSCRIPT NOBODY HAD LOOKED AT.**
+
+**CERTIFICATE BUILT BY THE CANONICAL BUILDER, NOT HAND-DESIGNED.**
+`scripts/build_honor_certificate_ubayet.py` supplies the data and calls `make_certificate` from
+`research/build_certificate.py`, so the layout, the ivory ground, the double gold border and the
+type are the ones already issued to 21 reviewers and to Stacyann Young. **The citation is read
+out of `api/honor.js` at run time rather than retyped**, so the certificate cannot drift from
+what the honor system would render if he opened his link. **IT SAYS "CERTIFICATE OF
+RECOGNITION", NOT "COMPLETION", AND THAT DISTINCTION HAS A HISTORY.** `MASTER_TRACKER.md:1044`
+records the honor certificate going out on 2026-08-08 titled *Certificate of Completion*, which
+was wrong because **an honoree did not complete a 24-record set**. Verified against Stacyann
+Young's issued certificate by **decoding the PDF content stream**, which is ASCII85 over Flate,
+not by reading the source: hers draws *"Certificate of Recognition"*, and so does his. **HIS
+CERTIFICATE VERIFIED THE SAME WAY.** 2,920 bytes, `%PDF-` header, `%%EOF` trailer, and the drawn
+text decoded line by line: *Certificate of Recognition*, *Ubayet Hossain, FRM*, the Global
+Governance and Transparency Honor (2026), the full methodology citation across six body lines,
+and the signature block. **KPMG absent, *Associate Director* absent, *Certificate of Completion*
+absent, and no employer or job title on the face of it**, matching the precedent set when Stacy
+asked for her agency and title removed. **THE SECOND LIVE MANUSCRIPT IS THE FINDING.** His
+instruction named the detection paper, but a sweep found
+**`research/BusinessEthics_Article_Draft.md:10`**, a live manuscript for the *Journal of
+Business Ethics* currently blocked on a different co-author, still crediting him as *"Associate
+Director, Model Validation, KPMG India"* for the same methodology contribution. **Updated.** His
+words were that removing the employer name is right *for this personal-capacity contribution*,
+and it is the same contribution in both papers. **LIVE SURFACES NOW CARRYING KPMG AGAINST HIS
+NAME: ZERO.** The superseded detection drafts FINAL through FINAL4, `Detection_Article_Final`
+and `Detection_ArmB_Article_Draft` were **deliberately left alone**, as were the historical
+tracker entries: they record what was true when written. **ONE THING FLAGGED RATHER THAN
+CHANGED.** `research/Broida_Founding_Access_Offer.md:8` uses his employer's name in a
+**commercial** context, *"KPMG worded as an individual model-validation director's
+designed-and-approved methodology"*, which is a different and more sensitive use than a byline.
+That channel was **closed on 2026-08-23** on the owner's determination, so the document is
+dormant and was left as the historical record, but **if it is ever reused that line must go
+first.** **MESSAGE REWRITTEN, 355 words.** The honor link is out entirely: **no URL, no key, no
+*"takes about a minute"***. The certificate is attached instead, the citation is quoted in full
+so he can read it without opening anything, and it states the certificate carries his name and
+no employer. It now also tells him the Business Ethics paper was corrected, which he did not ask
+about and would otherwise have found himself.
 
 ---
