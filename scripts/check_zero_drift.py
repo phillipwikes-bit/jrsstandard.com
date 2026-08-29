@@ -796,6 +796,95 @@ def check_coding_frames_match_the_manuscript(offline):
           if not problems else "%d problem(s): %s" % (len(problems), "; ".join(problems[:3])))
 
 
+def check_named_contributors_are_only_the_ones_who_elected_it(offline):
+    """The detection manuscript may credit only the people who chose to be
+    credited, and only from the two groups this paper reports.
+
+    Three separate ways to publish someone wrongly, all of them silent:
+
+      1. A contributor who confirmed and elected anonymity gets swept into the
+         list because the roster records participation and the election lives
+         somewhere else. Four people across the roster chose this.
+      2. A comparison-study or employment-pilot contributor gets credited here.
+         The manuscript itself says of the comparison study that "their work is
+         reported in its own paper", so crediting them here contradicts the
+         page above them.
+      3. The unnamed count is reported roster-wide instead of per group. Four
+         contributors chose anonymity in all, but only two of them sit in these
+         two groups; a reader counting the printed list against the sentence
+         would find it short by two, which reads as a missing name.
+
+    None of the three changes a single number in the results, which is exactly
+    why nothing else in this file would catch them.
+    """
+    paper = "research/Detection_Article_Submission_FINAL5_2026-08-18.md"
+    creds = "research/Contributor_Credit_List_2026-08-29.md"
+    if not (os.path.exists(os.path.join(ROOT, paper))
+            and os.path.exists(os.path.join(ROOT, creds))):
+        skip("named contributors are only the ones who elected it",
+             "manuscript or credit list not present")
+        return
+    body = read(paper)
+    if "**Named contributors, as at" not in body:
+        skip("named contributors are only the ones who elected it",
+             "credits block not applied")
+        return
+    block = body.split("**Named contributors, as at", 1)[1]
+    block = block.split("\n\nThe reliability and validation methodology", 1)[0]
+    listed = re.findall(r"^- (.+)$", block, re.M)
+    problems = []
+
+    # Every code in the credit list carries its study in its prefix, and only
+    # V-AI (detection panel) and E (reliability) belong in this paper.
+    rows = re.findall(r"^- \*\*([A-Z-]+\d+)\*\* — (.+)$", read(creds), re.M)
+    allowed, forbidden = set(), {}
+    for code, desc in rows:
+        name = desc.split(",")[0].strip()
+        if code.startswith("V-AI-") or re.match(r"^E-\d+$", code):
+            allowed.add(desc.strip())
+        else:
+            forbidden[name] = code
+
+    for entry in listed:
+        if entry.strip() not in allowed:
+            problems.append("credits an entry that is not a named V-AI or E "
+                            "contributor: %s" % entry.strip()[:60])
+    for name, code in forbidden.items():
+        if name and name in block:
+            problems.append("%s (%s) belongs to another study and is credited "
+                            "here" % (name, code))
+
+    # The four who elected anonymity may appear nowhere in the manuscript.
+    for name in ("Kyle McMullan", "Marguerite Maroudis", "Tuneer Mondal",
+                 "Alexandria Davis"):
+        if name in body:
+            problems.append("%s elected anonymity and is named in the paper"
+                            % name)
+
+    # The unnamed figure is per group, not roster-wide.
+    m = re.search(r"^(\w+) further contributors? in these two groups confirmed",
+                  block, re.M)
+    if not m:
+        problems.append("the per-group unnamed sentence is missing")
+    else:
+        words = {"No": 0, "One": 1, "Two": 2, "Three": 3, "Four": 4}
+        stated = words.get(m.group(1))
+        panel_named = len([1 for c, d in rows if c.startswith("V-AI-")])
+        rely_named = len([1 for c, d in rows if re.match(r"^E-\d+$", c)])
+        expected = (13 - panel_named) + (3 - rely_named)
+        if stated != expected:
+            problems.append("states %s unnamed in these two groups; the "
+                            "confirmed-minus-named figure is %d"
+                            % (m.group(1), expected))
+
+    check("named contributors are only the ones who elected it",
+          not problems,
+          "%d credited, all elected, no other study, unnamed count per group"
+          % len(listed)
+          if not problems else "%d problem(s): %s"
+          % (len(problems), "; ".join(problems[:3])))
+
+
 def check_send_copy_is_clean(offline):
     """The correspondence that goes out must carry no editorial material and no
     signature the stated arrangement does not authorise.
@@ -3677,6 +3766,7 @@ def main():
                check_send_copy_is_clean,
                check_coding_frames_match_the_manuscript,
                check_second_read_reported_honestly,
+               check_named_contributors_are_only_the_ones_who_elected_it,
                check_markdown_pdfs_are_converted,
                check_all_experts_credited, check_rung2a_lock,
                check_contributor_carries_no_findings,

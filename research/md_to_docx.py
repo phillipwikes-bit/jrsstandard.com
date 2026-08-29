@@ -217,5 +217,13 @@ def build(src):
     return out
 
 if __name__ == '__main__':
+    # Every argument is a SOURCE. The output path is derived from it, so an
+    # invocation of the form "md_to_docx.py in.md out.docx" does not mean what
+    # it looks like: it rebuilds in.docx and then treats out.docx as a second
+    # source. That silently overwrote a tracked deliverable once. Refuse the
+    # argument rather than guess which one the caller meant.
     for f in sys.argv[1:]:
+        if f.lower().endswith('.docx'):
+            sys.exit('%s: arguments are markdown sources; the .docx path is '
+                     'derived from each source name, not passed in' % f)
         print('wrote', build(f))
