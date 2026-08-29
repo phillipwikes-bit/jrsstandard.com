@@ -1391,6 +1391,66 @@ def check_private_paths_stay_unreachable(offline):
           % (len(problems), "; ".join(problems[:2])))
 
 
+def check_withdrawn_contributor_is_not_defaulted_into_being_named(offline):
+    """A contributor who withdrew naming consent must not be told that silence
+    means consent.
+
+    api/contributor.js prints a fallback rule on every contributor's own page:
+    if they do not respond by the fallback date, the paper uses the name and
+    title already on file, or anonymity where that is the election on file.
+    Which of those two a person gets is decided by ANON_CODES.
+
+    V-AI-08 withdrew consent to be named on 2026-08-16. Her roster row still
+    carries named_on_file: true, because the row is the study record and the
+    row is what makes her link resolve to her at all. Until 2026-08-29 she was
+    not in ANON_CODES, so her own page told her that silence on 5 September
+    would be read as agreement to be named.
+
+    The credit pipeline would not have printed her either way, because it
+    credits only codes on the confirmed list and she is not on it. That is not
+    the point and it is not a defence: the page was making a promise to her
+    that contradicted her withdrawal.
+
+    Every withdrawn code must therefore appear in ANON_CODES, and the register
+    in scripts/withdraw_contributor.py is the list of them, so the two cannot
+    drift apart.
+    """
+    api = "api/contributor.js"
+    reg = os.path.join(ROOT, "scripts", "withdraw_contributor.py")
+    if not os.path.exists(os.path.join(ROOT, api)):
+        skip("no withdrawn contributor is defaulted into being named",
+             "api/contributor.js not present")
+        return
+    body = read(api)
+    m = re.search(r"const ANON_CODES = \[([^\]]*)\];", body)
+    if not m:
+        check("no withdrawn contributor is defaulted into being named", False,
+              "ANON_CODES could not be located in %s, so the fallback rule "
+              "cannot be verified" % api)
+        return
+    anon = set(re.findall(r"'([^']+)'", m.group(1)))
+
+    withdrawn = []
+    if os.path.exists(reg):
+        sys.path.insert(0, os.path.join(ROOT, "scripts"))
+        try:
+            import withdraw_contributor as wc
+            withdrawn = [w["code"] for w in getattr(wc, "WITHDRAWALS", [])]
+        except Exception as e:
+            check("no withdrawn contributor is defaulted into being named",
+                  False, "the withdrawal register did not import: %r" % (e,))
+            return
+    missing = [c for c in withdrawn if c not in anon]
+    check("no withdrawn contributor is defaulted into being named",
+          not missing,
+          "%d withdrawn code(s), all present in ANON_CODES; %d code(s) fall "
+          "back to anonymity" % (len(withdrawn), len(anon))
+          if not missing else "%s withdrew naming consent and %s not in "
+          "ANON_CODES, so the fallback rule on their own page reads their "
+          "silence as consent to be named"
+          % (", ".join(missing), "is" if len(missing) == 1 else "are"))
+
+
 def check_send_copy_is_clean(offline):
     """The correspondence that goes out must carry no editorial material and no
     signature the stated arrangement does not authorise.
@@ -4279,6 +4339,7 @@ def main():
                check_every_credited_participant_is_an_expert,
                check_ubayet_is_described_as_he_asked,
                check_private_paths_stay_unreachable,
+               check_withdrawn_contributor_is_not_defaulted_into_being_named,
                check_markdown_pdfs_are_converted,
                check_all_experts_credited, check_rung2a_lock,
                check_contributor_carries_no_findings,
