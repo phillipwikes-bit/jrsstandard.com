@@ -22,7 +22,7 @@
 export const TERMS_VERSION = 'coauthor-v1.0-2026-08-24';
 
 export const ROSTER = {
-  'ggo2vm8jja': { code:'M-01',    first:'Ubayet',   name:'Ubayet Hossain, FRM', title:'Associate Director, Model Validation', org:'KPMG India', paper:'the detection study',          role:'co-author',   org_note:'' },
+  'ggo2vm8jja': { code:'M-01',    first:'Ubayet',   name:'Ubayet Hossain, FRM', title:'Independent Financial Risk & Model Validation Professional', org:'', paper:'the detection study',          role:'co-author',   org_note:'' },
   '8277t7qv5r': { code:'V-HR-01', first:'Tanvi',    name:'Tanvi Pokhriyal',     title:'Organisational Psychologist (freelance)', org:'',        paper:'the employment records study', role:'first author', org_note:'' },
   // Young's organisation is deliberately blank. She set an affiliation policy on
   // 2026-08-09 removing her title and agency from every surface, recorded at
