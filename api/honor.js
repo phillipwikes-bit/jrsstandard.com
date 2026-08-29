@@ -130,8 +130,9 @@ const ROSTER = {
             + 'thresholds fixed in advance of any analysis. That work decided '
             + 'what the study would accept as evidence before it knew what the '
             + 'evidence would say, which is the part of a validation that has '
-            + 'to be settled first and is hardest to add afterwards. He is named '
-            + 'as a co-author of the methodology on that basis.'
+            + 'to be settled first and is hardest to add afterwards. He is the '
+            + 'author of that methodology and a co-author of the paper that '
+            + 'reports it.'
   },
   // SYNTHETIC. Deploy and demonstration key, mirroring TEST_KEY 'selftest00'
   // in api/contributor.js. Exists so the citation screen and the certificate
