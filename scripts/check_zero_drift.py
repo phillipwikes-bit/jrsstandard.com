@@ -869,36 +869,46 @@ def check_named_contributors_are_only_the_ones_who_elected_it(offline):
         if token in body:
             problems.append("the manuscript discloses %r" % token)
 
-    # The unnamed figure is summed per group, never read off the roster total.
-    m = re.search(r"^(\w+) further contributors? across these three groups "
-                  r"confirmed", block, re.M)
+    # No group may be named in the credits at all. The 2026-08-29 direction
+    # removed the study language, and code-ordered or group-labelled credits
+    # would put it straight back.
+    for phrase in ("detection panel members", "reliability raters",
+                   "comparison study", "in these two groups",
+                   "across these three groups"):
+        if phrase in block:
+            problems.append("the credits place contributors in a study (%r); "
+                            "the 2026-08-29 direction removed that language"
+                            % phrase)
+
+    # The unnamed figure must be computed, not asserted, so it cannot go stale
+    # while the list grows.
+    m = re.search(r"^(\w+) further contributors? confirmed and elected not to "
+                  r"be named", block, re.M)
     if not m:
-        problems.append("the per-group unnamed sentence is missing")
+        problems.append("the unnamed-contributor sentence is missing")
     else:
         words = {"No": 0, "One": 1, "Two": 2, "Three": 3, "Four": 4,
-                 "Five": 5, "Six": 6}
+                 "Five": 5, "Six": 6, "Seven": 7, "Eight": 8}
         stated = words.get(m.group(1))
-        named = {"V-AI-": 0, "RR-": 0, "E-": 0}
-        for code, _d in rows:
-            if code.startswith("V-AI-"):
-                named["V-AI-"] += 1
-            elif code.startswith("RR-"):
-                named["RR-"] += 1
-            elif re.match(r"^E-\d+$", code):
-                named["E-"] += 1
-        # Confirmed per group, as reported by /api/contributor-stats on
-        # 2026-08-29 and recorded here so the check runs offline.
-        expected = ((13 - named["V-AI-"]) + (3 - named["E-"])
-                    + (14 - named["RR-"]))
+        named_n = len([1 for c, _d in rows
+                       if c.startswith("V-AI-") or c.startswith("RR-")
+                       or re.match(r"^E-\d+$", c)])
+        # Confirmed per group as reported by /api/contributor-stats on
+        # 2026-08-29, recorded here so the check runs offline.
+        expected = (13 + 3 + 14) - named_n
         if stated != expected:
-            problems.append("states %s unnamed across the three groups; the "
-                            "confirmed-minus-named figure is %d"
-                            % (m.group(1), expected))
+            problems.append("states %s unnamed; the confirmed-minus-named "
+                            "figure is %d" % (m.group(1), expected))
+
+    # Alphabetical, because code order would reassemble the grouping.
+    if listed != sorted(listed, key=lambda x: x.lower()):
+        problems.append("the credited names are not in alphabetical order, so "
+                        "the ordering may still carry the study grouping")
 
     check("named contributors are only the ones who elected it",
           not problems,
-          "%d credited across three groups, all elected, no employment pilot, "
-          "no arm nomenclature, unnamed count summed per group" % len(listed)
+          "%d credited in one alphabetical list, all elected, no study "
+          "named, no employment pilot, no arm nomenclature" % len(listed)
           if not problems else "%d problem(s): %s"
           % (len(problems), "; ".join(problems[:3])))
 
@@ -1098,11 +1108,15 @@ def check_arm_b_is_described_as_an_expert_population(offline):
             if sentence not in body:
                 problems.append("the manuscript no longer states %s (%r)"
                                 % (label, sentence[:48]))
-        # The credits must not demote the comparison study either.
+        # The credits name no study at all since 2026-08-29, so there is no
+        # group label there to demote. If one ever returns, it must carry the
+        # expert wording; the named-contributor check forbids the label
+        # outright and this is the backstop for the wording itself.
         if "**Named contributors, as at" in body:
             blk = body.split("**Named contributors, as at", 1)[1]
             if ("comparison study" in blk
-                    and "independent experts in the comparison study" not in blk):
+                    and "independent experts in the comparison study"
+                    not in blk):
                 problems.append("the credit block names the comparison study "
                                 "without calling its members independent "
                                 "experts")

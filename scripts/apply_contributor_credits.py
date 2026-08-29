@@ -17,20 +17,25 @@ The code prefix is the study identifier. That mapping was validated on
 2026-08-28 against every roster row carrying a descriptive note: 24 agreed, 0
 disagreed.
 
-THE ARM SPLIT IS NOT DISCLOSED BY NAMING ANYONE. Each group is introduced with
-the label the manuscript already uses in public prose ("the comparison study,
-20 independent experts"). The internal arm nomenclature and the Arm B method
-appear nowhere in the generated text.
+NO CONTRIBUTOR IS PLACED IN A STUDY. Phillip's direction of 2026-08-29:
+remove the language about which part of the study each person took part in.
+The credits are therefore one list, ordered alphabetically rather than by code,
+because ordering by code would put every V-AI together, then every E, then
+every RR, reassembling exactly the grouping the instruction removes.
+
+That is also the strongest form of blind protection these credits can take.
+With no group named and no code order, a reader cannot infer any participant's
+study or arm from the list, and the internal nomenclature has nothing left to
+attach to.
 
 NOBODY IS NAMED WHO DID NOT ELECT IT. Four contributors confirmed and chose
-anonymity: two in the detection panel and two in the comparison study. With all
-three groups credited, the roster-wide figure and the per-group figure coincide
-at four, but it is still computed as confirmed minus named per group so that it
-cannot drift if a further election arrives.
+anonymity. They are counted in every figure and appear nowhere by name. The
+election is read from each person's own confirmation entry, never from the
+study roster.
 
-THE LIST IS PARTIAL AND SAYS SO. 13 of the 16 panel members have confirmed and
-11 elected naming; the sentence states that plainly rather than implying the
-list is the panel.
+THE LIST IS PARTIAL AND SAYS SO. The closing sentence states that
+confirmations remain open, so the list is a record of the elections received
+to date rather than a roster of who took part.
 
     python3 scripts/apply_contributor_credits.py            # dry run, default
     python3 scripts/apply_contributor_credits.py --apply
@@ -57,14 +62,25 @@ WORDS = {0: "none", 1: "one", 2: "two", 3: "three", 4: "four", 5: "five",
          6: "six", 7: "seven", 8: "eight", 9: "nine", 10: "ten",
          11: "eleven", 12: "twelve", 13: "thirteen", 14: "fourteen",
          15: "fifteen", 16: "sixteen", 17: "seventeen", 18: "eighteen",
-         19: "nineteen", 20: "twenty"}
+         19: "nineteen", 20: "twenty", 21: "twenty-one",
+         22: "twenty-two", 23: "twenty-three", 24: "twenty-four",
+         25: "twenty-five", 26: "twenty-six", 27: "twenty-seven",
+         28: "twenty-eight", 29: "twenty-nine", 30: "thirty",
+         31: "thirty-one", 32: "thirty-two", 33: "thirty-three",
+         34: "thirty-four", 35: "thirty-five", 36: "thirty-six",
+         37: "thirty-seven", 38: "thirty-eight", 39: "thirty-nine",
+         40: "forty"}
 
 
 def word(n):
     """The manuscript spells out counts of this size in prose, so the credits do
     too. A bare "13" beside "sixteen" in the same sentence is the tell that a
     number was pasted in rather than written."""
-    return WORDS.get(n, str(n))
+    if n not in WORDS:
+        raise SystemExit("[REQUIRED_ENV_PARAM] no spelled form for %d; extend "
+                         "WORDS rather than printing a numeral into prose that "
+                         "spells every other count out" % n)
+    return WORDS[n]
 
 
 def sort_key(code):
@@ -100,43 +116,47 @@ def main():
     comp_conf = len([c for c in confirmed if c.startswith("RR-")])
 
     def render(d):
-        """One person per line. Several contributors used semicolons inside their
-        own descriptions, so a semicolon-joined run of them cannot be read: the
-        boundary between two people is invisible. A list keeps every description
-        exactly as entered and still shows where each one ends."""
-        return "\n".join("- %s" % d[c] for c in sorted(d, key=sort_key))
+        """One person per line, alphabetical by the name as entered.
 
-    # Counted per group and summed, never read off the roster total. The two
-    # figures happen to coincide at four now that all three groups are
-    # credited, and they will diverge again the moment a further election
-    # arrives in the employment pilot, which this paper does not credit.
-    unnamed = ((panel_conf - len(panel)) + (rely_conf - len(rely))
-               + (comp_conf - len(comp)))
+        Several contributors used semicolons inside their own descriptions, so
+        a semicolon-joined run of them cannot be read: the boundary between two
+        people is invisible. A list keeps every description exactly as entered
+        and still shows where each one ends.
+
+        Sorted by name, never by code, for the reason in the module docstring.
+        """
+        return "\n".join(
+            "- %s" % v for v in sorted(d.values(), key=lambda x: x.lower()))
+
+    # One population now, so the unnamed figure is the confirmed total across
+    # the three credited groups less the named total. Still computed rather
+    # than asserted, so a further election cannot leave the sentence stale
+    # while the list grows.
+    named = dict(panel)
+    named.update(rely)
+    named.update(comp)
+    confirmed_total = panel_conf + rely_conf + comp_conf
+    unnamed = confirmed_total - len(named)
     if unnamed < 0:
         raise SystemExit("more named than confirmed; the join is wrong")
     count_word = word(unnamed).capitalize()
 
-    tail = ("%s further contributor%s across these three groups confirmed and elected "
-            "not to be named. Their judgments are counted in every figure "
-            "reported here and they appear nowhere by name. Confirmations remain "
-            "open, so this is a record of the elections received to date rather "
-            "than of who took part."
+    tail = ("%s further contributor%s confirmed and elected not to be named. "
+            "Their judgments are counted in every figure reported here and "
+            "they appear nowhere by name. Confirmations remain open, so this "
+            "is a record of the elections received to date rather than of who "
+            "took part."
             % (count_word, "" if unnamed == 1 else "s"))
 
     block = (ANCHOR + "\n\n"
-             "**Named contributors, as at 29 August 2026.** Recognition is by each "
-             "contributor's own election, recorded through the confirmation "
-             "mechanism described in the data availability statement, and each "
-             "name and description below stands as that person entered it.\n\n"
-             "Of the sixteen detection panel members, %s have confirmed and %s "
-             "elected to be named:\n\n%s\n\n"
-             "Of the twenty-five reliability raters, %s have confirmed and %s "
-             "elected to be named:\n\n%s\n\n"
-             "Of the twenty independent experts in the comparison study, %s have "
+             "**Named contributors, as at 29 August 2026.** Recognition is by "
+             "each contributor's own election, recorded through the "
+             "confirmation mechanism described in the data availability "
+             "statement, and each name and description below stands as that "
+             "person entered it. %s contributors to this programme have "
              "confirmed and %s elected to be named:\n\n%s\n\n%s"
-             % (word(panel_conf), word(len(panel)), render(panel),
-                word(rely_conf), word(len(rely)), render(rely),
-                word(comp_conf), word(len(comp)), render(comp), tail))
+             % (word(confirmed_total).capitalize(), word(len(named)),
+                render(named), tail))
 
     # Re-entrant by construction. The credits sit between the consent anchor and
     # the methodology credit, so a re-run replaces that span rather than
@@ -173,13 +193,13 @@ def main():
                          % "; ".join(problems))
 
     print("%s" % ("DRY RUN, nothing written. Re-run with --apply." if dry else "APPLIED"))
-    print("  detection panel   %d confirmed, %d named" % (panel_conf, len(panel)))
-    print("  reliability       %d confirmed, %d named" % (rely_conf, len(rely)))
-    print("  unnamed here      %d, counted in every figure" % unnamed)
-    print("  comparison study  %d confirmed, %d named" % (comp_conf, len(comp)))
+    print("  credited          %d named, one list, no study named"
+          % len(named))
+    print("  confirmed total   %d across the three credited groups"
+          % confirmed_total)
+    print("  unnamed           %d, counted in every figure" % unnamed)
     print("  employment pilot  %d named in the credit list, NOT credited here"
           % len([c for c in cred if c.startswith("V-HR-")]))
-    print("  credited total    %d" % (len(panel) + len(rely) + len(comp)))
     print("  words %d -> %d" % (len(body.split()), len(out.split())))
     if not dry:
         io.open(PAPER, "w", encoding="utf-8").write(out)

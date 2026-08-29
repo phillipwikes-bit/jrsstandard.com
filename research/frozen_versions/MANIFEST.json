@@ -10,6 +10,16 @@
       "words": 12590,
       "lines": 623,
       "note": "State submitted to Audit 1 under research/AUDIT_PROMPT_MASTER.md. Ubayet's corrected identification and the 26 named contributors applied; no audit corrections yet."
+    },
+    {
+      "name": "v2-credits-ungrouped",
+      "file": "v2-credits-ungrouped__Detection_Article.md",
+      "frozen": "2026-08-29",
+      "sha256": "dcec78cdb0b3911cf015e556d970ae0c794365cf4514c5fad11657f01425b50e",
+      "bytes": 83110,
+      "words": 12552,
+      "lines": 615,
+      "note": "Contributor credits as one alphabetical list with all study-participation language removed, per Phillip's direction of 2026-08-29. No Audit 1 corrections applied yet."
     }
   ]
 }

@@ -578,44 +578,36 @@ Those three groups comprise 61 participations held by **58 distinct people**: th
 
 Reviewers are recognised as named contributors with their consent; none is a co-author of this paper. Contributors may withdraw their name at any time; one has, and her judgments remain in the analysis unnamed at her election.
 
-**Named contributors, as at 29 August 2026.** Recognition is by each contributor's own election, recorded through the confirmation mechanism described in the data availability statement, and each name and description below stands as that person entered it.
+**Named contributors, as at 29 August 2026.** Recognition is by each contributor's own election, recorded through the confirmation mechanism described in the data availability statement, and each name and description below stands as that person entered it. Thirty contributors to this programme have confirmed and twenty-six elected to be named:
 
-Of the sixteen detection panel members, thirteen have confirmed and eleven elected to be named:
-
-- Jake McDonough, AI governance, SAEONYX Global Holdings, LLC
-- Franciscus C Schouten, AI Governance and Assurance, The AI Non-Delegation Doctrine
-- Dr Nitin Deshpande, Chief Human Resources Officer, Cooper Corporation Pvt Limited
-- Saurabh Nanda, General Manager, APAC, Healthcare
-- Olabanji Lawal, Operations and Records management, ALTV
-- Andrey Ekhmenin, Founder, ANDEKS™; Independent Governance Assessment and Diagnostics
-- dr Gabriela Bar, attorney at law, AI ethics advisor, Gabriela Bar Law & AI
-- Hekim Colpan, AI Governance and Compliance Manager | Data Protection Manager | ISO/IEC 42001 Auditor
-- SungSoo In, Independent Researcher; Founder, Athena Governance Architecture
-- Nigel Hee, AI Ethics, Safety and Governance, University of Glasgow
-- Andres Lage Freire, Operational AI Governance Lead & Responsible AI Architect, Independent Consultant
-
-Of the twenty-five reliability raters, three have confirmed and three elected to be named:
-
-- Andrzej Skulski, Founder | AI Governance & Decision Systems, Dom Ciszy – Resonance Lab
-- Stacyann Young, Public records and FOIL practice, Independent Researcher
-- Rahul Potdar, Independent Director; Corporate Governance, Risk Management and ESG Strategy; Board Adviser; Leontra Technologies; IIM Raipur
-
-Of the twenty independent experts in the comparison study, fourteen have confirmed and twelve elected to be named:
-
-- Boris Khazin, AI Governance, Digital Risk and GRC leader; ClearView MRI; ex-EPAM Global Head of DRM/GRC, Khazin Consulting llc
-- Donavine Smith, Board & Executive Advisor | Frontier AI Strategy & Governance, Independent
-- Priyam Dhamankar, Ethics and Compliance Leader, Cummins India; 17+ years legal, compliance and investigations, Cummins India Limited
-- MacKenzie McCowan, AI Governance Specialist, PhD candidate, Lecturer, Atomi; The University of Sydney; Avondale University
-- Dr Sharon Licqurish, PhD, CEO, Chief Scientist and AI Governance Architect, AIIP, AIIP, Ontocore Licencing Authority LLC
-- Greg Searle, AI Governance and Model Behaviour Researcher, Anypoint Pty Ltd
 - Adesh Sharma, Data and AI Governance Leader | IAPP AIGP CIPT, Digital Frontier Partners
-- Muhammad Dauda, Programme leadership, sustainability and governance; UN SDSN Youth Nigeria; Miva Open University; PgMP, UN SDSN NIGERIA
-- Joseph Mungai, Ai Governance and public policy researcher, Independent Researcher -Kenya
+- Andres Lage Freire, Operational AI Governance Lead & Responsible AI Architect, Independent Consultant
+- Andrey Ekhmenin, Founder, ANDEKS™; Independent Governance Assessment and Diagnostics
+- Andrzej Skulski, Founder | AI Governance & Decision Systems, Dom Ciszy – Resonance Lab
+- Boris Khazin, AI Governance, Digital Risk and GRC leader; ClearView MRI; ex-EPAM Global Head of DRM/GRC, Khazin Consulting llc
 - Candid Opris, Founder and Managing Partner, Opris & Associates; two decades in AI and data governance and digital trust, Opris & Associates Inc.
+- Donavine Smith, Board & Executive Advisor | Frontier AI Strategy & Governance, Independent
+- dr Gabriela Bar, attorney at law, AI ethics advisor, Gabriela Bar Law & AI
+- Dr Nitin Deshpande, Chief Human Resources Officer, Cooper Corporation Pvt Limited
+- Dr Sharon Licqurish, PhD, CEO, Chief Scientist and AI Governance Architect, AIIP, AIIP, Ontocore Licencing Authority LLC
+- Franciscus C Schouten, AI Governance and Assurance, The AI Non-Delegation Doctrine
+- Greg Searle, AI Governance and Model Behaviour Researcher, Anypoint Pty Ltd
+- Hekim Colpan, AI Governance and Compliance Manager | Data Protection Manager | ISO/IEC 42001 Auditor
+- Jake McDonough, AI governance, SAEONYX Global Holdings, LLC
+- Joseph Mungai, Ai Governance and public policy researcher, Independent Researcher -Kenya
+- MacKenzie McCowan, AI Governance Specialist, PhD candidate, Lecturer, Atomi; The University of Sydney; Avondale University
+- Muhammad Dauda, Programme leadership, sustainability and governance; UN SDSN Youth Nigeria; Miva Open University; PgMP, UN SDSN NIGERIA
+- Nigel Hee, AI Ethics, Safety and Governance, University of Glasgow
+- Olabanji Lawal, Operations and Records management, ALTV
+- Priyam Dhamankar, Ethics and Compliance Leader, Cummins India; 17+ years legal, compliance and investigations, Cummins India Limited
+- Rahul Potdar, Independent Director; Corporate Governance, Risk Management and ESG Strategy; Board Adviser; Leontra Technologies; IIM Raipur
 - Sagarika Banerjee, AI Governance and Software QA Leader; ISO/IEC 42001, NIST AI RMF, On sabbatical till March 2027 for world travel
+- Saurabh Nanda, General Manager, APAC, Healthcare
+- Stacyann Young, Public records and FOIL practice, Independent Researcher
+- SungSoo In, Independent Researcher; Founder, Athena Governance Architecture
 - Wendy Ann Martel, Founder and Strategic Advisor, Data, Privacy & AI Governance, Evata Consulting
 
-Four further contributors across these three groups confirmed and elected not to be named. Their judgments are counted in every figure reported here and they appear nowhere by name. Confirmations remain open, so this is a record of the elections received to date rather than of who took part.
+Four further contributors confirmed and elected not to be named. Their judgments are counted in every figure reported here and they appear nowhere by name. Confirmations remain open, so this is a record of the elections received to date rather than of who took part.
 
 The reliability and validation methodology, including the pre-registered analysis plan, the choice of coefficient, and the acceptance floors applied in Section 6.5, was designed by Ubayet Hossain, FRM. Specifying those criteria before any data were examined is what allows the results in this paper to be read as tests rather than as descriptions, and it is why Section 6.5 can report a criterion as failed.
 
