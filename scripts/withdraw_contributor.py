@@ -48,6 +48,33 @@ WITHDRAWALS = [
     {
         "code": "V-AI-08",
         "date": "2026-08-16",
+        # BASIS. Corrected 2026-08-29 on the owner's statement: "She never
+        # withdrew consent. She was an expert reviewer."
+        #
+        # The record agrees with him and always did. Every line of the roster
+        # entry says the 2026-08-16 action was taken AT THE OWNER'S
+        # INSTRUCTION. Nothing anywhere says she asked for it. This register
+        # nevertheless called her a withdrawn contributor, the manuscript said
+        # a contributor had withdrawn "at her election", and on 2026-08-29 an
+        # anonymity election was written into ANON_CODES on her behalf. All
+        # three asserted an act she did not perform. Recording an election
+        # someone did not make is the same class of error as ignoring one they
+        # did, and it is worse here because it was attributed to her in print.
+        #
+        # The suppression stays, because the credit removal was instructed and
+        # has not been reversed by a further instruction; the 2026-08-19
+        # reinstatement was scoped to her link alone. What changes is the
+        # reason it is recorded under, and what may be said about her.
+        #
+        #   owner_instructed_credit_removal   the credit came off on the
+        #                                     owner's instruction. No election
+        #                                     by the contributor is implied or
+        #                                     may be asserted anywhere.
+        #   contributor_withdrew              the contributor asked. Only this
+        #                                     basis may be described as a
+        #                                     withdrawal, and only this basis
+        #                                     requires an ANON_CODES entry.
+        "basis": "owner_instructed_credit_removal",
         # THE BARE FIRST NAME IS DELIBERATELY NOT LISTED. It was added on
         # 2026-08-27 and reverted the same hour: the repository contains 62
         # mentions of GABRIELA BAR, a different person and an active

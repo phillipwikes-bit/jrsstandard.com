@@ -54,10 +54,14 @@ SPELLINGS = os.path.join(ROOT, "research",
                          "Contributor_Spellings_2026-08-29.md")
 UA = {"User-Agent": "Mozilla/5.0 (JRS credits)"}
 
+# The anchor is the consent paragraph the credits attach to. It was rewritten
+# on 2026-08-29: the previous version said a contributor had withdrawn "at her
+# election", which was false. The 2026-08-16 credit removal was made on the
+# owner's instruction and no contributor has withdrawn.
 ANCHOR = ("Reviewers are recognised as named contributors with their consent; none "
           "is a co-author of this paper. Contributors may withdraw their name at any "
-          "time; one has, and her judgments remain in the analysis unnamed at her "
-          "election.")
+          "time, and no contributor has done so. Reviewers who have not recorded an "
+          "election are counted in every figure and are not named.")
 
 
 WORDS = {0: "none", 1: "one", 2: "two", 3: "three", 4: "four", 5: "five",

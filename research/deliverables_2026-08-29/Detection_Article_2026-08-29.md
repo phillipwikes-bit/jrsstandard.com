@@ -215,7 +215,7 @@ All records are constructed and de-identified; none is internal, confidential, o
 
 **Ethics review status, stated plainly.** This study was not reviewed by an institutional review board. It was conducted outside any institution holding an IRB, by an independent researcher, with adult professional volunteers making judgments about wholly synthetic documents. No personal data beyond name, professional title, country, and contact address was collected from participants; no vulnerable population was involved. Participants were informed in advance that the reference classification and the corpus composition would not be disclosed during review, because disclosure would compromise the blinded detection task. The absence of formal review is a limitation and is declared rather than glossed. Independent ethical review would be sought for any successor study involving real records or real case outcomes.
 
-Reviewer responses are stored on an append-only basis and used only in aggregate. Attribution is opt-in: contributors are named only with consent, may participate anonymously, and may withdraw their name at any point. One panel member withdrew consent to be named after data close; her judgments remain in the analysis, unnamed, at her election, and the accuracy figures reported here include them.
+Reviewer responses are stored on an append-only basis and used only in aggregate. Attribution is opt-in: contributors are named only with consent, may participate anonymously, and may withdraw their name at any point. Panel members who have not recorded a naming election are counted in every figure and are not named, and the accuracy figures reported here include their judgments.
 
 ### 4.9 Supporting analyses
 
@@ -576,7 +576,7 @@ Every figure in this appendix is generated from the per-read analysis dataset us
 
 Those three groups comprise 61 participations held by **58 distinct people**: three of the reliability raters are the same individuals as three members of the detection panel, each holding a separate code in each study. All 58 worked unpaid, in a personal capacity, with nothing at stake in the outcome. Programme-level participation figures are recorded in the study repository rather than here, because they are acknowledgment and not results: the detection finding in Section 6 rests on the sixteen panel members and their 384 graded reads and on nothing else.
 
-Reviewers are recognised as named contributors with their consent; none is a co-author of this paper. Contributors may withdraw their name at any time; one has, and her judgments remain in the analysis unnamed at her election.
+Reviewers are recognised as named contributors with their consent; none is a co-author of this paper. Contributors may withdraw their name at any time, and no contributor has done so. Reviewers who have not recorded an election are counted in every figure and are not named.
 
 **Named contributors, as at 29 August 2026.** Recognition is by each contributor's own election, recorded through the confirmation mechanism described in the data availability statement, and each name and description below stands as that person entered it. Thirty contributors to this programme have confirmed and twenty-six elected to be named:
 

@@ -1435,11 +1435,19 @@ def check_withdrawn_contributor_is_not_defaulted_into_being_named(offline):
         sys.path.insert(0, os.path.join(ROOT, "scripts"))
         try:
             import withdraw_contributor as wc
-            withdrawn = [w["code"] for w in getattr(wc, "WITHDRAWALS", [])]
+            withdrawn = []
         except Exception as e:
             check("no withdrawn contributor is defaulted into being named",
                   False, "the withdrawal register did not import: %r" % (e,))
             return
+    # Only a contributor's OWN withdrawal is an election, and only an election
+    # belongs in ANON_CODES. A credit removal made on the owner's instruction
+    # records no choice by the contributor, so forcing an anonymity entry for
+    # it would assert an election they never made. Their accurate state is
+    # named_on_file: null, no election on file.
+    withdrawn = [w["code"] for w in getattr(wc, "WITHDRAWALS", [])
+                 if w.get("basis", "contributor_withdrew")
+                 == "contributor_withdrew"]
     missing = [c for c in withdrawn if c not in anon]
     check("no withdrawn contributor is defaulted into being named",
           not missing,

@@ -71,20 +71,18 @@ const FALLBACK_DATE = 'Saturday, 5 September 2026';
 // But leaving these two at null would have told two people who explicitly
 // chose anonymity that they had never made a choice, which is simply false.
 //
-// V-AI-08 ADDED 2026-08-29. She withdrew consent to be named on 2026-08-16 and
-// her link was reinstated on 2026-08-19 so she could make the election herself.
-// Her roster row still carries named_on_file: true, because that row is the
-// study record and is what makes her link resolve to her at all. She was not in
-// this list, so the fallback rule above, which is printed on her own page, told
-// her that silence on 5 September means the paper uses the name on file. For
-// her, silence must mean the opposite. An election to stay unnamed IS on file,
-// so false is the accurate value: the page now says so and offers to change it,
-// which is exactly what the reinstated link is for.
+// V-AI-08 WAS ADDED HERE ON 2026-08-29 AND REMOVED THE SAME DAY. The addition
+// recorded an anonymity election on file for her. She never made one. The
+// 2026-08-16 credit removal was made at the owner's instruction, and every
+// line of the roster entry says so; nothing in the record says she withdrew.
+// Recording an election she did not make is the same class of error as
+// ignoring one she did.
 //
-// The credit pipeline would not have printed her either way, because it credits
-// only codes on the confirmed list and she is not on it. That is not a defence.
-// The page was making a promise to her that contradicted her withdrawal.
-const ANON_CODES = ['RR-130', 'RR-132', 'V-AI-08'];
+// Her accurate state is no election on file, which is named_on_file: null on
+// her roster row. The page then tells her that silence means the aggregate
+// without a name, which is true, commits her to nothing, and leaves the
+// choice hers until she uses her link.
+const ANON_CODES = ['RR-130', 'RR-132'];
 
 const FILES = {
   employment:    'JRS_Investigator_Field_Guide_Employment.pdf',

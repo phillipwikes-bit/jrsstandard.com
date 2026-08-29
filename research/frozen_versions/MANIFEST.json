@@ -40,6 +40,16 @@
       "words": 12571,
       "lines": 615,
       "note": "Section 8.9 replaced with Phillip's exact wording of 2026-08-29, which names the recruitment basis and attributes the limit to self-selection rather than to reviewer calibre."
+    },
+    {
+      "name": "v5-no-false-withdrawal",
+      "file": "v5-no-false-withdrawal__Detection_Article.md",
+      "frozen": "2026-08-29",
+      "sha256": "7d21dad2870306fa8171428227fb090f94a129a592b25bf80ee54233516c3d4b",
+      "bytes": 83329,
+      "words": 12578,
+      "lines": 615,
+      "note": "Removed the claim that a contributor withdrew at her election. The 2026-08-16 credit removal was made on the owner's instruction; no contributor has withdrawn."
     }
   ]
 }
