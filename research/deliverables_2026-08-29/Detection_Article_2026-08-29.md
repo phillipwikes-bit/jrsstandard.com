@@ -327,7 +327,7 @@ Three things in the result deserve emphasis over the headline figure.
 
 **8.8 Reviewer heterogeneity is described but not explained.** See Section 6.3.
 
-**8.9 The panel is credentialed and self-selected.** These results establish detectability by people who review records for a living and who volunteered to do so. Performance by less experienced reviewers, or by reviewers working outside their domain, is unknown.
+**8.9 The panel is credentialed and self-selected.** The panel was composed of credentialed practitioners and researchers recruited for expertise in AI governance, compliance, audit, human resources, investigations, data privacy, records, or law. Because participants self-selected into the study and the sample was not probability-based, performance among less experienced reviewers or reviewers outside these professional domains remains unknown.
 
 **8.10 No criterion validity, and no efficacy.** Nothing here connects detection to improved documentation or to fewer governance failures, and nothing here compares the method to unaided judgment. The full chain from detection to prevention is stated in Section 10 and only its first link is tested.
 

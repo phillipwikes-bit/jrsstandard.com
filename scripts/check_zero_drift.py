@@ -1106,7 +1106,7 @@ def check_owner_only_research_files_say_so(offline):
           % (len(problems), "; ".join(problems[:3])))
 
 
-def check_arm_b_is_described_as_an_expert_population(offline):
+def check_every_credited_participant_is_an_expert(offline):
     """Every Arm B participant is a credentialed expert, and the manuscript
     must keep saying so.
 
@@ -1130,6 +1130,15 @@ def check_arm_b_is_described_as_an_expert_population(offline):
     """
     problems = []
     paper = "research/Detection_Article_Submission_FINAL5_2026-08-18.md"
+    # EVERY participant in every credited group is an expert. The guard used
+    # to cover Arm B alone, which left the detection panel's own status
+    # asserted only in prose that nothing checked. Section 8.9 was rewritten on
+    # 2026-08-29 because its earlier phrasing, "detectability by people who
+    # review records for a living" followed by "performance by less experienced
+    # reviewers ... is unknown", could be read as conceding that the sixteen
+    # were something less than the credentialed panel Section 4.5 describes.
+    # They are not, Section 4.5 and Section 6.3 both say so, and the retired
+    # sentence must not come back.
     anchors = [
         ("expertise parity in the design",
          "differ in the method applied and not in the expertise of the people "
@@ -1138,12 +1147,34 @@ def check_arm_b_is_described_as_an_expert_population(offline):
          "a statement about exposure and not about expertise"),
         ("same professional standing",
          "of the same professional standing as the detection panel"),
+        ("the detection panel is credentialed, Section 4.5",
+         "Every panel member is a credentialed practitioner or researcher in "
+         "one of those fields and was recruited on that basis"),
+        ("the detection panel is credentialed, Section 6.3",
+         "These are real observations from credentialed professionals"),
+        ("Section 8.9 names the recruitment basis",
+         "credentialed practitioners and researchers recruited for expertise "
+         "in AI governance"),
+        ("Section 8.9 attributes the limit to self-selection",
+         "the sample was not probability-based"),
+    ]
+    retired = [
+        ("the pre-2026-08-29 Section 8.9 phrasing",
+         "detectability by people who review records for a living"),
+        ("the pre-2026-08-29 Section 8.9 phrasing",
+         "Performance by less experienced reviewers, or by reviewers working "
+         "outside their domain, is unknown"),
     ]
     if os.path.exists(os.path.join(ROOT, paper)):
         body = read(paper)
         for label, sentence in anchors:
             if sentence not in body:
                 problems.append("the manuscript no longer states %s (%r)"
+                                % (label, sentence[:48]))
+        for label, sentence in retired:
+            if sentence in body:
+                problems.append("%s has returned (%r); it reads as conceding "
+                                "that the sixteen were less than credentialed"
                                 % (label, sentence[:48]))
         # The credits name no study at all since 2026-08-29, so there is no
         # group label there to demote. If one ever returns, it must carry the
@@ -1210,10 +1241,11 @@ def check_arm_b_is_described_as_an_expert_population(offline):
                                 "characters away, nearer than any reliability "
                                 "code" % (rel, i, b, near_rr))
                             break
-    check("Arm B is described as an expert population",
+    check("every credited participant is described as an expert",
           not problems,
-          "3 manuscript anchors intact, %d files scanned, no Arm B code "
-          "described as non-expert" % scanned
+          "%d manuscript anchors intact, 2 retired phrasings absent, %d "
+          "files scanned, no Arm B code described as non-expert"
+          % (len(anchors), scanned)
           if not problems else "%d problem(s): %s"
           % (len(problems), "; ".join(problems[:3])))
 
@@ -4244,7 +4276,7 @@ def main():
                check_frozen_manuscript_versions_are_immutable,
                check_audit_prompt_is_present_and_whole,
                check_owner_only_research_files_say_so,
-               check_arm_b_is_described_as_an_expert_population,
+               check_every_credited_participant_is_an_expert,
                check_ubayet_is_described_as_he_asked,
                check_private_paths_stay_unreachable,
                check_markdown_pdfs_are_converted,

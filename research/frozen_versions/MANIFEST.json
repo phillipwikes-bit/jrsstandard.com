@@ -30,6 +30,16 @@
       "words": 12553,
       "lines": 615,
       "note": "Contributor display strings bound to Phillip's supplied spelling authority of 2026-08-29. Four corrections applied. Credits remain one alphabetical list with no study named."
+    },
+    {
+      "name": "v4-panel-expertise",
+      "file": "v4-panel-expertise__Detection_Article.md",
+      "frozen": "2026-08-29",
+      "sha256": "c7c6b03311f037c765e634f3af23fffaa5fee9d51cf3196f3edd9837eafd89fc",
+      "bytes": 83297,
+      "words": 12571,
+      "lines": 615,
+      "note": "Section 8.9 replaced with Phillip's exact wording of 2026-08-29, which names the recruitment basis and attributes the limit to self-selection rather than to reviewer calibre."
     }
   ]
 }
