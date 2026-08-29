@@ -121,8 +121,8 @@ const ROSTER = {
     participant: 'M-01',
     first: 'Ubayet',
     name: 'Ubayet Hossain, FRM',
-    title: 'Associate Director, Model Validation',
-    org: 'KPMG India',
+    title: 'Independent Financial Risk & Model Validation Professional',
+    org: '',
     order: 'named for the methodology rather than for a completed review',
     citation: 'In recognition of designing the validation methodology on which '
             + 'this programme rests: the reference-panel design, the '

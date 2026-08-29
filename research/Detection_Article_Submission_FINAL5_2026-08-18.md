@@ -1,6 +1,6 @@
 # Detectability of Decision Reconstruction Risk in AI-Generated Decision Records: An International Expert Study
 
-**Authors.** Phillip Wikes (Creator of the Justification Review Standard; former Lead Civil Rights Officer, Maryland Commission on Civil Rights) and Ubayet Hossain, FRM (Associate Director, Model Validation, KPMG India).
+**Authors.** Phillip Wikes (Creator of the Justification Review Standard; former Lead Civil Rights Officer, Maryland Commission on Civil Rights) and Ubayet Hossain, FRM (Independent Financial Risk & Model Validation Professional).
 
 **Author contributions.** P.W. conceived Decision Reconstruction Risk and the JRS review method, constructed the validation corpus, wrote the author-side intended classification of each record, assembled the international reviewer panel, and led the writing. U.H. designed the reliability and validation framework: the reference-panel design, the chance-corrected agreement statistics, and the pre-registered decision floors and analysis plan. Neither author took part in the blind reproduction of the reference classification, and neither author graded any record in the detection panel.
 
