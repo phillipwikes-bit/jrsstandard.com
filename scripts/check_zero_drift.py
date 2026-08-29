@@ -1059,6 +1059,96 @@ def check_owner_only_research_files_say_so(offline):
           % (len(problems), "; ".join(problems[:3])))
 
 
+def check_arm_b_is_described_as_an_expert_population(offline):
+    """Every Arm B participant is a credentialed expert, and the manuscript
+    must keep saying so.
+
+    Standing instruction from Phillip, 2026-08-29. The hazard is specific and
+    it has already caught this repository once: RR- reads like an abbreviation
+    of "regular reviewer", which is the RELIABILITY study's term for its R-
+    coded raters, a group with no identity verification. Attaching that term
+    to an Arm B participant would misdescribe a credentialed expert and would
+    also misstate the comparison, whose whole point is that the two conditions
+    differ in method and not in caliber.
+
+    Two things are enforced. The manuscript must keep the three sentences that
+    establish expert parity, because a revision that drops them lets a reader
+    infer a weaker population. And no file anywhere may put an RR- code on the
+    same line as non-expert vocabulary.
+
+    Evidence for the underlying fact, recorded in
+    research/PARTICIPANT_NOMENCLATURE.md: the protocol at line 46, the
+    2026-08-18 readiness audit which marks the point VERIFIED, and the two
+    anonymous Arm B entries who self-describe as expert professionals.
+    """
+    problems = []
+    paper = "research/Detection_Article_Submission_FINAL5_2026-08-18.md"
+    anchors = [
+        ("expertise parity in the design",
+         "differ in the method applied and not in the expertise of the people "
+         "applying it"),
+        ("JRS-naive is about exposure",
+         "a statement about exposure and not about expertise"),
+        ("same professional standing",
+         "of the same professional standing as the detection panel"),
+    ]
+    if os.path.exists(os.path.join(ROOT, paper)):
+        body = read(paper)
+        for label, sentence in anchors:
+            if sentence not in body:
+                problems.append("the manuscript no longer states %s (%r)"
+                                % (label, sentence[:48]))
+        # The credits must not demote the comparison study either.
+        if "**Named contributors, as at" in body:
+            blk = body.split("**Named contributors, as at", 1)[1]
+            if ("comparison study" in blk
+                    and "independent experts in the comparison study" not in blk):
+                problems.append("the credit block names the comparison study "
+                                "without calling its members independent "
+                                "experts")
+
+    # No file may attach non-expert vocabulary to an Arm B code.
+    banned = ("regular reviewer", "non-expert", "unverified", "self-enrolled",
+              "lay reviewer", "untrained reviewer")
+    scanned = 0
+    for sub in ("research", "scripts", "api"):
+        base = os.path.join(ROOT, sub)
+        if not os.path.isdir(base):
+            continue
+        for name in sorted(os.listdir(base)):
+            if not name.endswith((".md", ".py", ".js")):
+                continue
+            if name == "PARTICIPANT_NOMENCLATURE.md":
+                continue  # the file that documents the trap names it
+            rel = "%s/%s" % (sub, name)
+            scanned += 1
+            for i, line in enumerate(read(rel).split("\n"), 1):
+                codes = [m.start() for m in re.finditer(r"\bRR-\d", line)]
+                if not codes:
+                    continue
+                low = line.lower()
+                # Proximity, not co-occurrence. A tracker paragraph runs to
+                # thousands of characters and legitimately discusses the
+                # reliability study's regular reviewers and an Arm B code
+                # hundreds of characters apart. What is actually wrong is the
+                # phrase attached to the code, as in "RR-113, a regular
+                # reviewer", so the window is a clause rather than a line.
+                for b in banned:
+                    for m in re.finditer(re.escape(b), low):
+                        near = min(abs(m.start() - c) for c in codes)
+                        if near <= 120:
+                            problems.append(
+                                "%s:%d attaches %r to an Arm B code %d "
+                                "characters away" % (rel, i, b, near))
+                            break
+    check("Arm B is described as an expert population",
+          not problems,
+          "3 manuscript anchors intact, %d files scanned, no Arm B code "
+          "described as non-expert" % scanned
+          if not problems else "%d problem(s): %s"
+          % (len(problems), "; ".join(problems[:3])))
+
+
 def check_send_copy_is_clean(offline):
     """The correspondence that goes out must carry no editorial material and no
     signature the stated arrangement does not authorise.
@@ -3944,6 +4034,7 @@ def main():
                check_frozen_manuscript_versions_are_immutable,
                check_audit_prompt_is_present_and_whole,
                check_owner_only_research_files_say_so,
+               check_arm_b_is_described_as_an_expert_population,
                check_markdown_pdfs_are_converted,
                check_all_experts_credited, check_rung2a_lock,
                check_contributor_carries_no_findings,
