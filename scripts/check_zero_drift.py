@@ -1302,6 +1302,63 @@ def check_ubayet_is_described_as_he_asked(offline):
           % (len(problems), "; ".join(problems[:3])))
 
 
+def check_private_paths_stay_unreachable(offline):
+    """Four redirect rules are the only thing keeping the research directory
+    off the public web. Nothing asserted they were still there.
+
+    Found while answering a question about anonymity elections. The four
+    contributors who elected not to be named appear by name in dozens of
+    research/ files, which is correct for study administration and harmless
+    because research/ is not served. It is not served because vercel.json
+    redirects it to 404.html. Remove that one line and the participant
+    inventory, which shows the arm split and is marked DO NOT FORWARD, is
+    fetchable by anyone who guesses the path.
+
+    The same four rules cover every .md and .docx in the repository, which is
+    what keeps CLAUDE.md's private owner slugs off the web. Those slugs are the
+    entire access control on the owner surfaces, because the standing decision
+    is that they carry no token.
+
+    A redirect is a deployment property, so this checks the config that
+    produces it. The live behaviour was confirmed by request on 2026-08-29:
+    each of the four returned 307 to 404.html.
+    """
+    cfg = "vercel.json"
+    if not os.path.exists(os.path.join(ROOT, cfg)):
+        check("private paths stay unreachable", False,
+              "vercel.json is missing; nothing routes the site")
+        return
+    try:
+        conf = json.loads(read(cfg))
+    except ValueError as e:
+        check("private paths stay unreachable", False,
+              "vercel.json does not parse: %r" % (e,))
+        return
+    required = {
+        "/:path*.md": "every markdown file, including CLAUDE.md and its "
+                      "private owner slugs",
+        "/:path*.docx": "every built manuscript and report",
+        "/research/:path*": "the whole research directory, including the "
+                            "participant inventory and the correspondence",
+        "/scripts/:path*": "the whole scripts directory",
+    }
+    have = {r.get("source"): r.get("destination")
+            for r in conf.get("redirects", [])}
+    problems = []
+    for src, what in sorted(required.items()):
+        if src not in have:
+            problems.append("%s is no longer redirected, exposing %s"
+                            % (src, what))
+        elif have[src] != "/404.html":
+            problems.append("%s now redirects to %r rather than /404.html"
+                            % (src, have[src]))
+    check("private paths stay unreachable",
+          not problems,
+          "%d redirect rules present, all to /404.html" % len(required)
+          if not problems else "%d problem(s): %s"
+          % (len(problems), "; ".join(problems[:2])))
+
+
 def check_send_copy_is_clean(offline):
     """The correspondence that goes out must carry no editorial material and no
     signature the stated arrangement does not authorise.
@@ -4189,6 +4246,7 @@ def main():
                check_owner_only_research_files_say_so,
                check_arm_b_is_described_as_an_expert_population,
                check_ubayet_is_described_as_he_asked,
+               check_private_paths_stay_unreachable,
                check_markdown_pdfs_are_converted,
                check_all_experts_credited, check_rung2a_lock,
                check_contributor_carries_no_findings,
