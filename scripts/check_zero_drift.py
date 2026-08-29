@@ -1118,8 +1118,16 @@ def check_arm_b_is_described_as_an_expert_population(offline):
         for name in sorted(os.listdir(base)):
             if not name.endswith((".md", ".py", ".js")):
                 continue
-            if name == "PARTICIPANT_NOMENCLATURE.md":
-                continue  # the file that documents the trap names it
+            # Two files are out of scope, for the same reason. The
+            # nomenclature file exists to name the trap, and the tracker is an
+            # append-only log that records errors verbatim in order to prevent
+            # them, including a note about this very check firing on a note
+            # about this very check. Scanning a log for error-shaped strings is
+            # a category mistake: neither file describes a participant to a
+            # reader, and any real error would also sit in the artefact the log
+            # is describing, which is scanned.
+            if name in ("PARTICIPANT_NOMENCLATURE.md", "MASTER_TRACKER.md"):
+                continue
             rel = "%s/%s" % (sub, name)
             scanned += 1
             for i, line in enumerate(read(rel).split("\n"), 1):
@@ -1133,18 +1141,112 @@ def check_arm_b_is_described_as_an_expert_population(offline):
                 # hundreds of characters apart. What is actually wrong is the
                 # phrase attached to the code, as in "RR-113, a regular
                 # reviewer", so the window is a clause rather than a line.
+                # Which code the phrase belongs to is decided by which code
+                # is nearest, not by whether an Arm B code appears somewhere
+                # on the line. The code map itself reads "R-<hash> reliability
+                # regular reviewers, RR-### Arm B", where the phrase sits
+                # closer to the R- code it correctly describes. Firing there
+                # would flag the one sentence that prevents the error.
+                r_codes = [m.start() for m in re.finditer(r"\bR-", line)]
                 for b in banned:
                     for m in re.finditer(re.escape(b), low):
-                        near = min(abs(m.start() - c) for c in codes)
-                        if near <= 120:
+                        near_rr = min(abs(m.start() - c) for c in codes)
+                        near_r = (min(abs(m.start() - c) for c in r_codes)
+                                  if r_codes else near_rr + 1)
+                        if near_rr <= 120 and near_rr < near_r:
                             problems.append(
                                 "%s:%d attaches %r to an Arm B code %d "
-                                "characters away" % (rel, i, b, near))
+                                "characters away, nearer than any reliability "
+                                "code" % (rel, i, b, near_rr))
                             break
     check("Arm B is described as an expert population",
           not problems,
           "3 manuscript anchors intact, %d files scanned, no Arm B code "
           "described as non-expert" % scanned
+          if not problems else "%d problem(s): %s"
+          % (len(problems), "; ".join(problems[:3])))
+
+
+def check_ubayet_is_described_as_he_asked(offline):
+    """The co-author's former employer must not appear anywhere, and his role
+    must not be understated.
+
+    He instructed on 2026-08-28 that his affiliation come off. That fix, commit
+    39b5316, changed api/_coauthor-roster.js, api/_contributor-roster.js and
+    api/honor.js and stopped there. It missed acquisition-9f3c2a7d4b.html,
+    which is live on main and was still naming the employer beside his name in
+    a buyer-facing paragraph. Nothing in this file would have caught it,
+    because no check for his affiliation existed at all.
+
+    Using a person's employer to lend weight to a commercial page is exactly
+    what he asked to have removed, so the check is a flat prohibition on the
+    name rather than a judgment about context.
+
+    The second half guards the description of his role. The honor citation at
+    api/honor.js calls him the author of the methodology and a co-author of the
+    paper that reports it, and the manuscript byline says the same. A live page
+    calling him an adviser contradicts both, and that is what the page said.
+    """
+    problems = []
+    # The employer name, nowhere, in anything that ships.
+    for sub in (".", "api"):
+        base = ROOT if sub == "." else os.path.join(ROOT, sub)
+        if not os.path.isdir(base):
+            continue
+        for name in sorted(os.listdir(base)):
+            if not name.endswith((".html", ".js")):
+                continue
+            rel = name if sub == "." else "%s/%s" % (sub, name)
+            body = read(rel)
+            if "KPMG" in body:
+                for i, line in enumerate(body.split("\n"), 1):
+                    if "KPMG" in line:
+                        problems.append("%s:%d names the co-author's former "
+                                        "employer on a deployed surface"
+                                        % (rel, i))
+                        break
+
+    # Where he is named on a shipping surface, the description must match the
+    # honor citation and the manuscript byline.
+    understated = ("advised by", "adviser", "advisor", "consultant to",
+                   "reviewed by")
+    canonical = "Independent Financial Risk & Model Validation Professional"
+    seen = 0
+    for sub in (".", "api"):
+        base = ROOT if sub == "." else os.path.join(ROOT, sub)
+        if not os.path.isdir(base):
+            continue
+        for name in sorted(os.listdir(base)):
+            if not name.endswith((".html", ".js")):
+                continue
+            rel = name if sub == "." else "%s/%s" % (sub, name)
+            for i, line in enumerate(read(rel).split("\n"), 1):
+                if "Ubayet" not in line:
+                    continue
+                seen += 1
+                low = line.lower()
+                for u in understated:
+                    j = low.find(u)
+                    if j < 0:
+                        continue
+                    k = low.find("ubayet")
+                    if abs(j - k) <= 140:
+                        problems.append("%s:%d describes him as %r, which "
+                                        "contradicts the honor citation and "
+                                        "the byline" % (rel, i, u))
+                        break
+    # The canonical title must still be the one the roster and honor record
+    # carry, so a rename cannot drift the two apart silently.
+    for rel in ("api/honor.js", "api/_coauthor-roster.js",
+                "api/_contributor-roster.js"):
+        if os.path.exists(os.path.join(ROOT, rel)):
+            if canonical not in read(rel):
+                problems.append("%s no longer carries his canonical title"
+                                % rel)
+    check("the co-author is described as he asked",
+          not problems,
+          "no former-employer name on any deployed surface, %d line(s) name "
+          "him, all consistent with the honor citation" % seen
           if not problems else "%d problem(s): %s"
           % (len(problems), "; ".join(problems[:3])))
 
@@ -4035,6 +4137,7 @@ def main():
                check_audit_prompt_is_present_and_whole,
                check_owner_only_research_files_say_so,
                check_arm_b_is_described_as_an_expert_population,
+               check_ubayet_is_described_as_he_asked,
                check_markdown_pdfs_are_converted,
                check_all_experts_credited, check_rung2a_lock,
                check_contributor_carries_no_findings,
