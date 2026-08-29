@@ -1,6 +1,6 @@
 # JRS Master Tracker, recent activity
 
-**Extract only. The permanent record is `research/MASTER_TRACKER.md`,** 1,721,039 bytes, 671 entries, committed to the development branch and never deployed to `main` by design.
+**Extract only. The permanent record is `research/MASTER_TRACKER.md`,** 1,723,919 bytes, 672 entries, committed to the development branch and never deployed to `main` by design.
 
 Covering the 3 most recent dates: 2026-08-27, 2026-08-28, 2026-08-29. Long lines are rewrapped here for reading; the source is not modified.
 
@@ -1373,5 +1373,40 @@ first.** **MESSAGE REWRITTEN, 355 words.** The honor link is out entirely: **no 
 so he can read it without opening anything, and it states the certificate carries his name and
 no employer. It now also tells him the Business Ethics paper was corrected, which he did not ask
 about and would otherwise have found himself.
+
+---
+
+## 2026-08-29 — **CERTIFICATE REBUILT: HE IS THE AUTHOR OF THE METHODOLOGY, NOT ITS CO-AUTHOR. MESSAGE REWRITTEN IN A PLAINER VOICE.**
+
+The owner asked whether the certificate should call him the author of the methodology, or
+whether that was too much. **It was not too much. The certificate was understating him, and it
+contradicted the paper.** **FOUR SOURCES, AND THE STRONGEST ONE IS THE MANUSCRIPT ABOUT TO BE
+SUBMITTED.** `Detection_Article_Submission_FINAL5:581` reads *"The reliability and validation
+methodology ... **was designed by** Ubayet Hossain, FRM"*, which is sole design attribution.
+`DRR_Detection_Validation_Protocol:116` and `MASTER_TRACKER:98` say *contributions* and
+*contributed*. **The certificate said the weakest of the four**: *"He is named as a co-author of
+the methodology on that basis."* A reader who checked the paper would find it claiming more for
+him than his own certificate did. **THE WORD *CO-AUTHOR* WAS ALSO DOING DOUBLE DUTY.** He
+genuinely is a co-author of the paper, which is a separate fact, so the old line risked reading
+as though his methodology role were shared. The citation now closes both: ***"He is the author
+of that methodology and a co-author of the paper that reports it."*** **CHANGED IN
+`api/honor.js`, NOT ONLY ON THE CERTIFICATE**, so the honor page and the certificate cannot
+diverge. The builder reads the citation at run time, so one edit moved both. Rebuilt and
+**verified by decoding the PDF stream again**: the new sentence is present, *"co-author of the
+methodology"* is gone, and the certificate still carries no employer and no job title. **THE
+PROVENANCE OF THE CITATION WAS SURFACED RATHER THAN LEFT BURIED.** `MASTER_TRACKER:1794` records
+that **I wrote it on 2026-08-19**, grounded in two repository sources and explicitly *"not
+invented"*, but they are **my sentences, not his**. **Stacyann Young's citation is verbatim her
+own** per `MASTER_TRACKER:1053`, with two of her word choices deliberately left unsmoothed. The
+two certificates were therefore not equivalent in provenance, and the message now says so to him
+directly: *"I wrote that wording rather than asking you for it, so if any of it lands wrong,
+tell me and I will reissue it however you would put it."* **That gives him the same courtesy
+Stacy had, without pretending it was already given.** **MESSAGE REWRITTEN, 398 words, plainer
+and warmer.** It opens with something true rather than formal: *"yours was the read I was most
+nervous about, because you built the thing I was reporting on."* It credits him for the reason
+the limitations section is honest, tells him the Business Ethics paper carried the old
+affiliation and that **he had not seen it**, and gives the tagging commitment in one line.
+**Fingerprint audit: 0 of 21 lexical tells, coefficient of variation 0.54, inside the human
+band.** No link, no key, no URL anywhere in it.
 
 ---
