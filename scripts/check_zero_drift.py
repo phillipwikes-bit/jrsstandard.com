@@ -903,6 +903,162 @@ def check_named_contributors_are_only_the_ones_who_elected_it(offline):
           % (len(problems), "; ".join(problems[:3])))
 
 
+def check_frozen_manuscript_versions_are_immutable(offline):
+    """A frozen manuscript version must never change after it is frozen.
+
+    Phillip's procedural rule of 2026-08-29, attached to the master audit
+    prompt: never overwrite the master manuscript during an audit, and keep the
+    original, the surgical revision, the post-audit revision and the submission
+    version as separate frozen versions, so there is a defensible version
+    history if questions arise later.
+
+    Git history alone does not satisfy that. History is rewritable by a force
+    push and is not the artefact a journal or an institution asks to see. A
+    frozen version is a file plus a recorded SHA-256, and this check is what
+    makes the record defensible: if any frozen file moves by one byte, the
+    build fails and names the version that moved.
+    """
+    import hashlib as _h
+    store = os.path.join(ROOT, "research", "frozen_versions")
+    manifest = os.path.join(store, "MANIFEST.json")
+    if not os.path.exists(manifest):
+        skip("frozen manuscript versions are immutable", "nothing frozen yet")
+        return
+    man = json.loads(read("research/frozen_versions/MANIFEST.json"))
+    problems = []
+    for v in man.get("versions", []):
+        path = os.path.join(store, v["file"])
+        if not os.path.exists(path):
+            problems.append("%s: the frozen file is gone (%s)"
+                            % (v["name"], v["file"]))
+            continue
+        h = _h.sha256()
+        with open(path, "rb") as fh:
+            for chunk in iter(lambda: fh.read(65536), b""):
+                h.update(chunk)
+        if h.hexdigest() != v["sha256"]:
+            problems.append("%s: content changed since it was frozen on %s. "
+                            "manifest %s, file now %s"
+                            % (v["name"], v["frozen"], v["sha256"][:16],
+                               h.hexdigest()[:16]))
+    # A version name must appear once. Two entries under one name would make
+    # "which file is v1" unanswerable, which is the whole thing this prevents.
+    names = [v["name"] for v in man.get("versions", [])]
+    dupes = sorted({n for n in names if names.count(n) > 1})
+    if dupes:
+        problems.append("duplicate version name(s): %s" % ", ".join(dupes))
+    check("frozen manuscript versions are immutable",
+          not problems,
+          "%d frozen version(s), every hash matches the manifest" % len(names)
+          if not problems else "%d problem(s): %s"
+          % (len(problems), "; ".join(problems[:3])))
+
+
+def check_audit_prompt_is_present_and_whole(offline):
+    """The master audit prompt must stay in the repository, intact.
+
+    It is the contract the manuscript is audited against at every revision. A
+    summarised or truncated copy silently weakens every future audit, and the
+    weakening would not be visible in a diff review of the manuscript itself.
+    Anchored on the section headings the prompt defines rather than on a byte
+    count, so ordinary formatting fixes are allowed and a missing section is
+    not.
+    """
+    path = "research/AUDIT_PROMPT_MASTER.md"
+    if not os.path.exists(os.path.join(ROOT, path)):
+        check("the master audit prompt is present and whole", False,
+              "%s is missing. It is the contract every manuscript audit runs "
+              "against." % path)
+        return
+    body = read(path)
+    required = [
+        "1. CORE EDITORIAL MANDATE",
+        "2. PRESERVE THE CENTRAL CONCEPTUAL ARCHITECTURE",
+        "3. PRIMARY RESEARCH CLAIM",
+        "4. CLAIM AUDIT",
+        "5. STATISTICAL AUDIT",
+        "6. REFERENCE CLASSIFICATION AUDIT",
+        "7. CORPUS AUDIT",
+        "8. PROVENANCE AUDIT",
+        "9. REVIEWER HETEROGENEITY AUDIT",
+        "10. RELIABILITY AUDIT",
+        "11. APPENDIX C AUDIT",
+        "12. JRS AUDIT",
+        "13. AI ETHICS RELEVANCE AUDIT",
+        "14. ADJACENT-CONSTRUCT AUDIT",
+        "15. INTERNATIONAL PANEL AUDIT",
+        "16. ETHICS AND RESEARCH-INTEGRITY AUDIT",
+        "17. CONFLICT-OF-INTEREST AUDIT",
+        "18. INTERNAL-CONSISTENCY AUDIT",
+        "19. LANGUAGE AUDIT",
+        "20. SURGICAL EDITING RULE",
+        "21. PUBLICATION-READINESS AUDIT",
+        "22. SUBMISSION-PACKAGE AUDIT",
+        "23. PEER-REVIEW DEFENSE AUDIT",
+        "24. AUTHOR DEFENSE PREPARATION",
+        '25. "DO NOT SAY" AUDIT',
+        "26. RESEARCH-ARCHIVE PREPAREDNESS",
+        "27. FINAL OUTPUT FORMAT",
+        "28. ABSOLUTE RULES",
+        "29. STANDARD OF SUCCESS",
+    ]
+    missing = [h for h in required if h not in body]
+    # The twenty absolute rules are the part most likely to be trimmed.
+    rules = len(re.findall(r"^\d{1,2}\. Never |^\d{1,2}\. Prefer |"
+                           r"^\d{1,2}\. Preserve |^\d{1,2}\. Treat |"
+                           r"^\d{1,2}\. Distinguish |^\d{1,2}\. Use |"
+                           r"^\d{1,2}\. The objective ", body, re.M))
+    if rules != 20:
+        missing.append("the absolute-rules block has %d rules, not 20" % rules)
+    check("the master audit prompt is present and whole",
+          not missing,
+          "all 29 sections and 20 absolute rules present"
+          if not missing else "missing: %s" % "; ".join(missing[:4]))
+
+
+def check_owner_only_research_files_say_so(offline):
+    """A file that carries the internal arm vocabulary must be marked.
+
+    The B1/B2 split is the blind. Two files in research/ name the internal
+    nomenclature: the participant inventory, which shows the split itself, and
+    the audit report, which names the tokens in order to certify that none of
+    them reaches the manuscript. Neither is harmful on its own and both are
+    useful, but a file that can be forwarded without the reader knowing it
+    should not be is one accidental attachment away from a problem. The banner
+    is what makes the restriction travel with the file.
+    """
+    marked = "OWNER COPY. DO NOT FORWARD."
+    tokens = ("Arm B", "B1 / B2", "B1/B2")
+    problems = []
+    base = os.path.join(ROOT, "research")
+    if not os.path.isdir(base):
+        skip("owner-only research files say so", "research/ not present")
+        return
+    checked = 0
+    for name in sorted(os.listdir(base)):
+        if not name.endswith(".md"):
+            continue
+        rel = "research/%s" % name
+        body = read(rel)
+        if not any(t in body for t in tokens):
+            continue
+        checked += 1
+        # A file whose only mention is inside guardrail instructions to the
+        # author is a working note, not a distributable artefact. The two that
+        # matter are the ones built to be read as documents.
+        if name in ("PARTICIPANT_INVENTORY_BY_RUNG.md",
+                    "AUDIT_1_2026-08-29.md"):
+            if marked not in body:
+                problems.append("%s names the arm vocabulary and carries no "
+                                "owner-copy banner" % rel)
+    check("owner-only research files say so",
+          not problems,
+          "%d research file(s) name the arm vocabulary; both distributable "
+          "ones carry the banner" % checked
+          if not problems else "%d problem(s): %s"
+          % (len(problems), "; ".join(problems[:3])))
+
+
 def check_send_copy_is_clean(offline):
     """The correspondence that goes out must carry no editorial material and no
     signature the stated arrangement does not authorise.
@@ -3785,6 +3941,9 @@ def main():
                check_coding_frames_match_the_manuscript,
                check_second_read_reported_honestly,
                check_named_contributors_are_only_the_ones_who_elected_it,
+               check_frozen_manuscript_versions_are_immutable,
+               check_audit_prompt_is_present_and_whole,
+               check_owner_only_research_files_say_so,
                check_markdown_pdfs_are_converted,
                check_all_experts_credited, check_rung2a_lock,
                check_contributor_carries_no_findings,

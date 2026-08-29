@@ -1,0 +1,15 @@
+{
+  "source": "research/Detection_Article_Submission_FINAL5_2026-08-18.md",
+  "versions": [
+    {
+      "name": "v1-preaudit",
+      "file": "v1-preaudit__Detection_Article.md",
+      "frozen": "2026-08-29",
+      "sha256": "9506eb8cc15bbdf82189a3094211abc7693ec03e424c86cbf8c08b35c47cbc18",
+      "bytes": 83354,
+      "words": 12590,
+      "lines": 623,
+      "note": "State submitted to Audit 1 under research/AUDIT_PROMPT_MASTER.md. Ubayet's corrected identification and the 26 named contributors applied; no audit corrections yet."
+    }
+  ]
+}

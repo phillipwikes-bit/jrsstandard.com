@@ -1,0 +1,501 @@
+{
+  "manuscript": "research/Detection_Article_Submission_FINAL5_2026-08-18.md",
+  "findings": [
+    {
+      "id": "SUB-01",
+      "section": "22",
+      "status": "FLAG",
+      "priority": "P0",
+      "title": "Submission-package items not present in the manuscript file",
+      "detail": "13 of 19 present. Absent: keywords, AI-use disclosure, ORCID, target venue named, title page as a separate file, cover letter. Each is either a separate file the package must carry or a section the manuscript must gain before submission."
+    },
+    {
+      "id": "REL-02",
+      "section": "18",
+      "status": "FLAG",
+      "priority": "P1",
+      "title": "Appendix B does not say which record set its 113 covers",
+      "detail": "Line 469 reads 'Appendix B uses the 113 recorded five-condition determinations'. Section 6.5 line 283 has just told the reader that fifteen records carried at least one label and that ten form the analysed set, so an unqualified 113 reads as the global total. Recommended: name the record set in the same clause."
+    },
+    {
+      "id": "REL-03",
+      "section": "18",
+      "status": "FLAG",
+      "priority": "P1",
+      "title": "The credits use a denominator that cannot ever be completed",
+      "detail": "The Acknowledgments credit block at line 597 says 'Of the twenty-five reliability raters, three have confirmed'. Seventeen of those twenty-five are bench reviewers whose codes were generated in the browser and were never bound to an identity, so they cannot confirm, cannot be named, and are not pending. The denominator implies twenty-two outstanding confirmations that will never arrive. Recommended: 'Of the eight invited expert raters, three have confirmed and three elected to be named', with a clause recording that the other raters took part anonymously by design."
+    },
+    {
+      "id": "LNG-01",
+      "section": "19",
+      "status": "FLAG",
+      "priority": "P2",
+      "title": "Self-conscious phrasing flagged by the master prompt",
+      "detail": "6 instance(s). The master prompt names these specifically and asks for direct methodological language where the underlying point is sound: 'stated plainly' line 216; 'read honestly' line 178; 'we accept it' line 166; 'The correct reading' line 294; 'not noise' line 259; 'as plainly as we know how' line 41"
+    },
+    {
+      "id": "REF-03",
+      "section": "21",
+      "status": "FLAG",
+      "priority": "P2",
+      "title": "Reference entries never cited in the body",
+      "detail": "5 uncited: Cohen 1960; Cronbach 1955; Messick 1995; Mittelstadt 2016; Wachter 2017. A journal copy-editor removes these or asks why they are there."
+    },
+    {
+      "id": "REL-01",
+      "section": "18",
+      "status": "VERIFY",
+      "priority": "P0",
+      "title": "Section 6.5 pairs a ten-record count with a fifteen-record label count",
+      "detail": "Location A, Section 6.5 line 283, prints the regular-reviewer row as Records 10 and Labels 68, and says the ten analysed records 'carry 113 submitted determinations, reduced to 104'. Location B, research/current_reliability_2026-08-18.json, the file that produced the printed coefficients, reports the regular group as labels=68 with records_with_any_label=15, records_estimable=10 and records_single_rater=5. recompute_current_ac1.py::block sets 'labels' to len(rows) over every row in the group, so 68 spans all 15 records that group labelled, not the 10 that enter the coefficient. 104 is 36 + 68 and therefore spans fifteen records too. The ten-record deduplicated count is 104 less the 5 single-rater labels, that is 99. The 2026-08-04 analysed-set extract carries exactly 99 rows over ten records with no single-rater record, which corroborates 99 as the ten-record figure. Nature of the discrepancy: a record count and a label count from different record sets are printed on the same table row and in the same sentence. The expert row is unaffected because that group has no single-rater record. Evidence required: the 2026-08-18 per-record five-condition label counts, split into the ten estimable records and the five single-rater records. Recommended correction: keep 104 where it is described as the deduplicated five-condition set, state that it spans fifteen records, and give the ten-record analysed set its own number in the table. Do NOT change 104, 68 or 113 without those counts."
+    },
+    {
+      "id": "REL-04",
+      "section": "18",
+      "status": "VERIFY",
+      "priority": "P2",
+      "title": "Sixteen excluded labels are attributed to three excluded raters",
+      "detail": "Section 4.9 line 226 excludes 'Sixteen labels'; Section 6.5 line 281 attributes the exclusion to 'Three regular reviewers'. Sixteen labels from three raters is arithmetically possible and is probably correct, but the paper never states labels per rater, so a reviewer cannot check it. Evidence required: the per-rater baseline label counts. Recommended: state both numbers in one place, for example 'sixteen labels from three raters'."
+    },
+    {
+      "id": "SUB-02",
+      "section": "21,22",
+      "status": "MANUAL",
+      "priority": "P0",
+      "title": "Journal requirements must be verified, never recalled",
+      "detail": "Master prompt Section 21 and absolute rule 13 forbid stating a journal's current requirements from memory. Before submission, open the target journal's own author guidance and check word limit, abstract structure, reference style, declaration wording and supplementary-file policy against this package. No requirement is asserted here because none has been verified in this run."
+    },
+    {
+      "id": "MAN-01",
+      "section": "6",
+      "status": "MANUAL",
+      "priority": "P1",
+      "title": "Reference-classification independence",
+      "detail": "The automated raters were briefed by the authors on what 'grounded' and 'unsupported' mean. Section 4.4 says so. Confirm no sentence added since the last audit gives the reproduction more authority than that."
+    },
+    {
+      "id": "MAN-02",
+      "section": "8",
+      "status": "MANUAL",
+      "priority": "P1",
+      "title": "Provenance memorandum",
+      "detail": "Section 4.3 states that record-level generation provenance was not retained. Decide whether the package carries a provenance-status memorandum marking each field Known, Partially recoverable, or Not recoverable. Do not reconstruct provenance retrospectively and present it as contemporaneous."
+    },
+    {
+      "id": "MAN-03",
+      "section": "17",
+      "status": "MANUAL",
+      "priority": "P1",
+      "title": "Residual investigator dependence",
+      "detail": "After the stated mitigations, name what remains: corpus authorship, the operationalisation encoded in the key, and the absence of an independent validation adjudicator. Confirm Section 9 still names all three."
+    },
+    {
+      "id": "MAN-04",
+      "section": "26",
+      "status": "MANUAL",
+      "priority": "P1",
+      "title": "Archive completeness",
+      "detail": "Confirm, with documentary evidence rather than recollection, that every reported number can be regenerated from retained materials. The known gap is the per-pass execution record for the three automated reference passes, which Section 4.4 states was not retained."
+    },
+    {
+      "id": "MAN-05",
+      "section": "14",
+      "status": "MANUAL",
+      "priority": "P1",
+      "title": "Adjacent-construct distinctions are theorised",
+      "detail": "The Section 2.2 table asserts eight distinctions. None is empirically demonstrated by this study. Confirm the surrounding prose still presents them as conceptual argument rather than as findings."
+    },
+    {
+      "id": "MAN-06",
+      "section": "23",
+      "status": "MANUAL",
+      "priority": "P1",
+      "title": "Falsification answer",
+      "detail": "The author must be able to state what result would falsify or materially weaken the interpretation. Confirm an answer exists in the defence briefing before any interview or review response."
+    },
+    {
+      "id": "ARI-01",
+      "section": "5,18",
+      "status": "PASS",
+      "priority": "-",
+      "title": "384 graded reads reconciles to 16 reviewers by 24 records",
+      "detail": "16 x 24 = 384, as reported in the Abstract, Section 6 and Appendix C"
+    },
+    {
+      "id": "ARI-02",
+      "section": "18",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Appendix C item table lists every record",
+      "detail": "24 record rows present"
+    },
+    {
+      "id": "ARI-03",
+      "section": "5,18",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Item table sums to the reported panel accuracy",
+      "detail": "322 of 384 correct = 83.85%, rounds to the reported 83.9%"
+    },
+    {
+      "id": "ARI-04",
+      "section": "18",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Every item row's percentage matches its count",
+      "detail": "all 24 rows internally consistent"
+    },
+    {
+      "id": "ARI-05",
+      "section": "5",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Sensitivity and specificity reconcile to accuracy",
+      "detail": "(87.0 + 80.7) / 2 = 83.85, consistent with 83.9 on 12 grounded and 12 unsupported records per reviewer"
+    },
+    {
+      "id": "ARI-06",
+      "section": "5",
+      "status": "PASS",
+      "priority": "-",
+      "title": "The 95% CI reproduces from the reported mean, SD and n",
+      "detail": "83.9 +/- t(15,.975) x 21.0/sqrt(16) = 72.7 to 95.1, matching the reported 72.7 to 95.1"
+    },
+    {
+      "id": "ARI-07",
+      "section": "18",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Appendix B condition labels reconcile to determinations",
+      "detail": "113 determinations x 5 conditions = 565 condition-level labels"
+    },
+    {
+      "id": "ARI-08",
+      "section": "18",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Appendix B coding-level counts sum to the label total",
+      "detail": "216 lowest + 207 pass + 142 middle = 565"
+    },
+    {
+      "id": "ARI-09",
+      "section": "18",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Appendix A run counts reconcile",
+      "detail": "41 fixed-15-record runs + 15 short runs = 56 cross-vendor runs"
+    },
+    {
+      "id": "ARI-10",
+      "section": "18",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Reliability rater counts reconcile across Sections 4.9, 6.5 and the Acknowledgments",
+      "detail": "8 experts + 17 regular = 25; 8 + 14 analysed = 22; 14 analysed + 3 excluded = 17"
+    },
+    {
+      "id": "ARI-11",
+      "section": "18",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Participation total reconciles to distinct people",
+      "detail": "16 + 25 + 20 = 61 participations, less 3 people holding a code in two studies = 58 distinct"
+    },
+    {
+      "id": "ARI-12",
+      "section": "18",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Appendix C prose floor matches the item table",
+      "detail": "lowest item is 10 of 16, matching 'at least ten of the sixteen'"
+    },
+    {
+      "id": "ARI-13",
+      "section": "18",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Appendix C record-accuracy range matches the item table",
+      "detail": "table runs 62.5 to 93.8, matching the stated 62.5 to 93.8"
+    },
+    {
+      "id": "ARI-14",
+      "section": "18",
+      "status": "PASS",
+      "priority": "-",
+      "title": "The country list length matches the asserted count",
+      "detail": "11 countries asserted and 11 named"
+    },
+    {
+      "id": "BLD-01",
+      "section": "protect-the-blind",
+      "status": "PASS",
+      "priority": "-",
+      "title": "The internal arm nomenclature does not appear",
+      "detail": "no arm label in the manuscript"
+    },
+    {
+      "id": "BLD-02",
+      "section": "protect-the-blind",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Internal rung and sub-arm labels do not appear",
+      "detail": "no rung or sub-arm label in the manuscript"
+    },
+    {
+      "id": "CLM-confirms_tha",
+      "section": "3,25,28",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Forbidden claim pattern 'confirms that' absent",
+      "detail": "not present"
+    },
+    {
+      "id": "CLM-demonstrates",
+      "section": "3,25,28",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Forbidden claim pattern 'demonstrates criterion validity' absent",
+      "detail": "not present"
+    },
+    {
+      "id": "CLM-establishes_",
+      "section": "3,25,28",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Forbidden claim pattern 'establishes cross-cultural' absent",
+      "detail": "not present"
+    },
+    {
+      "id": "CLM-gold_standar",
+      "section": "3,25,28",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Forbidden claim pattern 'gold standard' absent",
+      "detail": "not present"
+    },
+    {
+      "id": "CLM-groundbreaki",
+      "section": "3,25,28",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Forbidden claim pattern 'groundbreaking' absent",
+      "detail": "not present"
+    },
+    {
+      "id": "CLM-industry-lea",
+      "section": "3,25,28",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Forbidden claim pattern 'industry-leading' absent",
+      "detail": "not present"
+    },
+    {
+      "id": "CLM-proven",
+      "section": "3,25,28",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Forbidden claim pattern 'proven' absent",
+      "detail": "not present"
+    },
+    {
+      "id": "CLM-proves",
+      "section": "3,25,28",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Forbidden claim pattern 'proves' absent",
+      "detail": "not present"
+    },
+    {
+      "id": "CLM-revolutionar",
+      "section": "3,25,28",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Forbidden claim pattern 'revolutionary' absent",
+      "detail": "not present"
+    },
+    {
+      "id": "CLM-state_of_the",
+      "section": "3,25,28",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Forbidden claim pattern 'state of the art' absent",
+      "detail": "not present"
+    },
+    {
+      "id": "CLM-validated_JR",
+      "section": "3,25,28",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Forbidden claim pattern 'validated JRS' absent",
+      "detail": "not present"
+    },
+    {
+      "id": "CLM-validated_th",
+      "section": "3,25,28",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Forbidden claim pattern 'validated the answer key' absent",
+      "detail": "not present"
+    },
+    {
+      "id": "CLM-validates_JR",
+      "section": "3,25,28",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Forbidden claim pattern 'validates JRS' absent",
+      "detail": "not present"
+    },
+    {
+      "id": "CLM-we_validated",
+      "section": "3,25,28",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Forbidden claim pattern 'we validated' absent",
+      "detail": "not present"
+    },
+    {
+      "id": "CLM-world-class",
+      "section": "3,25,28",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Forbidden claim pattern 'world-class' absent",
+      "detail": "not present"
+    },
+    {
+      "id": "DIS-Appendix_C_is_expl",
+      "section": "3,28",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Disavowal present: Appendix C is labelled exploratory",
+      "detail": "found at line 489"
+    },
+    {
+      "id": "DIS-bootstrap_does_not",
+      "section": "3,28",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Disavowal present: the bootstrap interval does not satisfy the pre-registered criterion",
+      "detail": "found at line 292"
+    },
+    {
+      "id": "DIS-criterion_validity",
+      "section": "3,28",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Disavowal present: the study does not establish criterion validity",
+      "detail": "found at line 25"
+    },
+    {
+      "id": "DIS-efficacy_over_unai",
+      "section": "3,28",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Disavowal present: no advantage over unaided judgment is claimed",
+      "detail": "found at line 25"
+    },
+    {
+      "id": "DIS-field_performance",
+      "section": "3,28",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Disavowal present: the accuracy is not an estimate of field performance",
+      "detail": "found at line 166"
+    },
+    {
+      "id": "DIS-group_is_not_indiv",
+      "section": "3,28",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Disavowal present: panel accuracy does not license individual reliance",
+      "detail": "found at line 267"
+    },
+    {
+      "id": "DIS-measurement_invari",
+      "section": "3,28",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Disavowal present: the international panel does not establish measurement invariance",
+      "detail": "found at line 320"
+    },
+    {
+      "id": "DIS-psychometric_valid",
+      "section": "3,28",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Disavowal present: the five conditions are not a validated scale",
+      "detail": "found at line 25"
+    },
+    {
+      "id": "DIS-record_variance_is",
+      "section": "3,28",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Disavowal present: the boundary record SD is not evidence of no record effect",
+      "detail": "found at line 520"
+    },
+    {
+      "id": "DIS-reproducibility_is",
+      "section": "3,28",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Disavowal present: automated reproduction is reproducibility, not validation",
+      "detail": "found at line 176"
+    },
+    {
+      "id": "DIS-workflow_independe",
+      "section": "3,28",
+      "status": "PASS",
+      "priority": "-",
+      "title": "Disavowal present: workflow independence is an intention, not a result",
+      "detail": "found at line 322"
+    },
+    {
+      "id": "LNG-Designed_f",
+      "section": "19",
+      "status": "PASS",
+      "priority": "-",
+      "title": "House style: 'Designed for ' absent",
+      "detail": "not present"
+    },
+    {
+      "id": "LNG-frequently",
+      "section": "19",
+      "status": "PASS",
+      "priority": "-",
+      "title": "House style: 'frequently' absent",
+      "detail": "not present"
+    },
+    {
+      "id": "LNG-no_policy_",
+      "section": "19",
+      "status": "PASS",
+      "priority": "-",
+      "title": "House style: 'no policy change required' absent",
+      "detail": "not present"
+    },
+    {
+      "id": "LNG-—",
+      "section": "19",
+      "status": "PASS",
+      "priority": "-",
+      "title": "House style: '—' absent",
+      "detail": "not present"
+    },
+    {
+      "id": "REF-01",
+      "section": "21",
+      "status": "PASS",
+      "priority": "-",
+      "title": "References section present",
+      "detail": "35 reference entries parsed"
+    },
+    {
+      "id": "REF-02",
+      "section": "21",
+      "status": "PASS",
+      "priority": "-",
+      "title": "In-text citation years that do not match a reference entry",
+      "detail": "every surname-year pair whose surname appears in the reference list resolves to an entry"
+    }
+  ]
+}
