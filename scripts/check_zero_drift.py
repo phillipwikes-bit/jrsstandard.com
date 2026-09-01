@@ -1460,51 +1460,72 @@ def check_withdrawn_contributor_is_not_defaulted_into_being_named(offline):
 
 
 def check_inquiry_options_are_backed_by_the_allowlist(offline):
-    """Every interest the form offers must be one the endpoint accepts.
+    """Every interest the forms offer must be one the endpoint accepts, the
+    three forms must offer the same set, and the four pathways must be named.
 
     api/enterprise-inquiry.js validates with oneOf(), which returns an empty
-    string for any value not on its allowlist. A new <option> added to the form
-    alone therefore does not error and does not warn: the inquiry saves, and
-    the interest arrives at the owner's dashboard as "unspecified". The failure
-    is invisible on both ends, and it lands hardest on the option added last,
-    which is the one someone bothered to add because it mattered.
+    string for any value not on its allowlist. A new <option> added to a form
+    alone does not error and does not warn: the inquiry saves, and the interest
+    arrives at the owner's dashboard as "unspecified". The failure is invisible
+    on both ends and lands hardest on the option added last, which is the one
+    someone bothered to add because it mattered.
 
-    This is why the Commercial Inquiries change on 2026-08-29 touched the
-    endpoint at all. Acquisition inquiries are the whole point of that pathway
-    and would have been the ones silently blanked.
+    The same inquiry block appears on index.html, review-engine.html and
+    enterprise.html. If they drift, one page quietly stops offering a pathway
+    the others do, and the dashboard cannot reveal it because it records only
+    what was actually chosen.
+
+    The four pathways must also be readable in the labels. A value of
+    "acquisition" behind a label that never says Acquisition is not an
+    available pathway to the person reading the form.
     """
-    page, api = "enterprise.html", "api/enterprise-inquiry.js"
-    for f in (page, api):
+    pages = ("enterprise.html", "index.html", "review-engine.html")
+    api = "api/enterprise-inquiry.js"
+    for f in pages + (api,):
         if not os.path.exists(os.path.join(ROOT, f)):
             skip("inquiry options are backed by the allowlist", "%s absent" % f)
             return
-    m = re.search(r'name="interest">(.*?)</select>', read(page), re.S)
-    if not m:
-        check("inquiry options are backed by the allowlist", False,
-              "the interest select could not be found in %s" % page)
-        return
-    opts = re.findall(r'value="([^"]+)"', m.group(1))
     a = re.search(r"const INTEREST = \[(.*?)\];", read(api), re.S)
     if not a:
         check("inquiry options are backed by the allowlist", False,
               "the INTEREST allowlist could not be found in %s" % api)
         return
     allow = re.findall(r"'([a-z-]+)'", a.group(1))
-    unbacked = [o for o in opts if o not in allow]
-    orphan = [x for x in allow if x not in opts]
-    problems = []
-    if unbacked:
-        problems.append("the form offers %s, which the endpoint would store as "
-                        "an empty interest" % ", ".join(repr(u)
-                                                        for u in unbacked))
-    if orphan:
-        problems.append("the allowlist accepts %s, which no form option offers"
-                        % ", ".join(repr(o) for o in orphan))
+    problems, sets, labels = [], {}, {}
+    for page in pages:
+        m = re.search(r'name="interest">(.*?)</select>', read(page), re.S)
+        if not m:
+            problems.append("the interest select could not be found in %s"
+                            % page)
+            continue
+        sets[page] = re.findall(r'value="([^"]+)"', m.group(1))
+        labels[page] = m.group(1)
+        for o in sets[page]:
+            if o not in allow:
+                problems.append("%s offers %r, which the endpoint would store "
+                                "as an empty interest" % (page, o))
+    if len({tuple(v) for v in sets.values()}) > 1:
+        problems.append("the three inquiry forms offer different option sets: "
+                        + "; ".join("%s=%d" % (k, len(v))
+                                    for k, v in sorted(sets.items())))
+    if sets:
+        first = next(iter(sets.values()))
+        orphan = [x for x in allow if x not in first]
+        if orphan:
+            problems.append("the allowlist accepts %s, which no form offers"
+                            % ", ".join(repr(o) for o in orphan))
+        for page, blk in sorted(labels.items()):
+            for word in ("Licensing", "Integration", "Acquisition",
+                         "Not sure yet"):
+                if word not in blk:
+                    problems.append("%s names no %r pathway in its labels"
+                                    % (page, word))
     check("inquiry options are backed by the allowlist",
           not problems,
-          "%d option(s), every one on the allowlist and nothing orphaned"
-          % len(opts)
-          if not problems else "; ".join(problems))
+          "3 forms, %d identical options, all on the allowlist, four pathways "
+          "named" % len(next(iter(sets.values())) if sets else [])
+          if not problems else "%d problem(s): %s"
+          % (len(problems), "; ".join(problems[:2])))
 
 
 def check_send_copy_is_clean(offline):
