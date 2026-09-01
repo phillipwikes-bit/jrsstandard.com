@@ -1528,6 +1528,57 @@ def check_inquiry_options_are_backed_by_the_allowlist(offline):
           % (len(problems), "; ".join(problems[:2])))
 
 
+def check_blinded_manuscript_carries_no_identity(offline):
+    """The double-blind submission file must contain no author or contributor
+    identity, and the title page must carry what was removed.
+
+    AI and Ethics is explicit that anonymising is the author's responsibility,
+    not the journal's. A leak is invisible in a diff of the blinded file alone,
+    because the sentence reads correctly either way, and it is only detectable
+    by checking the file against the list of people who must not appear in it.
+
+    The name list is built from the spelling authority rather than typed here,
+    so a contributor added later is checked automatically instead of relying on
+    someone remembering to extend a constant.
+    """
+    d = os.path.join(ROOT, "research", "aie_submission_2026-09-01")
+    blind = os.path.join(d, "01_Blinded_Manuscript.md")
+    title = os.path.join(d, "02_Title_Page.md")
+    spell = os.path.join(ROOT, "research",
+                         "Contributor_Spellings_2026-08-29.md")
+    if not (os.path.exists(blind) and os.path.exists(title)):
+        skip("blinded manuscript carries no identity", "submission not built")
+        return
+    b = read("research/aie_submission_2026-09-01/01_Blinded_Manuscript.md")
+    t = read("research/aie_submission_2026-09-01/02_Title_Page.md")
+    names = []
+    if os.path.exists(spell):
+        names = [l[2:].split(",")[0].strip() for l in
+                 read("research/Contributor_Spellings_2026-08-29.md").split("\n")
+                 if l.startswith("- ")]
+    ident = ["Phillip Wikes", "Ubayet Hossain", "Wikes", "Hossain",
+             "Maryland Commission on Civil Rights", "Saurabh Nanda"]
+    problems = []
+    for n in ident + names:
+        if n and re.search(r"\b%s\b" % re.escape(n), b):
+            problems.append("the blinded manuscript names %s" % n)
+    # What was removed has to land somewhere, or it is lost rather than moved.
+    if "**Authors.**" not in t:
+        problems.append("the title page carries no byline")
+    if "## Acknowledgments" not in t:
+        problems.append("the title page carries no acknowledgements")
+    missing = [n for n in names if n and n not in t]
+    if missing:
+        problems.append("%d contributor(s) appear on neither file: %s"
+                        % (len(missing), ", ".join(missing[:3])))
+    check("blinded manuscript carries no identity",
+          not problems,
+          "0 identity leaks, title page carries the byline, the "
+          "acknowledgements and all %d contributors" % len(names)
+          if not problems else "%d problem(s): %s"
+          % (len(problems), "; ".join(problems[:3])))
+
+
 def check_send_copy_is_clean(offline):
     """The correspondence that goes out must carry no editorial material and no
     signature the stated arrangement does not authorise.
@@ -4417,6 +4468,7 @@ def main():
                check_ubayet_is_described_as_he_asked,
                check_private_paths_stay_unreachable,
                check_inquiry_options_are_backed_by_the_allowlist,
+               check_blinded_manuscript_carries_no_identity,
                check_withdrawn_contributor_is_not_defaulted_into_being_named,
                check_markdown_pdfs_are_converted,
                check_all_experts_credited, check_rung2a_lock,

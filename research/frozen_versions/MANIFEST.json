@@ -50,6 +50,16 @@
       "words": 12578,
       "lines": 615,
       "note": "Removed the claim that a contributor withdrew at her election. The 2026-08-16 credit removal was made on the owner's instruction; no contributor has withdrawn."
+    },
+    {
+      "name": "v6-aie-submission",
+      "file": "v6-aie-submission__Detection_Article.md",
+      "frozen": "2026-09-01",
+      "sha256": "14353c4cdef7a2c00bf930e85c160bf6f46f7e8507097a5e87d5f633c719fef5",
+      "bytes": 85608,
+      "words": 12899,
+      "lines": 625,
+      "note": "AI and Ethics submission pass: abstract to the verified 250-word limit, six keywords, numbered references per the journal's stated style, Statements and Declarations block, estimand label, base rate removed, one data-access term."
     }
   ]
 }
