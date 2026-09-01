@@ -309,9 +309,25 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 10px;">Start with one record type</span>
 </div>
 
-<div style="margin-bottom:20px;" id="enterprise-inquiry">
- <h2 class="section-head">Enterprise and licensing inquiry</h2>
- <p class="body-text">Submissions route directly to a private operational dashboard, not to a public queue and not to a mailing list. You will get the integration schema, the tier that fits, and a written scope in one reply. <b>No records are sent at this stage.</b></p>
+<span id="enterprise-inquiry"></span>
+<div style="margin-bottom:20px;" id="commercial-inquiries">
+ <h2 class="section-head">Commercial inquiries</h2>
+ <p class="body-text">JRS remains openly available for individual professional use. Organisations interested in licensing, integrating, or acquiring JRS may contact the creator to discuss potential arrangements.</p>
+ <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:18px 0 22px;">
+  <div style="border:1px solid var(--rule);padding:14px 16px;background:var(--surface2);">
+   <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:7px;">Licensing</div>
+   <p class="body-text" style="margin:0;font-size:13px;">Organisations interested in using JRS within an organisational or professional environment.</p>
+  </div>
+  <div style="border:1px solid var(--rule);padding:14px 16px;background:var(--surface2);">
+   <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:7px;">Integration</div>
+   <p class="body-text" style="margin:0;font-size:13px;">Organisations or technology providers interested in incorporating the JRS Review Engine or associated capabilities into an existing workflow or system.</p>
+  </div>
+  <div style="border:1px solid var(--rule);padding:14px 16px;background:var(--surface2);">
+   <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:7px;">Acquisition</div>
+   <p class="body-text" style="margin:0;font-size:13px;">Organisations interested in acquiring JRS intellectual property and associated assets.</p>
+  </div>
+ </div>
+ <p class="body-text">Submissions route directly to a private operational dashboard, not to a public queue and not to a mailing list. Licensing and integration inquiries receive the integration schema, the tier that fits, and a written scope in one reply. <b>No records are sent at this stage.</b></p>
  <form id="ei-form">
   <label class="ei-l">Name<input class="ei-i" name="name" required maxlength="120" autocomplete="name"></label>
   <label class="ei-l">Work email<input class="ei-i" name="email" type="email" required maxlength="160" autocomplete="email"></label>
@@ -323,6 +339,8 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
     <option value="oem-embed">Embed it in our product</option>
     <option value="framework-licence">Licence the framework</option>
     <option value="evaluation">Evaluation access first</option>
+    <option value="acquisition">Acquire the intellectual property</option>
+    <option value="not-sure">Not sure yet</option>
     <option value="other">Something else</option>
    </select>
   </label>
@@ -345,6 +363,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
    </select>
   </label>
   <label class="ei-l">Anything else<textarea class="ei-i" name="note" maxlength="1200" rows="3"></textarea></label>
+  <p class="muted-text" style="font-size:11px;margin:2px 0 10px;">Please do not submit confidential, proprietary, personal, regulated, or sensitive information through this form.</p>
   <button class="btn btn-accent" type="submit" id="ei-b">Send inquiry</button>
   <p id="ei-m" role="status" class="muted-text"></p>
  </form>
@@ -1102,7 +1121,7 @@ function trackClickAndNavigate(event, targetUrl, eventMetaData) {
       if (j && j.ok) {
         f.innerHTML = '';
         m.style.color = 'var(--ready-text)';
-        m.textContent = 'Received. You will get the schema, the tier and a written scope by email.';
+        m.textContent = 'Thank you for your interest in JRS. Your inquiry has been received and will be reviewed. Submission of an inquiry does not constitute an offer, license, agreement, or commitment by either party.';
       } else {
         m.style.color = 'var(--stop-text)';
         m.textContent = 'That did not save. Email info@jrsstandard.com and it will be handled.';

@@ -1459,6 +1459,54 @@ def check_withdrawn_contributor_is_not_defaulted_into_being_named(offline):
           % (", ".join(missing), "is" if len(missing) == 1 else "are"))
 
 
+def check_inquiry_options_are_backed_by_the_allowlist(offline):
+    """Every interest the form offers must be one the endpoint accepts.
+
+    api/enterprise-inquiry.js validates with oneOf(), which returns an empty
+    string for any value not on its allowlist. A new <option> added to the form
+    alone therefore does not error and does not warn: the inquiry saves, and
+    the interest arrives at the owner's dashboard as "unspecified". The failure
+    is invisible on both ends, and it lands hardest on the option added last,
+    which is the one someone bothered to add because it mattered.
+
+    This is why the Commercial Inquiries change on 2026-08-29 touched the
+    endpoint at all. Acquisition inquiries are the whole point of that pathway
+    and would have been the ones silently blanked.
+    """
+    page, api = "enterprise.html", "api/enterprise-inquiry.js"
+    for f in (page, api):
+        if not os.path.exists(os.path.join(ROOT, f)):
+            skip("inquiry options are backed by the allowlist", "%s absent" % f)
+            return
+    m = re.search(r'name="interest">(.*?)</select>', read(page), re.S)
+    if not m:
+        check("inquiry options are backed by the allowlist", False,
+              "the interest select could not be found in %s" % page)
+        return
+    opts = re.findall(r'value="([^"]+)"', m.group(1))
+    a = re.search(r"const INTEREST = \[(.*?)\];", read(api), re.S)
+    if not a:
+        check("inquiry options are backed by the allowlist", False,
+              "the INTEREST allowlist could not be found in %s" % api)
+        return
+    allow = re.findall(r"'([a-z-]+)'", a.group(1))
+    unbacked = [o for o in opts if o not in allow]
+    orphan = [x for x in allow if x not in opts]
+    problems = []
+    if unbacked:
+        problems.append("the form offers %s, which the endpoint would store as "
+                        "an empty interest" % ", ".join(repr(u)
+                                                        for u in unbacked))
+    if orphan:
+        problems.append("the allowlist accepts %s, which no form option offers"
+                        % ", ".join(repr(o) for o in orphan))
+    check("inquiry options are backed by the allowlist",
+          not problems,
+          "%d option(s), every one on the allowlist and nothing orphaned"
+          % len(opts)
+          if not problems else "; ".join(problems))
+
+
 def check_send_copy_is_clean(offline):
     """The correspondence that goes out must carry no editorial material and no
     signature the stated arrangement does not authorise.
@@ -4347,6 +4395,7 @@ def main():
                check_every_credited_participant_is_an_expert,
                check_ubayet_is_described_as_he_asked,
                check_private_paths_stay_unreachable,
+               check_inquiry_options_are_backed_by_the_allowlist,
                check_withdrawn_contributor_is_not_defaulted_into_being_named,
                check_markdown_pdfs_are_converted,
                check_all_experts_credited, check_rung2a_lock,
