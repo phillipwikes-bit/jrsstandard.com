@@ -29,22 +29,23 @@ def note(area, detail):
 def load(path):
     z = zipfile.ZipFile(path)
     doc = z.read("word/document.xml").decode("utf-8")
-    out = []
+    out, raw = [], []
     for m in re.finditer(r"<w:p\b.*?</w:p>", doc, re.S):
         t = re.sub(r"<[^>]+>", "", m.group(0))
         t = (t.replace("&amp;", "&").replace("&lt;", "<")
               .replace("&gt;", ">").replace("&quot;", '"'))
         out.append(t.strip())
+        raw.append(m.group(0))
     media = [n for n in z.namelist() if n.startswith("word/media/")]
     z.close()
-    return out, media
+    return out, raw, media
 
 
 def main():
     path = sys.argv[1] if len(sys.argv) > 1 else DEFAULT
     if not os.path.exists(path):
         raise SystemExit("[REQUIRED_ENV_PARAM] manuscript not found: %s" % path)
-    paras, media = load(path)
+    paras, raw, media = load(path)
     full = "\n".join(paras)
 
     # Split body from the reference apparatus.
@@ -182,6 +183,43 @@ def main():
         n = len([k for k in kw[0].split(":", 1)[-1].split(";") if k.strip()])
         if not 4 <= n <= 12:
             note("abstract", "%d keywords; Emerald asks for a short list" % n)
+
+    # 7. Formatting. Every pass in this repo rewrites paragraphs as a single
+    #    unformatted run, so stripped bold or italic and inherited heading
+    #    styles are the standing risk, not a hypothetical one.
+    for a, b in zip(paras, raw):
+        if re.search(r'w:val="Heading[123]"', b) and len(a) > 120:
+            note("formatting", "body paragraph carries a heading style, so it "
+                               "lands in the outline: %s" % a[:60])
+    def first_run_bold(text_prefix):
+        for a, b in zip(paras, raw):
+            if a.startswith(text_prefix):
+                m = re.search(r"<w:r>(?:(?!</w:r>).)*</w:r>", b, re.S)
+                return bool(m and "<w:b/>" in m.group(0))
+        return None
+    bylines = [a for a in paras[:4]
+               if re.match(r"^(Stacyann Young|Phillip Wikes)", a)]
+    states = [first_run_bold(a[:20]) for a in bylines]
+    if len(set(states)) > 1:
+        note("formatting", "the two author lines disagree on bold: %s"
+             % dict(zip([a[:16] for a in bylines], states)))
+    for label in ["Purpose.", "Design/methodology/approach.", "Findings.",
+                  "Research limitations/implications.",
+                  "Practical implications.", "Originality/value.",
+                  "Author contributions.", "Disclosure.",
+                  "Competing interests."]:
+        if any(a.startswith(label) for a in paras):
+            if first_run_bold(label) is False:
+                note("formatting", "label not bold where its neighbours are: "
+                                   "%s" % label)
+    ref_raw = [b for a, b in zip(paras, raw)
+               if any(a.startswith(x) for x in
+                      ("Duranti", "Farrell", "Gwet", "Yeo",
+                       "International Organization", "Chief FOIA"))]
+    plain_refs = [b for b in ref_raw if "<w:i/>" not in b]
+    if plain_refs:
+        note("formatting", "%d reference entry/entries carry no italic title "
+                           "or journal name" % len(plain_refs))
 
     print("MECHANICAL AUDIT: %s" % os.path.relpath(path, ROOT))
     print("paragraphs %d, references %d, figures %d, images %d"
