@@ -27,8 +27,14 @@ const SOURCE = 'enterprise-inquiry';
 
 // Closed vocabularies. A free-text deployment answer cannot be counted, and an
 // uncountable field on a qualification form is decoration.
+// 'acquisition' and 'not-sure' added 2026-08-29 for the Commercial Inquiries
+// pathway. The allowlist is the reason this file changes at all: oneOf() drops
+// any value not listed, so a new <option> added to the form alone would be
+// stored as an empty string and reach the dashboard as "unspecified", which is
+// precisely the inquiry type the change exists to capture. The five existing
+// values are unchanged.
 const INTEREST = ['engine-licence', 'oem-embed', 'framework-licence',
-                  'evaluation', 'other'];
+                  'evaluation', 'acquisition', 'not-sure', 'other'];
 const SCALE = ['under-1k', '1k-10k', '10k-100k', 'over-100k', 'unknown'];
 const TIMELINE = ['immediate', 'this-quarter', 'this-year', 'exploratory'];
 
