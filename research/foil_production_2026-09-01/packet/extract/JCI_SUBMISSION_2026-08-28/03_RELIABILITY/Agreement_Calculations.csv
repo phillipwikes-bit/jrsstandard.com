@@ -1,0 +1,20 @@
+Packet case,Corpus Case ID,Original read,Second read,Result,Scale distance
+1,PR-13,Ready,Needs work,Disagree,1
+2,PR-25,Needs work,Needs work,Agree,0
+3,PR-31,Gap,Gap,Agree,0
+4,PR-10,Ready,Needs work,Disagree,1
+5,PR-27,Needs work,Ready,Disagree,1
+6,PR-04,Ready,Ready,Agree,0
+7,PR-26,Needs work,Needs work,Agree,0
+8,PR-05,Ready,Ready,Agree,0
+9,PR-20,Ready,Ready,Agree,0
+10,PR-15,Ready,Ready,Agree,0
+TOTAL exact agreement,,,,7 of 10,
+Percent agreement,,,,70.0,
+95% Wilson interval,,,,39.7 to 89.2,
+"Cohen's kappa, unweighted",,,,0.474,
+"Cohen's kappa, linear weighted",,,,0.559,
+Gwet's AC1,,,,0.582,
+Disagreements,,,,3,
+Adjacent disagreements,,,,3,
+Ready against Gap disagreements,,,,0,
