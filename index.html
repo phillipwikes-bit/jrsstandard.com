@@ -1076,7 +1076,7 @@ a.gumroad-button.util-link {
   <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--review-text);margin-bottom:5px;">Study status</div>
   <p style="font-size:12.5px;color:var(--muted);line-height:1.65;margin:0;">Working illustration using constructed records with fictional parties. The initial evaluation was conducted by the framework's creator and is not presented as independent validation. Independent replication is part of the ongoing pilot program.</p>
  </div>
- <a href="JRS_Operational_Evaluation_Study_Twenty_Record_Ledger.docx" class="btn btn-ghost" style="display:inline-block;">Download Evaluation Study</a>
+ <a href="JRS_Operational_Evaluation_Study_Twenty_Record_Ledger.pdf" class="btn btn-ghost" style="display:inline-block;">Download Evaluation Study</a>
 </div>
 
 <!-- PARTICIPATION LOOP -->
@@ -5590,6 +5590,11 @@ function submitObs(){
   var K='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e';
   var block=document.getElementById('findings-block'), el=document.getElementById('home-findings'), hero=document.getElementById('finding-hero');
   if(!block||!el) return;
+  // Body is rendered with white-space:pre-line so newlines in the data become
+  // line breaks, which is what stacks the coefficient block on card 2.
+  // esc() STAYS. body is a database column; dropping the escape to allow inline
+  // tags would make any future write to findings a stored-XSS vector on the
+  // homepage. pre-line gives the stacked layout with no markup path at all.
   function esc(t){var d=document.createElement('div');d.textContent=t;return d.innerHTML;}
   fetch(U+'/rest/v1/findings?select=headline,body,created_at,evidence_class&published=eq.true&order=created_at.desc',{headers:{'apikey':K,'Authorization':'Bearer '+K}})
    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
@@ -5599,7 +5604,7 @@ function submitObs(){
        return '<div style="border:1px solid var(--rule);background:var(--surface);padding:16px 18px;margin-bottom:10px;">'
          +'<div style="font-family:\'JetBrains Mono\',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:6px;">'+esc(fd.evidence_class||'observational')+' &middot; '+esc((fd.created_at||'').slice(0,10))+'</div>'
          +'<div style="font-size:14.5px;font-weight:600;color:var(--text);margin-bottom:6px;">'+esc(fd.headline||'')+'</div>'
-         +'<div style="font-size:13px;color:var(--muted);line-height:1.6;">'+esc(fd.body||'')+'</div></div>';
+         +'<div style="font-size:13px;color:var(--muted);line-height:1.6;white-space:pre-line;">'+esc(fd.body||'')+'</div></div>';
      }).join('');
      block.style.display='block';
      if(hero){ hero.innerHTML='&#9654; Latest finding: '+esc(rows[0].headline||'')+' &nbsp;&#8595;'; hero.style.display='inline-block'; }
