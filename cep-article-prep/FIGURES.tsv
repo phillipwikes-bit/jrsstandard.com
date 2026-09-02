@@ -1,0 +1,25 @@
+# Figure sheet for the CEP follow-on feature. Tab-separated.
+# key	value_as_printed	source_file	what_it_is
+# Every value must appear verbatim in its source file. scripts/check_cep_prep_figures.py
+# asserts that, and asserts that the outline uses no figure that is not declared here.
+panel_accuracy	83.9	research/Detection_Article_Submission_Final_2026-08-18.md	Mean of the 16 per-reviewer accuracy scores, each out of 24 records
+panel_ci	72.7 to 95.1	research/Detection_Article_Submission_Final_2026-08-18.md	Student t interval on the 16 reviewer scores, 15 df
+sensitivity	87.0	research/Detection_Article_Submission_Final_2026-08-18.md	Unsupported records correctly flagged
+specificity	80.7	research/Detection_Article_Submission_Final_2026-08-18.md	Grounded records correctly passed
+graded_reads	384	research/Detection_Article_Submission_Final_2026-08-18.md	16 reviewers by 24 records
+reviewer_range	37.5 to 100	research/Detection_Article_Submission_Final_2026-08-18.md	Accuracy range across individual reviewers
+reviewer_sd	21.0	research/Detection_Article_Submission_Final_2026-08-18.md	Standard deviation of the per-reviewer scores
+ac1_expert	0.739	research/Detection_Article_Submission_Final_2026-08-18.md	Gwet's AC1, invited experts
+ac1_trained	0.623	research/Detection_Article_Submission_Final_2026-08-18.md	Gwet's AC1, regular reviewers, analysed set only
+ac1_floor	0.61	research/Detection_Article_Submission_Final_2026-08-18.md	Pre-registered point floor, part one of the criterion
+ac1_required_lb	0.41	research/Detection_Article_Submission_Final_2026-08-18.md	Pre-registered lower bound, part two of the criterion
+ac1_expert_lb	0.402	research/Detection_Article_Submission_Final_2026-08-18.md	Expert analytic lower bound, misses the criterion
+ac1_trained_lb	0.252	research/Detection_Article_Submission_Final_2026-08-18.md	Regular-reviewer analytic lower bound, misses the criterion
+labels_submitted	113 submitted determinations	research/Detection_Article_Submission_Final_2026-08-18.md	Determinations on the ten analysed reliability records
+labels_analysed	104	research/Detection_Article_Submission_Final_2026-08-18.md	After keeping one label per rater per record
+model_intercept	89.2	research/Detection_Article_Submission_Final_2026-08-18.md	Average reviewer on an average record, crossed model
+model_reviewer_sd	1.769	research/Detection_Article_Submission_Final_2026-08-18.md	Reviewer SD, crossed mixed-effects logistic model
+model_record_sd	0.011	research/Detection_Article_Submission_Final_2026-08-18.md	Record SD, at the boundary
+model_record_profile	0.001 to 0.556	research/Detection_Article_Submission_Final_2026-08-18.md	Profile-likelihood interval on the record component
+model_icc	0.488	research/Detection_Article_Submission_Final_2026-08-18.md	Latent-scale reviewer intraclass correlation
+corpus_split	Twelve clearly grounded and twelve clearly unsupported	research/Detection_Article_Submission_Final_2026-08-18.md	The bimodal corpus

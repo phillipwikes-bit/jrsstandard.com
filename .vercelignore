@@ -20,6 +20,12 @@
 # ---- research corpus, never deployed by design ------------------------------
 research/
 
+# ---- unpublished article preparation, never deployed ------------------------
+# Markdown only, so *.md above already covers it. Named explicitly as defence
+# in depth: an outline for an unsubmitted piece at a guessable public path is
+# the same exposure class as the 2026-08-25 finding recorded at the top.
+cep-article-prep/
+
 # ---- build, audit and one-shot maintenance scripts ---------------------------
 # Not served by Vercel as functions, but they are static files under the
 # deployment root and would otherwise be fetchable, and several name internal

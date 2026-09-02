@@ -482,6 +482,58 @@ def check_no_new_subscription_funnel(offline):
                "recurring billing" % len(allowed))
 
 
+# Reliability figures that a public page may NOT carry, mapped to the line of the
+# submission manuscript that supersedes each one. Added 2026-09-02 after the
+# research-summary build found four public surfaces still printing the 4 August
+# numbers, three months after the 18 August manuscript replaced them.
+#
+# research/AUDIT_1_2026-08-29.md line 199 had already caught the label total as
+# P0-1, "fix before submission". It was fixed in the manuscript and never
+# followed through to the site, which is precisely the direction of drift this
+# file exists to catch: the paper moves, the pages do not.
+SUPERSEDED_RELIABILITY = {
+    "0.624": "trained-reviewer AC1 is 0.623 on the analysed set "
+             "(Detection_Article_Submission_Final_2026-08-18.md, line 224)",
+    "99 retained labels": "the ten analysed records carry 113 submitted "
+             "determinations reduced to 104 (same manuscript, line 281)",
+    "99 labels": "superseded label total; the analysed set is 104 after "
+             "de-duplication (same manuscript, line 281)",
+    "substantial band under Landis": "section 6.5 drops the verbal band: the "
+             "boundaries are arbitrary by their authors' own account and the "
+             "adjective implies an adequacy the failed lower bound contradicts",
+}
+
+
+def check_reliability_figures_are_current(offline):
+    """No public page may print a reliability figure the manuscript has replaced.
+
+    A superseded coefficient is worse than a missing one. It is checkable in
+    seconds by the one reader who matters, and finding the site and the paper
+    disagreeing on the same number costs more than the number was ever worth.
+    """
+    hits = []
+    for rel in _html_files():
+        try:
+            body = read(rel)
+        except Exception:
+            continue
+        for frag, why in SUPERSEDED_RELIABILITY.items():
+            if frag not in body:
+                continue
+            # A page may state that a characterisation WAS dropped. That is the
+            # correction itself, not the defect, so an explicit retraction in the
+            # same sentence is allowed and nothing else is.
+            i = body.find(frag)
+            window = body[max(0, i - 260):i + 260]
+            if "has been dropped" in window or "drops that characterisation" in window:
+                continue
+            hits.append("%s: %r (%s)" % (rel, frag, why))
+    check("reliability figures on public pages are the current ones", not hits,
+          "; ".join(hits[:4]) if hits
+          else "%d pages scanned against %d superseded figure(s)"
+               % (len(_html_files()), len(SUPERSEDED_RELIABILITY)))
+
+
 def check_research_summary_leads_with_its_boundaries(offline):
     """The limitations must sit ABOVE the headline figure, not below it.
 
@@ -4692,6 +4744,7 @@ def main():
                check_public_engine_endpoints_carry_no_record_text,
                check_owner_only_endpoints_are_not_swept_up_by_the_pii_rule,
                check_no_new_subscription_funnel,
+               check_reliability_figures_are_current,
                check_research_summary_leads_with_its_boundaries,
                check_generated_docs_current, check_cross_endpoint):
         try:
