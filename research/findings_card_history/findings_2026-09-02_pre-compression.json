@@ -1,0 +1,163 @@
+[
+    {
+        "id": "5a40d66c-6c43-4b71-bf87-a1c60b07faf4",
+        "study_id": "STUDY-001",
+        "created_at": "2026-08-21T06:22:30.580448+00:00",
+        "headline": "Cross-vendor agreement (synthetic, 3 providers): 91% across 15 constructed records",
+        "body": "Automated reproducibility check: each constructed record was judged by 3 independent providers (anthropic, openai, google) (anthropic:claude-opus-4-8, openai:gpt-5, google:gemini-flash-latest); the figure is the share matching the most common answer. These are different vendors, so this is independent cross-vendor agreement. It is consistency on synthetic data only: not accuracy, not validation, and not evidence about real workplace records.",
+        "metrics": {
+            "mode": "cross_vendor",
+            "model": "anthropic:claude-opus-4-8, openai:gpt-5, google:gemini-flash-latest",
+            "study": "STUDY-001",
+            "models": [
+                "anthropic:claude-opus-4-8",
+                "openai:gpt-5",
+                "google:gemini-flash-latest"
+            ],
+            "n_models": 3,
+            "providers": [
+                "anthropic",
+                "openai",
+                "google"
+            ],
+            "per_record": {
+                "weak": 1,
+                "strong": 1,
+                "acc_mod": 1,
+                "ai_weak": 1,
+                "inv_mod": 1,
+                "hr_weak2": 1,
+                "moderate": 0.5,
+                "comp_weak": 1,
+                "foil_weak": 1,
+                "aml_strong": 1,
+                "inv_strong": 0.5,
+                "comp_strong": 1,
+                "foil_strong": 0.667,
+                "hr_perf_mod": 1,
+                "hr_term_weak": 1
+            },
+            "n_providers": 3,
+            "overall_agreement": 0.911,
+            "per_record_models": {
+                "weak": {
+                    "openai:gpt-5": "No",
+                    "anthropic:claude-opus-4-8": "No",
+                    "google:gemini-flash-latest": "No"
+                },
+                "strong": {
+                    "openai:gpt-5": "Partially",
+                    "anthropic:claude-opus-4-8": "Partially",
+                    "google:gemini-flash-latest": null
+                },
+                "acc_mod": {
+                    "openai:gpt-5": "No",
+                    "anthropic:claude-opus-4-8": "No",
+                    "google:gemini-flash-latest": null
+                },
+                "ai_weak": {
+                    "openai:gpt-5": "No",
+                    "anthropic:claude-opus-4-8": "No",
+                    "google:gemini-flash-latest": null
+                },
+                "inv_mod": {
+                    "openai:gpt-5": "No",
+                    "anthropic:claude-opus-4-8": "No",
+                    "google:gemini-flash-latest": null
+                },
+                "hr_weak2": {
+                    "openai:gpt-5": "No",
+                    "anthropic:claude-opus-4-8": "No",
+                    "google:gemini-flash-latest": "No"
+                },
+                "moderate": {
+                    "openai:gpt-5": "Partially",
+                    "anthropic:claude-opus-4-8": "No",
+                    "google:gemini-flash-latest": null
+                },
+                "comp_weak": {
+                    "openai:gpt-5": "No",
+                    "anthropic:claude-opus-4-8": "No",
+                    "google:gemini-flash-latest": "No"
+                },
+                "foil_weak": {
+                    "openai:gpt-5": "No",
+                    "anthropic:claude-opus-4-8": "No",
+                    "google:gemini-flash-latest": null
+                },
+                "aml_strong": {
+                    "openai:gpt-5": "Partially",
+                    "anthropic:claude-opus-4-8": "Partially",
+                    "google:gemini-flash-latest": null
+                },
+                "inv_strong": {
+                    "openai:gpt-5": "Partially",
+                    "anthropic:claude-opus-4-8": "No",
+                    "google:gemini-flash-latest": null
+                },
+                "comp_strong": {
+                    "openai:gpt-5": "Partially",
+                    "anthropic:claude-opus-4-8": "Partially",
+                    "google:gemini-flash-latest": null
+                },
+                "foil_strong": {
+                    "openai:gpt-5": "Partially",
+                    "anthropic:claude-opus-4-8": "Partially",
+                    "google:gemini-flash-latest": "Yes"
+                },
+                "hr_perf_mod": {
+                    "openai:gpt-5": "No",
+                    "anthropic:claude-opus-4-8": "No",
+                    "google:gemini-flash-latest": null
+                },
+                "hr_term_weak": {
+                    "openai:gpt-5": "No",
+                    "anthropic:claude-opus-4-8": "No",
+                    "google:gemini-flash-latest": "No"
+                }
+            }
+        },
+        "published": true,
+        "evidence_class": "reproducibility",
+        "observation": "On the same 15 constructed records, 3 independent providers (anthropic, openai, google) gave the same answer about 91% of the time. These are different vendors, so this is independent cross-vendor agreement. Agreement is not accuracy and not validation.",
+        "research_question": "When 3 independent providers (anthropic, openai, google) judge the same record, does 91% agreement reflect a stable signal in the record, shared behavior, or prompt design? Reproducibility is distinct from accuracy and from validation.",
+        "discussion": "3 independent providers (anthropic, openai, google) agreed about 91% of the time on synthetic records. Why might independent models still agree without being right, and what evidence would change your confidence?",
+        "debate": "Does independent cross-vendor agreement on synthetic records tell us anything about real-record accuracy?",
+        "poll": {
+            "options": [
+                "Agreement with an expert benchmark",
+                "Agreement across different models",
+                "Agreement across repeated runs",
+                "Agreement with human reviewers"
+            ],
+            "question": "Which would raise your confidence in a review result the most?"
+        },
+        "challenge": "Take the One-Minute Challenge on the same kind of record and compare your read to the model\u2019s.",
+        "classification": "Emerging Pattern",
+        "linkedin_short": null,
+        "linkedin_long": null,
+        "supporting_data": "15 constructed (synthetic) records \u00b7 3 independent providers (anthropic, openai, google) (anthropic:claude-opus-4-8, openai:gpt-5, google:gemini-flash-latest), one pass each \u00b7 no human reviewers, no ground-truth labels",
+        "views": 0
+    },
+    {
+        "id": "3e932769-5bde-4ca7-b0ea-4f8e9ee7a8e8",
+        "study_id": "STUDY-004",
+        "created_at": "2026-07-07T05:16:27.157042+00:00",
+        "headline": "Human inter-rater reliability: substantial agreement (Gwet's AC1 0.74 experts, 0.63 trained reviewers)",
+        "body": "Independent raters applied the five JRS conditions to a shared set of 10 constructed records. Expert raters (about 3.6 per record) reached Gwet's AC1 = 0.74; trained reviewers (about 7.2 per record) reached AC1 = 0.63. Both fall in the substantial range, and the reviewer coefficient clears the pre-registered floor of 0.61. Reliability means reviewers apply the standard consistently; it is not accuracy and not validation.",
+        "metrics": null,
+        "published": true,
+        "evidence_class": "reliability",
+        "observation": "On 10 constructed records, independent expert and trained reviewers applying the five JRS conditions agreed at a substantial, chance-corrected level (Gwet's AC1 0.74 and 0.63 respectively).",
+        "research_question": "Do independent reviewers apply the five JRS conditions consistently, above chance?",
+        "discussion": null,
+        "debate": null,
+        "poll": null,
+        "challenge": null,
+        "classification": "Reliability Result",
+        "linkedin_short": null,
+        "linkedin_long": null,
+        "supporting_data": "10 records; 8 experts and 16 trained reviewers; 108 labeled determinations. Gwet's AC1 primary per the pre-registered analysis plan (methodology: Ubayet Hossain, FRM, Associate Director, Model Validation, KPMG India).",
+        "views": 0
+    }
+]
