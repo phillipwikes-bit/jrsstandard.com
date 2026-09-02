@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Summary: Expert Detection of Decision Reconstruction Risk | JRS&#8482; Justification Review Standard</title>
+<meta name="description" content="Executive research summary: independent experts detected Decision Reconstruction Risk at 83.9% accuracy on a constructed corpus, 95% CI 72.7 to 95.1. Methodological boundaries, reviewer heterogeneity, Gwet's AC1, Wilson score intervals and the exploratory crossed mixed-effects model are stated before the result, not after it.">
+<meta property="og:title" content="Research Summary: Expert Detection of Decision Reconstruction Risk | JRS&#8482;" />
+<meta property="og:description" content="83.9% expert detection accuracy against a key fixed before scoring, with the boundaries of the claim stated first: a bimodal constructed corpus, no criterion validity against real records, unvalidated psychometrics, and a pre-registered reliability lower bound that was not met." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.jrsstandard.com/research-summary.html" />
+<meta property="og:site_name" content="JRS&#8482; Justification Review Standard" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Research Summary: Expert Detection of Decision Reconstruction Risk | JRS&#8482;" />
+<meta name="twitter:description" content="83.9% expert detection accuracy against a key fixed before scoring, reported with its boundaries first: bimodal constructed corpus, no criterion validity, unvalidated psychometrics, one failed pre-registered criterion." />
+<meta property="og:image" content="https://jrsstandard.com/og-card.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:image" content="https://jrsstandard.com/og-card.png" />
+<link rel="canonical" href="https://www.jrsstandard.com/research-summary.html" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NVYHJ7BJ92"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NVYHJ7BJ92');</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"Expert Detection of Decision Reconstruction Risk in AI-Assisted Decision Records","about":{"@type":"DefinedTerm","name":"Decision Reconstruction Risk","alternateName":"DRR"},"author":{"@type":"Person","name":"Phillip Wikes"},"publisher":{"@type":"Organization","name":"JRS Justification Review Standard"},"url":"https://www.jrsstandard.com/research-summary.html","isAccessibleForFree":true,"creativeWorkStatus":"Preprint, operational validation phase","abstract":"Independent experts, reading constructed AI-generated decision records blind to a held-out reference classification, recovered that classification at 83.9 percent accuracy, 95 percent CI 72.7 to 95.1 at participant level. The corpus is deliberately bimodal, the five review conditions are not psychometrically validated, and one pre-registered reliability criterion was not met."}
+</script>
+<style>
+:root{--bg:#050505;--surface:#121212;--surface2:#1A1A1A;--rule:#2A2A2A;--text:#F2F2F2;--muted:#B3B3B3;--muted-soft:#8A8A8A;--accent:#BE9447;--accent-dim:#7A5E28;--stop-text:#E88080;--review-text:#D4A055;--ready-text:#5DBF82}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.wrap{max-width:820px;margin:0 auto;padding:0 22px}
+.site-header{border-bottom:1px solid var(--rule);padding:0 22px}
+.site-header-inner{max-width:820px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0;flex-wrap:wrap}
+.wordmark{font-family:'Bodoni Moda',serif;font-size:24px;font-weight:500;color:var(--accent);text-decoration:none}
+.header-meta{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);text-align:right}
+.hero{padding:44px 0 26px;border-bottom:1px solid var(--rule)}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+h1{font-family:'Bodoni Moda',serif;font-size:32px;font-weight:400;line-height:1.18;margin-bottom:14px}
+.sub{font-size:15px;color:var(--muted);line-height:1.65;max-width:660px}
+.section-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin:34px 0 14px}
+h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--text);line-height:1.25;margin:0 0 10px}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.card{border:1px solid var(--rule);background:var(--surface);padding:15px 17px}
+.card-k{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px}
+.card-v{font-family:'Bodoni Moda',serif;font-size:19px;color:var(--accent);line-height:1.2}
+.card-n{font-size:12px;color:var(--muted-soft);margin-top:6px;line-height:1.5}
+.note{font-size:12.5px;color:var(--muted-soft);line-height:1.6;border-left:2px solid var(--rule);padding:11px 15px;background:var(--surface);margin:14px 0}
+.study{border:1px solid var(--rule);background:var(--surface);padding:15px 18px;margin-bottom:10px}
+.study-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.study-id{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim)}
+.study-title{font-size:15px;font-weight:600;color:var(--text)}
+.study-desc{font-size:13px;color:var(--muted);line-height:1.55}
+.badge{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.12em;text-transform:uppercase;padding:4px 9px;border:1px solid var(--rule);white-space:nowrap;color:var(--muted-soft)}
+.b-met{color:var(--ready-text);border-color:var(--ready-text)}
+.b-notmet{color:var(--stop-text);border-color:var(--stop-text)}
+.b-explore{color:var(--review-text);border-color:var(--review-text)}
+.nav-tiles{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:6px}
+.tile{border:1px solid var(--rule);background:var(--surface);padding:13px 14px;text-decoration:none;display:block}
+.tile-t{font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px}
+.tile-s{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft)}
+.site-footer{padding:24px 22px}
+.site-footer-inner{max-width:820px;margin:0 auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+.footer-link{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none}
+.footer-copy{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-soft)}
+
+/* RESEARCH SUMMARY, page-local. Three patterns this page needs and no other
+   page carries: the boundary block that runs BEFORE the headline figure, the
+   statistic definition rows, and the two-column scope separation. */
+.bound-box{border:1px solid var(--review-text);background:rgba(212,160,85,.05);padding:20px 22px;margin:6px 0 8px}
+.bound-box .lbl{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--review-text);margin-bottom:12px}
+.bound-list{list-style:none}
+.bound-list li{font-size:13.5px;color:var(--muted);line-height:1.6;padding:9px 0 9px 26px;position:relative;border-bottom:1px solid var(--rule)}
+.bound-list li:last-child{border-bottom:none;padding-bottom:0}
+.bound-list li::before{content:'\2717';position:absolute;left:2px;top:9px;color:var(--review-text);font-size:12px}
+.bound-list b{color:var(--text);font-weight:600}
+.headline{border:1px solid var(--accent-dim);background:linear-gradient(180deg,rgba(190,148,71,.08),rgba(190,148,71,.02));padding:24px 26px;margin:6px 0 10px;text-align:center}
+.headline .fig{font-family:'Bodoni Moda',serif;font-size:52px;line-height:1;color:var(--accent)}
+.headline .cap{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-top:10px}
+.headline .qual{font-size:13px;color:var(--muted);margin-top:12px;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.6}
+.statrow{border:1px solid var(--rule);background:var(--surface);padding:15px 18px;margin-bottom:8px}
+.statrow .st-k{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:7px}
+.statrow .st-f{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--text);background:var(--surface2);border:1px solid var(--rule);padding:8px 11px;margin:8px 0;display:block;overflow-x:auto;white-space:pre}
+.statrow p{font-size:13px;color:var(--muted);line-height:1.6}
+.statrow p+p{margin-top:8px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.split .col{border:1px solid var(--rule);background:var(--surface);padding:16px 18px}
+.split .col.yes{border-left:2px solid var(--ready-text)}
+.split .col.no{border-left:2px solid var(--stop-text)}
+.split .col h3{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;margin-bottom:10px}
+.split .col.yes h3{color:var(--ready-text)}
+.split .col.no h3{color:var(--stop-text)}
+.split .col ul{list-style:none}
+.split .col li{font-size:13px;color:var(--muted);line-height:1.55;padding:7px 0;border-bottom:1px solid var(--rule)}
+.split .col li:last-child{border-bottom:none}
+@media(max-width:600px){h1{font-size:26px}.cards,.nav-tiles,.split{grid-template-columns:1fr}.headline .fig{font-size:40px}}
+
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--accent);color:#050505;padding:10px 16px;z-index:100;font-family:'JetBrains Mono',monospace;font-size:11px}
+.skip-link:focus{left:0}
+/* JRS SITE NAV v1 */
+.jrs-sitenav{display:flex;align-items:stretch;background:var(--bg);border-bottom:1px solid var(--rule);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.jrs-sitenav::-webkit-scrollbar{display:none}
+.jrs-sitenav a{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;padding:13px 16px;border-right:1px solid var(--rule);white-space:nowrap;flex-shrink:0;display:flex;align-items:center;min-height:44px}
+.jrs-sitenav a:hover{color:var(--accent);background:rgba(190,148,71,.05)}
+@media(max-width:640px){ .jrs-sitenav a{padding:12px 13px;font-size:7.5px} }
+/* /JRS SITE NAV v1 */
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to content</a>
+<header class="site-header" role="banner">
+  <div class="site-header-inner">
+    <a href="index.html" class="wordmark">JRS<span style="font-size:10px;vertical-align:super;position:relative;top:-3px;">&#8482;</span></a>
+    <div class="header-meta">Justification Review Standard<br>Research Summary</div>
+  </div>
+</header>
+<!-- JRS SITE NAV v1 :: CANONICAL BLOCK. Byte-identical on every page that carries it. -->
+<nav class="jrs-sitenav" aria-label="Site">
+ <a href="index.html">Home</a>
+ <a href="/api/dl?e=standard&amp;src=sitenav">Review Controls PDF</a>
+ <a href="training.html">Training</a>
+ <a href="index.html#section-tools">Free Resources</a>
+ <a href="simulations.html">Simulations</a>
+ <a href="pilot.html">Pilot Program</a>
+ <a href="enterprise.html">Enterprise</a>
+ <a href="research.html">Research</a>
+ <a href="jrsstandard.html">The Standard</a>
+</nav>
+<!-- /JRS SITE NAV v1 -->
+<main id="main-content">
+<div class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow">Evidence Development Program &middot; Research Summary</div>
+    <h1>Expert Detection of Decision Reconstruction Risk</h1>
+    <p class="sub">Decision Reconstruction Risk (DRR) is the condition in which a record cannot explain, on its own terms, why a consequential decision was made. This page summarises what the programme has measured about that construct, in the order a reviewing peer would want it: the boundaries of the claim first, the result second, the statistics that produced it third. Every figure below comes from a study whose thresholds were fixed before any data were examined, and one of those thresholds was not met. That failure is reported here in the same type size as the result that succeeded.</p>
+  </div>
+
+  <!-- BOUNDARIES BEFORE THE FIGURE. Deliberate order. A reader who meets 83.9%
+       first and the limitations later has already formed the belief the
+       limitations are meant to constrain. -->
+  <section aria-labelledby="bd-h">
+  <div class="section-label" id="bd-h">Read This First: What the Result Does Not Establish</div>
+  <div class="bound-box">
+    <div class="lbl">Five boundaries on every figure on this page</div>
+    <ul class="bound-list">
+      <li><b>The corpus is deliberately bimodal.</b> Twelve clearly grounded and twelve clearly unsupported records, constructed at the two ends of the severity range so the detection question could be asked cleanly. Real documentation is continuous. A test evaluated on clear-cut cases overstates field performance, and this one is no exception.</li>
+      <li><b>There is no criterion validity against real records.</b> The stimuli are constructed and AI-generated. Nothing here shows that the same accuracy holds on real workplace files, on human-authored records, or on ambiguous ones. That study is separate and open.</li>
+      <li><b>The five review conditions are not psychometrically validated.</b> They were derived from investigative casework, not from a factor-analytic procedure. Whether they are distinguishable rather than redundant, whether all five are necessary, and whether they form a coherent scale are all open questions. Read them as a checklist with face validity, not as a validated multidimensional scale.</li>
+      <li><b>One pre-registered criterion was not met.</b> The reliability criterion had two parts: a point estimate of at least 0.61 and a lower confidence bound of at least 0.41. The point estimates clear the first part. Neither clears the second on the analytic interval that the plan specified. Details below.</li>
+      <li><b>Group-level detectability is not individual-level dependability.</b> Accuracy at the level of a single reviewer ranged from 37.5 to 100 percent with a standard deviation of 21.0. An organisation routing one record to one reviewer cannot treat the panel mean as that reviewer's expected performance.</li>
+    </ul>
+  </div>
+  <p class="sub" style="font-size:12.5px">Nothing on this page is presented as validated. The programme is in its operational validation phase, and the claim control that governs it is published in full in the <a href="methodology.html">Methodology Archive</a>.</p>
+  </section>
+
+  <!-- THE HEADLINE RESULT -->
+  <section aria-labelledby="hr-h">
+  <div class="section-label" id="hr-h">The Result</div>
+  <div class="headline">
+    <div class="fig">83.9%</div>
+    <div class="cap">Panel detection accuracy against a reference classification fixed before scoring</div>
+    <p class="qual">95% confidence interval 72.7 to 95.1 at participant level. Sensitivity 87.0 percent for unsupported records, specificity 80.7 percent for grounded ones. Produced by <span data-panel="completers_detection">16</span> independent experts across <span data-panel="countries_detection">11</span> countries and <span data-panel="continents_detection">5</span> continents, reading cold and blind, over 384 graded reads.</p>
+  </div>
+  <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(215px,1fr))">
+    <div class="card">
+      <div class="card-k">Pre-registered detection threshold</div>
+      <div class="card-v" style="color:var(--ready-text)">Met on both parts</div>
+      <div class="card-n">A point estimate of at least 70 percent, and a lower confidence bound above chance. Both fixed before any data were seen, and both cleared.</div>
+    </div>
+    <div class="card">
+      <div class="card-k">Pre-registered reliability criterion</div>
+      <div class="card-v" style="color:var(--stop-text)">Not met</div>
+      <div class="card-n">Gwet&#39;s AC1 0.739 for invited experts and 0.624 for trained reviewers clear the point floor of 0.61. The required lower bound of 0.41 is not cleared on the analytic interval: 0.402 for experts, 0.252 for trained reviewers.</div>
+    </div>
+    <div class="card">
+      <div class="card-k">Reviewer dispersion</div>
+      <div class="card-v">37.5 to 100%</div>
+      <div class="card-n">Accuracy across individual reviewers, SD 21.0. Six of the panel scored 100 percent. The spread is reported as a finding, not as noise around the mean.</div>
+    </div>
+    <div class="card">
+      <div class="card-k">Programme reviewer base</div>
+      <div class="card-v"><span data-panel="reviewers_all">58</span> reviewers</div>
+      <div class="card-n">Have graded at least one record across the three studies, unpaid and in a personal capacity. <span data-panel="completers_all">36</span> of them (<span data-panel-scope="completers_all">all completers, both arms</span>) completed a full 24-record set across <span data-panel="countries_all">16</span> countries. The detection panel is a subset of that base, not the whole of it.</div>
+    </div>
+  </div>
+  </section>
+
+  <!-- HOW TO READ THE NUMBERS -->
+  <section aria-labelledby="sm-h">
+  <div class="section-label" id="sm-h">How the Numbers Were Produced</div>
+  <p class="sub" style="font-size:13.5px;margin-bottom:12px">Three estimators carry the weight of this result. Each is stated here with the choice behind it, because a summary that reports a coefficient without its construction cannot be checked by the reader it is trying to persuade.</p>
+
+  <div class="statrow">
+    <div class="st-k">1. The participant-level mean and its interval</div>
+    <p>The 83.9 percent figure is the <b style="color:var(--text)">mean of the <span data-panel="completers_detection">16</span> individual reviewer accuracy scores</b>, each scored out of 24 records. It is not a pooled proportion over the 384 reads, and it is not an estimate of field performance. The reviewer is the unit of observation, which avoids treating 384 correlated reads as 384 independent trials.</p>
+    <span class="st-f">83.9 &plusmn; t(15, .975) &times; 21.0 / &radic;16  =  72.7 to 95.1</span>
+    <p>The interval is a Student t interval on the <span data-panel="completers_detection">16</span> reviewer scores, with 15 degrees of freedom. It accounts for variation between reviewers. It does not account for the possibility that this particular draw of 24 records was easier than another draw from the same construct, which is the limitation the crossed model below was fitted to size.</p>
+  </div>
+
+  <div class="statrow">
+    <div class="st-k">2. Gwet&#39;s AC1 for inter-rater agreement</div>
+    <p>Agreement is reported as <b style="color:var(--text)">Gwet&#39;s AC1</b> rather than Cohen&#39;s or Fleiss&#39; kappa. The reason is the prevalence problem: when raters agree that most records fall in the same category, kappa collapses toward zero even as raw agreement stays high, and the resulting coefficient describes the marginal distribution more than it describes the raters. AC1 uses a chance-agreement term that does not behave that way under skewed prevalence.</p>
+    <p>On a shared 10-record set carrying 99 retained labels: <b style="color:var(--text)">0.739 for invited experts, 0.624 for trained reviewers</b>. Both are reported as interim. They rest on 10 records against a pooled target of about 26, the intervals are wide, and the pre-registered lower bound is not cleared. Earlier versions of this work placed 0.739 in the substantial band of Landis and Koch. That characterisation has been dropped: the band boundaries are acknowledged as arbitrary by their own authors, and the adjective added a suggestion of adequacy that the failed criterion contradicts.</p>
+  </div>
+
+  <div class="statrow">
+    <div class="st-k">3. Wilson score intervals on the per-condition rates</div>
+    <p>Per-condition association is reported in the study appendix with <b style="color:var(--text)">Wilson score intervals</b> (Wilson, 1927) rather than the normal approximation. The reason is cell size: Ready determinations number 14 in this corpus, so every rate in that column rests on 14 observations. The normal approximation misbehaves badly at those counts and can produce bounds outside the unit interval; the Wilson construction stays inside it and keeps nominal coverage at small n. The intervals are correspondingly wide, and that width is the honest report of what 14 observations can support.</p>
+  </div>
+
+  <div class="statrow">
+    <div class="st-k">4. The crossed mixed-effects model <span class="badge b-explore" style="margin-left:6px">Exploratory</span></div>
+    <p>The primary analysis treats the reviewer as the unit of observation and does not model record difficulty. To size that omission rather than argue about it, a mixed-effects logistic model was fitted over all 384 graded reads, crossing both random factors:</p>
+    <span class="st-f">correct ~ 1 + (1 | reviewer) + (1 | record)</span>
+    <p>Fitted by Laplace-approximated maximum likelihood, with no participant excluded by the pre-registered rule. The intercept places an average reviewer on an average record at <b style="color:var(--text)">89.2 percent</b>. Reviewer SD is <b style="color:var(--text)">1.769</b> (profile interval 1.292 to 3.000); record SD is <b style="color:var(--text)">0.011</b> and sits at the boundary, with a profile interval of 0.001 to 0.556. The latent-scale intraclass correlation is <b style="color:var(--text)">0.488 for reviewers and 0.0000 for records</b>.</p>
+    <p>Two things follow, and only two. Modelling item difficulty does not materially move the panel estimate, because the participant-level mean sits inside the reviewer-level spread the model estimates. And the variation that matters on this corpus is between reviewers, not between records, which is the same conclusion the raw dispersion reaches by a different route. <b style="color:var(--text)">This analysis was added after pre-registration and is labelled exploratory throughout.</b> The record component is weakly identified, and its profile interval permits a materially larger record effect than the point estimate suggests.</p>
+  </div>
+  </section>
+
+  <!-- SCOPE SEPARATION -->
+  <section aria-labelledby="sc-h">
+  <div class="section-label" id="sc-h">Scope of the Claim</div>
+  <p class="sub" style="font-size:13.5px;margin-bottom:12px">This research concerns a construct and the artifacts that carry it. It does not concern a product, and the separation is kept deliberately sharp so a procurement reviewer never has to guess which side of the line a sentence sits on.</p>
+  <div class="split">
+    <div class="col yes">
+      <h3>What this research addresses</h3>
+      <ul>
+        <li>Whether an operationalised documentation-risk construct is detectable by independent experts</li>
+        <li>Artifact-level risk: what a finalised record does and does not carry on its own terms</li>
+        <li>Whether independent reviewers apply the five conditions consistently with one another</li>
+        <li>Whether independent AI models from different vendors apply the same conditions reproducibly</li>
+        <li>How much of the observed variation belongs to reviewers rather than to records</li>
+      </ul>
+    </div>
+    <div class="col no">
+      <h3>What it does not address</h3>
+      <ul>
+        <li>Whether any tool prevents Decision Reconstruction Risk from arising</li>
+        <li>Whether automated review substitutes for a qualified human reviewer</li>
+        <li>Whether flagged records produce different real-world outcomes when contested</li>
+        <li>Compliance status under any external framework, including the EU AI Act, the NIST AI RMF and ISO/IEC 42001</li>
+        <li>Any measure of return on investment, cost avoidance or litigation risk reduction</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note">JRS does not establish compliance with the EU AI Act, the NIST AI RMF, ISO/IEC 42001 or any other framework, and no page on this site claims otherwise. JRS measures the record, not the tool that produced it, and not the organisation that holds it.</div>
+  </section>
+
+  <!-- BRIDGE TO OPERATIONAL ASSETS -->
+  <section aria-labelledby="op-h">
+  <div class="section-label" id="op-h">From Finding to Practice</div>
+  <p class="sub" style="font-size:13.5px;margin-bottom:12px">The research above supports one operational conclusion and licenses one design response. The conclusion: a record can fail to explain its own decision in ways a trained reader can identify, reliably enough to be worth looking for, and unevenly enough that a single reader is not a control. The design response follows directly from the dispersion, which is why every asset below assumes calibration and second review rather than a single pass.</p>
+
+  <a class="study" href="investigator-guides.html" style="display:block;text-decoration:none">
+    <div class="study-top"><div><span class="study-id">Practitioner</span> &middot; <span class="study-title">JRS Investigator Field Guides</span></div><span class="badge">Free &middot; 3 editions</span></div>
+    <div class="study-desc">The five conditions written as investigative questions, in Employment and EEO, Fair Housing, and International editions. This is the construct from the study, expressed as something a practitioner can apply to a closed file the same afternoon. A supplement to existing procedure, not legal advice. <span style="color:var(--accent)">Open the guides &#8594;</span></div>
+  </a>
+
+  <a class="study" href="check.html" style="display:block;text-decoration:none">
+    <div class="study-top"><div><span class="study-id">Self-assessment</span> &middot; <span class="study-title">The Seven-Point Record Defensibility Check</span></div><span class="badge">No registration</span></div>
+    <div class="study-desc">Seven named ways an AI-assisted record fails when it is challenged, each with the question that detects it. Runs entirely in the browser: nothing is uploaded and nothing is sent anywhere. <span style="color:var(--accent)">Check a closed file &#8594;</span></div>
+  </a>
+
+  <a class="study" href="codebook.html" style="display:block;text-decoration:none">
+    <div class="study-top"><div><span class="study-id">Instrument</span> &middot; <span class="study-title">JRS Codebook, version 1.0</span></div><span class="badge">Versioned</span></div>
+    <div class="study-desc">The measurement instrument itself: the five conditions, their decision rules, and the routing bands. Every figure on this page was produced by human reviewers and independent models applying this document, unchanged, to the same records. <span style="color:var(--accent)">Read the codebook &#8594;</span></div>
+  </a>
+
+  <a class="study" href="training.html" style="display:block;text-decoration:none">
+    <div class="study-top"><div><span class="study-id">Calibration</span> &middot; <span class="study-title">Reviewer Training, six modules</span></div><span class="badge">Free &middot; open</span></div>
+    <div class="study-desc">The dispersion finding is the argument for calibration, and this is the calibration. Six modules with a role-gated path for HR, compliance, investigations, employee relations and administration. No code and no registration to begin, and a certificate at the end for anyone who wants one. <span style="color:var(--accent)">Start Module 1 &#8594;</span></div>
+  </a>
+
+  <a class="study" href="org-pilot.html" style="display:block;text-decoration:none">
+    <div class="study-top"><div><span class="study-id">Organisation</span> &middot; <span class="study-title">Structured Pilot</span></div><span class="badge">Scoped engagement</span></div>
+    <div class="study-desc">A bounded pilot on an organisation&#39;s own closed records, run under the same conditions and the same claim control as the research. Sampled double review and adjudication of disagreements are part of the design rather than an upgrade, for the reason the dispersion figure gives. <span style="color:var(--accent)">Scope a pilot &#8594;</span></div>
+  </a>
+
+  <a class="study" href="enterprise.html" style="display:block;text-decoration:none">
+    <div class="study-top"><div><span class="study-id">Platform</span> &middot; <span class="study-title">Enterprise and Integration</span></div><span class="badge">Licensing</span></div>
+    <div class="study-desc">Licensing of the standard and the review engine for organisations embedding record-level review into an existing workflow. The engine holds no record text at rest, which narrows what a vendor security review has to examine. <span style="color:var(--accent)">Integration pathways &#8594;</span></div>
+  </a>
+  </section>
+
+  <!-- SOURCE DOCUMENTS -->
+  <section aria-labelledby="src-h">
+  <div class="section-label" id="src-h">Source Documents and Underlying Data</div>
+  <div class="nav-tiles">
+    <a class="tile" href="research.html"><div class="tile-t">Full Research Register</div><div class="tile-s">Every study &middot; honest status</div></a>
+    <a class="tile" href="methodology.html"><div class="tile-t">Methodology Archive</div><div class="tile-s">Governed &middot; versioned</div></a>
+    <a class="tile" href="codebook.html"><div class="tile-t">JRS Codebook</div><div class="tile-s">Instrument &middot; v1.0</div></a>
+    <a class="tile" href="/api/dl?e=accuracy&amp;src=research-summary"><div class="tile-t">Reliability &amp; Accuracy Paper</div><div class="tile-s">Methods PDF</div></a>
+    <a class="tile" href="/api/dl?e=paper&amp;src=research-summary"><div class="tile-t">JRS Working Paper</div><div class="tile-s">Full paper PDF</div></a>
+    <a class="tile" href="datasets.html"><div class="tile-t">Datasets &amp; Reports</div><div class="tile-s">CSV / JSON export</div></a>
+    <a class="tile" href="decision-reconstruction-risk.html"><div class="tile-t">DRR Definition</div><div class="tile-s">The construct</div></a>
+    <a class="tile" href="questions.html"><div class="tile-t">Open Questions</div><div class="tile-s">Under investigation</div></a>
+    <a class="tile" href="evidence-ledger.html"><div class="tile-t">Evidence Ledger</div><div class="tile-s">Permanent record</div></a>
+  </div>
+  <div class="note" style="margin-top:18px"><strong style="color:var(--text)">Participation and independence.</strong> Every reviewer took part unpaid and in a personal capacity. Panel figures on this page are read from the study database at page load rather than transcribed, so a sentence here cannot drift from the data behind it. A figure that could not be read live is marked as a last known value rather than shown as current.</div>
+  <div class="note"><strong style="color:var(--text)">Claim control.</strong> Reproducibility, reliability, accuracy and validation are four distinct properties and are never treated as equivalent in this programme. This page reports the first three. The fourth has not been established.</div>
+  </section>
+
+</div>
+</main>
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer-inner">
+    <div style="display:flex;flex-wrap:wrap;gap:16px">
+      <a href="index.html" class="footer-link">Home</a>
+      <a href="research.html" class="footer-link">Research</a>
+      <a href="codebook.html" class="footer-link">Codebook</a>
+      <a href="evidence-ledger.html" class="footer-link">Evidence Ledger</a>
+      <a href="check.html" class="footer-link">Record Defensibility Check</a>
+      <a href="/reference" class="footer-link">Reference Library</a>
+    </div>
+    <div style="width:100%;font-family:'Bodoni Moda',serif;font-size:14px;color:var(--accent);margin-bottom:8px;">JRS measures the record, not the tool that produced it.</div>
+    <div style="width:100%;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px"><span style="color:var(--accent-dim)">Back the work:</span> <a href="/api/support?c=rtkw&amp;src=footer" style="color:var(--accent);text-decoration:none">The Right to Know Why</a> &middot; <a href="/api/support?c=defend&amp;src=footer" style="color:var(--accent);text-decoration:none">The Decisions You Can Defend</a></div><div class="footer-copy">&#169; 2026 JRS&#8482; &middot; Justification Review Standard &nbsp;&middot;&nbsp; Phillip Wikes, principal &middot; <a href="privacy.html" style="color:inherit">Privacy</a></div>
+  </div>
+</footer>
+<!-- JRS PANEL BINDER v2 :: CANONICAL BLOCK. Byte-identical on every page that
+     publishes a panel figure, and scripts/check_zero_drift.py fails the commit
+     if two copies differ. Do not edit one copy; edit all of them together.
+     Background: research/FIGURE_DRIFT_ROOT_CAUSE.md -->
+<style>
+  [data-panel][data-panel-state="stale"]{border-bottom:1px dotted var(--review-text);cursor:help}
+
+/* MOBILE FIX PACK, 2026-08-25. Appended, never editing an existing rule.
+   1. Form fields at 16px. Below 16px iOS Safari zooms the whole page on focus
+      and the visitor lands mid-layout with no way back except pinching.
+   2. Tables scroll inside their own box instead of forcing the page sideways.
+   3. Tap targets reach 44px, the minimum a thumb hits reliably.
+   4. Long tokens wrap instead of pushing the body wider than the screen. */
+input,select,textarea{font-size:16px!important}
+table{display:block;overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+button,.btn,.cta-primary,input[type=submit]{min-height:44px}
+@media (max-width:640px){
+  body{overflow-x:hidden}
+  img,svg,video,pre{max-width:100%;height:auto}
+  pre,code{white-space:pre-wrap;word-break:break-word}
+  h1,.h1-look{font-size:23px;line-height:1.3}
+  .wrap,.container,.container-wide{padding-left:16px;padding-right:16px}
+}
+</style>
+<script>
+(function(){
+  // Every published reviewer figure reads from /api/panel-stats so a sentence
+  // cannot drift from the database. Two rules that were not here before:
+  //
+  //   SCOPE. Keys are scoped (completers_all vs completers_detection). A bare
+  //   `countries` meant two different populations in two paragraphs of the same
+  //   page, which is the whole of the top-versus-bottom mismatch.
+  //
+  //   FALLBACK IS MARKED, NEVER SILENT. The number in the markup is still the
+  //   fallback, because blanking a figure mid-sentence is worse than showing the
+  //   last known one. But a fallback now says so: data-panel-state="stale", a
+  //   dotted underline and a title explaining it. A stale figure wearing a live
+  //   figure's clothes is the defect this whole exercise exists to remove.
+  function mark(el, state, title){
+    el.setAttribute('data-panel-state', state);
+    if (title) el.setAttribute('title', title);
+  }
+  function stale(why){
+    var els = document.querySelectorAll('[data-panel]');
+    for (var i = 0; i < els.length; i++) {
+      mark(els[i], 'stale', 'Last known value. The live figure could not be read (' + why + ').');
+    }
+  }
+  try {
+    fetch('/api/panel-stats')
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(d){
+        if (!d) { stale('endpoint returned an error'); return; }
+        var when = d.generated_at ? new Date(d.generated_at).toLocaleString() : 'just now';
+        var labels = d.scope_labels || {};
+        var els = document.querySelectorAll('[data-panel]');
+        for (var i = 0; i < els.length; i++) {
+          var k = els[i].getAttribute('data-panel'), v = d[k];
+          if (typeof v === 'number' && v > 0) {
+            els[i].textContent = v;
+            mark(els[i], 'live', 'Read from the study database at ' + when + '. Scope: ' + (labels[k] || k) + '.');
+          } else {
+            mark(els[i], 'stale', 'Last known value. The live figure is not available for ' + k + '.');
+          }
+        }
+        var sc = document.querySelectorAll('[data-panel-scope]');
+        for (var j = 0; j < sc.length; j++) {
+          var sk = sc[j].getAttribute('data-panel-scope');
+          if (labels[sk]) sc[j].textContent = labels[sk];
+        }
+        var st = document.querySelectorAll('[data-panel-generated]');
+        for (var m = 0; m < st.length; m++) st[m].textContent = when;
+      })
+      .catch(function(){ stale('the request failed'); });
+  } catch(e){ stale('the request could not be started'); }
+})();
+</script>
+<!-- /JRS PANEL BINDER v2 -->
+</body>
+</html>

@@ -482,6 +482,62 @@ def check_no_new_subscription_funnel(offline):
                "recurring billing" % len(allowed))
 
 
+def check_research_summary_leads_with_its_boundaries(offline):
+    """The limitations must sit ABOVE the headline figure, not below it.
+
+    research-summary.html exists to put 83.9% in front of a risk officer, and the
+    only thing that makes that defensible is the order: a reader who meets the
+    figure first and the limitations later has already formed the belief the
+    limitations were written to constrain. Reordering the page is a one-line
+    edit that changes what it claims without changing a word of its copy, so the
+    order is asserted here rather than left to whoever edits it next.
+
+    Four facts are required to survive any future edit: the boundary block
+    precedes the headline figure, the failed pre-registered criterion is named
+    on the page, the reviewer dispersion is stated, and the exploratory label
+    stays attached to the crossed mixed-effects model.
+    """
+    rel = "research-summary.html"
+    if not os.path.exists(os.path.join(ROOT, rel)):
+        skip("research summary leads with its boundaries", "%s not present" % rel)
+        return
+    body = read(rel)
+    problems = []
+
+    marks = {
+        "boundary block": 'class="bound-box"',
+        "headline figure": 'class="headline"',
+    }
+    at = {}
+    for label, needle in marks.items():
+        i = body.find(needle)
+        if i < 0:
+            problems.append("%s is gone (%s)" % (label, needle))
+        at[label] = i
+    if not problems and at["boundary block"] > at["headline figure"]:
+        problems.append("the headline figure precedes the boundary block, which "
+                        "inverts the whole point of the page")
+
+    # The failed criterion, the dispersion, and the exploratory label. Each is a
+    # concession, and a concession is the first thing an optimising edit drops.
+    for needle, why in (
+        ("Not met", "the failed pre-registered reliability criterion"),
+        ("0.402", "the expert lower bound that missed the 0.41 floor"),
+        ("37.5 to 100", "the reviewer dispersion"),
+        ("Exploratory", "the exploratory label on the crossed mixed-effects model"),
+        ("bimodal", "the bimodal-corpus limitation"),
+        ("not psychometrically validated", "the open psychometric structure"),
+    ):
+        if needle not in body:
+            problems.append("%s is no longer stated (%r)" % (why, needle))
+
+    check("research summary leads with its boundaries", not problems,
+          "boundaries at %d, headline at %d, all six concessions stated"
+          % (at.get("boundary block", -1), at.get("headline figure", -1))
+          if not problems else "%d problem(s): %s"
+          % (len(problems), "; ".join(problems[:4])))
+
+
 def check_generated_docs_current(offline):
     """Compares BYTES, not git state.
 
@@ -4636,6 +4692,7 @@ def main():
                check_public_engine_endpoints_carry_no_record_text,
                check_owner_only_endpoints_are_not_swept_up_by_the_pii_rule,
                check_no_new_subscription_funnel,
+               check_research_summary_leads_with_its_boundaries,
                check_generated_docs_current, check_cross_endpoint):
         try:
             fn(offline)
