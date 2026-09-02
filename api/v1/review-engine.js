@@ -169,8 +169,11 @@ function computeVariance(runs) {
 }
 
 // Best-effort recording of each review (server-side, service role). A stored row
-// holds the structured result plus a 200-char input preview, not the full record.
-async function logReview(SERVICE, rid, text, out) {
+// holds the engine's own output about a record: determination, conditions,
+// finding, run count, consistency and engine version. NO RECORD TEXT AND NO
+// INPUT PREVIEW IS STORED OR PASSED IN. The record text is deliberately not a
+// parameter of this function, so a future edit cannot reach it from here.
+async function logReview(SERVICE, rid, out) {
   if (!SERVICE) return;
   var r = out.result || {};
   try {
@@ -248,7 +251,7 @@ export default async function handler(req) {
     var results = await Promise.all(Array.from({ length: runs }, function () { return oneRun(text, KEY); }));
     var out = Object.assign({}, meta, { result: results[0] });
     if (runs > 1) out.variance = computeVariance(results);
-    await logReview(SERVICE, rid, text, out);
+    await logReview(SERVICE, rid, out);
     return J(out, 200);
   } catch (e) {
     return J({ error: 'review_failed', detail: String(e && e.message || e) }, 502);

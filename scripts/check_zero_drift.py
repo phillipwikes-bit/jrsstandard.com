@@ -379,6 +379,109 @@ def _rebuild_one(builder, doc, offline):
     return (doc, builder, r.returncode == 0, detail, before == after)
 
 
+def check_public_engine_endpoints_carry_no_record_text(offline):
+    """Phillip's ratification of 2026-09-02: the PII and retention constraint
+    binds the PUBLIC evaluation endpoints and not the owner-only surfaces.
+
+    api/review.js persists nothing. The two review-engine endpoints do write a
+    row per review, so they are not stateless in the literal sense, but the row
+    holds the engine's own output and never the record. This guard keeps it
+    that way. input_preview was live once, was rendered on a public page, and
+    was removed on 2026-08-14; the field name is banned by name so it cannot
+    return under its old spelling, and the record text is no longer a parameter
+    of logReview at all, so there is nothing in scope for it to reach.
+    """
+    engines = ("api/review-engine.js", "api/v1/review-engine.js")
+    problems = []
+    for path in ("api/review.js",) + engines:
+        src = read(path)
+        if not src:
+            problems.append("%s is missing" % path)
+            continue
+        if "runtime: 'edge'" not in src:
+            problems.append("%s no longer declares the edge runtime" % path)
+    for path in engines:
+        src = read(path)
+        if not src:
+            continue
+        body = src.split("async function logReview", 1)
+        if len(body) != 2:
+            problems.append("%s: logReview not found" % path)
+            continue
+        sig = body[1].split(")", 1)[0]
+        if "text" in sig:
+            problems.append("%s: record text is a parameter of logReview again"
+                            % path)
+        payload = body[1].split("JSON.stringify(", 1)
+        if len(payload) != 2:
+            problems.append("%s: logReview payload not found" % path)
+            continue
+        sent = payload[1].split("}),", 1)[0]
+        live = "\n".join(ln for ln in sent.splitlines()
+                          if not ln.strip().startswith("//"))
+        for banned in ("input_preview", "record_text", "preview", "input:",
+                       "text:", "body:", "content:"):
+            if banned in live:
+                problems.append("%s: logReview payload carries %r"
+                                % (path, banned))
+    check("public engine endpoints store no record text", not problems,
+          "; ".join(problems) if problems
+          else "3 endpoints on edge runtime; no record text reaches logReview")
+
+
+def check_owner_only_endpoints_are_not_swept_up_by_the_pii_rule(offline):
+    """Same ratification: the owner-only surfaces are EXEMPT and must survive.
+
+    A literal reading of "never persist or log PII" would delete the owner's
+    only lead pipeline and the contributor roster. That reading was raised on
+    2026-09-02 and rejected. This guard exists so a future pass that re-reads
+    the rule literally fails loudly instead of quietly removing them.
+    """
+    required = ("api/leads-4b7e2c9af106d385.js",
+                "api/people-9dd1ecdf6f8cdfd4.js",
+                "api/_contributor-roster.js",
+                "programme-status-9872fb93cc94.html")
+    missing = [p for p in required
+               if not os.path.exists(os.path.join(ROOT, p))]
+    check("owner-only surfaces exempt from the PII rule are intact",
+          not missing,
+          "deleted: " + "; ".join(missing) if missing
+          else "%d owner-only surface(s) present, exempt by ratification"
+               % len(required))
+
+
+def check_no_new_subscription_funnel(offline):
+    """Same ratification: the SaaS constraint is forward-looking only.
+
+    The existing transaction endpoints stay as built. What is barred is a NEW
+    recurring-subscription funnel, so this guard allowlists the three that
+    exist and fails on any api/ file that introduces recurring billing.
+    """
+    allowed = {"checkout.js", "checkout-stats.js", "enterprise-inquiry.js"}
+    markers = ("subscription", "recurring", "billing_cycle", "price_monthly",
+               "mode: 'subscription'", "interval:")
+    offenders = []
+    api_dir = os.path.join(ROOT, "api")
+    for base, _dirs, files in os.walk(api_dir):
+        for fn in files:
+            if not fn.endswith(".js") or fn in allowed:
+                continue
+            full = os.path.join(base, fn)
+            rel = os.path.relpath(full, ROOT)
+            try:
+                with open(full, encoding="utf-8") as fh:
+                    src = fh.read()
+            except Exception:
+                continue
+            hits = [m for m in markers if m in src.lower()]
+            if hits:
+                offenders.append("%s (%s)" % (rel, ", ".join(hits)))
+    check("no new recurring-subscription funnel in api/", not offenders,
+          "; ".join(offenders) if offenders
+          else "%d existing transaction endpoint(s) allowlisted, no new "
+               "recurring billing" % len(allowed))
+
+
 def check_generated_docs_current(offline):
     """Compares BYTES, not git state.
 
@@ -4530,6 +4633,9 @@ def main():
                check_homepage_is_a_landing_page,
                check_training_is_ungated,
                check_training_modules_are_findable,
+               check_public_engine_endpoints_carry_no_record_text,
+               check_owner_only_endpoints_are_not_swept_up_by_the_pii_rule,
+               check_no_new_subscription_funnel,
                check_generated_docs_current, check_cross_endpoint):
         try:
             fn(offline)
