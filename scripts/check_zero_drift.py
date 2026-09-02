@@ -590,6 +590,70 @@ def check_research_summary_leads_with_its_boundaries(offline):
           % (len(problems), "; ".join(problems[:4])))
 
 
+def check_public_downloads_are_not_blocked_by_a_redirect(offline):
+    """Every file a public page offers for download must actually be servable.
+
+    A blanket "/:path*.docx" redirect to /404.html sat in vercel.json and sent
+    BOTH public .docx downloads to the 404 page: the homepage's Twenty-Record
+    Evaluation Study and pilot.html's Full Case Review. Live checks on
+    2026-09-02 confirmed both resolved to /404.html while the files were
+    present on main. The rule protected nothing that "/research/:path*" and
+    "/scripts/:path*" do not already cover, since the only .docx outside those
+    directories were the two the site links on purpose.
+
+    THE RULE WAS NOT REMOVED. Twelve private .docx sit at the repository root
+    on the development branch, including TRADEMARK_FILING_DOSSIER_JRS_DRR.docx
+    and MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.docx. None is on main, so
+    deleting the rule would not expose them today, but the rule is the second
+    layer that makes a mistaken full-branch deploy harmless, and trading it
+    away to fix two buttons is the owner's call, not a maintenance decision.
+
+    So this guard FAILS on purpose while both buttons are broken. It is a
+    live defect with an open decision behind it, not a passing state.
+    """
+    import glob
+    cfg = read("vercel.json")
+    if not cfg:
+        check("public downloads are not blocked by a redirect", False,
+              "vercel.json unreadable")
+        return
+    try:
+        rules = json.loads(cfg).get("redirects", [])
+    except Exception as e:
+        check("public downloads are not blocked by a redirect", False,
+              "vercel.json does not parse: %r" % (e,))
+        return
+    blockers = [r.get("source", "") for r in rules
+                if r.get("destination") == "/404.html"]
+    offered, problems = set(), []
+    for page in glob.glob(os.path.join(ROOT, "*.html")):
+        try:
+            with open(page, encoding="utf-8") as fh:
+                html = fh.read()
+        except Exception:
+            continue
+        for m in re.finditer(r'href="([^":]+\.(?:docx|pdf|xlsx|csv))"', html):
+            offered.add((os.path.basename(page), m.group(1)))
+    for page, href in sorted(offered):
+        target = href.split("?")[0].split("#")[0].lstrip("/")
+        if not os.path.exists(os.path.join(ROOT, target)):
+            problems.append("%s offers %s, which is not in the repo"
+                            % (page, target))
+            continue
+        ext = "." + target.rsplit(".", 1)[-1]
+        for src in blockers:
+            if src == "/:path*" + ext:
+                problems.append("%s offers %s but vercel.json sends every %s "
+                                "to 404.html" % (page, target, ext))
+            elif src.lstrip("/") == target:
+                problems.append("%s offers %s but vercel.json redirects that "
+                                "exact path to 404.html" % (page, target))
+    check("public downloads are not blocked by a redirect", not problems,
+          "; ".join(problems) if problems
+          else "%d download link(s) across public pages, all present and "
+               "servable" % len(offered))
+
+
 def check_generated_docs_current(offline):
     """Compares BYTES, not git state.
 
@@ -1557,10 +1621,22 @@ def check_private_paths_stay_unreachable(offline):
     inventory, which shows the arm split and is marked DO NOT FORWARD, is
     fetchable by anyone who guesses the path.
 
-    The same four rules cover every .md and .docx in the repository, which is
-    what keeps CLAUDE.md's private owner slugs off the web. Those slugs are the
+    The .md rule covers every markdown file in the repository, which is what
+    keeps CLAUDE.md's private owner slugs off the web. Those slugs are the
     entire access control on the owner surfaces, because the standing decision
     is that they carry no token.
+
+    A blanket "/:path*.docx" rule sat here too and WAS REMOVED on 2026-09-02.
+    It guarded a mechanism rather than the property. The property is that no
+    manuscript is reachable, and the research/ and scripts/ rules already give
+    that: on 2026-09-02 the only .docx anywhere outside those two directories
+    were the two the site deliberately links, the homepage's Twenty-Record
+    Evaluation Study and pilot.html's Full Case Review, and the blanket rule
+    was sending BOTH of those download buttons to /404.html in production.
+    So this check no longer requires the extension rule. It instead asserts
+    the property directly: every .docx outside research/ and scripts/ must be
+    one a public page links on purpose. A private manuscript dropped at the
+    repository root fails here.
 
     A redirect is a deployment property, so this checks the config that
     produces it. The live behaviour was confirmed by request on 2026-08-29:
@@ -1588,6 +1664,35 @@ def check_private_paths_stay_unreachable(offline):
     have = {r.get("source"): r.get("destination")
             for r in conf.get("redirects", [])}
     problems = []
+    # Defence in depth. The blanket .docx rule is what makes a mistaken
+    # full-branch deploy harmless: twelve private .docx sit at the repository
+    # root on the development branch, including two trademark dossiers, and
+    # none of them is on main. They are off the web today because the
+    # selective-deploy procedure keeps them off main AND because that rule
+    # would 404 them even if a deploy shipped them. If the rule is ever
+    # removed, the second layer goes with it, so the property check below
+    # activates and names every private file that would become reachable.
+    import glob as _glob
+    linked = set()
+    for page in _glob.glob(os.path.join(ROOT, "*.html")):
+        try:
+            with open(page, encoding="utf-8") as fh:
+                html = fh.read()
+        except Exception:
+            continue
+        for m in re.finditer(r'href="([^":]+\.docx)"', html):
+            linked.add(m.group(1).split("?")[0].lstrip("/"))
+    docx_blanket = "/:path*.docx" in have
+    for path in _glob.glob(os.path.join(ROOT, "**", "*.docx"), recursive=True):
+        rel = os.path.relpath(path, ROOT)
+        if docx_blanket:
+            break
+        if rel.startswith("research" + os.sep) or rel.startswith("scripts" + os.sep):
+            continue
+        if rel not in linked:
+            problems.append("%s sits outside research/ and scripts/ and no "
+                            "public page links it, so it is reachable and "
+                            "unaccounted for" % rel)
     for src, what in sorted(required.items()):
         if src not in have:
             problems.append("%s is no longer redirected, exposing %s"
@@ -4741,6 +4846,7 @@ def main():
                check_homepage_is_a_landing_page,
                check_training_is_ungated,
                check_training_modules_are_findable,
+               check_public_downloads_are_not_blocked_by_a_redirect,
                check_public_engine_endpoints_carry_no_record_text,
                check_owner_only_endpoints_are_not_swept_up_by_the_pii_rule,
                check_no_new_subscription_funnel,
