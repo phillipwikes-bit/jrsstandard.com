@@ -77,10 +77,11 @@ DATA_NOTE = (
 # Branded terms and their unbranded equivalents, longest first so that the
 # expansion is replaced before the acronym inside it.
 BRAND = [
-    ("The protocol is referred to in this study as the Justification Review "
-     "Standard (JRS).",
-     "The protocol is named and described in full in the non-anonymous "
-     "version of this manuscript."),
+    # The sentence is DELETED, not replaced. A pointer to a non-anonymous
+    # version tells a reviewer the protocol has a withheld brand name, which
+    # is itself a signal; the paragraph reads cleanly without it.
+    (" The protocol is referred to in this study as the Justification Review "
+     "Standard (JRS).", ""),
     ("Justification Review Standard (JRS)", "review protocol"),
     ("Justification Review Standard", "review protocol"),
     ("Decision Reconstruction Risk", "decision reconstruction risk"),
