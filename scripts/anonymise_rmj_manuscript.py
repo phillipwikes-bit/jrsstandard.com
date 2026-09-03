@@ -216,6 +216,11 @@ def main() -> int:
     banned = list(FORBIDDEN) + ([] if args.keep_brand else FORBIDDEN_BRAND)
     for name in zchk.namelist():
         if name.startswith("word/media/"):
+            # IMAGES ARE NOT COVERED BY THIS SCAN AND SAYING SO IS THE POINT.
+            # A string check cannot read rendered text, and on 2026-09-03 the
+            # framework name survived twice inside word/media/image1.png after
+            # this script reported the package clean. Run
+            # scripts/anonymise_figure1.py, then inspect every figure by eye.
             continue
         body = zchk.read(name).decode("utf-8", "ignore")
         plain = para_text(body)
@@ -234,8 +239,15 @@ def main() -> int:
             print("  LEAK: %s" % lk)
         raise SystemExit("[REQUIRED_ENV_PARAM] identity survives in the "
                          "output package; not fit for anonymous submission")
-    print("  package scanned for %d banned term(s) across %d part(s): clean"
-          % (len(banned), len(zipfile.ZipFile(args.out).namelist()) - len(imgs)))
+    print("  text and metadata scanned for %d banned term(s) across %d "
+          "part(s): clean" % (len(banned),
+                              len(zipfile.ZipFile(args.out).namelist())
+                              - len(imgs)))
+    if imgs:
+        print("  NOT COVERED: %d image(s) in word/media/. Rendered text inside "
+              "a figure is invisible to this scan." % len(imgs))
+        print("  Run: python3 scripts/anonymise_figure1.py %s <out>.docx"
+              % args.out)
     print("\nwrote %s" % args.out)
     return 0
 
