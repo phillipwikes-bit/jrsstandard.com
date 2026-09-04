@@ -1,0 +1,218 @@
+[
+ {
+  "family": "A. Rung 3",
+  "name": "flagged -> adverse, all domains",
+  "detail": "n=54  cells 17/6/12/19  flagged 73.9% (53.5 to 87.5)  clean 38.7% (23.7 to 56.2)",
+  "p": 0.013878022582899562,
+  "effect": "OR 4.49 (1.33 to 13.22)",
+  "note": ""
+ },
+ {
+  "family": "A. Rung 3",
+  "name": "flagged -> adverse, domain=HR / Employment",
+  "detail": "n=22  cells 7/2/2/11  flagged 77.8% (45.3 to 93.7)  clean 15.4% (4.3 to 42.2)",
+  "p": 0.007319770013268465,
+  "effect": "OR 19.25 (1.91 to 99.92)",
+  "note": "SMALL CELL"
+ },
+ {
+  "family": "A. Rung 3",
+  "name": "flagged -> adverse, domain=Public records / FOIL",
+  "detail": "n=32  cells 10/4/10/8  flagged 71.4% (45.4 to 88.3)  clean 55.6% (33.7 to 75.4)",
+  "p": 0.47093388789476226,
+  "effect": "OR 2.00 (0.45 to 7.87)",
+  "note": "SMALL CELL"
+ },
+ {
+  "family": "A. Rung 3",
+  "name": "gap only -> adverse, all domains",
+  "detail": "n=54  cells 7/1/22/24  flagged 87.5% (52.9 to 97.8)  clean 47.8% (34.1 to 61.9)",
+  "p": 0.056064813048778854,
+  "effect": "OR 7.64 (0.86 to 34.42)",
+  "note": "SMALL CELL"
+ },
+ {
+  "family": "A. Rung 3",
+  "name": "gap -> failed_audit, all domains",
+  "detail": "n=54  cells 5/3/2/44  flagged 62.5% (30.6 to 86.3)  clean 4.3% (1.2 to 14.5)",
+  "p": 0.00033458956877380853,
+  "effect": "OR 36.67 (4.40 to 177.72)",
+  "note": "SMALL CELL KNOWN ARTEFACT, see below"
+ },
+ {
+  "family": "A. Rung 3",
+  "name": "flagged -> not held_up, all domains",
+  "detail": "n=54  cells 20/3/22/9  flagged 87.0% (67.9 to 95.5)  clean 71.0% (53.4 to 83.9)",
+  "p": 0.20025670864021347,
+  "effect": "OR 2.73 (0.63 to 9.67)",
+  "note": "SMALL CELL"
+ },
+ {
+  "family": "A. Rung 3",
+  "name": "flagged -> not held_up, domain=HR / Employment",
+  "detail": "n=22  cells 8/1/7/6  flagged 88.9% (56.5 to 98.0)  clean 53.8% (29.1 to 76.8)",
+  "p": 0.1648606811145511,
+  "effect": "OR 6.86 (0.65 to 37.35)",
+  "note": "SMALL CELL"
+ },
+ {
+  "family": "A. Rung 3",
+  "name": "flagged -> not held_up, domain=Public records / FOIL",
+  "detail": "n=32  cells 12/2/15/3  flagged 85.7% (60.1 to 96.0)  clean 83.3% (60.8 to 94.2)",
+  "p": 1.0,
+  "effect": "OR 1.20 (0.19 to 6.73)",
+  "note": "SMALL CELL"
+ },
+ {
+  "family": "A. Rung 3",
+  "name": "resolved only, flagged -> adverse",
+  "detail": "n=41  cells 17/3/12/9  flagged 85.0% (64.0 to 94.8)  clean 57.1% (36.5 to 75.5)",
+  "p": 0.08549343993875858,
+  "effect": "OR 4.25 (0.91 to 15.79)",
+  "note": "SMALL CELL"
+ },
+ {
+  "family": "B. Reliability",
+  "name": "Gwet AC1, determination, ALL labels deduped",
+  "detail": "119 labels, 10 records with >=2 raters, 25 labelers",
+  "p": null,
+  "effect": "AC1 = 0.364",
+  "note": "MANUSCRIPTS REPORT 0.739 EXPERT / 0.624 TRAINED ON 10 RECORDS, 99 LABELS"
+ },
+ {
+  "family": "B. Reliability",
+  "name": "Gwet AC1, mode=jrs",
+  "detail": "104 labels, 10 multi-rater records",
+  "p": null,
+  "effect": "AC1 = 0.664",
+  "note": ""
+ },
+ {
+  "family": "B. Reliability",
+  "name": "Gwet AC1, mode=normal",
+  "detail": "15 labels, 5 multi-rater records",
+  "p": null,
+  "effect": "AC1 = 0.155",
+  "note": ""
+ },
+ {
+  "family": "B. Reliability",
+  "name": "Gwet AC1, condition=basis_identification",
+  "detail": "10 multi-rater records",
+  "p": null,
+  "effect": "AC1 = 0.244",
+  "note": ""
+ },
+ {
+  "family": "B. Reliability",
+  "name": "Gwet AC1, condition=cold_reviewer_clarity",
+  "detail": "10 multi-rater records",
+  "p": null,
+  "effect": "AC1 = 0.317",
+  "note": ""
+ },
+ {
+  "family": "B. Reliability",
+  "name": "Gwet AC1, condition=accountability_support",
+  "detail": "10 multi-rater records",
+  "p": null,
+  "effect": "AC1 = 0.236",
+  "note": ""
+ },
+ {
+  "family": "B. Reliability",
+  "name": "Gwet AC1, condition=reasoning_traceability",
+  "detail": "10 multi-rater records",
+  "p": null,
+  "effect": "AC1 = 0.413",
+  "note": ""
+ },
+ {
+  "family": "B. Reliability",
+  "name": "Gwet AC1, condition=temporal_reconstructability",
+  "detail": "10 multi-rater records",
+  "p": null,
+  "effect": "AC1 = 0.360",
+  "note": ""
+ },
+ {
+  "family": "B. Conditions",
+  "name": "basis_identification separates Ready from Gap",
+  "detail": "Ready pass 14/14, Gap pass 15/69",
+  "p": 2.9325236185515438e-08,
+  "effect": "OR 102.0 [Haldane]",
+  "note": "CIRCULAR, see the derivation test below"
+ },
+ {
+  "family": "B. Conditions",
+  "name": "cold_reviewer_clarity separates Ready from Gap",
+  "detail": "Ready pass 14/14, Gap pass 12/69",
+  "p": 3.6516098698438767e-09,
+  "effect": "OR 133.4 [Haldane]",
+  "note": "CIRCULAR, see the derivation test below"
+ },
+ {
+  "family": "B. Conditions",
+  "name": "accountability_support separates Ready from Gap",
+  "detail": "Ready pass 14/14, Gap pass 7/69",
+  "p": 4.396587134260186e-11,
+  "effect": "OR 241.7 [Haldane]",
+  "note": "CIRCULAR, see the derivation test below"
+ },
+ {
+  "family": "B. Conditions",
+  "name": "reasoning_traceability separates Ready from Gap",
+  "detail": "Ready pass 14/14, Gap pass 6/69",
+  "p": 1.4655290447533953e-11,
+  "effect": "OR 283.3 [Haldane]",
+  "note": "CIRCULAR, see the derivation test below"
+ },
+ {
+  "family": "B. Conditions",
+  "name": "temporal_reconstructability separates Ready from Gap",
+  "detail": "Ready pass 14/14, Gap pass 7/69",
+  "p": 4.396587134260186e-11,
+  "effect": "OR 241.7 [Haldane]",
+  "note": "CIRCULAR, see the derivation test below"
+ },
+ {
+  "family": "B. Conditions",
+  "name": "DERIVATION TEST: determination vs conditions",
+  "detail": "all-five-pass but not Ready: 0; any-fail but Ready: 0; labels using 'fail' at all: 0",
+  "p": null,
+  "effect": "DETERMINISTIC",
+  "note": "IF DETERMINISTIC, EVERY B. Conditions TEST ABOVE IS CIRCULAR AND IS NOT A FINDING"
+ },
+ {
+  "family": "B. Raters",
+  "name": "per-rater gap rate spread",
+  "detail": "25 labelers, 1..5 labels each",
+  "p": null,
+  "effect": "highest gap rates: R-mqa4a9ew 100%, R-mqgufe1f 100%, E-11 100%",
+  "note": ""
+ },
+ {
+  "family": "C. Reproducibility",
+  "name": "cross-vendor agreement, full series",
+  "detail": "61 runs, 2026-06-13 to 2026-08-21",
+  "p": null,
+  "effect": "mean 0.849, sd 0.064, min 0.667, max 0.933",
+  "note": "MANUSCRIPTS REPORT A SINGLE 84 PERCENT FIGURE"
+ },
+ {
+  "family": "C. Reproducibility",
+  "name": "drift, first half vs second half",
+  "detail": "30 vs 31 runs",
+  "p": null,
+  "effect": "mean 0.826 -> 0.870, delta +0.044",
+  "note": "descriptive only, runs are not independent samples"
+ },
+ {
+  "family": "C. Reproducibility",
+  "name": "lowest observed agreement runs",
+  "detail": "2026-06-13 0.667; 2026-06-21 0.667; 2026-06-23 0.667",
+  "p": null,
+  "effect": "",
+  "note": ""
+ }
+]

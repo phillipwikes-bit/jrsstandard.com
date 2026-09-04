@@ -1,0 +1,148 @@
+
+==============================================================================
+1. STUDY REGISTRY  (studies, 9 rows)
+==============================================================================
+  {"id": "STUDY-002", "title": "Ground-Truth Benchmark", "status": "planned", "created_at": "2026-06-11T16:29:43.621431+00:00"}
+  {"id": "STUDY-003", "title": "Condition Performance", "status": "design", "created_at": "2026-06-11T16:29:43.621431+00:00"}
+  {"id": "STUDY-004", "title": "Framework Ambiguity", "status": "design", "created_at": "2026-06-11T16:29:43.621431+00:00"}
+  {"id": "STUDY-005", "title": "Continuous Replication", "status": "planned", "created_at": "2026-06-11T16:29:43.621431+00:00"}
+  {"id": "STUDY-006", "title": "Participant Recognition", "status": "collecting", "created_at": "2026-06-11T16:29:43.621431+00:00"}
+  {"id": "STUDY-007", "title": "Learning Effect", "status": "planned", "created_at": "2026-06-11T16:29:43.621431+00:00"}
+  {"id": "STUDY-008", "title": "Professional Reviewer", "status": "collecting", "created_at": "2026-06-11T16:29:43.621431+00:00"}
+  {"id": "STUDY-009", "title": "Org-Psychology Readiness", "status": "collecting", "created_at": "2026-06-11T16:29:43.621431+00:00"}
+  {"id": "STUDY-001", "title": "AI Reproducibility", "status": "active", "created_at": "2026-06-05T09:08:50.968042+00:00"}
+
+==============================================================================
+2. THE CONSTRUCTED CORPUS  (bench_records 5, bench_gold 3)
+==============================================================================
+  Control assessment, vendor access. We    kind=constructed  active=True open=True
+  Mid-year performance review. Three obj   kind=constructed  active=True open=True
+  Investigation summary, harassment comp   kind=constructed  active=True open=True
+  Termination recommendation. After full   kind=constructed  active=True open=True
+  FOIL determination. The request sought   kind=constructed  active=True open=True
+
+  bench_gold (the fixed key for these 5):
+    determination=gap_identified   conditions={"basis_identification": "gap", "cold_reviewer_clarity": "gap", "accountability_support": "gap", "reasoning_tr
+    determination=review_required  conditions={"basis_identification": "review", "cold_reviewer_clarity": "review", "accountability_support": "review", "rea
+    determination=ready            conditions={"basis_identification": "pass", "cold_reviewer_clarity": "pass", "accountability_support": "pass", "reasoning
+
+==============================================================================
+3. RUNG 2a RELIABILITY  (bench_labels, 129 rows)
+==============================================================================
+  modes: {'jrs': 113, 'normal': 16}
+  determinations: {'review_required': 29, 'gap_identified': 78, 'ready': 22}
+  distinct raters: 25  (experts 8, R- codes 17)
+  distinct records labelled: 15
+  self-declared domains: {'AI Governance': 32, 'Other': 39, 'HR': 17, 'Records / Information Governance': 5, 'Quality Assurance': 5, 'Compliance': 5, 'Management': 16, 'Inny': 5, 'Compliance / Data Privacy': 5}
+
+  AC1 (jrs mode, one label per rater per record):
+    experts      AC1=0.739  labels=36 raters=8 records=10
+    trained      AC1=0.623  labels=68 raters=14 records=10
+    all raters   AC1=0.665  labels=104 raters=22 records=10
+
+  condition-level, Ready vs Gap -- RAW jrs labels (draft's condition table basis): n=113, Ready 14, Gap 77
+    accountability_support         Ready 14/14 (78-100%)  Gap  7/77 (9%, 4-18)  Fisher 1.1e-11
+    basis_identification           Ready 14/14 (78-100%)  Gap 20/77 (26%, 17-37)  Fisher 1.3e-07
+    cold_reviewer_clarity          Ready 14/14 (78-100%)  Gap 15/77 (19%, 12-30)  Fisher 7.3e-09
+    reasoning_traceability         Ready 14/14 (78-100%)  Gap 10/77 (13%, 7-22)  Fisher 1.8e-10
+    temporal_reconstructability    Ready 14/14 (78-100%)  Gap 10/77 (13%, 7-22)  Fisher 1.8e-10
+
+  condition-level, Ready vs Gap -- DEDUPED jrs labels (draft's AC1 basis): n=104, Ready 14, Gap 69
+    accountability_support         Ready 14/14 (78-100%)  Gap  6/69 (9%, 4-18)  Fisher 1.5e-11
+    basis_identification           Ready 14/14 (78-100%)  Gap 18/69 (26%, 17-38)  Fisher 1.8e-07
+    cold_reviewer_clarity          Ready 14/14 (78-100%)  Gap 14/69 (20%, 12-31)  Fisher 1.5e-08
+    reasoning_traceability         Ready 14/14 (78-100%)  Gap  9/69 (13%, 7-23)  Fisher 3.1e-10
+    temporal_reconstructability    Ready 14/14 (78-100%)  Gap 10/69 (14%, 8-25)  Fisher 7.4e-10
+
+==============================================================================
+4. RUNG 1 REPRODUCIBILITY  (study_runs, 64 rows)
+==============================================================================
+  runs with a computable agreement: 64
+  date range: 2026-06-05 to 2026-08-12
+  LATEST: 2026-08-12  87.8% on 15 records, 3 models / 3 providers, mode=cross_vendor
+  mean 85.8%   median 86.7%   min 66.7%   max 100.0%   SD 7.1
+  modes present: {'cross_vendor': 55, None: 9}
+  last 30 runs mean: 87.3%
+  latest run, per-record agreement (15 records):
+     moderate         0.800
+     weak             1.000
+     strong           1.000
+
+==============================================================================
+5. AI VERDICTS ON THE CORPUS  (bench_ai_verdicts, 5 rows)
+==============================================================================
+  model=claude-haiku-4-5-20251001 (m determination=gap_identified   conditions={"basis_identification": "gap", "cold_reviewer_clarity": "gap", "accountability_
+  model=claude-haiku-4-5-20251001 (m determination=ready            conditions={"basis_identification": "pass", "cold_reviewer_clarity": "pass", "accountabilit
+  model=claude-haiku-4-5-20251001 (m determination=gap_identified   conditions={"basis_identification": "gap", "cold_reviewer_clarity": "review", "accountabili
+  model=claude-haiku-4-5-20251001 (m determination=ready            conditions={"basis_identification": "pass", "cold_reviewer_clarity": "pass", "accountabilit
+  model=claude-haiku-4-5-20251001 (m determination=gap_identified   conditions={"basis_identification": "gap", "cold_reviewer_clarity": "gap", "accountability_
+
+==============================================================================
+6. RUNG 3 REAL CASES  (bench_outcomes 54, realcase_progress 2)
+==============================================================================
+  by contributor: {'V-HR-01': 22, 'E-08': 32}
+  by domain:      {'HR / Employment': 22, 'Public records / FOIL': 32}
+  jrs_read:       {'review_required': 15, 'ready': 31, 'gap_identified': 8}
+  outcome:        {'failed_appeal': 22, 'challenged': 13, 'held_up': 12, 'failed_audit': 7}
+
+  realcase_progress (the aggregate view the dashboard uses):
+    E-08       Public records / FOIL    cases=32  ready=18  review=9   gap=5   held=5   chal=7   failapp=15 
+    V-HR-01    HR / Employment          cases=22  ready=13  review=6   gap=3   held=7   chal=6   failapp=7  
+
+==============================================================================
+7. FINDINGS LOG  (findings 2, findings_history 55, research_questions 10)
+==============================================================================
+  {"id": "3e6defc2-7583-4e1e-9c6b-683e8c44bd0e", "created_at": "2026-08-12T06:29:07.078886+00:00"}
+  {"id": "3e932769-5bde-4ca7-b0ea-4f8e9ee7a8e8", "created_at": "2026-07-07T05:16:27.157042+00:00"}
+
+  findings_history: 55 rows, 2026-06-12 to 2026-08-12
+  columns: ['classification', 'created_at', 'headline', 'id', 'k', 'metrics', 'model', 'overall_agreement', 'per_record', 'records', 'study_id']
+     k                  n=55  min=3 max=5 latest=5
+     overall_agreement  n=55  min=0.667 max=0.933 latest=0.933
+     records            n=55  min=3 max=15 latest=3
+
+  research_questions:
+    {"id": "7ddb623b-3153-4ed3-82b3-734a2978bd8c", "question": "Do different professions identify different documentation weaknesses?", "status": "Collecting Data"}
+    {"id": "d89565dc-0711-49a4-9dbb-d46fd3912152", "question": "Does repeated exposure improve recognition accuracy?", "status": "Collecting Data"}
+    {"id": "b12f1d1f-8bb2-48d4-a664-29ab7e9da5a0", "question": "When a model reviews the same record repeatedly, what does its self-consistency actually measure?", "status": 
+    {"id": "f720cabe-4df1-4930-be79-ac1e7325826b", "question": "Do different professions identify different documentation weaknesses?", "status": "Collecting Data"}
+    {"id": "933d4bfc-a764-4e4d-90ad-dab9934565ff", "question": "Does repeated exposure improve recognition accuracy?", "status": "Collecting Data"}
+    {"id": "7a660c45-5e3b-45f4-88b0-df63ea383b01", "question": "When a model reviews the same record repeatedly, what does its self-consistency actually measure?", "status": 
+    {"id": "924100a5-8d8d-4ed1-b049-9e9fa250aa5a", "question": "Can reviewers agree a record has a problem while disagreeing about which problem it is?", "status": "Collectin
+    {"id": "7a5bb990-b46a-4a5c-8741-e7e2eabfebaf", "question": "Can reviewers agree a record has a problem while disagreeing about which problem it is?", "status": "Collectin
+    {"id": "3c2a0d3d-93d9-4e41-8d4a-1a3d9abff4af", "question": "Why might chronology deficiencies be identified less often than unsupported conclusions?", "status": "Collecti
+    {"id": "6ccd5f96-deda-4802-91ca-64013589ce00", "question": "Why might chronology deficiencies be identified less often than unsupported conclusions?", "status": "Collecti
+
+==============================================================================
+8. PARTICIPATION  (pilot_progress 27, armb_progress 21)
+==============================================================================
+  Arm A reads distribution: {46: 1, 0: 11, 24: 9, 48: 4, 31: 1, 25: 1}
+  Arm A complete>=24: 16 | started but <24: 0 | zero: 11
+  Arm A last activity overall: 2026-08-03T14:27:34
+  Arm B reads distribution: {24: 20, 9: 1}
+  Arm B by arm_code: {'B2': 13, 'B1': 8}
+  Arm B complete>=24: 20 | below 18 bar: [('RR-108', 9)]
+  Arm B last activity overall: 2026-08-12T10:33:27
+
+==============================================================================
+9. SITE TELEMETRY  (interaction_events, 572 rows)
+==============================================================================
+  columns: ['created_at', 'id', 'payload', 'source', 'type']
+    type               {'role_select': 4, 'module_complete': 25, 'observational_survey': 1, 'module_recognition': 9, 'download': 273, 'endorse': 74, 'view': 160, 'field_touched': 1, 'click': 25}
+    date range: 2026-07-10 to 2026-08-15
+
+==============================================================================
+10. NOT ANALYSABLE FROM HERE
+==============================================================================
+  ai_pilot_reads       THE per-record judgments for the detection panel AND Arm B. 0 rows under the anon key.
+  bench_experts        rater identities and countries. 0 rows.
+  bench_preflight      preflight/test rows. 0 rows.
+  engine_reviews       partner engine reviews. 0 rows.
+  pilot_contacts       names, emails, consent. 0 rows, and correctly so.
+  guide_downloads      download log. 0 rows.
+  finding_responses    0 rows.
+  finding_poll_votes   0 rows.
+
+  Every one returns HTTP 200 with an empty array: row-level security is
+  filtering them, not reporting an empty table. Reading them needs the
+  service-role key, which is not in this environment.

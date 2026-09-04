@@ -48,15 +48,65 @@ WITHDRAWALS = [
     {
         "code": "V-AI-08",
         "date": "2026-08-16",
+        # BASIS. Corrected 2026-08-29 on the owner's statement: "She never
+        # withdrew consent. She was an expert reviewer."
+        #
+        # The record agrees with him and always did. Every line of the roster
+        # entry says the 2026-08-16 action was taken AT THE OWNER'S
+        # INSTRUCTION. Nothing anywhere says she asked for it. This register
+        # nevertheless called her a withdrawn contributor, the manuscript said
+        # a contributor had withdrawn "at her election", and on 2026-08-29 an
+        # anonymity election was written into ANON_CODES on her behalf. All
+        # three asserted an act she did not perform. Recording an election
+        # someone did not make is the same class of error as ignoring one they
+        # did, and it is worse here because it was attributed to her in print.
+        #
+        # The suppression stays, because the credit removal was instructed and
+        # has not been reversed by a further instruction; the 2026-08-19
+        # reinstatement was scoped to her link alone. What changes is the
+        # reason it is recorded under, and what may be said about her.
+        #
+        #   owner_instructed_credit_removal   the credit came off on the
+        #                                     owner's instruction. No election
+        #                                     by the contributor is implied or
+        #                                     may be asserted anywhere.
+        #   contributor_withdrew              the contributor asked. Only this
+        #                                     basis may be described as a
+        #                                     withdrawal, and only this basis
+        #                                     requires an ANON_CODES entry.
+        "basis": "owner_instructed_credit_removal",
+        # THE BARE FIRST NAME IS DELIBERATELY NOT LISTED. It was added on
+        # 2026-08-27 and reverted the same hour: the repository contains 62
+        # mentions of GABRIELA BAR, a different person and an active
+        # collaborator, against 3 of Gabriela Cortez. Listing the bare name
+        # produced 77 traces, almost all of them her. The original author
+        # had already written this warning into the file and I overrode it
+        # before checking. The greeting problem it was meant to solve is
+        # handled where it belongs, in the generator, which addresses a
+        # withdrawn contributor by code rather than by name.
         "names": ["Gabriela Cortez", "Gabi Cortez", "Cortez", "Gabi"],
         "withheld": "(name withheld)",
-        # NO IDENTIFIER LIST FOR THIS WITHDRAWAL, deliberately. The obvious
-        # candidate is "Maryland Commission on Civil Rights", and it is wrong:
-        # that is the FIRST AUTHOR's former post and it appears in 20 outreach
+        # NO IDENTIFIER LIST FOR THIS WITHDRAWAL, deliberately, but NOT for
+        # the reason first written here.
+        #
+        # CORRECTED 2026-08-29. The earlier note said "Maryland Commission on
+        # Civil Rights" is wrong as her identifier because it is the FIRST
+        # AUTHOR's former post. That is half true and it read as denying an
+        # association the record actually shows. It is the first author's
+        # former post AND it is hers: the credit strings this withdrawal
+        # removed read "Gabriela Cortez (Maryland Commission on Civil Rights)"
+        # (see the CREDIT rules below), and the roster line retired on
+        # 2026-08-16 read "Civil-rights records and bilingual intake; Maryland
+        # Commission on Civil Rights". They worked at the same body, which is
+        # how the first author knows her.
+        #
+        # The operational decision is unchanged and still correct. The string
+        # cannot serve as a scan identifier because it appears in 20 outreach
         # files, the reviewer page, the training page and the manuscript byline
-        # for reasons that have nothing to do with her. Treating it as her
-        # identifier produced 20 false positives on the first run. It was
-        # removed from her own rows individually instead, by the rules below.
+        # for the FIRST AUTHOR's reasons, and using it produced 20 false
+        # positives on the first run. It was removed from her own rows
+        # individually instead, by the rules below. The reason is
+        # disambiguation, not absence of association.
         "identifiers": [],
         # PARTIALLY REINSTATED 2026-08-19 at the owner's instruction: "She did
         # not withdraw from study ... should get a link ... just like all the
@@ -366,6 +416,22 @@ def apply_rules(dry_run):
 def scan_traces():
     """Every surviving occurrence of a withdrawn name or identifier."""
     traces = []
+
+    # FILENAMES ARE SCANNED TOO. Added 2026-08-27: the scan read file contents
+    # only, so a withdrawn name in a PATH was invisible. A generated reminder
+    # file called V-AI-08_Gabriela_Cortez.md sat in the tree and the check
+    # reported clean. A name is exposed by a directory listing just as surely
+    # as by a paragraph.
+    for rel, full in walk_text_files():
+        for w in WITHDRAWALS:
+            if rel in w.get("name_allowed_in", []):
+                continue
+            flat = rel.replace("_", " ").replace("-", " ").replace("/", " ")
+            for name in w["names"]:
+                if re.search(r"\b%s\b" % re.escape(name), flat):
+                    traces.append((rel, 0, "%s (in the filename)" % name))
+                    break
+
     for rel, full in walk_text_files():
         body = read(full)
         if body is None:

@@ -1,0 +1,102 @@
+# International Study — Current Results Snapshot (2026-07-31)
+
+Computed from real collected data this date. Two things are separated deliberately: what the data can support **now**, and what is **not yet computable** so it is not reported as if it were.
+
+---
+
+## 1. Enrollment / completion (live, Supabase anon aggregate views)
+
+- **Arm A (expert + trained panel, V-AI-##): 14 complete** (>=24 reads), 1 in progress (Niloofar Kandi, 22/24).
+  Complete: SungSoo In, Sidharth Borah, Nigel Hee, Saurabh Nanda, Jake McDonough, Frank Schouten, Nitin Deshpande, (name withheld, V-AI-08), Lawal Olabanji, Andrey Ekhmenin, Kyle McMullan, Gabriela Bar, Hekim Colpan, Andres Lage Freire.
+- **Arm B (randomized comparison, RR-###): 10 complete.**
+  - **B1 (JRS condition): 4** — RR-104, RR-106, RR-124, RR-126
+  - **B2 (baseline / general prompt): 6** — RR-101, RR-107, RR-109, RR-110, RR-121, RR-125
+  - In progress: RR-108 (B1, 9/24).
+  - No completer excluded by the <18/24 rule (all 10 are at 24).
+
+---
+
+## 2. Reliability — Rung 2a (COMPUTABLE NOW, from `construct_validity_data.csv`, 108 labels / 10 records)
+
+Gwet's AC1, 20,000-rep subject bootstrap, seed 20260727 (`compute_ac1_ci.py`).
+
+| Panel | Records | Raters (mean/rec) | Raw agreement | Gwet AC1 | Bootstrap 95% CI |
+|---|---|---|---|---|---|
+| Experts (E-codes) | 10 | 8 (3.60) | 80.0% | **0.739** | [0.427, 1.000] |
+| Trained (all labels) | 10 | 13 (7.20) | 71.9% | **0.634** | [0.309, 0.896] |
+| Trained (deduplicated) | 10 | 13 (6.30) | 71.5% | **0.624** | [0.301, 0.886] |
+
+- Floor check (point >= 0.61): **passes** for all three (experts 0.739, trained 0.624–0.634).
+- Floor check (CI-low >= 0.41): **fails** — lower bounds sit at 0.30–0.43. Wider CIs are the honest consequence of the modest rater count and must be reported, not hidden.
+- Secondary (experts): Krippendorff alpha 0.617, Fleiss kappa 0.646. Per-condition AC1 (experts): basis 0.25, cold 0.44, accountability 0.36, reasoning 0.55, temporal 0.34.
+
+This is the reliability substudy dataset (8 expert E-codes + 13 trained R-codes on the 10-record bench). It is not the same table as the Arm B detection responses below.
+
+---
+
+## 3. Arm B accuracy comparison (Floor 3) + detection vs held-out key (Floor 2 / H3) — NOT COMPUTABLE THIS SESSION
+
+The headline "does JRS beat the baseline" number requires the **raw per-record judgments** of the 10 Arm B completers (each record marked grounded/ungrounded), scored against the verified answer key. Two blockers, stated plainly:
+
+1. **Data access.** The raw response rows (`ai_pilot_reads`, batch `armB`) are RLS-locked. The anon aggregate views used above expose **read counts only**, not the labels. No service-role key is present in this session (`SUPABASE_ACCESS_TOKEN` not set), so the labels cannot be pulled or scored here. Producing an accuracy figure without that data would mean inventing it, which is not done.
+2. **Design floor on B1.** Per `ArmB_Design.md`, the minimum viable is **5–8 participants per condition**. B1 (JRS) currently has **4** completers, below the 5-per-arm floor. B2 has 6. Even with the raw data in hand, the B1 vs B2 difference at n=4/6 would be reported with a wide CI and flagged as preliminary, not confirmatory.
+
+### To unblock the accuracy results, one of:
+- Provide a service-role key / an export of the Arm B response rows (record_id, condition, determination per RR-code), and the analysis runs immediately against `Verified_Key.md`; **and**
+- Land at least 1 more B1 completer (RR-108 is at 9/24) to clear the 5-per-arm design floor.
+
+Until both are in hand, Floor 3 stays "in progress," consistent with the pre-registered plan (results reported only after data lock, deviations labeled).
+
+---
+
+## ARM B RESULT — computed 2026-08-01 (supersedes the "NOT COMPUTABLE" note in section 3)
+
+Source: owner ran the pre-registered scoring query in the Supabase SQL editor (postgres role) against `ai_pilot_reads` batch=armB, joined to `armb_progress` for arm assignment, scored against the verified key (binary Ready-vs-not-Ready collapse: B1 jrs_read='ready' -> grounded; B2 rely='yes' -> grounded). Reviewers with >=18 scored answers included.
+
+| Arm | Reviewers | Mean accuracy |
+|---|---|---|
+| B1 (JRS condition) | 4 | 74.0% |
+| B2 (baseline / general prompt) | 6 | 72.9% |
+
+- Difference (B1 - B2) = **+1.1 percentage points**.
+- **Floor 3 (JRS adds value: B1 > B2 with the difference CI excluding zero): NOT met.** A 1.1-point gap at n=4 vs n=6 is within noise; the CI on the difference comfortably includes zero. Reported as a null result on "the standard adds value" in the current sample, per the pre-registered plan (a failed threshold is reported, not omitted).
+- Both arms sit above the 50% chance line (72.9-74.0%), consistent with reviewers detecting groundedness above chance (Floor 2 direction), with wide intervals at this n.
+- Preliminary: B1 has only 4 completers (design floor 5-8/arm); RR-108 (B1) is at 9/24. Exact difference CI pending the per-reviewer accuracies (one more small query).
+
+---
+
+## FULL RESULT — all arms scored 2026-08-01 (owner ran the all-arms query)
+
+| Group | Who they are | Reviewers | Mean accuracy |
+|---|---|---|---|
+| Arm A | Expert / trained panel, using JRS | 15 | **82.6%** |
+| Arm B1 | Fresh (JRS-naive) participants, using JRS | 4 | **74.0%** |
+| Arm B2 | Fresh participants, plain prompt (no JRS) | 6 | **72.9%** |
+
+**The causal test (Arm B, randomized).** B1 vs B2 is the only clean comparison, because B1 and B2 are the same kind of fresh participants split at random, so any gap is attributable to JRS, not expertise. Result: **74.0% vs 72.9%, a +1.1 point difference** — within noise at n=4 vs n=6, CI includes zero. **Floor 3 (JRS adds value) is NOT met.** Null result on "the standard beats a plain prompt," reported per the pre-registered plan.
+
+**Arm A is not a JRS effect.** The expert panel scored highest (82.6%), but there is no expert-without-JRS control, so the 82.6% reflects reviewer expertise, not the standard. It cannot be cited as evidence that JRS raises accuracy. The randomized Arm B exists precisely to separate the two, and it shows no JRS benefit in this sample.
+
+**What holds up.** All three groups sit well above the 50% chance line (72.9-82.6%), consistent with reviewers detecting groundedness above chance (Floor 2 direction).
+
+**Honest headline for the paper/IP:** reviewers can reliably tell grounded records from ungrounded ones and agree with each other doing it; JRS performs on par with an unaided expert prompt among naive reviewers (no measurable added value yet); experts do best, but that is expertise, not the standard. Preliminary: B1 has only 4 completers (design floor 5-8); more Arm B finishers could move the JRS-vs-baseline number.
+
+---
+
+## EXACT STATS — via connected Supabase integration, 2026-08-01
+
+Per-reviewer accuracy (>=18 records scored), computed directly against the verified key:
+
+| Group | Reviewers | Mean | SD | Range |
+|---|---|---|---|---|
+| Arm A (expert, JRS) | 15 | 82.5% | 21.6 | 37.5–100 |
+| Arm B1 (JRS) | 4 | 74.0% | 24.4 | 45.8–100 |
+| Arm B2 (baseline) | 6 | 72.9% | 31.8 | 33.3–100 |
+
+**JRS minus baseline (B1 - B2) = +1.1 pts.** Welch two-sample: SE ≈ 17.8, df ≈ 7.7,
+**95% CI ≈ [-41, +43] percentage points.** The interval is enormous and straddles
+zero by a wide margin — the null result is not marginal, it is decisive at this n.
+Floor 3 (JRS adds value) remains firmly NOT met.
+
+RR-108 (B1, in progress) has 9 distinct records / 11 reads, unchanged since 2026-07-31;
+still below the 18-record inclusion floor, so B1 stays at n=4.

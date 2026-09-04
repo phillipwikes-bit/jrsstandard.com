@@ -51,7 +51,7 @@ export const ROSTER = {
   // or from any study-record export. The roster CSV is a study record and does
   // not carry consent state. scripts/check_zero_drift.py fails if the name
   // reappears anywhere in api/, the served pages, or the research deliverables.
-  'agbhlh6n4d': { code:'V-AI-08', kind:'panel',  first:'Gabriela',  name:'Gabriela Cortez',     title:'Civil rights records and bilingual intake',             org:'',                        named_on_file:true },
+  'agbhlh6n4d': { code:'V-AI-08', kind:'panel',  first:'Gabriela',  name:'Gabriela Cortez',     title:'Civil rights records and bilingual intake',             org:'',                        named_on_file:null },
   's3ln3ud13s': { code:'V-AI-10', kind:'panel',  first:'Lawal',     name:'Lawal Olabanji',      title:'Operations and records management',                     org:'ALTV',                    named_on_file:true },
   'h5dypgmtdu': { code:'V-AI-11', kind:'panel',  first:'Andrey',    name:'Andrey Ekhmenin',     title:'Founder, EAS; governance diagnostics and post-execution review', org:'EAS',            named_on_file:true },
   // RECLASSIFIED 2026-08-15 from kind:'author' to kind:'panel'. He is a Study

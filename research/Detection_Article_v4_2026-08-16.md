@@ -1,0 +1,577 @@
+# Detectability of Decision Reconstruction Risk in AI-Generated Decision Records: An International Expert Study
+
+**Authors.** Phillip Wikes (Creator of the Justification Review Standard; former Lead Civil Rights Officer, Maryland Commission on Civil Rights) and Ubayet Hossain, FRM (Associate Director, Model Validation, KPMG India).
+
+**Author contributions.** P.W. conceived Decision Reconstruction Risk and the JRS review method, constructed the validation corpus, wrote the author-side intended classification of each record, assembled the international reviewer panel, and led the writing. U.H. designed the reliability and validation framework: the reference-panel design, the chance-corrected agreement statistics, and the pre-registered decision floors and analysis plan. Neither author took part in the blind reproduction of the answer key, and neither author graded any record in the detection panel.
+
+**Competing interests.** Declared in full in Section 9. The first author created the construct and the instrument under study and would benefit from its adoption. That is a material conflict and it is not mitigated by the design alone; Section 9 states what was done about it and what was not.
+
+---
+
+> *A policy is only as resilient as the diversity of the minds that test it.*
+
+---
+
+## Abstract
+
+**Background.** Generative AI increasingly drafts high-stakes corporate, administrative, and investigative records. Fluent text can read as complete and well supported while the evidentiary basis for its conclusions is absent from the record itself. A record whose conclusion cannot be reconstructed from the record alone cannot be independently examined, contested, or defended. We name this property Decision Reconstruction Risk (DRR) and define it as a relational property of the record, the decision it documents, and the information available to an independent reviewer.
+
+**Objective.** This paper asks a single question, which is the first one a measurement programme has to answer: given an operational definition of DRR, can independent domain experts distinguish records that satisfy it from records that do not? If they cannot, no governance control resting on human review of documentation can work.
+
+**Methods.** A balanced corpus of 24 constructed, de-identified, AI-generated records (12 grounded, 12 unsupported) was judged by an international panel of independent experts against a pre-specified reference classification fixed before recruitment and independently reproduced by raters blind to the study hypotheses. Reviewers worked independently, blind to the key and to one another, in a personal capacity. Analysis followed a plan registered before the data were examined, with decision thresholds set in advance. Accuracy is analysed at the participant level, treating each reviewer rather than each read as the unit of observation.
+
+**Result.** Sixteen reviewers across 11 countries on 5 continents completed the full corpus, producing 384 graded reads. Panel accuracy against the reference classification was 83.9 percent (95 percent CI 72.7 to 95.1 at participant level), with sensitivity 87.0 percent for unsupported records and specificity 80.7 percent for grounded ones. This clears the pre-registered threshold, which required a point estimate of at least 70 percent with the lower confidence bound above chance. Reviewer-level accuracy ranged from 37.5 to 100 percent (SD 21.0), a dispersion that is reported as a finding in its own right rather than as noise around the mean.
+
+**What this establishes and what it does not.** It establishes that an operationalised documentation-risk construct is detectable by independent experts on constructed records at the two ends of the severity range. It does not establish criterion validity against real documentation, measurement invariance across jurisdictions, workflow independence, psychometric validation of the five conditions, or any advantage of the instrument over unaided expert judgment. Each of those is a separate study, and Section 10 sets out the programme they belong to.
+
+**Registration.** The protocol and analysis plan were registered before data collection. Data closed 15 August 2026.
+
+---
+
+## 1. Introduction
+
+As generative AI automates more of the drafting of high-stakes records, the same fluency that makes it attractive makes its output difficult to interrogate. A model can produce a record that reads as thorough, professional, and complete while the evidence that would justify its conclusions never appears on the page. When the author who held that evidence is no longer available, and the record must be examined on its own, the record may simply fail to explain itself.
+
+We call this property Decision Reconstruction Risk (DRR): the condition in which a record does not allow an independent reviewer to reconstruct the basis for a consequential decision from the record and the information that reviewer can reasonably be expected to hold. DRR is not a claim that a decision was wrong. It is a claim that the decision cannot be shown to be right from the record. In a civil rights intake, an employment determination, a compliance finding, or a public-records decision, that gap is the difference between a record that can be defended and one that cannot.
+
+The stakes fall on two parties at once. For the person the record describes, an unreconstructable record removes the practical ability to understand a decision touching their rights, livelihood, or dignity, and to contest it on fair terms. For the organisation, the same gap is a latent liability: a record that cannot be reconstructed cannot be defended when tested by a complaint, an audit, a regulator, or a court. DRR is unusual among governance problems in that the individual's interest in an explanation and the institution's ability to defend its own decisions are threatened by one and the same defect.
+
+Before asking whether any particular review method helps, there is a prior question to settle: given an operational definition, is DRR detectable at all? If independent experts, reading a record cold, cannot tell one whose reasoning is present from one whose reasoning is absent, then documentation risk is not a governable property and no control built on human review can work. This paper reports a pre-registered test of that question.
+
+**What the reader should hold us to.** The evidentiary chain in this paper runs: an operational definition, a corpus constructed to instantiate it, an answer key reproduced by raters blind to the hypotheses, blinded expert detection, and a pre-registered statistical criterion. The chain establishes that the operationalisation is recognisable to independent experts. It does not, by itself, establish that the operationalisation captures a phenomenon that exists independently of the authors' definition of it. Section 2.4 states that limit as plainly as we know how, and Section 10 says what would close it.
+
+## 2. Background and conceptual position
+
+### 2.1 The measurement layer this addresses
+
+Most AI governance instruments measure the system or the process. Model cards document a model's intended use and evaluation (Mitchell et al., 2019). Datasheets document a dataset's provenance and composition (Gebru et al., 2021). Internal audit frameworks trace an organisation's development lifecycle (Raji et al., 2020). Risk management frameworks specify functions an organisation should perform (NIST, 2023; ISO/IEC 42001:2023). Regulatory regimes require logging, technical documentation, and human oversight for high-risk systems (Regulation (EU) 2024/1689).
+
+Each of these takes the system, the dataset, the organisation, or the lifecycle as its object. None takes as its object the individual documentary artefact that a consequential decision leaves behind, and asks whether that artefact, read cold by someone who was not there, permits reconstruction of why the decision went the way it did.
+
+That artefact is what accountability regimes actually examine. When a determination is challenged, the reviewer does not re-interview the decision-maker's memory. The reviewer reads the record. Cobbe, Lee and Singh (2021) make the closest adjacent argument, that automated decision-making systems should be designed to be *reviewable*, with the record-keeping needed for later scrutiny built in rather than reconstructed afterwards. Our contribution sits downstream of theirs: given a record that already exists, is its reconstructability a property that can be measured, and can independent experts measure it consistently?
+
+### 2.2 DRR against adjacent constructs
+
+DRR is close enough to several established concepts that its distinctness has to be argued rather than asserted. The table states what each adjacent concept asks and what, if anything, is left over.
+
+| Concept | Object | What it asks | What DRR asks that this does not |
+|---|---|---|---|
+| Explainability (Burrell, 2016; Selbst and Barocas, 2018) | model or output | Can the system's output be explained? | Whether the *record* an accountable human signed carries the basis, whether or not a model was involved |
+| Auditability (Raji et al., 2020) | organisation, lifecycle | Can the system and process be examined? | Whether one artefact suffices on its own, without access to the organisation |
+| Traceability (Regulation (EU) 2024/1689) | data, actions, events | Can actions and data be traced through the system? | Whether the inferential step from evidence to conclusion is present in the human-readable record |
+| Provenance (Gebru et al., 2021) | data, artefacts | Where did this come from? | Whether origin, once known, is sufficient to reconstruct the decision |
+| Contestability (Almada, 2019; Kaminski and Urban, 2021) | process, remedy | Can the affected person challenge the outcome? | Whether the record supplies the material a challenge would need. Contestability is the interest; DRR is a measurable precondition |
+| Technological due process (Citron, 2008; Citron and Pasquale, 2014) | procedure | Does the procedure afford notice and a hearing? | Whether the specific record satisfies the evidentiary requirement that notice presupposes |
+| Documentation compliance | checklist | Was the required information recorded? | Whether what was recorded is *sufficient*, which a completeness checklist cannot see |
+| Reviewability (Cobbe et al., 2021) | system design | Is the system built so it can be reviewed later? | Whether an already-produced record, designed or not, passes the test |
+| **DRR** | **the individual record** | **Can an independent reviewer reconstruct the basis for this consequential decision from this record?** | |
+
+The claim of novelty is narrow and we state it narrowly. It is not that reconstructability has never been valued: it is presupposed throughout administrative law and audit practice. It is that reconstructability of the individual record has not been operationalised as a measurable property with a stated instrument, a stated scale, and reported detection and agreement statistics. That is what this paper supplies and what the table's final row is meant to isolate.
+
+### 2.3 Why this is an AI ethics problem and not a records-management problem
+
+The honest version of this argument is not that AI produces bad records. Humans produce unreconstructable records without assistance and always have.
+
+The AI-specific proposition is about the *epistemic conditions* under which consequential documentation is now produced. Language models are optimised for fluency, and fluency and evidentiary grounding are separable properties (Bender et al., 2021; Ji et al., 2023). Generative assistance therefore raises the apparent completeness, standardisation, and professional register of a record without any guarantee that the evidentiary chain justifying the conclusion is preserved in it. The reader's ordinary heuristics for detecting a thin record, which lean heavily on surface signals such as hedging, disorganisation, and register, become less diagnostic precisely as the volume of assisted drafting rises.
+
+This is opacity introduced at the documentation layer rather than at the model layer. Burrell (2016) distinguishes opacity arising from technical complexity, from proprietary concealment, and from the mismatch between machine representation and human reasoning. The variety at issue here is documentation-layer opacity: a record that is entirely human-readable, contains no technical artefact, and is nonetheless opaque as to the basis of its own conclusion, because fluent prose has been substituted for evidentiary content. Ananny and Crawford (2018) argue that transparency as visibility is insufficient for accountability. DRR is one attempt to specify what, beyond visibility, a record must carry.
+
+That is the sense in which this belongs in an AI ethics venue rather than a records-management one: generative assistance changes the base rate and the detectability of the failure, not the existence of the failure.
+
+### 2.4 DRR is relational, and the construct-validity limit that follows
+
+An earlier formulation of this work described DRR as an intrinsic property of a record. That formulation does not survive scrutiny and we abandon it here.
+
+Reconstructability is relational. Whether a record permits reconstruction depends on who is reading it, what question they are trying to answer, what background information they may legitimately bring, what the stakes are, and what the governing legal or organisational context requires. The same file may be sufficient for a supervisor who shares the case context, insufficient for an external auditor, and unintelligible to the person it describes. A construct that ignores this will produce measurements that disagree for reasons the construct cannot explain.
+
+We therefore define DRR relative to a stated reviewer standpoint: **an independent reviewer, competent in the domain, with access to the record and to generally available domain knowledge, and without access to the original decision-maker or to material outside the record.** Every measurement in this paper is made from that standpoint, and every reviewer was instructed to adopt it. A different standpoint is a different measurement, and the construct does not claim otherwise.
+
+**The limit this leaves.** The corpus was constructed to instantiate the authors' operationalisation of DRR, and the answer key encodes that operationalisation. A finding that experts recover the key is therefore, in the first instance, a finding that the operationalisation is *recognisable*. It is evidence of internal coherence and of communicability, both necessary conditions for a usable construct. It is not evidence that the construct carves a phenomenon at a joint that exists independently of the definition. Distinguishing those requires criterion validation against outcomes not generated by the authors, which is Study 4 in Section 10 and is not attempted here. Jacobs and Wallach (2021) set out why this distinction matters particularly in computational settings, where an operationalisation can circulate as if it were the construct.
+
+### 2.5 Three related properties that are not the same property
+
+An earlier version of this work asserted that accessibility to the affected person is part of reconstructability. That collapse is not defensible and we separate the strands here.
+
+**Record reconstructability.** Can a competent independent reviewer recover the basis for the conclusion from the record? This is what the present study measures.
+
+**Organisational auditability.** Can the organisation, with access to systems, personnel, and adjacent files, account for the decision? A record may fail the first test and the organisation still pass the second, and the difference between them is exactly the exposure that arises when the original decision-maker is unavailable.
+
+**Affected-person comprehensibility.** Can the person the record describes follow it? A record can be fully reconstructable to a competent auditor and unintelligible to a layperson, particularly across a language barrier; and a plain-language decision letter can be perfectly comprehensible while containing nothing an investigator could use to reconstruct the decision.
+
+These three overlap and can fail together, but they are distinct and can dissociate in both directions. Only the first is operationalised and measured here.
+
+The relationship among them is nonetheless why the panel was recruited internationally rather than within one jurisdiction. Readers bring different assumptions about what may be left implicit, what counts as adequate citation, and what a reader is presumed to already know. Those assumptions are precisely what an unreconstructable record relies on to appear complete, and a blind spot shared by every reviewer is detected by none of them. The methodological argument for panel diversity is that it reduces the chance of a shared blind spot. It is not, and Section 8.4 says so explicitly, a claim that this study demonstrated cross-cultural validity.
+
+### 2.6 The ethical interests at stake
+
+Reconstructability is not valuable in itself. It is valuable because several distinct interests depend on it, and naming them separately makes clear what is lost when a record fails the test.
+
+**Contestability.** A person cannot meaningfully challenge a decision whose basis cannot be reconstructed. They can dispute the outcome, but they cannot engage the reasoning, because the reasoning is not available to engage. This is the interest Almada (2019) and Kaminski and Urban (2021) develop as a design requirement; DRR is a measurable precondition for it.
+
+**Procedural fairness.** Notice and an opportunity to be heard presuppose that there is something to be heard about. Citron (2008) argues that automated systems erode procedural protections by making the grounds of decision inaccessible. A record that does not carry its own basis produces that erosion whether or not automation was involved.
+
+**Institutional accountability.** An organisation that cannot reconstruct its own decision cannot defend it, cannot audit it, and cannot learn from it. Bovens (2007) frames accountability as a relationship in which an actor must explain and justify conduct to a forum. An unreconstructable record removes the actor's capacity to hold up their end of that relationship.
+
+**Epistemic responsibility.** An organisation should not convert fluent language into apparent evidence. Where generative assistance raises the surface quality of a record without raising its evidentiary content, the organisation has produced something that will be read as better-founded than it is. That is a harm caused by the record, not by the decision.
+
+**Institutional memory.** Accountability regimes assume a record outlives the person who wrote it. A record that only its author can explain transfers the organisation's memory into an individual's recollection, where it degrades and eventually disappears.
+
+These five are the reason a measurement layer at the record is worth building. They are also why the failure is ethically asymmetric: the organisation discovers an unreconstructable record when it is challenged, and by then the person affected has already lived with the decision.
+
+## 3. The Justification Review Standard (JRS)
+
+JRS is a record-level, pre-finalisation review method. It evaluates a single record against five conditions and yields a three-level read. It is the instrument used to construct the corpus and the instrument whose per-condition behaviour is described in Appendix B. The detection task reported in Section 6 does not require reviewers to apply it.
+
+**The five conditions.** (1) Record self-sufficiency (reconstructability): the record allows an independent reviewer to reconstruct how the conclusion was reached from the record alone. (2) Evidentiary anchoring (basis identification): the record identifies the basis for its conclusions. (3) Chronological integrity: dates, sequence, and sources hold together when read cold. (4) Decision-process traceability: the reasoning from evidence to conclusion can be followed, and the responsible parties are identifiable. (5) Evidentiary sufficiency: the record contains enough to support the weight of the decision.
+
+**The three reads.** A reviewer assigns each record one of three determinations: Ready (a later reviewer could reconstruct the conclusion from the record alone), Needs work (partly reconstructable, some basis visible with gaps), or Gap (the basis for the conclusion is not visible in the record). A separate would-rely judgment (Yes or No) records whether the reviewer would rely on the record in a high-stakes, accountable decision.
+
+**Why five, and the psychometric question that is open.** The five conditions were derived from the failure modes observed in civil-rights intake and investigative casework, not from a factor-analytic procedure. They are presented as a working operationalisation, and the following questions about them are open and unaddressed by this study: whether the five are empirically distinguishable rather than redundant, whether all five are necessary, whether any dominates the composite determination, whether they behave equivalently across document classes, and whether they form a coherent scale at all. Record self-sufficiency, basis identification, and evidentiary sufficiency are conceptually adjacent and are the first candidates for collapse under any dimension-reduction analysis. Establishing the instrument's psychometric structure requires a study designed for it, on a larger record set, with the conditions scored independently of the composite. That is Study 3 in Section 10. Until it is done, the five conditions should be read as a checklist with face validity and demonstrated per-condition association (Appendix B), not as a validated multidimensional scale.
+
+**Author-blind by design.** JRS does not ask, and does not try to detect, whether a record was written by a person or with AI assistance. That distinction is technically unreliable and beside the point: a human-authored record can be conclusory and unanchored, and an AI-assisted record can be fully traceable. What the standard tests is whether the reasoning survives separation from whoever produced it. **Note that author-blindness is a design intention of the instrument and is not a finding of this study.** Every record in this corpus is AI-generated, so nothing here demonstrates that the method performs equivalently on human-authored records. Section 8.5 states the consequence.
+
+**Proportionality is a design principle, not a result.** The documentation defensibility a record must carry plausibly scales with the stakes of the decision it supports: the tolerable level of DRR should fall as the consequence rises. This principle was surfaced by pilot reviewer Saurabh Nanda and is credited with his permission. **It is untested.** No experiment in this programme has varied stakes and measured whether required or achieved defensibility varies with them. The corpus is weighted toward high-stakes contexts, which means proportionality was assumed in construction rather than examined. It is stated here as a theoretical proposition for later validation and should not be cited as a validated feature of the standard.
+
+JRS is designed to be vendor-, model-, and workflow-agnostic: it evaluates the documentary output rather than the technology or drafting process that produced it. It is a governance layer that sits above the technology stack and evaluates the output the stack produces.
+
+## 4. Methods
+
+### 4.1 Validation architecture
+
+The study is one stage of a validation chain, and stating the whole chain is the clearest way to show which links this paper supplies and which it does not.
+
+| Stage | What it requires | Status in this paper |
+|---|---|---|
+| Construct definition | A stated property with a stated reviewer standpoint | Section 2.4 |
+| Operational definition | Observable conditions and a scale | Section 3 |
+| Case generation | Records instantiating the definition | Section 4.3, author-generated: a limitation, see 8.1 |
+| Independent criterion assessment | A key established by raters not party to the definition | Section 4.4, partially satisfied, see 4.4 |
+| Blinded detection | Independent judges, blind to the key | Section 4.5 |
+| Statistical validation | Pre-registered criterion | Section 4.7 |
+| Criterion validity | Agreement with real-world outcomes | **Not attempted.** Study 4, Section 10 |
+| Incremental validity | Advantage over unaided judgment | **Not attempted.** Study 2, Section 10 |
+
+### 4.2 Design
+
+A detection study. An international panel of independent experts judged a balanced corpus of constructed records against a pre-specified reference classification independently reproduced by blinded raters, blind to that classification and to one another's judgments. There is no control arm by design: the panel is measured against a reference classification, not against another group. A separate randomised comparison study, which does have arms, tests a different question, closed on 15 August 2026, and is reported separately. Its participants are credentialed professionals drawn from the same pool and randomised within it, so the two arms differ in the method applied and not in the expertise of the people applying it.
+
+### 4.3 Materials: the constructed corpus
+
+The corpus is 24 constructed, de-identified records drawn from high-stakes documentation contexts (HR and employment, investigations, compliance and audit, public records, and AI-assisted summaries). The set is balanced: 12 records are grounded, meaning their conclusions are supported by content present in the record, and 12 are unsupported, meaning their conclusions read as complete but lack a reconstructable basis. Records are presented unlabeled and in randomised order.
+
+**Provenance, stated in full.** Every record was generated with large-language-model assistance and then edited by the first author to instantiate the intended classification. No record derives from a real case, a real individual, or a real organisation. The generation prompts, the model and version used for each record, the generation dates, and the extent of human editing per record are recorded in the corpus construction log, which is part of the materials released under the data-availability terms in Section 11.
+
+**Spectrum, and the bias it creates.** The corpus is deliberately bimodal. Records were constructed at the two ends of the severity range so that the detection question could be asked cleanly. Real documentation is continuous: strongly reconstructable, mostly reconstructable, ambiguous, materially deficient, wholly unsupported. A corpus concentrated at the extremes makes classification easier than the operational task, in exactly the way that a diagnostic test evaluated on clear-cut cases overstates its field performance (Ransohoff and Feinstein, 1978; Whiting et al., 2011).
+
+The consequence is specific and we accept it: **the accuracy reported in Section 6 may overstate performance on a corpus containing ambiguous records and should not be interpreted as an estimate of field performance.** A three-level corpus, or better a continuous latent severity scale against which reviewer judgments could be correlated, is required before any claim about detection in realistic documentation. That design is specified in Section 10 as Study 1b.
+
+### 4.4 The answer key, and how it was established
+
+The key is the foundation of every number in this paper, and it is treated here as a methodological object rather than as a formality.
+
+**Author-side classification.** Before any reviewer was recruited, the first author recorded an intended classification for each of the 24 records, grounded or unsupported, together with the specific evidentiary defect or support that determined it and the JRS conditions implicated. This document was fixed and time-stamped before verification began and was not revised afterwards.
+
+**Independent reproduction.** The intended classification was then withheld and the corpus was given to blind raters who did not see the study's hypotheses, did not see the author-side classification, and were not told that a key existed to be recovered. They were asked to classify each record as grounded or unsupported. They reproduced the author-side classification on 24 of 24 records. There were no disagreements, so no adjudication procedure was invoked and no classification changed.
+
+**What this establishes, and what it does not.** Unanimous reproduction by raters blind to the hypotheses rules out the objection that the reference classification was fitted to the reviewers' responses after the fact. It does not, however, remove the construct-dependence described below, and it does not rule out a weaker but real objection: the raters were briefed by the authors on what "grounded" and "unsupported" mean, and that briefing carries the authors' operationalisation. The key is therefore independent of the *results* and not fully independent of the *construct*. Unanimity on 24 of 24 is also, read honestly, a second indication of the spectrum problem in Section 4.3: a corpus on which blind raters never disagree is a corpus of easy cases.
+
+**Disclosure.** The full key is released with the materials: each record's classification, the reason for it, the evidentiary defect or support identified, the JRS conditions implicated, the instructions given to the blind raters, and the record-by-record reproduction result. Nothing about the key is withheld from a reader who wants to test it.
+
+### 4.5 Participants and blinding
+
+The detection panel is an international group of independent experts in AI governance, compliance, audit, human resources, investigations, data privacy, records, and law. Every panel member is a credentialed practitioner or researcher in one of those fields and was recruited on that basis.
+
+At the data lock of 15 August 2026, 16 reviewers had completed the full 24-record set. They span 11 countries on 5 continents (Australia, Germany, India, Nigeria, Poland, Singapore, South Korea, Spain, the United Arab Emirates, the United Kingdom, and the United States) and multiple professional domains and first languages.
+
+Reviewers were blind to the answer key, blind to one another's judgments, and were not told the corpus was balanced or how many records of each class it contained. They participated in a personal capacity, without compensation. Eleven further reviewers accepted an invitation and did not begin; none started before the close.
+
+**Recruitment is not sampling.** The panel was recruited through professional networks and self-selects for interest in documentation governance. It is not a probability sample of any population and no inference to a population is drawn from it.
+
+### 4.6 Analysis and unit of observation
+
+Accuracy is computed at the participant level: each reviewer contributes one accuracy score, and the panel result is the mean of those scores with a confidence interval across reviewers. Treating each of the 24 reads as an independent observation would understate uncertainty substantially, because reads from one reviewer reflect one person applying one threshold.
+
+For each reviewer, the latest submission per record is used; resubmissions supersede earlier ones. Participants completing fewer than 18 of 24 records are excluded from accuracy analysis, per the pre-registered exclusion rule. No panel member fell below that bar; the exclusion count is zero.
+
+One stored row carries an administrative marker rather than a record judgment and is excluded from scoring. It is reported rather than dropped silently: 385 rows were retained after de-duplication, of which 384 are scorable graded reads.
+
+**Item variance is not modelled in the primary analysis, and that is a limitation rather than a choice we defend.** The participant-level analysis correctly treats reviewers as a random factor and correctly avoids pseudo-replication. It does not account for the records themselves being a second source of variance: some records are plausibly much easier than others, and a panel mean computed over a corpus containing a few very easy items will sit higher than the same panel's performance on a harder draw from the same construct. The appropriate analysis crosses both random factors, for example a mixed-effects logistic model of the form `correct ~ 1 + (1 | reviewer) + (1 | record)` (Bates et al., 2015; Barr et al., 2013), from which the reviewer and item variance components can be read directly. That analysis is specified in the amended analysis plan and is reported in Appendix C; it was added after the pre-registration and is therefore labelled exploratory throughout. It finds the reviewer component to be the dominant source of variance and the record component to be small and not distinguishable from zero at this sample size.
+
+### 4.7 Pre-registered thresholds, and why they are where they are
+
+**Detection threshold (primary).** Agreement with the held-out key must exceed chance with the lower 95 percent bound above 0.50, and must reach a pre-set target of at least 0.70.
+
+The 0.50 bound is the balanced-corpus chance rate and requires no justification beyond the design. The 0.70 target was specified before data collection as a pragmatic performance floor rather than derived from a decision-theoretic model. No validated cost model currently exists for documentation-risk detection, and the threshold should therefore not be interpreted as an established standard of acceptable performance. Building such a model is part of Study 5 in Section 10. The observed estimate and its confidence interval, 72.7 to 95.1, are reported independently of that threshold so that readers can apply their own criterion.
+
+**Reliability floor (supporting).** Gwet's AC1 among the expert panel of at least 0.61, **with the lower bound of its confidence interval at least 0.41.** Both parts are criteria. Section 7 reports the outcome of both, including the part that failed.
+
+A threshold that is not met is reported as not met.
+
+### 4.8 Ethics, consent, and confidentiality
+
+All records are constructed and de-identified; none is internal, confidential, or tied to a real individual or organisation. Participation is voluntary, uncompensated, and in a personal capacity, and may be withdrawn at any time before publication.
+
+**Ethics review status, stated plainly.** This study was not reviewed by an institutional review board. It was conducted outside any institution holding an IRB, by an independent researcher, with adult professional volunteers making judgments about wholly synthetic documents. No personal data beyond name, professional title, country, and contact address was collected from participants; no vulnerable population was involved. Participants were informed in advance that the reference classification and the corpus composition would not be disclosed during review, because disclosure would compromise the blinded detection task. The absence of formal review is a limitation and is declared rather than glossed. Independent ethical review would be sought for any successor study involving real records or real case outcomes.
+
+Reviewer responses are stored on an append-only basis and used only in aggregate. Attribution is opt-in: contributors are named only with consent, may participate anonymously, and may withdraw their name at any point. One panel member withdrew consent to be named after data close; her judgments remain in the analysis, unnamed, at her election, and the accuracy figures reported here include them.
+
+### 4.9 Supporting analyses
+
+**Machine consistency.** Each constructed record was judged by three large language models, one each from Anthropic, OpenAI, and Google, in an automated nightly process. Cross-vendor models were used, rather than three instances of one provider, so that agreement reflects the method rather than a single model lineage. The measure is mean pairwise agreement on the determination. Full documentation is in Appendix A, and the analysis is reported there rather than in the Results because it speaks to the instrument's operational stability and not to whether DRR is real.
+
+**Inter-rater reliability.** Independent raters applied the five conditions to a shared record set. Raters whose codes begin with E are experts; the remainder are trained reviewers. Agreement is assessed with Gwet's AC1 (Gwet, 2008) as the primary chance-corrected coefficient, chosen in advance for robustness to the kappa paradox under skewed marginals (Feinstein and Cicchetti, 1990; Byrt et al., 1993), with Krippendorff's alpha and Fleiss' kappa reported alongside.
+
+**Inclusion rule for the reliability analysis.** Only labels recorded under the five-condition instrument are analysed, with one label retained per rater per record and the latest submission kept. Sixteen labels in the same table were recorded by raters working under an unstructured baseline prompt rather than the five conditions. Those raters were answering a different question with a different instrument, and including them would measure agreement between two methods rather than the reliability of one. They are excluded, and the exclusion is stated here because it changes the coefficient materially: on the analysed set the trained-reviewer coefficient is 0.623, and pooling the baseline labels in drives it to between 0.16 and 0.18. The rule is the one this study was designed around and was not selected after seeing either number.
+
+## 5. Scope of the claim
+
+This study asks whether DRR, as operationalised, can be detected. Whether the five conditions improve on unaided expert judgment is a different question, tested in a separate study with its own participants, recruitment, participant codes, and registration. Those participants are credentialed professionals of the same standing as the panel reported here, randomised between applying the five conditions and applying a general prompt. They are described as JRS-naive because they had no prior exposure to the method, which is a statement about exposure and not about expertise. That study shares this corpus, which is why it is named here rather than left for a reader to discover. It closed on 15 August 2026 and will be reported separately and in full, whatever it shows.
+
+Nothing in this paper bears on that question. The boundary is stated once, here, and not repeated.
+
+## 6. Results
+
+Sixteen independent experts, working in 11 countries across 5 continents, each read the full 24-record corpus and returned 384 graded judgments, unpaid and in a personal capacity, none having discussed a record with any other.
+
+### 6.1 Primary detection result
+
+| Measure | Result |
+|---|---|
+| Panel accuracy against the reference classification | **83.9%** |
+| 95% CI (participant level, n = 16) | 72.7 to 95.1 |
+| Sensitivity (unsupported records correctly flagged) | **87.0%** |
+| Specificity (grounded records correctly passed) | **80.7%** |
+| Pre-registered threshold: point estimate at least 70% | Met |
+| Pre-registered threshold: lower bound above 50% | Met |
+
+The pre-registered criterion is cleared on both parts. Independent experts, reading constructed records cold and blind to the reference classification, distinguished records constructed to instantiate the operationalised distinction at a rate above chance and above the target set in advance.
+
+### 6.2 Dispersion
+
+| Measure | Mean | SD | Range across reviewers | Reviewers at 100% |
+|---|---|---|---|---|
+| Accuracy | 83.9% | 21.0 | 37.5 to 100 | 6 of 16 |
+| Sensitivity | 87.0% | 24.2 | 25.0 to 100 | 11 of 16 |
+| Specificity | 80.7% | 25.8 | 16.7 to 100 | 7 of 16 |
+
+### 6.3 Reviewer heterogeneity is a finding, not noise
+
+The spread in the table above is the result most likely to matter operationally, and it is reported here as a result rather than buried in limitations.
+
+Accuracy across the sixteen reviewers ranged from 37.5 to 100 percent, with a standard deviation of 21.0 points. Six reviewers classified every record correctly. Eleven of sixteen identified every unsupported record. At the other end, reviewer accuracy fell below the 50 percent chance rate.
+
+Response patterns for the low scorers were examined for straight-lining, uniform responding, and missing data. They showed genuine discrimination, varying judgments across records, and complete data. These are real observations from credentialed professionals and they are retained.
+
+**What follows for practice.** A panel mean of 83.9 percent conceals a distribution in which some reviewers are near-perfect and at least one performs below chance, and at the point of use that spread is invisible: an organisation routing a record to a single reviewer does not know which part of the distribution it has drawn from. Group-level detectability therefore does not license individual-level reliance. A production governance process built on this finding would need reviewer calibration, sampled double review, adjudication of disagreements, or all three. That is a governance design implication of the result, and it is one of the more useful things the study says.
+
+**What we cannot say about it.** We did not pre-specify an analysis of heterogeneity and we do not have the sample to characterise its sources. With sixteen reviewers, any comparison by domain, seniority, jurisdiction, or first language is uninterpretable, and we do not report one. Whether the spread reflects differing internal thresholds, differing domain fit to the corpus, differing effort, or something else is unresolved. Whether a structured instrument narrows it is a question about variance rather than about means and needs its own pre-registered test.
+
+### 6.4 Sensitivity relative to specificity
+
+Sensitivity exceeded specificity by roughly six points. **The comparison is descriptive and the gap is not statistically distinguishable from zero in this sample.** Both numbers come from the same sixteen reviewers, so the correct test is paired, and the paired data were not retained in a form that supports one; an unpaired approximation returns p = 0.48. The gap is reported as a direction and should not be cited as a measured difference.
+
+An earlier version of this work described higher sensitivity as the preferable direction of error. That normative claim is withdrawn. False positives carry real costs: unnecessary delay, administrative burden, repeated review, documentation inflation, and reviewer fatigue, and in some settings a delayed determination harms the affected person more than a thin one. Which direction of error is preferable depends on a cost model that this programme has not built. The defensible statement is the descriptive one: **in high-stakes documentation review the relative costs of false negatives and false positives should be specified explicitly before a threshold is set; in the present corpus, sensitivity exceeded specificity.**
+
+### 6.5 Inter-rater reliability, including the criterion that failed
+
+The reliability analysis follows the plan and acceptance floors specified in advance, including the choice of Gwet's AC1 as primary under an anticipated skewed determination distribution. The skew arrived as predicted.
+
+On a shared set of 10 records carrying 113 submitted determinations under the five-condition instrument, reduced to 104 after keeping one label per rater per record:
+
+| Panel | Records | Labels | Raters | AC1 | 95% CI (analytic, pre-specified) | 95% CI (bootstrap, sensitivity) |
+|---|---|---|---|---|---|---|
+| Experts | 10 | 36 | 8 | 0.739 | 0.402 to 1.000 | 0.427 to 1.000 |
+| Trained reviewers | 10 | 68 | 14 | 0.623 | 0.253 to 0.994 | 0.301 to 0.886 |
+
+**The pre-registered reliability criterion was not met.** The criterion had two parts: a point estimate of at least 0.61, and a lower confidence bound of at least 0.41. Both point estimates clear the first part. **Neither clears the second on the analytic interval, which is the interval the analysis plan specified.** The expert lower bound is 0.402 against a required 0.41; the trained-reviewer lower bound is 0.253.
+
+The bootstrap interval places the expert lower bound at 0.427, above the criterion. **We do not treat that as satisfying the pre-registration.** The analytic interval was the pre-specified construction, and selecting the interval that clears a criterion after seeing both is the practice pre-registration exists to prevent. The bootstrap result is reported as a sensitivity analysis and nothing more: it indicates that the failure is marginal for the expert panel and that the conclusion is sensitive to interval construction, which is itself a statement about how little the ten-record sample can support.
+
+The correct reading is that **the reliability sample is too small to establish reliability.** Ten records against a pre-registered pooled target of about 26 produce intervals so wide that they are nearly uninformative at their lower end. These coefficients are interim and will be re-estimated when the pooled set is complete.
+
+**On verbal bands.** Earlier versions of this work placed 0.739 in the "substantial" band of Landis and Koch (1977). That characterisation is dropped. The band boundaries are acknowledged by their authors as arbitrary and are widely criticised as such; the coefficient and its interval carry all the information, and the adjective adds only a suggestion of adequacy that the failed lower-bound criterion contradicts.
+
+## 7. Discussion
+
+The contribution is that the operationalised Decision Reconstruction Risk distinction is detectable by independent experts on a corpus constructed at the ends of the severity range. That is the precondition for everything downstream: a documentation property experienced reviewers cannot identify is not a governable property, and a control built on human review of it would rest on nothing.
+
+The result is narrower than the sentence "DRR is detectable" would suggest, and the narrowing is the point of this version of the paper. What was shown is that sixteen experts across eleven countries recovered an author-generated, blind-reproduced classification at 83.9 percent, above a threshold fixed in advance. What was not shown is that they would do so on ambiguous records, on human-authored records, on real records, or that they would agree with one another reliably enough for the instrument to be trusted at the level of the individual review. Section 6.5 reports a failed pre-registered criterion on that last point.
+
+Three things in the result deserve emphasis over the headline figure.
+
+**The dispersion.** Group-level detectability and individual-level dependability are different properties, and this study found the first while providing evidence against assuming the second. An organisation cannot act on 83.9 percent as if it were a per-reviewer reliability figure. This is the finding most directly useful to anyone designing a review process.
+
+**The failed reliability criterion.** The programme set a two-part reliability floor in advance and met one part of it. Reporting that plainly costs the paper a claim it would have liked to make and is the reason the pre-registration was written.
+
+**The layer.** AI governance has concentrated on whether the system behaved appropriately. Consequential organisational decisions also leave documentary artefacts that become the objects of later accountability, and those artefacts have received less systematic measurement attention than the systems that help produce them. DRR is one attempt to operationalise that second layer. Whether this particular operationalisation is the right one is open; that the layer needs operationalising seems to us harder to dispute.
+
+## 8. Limitations
+
+**8.1 The corpus is author-generated.** The records were constructed by the creator of the construct to instantiate the construct. Blind reproduction of the key rules out fitting the key to the results; it does not make the corpus independent of the definition. An independently generated corpus, classified by adjudicators who did not receive the authors' briefing, would materially strengthen the inference and is specified as Study 1c.
+
+**8.2 The corpus is bimodal.** Twelve clearly grounded and twelve clearly unsupported records. The reported accuracy may overstate performance against realistic documentation, for the reasons in Section 4.3.
+
+**8.3 Item variance is not in the primary analysis, and is small.** The participant-level interval accounts for reviewer variation and not for the possibility that this particular draw of 24 records was easier or harder than another draw would be. That remains formally true. Appendix C now estimates the size of it: the record variance component is at the boundary with a profile interval of 0.001 to 0.556, against a reviewer SD of 1.769 and a latent-scale reviewer intraclass correlation of 0.488. Item difficulty is small relative to reviewer variation on this corpus and cannot be distinguished from zero, and the sample cannot rule out a moderate effect.
+
+**8.4 The international composition does not establish cross-cultural validity.** Eleven countries across five continents is a real design feature and it does what Section 2.5 says it does: it reduces the chance that a blind spot shared by one professional culture went undetected. It does not establish measurement invariance. With one to three participants per country there is no power to estimate jurisdictional effects, and we did not test whether first language, legal tradition, or professional background predicted classification. The correct statement is that the construct was not tested exclusively within one jurisdictional and professional environment. Any stronger reading is unsupported.
+
+**8.5 Workflow independence is a design intention, not a result.** All 24 records are AI-generated. The study therefore establishes detectability on AI-generated records. It does not establish that the method performs equivalently on human-authored records, and until a human-authored comparison corpus is run, the claim of workflow independence should not be made.
+
+**8.6 The five conditions are not psychometrically validated.** See Section 3. Their dimensional structure, redundancy, necessity, and cross-context stability are all open.
+
+**8.7 The reliability evidence is interim and one pre-registered criterion failed.** Ten of approximately 26 pooled records. See Section 6.5.
+
+**8.8 Reviewer heterogeneity is described but not explained.** See Section 6.3.
+
+**8.9 The panel is credentialed and self-selected.** These results establish detectability by people who review records for a living and who volunteered to do so. Performance by less experienced reviewers, or by reviewers working outside their domain, is unknown.
+
+**8.10 No criterion validity, and no efficacy.** Nothing here connects detection to improved documentation or to fewer governance failures, and nothing here compares the method to unaided judgment. The full chain from detection to prevention is stated in Section 10 and only its first link is tested.
+
+**8.11 Investigator dependence.** See Section 9.
+
+## 9. Competing interests and confirmation-bias risk
+
+The first author created Decision Reconstruction Risk and the Justification Review Standard, constructed the corpus, wrote the author-side answer key, recruited the panel, and would benefit professionally and commercially from the standard's adoption. The second author designed the validation and reliability framework and would benefit reputationally from its use. The authors, between them, defined the construct, built the instrument, generated the cases, established the key, recruited the participants, specified the analysis, and interpret the findings.
+
+The mitigations actually in place are: an analysis plan and decision thresholds registered before data were examined; blind independent reproduction of the answer key by raters who did not see the hypotheses; reviewers blind to the key, to the corpus balance, and to one another; participant-level analysis specified in advance; and public reporting of a failed pre-registered criterion and of a null result in the companion study.
+
+**Those mitigations are real and they are not sufficient.** None of them removes investigator dependence from the corpus or from the operationalisation, and a reader should discount accordingly. The single change that would most improve the evidentiary position is an independent validation adjudicator: a researcher with no role in developing JRS, given the corpus, the scoring protocol, and the raw responses, and asked to reproduce or contest the analysis. That is specified in Section 10 and has not been done.
+
+No external funding was received. No participant was compensated. The programme has commercial activity associated with it; no commercial arrangement is contingent on any result reported here, and no participant had any financial interest in the outcome.
+
+## 10. The research programme
+
+Stating the whole programme makes clear which questions are answered, which are in progress, and which are not yet begun.
+
+| Study | Question | Status |
+|---|---|---|
+| 1 | Can independent experts detect the operationalised construct? | **Reported here.** Yes, on a bimodal constructed corpus |
+| 1b | Does detection hold on a graded severity range including ambiguous records? | Not begun. Requires a three-level or continuous-severity corpus |
+| 1c | Does detection hold on an independently generated corpus with independent adjudication? | Not begun. The single highest-value addition |
+| 1d | Does detection hold on human-authored records? | Not begun. Required before any workflow-independence claim |
+| 2 | Does the instrument improve on unaided expert judgment? | Data closed 15 August 2026. Reported separately |
+| 3 | Are the five conditions distinguishable, necessary, and stable? Psychometric validation | Interim data only. See Appendix B |
+| 4 | Does the measure predict real-world outcomes? Criterion validity | Not begun |
+| 5 | Does applying the instrument improve documentation and reduce governance failures? | Not begun. Requires 1 through 4 |
+
+The claim in this paper is confined to row 1. The programme is stated because a detection result presented without it invites the reading that detection was the whole question.
+
+## 11. Conclusion
+
+Drafting tools change and the technology stack underneath them changes faster. The evidentiary test does not move. A record that cannot be reconstructed from its own contents cannot be independently defended, whoever or whatever produced it.
+
+This paper provides initial evidence for one link in a validation chain: an international panel of sixteen independent experts, reading constructed AI-generated records cold and blind to an independently reproduced reference classification, distinguished the constructed cases at 83.9 percent accuracy, clearing a threshold set before the data were seen. It also establishes that those same experts vary widely among themselves, and that a pre-registered reliability criterion was not met on the sample available.
+
+What the paper does not establish is longer than what it does, and Section 10 lists it. An operationalised property can be detectable before its criterion validity, generalisability, or intervention value has been established. Establishing detectability is what makes those subsequent questions empirically testable, and it is the only thing claimed here.
+
+## Data availability and pre-registration
+
+The protocol and analysis plan were registered before data collection. Released under the study's data-availability terms: the 24 constructed records; the corpus construction log, including generation model, version, date, prompt, and extent of human editing per record; the full answer key with the reason and evidentiary defect or support for each classification and the JRS conditions implicated; the instructions given to the blind reference raters and their record-by-record reproduction result; coded participant-level response data, released subject to the study's access and confidentiality terms; and the analysis scripts that produce every figure in this paper. Live participation is tracked on an aggregate dashboard showing counts only, never individual answers.
+
+## References
+
+Almada, M., 2019. Human intervention in automated decision-making: toward the construction of contestable systems. In: *Proceedings of the 17th International Conference on Artificial Intelligence and Law (ICAIL '19)*. ACM, pp. 2-11.
+
+Ananny, M., Crawford, K., 2018. Seeing without knowing: limitations of the transparency ideal and its application to algorithmic accountability. *New Media & Society* 20 (3), 973-989.
+
+Barr, D.J., Levy, R., Scheepers, C., Tily, H.J., 2013. Random effects structure for confirmatory hypothesis testing: keep it maximal. *Journal of Memory and Language* 68 (3), 255-278.
+
+Bates, D., Mächler, M., Bolker, B., Walker, S., 2015. Fitting linear mixed-effects models using lme4. *Journal of Statistical Software* 67 (1), 1-48.
+
+Bender, E.M., Gebru, T., McMillan-Major, A., Shmitchell, S., 2021. On the dangers of stochastic parrots: can language models be too big? In: *Proceedings of the 2021 ACM Conference on Fairness, Accountability, and Transparency (FAccT '21)*. ACM, pp. 610-623.
+
+Bovens, M., 2007. Analysing and assessing accountability: a conceptual framework. *European Law Journal* 13 (4), 447-468.
+
+Burrell, J., 2016. How the machine 'thinks': understanding opacity in machine learning algorithms. *Big Data & Society* 3 (1), 1-12.
+
+Byrt, T., Bishop, J., Carlin, J.B., 1993. Bias, prevalence and kappa. *Journal of Clinical Epidemiology* 46 (5), 423-429.
+
+Citron, D.K., 2008. Technological due process. *Washington University Law Review* 85 (6), 1249-1313.
+
+Citron, D.K., Pasquale, F., 2014. The scored society: due process for automated predictions. *Washington Law Review* 89 (1), 1-33.
+
+Cobbe, J., Lee, M.S.A., Singh, J., 2021. Reviewable automated decision-making: a framework for accountable algorithmic systems. In: *Proceedings of the 2021 ACM Conference on Fairness, Accountability, and Transparency (FAccT '21)*. ACM, pp. 598-609.
+
+Cohen, J., 1960. A coefficient of agreement for nominal scales. *Educational and Psychological Measurement* 20 (1), 37-46.
+
+Cronbach, L.J., Meehl, P.E., 1955. Construct validity in psychological tests. *Psychological Bulletin* 52 (4), 281-302.
+
+Feinstein, A.R., Cicchetti, D.V., 1990. High agreement but low kappa: I. The problems of two paradoxes. *Journal of Clinical Epidemiology* 43 (6), 543-549.
+
+Fleiss, J.L., 1971. Measuring nominal scale agreement among many raters. *Psychological Bulletin* 76 (5), 378-382.
+
+Gebru, T., Morgenstern, J., Vecchione, B., Vaughan, J.W., Wallach, H., Daumé III, H., Crawford, K., 2021. Datasheets for datasets. *Communications of the ACM* 64 (12), 86-92.
+
+Gwet, K.L., 2008. Computing inter-rater reliability and its variance in the presence of high agreement. *British Journal of Mathematical and Statistical Psychology* 61 (1), 29-48.
+
+Gwet, K.L., 2014. *Handbook of Inter-Rater Reliability*, fourth ed. Advanced Analytics, Gaithersburg, MD.
+
+ISO/IEC, 2023. *ISO/IEC 42001:2023 Information technology - Artificial intelligence - Management system*. International Organization for Standardization, Geneva.
+
+Jacobs, A.Z., Wallach, H., 2021. Measurement and fairness. In: *Proceedings of the 2021 ACM Conference on Fairness, Accountability, and Transparency (FAccT '21)*. ACM, pp. 375-385.
+
+Ji, Z., Lee, N., Frieske, R., Yu, T., Su, D., Xu, Y., Ishii, E., Bang, Y.J., Madotto, A., Fung, P., 2023. Survey of hallucination in natural language generation. *ACM Computing Surveys* 55 (12), 1-38.
+
+Kaminski, M.E., Urban, J.M., 2021. The right to contest AI. *Columbia Law Review* 121 (7), 1957-2048.
+
+Krippendorff, K., 2004. *Content Analysis: An Introduction to Its Methodology*, second ed. Sage, Thousand Oaks, CA.
+
+Landis, J.R., Koch, G.G., 1977. The measurement of observer agreement for categorical data. *Biometrics* 33 (1), 159-174.
+
+Messick, S., 1995. Validity of psychological assessment: validation of inferences from persons' responses and performances as scientific inquiry into score meaning. *American Psychologist* 50 (9), 741-749.
+
+Mitchell, M., Wu, S., Zaldivar, A., Barnes, P., Vasserman, L., Hutchinson, B., Spitzer, E., Raji, I.D., Gebru, T., 2019. Model cards for model reporting. In: *Proceedings of the Conference on Fairness, Accountability, and Transparency (FAT* '19)*. ACM, pp. 220-229.
+
+Mittelstadt, B.D., Allo, P., Taddeo, M., Wachter, S., Floridi, L., 2016. The ethics of algorithms: mapping the debate. *Big Data & Society* 3 (2), 1-21.
+
+NIST, 2023. *Artificial Intelligence Risk Management Framework (AI RMF 1.0)*, NIST AI 100-1. National Institute of Standards and Technology, Gaithersburg, MD.
+
+Raji, I.D., Smart, A., White, R.N., Mitchell, M., Gebru, T., Hutchinson, B., Smith-Loud, J., Theron, D., Barnes, P., 2020. Closing the AI accountability gap: defining an end-to-end framework for internal algorithmic auditing. In: *Proceedings of the 2020 Conference on Fairness, Accountability, and Transparency (FAT* '20)*. ACM, pp. 33-44.
+
+Ransohoff, D.F., Feinstein, A.R., 1978. Problems of spectrum and bias in evaluating the efficacy of diagnostic tests. *New England Journal of Medicine* 299 (17), 926-930.
+
+Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act). *Official Journal of the European Union* L, 2024/1689.
+
+Selbst, A.D., Barocas, S., 2018. The intuitive appeal of explainable machines. *Fordham Law Review* 87 (3), 1085-1139.
+
+Wachter, S., Mittelstadt, B., Floridi, L., 2017. Why a right to explanation of automated decision-making does not exist in the General Data Protection Regulation. *International Data Privacy Law* 7 (2), 76-99.
+
+Whiting, P.F., Rutjes, A.W.S., Westwood, M.E., Mallett, S., Deeks, J.J., Reitsma, J.B., Leeflang, M.M.G., Sterne, J.A.C., Bossuyt, P.M.M., 2011. QUADAS-2: a revised tool for the quality assessment of diagnostic accuracy studies. *Annals of Internal Medicine* 155 (8), 529-536.
+
+Wilson, E.B., 1927. Probable inference, the law of succession, and statistical inference. *Journal of the American Statistical Association* 22 (158), 209-212.
+
+---
+
+## Appendix A. Machine consistency across three vendor models
+
+This analysis is reported in an appendix rather than in the Results because it speaks to whether the instrument is applied stably by an automated implementation, which is a question about operational reproducibility and not about whether DRR is real or detectable by people. Three models agreeing with one another tells a reader nothing about whether any of them is right.
+
+**Result.** On a fixed 15-record set, over a series running from 29 June to 15 August 2026 comprising **41 nightly runs**, mean pairwise agreement on the determination was **87.2 percent** (95 percent CI 86.2 to 88.2; median 86.7, SD 3.2 points, range 82.2 to 93.3).
+
+**Why a series and not a run.** The process runs nightly, so any single-run figure is stale the following morning; the most recent run moved from 87.8 percent on 12 August to 82.2 percent on 15 August. Pooling every run also mixes denominators: 15 of the 56 cross-vendor runs scored only 2 or 3 records while the corpus was being built, and on a 3-record run a single disagreement moves the mean by 11 points. Those short runs are the entire source of the 66.7 percent low that appears in the pooled series. Restricting to the fixed 15-record set holds the denominator constant.
+
+**Documentation.** The vendors are Anthropic, OpenAI, and Google, one model each. The exact model identifiers and versions, the system instruction and user prompt, the sampling parameters, the run schedule, the access dates for every run, and the coding procedure by which a model's free-text output was mapped to a determination are recorded in the reproducibility run log released with the materials. Outputs were mapped to determinations by a fixed deterministic rule, not by human coding, so no inter-coder reliability applies. No model saw another model's output or any previous example.
+
+**What this does not measure.** Agreement is not accuracy. The three models agreeing on a determination is consistent with all three being wrong in the same way, which is a live possibility given that all three are trained on overlapping web-scale corpora. This appendix reports consistency of application and nothing else.
+
+## Appendix B. Per-condition behaviour, reported descriptively
+
+**This analysis is descriptive and carries no inferential claim. It is reported in an appendix, with the inferential language removed, because of a circularity that the earlier version of this manuscript did not adequately disclose.**
+
+**The circularity.** The five conditions are the components from which a reviewer arrives at the overall determination. Testing whether the components are associated with the composite that they produce is not a test of discriminating validity; it is close to a test of whether reviewers used the instrument as instructed. A strong association is what a coherent instrument should show and is a necessary condition for the composite to mean anything, but it is not evidence that the conditions independently discriminate, and the p-values below should not be read as if it were.
+
+Establishing independent discriminating validity would require the condition scores and the composite determination to be generated separately, ideally by different raters or against an external criterion. That was not the design here.
+
+Across the 113 overall determinations recorded under the five-condition instrument:
+
+| Condition | Pass rate, Ready determinations | Pass rate, Gap determinations |
+|---|---|---|
+| Reconstructability | 14 of 14 (100%, 95% CI 78 to 100) | 15 of 77 (19%, CI 12 to 30) |
+| Basis identification | 14 of 14 (100%, CI 78 to 100) | 20 of 77 (26%, CI 17 to 37) |
+| Chronological integrity | 14 of 14 (100%, CI 78 to 100) | 10 of 77 (13%, CI 7 to 22) |
+| Decision-process traceability | 14 of 14 (100%, CI 78 to 100) | 10 of 77 (13%, CI 7 to 22) |
+| Evidentiary sufficiency | 14 of 14 (100%, CI 78 to 100) | 7 of 77 (9%, CI 4 to 18) |
+
+Intervals are Wilson score intervals (Wilson, 1927), used because several cells are small. Ready determinations number 14 in this corpus, so every rate in the first column rests on 14 observations and its interval is correspondingly wide.
+
+Two descriptive observations, offered as such. The condition-level labels vary systematically with the overall determination, as expected because the conditions contribute to that determination. This descriptive association does not establish independent discriminating validity. Across the 565 condition-level labels, evidentiary sufficiency was most often recorded as not passing at 77.9 percent, followed by chronological integrity, decision-process traceability, reconstructability, and basis identification at 65.5, 64.6, 57.5, and 51.3 percent respectively.
+
+The instrument's three levels are all exercised. Across the 565 condition-level labels, the lowest coding level was recorded 216 times, the pass level 207 times, and the middle level 142 times. The lowest level appeared at least once in 77 of the 113 overall determinations. The separations above are therefore across the full scale rather than between the top two levels.
+
+## Appendix C. Reviewer and item variance
+
+**Status: exploratory.** Specified after the pre-registration, in response to peer critique, and labelled exploratory throughout. It does not bear on the pre-registered primary criterion in Section 6.1, which is unchanged.
+
+The primary analysis treats the reviewer as the unit of observation and does not model record difficulty. The crossed analysis adds the records as a second random factor (Bates et al., 2015; Barr et al., 2013):
+
+```
+correct ~ 1 + (1 | reviewer) + (1 | record)
+```
+
+Fitted as a mixed-effects logistic model by Laplace-approximated maximum likelihood over all 384 graded reads from 16 reviewers and 24 records, with no participant excluded by the pre-registered rule.
+
+| Component | Estimate | Profile 95% interval |
+|---|---|---|
+| Intercept (logit) | 2.106 | |
+| Intercept as a probability, average reviewer on an average record | 89.2% | |
+| Reviewer SD | **1.769** | 1.292 to 3.000 |
+| Record SD | **0.011** | 0.001 to 0.556 |
+| Reviewer variance | 3.130 | |
+| Record variance | 0.0001 | |
+| Intraclass correlation, reviewer | **0.488** | |
+| Intraclass correlation, record | 0.0000 | |
+
+### What this answers
+
+Appendix C was written before the analysis was run, and it named two questions in advance so the result could not be read selectively afterwards. Both now have answers, and they point the same way.
+
+**Does modelling item difficulty materially alter the panel accuracy estimate?** No. The intercept places an average reviewer on an average record at 89.2 percent, and the participant-level mean of 83.9 percent reported in Section 6.1 sits inside the reviewer-level spread the model estimates. Nothing about the headline figure depends on the particular draw of 24 records in a way this analysis can detect.
+
+**How much of the modelled random-effect variation is associated with reviewers rather than records?** The estimated reviewer component is substantially larger than the record component. On the model's latent logistic scale, the estimated reviewer-level intraclass correlation is **0.488**, indicating substantially greater between-reviewer than between-record variation in this dataset. The record-level intraclass correlation is **0.0000**.
+
+The raw tables say the same thing without any model. Record-level accuracy ranged from 62.5 to 93.8 percent, whereas reviewer-level accuracy ranged from 37.5 to 100 percent. Every record was classified correctly by at least ten of the sixteen reviewers.
+
+### The record component is a singular fit and must not be read as a zero
+
+The record SD is estimated at 0.011, which is on the boundary. **That is not evidence that record difficulty does not exist.** At sixteen reviewers by twenty-four records the record component is weakly identified, and a correct estimator lands on the boundary on roughly one dataset in six when the true value is genuinely non-zero; that rate was measured by simulation on data of this exact shape before the real fit was run. The profile-likelihood interval, **0.001 to 0.556**, is the informative quantity and it does not exclude a moderate record effect.
+
+The defensible statement is therefore narrow: on this corpus, item difficulty is small relative to reviewer variation and cannot be distinguished from zero, and the sample cannot rule out a moderate effect.
+
+### Consequence for Section 8.3
+
+**Section 8.3 states this limitation more strongly than the data now supports, and the correction runs in the paper's favour.** That section warns that the participant-level interval does not account for the possibility that this draw of 24 records was easier or harder than another draw would be. That remains formally true. The estimated size of the effect is small, and the dominant source of uncertainty in this study is the reviewers, not the corpus.
+
+**Section 6.3 is strengthened.** Reviewer heterogeneity was reported there as the operationally important result on the strength of the raw spread alone. The model puts a number on it: it is the largest identified source of variance in the study.
+
+### Item-level accuracy, hardest first
+
+Records are constructed and de-identified, and their identifiers carry no information about a person.
+
+| Record | Correct | Accuracy |
+|---|---|---|
+| R04 | 10 of 16 | 62.5% |
+| R01 | 11 of 16 | 68.8% |
+| R10 | 12 of 16 | 75.0% |
+| R15 | 12 of 16 | 75.0% |
+| R17 | 12 of 16 | 75.0% |
+| R06 | 13 of 16 | 81.2% |
+| R11 | 13 of 16 | 81.2% |
+| R12 | 13 of 16 | 81.2% |
+| R14 | 13 of 16 | 81.2% |
+| R18 | 13 of 16 | 81.2% |
+| R20 | 13 of 16 | 81.2% |
+| R24 | 13 of 16 | 81.2% |
+| R07 | 14 of 16 | 87.5% |
+| R13 | 14 of 16 | 87.5% |
+| R16 | 14 of 16 | 87.5% |
+| R19 | 14 of 16 | 87.5% |
+| R21 | 14 of 16 | 87.5% |
+| R23 | 14 of 16 | 87.5% |
+| R02 | 15 of 16 | 93.8% |
+| R03 | 15 of 16 | 93.8% |
+| R05 | 15 of 16 | 93.8% |
+| R08 | 15 of 16 | 93.8% |
+| R09 | 15 of 16 | 93.8% |
+| R22 | 15 of 16 | 93.8% |
+
+**The grounded and unsupported classification of each record is deliberately not printed beside these rates.** Publishing accuracy next to the class would publish the answer key, which the data-availability terms release on request under the study's conditions rather than in the body of a paper.
+
+### Reviewer-level accuracy is reported as a distribution, not a table
+
+Section 6.2 gives the mean, standard deviation, range and perfect-scorer count. A per-reviewer table keyed to study codes is not printed here and will not be, because the contributor roster maps those codes to named people who volunteered unpaid. Publishing a code-labelled ranking would identify the lowest-scoring named professional in the panel, which is not a result and was never a condition of their participation.
+
+### Reproducibility
+
+Every figure in this appendix is computed by `api/variance-6b1d90fa2c47e8b3`, which reads the per-read table server-side and returns aggregates only. The estimator was validated by simulation against known variance components before use, and its JavaScript implementation was checked for numeric parity against an independent Python implementation on identical data, agreeing to four decimal places. The endpoint reproduces the Section 6.1 participant-level mean of 83.9 percent and the six perfect scorers exactly, from the raw reads, which is an independent check on the primary analysis.
+
+## Acknowledgments
+
+**The detection panel, 16 independent experts across 11 countries and 5 continents**, each read the full 24-record corpus cold, blind to the reference classification, and returned 384 graded judgments. This paper's result is theirs. **The reliability study, 25 raters**, eight expert and seventeen trained, produced the coefficients in Section 6.5 and the per-condition analysis in Appendix B, which exists only because they recorded a judgment on each of the five conditions separately rather than only the overall read. **The comparison study, 20 independent experts**, completed the same corpus under the design described in Section 5 without knowing what the comparison was testing; their work is reported in its own paper.
+
+All 58 worked unpaid, in a personal capacity, with nothing at stake in the outcome. Programme-level participation figures are recorded in the study repository rather than here, because they are acknowledgment and not results: the detection finding in Section 6 rests on the sixteen panel members and their 384 graded reads and on nothing else.
+
+Reviewers are recognised as named contributors with their consent; none is a co-author of this paper. Contributors may withdraw their name at any time; one has, and her judgments remain in the analysis unnamed at her election.
+
+The reliability and validation methodology, including the pre-registered analysis plan, the choice of coefficient, and the acceptance floors applied in Section 6.5, was designed by Ubayet Hossain, FRM. Specifying those criteria before any data were examined is what allows the results in this paper to be read as tests rather than as descriptions, and it is why Section 6.5 can report a criterion as failed.
+
+The proportionality principle described in Section 3 was surfaced by pilot reviewer Saurabh Nanda, General Manager and APAC Business Leader (Align Technology), and is credited with his permission.

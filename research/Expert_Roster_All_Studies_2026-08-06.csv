@@ -1,0 +1,62 @@
+study,arm,code,name,title,country,labels_or_reads,status
+011 Detection panel,A,V-AI-01,Jake McDonough,"AI governance, self-accountable AI runtimes; SAEONYX Global Holdings",US,25,COMPLETE
+011 Detection panel,A,V-AI-03,Frank Schouten,AI Governance and Assurance; risk and accountability; AEGF,Australia,24,COMPLETE
+011 Detection panel,A,V-AI-06,Dr Nitin Deshpande,Chief Human Resources Officer; 38+ years HR and industrial relations,India,24,COMPLETE
+011 Detection panel,A,V-AI-07,Saurabh Nanda,"General Manager, APAC business leader (P&L); Align Technology",India,31,COMPLETE
+011 Detection panel,A,V-AI-08,(name withheld),(withheld),US,24,COMPLETE
+011 Detection panel,A,V-AI-10,Lawal Olabanji,Operations and records management; ALTV Engineering,Nigeria,24,COMPLETE
+011 Detection panel,A,V-AI-11,Andrey Ekhmenin,"Founder, EAS; governance diagnostics and post-execution review",Poland,24,COMPLETE
+011 Detection panel,A,V-AI-12,Kyle McMullan,"Chief Audit Executive; internal audit and financial crimes; the audit hub, London",United Kingdom,24,COMPLETE
+011 Detection panel,A,V-AI-16,Dr Gabriela Bar,"Attorney, PhD; AI ethics advisor (EU); Gabriela Bar Law & AI",Poland,24,COMPLETE
+011 Detection panel,A,V-AI-20,Hekim Colpan,"AI Governance and Compliance Manager; ISO/IEC 42001 auditor; EU AI Act, GDPR, DORA",Germany,24,COMPLETE
+011 Detection panel,A,V-AI-23,Niloofar Kandi,"AI Governance and Strategy Specialist; ISO/IEC 42001 Lead Implementer; PhD Researcher, University of Wollongong",Australia,46,COMPLETE
+011 Detection panel,A,V-AI-24,SungSoo In,"AI Governance and Responsible AI; author, Athena Governance Architecture",South Korea,48,COMPLETE
+011 Detection panel,A,V-AI-27,Sidharth Borah,"Advocate, High Court of Delhi (13+ years); Partner, Gurinder & Partners",India,48,COMPLETE
+011 Detection panel,A,V-AI-28,Nigel Hee,"AI Ethics, Safety and Governance; Co-founder, OpenNexus; researcher, University of Glasgow",Singapore,48,COMPLETE
+011 Detection panel,A,V-AI-29,"Marguerite Maroudis, PhD","AI and Law Expert; DPO and AI Governance Consultant; PhD Private Law; Founder, TechLegalExperts",UAE (Dubai),48,COMPLETE
+011 Detection panel,A,V-AI-30,Andres Lage Freire,"AI Governance Lead and Responsible AI Architect; EU AI Act, ISO 42001",Spain (Madrid),24,COMPLETE
+012 Randomized comparison,B2,RR-101,Boris Khazin,"AI Governance, Digital Risk and GRC leader; ClearView MRI; ex-EPAM Global Head of DRM/GRC",US (North Carolina),24,COMPLETE
+012 Randomized comparison,B1,RR-104,"Donavine Smith, MBA","Chief Strategy and Transformation Officer; frontier AI strategy and governance; NED, Rape Crisis Cape Town Trust",South Africa (Pretoria),24,COMPLETE
+012 Randomized comparison,B1,RR-106,Nicholas Evans,AI Governance and Runtime Auditor; adversarial and non-adversarial testing; ex-USMC,US,24,COMPLETE
+012 Randomized comparison,B2,RR-107,Tuneer Mondal,"AI, HealthTech and Governance; Consultant, Operations and AI Solutions; Arcadia Impact; University of Cambridge",Canada (Waterloo),24,COMPLETE
+012 Randomized comparison,B2,RR-109,Mostafa Mahmoudi,"AI Governance Researcher; Founder and Director, Iran Tech Diplomacy Institute; PhD candidate, University of Tehran",Iran (Tehran),24,COMPLETE
+012 Randomized comparison,B2,RR-110,Jean-Luc Adade,"Regional IT Leader, West, Central and North Africa; IT governance and digital transformation",Cote d'Ivoire,24,COMPLETE
+012 Randomized comparison,B2,RR-114,MacKenzie McCowan,"AI Governance Specialist, Atomi; PhD candidate, University of Sydney; Sessional Lecturer, Avondale University",Australia (Sydney),24,COMPLETE
+012 Randomized comparison,B1,RR-113,Priyam Dhamankar,"Ethics and Compliance Leader, Cummins India; 17+ years legal, compliance and investigations across pharmaceutical and industrial sectors",India (Mumbai),24,COMPLETE
+012 Randomized comparison,B2,RR-127,Candid Opris,"Founder and Managing Partner, Opris & Associates; two decades in AI and data governance and digital trust",Canada (Greater Toronto Area),24,COMPLETE
+012 Randomized comparison,B1,RR-117,Alexandria Davis,"Responsible AI and Compliance Leader; Founder and Principal Consultant, FIEA Consulting Inc.; DBA candidate",Canada (Toronto),24,COMPLETE
+012 Randomized comparison,B2,RR-116,Dr. Eric J. W. Orlowski,"AI Governance Specialist, Ethnographer, Tech Policy Researcher; Research Fellow, NUS AI Institute; PhD, UCL",Singapore,24,COMPLETE
+012 Randomized comparison,B2,RR-121,"Dr Sharon Licqurish, PhD","CEO, Chief Scientist and AI Governance Architect, AIIP",Australia (Melbourne),24,COMPLETE
+012 Randomized comparison,B2,RR-123,Greg Searle,AI Governance and Model Behaviour Researcher; Master's candidate,Australia (Brisbane),24,COMPLETE
+012 Randomized comparison,B1,RR-124,Adesh Sharma,"Data and AI Governance Leader, Digital Frontier Partners; IAPP AIGP",Australia (Melbourne),24,COMPLETE
+012 Randomized comparison,B2,RR-125,Muhammad Dauda,"Programme leadership, sustainability and governance; UN SDSN Youth Nigeria; Miva Open University; PgMP",Nigeria,24,COMPLETE
+012 Randomized comparison,B1,RR-126,Joseph Mungai,Public-Interest Technology and AI Ethics/Governance Professional; Maasai Mara University,Kenya (Kitale),24,COMPLETE
+012 Randomized comparison,B1,RR-128,Sagarika Banerjee,"AI Governance and Software QA Leader; ISO/IEC 42001, NIST AI RMF",Canada (Toronto),24,COMPLETE
+012 Randomized comparison,B2,RR-130,Anonymous by choice,JRS-naive expert professional,US,24,COMPLETE
+012 Randomized comparison,B2,RR-132,Anonymous by choice,JRS-naive expert professional,US,24,COMPLETE
+012 Randomized comparison,B2,RR-129,Wendy Ann Martel,"Data protection, privacy and AI governance; twenty five years of public and private sector practice",Canada,24,COMPLETE
+004 Reviewer reliability,expert rater,E-08,Stacy Young,"Deputy Records Access Officer, NYC Dept. of Housing Preservation and Development; records governance and FOIL administration; 22 years",US,5,"5 labels on 5 records, first 2026-06-11"
+004 Reviewer reliability,bench reviewer,R-mqa2qg2g9gtz,anonymous by design,self-declared domain: AI Governance,not recorded,5,"5 labels on 5 records, first 2026-06-11"
+004 Reviewer reliability,bench reviewer,R-mqa4a9ewsfr8,anonymous by design,self-declared domain: Other,not recorded,3,"3 labels on 3 records, first 2026-06-11"
+004 Reviewer reliability,expert rater,E-03,Andrzej Skulski,"Founder, Dom Ciszy - Resonance Lab; AI Governance and Decision Systems",not recorded,5,"5 labels on 5 records, first 2026-06-12"
+004 Reviewer reliability,bench reviewer,R-mqal7tzzwpy5,anonymous by design,self-declared domain: Other,not recorded,9,"9 labels on 5 records, first 2026-06-12"
+004 Reviewer reliability,bench reviewer,R-mqb8ye82rcmw,anonymous by design,self-declared domain: AI Governance,not recorded,5,"5 labels on 5 records, first 2026-06-12"
+004 Reviewer reliability,bench reviewer,R-mqbsllcmqh6n,anonymous by design,self-declared domain: HR,not recorded,5,"5 labels on 5 records, first 2026-06-13"
+004 Reviewer reliability,bench reviewer,R-mqc70xbh96yc,anonymous by design,self-declared domain: Other,not recorded,5,"5 labels on 5 records, first 2026-06-13"
+004 Reviewer reliability,bench reviewer,R-mqcfb4p9lbji,anonymous by design,self-declared domain: HR,not recorded,7,"7 labels on 5 records, first 2026-06-13"
+004 Reviewer reliability,expert rater,E-09,Dr Nitin Deshpande,"Chief Human Resources Officer, Cooper Corporation Pvt. Ltd.; 38+ years HR and industrial relations",India,5,"5 labels on 5 records, first 2026-06-14; same person as V-AI-06 in Study 011"
+004 Reviewer reliability,bench reviewer,R-mqgufe1fqup8,anonymous by design,self-declared domain: Other,not recorded,7,"7 labels on 5 records, first 2026-06-16"
+004 Reviewer reliability,bench reviewer,R-mqhv2o4r8nct,anonymous by design,self-declared domain: AI Governance,not recorded,5,"5 labels on 5 records, first 2026-06-17"
+004 Reviewer reliability,bench reviewer,R-mqifd9ia9dsq,anonymous by design,self-declared domain: AI Governance,not recorded,6,"6 labels on 5 records, first 2026-06-17"
+004 Reviewer reliability,bench reviewer,R-mqkvqo8kcu04,anonymous by design,self-declared domain: Quality Assurance,not recorded,5,"5 labels on 5 records, first 2026-06-19"
+004 Reviewer reliability,expert rater,E-10,Rahul Potdar,"Independent Director (IICA Certified); Corporate Governance, Risk Management and ESG Strategy; Board Adviser; Leontra Technologies; IIM Raipur",India,5,"5 labels on 5 records, first 2026-06-20"
+004 Reviewer reliability,bench reviewer,R-mqmhtalpwuhb,anonymous by design,self-declared domain: Management,not recorded,5,"5 labels on 5 records, first 2026-06-20"
+004 Reviewer reliability,bench reviewer,R-mqn414vzho7i,anonymous by design,self-declared domain: Management,not recorded,6,"6 labels on 5 records, first 2026-06-21"
+004 Reviewer reliability,bench reviewer,R-mqnibu38bbxi,anonymous by design,self-declared domain: Other,not recorded,5,"5 labels on 5 records, first 2026-06-21"
+004 Reviewer reliability,bench reviewer,R-mqq7jo173iob,anonymous by design,self-declared domain: Other,not recorded,5,"5 labels on 5 records, first 2026-06-23"
+004 Reviewer reliability,expert rater,E-11,no identity on record,self-declared domain: AI Governance,not recorded,1,"1 labels on 1 records, first 2026-06-24"
+004 Reviewer reliability,bench reviewer,R-mqxqi8i3ukt1,anonymous by design,self-declared domain: Inny,not recorded,5,"5 labels on 5 records, first 2026-06-28"
+004 Reviewer reliability,expert rater,E-14,Alankar Yaduvanshi,"Data Privacy Professional (CIPP-E), WNS; 8+ years data privacy and corporate compliance",India,5,"5 labels on 5 records, first 2026-06-30"
+004 Reviewer reliability,expert rater,E-13,Frank Schouten,"AI Governance and Assurance; Interim Steering Committee, AI Execution Governance Forum; CAMA-certified ISO 55001 assessor",Australia (Perth),5,"5 labels on 5 records, first 2026-06-30; same person as V-AI-03 in Study 011"
+004 Reviewer reliability,expert rater,E-12,Saurabh Nanda,"General Manager, APAC Business Leader, Align Technology; 22+ years P&L leadership",India,5,"5 labels on 5 records, first 2026-06-30; same person as V-AI-07 in Study 011"
+004 Reviewer reliability,bench reviewer,R-msqz6n7fgzwc,anonymous by design,self-declared domain: Other,not recorded,5,"5 labels on 5 records, first 2026-08-13"

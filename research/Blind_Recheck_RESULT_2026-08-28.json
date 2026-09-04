@@ -1,0 +1,117 @@
+[
+  {
+    "reader": "Jeffrey Billups",
+    "slot": "R1",
+    "submitted_at": "2026-08-28T04:22:14.765408+00:00",
+    "consent_named_in_paper": true,
+    "prior_familiarity": "None / Independent reviewer",
+    "n": 10,
+    "agreed": 7,
+    "percent_agreement": 70.0,
+    "agreement_ci": [
+      39.7,
+      89.2
+    ],
+    "kappa_unweighted": 0.474,
+    "kappa_linear_weighted": 0.559,
+    "gwet_ac1": 0.582,
+    "disagreements": 3,
+    "adjacent": 3,
+    "extreme": 0,
+    "second_stricter": 2,
+    "second_more_lenient": 1,
+    "knew_outcome_count": 0,
+    "per_case": [
+      {
+        "case": 1,
+        "second": "Needs work",
+        "original": "Ready",
+        "agree": false,
+        "distance": 1,
+        "reason": "While the response provides additional insights and cites reasoning for some of the denial, some of the conclusions would leave a cold reader with the burden to assume or do additional research to close the gap.",
+        "knew_outcome": false
+      },
+      {
+        "case": 2,
+        "second": "Needs work",
+        "original": "Needs work",
+        "agree": true,
+        "distance": 0,
+        "reason": "A reviewer would need to see the actual records to be able to reconstruct the outcome of the case.",
+        "knew_outcome": false
+      },
+      {
+        "case": 3,
+        "second": "Gap",
+        "original": "Gap",
+        "agree": true,
+        "distance": 0,
+        "reason": "The audit sample records would need to be present to make the conclusion.",
+        "knew_outcome": false
+      },
+      {
+        "case": 4,
+        "second": "Needs work",
+        "original": "Ready",
+        "agree": false,
+        "distance": 1,
+        "reason": "A reviewer can understand the opinion, but cannot independently verify important factual assertions or determine the final agency action.",
+        "knew_outcome": false
+      },
+      {
+        "case": 5,
+        "second": "Ready",
+        "original": "Needs work",
+        "agree": false,
+        "distance": 1,
+        "reason": "The decision clearly documents the request, redactions, exemptions, evidence, and reasoning for a reviewer to be able to reconstruct.",
+        "knew_outcome": false
+      },
+      {
+        "case": 6,
+        "second": "Ready",
+        "original": "Ready",
+        "agree": true,
+        "distance": 0,
+        "reason": "A reviewer can reasonably reconstruct this case based on having a complete, category by category path from the requested records.",
+        "knew_outcome": false
+      },
+      {
+        "case": 7,
+        "second": "Needs work",
+        "original": "Needs work",
+        "agree": true,
+        "distance": 0,
+        "reason": "A reviewer would need the exact request parameters and post-order production outcome to consider this ready case ready.",
+        "knew_outcome": false
+      },
+      {
+        "case": 8,
+        "second": "Ready",
+        "original": "Ready",
+        "agree": true,
+        "distance": 0,
+        "reason": "This case provides affidavit- based rationale and the courts resulting rule, allowing the reviewer to reconstruct.",
+        "knew_outcome": false
+      },
+      {
+        "case": 9,
+        "second": "Ready",
+        "original": "Ready",
+        "agree": true,
+        "distance": 0,
+        "reason": "The opinion documents the withheld records, the agency\u2019s stated privacy rationale, its lack of record-specific justification, and the court\u2019s disclosure order.",
+        "knew_outcome": false
+      },
+      {
+        "case": 10,
+        "second": "Ready",
+        "original": "Ready",
+        "agree": true,
+        "distance": 0,
+        "reason": "The review has enough information about the underlying agency record to understand the outcome.",
+        "knew_outcome": false
+      }
+    ]
+  }
+]

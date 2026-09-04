@@ -1,0 +1,43 @@
+🔍 I spent my career reviewing records after the fact as a Lead Civil Rights Officer with the Maryland Commission on Civil Rights. The same pattern kept appearing: the decision was defensible, the record was not.
+
+⚠️ I call this Decision Reconstruction Risk (DRR): when a consequential record can no longer explain, on its own terms, how or why a decision was reached.
+
+⚡ Generative AI makes DRR harder to detect. Polished prose can conceal missing evidence, unsupported statements, and untraceable reasoning. The document looks complete. Its justification may not be.
+
+🛡️ THE JUSTIFICATION REVIEW STANDARD (JRS)
+A practical framework helping HR, compliance, legal, audit, AI governance, and investigative teams test whether AI-assisted records will withstand scrutiny, before they become permanent.
+
+Five core questions:
+🔎 Can the conclusion be reconstructed?
+❓ Is the evidence identifiable?
+⏳ Can the chronology be followed?
+🧩 Can the reasoning be traced?
+⚖️ Is the evidence sufficient?
+
+📊 GROUNDING & VALIDATION
+Independently evaluated by experts across 16 countries, 5 continents, and multiple legal traditions.
+
+🎯 Detection: in a blind study against a verified answer key, 16 independent experts identified unreconstructable records at 83.9% accuracy, clearing the threshold set in advance.
+
+📈 Reliability: pre-registered interim testing, substantial inter-rater agreement (Gwet's AC1 0.74 experts, 0.62 trained, 10 records).
+
+🤖 AI consistency: three models from three vendors agreed 84% on identical records (consistency, not accuracy).
+
+🏛 CEP Magazine (SCCE), November, forthcoming.
+
+🎙 Mentioned on The Dewey Publications Podcast, "July 6th, 2026," with jrsstandard.com in the notes.
+
+⬇️ FREE RESOURCES
+
+📘 Investigator Field Guides: https://jrsstandard.com/guide
+🎓 Training & Certificate: https://jrsstandard.com/reviewer
+
+🚀 Run JRS on 25 of your own records, free. Your record text is never stored: each is assessed in memory and discarded.
+https://jrsstandard.com/org-pilot.html?src=linkedin
+
+🌐 OPEN INITIATIVES
+
+Join the International Registry of Supporters as an individual practitioner, not for your employer. Your name is published only if you choose it. Registering also opens the free private diagnostic.
+
+📢 Right to Know Why: https://jrsstandard.com/api/support?c=rtkw&src=linkedin
+🏛 Decisions You Can Defend: https://jrsstandard.com/api/support?c=defend&src=linkedin

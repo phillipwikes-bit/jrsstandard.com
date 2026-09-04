@@ -1,0 +1,151 @@
+{
+  "cloudflare_note": "The failing 'Workers Builds' check on pull requests is driven by a Cloudflare-to-GitHub integration held in the Cloudflare dashboard, outside this repository. Every Cloudflare artifact was deleted from the repo on 2026-08-18 and the build still fails, which confirms it. Only disconnecting it in the dashboard stops it.",
+  "development_branch": "claude/html-pilot-L8rC3",
+  "development_commit": "0ee8f7a5f4d4ea6998bf82add421804ddeb1aafa",
+  "files": {
+    "CLAUDE.md": "87df9064ee5d13218ec37c23a56a7ca366e4d9aae1f886c8a09be4c4a3aee316",
+    "access.html": "42370c097d75f79f6d13f60d8d6bd83a9e491044ad6e8267a5eab652efe7375d",
+    "api/_contributor-roster.js": "26f0cb677095a6005a99eff4555bd084a6a66e35c57151367c7ae990efcaa4cb",
+    "api/contributor.js": "deb10ead8b0b56b19da0ff6c5f7dfb43909d5663e18ab4a4f5f922739f4cbc31",
+    "api/honor.js": "d19dd80e079f9ce2225eb3d29553224b27293e10ba616f6862c4e203c87eeea0",
+    "api/panel-stats.js": "650054137a27261304872f5aa2804af8670fc71ce5a808f83285a07a4b1b4a27",
+    "api/people-9dd1ecdf6f8cdfd4.js": "fc5d3ede4260b2f51bf48f78bb5e032e40c4d68554b517745cef62549f0e7eeb",
+    "api/review.js": "d20f9fa12a31a5eac77a70c175068c11971c3d8da0c6ff7f822b4f8f384da0b2",
+    "api/reviewer-cert.js": "d0b19fe611fe00e3e9047c9fd2e0253de154ba7a9143bc7382d6d74963067a3a",
+    "api/reviewer-eval.js": "43a641a3be4f5d1f6301cf2a225551c2d458da01a2836f0d9bd04add3e17f049",
+    "api/variance-6b1d90fa2c47e8b3.js": "1df0a7e7ab48a79eb22ec704e6c2bda313d7e94a1ef18bf4bcaaf67d4da7be0a",
+    "contributor.html": "4fe31151179408e3fd1806b1100fdab41f7fe0048d2c88307894e643372eb0d0",
+    "reviewer/completion.html": "1e5292dddcd41b4ea70207ef1940749fc84da0519c873326ad6462aa26409e6b",
+    "reviewer/evaluation.html": "1d5f226200e20a29e3b9ef262d5c030f606e4b909c60e3a648273725ecf92594",
+    "reviewer/index.html": "c73f59fd189287e621842802af09bc76c62dae10f8d0843bc6f591860c04bff8",
+    "scripts/check_zero_drift.py": "5096085f7ea8c82cdd599743ab17cf7cef6d7618c92fb9314d6de6a924064566",
+    "vercel.json": "4813c52e833488bd6fccac0344ac938d6146d75bba7ec947d298c38ebe0e94e2"
+  },
+  "locked_on": "2026-08-18",
+  "probes": [
+    {
+      "http": 200,
+      "label": "contributor roster size is 41",
+      "method": "GET",
+      "pass": true,
+      "path": "/api/contributor-stats",
+      "why": "V-AI-08 was withdrawn as a contributor on 2026-08-16; the roster went 42 to 41"
+    },
+    {
+      "http": 404,
+      "label": "withdrawn contributor link is dead",
+      "method": "GET",
+      "pass": true,
+      "path": "/api/contributor?k=agbhlh6n4d&src=owner",
+      "why": "her confirmation link must not resolve"
+    },
+    {
+      "http": 404,
+      "label": "withdrawn honor link is dead",
+      "method": "GET",
+      "pass": true,
+      "path": "/api/honor?k=apuyyioat6",
+      "why": "honor entry H-2026-06 was retired; the code is not reused"
+    },
+    {
+      "http": 200,
+      "label": "a control honor link still resolves",
+      "method": "GET",
+      "pass": true,
+      "path": "/api/honor?k=f6t7aw2wya",
+      "why": "proves the honor endpoint still works and the previous probe is not a false pass"
+    },
+    {
+      "http": 200,
+      "label": "contributor POST returns no study findings",
+      "method": "POST",
+      "pass": true,
+      "path": "/api/contributor",
+      "why": "the gated results summary was removed on 2026-08-16"
+    },
+    {
+      "http": 200,
+      "label": "evaluation issues no certificate",
+      "method": "POST",
+      "pass": true,
+      "path": "/api/reviewer-eval",
+      "why": "certificates are for training completions only; wantsCert is pinned false"
+    },
+    {
+      "http": 200,
+      "label": "evaluation returns no completion code",
+      "method": "POST",
+      "pass": true,
+      "path": "/api/reviewer-eval",
+      "why": "no new JRS-R- code may be minted from the evaluation"
+    },
+    {
+      "http": 200,
+      "label": "an issued certificate still renders",
+      "method": "GET",
+      "pass": true,
+      "path": "/api/reviewer-cert?code=JRS-R-DOGUUVV9&name=Lock%20Probe",
+      "why": "withdrawing an offer does not retract what was already given"
+    },
+    {
+      "http": 200,
+      "label": "the certificate claims no training",
+      "method": "GET",
+      "pass": true,
+      "path": "/api/reviewer-cert?code=JRS-R-DOGUUVV9&name=Lock%20Probe",
+      "why": "the training claim was an overclaim the database contradicted"
+    },
+    {
+      "http": 200,
+      "label": "the evaluation page has no certificate control",
+      "method": "GET",
+      "pass": true,
+      "path": "/reviewer/evaluation.html",
+      "why": "the opt-in checkbox and its contact fields were removed"
+    },
+    {
+      "http": 200,
+      "label": "access.html promises no certificate",
+      "method": "GET",
+      "pass": true,
+      "path": "/access.html",
+      "why": "the funnel from /api/support must not offer one"
+    },
+    {
+      "http": 404,
+      "label": "legacy Cloudflare function is not served",
+      "method": "GET",
+      "pass": true,
+      "path": "/functions/record.js",
+      "why": "it returned 200 and 1814 bytes of dead code until 2026-08-18"
+    },
+    {
+      "http": 200,
+      "label": "programme totals hold",
+      "method": "GET",
+      "pass": true,
+      "path": "/api/panel-stats",
+      "why": "58 reviewers, 36 completers, 16 countries; unchanged by the withdrawal"
+    },
+    {
+      "http": 200,
+      "label": "variance endpoint computes",
+      "method": "GET",
+      "pass": true,
+      "path": "/api/variance-6b1d90fa2c47e8b3",
+      "why": "Appendix C is computed server-side and needs no service key from anyone"
+    },
+    {
+      "http": 200,
+      "label": "variance endpoint withholds the answer key",
+      "method": "GET",
+      "pass": true,
+      "path": "/api/variance-6b1d90fa2c47e8b3",
+      "why": "per-record accuracy beside the class would publish the key"
+    }
+  ],
+  "production_commit": "09312176a3f9a8aaa5c6552e91545ac4be382baa",
+  "production_subject": "Sever Cloudflare from the repository; disarm the maintenance workflow",
+  "scope_note": "research/ is not deployed and is deliberately outside this lock. The lock is a statement about production.",
+  "site": "https://www.jrsstandard.com"
+}

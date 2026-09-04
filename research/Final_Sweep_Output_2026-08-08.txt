@@ -1,0 +1,51 @@
+FINAL SWEEP, live data
+bench_labels 124 rows | bench_outcomes 54 rows
+
+F1  Per-condition discrimination (108 JRS-mode labels, never analysed)
+----------------------------------------------------------------------
+  Not-pass rate by condition, all JRS-mode labels:
+    RC1 Reconstructability               pass  45  review  30  fail   0   not-pass  40.0%
+    RC2 Basis identification             pass  50  review  27  fail   0   not-pass  35.1%
+    RC3 Chronological integrity          pass  37  review  22  fail   0   not-pass  37.3%
+    RC4 Decision-process traceability    pass  38  review  26  fail   0   not-pass  40.6%
+    RC5 Evidentiary sufficiency          pass  24  review  27  fail   0   not-pass  52.9%
+
+  Ready against Gap, per condition:
+    RC1 Reconstructability               Ready 14/14 (100%, CI 78-100) | Gap 15/75 (20%, CI 13-30) | p = 1.02e-08
+    RC2 Basis identification             Ready 14/14 (100%, CI 78-100) | Gap 18/75 (24%, CI 16-35) | p = 6.18e-08
+    RC3 Chronological integrity          Ready 14/14 (100%, CI 78-100) | Gap  9/75 (12%, CI 6-21) | p = 1.07e-10
+    RC4 Decision-process traceability    Ready 14/14 (100%, CI 78-100) | Gap  9/75 (12%, CI 6-21) | p = 1.07e-10
+    RC5 Evidentiary sufficiency          Ready 14/14 (100%, CI 78-100) | Gap  7/75 (9%, CI 5-18) | p = 1.52e-11
+
+  Zero labels used the 'fail' code. Reviewers worked in pass and
+  review only, which bounds the observed range of the instrument.
+
+F2  Mode effect: structured review against unstructured review
+--------------------------------------------------------------
+    jrs     n=108   ready 14 (13%)  review 19 (18%)  gap 75 (69%)
+    normal  n= 16   ready  8 (50%)  review  7 (44%)  gap  1 ( 6%)
+    Gap rate, structured    69.4% (95% CI 60.2 to 77.3), n = 108
+    Gap rate, unstructured   6.2% (95% CI 1.1 to 28.3), n = 16
+    Fisher's exact, two-sided p = 1.57e-06
+    Ratio of rates: 11.1x
+    CAVEAT: mode was not randomly assigned and the unstructured arm
+    is 16 labels. This is a signal, not a trial result.
+
+F3  HR/Employment domain outcome association (V-HR-01, never analysed)
+----------------------------------------------------------------------
+    cases 22 | distinct sources 22 | domain HR / Employment
+                    held up   did not hold up   held-up rate (95%% CI)
+    Ready               6                 2    75.0% (40.9 to 92.9)
+    Not Ready           1                 7    12.5% (2.2 to 47.1)
+    Fisher's exact, two-sided p = 0.04056  SIGNIFICANT at 0.05
+    Odds ratio 21.00
+
+F4  Pooled two-domain estimate
+------------------------------
+    54 outcome cases, 2 contributors, 2 domains
+    Ready         held  9  failed 12    42.9% (95% CI 24.5 to 63.5)
+    Not Ready     held  3  failed 17    15.0% (95% CI 5.2 to 36.0)
+    Fisher's exact, two-sided p = 0.08549
+    Direction favours the read in both domains; significant in HR,
+    not significant pooled, because the public-records corpus is
+    selected for contested legal questions rather than thin files.

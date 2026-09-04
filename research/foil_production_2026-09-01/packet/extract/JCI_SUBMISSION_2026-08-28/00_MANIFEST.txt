@@ -1,0 +1,96 @@
+JCI SUBMISSION PACKAGE
+Young and Wikes, "A Documentation Quality Read for Public-Records
+Determinations: Convergent, Construct, and Discriminant Evidence from 32 Public
+Cases"
+
+Assembled 2026-08-28. Manuscript revised 2026-09-01 to number, caption
+and reference the three figures; no data, statistic or claim changed.
+
+WHAT THIS PACKAGE IS FOR
+Every material empirical statement in the manuscript should be traceable to a
+specific case, a coding decision, a calculation, and a public source. This
+package is that chain, in files. It is not required for the initial editorial
+submission; it exists so that any figure in the paper can be checked on request.
+
+HOW TO CHECK ANY NUMBER IN THE PAPER
+    cd 04_REPRODUCTION
+    python3 analysis.py --verify
+
+That command needs no internet connection, no database, no API key and no
+third-party package. It recomputes every Section 5 figure from the files in
+02_DATA and 03_RELIABILITY and checks each one against the manuscript text in
+01_MANUSCRIPT. It exits non-zero if any figure and the manuscript disagree.
+
+CONTENTS
+
+00_MANIFEST.txt
+    This file.
+
+01_MANUSCRIPT/
+    Young_Wikes_JCI_Documentation_Quality_Public_Records.docx
+    Young_Wikes_JCI_Documentation_Quality_Public_Records.pdf
+        The article submitted for editorial consideration. It carries
+        three numbered figures: Figure 1, the study overview; Figure 2,
+        documentation read by documented outcome, in Section 5.1; and
+        Figure 3, documentation read distribution by source type, in
+        Section 5.4. Figure 2 replaces the outcome cross-tab that
+        earlier versions carried, and presents the same counts.
+    manuscript_verification.txt
+        The same text, plain, so the reproduction script can check figures
+        against it without a document-parsing dependency.
+
+02_DATA/
+    JCI_JRS_32_Case_Master_Dataset.csv
+        One row per case, 32 rows. The authoritative case-level record
+        underlying Sections 5.1, 5.3, 5.4, 5.5 and 5.7.
+    JCI_JRS_Contemporaneous_Basis_Notes.csv
+        The basis notes exactly as recorded at the time of each read, before the
+        documented outcome was consulted. 32 rows; the four cases with no note
+        say so explicitly.
+    JCI_JRS_Construct_Coding_Frame.csv
+        The 24 note-carrying case-level sources coded for Section 5.3, with the
+        coding rule, the coder and the coding date on every row.
+    JCI_JRS_Structural_Coding_Frame.csv
+        The document-class grouping used in Section 5.4, as data rather than as
+        constants inside the analysis script.
+    JCI_JRS_Data_Dictionary.txt
+        Definition of every column in every CSV in this package.
+
+03_RELIABILITY/
+    Blind_Recheck_RESULT_2026-08-28.json
+        The blind second read: per-case answers, reasons, agreement and every
+        coefficient reported in Section 5.7.
+    Second_Reader_Responses.csv
+        The second reader's ten classifications and recorded reasons, joined to
+        the corpus case identifiers.
+    Agreement_Calculations.csv
+        The ten comparisons and the aggregate statistics, recorded independently
+        of the JSON so the two can be checked against each other.
+
+04_REPRODUCTION/
+    analysis.py
+    README.txt
+        The reproduction script and its instructions.
+
+05_SOURCE_VERIFICATION/
+    JCI_JRS_Source_Verification_Index.csv
+        One row per case: citation, public URL, the date the URL was tested,
+        whether it resolved, and who verified the source.
+
+06_COMPANION_STUDY/
+    JCI_Companion_Employment_Corpus_Verification.csv
+        The employment corpus cited in Section 5.6. 22 rows, showing which 20
+        entered the analysis and naming the reason each of the 2 exclusions
+        failed that study's inclusion criteria.
+
+        SCOPE. This is a CITATION-BASED verification record for a separately
+        conducted corpus, not a URL-based reproducibility dataset. That study
+        recorded full reporter citations, which are the canonical identifiers
+        for these sources, and did not record URLs. None has been added here,
+        because a URL this study never recorded would be an inference presented
+        as a source. Every matter is locatable from its citation.
+
+WHAT IS NOT IN THIS PACKAGE, AND WHY
+No database credential, no live endpoint and no production infrastructure. The
+journal needs the research data required to evaluate the article, not the
+authors' systems.

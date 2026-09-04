@@ -1,0 +1,39 @@
+**Subject:** Award Citation & Panelist Registry Confirmation, Action Required
+
+---
+
+Dear SungSoo In,
+
+Your work on the Justification Review Standard evaluation is complete, and the study paper is being prepared. Before it is finalized I need your confirmation on one thing: how you wish to be cited.
+
+**Designation:** Appointed Expert, Global AI Resilience & Governance International Evaluator Panel
+
+**Official citation inscription, as it would appear:**
+
+> In recognition of distinguished service as an Appointed Expert on the Global AI Resilience & Governance International Evaluator Panel during the evaluation of Justification Review Standard. SungSoo In demonstrated critical oversight in stress-testing automated decision systems, mitigating systemic drift, and ensuring multi-jurisdictional alignment across complex regulatory and operational environments.
+
+**What confirming unlocks.** Two things, both recognition:
+
+- **Your Appointed Expert Award Citation**, in the wording above, issued in your name.
+- **Your Official Panelist Registry ID**, a verifiable reference confirming your place on the panel.
+
+**That is the whole of it, and it is deliberate.** Nothing is being sold to you here and there is nothing to buy: this asks for a confirmation and gives you the citation, and that is the entire exchange.
+
+The seven-point check at https://jrsstandard.com/check.html is free and ungated, if you want to see the method itself.
+
+**Confirm your citation and claim your Registry ID:**
+
+https://jrsstandard.com/contributor.html?k=vxieh79z7v
+
+**If I do not hear from you by Monday, 31 August 2026**, the paper uses the baseline data already on file for you:
+
+- **Name:** SungSoo In
+- **Title:** AI Governance and Responsible AI; author, Athena Governance Architecture
+- **Organization:** none on record
+
+That deadline is a hard one only because the paper has to go out with accurate attribution. Either answer is a good answer, and no reply means the fallback above.
+
+With appreciation,
+
+Phillip Wikes
+Former Lead Civil Rights Officer, Maryland Commission on Civil Rights

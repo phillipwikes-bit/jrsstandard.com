@@ -1,0 +1,61 @@
+{
+ "generated_at": "2026-08-15T06:27:02.558Z",
+ "source": "ai_pilot_reads scored against research/Verified_Key.md via api/pstat-4c8e1b6a2d90.js (deleted after read, commit 120c11e)",
+ "exclusion_rule": "fewer than 18 of 24 scorable records excluded (pre-registered)",
+ "shape": {
+  "rows_total": 1145,
+  "batches": {
+   "batch1": 509,
+   "reasoning": 1,
+   "armB-B2": 408,
+   "armB-B1": 227
+  },
+  "distinct_record_refs": 25,
+  "record_refs_matching_key": 24,
+  "record_refs_NOT_in_key": {
+   "POSTHOC-NOTE": 1
+  },
+  "answer_values": {
+   "Needs work": 142,
+   "Gap": 255,
+   "Ready": 339,
+   "": 1,
+   "Yes": 223,
+   "No": 185
+  }
+ },
+ "detection_panel": {
+  "participants_analysed": 16,
+  "participants_excluded_below_18_of_24": 0,
+  "judgments_analysed": 384,
+  "judgments_unscorable": 1,
+  "unmapped_answer_values": { "": 1 },
+  "accuracy":    { "n": 16, "mean": 83.85, "sd": 21.02, "ci95_low": 72.66, "ci95_high": 95.05, "min": 37.5,  "max": 100, "scored_100": 6 },
+  "sensitivity": { "n": 16, "mean": 86.98, "sd": 24.15, "ci95_low": 74.12, "ci95_high": 99.84, "min": 25,    "max": 100, "scored_100": 11 },
+  "specificity": { "n": 16, "mean": 80.73, "sd": 25.77, "ci95_low": 67,    "ci95_high": 94.46, "min": 16.67, "max": 100, "scored_100": 7 }
+ },
+ "arm_b": {
+  "participants_analysed": 20,
+  "participants_excluded_below_18_of_24": 1,
+  "judgments_analysed": 480,
+  "judgments_unscorable": 0,
+  "unmapped_answer_values": {},
+  "accuracy":    { "n": 20, "mean": 70.21, "sd": 26.12, "ci95_low": 57.98, "ci95_high": 82.43, "min": 20.83, "max": 100, "scored_100": 4 },
+  "sensitivity": { "n": 20, "mean": 70,    "sd": 34.24, "ci95_low": 53.98, "ci95_high": 86.03, "min": 0,     "max": 100, "scored_100": 7 },
+  "specificity": { "n": 20, "mean": 70.42, "sd": 26.69, "ci95_low": 57.92, "ci95_high": 82.91, "min": 16.67, "max": 100, "scored_100": 4 },
+  "by_arm": {
+   "B1": { "n": 7,  "mean": 75,    "sd": 18.16, "ci95_low": 58.2,  "ci95_high": 91.8, "min": 45.83, "max": 100, "scored_100": 1 },
+   "B2": { "n": 13, "mean": 67.63, "sd": 29.91, "ci95_low": 49.55, "ci95_high": 85.7, "min": 20.83, "max": 100, "scored_100": 3 }
+  },
+  "arm_comparison": {
+   "arms": ["B1", "B2"],
+   "mean_difference": 7.37,
+   "welch_t": 0.684,
+   "welch_df": 17.6,
+   "cohens_d": 0.277,
+   "diff_ci95_low": -15.25,
+   "diff_ci95_high": 29.99
+  }
+ },
+ "disclosure": "Aggregate only. No participant code, no per-person row, no code-to-arm map, no record text, no answer key."
+}
