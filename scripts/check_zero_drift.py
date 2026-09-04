@@ -3252,7 +3252,7 @@ def check_dual_track_band(offline):
 # would open at its bottom. The condition that ends them is a CLOSED LICENCE
 # that can be pointed at. When there is one, publish the band, delete the three
 # pricing entries from this table, and update
-# check_scope_estimator_qualifies_without_a_price, which currently asserts that
+# check_no_custom_pricing_estimator_returns, which currently asserts that
 # no currency figure appears on enterprise.html. The other entries in this
 # table are not stage-dependent and stay.
 INTERNAL_VOICE = (
@@ -4523,37 +4523,47 @@ def check_homepage_is_a_landing_page(offline):
           "home panel is %.1f%% of the document (%d bytes)" % (share, home_bytes))
 
 
-def check_scope_estimator_qualifies_without_a_price(offline):
-    """A buyer must be able to size the commitment without a published floor.
+def check_no_custom_pricing_estimator_returns(offline):
+    """The custom-pricing estimator is retired and must not come back.
 
-    The CRO finding was never "no price". It was that a buyer could not tell
-    whether this was their size of commitment without spending a call to find
-    out. The 2026-08-25 owner constraint blocks publishing a band, and its
-    stated reason is that the figures sat above a ladder on which nothing has
-    ever sold: a number with no transacted reference behind it invites the
-    question of who else pays it.
+    It was written on 2026-08-25 to answer the sizing question without
+    publishing a band, and this guard asserted it existed. The 2026-09-04
+    passive-IP-asset correction reverses that requirement: a tool that returns
+    a per-buyer tier and carries the answers into an inquiry form is a custom
+    pricing tool, and a tier body that reads "how much of the condition
+    mapping your team does rather than us" is founder-delivered setup priced
+    per engagement. Both were removed.
 
-    The estimator answers the sizing question without answering the price
-    question. This asserts it exists, returns a tier, and carries the answers
-    into the inquiry form, and that it still prints no figure.
+    What the page keeps is the licence itself: the annual platform licence,
+    the one-time integration, and a stated refusal to publish a floor while
+    nothing has transacted. That is licensing, and licensing is preserved.
+    This guard therefore asserts the inverse of what it used to: the widget
+    and its script are gone, no per-buyer tier ladder is printed, no currency
+    figure appeared, and the licence rows survived the removal.
     """
     src = read("enterprise.html")
     bad = []
-    for el in ("sc-vol", "sc-types", "sc-exposure", "sc-go", "sc-out", "sc-tier"):
-        if 'id="%s"' % el not in src:
-            bad.append("missing #%s" % el)
+    for el in ("sc-vol", "sc-types", "sc-exposure", "sc-go", "sc-out",
+               "sc-tier", "sc-body", "sc-send"):
+        if el in src:
+            bad.append("estimator element %s is back" % el)
+    if "SCOPE ESTIMATOR" in src:
+        bad.append("estimator script is back")
     for tier in ("Pilot integration", "Standard platform licence",
                  "Extended platform licence", "Custom scope"):
-        if tier not in src:
-            bad.append("tier %r absent" % tier)
-    if 'name="scale"' not in src:
-        bad.append("estimator cannot prefill the inquiry form")
-    # The estimator must never grow a figure of its own.
-    if re.search(r"\$\s?\d", src):
+        if tier in src:
+            bad.append("per-buyer tier %r is back" % tier)
+    # The page must still carry the licence, which is not what was removed.
+    for keep in ("Platform licence", "Annual, per organisation",
+                 "Scope and cost", 'id="pricing"'):
+        if keep not in src:
+            bad.append("licensing content lost: %r" % keep)
+    # And it must never grow a published figure.
+    if re.search(r"[$\u00a3\u20ac]\s?\d", src):
         bad.append("a currency figure appeared on the page")
-    check("scope estimator qualifies without a price", not bad,
+    check("no custom pricing estimator returns", not bad,
           "; ".join(bad) if bad
-          else "4 tiers, 3 inputs, prefills the inquiry, no figure printed")
+          else "estimator and tier ladder absent, licence rows intact, no figure")
 
 
 def check_pricing_constraint_names_its_trigger(offline):
@@ -4835,7 +4845,7 @@ def main():
                check_sandbox_is_failclosed,
                check_sandbox_is_reachable_and_gated,
                check_pricing_is_published,
-               check_scope_estimator_qualifies_without_a_price,
+               check_no_custom_pricing_estimator_returns,
                check_pricing_constraint_names_its_trigger,
                check_revenue_model_is_licensing_only,
                check_engine_ladder_is_intact,
