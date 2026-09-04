@@ -21,6 +21,7 @@ Usage:
 
 Exit code: 0 if every check passes, 1 if any fails. Safe to wire into a hook.
 """
+import glob
 import json
 import os
 import re
@@ -2691,8 +2692,20 @@ def check_no_cloudflare_artifacts(offline):
 # the defect it catches was actually found in this repository on that date, not
 # because it is theoretically possible.
 
-COMMERCIAL_PAGES = ("audit-request.html", "governance-request.html",
-                    "calibration-request.html", "review-engine.html")
+# Pages that are OPEN for commerce and must therefore stay reachable.
+# Narrowed on 2026-09-04: the three request pages were retired with the
+# founder-service layer, so requiring an inbound link and a sitemap entry for
+# them would now enforce the funnel the retirement removed. They move to
+# RETIRED_COMMERCIAL_PAGES below, where the same guard asserts the opposite.
+COMMERCIAL_PAGES = ("review-engine.html",)
+
+# Retired 2026-09-04. These must stay unlinked and unlisted. The assertion is
+# inverted rather than dropped, because an orphaned page is the exact condition
+# the original 2026-08-25 finding was written about: it is only acceptable here
+# because the page no longer takes money, and if one ever regains a funnel this
+# must fail.
+RETIRED_COMMERCIAL_PAGES = ("audit-request.html", "governance-request.html",
+                            "calibration-request.html", "engagement.html")
 
 # Framework names that may never appear on a page without a non-establishment
 # clause in the same file. terms.html:139 already states in writing that JRS
@@ -2763,6 +2776,13 @@ def check_commercial_pages_reachable(offline):
     On 2026-08-25 all three request pages had ZERO inbound links from any page in
     the repository and were absent from sitemap.xml, while carrying 13 recorded
     purchase attempts. Demand was arriving through a door nobody had built.
+
+    Narrowed 2026-09-04. Those three pages were retired with the founder-service
+    layer and are now deliberately unlinked and unlisted, so the original
+    assertion is kept for the pages still open for commerce and inverted for the
+    retired ones. Both halves matter: an open page that goes dark is the 2026-08-25
+    finding, and a retired page that regains a link or a sitemap entry is the
+    2026-09-04 finding.
     """
     pages = _html_files()
     try:
@@ -2784,12 +2804,32 @@ def check_commercial_pages_reachable(offline):
             orphans.append(target)
         if target not in sm:
             unlisted.append(target)
-    check("every commercial page has an inbound link", not orphans,
+    check("every open commercial page has an inbound link", not orphans,
           "orphaned: " + ", ".join(orphans) if orphans
-          else "%d pages, all linked" % len(COMMERCIAL_PAGES))
-    check("every commercial page is in sitemap.xml", not unlisted,
+          else "%d page(s), all linked" % len(COMMERCIAL_PAGES))
+    check("every open commercial page is in sitemap.xml", not unlisted,
           "missing: " + ", ".join(unlisted) if unlisted
-          else "%d pages, all listed" % len(COMMERCIAL_PAGES))
+          else "%d page(s), all listed" % len(COMMERCIAL_PAGES))
+
+    # The inverse, for the pages retired on 2026-09-04.
+    relinked, relisted = [], []
+    for target in RETIRED_COMMERCIAL_PAGES:
+        for rel in pages:
+            if os.path.basename(rel) in RETIRED_COMMERCIAL_PAGES:
+                continue
+            try:
+                if 'href="%s"' % target in read(rel) or 'href="/%s"' % target in read(rel):
+                    relinked.append("%s <- %s" % (target, rel))
+            except Exception:
+                continue
+        if target in sm:
+            relisted.append(target)
+    check("retired commercial pages stay unlinked and unlisted",
+          not relinked and not relisted,
+          "; ".join(relinked + ["listed again: " + t for t in relisted])
+          if (relinked or relisted)
+          else "%d retired page(s), 0 inbound links, 0 sitemap entries"
+               % len(RETIRED_COMMERCIAL_PAGES))
 
 
 def check_framework_names_qualified(offline):
@@ -4589,6 +4629,70 @@ def check_pricing_constraint_names_its_trigger(offline):
           else "no REVISIT WHEN condition recorded")
 
 
+
+def check_founder_service_layer_is_retired(offline):
+    """The public service surface must match the config-level retirement.
+
+    api/_offer-config.js marked audit, governance and calibration
+    `retired: true` on 2026-08-26 and check_revenue_model_is_licensing_only
+    asserts that holds at the config and checkout layer. The HTML surface did
+    not follow: a fee catalogue with turnarounds and Scope it actions, three
+    intake pages offering a scoping call, four sitemap entries and twelve
+    footer links were all still live on 2026-09-04, so a reader arriving from
+    any of four corrected pages was one click from a founder-delivered
+    engagement business.
+
+    The pages are archived rather than deleted, because an existing client or
+    a forwarded link should still resolve to a readable record of what was
+    offered. This asserts the archive holds: the four pages are noindex, each
+    carries the retirement notice, neither the scoping-call offer nor the
+    Scope it action survives, no public page links into them, and the sitemap
+    does not list them. It also asserts the retirement did not take the
+    commercial pathways with it.
+    """
+    retired = ["engagement.html", "audit-request.html",
+               "governance-request.html", "calibration-request.html"]
+    bad = []
+
+    for page in retired:
+        src = read(page)
+        if '<meta name="robots" content="noindex,nofollow">' not in src:
+            bad.append("%s is not noindex" % page)
+        if "SERVICE LAYER RETIRED" not in src:
+            bad.append("%s lost its retirement notice" % page)
+        if "scoping call" in src:
+            bad.append("%s offers a scoping call again" % page)
+        if "Scope it" in src:
+            bad.append("%s carries a Scope it action again" % page)
+
+    # No public page may route a reader into the retired layer.
+    for path in sorted(glob.glob("*.html")) + sorted(glob.glob("reviewer/*.html")):
+        name = os.path.basename(path)
+        if name in retired:
+            continue
+        src = read(path)
+        for page in retired:
+            if 'href="%s"' % page in src or 'href="/%s"' % page in src:
+                bad.append("%s links into the retired layer (%s)" % (path, page))
+
+    sm = read("sitemap.xml")
+    for page in retired:
+        if page in sm:
+            bad.append("sitemap.xml still lists %s" % page)
+    if "terms.html" not in sm:
+        bad.append("sitemap.xml lost terms.html, which is not retired")
+
+    # The retirement must not have removed the commercial pathways.
+    ent = read("enterprise.html")
+    for needle in ("Platform licence", "Review Engine API", "Acquisition"):
+        if needle not in ent:
+            bad.append("enterprise.html lost a commercial pathway: %s" % needle)
+
+    check("founder service layer is retired", not bad,
+          "; ".join(bad) if bad
+          else "4 pages archived noindex, 0 inbound links, 0 sitemap entries, "
+               "licensing and acquisition intact")
+
 def check_revenue_model_is_licensing_only(offline):
     """One revenue motion: the engine licence ladder.
 
@@ -4847,6 +4951,7 @@ def main():
                check_pricing_is_published,
                check_no_custom_pricing_estimator_returns,
                check_pricing_constraint_names_its_trigger,
+               check_founder_service_layer_is_retired,
                check_revenue_model_is_licensing_only,
                check_engine_ladder_is_intact,
                check_tracker_logged_today,
