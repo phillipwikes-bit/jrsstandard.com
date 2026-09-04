@@ -542,9 +542,9 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
 <!-- HERO -->
 <section class="hero-section">
   <div class="hero-inner">
-    <div class="hero-eyebrow">JRS Reviewer Certification Program &nbsp;&middot;&nbsp; Decision Defensibility</div>
+    <div class="hero-eyebrow">JRS Reviewer Training Program &nbsp;&middot;&nbsp; Decision Defensibility</div>
     <h1 class="hero-h1">Calibrate for Decision Defensibility<br>Before Records Are Finalized</h1>
-    <p class="hero-sub">When a consequential decision is questioned long after it is made, the record becomes the only witness. JRS provides simulation-based calibration exercises that examine decision reconstruction risk across the four AI functions most commonly present in workplace documentation: summarization, recommendation, analysis, and narrative drafting. Each exercise examines whether a record can explain why a decision was made and produces a structured finding that reflects what the JRS pilot program is designed to collect.</p>
+    <p class="hero-sub">When a consequential decision is questioned long after it is made, the record becomes the only witness. JRS provides simulation-based calibration exercises that examine decision reconstruction risk across the four AI functions this training addresses in workplace documentation: summarization, recommendation, analysis, and narrative drafting. Each exercise examines whether a record can explain why a decision was made and produces a structured finding that reflects what the JRS pilot program is designed to collect.</p>
 
     <div class="hero-ctas">
       <a href="#training-modules" class="btn-hero-primary">&#9654; Start the Six Modules</a>
@@ -721,7 +721,7 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
             <tr>
               <td><strong style="color:var(--text)">Termination</strong></td>
               <td>No referenced supporting records; generalized characterizations only</td>
-              <td>Secondary review required. Legal consultation required before finalization.</td>
+              <td>Secondary review indicated. Legal consultation may be indicated before finalization, subject to organizational policy and applicable law.</td>
               <td>Some supporting records may be in archived systems. Where this applies, document the location and accessibility status. Inaccessibility is a finding, not a resolution.</td>
             </tr>
             <tr>
@@ -1865,7 +1865,7 @@ var RT_SCENARIOS = [
     id:'SCN-01', type:'Termination',
     text:'"Employee is being terminated for performance issues. The record states: \'Despite repeated coaching and written warnings, the employee has failed to meet minimum performance expectations.\' The reviewer can locate one email from six months ago mentioning a \'performance conversation.\' No formal coaching documentation, PIPs, or written warnings are in the file."',
     correct:'critical',
-    feedback:'Critical. This is a termination record with trigger conditions: escalation wording ("repeated coaching and written warnings") without an identifiable counseling trail in the file. The single email does not constitute the referenced documentation. Legal consultation required before finalization.'
+    feedback:'Critical. This is a termination record with trigger conditions: escalation wording ("repeated coaching and written warnings") without an identifiable counseling trail in the file. The single email does not constitute the referenced documentation. Legal consultation may be indicated before finalization, subject to organizational policy and applicable law.'
   },
   {
     id:'SCN-02', type:'Routine Performance Review',
@@ -2526,7 +2526,7 @@ renderFM();
     <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">For Professional Associations &amp; Training Bodies</div>
     <h2 style="font-family:'Bodoni Moda',serif;font-size:20px;font-weight:500;color:var(--text);margin-bottom:10px">Licensing this curriculum</h2>
     <p style="font-size:13.5px;color:var(--muted);line-height:1.7;max-width:660px;margin-bottom:8px">This program (the five-condition method, the Decision Defensibility Score, the calibration exercises, and the completion credential) is available for licensing to professional associations, certification bodies, and training providers for continuing-education and professional-development use.</p>
-    <p style="font-size:12.5px;color:var(--muted-soft);line-height:1.65;max-width:660px">To discuss licensing or a co-branded certification, contact <a href="mailto:info@jrsstandard.com" style="color:var(--accent)">info@jrsstandard.com</a>.</p>
+    <p style="font-size:12.5px;color:var(--muted-soft);line-height:1.65;max-width:660px">To discuss licensing or a co-branded training program, contact <a href="mailto:info@jrsstandard.com" style="color:var(--accent)">info@jrsstandard.com</a>.</p>
   </div>
 </div>
 
@@ -2673,11 +2673,11 @@ renderFM();
     </div>
   </div>
 </div>
-<!-- ═══ LAYER 6: COMMONLY OBSERVED CONDITIONS ═══════════════════ -->
+<!-- ═══ LAYER 6: CONDITIONS PARTICIPANTS REPORT ═══════════════════ -->
 <div class="findings-outer">
   <div class="findings-inner">
     <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px">Section 6: Operational Observations</div>
-    <div class="findings-eyebrow">Commonly Observed Conditions</div>
+    <div class="findings-eyebrow">Conditions Participants Report</div>
     <h2 class="findings-title">What Participants Typically Observe</h2>
     <p class="findings-desc">Observations from simulation participants and reviewer exercises across HR, legal, compliance, investigation, and AI governance contexts. These observations reflect participant experiences and are shared for operational learning purposes only.</p>
     <div class="findings-grid">
@@ -2687,7 +2687,7 @@ renderFM();
       </div>
       <div class="finding-item">
         <div class="finding-category">Escalation Language</div>
-        <div class="finding-text">Reviewers commonly observe escalation wording exceeding documented behavioral support. Records reference patterns or severity that cannot be traced to individual documented incidents in the underlying file.</div>
+        <div class="finding-text">Reviewers report escalation wording exceeding documented behavioral support. Records reference patterns or severity that cannot be traced to individual documented incidents in the underlying file.</div>
       </div>
       <div class="finding-item">
         <div class="finding-category">Reviewer Interpretation</div>
@@ -3188,8 +3188,8 @@ function submitPoll() {
 </script>
 <div id="enroll-overlay" style="display:none;position:fixed;inset:0;background:rgba(5,5,5,.94);z-index:99999;align-items:flex-start;justify-content:center;padding:24px;overflow:auto;font-family:'Inter',sans-serif">
   <div style="max-width:460px;width:100%;background:var(--surface);border:1px solid var(--accent);padding:26px 24px;margin:24px 0">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:10px">JRS Training &amp; Certification</div>
-    <h2 style="font-family:'Bodoni Moda',serif;font-weight:400;font-size:23px;color:var(--text);margin:0 0 8px">Start Your JRS Certification</h2>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:10px">JRS Reviewer Training Program</div>
+    <h2 style="font-family:'Bodoni Moda',serif;font-weight:400;font-size:23px;color:var(--text);margin:0 0 8px">Start the JRS Reviewer Training Program</h2>
     <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 10px">The six modules are already open and stay open. This puts your name on the certificate at the end, which is the only thing it is needed for. Free for practitioners.</p>
     <p style="font-size:11.5px;color:var(--muted-soft);line-height:1.6;border-left:2px solid var(--accent-dim);padding-left:10px;margin:0 0 16px">Written by <b style="color:var(--muted);font-weight:500">Phillip Wikes</b>, former Lead Civil Rights Officer, Maryland Commission on Civil Rights. Every reviewer who has started this training has finished it. <b><span data-panel="reviewers_all">58</span> international reviewers across three studies</b> have graded records for this work, including <b><span data-panel="completers_all">36</span> independent experts across <span data-panel="countries_all">16</span> countries</b> who each completed a full 24-record set.</p>
     <input id="en-name" type="text" placeholder="Full name" autocomplete="name" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;margin-bottom:9px">
@@ -3353,7 +3353,7 @@ function enrollSubmit(){
       inner.innerHTML =
         '<div style="font-family:\'JetBrains Mono\',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:10px">Registered</div>'
       + '<h2 style="font-family:\'Bodoni Moda\',serif;font-weight:400;font-size:23px;color:var(--text);margin:0 0 8px">You are in</h2>'
-      + '<p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 14px">Your certificate will be issued in that name. Finish all six modules and you carry the designation <b style="color:var(--text)">JRS Certified Master Reviewer</b>, and you may request a written LinkedIn recommendation from the creator of the standard.</p>'
+      + '<p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 14px">Your certificate will be issued in that name. Finish all six modules and you carry the designation <b style="color:var(--text)">JRS Master Reviewer</b>, and you may request a written LinkedIn recommendation from the creator of the standard.</p>'
       + '<a href="org-pilot.html' + q + '" style="text-decoration:none"><button type="button" style="width:100%;font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:13px;cursor:pointer;margin-bottom:10px">Run the diagnostic on my records</button></a>'
       + '<button type="button" onclick="document.getElementById(\'enroll-overlay\').style.display=\'none\'" style="width:100%;font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--accent);border:1px solid var(--accent);padding:13px;cursor:pointer">Start the training</button>';
     })

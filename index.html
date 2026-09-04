@@ -994,6 +994,14 @@ a.gumroad-button.util-link {
  </div>
 </div>
 <!-- /JRS DUAL TRACK v1 -->
+<!-- IP HIERARCHY. Added 2026-09-04. The two tracks above name the engine
+and the standard but never say which is which, so a reader could take JRS
+itself for the software. One sentence each, stated once, in one place. -->
+<div style="margin:0 0 28px;border-left:2px solid var(--accent-dim);padding:2px 0 2px 16px;max-width:660px;">
+ <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:7px;">Standard and engine</div>
+ <p style="font-size:13px;color:var(--muted);line-height:1.7;margin:0 0 7px;"><b style="color:var(--text);">JRS, the Justification Review Standard, is the methodology.</b> It is a set of review conditions applied to a record by a person, on paper or inside whatever workflow an organisation already runs. It is not software and it needs none.</p>
+ <p style="font-size:13px;color:var(--muted);line-height:1.7;margin:0;"><b style="color:var(--text);">The JRS Review Engine is a technical implementation of that logic.</b> It is an API that applies the defined review conditions to one record and returns a structured determination. The standard is usable without it; the engine exists so a platform can operationalise the same conditions in code.</p>
+</div>
 
 
 <div style="margin-top:36px;margin-bottom:32px;">
@@ -1533,7 +1541,7 @@ function calcSCS(){
 </div>
 <div style="margin-bottom:44px;">
  <h2 class="section-head">Common Documentation Review Failures</h2>
- <p class="body-text" style="max-width:640px;">These are not unusual. They can arise across HR, investigations, compliance, and administrative records. The file looks complete at drafting because the author's contextual knowledge may supply information that is not preserved within the record itself. When that author is unavailable - two years later, during escalation, audit, or litigation - the record must explain itself.</p>
+ <p class="body-text" style="max-width:640px;">These are not hypothetical. They can arise across HR, investigations, compliance, and administrative records. The file looks complete at drafting because the author's contextual knowledge may supply information that is not preserved within the record itself. When that author is unavailable - two years later, during escalation, audit, or litigation - the record must explain itself.</p>
  <div class="reviewer-note" style="margin-bottom:14px;"><div class="reviewer-note-label">Most common single gap</div>Pattern conduct described without dates. Without dates, the sequence cannot be independently established by a later reviewer. The manager remembered the conversations. The file does not reflect them.</div>
 
  <div class="failure-block">
@@ -1593,11 +1601,11 @@ function calcSCS(){
 
 <div class="page-eyebrow">Operational Reference</div>
 <h2 class="page-title">Documentation Conditions That Affect Later Review</h2>
-<p class="page-subtitle">Records are often reviewed long after the people who created them are unavailable. The following conditions describe how organizational documentation commonly becomes harder to interpret over time. Not through misconduct, but through the ordinary administrative realities of how records are created, maintained, and eventually examined.</p>
+<p class="page-subtitle">Records are often reviewed long after the people who created them are unavailable. The following conditions describe how organizational documentation can become harder to interpret over time. Not through misconduct, but through the ordinary administrative realities of how records are created, maintained, and eventually examined.</p>
 
 <div class="callout" style="margin-bottom:32px;">
   <div class="callout-label">Framing Note</div>
-  <p>These are administrative documentation conditions, not misconduct indicators. They develop through ordinary workflow pressures: personnel turnover, rushed review cycles, distributed communications, fragmented case management systems, inherited drafts, evolving narratives across departments, delayed documentation entry, reliance on summaries instead of source materials, repeated copying of prior language, and partial reconstruction after escalation. Well-intentioned personnel working under normal operational conditions routinely produce records that become difficult to interpret, defend, or reconstruct during later review. Coherent writing is not equivalent to evidentiary clarity. A record can read well and still be difficult to evaluate independently.</p>
+  <p>These are administrative documentation conditions, not misconduct indicators. They develop through ordinary workflow pressures: personnel turnover, rushed review cycles, distributed communications, fragmented case management systems, inherited drafts, evolving narratives across departments, delayed documentation entry, reliance on summaries instead of source materials, repeated copying of prior language, and partial reconstruction after escalation. Well-intentioned personnel working under normal operational conditions can produce records that become difficult to interpret, defend, or reconstruct during later review. Coherent writing is not equivalent to evidentiary clarity. A record can read well and still be difficult to evaluate independently.</p>
 </div>
 
 <div style="margin-bottom:44px;">
@@ -1605,7 +1613,7 @@ function calcSCS(){
   <p class="body-text" style="max-width:640px;">Documentation quality is partially determined by reconstructability: whether a later reviewer, working from the file alone, can follow the same reasoning the original author used. That capacity erodes over time through ordinary administrative processes, not through exceptional circumstances.</p>
   <p class="body-text" style="max-width:640px;">A manager documents a counseling session from memory three days after it occurred, using language carried over from a prior performance note. An HR coordinator assembles a termination record from emails across two systems and a summary written by someone who has since left the organization. An investigator drafts a conclusion from interview summaries rather than the interview notes, which were not preserved in the case file. These are routine documentation conditions. They are not the product of bad intent. They are the product of how organizational work actually happens under ordinary operational pressures.</p>
   <p class="body-text" style="max-width:640px;">The concern is that ordinary workflow pressures gradually separate conclusions from identifiable supporting context over time. The record that enters the system reflects what the author was able to produce under those conditions. The record that is reviewed later is evaluated without access to those conditions or the people who worked within them.</p>
-  <div class="reviewer-note" style="margin-top:4px;"><div class="reviewer-note-label">Operational basis</div>These conditions are drawn from documentation review practice across HR, compliance, investigation, and administrative review contexts. They are not theoretical failure modes. They are the ordinary environment that most records eventually enter.</div>
+  <div class="reviewer-note" style="margin-top:4px;"><div class="reviewer-note-label">Operational basis</div>These conditions are drawn from documentation review practice across HR, compliance, investigation, and administrative review contexts. They are not theoretical failure modes. They describe the review environment a record may eventually enter.</div>
 </div>
 
 <div style="margin-bottom:44px;">
@@ -1795,7 +1803,7 @@ function calcSCS(){
     </div>
     <div style="display:grid;grid-template-columns:44px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--rule);">
       <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent-dim);padding-top:2px;">D</div>
-      <div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">Records are reviewed under conditions that were not anticipated at drafting</div><div class="cond-text">The personnel, systems, and context available at drafting are not the conditions under which most records are eventually reviewed. Turnover, system changes, retention policy, and time create a different review environment. Records should be written for that environment, not the one that existed when they were created.</div></div>
+      <div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">Records are reviewed under conditions that were not anticipated at drafting</div><div class="cond-text">The personnel, systems, and context available at drafting are not the conditions under which a record is eventually reviewed. Turnover, system changes, retention policy, and time create a different review environment. Records should be written for that environment, not the one that existed when they were created.</div></div>
     </div>
     <div style="display:grid;grid-template-columns:44px 1fr;gap:14px;padding:14px 0;">
       <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent-dim);padding-top:2px;">E</div>
@@ -2167,7 +2175,7 @@ function calcSCS(){
  </div>
  <div class="callout" style="margin-top:20px;">
  <div class="callout-label">Implementation Questions</div>
- <p>Organizations evaluating phased implementation approaches may request additional operational information. Discussions are limited to workflow adaptation, reviewer onboarding, and implementation questions related to existing documentation-review environments.</p>
+ <p>Organizations evaluating phased implementation approaches work from the published materials. The kit, the training modules and the field guides are written to be applied directly, and nothing here creates a consulting or implementation engagement.</p>
   </div>
 
   <div style="border:1px solid var(--rule);margin-top:20px;">
@@ -2535,7 +2543,7 @@ function calcSCS(){
   </div>
   <div style="display:flex;align-items:stretch;">
    <div style="background:var(--surface);padding:12px 16px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;color:var(--muted-soft);min-width:140px;border-right:1px solid var(--rule);display:flex;align-items:center;flex-shrink:0;text-transform:uppercase;">Enterprise Partnership</div>
-   <div style="padding:12px 16px;"><span style="font-size:13px;font-weight:600;color:var(--text);">Pilot program + multi-department rollout.</span> <span style="font-size:13px;color:var(--muted);">Phased record-type rollout across HR, compliance, and investigations. Scope defined collaboratively. Implementation boundaries explicitly maintained.</span></div>
+   <div style="padding:12px 16px;"><span style="font-size:13px;font-weight:600;color:var(--text);">Pilot program + multi-department rollout.</span> <span style="font-size:13px;color:var(--muted);">Phased record-type rollout across HR, compliance, and investigations. Scope defined by the participating organisation. Implementation boundaries explicitly maintained.</span></div>
   </div>
  </div>
  <div class="card-grid" style="margin-top:14px;">
@@ -2638,7 +2646,7 @@ function calcSCS(){
    <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:2px;">Who uses it</div>
    <div style="font-size:12px;color:var(--muted);margin-bottom:6px;line-height:1.5;">HR operations, compliance programs, and investigation units deploying review controls across multiple departments or record types.</div>
    <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:2px;">Use Case</div>
-   <div style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:10px;">Phased record-type rollout, reviewer onboarding cohorts, escalation routing standards, cross-department calibration. Pilot scope defined collaboratively.</div>
+   <div style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:10px;">Phased record-type rollout, reviewer onboarding cohorts, escalation routing standards, cross-department calibration. Pilot scope defined by the participating organisation.</div>
    <a href="enterprise.html" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;border:1px solid var(--rule);padding:5px 10px;display:inline-block;">View Enterprise Implementation →</a>
   </div>
 
@@ -3026,7 +3034,7 @@ function calcSCS(){
 
 <div style="margin-top:36px;">
 <h2 class="section-head">Reviewer Walkthroughs</h2>
-<p class="body-text">Full walkthrough sequences showing a record as received, reviewer analysis, escalation routing where indicated, supported revision, and disposition. Each reflects documentation patterns that appear routinely in organizational review.</p>
+<p class="body-text">Full walkthrough sequences showing a record as received, reviewer analysis, escalation routing where indicated, supported revision, and disposition. Each reflects documentation patterns observed in organizational review.</p>
 <div style="margin-bottom:20px;border:1px solid var(--rule);overflow:hidden;">
   <div style="padding:9px 15px;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;background:var(--surface2);">
     <div><span style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);">Walkthrough 01</span><span style="font-size:13px;font-weight:600;color:var(--text);margin-left:10px;">Performance Review</span></div>
@@ -3223,7 +3231,7 @@ function calcSCS(){
   </div>
 </div>
 
-<div class="reviewer-note" style="margin-top:10px;"><div class="reviewer-note-label">From practice</div>The reconstruction failure example above is not unusual. It is the common condition when managers depart mid-process. The file inherits language written for an audience that already knew the context. When that audience is gone, the file does not explain itself. That is when it fails.</div>
+<div class="reviewer-note" style="margin-top:10px;"><div class="reviewer-note-label">From practice</div>The reconstruction failure example above is drawn from review practice. It is a condition that can arise when managers depart mid-process. The file inherits language written for an audience that already knew the context. When that audience is gone, the file does not explain itself. That is when it fails.</div>
 </div>
 
 <div style="margin-top:36px;">
@@ -3362,7 +3370,7 @@ function calcSCS(){
 </div>
 
 </div>
-<div class="reviewer-note" style="margin-top:12px;"><div class="reviewer-note-label">Pattern note</div>Categories E and F are added as practice develops. The library is not complete. Additional failure categories will be documented as they appear consistently across review contexts.</div>
+<div class="reviewer-note" style="margin-top:12px;"><div class="reviewer-note-label">Pattern note</div>Categories E and F are added as practice develops. The library is not complete. Additional failure categories will be documented as they are observed across review contexts.</div>
 </div>
 
 <hr class="section-rule">
@@ -3447,7 +3455,7 @@ function calcSCS(){
      was rewritten and nothing was deleted. -->
 <div style="margin-bottom:44px;">
  <h2 class="section-head">Five Pre-Submission Review Questions</h2>
- <p class="body-text" style="max-width:640px;">Most records that fail during later review looked fine at drafting. They looked fine because the author already knew what they meant. These questions are applied before that person is no longer available to explain it.</p>
+ <p class="body-text" style="max-width:640px;">Records that fail during later review often looked fine at drafting. They looked fine because the author already knew what they meant. These questions are applied before that person is no longer available to explain it.</p>
  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0;">
   <div style="padding:12px 14px;background:var(--surface);border-left:2px solid var(--accent-dim);"><div style="font-size:13px;color:var(--text);font-weight:600;margin-bottom:3px;">Can this record stand on its own?</div><div style="font-size:12px;color:var(--muted);line-height:1.6;">Could a reviewer with no prior knowledge follow the basis from the file alone?</div></div>
   <div style="padding:12px 14px;background:var(--surface);border-left:2px solid var(--accent-dim);"><div style="font-size:13px;color:var(--text);font-weight:600;margin-bottom:3px;">What specific evidence anchors this conclusion?</div><div style="font-size:12px;color:var(--muted);line-height:1.6;">Dates, documented interactions, referenced records. Are the attachments actually on file?</div></div>
@@ -4776,8 +4784,8 @@ function calcSCS(){
  <div style="display:grid;grid-template-columns:1fr auto;gap:16px;align-items:start;">
   <div>
    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:8px;">Operational Basis</div>
-   <p style="font-size:13.5px;color:var(--muted);line-height:1.7;margin-bottom:8px;">These failure patterns were encountered operationally - not constructed theoretically. The review structure was developed from 25+ years of investigative documentation review in civil rights enforcement and administrative oversight environments, where records are routinely read later by adjudicators and legal counsel who were not present when they were written.</p>
-   <p style="font-size:13px;color:var(--muted-soft);line-height:1.65;margin-bottom:0;">The documentation conditions described here - undocumented timelines, inherited language without source confirmation, AI-assisted language obscuring evidentiary gaps - appeared consistently across review environments over that period. They are not theoretical failure modes. They are the ordinary environment that most records eventually enter.</p>
+   <p style="font-size:13.5px;color:var(--muted);line-height:1.7;margin-bottom:8px;">These failure patterns were encountered operationally - not constructed theoretically. The review structure was developed from 25+ years of investigative documentation review in civil rights enforcement and administrative oversight environments, where records are read later by adjudicators and legal counsel who were not present when they were written.</p>
+   <p style="font-size:13px;color:var(--muted-soft);line-height:1.65;margin-bottom:0;">The documentation conditions described here - undocumented timelines, inherited language without source confirmation, AI-assisted language obscuring evidentiary gaps - appeared consistently across review environments over that period. They are not theoretical failure modes. They describe the review environment a record may eventually enter.</p>
   </div>
   <div style="min-width:160px;border-left:1px solid var(--rule);padding-left:16px;flex-shrink:0;">
    <div style="font-size:11.5px;color:var(--muted-soft);line-height:2.2;">
@@ -4907,8 +4915,8 @@ function calcSCS(){
  </div>
  <p class="body-text">Organizational records often fail during later review not because decisions were wrong, but because documentation was insufficient. Conclusions are stated without identifiable support. Dates are missing. Behavioral claims use evaluative language without observable anchors. Referenced records are not attached. AI-assisted summaries introduce characterizations not present in the source notes.</p>
  <p class="body-text">The underlying causes are organizational, not individual. Documentation is drafted under time pressure by people who know the context - which means gaps that would be obvious to an outside reader are invisible to the author. Communications distributed across email threads, case management platforms, and shared drives often remain fragmented rather than consolidated into the formal record. By the time a file reaches finalization, language from a prior summary may have been carried forward without verification, source materials may have been dropped in favor of the summary that replaced them, and narratives that evolved differently across departments may have been resolved through omission rather than acknowledged. The original author is not always available to explain what the record compressed. The source material is not always accessible to confirm what a characterization assumed.</p>
- <p class="body-text">The result is that well-intentioned personnel working under normal operational conditions routinely produce records that become difficult to interpret, defend, or reconstruct during later review. That is the problem this structure addresses. It is an administrative problem, not a misconduct problem. It requires an administrative response, not an investigative one.</p>
- <p class="body-text" style="max-width:600px;">The later-review conditions that most commonly surface documentation failures include: original author no longer available, source attachments missing from the file, chronology unrecoverable without dates, escalation sequence unsupported by prior records on file, and conflicting accounts that were resolved through omission rather than acknowledged in the record.</p>
+ <p class="body-text">The result is that well-intentioned personnel working under normal operational conditions can produce records that become difficult to interpret, defend, or reconstruct during later review. That is the problem this structure addresses. It is an administrative problem, not a misconduct problem. It requires an administrative response, not an investigative one.</p>
+ <p class="body-text" style="max-width:600px;">The later-review conditions observed to surface documentation failures include: original author no longer available, source attachments missing from the file, chronology unrecoverable without dates, escalation sequence unsupported by prior records on file, and conflicting accounts that were resolved through omission rather than acknowledged in the record.</p>
  <div class="reviewer-note" style="margin-top:12px;"><div class="reviewer-note-label">Operational context</div>Most unsupported records appear complete at drafting. The gap becomes visible only when someone outside the original workflow reads the file without the author available to explain it.</div>
 </div>
 
@@ -4940,7 +4948,7 @@ function calcSCS(){
 <div style="margin-bottom:44px;">
  <h2 class="section-head">What JRS Is Not</h2>
  <div style="border-top:1px solid var(--rule);">
-  <div style="padding:12px 0;border-bottom:1px solid #222;font-size:14.5px;color:var(--text);">Not a misconduct or fraud-detection system. The conditions JRS identifies arise most commonly from ordinary workflow pressures, not deliberate falsification. The framework does not make findings about individuals, investigate conduct, or flag behavior. JRS review returns records to drafters for clarification. It does not accuse.</div>
+  <div style="padding:12px 0;border-bottom:1px solid #222;font-size:14.5px;color:var(--text);">Not a misconduct or fraud-detection system. The conditions JRS identifies arise from ordinary workflow pressures, not deliberate falsification. The framework does not make findings about individuals, investigate conduct, or flag behavior. JRS review returns records to drafters for clarification. It does not accuse.</div>
   <div style="padding:12px 0;border-bottom:1px solid #222;font-size:14.5px;color:var(--text);">Not legal advice or a compliance guarantee. JRS does not establish legal sufficiency, eliminate legal risk, or satisfy jurisdiction-specific regulatory requirements. A record can satisfy all five review conditions and still reflect a decision that is disputed. Organizations should engage legal counsel on those questions separately.</div>
   <div style="padding:12px 0;font-size:14.5px;color:var(--text);">Not a software platform, certification system, or replacement for existing workflows. JRS operates as a structured set of questions within whatever review processes an organization already uses. No dedicated tooling is required. Completion of training materials does not constitute professional certification or regulatory accreditation.</div>
  </div>
@@ -5290,7 +5298,7 @@ const MODULES=[
 /* ── MODULE 01 ── */
 {title:"Introduction to Documentation Review",tag:"Module 01",
 lessons:[
-{title:"Why Records Fail",html:`<p>Records are reviewed later by people who were not present. Personnel change. Time passes. What felt obvious during drafting may not be recoverable when someone else reads the file cold.</p><div class="callout"><div class="callout-label">The Core Problem</div><p>The review question is not whether a record reads well. It is whether someone with no access to the original participants can identify the basis for each conclusion from what the file contains.</p></div><p>The five conditions most commonly found when documentation failures surface:</p><div class="list-block"><div class="list-item"><span class="list-dash">--</span>Original author no longer available to clarify or explain the record</div><div class="list-item"><span class="list-dash">--</span>Supporting attachments missing from the file at time of later review</div><div class="list-item"><span class="list-dash">--</span>Chronology unrecoverable because dates were not documented</div><div class="list-item"><span class="list-dash">--</span>Prior escalation steps referenced but not reflected in the file</div><div class="list-item"><span class="list-dash">--</span>Conflicting accounts resolved through omission rather than acknowledged in the record</div></div><div class="quote-block">"Records are reviewed later by people who were not present. What the file contains is what the later reviewer has to work with."</div><div class="lo-block"><div class="lo-label">This module covers</div><div class="lo-item"><span class="lo-check">--</span>Common causes of documentation failure during later review</div><div class="lo-item"><span class="lo-check">--</span>The difference between readable language and supported conclusions</div><div class="lo-item"><span class="lo-check">--</span>Why records are routinely reviewed without original context</div></div>`},
+{title:"Why Records Fail",html:`<p>Records are reviewed later by people who were not present. Personnel change. Time passes. What felt obvious during drafting may not be recoverable when someone else reads the file cold.</p><div class="callout"><div class="callout-label">The Core Problem</div><p>The review question is not whether a record reads well. It is whether someone with no access to the original participants can identify the basis for each conclusion from what the file contains.</p></div><p>The five conditions most commonly found when documentation failures surface:</p><div class="list-block"><div class="list-item"><span class="list-dash">--</span>Original author no longer available to clarify or explain the record</div><div class="list-item"><span class="list-dash">--</span>Supporting attachments missing from the file at time of later review</div><div class="list-item"><span class="list-dash">--</span>Chronology unrecoverable because dates were not documented</div><div class="list-item"><span class="list-dash">--</span>Prior escalation steps referenced but not reflected in the file</div><div class="list-item"><span class="list-dash">--</span>Conflicting accounts resolved through omission rather than acknowledged in the record</div></div><div class="quote-block">"Records are reviewed later by people who were not present. What the file contains is what the later reviewer has to work with."</div><div class="lo-block"><div class="lo-label">This module covers</div><div class="lo-item"><span class="lo-check">--</span>Common causes of documentation failure during later review</div><div class="lo-item"><span class="lo-check">--</span>The difference between readable language and supported conclusions</div><div class="lo-item"><span class="lo-check">--</span>Why records are often reviewed without original context</div></div>`},
 {title:"Administrative Realities",html:`<p>Documentation is created under real operational conditions: time pressure, incomplete information, and drafters who may be writing records after the relevant events have already occurred. These are not exceptional circumstances. They are the norm.</p><p>A record can be well-written and still fail during later review. Professional wording creates the appearance of support. It does not substitute for it.</p><div class="callout"><div class="callout-label">File Readability vs. Support Visibility</div><p>Documentation quality and decision quality are not the same thing. A record can be thoroughly documented and still reflect a poor decision. This review structure addresses whether the documented basis is identifiable from the record.</p></div><p>Common operational pressures that produce documentation gaps:</p><div class="list-block"><div class="list-item"><span class="list-dash">--</span>Records written days or weeks after the relevant events occurred</div><div class="list-item"><span class="list-dash">--</span>Prior language copied from earlier records without verification</div><div class="list-item"><span class="list-dash">--</span>Conclusions that reflect manager recollection rather than documented events</div><div class="list-item"><span class="list-dash">--</span>Distributed communications that never consolidate into the formal record</div></div><div class="quote-block">"Records that appear adequate at drafting may present reviewability limitations when read later without the original context."</div>`},
 {title:"The Reviewer's Lens",html:`<p>The reviewer's job is not to decide whether the underlying decision was correct. It is to determine whether the record is self-contained and independently reviewable.</p><div class="callout callout-gold"><div class="callout-label">The Reconstruction Question</div><p>Could someone outside the original workflow, reading the file without access to the original participants, identify the basis for each conclusion from what the record contains?</p></div><div class="failure-block"><div class="failure-head">Two Different Questions</div><div class="failure-cols"><div class="failure-col"><div class="failure-col-label">Decision Correctness</div><div class="failure-bad">"Was this the right call?"</div></div><div class="failure-col"><div class="failure-col-label">Documentation Reviewability</div><div class="failure-good">"Can the basis for this conclusion be identified from the file alone?"</div></div></div></div><p>A record can be fully reviewable and reflect a poor decision. A record can also reflect a sound decision and still fail documentation review if the basis is not visible in the file. These are separate questions.</p><div class="lo-block"><div class="lo-label">What reviewers check</div><div class="lo-item"><span class="lo-check">--</span>Each conclusion has an identifiable basis in the file</div><div class="lo-item"><span class="lo-check">--</span>Behavioral descriptions are specific, not evaluative</div><div class="lo-item"><span class="lo-check">--</span>Dates and timelines are present and recoverable</div><div class="lo-item"><span class="lo-check">--</span>Referenced supporting records are attached or locatable</div></div>`}
 ],quiz:[
