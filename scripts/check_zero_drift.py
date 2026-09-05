@@ -4889,6 +4889,89 @@ def check_accepted_article_is_tracked(offline):
           else "CEP accepted piece preserved as .docx + .md and listed ACCEPTED")
 
 
+def check_no_founder_service_funnel_survives_anywhere(offline):
+    """No public page may carry an active founder-delivered record-review funnel.
+
+    WHY THIS EXISTS, AND WHY IT IS SITE-WIDE RATHER THAN PAGE-SCOPED. The
+    2026-09-04 retirement pass removed the "Book a twenty-minute record read"
+    action from engagement.html and was reported as closing the last of these.
+    It was not. The identical anchor, same subject line and same pre-filled
+    body fields, was still live on check.html on 2026-09-05: a page with no
+    noindex, listed in sitemap.xml, carrying 76 inbound links from 60 of the
+    71 public pages, and linked by name from three of the four retired pages.
+
+    It survived every earlier scan for one reason: those scans tested
+    class="cta-primary" and were scoped to the four named retired pages. That
+    anchor is class="cta-secondary" on a page that was never in scope. So this
+    guard deliberately does NOT test a class name or a page list. It tests the
+    mechanism: a mailto: link carrying a body= parameter is a pre-filled
+    service-request form, and no public page gets to have one.
+
+    It also holds the other three corrections from the same pass in place.
+    """
+    bad = []
+
+    # 1. Site-wide: no pre-filled service-request mailto anywhere.
+    pages = sorted(
+        [os.path.relpath(x, ROOT) for x in glob.glob(os.path.join(ROOT, "*.html"))] +
+        [os.path.relpath(x, ROOT) for x in glob.glob(os.path.join(ROOT, "*", "index.html"))] +
+        [os.path.relpath(x, ROOT) for x in glob.glob(os.path.join(ROOT, "reviewer", "*.html"))]
+    )
+    for page in pages:
+        src = read(page)
+        for m in re.findall(r'href="mailto:[^"]*"', src):
+            if "body=" in m:
+                bad.append("%s carries a pre-filled service-request mailto: %s"
+                           % (page, m[:110]))
+
+    # 2. check.html: the funnel gone, the methodology intact.
+    chk = read("check.html")
+    for phrase in ("Want it read with you", "Book a twenty-minute",
+                   "twenty-minute record read", "Twenty minutes, no charge",
+                   "with you watching"):
+        if phrase in chk:
+            bad.append("check.html has regained founder-service language: %r" % phrase)
+    for keep in ("The seven failure modes", "Fluent groundlessness",
+                 "What this page does not do"):
+        if keep not in chk:
+            bad.append("check.html lost self-directed methodology content: %r" % keep)
+    if '<meta name="robots"' in chk:
+        bad.append("check.html must stay indexable; it is a public resource, not a retired page")
+
+    # 3. engagement.html metadata archival, not only its body.
+    eng = read("engagement.html")
+    for m in re.findall(r'<title>([^<]*)</title>', eng) + \
+             re.findall(r'<meta property="og:title" content="([^"]*)"', eng):
+        if "engagement works" in m or "engagement work " in m:
+            bad.append("engagement.html metadata is present-tense again: %r" % m)
+    for m in re.findall(r'<meta name="description" content="([^"]*)"', eng) + \
+             re.findall(r'<meta property="og:description" content="([^"]*)"', eng):
+        if "Written to be forwarded" in m:
+            bad.append("engagement.html description reads as an active procurement pathway")
+
+    # 4. The standard / engine hierarchy on all four pages that must carry it.
+    for page in ("index.html", "jrsstandard.html", "enterprise.html",
+                 "review-engine.html"):
+        src = read(page)
+        if "technical implementation of that" not in src:
+            bad.append("%s no longer distinguishes the standard from the engine" % page)
+    if "It is not software and it needs none" not in read("jrsstandard.html"):
+        bad.append("jrsstandard.html lost the independence half of the hierarchy")
+
+    # 5. terms.html stays historical about closed engagements.
+    tm = read("terms.html")
+    for phrase in ("before the first engagement is signed", "before you engage",
+                   "your scope is countersigned",
+                   "How an engagement runs in practice"):
+        if phrase in tm:
+            bad.append("terms.html has regained forward-facing language: %r" % phrase)
+
+    check("no founder-service funnel survives anywhere", not bad,
+          "; ".join(bad[:6]) if bad else
+          "0 pre-filled service mailto site-wide; check.html clean and indexable; "
+          "engagement metadata archival; hierarchy on 4 pages; terms historical")
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -4964,6 +5047,7 @@ def main():
                check_no_custom_pricing_estimator_returns,
                check_pricing_constraint_names_its_trigger,
                check_founder_service_layer_is_retired,
+               check_no_founder_service_funnel_survives_anywhere,
                check_revenue_model_is_licensing_only,
                check_engine_ladder_is_intact,
                check_tracker_logged_today,
