@@ -750,6 +750,16 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 <h1 class="page-title">JRS Decision Defensibility Methodology</h1>
 <p class="page-subtitle">When a consequential decision is questioned long after it is made, the record becomes the only witness. This is a pre-finalization standard that evaluates whether a record can explain why a decision was made, before the record is finalized.</p>
 
+<!-- IP HIERARCHY. Added 2026-09-05. This page carried the standard in full
+and never named the Review Engine, so a reader here could not tell the
+methodology from the technology. Same two sentences as index.html, stated
+once, near the top, so the distinction is made before the standard begins. -->
+<div style="margin:0 0 28px;border-left:2px solid var(--accent-dim);padding:2px 0 2px 16px;max-width:660px;">
+ <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:7px;">Standard and engine</div>
+ <p style="font-size:13px;color:var(--muted);line-height:1.7;margin:0 0 7px;"><b style="color:var(--text);">JRS, the Justification Review Standard, is the methodology.</b> It is a set of review conditions applied to a record by a person, on paper or inside whatever workflow an organisation already runs. It is not software and it needs none.</p>
+ <p style="font-size:13px;color:var(--muted);line-height:1.7;margin:0;"><b style="color:var(--text);">The JRS Review Engine is a technical implementation of that logic.</b> It is an API that applies the defined review conditions to one record and returns a structured determination. The standard is usable without it; the engine exists so a platform can operationalise the same conditions in code.</p>
+</div>
+
 <div class="core-principle">
  <div class="core-principle-label">Core principle</div>
  <div class="core-principle-text">A later reviewer with no prior knowledge of the matter should be able to identify what happened, what information existed at the time, and what reasoning produced the conclusion, from the record alone, without access to the original author or institutional context that no longer exists in the file. This is the review condition applied to organizational records in the JRS methodology.</div>

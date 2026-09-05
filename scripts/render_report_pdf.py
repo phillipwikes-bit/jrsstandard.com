@@ -54,6 +54,7 @@ def render(src_path, out_path):
     # on 2026-08-27 has that defect: reported as an 11-page paper, actually
     # unformatted source. Converting here rather than at each call site means no
     # caller can forget.
+    md_tmp = None
     if src_path.lower().endswith((".md", ".markdown")):
         import subprocess
         tmp = out_path + ".src.html"
@@ -65,7 +66,17 @@ def render(src_path, out_path):
             raise SystemExit("markdown conversion failed for %s:\n%s%s"
                              % (src_path, r.stdout, r.stderr))
         src_path = tmp
+        md_tmp = tmp
     src = io.open(src_path, encoding="utf-8").read()
+    # THE CONVERTED INTERMEDIATE IS DELETED, NOT LEFT BEHIND. It used to survive
+    # every Markdown render as OUT.pdf.src.html in the repository root, where it
+    # is a page without site nav; check_zero_drift.py's nav guard fired on one
+    # on 2026-09-05, which is how it was found.
+    if md_tmp:
+        try:
+            os.unlink(md_tmp)
+        except OSError:
+            pass
     body = src.replace("</style>", "</style>" + PRINT_CSS, 1)
     doc = ('<!doctype html><html lang="en" data-theme="light"><head>'
            '<meta charset="utf-8">'
