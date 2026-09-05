@@ -4656,7 +4656,11 @@ def check_founder_service_layer_is_retired(offline):
 
     for page in retired:
         src = read(page)
-        if '<meta name="robots" content="noindex,nofollow">' not in src:
+        # noindex,follow since 2026-09-05. The pages must stay out of the index,
+        # but their outbound links to the live licensing, integration and
+        # acquisition pathways should still be followed, which is the whole
+        # point of keeping them reachable rather than deleting them.
+        if '<meta name="robots" content="noindex,' not in src:
             bad.append("%s is not noindex" % page)
         if "SERVICE LAYER RETIRED" not in src:
             bad.append("%s lost its retirement notice" % page)
@@ -4679,8 +4683,16 @@ def check_founder_service_layer_is_retired(offline):
     for page in retired:
         if page in sm:
             bad.append("sitemap.xml still lists %s" % page)
-    if "terms.html" not in sm:
-        bad.append("sitemap.xml lost terms.html, which is not retired")
+    # terms.html was required in the sitemap until 2026-09-05, when it was
+    # taken out of the index with the rest of the archival layer: it governs
+    # engagements closed to new requests, so search discoverability serves no
+    # reader. The assertion is inverted rather than dropped, so a silent
+    # re-listing fails.
+    if "terms.html" in sm:
+        bad.append("sitemap.xml lists terms.html, which is archival since 2026-09-05")
+    terms = read("terms.html")
+    if '<meta name="robots" content="noindex,' not in terms:
+        bad.append("terms.html is not noindex")
 
     # The retirement must not have removed the commercial pathways.
     ent = read("enterprise.html")
