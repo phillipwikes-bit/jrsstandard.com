@@ -182,3 +182,35 @@ HIGH because two important areas could not be audited: **no authorized API call 
 possible**, so every runtime claim rests on source reading rather than observed
 behaviour; and **chain of title depends entirely on documents that do not exist in the
 repository**, so its status is recorded as unknown rather than assessed.
+
+---
+
+# AMENDMENT, 2026-09-09 (targeted closure pass)
+
+**This document was preserved byte-unchanged through four passes. This is its first
+amendment, and the original text above is untouched.**
+
+**PRIOR TEXT, in "Weakest material area":** "contributor material sits inside the core
+construct".
+
+**CORRECTED.** The Section 2.1 contribution is an **accessibility and study-design
+argument**: that a record must remain understandable to the person it describes and that
+linguistic and jurisdictional range is a property of review rather than a courtesy. It
+shaped the decision to build an international panel.
+
+**It is not the DRR construct.** The repository chronology shows **DRR first used
+2026-06-23** and the **Section 2.1 credit first appearing 2026-08-02**, six weeks later.
+**Phillip Wikes states DRR was his idea, and the chronology is consistent with that
+position.**
+
+**Consequence:** the diligence risk on this item reduces from **High to Medium**, and the
+outstanding request is an assignment for a specific argument that shaped panel design,
+not for the construct.
+
+**Also superseded in this document:** its statement that "no asset in the register has
+Verified ownership status" remains accurate as to *ownership*, but its supporting claim
+that no rights instruments existed is superseded: **33 people hold executed structured
+consents** (E-001 to E-004), located 2026-09-09.
+
+See `ASSET_AND_CHAIN_OF_TITLE_REGISTER.md` section "TARGETED CLOSURE PASS" and
+`EVIDENCE_LEDGER.md`.

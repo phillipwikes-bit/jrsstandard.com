@@ -28,7 +28,12 @@ written communication · **D** contemporaneous project record · **E** secondary
 | E-018 | Corpus | DOI regex over full corpus | search | 2026-09-09 | Publications | All manuscripts | - | 3 DOIs, all citations of other authors. No JRS output has a DOI | - | Corrects an earlier 'zero anywhere' statement |
 | E-019 | Source | pilot.html | code | current | n/a | Website | B | formspree.io/f/mreddwdg receives form submissions | Not disclosed on any privacy or security page | Baseline recorded three processors, not four |
 | E-020 | Metadata | docProps/core.xml across research DOCX | metadata | various | Jeff Billups (14), Anholzer Bill (1) | Research documents | D | Third-party names in authoring metadata | Metadata provenance only; not contribution evidence | In no roster |
+| E-021 | Targeted search | 5 Ubayet-specific sources (transcript, correspondence, 3 message records) | search | 2026-09-09 | Ubayet Hossain | Detection / reliability | - | **CT-1 CLOSED: zero hits for commercial, licence, paid, revenue, royalty, successor, acquire, assign, transfer, sold, monetise** | Targeted search complete; external threads outside boundary | none |
+| E-022 | Repo file | research/Reply_Hekim_EqualCoAuthors_2026-08-06.md | text | 2026-08-06 | Hekim Colpan | CCI article | D | **CT-3: "He confirmed the terms", recorded the day after the 2026-08-05 terms. He also set conditions (equal co-authorship, own bio and disclosure verbatim, a condition on the JRS figures), all met** | **Owner's contemporaneous characterisation; his own words are not reproduced** | Upgrades the earlier "acceptance not located" |
+| E-023 | Git chronology | git log -S over the repository | metadata | 2026-06-23 vs 2026-08-02 | DRR / V-AI-08 | DRR construct | D | **CT-2: DRR first used 2026-06-23; the Section 2.1 credit first appears 2026-08-02, six weeks later** | Repository-internal only; earlier external use not auditable | **Supports the owner's stated origination of DRR** |
+| E-024 | Manuscript | Section 2.1 credit language | text | 2026-08 | V-AI-08 | Panel design | C | **The contribution is that "a record must remain understandable to the person it describes and that linguistic and jurisdictional range is a property of review rather than a courtesy", and it drove the international panel design** | **This is an accessibility and study-design argument, not the DRR construct** | none |
 
-**20 ledger entries.** No Level A entry exists: **no executed signed instrument
+
+**24 ledger entries.** No Level A entry exists: **no executed signed instrument
 was located anywhere in the accessible corpus.** The strongest rights evidence is
 Level B, structured consent records, of which 33 people hold one.

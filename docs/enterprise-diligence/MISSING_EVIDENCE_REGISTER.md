@@ -6,7 +6,7 @@ Classified by the consequence of the absence, not by the effort to close it.
 
 | # | Missing evidence | Why it is high | Classification |
 |---|---|---|---|
-| M-01 | **Signed assignment from the Section 2.1 contributor** | The contributed argument sits inside the core construct (DRR). Cannot be closed by the owner alone | **GAP / OWNER INPUT REQUIRED** |
+| M-01 | **Signed assignment from the Section 2.1 contributor** | The contributed argument shaped panel design. **It is not the DRR construct**, which predates the credit by six weeks. Cannot be closed by the owner alone | **GAP / OWNER INPUT REQUIRED** |
 | M-02 | **Written rights allocation with the second author** | The reliability and validation framework and the co-authored manuscripts are not unilaterally transferable | **GAP / OWNER INPUT REQUIRED** |
 | M-03 | **Any executed assignment, work-for-hire or contractor instrument** | Zero located across 2,031 commits and 598 research files | **GAP** |
 | M-04 | **An account of human involvement in the AI-assisted work** | 85.5% of commits and 100% of surviving lines in core implementation files are under the `Claude` identity. Counsel cannot assess this without the facts | **OWNER INPUT REQUIRED** |

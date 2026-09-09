@@ -178,9 +178,9 @@ selection and acceptance: **NOT ESTABLISHED FROM ACCESSIBLE CORPUS** for the ass
 
 | ID | Asset / person | Precise question | Evidence located | Evidence missing | Why it matters | Classification | Next step |
 |---|---|---|---|---|---|---|---|
-| CT-1 | Ubayet Hossain / reliability framework | May his contribution be used in paid or licensed material, and does that travel to a successor? | Authorship corroborated | **Commercial and transfer language** | He designed the framework the detection paper reports | **OWNER INPUT REQUIRED** | Ask him the single question |
-| CT-2 | Section 2.1 contributor / DRR | Was any assignment agreed? | Credit permission | **Any instrument** | Contributed material inside the core construct | **OWNER INPUT REQUIRED** | Request assignment |
-| CT-3 | Hekim Colpan / CCI | Were the 2026-08-05 terms accepted? | Terms located | **Acceptance** | If accepted, restricts commercial use of JRS material | **EXTERNAL EVIDENCE REQUIRED** | Check his reply |
+| CT-1 | Ubayet Hossain / reliability framework | May his contribution be used in paid or licensed material, and does that travel to a successor? | Authorship corroborated (E-006 to E-008) | **NO ADDITIONAL COMMERCIAL OR TRANSFER LANGUAGE LOCATED IN ACCESSIBLE EVIDENCE** (E-021, targeted search complete) | He designed the framework the detection paper reports | **OWNER INPUT REQUIRED** | Ask him the single question. **No further repository search will answer it** |
+| CT-2 | Section 2.1 contributor / **panel design** | Was any assignment agreed for the accessibility argument? | Credit permission; **contribution precisely characterised (E-024)** | **Any instrument** | **Shaped panel design. NOT the DRR construct: DRR predates the credit by six weeks (E-023)** | **OWNER INPUT REQUIRED** | Request assignment for the specific argument |
+| CT-3 | Hekim Colpan / CCI | Were the 2026-08-05 terms accepted? | **Terms located (E-010) AND contemporaneously recorded as confirmed 2026-08-06 (E-022)** | **His own words; the record is the owner's characterisation** | If accepted, restricts commercial use of JRS material | **TRACKER-RECORDED EVIDENCE at Level D** | Retrieve his actual reply if a stronger record is wanted |
 | CT-4 | 33 contributors | Does consent survive revocation risk? | Consents executed | Irrevocability | Revocable licence cannot support exclusivity | **REQUIRES TARGETED PROFESSIONAL REVIEW** | Counsel |
 | CT-5 | AI-assisted assets | What human conception and direction occurred? | Attribution measured | **The account itself** | Counsel will ask first | **OWNER INPUT REQUIRED** | Answer B1 |
 | CT-6 | Trademarks | Filed? | Preparation dossier | **Filing evidence** | 23 pages use `JRS™` | **EXTERNAL EVIDENCE REQUIRED** | USPTO check |
@@ -249,3 +249,81 @@ and he did: a text transcript, four images, a correspondence record and a tracke
 the four captured screenshots are outside the access boundary.
 
 **FINAL ASSESSMENT: BROAD EVIDENCE DISCOVERY COMPLETE.**
+
+---
+
+# TARGETED CLOSURE PASS, 2026-09-09
+
+**No broad crawl was run.** Three targeted searches only, per the closure protocol.
+
+## CT-1 Ubayet Hossain: commercial and transfer language
+
+**Searched:** the five Ubayet-specific accessible sources (the LinkedIn transcript, the
+correspondence record, and three message records) for `commercial`, `licen[cs]`, `paid`,
+`revenue`, `royalt`, `successor`, `acquir`, `assign`, `transfer`, `sold`, `monet`.
+
+**Result: NO ADDITIONAL COMMERCIAL OR TRANSFER LANGUAGE LOCATED IN ACCESSIBLE EVIDENCE.**
+Zero hits across all five sources (E-021).
+
+**His authorship position is unchanged and remains corroborated.** The targeted search is
+complete and **no further repository searching will answer this question.**
+
+## CT-2 Section 2.1 contributor, and the DRR origination correction
+
+**A correction to my own earlier phrasing.** Five of my registers described the
+contribution as sitting "inside the core construct". **That overstates it, and the
+chronology contradicts it.**
+
+| Fact | Evidence |
+|---|---|
+| DRR first used in the repository | **2026-06-23**, commit `9ea3687` (E-023) |
+| Section 2.1 credit first appears | **2026-08-02**, commit `6506e05` (E-023) |
+| Gap | **Six weeks. The construct was named and in use before the credited argument entered the record** |
+
+**What the contribution actually is (E-024):** that "a record must remain understandable
+to the person it describes and that linguistic and jurisdictional range is a property of
+review rather than a courtesy", and that argument "is the reason this study was designed
+around an international panel rather than a single-jurisdiction one".
+
+**That is an accessibility and study-design argument. It is not the DRR construct**,
+which concerns whether a record's conclusion can be reconstructed from the record itself.
+
+**Owner position, recorded as such:** Phillip Wikes states DRR was his idea. **The
+repository chronology is consistent with that position.** The contributor question is
+therefore narrower than my registers implied: an assignment for a specific argument that
+shaped panel design, not for the construct.
+
+**Diligence risk for this item is reduced from High to Medium** on this evidence.
+
+## CT-3 Hekim Colpan: acceptance of the 2026-08-05 CCI terms
+
+**Located, and it upgrades the prior finding.**
+`research/Reply_Hekim_EqualCoAuthors_2026-08-06.md`, dated **the day after** the terms,
+records: "**He confirmed the terms**, restated the equal-co-authorship request, supplied
+his own biography and disclosure wording, set a condition on the JRS figures, and said
+what he will do next" (E-022).
+
+The reply then confirms each of his conditions was met: equal co-authorship with
+alphabetical byline, his biography and disclosure "in exactly as you wrote them, word for
+word", and every figure carrying its method.
+
+**Classification: TRACKER-RECORDED / CONTEMPORANEOUS PROJECT RECORD, Level D.**
+
+**What this establishes:** the project record contemporaneously states he confirmed the
+terms, and documents a negotiated exchange in which he set conditions that were then met.
+
+**What it does not establish:** his own words. The record is the owner's contemporaneous
+characterisation, and the underlying message from him is not reproduced in the corpus.
+
+**Prior status "acceptance NOT located" is SUPERSEDED.** The accurate status is
+**contemporaneously recorded as confirmed at Level D, with his own words not captured.**
+
+## Final assessment
+
+**BROAD EVIDENCE DISCOVERY COMPLETE. TARGETED RIGHTS QUESTIONS REMAIN.**
+
+The remaining questions are **not discoverable by further repository searching**:
+
+1. **CT-1** Ubayet: one question, to be put to him directly.
+2. **CT-2** Section 2.1: an assignment for the specific accessibility argument.
+3. **CT-3** Hekim: his own reply, if a Level C record is wanted in place of Level D.

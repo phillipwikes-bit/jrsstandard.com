@@ -4,7 +4,7 @@
 |---|---|---|---|---|---|---|
 | JRS methodology | Human-attributed majority in `jrsstandard.html` (89%) | none located | n/a | partial | fonts | **Owner assertion** |
 | Canonical Codebook, five conditions | `codebook.html` v1.0 | none located | n/a | **100% Claude-attributed lines** | fonts | **Owner assertion + POSSIBLE OWNERSHIP ISSUE** |
-| DRR construct | Earliest use 2026-06-23 | **V-AI-08 originated the Section 2.1 argument** | Contributor consent (V-AI-08 credited, reinstated) | partial | none | **Contributed material inside the core construct; no assignment** |
+| DRR construct | Earliest use 2026-06-23 | **V-AI-08 contributed the Section 2.1 argument** (accessibility and linguistic/jurisdictional range as a property of review), which shaped **panel design**. **DRR itself predates this credit by six weeks** | Contributor consent (V-AI-08 credited, reinstated) | partial | none | **Contribution is to panel design via an accessibility argument, not to the DRR construct itself; no assignment** |
 | Review Engine + API | repository | none located | n/a | **100% Claude-attributed** | Anthropic | **Owner assertion + POSSIBLE OWNERSHIP ISSUE** |
 | OpenAPI documentation | repository | none located | n/a | **100% Claude-attributed** | none | **Two conflicting versions** |
 | Field guides | repository | none located | n/a | partial | fonts | **Owner assertion** |
