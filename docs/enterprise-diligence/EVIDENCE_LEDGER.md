@@ -33,7 +33,11 @@ written communication · **D** contemporaneous project record · **E** secondary
 | E-023 | Git chronology | git log -S over the repository | metadata | 2026-06-23 vs 2026-08-02 | DRR / V-AI-08 | DRR construct | D | **CT-2: DRR first used 2026-06-23; the Section 2.1 credit first appears 2026-08-02, six weeks later** | Repository-internal only; earlier external use not auditable | **Supports the owner's stated origination of DRR** |
 | E-024 | Manuscript | Section 2.1 credit language | text | 2026-08 | V-AI-08 | Panel design | C | **The contribution is that "a record must remain understandable to the person it describes and that linguistic and jurisdictional range is a property of review rather than a courtesy", and it drove the international panel design** | **This is an accessibility and study-design argument, not the DRR construct** | none |
 
+| E-025 | Published article | linkedin.com/pulse/ai-documentation-risk-record-phillip-wikes-y6zje | web | **2026-06-02** | Phillip Wikes | JRS framework | C | **JRS named publicly and attributed to Wikes; four assessment dimensions described.** Fetched and read 2026-09-09 | Self-published platform article, **not peer-reviewed**; not archived in repo | none |
+| E-026 | Published article | linkedin.com/pulse/reconstructability-test-phillip-wikes-tqhxe | web | **2026-06-11** | Phillip Wikes | Reconstructability Test / JRS | C | **JRS described as built upon this test** | as above | none |
+| E-027 | Published article | linkedin.com/pulse/decision-reconstruction-risk-phillip-wikes-rfiie | web | **2026-07-02** | Phillip Wikes | DRR construct | C | **DRR defined publicly under his own name**: "the condition in which a record cannot explain, on its own terms, why a consequential decision was made" | as above | none |
 
-**24 ledger entries.** No Level A entry exists: **no executed signed instrument
+
+**27 ledger entries.** No Level A entry exists: **no executed signed instrument
 was located anywhere in the accessible corpus.** The strongest rights evidence is
 Level B, structured consent records, of which 33 people hold one.

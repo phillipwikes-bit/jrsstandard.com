@@ -40,3 +40,26 @@ sits outside the consent instrument and whose written terms, if accepted, requir
 prior approval for commercial, promotional, certification, training or marketing use
 of JRS material. **Whether those terms were accepted is NOT ESTABLISHED FROM AVAILABLE
 CORPUS.**
+
+
+---
+
+# AMENDMENT, 2026-09-09: self-published articles
+
+**A category this register did not previously carry.** Three LinkedIn articles authored
+by Phillip Wikes were supplied by the owner and read live on 2026-09-09.
+
+| Work | Published | Category |
+|---|---|---|
+| AI Documentation Risk and the Record | **2026-06-02** | **Self-published platform article** |
+| The Reconstructability Test | **2026-06-11** | **Self-published platform article** |
+| Decision Reconstruction Risk | **2026-07-02** | **Self-published platform article** |
+
+**These are not peer-reviewed publications and must never be cited as such.** The
+register's existing finding is unchanged: **no JRS output has a DOI or a publisher
+record.**
+
+**What they do establish is public, attributed, externally timestamped authorship**, and
+on that narrow point they are the strongest evidence in the corpus, because they do not
+depend on any record the owner controls. See
+`PUBLISHED_ARTICLE_AUTHORSHIP_EVIDENCE.md`.

@@ -41,3 +41,6 @@ Existence is not ownership; ownership is treated in
 | A-33 | Consent and release audit | Rights document | `research/CONSENT_AND_RELEASE_AUDIT_2026-08-13.md` | n/a | **2026-08-13** | File present | Private. **Nearest thing to a rights record located** |
 | A-34 | Domain `jrsstandard.com` | Domain | external registrar | n/a | n/a | Resolves and serves | **Registrar record NOT AUDITABLE** |
 | A-35 | Enterprise diligence package | Documentation | `docs/enterprise-diligence/` | 2026-09-08 | 2026-09-08 | 13 documents | Private, excluded from deployment |
+| A-36 | Published article: AI Documentation Risk and the Record | Publication (self-published) | linkedin.com/pulse/...-y6zje | n/a | **2026-06-02** | Live page read 2026-09-09 | Public. **Not archived in repo** |
+| A-37 | Published article: The Reconstructability Test | Publication (self-published) | linkedin.com/pulse/...-tqhxe | n/a | **2026-06-11** | Live page read 2026-09-09 | Public. **Not archived in repo** |
+| A-38 | Published article: Decision Reconstruction Risk | Publication (self-published) | linkedin.com/pulse/...-rfiie | n/a | **2026-07-02** | Live page read 2026-09-09 | Public. **Not archived in repo** |

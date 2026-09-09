@@ -34,3 +34,19 @@ Classified by the consequence of the absence, not by the effort to close it.
 | M-16 | Font licence terms restated in-repo | Google Fonts are used under public terms; restating is hygiene, not a defect | **GAP** |
 | M-17 | Consolidation of the two git identities | One person, two identities. Cosmetic; recorded so a later reader does not infer two contributors | **VERIFIED, non-material** |
 | M-18 | Security assurance of any kind | Carried forward from baseline; unchanged by this pass | **GAP** |
+
+
+---
+
+# AMENDMENT, 2026-09-09
+
+**New medium-priority item created by the published-article addendum.**
+
+| # | Missing evidence | Why it matters | Classification |
+|---|---|---|---|
+| M-19 | **Archived copies of the three published LinkedIn articles** (2026-06-02, 2026-06-11, 2026-07-02) | They are the **strongest public authorship evidence in the corpus** and the only evidence not dependent on a record the owner controls. **They exist only on a third-party platform.** If removed or altered, the evidence is lost | **GAP, and closable by the owner in minutes** |
+
+**Also amended:** M-01 previously read that the Section 2.1 argument "sits inside the
+core construct (DRR)". **Corrected**: it is an accessibility and study-design argument.
+DRR was publicly attributed to Wikes on 2026-06-02, **61 days before the Section 2.1
+credit first appears**.

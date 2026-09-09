@@ -327,3 +327,46 @@ The remaining questions are **not discoverable by further repository searching**
 1. **CT-1** Ubayet: one question, to be put to him directly.
 2. **CT-2** Section 2.1: an assignment for the specific accessibility argument.
 3. **CT-3** Hekim: his own reply, if a Level C record is wanted in place of Level D.
+
+---
+
+# ADDENDUM, 2026-09-09: published article authorship evidence
+
+**Three self-published articles supplied by the owner, fetched and read live. Not
+previously in the corpus.** Full treatment in
+`PUBLISHED_ARTICLE_AUTHORSHIP_EVIDENCE.md`; ledger entries E-025 to E-027; assets
+A-36 to A-38.
+
+| Published | Title | Establishes |
+|---|---|---|
+| **2026-06-02** | AI Documentation Risk and the Record | **JRS named publicly and attributed to Wikes**, with the four assessment dimensions |
+| **2026-06-11** | The Reconstructability Test | JRS "built upon this test" |
+| **2026-07-02** | Decision Reconstruction Risk | **DRR defined publicly under his own name** |
+
+## Effect on the chain-of-title record
+
+**CT-2 is strengthened on evidence outside the repository.** The prior pass rested the
+DRR origination question on repository chronology alone. That chronology is now
+corroborated by three published, attributed, **third-party timestamped** articles, the
+earliest of which (**2026-06-02**) predates the repository's own first use of DRR by
+**21 days** and the Section 2.1 credit by **61 days**.
+
+**This is the strongest public authorship evidence in the corpus**, because unlike the
+repository, the trackers, and the transcripts, it does not depend on any record the
+owner controls.
+
+**It does not establish legal ownership.** Publication is authorship evidence, not a
+rights conveyance, and the register's ownership classifications are unchanged.
+
+**It does not establish peer review.** These are self-published platform articles. The
+finding that **no JRS output has a DOI or publisher record stands.**
+
+## New evidence gap created by this addendum
+
+**The articles are not archived in this repository.** If LinkedIn removes or alters
+them, the evidence is lost.
+
+> **RECOMMENDED: capture a dated PDF of each and store it under `research/evidence/`,
+> as was done for the Ubayet exchange.** That is the single cheapest durability
+> improvement available to the evidence base, and it converts platform-dependent
+> evidence into corpus evidence.
