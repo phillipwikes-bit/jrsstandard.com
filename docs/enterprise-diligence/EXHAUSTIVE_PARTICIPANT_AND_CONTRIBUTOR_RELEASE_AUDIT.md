@@ -111,3 +111,42 @@ softened:
 - Email and correspondence outside the repository could not be searched. If the 2026-08-05 terms were accepted by email, that acceptance is **NOT AUDITABLE** here.
 - The contributor consent stores no terms version, so **the exact wording in force on 2026-08-19 cannot be proven from the row alone**. The wording quoted above is the wording currently deployed.
 - No OCR was applied; all 259 binaries extracted as text without failure, so no OCR queue was required.
+
+---
+
+# SECOND AMENDMENT, 2026-09-09 (person-by-person and stale-status pass)
+
+**Prior text preserved. This corrects the co-author position, which the first
+amendment did not reach.**
+
+**PRIOR FINDING:** Ubayet Hossain, Tanvi Pokhriyal and Stacyann Young recorded as
+"not confirmed", and the co-author instrument reported as "confirmed 0 of 3".
+
+**NEW EVIDENCE:** the Master Tracker records that contributor links were issued to
+"19 people: 15 verified Arm A completers, **co-authors Ubayet Hossain M-01 and Stacy
+Young E-08**". Querying `pilot_contacts` for those codes returns:
+
+| Code | Person | Contributor consent executed | named / use / transfer | Country |
+|---|---|---|---|---|
+| V-AI-20 | Hekim Colpan | **2026-08-19** | true / true / **true** | DE |
+| V-HR-01 | Tanvi Pokhriyal | **2026-08-22** | true / true / **true** | AE |
+| E-08 | Stacyann Young | **2026-08-27** | true / true / **true** | US |
+| **M-01** | **Ubayet Hossain** | **NO ROW of any kind** | n/a | n/a |
+
+**CORRECTION:** "Confirmed 0 of 3" was **true of the co-author instrument and
+materially misleading as a statement of those people's rights position.** Two of the
+three had already granted named, use and successor-transfer permissions through the
+contributor instrument. **A true figure can still mislead**, and reporting it without
+the contributor consents did.
+
+**THE GAP NARROWS TO ONE PERSON. Ubayet Hossain (M-01) is the only one of the four with
+no executed consent of either kind**, and he designed the reliability and validation
+framework the detection paper reports. The project record asserts he "REVIEWED and
+APPROVED 2026-07-14" with byline acceptance confirmed 2026-07-27, which is Level C
+evidence of authorship approval and **is not a rights instrument**.
+
+**SCOPE UNCHANGED.** The contributor consent remains permission portability, not
+assignment: revocable at will, silent on licensing and commercial products, and stored
+without a terms version.
+
+Full detail: `PERSON_BY_PERSON_EVIDENCE_AUDIT.md`, `STALE_STATUS_CORRECTION_REGISTER.md`.
