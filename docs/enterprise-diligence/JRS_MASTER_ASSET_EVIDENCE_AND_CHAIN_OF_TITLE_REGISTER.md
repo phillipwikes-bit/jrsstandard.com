@@ -312,3 +312,168 @@ Supporting registers retained as sources: `MASTER_JRS_ASSET_INVENTORY.md`,
 5. Update the index.
 
 **This register must become more complete over time rather than being rebuilt.**
+
+
+---
+
+# CONSOLIDATION PASS, 2026-09-09 (v1.1)
+
+**Sections 11 to 16 and 22 to 24 of the mandated structure, added in this pass.
+Nothing above is deleted.**
+
+## 11. Hekim Colpan evidence reconciliation
+
+**Verified against the underlying corpus before recording.** The Master Tracker entry
+dated **2026-08-06** records his reply in the project's contemporaneous voice (E-028):
+
+> "**HE ACCEPTED EVERY TERM AND ASKED FOR ONE CHANGE: EQUAL CO-AUTHORS.** His message
+> confirms he will contribute and will strengthen the European governance perspective
+> across the EU AI Act, GDPR, DORA and ISO/IEC 42001; confirms **the proposed
+> publication route, the joint approval process and the handling of copyright and
+> future use are all acceptable**; and confirms he is content with the JRS figures
+> being provisional. THE ONE REQUEST: he does not want the article to place particular
+> emphasis on him as lead or primary authority."
+
+| Issue | Final factual status | Evidence |
+|---|---|---|
+| Contribution status | **VERIFIED** | Roster V-AI-20; detection panel completion |
+| Detection-study contributor consent | **VERIFIED** | E-001, executed **2026-08-19**, named/use/transfer all yes |
+| Co-author acceptance | **VERIFIED** | E-028, E-022 |
+| Written collaboration evidence | **VERIFIED** | E-010, E-022, E-028 |
+| Master Tracker confirmation | **VERIFIED** | E-028 |
+| Written acceptance of copyright and future-use framework | **VERIFIED** | E-028 |
+| Joint approval requirement | **VERIFIED** | E-010 Q5; E-028 |
+| Personal-capacity contribution | **VERIFIED** | E-010; roster |
+| **Broad assignment of all rights to JRS** | **NOT ESTABLISHED BY CURRENT EVIDENCE** | No instrument located |
+| **Unrestricted commercial reuse by JRS** | **NOT ESTABLISHED BY CURRENT EVIDENCE** | E-010 expressly requires prior approval |
+
+**Explanation.** His participation, contribution and co-author collaboration are
+factually documented. His acceptance of the proposed collaboration and
+copyright/future-use framework is factually documented. The correspondence **expressly
+contemplated prior approval** for certain commercial, promotional, certification,
+training and marketing uses involving his contribution and JRS-related material.
+
+**Therefore the evidence should not be characterised as a broad assignment permitting
+unrestricted commercial reuse. That is the scope of the arrangement evidenced, not a
+missing-evidence failure.**
+
+**One precision preserved.** The owner supplied a verbatim sentence, "The proposed
+publication route, joint approval process and handling of copyright and future use all
+sound appropriate to me." **That exact sentence returns zero hits in the corpus**; his
+own message text is not reproduced anywhere. **The substance is independently verified
+at Level D by E-028**, which records the same three acceptances in the same order. The
+verbatim quote is therefore **consistent with, and corroborated in substance by, the
+corpus record**, and is recorded as owner-supplied rather than corpus-located.
+
+## 12. Ubayet Hossain evidence reconciliation
+
+| Issue | Status |
+|---|---|
+| Authorship and methodology approval | **VERIFIED**, corroborated by transcript **and four primary images** (E-006 to E-008) |
+| Attribution approval, submission clearance | **VERIFIED** |
+| Historical evidence reconciled | **VERIFIED**: the earlier "no consent of either kind" finding was my reporting fault and is corrected |
+| **Commercial or licensed use and successor-transfer scope** | **DEFERRED BY CURRENT PROJECT SEQUENCE** |
+
+**Owner decision: contact concerning this issue is deferred until publication.**
+
+**This is not an evidence gap and is not recorded as one.** The targeted search is
+complete (E-021) and the question is a decision about timing, not a failure of the
+record. His contribution as a whole is **not** unresolved.
+
+## 13. Tanvi Pokhriyal evidence reconciliation
+
+| Field | Value |
+|---|---|
+| Identity | Tanvi Pokhriyal, code **V-HR-01** |
+| Related asset | Employment records study, **first author** |
+| Consent evidence | **E-002, executed 2026-08-22**, country AE |
+| Level | **B, structured primary** |
+| Establishes | Named; credited name and contributed work may continue to be used in study publications, including by a successor organisation |
+| Does not establish | Assignment; irrevocability; licensing or commercial-product rights |
+| Prior stale finding | "not confirmed" — **CORRECTED**; true of the co-author instrument only |
+| Status | **VERIFIED** |
+
+## 14. Stacy Anne Young evidence reconciliation
+
+| Field | Value |
+|---|---|
+| Identity | Stacyann Young, code **E-08** |
+| Related asset | Public records study; RMJ manuscript, **first author** |
+| Consent evidence | **E-003, executed 2026-08-27**, country US |
+| Level | **B, structured primary** |
+| Additional | Affiliation policy set **2026-08-09**: title and agency off every surface. **Being honoured**, recorded in the roster source |
+| Prior stale finding | "not confirmed" — **CORRECTED** |
+| Status | **VERIFIED** |
+
+## 15. DRR origin evidence
+
+| Evidence | Date | Level |
+|---|---|---|
+| **JRS publicly named and attributed to Phillip Wikes**, four assessment dimensions described | **2026-06-02** | **C**, externally timestamped |
+| **The Reconstructability Test** published; JRS "built upon this test" | **2026-06-11** | **C** |
+| First repository use of "Decision Reconstruction Risk" | 2026-06-23 | D |
+| **DRR publicly defined by Wikes** | **2026-07-02** | **C** |
+
+**Status: the available record is consistent with Phillip Wikes originating DRR**, and
+the strongest evidence for it is external and not dependent on any record he controls.
+
+**This is not characterised as a dispute.** No evidence of a competing origination claim
+was located anywhere in the corpus.
+
+## 16. Section 2.1 contribution evidence
+
+**A separate question from section 15, and kept separate.**
+
+| Field | Value |
+|---|---|
+| Contributor | V-AI-08 |
+| Contribution | That "a record must remain understandable to the person it describes and that linguistic and jurisdictional range is a property of review rather than a courtesy", which drove **international panel design** |
+| Character | **Accessibility and study-design argument. Not the DRR construct** |
+| Credit first appears | **2026-08-02**, 61 days after JRS was publicly attributed to Wikes |
+| Permission | Credited with permission; credit removed 2026-08-16 and **reinstated 2026-09-06** |
+| Rights language | **Not located** |
+| Status | **EVIDENCE GATHERED.** Assignment for the specific argument remains outstanding |
+
+## 22. Deferred matters
+
+| Matter | Reason | Classification |
+|---|---|---|
+| Ubayet: commercial and successor-transfer scope | **Owner decision: contact deferred until publication** | **DEFERRED BY CURRENT PROJECT SEQUENCE** |
+
+## 23. Genuine remaining evidence questions
+
+Only two survive consolidation:
+
+1. **Section 2.1 assignment** for the specific accessibility argument. **OWNER INPUT REQUIRED.**
+2. **Artifact-level human review evidence** for AI-assisted work. **EVIDENTIARY LIMITATION** (see below), not an owner action item.
+
+## 24. External administrative records
+
+**Trademark filing evidence, publisher agreements, domain registrar records, DPA, SLA
+and repository licence are external administrative or transactional evidence. Their
+absence from the current corpus does not prevent the JRS factual evidence package from
+being consolidated.** They become relevant if and when a transaction, filing,
+publication agreement or legal review requires them.
+
+**Classification: NOT REQUIRED FOR CURRENT FACTUAL CONSOLIDATION.**
+
+## AI-assisted development: corrected classification
+
+**Prior wording: "NOT ESTABLISHED FROM AVAILABLE CORPUS" for human review, selection and
+acceptance.** That phrasing risked reading as an assertion that human involvement was
+absent. **It is not.**
+
+| Aspect | Evidence | Classification |
+|---|---|---|
+| Human conception | **Three published articles attributed to Wikes, 2026-06-02 onward**, predating or accompanying the build | **VERIFIED** |
+| Human direction | Commit messages recording instructions, corrections and refusals; the tracker recording decisions in the owner's voice throughout | **EVIDENCE GATHERED** |
+| Methodology decisions | Codebook v1.0; the published four-dimension structure | **VERIFIED** |
+| AI-assisted development | 85.5% of commits; 100% of surviving lines in core implementation | **VERIFIED** |
+| **Artifact-specific review events** | Not tied to individual artifacts | **EVIDENTIARY LIMITATION AT ARTIFACT LEVEL** |
+
+**The absence of a documented review event for each individual artifact is a limitation
+of the record, not evidence that the owner failed to review, direct or accept the work.**
+
+## Final assessment for this consolidation pass
+
+**CURRENT JRS FACTUAL EVIDENCE PACKAGE COMPLETE.**

@@ -49,3 +49,22 @@ content of each asset. Commit metadata records the identity that authored a comm
 **NOT ESTABLISHED FROM AVAILABLE CORPUS.**
 
 This is answerable only by the owner, and it is question B1 of the questionnaire.
+
+
+---
+
+# AMENDMENT, 2026-09-09: corrected classification
+
+**Prior wording preserved above.** The matrix classified human review, selection and
+acceptance as "NOT ESTABLISHED FROM AVAILABLE CORPUS". **That phrasing risked reading as
+an assertion that human involvement was absent. It is not, and the corrected
+classification is EVIDENTIARY LIMITATION AT ARTIFACT LEVEL.**
+
+**Human conception is now VERIFIED** on evidence that did not exist in this file when it
+was written: three published articles attributed to Phillip Wikes, the earliest
+**2026-06-02**, naming JRS and describing its four assessment dimensions, externally
+timestamped and not dependent on any record he controls.
+
+**What remains a limitation is narrow:** the corpus does not tie a specific human review
+event to each individual generated artifact. **That is a property of how the record was
+kept, not a finding about whether review occurred.**

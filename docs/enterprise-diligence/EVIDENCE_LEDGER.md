@@ -37,7 +37,9 @@ written communication · **D** contemporaneous project record · **E** secondary
 | E-026 | Published article | linkedin.com/pulse/reconstructability-test-phillip-wikes-tqhxe | web | **2026-06-11** | Phillip Wikes | Reconstructability Test / JRS | C | **JRS described as built upon this test** | as above | none |
 | E-027 | Published article | linkedin.com/pulse/decision-reconstruction-risk-phillip-wikes-rfiie | web | **2026-07-02** | Phillip Wikes | DRR construct | C | **DRR defined publicly under his own name**: "the condition in which a record cannot explain, on its own terms, why a consequential decision was made" | as above | none |
 
+| E-028 | Master Tracker | research/MASTER_TRACKER.md, entry dated 2026-08-06 | text | **2026-08-06** | Hekim Colpan | CCI article / collaboration framework | **D** | **"HE ACCEPTED EVERY TERM AND ASKED FOR ONE CHANGE: EQUAL CO-AUTHORS."** Records that he confirmed the publication route, the joint approval process and the handling of copyright and future use are all acceptable; will strengthen the European governance perspective across EU AI Act, GDPR, DORA and ISO/IEC 42001; content with provisional JRS figures; asked not to be presented as lead or primary authority | **His verbatim message is not reproduced.** The record is the project's contemporaneous account of his reply | none |
 
-**27 ledger entries.** No Level A entry exists: **no executed signed instrument
+
+**28 ledger entries.** No Level A entry exists: **no executed signed instrument
 was located anywhere in the accessible corpus.** The strongest rights evidence is
 Level B, structured consent records, of which 33 people hold one.
