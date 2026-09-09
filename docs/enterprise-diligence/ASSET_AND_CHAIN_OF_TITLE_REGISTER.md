@@ -370,3 +370,21 @@ them, the evidence is lost.
 > as was done for the Ubayet exchange.** That is the single cheapest durability
 > improvement available to the evidence base, and it converts platform-dependent
 > evidence into corpus evidence.
+
+---
+
+# SUPERSEDED AS PRIMARY REGISTER, 2026-09-09
+
+**This document is retained in full as an evidence source and correction history. It is
+no longer the authoritative register.**
+
+The single source of truth is now:
+
+> **`JRS_MASTER_ASSET_EVIDENCE_AND_CHAIN_OF_TITLE_REGISTER.md`**
+
+which consolidates the material findings of this document and every fragment register
+into one living record, under a future-update protocol that adds evidence rather than
+rebuilding the audit.
+
+**Nothing here was deleted.** Where this document and the master register differ, the
+master register governs and section 17 of that document records why.
