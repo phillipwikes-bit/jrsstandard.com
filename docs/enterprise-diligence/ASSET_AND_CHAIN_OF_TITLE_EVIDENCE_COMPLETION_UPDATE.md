@@ -179,7 +179,7 @@ contributor instrument. **A true figure can still mislead**, and reporting it wi
 the contributor consents did.
 
 **THE GAP NARROWS TO ONE PERSON. Ubayet Hossain (M-01) is the only one of the four with
-no executed consent of either kind**, and he designed the reliability and validation
+no executed consent of either kind** *(SUPERSEDED by the THIRD AMENDMENT below: he holds Level B written evidence for authorship; the gap is commercial use and successor transfer)*, and he designed the reliability and validation
 framework the detection paper reports. The project record asserts he "REVIEWED and
 APPROVED 2026-07-14" with byline acceptance confirmed 2026-07-27, which is Level C
 evidence of authorship approval and **is not a rights instrument**.
@@ -189,3 +189,80 @@ assignment: revocable at will, silent on licensing and commercial products, and 
 without a terms version.
 
 Full detail: `PERSON_BY_PERSON_EVIDENCE_AUDIT.md`, `STALE_STATUS_CORRECTION_REGISTER.md`.
+
+---
+
+# THIRD AMENDMENT, 2026-09-09 (Ubayet LinkedIn evidence located)
+
+**Prior text preserved.**
+
+**PRIOR FINDING:** "Ubayet Hossain (M-01) is the only one of the four with **no
+executed consent of either kind**", and "**GENUINE GAP**".
+
+**NEW EVIDENCE:** `research/evidence/ubayet_coauthor_2026-07-14/TRANSCRIPT.md`, a
+**verbatim transcript of LinkedIn direct messages dated 2026-07-14**, retained with
+**four source screenshots**, plus a standing record at
+`research/correspondence/Hossain_Ubayet.md`.
+
+It establishes, verbatim and quotable: methodology approval ("absolutely correct";
+AC1 floor "standard and methodologically sound"); attribution approval ("reads
+perfectly and accurately captures my role"); clearance for submission ("ready for the
+next stage"); an explicit co-authorship offer; and his affirmative reply directly under
+it ("Happy to help!").
+
+**CORRECTION:** "No consent of either kind" was **wrong as to authorship**. He has
+**Level B evidence, direct written communication with primary source images**, which
+is stronger than the Level C tracker assertion I had been relying on.
+
+**WHAT DOES NOT CHANGE, AND IS NOW THE PRECISE GAP:** the exchange is **silent on
+commercial use, licensing, revenue and successor transfer**. Those are exactly the
+questions the co-author instrument puts, including "that would mean the work earns
+money and you would not receive a share of it". **Nothing in the file addresses them,
+and no executed instrument holds a row for M-01.**
+
+**REASON THE PRIOR FINDING WAS WRONG:** not a search failure. **My person-by-person
+search found all four matching files, including the transcript. My script printed only
+the first two hits per person and I wrote the conclusion from what was printed rather
+than from what was found.** The count in my own output read 4 and I reported on 2.
+
+Full detail: `UBAYET_HOSSAIN_LINKEDIN_EVIDENCE_RECORD.md`.
+
+---
+
+# RECOMMENDED NEXT ACTION, superseding all earlier versions (2026-09-09, final)
+
+**Earlier versions preserved above. Each was correct on the evidence available at the
+time, and each was overtaken.**
+
+| Version | Recommended action | Superseded because |
+|---|---|---|
+| 2026-09-09 (pass 1) | Obtain the Section 2.1 assignment and the second author's rights allocation | The co-author instrument was then thought to be the only instrument |
+| 2026-09-09 (pass 2) | Resolve the CCI co-author; send the three outstanding co-author confirmations | Two of those three had already consented through the contributor instrument |
+| 2026-09-09 (pass 3) | Get Ubayet Hossain's consent | **He already consented to authorship in writing.** The gap is narrower |
+
+## Current recommendation
+
+> **Ask Ubayet Hossain one question: whether his contribution may be used in paid or
+> licensed material, and whether that permission travels to a successor organisation.**
+
+**Why this and nothing else.**
+
+The authorship question is closed. `research/evidence/ubayet_coauthor_2026-07-14/`
+holds a verbatim LinkedIn transcript with four source screenshots establishing
+methodology approval, attribution approval, submission clearance, an explicit
+co-authorship offer and his affirmative reply. That is **Level B evidence with primary
+sources**, and it is stronger than what most contributors have.
+
+**What no message in the file addresses is commercial use, licensing, revenue or
+successor transfer.** Those are the exact questions the co-author instrument puts, and
+they are the only material rights question outstanding for the person who designed the
+reliability and validation framework the detection paper reports.
+
+**It does not require him to use the link.** He replies on LinkedIn, where a documented
+exchange with him already exists. The requirement is that the question be put explicitly
+enough that his answer is unambiguous, mirroring the instrument's own choice between
+allowing use in paid or licensed material and restricting use to the paper and academic
+materials.
+
+**Second, once that is answered:** the Section 2.1 contributor assignment, which remains
+the only gap requiring a signature from someone who has given none.

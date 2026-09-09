@@ -161,7 +161,7 @@ contributor instrument. **A true figure can still mislead**, and reporting it wi
 the contributor consents did.
 
 **THE GAP NARROWS TO ONE PERSON. Ubayet Hossain (M-01) is the only one of the four with
-no executed consent of either kind**, and he designed the reliability and validation
+no executed consent of either kind** *(SUPERSEDED by the THIRD AMENDMENT below: he holds Level B written evidence for authorship; the gap is commercial use and successor transfer)*, and he designed the reliability and validation
 framework the detection paper reports. The project record asserts he "REVIEWED and
 APPROVED 2026-07-14" with byline acceptance confirmed 2026-07-27, which is Level C
 evidence of authorship approval and **is not a rights instrument**.

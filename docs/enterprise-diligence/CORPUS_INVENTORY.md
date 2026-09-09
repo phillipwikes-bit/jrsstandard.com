@@ -55,3 +55,18 @@ Built 2026-09-09. Full accessible working tree, excluding `.git` internals and c
 | Git history | 2,031 commits | Searched with -S |
 | Live application state | 3 endpoints | Read |
 | External communications | LinkedIn/DM/email references | Searched; originals outside boundary |
+
+## Extraction limitation that caused a material miss, recorded 2026-09-09
+
+**Images were inventoried and never examined.** The corpus holds four PNG screenshots
+under `research/evidence/ubayet_coauthor_2026-07-14/` which are primary-source evidence
+of a rights-relevant exchange. They were counted in this inventory and no OCR or visual
+inspection was applied to any image in the corpus.
+
+**The accompanying `TRANSCRIPT.md` was, however, inside the searched text set and was
+matched by the person-by-person search.** It was not reported because that script
+printed only the first two hits per person while the count said four.
+
+**Both facts are recorded because they are different failures.** One is an extraction
+gap that still stands for images generally. The other is a reporting fault that has
+been corrected.

@@ -93,3 +93,4 @@ authorship, it already has been**, and the record is better than I represented i
 **The remaining gap is narrower and more specific than "get his consent": it is the
 commercial-use and successor-transfer question, which no message in the file addresses
 and which every other co-author has been asked directly.**
+

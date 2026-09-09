@@ -147,7 +147,7 @@ Variants searched: Ubayet, Ubyatt, Hossain, Hossaine, U.H. Code: **M-01**.
 |---|---|
 | Contributor instrument | **NO ROW.** Queried `pilot_contacts` across `source`, `message` and `name`: zero records |
 | Co-author instrument | **Not confirmed** |
-| Status | **GENUINE GAP. He is the only one of the four with no executed consent of either kind.** |
+| Status | ~~**GENUINE GAP. He is the only one of the four with no executed consent of either kind.**~~ **SUPERSEDED 2026-09-09, see THIRD AMENDMENT.** He holds **Level B written evidence** of methodology approval, attribution approval, submission clearance and affirmative reply to an explicit co-author offer (`research/evidence/ubayet_coauthor_2026-07-14/`). **No executed instrument, and nothing addressing commercial use or successor transfer.** |
 
 ---
 
@@ -158,7 +158,7 @@ Variants searched: Ubayet, Ubyatt, Hossain, Hossaine, U.H. Code: **M-01**.
 | Hekim Colpan | V-AI-20 | **Executed 2026-08-19** | not listed | Panel work covered; CCI co-authorship not |
 | Tanvi Pokhriyal | V-HR-01 | **Executed 2026-08-22** | not confirmed | Covered for named/use/transfer |
 | Stacyann Young | E-08 | **Executed 2026-08-27** | not confirmed | Covered for named/use/transfer |
-| **Ubayet Hossain** | **M-01** | **NONE** | not confirmed | **The remaining gap** |
+| **Ubayet Hossain** | **M-01** | **No instrument.** **Level B LinkedIn evidence for authorship, 2026-07-14** | not confirmed | **Gap is now specific: commercial use and successor transfer only** |
 
 ---
 
