@@ -159,3 +159,40 @@ Variants searched: Ubayet, Ubyatt, Hossain, Hossaine, U.H. Code: **M-01**.
 | Tanvi Pokhriyal | V-HR-01 | **Executed 2026-08-22** | not confirmed | Covered for named/use/transfer |
 | Stacyann Young | E-08 | **Executed 2026-08-27** | not confirmed | Covered for named/use/transfer |
 | **Ubayet Hossain** | **M-01** | **NONE** | not confirmed | **The remaining gap** |
+
+---
+
+# THIRD AMENDMENT, 2026-09-09 (Ubayet LinkedIn evidence located)
+
+**Prior text preserved.**
+
+**PRIOR FINDING:** "Ubayet Hossain (M-01) is the only one of the four with **no
+executed consent of either kind**", and "**GENUINE GAP**".
+
+**NEW EVIDENCE:** `research/evidence/ubayet_coauthor_2026-07-14/TRANSCRIPT.md`, a
+**verbatim transcript of LinkedIn direct messages dated 2026-07-14**, retained with
+**four source screenshots**, plus a standing record at
+`research/correspondence/Hossain_Ubayet.md`.
+
+It establishes, verbatim and quotable: methodology approval ("absolutely correct";
+AC1 floor "standard and methodologically sound"); attribution approval ("reads
+perfectly and accurately captures my role"); clearance for submission ("ready for the
+next stage"); an explicit co-authorship offer; and his affirmative reply directly under
+it ("Happy to help!").
+
+**CORRECTION:** "No consent of either kind" was **wrong as to authorship**. He has
+**Level B evidence, direct written communication with primary source images**, which
+is stronger than the Level C tracker assertion I had been relying on.
+
+**WHAT DOES NOT CHANGE, AND IS NOW THE PRECISE GAP:** the exchange is **silent on
+commercial use, licensing, revenue and successor transfer**. Those are exactly the
+questions the co-author instrument puts, including "that would mean the work earns
+money and you would not receive a share of it". **Nothing in the file addresses them,
+and no executed instrument holds a row for M-01.**
+
+**REASON THE PRIOR FINDING WAS WRONG:** not a search failure. **My person-by-person
+search found all four matching files, including the transcript. My script printed only
+the first two hits per person and I wrote the conclusion from what was printed rather
+than from what was found.** The count in my own output read 4 and I reported on 2.
+
+Full detail: `UBAYET_HOSSAIN_LINKEDIN_EVIDENCE_RECORD.md`.
