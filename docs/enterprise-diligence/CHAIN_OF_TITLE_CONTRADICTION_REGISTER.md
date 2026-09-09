@@ -1,0 +1,32 @@
+# Chain-of-Title Contradiction Register
+
+Contradictions between sources, and between earlier passes and this one. **Preserved,
+not harmonised.** Where an earlier finding of mine was wrong, it is corrected here in
+its own words rather than quietly restated.
+
+## Contradictions in my own earlier passes
+
+| # | Earlier statement | Corrected finding | Cause |
+|---|---|---|---|
+| **X-1** | 2026-09-08 and 2026-09-09: "**0 rights documents located**" / "0 rights agreements across 2,031 commits and 598 research files" | **A versioned co-author consent instrument exists and is deployed**: `coauthor-v1.0-2026-08-24`, covering three co-authors, live at `/api/coauthor-stats`. **Confirmed 0 of 3**, so no co-author has yet used it | Earlier searches did not include `api/_coauthor-roster.js` or the live endpoint. **Under-searched, not misread** |
+| **X-2** | 2026-09-09: "**0 DOI strings anywhere in the repository**" | **3 unique DOI strings exist**, all citations of other authors' RMJ papers in a reference list. **No JRS output has a DOI**, so the conclusion stands and the wording was wrong | Earlier search covered `*.html` and `research/*.md` only, excluding 259 binary documents |
+| **X-3** | 2026-09-08: "three subprocessors evidenced in code, none published" | **Four.** Formspree was located on 2026-09-09 | Scope of the earlier search |
+| **X-4** | 2026-09-09: chain-of-title treated as one co-author relationship (the detection-study second author) | **Four co-author relationships**, of which one (the accepted CCI article) has **no consent instrument at all** | Earlier pass read the detection manuscript only |
+| **X-5** | 2026-09-08: "no terms version stored against any consent row" (carried from an August tracker entry) | **Partly superseded.** The co-author instrument stores `TERMS_VERSION` on every row it writes, expressly to close that gap. **It remains true for the contributor and participant instruments** | The August finding was correct when written and was closed for co-authors on 2026-08-24 |
+
+**X-1 and X-2 are the material ones.** Both were produced by searching a subset of the
+corpus and reporting the result as if the whole corpus had been searched. The remedy
+applied in this pass was to index all 1,153 files and extract all 259 binaries before
+answering any question.
+
+## Contradictions between project sources
+
+| # | Contradiction | Sources | Status |
+|---|---|---|---|
+| **Y-1** | Two OpenAPI documents describe the same endpoint at different versions with different response schemas | `openapi.json` 3.1.0/1.0.0 vs `openapi-review-engine.json` 3.0.3/0.1.0-validation | **UNRESOLVED** |
+| **Y-2** | Codebook condition names and API keys overlap on exactly one of five | `codebook.html` vs `openapi.json` | **UNRESOLVED** |
+| **Y-3** | The CCI co-author is **named first** on an accepted publication but is classified `kind:'panel'` in the roster system and absent from the co-author instrument | `api/_contributor-roster.js` vs `api/_coauthor-roster.js` vs the CCI packet | **UNRESOLVED. Highest-value contradiction in this register** |
+| **Y-4** | Public pages state record text is never stored; result telemetry is written | Public pages vs `api/v1/review-engine.js` | **UNRESOLVED** |
+| **Y-5** | 23 pages assert `JRS™` while no filing evidence exists | Public pages vs corpus-wide USPTO search | **UNRESOLVED as to filing** |
+| **Y-6** | Third-party names (`Jeff Billups` ×14, `Anholzer, Bill` ×1) appear in research DOCX metadata and in no roster | `docProps/core.xml` vs all rosters | **UNRESOLVED**, and not contribution evidence |
+| **Y-7** | Written co-author terms restrict commercial use of JRS material by prior approval, and it is not established they were sent or accepted | `Reply_Hekim_Publication_Terms_2026-08-05.md` vs absence of any reply | **UNRESOLVED. Commercially the most significant** |
