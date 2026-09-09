@@ -30,3 +30,52 @@ answering any question.
 | **Y-5** | 23 pages assert `JRS™` while no filing evidence exists | Public pages vs corpus-wide USPTO search | **UNRESOLVED as to filing** |
 | **Y-6** | Third-party names (`Jeff Billups` ×14, `Anholzer, Bill` ×1) appear in research DOCX metadata and in no roster | `docProps/core.xml` vs all rosters | **UNRESOLVED**, and not contribution evidence |
 | **Y-7** | Written co-author terms restrict commercial use of JRS material by prior approval, and it is not established they were sent or accepted | `Reply_Hekim_Publication_Terms_2026-08-05.md` vs absence of any reply | **UNRESOLVED. Commercially the most significant** |
+
+---
+
+# AMENDMENT, 2026-09-09 (second pass, structured-data search)
+
+**Prior findings below this line are preserved. Nothing is deleted or silently
+replaced.**
+
+**PRIOR FINDING:** Hekim Colpan, "Instrument: **None**. Written email terms only";
+and, more broadly, "0 rights documents located" (2026-09-08) revised to "1 instrument,
+confirmed 0 of 3" (2026-09-09, first pass).
+
+**NEW EVIDENCE:** A **second instrument** exists, the **contributor consent** collected
+by `contributor.html` through `api/contributor.js` and stored in `pilot_contacts` where
+`source=contributor-confirm`. It holds **37 confirmation rows covering 33 distinct
+people**, dated 2026-08-19 to 2026-09-05, with **`consent_use` yes on 100%** and
+**`consent_transfer` yes on 100%, zero refusals**.
+
+**Hekim Colpan (V-AI-20) executed it on 2026-08-19**: named yes, use yes, transfer yes,
+country DE.
+
+**CORRECTION:** The earlier finding was **incorrect for Hekim Colpan** and
+**incomplete for the contributor population**.
+
+**REASON THE PRIOR SEARCH WAS INCOMPLETE:** A category error plus a search-strategy
+limit. I searched `api/_coauthor-roster.js` (the co-author instrument, 3 people), found
+him absent, and reported on both instruments having examined one. Separately, every
+earlier pass searched **files**; these releases exist as **database rows**. No earlier
+pass queried structured application data.
+
+**This does not indicate the earlier work was fraudulent or negligent.** It indicates a
+file-oriented strategy applied to evidence held in a table.
+
+**SCOPE DISCIPLINE PRESERVED.** The contributor consent is **permission portability, not
+a copyright assignment**. Per the project`s own Master Tracker analysis, it "says
+nothing about licensing, commercial products, revenue or vendor platforms", the
+successor clause "covers selling the programme" but not the owner personally earning
+licensing revenue while contributors remain unpaid volunteers, and the permission is
+**revocable at will**, so it cannot support an exclusive perpetual grant. The
+contributor instrument also stores **no terms version**, unlike the co-author one.
+
+**STILL TRUE AND UNCHANGED:** no executed assignment, work-for-hire instrument or
+contractor agreement was located in the accessible corpus searched as of 2026-09-09;
+co-author confirmations remain **0 of 3**; acceptance of the 2026-08-05 CCI publication
+terms was **not located**.
+
+Full detail: `EXHAUSTIVE_PARTICIPANT_AND_CONTRIBUTOR_RELEASE_AUDIT.md` and
+`MASTER_TRACKER_RELEASE_AND_RIGHTS_RECONSTRUCTION.md`.
+
