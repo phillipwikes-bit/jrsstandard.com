@@ -107,6 +107,23 @@ def page_count(path):
         return 0
 
 
+ROUTING_MARK = "jrsstandard.com/check"
+
+
+def routing_pages(path):
+    """How many pages of this PDF already carry the routing line.
+
+    THE DRIFT THIS PREVENTS. Once a guide is published it IS the 9-page routed
+    document, and the pipeline no longer has a pristine 8-page original to work
+    from. A second --build would cheerfully append a SECOND routing page and the
+    guide would drift a page longer on every run. Every entry point therefore
+    counts the marker first: build skips an already-routed guide, and verify
+    treats "exactly one" as the correct published state.
+    """
+    n = page_count(path)
+    return sum(1 for i in range(1, n + 1) if ROUTING_MARK in pdf_text(path, i, i))
+
+
 def furniture(path):
     """Recover this guide's own running header and footer, exactly as it sets them.
 
@@ -192,7 +209,7 @@ def do_build():
     note = ParagraphStyle("n", parent=body, fontName="Times-Italic", fontSize=9.5,
                           leading=13, textColor=colors.HexColor("#555555"))
 
-    built = 0
+    built = skipped = 0
     for name in GUIDES:
         src = os.path.join(ROOT, name)
         if not os.path.exists(src):
@@ -201,6 +218,12 @@ def do_build():
         n = page_count(src)
         if not n:
             print("  UNREADABLE %s" % name)
+            continue
+        already = routing_pages(src)
+        if already:
+            print("  SKIP %s: already carries the routing page (%d page(s) match). "
+                  "Appending again would add a second one." % (name, already))
+            skipped += 1
             continue
         fur = furniture(src)
         tmp = os.path.join(OUT_DIR, "_routing_%s" % name)
@@ -257,7 +280,10 @@ def do_build():
 
     if built:
         print("\n  Output is in build/field-guides/. Run --verify, then --publish.")
-    return 0 if built == len(GUIDES) else 1
+    if skipped == len(GUIDES):
+        print("\n  All %d guides are already routed. Nothing to do." % skipped)
+        return 0
+    return 0 if built + skipped == len(GUIDES) else 1
 
 
 def do_verify():
@@ -265,6 +291,20 @@ def do_verify():
     for name in GUIDES:
         src = os.path.join(ROOT, name)
         out = os.path.join(OUT_DIR, name)
+        # PUBLISHED STATE. The shipped guide already carries the routing page,
+        # so there is no pristine original left to diff against. The invariant
+        # that matters now is that it carries EXACTLY ONE, on the last page:
+        # two would mean a double append, none would mean the publish was lost.
+        marked = routing_pages(src)
+        if marked:
+            n = page_count(src)
+            last_only = ROUTING_MARK in pdf_text(src, n, n)
+            good = (marked == 1 and last_only)
+            print("  %-46s %s  PUBLISHED  %d pages, routing pages=%d (must be 1, on the last page)"
+                  % (name, "PASS" if good else "FAIL", n, marked))
+            if not good:
+                ok = False
+            continue
         if not os.path.exists(out):
             print("  %-46s NOT BUILT" % name)
             ok = False
@@ -284,8 +324,8 @@ def do_verify():
               % (name, verdict, n, m, same, link, route))
         if verdict == "FAIL":
             ok = False
-    print("\n  %s" % ("Every original page is byte-identical in text and exactly one page was added."
-                      if ok else "At least one guide did not verify. Nothing should be published."))
+    print("\n  %s" % ("All guides verify." if ok
+                      else "At least one guide did not verify. Nothing should be published."))
     return 0 if ok else 1
 
 

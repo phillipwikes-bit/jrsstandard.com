@@ -5063,6 +5063,68 @@ def check_no_founder_service_funnel_survives_anywhere(offline):
           "engagement metadata archival; hierarchy on 4 pages; terms historical")
 
 
+def check_tracked_guides_carry_exactly_one_routing_page(offline):
+    """Each tracked field guide ends with exactly one Check routing page.
+
+    WHY. On 2026-09-13 the three tracked guides gained a routing page appended
+    by scripts/generate_field_guides.py. Once published, the shipped file IS
+    the routed document, so a second --build would append a SECOND routing page
+    and the guide would grow a page on every run. The script now skips an
+    already-routed guide, but a script can be edited and a PDF can be replaced
+    by hand, so the invariant is enforced here rather than trusted there.
+
+    It also catches the opposite failure: a guide republished from an old copy
+    would lose the routing page silently, and the route to the diagnostic would
+    disappear from the asset without anything else changing.
+
+    Scope is the three editions api/dl.js tracks behind ?e=. The combined
+    overview is a separate untracked distribution and is deliberately excluded;
+    it must NOT carry a routing page.
+    """
+    import subprocess as _sp
+
+    tracked = ["JRS_Investigator_Field_Guide_Employment.pdf",
+               "JRS_Investigator_Field_Guide_FairHousing.pdf",
+               "JRS_Investigator_Field_Guide_International.pdf"]
+    MARK = "jrsstandard.com/check"
+    findings = []
+
+    def pages(path):
+        out = _sp.run(["pdfinfo", path], capture_output=True, text=True).stdout
+        m = re.search(r"^Pages:\s+(\d+)", out, re.M)
+        return int(m.group(1)) if m else 0
+
+    def text(path, i):
+        return _sp.run(["pdftotext", "-f", str(i), "-l", str(i), path, "-"],
+                       capture_output=True, text=True).stdout or ""
+
+    for name in tracked:
+        path = os.path.join(ROOT, name)
+        if not os.path.exists(path):
+            findings.append("%s missing" % name)
+            continue
+        n = pages(path)
+        if not n:
+            findings.append("%s unreadable" % name)
+            continue
+        hits = sum(1 for i in range(1, n + 1) if MARK in text(path, i))
+        if hits != 1:
+            findings.append("%s has %d routing pages, expected exactly 1" % (name, hits))
+        elif MARK not in text(path, n):
+            findings.append("%s routing page is not the last page" % name)
+
+    combined = os.path.join(ROOT, "JRS_Investigator_Field_Guide.pdf")
+    if os.path.exists(combined):
+        n = pages(combined)
+        if n and any(MARK in text(combined, i) for i in range(1, n + 1)):
+            findings.append("the untracked combined overview gained a routing page")
+
+    check("tracked guides carry exactly one routing page",
+          not findings,
+          "; ".join(findings) if findings
+          else "3 tracked guides, 1 routing page each on the last page; combined overview clean")
+
+
 def check_the_check_page_never_transmits_an_answer(offline):
     """check.html may measure that it was opened. It may never transmit an answer.
 
@@ -5217,6 +5279,7 @@ def main():
                check_all_experts_credited, check_rung2a_lock,
                check_contributor_carries_no_findings,
                check_withdrawn_contributors_absent,
+               check_tracked_guides_carry_exactly_one_routing_page,
                check_the_check_page_never_transmits_an_answer,
                check_reliability_raters_are_not_demoted,
                check_honor_roster_composition,
