@@ -56,8 +56,9 @@ ROUTING_TITLE = "Test your records against the Seven-Point Standard"
 ROUTING_BODY = (
     "This guide describes what a defensible record contains. To test a record you "
     "already have, work through the Seven-Point Record Defensibility Check at "
-    "jrsstandard.com/check. It takes one closed matter and about five minutes, asks "
-    "for no registration and no upload, and your answers stay in your browser."
+    '<link href="https://jrsstandard.com/check" color="#7A5E28">jrsstandard.com/check</link>. '
+    "It takes one closed matter and about five minutes, asks for no registration and "
+    "no upload, and your answers stay in your browser."
 )
 
 GUIDES = [
@@ -138,6 +139,9 @@ def do_build():
                                 fontSize=9.5, leading=13, spaceAfter=6)
     title_style = ParagraphStyle("t", parent=ss["Title"], fontName="Helvetica-Bold",
                                  fontSize=17, leading=21, spaceAfter=14)
+    head_style = ParagraphStyle("h", parent=ss["BodyText"], fontName="Helvetica-Bold",
+                                fontSize=10.5, leading=14, spaceBefore=11, spaceAfter=4,
+                                textColor=colors.HexColor("#7A5E28"))
     route_head = ParagraphStyle("rh", parent=body_style, fontName="Helvetica-Bold",
                                 fontSize=11, leading=15, spaceBefore=6, spaceAfter=6,
                                 textColor=colors.HexColor("#7A5E28"))
@@ -169,22 +173,97 @@ def do_build():
             canv.restoreState()
 
         flow = [Paragraph(title, title_style)]
-        # Source lines are layout-extracted text. Runs of spaces carry table
-        # structure, so any line holding a multi-space run is kept verbatim in a
-        # monospaced block rather than reflowed into a paragraph, which would
-        # collapse the columns into an unreadable sentence.
+
+        # AVAILABLE TEXT WIDTH, in points. Every monospaced block is fitted to
+        # this. The first build overflowed it and Courier silently ran off the
+        # right edge, truncating words mid-character ("pre-final", "procedural
+        # p"). A guide that loses the end of its own sentences is worse than no
+        # rebuild at all, so width is computed rather than assumed.
+        avail = LETTER[0] - doc.leftMargin - doc.rightMargin
+
+        def fitted_mono(chunk):
+            """Render a layout-preserving block at a size that cannot overflow.
+
+            Courier advance width is exactly 0.6 em, so the largest font size
+            that fits N columns is avail / (0.6 * N). Shrink to fit down to a
+            legibility floor; below that, hard-wrap at the column count the
+            floor allows rather than let the text leave the page.
+            """
+            lines = chunk.replace("\t", "    ").split("\n")
+            longest = max((len(l) for l in lines), default=1) or 1
+            size = min(8.2, avail / (0.6 * longest))
+            if size < 5.6:
+                size = 5.6
+                cols = int(avail / (0.6 * size))
+                wrapped = []
+                for l in lines:
+                    while len(l) > cols:
+                        cut = l.rfind(" ", 0, cols)
+                        if cut <= 0:
+                            cut = cols
+                        wrapped.append(l[:cut])
+                        l = "    " + l[cut:].lstrip()
+                    wrapped.append(l)
+                lines = wrapped
+            st = ParagraphStyle("m%d" % int(size * 10), parent=mono,
+                                fontSize=size, leading=size * 1.28)
+            return Preformatted("\n".join(lines), st)
+
+        def esc(t):
+            return t.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+        # A heading in the extracted text is a short line, on its own, with no
+        # sentence punctuation: either ALL CAPS or a numbered section title.
+        # Without this the first build glued them onto the following sentence
+        # and produced "PURPOSE This supplement introduces...".
+        def is_heading(line):
+            t = line.strip()
+            if not (3 < len(t) <= 70):
+                return False
+            if t.endswith((".", ",", ";", ":")):
+                return False
+            if re.match(r"^\d{1,2}[\.\)]\s+\S", t):
+                return True
+            letters = [c for c in t if c.isalpha()]
+            return bool(letters) and all(c.isupper() for c in letters)
+
+        def is_tabular(chunk):
+            """True only for a real column block, not for merely indented prose.
+
+            pdftotext -layout indents ordinary paragraphs, and the first build
+            read that indentation as table structure, so most of the body
+            rendered as 6pt monospace instead of readable prose. Leading
+            indentation is therefore removed before the test, and a block only
+            counts as tabular when at least two of its lines carry an INTERNAL
+            run of three or more spaces, which is what a column gap looks like.
+            """
+            lines = [l for l in chunk.split("\n") if l.strip()]
+            if len(lines) < 2:
+                return bool(re.search(r"\S {3,}\S", chunk))
+            return sum(1 for l in lines if re.search(r"\S {3,}\S", l.strip())) >= 2
+
+        def dedent(chunk):
+            lines = [l for l in chunk.split("\n") if l.strip()]
+            if not lines:
+                return chunk
+            pad = min(len(l) - len(l.lstrip()) for l in lines)
+            return "\n".join(l[pad:] if len(l) >= pad else l for l in chunk.split("\n"))
+
         for para in raw.split("\n\n"):
-            chunk = para.strip("\n")
+            chunk = dedent(para.strip("\n"))
             if not chunk.strip():
                 continue
-            if re.search(r"\S {3,}\S", chunk):
-                flow.append(Preformatted(chunk.replace("\t", "    "), mono))
+            if is_tabular(chunk):
+                flow.append(fitted_mono(chunk))
                 flow.append(Spacer(1, 5))
-            else:
-                flow.append(Paragraph(
-                    re.sub(r"\s+", " ", chunk)
-                      .replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"),
-                    body_style))
+                continue
+            # Split a heading off the top of a prose block so it renders as one.
+            lines = chunk.split("\n")
+            while lines and is_heading(lines[0]):
+                flow.append(Paragraph(esc(lines.pop(0).strip()), head_style))
+            body = " ".join(l.strip() for l in lines).strip()
+            if body:
+                flow.append(Paragraph(esc(re.sub(r"\s+", " ", body)), body_style))
 
         # THE ROUTING FOOTER. This is the whole purpose of the script, so it is
         # appended here rather than written into any source file: it can never be
