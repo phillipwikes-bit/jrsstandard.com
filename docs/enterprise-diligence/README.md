@@ -52,3 +52,20 @@ recorded separately throughout.
   log and held at the approval gate.
 - No legal, licensing, privacy, or security language was changed.
 - No test is reported as passed that was not run.
+
+---
+
+## Authoritative register, from 2026-09-09
+
+**Start here: `JRS_MASTER_ASSET_EVIDENCE_AND_CHAIN_OF_TITLE_REGISTER.md`.**
+
+It is the single source of truth for JRS asset, contributor, rights and chain-of-title
+evidence, traceable to `EVIDENCE_LEDGER.md` (27 entries). Every other document in this
+directory is retained as an evidence source and correction history, not as a competing
+conclusion.
+
+**Its purpose is that no future review has to rediscover Hekim, Ubayet, Tanvi,
+Stacyann, the DRR evidence, the consents, or the Master Tracker history.**
+
+**Update rule: add evidence, name the finding it changes, preserve the prior status.
+Never restart the audit.**

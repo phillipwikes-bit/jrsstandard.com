@@ -7,7 +7,7 @@ is assessed separately from ownership.
 | Asset | Type | Creator (claimed) | Creation | Version | Location | Contributors | Ownership status | Assignment evidence | Third-party material | Public/private | Transferability | Diligence risk |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | JRS Standard (methodology) | Document / trade secret | Phillip Wikes | 2026 | see `JRS-Standard.pdf` | `JRS-Standard.pdf`, `jrsstandard.html` | Sole author asserted | **Owner assertion** | **OWNER INPUT REQUIRED** | None identified | Public | **Unknown** | Medium |
-| Decision Reconstruction Risk (construct) | Copyright / trade secret | Phillip Wikes | 2026 | n/a | Manuscript, public pages | Section 2.1 argument credited to a named contributor | **Owner assertion** | **OWNER INPUT REQUIRED** | None identified | Public | **Unknown** | **High**: a contributed argument sits inside the core construct |
+| Decision Reconstruction Risk (construct) | Copyright / trade secret | Phillip Wikes | 2026 | n/a | Manuscript, public pages | Section 2.1 argument credited to a named contributor | **Owner assertion** | **OWNER INPUT REQUIRED** | None identified | Public | **Unknown** | **Medium**: a contributed argument shaped panel design. **DRR itself predates the credit by six weeks** and is the owner's stated origination |
 | Codebook | Document | Phillip Wikes | 2026 | **1.0** | `codebook.html` | Sole author asserted | **Owner assertion** | **OWNER INPUT REQUIRED** | None identified | Public | **Unknown** | Medium |
 | Review Engine logic | Software | Phillip Wikes | 2026 | `engine_version` in payload | `api/v1/review-engine.js` | Unknown | **Owner assertion** | **OWNER INPUT REQUIRED** | Anthropic model API (service, not embedded IP) | Private source, public contract | **Unknown** | Medium |
 | API and OpenAPI specification | Software / document | Phillip Wikes | 2026 | **Conflicting: 1.0.0 and 0.1.0-validation** | `openapi.json`, `openapi-review-engine.json` | Unknown | **Owner assertion** | **OWNER INPUT REQUIRED** | None identified | Public | **Unknown** | Medium: version conflict must be resolved before hand-over |
@@ -31,7 +31,7 @@ can rely on, which is a different and fixable thing.
 
 Concentrations of risk, in order:
 
-1. **Contributor-derived material inside the core construct.** The Section 2.1 argument
+1. **Contributor-derived material in the study design.** The Section 2.1 argument
    is credited to a named contributor. Credit was given with permission; permission to
    be named is not an assignment of rights.
 2. **Co-authored research and publications.** A second author designed the reliability

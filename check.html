@@ -101,6 +101,39 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
 .jrs-sitenav a:hover{color:var(--accent);background:rgba(190,148,71,.05)}
 @media(max-width:640px){ .jrs-sitenav a{padding:12px 13px;font-size:7.5px} }
 /* /JRS SITE NAV v1 */
+
+/* RESULT BLOCK, BOARD OUTPUT AND PRINT. Added 2026-09-13.
+   Design tokens only, no hardcoded hex, per the house rule. */
+.sa-bench{margin-top:18px;padding:14px 16px;border:1px solid var(--rule);
+  border-left:3px solid var(--accent);background:var(--surface2);
+  border-radius:4px;font-size:13.5px;line-height:1.65;color:var(--muted)}
+.sa-src{margin-top:9px;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--muted-soft)}
+.sa-stamp{margin-top:14px;padding-top:11px;border-top:1px solid var(--rule);
+  font-family:'JetBrains Mono',monospace;font-size:10.5px;line-height:1.6;color:var(--muted-soft)}
+.sa-actions{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
+.sa-actions button{font-family:'JetBrains Mono',monospace;font-size:12px;
+  padding:9px 15px;border-radius:4px;cursor:pointer;
+  border:1px solid var(--accent-dim);background:transparent;color:var(--accent)}
+.sa-actions button:hover{border-color:var(--accent);color:var(--text)}
+.sa-actions #sa-copy{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.sa-adopt{font-family:'JetBrains Mono',monospace;font-size:12px;padding:9px 15px;
+  border-radius:4px;border:1px solid var(--rule);color:var(--muted);text-decoration:none;
+  display:inline-block}
+.sa-adopt:hover{border-color:var(--accent);color:var(--accent)}
+.sa-actions #sa-copy:hover{color:var(--bg);opacity:.9}
+
+/* PRINT: the summary is the page. Everything that is not the result is
+   furniture, and a board paper should not carry navigation or buttons. */
+@media print{
+  body{background:#fff !important;color:#000 !important}
+  header,footer,nav,.primary-nav,.no-print,.sa-actions,button{display:none !important}
+  .sa-bench{background:#fff !important;border:1px solid #999 !important;
+    border-left:3px solid #555 !important;color:#000 !important}
+  .sa-bench b,.sa-stamp,.sa-src{color:#000 !important}
+  a{color:#000 !important;text-decoration:underline}
+  a[href^="http"]:after{content:" (" attr(href) ")";font-size:10px}
+  #sa-out{page-break-inside:avoid}
+}
 </style>
 </head>
 <body>
@@ -270,7 +303,64 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
     } else {
       tail = ' <span style="color:var(--review-text)">Two or more modes in one file is the pattern that matters.</span> A record like this is likely to struggle to explain its own decision when challenged. Check four more files before concluding anything about the process rather than this record.';
     }
-    out.innerHTML = head + tail;
+    // BENCHMARK FRAMING (R-4). Added 2026-09-13. A result with no reference
+    // point does not tell a reader what it means. The comparison below is the
+    // study's own published result and nothing else. NO DEFICIT RATE IS STATED,
+    // because none exists in the evidence base: the only 70% figure this
+    // programme publishes is the pre-registered threshold that was CLEARED.
+    //
+    // Rendering only. Nothing here transmits, which keeps the page's own
+    // "Nothing is transmitted; this runs entirely in your browser" line true.
+    var bench = '<div class="sa-bench"><b>What trained reviewers found.</b> '
+      + 'Sixteen independent experts across eleven countries and five continents read a '
+      + 'balanced 24-record corpus cold, blind to the answer key and to one another, '
+      + 'returning <b>384 graded reads</b>. Mean reviewer accuracy was <b>83.9%</b> '
+      + '(95% CI 72.7 to 95.1, n&nbsp;=&nbsp;16), sensitivity 87.0%, specificity 80.7%, '
+      + 'against a threshold of 70% fixed before any data were seen. '
+      + '<b>Reviewer accuracy ranged from 37.5% to 100%, and the pre-registered '
+      + 'reliability criterion was not met.</b> Both are reported as findings. '
+      + 'Group-level detectability does not license individual-level reliance, and this '
+      + 'page is a prompt for human review of one record, not a determination about it.'
+      + '<div class="sa-src">Detection study, data lock 15 August 2026. Method and limits: '
+      + '<a href="research.html">research.html</a>.</div></div>';
+
+    // BOARD-READY OUTPUT (R-6). Clipboard and print, never a script-driven
+    // download: a sandboxed or embedded context blocks downloads while copy
+    // and print keep working.
+    var stamp = '<div class="sa-stamp">Seven-Point Record Defensibility Check &middot; '
+      + 'jrsstandard.com &middot; generated ' + new Date().toISOString().slice(0, 10)
+      + '<br>Not certification, not accreditation, not a credential. '
+      + 'A prompt for human review of a single record.</div>';
+
+    // The step after a result is adoption, not another tool. This is the only
+    // navigation the result block offers, and it goes to language a policy team
+    // can lift directly.
+    var actions = '<div class="sa-actions no-print">'
+      + '<button type="button" id="sa-copy">Copy summary</button> '
+      + '<button type="button" id="sa-print">Print or save as PDF</button>'
+      + '<a href="compliance.html" class="sa-adopt">Make this a policy &rarr;</a></div>';
+
+    out.innerHTML = head + tail + bench + stamp + actions;
+
+    var cp = document.getElementById('sa-copy');
+    if (cp) cp.addEventListener('click', function(){
+      var txt = (out.innerText || out.textContent || '').replace(/\n{3,}/g, '\n\n').trim();
+      function done(){ cp.textContent = 'Copied'; setTimeout(function(){ cp.textContent = 'Copy summary'; }, 2000); }
+      function fallback(){
+        try {
+          var ta = document.createElement('textarea');
+          ta.value = txt; ta.setAttribute('readonly', '');
+          ta.style.position = 'fixed'; ta.style.opacity = '0';
+          document.body.appendChild(ta); ta.select(); document.execCommand('copy');
+          document.body.removeChild(ta); done();
+        } catch (e) { cp.textContent = 'Select the text above to copy'; }
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(txt).then(done).catch(fallback);
+      } else { fallback(); }
+    });
+    var pr = document.getElementById('sa-print');
+    if (pr) pr.addEventListener('click', function(){ try { window.print(); } catch (e) {} });
   }
   boxes.forEach(function(b){ b.addEventListener('change', render); });
   render();

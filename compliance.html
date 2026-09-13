@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Adoption and Governance Language | JRS™ Justification Review Standard</title>
+<meta name="description" content="Adoptable policy language, a governance checklist mapped to the five JRS review conditions, and a vendor requirement clause. Not certification, not accreditation, not a credential.">
+<meta property="og:title" content="JRS™ Operational Boundaries" />
+<meta property="og:description" content="Scope, limitations, and operational boundaries for JRS, a pre-finalization review standard that evaluates whether a record can explain why a decision was made. What JRS is, what it is not, and implementation realities for HR, compliance, and investigation teams." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.jrsstandard.com/operational-boundaries.html" />
+<meta property="og:site_name" content="JRS™ Justification Review Standard" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="JRS™ Operational Boundaries" />
+<meta name="twitter:description" content="Scope, limitations, and operational boundaries for JRS review resources. Includes seven operational boundaries and eight implementation realities." />
+<meta property="og:image" content="https://jrsstandard.com/og-card.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:image" content="https://jrsstandard.com/og-card.png" />
+<link rel="canonical" href="https://www.jrsstandard.com/compliance.html" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+.skip-link{position:absolute;left:-9999px;top:4px;z-index:9999;background:var(--accent);color:#050505;padding:8px 16px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none}
+.skip-link:focus{left:4px}
+.nav-toggle{display:none;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);background:none;border:1px solid var(--rule);padding:8px 14px;cursor:pointer;align-items:center;gap:8px;min-height:36px}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0a;--surface:#111;--surface2:#0f0f0f;--rule:#1e1e1e;
+  --accent:#be9447;--accent-dim:#c4963d;
+  --stop:#c04040;--stop-text:#c04040;
+  --review-text:#b8844a;--ready-text:#5dbf82;
+  --text:#e8e8e8;--muted:#888;--muted-soft:#666;
+}
+body{background:var(--bg);color:var(--text);font-family:'JetBrains Mono',monospace;font-size:14px;line-height:1.6;min-height:100vh}
+a{color:inherit;text-decoration:none}
+.container{max-width:860px;margin:0 auto;padding:0 20px}
+.site-header{border-bottom:1px solid var(--rule);padding:14px 0}
+.header-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.wordmark{font-family:'Bodoni Moda',serif;font-size:16px;font-weight:500;letter-spacing:.04em}
+.wordmark span{color:var(--accent)}
+.header-meta{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);line-height:1.8;text-align:right}
+.nav-links{display:flex;gap:16px;flex-wrap:wrap}
+.nav-links a{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);transition:.1s}
+.nav-links a:hover{color:var(--accent)}
+.nav-links a.active{color:var(--text)}
+
+.page-eyebrow{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;margin-top:40px}
+.page-title{font-family:'Bodoni Moda',serif;font-size:26px;font-weight:500;color:var(--text);line-height:1.2;margin-bottom:14px}
+.page-subtitle{font-size:13.5px;color:var(--muted);line-height:1.7;max-width:680px;margin-bottom:24px}
+
+.section-head{font-family:'Bodoni Moda',serif;font-size:17px;font-weight:500;color:var(--text);margin-bottom:6px;margin-top:40px}
+
+.boundary-block{border:1px solid var(--rule);overflow:hidden;margin-bottom:12px}
+.bb-head{padding:11px 16px;border-bottom:1px solid var(--rule);background:var(--surface);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.bb-num{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim)}
+.bb-label{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft)}
+.bb-title{font-size:14px;font-weight:600;color:var(--text);padding:12px 16px 0}
+.bb-body{padding:8px 16px 14px;font-size:12.5px;color:var(--muted);line-height:1.7}
+.bb-implication{padding:8px 16px 10px;border-top:1px solid var(--rule);background:var(--surface2);font-size:11.5px;color:var(--muted-soft);line-height:1.6}
+.bb-impl-label{font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--stop-text);margin-right:6px}
+
+.is-isnot{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--rule);overflow:hidden;margin:20px 0}
+.is-col{padding:16px 18px}
+.is-col:first-child{border-right:1px solid var(--rule)}
+.is-col-label{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:10px}
+.is-item{display:flex;gap:8px;font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:6px}
+.is-mark{flex-shrink:0;padding-top:1px}
+
+.disclaimer-block{border:1px solid rgba(190,148,71,.2);background:var(--surface);padding:16px 20px;margin:20px 0}
+.disclaimer-label{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:8px}
+.disclaimer-text{font-size:12.5px;color:var(--muted);line-height:1.7}
+
+.site-footer{border-top:1px solid var(--rule);padding:24px 0 40px;margin-top:60px}
+.footer-note{margin-top:12px;font-size:11px;color:var(--muted-soft);line-height:1.65;max-width:580px;border-top:1px solid var(--rule);padding-top:12px}
+
+@media(max-width:600px){
+  .is-isnot{grid-template-columns:1fr}
+  .is-col:first-child{border-right:none;border-bottom:1px solid var(--rule)}
+  .header-meta{text-align:left}
+  .nav-toggle{display:flex}
+  .header-meta{display:none}
+  .nav-links{display:none;flex-direction:column;flex-basis:100%;order:10;border-top:1px solid var(--rule);padding:4px 0;gap:0}
+  .nav-links.nav-open{display:flex}
+  .nav-links a{padding:11px 20px;border-bottom:1px solid var(--rule)}
+  .nav-links a:last-child{border-bottom:none}
+}
+
+/* MOBILE FIX PACK, 2026-08-25. Appended, never editing an existing rule.
+   1. Form fields at 16px. Below 16px iOS Safari zooms the whole page on focus
+      and the visitor lands mid-layout with no way back except pinching.
+   2. Tables scroll inside their own box instead of forcing the page sideways.
+   3. Tap targets reach 44px, the minimum a thumb hits reliably.
+   4. Long tokens wrap instead of pushing the body wider than the screen. */
+input,select,textarea{font-size:16px!important}
+table{display:block;overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+button,.btn,.cta-primary,input[type=submit]{min-height:44px}
+@media (max-width:640px){
+  body{overflow-x:hidden}
+  img,svg,video,pre{max-width:100%;height:auto}
+  pre,code{white-space:pre-wrap;word-break:break-word}
+  h1,.h1-look{font-size:23px;line-height:1.3}
+  .wrap,.container,.container-wide{padding-left:16px;padding-right:16px}
+}
+/* JRS SITE NAV v1 */
+.jrs-sitenav{display:flex;align-items:stretch;background:var(--bg);border-bottom:1px solid var(--rule);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.jrs-sitenav::-webkit-scrollbar{display:none}
+.jrs-sitenav a{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;padding:13px 16px;border-right:1px solid var(--rule);white-space:nowrap;flex-shrink:0;display:flex;align-items:center;min-height:44px}
+.jrs-sitenav a:hover{color:var(--accent);background:rgba(190,148,71,.05)}
+@media(max-width:640px){ .jrs-sitenav a{padding:12px 13px;font-size:7.5px} }
+/* /JRS SITE NAV v1 */
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NVYHJ7BJ92"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NVYHJ7BJ92');</script>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<header class="site-header" role="banner">
+ <div class="container">
+  <div class="header-inner">
+   <a href="index.html"><div class="wordmark">JRS<span style="font-size:8px;vertical-align:super;position:relative;top:-2px;letter-spacing:0;color:var(--accent);">&#8482;</span></div></a>
+   <button class="nav-toggle" id="nav-toggle" onclick="toggleMobileNav()" aria-label="Toggle navigation" aria-expanded="false">&#9776; Menu</button>
+   <nav class="nav-links" id="nav-links" role="navigation" aria-label="Site navigation">
+    <a href="index.html">Home</a>
+    <a href="simulations.html">Simulations</a>
+    <a href="workflow-fit.html">Workflow Fit</a>
+    <a href="implementation-scenarios.html">Implementation</a>
+    <a href="operational-boundaries.html" class="active">Boundaries</a>
+    <a href="enterprise.html">Enterprise</a>
+   </nav>
+   <div class="header-meta">Operational Review Tools<br>Pre-Submission Review Controls</div>
+  </div>
+ </div>
+</header>
+<!-- JRS SITE NAV v1 :: CANONICAL BLOCK. Byte-identical on every page that carries it. -->
+<nav class="jrs-sitenav" aria-label="Site">
+ <a href="index.html">Home</a>
+ <a href="/api/dl?e=standard&amp;src=sitenav">Review Controls PDF</a>
+ <a href="training.html">Training</a>
+ <a href="index.html#section-tools">Free Resources</a>
+ <a href="simulations.html">Simulations</a>
+ <a href="pilot.html">Pilot Program</a>
+ <a href="enterprise.html">Enterprise</a>
+ <a href="research.html">Research</a>
+ <a href="jrsstandard.html">The Standard</a>
+</nav>
+<!-- /JRS SITE NAV v1 -->
+<div class="container" role="main">
+
+<div style="max-width:820px;margin:0 auto;padding:38px 0 10px">
+
+<div class="hero-eyebrow" style="margin-bottom:10px">Adoption &middot; Governance</div>
+<h1 class="hero-h1" style="font-size:30px;line-height:1.25">Language you can lift into a policy</h1>
+<p class="hero-sub">Everything on this page is written to be copied. It is offered so a
+compliance, legal or records team can adopt a pre-finalization review step without
+first having to write the wording themselves.</p>
+
+<div style="margin:22px 0;padding:14px 16px;border:1px solid var(--rule);border-left:3px solid var(--review-text);background:var(--surface2);border-radius:4px;font-size:13.5px;line-height:1.6;color:var(--muted)">
+<b style="color:var(--review-text)">What this is not.</b> JRS is <b>not certification, not
+accreditation, and not a credential</b>. Adopting this language does not make an
+organisation compliant with any law, regulation or standard, and it is not legal advice.
+It describes a review step. Whether that step is appropriate, and what it is worth in
+your jurisdiction, is a decision for your own counsel.
+</div>
+
+<h2 style="font-size:19px;margin-top:34px">1. Policy clause</h2>
+<p style="font-size:14px;line-height:1.7;color:var(--muted)">Adoptable as written. Replace
+the bracketed terms.</p>
+<div style="padding:16px 18px;border:1px solid var(--rule);background:var(--surface);border-radius:4px;font-size:13.5px;line-height:1.75;color:var(--text)">
+<p style="margin:0 0 12px"><b>[Organisation] Record Defensibility Review.</b> Before a
+record documenting a consequential decision about a person is finalized, the author or a
+reviewer shall confirm that the record can be understood, on its own terms, by a reader
+who was not present when the decision was made.</p>
+<p style="margin:0 0 12px">A record meets this standard when an independent reader can
+identify the conclusion, locate the evidence the conclusion rests on, follow the sequence
+of events, and see how the decision was reached and by whom.</p>
+<p style="margin:0 0 12px">Where a record is drafted with the assistance of an automated
+or generative system, this review is mandatory and shall be recorded as having taken
+place. Fluent drafting is not evidence of sufficiency.</p>
+<p style="margin:0">This review is a documentation control. It does not assess whether the
+underlying decision was correct, lawful, or consistent with policy, and it does not
+replace any existing legal, HR or audit review.</p>
+</div>
+
+<h2 style="font-size:19px;margin-top:34px">2. Governance checklist</h2>
+<p style="font-size:14px;line-height:1.7;color:var(--muted)">Mapped to the five review
+conditions. Each is a question a reviewer answers about the record in front of them.
+Full definitions and detection criteria are in the <a href="codebook.html">Codebook</a>.</p>
+<div style="border:1px solid var(--rule);border-radius:4px;overflow:hidden">
+<table style="width:100%;border-collapse:collapse;font-size:13.5px">
+<thead><tr style="background:var(--surface2)">
+<th style="text-align:left;padding:10px 14px;color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em">CONDITION</th>
+<th style="text-align:left;padding:10px 14px;color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em">THE REVIEWER CONFIRMS</th></tr></thead>
+<tbody style="color:var(--muted)">
+<tr><td style="padding:11px 14px;border-top:1px solid var(--rule);color:var(--text)"><b>Reconstructability</b></td><td style="padding:11px 14px;border-top:1px solid var(--rule)">A reader can trace the path from the documented evidence to the conclusion without relying on anyone's memory.</td></tr>
+<tr><td style="padding:11px 14px;border-top:1px solid var(--rule);color:var(--text)"><b>Basis Identification</b></td><td style="padding:11px 14px;border-top:1px solid var(--rule)">The source of each characterisation is visible and attributed, rather than implied or summarised.</td></tr>
+<tr><td style="padding:11px 14px;border-top:1px solid var(--rule);color:var(--text)"><b>Chronology</b></td><td style="padding:11px 14px;border-top:1px solid var(--rule)">The sequence of events is followable from the record alone, including prior interventions and the period under review.</td></tr>
+<tr><td style="padding:11px 14px;border-top:1px solid var(--rule);color:var(--text)"><b>Decision-Process Traceability</b></td><td style="padding:11px 14px;border-top:1px solid var(--rule)">A reader can determine who reviewed the matter, what threshold or criterion applied, and whether mitigating information was considered.</td></tr>
+<tr><td style="padding:11px 14px;border-top:1px solid var(--rule);color:var(--text)"><b>Evidentiary Sufficiency</b></td><td style="padding:11px 14px;border-top:1px solid var(--rule)">Taken together, the record stands on its own as an evidentiary document for a reader with no prior knowledge.</td></tr>
+</tbody></table>
+</div>
+
+<h2 style="font-size:19px;margin-top:34px">3. Vendor requirement clause</h2>
+<p style="font-size:14px;line-height:1.7;color:var(--muted)">For inclusion in procurement
+documents where a supplier's product drafts, suggests or generates record text.</p>
+<div style="padding:16px 18px;border:1px solid var(--rule);background:var(--surface);border-radius:4px;font-size:13.5px;line-height:1.75;color:var(--text)">
+<p style="margin:0 0 12px"><b>Record defensibility.</b> Where the supplier's product
+drafts, suggests, or generates text that may enter a record documenting a decision about
+a person, the supplier shall describe in writing:</p>
+<p style="margin:0 0 8px">(a) what the product retains of the record text, for how long, and where it is stored;</p>
+<p style="margin:0 0 8px">(b) what it retains about the outcome, as distinct from the text;</p>
+<p style="margin:0 0 8px">(c) which subprocessors receive record text or derived results;</p>
+<p style="margin:0 0 8px">(d) whether the product presents any review or confidence indication to the author before the record is finalized, and what that indication is derived from;</p>
+<p style="margin:0">(e) what the product does <b>not</b> assess.</p>
+</div>
+<p style="font-size:13px;line-height:1.7;color:var(--muted-soft);margin-top:12px">
+Point (e) is the one most often omitted and the one most useful in a dispute. A supplier
+who can state plainly what their product does not check is easier to rely on than one who
+implies it checks everything.</p>
+
+<h2 style="font-size:19px;margin-top:34px">4. Before you adopt any of it</h2>
+<p style="font-size:14px;line-height:1.7;color:var(--muted)">The evidence behind this
+method, including <b>what it does not establish</b> and a pre-registered reliability
+criterion that was <b>not met</b>, is published in full at
+<a href="research.html">Research and Validation</a>. Read the limits before the results.
+A method whose limits are not stated is not one to put in a policy.</p>
+
+<div style="margin:26px 0 40px;display:flex;gap:10px;flex-wrap:wrap">
+<a href="check.html" class="btn btn-primary">Run the Seven-Point Check &rarr;</a>
+<a href="codebook.html" class="btn">Read the Codebook &rarr;</a>
+</div>
+
+</div>
+</div>
+<footer class="site-footer" role="contentinfo">
+ <div class="container">
+  <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:flex-start;">
+   <div style="font-size:11.5px;color:var(--muted-soft);line-height:1.8;">
+    <div style="font-family:'Bodoni Moda',serif;font-size:14px;margin-bottom:4px;">JRS<span style="color:var(--accent);">.</span></div>
+    <div>Operational Review Tools</div>
+    <div style="margin-top:6px;display:flex;gap:14px;flex-wrap:wrap;">
+     <a href="index.html" style="color:var(--muted-soft);font-size:11px;">Home</a>
+     <a href="simulations.html" style="color:var(--muted-soft);font-size:11px;">Simulations</a>
+     <a href="workflow-fit.html" style="color:var(--muted-soft);font-size:11px;">Workflow Fit</a>
+     <a href="implementation-scenarios.html" style="color:var(--muted-soft);font-size:11px;">Implementation</a>
+     <a href="operational-boundaries.html" style="color:var(--muted-soft);font-size:11px;">Boundaries</a>
+     <a href="enterprise.html" style="color:var(--muted-soft);font-size:11px;">Enterprise</a>
+    </div>
+   </div>
+  </div>
+  <div style="width:100%;font-family:'Bodoni Moda',serif;font-size:14px;color:var(--accent);margin-bottom:8px;">JRS measures the record, not the tool that produced it.</div>
+  <div style="margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-soft);">&#169; 2026 JRS&#8482; &middot; Justification Review Standard &nbsp;&middot;&nbsp; Phillip Wikes, principal &middot; <a href="privacy.html" style="color:inherit">Privacy</a> &nbsp;&middot;&nbsp; <a href="check.html" style="color:inherit">Record Defensibility Check</a></div>
+  <div class="footer-note">JRS resources are designed to supplement existing documentation-review workflows and are not legal advice, compliance certification, workflow replacement systems, automated governance scoring, or enterprise accreditation infrastructure.</div>
+ </div>
+</footer>
+
+<script>
+function toggleMobileNav(){
+  var nav=document.getElementById('nav-links');
+  var btn=document.getElementById('nav-toggle');
+  if(!nav||!btn)return;
+  var isOpen=nav.classList.contains('nav-open');
+  nav.classList.toggle('nav-open');
+  btn.setAttribute('aria-expanded',String(!isOpen));
+  btn.innerHTML=isOpen?'&#9776; Menu':'&#10005; Close';
+}
+</script>
+<script>
+/* JRS LINK-CLICK TELEMETRY. Added 2026-08-13. Token-less, no dependencies.
+   Posts to /api/telemetry, which is a real endpoint in this repository. */
+/**
+ * Zero-Drift Telemetry Dispatcher
+ * Guarantees event delivery without delaying navigation or blocking the main thread.
+ */
+function trackClickAndNavigate(event, targetUrl, eventMetaData) {
+  eventMetaData = eventMetaData || {};
+  // 1. Prevent default immediate navigation
+  if (event && typeof event.preventDefault === 'function') {
+    event.preventDefault();
+  }
+
+  // 2. Construct immutable telemetry payload
+  var payload = JSON.stringify({
+    timestamp: new Date().toISOString(),
+    origin_url: window.location.href,
+    target_url: targetUrl,
+    meta: eventMetaData
+  });
+
+  // 3. Primary Dispatch: Non-blocking navigator.sendBeacon
+  var isDispatched = false;
+  if (typeof navigator !== 'undefined' && navigator.sendBeacon) {
+    var blob = new Blob([payload], { type: 'application/json' });
+    isDispatched = navigator.sendBeacon('/api/telemetry', blob);
+  }
+
+  // 4. Secondary Dispatch: Fetch API with keepalive flag
+  if (!isDispatched && typeof fetch === 'function') {
+    fetch('/api/telemetry', {
+      method: 'POST',
+      body: payload,
+      headers: { 'Content-Type': 'application/json' },
+      keepalive: true
+    }).catch(function() {
+      /* Swallowing non-critical network drops to prioritize UX */
+    });
+  }
+
+  // 5. Deterministic Fail-safe Navigation Fallback (150ms timeout)
+  setTimeout(function() {
+    window.location.href = targetUrl;
+  }, 150);
+}
+
+/* DELEGATION LAYER.
+   One document-level listener, so links rendered by JavaScript after load are
+   captured too and no per-link handler is needed anywhere.
+
+   It decides WHEN to call the dispatcher. It does not alter it.
+
+   Three classes of link are deliberately NOT routed through the dispatcher:
+     - /api/dl and /api/support already count inside their own 302. A redirect
+       cannot be blocked or raced, so it is strictly stronger than a beacon and
+       routing them here would double-count.
+     - mailto, tel, in-page anchors and downloads are not navigations to count.
+     - modifier and middle clicks. preventDefault on those would break "open in
+       new tab", so the beacon is sent WITHOUT preventDefault and the browser is
+       left to do what the reader asked for. */
+(function(){
+  var COUNTED_SERVER_SIDE = /^\/api\/(dl|support)\b/;
+  function beacon(target, meta){
+    try {
+      var payload = JSON.stringify({
+        timestamp: new Date().toISOString(),
+        origin_url: window.location.href,
+        target_url: target,
+        meta: meta || {}
+      });
+      var sent = false;
+      if (navigator.sendBeacon) {
+        sent = navigator.sendBeacon('/api/telemetry', new Blob([payload], { type: 'application/json' }));
+      }
+      if (!sent && typeof fetch === 'function') {
+        fetch('/api/telemetry', { method: 'POST', body: payload,
+          headers: { 'Content-Type': 'application/json' }, keepalive: true }).catch(function(){});
+      }
+    } catch (e) { /* never let telemetry break a click */ }
+  }
+  document.addEventListener('click', function(ev){
+    try {
+      var a = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
+      if (!a) return;
+      var href = a.getAttribute('href') || '';
+      if (!href || href.charAt(0) === '#') return;
+      if (/^(mailto:|tel:|javascript:)/i.test(href)) return;
+      if (a.hasAttribute('download')) return;
+      if (COUNTED_SERVER_SIDE.test(href)) return;
+
+      var label = (a.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 80);
+      var meta = { label: label, src: 'link' };
+
+      // Modifier or middle click: the reader wants a new tab. Record it, do not
+      // hijack it.
+      if (ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey || ev.button !== 0) {
+        beacon(a.href, meta);
+        return;
+      }
+      if (a.target && a.target !== '_self') { beacon(a.href, meta); return; }
+
+      trackClickAndNavigate(ev, a.href, meta);
+    } catch (e) { /* a telemetry fault must never block navigation */ }
+  }, true);
+})();
+</script>
+</body>
+</html>
