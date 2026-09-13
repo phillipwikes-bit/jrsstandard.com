@@ -186,6 +186,7 @@ Other self-contained tools may use their own single scoped key, namespaced to th
 | `jrs-ai-pilot` | `ai-records-pilot.html` | AI-records reviewer code + per-record reads (resume progress) |
 | `jrs-endorsed-<campaign>` | `access.html` | one-endorsement-per-browser guard on the fallback write, used only when a reader reaches the campaign screen without passing through `/api/support` |
 | `jrs-gate-view` | `access.html` | `sessionStorage`, one campaign-screen arrival per tab session |
+| `jrs-check-view` | `check.html` | `sessionStorage`, one `check-view` telemetry beacon per tab session. **Added 2026-09-13** to close F-3, the unmeasured diagnostic funnel. It holds a flag and never an answer. `scripts/check_zero_drift.py::check_the_check_page_never_transmits_an_answer` fails if the emitter ever references checkbox state, if the published privacy promise is deleted, or if `api/telemetry.js` stops gating view events behind the `VIEW_EVENTS` allow-list |
 | `jrs-training-enrolled`, `jrs-training-email` | `training.html` | registration completed on this device, and the address the certificate goes to. **Documented 2026-08-25**: both were already live and in use but had never been entered here, which is the drift this table exists to prevent |
 
 **Removed 2026-08-12:** `jrs-owner-token`. The owner surfaces need no key of any kind; both are secured by opaque, unlinked slugs. Do not reintroduce a token control.

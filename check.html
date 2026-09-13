@@ -166,7 +166,7 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
 
   <p>A decision can be correct and its record still unable to explain why it was reached. Months later, when someone challenges it, the file is what answers: not the reasoning that happened in the room. <strong>Decision Reconstruction Risk is the gap between the two</strong>, and AI-assisted drafting widens it, because a generated draft reads as finished long before it is defensible.</p>
 
-  <p>Below are seven named ways that failure shows up in writing, each with the question that detects it. <strong>Nothing here is sent anywhere.</strong> There is no registration, no account, no upload, and no form. Open five of your own closed matters and read them against this page.</p>
+  <p>Below are seven named ways that failure shows up in writing, each with the question that detects it. <strong>Nothing you tick is sent anywhere.</strong> There is no registration, no account, no upload, and no form. Open five of your own closed matters and read them against this page.</p>
 
   <div class="evidence-strip">
     <div class="ev-lead">These seven modes are not a checklist someone wrote down. They were tested.</div>
@@ -191,7 +191,7 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
 
   <h2>Check one record now</h2>
 
-  <p>Take a single closed record. Read it once, then answer the seven questions. <strong>Tick a box only where the answer is no or you are unsure.</strong> Nothing is transmitted; this runs entirely in your browser.</p>
+  <p>Take a single closed record. Read it once, then answer the seven questions. <strong>Tick a box only where the answer is no or you are unsure.</strong> Your assessment answers stay entirely in your browser. They are never sent, stored, or seen by anyone. Like every page on this site, this one counts anonymous visits and link clicks, and none of that measurement includes anything you tick here. <a href="privacy.html">How this site handles data</a>.</p>
 
 <label class="chk"><input type="checkbox" class="sa" data-mode="Fluent groundlessness"><span>Point to the sentence that states the conclusion. Now point to the evidence it rests on. Can you?</span></label>
 <label class="chk"><input type="checkbox" class="sa" data-mode="Basis substitution"><span>Where the record says what a document or witness said, can a reader reach the document itself?</span></label>
@@ -364,6 +364,52 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
   }
   boxes.forEach(function(b){ b.addEventListener('change', render); });
   render();
+})();
+</script>
+
+<script>
+/* CHECK-VIEW TELEMETRY (F-3). Added 2026-09-13.
+   Records that this page was opened, and nothing else.
+
+   WHAT IT SENDS: the page path, the literal string 'check-view', and the ?src=
+   attribution tag if one is present. That is the whole payload.
+
+   WHAT IT DOES NOT SEND, AND WHY: no checkbox state, no count of ticked boxes,
+   no mode name, no score, no record text. The page tells the reader in visible
+   text that their answers never leave the browser, so any answer-derived value
+   here would make a published sentence false. This block is a closed IIFE that
+   shares no variable with the diagnostic and never queries '.sa', so it has no
+   reference to the checkbox state at all. The guard
+   check_the_check_page_never_transmits_an_answer enforces that mechanically.
+
+   ONCE PER TAB SESSION. sessionStorage key 'jrs-check-view', which measures
+   opens rather than reloads and keeps one arrival to one row. The key holds a
+   flag, never an answer, and is cleared by the browser when the tab closes. */
+(function(){
+  try {
+    if (sessionStorage.getItem('jrs-check-view')) return;
+  } catch (e) { /* private mode: fall through and send once for this load */ }
+  var src = '';
+  try {
+    src = (new URLSearchParams(window.location.search).get('src') || '').slice(0, 40);
+  } catch (e) { src = ''; }
+  try {
+    var payload = JSON.stringify({
+      timestamp: new Date().toISOString(),
+      origin_url: window.location.pathname,
+      target_url: 'check-view',
+      meta: { event: 'check-view', src: src }
+    });
+    var sent = false;
+    if (navigator.sendBeacon) {
+      sent = navigator.sendBeacon('/api/telemetry', new Blob([payload], { type: 'application/json' }));
+    }
+    if (!sent && typeof fetch === 'function') {
+      fetch('/api/telemetry', { method: 'POST', body: payload,
+        headers: { 'Content-Type': 'application/json' }, keepalive: true }).catch(function(){});
+    }
+    try { sessionStorage.setItem('jrs-check-view', '1'); } catch (e) {}
+  } catch (e) { /* telemetry must never break the page */ }
 })();
 </script>
 

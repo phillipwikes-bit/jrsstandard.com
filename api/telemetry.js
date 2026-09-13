@@ -27,6 +27,18 @@ const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 // /api/support so verification cannot pollute live counts.
 const TEST_SRC = ['verify', 'test', 'selftest'];
 
+// PAGE-VIEW EVENTS. Added 2026-09-13 to close F-3, the unmeasured diagnostic
+// funnel. This is an ALLOW-LIST and not a free text field: only the names below
+// may be written as a view, so a page cannot invent an event type and nothing
+// arbitrary reaches the table.
+//
+// WHAT A VIEW EVENT MAY CARRY: that a named page was opened, plus the same
+// coarse attribution every click already carries. It carries NO answer, NO
+// count of answers, NO score and NO record text, because check.html promises
+// the reader in visible page text that the answers never leave the browser.
+// That promise is the constraint on this endpoint, not a comment about it.
+const VIEW_EVENTS = ['check-view'];
+
 // Non-browser agents do not click links. Same regex as /api/support, which was
 // added after four rounds of self-inflicted analytics pollution.
 const NOT_A_PERSON = /googlebot|bingbot|baiduspider|yandexbot|duckduckbot|applebot|GoogleOther|facebookexternalhit|bot|spider|crawl|slurp|preview|headless|curl|wget|python-requests|libwww|okhttp|java\/|go-http/i;
@@ -76,6 +88,11 @@ export default async function handler(req){
 
   const meta = (b && typeof b.meta === 'object' && b.meta) || {};
   const src = tag(meta.src, 40).toLowerCase();
+  // A view is recorded under its own source so no existing aggregate changes.
+  // Every consumer of interaction_events filters on a specific source value, so
+  // rows written as 'page-view' are invisible to the click and programme counts.
+  const evt = tag(meta.event, 40);
+  const isView = VIEW_EVENTS.indexOf(evt) !== -1;
   if (src && TEST_SRC.indexOf(src) !== -1) return json({ ok: true, recorded: false, reason: 'deploy_check' });
   if (src.indexOf('deploytest') === 0) return json({ ok: true, recorded: false, reason: 'deploy_check' });
 
@@ -99,11 +116,12 @@ export default async function handler(req){
         'Prefer': 'return=minimal'
       },
       body: JSON.stringify({
-        source: 'link-click',
-        type: 'click',
+        source: isView ? 'page-view' : 'link-click',
+        type: isView ? 'view' : 'click',
         payload: {
           origin: safePath(b.origin_url),
-          target: safePath(b.target_url),
+          target: isView ? evt : safePath(b.target_url),
+          event: isView ? evt : null,
           label: tag(meta.label, 80),
           src: src || 'none',
           country: country,
