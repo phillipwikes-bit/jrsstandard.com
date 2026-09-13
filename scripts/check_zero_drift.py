@@ -5063,6 +5063,76 @@ def check_no_founder_service_funnel_survives_anywhere(offline):
           "engagement metadata archival; hierarchy on 4 pages; terms historical")
 
 
+def check_the_check_page_never_transmits_an_answer(offline):
+    """check.html may measure that it was opened. It may never transmit an answer.
+
+    WHY THIS GUARD EXISTS. The page tells the reader, in visible text, that
+    "Your assessment answers stay entirely in your browser. They are never sent,
+    stored, or seen by anyone." On 2026-09-13 a check-view beacon was added so
+    the diagnostic funnel could be measured at all. The beacon and the promise
+    can coexist only while the beacon carries nothing derived from the boxes,
+    and nothing in the code says so on its own: a later edit that adds a count
+    to the payload would silently make a published privacy sentence false.
+
+    This is not a style rule. It is the mechanical enforcement of a statement
+    the site publishes to people deciding whether to open privileged files.
+
+    WHAT IT CHECKS
+      1. The promise sentence is still on the page. If someone deletes the
+         promise the guard must not quietly pass; the wording is the thing being
+         protected and its removal is itself the event to catch.
+      2. The check-view emitter exists and posts to /api/telemetry.
+      3. The emitter block references NO answer-derived identifier: not '.sa',
+         not 'checked', not 'hit', not 'boxes', not 'sa-out'.
+      4. The telemetry endpoint still gates view events behind an allow-list
+         rather than writing an arbitrary meta.event.
+    """
+    page = read("check.html")
+    findings = []
+
+    promise = "They are never sent, stored, or seen by anyone."
+    if promise not in page:
+        findings.append("the published promise sentence is gone from check.html")
+
+    start = page.find("CHECK-VIEW TELEMETRY")
+    if start == -1:
+        findings.append("check-view emitter not found")
+        block = ""
+    else:
+        end = page.find("</script>", start)
+        block = page[start:end if end != -1 else len(page)]
+        if "/api/telemetry" not in block:
+            findings.append("check-view emitter does not post to /api/telemetry")
+        # Scan the CODE, not the prose. The block opens with a comment that
+        # names the very tokens this guard bans, because it explains what the
+        # emitter deliberately does not do. Scanning that text flags the
+        # explanation instead of a defect, so the comment is dropped first.
+        #
+        # The marker searched for above sits INSIDE that opening comment, so
+        # there is no leading "/*" left to match and a naive comment-strip
+        # regex removes nothing. Cut from the comment's terminator instead.
+        term = block.find("*/")
+        if term != -1:
+            block = block[term + 2:]
+        block = re.sub(r"(?m)//.*$", " ", block)
+
+    BANNED = [".sa", "checked", "hit.length", "boxes", "sa-out", "data-mode"]
+    for token in BANNED:
+        if token in block:
+            findings.append("answer-derived token %r inside the check-view emitter" % token)
+
+    api = read("api/telemetry.js")
+    if "VIEW_EVENTS" not in api:
+        findings.append("api/telemetry.js no longer gates view events behind an allow-list")
+    elif "VIEW_EVENTS.indexOf(evt)" not in api:
+        findings.append("api/telemetry.js defines VIEW_EVENTS but does not test membership")
+
+    check("the check page never transmits an answer",
+          not findings,
+          "; ".join(findings) if findings
+          else "promise intact, emitter present, 0 answer-derived tokens, endpoint allow-listed")
+
+
 def check_reliability_raters_are_not_demoted(offline):
     """No packet artefact calls a study participant a "regular reviewer".
 
@@ -5147,6 +5217,7 @@ def main():
                check_all_experts_credited, check_rung2a_lock,
                check_contributor_carries_no_findings,
                check_withdrawn_contributors_absent,
+               check_the_check_page_never_transmits_an_answer,
                check_reliability_raters_are_not_demoted,
                check_honor_roster_composition,
                check_certificate_claims_supported,

@@ -42,6 +42,14 @@ cep-article-prep/
 # table structures, opaque endpoint slugs and study codes.
 scripts/
 
+# ---- build output, never deployed -------------------------------------------
+# Added 2026-09-13 with scripts/generate_field_guides.py. The generator renders
+# candidate PDFs for review; they are NOT the shipped guides and must never be
+# reachable at a public path, or a reader could download an unreviewed rebuild
+# from a guessable URL and take it for the real document. Same exposure class as
+# the 2026-08-25 finding recorded at the top of this file.
+build/
+
 # ---- generated documents ----------------------------------------------------
 *.docx
 
