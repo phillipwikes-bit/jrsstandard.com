@@ -237,6 +237,11 @@
       "permanent": false
     },
     {
+      "source": "/compliance",
+      "destination": "/compliance.html",
+      "permanent": false
+    },
+    {
       "source": "/diagnostic",
       "destination": "/org-pilot.html",
       "permanent": false
