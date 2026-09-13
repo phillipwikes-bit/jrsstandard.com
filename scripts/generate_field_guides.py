@@ -1,123 +1,186 @@
 #!/usr/bin/env python3
-"""Build the four JRS investigator field guides from source, with the routing footer.
+"""Append the Check routing page to the three tracked field guides, design intact.
 
-WHY THIS SCRIPT EXISTS
-----------------------
-F-2 in docs/implementation-audit/IMPLEMENTATION_AUDIT_AND_SOLUTION_ASSESSMENT.md:
-the four shipped guides carry no route to the Seven-Point Record Defensibility
-Check, and there was no generator for them anywhere in the repository, so the
-only way to add the line was to edit the compiled PDFs. That is the "fixing the
-shadow instead of the thing casting it" prohibition, so the operation halted.
+WHY THIS REPLACED A RECONSTRUCTION
+----------------------------------
+F-2 asked for a route from the tracked field guides to the Seven-Point Record
+Defensibility Check. Scope is the three editions api/dl.js tracks behind ?e=,
+not the combined overview, which is a separate untracked distribution. No generator for the guides exists anywhere in the
+repository or its history, so the first attempt rebuilt them from text
+extracted out of the PDFs. That was wrong, and the evidence said so:
 
-WHAT THE HISTORY SEARCH FOUND, AND WHY IT DID NOT SOLVE IT
----------------------------------------------------------
-git history does contain JRS_Investigator_Field_Guide.docx (added bc72a20,
-deleted e3c5567, both 2026-05-16). It is NOT the source of the shipped PDF. It
-is a superseded predecessor: 23,783 characters against the PDF's 14,042, 24
-numbered headings against 7, with only 3 shared. Building from it would replace
-the current guides with older, materially different content. It is recorded here
-so nobody has to re-derive that, and it is deliberately not used.
+  - wording fidelity peaked at 90.5% against a 95% gate, a real 5 to 12
+    per cent content loss;
+  - 8 pages collapsed to 5;
+  - the cover page, serif display type, gold rules and the aligned
+    document-control block were all lost, because extraction recovers
+    WORDING and never TYPOGRAPHY.
 
-WHAT THIS SCRIPT THEREFORE DOES
--------------------------------
-It establishes the missing upstream. Source of truth is research/field-guide-src/
-*.md, seeded by --extract from the shipped PDFs. From that source it renders
-PDFs that carry the routing footer.
+The anti-drift rule forbids patching a compiled artifact when an upstream
+generator casts it. Here nothing casts it: the PDF is the only artifact that
+has ever existed. So the PDF IS the upstream, and the correct pipeline takes
+it as input and appends to it, deterministically and repeatably, rather than
+trying to reproduce it. Every original page is carried through untouched, so
+content and design fidelity are exact rather than approximate.
 
-THE ONE THING IT DELIBERATELY DOES NOT DO: overwrite the four shipped guides.
-Extraction recovers WORDING, not TYPOGRAPHY. The shipped guides have tables,
-running headers, a document-control block and page numbering that no text
-extraction preserves, so a regenerated file would be a visibly different
-document from the one readers have already downloaded. Whether to republish in
-a new layout is the owner's call, not a build script's. Output goes to
-build/field-guides/ and --verify reports wording fidelity so that call can be
-made on evidence.
+WHAT IT DOES
+  1. Reads the running header and footer out of the original, so the appended
+     page matches that specific guide instead of a hardcoded guess. This
+     matters: a hardcoded table in the previous version had the Fair Housing
+     document id as 001-INV-F and International as 001-INV-I, when the
+     documents themselves say 001-INV-H and 001-INV-INT. Deriving them from
+     the source makes that class of error impossible.
+  2. Renders a single routing page carrying that header and footer, the next
+     page number, and a live link to jrsstandard.com/check.
+  3. Concatenates with pdfunite, from poppler, which is the same package that
+     already supplies pdftotext for the verification step. No new dependency.
+  4. --verify proves every original page survived byte-for-byte in its text,
+     that exactly one page was added, and that the link annotation is present.
 
 USAGE
-  python3 scripts/generate_field_guides.py --extract   # reseed source from PDFs
   python3 scripts/generate_field_guides.py --build     # render to build/field-guides/
-  python3 scripts/generate_field_guides.py --verify    # wording fidelity vs shipped
+  python3 scripts/generate_field_guides.py --verify    # prove fidelity against shipped
+  python3 scripts/generate_field_guides.py --publish   # copy build output over the shipped guides
 """
 
 import argparse
 import os
 import re
+import shutil
 import subprocess
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SRC_DIR = os.path.join(ROOT, "research", "field-guide-src")
 OUT_DIR = os.path.join(ROOT, "build", "field-guides")
 
-# The routing line this script exists to add. One sentence, no claim, no figure,
-# pointing at the diagnostic. It states the URL in text because a PDF may be
-# printed, and a printed hyperlink a reader cannot type is not a route.
-ROUTING_TITLE = "Test your records against the Seven-Point Standard"
+# THE THREE TRACKED EDITIONS, AND ONLY THOSE.
+#
+# api/dl.js maps exactly three editions behind ?e=: employment, fairhousing and
+# international. They are the three offered on investigator-guides.html and the
+# three whose downloads are counted, which is what makes a routing line on them
+# measurable in the first place.
+#
+# JRS_Investigator_Field_Guide.pdf, the combined overview, is DELIBERATELY NOT
+# HERE. It is a different distribution: it has no ?e= edition, it is served by
+# filename through ?f=, and it is linked from jrsstandard.html and training.html
+# rather than from the guides page. It is untracked, so it is out of scope for
+# this routing work and this script must not touch it.
+GUIDES = [
+    "JRS_Investigator_Field_Guide_Employment.pdf",
+    "JRS_Investigator_Field_Guide_FairHousing.pdf",
+    "JRS_Investigator_Field_Guide_International.pdf",
+]
+
+ROUTING_TITLE = "TEST YOUR RECORDS AGAINST THE SEVEN-POINT STANDARD"
 ROUTING_BODY = (
     "This guide describes what a defensible record contains. To test a record you "
     "already have, work through the Seven-Point Record Defensibility Check at "
-    "jrsstandard.com/check. It takes one closed matter and about five minutes, asks "
-    "for no registration and no upload, and your answers stay in your browser."
+    '<link href="https://jrsstandard.com/check" color="#7A5E28">'
+    "jrsstandard.com/check</link>. It takes one closed matter and about five minutes, "
+    "asks for no registration and no upload, and your answers stay in your browser."
+)
+ROUTING_NOTE = (
+    "The Check is a prompt for human review of a single record. It is not a "
+    "determination about that record, not certification, and not a credential."
 )
 
-GUIDES = [
-    # (source slug, shipped pdf filename, document id, title)
-    ("general",       "JRS_Investigator_Field_Guide.pdf",
-     "001-INV",   "JRS Investigator Field Guide"),
-    ("employment",    "JRS_Investigator_Field_Guide_Employment.pdf",
-     "001-INV-E", "JRS Investigator Field Guide (Employment / EEO)"),
-    ("fairhousing",   "JRS_Investigator_Field_Guide_FairHousing.pdf",
-     "001-INV-F", "JRS Investigator Field Guide (Fair Housing)"),
-    ("international", "JRS_Investigator_Field_Guide_International.pdf",
-     "001-INV-I", "JRS Investigator Field Guide (International)"),
-]
 
-
-def pdf_text(path):
-    """Extract text from a PDF, or return '' when the tool or file is absent."""
+def pdf_text(path, first=None, last=None):
+    cmd = ["pdftotext", "-layout"]
+    if first:
+        cmd += ["-f", str(first)]
+    if last:
+        cmd += ["-l", str(last)]
+    cmd += [path, "-"]
     try:
-        r = subprocess.run(["pdftotext", "-layout", path, "-"],
-                           capture_output=True, text=True)
-        return r.stdout or ""
+        return subprocess.run(cmd, capture_output=True, text=True).stdout or ""
     except (OSError, subprocess.SubprocessError):
         return ""
 
 
-def strip_running_furniture(txt):
-    """Drop the repeated page header and footer lines that extraction duplicates."""
-    keep = []
-    for line in txt.split("\n"):
-        s = line.strip()
-        if re.match(r"^JRS™ \| .*Page \d+$", s):
-            continue
-        if re.match(r"^JRS™ Investigator Field Guide.*Supplement$", s):
-            continue
-        keep.append(line.rstrip())
-    return re.sub(r"\n{3,}", "\n\n", "\n".join(keep)).strip()
+def page_count(path):
+    try:
+        out = subprocess.run(["pdfinfo", path], capture_output=True, text=True).stdout
+        m = re.search(r"^Pages:\s+(\d+)", out, re.M)
+        return int(m.group(1)) if m else 0
+    except (OSError, subprocess.SubprocessError):
+        return 0
 
 
-def do_extract():
-    os.makedirs(SRC_DIR, exist_ok=True)
-    n = 0
-    for slug, pdf, docid, title in GUIDES:
-        path = os.path.join(ROOT, pdf)
-        if not os.path.exists(path):
-            print("  MISSING %s" % pdf)
+ROUTING_MARK = "jrsstandard.com/check"
+
+
+def routing_pages(path):
+    """How many pages of this PDF already carry the routing line.
+
+    THE DRIFT THIS PREVENTS. Once a guide is published it IS the 9-page routed
+    document, and the pipeline no longer has a pristine 8-page original to work
+    from. A second --build would cheerfully append a SECOND routing page and the
+    guide would drift a page longer on every run. Every entry point therefore
+    counts the marker first: build skips an already-routed guide, and verify
+    treats "exactly one" as the correct published state.
+    """
+    n = page_count(path)
+    return sum(1 for i in range(1, n + 1) if ROUTING_MARK in pdf_text(path, i, i))
+
+
+def furniture(path):
+    """Recover this guide's own running header and footer, exactly as it sets them.
+
+    Returns a dict the page painter can follow literally:
+      head_left, head_right : the running header, split when the guide sets it
+                              as two elements across the page
+      foot_text             : the footer text without its page number
+      foot_inline           : True when the page number sits inside the footer
+                              string rather than right-aligned on its own
+      foot_centred          : True when the footer is centred on the page
+
+    READ FROM AN INTERIOR PAGE, NOT PAGE ONE. The cover carries no running
+    header, so the earlier version of this function returned an empty header
+    for the general guide and that guide's appended page came out bare. It
+    also required a "·" separator, which only three of the four guides use:
+    the general guide sets "JRS(tm) Investigator Field Guide" hard left and
+    "001-INV | Technical Supplement" hard right, with no separator at all.
+    Both assumptions were wrong, so both are gone.
+    """
+    n = page_count(path)
+    probe = 3 if n >= 3 else n
+    head_left = head_right = ""
+    for line in pdf_text(path, probe, probe).split("\n"):
+        if "JRS" not in line:
             continue
-        body = strip_running_furniture(pdf_text(path))
-        if not body:
-            print("  EMPTY EXTRACTION %s (is pdftotext installed?)" % pdf)
+        s = line.rstrip()
+        if not s.strip():
             continue
-        out = os.path.join(SRC_DIR, slug + ".md")
-        with open(out, "w", encoding="utf-8") as f:
-            f.write("<!-- guide: id=%s title=%s -->\n" % (docid, title))
-            f.write("<!-- EXTRACTED from %s by scripts/generate_field_guides.py --extract.\n"
-                    "     This is a TEXT extraction. It preserves wording, not typography. -->\n\n"
-                    % pdf)
-            f.write(body + "\n")
-        n += 1
-        print("  wrote %s (%d chars)" % (os.path.relpath(out, ROOT), len(body)))
-    return 0 if n else 1
+        gap = re.search(r"\S(\s{4,})\S", s)
+        if gap:
+            head_left = s[:gap.start() + 1].strip()
+            head_right = s[gap.end() - 1:].strip()
+        else:
+            head_left = s.strip()
+        break
+
+    foot_text = ""
+    foot_inline = False
+    foot_centred = False
+    for line in pdf_text(path).split("\n"):
+        s = line.rstrip()
+        if not (re.search(r"Page \d+$", s) and "JRS" in s):
+            continue
+        indent = len(s) - len(s.lstrip())
+        before = re.sub(r"\s*Page \d+$", "", s).strip()
+        # A wide run of spaces before the page number means it is set as its
+        # own right-aligned element. A narrow one means it is part of the
+        # footer sentence, which is how the general guide sets it.
+        m = re.search(r"(\s*)Page \d+$", s)
+        foot_inline = len(m.group(1)) < 10
+        foot_centred = foot_inline and indent > 8
+        foot_text = before
+        break
+
+    return {"head_left": head_left, "head_right": head_right,
+            "foot_text": foot_text, "foot_inline": foot_inline,
+            "foot_centred": foot_centred}
 
 
 def do_build():
@@ -126,123 +189,176 @@ def do_build():
         from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
         from reportlab.lib.units import inch
         from reportlab.lib import colors
-        from reportlab.platypus import (SimpleDocTemplate, Paragraph, Spacer,
-                                        PageBreak, Preformatted)
+        from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
     except ImportError:
         print("reportlab is not installed. pip install reportlab")
         return 1
 
+    if not shutil.which("pdfunite"):
+        print("pdfunite not found. It ships with poppler-utils, the same package as pdftotext.")
+        return 1
+
     os.makedirs(OUT_DIR, exist_ok=True)
     ss = getSampleStyleSheet()
-    body_style = ParagraphStyle("body", parent=ss["BodyText"], fontName="Helvetica",
-                                fontSize=9.5, leading=13, spaceAfter=6)
-    title_style = ParagraphStyle("t", parent=ss["Title"], fontName="Helvetica-Bold",
-                                 fontSize=17, leading=21, spaceAfter=14)
-    route_head = ParagraphStyle("rh", parent=body_style, fontName="Helvetica-Bold",
-                                fontSize=11, leading=15, spaceBefore=6, spaceAfter=6,
-                                textColor=colors.HexColor("#7A5E28"))
-    mono = ParagraphStyle("m", parent=body_style, fontName="Courier", fontSize=8.2,
-                          leading=10.5)
+    # Serif body to match the guides, which set their prose in a serif face.
+    body = ParagraphStyle("b", parent=ss["BodyText"], fontName="Times-Roman",
+                          fontSize=10.5, leading=15, spaceAfter=10)
+    label = ParagraphStyle("l", parent=body, fontName="Helvetica-Bold", fontSize=8.5,
+                           leading=12, spaceAfter=14,
+                           textColor=colors.HexColor("#7A5E28"))
+    note = ParagraphStyle("n", parent=body, fontName="Times-Italic", fontSize=9.5,
+                          leading=13, textColor=colors.HexColor("#555555"))
 
-    built = 0
-    for slug, pdf, docid, title in GUIDES:
-        src = os.path.join(SRC_DIR, slug + ".md")
+    built = skipped = 0
+    for name in GUIDES:
+        src = os.path.join(ROOT, name)
         if not os.path.exists(src):
-            print("  NO SOURCE for %s (run --extract first)" % slug)
+            print("  MISSING %s" % name)
             continue
-        raw = open(src, encoding="utf-8").read()
-        raw = re.sub(r"<!--.*?-->", "", raw, flags=re.S).strip()
+        n = page_count(src)
+        if not n:
+            print("  UNREADABLE %s" % name)
+            continue
+        already = routing_pages(src)
+        if already:
+            print("  SKIP %s: already carries the routing page (%d page(s) match). "
+                  "Appending again would add a second one." % (name, already))
+            skipped += 1
+            continue
+        fur = furniture(src)
+        tmp = os.path.join(OUT_DIR, "_routing_%s" % name)
+        out = os.path.join(OUT_DIR, name)
 
-        out = os.path.join(OUT_DIR, pdf)
-        doc = SimpleDocTemplate(out, pagesize=LETTER,
+        doc = SimpleDocTemplate(tmp, pagesize=LETTER,
                                 leftMargin=0.9 * inch, rightMargin=0.9 * inch,
-                                topMargin=0.9 * inch, bottomMargin=0.9 * inch,
-                                title=title, author="Phillip Wikes")
+                                topMargin=1.0 * inch, bottomMargin=0.9 * inch)
 
-        def footer(canv, _doc):
+        def furniture_painter(canv, _doc, fur=fur, n=n):
+            L, R = 0.9 * inch, LETTER[0] - 0.9 * inch
             canv.saveState()
             canv.setFont("Helvetica", 7.5)
             canv.setFillColor(colors.HexColor("#555555"))
-            canv.drawString(0.9 * inch, 0.55 * inch,
-                            "JRS™ | %s | © 2026 Phillip Wikes | jrsstandard.com" % docid)
-            canv.drawRightString(LETTER[0] - 0.9 * inch, 0.55 * inch, "Page %d" % _doc.page)
+            canv.setStrokeColor(colors.HexColor("#CCCCCC"))
+            if fur["head_left"]:
+                canv.drawString(L, LETTER[1] - 0.62 * inch, fur["head_left"])
+                if fur["head_right"]:
+                    canv.drawRightString(R, LETTER[1] - 0.62 * inch, fur["head_right"])
+                canv.line(L, LETTER[1] - 0.72 * inch, R, LETTER[1] - 0.72 * inch)
+            page_label = "Page %d" % (n + 1)
+            if fur["foot_text"]:
+                canv.line(L, 0.72 * inch, R, 0.72 * inch)
+                if fur["foot_inline"]:
+                    line = (fur["foot_text"] + " " + page_label).strip()
+                    if fur["foot_centred"]:
+                        canv.drawCentredString((L + R) / 2.0, 0.55 * inch, line)
+                    else:
+                        canv.drawString(L, 0.55 * inch, line)
+                else:
+                    canv.drawString(L, 0.55 * inch, fur["foot_text"])
+                    canv.drawRightString(R, 0.55 * inch, page_label)
+            else:
+                canv.drawRightString(R, 0.55 * inch, page_label)
             canv.restoreState()
 
-        flow = [Paragraph(title, title_style)]
-        # Source lines are layout-extracted text. Runs of spaces carry table
-        # structure, so any line holding a multi-space run is kept verbatim in a
-        # monospaced block rather than reflowed into a paragraph, which would
-        # collapse the columns into an unreadable sentence.
-        for para in raw.split("\n\n"):
-            chunk = para.strip("\n")
-            if not chunk.strip():
-                continue
-            if re.search(r"\S {3,}\S", chunk):
-                flow.append(Preformatted(chunk.replace("\t", "    "), mono))
-                flow.append(Spacer(1, 5))
-            else:
-                flow.append(Paragraph(
-                    re.sub(r"\s+", " ", chunk)
-                      .replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"),
-                    body_style))
+        doc.build([Paragraph(ROUTING_TITLE, label),
+                   Paragraph(ROUTING_BODY, body),
+                   Spacer(1, 6),
+                   Paragraph(ROUTING_NOTE, note)],
+                  onFirstPage=furniture_painter, onLaterPages=furniture_painter)
 
-        # THE ROUTING FOOTER. This is the whole purpose of the script, so it is
-        # appended here rather than written into any source file: it can never be
-        # lost by a source edit and can never be duplicated by one either.
-        flow.append(PageBreak())
-        flow.append(Paragraph(ROUTING_TITLE, route_head))
-        flow.append(Paragraph(ROUTING_BODY, body_style))
-
-        doc.build(flow, onFirstPage=footer, onLaterPages=footer)
+        r = subprocess.run(["pdfunite", src, tmp, out], capture_output=True, text=True)
+        try:
+            os.remove(tmp)
+        except OSError:
+            pass
+        if r.returncode != 0:
+            print("  pdfunite failed on %s: %s" % (name, r.stderr.strip()))
+            continue
         built += 1
-        print("  built %s (%d bytes)" % (os.path.relpath(out, ROOT), os.path.getsize(out)))
+        print("  built %s  (%d + 1 = %d pages, %d bytes)"
+              % (name, n, page_count(out), os.path.getsize(out)))
 
     if built:
-        print("\n  Output is in build/field-guides/. The shipped guides at the repository")
-        print("  root are deliberately NOT overwritten. See the module docstring.")
-    return 0 if built else 1
+        print("\n  Output is in build/field-guides/. Run --verify, then --publish.")
+    if skipped == len(GUIDES):
+        print("\n  All %d guides are already routed. Nothing to do." % skipped)
+        return 0
+    return 0 if built + skipped == len(GUIDES) else 1
 
 
 def do_verify():
-    """Report wording fidelity of each built guide against the shipped one."""
     ok = True
-    for slug, pdf, docid, title in GUIDES:
-        shipped = os.path.join(ROOT, pdf)
-        built = os.path.join(OUT_DIR, pdf)
-        if not os.path.exists(built):
-            print("  %-46s NOT BUILT (run --build)" % pdf)
+    for name in GUIDES:
+        src = os.path.join(ROOT, name)
+        out = os.path.join(OUT_DIR, name)
+        # PUBLISHED STATE. The shipped guide already carries the routing page,
+        # so there is no pristine original left to diff against. The invariant
+        # that matters now is that it carries EXACTLY ONE, on the last page:
+        # two would mean a double append, none would mean the publish was lost.
+        marked = routing_pages(src)
+        if marked:
+            n = page_count(src)
+            last_only = ROUTING_MARK in pdf_text(src, n, n)
+            good = (marked == 1 and last_only)
+            print("  %-46s %s  PUBLISHED  %d pages, routing pages=%d (must be 1, on the last page)"
+                  % (name, "PASS" if good else "FAIL", n, marked))
+            if not good:
+                ok = False
+            continue
+        if not os.path.exists(out):
+            print("  %-46s NOT BUILT" % name)
             ok = False
             continue
-        a = re.sub(r"\s+", " ", pdf_text(shipped)).strip().lower()
-        b = re.sub(r"\s+", " ", pdf_text(built)).strip().lower()
-        sents = [s.strip() for s in re.split(r"(?<=\.) ", a) if len(s.strip()) > 60]
-        hit = sum(1 for s in sents if s[:70] in b)
-        pct = (100.0 * hit / len(sents)) if sents else 0.0
-        routed = "check" in b and "seven-point" in b
-        print("  %-46s wording %3d/%3d (%5.1f%%)  routing_line=%s"
-              % (pdf, hit, len(sents), pct, "YES" if routed else "NO"))
-        if pct < 95.0 or not routed:
+        n = page_count(src)
+        m = page_count(out)
+        # Every original page must survive EXACTLY. Compare the text of pages
+        # 1..n in the output against the whole original.
+        a = pdf_text(src)
+        b = pdf_text(out, 1, n)
+        same = (a == b)
+        added = (m == n + 1)
+        link = open(out, "rb").read().count(b"/URI") > 0
+        route = "jrsstandard.com/check" in pdf_text(out, m, m)
+        verdict = "PASS" if (same and added and link and route) else "FAIL"
+        print("  %-46s %s  pages %d->%d  original_text_identical=%s  link=%s  routing=%s"
+              % (name, verdict, n, m, same, link, route))
+        if verdict == "FAIL":
             ok = False
+    print("\n  %s" % ("All guides verify." if ok
+                      else "At least one guide did not verify. Nothing should be published."))
     return 0 if ok else 1
+
+
+def do_publish():
+    if do_verify() != 0:
+        print("\nREFUSED: verification failed, so nothing was copied.")
+        return 1
+    for name in GUIDES:
+        out = os.path.join(OUT_DIR, name)
+        shutil.copyfile(out, os.path.join(ROOT, name))
+        print("  published %s (%d bytes)" % (name, os.path.getsize(os.path.join(ROOT, name))))
+    print("\n  Shipped guides replaced. Commit, deploy, then confirm with")
+    print("  scripts/preflight_deploy_check.py --all")
+    return 0
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--extract", action="store_true", help="reseed source markdown from the shipped PDFs")
-    ap.add_argument("--build", action="store_true", help="render source to build/field-guides/")
-    ap.add_argument("--verify", action="store_true", help="compare built output against shipped wording")
+    ap.add_argument("--build", action="store_true")
+    ap.add_argument("--verify", action="store_true")
+    ap.add_argument("--publish", action="store_true")
     a = ap.parse_args()
-    if not (a.extract or a.build or a.verify):
+    if not (a.build or a.verify or a.publish):
         ap.print_help()
         return 2
     rc = 0
-    if a.extract:
-        print("EXTRACT"); rc |= do_extract()
     if a.build:
-        print("BUILD");   rc |= do_build()
-    if a.verify:
-        print("VERIFY");  rc |= do_verify()
+        print("BUILD"); rc |= do_build()
+    if a.verify and not a.publish:
+        print("VERIFY"); rc |= do_verify()
+    if a.publish:
+        print("PUBLISH"); rc |= do_publish()
     return rc
 
 
