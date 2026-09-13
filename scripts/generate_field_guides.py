@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Append the Check routing page to each investigator field guide, design intact.
+"""Append the Check routing page to the three tracked field guides, design intact.
 
 WHY THIS REPLACED A RECONSTRUCTION
 ----------------------------------
-F-2 asked for a route from the four guides to the Seven-Point Record
-Defensibility Check. No generator for the guides exists anywhere in the
+F-2 asked for a route from the tracked field guides to the Seven-Point Record
+Defensibility Check. Scope is the three editions api/dl.js tracks behind ?e=,
+not the combined overview, which is a separate untracked distribution. No generator for the guides exists anywhere in the
 repository or its history, so the first attempt rebuilt them from text
 extracted out of the PDFs. That was wrong, and the evidence said so:
 
@@ -52,8 +53,19 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT_DIR = os.path.join(ROOT, "build", "field-guides")
 
+# THE THREE TRACKED EDITIONS, AND ONLY THOSE.
+#
+# api/dl.js maps exactly three editions behind ?e=: employment, fairhousing and
+# international. They are the three offered on investigator-guides.html and the
+# three whose downloads are counted, which is what makes a routing line on them
+# measurable in the first place.
+#
+# JRS_Investigator_Field_Guide.pdf, the combined overview, is DELIBERATELY NOT
+# HERE. It is a different distribution: it has no ?e= edition, it is served by
+# filename through ?f=, and it is linked from jrsstandard.html and training.html
+# rather than from the guides page. It is untracked, so it is out of scope for
+# this routing work and this script must not touch it.
 GUIDES = [
-    "JRS_Investigator_Field_Guide.pdf",
     "JRS_Investigator_Field_Guide_Employment.pdf",
     "JRS_Investigator_Field_Guide_FairHousing.pdf",
     "JRS_Investigator_Field_Guide_International.pdf",
