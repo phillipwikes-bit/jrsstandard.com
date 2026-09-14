@@ -31,10 +31,11 @@
     "license": "A grant of use on stated terms. NONE LOCATED in the corpus.",
     "assignment": "A transfer of title. NONE LOCATED in the corpus.",
     "commercial_permission": "Permission to use in a revenue-generating product. NOT ESTABLISHED.",
-    "transfer_permission": "Permission to pass to a successor. Established for study publications only, by the contributor instrument.",
+    "transfer_permission": "REQUIRES HUMAN REVIEW. The contributor instrument's click-through wording says contributed work may continue to be used in study publications 'including by a successor organization'. Whether that wording effects an enforceable transfer permission is a LEGAL determination reserved to human authority under Rule 8.",
     "ownership": "Legal title. NOT ESTABLISHED. Requires human legal authority (Rule 8).",
     "unresolved": "Recorded as NOT ESTABLISHED rather than inferred."
   },
   "classification_note": "PUBLIC / CONTROLLED / RESTRICTED in ASSET_REGISTER.json is an INFORMATION-GOVERNANCE classification. It is not a statement that an asset is legally protected and confers nothing.",
-  "_phase1_updated": "2026-09-14"
+  "_phase1_updated": "2026-09-14",
+  "_correction_2026_09_14": "transfer_permission previously read 'Established for study publications only'. Every sibling key was correctly NOT ESTABLISHED. 'Established' was a rights conclusion and was outside my authority."
 }

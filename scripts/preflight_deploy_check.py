@@ -107,11 +107,18 @@ def _vercelignore_rules():
     .vercelignore says nothing about `api/`, which IS deployed but is executed
     rather than served and therefore cannot be byte-compared at all.
     """
-    dirs, exts = [], []
+    dirs, exts, negations = [], [], []
     try:
         for line in open(os.path.join(ROOT_DIR, ".vercelignore"), encoding="utf-8"):
             line = line.strip()
-            if not line or line.startswith("#") or line.startswith("!"):
+            if not line or line.startswith("#"):
+                continue
+            if line.startswith("!"):
+                # A NEGATION RE-INCLUDES A FILE. Dropping it silently would class
+                # a deployed file as not-deployed and skip it in byte
+                # verification, which is the silent-skip class this tool exists
+                # to catch. .vercelignore already contains one (`!404.md`).
+                negations.append(line[1:])
                 continue
             if line.endswith("/"):
                 dirs.append(line)
@@ -119,11 +126,13 @@ def _vercelignore_rules():
                 exts.append(line[1:])
     except OSError:
         pass
-    return tuple(dirs), tuple(exts)
+    return tuple(dirs), tuple(exts), tuple(negations)
 
 
 def is_deployed(path):
-    ig_dirs, ig_exts = _vercelignore_rules()
+    ig_dirs, ig_exts, ig_neg = _vercelignore_rules()
+    if path in ig_neg:
+        return True
     if path in NOT_DEPLOYED_EXACT:
         return False
     if path.startswith(NOT_DEPLOYED_PREFIX) or path.startswith(ig_dirs):

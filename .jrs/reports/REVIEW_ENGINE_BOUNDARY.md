@@ -14,11 +14,28 @@ The purpose of this document is to say where the JRS methodology ends and where 
 | 4 | **Model / provider dependency** | `claude-haiku-4-5-20251001` via the Anthropic API | **Yes, and it must be treated that way** |
 | 5 | **API layer** | Vercel Edge Functions; `openapi.json`, `openapi-review-engine.json` | Yes |
 | 6 | **Telemetry** | `api/telemetry.js`, `interaction_events` in Supabase | Yes |
-| 7 | **Validation evidence** | `research/`, the detection study, the guard suite | Independent of all of the above |
+| 7 | **Validation evidence** | `research/`, the detection study, the guard suite | **NOT independent — see the correction below** |
+
+## CORRECTION 2026-09-14, after adversarial review
+
+**OLD FINDING.** "The model identifier is pinned as a string literal in the engine source", singular, and Layer 7 is "independent of all of the above".
+
+**NEW EVIDENCE.** The identifier is pinned at **six sites across five files**:
+
+```
+api/review.js            api/review-engine.js     api/v1/review-engine.js
+api/sandbox.js (x2)      api/bench-admin.js
+```
+
+**CORRECTED STATUS.** Two of those files appear in no layer of the table above. And `api/bench-admin.js` is the **benchmark scorer**, which means **Layer 7 depends on Layer 4**: the validation evidence is produced by tooling that calls the pinned model. The claim that Layer 7 is independent of the layers above it is **false**.
+
+**EXPLANATION.** The layer table was written from the three endpoints named in CLAUDE.md, not from a search. A search was the correct method and was not performed. Rule 1.
+
+**Consequence for the proposed change:** the stated rollback ("revert one commit") and `Risk: Low` were scoped to one file. A six-site change across five files, one of which produces validation evidence, is a different proposition and must be re-scoped before it is proposed again.
 
 ## Layer 4 is the point of this document
 
-**FACT.** The model identifier is pinned as a string literal in the engine source.
+**FACT.** The model identifier is pinned as a string literal at six sites in five files.
 
 **The identifier is versioned infrastructure, not part of the JRS methodology.** A model reaching end of life must not read as a change to the standard. Nothing in layers 1 or 2 depends on which model is used; the conditions are stated in natural language and are model-independent by construction.
 
@@ -42,4 +59,10 @@ See `.jrs/contradictions/CONTRADICTION_001.md`. `api/review.js` and the two revi
 
 ## What the engine does not establish
 
-**Functional operation is not validation.** The engine declares itself unvalidated in every response, and that self-declaration is an asset rather than a weakness: it is the reason a reader can trust the rest of the output. Any change that removes it is a claims regression, not a UX improvement.
+**Functional operation is not validation.**
+
+**CORRECTED 2026-09-14.** The prior text said "the engine declares itself unvalidated in every response". **That is false for `api/review.js`**, which contains zero occurrences of `unvalidated` in any case and whose prompt instructs *"Do not add legal disclaimers inside the JSON, keep it operational."*
+
+Only `api/review-engine.js` and `api/v1/review-engine.js` carry the declaration. `api/review.js` is the endpoint called by **`index.html`, `training.html` and `review-engine.html`**, so the engine *without* the declaration is the one serving the highest-traffic public pages. Recorded as blocker **B-008**.
+
+Where the declaration does exist it is an asset rather than a weakness, and removing it would be a claims regression.

@@ -1,12 +1,14 @@
 {
-  "gate": 0,
-  "name": "GATE_0_ASSET_BASELINE",
-  "status": "PASS WITH CONDITIONS",
+  "gate": 1,
+  "name": "GATE_1_IP_INTEGRITY",
+  "status": "FAIL",
   "evaluated": "2026-09-14",
   "conditions": [
     "B-001 open: a credential was exposed in conversation and needs rotation.",
     "B-002 open: two or more OpenAPI documents may conflict and have not been reconciled.",
     "B-003 open: the four-processor subprocessor list is unpublished."
   ],
-  "basis": "Control state established and registries seeded from inspection. Not passed merely because files exist."
+  "basis": "23 adversarial findings, 4 CRITICAL, including a research-evidence deletion that reached a commit and a Rule 1 failure to read a baseline document that already answered the question Phase 1 presented as a discovery.",
+  "report": ".jrs/reports/GATE_1_REPORT.md",
+  "phase_2": "PROHIBITED until remediated"
 }

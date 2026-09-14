@@ -111,10 +111,12 @@
       "location": [
         "programme-status-9872fb93cc94.html",
         "api/people-9dd1ecdf6f8cdfd4.js",
-        "api/leads-4b7e2c9af106d385.js"
+        "api/leads-4b7e2c9af106d385.js",
+        "api/_contributor-roster.js"
       ],
       "classification": "RESTRICTED",
-      "note": "Opaque slug is the only access control. No analytics tag, no public link, no token control. Rotate both endpoint slugs together."
+      "note": "Opaque slug is the only access control. No analytics tag, no public link, no token control. Rotate both endpoint slugs together.",
+      "_correction": "api/_contributor-roster.js was omitted. scripts/check_zero_drift.py asserts FOUR owner-only surfaces."
     },
     {
       "asset_id": "JRS-DILIGENCE",
@@ -138,8 +140,9 @@
         ".github/workflows/deploy-verify.yml"
       ],
       "classification": "CONTROLLED",
-      "check_count": 128,
-      "note": "128 checks emitted by 99 check_ functions; some functions emit more than one."
+      "check_count": "VARIES: 128, 129 and 130 observed across runs",
+      "note": "128 checks emitted by 99 check_ functions; some functions emit more than one.",
+      "_note": "The count depends on live-data reachability, so it is not a stable FACT and must not be recorded as one. 99 check_ functions; some emit more than one check; some skip when a source is unreachable. Prior entry said 128 flatly."
     },
     {
       "asset_id": "JRS-MRS",
@@ -151,6 +154,31 @@
       "classification": "CONTROLLED",
       "status": "DERIVED, NOT PUBLISHED",
       "note": "Verbatim derivation of the five published conditions. Excluded from deployment pending publication approval (Section 23)."
+    },
+    {
+      "asset_id": "JRS-BUYER",
+      "name": "Confidential buyer-facing surfaces",
+      "type": "documentation",
+      "location": [
+        "acquisition-9f3c2a7d4b.html",
+        "vp-7c1f9a4e8d2b6035.html"
+      ],
+      "classification": "RESTRICTED",
+      "status": "DEPLOYED, slug-only access, noindex/nofollow, absent from sitemap.xml",
+      "_note": "ADDED 2026-09-14. Both were missing from every register. The acquisition prospectus is the commercially most sensitive document in the estate and had no register entry. Both are enumerated by programme-status-9872fb93cc94.html itself. CLAUDE.md 36.3 says programme-status is 'the only private owner page'; these are buyer-facing confidential surfaces, which is a different category, but the distinction is not drawn anywhere and should be."
+    },
+    {
+      "asset_id": "JRS-OPAQUE-API",
+      "name": "Additional opaque-slug endpoints",
+      "type": "software",
+      "location": [
+        "api/roster-8c3f1a9e7b2d6045.js",
+        "api/geo-4e8b2d7f9a1c3065.js",
+        "api/variance-6b1d90fa2c47e8b3.js",
+        "api/recheck-answers-b1a768e88d3e48bd.js"
+      ],
+      "classification": "RESTRICTED",
+      "_note": "ADDED 2026-09-14. Four opaque-slug endpoints were unregistered."
     }
   ],
   "_classification_meaning": "PUBLIC, CONTROLLED and RESTRICTED describe how information is handled. They are NOT a statement that an asset is legally protected and confer no rights.",

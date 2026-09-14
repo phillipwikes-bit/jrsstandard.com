@@ -4,10 +4,11 @@
   "document_status": "DERIVED, NOT PUBLISHED",
   "_provenance": {
     "derived_from": "api/review.js SYSTEM_PROMPT, the prompt the live engine uses",
-    "cross_checked_against": "codebook.html, compliance.html, check.html",
+    "cross_checked_against": "codebook.html, compliance.html, check.html, and docs/enterprise-diligence/METHODOLOGY_TO_API_MAPPING.md",
     "method": "verbatim extraction; no paraphrase, no invented requirement",
     "date": "2026-09-14",
-    "rule": "CLAUDE.md Section 6F: do not redesign the methodology, do not invent substantive requirements"
+    "rule": "CLAUDE.md Section 6F: do not redesign the methodology, do not invent substantive requirements",
+    "correction_2026_09_14": "The first version claimed a cross-check against codebook.html that had not surfaced the RC5 aggregate characterization, and did not cite METHODOLOGY_TO_API_MAPPING.md at all. Both corrected."
   },
   "_publication_status": {
     "state": "NOT PUBLISHED",
@@ -21,7 +22,7 @@
       "name": "Reconstructability",
       "test_question": "Can the conclusion be reconstructed from the record?",
       "requirement": "A future reviewer must be able to trace the path from documented evidence to the conclusion reached, without relying on the author's recollection or added explanation.",
-      "engine_key_mapping": "NOT ESTABLISHED \u2014 see CONTRADICTION_001"
+      "engine_key_mapping": "NOT ESTABLISHED — authoritative record is docs/enterprise-diligence/METHODOLOGY_TO_API_MAPPING.md"
     },
     {
       "id": "RC2",
@@ -29,7 +30,7 @@
       "name": "Basis Identification",
       "test_question": "Is the basis for the conclusion identifiable?",
       "requirement": "The source of each characterization (observation, measurement, audit finding, or reported incident) must be visible and traceable, not implied or summarized without attribution.",
-      "engine_key_mapping": "NOT ESTABLISHED \u2014 see CONTRADICTION_001"
+      "engine_key_mapping": "NOT ESTABLISHED — authoritative record is docs/enterprise-diligence/METHODOLOGY_TO_API_MAPPING.md"
     },
     {
       "id": "RC3",
@@ -37,7 +38,7 @@
       "name": "Chronology",
       "test_question": "Is the chronology understandable?",
       "requirement": "The sequence of events must be followable from the record alone, including the timing of prior interventions, escalation steps, and the period under review.",
-      "engine_key_mapping": "NOT ESTABLISHED \u2014 see CONTRADICTION_001"
+      "engine_key_mapping": "NOT ESTABLISHED — authoritative record is docs/enterprise-diligence/METHODOLOGY_TO_API_MAPPING.md"
     },
     {
       "id": "RC4",
@@ -45,7 +46,7 @@
       "name": "Decision-Process Traceability",
       "test_question": "Can a future reviewer determine how the conclusion was reached?",
       "requirement": "The decision process must be documented: who reviewed the matter, what criteria or threshold triggered the conclusion, and whether responsive or mitigating information was considered before finalization.",
-      "engine_key_mapping": "NOT ESTABLISHED \u2014 see CONTRADICTION_001"
+      "engine_key_mapping": "NOT ESTABLISHED — authoritative record is docs/enterprise-diligence/METHODOLOGY_TO_API_MAPPING.md"
     },
     {
       "id": "RC5",
@@ -53,7 +54,8 @@
       "name": "Evidentiary Sufficiency",
       "test_question": "Could a reviewer with no prior knowledge evaluate the evidentiary sufficiency of this record?",
       "requirement": "The record must stand on its own so an independent reviewer with no prior knowledge can assess whether the conclusion is supported by the documented evidence.",
-      "engine_key_mapping": "NOT ESTABLISHED \u2014 see CONTRADICTION_001"
+      "engine_key_mapping": "NOT ESTABLISHED — authoritative record is docs/enterprise-diligence/METHODOLOGY_TO_API_MAPPING.md",
+      "codebook_characterization": "codebook.html calls this THE AGGREGATE CONDITION: 'whether the record stands on its own'. Whether the engine key is the aggregate or a distinct fifth dimension is NOT ESTABLISHED and is the open question flagged in docs/enterprise-diligence/METHODOLOGY_TO_API_MAPPING.md."
     }
   ],
   "condition_states": {
@@ -65,7 +67,7 @@
         "Fail"
       ],
       "source": "api/review.js",
-      "published_on": "13 public pages"
+      "published_on": "11 HTML files carry all five names; 14 mention Reconstructability. Of those, TWO are confidential opaque-slug surfaces (acquisition-9f3c2a7d4b.html, vp-7c1f9a4e8d2b6035.html), so 9 public pages carry the full set. The prior figure of '13 public pages' was not reproducible under any definition and counted confidential buyer-facing pages as public."
     },
     "engine_facing": {
       "values": [
@@ -74,25 +76,38 @@
         "gap"
       ],
       "source": "api/review-engine.js, api/v1/review-engine.js, both OpenAPI documents",
-      "published_on": "6 benchmark and research pages"
+      "published_on": "6 benchmark and research pages, one of which is an owner surface"
     }
   },
   "routing_states": {
-    "_warning": "TWO ROUTING VOCABULARIES EXIST. Mapping NOT ESTABLISHED.",
-    "review_js": {
+    "_warning": "THREE ROUTING VOCABULARIES EXIST. Mappings NOT ESTABLISHED.",
+    "api_review_js": {
       "values": [
         "Low",
         "Moderate",
         "High",
         "Critical"
       ],
-      "source": "api/review.js"
+      "source": "api/review.js",
+      "verified": "source read"
     },
     "openapi_json": {
-      "values_seen": [
-        "Ready"
+      "values": [
+        "Ready",
+        "Needs work",
+        "Gap"
       ],
-      "source": "openapi.json"
+      "source": "openapi.json ReviewResponse.routing",
+      "note": "Prior version recorded only ['Ready']; that was an incomplete extraction presented as an observation."
+    },
+    "determination": {
+      "values": [
+        "ready",
+        "review_required",
+        "gap_identified"
+      ],
+      "source": "openapi-review-engine.json:80 and api/v1/review-engine.js:108-113",
+      "note": "Not recorded at all in the prior version."
     }
   },
   "boundaries": {
@@ -100,10 +115,20 @@
       "certification",
       "accreditation",
       "a credential",
-      "a determination about any individual record",
       "a statement of legal compliance"
     ],
-    "engine_self_declaration": "The Review Engine declares itself unvalidated in every response.",
-    "source": "compliance.html, check.html, the investigator guides"
+    "engine_self_declaration": {
+      "status": "PARTIALLY TRUE — CORRECTED 2026-09-14",
+      "api/review-engine.js": "declares itself unvalidated",
+      "api/v1/review-engine.js": "declares itself unvalidated",
+      "api/review.js": "DOES NOT. Zero occurrences of 'unvalidated' in any case, and its prompt instructs 'Do not add legal disclaimers inside the JSON, keep it operational.' This is the endpoint called by index.html, training.html and review-engine.html, so the engine WITHOUT the disclaimer is the one on the highest-traffic public pages.",
+      "prior_claim": "'The Review Engine declares itself unvalidated in every response' was asserted without checking all three engines."
+    },
+    "source": "compliance.html, check.html, the investigator guides",
+    "_correction_2026_09_14": "REMOVED: 'a determination about any individual record'. It was INVENTED. The phrase appears in neither compliance.html nor check.html, and openapi.json:190 describes routing as 'Record-level determination derived from the five condition statuses', which contradicts it. Rule 3."
+  },
+  "_verification": {
+    "verbatim_check": "The five test_question and requirement pairs were diffed against api/review.js lines 6-10 and match character for character.",
+    "what_was_wrong": "The defects were in the SURROUNDING assertions, not the extracted definitions."
   }
 }

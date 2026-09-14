@@ -95,11 +95,31 @@ def load_snapshot():
             "realcase": sb("realcase_progress?select=*&order=cases.desc"),
             "runs": sb("study_runs?select=model,metrics,created_at&order=created_at.desc&limit=1"),
         }
-        # Only overwrite when the refresh actually returned something. A failed
-        # read must not silently blank the document.
-        if fresh["realcase"] or fresh["runs"]:
+        # MERGE PER KEY. Do not overwrite a populated key with an empty read.
+        #
+        # THE OLD GUARD WAS `or` AND ITS COMMENT CLAIMED THE OPPOSITE. It said a
+        # failed read could not silently blank the document, and that guarantee
+        # was false for a PARTIAL failure: when realcase returned rows and
+        # study_runs returned [], the condition passed and the whole file was
+        # rewritten with runs emptied. That is not hypothetical. On 2026-09-14
+        # it silently deleted the only cross-vendor study run record, 118 lines,
+        # and the loss reached a commit because the blanking happens as a side
+        # effect of running the guard suite.
+        #
+        # Keeping a stale value is recoverable. Blanking a record is not, except
+        # from git, and only if someone notices.
+        prior = {}
+        try:
+            with io.open(SNAPSHOT, encoding="utf-8") as fh:
+                prior = json.load(fh)
+        except Exception:
+            prior = {}
+        merged = {}
+        for key in ("realcase", "runs"):
+            merged[key] = fresh[key] if fresh[key] else prior.get(key, [])
+        if any(merged.values()):
             with io.open(SNAPSHOT, "w", encoding="utf-8") as fh:
-                json.dump(fresh, fh, indent=2, sort_keys=True)
+                json.dump(merged, fh, indent=2, sort_keys=True)
                 fh.write("\n")
     try:
         with io.open(SNAPSHOT, encoding="utf-8") as fh:

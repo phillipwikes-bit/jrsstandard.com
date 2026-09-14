@@ -19,7 +19,7 @@
       "source_evidence": "LinkedIn article, third-party timestamped",
       "repository_location": "jrsstandard.html, codebook.html, JRS-Standard.pdf",
       "ai_assistance": "Present in drafting; documented as provenance, confers nothing (Rule 7)",
-      "rights_evidence": "NOT ESTABLISHED \u2014 no executed instrument exists"
+      "rights_evidence": "NOT ESTABLISHED — no executed instrument exists"
     },
     {
       "asset_id": "JRS-DRR",
@@ -35,16 +35,17 @@
       "asset_id": "JRS-ENGINE",
       "creator": "Phillip Wikes with AI assistance",
       "contribution": "Specification and implementation",
-      "source_evidence": "Git history; 1,737 of 2,031 commits carry the Claude identity (E-014)",
+      "source_evidence": "Git history. E-014 records 1,737 of 2,031 commits carrying the Claude identity AS AT 2026-09-08. Live at 2026-09-14: 2042 commits total. The figure is an as-of measurement, not a current one.",
       "limitation": "Commit metadata is not authorship in fact and is not ownership (Rules 4 and 7)",
       "rights_evidence": "NOT ESTABLISHED"
     },
     {
       "asset_id": "JRS-RESEARCH",
       "creator": "Phillip Wikes",
-      "contributors": "33 people hold executed Level B consents",
+      "contributors": "33 people hold STRUCTURED (Level B) consent records",
       "source_evidence": "pilot_contacts, 37 rows (E-001 to E-004)",
-      "rights_evidence": "Level B consent covering study publications including successor transfer. SILENT on licensing and commercial products."
+      "rights_evidence": "Level B consent covering study publications including successor transfer. SILENT on licensing and commercial products.",
+      "_correction": "WAS 'executed Level B consents'. 'Executed' implies an executed instrument and contradicts blocker B-004, which records that no executed signed instrument exists anywhere in the corpus. The ledger supports 'structured consent records, Level B'. Rule 2."
     }
   ],
   "not_established": [

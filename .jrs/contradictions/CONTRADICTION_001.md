@@ -1,47 +1,49 @@
-# CONTRADICTION 001 — Two parallel five-condition vocabularies
+# CONTRADICTION 001 — Condition vocabularies and the published API contract
 
-**Opened:** 2026-09-14 (Phase 1, Step 6F/6G) · **Status:** OPEN · **Severity:** MEDIUM
-**Rule:** CLAUDE.md Section 5. Two sources at the same level conflict, so this is recorded rather than resolved by guessing.
+**Opened:** 2026-09-14 · **Corrected:** 2026-09-14 after adversarial review · **Status:** OPEN
 
-## The two vocabularies
+---
 
-**A. Methodology-facing.** Published on **13 public pages**, defined verbatim in `api/review.js` and matching `codebook.html`:
+## CORRECTION NOTICE (Rule 10)
 
-`Reconstructability` · `Basis Identification` · `Chronology` · `Decision-Process Traceability` · `Evidentiary Sufficiency`
+**OLD FINDING.** The first version of this record stated as FACT that the mapping between the two condition vocabularies "is not documented anywhere in the repository."
 
-Condition states `Pass / Needs Attention / Fail`. Routing `Low / Moderate / High / Critical`.
+**NEW EVIDENCE.** `docs/enterprise-diligence/METHODOLOGY_TO_API_MAPPING.md` is a pre-existing 76-line document devoted to exactly this question. It contains the five-row mapping table, per-pair semantic classifications (Exact / Partial (inferred) / Unresolved), an explicit OWNER INPUT REQUIRED box, an output-contract table and a six-test conformance plan.
 
-**B. Engine-facing.** Used by `api/review-engine.js` and `api/v1/review-engine.js`, and surfaced on **6 benchmark and research pages** (`bench-admin`, `bench-results`, `bench-review`, `engine-activity`, `research-data`, and one owner surface):
+**CORRECTED STATUS.** That document is the authoritative record of the mapping question. This record is **subordinate to it** and adds only what it does not contain.
 
-`basis_identification` · `reasoning_traceability` · `cold_reviewer_clarity` · `accountability_support` · `temporal_reconstructability`
+**EXPLANATION.** The document sits in `docs/enterprise-diligence/`, the directory CLAUDE.md Section 2 names as the authoritative baseline and instructs be read before modifying the repository. It was not read. This is a Rule 1 failure, and it produced a rediscovery presented as a discovery. The prior version also reached materially the same inference about `cold_reviewer_clarity` and the two traceability keys **without citing the document that had already reached it**.
 
-Condition states `pass / review / gap`. No routing vocabulary of its own.
+---
 
-## What is established
+## What this record still adds
 
-**FACT.** Both vocabularies exist, are in live code, and appear on public pages.
-**FACT.** `openapi.json` carries `pass|review|gap` plus `Ready`; `openapi-review-engine.json` carries only `pass|review|gap`. The two specification documents therefore do not agree with each other either.
-**FACT.** Only one of the five names is common to both sets: `Basis Identification` / `basis_identification`.
+Three findings are **not** in `METHODOLOGY_TO_API_MAPPING.md` and were established here.
 
-## What is NOT established
+### 1. There is a THIRD vocabulary, not two
 
-**The mapping between the two sets is NOT ESTABLISHED.** It is not documented anywhere in the repository, and it cannot be derived with confidence:
+**FACT.** `openapi-review-engine.json:80` declares `"determination": {"enum": ["ready", "review_required", "gap_identified"]}`, and `api/v1/review-engine.js:108-113` implements `deriveDetermination()` returning exactly those three values.
 
-- `reasoning_traceability` could correspond to `Reconstructability` or to `Decision-Process Traceability`.
-- `temporal_reconstructability` could correspond to `Chronology` or to `Reconstructability`.
-- `cold_reviewer_clarity` most closely resembles `Evidentiary Sufficiency`, whose published definition begins "Could a reviewer with no prior knowledge…", but that is a resemblance, not a documented equivalence.
-- **`accountability_support` has no evident counterpart among the published five at all.**
+The prior version of this record stated as FACT that `openapi-review-engine.json` "carries only pass|review|gap" and that vocabulary B has "no routing vocabulary of its own." **Both statements were false.** Corrected here.
 
-## Why this was not resolved here
+### 2. The published contract does not describe the deployed endpoint
 
-Choosing a mapping would invent substantive JRS content, which Section 6F prohibits, and would convert INFERENCE into FACT, which Rule 2 prohibits. The resemblance above is offered as INFERENCE and is explicitly not recorded as the answer.
+**FACT, and this is the commercially material one.** `openapi.json` documents `POST /api/v1/review-engine` and declares `ReviewResponse.required` as `[request_id, api_version, engine, engine_version, model, routing, conditions]`, with `routing` enum `["Ready","Needs work","Gap"]`.
 
-## Impact
+**FACT.** `api/v1/review-engine.js` contains **zero** occurrences of `routing`. It returns `{engine, engine_version, model, evidence_stage, disclaimer, reviewed_at, runs, result:{conditions, determination, ...}}`. There is no top-level `routing`, no top-level `conditions`, and `disclaimer` rather than `disclosure`.
 
-- `standard/jrs-conditions.json` records `engine_key_mapping: NOT ESTABLISHED` for all five conditions.
-- A benchmark result expressed in vocabulary B cannot presently be stated in vocabulary A without an undocumented assumption. This matters because the detection-study figures are published in methodology-facing language while the bench tooling stores engine-facing keys.
-- Blocker **B-002** (conflicting OpenAPI documents) is a symptom of the same divergence and should be resolved together with it.
+**This corrects the baseline document as well.** `METHODOLOGY_TO_API_MAPPING.md` records the response envelope including `routing` and `disclosure` as **VERIFIED** on the strength of `openapi.json` alone. It was verified against the specification, not against the code.
+
+`openapi.json` carries `"license": {"name": "Commercial licence"}`. It is the contract a partner would build against, and a partner building against it would fail on the first response.
+
+### 3. `Ready` was recorded as the whole routing enum when it is one of three
+
+**FACT.** `openapi.json` routing enum is `["Ready", "Needs work", "Gap"]`. The prior version recorded `values_seen: ["Ready"]`, which presented an incomplete extraction as an observation. Corrected in `standard/jrs-conditions.json`.
+
+---
 
 ## Required action
 
-**HUMAN.** Phillip confirms which five conditions are canonical and supplies the mapping, or states that the two sets are deliberately distinct constructs serving different purposes. Either answer closes this record; neither can be supplied from inside the repository.
+**HUMAN, unchanged and already requested in `METHODOLOGY_TO_API_MAPPING.md`:** declare the intended correspondence for the four non-exact pairs, in particular whether `cold_reviewer_clarity` is the aggregate condition or a distinct dimension.
+
+**NEW, and it should not wait for the above:** reconcile `openapi.json` with the deployed `api/v1/review-engine.js`. One of the two is wrong about a commercially licensed interface. Recorded as blocker **B-007**.

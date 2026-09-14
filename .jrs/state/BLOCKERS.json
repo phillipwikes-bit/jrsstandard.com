@@ -21,7 +21,7 @@
       "blocker_id": "B-002",
       "severity": "MEDIUM",
       "category": "TECHNICAL",
-      "description": "Four OpenAPI documents are present and at least two were previously recorded as conflicting. Not reconciled.",
+      "description": "TWO OpenAPI documents exist (openapi.json, openapi-review-engine.json) and they do not agree with each other. CORRECTED: the prior text said FOUR, which was wrong.",
       "affected_assets": [
         "JRS-ENGINE"
       ],
@@ -81,6 +81,71 @@
       "owner": "HUMAN",
       "status": "OPEN",
       "created": "2026-09-14"
+    },
+    {
+      "blocker_id": "B-007",
+      "severity": "HIGH",
+      "category": "COMMERCIAL",
+      "description": "openapi.json declares routing and conditions as REQUIRED top-level fields of ReviewResponse for POST /api/v1/review-engine, with routing enum Ready|Needs work|Gap. The deployed code emits ZERO occurrences of routing and nests conditions under result. The document carries a Commercial licence and is the contract a partner would build against.",
+      "evidence_refs": [
+        "openapi.json ReviewResponse.required",
+        "api/v1/review-engine.js:245-256",
+        ".jrs/contradictions/CONTRADICTION_001.md"
+      ],
+      "affected_assets": [
+        "JRS-ENGINE"
+      ],
+      "required_action": "Reconcile the specification with the deployed code. One of the two is wrong about a licensed interface.",
+      "owner": "CLAUDE (proposal) then HUMAN (approval)",
+      "status": "OPEN",
+      "created": "2026-09-14"
+    },
+    {
+      "blocker_id": "B-008",
+      "severity": "MEDIUM",
+      "category": "VALIDATION",
+      "description": "api/review.js carries no unvalidated self-declaration in any case and its prompt instructs 'Do not add legal disclaimers inside the JSON'. It is the endpoint behind index.html, training.html and review-engine.html, so the engine without the declaration serves the highest-traffic public pages.",
+      "affected_assets": [
+        "JRS-ENGINE"
+      ],
+      "required_action": "Decide whether api/review.js should carry the declaration the other two engines carry.",
+      "owner": "HUMAN",
+      "status": "OPEN",
+      "created": "2026-09-14"
+    },
+    {
+      "blocker_id": "B-009",
+      "severity": "HIGH",
+      "category": "SECURITY",
+      "description": "Google receives visitor IP, user-agent and page data on essentially every public page via GA4 and Google Fonts, and was absent from every register and from the subprocessor count in B-003.",
+      "evidence_refs": [
+        "fonts.googleapis.com x146, fonts.gstatic.com x72, googletagmanager.com x64"
+      ],
+      "required_action": "Add Google to the subprocessor disclosure. Consider self-hosting fonts, which removes an IP disclosure that occurs regardless of analytics consent.",
+      "owner": "HUMAN",
+      "status": "OPEN",
+      "created": "2026-09-14"
+    },
+    {
+      "blocker_id": "B-010",
+      "severity": "MEDIUM",
+      "category": "IP",
+      "description": "acquisition-9f3c2a7d4b.html and vp-7c1f9a4e8d2b6035.html are deployed confidential buyer-facing surfaces that appeared in no register. CLAUDE.md 36.3 declares programme-status the 'only private owner page' without drawing the distinction between an owner page and a confidential buyer page.",
+      "required_action": "Confirm the intended classification and update CLAUDE.md 36.3 so the categories are distinguished.",
+      "owner": "HUMAN",
+      "status": "OPEN",
+      "created": "2026-09-14"
+    },
+    {
+      "blocker_id": "B-011",
+      "severity": "MEDIUM",
+      "category": "VALIDATION",
+      "description": "research/build_participant_inventory.py silently blanked a research snapshot because its overwrite guard was `or`, letting a PARTIAL live failure empty a populated key. It deleted the only cross-vendor study run record, 118 lines, and the loss reached commit a48dbb7.",
+      "required_action": "FIXED 2026-09-14: per-key merge, proven against empty live data. Data restored from 11f48bb. Blocker retained as the record of the incident.",
+      "owner": "CLAUDE",
+      "status": "RESOLVED",
+      "created": "2026-09-14",
+      "resolved": "2026-09-14"
     }
   ]
 }

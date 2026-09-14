@@ -27,7 +27,7 @@
       "claim": "The Review Engine is validated",
       "status": "PROHIBITED",
       "public_use": false,
-      "limitations": "Functional operation is not validation. The engine declares itself unvalidated in every response."
+      "limitations": "Functional operation is not validation. CORRECTED 2026-09-14: the self-declaration exists ONLY in api/review-engine.js and api/v1/review-engine.js. api/review.js carries none and is the endpoint behind index.html, training.html and review-engine.html."
     },
     {
       "claim_id": "C-005",
