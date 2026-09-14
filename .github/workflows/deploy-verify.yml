@@ -1,0 +1,81 @@
+name: Verify production matches main
+
+# WHY THIS EXISTS.
+# On 13 September 2026 PR #28 merged, GitHub reported everything green, and the
+# production build never ran. Twenty minutes later check.html was still serving
+# the pre-merge 33,801 bytes against 39,437 on main, and compliance.html, a new
+# route, returned 404. Every conventional signal passed the whole time: the
+# apex, check.html and the sitemap all returned 200.
+#
+# The failure was SILENT. Nothing went red, so nothing told anyone. This job
+# exists to remove that property: after every push to main it compares the
+# bytes production actually serves against the commit, and turns a skipped
+# deployment into a failed check.
+#
+# It does not revert. Production stays healthy and self-consistent on the
+# previous build during a skip, so there is nothing to roll back and a revert
+# would change nothing. The remedy is to re-trigger, which this job does
+# automatically when a deploy hook is configured.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Wait for the deployment to propagate
+        run: sleep 90
+
+      - name: Byte-compare production against this commit
+        id: check
+        run: |
+          set +e
+          python3 scripts/preflight_deploy_check.py --ref HEAD --all
+          echo "rc=$?" >> "$GITHUB_OUTPUT"
+          set -e
+
+      # SELF-HEALING, WHEN AND ONLY WHEN A HOOK IS CONFIGURED.
+      # Create a Deploy Hook in the Vercel project (Settings, Git, Deploy Hooks)
+      # for branch main and store the URL as the repository secret
+      # VERCEL_DEPLOY_HOOK_URL. With it, a skipped build re-triggers itself and
+      # the incident closes without anyone watching. Without it, the job still
+      # fails loudly below, which is the part that matters.
+      - name: Re-trigger the deployment
+        if: steps.check.outputs.rc != '0'
+        env:
+          HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "No VERCEL_DEPLOY_HOOK_URL secret is configured, so this job"
+            echo "cannot re-trigger the build. It will fail instead, which is"
+            echo "still better than the silent skip it exists to catch."
+            exit 0
+          fi
+          echo "Production does not match this commit. Re-triggering."
+          curl -fsS -X POST "$HOOK" -o /dev/null
+          sleep 120
+
+      - name: Re-check after the re-trigger
+        if: steps.check.outputs.rc != '0'
+        env:
+          HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "::error::Production is not serving this commit and no deploy"
+            echo "::error::hook is configured. This is the silent-skip failure."
+            echo "::error::Do NOT revert: production is intact on the previous"
+            echo "::error::build and a revert changes nothing. Re-trigger by"
+            echo "::error::pushing any commit to main, or redeploy from Vercel."
+            exit 1
+          fi
+          python3 scripts/preflight_deploy_check.py --ref HEAD --all
