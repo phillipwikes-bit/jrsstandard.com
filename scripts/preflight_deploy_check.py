@@ -189,11 +189,39 @@ def main():
           % (ok, len(stale), len(missing), len(unreachable)))
 
     if stale or missing:
+        bad = set(stale) | set(missing)
+        # CLASSIFY, DO NOT JUST REPORT. A silent skip and a partial rollout look
+        # identical in a count of stale files, and they need opposite responses.
+        # The signature of a skip is that every stale file is one the newest
+        # commit touched: main moved, production did not. A partial rollout
+        # leaves stale files the commit never touched.
+        touched = set()
+        r = git("show", "--name-only", "--format=", a.ref)
+        if r.returncode == 0:
+            touched = {p for p in r.stdout.split("\n") if p.strip()}
+        skip_signature = bool(touched) and bad.issubset(touched)
+
         print("\nPRODUCTION IS NOT SERVING %s." % a.ref)
-        print("This is the 13 September failure mode: the deployment did not run.")
-        print("Production is self-consistent on an OLDER build, so there is nothing")
-        print("to revert and reverting would change nothing. RE-TRIGGER instead:")
-        print("  push any commit to main, or redeploy from the Vercel dashboard.")
+        if skip_signature:
+            print("\n  *** SILENT DEPLOYMENT SKIP ***")
+            print("  Every stale asset is a file the newest commit changed, and nothing")
+            print("  else is stale. Production is intact on the PREVIOUS build: the new")
+            print("  deployment never ran. This is the 13 September 2026 failure mode,")
+            print("  in which GitHub reported the merge green and every route returned")
+            print("  200 while the change was absent from production.")
+            print("\n  DO NOT REVERT. There is no bad deployment to undo, and a revert")
+            print("  would change nothing. RE-TRIGGER: push any commit to main, or")
+            print("  redeploy from the Vercel dashboard.")
+        else:
+            print("\n  *** PARTIAL OR UNRELATED STALENESS ***")
+            print("  Some stale assets are NOT files the newest commit touched, so this")
+            print("  is not a clean skip. Check whether a deployment is still rolling")
+            print("  out before acting, then re-run this check.")
+            extra = sorted(bad - touched)[:8]
+            if extra:
+                print("  Stale but untouched by %s: %s" % (a.ref, ", ".join(extra)))
+        print("\n  A green GitHub check and an HTTP 200 are not evidence of deployment")
+        print("  on this project. This byte comparison is.")
         return 1
 
     if unreachable:
