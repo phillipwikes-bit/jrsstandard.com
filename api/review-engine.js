@@ -1,4 +1,5 @@
 export const config = { runtime: 'edge' };
+import { jrsModel } from './_model.js';
 
 // ============================================================
 // JRS Review Engine API   (canonical implementation)
@@ -22,7 +23,7 @@ export const config = { runtime: 'edge' };
 
 const ENGINE_VERSION = '0.1.0-validation';
 const API_VERSION = 'v1';
-const MODEL = 'claude-haiku-4-5-20251001';
+const MODEL = jrsModel();
 const SB_URL = 'https://pjzxkeviouofdseagvpf.supabase.co';
 
 const RATE_LIMIT = 20;        // requests

@@ -1,4 +1,5 @@
 export const config = { runtime: 'edge' };
+import { jrsModel } from './_model.js';
 
 // ============================================================
 // JRS Review Engine — SANDBOX
@@ -187,7 +188,7 @@ export default async function handler(req) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: 'claude-haiku-4-5-20251001',
+        model: jrsModel(),
         max_tokens: 1200,
         system: SYSTEM_PROMPT,
         messages: [{ role: 'user', content: text }]
@@ -221,7 +222,7 @@ export default async function handler(req) {
     api_version: 'sandbox',
     engine: 'JRS Review Engine',
     engine_version: '0.1.0-validation',
-    model: 'claude-haiku-4-5-20251001',
+    model: jrsModel(),
     routing: routeOf(conditions),
     runs: 1,
     conditions: conditions,

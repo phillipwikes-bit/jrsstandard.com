@@ -1,3 +1,31 @@
+<!-- HISTORICAL RECORD NOTICE. Added 2026-09-14 under blocker B-012.
+     This block is ADDITIVE. No historical content below it was altered,
+     reinterpreted, merged or removed. -->
+
+> **HISTORICAL RECORD — NO LONGER MAINTAINED.**
+>
+> This file is the **run-by-run execution log** kept between **2026-08-11** and
+> **2026-08-14** (69 commits). It was a deliberately separate document from the
+> research programme log, not a copy of one, and it is **retained in full** because
+> it holds material recorded nowhere else: the trademark filing status for the JRS
+> and DRR marks with their blocking items, the Class 042 and 035 identifications,
+> page counter audits, suppressed-cohort findings and endpoint inventories. A
+> block-level comparison on 2026-09-14 found **636 of 640 substantial blocks have
+> no match in the research tracker**.
+>
+> **The current operational tracker is `research/MASTER_TRACKER.md`**, per
+> CLAUDE.md Section 36.9. New entries go there, not here.
+>
+> **Two statements in the original header below are now false and are corrected
+> here rather than edited there**, so the historical text stands as written:
+> "Both are maintained" ceased to be true after 2026-08-14; and "none of which are
+> on main" is incorrect, since 22 root-level markdown files including this one are
+> tracked on `main`. They are not *served*: `.vercelignore` excludes `*.md` and
+> `vercel.json` redirects `/*.md` to the 404 page. A live fetch on 2026-09-14
+> returned the 404 page with zero bytes of this file's content.
+
+---
+
 # MASTER_TRACKER.md
 
 **Persistent execution log. Workspace root.**

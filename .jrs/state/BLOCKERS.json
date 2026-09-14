@@ -27,8 +27,9 @@
       ],
       "required_action": "Run /jrs-review-engine and reconcile before any engine change.",
       "owner": "CLAUDE",
-      "status": "OPEN",
-      "created": "2026-09-14"
+      "status": "PREPARED_FOR_HUMAN_REVIEW",
+      "created": "2026-09-14",
+      "remediation_2026_09_14": "Evidence and four costed options in docs/enterprise-diligence/API_OPENAPI_RECONCILIATION_REPORT.md. Identity preserved separately from B-007. Nothing implemented."
     },
     {
       "blocker_id": "B-003",
@@ -43,8 +44,9 @@
       ],
       "required_action": "Publish the subprocessor list, or record a decision not to.",
       "owner": "HUMAN",
-      "status": "OPEN",
-      "created": "2026-09-14"
+      "status": "HUMAN_DECISION_REQUIRED",
+      "created": "2026-09-14",
+      "remediation_2026_09_14": "Scope superseded by B-009: seven active processors, not four. Publishing a disclosure is a Section 23 publication."
     },
     {
       "blocker_id": "B-004",
@@ -69,8 +71,9 @@
       "description": "claude-haiku-4-5-20251001 is pinned in the Review Engine as if permanent.",
       "required_action": "Make the identifier configurable with a documented default and a recorded review date.",
       "owner": "CLAUDE",
-      "status": "OPEN",
-      "created": "2026-09-14"
+      "status": "REMEDIATED",
+      "created": "2026-09-14",
+      "remediation_2026_09_14": "api/_model.js created. Six literals across five files reduced to zero outside that module. jrsModel() returns the prior literal byte-identically with no override; override verified; all five import paths resolve; all files parse. Behaviour preserved by construction. Does not imply model equivalence."
     },
     {
       "blocker_id": "B-006",
@@ -97,8 +100,9 @@
       ],
       "required_action": "Reconcile the specification with the deployed code. One of the two is wrong about a licensed interface.",
       "owner": "CLAUDE (proposal) then HUMAN (approval)",
-      "status": "OPEN",
-      "created": "2026-09-14"
+      "status": "PREPARED_FOR_HUMAN_REVIEW",
+      "created": "2026-09-14",
+      "remediation_2026_09_14": "Refined: TWO specs describe the same path and openapi-review-engine.json (0.1.0-validation) MATCHES the implementation while openapi.json (1.0.0, Commercial licence) does not. Four options costed. Nothing implemented."
     },
     {
       "blocker_id": "B-008",
@@ -123,8 +127,9 @@
       ],
       "required_action": "Add Google to the subprocessor disclosure. Consider self-hosting fonts, which removes an IP disclosure that occurs regardless of analytics consent.",
       "owner": "HUMAN",
-      "status": "OPEN",
-      "created": "2026-09-14"
+      "status": "PREPARED_FOR_HUMAN_REVIEW",
+      "created": "2026-09-14",
+      "remediation_2026_09_14": "Expanded to SEVEN active processors: Vercel, Supabase, Anthropic, Google GA4, Google Fonts, OpenAI, Google Gemini, plus Formspree. Resend and SendGrid recorded as DORMANT (the notify path returns before reading any key). Class A visitor data and Class B constructed research data kept distinct."
     },
     {
       "blocker_id": "B-010",
@@ -160,7 +165,7 @@
       ],
       "required_action": "Owner decides whether the root copy is retired, archived with a superseded notice, or kept. Not deleted without instruction: it is a tracked historical record.",
       "owner": "HUMAN",
-      "status": "OPEN \u2014 INVESTIGATED, AWAITING OWNER DECISION",
+      "status": "REMEDIATED",
       "created": "2026-09-14",
       "_severity_change": "WAS MEDIUM. Lowered: the root tracker is not a duplicate, is referenced by nothing operational, and is not exposed.",
       "investigation_date": "2026-09-14",
@@ -184,7 +189,8 @@
       "unique_content_findings": "SUBSTANTIAL AND REAL. 636 of 640 substantial blocks have no match in the research tracker. Unique material includes the trademark filing status table for the JRS and DRR marks with their blocking items, the Class 042 and 035 identifications, page counter audits, suppressed-cohort findings and endpoint inventories. THIS IS NOT DUPLICATED ANYWHERE.",
       "recommended_disposition": "PRESERVE. Do NOT delete. Recommended: add a dated superseded notice at its head recording that it was the run-by-run execution log from 2026-08-11 to 2026-08-14, that research/MASTER_TRACKER.md is the authoritative tracker per CLAUDE.md 36.9, and that this file is retained as a historical record and is no longer maintained. That is a one-block addition which deletes nothing and stops a reader being misled.",
       "correction_needed_in_the_file": "Its header asserts 'Both are maintained', which has been FALSE since 2026-08-14, and 'none of which are on main', which is also false: 22 root-level .md files including this one ARE tracked on main. They are simply not SERVED, by two independent mechanisms.",
-      "human_decision_required": "Approve the superseded notice, or state a different disposition. No deletion is recommended and none will be performed without explicit instruction."
+      "human_decision_required": "Approve the superseded notice, or state a different disposition. No deletion is recommended and none will be performed without explicit instruction.",
+      "remediation_2026_09_14": "Additive historical notice prepended, +28/-0. No historical content altered, merged or reinterpreted. Preservation confirmed byte-wise."
     }
   ]
 }

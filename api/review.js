@@ -1,4 +1,5 @@
 export const config = { runtime: 'edge' };
+import { jrsModel } from './_model.js';
 
 const SYSTEM_PROMPT = `You are a JRS (Justification Review Standard) documentation reviewer. Your role is to assess organizational records against the five JRS pre-finalization review conditions before they enter an official system.
 
@@ -133,7 +134,7 @@ export default async function handler(req) {
         'anthropic-version': '2023-06-01',
       },
       body: JSON.stringify({
-        model: 'claude-haiku-4-5-20251001',
+        model: jrsModel(),
         // Raised from 1024 on 2026-08-15. At 1024 this endpoint failed 7 of 9
         // test calls, every one with the provider reporting
         // stop_reason='max_tokens' at exactly output_tokens=1024: the model was

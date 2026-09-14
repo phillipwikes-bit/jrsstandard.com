@@ -179,6 +179,17 @@
       ],
       "classification": "RESTRICTED",
       "_note": "ADDED 2026-09-14. Four opaque-slug endpoints were unregistered."
+    },
+    {
+      "asset_id": "JRS-MODELCFG",
+      "name": "Model configuration module",
+      "type": "software",
+      "location": [
+        "api/_model.js"
+      ],
+      "classification": "CONTROLLED",
+      "status": "ACTIVE",
+      "note": "Single source of truth for the model identifier. Treats the model as versioned infrastructure, not methodology (B-005)."
     }
   ],
   "_classification_meaning": "PUBLIC, CONTROLLED and RESTRICTED describe how information is handled. They are NOT a statement that an asset is legally protected and confer no rights.",

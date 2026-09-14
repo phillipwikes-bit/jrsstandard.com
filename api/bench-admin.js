@@ -1,11 +1,12 @@
 export const config = { runtime: 'edge' };
+import { jrsModel } from './_model.js';
 
 // JRS Benchmark Workspace — admin operations (record bank, gold key, AI scoring).
 // Auth: ?token=  must equal BENCH_ADMIN_TOKEN or RUN_TOKEN (reuse the one you already set).
 // Writes use SUPABASE_SERVICE_ROLE_KEY (bypasses RLS). Reuses ANTHROPIC_API_KEY for scoring.
 
 const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
-const MODEL = 'claude-haiku-4-5-20251001';
+const MODEL = jrsModel();
 const KEYS = ['basis_identification','reasoning_traceability','cold_reviewer_clarity','accountability_support','temporal_reconstructability'];
 
 const SYSTEM_PROMPT = `You are the JRS Review Engine. Examine one organizational record against five documentation review conditions:

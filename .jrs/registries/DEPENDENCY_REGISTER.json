@@ -6,12 +6,15 @@
     "Anthropic API",
     "Formspree (pilot.html)"
   ],
-  "subprocessors_identified": 5,
+  "subprocessors_identified": 7,
   "open_item": "The four-processor subprocessor list is not published on any privacy or security page.",
   "model_pin": {
     "identifier": "claude-haiku-4-5-20251001",
-    "treatment": "versioned infrastructure, not a JRS dependency",
-    "action": "Make configurable with a documented default and a recorded review date."
+    "module": "api/_model.js",
+    "override": "JRS_MODEL_ID (server environment only)",
+    "review_by": "2026-10-15",
+    "status": "REMEDIATED 2026-09-14",
+    "note": "Configurable with a documented default. Does not imply model equivalence."
   },
   "api_endpoints": 56,
   "openapi_documents": 2,
@@ -23,7 +26,7 @@
       "data_exposure": "Visitor IP, user-agent and page data on essentially every public page. Google Fonts discloses IP on load independently of analytics consent.",
       "references": "fonts.googleapis.com x146, fonts.gstatic.com x72, googletagmanager.com x64",
       "operational_importance": "MEDIUM (fonts), LOW (analytics)",
-      "replacement_difficulty": "LOW — self-host fonts; analytics is removable",
+      "replacement_difficulty": "LOW \u2014 self-host fonts; analytics is removable",
       "_correction": "ADDED 2026-09-14. The prior version listed four providers and B-003 said 'four subprocessors are identified' while omitting the one that receives data from every visitor on every page. A subprocessor-disclosure gap that itself omits a subprocessor is the worst version of that gap."
     },
     {
@@ -32,7 +35,7 @@
       "purpose": "Serves the entire public estate",
       "data_exposure": "All public content; edge headers including IP country",
       "operational_importance": "CRITICAL",
-      "replacement_difficulty": "MEDIUM — static assets are portable; edge functions need a rewrite"
+      "replacement_difficulty": "MEDIUM \u2014 static assets are portable; edge functions need a rewrite"
     },
     {
       "provider": "Supabase",
@@ -40,7 +43,7 @@
       "purpose": "interaction_events, pilot_contacts, bench and study tables",
       "data_exposure": "PERSONAL DATA: names, emails, organisations, country",
       "operational_importance": "CRITICAL",
-      "replacement_difficulty": "HIGH — schema and row-level access rules"
+      "replacement_difficulty": "HIGH \u2014 schema and row-level access rules"
     },
     {
       "provider": "Anthropic",
@@ -48,7 +51,7 @@
       "purpose": "Review Engine inference",
       "data_exposure": "Record text submitted for review",
       "operational_importance": "HIGH",
-      "replacement_difficulty": "MEDIUM — prompts are natural language and model-independent by construction"
+      "replacement_difficulty": "MEDIUM \u2014 prompts are natural language and model-independent by construction"
     },
     {
       "provider": "Formspree",
@@ -64,5 +67,6 @@
   "package_management": "None. No npm or pip manifest. Deliberate: there is no build step and nothing to pin.",
   "_phase1_updated": "2026-09-14",
   "_openapi_correction": "WAS 4. There are exactly TWO: openapi.json and openapi-review-engine.json. Blocker B-002 repeated the same wrong count and is corrected with it.",
-  "_commit_figure_note": "Git figures are as-of dates, not current. See PROVENANCE_REGISTER."
+  "_commit_figure_note": "Git figures are as-of dates, not current. See PROVENANCE_REGISTER.",
+  "_expanded_2026_09_14": "WAS 5. Seven ACTIVE: Vercel, Supabase, Anthropic, Google GA4, Google Fonts, OpenAI, Google Generative Language. Plus Formspree. OpenAI and Gemini are reached by the nightly cron at 0 6 * * * in api/run-study.js and are evidenced live by the 2026-08-21 cross-vendor run record. Resend and SendGrid are DORMANT: api/_notify.js returns before reading any key."
 }
