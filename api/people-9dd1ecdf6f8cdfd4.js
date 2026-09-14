@@ -13,7 +13,7 @@ import { resolveCountries } from './_country-backfill.js';
 // page to rotate it.
 //
 // It covers every stream in one place, so there is one list to look at:
-//   guide-register       Investigator Field Guide registrations (which edition)
+//   guide-register       Investigator Guide registrations (which edition)
 //   support-register     initiative registrations (which campaign)
 //   contributor-confirm  study contributors confirming name and title
 //   training-enroll      training enrollments
@@ -32,7 +32,7 @@ import { resolveCountries } from './_country-backfill.js';
 const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 
 const LABEL = {
-  'guide-register':      'Investigator Field Guide',
+  'guide-register':      'Investigator Guide',
   'support-register':    'Initiative',
   'contributor-confirm': 'Study contributor',
   'training-enroll':     'Training enrollment',
@@ -147,7 +147,7 @@ export default async function handler(req){
 
     // One plain-English line saying what this person actually did.
     let detail = '';
-    if (src === 'guide-register')      detail = EDITION[String(p.edition || '')] || 'Investigator Field Guide';
+    if (src === 'guide-register')      detail = EDITION[String(p.edition || '')] || 'Investigator Guide';
     else if (src === 'support-register' || src === 'support') detail = CAMPAIGN[String(p.campaign || '')] || 'Initiative';
     else if (src === 'contributor-confirm') detail = 'Code ' + (p.code || '') + (p.consent_named === true ? ', named in paper' : ', anonymous in paper');
     else if (src === 'org-pilot')      detail = (p.records_run || 0) + ' records run' + (p.sector ? ', ' + p.sector : '');

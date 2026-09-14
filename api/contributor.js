@@ -15,7 +15,7 @@ export const config = { runtime: 'edge' };
 //   3. Records the continuing-use and transfer permissions in writing, which is
 //      what a successor's counsel asks for and what an email thread cannot show.
 //   4. Releases what was promised: the two initiative sign-ups, the Investigator
-//      Field Guide, and the training.
+//      Investigator Guides, and the training.
 //
 // SUPERSEDED 2026-08-14: comparison-arm reviewers ARE now in this roster.
 // They were excluded because a JRS-branded page naming the standard tells an

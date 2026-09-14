@@ -2,7 +2,7 @@ import { fetchAll } from './_sb-fetch.js';
 export const config = { runtime: 'edge' };
 
 // Aggregate ALL download geography (counts only, no PII), for the
-// programme status dashboard. Reads both 'guide-dl' (Investigator Field Guide
+// programme status dashboard. Reads both 'guide-dl' (Investigator Guide
 // editions) and 'pdf-dl' (JRS Standard PDF, Rapid Review Card) rows from
 // interaction_events via the service role and returns
 // { total, countries, by_country, by_asset }.
@@ -21,7 +21,7 @@ function assetOf(row){
   const p = row.payload || {};
   if (row.source === 'kit-dl'){
     if (p.file === 'JRS_Rapid_Review_Card.pdf') return 'Rapid Review Card';
-    if (p.file === 'JRS_Investigator_Field_Guide.pdf') return 'Investigator Field Guide (combined)';
+    if (p.file === 'JRS_Investigator_Field_Guide.pdf') return 'Investigator Guide (combined)';
     if (p.file === 'JRS-Reference-9d4f2a7c.pdf') return 'Reviewer Reference';
     return 'Training kit';
   }
@@ -31,10 +31,10 @@ function assetOf(row){
     return 'Document';
   }
   // guide-dl
-  if (p.edition === 'employment')    return 'Investigator Field Guide: EEO';
-  if (p.edition === 'fairhousing')   return 'Investigator Field Guide: Fair Housing';
-  if (p.edition === 'international')  return 'Investigator Field Guide: International';
-  return 'Investigator Field Guide';
+  if (p.edition === 'employment')    return 'Investigator Guide: EEO';
+  if (p.edition === 'fairhousing')   return 'Investigator Guide: Fair Housing';
+  if (p.edition === 'international')  return 'Investigator Guide: International';
+  return 'Investigator Guide';
 }
 
 export default async function handler(){
@@ -123,7 +123,7 @@ export default async function handler(){
 
     // ---- Per-item detail: every asset on its own, with its own country split ----
     // Nothing shared into a common total. Guides listed first, then the rest.
-    const ORDER = ['Investigator Field Guide: EEO','Investigator Field Guide: Fair Housing','Investigator Field Guide: International','JRS Standard (PDF)','Rapid Review Card','JRS Reviewer Reference','Investigator Field Guide (combined)'];
+    const ORDER = ['Investigator Guide: EEO','Investigator Guide: Fair Housing','Investigator Guide: International','JRS Standard (PDF)','Rapid Review Card','JRS Reviewer Reference','Investigator Guide (combined)'];
     const perItem = {};
     for (const row of clean){
       const a = assetOf(row);

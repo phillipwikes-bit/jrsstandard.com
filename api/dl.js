@@ -3,7 +3,7 @@ export const config = { runtime: 'edge' };
 import { isNotAClick } from './_not-a-click.js';
 
 // JRS download counter + redirect. Three tracked link shapes, one endpoint:
-//   /api/dl?e=<edition>  Investigator Field Guide editions -> guide_downloads + interaction_events (source 'guide-dl')
+//   /api/dl?e=<edition>  Investigator Guide editions -> guide_downloads + interaction_events (source 'guide-dl')
 //   /api/dl?e=standard|card  JRS Standard PDF / Rapid Review Card -> interaction_events (source 'pdf-dl')
 //   /api/dl?f=<whitelisted-filename>  training kit PDFs + reference -> interaction_events (source 'kit-dl')
 // Every write is best-effort via SUPABASE_SERVICE_ROLE_KEY (bypasses RLS) and never
@@ -78,7 +78,7 @@ export default async function handler(req){
   // Unknown/missing token: send to the guides page rather than 404.
   if (!edition && !doc && !kit) return Response.redirect(url.origin + '/investigator-guides.html', 302);
 
-  // CHANGED 2026-08-09: the three Investigator Field Guide editions are open
+  // CHANGED 2026-08-09: the three Investigator Guide editions are open
   // access again. A bare ?e= link releases the file directly, counted but not
   // gated, which is what the guides page now links to. Nobody is asked for a
   // name to read a free reference document.
