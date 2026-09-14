@@ -57,9 +57,28 @@ TIMEOUT = 30
 
 # Mirrors .vercelignore. A file matching any of these is not deployed, so a 404
 # for it is correct and must not be reported as a failed deployment.
+#
+# "api/" IS DEPLOYED BUT IS NOT BYTE-COMPARABLE, which is a different thing and
+# was worth getting right. Those files are Edge Functions: Vercel EXECUTES them
+# and never serves their source. Comparing them against the repository blob
+# compares a function's JSON response with its own source code, so every one
+# reports STALE or MISSING. A first run of --all produced 45 stale and 16
+# missing on that basis alone, all false. An alarm that cries wolf 61 times
+# teaches the reader to ignore it, and a real staleness would then sit unread
+# in the noise, so they are excluded here rather than explained away in a
+# report. Their health belongs in the endpoint sweep, not a byte diff.
 NOT_DEPLOYED_PREFIX = ("research/", "scripts/", "docs/enterprise-diligence/",
-                       "cep-article-prep/", "templates/", ".claude/", "build/")
-NOT_DEPLOYED_SUFFIX = (".md", ".docx", ".csv", ".py", ".pyc", ".sh")
+                       "cep-article-prep/", "templates/", ".claude/", "build/",
+                       "api/")
+NOT_DEPLOYED_SUFFIX = (".md", ".docx", ".csv", ".py", ".pyc", ".sh", ".sql")
+
+# Named exclusions that are not covered by a prefix or a suffix rule.
+#   supabase-ALL.sql  is listed in .vercelignore by name (the .sql suffix above
+#                     now covers it too, kept here so the intent is explicit).
+#   vercel.json       is the platform's own configuration. Vercel reads it and
+#                     never serves it, so its 404 is correct and permanent.
+NOT_DEPLOYED_EXACT = ("vercel.json", "supabase-ALL.sql", ".vercelignore",
+                      ".gitignore", "CLAUDE.md")
 
 
 def git(*args):
@@ -74,6 +93,8 @@ def tracked(ref):
 
 
 def is_deployed(path):
+    if path in NOT_DEPLOYED_EXACT:
+        return False
     if path.startswith(NOT_DEPLOYED_PREFIX):
         return False
     if path.endswith(NOT_DEPLOYED_SUFFIX):
