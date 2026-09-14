@@ -222,8 +222,8 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 /* BUTTONS */
 .btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
 .btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 20px;font-family:'Inter',sans-serif;font-size:13.5px;font-weight:500;cursor:pointer;border:none;transition:.08s;text-decoration:none;min-height:42px}
-.btn-primary{background:#DCDCDC;color:#000;font-weight:600}
-.btn-primary:hover{background:#CCC}
+.btn-primary{background:var(--accent);color:#050505;font-weight:600}
+.btn-primary:hover{background:var(--accent-dim);color:var(--text)}
 .btn-ghost{border:1px solid var(--accent-dim);color:var(--accent);background:none}
 .btn-ghost:hover{border-color:#555;color:var(--text)}
 .btn-accent{background:var(--accent);color:#000;font-weight:600}
@@ -1465,6 +1465,7 @@ function calcSCS(){
  <div class="btn-row">
  <a href="/api/dl?e=standard&amp;src=index" class="btn btn-primary">View Review Controls PDF</a>
  <a href="training.html" class="btn btn-ghost">Free Training &rarr;</a>
+ <a href="investigator-guides.html" class="btn btn-ghost">Investigator Guides &rarr;</a>
  <button class="btn btn-ghost" onclick="showSection('kit')">Implementation Package</button>
  <a href="pilot.html" class="btn btn-ghost">Pilot Program &rarr;</a>
  <a href="mailto:info@jrsstandard.com?subject=JRS Pilot Program Inquiry" class="btn btn-ghost">Apply for Pilot →</a>
@@ -4989,6 +4990,7 @@ function calcSCS(){
   <a href="research.html" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;">Research</a>
   <a href="pilot.html" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;">Pilot Program</a>
   <a href="training.html" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;">Simulation Training</a>
+  <a href="investigator-guides.html" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;">Investigator Guides</a>
   <a href="/api/dl?e=standard&amp;src=index" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;">Review Controls PDF</a>
   <a href="/reference/" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;">Reference</a>
   <a href="mailto:info@jrsstandard.com" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;">Contact</a>
