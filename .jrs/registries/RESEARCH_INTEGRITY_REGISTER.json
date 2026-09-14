@@ -1,0 +1,116 @@
+{
+  "_created": "2026-09-14",
+  "_authority": "JRS RESEARCH RECOVERY AND INTEGRITY DIRECTIVE",
+  "_method": "Every status below is established from git history and from reading the file on disk. INTACT is used only where verified. Nothing is asserted from memory.",
+  "_estate_summary": {
+    "tracked_files": 755,
+    "present_on_disk": 755,
+    "missing_from_disk": 0,
+    "zero_byte_files": 0,
+    "json_files": 11,
+    "json_parse_failures": 0,
+    "empty_top_level_arrays": 0,
+    "untracked": "research/__pycache__ only"
+  },
+  "artifacts": [
+    {
+      "research_id": "RI-001",
+      "artifact": "Live inventory snapshot",
+      "path": "research/_inventory_live_snapshot.json",
+      "type": "json dataset",
+      "current_status": "present, 4332 bytes, realcase=2 runs=1",
+      "git_history_checked": true,
+      "last_known_good_commit": "ac074a3 (2026-08-21)",
+      "current_commit": "94af3fb",
+      "recovery_status": "RESTORED",
+      "content_integrity": {
+        "last_known_good_sha256_16": "7480db1e8948475d",
+        "damaged_sha256_16": "a5348a97db122af8",
+        "current_sha256_16": "7480db1e8948475d",
+        "match_status": "CURRENT == LAST KNOWN GOOD"
+      },
+      "dependent_artifacts": [
+        "research/PARTICIPANT_INVENTORY_BY_RUNG.md",
+        "research/build_participant_inventory.py",
+        "scripts/check_zero_drift.py"
+      ],
+      "evidence_reference": ".jrs/reports/GATE_1_REPORT.md",
+      "rights_status": "internal research record, not published",
+      "provenance_status": "Damaged by commit a48dbb7 on 2026-09-14; restored in 94af3fb from 11f48bb, whose content equals ac074a3.",
+      "notes": "The 2026-08-21 cross-vendor study run is PRESENT and COMPLETE: 3 models (anthropic:claude-opus-4-8, openai:gpt-5, google:gemini-flash-latest), 3 providers, with overall_agreement, per_record and per_record_models metrics."
+    },
+    {
+      "research_id": "RI-002",
+      "artifact": "Field guide extracted source (4 files)",
+      "path": "research/field-guide-src/{employment,fairhousing,general,international}.md",
+      "type": "derived markdown",
+      "current_status": "DELETED from HEAD",
+      "git_history_checked": true,
+      "last_known_good_commit": "44eb2af^ (199/203/320/213 lines confirmed present)",
+      "current_commit": "deleted in 44eb2af",
+      "recovery_status": "RECOVERY_REQUIRED (available, not currently needed)",
+      "content_integrity": "Recoverable in full from 44eb2af^; line counts verified",
+      "dependent_artifacts": [
+        "scripts/generate_field_guides.py"
+      ],
+      "provenance_status": "Deliberately deleted when the PDF reconstruction approach was discarded in favour of appending to the originals.",
+      "notes": "DERIVED, not original research: text extracted from the shipped PDFs, which are intact. Recorded here because the directive says not to assume the snapshot was the only affected artifact."
+    },
+    {
+      "research_id": "RI-003",
+      "artifact": "Blinded manuscript render intermediate",
+      "path": "research/aie_submission_2026-09-01/01_Blinded_Manuscript.pdf.src.html",
+      "type": "generated html",
+      "current_status": "DELETED from HEAD",
+      "git_history_checked": true,
+      "last_known_good_commit": "7281b54^",
+      "current_commit": "deleted in 7281b54",
+      "recovery_status": "RECOVERY_REQUIRED (available, not currently needed)",
+      "content_integrity": "Upstream .md INTACT at 577 lines / 44 headings; .docx and .pdf both present",
+      "dependent_artifacts": [
+        "01_Blinded_Manuscript.md",
+        "01_Blinded_Manuscript.docx",
+        "01_Blinded_Manuscript.pdf"
+      ],
+      "provenance_status": "Generated render wrapper (file begins with <style>), removed when terminology was fixed at source.",
+      "notes": "Deletion of a generated artifact whose upstream survives. No research content lost."
+    },
+    {
+      "research_id": "RI-004",
+      "artifact": "Master Tracker",
+      "path": "research/MASTER_TRACKER.md",
+      "type": "markdown log",
+      "current_status": "present, 2,150,762 bytes",
+      "git_history_checked": true,
+      "last_known_good_commit": "HEAD",
+      "current_commit": "94af3fb",
+      "recovery_status": "INTACT",
+      "content_integrity": "Append-only in every commit examined this session. a48dbb7 added 1 line; 94af3fb added 3, one being a Rule 10 correction in place.",
+      "dependent_artifacts": [
+        "the entire diligence package"
+      ],
+      "provenance_status": "No historical entry was deleted or rewritten. One false claim corrected in place with the correction marked.",
+      "notes": "Verified append-only rather than assumed."
+    },
+    {
+      "research_id": "RI-005",
+      "artifact": "Research estate, all other tracked files",
+      "path": "research/ (751 remaining)",
+      "type": "mixed",
+      "current_status": "present",
+      "git_history_checked": true,
+      "last_known_good_commit": "HEAD",
+      "current_commit": "94af3fb",
+      "recovery_status": "INTACT",
+      "content_integrity": "0 missing from disk; 0 zero-byte; 11/11 JSON parse; 0 empty top-level arrays; no other research file shows net line loss across the last 40 commits",
+      "dependent_artifacts": [],
+      "provenance_status": "No evidence of loss found",
+      "notes": "INTACT is used here on the strength of the four checks above, not on absence of suspicion."
+    }
+  ],
+  "_scan_coverage": {
+    "commits_scanned_for_research_loss": 40,
+    "net_negative_research_diffs_found": 6,
+    "assessed": "all 6; 1 incident (restored), 4 deliberate derived-file deletions, 1 deliberate content edit"
+  }
+}

@@ -146,6 +146,22 @@
       "status": "RESOLVED",
       "created": "2026-09-14",
       "resolved": "2026-09-14"
+    },
+    {
+      "blocker_id": "B-012",
+      "severity": "MEDIUM",
+      "category": "VALIDATION",
+      "description": "Two tracked Master Trackers exist and have DIVERGED. research/MASTER_TRACKER.md is 2,150,762 bytes, last committed 94af3fb on 2026-09-14. MASTER_TRACKER.md at the repository root is 223,714 bytes, last committed bb0e8c0 on 2026-08-14, and is not a prefix of the research copy. CLAUDE.md 36.9 names the research copy as the tracker.",
+      "evidence_refs": [
+        ".jrs/reports/RESEARCH_INTEGRITY_RECOVERY_REPORT.md"
+      ],
+      "affected_assets": [
+        "JRS-RESEARCH"
+      ],
+      "required_action": "Owner decides whether the root copy is retired, archived with a superseded notice, or kept. Not deleted without instruction: it is a tracked historical record.",
+      "owner": "HUMAN",
+      "status": "OPEN",
+      "created": "2026-09-14"
     }
   ]
 }
