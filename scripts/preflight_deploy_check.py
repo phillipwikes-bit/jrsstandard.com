@@ -47,12 +47,14 @@ EXIT CODES
 import argparse
 import concurrent.futures
 import hashlib
+import os
 import subprocess
 import sys
 import urllib.request
 import urllib.error
 
 BASE = "https://www.jrsstandard.com"
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TIMEOUT = 30
 
 # Mirrors .vercelignore. A file matching any of these is not deployed, so a 404
@@ -92,10 +94,41 @@ def tracked(ref):
     return [p for p in r.stdout.split("\n") if p.strip()]
 
 
+def _vercelignore_rules():
+    """Read the real exclusion rules from .vercelignore.
+
+    The lists above used to be the only source of truth and they DRIFTED: on
+    2026-09-14 `standard/` was excluded in .vercelignore and this tool went on
+    reporting the file as deployable, because the two lists are maintained by
+    hand in two places. Reading the file removes that failure mode for every
+    directory rule added in future.
+
+    The hardcoded lists are still needed and are UNIONED with this, not replaced:
+    .vercelignore says nothing about `api/`, which IS deployed but is executed
+    rather than served and therefore cannot be byte-compared at all.
+    """
+    dirs, exts = [], []
+    try:
+        for line in open(os.path.join(ROOT_DIR, ".vercelignore"), encoding="utf-8"):
+            line = line.strip()
+            if not line or line.startswith("#") or line.startswith("!"):
+                continue
+            if line.endswith("/"):
+                dirs.append(line)
+            elif line.startswith("*."):
+                exts.append(line[1:])
+    except OSError:
+        pass
+    return tuple(dirs), tuple(exts)
+
+
 def is_deployed(path):
+    ig_dirs, ig_exts = _vercelignore_rules()
     if path in NOT_DEPLOYED_EXACT:
         return False
-    if path.startswith(NOT_DEPLOYED_PREFIX):
+    if path.startswith(NOT_DEPLOYED_PREFIX) or path.startswith(ig_dirs):
+        return False
+    if ig_exts and path.endswith(ig_exts):
         return False
     if path.endswith(NOT_DEPLOYED_SUFFIX):
         return False

@@ -1,0 +1,109 @@
+{
+  "$schema": "https://jrsstandard.com/schema/jrs-conditions-1.json",
+  "jrs_version": "1.0",
+  "document_status": "DERIVED, NOT PUBLISHED",
+  "_provenance": {
+    "derived_from": "api/review.js SYSTEM_PROMPT, the prompt the live engine uses",
+    "cross_checked_against": "codebook.html, compliance.html, check.html",
+    "method": "verbatim extraction; no paraphrase, no invented requirement",
+    "date": "2026-09-14",
+    "rule": "CLAUDE.md Section 6F: do not redesign the methodology, do not invent substantive requirements"
+  },
+  "_publication_status": {
+    "state": "NOT PUBLISHED",
+    "reason": "Section 23 requires human approval before external publication. This file is excluded from deployment until approved.",
+    "approval_required_from": "Phillip Wikes"
+  },
+  "conditions": [
+    {
+      "id": "RC1",
+      "ordinal": 1,
+      "name": "Reconstructability",
+      "test_question": "Can the conclusion be reconstructed from the record?",
+      "requirement": "A future reviewer must be able to trace the path from documented evidence to the conclusion reached, without relying on the author's recollection or added explanation.",
+      "engine_key_mapping": "NOT ESTABLISHED \u2014 see CONTRADICTION_001"
+    },
+    {
+      "id": "RC2",
+      "ordinal": 2,
+      "name": "Basis Identification",
+      "test_question": "Is the basis for the conclusion identifiable?",
+      "requirement": "The source of each characterization (observation, measurement, audit finding, or reported incident) must be visible and traceable, not implied or summarized without attribution.",
+      "engine_key_mapping": "NOT ESTABLISHED \u2014 see CONTRADICTION_001"
+    },
+    {
+      "id": "RC3",
+      "ordinal": 3,
+      "name": "Chronology",
+      "test_question": "Is the chronology understandable?",
+      "requirement": "The sequence of events must be followable from the record alone, including the timing of prior interventions, escalation steps, and the period under review.",
+      "engine_key_mapping": "NOT ESTABLISHED \u2014 see CONTRADICTION_001"
+    },
+    {
+      "id": "RC4",
+      "ordinal": 4,
+      "name": "Decision-Process Traceability",
+      "test_question": "Can a future reviewer determine how the conclusion was reached?",
+      "requirement": "The decision process must be documented: who reviewed the matter, what criteria or threshold triggered the conclusion, and whether responsive or mitigating information was considered before finalization.",
+      "engine_key_mapping": "NOT ESTABLISHED \u2014 see CONTRADICTION_001"
+    },
+    {
+      "id": "RC5",
+      "ordinal": 5,
+      "name": "Evidentiary Sufficiency",
+      "test_question": "Could a reviewer with no prior knowledge evaluate the evidentiary sufficiency of this record?",
+      "requirement": "The record must stand on its own so an independent reviewer with no prior knowledge can assess whether the conclusion is supported by the documented evidence.",
+      "engine_key_mapping": "NOT ESTABLISHED \u2014 see CONTRADICTION_001"
+    }
+  ],
+  "condition_states": {
+    "_warning": "TWO VOCABULARIES EXIST IN THE ESTATE AND THEIR MAPPING IS NOT ESTABLISHED.",
+    "methodology_facing": {
+      "values": [
+        "Pass",
+        "Needs Attention",
+        "Fail"
+      ],
+      "source": "api/review.js",
+      "published_on": "13 public pages"
+    },
+    "engine_facing": {
+      "values": [
+        "pass",
+        "review",
+        "gap"
+      ],
+      "source": "api/review-engine.js, api/v1/review-engine.js, both OpenAPI documents",
+      "published_on": "6 benchmark and research pages"
+    }
+  },
+  "routing_states": {
+    "_warning": "TWO ROUTING VOCABULARIES EXIST. Mapping NOT ESTABLISHED.",
+    "review_js": {
+      "values": [
+        "Low",
+        "Moderate",
+        "High",
+        "Critical"
+      ],
+      "source": "api/review.js"
+    },
+    "openapi_json": {
+      "values_seen": [
+        "Ready"
+      ],
+      "source": "openapi.json"
+    }
+  },
+  "boundaries": {
+    "is_not": [
+      "certification",
+      "accreditation",
+      "a credential",
+      "a determination about any individual record",
+      "a statement of legal compliance"
+    ],
+    "engine_self_declaration": "The Review Engine declares itself unvalidated in every response.",
+    "source": "compliance.html, check.html, the investigator guides"
+  }
+}

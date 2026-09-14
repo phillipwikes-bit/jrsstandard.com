@@ -140,6 +140,19 @@
       "classification": "CONTROLLED",
       "check_count": 128,
       "note": "128 checks emitted by 99 check_ functions; some functions emit more than one."
+    },
+    {
+      "asset_id": "JRS-MRS",
+      "name": "Machine-readable Review Conditions",
+      "type": "standard",
+      "location": [
+        "standard/jrs-conditions.json"
+      ],
+      "classification": "CONTROLLED",
+      "status": "DERIVED, NOT PUBLISHED",
+      "note": "Verbatim derivation of the five published conditions. Excluded from deployment pending publication approval (Section 23)."
     }
-  ]
+  ],
+  "_classification_meaning": "PUBLIC, CONTROLLED and RESTRICTED describe how information is handled. They are NOT a statement that an asset is legally protected and confer no rights.",
+  "_phase1_updated": "2026-09-14"
 }

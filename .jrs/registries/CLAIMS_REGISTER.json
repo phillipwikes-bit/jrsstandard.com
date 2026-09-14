@@ -42,6 +42,50 @@
       "status": "DEMONSTRATED",
       "public_use": true,
       "limitations": "It is a success threshold for human detection, not a deficit rate. Both public occurrences state it as cleared."
+    },
+    {
+      "claim_id": "C-007",
+      "claim": "JRS output is admissible in court",
+      "status": "PROHIBITED",
+      "public_use": false,
+      "limitations": "NOT ESTABLISHED. Admissibility is a legal determination (Rule 8)."
+    },
+    {
+      "claim_id": "C-008",
+      "claim": "JRS prevents or eliminates liability",
+      "status": "PROHIBITED",
+      "public_use": false,
+      "limitations": "NOT ESTABLISHED, and the banned-language list in Section 24 covers it."
+    },
+    {
+      "claim_id": "C-009",
+      "claim": "JRS satisfies a statute, regulation or standard",
+      "status": "PROHIBITED",
+      "public_use": false,
+      "limitations": "Rule 9. No regulatory crosswalk has been performed."
+    },
+    {
+      "claim_id": "C-010",
+      "claim": "JRS is an industry standard or has industry recognition",
+      "status": "PROHIBITED",
+      "public_use": false,
+      "limitations": "NOT ESTABLISHED. No standards body, no DOI, no publisher record for any JRS output."
+    },
+    {
+      "claim_id": "C-011",
+      "claim": "Real-world effectiveness of JRS in production use",
+      "status": "NOT ESTABLISHED",
+      "public_use": false,
+      "limitations": "No real-case criterion validity study exists. The site says so."
+    },
+    {
+      "claim_id": "C-012",
+      "claim": "Sixteen experts across eleven countries read a balanced 24-record corpus cold",
+      "status": "DEMONSTRATED",
+      "public_use": true,
+      "limitations": "Constructed corpus, deliberately balanced. Supports detectability only."
     }
-  ]
+  ],
+  "_evidence_chain_rule": "CLAIM -> EVIDENCE -> LIMITATION -> RIGHTS -> REGULATORY IMPLICATION -> APPROVAL (Section 24)",
+  "_phase1_updated": "2026-09-14"
 }

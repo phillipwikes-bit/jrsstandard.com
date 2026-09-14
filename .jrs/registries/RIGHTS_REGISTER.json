@@ -21,5 +21,20 @@
       "status": "OPEN",
       "severity": "LOW"
     }
-  ]
+  ],
+  "concept_separation": {
+    "_rule": "These are DISTINCT. Never convert one into another (Rules 4 to 7).",
+    "authorship": "Who wrote it. Evidence, not title.",
+    "attribution": "Who is credited. Evidence, not title.",
+    "contribution": "What a person supplied. Evidence, not title.",
+    "consent": "Permission for a DEFINED purpose. Its scope is its limit.",
+    "license": "A grant of use on stated terms. NONE LOCATED in the corpus.",
+    "assignment": "A transfer of title. NONE LOCATED in the corpus.",
+    "commercial_permission": "Permission to use in a revenue-generating product. NOT ESTABLISHED.",
+    "transfer_permission": "Permission to pass to a successor. Established for study publications only, by the contributor instrument.",
+    "ownership": "Legal title. NOT ESTABLISHED. Requires human legal authority (Rule 8).",
+    "unresolved": "Recorded as NOT ESTABLISHED rather than inferred."
+  },
+  "classification_note": "PUBLIC / CONTROLLED / RESTRICTED in ASSET_REGISTER.json is an INFORMATION-GOVERNANCE classification. It is not a statement that an asset is legally protected and confers nothing.",
+  "_phase1_updated": "2026-09-14"
 }

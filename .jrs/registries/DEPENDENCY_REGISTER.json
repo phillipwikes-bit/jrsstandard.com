@@ -14,5 +14,43 @@
     "action": "Make configurable with a documented default and a recorded review date."
   },
   "api_endpoints": 56,
-  "openapi_documents": 4
+  "openapi_documents": 4,
+  "detail": [
+    {
+      "provider": "Vercel",
+      "service": "Static hosting and Edge Functions",
+      "purpose": "Serves the entire public estate",
+      "data_exposure": "All public content; edge headers including IP country",
+      "operational_importance": "CRITICAL",
+      "replacement_difficulty": "MEDIUM \u2014 static assets are portable; edge functions need a rewrite"
+    },
+    {
+      "provider": "Supabase",
+      "service": "Postgres",
+      "purpose": "interaction_events, pilot_contacts, bench and study tables",
+      "data_exposure": "PERSONAL DATA: names, emails, organisations, country",
+      "operational_importance": "CRITICAL",
+      "replacement_difficulty": "HIGH \u2014 schema and row-level access rules"
+    },
+    {
+      "provider": "Anthropic",
+      "service": "Model API",
+      "purpose": "Review Engine inference",
+      "data_exposure": "Record text submitted for review",
+      "operational_importance": "HIGH",
+      "replacement_difficulty": "MEDIUM \u2014 prompts are natural language and model-independent by construction"
+    },
+    {
+      "provider": "Formspree",
+      "service": "Form relay",
+      "purpose": "pilot.html submissions",
+      "data_exposure": "Whatever a submitter types",
+      "operational_importance": "LOW",
+      "replacement_difficulty": "LOW",
+      "finding": "Not disclosed on any privacy or security page (E-019, blocker B-003)"
+    }
+  ],
+  "license_evidence": "NOT ESTABLISHED. No provider terms are captured in the repository.",
+  "package_management": "None. No npm or pip manifest. Deliberate: there is no build step and nothing to pin.",
+  "_phase1_updated": "2026-09-14"
 }

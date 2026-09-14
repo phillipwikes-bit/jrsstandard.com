@@ -60,6 +60,15 @@ supabase-ALL.sql
 # ---- templates --------------------------------------------------------------
 templates/
 
+# ---- derived standard artifacts, NOT YET APPROVED FOR PUBLICATION ------------
+# Added 2026-09-14 in Phase 1. standard/jrs-conditions.json is a machine-readable
+# derivation of the five published Review Conditions. It is accurate and it is
+# version-controlled, but Section 23 requires human approval before anything is
+# published externally, and a machine-readable standard is a publication. It is
+# excluded until that approval exists, then this rule is removed deliberately
+# rather than by accident.
+standard/
+
 # ---- JRS control state, internal by nature -----------------------------------
 # Added 2026-09-14 with the Enterprise Asset Orchestrator. These registries name
 # contributors, rights positions, open security blockers and the opaque slugs of

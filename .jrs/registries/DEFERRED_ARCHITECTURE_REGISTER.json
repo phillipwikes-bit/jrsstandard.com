@@ -20,6 +20,23 @@
     {
       "item": "Check-to-policy adoption attribution",
       "reason": "Would require answer-derived state and would break a published privacy promise."
+    },
+    {
+      "item": "Reorganizing the repository into the Section 4 directory tree",
+      "reason": "Section 4 preserves a functioning structure. Eight-question test: no to all eight."
+    },
+    {
+      "item": "Package-management infrastructure (npm or pip manifest)",
+      "reason": "No build step exists and there is nothing to pin. Aesthetics is not a trigger."
+    },
+    {
+      "item": "Publishing standard/jrs-conditions.json",
+      "reason": "Accurate but unapproved. Section 23 requires human approval before publication."
+    },
+    {
+      "item": "Unpinning the model identifier in api/review.js",
+      "reason": "Specified in REVIEW_ENGINE_BOUNDARY.md; blocked on approval and on CONTRADICTION_001."
     }
-  ]
+  ],
+  "_phase1_updated": "2026-09-14"
 }
