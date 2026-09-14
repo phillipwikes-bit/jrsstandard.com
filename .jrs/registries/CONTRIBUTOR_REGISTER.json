@@ -1,0 +1,18 @@
+{
+  "_note": "Seeded 2026-09-14 from direct repository inspection during /jrs-init. Counts are FACT as at the commit recorded in PROGRAM_STATE.json. Rights and status fields are carried from the authoritative baseline in docs/enterprise-diligence/ and are NOT re-derived here. Person-level detail lives in the master register sections 8 to 13 and is not duplicated.",
+  "authoritative_source": "docs/enterprise-diligence/JRS_MASTER_ASSET_EVIDENCE_AND_CHAIN_OF_TITLE_REGISTER.md",
+  "executed_consents": {
+    "people": 33,
+    "rows": 37,
+    "instrument": "contributor",
+    "level": "B",
+    "scope": "study publications including by a successor organization",
+    "silent_on": "licensing, commercial products, revenue share, vendor platforms"
+  },
+  "coauthor_instrument": {
+    "expected": 3,
+    "confirmed": 0,
+    "terms_version": "coauthor-v1.0-2026-08-24",
+    "note": "Unused. Two of the three consented via the contributor instrument instead."
+  }
+}

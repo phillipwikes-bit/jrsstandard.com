@@ -1,0 +1,145 @@
+{
+  "_note": "Seeded 2026-09-14 from direct repository inspection during /jrs-init. Counts are FACT as at the commit recorded in PROGRAM_STATE.json. Rights and status fields are carried from the authoritative baseline in docs/enterprise-diligence/ and are NOT re-derived here.",
+  "_mapping": "This repository predates the logical tree in CLAUDE.md Section 4 and is preserved rather than reorganized. Logical category -> actual location.",
+  "assets": [
+    {
+      "asset_id": "JRS-STD",
+      "name": "Justification Review Standard",
+      "type": "methodology",
+      "location": [
+        "jrsstandard.html",
+        "JRS-Standard.pdf",
+        "codebook.html"
+      ],
+      "classification": "PUBLIC",
+      "rights_status": "SEE_BASELINE",
+      "validation_status": "SEE_VALIDATION_REGISTER",
+      "evidence_refs": [
+        "EVIDENCE_LEDGER.md"
+      ]
+    },
+    {
+      "asset_id": "JRS-DRR",
+      "name": "Decision Reconstruction Risk construct",
+      "type": "methodology",
+      "location": [
+        "decision-reconstruction-risk.html",
+        "research/"
+      ],
+      "classification": "PUBLIC",
+      "rights_status": "SEE_BASELINE",
+      "note": "Baseline records first repository use 2026-06-23 and public attributed use 2026-06-02."
+    },
+    {
+      "asset_id": "JRS-ENGINE",
+      "name": "Review Engine",
+      "type": "software",
+      "location": [
+        "api/review.js",
+        "api/review-engine.js",
+        "api/v1/review-engine.js"
+      ],
+      "classification": "CONTROLLED",
+      "dependencies": [
+        "Anthropic API",
+        "Vercel Edge",
+        "Supabase"
+      ],
+      "validation_status": "FUNCTIONAL_NOT_VALIDATED",
+      "note": "Declares itself unvalidated in every response. Functional operation is not validation."
+    },
+    {
+      "asset_id": "JRS-CHECK",
+      "name": "Seven-Point Record Defensibility Check",
+      "type": "software",
+      "location": [
+        "check.html"
+      ],
+      "classification": "PUBLIC",
+      "validation_status": "DIAGNOSTIC_PROMPT_NOT_DETERMINATION"
+    },
+    {
+      "asset_id": "JRS-GUIDES",
+      "name": "Investigator Guides (3 tracked editions)",
+      "type": "publication",
+      "location": [
+        "JRS_Investigator_Field_Guide_Employment.pdf",
+        "JRS_Investigator_Field_Guide_FairHousing.pdf",
+        "JRS_Investigator_Field_Guide_International.pdf"
+      ],
+      "classification": "PUBLIC",
+      "note": "Tracked behind /api/dl?e=. Combined overview is a separate untracked distribution."
+    },
+    {
+      "asset_id": "JRS-RESEARCH",
+      "name": "Detection and reliability studies",
+      "type": "research",
+      "location": [
+        "research/"
+      ],
+      "classification": "CONTROLLED",
+      "file_count": 757,
+      "validation_status": "REPORTED_WITH_NEGATIVES"
+    },
+    {
+      "asset_id": "JRS-TRAINING",
+      "name": "Six-module training",
+      "type": "training",
+      "location": [
+        "training.html"
+      ],
+      "classification": "PUBLIC",
+      "note": "Ungated by decision 2026-08-25."
+    },
+    {
+      "asset_id": "JRS-SITE",
+      "name": "Public website",
+      "type": "website",
+      "location": [
+        "*.html",
+        "reference/",
+        "reviewer/"
+      ],
+      "classification": "PUBLIC",
+      "page_count": 55,
+      "reference_page_count": 17
+    },
+    {
+      "asset_id": "JRS-OWNER",
+      "name": "Private owner surface",
+      "type": "software",
+      "location": [
+        "programme-status-9872fb93cc94.html",
+        "api/people-9dd1ecdf6f8cdfd4.js",
+        "api/leads-4b7e2c9af106d385.js"
+      ],
+      "classification": "RESTRICTED",
+      "note": "Opaque slug is the only access control. No analytics tag, no public link, no token control. Rotate both endpoint slugs together."
+    },
+    {
+      "asset_id": "JRS-DILIGENCE",
+      "name": "Enterprise diligence package",
+      "type": "documentation",
+      "location": [
+        "docs/enterprise-diligence/"
+      ],
+      "classification": "CONTROLLED",
+      "file_count": 41
+    },
+    {
+      "asset_id": "JRS-GUARDS",
+      "name": "Zero-drift guard suite and deployment tooling",
+      "type": "software",
+      "location": [
+        "scripts/check_zero_drift.py",
+        "scripts/preflight_deploy_check.py",
+        "scripts/generate_field_guides.py",
+        "scripts/vercel_f4_diagnose.sh",
+        ".github/workflows/deploy-verify.yml"
+      ],
+      "classification": "CONTROLLED",
+      "check_count": 128,
+      "note": "128 checks emitted by 99 check_ functions; some functions emit more than one."
+    }
+  ]
+}

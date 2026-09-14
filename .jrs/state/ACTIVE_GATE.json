@@ -1,0 +1,12 @@
+{
+  "gate": 0,
+  "name": "GATE_0_ASSET_BASELINE",
+  "status": "PASS WITH CONDITIONS",
+  "evaluated": "2026-09-14",
+  "conditions": [
+    "B-001 open: a credential was exposed in conversation and needs rotation.",
+    "B-002 open: two or more OpenAPI documents may conflict and have not been reconciled.",
+    "B-003 open: the four-processor subprocessor list is unpublished."
+  ],
+  "basis": "Control state established and registries seeded from inspection. Not passed merely because files exist."
+}

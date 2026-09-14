@@ -1,0 +1,86 @@
+{
+  "blockers": [
+    {
+      "blocker_id": "B-001",
+      "severity": "HIGH",
+      "category": "SECURITY",
+      "description": "A live Vercel API token was pasted into conversation on 2026-09-14, twice. It is exposed by that act.",
+      "evidence_refs": [
+        "SECURITY_REGISTER.json#incidents/SEC-001"
+      ],
+      "affected_assets": [
+        "JRS-SITE",
+        "JRS-ENGINE"
+      ],
+      "required_action": "Revoke the token at Vercel Settings, Tokens and reissue. Use scripts/vercel_f4_diagnose.sh, which reads it from the environment.",
+      "owner": "HUMAN",
+      "status": "OPEN",
+      "created": "2026-09-14"
+    },
+    {
+      "blocker_id": "B-002",
+      "severity": "MEDIUM",
+      "category": "TECHNICAL",
+      "description": "Four OpenAPI documents are present and at least two were previously recorded as conflicting. Not reconciled.",
+      "affected_assets": [
+        "JRS-ENGINE"
+      ],
+      "required_action": "Run /jrs-review-engine and reconcile before any engine change.",
+      "owner": "CLAUDE",
+      "status": "OPEN",
+      "created": "2026-09-14"
+    },
+    {
+      "blocker_id": "B-003",
+      "severity": "MEDIUM",
+      "category": "SECURITY",
+      "description": "Four subprocessors are identified (Vercel, Supabase, Anthropic, Formspree). No privacy or security page lists them.",
+      "evidence_refs": [
+        "EVIDENCE_LEDGER.md#E-019"
+      ],
+      "affected_assets": [
+        "JRS-SITE"
+      ],
+      "required_action": "Publish the subprocessor list, or record a decision not to.",
+      "owner": "HUMAN",
+      "status": "OPEN",
+      "created": "2026-09-14"
+    },
+    {
+      "blocker_id": "B-004",
+      "severity": "MEDIUM",
+      "category": "IP",
+      "description": "No Level A evidence exists. No executed signed instrument is present anywhere in the accessible corpus.",
+      "evidence_refs": [
+        "EVIDENCE_LEDGER.json"
+      ],
+      "affected_assets": [
+        "ALL"
+      ],
+      "required_action": "Legal review. Claude may organize evidence and draft questions; it may not determine title (Rule 8).",
+      "owner": "HUMAN",
+      "status": "OPEN",
+      "created": "2026-09-14"
+    },
+    {
+      "blocker_id": "B-005",
+      "severity": "LOW",
+      "category": "TECHNICAL",
+      "description": "claude-haiku-4-5-20251001 is pinned in the Review Engine as if permanent.",
+      "required_action": "Make the identifier configurable with a documented default and a recorded review date.",
+      "owner": "CLAUDE",
+      "status": "OPEN",
+      "created": "2026-09-14"
+    },
+    {
+      "blocker_id": "B-006",
+      "severity": "LOW",
+      "category": "TECHNICAL",
+      "description": "Root cause of the 2026-09-13 silent deployment skip is NOT ESTABLISHED.",
+      "required_action": "Run scripts/vercel_f4_diagnose.sh with a rotated token. Downgraded from HIGH because the failure mode is now prevented and detected regardless of cause.",
+      "owner": "HUMAN",
+      "status": "OPEN",
+      "created": "2026-09-14"
+    }
+  ]
+}

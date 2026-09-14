@@ -1,0 +1,17 @@
+{
+  "_note": "Seeded 2026-09-14 from direct repository inspection during /jrs-init. Counts are FACT as at the commit recorded in PROGRAM_STATE.json. Rights and status fields are carried from the authoritative baseline in docs/enterprise-diligence/ and are NOT re-derived here.",
+  "production_branch": "main",
+  "development_branch": "claude/html-pilot-L8rC3",
+  "verification": "Byte comparison against origin/main via scripts/preflight_deploy_check.py. A status code is not evidence.",
+  "controls": [
+    "vercel.json ignoreCommand exit 1 forces every build to proceed",
+    ".github/workflows/deploy-verify.yml fails the check when production does not match the commit"
+  ],
+  "known_incident": {
+    "date": "2026-09-13",
+    "description": "PR #28 merged green; the production build never ran; every route returned 200.",
+    "root_cause": "NOT ESTABLISHED",
+    "mitigation": "Prevented at config level and detected at CI level regardless of cause.",
+    "remedy_rule": "RE-TRIGGER, never revert."
+  }
+}

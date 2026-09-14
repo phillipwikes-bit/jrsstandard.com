@@ -1,0 +1,16 @@
+{
+  "initialized": "2026-09-14",
+  "initialized_by": "/jrs-init",
+  "repository": "phillipwikes-bit/jrsstandard.com",
+  "production_branch": "main",
+  "development_branch": "claude/html-pilot-L8rC3",
+  "head_at_init": "dad8bd09eda3e65fe316a4dcf37734d871bb2afc",
+  "main_at_init": "0d94ce6b7beffb4a7a74ef4302cb9ccf45e377d5",
+  "baseline_read": [
+    "docs/enterprise-diligence/EVIDENCE_LEDGER.md",
+    "docs/enterprise-diligence/JRS_MASTER_ASSET_EVIDENCE_AND_CHAIN_OF_TITLE_REGISTER.md",
+    "docs/repository-operations/OPERATIONS_ANNEX.md"
+  ],
+  "substantive_assets_modified_during_init": false,
+  "production_status": "LIVE / BYTE-VERIFIED"
+}

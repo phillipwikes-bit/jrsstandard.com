@@ -1,0 +1,13 @@
+{
+  "_note": "Seeded 2026-09-14 from direct repository inspection during /jrs-init. Counts are FACT as at the commit recorded in PROGRAM_STATE.json. Rights and status fields are carried from the authoritative baseline in docs/enterprise-diligence/ and are NOT re-derived here.",
+  "ai_assisted_creation": {
+    "classification": "EVIDENTIARY LIMITATION AT ARTIFACT LEVEL",
+    "human_conception": "VERIFIED",
+    "evidence": "Three published LinkedIn articles dated 2026-06-02, 2026-06-11 and 2026-07-02, attributed and third-party timestamped.",
+    "git_metadata": {
+      "total_commits": 2040,
+      "first_commit": "2026-04-14"
+    },
+    "caution": "Commit metadata is not authorship in fact and is not ownership (Rules 4 and 7)."
+  }
+}

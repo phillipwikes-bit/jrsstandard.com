@@ -1,0 +1,18 @@
+{
+  "_note": "Seeded 2026-09-14 from direct repository inspection during /jrs-init. Counts are FACT as at the commit recorded in PROGRAM_STATE.json. Rights and status fields are carried from the authoritative baseline in docs/enterprise-diligence/ and are NOT re-derived here.",
+  "runtime": [
+    "Vercel Edge Functions",
+    "Supabase (project pjzxkeviouofdseagvpf)",
+    "Anthropic API",
+    "Formspree (pilot.html)"
+  ],
+  "subprocessors_identified": 4,
+  "open_item": "The four-processor subprocessor list is not published on any privacy or security page.",
+  "model_pin": {
+    "identifier": "claude-haiku-4-5-20251001",
+    "treatment": "versioned infrastructure, not a JRS dependency",
+    "action": "Make configurable with a documented default and a recorded review date."
+  },
+  "api_endpoints": 56,
+  "openapi_documents": 4
+}

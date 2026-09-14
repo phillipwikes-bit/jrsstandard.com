@@ -60,6 +60,13 @@ supabase-ALL.sql
 # ---- templates --------------------------------------------------------------
 templates/
 
+# ---- JRS control state, internal by nature -----------------------------------
+# Added 2026-09-14 with the Enterprise Asset Orchestrator. These registries name
+# contributors, rights positions, open security blockers and the opaque slugs of
+# the private owner surfaces. A control file reachable at a guessable public path
+# is the same exposure class as the 2026-08-25 finding at the top of this file.
+.jrs/
+
 # ---- local tooling ----------------------------------------------------------
 .claude/
 __pycache__/

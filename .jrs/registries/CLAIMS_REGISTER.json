@@ -1,0 +1,47 @@
+{
+  "_note": "Seeded 2026-09-14 from direct repository inspection during /jrs-init. Counts are FACT as at the commit recorded in PROGRAM_STATE.json. Rights and status fields are carried from the authoritative baseline in docs/enterprise-diligence/ and are NOT re-derived here.",
+  "claims": [
+    {
+      "claim_id": "C-001",
+      "claim": "Mean reviewer accuracy 83.9% (95% CI 72.7 to 95.1, n=16, 384 graded reads)",
+      "status": "DEMONSTRATED",
+      "public_use": true,
+      "limitations": "Accuracy range 37.5 to 100 percent; pre-registered reliability criterion NOT met. Both are published alongside."
+    },
+    {
+      "claim_id": "C-002",
+      "claim": "Sensitivity 87.0%, specificity 80.7%",
+      "status": "DEMONSTRATED",
+      "public_use": true,
+      "limitations": "Balanced 24-record constructed corpus; supports detectability, not a population rate."
+    },
+    {
+      "claim_id": "C-003",
+      "claim": "A deficit rate for real-world records",
+      "status": "PROHIBITED",
+      "public_use": false,
+      "limitations": "NOT DERIVABLE. A 50/50 constructed corpus cannot produce a population estimate. Requested three times; refused each time."
+    },
+    {
+      "claim_id": "C-004",
+      "claim": "The Review Engine is validated",
+      "status": "PROHIBITED",
+      "public_use": false,
+      "limitations": "Functional operation is not validation. The engine declares itself unvalidated in every response."
+    },
+    {
+      "claim_id": "C-005",
+      "claim": "JRS is certification, accreditation or a credential",
+      "status": "PROHIBITED",
+      "public_use": false,
+      "limitations": "Explicitly disclaimed on compliance.html and in the guides."
+    },
+    {
+      "claim_id": "C-006",
+      "claim": "The 70% figure is a pre-registered threshold that was CLEARED",
+      "status": "DEMONSTRATED",
+      "public_use": true,
+      "limitations": "It is a success threshold for human detection, not a deficit rate. Both public occurrences state it as cleared."
+    }
+  ]
+}

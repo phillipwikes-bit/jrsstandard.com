@@ -1,0 +1,25 @@
+{
+  "_note": "Seeded 2026-09-14 from direct repository inspection during /jrs-init. Counts are FACT as at the commit recorded in PROGRAM_STATE.json. Rights and status fields are carried from the authoritative baseline in docs/enterprise-diligence/ and are NOT re-derived here.",
+  "position": "NO EXECUTED SIGNED INSTRUMENT EXISTS IN THE ACCESSIBLE CORPUS (no Level A evidence).",
+  "open_questions": [
+    {
+      "id": "CT-SEC-2.1",
+      "question": "Assignment for the Section 2.1 accessibility and study-design argument",
+      "status": "OPEN",
+      "severity": "MEDIUM",
+      "note": "Risk reduced from High after chronology showed it is not the DRR construct."
+    },
+    {
+      "id": "CT-UBAYET",
+      "question": "Commercial use and successor transfer",
+      "status": "DEFERRED_BY_OWNER_SEQUENCE",
+      "note": "A deferral decided by the owner is not an evidence gap."
+    },
+    {
+      "id": "CT-HEKIM",
+      "question": "His own words accepting the CCI terms, to upgrade Level D to Level C",
+      "status": "OPEN",
+      "severity": "LOW"
+    }
+  ]
+}

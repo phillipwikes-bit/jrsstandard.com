@@ -1,0 +1,7 @@
+{
+  "phase": 0,
+  "name": "Asset baseline and controlled state",
+  "status": "COMPLETE_PENDING_GATE_REVIEW",
+  "next_phase": 1,
+  "advance_requires": "Human approval after Gate 0 review. Do not auto-advance."
+}

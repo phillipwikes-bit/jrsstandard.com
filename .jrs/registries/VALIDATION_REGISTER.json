@@ -1,0 +1,26 @@
+{
+  "_note": "Seeded 2026-09-14 from direct repository inspection during /jrs-init. Counts are FACT as at the commit recorded in PROGRAM_STATE.json. Rights and status fields are carried from the authoritative baseline in docs/enterprise-diligence/ and are NOT re-derived here.",
+  "guard_suite": {
+    "file": "scripts/check_zero_drift.py",
+    "checks_emitted": 128,
+    "check_functions": 99,
+    "last_result": "128 checks, 0 failed, 1 skipped",
+    "policy": "Guards are demonstrated to fire before being trusted; never weakened for green."
+  },
+  "detection_study": {
+    "reviewers": 16,
+    "graded_reads": 384,
+    "countries": 11,
+    "mean_accuracy": "83.9%",
+    "ci": "72.7 to 95.1",
+    "sensitivity": "87.0%",
+    "specificity": "80.7%",
+    "negative_findings": [
+      "Reviewer accuracy ranged 37.5% to 100%.",
+      "The pre-registered reliability criterion was NOT met."
+    ]
+  },
+  "review_engine": {
+    "status": "FUNCTIONAL_NOT_VALIDATED"
+  }
+}

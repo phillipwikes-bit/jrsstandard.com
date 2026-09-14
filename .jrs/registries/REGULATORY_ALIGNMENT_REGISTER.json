@@ -1,0 +1,6 @@
+{
+  "_note": "Seeded 2026-09-14 from direct repository inspection during /jrs-init. Counts are FACT as at the commit recorded in PROGRAM_STATE.json. Rights and status fields are carried from the authoritative baseline in docs/enterprise-diligence/ and are NOT re-derived here.",
+  "status": "NOT STARTED",
+  "rule": "Every future entry is classified as requirement, guidance, voluntary framework, potential alignment, or requires legal interpretation.",
+  "prohibition": "No entry may state that JRS satisfies a statute, regulation or standard."
+}
