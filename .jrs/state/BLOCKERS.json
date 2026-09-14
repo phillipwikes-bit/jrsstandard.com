@@ -149,7 +149,7 @@
     },
     {
       "blocker_id": "B-012",
-      "severity": "MEDIUM",
+      "severity": "LOW",
       "category": "VALIDATION",
       "description": "Two tracked Master Trackers exist and have DIVERGED. research/MASTER_TRACKER.md is 2,150,762 bytes, last committed 94af3fb on 2026-09-14. MASTER_TRACKER.md at the repository root is 223,714 bytes, last committed bb0e8c0 on 2026-08-14, and is not a prefix of the research copy. CLAUDE.md 36.9 names the research copy as the tracker.",
       "evidence_refs": [
@@ -160,8 +160,31 @@
       ],
       "required_action": "Owner decides whether the root copy is retired, archived with a superseded notice, or kept. Not deleted without instruction: it is a tracked historical record.",
       "owner": "HUMAN",
-      "status": "OPEN",
-      "created": "2026-09-14"
+      "status": "OPEN \u2014 INVESTIGATED, AWAITING OWNER DECISION",
+      "created": "2026-09-14",
+      "_severity_change": "WAS MEDIUM. Lowered: the root tracker is not a duplicate, is referenced by nothing operational, and is not exposed.",
+      "investigation_date": "2026-09-14",
+      "classification": "HISTORICAL RECORD + CONTAINS UNIQUE INFORMATION",
+      "_classification_basis": "NOT an obsolete duplicate. The file's own header states it is a separate document with a different purpose.",
+      "evidence_inspected": [
+        "git log --all --follow on both trackers",
+        "repository-wide grep for MASTER_TRACKER.md",
+        "path resolution of every script reference",
+        "block-level content comparison, 640 substantial blocks",
+        "live HTTP body check of all 22 root-level .md files"
+      ],
+      "historical_purpose": "Created 2026-08-11 in commit 973d9d3, 'Create the root execution tracker'. Its own header says: 'This file is the run-by-run execution record required by the standing directive. It is separate from research/MASTER_TRACKER.md, which is the research programme log and carries the full narrative history. Both are maintained.' It was a DELIBERATE second document with a different purpose, not a copy. 69 commits, all between 2026-08-11 and 2026-08-14, then abandoned. 501 headings, ~500 timestamped Run entries.",
+      "was_historically_authoritative": "YES, for run-by-run execution records, during 2026-08-11 to 2026-08-14 only. Never authoritative for the research programme.",
+      "dependency_findings": {
+        "scripts": "NONE. Every one of the 14 script references resolves to research/MASTER_TRACKER.md. Verified by reading each path expression.",
+        "documentation": "MASTER_SYSTEM_AUDIT_AND_TRADEMARK_DOSSIER.md mentions it 5 times; programme-status references the name without a path.",
+        "external_or_public": "NONE. Excluded by .vercelignore *.md AND caught by the vercel.json /*.md redirect. Live fetch returns the 404 page, 0 bytes of content.",
+        "active_dependency": "NO"
+      },
+      "unique_content_findings": "SUBSTANTIAL AND REAL. 636 of 640 substantial blocks have no match in the research tracker. Unique material includes the trademark filing status table for the JRS and DRR marks with their blocking items, the Class 042 and 035 identifications, page counter audits, suppressed-cohort findings and endpoint inventories. THIS IS NOT DUPLICATED ANYWHERE.",
+      "recommended_disposition": "PRESERVE. Do NOT delete. Recommended: add a dated superseded notice at its head recording that it was the run-by-run execution log from 2026-08-11 to 2026-08-14, that research/MASTER_TRACKER.md is the authoritative tracker per CLAUDE.md 36.9, and that this file is retained as a historical record and is no longer maintained. That is a one-block addition which deletes nothing and stops a reader being misled.",
+      "correction_needed_in_the_file": "Its header asserts 'Both are maintained', which has been FALSE since 2026-08-14, and 'none of which are on main', which is also false: 22 root-level .md files including this one ARE tracked on main. They are simply not SERVED, by two independent mechanisms.",
+      "human_decision_required": "Approve the superseded notice, or state a different disposition. No deletion is recommended and none will be performed without explicit instruction."
     }
   ]
 }
