@@ -5128,34 +5128,43 @@ def check_tracked_guides_carry_exactly_one_routing_page(offline):
 def check_every_active_processor_is_disclosed(offline):
     """Every external destination that can receive data is named on privacy.html.
 
-    WHY THIS GUARD EXISTS. B-009. The register recorded four subprocessors.
-    Inspection on 2026-09-14 found eight destinations, and the one that mattered
-    most was the quietest: Google Fonts discloses a visitor's IP to Google on
-    page load, on nearly every page, INDEPENDENTLY of any analytics cookie
-    choice. A reader who blocked Google Analytics and believed that stopped
-    Google receiving data was wrong, and privacy.html did not tell them.
+    WHY THIS GUARD EXISTS. B-009. The register recorded four subprocessors and
+    inspection found eight destinations. The quietest was Google Fonts, which
+    discloses a visitor's IP to Google on page load, on nearly every page,
+    INDEPENDENTLY of any analytics cookie choice. A reader who blocked Google
+    Analytics and believed that stopped Google receiving data was wrong, and
+    privacy.html did not tell them.
 
-    The failure mode is not that someone writes a false sentence. It is that
-    someone adds an outbound call and nobody remembers the disclosure page
-    exists. So this guard works from the CODE toward the DISCLOSURE, not the
-    other way round.
+    WHY THIS VERSION EXISTS. The first version of this guard was red-teamed on
+    2026-09-15 and FAILED five ways, each recorded here so it is not rebuilt
+    the same way:
+      1. Every test was a bare substring over the whole file, so a page saying
+         "We do NOT use Vercel, Supabase, Anthropic..." passed.
+      2. Vercel was not in the map at all, because Vercel has no host string in
+         api/. The processor that sees every request was entirely unguarded.
+      3. The front-end scan used os.listdir(ROOT) and a hardcoded three-host
+         list, so it missed the 20 pages under reference/ and reviewer/ AND any
+         new client-side host. _html_files() already existed 5,000 lines above
+         to fix exactly that, with its own post-mortem attached.
+      4. Dormancy was asserted against a COMMENT. Setting ALERTS_ENABLED = true
+         while leaving the prose intact passed.
+      5. api.jrsstandard.com was classified "no disclosure needed" on the
+         grounds that it appears "as a URL in content, not as a POST target".
+         It is a POST target in three pages, carrying visitor free text.
 
-    WHAT IT CHECKS
-      1. Every host in KNOWN that is still referenced in api/ or in a page has
-         its disclosure name present on privacy.html.
-      2. Any https host appearing in api/ that is NOT classified here fails.
-         An unclassified destination is the thing to catch: it forces a human
-         to decide whether it receives data, rather than defaulting to silence.
-      3. Resend and SendGrid are named as present-but-not-running, and the
-         dormancy guard in api/_notify.js that makes that true is still there.
-         If the guard goes, the disclosure becomes false and this must fail.
-      4. The Google Fonts disclosure states the part that is easy to omit:
-         that it is not stopped by opting out of analytics.
+    WHAT IT CHECKS NOW
+      1. Outbound hosts are read from api/ AND from every page via _html_files(),
+         so a new client-side destination is caught wherever it is added.
+      2. Any host not classified here fails. Silence is the thing to catch.
+      3. Named processors must appear inside the disclosure SECTION, not merely
+         somewhere in the file, and the section must not be phrased as a denial.
+      4. Dormancy is asserted against the CODE: ALERTS_ENABLED = false, and the
+         nightly study's STUDIES_CLOSED flag. If either flips, a service moves
+         from "not running" to running and the disclosure becomes false.
+      5. The Google Fonts caveat states the part that is easy to omit.
     """
     findings = []
 
-    # host -> (the name that must appear on privacy.html, or None if the host
-    # sends no data outward and needs no disclosure)
     KNOWN = {
         "pjzxkeviouofdseagvpf.supabase.co": "Supabase",
         "api.anthropic.com": "Anthropic",
@@ -5169,78 +5178,103 @@ def check_every_active_processor_is_disclosed(offline):
         "resend.com": "Resend",
         "api.sendgrid.com": "SendGrid",
         "sendgrid.com": "SendGrid",
-        # Own origin and reference-only citation targets. These receive no
-        # visitor data: they appear as URLs in content, not as POST targets.
+        # A POST target carrying visitor free text from three pages. It is not
+        # implemented in this repository, so who operates it is NOT ESTABLISHED.
+        # It is disclosed rather than waved through as "our own domain".
+        "api.jrsstandard.com": "api.jrsstandard.com",
+        # Own origin and citation targets: URLs in content, never fetched.
         "www.jrsstandard.com": None,
         "jrsstandard.com": None,
-        "api.jrsstandard.com": None,
         "law.justia.com": None,
         "docsopengovernment.dos.ny.gov": None,
         "www.nycourts.gov": None,
         "www.osc.ny.gov": None,
         "www.linkedin.com": None,
+        "schema.org": None,
     }
+
+    # Processors with no host string of their own. Vercel is the reason this
+    # list exists: it serves every request and appears in no URL.
+    HOSTLESS = ["Vercel"]
 
     policy = read("privacy.html")
 
-    # 1 and 2. Walk the outbound hosts actually present in the API layer.
+    # The disclosure section, isolated. Containment over the whole file is what
+    # let a denial pass, so every name test below runs against this slice only.
+    sec_start = policy.find("The service providers we use")
+    sec_end = policy.find("Registry members are listed by name", sec_start + 1)
+    if sec_start == -1 or sec_end == -1 or sec_end <= sec_start:
+        findings.append("the service-provider disclosure section is not present on "
+                        "privacy.html in the expected position")
+        section = ""
+    else:
+        section = policy[sec_start:sec_end]
+
+    # A denial satisfies containment. Catch the shape, not just the names.
+    for phrase in ("we do not use", "we don't use", "no service providers",
+                   "we use none"):
+        if phrase in section.lower():
+            findings.append("the disclosure section contains %r, which would satisfy a "
+                            "name check while telling the reader the opposite" % phrase)
+
+    # 1 and 2. Hosts actually referenced, from BOTH layers.
+    seen = {}
     api_dir = os.path.join(ROOT, "api")
-    seen = set()
     for dirpath, _dirs, files in os.walk(api_dir):
-        for fn in files:
+        for fn in sorted(files):
             if not fn.endswith(".js"):
                 continue
-            body = read(os.path.relpath(os.path.join(dirpath, fn), ROOT))
-            for host in re.findall(r"https://([A-Za-z0-9._-]+)", body):
-                seen.add(host)
+            rel = os.path.relpath(os.path.join(dirpath, fn), ROOT)
+            for host in re.findall(r"https://([A-Za-z0-9._-]+)", read(rel)):
+                seen.setdefault(host, rel)
+    for rel in _html_files():
+        for host in re.findall(r"https://([A-Za-z0-9._-]+)", read(rel)):
+            seen.setdefault(host, rel)
 
     for host in sorted(seen):
         if host not in KNOWN:
-            findings.append("api/ calls out to %r, which is not classified in this "
-                            "guard and may be undisclosed" % host)
+            findings.append("%s references %r, which is not classified in this guard "
+                            "and may be undisclosed" % (seen[host], host))
             continue
         name = KNOWN[host]
-        if name and name not in policy:
-            findings.append("%s (%s) receives data but is not named on privacy.html"
-                            % (name, host))
+        if name and name not in section:
+            findings.append("%s (%s, seen in %s) is not named in the disclosure section"
+                            % (name, host, seen[host]))
 
-    # Front-end destinations. These never appear in api/ and are the ones the
-    # original count missed.
-    for host in ("fonts.googleapis.com", "www.googletagmanager.com", "formspree.io"):
-        present = False
-        for fn in sorted(os.listdir(ROOT)):
-            if fn.endswith(".html") and host in read(fn):
-                present = True
-                break
-        if present and KNOWN[host] not in policy:
-            findings.append("%s (%s) is loaded by a page but is not named on "
-                            "privacy.html" % (KNOWN[host], host))
+    for name in HOSTLESS:
+        if name not in section:
+            findings.append("%s has no host string to detect and must be named "
+                            "explicitly; it is not in the disclosure section" % name)
 
-    # 3. Dormancy has to remain true for the wording to remain true.
+    # 4. Dormancy asserted against code, not prose.
     notify = read("api/_notify.js")
-    if "returns before reading any key" not in notify:
-        findings.append("api/_notify.js no longer states the dormancy guard that "
-                        "makes the Resend and SendGrid disclosure true")
-    for name in ("Resend", "SendGrid"):
-        if name not in policy:
-            findings.append("%s is not named on privacy.html as present but not running"
+    if not re.search(r"const\s+ALERTS_ENABLED\s*=\s*false", notify):
+        findings.append("api/_notify.js no longer sets ALERTS_ENABLED = false, so the "
+                        "Resend and SendGrid 'not running' disclosure is false")
+    status = read("api/_study-status.js")
+    if not re.search(r"STUDIES_CLOSED\s*=\s*true", status):
+        findings.append("STUDIES_CLOSED is no longer true, so the OpenAI and Generative "
+                        "Language 'not running' disclosure is false")
+    for name in ("Resend", "SendGrid", "OpenAI", "Generative Language"):
+        if name not in section:
+            findings.append("%s is not named in the disclosure section as not running"
                             % name)
 
-    # 4. The Fonts disclosure is only useful if it says the part people get wrong.
-    low = policy.lower()
-    if "google fonts" in low:
-        if not ("blocking google analytics does not" in low
-                or "does not prevent it" in low):
-            findings.append("privacy.html names Google Fonts but does not state that "
-                            "opting out of analytics does not stop it")
-    else:
-        findings.append("privacy.html does not name Google Fonts")
+    # 5. The Fonts caveat has to say the part people get wrong.
+    low = section.lower()
+    if "google fonts" not in low:
+        findings.append("the disclosure section does not name Google Fonts")
+    elif not ("blocking google analytics does not" in low
+              or "does not prevent it" in low):
+        findings.append("the section names Google Fonts but does not state that opting "
+                        "out of analytics does not stop it")
 
     check("every active processor is disclosed",
           not findings,
           "; ".join(findings) if findings
-          else "%d outbound hosts in api/, all classified; front-end destinations, "
-               "dormant services and the Fonts caveat all disclosed" % len(seen))
+          else "%d hosts across api/ and %d pages, all classified; hostless "
+               "processors, dormancy flags and the Fonts caveat all asserted"
+               % (len(seen), len(_html_files())))
 
 
 def check_pages_that_render_engine_output_disclose_validation_status(offline):

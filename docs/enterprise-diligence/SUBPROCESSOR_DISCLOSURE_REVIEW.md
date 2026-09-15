@@ -167,3 +167,119 @@ guard removed from `api/_notify.js`.
 4. **Processor agreements.** Whether a data-processing agreement exists with any of
    these providers is **NOT ESTABLISHED** from repository evidence. The disclosure
    deliberately makes no claim about it.
+
+---
+
+# ADDENDUM 2 — 2026-09-15 · RED-TEAM CORRECTIONS
+
+**Nothing above is edited.** Addendum 1 stands as written, including the figures it
+got wrong, which are corrected here rather than overwritten (Rule 10).
+
+An adversarial pass on the B-009 remediation found defects in the remediation itself.
+The most serious was a **false statement published into the privacy policy**.
+
+## CORRECTION 1 — OpenAI and Gemini receive nothing, and the disclosure said they do
+
+**OLD FINDING** (addendum 1, and the section 5 text as first written): OpenAI and
+Google Generative Language "receive records in a nightly study".
+
+**NEW EVIDENCE.** `api/_study-status.js` sets `STUDIES_CLOSED = true` with
+`CLOSED_AT = '2026-08-21'`, and `CLOSED_STUDIES` names the nightly cross-vendor run
+explicitly. `api/run-study.js` returns on that flag **before** any key is read and
+before the corpus is built. `api/run-study.js` is the only file containing
+`api.openai.com` or `generativelanguage.googleapis.com`.
+
+**CORRECTED STATUS.** Neither service has received anything since **21 August 2026**.
+They belong in the not-running group.
+
+**EXPLANATION, AND IT IS NOT FLATTERING.** Addendum 1's reconciliation table verified
+the cron *schedule* and never the *handler*. The execution path was traced for
+Resend and SendGrid and was not traced for `run-study.js`, so the genuinely dormant
+pair was classified correctly and the other dormant pair was asserted as live. The
+prior review's own evidence, a snapshot dated 2026-08-21, is dated the day the
+studies closed.
+
+## CORRECTION 2 — the page counts were short by 20 pages
+
+**OLD FINDING.** GA4 active on 44 pages; Google Fonts on 53 of 55.
+
+**NEW EVIDENCE.** The repository serves **75** HTML pages, not 55. The 20 not counted
+are `reviewer/` and the `reference/` hub, and 18 of those URLs appear in `sitemap.xml`.
+
+| Figure | Recorded | Correct |
+|---|---|---|
+| Deployed pages | 55 | **75** |
+| GA4 active | 44 | **64** |
+| Google Fonts | 53 of 55 | **73 of 75** |
+
+The two pages without Fonts are still `404.html` and `people.html`.
+
+**EXPLANATION.** Both the original count and my correction to it looked only at the
+repository root. The `-1` for `programme-status-9872fb93cc94.html` was right; the
+denominator was wrong in both passes.
+
+## CORRECTION 3 — the first guard did not guard
+
+Red-teamed and found to pass on five mutations: a section that **denied** using every
+processor; the Vercel bullet deleted (Vercel has no host string and was not in the map
+at all); a new client-side tracker added to a page; `ALERTS_ENABLED = true` with the
+comment left intact, because dormancy was asserted against **prose**; and
+`api.jrsstandard.com` classified as needing no disclosure on the false ground that it
+is "not a POST target".
+
+It also reintroduced `os.listdir(ROOT)`, scanning 55 of 75 pages, when `_html_files()`
+already existed in the same file with a post-mortem attached describing that exact bug.
+
+**Rebuilt.** Hosts are read from `api/` and from every page via `_html_files()`; name
+tests run against the disclosure **section** rather than the whole file; denial phrasing
+fails; hostless processors are named explicitly; dormancy is asserted against
+`ALERTS_ENABLED = false` and `STUDIES_CLOSED = true` in code. All seven mutations now
+fail, including the four that previously passed.
+
+## NEW FINDING — `api.jrsstandard.com` does not resolve
+
+`index.html`, `pilot.html` and `training.html` POST visitor input to
+`https://api.jrsstandard.com/v1/verify-drift`, carrying a free-text observation note,
+a selection, and survey answers respectively. **The host has no A record and the
+request fails (HTTP 000).** The `.catch()` fallback hands the data back to the visitor
+as a file download, which is the pattern CLAUDE.md 36.6 requires.
+
+**This is also a drift finding.** CLAUDE.md 36.1 lists that URL as the canonical
+"Backend endpoint". It is not implemented anywhere in this repository and it does not
+resolve. Whether it is intended to exist is **NOT ESTABLISHED**. Recorded as **D-12**.
+
+It is now disclosed on `privacy.html` as an attempted destination that is not reachable,
+because the attempt is real even though the delivery is not.
+
+## OTHER CORRECTIONS MADE TO THE DISCLOSURE TEXT
+
+| Item | What was wrong | Now |
+|---|---|---|
+| Processing restriction | "which process data only to provide those services" was carried from a two-party sentence onto **eight named companies**, while the register says DPA status is NOT ESTABLISHED | Clause removed |
+| Supabase | Enumerated only "what you submit", omitting telemetry: paths, country and truncated user-agent | States both |
+| Anthropic | "not written to our database" is true of `api/review.js` but the versioned engine route stores model-written notes and a rewritten passage | States what is kept |
+| Section 8 scope | "every time a page loads" against section 5's "nearly every page" | Made consistent |
+
+## FINDINGS OUTSIDE THIS REMEDIATION'S SCOPE — RECORDED, NOT FIXED
+
+These are live misrepresentations on pages STEP 6 did not authorise changing. Each
+needs an owner decision.
+
+1. **D-13.** `terms.html` and `engagement.html` both say the free record check
+   "transmits nothing". `check.html` fires a `check-view` beacon to `/api/telemetry`,
+   which writes a Supabase row carrying country and user-agent, and the page also
+   loads GA4 and Google Fonts.
+2. **D-14.** `privacy.html` section 2 promises free-text fields pass a sensitive-identifier
+   screen in the browser. The Formspree form's `message` field on `pilot.html` is
+   submitted without calling `jrsSanitizeCheck`. This is also a CLAUDE.md 36.6 breach.
+3. **D-15.** `security.html` says record text "is not written to any table" and "there
+   is no record store to breach". The versioned engine route writes per-condition notes
+   grounded in the record text and a suggested rewrite of up to 600 characters.
+4. **D-16.** `jrsstandard.html` and `index.html` name **Gumroad** as handling payment.
+   No Gumroad URL exists anywhere in the estate, so nothing flows there today, but a
+   payment processor is named to readers and appears in no inventory.
+5. **D-17.** `terms.html` says "No sub-processors were engaged", scoped to pre-September
+   engagements, now sitting opposite a privacy page naming eight.
+
+**None of these was edited.** They involve commercial and legal representations, or
+pages outside the authorised scope, or both.

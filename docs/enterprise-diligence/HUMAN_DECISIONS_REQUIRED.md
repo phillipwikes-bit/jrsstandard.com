@@ -86,6 +86,24 @@ data-residency clause and refer to counsel · leave it and accept the contradict
 
 **APPROVAL REQUIRED.** Yes. No change was made to `review-engine.html` under B-009.
 
+## D-12 to D-17 · Found by the red team on 2026-09-15 — **ALL OPEN, NONE FIXED**
+
+Each of these is a live statement or a live data flow that the B-009 pass surfaced and
+deliberately did not change. Full evidence is in `SUBPROCESSOR_DISCLOSURE_REVIEW.md`,
+addendum 2.
+
+| # | Finding | Why it was not fixed here |
+|---|---|---|
+| **D-12** | `api.jrsstandard.com/v1/verify-drift` is the canonical backend endpoint in CLAUDE.md 36.1, is implemented nowhere in this repository, and **does not resolve**. Three pages POST visitor free text to it; the request fails and the `.catch()` returns the data to the visitor as a download. | Whether the endpoint is meant to exist is an owner question, not a repository fact |
+| **D-13** | `terms.html` and `engagement.html` say the free record check **"transmits nothing"**. It beacons to `/api/telemetry`, which writes a Supabase row with country and user-agent, and the page loads GA4 and Google Fonts. | Correcting a published representation on two pages outside the authorised scope |
+| **D-14** | `privacy.html` section 2 promises free-text fields pass a sensitive-identifier screen. The Formspree `message` field on `pilot.html` is submitted **without** `jrsSanitizeCheck`. Also a CLAUDE.md 36.6 breach. | Two possible fixes, and which one is right is the owner's call: run the screen on that form, or narrow the promise |
+| **D-15** | `security.html` says record text "is not written to any table" and "there is no record store to breach". The versioned engine route stores model-written per-condition notes and a rewritten passage of up to 600 characters. | A security representation with commercial weight |
+| **D-16** | **Gumroad** is named to readers as handling payment on `jrsstandard.html` and `index.html`. No Gumroad URL exists in the estate. | Either stale prose or an intended path; not established |
+| **D-17** | `terms.html` says "No sub-processors were engaged", scoped to pre-September engagements, opposite a privacy page naming eight. | Past-tense and scoped, so not a strict contradiction, but a diligence reader will collide with it |
+
+**D-14 is the one with a safety edge**, because it is a promise about sensitive
+identifiers that does not run where a visitor types free text.
+
 ## D-4 (original entry, preserved) · Subprocessor disclosure — **APPROVED IN PRINCIPLE; CONTENT SIGN-OFF OPEN**
 
 **QUESTION.** Approve publishing a subprocessor disclosure, and its content?
