@@ -5125,6 +5125,75 @@ def check_tracked_guides_carry_exactly_one_routing_page(offline):
           else "3 tracked guides, 1 routing page each on the last page; combined overview clean")
 
 
+def check_pages_that_render_engine_output_disclose_validation_status(offline):
+    """Any page that renders Review Engine output states the engine's validation status.
+
+    WHY THIS GUARD EXISTS. B-008 was first written as "the engine lacks a
+    validation declaration". Investigation on 2026-09-15 narrowed it to
+    something smaller and more exact: review-engine.html already says
+    "unvalidated, single-model engine in operational validation" and index.html
+    carries the same disclosure three times, while training.html POSTed record
+    text to /api/review and rendered routing, condition results, flags and
+    revisions to a learner with ZERO validation statement anywhere on the page.
+    It carried legal disclaimers, which are a different proposition: "this is
+    not legal advice" does not tell a reader that the engine producing the
+    output has never been empirically validated.
+
+    A learner reading a routing determination is the reader most likely to
+    mistake an implemented system for a validated one, so the page that teaches
+    is the page where the omission costs most.
+
+    WHAT IT CHECKS. For every page that calls /api/review, all four required
+    propositions appear in the served text:
+      1. the engine is operationally implemented,
+      2. it is empirically unvalidated,
+      3. reproducibility is not equivalent to accuracy,
+      4. the output does not replace human judgment.
+
+    WHAT IT DELIBERATELY DOES NOT CHECK. An earlier draft also banned the
+    overclaim vocabulary ("legally defensible", "legally sufficient",
+    "court-admissible") as substrings. That test was removed because it was
+    demonstrably wrong: index.html uses two of those exact phrases inside
+    NEGATING disclaimers, "Does not determine whether an employment decision
+    was substantively correct, legally defensible, or consistent with policy".
+    A substring cannot distinguish a claim from its denial, so the test flagged
+    the very sentences doing the right thing. A check that fires on correct
+    prose trains people to ignore it. Vocabulary is left to review.
+    """
+    findings = []
+    pages = []
+    for name in sorted(os.listdir(ROOT)):
+        if not name.endswith(".html"):
+            continue
+        body = read(name)
+        if "/api/review'" in body or '/api/review"' in body:
+            pages.append((name, body))
+
+    if not pages:
+        findings.append("no page calls /api/review; the guard has lost its subject")
+
+    REQUIRED = [
+        ("operationally implemented", ["operationally implemented"]),
+        ("empirically unvalidated", ["empirically unvalidated", "unvalidated"]),
+        ("reproducibility is not accuracy",
+         ["reproducibility is not equivalent to accuracy",
+          "reproducibility is not accuracy"]),
+        ("does not replace human judgment",
+         ["does not replace human judgment", "reviewer judgment remains required",
+          "do not replace organizational judgment"]),
+    ]
+    for name, body in pages:
+        low = body.lower()
+        for label, forms in REQUIRED:
+            if not any(f in low for f in forms):
+                findings.append("%s renders engine output without stating: %s" % (name, label))
+    check("pages rendering engine output disclose validation status",
+          not findings,
+          "; ".join(findings) if findings
+          else "%d page(s) calling /api/review, all 4 propositions present on each"
+               % len(pages))
+
+
 def check_the_check_page_never_transmits_an_answer(offline):
     """check.html may measure that it was opened. It may never transmit an answer.
 
@@ -5341,6 +5410,7 @@ def main():
                check_training_is_ungated,
                check_training_modules_are_findable,
                check_public_downloads_are_not_blocked_by_a_redirect,
+               check_pages_that_render_engine_output_disclose_validation_status,
                check_public_engine_endpoints_carry_no_record_text,
                check_owner_only_endpoints_are_not_swept_up_by_the_pii_rule,
                check_no_new_subscription_funnel,
