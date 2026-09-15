@@ -15,7 +15,7 @@ Nothing here has been executed.**
 | **Fields** | `determination`, five `conditions` each with a `note` the prompt requires to be *grounded in the record text*, `finding.compliant_version` (**a model rewrite of the customer's passage, up to 600 characters**), `runs`, `overall_consistency`, `engine_version` |
 | **Exposure** | Anyone with the publishable key, which ships in 22 pages of HTML. `engine-activity.html` reads it from the browser. The page is unlinked and `noindex`, **but the key is not secret, so the page is not the control** |
 | **Intended purpose** | A public activity log showing the engine is in use |
-| **Security consequence** | **Latent, not realised.** Zero rows means nothing is exposed today. **The first paid engine call changes that** |
+| **Security consequence** | **Latent, not realised.** Zero rows means nothing is exposed today. **A call to a token-gated review-engine route changes that.** Corrected 2026-09-15: the free public route writes nothing, so public traffic cannot populate the table. See `B-013A_ENGINE_REVIEWS_DECISION_ANALYSIS.md` |
 | **Privacy consequence** | Record-derived text becomes world-readable. Four pages publish a data-isolation statement scoped to the human-delivered work |
 
 **Options**
@@ -98,7 +98,7 @@ three open items.
 
 | | Decision needed | Urgency |
 |---|---|---|
-| **B-013A** | Revoke, mediate, stop persisting, or disclose | **Highest. It is free to fix while the table is empty** |
+| **B-013A** | Revoke, mediate, stop persisting, or disclose | **Highest. Free to fix while the table is empty.** Closes on a token-holder call, not on public traffic |
 | **B-013B** | Confirm intent against what contributors were told | Medium. Data already exists |
 | **B-013C** | Accept, restrict, or shorten retention | Lower |
 
