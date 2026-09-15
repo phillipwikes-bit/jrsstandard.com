@@ -273,9 +273,13 @@ Never substitute automation for judgment. Never manufacture legal certainty. Nev
 
 **Model identifiers are versioned infrastructure, not permanent dependencies.** The engine currently pins `claude-haiku-4-5-20251001`. Treat the identifier as a configurable value with a documented default and a recorded review date; do not treat it as part of the JRS methodology.
 
-## 36.3 Private owner surfaces
+## 36.3 Restricted surfaces
 
-`programme-status-9872fb93cc94.html` is **the only** private owner page. `api/people-9dd1ecdf6f8cdfd4.js` and `api/leads-4b7e2c9af106d385.js` are its endpoints. For all three: **never add an analytics tag, never link them from a public page, never add a token control.** If a slug leaks, rename the file and its route to rotate it, and rotate **both** endpoint slugs together. Do not create a second owner page.
+There are **two distinct categories**, classified by Phillip Wikes on 2026-09-14 under blocker B-010. Do not collapse them.
+
+**PRIVATE OWNER SURFACE.** `programme-status-9872fb93cc94.html` is **the only** private owner page. `api/people-9dd1ecdf6f8cdfd4.js` and `api/leads-4b7e2c9af106d385.js` are its endpoints. For all three: **never add an analytics tag, never link them from a public page, never add a token control.** If a slug leaks, rename the file and its route to rotate it, and rotate **both** endpoint slugs together. Do not create a second owner page.
+
+**CONFIDENTIAL BUYER SURFACES.** `acquisition-9f3c2a7d4b.html` and `vp-7c1f9a4e8d2b6035.html` are classified **CONFIDENTIAL BUYER**. They are not ordinary public resources and are not owner pages. Both are deployed, carry `noindex,nofollow`, are absent from `sitemap.xml`, and are reachable only by their opaque slug. **Never expose their contents through public navigation**, and do not change their access architecture without separate authorization.
 
 ## 36.4 Design tokens
 

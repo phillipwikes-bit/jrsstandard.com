@@ -1,6 +1,12 @@
 # Codebook-to-API Correspondence Review
 
-**Date:** 2026-09-14 · **Status: HUMAN DECISION REQUIRED**
+**Date:** 2026-09-14 · **Revised:** 2026-09-15 · **Status: DECIDED IN PART by Phillip Wikes**
+
+## Owner decisions recorded (2026-09-15)
+
+**D-3 — THE JRS CODEBOOK IS THE METHODOLOGICAL AUTHORITY.** The Review Engine is an *implementation representation* of the methodology. That relationship is not to be reversed. **The JRS methodology will not be modified to conform to the current API**, and correspondence will not be invented to achieve schema consistency.
+
+**D-2 — `cold_reviewer_clarity` is INSUFFICIENTLY ESTABLISHED.** It is **not** an additional JRS condition, **not** an aggregate condition, **not** a sixth condition, and **not** equivalent to another JRS condition. It is treated as an **implementation-level construct whose formal correspondence to the Codebook is unresolved**. The five JRS conditions are **not** modified to accommodate it.
 
 **This does not replace `METHODOLOGY_TO_API_MAPPING.md`, which is authoritative.** That document already establishes the mapping question and already asked the owner to resolve it. This review re-checks it against the current implementation and classifies each pair.
 
@@ -16,13 +22,13 @@
 | Reconstructability | `reasoning_traceability` | **SEMANTIC** | Plausible rendering; correspondence not declared anywhere |
 | Chronology | `temporal_reconstructability` | **SEMANTIC** | "Temporal" corresponds in sense; not the Codebook name |
 | Decision-Process Traceability | `accountability_support` | **UNRESOLVED** | Two engine keys contain a traceability sense and two Codebook conditions do; the assignment is not evidenced |
-| Evidentiary Sufficiency | `cold_reviewer_clarity` | **UNRESOLVED** | See below |
+| Evidentiary Sufficiency | `cold_reviewer_clarity` | **CORRESPONDENCE NOT YET FORMALLY ESTABLISHED** | Owner decision D-2, 2026-09-15: insufficiently established; implementation-level construct |
 
 **IMPLEMENTED** is not used for any pair: no pair is verified against engine behaviour, because that requires an authorised call with a partner token (conformance tests CT-1 to CT-6 in the authoritative document, all NOT RUN).
 
-## `cold_reviewer_clarity` — the evidence, not a decision
+## `cold_reviewer_clarity` — evidence, and the decision taken
 
-**I am not deciding this.** The evidence on each side:
+**DECIDED 2026-09-15: INSUFFICIENTLY ESTABLISHED.** The evidence that led there is preserved below, because the decision was that the evidence does not resolve it, not that the evidence is unimportant.
 
 **For "it is the aggregate condition":** `codebook.html` defines Evidentiary Sufficiency as *"**The aggregate condition**: whether the record stands on its own…"*. `api/review.js` condition 5 begins *"Could a reviewer with **no prior knowledge** evaluate…"*, and the engine key literally names a cold reviewer. The wording is close.
 
@@ -30,8 +36,8 @@
 
 **NOT ESTABLISHED.** Choosing would invent substantive JRS content.
 
-> **HUMAN DECISION REQUIRED 1.** Is `cold_reviewer_clarity` the aggregate condition (Evidentiary Sufficiency), a distinct fifth dimension, or insufficiently established to state?
->
-> **HUMAN DECISION REQUIRED 2.** Declare the correspondence for the three non-exact pairs, in particular which engine key corresponds to Decision-Process Traceability.
+**RESOLVED (D-2).** `cold_reviewer_clarity`: insufficiently established. Recorded as **correspondence not yet formally established**.
 
-Until answered, a benchmark result expressed in engine keys cannot be restated in Codebook language without an undocumented assumption.
+> **STILL OPEN.** The correspondence for the three non-exact pairs, in particular which engine key corresponds to Decision-Process Traceability. D-3 sets the *rule* for recording them (exact retained, semantic qualified, unresolved stated plainly) but does not supply the assignments themselves.
+
+**Consequence, unchanged:** a benchmark result expressed in engine keys cannot be restated in Codebook language without an undocumented assumption. Under D-3 that gap is recorded, not closed by inference.

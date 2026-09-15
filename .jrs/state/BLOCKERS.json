@@ -14,8 +14,9 @@
       ],
       "required_action": "Revoke the token at Vercel Settings, Tokens and reissue. Use scripts/vercel_f4_diagnose.sh, which reads it from the environment.",
       "owner": "HUMAN",
-      "status": "OPEN",
-      "created": "2026-09-14"
+      "status": "OPEN / HUMAN ACTION REQUIRED",
+      "created": "2026-09-14",
+      "update_2026_09_15": "Owner will rotate externally, 2026-09-15. Old credential not tested, recovered or reproduced. No replacement is to be pasted into the repository or conversation, and none was requested. Repository evidence cannot establish rotation, so this cannot be closed from here."
     },
     {
       "blocker_id": "B-002",
@@ -44,9 +45,10 @@
       ],
       "required_action": "Publish the subprocessor list, or record a decision not to.",
       "owner": "HUMAN",
-      "status": "HUMAN_DECISION_REQUIRED",
+      "status": "PREPARED_FOR_HUMAN_REVIEW",
       "created": "2026-09-14",
-      "remediation_2026_09_14": "Scope superseded by B-009: seven active processors, not four. Publishing a disclosure is a Section 23 publication."
+      "remediation_2026_09_14": "Scope superseded by B-009: seven active processors, not four. Publishing a disclosure is a Section 23 publication.",
+      "update_2026_09_15": "Disclosure APPROVED IN PRINCIPLE by owner 2026-09-15. Merged in scope with B-009. Publication itself not yet performed."
     },
     {
       "blocker_id": "B-004",
@@ -71,9 +73,10 @@
       "description": "claude-haiku-4-5-20251001 is pinned in the Review Engine as if permanent.",
       "required_action": "Make the identifier configurable with a documented default and a recorded review date.",
       "owner": "CLAUDE",
-      "status": "REMEDIATED",
+      "status": "REMEDIATED \u2014 DEPLOYMENT BLOCKED",
       "created": "2026-09-14",
-      "remediation_2026_09_14": "api/_model.js created. Six literals across five files reduced to zero outside that module. jrsModel() returns the prior literal byte-identically with no override; override verified; all five import paths resolve; all files parse. Behaviour preserved by construction. Does not imply model equivalence."
+      "remediation_2026_09_14": "api/_model.js created. Six literals across five files reduced to zero outside that module. jrsModel() returns the prior literal byte-identically with no override; override verified; all five import paths resolve; all files parse. Behaviour preserved by construction. Does not imply model equivalence.",
+      "update_2026_09_15": "Code complete and tested. Deployment is conditionally authorized (D-9) but condition 1, completed B-001 rotation, is NOT met, so no deployment was attempted. Change remains on the development branch."
     },
     {
       "blocker_id": "B-006",
@@ -82,8 +85,9 @@
       "description": "Root cause of the 2026-09-13 silent deployment skip is NOT ESTABLISHED.",
       "required_action": "Run scripts/vercel_f4_diagnose.sh with a rotated token. Downgraded from HIGH because the failure mode is now prevented and detected regardless of cause.",
       "owner": "HUMAN",
-      "status": "OPEN",
-      "created": "2026-09-14"
+      "status": "BLOCKED",
+      "created": "2026-09-14",
+      "update_2026_09_15": "Requires a rotated credential. Unchanged."
     },
     {
       "blocker_id": "B-007",
@@ -100,9 +104,10 @@
       ],
       "required_action": "Reconcile the specification with the deployed code. One of the two is wrong about a licensed interface.",
       "owner": "CLAUDE (proposal) then HUMAN (approval)",
-      "status": "PREPARED_FOR_HUMAN_REVIEW",
+      "status": "PREPARED_FOR_HUMAN_REVIEW \u2014 COUNSEL REVIEW REQUIRED",
       "created": "2026-09-14",
-      "remediation_2026_09_14": "Refined: TWO specs describe the same path and openapi-review-engine.json (0.1.0-validation) MATCHES the implementation while openapi.json (1.0.0, Commercial licence) does not. Four options costed. Nothing implemented."
+      "remediation_2026_09_14": "Refined: TWO specs describe the same path and openapi-review-engine.json (0.1.0-validation) MATCHES the implementation while openapi.json (1.0.0, Commercial licence) does not. Four options costed. Nothing implemented.",
+      "update_2026_09_15": "External distribution INVESTIGATED 2026-09-15 and ESTABLISHED: openapi.json is PUBLISHED at /openapi.json and /openapi (HTTP 200, real spec) and linked from security.html, review-engine.html and both confidential buyer surfaces. Per the owner's own instruction this triggers COUNSEL REVIEW REQUIRED BEFORE CONTRACT MODIFICATION. No document modified, no field emitted, no routing vocabulary chosen, and routing is NOT asserted equal to determination."
     },
     {
       "blocker_id": "B-008",
@@ -114,8 +119,9 @@
       ],
       "required_action": "Decide whether api/review.js should carry the declaration the other two engines carry.",
       "owner": "HUMAN",
-      "status": "OPEN",
-      "created": "2026-09-14"
+      "status": "PREPARED_FOR_HUMAN_REVIEW",
+      "created": "2026-09-14",
+      "update_2026_09_15": "Owner decided (D-5) to add a bounded statement at the public UI layer and NOT inside the JSON response. Investigation narrowed the gap precisely: review-engine.html ALREADY carries 'unvalidated, single-model engine in operational validation' and index.html carries three mentions, but training.html carries ZERO while POSTing to /api/review and rendering the result to a learner. Wording prepared; not inserted, because it changes an external representation."
     },
     {
       "blocker_id": "B-009",
@@ -129,7 +135,8 @@
       "owner": "HUMAN",
       "status": "PREPARED_FOR_HUMAN_REVIEW",
       "created": "2026-09-14",
-      "remediation_2026_09_14": "Expanded to SEVEN active processors: Vercel, Supabase, Anthropic, Google GA4, Google Fonts, OpenAI, Google Gemini, plus Formspree. Resend and SendGrid recorded as DORMANT (the notify path returns before reading any key). Class A visitor data and Class B constructed research data kept distinct."
+      "remediation_2026_09_14": "Expanded to SEVEN active processors: Vercel, Supabase, Anthropic, Google GA4, Google Fonts, OpenAI, Google Gemini, plus Formspree. Resend and SendGrid recorded as DORMANT (the notify path returns before reading any key). Class A visitor data and Class B constructed research data kept distinct.",
+      "update_2026_09_15": "Disclosure APPROVED IN PRINCIPLE 2026-09-15, including Google Fonts. Self-hosting NOT authorized and not performed. Seven active processors recorded; Resend and SendGrid remain DORMANT. Class A and Class B kept distinct. Publication not yet performed."
     },
     {
       "blocker_id": "B-010",
@@ -138,8 +145,9 @@
       "description": "acquisition-9f3c2a7d4b.html and vp-7c1f9a4e8d2b6035.html are deployed confidential buyer-facing surfaces that appeared in no register. CLAUDE.md 36.3 declares programme-status the 'only private owner page' without drawing the distinction between an owner page and a confidential buyer page.",
       "required_action": "Confirm the intended classification and update CLAUDE.md 36.3 so the categories are distinguished.",
       "owner": "HUMAN",
-      "status": "OPEN",
-      "created": "2026-09-14"
+      "status": "RESOLVED",
+      "created": "2026-09-14",
+      "update_2026_09_15": "Classified by owner 2026-09-15: acquisition-9f3c2a7d4b.html and vp-7c1f9a4e8d2b6035.html are both CONFIDENTIAL BUYER, distinct from the private owner surface. Recorded in CLAUDE.md 36.3 and the asset register. Access architecture unchanged."
     },
     {
       "blocker_id": "B-011",
@@ -165,7 +173,7 @@
       ],
       "required_action": "Owner decides whether the root copy is retired, archived with a superseded notice, or kept. Not deleted without instruction: it is a tracked historical record.",
       "owner": "HUMAN",
-      "status": "REMEDIATED",
+      "status": "RESOLVED",
       "created": "2026-09-14",
       "_severity_change": "WAS MEDIUM. Lowered: the root tracker is not a duplicate, is referenced by nothing operational, and is not exposed.",
       "investigation_date": "2026-09-14",
@@ -190,7 +198,19 @@
       "recommended_disposition": "PRESERVE. Do NOT delete. Recommended: add a dated superseded notice at its head recording that it was the run-by-run execution log from 2026-08-11 to 2026-08-14, that research/MASTER_TRACKER.md is the authoritative tracker per CLAUDE.md 36.9, and that this file is retained as a historical record and is no longer maintained. That is a one-block addition which deletes nothing and stops a reader being misled.",
       "correction_needed_in_the_file": "Its header asserts 'Both are maintained', which has been FALSE since 2026-08-14, and 'none of which are on main', which is also false: 22 root-level .md files including this one ARE tracked on main. They are simply not SERVED, by two independent mechanisms.",
       "human_decision_required": "Approve the superseded notice, or state a different disposition. No deletion is recommended and none will be performed without explicit instruction.",
-      "remediation_2026_09_14": "Additive historical notice prepended, +28/-0. No historical content altered, merged or reinterpreted. Preservation confirmed byte-wise."
+      "remediation_2026_09_14": "Additive historical notice prepended, +28/-0. No historical content altered, merged or reinterpreted. Preservation confirmed byte-wise.",
+      "update_2026_09_15": "Additive notice applied and accepted. Owner directed no further modification of the historical tracker."
     }
-  ]
+  ],
+  "_decisions_recorded_2026_09_15": {
+    "authority": "Phillip Wikes, Decision Authorization and Gate 1 Execution Order",
+    "D-2": "cold_reviewer_clarity INSUFFICIENTLY ESTABLISHED; implementation-level construct; five conditions unchanged",
+    "D-3": "JRS Codebook is the methodological authority; engine is an implementation representation; methodology not modified to fit the API",
+    "D-4": "Subprocessor disclosure APPROVED IN PRINCIPLE",
+    "D-5": "Bounded validation statement at the public UI layer, NOT in the JSON response",
+    "D-7": "Both buyer surfaces classified CONFIDENTIAL BUYER",
+    "D-8": "Owner rotates the credential externally",
+    "D-9": "B-005 deployment conditionally authorized; conditions not yet met",
+    "D-1": "No implementation decision authorized; distribution question now answered and escalated to counsel"
+  }
 }

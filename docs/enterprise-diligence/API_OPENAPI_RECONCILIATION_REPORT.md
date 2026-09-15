@@ -131,6 +131,38 @@ Reasoning: it is the only option that makes the licensed document true **without
 **Would change under D:** `api/v1/review-engine.js` response payload (additive), both OpenAPI documents, tests.
 **Would NOT change under any option:** the five Review Conditions, the condition status enum, the request schema, status codes, the auth model, the engine's self-declaration, any research finding, any published figure.
 
-## 9. HUMAN APPROVAL REQUIRED
+## 9a. EXTERNAL DISTRIBUTION STATUS — INVESTIGATED 2026-09-15
+
+The owner directed that no implementation decision be authorized until one factual question was answered: **has `openapi.json` ever been supplied to an external party?**
+
+**FINDING: IT IS PUBLISHED. Distribution is established, and it is broader than supply to a single party.**
+
+| Evidence | Result |
+|---|---|
+| `https://www.jrsstandard.com/openapi.json` | **HTTP 200, 10,488 bytes, the real specification** |
+| `https://www.jrsstandard.com/openapi` | **HTTP 200**, routed by `vercel.json` |
+| Linked from | `security.html`, `review-engine.html` (public), plus **both CONFIDENTIAL BUYER surfaces** |
+| `research/IP_SALE_TRACKER.md` | refers to *"the OpenAPI spec the owner already publishes"* |
+| `research/IP_SALE_TRACKER.md` | records the buyer page linking *"the guides, training, vendor preview, **OpenAPI**, Standard PDF and simulations"* |
+
+**What is established:** the document carrying the **Commercial licence** is published on the production domain, reachable without authentication, and linked from buyer-facing material.
+
+**What is NOT established:** whether any *specific named party* received it under that licence, or relied on it. The repository cannot answer that, and it was not guessed.
+
+**DISPOSITION, per the owner's own instruction:**
+
+> **COUNSEL REVIEW REQUIRED BEFORE CONTRACT MODIFICATION.**
+
+This materially changes the option weighting. **Option B (amend `openapi.json`) now edits a published document carrying a Commercial licence** and is a counsel matter, not an engineering one. **Option D (additive dual emission) does not modify the published document at all**, which strengthens the prior engineering recommendation rather than changing it.
+
+## 9b. SEMANTIC SAFEGUARD (owner instruction, 2026-09-15)
+
+**`routing` is NOT asserted to equal `determination`.** The owner directed that no semantic equivalence be inferred, and D-2 records `cold_reviewer_clarity` as insufficiently established, so the vocabularies cannot be equated on the available evidence.
+
+If compatibility aliases are ever implemented, **their semantic relationship must be explicitly documented**, not assumed from position in the payload.
+
+**No routing vocabulary has been chosen. No field has been emitted. Neither document was modified.**
+
+## 10. HUMAN APPROVAL REQUIRED
 
 > **DECISION:** select Option A, B, C, D, or another. **Nothing will be implemented until you choose.** If `openapi.json` has been supplied to any external party under its Commercial licence, say so, because that converts the choice from an engineering matter into one for counsel.

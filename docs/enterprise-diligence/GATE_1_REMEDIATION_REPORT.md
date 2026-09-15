@@ -1,6 +1,6 @@
 # Gate 1 Remediation Report
 
-**Date:** 2026-09-14 · **Authority:** Phillip Wikes, technical Gate 1 remediation
+**Date:** 2026-09-14 · **Cycle 2:** 2026-09-15 · **Authority:** Phillip Wikes, technical Gate 1 remediation
 **Gate 1 status: FAILED, unchanged. `/jrs-gate 1` was NOT run. Phase 2 remains LOCKED.**
 
 ## Executive status
@@ -65,3 +65,44 @@ Root cause of the 13 September silent skip (**NOT ESTABLISHED**, needs a credent
 ## Gate recommendation
 
 **Gate 1 remains FAILED and is not re-run in this cycle.** Four items were remediated; the blocking items are human and legal decisions that no technical work can close. `/jrs-gate 1` should be run only after D-1, D-4, D-6 and D-7 are answered.
+
+
+---
+
+# Cycle 2 — 2026-09-15, owner decision authorization
+
+## The finding that matters most
+
+**`openapi.json` is PUBLISHED.** The gating question was whether it had ever been supplied externally. It is served at `/openapi.json` and `/openapi` (**HTTP 200, the real specification**) and linked from `security.html`, `review-engine.html` and **both confidential buyer surfaces**. `research/IP_SALE_TRACKER.md` independently calls it *"the OpenAPI spec the owner already publishes"*.
+
+Per the owner's own instruction: **COUNSEL REVIEW REQUIRED BEFORE CONTRACT MODIFICATION.**
+
+Whether a *named party* relied on it is **NOT ESTABLISHED** and was not guessed. This strengthens the prior recommendation rather than changing it: Option D leaves the published licensed document untouched; Option B now edits one.
+
+**Nothing was implemented.** No document modified, no compatibility field emitted, no routing vocabulary chosen, and **`routing` is expressly not asserted equal to `determination`**.
+
+## B-008 narrowed by investigation
+
+The gap is **not** "the engine carries no declaration". `review-engine.html` already states *"unvalidated, single-model engine in operational validation"*, and `index.html` carries three such mentions. **`training.html` carries none**, while POSTing to `/api/review` and rendering the result to a learner.
+
+That one page is the target. Wording is prepared in the control plan and **not inserted**, because it changes an external representation.
+
+## Decisions recorded
+
+**D-2** `cold_reviewer_clarity` insufficiently established; implementation-level construct; five conditions unchanged. **D-3** Codebook is the methodological authority; assignments for three pairs still open. **D-7** both buyer surfaces **CONFIDENTIAL BUYER**, recorded in CLAUDE.md 36.3, which now separates owner from buyer surfaces. **D-4** disclosure approved in principle including Google Fonts; **self-hosting not authorized and not performed**.
+
+## B-005 deployment
+
+**NOT DEPLOYED.** D-9 condition 1 is completed B-001 rotation, which has not occurred. The change is code-complete, tested, and remains on the development branch. No deployment was attempted, so no preflight was run and no rollback condition arose.
+
+## Cycle 2 status
+
+| | |
+|---|---|
+| Resolved this cycle | B-010, B-012 |
+| Prepared for review | B-002, B-003, B-007, B-008, B-009 |
+| Blocked | B-004 (counsel), B-006 (credential) |
+| Open, human action | B-001 |
+| Remediated, undeployed | B-005 |
+
+**Gate 1 remains FAILED. `/jrs-gate 1` was not run. Phase 2 remains LOCKED.**
