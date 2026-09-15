@@ -104,7 +104,19 @@ addendum 2.
 **D-14 is the one with a safety edge**, because it is a promise about sensitive
 identifiers that does not run where a visitor types free text.
 
-## D-18 · Stale research presentation — **OPEN, DELIBERATELY NOT EDITED**
+## D-18 · STUDY-001 figure — **RESOLVED FROM EVIDENCE 2026-09-15; PRESENTATION OPEN**
+
+**UPDATE.** Read from `findings_history`: **61 runs**, 12 June to 21 August 2026, agreement
+**66.7% to 93.3%**, mean **85.3%**, **final run 91.1%**, k=3 models, 15 records. **Neither
+published figure is the final run**: 86.7% occurred in 6 runs, 84% in 4. Both are real
+history, neither is current. `study_runs` independently confirms the last run as 2026-08-21.
+
+**No figure was changed.** The final-run value is the most flattering of the 61, and raising a
+published research metric by seven points on the authority of one run is precisely what the
+evidence rules exist to prevent. Full analysis and the recommended distribution-based wording:
+`STUDY_001_FIGURE_RESOLUTION.md`. **OWNER ACTION REQUIRED.**
+
+## D-18 (original entry, preserved) · Stale research presentation — **OPEN, DELIBERATELY NOT EDITED**
 
 **QUESTION.** The nightly cross-vendor run closed on 21 August 2026. Six surfaces still
 describe it in the present tense, and the headline figure is published as two different
