@@ -1,7 +1,7 @@
 {
-  "manifest_id": "64411d80-8db0-43d4-8424-40760e82b1d8",
+  "manifest_id": "245c1179-24d8-41f4-92b2-3b496c57e574",
   "manifest_version": "1.0",
-  "created_at": "2026-09-15T13:38:24.844Z",
+  "created_at": "2026-09-15T15:37:48.568Z",
   "jrs_version": "1.0",
   "codebook_version": "1.0",
   "engine": {
@@ -47,7 +47,7 @@
     "runs": 1
   },
   "integrity": {
-    "manifest_hash": "sha256:e7f3066897b091fc05e5ea37c610e48947c6db9f64557b69383b36c0e7e9e9d4",
+    "manifest_hash": "sha256:5114fdea0bf5647517d65a566203a82dbf2c9db7097486af750a33897dacdbb3",
     "canonicalization": "jrs-dev-canon-1"
   }
 }

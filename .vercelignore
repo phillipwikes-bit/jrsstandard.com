@@ -76,6 +76,42 @@ standard/
 # is the same exposure class as the 2026-08-25 finding at the top of this file.
 .jrs/
 
+# ---- manifest implementation, controlled by the public/private boundary ------
+# Added 2026-09-15. The red-team pass flagged that lib/manifest/, tools/ and
+# tests/manifest/ sit in a repository that deploys to a public host, and that
+# nobody had checked whether they would be served. They would have been.
+#
+# VERIFIED RATHER THAN ASSUMED, on production, 2026-09-15: /openapi.json and
+# /openapi-review-engine.json both return 200. A root .json that is not excluded
+# here IS served, so a .js under lib/ or tools/ would have been too. The check
+# used an existing served file rather than deploying anything to find out.
+#
+# The governing rule is PUBLICIZE THE STANDARD, PROTECT THE IMPLEMENTATION.
+# Generator internals, the validator and the test harness are implementation.
+lib/
+tools/
+tests/
+
+# ---- independent review package, NOT YET APPROVED FOR PUBLICATION ------------
+# Added 2026-09-15, immediately after creating it, because building the package
+# COPIED tools/validate-manifest.js and schemas/schema.json into docs/, which
+# would have republished at a servable path exactly what the two rules below
+# had just excluded. The mistake was made and caught in the same cycle; the
+# rule is written here so the next person does not have to rediscover it.
+#
+# This package is DESIGNED to be handed to a reviewer or a buyer. Handing it to
+# someone is a deliberate act. Serving it at a guessable public URL is not.
+docs/manifest-independent-review/
+
+# ---- manifest schema, publishable candidate but NOT YET APPROVED -------------
+# Excluded on exactly the reasoning already applied to standard/ above: a
+# machine-readable schema is a publication, and Section 23 requires human
+# approval before anything is published externally. The schema is a GOOD
+# candidate for publication, which is why this rule is written to be removed
+# deliberately rather than left to be forgotten. Removing it IS the act of
+# publishing, and should be a recorded decision rather than a side effect.
+schemas/
+
 # ---- local tooling ----------------------------------------------------------
 .claude/
 __pycache__/

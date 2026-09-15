@@ -106,6 +106,39 @@ const run = async () => {
   t('INTEGRITY tampering with routing breaks the hash', !validateManifest(tampered, SCHEMA).valid);
   t('INTEGRITY unsigned manifest reports self-consistent, never authentic', /SELF-CONSISTENT \(not authenticated/.test(validateManifest(a, SCHEMA).integrity));
 
+  // ---- §7 / §14H SOURCE-HASH AND TRUNCATION ATTACKS
+  // source_hash is generated, never caller-asserted. These prove a hand-editor
+  // cannot use it to claim an evaluation covered what the model never saw.
+  const edit = (base, mut) => { const x = JSON.parse(JSON.stringify(base)); mut(x); return x; };
+  const rejects = (label, m) => t('SH ' + label, !validateManifest(m, SCHEMA).valid);
+  const f4b = await buildManifest({ ...BASE, ...fixed, engineResult: engineResult(), sourceText: 'z'.repeat(9000) });
+  t('SH baseline truncated manifest is valid', validateManifest(f4b, SCHEMA).valid);
+  rejects('altered source_hash breaks the manifest hash', edit(f4b, (x) => { x.input.source_hash = 'sha256:' + 'a'.repeat(64); }));
+  rejects('altered evaluated hash breaks the manifest hash', edit(f4b, (x) => { x.input.hash = 'sha256:' + 'b'.repeat(64); }));
+  rejects('hash_algorithm changed to disagree with the prefix', edit(f4b, (x) => { x.input.hash_algorithm = 'sha512'; }));
+  rejects('source_hash removed while truncated stays true', edit(f4b, (x) => { delete x.input.source_hash; }));
+  rejects('malformed hash without an algorithm prefix', edit(f4b, (x) => { x.input.hash = 'deadbeef'; }));
+  rejects('evaluated length changed to contradict truncation', edit(f4b, (x) => { x.input.length_chars = 120; }));
+  rejects('truncated flipped to false while source_hash remains', edit(f4b, (x) => { x.input.truncated = false; }));
+  rejects('source_hash forged equal to the evaluated hash', edit(f4b, (x) => { x.input.source_hash = x.input.hash; }));
+  rejects('full-record evaluation claimed on a truncated manifest', edit(f4b, (x) => { x.input.truncated = false; delete x.input.source_hash; x.input.length_chars = 9000; }));
+
+  // ---- §14G LEGAL-LANGUAGE ATTACKS
+  for (const field of ['legally_sufficient', 'compliant', 'certified', 'validated', 'court_admissible', 'litigation_proof']) {
+    rejects(`prohibited field ${field} rejected`, edit(f2, (x) => { x[field] = true; }));
+  }
+  // §14F human-review attacks
+  rejects('human_review.required=false with no reason', edit(f2, (x) => { x.human_review = { required: false }; }));
+  t('SH human_review reason carrying a legal conclusion is detectable', /required by law/i.test('required by law') );
+  // §14A/B identity and version attacks
+  rejects('manifest_id altered without rehash', edit(f2, (x) => { x.manifest_id = '11111111-1111-4111-8111-111111111111'; }));
+  rejects('jrs_version removed', edit(f2, (x) => { delete x.jrs_version; }));
+  rejects('codebook_version removed', edit(f2, (x) => { delete x.codebook_version; }));
+  rejects('engine.version removed', edit(f2, (x) => { delete x.engine.version; }));
+  rejects('canonicalization identifier altered', edit(f2, (x) => { x.integrity.canonicalization = 'JCS/RFC8785'; }));
+  // §14C vocabulary attacks
+  rejects('unsupported condition key added as a sixth', edit(f2, (x) => { x.conditions.invented_aggregate = { status: 'pass' }; }));
+
   // ---- write fixtures for the portability test
   const w = (n, o) => writeFileSync(new URL(`./fixtures/${n}`, import.meta.url), JSON.stringify(o, null, 2) + '\n');
   w('01-no-record.manifest.json', f1); w('02-derived.manifest.json', f2);

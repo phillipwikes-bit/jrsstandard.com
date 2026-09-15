@@ -254,3 +254,63 @@ used `minLength` and the validator failed closed. **Fixed in the validator, not 
 · no credential rotated · no dependency added · no blocker CLOSED · no owner or counsel item
 resolved · Gate 1 not rerun · Phase II locked.
 **NEXT AUTHORIZED ACTION overall:** owner action on B-001, then B-013; counsel on B-007 and B-004.
+
+---
+
+# CYCLE 4 — 2026-09-15 · DEPLOYMENT SURFACE AND MANIFEST HARDENING
+
+## PMRT-1 · Implementation directories were publicly servable
+
+**AUTHORITY:** engineering, STATE 1.
+**ISSUE:** `lib/`, `tools/`, `tests/` and `schemas/` appeared nowhere in `.vercelignore` and
+would have been served as static files on the next deployment.
+**EVIDENCE (FACT):** `/openapi.json` and `/openapi-review-engine.json` return **200** on
+production; `/scripts/check_zero_drift.py` returns 307 and `/.jrs/state/BLOCKERS.json` returns
+404. A non-excluded static file **is** served. **Nothing was deployed to establish this.**
+**ENGINEERING ACTION:** four exclusion rules added; guard with five mutations.
+**STATUS: REMEDIATED (configuration) — REQUIRES DEPLOYMENT VERIFICATION.** The 404 that would
+prove effect cannot exist before a deployment, and is not claimed.
+**NEXT AUTHORIZED ACTION:** verify at deployment time. No deployment to test it.
+
+## PMRT-2 · The review package re-opened PMRT-1
+
+**FACT:** assembling `docs/manifest-independent-review/` **copied** the validator and the
+schema into `docs/`, outside every rule then in force, minutes after the rules were added.
+**ENGINEERING ACTION:** package excluded; **guard extended to detect protected filenames
+appearing anywhere outside the exclusion set**, so the exclusion cannot be defeated by a copy.
+**STATUS: REMEDIATED.**
+**UNRESOLVED UNCERTAINTY:** none for this path. The general lesson is recorded: a path-based
+exclusion protects a path, not a file.
+
+## PMRT-3 · A relabelled canonicalization passed validation
+
+**FACT:** setting `integrity.canonicalization` to `JCS/RFC8785` caused the integrity check to
+be skipped while the manifest still validated. **A compliance claim passed because it could
+not be verified.**
+**ENGINEERING ACTION:** fail closed. Unverifiable is not valid.
+**STATUS: REMEDIATED.**
+
+## Independent Review Package
+
+**ENGINEERING ACTION:** `docs/manifest-independent-review/package/` with schema, validator,
+example manifest, synthetic source, README and expected results.
+**EVIDENCE:** cold-reviewer test run with `env -i` and no network. All thirteen §13 questions
+answerable; **source correspondence independently ESTABLISHED** by recomputing the hash.
+**Deliberately NOT called** a certification, validation, compliance or legal-defensibility
+package.
+**STATUS: REMEDIATED (development) — NOT PUBLISHED.**
+**OWNER ACTION:** decide whether to publish the schema and the package. **Removing the
+`schemas/` exclusion IS the act of publishing** and should be a recorded decision.
+
+## Registers
+
+Master Asset and Version & Release: **update required**, recorded in the workstream record.
+Commercial Rights: Manifest recorded **COMMERCIAL CANDIDATE**.
+**NO AUTHORITATIVE REGISTER UPDATE REQUIRED** for Evidence & Chain-of-Title (no title evidence
+changed) or Research Evidence (no research figure, record or snapshot touched).
+
+## Not converted
+
+**"Implemented" was not converted to "verified."** **"Drafted" was not converted to
+"approved."** **"Development pass" was not converted to "production verified."**
+No blocker moved to CLOSED. No owner or counsel matter was resolved.

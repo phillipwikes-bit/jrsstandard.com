@@ -5125,6 +5125,71 @@ def check_tracked_guides_carry_exactly_one_routing_page(offline):
           else "3 tracked guides, 1 routing page each on the last page; combined overview clean")
 
 
+def check_manifest_implementation_is_not_deployable(offline):
+    """Manifest implementation directories stay out of the deployable set.
+
+    WHY THIS GUARD EXISTS. The red-team pass on 2026-09-15 flagged that
+    lib/manifest/, tools/ and tests/manifest/ sit in a repository that deploys
+    to a public host, and that nobody had checked whether they would be served.
+    They would have been.
+
+    VERIFIED ON PRODUCTION RATHER THAN ASSUMED: /openapi.json and
+    /openapi-review-engine.json both return 200. A root .json not listed in
+    .vercelignore IS served, so a .js under lib/ or tools/ would have been too.
+    An existing served file answered the question; nothing was deployed to find
+    out.
+
+    The rule is PUBLICIZE THE STANDARD, PROTECT THE IMPLEMENTATION. Generator
+    internals, the offline validator and the test harness are implementation.
+
+    schemas/ is different and is excluded for a different reason: the schema is
+    a GOOD publication candidate, but publishing is a Section 23 act requiring
+    human approval, so the exclusion is written to be removed deliberately. If
+    that rule disappears without a recorded decision, this guard fires, because
+    a publication that happened by accident is the thing being prevented.
+    """
+    rules = read(".vercelignore")
+    findings = []
+    for d in ("lib/", "tools/", "tests/", "schemas/",
+              "docs/manifest-independent-review/"):
+        if not re.search(r"(?m)^%s\s*$" % re.escape(d), rules):
+            findings.append("%s is no longer excluded in .vercelignore and would be "
+                            "served as static files on the next deployment" % d)
+    # The engine layer must never move under an excluded path, or the Edge
+    # Functions would stop being deployed at all.
+    if re.search(r"(?m)^api/\s*$", rules):
+        findings.append("api/ is excluded, which would stop the Edge Functions being "
+                        "deployed at all")
+    # A copy of an excluded file at a non-excluded path is the same exposure.
+    # This happened on 2026-09-15: building the independent-review package copied
+    # tools/validate-manifest.js and the schema into docs/, outside every rule
+    # then in force. Catching the DUPLICATE is what stops the exclusion being
+    # defeated by a copy rather than by an edit.
+    protected = ("validate-manifest.js",
+                 "jrs-decision-reconstruction-manifest.schema.json")
+    for dirpath, dirs, files in os.walk(ROOT):
+        rel = os.path.relpath(dirpath, ROOT)
+        if rel == ".":
+            rel = ""
+        if any(part in (".git", "node_modules", "__pycache__") for part in rel.split(os.sep)):
+            continue
+        prefix = (rel + "/") if rel else ""
+        if any(prefix.startswith(x) for x in
+               ("lib/", "tools/", "tests/", "schemas/",
+                "docs/manifest-independent-review/")):
+            continue
+        for fn in files:
+            if fn in protected:
+                findings.append("%s%s sits outside every exclusion rule; a copy at a "
+                                "servable path defeats the exclusion" % (prefix, fn))
+
+    check("manifest implementation is not deployable",
+          not findings,
+          "; ".join(findings) if findings
+          else "5 implementation paths excluded, no protected file copied outside "
+               "them; api/ still deployable")
+
+
 def check_manifest_library_holds_its_refusals(offline):
     """The Manifest builder still REFUSES the things it must refuse.
 
@@ -5763,6 +5828,7 @@ def main():
                check_training_is_ungated,
                check_training_modules_are_findable,
                check_public_downloads_are_not_blocked_by_a_redirect,
+               check_manifest_implementation_is_not_deployable,
                check_manifest_library_holds_its_refusals,
                check_manifest_schema_keeps_its_safeguards,
                check_data_handling_claims_match_the_implementation,
