@@ -276,7 +276,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
  <h2 class="section-head">The short version</h2>
  <div class="callout callout-gold">
   <div class="callout-label">What a reviewer usually needs in one paragraph</div>
-  <div class="callout-body">Record text is sent over TLS, held in memory for the duration of one request, evaluated, and discarded. <b>It is not written to any table, not echoed back in the response, and not logged.</b> Nothing submitted is used to train any model. There is no record store to breach, no retention schedule to agree, and no data-residency obligation that transfers to us, because we do not hold the record.</div>
+  <div class="callout-body">Record text is sent over TLS to this endpoint and from there to <b>Anthropic</b>, the model provider, which is a third party. <b>Your record text is not written to any table, not echoed back in the response, and not logged.</b> What the model writes <i>about</i> the record on the versioned route <b>is</b> stored: a short note against each of the five conditions, and a suggested rewritten version of the passage. That is model output about your record rather than the record, and it is retained. There is therefore a store, and the retention and residency questions are real ones for your organisation to answer rather than ones we can answer for you.</div>
  </div>
 </div>
 
@@ -287,9 +287,9 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
   <tr><td><code>text</code>: the full text of one record</td><td>Held in memory for one request, evaluated, discarded when the response is written. Truncated to 8,000 characters before evaluation.</td><td><b>No</b></td></tr>
   <tr><td><code>runs</code>: 1 to 5</td><td>Controls how many independent evaluations run. Recorded as a count only.</td><td>Count only</td></tr>
   <tr><td>Bearer token</td><td>Compared against the per-organisation allow list. Identifies the partner, never the individual.</td><td>Not stored with the record</td></tr>
-  <tr><td>Result of the evaluation</td><td>Per-condition statuses, the routing determination and the consistency figure are kept as telemetry so the programme can report reproducibility.</td><td><b>Statuses only, never text</b></td></tr>
+  <tr><td>Result of the evaluation</td><td>Per-condition statuses, the routing determination and the consistency figure are kept as telemetry so the programme can report reproducibility. <b>So is a short note against each condition, which the model is instructed to ground in the record text, and a suggested rewritten version of the passage.</b></td><td><b>Statuses, figures, and model-written text about the record</b></td></tr>
  </table>
- <p class="body-text"><b>The distinction that matters to a reviewer:</b> what is kept is the shape of the answer, not the record. A stored row can say that one record returned a gap on temporal reconstructability. It cannot reproduce a single sentence of what the record said.</p>
+ <p class="body-text"><b>The distinction that matters to a reviewer:</b> your record is not stored, but text the model wrote about your record is. A stored row cannot quote your record verbatim, and it is not intended to. It can carry a suggested rewrite of the passage, which is derived from it. Treat that as retained record-derived content when you assess this endpoint, not as metadata.</p>
 </div>
 
 <div style="margin-bottom:20px;">
@@ -302,7 +302,7 @@ Content-Type: application/json</pre>
 
 <div style="margin-bottom:20px;">
  <h2 class="section-head">Model provider and key custody</h2>
- <p class="body-text">The evaluation is performed by a hosted model. <b>The provider API key exists only as a server-side environment variable and is read only inside the edge function.</b> It never appears in any page, any client bundle, any response body, or any committed file. No browser ever holds it, and no partner is ever issued it: partners receive a JRS token, which is a different credential with a different scope and its own revocation path.</p>
+ <p class="body-text">The evaluation is performed by a hosted model provided by <b>Anthropic</b>, which receives the record text. <b>The provider API key exists only as a server-side environment variable and is read only inside the edge function.</b> It never appears in any page, any client bundle, any response body, or any committed file. No browser ever holds it, and no partner is ever issued it: partners receive a JRS token, which is a different credential with a different scope and its own revocation path.</p>
  <p class="body-text">Submitted text is not used for model training.</p>
 </div>
 

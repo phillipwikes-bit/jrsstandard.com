@@ -192,7 +192,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
   <div class="dt-tag">Track 1 &middot; Enterprise Platform</div>
   <div class="dt-head">The Enterprise Platform Track</div>
   <p class="dt-body">Dedicated B2B API licensing of the JRS review engine, so mid-market GRC platforms and legal-tech providers can embed a <b>pre-finalization decision gate</b> directly into their own workflows. One record in, a structured determination across the five review conditions out, returned with a request identifier your audit trail can cite.</p>
-  <p class="dt-body"><b>Stateless, with zero data retention at rest.</b> Record text is assessed in memory and discarded. It is not written to any table, not echoed back, and not logged. Per-partner tokens, revocable independently, on a versioned route. This narrows what a vendor security review has to examine; <b>it does not remove the review</b>, and it is not a substitute for any certification your procurement requires.</p>
+  <p class="dt-body"><b>Stateless between requests, and your record text is not stored.</b> Record text is assessed in memory and is not written to any table, not echoed back, and not logged. It is transmitted to Anthropic, the model provider, to be assessed. On the versioned route, what the model writes about the record is kept as programme telemetry: a short note against each condition and a suggested rewrite of the passage. Per-partner tokens, revocable independently, on a versioned route. This narrows what a vendor security review has to examine; <b>it does not remove the review</b>, and it is not a substitute for any certification your procurement requires.</p>
   <div class="dt-links"><a href="review-engine.html">Integration schema</a> <a href="enterprise.html#enterprise-inquiry">Enterprise inquiry</a></div>
  </div>
  <div class="dt-card dt-public">
@@ -221,8 +221,8 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
   </ul>
 
   <div class="isolation">
-    <b>Data Isolation Guarantee</b>
-    All customer files and sample records submitted for diagnostic evaluation are processed in ephemeral working memory and deleted upon delivery of the diagnostic report. Customer records are never stored, logged to public research sets, or used for model training.
+    <b>Data isolation, and exactly what it covers</b>
+    All customer files and sample records submitted for diagnostic evaluation are processed in ephemeral working memory and deleted upon delivery of the diagnostic report. Customer records supplied for a human-delivered engagement are not stored, not logged to public research sets, and not used for model training. <b>This describes the human-delivered work, not the public review engine</b>, which transmits record text to the model provider and keeps model-written output about the record.
   <div style="margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.04em;color:var(--muted-soft)">Processed in ephemeral memory and purged immediately upon report generation.</div>
   </div>
 

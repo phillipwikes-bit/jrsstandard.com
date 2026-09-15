@@ -283,7 +283,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 <main class="container" id="main-content">
 
 <div class="page-eyebrow">Enterprise: Platform Licensing and Deployment</div>
-<h1 class="page-title">Embed a pre-finalization review gate. One stateless call, nothing stored.</h1>
+<h1 class="page-title">Embed a pre-finalization review gate. One call, and your record text is not stored.</h1>
 <p class="page-subtitle">GRC and legal-tech platforms embed the JRS review call before a record is finalized: the determination returns to your product, and your customer's text is never retained, never stored, and never used for training. Enterprise risk, HR, compliance and investigation functions run the same controls inside the review workflows they already have.</p>
 
 <!-- THE PAGE NOW LEADS WITH THE ACTION IT EXISTS FOR.
@@ -808,7 +808,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
  <table class="spec-table">
   <tr><th>Property</th><th>What it means in your environment</th></tr>
   <tr><td>Stateless per call</td><td>Each request is independent and self-contained. Nothing is carried forward from one call to the next.</td></tr>
-  <tr><td><b>Zero data retention at rest</b></td><td>Record text is assessed in memory and discarded. It is not written to any table, not echoed back in the response, and not logged. Storage of even a 200-character excerpt was removed on 14 August 2026, while the table still held zero rows.</td></tr>
+  <tr><td><b>Record text is not retained at rest</b></td><td>Record text is assessed in memory and discarded. It is not written to any table, not echoed back in the response, and not logged. Storage of a 200-character excerpt of the record was removed on 14 August 2026, while the table still held zero rows. What the model writes about the record on the versioned route is still kept, which is a different thing from the record and is stated here rather than left to be discovered.</td></tr>
   <tr><td>Structured determination only</td><td>What persists is the determination, the per-condition results and the request identifier. Never the record.</td></tr>
   <tr><td>Per-partner tokens</td><td>Each licensee holds its own credential, rotatable and revocable independently of every other.</td></tr>
   <tr><td>Fail-closed by default</td><td>No token means no access. Open mode requires an explicit server-side flag that is off.</td></tr>

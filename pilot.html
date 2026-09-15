@@ -829,6 +829,18 @@ var pilotForm = document.getElementById('pilot-contact-form');
 if (pilotForm) {
   pilotForm.addEventListener('submit', function(e) {
     e.preventDefault();
+    // The sensitive-identifier screen runs BEFORE either destination. This free
+    // text reaches Supabase AND Formspree, and privacy.html section 2 tells the
+    // reader it is screened in the browser first. It was not, until 2026-09-15.
+    // Placed above the Supabase write deliberately: screening only the Formspree
+    // call would leave the promise false for the other half of the submission.
+    try {
+      var msgEl = pilotForm.elements['message'];
+      var msgVal = (msgEl && msgEl.value) || '';
+      if (msgVal && typeof jrsSanitizeCheck === 'function' && !jrsSanitizeCheck(msgVal)) {
+        return;
+      }
+    } catch (scr) { /* a screen that throws must not block a submission */ }
     try {
       var SB_URL='https://pjzxkeviouofdseagvpf.supabase.co', SB_KEY='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e';
       if (SB_KEY) {

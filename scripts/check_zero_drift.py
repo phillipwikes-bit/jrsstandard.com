@@ -5125,6 +5125,74 @@ def check_tracked_guides_carry_exactly_one_routing_page(offline):
           else "3 tracked guides, 1 routing page each on the last page; combined overview clean")
 
 
+def check_data_handling_claims_match_the_implementation(offline):
+    """No public page claims a data-handling property the engine contradicts.
+
+    WHY THIS GUARD EXISTS. A claims sweep on 2026-09-15 across all 75 deployed
+    pages found the accurate description of this system's data handling sitting
+    on privacy.html, and an overstated one on every surface a buyer, a
+    procurement reviewer or a security reviewer is actually routed to:
+    security.html, enterprise.html, review-engine.html, terms.html,
+    engagement.html, the three request pages, index.html and training.html.
+
+    The three propositions below were each published and each false:
+      1. "the record never leaves your control" / "transmits nothing".
+         Record text is POSTed to api.anthropic.com. check.html additionally
+         loads GA4 and Google Fonts and beacons a page view to Supabase.
+      2. "there is no record store to breach" / "zero data retention at rest".
+         logReview() in both engine routes writes engine_reviews rows holding a
+         per-condition note the prompt requires to be grounded in the record
+         text, and finding.compliant_version, a model rewrite of the passage.
+      3. "no data-residency obligation transfers to us". A legal conclusion
+         (Rule 8), resting on proposition 1.
+
+    WHAT IT CHECKS. The banned formulations are absent from every deployed page,
+    and the two code facts that make them false are still true. If logReview
+    were removed, proposition 2 would become sayable again and this guard should
+    be revisited deliberately rather than silently satisfied.
+    """
+    findings = []
+
+    BANNED = [
+        ("never leaves your control", "record text is POSTed to a third-party model provider"),
+        ("transmits nothing", "the page loads GA4 and Google Fonts and beacons a view"),
+        ("no record store to breach", "engine_reviews holds record-derived model output"),
+        ("zero data retention at rest", "engine_reviews holds record-derived model output"),
+        ("no data-residency obligation", "a legal conclusion resting on a false premise"),
+        ("data isolation guarantee", "banned claim vocabulary, and it was unscoped"),
+        ("no intake page has a form of any kind", "forms exist on at least eight pages"),
+    ]
+    for rel in _html_files():
+        low = read(rel).lower()
+        for phrase, why in BANNED:
+            if phrase in low:
+                findings.append("%s republishes %r (%s)" % (rel, phrase, why))
+
+    # The code facts the corrected wording depends on.
+    eng = read("api/review-engine.js")
+    # Word-boundary, not containment. A mutation test renaming logReview to
+    # logReviewOFF passed a substring check on 2026-09-15, which is the whole
+    # failure mode this guard exists to catch.
+    if not re.search(r"\blogReview\s*\(", eng):
+        findings.append("api/review-engine.js no longer calls logReview; the corrected "
+                        "retention wording describes storage that may no longer happen, "
+                        "so revisit the claims rather than leaving them")
+    if not re.search(r"\bcompliant_version\b", eng):
+        findings.append("compliant_version is gone from api/review-engine.js; the "
+                        "public wording about a suggested rewrite needs rechecking")
+    rev = read("api/review.js")
+    if "supabase" in rev.lower():
+        findings.append("api/review.js now touches Supabase; the public statement that "
+                        "the free route stores nothing is no longer safe")
+
+    check("data-handling claims match the implementation",
+          not findings,
+          "; ".join(findings) if findings
+          else "%d pages carry none of the %d retired formulations; logReview and "
+               "compliant_version still present; api/review.js still storage-free"
+               % (len(_html_files()), len(BANNED)))
+
+
 def check_every_active_processor_is_disclosed(offline):
     """Every external destination that can receive data is named on privacy.html.
 
@@ -5562,6 +5630,7 @@ def main():
                check_training_is_ungated,
                check_training_modules_are_findable,
                check_public_downloads_are_not_blocked_by_a_redirect,
+               check_data_handling_claims_match_the_implementation,
                check_every_active_processor_is_disclosed,
                check_pages_that_render_engine_output_disclose_validation_status,
                check_public_engine_endpoints_carry_no_record_text,

@@ -104,6 +104,53 @@ addendum 2.
 **D-14 is the one with a safety edge**, because it is a promise about sensitive
 identifiers that does not run where a visitor types free text.
 
+## D-18 · Stale research presentation — **OPEN, DELIBERATELY NOT EDITED**
+
+**QUESTION.** The nightly cross-vendor run closed on 21 August 2026. Six surfaces still
+describe it in the present tense, and the headline figure is published as two different
+numbers.
+
+**EVIDENCE.** Present tense after closure: `research.html` (latest run dated 9 August yet
+"recomputed every night"; Study 001 badged **Active**), `research-data.html`, `pilot.html`,
+`reviewer/index.html`, `programme-status-9872fb93cc94.html`. Conflicting figure, both
+labelled latest: **86.7%** on `research.html` and `reviewer/index.html`; **84%** on
+`pilot.html`, `results.html` and the buyer surface `acquisition-9f3c2a7d4b.html`, which
+carries it undated. `bench-review.html` and `submit-validation.html` do carry proper
+closure banners, so the site knows how to do this.
+
+**WHY NOT EDITED.** These are research figures. The directive forbids altering research
+evidence, and picking between 86.7% and 84% requires querying the study data, not
+choosing. Writing either number without that query would be fabricating a result.
+
+**WHAT WOULD RESOLVE IT.** One query against the study tables for the final run: one
+figure, one date, propagated, plus a dated closure banner on Study 001.
+
+**AUTHORITY.** Owner. **May work proceed without it?** Yes for everything else; no for any
+buyer-facing representation of reproducibility.
+
+## D-19 · `engine_reviews` is readable with the public key — **OPEN (blocker B-013)**
+
+**QUESTION.** Anon `SELECT` is granted on `engine_reviews`. Should it be?
+
+**EVIDENCE.** Probed 2026-09-15, count only, no row content: **HTTP 200**, not 401, so the
+grant exists. **`content-range: */0`: the table holds zero rows**, so nothing is exposed
+today. `engine-activity.html` reads `conditions` and `finding` from the browser with the
+publishable key, and that key ships in 22 pages, so the unlinked `noindex` page is not the
+protection. On the first paid engine call the table would hold a per-condition note the
+prompt requires to be grounded in the record text, and a model rewrite of the passage up
+to 600 characters.
+
+**STATED IN BOTH DIRECTIONS.** It is **not** true that customer records are exposed today.
+It is **not** true that there is no store. The exposure is latent and one call away.
+
+**WHY NOT FIXED.** Changing a database grant is a production operation and is not
+authorised. No grant was changed and no row content was fetched.
+
+**OPTIONS.** Revoke anon `SELECT` and serve `engine-activity.html` from a server route ·
+stop writing record-derived free text · narrow the public claims to match.
+
+**AUTHORITY.** Owner.
+
 ## D-4 (original entry, preserved) · Subprocessor disclosure — **APPROVED IN PRINCIPLE; CONTENT SIGN-OFF OPEN**
 
 **QUESTION.** Approve publishing a subprocessor disclosure, and its content?

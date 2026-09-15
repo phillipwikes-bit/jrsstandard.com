@@ -196,7 +196,7 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
   <div class="dt-tag">Track 1 &middot; Enterprise Platform</div>
   <div class="dt-head">The Enterprise Platform Track</div>
   <p class="dt-body">Dedicated B2B API licensing of the JRS review engine, so mid-market GRC platforms and legal-tech providers can embed a <b>pre-finalization decision gate</b> directly into their own workflows. One record in, a structured determination across the five review conditions out, returned with a request identifier your audit trail can cite.</p>
-  <p class="dt-body"><b>Stateless, with zero data retention at rest.</b> Record text is assessed in memory and discarded. It is not written to any table, not echoed back, and not logged. Per-partner tokens, revocable independently, on a versioned route. This narrows what a vendor security review has to examine; <b>it does not remove the review</b>, and it is not a substitute for any certification your procurement requires.</p>
+  <p class="dt-body"><b>Stateless between requests, and your record text is not stored.</b> Record text is assessed in memory and is not written to any table, not echoed back, and not logged. It is transmitted to Anthropic, the model provider, to be assessed. On the versioned route, what the model writes about the record is kept as programme telemetry: a short note against each condition and a suggested rewrite of the passage. Per-partner tokens, revocable independently, on a versioned route. This narrows what a vendor security review has to examine; <b>it does not remove the review</b>, and it is not a substitute for any certification your procurement requires.</p>
   <div class="dt-links"><a href="review-engine.html">Integration schema</a> <a href="enterprise.html#enterprise-inquiry">Enterprise inquiry</a></div>
  </div>
  <div class="dt-card dt-public">
@@ -227,12 +227,12 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
   <h2>Data handling</h2>
 
   <div class="iso">
-    <b class="h">Data Isolation Guarantee</b>
-    <p style="margin:0 0 11px;font-size:14.5px;line-height:1.7;color:var(--muted)">All customer files and sample records submitted for diagnostic evaluation are processed in ephemeral working memory and deleted upon delivery of the diagnostic report. Customer records are never stored, logged to public research sets, or used for model training.</p>
+    <b class="h">Data isolation, and exactly what it covers</b>
+    <p style="margin:0 0 11px;font-size:14.5px;line-height:1.7;color:var(--muted)">All customer files and sample records submitted for diagnostic evaluation are processed in ephemeral working memory and deleted upon delivery of the diagnostic report. Customer records supplied for a human-delivered engagement are not stored, not logged to public research sets, and not used for model training. <b>This describes the human-delivered work, not the public review engine</b>, which transmits record text to the model provider and keeps model-written output about the record.</p>
     <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.04em;color:var(--muted-soft)">Processed in ephemeral memory and purged immediately upon report generation.</div>
   </div>
 
-  <p><b>The mechanism, not just the promise.</b> There is no upload form anywhere on this site. No page accepts a file, and no intake page has a form of any kind. Records arrive by whatever channel your organization already approves for material of that sensitivity, and de-identification is agreed in writing before the first one is sent.</p>
+  <p><b>The mechanism, not just the promise.</b> There is no upload form anywhere on this site: no page accepts a file. Pages do carry ordinary forms and text boxes, and what each one sends is described in the privacy policy. Records arrive by whatever channel your organization already approves for material of that sensitivity, and de-identification is agreed in writing before the first one is sent.</p>
 
   <ul style="margin:0 0 18px 20px">
     <li style="font-size:14.5px;color:var(--muted);line-height:1.7;margin-bottom:7px"><b style="color:var(--text)">De-identification.</b> Records are supplied de-identified by you, to a standard agreed at scoping. If a record arrives carrying an identifier, it is returned rather than redacted, so the decision about your data stays with you.</li>
@@ -269,7 +269,7 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
 
   <p>A client emailed their record type, approximate volume and timeframe. <b>Scope, the fixed fee, turnaround and an invoice came back in one reply, within one business day.</b> No discovery call was required, and none was proposed unless asked for.</p>
 
-  <p style="font-size:13.5px;color:var(--muted-soft);line-height:1.7">The <a href="check.html">seven-point record check</a> remains public and ungated, requires nothing from you, and transmits nothing. It is open now and is the place to start.</p>
+  <p style="font-size:13.5px;color:var(--muted-soft);line-height:1.7">The <a href="check.html">seven-point record check</a> remains public and ungated, requires nothing from you, and your answers to it are never sent. That page carries the same anonymous visit and link measurement as the rest of the site, which does not include anything you tick. It is open now and is the place to start.</p>
 
   <div class="status-strip" style="margin-top:26px">
     <b>Operational validation.</b> JRS is under operational validation. <b>While this pathway was open, commercial demand had not been established and these engagements were being tested through controlled market experiments.</b> That was stated at the time because it was relevant to a client's decision. The pathway is now closed.

@@ -121,7 +121,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
   function detLabel(d){return d==='ready'?'READY':(d==='review_required'?'REVIEW REQUIRED':(d==='gap_identified'?'GAP IDENTIFIED':esc(d||'')));}
   // input_preview is NOT selected. This page is public, and that column held the
   // first 200 characters of a submitted record. Rendering it here contradicted
-  // the Data Isolation Guarantee, which promises customer records are never
+  // the Data isolation, and exactly what it covers, which promises customer records are never
   // stored or logged to a public set. The column stopped being written on
   // 2026-08-14 and is no longer read.
   fetch(U+'/rest/v1/engine_reviews?select=created_at,determination,conditions,finding,runs,overall_consistency,engine_version&order=created_at.desc&limit=100',{headers:hdr})

@@ -331,12 +331,12 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
     "text": "Following review of the incident report and the two witness statements dated 11 March, the decision was to issue a final written warning.",
     "runs": 1
   }'</pre>
- <p class="body-text">The call is stateless. Nothing in <code>text</code> is retained, stored, or used for training, so the record never leaves your control and no data-residency obligation transfers to us.</p>
+ <p class="body-text"><b>What happens to the text you send.</b> It is transmitted over TLS to this endpoint and from there to Anthropic, the model provider, which is a third party. Your record text is <b>not</b> written to our database. What the model writes <i>about</i> your record on this versioned route <b>is</b> kept as programme telemetry: a short note against each of the five conditions, and a suggested rewritten version of the passage. Deciding whether that transmission and that retention are acceptable for a given record is your organisation's call, and you should make it before you send anything.</p>
 </div>
 
 <div style="margin-bottom:20px;" id="sandbox">
  <h2 class="section-head">Run one now, without a token</h2>
- <p class="body-text">Paste a record and run it. <b>No account, no token, no contact.</b> The sandbox is capped at three records per day per address and truncates at 2,000 characters. <b>Nothing you paste here is stored:</b> the sandbox writes no database row at all, which is a stronger guarantee than the paid route, where per-condition statuses are kept as programme telemetry.</p>
+ <p class="body-text">Paste a record and run it. <b>No account, no token, no contact.</b> The sandbox is capped at three records per day per address and truncates at 2,000 characters. <b>Nothing you paste here is stored:</b> the sandbox writes no database row at all, which is a stronger guarantee than the versioned route, where the per-condition statuses, a short note against each condition and a suggested rewrite of the passage are kept as programme telemetry.</p>
  <p class="body-text"><b>Redact before you paste.</b> Use a record you are comfortable sending to a third-party model, or the sample below.</p>
  <textarea id="sb-text" rows="6" maxlength="2000" placeholder="Paste a record, or press Load sample" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-family:'Inter',sans-serif;font-size:13.5px;line-height:1.6;"></textarea>
  <div class="btn-row" style="margin-top:10px;">
