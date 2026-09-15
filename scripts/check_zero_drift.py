@@ -5125,6 +5125,74 @@ def check_tracked_guides_carry_exactly_one_routing_page(offline):
           else "3 tracked guides, 1 routing page each on the last page; combined overview clean")
 
 
+def check_manifest_schema_keeps_its_safeguards(offline):
+    """The Manifest schema keeps the three declarations that stop it lying.
+
+    WHY THIS GUARD EXISTS. The Decision Reconstruction Manifest is the artifact a
+    later reviewer would rely on, so its failure mode is not a crash, it is a
+    confident wrong answer. Three fields carry that weight:
+
+      condition_vocabulary  Three of the five Codebook-to-engine condition
+                            mappings are UNRESOLVED. A manifest that dropped
+                            this field would let engine keys be read as Codebook
+                            conditions, silently resolving a question the owner
+                            has not answered.
+      routing.vocabulary    Two record-level vocabularies exist, Ready/Needs
+                            work/Gap and ready/review_required/gap_identified.
+                            Without the declaration a reader guesses.
+      content_class         A manifest is described as not containing the
+                            record. Per-condition notes are model output derived
+                            from it and can paraphrase it. This field is where
+                            that is admitted.
+
+    It also checks that additionalProperties stays false at the root, which is
+    what stops a raw record or a "legally_sufficient" field being added later,
+    and that human_review is required, because defaulting to no human review
+    would assert what the research does not support.
+    """
+    rel = "schemas/jrs-decision-reconstruction-manifest.schema.json"
+    findings = []
+    try:
+        schema = json.loads(read(rel))
+    except Exception as e:
+        check("manifest schema keeps its safeguards", False,
+              "%s is missing or unparseable: %r" % (rel, e))
+        return
+
+    required = schema.get("required", [])
+    for field in ("condition_vocabulary", "content_class", "human_review",
+                  "integrity", "conditions", "routing"):
+        if field not in required:
+            findings.append("%r is no longer required at the root" % field)
+
+    if schema.get("additionalProperties") is not False:
+        findings.append("root additionalProperties is not false, so a raw record or a "
+                        "legal-sufficiency field could be added without failing validation")
+
+    props = schema.get("properties", {})
+    cv = props.get("condition_vocabulary", {}).get("enum", [])
+    if "review_engine_keys" not in cv:
+        findings.append("condition_vocabulary can no longer express review_engine_keys, "
+                        "which is the value a generator must use while the mapping is "
+                        "UNRESOLVED")
+    rv = props.get("routing", {}).get("properties", {}).get("vocabulary", {}).get("enum", [])
+    if len(rv) < 2:
+        findings.append("routing.vocabulary no longer distinguishes the two record-level "
+                        "vocabularies")
+    if "vocabulary" not in props.get("routing", {}).get("required", []):
+        findings.append("routing no longer requires its vocabulary")
+
+    conds = props.get("conditions", {})
+    if conds.get("minProperties") != 5 or conds.get("maxProperties") != 5:
+        findings.append("conditions no longer pins exactly five entries")
+
+    check("manifest schema keeps its safeguards",
+          not findings,
+          "; ".join(findings) if findings
+          else "root sealed, 6 required fields present, both vocabulary declarations "
+               "intact, conditions pinned at five")
+
+
 def check_data_handling_claims_match_the_implementation(offline):
     """No public page claims a data-handling property the engine contradicts.
 
@@ -5630,6 +5698,7 @@ def main():
                check_training_is_ungated,
                check_training_modules_are_findable,
                check_public_downloads_are_not_blocked_by_a_redirect,
+               check_manifest_schema_keeps_its_safeguards,
                check_data_handling_claims_match_the_implementation,
                check_every_active_processor_is_disclosed,
                check_pages_that_render_engine_output_disclose_validation_status,

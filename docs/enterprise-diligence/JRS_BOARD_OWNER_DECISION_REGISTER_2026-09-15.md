@@ -132,3 +132,79 @@ created. **OWNER ACTION: confirm which path is intended.**
 | **D-18** | Decide the STUDY-001 presentation |
 | **D-19** | Decide the database read posture |
 | **D-10** | Self-hosting, deferred |
+
+---
+
+# CYCLE 2 — 2026-09-15 · NEXT AUTHORIZED ACTION added to every entry
+
+**Control layer only.** Engineering recommendations below are **not** Board decisions.
+
+## D-1 / B-007 · Published API contract
+
+**FACT.** `openapi.json` (v1.0.0, **Commercial licence**) declares `routing` and `conditions`
+as **required at the top level**. `api/v1/review-engine.js` contains **zero** occurrences of
+`routing`, nests conditions at `result.conditions`, and emits `determination` with a different
+vocabulary and different case. Three breaking differences; the condition-level payload agrees
+exactly. Published at `/openapi.json`, linked from a **confidential buyer surface**.
+**ENGINEERING RECOMMENDATION:** D (dual emission) then C (versioning). **Not a decision.**
+**COUNSEL DETERMINATION:** any edit to `openapi.json`.
+**OWNER ACTION:** choose the option; and for A or D, declare the routing mapping, because
+`Needs work` appears nowhere in the Codebook and emitting it would put a **fourth** vocabulary
+into production.
+**UNRESOLVED:** whether any external party relied on the published contract. **NOT ESTABLISHED
+and not asserted.**
+**NEXT AUTHORIZED ACTION:** send `API_CONTRACT_RECONCILIATION_2026-09-15.md` to counsel. **No
+code or contract change.**
+
+## D-2 · `cold_reviewer_clarity`
+**STATUS: INTENTIONALLY UNRESOLVED.** Unchanged.
+**NEXT AUTHORIZED ACTION:** none. Owner input only.
+
+## D-3 · Codebook / API correspondence
+**ENGINEERING ACTION, done:** `CODEBOOK_API_CORRESPONDENCE_CONTROL.md` records four
+vocabularies, preserves EXACT / SEMANTIC / UNRESOLVED unchanged, and forbids representing the
+engine keys as a restatement of the Codebook.
+**NEXT AUTHORIZED ACTION:** owner declares the four non-exact pairs.
+
+## Manifest specification and schema
+**ENGINEERING ACTION, done:** spec v1.0 and a JSON Schema validated with a conforming
+specimen and **10 negative cases, all rejected**, including a smuggled raw record and a
+`legally_sufficient` field. Guarded; **6 mutations fail correctly.**
+**FACT:** the current engine **cannot** produce a conforming manifest. It has no input hash,
+no JRS or Codebook version, no integrity block. The additions are mechanical, not
+methodological.
+**Deliberately not implemented.** Generation should not be built before the §5.5 vocabulary is
+owner-declared, or the generator must guess on every call.
+**NEXT AUTHORIZED ACTION:** owner reviews the spec. **No engine change.**
+
+## D-14 · Sensitive-identifier screen
+**ENGINEERING ACTION, done and tested.** Screen runs ahead of **both** destinations. 12/12
+browser cases; **dismissal produces 0 POSTs**.
+**STATUS: REMEDIATED AND TESTED — NOT VERIFIED IN PRODUCTION.**
+**NEXT AUTHORIZED ACTION:** deployment, which is blocked by B-001.
+
+## D-19 / B-013 · Decomposed as directed
+**B-013A — `engine_reviews`.** Anon SELECT `qual = true`; **0 rows**. Latent, not realised.
+Cheapest fix: revoke the SELECT policy and serve `engine-activity.html` from a server route.
+**B-013B — `bench_outcomes`.** 54 rows, avg 570 chars of contributor record text, anon-readable.
+**0 email and 0 SSN hits. Not labelled a breach.** Whether the research protocol contemplated
+world-readable raw records is **NOT ESTABLISHED**.
+**B-013C — `interaction_events`.** 2,280 rows, anon-readable: paths, country, truncated
+user-agent. **Behavioural metadata, not record content and not identities.**
+**A false alarm of mine is recorded:** an email pattern in download rows was a **crawler
+contact address inside a user_agent string**, one address, 18 occurrences, one day.
+**No grant was altered.**
+**NEXT AUTHORIZED ACTION:** owner decides. B-013 does **not** close on one component.
+
+## D-18 · STUDY-001
+**FACT:** 61 runs, range 66.7–93.3, mean 85.3, final run 91.1. **Neither published figure is
+the final run.**
+**Not implemented**, because 91.1 is the most flattering of 61 and raising a headline metric
+is what the evidence rules exist to prevent.
+**NEXT AUTHORIZED ACTION:** owner chooses the presentation. Correcting the present-tense
+"Active" wording needs no figure and may proceed on instruction.
+
+## Registers
+**Version & Release Register and Commercial Rights Register were NOT reconciled this cycle.**
+Recorded rather than glossed.
+**NEXT AUTHORIZED ACTION:** reconcile both.
