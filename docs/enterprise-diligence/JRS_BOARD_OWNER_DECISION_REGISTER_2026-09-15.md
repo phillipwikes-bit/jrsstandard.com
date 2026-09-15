@@ -208,3 +208,49 @@ is what the evidence rules exist to prevent.
 **Version & Release Register and Commercial Rights Register were NOT reconciled this cycle.**
 Recorded rather than glossed.
 **NEXT AUTHORIZED ACTION:** reconcile both.
+
+---
+
+# CYCLE 3 — 2026-09-15 · MANIFEST EVIDENCE LAYER
+
+## Manifest generator, validator and portability
+
+**AUTHORITY:** engineering, within STATE 1 development remediation.
+**ISSUE:** the Manifest existed as a specification with no artifact, so its claims could not be
+interrogated.
+**ENGINEERING ACTION:** `lib/manifest/` (canonicalize, hash, build), `tools/validate-manifest.js`,
+`tests/manifest/` with 6 fixtures. **39 checks, 0 failed.**
+**EVIDENCE:** portability demonstrated by copying the validator, the schema and six manifests
+into an empty directory and running with `env -i` and `fetch`, `XMLHttpRequest`, `WebSocket`
+and `EventSource` replaced by throwing getters. All six behaved as expected.
+**FACT:** the three refusals are enforced in code, not documented as intentions. Relabelling
+engine keys as Codebook conditions throws; routing vocabularies are never translated;
+`content_class` is derived from what is present and cannot be asserted by a caller.
+**UNRESOLVED UNCERTAINTY:** whether `lib/`, `tools/` and `tests/` are excluded from the
+deployable set is **not verified**. Recorded as an open item for deployment time.
+**OWNER DEPENDENCY:** none for the artifact. Deployment and route integration are owner-gated.
+**COUNSEL DEPENDENCY:** none.
+**AFFECTED REGISTER:** Version & Release (new artifacts), Commercial Rights (see below).
+**STATUS: REMEDIATED (development) — NOT VERIFIED IN PRODUCTION — NOT DEPLOYED.**
+**NEXT AUTHORIZED ACTION:** owner reviews the specification and the portability report. **No
+route change, no deployment.**
+
+## Commercial Rights Register entry
+
+**The Manifest is recorded as COMMERCIAL CANDIDATE, not COMMERCIALIZED.** No licence exists.
+No market evidence exists. A technical artifact does not create a commercial right.
+**STATUS: OPEN.**
+
+## Two defects in my own work this cycle
+
+**FACT:** the offline validator rejected every valid manifest on first run, because the schema
+used `minLength` and the validator failed closed. **Fixed in the validator, not the schema.**
+**FACT:** the schema omitted `source_hash` and did not require `codebook_version`. Both fixed.
+**Neither is hidden**, and the first is recorded in the tool's own header.
+
+## What did NOT happen, recorded because absence is the claim
+
+`openapi.json` unmodified · `api/v1/review-engine.js` unmodified · no production grant changed
+· no credential rotated · no dependency added · no blocker CLOSED · no owner or counsel item
+resolved · Gate 1 not rerun · Phase II locked.
+**NEXT AUTHORIZED ACTION overall:** owner action on B-001, then B-013; counsel on B-007 and B-004.

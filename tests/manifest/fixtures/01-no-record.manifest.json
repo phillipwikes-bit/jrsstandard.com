@@ -1,0 +1,53 @@
+{
+  "manifest_id": "64411d80-8db0-43d4-8424-40760e82b1d8",
+  "manifest_version": "1.0",
+  "created_at": "2026-09-15T13:38:24.844Z",
+  "jrs_version": "1.0",
+  "codebook_version": "1.0",
+  "engine": {
+    "name": "JRS Review Engine",
+    "version": "0.1.0-validation",
+    "model": "claude-haiku-4-5-20251001",
+    "api_version": "v1"
+  },
+  "input": {
+    "hash": "sha256:21a2e6bffa60d031fc1799cf2d16da40246d40cbd7f9ef7a0132bb3f87b97a2e",
+    "hash_algorithm": "sha256",
+    "length_chars": 12,
+    "truncated": false
+  },
+  "condition_vocabulary": "review_engine_keys",
+  "conditions": {
+    "basis_identification": {
+      "status": "review"
+    },
+    "reasoning_traceability": {
+      "status": "review"
+    },
+    "cold_reviewer_clarity": {
+      "status": "review"
+    },
+    "accountability_support": {
+      "status": "review"
+    },
+    "temporal_reconstructability": {
+      "status": "review"
+    }
+  },
+  "routing": {
+    "value": "review_required",
+    "vocabulary": "engine_determination"
+  },
+  "human_review": {
+    "required": true,
+    "reason": "Human review remains required because the current Review Engine is not established as validated for autonomous consequential decision use."
+  },
+  "content_class": "no_record_content",
+  "evaluation": {
+    "runs": 1
+  },
+  "integrity": {
+    "manifest_hash": "sha256:e7f3066897b091fc05e5ea37c610e48947c6db9f64557b69383b36c0e7e9e9d4",
+    "canonicalization": "jrs-dev-canon-1"
+  }
+}

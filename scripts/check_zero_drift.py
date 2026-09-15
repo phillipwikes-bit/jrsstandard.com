@@ -5125,6 +5125,71 @@ def check_tracked_guides_carry_exactly_one_routing_page(offline):
           else "3 tracked guides, 1 routing page each on the last page; combined overview clean")
 
 
+def check_manifest_library_holds_its_refusals(offline):
+    """The Manifest builder still REFUSES the things it must refuse.
+
+    WHY THIS GUARD EXISTS. The manifest library's value is not what it emits,
+    it is what it declines to emit. Three refusals carry the weight:
+
+      - relabelling engine keys as Codebook conditions, which would resolve D-2
+        and D-3 in code rather than by owner declaration;
+      - translating between the two routing vocabularies, which would invent a
+        correspondence the API reconciliation says is undecided;
+      - declaring a manifest record-free while per-condition notes, which are
+        model output derived from the record, are present.
+
+    A future edit that relaxed any of them would leave the tests passing and the
+    artifact lying, so this runs the real suite rather than reading the source.
+
+    It also asserts the canonicalization is still labelled as DEVELOPMENT
+    canonicalization. Renaming it to JCS/RFC8785 without verifying against the
+    RFC's test vectors would be a compliance claim resting on nothing.
+    """
+    findings = []
+    runner = os.path.join(ROOT, "tests", "manifest", "run.mjs")
+    if not os.path.exists(runner):
+        check("manifest library holds its refusals", False,
+              "tests/manifest/run.mjs is missing")
+        return
+    try:
+        p = subprocess.run(["node", runner], cwd=ROOT, capture_output=True,
+                           text=True, timeout=120)
+    except FileNotFoundError:
+        check("manifest library holds its refusals", SKIPPED, "node not available")
+        return
+    except Exception as e:
+        check("manifest library holds its refusals", False, "runner failed: %r" % (e,))
+        return
+
+    out = (p.stdout or "") + (p.stderr or "")
+    if p.returncode != 0:
+        bad = [l for l in out.splitlines() if l.startswith("FAIL")]
+        findings.append("manifest suite failed: " + ("; ".join(bad) if bad else out[-200:]))
+
+    # The three refusals must be present as named, passing cases.
+    for needle in ("F6 relabeling to Codebook without a declared mapping THROWS",
+                   "RT silent routing conversion refused",
+                   "RT forged no_record_content with notes is REJECTED"):
+        if ("PASS  " + needle) not in out:
+            findings.append("the suite no longer proves: %s" % needle)
+
+    canon = read("lib/manifest/canonicalize.js")
+    if "jrs-dev-canon-1" not in canon:
+        findings.append("the development canonicalization identifier is gone")
+    if "RFC 8785" in canon and "NOT described as" not in canon:
+        findings.append("canonicalize.js appears to claim RFC 8785 compliance without "
+                        "the disclaimer that it has not been verified")
+
+    total = ""
+    for line in out.splitlines():
+        if "checks," in line and "failed" in line:
+            total = line.strip()
+    check("manifest library holds its refusals",
+          not findings,
+          "; ".join(findings) if findings
+          else "%s; all three refusals proven" % (total or "suite passed"))
+
+
 def check_manifest_schema_keeps_its_safeguards(offline):
     """The Manifest schema keeps the three declarations that stop it lying.
 
@@ -5698,6 +5763,7 @@ def main():
                check_training_is_ungated,
                check_training_modules_are_findable,
                check_public_downloads_are_not_blocked_by_a_redirect,
+               check_manifest_library_holds_its_refusals,
                check_manifest_schema_keeps_its_safeguards,
                check_data_handling_claims_match_the_implementation,
                check_every_active_processor_is_disclosed,

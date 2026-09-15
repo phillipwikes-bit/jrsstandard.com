@@ -30,7 +30,8 @@
       "owner": "CLAUDE",
       "status": "PREPARED_FOR_HUMAN_REVIEW",
       "created": "2026-09-14",
-      "remediation_2026_09_14": "Evidence and four costed options in docs/enterprise-diligence/API_OPENAPI_RECONCILIATION_REPORT.md. Identity preserved separately from B-007. Nothing implemented."
+      "remediation_2026_09_14": "Evidence and four costed options in docs/enterprise-diligence/API_OPENAPI_RECONCILIATION_REPORT.md. Identity preserved separately from B-007. Nothing implemented.",
+      "note_2026_09_15_cycle2": "Folded into B-007. No change."
     },
     {
       "blocker_id": "B-003",
@@ -109,7 +110,8 @@
       "status": "PREPARED_FOR_HUMAN_REVIEW \u2014 COUNSEL REVIEW REQUIRED",
       "created": "2026-09-14",
       "remediation_2026_09_14": "Refined: TWO specs describe the same path and openapi-review-engine.json (0.1.0-validation) MATCHES the implementation while openapi.json (1.0.0, Commercial licence) does not. Four options costed. Nothing implemented.",
-      "update_2026_09_15": "External distribution INVESTIGATED 2026-09-15 and ESTABLISHED: openapi.json is PUBLISHED at /openapi.json and /openapi (HTTP 200, real spec) and linked from security.html, review-engine.html and both confidential buyer surfaces. Per the owner's own instruction this triggers COUNSEL REVIEW REQUIRED BEFORE CONTRACT MODIFICATION. No document modified, no field emitted, no routing vocabulary chosen, and routing is NOT asserted equal to determination."
+      "update_2026_09_15": "External distribution INVESTIGATED 2026-09-15 and ESTABLISHED: openapi.json is PUBLISHED at /openapi.json and /openapi (HTTP 200, real spec) and linked from security.html, review-engine.html and both confidential buyer surfaces. Per the owner's own instruction this triggers COUNSEL REVIEW REQUIRED BEFORE CONTRACT MODIFICATION. No document modified, no field emitted, no routing vocabulary chosen, and routing is NOT asserted equal to determination.",
+      "note_2026_09_15_cycle2": "API_COMPATIBILITY_IMPLEMENTATION_PLAN.md added as design only. openapi.json remains untouched. The blocker inside the recommended option is recorded: option D requires emitting 'Needs work', which appears nowhere in the Codebook, so D cannot proceed until the owner declares the routing mapping. Status unchanged."
     },
     {
       "blocker_id": "B-008",

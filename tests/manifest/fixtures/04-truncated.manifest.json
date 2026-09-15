@@ -1,0 +1,64 @@
+{
+  "manifest_id": "32a6df70-7dff-48db-a0b2-7de9c3b067b1",
+  "manifest_version": "1.0",
+  "created_at": "2026-09-15T13:38:24.855Z",
+  "jrs_version": "1.0",
+  "codebook_version": "1.0",
+  "engine": {
+    "name": "JRS Review Engine",
+    "version": "0.1.0-validation",
+    "model": "claude-haiku-4-5-20251001",
+    "api_version": "v1"
+  },
+  "input": {
+    "hash": "sha256:4a8c7ef4d25c48aa6b9b3b1a1fa886af994fbd567b52d02a39e87ce160941b56",
+    "hash_algorithm": "sha256",
+    "length_chars": 8000,
+    "truncated": true,
+    "source_hash": "sha256:2f2f10e9793d26509889c4d39494e839c0038e1b7117bafd8563749e0b04949c"
+  },
+  "condition_vocabulary": "review_engine_keys",
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The stated basis is not traceable to a source in the file.",
+      "note_content_class": "derived_record_content"
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The stated basis is not traceable to a source in the file.",
+      "note_content_class": "derived_record_content"
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "The stated basis is not traceable to a source in the file.",
+      "note_content_class": "derived_record_content"
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The stated basis is not traceable to a source in the file.",
+      "note_content_class": "derived_record_content"
+    },
+    "temporal_reconstructability": {
+      "status": "review",
+      "note": "The stated basis is not traceable to a source in the file.",
+      "note_content_class": "derived_record_content"
+    }
+  },
+  "routing": {
+    "value": "review_required",
+    "vocabulary": "engine_determination"
+  },
+  "human_review": {
+    "required": true,
+    "reason": "Human review remains required because the current Review Engine is not established as validated for autonomous consequential decision use."
+  },
+  "content_class": "derived_record_content",
+  "evaluation": {
+    "runs": 1
+  },
+  "integrity": {
+    "manifest_hash": "sha256:4c4c9b91a4b7a9e3e90361a3f6673d8baca0c3648462c4d149b3273522bb9093",
+    "canonicalization": "jrs-dev-canon-1"
+  }
+}
