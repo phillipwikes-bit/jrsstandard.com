@@ -314,3 +314,56 @@ changed) or Research Evidence (no research figure, record or snapshot touched).
 **"Implemented" was not converted to "verified."** **"Drafted" was not converted to
 "approved."** **"Development pass" was not converted to "production verified."**
 No blocker moved to CLOSED. No owner or counsel matter was resolved.
+
+---
+
+# CYCLE 5 — 2026-09-15 · PRE-DEPLOYMENT EVIDENCE AND DECISION CONTROL
+
+**Manifest functional scope FROZEN.** No Manifest capability was added this cycle. The work was
+boundaries and decision packages.
+
+## Duplication guard hardened
+
+**FACT:** the guard as written caught **1 of 9** evasion routes. A rename, a changed extension,
+a nested copy under a new directory and a copied fixture all passed.
+**ENGINEERING ACTION:** content-signature matching across five implementation files plus
+generated manifests. **10 of 10 routes now caught.**
+**FACT, recorded because it is the second occurrence:** my own scratch-copy test harness
+reverted the guard under test with `git checkout -- .`, producing eight false passes. **The
+harness was wrong, not the guard.**
+**STATUS: REMEDIATED.**
+
+## Outbound destination inventory
+
+**ENGINEERING ACTION:** `.jrs/registries/OUTBOUND_DESTINATIONS.json`, 21 destinations
+classified by traced execution path; fail-closed guard; 5 mutations.
+**FACT preserved:** OpenAI and Google Generative Language are **CLOSED_RESEARCH**, not ACTIVE.
+A live cron and a present credential are not evidence of an active processor.
+**STATUS: REMEDIATED.**
+
+## Owner decision packages — PREPARED, NOT DECIDED
+
+**B-001:** external credential checklist. **Preparing a checklist is not rotation.** Status
+unchanged: OPEN / OWNER ACTION REQUIRED.
+**B-013:** decomposed package for A, B and C with aggregates and options.
+**B-013A is the one that is free to fix now**, because `engine_reviews` holds 0 rows; that is
+an ENGINEERING RECOMMENDATION and requires a production grant change, which is not authorized.
+**B-013B turns on what contributors were told, which the owner knows and the repository does
+not.** Status unchanged: OWNER ACTION REQUIRED.
+
+## Deliberately not built
+
+**No automated prohibited-term guard.** A substring check cannot distinguish an assertion from
+a negation; mine flagged `0.1.0-validation` and *"not established as validated"*. **This is the
+second such false positive**, after `legally defensible` inside a disclaimer.
+**BOARD POSITION: false-positive governance is worse than none.** It stays a human-review scan.
+
+## Deployment
+
+**DEPLOYMENT NOT READY.** Four prerequisites unmet; B-001 alone is dispositive.
+**No production change occurred.** The diff is labelled a **DEVELOPMENT CANDIDATE DIFF**.
+
+## Not converted
+
+No blocker CLOSED · no owner action completed · no counsel question answered · no development
+test elevated to production verification · no recommendation recorded as a decision.

@@ -5125,6 +5125,83 @@ def check_tracked_guides_carry_exactly_one_routing_page(offline):
           else "3 tracked guides, 1 routing page each on the last page; combined overview clean")
 
 
+def check_no_unapproved_outbound_destination(offline):
+    """Every outbound host in the estate is in the approved inventory.
+
+    WHY THIS GUARD EXISTS. The processor disclosure on privacy.html is only true
+    while the set of outbound destinations is the set that was disclosed. The
+    failure mode is not someone writing a false sentence; it is someone adding a
+    fetch and nobody remembering the disclosure page exists.
+
+    This FAILS CLOSED. A host that is not in
+    .jrs/registries/OUTBOUND_DESTINATIONS.json is a failure, not a pass, which
+    forces a human to classify it rather than letting silence be the default.
+
+    CLASSIFICATION IS BY TRACED EXECUTION PATH. The inventory records OpenAI and
+    Generative Language as CLOSED_RESEARCH, not ACTIVE, because api/run-study.js
+    returns on STUDIES_CLOSED before any key is read, and the last study_runs row
+    is 2026-08-21. A live cron entry and a present credential are not evidence of
+    an active processor, which is exactly the mistake this file is guarding.
+
+    It deliberately does NOT re-derive the classifications. It checks that the
+    code and the inventory still describe the same set of destinations, and that
+    the two dormancy flags the inventory relies on are still set in the code.
+    """
+    findings = []
+    try:
+        inv = json.loads(read(".jrs/registries/OUTBOUND_DESTINATIONS.json"))
+    except Exception as e:
+        check("no unapproved outbound destination", False,
+              "approved inventory missing or unparseable: %r" % (e,))
+        return
+
+    approved = {d["host"]: d for d in inv.get("destinations", [])}
+
+    seen = {}
+    api_dir = os.path.join(ROOT, "api")
+    for dirpath, _dirs, files in os.walk(api_dir):
+        for fn in sorted(files):
+            if fn.endswith(".js"):
+                rel = os.path.relpath(os.path.join(dirpath, fn), ROOT)
+                for host in re.findall(r"https://([A-Za-z0-9._-]+)", read(rel)):
+                    seen.setdefault(host, rel)
+    for rel in _html_files():
+        for host in re.findall(r"https://([A-Za-z0-9._-]+)", read(rel)):
+            seen.setdefault(host, rel)
+
+    for host in sorted(seen):
+        if host not in approved:
+            findings.append("%s calls out to %r, which is NOT in the approved outbound "
+                            "inventory. Classify it and update the disclosure before "
+                            "this passes." % (seen[host], host))
+
+    # Hosts the inventory lists that no longer appear anywhere. Not a failure in
+    # itself, but a stale inventory is how a disclosure drifts out of true.
+    stale = [h for h in approved if h not in seen]
+    if stale:
+        findings.append("inventory lists %d host(s) no longer referenced anywhere: %s"
+                        % (len(stale), ", ".join(sorted(stale))))
+
+    # The two flags the CLOSED_RESEARCH and DORMANT rows depend on.
+    if not re.search(r"STUDIES_CLOSED\s*=\s*true", read("api/_study-status.js")):
+        findings.append("STUDIES_CLOSED is no longer true, so the CLOSED_RESEARCH "
+                        "classification for OpenAI and Generative Language is false")
+    if not re.search(r"const\s+ALERTS_ENABLED\s*=\s*false", read("api/_notify.js")):
+        findings.append("ALERTS_ENABLED is no longer false, so the DORMANT "
+                        "classification for Resend and SendGrid is false")
+
+    by_class = {}
+    for d in approved.values():
+        by_class[d["classification"]] = by_class.get(d["classification"], 0) + 1
+    summary = ", ".join("%s %d" % (k.lower(), v) for k, v in sorted(by_class.items()))
+
+    check("no unapproved outbound destination",
+          not findings,
+          "; ".join(findings) if findings
+          else "%d hosts referenced, all approved (%s); dormancy flags intact"
+               % (len(seen), summary))
+
+
 def check_manifest_implementation_is_not_deployable(offline):
     """Manifest implementation directories stay out of the deployable set.
 
@@ -5165,8 +5242,34 @@ def check_manifest_implementation_is_not_deployable(offline):
     # tools/validate-manifest.js and the schema into docs/, outside every rule
     # then in force. Catching the DUPLICATE is what stops the exclusion being
     # defeated by a copy rather than by an edit.
-    protected = ("validate-manifest.js",
-                 "jrs-decision-reconstruction-manifest.schema.json")
+    # DUPLICATION-BASED EXPOSURE, not merely path-based exposure.
+    #
+    # A path rule protects a path. On 2026-09-15 the exclusion was defeated
+    # within the hour by COPYING the validator and the schema into docs/. So
+    # this matches on CONTENT SIGNATURE as well as filename, which also catches
+    # a rename, a changed extension and a nested copy under a new directory.
+    protected_names = ("validate-manifest.js", "build.js", "canonicalize.js",
+                       "hash.js", "run.mjs",
+                       "jrs-decision-reconstruction-manifest.schema.json")
+    # Distinctive strings from each implementation file. A copy that renames the
+    # file still carries these; a file that does not carry them is not a copy.
+    signatures = (
+        ("manifest generator", "manifest_build_failed: unknown condition_vocabulary"),
+        ("offline validator", "is not implemented by this validator, so the manifest hash"),
+        ("canonicalizer", "CANONICALIZATION_ID = 'jrs-dev-canon-1'"),
+        ("manifest schema", '"$id": "https://www.jrsstandard.com/schemas/jrs-decision'),
+        ("test harness", "RT forged no_record_content with notes is REJECTED"),
+        # A GENERATED MANIFEST itself. Caught by a mutation on 2026-09-15 that
+        # copied a fixture to the repository root and passed: the first draft
+        # protected the code and forgot the artifacts the code produces. A
+        # manifest is low-sensitivity by design, but it still carries engine
+        # versions and model identifiers, and a manifest at a guessable public
+        # path is a disclosure nobody decided to make. The intentional copy in
+        # the independent-review package lives in an excluded directory, so it
+        # does not trip this.
+        ("generated manifest", '"canonicalization": "jrs-dev-canon-1"'),
+    )
+    protected = protected_names
     for dirpath, dirs, files in os.walk(ROOT):
         rel = os.path.relpath(dirpath, ROOT)
         if rel == ".":
@@ -5179,9 +5282,28 @@ def check_manifest_implementation_is_not_deployable(offline):
                 "docs/manifest-independent-review/")):
             continue
         for fn in files:
+            rel_path = prefix + fn
             if fn in protected:
-                findings.append("%s%s sits outside every exclusion rule; a copy at a "
-                                "servable path defeats the exclusion" % (prefix, fn))
+                findings.append("%s sits outside every exclusion rule; a copy at a "
+                                "servable path defeats the exclusion" % rel_path)
+                continue
+            # Renamed, re-extensioned or nested copies: match on content.
+            if os.path.splitext(fn)[1].lower() not in (
+                    ".js", ".mjs", ".cjs", ".json", ".txt", ".ts", ".bak", ""):
+                continue
+            try:
+                body = read(rel_path)
+            except Exception:
+                continue
+            if len(body) > 400000:
+                continue
+            for label, sig in signatures:
+                if sig in body:
+                    findings.append("%s carries the %s content signature but sits "
+                                    "outside every exclusion rule; a renamed or "
+                                    "re-extensioned copy defeats the exclusion"
+                                    % (rel_path, label))
+                    break
 
     check("manifest implementation is not deployable",
           not findings,
@@ -5828,6 +5950,7 @@ def main():
                check_training_is_ungated,
                check_training_modules_are_findable,
                check_public_downloads_are_not_blocked_by_a_redirect,
+               check_no_unapproved_outbound_destination,
                check_manifest_implementation_is_not_deployable,
                check_manifest_library_holds_its_refusals,
                check_manifest_schema_keeps_its_safeguards,
