@@ -151,7 +151,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 <div class="page-eyebrow">Privacy Policy</div>
 <h1 class="page-title">How JRS handles your information</h1>
 <p class="page-subtitle">JRS is a documentation-governance standard, and it holds itself to the same discipline it asks of a record: collect only what is needed, say plainly why, and keep it defensible. This page explains what we collect, how it is stored, the choices you make when you give it, and how to see or delete it.</p>
-<div class="updated">Last updated: 13 July 2026</div>
+<div class="updated">Last updated: 15 September 2026</div>
 
 <h2 class="section-head">1. Who we are</h2>
 <div class="legal">
@@ -201,10 +201,31 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 <div class="legal">
 <p>We do not sell your personal information, and we do not share it for advertising. We share it only in these limited situations:</p>
 <ul>
-  <li><span class="d">&middot;</span><span><b>Service providers</b> that run the site on our behalf (our database host and our analytics provider), which process data only to provide those services.</span></li>
+  <li><span class="d">&middot;</span><span><b>Service providers</b> that run the site on our behalf, which process data only to provide those services. Every one of them is named below.</span></li>
   <li><span class="d">&middot;</span><span><b>A successor organization</b> in the event of a sale or transfer of the JRS assets, for the records of people who registered and ticked the consent box described in section 3. Records held for people who never registered, and records of anyone who has since withdrawn, are not transferred.</span></li>
   <li><span class="d">&middot;</span><span><b>Where the law requires it</b>, such as a valid legal request.</span></li>
 </ul>
+<h3 style="font-family:'Bodoni Moda',serif;font-size:14.5px;font-weight:500;color:var(--text);margin-top:26px;margin-bottom:6px">The service providers we use</h3>
+<p>These are the external services that process data for JRS. They are grouped by what they actually receive, because the name of a service and the data it gets are different questions.</p>
+<p><b>Services that can receive data from your visit</b></p>
+<ul>
+  <li><span class="d">&middot;</span><span><b>Vercel</b> hosts this site and runs its functions, so it processes every request, including your IP address and the pages you open.</span></li>
+  <li><span class="d">&middot;</span><span><b>Supabase</b> is our database. It holds what you submit: enrollment details, study submissions, downloads and the consent choices described in section 3.</span></li>
+  <li><span class="d">&middot;</span><span><b>Anthropic</b> provides the model behind the record review tools. Text you paste into a review tool is sent there to be assessed. It is processed in memory and is not written to our database.</span></li>
+  <li><span class="d">&middot;</span><span><b>Google Analytics 4</b> receives your IP address, your browser user-agent and the pages you open, on the pages that carry the analytics tag. This is the service described in section 8.</span></li>
+  <li><span class="d">&middot;</span><span><b>Google Fonts</b> delivers the typefaces this site uses. Your browser fetches those files from Google when a page loads, and that request discloses your IP address to Google. It happens on nearly every page here, <b>including pages that carry no analytics tag</b>, and it happens whatever choice you make about analytics cookies. Blocking Google Analytics does not stop it.</span></li>
+  <li><span class="d">&middot;</span><span><b>Formspree</b> relays the form on the pilot page. Whatever you type into that form passes through Formspree.</span></li>
+</ul>
+<p><b>Services used only for research</b></p>
+<ul>
+  <li><span class="d">&middot;</span><span><b>OpenAI</b> and <b>Google (Generative Language, the Gemini models)</b> receive records in a nightly study that compares how different models read the same material. Based on our review of the code that sends them, those records are constructed for the study and contain no personal data. That is a finding from reading the source rather than a verification of live traffic, and it is stated that way on purpose.</span></li>
+</ul>
+<p><b>Present in the code, not running</b></p>
+<ul>
+  <li><span class="d">&middot;</span><span><b>Resend</b> and <b>SendGrid</b>: email-sending code exists, but the function returns before it reads any credential, so no message is sent and neither service receives anything. They are named here so that nobody finding the code later mistakes it for an active service.</span></li>
+</ul>
+<p>Naming these services tells you where data goes. It is not a statement that any particular legal or regulatory requirement has been met.</p>
+
 <p>Registry members are listed by name and organization, which is what joining the Registry means and what the separate optional button says. Study reviewers are treated separately and more strictly: where a reviewer's name is shown publicly, for example on a named study panel or in a publication, it is shown only with that reviewer's specific approval of the exact wording, and any reviewer may withdraw before publication. Being named reflects participation only and is not an endorsement.</p>
 </div>
 
@@ -229,6 +250,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 <h2 class="section-head">8. Analytics and cookies</h2>
 <div class="legal">
 <p>We use Google Analytics 4, which sets cookies to measure aggregate usage. You can block cookies in your browser or use a browser extension to opt out of Google Analytics, and the site will still work. We do not use cookies to identify you personally or to serve advertising.</p>
+<p><b>One thing that opting out does not cover.</b> This site loads its typefaces from Google Fonts, and your browser requests those files from Google every time a page loads. That request carries your IP address. It is separate from analytics, it is not a cookie, and blocking Google Analytics does not prevent it. It is listed among the service providers in section 5.</p>
 </div>
 
 <h2 class="section-head">9. Children</h2>

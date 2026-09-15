@@ -35,7 +35,58 @@ Whether a *named party* relied on it is **NOT ESTABLISHED** and was not guessed.
 **EVIDENCE.** One pair EXACT, two SEMANTIC, one UNRESOLVED. Asked first in `METHODOLOGY_TO_API_MAPPING.md`.
 **APPROVAL REQUIRED.** Declare the correspondence, or state the two sets are deliberately distinct constructs.
 
-## D-4 · Subprocessor disclosure — **APPROVED IN PRINCIPLE; CONTENT SIGN-OFF OPEN**
+## D-4 · Subprocessor disclosure — **CONTENT DRAFTED 2026-09-15; PUBLICATION OPEN**
+
+**UPDATE 2026-09-15.** The disclosure is written into `privacy.html` and is **not deployed**.
+Decisions 1 and 3 are satisfied in draft: every active processor is named, and the nightly
+cross-vendor providers (OpenAI, Google Generative Language) are named as research-only with
+the no-personal-data statement kept bounded to source review. Decision 2 is **partially**
+satisfied: Google Fonts is disclosed; self-hosting was not authorised and was not performed.
+**Publication itself still requires approval (Section 23).**
+
+## D-10 · Restricted surfaces load Google Fonts — **NEW, OPEN**
+
+**QUESTION.** All three restricted surfaces (`programme-status-9872fb93cc94.html`,
+`acquisition-9f3c2a7d4b.html`, `vp-7c1f9a4e8d2b6035.html`) load Google Fonts, so a visitor
+to a confidential buyer surface discloses their IP address to Google on page load. Analytics
+was deliberately removed from the owner page; the font request was never considered. What, if
+anything, should be done?
+**EVIDENCE.** Each of the three references `fonts.googleapis.com` and `fonts.gstatic.com`;
+each has zero `gtag(` and zero `googletagmanager` references.
+**OPTIONS.** Accept and record · self-host the fonts for those three pages only · self-host
+site-wide · remove the webfont from those pages.
+**WHAT IS NOT DETERMINED HERE.** What this means under any privacy regime. That is a legal
+question (Rule 8) and is not answered in the repository.
+**APPROVAL REQUIRED.** Self-hosting is an engineering change and is not authorised. The
+access architecture of these surfaces was not touched (Section 36.3).
+
+## D-11 · `review-engine.html` contradicts the new disclosure — **NEW, OPEN, NOT EDITED**
+
+**QUESTION.** `review-engine.html` line 334 states: *"The call is stateless. Nothing in
+`text` is retained, stored, or used for training, so the record never leaves your control
+and no data-residency obligation transfers to us."* Should this sentence stand?
+
+**EVIDENCE.**
+- The **retention** half is supported. `api/review.js` contains no database write, so the
+  new privacy disclosure and this sentence agree that the text is not stored.
+- The clause **"the record never leaves your control"** is not supported. The text is
+  transmitted to Vercel and to Anthropic. The new `privacy.html` section says so plainly.
+- **"no data-residency obligation transfers to us"** is a legal conclusion about
+  contractual and regulatory allocation.
+- The page **already contradicts itself four paragraphs later**: *"Use a record you are
+  comfortable sending to a third-party model."*
+
+**WHY THIS WAS NOT FIXED HERE.** Two reasons, both binding. It is a commercial and legal
+representation, so Rule 8 puts it outside what may be decided in the repository. And STEP 6
+instructed that unrelated public language not be modified; the correct scope of a rewrite
+here is the owner's call, not a side effect of a privacy edit.
+
+**OPTIONS.** Narrow the sentence to the retention claim it can support · remove the
+data-residency clause and refer to counsel · leave it and accept the contradiction on record.
+
+**APPROVAL REQUIRED.** Yes. No change was made to `review-engine.html` under B-009.
+
+## D-4 (original entry, preserved) · Subprocessor disclosure — **APPROVED IN PRINCIPLE; CONTENT SIGN-OFF OPEN**
 
 **QUESTION.** Approve publishing a subprocessor disclosure, and its content?
 **EVIDENCE.** **Seven active processors**, not the four recorded. `privacy.html` names only Google Analytics. **Google Fonts discloses visitor IP on load regardless of analytics consent, across 53 pages, and is undisclosed.**

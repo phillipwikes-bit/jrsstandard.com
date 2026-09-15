@@ -5125,6 +5125,124 @@ def check_tracked_guides_carry_exactly_one_routing_page(offline):
           else "3 tracked guides, 1 routing page each on the last page; combined overview clean")
 
 
+def check_every_active_processor_is_disclosed(offline):
+    """Every external destination that can receive data is named on privacy.html.
+
+    WHY THIS GUARD EXISTS. B-009. The register recorded four subprocessors.
+    Inspection on 2026-09-14 found eight destinations, and the one that mattered
+    most was the quietest: Google Fonts discloses a visitor's IP to Google on
+    page load, on nearly every page, INDEPENDENTLY of any analytics cookie
+    choice. A reader who blocked Google Analytics and believed that stopped
+    Google receiving data was wrong, and privacy.html did not tell them.
+
+    The failure mode is not that someone writes a false sentence. It is that
+    someone adds an outbound call and nobody remembers the disclosure page
+    exists. So this guard works from the CODE toward the DISCLOSURE, not the
+    other way round.
+
+    WHAT IT CHECKS
+      1. Every host in KNOWN that is still referenced in api/ or in a page has
+         its disclosure name present on privacy.html.
+      2. Any https host appearing in api/ that is NOT classified here fails.
+         An unclassified destination is the thing to catch: it forces a human
+         to decide whether it receives data, rather than defaulting to silence.
+      3. Resend and SendGrid are named as present-but-not-running, and the
+         dormancy guard in api/_notify.js that makes that true is still there.
+         If the guard goes, the disclosure becomes false and this must fail.
+      4. The Google Fonts disclosure states the part that is easy to omit:
+         that it is not stopped by opting out of analytics.
+    """
+    findings = []
+
+    # host -> (the name that must appear on privacy.html, or None if the host
+    # sends no data outward and needs no disclosure)
+    KNOWN = {
+        "pjzxkeviouofdseagvpf.supabase.co": "Supabase",
+        "api.anthropic.com": "Anthropic",
+        "api.openai.com": "OpenAI",
+        "generativelanguage.googleapis.com": "Generative Language",
+        "fonts.googleapis.com": "Google Fonts",
+        "fonts.gstatic.com": "Google Fonts",
+        "www.googletagmanager.com": "Google Analytics 4",
+        "formspree.io": "Formspree",
+        "api.resend.com": "Resend",
+        "resend.com": "Resend",
+        "api.sendgrid.com": "SendGrid",
+        "sendgrid.com": "SendGrid",
+        # Own origin and reference-only citation targets. These receive no
+        # visitor data: they appear as URLs in content, not as POST targets.
+        "www.jrsstandard.com": None,
+        "jrsstandard.com": None,
+        "api.jrsstandard.com": None,
+        "law.justia.com": None,
+        "docsopengovernment.dos.ny.gov": None,
+        "www.nycourts.gov": None,
+        "www.osc.ny.gov": None,
+        "www.linkedin.com": None,
+    }
+
+    policy = read("privacy.html")
+
+    # 1 and 2. Walk the outbound hosts actually present in the API layer.
+    api_dir = os.path.join(ROOT, "api")
+    seen = set()
+    for dirpath, _dirs, files in os.walk(api_dir):
+        for fn in files:
+            if not fn.endswith(".js"):
+                continue
+            body = read(os.path.relpath(os.path.join(dirpath, fn), ROOT))
+            for host in re.findall(r"https://([A-Za-z0-9._-]+)", body):
+                seen.add(host)
+
+    for host in sorted(seen):
+        if host not in KNOWN:
+            findings.append("api/ calls out to %r, which is not classified in this "
+                            "guard and may be undisclosed" % host)
+            continue
+        name = KNOWN[host]
+        if name and name not in policy:
+            findings.append("%s (%s) receives data but is not named on privacy.html"
+                            % (name, host))
+
+    # Front-end destinations. These never appear in api/ and are the ones the
+    # original count missed.
+    for host in ("fonts.googleapis.com", "www.googletagmanager.com", "formspree.io"):
+        present = False
+        for fn in sorted(os.listdir(ROOT)):
+            if fn.endswith(".html") and host in read(fn):
+                present = True
+                break
+        if present and KNOWN[host] not in policy:
+            findings.append("%s (%s) is loaded by a page but is not named on "
+                            "privacy.html" % (KNOWN[host], host))
+
+    # 3. Dormancy has to remain true for the wording to remain true.
+    notify = read("api/_notify.js")
+    if "returns before reading any key" not in notify:
+        findings.append("api/_notify.js no longer states the dormancy guard that "
+                        "makes the Resend and SendGrid disclosure true")
+    for name in ("Resend", "SendGrid"):
+        if name not in policy:
+            findings.append("%s is not named on privacy.html as present but not running"
+                            % name)
+
+    # 4. The Fonts disclosure is only useful if it says the part people get wrong.
+    low = policy.lower()
+    if "google fonts" in low:
+        if not ("blocking google analytics does not" in low
+                or "does not prevent it" in low):
+            findings.append("privacy.html names Google Fonts but does not state that "
+                            "opting out of analytics does not stop it")
+    else:
+        findings.append("privacy.html does not name Google Fonts")
+
+    check("every active processor is disclosed",
+          not findings,
+          "; ".join(findings) if findings
+          else "%d outbound hosts in api/, all classified; front-end destinations, "
+               "dormant services and the Fonts caveat all disclosed" % len(seen))
+
+
 def check_pages_that_render_engine_output_disclose_validation_status(offline):
     """Any page that renders Review Engine output states the engine's validation status.
 
@@ -5410,6 +5528,7 @@ def main():
                check_training_is_ungated,
                check_training_modules_are_findable,
                check_public_downloads_are_not_blocked_by_a_redirect,
+               check_every_active_processor_is_disclosed,
                check_pages_that_render_engine_output_disclose_validation_status,
                check_public_engine_endpoints_carry_no_record_text,
                check_owner_only_endpoints_are_not_swept_up_by_the_pii_rule,

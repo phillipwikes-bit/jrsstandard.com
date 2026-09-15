@@ -45,10 +45,11 @@
       ],
       "required_action": "Publish the subprocessor list, or record a decision not to.",
       "owner": "HUMAN",
-      "status": "PREPARED_FOR_HUMAN_REVIEW",
+      "status": "DISCLOSURE WRITTEN \u2014 NOT DEPLOYED",
       "created": "2026-09-14",
       "remediation_2026_09_14": "Scope superseded by B-009: seven active processors, not four. Publishing a disclosure is a Section 23 publication.",
-      "update_2026_09_15": "Disclosure APPROVED IN PRINCIPLE by owner 2026-09-15. Merged in scope with B-009. Publication itself not yet performed."
+      "update_2026_09_15": "Disclosure APPROVED IN PRINCIPLE by owner 2026-09-15. Merged in scope with B-009. Publication itself not yet performed.",
+      "remediation_2026_09_15": "Satisfied by the B-009 disclosure. privacy.html now names every active processor, so the original required_action (publish the list, or record a decision not to) is met in draft. The original count of four is preserved above rather than edited, and the corrected count lives in B-009. NOT DEPLOYED, so publication is not yet complete."
     },
     {
       "blocker_id": "B-004",
@@ -119,12 +120,13 @@
       ],
       "required_action": "Decide whether api/review.js should carry the declaration the other two engines carry.",
       "owner": "HUMAN",
-      "status": "REMEDIATED AT UI LAYER \u2014 NOT DEPLOYED",
+      "status": "REMEDIATED AT UI LAYER, OWNER ACCEPTED \u2014 NOT DEPLOYED",
       "created": "2026-09-14",
       "update_2026_09_15": "Owner decided (D-5) to add a bounded statement at the public UI layer and NOT inside the JSON response. Investigation narrowed the gap precisely: review-engine.html ALREADY carries 'unvalidated, single-model engine in operational validation' and index.html carries three mentions, but training.html carries ZERO while POSTing to /api/review and rendering the result to a learner. Wording prepared; not inserted, because it changes an external representation.",
       "correction_2026_09_15": "OLD FINDING: 'index.html carries three mentions' of the unvalidated-engine disclosure. NEW EVIDENCE: grep -c -i 'unvalidated' index.html returns 0; the page renders engine output via renderReviewResults(data) at line 5110. CORRECTED STATUS: the earlier narrowing was WRONG. Three pages call /api/review, and two of them, index.html and review-engine.html, were also missing required propositions. EXPLANATION: the earlier pass matched on adjacent vocabulary ('validation', 'reproducibility') rather than on the proposition itself, and reported a count that was never verified. The new guard check_pages_that_render_engine_output_disclose_validation_status found it.",
       "remediation_2026_09_15": "IMPLEMENTED at the public UI layer only; api/review.js and its JSON response are UNCHANGED, per D-5. The bounded disclosure states all four owner-specified propositions: the engine is operationally implemented; it is empirically unvalidated; reproducibility is not equivalent to accuracy; the output does not replace human judgment. Inserted on training.html at two points (before the input and inside the results footer, so it travels with every rendered output), on index.html adjacent to the Record Review Workspace, and on review-engine.html inside the existing 'Stage and limits, stated first' callout. None of the banned vocabulary (legally defensible, legally sufficient, court-admissible, certified, accredited, guaranteed accurate) is used. Guard added and demonstrated failing against the pre-fix tree. Suite 129 checks, 0 failed, 1 skipped. NOT DEPLOYED: the change is an external representation and remains on the development branch.",
-      "scope_note_2026_09_15": "SCOPE WIDENED BEYOND THE LITERAL AUTHORIZATION, AND FLAGGED RATHER THAN HIDDEN. The owner authorized B-008 remediation on training.html, which was the target set I had reported. That report was factually wrong. The same blocker, the same wording and the same remediation were applied to the two other pages that render engine output. Reversible, undeployed, and subject to the owner's decision."
+      "scope_note_2026_09_15": "SCOPE WIDENED BEYOND THE LITERAL AUTHORIZATION, AND FLAGGED RATHER THAN HIDDEN. The owner authorized B-008 remediation on training.html, which was the target set I had reported. That report was factually wrong. The same blocker, the same wording and the same remediation were applied to the two other pages that render engine output. Reversible, undeployed, and subject to the owner's decision.",
+      "owner_decision_2026_09_15": "ACCEPTED by Phillip Wikes. The scope widening to the full target set is approved: training.html, index.html and review-engine.html retain the four bounded-validation propositions. api/review.js and its JSON response stay unchanged. Not deployed."
     },
     {
       "blocker_id": "B-009",
@@ -136,10 +138,14 @@
       ],
       "required_action": "Add Google to the subprocessor disclosure. Consider self-hosting fonts, which removes an IP disclosure that occurs regardless of analytics consent.",
       "owner": "HUMAN",
-      "status": "PREPARED_FOR_HUMAN_REVIEW",
+      "status": "DISCLOSURE WRITTEN \u2014 NOT DEPLOYED; RESTRICTED-SURFACE FONTS DECISION OPEN",
       "created": "2026-09-14",
       "remediation_2026_09_14": "Expanded to SEVEN active processors: Vercel, Supabase, Anthropic, Google GA4, Google Fonts, OpenAI, Google Gemini, plus Formspree. Resend and SendGrid recorded as DORMANT (the notify path returns before reading any key). Class A visitor data and Class B constructed research data kept distinct.",
-      "update_2026_09_15": "Disclosure APPROVED IN PRINCIPLE 2026-09-15, including Google Fonts. Self-hosting NOT authorized and not performed. Seven active processors recorded; Resend and SendGrid remain DORMANT. Class A and Class B kept distinct. Publication not yet performed."
+      "update_2026_09_15": "Disclosure APPROVED IN PRINCIPLE 2026-09-15, including Google Fonts. Self-hosting NOT authorized and not performed. Seven active processors recorded; Resend and SendGrid remain DORMANT. Class A and Class B kept distinct. Publication not yet performed.",
+      "correction_2026_09_15": "OLD FINDING: the GA4 tag 'G-NVYHJ7BJ92 on 45 pages'. NEW EVIDENCE: 45 files contain the string but programme-status-9872fb93cc94.html contains it only inside a comment recording the tag's deliberate removal; that page has 0 gtag( and 0 googletagmanager references. CORRECTED STATUS: GA4 is active on 44 pages, not 45. EXPLANATION: the earlier count matched the tag ID as a string rather than the loaded script.",
+      "new_finding_2026_09_15": "MATERIAL AND PREVIOUSLY UNRECORDED: all three restricted surfaces load Google Fonts. programme-status-9872fb93cc94.html, acquisition-9f3c2a7d4b.html and vp-7c1f9a4e8d2b6035.html each reference fonts.googleapis.com and fonts.gstatic.com. Analytics was deliberately removed from the owner page, but the font request was never considered, so a visitor to a confidential buyer surface discloses their IP to Google on load. This is a FACT about the data flow. It is NOT a legal or regulatory conclusion, and no remedy was applied: self-hosting is not authorized and the access architecture was not touched. REQUIRES HUMAN DECISION.",
+      "remediation_2026_09_15": "PUBLIC DISCLOSURE WRITTEN, NOT DEPLOYED. privacy.html now names every active processor inside section 5, grouped by what each actually receives: Vercel, Supabase, Anthropic, Google Analytics 4, Google Fonts, Formspree; OpenAI and Google Generative Language as research-only; Resend and SendGrid as present in the code but not running. The Google Fonts entry states the part that is easy to omit, that the IP disclosure happens on pages carrying no analytics tag and is not stopped by opting out of analytics, and section 8 repeats it where a reader making that choice will see it. The OpenAI and Gemini entry is stated as a bounded finding from source review rather than as verified live traffic. The section closes by stating that naming a service describes where data goes and is not a claim that a legal or regulatory requirement is met. Last-updated date moved to 15 September 2026. Sections 6 to 10 were not renumbered and no unrelated language was touched. Self-hosting NOT performed. Guard check_every_active_processor_is_disclosed added and demonstrated failing on four separate real failure modes.",
+      "contradiction_found_2026_09_15": "review-engine.html line 334 says the record 'never leaves your control' and that 'no data-residency obligation transfers to us', while the same page four paragraphs later tells the reader to use a record they are comfortable sending to a third-party model, and the new disclosure states the text goes to Vercel and Anthropic. The retention half of the sentence is supported; the rest is not. NOT EDITED: it is a commercial and legal representation (Rule 8) and outside the STEP 6 scope. Recorded as D-11."
     },
     {
       "blocker_id": "B-010",

@@ -90,3 +90,80 @@ A processor in Class B is not thereby low-risk, and a processor in Class A is no
 > **DECISION 3.** Whether the nightly cross-vendor study's providers are named publicly.
 
 **No public privacy or legal language was changed. No service was removed. No font was self-hosted.**
+
+---
+
+# ADDENDUM — 2026-09-15 · B-009 REMEDIATION
+
+**Nothing above is edited.** The findings of 2026-09-14 stand as written. This
+addendum records what changed, what was corrected, and what is still open.
+
+## Reconciliation of the inventory
+
+Re-counted on 2026-09-15. The provider set is unchanged. Two figures are corrected.
+
+| Item | Recorded 2026-09-14 | Verified 2026-09-15 | Note |
+|---|---|---|---|
+| GA4 pages | 45 | **44 active** | Corrected, see below |
+| Google Fonts pages | 53 | 53 of 55 | Unchanged. The two without are `404.html` and `people.html` |
+| Formspree | `pilot.html` | `pilot.html` | Unchanged |
+| Cross-vendor cron | `0 6 * * *` | `0 6 * * *` | Unchanged |
+| Dormancy guard | present | present | `api/_notify.js` still returns before reading a key |
+
+**CORRECTION.** OLD FINDING: the GA4 tag appears "on 45 pages". NEW EVIDENCE:
+45 files contain the string `G-NVYHJ7BJ92`, but `programme-status-9872fb93cc94.html`
+contains it only inside a comment recording the tag's deliberate removal, and that
+page has zero `gtag(` and zero `googletagmanager` references. CORRECTED STATUS:
+**GA4 is active on 44 pages.** EXPLANATION: the earlier count matched the tag ID as
+a string rather than the loaded script.
+
+## NEW FINDING — the restricted surfaces load Google Fonts
+
+**FACT.** All three restricted surfaces reference `fonts.googleapis.com` and
+`fonts.gstatic.com`:
+
+| Surface | Class | Analytics tag | Google Fonts |
+|---|---|---|---|
+| `programme-status-9872fb93cc94.html` | Private owner | **No** (removed deliberately) | **Yes** |
+| `acquisition-9f3c2a7d4b.html` | Confidential buyer | No | **Yes** |
+| `vp-7c1f9a4e8d2b6035.html` | Confidential buyer | No | **Yes** |
+
+Analytics was deliberately removed from the owner page. The font request was never
+considered. The consequence is that **a visitor to a confidential buyer surface
+discloses their IP address to Google on page load**, and the timing of that request
+corresponds to the visit.
+
+**This is a statement about a data flow, not a legal conclusion.** What it means
+under any particular privacy regime is not determined here (Rule 8, Rule 9).
+
+**No remedy was applied.** Self-hosting is not authorised. The access architecture
+was not touched (Section 36.3). **REQUIRES HUMAN DECISION.**
+
+## What was implemented
+
+`privacy.html` only. Section 5 now names every active processor, grouped by what
+each receives; section 8 states that opting out of analytics does not stop the
+Google Fonts request; the last-updated date moved to 15 September 2026. Sections 6
+to 10 were not renumbered and no unrelated language was changed.
+
+Recommended actions 1, 3, 4 and 5 from the table above are now drafted. **Action 2
+is partially addressed**: Fonts is disclosed; self-hosting was not performed and
+remains the owner's decision.
+
+## Guard
+
+`check_zero_drift.py::check_every_active_processor_is_disclosed` works from the code
+toward the disclosure, so an outbound call added later fails the suite rather than
+passing unnoticed. Demonstrated failing on four real modes: the pre-fix policy, the
+Fonts caveat removed, an unclassified new destination in `api/`, and the dormancy
+guard removed from `api/_notify.js`.
+
+## Still open
+
+1. **Deployment.** Nothing is published. This is a Section 23 publication and needs
+   owner authorisation.
+2. **Restricted-surface fonts.** The new finding above.
+3. **Self-hosting.** Not authorised, not performed.
+4. **Processor agreements.** Whether a data-processing agreement exists with any of
+   these providers is **NOT ESTABLISHED** from repository evidence. The disclosure
+   deliberately makes no claim about it.
