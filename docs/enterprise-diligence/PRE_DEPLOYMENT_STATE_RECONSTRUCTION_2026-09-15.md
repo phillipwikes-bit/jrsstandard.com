@@ -43,8 +43,17 @@ evidence and control, not shipped surface.**
 | `routing`, `conditions`, `determination`, `disclaimer`, `disclosure`, `result`, `logReview`, `compliant_version` | **0 each** |
 
 **Behaviour preservation proven rather than asserted:** `jrsModel()` with no environment
-override returns `claude-haiku-4-5-20251001`, byte-identical to the literal it replaced; the
-override path was exercised; **zero literals remain outside `_model.js`**.
+override returns `claude-haiku-4-5-20251001`, byte-identical to the literal it replaced, and
+the override path was exercised.
+
+**CORRECTION 2026-09-15.** This previously read **"zero literals remain outside `_model.js`"**.
+**That is false as written.** Two live literals remain in
+`supabase/functions/run-study/index.ts` (lines 38 and 75), a **second** Anthropic-calling
+engine, and one appears in `review-engine.html:379` as a published example response. **The
+six-literal census only ever covered `api/`.** The correct statement is: **zero literals remain
+in `api/`**, which is the surface B-005 audited and the surface this candidate deploys.
+`supabase/functions/` is a Supabase Edge Function deployed by a different toolchain and is now
+excluded from the Vercel deployable set. **B-005 is not remediated as originally described.**
 
 **No database change. No grant change. No new outbound destination. `openapi.json` untouched.**
 
@@ -52,7 +61,7 @@ override path was exercised; **zero literals remain outside `_model.js`**.
 
 | | |
 |---|---|
-| **DEVELOPMENT PASS** | Guard suite 135, 0 failed, 1 skipped. Manifest 63, 0 failed. 25 guard mutations across four guards. D-14 12/12 browser cases |
+| **DEVELOPMENT PASS** | Guard suite 135, 0 failed, 1 skipped (online); 131, 0 failed, 2 skipped (offline). Manifest 63, 0 failed. 25 guard mutations across four guards. D-14 12/12 browser cases |
 | **DEVELOPMENT FAIL** | **None** |
 | **PRODUCTION PASS** | **None** |
 | **PRODUCTION FAIL** | **None** |

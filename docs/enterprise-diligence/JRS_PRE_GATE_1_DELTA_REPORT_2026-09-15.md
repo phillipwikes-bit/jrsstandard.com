@@ -16,7 +16,7 @@ Compares the Pre-Gate-1 audit state against the state after this cycle.
 | D-11, D-13, D-15 | REMEDIATED, not verified | **unchanged** | Verification needs deployment |
 | D-14 | REMEDIATED AND TESTED | **unchanged** | 12/12 preserved; production plan is a separate artifact |
 | Manifest | specification only | **NEWLY BUILT, development only** | 39 checks, 0 failed; portability demonstrated offline |
-| Guard suite | 132 | **133** | Two manifest guards, ten mutations |
+| Guard suite | 132 | **133 online** | Two manifest guards, ten mutations |
 
 ## Newly discovered this cycle
 

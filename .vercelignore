@@ -55,7 +55,33 @@ build/
 
 # ---- data extracts ----------------------------------------------------------
 *.csv
-supabase-ALL.sql
+
+# ---- Supabase edge function source, not a Vercel asset -----------------------
+# Added 2026-09-15. VERIFIED ON PRODUCTION: /supabase/functions/run-study/index.ts
+# returned 200. It is a Supabase Edge Function deployed by the Supabase CLI, so
+# Vercel was serving its SOURCE as a static file: the study record corpus, the
+# model identifier and the deployment instructions naming the secret names.
+#
+# The nightly cron in vercel.json calls /api/run-study, the Vercel function, not
+# this one, so excluding it removes nothing that runs.
+supabase/
+
+# ---- database schema and policy definitions ---------------------------------
+# Added 2026-09-15 after an adversarial pass found that only supabase-ALL.sql was
+# excluded while TEN other root .sql files were not. VERIFIED ON PRODUCTION, not
+# inferred: /supabase-engine-reviews-setup.sql and /supabase-setup.sql both
+# returned 200, while the excluded /supabase-ALL.sql returned 404.
+#
+# supabase-engine-reviews-setup.sql publishes, at a guessable public URL, the
+# exact anon SELECT grant that blocker B-013A treats as an open, undispositioned
+# exposure, together with the full column list and a now-false retention comment.
+# Seven further files carry "for select to anon using (true)", which between them
+# map which tables are anonymously readable.
+#
+# This is the same exposure class the scripts/ rule above cites as its reason.
+# The wildcard replaces the single-file rule so a schema file added later is
+# internal by default rather than by luck.
+*.sql
 
 # ---- templates --------------------------------------------------------------
 templates/

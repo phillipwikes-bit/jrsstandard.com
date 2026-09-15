@@ -9,26 +9,159 @@
   },
   "updated": "2026-09-15",
   "destinations": [
-    { "host": "api.anthropic.com", "classification": "ACTIVE", "code": "api/review.js, api/review-engine.js, api/v1/review-engine.js, api/sandbox.js, api/run-study.js", "purpose": "Model inference. Receives record text.", "approved": true },
-    { "host": "pjzxkeviouofdseagvpf.supabase.co", "classification": "ACTIVE", "code": "api/*.js and 22 pages client-side", "purpose": "Database. Receives submitted and telemetry data.", "approved": true },
-    { "host": "fonts.googleapis.com", "classification": "ACTIVE", "code": "73 of 75 pages", "purpose": "Webfont CSS. Discloses visitor IP on load, independent of analytics consent.", "approved": true },
-    { "host": "fonts.gstatic.com", "classification": "ACTIVE", "code": "73 of 75 pages", "purpose": "Webfont files. Same disclosure.", "approved": true },
-    { "host": "www.googletagmanager.com", "classification": "ACTIVE", "code": "64 of 75 pages", "purpose": "Google Analytics 4.", "approved": true },
-    { "host": "formspree.io", "classification": "ACTIVE", "code": "pilot.html form action", "purpose": "Form relay. Receives free text.", "approved": true },
-    { "host": "api.openai.com", "classification": "CLOSED_RESEARCH", "code": "api/run-study.js", "purpose": "Cross-vendor reproducibility study.", "closed_at": "2026-08-21", "evidence": "api/_study-status.js STUDIES_CLOSED = true; the handler returns before any key is read; last study_runs row 2026-08-21.", "approved": true },
-    { "host": "generativelanguage.googleapis.com", "classification": "CLOSED_RESEARCH", "code": "api/run-study.js", "purpose": "Cross-vendor reproducibility study.", "closed_at": "2026-08-21", "evidence": "Same handler, same guard, same evidence.", "approved": true },
-    { "host": "api.resend.com", "classification": "DORMANT", "code": "api/_notify.js", "evidence": "ALERTS_ENABLED = false at line 66; notify() returns at 193 before the key is read at 203.", "approved": true },
-    { "host": "resend.com", "classification": "REFERENCE_ONLY", "code": "api/_notify.js comment", "approved": true },
-    { "host": "api.sendgrid.com", "classification": "DORMANT", "code": "api/_notify.js", "evidence": "Same function, same guard.", "approved": true },
-    { "host": "sendgrid.com", "classification": "REFERENCE_ONLY", "code": "api/_notify.js comment", "approved": true },
-    { "host": "api.jrsstandard.com", "classification": "ATTEMPTED_UNREACHABLE", "code": "index.html, pilot.html, training.html", "purpose": "Declared backend endpoint in CLAUDE.md 36.1.", "evidence": "No A record; the request fails and the .catch() returns the data to the visitor as a download. Implemented nowhere in this repository. Recorded as D-12, OWNER DECISION REQUIRED.", "approved": true },
-    { "host": "www.jrsstandard.com", "classification": "REFERENCE_ONLY", "approved": true },
-    { "host": "jrsstandard.com", "classification": "REFERENCE_ONLY", "approved": true },
-    { "host": "law.justia.com", "classification": "REFERENCE_ONLY", "code": "api/recheck.js", "approved": true },
-    { "host": "docsopengovernment.dos.ny.gov", "classification": "REFERENCE_ONLY", "code": "api/recheck.js", "approved": true },
-    { "host": "www.nycourts.gov", "classification": "REFERENCE_ONLY", "approved": true },
-    { "host": "www.osc.ny.gov", "classification": "REFERENCE_ONLY", "approved": true },
-    { "host": "www.linkedin.com", "classification": "REFERENCE_ONLY", "code": "api/reviewer-eval.js constructs a URL for storage; never fetched.", "approved": true },
-    { "host": "schema.org", "classification": "REFERENCE_ONLY", "code": "JSON-LD @context string; not fetched at runtime.", "approved": true }
+    {
+      "host": "api.anthropic.com",
+      "classification": "ACTIVE",
+      "code": "api/review.js, api/review-engine.js, api/v1/review-engine.js, api/sandbox.js, api/run-study.js",
+      "purpose": "Model inference. Receives record text.",
+      "approved": true
+    },
+    {
+      "host": "pjzxkeviouofdseagvpf.supabase.co",
+      "classification": "ACTIVE",
+      "code": "api/*.js and 22 pages client-side",
+      "purpose": "Database. Receives submitted and telemetry data.",
+      "approved": true
+    },
+    {
+      "host": "fonts.googleapis.com",
+      "classification": "ACTIVE",
+      "code": "73 of 75 pages",
+      "purpose": "Webfont CSS. Discloses visitor IP on load, independent of analytics consent.",
+      "approved": true
+    },
+    {
+      "host": "fonts.gstatic.com",
+      "classification": "ACTIVE",
+      "code": "73 of 75 pages",
+      "purpose": "Webfont files. Same disclosure.",
+      "approved": true
+    },
+    {
+      "host": "www.googletagmanager.com",
+      "classification": "ACTIVE",
+      "code": "64 of 75 pages",
+      "purpose": "Google Analytics 4.",
+      "approved": true
+    },
+    {
+      "host": "formspree.io",
+      "classification": "ACTIVE",
+      "code": "pilot.html form action",
+      "purpose": "Form relay. Receives free text.",
+      "approved": true
+    },
+    {
+      "host": "api.openai.com",
+      "classification": "CLOSED_RESEARCH",
+      "code": "api/run-study.js",
+      "purpose": "Cross-vendor reproducibility study.",
+      "closed_at": "2026-08-21",
+      "evidence": "api/_study-status.js STUDIES_CLOSED = true; the handler returns before any key is read; last study_runs row 2026-08-21.",
+      "approved": true
+    },
+    {
+      "host": "generativelanguage.googleapis.com",
+      "classification": "CLOSED_RESEARCH",
+      "code": "api/run-study.js",
+      "purpose": "Cross-vendor reproducibility study.",
+      "closed_at": "2026-08-21",
+      "evidence": "Same handler, same guard, same evidence.",
+      "approved": true
+    },
+    {
+      "host": "api.resend.com",
+      "classification": "DORMANT",
+      "code": "api/_notify.js",
+      "evidence": "ALERTS_ENABLED = false at line 66; notify() returns at 193 before the key is read at 203.",
+      "approved": true
+    },
+    {
+      "host": "resend.com",
+      "classification": "REFERENCE_ONLY",
+      "code": "api/_notify.js comment",
+      "approved": true
+    },
+    {
+      "host": "api.sendgrid.com",
+      "classification": "DORMANT",
+      "code": "api/_notify.js",
+      "evidence": "Same function, same guard.",
+      "approved": true
+    },
+    {
+      "host": "sendgrid.com",
+      "classification": "REFERENCE_ONLY",
+      "code": "api/_notify.js comment",
+      "approved": true
+    },
+    {
+      "host": "api.jrsstandard.com",
+      "classification": "ATTEMPTED_UNREACHABLE",
+      "code": "index.html, pilot.html, training.html",
+      "purpose": "Declared backend endpoint in CLAUDE.md 36.1.",
+      "evidence": "No A record; the request fails and the .catch() returns the data to the visitor as a download. Implemented nowhere in this repository. Recorded as D-12, OWNER DECISION REQUIRED.",
+      "approved": true
+    },
+    {
+      "host": "www.jrsstandard.com",
+      "classification": "REFERENCE_ONLY",
+      "approved": true
+    },
+    {
+      "host": "jrsstandard.com",
+      "classification": "REFERENCE_ONLY",
+      "approved": true
+    },
+    {
+      "host": "law.justia.com",
+      "classification": "REFERENCE_ONLY",
+      "code": "api/recheck.js",
+      "approved": true
+    },
+    {
+      "host": "docsopengovernment.dos.ny.gov",
+      "classification": "REFERENCE_ONLY",
+      "code": "api/recheck.js",
+      "approved": true
+    },
+    {
+      "host": "www.nycourts.gov",
+      "classification": "REFERENCE_ONLY",
+      "approved": true
+    },
+    {
+      "host": "www.osc.ny.gov",
+      "classification": "REFERENCE_ONLY",
+      "approved": true
+    },
+    {
+      "host": "www.linkedin.com",
+      "classification": "REFERENCE_ONLY",
+      "code": "api/reviewer-eval.js constructs a URL for storage; never fetched.",
+      "approved": true
+    },
+    {
+      "host": "schema.org",
+      "classification": "REFERENCE_ONLY",
+      "code": "JSON-LD @context string; not fetched at runtime.",
+      "approved": true
+    },
+    {
+      "host": "esm.sh",
+      "classification": "DORMANT",
+      "code": "supabase/functions/run-study/index.ts line 17, an import of @supabase/supabase-js",
+      "purpose": "Module CDN for a Supabase Edge Function.",
+      "evidence": "Found 2026-09-15 by an adversarial pass; the first inventory walked only api/*.js and pages and could not see a .ts file outside api/. The function is deployed by the Supabase CLI, not by Vercel, and the nightly cron in vercel.json calls /api/run-study instead, so this implementation is not the one that runs. Classified DORMANT rather than ACTIVE because no execution path in this deployment reaches it.",
+      "approved": true
+    },
+    {
+      "host": "buy.stripe.com",
+      "classification": "REFERENCE_ONLY",
+      "code": "scripts/test_checkout.mjs line 28",
+      "purpose": "A test assertion string checking that isConfigured() accepts an https checkout URL.",
+      "evidence": "Not a call. scripts/ is excluded from deployment. Every checkout_url in api/_offer-config.js is empty and /api/checkout refuses to redirect, so no payment integration is active. Recorded because a payment hostname in the tree is exactly the kind of thing a diligence reviewer finds and asks about.",
+      "approved": true
+    }
   ]
 }

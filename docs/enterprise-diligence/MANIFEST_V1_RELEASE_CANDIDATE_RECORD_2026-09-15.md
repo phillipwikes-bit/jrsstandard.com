@@ -38,7 +38,7 @@ concrete requirement emerges.
 | | |
 |---|---|
 | Manifest checks | **63, 0 failed** |
-| Guard suite | **135, 0 failed, 1 skipped** |
+| Guard suite | **135, 0 failed, 1 skipped (online); 131, 0 failed, 2 skipped (offline)** |
 | Guard mutations | **25 across four guards, all fail correctly** (schema 6, library 4, deployable 10, outbound 5) |
 | Red team | Three findings, all mine, all remediated (PMRT-1, -2, -3); one recorded false positive (PMRT-4) |
 | Independent review | Cold-reviewer test under `env -i`, no network. **All 13 questions answerable. Source correspondence ESTABLISHED** by recomputing the hash |

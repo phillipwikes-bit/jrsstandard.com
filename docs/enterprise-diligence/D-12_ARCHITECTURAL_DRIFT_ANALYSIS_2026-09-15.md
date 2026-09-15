@@ -25,7 +25,38 @@
 **HTTP 000**, a connection failure. `www.jrsstandard.com` resolves normally on the same
 resolver.
 
-## Actual runtime dependency — the material finding
+## CORRECTION 2026-09-15 — the "material finding" below was FALSE
+
+**ORIGINAL FINDING (mine, and it reached a commit message and the tracker):** `index.html`
+does not write to Supabase before calling the dead endpoint, so the visitor's free-text
+observation note "reaches nobody".
+
+**NEW EVIDENCE.** `index.html:5600`, immediately before the `verify-drift` call:
+
+```js
+fetch(SBU+'/rest/v1/interaction_events',{ ... body:JSON.stringify({source:'index',
+  type:'operational_observation',payload:{selection:...,note:noteVal}})})
+```
+
+**The note DOES reach Supabase.** All three pages write to `interaction_events` first.
+
+**CORRECTED STATUS.** There is **no data loss**. The disposition D-12.1 below — "point
+`index.html` at Supabase, as the other two already do" — **recommends work that is already
+done**, and is therefore withdrawn as a disposition.
+
+**EXPLANATION.** I traced the `.catch()` fallback and the confirmation logic and did not read
+the six lines above the `fetch` I was looking at. The claim was then repeated in a commit
+message, which is why it is corrected here in full rather than quietly amended.
+
+**WHAT SURVIVES, and it is still worth an owner decision:** the endpoint has no DNS record and
+no implementation; three live pages POST to a host that cannot answer; and `index.html` shows
+a submission confirmation **outside the promise chain**, so the confirmation is unconditional
+even though that particular transmission always fails. **The architectural finding stands. The
+data-loss finding does not.**
+
+---
+
+## Actual runtime dependency — ORIGINAL TEXT, PRESERVED AND SUPERSEDED BY THE CORRECTION ABOVE
 
 | Page | Also writes to Supabase first? | Consequence |
 |---|---|---|

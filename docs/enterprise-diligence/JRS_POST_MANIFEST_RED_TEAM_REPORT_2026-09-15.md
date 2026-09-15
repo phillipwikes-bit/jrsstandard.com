@@ -94,3 +94,38 @@ denial. The scan was not turned into a guard, for that reason.
 
 Manifest suite **63 checks, 0 failed** (was 39). Guard suite **134 checks, 0 failed, 1
 skipped**. **Sixteen guard mutations across three guards, all fail correctly.**
+
+---
+
+# ADDENDUM 2026-09-15 — a red-team finding that was itself partly wrong
+
+**Nothing above is edited.**
+
+A later adversarial pass raised finding #7: that the guard figure "135, 0 failed, 1 skipped"
+was unreproducible, that the suite prints **131 checks, 0 failed, 2 skipped**, and that *"131 is
+the ceiling in any mode"* because `len(results)` includes skips and only three `if offline`
+branches exist.
+
+**The observation was right and the inference was wrong.**
+
+| Mode | Result |
+|---|---|
+| `python3 scripts/check_zero_drift.py` | **135 checks, 0 failed, 1 skipped** |
+| `python3 scripts/check_zero_drift.py --offline` | **131 checks, 0 failed, 2 skipped** |
+
+**Three checks are online-only** and are not registered at all in offline mode: *countries
+belong to completers, not all reviewers*; *live /api/asset-stats exposes link_clicks*; *live
+panel geo fully resolved*. The pass ran only `--offline`, so 131 was the only figure it could
+see.
+
+**MY OWN HANDLING WAS WORSE THAN THE FINDING.** On receiving it I rewrote 135 to 131 across
+four documents **before verifying the online figure**, which replaced a correct number with an
+incorrect one. That is the failure mode this project exists to catch, committed while
+responding to a report about exactly that failure mode. Reverted, and every figure now **states
+its mode**, which neither version did.
+
+**One further observation, recorded because it is unresolved:** a single online run during this
+work reported **136 checks, 1 failed**. Two immediate re-runs reported 135/0/1. The failing
+check was not captured. **NOT ESTABLISHED** whether that was a flaky live probe or something
+real. A figure that moves between runs is itself a defect in the evidence, and it is recorded
+rather than averaged away.

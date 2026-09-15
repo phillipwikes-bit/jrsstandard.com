@@ -5157,17 +5157,50 @@ def check_no_unapproved_outbound_destination(offline):
 
     approved = {d["host"]: d for d in inv.get("destinations", [])}
 
+    # WHAT THIS SCANS, AND WHY IT IS WIDER THAN IT WAS.
+    # An adversarial pass on 2026-09-15 defeated the first version four ways:
+    #   - a new api/shadow.mjs was invisible, because only ".js" was matched;
+    #   - a root app.js was invisible, because only api/ and pages were walked;
+    #   - supabase/functions/run-study/index.ts imports from esm.sh and was
+    #     invisible on both counts, and esm.sh is a REAL destination that was
+    #     missing from the inventory as a result;
+    #   - plain http:// and protocol-relative //host were invisible, because the
+    #     pattern required https://.
+    # All four are closed here. Passing is now a statement about the repository,
+    # not about api/ and the pages.
+    # Protocol-relative URLs must be quoted or follow =, or every "// comment"
+    # in the tree matches. That fired immediately on api/reviewer-eval.js, where
+    # a comment line produced the "host" i.test. Absolute URLs need no such
+    # anchor because "https://" is already unambiguous.
+    HOST_RE = re.compile(
+        r"""https?://([A-Za-z0-9][A-Za-z0-9._-]*\.[A-Za-z]{2,})"""
+        r"""|['"=]\s*//([A-Za-z0-9][A-Za-z0-9._-]*\.[A-Za-z]{2,})""")
+    CODE_EXT = (".js", ".mjs", ".cjs", ".ts", ".tsx", ".jsx")
     seen = {}
-    api_dir = os.path.join(ROOT, "api")
-    for dirpath, _dirs, files in os.walk(api_dir):
+    for dirpath, dirs, files in os.walk(ROOT):
+        rel_dir = os.path.relpath(dirpath, ROOT)
+        rel_dir = "" if rel_dir == "." else rel_dir
+        parts = rel_dir.split(os.sep) if rel_dir else []
+        if any(p in (".git", "node_modules", "__pycache__", ".claude") for p in parts):
+            dirs[:] = []
+            continue
         for fn in sorted(files):
-            if fn.endswith(".js"):
-                rel = os.path.relpath(os.path.join(dirpath, fn), ROOT)
-                for host in re.findall(r"https://([A-Za-z0-9._-]+)", read(rel)):
+            if not fn.endswith(CODE_EXT):
+                continue
+            rel = os.path.join(rel_dir, fn) if rel_dir else fn
+            try:
+                body = read(rel)
+            except Exception:
+                continue
+            for m in HOST_RE.findall(body):
+                host = m[0] or m[1]
+                if host:
                     seen.setdefault(host, rel)
     for rel in _html_files():
-        for host in re.findall(r"https://([A-Za-z0-9._-]+)", read(rel)):
-            seen.setdefault(host, rel)
+        for m in HOST_RE.findall(read(rel)):
+            host = m[0] or m[1]
+            if host:
+                seen.setdefault(host, rel)
 
     for host in sorted(seen):
         if host not in approved:
@@ -5227,6 +5260,11 @@ def check_manifest_implementation_is_not_deployable(offline):
     """
     rules = read(".vercelignore")
     findings = []
+    # *.sql added 2026-09-15: ten root schema files were deployable and one
+    # published the anon SELECT grant that B-013A treats as the open exposure.
+    if not re.search(r"(?m)^\*\.sql\s*$", rules):
+        findings.append("*.sql is not excluded in .vercelignore; root schema files "
+                        "publish table structures and anon grants at guessable URLs")
     for d in ("lib/", "tools/", "tests/", "schemas/",
               "docs/manifest-independent-review/"):
         if not re.search(r"(?m)^%s\s*$" % re.escape(d), rules):
@@ -5237,6 +5275,12 @@ def check_manifest_implementation_is_not_deployable(offline):
     if re.search(r"(?m)^api/\s*$", rules):
         findings.append("api/ is excluded, which would stop the Edge Functions being "
                         "deployed at all")
+    # Directories .vercelignore actually excludes, read from the file itself.
+    excluded_prefixes = tuple(
+        line.strip() for line in rules.splitlines()
+        if line.strip().endswith("/") and not line.strip().startswith(("#", "!"))
+    )
+
     # A copy of an excluded file at a non-excluded path is the same exposure.
     # This happened on 2026-09-15: building the independent-review package copied
     # tools/validate-manifest.js and the schema into docs/, outside every rule
@@ -5277,9 +5321,12 @@ def check_manifest_implementation_is_not_deployable(offline):
         if any(part in (".git", "node_modules", "__pycache__") for part in rel.split(os.sep)):
             continue
         prefix = (rel + "/") if rel else ""
-        if any(prefix.startswith(x) for x in
-               ("lib/", "tools/", "tests/", "schemas/",
-                "docs/manifest-independent-review/")):
+        # SKIP SET DERIVED FROM .vercelignore, not hardcoded. A hardcoded list
+        # drifts out of step with the file that actually governs deployment, and
+        # on 2026-09-15 it also made this guard match ITSELF: removing the
+        # extension allow-list meant check_zero_drift.py, which necessarily
+        # contains the signature strings as literals, looked like a copy.
+        if any(prefix.startswith(x) for x in excluded_prefixes):
             continue
         for fn in files:
             rel_path = prefix + fn
@@ -5288,14 +5335,23 @@ def check_manifest_implementation_is_not_deployable(offline):
                                 "servable path defeats the exclusion" % rel_path)
                 continue
             # Renamed, re-extensioned or nested copies: match on content.
-            if os.path.splitext(fn)[1].lower() not in (
-                    ".js", ".mjs", ".cjs", ".json", ".txt", ".ts", ".bak", ""):
+            # EXTENSION ALLOW-LIST REMOVED. An adversarial pass on 2026-09-15
+            # defeated this guard by copying the validator to .svg and .css and
+            # the schema to .xml, none of which were in the old list, all of
+            # which Vercel serves. Scan everything that is plausibly text and
+            # let the signature decide, rather than trusting a file extension.
+            if os.path.splitext(fn)[1].lower() in (
+                    ".png", ".jpg", ".jpeg", ".gif", ".webp", ".ico", ".pdf",
+                    ".woff", ".woff2", ".ttf", ".zip", ".gz", ".docx", ".mp4"):
                 continue
             try:
                 body = read(rel_path)
             except Exception:
                 continue
-            if len(body) > 400000:
+            # SIZE CAP REMOVED for signature scanning. The same pass defeated the
+            # guard by padding a copy past 400 KB. A large file is exactly where
+            # someone would hide one.
+            if len(body) > 8000000:
                 continue
             for label, sig in signatures:
                 if sig in body:

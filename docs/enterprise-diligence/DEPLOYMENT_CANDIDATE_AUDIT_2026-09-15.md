@@ -34,9 +34,9 @@ Candidate `9343124` against production `0d94ce6`. **25 deployable files.**
 | Rights records unchanged | **CONFIRMED** |
 | Production database unchanged | **CONFIRMED.** No migration, no grant, no row |
 | No new outbound destination | **CONFIRMED.** Inventory guard passes at 21 hosts |
-| Protected implementation excluded | **CONFIRMED in configuration.** `lib/`, `tools/`, `tests/`, `schemas/`, review package. **Effect unverified** |
+| Protected implementation excluded | **CORRECTED 2026-09-15: this row was FALSE when written.** Ten root `.sql` files and `supabase/functions/` were deployable, and `/supabase-engine-reviews-setup.sql` and `/supabase/functions/run-study/index.ts` both returned **200 on production**. `*.sql` and `supabase/` are now excluded. The original five paths were correct; the row over-generalised from them. **Effect still unverified** |
 | Disclosure changes documented | **CONFIRMED** |
-| No credentials introduced | **CONFIRMED.** Zero token-shaped strings on disk |
+| No credentials introduced | **CONFIRMED for the candidate: zero credential-shaped additions across all 151 changed files.** Corrected 2026-09-15: an earlier wording said "zero token-shaped strings on disk", which is **false as a blanket claim** — the Supabase **publishable** key appears in 17 HTML files by design and is deliberately not matched by the secrets guard. The supported proposition is about what this candidate *introduces*, not about the whole tree |
 | No production authorization implied | **CONFIRMED** |
 
 ## The one thing a reviewer should look at hardest
