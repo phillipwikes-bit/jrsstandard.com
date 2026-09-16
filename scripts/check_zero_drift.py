@@ -5169,6 +5169,73 @@ def check_tracked_guides_carry_exactly_one_routing_page(offline):
           else "3 tracked guides, 1 routing page each on the last page; combined overview clean")
 
 
+def check_disclosed_retention_matches_the_policy(offline):
+    """The retention period a reader is told equals the period in the code.
+
+    WHY THIS GUARD EXISTS. BD-10 set a 90-day expiry for record-derived fields.
+    BD-12 then disclosed it, because having chosen a period and not published it
+    was the weaker position: the pages said model output about the record "is
+    retained" and never said for how long.
+
+    THE DRIFT THIS PREVENTS is specific and likely: someone changes
+    ENGINE_REVIEW_RETENTION.months and the public pages keep saying 90 days. The
+    disclosure then becomes false without anyone editing a sentence, which is the
+    hardest kind of false statement to notice.
+
+    It also holds the three-category shape. A bare "90 days" would let a reader
+    conclude the whole row is deleted, which is worse than silence, so the guard
+    requires the retained-evidence half and the never-stored half alongside it.
+    """
+    findings = []
+    pol = read("lib/retention/policy.js")
+    m = re.search(r"ENGINE_REVIEW_RETENTION\s*=\s*\{.*?months:\s*(\d+)", pol, re.S)
+    if not m:
+        check("disclosed retention matches the policy", False,
+              "cannot read the engine-review retention period from the policy module")
+        return
+    months = int(m.group(1))
+    days = months * 30  # the policy is expressed in months; the disclosure in days
+
+    PAGES = ("security.html", "privacy.html")
+    for rel in PAGES:
+        body = read(rel)
+        if not body:
+            findings.append("%s is missing" % rel)
+            continue
+        low = body.lower()
+        anchor = "kept for %d days" % days
+        i = low.find(anchor)
+        if i == -1:
+            findings.append("%s does not disclose the %d-day period the policy sets"
+                            % (rel, days))
+            continue
+        # PROXIMITY, NOT PAGE-WIDE. A mutation removing the retained-evidence
+        # clause from the disclosure sentence passed a page-wide search on
+        # 2026-09-16, because "condition statuses" also appears in an unrelated
+        # retention table further down. The two qualifying halves must sit WITH
+        # the period, or a reader meets the period without them.
+        window = low[i:i + 700]
+        if "condition statuses" not in window:
+            findings.append("%s discloses a period without saying what is RETAINED "
+                            "alongside it; a bare period reads as the whole record being "
+                            "deleted" % rel)
+        if "never stored at all" not in window:
+            findings.append("%s does not state, alongside the period, that the submitted "
+                            "record is never stored" % rel)
+        # Wording that would overclaim.
+        for phrase in ("all data is deleted", "everything is deleted",
+                       "no data is retained", "nothing is retained"):
+            if phrase in low:
+                findings.append("%s claims %r, which is false: the evaluation record remains"
+                                % (rel, phrase))
+
+    check("disclosed retention matches the policy",
+          not findings,
+          "; ".join(findings) if findings
+          else "policy sets %d months (%d days); both pages disclose it and state what is "
+               "retained and what is never stored" % (months, days))
+
+
 def check_record_derived_fields_have_no_export_path(offline):
     """No public read path returns model text derived from a customer's record.
 
@@ -6147,6 +6214,7 @@ def main():
                check_training_is_ungated,
                check_training_modules_are_findable,
                check_public_downloads_are_not_blocked_by_a_redirect,
+               check_disclosed_retention_matches_the_policy,
                check_record_derived_fields_have_no_export_path,
                check_no_unapproved_outbound_destination,
                check_manifest_implementation_is_not_deployable,

@@ -83,3 +83,29 @@ matters are untouched. Four owner facts remain.
 properties.
 
 # NOT READY FOR GATE 1 RECONSIDERATION.
+
+---
+
+# REVISION 3 — 2026-09-16, after BD-12
+
+**Revisions 1 and 2 are preserved in git history. The conclusion is unchanged.**
+
+| Item | Change |
+|---|---|
+| **U-3** | **CLOSED.** BD-12: the 90-day period is disclosed **by category** on `security.html` and `privacy.html`. DECIDED → IMPLEMENTED → TESTED |
+| **V-1 to V-10** | Round D. Eight answered; **V-4 and V-9 open, both low, both legal-adjacent** |
+| Guards | **offline 133/0/2 · online 137/0/1**. One new guard; four mutations |
+| Disclosure red team | Ten possible misreadings tested; **all clear** |
+
+## Why the conclusion is unchanged, stated precisely
+
+BD-12 corrected a **representation gap that this project's own decision created**. It closed
+U-3 and opened V-4 and V-9.
+
+**It did not touch a single deployment prerequisite.** B-001 is external. Nothing is production
+verified. Counsel matters untouched. Four owner facts remain.
+
+**V-10 is the sharpest reminder available:** production still serves text with no period, while
+a period is in force in policy. **That gap closes on deployment, and deployment waits on B-001.**
+
+# NOT READY FOR GATE 1 RECONSIDERATION.

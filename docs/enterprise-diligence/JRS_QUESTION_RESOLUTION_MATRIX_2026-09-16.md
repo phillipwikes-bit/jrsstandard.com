@@ -27,7 +27,10 @@
 | T-10 | Does an unexecuted policy imply retention is in force? | ANSWERED — BOARD DECISION (mitigated in the module) |
 | **T-11** | **Data-room export returned the derived fields** | **ANSWERED — BOARD DECISION (BD-11) → IMPLEMENTED → TESTED** |
 | U-1, U-2, U-4 to U-10 | Round C | ANSWERED — BOARD DECISION / FACT |
-| **U-3** | **Should the 90-day period be disclosed publicly?** | **OPEN — BOARD DECISION REQUIRED NEXT CYCLE** |
+| **U-3** | **Should the 90-day period be disclosed publicly?** | **ANSWERED — BOARD DECISION (BD-12) → IMPLEMENTED → TESTED.** Production verification required |
+| V-1, V-2, V-3, V-5, V-6, V-7, V-8, V-10 | Round D | ANSWERED — BOARD DECISION / FACT ESTABLISHED |
+| **V-4** | Does a stated period imply deletion on request? | **OPEN — LOW.** Legal-adjacent; joins B-004's channel if raised |
+| **V-9** | Is a retention disclosure a commercial representation? | **OPEN — LOW.** Counsel if a licence is drafted |
 
 ## Blockers
 
