@@ -109,3 +109,57 @@ verified. Counsel matters untouched. Four owner facts remain.
 a period is in force in policy. **That gap closes on deployment, and deployment waits on B-001.**
 
 # NOT READY FOR GATE 1 RECONSIDERATION.
+
+---
+
+# REVISION — Round E and Round F, 2026-09-16
+
+Prior revisions above are **historical and unchanged**. This revision controls.
+
+## What changed since the last revision
+
+| Area | Change |
+|---|---|
+| U-3 / BD-12 | Unchanged as a decision. **Its implementation was found defective and corrected** — see BD-13 |
+| **BD-13** | NEW. The enforced retention period (3 calendar months, 89–92 days) was not the disclosed period (90 days). Unit corrected to days. DECIDED → IMPLEMENTED → TESTED |
+| BD-10 | Decision intact and verified field by field. Unit corrected by BD-13 |
+| BD-11 | Verified. `research-data.html` projection excludes every derived column |
+| Projection boundary | **Defect found and closed.** The two public read paths were not enforcing the same rule; both are now allow-listed and a future schema column is refused by default |
+| Privacy disclosure | Now accurate as **implemented** as well as as drafted |
+| Public/private boundary | Probed again. Nothing from this or the last cycle is served. **Three files remain live on production under B-014** and close on deployment |
+| Service-role security | Re-audited. Zero JWT-shaped strings on disk; absent credential fails closed at 503 disclosing nothing |
+| API integrity | `openapi.json` sha256 **identical**. **B-016 open and blocked on authorization** |
+| Research integrity | No source record, run or figure changed |
+| Rights | No new assertion created. B-004 remains counsel-controlled |
+| Counsel matters | B-004, B-007/D-1, and V-4 component 3 (one sentence) |
+| Owner matters | B-001, B-013B, S-1, S-6, T-6 |
+| Question matrix | V-4, V-9, V-10, V-11, B-016, W-1 … W-5 recorded |
+| Dependency graph | One edge added: `BD-13 → BD-12 disclosure accuracy` |
+| Red team | Round E ten attacks; Round F ran directed mutation tests instead, and two of them found live defects |
+| Deployment candidate | Unchanged in shape; **four production operations still queue behind B-001**, now five with B-014 |
+| Rollback | Unchanged. Every change this cycle is a constant, a function or a guard, all reversible |
+
+## Why the conclusion does not improve
+
+Two decisions certified by their own test suites were found wrong by a pass that
+went looking rather than re-reading:
+
+1. a retention period published to readers that the code did not enforce, held in
+   place by a guard whose unit conversion was an assumption; and
+2. a drift guard that exempted the one page it existed to cover, because that page
+   named the decision in its own comment.
+
+Both are closed, and the estate is better for it. Neither had anything to do with
+the obstacles that actually gate Gate 1, all of which are unchanged:
+
+* **B-001** — owner external credential rotation. Every production verification is
+  downstream of it.
+* **Production-verified controls: NONE.**
+* **B-016** — the published API contract still contradicts the code, and correcting
+  it requires authorization this Board does not hold.
+* **B-014** — three files still served on production.
+* Counsel matters open. Owner factual matters open.
+
+# NOT READY FOR GATE 1 RECONSIDERATION.
+
+**STATE 1 — DEVELOPMENT REMEDIATION. DEPLOYMENT NOT AUTHORIZED. PHASE II LOCKED.**

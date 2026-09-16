@@ -5188,13 +5188,39 @@ def check_disclosed_retention_matches_the_policy(offline):
     """
     findings = []
     pol = read("lib/retention/policy.js")
-    m = re.search(r"ENGINE_REVIEW_RETENTION\s*=\s*\{.*?months:\s*(\d+)", pol, re.S)
+    # CORRECTED 2026-09-16, same day. This read `months:` and then computed
+    # `days = months * 30`. That conversion was an ASSUMPTION WRITTEN INTO A
+    # GUARD TO MAKE TWO NUMBERS AGREE, and it was hiding a real defect: the
+    # policy expired at three CALENDAR months, which is 89 to 92 days depending
+    # on the month, against a public page promising 90. On the date the
+    # disclosure was written the true window was 92 days, so the page understated
+    # retention by two days and this guard passed. The policy now declares days,
+    # the guard reads days, and no conversion happens anywhere.
+    # STRUCTURE, NOT CONTAINMENT, and the first version of this correction proved
+    # why in the same minute it was written: a lazy `.*?` scan for "months:"
+    # matched the COMMENT explaining that months had been removed. Sixth time on
+    # this project. So: take the object literal only, up to its own closing
+    # brace, and strip line comments before reading a field out of it.
+    lit = re.search(r"ENGINE_REVIEW_RETENTION\s*=\s*\{(.*?)\n\};", pol, re.S)
+    if not lit:
+        check("disclosed retention matches the policy", False,
+              "cannot locate the ENGINE_REVIEW_RETENTION object literal")
+        return
+    decl = re.sub(r"//[^\n]*", "", lit.group(1))
+    m = re.search(r"\bdays:\s*(\d+)", decl)
     if not m:
         check("disclosed retention matches the policy", False,
-              "cannot read the engine-review retention period from the policy module")
+              "ENGINE_REVIEW_RETENTION declares no DAY count. If the policy has "
+              "gone back to calendar months, the disclosed number and the enforced "
+              "number are no longer the same number: a month is 28 to 31 days and "
+              "the public page states a fixed figure. That is the defect this "
+              "guard was corrected to catch, not a reason to convert units here")
         return
-    months = int(m.group(1))
-    days = months * 30  # the policy is expressed in months; the disclosure in days
+    days = int(m.group(1))
+    if re.search(r"\bmonths:\s*\d+", decl):
+        findings.append("ENGINE_REVIEW_RETENTION declares months again alongside "
+                        "days; a calendar month is 28 to 31 days and the public "
+                        "page states a fixed number, so the two cannot both hold")
 
     PAGES = ("security.html", "privacy.html")
     for rel in PAGES:
@@ -5232,8 +5258,9 @@ def check_disclosed_retention_matches_the_policy(offline):
     check("disclosed retention matches the policy",
           not findings,
           "; ".join(findings) if findings
-          else "policy sets %d months (%d days); both pages disclose it and state what is "
-               "retained and what is never stored" % (months, days))
+          else "policy sets %d days, read from the literal with no unit conversion; "
+               "both pages disclose that same number and state what is retained and "
+               "what is never stored" % (days,))
 
 
 def check_record_derived_fields_have_no_export_path(offline):
@@ -5260,11 +5287,41 @@ def check_record_derived_fields_have_no_export_path(offline):
     findings = []
     DERIVED = ("compliant_version", "input_preview")
 
+    # ALLOW-LIST, PARSED FROM THE QUERY, added 2026-09-16 by the Round F
+    # verification pass, and it was added because this branch FAILED a directed
+    # test. It previously checked two things: literal "select=*", and whether a
+    # derived column name appeared anywhere in the page BUT ONLY IF the page did
+    # not mention BD-11 or BD-02. research-data.html mentions BD-11 in the very
+    # comment describing its own safe projection, so the column check was
+    # switched off for the one page it most needed to cover. A mutation adding
+    # `conditions` to that page's select list PASSED: `conditions` carries
+    # conditions[].note, the per-condition text grounded in the customer's
+    # record, so the guard would have let a record-derived export through.
+    #
+    # The two public read paths must enforce the SAME boundary. The endpoint is
+    # checked by column name below; the browser paths are now checked the same
+    # way, by parsing the select list and requiring every column to be permitted
+    # rather than by looking for known-bad names. A column added to the schema
+    # tomorrow is refused by default instead of silently exported.
+    PUBLIC_SELECT_ALLOWED = {
+        "created_at", "determination", "runs", "overall_consistency",
+        "engine_version", "id", "request_id",
+    }
     for rel in _html_files():
         body = read(rel)
-        if "engine_reviews?select=*" in body:
-            findings.append("%s exports engine_reviews with select=*, which returns "
-                            "record-derived model text" % rel)
+        for sel in re.findall(r"engine_reviews\?select=([^'\"&\s]+)", body):
+            if sel.strip() == "*":
+                findings.append("%s exports engine_reviews with select=*, which "
+                                "returns record-derived model text" % rel)
+                continue
+            for col in [c.strip() for c in sel.split(",") if c.strip()]:
+                bare = col.split("(")[0].split(":")[-1].strip()
+                if bare not in PUBLIC_SELECT_ALLOWED:
+                    findings.append(
+                        "%s selects %r from engine_reviews, which is not on the "
+                        "public projection allow-list. conditions carries "
+                        "conditions[].note and finding carries compliant_version, "
+                        "both derived from the customer's record" % (rel, bare))
         if "engine_reviews" in body:
             for col in DERIVED:
                 if col in body and "BD-11" not in body and "BD-02" not in body:

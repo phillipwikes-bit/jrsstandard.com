@@ -208,3 +208,71 @@ research artifact.
 
 **STATUS: BOARD DECIDED → B-005 REMEDIATED FOR ITS DECLARED SCOPE → production verification
 still required.**
+
+---
+
+## BD-13 · BD-10 implementation defect — express the retention period in the unit the public page states
+
+**Question.** `ENGINE_REVIEW_RETENTION` declared `months: 3` and the BD-12 public
+disclosure promises "kept for 90 days and then removed". Are those the same number?
+
+**Prior status.** BD-10 DECIDED → IMPLEMENTED → TESTED, 2026-09-16. BD-12 DECIDED
+→ IMPLEMENTED → TESTED, 2026-09-16. Both certified by their own suites.
+
+**Evidence.** `lib/retention/policy.js` used `cutoffISO(now, 3)`, which steps back
+three **calendar** months. Computed across the year, the real window is 92 days in
+January, June and September, 91 in December, 90 in March and 89 in May.
+`scripts/check_zero_drift.py::check_disclosed_retention_matches_the_policy`
+reconciled the two with `days = months * 30`.
+
+**Facts.** On 2026-09-16, the date the disclosure was written, the enforced window
+was **92 days** against a published **90**. The guard written to prevent exactly
+this drift was passing, because the unit conversion was an assumption written into
+it rather than a fact read from anywhere.
+
+**Unknowns.** None material. No row has ever been expired; `engine_reviews` holds
+zero rows, so **no reader was ever actually affected**. That limits the harm; it
+does not change the finding.
+
+**Options.** (a) change the code to days; (b) change the page to "three months";
+(c) change the page to "up to 92 days"; (d) leave both and document the variance.
+
+**Risk analysis.** (b) and (c) weaken a disclosure that was drafted, red-teamed
+against ten misreadings and approved in the shape it has. (d) publishes a number
+the system does not honour. (a) makes the published commitment exactly checkable
+and removes an assumption from a guard.
+
+**DECISION — BOARD DECISION — OWNER-DELEGATED.** Option (a). The policy declares
+`days: 90` and computes with a new `cutoffDaysISO`. **BD-10's decision is
+unchanged** — field-level expiry, null in place, row survives. Only the unit is
+corrected. `RETENTION` (interaction_events, 24 months) is untouched: the
+calendar-month reasoning is sound over 24 months, where a day count drifts across
+leap years, and unsound over 90 days, where the calendar month is what moves.
+
+**Authority.** Category A: implementation correctness and privacy-representation
+consistency. §6 Option E permits reopening BD-10's implementation where new
+evidence shows it defective; the table above is that evidence.
+
+**Implementation consequence.** The guard now reads `days` from the object literal
+with **no conversion**, matching structurally after stripping comments — the first
+attempt matched the comment explaining that months had been removed.
+
+**Testing requirement and evidence generated.** `tests/engine/retention.mjs`
+60/0 (was 38). Boundary tests count days explicitly at 89, exactly 90, 90+1s, 91
+and 92; same-instant-two-zones; UTC normalisation; leap-year span across 29
+February; missing, null and empty timestamps. Reverting the policy to calendar
+months fails the guard and 7 of the new tests.
+
+**Resulting status.** BD-13 DECIDED → IMPLEMENTED → TESTED. **PRODUCTION
+VERIFICATION REQUIRED** — nothing has expired anywhere.
+
+**Dependencies.** Adds `BD-13 → BD-12 disclosure accuracy`. The disclosure was
+accurate as drafted and inaccurate as implemented.
+
+**Reversibility.** Fully reversible: a constant and a cutoff function, with the
+prior state recorded inline.
+
+**Historical references.** One test assertion, `ENGINE_REVIEW_RETENTION.months === 3`,
+is **SUPERSEDED, not deleted**: it pinned the defective value and was holding it in
+place. BD-10 and BD-12 are preserved unchanged; the fact that the unit was wrong
+is itself part of the governance history.

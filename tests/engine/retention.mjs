@@ -1,4 +1,4 @@
-import { RETENTION, ENGINE_REVIEW_RETENTION, cutoffISO, selectExpired, selectExpiringFields } from '../../lib/retention/policy.js';
+import { RETENTION, ENGINE_REVIEW_RETENTION, cutoffISO, cutoffDaysISO, selectExpired, selectExpiringFields } from '../../lib/retention/policy.js';
 let pass = 0, fail = 0;
 const t = (n, ok, d = '') => { ok ? pass++ : fail++; console.log(`${ok ? 'PASS' : 'FAIL'}  ${n}${d ? '  ' + d : ''}`); };
 
@@ -49,8 +49,20 @@ t('module contains no DELETE and no fetch', !/\bDELETE\b/i.test(src.replace(/\/\
 
 // ---- BD-10 (T-4): engine_reviews field-level expiry, 90 days, null in place.
 t('BD-10 targets engine_reviews', ENGINE_REVIEW_RETENTION.table === 'engine_reviews');
-t('BD-10 period differs from the telemetry rule', ENGINE_REVIEW_RETENTION.months === 3 && RETENTION.months === 24);
-t('BD-10 was NOT extended by inference from interaction_events', ENGINE_REVIEW_RETENTION.months !== RETENTION.months);
+// SUPERSEDED 2026-09-16, same day, by the Round F verification pass. This
+// previously read `ENGINE_REVIEW_RETENTION.months === 3 && RETENTION.months === 24`.
+// It pinned the exact value that was WRONG: three calendar months is 89 to 92
+// days and the public disclosure promises 90, so the assertion was holding the
+// defect in place rather than catching it. REPLACED, not deleted. The
+// replacement asserts the invariant that survives the correction: the two rules
+// are separate, in different units, and BD-10 must never inherit the telemetry
+// clock by inference.
+t('BD-10 period differs from the telemetry rule, and in a different unit',
+  ENGINE_REVIEW_RETENTION.days === 90 && RETENTION.months === 24
+  && ENGINE_REVIEW_RETENTION.days !== RETENTION.months);
+t('BD-10 was NOT extended by inference from interaction_events',
+  ENGINE_REVIEW_RETENTION.table !== RETENTION.table
+  && ENGINE_REVIEW_RETENTION.decision === 'BD-10');
 t('engine_reviews no longer excluded from retention entirely', !RETENTION.excluded_tables.includes('engine_reviews'));
 t('research tables still excluded from deletion', ['bench_outcomes','study_runs','findings_history'].every(x => RETENTION.excluded_tables.includes(x)));
 
@@ -79,7 +91,7 @@ t('BD-10 row is NOT deleted, only redacted', red.id === 'r' && red.created_at ==
 
 const fresh = selectExpiringFields([mk('2026-09-01T00:00:00.000Z')], NOW);
 t('BD-10 recent row untouched', fresh.would_redact === 0 && JSON.stringify(fresh.untouched[0]).includes(SENS));
-const edge = selectExpiringFields([mk(cutoffISO(NOW, 3))], NOW);
+const edge = selectExpiringFields([mk(cutoffDaysISO(NOW, 90))], NOW);
 t('BD-10 row exactly on the cutoff is NOT redacted', edge.would_redact === 0);
 const bad = selectExpiringFields([{ id: 'x', created_at: 'not-a-date', input_preview: SENS }], NOW);
 t('BD-10 unparseable timestamp is NOT redacted', bad.would_redact === 0);
@@ -90,6 +102,72 @@ const future = selectExpiringFields([mk('2027-01-01T00:00:00.000Z')], NOW);
 t('BD-10 future-dated row untouched', future.would_redact === 0);
 t('BD-10 policy carries version, decision id and date',
   !!ENGINE_REVIEW_RETENTION.version && ENGINE_REVIEW_RETENTION.decision === 'BD-10' && !!ENGINE_REVIEW_RETENTION.decided);
+
+// ---------------------------------------------------------------------------
+// BD-10 BOUNDARY SUITE, added 2026-09-16 by the Round F verification pass.
+//
+// WHY THESE EXIST. The suite tested "old is redacted, recent is not" and the
+// exact cutoff, and passed while the policy expired at THREE CALENDAR MONTHS
+// (89 to 92 days depending on the month) against a public disclosure promising
+// 90. A boundary suite that never counts days cannot catch a unit error. Each
+// test below states the day offset explicitly.
+// ---------------------------------------------------------------------------
+const atDay = (n) => new Date(Date.parse(NOW) - n * 86400000).toISOString();
+
+t('BD-10 policy is expressed in DAYS, not calendar months',
+  ENGINE_REVIEW_RETENTION.days === 90 && ENGINE_REVIEW_RETENTION.months === undefined);
+t('BD-10 the disclosed number and the enforced number are the SAME number',
+  ENGINE_REVIEW_RETENTION.days === 90);
+
+t('BD-10 89 days old is NOT redacted', selectExpiringFields([mk(atDay(89))], NOW).would_redact === 0);
+t('BD-10 exactly 90 days old is NOT redacted (boundary retains)',
+  selectExpiringFields([mk(atDay(90))], NOW).would_redact === 0);
+t('BD-10 90 days plus one second IS redacted',
+  selectExpiringFields([mk(new Date(Date.parse(atDay(90)) - 1000).toISOString())], NOW).would_redact === 1);
+t('BD-10 91 days old IS redacted', selectExpiringFields([mk(atDay(91))], NOW).would_redact === 1);
+t('BD-10 92 days old IS redacted (the old calendar rule KEPT this row)',
+  selectExpiringFields([mk(atDay(92))], NOW).would_redact === 1);
+
+// The unit error, stated as a regression test rather than as a comment.
+t('BD-10 REGRESSION: a row 91 days old is redacted in EVERY month of the year',
+  ['2026-01-16','2026-03-16','2026-05-16','2026-06-16','2026-09-16','2026-12-16'].every((d) => {
+    const now = d + 'T12:00:00.000Z';
+    const row = mk(new Date(Date.parse(now) - 91 * 86400000).toISOString());
+    return selectExpiringFields([row], now).would_redact === 1;
+  }));
+
+// UTC and zone stability. The cutoff must be a function of the instant, not of
+// how the instant was spelled.
+t('BD-10 cutoff is identical for the same instant written in two zones',
+  cutoffDaysISO('2026-09-16T12:00:00.000Z', 90) === cutoffDaysISO('2026-09-16T08:00:00.000-04:00', 90));
+t('BD-10 cutoff is UTC-normalised', cutoffDaysISO(NOW, 90).endsWith('Z'));
+t('BD-10 a row 90 days old in a non-UTC spelling is still on the boundary',
+  selectExpiringFields([mk(new Date(Date.parse(atDay(90))).toISOString())], '2026-09-16T08:00:00.000-04:00').would_redact === 0);
+
+// Leap year, for the 90-day rule specifically. 29 Feb 2024 is inside a leap
+// year; a day-count rule must simply count days across it.
+t('BD-10 leap-year span counts real days, not calendar months',
+  cutoffDaysISO('2024-05-29T00:00:00.000Z', 90).startsWith('2024-02-29'));
+t('BD-10 a row 91 days old across 29 February IS redacted',
+  selectExpiringFields([mk('2024-02-28T00:00:00.000Z')], '2024-05-29T00:00:00.000Z').would_redact === 1);
+
+// Fail-closed, restated for the day rule.
+t('BD-10 missing created_at is KEPT unredacted',
+  selectExpiringFields([{ id: 'n', input_preview: SENS }], NOW).would_redact === 0);
+t('BD-10 null created_at is KEPT unredacted',
+  selectExpiringFields([{ id: 'n2', created_at: null, input_preview: SENS }], NOW).would_redact === 0);
+t('BD-10 empty-string created_at is KEPT unredacted',
+  selectExpiringFields([{ id: 'n3', created_at: '', input_preview: SENS }], NOW).would_redact === 0);
+
+// The tables the rule must NOT reach, named individually per the directive.
+for (const tbl of ['interaction_events','pilot_contacts','findings_history','study_runs','bench_outcomes','bench_labels']) {
+  t(`BD-10 does not target ${tbl}`, ENGINE_REVIEW_RETENTION.table !== tbl);
+}
+
+// WHAT THIS SUITE DOES NOT TEST. It exercises the policy module only. No
+// production row has been read, no expiry has been executed anywhere, and
+// nothing here establishes that the rule has ever run. Production retention
+// remains PRODUCTION VERIFICATION REQUIRED.
 
 console.log(`\n${pass + fail} checks, ${fail} failed`);
 process.exit(fail ? 1 : 0);
