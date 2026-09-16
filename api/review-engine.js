@@ -232,11 +232,28 @@ export default async function handler(req) {
   // readable table is a compound exposure, and it would have been reachable by
   // one environment variable. Open mode is preserved; persistence under open
   // mode is not. See the logReview call site.
+  // BD-15 (V-11), 2026-09-16. THE TWO 401 BRANCHES BELOW RETURN THE SAME STRING,
+  // and that is deliberate. They used to differ: "Send Authorization: Bearer
+  // <token>." meant a token IS provisioned and yours is wrong, while "A token is
+  // required." meant NO token is provisioned at all. An unauthenticated caller
+  // could therefore read the provisioning state of the deployment out of the
+  // error text, and on 2026-09-16 a verification pass did exactly that to
+  // establish whether the engine was licensed to anyone.
+  //
+  // This is the same class as the defect already fixed on these lines, where the
+  // 401 named the governing environment variables. It is weaker -- configuration
+  // STATE rather than variable NAMES -- which is why it was recorded rather than
+  // fixed in passing, and then decided rather than recorded a third time.
+  //
+  // The operator-signal argument was considered and rejected. The operator has
+  // the deployment dashboard and the instruction in this file's header; they do
+  // not need to read configuration state out of an unauthenticated 401. The
+  // caller learns what they need either way: send a valid token.
   var AUTHENTICATED = false;
   if (TOKEN_ENV) {
     var allowed = TOKEN_ENV.split(',').map(function (t) { return t.trim(); }).filter(Boolean);
     var bearer = (req.headers.get('authorization') || '').replace(/^Bearer\s+/i, '').trim();
-    if (allowed.indexOf(bearer) === -1) return J({ error: 'unauthorized', detail: 'Send Authorization: Bearer <token>.' }, 401);
+    if (allowed.indexOf(bearer) === -1) return J({ error: 'unauthorized', detail: 'A valid token is required. Contact info@jrsstandard.com' }, 401);
     AUTHENTICATED = true;
   } else if (SANDBOX_OPEN !== 'true') {
     // The public 401 names no environment variable. The previous text read
@@ -245,7 +262,7 @@ export default async function handler(req) {
     // this endpoint. The operator-facing instruction lives in the header of
     // this file, where the operator is; it does not belong in a response to a
     // caller who has just failed authentication.
-    return J({ error: 'unauthorized', detail: 'A token is required. Contact info@jrsstandard.com' }, 401);
+    return J({ error: 'unauthorized', detail: 'A valid token is required. Contact info@jrsstandard.com' }, 401);
   }
 
   // Best-effort rate limit.

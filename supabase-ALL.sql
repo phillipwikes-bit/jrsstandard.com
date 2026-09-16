@@ -232,7 +232,15 @@ alter table public.finding_responses enable row level security;
 drop policy if exists "insert response" on public.finding_responses;
 create policy "insert response" on public.finding_responses
   for insert to anon with check (char_length(response) <= 4000);
--- (no select / update / delete policy for anon: responses stay private)
+-- STALE COMMENT, CORRECTED 2026-09-16 (BD-14). This read "(no select / update /
+-- delete policy for anon: responses stay private)". That was true when written
+-- and is FALSE now: a policy further down this same file grants
+-- `for select to anon using (true)` on this table. The comment is preserved
+-- above rather than deleted, because a stale comment asserting a control that
+-- does not exist is how a reader concludes the data is protected when it is not.
+-- See B-017. finding.html promises respondents their text "is not displayed
+-- publicly"; the grant below contradicts that promise and is queued for
+-- revocation.
 
 -- ===== data room (interaction_events + de-identified views) =====
 -- ============================================================

@@ -276,3 +276,115 @@ prior state recorded inline.
 is **SUPERSEDED, not deleted**: it pinned the defective value and was holding it in
 place. BD-10 and BD-12 are preserved unchanged; the fact that the unit was wrong
 is itself part of the governance history.
+
+---
+
+## BD-14 · B-017 — a privacy promise made at collection is not overridden by a data-room convenience
+
+**Question.** `finding.html` tells respondents their free text "is not displayed publicly".
+The schema grants anon SELECT on `finding_responses` and `research-data.html` published a
+`select=*` export of it. Which controls?
+
+**Prior status.** Not previously recorded. Found 2026-09-16 while extending the
+`engine_reviews` allow-list to the other anonymously readable tables.
+
+**Evidence.** `finding.html:230` POSTs up to 4,000 characters of free text to
+`public.finding_responses`, under the on-page promise "Your response is recorded privately
+for the research program. **It is not displayed publicly.**" and the confirmation "Recorded
+privately." `supabase-ALL.sql` declares the table under the comment "(no select / update /
+delete policy for anon: responses stay private)" and then, **further down the same file**,
+grants `for select to anon using (true)` "for the data room". `research-data.html` offered
+`/rest/v1/finding_responses?select=*` and labelled it, in the same row, "private
+discussion/debate responses".
+
+**Facts.** The promise, the grant and the export link all exist and contradict one another.
+
+**Unknowns.** **NOT ESTABLISHED: whether any rows exist or are retrievable by an anonymous
+caller.** A direct production read was attempted and **correctly denied** by the execution
+environment's production-read control. The live count is **PRODUCTION VERIFICATION
+REQUIRED** and is not inferred. The remediation does not depend on it: a promise contradicted
+by a grant is a defect whether or not anyone has yet typed into the box.
+
+**Options.** (a) narrow the projection; (b) remove the export; (c) correct the promise to
+match the grant; (d) leave it and disclose.
+
+**Risk analysis.** (a) is the tempting one and it is wrong: **`response` IS the sensitive
+column** and the row existed to carry it, so a narrower projection is a projection of
+nothing. (c) inverts the governing principle — a promise made at the point of collection is
+the one the respondent relied on, and rewriting it afterwards to match what the system does
+is the failure this framework exists to prevent. (d) publishes text people were told was not
+published.
+
+**DECISION — BOARD DECISION — OWNER-DELEGATED.** Option (b). The promise controls. The
+export row is removed; the table has **no public projection at all**, not a narrower one.
+
+**Authority.** Category A: privacy posture and documentation, reversible.
+
+**Implementation.** Export row removed from `research-data.html`. The stale SQL comment
+asserting a control that does not exist is **corrected in place with its prior text
+preserved**, because a stale comment claiming protection is how a reader concludes data is
+protected when it is not.
+
+**Testing and evidence.** `check_a_privacy_promise_is_not_contradicted_by_an_export` fails on
+any read of the table from any page on any projection, **and** fails if the promise is edited
+off `finding.html` — because an export ban protecting a promise that no longer exists is
+protecting nothing. Three mutations fail: export restored, projection narrowed, promise
+removed. **Read paths only**: the first version banned every mention and immediately failed on
+`finding.html`, which is the INSERT path. **A seventh substring miss, self-inflicted**: the
+narrowed version then fired on the BD-14 comment quoting the path it had removed, so the guard
+now strips commentary before scanning.
+
+**Resulting status.** **REMEDIATED IN REPOSITORY — GRANT NOT REVOKED — PRODUCTION
+VERIFICATION REQUIRED.** B-017 open.
+
+**Dependencies.** The anon SELECT revocation is a production operation queued behind **B-001**,
+alongside the B-013A revocation.
+
+**Reversibility.** Fully reversible.
+
+**Scope note, so this is not over-read.** `interaction_events` was examined in the same pass
+and is a **weaker** case, not this one. Its collecting pages promise "No free text and no
+identifying information are collected" and "aggregated without individual attribution", so
+`select=*` over a `payload` jsonb is consistent with what respondents were told. The
+enforcement of "no free text" lives in the client code that builds the payload rather than in
+the schema. Recorded as **X-1**, not folded in here.
+
+---
+
+## BD-15 · V-11 — the two 401 branches are made indistinguishable
+
+**Question.** The engine routes returned different 401 detail strings depending on whether a
+token was provisioned. Is that disclosure acceptable?
+
+**Prior status.** OPEN — LOW, recorded twice and deliberately not remediated.
+
+**Evidence.** "Send Authorization: Bearer <token>." was returned when `REVIEW_API_TOKEN` is set
+and the bearer is wrong; "A token is required." when it is unset and sandbox mode is off. On
+2026-09-16 a verification pass **used exactly that difference** to establish the deployment's
+configuration state from outside, which is how the fact that JRS is licensed to nobody was
+independently confirmed.
+
+**Facts.** Same class as the defect already fixed on these lines, where the 401 named the
+governing environment variables. Weaker in degree — configuration **state**, not variable
+**names** — which is why it was recorded rather than fixed in passing.
+
+**Options.** (a) merge the strings; (b) keep the distinction as an operator signal.
+
+**Risk analysis.** The operator-signal argument does not survive contact with the facts: the
+operator has the deployment dashboard and the instruction in the file header. They do not need
+to read configuration state out of an unauthenticated 401. The caller learns what they need
+either way — send a valid token.
+
+**DECISION — BOARD DECISION — OWNER-DELEGATED.** Option (a). Both branches now return
+`A valid token is required. Contact info@jrsstandard.com`.
+
+**Authority.** Category A: security posture, reversible.
+
+**Testing.** `tests/engine/auth-matrix.mjs` 18 → **26 checks, 0 failed**. Four new assertions
+per route: both branches present, details identical, no environment variable named, no
+provisioning state disclosed. **They assert on the source, not by issuing requests**, because
+the distinguishing signal is the literal and two live calls would prove only that two
+configurations behaved alike on one run. Restoring the old string fails the suite.
+
+**Resulting status.** **BOARD DECIDED → IMPLEMENTED → TESTED. PRODUCTION VERIFICATION
+REQUIRED.** V-11 closed as a question.

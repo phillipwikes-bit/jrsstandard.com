@@ -68,3 +68,17 @@ Prior rows above are retained unchanged. Resolved questions stay in the matrix.
 | **W-5** | Are the schema files and Supabase function source still served on production? | **ANSWERED — FACT. YES, live now**: `/supabase-engine-reviews-setup.sql`, `/supabase-setup.sql` and `/supabase/functions/run-study/index.ts` all return 200. This is **B-014**, remediated in `.vercelignore` on the development branch; `origin/main` predates the fix. Closes on deployment |
 
 **Production verified: still none.**
+
+## Round G — autonomous execution cycle, 2026-09-16
+
+| ID | Question | Status |
+|---|---|---|
+| **V-11** | The two 401 branches disclose provisioning state | **ANSWERED — BOARD DECISION (BD-15).** Merged. IMPLEMENTED → TESTED. PRODUCTION VERIFICATION REQUIRED |
+| **W-6** | Do any guards agree with themselves rather than with reality? | **ANSWERED — FACT. THREE DID.** (1) `check_manifest_library_holds_its_refusals` passed a fresh "RFC 8785 compliant" claim because the disclaimer elsewhere in the file satisfied a page-wide test — third proximity miss. (2) `check_record_derived_fields_have_no_export_path` still carried the dead BD-11/BD-02 suppressor beside the new allow-list. (3) **W3, new**: `ENGINE_TRUNCATION_LIMIT = 8000` in `lib/manifest/hash.js` and the bare `8000` in both engine routes were three independent declarations with nothing tying them. **All three closed** |
+| **W-7** | If the engine and manifest truncation caps diverge, what breaks? | **ANSWERED — FACT.** The manifest would record `truncated: false` and omit `source_hash` for a record the engine had truncated, **asserting the evaluation covered text the model never received** — the exact failure `hash.js` says its design prevents. New guard reads the cap from the slice expression in both routes. Three mutations fail |
+| **W-8** | Why is the cap duplicated rather than imported? | **ANSWERED — FACT, and the duplication is correct.** The engine routes are Edge Functions and `lib/` is excluded by `.vercelignore` because the manifest implementation must not be deployable. Importing would undo that boundary. **Duplication plus a guard is the right trade**; recorded so it is not later "tidied" into an import |
+| **B-017** | A privacy promise contradicted by an anon SELECT grant | **BOARD DECIDED (BD-14) → IMPLEMENTED → TESTED in the repository. GRANT NOT REVOKED — PRODUCTION VERIFICATION REQUIRED** |
+| **X-1** | `interaction_events.payload` is a jsonb exported with `select=*`; "no free text is collected" is enforced only by the client code that builds the payload | **OPEN — LOW.** Consistent with what respondents were told, so **not** folded into B-017. The gap is that the promise has no schema-level or guard-level enforcement. Queued |
+| **X-2** | Is the live row count of `finding_responses` known? | **NOT ESTABLISHED.** A production read was attempted and **correctly denied** by the environment's production-read control. **PRODUCTION VERIFICATION REQUIRED**; deliberately not inferred |
+
+**Production verified: still none.**

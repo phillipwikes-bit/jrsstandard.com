@@ -68,5 +68,36 @@ for (const route of ['api/review-engine.js', 'api/v1/review-engine.js']) {
 }
 
 console.log(`\nINVARIANT: no unauthenticated configuration produced a persistence write.`);
-console.log(`${pass + fail} checks, ${fail} failed`);
+
+// ---------------------------------------------------------------------------
+// BD-15 (V-11), 2026-09-16. THE TWO 401 BRANCHES MUST NOT BE DISTINGUISHABLE.
+//
+// They used to differ, and the difference told an unauthenticated caller whether
+// a token was provisioned at all: "Send Authorization: Bearer <token>." meant
+// one is configured and yours is wrong; "A token is required." meant none is.
+// A verification pass used exactly that to read the deployment's configuration
+// state from outside. Same class as the earlier defect where the 401 named the
+// governing environment variables, and weaker only in degree.
+//
+// This asserts on the SOURCE rather than by issuing requests, because the
+// distinguishing signal is the literal, and two live calls would prove only that
+// the two configurations behaved alike on one run.
+// ---------------------------------------------------------------------------
+{
+  const { readFileSync } = await import('node:fs');
+  for (const f of ['api/v1/review-engine.js', 'api/review-engine.js']) {
+    const src = readFileSync(f, 'utf8');
+    const details = [...src.matchAll(/error:\s*'unauthorized',\s*detail:\s*'([^']+)'/g)].map((m) => m[1]);
+    t(`${f}: both 401 branches present`, details.length === 2, String(details.length));
+    t(`${f}: the two 401 details are identical`, details.length === 2 && details[0] === details[1],
+      JSON.stringify(details));
+    t(`${f}: the 401 names no environment variable`,
+      !/REVIEW_API_TOKEN|JRS_SANDBOX_OPEN|ANTHROPIC_API_KEY|SUPABASE/.test(details.join(' ')));
+    t(`${f}: the 401 does not disclose whether a token is provisioned`,
+      !/no token|not provisioned|is required\.$|token is set|unset/i.test(details[0] || ''),
+      details[0]);
+  }
+}
+
+console.log(`\n${pass + fail} checks, ${fail} failed`);
 process.exit(fail ? 1 : 0);

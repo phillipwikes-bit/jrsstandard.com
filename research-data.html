@@ -158,7 +158,26 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
     // activity endpoint uses. Latent when found: the table holds zero rows.
     ['Automated Engine Reviews','/rest/v1/engine_reviews?select=created_at,determination,runs,overall_consistency,engine_version','five-condition determination, run count and consistency. Record-derived model text is deliberately excluded'],
     ['Finding Poll Votes','/rest/v1/finding_poll_votes?select=*','A/B/C/D tallies'],
-    ['Finding Responses (free text)','/rest/v1/finding_responses?select=*','private discussion/debate responses'],
+    // BD-14, 2026-09-16. REMOVED. This row offered
+    // /rest/v1/finding_responses?select=* and described the data, on the page
+    // itself, as "private discussion/debate responses" while publishing an
+    // anonymous export link to it.
+    //
+    // finding.html tells every respondent, at the moment they type: "Your
+    // response is recorded privately for the research program. IT IS NOT
+    // DISPLAYED PUBLICLY", and confirms on submit with "Recorded privately."
+    // The response box takes up to 4,000 characters of free text.
+    //
+    // supabase-ALL.sql grants `for select to anon using (true)` on
+    // finding_responses, under a comment saying it was made readable "for the
+    // data room" -- directly contradicting the table's own earlier comment,
+    // "(no select / update / delete policy for anon: responses stay private)".
+    //
+    // A promise of privacy made at the point of collection controls. The export
+    // link is removed here, which is the half that can be fixed in the
+    // repository. The anon SELECT grant is a PRODUCTION operation and is queued
+    // behind B-001 alongside the B-013A revocation. Until that runs, the grant
+    // stands and B-017 is open.
     ['Nightly Reproducibility History','/rest/v1/findings_history?select=*','one row per nightly run (time series)'],
     ['Published Findings','/rest/v1/findings?select=headline,classification,observation,research_question,supporting_data,evidence_class,metrics,created_at&published=eq.true','observational findings + metrics'],
     ['Research Questions','/rest/v1/research_questions?select=*','open questions under investigation'],

@@ -5322,10 +5322,19 @@ def check_record_derived_fields_have_no_export_path(offline):
                         "public projection allow-list. conditions carries "
                         "conditions[].note and finding carries compliant_version, "
                         "both derived from the customer's record" % (rel, bare))
-        if "engine_reviews" in body:
-            for col in DERIVED:
-                if col in body and "BD-11" not in body and "BD-02" not in body:
-                    findings.append("%s names %r alongside engine_reviews" % (rel, col))
+        # REMOVED 2026-09-16 by the guard-integrity sweep. This branch read:
+        #
+        #     if col in body and "BD-11" not in body and "BD-02" not in body:
+        #
+        # It was the exemption that let a `conditions` export through on
+        # research-data.html, because that page names BD-11 in the comment
+        # describing its own projection. The allow-list above SUPERSEDES it and
+        # is strictly stronger: it parses the query and refuses any column not
+        # explicitly permitted, including columns that do not exist yet.
+        #
+        # It is deleted rather than left beside the allow-list because a
+        # known-defective branch sitting next to a working one is how a later
+        # reader concludes the defective behaviour was intentional.
 
     act = read("api/engine-activity.js")
     if act:
@@ -5620,6 +5629,191 @@ def check_manifest_implementation_is_not_deployable(offline):
                "them; api/ still deployable")
 
 
+
+
+def check_a_privacy_promise_is_not_contradicted_by_an_export(offline):
+    """Text collected under a promise of privacy has no public export path.
+
+    WHY THIS GUARD EXISTS. B-017 / BD-14, found 2026-09-16 by the sweep that
+    extended the engine_reviews allow-list to the other anonymously readable
+    tables.
+
+    finding.html tells every respondent, at the moment they type into the box:
+    "Your response is recorded privately for the research program. It is not
+    displayed publicly." It confirms on submit with "Recorded privately." The
+    box accepts up to 4,000 characters of free text.
+
+    research-data.html offered /rest/v1/finding_responses?select=* as a data-room
+    export, and labelled it, on the page, "private discussion/debate responses" --
+    describing data as private in the same row that published a link to it.
+
+    supabase-ALL.sql grants `for select to anon using (true)` on the table, under
+    a comment saying it was opened "for the data room", which contradicts the
+    table's own earlier comment that "responses stay private". Both comments were
+    in the same file.
+
+    WHAT IT CHECKS, in three parts, because the promise and the plumbing can each
+    drift independently:
+      1. the promise is still on finding.html, in the form respondents are shown;
+      2. no HTML page selects finding_responses at all, by any projection --
+         narrowing it would not help, because `response` IS the sensitive column
+         and the row exists to carry it;
+      3. no page names the response column alongside the table.
+
+    WHAT IT DOES NOT CHECK, and cannot from here: whether the anon SELECT grant
+    has actually been revoked in the database. That is a PRODUCTION operation
+    queued behind B-001. This guard closes the repository half only, and B-017
+    stays open until production evidence exists.
+    """
+    findings = []
+
+    PROMISE = "it is not displayed publicly"
+    fh = read("finding.html")
+    if not fh:
+        findings.append("finding.html is missing; the promise this guard protects "
+                        "cannot be located")
+    elif PROMISE not in fh.lower():
+        findings.append("finding.html no longer tells respondents their text is not "
+                        "displayed publicly. If the promise was withdrawn that is a "
+                        "decision with a record; if it was edited away, the export "
+                        "ban below is now protecting nothing and should be re-read "
+                        "rather than quietly relaxed")
+
+    # READ PATHS ONLY. The first version of this check banned every mention of
+    # the table and immediately failed on finding.html, which is the INSERT path:
+    # the submit box POSTs the response there. Banning the write would ban the
+    # feature. What must not exist is a READ.
+    # STRIP COMMENTARY BEFORE SCANNING. The narrowed version of this check fired
+    # on research-data.html, where the row HAD been removed -- it was matching the
+    # BD-14 comment that quotes the path it removed, in order to explain why. That
+    # is the seventh substring-versus-structure miss recorded on this project, and
+    # this one was self-inflicted by documenting the fix. Guards read code, not
+    # the prose about the code.
+    def _strip_commentary(text):
+        text = re.sub(r"<!--.*?-->", "", text, flags=re.S)
+        text = re.sub(r"^\s*//[^\n]*$", "", text, flags=re.M)
+        return text
+
+    for rel in _html_files():
+        body = _strip_commentary(read(rel))
+        for m in re.finditer(r"finding_responses\?select=([^'\"&\s]*)", body):
+            findings.append("%s selects %r from finding_responses. Responses are "
+                            "collected under an explicit promise that they are not "
+                            "displayed publicly, so the table has no public "
+                            "projection at all, not a narrower one"
+                            % (rel, m.group(1) or "(empty)"))
+        # A read can also be spelled without ?select=. Catch a GET by shape.
+        for m in re.finditer(r"finding_responses[^\n]{0,200}", body):
+            seg = m.group(0)
+            if "method:'POST'" in seg.replace(" ", "") or 'method:"POST"' in seg.replace(" ", ""):
+                continue
+            if "?select=" in seg:
+                continue  # already reported above
+            if re.search(r"\bfetch\s*\(", seg) or "rest/v1/finding_responses" in seg:
+                if "POST" not in seg:
+                    findings.append("%s reaches rest/v1/finding_responses without an "
+                                    "explicit POST; a read of this table contradicts "
+                                    "the promise made at collection" % rel)
+
+    check("a privacy promise is not contradicted by an export",
+          not findings,
+          "; ".join(findings) if findings
+          else "finding.html still carries the promise; no page exports "
+               "finding_responses. The anon SELECT grant remains a production "
+               "matter under B-017")
+
+
+def check_manifest_truncation_limit_matches_the_engine(offline):
+    """The manifest's truncation cap is the same number the engine truncates at.
+
+    WHY THIS GUARD EXISTS. Found 2026-09-16 by the guard-integrity sweep, in the
+    W3 class: a literal asserted in one place that silently must track a value
+    declared somewhere else.
+
+    lib/manifest/hash.js declares ENGINE_TRUNCATION_LIMIT = 8000 and computes
+    input.length_chars and input.truncated against it. api/v1/review-engine.js
+    and api/review-engine.js each carry a BARE 8000 in
+    `if (text.length > 8000) text = text.slice(0, 8000)`. Three independent
+    declarations of one number, with nothing tying them together.
+
+    WHAT GOES WRONG IF THEY DIVERGE, and it is the worst failure this artifact
+    has. Drop the engine cap to 6000 and leave the manifest at 8000: a 7,000
+    character record is truncated to 6,000 by the engine, while the manifest
+    computes length_chars = 7000 and truncated = FALSE, and omits source_hash.
+    The manifest would then assert that the evaluation covered 1,000 characters
+    the model never received. hash.js says so itself at the top of the file:
+    "A manifest that hid truncation would claim the evaluation covered material
+    the model never received." That is exactly what this divergence produces.
+
+    WHY THE NUMBER IS DUPLICATED AT ALL, recorded so the duplication is not
+    mistaken for an oversight. The engine routes are Vercel Edge Functions and
+    lib/ is excluded by .vercelignore, deliberately, because the manifest
+    implementation is protected and must not be deployable. Importing the
+    constant into the routes would require deploying lib/ and would undo that
+    exclusion. Duplication plus a guard is the correct trade here; a shared
+    import is not available without giving up the public/private boundary.
+
+    WHAT IT CHECKS. The constant in hash.js, and every truncation literal in
+    both engine routes, are the same integer. Read structurally from the slice
+    expression rather than by counting occurrences of "8000", so renaming or
+    reformatting does not defeat it and so a second, different cap cannot hide.
+    """
+    findings = []
+
+    h = read("lib/manifest/hash.js")
+    m = re.search(r"ENGINE_TRUNCATION_LIMIT\s*=\s*(\d+)", h)
+    if not m:
+        check("manifest truncation limit matches the engine", False,
+              "lib/manifest/hash.js no longer declares ENGINE_TRUNCATION_LIMIT; "
+              "the manifest's truncation accounting has lost its anchor")
+        return
+    manifest_limit = int(m.group(1))
+
+    seen = {}
+    for rel in ("api/v1/review-engine.js", "api/review-engine.js"):
+        src = read(rel)
+        if not src:
+            findings.append("%s is missing" % rel)
+            continue
+        # STRUCTURE: the guard is the slice expression, not the digits.
+        caps = re.findall(
+            r"text\.length\s*>\s*(\d+)\s*\)\s*text\s*=\s*text\.slice\(\s*0\s*,\s*(\d+)\s*\)",
+            src)
+        if not caps:
+            findings.append("%s no longer truncates with the expected "
+                            "`if (text.length > N) text = text.slice(0, N)` shape; "
+                            "the manifest cannot be proven to match a cap that "
+                            "cannot be located" % rel)
+            continue
+        for a, b in caps:
+            if a != b:
+                findings.append("%s compares against %s but slices at %s; a record "
+                                "between the two is truncated by a different amount "
+                                "than the comparison implies" % (rel, a, b))
+            seen.setdefault(rel, set()).add(int(b))
+
+    for rel, caps in seen.items():
+        if len(caps) > 1:
+            findings.append("%s declares more than one truncation cap %r; the "
+                            "manifest can only match one of them" % (rel, sorted(caps)))
+        for c in caps:
+            if c != manifest_limit:
+                findings.append(
+                    "%s truncates at %d while lib/manifest/hash.js declares "
+                    "ENGINE_TRUNCATION_LIMIT = %d. A record between the two is "
+                    "truncated by the engine while the manifest records "
+                    "truncated=false and omits source_hash, asserting that the "
+                    "evaluation covered text the model never received"
+                    % (rel, c, manifest_limit))
+
+    check("manifest truncation limit matches the engine",
+          not findings,
+          "; ".join(findings) if findings
+          else "hash.js declares %d and both engine routes truncate at %d, read "
+               "from the slice expression rather than by digit count"
+               % (manifest_limit, manifest_limit))
+
+
 def check_manifest_library_holds_its_refusals(offline):
     """The Manifest builder still REFUSES the things it must refuse.
 
@@ -5684,9 +5878,34 @@ def check_manifest_library_holds_its_refusals(offline):
     canon = read("lib/manifest/canonicalize.js")
     if "jrs-dev-canon-1" not in canon:
         findings.append("the development canonicalization identifier is gone")
-    if "RFC 8785" in canon and "NOT described as" not in canon:
-        findings.append("canonicalize.js appears to claim RFC 8785 compliance without "
-                        "the disclaimer that it has not been verified")
+    # PROXIMITY AND POLARITY, NOT PAGE-WIDE CONTAINMENT. Corrected 2026-09-16 by
+    # the guard-integrity sweep, after a directed mutation PASSED: appending
+    # "This implementation is RFC 8785 compliant." to the bottom of the file left
+    # the existing disclaimer at line 5 intact, so the page-wide "NOT described
+    # as" test was still satisfied and the guard reported all three refusals
+    # proven. Third instance of the proximity class on this project.
+    #
+    # Now: every occurrence of the RFC must carry a negation NEAR IT, and the
+    # affirmative phrasings are banned outright regardless of what else the file
+    # says. A disclaimer somewhere in a file does not neutralise a claim
+    # elsewhere in it.
+    for m in re.finditer(r"RFC\s*8785|\bJCS\b", canon):
+        window = canon[max(0, m.start() - 400):m.end() + 400]
+        if not re.search(r"\bNOT\b|\bnot\b|deliberately|has not been verified", window):
+            findings.append("canonicalize.js mentions the RFC at offset %d with no "
+                            "negation within 400 characters; a disclaimer elsewhere "
+                            "in the file does not qualify this mention" % m.start())
+    for phrase in ("is rfc 8785 compliant", "rfc 8785 compliant",
+                   "jcs compliant", "fully compliant with rfc 8785",
+                   "conforms to rfc 8785", "implements rfc 8785"):
+        idx = canon.lower().find(phrase)
+        if idx == -1:
+            continue
+        lead = canon.lower()[max(0, idx - 60):idx]
+        if not re.search(r"\bnot\b|never|deliberately", lead):
+            findings.append("canonicalize.js asserts %r; the identifier is "
+                            "jrs-dev-canon-1 and compliance has not been verified "
+                            "against the RFC's test vectors" % phrase)
 
     total = ""
     for line in out.splitlines():
@@ -6399,6 +6618,8 @@ def main():
                check_no_unapproved_outbound_destination,
                check_manifest_implementation_is_not_deployable,
                check_manifest_library_holds_its_refusals,
+               check_manifest_truncation_limit_matches_the_engine,
+               check_a_privacy_promise_is_not_contradicted_by_an_export,
                check_manifest_schema_keeps_its_safeguards,
                check_data_handling_claims_match_the_implementation,
                check_published_api_contract_matches_the_write_path,

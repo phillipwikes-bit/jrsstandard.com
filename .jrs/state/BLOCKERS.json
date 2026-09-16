@@ -309,6 +309,28 @@
       "status": "OPEN - COUNSEL REVIEW REQUIRED - NOT REMEDIATED",
       "created": "2026-09-16",
       "note": "PRODUCTION IS NOT CURRENTLY EXPOSED, AND THAT IS NOT A DEFENCE. AUTHENTICATED is only ever true when REVIEW_API_TOKEN is provisioned; the 401 probe establishes it is unset, so no caller reaches the model, no row can be written, and engine_reviews holds 0 rows. Production is accurate today by CONFIGURATION, exactly as B-015 was. The defect is that the contract becomes false at the moment the asset is first licensed: provisioning a token to a licensee is the single act that turns on the write path the contract denies, so the first licensee is the only person who can make this document untrue, and they are the person it was written for. Two published surfaces now disagree: privacy.html:214 (BD-12, not yet deployed) says model output about the record is kept for 90 days; openapi.json (deployed) says the call is stateless and nothing is written to any table. WHY THE GUARD SUITE MISSED IT, twice over and either miss sufficient alone: check_data_handling_claims_match_the_implementation bans the substring 'no data-residency obligation', and openapi.json reads 'no data-residency OR RETENTION obligation', which defeats containment; and the sweep iterates _html_files() only, so it never read JSON at all. Found while establishing V-9 Fact A, not by the sweep. RECLASSIFICATION NOTE 2026-09-16: the residency clause in openapi.json ALSO corrects this repository's own record. Section 4 of the counsel packet stated that statements of the form 'no data-residency obligation transfers to us' were removed rather than reworded, and treated any republication as a future contingency. That was true of the HTML surfaces and was written as though it were true of the estate. A residency statement is live on production now. Section 4 is corrected in place with its prior text preserved."
+    },
+    {
+      "blocker_id": "B-017",
+      "severity": "HIGH",
+      "category": "PRIVACY",
+      "description": "A promise of privacy made at the point of collection is contradicted by an anonymous SELECT grant. finding.html tells every respondent, at the moment they type into the box, 'Your response is recorded privately for the research program. It is not displayed publicly', and confirms on submit with 'Recorded privately. Thank you.' The box accepts up to 4,000 characters of free text and writes to public.finding_responses. supabase-ALL.sql grants 'for select to anon using (true)' on that table, under a comment saying it was opened 'for the data room' - which contradicts the table's own earlier comment in the SAME FILE, '(no select / update / delete policy for anon: responses stay private)'. research-data.html additionally published /rest/v1/finding_responses?select=* as a data-room export and described it, in the same row, as 'private discussion/debate responses': a page describing data as private while publishing an anonymous link to it.",
+      "evidence_refs": [
+        "finding.html:230 (POST to rest/v1/finding_responses, response up to 4000 chars)",
+        "finding.html promise text and the 'Recorded privately' confirmation",
+        "supabase-ALL.sql create table public.finding_responses and the later 'read finding responses' policy",
+        "research-data.html data-room export row, removed 2026-09-16 under BD-14",
+        "scripts/check_zero_drift.py::check_a_privacy_promise_is_not_contradicted_by_an_export"
+      ],
+      "affected_assets": [
+        "JRS-RESEARCH",
+        "JRS-WEBSITE"
+      ],
+      "required_action": "BD-14 executed the repository half: the export row is REMOVED from research-data.html, the stale SQL comment asserting a control that does not exist is corrected in place with its prior text preserved, and a guard now fails on any read of finding_responses from any page, on any projection, and also fails if the promise is edited off finding.html. Narrowing the projection was expressly REJECTED rather than taken: `response` IS the sensitive column and the row existed to carry it, so the table has no public projection at all. THE REMAINING HALF IS A PRODUCTION OPERATION AND CANNOT BE DONE FROM HERE: the anon SELECT grant on public.finding_responses must be revoked, queued behind B-001 alongside the B-013A revocation.",
+      "owner": "OWNER",
+      "status": "REMEDIATED IN REPOSITORY - GRANT NOT REVOKED - PRODUCTION VERIFICATION REQUIRED",
+      "created": "2026-09-16",
+      "note": "WHAT IS ESTABLISHED AND WHAT IS NOT. ESTABLISHED FROM REPOSITORY EVIDENCE: the promise, the grant, and the published export link all exist and contradict each other. NOT ESTABLISHED: whether any response rows exist and are actually retrievable by an anonymous caller. A direct read of the production table was attempted and correctly DENIED by the execution environment's production-read control, so the live row count is PRODUCTION VERIFICATION REQUIRED and is not inferred. The remediation does not depend on the count: a privacy promise contradicted by a grant is a defect whether or not anyone has yet typed into the box. SCOPE NOTE, so this is not over-read: interaction_events was examined in the same pass and is a WEAKER case, not this one. Its collecting pages promise 'No free text and no identifying information are collected' and 'aggregated without individual attribution', and select=* over a payload jsonb is consistent with that promise. The enforcement of 'no free text' lives in the client code that builds the payload rather than in the schema, which is a separate and lesser matter recorded as X-1 rather than folded in here."
     }
   ],
   "_decisions_recorded_2026_09_15": {
