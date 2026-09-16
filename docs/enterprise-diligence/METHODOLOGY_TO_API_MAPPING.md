@@ -74,3 +74,38 @@ These tests are **specified, not run.** No result is claimed for any of them.
 
 CT-6 is the test that would move row A-5 of the register from source-verified to
 independently verified. It is the highest-value single test in this package.
+
+---
+
+# BOARD DECISION BD-04 — 2026-09-16
+
+**Three of the four non-exact pairs are now DECLARED as the intended mapping. The fourth is
+not, and the reason matters.**
+
+| Codebook condition | API key | Relationship |
+|---|---|---|
+| Basis Identification | `basis_identification` | **EXACT** (unchanged) |
+| Reconstructability | `reasoning_traceability` | **SEMANTIC / INFERRED — DECLARED** |
+| Chronology | `temporal_reconstructability` | **SEMANTIC / INFERRED — DECLARED** |
+| Decision-Process Traceability | `accountability_support` | **SEMANTIC / INFERRED — DECLARED** |
+| Evidentiary Sufficiency | `cold_reviewer_clarity` | **UNRESOLVED. NOT DECLARED** |
+
+**These three are DECLARED, not UPGRADED.** They remain SEMANTIC / INFERRED. The declaration
+settles *which* engine key corresponds to *which* Codebook condition; it does not assert that
+the two names mean the same thing, and the prohibition on describing the engine as a
+restatement of the Codebook stands.
+
+**Why the fourth is different, and why the Board did not decide it.** The Codebook calls
+Evidentiary Sufficiency **the aggregate** condition. `deriveDetermination()` weights
+`cold_reviewer_clarity` **identically to the other four**. That is not a question about what the
+field is called; it is a question about **what the engine computes**. If it is the aggregate,
+the engine averages a summary of the other four in alongside them. If it is a fifth dimension,
+the Codebook's aggregate has no engine representation at all. **Deciding it by preference would
+change the methodology, not document it.** It remains **D-2, INTENTIONALLY UNRESOLVED**.
+
+**`openapi.json` was not modified.** sha256 verified identical before and after this cycle. The
+declaration above is a methodology record, not a contract change, and **option D of the API
+reconciliation still cannot proceed**, because it requires emitting `Needs work`, which appears
+nowhere in the Codebook and would be a fourth record-level vocabulary.
+
+**OWNER INPUT still requested for the fourth pair.** Unchanged, and now the only one outstanding.
