@@ -787,41 +787,17 @@ function submitVulnObs(e) {
   status.style.color = 'var(--muted-soft)';
   status.style.display = 'inline';
   try{var SBU='https://pjzxkeviouofdseagvpf.supabase.co',SBK='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e';fetch(SBU+'/rest/v1/interaction_events',{method:'POST',headers:{'apikey':SBK,'Authorization':'Bearer '+SBK,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify({source:'pilot',type:'vulnerability_observation',payload:{selection:selected.value}})}).catch(function(){});}catch(e){}
-  fetch('https://api.jrsstandard.com/v1/verify-drift', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ type: 'vulnerability_observation', selection: selected.value, source: 'pilot' })
-  })
-  .then(function(res) {
-    if (!res.ok) throw new Error('server');
-    status.textContent = 'Observation submitted.';
-    status.style.color = 'var(--ready-text)';
-    btn.disabled = false;
-  })
-  .catch(function() {
-    var sessionObj = {
-      type: 'vulnerability_observation',
-      selection: selected.value,
-      source: 'pilot',
-      timestamp: new Date().toISOString()
-    };
-    try {
-      var blob = new Blob([JSON.stringify(sessionObj, null, 2)], {type: 'application/json'});
-      var dlUrl = URL.createObjectURL(blob);
-      var dlAnchor = document.createElement('a');
-      dlAnchor.href = dlUrl;
-      dlAnchor.download = 'jrs-session-' + Date.now() + '.json';
-      document.body.appendChild(dlAnchor);
-      dlAnchor.click();
-      document.body.removeChild(dlAnchor);
-      URL.revokeObjectURL(dlUrl);
-      status.textContent = 'Server unavailable. Session data downloaded for manual submission to info@jrsstandard.com.';
-    } catch(e) {
-      status.textContent = 'Server unavailable. Contact info@jrsstandard.com to submit your observation.';
-    }
-    status.style.color = 'var(--review-text)';
-    btn.disabled = false;
-  });
+  // BD-06, 2026-09-16: the verify-drift call was removed. No DNS record, no
+  // implementation, every call failed. No data is lost: the Supabase write above
+  // carries this payload.
+  //
+  // The status text and the button re-enable used to hang off that call's .then()
+  // and .catch(). They now run directly. The previous wording said "Observation
+  // submitted." only on a success that could never occur, so in practice a
+  // submitter saw the failure branch; this reflects the write that does happen.
+  status.textContent = 'Observation recorded. Thank you.';
+  status.style.color = 'var(--ready-text)';
+  btn.disabled = false;
 }
 </script>
 <script>

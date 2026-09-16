@@ -5200,6 +5200,12 @@ def check_no_unapproved_outbound_destination(offline):
         return
 
     approved = {d["host"]: d for d in inv.get("destinations", [])}
+    # RETIRED entries are history, not live destinations. They are excluded from
+    # the staleness check and are NOT treated as approved: if a retired host is
+    # called again it is absent from `approved` and fails as unapproved, which is
+    # the point. Added 2026-09-16 when BD-06 removed the verify-drift calls and
+    # the guard correctly reported the entry as stale.
+    retired = {d["host"] for d in inv.get("retired_destinations", [])}
 
     # WHAT THIS SCANS, AND WHY IT IS WIDER THAN IT WAS.
     # An adversarial pass on 2026-09-15 defeated the first version four ways:
@@ -5254,7 +5260,7 @@ def check_no_unapproved_outbound_destination(offline):
 
     # Hosts the inventory lists that no longer appear anywhere. Not a failure in
     # itself, but a stale inventory is how a disclosure drifts out of true.
-    stale = [h for h in approved if h not in seen]
+    stale = [h for h in approved if h not in seen and h not in retired]
     if stale:
         findings.append("inventory lists %d host(s) no longer referenced anywhere: %s"
                         % (len(stale), ", ".join(sorted(stale))))

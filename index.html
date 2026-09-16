@@ -5104,6 +5104,10 @@ async function submitReview(){
  const results=document.getElementById('review-results');
  const text=input.value.trim();
  if(!text||text.length<10){status.textContent='Enter at least 10 characters.';return;}
+ // BD-08 Question A, 2026-09-16: the record-paste field is screened. This is the
+ // single most likely place for an identifier to arrive, and the text is POSTed to
+ // a third-party model provider. It is a prompt, not a filter: privacy.html says so.
+ if(typeof jrsSanitizeCheck==='function'&&!jrsSanitizeCheck(text)){status.textContent='';return;}
  status.textContent='Reviewing…';
  results.style.display='none';
  results.innerHTML='';
@@ -5598,23 +5602,12 @@ function submitObs(){
   if(noteVal&&!jrsSanitizeCheck(noteVal))return;
   var obsPayload={type:'operational_observation',selection:selected.dataset.val,note:noteVal,source:'index',timestamp:new Date().toISOString()};
   try{var SBU='https://pjzxkeviouofdseagvpf.supabase.co',SBK='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e';fetch(SBU+'/rest/v1/interaction_events',{method:'POST',headers:{'apikey':SBK,'Authorization':'Bearer '+SBK,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify({source:'index',type:'operational_observation',payload:{selection:selected.dataset.val,note:noteVal}})}).catch(function(){});}catch(e){}
-  fetch('https://api.jrsstandard.com/v1/verify-drift',{
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify(obsPayload)
-  }).catch(function(){
-    try{
-      var blob=new Blob([JSON.stringify(obsPayload,null,2)],{type:'application/json'});
-      var dlUrl=URL.createObjectURL(blob);
-      var dlAnchor=document.createElement('a');
-      dlAnchor.href=dlUrl;
-      dlAnchor.download='jrs-obs-'+Date.now()+'.json';
-      document.body.appendChild(dlAnchor);
-      dlAnchor.click();
-      document.body.removeChild(dlAnchor);
-      URL.revokeObjectURL(dlUrl);
-    }catch(e){}
-  });
+  // BD-06, 2026-09-16: the verify-drift call was removed. api.jrsstandard.com has
+  // no DNS record and no implementation anywhere in this repository, so every call
+  // failed. NO DATA IS LOST BY REMOVING IT: the Supabase write above already
+  // carries this payload, which is the transmission that actually succeeds. The
+  // CLAUDE.md architecture entry is deliberately NOT deleted; if the endpoint is
+  // ever built, wiring this back is a small job.
   document.getElementById('obs-confirm').style.display='inline';
   document.getElementById('obs-options').style.opacity='.4';
   document.getElementById('obs-note').style.opacity='.4';

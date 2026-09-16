@@ -2258,6 +2258,9 @@ function findMatches(text, patterns) {
 async function runAssessment() {
   var text = document.getElementById('pa-input').value.trim();
   if (!text || text.length < 10) { alert('Please enter some record text first.'); return; }
+  // BD-08 Question A, 2026-09-16: the record-paste field is screened before the
+  // text is POSTed to a third-party model provider. A prompt, not a filter.
+  if (typeof jrsSanitizeCheck === 'function' && !jrsSanitizeCheck(text)) return;
 
   // Show loading, hide previous results/errors
   document.getElementById('pa-results').style.display = 'none';
@@ -3045,28 +3048,15 @@ function submitSurvey() {
     if (sel) payload[g] = sel.textContent.trim();
   });
   try{var SBU='https://pjzxkeviouofdseagvpf.supabase.co',SBK='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e';var sp={};['q1','q2','q3','q4','q5'].forEach(function(g){if(payload[g])sp[g]=payload[g];});fetch(SBU+'/rest/v1/interaction_events',{method:'POST',headers:{'apikey':SBK,'Authorization':'Bearer '+SBK,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify({source:'training',type:'observational_survey',payload:sp})}).catch(function(){});}catch(e){}
-  fetch('https://api.jrsstandard.com/v1/verify-drift', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
-  })
-  .catch(function() {
-    try {
-      var blob = new Blob([JSON.stringify(payload, null, 2)], {type: 'application/json'});
-      var dlUrl = URL.createObjectURL(blob);
-      var dlAnchor = document.createElement('a');
-      dlAnchor.href = dlUrl;
-      dlAnchor.download = 'jrs-survey-' + Date.now() + '.json';
-      document.body.appendChild(dlAnchor);
-      dlAnchor.click();
-      document.body.removeChild(dlAnchor);
-      URL.revokeObjectURL(dlUrl);
-    } catch(e) {}
-  })
-  .finally(function() {
-    if (formBody) formBody.style.display = 'none';
-    if (completeBlock) completeBlock.style.display = 'block';
-  });
+  // BD-06, 2026-09-16: the verify-drift call was removed. api.jrsstandard.com has no
+  // DNS record and no implementation, so every call failed. No data is lost: the
+  // Supabase write above carries this payload and is the transmission that succeeds.
+  //
+  // The completion UI below used to hang off that call's .finally(). It now runs
+  // directly, which is also more honest: it reflects the write that actually
+  // happened rather than the completion of a request that always failed.
+  if (formBody) formBody.style.display = 'none';
+  if (completeBlock) completeBlock.style.display = 'block';
 }
 
 // ── ROLE-GATED ENTRY ──────────────────────────────────────

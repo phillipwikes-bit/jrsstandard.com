@@ -1,0 +1,66 @@
+# JRS Dependency Graph — 2026-09-16
+
+**Resolving one blocker does not resolve those below it. Each edge is a prerequisite, not a
+cascade.**
+
+```
+B-001  external credential rotation          [OWNER EXTERNAL ACTION]
+  |
+  +--> B-006  silent-skip root cause         [needs the rotated credential]
+  |       |
+  |       +--> deployment readiness          [one of seven prerequisites]
+  |
+  +--> B-014  .sql + supabase/ exposure      [remediated in config; LIVE on production
+  |                                           until a deployment occurs]
+  +--> B-005 / B-008 / B-009 / B-015         [remediated; production verification]
+  +--> D-11 / D-13 / D-14 / D-15 / D-16 / D-17
+
+B-013A  engine_reviews grant     [BOARD DECIDED -> production grant change]
+B-013C  telemetry retention      [BOARD DECIDED -> production data operation]
+  |
+  +--> security / privacy readiness          [both, not either]
+
+B-013B  contributor scope        [risk DOWNGRADED on new evidence]
+  |
+  +--> residual owner confirmation -> (conditional) counsel
+
+B-004   rights                   [COUNSEL] --> commercial / transfer position
+B-007 / D-1  published contract  [COUNSEL] --> API contract action
+D-3     Codebook mapping         [3 of 4 BOARD DECIDED] --> API reconciliation option D
+  |
+  +--> D-2 cold_reviewer_clarity  [INTENTIONALLY UNRESOLVED — blocks nothing, and is
+                                   the reason option D cannot proceed]
+
+D-12    verify-drift             [BOARD DECIDED -> IMPLEMENTED] --> architectural coherence
+D-18    STUDY-001 presentation   [BOARD DECIDED -> presentation prepared] --> research integrity
+```
+
+## What each edge actually means
+
+**B-001 → B-006.** The diagnostic cannot run without a credential. **Hard.**
+
+**B-001 → B-014.** Not logical but operational: the exposures are closed in configuration and
+**live on production until a deployment**, and deployment waits on B-001. **This is the edge
+that makes B-001 urgent rather than merely first.**
+
+**B-001 → production verification of nine controls.** None can be VERIFIED without deployment.
+
+**B-013A and B-013C → readiness.** Both are Board-decided and **both stop at the production
+boundary**. A decision is not an implementation.
+
+**D-3 → API option D.** Option D requires emitting `Needs work`, which appears nowhere in the
+Codebook. Three mappings are now declared; **the fourth is D-2 and is not the Board's to
+invent**, so option D still cannot proceed.
+
+**D-2 blocks nothing on its own.** It is the reason a *different* option is blocked, which is a
+different thing from being a blocker.
+
+**B-004 and B-007/D-1 do not block deployment.** Neither touches a deployable file. They block
+the commercial and contract positions.
+
+## Critical path to a readiness determination
+
+**B-001 → B-006 → (B-013A, B-013C implementations) → deployment authorization → production
+verification → B-014, B-005, B-008, B-009, B-015, D-11, D-13, D-14, D-15, D-16, D-17 close.**
+
+**B-004 and B-007/D-1 run in parallel and gate nothing on this path.**
