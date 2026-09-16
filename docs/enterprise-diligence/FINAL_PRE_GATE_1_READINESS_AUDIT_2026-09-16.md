@@ -163,3 +163,59 @@ the obstacles that actually gate Gate 1, all of which are unchanged:
 # NOT READY FOR GATE 1 RECONSIDERATION.
 
 **STATE 1 — DEVELOPMENT REMEDIATION. DEPLOYMENT NOT AUTHORIZED. PHASE II LOCKED.**
+
+---
+
+# REVISION — Round G, autonomous execution cycle, 2026-09-16
+
+Prior revisions are **historical and unchanged**. This revision controls.
+
+## What this cycle did
+
+The previous cycle produced an instruction set naming four unblocked items. This
+cycle **executed them** rather than reporting on them. Four defects were found,
+three of them in checks that were passing.
+
+| Item | Outcome |
+|---|---|
+| **Guard-integrity sweep** | **Three defects.** A page-wide containment test passed a fresh "RFC 8785 compliant" claim (third proximity miss); the dead BD-11/BD-02 suppressor was still beside the new allow-list; and the manifest truncation cap was a third independent declaration of a number the two engine routes also carry, with nothing tying them |
+| **Anon-readable table sweep** | **B-017 / BD-14.** A promise of privacy made at the point of collection contradicted by an anon SELECT grant and a published `select=*` export |
+| **V-11** | **BD-15. Decided**, not recorded a third time. Both 401 branches unified |
+| **D-3** | **Not reopened** — prior disposition stands. But **nothing tied the authoritative mapping to the code**, and now something does |
+
+## The one that would have mattered most
+
+If the engine truncation cap and `ENGINE_TRUNCATION_LIMIT` diverged, the manifest
+would record `truncated: false` and omit `source_hash` for a record the engine had
+truncated — **asserting that the evaluation covered text the model never
+received.** That is verbatim the failure `lib/manifest/hash.js` states its design
+exists to prevent, in the artifact whose entire purpose is reconstruction
+integrity. Nothing was checking it.
+
+## Testing
+
+| Suite | Mode | Result |
+|---|---|---|
+| Guards | offline | **137 / 0 / 2 skipped** (was 134) |
+| Guards | online | **141 / 0 / 1 skipped** (was 138) |
+| Retention | dev | 60 / 0 |
+| Projection | dev | 17 / 0 |
+| Auth matrix | dev | **26 / 0** (was 18) |
+| Manifest | dev | 68 / 0 |
+
+Four new guards, **fourteen mutations demonstrated failing** against the pre-fix
+state. Files restored by byte comparison throughout.
+
+## Why the conclusion still does not improve
+
+Every deployment prerequisite is untouched, and **B-017 adds a sixth item to the
+production queue behind B-001**. `openapi.json` sha256 identical; B-016 remains
+with counsel.
+
+A production read was attempted, to establish whether any `finding_responses` rows
+are anonymously retrievable, and was **correctly denied** by the environment's
+production-read control. That count is **NOT ESTABLISHED** and is not inferred.
+
+# NOT READY FOR GATE 1 RECONSIDERATION.
+
+**STATE 1 — DEVELOPMENT REMEDIATION. DEPLOYMENT NOT AUTHORIZED. PHASE II LOCKED.**
