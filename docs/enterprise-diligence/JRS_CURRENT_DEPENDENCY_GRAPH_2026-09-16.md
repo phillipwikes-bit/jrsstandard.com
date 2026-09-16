@@ -64,3 +64,45 @@ the commercial and contract positions.
 verification → B-014, B-005, B-008, B-009, B-015, D-11, D-13, D-14, D-15, D-16, D-17 close.**
 
 **B-004 and B-007/D-1 run in parallel and gate nothing on this path.**
+
+---
+
+# RECALCULATED — 2026-09-16, after BD-02 and BD-03 were implemented
+
+**What changed in the graph, and what did not.**
+
+```
+B-001  external credential rotation          [OWNER EXTERNAL ACTION]
+  |
+  +--> B-006                                 [unchanged, hard]
+  +--> B-014 production verification         [unchanged; exposures LIVE until deployed]
+  +--> production verification of 11 controls
+  |
+  +--> B-013A GRANT REVOCATION               [NEW EDGE]
+          ^
+          |  the replacement read path now EXISTS, so revocation no longer
+          |  breaks a public surface. The blocker moved from
+          |  "needs an architecture" to "needs a deployment".
+```
+
+**EDGE ADDED.** `B-001 → B-013A revocation`. Before this cycle B-013A was blocked on *design*:
+revoking the grant would have broken `engine-activity.html`. That is no longer true. It is now
+blocked only on deployment, which is behind B-001.
+
+**EDGE REMOVED.** `B-013A → engine-activity.html breakage`. The ship-together rule is satisfied
+in the development tree.
+
+**EDGE UNCHANGED.** `B-013C → production data operation`. The retention policy exists and is
+tested; nothing has been deleted, and the first run would delete nothing.
+
+**NEW NODE.** `T-4 engine_reviews retention` — created by this cycle, gated on nothing, and
+decidable by the Board next cycle. **It does not block anything**, which is exactly why it
+would be easy to lose.
+
+**Still true, and worth restating because the graph now looks shorter:** resolving B-001 does
+**not** resolve B-013A, B-014 or any production verification. It *unblocks* them. Each still
+requires its own deployment and its own probe.
+
+**Critical path unchanged:**
+`B-001 → deployment authorization → production verification → eleven closures.`
+**B-004 and B-007/D-1 remain parallel and gate nothing on it.**
