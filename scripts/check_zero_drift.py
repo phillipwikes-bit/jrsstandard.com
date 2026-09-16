@@ -5777,6 +5777,129 @@ def check_data_handling_claims_match_the_implementation(offline):
                % (len(_html_files()), len(BANNED)))
 
 
+
+def check_published_api_contract_matches_the_write_path(offline):
+    """A published OpenAPI contract never denies a write path the code contains.
+
+    WHY THIS GUARD EXISTS. B-016, found 2026-09-16 while establishing whether
+    JRS is licensed to anyone (V-9 Fact A), NOT by the claims sweep that was run
+    to catch exactly this. openapi.json is served on production and describes one
+    path, /api/v1/review-engine. Its info.summary called that endpoint
+    "Stateless" and its info.description said "The call is stateless" and "no
+    data-residency or retention obligation transfers to the operator of this
+    API". api/v1/review-engine.js:272 calls logReview() on every authenticated
+    request, writing a row to engine_reviews that carries a per-condition note
+    grounded in the record text and a model rewrite of the passage.
+
+    WHY THE 2026-09-15 SWEEP MISSED IT, twice over, either miss sufficient alone:
+      1. check_data_handling_claims_match_the_implementation bans the substring
+         "no data-residency obligation". The contract reads "no data-residency
+         OR RETENTION obligation". Two inserted words defeated containment. This
+         is the fifth recorded substring-versus-negation-or-structure miss on
+         this project, so this guard matches on CONCEPT, via independent
+         patterns, and never on one hand-copied phrase.
+      2. That sweep iterates _html_files(). The contract is JSON. It was never
+         read at all.
+
+    WHAT IT CHECKS. For every openapi*.json at the repository root: if the code
+    still contains a logReview call site, the contract must not assert
+    statelessness or a no-write/no-retention property. One occurrence is KNOWN
+    and REGISTERED below against B-016, because openapi.json is the published
+    API contract and this repository's standing instruction is that it is not to
+    be altered without authorization; Section 16 makes a contract conflict a stop
+    condition. The exception is pinned to the exact bytes of the offending
+    strings.
+
+    THIS GUARD IS DESIGNED TO GO RED WHEN B-016 IS FIXED. The pin is a hash of
+    the current wording. Correcting the contract changes the hash, the exception
+    stops applying, and the guard fails until someone comes back and retires it
+    deliberately. That is the intent: a registered defect must not be able to
+    disappear quietly, in either direction.
+    """
+    import hashlib as _hashlib
+
+    findings = []
+
+    # Concept patterns, not one phrase. Each is independently sufficient.
+    CLAIM_PATTERNS = [
+        (r"\bstateless\b", "asserts statelessness"),
+        (r"not\s+written\s+to\s+any\s+table", "asserts nothing is written to any table"),
+        (r"no\s+data.residency", "asserts no data-residency obligation"),
+        (r"\bno\b[^.]{0,60}\bretention\s+obligation", "asserts no retention obligation"),
+        (r"\bnot\s+persisted\b", "asserts nothing is persisted"),
+        (r"\bzero\s+retention\b", "asserts zero retention"),
+    ]
+
+    # B-016. The one occurrence that is known, recorded and blocked on
+    # authorization. Pinned by sha256 of the exact string, so a reworded claim
+    # is NOT covered and a second file is NOT covered.
+    REGISTERED_B016 = {
+        "40e5f23a9ceaa74cccb4d93e0535364fda4dd5c56f7c48ef448253dd1eeba798": "openapi.json info.summary",
+        "3f1263f0b905f68ccb9f15b3f1846e8bb4c097e1f6a1ff40cc1652bc37fcf2aa": "openapi.json info.description",
+    }
+
+    # The code fact that makes the claims false. Word-boundary on a CALL SITE,
+    # not on the definition: logReview is defined in both engine files and a
+    # definition alone writes nothing.
+    v1 = read("api/v1/review-engine.js")
+    writes = bool(re.search(r"await\s+logReview\s*\(", v1))
+
+    specs = sorted(g for g in os.listdir(ROOT)
+                   if g.startswith("openapi") and g.endswith(".json"))
+    if not specs:
+        findings.append("no openapi*.json found at the repository root; this guard "
+                        "was written against a published contract and is now blind")
+
+    registered_hits = 0
+    for name in specs:
+        try:
+            spec = json.loads(read(name))
+        except Exception as e:
+            findings.append("%s is not parseable JSON (%r); a published contract "
+                            "that cannot be read cannot be checked" % (name, e))
+            continue
+        info = spec.get("info", {}) or {}
+        for field in ("summary", "description", "title"):
+            text = info.get(field)
+            if not isinstance(text, str) or not text:
+                continue
+            h = _hashlib.sha256(text.encode("utf-8")).hexdigest()
+            for pat, why in CLAIM_PATTERNS:
+                if re.search(pat, text, re.I):
+                    where = "%s info.%s" % (name, field)
+                    if h in REGISTERED_B016 and REGISTERED_B016[h] == where:
+                        registered_hits += 1
+                        break
+                    findings.append(
+                        "%s %s, and api/v1/review-engine.js %s logReview(). "
+                        "Either the contract is wrong or the code changed; this is "
+                        "not a registered B-016 occurrence, so it is new"
+                        % (where, why, "still calls" if writes else "no longer calls"))
+                    break
+
+    # If the code stopped writing, the claims would become sayable and B-016
+    # would dissolve. That must be noticed, not silently inherited.
+    if not writes:
+        findings.append("api/v1/review-engine.js no longer awaits logReview(); the "
+                        "statelessness claims in the published contract may now be "
+                        "true, so B-016 must be re-read rather than left open")
+
+    if registered_hits and not findings:
+        check("published API contract matches the write path",
+              True,
+              "%d spec(s) read; %d registered B-016 occurrence(s) in openapi.json, "
+              "pinned by content hash and blocked on authorization to correct the "
+              "published contract; no new occurrence; logReview call site intact"
+              % (len(specs), registered_hits))
+        return
+
+    check("published API contract matches the write path",
+          not findings,
+          "; ".join(findings) if findings
+          else "%d spec(s) read; no statelessness or no-retention claim in any "
+               "published contract" % (len(specs),))
+
+
 def check_every_active_processor_is_disclosed(offline):
     """Every external destination that can receive data is named on privacy.html.
 
@@ -6221,6 +6344,7 @@ def main():
                check_manifest_library_holds_its_refusals,
                check_manifest_schema_keeps_its_safeguards,
                check_data_handling_claims_match_the_implementation,
+               check_published_api_contract_matches_the_write_path,
                check_every_active_processor_is_disclosed,
                check_pages_that_render_engine_output_disclose_validation_status,
                check_public_engine_endpoints_carry_no_record_text,
