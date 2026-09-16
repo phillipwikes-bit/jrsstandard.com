@@ -289,7 +289,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
   <tr><td>Bearer token</td><td>Compared against the per-organisation allow list. Identifies the partner, never the individual.</td><td>Not stored with the record</td></tr>
   <tr><td>Result of the evaluation</td><td>Per-condition statuses, the routing determination and the consistency figure are kept as telemetry so the programme can report reproducibility. <b>So is a short note against each condition, which the model is instructed to ground in the record text, and a suggested rewritten version of the passage.</b></td><td><b>Statuses, figures, and model-written text about the record</b></td></tr>
  </table>
- <p class="body-text"><b>The distinction that matters to a reviewer:</b> your record is not stored, but text the model wrote about your record is. A stored row cannot quote your record verbatim, and it is not intended to. It can carry a suggested rewrite of the passage, which is derived from it. Treat that as retained record-derived content when you assess this endpoint, not as metadata.</p>
+ <p class="body-text"><b>The distinction that matters to a reviewer:</b> your record is not stored, but text the model wrote about your record is. A stored row is not designed to reproduce your record, and no row holds it. But <b>nothing in the implementation prevents a suggested rewrite from retaining phrasing from the passage it rewrites</b>: the only controls are an instruction to the model and a 600-character limit. There is no verbatim check. Treat that as retained record-derived content when you assess this endpoint, not as metadata.</p>
 </div>
 
 <div style="margin-bottom:20px;">

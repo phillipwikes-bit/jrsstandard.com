@@ -139,11 +139,38 @@ const run = async () => {
   // §14C vocabulary attacks
   rejects('unsupported condition key added as a sixth', edit(f2, (x) => { x.conditions.invented_aggregate = { status: 'pass' }; }));
 
-  // ---- write fixtures for the portability test
-  const w = (n, o) => writeFileSync(new URL(`./fixtures/${n}`, import.meta.url), JSON.stringify(o, null, 2) + '\n');
+  // ---- F-13: CANONICAL FIXTURES ARE THE ORACLE AND ARE NEVER WRITTEN.
+  // The harness used to write all six fixtures at the end of every run and then
+  // validate them, so the generator's output WAS the expected answer and a
+  // generator regression could not fail the suite. Output now goes to a
+  // disposable directory; the oracle is read from canonical/ and compared.
+  mkdirSync(new URL('./generated/', import.meta.url), { recursive: true });
+  const w = (n, o) => writeFileSync(new URL(`./generated/${n}`, import.meta.url), JSON.stringify(o, null, 2) + '\n');
   w('01-no-record.manifest.json', f1); w('02-derived.manifest.json', f2);
   w('03-contains-record.manifest.json', f3); w('04-truncated.manifest.json', f4);
   w('05-deterministic.manifest.json', a); w('06-forged-content-class.manifest.json', forged);
+
+  // Compare the generator against the frozen oracle on everything EXCEPT the
+  // three fields that are nondeterministic by design.
+  const NONDET = new Set(['manifest_id', 'created_at']);
+  const strip = (m) => {
+    const c = JSON.parse(JSON.stringify(m));
+    for (const k of NONDET) delete c[k];
+    if (c.integrity) delete c.integrity.manifest_hash;  // derives from the above
+    return JSON.stringify(c, Object.keys(c).sort());
+  };
+  const canon = (n) => JSON.parse(readFileSync(new URL(`./fixtures/canonical/${n}`, import.meta.url), 'utf8'));
+  for (const [n, got] of [['01-no-record.manifest.json', f1], ['02-derived.manifest.json', f2],
+                          ['03-contains-record.manifest.json', f3], ['04-truncated.manifest.json', f4]]) {
+    t(`ORACLE ${n} matches the frozen canonical fixture`, strip(got) === strip(canon(n)));
+  }
+
+  // The oracle must be capable of failing. A generator that emitted a different
+  // content_class, vocabulary or routing value must break this comparison.
+  const mutated = JSON.parse(JSON.stringify(f2));
+  mutated.content_class = 'no_record_content';
+  t('ORACLE detects a generator regression (mutated content_class differs from canonical)',
+    strip(mutated) !== strip(canon('02-derived.manifest.json')));
 
   console.log(`\n${pass + fail} checks, ${fail} failed`);
   process.exit(fail ? 1 : 0);

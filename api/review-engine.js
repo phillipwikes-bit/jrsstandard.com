@@ -220,10 +220,24 @@ export default async function handler(req) {
 
   // Fail-closed auth: a token is required by default. Open (token-free) mode must be
   // explicitly enabled with JRS_SANDBOX_OPEN=true; the rate limit still applies in open mode.
+  // AUTHENTICATED is tracked, not assumed. Finding F-10, 2026-09-15: with
+  // REVIEW_API_TOKEN unset AND JRS_SANDBOX_OPEN=true, BOTH branches below are
+  // skipped and the request falls through with no authentication at all. That
+  // is intended for open sandbox use, but this route also calls logReview(),
+  // which persists a per-condition note the prompt requires to be grounded in
+  // the record text and a compliant_version rewrite of the passage, into a
+  // table that currently grants anonymous SELECT (blocker B-013A).
+  //
+  // Unauthenticated write of record-derived content into an anonymously
+  // readable table is a compound exposure, and it would have been reachable by
+  // one environment variable. Open mode is preserved; persistence under open
+  // mode is not. See the logReview call site.
+  var AUTHENTICATED = false;
   if (TOKEN_ENV) {
     var allowed = TOKEN_ENV.split(',').map(function (t) { return t.trim(); }).filter(Boolean);
     var bearer = (req.headers.get('authorization') || '').replace(/^Bearer\s+/i, '').trim();
     if (allowed.indexOf(bearer) === -1) return J({ error: 'unauthorized', detail: 'Send Authorization: Bearer <token>.' }, 401);
+    AUTHENTICATED = true;
   } else if (SANDBOX_OPEN !== 'true') {
     // The public 401 names no environment variable. The previous text read
     // "Set REVIEW_API_TOKEN, or set JRS_SANDBOX_OPEN=true", which told any
@@ -259,7 +273,10 @@ export default async function handler(req) {
     var results = await Promise.all(Array.from({ length: runs }, function () { return oneRun(text, KEY); }));
     var out = Object.assign({}, meta, { result: results[0] });
     if (runs > 1) out.variance = computeVariance(results);
-    await logReview(SERVICE, rid, out);
+    // F-10 INVARIANT: an unauthenticated request never persists record-derived
+    // content. In open sandbox mode the evaluation still runs and is still
+    // returned to the caller; only the write is withheld.
+    if (AUTHENTICATED) await logReview(SERVICE, rid, out);
     return J(out, 200);
   } catch (e) {
     return J({ error: 'review_failed', detail: String(e && e.message || e) }, 502);

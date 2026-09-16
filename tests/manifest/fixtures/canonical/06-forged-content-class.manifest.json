@@ -1,7 +1,7 @@
 {
-  "manifest_id": "2549d209-0647-49dc-b5fa-ddfe041483b9",
+  "manifest_id": "df8edd5c-13fb-41a3-ab03-c553b81db2f1",
   "manifest_version": "1.0",
-  "created_at": "2026-09-15T16:02:33.142Z",
+  "created_at": "2026-09-16T09:41:29.841Z",
   "jrs_version": "1.0",
   "codebook_version": "1.0",
   "engine": {
@@ -52,12 +52,12 @@
     "required": true,
     "reason": "Human review remains required because the current Review Engine is not established as validated for autonomous consequential decision use."
   },
-  "content_class": "derived_record_content",
+  "content_class": "no_record_content",
   "evaluation": {
     "runs": 1
   },
   "integrity": {
-    "manifest_hash": "sha256:f818597e82014288257c19c5c205a4e50fb458c46b43a29d21767c753e848253",
+    "manifest_hash": "sha256:3815824318158bb7a63cc8a86a8e8091a46150c6c795e36faa42dd755f2e4558",
     "canonicalization": "jrs-dev-canon-1"
   }
 }

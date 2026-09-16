@@ -18,3 +18,10 @@ __pycache__/
 # rebuilds for review, never the shipped guides, so they are neither
 # committed nor deployed (.vercelignore excludes build/ as well).
 build/
+
+# Manifest generator output. Finding F-13, 2026-09-16: the harness used to write
+# its own fixtures at the end of every run and then validate them, so the test
+# could not detect a generator regression. Generated output now lands here and is
+# disposable; the oracle lives in tests/manifest/fixtures/canonical/ and is read
+# only.
+tests/manifest/generated/

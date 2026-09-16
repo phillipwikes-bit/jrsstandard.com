@@ -77,11 +77,12 @@
       "description": "claude-haiku-4-5-20251001 is pinned in the Review Engine as if permanent.",
       "required_action": "Make the identifier configurable with a documented default and a recorded review date.",
       "owner": "CLAUDE",
-      "status": "REMEDIATED \u2014 DEPLOYMENT BLOCKED",
+      "status": "REMEDIATED FOR THE API RUNTIME \u2014 SCOPE QUESTION OPEN \u2014 DEPLOYMENT BLOCKED",
       "created": "2026-09-14",
       "remediation_2026_09_14": "api/_model.js created. Six literals across five files reduced to zero outside that module. jrsModel() returns the prior literal byte-identically with no override; override verified; all five import paths resolve; all files parse. Behaviour preserved by construction. Does not imply model equivalence.",
       "update_2026_09_15": "Code complete and tested. Deployment is conditionally authorized (D-9) but condition 1, completed B-001 rotation, is NOT met, so no deployment was attempted. Change remains on the development branch.",
-      "correction_2026_09_15": "OLD FINDING: 'six literals across five files reduced to zero outside that module'. NEW EVIDENCE: two live literals remain in supabase/functions/run-study/index.ts lines 38 and 75, a second Anthropic-calling engine, plus one published example in review-engine.html:379. The census covered api/ only. CORRECTED STATUS: zero literals remain IN api/; B-005 is NOT remediated as originally described. EXPLANATION: found by an adversarial pass 2026-09-15. supabase/ is now excluded from the Vercel deployable set, which addresses the exposure but not the literal."
+      "correction_2026_09_15": "OLD FINDING: 'six literals across five files reduced to zero outside that module'. NEW EVIDENCE: two live literals remain in supabase/functions/run-study/index.ts lines 38 and 75, a second Anthropic-calling engine, plus one published example in review-engine.html:379. The census covered api/ only. CORRECTED STATUS: zero literals remain IN api/; B-005 is NOT remediated as originally described. EXPLANATION: found by an adversarial pass 2026-09-15. supabase/ is now excluded from the Vercel deployable set, which addresses the exposure but not the literal.",
+      "scope_correction_2026_09_16": "OLD STATUS: REMEDIATED (implied repository-wide). NEW STATUS: REMEDIATED FOR THE API RUNTIME ONLY. WHY: two live literals remain in supabase/functions/run-study/index.ts, a dormant second Anthropic-calling engine deployed by a different toolchain and not the one the nightly cron calls. EVIDENCE: repository-wide grep, 2026-09-15. AUTHORITY: engineering for the scope statement; OWNER for whether B-005's scope includes the dormant research route. DATE: 2026-09-16. See B-005_SCOPE_RECONCILIATION.md. The published example in review-engine.html:379 is deliberately left: an API example showing a placeholder instead of the real identifier would be less useful and arguably less honest."
     },
     {
       "blocker_id": "B-006",
@@ -259,6 +260,24 @@
       "status": "REMEDIATED IN CONFIGURATION \u2014 REQUIRES DEPLOYMENT VERIFICATION",
       "created": "2026-09-15",
       "note": "Found by an adversarial pass. My own candidate audit had certified 'Protected implementation excluded \u2014 CONFIRMED', which was false; that row is corrected in place with the correction visible."
+    },
+    {
+      "blocker_id": "B-015",
+      "severity": "HIGH",
+      "category": "SECURITY",
+      "description": "Unauthenticated write path into an anonymously readable table. With REVIEW_API_TOKEN unset AND JRS_SANDBOX_OPEN=true, both auth branches in api/review-engine.js and api/v1/review-engine.js were skipped and the request fell through unauthenticated while still calling logReview(), which persists a per-condition note the prompt requires to be grounded in the record text and a 600-character compliant_version rewrite of the passage, into engine_reviews, which grants anonymous SELECT. Production failed closed by CONFIGURATION, not by code.",
+      "evidence_refs": [
+        "FINAL_PRE_DEPLOYMENT_RED_TEAM_2026-09-15.md F-10",
+        "tests/engine/auth-matrix.mjs"
+      ],
+      "affected_assets": [
+        "JRS-ENGINE"
+      ],
+      "required_action": "Remediated in code 2026-09-16: AUTHENTICATED is tracked and logReview is called only when true. Open sandbox mode still evaluates and returns a result; it no longer persists. Verified by a nine-configuration adversarial matrix across both routes, 18/18, with the decisive case being sandbox-open + unauthenticated giving 200 and ZERO writes; the same matrix fails that case on the pre-fix code.",
+      "owner": "CLAUDE",
+      "status": "REMEDIATED \u2014 NOT VERIFIED IN PRODUCTION \u2014 NOT DEPLOYED",
+      "created": "2026-09-16",
+      "note": "Found by an adversarial pass, not by me. The exposure was reachable by one environment variable and would have been an unauthenticated write of record-derived content into a publicly readable table."
     }
   ],
   "_decisions_recorded_2026_09_15": {

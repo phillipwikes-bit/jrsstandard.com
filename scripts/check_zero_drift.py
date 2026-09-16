@@ -382,16 +382,31 @@ def _rebuild_one(builder, doc, offline):
 
 
 def check_public_engine_endpoints_carry_no_record_text(offline):
-    """Phillip's ratification of 2026-09-02: the PII and retention constraint
-    binds the PUBLIC evaluation endpoints and not the owner-only surfaces.
+    """The RAW record is never passed to logReview, and derived content still is.
 
-    api/review.js persists nothing. The two review-engine endpoints do write a
-    row per review, so they are not stateless in the literal sense, but the row
-    holds the engine's own output and never the record. This guard keeps it
-    that way. input_preview was live once, was rendered on a public page, and
-    was removed on 2026-08-14; the field name is banned by name so it cannot
-    return under its old spelling, and the record text is no longer a parameter
-    of logReview at all, so there is nothing in scope for it to reach.
+    WHAT THIS GUARD ACTUALLY PROVES, restated 2026-09-16 after finding F-7.
+
+    The predicate has always been narrow and useful: the record text is not a
+    parameter of logReview, and no raw-record field name appears in the payload.
+    That is what stops input_preview returning under its old spelling after it
+    was removed on 2026-08-14.
+
+    ITS PASS MESSAGE WAS FALSE. It read "no record text reaches logReview". An
+    adversarial pass established that record-DERIVED text certainly does:
+    api/review-engine.js:48 instructs the model to write a per-condition note
+    "grounded in the record text", and finding.compliant_version is a model
+    rewrite of the customer's passage, up to 600 characters. Both are written to
+    engine_reviews and one is rendered on a public page.
+
+    A guard whose PASS string states a false proposition is worse than no guard,
+    because eighteen public sentences were leaning on this one.
+
+    THE ASSERTION NOW MATCHES THE PREDICATE, AND RUNS IN BOTH DIRECTIONS:
+      1. the raw record is not a parameter and no raw-record field name is in
+         the payload  (unchanged, and still the point);
+      2. the derived fields ARE present, so the public disclosure that says they
+         are retained cannot quietly become false either. If someone removes
+         them, the disclosure needs rewriting and this guard says so.
     """
     engines = ("api/review-engine.js", "api/v1/review-engine.js")
     problems = []
@@ -426,9 +441,28 @@ def check_public_engine_endpoints_carry_no_record_text(offline):
             if banned in live:
                 problems.append("%s: logReview payload carries %r"
                                 % (path, banned))
-    check("public engine endpoints store no record text", not problems,
+    # Direction 2: the derived fields must still be there, because the public
+    # pages now disclose that they are retained.
+    for path in engines:
+        src = read(path)
+        if not src:
+            continue
+        if "compliant_version" not in src:
+            problems.append("%s: compliant_version is gone, so the public "
+                            "statement that a suggested rewrite is retained is "
+                            "no longer true and needs revisiting" % path)
+        if not re.search(r"grounded in the record text", src):
+            problems.append("%s: the prompt no longer grounds the per-condition "
+                            "note in the record text; the disclosure describing "
+                            "the note as record-derived needs revisiting" % path)
+
+    check("raw record never reaches logReview; derived content still does",
+          not problems,
           "; ".join(problems) if problems
-          else "3 endpoints on edge runtime; no record text reaches logReview")
+          else "3 endpoints on edge runtime; raw record is not a logReview "
+               "parameter and no raw-record field name is in the payload; "
+               "record-DERIVED note and compliant_version are present and "
+               "disclosed")
 
 
 def check_owner_only_endpoints_are_not_swept_up_by_the_pii_rule(offline):
@@ -780,17 +814,27 @@ PANEL_ALLOWLIST = [
 
 
 def _html_files():
-    """Every .html in the repository, not just the root.
+    """Every HTML page in the repository, not just the root, and not just .html.
 
     The first version used os.listdir(ROOT) and scanned 50 of 70 pages. The 20 it
     skipped are reviewer/ and the whole reference/ hub, which are exactly the
     pages nobody looks at and where a frozen figure would sit longest.
+
+    .htm ADDED 2026-09-16, finding F-11. vp-7c1f9a4e8d2b6035.htm existed for
+    three weeks and NO HTML GUARD IN THIS SUITE HAD EVER EXAMINED IT: not the
+    secrets scan, not the processor disclosure, not the data-handling claims,
+    not the noindex checks. The file is benign, but it sits at a CONFIDENTIAL
+    BUYER slug, which is the worst place in the estate to have a blind spot.
+
+    An extension is not a security boundary. Vercel serves .htm exactly as it
+    serves .html, so a guard that reads one and not the other is a guard with a
+    documented hole in it.
     """
     out = []
     for base, dirs, files in os.walk(ROOT):
         dirs[:] = [d for d in dirs if d not in (".git", "node_modules", "research")]
         for f in files:
-            if f.endswith(".html"):
+            if f.endswith((".html", ".htm")):
                 out.append(os.path.relpath(os.path.join(base, f), ROOT))
     return sorted(out)
 
@@ -5410,12 +5454,25 @@ def check_manifest_library_holds_its_refusals(offline):
         findings.append("manifest suite failed: " + ("; ".join(bad) if bad else out[-200:]))
 
     # The three refusals must be present as named, passing cases.
+    # F-13, 2026-09-16: the oracle must be independent of the generator. The
+    # harness used to write its own fixtures and then validate them, so a
+    # generator regression could not fail the suite. These two cases prove the
+    # comparison exists AND that it is capable of failing.
     for needle in ("F6 relabeling to Codebook without a declared mapping THROWS",
                    "RT silent routing conversion refused",
-                   "RT forged no_record_content with notes is REJECTED"):
+                   "RT forged no_record_content with notes is REJECTED",
+                   "ORACLE 02-derived.manifest.json matches the frozen canonical fixture",
+                   "ORACLE detects a generator regression"):
         if ("PASS  " + needle) not in out:
             findings.append("the suite no longer proves: %s" % needle)
 
+    # The harness must never write into the oracle directory.
+    harness = read("tests/manifest/run.mjs")
+    if "./fixtures/canonical/" in harness and "writeFileSync" in harness:
+        for line in harness.splitlines():
+            if "writeFileSync" in line and "canonical" in line:
+                findings.append("tests/manifest/run.mjs writes into the canonical "
+                                "oracle directory; the oracle must be read-only")
     canon = read("lib/manifest/canonicalize.js")
     if "jrs-dev-canon-1" not in canon:
         findings.append("the development canonicalization identifier is gone")
