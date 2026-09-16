@@ -150,7 +150,13 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
   // dataset definitions: [label, rest-path, note]
   var DS=[
     ['Observation &amp; Survey Submissions','/rest/v1/interaction_events?select=*','homepage / pilot observations + training Likert survey'],
-    ['Automated Engine Reviews','/rest/v1/engine_reviews?select=*','five-condition results, determination, variance'],
+    // BD-11, 2026-09-16 (T-11). Was select=*, which would have exported
+    // conditions[].note and finding.compliant_version in full: model output
+    // derived from a customer's record, to anyone holding the publishable key.
+    // A research data room should offer the evaluation record, not the model's
+    // prose about someone's passage. Narrowed to the same projection the public
+    // activity endpoint uses. Latent when found: the table holds zero rows.
+    ['Automated Engine Reviews','/rest/v1/engine_reviews?select=created_at,determination,runs,overall_consistency,engine_version','five-condition determination, run count and consistency. Record-derived model text is deliberately excluded'],
     ['Finding Poll Votes','/rest/v1/finding_poll_votes?select=*','A/B/C/D tallies'],
     ['Finding Responses (free text)','/rest/v1/finding_responses?select=*','private discussion/debate responses'],
     ['Nightly Reproducibility History','/rest/v1/findings_history?select=*','one row per nightly run (time series)'],

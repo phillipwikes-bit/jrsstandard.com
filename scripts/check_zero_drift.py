@@ -5169,6 +5169,84 @@ def check_tracked_guides_carry_exactly_one_routing_page(offline):
           else "3 tracked guides, 1 routing page each on the last page; combined overview clean")
 
 
+def check_record_derived_fields_have_no_export_path(offline):
+    """No public read path returns model text derived from a customer's record.
+
+    WHY THIS GUARD EXISTS. engine_reviews holds a per-condition note the prompt
+    requires to be "grounded in the record text" and finding.compliant_version,
+    a model rewrite of the customer's passage up to 600 characters. Those are the
+    most sensitive fields in the estate's persistence layer.
+
+    Two export paths reached them and both were found by audit rather than by a
+    guard: engine-activity.html read the table directly with the publishable key
+    (B-013A), and research-data.html offered it as a data-room export with
+    select=* (T-11, found 2026-09-16 while deciding T-4). Both were latent only
+    because the table holds zero rows.
+
+    WHAT IT CHECKS
+      1. No deployable page selects * from engine_reviews.
+      2. No deployable page selects the record-derived columns by name.
+      3. api/engine-activity.js, the one sanctioned read path, does not name them.
+      4. The retention policy still carries a decision id, a version and an
+         effective date, and still computes rather than deletes.
+    """
+    findings = []
+    DERIVED = ("compliant_version", "input_preview")
+
+    for rel in _html_files():
+        body = read(rel)
+        if "engine_reviews?select=*" in body:
+            findings.append("%s exports engine_reviews with select=*, which returns "
+                            "record-derived model text" % rel)
+        if "engine_reviews" in body:
+            for col in DERIVED:
+                if col in body and "BD-11" not in body and "BD-02" not in body:
+                    findings.append("%s names %r alongside engine_reviews" % (rel, col))
+
+    act = read("api/engine-activity.js")
+    if act:
+        # The select list is the control. Comments explaining what is excluded are
+        # expected; a column name inside the select string is not.
+        m = re.search(r"const select = '([^']+)'", act)
+        if not m:
+            findings.append("api/engine-activity.js no longer declares an explicit select list")
+        else:
+            for col in DERIVED + ("note", "finding"):
+                if col in m.group(1):
+                    findings.append("api/engine-activity.js select list now includes %r" % col)
+
+    pol = read("lib/retention/policy.js")
+    if pol:
+        # STRUCTURE, NOT SUBSTRING. A mutation stripping `decision: 'BD-10'`
+        # passed a substring check on 2026-09-16, because "BD-10" survives in the
+        # comments that explain it. Match the declared FIELDS instead.
+        for label, pattern in (
+                ("decision id", r"decision:\s*'BD-10'"),
+                ("policy version", r"version:\s*'[^']+'"),
+                ("effective date", r"decided:\s*'\d{4}-\d{2}-\d{2}'"),
+                ("engine-review rule", r"export const ENGINE_REVIEW_RETENTION\b"),
+                ("explicit expiring field list", r"expiring_fields:\s*\["),
+                ("explicit retained field list", r"retained_fields:\s*\["),
+        ):
+            if not re.search(pattern, pol):
+                findings.append("retention policy no longer declares its %s" % label)
+        if re.search(r"(?i)\bDELETE\b", re.sub(r"//.*", "", pol)):
+            findings.append("retention policy contains a DELETE operation; it must compute only")
+        if re.search(r"\bfetch\s*\(", pol):
+            findings.append("retention policy performs a fetch; it must compute only")
+        if "'engine_reviews'" in pol and re.search(
+                r"excluded_tables:\s*\[[^\]]*'engine_reviews'", pol):
+            findings.append("engine_reviews is back in excluded_tables, so BD-10's rule "
+                            "would not apply to it")
+
+    check("record-derived fields have no export path",
+          not findings,
+          "; ".join(findings) if findings
+          else "no page exports engine_reviews with select=*; the sanctioned endpoint's "
+               "select list excludes note, finding and the derived columns; retention "
+               "policy is versioned and computation-only")
+
+
 def check_no_unapproved_outbound_destination(offline):
     """Every outbound host in the estate is in the approved inventory.
 
@@ -6069,6 +6147,7 @@ def main():
                check_training_is_ungated,
                check_training_modules_are_findable,
                check_public_downloads_are_not_blocked_by_a_redirect,
+               check_record_derived_fields_have_no_export_path,
                check_no_unapproved_outbound_destination,
                check_manifest_implementation_is_not_deployable,
                check_manifest_library_holds_its_refusals,

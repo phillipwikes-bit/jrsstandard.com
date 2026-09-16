@@ -56,3 +56,30 @@ AUTHORIZED** · **PHASE II LOCKED**.
 **Point 5 is the honest reason this audit does not read better than the last one.** The work
 closed design questions and opened a new one. That is what building things does, and pretending
 otherwise would be the failure this framework exists to prevent.
+
+---
+
+# REVISION 2 — 2026-09-16, after BD-10 and BD-11
+
+**The prior revision is preserved in git history. Its conclusion is unchanged.**
+
+## What this revision adds
+
+| Item | Change |
+|---|---|
+| **T-4** | **No longer open.** BD-10: field-level retention on `engine_reviews`, 90 days, record-derived fields nulled in place, row retained. **DECIDED → IMPLEMENTED → TESTED** |
+| **T-11** | **New, found while deciding T-4.** `research-data.html` exported `engine_reviews` with `select=*`, returning the notes and the rewrite. **BD-11: narrowed. DECIDED → IMPLEMENTED → TESTED** |
+| **U-3** | **New and open.** BD-10 set a retention period; the public disclosure does not state it |
+| Guards | **offline 132/0/2 · online 136/0/1** (one new guard, six mutations) |
+| Retention suite | 15 → **38 checks, 0 failed** |
+
+## Why the conclusion is unchanged
+
+The two decisions closed one open question and opened another, and **neither touches a single
+deployment prerequisite.** B-001 is still external. Nothing is production verified. The counsel
+matters are untouched. Four owner facts remain.
+
+**BD-10 and BD-11 made the estate safer without making it readier**, and those are different
+properties.
+
+# NOT READY FOR GATE 1 RECONSIDERATION.

@@ -91,3 +91,39 @@ Decision Register · Dependency Graph · Second-Order Audit · `MASTER_TRACKER.m
 ## STATUS
 
 **STATE 1 — DEVELOPMENT REMEDIATION.**
+
+---
+
+# CYCLE ADDENDUM — BD-10 / BD-11
+
+**KNOWN FACTS.** `engine_reviews` is a mixed table: metadata, evaluation results and model
+output derived from the customer's record. **No research script reads it**; reproducibility
+reporting uses `findings_history` and `study_runs`. It holds **zero rows**. `input_preview`
+remains a **column** though nothing has written it since 2026-08-14.
+
+**BOARD DECISIONS.** **BD-10:** record-derived fields expire at **90 days, nulled in place**;
+the row is retained. The 24-month telemetry rule was **expressly not extended by inference**.
+**BD-11:** the research data-room export, which returned those fields via `select=*`, is
+narrowed to the activity endpoint's projection.
+
+**INFERENCES.** None material.
+
+**OWNER FACTUAL MATTERS.** S-1, S-6, T-6, B-013B residual. Unchanged.
+
+**OWNER EXTERNAL ACTIONS.** B-001, B-006. Unchanged.
+
+**COUNSEL MATTERS.** B-004, B-007/D-1. Unchanged. `openapi.json` sha256 identical.
+
+**PRODUCTION-VERIFICATION MATTERS.** Eleven controls, plus the BD-10 redaction and the B-013A
+revocation. **None performed.**
+
+**UNKNOWN / NOT ESTABLISHED.** Whether the 90-day period should be published (**U-3**).
+
+**DECISION CASCADE.** Blockers removed: **none**. Blockers remaining: unchanged. New risks:
+expiry is irreversible once run, stated in U-2. New tests: 23 added to the retention suite. New
+evidence: the field-level classification of `engine_reviews`. Register changes: `BLOCKERS.json`,
+retention decision artifact, matrix, Round C. Newly answerable: none. New dependencies: none —
+**BD-10 gates nothing and is gated by nothing**. Production impact: none until authorized. Gate
+1 impact: **none**. Rights, commercialization, transferability: unchanged.
+
+**STATUS: STATE 1 — DEVELOPMENT REMEDIATION.**
