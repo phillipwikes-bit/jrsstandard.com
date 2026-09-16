@@ -5631,6 +5631,103 @@ def check_manifest_implementation_is_not_deployable(offline):
 
 
 
+
+def check_the_methodology_mapping_tracks_the_executable_vocabulary(offline):
+    """The authoritative Codebook/API mapping covers exactly the keys the code uses.
+
+    WHY THIS GUARD EXISTS. Found 2026-09-16 by the Round G sweep. D-3's
+    classification was complete and correct, and NOTHING TIED IT TO THE CODE.
+    No guard referenced METHODOLOGY_TO_API_MAPPING.md, ENGINE_CONDITION_KEYS or
+    cold_reviewer_clarity. Add a sixth engine key, rename one, or drop one, and
+    the document the operating instructions call authoritative silently becomes
+    wrong, with nothing failing.
+
+    This is the same class as the manifest truncation limit: a value asserted in
+    one place that must track a declaration somewhere else. It matters more here.
+    The governing rule is that implementation vocabulary must NEVER silently
+    redefine methodology vocabulary, and a mapping nobody checks is exactly how
+    that happens.
+
+    WHAT IT CHECKS.
+      1. The API keys in the mapping's classification table and the keys in
+         ENGINE_CONDITION_KEYS are the SAME SET. A key in code and not in the map
+         is an undocumented condition; a key in the map and not in code is a
+         mapping to something that no longer exists.
+      2. cold_reviewer_clarity is still classified UNRESOLVED. It must not be
+         quietly upgraded: whether it is the Codebook's AGGREGATE condition or a
+         distinct fifth dimension is NOT EVIDENCED, and resolving it by reasoning
+         about what it probably means would change the methodology rather than
+         document it. That is D-2, INTENTIONALLY UNRESOLVED.
+      3. No row reads EXACT except basis_identification. The other three are
+         DECLARED, not UPGRADED: the declaration settles which engine key
+         corresponds to which Codebook condition, not that the names mean the
+         same thing.
+
+    WHAT IT DOES NOT CHECK. Whether any mapping is CORRECT. That is a
+    methodological judgement resting on evidence, not something a string
+    comparison can establish, and three of the five remain SEMANTIC / INFERRED
+    precisely because the evidence does not settle them.
+    """
+    findings = []
+
+    doc = read("docs/enterprise-diligence/METHODOLOGY_TO_API_MAPPING.md")
+    build = read("lib/manifest/build.js")
+    if not doc or not build:
+        check("the methodology mapping tracks the executable vocabulary", False,
+              "the mapping document or lib/manifest/build.js is missing")
+        return
+
+    m = re.search(r"ENGINE_CONDITION_KEYS\s*=\s*\[(.*?)\]", build, re.S)
+    if not m:
+        check("the methodology mapping tracks the executable vocabulary", False,
+              "ENGINE_CONDITION_KEYS is no longer declared as a list in "
+              "lib/manifest/build.js; the mapping has nothing to track")
+        return
+    code_keys = set(re.findall(r"'([a-z_]+)'", m.group(1)))
+
+    # The classification table only: rows of the form
+    # | Condition | `api_key` | **RELATIONSHIP** |
+    rows = re.findall(r"^\|\s*([^|]+?)\s*\|\s*`([a-z_]+)`\s*\|\s*(.+?)\s*\|\s*$",
+                      doc, re.M)
+    mapped = {k: rel for _, k, rel in rows}
+
+    missing = code_keys - set(mapped)
+    extra = set(mapped) - code_keys
+    if missing:
+        findings.append("engine keys absent from the authoritative mapping: %s. An "
+                        "engine condition with no documented Codebook correspondence "
+                        "is implementation vocabulary redefining methodology "
+                        "vocabulary by default" % ", ".join(sorted(missing)))
+    if extra:
+        findings.append("mapping rows for keys the engine no longer has: %s"
+                        % ", ".join(sorted(extra)))
+
+    rel = mapped.get("cold_reviewer_clarity", "")
+    if "UNRESOLVED" not in rel.upper():
+        findings.append("cold_reviewer_clarity is no longer classified UNRESOLVED "
+                        "(now %r). Whether it is the Codebook's aggregate condition "
+                        "or a distinct fifth dimension is NOT EVIDENCED; resolving it "
+                        "by reasoning about what it probably means would change the "
+                        "methodology rather than document it. That is D-2, "
+                        "INTENTIONALLY UNRESOLVED" % rel[:80])
+
+    for key, relationship in mapped.items():
+        if key not in code_keys:
+            continue
+        if "EXACT" in relationship.upper() and key != "basis_identification":
+            findings.append("%s is now classified EXACT. Only basis_identification "
+                            "is EXACT; the others are DECLARED, not UPGRADED, and a "
+                            "declaration settles which key corresponds to which "
+                            "condition rather than that the names mean the same "
+                            "thing" % key)
+
+    check("the methodology mapping tracks the executable vocabulary",
+          not findings,
+          "; ".join(findings) if findings
+          else "%d engine keys, all mapped; cold_reviewer_clarity still UNRESOLVED; "
+               "basis_identification the only EXACT row" % len(code_keys))
+
+
 def check_a_privacy_promise_is_not_contradicted_by_an_export(offline):
     """Text collected under a promise of privacy has no public export path.
 
@@ -6620,6 +6717,7 @@ def main():
                check_manifest_library_holds_its_refusals,
                check_manifest_truncation_limit_matches_the_engine,
                check_a_privacy_promise_is_not_contradicted_by_an_export,
+               check_the_methodology_mapping_tracks_the_executable_vocabulary,
                check_manifest_schema_keeps_its_safeguards,
                check_data_handling_claims_match_the_implementation,
                check_published_api_contract_matches_the_write_path,

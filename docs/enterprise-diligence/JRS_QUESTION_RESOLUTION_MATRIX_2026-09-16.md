@@ -82,3 +82,9 @@ Prior rows above are retained unchanged. Resolved questions stay in the matrix.
 | **X-2** | Is the live row count of `finding_responses` known? | **NOT ESTABLISHED.** A production read was attempted and **correctly denied** by the environment's production-read control. **PRODUCTION VERIFICATION REQUIRED**; deliberately not inferred |
 
 **Production verified: still none.**
+
+| ID | Question | Status |
+|---|---|---|
+| **D-3** | Codebook / API correspondence | **NO NEW EVIDENCE — PRIOR DISPOSITION STANDS.** The classification at `METHODOLOGY_TO_API_MAPPING.md:87-91` is complete: one EXACT, three SEMANTIC / INFERRED — DECLARED, `cold_reviewer_clarity` UNRESOLVED. **Not reopened.** Verified against `ENGINE_CONDITION_KEYS`: the five keys match exactly |
+| **W-9** | Does anything tie the authoritative mapping to the code it maps? | **ANSWERED — FACT. NOTHING DID.** No guard referenced the mapping document, `ENGINE_CONDITION_KEYS` or `cold_reviewer_clarity`. A sixth engine key, a rename or a deletion would have left the document the operating instructions call authoritative silently wrong, with nothing failing. **CLOSED** — new guard asserts set equality against the code, holds `cold_reviewer_clarity` at UNRESOLVED so it cannot be quietly canonicalized, and refuses any EXACT row other than `basis_identification`. Four mutations fail |
+| **D-2** | Whether `cold_reviewer_clarity` is the aggregate condition or a distinct fifth dimension | **INTENTIONALLY UNRESOLVED — unchanged, and now enforced.** The guard fails if the classification moves off UNRESOLVED, so the term cannot be canonicalized by reasoning about what it probably means |
