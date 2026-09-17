@@ -5632,6 +5632,104 @@ def check_manifest_implementation_is_not_deployable(offline):
 
 
 
+
+def check_every_public_table_projection_has_a_recorded_disposition(offline):
+    """Every anonymously readable table a page queries has a reasoned disposition.
+
+    WHY THIS GUARD EXISTS, and it starts with a correction to what the previous
+    cycle appeared to establish.
+
+    THE PAGE PROJECTION IS NOT THE CONTROL. Round G added an allow-list over
+    engine_reviews and narrowed research-data.html. That prevents the PAGE from
+    displaying a column and prevents silent drift. It does NOT protect the data.
+    The publishable key ships in 17 HTML files by design, so anyone holding it
+    can issue select=* against any anonymously readable table directly, whatever
+    a page asks for. THE GRANT IS THE CONTROL. For engine_reviews that is
+    B-013A; for finding_responses it is B-017; both are production revocations
+    queued behind B-001. Anyone reading the Round G work as "engine_reviews is
+    protected" is reading it wrong, and this docstring exists so that reading
+    does not survive.
+
+    WHAT THIS GUARD IS FOR, given that. Defence in depth and drift control: a
+    table that gains a public projection, or a projection that widens to
+    select=*, must be a decision somebody recorded, not a line somebody added.
+
+    WHY A REGISTRY AND NOT A BLANKET RULE. A blanket "no select=* where a text
+    or jsonb column exists" would fire on studies.description,
+    research_questions.question and findings.body, which are public by intent --
+    the standard is published, that is the architecture. Analysing each table
+    individually is required, so each disposition is written down and a table
+    absent from the registry fails rather than defaulting to allowed.
+
+    WHAT IT DOES NOT CHECK. Whether a disposition is CORRECT, and whether the
+    underlying grant should exist at all. Those are Board and production
+    questions respectively, and two of them are open blockers.
+    """
+    findings = []
+
+    # table -> (allowed projection mode, recorded reason)
+    #   "*"        select=* is dispositioned as acceptable
+    #   "explicit" a named column list is required; select=* fails
+    #   "none"     no public projection at all
+    DISPOSITIONS = {
+        "engine_reviews":     ("explicit", "BD-11/BD-02. Record-derived model output. Grant revocation is B-013A"),
+        "finding_responses":  ("none",     "BD-14/B-017. Collected under an explicit promise of non-publication"),
+        "study_runs":         ("explicit", "BD-16. `raw jsonb` is declared for audit output and nothing writes it; select=* would publish it the moment anything did"),
+        "bench_records":      ("explicit", "B-013B. Contributor-supplied record text, rendered by the review pages by design; the open question is factual, not technical"),
+        "bench_labels":       ("explicit", "X-3. `note` is free text and is NOT projected; labeler_code is"),
+        "bench_ai_verdicts":  ("explicit", "Model determinations over bench records"),
+        "bench_outcomes":     ("*",        "X-4. Rung 3 real-case outcomes, deliberately open; `note` is free text and is recorded as an open question, not silently narrowed"),
+        "finding_poll_votes": ("*",        "A/B/C/D tallies and a study id. No free-text column exists"),
+        "findings":           ("explicit", "Published findings. Public by intent"),
+        "findings_history":   ("*",        "Nightly reproducibility time series. Research output, public by intent"),
+        "interaction_events": ("*",        "X-1. Collected under 'no free text and no identifying information are collected'; the promise is enforced by the client that builds the payload, which is the open part"),
+        "research_questions": ("*",        "Open research questions. Public by intent"),
+        "studies":            ("*",        "Study registry. Public by intent"),
+        "armb_progress":      ("explicit", "Owner surface only"),
+        "pilot_progress":     ("explicit", "Owner surface only"),
+        "realcase_progress":  ("*",        "Owner surface only; not a public page"),
+    }
+
+    def _strip(text):
+        text = re.sub(r"<!--.*?-->", "", text, flags=re.S)
+        return re.sub(r"^\s*//[^\n]*$", "", text, flags=re.M)
+
+    seen = set()
+    for rel in _html_files():
+        body = _strip(read(rel))
+        for m in re.finditer(r"rest/v1/([a-z_]+)\?select=([^'\"&\s]+)", body):
+            table, sel = m.group(1), m.group(2)
+            seen.add(table)
+            if table not in DISPOSITIONS:
+                findings.append("%s queries %s, which has no recorded disposition. "
+                                "A table gaining a public projection is a decision, "
+                                "not a line: analyse its columns and its collection "
+                                "promise, then add it here with the reason"
+                                % (rel, table))
+                continue
+            mode, _why = DISPOSITIONS[table]
+            if mode == "none":
+                findings.append("%s queries %s, which is dispositioned as having NO "
+                                "public projection at all" % (rel, table))
+            elif mode == "explicit" and sel.strip() == "*":
+                findings.append("%s widened %s to select=*, against a recorded "
+                                "disposition requiring a named column list" % (rel, table))
+
+    stale = set(DISPOSITIONS) - seen - {"finding_responses"}
+    if stale:
+        findings.append("dispositions recorded for tables no page queries any more: "
+                        "%s. Stale entries make the registry look like coverage it "
+                        "no longer provides" % ", ".join(sorted(stale)))
+
+    check("every public table projection has a recorded disposition",
+          not findings,
+          "; ".join(findings) if findings
+          else "%d tables queried, all dispositioned; the registry holds %d entries. "
+               "This is drift control, NOT protection: the grant is the control, "
+               "and B-013A and B-017 are the grants"
+               % (len(seen), len(DISPOSITIONS)))
+
+
 def check_the_methodology_mapping_tracks_the_executable_vocabulary(offline):
     """The authoritative Codebook/API mapping covers exactly the keys the code uses.
 
@@ -6718,6 +6816,7 @@ def main():
                check_manifest_truncation_limit_matches_the_engine,
                check_a_privacy_promise_is_not_contradicted_by_an_export,
                check_the_methodology_mapping_tracks_the_executable_vocabulary,
+               check_every_public_table_projection_has_a_recorded_disposition,
                check_manifest_schema_keeps_its_safeguards,
                check_data_handling_claims_match_the_implementation,
                check_published_api_contract_matches_the_write_path,

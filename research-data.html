@@ -182,7 +182,19 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
     ['Published Findings','/rest/v1/findings?select=headline,classification,observation,research_question,supporting_data,evidence_class,metrics,created_at&published=eq.true','observational findings + metrics'],
     ['Research Questions','/rest/v1/research_questions?select=*','open questions under investigation'],
     ['Study Registry','/rest/v1/studies?select=*','study statuses'],
-    ['Study Runs','/rest/v1/study_runs?select=*','automated run metrics'],
+    // BD-16, 2026-09-17. Was select=*. study_runs carries `raw jsonb`, declared
+    // in the schema as "optional raw outputs for audit". NOTHING WRITES IT: the
+    // only writers are api/run-study.js:239 and
+    // supabase/functions/run-study/index.ts:76, and both insert exactly
+    // {study_id, model, metrics}. So the column exists, is anonymously readable,
+    // and is empty -- the same shape as engine_reviews.input_preview, which was
+    // removed from the write path on 2026-08-14 while the COLUMN survived.
+    //
+    // If anything ever populates it with model output about study records,
+    // select=* publishes it with no further change and nothing failing. The
+    // label says "automated run metrics", so the metrics are what the export is
+    // for; naming them costs nothing and closes the path.
+    ['Study Runs','/rest/v1/study_runs?select=study_id,model,metrics,created_at','automated run metrics'],
     // BENCHMARK EXPORTS WITHDRAWN 2026-08-14.
     //
     // Records, per-record human labels and the provisional key were published
