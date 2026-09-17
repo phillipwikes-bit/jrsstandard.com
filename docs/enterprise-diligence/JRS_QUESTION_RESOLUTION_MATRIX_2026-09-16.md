@@ -7,7 +7,7 @@
 | ID | Question | Status |
 |---|---|---|
 | S-1 | Was de-identification review performed on all 54 `bench_outcomes` rows? | **OWNER FACTUAL CONFIRMATION REQUIRED** |
-| S-2 | Ship B-013A revocation and replacement together? | ANSWERED — BOARD DECISION |
+| S-2 | Ship B-013 limb A revocation and replacement together? | ANSWERED — BOARD DECISION |
 | S-3 | Does the first retention run delete anything? | ANSWERED — FACT ESTABLISHED (no) |
 | S-4 | Does declaring three mappings pressure the fourth? | ANSWERED — BOARD DECISION |
 | S-5 | CLAUDE.md retains an endpoint nothing calls | ANSWERED — BOARD DECISION (preserved intent) |
@@ -38,7 +38,7 @@
 |---|---|
 | B-001, B-006 | **OWNER EXTERNAL ACTION REQUIRED** |
 | B-004, B-007/D-1 | **COUNSEL REVIEW REQUIRED** |
-| B-013A revocation | BOARD DECIDED; **PRODUCTION VERIFICATION REQUIRED** |
+| B-013 limb A revocation | BOARD DECIDED; **PRODUCTION VERIFICATION REQUIRED** |
 | B-013B residual | **OWNER FACTUAL CONFIRMATION REQUIRED** |
 | B-013C, BD-10, BD-11 | BOARD DECIDED → IMPLEMENTED → TESTED |
 | B-005, B-008, B-009, B-014, B-015, D-11, D-13, D-14, D-15, D-16, D-17 | **PRODUCTION VERIFICATION REQUIRED** |
@@ -93,8 +93,8 @@ Prior rows above are retained unchanged. Resolved questions stay in the matrix.
 
 | ID | Question | Status |
 |---|---|---|
-| **W-10** | Does a page projection protect an anonymously readable table? | **ANSWERED — FACT. NO, AND THIS CORRECTS A LIKELY MISREADING OF ROUND G.** The publishable key ships in 17 HTML files by design, so anyone holding it can `select=*` against any anon-readable table directly, whatever a page requests. The allow-list is **drift control, not protection**. **The grant is the control** — B-013A for `engine_reviews`, B-017 for `finding_responses`, both queued behind B-001. Recorded in `BLOCKERS.json` against B-013A so it cannot be lost |
-| **W-11** | How many tables grant anon SELECT, and which carry sensitive columns? | **ANSWERED — FACT. FIFTEEN.** A first scan under-reported because the policy spans lines inconsistently; re-verified directly rather than trusted. Free-text or jsonb columns on anon-readable tables: `engine_reviews` (B-013A), `finding_responses` (B-017), `bench_records.text` (B-013B), `bench_labels.note`, `bench_outcomes.note`, `study_runs.raw`, `interaction_events.payload` |
+| **W-10** | Does a page projection protect an anonymously readable table? | **ANSWERED — FACT. NO, AND THIS CORRECTS A LIKELY MISREADING OF ROUND G.** The publishable key ships in 17 HTML files by design, so anyone holding it can `select=*` against any anon-readable table directly, whatever a page requests. The allow-list is **drift control, not protection**. **The grant is the control** — B-013 limb A for `engine_reviews`, B-017 for `finding_responses`, both queued behind B-001. Recorded in `BLOCKERS.json` against B-013 limb A so it cannot be lost |
+| **W-11** | How many tables grant anon SELECT, and which carry sensitive columns? | **ANSWERED — FACT. FIFTEEN.** A first scan under-reported because the policy spans lines inconsistently; re-verified directly rather than trusted. Free-text or jsonb columns on anon-readable tables: `engine_reviews` (B-013 limb A), `finding_responses` (B-017), `bench_records.text` (B-013B), `bench_labels.note`, `bench_outcomes.note`, `study_runs.raw`, `interaction_events.payload` |
 | **BD-16** | `study_runs?select=*` | **BOARD DECIDED → IMPLEMENTED → TESTED.** `raw jsonb` is declared "optional raw outputs for audit" and **nothing writes it** — the only writers insert `{study_id, model, metrics}`. Same shape as `input_preview`: an empty anon-readable column that `select=*` would publish the moment anything populated it. Narrowed to the named metrics columns |
 | **W-12** | Should every public projection be allow-listed? | **ANSWERED — BOARD DECISION. NO — a registry, not a blanket rule.** A blanket "no `select=*` where text or jsonb exists" would fire on `studies.description`, `research_questions.question` and `findings.body`, which are **public by intent**. Each table now carries a written disposition; a table absent from the registry **fails** rather than defaulting to allowed. Three mutations fail |
 | **X-3** | `bench_labels`: `note` is free text and `labeler_code` is published beside determinations | **OPEN — LOW.** The field is labelled "Note (optional, no names or case details)" and **no privacy promise is made about it**, so this is not a B-017-class defect. `note` is not projected. The residual is that regular reviewers are told "a private code is created for you", and codes are published alongside determinations. Whether that reads as a promise is **NOT ESTABLISHED** |
