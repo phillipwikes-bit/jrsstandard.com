@@ -258,3 +258,75 @@ the contributor consents, already solved here.
 
 **No link was followed and no key was used.** Submitting through a keyed link
 would be acting as a co-author, which is neither delegated nor honest.
+
+---
+
+# WITHDRAWN — the "were the keyed links sent" question — 2026-09-17
+
+**The prior section raised a second owner question: whether the three keyed
+co-author links were sent to Hossain, Pokhriyal and Young. IT IS WITHDRAWN. It was
+resolved long before I asked it, and the Master Register had already recorded the
+exact error I made.**
+
+The prior text is preserved above. This section is the correction.
+
+## What the register already established
+
+| Evidence | What it says |
+|---|---|
+| **E-005** | Co-author instrument: expected 3, confirmed 0. **Conflict column: "Two of the three consented via the contributor instrument instead."** |
+| **E-002** | Tanvi Pokhriyal, consent **executed 2026-08-22**, named/use/transfer all true. Status **VERIFIED** |
+| **E-003** | Stacyann Young, consent **executed 2026-08-27**, named/use/transfer all true. Status **VERIFIED** |
+| **Register §8** | Both are **"Covered."** Their listed remaining question is "co-author instrument unused" — a note about *which* instrument, not an open right |
+| **Register §12** | Ubayet: commercial and successor-transfer scope **DEFERRED BY CURRENT PROJECT SEQUENCE**. **"Owner decision: contact concerning this issue is deferred until publication."** And expressly: **"This is not an evidence gap and is not recorded as one."** |
+| **Register §23** | **"Only two survive consolidation"** — Section 2.1 assignment, and artifact-level human review. **The co-author instrument is not among them.** |
+
+## The error, named precisely
+
+**Register §17, correction row 3, dated 2026-09-09:**
+
+> Prior finding: *"Tanvi / Stacyann not confirmed"* → new evidence E-002, E-003 →
+> **CORRECTED** → *"True of one instrument, misleading overall."*
+
+**I reproduced that superseded finding.** I took "confirmed 0 of 3" from the
+co-author instrument and treated it as an open rights gap, which is **true of that
+one instrument and misleading about the estate** — the precise formulation the
+register had already retired. Two of the three hold executed consents through the
+contributor instrument; the third is deferred by a recorded owner decision.
+
+**This is a no-loop failure.** The rule is to check whether a matter was already
+resolved before raising it. The answer was in the authoritative register I had
+open, in a correction table whose purpose is to stop exactly this.
+
+## The part that would have done harm
+
+I proposed that **"the cheapest rights improvement available to this estate is
+three emails."** Against the register:
+
+- **Tanvi and Stacyann** already hold executed consents. An email asking them to
+  re-consent through a second instrument gains nothing and invites a question
+  about why the first one is being revisited.
+- **Ubayet** is **deliberately deferred until publication by an owner decision.**
+  Contacting him now would not have been an improvement; it would have **overridden
+  a recorded decision** — and a contributor contact is an external communication,
+  which is not mine to initiate.
+
+**A recommendation to act is not harmless when the project has already decided not
+to act.** That is the more serious half of this error.
+
+## Corrected status
+
+| Matter | Status |
+|---|---|
+| Tanvi Pokhriyal | **COVERED** — E-002 executed 2026-08-22 |
+| Stacyann Young | **COVERED** — E-003 executed 2026-08-27 |
+| Ubayet Hossain — commercial / successor transfer | **DEFERRED BY OWNER DECISION until publication. Not an evidence gap** |
+| "Co-author instrument unused" | **EXPLAINED, not open.** A note about which instrument carried the consent |
+| **Second owner question** | **WITHDRAWN. It does not exist** |
+
+The §2 reconciliation entry above stands as to the *co-author instrument existing
+and being unused*, which is factually correct. **What it must not be read as is an
+open consent gap for Tanvi or Stacyann, or a reason to contact Ubayet.**
+
+**The surviving owner factual matter in this area remains the one the register
+names: Section 2.1 assignment. That is one question, not two.**
