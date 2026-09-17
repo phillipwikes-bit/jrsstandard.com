@@ -194,6 +194,28 @@ COUNT_ALLOW = {
 
 
 def check_no_handwritten_counts(offline):
+    """Counts are derived from the data, never transcribed into a constant.
+
+    WHAT IT PROTECTS. Every published figure -- reviewers, completers,
+    countries, downloads -- must be computed at request time. A constant like
+    `const REVIEWER_COUNT = 58;` is correct on the day it is written and wrong
+    on the day someone completes, and nothing announces the change. The
+    project's figure-drift forensic record is the reason this guard exists.
+
+    WHAT IT CHECKS. Every `const NAME = <digits>;` in api/*.js whose NAME
+    matches COUNT_WORDS and is not in COUNT_ALLOW (genuine design constants,
+    such as page sizes). It then repeats the sweep over the Python builders in
+    research/ and scripts/.
+
+    WHY BOTH LANGUAGES. Recorded inline below and repeated here because it is
+    the whole point: on 2026-08-14 a proposed replacement scanned only .py
+    files, where no defect was, and none of the .js files, where all six were.
+    It passed while sitting on every one of them. The answer was not to swap one
+    blind spot for the other.
+
+    DOCSTRING ADDED 2026-09-17 (X-5). Mutation-tested before writing: inserting
+    `const REVIEWER_COUNT = 58;` into api/asset-stats.js fails the guard.
+    """
     offenders = []
     api = os.path.join(ROOT, "api")
     for name in sorted(os.listdir(api)):
@@ -222,7 +244,16 @@ def check_no_handwritten_counts(offline):
         for name in sorted(os.listdir(d)):
             if not name.endswith(".py") or name.startswith("check_zero_drift"):
                 continue
-            for m in re.finditer(r"^([A-Z][A-Z0-9_]*)\s*=\s*(\d+)\s*$",
+            # UNANCHORED, matching the JS half. Corrected 2026-09-17 by the
+            # second-order check after X-5. This required the assignment to be
+            # the WHOLE line, so `REVIEWER_COUNT = 58; COMPLETER_COUNT = 36`
+            # PASSED -- two hand-written counts on one line, which is exactly
+            # what the guard exists to refuse. It errs toward PASSING, the
+            # dangerous direction. The asymmetry is also the defect this
+            # guard's own docstring records: the JS half already matched
+            # `const\s+NAME` anywhere in the line while the Python half
+            # insisted on owning the line.
+            for m in re.finditer(r"(?:^|[;\s])([A-Z][A-Z0-9_]*)\s*=\s*(\d+)\b",
                                  read(base + "/" + name), re.M):
                 const, val = m.group(1), m.group(2)
                 if const in COUNT_ALLOW:
@@ -244,6 +275,30 @@ FALLBACK_ALLOW = re.compile(r"\b(status|limit|max_tokens|slice|timeout|runs|n)\b
 
 
 def check_no_masking_fallbacks(offline):
+    """No endpoint substitutes an invented figure when the real one is missing.
+
+    WHAT IT PROTECTS. A published metric must come from the data or not be
+    published. `reviewers: live || 58` looks defensive and is not: when the
+    query fails the endpoint serves 58 as though it were measured, and nobody
+    downstream can tell a fallback from a fact. This project has the defect on
+    the record -- seven public pages once hard-coded 57 reviewers as a pre-JS
+    fallback against a live 58, and the stale figure read as current.
+
+    `|| 0` IS DELIBERATELY ALLOWED. Absence genuinely is zero and no figure is
+    invented. Only a NON-ZERO literal substitutes a fact. FALLBACK_ALLOW
+    additionally exempts names that are configuration rather than measurement:
+    status, limit, max_tokens, slice, timeout, runs, n.
+
+    DOCSTRING ADDED AND THE GUARD REPAIRED 2026-09-17 (X-5). Writing down what
+    it protects required testing that it protects it, and it did not. The
+    pattern was anchored with `^` against the STRIPPED LINE, so it only fired
+    when the field began its own line. A directed mutation adding
+    `var _p = { reviewers: live || 58 };` -- the same defect written inline --
+    PASSED, while the identical fallback split across lines FAILED. The guard
+    was agreeing with a formatting convention rather than with the code. The
+    anchor is replaced by a structural boundary so the field is recognised
+    wherever it sits in the line.
+    """
     offenders = []
     api = os.path.join(ROOT, "api")
     for name in sorted(os.listdir(api)):
@@ -253,14 +308,23 @@ def check_no_masking_fallbacks(offline):
             stripped = line.strip()
             if stripped.startswith("//"):
                 continue
-            # A response field assigned `<expr> || <number>`.
-            # `|| 0` is a zero default: absence really is zero and no figure is
-            # invented. Only a NON-ZERO literal substitutes a fact.
-            m = re.search(r"^([a-z_][a-z0-9_]*)\s*:\s*[^,;]*\|\|\s*([1-9]\d*)", stripped)
-            if m and not FALLBACK_ALLOW.search(m.group(1)):
+            # Strip a trailing line comment so prose about a fallback is not
+            # read as one.
+            code_part = re.split(r"//", stripped)[0]
+            # A response field assigned `<expr> || <number>`, ANYWHERE in the
+            # line. The boundary keeps `name:` an object property rather than a
+            # fragment of a longer token.
+            for m in re.finditer(
+                    r"(?:^|[{,(\s])([a-z_][a-z0-9_]*)\s*:\s*[^,;{}]*?\|\|\s*([1-9]\d*)",
+                    code_part):
+                if FALLBACK_ALLOW.search(m.group(1)):
+                    continue
                 offenders.append("%s: %s falls back to %s" % (name, m.group(1), m.group(2)))
     check("no published metric falls back to a numeric literal", not offenders,
-          "; ".join(offenders) if offenders else "none")
+          "; ".join(offenders) if offenders
+          else "no api/ endpoint substitutes a non-zero literal for a measured "
+               "figure; `|| 0` and %d configuration names remain allowed"
+               % len(FALLBACK_ALLOW.pattern.split("|")))
 
 
 # ---------------------------------------------------------------------------
@@ -298,6 +362,28 @@ def _has_research():
 
 
 def check_panel_geo(offline):
+    """Every completer resolves to a country, so the country count cannot undercount.
+
+    WHAT IT PROTECTS. The published country figure is computed from
+    api/_panel-countries.js. A reviewer who completes but is missing from that
+    map is counted as a completer and contributes no country, so the figure
+    silently undercounts and no error appears anywhere. The country figure is
+    already governed by a standing scope rule on this project -- 16 countries
+    belongs to the full-set completers and 11 to the detection panel alone, and
+    attaching either to the reviewer total is a recorded past defect -- so an
+    undercount here lands directly on a figure buyers and reviewers read.
+
+    WHAT IT CHECKS. Every row in the newest Expert_Roster_All_Studies_*.csv with
+    status COMPLETE has its code present in the country map.
+
+    WHY IT SKIPS RATHER THAN FAILS ON THE DEPLOY BRANCH. research/ is
+    deliberately excluded from deployment, so the roster CSV is absent there.
+    Its absence is the design working, not drift, and the check records SKIPPED
+    rather than inventing a pass. The live half still runs when online.
+
+    DOCSTRING ADDED 2026-09-17 (X-5). Mutation-tested before writing: removing
+    a single mapped code fails the guard and names it.
+    """
     mapped = set(re.findall(r"'([A-Z]{1,2}-[A-Za-z0-9-]+)'\s*:\s*'[A-Z]{2}'",
                             read("api/_panel-countries.js")))
     if not _has_research():
@@ -724,6 +810,28 @@ def check_generated_docs_current(offline):
 #    roster on disk and production.
 # ---------------------------------------------------------------------------
 def check_cross_endpoint(offline):
+    """Live endpoints agree with each other and with the modules behind them.
+
+    WHAT IT PROTECTS, and this is a LIVE-ONLY check: it returns immediately when
+    offline, which is one of the three reasons the offline and online guard
+    totals differ. A figure can be right in the repository and wrong in the
+    response, and only a live read can tell the difference.
+
+    TWO INVARIANTS.
+      1. countries <= completers. The country figure belongs to the reviewers
+         who completed the full set, NOT to every reviewer on the panel.
+         Attaching it to the reviewer total is a recorded past defect on this
+         project, and this inequality is the shape that defect would take.
+      2. The live contributor roster size equals the number of entries in
+         api/_contributor-roster.js. A response that disagrees with its own
+         source module means one of them is stale.
+
+    DOCSTRING ADDED 2026-09-17 (X-5). It could not be mutation-tested the way
+    the other three were: mutating the module without a matching live change
+    proves only that the live endpoint still serves the old build, which is
+    already known and is B-001's queue. It is recorded as verified by INSPECTION
+    rather than by mutation, and that distinction is the point.
+    """
     if offline:
         return
     p, c = live(PANEL), live(CONTRIB)
@@ -2454,7 +2562,12 @@ def check_contributor_carries_no_findings(offline):
     # the handler is the exact thing that was removed, and a grep for the
     # figures alone would miss a summary rewritten in different numbers.
     api = read("api/contributor.js")
-    if re.search(r"^\s*results\s*:", api, re.M):
+    # ANYWHERE IN THE LINE. Corrected 2026-09-17 by the same second-order pass.
+    # The pattern required `results:` to open its own line, so
+    # `var _bad = { results: [1,2,3] };` PASSED -- the key the guard exists to
+    # refuse, written inline. Third instance of the line-anchoring class found
+    # in a single pass, and like the others it erred toward passing.
+    if re.search(r"(?:^|[{,(\s])results\s*:", api, re.M):
         hits.append("api/contributor.js emits a `results:` key from the handler")
     html = read("contributor.html")
     if re.search(r"\bd\.results\b", html):
@@ -2715,7 +2828,16 @@ def check_evaluation_offers_no_certificate(offline):
         check("the evaluation offers no certificate", False,
               "api/reviewer-eval.js is unreadable")
         return
-    if not re.search(r"^\s*const wantsCert = false;\s*$", api, re.M):
+    # STRUCTURE, NOT THE WHOLE LINE. Corrected 2026-09-17 by the second-order
+    # check that followed X-5. The pattern required the assignment to be the
+    # ENTIRE line, so appending a trailing comment to a CORRECTLY pinned
+    # `const wantsCert = false;` failed the guard with the message "no longer
+    # pins wantsCert to false" -- while it still did. That failure direction is
+    # safe, but the message is false, and a guard that reports a defect which is
+    # not there teaches the next reader to distrust it. Distrusted guards get
+    # weakened. Matching the assignment itself keeps the real defect caught
+    # (reading the value from the request body) without the false alarm.
+    if not re.search(r"\bconst\s+wantsCert\s*=\s*false\s*;", api):
         hits.append("api/reviewer-eval.js no longer pins wantsCert to false, so "
                     "the endpoint can issue a completion code again")
 

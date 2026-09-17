@@ -266,3 +266,71 @@ passes twice on this project.
 | `check_withdrawn_contributor_is_not_defaulted_into_being_named` | — | yes |
 | `check_withdrawn_contributors_absent` | — | yes |
 | `check_zero_retention_claim_is_true` | W4 containment | yes |
+
+---
+
+# ADDENDUM — X-5 resolution and its second-order pass, 2026-09-17
+
+The body above is unchanged. This addendum records what happened when the four
+undocumented guards were dispositioned.
+
+## X-5 — CLOSED. All 113 guards now carry a docstring.
+
+Each of the four was **mutation-tested before a docstring was written**, so the
+docstring states something proven rather than something inferred from the code.
+
+| Guard | Purpose established | Mutation | Outcome |
+|---|---|---|---|
+| `check_no_handwritten_counts` | Counts are derived, never transcribed. Figures must not drift between code and database | inserted `const REVIEWER_COUNT = 58;` | FAIL — sound |
+| `check_no_masking_fallbacks` | No endpoint substitutes an invented figure for a missing one | `{ reviewers: live \|\| 58 }` inline | **PASS — DEFECT** |
+| `check_panel_geo` | Every COMPLETE code resolves to a country, so the country figure cannot undercount | removed one mapped code | FAIL — sound |
+| `check_cross_endpoint` | Live-only: `countries <= completers`, and live roster equals the module | **not mutation-tested** — see below | verified by inspection |
+
+**`check_cross_endpoint` could not be mutation-tested the way the others were.**
+Mutating the module without a matching live change proves only that production
+still serves the old build, which is already known and is B-001's queue. Recorded
+as **verified by INSPECTION, not by mutation**, and the distinction is the point.
+
+## The defect X-5 uncovered
+
+`check_no_masking_fallbacks` matched `^([a-z_]...)\s*:\s*...\|\|\s*([1-9]\d*)`
+**anchored to the stripped line**. The identical fallback failed when split across
+lines and **passed when written inline**. The guard was agreeing with a
+formatting convention rather than with the code. Repaired to a structural
+boundary. Re-tested: both forms now fail; `|| 0`, allow-listed configuration
+names, and prose in a trailing comment all still pass.
+
+## Second-order pass — the anchoring class is systemic
+
+§34 permits exactly one downstream layer. The question asked was: **which other
+guards anchor a pattern to the start of a stripped line?** Eight patterns across
+six guards. Five are correct — `^E-\d+$` is an exact-token test, `^Pages:` parses
+line-oriented tool output. **Three were defects, found in one pass:**
+
+| Guard | Mutation | Before | Direction |
+|---|---|---|---|
+| `check_no_handwritten_counts` (Python half) | `REVIEWER_COUNT = 58; COMPLETER_COUNT = 36` on one line | **PASS** | toward passing |
+| `check_contributor_carries_no_findings` | `var _bad = { results: [1,2,3] };` | **PASS** | toward passing |
+| `check_evaluation_offers_no_certificate` | trailing comment on a correctly pinned line | **FAIL** | **toward failing** |
+
+The third is a **false positive**, which is the safe direction — but it reported
+"no longer pins wantsCert to false" while it still did. **A guard that reports a
+defect which is not there teaches the next reader to distrust it, and distrusted
+guards get weakened.** Repaired with the same reasoning as the others.
+
+The Python-half defect is additionally the **asymmetry that guard's own docstring
+records**: the JS half already matched anywhere in the line while the Python half
+insisted on owning it.
+
+**All three repaired, each re-tested, each with negative controls.** One badly
+chosen negative control (`PAGE_SIZE = 50`) failed and was **correct to fail** —
+`SIZE` is a count-word and the allow-list requires every exemption to carry a
+written reason. Re-run with three proper controls: a non-count constant, an
+allow-listed name, and a lowercase local. All pass.
+
+## Standing conclusion
+
+**Line-anchoring is a recurring weakness class in this suite, not an isolated
+defect.** Four instances now, three found in a single targeted pass. Any new
+guard matching source text should match structure — a token boundary, a parsed
+literal, a declared field — and never the shape of a line.

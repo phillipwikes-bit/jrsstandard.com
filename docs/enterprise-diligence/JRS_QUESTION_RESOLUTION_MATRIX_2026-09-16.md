@@ -102,3 +102,12 @@ Prior rows above are retained unchanged. Resolved questions stay in the matrix.
 | **X-5** | Four guards carry no docstring | **OPEN — LOW.** `check_cross_endpoint`, `check_no_handwritten_counts`, `check_no_masking_fallbacks`, `check_panel_geo`. A guard without a stated reason cannot be audited for whether it still tests what it was written to test |
 
 **Production verified: still none.**
+
+| ID | Question | Status |
+|---|---|---|
+| **X-5** | Four guards carry no docstring | **CLOSED — IMPLEMENTED → TESTED.** All 113 guards now documented. Each of the four was **mutation-tested before a docstring was written**, so each docstring states something proven. Three were sound; **one was a real defect** |
+| **X-6** | Does `check_no_masking_fallbacks` catch what it claims? | **ANSWERED — FACT. IT DID NOT.** The pattern was anchored to the stripped line, so `{ reviewers: live \|\| 58 }` written inline **PASSED** while the identical fallback split across lines failed. It was agreeing with a formatting convention, not the code. **REPAIRED**, both forms now fail, three negative controls pass |
+| **X-7** | Is line-anchoring systemic in the suite? | **ANSWERED — FACT. YES.** Eight anchored patterns across six guards; five correct (exact-token tests, line-oriented tool output), **three defects found in one targeted pass**: the Python half of the count guard (two counts on one line passed), the contributor `results:` key (inline passed), and the certificate guard (**false positive** — a trailing comment on a correctly pinned line failed with a message saying it was not pinned). **All three repaired and re-tested.** Standing conclusion recorded: a guard matching source text must match structure, never the shape of a line |
+| **X-8** | Can `check_cross_endpoint` be mutation-tested? | **ANSWERED — NO, and it is recorded as such.** Mutating the module without a matching live change proves only that production serves the old build, which is already known and is B-001's queue. **Verified by inspection, not by mutation** — the distinction is preserved rather than papered over |
+
+**Production verified: still none.**
