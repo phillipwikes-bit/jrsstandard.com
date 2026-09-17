@@ -5764,6 +5764,74 @@ def _strip_py_docstrings(text):
     return text
 
 
+
+def check_no_conditional_deployment_state(offline):
+    """No record asserts a deployment state the state machine does not have.
+
+    WHY THIS GUARD EXISTS. The production state machine has exactly four rungs:
+    DEVELOPMENT REMEDIATION, DEPLOYMENT READY, DEPLOYMENT AUTHORIZED, DEPLOYED.
+    There is no "conditional" rung. A deployment is authorized or it is not, and
+    "conditionally authorized" is the phrase by which the second becomes the first
+    without anybody deciding anything.
+
+    The project used it once, in D-9. Both surviving occurrences carry their own
+    negation ("CONDITIONS NOT MET"), so neither ever asserted live authorization —
+    but a HEADING is read before its body, and the next reader of a readiness
+    report does not always reach the qualifier.
+
+    WHAT IT CHECKS. The phrase appears only at the two registered historical
+    locations, each of which is preserved deliberately with a superseding note.
+    Any NEW occurrence fails, including one in a fresh readiness report.
+
+    WHY REGISTER RATHER THAN DELETE. Editing the historical heading to look
+    cleaner would destroy the evidence that the project once used a state that
+    does not exist. That evidence is worth more than the tidiness.
+    """
+    findings = []
+    REGISTERED = {
+        "docs/enterprise-diligence/HUMAN_DECISIONS_REQUIRED.md":
+            "D-9 historical heading, preserved with a superseding note above it",
+        ".jrs/state/BLOCKERS.json":
+            "B-005 update_2026_09_15, a dated historical field that states the "
+            "condition was NOT met",
+    }
+    pat = re.compile(r"conditionall?y\s+authori[sz]ed", re.I)
+
+    for rel in sorted(set(_html_files()) | set(REGISTERED)):
+        body = read(rel)
+        if not body:
+            continue
+        if pat.search(body) and rel not in REGISTERED:
+            findings.append("%s asserts a conditional deployment state; the state "
+                            "machine has no such rung" % rel)
+
+    for base in ("docs/enterprise-diligence", "docs/repository-operations", ".jrs/state",
+                 ".jrs/reports"):
+        d = os.path.join(ROOT, base)
+        if not os.path.isdir(d):
+            continue
+        for name in sorted(os.listdir(d)):
+            rel = base + "/" + name
+            if not name.endswith((".md", ".json", ".txt")):
+                continue
+            if pat.search(read(rel) or "") and rel not in REGISTERED:
+                findings.append("%s asserts a conditional deployment state; a "
+                                "deployment is authorized or it is not" % rel)
+
+    for rel in REGISTERED:
+        if not pat.search(read(rel) or ""):
+            findings.append("%s no longer contains the registered historical "
+                            "occurrence. If it was deleted rather than superseded, "
+                            "the evidence that this state was once used is gone"
+                            % rel)
+
+    check("no conditional deployment state",
+          not findings,
+          "; ".join(findings) if findings
+          else "the phrase appears only at its %d registered historical locations, "
+               "each preserved with its own negation" % len(REGISTERED))
+
+
 def check_production_verifier_reads_no_secret(offline):
     """The production verification runbook can never acquire a secret credential.
 
@@ -7137,6 +7205,7 @@ def main():
                check_every_public_table_projection_has_a_recorded_disposition,
                check_architecture_baseline_is_current,
                check_production_verifier_reads_no_secret,
+               check_no_conditional_deployment_state,
                check_manifest_schema_keeps_its_safeguards,
                check_data_handling_claims_match_the_implementation,
                check_published_api_contract_matches_the_write_path,

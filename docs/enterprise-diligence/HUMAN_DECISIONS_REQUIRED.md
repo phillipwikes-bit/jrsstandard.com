@@ -200,6 +200,18 @@ stop writing record-derived free text · narrow the public claims to match.
 
 ## D-9 · Deployment — **CONDITIONALLY AUTHORIZED; CONDITIONS NOT MET**
 
+> **VOCABULARY SUPERSEDED 2026-09-17. This heading is preserved as history and is
+> NOT current state.** The production state machine has exactly four rungs —
+> DEVELOPMENT REMEDIATION → DEPLOYMENT READY → DEPLOYMENT AUTHORIZED → DEPLOYED —
+> and **there is no "conditional" rung between them.** A deployment is authorized
+> or it is not.
+>
+> The record below already carries its own negation ("CONDITIONS NOT MET") and the
+> condition named is B-001, which remains open. It is left exactly as written
+> because a heading edited to look cleaner destroys the evidence that the project
+> once used a state that does not exist. **Current state: DEVELOPMENT REMEDIATION,
+> DEPLOYMENT NOT AUTHORIZED.**
+
 **QUESTION.** Authorise deploying the B-005 model configuration to production?
 **EVIDENCE.** Behaviour-preserving by construction: with no override the value is byte-identical to the prior literal. Verified locally; **not deployed**.
 **RISK.** Low. Reversible in one commit.
