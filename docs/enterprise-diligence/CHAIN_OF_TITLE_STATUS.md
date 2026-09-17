@@ -102,3 +102,159 @@ transferable, or that an acquirer would accept these conditions. It means the
 diligence by someone else.
 
 **No rights were created, resolved or inferred by writing this table.**
+
+---
+
+# Reconciliation to the Master Register — 2026-09-17
+
+The Phase I exit classification above was written from this document and the
+blocker registry. It was **not** checked line by line against
+`JRS_MASTER_ASSET_EVIDENCE_AND_CHAIN_OF_TITLE_REGISTER.md`, which is the
+authoritative record. It has now been, and **the Master Register controls**.
+
+**Four rows were weaker or looser than the Register. Each prior wording is
+preserved and corrected in place rather than edited away.**
+
+### 1. "No Level A executed assignment instrument located" — TOO NARROW
+
+**Register F-4 is broader and stronger: "No executed signed instrument exists
+anywhere. No Level A evidence in the entire corpus."** The Register also preserves
+the project's own finding verbatim: *"There is no signature anywhere."*
+
+My wording could be read as "other executed instruments exist, just not an
+assignment one." **They do not.** The corrected proposition is the Register's:
+**no executed signed instrument of any kind has been located in the corpus.**
+
+### 2. "Four co-authors hold joint rights and nothing has been assigned" — IMPRECISE
+
+**Register §9 and §10 are exact, and the precision matters commercially.** There
+are four co-author relationships. A co-author consent instrument **exists**, at
+terms `coauthor-v1.0-2026-08-24`, and stores a terms version — and it is recorded
+**NOT USED**, establishing **"Nothing: confirmed 0 of 3."** All four relationships
+sit **outside** that instrument.
+
+So the accurate statement is not merely that nothing was assigned; it is that **an
+instrument was built for exactly this purpose and no co-author has used it.** That
+is a sharper transaction condition, and a cheaper one to close.
+
+### 3. Section 2.1 contributor — I LEFT IT MORE OPEN THAN THE REGISTER DOES
+
+I classified it **OWNER FACTUAL**. The Register already carries a disposition:
+V-AI-08, Section 2.1 argument, panel design, assignment/transfer **Not located**,
+**status "Credit only."**
+
+**Corrected.** The disposition is **DOCUMENTED — CREDIT ONLY**, not an open
+factual question. What remains for the owner is narrower than I wrote: whether
+anything **beyond credit** was ever agreed. **Absent that, credit only stands**,
+and no conveyance is inferred from the contribution.
+
+### 4. Ubayet — the deferral is real, but the Register records a thinner file
+
+I recorded **DOCUMENTED — DEFERRED BY DECISION**, which remains correct as to the
+commercial/successor-transfer question. **The Register adds a fact I omitted:**
+consent evidence **not located**, release evidence **not located**,
+assignment/transfer **not located**. Authorship approval **is** corroborated —
+F-6, verified primary, transcript plus four primary images.
+
+**He is therefore the one co-author relationship with no executed contributor
+consent at all.** The deferral stands; the thinner file is now stated beside it
+rather than implied by its absence.
+
+### 5. Publisher agreements — two different propositions, NOT collapsed
+
+**Register F-9: "No JRS output has a DOI or publisher record" — VERIFIED PRIMARY.**
+That is about **published** outputs. Publisher **agreements for accepted
+manuscripts** are a different question, and two acceptances are recorded in the
+sale record as in-pipeline.
+
+**Both are true and they are not the same fact.** F-9 does not establish that no
+agreement exists; it establishes that nothing has been published with a DOI or
+publisher record. The row above stands as **OWNER FACTUAL**, with F-9 recorded
+beside it so the two are not conflated later.
+
+### 6. Marks — the Register is more specific
+
+**Register F-8: "No USPTO filing or registration evidence" against 23 pages using
+`JRS™`** — NOT LOCATED AFTER EXHAUSTIVE SEARCH. My row said the marks are
+unregistered. **The Register quantifies the exposure: the mark is in active use on
+23 pages with no filing evidence.** That is the transaction condition, stated with
+its magnitude.
+
+## What this reconciliation did NOT do
+
+It resolved nothing, escalated nothing new, and created no right. **Every
+correction made a proposition narrower, more precise, or better evidenced.** Three
+of the six moved in the direction of **less** certainty for the estate, which is
+the direction a reconciliation should be willing to move.
+
+**No divergence was found where this document was right and the Register wrong.**
+
+---
+
+# Second-order review of the reconciliation — 2026-09-17
+
+One controlled downstream pass, as required. Two questions asked; one produced a
+finding that **reduces a transaction condition to a single owner question**.
+
+## Q1. Does any public surface claim rights the reconciliation undercuts?
+
+**NO.** A sweep of every deployed page for "all rights", "owns", "exclusive
+right/licence", "sole owner", "full ownership", "rights secured" and "assigned to"
+returns **no such claim** (the only hits are unrelated prose, and "all rights
+reserved" in a copyright line, which asserts nothing about contributors).
+
+**The estate has never published a rights claim these corrections would falsify.**
+That is worth recording as a fact, not assumed as a comfort.
+
+## Q2. Why is the co-author instrument "confirmed 0 of 3"?
+
+The Register records a co-author consent instrument that **exists**, stores terms
+version `coauthor-v1.0-2026-08-24`, and is **NOT USED**. I set out to find whether
+it was unreachable.
+
+**My first hypothesis was wrong and is recorded as wrong.** I found
+`coauthor.html` linked from **zero** pages and absent from the sitemap, and
+inferred a reachability defect. It is not a defect: the instrument is **designed**
+for three **keyed links**, one per co-author, with `noindex,nofollow`, no analytics
+tag, and the roster holding their names. Linking it publicly would expose the
+co-author roster and the commercial question put to them. **It is correctly
+unlinked.**
+
+**My second reading was also wrong.** The build record of 2026-08-24 says
+**"NOT DEPLOYED"**, which would have meant the keyed links could not work. That
+was true on that date and is **not true now**.
+
+**Established by probe, 2026-09-17:**
+
+| Probe | Result |
+|---|---|
+| `GET /coauthor.html` | **200** — live |
+| `POST /api/coauthor` with no key | **404 with body `{"ok":false,"found":false}`** |
+| `/api/coauthor-stats`, `/api/contributor` | 200 |
+
+The 404 is **the handler's own "no such key" response, not a missing route** — a
+missing route returns no JSON body. Distinguishing the two mattered: read as a
+missing route it would have been a live defect in a rights instrument.
+
+**Conclusion: the co-author instrument is deployed and functional.**
+
+## What that changes
+
+**"Confirmed 0 of 3" is an OUTREACH fact, not a technical one.** The instrument
+works; whether the three keyed links were ever sent is **NOT ESTABLISHED in the
+repository**, and it is not a thing engineering can establish.
+
+This narrows the transaction condition at §2 of the reconciliation above from a
+drafting problem to a **sending** one:
+
+> **OWNER FACTUAL — one question:** were the three keyed co-author links sent to
+> Hossain, Pokhriyal and Young, and if so when?
+
+If they were sent and unanswered, the condition is what it was. **If they were
+never sent, the cheapest rights improvement available to this estate is three
+emails**, against an instrument already built, deployed and working, which stores
+a terms version against each response — the exact evidentiary gap F-3 records for
+the contributor consents, already solved here.
+
+**No link was followed and no key was used.** Submitting through a keyed link
+would be acting as a co-author, which is neither delegated nor honest.
