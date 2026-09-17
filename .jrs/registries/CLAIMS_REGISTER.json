@@ -20,21 +20,30 @@
       "claim": "A deficit rate for real-world records",
       "status": "PROHIBITED",
       "public_use": false,
-      "limitations": "NOT DERIVABLE. A 50/50 constructed corpus cannot produce a population estimate. Requested three times; refused each time."
+      "limitations": "NOT DERIVABLE. A 50/50 constructed corpus cannot produce a population estimate. Requested three times; refused each time.",
+      "enforcement": "human_review",
+      "enforcement_reason": "'deficit rate' appears in the research records describing what is NOT claimed",
+      "enforcement_decided": "2026-09-15"
     },
     {
       "claim_id": "C-004",
       "claim": "The Review Engine is validated",
       "status": "PROHIBITED",
       "public_use": false,
-      "limitations": "Functional operation is not validation. CORRECTED 2026-09-14: the self-declaration exists ONLY in api/review-engine.js and api/v1/review-engine.js. api/review.js carries none and is the endpoint behind index.html, training.html and review-engine.html."
+      "limitations": "Functional operation is not validation. CORRECTED 2026-09-14: the self-declaration exists ONLY in api/review-engine.js and api/v1/review-engine.js. api/review.js carries none and is the endpoint behind index.html, training.html and review-engine.html.",
+      "enforcement": "human_review",
+      "enforcement_reason": "'validated' appears in the version string 0.1.0-validation and in negations",
+      "enforcement_decided": "2026-09-15"
     },
     {
       "claim_id": "C-005",
       "claim": "JRS is certification, accreditation or a credential",
       "status": "PROHIBITED",
       "public_use": false,
-      "limitations": "Explicitly disclaimed on compliance.html and in the guides."
+      "limitations": "Explicitly disclaimed on compliance.html and in the guides.",
+      "enforcement": "human_review",
+      "enforcement_reason": "'certification' appears in training copy describing what JRS is not",
+      "enforcement_decided": "2026-09-15"
     },
     {
       "claim_id": "C-006",
@@ -48,28 +57,40 @@
       "claim": "JRS output is admissible in court",
       "status": "PROHIBITED",
       "public_use": false,
-      "limitations": "NOT ESTABLISHED. Admissibility is a legal determination (Rule 8)."
+      "limitations": "NOT ESTABLISHED. Admissibility is a legal determination (Rule 8).",
+      "enforcement": "human_review",
+      "enforcement_reason": "'admissible' appears in disclaimers stating admissibility is not established",
+      "enforcement_decided": "2026-09-15"
     },
     {
       "claim_id": "C-008",
       "claim": "JRS prevents or eliminates liability",
       "status": "PROHIBITED",
       "public_use": false,
-      "limitations": "NOT ESTABLISHED, and the banned-language list in Section 24 covers it."
+      "limitations": "NOT ESTABLISHED, and the banned-language list in Section 24 covers it.",
+      "enforcement": "human_review",
+      "enforcement_reason": "'liability' appears in terms and disclaimers as the thing NOT promised",
+      "enforcement_decided": "2026-09-15"
     },
     {
       "claim_id": "C-009",
       "claim": "JRS satisfies a statute, regulation or standard",
       "status": "PROHIBITED",
       "public_use": false,
-      "limitations": "Rule 9. No regulatory crosswalk has been performed."
+      "limitations": "Rule 9. No regulatory crosswalk has been performed.",
+      "enforcement": "human_review",
+      "enforcement_reason": "'compliance' appears throughout in negating form",
+      "enforcement_decided": "2026-09-15"
     },
     {
       "claim_id": "C-010",
       "claim": "JRS is an industry standard or has industry recognition",
       "status": "PROHIBITED",
       "public_use": false,
-      "limitations": "NOT ESTABLISHED. No standards body, no DOI, no publisher record for any JRS output."
+      "limitations": "NOT ESTABLISHED. No standards body, no DOI, no publisher record for any JRS output.",
+      "enforcement": "human_review",
+      "enforcement_reason": "'industry standard' appears in copy disclaiming the status",
+      "enforcement_decided": "2026-09-15"
     },
     {
       "claim_id": "C-011",
@@ -84,8 +105,116 @@
       "status": "DEMONSTRATED",
       "public_use": true,
       "limitations": "Constructed corpus, deliberately balanced. Supports detectability only."
+    },
+    {
+      "claim_id": "C-13",
+      "claim": "The call is stateless / no retention or data-residency obligation arises",
+      "status": "PROHIBITED",
+      "public_use": "NEVER. It is false of the code and the third limb is a legal conclusion.",
+      "limitations": "Record TEXT is genuinely not stored. That accurate narrower claim is C-14. The engine writes engine_reviews on every authenticated call.",
+      "surfaces_prohibited": [
+        "HTML",
+        "JSON",
+        "DOCS",
+        "COMMERCIAL"
+      ],
+      "known_live_occurrence": "openapi.json info.summary and info.description. B-016, COUNSEL REVIEW REQUIRED, correction drafted and UNAPPLIED.",
+      "evidence": "api/v1/review-engine.js:272 logReview call site",
+      "authority": "Counsel (B-016). Not Board.",
+      "enforcement": "pattern"
+    },
+    {
+      "claim_id": "C-14",
+      "claim": "The record text you submit is never stored",
+      "status": "DEMONSTRATED",
+      "public_use": "Permitted. It is the accurate narrower form of C-13.",
+      "limitations": "True of the RECORD TEXT only. Model output ABOUT the record is stored and is covered by C-15. input_preview stopped being written 2026-08-14.",
+      "surfaces_permitted": [
+        "HTML",
+        "DOCS",
+        "COMMERCIAL"
+      ],
+      "evidence": "api/v1/review-engine.js logReview payload carries no record text",
+      "authority": "Board"
+    },
+    {
+      "claim_id": "C-15",
+      "claim": "Model output about the record is kept for 90 days and then removed; the evaluation record is retained",
+      "status": "DEMONSTRATED AS POLICY, NOT AS EXECUTED BEHAVIOUR",
+      "public_use": "Permitted in the three-category form only.",
+      "limitations": "BD-10/BD-12/BD-13. The policy module COMPUTES; it does not delete. NO EXPIRY HAS RUN ANYWHERE and engine_reviews holds zero rows. A bare '90 days' is prohibited because it reads as the whole row being deleted.",
+      "surfaces_permitted": [
+        "HTML",
+        "DOCS"
+      ],
+      "evidence": "lib/retention/policy.js days:90; privacy.html and security.html disclosure",
+      "authority": "Board (BD-12, BD-13)"
+    },
+    {
+      "claim_id": "C-16",
+      "claim": "The Manifest is authenticated / proves authorship or authenticity",
+      "status": "PROHIBITED",
+      "public_use": "NEVER.",
+      "limitations": "integrity is a sha256 hash plus a canonicalization id. There is no signing key and no authentication mechanism. A hash is not a signature. It does not establish who produced the manifest.",
+      "surfaces_prohibited": [
+        "HTML",
+        "JSON",
+        "DOCS",
+        "COMMERCIAL"
+      ],
+      "evidence": "lib/manifest/build.js integrity block",
+      "authority": "Board",
+      "enforcement": "pattern"
+    },
+    {
+      "claim_id": "C-17",
+      "claim": "The canonicalization is RFC 8785 / JCS compliant",
+      "status": "PROHIBITED",
+      "public_use": "NEVER without an adjacent negation.",
+      "limitations": "The identifier is jrs-dev-canon-1, deliberately NOT claimed compliant, because it has not been verified against the RFC's test vectors.",
+      "surfaces_prohibited": [
+        "HTML",
+        "JSON",
+        "DOCS",
+        "COMMERCIAL",
+        "CODE"
+      ],
+      "evidence": "lib/manifest/canonicalize.js; check_manifest_library_holds_its_refusals",
+      "authority": "Board",
+      "enforcement": "pattern"
+    },
+    {
+      "claim_id": "C-18",
+      "claim": "Responses submitted through finding.html are not displayed publicly",
+      "status": "PROMISED AT COLLECTION; NOT YET TRUE IN THE DATABASE",
+      "public_use": "It is already published on finding.html and must remain honoured.",
+      "limitations": "B-017. The export row is removed and no page reads the table, but the anon SELECT GRANT REMAINS until a production operation revokes it. The page projection is not the control; the grant is.",
+      "surfaces_permitted": [
+        "HTML"
+      ],
+      "evidence": "finding.html promise; supabase-ALL.sql read policy; BD-14",
+      "authority": "Board decided; production verification required"
+    },
+    {
+      "claim_id": "C-19",
+      "claim": "Any control is production verified",
+      "status": "PROHIBITED",
+      "public_use": "NEVER, at present.",
+      "limitations": "PRODUCTION-VERIFIED CONTROLS: NONE. Every remediation is development evidence. Development evidence does not become production evidence by assertion.",
+      "surfaces_prohibited": [
+        "HTML",
+        "JSON",
+        "DOCS",
+        "COMMERCIAL"
+      ],
+      "evidence": "DEPLOYMENT_READINESS_REPORT_2026-09-17.md",
+      "authority": "Production evidence only",
+      "enforcement": "pattern"
     }
   ],
   "_evidence_chain_rule": "CLAIM -> EVIDENCE -> LIMITATION -> RIGHTS -> REGULATORY IMPLICATION -> APPROVAL (Section 24)",
-  "_phase1_updated": "2026-09-14"
+  "_phase1_updated": "2026-09-14",
+  "_extended_2026_09_17": "Extended, not rebuilt. The 12 seeded claims are unchanged. Added: (a) a representation dimension per claim, because a claim is controlled only where it is SAID, and B-016 is a claim that was correct on every HTML surface and false in JSON; (b) the claims that arose from BD-10 to BD-16, B-016 and B-017, which post-date the 2026-09-14 seed. Surface classes: HTML = deployed pages; JSON = published machine artifacts including openapi.json; DOCS = diligence records; CODE = executable.",
+  "_representation_rule": "CLAIM -> SOURCE -> EVIDENCE -> AUTHORITY -> VERSION -> LIMITATION -> REPRESENTATION. A claim is not controlled by being written down once. It is controlled where it is SAID. The 2026-09-15 claims sweep removed a data-handling proposition from ten HTML pages and left it live in openapi.json, because the sweep read HTML. Every claim below names the surface classes it may and may not appear on.",
+  "_enforcement_rule": "Each PROHIBITED claim declares how it is enforced. TWO MODES, and the split is a recorded decision, not a convenience. 'pattern' is for phrases with NO innocent form, where an automated check is reliable. 'human_review' is for terms that appear legitimately inside negations, disclaimers, version strings, quotations and historical references -- for these an automated scan was DELIBERATELY NOT BUILT on 2026-09-15, because a naive substring check flagged 'validated' in the version string '0.1.0-validation' and in the phrase 'is NOT established as validated', and flagged 'legally defensible' inside 'does not determine whether ... legally defensible'. That finding recorded: false-positive governance is worse than none. B-016 is new evidence for the NARROW class only -- a claim escaped into JSON because the human scan read HTML -- and it does not overturn the wider decision."
 }

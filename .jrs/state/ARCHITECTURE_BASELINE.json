@@ -60,7 +60,7 @@
   },
   "controls": {
     "_source": "scripts/check_zero_drift.py and tests/",
-    "guards": 116,
+    "guards": 117,
     "guard_suites": [
       "offline",
       "online"
@@ -88,5 +88,5 @@
     "whether cold_reviewer_clarity is the aggregate condition or a peer (D-2)",
     "live row counts in any anon-readable table"
   ],
-  "_revision_note": "Guard floor raised to 116 on 2026-09-17: check_no_conditional_deployment_state and check_production_verifier_reads_no_secret added. Set to 117 first, which the guard rejected within the minute - _strip_py_docstrings is a helper, not a check. The floor must be the true count and never an aspiration, or it stops being a floor."
+  "_revision_note": "Guard floor raised to 117 on 2026-09-17 with check_prohibited_claims_are_absent_from_every_surface_class. Set to 117 once before against an actual 116 and the baseline guard rejected it within the minute; the count is now verified against the file before being written."
 }

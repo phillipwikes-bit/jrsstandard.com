@@ -5765,6 +5765,181 @@ def _strip_py_docstrings(text):
 
 
 
+
+
+def _surface_text(rel, cls):
+    """What a surface SAYS, not the bytes it is stored as.
+
+    WHY THIS EXISTS. A directed mutation exposed it. The claim guard searched the
+    RAW JSON FILE for r"\\bthe call is stateless\\b" and got no match, although
+    openapi.json plainly contains that sentence. In the raw file the preceding
+    characters are the ESCAPE SEQUENCE \\n\\n -- four literal characters ending in
+    the letter n, which is a WORD character -- so the \\b before "the" had no
+    boundary to match against.
+
+    The guard was reading storage and reasoning about meaning. For JSON it now
+    parses and concatenates the string values, so an escape sequence cannot hide a
+    claim and cannot manufacture a boundary that is not there. HTML is read as
+    written, because for HTML the bytes are the text.
+    """
+    body = read(rel)
+    if not body:
+        return ""
+    if cls != "JSON":
+        return body
+    try:
+        doc = json.loads(body)
+    except Exception:
+        return body
+    out = []
+
+    def walk(o):
+        if isinstance(o, dict):
+            for v in o.values():
+                walk(v)
+        elif isinstance(o, list):
+            for v in o:
+                walk(v)
+        elif isinstance(o, str):
+            out.append(o)
+
+    walk(doc)
+    return "\n".join(out)
+
+
+def check_prohibited_claims_are_absent_from_every_surface_class(offline):
+    """A claim the register prohibits does not appear on a surface it prohibits.
+
+    WHY THIS GUARD EXISTS, and it is the B-016 lesson made mechanical. The
+    2026-09-15 claims sweep removed a data-handling proposition from ten HTML
+    pages and left it live in openapi.json, because the sweep read HTML. The
+    claim was controlled in the register and uncontrolled on the surface that
+    mattered: the published, commercially licensed machine artifact a buyer's
+    security reviewer actually opens.
+
+    A CLAIM IS NOT CONTROLLED BY BEING WRITTEN DOWN ONCE. It is controlled where
+    it is SAID. So this guard reads the register as the source of truth and
+    checks every surface CLASS the register names, HTML and JSON alike.
+
+    WHAT IT CHECKS. For each claim with status PROHIBITED, its detection patterns
+    are absent from the surface classes listed in surfaces_prohibited. One
+    occurrence is known, registered and blocked on counsel: the C-13 statelessness
+    text in openapi.json, which cannot be edited until B-016 is dispositioned. It
+    is pinned by the claim id, not by a hash of the wording, so that the eventual
+    authorized correction does not trip this guard on its way through.
+
+    WHAT IT DOES NOT CHECK. Whether a permitted claim is TRUE, or whether its
+    limitation travels with it. A register cannot establish truth; it can only
+    stop a proposition appearing where the project has decided it must not.
+    """
+    findings = []
+
+    reg = read(".jrs/registries/CLAIMS_REGISTER.json")
+    if not reg:
+        check("prohibited claims are absent from every surface class", False,
+              "the claims register is missing; claim control has no source of truth")
+        return
+    claims = json.loads(reg)["claims"]
+
+    # Detection patterns per prohibited claim. Deliberately narrow: a pattern that
+    # fires on ordinary prose teaches the reader to ignore the guard.
+    PATTERNS = {
+        "C-13": [r"\bthe call is stateless\b", r"\bno data.residency\b",
+                 r"\bstateless\b[^.]{0,40}\bdecision gate\b"],
+        "C-16": [r"manifest is authenticated", r"proves authenticity",
+                 r"proves authorship"],
+        "C-17": [r"\bis rfc\s*8785 compliant\b", r"\bjcs compliant\b"],
+        "C-19": [r"\bproduction[- ]verified\b(?![^.]{0,30}\b(none|no|not)\b)"],
+    }
+    # The one occurrence that is known, recorded and blocked on counsel.
+    REGISTERED = {("C-13", "openapi.json"): "B-016, correction drafted and UNAPPLIED"}
+
+    json_surfaces = sorted(g for g in os.listdir(ROOT)
+                           if g.startswith("openapi") and g.endswith(".json"))
+
+    for c in claims:
+        if c.get("status") != "PROHIBITED":
+            continue
+        cid = c.get("claim_id")
+        mode = c.get("enforcement")
+        if mode is None:
+            findings.append("claim %s is PROHIBITED but declares no enforcement mode. "
+                            "Every prohibited claim must say whether it is caught by "
+                            "pattern or held by human review" % cid)
+            continue
+        if mode == "human_review":
+            # DELIBERATELY NOT AUTOMATED, decided 2026-09-15. These terms appear
+            # legitimately inside negations, disclaimers, version strings and
+            # quotations. A naive scan flagged "validated" in the version string
+            # 0.1.0-validation and in "is NOT established as validated", and
+            # flagged "legally defensible" inside a sentence denying it. The
+            # recorded finding was that false-positive governance is worse than
+            # none. This guard requires the REASON to survive, not the claim to
+            # be automated.
+            if not c.get("enforcement_reason"):
+                findings.append("claim %s is held by human review with no recorded "
+                                "reason; the 2026-09-15 decision turned on the "
+                                "specific false positives, so the reason is the "
+                                "control" % cid)
+            continue
+        pats = PATTERNS.get(cid)
+        if not pats:
+            findings.append("claim %s declares pattern enforcement but has no "
+                            "detection pattern" % cid)
+            continue
+        banned = set(c.get("surfaces_prohibited") or [])
+        targets = []
+        if "HTML" in banned:
+            targets += [(r, "HTML") for r in _html_files()]
+        if "JSON" in banned:
+            targets += [(r, "JSON") for r in json_surfaces]
+        for rel, cls in targets:
+            body = _surface_text(rel, cls)
+            if not body:
+                continue
+            for pat in pats:
+                if re.search(pat, body, re.I):
+                    if (cid, rel) in REGISTERED:
+                        break
+                    findings.append("%s (%s surface) carries prohibited claim %s "
+                                    "matching %r" % (rel, cls, cid, pat))
+                    break
+
+    # THE REGISTERED EXCEPTION MUST STILL BE THE THING IT SAYS IT IS, and this
+    # check pins the SET of patterns, not any-of. The first version asked whether
+    # ANY C-13 pattern still matched openapi.json, and a directed mutation passed:
+    # deleting "The call is stateless." left the data-residency clause behind, so
+    # "any" was still satisfied while the registered text had materially changed.
+    # A registration that tolerates its own subject changing underneath it is not
+    # a registration. C-13 in openapi.json is TWO distinct propositions and both
+    # are pinned.
+    EXPECTED = {("C-13", "openapi.json"): {r"\bthe call is stateless\b",
+                                           r"\bno data.residency\b"}}
+    for (cid, rel), why in REGISTERED.items():
+        body = _surface_text(rel, "JSON" if rel.endswith(".json") else "HTML") or ""
+        expected = EXPECTED.get((cid, rel), set(PATTERNS.get(cid, [])))
+        missing = sorted(p for p in expected if not re.search(p, body, re.I))
+        if missing:
+            findings.append("the registered %s occurrence in %s no longer matches %s. "
+                            "If the contract was corrected under counsel authority that "
+                            "is good news and this registration should be retired "
+                            "deliberately; if it changed any other way, the published "
+                            "contract moved without authorization (%s)"
+                            % (cid, rel, missing, why))
+
+    check("prohibited claims are absent from every surface class",
+          not findings,
+          "; ".join(findings) if findings
+          else "%d claims read, %d prohibited (%d by pattern, %d held by human "
+               "review with recorded reasons); %d HTML and %d JSON surfaces swept; "
+               "1 registered occurrence (C-13 in openapi.json, blocked on B-016)"
+               % (len(claims),
+                  sum(1 for c in claims if c.get("status") == "PROHIBITED"),
+                  sum(1 for c in claims if c.get("enforcement") == "pattern"),
+                  sum(1 for c in claims if c.get("enforcement") == "human_review"),
+                  len(_html_files()), len(json_surfaces)))
+
+
 def check_no_conditional_deployment_state(offline):
     """No record asserts a deployment state the state machine does not have.
 
@@ -7206,6 +7381,7 @@ def main():
                check_architecture_baseline_is_current,
                check_production_verifier_reads_no_secret,
                check_no_conditional_deployment_state,
+               check_prohibited_claims_are_absent_from_every_surface_class,
                check_manifest_schema_keeps_its_safeguards,
                check_data_handling_claims_match_the_implementation,
                check_published_api_contract_matches_the_write_path,
