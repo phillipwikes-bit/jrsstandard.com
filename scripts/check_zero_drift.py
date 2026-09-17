@@ -5756,6 +5756,88 @@ def check_manifest_implementation_is_not_deployable(offline):
 
 
 
+
+def _strip_py_docstrings(text):
+    """Remove triple-quoted blocks so a guard reads code and not prose about it."""
+    text = re.sub(r'"' * 3 + r'(?:.|\n)*?' + r'"' * 3, "", text)
+    text = re.sub(r"'" * 3 + r"(?:.|\n)*?" + r"'" * 3, "", text)
+    return text
+
+
+def check_production_verifier_reads_no_secret(offline):
+    """The production verification runbook can never acquire a secret credential.
+
+    WHY THIS GUARD EXISTS. scripts/production_verify.py is written to run against
+    production once B-001 clears. A verification script is exactly the kind of
+    file that accretes credentials: the next check needs slightly more access,
+    someone adds a service-role read "just for verification", and a secret now
+    lives in a script that WRITES AN EVIDENCE FILE. The evidence file is the part
+    that makes it dangerous, because it is designed to be kept and shared.
+
+    WHAT IT CHECKS. The script references no secret environment variable and no
+    secret-shaped literal in CODE, and reads only the PUBLISHABLE key, which
+    ships in 17 HTML files by design and so discloses nothing. It also must not
+    deploy, revoke or grant: verification and mutation are different acts.
+
+    CODE ONLY, NOT THE PROSE ABOUT THE CODE. The first version of this guard
+    failed on its own target, three ways, every one of them in commentary: the
+    script's docstring names REVIEW_API_TOKEN while explaining what it must never
+    hold, its comments use "revocation" while explaining that it does not revoke,
+    and the bare token `service_role` matched the function name
+    _c_service_role_path_intact, which verifies that the legitimate server-side
+    path still serves. Eighth substring-versus-commentary miss on this project.
+    Docstrings and comments are stripped first, and the credential is matched by
+    its actual variable name rather than by a fragment of it.
+
+    WHAT IT DOES NOT CHECK. Whether the script's assertions are correct, or
+    whether it has ever been run. At the time of writing it had NOT been run, and
+    a check that has not run establishes nothing.
+    """
+    findings = []
+    rel = "scripts/production_verify.py"
+    src = read(rel)
+    if not src:
+        check("production verifier reads no secret", False, "%s is missing" % rel)
+        return
+
+    code = re.sub(r"#[^\n]*", "", _strip_py_docstrings(src))
+    # ONE NAMED EXEMPTION, and it is exempt because its purpose is the opposite
+    # of the risk. SECRET_NAMES_THAT_MUST_NOT_LEAK is a pattern the script
+    # searches a 401 RESPONSE for, to assert the endpoint does not name the flag
+    # governing its own access. Removing the whole declaration keeps every other
+    # occurrence in scope, so the exemption cannot spread past this one line.
+    code = re.sub(r"SECRET_NAMES_THAT_MUST_NOT_LEAK\s*=\s*\([^)]*\)", "", code)
+
+    BANNED = ("SUPABASE_SERVICE_ROLE_KEY", "ANTHROPIC_API_KEY", "REVIEW_API_TOKEN",
+              "VERCEL_DEPLOY_HOOK_URL", "BENCH_SCORE_TOKENS", "BENCH_KEY_JSON",
+              "sb_secret_")
+    for name in BANNED:
+        if name in code:
+            findings.append("%s references %r in CODE; a verification script must "
+                            "never hold or acquire a secret" % (rel, name))
+    if re.search(r"eyJ[A-Za-z0-9_-]{10,}\.", code):
+        findings.append("%s contains a JWT-shaped literal" % rel)
+    if re.search(r"\bos\.environ\b|\bgetenv\b", code):
+        findings.append("%s reads the environment; it is designed to need nothing "
+                        "beyond the published key" % rel)
+    if "sb_publishable_" not in src:
+        findings.append("%s no longer locates the publishable key; if the access "
+                        "method changed, re-read what it now uses" % rel)
+
+    for pat, why in ((r"\bDROP\s+POLICY\b", "a grant change is a separate authorized operation"),
+                     (r"\bREVOKE\s+\w", "a grant change is a separate authorized operation"),
+                     (r"\bGRANT\s+\w+\s+ON\b", "a grant change is a separate authorized operation"),
+                     (r"vercel\s+(?:deploy|--prod)", "deployment is authorized elsewhere")):
+        if re.search(pat, code, re.I):
+            findings.append("%s performs a mutation matching %r; %s" % (rel, pat, why))
+
+    check("production verifier reads no secret",
+          not findings,
+          "; ".join(findings) if findings
+          else "reads only the publishable key; no secret variable, no JWT literal, "
+               "no environment read, and it neither deploys nor revokes")
+
+
 def check_architecture_baseline_is_current(offline):
     """A pinned structural fact has not moved without the freeze being revised.
 
@@ -7054,6 +7136,7 @@ def main():
                check_the_methodology_mapping_tracks_the_executable_vocabulary,
                check_every_public_table_projection_has_a_recorded_disposition,
                check_architecture_baseline_is_current,
+               check_production_verifier_reads_no_secret,
                check_manifest_schema_keeps_its_safeguards,
                check_data_handling_claims_match_the_implementation,
                check_published_api_contract_matches_the_write_path,

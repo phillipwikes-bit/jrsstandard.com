@@ -60,7 +60,7 @@
   },
   "controls": {
     "_source": "scripts/check_zero_drift.py and tests/",
-    "guards": 113,
+    "guards": 115,
     "guard_suites": [
       "offline",
       "online"
@@ -87,5 +87,6 @@
     "Level A executed assignment instrument (B-004)",
     "whether cold_reviewer_clarity is the aggregate condition or a peer (D-2)",
     "live row counts in any anon-readable table"
-  ]
+  ],
+  "_revision_note": "Guard floor raised from 113 to 115 on 2026-09-17 when check_production_verifier_reads_no_secret and the docstring helper were added. The floor is raised deliberately: it is a FLOOR, so leaving it low would silently tolerate the deletion of two guards."
 }
