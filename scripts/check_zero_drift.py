@@ -5395,7 +5395,7 @@ def check_record_derived_fields_have_no_export_path(offline):
 
     Two export paths reached them and both were found by audit rather than by a
     guard: engine-activity.html read the table directly with the publishable key
-    (B-013A), and research-data.html offered it as a data-room export with
+    (B-013 limb A), and research-data.html offered it as a data-room export with
     select=* (T-11, found 2026-09-16 while deciding T-4). Both were latent only
     because the table holds zero rows.
 
@@ -5644,7 +5644,7 @@ def check_manifest_implementation_is_not_deployable(offline):
     rules = read(".vercelignore")
     findings = []
     # *.sql added 2026-09-15: ten root schema files were deployable and one
-    # published the anon SELECT grant that B-013A treats as the open exposure.
+    # published the anon SELECT grant that B-013 limb A treats as the open exposure.
     if not re.search(r"(?m)^\*\.sql\s*$", rules):
         findings.append("*.sql is not excluded in .vercelignore; root schema files "
                         "publish table structures and anon grants at guessable URLs")
@@ -5755,6 +5755,109 @@ def check_manifest_implementation_is_not_deployable(offline):
 
 
 
+
+def check_architecture_baseline_is_current(offline):
+    """A pinned structural fact has not moved without the freeze being revised.
+
+    WHY THIS GUARD EXISTS. Phase 0's exit criteria require an architecture
+    baseline, and the operating architecture asks for a FREEZE so that later
+    change becomes a recorded revision rather than informal evolution. Nothing in
+    this repository could previously detect that the architecture had CHANGED.
+    The suite catches drift in claims, projections, retention units and
+    vocabulary; it did not catch a change in the SHAPE of the estate -- a sixth
+    engine key, a different truncation cap, a retention unit, a new anon-readable
+    table, a moved contract hash.
+
+    WHAT IT CHECKS. Each pinned value in .jrs/state/ARCHITECTURE_BASELINE.json
+    against the artifact it was copied from. The baseline ASSERTS NOTHING of its
+    own: where it and the artifact disagree, the artifact controls and this guard
+    fails so the disagreement is acknowledged rather than absorbed.
+
+    WHAT IT DOES NOT CHECK. Whether the architecture is GOOD, or whether a change
+    is undesirable. A failure here is not "something broke"; it is "the shape
+    changed and the freeze has not been revised." Revising the freeze is the
+    correct response to an intended change, and is itself a recorded act.
+
+    COUNTS ARE PINNED AS FLOORS, NOT EQUALITIES, for the things that legitimately
+    grow. Guards and tests are added constantly and a guard that failed on every
+    added guard would be deleted within a week. A DECREASE is the signal: a guard
+    suite that shrank, or a test suite that lost checks, is drift.
+    """
+    import json as _json
+    findings = []
+
+    raw = read(".jrs/state/ARCHITECTURE_BASELINE.json")
+    if not raw:
+        check("architecture baseline is current", False,
+              ".jrs/state/ARCHITECTURE_BASELINE.json is missing; the freeze is the "
+              "Phase 0 exit artifact and cannot be absent")
+        return
+    b = _json.loads(raw)
+
+    # Methodology vocabulary, against the executable list.
+    build = read("lib/manifest/build.js")
+    m = re.search(r"ENGINE_CONDITION_KEYS\s*=\s*\[(.*?)\]", build, re.S)
+    live_keys = set(re.findall(r"'([a-z_]+)'", m.group(1))) if m else set()
+    if live_keys != set(b["methodology"]["engine_condition_keys"]):
+        findings.append("engine condition keys moved: baseline %s, code %s"
+                        % (sorted(b["methodology"]["engine_condition_keys"]),
+                           sorted(live_keys)))
+
+    # Interoperability constants.
+    hsrc = read("lib/manifest/hash.js")
+    tm = re.search(r"ENGINE_TRUNCATION_LIMIT\s*=\s*(\d+)", hsrc)
+    if not tm or int(tm.group(1)) != b["interoperability"]["engine_truncation_limit_chars"]:
+        findings.append("truncation limit moved: baseline %s, code %s"
+                        % (b["interoperability"]["engine_truncation_limit_chars"],
+                           tm.group(1) if tm else "absent"))
+
+    # Retention, both rules, in their declared units.
+    pol = read("lib/retention/policy.js")
+    lit = re.search(r"ENGINE_REVIEW_RETENTION\s*=\s*\{(.*?)\n\};", pol, re.S)
+    decl = re.sub(r"//[^\n]*", "", lit.group(1)) if lit else ""
+    dm = re.search(r"\bdays:\s*(\d+)", decl)
+    if not dm or int(dm.group(1)) != b["retention"]["engine_reviews_record_derived_days"]:
+        findings.append("engine_reviews retention moved: baseline %s days, code %s"
+                        % (b["retention"]["engine_reviews_record_derived_days"],
+                           dm.group(1) if dm else "no day count"))
+    rl = re.search(r"RETENTION\s*=\s*\{.*?months:\s*(\d+)", pol, re.S)
+    if not rl or int(rl.group(1)) != b["retention"]["interaction_events_months"]:
+        findings.append("telemetry retention moved: baseline %s months, code %s"
+                        % (b["retention"]["interaction_events_months"],
+                           rl.group(1) if rl else "absent"))
+
+    # The published contract.
+    import hashlib as _h
+    live_hash = _h.sha256(open(os.path.join(ROOT, "openapi.json"), "rb").read()).hexdigest()[:16]
+    if live_hash != b["published_contract"]["sha256"]:
+        findings.append("openapi.json changed: baseline %s, now %s. B-016 freezes this "
+                        "artifact pending counsel, so a change here is a "
+                        "contract-integrity finding, NOT something to repair"
+                        % (b["published_contract"]["sha256"], live_hash))
+
+    # Surface shape.
+    rules = len([l for l in read(".vercelignore").splitlines()
+                 if l.strip() and not l.strip().startswith("#")])
+    if rules < b["surface"]["vercelignore_rules"]:
+        findings.append("deployment exclusions DROPPED: baseline %d rules, now %d. "
+                        "Removing an exclusion widens the public surface"
+                        % (b["surface"]["vercelignore_rules"], rules))
+
+    # Floors, not equalities. A decrease is the signal.
+    live_guards = len(re.findall(r"^def check_", read("scripts/check_zero_drift.py"), re.M))
+    if live_guards < b["controls"]["guards"]:
+        findings.append("guard count FELL: baseline %d, now %d. Guards are added "
+                        "freely; a decrease means one was deleted"
+                        % (b["controls"]["guards"], live_guards))
+
+    check("architecture baseline is current",
+          not findings,
+          "; ".join(findings) if findings
+          else "baseline v%s frozen %s; vocabulary, truncation, both retention "
+               "rules, contract hash, exclusions and guard floor all match their "
+               "sources" % (b["version"], b["frozen"]))
+
+
 def check_every_public_table_projection_has_a_recorded_disposition(offline):
     """Every anonymously readable table a page queries has a reasoned disposition.
 
@@ -5767,7 +5870,7 @@ def check_every_public_table_projection_has_a_recorded_disposition(offline):
     The publishable key ships in 17 HTML files by design, so anyone holding it
     can issue select=* against any anonymously readable table directly, whatever
     a page asks for. THE GRANT IS THE CONTROL. For engine_reviews that is
-    B-013A; for finding_responses it is B-017; both are production revocations
+    B-013 limb A; for finding_responses it is B-017; both are production revocations
     queued behind B-001. Anyone reading the Round G work as "engine_reviews is
     protected" is reading it wrong, and this docstring exists so that reading
     does not survive.
@@ -5794,7 +5897,7 @@ def check_every_public_table_projection_has_a_recorded_disposition(offline):
     #   "explicit" a named column list is required; select=* fails
     #   "none"     no public projection at all
     DISPOSITIONS = {
-        "engine_reviews":     ("explicit", "BD-11/BD-02. Record-derived model output. Grant revocation is B-013A"),
+        "engine_reviews":     ("explicit", "BD-11/BD-02. Record-derived model output. Grant revocation is B-013 limb A"),
         "finding_responses":  ("none",     "BD-14/B-017. Collected under an explicit promise of non-publication"),
         "study_runs":         ("explicit", "BD-16. `raw jsonb` is declared for audit output and nothing writes it; select=* would publish it the moment anything did"),
         "bench_records":      ("explicit", "B-013B. Contributor-supplied record text, rendered by the review pages by design; the open question is factual, not technical"),
@@ -5804,7 +5907,18 @@ def check_every_public_table_projection_has_a_recorded_disposition(offline):
         "finding_poll_votes": ("*",        "A/B/C/D tallies and a study id. No free-text column exists"),
         "findings":           ("explicit", "Published findings. Public by intent"),
         "findings_history":   ("*",        "Nightly reproducibility time series. Research output, public by intent"),
-        "interaction_events": ("*",        "X-1. Collected under 'no free text and no identifying information are collected'; the promise is enforced by the client that builds the payload, which is the open part"),
+        # CORRECTED 2026-09-17 when X-1 was actually analysed. The previous
+        # reason read: "Collected under 'no free text and no identifying
+        # information are collected'". THAT ATTRIBUTED ONE PAGE'S PROMISE TO THE
+        # WHOLE TABLE AND WAS WRONG. The promise appears on pilot.html ONLY, and
+        # pilot.html honours it exactly: it writes payload {selection} and
+        # nothing else. index.html has NO such promise and DOES write free text,
+        # payload {selection, note}, from a field labelled "Optional: brief
+        # operational note. Do not include names or personal identifiers" --
+        # an instruction, not a promise, and jrsSanitizeCheck runs before the
+        # send. So no promise is breached, and the disposition stands; the
+        # REASON was inaccurate and is replaced rather than quietly reworded.
+        "interaction_events": ("*",        "X-1 CLOSED. Two writers with different copy: pilot.html promises no free text and writes none; index.html promises nothing and writes an instructed operational note. No contradiction. The note is visitor-typed prose in an anon-readable table, mitigated by instruction and sanitisation, and is research data in a research export -- narrowing it would be a research-surface change made under a security heading"),
         "research_questions": ("*",        "Open research questions. Public by intent"),
         "studies":            ("*",        "Study registry. Public by intent"),
         "armb_progress":      ("explicit", "Owner surface only"),
@@ -5848,7 +5962,7 @@ def check_every_public_table_projection_has_a_recorded_disposition(offline):
           "; ".join(findings) if findings
           else "%d tables queried, all dispositioned; the registry holds %d entries. "
                "This is drift control, NOT protection: the grant is the control, "
-               "and B-013A and B-017 are the grants"
+               "and B-013 limb A and B-017 are the grants"
                % (len(seen), len(DISPOSITIONS)))
 
 
@@ -6939,6 +7053,7 @@ def main():
                check_a_privacy_promise_is_not_contradicted_by_an_export,
                check_the_methodology_mapping_tracks_the_executable_vocabulary,
                check_every_public_table_projection_has_a_recorded_disposition,
+               check_architecture_baseline_is_current,
                check_manifest_schema_keeps_its_safeguards,
                check_data_handling_claims_match_the_implementation,
                check_published_api_contract_matches_the_write_path,

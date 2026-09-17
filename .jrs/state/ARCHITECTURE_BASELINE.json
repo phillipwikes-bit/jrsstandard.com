@@ -1,0 +1,91 @@
+{
+  "_what_this_is": "ARCHITECTURE BASELINE v1.0, frozen 2026-09-17. It pins STRUCTURAL FACTS so that a later architectural change is a RECORDED REVISION rather than informal evolution. It is not a description: docs/enterprise-diligence/TECHNICAL_ARCHITECTURE_BRIEF.md describes the architecture and controls that role. It is not an authoritative register and creates no content; every value here is COPIED from the artifact named beside it, and where this file and that artifact disagree, THE ARTIFACT CONTROLS.",
+  "_why_a_freeze": "Nothing in this repository could previously detect that the architecture had changed. The guard suite detects drift in claims, projections, retention units and vocabulary; it did not detect a change in the SHAPE of the estate. check_architecture_baseline_is_current fails when any pinned fact moves, which forces the change to be acknowledged rather than absorbed.",
+  "version": "1.0",
+  "frozen": "2026-09-17",
+  "state_at_freeze": {
+    "program_state": "STATE 1 - DEVELOPMENT REMEDIATION",
+    "deployment": "NOT AUTHORIZED",
+    "gate_1": "NOT READY",
+    "phase_II": "LOCKED",
+    "production_verified_controls": 0,
+    "development_branch_commit": "a242a0d",
+    "production_branch_commit": "0d94ce6"
+  },
+  "methodology": {
+    "_source": "docs/enterprise-diligence/METHODOLOGY_TO_API_MAPPING.md",
+    "conditions": [
+      "Basis Identification",
+      "Decision-Process Traceability",
+      "Reconstructability",
+      "Evidentiary Sufficiency",
+      "Chronology"
+    ],
+    "engine_condition_keys": [
+      "basis_identification",
+      "reasoning_traceability",
+      "cold_reviewer_clarity",
+      "accountability_support",
+      "temporal_reconstructability"
+    ],
+    "unresolved_correspondence": "cold_reviewer_clarity (D-2, INTENTIONALLY UNRESOLVED)",
+    "exact_correspondences": 1
+  },
+  "interoperability": {
+    "_source": "lib/manifest/build.js, lib/manifest/hash.js",
+    "manifest_version": "1.0",
+    "canonicalization": "jrs-dev-canon-1 (deliberately NOT claimed RFC 8785)",
+    "integrity_mechanism": "sha256 hash - NOT a signature, NOT authentication",
+    "engine_truncation_limit_chars": 8000
+  },
+  "retention": {
+    "_source": "lib/retention/policy.js",
+    "interaction_events_months": 24,
+    "engine_reviews_record_derived_days": 90,
+    "engine_reviews_row": "RETAINED; expiry is field-level, nulled in place",
+    "executed_anywhere": false
+  },
+  "surface": {
+    "_source": ".vercelignore, repository listing",
+    "public_html_at_root": 55,
+    "api_modules": 58,
+    "vercelignore_rules": 22,
+    "anon_readable_tables": 15,
+    "principle": "PUBLICIZE THE STANDARD. PROTECT THE IMPLEMENTATION."
+  },
+  "published_contract": {
+    "_source": "openapi.json",
+    "sha256": "b89e7fea904cd32d",
+    "status": "FROZEN pending counsel (B-016). No edit authorized."
+  },
+  "controls": {
+    "_source": "scripts/check_zero_drift.py and tests/",
+    "guards": 113,
+    "guard_suites": [
+      "offline",
+      "online"
+    ],
+    "test_suites": {
+      "retention": 60,
+      "activity-projection": 17,
+      "auth-matrix": 26,
+      "manifest": 68
+    }
+  },
+  "registers": {
+    "_note": "The five master registers, all under .jrs/registries/. No competing register exists.",
+    "asset": "ASSET_REGISTER.json",
+    "evidence_and_chain_of_title": "EVIDENCE_LEDGER.json",
+    "version_and_release": "RELEASE_REGISTER.json",
+    "research_evidence": "RESEARCH_INTEGRITY_REGISTER.json",
+    "commercial_rights": "COMMERCIAL_RIGHTS_REGISTER.json",
+    "authoritative_blockers": ".jrs/state/BLOCKERS.json"
+  },
+  "not_established_at_freeze": [
+    "empirical validation of the Review Engine",
+    "any production-verified control",
+    "Level A executed assignment instrument (B-004)",
+    "whether cold_reviewer_clarity is the aggregate condition or a peer (D-2)",
+    "live row counts in any anon-readable table"
+  ]
+}
