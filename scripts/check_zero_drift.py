@@ -5770,6 +5770,78 @@ def _strip_py_docstrings(text):
 
 
 
+
+def check_no_right_is_offered_beyond_its_evidence(offline):
+    """No right is classified available for licensing while no instrument grants it.
+
+    WHY THIS GUARD EXISTS. The rights-to-product map is the document a commercial
+    conversation would be built on, and it is the one most exposed to optimism:
+    every row can drift one classification upward under the pressure of wanting to
+    sell something. The classifications are ordered, and the order is not
+    decorative -- RIGHT AVAILABLE FOR LICENSING requires BOTH a contractual grant
+    and a legal construction, and F-4 records that no executed signed instrument
+    exists anywhere in the corpus.
+
+    WHAT IT CHECKS.
+      1. No right is marked AVAILABLE FOR LICENSING while F-4 stands.
+      2. No right is marked CONTRACTUALLY GRANTED while F-4 stands.
+      3. The governing facts that make those two impossible are still recorded --
+         including that absence of a prohibition is not a grant, which is the
+         specific inference E-034 invites and must not support.
+      4. The seeded prohibition, "silence is not permission", survives.
+
+    WHAT IT DOES NOT CHECK. Whether any right EXISTS. That is counsel's, and the
+    map exists to hand counsel a gathered factual record rather than a conclusion.
+    """
+    findings = []
+    raw = read(".jrs/registries/COMMERCIAL_RIGHTS_REGISTER.json")
+    if not raw:
+        check("no right is offered beyond its evidence", False,
+              "the commercial rights register is missing")
+        return
+    d = json.loads(raw)
+
+    # F-4 must still stand for the two hard bars below to be justified.
+    reg = read("docs/enterprise-diligence/JRS_MASTER_ASSET_EVIDENCE_AND_CHAIN_OF_TITLE_REGISTER.md")
+    f4_stands = "No executed signed instrument exists anywhere" in reg
+
+    rights = d.get("rights_to_product") or {}
+    if not rights:
+        findings.append("the register carries no rights_to_product map")
+    for name, r in rights.items():
+        cls = (r.get("classification") or "").upper()
+        if f4_stands and "AVAILABLE FOR LICENSING" in cls:
+            findings.append("%s is classified AVAILABLE FOR LICENSING while F-4 records that no "
+                            "executed signed instrument exists. Availability requires a grant "
+                            "and a construction; neither exists" % name)
+        if f4_stands and "CONTRACTUALLY GRANTED" in cls:
+            findings.append("%s is classified CONTRACTUALLY GRANTED while F-4 stands. There is "
+                            "no instrument to grant it" % name)
+        if not r.get("evidence"):
+            findings.append("%s carries a classification with no evidence field" % name)
+
+    facts = " ".join(d.get("_governing_facts") or [])
+    if "ABSENCE OF A PROHIBITION IS NOT A GRANT" not in facts.upper():
+        findings.append("the governing facts no longer record that absence of a prohibition is "
+                        "not a grant. That is the exact inference the owner's Ubayet attestation "
+                        "invites and must not support")
+    if "silence is not permission" not in (d.get("prohibition") or "").lower():
+        findings.append("the seeded prohibition 'silence is not permission' is gone")
+
+    det = (d.get("determination") or {}).get("available_for_licensing_today", "")
+    if det and not det.strip().upper().startswith("NOTHING"):
+        findings.append("the determination no longer states that nothing is available for "
+                        "licensing today; if that changed, an instrument must exist and F-4 "
+                        "must have been superseded")
+
+    check("no right is offered beyond its evidence",
+          not findings,
+          "; ".join(findings) if findings
+          else "%d right classes; none available for licensing and none contractually granted "
+               "while F-4 stands; 'absence of a prohibition is not a grant' and 'silence is not "
+               "permission' both intact" % len(rights))
+
+
 def check_misuse_register_records_reality(offline):
     """Every misuse mode's recorded control actually exists, and NONE means none.
 
@@ -7678,6 +7750,7 @@ def main():
                check_version_inventory_matches_its_sources,
                check_no_stale_owner_action_survives_its_confirmation,
                check_misuse_register_records_reality,
+               check_no_right_is_offered_beyond_its_evidence,
                check_manifest_schema_keeps_its_safeguards,
                check_data_handling_claims_match_the_implementation,
                check_published_api_contract_matches_the_write_path,

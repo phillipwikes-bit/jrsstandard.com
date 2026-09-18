@@ -2,5 +2,88 @@
   "_note": "Seeded 2026-09-14 from direct repository inspection during /jrs-init. Counts are FACT as at the commit recorded in PROGRAM_STATE.json. Rights and status fields are carried from the authoritative baseline in docs/enterprise-diligence/ and are NOT re-derived here.",
   "status": "NOT ESTABLISHED for licensed-product use",
   "basis": "The contributor instrument covers study publications including successor transfer. It is silent on licensing, commercial products, revenue and vendor platforms.",
-  "prohibition": "Silence is not permission. Rule 5 governs."
+  "prohibition": "Silence is not permission. Rule 5 governs.",
+  "_extended_2026_09_18": "Extended with the rights-to-product map. The seeded status, basis and prohibition above are UNCHANGED and still govern. This adds the per-right breakdown for the one product the architecture actually contemplates, so a future licence conversation starts from what is established rather than from what is hoped.",
+  "_classifications": {
+    "RIGHT FACT ESTABLISHED": "A fact in the record supports it. Not a legal conclusion.",
+    "RIGHT LEGALLY INTERPRETED": "A lawyer has construed the instruments. NONE ARE.",
+    "RIGHT CONTRACTUALLY GRANTED": "An executed instrument grants it. NONE EXIST - F-4.",
+    "RIGHT AVAILABLE FOR LICENSING": "Could be licensed today on the evidence held. Requires the two above.",
+    "RIGHT REQUIRES COUNSEL CONFIRMATION": "The facts are gathered; the construction is not ours to make."
+  },
+  "_governing_facts": [
+    "F-4: no executed signed instrument exists anywhere in the corpus. NO right below is CONTRACTUALLY GRANTED, and none can be until one exists.",
+    "33 executed structured contributor consents cover study publications including successor transfer, and are SILENT on licensing, commercial products, revenue and vendor platforms.",
+    "E-034 (owner attestation): Ubayet approved the uses discussed and stated no restriction on commercial or licensing use. ABSENCE OF A PROHIBITION IS NOT A GRANT.",
+    "E-029 (owner attestation): the owner conceived, directed, reviewed, selected and accepted the work. This is provenance, NOT an ownership determination.",
+    "No licensee, no licence draft, no payment gateway, $0 revenue."
+  ],
+  "product": "JRS Review Engine Evaluation License (contemplated; NOT available for execution)",
+  "rights_to_product": {
+    "methodology": {
+      "what": "The five conditions, DRR, the Codebook",
+      "evidence": "Publicly attributed to Wikes 2026-06-02 and 2026-07-02, externally timestamped (F-5, E-025 to E-027). E-029 supplies conception and direction.",
+      "classification": "RIGHT FACT ESTABLISHED as to authorship and public attribution. REQUIRES COUNSEL CONFIRMATION as to whether that supports licensing.",
+      "gap": "Authorship is not ownership. No instrument."
+    },
+    "software": {
+      "what": "Review Engine, API, manifest library, guards",
+      "evidence": "100% of surviving lines in core implementation carry the AI tool identity (F-11); E-029 supplies human conception, direction, selection and acceptance.",
+      "classification": "REQUIRES COUNSEL CONFIRMATION",
+      "gap": "The authorship position for AI-assisted code is exactly the question E-029 informs and does not answer. Recorded in the register as an evidentiary limitation at artifact level, not as an absence of human involvement."
+    },
+    "trademark": {
+      "what": "JRS(TM), DRR",
+      "evidence": "Use on 23 public pages. F-8: NO filing or registration evidence located.",
+      "classification": "RIGHT FACT ESTABLISHED as to USE only.",
+      "gap": "Unregistered. A licence granting trademark rights would grant something unregistered, which is a drafting matter and a valuation matter, not a blocker to the engine licence."
+    },
+    "training": {
+      "what": "Six-module training, field guides, reference library",
+      "evidence": "Owner-authored; no third-party contribution located.",
+      "classification": "RIGHT FACT ESTABLISHED as to authorship.",
+      "gap": "Same instrument gap as methodology. Cleanest of the assets."
+    },
+    "research_and_validation_evidence": {
+      "what": "The constructed corpus, panel results, manuscripts a licensee would rely on",
+      "evidence": "33 consents scoped to study publications and successor transfer. FOUR co-author relationships, all outside the co-author instrument, which is recorded NOT USED, confirmed 0 of 3.",
+      "classification": "NOT ESTABLISHED for licensing. REQUIRES COUNSEL CONFIRMATION.",
+      "gap": "THE SHARPEST ONE COMMERCIALLY. The validation evidence a licensee would rely on is jointly held, the consents are silent on licensing, and reviewer consent is REVOCABLE AT WILL. A revocable permission cannot support an exclusive perpetual grant. This is a transaction condition, not a defect."
+    },
+    "contributor_supplied_records": {
+      "what": "bench_records text, the 54 pilot/validation records",
+      "evidence": "E-031: entered through the submission link by Young and Pokhriyal; the owner personally reviewed them for de-identification. Contributors were instructed to submit already-public, de-identified material (B-013B).",
+      "classification": "RIGHT FACT ESTABLISHED as to provenance and review. REQUIRES COUNSEL CONFIRMATION as to commercial reuse.",
+      "gap": "The instruction scoped submissions to public material, which limits the exposure. It does not by itself establish a right to license the corpus."
+    },
+    "section_2_1_reference": {
+      "what": "The accessibility argument referenced at Section 2.1",
+      "evidence": "E-033: an approach from Gabriela Cortez's MCCR intake work. NOT a formal contribution to the study.",
+      "classification": "NOT A STUDY ASSET. Removed from the contribution inventory.",
+      "gap": "X-15: whether referencing an approach originating in state-agency employment carries any third-party interest. NEW, counsel-adjacent, unanswered."
+    },
+    "derivatives_and_improvements": {
+      "what": "Future versions, forks, customer-side adaptations",
+      "evidence": "None. No instrument addresses them.",
+      "classification": "NOT ESTABLISHED",
+      "gap": "A licence must allocate these expressly. Nothing currently does."
+    },
+    "third_party": {
+      "what": "Anthropic, Vercel, Supabase, Formspree, Google",
+      "evidence": "No provider terms captured in the repository. No npm tree (F-12).",
+      "classification": "NOT ESTABLISHED as to flow-down obligations.",
+      "gap": "A licensee will ask what terms bind them downstream. Nothing answers that today."
+    },
+    "territory_field_version": {
+      "what": "Territory, field of use, version scope",
+      "evidence": "Nothing addresses any of the three.",
+      "classification": "NOT ESTABLISHED",
+      "gap": "Drafting dimensions, not evidence gaps. Listed so a licence does not omit them."
+    }
+  },
+  "determination": {
+    "available_for_licensing_today": "NOTHING. Not one right reaches RIGHT AVAILABLE FOR LICENSING, because none is CONTRACTUALLY GRANTED and none is LEGALLY INTERPRETED. That is a statement about instruments and construction, NOT about the quality of the asset.",
+    "what_this_map_is_for": "So that a licence conversation begins from the established position rather than from an assumption, and so the two conditions that would actually bite - jointly held validation evidence and revocable consent - are on the table before terms are drafted rather than after.",
+    "counsel_dependency": "B-004, and X-15 joins its channel."
+  }
 }
