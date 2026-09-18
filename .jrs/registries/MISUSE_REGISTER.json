@@ -1,0 +1,109 @@
+{
+  "_what_this_is": "MISUSE REGISTER. A distinct control purpose from the claims register, which governs what JRS may SAY, and from the security register, which governs what an attacker may DO. This governs what an HONEST user may WRONGLY CONCLUDE. Every row records the control that actually exists today, and says NONE where none exists rather than describing an intention.",
+  "_created": "2026-09-18",
+  "_model": "MISUSE -> HARM -> CONTROL -> WARNING -> DETECTION",
+  "_principle": "Use the minimum control that meaningfully prevents or exposes the misuse. Product friction added to demonstrate diligence is itself a cost, and a control nobody can act on is decoration. NONE OF THESE CONTROLS PREVENT MISUSE ABSOLUTELY; they mitigate identified modes and make several detectable.",
+  "misuses": [
+    {
+      "id": "M-1",
+      "misuse": "JRS output treated as legal approval",
+      "harm": "Unsupported legal reliance on a documentation review",
+      "control": "Claims register C-004/C-007/C-008 prohibit it; every engine response carries its own disclaimer; check_data_handling_claims_match_the_implementation bans the formulations across 76 pages",
+      "warning": "Present in the engine payload and on the public pages",
+      "detection": "Guard-level on our own surfaces only",
+      "residual": "WE CANNOT DETECT A CUSTOMER MISREPRESENTING OUR OUTPUT DOWNSTREAM. No control reaches that, and claiming otherwise would be the same error this register exists to catch",
+      "status": "CONTROLLED ON OUR SURFACES, UNCONTROLLABLE DOWNSTREAM"
+    },
+    {
+      "id": "M-2",
+      "misuse": "JRS treated as certification or accreditation",
+      "harm": "False assurance; a credential claimed that does not exist",
+      "control": "C-005 prohibits it; check_evaluation_offers_no_certificate pins wantsCert=false in api/reviewer-eval.js AND bans certificate copy on the funnel pages, two independent conditions",
+      "warning": "Present",
+      "detection": "Guard, mutation-tested both ways",
+      "residual": "Training completion produces recognition, not certification. The distinction is maintained in copy and is a live misreading risk",
+      "status": "CONTROLLED"
+    },
+    {
+      "id": "M-3",
+      "misuse": "The routing result treated as the decision itself",
+      "harm": "Human judgment displaced by a documentation-condition evaluation",
+      "control": "manifest.human_review.required is HARDCODED TRUE and is a schema-REQUIRED field, so a manifest asserting no human review is invalid rather than merely discouraged",
+      "warning": "Carried in the manifest itself, not only in documentation",
+      "detection": "Schema validation",
+      "residual": "A human can read 'ready' and stop reading. The field records the requirement; it cannot enforce the reading",
+      "status": "CONTROLLED STRUCTURALLY"
+    },
+    {
+      "id": "M-4",
+      "misuse": "JRS used to justify discriminatory treatment of an individual",
+      "harm": "Civil-rights exposure, and a documentation tool lending false objectivity to an outcome someone had already decided",
+      "control": "NONE. Searching the public estate for discrimination-related guidance returns one investigator guide and one article source, neither of which is a control on USE",
+      "warning": "NONE SPECIFIC TO THIS MODE",
+      "detection": "NONE",
+      "residual": "THE LARGEST UNCONTROLLED MISUSE MODE IN THIS REGISTER, and it is recorded as such. JRS evaluates whether a record explains itself. A record can be perfectly reconstructable and describe a discriminatory decision, and JRS would route it 'ready'. That is not a defect in the evaluation; it is a boundary of what the evaluation means, and nothing currently states that boundary to a user.",
+      "status": "UNCONTROLLED - X-14",
+      "proposed": "A single sentence of scope language, on the engine surfaces and in the manifest specification: a reconstructable record is not a defensible decision, and JRS evaluates the record rather than the decision. This is documentation, within delegated authority, and is QUEUED rather than written into a deployable page in this cycle."
+    },
+    {
+      "id": "M-5",
+      "misuse": "An obsolete JRS or Codebook version treated as current",
+      "harm": "A historical evaluation read under today's meaning",
+      "control": "The manifest carries jrs_version, codebook_version, engine.version and manifest_version; the release register now holds a version inventory tied to code",
+      "warning": "Version fields are present and schema-required",
+      "detection": "PARTIAL. X-9 remains open: jrs_version and codebook_version are caller-supplied and validated only for presence, so a version that never existed can be asserted",
+      "residual": "X-9, QUEUED by owner instruction",
+      "status": "PARTIALLY CONTROLLED"
+    },
+    {
+      "id": "M-6",
+      "misuse": "A manifest modified after generation",
+      "harm": "Evidence integrity destroyed while the artifact still looks authentic",
+      "control": "integrity.manifest_hash over a declared canonicalization; tools/validate-manifest.js recomputes it",
+      "warning": "Present",
+      "detection": "YES for modification, by recomputation",
+      "residual": "A HASH IS NOT A SIGNATURE. Anyone can regenerate a modified manifest AND its hash. Detection works only against a copy someone else holds, or against a hash recorded elsewhere. This is the difference between integrity and authenticity and it must never be blurred",
+      "status": "INTEGRITY CONTROLLED, AUTHENTICITY NOT AVAILABLE"
+    },
+    {
+      "id": "M-7",
+      "misuse": "Warnings stripped from a manifest",
+      "harm": "A qualified result presented as unqualified",
+      "control": "Removal changes the canonical form and therefore the hash",
+      "warning": "n/a",
+      "detection": "Via hash recomputation, with the same limit as M-6",
+      "residual": "`warnings` is NOT a schema-required field, because a manifest with nothing to warn about legitimately has none. So an ABSENT warnings array is valid and indistinguishable from one that never existed, unless a prior copy is held",
+      "status": "DETECTABLE ONLY AGAINST A PRIOR COPY"
+    },
+    {
+      "id": "M-8",
+      "misuse": "Development test results represented as validation",
+      "harm": "An unvalidated engine described as validated",
+      "control": "C-004 prohibits it; the engine declares its own stage as unvalidated IN EVERY RESPONSE; the continuity index and research records preserve the failed pre-registered reliability criterion",
+      "warning": "In the payload itself",
+      "detection": "Human review per the 2026-09-15 decision; a naive term scan produced false positives on version strings and negations",
+      "residual": "None material on our surfaces",
+      "status": "CONTROLLED"
+    },
+    {
+      "id": "M-9",
+      "misuse": "Research results represented as universal effectiveness or real-world prevalence",
+      "harm": "A constructed corpus presented as a population finding",
+      "control": "C-003 prohibits a real-world deficit rate; BD-07 publishes the DISTRIBUTION rather than a favourable single run; check_research_summary_leads_with_its_boundaries fails the build if the headline figure is moved above its limitations",
+      "warning": "Boundaries printed ABOVE the figure, by guard",
+      "detection": "Guard, adversarially tested",
+      "residual": "None material on our surfaces",
+      "status": "CONTROLLED"
+    },
+    {
+      "id": "M-10",
+      "misuse": "The integrity hash represented as authentication",
+      "harm": "A self-generated artifact treated as proven to come from JRS",
+      "control": "The continuity index states it; the claims register prohibits it as C-16",
+      "warning": "PARTIAL",
+      "detection": "Claims guard, pattern-enforced",
+      "residual": "GAP FOUND AND CLOSED IN THIS CYCLE: lib/manifest/build.js, the file an implementer actually reads when integrating, said nothing about it. The statement now sits beside the code that creates the field",
+      "status": "CONTROLLED"
+    }
+  ]
+}

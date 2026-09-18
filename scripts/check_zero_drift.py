@@ -5769,6 +5769,101 @@ def _strip_py_docstrings(text):
 
 
 
+
+def check_misuse_register_records_reality(offline):
+    """Every misuse mode's recorded control actually exists, and NONE means none.
+
+    WHY THIS GUARD EXISTS. A misuse register is the easiest document in an estate
+    to write dishonestly: every row can be given a plausible-sounding control and
+    the page then reads as coverage. This checks the rows that name a concrete,
+    checkable control, and it checks that the one row recording NO CONTROL keeps
+    saying so.
+
+    M-4 IS THE ROW THAT MATTERS. JRS evaluates whether a record explains itself.
+    A record can be perfectly reconstructable and describe a discriminatory
+    decision, and the engine would route it "ready". That is not a defect in the
+    evaluation -- it is a boundary of what the evaluation MEANS -- and nothing
+    currently states that boundary to a user. The register records it as
+    UNCONTROLLED. This guard fails if that row is quietly upgraded without a
+    control appearing, because the temptation to tidy the one honest gap is
+    exactly what would destroy the register's value.
+
+    WHAT IT DOES NOT CHECK. Whether any control is EFFECTIVE, or whether a
+    customer misrepresents JRS output downstream. Nothing in this repository
+    reaches that, and M-1 says so rather than implying otherwise.
+    """
+    findings = []
+    raw = read(".jrs/registries/MISUSE_REGISTER.json")
+    if not raw:
+        check("misuse register records reality", False,
+              ".jrs/registries/MISUSE_REGISTER.json is missing")
+        return
+    modes = json.loads(raw)["misuses"]
+
+    # Rows whose control is a concrete, checkable fact.
+    ANCHORS = {
+        "M-2": (lambda: "check_evaluation_offers_no_certificate" in read("scripts/check_zero_drift.py"),
+                "the certificate guard named as M-2's control no longer exists"),
+        "M-3": (lambda: re.search(r"human_review:\s*\{\s*required:\s*true", read("lib/manifest/build.js")) is not None,
+                "M-3 claims human_review.required is hardcoded true; it is not"),
+        "M-6": (lambda: os.path.exists(os.path.join(ROOT, "tools/validate-manifest.js")),
+                "M-6 names tools/validate-manifest.js as its detection; it is absent"),
+        "M-9": (lambda: "check_research_summary_leads_with_its_boundaries" in read("scripts/check_zero_drift.py"),
+                "M-9 names the research-boundaries guard as its control; it no longer exists"),
+        "M-10": (lambda: "INTEGRITY IS NOT AUTHENTICITY" in read("lib/manifest/build.js"),
+                 "M-10 records the integrity-is-not-authenticity statement as sitting beside "
+                 "the code that creates the field; it is gone"),
+    }
+    by_id = {m["id"]: m for m in modes}
+    for mid, (test, why) in ANCHORS.items():
+        if mid not in by_id:
+            findings.append("%s is missing from the register" % mid)
+            continue
+        try:
+            ok = test()
+        except Exception as e:
+            ok, why = False, "%s check raised %r" % (mid, e)
+        if not ok:
+            findings.append(why)
+
+    # M-3 must also stay schema-required: a manifest asserting no human review
+    # should be INVALID, not merely discouraged.
+    sch = read("schemas/jrs-decision-reconstruction-manifest.schema.json")
+    if sch:
+        try:
+            req = json.loads(sch).get("required", [])
+            if "human_review" not in req:
+                findings.append("human_review is no longer schema-required, so a manifest "
+                                "asserting no human review would validate. M-3's control is "
+                                "structural precisely because it is required")
+        except Exception:
+            findings.append("the manifest schema is not parseable")
+
+    # The honest gap must stay honest.
+    m4 = by_id.get("M-4")
+    if not m4:
+        findings.append("M-4 is missing from the register")
+    elif "UNCONTROLLED" not in m4.get("status", ""):
+        findings.append("M-4 is no longer recorded as UNCONTROLLED. If a control was built, "
+                        "name it here and add an anchor above; if it was not, restore the "
+                        "status. Tidying the one honest gap is what would make this register "
+                        "worthless")
+
+    # No row may claim a control while also recording that none exists.
+    for m in modes:
+        if m.get("control", "").strip().upper().startswith("NONE") and \
+           "UNCONTROLLED" not in m.get("status", "").upper():
+            findings.append("%s records control NONE but a status of %r"
+                            % (m["id"], m.get("status")))
+
+    check("misuse register records reality",
+          not findings,
+          "; ".join(findings) if findings
+          else "%d misuse modes; %d anchored controls verified against code; M-4 still "
+               "recorded UNCONTROLLED; human_review still schema-required"
+               % (len(modes), len(ANCHORS)))
+
+
 def check_no_stale_owner_action_survives_its_confirmation(offline):
     """A completed owner action is not still being asked for somewhere.
 
@@ -7582,6 +7677,7 @@ def main():
                check_prohibited_claims_are_absent_from_every_surface_class,
                check_version_inventory_matches_its_sources,
                check_no_stale_owner_action_survives_its_confirmation,
+               check_misuse_register_records_reality,
                check_manifest_schema_keeps_its_safeguards,
                check_data_handling_claims_match_the_implementation,
                check_published_api_contract_matches_the_write_path,
