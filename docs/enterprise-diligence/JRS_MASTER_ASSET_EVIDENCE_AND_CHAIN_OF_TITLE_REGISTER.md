@@ -9,7 +9,7 @@
 | Created | 2026-09-09 |
 | Supersedes as the primary register | `ASSET_AND_CHAIN_OF_TITLE_REGISTER.md` v2.0 and all fragment registers, **which are retained as evidence sources and are not deleted** |
 | Update rule | **Never restart the audit. Add evidence, name the finding it changes, preserve the prior status in the correction history, update the index.** |
-| Traceability | **35 ledger entries** in `EVIDENCE_LEDGER.md` (was 27, then 30; see the index note at section 23) |
+| Traceability | **36 ledger entries** in `EVIDENCE_LEDGER.md` (was 27, then 30, then 35; see the index note at section 23) |
 
 **The purpose of this document is that no future review should have to rediscover
 Hekim, Ubayet, Tanvi, Stacyann, the DRR evidence, the consents, or the Master Tracker
@@ -234,6 +234,8 @@ recorded as a contributor.
 | 12 | "V-AI-08 contributed the Section 2.1 argument" / "Credit only" | 2026-09-09 | **E-033, owner firsthand identification 2026-09-18** | **CORRECTED** | The material is an approach from her **MCCR intake work**, **not a formal contribution to the JRS study**. **Her panel participation is UNAFFECTED and remains verified** — the two are different facts and the correction was checked against the roster before it was made |
 | 13 | CT-1 "commercial and transfer language not located" treated as the whole picture | 2026-09-09 | **E-034, owner attestation** | **SUPPLEMENTED, NOT SUPERSEDED** | The search finding stands verbatim. The owner's account is added beside it. **Absence of a prohibition is not a grant, and no grant is recorded** |
 
+| 14 | X-15, "does referencing an approach originating in state-agency employment carry a third-party interest?" | **2026-09-18, raised by me** | **E-036, and an affirmative-evidence search returning ZERO across eight propositions** | **CLOSED — RAISED IN ERROR** | Two faults. Its premise was the superseded reading of E-033, and **a counsel question was created from a theoretical possibility with no affirmative evidence.** Possibility of a rights issue is not evidence of one |
+
 **No prior finding was deleted.**
 
 # 18. Genuine evidence not located
@@ -247,7 +249,7 @@ Hekim's own words accepting the CCI terms; retention and deletion policy.
 # 19. Owner input required
 
 1. ~~**Ubayet:** may his contribution be used in paid or licensed material, and does that travel to a successor?~~ **OWNER ACCOUNT SUPPLIED 2026-09-18 (E-034).** He approved the uses discussed and stated no restriction against commercial or licensing use. **The FACTUAL question is answered. Whether that supports a commercial or licensing right is a LEGAL question and stays with counsel under B-004.**
-2. ~~**Section 2.1 contributor:** assignment for the specific accessibility argument.~~ **PREMISE CORRECTED 2026-09-18 (E-033).** Not a formal contribution to the study, so there is no study contribution awaiting assignment. **Replaced by X-15**, a narrower and different question.
+2. ~~**Section 2.1 contributor:** assignment for the specific accessibility argument.~~ **PREMISE CORRECTED 2026-09-18 (E-033).** Not a formal contribution to the study, so there is no study contribution awaiting assignment. **X-15 was then raised and is now CLOSED (E-036): no affirmative third-party rights evidence exists, and a theoretical possibility is not a rights issue.**
 3. **AI involvement account**: conception, direction, review, selection, acceptance.
 4. Canonical OpenAPI designation; Codebook-to-API correspondence; `JRS_SANDBOX_OPEN` state; telemetry retention; Formspree status; trademark filing status; domain registrar; publisher agreements.
 
@@ -256,7 +258,7 @@ Hekim's own words accepting the CCI terms; retention and deletion policy.
 | ID | Asset / person | Precise question | Evidence located | Not located | Classification | Recommended action |
 |---|---|---|---|---|---|---|
 | CT-1 | Ubayet / reliability framework | Paid or licensed use, and successor transfer? | Authorship corroborated; **owner account E-034** | **Commercial and transfer language (search complete, unchanged)** | **OWNER INPUT SUPPLIED → LEGAL QUESTION REMAINS** | **Factual limb CLOSED.** The legal limb — whether approval plus absence of restriction supports commercial or licensing use — is **B-004 counsel**, not an owner question |
-| CT-2 | **Gabriela Cortez (V-AI-08)** / Section 2.1 reference | ~~Assignment for the accessibility argument?~~ **Premise corrected** | **E-033: approach from her MCCR intake work; NOT a formal study contribution.** Panel participation separately verified | n/a | **CLOSED AS FRAMED** | No study contribution awaits assignment. **Replaced by X-15**: whether referencing an approach originating in state-agency employment carries any third-party interest |
+| CT-2 | **Gabriela Cortez (V-AI-08)** / Section 2.1 reference | ~~Assignment for the accessibility argument?~~ **Premise corrected twice; see section 16** | **E-033, then E-036: the approach arose from the OWNER'S own MCCR work and experience, discussed with a mentee. NOT a formal study contribution.** Panel participation separately verified and preserved | **No affirmative third-party rights evidence, eight propositions searched, zero hits** | **CLOSED** | **No counsel dependency arises from this matter.** X-15 was raised on the superseded premise and is CLOSED |
 | CT-3 | Hekim / CCI | Terms accepted? | **Recorded as confirmed 2026-08-06** | His own words | **EVIDENCE GATHERED** | Retrieve his reply only if Level C is wanted |
 | CT-4 | 33 contributors | Revocability against exclusivity | Consents executed | Irrevocability | **REQUIRES TARGETED PROFESSIONAL REVIEW** | Counsel |
 | CT-5 | AI-assisted assets | Human conception and direction | Attribution measured; articles dated | The account itself | **OWNER INPUT REQUIRED** | Answer question 3 |
@@ -289,7 +291,7 @@ does not exist in this corpus.**
 
 # 23. Complete evidence index
 
-`EVIDENCE_LEDGER.md`, **35 entries**, E-001 to E-035. **No Level A entry exists.**
+`EVIDENCE_LEDGER.md`, **36 entries**, E-001 to E-036. **No Level A entry exists.**
 
 **INDEX CORRECTED 2026-09-18, and it was stale before this cycle touched it.** This read *27 entries, E-001 to E-027* while the ledger already held **28** — E-028, the Hekim Master Tracker record, was added in the 2026-09-09 consolidation pass and the index was not updated with it. Today's additions are **E-029** (the owner's AI-assisted development account) and **E-030** (the B-001 rotation attestation).
 
@@ -471,12 +473,52 @@ the panel. **Participation and the Section 2.1 reference are different facts.** 
 the second must not erase the first, and a less careful correction would have deleted a
 verified participation record.
 
-**Effect on CT-2.** CT-2 asked for an **assignment for the specific argument**. If the
-material was **not a contribution to the study**, the premise of that question is narrower
-than recorded: there is no study contribution awaiting assignment. **What remains is
-whether referencing an approach originating in a person's employment at a state agency
-carries any third-party interest — a different question, recorded as X-15, and not answered
-here.**
+**Effect on CT-2.** CT-2 asked for an **assignment for the specific argument**. There is no
+study contribution awaiting assignment, so CT-2 is **CLOSED AS FRAMED**.
+
+### Section 2.1 — FINAL RESOLUTION, 2026-09-18 (E-036)
+
+**The premise was further corrected, and the correction is mine to own.** E-033 was recorded
+in terms that read as *the approach was hers and he referenced it*. **E-036 establishes it
+arose from the OWNER'S OWN ordinary MCCR work and experience**, with Gabi Cortez as his
+**mentee**, in the course of **discussing and tossing around ideas** — translating documents
+into Spanish so material stayed understandable to the person described.
+
+**I then raised X-15** — whether referencing an approach originating in state-agency
+employment carries a third-party interest — **and that was an error on two counts.** Its
+premise was the superseded reading, and more fundamentally **I created a counsel question
+from a theoretical possibility with no affirmative evidence behind it.** The controlling
+rule is explicit: **possibility of a rights issue is not evidence of a rights issue.**
+
+**AFFIRMATIVE-EVIDENCE SEARCH, 2026-09-18.** Eight propositions searched across every `.md`,
+`.json` and `.html` in the estate: a documented assignment involving Gabi Cortez; a
+documented JRS contribution by her relating to Section 2.1; a written agreement naming her
+as a Section 2.1 contributor; a written MCCR or State of Maryland claim to the approach; an
+employment agreement or policy covering this material; a commissioned-work arrangement; a
+written communication asserting ownership or proprietary rights; any other affirmative
+evidence of a third-party claim. **ZERO HITS ON ALL EIGHT.** The two `employment agreement`
+matches are the general employment-context record, which independently records an already
+exhaustive search for *work for hire*, *work made for hire*, *invention* and *assignment*
+clauses, finding none.
+
+> **The Section 2.1 matter is resolved as a factual classification issue. The approach
+> referenced there arose from the Owner's prior MCCR work and was not a formal JRS research
+> contribution by Gabi Cortez. Gabi Cortez's separate JRS panel participation remains
+> preserved. No affirmative evidence has been identified establishing a third-party
+> ownership claim in the Section 2.1 material. Do not infer such a claim from the employment
+> context alone.**
+
+**X-15 is CLOSED.** It is removed from the counsel queue and from the rights dependency
+chain.
+
+**WHAT THIS CLOSURE DOES NOT ESTABLISH:** legal ownership, assignment, trademark rights,
+patent rights, copyright registration, employment-law conclusions, State of Maryland rights,
+or any other legal conclusion. **It establishes only that the current evidence record does
+not support keeping X-15 open.**
+
+**WHAT IS PRESERVED.** Her panel participation — **V-AI-08, Arm A, US, 24 reads, COMPLETE**,
+named with her affiliation on the AIE submission title page — is a **separate fact** and is
+untouched. The prior classification and both corrections remain in section 17.
 
 **No assignment, consent, authorship or ownership relationship has been manufactured in
 either direction.**

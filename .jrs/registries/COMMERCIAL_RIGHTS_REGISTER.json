@@ -59,8 +59,8 @@
     "section_2_1_reference": {
       "what": "The accessibility argument referenced at Section 2.1",
       "evidence": "E-033: an approach from Gabriela Cortez's MCCR intake work. NOT a formal contribution to the study.",
-      "classification": "NOT A STUDY ASSET. Removed from the contribution inventory.",
-      "gap": "X-15: whether referencing an approach originating in state-agency employment carries any third-party interest. NEW, counsel-adjacent, unanswered."
+      "classification": "NOT A STUDY ASSET, and no third-party rights evidence exists. Removed from the contribution inventory. This is a factual classification, NOT a legal conclusion of any kind.",
+      "gap": "NONE. X-15 was raised here and is CLOSED (E-036, 2026-09-18). The approach arose from the OWNER'S own MCCR work and experience, discussed with a mentee. An affirmative-evidence search across eight propositions returned ZERO. A theoretical possibility is not a rights issue, and creating a counsel question from one was my error."
     },
     "derivatives_and_improvements": {
       "what": "Future versions, forks, customer-side adaptations",
@@ -84,6 +84,6 @@
   "determination": {
     "available_for_licensing_today": "NOTHING. Not one right reaches RIGHT AVAILABLE FOR LICENSING, because none is CONTRACTUALLY GRANTED and none is LEGALLY INTERPRETED. That is a statement about instruments and construction, NOT about the quality of the asset.",
     "what_this_map_is_for": "So that a licence conversation begins from the established position rather than from an assumption, and so the two conditions that would actually bite - jointly held validation evidence and revocable consent - are on the table before terms are drafted rather than after.",
-    "counsel_dependency": "B-004, and X-15 joins its channel."
+    "counsel_dependency": "B-004. X-15 is CLOSED and does not join it."
   }
 }

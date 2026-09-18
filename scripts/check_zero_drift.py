@@ -5771,6 +5771,101 @@ def _strip_py_docstrings(text):
 
 
 
+
+def check_section_2_1_resolution_holds(offline):
+    """The Section 2.1 closure keeps its distinctions and does not drift either way.
+
+    WHY THIS GUARD EXISTS. This matter moved twice and I got it wrong twice. First
+    I nearly deleted a verified participation record by applying "not a formal
+    contribution" literally. Then I raised X-15 -- a counsel question built on a
+    theoretical possibility with no affirmative evidence behind it, on a premise
+    that was already superseded. Both errors point the same way: the facts here
+    are adjacent and easy to collapse into each other.
+
+    FIVE THINGS MUST HOLD, and each corresponds to one of the two ways this can
+    go wrong: understating the record, or overstating a rights problem.
+      1. The distinction between prior MCCR experience and a formal JRS research
+         contribution survives.
+      2. Gabriela Cortez's SEPARATE panel participation survives -- V-AI-08,
+         COMPLETE. Correcting the Section 2.1 characterisation must never erase it.
+      3. X-15 does not return as an open counsel matter without affirmative
+         evidence appearing first.
+      4. No third-party ownership claim appears without evidence supporting it.
+      5. The closure introduces no ownership, assignment or licence claim in
+         EITHER direction -- not for the owner, not for her, not for MCCR.
+
+    WHAT IT DOES NOT CHECK. Whether any legal conclusion is correct. None is
+    drawn, and the closure says so in terms: it establishes only that the evidence
+    does not support keeping X-15 open.
+    """
+    findings = []
+    reg_raw = read("docs/enterprise-diligence/JRS_MASTER_ASSET_EVIDENCE_AND_CHAIN_OF_TITLE_REGISTER.md")
+    led = read("docs/enterprise-diligence/EVIDENCE_LEDGER.md")
+    mat = read("docs/enterprise-diligence/JRS_QUESTION_RESOLUTION_MATRIX_2026-09-16.md")
+    crr = read(".jrs/registries/COMMERCIAL_RIGHTS_REGISTER.json")
+    if not (reg_raw and led and mat and crr):
+        check("Section 2.1 resolution holds", False, "an authoritative record is missing")
+        return
+
+    # WHAT THE DOCUMENT SAYS, NOT HOW MARKDOWN WRAPPED IT. The first version of
+    # this guard failed against a register that plainly contains both sentences,
+    # because "was not a formal JRS research / contribution" and "does / not
+    # support keeping X-15 open" are each split by a line wrap and a blockquote
+    # marker. Same class as the JSON-escape miss: the guard was reading storage
+    # and reasoning about meaning. Prose is normalised before matching; the
+    # regex searches below run against the raw text where structure matters.
+    reg = re.sub(r"\s+", " ", re.sub(r"^\s*>\s?", "", reg_raw, flags=re.M))
+
+    # 1. The distinction itself.
+    if "not a formal JRS research contribution" not in reg and \
+       "NOT a formal JRS research contribution" not in reg:
+        findings.append("the register no longer distinguishes prior MCCR experience from a "
+                        "formal JRS research contribution; that distinction IS the resolution")
+    if "E-036" not in led:
+        findings.append("E-036 is gone from the ledger; the owner attestation the closure rests "
+                        "on has no record")
+
+    # 2. Participation preserved. Correcting the characterisation must not erase it.
+    if not re.search(r"V-AI-08", reg_raw):
+        findings.append("V-AI-08 no longer appears in the register")
+    if "COMPLETE" not in reg or "panel participation" not in reg.lower():
+        findings.append("Gabriela Cortez's separate panel participation is no longer preserved "
+                        "in the register. Correcting the Section 2.1 characterisation must never "
+                        "erase a verified participation record")
+    inv = read("research/PARTICIPANT_INVENTORY_BY_RUNG.md")
+    if inv and not re.search(r"`V-AI-08`[^\n]*COMPLETE", inv):
+        findings.append("V-AI-08 is no longer recorded COMPLETE in the participant inventory")
+
+    # 3 and 4. X-15 must not return open, and no ownership claim without evidence.
+    for rel, body in (("question matrix", mat), ("commercial rights register", crr)):
+        for m in re.finditer(r"X-15", body):
+            w = body[max(0, m.start() - 300):m.end() + 300]
+            if not re.search(r"CLOSED|closed|error|raised in", w):
+                findings.append("X-15 appears in the %s outside a closure context. It does not "
+                                "reopen without affirmative evidence, and none was located "
+                                "across eight propositions" % rel)
+                break
+    if re.search(r"(MCCR|Maryland|State of Maryland)[^.\n]{0,80}(owns|ownership claim|"
+                 r"proprietary right|holds title)", reg, re.I):
+        findings.append("the register asserts a state-agency ownership interest. No affirmative "
+                        "evidence supports one, and the employment context alone does not")
+
+    # 5. No claim in EITHER direction.
+    if re.search(r"Cortez[^.\n]{0,120}(assigned|assignment to|licensed to|transferred)", reg, re.I):
+        findings.append("the register asserts an assignment or licence involving Cortez. The "
+                        "owner has expressly not represented one, and none is located")
+    if "does not support keeping X-15 open" not in reg:
+        findings.append("the closure no longer states its own limit. It establishes only that "
+                        "the evidence does not support keeping X-15 open, and that sentence is "
+                        "the boundary between a factual disposition and a legal conclusion")
+
+    check("Section 2.1 resolution holds",
+          not findings,
+          "; ".join(findings) if findings
+          else "the experience/contribution distinction, the separate panel participation, the "
+               "X-15 closure and the no-claim-in-either-direction boundary all hold")
+
+
 def check_no_right_is_offered_beyond_its_evidence(offline):
     """No right is classified available for licensing while no instrument grants it.
 
@@ -7751,6 +7846,7 @@ def main():
                check_no_stale_owner_action_survives_its_confirmation,
                check_misuse_register_records_reality,
                check_no_right_is_offered_beyond_its_evidence,
+               check_section_2_1_resolution_holds,
                check_manifest_schema_keeps_its_safeguards,
                check_data_handling_claims_match_the_implementation,
                check_published_api_contract_matches_the_write_path,
