@@ -14,7 +14,7 @@
       ],
       "required_action": "Revoke the token at Vercel Settings, Tokens and reissue. Use scripts/vercel_f4_diagnose.sh, which reads it from the environment.",
       "owner": "HUMAN",
-      "status": "OWNER ACTION COMPLETED - PENDING EXTERNAL VERIFICATION",
+      "status": "OWNER-CONFIRMED / EXTERNAL ACTION COMPLETED - 2026-09-18",
       "created": "2026-09-14",
       "update_2026_09_15": "Owner will rotate externally, 2026-09-15. Old credential not tested, recovered or reproduced. No replacement is to be pasted into the repository or conversation, and none was requested. Repository evidence cannot establish rotation, so this cannot be closed from here.",
       "package_2026_09_15": "External action checklist prepared at docs/enterprise-diligence/B-001_EXTERNAL_CREDENTIAL_ACTION_CHECKLIST_2026-09-15.md. Status UNCHANGED. Preparing a checklist is not rotation and is not closure.",
@@ -26,8 +26,16 @@
         "deliberately_not_recorded": "Credential value, scope, prefix, length, hash, or any derivative. The old credential is not reproduced, hashed or retained. None was requested, displayed or tested.",
         "prior_status": "OPEN / HUMAN ACTION REQUIRED",
         "transition_rule": "External action: OPEN -> OWNER ACTION COMPLETED -> EXTERNALLY VERIFIED -> CLOSED. This confirmation satisfies the SECOND rung only. B-001 is NOT closed, because the repository cannot observe the external environment; external verification is a separate evidentiary step.",
-        "not_authorization": "This confirmation is NOT production deployment authorization and was expressly stated not to be. The deployment state machine is unchanged: PRODUCTION NOT AUTHORIZED."
-      }
+        "not_authorization": "This confirmation is NOT production deployment authorization and was expressly stated not to be. The deployment state machine is unchanged: PRODUCTION NOT AUTHORIZED.",
+        "status_correction_2026_09_18": "CORRECTED on the owner's instruction, and the correction is right. I had set 'PENDING EXTERNAL VERIFICATION', which would have required repository-side proof of an action performed in the external Vercel control plane. NO SUCH PROOF CAN EXIST HERE, and demanding it would have manufactured a permanent open state out of an action that is complete. The owner's attestation IS the evidence class for this blocker: a personal factual matter, reserved to him, now supplied. Requiring more would have been the mirror of the error this framework guards against -- not upgrading evidence, but refusing to accept the only evidence the category admits. B-001 is CLOSED as an owner action. It is NOT production deployment authorization, and the owner said so explicitly."
+      },
+      "prior_status_history": [
+        {
+          "status": "OWNER ACTION COMPLETED - PENDING EXTERNAL VERIFICATION",
+          "superseded": "2026-09-18",
+          "reason": "required repository-side proof of an external action"
+        }
+      ]
     },
     {
       "blocker_id": "B-002",

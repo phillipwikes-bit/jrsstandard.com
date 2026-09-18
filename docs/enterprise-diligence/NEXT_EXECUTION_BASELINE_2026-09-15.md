@@ -1,5 +1,15 @@
 # Next Execution Baseline — 2026-09-15
 
+> **SUPERSEDED 2026-09-18 — B-001 IS OWNER-CONFIRMED.** The credential rotation described
+> below was **performed in the external Vercel control plane and confirmed by the owner on
+> 2026-09-18**. The instruction is preserved as history and **must not be acted on again**.
+> No repository-side proof of it exists or can exist, and none is required: an owner
+> attestation is the evidence class this blocker admits. **This does not authorize
+> deployment.** The next action in this chain is the **B-006 diagnostic**, not another
+> rotation.
+
+
+
 **Read-only reconnaissance taken before this cycle's work.**
 
 ## A. Repository state

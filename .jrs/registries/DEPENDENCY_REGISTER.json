@@ -68,5 +68,68 @@
   "_phase1_updated": "2026-09-14",
   "_openapi_correction": "WAS 4. There are exactly TWO: openapi.json and openapi-review-engine.json. Blocker B-002 repeated the same wrong count and is corrected with it.",
   "_commit_figure_note": "Git figures are as-of dates, not current. See PROVENANCE_REGISTER.",
-  "_expanded_2026_09_14": "WAS 5. Seven ACTIVE: Vercel, Supabase, Anthropic, Google GA4, Google Fonts, OpenAI, Google Generative Language. Plus Formspree. OpenAI and Gemini are reached by the nightly cron at 0 6 * * * in api/run-study.js and are evidenced live by the 2026-08-21 cross-vendor run record. Resend and SendGrid are DORMANT: api/_notify.js returns before reading any key."
+  "_expanded_2026_09_14": "WAS 5. Seven ACTIVE: Vercel, Supabase, Anthropic, Google GA4, Google Fonts, OpenAI, Google Generative Language. Plus Formspree. OpenAI and Gemini are reached by the nightly cron at 0 6 * * * in api/run-study.js and are evidenced live by the 2026-08-21 cross-vendor run record. Resend and SendGrid are DORMANT: api/_notify.js returns before reading any key.",
+  "_survivability_extended_2026_09_18": "Extended with failure mode, migration path, EVIDENCE LOSS and a survivability class per provider. The existing entries carried replacement_difficulty, which answers 'how hard is it to swap' and not the question that matters for an IP estate: IF THIS PROVIDER DISAPPEARED TOMORROW, WHAT EVIDENCE WOULD BE UNRECOVERABLE? Two providers were also absent entirely and are added: GitHub, which holds the estate, and the domain registrar.",
+  "survivability": {
+    "_classes": "LOW / MODERATE / MATERIAL / CRITICAL, by EVIDENCE loss rather than by inconvenience. A provider that is tedious to replace but holds no unique evidence is not critical; a provider that is easy to replace but holds the only copy of something is.",
+    "Supabase": {
+      "failure_mode": "Project deleted, account lost, or provider ceases.",
+      "what_is_unique_here": "THE 33 EXECUTED CONTRIBUTOR CONSENTS. Evidence Ledger E-001 to E-004 cite their source as 'Live DB, pilot_contacts source=contributor-confirm'. The Master Register states the strongest rights evidence in the estate is Level B structured consent records, of which 33 people hold one. Also: bench_labels, bench_outcomes, study_runs, findings_history.",
+      "evidence_loss": "NO EXPORT OF THE CONSENT ROWS EXISTS IN THE REPOSITORY. Searching for 'contributor-confirm' returns five documents, and EVERY ONE IS AN ANALYSIS DESCRIBING the rows, not the rows themselves. If the project were lost, the estate would retain secondary descriptions of its strongest primary evidence and would lose the primary evidence itself.",
+      "backup_status": "NOT ESTABLISHED. Whether platform backups are enabled for this project cannot be determined from the repository and was not inferred.",
+      "migration_path": "Postgres is portable; the schema is in supabase-ALL.sql. The DATA is the exposure, not the schema.",
+      "survivability": "CRITICAL",
+      "why_not_fixed_here": "The obvious remedy -- export the consent rows into the repository -- IS REJECTED. Those rows carry names, emails and organisations. Copying them into a git repository would create a permanent, widely-cloned copy of personal data to protect against a hypothetical, which is a worse privacy position than the one it cures and contradicts the data-minimisation architecture. A controlled export held OUTSIDE the repository, or verified platform backups, is the right shape. Recorded as X-12."
+    },
+    "GitHub": {
+      "failure_mode": "Account loss, repository deletion, or provider action.",
+      "what_is_unique_here": "THE ENTIRE ESTATE: code, 2,031 commits of provenance, every diligence register, the evidence ledger, the research corpus.",
+      "evidence_loss": "Mitigated in practice: git is distributed and this working clone is a full copy including history. A clone is a real backup in a way a database query result is not.",
+      "backup_status": "PARTIAL BY ARCHITECTURE. Not established whether any clone is retained off-platform deliberately rather than incidentally.",
+      "migration_path": "git remote set-url. Low friction.",
+      "survivability": "MODERATE",
+      "_note": "ABSENT FROM THIS REGISTER UNTIL 2026-09-18. The provider holding the whole estate was not listed among its dependencies."
+    },
+    "Domain registrar": {
+      "failure_mode": "Lapse, transfer dispute, or loss of registrar account access.",
+      "what_is_unique_here": "jrsstandard.com itself, which every published article, citation and public claim resolves to.",
+      "evidence_loss": "No stored evidence is lost. The loss is REACHABILITY and the external timestamped attribution that depends on live URLs.",
+      "backup_status": "NOT APPLICABLE.",
+      "migration_path": "None if the name is lost; a different name breaks every published link.",
+      "survivability": "MATERIAL",
+      "_note": "ABSENT FROM THIS REGISTER UNTIL 2026-09-18. Chain-of-title records registrar ownership as UNKNOWN, so this is both a dependency and an open rights question."
+    },
+    "Anthropic": {
+      "failure_mode": "Model retired, API discontinued, or terms change.",
+      "what_is_unique_here": "Nothing stored. The engine is inference-only and engine_reviews holds zero rows.",
+      "evidence_loss": "NONE stored. But the model is PINNED, so historical outputs are not reproducible against a successor model, which is X-10's territory.",
+      "backup_status": "NOT APPLICABLE.",
+      "migration_path": "The engine is one HTTP call behind api/_model.js. Swapping providers is mechanically small and SEMANTICALLY large: a different model is a different evaluator, and prior results would not carry over.",
+      "survivability": "MATERIAL"
+    },
+    "Vercel": {
+      "failure_mode": "Account loss or provider ceases.",
+      "what_is_unique_here": "Nothing. There is no build step; the deployable artifact is the repository minus .vercelignore.",
+      "evidence_loss": "NONE. Every served byte has a source in git.",
+      "backup_status": "NOT APPLICABLE.",
+      "migration_path": "Static hosting anywhere, plus porting the Edge Functions in api/. The functions are the real work, not the static pages.",
+      "survivability": "LOW"
+    },
+    "Formspree": {
+      "failure_mode": "Service ends or the form endpoint is revoked.",
+      "what_is_unique_here": "Submissions relayed from pilot.html that were never stored here.",
+      "evidence_loss": "NOT ESTABLISHED what it holds. It is a third-party relay with no located terms and no DPA.",
+      "backup_status": "NOT ESTABLISHED.",
+      "migration_path": "Replace with an existing api/ endpoint. The estate already has the pattern.",
+      "survivability": "LOW operationally, but it remains an undisclosed-terms third party."
+    },
+    "Google (Fonts, GA4)": {
+      "failure_mode": "Service change or blocking.",
+      "what_is_unique_here": "Nothing.",
+      "evidence_loss": "NONE.",
+      "backup_status": "NOT APPLICABLE.",
+      "migration_path": "Self-host fonts; drop or replace analytics. Self-hosting fonts is explicitly NOT to be done without separate authorization.",
+      "survivability": "LOW"
+    }
+  }
 }

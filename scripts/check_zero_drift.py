@@ -5768,6 +5768,92 @@ def _strip_py_docstrings(text):
 
 
 
+
+def check_no_stale_owner_action_survives_its_confirmation(offline):
+    """A completed owner action is not still being asked for somewhere.
+
+    WHY THIS GUARD EXISTS. On 2026-09-18 the owner confirmed the B-001 credential
+    rotation, and the estate still carried the instruction to perform it in four
+    records plus the forward-looking instruction set. The owner had to point that
+    out. An estate that keeps asking for an action already taken trains its reader
+    to ignore the asking, and the next genuine owner action gets ignored with it.
+
+    IT ALSO CAUGHT A MISTAKE OF MINE. I had set B-001 to
+    "PENDING EXTERNAL VERIFICATION", which would have required repository-side
+    proof of an action performed in an external control plane. No such proof can
+    exist here, so that status was a permanently open state dressed as rigour.
+    An owner attestation IS the evidence class this blocker admits. Refusing the
+    only admissible evidence is the mirror of upgrading evidence, and it is just
+    as wrong.
+
+    WHAT IT CHECKS. For each owner action recorded as confirmed, the forward-looking
+    records do not still instruct that it be performed. Historical records may keep
+    the instruction ONLY when carrying a superseding stamp beside it, because
+    deleting the instruction would destroy the evidence that it was once live.
+
+    WHAT IT DOES NOT CHECK. Whether the owner action actually happened. That is an
+    attestation, not something a repository can verify, and pretending otherwise is
+    the error this guard was written after.
+    """
+    findings = []
+
+    reg = read(".jrs/state/BLOCKERS.json")
+    if not reg:
+        check("no stale owner action survives its confirmation", False,
+              "the blocker registry is missing")
+        return
+    blockers = json.loads(reg)["blockers"]
+
+    # blocker -> (what it asked for, forward-looking records that must not still ask)
+    ASKS = {
+        "B-001": (r"rotate the (existing )?(production|vercel) credential",
+                  ["docs/enterprise-diligence/JRS_NEXT_STEPS_CLAUDE_CODE_INSTRUCTIONS_2026-09-16.md",
+                   "docs/enterprise-diligence/JRS_INSTITUTIONAL_CONTINUITY_INDEX.md"]),
+    }
+    STAMP = "SUPERSEDED 2026-09-18"
+
+    for bid, (pat, forward) in ASKS.items():
+        hit = [b for b in blockers if b.get("blocker_id") == bid]
+        if not hit:
+            findings.append("%s is not in the registry" % bid)
+            continue
+        status = hit[0].get("status", "")
+        confirmed = "OWNER-CONFIRMED" in status or "COMPLETED" in status
+        if not confirmed:
+            continue
+        for rel in forward:
+            body = read(rel)
+            if not body:
+                findings.append("%s is missing; it carried the %s instruction" % (rel, bid))
+                continue
+            for m in re.finditer(pat, body, re.I):
+                window = body[max(0, m.start() - 700):m.end() + 400]
+                if STAMP not in window and "UPDATED 2026-09-18" not in window:
+                    findings.append("%s still instructs the %s action, which the owner "
+                                    "confirmed complete. An estate that keeps asking for a "
+                                    "done action trains its reader to ignore the asking"
+                                    % (rel, bid))
+                    break
+
+    # The status itself must not demand proof the repository cannot hold.
+    for b in blockers:
+        if b.get("blocker_id") != "B-001":
+            continue
+        st = b.get("status", "")
+        if "PENDING EXTERNAL VERIFICATION" in st:
+            findings.append("B-001 is back to PENDING EXTERNAL VERIFICATION. The rotation "
+                            "happened in an external control plane and no repository-side "
+                            "proof can exist; requiring it makes a completed action "
+                            "permanently open")
+
+    check("no stale owner action survives its confirmation",
+          not findings,
+          "; ".join(findings) if findings
+          else "%d recorded owner action(s) checked; no forward-looking record still asks "
+               "for a confirmed action, and the historical records carry superseding stamps"
+               % len(ASKS))
+
+
 def check_version_inventory_matches_its_sources(offline):
     """Every declared version equals the value its named source actually holds.
 
@@ -7495,6 +7581,7 @@ def main():
                check_no_conditional_deployment_state,
                check_prohibited_claims_are_absent_from_every_surface_class,
                check_version_inventory_matches_its_sources,
+               check_no_stale_owner_action_survives_its_confirmation,
                check_manifest_schema_keeps_its_safeguards,
                check_data_handling_claims_match_the_implementation,
                check_published_api_contract_matches_the_write_path,

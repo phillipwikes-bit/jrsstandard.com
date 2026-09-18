@@ -274,7 +274,14 @@ until the first four move.
 
 ## 6. THE NEXT AUTHORIZED ACTION
 
-**Phillip rotates the Vercel credential externally and confirms in one line.**
+> **UPDATED 2026-09-18.** The prior text read *"Phillip rotates the Vercel credential
+> externally and confirms in one line."* **He did, on 2026-09-18.** B-001 is
+> **OWNER-CONFIRMED / EXTERNAL ACTION COMPLETED** and must not be asked for again.
+
+**The next action is the B-006 diagnostic**, one command in Phillip's own shell:
+`export VERCEL_TOKEN=<rotated token>; bash scripts/vercel_f4_diagnose.sh`, output only.
+The token must never enter this repository or any chat. **Deployment remains
+unauthorized; B-001 closing does not authorize it.**
 
 Six production operations queue behind it, and one of them — B-014 — is a file
 that is publicly readable **right now** and publishes the anon SELECT grant that

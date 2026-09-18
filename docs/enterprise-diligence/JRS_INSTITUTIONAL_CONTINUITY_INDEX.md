@@ -82,7 +82,7 @@ certificate is worse than none.
 | Matter | State |
 |---|---|
 | **Production-verified controls** | **NONE.** Every control below is development evidence |
-| **B-001** | Credential rotation. Owner-only. **Seven production operations queue behind it** |
+| **B-001** | **CLOSED 2026-09-18 — owner-confirmed external rotation.** Not deployment authorization. The queue behind it now waits on **B-006**, whose diagnostic is ready and unexecuted |
 | **B-014** | Three files are publicly served on production now; remediated in configuration, not deployed |
 | **B-016** | The published API contract asserts statelessness the implementation contradicts. **Counsel** |
 | **B-017** | Responses collected under a promise of non-publication sit behind an anon SELECT grant. Repository half closed; **grant not revoked** |

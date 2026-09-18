@@ -60,7 +60,7 @@
   },
   "controls": {
     "_source": "scripts/check_zero_drift.py and tests/",
-    "guards": 118,
+    "guards": 119,
     "guard_suites": [
       "offline",
       "online"
@@ -88,5 +88,5 @@
     "whether cold_reviewer_clarity is the aggregate condition or a peer (D-2)",
     "live row counts in any anon-readable table"
   ],
-  "_revision_note": "Guard floor set to 118 on 2026-09-18 with check_version_inventory_matches_its_sources. Count read from the file rather than typed, after an off-by-one two cycles ago."
+  "_revision_note": "Guard floor set to 119 on 2026-09-18 with check_no_stale_owner_action_survives_its_confirmation. Count read from the file."
 }
