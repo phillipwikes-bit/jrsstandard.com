@@ -9,7 +9,7 @@
 | Created | 2026-09-09 |
 | Supersedes as the primary register | `ASSET_AND_CHAIN_OF_TITLE_REGISTER.md` v2.0 and all fragment registers, **which are retained as evidence sources and are not deleted** |
 | Update rule | **Never restart the audit. Add evidence, name the finding it changes, preserve the prior status in the correction history, update the index.** |
-| Traceability | **30 ledger entries** in `EVIDENCE_LEDGER.md` (was 27; see the index note at section 23) |
+| Traceability | **35 ledger entries** in `EVIDENCE_LEDGER.md` (was 27, then 30; see the index note at section 23) |
 
 **The purpose of this document is that no future review should have to rediscover
 Hekim, Ubayet, Tanvi, Stacyann, the DRR evidence, the consents, or the Master Tracker
@@ -111,7 +111,7 @@ reliability criterion NOT met** (point estimates clear 0.61; both lower bounds f
 | **Ubayet Hossain** | Co-author; methodology | Detection, reliability | E-006 to E-008 | Not located | Not located | Not confirmed | **E-006 to E-008, corroborated by images** | **NOT LOCATED (E-021, targeted search complete)** | Not located | **Authorship corroborated** | **Commercial use and successor transfer** |
 | **Tanvi Pokhriyal** | First author | Employment study | Roster; correspondence | **E-002, executed 2026-08-22** | E-002 | Not confirmed | Level D records | Not located | Not located | **Covered** | Co-author instrument unused |
 | **Stacyann Young** | First author | Public records, RMJ | Roster; dossier | **E-003, executed 2026-08-27** | E-003 | Not confirmed | Level D records; **affiliation policy honoured** | Not located | Not located | **Covered** | Co-author instrument unused |
-| **V-AI-08** | Section 2.1 argument | **Panel design** | Manuscript; E-024 | Contributor consent | Not located | n/a | Not located | Not located | **Not located** | **Credit only** | Assignment for the specific argument |
+| **V-AI-08 — Gabriela Cortez** (identified by owner, E-033) | **Completing panel participant (Arm A, 24 reads)** AND the person whose MCCR intake approach is referenced at Section 2.1 | Detection panel; Section 2.1 reference | Roster; manuscript; E-024; **E-033** | Contributor consent | Not located | n/a | Not located | Not located | **Not located** | **PARTICIPATION VERIFIED. Section 2.1 is a REFERENCE to an approach from her MCCR intake work, NOT a formal contribution to the study (E-033)** | **CT-2 materially narrowed — see section 16** |
 | 29 further contributors | Panel / raters | Studies | Roster | **E-004, executed** | E-004 | n/a | n/a | Not located | Not located | **Covered** | Scope limits apply |
 
 # 9. Participant consent and release register
@@ -231,6 +231,9 @@ recorded as a contributor.
 | 10 | "27 ledger entries, E-001 to E-027" | 2026-09-09 | E-028 added in the same pass; E-029 and E-030 added 2026-09-18 | **CORRECTED** | **The index was stale by one before this cycle.** Section 24's final step, update the index, was missed when E-028 was added. Now 30 |
 | 11 | Human review, selection and acceptance "NOT ESTABLISHED FROM ACCESSIBLE CORPUS" | 2026-09-09 | **E-029, owner attestation 2026-09-18** | **SUPPLIED, NOT UPGRADED** | The account the register recorded as missing is now on the record from the only person who could supply it. It is an attestation, not a document. **It does not establish ownership and F-4 is unchanged** |
 
+| 12 | "V-AI-08 contributed the Section 2.1 argument" / "Credit only" | 2026-09-09 | **E-033, owner firsthand identification 2026-09-18** | **CORRECTED** | The material is an approach from her **MCCR intake work**, **not a formal contribution to the JRS study**. **Her panel participation is UNAFFECTED and remains verified** — the two are different facts and the correction was checked against the roster before it was made |
+| 13 | CT-1 "commercial and transfer language not located" treated as the whole picture | 2026-09-09 | **E-034, owner attestation** | **SUPPLEMENTED, NOT SUPERSEDED** | The search finding stands verbatim. The owner's account is added beside it. **Absence of a prohibition is not a grant, and no grant is recorded** |
+
 **No prior finding was deleted.**
 
 # 18. Genuine evidence not located
@@ -243,8 +246,8 @@ Hekim's own words accepting the CCI terms; retention and deletion policy.
 
 # 19. Owner input required
 
-1. **Ubayet:** may his contribution be used in paid or licensed material, and does that travel to a successor? **This is the only outstanding rights question for him.**
-2. **Section 2.1 contributor:** assignment for the specific accessibility argument.
+1. ~~**Ubayet:** may his contribution be used in paid or licensed material, and does that travel to a successor?~~ **OWNER ACCOUNT SUPPLIED 2026-09-18 (E-034).** He approved the uses discussed and stated no restriction against commercial or licensing use. **The FACTUAL question is answered. Whether that supports a commercial or licensing right is a LEGAL question and stays with counsel under B-004.**
+2. ~~**Section 2.1 contributor:** assignment for the specific accessibility argument.~~ **PREMISE CORRECTED 2026-09-18 (E-033).** Not a formal contribution to the study, so there is no study contribution awaiting assignment. **Replaced by X-15**, a narrower and different question.
 3. **AI involvement account**: conception, direction, review, selection, acceptance.
 4. Canonical OpenAPI designation; Codebook-to-API correspondence; `JRS_SANDBOX_OPEN` state; telemetry retention; Formspree status; trademark filing status; domain registrar; publisher agreements.
 
@@ -252,8 +255,8 @@ Hekim's own words accepting the CCI terms; retention and deletion policy.
 
 | ID | Asset / person | Precise question | Evidence located | Not located | Classification | Recommended action |
 |---|---|---|---|---|---|---|
-| CT-1 | Ubayet / reliability framework | Paid or licensed use, and successor transfer? | Authorship corroborated | **Commercial and transfer language (search complete)** | **OWNER INPUT REQUIRED** | Ask him one question |
-| CT-2 | V-AI-08 / panel design | Assignment for the accessibility argument? | Credit permission; contribution characterised | Any instrument | **OWNER INPUT REQUIRED** | Request assignment |
+| CT-1 | Ubayet / reliability framework | Paid or licensed use, and successor transfer? | Authorship corroborated; **owner account E-034** | **Commercial and transfer language (search complete, unchanged)** | **OWNER INPUT SUPPLIED → LEGAL QUESTION REMAINS** | **Factual limb CLOSED.** The legal limb — whether approval plus absence of restriction supports commercial or licensing use — is **B-004 counsel**, not an owner question |
+| CT-2 | **Gabriela Cortez (V-AI-08)** / Section 2.1 reference | ~~Assignment for the accessibility argument?~~ **Premise corrected** | **E-033: approach from her MCCR intake work; NOT a formal study contribution.** Panel participation separately verified | n/a | **CLOSED AS FRAMED** | No study contribution awaits assignment. **Replaced by X-15**: whether referencing an approach originating in state-agency employment carries any third-party interest |
 | CT-3 | Hekim / CCI | Terms accepted? | **Recorded as confirmed 2026-08-06** | His own words | **EVIDENCE GATHERED** | Retrieve his reply only if Level C is wanted |
 | CT-4 | 33 contributors | Revocability against exclusivity | Consents executed | Irrevocability | **REQUIRES TARGETED PROFESSIONAL REVIEW** | Counsel |
 | CT-5 | AI-assisted assets | Human conception and direction | Attribution measured; articles dated | The account itself | **OWNER INPUT REQUIRED** | Answer question 3 |
@@ -286,7 +289,7 @@ does not exist in this corpus.**
 
 # 23. Complete evidence index
 
-`EVIDENCE_LEDGER.md`, **30 entries**, E-001 to E-030. **No Level A entry exists.**
+`EVIDENCE_LEDGER.md`, **35 entries**, E-001 to E-035. **No Level A entry exists.**
 
 **INDEX CORRECTED 2026-09-18, and it was stale before this cycle touched it.** This read *27 entries, E-001 to E-027* while the ledger already held **28** — E-028, the Hekim Master Tracker record, was added in the 2026-09-09 consolidation pass and the index was not updated with it. Today's additions are **E-029** (the owner's AI-assisted development account) and **E-030** (the B-001 rotation attestation).
 
@@ -441,7 +444,42 @@ was located anywhere in the corpus.
 | Credit first appears | **2026-08-02**, 61 days after JRS was publicly attributed to Wikes |
 | Permission | Credited with permission; credit removed 2026-08-16 and **reinstated 2026-09-06** |
 | Rights language | **Not located** |
-| Status | **EVIDENCE GATHERED.** Assignment for the specific argument remains outstanding |
+| Status | **MATERIALLY CORRECTED 2026-09-18 by E-033, owner firsthand identification** |
+
+### Section 2.1 — corrected characterisation, 2026-09-18
+
+**V-AI-08 is Gabriela Cortez**, the owner's mentee at the **Maryland Commission on Civil
+Rights Intake Unit**.
+
+**What the owner's confirmation changes.** The material at Section 2.1 relates to an
+approach she used in **her MCCR intake work** — translating documents into Spanish so the
+material stayed understandable to the person it described. **It was not a formal
+contribution by her to the JRS study or research program.**
+
+**Three states, kept apart:**
+
+| | |
+|---|---|
+| (a) An approach observed in **prior MCCR work** | **YES** |
+| (b) Material later **attributed/referenced** in JRS documentation | **YES** |
+| (c) A **formal contribution to the JRS research program** | **NO**, as to Section 2.1 |
+
+**WHAT THIS DOES NOT DISTURB, and the distinction was verified before the record was
+touched.** She **is** a completing panel participant: `V-AI-08`, Arm A, US, **24 reads,
+COMPLETE**, and she is named with her affiliation on the AIE submission title page among
+the panel. **Participation and the Section 2.1 reference are different facts.** Correcting
+the second must not erase the first, and a less careful correction would have deleted a
+verified participation record.
+
+**Effect on CT-2.** CT-2 asked for an **assignment for the specific argument**. If the
+material was **not a contribution to the study**, the premise of that question is narrower
+than recorded: there is no study contribution awaiting assignment. **What remains is
+whether referencing an approach originating in a person's employment at a state agency
+carries any third-party interest — a different question, recorded as X-15, and not answered
+here.**
+
+**No assignment, consent, authorship or ownership relationship has been manufactured in
+either direction.**
 
 ## 22. Deferred matters
 
