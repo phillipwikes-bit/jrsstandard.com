@@ -79,3 +79,64 @@ statement and still not permission to deploy.
 
 **STATE 1 — DEVELOPMENT REMEDIATION. DEPLOYMENT NOT AUTHORIZED.
 PRODUCTION-VERIFIED CONTROLS: NONE.**
+
+---
+
+# RE-RUN — 2026-09-18, after the B-001 owner confirmation
+
+Candidate `d8ed7d1` · Baseline `0d94ce6` · **224 files, 17,875 insertions, 446 deletions**
+
+**B-001 is OWNER ACTION COMPLETED.** Rotation confirmed by the owner on 2026-09-18. No
+credential value was requested, displayed, stored, hashed, tested or committed, and the old
+credential is not reproduced or retained.
+
+## What changed since the 2026-09-17 run
+
+| # | Check | Result |
+|---|---|---|
+| 4 | `openapi.json` untouched | **NOT IN DIFF.** sha256 `b89e7fea…` unchanged |
+| 5 | Rights records | **No diff** |
+| 6 | Research source | Builder only; output byte-verified by the guard suite |
+| 7 | Protected paths | All eight excluded |
+| 8 | Public pages | **None removed or renamed** |
+| 9 | Tests | guards **offline 143/0/2, online 147/0/1**; retention 60/0; projection 17/0; auth 26/0; manifest 68/0 |
+| 11 | Database operations | `supabase-ALL.sql` matched **5** grant/policy lines this run against 0 last run. **Re-checked verbatim: all five begin `--`. Zero executable grant changes.** The earlier run filtered comments in the grep; this one did not, and the discrepancy was resolved by reading the lines rather than trusting either count |
+
+## B-001 → B-006: the prerequisite cleared, the diagnostic did not run
+
+**B-006 moves OPEN → DIAGNOSTIC READY.** It does **not** move to DIAGNOSTIC EXECUTED.
+
+The procedure requires the rotated token **exported in Phillip's own shell** and states the
+replacement must never enter this repository or any chat. Presence was checked here **without
+reading any value**: not present, which is correct. **Rotating a credential in Vercel does not
+place it here, and it must not.**
+
+**The repository-side narrowing was attempted, as the standing rule requires.** Established:
+`c08b48a` is present and merged 2026-09-13T11:50:03Z; **both controls arrived later**, in
+`18dba0f` / PR #35, so neither existed on 13 September and neither could have observed the
+incident. **Not established: whether Vercel created a deployment record for `c08b48a`** — the
+one fact that separates the four candidate causes. The available GitHub tooling offers no
+list-checks-for-ref capability, and the Vercel API needs the token. **NOT ESTABLISHABLE FROM
+HERE**, recorded rather than resolved by selecting the most plausible cause, which the
+procedure expressly forbids.
+
+**One new observation, and it is time-sensitive.** The procedure records that retention ageing
+out the 13 September records is itself an inconclusive outcome. **Five days have passed.** The
+evidentiary window is narrowing. Severity describes the consequence of the failure; it does not
+describe the decay rate of the evidence about it.
+
+## DETERMINATION
+
+# DEPLOYMENT NOT READY
+
+**The candidate is clean and checks 1–11 pass.** B-001 is no longer the reason.
+
+**The reason is B-006.** Its stated prerequisite is satisfied and its diagnostic is unexecuted,
+so it is neither resolved nor properly dispositioned — and a disposition of
+*NOT ESTABLISHED — FAILURE MODE CONTROLLED* is available **only after the diagnostic runs and
+returns inconclusive evidence**, not instead of running it.
+
+**This is one command, not a workstream.**
+
+**STATE 1 — DEVELOPMENT REMEDIATION. DEPLOYMENT NOT AUTHORIZED.
+PRODUCTION-VERIFIED CONTROLS: NONE.**

@@ -14,10 +14,20 @@
       ],
       "required_action": "Revoke the token at Vercel Settings, Tokens and reissue. Use scripts/vercel_f4_diagnose.sh, which reads it from the environment.",
       "owner": "HUMAN",
-      "status": "OPEN / HUMAN ACTION REQUIRED",
+      "status": "OWNER ACTION COMPLETED - PENDING EXTERNAL VERIFICATION",
       "created": "2026-09-14",
       "update_2026_09_15": "Owner will rotate externally, 2026-09-15. Old credential not tested, recovered or reproduced. No replacement is to be pasted into the repository or conversation, and none was requested. Repository evidence cannot establish rotation, so this cannot be closed from here.",
-      "package_2026_09_15": "External action checklist prepared at docs/enterprise-diligence/B-001_EXTERNAL_CREDENTIAL_ACTION_CHECKLIST_2026-09-15.md. Status UNCHANGED. Preparing a checklist is not rotation and is not closure."
+      "package_2026_09_15": "External action checklist prepared at docs/enterprise-diligence/B-001_EXTERNAL_CREDENTIAL_ACTION_CHECKLIST_2026-09-15.md. Status UNCHANGED. Preparing a checklist is not rotation and is not closure.",
+      "owner_confirmation": {
+        "confirmed_by": "Owner (Phillip Wikes)",
+        "confirmed_on": "2026-09-18",
+        "action": "External Vercel credential rotation performed in the deployment environment. Previously exposed credential revoked/rotated; replacement credential issued.",
+        "recorded": "Fact of rotation and its date ONLY.",
+        "deliberately_not_recorded": "Credential value, scope, prefix, length, hash, or any derivative. The old credential is not reproduced, hashed or retained. None was requested, displayed or tested.",
+        "prior_status": "OPEN / HUMAN ACTION REQUIRED",
+        "transition_rule": "External action: OPEN -> OWNER ACTION COMPLETED -> EXTERNALLY VERIFIED -> CLOSED. This confirmation satisfies the SECOND rung only. B-001 is NOT closed, because the repository cannot observe the external environment; external verification is a separate evidentiary step.",
+        "not_authorization": "This confirmation is NOT production deployment authorization and was expressly stated not to be. The deployment state machine is unchanged: PRODUCTION NOT AUTHORIZED."
+      }
     },
     {
       "blocker_id": "B-002",
@@ -92,9 +102,28 @@
       "description": "Root cause of the 2026-09-13 silent deployment skip is NOT ESTABLISHED.",
       "required_action": "Run scripts/vercel_f4_diagnose.sh with a rotated token. Downgraded from HIGH because the failure mode is now prevented and detected regardless of cause.",
       "owner": "HUMAN",
-      "status": "BLOCKED",
+      "status": "DIAGNOSTIC READY - NOT EXECUTED - ROOT CAUSE NOT ESTABLISHED",
       "created": "2026-09-14",
-      "update_2026_09_15": "Requires a rotated credential. Unchanged."
+      "update_2026_09_15": "Requires a rotated credential. Unchanged.",
+      "b001_dependency_cleared": {
+        "date": "2026-09-18",
+        "effect": "B-001 owner confirmation satisfies B-006's stated PREREQUISITE, so B-006 moves OPEN -> DIAGNOSTIC READY. It does NOT move to DIAGNOSTIC EXECUTED.",
+        "why_not_executed": "The procedure requires the rotated VERCEL_TOKEN exported in PHILLIP'S OWN SHELL and states that the replacement must never enter this repository or any chat. Presence was checked in this environment without reading any value: NOT PRESENT, which is the correct and expected state. Rotating a credential in Vercel does not place it here, and it must not be placed here.",
+        "root_cause": "STILL NOT ESTABLISHED. Prevention and detection exist and are unchanged; neither is root cause, and the procedure expressly forbids selecting the most plausible of the four candidate rows.",
+        "time_sensitivity": "NEW AND MATERIAL. The procedure records that retention ageing out the 13 September records is itself an INCONCLUSIVE outcome. Five days have now passed. The evidentiary window is narrowing, which makes the diagnostic more time-sensitive than its LOW severity suggests - severity describes the consequence of the failure, not the decay rate of the evidence about it.",
+        "owner_action": "ONE COMMAND, in Phillip's own shell: export VERCEL_TOKEN=<rotated token>; bash scripts/vercel_f4_diagnose.sh . Paste back the OUTPUT only. The script reads the credential from the environment and prints none.",
+        "repository_side_attempt": {
+          "date": "2026-09-18",
+          "instruction": "The standing rule is to narrow the cause from repository evidence before returning an external dependency. That was attempted.",
+          "established": [
+            "c08b48a IS present in this clone: 'Conversion work: benchmark framing, board export, compliance page (#28)', merged 2026-09-13T11:50:03Z, confirmed via the GitHub API.",
+            "Both controls arrived LATER, in 18dba0f (merged as 0d94ce6, PR #35): vercel.json ignoreCommand and .github/workflows/deploy-verify.yml. Neither existed on 13 September, so neither could have observed or prevented the incident.",
+            "Seven merges to main sit between c08b48a and 0d94ce6."
+          ],
+          "not_established": "WHETHER VERCEL CREATED A DEPLOYMENT RECORD FOR c08b48a. That is the single fact that distinguishes the four candidate causes, and it lives in Vercel's API and in GitHub's check-run history for that ref.",
+          "why_not_reachable": "The available GitHub tooling exposes get_check_run, which requires a numeric check-run id obtainable only from a webhook event, and offers no list-checks-for-ref capability. The Vercel API requires the rotated token, which must stay in Phillip's shell. NOT ESTABLISHABLE FROM HERE - recorded as such rather than inferred from the most plausible cause, which the procedure expressly forbids."
+        }
+      }
     },
     {
       "blocker_id": "B-007",
