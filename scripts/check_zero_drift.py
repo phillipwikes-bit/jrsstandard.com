@@ -5772,6 +5772,107 @@ def _strip_py_docstrings(text):
 
 
 
+
+def check_no_stale_current_state_representation(offline):
+    """A closed matter is not still represented as open anywhere current.
+
+    WHY THIS GUARD EXISTS. X-15 was closed in the register's section 16, in the
+    correction table, in CT-2 and in the question matrix -- and section 23 went on
+    saying "Section 2.1 assignment ... OWNER INPUT REQUIRED", and the chain-of-title
+    status went on listing it as a surviving owner matter. The owner had to point
+    that out. A correction recorded in one section does not make a document
+    synchronized, and five other current-state claims were stale for the same reason.
+
+    THE RULE IT ENFORCES. ONE PROPOSITION, ONE CURRENT STATE, ONE AUTHORITATIVE
+    CURRENT REPRESENTATION, PRESERVED HISTORY. History may keep the old wording; it
+    may not masquerade as current. The test for "masquerading" is proximity: an old
+    state within reach of a strike-through or a superseding marker is history, and
+    an old state standing alone is a current claim.
+
+    WHAT IT CHECKS. For each closed proposition below, no current-state record
+    asserts the open state without a superseding marker beside it. The markers are
+    deliberately narrow -- a strike-through, SUPERSEDED, RECONCILED, CLOSED,
+    CORRECTED, ANSWERED, SUPPLIED -- so that a stale line cannot be excused by an
+    unrelated word.
+
+    WHAT IT DOES NOT CHECK. Whether a closure was correct. That is the evidence
+    record's job, and section 17 of the register preserves how each one was reached.
+    """
+    findings = []
+
+    # proposition -> (regex for the OPEN-state claim, records that must be current)
+    CLOSED = {
+        # PATTERNS WIDENED 2026-09-18 after the state-transition suite exposed them.
+        # `[^.\n]` could not span a sentence period, so appending "Section 2.1
+        # assignment for the accessibility argument. OWNER INPUT REQUIRED." PASSED.
+        # `[^|\n]` could not span table cells, so reverting the domain row PASSED.
+        # A guard whose own test suite cannot defeat it is the only kind worth
+        # keeping, and these two were defeated on the first attempt.
+        "Section 2.1 assignment": (
+            r"Section 2\.1 assignment.{0,120}?OWNER INPUT REQUIRED",
+            ["docs/enterprise-diligence/JRS_MASTER_ASSET_EVIDENCE_AND_CHAIN_OF_TITLE_REGISTER.md",
+             "docs/enterprise-diligence/CHAIN_OF_TITLE_STATUS.md"]),
+        "X-15 open": (
+            r"X-15[^.\n]{0,60}(OPEN|COUNSEL REVIEW REQUIRED|counsel dependency)",
+            ["docs/enterprise-diligence/JRS_MASTER_ASSET_EVIDENCE_AND_CHAIN_OF_TITLE_REGISTER.md",
+             "docs/enterprise-diligence/JRS_QUESTION_RESOLUTION_MATRIX_2026-09-16.md",
+             ".jrs/registries/COMMERCIAL_RIGHTS_REGISTER.json"]),
+        "AI involvement account outstanding": (
+            r"AI involvement account[^.\n]{0,80}(OWNER INPUT REQUIRED|outstanding)",
+            ["docs/enterprise-diligence/JRS_MASTER_ASSET_EVIDENCE_AND_CHAIN_OF_TITLE_REGISTER.md"]),
+        "domain registrar unknown": (
+            r"domain (ownership|registrar).{0,140}?\*\*UNKNOWN\*\*",
+            ["docs/enterprise-diligence/CHAIN_OF_TITLE_STATUS.md"]),
+    }
+    SUPERSEDING = re.compile(r"~~|SUPERSEDED|RECONCILED|CLOSED|CORRECTED|ANSWERED|SUPPLIED|"
+                             r"raised in error|no longer", re.I)
+
+    checked = 0
+    for prop, (pat, records) in CLOSED.items():
+        for rel in records:
+            body = read(rel)
+            if not body:
+                findings.append("%s is missing; it carried the %r state" % (rel, prop))
+                continue
+            checked += 1
+            flat = re.sub(r"\s+", " ", re.sub(r"^\s*>\s?", "", body, flags=re.M))
+            for m in re.finditer(pat, flat, re.I):
+                # NEGATION IS NOT ASSERTION. The first run of this guard flagged the
+                # closure's own limit sentence -- "does not support keeping X-15
+                # open" -- as a live claim that X-15 is open. Ninth time a guard here
+                # has read text that MENTIONS a state as text that ASSERTS it. The
+                # lead-in is checked for a negation before the window is judged.
+                lead = flat[max(0, m.start() - 90):m.start()]
+                if re.search(r"\b(not|no longer|never|without|rather than|ceased to)\b",
+                             lead, re.I):
+                    continue
+                window = flat[max(0, m.start() - 260):m.end() + 260]
+                if not SUPERSEDING.search(window):
+                    findings.append("%s asserts %r as CURRENT with no superseding marker beside "
+                                    "it. A correction recorded elsewhere in the same document "
+                                    "does not make the document synchronized"
+                                    % (rel, prop))
+                    break
+
+    # The closure must keep stating its own limit, in the register.
+    reg = re.sub(r"\s+", " ", read("docs/enterprise-diligence/"
+                                   "JRS_MASTER_ASSET_EVIDENCE_AND_CHAIN_OF_TITLE_REGISTER.md"))
+    if "does not support keeping X-15 open" not in reg:
+        findings.append("the register no longer states the limit of the X-15 closure. Without it "
+                        "a factual disposition reads as a legal conclusion")
+    # Panel participation must survive every one of these edits.
+    if "V-AI-08" not in reg:
+        findings.append("V-AI-08 is gone from the register; the participation record must survive "
+                        "every correction to the Section 2.1 characterisation")
+
+    check("no stale current-state representation",
+          not findings,
+          "; ".join(findings) if findings
+          else "%d record/proposition pairs checked across %d closed propositions; every open-state "
+               "wording carries a superseding marker; the closure keeps its limit and the "
+               "participation record survives" % (checked, len(CLOSED)))
+
+
 def check_section_2_1_resolution_holds(offline):
     """The Section 2.1 closure keeps its distinctions and does not drift either way.
 
@@ -7847,6 +7948,7 @@ def main():
                check_misuse_register_records_reality,
                check_no_right_is_offered_beyond_its_evidence,
                check_section_2_1_resolution_holds,
+               check_no_stale_current_state_representation,
                check_manifest_schema_keeps_its_safeguards,
                check_data_handling_claims_match_the_implementation,
                check_published_api_contract_matches_the_write_path,

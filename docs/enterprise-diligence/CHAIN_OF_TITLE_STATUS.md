@@ -17,7 +17,7 @@ were created as work made for hire, assigned, or are free of third-party interes
 | Co-author rights, research instruments | Written allocation of rights between the authors | **None located** | **MISSING** |
 | Publication rights | Publisher agreements for accepted manuscripts | **None located** | **MISSING** |
 | Trademark evidence | USPTO serial or registration number | **None located**; a filing dossier exists | **MISSING** |
-| Domain ownership | Registrar record in the owner's or entity's name | **None located in-repo** | **UNKNOWN** |
+| Domain ownership | Registrar record in the owner's or entity's name | **None located in-repo** | ~~**UNKNOWN**~~ **OWNER-CONFIRMED 2026-09-18 (E-035): he personally controls the registrar account and no other person does. Attestation, NOT registrar verification, and NOT a trademark or IP ownership determination** |
 | Third-party licences | Licence terms for fonts and any third-party asset | Google Fonts identified in code | **Partial** |
 | Repository licence | A LICENSE file stating the terms | **None** | **MISSING** |
 | Participant consent versus assignment | Consent records, and the terms version in force at consent | Consent recorded per contributor; **no terms version stored against any consent row** | **MISSING (terms version)** |
@@ -42,7 +42,13 @@ chain-of-title finding, not only a cost finding.
 
 ## Owner inputs required to close the chain
 
-> **OWNER INPUT REQUIRED: signed contributor assignment** for any contributor whose
+> **RECONCILED 2026-09-18. Three of the six below are ANSWERED and are struck through in
+> place; the prior wording is preserved so the history of what was once required stays
+> readable. Three remain genuinely open.**
+
+> ~~**OWNER INPUT REQUIRED: signed contributor assignment**~~ **PREMISE CORRECTED as to
+> Section 2.1 (E-033, E-036): not a formal study contribution, so no study contribution
+> awaits assignment there. X-15 CLOSED. The general point below stands for any contributor whose
 > material is embedded in the methodology, construct, codebook, or research
 > instruments, in particular the Section 2.1 contributor.
 
@@ -52,7 +58,10 @@ chain-of-title finding, not only a cost finding.
 > **OWNER INPUT REQUIRED: USPTO filing evidence** (serial or registration number), or
 > confirmation that no filing has been made.
 
-> **OWNER INPUT REQUIRED: registrar record** evidencing domain ownership.
+> ~~**OWNER INPUT REQUIRED: registrar record** evidencing domain ownership.~~
+> **ANSWERED 2026-09-18 (E-035) as to CONTROL.** A registrar *record* would be independent
+> evidence and is still not held; the owner's control of the account is attested. **The two
+> are different propositions and only the second is closed.**
 
 > **OWNER INPUT REQUIRED: decision on a repository LICENSE**, and on the terms under
 > which the asset suite is held.
@@ -79,7 +88,7 @@ the register disagree, **the register controls**.
 |---|---|---|
 | **B-004** — do the executed consents support commercial exploitation, licensing or transfer? | **ESCALATED — COUNSEL** | Counsel packet §1. **Not answerable here.** 33 executed structured consents exist with `consent_use` and `consent_transfer` yes, scoped to study publications and successor transfer, and **silent on licensing, commercial products, revenue and vendor platforms**. Silence is not permission |
 | **No Level A executed assignment instrument located** | **DOCUMENTED + TRANSACTION CONDITION** | **NOT LOCATED AFTER SEARCH.** As a transaction condition: *an acquirer should require an executed assignment, or price the absence.* This is a condition to state, not a defect to hide |
-| **Section 2.1 contributor** | **OWNER FACTUAL, then possibly counsel** | Whether an assignment exists is a fact. Searched; **not established**. Reduced to one question for the owner, not a workstream. **Attribution is not assignment** and no inference is drawn from it |
+| **Section 2.1 contributor** | ~~OWNER FACTUAL, then possibly counsel~~ **CLOSED 2026-09-18** | **E-033 and E-036: the approach arose from the OWNER'S own MCCR work and experience, discussed with his mentee; NOT a formal study contribution.** X-15 was raised on the superseded premise and is **CLOSED**; an affirmative-evidence search across eight propositions returned **zero**. **Her separate panel participation is preserved.** No legal conclusion established |
 | **Ubayet — commercial / successor-transfer language** | **DOCUMENTED — DEFERRED BY DECISION** | Deferred until publication status changes. **Not reopened**: deferral by decision is a state, not an omission |
 | **Four co-authors hold joint rights in the validation manuscripts** | **TRANSACTION CONDITION** | The validation evidence a licensee would rely on is **jointly held and nothing has been assigned**. As a condition: *any exclusivity clause reciting the validation evidence rests on rights a co-author has not granted* |
 | **Reviewer consent is revocable and silent on licensing** | **TRANSACTION CONDITION** | A revocable permission **cannot support an exclusive perpetual grant**. As a condition: *exclusivity terms must be drafted against what the consents actually say* |
@@ -328,5 +337,8 @@ The §2 reconciliation entry above stands as to the *co-author instrument existi
 and being unused*, which is factually correct. **What it must not be read as is an
 open consent gap for Tanvi or Stacyann, or a reason to contact Ubayet.**
 
-**The surviving owner factual matter in this area remains the one the register
-names: Section 2.1 assignment. That is one question, not two.**
+~~**The surviving owner factual matter in this area remains the one the register
+names: Section 2.1 assignment. That is one question, not two.**~~
+
+> **SUPERSEDED 2026-09-18.** Section 2.1 is **CLOSED** (E-033, E-036). **There is no surviving
+> owner factual matter in this area.** The register's section 23 has been reconciled to match.

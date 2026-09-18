@@ -60,7 +60,7 @@
   },
   "controls": {
     "_source": "scripts/check_zero_drift.py and tests/",
-    "guards": 122,
+    "guards": 123,
     "guard_suites": [
       "offline",
       "online"
@@ -88,5 +88,5 @@
     "whether cold_reviewer_clarity is the aggregate condition or a peer (D-2)",
     "live row counts in any anon-readable table"
   ],
-  "_revision_note": "Guard floor set to 122 on 2026-09-18 with check_section_2_1_resolution_holds."
+  "_revision_note": "Guard floor set to 123 on 2026-09-18 with check_no_stale_current_state_representation."
 }

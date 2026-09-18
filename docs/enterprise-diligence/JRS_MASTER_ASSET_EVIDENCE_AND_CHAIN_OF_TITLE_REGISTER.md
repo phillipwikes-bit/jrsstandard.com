@@ -156,7 +156,7 @@ co-author instrument, which none has used.**
 |---|---|---|
 | **DRR concept origin** | **JRS publicly named and attributed to Wikes 2026-06-02** (E-025), four assessment dimensions described; **The Reconstructability Test published 2026-06-11** with JRS "built upon this test" (E-026); **DRR publicly defined by him 2026-07-02** (E-027). Repository first use 2026-06-23 | **VERIFIED PRIMARY, third-party timestamped.** Consistent with the owner's stated origination |
 | **DRR development** | Codebook v1.0; repository history 2026-04-14 onward | **VERIFIED PRIMARY** |
-| **DRR contribution by others** | V-AI-08 contributed the Section 2.1 argument: that "a record must remain understandable to the person it describes and that linguistic and jurisdictional range is a property of review rather than a courtesy", which drove **international panel design**. Credit first appears **2026-08-02** | **WRITTEN COMMUNICATION EVIDENCE.** **This is an accessibility and study-design argument, not the DRR construct** |
+| **DRR contribution by others** | ~~V-AI-08 contributed the Section 2.1 argument~~ **CHARACTERISATION CORRECTED 2026-09-18 (E-033, E-036): the approach arose from the OWNER'S own MCCR work and experience, discussed with his mentee, and was NOT a formal JRS research contribution by her. Her separate panel participation is preserved.** The argument itself, preserved as recorded: that "a record must remain understandable to the person it describes and that linguistic and jurisdictional range is a property of review rather than a courtesy", which drove **international panel design**. Credit first appears **2026-08-02** | **WRITTEN COMMUNICATION EVIDENCE.** **This is an accessibility and study-design argument, not the DRR construct** |
 | **DRR publication** | Three self-published articles. **No peer-reviewed publication, no DOI** | **VERIFIED PRIMARY** |
 
 **Owner position:** Phillip Wikes states DRR was his idea. **The evidence located is
@@ -250,8 +250,8 @@ Hekim's own words accepting the CCI terms; retention and deletion policy.
 
 1. ~~**Ubayet:** may his contribution be used in paid or licensed material, and does that travel to a successor?~~ **OWNER ACCOUNT SUPPLIED 2026-09-18 (E-034).** He approved the uses discussed and stated no restriction against commercial or licensing use. **The FACTUAL question is answered. Whether that supports a commercial or licensing right is a LEGAL question and stays with counsel under B-004.**
 2. ~~**Section 2.1 contributor:** assignment for the specific accessibility argument.~~ **PREMISE CORRECTED 2026-09-18 (E-033).** Not a formal contribution to the study, so there is no study contribution awaiting assignment. **X-15 was then raised and is now CLOSED (E-036): no affirmative third-party rights evidence exists, and a theoretical possibility is not a rights issue.**
-3. **AI involvement account**: conception, direction, review, selection, acceptance.
-4. Canonical OpenAPI designation; Codebook-to-API correspondence; `JRS_SANDBOX_OPEN` state; telemetry retention; Formspree status; trademark filing status; domain registrar; publisher agreements.
+3. ~~**AI involvement account**: conception, direction, review, selection, acceptance.~~ **SUPPLIED 2026-09-18 (E-029).** Recorded as an owner attestation and **not converted into an ownership determination**; F-4 is unchanged.
+4. **Partially answered 2026-09-18.** ~~`JRS_SANDBOX_OPEN` state~~ **NOT true and `REVIEW_API_TOKEN` unset**, by production probe. ~~telemetry retention~~ **policy exists, never executed**. ~~Formspree status~~ **ACTIVE**. ~~trademark filing status~~ **no filing evidence located** (F-8; whether one exists externally is not repository-answerable). ~~domain registrar~~ **owner controls the account (E-035)**. **STILL OPEN**: canonical OpenAPI designation and Codebook-to-API correspondence (both frozen under B-016 / D-2), and **publisher agreements**.
 
 # 20. Chain-of-title issue register
 
@@ -261,7 +261,7 @@ Hekim's own words accepting the CCI terms; retention and deletion policy.
 | CT-2 | **Gabriela Cortez (V-AI-08)** / Section 2.1 reference | ~~Assignment for the accessibility argument?~~ **Premise corrected twice; see section 16** | **E-033, then E-036: the approach arose from the OWNER'S own MCCR work and experience, discussed with a mentee. NOT a formal study contribution.** Panel participation separately verified and preserved | **No affirmative third-party rights evidence, eight propositions searched, zero hits** | **CLOSED** | **No counsel dependency arises from this matter.** X-15 was raised on the superseded premise and is CLOSED |
 | CT-3 | Hekim / CCI | Terms accepted? | **Recorded as confirmed 2026-08-06** | His own words | **EVIDENCE GATHERED** | Retrieve his reply only if Level C is wanted |
 | CT-4 | 33 contributors | Revocability against exclusivity | Consents executed | Irrevocability | **REQUIRES TARGETED PROFESSIONAL REVIEW** | Counsel |
-| CT-5 | AI-assisted assets | Human conception and direction | Attribution measured; articles dated | The account itself | **OWNER INPUT REQUIRED** | Answer question 3 |
+| CT-5 | AI-assisted assets | Human conception and direction | Attribution measured; articles dated; **E-029 owner attestation 2026-09-18** | ~~The account itself~~ **supplied** | **OWNER ACCOUNT SUPPLIED — no longer an owner action** | **E-029 answers it.** The residual is the artifact-level record, which is an **evidentiary limitation**, not an owner question, and **not an assertion that review did not occur** |
 | CT-6 | Trademarks | Filed? | Preparation dossier | Filing evidence | **EXTERNAL EVIDENCE REQUIRED** | USPTO check |
 | CT-7 | Published articles | Durability | 3 articles read live | **Archived copies** | **NOT MATERIAL AT CURRENT STAGE, but cheap to close** | Capture dated PDFs |
 
@@ -283,7 +283,7 @@ externally timestamped authorship of JRS and DRR is established from 2026-06-02.
 Ubayet's authorship is corroborated by primary images. Hekim's terms are recorded as
 confirmed.
 
-**What remains is three questions, none discoverable by further repository searching**,
+**RECONCILED 2026-09-18.** The prior text read *"What remains is three questions, none discoverable by further repository searching"*. **Five owner confirmations on 2026-09-18 (E-029 to E-036) answered the factual limb of every one of them.** What remains is **publisher agreements**, the **artifact-level record limitation**, and the **legal** questions that were never owner questions,
 and one durability task that takes minutes.
 
 **No asset is classified as legally owned. That classification requires evidence that
@@ -531,10 +531,22 @@ either direction.**
 
 ## 23. Genuine remaining evidence questions
 
-Only two survive consolidation:
+**RECONCILED 2026-09-18. The prior text is preserved immediately below it.**
 
-1. **Section 2.1 assignment** for the specific accessibility argument. **OWNER INPUT REQUIRED.**
-2. **Artifact-level human review evidence** for AI-assisted work. **EVIDENTIARY LIMITATION** (see below), not an owner action item.
+1. ~~**Section 2.1 assignment** for the specific accessibility argument. **OWNER INPUT REQUIRED.**~~
+   **CLOSED / NOT AN OUTSTANDING OWNER ACTION.** E-033 and E-036 establish that the Section 2.1
+   material was **not a formal JRS research contribution by Gabi Cortez**. The approach arose
+   from the **owner's own MCCR work and experience** and was discussed with his mentee. **X-15
+   was raised on the superseded premise and is CLOSED.** No affirmative third-party rights
+   evidence was identified in the targeted search across eight propositions. **Gabi's separate
+   JRS panel participation remains preserved.**
+2. **Artifact-level human review evidence** for AI-assisted work. **EVIDENTIARY LIMITATION**,
+   not an owner action item. **UNCHANGED, and deliberately so**: E-029 supplies the owner's
+   *account* of conception, direction, review, selection and acceptance; it does not create a
+   per-artifact review record, and the limitation is about the record, not about whether review
+   occurred.
+
+**So one survives, and it is a limitation rather than a question.**
 
 ## 24. External administrative records
 
