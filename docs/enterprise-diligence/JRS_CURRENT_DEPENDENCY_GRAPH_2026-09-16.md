@@ -156,7 +156,9 @@ B-006  silent-skip root cause             [DIAGNOSTIC READY, NOT EXECUTED. Its s
                                            the failure mode is prevented and detected
                                            regardless of cause]
 
-B-004 · B-007/D-1 · B-016 · V-4(3)        [COUNSEL. Parallel. Gate nothing on this path]
+B-002 · B-004 · B-007/D-1 · B-016 · V-4(3)  [COUNSEL. Parallel. Gate nothing on this path.
+                                           B-002 added 2026-09-18: it is subsumed by B-007
+                                           and routes to counsel with it]
 ```
 
 ## Critical path

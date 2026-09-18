@@ -373,6 +373,11 @@ NEVER_EXCLUDE = set(MANDATORY) | {
 CORRECTION_NARRATIVE = {
     "docs/enterprise-diligence/JRS_ESTATE_WIDE_SYNCHRONIZATION_MATRIX_2026-09-18.md",
     "docs/enterprise-diligence/JRS_ESTATE_WIDE_DOWNSTREAM_RECONCILIATION_REPORT_2026-09-18.md",
+    # Added when the closure verifier flagged it on its own first run: a report
+    # whose findings ARE quotations of stale wording quotes stale wording. The
+    # alternative was to soften the scan so this record passed, which would have
+    # blunted it everywhere else to spare one file.
+    "docs/enterprise-diligence/JRS_ESTATE_DISCOVERY_COMPLETENESS_REPORT_2026-09-18.md",
     "docs/enterprise-diligence/STALE_STATUS_CORRECTION_REGISTER.md",
     "docs/enterprise-diligence/D-10_STATUS_RECONCILIATION.md",
 }

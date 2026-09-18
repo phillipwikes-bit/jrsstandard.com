@@ -37,6 +37,12 @@ publication is not a commercial licence.
 
 ## 2 · B-007 / D-1 — Published licensed API contract
 
+> **B-002 IS THIS MATTER, ADDED 2026-09-18.** The registry routes **B-002 to COUNSEL** because
+> `.jrs/reports/GATE_1_REMAINING_ITEMS.md` item 8 records it as **subsumed by B-007** — "two
+> OpenAPI documents disagree" is the same fact this section states. **It is named here so a
+> reader tracing B-002 is not left looking for a section that does not exist.** No separate
+> legal question arises from it.
+
 **LEGAL QUESTION.** `openapi.json` is published, carries a **Commercial licence**, and is linked
 from a confidential buyer surface. It describes a response the implementation does not return.
 What are the implications of (a) leaving it, (b) amending it, (c) versioning it?
@@ -139,10 +145,20 @@ cycle.
 
 ## 3 · CONDITIONAL — B-013B, if contributors were not told
 
-**Triggered only if the owner answers B-013B "not told" or "not recorded".**
+~~**Triggered only if the owner answers B-013B "not told" or "not recorded".**~~
 **QUESTION.** 54 contributor-supplied record texts are anonymously readable. What obligations
 follow if participants were not informed?
 **NOT ESTABLISHED:** what participants were told. **No privacy conclusion is offered.**
+
+> **TRIGGER NARROWED 2026-09-18, AND ONE LIMB OF IT IS NOW CLOSED.** B-013B had two residual
+> factual questions. **E-031 closes one**: the owner attests that Stacyann Young and Tanvi
+> Pokhriyal entered the records and that **he personally reviewed them for de-identification**
+> before use. **E-031 does NOT reach the other**, which is whether submitters were told their
+> rows would be **anonymously readable** — no attestation addresses that, and it is the limb
+> that triggers this section.
+>
+> **One limb answered is not the question answered.** The trigger is therefore narrower than
+> written above and is **not removed**: it fires on the readability-disclosure limb alone.
 
 ## 4 · data-residency wording — CORRECTED 2026-09-16, and it is no longer conditional
 

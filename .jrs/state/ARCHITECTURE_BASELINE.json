@@ -60,7 +60,7 @@
   },
   "controls": {
     "_source": "scripts/check_zero_drift.py and tests/",
-    "guards": 126,
+    "guards": 127,
     "guard_suites": [
       "offline",
       "online"

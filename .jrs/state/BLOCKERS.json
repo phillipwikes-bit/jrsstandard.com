@@ -37,7 +37,9 @@
           "reason": "required repository-side proof of an external action"
         }
       ],
-      "closure_evidence_note_2026_09_18": "Owner attestation of the external credential rotation, 2026-09-18. Added 2026-09-18: a reverse trace over this registry found the closure recorded here with NO POINTER TO THE EVIDENCE, so a reviewer reading the registry alone could not reach E-030. An external control-plane action admits an attestation and nothing else; the pointer is what makes that checkable rather than merely asserted."
+      "closure_evidence_note_2026_09_18": "Owner attestation of the external credential rotation, 2026-09-18. Added 2026-09-18: a reverse trace over this registry found the closure recorded here with NO POINTER TO THE EVIDENCE, so a reviewer reading the registry alone could not reach E-030. An external control-plane action admits an attestation and nothing else; the pointer is what makes that checkable rather than merely asserted.",
+      "next_action_by": "NONE",
+      "next_action_basis": "CLOSED. Owner-confirmed external action, E-030."
     },
     {
       "blocker_id": "B-002",
@@ -52,7 +54,9 @@
       "status": "PREPARED_FOR_HUMAN_REVIEW",
       "created": "2026-09-14",
       "remediation_2026_09_14": "Evidence and four costed options in docs/enterprise-diligence/API_OPENAPI_RECONCILIATION_REPORT.md. Identity preserved separately from B-007. Nothing implemented.",
-      "note_2026_09_15_cycle2": "Folded into B-007. No change."
+      "note_2026_09_15_cycle2": "Folded into B-007. No change.",
+      "next_action_by": "COUNSEL",
+      "next_action_basis": "Subsumed by B-007 per .jrs/reports/GATE_1_REMAINING_ITEMS.md item 8; the contract question is B-007/B-016 and is with counsel."
     },
     {
       "blocker_id": "B-003",
@@ -72,7 +76,9 @@
       "remediation_2026_09_14": "Scope superseded by B-009: seven active processors, not four. Publishing a disclosure is a Section 23 publication.",
       "update_2026_09_15": "Disclosure APPROVED IN PRINCIPLE by owner 2026-09-15. Merged in scope with B-009. Publication itself not yet performed.",
       "remediation_2026_09_15": "Satisfied by the B-009 disclosure. privacy.html now names every active processor, so the original required_action (publish the list, or record a decision not to) is met in draft. The original count of four is preserved above rather than edited, and the corrected count lives in B-009. NOT DEPLOYED, so publication is not yet complete.",
-      "public_claims_remediation_2026_09_15": "Claims sweep across all 75 deployed pages corrected the data-handling representations that contradicted the implementation. D-11 review-engine.html and D-15 security.html now state that record text goes to Anthropic and that model-written output about the record is retained; security.html now names Anthropic, which it never did. D-13 terms.html and engagement.html no longer say the free check 'transmits nothing'. The 'never leaves your control' block was corrected on five pages, the 'zero data retention at rest' paragraph on seven, and the 'Data Isolation Guarantee' heading, which is banned vocabulary under CLAUDE.md 24, was renamed and scoped to the human-delivered work on five pages. D-16 Gumroad prose corrected on two pages with no replacement provider named, because none is evidenced and every checkout_url is empty. D-17 terms.html sub-processor sentence scoped to the closed engagements. Guard check_data_handling_claims_match_the_implementation added and demonstrated failing on six mutations, one of which exposed a substring weakness in the guard itself that was then fixed."
+      "public_claims_remediation_2026_09_15": "Claims sweep across all 75 deployed pages corrected the data-handling representations that contradicted the implementation. D-11 review-engine.html and D-15 security.html now state that record text goes to Anthropic and that model-written output about the record is retained; security.html now names Anthropic, which it never did. D-13 terms.html and engagement.html no longer say the free check 'transmits nothing'. The 'never leaves your control' block was corrected on five pages, the 'zero data retention at rest' paragraph on seven, and the 'Data Isolation Guarantee' heading, which is banned vocabulary under CLAUDE.md 24, was renamed and scoped to the human-delivered work on five pages. D-16 Gumroad prose corrected on two pages with no replacement provider named, because none is evidenced and every checkout_url is empty. D-17 terms.html sub-processor sentence scoped to the closed engagements. Guard check_data_handling_claims_match_the_implementation added and demonstrated failing on six mutations, one of which exposed a substring weakness in the guard itself that was then fixed.",
+      "next_action_by": "OWNER",
+      "next_action_basis": "The disclosure is written and not deployed. Publishing it is a Section 23 publication and needs owner approval."
     },
     {
       "blocker_id": "B-004",
@@ -88,7 +94,9 @@
       "required_action": "Legal review. Claude may organize evidence and draft questions; it may not determine title (Rule 8).",
       "owner": "HUMAN",
       "status": "OPEN",
-      "created": "2026-09-14"
+      "created": "2026-09-14",
+      "next_action_by": "COUNSEL",
+      "next_action_basis": "No Level A instrument exists. Rule 8 forbids this repository determining title."
     },
     {
       "blocker_id": "B-005",
@@ -103,7 +111,9 @@
       "update_2026_09_15": "Code complete and tested. Deployment is conditionally authorized (D-9) but condition 1, completed B-001 rotation, is NOT met, so no deployment was attempted. Change remains on the development branch.",
       "correction_2026_09_15": "OLD FINDING: 'six literals across five files reduced to zero outside that module'. NEW EVIDENCE: two live literals remain in supabase/functions/run-study/index.ts lines 38 and 75, a second Anthropic-calling engine, plus one published example in review-engine.html:379. The census covered api/ only. CORRECTED STATUS: zero literals remain IN api/; B-005 is NOT remediated as originally described. EXPLANATION: found by an adversarial pass 2026-09-15. supabase/ is now excluded from the Vercel deployable set, which addresses the exposure but not the literal.",
       "scope_correction_2026_09_16": "OLD STATUS: REMEDIATED (implied repository-wide). NEW STATUS: REMEDIATED FOR THE API RUNTIME ONLY. WHY: two live literals remain in supabase/functions/run-study/index.ts, a dormant second Anthropic-calling engine deployed by a different toolchain and not the one the nightly cron calls. EVIDENCE: repository-wide grep, 2026-09-15. AUTHORITY: engineering for the scope statement; OWNER for whether B-005's scope includes the dormant research route. DATE: 2026-09-16. See B-005_SCOPE_RECONCILIATION.md. The published example in review-engine.html:379 is deliberately left: an API example showing a placeholder instead of the real identifier would be less useful and arguably less honest.",
-      "board_decision_2026_09_16": "BD-09. OLD STATUS: scope ambiguous. NEW STATUS: scope DECLARED as the Review Engine API runtime. WHY: the blocker's own words are 'pinned in the Review Engine'; the Vercel API routes are the Review Engine. The dormant Supabase study function the cron does not call, for closed studies, and a published documentation example are outside it. EVIDENCE: blocker text, vercel.json crons, STUDIES_CLOSED. AUTHORITY: Board, delegated. DATE: 2026-09-16."
+      "board_decision_2026_09_16": "BD-09. OLD STATUS: scope ambiguous. NEW STATUS: scope DECLARED as the Review Engine API runtime. WHY: the blocker's own words are 'pinned in the Review Engine'; the Vercel API routes are the Review Engine. The dormant Supabase study function the cron does not call, for closed studies, and a published documentation example are outside it. EVIDENCE: blocker text, vercel.json crons, STUDIES_CLOSED. AUTHORITY: Board, delegated. DATE: 2026-09-16.",
+      "next_action_by": "OWNER",
+      "next_action_basis": "Remediated in the API runtime; only a deployment can verify it."
     },
     {
       "blocker_id": "B-006",
@@ -133,7 +143,9 @@
           "not_established": "WHETHER VERCEL CREATED A DEPLOYMENT RECORD FOR c08b48a. That is the single fact that distinguishes the four candidate causes, and it lives in Vercel's API and in GitHub's check-run history for that ref.",
           "why_not_reachable": "The available GitHub tooling exposes get_check_run, which requires a numeric check-run id obtainable only from a webhook event, and offers no list-checks-for-ref capability. The Vercel API requires the rotated token, which must stay in Phillip's shell. NOT ESTABLISHABLE FROM HERE - recorded as such rather than inferred from the most plausible cause, which the procedure expressly forbids."
         }
-      }
+      },
+      "next_action_by": "OWNER",
+      "next_action_basis": "Diagnostic ready and unexecuted. One command in the owner's own shell; the credential must never enter this repository."
     },
     {
       "blocker_id": "B-007",
@@ -154,7 +166,9 @@
       "created": "2026-09-14",
       "remediation_2026_09_14": "Refined: TWO specs describe the same path and openapi-review-engine.json (0.1.0-validation) MATCHES the implementation while openapi.json (1.0.0, Commercial licence) does not. Four options costed. Nothing implemented.",
       "update_2026_09_15": "External distribution INVESTIGATED 2026-09-15 and ESTABLISHED: openapi.json is PUBLISHED at /openapi.json and /openapi (HTTP 200, real spec) and linked from security.html, review-engine.html and both confidential buyer surfaces. Per the owner's own instruction this triggers COUNSEL REVIEW REQUIRED BEFORE CONTRACT MODIFICATION. No document modified, no field emitted, no routing vocabulary chosen, and routing is NOT asserted equal to determination.",
-      "note_2026_09_15_cycle2": "API_COMPATIBILITY_IMPLEMENTATION_PLAN.md added as design only. openapi.json remains untouched. The blocker inside the recommended option is recorded: option D requires emitting 'Needs work', which appears nowhere in the Codebook, so D cannot proceed until the owner declares the routing mapping. Status unchanged."
+      "note_2026_09_15_cycle2": "API_COMPATIBILITY_IMPLEMENTATION_PLAN.md added as design only. openapi.json remains untouched. The blocker inside the recommended option is recorded: option D requires emitting 'Needs work', which appears nowhere in the Codebook, so D cannot proceed until the owner declares the routing mapping. Status unchanged.",
+      "next_action_by": "COUNSEL",
+      "next_action_basis": "Whether the published contract is a licensed interface is a legal question."
     },
     {
       "blocker_id": "B-008",
@@ -172,7 +186,9 @@
       "correction_2026_09_15": "OLD FINDING: 'index.html carries three mentions' of the unvalidated-engine disclosure. NEW EVIDENCE: grep -c -i 'unvalidated' index.html returns 0; the page renders engine output via renderReviewResults(data) at line 5110. CORRECTED STATUS: the earlier narrowing was WRONG. Three pages call /api/review, and two of them, index.html and review-engine.html, were also missing required propositions. EXPLANATION: the earlier pass matched on adjacent vocabulary ('validation', 'reproducibility') rather than on the proposition itself, and reported a count that was never verified. The new guard check_pages_that_render_engine_output_disclose_validation_status found it.",
       "remediation_2026_09_15": "IMPLEMENTED at the public UI layer only; api/review.js and its JSON response are UNCHANGED, per D-5. The bounded disclosure states all four owner-specified propositions: the engine is operationally implemented; it is empirically unvalidated; reproducibility is not equivalent to accuracy; the output does not replace human judgment. Inserted on training.html at two points (before the input and inside the results footer, so it travels with every rendered output), on index.html adjacent to the Record Review Workspace, and on review-engine.html inside the existing 'Stage and limits, stated first' callout. None of the banned vocabulary (legally defensible, legally sufficient, court-admissible, certified, accredited, guaranteed accurate) is used. Guard added and demonstrated failing against the pre-fix tree. Suite 129 checks, 0 failed, 1 skipped. NOT DEPLOYED: the change is an external representation and remains on the development branch.",
       "scope_note_2026_09_15": "SCOPE WIDENED BEYOND THE LITERAL AUTHORIZATION, AND FLAGGED RATHER THAN HIDDEN. The owner authorized B-008 remediation on training.html, which was the target set I had reported. That report was factually wrong. The same blocker, the same wording and the same remediation were applied to the two other pages that render engine output. Reversible, undeployed, and subject to the owner's decision.",
-      "owner_decision_2026_09_15": "ACCEPTED by Phillip Wikes. The scope widening to the full target set is approved: training.html, index.html and review-engine.html retain the four bounded-validation propositions. api/review.js and its JSON response stay unchanged. Not deployed."
+      "owner_decision_2026_09_15": "ACCEPTED by Phillip Wikes. The scope widening to the full target set is approved: training.html, index.html and review-engine.html retain the four bounded-validation propositions. api/review.js and its JSON response stay unchanged. Not deployed.",
+      "next_action_by": "OWNER",
+      "next_action_basis": "Remediated at the UI layer and accepted; not deployed."
     },
     {
       "blocker_id": "B-009",
@@ -196,7 +212,9 @@
       "out_of_scope_findings_2026_09_15": "Recorded as D-13 to D-17 and NOT fixed: terms.html and engagement.html say the free check 'transmits nothing' when it beacons to Supabase and loads GA4 and Fonts; privacy.html section 2 promises a sanitiser the Formspree form does not run, which is also a 36.6 breach; security.html says there is no record store when the versioned engine route stores model-written notes and a 600-character rewrite; Gumroad is named as payment handler with no URL anywhere; terms.html says no sub-processors were engaged.",
       "public_claims_remediation_2026_09_15": "Claims sweep across all 75 deployed pages corrected the data-handling representations that contradicted the implementation. D-11 review-engine.html and D-15 security.html now state that record text goes to Anthropic and that model-written output about the record is retained; security.html now names Anthropic, which it never did. D-13 terms.html and engagement.html no longer say the free check 'transmits nothing'. The 'never leaves your control' block was corrected on five pages, the 'zero data retention at rest' paragraph on seven, and the 'Data Isolation Guarantee' heading, which is banned vocabulary under CLAUDE.md 24, was renamed and scoped to the human-delivered work on five pages. D-16 Gumroad prose corrected on two pages with no replacement provider named, because none is evidenced and every checkout_url is empty. D-17 terms.html sub-processor sentence scoped to the closed engagements. Guard check_data_handling_claims_match_the_implementation added and demonstrated failing on six mutations, one of which exposed a substring weakness in the guard itself that was then fixed.",
       "contradiction_2026_09_15": "See .jrs/contradictions/CONTRADICTION_002.md. Status UNCHANGED and deliberately not reconciled.",
-      "d10_resolution_2026_09_16": "OLD STATUS: 'RESTRICTED-SURFACE FONTS DECISION OPEN'. NEW STATUS: the restricted-surface half is DECIDED as BD-05 under delegation, accept and disclose, do not self-host, do not alter access architecture. WHY: privacy posture is delegated; the three surfaces already carry noindex, are absent from sitemap.xml and are linked only from each other. EVIDENCE: BD-05 in JRS_BOARD_DECISION_REGISTER_2026-09-16.md. AUTHORITY: Board, delegated. DATE: 2026-09-16. DEPENDENCY: none. The DISCLOSURE half remains NOT DEPLOYED and is unchanged. The contradiction record is retained at .jrs/contradictions/, not deleted."
+      "d10_resolution_2026_09_16": "OLD STATUS: 'RESTRICTED-SURFACE FONTS DECISION OPEN'. NEW STATUS: the restricted-surface half is DECIDED as BD-05 under delegation, accept and disclose, do not self-host, do not alter access architecture. WHY: privacy posture is delegated; the three surfaces already carry noindex, are absent from sitemap.xml and are linked only from each other. EVIDENCE: BD-05 in JRS_BOARD_DECISION_REGISTER_2026-09-16.md. AUTHORITY: Board, delegated. DATE: 2026-09-16. DEPENDENCY: none. The DISCLOSURE half remains NOT DEPLOYED and is unchanged. The contradiction record is retained at .jrs/contradictions/, not deleted.",
+      "next_action_by": "OWNER",
+      "next_action_basis": "Disclosure written and not deployed; publication needs approval."
     },
     {
       "blocker_id": "B-010",
@@ -211,7 +229,9 @@
       "evidence_refs": [
         "CLAUDE.md#36.3"
       ],
-      "closure_evidence_note_2026_09_18": "The owner's classification of 2026-09-14: ONE private owner page, TWO confidential buyer surfaces, kept as distinct categories. Added 2026-09-18 for the same reason as B-001 - the closure was recorded without a route to what settles it."
+      "closure_evidence_note_2026_09_18": "The owner's classification of 2026-09-14: ONE private owner page, TWO confidential buyer surfaces, kept as distinct categories. Added 2026-09-18 for the same reason as B-001 - the closure was recorded without a route to what settles it.",
+      "next_action_by": "NONE",
+      "next_action_basis": "RESOLVED. Classified by the owner 2026-09-14; CLAUDE.md 36.3."
     },
     {
       "blocker_id": "B-011",
@@ -226,7 +246,9 @@
       "evidence_refs": [
         ".jrs/reports/GATE_1_REMAINING_ITEMS.md#item-14"
       ],
-      "closure_evidence_note_2026_09_18": "Fixed at the cause and proven against empty live data. Added 2026-09-18."
+      "closure_evidence_note_2026_09_18": "Fixed at the cause and proven against empty live data. Added 2026-09-18.",
+      "next_action_by": "NONE",
+      "next_action_basis": "RESOLVED at the cause and proven against empty live data."
     },
     {
       "blocker_id": "B-012",
@@ -267,7 +289,9 @@
       "correction_needed_in_the_file": "Its header asserts 'Both are maintained', which has been FALSE since 2026-08-14, and 'none of which are on main', which is also false: 22 root-level .md files including this one ARE tracked on main. They are simply not SERVED, by two independent mechanisms.",
       "human_decision_required": "Approve the superseded notice, or state a different disposition. No deletion is recommended and none will be performed without explicit instruction.",
       "remediation_2026_09_14": "Additive historical notice prepended, +28/-0. No historical content altered, merged or reinterpreted. Preservation confirmed byte-wise.",
-      "update_2026_09_15": "Additive notice applied and accepted. Owner directed no further modification of the historical tracker."
+      "update_2026_09_15": "Additive notice applied and accepted. Owner directed no further modification of the historical tracker.",
+      "next_action_by": "NONE",
+      "next_action_basis": "RESOLVED. The root tracker is preserved with a historical notice."
     },
     {
       "blocker_id": "B-013",
@@ -295,7 +319,9 @@
       "implementation_2026_09_16": "BD-02 replacement read path BUILT: api/engine-activity.js, a server-mediated endpoint returning per-condition STATUS only, reading with the service role so it survives grant revocation. It returns no finding, no note, no compliant_version, no free text, and truncates the timestamp to the hour because an exact timestamp on a low-volume endpoint is a correlation handle. engine-activity.html repointed; the three render lines for ai_function, condition_triggered and compliant_version were REMOVED, not hidden. 17 projection tests, 0 failed, including a case where the upstream row carries record text and an unexpected column, neither of which passes through. BD-03 retention mechanism BUILT: lib/retention/policy.js, 24 months, interaction_events only, with research tables, pilot_contacts and engine_reviews expressly excluded. It COMPUTES and does not delete: no DELETE statement and no fetch in the module. 15 tests, 0 failed, including the no-op claim tested against the real earliest row rather than asserted. NEITHER the grant revocation NOR any deletion was performed: both are production operations. STATUS: BOARD DECIDED -> IMPLEMENTED -> TESTED. NOT production verified.",
       "t4_decision_2026_09_16": "BD-10 (T-4) DECIDED AND IMPLEMENTED. engine_reviews is a MIXED table: metadata and evaluation results alongside model output derived from the customer's record. A single rule would either keep the sensitive text too long or destroy the reproducibility evidence to remove it, so the rule is FIELD-LEVEL: conditions[].note, finding.compliant_version and input_preview EXPIRE AT 90 DAYS, nulled in place; the row and its statuses, determination, overall_consistency and versions are RETAINED. The 24-month telemetry rule was expressly NOT extended by inference. Establishedrather than assumed: no research script reads this table and reproducibility reporting uses findings_history and study_runs, so redaction destroys no research evidence. BD-11 (T-11) DECIDED AND IMPLEMENTED: research-data.html offered engine_reviews as a data-room export with select=*, which would have returned the notes and the rewrite to anyone holding the publishable key. A second exposure path alongside B-013A, found while deciding T-4 and latent only because the table holds zero rows. Narrowed to the activity endpoint's projection. 38 retention tests, 0 failed. Guard added, 6 mutations fail correctly. NO production redaction performed: that is a production data operation.",
       "u3_disclosure_2026_09_16": "BD-12 DECIDED AND IMPLEMENTED. U-3 asked whether BD-10's 90-day expiry needed disclosing. ESTABLISHED FIRST: no public page stated ANY retention period; searched '90 days', 'retention period', 'retained for' across the estate, zero results. The pages said model output about the record 'is retained' and never said for how long, which was complete before BD-10 and incomplete after it. DECIDED: disclose BY CATEGORY, not as a bare period, because a bare '90 days' reads as the whole row being deleted, which is FALSE and worse than silence. Three categories now stated on security.html and privacy.html: model output about the record kept 90 days then removed; the evaluation record retained; the submitted record never stored at all. Red-teamed against ten possible misreadings, all clear. Guard added reading the period FROM the policy module so the page cannot drift from the code, anchored to the disclosure sentence after a page-wide version passed a mutation. DISCLOSURE IS NOT IMPLEMENTATION: production still serves the old text and no expiry has run anywhere. PRODUCTION VERIFICATION REQUIRED.",
-      "note": " STRUCTURAL CLARIFICATION 2026-09-17 (BD-16), recorded here because the Round G work could be misread as having closed the A limb. THE PAGE PROJECTION IS NOT THE CONTROL. The allow-list added over engine_reviews prevents the PAGE from displaying a column and prevents silent drift; it does not protect the data. The publishable key ships in 17 HTML files by design, so anyone holding it can issue select=* against any anonymously readable table directly, whatever a page asks for. THE GRANT IS THE CONTROL, and revoking the anon SELECT on engine_reviews is the A limb of this blocker. Anyone reading the allow-list work as 'engine_reviews is protected' is reading it wrong. The same holds for B-017 and finding_responses."
+      "note": " STRUCTURAL CLARIFICATION 2026-09-17 (BD-16), recorded here because the Round G work could be misread as having closed the A limb. THE PAGE PROJECTION IS NOT THE CONTROL. The allow-list added over engine_reviews prevents the PAGE from displaying a column and prevents silent drift; it does not protect the data. The publishable key ships in 17 HTML files by design, so anyone holding it can issue select=* against any anonymously readable table directly, whatever a page asks for. THE GRANT IS THE CONTROL, and revoking the anon SELECT on engine_reviews is the A limb of this blocker. Anyone reading the allow-list work as 'engine_reviews is protected' is reading it wrong. The same holds for B-017 and finding_responses.",
+      "next_action_by": "OWNER",
+      "next_action_basis": "Limbs A and C decided, implemented and tested; the production operations have not been performed and cannot be performed from here."
     },
     {
       "blocker_id": "B-014",
@@ -313,7 +339,9 @@
       "owner": "HUMAN",
       "status": "REMEDIATED IN CONFIGURATION \u2014 REQUIRES DEPLOYMENT VERIFICATION",
       "created": "2026-09-15",
-      "note": "Found by an adversarial pass. My own candidate audit had certified 'Protected implementation excluded \u2014 CONFIRMED', which was false; that row is corrected in place with the correction visible."
+      "note": "Found by an adversarial pass. My own candidate audit had certified 'Protected implementation excluded \u2014 CONFIRMED', which was false; that row is corrected in place with the correction visible.",
+      "next_action_by": "OWNER",
+      "next_action_basis": "Remediated in configuration; live on production until a deployment occurs."
     },
     {
       "blocker_id": "B-015",
@@ -332,7 +360,9 @@
       "status": "REMEDIATED \u2014 NOT VERIFIED IN PRODUCTION \u2014 NOT DEPLOYED",
       "created": "2026-09-16",
       "note": "Found by an adversarial pass, not by me. The exposure was reachable by one environment variable and would have been an unauthenticated write of record-derived content into a publicly readable table.",
-      "owner_ratification_2026_09_18": "OWNER RATIFICATION 2026-09-18 of the V-11 / BD-15 decision to merge the two unauthenticated 401 detail messages. IT WAS ALREADY DECIDED AND IMPLEMENTED on 2026-09-17 under delegated authority, and is verified present in both engine routes (two occurrences each of the unified string). The owner's delegation therefore RATIFIES rather than initiates, and nothing was re-done: reopening an implemented decision to re-make it would be the loop this project has repeatedly had to correct. Recorded as BOARD DECISION - OWNER-DELEGATED, now owner-ratified. Production is untouched and remains unauthorized; the change reaches production only through the normal deployment gate."
+      "owner_ratification_2026_09_18": "OWNER RATIFICATION 2026-09-18 of the V-11 / BD-15 decision to merge the two unauthenticated 401 detail messages. IT WAS ALREADY DECIDED AND IMPLEMENTED on 2026-09-17 under delegated authority, and is verified present in both engine routes (two occurrences each of the unified string). The owner's delegation therefore RATIFIES rather than initiates, and nothing was re-done: reopening an implemented decision to re-make it would be the loop this project has repeatedly had to correct. Recorded as BOARD DECISION - OWNER-DELEGATED, now owner-ratified. Production is untouched and remains unauthorized; the change reaches production only through the normal deployment gate.",
+      "next_action_by": "OWNER",
+      "next_action_basis": "Remediated in code; not verified in production, not deployed."
     },
     {
       "blocker_id": "B-016",
@@ -357,7 +387,9 @@
       "owner": "COUNSEL",
       "status": "OPEN - COUNSEL REVIEW REQUIRED - NOT REMEDIATED",
       "created": "2026-09-16",
-      "note": "PRODUCTION IS NOT CURRENTLY EXPOSED, AND THAT IS NOT A DEFENCE. AUTHENTICATED is only ever true when REVIEW_API_TOKEN is provisioned; the 401 probe establishes it is unset, so no caller reaches the model, no row can be written, and engine_reviews holds 0 rows. Production is accurate today by CONFIGURATION, exactly as B-015 was. The defect is that the contract becomes false at the moment the asset is first licensed: provisioning a token to a licensee is the single act that turns on the write path the contract denies, so the first licensee is the only person who can make this document untrue, and they are the person it was written for. Two published surfaces now disagree: privacy.html:214 (BD-12, not yet deployed) says model output about the record is kept for 90 days; openapi.json (deployed) says the call is stateless and nothing is written to any table. WHY THE GUARD SUITE MISSED IT, twice over and either miss sufficient alone: check_data_handling_claims_match_the_implementation bans the substring 'no data-residency obligation', and openapi.json reads 'no data-residency OR RETENTION obligation', which defeats containment; and the sweep iterates _html_files() only, so it never read JSON at all. Found while establishing V-9 Fact A, not by the sweep. RECLASSIFICATION NOTE 2026-09-16: the residency clause in openapi.json ALSO corrects this repository's own record. Section 4 of the counsel packet stated that statements of the form 'no data-residency obligation transfers to us' were removed rather than reworded, and treated any republication as a future contingency. That was true of the HTML surfaces and was written as though it were true of the estate. A residency statement is live on production now. Section 4 is corrected in place with its prior text preserved."
+      "note": "PRODUCTION IS NOT CURRENTLY EXPOSED, AND THAT IS NOT A DEFENCE. AUTHENTICATED is only ever true when REVIEW_API_TOKEN is provisioned; the 401 probe establishes it is unset, so no caller reaches the model, no row can be written, and engine_reviews holds 0 rows. Production is accurate today by CONFIGURATION, exactly as B-015 was. The defect is that the contract becomes false at the moment the asset is first licensed: provisioning a token to a licensee is the single act that turns on the write path the contract denies, so the first licensee is the only person who can make this document untrue, and they are the person it was written for. Two published surfaces now disagree: privacy.html:214 (BD-12, not yet deployed) says model output about the record is kept for 90 days; openapi.json (deployed) says the call is stateless and nothing is written to any table. WHY THE GUARD SUITE MISSED IT, twice over and either miss sufficient alone: check_data_handling_claims_match_the_implementation bans the substring 'no data-residency obligation', and openapi.json reads 'no data-residency OR RETENTION obligation', which defeats containment; and the sweep iterates _html_files() only, so it never read JSON at all. Found while establishing V-9 Fact A, not by the sweep. RECLASSIFICATION NOTE 2026-09-16: the residency clause in openapi.json ALSO corrects this repository's own record. Section 4 of the counsel packet stated that statements of the form 'no data-residency obligation transfers to us' were removed rather than reworded, and treated any republication as a future contingency. That was true of the HTML surfaces and was written as though it were true of the estate. A residency statement is live on production now. Section 4 is corrected in place with its prior text preserved.",
+      "next_action_by": "COUNSEL",
+      "next_action_basis": "The published API contract is frozen pending authorization to correct it."
     },
     {
       "blocker_id": "B-017",
@@ -379,7 +411,9 @@
       "owner": "OWNER",
       "status": "REMEDIATED IN REPOSITORY - GRANT NOT REVOKED - PRODUCTION VERIFICATION REQUIRED",
       "created": "2026-09-16",
-      "note": "WHAT IS ESTABLISHED AND WHAT IS NOT. ESTABLISHED FROM REPOSITORY EVIDENCE: the promise, the grant, and the published export link all exist and contradict each other. NOT ESTABLISHED: whether any response rows exist and are actually retrievable by an anonymous caller. A direct read of the production table was attempted and correctly DENIED by the execution environment's production-read control, so the live row count is PRODUCTION VERIFICATION REQUIRED and is not inferred. The remediation does not depend on the count: a privacy promise contradicted by a grant is a defect whether or not anyone has yet typed into the box. SCOPE NOTE, so this is not over-read: interaction_events was examined in the same pass and is a WEAKER case, not this one. Its collecting pages promise 'No free text and no identifying information are collected' and 'aggregated without individual attribution', and select=* over a payload jsonb is consistent with that promise. The enforcement of 'no free text' lives in the client code that builds the payload rather than in the schema, which is a separate and lesser matter recorded as X-1 rather than folded in here."
+      "note": "WHAT IS ESTABLISHED AND WHAT IS NOT. ESTABLISHED FROM REPOSITORY EVIDENCE: the promise, the grant, and the published export link all exist and contradict each other. NOT ESTABLISHED: whether any response rows exist and are actually retrievable by an anonymous caller. A direct read of the production table was attempted and correctly DENIED by the execution environment's production-read control, so the live row count is PRODUCTION VERIFICATION REQUIRED and is not inferred. The remediation does not depend on the count: a privacy promise contradicted by a grant is a defect whether or not anyone has yet typed into the box. SCOPE NOTE, so this is not over-read: interaction_events was examined in the same pass and is a WEAKER case, not this one. Its collecting pages promise 'No free text and no identifying information are collected' and 'aggregated without individual attribution', and select=* over a payload jsonb is consistent with that promise. The enforcement of 'no free text' lives in the client code that builds the payload rather than in the schema, which is a separate and lesser matter recorded as X-1 rather than folded in here.",
+      "next_action_by": "OWNER",
+      "next_action_basis": "The anon SELECT grant on public.finding_responses must be revoked in the production console. Nothing here can perform or verify it."
     }
   ],
   "_decisions_recorded_2026_09_15": {
@@ -392,5 +426,15 @@
     "D-8": "Owner rotates the credential externally",
     "D-9": "B-005 deployment conditionally authorized; conditions not yet met",
     "D-1": "No implementation decision authorized; distribution question now answered and escalated to counsel"
+  },
+  "_next_action_by_vocabulary_2026_09_18": {
+    "values": [
+      "OWNER",
+      "COUNSEL",
+      "CLAUDE",
+      "NONE"
+    ],
+    "meaning": "Who takes the NEXT step. Not who did the work; `owner` records that.",
+    "why_added": "ADDED 2026-09-18. The `owner` field carries THREE different vocabularies - HUMAN, OWNER, COUNSEL, 'CLAUDE (proposal) then HUMAN (approval)' - and it means 'who did the work' in some rows and 'who does the next step' in others. An independent-review simulation filtering owner == HUMAN returned SEVEN blockers and MISSED B-017, which is one of the two production revocations. A registry is what a downstream consumer queries, so an ambiguous field there is a synchronization defect and not a style point. `owner` is left EXACTLY as it was, because it is the historical record of who was assigned. `next_action_by` is the unambiguous one: OWNER, COUNSEL, CLAUDE or NONE, and it answers only 'who takes the next step'."
   }
 }

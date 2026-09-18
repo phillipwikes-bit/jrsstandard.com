@@ -5858,6 +5858,75 @@ def _json_string_fields(rel):
     return out
 
 
+def check_every_blocker_says_who_acts_next(offline):
+    """Every blocker carries an unambiguous `next_action_by`, consistent with its status.
+
+    WHY THIS GUARD EXISTS. An independent-review simulation on 2026-09-18 asked
+    the registry "what needs the owner?" by filtering `owner == "HUMAN"`. It
+    returned SEVEN blockers and MISSED B-017 -- one of the two production
+    revocations -- because that row says "OWNER" while the others say "HUMAN",
+    B-016 says "COUNSEL", and B-007 says "CLAUDE (proposal) then HUMAN
+    (approval)". The field also means "who did the work" in some rows and "who
+    does the next step" in others. Two readers could reasonably reach two
+    different answers about who is holding the estate up, which is the exact
+    condition that fails a synchronization check.
+
+    `owner` is deliberately left untouched: it is the historical record of who
+    was assigned. `next_action_by` is the unambiguous field and this guard keeps
+    it that way.
+
+    WHAT IT CHECKS.
+      1. Every blocker has a `next_action_by` from the controlled vocabulary.
+      2. Every blocker has a stated basis for it.
+      3. A CLOSED blocker takes NONE, and a live one does not.
+      4. A blocker whose status demands counsel is not routed to the owner, and
+         one demanding a production or deployment act is not routed to counsel.
+
+    WHAT IT DOES NOT CHECK. Whether the routing is the RIGHT call on the merits.
+    That is the owner's and counsel's to say; this only keeps the registry from
+    answering the same question two ways.
+    """
+    findings = []
+    raw = read(".jrs/state/BLOCKERS.json")
+    if not raw:
+        check("every blocker says who acts next", False, "the blocker registry is missing")
+        return
+    blockers = json.loads(raw)["blockers"]
+    VOCAB = {"OWNER", "COUNSEL", "CLAUDE", "NONE"}
+    counts = {}
+    for b in blockers:
+        bid = b.get("blocker_id", "?")
+        nxt = b.get("next_action_by")
+        if nxt not in VOCAB:
+            findings.append("%s has next_action_by %r, outside the controlled vocabulary %s"
+                            % (bid, nxt, sorted(VOCAB)))
+            continue
+        counts[nxt] = counts.get(nxt, 0) + 1
+        if not (b.get("next_action_basis") or "").strip():
+            findings.append("%s routes to %s with no stated basis. A routing without a reason "
+                            "is a guess the next reader has to re-make" % (bid, nxt))
+        status = (b.get("status") or "").upper()
+        closed = (("RESOLVED" in status or "OWNER-CONFIRMED" in status
+                   or "COMPLETED" in status) and "NOT " not in status)
+        if closed and nxt != "NONE":
+            findings.append("%s is closed (%r) but still routes to %s" % (bid, status[:40], nxt))
+        if not closed and nxt == "NONE":
+            findings.append("%s is live (%r) but routes to NONE, so nothing moves it"
+                            % (bid, status[:40]))
+        if "COUNSEL REVIEW REQUIRED" in status and nxt not in ("COUNSEL",):
+            findings.append("%s says COUNSEL REVIEW REQUIRED but routes to %s" % (bid, nxt))
+        if re.search(r"NOT DEPLOYED|GRANT NOT REVOKED|PRODUCTION VERIFICATION|"
+                     r"DEPLOYMENT VERIFICATION", status) and nxt == "COUNSEL":
+            findings.append("%s needs a production or deployment act but routes to COUNSEL"
+                            % bid)
+    check("every blocker says who acts next",
+          not findings,
+          "; ".join(findings[:4]) if findings
+          else "%d blocker(s) routed: %s. `owner` is preserved as the historical assignment; "
+               "`next_action_by` answers who takes the next step"
+               % (len(blockers), ", ".join("%s=%d" % kv for kv in sorted(counts.items()))))
+
+
 def check_superseded_records_declare_themselves_superseded(offline):
     """A record that no longer controls says so, in its own opening block.
 
@@ -8502,6 +8571,7 @@ def main():
                check_misuse_register_records_reality,
                check_no_right_is_offered_beyond_its_evidence,
                check_section_2_1_resolution_holds,
+               check_every_blocker_says_who_acts_next,
                check_superseded_records_declare_themselves_superseded,
                check_no_owner_decision_asks_for_completed_work,
                check_downstream_records_agree_with_the_blocker_registry,
