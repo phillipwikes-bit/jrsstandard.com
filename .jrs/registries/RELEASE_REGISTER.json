@@ -13,5 +13,160 @@
     "root_cause": "NOT ESTABLISHED",
     "mitigation": "Prevented at config level and detected at CI level regardless of cause.",
     "remedy_rule": "RE-TRIGGER, never revert."
+  },
+  "_extended_2026_09_18": "Extended with the version inventory, compatibility matrix and temporal reproducibility determination. NOT a new register: the release architecture is the right home for version state, and creating a separate compatibility document would have produced a second source of truth for the same propositions. Deployment mechanics above are unchanged.",
+  "version_inventory": {
+    "_rule": "Every entry names its SOURCE OF TRUTH IN CODE. A version that exists only here is not controlled; it is asserted. check_version_inventory_matches_source reads each value from the file named below.",
+    "manifest_version": {
+      "value": "1.0",
+      "source": "lib/manifest/build.js MANIFEST_VERSION"
+    },
+    "canonicalization": {
+      "value": "jrs-dev-canon-1",
+      "source": "lib/manifest/canonicalize.js CANONICALIZATION_ID"
+    },
+    "engine_version": {
+      "value": "0.1.0-validation",
+      "source": "api/v1/review-engine.js ENGINE_VERSION"
+    },
+    "api_version": {
+      "value": "v1",
+      "source": "api/v1/review-engine.js API_VERSION"
+    },
+    "model_identifier": {
+      "value": "claude-haiku-4-5-20251001",
+      "source": "api/_model.js"
+    },
+    "retention_policy": {
+      "value": "1.0",
+      "source": "lib/retention/policy.js RETENTION.version"
+    },
+    "schema_id_version": {
+      "value": "1.0",
+      "source": "schemas/jrs-decision-reconstruction-manifest.schema.json $id"
+    },
+    "jrs_version": {
+      "value": "1.0",
+      "source": "CALLER-SUPPLIED. See caller_supplied_gap below"
+    },
+    "codebook_version": {
+      "value": "1.0",
+      "source": "CALLER-SUPPLIED. See caller_supplied_gap below"
+    }
+  },
+  "caller_supplied_gap": {
+    "finding": "jrs_version and codebook_version are REQUIRED ARGUMENTS to buildManifest and are validated only for PRESENCE. lib/manifest/build.js throws if either is absent and accepts any string if present.",
+    "consequence": "A manifest can assert a JRS or Codebook version that never existed, and two manifests for the same evaluation can disagree, with nothing failing. The manifest is the artifact a customer holds as their durable evidence, so an unvalidated version field is an unverifiable provenance claim on the one record the customer keeps.",
+    "status": "OPEN - X-9. Closed at the GUARD level today; the build-time validation is a code change to a deployable path and is queued rather than bundled into the current deployment candidate.",
+    "not_established": "Whether any manifest has ever carried a wrong version. Zero production manifests exist, so the exposure is latent."
+  },
+  "compatibility_matrix": {
+    "_rule": "COMPATIBILITY REQUIRES EVIDENCE. Sequential version numbers are not evidence. Every cell is one of COMPATIBLE, INCOMPATIBLE, MIGRATION_REQUIRED, DEPRECATED, UNSUPPORTED, NOT_ESTABLISHED. NOT_ESTABLISHED is the honest default and is used wherever no second version has ever existed to test against.",
+    "components": {
+      "jrs_standard": {
+        "versions": [
+          "1.0"
+        ],
+        "state": "NOT_ESTABLISHED",
+        "why": "single version; no pair exists to test"
+      },
+      "codebook": {
+        "versions": [
+          "1.0"
+        ],
+        "state": "NOT_ESTABLISHED",
+        "why": "single version"
+      },
+      "review_engine": {
+        "versions": [
+          "0.1.0-validation"
+        ],
+        "state": "NOT_ESTABLISHED",
+        "why": "single version"
+      },
+      "model": {
+        "versions": [
+          "claude-haiku-4-5-20251001"
+        ],
+        "state": "NOT_ESTABLISHED",
+        "why": "single pinned model. Retirement date NOT PUBLISHED BY THE PROVIDER IN ANY RECORD HELD HERE, and is not invented."
+      },
+      "manifest": {
+        "versions": [
+          "1.0"
+        ],
+        "state": "NOT_ESTABLISHED",
+        "why": "single version"
+      },
+      "schema": {
+        "versions": [
+          "1.0"
+        ],
+        "state": "NOT_ESTABLISHED",
+        "why": "single version"
+      },
+      "routing_vocabulary": {
+        "versions": [
+          "engine_determination"
+        ],
+        "state": "NOT_ESTABLISHED",
+        "why": "single vocabulary"
+      },
+      "condition_vocabulary": {
+        "versions": [
+          "review_engine_keys"
+        ],
+        "state": "NOT_ESTABLISHED",
+        "why": "single vocabulary"
+      },
+      "published_contract": {
+        "versions": [
+          "1.0.0 (openapi.json)",
+          "0.1.0-validation (openapi-review-engine.json)"
+        ],
+        "state": "INCONSISTENT",
+        "why": "TWO PUBLISHED CONTRACTS DESCRIBE THE SAME PATH /api/v1/review-engine AT DIFFERENT VERSIONS. Recorded in the Master Register as two conflicting OpenAPI documents. Neither may be edited: openapi.json is frozen under B-016 pending counsel."
+      }
+    }
+  },
+  "temporal_reproducibility": {
+    "_determination_definitions": {
+      "PASS": "Every MATERIAL element of the evaluation configuration is identifiable from the artifact and its controlled sources.",
+      "CONDITIONAL": "Every material element is identifiable; one or more NON-MATERIAL elements cannot currently be reproduced or independently verified.",
+      "FAIL": "A material element cannot be identified or reconstructed from the available record."
+    },
+    "_materiality": "MATERIAL means an element whose value changes the INTERPRETATION of the result: the condition vocabulary, the routing vocabulary, the five statuses, the engine version, the model identifier, the Codebook version and the input identity. NON-MATERIAL means an element that affects re-execution but not interpretation: runtime, host, wall-clock timing, and dependency versions that carry no semantics. A missing non-material element must NOT produce an automatic FAIL.",
+    "determination": "CONDITIONAL",
+    "carried_by_the_manifest": [
+      "manifest_id",
+      "created_at",
+      "manifest_version",
+      "jrs_version",
+      "codebook_version",
+      "engine.version",
+      "engine.model",
+      "engine.api_version",
+      "input hash and truncation state",
+      "condition_vocabulary",
+      "routing vocabulary",
+      "five condition results",
+      "human_review",
+      "content_class",
+      "integrity"
+    ],
+    "not_carried": {
+      "prompt_or_instruction_version": "NOT ESTABLISHED. The engine prompt is not versioned, so two evaluations under the same engine version may have used different instructions with nothing recording it. MATERIAL.",
+      "source_commit": "NOT CARRIED. The manifest identifies the engine version but not the commit that built it. NON-MATERIAL for interpretation, MATERIAL for re-execution.",
+      "dependency_versions": "NOT APPLICABLE. No package.json or lockfile exists, deliberately.",
+      "runtime": "NOT CARRIED. Vercel Edge. NON-MATERIAL for interpretation."
+    },
+    "why_conditional_and_not_pass": "The prompt/instruction version is MATERIAL by the definition above -- it changes interpretation -- and it is not versioned. That alone prevents PASS. It is recorded as X-10 rather than resolved by asserting a version that does not exist.",
+    "why_conditional_and_not_fail": "Every other material element IS identifiable, and the input hash lets a holder of the original prove correspondence. The record is RECONSTRUCTABLE even where it is not RE-EXECUTABLE.",
+    "_four_distinct_properties": {
+      "reconstructable": "YES for the elements listed above.",
+      "reproducible": "NOT ESTABLISHED. The engine is LLM-backed; run-to-run agreement is measured, not assumed.",
+      "re_executable": "NO. The route is closed in production and no historical evaluation exists to rerun.",
+      "verified_re_execution": "NO. Zero evaluations have been rerun and compared. Never claim otherwise."
+    }
   }
 }

@@ -5767,6 +5767,118 @@ def _strip_py_docstrings(text):
 
 
 
+
+def check_version_inventory_matches_its_sources(offline):
+    """Every declared version equals the value its named source actually holds.
+
+    WHY THIS GUARD EXISTS. A version inventory that nobody checks is an assertion,
+    not a control -- the same failure as the methodology mapping that described the
+    engine vocabulary while nothing tied it to ENGINE_CONDITION_KEYS. The inventory
+    in RELEASE_REGISTER.json names, for each version, the FILE AND SYMBOL that holds
+    the real value. This reads each one back.
+
+    WHAT IT ALSO CHECKS, and it is the finding that produced the inventory:
+    jrs_version and codebook_version are CALLER-SUPPLIED to buildManifest and are
+    validated only for PRESENCE. The builder throws when they are absent and accepts
+    any string when present, so a manifest can assert a Codebook version that never
+    existed and nothing fails. The manifest is the artifact a CUSTOMER keeps as
+    durable evidence, which makes an unvalidated version field an unverifiable
+    provenance claim on the one record they hold. This guard holds the gap open --
+    it fails if the registry stops recording it -- rather than pretending a registry
+    entry closed it.
+
+    WHAT IT DOES NOT CHECK. Whether any version number is CORRECT in the sense of
+    describing what it names. A string comparison cannot establish that, and the
+    compatibility matrix deliberately records NOT_ESTABLISHED wherever no second
+    version has ever existed to test against.
+    """
+    findings = []
+    reg = read(".jrs/registries/RELEASE_REGISTER.json")
+    if not reg:
+        check("version inventory matches its sources", False,
+              "RELEASE_REGISTER.json is missing; version state has no home")
+        return
+    r = json.loads(reg)
+    inv = r.get("version_inventory")
+    if not inv:
+        check("version inventory matches its sources", False,
+              "the release register carries no version_inventory")
+        return
+
+    # symbol readers: name -> (file, regex capturing the value)
+    READERS = {
+        "manifest_version":  ("lib/manifest/build.js",        r"MANIFEST_VERSION\s*=\s*'([^']+)'"),
+        "canonicalization":  ("lib/manifest/canonicalize.js", r"CANONICALIZATION_ID\s*=\s*'([^']+)'"),
+        "engine_version":    ("api/v1/review-engine.js",      r"ENGINE_VERSION\s*=\s*'([^']+)'"),
+        "api_version":       ("api/v1/review-engine.js",      r"API_VERSION\s*=\s*'([^']+)'"),
+        "model_identifier":  ("api/_model.js",                r"'(claude-[a-z0-9.-]+)'"),
+        "retention_policy":  ("lib/retention/policy.js",      r"RETENTION\s*=\s*\{[^}]*?version:\s*'([^']+)'"),
+    }
+    for key, (rel, pat) in READERS.items():
+        declared = (inv.get(key) or {}).get("value")
+        if declared is None:
+            findings.append("inventory has no entry for %s" % key)
+            continue
+        m = re.search(pat, read(rel) or "", re.S)
+        if not m:
+            findings.append("cannot read %s from %s; the inventory names a source that no "
+                            "longer holds the value" % (key, rel))
+            continue
+        if m.group(1) != declared:
+            findings.append("%s: inventory says %r, %s holds %r"
+                            % (key, declared, rel, m.group(1)))
+
+    # The caller-supplied gap must stay recorded until it is actually closed.
+    gap = r.get("caller_supplied_gap")
+    if not gap:
+        findings.append("caller_supplied_gap is gone from the release register. "
+                        "jrs_version and codebook_version are still caller-supplied "
+                        "unless build.js validates them, so removing the record hides "
+                        "an open gap rather than closing it")
+    else:
+        build = read("lib/manifest/build.js")
+        validates = bool(re.search(r"jrsVersion\s*\)[^\n]{0,80}(includes|indexOf|===)", build)
+                         or re.search(r"ALLOWED_JRS_VERSIONS", build))
+        if validates and "OPEN" in str(gap.get("status", "")):
+            findings.append("build.js now appears to validate jrsVersion, but the register "
+                            "still records the gap as OPEN. Close it deliberately with the "
+                            "evidence rather than leaving the record stale")
+
+    # Compatibility must be declared, never inferred from version ordering.
+    ALLOWED = {"COMPATIBLE", "INCOMPATIBLE", "MIGRATION_REQUIRED", "DEPRECATED",
+               "UNSUPPORTED", "NOT_ESTABLISHED", "INCONSISTENT"}
+    comps = (r.get("compatibility_matrix") or {}).get("components") or {}
+    if not comps:
+        findings.append("the release register carries no compatibility matrix")
+    for name, c in comps.items():
+        st = c.get("state")
+        if st not in ALLOWED:
+            findings.append("compatibility state %r for %s is not one of the declared "
+                            "classifications" % (st, name))
+        elif not c.get("why"):
+            findings.append("%s is classified %s with no reason; compatibility requires "
+                            "evidence, and the reason IS the evidence here" % (name, st))
+
+    # The reproducibility determination must be one of the three defined values.
+    tr = r.get("temporal_reproducibility") or {}
+    if tr.get("determination") not in {"PASS", "CONDITIONAL", "FAIL"}:
+        findings.append("temporal reproducibility determination is %r, which is not one of "
+                        "PASS, CONDITIONAL or FAIL" % tr.get("determination"))
+    props = tr.get("_four_distinct_properties") or {}
+    for prop in ("reconstructable", "reproducible", "re_executable", "verified_re_execution"):
+        if prop not in props:
+            findings.append("the four reproducibility properties must stay distinct; %r is "
+                            "missing. A documented environment is not a reproducible one, "
+                            "and a rerun is not a verification" % prop)
+
+    check("version inventory matches its sources",
+          not findings,
+          "; ".join(findings) if findings
+          else "%d inventory entries read back from code; %d components classified; "
+               "determination %s; the caller-supplied version gap is still recorded"
+               % (len(READERS), len(comps), tr.get("determination")))
+
+
 def _surface_text(rel, cls):
     """What a surface SAYS, not the bytes it is stored as.
 
@@ -7382,6 +7494,7 @@ def main():
                check_production_verifier_reads_no_secret,
                check_no_conditional_deployment_state,
                check_prohibited_claims_are_absent_from_every_surface_class,
+               check_version_inventory_matches_its_sources,
                check_manifest_schema_keeps_its_safeguards,
                check_data_handling_claims_match_the_implementation,
                check_published_api_contract_matches_the_write_path,
