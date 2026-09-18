@@ -16,7 +16,7 @@ AUTHORIZED** · **PHASE II LOCKED**.
 
 | State | Items |
 |---|---|
-| **OPEN — OWNER EXTERNAL ACTION** | B-001, B-006 |
+| ~~**OPEN — OWNER EXTERNAL ACTION**~~ **SUPERSEDED 2026-09-18** | ~~B-001, B-006~~ **B-001 OWNER-CONFIRMED (E-030); B-006 DIAGNOSTIC READY** |
 | **OPEN — COUNSEL** | B-004, B-007/D-1 |
 | **BOARD DECIDED → IMPLEMENTED → TESTED** | B-013A read path, B-013C retention, D-12, D-18, F-8 |
 | **BOARD DECIDED** (no implementation possible here) | B-013A revocation, D-3, D-10/BD-05 |
@@ -61,6 +61,9 @@ otherwise would be the failure this framework exists to prevent.
 
 # REVISION 2 — 2026-09-16, after BD-10 and BD-11
 
+> **HISTORICAL 2026-09-18.** This revision is superseded by **Round G**, the last revision in this document, which controls. Nothing under this heading states current state. It is retained because deleting a superseded assessment destroys the evidence of what was believed when.
+
+
 **The prior revision is preserved in git history. Its conclusion is unchanged.**
 
 ## What this revision adds
@@ -88,6 +91,9 @@ properties.
 
 # REVISION 3 — 2026-09-16, after BD-12
 
+> **HISTORICAL 2026-09-18.** This revision is superseded by **Round G**, the last revision in this document, which controls. Nothing under this heading states current state. It is retained because deleting a superseded assessment destroys the evidence of what was believed when.
+
+
 **Revisions 1 and 2 are preserved in git history. The conclusion is unchanged.**
 
 | Item | Change |
@@ -106,7 +112,9 @@ U-3 and opened V-4 and V-9.
 verified. Counsel matters untouched. Four owner facts remain.
 
 **V-10 is the sharpest reminder available:** production still serves text with no period, while
-a period is in force in policy. **That gap closes on deployment, and deployment waits on B-001.**
+a period is in force in policy. ~~**That gap closes on deployment, and deployment waits on
+B-001.**~~ **CORRECTED 2026-09-18:** that gap closes on deployment, and **deployment waits on
+owner authorization** — B-001 is **CLOSED** (E-030).
 
 # NOT READY FOR GATE 1 RECONSIDERATION.
 
@@ -114,7 +122,14 @@ a period is in force in policy. **That gap closes on deployment, and deployment 
 
 # REVISION — Round E and Round F, 2026-09-16
 
-Prior revisions above are **historical and unchanged**. This revision controls.
+~~Prior revisions above are **historical and unchanged**. This revision controls.~~
+
+> **SUPERSEDED 2026-09-18.** This revision was later superseded by **Round G** below, which
+> carries the same sentence. **Two revisions cannot both control**, and this one no longer
+> does. Everything under this heading is **historical**; the controlling revision is the last
+> one in this document. Corrections stamped 2026-09-18 inside this section were applied
+> before the conflict was noticed and are harmless — a corrected historical claim is still
+> historical.
 
 ## What changed since the last revision
 
@@ -136,7 +151,7 @@ Prior revisions above are **historical and unchanged**. This revision controls.
 | Question matrix | V-4, V-9, V-10, V-11, B-016, W-1 … W-5 recorded |
 | Dependency graph | One edge added: `BD-13 → BD-12 disclosure accuracy` |
 | Red team | Round E ten attacks; Round F ran directed mutation tests instead, and two of them found live defects |
-| Deployment candidate | Unchanged in shape; **four production operations still queue behind B-001**, now five with B-014 |
+| Deployment candidate | Unchanged in shape; ~~**four production operations still queue behind B-001**, now five with B-014~~ **CORRECTED 2026-09-18:** B-001 is **CLOSED** (E-030). The production operations **queue behind nothing** — they are unperformed owner actions in the production control plane, which no repository state can satisfy or verify |
 | Rollback | Unchanged. Every change this cycle is a constant, a function or a guard, all reversible |
 
 ## Why the conclusion does not improve
@@ -208,9 +223,11 @@ state. Files restored by byte comparison throughout.
 
 ## Why the conclusion still does not improve
 
-Every deployment prerequisite is untouched, and **B-017 adds a sixth item to the
-production queue behind B-001**. `openapi.json` sha256 identical; B-016 remains
-with counsel.
+Every deployment prerequisite is untouched, and ~~**B-017 adds a sixth item to the
+production queue behind B-001**~~ **CORRECTED 2026-09-18:** B-017 adds a sixth item to the
+**production queue, which queues behind nothing**. B-001 is **CLOSED** (E-030); every item in
+that queue is an unperformed owner action in the production control plane. `openapi.json`
+sha256 identical; B-016 remains with counsel.
 
 A production read was attempted, to establish whether any `finding_responses` rows
 are anonymously retrievable, and was **correctly denied** by the environment's

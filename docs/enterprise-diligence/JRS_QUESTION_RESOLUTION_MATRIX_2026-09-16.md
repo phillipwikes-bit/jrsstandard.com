@@ -6,7 +6,7 @@
 
 | ID | Question | Status |
 |---|---|---|
-| S-1 | Was de-identification review performed on all 54 `bench_outcomes` rows? | **OWNER FACTUAL CONFIRMATION REQUIRED** |
+| S-1 | Was de-identification review performed on all 54 `bench_outcomes` rows? | ~~**OWNER FACTUAL CONFIRMATION REQUIRED**~~ **CLOSED 2026-09-18 (E-031)** — see the disposition row below. Attestation, not row-level evidence |
 | S-2 | Ship B-013 limb A revocation and replacement together? | ANSWERED — BOARD DECISION |
 | S-3 | Does the first retention run delete anything? | ANSWERED — FACT ESTABLISHED (no) |
 | S-4 | Does declaring three mappings pressure the fourth? | ANSWERED — BOARD DECISION |
@@ -20,7 +20,7 @@
 | T-3 | Is `overall_consistency` record-derived? | ANSWERED — FACT ESTABLISHED (no) |
 | **T-4** | **`engine_reviews` retention** | **ANSWERED — BOARD DECISION (BD-10) → IMPLEMENTED → TESTED** |
 | T-5 | Do research tables have no retention rule forever? | ANSWERED — BOARD DECISION (by design) |
-| T-6 | Could the corrected distribution read as a decline? | **OWNER FACTUAL CONFIRMATION REQUIRED** (narrows S-6) |
+| T-6 | Could the corrected distribution read as a decline? | ~~**OWNER FACTUAL CONFIRMATION REQUIRED** (narrows S-6)~~ **CLOSED 2026-09-18 (E-032)** — see the S-6 / T-6 disposition row below. The figures were never distributed, so the question of how they read does not arise |
 | T-7 | Could the mapping document become relied upon? | OPEN, LOW; folds into B-007 if published |
 | T-8 | Page depends on an undeployed route | ANSWERED — BOARD DECISION (ship together) |
 | T-9 | Does anything still display `compliant_version`? | ANSWERED — FACT ESTABLISHED (nothing) |
@@ -36,7 +36,7 @@
 
 | ID | Status |
 |---|---|
-| B-001, B-006 | **OWNER EXTERNAL ACTION REQUIRED** |
+| ~~B-001, B-006~~ | ~~**OWNER EXTERNAL ACTION REQUIRED**~~ **SUPERSEDED 2026-09-18: B-001 OWNER-CONFIRMED (E-030); B-006 DIAGNOSTIC READY, one command in the owner's shell** |
 | B-004, B-007/D-1 | **COUNSEL REVIEW REQUIRED** |
 | B-013 limb A revocation | BOARD DECIDED; **PRODUCTION VERIFICATION REQUIRED** |
 | B-013B residual | **OWNER FACTUAL CONFIRMATION REQUIRED** |
@@ -58,7 +58,7 @@ Prior rows above are retained unchanged. Resolved questions stay in the matrix.
 |---|---|---|
 | **V-4** | Does a stated 90-day window create an expectation of deletion on request inside it? | **ANSWERED — BOARD DECISION** as to fact and architecture: `engine_reviews` holds no personal information and the disclosure sits in §5, not §6, so §7 is untouched. **No change made.** One sentence escalated: `request_id` is returned to the caller — **COUNSEL REVIEW REQUIRED**, LOW, joins B-004 |
 | **V-9** | Is a published retention statement a commercial representation to a future licensee? | **ANSWERED — BOARD DECISION.** No licensee and no licence draft exists; a data-handling statement with no counterparty is not a representation. Filed as a drafting obligation against any future licence. **CLOSED** |
-| **V-10** | Production serves the old text with no period | ANSWERED — FACT. Closes on deployment, which waits on B-001 |
+| **V-10** | Production serves the old text with no period | ANSWERED — FACT. Closes on deployment. ~~which waits on B-001~~ **CORRECTED 2026-09-18:** B-001 is **CLOSED** (E-030); deployment waits on **owner authorization**, not on B-001 |
 | **V-11** | The two 401 branches return different detail strings, disclosing provisioning state | **OPEN — LOW. Deliberately not remediated.** Merging them removes a real operator signal |
 | **B-016** | The published API contract denies a write path the code contains | **OPEN — HIGH — BLOCKED ON AUTHORIZATION.** No edit made to `openapi.json` |
 | **W-1** | Is the enforced retention period the same number as the disclosed one? | **ANSWERED — FACT ESTABLISHED, and it was NOT.** Three calendar months is 89 to 92 days against a published 90. **BD-13 DECIDED → IMPLEMENTED → TESTED.** PRODUCTION VERIFICATION REQUIRED |
@@ -93,7 +93,7 @@ Prior rows above are retained unchanged. Resolved questions stay in the matrix.
 
 | ID | Question | Status |
 |---|---|---|
-| **W-10** | Does a page projection protect an anonymously readable table? | **ANSWERED — FACT. NO, AND THIS CORRECTS A LIKELY MISREADING OF ROUND G.** The publishable key ships in 17 HTML files by design, so anyone holding it can `select=*` against any anon-readable table directly, whatever a page requests. The allow-list is **drift control, not protection**. **The grant is the control** — B-013 limb A for `engine_reviews`, B-017 for `finding_responses`, both queued behind B-001. Recorded in `BLOCKERS.json` against B-013 limb A so it cannot be lost |
+| **W-10** | Does a page projection protect an anonymously readable table? | **ANSWERED — FACT. NO, AND THIS CORRECTS A LIKELY MISREADING OF ROUND G.** The publishable key ships in 17 HTML files by design, so anyone holding it can `select=*` against any anon-readable table directly, whatever a page requests. The allow-list is **drift control, not protection**. **The grant is the control** — B-013 limb A for `engine_reviews`, B-017 for `finding_responses`. ~~both queued behind B-001.~~ **CORRECTED 2026-09-18:** B-001 is **CLOSED** (E-030); both revocations are now **unperformed owner actions in the production control plane**, queued behind nothing. Recorded in `BLOCKERS.json` against B-013 limb A so it cannot be lost |
 | **W-11** | How many tables grant anon SELECT, and which carry sensitive columns? | **ANSWERED — FACT. FIFTEEN.** A first scan under-reported because the policy spans lines inconsistently; re-verified directly rather than trusted. Free-text or jsonb columns on anon-readable tables: `engine_reviews` (B-013 limb A), `finding_responses` (B-017), `bench_records.text` (B-013B), `bench_labels.note`, `bench_outcomes.note`, `study_runs.raw`, `interaction_events.payload` |
 | **BD-16** | `study_runs?select=*` | **BOARD DECIDED → IMPLEMENTED → TESTED.** `raw jsonb` is declared "optional raw outputs for audit" and **nothing writes it** — the only writers insert `{study_id, model, metrics}`. Same shape as `input_preview`: an empty anon-readable column that `select=*` would publish the moment anything populated it. Narrowed to the named metrics columns |
 | **W-12** | Should every public projection be allow-listed? | **ANSWERED — BOARD DECISION. NO — a registry, not a blanket rule.** A blanket "no `select=*` where text or jsonb exists" would fire on `studies.description`, `research_questions.question` and `findings.body`, which are **public by intent**. Each table now carries a written disposition; a table absent from the registry **fails** rather than defaulting to allowed. Three mutations fail |

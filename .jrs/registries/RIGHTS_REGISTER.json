@@ -5,15 +5,19 @@
     {
       "id": "CT-SEC-2.1",
       "question": "Assignment for the Section 2.1 accessibility and study-design argument",
-      "status": "OPEN",
+      "status": "CLOSED",
       "severity": "MEDIUM",
-      "note": "Risk reduced from High after chronology showed it is not the DRR construct."
+      "note": "Risk reduced from High after chronology showed it is not the DRR construct.",
+      "closed": "2026-09-18",
+      "closure_basis": "E-033 and E-036, owner attestations. The approach arose from the OWNER'S own MCCR work and experience, discussed with his mentee, and was NOT a formal JRS research contribution by Gabriela Cortez, so no study contribution awaits assignment. X-15 was raised on the superseded premise and is CLOSED; an affirmative-evidence search across eight propositions returned ZERO. FACTUAL CLASSIFICATION ONLY - no legal ownership, assignment or third-party rights conclusion is established. Her separate panel participation is PRESERVED: V-AI-08, Arm A, 24 reads, COMPLETE.",
+      "prior_status": "OPEN"
     },
     {
       "id": "CT-UBAYET",
       "question": "Commercial use and successor transfer",
       "status": "DEFERRED_BY_OWNER_SEQUENCE",
-      "note": "A deferral decided by the owner is not an evidence gap."
+      "note": "A deferral decided by the owner is not an evidence gap.",
+      "owner_account_2026_09_18": "E-034: the owner attests Ubayet approved the uses discussed and stated no restriction against commercial or licensing use. THE DEFERRAL AND THE STATUS ARE UNCHANGED. Absence of a prohibition is not a grant, and the legal limb stays with B-004."
     },
     {
       "id": "CT-HEKIM",

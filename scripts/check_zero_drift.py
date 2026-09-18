@@ -5773,6 +5773,63 @@ def _strip_py_docstrings(text):
 
 
 
+def _assertion_units(body):
+    """Split a record into the smallest spans that can carry ONE assertion.
+
+    WHY THIS EXISTS. Guards in this file judged an old-state wording by whether a
+    superseding marker appeared within a few hundred characters of it. On
+    2026-09-18 an estate-wide sweep built on that same rule missed THREE live
+    stale claims -- each sat near an unrelated CLOSED or OWNER-CONFIRMED marker
+    belonging to a different sentence. Proximity is not scope. A marker excuses
+    the sentence it is in, and nothing else.
+
+    Four things this gets right that a window and a line-split do not:
+      - A MARKDOWN TABLE ROW IS ONE UNIT, never its cells: the subject is in
+        column 1 and its status in column 3, and splitting on "|" severs them.
+      - PROSE IS SOFT-WRAPPED here, so a newline mid-sentence is joined - and
+        joined length-preservingly, because rebuilding the text with " ".join()
+        shifts every offset and matches then resolve to the wrong unit.
+      - EXPRESSLY RETIRED TEXT is blanked, so wording kept under Rule 10 is not
+        read back as a live claim.
+      - A "~~" IS ITSELF A BOUNDARY: struck text and the note replacing it are
+        never one assertion, and they are often not separated by ". ".
+    """
+    text = re.sub(r"^\s*>\s?", "", body, flags=re.M)
+    text = re.sub(r"[ \t]+", " ", text)
+
+    lines = text.split("\n")
+    def _hard(l):
+        s = l.strip()
+        return (not s) or l.count("|") >= 2 or s.startswith(("#", "```", "|")) \
+               or bool(re.match(r"(?:[-*+]|\d+\.)\s", s))
+    out = []
+    for i, l in enumerate(lines):
+        out.append(l)
+        if i < len(lines) - 1:
+            out.append(" " if not (_hard(l) or _hard(lines[i + 1])) else "\n")
+    text = "".join(out)
+    # Struck spans AND wording quoted as prior text. A JSON record cannot carry
+    # a strikethrough, so BLOCKERS.json preserves superseded wording the only way
+    # it can - by quoting it after "prior text read". Without this, the guard
+    # read a correction's own citation of what it corrected as a fresh defect,
+    # which would punish the exact practice Rule 10 requires.
+    text = re.sub(r"~~.+?~~|prior text read '.+?'",
+                  lambda m: " " * len(m.group(0)), text, flags=re.S)
+
+    units = []
+    for lm in re.finditer(r"[^\n]+", text):
+        line, base = lm.group(0), lm.start()
+        if line.count("|") >= 2:
+            units.append((base, base + len(line), line))
+            continue
+        cuts = [0] + [m.end() for m in
+                      re.finditer(r"(?<=[.!?])\s+(?=[A-Z*_`~(\[])|~~", line)] + [len(line)]
+        for a, b in zip(cuts, cuts[1:]):
+            s = line[a:b].rstrip()
+            units.append((base + a, base + a + len(s), s))
+    return text, units
+
+
 def check_no_stale_current_state_representation(offline):
     """A closed matter is not still represented as open anywhere current.
 
@@ -5823,6 +5880,38 @@ def check_no_stale_current_state_representation(offline):
         "domain registrar unknown": (
             r"domain (ownership|registrar).{0,140}?\*\*UNKNOWN\*\*",
             ["docs/enterprise-diligence/CHAIN_OF_TITLE_STATUS.md"]),
+        # ADDED 2026-09-18. A CLOSED BLOCKER NAMED AS A LIVE DEPENDENCY IS A
+        # STALE CURRENT-STATE CLAIM, and it is invisible to every status word
+        # this guard previously looked for. B-001 closed on owner attestation
+        # (E-030) and SIX records still said production operations were "queued
+        # behind B-001" - a blocker registry entry, two board records, a
+        # dependency graph, an audit and the question matrix. None of them used
+        # the word OPEN. The reader is told to wait for something that has
+        # already happened, which is how a queue stops being believed.
+        # NO MARKER EXCUSES THIS ONE, and the "!" prefix says so.
+        #
+        # Six demonstration mutations showed why. The question matrix row reads
+        # "| V-10 | ... | ANSWERED - FACT. Closes on deployment, which waits on
+        # B-001 |": the row's own ANSWERED belongs to V-10, not to the
+        # dependency, and any scope holding both excused the stale clause. The
+        # readiness audit is worse -- restoring the old wording leaves it sitting
+        # beside its own CORRECTED note, so marker proximity cannot tell a
+        # corrected claim from an uncorrected one.
+        #
+        # It does not need to. Retired text is MASKED before matching, and this
+        # project strikes superseded wording through as a matter of Rule 10. So a
+        # match that survives masking is, by construction, wording that still
+        # READS as live -- and no live text may say a production operation waits
+        # on B-001, because B-001 closed on 2026-09-18 (E-030). The right test is
+        # the absence of a match, not the presence of a nearby word.
+        "!closed blocker named as a live dependency": (
+            r"(?:queued behind|queue behind|blocked on|waits on|waiting on|"
+            r"depends on|dependent on|prerequisite is|\bbehind)\s*\**B-001",
+            [".jrs/state/BLOCKERS.json",
+             "docs/enterprise-diligence/JRS_BOARD_DECISION_REGISTER_2026-09-16.md",
+             "docs/enterprise-diligence/JRS_CURRENT_DEPENDENCY_GRAPH_2026-09-16.md",
+             "docs/enterprise-diligence/JRS_QUESTION_RESOLUTION_MATRIX_2026-09-16.md",
+             "docs/enterprise-diligence/FINAL_PRE_GATE_1_READINESS_AUDIT_2026-09-16.md"]),
     }
     SUPERSEDING = re.compile(r"~~|SUPERSEDED|RECONCILED|CLOSED|CORRECTED|ANSWERED|SUPPLIED|"
                              r"raised in error|no longer", re.I)
@@ -5835,23 +5924,43 @@ def check_no_stale_current_state_representation(offline):
                 findings.append("%s is missing; it carried the %r state" % (rel, prop))
                 continue
             checked += 1
-            flat = re.sub(r"\s+", " ", re.sub(r"^\s*>\s?", "", body, flags=re.M))
+            flat, units = _assertion_units(body)
             for m in re.finditer(pat, flat, re.I):
                 # NEGATION IS NOT ASSERTION. The first run of this guard flagged the
                 # closure's own limit sentence -- "does not support keeping X-15
                 # open" -- as a live claim that X-15 is open. Ninth time a guard here
                 # has read text that MENTIONS a state as text that ASSERTS it. The
                 # lead-in is checked for a negation before the window is judged.
-                lead = flat[max(0, m.start() - 90):m.start()]
+                # THE NEGATION MUST BE IN THE SAME UNIT, AND BEFORE THE MATCH.
+                # This test used a 90-character lead-in window, and a
+                # demonstration suite defeated it twice in one run: "was
+                # expressly REJECTED rather than taken" two sentences earlier
+                # excused a live B-017 dependency, and "That is no longer true."
+                # excused a live graph edge. A negation in a NEIGHBOURING
+                # sentence negates that sentence. This is the third place in
+                # this guard where proximity had been standing in for scope.
+                unit_span = next(((s, e, u) for s, e, u in units
+                                  if s <= m.start() < e), None)
+                lead = (unit_span[2][:m.start() - unit_span[0]] if unit_span
+                        else flat[max(0, m.start() - 90):m.start()])
                 if re.search(r"\b(not|no longer|never|without|rather than|ceased to)\b",
                              lead, re.I):
                     continue
-                window = flat[max(0, m.start() - 260):m.end() + 260]
-                if not SUPERSEDING.search(window):
-                    findings.append("%s asserts %r as CURRENT with no superseding marker beside "
-                                    "it. A correction recorded elsewhere in the same document "
-                                    "does not make the document synchronized"
-                                    % (rel, prop))
+                # SCOPE IS THE SENTENCE OR THE TABLE ROW, NOT A WINDOW.
+                # The 260-character window this replaced let a marker belonging
+                # to a neighbouring sentence excuse a live claim; three real ones
+                # escaped that way and were found by hand instead.
+                unit = next((u for s, e, u in units if s <= m.start() < e), "")
+                absolute = prop.startswith("!")
+                if absolute or not SUPERSEDING.search(unit or flat[m.start():m.end()]):
+                    findings.append(
+                        ("%s still asserts %r in text that reads as live. Superseded wording is "
+                         "struck through, so anything left standing is a current claim"
+                         % (rel, prop.lstrip("!")))
+                        if absolute else
+                        ("%s asserts %r as CURRENT with no superseding marker beside "
+                         "it. A correction recorded elsewhere in the same document "
+                         "does not make the document synchronized" % (rel, prop)))
                     break
 
     # The closure must keep stating its own limit, in the register.
@@ -5959,6 +6068,89 @@ def check_section_2_1_resolution_holds(offline):
         findings.append("the closure no longer states its own limit. It establishes only that "
                         "the evidence does not support keeping X-15 open, and that sentence is "
                         "the boundary between a factual disposition and a legal conclusion")
+
+    # 6. THE MACHINE-READABLE STATUS, not only the prose.
+    #
+    # ADDED 2026-09-18 after a mutation test. Reopening CT-SEC-2.1 in
+    # RIGHTS_REGISTER.json -- flipping one status field from CLOSED to OPEN --
+    # produced a PASSING guard suite, because every limb above reads prose
+    # documents and none read the register that a downstream consumer would
+    # actually query. The narrative and the structured record could disagree and
+    # nothing would say so.
+    rr_raw = read(".jrs/registries/RIGHTS_REGISTER.json")
+    if not rr_raw:
+        findings.append("the rights register is missing; it carries the Section 2.1 disposition")
+    else:
+        try:
+            entries = []
+            def _collect(node):
+                if isinstance(node, dict):
+                    if "id" in node:
+                        entries.append(node)
+                    for v in node.values():
+                        _collect(v)
+                elif isinstance(node, list):
+                    for v in node:
+                        _collect(v)
+            _collect(json.loads(rr_raw))
+            sec = [e for e in entries if e.get("id") == "CT-SEC-2.1"]
+            if not sec:
+                findings.append("CT-SEC-2.1 is gone from the rights register; the Section 2.1 "
+                                "disposition has no machine-readable record")
+            elif sec[0].get("status") != "CLOSED":
+                findings.append("the rights register records CT-SEC-2.1 as %r while the prose "
+                                "records it CLOSED (E-033, E-036). The structured record is what "
+                                "a downstream consumer reads, and it disagrees"
+                                % sec[0].get("status"))
+            elif "V-AI-08" not in json.dumps(sec[0]):
+                findings.append("CT-SEC-2.1 no longer preserves the separate panel participation "
+                                "in the rights register itself")
+        except (ValueError, TypeError) as exc:
+            findings.append("the rights register does not parse: %s" % exc)
+
+    # 7. THE CHAIN-OF-TITLE RECORD, which reached the opposite conclusion first.
+    #
+    # ADDED 2026-09-18 after a mutation test. CHAIN_OF_TITLE_STATUS.md section 3
+    # classified Section 2.1 as an open OWNER FACTUAL matter and then narrowed it
+    # to "credit only" - both written before E-033 and E-036, and both resting on
+    # a premise the owner has since corrected. Un-striking that section restored
+    # a live contradiction of the closure, and the estate-wide sweep could not
+    # see it: the sentence carrying the stale classification does not name
+    # Section 2.1, and the sentence naming Section 2.1 carries no status word.
+    # A broad sweep cannot catch that without matching ordinary prose everywhere.
+    # A NAMED, STANDING PROPOSITION BELONGS TO A GUARD, which can assert the one
+    # specific thing that must hold rather than guessing from vocabulary.
+    cot = read("docs/enterprise-diligence/CHAIN_OF_TITLE_STATUS.md")
+    if not cot:
+        findings.append("the chain-of-title status record is missing; it carried the "
+                        "pre-E-036 characterisation of Section 2.1")
+    else:
+        sec3 = re.search(r"### 3\. Section 2\.1 contributor.*?(?=\n### |\n## |\Z)",
+                         cot, re.S)
+        if not sec3:
+            findings.append("chain-of-title section 3 (Section 2.1 contributor) is gone. "
+                            "It is retained deliberately: deleting the reasoning destroys "
+                            "the evidence of what was believed before E-036")
+        else:
+            body = sec3.group(0)
+            if "SUPERSEDED" not in body.split("\n")[0].upper():
+                findings.append("chain-of-title section 3 no longer marks itself superseded "
+                                "in its heading. Its body predates E-033/E-036 and reads as "
+                                "current state without that mark")
+            if not re.search(r"E-036", body):
+                findings.append("chain-of-title section 3 does not cite E-036, the attestation "
+                                "that corrected its premise")
+            # Mask the struck spans, then look for the superseded wording in
+            # what is LEFT. Testing "is the phrase somewhere near a ~~" is the
+            # window mistake in miniature; masking answers the actual question,
+            # which is whether the phrase still READS as a live claim.
+            live_body = re.sub(r"~~.+?~~", " ", body, flags=re.S)
+            for stale in ("I classified it **OWNER FACTUAL**",
+                          "The disposition is **DOCUMENTED \u2014 CREDIT ONLY**"):
+                if stale in live_body:
+                    findings.append("chain-of-title section 3 asserts %r outside a strikethrough. "
+                                    "That classification was superseded by E-033 and E-036 and "
+                                    "must not read as live" % stale[:44])
 
     check("Section 2.1 resolution holds",
           not findings,
@@ -6168,11 +6360,28 @@ def check_no_stale_owner_action_survives_its_confirmation(offline):
     blockers = json.loads(reg)["blockers"]
 
     # blocker -> (what it asked for, forward-looking records that must not still ask)
+    #
+    # HUMAN_DECISIONS_REQUIRED.md WAS ADDED 2026-09-18 AFTER A MUTATION TEST.
+    # It is the owner's live decision queue -- the most forward-looking record in
+    # the estate -- and it was not in this list. Reasserting B-001 as outstanding
+    # there produced a fully passing suite.
     ASKS = {
         "B-001": (r"rotate the (existing )?(production|vercel) credential",
                   ["docs/enterprise-diligence/JRS_NEXT_STEPS_CLAUDE_CODE_INSTRUCTIONS_2026-09-16.md",
-                   "docs/enterprise-diligence/JRS_INSTITUTIONAL_CONTINUITY_INDEX.md"]),
+                   "docs/enterprise-diligence/JRS_INSTITUTIONAL_CONTINUITY_INDEX.md",
+                   "docs/enterprise-diligence/HUMAN_DECISIONS_REQUIRED.md"]),
     }
+    # The SAME mutation test showed the instruction pattern alone is not enough.
+    # Drift does not have to repeat the original wording: a record can simply
+    # assert the action is still outstanding, in words the instruction regex has
+    # never seen. These patterns match the STATE CLAIM rather than the request.
+    UNDONE = re.compile(
+        r"(?:credential|token|rotation)[^.\n]{0,60}(?:has not been|have not been|was not|"
+        r"is not|not yet)\s+(?:rotated|performed|completed|done)|"
+        r"(?:has not been|have not been|not yet)\s+rotated|"
+        r"rotation (?:is|remains) (?:outstanding|pending|incomplete|unperformed|required)|"
+        r"B-001 (?:is|remains) (?:open|outstanding|unresolved|pending|not met)",
+        re.I)
     STAMP = "SUPERSEDED 2026-09-18"
 
     for bid, (pat, forward) in ASKS.items():
@@ -6196,6 +6405,20 @@ def check_no_stale_owner_action_survives_its_confirmation(offline):
                                     "confirmed complete. An estate that keeps asking for a "
                                     "done action trains its reader to ignore the asking"
                                     % (rel, bid))
+                    break
+            # A claim that the action is still undone, scoped to the SENTENCE.
+            # A window would let a superseding stamp several paragraphs away
+            # excuse a live assertion -- the failure this project has repeated
+            # often enough that it is no longer an acceptable design here.
+            flat = re.sub(r"[ \t]+", " ", re.sub(r"^\s*>\s?", "", body, flags=re.M))
+            for sent in re.split(r"(?<=[.!?])\s+|\n{2,}", flat):
+                live = re.sub(r"~~.+?~~", " ", sent, flags=re.S)
+                if UNDONE.search(live) and STAMP not in live and \
+                        not re.search(r"was open when|previously|prior (?:text|status)|"
+                                      r"OWNER-CONFIRMED|no longer", live, re.I):
+                    findings.append("%s asserts the %s action is still outstanding: %r. The "
+                                    "owner confirmed it complete on 2026-09-18 (E-030)"
+                                    % (rel, bid, sent.strip()[:110]))
                     break
 
     # The status itself must not demand proof the repository cannot hold.
@@ -6730,18 +6953,45 @@ def check_architecture_baseline_is_current(offline):
                         % (b["surface"]["vercelignore_rules"], rules))
 
     # Floors, not equalities. A decrease is the signal.
-    live_guards = len(re.findall(r"^def check_", read("scripts/check_zero_drift.py"), re.M))
+    src = read("scripts/check_zero_drift.py")
+    live_guards = len(re.findall(r"^def check_", src, re.M))
     if live_guards < b["controls"]["guards"]:
         findings.append("guard count FELL: baseline %d, now %d. Guards are added "
                         "freely; a decrease means one was deleted"
                         % (b["controls"]["guards"], live_guards))
+
+    # A GUARD THAT IS DEFINED BUT NEVER CALLED IS NOT A GUARD.
+    #
+    # ADDED 2026-09-18 after a mutation test. Deleting one name from the dispatch
+    # list below left the function definition in place, so the count above was
+    # unchanged and the suite reported a clean run -- with that guard never
+    # executed. Counting definitions measures how much code exists, not how much
+    # of it runs, and only the second is a control. The two lists are therefore
+    # compared directly.
+    defined = set(re.findall(r"^def (check_\w+)", src, re.M))
+    # READ THE WHOLE DISPATCH TUPLE, NOT ONE NAME PER LINE. The first version of
+    # this limb anchored on "^<indent>check_x,$" and reported TEN live guards as
+    # orphaned: some share a line with a second name, and the last one ends the
+    # tuple with ")" instead of ",". Line-anchoring a value that is not
+    # line-shaped is a mistake this suite has now made four times, and it fails
+    # in the dangerous direction here - it would have had me "fix" ten guards
+    # that were never broken.
+    disp = re.search(r"for fn in \((.*?)\):", src, re.S)
+    dispatched = set(re.findall(r"check_\w+", disp.group(1))) if disp else set()
+    orphaned = sorted(defined - dispatched)
+    if orphaned:
+        findings.append("%d guard(s) are defined but never dispatched, so they do "
+                        "not run: %s. A guard removed from the call list while its "
+                        "definition stays behind leaves the suite green and the "
+                        "control gone" % (len(orphaned), ", ".join(orphaned[:6])))
 
     check("architecture baseline is current",
           not findings,
           "; ".join(findings) if findings
           else "baseline v%s frozen %s; vocabulary, truncation, both retention "
                "rules, contract hash, exclusions and guard floor all match their "
-               "sources" % (b["version"], b["frozen"]))
+               "sources; %d guards defined and all %d dispatched"
+               % (b["version"], b["frozen"], live_guards, len(dispatched)))
 
 
 def check_every_public_table_projection_has_a_recorded_disposition(offline):

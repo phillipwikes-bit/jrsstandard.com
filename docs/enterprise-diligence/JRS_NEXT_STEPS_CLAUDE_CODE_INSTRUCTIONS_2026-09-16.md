@@ -260,10 +260,10 @@ Recorded plainly so no cycle mistakes motion for progress. Gate 1 is blocked by
 
 | Blocker | Who |
 |---|---|
-| B-001 credential rotation | **Phillip** |
+| ~~B-001 credential rotation~~ | **DONE 2026-09-18 (E-030) — OWNER-CONFIRMED** |
 | Production verification of eleven controls | **downstream of B-001** |
 | B-016, B-007/D-1, B-004 | **counsel** |
-| B-013B, S-1, S-6, T-6 | **Phillip, factual** |
+| ~~B-013B, S-1, S-6, T-6~~ | **S-1, S-6 and T-6 CLOSED 2026-09-18 (E-031, E-032). B-013B residual remains owner-factual** |
 | Guard-integrity sweep, D-3, V-11 | **Board — this is the only unblocked column** |
 
 **Do not produce a "READY FOR GATE 1 RECONSIDERATION" conclusion while any row

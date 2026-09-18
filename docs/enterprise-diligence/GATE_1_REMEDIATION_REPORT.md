@@ -102,7 +102,7 @@ That one page is the target. Wording is prepared in the control plan and **not i
 | Resolved this cycle | B-010, B-012 |
 | Prepared for review | B-002, B-003, B-007, B-008, B-009 |
 | Blocked | B-004 (counsel), B-006 (credential) |
-| Open, human action | B-001 |
+| ~~Open, human action~~ **OWNER-CONFIRMED 2026-09-18 (E-030)** | B-001 |
 | Remediated, undeployed | B-005 |
 
 **Gate 1 remains FAILED. `/jrs-gate 1` was not run. Phase 2 remains LOCKED.**

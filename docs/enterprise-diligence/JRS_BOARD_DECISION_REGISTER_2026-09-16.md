@@ -40,13 +40,26 @@ public material is **not** the same as being told your submission will be public
 
 **ALSO NOT ESTABLISHED.** `submit-validation.html` states submissions *"arrive as pending
 entries for de-identification review"*. **Whether that review was performed on all 54 rows is
-not evidenced.** The instruction existing is not proof the review happened.
+not evidenced.**
+
+> **SUPERSEDED AS TO THE FACT, 2026-09-18 (E-031).** The owner attests that Stacyann Young
+> and Tanvi Pokhriyal entered the records through the submission link and that **he personally
+> reviewed them for de-identification** before use. **The BD-01 reasoning above is preserved
+> unchanged** — it was correct on the evidence then held, and a Board decision is not rewritten
+> because a later fact arrived. **Attestation, not row-level evidence**: no per-row artifact
+> exists and none was manufactured. **S-1 is CLOSED.** The instruction existing is not proof the review happened.
 
 **BOARD DECISION.** The B-013B risk classification is **downgraded** from "unknown provenance,
 possible sensitive content" to **"instructed-public, de-identified material, review status
-unverified"**. The residual questions — whether contributors were told about readability, and
+unverified"**. ~~The residual questions — whether contributors were told about readability, and
 whether de-identification review occurred — remain **OWNER FACTUAL CONFIRMATION REQUIRED**, and
-they are now narrow enough to answer in two sentences.
+they are now narrow enough to answer in two sentences.~~
+
+> **CORRECTED 2026-09-18, ONE LIMB ONLY.** Of the two residual questions, **the
+> de-identification limb is CLOSED** by E-031 above. **The readability-disclosure limb is
+> NOT closed and is not treated as closed**: E-031 addresses whether the owner reviewed the
+> records, not whether submitters were told their rows would be anonymously readable. No
+> attestation reaches that question. **One limb answered is not the question answered.**
 
 **No row was read, altered or deleted.**
 
@@ -337,8 +350,12 @@ now strips commentary before scanning.
 **Resulting status.** **REMEDIATED IN REPOSITORY — GRANT NOT REVOKED — PRODUCTION
 VERIFICATION REQUIRED.** B-017 open.
 
-**Dependencies.** The anon SELECT revocation is a production operation queued behind **B-001**,
-alongside the B-013A revocation.
+**Dependencies.** The anon SELECT revocation is a production operation. ~~queued behind
+**B-001**, alongside the B-013A revocation.~~ **DEPENDENCY CORRECTED 2026-09-18.** B-001 is
+**CLOSED** (E-030, owner attestation, 2026-09-18), so this revocation is **no longer queued
+behind it**. It is now an **unperformed owner action in the production control plane**, to be
+taken together with the B-013 limb A revocation. Nothing in the repository can perform or
+verify it.
 
 **Reversibility.** Fully reversible.
 

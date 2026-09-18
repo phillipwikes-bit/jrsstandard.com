@@ -67,8 +67,9 @@ rule.
 evidence above the diff is clean: no contract change, no rights change, no
 research datum moved, no grant bundled, no public page lost.
 
-**It is not ready because the prerequisite is unmet.** `B-001` — external
-credential rotation — is open, and `B-006` sits behind it. The deployment cannot
+**SUPERSEDED 2026-09-18 — see the re-run section below: B-001 is OWNER-CONFIRMED and the
+reason is now B-006.** ~~**It is not ready because the prerequisite is unmet.** `B-001` —
+external credential rotation — is open~~, and `B-006` sits behind it. The deployment cannot
 proceed to the authorization gate until both are resolved, and **neither is
 resolvable from inside this repository.**
 

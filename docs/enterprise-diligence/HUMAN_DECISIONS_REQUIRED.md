@@ -192,11 +192,18 @@ stop writing record-derived free text · narrow the public claims to match.
 **EVIDENCE.** Both are enumerated by `programme-status-9872fb93cc94.html` itself. CLAUDE.md 36.3 calls programme-status "the only private owner page" and draws no owner/buyer distinction.
 **APPROVAL REQUIRED.** **CLAUDE.md 36.3 was deliberately not modified** pending your classification.
 
-## D-8 · Credential rotation — **OWNER ACTING EXTERNALLY**
+## D-8 · Credential rotation — ~~**OWNER ACTING EXTERNALLY**~~ **OWNER-CONFIRMED 2026-09-18**
+
+> **RESOLVED. The owner confirmed the external rotation on 2026-09-18 (E-030).** The record
+> below is preserved as the state before that confirmation. **Do not ask for this again.**
+> No repository-side proof exists or can exist, and none is required: an attestation is the
+> evidence class an external control-plane action admits. **This is not deployment
+> authorization.**
 
 **QUESTION.** Has the exposed Vercel token been rotated?
 **EVIDENCE.** It appeared in conversation twice. The old token was not tested, reproduced or recovered. **No repository evidence can establish rotation**, so this cannot be closed from here.
-**APPROVAL REQUIRED.** Confirm rotation. Until then B-001 stays HUMAN ACTION REQUIRED.
+~~**APPROVAL REQUIRED.** Confirm rotation. Until then B-001 stays HUMAN ACTION REQUIRED.~~
+**CONFIRMED 2026-09-18 (E-030). B-001 is OWNER-CONFIRMED / EXTERNAL ACTION COMPLETED.**
 
 ## D-9 · Deployment — **CONDITIONALLY AUTHORIZED; CONDITIONS NOT MET**
 
@@ -207,7 +214,8 @@ stop writing record-derived free text · narrow the public claims to match.
 > or it is not.
 >
 > The record below already carries its own negation ("CONDITIONS NOT MET") and the
-> condition named is B-001, which remains open. It is left exactly as written
+> condition named is B-001, which was open when that heading was written and is
+> **OWNER-CONFIRMED as of 2026-09-18**. It is left exactly as written
 > because a heading edited to look cleaner destroys the evidence that the project
 > once used a state that does not exist. **Current state: DEVELOPMENT REMEDIATION,
 > DEPLOYMENT NOT AUTHORIZED.**
@@ -229,7 +237,7 @@ stop writing record-derived free text · narrow the public claims to match.
 | **D-4** | Disclosure content | Sign off the published wording. Publication is a Section 23 act |
 | **D-5** | Validation statement | Approve inserting the prepared wording into `training.html` and deploying it |
 | **D-6** | Rights | Submit the evidence package to IP counsel |
-| **D-8** | Rotation | Confirm when done, so B-001 closes and B-006 unblocks |
+| **D-8** | Rotation | ~~Confirm when done~~ **DONE 2026-09-18 (E-030). B-001 closed; B-006 is now DIAGNOSTIC READY and needs one command in the owner's own shell** |
 | **D-9** | Deployment | Becomes actionable only after D-8 |
 
 **Nothing above was resolved by inference.**

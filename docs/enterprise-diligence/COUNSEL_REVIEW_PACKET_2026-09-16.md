@@ -16,9 +16,15 @@ transfer of the JRS estate?
 provenance, Git chronology.
 
 **UNKNOWN / NOT ESTABLISHED.** **No Level A executed assignment instrument exists anywhere in
-the corpus.** The consents are **silent on commercial use**. The Section 2.1 accessibility and
-study-design contribution is recorded as influencing international panel design; **whether that
-creates any interest is not determined here**.
+the corpus.** The consents are **silent on commercial use**. ~~The Section 2.1 accessibility and study-design contribution is recorded as influencing
+international panel design; **whether that creates any interest is not determined here**.~~
+
+> **CHARACTERISATION CORRECTED 2026-09-18 (E-033, E-036).** The approach arose from the
+> **owner's own MCCR work and experience**, discussed with his mentee, and was **NOT a formal
+> JRS research contribution**. X-15 was raised on the superseded premise and is **CLOSED**;
+> an affirmative-evidence search across eight propositions returned **zero**. **This is not a
+> counsel matter and must not be presented to counsel as one.** Her separate panel
+> participation is preserved.
 
 **POTENTIAL CONSEQUENCE.** A transaction premised on unrestricted commercial rights may rest on
 instruments that do not grant them.

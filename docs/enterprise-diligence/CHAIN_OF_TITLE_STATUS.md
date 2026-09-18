@@ -146,16 +146,32 @@ So the accurate statement is not merely that nothing was assigned; it is that **
 instrument was built for exactly this purpose and no co-author has used it.** That
 is a sharper transaction condition, and a cheaper one to close.
 
-### 3. Section 2.1 contributor — I LEFT IT MORE OPEN THAN THE REGISTER DOES
+### 3. Section 2.1 contributor — I LEFT IT MORE OPEN THAN THE REGISTER DOES — **SUPERSEDED 2026-09-18, SEE THE NOTE BELOW**
 
-I classified it **OWNER FACTUAL**. The Register already carries a disposition:
+~~I classified it **OWNER FACTUAL**. The Register already carries a disposition:
 V-AI-08, Section 2.1 argument, panel design, assignment/transfer **Not located**,
-**status "Credit only."**
+**status "Credit only."**~~
 
-**Corrected.** The disposition is **DOCUMENTED — CREDIT ONLY**, not an open
+~~**Corrected.** The disposition is **DOCUMENTED — CREDIT ONLY**, not an open
 factual question. What remains for the owner is narrower than I wrote: whether
 anything **beyond credit** was ever agreed. **Absent that, credit only stands**,
-and no conveyance is inferred from the contribution.
+and no conveyance is inferred from the contribution.~~
+
+> **PREMISE CORRECTED AND MATTER CLOSED, 2026-09-18 (E-033, E-036).** Both paragraphs above
+> are retained because they were the record's reasoning, and both rest on a premise the owner
+> has since corrected. **The approach at Section 2.1 arose from the OWNER'S OWN ordinary MCCR
+> work and experience**, discussed with Gabriela Cortez, who was **his mentee** at the MCCR
+> Intake Unit. It was **not a formal JRS research assignment and not a formal JRS research
+> contribution by her**. There is therefore **no Section 2.1 contributor question to leave
+> open, and nothing here to classify as OWNER FACTUAL**.
+>
+> **Three things are kept apart, and the third is not established in either direction.** The
+> owner has **not** represented that she assigned any JRS intellectual property to him, and
+> **not** that she owns any. **No ownership, assignment or licence is established or implied.**
+>
+> **HER PANEL PARTICIPATION IS A DIFFERENT FACT AND IS PRESERVED:** V-AI-08, Arm A, US,
+> **24 reads, COMPLETE**, named with her affiliation on the AIE submission title page.
+> **Closing the Section 2.1 question does not touch it.**
 
 ### 4. Ubayet — the deferral is real, but the Register records a thinner file
 

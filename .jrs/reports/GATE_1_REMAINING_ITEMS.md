@@ -12,7 +12,7 @@ Completed work is not redone. This assesses only what remains.
 | 4 | **B-009** Google absent from subprocessor disclosure | **HUMAN DECISION REQUIRED** | Verified: 146 + 72 + 64 references. Publishing a disclosure is a publication under Section 23 |
 | 5 | **B-010** classification of the two confidential buyer surfaces | **HUMAN DECISION REQUIRED** | `acquisition-9f3c2a7d4b.html` and `vp-7c1f9a4e8d2b6035.html` are now registered. Whether CLAUDE.md 36.3 should distinguish owner pages from buyer pages is yours |
 | 6 | Codebook-to-API correspondence | **BLOCKED — HUMAN DECISION REQUIRED** | `METHODOLOGY_TO_API_MAPPING.md` already asked for this. Supplying a mapping myself would invent substantive JRS content |
-| 7 | **B-001** exposed Vercel token | **HUMAN DECISION REQUIRED** | Rotation is the only remedy and only you can perform it |
+| 7 | **B-001** exposed Vercel token | ~~HUMAN DECISION REQUIRED~~ **OWNER-CONFIRMED 2026-09-18 (E-030)** | Rotation was performed externally and confirmed. **Do not ask again.** B-006 is now DIAGNOSTIC READY |
 | 8 | **B-002** two OpenAPI documents disagree | **OPEN** | Subsumed by B-007; reconcile together |
 | 9 | **B-003** subprocessor list unpublished | **HUMAN DECISION REQUIRED** | Now five processors, not four |
 | 10 | **B-004** no Level A evidence anywhere in the corpus | **BLOCKED** | Legal review. Rule 8 forbids me determining title |
@@ -29,4 +29,6 @@ Completed work is not redone. This assesses only what remains.
 
 Nothing on this list can be closed by inference. The four OPEN items are ones I can prepare for approval without touching production; the rest need you.
 
-**The highest-value single action remains B-001: rotate the exposed token.**
+~~**The highest-value single action remains B-001: rotate the exposed token.**~~
+
+> **SUPERSEDED 2026-09-18.** B-001 is **OWNER-CONFIRMED**. The highest-value single action is now the **B-006 diagnostic**, one command in the owner's own shell.
