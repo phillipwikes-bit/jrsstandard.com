@@ -1,5 +1,13 @@
 # JRS Master Tracker, recent activity
 
+
+> **APPEND-ONLY DATED LOG — CLASSIFICATION ADDED 2026-09-18. Nothing below was altered.**
+> This is a recent-window extract of `research/MASTER_TRACKER.md`. **Every entry states what
+> was true on its own date** and is never rewritten afterwards. For blocker, gate and estate
+> state it is **not the authority**: `.jrs/state/BLOCKERS.json` is the authoritative registry,
+> `.jrs/state/ACTIVE_GATE.json` the live gate record. Where this log and those disagree,
+> **they control**, and the disagreement is normally just the log being older.
+
 **Extract only. The permanent record is `research/MASTER_TRACKER.md`,** 1,723,919 bytes, 672 entries, committed to the development branch and never deployed to `main` by design.
 
 Covering the 3 most recent dates: 2026-08-27, 2026-08-28, 2026-08-29. Long lines are rewrapped here for reading; the source is not modified.

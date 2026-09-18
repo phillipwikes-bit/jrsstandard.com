@@ -1,5 +1,10 @@
 # Owner / Counsel Decision State — 2026-09-15
 
+> **HISTORICAL EXECUTION RECORD — STAMPED 2026-09-18.**
+> Evidence of work performed on its date. **Not current-state authority.**
+> `.jrs/state/BLOCKERS.json` is the authoritative registry (CLAUDE.md §15) and controls
+> where the two disagree. Retained in full; nothing here states what is true now.
+
 **One table. Everything outstanding, who owns it, and whether engineering can touch it.**
 
 **Control classes:** ENG (engineering-completable) · OWNER · COUNSEL · PROD-VERIFY ·

@@ -1,5 +1,10 @@
 # Second-Order Question Audit — Round D — 2026-09-16
 
+> **HISTORICAL EXECUTION RECORD — STAMPED 2026-09-18.**
+> Evidence of work performed on its date. **Not current-state authority.**
+> `.jrs/state/BLOCKERS.json` is the authoritative registry (CLAUDE.md §15) and controls
+> where the two disagree. Retained in full; nothing here states what is true now.
+
 **Scope and method, recorded per §19.** Starting from BD-10, BD-11 and BD-12, each of the
 fifteen consequence categories was walked against the implemented disclosure, the retention
 module, the two projections and the new guards. Rounds A–C are carried in the matrix.

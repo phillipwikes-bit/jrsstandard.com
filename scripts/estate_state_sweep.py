@@ -25,7 +25,11 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # PROPOSITION BASELINE: id -> (current state, patterns that would assert the OLD state)
 PROPS = {
- "S-1":            ("CLOSED (E-031)", [r"S-1\b", r"de-identification review"]),
+ # \bS-1\b, with a LEFT boundary too. Without it the pattern matched the HTML id
+ # "module-status-1" on a deployed training page and reported a public page as
+ # carrying estate state. A missing boundary on one side of a token is the
+ # cheapest false positive there is and the easiest to stop believing the scan over.
+ "S-1":            ("CLOSED (E-031)", [r"\bS-1\b", r"de-identification review"]),
  "S-6/T-6":        ("CLOSED (E-032)", [r"\bS-6\b", r"\bT-6\b", r"superseded figures"]),
  "Section 2.1":    ("CLOSED (E-033,E-036)", [r"Section 2\.1"]),
  "V-AI-08/Gabi":   ("PARTICIPATION PRESERVED; contribution corrected", [r"V-AI-08", r"Cortez"]),
@@ -265,6 +269,13 @@ def scan(files):
             # Values are therefore sentence-split, exactly as prose is.
             pieces = []
             for label, val in json_units(p):
+                # A JSON record preserves history in its KEY, because it cannot
+                # carry a strikethrough. update_2026_09_15, _at_evaluation_ and
+                # the like are archives, and reading them as live assertions
+                # reports the act of preserving history as a failure to.
+                if re.search(r"update_\d|remediation_\d|correction_\d|_at_evaluation|"
+                             r"_history|prior|conditions_corrected|_cleared", label, re.I):
+                    continue
                 if len(val) > 240:
                     for s in re.split(r"(?<=[.!?])\s+(?=[A-Z*_`~(\[])", val):
                         pieces.append((label, s))
@@ -304,6 +315,96 @@ def scan(files):
                                      strict=strict, loose=loose,
                                      unit=re.sub(r"\s+", " ", unit).strip()[:200]))
     return rows
+
+
+# ---------------------------------------------------------------------------
+# RECORD CLASSIFICATION, added 2026-09-18 for the estate-wide pass.
+#
+# The 2026-09-18 discovery pass established that the estate is 294 records, not
+# 25. Sweeping all 294 with the 25-record rules reported 128 stale occurrences,
+# and almost none of them were claims: they were superseded execution reports
+# doing their job, guard SOURCE CODE whose patterns necessarily contain the very
+# wording they hunt, and an append-only dated log. A number that large is not a
+# finding, it is an instrument that has not been told what it is reading.
+#
+# Three classes, each excluded explicitly and counted, never silently:
+#   HISTORICAL   - the record classifies ITSELF historical in its opening block.
+#                  The token must be distinctive: a bare "SUPERSEDED" also occurs
+#                  inside a corrected ROW, and using it would exempt a record for
+#                  the act of correcting it.
+#   CONTROL CODE - guards, tests and page scripts. check_zero_drift.py contains
+#                  "queued behind B-001" because that is the string it exists to
+#                  catch. Reading a detector's pattern as an assertion makes every
+#                  control look like the defect it prevents.
+#   APPEND-ONLY  - research/MASTER_TRACKER.md, whose every entry is dated and
+#                  states what was true on its date.
+HEAD_HISTORICAL = re.compile(
+    r"HISTORICAL EXECUTION RECORD|HISTORICAL RECORD \u2014 NO LONGER MAINTAINED|"
+    r"NOT THE PRIMARY REGISTER|NOT CURRENT-STATE AUTHORITY|COMPLETED GATE RECORD|"
+    r"HISTORICAL \u2014 20\d\d-\d\d-\d\d REPORT|APPEND-ONLY DATED LOG", re.I)
+
+CONTROL_CODE = re.compile(r"^(scripts|tests|lib|api)/|\.(py|mjs|ts|js)$")
+
+# Records that control current state by ROLE and can never be excluded, whatever
+# their text says.
+NEVER_EXCLUDE = set(MANDATORY) | {
+    "docs/enterprise-diligence/JRS_MASTER_ASSET_EVIDENCE_AND_CHAIN_OF_TITLE_REGISTER.md",
+    "docs/enterprise-diligence/EVIDENCE_LEDGER.md",
+    "docs/enterprise-diligence/CHAIN_OF_TITLE_STATUS.md",
+    ".jrs/state/ACTIVE_GATE.json", ".jrs/state/CURRENT_PHASE.json",
+    ".jrs/state/PROGRAM_STATE.json", ".jrs/reports/GATE_1_REMAINING_ITEMS.md",
+}
+
+
+# THE RESEARCH CORPUS IS NOT THE CONTROL ESTATE.
+#
+# Semantic discovery pulled in 106 dated research files - article drafts v4 to
+# v9, submission packets, coding frames, a FOIL production, CSV datasets -
+# because scholarly prose says "requires", "not established" and "remains open"
+# constantly. Sweeping them for BLOCKER state produced noise in proportion to how
+# much research exists, which is the wrong thing to measure. CLAUDE.md section 4
+# maps the estate: `.jrs/` is the control architecture and `docs/` the diligence
+# record; `research/` is the research programme, governed by its own tracker.
+# The three research files that DO carry estate state are named individually
+# rather than inferred, so adding a fourth is a decision and not an accident.
+# A CORRECTION NARRATIVE QUOTES THE OLD STATE BY DESIGN. A synchronization matrix
+# has a column headed "Old representation"; reading those cells as live claims
+# reports the record of the fix as the defect, and would grow with every cycle.
+CORRECTION_NARRATIVE = {
+    "docs/enterprise-diligence/JRS_ESTATE_WIDE_SYNCHRONIZATION_MATRIX_2026-09-18.md",
+    "docs/enterprise-diligence/JRS_ESTATE_WIDE_DOWNSTREAM_RECONCILIATION_REPORT_2026-09-18.md",
+    "docs/enterprise-diligence/STALE_STATUS_CORRECTION_REGISTER.md",
+    "docs/enterprise-diligence/D-10_STATUS_RECONCILIATION.md",
+}
+
+RESEARCH_STATE_BEARING = {
+    "research/MASTER_TRACKER.md",
+    "research/TRACKER_RECENT.md",
+    "research/IP_SALE_TRACKER.md",
+}
+
+
+def classify(rel):
+    """CURRENT, HISTORICAL, CONTROL CODE or RESEARCH CORPUS, with the reason."""
+    if rel in NEVER_EXCLUDE:
+        return "CURRENT", "controls current state by role"
+    if CONTROL_CODE.search(rel):
+        return "CONTROL CODE", "a detector or a page script, not a state assertion"
+    if rel in CORRECTION_NARRATIVE:
+        return "CORRECTION NARRATIVE", ("a record whose subject IS the old wording; every "
+                                        "row quotes a state in order to correct it")
+    if rel.startswith("research/") and rel not in RESEARCH_STATE_BEARING:
+        return "RESEARCH CORPUS", ("a research deliverable, not a control-state record; "
+                                   "the research programme is tracked by its own log")
+    try:
+        head = "\n".join(open(os.path.join(ROOT, rel), encoding="utf-8",
+                              errors="replace").read().splitlines()[:45])
+    except OSError:
+        return "CURRENT", "unreadable head"
+    if HEAD_HISTORICAL.search(head):
+        return "HISTORICAL", "self-classified in its opening block"
+    return "CURRENT", "no self-classification"
+
 
 if __name__ == "__main__":
     scope = MANDATORY + ALSO

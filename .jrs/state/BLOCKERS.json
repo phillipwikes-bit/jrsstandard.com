@@ -6,7 +6,8 @@
       "category": "SECURITY",
       "description": "A live Vercel API token was pasted into conversation on 2026-09-14, twice. It is exposed by that act.",
       "evidence_refs": [
-        "SECURITY_REGISTER.json#incidents/SEC-001"
+        "SECURITY_REGISTER.json#incidents/SEC-001",
+        "EVIDENCE_LEDGER.md#E-030"
       ],
       "affected_assets": [
         "JRS-SITE",
@@ -35,7 +36,8 @@
           "superseded": "2026-09-18",
           "reason": "required repository-side proof of an external action"
         }
-      ]
+      ],
+      "closure_evidence_note_2026_09_18": "Owner attestation of the external credential rotation, 2026-09-18. Added 2026-09-18: a reverse trace over this registry found the closure recorded here with NO POINTER TO THE EVIDENCE, so a reviewer reading the registry alone could not reach E-030. An external control-plane action admits an attestation and nothing else; the pointer is what makes that checkable rather than merely asserted."
     },
     {
       "blocker_id": "B-002",
@@ -205,7 +207,11 @@
       "owner": "HUMAN",
       "status": "RESOLVED",
       "created": "2026-09-14",
-      "update_2026_09_15": "Classified by owner 2026-09-15: acquisition-9f3c2a7d4b.html and vp-7c1f9a4e8d2b6035.html are both CONFIDENTIAL BUYER, distinct from the private owner surface. Recorded in CLAUDE.md 36.3 and the asset register. Access architecture unchanged."
+      "update_2026_09_15": "Classified by owner 2026-09-15: acquisition-9f3c2a7d4b.html and vp-7c1f9a4e8d2b6035.html are both CONFIDENTIAL BUYER, distinct from the private owner surface. Recorded in CLAUDE.md 36.3 and the asset register. Access architecture unchanged.",
+      "evidence_refs": [
+        "CLAUDE.md#36.3"
+      ],
+      "closure_evidence_note_2026_09_18": "The owner's classification of 2026-09-14: ONE private owner page, TWO confidential buyer surfaces, kept as distinct categories. Added 2026-09-18 for the same reason as B-001 - the closure was recorded without a route to what settles it."
     },
     {
       "blocker_id": "B-011",
@@ -216,7 +222,11 @@
       "owner": "CLAUDE",
       "status": "RESOLVED",
       "created": "2026-09-14",
-      "resolved": "2026-09-14"
+      "resolved": "2026-09-14",
+      "evidence_refs": [
+        ".jrs/reports/GATE_1_REMAINING_ITEMS.md#item-14"
+      ],
+      "closure_evidence_note_2026_09_18": "Fixed at the cause and proven against empty live data. Added 2026-09-18."
     },
     {
       "blocker_id": "B-012",

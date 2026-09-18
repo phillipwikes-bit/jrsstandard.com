@@ -1,5 +1,16 @@
 # Deployment Readiness Report
 
+> **HISTORICAL — 2026-09-15 REPORT, SUPERSEDED 2026-09-18.**
+> The current readiness record is `DEPLOYMENT_READINESS_REPORT_2026-09-17.md`, which states
+> that it supersedes earlier readiness records. That statement was made there and **not
+> here**, and this file carries the plainer, more authoritative-looking filename — so a
+> reader arriving by name read the older report as the current one.
+>
+> **The conclusion below — DEPLOYMENT NOT READY — is still correct.** Its stated conditions
+> are not: B-001 is **CLOSED** (E-030, 2026-09-18) and B-013 is **BOARD DECIDED, IMPLEMENTED
+> AND TESTED** with its production operations outstanding. **Nothing below states current
+> state**; `.jrs/state/BLOCKERS.json` does.
+
 **Date:** 2026-09-15
 
 ## CONCLUSION

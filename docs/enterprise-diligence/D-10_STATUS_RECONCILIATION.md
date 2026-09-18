@@ -1,5 +1,10 @@
 # D-10 — Status Reconciliation
 
+> **HISTORICAL EXECUTION RECORD — STAMPED 2026-09-18.**
+> Evidence of work performed on its date. **Not current-state authority.**
+> `.jrs/state/BLOCKERS.json` is the authoritative registry (CLAUDE.md §15) and controls
+> where the two disagree. Retained in full; nothing here states what is true now.
+
 **The substantive Google Fonts question is NOT re-decided here.** The owner's decision stands:
 **ACCEPT AND DISCLOSE FOR NOW.**
 

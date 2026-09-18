@@ -1,5 +1,10 @@
 # Second-Order Question Audit — 2026-09-16
 
+> **HISTORICAL EXECUTION RECORD — STAMPED 2026-09-18.**
+> Evidence of work performed on its date. **Not current-state authority.**
+> `.jrs/state/BLOCKERS.json` is the authoritative registry (CLAUDE.md §15) and controls
+> where the two disagree. Retained in full; nothing here states what is true now.
+
 **Questions raised *by this cycle's decisions*, which did not exist before them.**
 
 | # | Question | Arises from | Authority | Status |

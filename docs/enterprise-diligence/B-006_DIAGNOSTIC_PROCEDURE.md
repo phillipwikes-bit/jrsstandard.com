@@ -1,6 +1,6 @@
 # B-006 — Diagnostic Procedure
 
-**STATUS: OPEN.** Not `DIAGNOSTIC READY` — that status requires B-001 confirmation first,
+~~**STATUS: OPEN.** Not `DIAGNOSTIC READY` — that status requires B-001 confirmation first~~ **STATUS UPDATED 2026-09-18: `DIAGNOSTIC READY — NOT EXECUTED`.** B-001 is OWNER-CONFIRMED (E-030), so the stated prerequisite is satisfied. The procedure has still **not been run**, and running it is an owner action in the owner's own shell.
 because the procedure cannot run without a rotated credential.
 
 **The diagnostic has NOT been executed. The existence of `scripts/vercel_f4_diagnose.sh` is not

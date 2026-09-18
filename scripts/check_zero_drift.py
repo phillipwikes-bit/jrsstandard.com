@@ -5830,6 +5830,300 @@ def _assertion_units(body):
     return text, units
 
 
+def _json_string_fields(rel):
+    """Every string value in a JSON record, labelled by its key path.
+
+    A JSON file has no sentences and no table rows. Its unit is the FIELD, and
+    the field's KEY carries the record's own statement about whether the value is
+    current or archived. Scanning the serialized bytes instead throws that away.
+    """
+    out = []
+    try:
+        data = json.loads(read(rel) or "null")
+    except ValueError:
+        return out
+
+    def walk(node, label):
+        if isinstance(node, dict):
+            ident = node.get("id") or node.get("blocker_id") or ""
+            for k, v in node.items():
+                walk(v, "%s.%s.%s" % (label, ident, k) if ident else "%s.%s" % (label, k))
+        elif isinstance(node, list):
+            for i, v in enumerate(node):
+                walk(v, "%s[%d]" % (label, i))
+        elif isinstance(node, str):
+            out.append((label, node))
+
+    walk(data, "")
+    return out
+
+
+def check_superseded_records_declare_themselves_superseded(offline):
+    """A record that no longer controls says so, in its own opening block.
+
+    WHY THIS GUARD EXISTS. On 2026-09-18 a repository-wide discovery pass found
+    TWO DUPLICATE AUTHORITIES, each announcing itself as current:
+      * `ASSET_AND_CHAIN_OF_TITLE_REGISTER.md` opens "Version 2.0, rebuilt from
+        underlying evidence". The Master Register had superseded it as the primary
+        register since the day it was created -- and said so THERE, not here.
+      * `DEPLOYMENT_READINESS_REPORT.md` carries the plainest, most authoritative
+        filename of any readiness record and is the 2026-09-15 one. The 09-17
+        report states that it supersedes earlier records -- again, there, not here.
+    In both cases a reader arriving by filename read the older document as current
+    and nothing in it disagreed. A supersession recorded only in the document that
+    WINS is not a control; the reader opens the other one.
+
+    WHAT IT CHECKS. Each superseded record below still carries its self-declaration
+    in its opening block, and still names what replaced it.
+
+    WHAT IT DOES NOT DO. Delete anything. Both files are retained in full: one is
+    the evidence the Master Register was built from, the other is the record of a
+    readiness determination that was correct on its date.
+    """
+    findings = []
+    PAIRS = {
+        "docs/enterprise-diligence/ASSET_AND_CHAIN_OF_TITLE_REGISTER.md":
+            ("NOT THE PRIMARY REGISTER",
+             "JRS_MASTER_ASSET_EVIDENCE_AND_CHAIN_OF_TITLE_REGISTER.md"),
+        "docs/enterprise-diligence/DEPLOYMENT_READINESS_REPORT.md":
+            ("HISTORICAL", "DEPLOYMENT_READINESS_REPORT_2026-09-17.md"),
+    }
+    checked = 0
+    for rel, (token, replacement) in PAIRS.items():
+        body = read(rel)
+        if body is None:
+            findings.append("%s is missing; it is retained deliberately as an evidence "
+                            "source and must not be deleted" % rel)
+            continue
+        checked += 1
+        head = "\n".join(body.splitlines()[:25])
+        if token not in head.upper():
+            findings.append("%s no longer declares itself superseded in its opening block. "
+                            "Its replacement says so, but a reader who opens THIS file by "
+                            "name never sees that" % rel)
+        elif replacement not in head:
+            findings.append("%s declares itself superseded without naming %s, so the reader "
+                            "is told to stop reading and not where to go" % (rel, replacement))
+    check("superseded records declare themselves superseded",
+          not findings,
+          "; ".join(findings) if findings
+          else "%d superseded record(s) checked; each declares itself in its opening block "
+               "and names the record that replaced it" % checked)
+
+
+def check_no_owner_decision_asks_for_completed_work(offline):
+    """The owner queue does not ask for work the working tree shows is done.
+
+    WHY THIS GUARD EXISTS. On 2026-09-18 a repository-wide pass found
+    HUMAN_DECISIONS_REQUIRED.md heading a block of six red-team findings
+    "ALL OPEN, NONE FIXED". Three of the six had been remediated in later cycles
+    and the page had gone on asking for all six -- including D-14, the one it
+    itself called "the one with a safety edge", whose fix was sitting in
+    pilot.html. D-11 and D-10 were the same story: one sentence deleted, one
+    question decided by the Board, both still listed as awaiting the owner.
+
+    The estate-wide sweep could not see any of it. Its ten propositions were
+    owner and rights facts; nothing in it compared an OWNER QUESTION against the
+    CODE THAT ANSWERS IT. That comparison is this guard.
+
+    HOW IT CHECKS. Each pair below names a decision and a fact in the working
+    tree that settles it. If the fact says the work is done, the decision must
+    not still be presented as open. The facts are deliberately of the kind that
+    cannot drift quietly: a call site that exists, a sentence that does not.
+
+    WHAT IT DOES NOT CHECK. Whether a decision was CORRECT, and whether any
+    still-open item should be closed. Three of these six are open and the page
+    says so; a guard that pushed toward closure would be worse than none.
+    """
+    findings = []
+    hdr = read("docs/enterprise-diligence/HUMAN_DECISIONS_REQUIRED.md")
+    if not hdr:
+        check("no owner decision asks for completed work", False,
+              "the human decisions register is missing")
+        return
+
+    # (decision, "done" test over the tree, what the queue must not still say)
+    def absent(rel, needle):
+        body = read(rel)
+        return body is not None and needle not in (body or "")
+
+    def present(rel, needle):
+        return needle in (read(rel) or "")
+
+    PAIRS = [
+        ("D-11", lambda: absent("review-engine.html", "never leaves your control"),
+         r"D-11[^\n]{0,120}?\*\*NEW, OPEN, NOT EDITED\*\*"),
+        ("D-13", lambda: absent("terms.html", "transmits nothing")
+                         and absent("engagement.html", "transmits nothing"),
+         r"D-13[^|\n]{0,40}\|[^|\n]{0,40}\bOPEN\b"),
+        ("D-14", lambda: present("pilot.html", "jrsSanitizeCheck(msgVal)"),
+         r"D-14 is the one with a safety edge\*\*, because"),
+        ("D-12 to D-17", lambda: absent("index.html", "api.jrsstandard.com/v1/verify-drift'")
+                                 and absent("terms.html", "transmits nothing"),
+         r"D-12 to D-17[^\n]{0,80}\*\*ALL OPEN, NONE FIXED\*\*(?!~)"),
+    ]
+    checked = 0
+    for did, done, stale_pat in PAIRS:
+        try:
+            is_done = done()
+        except OSError:
+            continue
+        checked += 1
+        if not is_done:
+            continue
+        # The stale heading may be RETAINED under Rule 10, struck through. Only an
+        # unstruck one is a live request.
+        live = re.sub(r"~~.+?~~", " ", hdr, flags=re.S)
+        if re.search(stale_pat, live):
+            findings.append("the owner queue still presents %s as awaiting a decision, and the "
+                            "working tree shows the work is done. An estate that asks for "
+                            "completed work trains its reader to skim the queue" % did)
+
+    check("no owner decision asks for completed work",
+          not findings,
+          "; ".join(findings) if findings
+          else "%d owner decision(s) cross-checked against the code that settles them; none "
+               "that the tree shows complete is still presented as open" % checked)
+
+
+def check_downstream_records_agree_with_the_blocker_registry(offline):
+    """No current record says a blocker is still open that the registry has closed.
+
+    WHY THIS GUARD EXISTS. On 2026-09-18 a repository-wide discovery pass found
+    that the previous cycle had reconciled TEN OWNER AND RIGHTS PROPOSITIONS and
+    had never asked the adjacent question: does the rest of the estate agree with
+    `.jrs/state/BLOCKERS.json` about what each BLOCKER's state is? It did not.
+    `.jrs/state/ACTIVE_GATE.json` -- the live file that governs whether Phase 2
+    may proceed -- carried three conditions, ALL THREE STALE, including a
+    "credential ... needs rotation" that the owner had already performed.
+    `.jrs/reports/GATE_1_REMAINING_ITEMS.md` disagreed with the registry on seven
+    rows. A page shipped to production still named a closed blocker as a queue.
+
+    WHAT IT CHECKS, AND ONLY THIS. A record asserts a blocker is OPEN, BLOCKED or
+    still REQUIRED while the registry records it RESOLVED, CLOSED, OWNER-CONFIRMED
+    or COMPLETED. The blocker id must be the SUBJECT of the assertion -- within 60
+    characters, in the same sentence or table row -- because a row can hold two
+    subjects and "T-7 ... OPEN, LOW; folds into B-007" says nothing about B-007.
+
+    WHAT IT DELIBERATELY DOES NOT CHECK. Wording equivalence in the other
+    direction. A first version compared every status word against the registry
+    string and produced TWENTY-ONE FALSE POSITIVES against ONE real finding: it
+    read "B-017 open" as contradicting "GRANT NOT REVOKED - PRODUCTION
+    VERIFICATION REQUIRED", which says the same thing in different words. A check
+    that fires on correct prose teaches people to ignore it, so the rule was
+    narrowed to the one direction that produced every genuine finding: an estate
+    that keeps asking for work already done.
+
+    Records that classify THEMSELVES historical in their opening block are
+    excluded, listed rather than silent. That is a record-level scope, not a
+    proximity window: a superseded execution report is evidence of what was
+    believed then, and striking each of its sentences would destroy that.
+    """
+    findings = []
+    raw = read(".jrs/state/BLOCKERS.json")
+    if not raw:
+        check("downstream records agree with the blocker registry", False,
+              "the blocker registry is missing")
+        return
+    reg = {b["blocker_id"]: b.get("status", "").upper()
+           for b in json.loads(raw)["blockers"]}
+    DONE = [k for k, v in reg.items()
+            if ("RESOLVED" in v or "OWNER-CONFIRMED" in v or "COMPLETED" in v)
+            and "NOT " not in v]
+
+    # Self-classification must be a distinct token. A bare "SUPERSEDED" also
+    # matches a corrected ROW, and using it exempted four of the seven mandatory
+    # records -- turning a correction into a way of escaping the check.
+    HEAD = re.compile(r"HISTORICAL EXECUTION RECORD|HISTORICAL RECORD \u2014 NO LONGER "
+                      r"MAINTAINED|NOT THE PRIMARY REGISTER|NOT CURRENT-STATE AUTHORITY|"
+                      r"HISTORICAL \u2014 20\d\d-\d\d-\d\d REPORT|COMPLETED GATE RECORD", re.I)
+    ALWAYS = {".jrs/state/BLOCKERS.json", ".jrs/state/ACTIVE_GATE.json",
+              ".jrs/reports/GATE_1_REMAINING_ITEMS.md",
+              "docs/enterprise-diligence/HUMAN_DECISIONS_REQUIRED.md",
+              "docs/enterprise-diligence/JRS_QUESTION_RESOLUTION_MATRIX_2026-09-16.md",
+              "docs/enterprise-diligence/JRS_CURRENT_DEPENDENCY_GRAPH_2026-09-16.md"}
+
+    RECORDS = sorted(ALWAYS | {
+        "docs/enterprise-diligence/COUNSEL_REVIEW_PACKET_2026-09-16.md",
+        "docs/enterprise-diligence/JRS_BOARD_DECISION_REGISTER_2026-09-16.md",
+        "docs/enterprise-diligence/OWNER_RESOLUTION_BATCH_2026-09-18.md",
+        "docs/enterprise-diligence/B-006_DIAGNOSTIC_PROCEDURE.md",
+        "docs/enterprise-diligence/DEPLOYMENT_READINESS_REPORT_2026-09-17.md",
+        ".jrs/gates/GATE_0_ASSET_BASELINE.md",
+        "research-data.html"})
+
+    STILL_OPEN = re.compile(
+        r"\b(?:is |remains |stays )?(?:still )?"
+        r"(?:OPEN|BLOCKED|OUTSTANDING|UNRESOLVED|NOT MET|"
+        r"OWNER ACTION REQUIRED|HUMAN DECISION REQUIRED|needs rotation|"
+        r"awaiting|queued behind|waits on)\b", re.I)
+    NEG = re.compile(r"\b(?:not|no longer|never|does not|cannot|without|rather than)\b", re.I)
+
+    checked = 0
+    skipped = []
+    for rel in RECORDS:
+        body = read(rel)
+        if not body:
+            findings.append("%s is missing; it carried blocker state" % rel)
+            continue
+        if rel not in ALWAYS and HEAD.search("\n".join(body.splitlines()[:45])):
+            skipped.append(rel)
+            continue
+        checked += 1
+        # JSON PRESERVES HISTORY IN THE KEY, NOT IN A STRIKETHROUGH. A JSON record
+        # cannot carry "~~", so this project keeps superseded wording in dated
+        # fields -- update_2026_09_15, remediation_2026_09_14, correction_*, and
+        # conditions_at_evaluation_*. Reading those as live assertions reported
+        # both of this guard's first two hits, and both were history filed exactly
+        # where history belongs. The key names the scope; nothing here is a window.
+        HIST_KEY = re.compile(r"update_\d|remediation_\d|correction_\d|_at_evaluation|"
+                              r"prior|superseded|_history|conditions_corrected|"
+                              r"b001_dependency_cleared", re.I)
+        if rel.endswith(".json"):
+            pairs = [(lbl, val) for lbl, val in _json_string_fields(rel)
+                     if not HIST_KEY.search(lbl)]
+        else:
+            flat, units = _assertion_units(body)
+            pairs = [(rel, u) for _s, _e, u in units]
+        for bid in DONE:
+            for lbl, unit in pairs:
+                i = unit.find(bid)
+                if i < 0:
+                    continue
+                if re.search(r"prior text read|PRESERVED|was open when|CORRECTED", unit, re.I):
+                    continue
+                # A TRANSITION IS NOT AN ASSERTION. This project writes state
+                # machines inline - "`OPEN` -> `DIAGNOSTIC READY` (B-001
+                # confirmed)" - and naming the state a thing LEAVES is not
+                # claiming it is in it. The test is the arrow, which is structure,
+                # not a guess about nearby words.
+                if re.search(r"\u2192|->", unit):
+                    continue
+                # BOTH SIDES OF THE ID, INSIDE THE UNIT. A first version looked
+                # only forward and a mutation walked straight past it: "the grant
+                # is queued behind B-001" puts the status phrase BEFORE the id,
+                # which is how every one of the six real findings was worded.
+                # The span is still the sentence or row - never a window across
+                # sentences - so this widens WHERE in the assertion to look, not
+                # WHICH assertions count.
+                before = unit[max(0, i - 60):i]
+                sm = STILL_OPEN.search(unit[i:i + 60]) or STILL_OPEN.search(before)
+                if sm and not NEG.search(unit[:i]):
+                    findings.append("%s says %s is %r while the registry records it %r. An "
+                                    "estate that keeps asking for work already done trains "
+                                    "its reader to ignore the asking"
+                                    % (rel, bid, sm.group(0).strip(), reg[bid]))
+                    break
+
+    check("downstream records agree with the blocker registry",
+          not findings,
+          "; ".join(findings[:4]) if findings
+          else "%d current record(s) checked against %d registry blocker(s); %d closed "
+               "blocker(s) named; no current record still calls a closed blocker open; "
+               "%d record(s) self-classified historical and excluded"
+               % (checked, len(reg), len(DONE), len(skipped)))
+
+
 def check_no_stale_current_state_representation(offline):
     """A closed matter is not still represented as open anywhere current.
 
@@ -6955,10 +7249,20 @@ def check_architecture_baseline_is_current(offline):
     # Floors, not equalities. A decrease is the signal.
     src = read("scripts/check_zero_drift.py")
     live_guards = len(re.findall(r"^def check_", src, re.M))
-    if live_guards < b["controls"]["guards"]:
+    pinned = b["controls"]["guards"]
+    if live_guards < pinned:
         findings.append("guard count FELL: baseline %d, now %d. Guards are added "
-                        "freely; a decrease means one was deleted"
-                        % (b["controls"]["guards"], live_guards))
+                        "freely; a decrease means one was deleted" % (pinned, live_guards))
+    elif live_guards > pinned:
+        # A FLOOR BELOW THE LIVE COUNT PROTECTS NOTHING, and the pin is editable.
+        # A mutation lowered it from 125 to 90 and the suite stayed green: at that
+        # setting thirty-five guards could be deleted unnoticed. So the pin must
+        # TRACK the live count rather than lag it, which also forces a guard added
+        # today to be recorded in the same change rather than absorbed.
+        findings.append("guard floor LAGS the live count: baseline %d, now %d. A floor "
+                        "below the live count would let %d guard(s) be deleted without "
+                        "failing. Re-pin it in the change that adds a guard"
+                        % (pinned, live_guards, live_guards - pinned))
 
     # A GUARD THAT IS DEFINED BUT NEVER CALLED IS NOT A GUARD.
     #
@@ -8198,6 +8502,9 @@ def main():
                check_misuse_register_records_reality,
                check_no_right_is_offered_beyond_its_evidence,
                check_section_2_1_resolution_holds,
+               check_superseded_records_declare_themselves_superseded,
+               check_no_owner_decision_asks_for_completed_work,
+               check_downstream_records_agree_with_the_blocker_registry,
                check_no_stale_current_state_representation,
                check_manifest_schema_keeps_its_safeguards,
                check_data_handling_claims_match_the_implementation,

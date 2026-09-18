@@ -1,5 +1,13 @@
 # Deployment Readiness Determination — 2026-09-16
 
+> **HISTORICAL EXECUTION RECORD — STAMPED 2026-09-18.**
+> This is evidence of work performed on its date. **It is not current-state authority.**
+> An execution report saying a blocker is open does not make it open; `.jrs/state/BLOCKERS.json`
+> is the authoritative registry (CLAUDE.md §15) and controls where the two disagree.
+> **Nothing under this heading is retained as a statement of what is true now**, and nothing
+> is deleted: an execution record's value is that it shows what was believed when it was
+> written.
+
 | Prerequisite | State |
 |---|---|
 | B-001 externally confirmed | **NOT MET** |

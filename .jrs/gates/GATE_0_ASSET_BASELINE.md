@@ -1,5 +1,12 @@
 # Gate 0 — ASSET BASELINE
 
+> **HISTORICAL — COMPLETED GATE RECORD, STAMPED 2026-09-18.**
+> Gate 0 was evaluated on its date and its verdict stands as a historical determination.
+> **The blocker states named below are those of 2026-09-14 and several have since moved** —
+> B-001 is OWNER-CONFIRMED (E-030), B-002 is PREPARED_FOR_HUMAN_REVIEW, B-003's disclosure is
+> written and undeployed, B-005 is remediated pending production. **Not current-state
+> authority.** `.jrs/state/BLOCKERS.json` controls; the live gate is `.jrs/state/ACTIVE_GATE.json`.
+
 **Status:** see `.jrs/state/ACTIVE_GATE.json`
 
 A gate is never marked passed because files exist. Each criterion below is

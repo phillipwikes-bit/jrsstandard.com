@@ -86,3 +86,87 @@ flags a person reads cost less than one live claim a rule hides.
 | `check_architecture_baseline_is_current` | Every defined guard must be **dispatched** | Fires when a guard is dropped from the call list |
 
 **Guard suite: 152 checks, 0 failed, 1 skipped. 123 guards defined, all 123 dispatched.**
+
+---
+
+# PART II — ESTATE DISCOVERY, 2026-09-18 (same day, second cycle)
+
+**Part I above reconciled a 25-record scope and said so.** It did not establish that 25 records
+were the estate. This part establishes the discovery boundary itself.
+
+## 6 · Discovery method and what it searched
+
+| Dimension | Actual |
+|---|---|
+| Repository files tracked | **1,366** |
+| Text-searchable files searched | **1,061** |
+| Binary files (docx, pdf, png, zip) | **302**, not searched; none is a control-state record |
+| Other | `.gitignore`, `CNAME`, one `.pyc`, one `.htm` (added to the search) |
+| Directories searched | every tracked directory: `.jrs`, `docs`, `research`, `scripts`, `api`, `lib`, `tests`, `reference`, `.claude`, `.github`, `content`, `schemas`, `standard`, `supabase`, `templates`, `tools`, root |
+
+**Three discovery methods, unioned.** None alone was sufficient, and the second and third exist
+because the first was demonstrably blind.
+
+| Method | What it keys on | Found |
+|---|---|---|
+| **A — IDENTIFIER** | an estate id: `B-0xx`, `E-0xx`, `BD-xx`, `CT-xxx`, `X-1x`, `CONTRADICTION_xxx`; and `S-/T-/V-/W-/U-/M-/D-/F-` **only** in estate context | 137 |
+| **B — ROLE** | membership of `.jrs/`, the control architecture under CLAUDE.md §4 | +8 that A could not see |
+| **C — SEMANTIC** | a dependency or owner/counsel action **stated in words with no identifier at all** | +143 |
+| **UNION** | | **294** |
+
+**Method A alone would have missed `.jrs/state/PROGRAM_STATE.json`** — the file CLAUDE.md §18
+names as the first thing to read in a new context — and four of the six gate criteria records,
+because none of them happens to mention a `B-` number. **A record can be state-bearing without
+naming an identifier, and an id-keyed search is blind to exactly that case.**
+
+**A namespace collision had to be separated first.** Keying on identifiers alone returned 252
+files, dominated by `research/` and `api/`: `V-AI-08` is a **participant code** and `S-1`,
+`T-6`, `V-4` collide with **study arm labels**. Counting those as estate participation would
+have inflated the estate with roster files and buried the real findings under them.
+
+## 7 · Classification of all 294 — no unexplained exclusion
+
+| Class | Count | Why it is or is not swept for current state |
+|---|---|---|
+| **CURRENT** | **147** | Swept. Controls current state |
+| **RESEARCH CORPUS** | **68** | Not swept. Article drafts v4–v9, submission packets, coding frames, a FOIL production, CSV datasets. Scholarly prose says "requires", "remains open" and "not established" constantly; CLAUDE.md §4 maps `research/` to the research programme, tracked by its own log. **Three research files that DO carry estate state are named individually** — `MASTER_TRACKER.md`, `TRACKER_RECENT.md`, `IP_SALE_TRACKER.md` — so adding a fourth is a decision, not an accident |
+| **CONTROL CODE** | **43** | Not swept. `check_zero_drift.py` contains "queued behind B-001" **because that is the string it exists to catch.** Reading a detector's pattern as an assertion makes every control look like the defect it prevents |
+| **HISTORICAL** | **32** | Not swept. Each self-classifies in its opening block with a distinctive token |
+| **CORRECTION NARRATIVE** | **4** | Not swept. A synchronization matrix has a column headed "Old representation"; reading those cells as live claims reports the record of the fix as the defect |
+
+## 8 · What discovery found that the 25-record scope could not
+
+| # | Finding | Severity |
+|---|---|---|
+| 1 | **`.jrs/state/ACTIVE_GATE.json` — the live file governing whether Phase 2 may proceed — carried three conditions and ALL THREE WERE STALE.** "B-001 open ... needs rotation" (closed 2026-09-18); "B-002 open ... not reconciled" (PREPARED_FOR_HUMAN_REVIEW); "the **four**-processor list" (**seven**) | **Material** |
+| 2 | **`.jrs/reports/GATE_1_REMAINING_ITEMS.md` disagreed with the authoritative registry on seven rows** — B-002, B-005, B-006, B-007, B-010, B-012 and the B-003 processor count, which read "five" against the registry's seven | **Material** |
+| 3 | **`HUMAN_DECISIONS_REQUIRED.md` asked the owner for work already done.** "D-12 to D-17 · **ALL OPEN, NONE FIXED**" — three of six were remediated, including **D-14, the one the page itself called "the one with a safety edge"**, whose fix sits at `pilot.html` line 816. D-11's sentence had been deleted; D-10 had been decided by the Board (BD-05) | **Material** |
+| 4 | **Two duplicate authorities, each announcing itself as current.** `ASSET_AND_CHAIN_OF_TITLE_REGISTER.md` opens "Version 2.0, rebuilt from underlying evidence"; `DEPLOYMENT_READINESS_REPORT.md` carries the plainest filename of any readiness record and is the older one. **Both supersessions were recorded in the document that WINS, and nowhere in the one a reader opens by name** | **Material** |
+| 5 | **A page shipped to production** (`research-data.html`) still named a closed blocker as a live queue, in page source | Moderate |
+| 6 | **`research/MASTER_TRACKER.md` calls itself "single source of truth"** over a July snapshot, and it is what the owner reads every turn | Moderate |
+| 7 | **A guard floor could be edited downward to disarm itself.** Lowering the pin from 125 to 90 left the suite green; at that setting 35 guards could be deleted unnoticed | Moderate |
+| 8 | **26 dated execution records carried no historical classification**, so their blocker states read as current | Moderate |
+
+## 9 · Standing controls added this cycle
+
+| Control | Demonstrated |
+|---|---|
+| `check_downstream_records_agree_with_the_blocker_registry` | Fires on a closed blocker named open, in prose, in a table row and in JSON |
+| `check_no_owner_decision_asks_for_completed_work` | Cross-checks four owner decisions against **the code that settles them**; fires on each |
+| `check_superseded_records_declare_themselves_superseded` | Fires when either duplicate authority drops its stamp |
+| `check_architecture_baseline_is_current` — pin must **track**, not lag | Fires when the floor is lowered |
+
+**Guards: 126 defined, all 126 dispatched. 155 checks, 0 failed, 1 skipped (unreachable
+endpoint, not drift).**
+
+## 10 · Residual flags after the final rescan — 9, every one triaged
+
+| Flag | Why it is not stale |
+|---|---|
+| `B-006_DIAGNOSTIC_PROCEDURE.md` | A state-machine line, `OPEN → DIAGNOSTIC READY → …`. Naming the state a thing leaves is not claiming it is in it |
+| `CHAIN_OF_TITLE_STATUS.md` ×2 | Negations: "**no** Section 2.1 contributor question to leave open"; "what it must **not** be read as" |
+| `IP_ASSET_REGISTER.md` — Section 2.1 | An asset description, current and correct |
+| `IP_ASSET_REGISTER.md` — domain **Unknown** | **Correct and deliberately unchanged.** E-035 is an owner attestation of registrar-account control; **no registrar record is located in-repo**, and an attestation is not a located document |
+| `JRS_BOARD_DECISION_REGISTER_2026-09-16.md` | Superseded by the E-031 blockquote in the paragraph immediately below |
+| Master Register, X-15 | The closure's own limit sentence. **A guard requires it to be present** |
+| `PERSON_BY_PERSON_EVIDENCE_AUDIT.md`, `RIGHTS_AND_AGREEMENTS_EVIDENCE_REGISTER.md` | "Ubayet Hossain … **not confirmed**" is the **correct current evidence state**. E-034 added the owner's account beside E-021; it located no instrument |

@@ -1,5 +1,20 @@
 # JRS Estate-Wide Downstream Dependency Reconciliation — 2026-09-18
 
+> **SCOPE SUPERSEDED THE SAME DAY — READ THIS FIRST.**
+> This report reconciled a **25-record scope** and said so in terms. A second cycle on
+> 2026-09-18 performed **repository-wide discovery** and established the estate at **294
+> records**: this scope was **8.5%** of it, and eight material findings lay outside it —
+> including all three conditions of the live gate file being stale and an owner queue asking
+> for a safety fix that had already shipped.
+>
+> **Everything in this report remains accurate about what it examined.** Its conclusion —
+> *synchronization complete on the stated scope* — was correctly bounded and is not withdrawn.
+> **It is simply not a statement about the estate.**
+>
+> The current statement is
+> **`JRS_ESTATE_DISCOVERY_COMPLETENESS_REPORT_2026-09-18.md`**, with the method and
+> classification at Part II of `JRS_ESTATE_WIDE_SYNCHRONIZATION_MATRIX_2026-09-18.md`.
+
 **Task.** Prove, rather than assume, that the authoritative-state corrections of 2026-09-18
 propagated through the entire downstream dependency estate.
 

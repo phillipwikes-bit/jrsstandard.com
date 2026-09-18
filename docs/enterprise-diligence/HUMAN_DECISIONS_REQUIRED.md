@@ -44,7 +44,14 @@ the no-personal-data statement kept bounded to source review. Decision 2 is **pa
 satisfied: Google Fonts is disclosed; self-hosting was not authorised and was not performed.
 **Publication itself still requires approval (Section 23).**
 
-## D-10 · Restricted surfaces load Google Fonts — **NEW, OPEN**
+## D-10 · Restricted surfaces load Google Fonts — ~~**NEW, OPEN**~~ **DECIDED (BD-05); NOT AN OPEN OWNER QUESTION**
+
+> **BOARD DECIDED 2026-09-16 (BD-05): accept and disclose. Do not self-host. Do not alter the
+> access architecture.** Verified 2026-09-18: `fonts.googleapis` is still loaded by
+> `acquisition-9f3c2a7d4b.html` and `programme-status-9872fb93cc94.html`, and **that is the
+> decided outcome, not an outstanding item.** `vp-7c1f9a4e8d2b6035.htm` loads none.
+> Self-hosting remains **deferred hardening** and must not be done without separate
+> authorization (CLAUDE.md §36.3).
 
 **QUESTION.** All three restricted surfaces (`programme-status-9872fb93cc94.html`,
 `acquisition-9f3c2a7d4b.html`, `vp-7c1f9a4e8d2b6035.html`) load Google Fonts, so a visitor
@@ -60,7 +67,11 @@ question (Rule 8) and is not answered in the repository.
 **APPROVAL REQUIRED.** Self-hosting is an engineering change and is not authorised. The
 access architecture of these surfaces was not touched (Section 36.3).
 
-## D-11 · `review-engine.html` contradicts the new disclosure — **NEW, OPEN, NOT EDITED**
+## D-11 · `review-engine.html` contradicts the new disclosure — ~~**NEW, OPEN, NOT EDITED**~~ **REMEDIATED, VERIFIED 2026-09-18**
+
+> **The sentence is gone.** `"never leaves your control"` returns **0 occurrences** in
+> `review-engine.html`. The question below is retained because it records why the sentence
+> could not stand; it is **no longer a decision awaiting the owner**.
 
 **QUESTION.** `review-engine.html` line 334 states: *"The call is stateless. Nothing in
 `text` is retained, stored, or used for training, so the record never leaves your control
@@ -86,7 +97,23 @@ data-residency clause and refer to counsel · leave it and accept the contradict
 
 **APPROVAL REQUIRED.** Yes. No change was made to `review-engine.html` under B-009.
 
-## D-12 to D-17 · Found by the red team on 2026-09-15 — **ALL OPEN, NONE FIXED**
+## D-12 to D-17 · Found by the red team on 2026-09-15 — ~~**ALL OPEN, NONE FIXED**~~ **THREE FIXED, THREE OPEN**
+
+> **VERIFIED AGAINST THE CODE 2026-09-18, NOT AGAINST THIS PAGE'S OWN HEADING.**
+> "ALL OPEN, NONE FIXED" was true when written and has not been true for two days. Three of
+> these six were remediated in later cycles and this page kept asking for them anyway.
+>
+> | # | Verified state | Evidence in the working tree |
+> |---|---|---|
+> | **D-12** | **REMEDIATED** | BD-06, 2026-09-16 removed the `verify-drift` call. **Zero pages POST to it**; `index.html` line 5605 records the removal |
+> | **D-13** | **REMEDIATED** | `"transmits nothing"` returns **0 occurrences** in `terms.html` and `engagement.html` |
+> | **D-14** | **REMEDIATED** | `pilot.html` line 816 calls `jrsSanitizeCheck(msgVal)` before the Formspree submit. **This was the one with a safety edge** |
+> | **D-15** | **OPEN** | `security.html` still carries *"not written to any table"* — 1 occurrence |
+> | **D-16** | **OPEN** | **Gumroad** still named 15 times each in `jrsstandard.html` and `index.html`, with no Gumroad URL in the estate |
+> | **D-17** | **OPEN** | `terms.html` still carries *"No sub-processors were engaged"* |
+>
+> **An owner queue that asks for work already done is how a queue stops being read.** The three
+> open rows are unchanged and are not softened by the three that closed.
 
 Each of these is a live statement or a live data flow that the B-009 pass surfaced and
 deliberately did not change. Full evidence is in `SUBPROCESSOR_DISCLOSURE_REVIEW.md`,
@@ -101,8 +128,10 @@ addendum 2.
 | **D-16** | **Gumroad** is named to readers as handling payment on `jrsstandard.html` and `index.html`. No Gumroad URL exists in the estate. | Either stale prose or an intended path; not established |
 | **D-17** | `terms.html` says "No sub-processors were engaged", scoped to pre-September engagements, opposite a privacy page naming eight. | Past-tense and scoped, so not a strict contradiction, but a diligence reader will collide with it |
 
-**D-14 is the one with a safety edge**, because it is a promise about sensitive
-identifiers that does not run where a visitor types free text.
+~~**D-14 is the one with a safety edge**, because it is a promise about sensitive
+identifiers that does not run where a visitor types free text.~~ **CLOSED 2026-09-18:** the
+screen now runs on that form. **The safety edge is gone because the fix was made, not because
+the finding was wrong.**
 
 ## D-18 · STUDY-001 figure — **RESOLVED FROM EVIDENCE 2026-09-15; PRESENTATION OPEN**
 

@@ -4,11 +4,27 @@
   "status": "FAIL",
   "evaluated": "2026-09-14",
   "conditions": [
+    "B-002: two OpenAPI documents disagree about the deployed endpoint. Registry status PREPARED_FOR_HUMAN_REVIEW - a reconciliation is prepared and unapproved. The published-contract limb is now B-016, OPEN and with counsel.",
+    "B-003: the subprocessor disclosure is WRITTEN AND NOT DEPLOYED. Publishing it is a Section 23 publication and needs owner approval.",
+    "B-004: no Level A rights instrument exists anywhere in the corpus. Counsel matter; Rule 8 forbids this repository determining title.",
+    "B-007: the published contract does not describe the deployed endpoint. PREPARED_FOR_HUMAN_REVIEW - COUNSEL REVIEW REQUIRED.",
+    "B-016: the published API contract is frozen pending authorization to correct it.",
+    "Nothing is PRODUCTION VERIFIED. Eleven remediated controls await a deployment."
+  ],
+  "basis": "23 adversarial findings, 4 CRITICAL, including a research-evidence deletion that reached a commit and a Rule 1 failure to read a baseline document that already answered the question Phase 1 presented as a discovery.",
+  "report": ".jrs/reports/GATE_1_REPORT.md",
+  "phase_2": "PROHIBITED until remediated",
+  "conditions_at_evaluation_2026_09_14": [
     "B-001 open: a credential was exposed in conversation and needs rotation.",
     "B-002 open: two or more OpenAPI documents may conflict and have not been reconciled.",
     "B-003 open: the four-processor subprocessor list is unpublished."
   ],
-  "basis": "23 adversarial findings, 4 CRITICAL, including a research-evidence deletion that reached a commit and a Rule 1 failure to read a baseline document that already answered the question Phase 1 presented as a discovery.",
-  "report": ".jrs/reports/GATE_1_REPORT.md",
-  "phase_2": "PROHIBITED until remediated"
+  "conditions_corrected": {
+    "date": "2026-09-18",
+    "why": "ALL THREE CONDITIONS RECORDED ON 2026-09-14 WERE STALE, and this is the live gate file that governs whether Phase 2 may proceed. (1) 'B-001 open ... needs rotation' - B-001 is OWNER-CONFIRMED (E-030, 2026-09-18). (2) 'B-002 open ... have not been reconciled' - the registry reads PREPARED_FOR_HUMAN_REVIEW; a reconciliation exists and awaits approval. (3) 'the FOUR-processor subprocessor list' - B-009 established SEVEN active processors, not four, and the disclosure is written but not deployed.",
+    "what_did_not_change": "THE VERDICT. status stays FAIL and Phase 2 stays PROHIBITED. Correcting a false statement of the basis is not a re-evaluation of the gate, and a gate verdict is not something this repository may move on its own.",
+    "prior_conditions_preserved_at": "conditions_at_evaluation_2026_09_14"
+  },
+  "verdict_last_evaluated": "2026-09-14",
+  "conditions_last_corrected": "2026-09-18"
 }

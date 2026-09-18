@@ -1,5 +1,10 @@
 # Gate 1 Remediation Report
 
+> **HISTORICAL EXECUTION RECORD — STAMPED 2026-09-18.**
+> Evidence of work performed on its date. **Not current-state authority.**
+> `.jrs/state/BLOCKERS.json` is the authoritative registry (CLAUDE.md §15) and controls
+> where the two disagree. Retained in full; nothing here states what is true now.
+
 **Date:** 2026-09-14 · **Cycle 2:** 2026-09-15 · **Authority:** Phillip Wikes, technical Gate 1 remediation
 **Gate 1 status: FAILED, unchanged. `/jrs-gate 1` was NOT run. Phase 2 remains LOCKED.**
 

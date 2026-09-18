@@ -1,5 +1,16 @@
 # JRS Asset and Chain-of-Title Register
 
+> **SUPERSEDED 2026-09-18 — NOT THE PRIMARY REGISTER.**
+> `JRS_MASTER_ASSET_EVIDENCE_AND_CHAIN_OF_TITLE_REGISTER.md` is the **AUTHORITATIVE LIVING
+> RECORD** and has expressly superseded this file as the primary register since it was
+> created. That supersession was stated there and **nowhere here**, so a reader who opened
+> this file first saw a document announcing itself as "Version 2.0, rebuilt from underlying
+> evidence" with nothing to say it no longer controls.
+>
+> **This file is retained as an evidence source and is not deleted.** Its findings were the
+> input the Master Register was built from. Where the two disagree, **the Master Register
+> controls**, and this file states no current state.
+
 ## 1. Document control
 
 | Field | Value |

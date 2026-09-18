@@ -1,5 +1,10 @@
 # JRS Board Execution Report — 2026-09-16
 
+> **HISTORICAL EXECUTION RECORD — STAMPED 2026-09-18.**
+> Evidence of work performed on its date. **Not current-state authority.**
+> `.jrs/state/BLOCKERS.json` is the authoritative registry (CLAUDE.md §15) and controls
+> where the two disagree. Retained in full; nothing here states what is true now.
+
 > **SUPERSEDED 2026-09-18 — B-001 IS OWNER-CONFIRMED.** The credential rotation described
 > below was **performed in the external Vercel control plane and confirmed by the owner on
 > 2026-09-18**. The instruction is preserved as history and **must not be acted on again**.

@@ -1,5 +1,13 @@
 # JRS Board / Owner Decision Register — 2026-09-15
 
+> **HISTORICAL EXECUTION RECORD — STAMPED 2026-09-18.**
+> This is evidence of work performed on its date. **It is not current-state authority.**
+> An execution report saying a blocker is open does not make it open; `.jrs/state/BLOCKERS.json`
+> is the authoritative registry (CLAUDE.md §15) and controls where the two disagree.
+> **Nothing under this heading is retained as a statement of what is true now**, and nothing
+> is deleted: an execution record's value is that it shows what was believed when it was
+> written.
+
 **Control layer only.** This register does not replace the five authoritative registers and
 must not be treated as an authoritative asset, evidence, version, research or commercial
 rights record. It references them.

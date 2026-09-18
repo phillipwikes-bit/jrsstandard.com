@@ -1,5 +1,10 @@
 # Phase 0 Closure Determination — 2026-09-17
 
+> **HISTORICAL EXECUTION RECORD — STAMPED 2026-09-18.**
+> Evidence of work performed on its date. **Not current-state authority.**
+> `.jrs/state/BLOCKERS.json` is the authoritative registry (CLAUDE.md §15) and controls
+> where the two disagree. Retained in full; nothing here states what is true now.
+
 Phase 0 is **Asset Control, Provenance and Architectural Freeze**. This record
 tests the estate against its twelve exit criteria and makes the determination.
 Authority: Category A delegation. It creates no authoritative content; every

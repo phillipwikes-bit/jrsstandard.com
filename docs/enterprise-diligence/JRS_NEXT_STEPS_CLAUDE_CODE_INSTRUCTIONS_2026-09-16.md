@@ -1,5 +1,10 @@
 # JRS — Claude Code Instructions for the Next Execution Cycle
 
+> **HISTORICAL EXECUTION RECORD — STAMPED 2026-09-18.**
+> Evidence of work performed on its date. **Not current-state authority.**
+> `.jrs/state/BLOCKERS.json` is the authoritative registry (CLAUDE.md §15) and controls
+> where the two disagree. Retained in full; nothing here states what is true now.
+
 Written 2026-09-16, after Round F and the Master Governance Prompt.
 Authoritative state at time of writing: **STATE 1 — DEVELOPMENT REMEDIATION ·
 DEPLOYMENT NOT AUTHORIZED · GATE 1 NOT READY · PHASE II LOCKED.**
