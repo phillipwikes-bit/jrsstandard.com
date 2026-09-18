@@ -40,6 +40,16 @@ written communication · **D** contemporaneous project record · **E** secondary
 | E-028 | Master Tracker | research/MASTER_TRACKER.md, entry dated 2026-08-06 | text | **2026-08-06** | Hekim Colpan | CCI article / collaboration framework | **D** | **"HE ACCEPTED EVERY TERM AND ASKED FOR ONE CHANGE: EQUAL CO-AUTHORS."** Records that he confirmed the publication route, the joint approval process and the handling of copyright and future use are all acceptable; will strengthen the European governance perspective across EU AI Act, GDPR, DORA and ISO/IEC 42001; content with provisional JRS figures; asked not to be presented as lead or primary authority | **His verbatim message is not reproduced.** The record is the project's contemporaneous account of his reply | none |
 
 
-**28 ledger entries.** No Level A entry exists: **no executed signed instrument
+| E-029 | **Owner attestation** | Owner resolution batch, this conversation | statement | **2026-09-18** | Phillip Wikes | AI-assisted development of the JRS estate | **OWNER INPUT — not a document level** | **Owner's factual account, recorded verbatim in substance:** he conceived the JRS work, directed the methodology and development, reviewed outputs, selected what was retained, and accepted the resulting work | **THIS IS AN ATTESTATION, NOT A DOCUMENT.** It is the account the register recorded as missing at section 13 and section 19 item 3, now supplied by the only person who could supply it. It does NOT establish legal ownership, and the owner expressly directed that it not be converted into one where documentary assignment evidence is absent. **F-4 is unchanged: no executed signed instrument exists anywhere in the corpus.** | none |
+| E-030 | **Owner attestation** | Owner resolution batch, this conversation | statement | **2026-09-18** | Phillip Wikes | B-001 external credential rotation | **OWNER INPUT** | The Vercel credential was rotated in the external deployment environment on 2026-09-18; the exposed credential is revoked and a replacement issued | **The fact and date only.** No value, scope, prefix, length or hash was supplied, requested or recorded. No repository-side proof exists or can exist; an attestation is the evidence class an external control-plane action admits | none |
+
+**30 ledger entries.** No Level A entry exists: **no executed signed instrument
 was located anywhere in the accessible corpus.** The strongest rights evidence is
 Level B, structured consent records, of which 33 people hold one.
+
+**E-029 and E-030 are the ledger's first OWNER ATTESTATIONS and are classified as
+their own evidence kind rather than forced onto the A-to-E document scale.** An
+attestation is not a weak document; it is a different thing. It is the strongest
+available evidence for a proposition only the owner holds, and no evidence at all
+for a proposition that requires an instrument. **Neither entry moves any rights
+finding.**

@@ -9,7 +9,7 @@
 | Created | 2026-09-09 |
 | Supersedes as the primary register | `ASSET_AND_CHAIN_OF_TITLE_REGISTER.md` v2.0 and all fragment registers, **which are retained as evidence sources and are not deleted** |
 | Update rule | **Never restart the audit. Add evidence, name the finding it changes, preserve the prior status in the correction history, update the index.** |
-| Traceability | 27 ledger entries in `EVIDENCE_LEDGER.md` |
+| Traceability | **30 ledger entries** in `EVIDENCE_LEDGER.md` (was 27; see the index note at section 23) |
 
 **The purpose of this document is that no future review should have to rediscover
 Hekim, Ubayet, Tanvi, Stacyann, the DRR evidence, the consents, or the Master Tracker
@@ -228,6 +228,9 @@ recorded as a contributor.
 | 8 | "Section 2.1 sits inside the core construct" | 2026-09-09 | E-023, E-024, E-025 | **CORRECTED** | Accessibility and study-design argument; **DRR publicly attributed 61 days earlier** |
 | 9 | "Hekim CCI terms acceptance not located" | 2026-09-09 | E-022 | **SUPERSEDED** | Contemporaneously recorded as confirmed, Level D |
 
+| 10 | "27 ledger entries, E-001 to E-027" | 2026-09-09 | E-028 added in the same pass; E-029 and E-030 added 2026-09-18 | **CORRECTED** | **The index was stale by one before this cycle.** Section 24's final step, update the index, was missed when E-028 was added. Now 30 |
+| 11 | Human review, selection and acceptance "NOT ESTABLISHED FROM ACCESSIBLE CORPUS" | 2026-09-09 | **E-029, owner attestation 2026-09-18** | **SUPPLIED, NOT UPGRADED** | The account the register recorded as missing is now on the record from the only person who could supply it. It is an attestation, not a document. **It does not establish ownership and F-4 is unchanged** |
+
 **No prior finding was deleted.**
 
 # 18. Genuine evidence not located
@@ -283,7 +286,13 @@ does not exist in this corpus.**
 
 # 23. Complete evidence index
 
-`EVIDENCE_LEDGER.md`, **27 entries**, E-001 to E-027. **No Level A entry exists.**
+`EVIDENCE_LEDGER.md`, **30 entries**, E-001 to E-030. **No Level A entry exists.**
+
+**INDEX CORRECTED 2026-09-18, and it was stale before this cycle touched it.** This read *27 entries, E-001 to E-027* while the ledger already held **28** — E-028, the Hekim Master Tracker record, was added in the 2026-09-09 consolidation pass and the index was not updated with it. Today's additions are **E-029** (the owner's AI-assisted development account) and **E-030** (the B-001 rotation attestation).
+
+**This is precisely the step section 24 of this register exists to enforce**: *add the evidence, name the finding it changes, update the status, preserve the prior status, UPDATE THE INDEX.* The last step was missed once. The prior figure is preserved above rather than overwritten silently.
+
+**E-029 and E-030 are the ledger's first OWNER ATTESTATIONS**, classified as their own evidence kind rather than forced onto the A-to-E document scale. **Neither moves any rights finding, and F-4 is unchanged.**
 
 Supporting registers retained as sources: `MASTER_JRS_ASSET_INVENTORY.md`,
 `EXHAUSTIVE_PARTICIPANT_AND_CONTRIBUTOR_RELEASE_AUDIT.md`,

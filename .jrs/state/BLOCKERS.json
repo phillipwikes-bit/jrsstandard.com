@@ -321,7 +321,8 @@
       "owner": "CLAUDE",
       "status": "REMEDIATED \u2014 NOT VERIFIED IN PRODUCTION \u2014 NOT DEPLOYED",
       "created": "2026-09-16",
-      "note": "Found by an adversarial pass, not by me. The exposure was reachable by one environment variable and would have been an unauthenticated write of record-derived content into a publicly readable table."
+      "note": "Found by an adversarial pass, not by me. The exposure was reachable by one environment variable and would have been an unauthenticated write of record-derived content into a publicly readable table.",
+      "owner_ratification_2026_09_18": "OWNER RATIFICATION 2026-09-18 of the V-11 / BD-15 decision to merge the two unauthenticated 401 detail messages. IT WAS ALREADY DECIDED AND IMPLEMENTED on 2026-09-17 under delegated authority, and is verified present in both engine routes (two occurrences each of the unified string). The owner's delegation therefore RATIFIES rather than initiates, and nothing was re-done: reopening an implemented decision to re-make it would be the loop this project has repeatedly had to correct. Recorded as BOARD DECISION - OWNER-DELEGATED, now owner-ratified. Production is untouched and remains unauthorized; the change reaches production only through the normal deployment gate."
     },
     {
       "blocker_id": "B-016",
