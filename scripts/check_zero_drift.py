@@ -5858,6 +5858,61 @@ def _json_string_fields(rel):
     return out
 
 
+def check_ledger_index_matches_the_ledger(offline):
+    """The register's evidence index equals the ledger's actual entry count.
+
+    WHY THIS GUARD EXISTS. The register's own section 23 records that this exact
+    step was missed: the index read "27 entries, E-001 to E-027" while the ledger
+    already held 28, and it stayed wrong until a later cycle noticed. Section 24
+    makes updating the index part of the update rule, and a rule that has already
+    failed once is a rule that needs a control rather than another reminder.
+
+    WHAT IT CHECKS. The count stated in the register, the range it names, and the
+    number of entries actually in the ledger all agree.
+    """
+    findings = []
+    led = read("docs/enterprise-diligence/EVIDENCE_LEDGER.md")
+    reg = read("docs/enterprise-diligence/"
+               "JRS_MASTER_ASSET_EVIDENCE_AND_CHAIN_OF_TITLE_REGISTER.md")
+    if not led or not reg:
+        check("ledger index matches the ledger", False,
+              "the ledger or the master register is missing")
+        return
+
+    ids = re.findall(r"^\| (E-\d{3}) \|", led, re.M)
+    actual = len(ids)
+    highest = max(ids) if ids else "E-000"
+
+    m = re.search(r"`EVIDENCE_LEDGER\.md`,\s*\*\*(\d+) entries\*\*,\s*E-001 to (E-\d{3})", reg)
+    if not m:
+        findings.append("the register's evidence index no longer states a count and a range "
+                        "in the form section 23 established")
+    else:
+        stated, stated_top = int(m.group(1)), m.group(2)
+        if stated != actual:
+            findings.append("the register's index says %d ledger entries; the ledger holds %d. "
+                            "This is the drift section 23 records happening once already"
+                            % (stated, actual))
+        if stated_top != highest:
+            findings.append("the register's index names the range ending %s; the ledger's "
+                            "highest entry is %s" % (stated_top, highest))
+
+    t2 = re.search(r"\*\*(\d+) ledger entries\*\* in `EVIDENCE_LEDGER\.md`", reg)
+    if t2 and int(t2.group(1)) != actual:
+        findings.append("the register's traceability row says %s entries; the ledger holds %d"
+                        % (t2.group(1), actual))
+
+    dupes = [i for i in set(ids) if ids.count(i) > 1]
+    if dupes:
+        findings.append("duplicate ledger ids: %s" % ", ".join(sorted(dupes)[:5]))
+
+    check("ledger index matches the ledger",
+          not findings,
+          "; ".join(findings) if findings
+          else "ledger holds %d entries E-001 to %s; the register's index and traceability row "
+               "both agree" % (actual, highest))
+
+
 def check_reliability_is_recorded_as_measured_and_failed(offline):
     """Reliability stays MEASURED WITH A FAILED CRITERION -- in BOTH directions.
 
@@ -5953,6 +6008,19 @@ def check_reliability_is_recorded_as_measured_and_failed(offline):
                          r"would have|VERIFIED FALSE|not the established|"
                          r"zero\b|returned no|none located|stops a", seg, re.I):
                 continue
+            # A SCOPED STATEMENT IS NOT THE FALSE CLAIM. Established 2026-09-19
+            # from the manuscript: reliability was measured on a SEPARATE SAMPLE,
+            # not on the detection panel. "Reliability was not measured on this
+            # panel or this corpus" is therefore TRUE and is the correction this
+            # register needed. The prohibition is on the UNSCOPED claim that
+            # reliability was never measured anywhere. This guard was written
+            # before the two-sample architecture was established and would
+            # otherwise block the more precise record it exists to protect.
+            if re.search(r"on this (?:panel|corpus|sample|study)|in the detection panel|"
+                         r"as an outcome of (?:the|this) (?:article|detection)|"
+                         r"on the 24-record|by the detection (?:panel|study)|"
+                         r"detection panel or this corpus", seg, re.I):
+                continue
             findings.append("%s asserts reliability was not measured: %r. It WAS measured; "
                             "the criterion failed on the lower-bound leg, and a failed "
                             "measurement is not an absent one"
@@ -5964,6 +6032,60 @@ def check_reliability_is_recorded_as_measured_and_failed(offline):
     # prose scan quiet, because the row still carried the words that excuse a
     # quotation. The classification is the controlling field, so it is read
     # directly rather than inferred from the sentence around it.
+    # BOTH SAMPLES MUST BE NAMED IN THE REGISTER. Removing the detection-panel
+    # scope line would let the criterion drift back onto the 16-expert study;
+    # removing the reliability-sample block would delete the measurement.
+    reg_body = read("docs/enterprise-diligence/"
+                    "JRS_MASTER_ASSET_EVIDENCE_AND_CHAIN_OF_TITLE_REGISTER.md")
+    if reg_body:
+        reg_flat = re.sub(r"\s+", " ", reg_body)
+        # EACH FIGURE INSIDE ITS OWN BLOCK, not anywhere in the file. Deleting
+        # the detection panel's "384" and the reliability sample's "104" both
+        # passed a whole-file check, because the correction-history row quotes
+        # them too. Confirming a figure survives somewhere is not confirming it
+        # survives where it belongs -- the third time this suite has learned it.
+        DET_H = "**DETECTION PANEL \u2014 detection/performance MEASURED.**"
+        REL_H = "**SEPARATE RELIABILITY SAMPLE \u2014 inter-rater reliability MEASURED"
+        for head, why in ((DET_H, "the detection-panel evidence object"),
+                          (REL_H, "the separate reliability sample as its own object")):
+            if head not in reg_flat:
+                findings.append("the master register no longer states %s. The two samples must "
+                                "stay distinct or the criterion drifts back onto the detection "
+                                "study" % why)
+        if DET_H in reg_flat and REL_H in reg_flat:
+            det_block = reg_flat[reg_flat.index(DET_H):reg_flat.index(REL_H)]
+            rel_block = reg_flat[reg_flat.index(REL_H):][:1800]
+            for block, name, needles in (
+                (det_block, "detection panel",
+                 [("384", "graded judgments"), ("83.9", "the accuracy result"),
+                  ("24-record", "the corpus"), ("16 reviewers", "the panel size")]),
+                (rel_block, "separate reliability sample",
+                 [("104", "the deduplicated label count"),
+                  ("25 reliability", "the participant count"),
+                  ("0.739", "the invited coefficient"),
+                  ("10 records", "the analysed record set")]),
+            ):
+                for needle, why in needles:
+                    if needle not in block:
+                        findings.append("the master register's %s block no longer states %s "
+                                        "(%r). A sample described without its own parameters "
+                                        "cannot be told apart from the other one"
+                                        % (name, why, needle))
+
+    # THE RESEARCH STATUS ROW MUST CARRY ITS SCOPE. Dropping "on the separate
+    # reliability sample" from that row restores exactly the ambiguity this
+    # correction removed, and nothing else in the suite would notice.
+    if "Human inter-rater reliability" in flat:
+        row = next((ln for ln in body.splitlines()
+                    if ln.startswith("| Human inter-rater reliability |")), "")
+        if not re.search(r"separate reliability sample", row, re.I):
+            findings.append("the research status row for inter-rater reliability no longer "
+                            "says it was measured on the SEPARATE reliability sample, so a "
+                            "reader takes it as an outcome of the detection panel")
+        if not re.search(r"not on the detection panel", row, re.I):
+            findings.append("the research status row no longer states that reliability was "
+                            "not measured on the detection panel")
+
     lim = read("docs/enterprise-diligence/EVIDENCE_AND_LIMITATIONS_REGISTER.md")
     if not lim:
         findings.append("the evidence and limitations register is missing; it carries the "
@@ -8917,6 +9039,7 @@ def main():
                check_misuse_register_records_reality,
                check_no_right_is_offered_beyond_its_evidence,
                check_section_2_1_resolution_holds,
+               check_ledger_index_matches_the_ledger,
                check_reliability_is_recorded_as_measured_and_failed,
                check_key_person_record_is_honest,
                check_blocker_evidence_targets_agree_with_the_blocker,

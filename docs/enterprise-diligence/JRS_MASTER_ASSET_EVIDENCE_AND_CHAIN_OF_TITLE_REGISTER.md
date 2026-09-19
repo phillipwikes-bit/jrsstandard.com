@@ -9,7 +9,7 @@
 | Created | 2026-09-09 |
 | Supersedes as the primary register | `ASSET_AND_CHAIN_OF_TITLE_REGISTER.md` v2.0 and all fragment registers, **which are retained as evidence sources and are not deleted** |
 | Update rule | **Never restart the audit. Add evidence, name the finding it changes, preserve the prior status in the correction history, update the index.** |
-| Traceability | **36 ledger entries** in `EVIDENCE_LEDGER.md` (was 27, then 30, then 35; see the index note at section 23) |
+| Traceability | **38 ledger entries** in `EVIDENCE_LEDGER.md` (was 27, then 30, then 35, then 36; see the index note at section 23) |
 
 **The purpose of this document is that no future review should have to rediscover
 Hekim, Ubayet, Tanvi, Stacyann, the DRR evidence, the consents, or the Master Tracker
@@ -98,9 +98,39 @@ appears 2026-08-02, 61 days after public attribution.**
 Record text not retained; result telemetry is. **Two conflicting OpenAPI documents.**
 Engine declares its own stage as unvalidated in every response.
 
-**Research evidence base.** 24-record constructed corpus; 16 experts, 11 countries, 384
+**Research evidence base.** ~~24-record constructed corpus; 16 experts, 11 countries, 384
 graded judgments; **83.9%**, 95% CI 72.7 to 95.1; data lock 2026-08-15. **Pre-registered
-reliability criterion NOT met** (point estimates clear 0.61; both lower bounds fail 0.41).
+reliability criterion NOT met** (point estimates clear 0.61; both lower bounds fail 0.41).~~
+
+> **SCOPE CORRECTED 2026-09-19. TWO SAMPLES, NOT ONE.** The wording above set the detection
+> parameters and the reliability criterion in a single entry, which reads as though the
+> criterion were an outcome of the 16-expert, 24-record, 384-judgment study. **It is not.**
+> The manuscript reports them on **different samples** and names the second **"the separate
+> reliability sample"**. **No figure is changed and nothing is deleted; the attribution is.**
+
+**DETECTION PANEL — detection/performance MEASURED.** 24-record constructed corpus;
+**16 reviewers**, 11 countries, 5 continents, each reading the full 24-record set; **384 graded
+judgments**; **83.9%**, 95% CI **72.7 to 95.1** (Student t across the 16 reviewer-level accuracy
+scores); range across reviewers **37.5% to 100%**, SD 21.0; data lock **2026-08-15**.
+**RELIABILITY WAS NOT MEASURED ON THIS PANEL OR THIS CORPUS**, and 83.9% is not a reliability
+figure — the manuscript states that an organisation cannot act on it as a per-reviewer
+reliability figure.
+
+**SEPARATE RELIABILITY SAMPLE — inter-rater reliability MEASURED, criterion NOT met.**
+Same manuscript, **different participants and a different record set**: **25 reliability
+participants**, 22 of whom contributed labels under the five-condition instrument and entered
+the analysed sample (**8 invited, 14 open enrolment**); 15 records carried at least one label
+and **the 10 records with two or more raters** formed the analysed reliability set; **113
+submitted determinations reduced to 104** after keeping one label per rater per record.
+Gwet's AC1 **0.739** invited (analytic 95% CI 0.402 to 1.000) and **0.623** open enrolment
+(0.252 to 0.993). **The pre-registered two-part criterion was NOT met**: both point estimates
+clear the 0.61 floor; **neither lower bound clears 0.41** on the analytic interval the plan
+specified. The exclusion of baseline-prompt labels is disclosed and material. **This is a
+reported negative result and it belongs to this sample alone.**
+
+**SCOPE LIMIT.** Detection evidence is not reliability evidence; reliability evidence is not
+psychometric validation; neither is operational effectiveness, legal sufficiency or regulatory
+compliance. **A statistic belongs to the sample that produced it.**
 
 # 8. Contributor and person rights matrix
 
@@ -222,6 +252,7 @@ recorded as a contributor.
 | 2 | "Hekim: instrument None" | 2026-09-09 | E-001 | **CORRECTED** | Category error: co-author roster searched, contributor instrument not |
 | 3 | "Tanvi / Stacyann not confirmed" | 2026-09-09 | E-002, E-003 | **CORRECTED** | True of one instrument, misleading overall |
 | 4 | "Ubayet: no consent of either kind" | 2026-09-09 | E-006 to E-008 | **CORRECTED** | **Reporting fault: search found 4 files, output printed 2** |
+| 15 | "Research evidence base: 24-record corpus; 16 experts; 384 judgments; 83.9% ... **Pre-registered reliability criterion NOT met**" as ONE entry | 2026-09-19 | `research/aie_submission_2026-09-01/01_Blinded_Manuscript.md` §6.5, §7 and the conclusion, which names **"the separate reliability sample"** | **CORRECTED — SCOPE, NOT RESULT** | **A provenance conflation, not a mathematical error.** The criterion was attributed to the detection study by being stated in the same breath as its parameters. The manuscript measures them on different samples: detection on **16 reviewers over 24 records, 384 judgments**; reliability on **25 participants, 22 analysed, 10 multi-rater records, 104 labels**. **Every figure is preserved. No research result is deleted, weakened or strengthened.** The failed criterion remains a reported negative result of the reliability sample |
 | 5 | "0 DOI strings anywhere" | 2026-09-09 | E-018 | **SUPERSEDED** | 3 exist, all citations; conclusion intact |
 | 6 | "three subprocessors" | 2026-09-08 | E-019 | **SUPERSEDED** | Four |
 | 7 | "Images never examined" | 2026-09-09 | 4 of 4 viewed | **CLOSED** | Gap the audit recorded against itself |
@@ -291,13 +322,26 @@ does not exist in this corpus.**
 
 # 23. Complete evidence index
 
-`EVIDENCE_LEDGER.md`, **36 entries**, E-001 to E-036. **No Level A entry exists.**
+`EVIDENCE_LEDGER.md`, **38 entries**, E-001 to E-038. **No Level A entry exists.**
 
 **INDEX CORRECTED 2026-09-18, and it was stale before this cycle touched it.** This read *27 entries, E-001 to E-027* while the ledger already held **28** — E-028, the Hekim Master Tracker record, was added in the 2026-09-09 consolidation pass and the index was not updated with it. Today's additions are **E-029** (the owner's AI-assisted development account) and **E-030** (the B-001 rotation attestation).
 
 **This is precisely the step section 24 of this register exists to enforce**: *add the evidence, name the finding it changes, update the status, preserve the prior status, UPDATE THE INDEX.* The last step was missed once. The prior figure is preserved above rather than overwritten silently.
 
 **E-029 and E-030 are the ledger's first OWNER ATTESTATIONS**, classified as their own evidence kind rather than forced onto the A-to-E document scale. **Neither moves any rights finding, and F-4 is unchanged.**
+
+**INDEX UPDATED AGAIN 2026-09-19: 36 to 38.** **E-037** (detection panel) and **E-038**
+(separate reliability sample) are added, both **Level B, structured primary record** — the
+submitted manuscript. **The research results had no ledger entries at all until now**: the
+ledger held E-008, an image of reliability *methodology* correspondence, and E-021, a targeted
+search, but neither the 83.9% detection result nor the AC1 analysis. A register whose
+traceability rule is *every finding cites a ledger entry* was carrying its central research
+figures without one.
+
+**They are deliberately TWO entries and not one.** That is the whole correction: the detection
+result and the reliability coefficients come from **different samples**, and a single entry is
+what allowed the criterion to be read as an outcome of the detection study. **Neither entry
+moves a rights finding. F-4 is unchanged.**
 
 Supporting registers retained as sources: `MASTER_JRS_ASSET_INVENTORY.md`,
 `EXHAUSTIVE_PARTICIPANT_AND_CONTRIBUTOR_RELEASE_AUDIT.md`,

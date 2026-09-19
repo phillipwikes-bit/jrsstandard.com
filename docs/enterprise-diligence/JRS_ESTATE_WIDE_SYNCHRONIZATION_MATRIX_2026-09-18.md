@@ -170,3 +170,68 @@ endpoint, not drift).**
 | `JRS_BOARD_DECISION_REGISTER_2026-09-16.md` | Superseded by the E-031 blockquote in the paragraph immediately below |
 | Master Register, X-15 | The closure's own limit sentence. **A guard requires it to be present** |
 | `PERSON_BY_PERSON_EVIDENCE_AUDIT.md`, `RIGHTS_AND_AGREEMENTS_EVIDENCE_REGISTER.md` | "Ubayet Hossain … **not confirmed**" is the **correct current evidence state**. E-034 added the owner's account beside E-021; it located no instrument |
+
+---
+
+# PART III — RESEARCH PROVENANCE CORRECTION, 2026-09-19
+
+**Extended here rather than opened as a competing dated matrix.** One correction, one control
+record.
+
+## 11 · The proposition, corrected
+
+**The question was not "was reliability measured" but "WHICH SAMPLE MEASURED WHAT".**
+
+| # | Proposition | Old representation | Current state | Authoritative source |
+|---|---|---|---|---|
+| R-1 | Detection / performance | Stated in one entry with the reliability criterion | **MEASURED on the detection panel** — 16 reviewers, 24-record corpus, 384 graded judgments, 83.9%, CI 72.7–95.1, data lock 2026-08-15 | Manuscript §5, §6.2, §6.4 → **E-037** |
+| R-2 | Detection-panel reliability | Implied by adjacency | **NOT MEASURED on that panel or that corpus.** 83.9% is not a reliability figure | Manuscript §7 |
+| R-3 | Separate reliability sample | Attributed, by adjacency, to the detection study | **MEASURED on a separate sample** — 25 participants, 22 analysed (8 invited, 14 open enrolment), 10 multi-rater records, 113 → 104 labels; AC1 **0.739** / **0.623** | Manuscript §6.5 → **E-038** |
+| R-4 | Pre-registered criterion | Read as an outcome of the detection study | **NOT MET, on the separate reliability sample only.** Both point estimates clear 0.61; neither lower bound clears 0.41 | Manuscript §6.5 |
+| R-5 | Validation | — | **Not established.** Detection ≠ reliability ≠ psychometric validation ≠ operational effectiveness ≠ generalizability | `RESEARCH_AND_VALIDATION_STATUS.md` |
+
+**The linkage was established affirmatively, not inferred.** The manuscript's own conclusion
+names it **"the separate reliability sample"**, and §6.5 gives its participants and records,
+which are different from the detection panel's.
+
+## 12 · Corrections applied
+
+| # | Record | Correction |
+|---|---|---|
+| 1 | Master Register §7 | Single "Research evidence base" entry **split into two evidence objects** with their own parameters, plus a scope limit. Prior wording **struck and retained** |
+| 2 | Master Register §17 | Correction-history row **15** added: scope, not result |
+| 3 | Master Register §23 | Evidence index **36 → 38**, with the reason |
+| 4 | `EVIDENCE_LEDGER.md` | **E-037** detection panel and **E-038** separate reliability sample, both Level B. **The research results had no ledger entry at all before this** |
+| 5 | `RESEARCH_AND_VALIDATION_STATUS.md` | Reliability row scoped to the separate sample; accuracy row scoped to the detection panel; section heading given its scope before the figures |
+| 6 | `research-summary.html` | Public card now names the reliability sample size and states that **83.9% is not a reliability measure** |
+
+## 13 · Occurrence inventory
+
+**48 files** carry both a detection parameter and a reliability result. **76 units** name both
+in one assertion: **22 CURRENT, 24 HISTORICAL, 22 CONTROL CODE, 8 RESEARCH CORPUS.** Of the 76,
+**14 were already scoped** and **62 were not**; **17 of the unscoped sit in CURRENT records**,
+and those are inventory listings — a claims register, a figures table, audit reports recording
+what is published — rather than assertions that one sample produced the other's statistic. **The
+six corrected above are the ones that asserted it.**
+
+## 14 · Seven mandatory downstream records
+
+`BLOCKERS.json` · `HUMAN_DECISIONS_REQUIRED.md` · Question Resolution Matrix · Counsel Review
+Packet · Board Decision Register · Current Dependency Graph · Owner Resolution Batch —
+**all seven inspected, all seven carry ZERO occurrences** of `83.9`, `AC1`, `reliability
+criterion`, `inter-rater`, `0.739` or `0.623`.
+
+**INSPECTED — NO MATERIAL DEPENDENCY IDENTIFIED.** No blocker, Owner action, Counsel action,
+Board item, Gate representation or phase requirement depends on the corrected proposition, and
+none was manufactured.
+
+## 15 · Controls added
+
+| Control | Demonstrated |
+|---|---|
+| `check_reliability_is_recorded_as_measured_and_failed`, extended | Both sample blocks must carry their own parameters; the status row must keep its scope |
+| `check_ledger_index_matches_the_ledger` | Fires when the index and the ledger disagree — the drift §23 records happening once already |
+
+**7 of 7 provenance mutations pass**, including relabelling the separate sample as the article
+study and deleting either sample's counts. **Guards 160 checks, 0 failed, 1 skipped; 131
+defined, dispatched and pinned.**

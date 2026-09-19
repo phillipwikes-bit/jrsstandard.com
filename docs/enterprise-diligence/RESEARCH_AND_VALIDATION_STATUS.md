@@ -11,8 +11,8 @@
 | Concept | Status | Evidence | Classification |
 |---|---|---|---|
 | Reproducibility (same input, same engine, repeated) | Disclosed, not hidden. `variance` is part of the response contract and `runs > 1` is supported | `openapi.json` `Variance`; `api/v1/review-engine.js` | **VERIFIED as contract**; measured effect **NOT AUDITABLE** without an authorized call |
-| Human inter-rater reliability | Measured. **Pre-registered criterion NOT met** | Manuscript reliability table | **VERIFIED** |
-| Accuracy against a key | Measured. Mean reviewer accuracy 83.9% | Manuscript results | **VERIFIED** |
+| Human inter-rater reliability | Measured **on the separate reliability sample**, not on the detection panel. **Pre-registered criterion NOT met** | Manuscript §6.5 reliability table | **VERIFIED** |
+| Accuracy against a key | Measured **on the detection panel**, 16 reviewers over 24 records. Mean reviewer accuracy 83.9% | Manuscript results | **VERIFIED** |
 | Construct validity | Not established | Manuscript limitations | **GAP**, author-disclosed |
 | Real-world criterion validity | Not established. Corpus is constructed | Manuscript methods | **GAP**, author-disclosed |
 | External validity | Not established | Manuscript limitations | **GAP**, author-disclosed |
@@ -45,7 +45,15 @@
 manuscript says so directly. An evaluator should not read 83.9% as a per-reviewer
 expectation.
 
-## Reliability study, including the criterion that failed
+## Reliability sample, including the criterion that failed
+
+> **SCOPE, STATED BEFORE THE FIGURES. Added 2026-09-19.** This section reports a **different
+> sample from the detection study above**, in the same manuscript. The detection panel is
+> **16 reviewers over the full 24-record corpus, 384 graded judgments**. This analysis is
+> **25 reliability participants, 22 analysed (8 invited, 14 open enrolment), on the 10 records
+> that carried two or more raters, 113 determinations reduced to 104**. The manuscript's own
+> conclusion calls it **"the separate reliability sample"**. **The criterion below belongs to
+> this sample and must not be reported as an outcome of the detection study.**
 
 The pre-registered criterion had **two parts**: a point estimate of at least **0.61**,
 and a lower confidence bound of at least **0.41**.
