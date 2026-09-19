@@ -1,5 +1,11 @@
 # JRS INITIALIZATION REPORT
 
+> **HISTORICAL EXECUTION RECORD — STAMPED 2026-09-19.**
+> The `/jrs-init` report of 2026-09-14. **Not current-state authority.** Every count in it was
+> correct on its date and is retained unchanged: the Evidence Ledger held **28** entries then
+> and holds **38** now. The ledger itself is the source; this record is a dated snapshot of
+> initialization and is not updated as the estate grows.
+
 **Command:** `/jrs-init` · **Date:** 2026-09-14 · **Mode:** inspect and establish state
 **Phase:** 0 · **Gate:** 0 · **Verdict:** PASS WITH CONDITIONS
 

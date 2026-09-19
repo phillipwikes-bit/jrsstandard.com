@@ -60,7 +60,7 @@ recorded separately throughout.
 **Start here: `JRS_MASTER_ASSET_EVIDENCE_AND_CHAIN_OF_TITLE_REGISTER.md`.**
 
 It is the single source of truth for JRS asset, contributor, rights and chain-of-title
-evidence, traceable to `EVIDENCE_LEDGER.md` (27 entries). Every other document in this
+evidence, traceable to `EVIDENCE_LEDGER.md` (38 entries). Every other document in this
 directory is retained as an evidence source and correction history, not as a competing
 conclusion.
 

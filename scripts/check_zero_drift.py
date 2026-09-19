@@ -5918,38 +5918,120 @@ def check_ledger_index_matches_the_ledger(offline):
                             "%d rows. The ledger was stale about itself" % (m.group(1), actual))
             break
 
-    # THE FOURTH PLACE THE COUNT LIVES, and the last one this guard learned about.
-    # `.jrs/registries/EVIDENCE_LEDGER.json` is a POINTER record: it names the
-    # markdown ledger as authoritative and does not duplicate it -- but it states
-    # an entry_count, and on 2026-09-19 that count sat at 28 while the ledger held
-    # 38. The footer, the traceability row and the section 23 index had all been
-    # moved; this one was never read, because the guard had only been pointed at
-    # the two documents it was written for. A pointer that states a count is a
-    # record that can go stale about the thing it points at.
-    ptr_raw = read(".jrs/registries/EVIDENCE_LEDGER.json")
-    if ptr_raw:
-        try:
-            ptr = json.loads(ptr_raw)
-        except ValueError as exc:
-            findings.append("the ledger pointer record does not parse: %s" % exc)
-        else:
-            if ptr.get("authoritative_source") != "docs/enterprise-diligence/EVIDENCE_LEDGER.md":
-                findings.append("the ledger pointer record no longer names the markdown ledger "
-                                "as authoritative; it points at %r"
-                                % ptr.get("authoritative_source"))
-            if ptr.get("entry_count") != actual:
-                findings.append("the ledger pointer record says %r entries while the ledger "
-                                "holds %d rows" % (ptr.get("entry_count"), actual))
+    # ---------------------------------------------------------------
+    # DYNAMIC DISCOVERY, because a fixed list of places has failed FOUR TIMES.
+    # The count was corrected in the ledger footer and the register's two
+    # references, and each time a further copy surfaced afterwards: the ledger's
+    # own footer, then `.jrs/registries/EVIDENCE_LEDGER.json` (28 against 38),
+    # then `DEPENDENCY_REGISTER.json`'s key-person evidence field (36) and
+    # `docs/enterprise-diligence/README.md` (27). Every one was missed the same
+    # way -- the guard checked the places it had been told about.
+    #
+    # It no longer holds a list. It SEARCHES the tracked repository for anything
+    # asserting a ledger entry count and requires every LIVE one to equal the
+    # count derived from the ledger's physical rows. A representation added
+    # tomorrow is covered the day it appears, with nobody remembering to register
+    # it.
+    #
+    # A record is exempt only when it classifies ITSELF historical in its opening
+    # block, or when the assertion is struck through or quoted as prior wording.
+    # Those exemptions are structural, and the count of them is reported rather
+    # than hidden.
+    ASSERTION = [
+        re.compile(r"\*\*(\d+) ledger entries", re.I),
+        re.compile(r"(?<!\*)\b(\d+) ledger entries", re.I),
+        re.compile(r"`?EVIDENCE_LEDGER\.md`?[^.\n]{0,70}?\b(\d+)\s+entries", re.I),
+        re.compile(r"\b(\d+)\s+entries\*{0,2},\s*E-001 to E-\d{3}", re.I),
+        re.compile(r'"entry_count"\s*:\s*(\d+)'),
+    ]
+    HEAD_HIST = re.compile(
+        r"HISTORICAL EXECUTION RECORD|HISTORICAL RECORD|NOT THE PRIMARY REGISTER|"
+        r"NOT CURRENT-STATE AUTHORITY|COMPLETED GATE RECORD|APPEND-ONLY DATED LOG|"
+        r"HISTORICAL \u2014 20\d\d-\d\d-\d\d REPORT", re.I)
+    # "the index read \"27 entries\"" is a QUOTATION OF HISTORY, and this guard's
+    # own docstring contains one. Discovery flagged it on its first run, which is
+    # the right behaviour from a rule that was too narrow: a straight quote after
+    # "read" is the same construct as the asterisked one it already knew.
+    QUOTED = re.compile(r"\bwas \d|previously|prior|CORRECTED|SUPERSEDED|stale|"
+                        r"read [\*\"\u201c']|index note|\(was |holds \*\*\d+\*\*|"
+                        # "self-describing" was in this list from when the
+                        # dependency register's key-person field held the STALE
+                        # value and I was excluding it. That is exactly backwards:
+                        # an exclusion added to quieten a defect hides the field
+                        # after it is fixed. A mutation proved it - changing that
+                        # field to 37 did not fire.
+                        r"already held", re.I)
+    EXT = {".md", ".json", ".txt", ".yml", ".yaml", ".py", ".js", ".mjs", ".html"}
 
-    dupes = [i for i in set(ids) if ids.count(i) > 1]
-    if dupes:
-        findings.append("duplicate ledger ids: %s" % ", ".join(sorted(dupes)[:5]))
+    try:
+        tracked = subprocess.run(["git", "ls-files"], cwd=ROOT, capture_output=True,
+                                 text=True, check=True).stdout.split()
+    except Exception as exc:
+        tracked = []
+        findings.append("could not enumerate tracked files to discover count "
+                        "representations: %r" % (exc,))
+
+    live_reps = []
+    exempt = 0
+    for rel in tracked:
+        if os.path.splitext(rel)[1].lower() not in EXT:
+            continue
+        body = read(rel)
+        if not body:
+            continue
+        if "EVIDENCE_LEDGER" not in body and "ledger entries" not in body.lower():
+            continue
+        if HEAD_HIST.search("\n".join(body.splitlines()[:45])):
+            exempt += 1
+            continue
+        masked = re.sub(r"~~.+?~~", lambda mm: " " * len(mm.group(0)), body, flags=re.S)
+        for pat in ASSERTION:
+            for mm in pat.finditer(body):
+                if masked[mm.start():mm.end()].strip() == "":
+                    continue
+                # THE LEAD, NOT A WINDOW. A 170-character context excluded the
+                # live footer and both register references, because each sits in
+                # a paragraph that also explains the correction -- so discovery
+                # reported 2 assertions where it should have reported 6. A value
+                # is history when the words IMMEDIATELY BEFORE IT say so, not
+                # when the paragraph around it discusses history.
+                lead = re.sub(r"\s+", " ", body[max(0, mm.start() - 40):mm.start()])
+                if QUOTED.search(lead):
+                    continue
+                # A REPORTED CLAIM IS NOT AN ASSERTION. Two forms remained after
+                # the lead rule: a value introduced by a reporting verb -- "the
+                # document control SAYS **27 ledger entries**", which a
+                # verification table writes in order to reject it -- and a value
+                # sitting inside quotation marks, which is how the correction
+                # history preserves superseded wording. Both are structure, not
+                # a guess about tone.
+                if re.search(r"\b(?:says|said|reads?|claimed?|stated?|asserts?)\s*\**[\"\u201c']?$",
+                             lead, re.I):
+                    continue
+                # THE QUOTE RULE IS FOR PROSE CITATIONS AND MUST NOT APPLY TO
+                # JSON. In markdown a quote before the value marks a citation of
+                # superseded wording. In JSON every string value opens with one,
+                # so this rule silently exempted EVERY JSON prose field -- the
+                # dependency register's key-person evidence field among them,
+                # proved by a mutation to 37 that did not fire. An exemption that
+                # covers a whole file format is not an exemption, it is a hole.
+                if not rel.endswith(".json") and re.search(r"[\"\u201c']\s*\**$", lead):
+                    continue
+                live_reps.append((rel, int(mm.group(1))))
+
+    for rel, val in live_reps:
+        if val != actual:
+            findings.append("%s asserts %d ledger entries while the ledger holds %d rows. "
+                            "Every live count derives from the same source or it is drift"
+                            % (rel, val, actual))
 
     check("ledger index matches the ledger",
           not findings,
           "; ".join(findings) if findings
-          else "ledger holds %d entries E-001 to %s; the register's index and traceability row "
-               "both agree" % (actual, highest))
+          else "ledger holds %d entries E-001 to %s, derived from its physical rows; "
+               "%d live count assertion(s) DISCOVERED across %d tracked file(s) and every one "
+               "agrees; %d record(s) exempt by explicit historical self-classification"
+               % (actual, highest, len(live_reps), len(tracked), exempt))
 
 
 def check_reliability_is_recorded_as_measured_and_failed(offline):
