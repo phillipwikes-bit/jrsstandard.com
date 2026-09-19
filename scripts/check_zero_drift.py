@@ -5902,6 +5902,22 @@ def check_ledger_index_matches_the_ledger(offline):
         findings.append("the register's traceability row says %s entries; the ledger holds %d"
                         % (t2.group(1), actual))
 
+    # THE LEDGER'S OWN COUNT, WHICH THIS GUARD ORIGINALLY DID NOT READ.
+    # It checked the register's two references and nothing in the ledger itself.
+    # On 2026-09-19 E-037 and E-038 were added, the register's index was moved to
+    # 38, and the ledger's own footer stayed at 36 -- so the two canonical records
+    # disagreed, with the authoritative one correct and the source wrong. A guard
+    # that reads only the pointer and never the thing pointed at will always miss
+    # that direction. Struck text is masked first: the corrected footer preserves
+    # the old figure beside the new one, and reading the preserved value would
+    # report the correction as the defect.
+    led_live = re.sub(r"~~.+?~~", " ", led, flags=re.S)
+    for m in re.finditer(r"\*\*(\d+) ledger entries\.?\*\*", led_live):
+        if int(m.group(1)) != actual:
+            findings.append("the ledger's own footer says %s entries while the ledger holds "
+                            "%d rows. The ledger was stale about itself" % (m.group(1), actual))
+            break
+
     dupes = [i for i in set(ids) if ids.count(i) > 1]
     if dupes:
         findings.append("duplicate ledger ids: %s" % ", ".join(sorted(dupes)[:5]))

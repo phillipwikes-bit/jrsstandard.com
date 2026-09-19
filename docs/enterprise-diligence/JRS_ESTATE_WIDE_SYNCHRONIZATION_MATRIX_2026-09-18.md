@@ -235,3 +235,37 @@ none was manufactured.
 **7 of 7 provenance mutations pass**, including relabelling the separate sample as the article
 study and deleting either sample's counts. **Guards 160 checks, 0 failed, 1 skipped; 131
 defined, dispatched and pinned.**
+
+---
+
+# PART IV — LEDGER COUNT RECONCILIATION, 2026-09-19
+
+**One defect confirmed, one claim tested and not confirmed.** Both are recorded, because a
+report that lists only what it found teaches the next reader that every claim checks out.
+
+| Claim | Verified against the live repository | Result |
+|---|---|---|
+| The Evidence Ledger footer says **36** while E-037 and E-038 exist | **38 physical rows** counted from `^\| E-0xx \|`; footer read **36** | **CONFIRMED — corrected** |
+| The Master Register's document control says **27 ledger entries** | Line 12 reads **"38 ledger entries"**. The three `27` occurrences are a parenthesised history of prior values, correction-history row 10 quoting the superseded finding, and the §23 narrative explaining the earlier drift | **NOT CONFIRMED — preserved history read as current metadata** |
+
+**The count was taken from the physical rows, not copied from the register.** Had the register
+been the wrong one, copying it would have propagated the error into the source.
+
+## Why the guard missed it
+
+`check_ledger_index_matches_the_ledger` was added the same day and checked **the register's two
+references** to the ledger. **It never read the ledger's own footer.** So when the register's
+index was moved to 38 and the ledger's footer was not, the two canonical records disagreed with
+the authoritative one correct and the source wrong — **the direction hardest to notice**, because
+every reader who checks the index sees the right number.
+
+**A guard that reads only the pointer and never the thing pointed at will always miss that.**
+The guard now reads both, masking struck text first so the corrected footer's preserved figure
+is not read back as the defect. **4 mutations fire**: footer reverted, footer inflated, index and
+footer disagreeing, and a row deleted while both counts stand still.
+
+**All four counts now agree at 38**: physical rows, ledger footer, register index, register
+traceability row.
+
+**No proposition changed.** This is metadata, so the Evidence Ledger and Master Register carry no
+new entry for it and no downstream record required propagation.
