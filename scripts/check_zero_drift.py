@@ -5942,8 +5942,24 @@ def check_ledger_index_matches_the_ledger(offline):
         re.compile(r"(?<!\*)\b(\d+) ledger entries", re.I),
         re.compile(r"`?EVIDENCE_LEDGER\.md`?[^.\n]{0,70}?\b(\d+)\s+entries", re.I),
         re.compile(r"\b(\d+)\s+entries\*{0,2},\s*E-001 to E-\d{3}", re.I),
-        re.compile(r'"entry_count"\s*:\s*(\d+)'),
+        re.compile(r'"?entry_count"?\s*[:=]\s*(\d+)'),
+        # ENGLISH PROSE NAMING THE LEDGER. An adversarial pass showed "The
+        # evidence ledger contains 31 entries" passing silently: the filename
+        # pattern needs `EVIDENCE_LEDGER.md`, and a generated summary writes the
+        # name in words. The estate already contains this form -- the
+        # initialization report says "Evidence Ledger held **28** entries".
+        re.compile(r"[Ee]vidence [Ll]edger\b[^.\n]{0,40}?\b\*{0,2}(\d+)\*{0,2}\s+entries"),
     ]
+    # DELIBERATELY OUTSIDE THE DETECTION CONTRACT, with the reason recorded so
+    # the boundary is a decision rather than an oversight:
+    #   `ledger_count = N` and `"last_entry": "E-0NN"` -- neither key exists
+    #     anywhere in this repository. Recognising them would be inventing a
+    #     schema and guarding a shape nothing writes.
+    #   a BARE range, "E-001 through E-031", with no count beside it -- this
+    #     estate writes `E-001 to E-0NN` mostly as a SUBSET CITATION ("consents
+    #     E-001 to E-004"), not as an extent claim, so a bare-range rule would
+    #     fire on correct prose. An extent claim here is written WITH its count
+    #     ("38 entries, E-001 to E-038") and that form is already covered.
     HEAD_HIST = re.compile(
         r"HISTORICAL EXECUTION RECORD|HISTORICAL RECORD|NOT THE PRIMARY REGISTER|"
         r"NOT CURRENT-STATE AUTHORITY|COMPLETED GATE RECORD|APPEND-ONLY DATED LOG|"
@@ -5979,14 +5995,31 @@ def check_ledger_index_matches_the_ledger(offline):
         body = read(rel)
         if not body:
             continue
-        if "EVIDENCE_LEDGER" not in body and "ledger entries" not in body.lower():
+        # THE FILE GATE MUST BE AS WIDE AS THE PATTERNS IT FEEDS. An adversarial
+        # fixture saying "The evidence ledger contains 31 entries" stayed silent
+        # even after the prose pattern was added, because the file was never
+        # opened: the gate wanted `EVIDENCE_LEDGER` or the exact words "ledger
+        # entries", and that sentence has neither. A cheap pre-filter that is
+        # narrower than the test it guards silently shrinks the test.
+        if not re.search(r"EVIDENCE_LEDGER|ledger entries|evidence ledger|entry_count",
+                         body, re.I):
             continue
         if HEAD_HIST.search("\n".join(body.splitlines()[:45])):
             exempt += 1
             continue
-        masked = re.sub(r"~~.+?~~", lambda mm: " " * len(mm.group(0)), body, flags=re.S)
+        # A GUARD'S OWN PROSE ABOUT AN ASSERTION IS NOT THE ASSERTION. The new
+        # English-prose pattern matched this file's own comment explaining it --
+        # "the evidence ledger contains 31 entries" -- the ninth time in this
+        # suite that commentary has been read as a claim. Python comments and
+        # docstrings are stripped, length-preservingly, before matching; real
+        # code stays visible.
+        scan = body
+        if rel.endswith(".py"):
+            scan = re.sub(r'("""|\u0027\u0027\u0027)(?:.|\n)*?\1|#[^\n]*',
+                          lambda mm: re.sub(r"[^\n]", " ", mm.group(0)), body)
+        masked = re.sub(r"~~.+?~~", lambda mm: " " * len(mm.group(0)), scan, flags=re.S)
         for pat in ASSERTION:
-            for mm in pat.finditer(body):
+            for mm in pat.finditer(masked):
                 if masked[mm.start():mm.end()].strip() == "":
                     continue
                 # THE LEAD, NOT A WINDOW. A 170-character context excluded the
@@ -5995,7 +6028,7 @@ def check_ledger_index_matches_the_ledger(offline):
                 # reported 2 assertions where it should have reported 6. A value
                 # is history when the words IMMEDIATELY BEFORE IT say so, not
                 # when the paragraph around it discusses history.
-                lead = re.sub(r"\s+", " ", body[max(0, mm.start() - 40):mm.start()])
+                lead = re.sub(r"\s+", " ", masked[max(0, mm.start() - 40):mm.start()])
                 if QUOTED.search(lead):
                     continue
                 # A REPORTED CLAIM IS NOT AN ASSERTION. Two forms remained after
