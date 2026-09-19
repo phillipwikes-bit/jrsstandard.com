@@ -82,12 +82,12 @@ certificate is worse than none.
 | Matter | State |
 |---|---|
 | **Production-verified controls** | **NONE.** Every control below is development evidence |
-| **B-001** | **CLOSED 2026-09-18 — owner-confirmed external rotation.** Not deployment authorization. The queue behind it now waits on **B-006**, whose diagnostic is ready and unexecuted |
+| **B-001** | **CLOSED 2026-09-18 — owner-confirmed external rotation (E-030).** Not deployment authorization. ~~The queue behind it now waits on **B-006**, whose diagnostic is ready and unexecuted~~ **CORRECTED 2026-09-19: the queue does not wait on B-006.** B-006 is `DIAGNOSTIC READY — NOT EXECUTED` and **gates nothing** — the registry downgraded it because the failure mode is prevented and detected regardless of cause. **The queue waits on owner deployment authorization**, which is the head of the critical path |
 | **B-014** | Three files are publicly served on production now; remediated in configuration, not deployed |
 | **B-016** | The published API contract asserts statelessness the implementation contradicts. **Counsel** |
 | **B-017** | Responses collected under a promise of non-publication sit behind an anon SELECT grant. Repository half closed; **grant not revoked** |
 | **B-004, B-007/D-1, V-4(3)** | Counsel |
-| **B-013B, S-1, S-6, T-6** | Owner factual confirmation |
+| ~~**B-013B, S-1, S-6, T-6**~~ **B-013B readability limb only** | ~~Owner factual confirmation~~ **CORRECTED 2026-09-19.** **S-1 is CLOSED (E-031)** — the owner attests he personally reviewed the records for de-identification. **S-6 / T-6 are CLOSED (E-032)** — the superseded figures were never distributed. What remains is **one limb of B-013B**: whether submitters were told their rows would be anonymously readable. **No attestation reaches that**, and one limb answered is not the question answered |
 | **D-2** | `cold_reviewer_clarity` — **INTENTIONALLY UNRESOLVED**, and enforced as such by a guard |
 | **Phase II** | Locked |
 

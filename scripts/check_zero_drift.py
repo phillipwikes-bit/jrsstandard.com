@@ -5858,6 +5858,222 @@ def _json_string_fields(rel):
     return out
 
 
+def check_key_person_record_is_honest(offline):
+    """The key-person record does not drift upward, and its one empirical claim stays true.
+
+    WHY THIS GUARD EXISTS. A key-person assessment is the easiest document in an
+    estate to write dishonestly. Every MATERIAL row can be softened to MODERATE
+    by pointing at a document, and the page then reads as transferability. The
+    test this register sets is deliberately harder: documentation that nobody has
+    ever executed is a CLAIM about transferability, not evidence of it.
+
+    WHAT IT CHECKS.
+      1. All twenty functions are present and each carries a class and evidence.
+      2. The bus-factor finding survives: two human committer identities, both
+         the same person, and no second human has ever committed.
+      3. THE ONE EMPIRICAL CLAIM IS RE-TESTED, not trusted: that verification
+         runs from a bare clone with no credentials. If `check_zero_drift.py` or
+         `verify_synchronization.py` ever starts requiring a credential, the
+         largest transferability fact in the register becomes false and this
+         fails.
+      4. The non-transferable residue is not quietly emptied.
+
+    WHAT IT DOES NOT CHECK. Whether a class is the RIGHT call. That is judgement.
+    It checks that the record cannot improve without someone saying why.
+    """
+    findings = []
+    raw = read(".jrs/registries/DEPENDENCY_REGISTER.json")
+    if not raw:
+        check("key-person record is honest", False, "the dependency register is missing")
+        return
+    reg = json.loads(raw)
+    kp = reg.get("key_person")
+    if not kp:
+        findings.append("the key-person section is gone from the dependency register")
+        check("key-person record is honest", False, "; ".join(findings))
+        return
+
+    fns = kp.get("functions", [])
+    if len(fns) != 20:
+        findings.append("key-person functions number %d, not the twenty assessed" % len(fns))
+    VALID = {"LOW", "MODERATE", "MATERIAL", "CRITICAL"}
+    for f in fns:
+        if f.get("class") not in VALID:
+            findings.append("function %r carries class %r, outside %s"
+                            % (f.get("function"), f.get("class"), sorted(VALID)))
+        if not (f.get("evidence") or "").strip():
+            findings.append("function %r is classified with no evidence. A class without "
+                            "evidence is an opinion" % f.get("function"))
+        # THE CLASS IS DERIVED FROM THE EVIDENCE, NOT ASSERTED BESIDE IT.
+        #
+        # A mutation softened every MATERIAL row to MODERATE and the guard passed.
+        # That is precisely the dishonesty its own docstring says it exists to
+        # prevent: an assessment reads as transferability the moment someone
+        # lowers the classes. The floor is therefore not pinned by fiat, which
+        # would go stale; it is read off the row's OWN evidence. A function whose
+        # evidence says it needs an account, a credential, a console or an act
+        # only the owner can perform is at least MATERIAL, and if the evidence
+        # genuinely changes the class may move with it.
+        ev = (f.get("evidence") or "")
+        needs_owner = re.search(
+            r"\baccount\b|\bcredential\b|\bconsole\b|\bkey\b|ANTHROPIC_API_KEY|"
+            r"deploy hook|Vercel|Supabase|registrar|only he can|owner['\u2019]s to give|"
+            r"revocable at will|Level A instrument", ev, re.I)
+        if needs_owner and f.get("class") in ("LOW", "MODERATE"):
+            findings.append("function %r is classified %s while its own evidence says it needs "
+                            "something only the owner holds (%r). Documentation that nobody "
+                            "else can execute is a claim about transferability, not evidence "
+                            "of it" % (f.get("function"), f.get("class"),
+                                       needs_owner.group(0)))
+
+    bf = kp.get("_bus_factor_evidence", {})
+    if bf.get("bus_factor") != 1 or bf.get("human_committers_all_time") != 2:
+        findings.append("the bus-factor finding changed to %r/%r. That is a material estate "
+                        "fact and must be re-measured against `git shortlog`, not edited"
+                        % (bf.get("bus_factor"), bf.get("human_committers_all_time")))
+
+    tr = kp.get("_transfer_requirements", {})
+    if len(tr.get("not_transferable_by_a_grant", [])) < 3:
+        findings.append("the non-transferable residue has shrunk below three. The attestation "
+                        "record, the rights determination and the relationships do not move "
+                        "with an account, and removing one of them overstates transferability")
+
+    # 3. RE-TEST THE EMPIRICAL CLAIM rather than believe the sentence recording it.
+    if not offline:
+        import subprocess as _sp
+        env = {k: v for k, v in os.environ.items()
+               if k not in ("SUPABASE_ACCESS_TOKEN", "VERCEL_TOKEN", "ANTHROPIC_API_KEY",
+                            "SUPABASE_SERVICE_ROLE_KEY", "REVIEW_API_TOKEN")}
+        env["JRS_OFFLINE"] = "1"
+        r = _sp.run([sys.executable, os.path.join(ROOT, "scripts", "verify_synchronization.py")],
+                    capture_output=True, text=True, env=env, cwd=ROOT)
+        if "partition closed: True" not in r.stdout:
+            findings.append("verification NO LONGER runs from a bare clone without credentials. "
+                            "That was the single largest transferability fact in this register "
+                            "and it was empirical; it is now false")
+
+    check("key-person record is honest",
+          not findings,
+          "; ".join(findings[:3]) if findings
+          else "20 function(s) classified with evidence; bus factor 1 on 2 human committer "
+               "identities; 3 non-transferable items retained; credential-free verification "
+               "re-tested and still reproduces the estate partition")
+
+
+def check_blocker_evidence_targets_agree_with_the_blocker(offline):
+    """A blocker's cited evidence does not contradict the blocker's own state.
+
+    WHY THIS GUARD EXISTS. B-001 closed on 2026-09-18. Its `evidence_refs` name
+    `SECURITY_REGISTER.json#incidents/SEC-001`, and on 2026-09-19 that incident
+    still read `"status": "OPEN"` with the instruction "Revoke and reissue the
+    token at Vercel Settings, Tokens." A reviewer following the blocker's OWN
+    POINTER landed on a record saying the work was outstanding.
+
+    The estate sweep could not see it, and no widening of the sweep would have.
+    That record never names B-001, so no proposition pattern reached it. It was
+    found by walking the pointer in the other direction -- from the blocker to
+    what it cites -- which is a different traversal, not a bigger one.
+
+    WHAT IT CHECKS. For each CLOSED blocker, each evidence target that lives in
+    this repository is read, and the specific record it names must not still
+    present the matter as outstanding.
+
+    WHAT IT DOES NOT CHECK. Whether the evidence supports the closure. That is
+    the ledger's job and a human's. This only stops a record and its own citation
+    from saying opposite things.
+    """
+    findings = []
+    raw = read(".jrs/state/BLOCKERS.json")
+    if not raw:
+        check("blocker evidence targets agree with the blocker", False,
+              "the blocker registry is missing")
+        return
+    OUTSTANDING = re.compile(r'"status"\s*:\s*"(?:OPEN|OUTSTANDING|UNRESOLVED)"|'
+                             r"\bstatus\b[^\n]{0,20}\bOPEN\b", re.I)
+    checked = 0
+    for b in json.loads(raw)["blockers"]:
+        status = (b.get("status") or "").upper()
+        closed = (("RESOLVED" in status or "OWNER-CONFIRMED" in status
+                   or "COMPLETED" in status) and "NOT " not in status)
+        if not closed:
+            continue
+        for ref in b.get("evidence_refs", []) or []:
+            path, _, frag = str(ref).partition("#")
+            path = path.strip()
+            if not path or path.endswith(".md") and not os.path.exists(
+                    os.path.join(ROOT, path)):
+                # a ledger reference such as EVIDENCE_LEDGER.md#E-030 resolves by
+                # entry id, checked by the ledger's own guards
+                continue
+            # locate the file, tolerating a bare filename under .jrs/registries
+            cand = [path, os.path.join(".jrs/registries", os.path.basename(path)),
+                    os.path.join("docs/enterprise-diligence", os.path.basename(path))]
+            body = next((read(c) for c in cand if os.path.exists(os.path.join(ROOT, c))), None)
+            if body is None:
+                findings.append("%s cites %r and no such record exists. A closure that points "
+                                "at nothing cannot be checked" % (b["blocker_id"], ref))
+                continue
+            checked += 1
+            if not frag:
+                continue
+            ident = frag.rsplit("/", 1)[-1]
+            # READ THE FIELD, NOT A TEXT WINDOW AROUND THE IDENTIFIER.
+            # The first version scanned 600 characters after the id and excused
+            # anything containing "prior_status" or "closure" -- words this very
+            # record carries permanently BECAUSE it was corrected. Reverting the
+            # status to OPEN therefore still passed. A JSON record has fields;
+            # the field is the assertion and the text around it is not.
+            if path.endswith(".json"):
+                try:
+                    data = json.loads(body)
+                except ValueError:
+                    findings.append("%s cites %s, which does not parse"
+                                    % (b["blocker_id"], ref))
+                    continue
+                entry = None
+
+                def _find(node):
+                    global_found = None
+                    if isinstance(node, dict):
+                        if str(node.get("id")) == ident:
+                            return node
+                        for v in node.values():
+                            global_found = _find(v)
+                            if global_found:
+                                return global_found
+                    elif isinstance(node, list):
+                        for v in node:
+                            global_found = _find(v)
+                            if global_found:
+                                return global_found
+                    return None
+
+                entry = _find(data)
+                if entry is None:
+                    findings.append("%s cites %s and no entry %r exists in it"
+                                    % (b["blocker_id"], ref, ident))
+                    continue
+                live_status = str(entry.get("status", ""))
+                if re.match(r"\s*(OPEN|OUTSTANDING|UNRESOLVED)\b", live_status, re.I):
+                    findings.append("%s is closed (%s) but its cited evidence %s records "
+                                    "%s status %r. A reviewer following the blocker's own "
+                                    "pointer is told the work is undone"
+                                    % (b["blocker_id"], status[:34], ref, ident, live_status))
+                act = str(entry.get("required_action", ""))
+                if act and not re.match(r"\s*(NONE|N/?A)\b", act, re.I):
+                    findings.append("%s is closed but %s still carries a required_action for "
+                                    "%s: %r" % (b["blocker_id"], ref, ident, act[:60]))
+                continue
+            if OUTSTANDING.search(body[body.find(ident): body.find(ident) + 400]):
+                findings.append("%s is closed (%s) but its cited evidence %s still presents "
+                                "%s as outstanding" % (b["blocker_id"], status[:34], ref, ident))
+    check("blocker evidence targets agree with the blocker",
+          not findings,
+          "; ".join(findings[:3]) if findings
+          else "%d in-repository evidence target(s) of closed blockers read; none still "
+               "presents its matter as outstanding" % checked)
+
+
 def check_every_blocker_says_who_acts_next(offline):
     """Every blocker carries an unambiguous `next_action_by`, consistent with its status.
 
@@ -8571,6 +8787,8 @@ def main():
                check_misuse_register_records_reality,
                check_no_right_is_offered_beyond_its_evidence,
                check_section_2_1_resolution_holds,
+               check_key_person_record_is_honest,
+               check_blocker_evidence_targets_agree_with_the_blocker,
                check_every_blocker_says_who_acts_next,
                check_superseded_records_declare_themselves_superseded,
                check_no_owner_decision_asks_for_completed_work,

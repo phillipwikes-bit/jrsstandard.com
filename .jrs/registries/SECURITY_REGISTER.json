@@ -10,9 +10,14 @@
       "id": "SEC-001",
       "date": "2026-09-14",
       "description": "A live Vercel token was pasted into conversation twice.",
-      "status": "OPEN",
-      "required_action": "Revoke and reissue the token at Vercel Settings, Tokens.",
-      "note": "Refused by the permission layer three times across three approaches; never executed."
+      "status": "CLOSED - CREDENTIAL ROTATED, OWNER-CONFIRMED 2026-09-18",
+      "note": "Refused by the permission layer three times across three approaches; never executed.",
+      "prior_status": "OPEN",
+      "closed": "2026-09-18",
+      "closure_evidence": "EVIDENCE_LEDGER.md#E-030; .jrs/state/BLOCKERS.json#B-001",
+      "prior_required_action": "Revoke and reissue the token at Vercel Settings, Tokens.",
+      "required_action": "NONE. The rotation was performed in the external control plane and attested by the owner.",
+      "closure_note": "CORRECTED 2026-09-19. B-001 closed on 2026-09-18 and its evidence_refs point AT THIS RECORD, which still read status OPEN with the instruction to revoke the token. A reviewer following the blocker's own evidence pointer landed on an incident saying the work was outstanding. The estate sweep could not see it: this record never names B-001, so no proposition pattern reached it. It was found by tracing the pointer in the other direction. NO CREDENTIAL VALUE, SCOPE, PREFIX OR HASH IS RECORDED HERE OR ANYWHERE; an external control-plane action admits an owner attestation and nothing else."
     }
   ],
   "telemetry": {

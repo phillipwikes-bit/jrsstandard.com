@@ -257,6 +257,159 @@ stop writing record-derived free text · narrow the public claims to match.
 
 ---
 
+# D-20 to D-25 · ONE ACTION EACH — prepared 2026-09-19
+
+**Every item below is reduced to a single act.** None is a review request. The repository work
+behind each is complete; what remains cannot be done from here.
+
+## D-20 · Deployment authorization — the ONE act that closes six blockers
+
+**EXACT OWNER DECISION.** Authorize deploying `claude/html-pilot-L8rC3` to production.
+
+**SCOPE, VERIFIED 2026-09-19.** Candidate `23fe3e1` against production baseline `0d94ce6`:
+**233 files changed, 21,243 insertions, 470 deletions.** No build step; the deployable artifact
+is the repository minus `.vercelignore`.
+
+**WHAT IT CLOSES.** B-003, B-005, B-008, B-009, B-014, B-015 — **six blockers on one act, not
+six workstreams.** Five are remediated and **cannot be verified without a deployment**; the
+sixth is different and is set out at D-21.
+
+**WHAT REMEDIATION IS ALREADY COMPLETE.** B-005 model configuration behaviour-preserving by
+construction. B-008 disclosure at the UI layer, owner-accepted. B-009 and B-003 subprocessor
+disclosure written. B-015 unauthenticated persistence closed in code. All tested; **none
+deployed.**
+
+**ROLLBACK.** `scripts/rollback_main.sh <sha> --confirm` creates a new commit whose tree is the
+earlier tree — **history is not rewritten**. For a silent skip the correct response is
+**re-trigger, never revert**: `.github/workflows/deploy-verify.yml` byte-compares production
+against the commit and re-triggers through `VERCEL_DEPLOY_HOOK_URL`.
+
+**WHAT DOES NOT BECOME AUTHORIZED BY THIS ACT.** Gate 1 does not pass. Phase II stays locked.
+The production control-plane operations at D-22 are **not** covered. Nothing becomes
+**production verified** — that is a separate state reached by evidence after deployment, and
+**production verification is not validation**: the engine remains empirically unvalidated.
+
+---
+
+## D-21 · B-014 — this one is different, and it is live now
+
+**EXACT OWNER DECISION.** None separate from D-20 — but decide D-20 knowing this.
+
+**CURRENT STATE, VERIFIED.** B-014 is `REMEDIATED IN CONFIGURATION — REQUIRES DEPLOYMENT
+VERIFICATION`. The other five at D-20 are remediated-and-unverified. **B-014 is an exposure
+that is being served right now:** `/supabase-engine-reviews-setup.sql`, `/supabase-setup.sql`
+and `/supabase/functions/run-study/index.ts` returned **200 on production** at the last probe.
+The `.vercelignore` rules that close them exist in the candidate and **take effect only on
+deployment**.
+
+**WHY IT IS RECORDED SEPARATELY.** Grouping it with the other five would present a live
+exposure as a documentation item. **No new blocker is created for it** — B-014 already exists
+and already says this.
+
+---
+
+## D-22 · B-013 limb A and B-017 — two production-console revocations
+
+**EXACT OWNER ACTION, ONE.** In the Supabase console for the production project, revoke the
+anonymous `SELECT` grant on **`public.engine_reviews`** (B-013 limb A) and on
+**`public.finding_responses`** (B-017).
+
+**THEY ARE NOT THE SAME MATTER AND ARE NOT COLLAPSED.** `engine_reviews` holds model-written
+per-condition notes and a rewritten passage; it currently holds **zero rows**, which is why the
+exposure is latent rather than realised. `finding_responses` holds **free text submitted under
+an explicit promise of non-publication** — that promise is the reason B-017 exists, and it is a
+different proposition.
+
+**EXPECTED RESULTING STATE.** `select` on either table with the publishable key returns a
+permission error rather than rows.
+
+**VERIFICATION AFTER YOU ACT.** A `select=*` attempt against each table with the publishable
+anon key. **Not a page check** — the grant is the control, not the page projection; the
+publishable key ships in 17 HTML files by design.
+
+**EVIDENCE TO RETURN.** The error response for each table. **Do not send any key, token or
+connection string.**
+
+**QUEUE POSITION.** Behind nothing. These do not wait on D-20 and D-20 does not wait on them.
+
+---
+
+## D-23 · D-15 — `security.html` says record text is not written to any table
+
+**CURRENT REPRESENTATION, VERIFIED 2026-09-19.** `security.html` carries *"not written to any
+table"* and *"there is no record store to breach"* — 1 occurrence.
+
+**FACTUAL BASIS.** The versioned engine route stores model-written per-condition notes and a
+rewritten passage of up to 600 characters. The sentence is accurate about `api/review.js` and
+inaccurate about `api/v1/review-engine.js`.
+
+**OPTIONS.** **(a)** Narrow the sentence to the unversioned route it is true of.
+**(b)** Remove it. **(c)** Keep it and accept a representation the code contradicts.
+
+**CONSEQUENCE.** (a) and (b) are one-commit page edits with no functional effect.
+**(c) is the one with weight**: it is a security representation with commercial significance,
+and B-016 already shows what happens when a published assertion outlives the code.
+
+**EXACT OWNER DECISION.** (a), (b) or (c).
+
+---
+
+## D-24 · D-16 — Gumroad is named to readers and no Gumroad URL exists
+
+**CURRENT REPRESENTATION, VERIFIED 2026-09-19.** **15 occurrences each** in `jrsstandard.html`
+and `index.html`. A targeted search locates **no Gumroad URL anywhere in the estate**.
+
+**OPTIONS.** **(a)** Remove the references — stale prose. **(b)** Supply the URL — the path was
+intended and is unbuilt. **(c)** Replace with the payment path actually intended.
+
+**CONSEQUENCE.** (a) removes a commercial affordance the pages currently promise. (b) and (c)
+are commercial decisions this repository cannot make: **which processor handles payment is not
+a repository fact.**
+
+**EXACT OWNER DECISION.** (a), (b) or (c). If (b) or (c), name the processor and the URL.
+
+---
+
+## D-25 · D-17 — `terms.html` says no sub-processors were engaged
+
+**CURRENT REPRESENTATION, VERIFIED 2026-09-19.** `terms.html` carries *"No sub-processors were
+engaged"*, scoped and past-tense, opposite a privacy page naming eight.
+
+**FACTUAL BASIS.** Scoped to pre-September engagements it is **not a strict contradiction**. A
+diligence reader will still collide with it.
+
+**OPTIONS.** **(a)** Date-scope it explicitly on the page. **(b)** Remove it. **(c)** Leave it.
+
+**CONSEQUENCE.** All three are low-risk. **(a) is the smallest change that removes the
+collision.** This is the least urgent of the three representations and is recorded so it is not
+lost.
+
+**EXACT OWNER DECISION.** (a), (b) or (c).
+
+---
+
+## D-26 · B-006 — one command, and it gates nothing
+
+**EXACT OWNER ACTION.** In your own shell, with the rotated `VERCEL_TOKEN` exported:
+
+```
+bash scripts/vercel_f4_diagnose.sh
+```
+
+**PURPOSE.** Establish the root cause of the 2026-09-13 silent deployment skip. **It gates
+nothing** — the failure mode is already prevented (`vercel.json` `"ignoreCommand": "exit 1"`)
+and detected (the byte-compare workflow). The registry downgraded it to LOW for that reason.
+
+**EXPECTED RESULT.** The script reports the project's Ignored Build Step configuration and
+recent deployment states.
+
+**EVIDENCE TO RETURN.** The script's output with **any token value redacted**. It reads the
+credential from the environment and never prints it; if you see one, stop and tell me.
+
+**DO NOT PROVIDE.** The token itself, in any form, by any channel.
+
+---
+
 # Still requiring your action
 
 | # | Item | What is needed |

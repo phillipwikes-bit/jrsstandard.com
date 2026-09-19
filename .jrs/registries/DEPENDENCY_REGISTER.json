@@ -132,5 +132,207 @@
       "migration_path": "Self-host fonts; drop or replace analytics. Self-hosting fonts is explicitly NOT to be done without separate authorization.",
       "survivability": "LOW"
     }
+  },
+  "_key_person_added_2026_09_19": "THE PROVIDER DIMENSION WAS DONE ON 2026-09-18 AND THE HUMAN ONE WAS NOT. `survivability` answers 'if this provider disappeared, what evidence is unrecoverable'. It does not answer 'if this PERSON were unavailable, what could not be done'. Both questions matter to a transaction and they have different answers. Classification is by WHAT A SECOND PERSON COULD ACTUALLY DO, not by whether a document exists: documentation that nobody has ever executed is a claim about transferability, not evidence of it. Recorded here rather than in a new register, because this register already holds the dependency dimension and a second source of truth is what section 8 of the operating architecture forbids.",
+  "key_person": {
+    "_measured": "2026-09-19",
+    "_classes": "LOW = documentation alone suffices. MODERATE = a qualified person could do it from the repository. MATERIAL = requires an account, credential or judgement only the owner currently holds. CRITICAL = requires the owner AND no documented path exists for anyone else.",
+    "_bus_factor_evidence": {
+      "human_committers_all_time": 2,
+      "detail": "`git shortlog -sne --all` over 2,160 commits returns FOUR identities and only TWO humans, both the same person: `phillipwikes-bit` (301) and `Phillip Wikes` (1). `Claude` holds 1,852 as AI-assisted work under his direction, and a Cloudflare bot holds 6 from the severed integration. NO SECOND HUMAN HAS EVER COMMITTED TO THIS REPOSITORY.",
+      "bus_factor": 1,
+      "meaning": "A bus factor of 1 is a TRANSACTION CONDITION, not a defect. It is the normal shape of a single-founder estate. It is recorded because a buyer will compute it in five minutes and should not find it unstated."
+    },
+    "_what_reduces_it_already": {
+      "verification_runs_from_a_bare_clone": "TESTED 2026-09-19, not assumed. With SUPABASE_ACCESS_TOKEN, VERCEL_TOKEN and ANTHROPIC_API_KEY all unset, `check_zero_drift.py --offline` runs 152 checks and `verify_synchronization.py` reproduces the full estate partition. A second person can therefore VERIFY the estate on day one with no credential from the owner. That is the single largest transferability fact in this register and it is empirical."
+    },
+    "functions": [
+      {
+        "n": 1,
+        "function": "Repository operation (read, clone, inspect)",
+        "class": "LOW",
+        "second_person": "YES",
+        "evidence": "Public GitHub repository; no build step; no secrets on disk."
+      },
+      {
+        "n": 2,
+        "function": "Repository modification",
+        "class": "MODERATE",
+        "second_person": "YES, with write access granted",
+        "evidence": "CLAUDE.md carries the invariants inline; OPERATIONS_ANNEX.md the long form. Requires a GitHub grant only the owner can make."
+      },
+      {
+        "n": 3,
+        "function": "Verification (guards, sweep, mutation suites)",
+        "class": "LOW",
+        "second_person": "YES",
+        "evidence": "TESTED with all credentials unset: 152 offline checks, full partition reproduced. No owner dependency."
+      },
+      {
+        "n": 4,
+        "function": "Deployment preparation",
+        "class": "LOW",
+        "second_person": "YES",
+        "evidence": "scripts/preflight_deploy_check.py, deployment_lock.py, DEPLOYMENT_READINESS_REPORT_2026-09-17.md."
+      },
+      {
+        "n": 5,
+        "function": "Deployment execution",
+        "class": "MATERIAL",
+        "second_person": "NO",
+        "evidence": "Requires the Vercel account. scripts/vercel_production_deploy.sh exists; the account does not transfer with the repository."
+      },
+      {
+        "n": 6,
+        "function": "Rollback",
+        "class": "MATERIAL",
+        "second_person": "NO",
+        "evidence": "scripts/rollback_main.sh is documented, but CLAUDE.md 36.8 records that the correct response to a byte mismatch is RE-TRIGGER, never revert. Re-trigger needs the deploy hook, which is an owner-held repository secret."
+      },
+      {
+        "n": 7,
+        "function": "Recovery from provider loss",
+        "class": "MATERIAL",
+        "second_person": "PARTIAL",
+        "evidence": "`survivability` in this register gives per-provider migration paths. Executing any of them needs the accounts."
+      },
+      {
+        "n": 8,
+        "function": "Evidence administration (ledger entries)",
+        "class": "MODERATE",
+        "second_person": "YES",
+        "evidence": "EVIDENCE_LEDGER.md is self-describing, 36 entries with classification rules stated. Adding an OWNER ATTESTATION requires the owner by definition."
+      },
+      {
+        "n": 9,
+        "function": "Master-record administration",
+        "class": "MODERATE",
+        "second_person": "YES",
+        "evidence": "The register states its own update rule: never restart the audit, add evidence, preserve prior status."
+      },
+      {
+        "n": 10,
+        "function": "Rights and evidence administration",
+        "class": "MATERIAL",
+        "second_person": "NO",
+        "evidence": "B-004: no Level A instrument exists. The owner's own attestations (E-029 to E-036) are evidence only he can give, and counsel judgement is not his either."
+      },
+      {
+        "n": 11,
+        "function": "Research-integrity administration",
+        "class": "MATERIAL",
+        "second_person": "PARTIAL",
+        "evidence": "research/check_completion.py and build_certificate.py are executable, but reach the live Supabase views. Panel relationships are held by the owner."
+      },
+      {
+        "n": 12,
+        "function": "Security controls",
+        "class": "MATERIAL",
+        "second_person": "PARTIAL",
+        "evidence": "Split, and the binding half is the owner's. A guard-derived class check caught this row classified MODERATE on evidence that named the production console.",
+        "repository_half": "Guards are executable by anyone from a bare clone; 158 checks run with no credential.",
+        "owner_half": "The anon SELECT revocations, B-013 limb A and B-017, need the Supabase console."
+      },
+      {
+        "n": 13,
+        "function": "Privacy controls",
+        "class": "MATERIAL",
+        "second_person": "PARTIAL",
+        "evidence": "Split. lib/retention/policy.js is executable and tested by anyone; the act that makes it real is not.",
+        "repository_half": "Policy code and 60 retention tests run from a bare clone.",
+        "owner_half": "The first retention run is a production data operation on the live database."
+      },
+      {
+        "n": 14,
+        "function": "API and engine operation",
+        "class": "MATERIAL",
+        "second_person": "NO",
+        "evidence": "api/review.js reads ANTHROPIC_API_KEY from process.env. The key is owner-held and must never enter the repository."
+      },
+      {
+        "n": 15,
+        "function": "Model and version control",
+        "class": "LOW",
+        "second_person": "YES",
+        "evidence": "api/_model.js centralises the identifier with a documented default and review date; six literals reduced to zero outside it."
+      },
+      {
+        "n": 16,
+        "function": "Public representation maintenance",
+        "class": "MATERIAL",
+        "second_person": "PARTIAL",
+        "evidence": "Split. Preparation transfers; publication does not.",
+        "repository_half": "All CSS and JS is inline per page and the design tokens are in CLAUDE.md 36.4, so a second person can prepare any change.",
+        "owner_half": "Publishing is a Section 23 owner act and needs the Vercel account."
+      },
+      {
+        "n": 17,
+        "function": "Commercial package maintenance",
+        "class": "MATERIAL",
+        "second_person": "NO",
+        "evidence": "COMMERCIAL_RIGHTS_REGISTER.json records that NOTHING reaches 'available for licensing' while F-4 stands. Buyer relationships are the owner's."
+      },
+      {
+        "n": 18,
+        "function": "Dependency administration",
+        "class": "LOW",
+        "second_person": "YES",
+        "evidence": "This register plus OUTBOUND_DESTINATIONS.json, 21 destinations classified by traced execution path."
+      },
+      {
+        "n": 19,
+        "function": "Troubleshooting",
+        "class": "MODERATE",
+        "second_person": "YES",
+        "evidence": "OPERATIONS_ANNEX.md holds the Cloudflare skip-token forensic record and the per-page function reference."
+      },
+      {
+        "n": 20,
+        "function": "Program-state reconstruction",
+        "class": "LOW",
+        "second_person": "YES",
+        "evidence": "TESTED: .jrs/state/ plus verify_synchronization.py reconstruct the estate partition from a bare clone with no credentials."
+      }
+    ],
+    "_transfer_requirements": {
+      "_why": "The ten MATERIAL dependencies cannot be eliminated from this repository: every one needs an account, a credential or a judgement that is the owner's to give. What CAN be removed is the discovery exercise. Without this list, standing up a second operator begins with working out what they need; with it, it is one owner action against a named set. NO CREDENTIAL VALUE APPEARS HERE AND NONE EVER WILL; these are the grants to make, not the secrets themselves. THE COUNT ROSE FROM SEVEN TO TEN when a guard derived each class from the row's own evidence and found three rows -- security controls, privacy controls and public representation -- classified MODERATE on evidence that named the production console, a live database operation and a Section 23 owner act. Each is now recorded with its repository half, which does transfer, and its owner half, which does not.",
+      "grants_required_to_stand_up_a_second_operator": [
+        {
+          "grant": "GitHub write access to phillipwikes-bit/jrsstandard.com",
+          "unlocks": "Function 2 (repository modification). Functions 1, 3, 4, 15, 18, 20 need NOTHING and work from a public clone today."
+        },
+        {
+          "grant": "Vercel project access",
+          "unlocks": "Functions 5 and 6 (deployment execution, re-trigger). Also the VERCEL_DEPLOY_HOOK_URL repository secret, which the byte-compare workflow uses to re-trigger a silent skip."
+        },
+        {
+          "grant": "Supabase project access",
+          "unlocks": "Functions 11, 12, 13 as to production: the B-013 limb A and B-017 revocations, the first retention run, and the live views research/check_completion.py reads."
+        },
+        {
+          "grant": "Anthropic API key in the deployment environment",
+          "unlocks": "Function 14 (engine operation). It is read only from process.env inside api/review.js and must never enter the repository."
+        },
+        {
+          "grant": "Domain registrar account access",
+          "unlocks": "Function 7 as to jrsstandard.com, which every published citation resolves to."
+        }
+      ],
+      "not_transferable_by_a_grant": [
+        {
+          "item": "Owner attestations (E-029 to E-036)",
+          "why": "An attestation is the account of the person who was there. A successor can read them; nobody else can give them."
+        },
+        {
+          "item": "Rights determinations (B-004)",
+          "why": "No Level A instrument exists, and Rule 8 forbids this repository determining title. Counsel, not a grant."
+        },
+        {
+          "item": "Panel and buyer relationships (Functions 11, 17)",
+          "why": "Reviewer consent is revocable at will and the relationships are personal. Recorded as a transaction condition, not a defect."
+        }
+      ],
+      "residual_after_all_grants": "THREE. The attestation record, the rights determination and the relationships. Everything else on this list moves with an account."
+    }
   }
 }
