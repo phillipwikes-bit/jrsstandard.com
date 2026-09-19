@@ -5918,6 +5918,29 @@ def check_ledger_index_matches_the_ledger(offline):
                             "%d rows. The ledger was stale about itself" % (m.group(1), actual))
             break
 
+    # THE FOURTH PLACE THE COUNT LIVES, and the last one this guard learned about.
+    # `.jrs/registries/EVIDENCE_LEDGER.json` is a POINTER record: it names the
+    # markdown ledger as authoritative and does not duplicate it -- but it states
+    # an entry_count, and on 2026-09-19 that count sat at 28 while the ledger held
+    # 38. The footer, the traceability row and the section 23 index had all been
+    # moved; this one was never read, because the guard had only been pointed at
+    # the two documents it was written for. A pointer that states a count is a
+    # record that can go stale about the thing it points at.
+    ptr_raw = read(".jrs/registries/EVIDENCE_LEDGER.json")
+    if ptr_raw:
+        try:
+            ptr = json.loads(ptr_raw)
+        except ValueError as exc:
+            findings.append("the ledger pointer record does not parse: %s" % exc)
+        else:
+            if ptr.get("authoritative_source") != "docs/enterprise-diligence/EVIDENCE_LEDGER.md":
+                findings.append("the ledger pointer record no longer names the markdown ledger "
+                                "as authoritative; it points at %r"
+                                % ptr.get("authoritative_source"))
+            if ptr.get("entry_count") != actual:
+                findings.append("the ledger pointer record says %r entries while the ledger "
+                                "holds %d rows" % (ptr.get("entry_count"), actual))
+
     dupes = [i for i in set(ids) if ids.count(i) > 1]
     if dupes:
         findings.append("duplicate ledger ids: %s" % ", ".join(sorted(dupes)[:5]))

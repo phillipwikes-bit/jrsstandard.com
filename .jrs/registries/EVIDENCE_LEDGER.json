@@ -1,14 +1,16 @@
 {
-  "_note": "Pointer record. The authoritative ledger is the markdown file named below and is NOT duplicated here.",
-  "authoritative_source": "docs/enterprise-diligence/EVIDENCE_LEDGER.md",
-  "entry_count": 28,
-  "levels": {
-    "A": "executed primary",
-    "B": "structured primary record",
-    "C": "contemporaneous written communication",
-    "D": "contemporaneous project record",
-    "E": "secondary summary"
-  },
-  "most_significant_property": "No Level A entry exists. No executed signed instrument is present in the accessible corpus.",
-  "strongest_rights_evidence": "Level B structured consent held by 33 people (37 rows)."
+ "_note": "Pointer record. The authoritative ledger is the markdown file named below and is NOT duplicated here.",
+ "authoritative_source": "docs/enterprise-diligence/EVIDENCE_LEDGER.md",
+ "entry_count": 38,
+ "levels": {
+  "A": "executed primary",
+  "B": "structured primary record",
+  "C": "contemporaneous written communication",
+  "D": "contemporaneous project record",
+  "E": "secondary summary"
+ },
+ "most_significant_property": "No Level A entry exists. No executed signed instrument is present in the accessible corpus.",
+ "strongest_rights_evidence": "Level B structured consent held by 33 people (37 rows).",
+ "prior_entry_count": 28,
+ "entry_count_corrected_2026_09_19": "28 -> 38, counted from the physical rows of the authoritative markdown ledger, not copied from any other record. THIS POINTER WAS THE FOURTH PLACE THE COUNT LIVES and the only one still wrong: the ledger footer, the master register's traceability row and its section 23 index had all been moved to 38 while this file sat at 28, ten behind. It was missed because the count guard reads the ledger and the register and had never been pointed at this file. A pointer record that states a count is a record that can go stale about the thing it points at."
 }
