@@ -6602,6 +6602,75 @@ def check_superseded_records_declare_themselves_superseded(offline):
                "and names the record that replaced it" % checked)
 
 
+def check_the_owner_queue_matches_the_item_states(offline):
+    """The "still requiring your action" queue lists the items that are open.
+
+    WHY THIS GUARD EXISTS. On 2026-09-19 that queue had drifted three ways at
+    once: it still listed D-8, which closed the day before; it gated D-9 on D-8
+    and therefore on nothing; and ELEVEN genuinely open items -- D-15 to D-17
+    and D-19 to D-26 -- were absent entirely. A queue that asks for finished work
+    and omits live work is worse than no queue, because it is read as if it were
+    complete.
+
+    WHAT IT CHECKS. Every item the register records CLOSED is absent from the
+    live queue, and every item it records OPEN is present. Closed items may
+    still appear under the "Closed, and not to be asked again" heading, which is
+    where the evidence for their closure lives; the test is the LIVE queue.
+
+    WHAT IT DOES NOT CHECK. Whether a state is the right one. Closing a decision
+    is the owner's, the Board's or counsel's act, never this file's.
+    """
+    findings = []
+    rel = "docs/enterprise-diligence/HUMAN_DECISIONS_REQUIRED.md"
+    body = read(rel)
+    if not body:
+        check("the owner queue matches the item states", False,
+              "the human decisions register is missing")
+        return
+
+    m = re.search(r"## Open now, by route(.*?)## Closed, and not to be asked again",
+                  body, re.S)
+    c = re.search(r"## Closed, and not to be asked again(.*)$", body, re.S)
+    if not m or not c:
+        findings.append("the register no longer separates an open queue from a closed list, "
+                        "which is the structure that stopped it drifting")
+        check("the owner queue matches the item states", False, "; ".join(findings))
+        return
+
+    open_block, closed_block = m.group(1), c.group(1)
+    live = set(re.findall(r"\*\*(D-\d+)\*\*", open_block))
+    closed = set(re.findall(r"\*\*(D-\d+)\*\*", closed_block))
+
+    CLOSED_MUST = {"D-2", "D-7", "D-8", "D-10", "D-11", "D-12", "D-13", "D-14"}
+    OPEN_MUST = {"D-1", "D-3", "D-4", "D-5", "D-6", "D-18", "D-19",
+                 "D-20", "D-21", "D-22", "D-23", "D-24", "D-25", "D-26"}
+
+    for d in sorted(CLOSED_MUST):
+        if d in live:
+            findings.append("%s is closed and is back in the live queue. The queue must not "
+                            "ask for work the register records as done" % d)
+        if d not in closed:
+            findings.append("%s is closed but has vanished from the closed list, so the "
+                            "evidence for its closure is no longer stated" % d)
+    for d in sorted(OPEN_MUST):
+        if d not in live:
+            findings.append("%s is open and is missing from the live queue. An omitted open "
+                            "item is read as a finished one" % d)
+
+    # the routes must stay distinguished; "owner action" is not a route
+    for route in ("OWNER", "COUNSEL", "PRODUCTION"):
+        if route not in open_block:
+            findings.append("the queue no longer separates the %s route, which hides the "
+                            "difference between an act and a question" % route)
+
+    check("the owner queue matches the item states",
+          not findings,
+          "; ".join(findings[:4]) if findings
+          else "%d item(s) live and %d closed; every closed item is out of the queue and "
+               "every open item is in it; routes kept separate"
+               % (len(live), len(closed)))
+
+
 def check_no_owner_decision_asks_for_completed_work(offline):
     """The owner queue does not ask for work the working tree shows is done.
 
@@ -9199,6 +9268,7 @@ def main():
                check_blocker_evidence_targets_agree_with_the_blocker,
                check_every_blocker_says_who_acts_next,
                check_superseded_records_declare_themselves_superseded,
+               check_the_owner_queue_matches_the_item_states,
                check_no_owner_decision_asks_for_completed_work,
                check_downstream_records_agree_with_the_blocker_registry,
                check_no_stale_current_state_representation,

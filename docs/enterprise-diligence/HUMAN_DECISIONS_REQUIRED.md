@@ -412,14 +412,71 @@ credential from the environment and never prints it; if you see one, stop and te
 
 # Still requiring your action
 
-| # | Item | What is needed |
-|---|---|---|
-| **D-1** | API reconciliation | **Counsel review** before any contract modification, then name the option |
-| **D-3** | The three non-exact correspondences | Which engine key corresponds to Decision-Process Traceability |
-| **D-4** | Disclosure content | Sign off the published wording. Publication is a Section 23 act |
-| **D-5** | Validation statement | Approve inserting the prepared wording into `training.html` and deploying it |
-| **D-6** | Rights | Submit the evidence package to IP counsel |
-| **D-8** | Rotation | ~~Confirm when done~~ **DONE 2026-09-18 (E-030). B-001 closed; B-006 is now DIAGNOSTIC READY and needs one command in the owner's own shell** |
-| **D-9** | Deployment | Becomes actionable only after D-8 |
+~~| # | Item | What is needed |~~
+~~|---|---|---|~~
+~~| **D-1** | API reconciliation | **Counsel review** before any contract modification, then name the option |~~
+~~| **D-3** | The three non-exact correspondences | Which engine key corresponds to Decision-Process Traceability |~~
+~~| **D-4** | Disclosure content | Sign off the published wording. Publication is a Section 23 act |~~
+~~| **D-5** | Validation statement | Approve inserting the prepared wording into `training.html` and deploying it |~~
+~~| **D-6** | Rights | Submit the evidence package to IP counsel |~~
+~~| **D-8** | Rotation | Confirm when done |~~
+~~| **D-9** | Deployment | Becomes actionable only after D-8 |~~
 
-**Nothing above was resolved by inference.**
+> **TABLE REBUILT 2026-09-19 FROM THE UNDERLYING ITEM STATES, NOT CELL BY CELL.** The struck
+> version above is preserved because it is the evidence of what was being asked and when. It
+> had drifted in three ways at once: **D-8 was still listed although it closed on 2026-09-18**,
+> **D-9 was gated on D-8** and therefore gated on nothing, and **eleven genuinely open items —
+> D-15 to D-17 and D-19 to D-26 — were absent entirely**. It also routed every row to "you",
+> which hides the difference between an act only the owner can perform and a question only
+> counsel can answer.
+
+## Open now, by route
+
+**OWNER — one act each, prepared at D-20 to D-26**
+
+| # | Item | The single act |
+|---|---|---|
+| **D-20** | Deployment authorization | Authorize deploying `claude/html-pilot-L8rC3`. **Closes six blockers on one act** |
+| **D-21** | B-014 | No separate act. Decide D-20 knowing three files are **served on production right now** |
+| **D-22** | B-013 limb A and B-017 | Revoke anon `SELECT` on `engine_reviews` and on `finding_responses`, in the production console |
+| **D-23** | D-15, `security.html` | Choose (a) narrow the sentence, (b) remove it, or (c) keep it |
+| **D-24** | D-16, Gumroad | Choose (a) remove the references, (b) supply the URL, or (c) name the intended processor |
+| **D-25** | D-17, `terms.html` | Choose (a) date-scope it, (b) remove it, or (c) leave it |
+| **D-26** | B-006 | Run `bash scripts/vercel_f4_diagnose.sh` in your own shell. **Gates nothing** |
+
+**OWNER — older items, unchanged and still open**
+
+| # | Item | The single act |
+|---|---|---|
+| **D-3** | Correspondence assignments | Name which engine key corresponds to Decision-Process Traceability |
+| **D-4** | Subprocessor disclosure | Sign off the published wording. **Publication is a Section 23 act** |
+| **D-5** | Validation statement | Approve inserting the prepared wording and deploying it |
+| **D-18** | STUDY-001 figure | Decide the published wording. **61 runs, 66.7% to 93.3%, mean 85.3%, final run 91.1%.** No figure was changed and none will be by inference |
+| **D-19** | `engine_reviews` grant | Same production act as **D-22**; recorded separately because the promise attached to `finding_responses` is a different proposition |
+
+**COUNSEL**
+
+| # | Item | The precise question |
+|---|---|---|
+| **D-1** | API reconciliation (B-007 / B-002) | Is the published contract a licensed interface, and what follows from the mismatch |
+| **D-6** | Rights and chain of title (B-004) | Submit the evidence package to IP counsel |
+
+**BOARD — none open.** **EXTERNAL — none open**; the one external action, D-8, completed 2026-09-18.
+
+**PRODUCTION** — D-20 (deployment), D-22 and D-19 (console revocations). **No production
+operation has been performed from this repository.**
+
+## Closed, and not to be asked again
+
+| # | Closed how | Evidence |
+|---|---|---|
+| **D-2** | **INTENTIONALLY UNRESOLVED**, decided | Enforced by a guard |
+| **D-7** | **BOARD DECIDED** — both surfaces CONFIDENTIAL BUYER | CLAUDE.md §36.3 |
+| **D-8** | **OWNER CONFIRMED / EXTERNAL ACTION COMPLETED** | E-030, 2026-09-18. **Do not ask again** |
+| **D-10** | **BOARD DECIDED** — BD-05, accept and disclose | Self-hosting stays deferred and separately authorized |
+| **D-11** | **EVIDENCE VERIFIED** | `"never leaves your control"` returns 0 occurrences in `review-engine.html` |
+| **D-12** | **EVIDENCE VERIFIED** | BD-06 removed the `verify-drift` call; zero pages POST to it |
+| **D-13** | **EVIDENCE VERIFIED** | `"transmits nothing"` returns 0 occurrences in `terms.html` and `engagement.html` |
+| **D-14** | **EVIDENCE VERIFIED** | `pilot.html:816` calls `jrsSanitizeCheck(msgVal)` before submit |
+
+**Nothing above was resolved by inference, and nothing was closed because it looked old.**
