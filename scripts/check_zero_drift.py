@@ -5858,6 +5858,136 @@ def _json_string_fields(rel):
     return out
 
 
+def check_reliability_is_recorded_as_measured_and_failed(offline):
+    """Reliability stays MEASURED WITH A FAILED CRITERION -- in BOTH directions.
+
+    WHY THIS GUARD EXISTS. On 2026-09-19 a directive arrived instructing that the
+    estate be corrected to record reliability as NOT MEASURED / NOT ASSESSED, on
+    the stated premise that this was the already-established research-integrity
+    determination. It was not. The live record establishes the opposite, and the
+    directive carried its own exception for exactly that case.
+
+    RELIABILITY WAS MEASURED. Gwet's AC1 on a defined sample, against a
+    two-part pre-registered criterion, with confidence intervals computed two
+    ways and a disclosed exclusion rule:
+        invited        10 records, 36 labels,  8 raters, AC1 0.739, CI 0.402-1.000
+        open enrolment 10 records, 68 labels, 14 raters, AC1 0.623, CI 0.252-0.993
+    Both point estimates clear the 0.61 floor. BOTH ANALYTIC LOWER BOUNDS FALL
+    BELOW 0.41. The criterion was tested and it failed on the lower-bound leg.
+
+    THE ESTATE ALREADY GUARDED ONE DIRECTION AND NOT THE OTHER. A claim that the
+    criterion WAS MET is caught: EVIDENCE_AND_LIMITATIONS_REGISTER B-4 records it
+    VERIFIED FALSE, and the research-summary guard requires the concessions to
+    survive. Nothing stopped the opposite error -- restating a measured, failed
+    criterion as one that was never measured. That is not a softer claim; it is a
+    DIFFERENT AND FALSE ONE, and it would delete a reported negative result that
+    the authoritative record calls a strength of the work rather than a weakness
+    to be managed. Absence of a measurement and a measurement that missed its
+    threshold are not the same fact, and neither may be written over the other.
+
+    WHAT IT CHECKS. The authoritative research status records reliability as
+    measured; the figures and the failed leg survive; the sentence forbidding the
+    result from being summarised as established survives; and no current record
+    asserts that reliability was never measured or assessed.
+    """
+    findings = []
+    REL = "docs/enterprise-diligence/RESEARCH_AND_VALIDATION_STATUS.md"
+    body = read(REL)
+    if not body:
+        check("reliability is recorded as measured and failed", False,
+              "%s is missing; it is the authoritative research status" % REL)
+        return
+
+    flat = re.sub(r"\s+", " ", body)
+    for needle, why in (
+        ("Human inter-rater reliability", "the reliability row itself"),
+        ("Measured", "that reliability was MEASURED, not merely criterion-bearing"),
+        ("0.739", "the invited-group coefficient"),
+        ("0.623", "the open-enrolment coefficient"),
+        ("0.402", "the expert lower bound that missed the 0.41 floor"),
+        # THE TABLE CELLS, not just the numbers. A mutation deleted the invited
+        # group's analytic interval and this check still passed, because "0.402"
+        # also appears in the prose sentence beneath the table. Confirming a
+        # figure survives SOMEWHERE is not confirming the table is intact.
+        ("0.402 to 1.000", "the invited group's analytic confidence interval"),
+        ("0.252 to 0.993", "the open-enrolment analytic confidence interval"),
+        ("0.61", "the pre-registered point-estimate floor"),
+        ("0.41", "the pre-registered lower-bound floor"),
+        ('never be summarised as "reliability was established"',
+         "the sentence forbidding the result from being read as validation"),
+    ):
+        if needle not in flat:
+            findings.append("%s is gone from the research status (%r)" % (why, needle))
+
+    # THE ERROR THIS GUARD WAS WRITTEN AFTER: a current record asserting the
+    # measurement never happened. Scoped to current records; a correction
+    # narrative quoting the phrase in order to reject it is not an assertion.
+    NOT_MEASURED = re.compile(
+        r"reliability[^.\n]{0,40}\b(?:was |is )?(?:not|never)\s+"
+        r"(?:measured|assessed|computed|calculated|analysed|analyzed)|"
+        r"\bno reliability (?:measurement|analysis|study)\b", re.I)
+    CURRENT = [
+        "docs/enterprise-diligence/JRS_MASTER_ASSET_EVIDENCE_AND_CHAIN_OF_TITLE_REGISTER.md",
+        "docs/enterprise-diligence/EVIDENCE_LEDGER.md",
+        "docs/enterprise-diligence/RESEARCH_AND_VALIDATION_STATUS.md",
+        "docs/enterprise-diligence/EVIDENCE_AND_LIMITATIONS_REGISTER.md",
+        "docs/enterprise-diligence/JRS_INSTITUTIONAL_CONTINUITY_INDEX.md",
+    ]
+    checked = 0
+    for rel in CURRENT:
+        b = read(rel)
+        if not b:
+            continue
+        checked += 1
+        # ROW SCOPE, NOT A CHARACTER WINDOW. The first version used +/-200
+        # characters and fired on THIS PROJECT'S OWN CLAIM-CONTROL ROW, which
+        # quotes the false claim in order to classify it VERIFIED FALSE -- the
+        # exclusion words sat further away than the window reached. A claim
+        # register records claims in order to reject them, so a guard that reads
+        # the quotation as the assertion punishes the record for doing its job.
+        # A table row is one unit here, as it is everywhere else in this suite.
+        flat_b, units_b = _assertion_units(b)
+        for m in NOT_MEASURED.finditer(flat_b):
+            seg = next((u for s, e, u in units_b if s <= m.start() < e), "")
+            if re.search(r"incorrect|prior representation|must not|rather than|"
+                         r"would have|VERIFIED FALSE|not the established|"
+                         r"zero\b|returned no|none located|stops a", seg, re.I):
+                continue
+            findings.append("%s asserts reliability was not measured: %r. It WAS measured; "
+                            "the criterion failed on the lower-bound leg, and a failed "
+                            "measurement is not an absent one"
+                            % (rel, m.group(0).strip()[:70]))
+            break
+
+    # THE CLAIM REGISTER'S TWO ROWS, ASSERTED BY THEIR CLASSIFICATION.
+    # Flipping B-4b's classification from VERIFIED FALSE to VERIFIED left the
+    # prose scan quiet, because the row still carried the words that excuse a
+    # quotation. The classification is the controlling field, so it is read
+    # directly rather than inferred from the sentence around it.
+    lim = read("docs/enterprise-diligence/EVIDENCE_AND_LIMITATIONS_REGISTER.md")
+    if not lim:
+        findings.append("the evidence and limitations register is missing; it carries the "
+                        "two reliability claim controls")
+    else:
+        for rid, claim in (("B-4", "the criterion was met"),
+                           ("B-4b", "reliability was not measured")):
+            row = next((ln for ln in lim.splitlines()
+                        if ln.startswith("| %s |" % rid)), None)
+            if row is None:
+                findings.append("claim control %s is gone. It is the register's record that "
+                                "%r is false" % (rid, claim))
+            elif "VERIFIED FALSE" not in row:
+                findings.append("claim control %s no longer reads VERIFIED FALSE, so the "
+                                "register now tolerates %r" % (rid, claim))
+
+    check("reliability is recorded as measured and failed",
+          not findings,
+          "; ".join(findings[:3]) if findings
+          else "reliability recorded MEASURED with both coefficients, both floors and the "
+               "failed lower-bound leg intact; %d current record(s) checked and none asserts "
+               "the measurement never happened" % checked)
+
+
 def check_key_person_record_is_honest(offline):
     """The key-person record does not drift upward, and its one empirical claim stays true.
 
@@ -8787,6 +8917,7 @@ def main():
                check_misuse_register_records_reality,
                check_no_right_is_offered_beyond_its_evidence,
                check_section_2_1_resolution_holds,
+               check_reliability_is_recorded_as_measured_and_failed,
                check_key_person_record_is_honest,
                check_blocker_evidence_targets_agree_with_the_blocker,
                check_every_blocker_says_who_acts_next,
