@@ -49,10 +49,40 @@ research metric by seven points, and it would be doing so on the authority of on
 For a closed 61-run study, a single "latest" figure is the weakest available presentation
 whichever run is chosen. The defensible statement is the distribution.
 
-**RECOMMENDATION, not a decision.** Publish: *"Across 61 recorded runs between 12 June and
+~~**RECOMMENDATION, not a decision.** Publish: *"Across 61 recorded runs between 12 June and
 21 August 2026, agreement across three models on 15 constructed records ranged from 66.7% to
-93.3%, mean 85.3%. The study closed on 21 August 2026."* That is verifiable, carries its own
-n and dates, and is not improved by choosing a favourable run.
+93.3%, mean 85.3%. The study closed on 21 August 2026."*~~
+
+> **THIS RECOMMENDATION CARRIED A DEFECT AND IT WAS IMPLEMENTED BEFORE THE DEFECT WAS SEEN.
+> CORRECTED 2026-09-20.** The reasoning above is sound and stands: a distribution beats a
+> favourable single run, and 91.1% was correctly refused. **The wording was not sound.** It
+> attaches *"on 15 constructed records"* to the 61-run range, and **those belong to different
+> counts of the same series.**
+>
+> `findings_history` gives 61 runs with no completeness filter. `study_runs`, filtered to
+> `mode == cross_vendor`, **exactly 15 non-null `per_record` values**, and the 2026-08-15 data
+> lock, gives **41 runs ranging 82.2 to 93.3**. `IP_COMMERCIALIZATION_AUDIT.md` reports the
+> same range across **37 runs** and states the rule in its own words: *"on the 15-record
+> set"*. **37 and 41 are one series at two windows. 61 is that series without the filter.**
+>
+> `scripts/verify_manuscript_figures.py` had already reached this conclusion and recorded it
+> where nothing else read it: its `SUPERSEDED` list carries
+> `("66.7 to 93.3", "mixed-denominator cross-vendor range")`. **That list protects the
+> manuscript body and nothing else**, so the recommendation above was drafted, approved and
+> shipped to five public surfaces without meeting it.
+>
+> **CORRECTED RECOMMENDATION, still not a decision.** Publish **both**, each with its own
+> denominator, as `research.html` line 104 already did:
+> *"Across 61 recorded runs between 12 June and 21 August 2026, agreement across three models
+> ranged from 66.7 to 93.3 percent, mean 85.3 percent. Restricted to the runs that returned
+> every record, the range is 82.2 to 93.3 percent across 37 runs at the full 15-record set.
+> The study closed on 21 August 2026."*
+>
+> **No figure was selected, raised or lowered by this correction.** Both series were already
+> in the estate; only one of them was reaching the reader, and it was reaching them under the
+> other one's denominator. Enforced by
+> `check_zero_drift.py::check_the_cross_vendor_range_carries_its_denominator`, demonstrated
+> failing against the pre-fix state on 8 blocks across 5 pages.
 
 **This is flagged rather than implemented precisely because the change would move a headline
 number upward.** An agent raising a research metric on its own initiative is the thing the

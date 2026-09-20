@@ -5883,6 +5883,25 @@ def check_ledger_index_matches_the_ledger(offline):
     actual = len(ids)
     highest = max(ids) if ids else "E-000"
 
+    # A SPELLED-OUT COUNT EVADES EVERY NUMERIC GUARD IN THIS SUITE, so it is
+    # rejected rather than parsed. FOUND BY MUTATION 2026-09-20: replacing
+    # "**38 ledger entries.**" with "**thirty-seven ledger entries.**" left this
+    # guard silent and the discovery sweep silent with it, because both look for
+    # digits. Teaching the guard to read number words would widen the parser and
+    # leave the next spelling to be discovered the same way. The narrower and
+    # more durable rule is that the ledger count is asserted in digits, which is
+    # how every count in this estate is already written.
+    WORDS = ("twenty", "thirty", "forty", "fifty", "sixty")
+    for src, name in ((led, "EVIDENCE_LEDGER.md"),
+                      (reg, "the master register")):
+        for w in WORDS:
+            for mw in re.finditer(w + r"[a-z-]*", src, re.I):
+                tail = src[mw.end():mw.end() + 40].lower()
+                if "ledger entr" in tail or "entries" in tail.split(".")[0]:
+                    findings.append("%s states the ledger count in words (%r); "
+                                    "counts are asserted in digits so they stay "
+                                    "discoverable" % (name, mw.group(0)))
+
     m = re.search(r"`EVIDENCE_LEDGER\.md`,\s*\*\*(\d+) entries\*\*,\s*E-001 to (E-\d{3})", reg)
     if not m:
         findings.append("the register's evidence index no longer states a count and a range "
@@ -6641,8 +6660,18 @@ def check_the_owner_queue_matches_the_item_states(offline):
     live = set(re.findall(r"\*\*(D-\d+)\*\*", open_block))
     closed = set(re.findall(r"\*\*(D-\d+)\*\*", closed_block))
 
-    CLOSED_MUST = {"D-2", "D-7", "D-8", "D-10", "D-11", "D-12", "D-13", "D-14"}
-    OPEN_MUST = {"D-1", "D-3", "D-4", "D-5", "D-6", "D-18", "D-19",
+    # D-3 MOVED OPEN -> CLOSED 2026-09-20, on BOARD DECISION BD-04 of 2026-09-16,
+    # not on inference and not because the row looked old. BD-04 declares
+    # Decision-Process Traceability -> `accountability_support`, which is the
+    # exact question D-3 asks, and it is recorded twice: in
+    # METHODOLOGY_TO_API_MAPPING.md and at line 106 of the Board register. The
+    # queue kept asking for four days because the mapping document carries an
+    # earlier analysis table saying "Unresolved" ABOVE the Board decision that
+    # settles it, and a preparation pass read the first table and stopped.
+    # The fifth mapping row remains unresolved and that is D-2, which is
+    # already closed as INTENTIONALLY UNRESOLVED. It is not a D-3 remainder.
+    CLOSED_MUST = {"D-2", "D-3", "D-7", "D-8", "D-10", "D-11", "D-12", "D-13", "D-14"}
+    OPEN_MUST = {"D-1", "D-4", "D-5", "D-6", "D-18", "D-19",
                  "D-20", "D-21", "D-22", "D-23", "D-24", "D-25", "D-26"}
 
     for d in sorted(CLOSED_MUST):
@@ -6694,6 +6723,16 @@ def check_no_owner_decision_asks_for_completed_work(offline):
     WHAT IT DOES NOT CHECK. Whether a decision was CORRECT, and whether any
     still-open item should be closed. Three of these six are open and the page
     says so; a guard that pushed toward closure would be worse than none.
+
+    THE KNOWN WEAKNESS IS THE LIST ITSELF, AND IT HAS NOW COST SOMETHING. PAIRS
+    is a FIXED enumeration, which is the failure class this suite has hit four
+    times in other guards and replaced with dynamic discovery each time. Here it
+    stayed fixed, and on 2026-09-20 D-3 was found being asked of the owner FOUR
+    DAYS after Board decision BD-04 answered it -- invisible to this guard for
+    one reason only: D-3 was not in the list. It is now. A decision cannot be
+    discovered dynamically the way a count can, because the "done" test is
+    specific to each question, so the control is that EVERY item added to the
+    owner queue gets a pair here at the same time.
     """
     findings = []
     hdr = read("docs/enterprise-diligence/HUMAN_DECISIONS_REQUIRED.md")
@@ -6721,6 +6760,18 @@ def check_no_owner_decision_asks_for_completed_work(offline):
         ("D-12 to D-17", lambda: absent("index.html", "api.jrsstandard.com/v1/verify-drift'")
                                  and absent("terms.html", "transmits nothing"),
          r"D-12 to D-17[^\n]{0,80}\*\*ALL OPEN, NONE FIXED\*\*(?!~)"),
+        # ADDED 2026-09-20. D-3 asked which engine key corresponds to
+        # Decision-Process Traceability. BOARD DECISION BD-04 DECLARED IT ON
+        # 2026-09-16 and the queue went on asking for four more days, because
+        # METHODOLOGY_TO_API_MAPPING.md carries TWO tables -- an analysis table
+        # saying "Unresolved" and, further down, the Board decision that settles
+        # it. A preparation pass read the first and stopped. The "done" test
+        # below therefore looks for the DECISION, not for the absence of the
+        # word "Unresolved", which is still correctly present in the historical
+        # analysis row above it.
+        ("D-3", lambda: present("docs/enterprise-diligence/METHODOLOGY_TO_API_MAPPING.md",
+                                "BOARD DECISION BD-04"),
+         r"\|\s*\*\*D-3\*\*\s*\|[^|\n]*\|[^\n]*Name which engine key"),
     ]
     checked = 0
     for did, done, stale_pat in PAIRS:
@@ -9154,6 +9205,123 @@ def check_reliability_raters_are_not_demoted(offline):
           "%d packet artefacts scanned, 0 demoting terms" % seen)
 
 
+def _rendered_blocks(body):
+    """Split an HTML body into rendered block runs.
+
+    THE UNIT MATTERS MORE THAN THE PATTERN. Four guards in this suite have been
+    defective because they used a fixed character window, which lets a
+    qualifier in a NEIGHBOURING sentence excuse a claim it does not govern.
+    Splitting at every tag is the opposite defect: line 127 of research.html
+    carries "the same 15 records" outside a <b> and the range inside it, so a
+    per-tag split would report the page clean while it asserts both.
+
+    So the unit is the BLOCK. Inline tags (b, span, a, em, strong, i) stay
+    inside the run because they do not end a sentence; block tags end it.
+    """
+    marked = re.sub(
+        r"</?(?:div|p|li|td|tr|th|section|article|h[1-6]|br|ul|ol|table)\b[^>]*>",
+        "\x00", body, flags=re.I)
+    out = []
+    for run in marked.split("\x00"):
+        txt = re.sub(r"<[^>]+>", "", run)
+        txt = txt.replace("&ndash;", "-").replace("&#39;", "'").replace("&amp;", "&")
+        txt = re.sub(r"\s+", " ", txt).strip()
+        if txt:
+            out.append(txt)
+    return out
+
+
+def _names_the_full15_series(unit):
+    """The full-15 series is present only if the block says what the figure IS.
+
+    FOUND BY MUTATION, NOT BY READING. The first version of this guard accepted
+    any block containing the bare string "82.2". Stripping "at the full
+    15-record set" while leaving the number behind passed it, which is the
+    substring-versus-meaning defect this suite has now hit nine times: a number
+    is not a proposition. A reader needs the denominator, not the digits.
+    """
+    if "82.2" not in unit:
+        return False
+    return bool(re.search(r"\b15[\s-]+(?:constructed\s+)?records?\b|\b15-record\b",
+                          unit, re.I))
+
+
+def check_the_cross_vendor_range_carries_its_denominator(offline):
+    """The 61-run range and the 15-record denominator belong to DIFFERENT series.
+
+    PROVENANCE, established from the repository and not from a production read.
+    `findings_history` and `study_runs` are different tables with different
+    schemas. STUDY_001_FIGURE_RESOLUTION.md sources "61 recorded runs, 66.7 to
+    93.3 percent, mean 85.3" from findings_history with no completeness filter.
+    verify_manuscript_figures.py sources its series from study_runs behind three
+    explicit filters -- mode == cross_vendor, EXACTLY 15 non-null per_record
+    values, and created_at on or before the 2026-08-15 lock -- and gets 41 runs
+    ranging 82.2 to 93.3. IP_COMMERCIALIZATION_AUDIT.md reports 37 runs over the
+    same 82.2 to 93.3 range and says so explicitly: "on the 15-record set".
+
+    So 37 and 41 are one series at two observation windows, and the 61-run
+    figure is the SAME nightly study counted under a different denominator rule.
+    verify_manuscript_figures.py already names it: its SUPERSEDED list carries
+    ("66.7 to 93.3", "mixed-denominator cross-vendor range") and the matching
+    ("84.5 percent", "mixed-denominator cross-vendor mean").
+
+    THE DEFECT THIS CATCHES. research.html line 104 states both series and
+    attaches "at the full 15-record set" to the 37-run one, which is correct.
+    Five other places print the 61-run range and attach "15 records" to it, or
+    print it with no denominator at all. A reader who checks -- and the reader
+    who matters will -- finds the same page claiming the full-15 denominator
+    yields 37 runs in one paragraph and 61 in the next.
+
+    THE RULE IS NOT A FIGURE CHOICE. Neither number is preferred here. Any
+    block that publishes the 61-run range must identify the full-15-record
+    series alongside it, so the denominator travels with the figure. That is
+    the E-037/E-038 precedent: scope the claim, never pick the number.
+
+    SUPERSEDED at verify_manuscript_figures.py protects the MANUSCRIPT BODY
+    only. Nothing covered the five public surfaces, and the buyer surface was
+    among them.
+    """
+    LOW, HIGH, FULL15_LOW = "66.7", "93.3", "82.2"
+    hits = []
+    scanned = 0
+    for rel in _html_files():
+        body = read(rel)
+        if not body:
+            continue
+        scanned += 1
+        blocks = _rendered_blocks(body)
+        page_has_full15 = any(_names_the_full15_series(b) for b in blocks)
+        for unit in blocks:
+            if LOW not in unit or HIGH not in unit:
+                continue
+            if _names_the_full15_series(unit):
+                continue  # the full-15 series travels with it: correct
+            # A BARE FIGURE IS A LABEL, NOT AN ASSERTION. The big accent value
+            # in a stat card makes no denominator claim and cannot carry one;
+            # its caption is the sibling block and that is where the scope
+            # belongs. Requiring the denominator inside the headline would be
+            # the mirror of the window defect -- strictness in the wrong unit.
+            # A label still has to be backed SOMEWHERE on its own page, or a
+            # page could publish the range and nothing else.
+            stripped = re.sub(r"[0-9.,%\s\u2013-]+", "", unit)
+            if len(stripped) < 3:
+                if not page_has_full15:
+                    hits.append("%s: headline range with the full-15-record "
+                                "series absent from the whole page [%s]" % (rel, unit[:90]))
+                continue
+            claim = re.search(r"\b15[\s-]+(?:constructed\s+)?records?\b|\b15-record\b",
+                              unit, re.I)
+            hits.append("%s: %s [%s]" % (
+                rel,
+                "asserts the 15-record denominator on the 61-run range"
+                if claim else "publishes the 61-run range with no denominator",
+                unit[:90]))
+    check("the cross-vendor range carries its own denominator", not hits,
+          " | ".join(h.split(" [")[0] for h in hits[:6]) if hits
+          else "%d pages scanned; every 66.7-93.3 block names the full-15-record series"
+               % scanned)
+
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -9282,6 +9450,7 @@ def main():
                check_no_new_subscription_funnel,
                check_reliability_figures_are_current,
                check_research_summary_leads_with_its_boundaries,
+               check_the_cross_vendor_range_carries_its_denominator,
                check_generated_docs_current, check_cross_endpoint):
         try:
             fn(offline)

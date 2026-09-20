@@ -29,11 +29,37 @@ Whether a *named party* relied on it is **NOT ESTABLISHED** and was not guessed.
 **RECOMMENDATION.** None. Deciding would invent substantive JRS content.
 **CONSEQUENCE.** Benchmark results in engine keys cannot be restated in Codebook language without an undocumented assumption.
 
-## D-3 · Correspondence — **RULE DECIDED, ASSIGNMENTS STILL OPEN**
+## D-3 · Correspondence — ~~**RULE DECIDED, ASSIGNMENTS STILL OPEN**~~ **ANSWERED BY BD-04, 2026-09-16. CLOSED 2026-09-20**
+
+> **THIS QUESTION WAS ANSWERED FOUR DAYS BEFORE IT WAS LAST ASKED, AND THE ANSWER WAS IN THE
+> DOCUMENT THIS ENTRY CITES.** `METHODOLOGY_TO_API_MAPPING.md` carries **two** tables. The
+> analysis table at line 31 says `accountability_support` is **Unresolved**; **Board Decision
+> BD-04 further down the same file declares it.** The 2026-09-20 preparation pass read the
+> first table and stopped, so it reported the assignment as still unresolved and left the
+> owner row asking for it.
+>
+> **BD-04, recorded at `JRS_BOARD_DECISION_REGISTER_2026-09-16.md` line 106:**
+>
+> | Codebook condition | Engine key | Declared |
+> |---|---|---|
+> | Basis Identification | `basis_identification` | **EXACT** |
+> | Reconstructability | `reasoning_traceability` | **SEMANTIC / INFERRED — DECLARED** |
+> | Chronology | `temporal_reconstructability` | **SEMANTIC / INFERRED — DECLARED** |
+> | **Decision-Process Traceability** | **`accountability_support`** | **SEMANTIC / INFERRED — DECLARED** |
+> | Evidentiary Sufficiency | `cold_reviewer_clarity` | **UNRESOLVED. NOT DECLARED** |
+>
+> **That is exactly what D-3 asked for**, for all three of its parts. **DECLARED IS NOT
+> UPGRADED**: the three stay SEMANTIC / INFERRED, and the prohibition on describing the engine
+> as a restatement of the Codebook stands.
+>
+> **THE FIFTH ROW IS NOT D-3's REMAINDER. It is D-2**, already closed as INTENTIONALLY
+> UNRESOLVED, and BD-04 states why the Board declined it: whether `cold_reviewer_clarity` is
+> the aggregate is a question about **what the engine computes**, not what a field is called.
+> **D-3 has no remainder. Do not ask for it again.**
 
 **QUESTION.** Which engine key corresponds to Decision-Process Traceability, and confirm Reconstructability and Chronology?
 **EVIDENCE.** One pair EXACT, two SEMANTIC, one UNRESOLVED. Asked first in `METHODOLOGY_TO_API_MAPPING.md`.
-**APPROVAL REQUIRED.** Declare the correspondence, or state the two sets are deliberately distinct constructs.
+~~**APPROVAL REQUIRED.** Declare the correspondence, or state the two sets are deliberately distinct constructs.~~ **SUPPLIED BY BD-04.**
 
 ## D-4 · Subprocessor disclosure — **CONTENT DRAFTED 2026-09-15; PUBLICATION OPEN**
 
@@ -145,19 +171,54 @@ published research metric by seven points on the authority of one run is precise
 evidence rules exist to prevent. Full analysis and the recommended distribution-based wording:
 `STUDY_001_FIGURE_RESOLUTION.md`. **OWNER ACTION REQUIRED.**
 
-> **SURFACE SCOPE VERIFIED 2026-09-20, AND IT IS NARROWER THAN "PRESENTATION OPEN" SUGGESTS.**
-> **No deployable page carries the STUDY-001 agreement figure at all.** The only `86.7` on a
-> public page is in `enterprise.html` line 293 — *"the inquiry form was at 86.7% page depth"* —
-> a scroll-depth analytics number with nothing to do with this study. `84%` returns **zero**
-> deployable hits. The figures live in `IP_COMMERCIALIZATION_AUDIT.md` (a root `.md`, excluded
-> by `.vercelignore`) and in the `research/` manuscripts, none of which deploy.
+> ~~**SURFACE SCOPE VERIFIED 2026-09-20, AND IT IS NARROWER THAN "PRESENTATION OPEN"
+> SUGGESTS.** No deployable page carries the STUDY-001 agreement figure at all.~~
 >
-> **A THIRD INCONSISTENCY IS RECORDED RATHER THAN RESOLVED.** Three records give three
-> different series: this entry says **61 runs, 66.7 to 93.3, mean 85.3, final 91.1**; the
-> commercialization audit says **37 runs, 82.2 to 93.3, published 86.7**; the submitted
-> manuscript says **41 nightly runs, mean 87.2, median 86.7, range 82.2 to 93.3**. They may
-> describe different windows or different sets. **Deciding which series is the published one
-> is a research-presentation decision and no figure was changed.**
+> **THAT SCOPE CLAIM WAS WRONG, AND IT WAS WRONG IN THE DIRECTION THAT MATTERS. CORRECTED
+> 2026-09-20 BY RE-SEARCHING INSTEAD OF RE-READING.** It searched for the figures production
+> publishes (`86.7`, `84%`) and found none, then concluded no page carries the study figure.
+> The branch had replaced them. **Five deployable surfaces carry the 61-run figure** and one
+> of them is the confidential buyer surface: `research.html`, `results.html`, `pilot.html`,
+> `reviewer/index.html` and `acquisition-9f3c2a7d4b.html`. The surviving true parts of the
+> struck claim: `enterprise.html`'s `86.7` is page-scroll depth and unrelated, and `84%` does
+> return zero deployable hits, **because the branch removed it.**
+>
+> **A THIRD INCONSISTENCY IS NOW RESOLVED, FROM PROVENANCE, WITHOUT SELECTING A FIGURE.**
+> ~~They may describe different windows or different sets.~~ They are **one series counted
+> two ways**, and the estate already records which is which:
+>
+> | Figure | Source | Denominator rule | Window |
+> |---|---|---|---|
+> | **61 runs**, 66.7 to 93.3, mean 85.3 | `findings_history` where `study_id = 'STUDY-001'` | **none applied** | 12 Jun to 21 Aug 2026 |
+> | **37 runs**, 82.2 to 93.3 | `IP_COMMERCIALIZATION_AUDIT.md`, which says so in its own words: *"on the 15-record set"* | **full 15 records** | to the audit date |
+> | **41 runs**, 82.2 to 93.3, mean 87.2 | `study_runs`, via `scripts/verify_manuscript_figures.py` | **full 15 records**, enforced at `len(pr) != 15: continue` | bounded at the **2026-08-15 data lock** |
+>
+> **37 and 41 are the same series at two observation windows** — identical range endpoints,
+> identical denominator rule, different cut-offs. **61 is not a third window. It is the same
+> nightly study counted without the completeness filter**, and this repository's own manuscript
+> verifier already classifies the result: its `SUPERSEDED` list carries
+> `("66.7 to 93.3", "mixed-denominator cross-vendor range")` beside
+> `("84.5 percent", "mixed-denominator cross-vendor mean")`.
+>
+> **THE DEFECT THIS EXPOSED, AND IT WAS ONE ACT AWAY FROM BEING PUBLISHED.** `SUPERSEDED`
+> guards the **manuscript body only**. Nothing guarded the five public surfaces, and all five
+> attached the **full-15-record denominator to the 61-run range** or printed it with no
+> denominator at all — while `research.html` line 104, on the same page, correctly said the
+> full-15 set yields **37 runs at 82.2 to 93.3**. **The page contradicted itself.** Production
+> does not carry any of this: the 61-run figures entered on this branch at `a89b698` and are
+> **undeployed**, so authorizing D-20 as it stood would have **published a figure the estate's
+> own verifier forbids**, to five surfaces including a buyer surface.
+>
+> **REMEDIATED 2026-09-20 WITHOUT CHANGING ONE FIGURE.** Both series now travel together on
+> all five surfaces, in the form `research.html` line 104 already used. The false 15-record
+> attribution is gone from the 61-run figure. Guard
+> `check_the_cross_vendor_range_carries_its_denominator` was **demonstrated failing against
+> the pre-fix state (8 blocks, 5 pages)** before it was trusted, and 11 mutations were run
+> against it, one of which found a real defect in the guard itself and was repaired.
+>
+> **WHAT REMAINS FOR THE OWNER IS SMALLER THAN IT WAS.** Not *which figure is real* — that is
+> answered. Only **which series leads the headline**: the all-runs distribution, or the
+> complete-record series. Both are published, both are labelled, neither was chosen here.
 
 ## D-18 (original entry, preserved) · Stale research presentation — **OPEN, DELIBERATELY NOT EDITED**
 
@@ -293,17 +354,46 @@ behind each is complete; what remains cannot be done from here.
 ~~**SCOPE, VERIFIED 2026-09-19.** Candidate `23fe3e1` against production baseline `0d94ce6`:
 **233 files changed, 21,243 insertions, 470 deletions.**~~
 
-> **CANDIDATE RE-VERIFIED 2026-09-20 AND IT HAD MOVED.** The branch is **nine commits ahead**
-> of the SHA named above. Authorizing a commit that is no longer the tip would authorize
-> something that no longer exists.
+~~**CANDIDATE RE-VERIFIED 2026-09-20 AND IT HAD MOVED.** CURRENT CANDIDATE `42e3bff`
+against production baseline `0d94ce6`: 237 files changed, 22,535 insertions, 477
+deletions.~~
+
+> **`42e3bff` WAS ALSO WRONG, AND FOR A REASON THAT WOULD HAVE RECURRED EVERY CYCLE.** It was
+> the branch tip on the day it was written, and a tip is not a candidate. **`42e3bff` changes
+> nothing that deploys**: its four changed paths are all under `docs/` and `scripts/`. Naming
+> the tip was the same error as naming `23fe3e1`, one commit later.
 >
-> **CURRENT CANDIDATE `42e3bff`** against production baseline `0d94ce6`:
-> **237 files changed, 22,535 insertions, 477 deletions.**
+> **THE CANDIDATE IS A DERIVATION, NOT A SHA. Re-run it; do not read it from here.**
+> `scripts/derive_deployment_candidate.py` computes it: parse `.vercelignore` live, walk every
+> commit from the production baseline to `HEAD`, and take the newest commit that changes at
+> least one file the ignore rules do not exclude.
 >
-> **ONLY ONE OF THE NINE COMMITS CHANGES ANYTHING THAT DEPLOYS.** `research-summary.html` now
-> names the reliability sample's size and states that 83.9% is not a reliability measure. The
-> other fifteen changed paths are under `docs/`, `.jrs/`, `research/` and `scripts/`, every one
-> excluded by `.vercelignore`. **The deployable delta since 23fe3e1 is one page.**
+> **DERIVED 2026-09-20 AT HEAD `6805363`:**
+>
+> | | Value |
+> |---|---|
+> | Production baseline | `0d94ce6` |
+> | Current HEAD | `6805363` |
+> | Commits since baseline | **69** |
+> | **Candidate** | **`c5f64bf`** — the newest commit carrying a deployable change |
+> | Full delta | 237 files changed, 22,624 insertions, 477 deletions |
+> | Deployable files in delta | **33** |
+> | Excluded files in delta | **204** |
+>
+> **THE EIGHT COMMITS AFTER THE CANDIDATE CHANGE NOTHING THAT DEPLOYS.** Everything after `c5f64bf` is under
+> `docs/`, `.jrs/`, `research/` and `scripts/`. **Proved, not assumed:** no deployable path
+> differs between `c5f64bf` and `6805363`, so **authorizing the branch tip and authorizing
+> `c5f64bf` publish byte-identical content.** Authorize the tip; the deployable surface is the
+> one `c5f64bf` defines.
+>
+> **THE CANDIDATE HAS CHANGED SINCE THIS ENTRY WAS LAST TRUE, AND IT WILL AGAIN.** That is the
+> reason the rule is recorded here instead of the number.
+
+> **D-18 NOW BEARS ON THIS DECISION, AND IT DID NOT BEFORE.** The deployable delta carries the
+> STUDY-001 research figures onto five surfaces. As of 2026-09-20 those surfaces published the
+> **mixed-denominator** range under a **full-15-record** denominator, which is a figure this
+> repository's own manuscript verifier lists as superseded. **That is corrected in the tree
+> now and guarded.** Authorizing deployment before that correction would have published it.
 
 No build step; the deployable artifact is the repository minus `.vercelignore`.
 
@@ -535,10 +625,9 @@ credential from the environment and never prints it; if you see one, stop and te
 
 | # | Item | The single act |
 |---|---|---|
-| **D-3** | Correspondence assignments | Name which engine key corresponds to Decision-Process Traceability. **Prepared 2026-09-20:** `METHODOLOGY_TO_API_MAPPING.md` already records the assignment as `accountability_support`, classified **Unresolved**, with `reasoning_traceability` as the second candidate because both Codebook conditions contain "traceability". **The decision is one line naming one key, or recording that the constructs are deliberately distinct** |
 | **D-4** | Subprocessor disclosure | Sign off the published wording. **Publication is a Section 23 act**. **Draft verified 2026-09-20:** `privacy.html` names **Anthropic, Vercel, Supabase, Formspree, Google Analytics, Google Fonts, OpenAI and Gemini**, and the processor guard confirms **20 hosts across `api/` and 76 pages all classified**, with the dormancy flags and the Fonts caveat asserted. **Nothing to redraft** |
 | **D-5** | Validation statement | Approve inserting the prepared wording and deploying it |
-| **D-18** | STUDY-001 figure | Decide the published wording. **61 runs, 66.7% to 93.3%, mean 85.3%, final run 91.1%.** No figure was changed and none will be by inference |
+| **D-18** | STUDY-001 figure | **Provenance is resolved; the question is now smaller.** The three counts are one series: **61 runs** is the all-runs figure, **37 and 41 runs** are the same series restricted to the full 15-record set at two windows. Both are now published together on all five surfaces and the false 15-record attribution is gone. **The single remaining act: say which series leads the headline** — the all-runs distribution or the complete-record series |
 | **D-19** | `engine_reviews` grant | Same production act as **D-22**; recorded separately because the promise attached to `finding_responses` is a different proposition |
 
 **COUNSEL**
@@ -558,6 +647,7 @@ operation has been performed from this repository.**
 | # | Closed how | Evidence |
 |---|---|---|
 | **D-2** | **INTENTIONALLY UNRESOLVED**, decided | Enforced by a guard |
+| **D-3** | **BOARD DECIDED — BD-04, 2026-09-16.** Closed 2026-09-20 | `JRS_BOARD_DECISION_REGISTER_2026-09-16.md` line 106 and `METHODOLOGY_TO_API_MAPPING.md` BD-04. All three parts declared; **`accountability_support` is the answer to the named question.** The fifth row is D-2, not a D-3 remainder. **Do not ask again** |
 | **D-7** | **BOARD DECIDED** — both surfaces CONFIDENTIAL BUYER | CLAUDE.md §36.3 |
 | **D-8** | **OWNER CONFIRMED / EXTERNAL ACTION COMPLETED** | E-030, 2026-09-18. **Do not ask again** |
 | **D-10** | **BOARD DECIDED** — BD-05, accept and disclose | Self-hosting stays deferred and separately authorized |
