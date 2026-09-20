@@ -71,14 +71,15 @@
       ],
       "required_action": "Publish the subprocessor list, or record a decision not to.",
       "owner": "HUMAN",
-      "status": "DISCLOSURE WRITTEN \u2014 NOT DEPLOYED",
+      "status": "DEPLOYED — LIVE CONTENT VERIFICATION NOT ESTABLISHED",
       "created": "2026-09-14",
       "remediation_2026_09_14": "Scope superseded by B-009: seven active processors, not four. Publishing a disclosure is a Section 23 publication.",
       "update_2026_09_15": "Disclosure APPROVED IN PRINCIPLE by owner 2026-09-15. Merged in scope with B-009. Publication itself not yet performed.",
       "remediation_2026_09_15": "Satisfied by the B-009 disclosure. privacy.html now names every active processor, so the original required_action (publish the list, or record a decision not to) is met in draft. The original count of four is preserved above rather than edited, and the corrected count lives in B-009. NOT DEPLOYED, so publication is not yet complete.",
       "public_claims_remediation_2026_09_15": "Claims sweep across all 75 deployed pages corrected the data-handling representations that contradicted the implementation. D-11 review-engine.html and D-15 security.html now state that record text goes to Anthropic and that model-written output about the record is retained; security.html now names Anthropic, which it never did. D-13 terms.html and engagement.html no longer say the free check 'transmits nothing'. The 'never leaves your control' block was corrected on five pages, the 'zero data retention at rest' paragraph on seven, and the 'Data Isolation Guarantee' heading, which is banned vocabulary under CLAUDE.md 24, was renamed and scoped to the human-delivered work on five pages. D-16 Gumroad prose corrected on two pages with no replacement provider named, because none is evidenced and every checkout_url is empty. D-17 terms.html sub-processor sentence scoped to the closed engagements. Guard check_data_handling_claims_match_the_implementation added and demonstrated failing on six mutations, one of which exposed a substring weakness in the guard itself that was then fixed.",
-      "next_action_by": "OWNER",
-      "next_action_basis": "The disclosure is written and not deployed. Publishing it is a Section 23 publication and needs owner approval."
+      "next_action_by": "NONE",
+      "next_action_basis": "Owner authorized production deployment on 2026-09-20; repository disclosure is now on main. Vercel reported SUCCESS. Independent live fetch returned an apparently stale cached privacy page, so byte/content equivalence is not established from this environment.",
+      "production_reconciliation_2026_09_20": "Production promotion reached main at 02ff379e66c97f8e993471dba8a3c16116a8cdf1. This clears the prior NOT DEPLOYED state. Do not infer live byte equivalence from Vercel status."
     },
     {
       "blocker_id": "B-004",
@@ -105,15 +106,16 @@
       "description": "claude-haiku-4-5-20251001 is pinned in the Review Engine as if permanent.",
       "required_action": "Make the identifier configurable with a documented default and a recorded review date.",
       "owner": "CLAUDE",
-      "status": "REMEDIATED FOR DECLARED SCOPE (API RUNTIME) \u2014 PRODUCTION VERIFICATION REQUIRED",
+      "status": "DEPLOYED — PRODUCTION RUNTIME BEHAVIOR NOT DIRECTLY EXERCISED",
       "created": "2026-09-14",
       "remediation_2026_09_14": "api/_model.js created. Six literals across five files reduced to zero outside that module. jrsModel() returns the prior literal byte-identically with no override; override verified; all five import paths resolve; all files parse. Behaviour preserved by construction. Does not imply model equivalence.",
       "update_2026_09_15": "Code complete and tested. Deployment is conditionally authorized (D-9) but condition 1, completed B-001 rotation, is NOT met, so no deployment was attempted. Change remains on the development branch.",
       "correction_2026_09_15": "OLD FINDING: 'six literals across five files reduced to zero outside that module'. NEW EVIDENCE: two live literals remain in supabase/functions/run-study/index.ts lines 38 and 75, a second Anthropic-calling engine, plus one published example in review-engine.html:379. The census covered api/ only. CORRECTED STATUS: zero literals remain IN api/; B-005 is NOT remediated as originally described. EXPLANATION: found by an adversarial pass 2026-09-15. supabase/ is now excluded from the Vercel deployable set, which addresses the exposure but not the literal.",
       "scope_correction_2026_09_16": "OLD STATUS: REMEDIATED (implied repository-wide). NEW STATUS: REMEDIATED FOR THE API RUNTIME ONLY. WHY: two live literals remain in supabase/functions/run-study/index.ts, a dormant second Anthropic-calling engine deployed by a different toolchain and not the one the nightly cron calls. EVIDENCE: repository-wide grep, 2026-09-15. AUTHORITY: engineering for the scope statement; OWNER for whether B-005's scope includes the dormant research route. DATE: 2026-09-16. See B-005_SCOPE_RECONCILIATION.md. The published example in review-engine.html:379 is deliberately left: an API example showing a placeholder instead of the real identifier would be less useful and arguably less honest.",
       "board_decision_2026_09_16": "BD-09. OLD STATUS: scope ambiguous. NEW STATUS: scope DECLARED as the Review Engine API runtime. WHY: the blocker's own words are 'pinned in the Review Engine'; the Vercel API routes are the Review Engine. The dormant Supabase study function the cron does not call, for closed studies, and a published documentation example are outside it. EVIDENCE: blocker text, vercel.json crons, STUDIES_CLOSED. AUTHORITY: Board, delegated. DATE: 2026-09-16.",
-      "next_action_by": "OWNER",
-      "next_action_basis": "Remediated in the API runtime; only a deployment can verify it."
+      "next_action_by": "NONE",
+      "next_action_basis": "Remediation is on production main and Vercel reports SUCCESS. No authenticated production engine request was executed here, so runtime behavior is not independently verified.",
+      "production_reconciliation_2026_09_20": "The configuration extraction is present on production main. Deployment requirement is satisfied; behavioral verification remains NOT MEASURED in this environment."
     },
     {
       "blocker_id": "B-006",
@@ -162,7 +164,7 @@
       ],
       "required_action": "Reconcile the specification with the deployed code. One of the two is wrong about a licensed interface.",
       "owner": "CLAUDE (proposal) then HUMAN (approval)",
-      "status": "PREPARED_FOR_HUMAN_REVIEW \u2014 COUNSEL REVIEW REQUIRED",
+      "status": "PREPARED_FOR_HUMAN_REVIEW — COUNSEL REVIEW REQUIRED",
       "created": "2026-09-14",
       "remediation_2026_09_14": "Refined: TWO specs describe the same path and openapi-review-engine.json (0.1.0-validation) MATCHES the implementation while openapi.json (1.0.0, Commercial licence) does not. Four options costed. Nothing implemented.",
       "update_2026_09_15": "External distribution INVESTIGATED 2026-09-15 and ESTABLISHED: openapi.json is PUBLISHED at /openapi.json and /openapi (HTTP 200, real spec) and linked from security.html, review-engine.html and both confidential buyer surfaces. Per the owner's own instruction this triggers COUNSEL REVIEW REQUIRED BEFORE CONTRACT MODIFICATION. No document modified, no field emitted, no routing vocabulary chosen, and routing is NOT asserted equal to determination.",
@@ -180,15 +182,16 @@
       ],
       "required_action": "Decide whether api/review.js should carry the declaration the other two engines carry.",
       "owner": "HUMAN",
-      "status": "REMEDIATED AT UI LAYER, OWNER ACCEPTED \u2014 NOT DEPLOYED",
+      "status": "DEPLOYED — LIVE CONTENT VERIFICATION NOT ESTABLISHED",
       "created": "2026-09-14",
       "update_2026_09_15": "Owner decided (D-5) to add a bounded statement at the public UI layer and NOT inside the JSON response. Investigation narrowed the gap precisely: review-engine.html ALREADY carries 'unvalidated, single-model engine in operational validation' and index.html carries three mentions, but training.html carries ZERO while POSTing to /api/review and rendering the result to a learner. Wording prepared; not inserted, because it changes an external representation.",
       "correction_2026_09_15": "OLD FINDING: 'index.html carries three mentions' of the unvalidated-engine disclosure. NEW EVIDENCE: grep -c -i 'unvalidated' index.html returns 0; the page renders engine output via renderReviewResults(data) at line 5110. CORRECTED STATUS: the earlier narrowing was WRONG. Three pages call /api/review, and two of them, index.html and review-engine.html, were also missing required propositions. EXPLANATION: the earlier pass matched on adjacent vocabulary ('validation', 'reproducibility') rather than on the proposition itself, and reported a count that was never verified. The new guard check_pages_that_render_engine_output_disclose_validation_status found it.",
       "remediation_2026_09_15": "IMPLEMENTED at the public UI layer only; api/review.js and its JSON response are UNCHANGED, per D-5. The bounded disclosure states all four owner-specified propositions: the engine is operationally implemented; it is empirically unvalidated; reproducibility is not equivalent to accuracy; the output does not replace human judgment. Inserted on training.html at two points (before the input and inside the results footer, so it travels with every rendered output), on index.html adjacent to the Record Review Workspace, and on review-engine.html inside the existing 'Stage and limits, stated first' callout. None of the banned vocabulary (legally defensible, legally sufficient, court-admissible, certified, accredited, guaranteed accurate) is used. Guard added and demonstrated failing against the pre-fix tree. Suite 129 checks, 0 failed, 1 skipped. NOT DEPLOYED: the change is an external representation and remains on the development branch.",
       "scope_note_2026_09_15": "SCOPE WIDENED BEYOND THE LITERAL AUTHORIZATION, AND FLAGGED RATHER THAN HIDDEN. The owner authorized B-008 remediation on training.html, which was the target set I had reported. That report was factually wrong. The same blocker, the same wording and the same remediation were applied to the two other pages that render engine output. Reversible, undeployed, and subject to the owner's decision.",
       "owner_decision_2026_09_15": "ACCEPTED by Phillip Wikes. The scope widening to the full target set is approved: training.html, index.html and review-engine.html retain the four bounded-validation propositions. api/review.js and its JSON response stay unchanged. Not deployed.",
-      "next_action_by": "OWNER",
-      "next_action_basis": "Remediated at the UI layer and accepted; not deployed."
+      "next_action_by": "NONE",
+      "next_action_basis": "Owner-accepted UI remediation is on production main; Vercel reports SUCCESS. Live crawler evidence is stale/inconclusive, so exact served-content equivalence is not established.",
+      "production_reconciliation_2026_09_20": "The prior NOT DEPLOYED status is superseded by the 2026-09-20 production promotion."
     },
     {
       "blocker_id": "B-009",
@@ -200,7 +203,7 @@
       ],
       "required_action": "Add Google to the subprocessor disclosure. Consider self-hosting fonts, which removes an IP disclosure that occurs regardless of analytics consent.",
       "owner": "HUMAN",
-      "status": "DISCLOSURE WRITTEN \u2014 NOT DEPLOYED; RESTRICTED-SURFACE FONTS DECIDED (BD-05)",
+      "status": "DEPLOYED — LIVE CONTENT VERIFICATION NOT ESTABLISHED; RESTRICTED-SURFACE FONTS DECIDED (BD-05)",
       "created": "2026-09-14",
       "remediation_2026_09_14": "Expanded to SEVEN active processors: Vercel, Supabase, Anthropic, Google GA4, Google Fonts, OpenAI, Google Gemini, plus Formspree. Resend and SendGrid recorded as DORMANT (the notify path returns before reading any key). Class A visitor data and Class B constructed research data kept distinct.",
       "update_2026_09_15": "Disclosure APPROVED IN PRINCIPLE 2026-09-15, including Google Fonts. Self-hosting NOT authorized and not performed. Seven active processors recorded; Resend and SendGrid remain DORMANT. Class A and Class B kept distinct. Publication not yet performed.",
@@ -213,8 +216,9 @@
       "public_claims_remediation_2026_09_15": "Claims sweep across all 75 deployed pages corrected the data-handling representations that contradicted the implementation. D-11 review-engine.html and D-15 security.html now state that record text goes to Anthropic and that model-written output about the record is retained; security.html now names Anthropic, which it never did. D-13 terms.html and engagement.html no longer say the free check 'transmits nothing'. The 'never leaves your control' block was corrected on five pages, the 'zero data retention at rest' paragraph on seven, and the 'Data Isolation Guarantee' heading, which is banned vocabulary under CLAUDE.md 24, was renamed and scoped to the human-delivered work on five pages. D-16 Gumroad prose corrected on two pages with no replacement provider named, because none is evidenced and every checkout_url is empty. D-17 terms.html sub-processor sentence scoped to the closed engagements. Guard check_data_handling_claims_match_the_implementation added and demonstrated failing on six mutations, one of which exposed a substring weakness in the guard itself that was then fixed.",
       "contradiction_2026_09_15": "See .jrs/contradictions/CONTRADICTION_002.md. Status UNCHANGED and deliberately not reconciled.",
       "d10_resolution_2026_09_16": "OLD STATUS: 'RESTRICTED-SURFACE FONTS DECISION OPEN'. NEW STATUS: the restricted-surface half is DECIDED as BD-05 under delegation, accept and disclose, do not self-host, do not alter access architecture. WHY: privacy posture is delegated; the three surfaces already carry noindex, are absent from sitemap.xml and are linked only from each other. EVIDENCE: BD-05 in JRS_BOARD_DECISION_REGISTER_2026-09-16.md. AUTHORITY: Board, delegated. DATE: 2026-09-16. DEPENDENCY: none. The DISCLOSURE half remains NOT DEPLOYED and is unchanged. The contradiction record is retained at .jrs/contradictions/, not deleted.",
-      "next_action_by": "OWNER",
-      "next_action_basis": "Disclosure written and not deployed; publication needs approval."
+      "next_action_by": "NONE",
+      "next_action_basis": "The disclosure is on production main and Vercel reports SUCCESS. A web fetch surfaced an older cached privacy page dated 13 July 2026, so exact current served bytes cannot be established through that fetch.",
+      "production_reconciliation_2026_09_20": "The prior disclosure NOT DEPLOYED status is superseded. This does not convert the processor inventory into a legal-compliance conclusion."
     },
     {
       "blocker_id": "B-010",
@@ -337,11 +341,12 @@
       ],
       "required_action": "Remediated in configuration: *.sql and supabase/ excluded, guard extended. REQUIRES DEPLOYMENT VERIFICATION: the 404 that proves effect cannot exist until a deployment occurs. Note these files are ALREADY PUBLIC on the current production build, so the exposure persists until the next deployment.",
       "owner": "HUMAN",
-      "status": "REMEDIATED IN CONFIGURATION \u2014 REQUIRES DEPLOYMENT VERIFICATION",
+      "status": "DEPLOYED CONFIGURATION — LIVE 404 VERIFICATION NOT ESTABLISHED",
       "created": "2026-09-15",
-      "note": "Found by an adversarial pass. My own candidate audit had certified 'Protected implementation excluded \u2014 CONFIRMED', which was false; that row is corrected in place with the correction visible.",
-      "next_action_by": "OWNER",
-      "next_action_basis": "Remediated in configuration; live on production until a deployment occurs."
+      "note": "Found by an adversarial pass. My own candidate audit had certified 'Protected implementation excluded — CONFIRMED', which was false; that row is corrected in place with the correction visible.",
+      "next_action_by": "NONE",
+      "next_action_basis": "The exclusion remediation is on production main and Vercel reports SUCCESS. Direct web retrieval of the previously exposed paths returned tool fetch errors rather than an authoritative HTTP/byte result; live 404 status is therefore NOT ESTABLISHED here.",
+      "production_reconciliation_2026_09_20": "Do not retain the false statement that deployment has not occurred. The remaining question is served-path verification, not deployment authorization."
     },
     {
       "blocker_id": "B-015",
@@ -357,12 +362,13 @@
       ],
       "required_action": "Remediated in code 2026-09-16: AUTHENTICATED is tracked and logReview is called only when true. Open sandbox mode still evaluates and returns a result; it no longer persists. Verified by a nine-configuration adversarial matrix across both routes, 18/18, with the decisive case being sandbox-open + unauthenticated giving 200 and ZERO writes; the same matrix fails that case on the pre-fix code.",
       "owner": "CLAUDE",
-      "status": "REMEDIATED \u2014 NOT VERIFIED IN PRODUCTION \u2014 NOT DEPLOYED",
+      "status": "DEPLOYED CODE — PRODUCTION AUTH-MATRIX NOT EXECUTED",
       "created": "2026-09-16",
       "note": "Found by an adversarial pass, not by me. The exposure was reachable by one environment variable and would have been an unauthenticated write of record-derived content into a publicly readable table.",
       "owner_ratification_2026_09_18": "OWNER RATIFICATION 2026-09-18 of the V-11 / BD-15 decision to merge the two unauthenticated 401 detail messages. IT WAS ALREADY DECIDED AND IMPLEMENTED on 2026-09-17 under delegated authority, and is verified present in both engine routes (two occurrences each of the unified string). The owner's delegation therefore RATIFIES rather than initiates, and nothing was re-done: reopening an implemented decision to re-make it would be the loop this project has repeatedly had to correct. Recorded as BOARD DECISION - OWNER-DELEGATED, now owner-ratified. Production is untouched and remains unauthorized; the change reaches production only through the normal deployment gate.",
-      "next_action_by": "OWNER",
-      "next_action_basis": "Remediated in code; not verified in production, not deployed."
+      "next_action_by": "NONE",
+      "next_action_basis": "The code remediation is on production main and Vercel reports SUCCESS. The repository's prior 18/18 adversarial matrix remains historical evidence; no production credentialed/auth-matrix execution was performed here.",
+      "production_reconciliation_2026_09_20": "The prior NOT DEPLOYED status is superseded. Production behavior beyond deployment is NOT MEASURED here."
     },
     {
       "blocker_id": "B-016",
