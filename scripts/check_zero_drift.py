@@ -9375,6 +9375,47 @@ def check_the_cross_vendor_range_carries_its_denominator(offline):
 
 
 
+
+def check_reliability_claim_semantics(offline):
+    """E-038's separate reliability result must carry its population and limitation.
+
+    The current coefficients are 0.739 invited and 0.623 open enrolment.  They
+    come from a separate human-reviewer sample, not the detection panel and not
+    the cross-vendor study.  Both point estimates exceed 0.61, but the
+    pre-registered two-part criterion was NOT MET because neither analytic
+    lower bound reaches 0.41.
+
+    Public blocks that publish both coefficients must therefore avoid the old
+    expert/trained labels and must carry either the criterion result or the
+    lower-bound limitation in the same rendered block.
+    """
+    bad = []
+    scanned = 0
+    for rel in _html_files():
+        body = read(rel)
+        if not body:
+            continue
+        scanned += 1
+        for unit in _rendered_blocks(body):
+            if "0.739" not in unit or "0.623" not in unit:
+                continue
+            if re.search(r"\b(?:experts?|trained reviewers?)\b", unit, re.I):
+                bad.append("%s: current AC1 pair carries superseded population labels [%s]" %
+                           (rel, unit[:170]))
+                continue
+            limited = re.search(
+                r"\b(?:criterion\s+(?:was\s+)?not\s+met|not\s+cleared|"
+                r"lower\s+(?:confidence\s+)?bound|lower-bound|interim)\b",
+                unit, re.I)
+            if not limited:
+                bad.append("%s: current AC1 pair lacks E-038 criterion limitation [%s]" %
+                           (rel, unit[:170]))
+
+    check("reliability claims preserve E-038 population and criterion status",
+          not bad,
+          " | ".join(x.split(" [")[0] for x in bad[:8]) if bad
+          else "%d public HTML pages scanned; E-038 semantic boundary intact" % scanned)
+
 def check_cross_vendor_claim_semantics(offline):
     """Raw cross-vendor agreement must never be promoted to established reproducibility.
 
@@ -9555,6 +9596,7 @@ def main():
                check_owner_only_endpoints_are_not_swept_up_by_the_pii_rule,
                check_no_new_subscription_funnel,
                check_reliability_figures_are_current,
+               check_reliability_claim_semantics,
                check_research_summary_leads_with_its_boundaries,
                check_the_cross_vendor_range_carries_its_denominator,
                check_cross_vendor_claim_semantics,
