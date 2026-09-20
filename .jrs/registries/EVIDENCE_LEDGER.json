@@ -1,7 +1,7 @@
 {
  "_note": "Pointer record. The authoritative ledger is the markdown file named below and is NOT duplicated here.",
  "authoritative_source": "docs/enterprise-diligence/EVIDENCE_LEDGER.md",
- "entry_count": 38,
+ "entry_count": 39,
  "levels": {
   "A": "executed primary",
   "B": "structured primary record",

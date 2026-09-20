@@ -134,12 +134,20 @@ data-residency clause and refer to counsel · leave it and accept the contradict
 > | **D-12** | **REMEDIATED** | BD-06, 2026-09-16 removed the `verify-drift` call. **Zero pages POST to it**; `index.html` line 5605 records the removal |
 > | **D-13** | **REMEDIATED** | `"transmits nothing"` returns **0 occurrences** in `terms.html` and `engagement.html` |
 > | **D-14** | **REMEDIATED** | `pilot.html` line 816 calls `jrsSanitizeCheck(msgVal)` before the Formspree submit. **This was the one with a safety edge** |
-> | **D-15** | **OPEN** | `security.html` still carries *"not written to any table"* — 1 occurrence |
-> | **D-16** | **OPEN** | **Gumroad** still named 15 times each in `jrsstandard.html` and `index.html`, with no Gumroad URL in the estate |
-> | **D-17** | **OPEN** | `terms.html` still carries *"No sub-processors were engaged"* |
+> | **D-15** | **OPEN — NOW TRACKED AS [D-23](#d-23--d-15--securityhtml-says-record-text-is-not-written-to-any-table)** | `security.html` still carries *"not written to any table"* — 1 occurrence |
+> | **D-16** | **OPEN — NOW TRACKED AS D-24** | **Gumroad** still named 15 times each in `jrsstandard.html` and `index.html`, with no Gumroad URL in the estate |
+> | **D-17** | **OPEN — NOW TRACKED AS D-25** | `terms.html` still carries *"No sub-processors were engaged"* |
 >
 > **An owner queue that asks for work already done is how a queue stops being read.** The three
 > open rows are unchanged and are not softened by the three that closed.
+>
+> **RENUMBERING MADE EXPLICIT 2026-09-20, BECAUSE A DERIVED CHECK FOUND IT AND A READER WOULD
+> NOT HAVE.** The three open rows above were reduced to one act each on 2026-09-19 and
+> **renumbered**: D-15 became **D-23**, D-16 became **D-24**, D-17 became **D-25**. The live
+> queue has tracked them under the new numbers ever since. **Nothing recorded the mapping at
+> this table**, so it read as three open items that appear nowhere in the queue — the same
+> shape as an omitted item, which is the defect this page exists to prevent. **They are the
+> same three matters, not six**, and they are counted once, under D-23 to D-25.
 
 Each of these is a live statement or a live data flow that the B-009 pass surfaced and
 deliberately did not change. Full evidence is in `SUBPROCESSOR_DISCLOSURE_REVIEW.md`,

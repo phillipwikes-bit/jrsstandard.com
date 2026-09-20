@@ -9,7 +9,7 @@
 | Created | 2026-09-09 |
 | Supersedes as the primary register | `ASSET_AND_CHAIN_OF_TITLE_REGISTER.md` v2.0 and all fragment registers, **which are retained as evidence sources and are not deleted** |
 | Update rule | **Never restart the audit. Add evidence, name the finding it changes, preserve the prior status in the correction history, update the index.** |
-| Traceability | **38 ledger entries** in `EVIDENCE_LEDGER.md` (was 27, then 30, then 35, then 36; see the index note at section 23) |
+| Traceability | **39 ledger entries** in `EVIDENCE_LEDGER.md` (was 27, then 30, then 35, then 36; see the index note at section 23) |
 
 **The purpose of this document is that no future review should have to rediscover
 Hekim, Ubayet, Tanvi, Stacyann, the DRR evidence, the consents, or the Master Tracker
@@ -322,13 +322,15 @@ does not exist in this corpus.**
 
 # 23. Complete evidence index
 
-`EVIDENCE_LEDGER.md`, **38 entries**, E-001 to E-038. **No Level A entry exists.**
+`EVIDENCE_LEDGER.md`, **39 entries**, E-001 to E-039. **No Level A entry exists.**
 
 **INDEX CORRECTED 2026-09-18, and it was stale before this cycle touched it.** This read *27 entries, E-001 to E-027* while the ledger already held **28** — E-028, the Hekim Master Tracker record, was added in the 2026-09-09 consolidation pass and the index was not updated with it. Today's additions are **E-029** (the owner's AI-assisted development account) and **E-030** (the B-001 rotation attestation).
 
 **This is precisely the step section 24 of this register exists to enforce**: *add the evidence, name the finding it changes, update the status, preserve the prior status, UPDATE THE INDEX.* The last step was missed once. The prior figure is preserved above rather than overwritten silently.
 
 **E-029 and E-030 are the ledger's first OWNER ATTESTATIONS**, classified as their own evidence kind rather than forced onto the A-to-E document scale. **Neither moves any rights finding, and F-4 is unchanged.**
+
+**INDEX UPDATED AGAIN 2026-09-20: 38 to 39.** **E-039** records the **STUDY-001 cross-vendor reproducibility series**, which the ledger had never covered although five deployable surfaces publish its figure and one of them is the confidential buyer page. It records **one series under two denominator rules** — 61 runs unfiltered, 37 and 41 runs at the full 15-record set — and states that **no chance-corrected coefficient was computed** for it. **No figure was selected; which series leads a headline stays an owner decision.**
 
 **INDEX UPDATED AGAIN 2026-09-19: 36 to 38.** **E-037** (detection panel) and **E-038**
 (separate reliability sample) are added, both **Level B, structured primary record** — the

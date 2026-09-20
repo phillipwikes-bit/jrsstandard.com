@@ -6660,31 +6660,83 @@ def check_the_owner_queue_matches_the_item_states(offline):
     live = set(re.findall(r"\*\*(D-\d+)\*\*", open_block))
     closed = set(re.findall(r"\*\*(D-\d+)\*\*", closed_block))
 
-    # D-3 MOVED OPEN -> CLOSED 2026-09-20, on BOARD DECISION BD-04 of 2026-09-16,
-    # not on inference and not because the row looked old. BD-04 declares
-    # Decision-Process Traceability -> `accountability_support`, which is the
-    # exact question D-3 asks, and it is recorded twice: in
-    # METHODOLOGY_TO_API_MAPPING.md and at line 106 of the Board register. The
-    # queue kept asking for four days because the mapping document carries an
-    # earlier analysis table saying "Unresolved" ABOVE the Board decision that
-    # settles it, and a preparation pass read the first table and stopped.
-    # The fifth mapping row remains unresolved and that is D-2, which is
-    # already closed as INTENTIONALLY UNRESOLVED. It is not a D-3 remainder.
-    CLOSED_MUST = {"D-2", "D-3", "D-7", "D-8", "D-10", "D-11", "D-12", "D-13", "D-14"}
-    OPEN_MUST = {"D-1", "D-4", "D-5", "D-6", "D-18", "D-19",
-                 "D-20", "D-21", "D-22", "D-23", "D-24", "D-25", "D-26"}
+    # THE TWO FIXED SETS THAT USED TO SIT HERE ARE GONE. They listed every
+    # D-item by hand, which is the failure class this suite has replaced with
+    # discovery four times elsewhere and which cost something here on
+    # 2026-09-20: D-3 had to be moved between two literals by hand, and nothing
+    # would have noticed if it had not been. A roster maintained by the same
+    # edit it is meant to police is not a control.
+    #
+    # DERIVED INSTEAD, from the document's own structure. Every decision in this
+    # register announces itself with a "## D-N ·" section, and the register has
+    # exactly two destinations: the live queue and the closed table. So the
+    # roster is the set of sections, and the invariants are structural:
+    #   1. no item is in BOTH destinations;
+    #   2. every item that has a section reaches ONE of them, unless its own
+    #      section declares itself historical, superseded or renumbered;
+    #   3. every closed row states the evidence for its closure.
+    # Adding a decision now extends the check by writing the section, which is
+    # the act that should extend it.
+    secs = list(re.finditer(r"^## (D-\d+)(?: to (D-\d+))? \u00b7(.*)$", body, re.M))
+    sections = {}
+    for i, sm in enumerate(secs):
+        end = secs[i + 1].start() if i + 1 < len(secs) else len(body)
+        sec = body[sm.start():end]
+        lo = int(sm.group(1)[2:])
+        hi = int(sm.group(2)[2:]) if sm.group(2) else lo
+        for n in range(lo, hi + 1):
+            sections.setdefault("D-%d" % n, []).append(sec)
 
-    for d in sorted(CLOSED_MUST):
-        if d in live:
-            findings.append("%s is closed and is back in the live queue. The queue must not "
-                            "ask for work the register records as done" % d)
-        if d not in closed:
-            findings.append("%s is closed but has vanished from the closed list, so the "
-                            "evidence for its closure is no longer stated" % d)
-    for d in sorted(OPEN_MUST):
-        if d not in live:
-            findings.append("%s is open and is missing from the live queue. An omitted open "
-                            "item is read as a finished one" % d)
+    if not sections:
+        findings.append("no '## D-N' decision sections were found, so the queue can no longer "
+                        "be derived from the register's own structure")
+
+    # A section may legitimately be in neither destination, but it has to SAY so
+    # in its own text. These are the forms this register actually uses; a new
+    # one has to be added deliberately, which is the point.
+    EXEMPT = ("SUPERSEDED", "preserved as history", "NOT current state",
+              "original entry, preserved", "is preserved", "HISTORICAL",
+              "NOW TRACKED AS")
+    for d in sorted(sections, key=lambda s: int(s[2:])):
+        secbodies = sections[d]
+        in_live, in_closed = d in live, d in closed
+        if in_live and in_closed:
+            findings.append("%s is in the live queue and in the closed list at once. One of "
+                            "the two is wrong and a reader cannot tell which" % d)
+        elif not in_live and not in_closed:
+            # THE EXEMPTION IS PER ITEM, NOT PER SECTION. Found by mutation
+            # 2026-09-20: "## D-12 to D-17" covers six items in one section, and
+            # a section-wide test let D-16's and D-17's renumbering pointers
+            # excuse D-15 when D-15's own pointer was deleted. That is the
+            # window-versus-scope defect wearing a different hat -- a marker in
+            # a NEIGHBOURING row answering for this one. So where the item has
+            # its own table row, that row is the unit, and only where it has
+            # none does the section answer for it.
+            scope = []
+            for b in secbodies:
+                own = re.findall(r"^\>?\s*\|\s*\*\*%s\*\*\s*\|[^\n]*$" % d, b, re.M)
+                scope.extend(own if own else [b])
+            if not any(any(k in s for k in EXEMPT) for s in scope):
+                findings.append("%s has a section in this register but reaches neither the "
+                                "live queue nor the closed list, and its section does not "
+                                "declare itself historical, superseded or renumbered. An item "
+                                "in no destination reads exactly like a finished one" % d)
+
+    # Anything routed in the queue or the closed table must be a real decision,
+    # not a typo that silently creates an item nobody wrote a section for.
+    for d in sorted(live | closed, key=lambda s: int(s[2:])):
+        if d not in sections:
+            findings.append("%s is routed in the register but has no '## %s ·' section, so "
+                            "there is nothing stating what it is" % (d, d))
+
+    # A closure with no evidence cell is an assertion, not a record.
+    for row in re.findall(r"^\|\s*\*\*(D-\d+)\*\*\s*\|([^|]*)\|([^|]*)\|",
+                          closed_block, re.M):
+        did, how, evidence = row[0], row[1].strip(), row[2].strip()
+        if not how or not evidence:
+            findings.append("%s is listed as closed without stating both how it closed and "
+                            "the evidence. A closure that cites nothing cannot be checked"
+                            % did)
 
     # the routes must stay distinguished; "owner action" is not a route
     for route in ("OWNER", "COUNSEL", "PRODUCTION"):

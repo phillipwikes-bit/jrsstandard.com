@@ -43,7 +43,8 @@
 | B-013C, BD-10, BD-11 | BOARD DECIDED → IMPLEMENTED → TESTED |
 | B-005, B-008, B-009, B-014, B-015, D-11, D-13, D-14, D-15, D-16, D-17 | **PRODUCTION VERIFICATION REQUIRED** |
 | D-2 | **INTENTIONALLY UNRESOLVED** |
-| D-3, D-10, D-12, D-18 | BOARD DECIDED |
+| D-3, D-10, D-12 | BOARD DECIDED |
+| D-18 | **BOARD DECIDED (BD-07) → WORDING CORRECTED 2026-09-20 → RATIFICATION OPEN.** BD-07 adopted a sentence attaching the **full-15-record denominator** to the **61-run** range; the two belong to different counts of one series. BD-07's principle stands and the correction preserves it. **Two authorities, not one:** the **Board** ratifies the corrected wording, the **Owner** chooses which series leads the headline |
 | B-010, B-011, B-012 | CLOSED |
 
 **Production verified: none.**

@@ -201,7 +201,7 @@
         "function": "Evidence administration (ledger entries)",
         "class": "MODERATE",
         "second_person": "YES",
-        "evidence": "EVIDENCE_LEDGER.md is self-describing, 38 entries with classification rules stated. Adding an OWNER ATTESTATION requires the owner by definition.",
+        "evidence": "EVIDENCE_LEDGER.md is self-describing, 39 entries with classification rules stated. Adding an OWNER ATTESTATION requires the owner by definition.",
         "_count_corrected_2026_09_19": "36 -> 38, derived from the ledger's physical rows. Written when the ledger held 36 and not moved when E-037 and E-038 were added hours later. A count quoted inside a prose evidence field is still a derived count representation."
       },
       {
