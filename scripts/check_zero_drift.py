@@ -9444,6 +9444,16 @@ def check_cross_vendor_claim_semantics(offline):
         r"consistency)\b",
         re.I)
 
+    # E-039 supports neither PASS nor FAIL because required chance-corrected
+    # AC1 was not computed. Terminal status language is forbidden even if the
+    # same block also contains a limiting word such as "consistency".
+    forbidden_status_re = re.compile(
+        r"\\b(?:(?:established|demonstrated|validated)\\s+(?:cross[\\s-]*vendor\\s+)?reproducibility|"
+        r"(?:cross[\\s-]*vendor\\s+)?reproducibility\\s+(?:was\\s+|is\\s+)?(?:established|demonstrated|validated)|"
+        r"(?:reproducibility\\s+)?criterion\\s+(?:was\\s+|is\\s+)?(?:met|passed|failed)|"
+        r"(?:passed|failed)\\s+(?:the\\s+)?(?:pre[\\s-]*registered\\s+)?reproducibility\\s+criterion)\\b",
+        re.I)
+
     for rel in _html_files():
         body = read(rel)
         if not body:
@@ -9453,6 +9463,10 @@ def check_cross_vendor_claim_semantics(offline):
             has_series = bool(number_re.search(unit) and cross_re.search(unit))
             has_promotion = bool(promoted_re.search(unit))
             if not (has_series or has_promotion):
+                continue
+            if forbidden_status_re.search(unit):
+                bad.append("%s: cross-vendor reproducibility given an unsupported terminal status [%s]" %
+                           (rel, unit[:160]))
                 continue
             if has_promotion and not limit_re.search(unit):
                 bad.append("%s: cross-vendor agreement promoted to reproducibility [%s]" %
