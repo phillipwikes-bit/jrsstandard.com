@@ -64,7 +64,7 @@ Landing-page logging began **2026-08-11**. Arrivals before that date are **unkno
 | # | Asset | Location on disk | Public surface today |
 |---|---|---|---|
 | 1 | **The seven AI failure modes** | `research/JRS_Validation_Report.md` §4 | **ZERO public pages** |
-| 2 | **Cross-vendor reproducibility harness** | `api/run-study.js` | **ZERO public pages** |
+| 2 | **Cross-vendor consistency harness** | `api/run-study.js` | **ZERO public pages** |
 | 3 | **24-record benchmark + verified answer key** | `api/bench-admin.js`, `bench_records`, `bench_labels` | Named, never offered |
 | 4 | Five conditions + Decision Defensibility Score | `api/review.js`, `api/review-engine.js` | 3 pages |
 | 5 | Partner review API + OpenAPI spec | `api/v1/review-engine.js`, `openapi-review-engine.json` | 2 pages, vendor preview only |
@@ -111,7 +111,7 @@ Landing-page logging began **2026-08-11**. Arrivals before that date are **unkno
 
 ---
 
-### RANK 2: The Cross-Vendor Reproducibility Harness
+### RANK 2: The Cross-Vendor Consistency Harness
 
 | | |
 |---|---|
@@ -123,7 +123,7 @@ Landing-page logging began **2026-08-11**. Arrivals before that date are **unkno
 
 **This is a working multi-vendor agreement harness with a 37-run dated history. Almost nobody has one.**
 
-**Urgent buyer problem.** Every AI governance function is asked the same question by its board and its auditors: *how do you know the model's judgment is stable?* Most answer with a policy document. **This answers with a dated series and a reproducibility figure that a third party can re-run.** ISO/IEC 42001 and internal model-risk standards both ask for evidence of consistent behaviour over time, and a nightly cross-vendor series is exactly that evidence.
+**Urgent buyer problem.** Every AI governance function is asked the same question by its board and its auditors: *how do you know the model's judgment is stable?* Most answer with a policy document. **This answers with a dated raw-agreement series that a third party can re-run. It does not establish the pre-registered reproducibility criterion: that criterion requires chance-corrected AC1, and no such coefficient was computed for this cross-vendor study.** ISO/IEC 42001 and internal model-risk standards both ask for evidence of consistent behaviour over time, and a nightly cross-vendor series is exactly that evidence.
 
 **Productized packaging: *Turnkey Governance Kit***
 
@@ -221,4 +221,4 @@ The strongest evidence that Rank 1 is right is negative, and section 0b sharpene
 
 **Revision 2, 2026-08-13.** Section 0b added from the per-CTA click attribution that went live the same day, plus the three-way verification that no evaluation has been submitted: the writer's source string is unchanged across every commit, synthetic rows through the live reader count correctly with breakdowns releasing at the pre-registered n=30, and a check-mode POST of all nine answers returns 200. Sections 3 and 6 updated to match. **The ranking is unchanged, and it was set before the funnel was measured.** Progress against this document is tracked in `IP_COMMERCIALIZATION_TRACKER.md`.
 
-Asset index built by grep across 45 public HTML files, 36 API endpoints and the `research/` directory. Failure-mode text quoted verbatim from `research/JRS_Validation_Report.md` §4. Panel figures read live from `/api/panel-stats` on 2026-08-13: 36 completers, 16 countries, 5 continents, 58 reviewers, 48 registered, 16 detection completers across 11 countries, 20 comparison completers, 25 reliability raters. Traction figures read live from `/api/asset-stats`. Reproducibility figure read from `research.html`. **No figure in this document was carried forward from an earlier note.**
+Asset index built by grep across 45 public HTML files, 36 API endpoints and the `research/` directory. Failure-mode text quoted verbatim from `research/JRS_Validation_Report.md` §4. Panel figures read live from `/api/panel-stats` on 2026-08-13: 36 completers, 16 countries, 5 continents, 58 reviewers, 48 registered, 16 detection completers across 11 countries, 20 comparison completers, 25 reliability raters. Traction figures read live from `/api/asset-stats`. Cross-vendor consistency figures read from `research.html`. **These are raw-agreement figures, not an established reproducibility result; no chance-corrected AC1 was computed for the cross-vendor study. No figure in this document was carried forward from an earlier note.**
