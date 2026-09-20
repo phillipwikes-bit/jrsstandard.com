@@ -20,8 +20,18 @@ The ignore rules are PARSED FROM THE FILE, not copied here. A rule added to
 `.vercelignore` takes effect in this derivation on the same commit that adds it,
 which is the whole point: a second hard-coded list would drift from the first.
 """
+import signal
 import subprocess
 import sys
+
+# Piping this into `head` is the normal way to read it, and without this the
+# reader gets a BrokenPipeError traceback instead of the six lines they asked
+# for. Restoring the default SIGPIPE behaviour makes the tool behave like
+# every other command they pipe.
+try:
+    signal.signal(signal.SIGPIPE, signal.SIG_DFL)
+except (AttributeError, ValueError):
+    pass
 
 ROOT = subprocess.run(["git", "rev-parse", "--show-toplevel"],
                       capture_output=True, text=True).stdout.strip()
