@@ -76,14 +76,17 @@ All read live from `/api/panel-stats`, computed at request time. `geo_resolved` 
 | **Permitted** | "Substantial chance-corrected agreement, AC1 0.74 among experts and 0.63 among trained reviewers, across 10 records and 108 labels" |
 | **PROHIBITED** | Presenting reliability as accuracy, or as evidence of effectiveness |
 
-### C-06 Reproducibility
+### C-06 Cross-vendor consistency — reproducibility criterion not established
 | | |
 |---|---|
 | **Exact wording** | "84% cross-vendor agreement across 15 records" |
 | **Source** | `research/JRS_Validation_Report.md` Rung 1; nightly runs in `study_runs` |
+| **Evidence Ledger** | **E-039** |
 | **Population** | **AI models, not people.** 3 vendors, one model each |
-| **Permitted** | "Three independent models from three vendors agreed on the read 84% of the time across 15 constructed records" |
-| **PROHIBITED** | Any wording implying human agreement, or implying accuracy. It is raw agreement on synthetic data, and the chance-corrected coefficient is not yet computed |
+| **Measurement** | Raw cross-vendor agreement / consistency on constructed records |
+| **Criterion status** | **NOT ESTABLISHED.** The preregistered reproducibility criterion requires chance-corrected AC1 ≥ 0.61; no chance-corrected coefficient was computed for this cross-vendor study |
+| **Permitted** | "Three independent models from three vendors agreed on the read 84% of the time across 15 constructed records." Describe this as cross-vendor agreement or consistency, not as established reproducibility |
+| **PROHIBITED** | Calling the 84% figure accuracy, reliability, or established reproducibility; saying the preregistered reproducibility criterion passed or failed; implying human agreement. The study reports raw agreement on synthetic data and does not establish the preregistered reproducibility criterion |
 
 ### C-07 Answer key
 | | |
@@ -119,4 +122,4 @@ All read live from `/api/panel-stats`, computed at request time. `geo_resolved` 
 
 ## Standing status line
 
-**JRS is under operational validation.** Reproducibility and reliability are reported. Accuracy, controlled comparison and real-case criterion validity are accruing. No effectiveness claim is made.
+**JRS is under operational validation.** Cross-vendor consistency and a separate human-reviewer reliability analysis are reported. The preregistered cross-vendor reproducibility criterion is **not established** because the required chance-corrected coefficient was not computed for that study. Accuracy, controlled comparison and real-case criterion validity are accruing. No effectiveness claim is made.
