@@ -9374,6 +9374,60 @@ def check_the_cross_vendor_range_carries_its_denominator(offline):
                % scanned)
 
 
+
+def check_cross_vendor_claim_semantics(offline):
+    """Raw cross-vendor agreement must never be promoted to established reproducibility.
+
+    E-039 records one cross-vendor series under two denominator rules.  The
+    measurements are consistency/agreement measurements.  The pre-registered
+    reproducibility criterion requires chance-corrected AC1 >= 0.61, and no
+    chance-corrected coefficient was computed for this study.  Therefore the
+    criterion is NOT ESTABLISHED -- not passed and not failed.
+
+    This guard scans rendered public HTML blocks rather than a fixed filename
+    list.  It catches the known quantitative series and generic cross-vendor
+    numeric claims, while allowing a block to use the word "reproducibility"
+    only when that same block explicitly carries the limiting proposition.
+    """
+    bad = []
+    scanned = 0
+    number_re = re.compile(r"\b(?:66\.7|82\.2|85\.3|87\.2|93\.3)\s*%?\b", re.I)
+    cross_re = re.compile(r"\bcross[\s-]*vendor\b", re.I)
+    promoted_re = re.compile(
+        r"\b(?:cross[\s-]*vendor\s+(?:ai\s+|model\s+)?reproducibility|"
+        r"reproducibility\s+(?:rate|result|figure|finding|demonstrated|established|validated))\b",
+        re.I)
+    limit_re = re.compile(
+        r"\b(?:not\s+established|no\s+(?:chance[\s-]*corrected\s+)?ac1|"
+        r"ac1\s+(?:was\s+)?not\s+(?:computed|calculated)|raw\s+agreement|"
+        r"consistency)\b",
+        re.I)
+
+    for rel in _html_files():
+        body = read(rel)
+        if not body:
+            continue
+        scanned += 1
+        for unit in _rendered_blocks(body):
+            has_series = bool(number_re.search(unit) and cross_re.search(unit))
+            has_promotion = bool(promoted_re.search(unit))
+            if not (has_series or has_promotion):
+                continue
+            if has_promotion and not limit_re.search(unit):
+                bad.append("%s: cross-vendor agreement promoted to reproducibility [%s]" %
+                           (rel, unit[:160]))
+                continue
+            # A quantitative cross-vendor block may use "reproducibility" only
+            # as a criterion/status term when the limitation travels with it.
+            if has_series and re.search(r"\breproducib", unit, re.I) and not limit_re.search(unit):
+                bad.append("%s: quantitative cross-vendor claim lacks E-039 limitation [%s]" %
+                           (rel, unit[:160]))
+
+    check("cross-vendor agreement is not promoted to established reproducibility",
+          not bad,
+          " | ".join(x.split(" [")[0] for x in bad[:8]) if bad
+          else "%d public HTML pages scanned; E-039 semantic boundary intact" % scanned)
+
 def main():
     offline = "--offline" in sys.argv
     for fn in (check_telemetry_parity, check_no_handwritten_counts,
@@ -9503,6 +9557,7 @@ def main():
                check_reliability_figures_are_current,
                check_research_summary_leads_with_its_boundaries,
                check_the_cross_vendor_range_carries_its_denominator,
+               check_cross_vendor_claim_semantics,
                check_generated_docs_current, check_cross_endpoint):
         try:
             fn(offline)
