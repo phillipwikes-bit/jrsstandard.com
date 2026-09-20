@@ -26,8 +26,8 @@
 :root{
  --bg:#050505;--surface:#121212;--surface2:#1A1A1A;--surface3:#1E1E1E;
  --rule:#2A2A2A;--rule-soft:#1E1E1E;
- --text:#F2F2F2;--muted:#B3B3B3;--muted-soft:#8A8A8A;
- --accent:#BE9447;--accent-dim:#7A5E28;
+ --text:#F2F2F2;--muted:#B3B3B3;--muted-soft:#A0A0A0;
+ --accent:#BE9447;--accent-dim:#A77A32;
  --stop:#8B2020;--review-c:#8B5E1A;--ready:#1E5C35;
  --stop-text:#E88080;--review-text:#D4A055;--ready-text:#5DBF82;
 }
@@ -239,6 +239,8 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
   .wrap,.container,.container-wide{padding-left:16px;padding-right:16px}
 }
 .cred{font-size:12px;color:var(--muted-soft);line-height:1.6;border-left:2px solid var(--accent-dim);padding-left:11px;margin:18px 0 0;max-width:660px}
+@media(max-width:700px){#main-content > [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr 1fr!important}}
+@media(max-width:420px){#main-content > [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr!important}}
 </style>
 </head>
 <body>
@@ -282,9 +284,9 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 
 <main class="container" id="main-content">
 
-<div class="page-eyebrow">Enterprise: Platform Licensing and Deployment</div>
-<h1 class="page-title">Embed a pre-finalization review gate. One call, and your record text is not stored.</h1>
-<p class="page-subtitle">GRC and legal-tech platforms embed the JRS review call before a record is finalized: the determination returns to your product, and your customer's text is never retained, never stored, and never used for training. Enterprise risk, HR, compliance and investigation functions run the same controls inside the review workflows they already have.</p>
+<div class="page-eyebrow">Enterprise Licensing &middot; Review Engine</div>
+<h1 class="page-title">License a pre-finalization review gate for consequential decision records.</h1>
+<p class="page-subtitle">JRS is the standard. The Review Engine is the licensed implementation: your platform sends one record, receives a structured determination across the five review conditions, and keeps its existing workflow. Raw record text is transmitted for inference and is not persisted by JRS; defined derived telemetry is handled under the <a href="privacy.html" style="color:var(--accent);">Privacy Policy</a>.</p>
 
 <!-- THE PAGE NOW LEADS WITH THE ACTION IT EXISTS FOR.
      Until 2026-08-26 the first button on this page sat 5,245px below the
@@ -293,12 +295,25 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
      the free track. The inquiry form was at 86.7% page depth. Measured on
      the rendered page, not read from source. -->
 <div class="btn-row" style="margin-top:0;">
- <a href="#enterprise-inquiry" class="btn btn-primary">Make a technical integration inquiry &rarr;</a>
- <a href="review-engine.html" class="btn btn-accent">API contract and integration schema &rarr;</a>
- <a href="review-engine.html#sandbox" class="btn btn-accent">Run a record free, no token &rarr;</a>
- <a href="#pricing" class="btn btn-ghost">Pricing</a>
- <a href="security.html" class="btn btn-ghost">Security and data handling</a>
+ <a href="review-engine.html" class="btn btn-primary">Review the API &amp; integration model &rarr;</a>
+ <a href="#enterprise-inquiry" class="btn btn-accent">Enterprise inquiry &rarr;</a>
+ <a href="research.html" class="btn btn-ghost">Research &amp; limitations</a>
 </div>
+
+<div style="display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--rule);background:var(--surface);margin:18px 0 16px;">
+ <div style="padding:13px 14px;border-right:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Method</div><div style="font-size:13px;color:var(--text);">JRS Standard v1.0</div></div>
+ <div style="padding:13px 14px;border-right:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Decision gate</div><div style="font-size:13px;color:var(--text);">Five review conditions</div></div>
+ <div style="padding:13px 14px;border-right:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Interface</div><div style="font-size:13px;color:var(--text);">Token-gated, versioned API</div></div>
+ <div style="padding:13px 14px;"><div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Stage</div><div style="font-size:13px;color:var(--text);">Operational validation</div></div>
+</div>
+
+<nav aria-label="Enterprise page sections" style="display:flex;flex-wrap:wrap;gap:8px;margin:0 0 28px;padding-bottom:14px;border-bottom:1px solid var(--rule);">
+ <a href="#enterprise-application" class="btn btn-ghost" style="padding:8px 12px;min-height:38px;">Overview</a>
+ <a href="#integration-overview" class="btn btn-ghost" style="padding:8px 12px;min-height:38px;">Integration</a>
+ <a href="research.html" class="btn btn-ghost" style="padding:8px 12px;min-height:38px;">Evidence</a>
+ <a href="#pricing" class="btn btn-ghost" style="padding:8px 12px;min-height:38px;">Licensing</a>
+ <a href="#enterprise-inquiry" class="btn btn-ghost" style="padding:8px 12px;min-height:38px;">Inquiry</a>
+</nav>
 <!-- JRS / REVIEW ENGINE HIERARCHY. Added 2026-09-05. Both assets are named
      repeatedly on this page and the distinction between them was stated only
      on the homepage, so a reader who lands here from a search or a forwarded
@@ -320,8 +335,8 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 
 <span id="enterprise-inquiry"></span>
 <div style="margin-bottom:20px;" id="commercial-inquiries">
- <h2 class="section-head">Commercial inquiries</h2>
- <p class="body-text">JRS remains openly available for individual professional use. Organisations interested in licensing, integrating, or acquiring JRS may contact the creator to discuss potential arrangements.</p>
+ <h2 class="section-head">Licensing pathways</h2>
+ <p class="body-text">Individual professionals can evaluate the published standard and practitioner resources without an enterprise agreement. Organisations evaluating commercial embedding, platform integration, or acquisition can use the controlled enterprise path below.</p>
  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:18px 0 22px;">
   <div style="border:1px solid var(--rule);padding:14px 16px;background:var(--surface2);">
    <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:7px;">Licensing</div>
@@ -384,7 +399,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
  <p>Organizations with multiple HR departments, compliance programs, or investigation units that produce records reviewed later by people who were not present. Decision Reconstruction Risk, the risk that a record cannot explain why a consequential decision was made, is not unique to a single department: it is a cross-functional concern an organization must be able to defend. Enterprise application addresses it at the organizational level, not record by record.</p>
 </div>
 
-<div style="margin-bottom:44px;">
+<div style="margin-bottom:44px;" id="enterprise-application">
  <h2 class="section-head">What Enterprise Application Means</h2>
  <p class="body-text" style="max-width:600px;">JRS is a pre-finalization review standard that evaluates whether a record can explain why a consequential decision was made: the basis, reasoning, evidence, and chronology, before the record is finalized. Enterprise application is not a software purchase or a formal rollout. It is the structured extension of that review across multiple departments, record types, or organizational functions, using materials that insert into existing review processes without disrupting them.</p>
  <div class="scope-grid">
@@ -801,15 +816,15 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
  </div>
 </div>
 
-<div style="margin-bottom:20px;">
+<div style="margin-bottom:20px;" id="integration-overview">
  <h2 class="section-head">Clean technical integration</h2>
  <p class="body-text">The JRS review engine is licensed as a <b>stateless review gate</b>. A partner platform sends the text of one record and receives a structured determination across the five review conditions, together with a request identifier that ties the call to an entry in its own audit trail. There is no session, no accumulated profile, and nothing carried between requests.</p>
 
  <table class="spec-table">
   <tr><th>Property</th><th>What it means in your environment</th></tr>
   <tr><td>Stateless per call</td><td>Each request is independent and self-contained. Nothing is carried forward from one call to the next.</td></tr>
-  <tr><td><b>Record text is not retained at rest</b></td><td>Record text is assessed in memory and discarded. It is not written to any table, not echoed back in the response, and not logged. Storage of a 200-character excerpt of the record was removed on 14 August 2026, while the table still held zero rows. What the model writes about the record on the versioned route is still kept, which is a different thing from the record and is stated here rather than left to be discovered.</td></tr>
-  <tr><td>Structured determination only</td><td>What persists is the determination, the per-condition results and the request identifier. Never the record.</td></tr>
+  <tr><td><b>Raw record text is not persisted by JRS</b></td><td>Record text is transmitted to the model provider for inference and is not written to JRS storage, echoed back in the response, or intentionally logged by the application. This is a raw-input retention statement, not a claim that no derived data exists.</td></tr>
+  <tr><td>Structured result + defined telemetry</td><td>Your platform receives the structured determination and request identifier. The versioned route may retain defined derived evaluation telemetry under the retention terms stated in the Privacy Policy. Raw record text is not retained.</td></tr>
   <tr><td>Per-partner tokens</td><td>Each licensee holds its own credential, rotatable and revocable independently of every other.</td></tr>
   <tr><td>Fail-closed by default</td><td>No token means no access. Open mode requires an explicit server-side flag that is off.</td></tr>
   <tr><td>Versioned route</td><td>Build against <code>/api/v1/review-engine</code>. The contract is versioned so an upgrade is your decision, not a surprise.</td></tr>
@@ -818,14 +833,14 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 
 <div style="margin-bottom:20px;">
  <h2 class="section-head">Low-friction deployment</h2>
- <p class="body-text">Most integrations that touch consequential records arrive with a storage question attached: where the data lives, how long it is kept, who can reach it, and how it is destroyed. <b>An engine that holds no customer records has no data at rest to describe</b>, which removes that entire class of question from the integration conversation.</p>
+ <p class="body-text">Most integrations that touch consequential records arrive with a storage question attached: where raw inputs live, what derived data persists, how long it is kept, who can reach it, and how it is removed. <b>JRS does not persist raw record text</b>, which reduces the data-at-rest surface without eliminating transport, processor, access, or derived-telemetry review.</p>
 
  <div class="callout">
   <div class="callout-label">What that does and does not mean</div>
   <div class="callout-body">It narrows what a third-party review has to examine, from storage, retention and deletion down to transport and access. <b>It does not remove the review, and it is not a substitute for any certification or attestation your procurement process requires.</b> Your security team makes that determination, not this page. What changes is how much of the process applies, not whether it applies.</div>
  </div>
 
- <p class="body-text">For a GRC or legal-tech platform, the practical effect is that decision defensibility can be augmented inside an existing workflow: the gate runs before a record is finalized, the determination is returned to your product, and your customer's records never leave your control.</p>
+ <p class="body-text">For a GRC or legal-tech platform, the practical effect is that documentation review can be inserted inside an existing workflow before a record is finalized. Raw record text is transmitted to the model provider for inference, is not persisted by JRS, and the structured determination returns to your product. Transport, processor, access, and telemetry review remain part of your own security assessment.</p>
 
  <p class="body-text"><b>Stage, stated plainly:</b> the engine is unvalidated and single-model, in operational validation. Cross-vendor consistency is disclosed rather than hidden. It is raw agreement, not accuracy, reliability, established reproducibility, or validation; the pre-registered reproducibility criterion is not established because no chance-corrected AC1 was computed for that study. No effectiveness claim is made. Every API response repeats this in its own payload.</p>
 
@@ -860,7 +875,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 </div>
 
 <div style="margin-bottom:20px;" id="pricing">
- <h2 class="section-head">Scope and cost</h2>
+ <h2 class="section-head">Licensing structure</h2>
  <p class="body-text"><b>No figure is published here, and that is a decision rather than an omission.</b> JRS is in operational validation. A published band that nothing has yet transacted at is a number without a reference behind it, and the first buyer to ask who else pays it turns that into a credibility problem rather than a negotiation. When there is a closed licence to point at, a band goes up.</p>
  <p class="body-text">What matters before an inquiry is not the figure but whether this is your size of commitment. The shape below states what a licence is made of and what moves it. Scope is described by the licensee in the inquiry form; nothing is scoped on a call, and nothing is charged during operational validation without a signed scope.</p>
 
