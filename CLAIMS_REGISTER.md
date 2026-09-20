@@ -18,7 +18,7 @@
 | Detection completers | **16** | Completed the Arm A detection set |
 | Detection countries | **11** | Countries **of those 16**, the figure the manuscript publishes |
 | Comparison completers | **20** | Completed the Arm B randomized comparison |
-| Reliability raters | **25** | Labelled records in the reliability study |
+| Reliability participants | **25** | Entered the reliability study; **22 were analysed** under the five-condition instrument reported in E-038 |
 
 All read live from `/api/panel-stats`, computed at request time. `geo_resolved` is 36 of 36 and `geo_unresolved` is empty.
 
@@ -61,20 +61,24 @@ All read live from `/api/panel-stats`, computed at request time. `geo_resolved` 
 | | |
 |---|---|
 | **Exact wording** | "16 independent experts, 11 countries, 384 graded reads" |
-| **Source** | `/api/panel-stats` `detection_completers`, `detection_countries` |
+| **Source** | `/api/panel-stats` `detection_completers`, `detection_countries`; `research/aie_submission_2026-09-01/01_Blinded_Manuscript.md` §5, §6.2, §6.4 for the reported detection result |
+| **Evidence Ledger** | **E-037** |
 | **Population** | Arm A detection completers only |
 | **Denominator** | 384 reads = 16 reviewers x 24 records |
 | **Permitted** | "83.9% detection across 16 independent experts and 384 graded reads, 95% CI 72.7 to 95.1" |
 | **PROHIBITED** | Quoting 16 countries here. **The detection panel's figure is 11.** |
 
-### C-05 Reliability
+### C-05 Reliability — separate human-reviewer sample
 | | |
 |---|---|
-| **Exact wording** | "Gwet's AC1 0.74 experts, 0.63 trained" |
-| **Source** | `research/JRS_Validation_Report.md`, Rung 2a |
-| **Population** | 25 reliability raters, 10 records, 108 labels |
-| **Permitted** | "Substantial chance-corrected agreement, AC1 0.74 among experts and 0.63 among trained reviewers, across 10 records and 108 labels" |
-| **PROHIBITED** | Presenting reliability as accuracy, or as evidence of effectiveness |
+| **Exact wording** | "Gwet's AC1 0.739 invited, 0.623 open enrolment" |
+| **Source** | `research/aie_submission_2026-09-01/01_Blinded_Manuscript.md` §6.5 and the pre-registered analysis plan at §5 |
+| **Evidence Ledger** | **E-038** |
+| **Population** | 25 reliability participants; 22 analysed under the five-condition instrument; 10 records with two or more raters; 113 submitted determinations reduced to 104 after keeping one label per rater per record |
+| **Measurement** | Human inter-rater reliability, separate from the detection panel and separate from the cross-vendor study |
+| **Criterion status** | **MEASURED; PRE-REGISTERED TWO-PART CRITERION NOT MET.** Point estimates 0.739 invited and 0.623 open enrolment both exceed the 0.61 point floor, but neither confidence-interval lower bound reaches the required 0.41 |
+| **Permitted** | "In the separate human-reviewer reliability sample, Gwet's AC1 was 0.739 for invited participants and 0.623 for open enrolment. Both point estimates exceeded 0.61, but the pre-registered two-part criterion was not met because neither lower confidence bound reached 0.41. The result is interim and based on 10 analysed records." |
+| **PROHIBITED** | Calling this accuracy, effectiveness, real-world validation, or a detection-panel result; saying reliability was established; reporting 113 as the analysed determination count without explaining the reduction to 104 |
 
 ### C-06 Cross-vendor consistency — reproducibility criterion not established
 | | |
