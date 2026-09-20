@@ -30,8 +30,8 @@
 :root{
  --bg:#050505;--surface:#121212;--surface2:#1A1A1A;--surface3:#1E1E1E;
  --rule:#2A2A2A;--rule-soft:#1E1E1E;
- --text:#F2F2F2;--muted:#B3B3B3;--muted-soft:#8A8A8A;
- --accent:#BE9447;--accent-dim:#7A5E28;
+ --text:#F2F2F2;--muted:#B3B3B3;--muted-soft:#A0A0A0;
+ --accent:#BE9447;--accent-dim:#A77A32;
  --stop:#8B2020;--review-c:#8B5E1A;--ready:#1E5C35;
  --stop-text:#E88080;--review-text:#D4A055;--ready-text:#5DBF82;
 }
@@ -886,7 +886,12 @@ a.gumroad-button.util-link {
 .hero-h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:40px;line-height:1.18;color:var(--text);margin:0 0 16px;letter-spacing:-.01em}
 .hero-sub{font-family:'Inter',sans-serif;font-size:17px;line-height:1.6;color:var(--muted);margin:0;max-width:660px}
 @media (max-width:900px){.hero-h1{font-size:31px}.hero-sub{font-size:16px}.hero{padding:28px 0 4px}}
-@media (max-width:640px){.hero-h1{font-size:26px}.hero-sub{font-size:15px}.hero{padding:20px 0 4px}}
+@media (max-width:640px){.hero-h1{font-size:26px}.hero-sub{font-size:15px}.hero{padding:20px 0 4px}
+  #section-home [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr 1fr!important}
+}
+@media (max-width:420px){
+  #section-home [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr!important}
+}
 
 /* HOMEPAGE LAYOUT REPAIRS, 2026-08-25. Measured in a browser, not in source.
    4. The tablet range carried 346px of horizontal overflow because the earlier
@@ -958,21 +963,25 @@ a.gumroad-button.util-link {
 
 <div class="container">
 <div class="hero">
- <div class="hero-eyebrow">Decision Reconstruction Risk (DRR) &middot; Pre-finalization review</div>
+ <div class="hero-eyebrow">JRS&#8482; &middot; Justification Review Standard</div>
  <h1 class="hero-h1">Can this record still explain the decision it documents?</h1>
- <p class="hero-sub">A record that cannot answer that question will not answer it later either, when the people who wrote it are gone and the file is all that remains.</p>
-
- <!-- ONE DOOR PER TRACK, DIRECTLY UNDER THE HEADLINE.
-      Until 2026-08-26 the first button on this page sat 2,392px below the
-      h1 on desktop and 3,352px below it on a phone, and it was a ghost
-      styled "Download Evaluation Study". The free track carries the solid
-      fill deliberately: it is the open half of the model and should be the
-      louder of the two. The canonical dual-track block below is unchanged. -->
+ <p class="hero-sub">JRS is a pre-finalization documentation-governance standard. It checks whether a consequential record preserves the basis, evidence, reasoning, and chronology needed for later independent review.</p>
  <div class="btn-row" style="margin-top:22px;">
-  <a href="check.html" class="btn btn-primary">Check a record free &rarr;</a>
-  <a href="enterprise.html#enterprise-inquiry" class="btn btn-accent">Embed the gate in your platform &rarr;</a>
+  <a href="jrsstandard.html" class="btn btn-primary">See the Standard &rarr;</a>
+  <a href="enterprise.html" class="btn btn-accent">Enterprise Licensing &rarr;</a>
  </div>
- <p class="cred">Built by <b>Phillip Wikes</b>, former Lead Civil Rights Officer, Maryland Commission on Civil Rights. <b><span data-panel="reviewers_all">58</span> international reviewers across three studies</b> have graded records for this work, including <b><span data-panel="completers_all">36</span> independent experts across <span data-panel="countries_all">16</span> countries</b> who each completed a full 24-record set.</p>
+ <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;">
+  <a href="check.html" style="color:var(--muted);text-decoration:none;">Check a record</a>
+  <a href="research.html" style="color:var(--muted);text-decoration:none;">Research &amp; limitations</a>
+  <a href="training.html" style="color:var(--muted);text-decoration:none;">Reviewer training</a>
+ </div>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--rule);margin:26px 0 22px;background:var(--surface);">
+ <div style="padding:13px 14px;border-right:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Method</div><div style="font-size:13px;color:var(--text);">Standard v1.0</div></div>
+ <div style="padding:13px 14px;border-right:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Instrument</div><div style="font-size:13px;color:var(--text);">Five review conditions</div></div>
+ <div style="padding:13px 14px;border-right:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Evidence</div><div style="font-size:13px;color:var(--text);">Research + stated limits</div></div>
+ <div style="padding:13px 14px;"><div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Technology</div><div style="font-size:13px;color:var(--text);">Operational validation</div></div>
 </div>
 
 <!-- JRS DUAL TRACK v1 :: CANONICAL BLOCK. Byte-identical on every page that
@@ -981,495 +990,45 @@ a.gumroad-button.util-link {
 <div class="dual-track">
  <div class="dt-card dt-enterprise">
   <div class="dt-tag">Track 1 &middot; Enterprise Platform</div>
-  <div class="dt-head">The Enterprise Platform Track</div>
-  <p class="dt-body">Dedicated B2B API licensing of the JRS review engine, so mid-market GRC platforms and legal-tech providers can embed a <b>pre-finalization decision gate</b> directly into their own workflows. One record in, a structured determination across the five review conditions out, returned with a request identifier your audit trail can cite.</p>
-  <p class="dt-body"><b>Stateless between requests, and your record text is not stored.</b> Record text is assessed in memory and is not written to any table, not echoed back, and not logged. It is transmitted to Anthropic, the model provider, to be assessed. On the versioned route, what the model writes about the record is kept as programme telemetry: a short note against each condition and a suggested rewrite of the passage. Per-partner tokens, revocable independently, on a versioned route. This narrows what a vendor security review has to examine; <b>it does not remove the review</b>, and it is not a substitute for any certification your procurement requires.</p>
+  <div class="dt-head">License the Review Engine</div>
+  <p class="dt-body">For GRC, legal-tech, compliance, investigation, and records platforms, the JRS Review Engine applies the five review conditions as a <b>pre-finalization decision gate</b>. One record in; a structured determination and request identifier return to the partner workflow.</p>
+  <p class="dt-body"><b>Independent per request; raw record text is not persisted by JRS.</b> Record text is transmitted to Anthropic for inference and is not written to JRS storage. Defined derived evaluation telemetry is handled as described in the <a href="privacy.html" style="color:var(--accent);">Privacy Policy</a>. The interface is token-gated and versioned. The engine remains in operational validation; no validated-effectiveness claim is made.</p>
   <div class="dt-links"><a href="review-engine.html">Integration schema</a> <a href="enterprise.html#enterprise-inquiry">Enterprise inquiry</a></div>
  </div>
  <div class="dt-card dt-public">
   <div class="dt-tag">Track 2 &middot; Practitioner</div>
-  <div class="dt-head">The Practitioner Track</div>
-  <p class="dt-body">Open, unencumbered access for individual investigators, HR and compliance officers, and researchers: the core standard, live Decision Reconstruction Risk simulations, the six-module self-paced training, and the Investigator Guides.</p>
-  <p class="dt-body"><b>Free, ungated, and staying that way.</b> No account, no card, no expiry, no registration wall.</p>
+  <div class="dt-head">Practitioner Access</div>
+  <p class="dt-body">Free, ungated access for individual professional evaluation and learning: the core standard, Decision Reconstruction Risk simulations, the six-module reviewer training, and the Investigator Guides.</p>
+  <p class="dt-body"><b>No account, card, expiry, or registration wall.</b> Commercial embedding and licensing are handled separately through the enterprise track.</p>
   <div class="dt-links"><a href="investigator-guides.html">Investigator Guides</a> <a href="training.html">Training</a> <a href="check.html">Seven-point check</a></div>
  </div>
 </div>
 <!-- /JRS DUAL TRACK v1 -->
-<!-- IP HIERARCHY. Added 2026-09-04. The two tracks above name the engine
-and the standard but never say which is which, so a reader could take JRS
-itself for the software. One sentence each, stated once, in one place. -->
-<div style="margin:0 0 28px;border-left:2px solid var(--accent-dim);padding:2px 0 2px 16px;max-width:660px;">
- <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:7px;">Standard and engine</div>
- <p style="font-size:13px;color:var(--muted);line-height:1.7;margin:0 0 7px;"><b style="color:var(--text);">JRS, the Justification Review Standard, is the methodology.</b> It is a set of review conditions applied to a record by a person, on paper or inside whatever workflow an organisation already runs. It is not software and it needs none.</p>
- <p style="font-size:13px;color:var(--muted);line-height:1.7;margin:0;"><b style="color:var(--text);">The JRS Review Engine is a technical implementation of that logic.</b> It is an API that applies the defined review conditions to one record and returns a structured determination. The standard is usable without it; the engine exists so a platform can operationalise the same conditions in code.</p>
+
+<div style="margin:26px 0;border-left:2px solid var(--accent);padding:3px 0 3px 16px;max-width:760px;">
+ <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:7px;">Standard first. Implementation second.</div>
+ <p style="font-size:13.5px;color:var(--muted);line-height:1.7;margin:0;"><b style="color:var(--text);">JRS is the methodology.</b> The Review Engine is one licensed implementation of the same five conditions. The standard remains usable by a person, on paper, or inside an existing workflow without buying software.</p>
 </div>
 
-
-<div style="margin-top:36px;margin-bottom:32px;">
- <p style="font-size:15px;color:var(--muted);line-height:1.65;max-width:580px;margin-bottom:16px;">When a consequential decision is questioned long after it is made, the record becomes the only witness. JRS is a pre-finalization review standard that evaluates whether a record can still explain why a decision was made, for HR, employee relations, legal review, workplace investigations, compliance, audit, and AI governance. <a href="decision-reconstruction-risk.html" style="color:var(--accent);">What is Decision Reconstruction Risk? &#8594;</a></p>
- <a href="research.html" style="display:block;max-width:580px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:18px 20px;text-decoration:none;font-weight:700;text-align:center;line-height:1.5;margin-bottom:12px;">&#9654; See the Research &amp; Validation<br><span style="font-size:8.5px;letter-spacing:.1em;font-weight:500;">Reproducibility &middot; reliability &middot; findings</span></a>
- <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:580px;margin-bottom:20px;">
-  <a href="pilot.html" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;background:var(--accent);color:#050505;padding:20px 16px;text-decoration:none;display:block;font-weight:700;text-align:center;line-height:1.5;">Explore<br>Pilot Program &#8599;</a>
-  <a href="simulations.html" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;background:var(--accent);color:#050505;padding:20px 16px;text-decoration:none;display:block;font-weight:700;text-align:center;line-height:1.5;">Explore<br>Simulations</a>
-  <a href="training.html" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;background:none;color:var(--text);border:1px solid rgba(190,148,71,.45);padding:20px 16px;text-decoration:none;display:block;font-weight:600;text-align:center;line-height:1.5;">Training Exercises</a>
-  <a href="#role-pathways" onclick="document.getElementById('role-pathways').scrollIntoView({behavior:'smooth'});return false;" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;background:none;color:var(--text);border:1px solid var(--rule);padding:20px 16px;text-decoration:none;display:block;font-weight:600;text-align:center;line-height:1.5;">Explore<br>by Role</a>
+<div style="margin:0 0 26px;">
+ <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px;">Four ways to evaluate JRS</div>
+ <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
+  <a href="jrsstandard.html" style="text-decoration:none;border:1px solid var(--rule);background:var(--surface);padding:16px;display:block;"><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px;">Understand the Standard</div><div style="font-size:12px;color:var(--muted);line-height:1.55;">Read the five-condition methodology and scope.</div></a>
+  <a href="research.html" style="text-decoration:none;border:1px solid var(--rule);background:var(--surface);padding:16px;display:block;"><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px;">Examine the Evidence</div><div style="font-size:12px;color:var(--muted);line-height:1.55;">See measured results, negative findings, and limitations.</div></a>
+  <a href="simulations.html" style="text-decoration:none;border:1px solid var(--rule);background:var(--surface);padding:16px;display:block;"><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px;">Test the Method</div><div style="font-size:12px;color:var(--muted);line-height:1.55;">Use simulations and the record check before any organizational commitment.</div></a>
+  <a href="enterprise.html" style="text-decoration:none;border:1px solid rgba(190,148,71,.45);background:rgba(190,148,71,.04);padding:16px;display:block;"><div style="font-size:13px;font-weight:600;color:var(--accent);margin-bottom:5px;">Evaluate for Enterprise</div><div style="font-size:12px;color:var(--muted);line-height:1.55;">Review integration, data handling, licensing, and inquiry paths.</div></a>
  </div>
 </div>
 
-
-
-<!-- WHAT JRS IS / IS NOT / WHO -->
-<div style="margin-bottom:24px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
- <div style="border:1px solid var(--rule);background:var(--surface);padding:14px 16px;">
-  <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">JRS Is</div>
-  <div style="font-size:12px;color:var(--muted);line-height:1.7;">A pre-finalization review standard for decision defensibility: it evaluates whether a record can explain the basis, reasoning, evidence, and chronology behind a consequential decision before the record is finalized.</div>
- </div>
- <div style="border:1px solid var(--rule);background:var(--surface);padding:14px 16px;">
-  <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--stop-text);margin-bottom:8px;">JRS Is Not</div>
-  <div style="font-size:12px;color:var(--muted);line-height:1.7;">Not a software product, AI application, startup, workflow replacement, consulting methodology, or decision-making framework. It does not make findings about people.</div>
- </div>
- <div style="border:1px solid var(--rule);background:var(--surface);padding:14px 16px;">
-  <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">Who It's For</div>
-  <div style="font-size:12px;color:var(--muted);line-height:1.7;">Investigators, HR, compliance, audit, records and legal review, and AI governance teams concerned with whether AI-assisted records stay reviewable over time.</div>
- </div>
-</div>
-<div style="font-size:12.5px;color:var(--muted-soft);line-height:1.65;max-width:620px;margin-bottom:24px;">JRS originated from civil rights investigative and documentation-review experience, with a cognitive-behavioral and AI-governance lens. <a href="about.html" style="color:var(--accent);">Origin &amp; approach &#8594;</a></div>
-<!-- CURRENT PROGRAMME STATUS. Added 2026-09-04. The opening already answered
-what JRS is, what it is not and who it is for; it did not state the stage the
-programme is at, which is the sentence a first-time reader needs before they
-weigh a finding. -->
-<div style="margin-bottom:24px;border:1px solid rgba(190,148,71,.3);background:rgba(190,148,71,.03);padding:20px 22px;">
- <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">Current programme status</div>
- <p style="font-size:13.5px;color:var(--muted);line-height:1.7;max-width:620px;margin:0;">JRS is in an active stage of operational development and validation. Current findings, practitioner exercises, and technical demonstrations should be interpreted according to their stated methods and limitations.</p>
+<div style="margin-bottom:26px;border:1px solid rgba(190,148,71,.3);background:rgba(190,148,71,.03);padding:20px 22px;">
+ <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">Enterprise path</div>
+ <div style="font-family:'Bodoni Moda',serif;font-size:20px;color:var(--text);margin-bottom:8px;">Evaluate &rarr; controlled pilot &rarr; integrate &rarr; license</div>
+ <p style="font-size:13.5px;color:var(--muted);line-height:1.7;margin:0 0 12px;max-width:760px;">The enterprise path is designed to let a buyer examine the standard, evidence, API contract, and operational boundaries before making a licensing decision. No effectiveness or regulatory-compliance claim is implied by evaluation access.</p>
+ <a href="enterprise.html" class="btn btn-ghost" style="display:inline-flex;">Open enterprise evaluation &rarr;</a>
 </div>
 
-<!-- OPEN-ACCESS PRACTITIONER RESOURCES. Added 2026-09-04. The three resources
-already existed but were split between the canonical dual-track block, which is
-byte-identical across pages and must not be edited, and an Explore strip that
-leads with the Pilot Program rather than with a resource. This block names them
-in one place. The Explore strip is deliberately left in place: it carries the
-by-Role entry that this block does not. -->
-<div style="margin-bottom:24px;border:1px solid var(--rule);background:var(--surface);padding:20px 22px;">
- <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">Open-access practitioner resources</div>
- <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;">
-  <div>
-   <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px;">Investigator Guides</div>
-   <p style="font-size:12px;color:var(--muted);line-height:1.6;margin:0 0 6px;">Practical resources for reviewing consequential documentation in investigative, employment, housing, and related environments.</p>
-   <a href="investigator-guides.html" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);text-decoration:none;">Open the guides &#8594;</a>
-  </div>
-  <div>
-   <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px;">Reviewer Training</div>
-   <p style="font-size:12px;color:var(--muted);line-height:1.6;margin:0 0 6px;">Six self-paced modules introducing the JRS review conditions, supported by a companion desk reference and certificate.</p>
-   <a href="training.html" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);text-decoration:none;">Open the training &#8594;</a>
-  </div>
-  <div>
-   <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px;">Simulations and Exercises</div>
-   <p style="font-size:12px;color:var(--muted);line-height:1.6;margin:0 0 6px;">Practical scenarios examining evidence gaps, chronology problems, reasoning traceability, and Decision Reconstruction Risk.</p>
-   <a href="simulations.html" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);text-decoration:none;">Open the simulations &#8594;</a>
-  </div>
- </div>
-</div>
-
-<section class="cap" id="enterprise-capture" aria-labelledby="cap-h">
- <h2 class="cap-h" id="cap-h">Commercial Inquiries</h2>
- <p class="cap-p">JRS is maintained as an independently developed intellectual-property and professional resource asset. Organisations or professionals with a serious interest in discussing potential licensing, technology integration, or acquisition may make an inquiry here. <b>No confidential records or sensitive information should be submitted through this form.</b></p>
- <form class="cap-f" data-cap>
-  <label>Name<input name="name" required maxlength="120" autocomplete="name"></label>
-  <label>Work email<input name="email" type="email" required maxlength="160" autocomplete="email"></label>
-  <label>Organisation<input name="organization" required maxlength="160" autocomplete="organization"></label>
-  <label>Role<input name="role" maxlength="120" placeholder="e.g. Head of GRC, Platform Architect"></label>
-  <label>Interest
-   <select name="interest">
-    <option value="engine-licence">Licensing: the review engine</option>
-    <option value="framework-licence">Licensing: the framework</option>
-    <option value="oem-embed">Integration: embed in our product</option>
-    <option value="acquisition">Acquisition</option>
-    <option value="not-sure">Not sure yet</option>
-    <option value="evaluation">Evaluation access first</option>
-    <option value="other">Something else</option>
-   </select>
-  </label>
-  <label>Anything else<textarea name="note" maxlength="1200" rows="3"></textarea></label>
-  <button type="submit">Send inquiry</button>
-  <p class="cap-m" role="status"></p>
- </form>
-</section>
-
-
-<!-- SUBSTRATE NEUTRALITY -->
-<div style="margin-bottom:24px;border:1px solid rgba(190,148,71,.3);background:rgba(190,148,71,.03);padding:20px 22px;">
- <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">Substrate neutrality</div>
- <p style="font-size:13.5px;color:var(--muted);line-height:1.7;max-width:620px;margin:0;">JRS evaluates the record itself, independent of any platform, model, or vendor. The standard applies on its own terms, to every record, however that record was produced.</p>
-</div>
-
-<!-- CURRENT FINDINGS (live, gated until findings exist) -->
-<a id="finding-hero" href="#findings-block" onclick="var b=document.getElementById('findings-block');if(b)b.scrollIntoView({behavior:'smooth'});return false;" style="display:none;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(190,148,71,.5);background:rgba(190,148,71,.07);padding:10px 15px;margin-bottom:20px;text-decoration:none;"></a>
-<div id="findings-block" style="display:none;border:1px solid rgba(190,148,71,.5);background:rgba(190,148,71,.05);padding:22px 24px;margin-bottom:24px;">
- <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">&#9654; Current Findings &nbsp;&middot;&nbsp; Reproducibility check (synthetic)</div>
- <div id="home-findings"></div>
- <p style="font-size:12.5px;color:var(--muted);line-height:1.7;margin-top:12px;">Published by the JRS Evidence Development Program. Reproducibility, accuracy, and validation are distinct; figures are observational. <a href="finding.html" style="color:var(--accent);">Discuss this finding &#8594;</a> &nbsp;&middot;&nbsp; <a href="research.html" style="color:var(--accent);">Research &amp; Validation &#8594;</a></p>
-</div>
-
-<!-- EVALUATION STUDY -->
-<div style="margin-bottom:24px;border:1px solid rgba(190,148,71,.3);background:rgba(190,148,71,.03);padding:20px 22px;">
- <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">Structured Evaluation</div>
- <h2 class="section-head" style="margin-bottom:8px;">Twenty-Record Evaluation Study</h2>
- <p style="font-size:13.5px;color:var(--muted);line-height:1.7;max-width:680px;margin-bottom:10px;">A structured evaluation applying the five JRS review conditions across twenty constructed workplace documentation scenarios involving summarization, recommendation, analysis, and narrative drafting.</p>
- <p style="font-size:13.5px;color:var(--muted);line-height:1.7;max-width:680px;margin-bottom:12px;">The evaluation demonstrates how JRS distinguishes records that support independent review from those that leave material questions unresolved.</p>
- <div style="border-left:2px solid var(--review-text);background:rgba(212,160,85,.06);padding:10px 14px;margin-bottom:14px;max-width:680px;">
-  <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--review-text);margin-bottom:5px;">Study status</div>
-  <p style="font-size:12.5px;color:var(--muted);line-height:1.65;margin:0;">Working illustration using constructed records with fictional parties. The initial evaluation was conducted by the framework's creator and is not presented as independent validation. Independent replication is part of the ongoing pilot program.</p>
- </div>
- <a href="JRS_Operational_Evaluation_Study_Twenty_Record_Ledger.pdf" class="btn btn-ghost" style="display:inline-block;">Download Evaluation Study</a>
-</div>
-
-<!-- PARTICIPATION LOOP -->
-<p style="font-size:13px;color:var(--muted);line-height:1.7;max-width:620px;margin:0 0 10px;">Follow a simulated documentation record through the JRS review process.</p>
-<div style="display:flex;align-items:stretch;gap:0;border:1px solid var(--rule);overflow:hidden;margin-bottom:24px;flex-wrap:wrap;">
- <div style="padding:10px 14px;border-right:1px solid var(--rule);text-align:center;flex:1;min-width:100px;">
-  <div style="font-family:'JetBrains Mono',monospace;font-size:6.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;">01</div>
-  <div style="font-size:11.5px;font-weight:600;color:var(--text);line-height:1.35;">Explore<br>a Record</div>
- </div>
- <div style="padding:10px 14px;border-right:1px solid var(--rule);text-align:center;flex:1;min-width:100px;background:var(--surface2);">
-  <div style="font-family:'JetBrains Mono',monospace;font-size:6.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--review-text);margin-bottom:4px;">02</div>
-  <div style="font-size:11.5px;font-weight:600;color:var(--text);line-height:1.35;">Identify<br>Ambiguity</div>
- </div>
- <div style="padding:10px 14px;border-right:1px solid var(--rule);text-align:center;flex:1;min-width:100px;">
-  <div style="font-family:'JetBrains Mono',monospace;font-size:6.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;">03</div>
-  <div style="font-size:11.5px;font-weight:600;color:var(--text);line-height:1.35;">Apply<br>the Review</div>
- </div>
- <div style="padding:10px 14px;border-right:1px solid var(--rule);text-align:center;flex:1;min-width:100px;background:var(--surface2);">
-  <div style="font-family:'JetBrains Mono',monospace;font-size:6.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:4px;">04</div>
-  <div style="font-size:11.5px;font-weight:600;color:var(--text);line-height:1.35;">Record Your<br>Observation</div>
- </div>
- <div style="padding:10px 14px;text-align:center;flex:1;min-width:100px;">
-  <div style="font-family:'JetBrains Mono',monospace;font-size:6.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ready-text);margin-bottom:4px;">05</div>
-  <div style="font-size:11.5px;font-weight:600;color:var(--text);line-height:1.35;">Review Another<br>Scenario</div>
- </div>
-</div>
-
-
-
-
-
-
-<!-- ZONE 2: SIMULATION ENVIRONMENT CENTERPIECE -->
-
-
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--rule);overflow:hidden;margin-bottom:24px;">
- <div style="padding:13px 16px;border-right:1px solid var(--rule);">
-  <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:8px;">What JRS Is</div>
-  <div style="font-size:12px;color:var(--muted);line-height:1.7;">A simulation-centered procedural-review and reconstruction environment. Professionals explore chronology instability, escalation reinterpretation, reviewer disagreement, AI-assisted documentation conditions, and reconstruction ambiguity through exercises, observations, and role-specific review scenarios.</div>
-  <a href="operational-boundaries.html" style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;display:inline-block;margin-top:8px;">Operational Boundaries →</a>
- </div>
- <div style="padding:13px 16px;background:var(--surface2);">
-  <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--stop-text);margin-bottom:8px;">What JRS Is Not</div>
-  <div style="display:flex;flex-direction:column;gap:3px;">
-   <div style="font-size:11.5px;color:var(--muted-soft);display:flex;gap:7px;"><span style="color:var(--stop-text);flex-shrink:0;">-</span>Legal advice or compliance certification</div>
-   <div style="font-size:11.5px;color:var(--muted-soft);display:flex;gap:7px;"><span style="color:var(--stop-text);flex-shrink:0;">-</span>Governance accreditation or regulatory approval</div>
-   <div style="font-size:11.5px;color:var(--muted-soft);display:flex;gap:7px;"><span style="color:var(--stop-text);flex-shrink:0;">-</span>Workflow replacement or enterprise compliance software</div>
-   <div style="font-size:11.5px;color:var(--muted-soft);display:flex;gap:7px;"><span style="color:var(--stop-text);flex-shrink:0;">-</span>Automated risk-scoring or AI decision-making infrastructure</div>
-  </div>
- </div>
-</div>
-
-<!-- OPERATIONAL OBSERVATION WIDGET -->
-<div id="observations" style="border:1px solid var(--rule);overflow:hidden;margin-bottom:24px;">
- <div style="padding:10px 16px;border-bottom:1px solid var(--rule);background:var(--surface);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;">
-  <span style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);">Operational Observation</span>
-  <span style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);">Share what you've observed: do not include names or personal identifiers</span>
- </div>
- <div style="padding:14px 16px 6px;">
-  <div style="font-size:13.5px;color:var(--text);font-weight:500;line-height:1.55;margin-bottom:14px;">What review condition appears most operationally significant in documentation environments you've observed?</div>
-  <div id="obs-options" role="radiogroup" aria-label="Observation options" style="display:flex;flex-direction:column;gap:6px;margin-bottom:14px;">
-   <div class="obs-opt" role="radio" tabindex="0" aria-checked="false" onclick="selectObs(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectObs(this);}" style="padding:9px 13px;border:1px solid var(--rule);font-size:12.5px;color:var(--muted);cursor:pointer;transition:.1s;" data-val="A">A. &nbsp;Chronology instability</div>
-   <div class="obs-opt" role="radio" tabindex="0" aria-checked="false" onclick="selectObs(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectObs(this);}" style="padding:9px 13px;border:1px solid var(--rule);font-size:12.5px;color:var(--muted);cursor:pointer;transition:.1s;" data-val="B">B. &nbsp;Unsupported escalation</div>
-   <div class="obs-opt" role="radio" tabindex="0" aria-checked="false" onclick="selectObs(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectObs(this);}" style="padding:9px 13px;border:1px solid var(--rule);font-size:12.5px;color:var(--muted);cursor:pointer;transition:.1s;" data-val="C">C. &nbsp;Reviewer disagreement</div>
-   <div class="obs-opt" role="radio" tabindex="0" aria-checked="false" onclick="selectObs(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectObs(this);}" style="padding:9px 13px;border:1px solid var(--rule);font-size:12.5px;color:var(--muted);cursor:pointer;transition:.1s;" data-val="D">D. &nbsp;Context fragmentation</div>
-   <div class="obs-opt" role="radio" tabindex="0" aria-checked="false" onclick="selectObs(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectObs(this);}" style="padding:9px 13px;border:1px solid var(--rule);font-size:12.5px;color:var(--muted);cursor:pointer;transition:.1s;" data-val="E">E. &nbsp;AI-assisted interpretation drift</div>
-   <div class="obs-opt" role="radio" tabindex="0" aria-checked="false" onclick="selectObs(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectObs(this);}" style="padding:9px 13px;border:1px solid var(--rule);font-size:12.5px;color:var(--muted);cursor:pointer;transition:.1s;" data-val="F">F. &nbsp;All of the above</div>
-  </div>
-  <textarea id="obs-note" placeholder="Optional: brief operational note. Do not include names or personal identifiers." style="width:100%;box-sizing:border-box;background:var(--surface2);border:1px solid var(--rule);color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:11px;padding:9px 12px;resize:vertical;min-height:56px;margin-bottom:10px;outline:none;"></textarea>
-  <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding-bottom:14px;">
-   <button onclick="submitObs()" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--accent);border:1px solid rgba(190,148,71,.4);padding:13px 18px;min-height:44px;cursor:pointer;">Submit Operational Observation</button>
-   <div id="obs-confirm" style="display:none;font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--ready-text);">Observation noted. Thank you.</div>
-  </div>
-  <div style="padding:8px 0;border-top:1px solid var(--rule);font-size:10.5px;color:var(--muted-soft);line-height:1.6;">Responses are framed as operational observations only, not research findings, industry benchmarks, or validated outcomes. No individual attribution is captured or stored.</div>
- </div>
-</div>
-
-<!-- RECURRING OBSERVATIONS -->
-
-
-<div style="margin-bottom:20px;">
- <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px;">Who uses it</div>
- <div style="display:flex;flex-wrap:wrap;gap:6px;">
-  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text);border:1px solid #333;padding:5px 11px;background:var(--surface);">HR Review Teams</span>
-  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text);border:1px solid #333;padding:5px 11px;background:var(--surface);">Employee Relations</span>
-  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text);border:1px solid #333;padding:5px 11px;background:var(--surface);">Workplace Investigators</span>
-  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text);border:1px solid #333;padding:5px 11px;background:var(--surface);">Compliance Operations</span>
-  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text);border:1px solid #333;padding:5px 11px;background:var(--surface);">Legal Review</span>
-  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text);border:1px solid #333;padding:5px 11px;background:var(--surface);">Audit</span>
-  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text);border:1px solid #333;padding:5px 11px;background:var(--surface);">AI Governance</span>
-  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text);border:1px solid #333;padding:5px 11px;background:var(--surface);">Administrative Review</span>
-  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text);border:1px solid #333;padding:5px 11px;background:var(--surface);">Documentation-Review Environments</span>
- </div>
-</div>
-
-<div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:28px;">
- <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 10px;">No software required</span>
- <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 10px;">Cross-departmental onboarding within existing workflows</span>
- <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 10px;">No certification required</span>
- <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 10px;">No platform migration</span>
- <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 10px;">Start with one record type</span>
-</div>
-
-<!-- ZONE 3: PARTICIPATION PATHWAYS -->
-<div style="margin-bottom:28px;border:1px solid var(--rule);overflow:hidden;">
- <div style="padding:10px 16px;border-bottom:1px solid var(--rule);background:var(--surface);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;">
-  <span style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);">Participation Pathways</span>
-  <span style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);">Choose a starting point: no commitment required</span>
- </div>
- <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:0;">
-
-  <div style="padding:14px 16px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);">
-   <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;">Individual Reviewer</div>
-   <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:5px;">Explore one simulation on your own</div>
-   <div style="font-size:11.5px;color:var(--muted);line-height:1.5;margin-bottom:7px;">No coordination required. Pick a scenario, review it, observe where ambiguity appears. Natural exit at any point.</div>
-   <a href="simulations.html" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;">Start Here →</a>
-  </div>
-
-  <div style="padding:14px 16px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--surface2);">
-   <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.16em;text-transform:uppercase;color:var(--review-text);margin-bottom:4px;">Small-Team Exercise</div>
-   <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:5px;">Two or three reviewers, one scenario</div>
-   <div style="font-size:11.5px;color:var(--muted);line-height:1.5;margin-bottom:7px;">Each reviewer applies conditions independently. Compare where interpretations diverge. No external facilitation needed.</div>
-   <a href="simulations.html" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;">Reviewer Comparison →</a>
-  </div>
-
-  <div style="padding:14px 16px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);">
-   <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.16em;text-transform:uppercase;color:var(--ready-text);margin-bottom:4px;">Simulation-First Exploration</div>
-   <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:5px;">Begin with constructed scenarios, not real records</div>
-   <div style="font-size:11.5px;color:var(--muted);line-height:1.5;margin-bottom:7px;">Explore procedural conditions in a low-stakes environment. No existing workflows touched. No records reviewed.</div>
-   <a href="simulations.html" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;">Explore Scenarios →</a>
-  </div>
-
-  <div style="padding:14px 16px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--surface2);">
-   <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Observation Only</div>
-   <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:5px;">Browse without committing to participation</div>
-   <div style="font-size:11.5px;color:var(--muted);line-height:1.5;margin-bottom:7px;">Review the simulation library, operational observations, and role environments. No submission required.</div>
-   <a href="#observations" onclick="document.getElementById('observations').scrollIntoView({behavior:'smooth'});return false;" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;">View Observations →</a>
-  </div>
-
-  <div style="padding:14px 16px;border-right:1px solid var(--rule);">
-   <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:4px;">Departmental Review Exercise</div>
-   <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:5px;">One department, one record type, one review cycle</div>
-   <div style="font-size:11.5px;color:var(--muted);line-height:1.5;margin-bottom:7px;">Apply calibration exercises to a single record type within an existing review cycle. Structured for immediate cross-departmental onboarding within existing document workflows ahead of formal governance synchronization.</div>
-   <a href="workflow-fit.html" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;">Workflow Fit Guide →</a>
-  </div>
-
-  <div style="padding:14px 16px;">
-   <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:4px;">Free Operational Resources</div>
-   <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:5px;">No purchase needed to begin</div>
-   <div style="font-size:11.5px;color:var(--muted);line-height:1.5;margin-bottom:7px;">Review Controls PDF, Rapid Review Card, Investigator Guide: free downloads for any reviewer.</div>
-   <button onclick="showSection('tools')" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);background:none;border:none;cursor:pointer;padding:11px 0;min-height:44px;">Free Resources →</button>
-  </div>
-
- </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-<!-- SOURCE CONTINUITY SCORE CALCULATOR -->
-<div style="border:1px solid var(--rule);overflow:hidden;margin-bottom:28px;">
- <div style="padding:10px 16px;border-bottom:1px solid var(--rule);background:var(--surface);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;">
-  <span style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);">Source Continuity Score Calculator</span>
-  <span style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);">SCS = (Mapped Sources / Total Claims) × 100</span>
- </div>
- <div style="padding:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;align-items:end;">
-  <div>
-   <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;" for="jrs-total-claims">Total Claims in Record</label>
-   <input id="jrs-total-claims" type="number" min="0" placeholder="e.g. 8" oninput="calcSCS()" title="Total Claims: The number of distinct factual assertions, characterizations, or behavioral conclusions in the record requiring traceable source support." style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);font-family:'JetBrains Mono',monospace;font-size:13px;padding:9px 11px;outline:none;">
-  </div>
-  <div>
-   <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;" for="jrs-mapped-sources">Contemporaneous Sources Mapped</label>
-   <input id="jrs-mapped-sources" type="number" min="0" placeholder="e.g. 5" oninput="calcSCS()" title="Contemporaneous Sources: Source documents, notes, or records created at or near the time of the events described, confirmed present in the file and directly traceable to each claim." style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);font-family:'JetBrains Mono',monospace;font-size:13px;padding:9px 11px;outline:none;">
-  </div>
-  <div>
-   <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">Source Continuity Score</div>
-   <div id="jrs-scs-output" style="background:var(--surface);border:1px solid var(--rule);color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:500;padding:7px 11px;letter-spacing:.02em;">-</div>
-  </div>
- </div>
- <div id="scs-band" style="padding:8px 16px;border-top:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:10.5px;line-height:1.6;display:none;"></div>
- <div style="padding:8px 16px;border-top:1px solid var(--rule);font-size:10.5px;color:var(--muted-soft);line-height:1.6;">Diagnostic reference only. SCS does not constitute a legal sufficiency determination, compliance certification, or governance credential.</div>
-</div>
-<script>
-function calcSCS(){
-  var claims=parseFloat(document.getElementById('jrs-total-claims').value);
-  var sources=parseFloat(document.getElementById('jrs-mapped-sources').value);
-  var out=document.getElementById('jrs-scs-output');
-  var band=document.getElementById('scs-band');
-  if(!claims||claims<=0){out.textContent='-';out.style.color='var(--accent)';band.style.display='none';return;}
-  var score=Math.round((Math.min(sources||0,claims)/claims)*100);
-  out.textContent=score+'%';
-  if(score>=80){out.style.color='var(--ready-text)';band.style.color='var(--ready-text)';band.textContent='High source continuity. Claims are substantially supported by mapped contemporaneous sources.';}
-  else if(score>=50){out.style.color='var(--review-text)';band.style.color='var(--review-text)';band.textContent='Moderate source continuity. Some claims lack contemporaneous source mapping. Review flagged items before submission.';}
-  else{out.style.color='var(--stop-text)';band.style.color='var(--stop-text)';band.textContent='Low source continuity. Significant proportion of claims are unsupported. Record should not advance without remediation.';}
-  band.style.display='block';
-}
-</script>
-
-
-
-<div style="margin-bottom:44px;">
- <div class="page-eyebrow" style="padding-top:0;margin-bottom:10px;color:var(--accent);">Core Concept</div>
-<h2 class="section-head" style="margin-bottom:10px;">Decision Reconstruction Risk (DRR)</h2>
- <div style="border:1px solid var(--accent-dim);background:linear-gradient(180deg,rgba(190,148,71,.08),rgba(190,148,71,.02));padding:18px 20px;margin-bottom:14px;">
-  <div style="font-family:'Bodoni Moda',serif;font-size:18px;line-height:1.5;color:var(--text);">The condition in which a record cannot explain, on its own terms, why a consequential decision was made.</div>
- </div>
- <p class="body-text" style="max-width:640px;">The decision itself may have been sound. The record still cannot demonstrate how it was reached. That gap is what a later reviewer confronts during escalation, audit, investigation, or litigation. AI-assisted drafting accelerates the problem, because fluent output can look complete while proving nothing. JRS is the review discipline built to detect and reduce it.</p>
- <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;">
-  <a href="decision-reconstruction-risk.html" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(190,148,71,.5);background:rgba(190,148,71,.07);padding:10px 15px;text-decoration:none;">Definition &amp; symptoms &rarr;</a>
-  <a href="why-good-decisions-fail.html" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(190,148,71,.5);background:rgba(190,148,71,.07);padding:10px 15px;text-decoration:none;">Read the article &rarr;</a>
- </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div style="margin-bottom:44px;border:1px solid rgba(190,148,71,.25);background:var(--surface);overflow:hidden;">
- <div style="padding:12px 18px;border-bottom:1px solid var(--rule);">
-  <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;">Pilot Program</div>
-  <div style="font-size:14px;font-weight:600;color:var(--text);">JRS Operational Review Pilot Program</div>
- </div>
- <div style="padding:14px 18px;">
-  <p style="font-size:13.5px;color:var(--muted);line-height:1.65;max-width:560px;margin-bottom:14px;">For HR teams, compliance programs, and investigation units seeking a structured, low-overhead way to test operational review controls before broader deployment. Pilot scope is defined by the participating organisation, based on its existing workflows and highest-risk record types. These resources support independent examination of documentation review practices and do not, by themselves, create a consulting or commercial engagement.</p>
-  <div style="border-top:1px solid var(--rule);padding-top:14px;margin-bottom:14px;">
-   <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:8px;">Typical pilot scope</div>
-   <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
-    <div style="display:flex;gap:8px;align-items:flex-start;"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent-dim);flex-shrink:0;margin-top:2px;">-</span><span style="font-size:13px;color:var(--muted);">One or two record types as the starting scope</span></div>
-    <div style="display:flex;gap:8px;align-items:flex-start;"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent-dim);flex-shrink:0;margin-top:2px;">-</span><span style="font-size:13px;color:var(--muted);">Reviewer onboarding using existing training infrastructure</span></div>
-    <div style="display:flex;gap:8px;align-items:flex-start;"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent-dim);flex-shrink:0;margin-top:2px;">-</span><span style="font-size:13px;color:var(--muted);">Structured observation of gaps identified during initial review cycles</span></div>
-    <div style="display:flex;gap:8px;align-items:flex-start;"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent-dim);flex-shrink:0;margin-top:2px;">-</span><span style="font-size:13px;color:var(--muted);">Assessment of expansion scope after the initial record-type cycle</span></div>
-   </div>
-  </div>
-  <div style="border-top:1px solid var(--rule);padding-top:14px;margin-bottom:14px;">
-   <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px;">Operational Participation Pathway</div>
-   <div style="display:flex;flex-wrap:wrap;align-items:center;gap:0;margin-bottom:10px;overflow-x:auto;">
-    <div style="display:flex;align-items:center;flex-shrink:0;">
-     <div style="padding:6px 11px;background:var(--surface2);border:1px solid var(--rule);font-size:11px;color:var(--muted);white-space:nowrap;">Explore Simulations</div>
-     <div style="font-size:14px;color:var(--accent-dim);padding:0 5px;flex-shrink:0;">→</div>
-    </div>
-    <div style="display:flex;align-items:center;flex-shrink:0;">
-     <div style="padding:6px 11px;background:var(--surface2);border:1px solid var(--rule);font-size:11px;color:var(--muted);white-space:nowrap;">Review Exercises</div>
-     <div style="font-size:14px;color:var(--accent-dim);padding:0 5px;flex-shrink:0;">→</div>
-    </div>
-    <div style="display:flex;align-items:center;flex-shrink:0;">
-     <div style="padding:6px 11px;background:var(--surface2);border:1px solid var(--rule);font-size:11px;color:var(--muted);white-space:nowrap;">Evaluate Workflow Fit</div>
-     <div style="font-size:14px;color:var(--accent-dim);padding:0 5px;flex-shrink:0;">→</div>
-    </div>
-    <div style="display:flex;align-items:center;flex-shrink:0;">
-     <div style="padding:6px 11px;background:rgba(190,148,71,.06);border:1px solid rgba(190,148,71,.2);font-size:11px;color:var(--text);white-space:nowrap;">Operational Observation</div>
-     <div style="font-size:14px;color:var(--accent-dim);padding:0 5px;flex-shrink:0;">→</div>
-    </div>
-    <div style="display:flex;align-items:center;flex-shrink:0;">
-     <div style="padding:6px 11px;background:rgba(190,148,71,.06);border:1px solid rgba(190,148,71,.2);font-size:11px;color:var(--text);white-space:nowrap;">Submit Observations</div>
-     <div style="font-size:14px;color:var(--accent-dim);padding:0 5px;flex-shrink:0;">→</div>
-    </div>
-    <div style="flex-shrink:0;">
-     <div style="padding:6px 11px;background:rgba(190,148,71,.06);border:1px solid rgba(190,148,71,.2);font-size:11px;color:var(--text);white-space:nowrap;">Aggregated Findings</div>
-    </div>
-   </div>
-   <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--rule);overflow:hidden;">
-    <div style="padding:8px 12px;border-bottom:1px solid var(--rule);font-size:12px;color:var(--muted);display:flex;align-items:center;gap:10px;"><span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--accent-dim);">01</span>Explore Simulations and Operational Exercises</div>
-    <div style="padding:8px 12px;border-bottom:1px solid var(--rule);font-size:12px;color:var(--muted);display:flex;align-items:center;gap:10px;background:var(--surface2);"><span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--accent-dim);">02</span>Review Operational Exercises for Workflow Applicability</div>
-    <div style="padding:8px 12px;border-bottom:1px solid var(--rule);font-size:12px;color:var(--muted);display:flex;align-items:center;gap:10px;"><span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--accent-dim);">03</span>Evaluate Workflow Applicability for Your Record Types</div>
-    <div style="padding:8px 12px;border-bottom:1px solid var(--rule);font-size:12px;color:var(--muted);display:flex;align-items:center;gap:10px;background:var(--surface2);"><span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--accent-dim);">04</span>Participate In Observation Surveys During Pilot Phase</div>
-    <div style="padding:8px 12px;font-size:12px;color:var(--muted);display:flex;align-items:center;gap:10px;"><span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--accent-dim);">05</span>Contribute To Aggregated Operational Findings</div>
-   </div>
-   <div style="margin-top:8px;padding:8px 12px;background:var(--surface);border:1px solid var(--rule);font-size:11.5px;color:var(--muted-soft);line-height:1.6;">Participation is observational and operational in nature and does not establish certification, accreditation, legal authority, governance endorsement, or formal enterprise approval.</div>
-  </div>
-  <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
-   <a href="enterprise.html" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;padding:11px 20px;text-decoration:none;display:inline-block;font-weight:600;">Apply for Pilot Participation →</a>
-   <a href="enterprise.html" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:11px 18px;text-decoration:none;display:inline-block;">View Enterprise Implementation →</a>
-  </div>
- </div>
-</div>
-
-
-
-
-
-<div style="margin-bottom:44px;">
- <h2 class="section-head">Implementation Questions</h2>
- <p class="body-text" style="max-width:600px;">Organizations evaluating phased implementation approaches, or with questions about applying the review structure within existing workflows, may request additional operational information.</p>
- <div style="border:1px solid var(--rule);padding:16px 20px;background:var(--surface);margin-top:12px;">
-  <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:8px;">Scope of discussion</div>
-  <div style="font-size:13.5px;color:var(--muted);line-height:1.75;">Workflow insertion points and reviewer routing. Phased or selective deployment. Higher-risk record categories as starting points. Department-level or record-type-level implementation. Integration with existing HR, compliance, or investigation workflows.</div>
-  <div style="margin-top:12px;font-size:13px;color:var(--muted-soft);font-style:italic;">Requests are reviewed. Response time and availability are not guaranteed.</div>
- </div>
-</div>
-
-<div style="margin-bottom:20px;">
- <h2 class="section-head">Access</h2>
- <div class="btn-row">
- <a href="/api/dl?e=standard&amp;src=index" class="btn btn-primary">View Review Controls PDF</a>
- <a href="training.html" class="btn btn-ghost">Free Training &rarr;</a>
- <a href="investigator-guides.html" class="btn btn-ghost">Investigator Guides &rarr;</a>
- <button class="btn btn-ghost" onclick="showSection('kit')">Implementation Package</button>
- <a href="pilot.html" class="btn btn-ghost">Pilot Program &rarr;</a>
- <a href="mailto:info@jrsstandard.com?subject=JRS Pilot Program Inquiry" class="btn btn-ghost">Apply for Pilot →</a>
- </div>
+<div style="font-size:12.5px;color:var(--muted-soft);line-height:1.65;max-width:760px;border-top:1px solid var(--rule);padding-top:16px;">
+ <b style="color:var(--text);">Current stage:</b> operational validation. JRS measures documentation conditions requiring review; it does not determine whether a decision is legally correct, compliant, or substantively justified. <a href="operational-boundaries.html" style="color:var(--accent);">Operational boundaries &rarr;</a>
 </div>
 
 </div>
