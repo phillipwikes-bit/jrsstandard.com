@@ -146,7 +146,7 @@ Landing-page logging began **2026-08-11**. Arrivals before that date are **unkno
 | **Public exposure** | Named on the prospectus. **Never offered to anyone** |
 | **Persona** | **AI assurance vendors**, **model evaluation teams**, **audit firms building an AI practice** |
 
-**What it is, verified live:** a **24-record detection set** with a **held-out answer key fixed and independently verified 24 of 24 by raters blind to it**, graded by **36 completers across 16 countries and 5 continents**, with measured inter-rater reliability (**Gwet's AC1 0.739 experts, 0.624 trained**) and a detection result of **83.9% across 16 independent experts and 384 graded reads, 95% CI 72.7 to 95.1**.
+**What it is, verified live:** a **24-record detection set** with a **held-out answer key fixed and independently verified 24 of 24 by raters blind to it**, graded by **36 completers across 16 countries and 5 continents**, with a **separate** measured inter-rater reliability sample (**Gwet's AC1 0.739 invited, 0.623 open enrolment; 10 analysed records; pre-registered two-part criterion not met because neither lower confidence bound reached 0.41**) and a detection result of **83.9% across 16 independent experts and 384 graded reads, 95% CI 72.7 to 95.1**.
 
 **Why it is scarce.** Labelled evaluation data with **credentialed human raters, a pre-registered key, and published reliability** is expensive and slow to produce. A vendor claiming their tool detects weak documentation has **nothing to test against.** This is the test.
 
