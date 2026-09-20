@@ -145,6 +145,20 @@ published research metric by seven points on the authority of one run is precise
 evidence rules exist to prevent. Full analysis and the recommended distribution-based wording:
 `STUDY_001_FIGURE_RESOLUTION.md`. **OWNER ACTION REQUIRED.**
 
+> **SURFACE SCOPE VERIFIED 2026-09-20, AND IT IS NARROWER THAN "PRESENTATION OPEN" SUGGESTS.**
+> **No deployable page carries the STUDY-001 agreement figure at all.** The only `86.7` on a
+> public page is in `enterprise.html` line 293 — *"the inquiry form was at 86.7% page depth"* —
+> a scroll-depth analytics number with nothing to do with this study. `84%` returns **zero**
+> deployable hits. The figures live in `IP_COMMERCIALIZATION_AUDIT.md` (a root `.md`, excluded
+> by `.vercelignore`) and in the `research/` manuscripts, none of which deploy.
+>
+> **A THIRD INCONSISTENCY IS RECORDED RATHER THAN RESOLVED.** Three records give three
+> different series: this entry says **61 runs, 66.7 to 93.3, mean 85.3, final 91.1**; the
+> commercialization audit says **37 runs, 82.2 to 93.3, published 86.7**; the submitted
+> manuscript says **41 nightly runs, mean 87.2, median 86.7, range 82.2 to 93.3**. They may
+> describe different windows or different sets. **Deciding which series is the published one
+> is a research-presentation decision and no figure was changed.**
+
 ## D-18 (original entry, preserved) · Stale research presentation — **OPEN, DELIBERATELY NOT EDITED**
 
 **QUESTION.** The nightly cross-vendor run closed on 21 August 2026. Six surfaces still
@@ -266,9 +280,22 @@ behind each is complete; what remains cannot be done from here.
 
 **EXACT OWNER DECISION.** Authorize deploying `claude/html-pilot-L8rC3` to production.
 
-**SCOPE, VERIFIED 2026-09-19.** Candidate `23fe3e1` against production baseline `0d94ce6`:
-**233 files changed, 21,243 insertions, 470 deletions.** No build step; the deployable artifact
-is the repository minus `.vercelignore`.
+~~**SCOPE, VERIFIED 2026-09-19.** Candidate `23fe3e1` against production baseline `0d94ce6`:
+**233 files changed, 21,243 insertions, 470 deletions.**~~
+
+> **CANDIDATE RE-VERIFIED 2026-09-20 AND IT HAD MOVED.** The branch is **nine commits ahead**
+> of the SHA named above. Authorizing a commit that is no longer the tip would authorize
+> something that no longer exists.
+>
+> **CURRENT CANDIDATE `42e3bff`** against production baseline `0d94ce6`:
+> **237 files changed, 22,535 insertions, 477 deletions.**
+>
+> **ONLY ONE OF THE NINE COMMITS CHANGES ANYTHING THAT DEPLOYS.** `research-summary.html` now
+> names the reliability sample's size and states that 83.9% is not a reliability measure. The
+> other fifteen changed paths are under `docs/`, `.jrs/`, `research/` and `scripts/`, every one
+> excluded by `.vercelignore`. **The deployable delta since 23fe3e1 is one page.**
+
+No build step; the deployable artifact is the repository minus `.vercelignore`.
 
 **WHAT IT CLOSES.** B-003, B-005, B-008, B-009, B-014, B-015 — **six blockers on one act, not
 six workstreams.** Five are remediated and **cannot be verified without a deployment**; the
@@ -298,7 +325,9 @@ The production control-plane operations at D-22 are **not** covered. Nothing bec
 **CURRENT STATE, VERIFIED.** B-014 is `REMEDIATED IN CONFIGURATION — REQUIRES DEPLOYMENT
 VERIFICATION`. The other five at D-20 are remediated-and-unverified. **B-014 is an exposure
 that is being served right now:** `/supabase-engine-reviews-setup.sql`, `/supabase-setup.sql`
-and `/supabase/functions/run-study/index.ts` returned **200 on production** at the last probe.
+and `/supabase/functions/run-study/index.ts` **re-probed 2026-09-20 and all three still return
+HTTP 200.** `/supabase-ALL.sql` returns **404** on the same probe, which proves the exclusion
+mechanism works and these three are simply not yet deployed.
 The `.vercelignore` rules that close them exist in the candidate and **take effect only on
 deployment**.
 
@@ -352,6 +381,13 @@ and B-016 already shows what happens when a published assertion outlives the cod
 
 **EXACT OWNER DECISION.** (a), (b) or (c).
 
+> **PREPARATION COMPLETE 2026-09-20. The claim is route-specific and that is now evidenced.**
+> `api/review.js` contains **zero** references to `logReview` or `engine_reviews` — the
+> sentence is **true** of it. `api/v1/review-engine.js` calls `logReview()` at line 177 and
+> writes to `/rest/v1/engine_reviews` at line 181 — the sentence is **false** of it. So option
+> (a) is factually available and precise. **It has not been taken**, because which
+> representation to publish is not this repository's decision.
+
 ---
 
 ## D-24 · D-16 — Gumroad is named to readers and no Gumroad URL exists
@@ -367,6 +403,13 @@ are commercial decisions this repository cannot make: **which processor handles 
 a repository fact.**
 
 **EXACT OWNER DECISION.** (a), (b) or (c). If (b) or (c), name the processor and the URL.
+
+> **PREPARATION COMPLETE 2026-09-20.** `api/_offer-config.js` is the single source of truth for
+> price and checkout URL, and it names **Stripe Payment Link or Lemon Squeezy** as the shapes a
+> real URL would take, with `/api/checkout` **refusing to redirect rather than guessing**.
+> **Gumroad appears nowhere in `api/` or `lib/`.** So the pages name a processor the
+> architecture does not know about, and the architecture deliberately declines to pick one.
+> **No URL was invented and no processor was chosen.**
 
 ---
 
@@ -385,6 +428,13 @@ collision.** This is the least urgent of the three representations and is record
 lost.
 
 **EXACT OWNER DECISION.** (a), (b) or (c).
+
+> **PREPARATION COMPLETE 2026-09-20, AND THE COLLISION IS SMALLER THAN THIS ENTRY IMPLIED.**
+> The page already reads *"No sub-processors were engaged **in that work**. That is a statement
+> about those closed..."* — it is **already scope-qualified in place**. Option (a) is therefore
+> largely satisfied by the existing wording, and the remaining choice is whether to make the
+> date explicit as well. **Recorded rather than acted on**, because narrowing a published term
+> further is still a published-representation change.
 
 ---
 
@@ -407,6 +457,13 @@ recent deployment states.
 credential from the environment and never prints it; if you see one, stop and tell me.
 
 **DO NOT PROVIDE.** The token itself, in any form, by any channel.
+
+> **SCRIPT VERIFIED SAFE 2026-09-20, BY READING IT.** `scripts/vercel_f4_diagnose.sh` exists,
+> is executable, **reads `VERCEL_TOKEN` from the environment** and exits with a message if it
+> is unset. It passes the value only into an `Authorization: Bearer` header and **never echoes,
+> logs or prints it**. Its own header comment says *"never paste this into a chat"*. **It was
+> not executed**: the credential is not present in this environment, which is the correct and
+> expected state.
 
 ---
 
@@ -448,7 +505,7 @@ credential from the environment and never prints it; if you see one, stop and te
 
 | # | Item | The single act |
 |---|---|---|
-| **D-3** | Correspondence assignments | Name which engine key corresponds to Decision-Process Traceability |
+| **D-3** | Correspondence assignments | Name which engine key corresponds to Decision-Process Traceability. **Prepared 2026-09-20:** `METHODOLOGY_TO_API_MAPPING.md` already records the assignment as `accountability_support`, classified **Unresolved**, with `reasoning_traceability` as the second candidate because both Codebook conditions contain "traceability". **The decision is one line naming one key, or recording that the constructs are deliberately distinct** |
 | **D-4** | Subprocessor disclosure | Sign off the published wording. **Publication is a Section 23 act** |
 | **D-5** | Validation statement | Approve inserting the prepared wording and deploying it |
 | **D-18** | STUDY-001 figure | Decide the published wording. **61 runs, 66.7% to 93.3%, mean 85.3%, final run 91.1%.** No figure was changed and none will be by inference |
