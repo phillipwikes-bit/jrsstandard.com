@@ -180,7 +180,32 @@ closed on 21 August 2026."*
 **Research source records are NOT touched.** This changes presentation only, and the superseded
 figures are recorded as history in `STUDY_001_PUBLIC_CLAIM_AUDIT_2026-09-16.md`.
 
-**STATUS: BOARD DECIDED → presentation update prepared.**
+~~**STATUS: BOARD DECIDED → presentation update prepared.**~~
+
+> **THE ADOPTED SENTENCE CARRIED A FACTUAL ERROR. FOUND 2026-09-20; THE DECISION ITSELF IS
+> UNAFFECTED.** *"on 15 constructed records"* attaches the **full-15-record denominator** to
+> the **61-run** figure, and those belong to different counts of the same series.
+> `findings_history` gives 61 runs with no completeness filter; `study_runs` filtered to
+> `mode == cross_vendor`, **exactly 15 non-null `per_record` values** and the 2026-08-15 lock
+> gives **41 runs at 82.2 to 93.3**; `IP_COMMERCIALIZATION_AUDIT.md` reports the same range
+> across **37 runs** and states the rule as *"on the 15-record set"*.
+> `scripts/verify_manuscript_figures.py` had already classified the wider range as a
+> **"mixed-denominator cross-vendor range"** on its `SUPERSEDED` list — **but that list guards
+> the manuscript body only, so it never reached this decision.** The Board could not have
+> known on 2026-09-16.
+>
+> **WHAT THE BOARD DECIDED STANDS IN FULL.** Publish the distribution, not a single run; do not
+> publish 91.1% as a headline. The correction changes none of that.
+>
+> **CORRECTED WORDING NOW IN THE TREE, ON ALL FIVE SURFACES:** *"Across 61 recorded runs
+> between 12 June and 21 August 2026, agreement across three models ranged from 66.7 to 93.3
+> percent, mean 85.3 percent. Restricted to the runs that returned every record, the range is
+> 82.2 to 93.3 percent across 37 runs at the full 15-record set. The study closed on 21 August
+> 2026."*
+>
+> **STATUS: BOARD DECIDED → wording corrected 2026-09-20 → RATIFICATION OPEN.** Nothing is
+> deployed. Enforced by
+> `check_zero_drift.py::check_the_cross_vendor_range_carries_its_denominator`.
 
 ## BD-08 · F-8 / F-14 — screening coverage
 

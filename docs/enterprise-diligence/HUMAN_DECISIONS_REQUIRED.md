@@ -216,6 +216,23 @@ evidence rules exist to prevent. Full analysis and the recommended distribution-
 > the pre-fix state (8 blocks, 5 pages)** before it was trusted, and 11 mutations were run
 > against it, one of which found a real defect in the guard itself and was repaired.
 >
+> **THE BOARD ADOPTED THIS WORDING, AND THAT CHANGES WHO RATIFIES THE CORRECTION.**
+> **BD-07, 2026-09-16** decided D-18's presentation: *publish the distribution, not a single
+> run; do not publish 91.1% as a headline.* **That principle is untouched and is preserved by
+> the correction.** But BD-07 also adopted an exact sentence, and the sentence it adopted reads
+> *"across three models **on 15 constructed records**"* — **it carries the defect.** The Board
+> could not have known: the mixed-denominator diagnosis sat in
+> `verify_manuscript_figures.py`, which no one had read against the public surfaces.
+>
+> **SO THIS IS FLAGGED, NOT QUIETLY ABSORBED.** The correction was made because leaving it
+> would mean knowingly deploying a false denominator to five surfaces including a buyer page.
+> **It nonetheless edits wording a Board decision adopted, and that is recorded here rather
+> than hidden in a diff.** It does not reverse BD-07: the distribution still leads, the n and
+> the dates are still there, 91.1% is still nowhere.
+>
+> **BOARD ACTION, NEWLY OPEN:** ratify the corrected wording under BD-07, or substitute your
+> own. **This is the first Board item open since BD-14.**
+>
 > **WHAT REMAINS FOR THE OWNER IS SMALLER THAN IT WAS.** Not *which figure is real* — that is
 > answered. Only **which series leads the headline**: the all-runs distribution, or the
 > complete-record series. Both are published, both are labelled, neither was chosen here.
@@ -368,23 +385,22 @@ deletions.~~
 > commit from the production baseline to `HEAD`, and take the newest commit that changes at
 > least one file the ignore rules do not exclude.
 >
-> **DERIVED 2026-09-20 AT HEAD `6805363`:**
+> **DERIVED 2026-09-20, RE-DERIVED AFTER THE D-18 CORRECTION LANDED:**
 >
-> | | Value |
-> |---|---|
-> | Production baseline | `0d94ce6` |
-> | Current HEAD | `6805363` |
-> | Commits since baseline | **69** |
-> | **Candidate** | **`c5f64bf`** — the newest commit carrying a deployable change |
-> | Full delta | 237 files changed, 22,624 insertions, 477 deletions |
-> | Deployable files in delta | **33** |
-> | Excluded files in delta | **204** |
+> | | At HEAD `6805363` | **At HEAD `f772be8` (current)** |
+> |---|---|---|
+> | Production baseline | `0d94ce6` | `0d94ce6` |
+> | Commits since baseline | 69 | **70** |
+> | **Candidate** | `c5f64bf` | **`f772be8` — the tip itself** |
+> | Full delta | 237 files, 22,624 ins, 477 del | **238 files, 23,156 ins, 577 del** |
+> | Deployable / excluded | 33 / 204 | **33 / 205** |
 >
-> **THE EIGHT COMMITS AFTER THE CANDIDATE CHANGE NOTHING THAT DEPLOYS.** Everything after `c5f64bf` is under
-> `docs/`, `.jrs/`, `research/` and `scripts/`. **Proved, not assumed:** no deployable path
-> differs between `c5f64bf` and `6805363`, so **authorizing the branch tip and authorizing
-> `c5f64bf` publish byte-identical content.** Authorize the tip; the deployable surface is the
-> one `c5f64bf` defines.
+> **THE CANDIDATE MOVED BECAUSE THE D-18 CORRECTION CHANGED FOUR DEPLOYABLE PAGES**, which is
+> the derivation behaving exactly as it should. **The tip is now the candidate**, so the
+> ambiguity that made `23fe3e1` and `42e3bff` wrong does not currently exist. It will return
+> the moment the next documentation-only commit lands. **Re-run
+> `scripts/derive_deployment_candidate.py` at the moment you decide; do not read the SHA from
+> this table.**
 >
 > **THE CANDIDATE HAS CHANGED SINCE THIS ENTRY WAS LAST TRUE, AND IT WILL AGAIN.** That is the
 > reason the rule is recorded here instead of the number.
@@ -637,7 +653,13 @@ credential from the environment and never prints it; if you see one, stop and te
 | **D-1** | API reconciliation (B-007 / B-002) | Is the published contract a licensed interface, and what follows from the mismatch |
 | **D-6** | Rights and chain of title (B-004) | Submit the evidence package to IP counsel |
 
-**BOARD — none open.** **EXTERNAL — none open**; the one external action, D-8, completed 2026-09-18.
+**BOARD**
+
+| # | Item | The precise act |
+|---|---|---|
+| **BD-07 ratification** | D-18 wording | **BD-07 adopted a sentence containing a false denominator** — *"on 15 constructed records"* attached to the 61-run range, which belongs to the 37/41-run full-15 series. The defect was not knowable on 2026-09-16. **BD-07's principle is preserved and the correction is in the tree.** Ratify the corrected wording, or substitute your own. **Nothing is deployed** |
+
+~~**BOARD — none open.**~~ **That was true until 2026-09-20.** **EXTERNAL — none open**; the one external action, D-8, completed 2026-09-18.
 
 **PRODUCTION** — D-20 (deployment), D-22 and D-19 (console revocations). **No production
 operation has been performed from this repository.**

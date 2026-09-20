@@ -32,6 +32,30 @@ instruments that do not grant them.
 **QUESTION FOR COUNSEL.** What, if anything, do these consents convey beyond publication and
 successor transfer, and what instrument would be needed for commercial licensing?
 
+
+**RELEVANT DOCUMENTS — ADDED 2026-09-20, AND THE REASON IS THE READER.** The evidence line
+above named five **categories**. Counsel cannot open a category. Every artifact behind them is
+listed here by path, each verified to exist in the tree on the date it was added, so the
+question can be answered without anyone reconstructing the repository out loud.
+
+| What it is | Path |
+|---|---|
+| Structured contributor consents, audited | `research/CONSENT_AND_RELEASE_AUDIT_2026-08-13.md` |
+| Contributor and third-party registers | `docs/enterprise-diligence/CONTRIBUTOR_AND_THIRD_PARTY_REGISTERS.md` |
+| Contributor register, machine-readable | `.jrs/registries/CONTRIBUTOR_REGISTER.json` |
+| Contributor evidence dossier | `docs/enterprise-diligence/DRR_CONTRIBUTOR_EVIDENCE_DOSSIER.md` |
+| Publication status and rights | `docs/enterprise-diligence/PUBLICATION_STATUS_AND_RIGHTS_REGISTER.md` |
+| AI-assisted creation provenance | `docs/enterprise-diligence/AI_ASSISTED_CREATION_PROVENANCE_RECORD.md` |
+| Provenance register, machine-readable | `.jrs/registries/PROVENANCE_REGISTER.json` |
+| Evidence ledger, every entry and its class | `docs/enterprise-diligence/EVIDENCE_LEDGER.md` |
+| Master asset, evidence and chain-of-title register | `docs/enterprise-diligence/JRS_MASTER_ASSET_EVIDENCE_AND_CHAIN_OF_TITLE_REGISTER.md` |
+| Chain-of-title status | `docs/enterprise-diligence/CHAIN_OF_TITLE_STATUS.md` |
+| Contradictions, recorded not resolved | `docs/enterprise-diligence/CHAIN_OF_TITLE_CONTRADICTION_REGISTER.md` |
+
+**None of these is deployed.** `*.md`, `research/`, `docs/enterprise-diligence/` and `.jrs/`
+are all excluded by `.vercelignore`, so handing this package to counsel is a deliberate act and
+not a public disclosure.
+
 **Nothing here asserts ownership.** Authorship is not title; consent is not assignment;
 publication is not a commercial licence.
 

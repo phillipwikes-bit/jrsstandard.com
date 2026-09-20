@@ -38,7 +38,10 @@ D-3     Codebook mapping         [3 of 4 BOARD DECIDED] --> API reconciliation o
                                    the reason option D cannot proceed]
 
 D-12    verify-drift             [BOARD DECIDED -> IMPLEMENTED] --> architectural coherence
-D-18    STUDY-001 presentation   [BOARD DECIDED -> presentation prepared] --> research integrity
+D-18    STUDY-001 presentation   [BD-07 DECIDED -> wording CORRECTED 2026-09-20 ->
+                                 BOARD RATIFICATION OPEN] --> research integrity
+D-3     [CLOSED 2026-09-20 on BD-04; it was decided 2026-09-16 and this graph
+         already said so while the owner queue went on asking]
 ```
 
 ## What each edge actually means
