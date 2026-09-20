@@ -221,6 +221,16 @@ stop writing record-derived free text · narrow the public claims to match.
 **RECOMMENDATION.** None: this changes an external representation.
 **CONSEQUENCE.** The engine on the highest-traffic pages makes no self-limiting statement.
 
+> **SCOPE VERIFIED 2026-09-20, AND THE GAP IS NARROWER THAN THIS ENTRY READS.** The **UI layer
+> is already covered and guarded**: `check_pages_that_render_engine_output_disclose_validation_status`
+> confirms all four propositions are present on each of the three pages calling `/api/review`,
+> which was B-008. What is missing is only the **API response itself**: `api/review.js` carries
+> **zero** occurrences of "unvalidated", while `api/review-engine.js` and
+> `api/v1/review-engine.js` carry **two each**. So the decision is whether the unversioned
+> engine's JSON should carry the declaration its two siblings do — against its own prompt
+> instruction *"Do not add legal disclaimers inside the JSON, keep it operational."*
+> **Not a page change. Not inserted.**
+
 ## D-6 · Rights and chain of title (B-004)
 
 **QUESTION.** Counsel's determination of the rights position.
@@ -360,6 +370,26 @@ publishable key ships in 17 HTML files by design.
 connection string.**
 
 **QUEUE POSITION.** Behind nothing. These do not wait on D-20 and D-20 does not wait on them.
+
+> **SHIP-TOGETHER CONDITION VERIFIED 2026-09-20 — REVOKING WILL NOT BREAK THE PAGE.**
+> `api/engine-activity.js` is the replacement read path decided at BD-02. It reads
+> `engine_reviews` with **`SUPABASE_SERVICE_ROLE_KEY`**, not the publishable key; it **fails
+> closed at 503** if that key is absent and says nothing about configuration to a public
+> caller; and its select list is **explicit and excludes every free-text column**
+> (`created_at, determination, conditions, runs, overall_consistency, engine_version`). So
+> `engine-activity.html` no longer depends on the anon grant, and **the revocation can be
+> performed without shipping anything alongside it.**
+>
+> **REPOSITORY-SIDE DEPENDENCIES, ENUMERATED.** `engine_reviews` is written by
+> `api/review-engine.js:180` and `api/v1/review-engine.js:181`, and read server-side by
+> `api/engine-activity.js:73`. `finding_responses` is referenced by `finding.html` (the
+> collection path carrying the non-publication promise) and `research-data.html` (where BD-14
+> removed the export row). **No browser path reads either table directly any more.**
+>
+> **CURRENT ROW COUNTS ARE NOT ESTABLISHED THIS CYCLE.** A count-only probe was attempted and
+> **correctly denied by this environment's production-read control**. It was not worked
+> around. The last recorded probe found `engine_reviews` empty; whether that still holds is
+> **NOT ESTABLISHED** and is not inferred.
 
 ---
 
@@ -506,7 +536,7 @@ credential from the environment and never prints it; if you see one, stop and te
 | # | Item | The single act |
 |---|---|---|
 | **D-3** | Correspondence assignments | Name which engine key corresponds to Decision-Process Traceability. **Prepared 2026-09-20:** `METHODOLOGY_TO_API_MAPPING.md` already records the assignment as `accountability_support`, classified **Unresolved**, with `reasoning_traceability` as the second candidate because both Codebook conditions contain "traceability". **The decision is one line naming one key, or recording that the constructs are deliberately distinct** |
-| **D-4** | Subprocessor disclosure | Sign off the published wording. **Publication is a Section 23 act** |
+| **D-4** | Subprocessor disclosure | Sign off the published wording. **Publication is a Section 23 act**. **Draft verified 2026-09-20:** `privacy.html` names **Anthropic, Vercel, Supabase, Formspree, Google Analytics, Google Fonts, OpenAI and Gemini**, and the processor guard confirms **20 hosts across `api/` and 76 pages all classified**, with the dormancy flags and the Fonts caveat asserted. **Nothing to redraft** |
 | **D-5** | Validation statement | Approve inserting the prepared wording and deploying it |
 | **D-18** | STUDY-001 figure | Decide the published wording. **61 runs, 66.7% to 93.3%, mean 85.3%, final run 91.1%.** No figure was changed and none will be by inference |
 | **D-19** | `engine_reviews` grant | Same production act as **D-22**; recorded separately because the promise attached to `finding_responses` is a different proposition |
