@@ -78,3 +78,15 @@ Correct the website shortcomings identified in the comprehensive audit without e
 
 ## Release rule
 These changes improve public clarity and enterprise presentation. They do not convert unresolved external, legal, security, or research matters into closed findings.
+
+
+## Accessibility and first-impression readability completion — 2026-09-21
+
+A final presentation pass was completed after the initial enterprise-polish cycle:
+- raised low-contrast muted text on the Review Engine, organization mini-pilot, and operational-boundaries surfaces;
+- raised the dim accent where the prior value was too dark for small enterprise-facing labels;
+- increased sub-9px buyer-facing microcopy on the homepage, Enterprise, Review Engine, Security, organization mini-pilot, Operational Boundaries, and Public Program Chronology surfaces to a more legible minimum;
+- preserved the black/gold visual identity while improving readability rather than redesigning the site;
+- left deeper training/reference density intact where it serves practitioner use rather than first-impression enterprise navigation.
+
+This pass changes presentation only. It does not create a new validation, security, rights, adoption, or commercial claim.
