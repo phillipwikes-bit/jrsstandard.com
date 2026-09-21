@@ -2020,16 +2020,17 @@ def check_inquiry_options_are_backed_by_the_allowlist(offline):
     on both ends and lands hardest on the option added last, which is the one
     someone bothered to add because it mattered.
 
-    The same inquiry block appears on index.html, review-engine.html and
-    enterprise.html. If they drift, one page quietly stops offering a pathway
-    the others do, and the dashboard cannot reveal it because it records only
-    what was actually chosen.
+    The inquiry block appears on review-engine.html and enterprise.html. The
+    homepage now routes to those focused pages instead of duplicating a third
+    form. If the two forms drift, one page quietly stops offering a pathway the
+    other does, and the dashboard cannot reveal it because it records only what
+    was actually chosen.
 
     The four pathways must also be readable in the labels. A value of
     "acquisition" behind a label that never says Acquisition is not an
     available pathway to the person reading the form.
     """
-    pages = ("enterprise.html", "index.html", "review-engine.html")
+    pages = ("enterprise.html", "review-engine.html")
     api = "api/enterprise-inquiry.js"
     for f in pages + (api,):
         if not os.path.exists(os.path.join(ROOT, f)):
@@ -2055,7 +2056,7 @@ def check_inquiry_options_are_backed_by_the_allowlist(offline):
                 problems.append("%s offers %r, which the endpoint would store "
                                 "as an empty interest" % (page, o))
     if len({tuple(v) for v in sets.values()}) > 1:
-        problems.append("the three inquiry forms offer different option sets: "
+        problems.append("the inquiry forms offer different option sets: "
                         + "; ".join("%s=%d" % (k, len(v))
                                     for k, v in sorted(sets.items())))
     if sets:
@@ -2072,7 +2073,7 @@ def check_inquiry_options_are_backed_by_the_allowlist(offline):
                                     % (page, word))
     check("inquiry options are backed by the allowlist",
           not problems,
-          "3 forms, %d identical options, all on the allowlist, four pathways "
+          "2 forms, %d identical options, all on the allowlist, four pathways "
           "named" % len(next(iter(sets.values())) if sets else [])
           if not problems else "%d problem(s): %s"
           % (len(problems), "; ".join(problems[:2])))
@@ -3443,94 +3444,49 @@ DUAL_TRACK_BANNED = ("enterprise.html", "review-engine.html", "pilot.html",
 
 
 def check_dual_track_band(offline):
-    """The dual-track band must exist on all five core pages and be identical.
+    """Protect the current public-resource and controlled-implementation boundary.
 
-    Five hand-editable copies of the same positioning is the defect the panel
-    binder already taught this repository: they drift, and the drift is invisible
-    because nobody reads five pages side by side. Identical copies also mean the
-    Track 2 promise, that guides and training stay free, cannot quietly weaken on
-    one page while holding on the others.
+    The homepage now leads with the free public resource hub instead of repeating
+    an enterprise band. Training retains its contextual bridge below the modules.
+    Enterprise, API, and pilot pages must not regain the public-track band.
     """
-    pat = re.compile(r"<!-- JRS DUAL TRACK v1.*?<!-- /JRS DUAL TRACK v1 -->", re.S)
-    found = {}
-    for p in DUAL_TRACK_PAGES:
-        try:
-            blocks = pat.findall(read(p))
-        except Exception:
-            blocks = []
-        if blocks:
-            found[p] = blocks
-    missing = [p for p in DUAL_TRACK_PAGES if p not in found]
-    many = [p for p, v in found.items() if len(v) != 1]
-    texts = set(b for v in found.values() for b in v)
-    ok = not missing and not many and len(texts) == 1
-    check("dual-track band present and identical on core pages", ok,
-          "%d pages, 1 identical block each" % len(found) if ok
-          else "missing: %s; duplicated: %s; distinct texts: %d"
-               % (", ".join(missing) or "none", ", ".join(many) or "none", len(texts)))
+    home = read("index.html")
+    resources = read("resources.html")
+    boundary = (
+        'href="resources.html" class="btn btn-primary"' in home
+        and "Practitioner resources remain free and ungated" in home
+        and "controlled implementation" in resources.lower()
+        and "public standard" in resources.lower()
+    )
+    check("public and controlled tracks remain distinct", boundary,
+          "homepage leads to free resources; resources page states the public-standard and controlled-implementation boundary"
+          if boundary else "the public-resource or controlled-implementation boundary is incomplete")
 
-    # PLACEMENT, not just presence. Measured against visible text with script and
-    # style stripped, because a band buried below the fold is a band nobody sees.
-    #
-    # training.html IS DELIBERATELY EXEMPT FROM THE TOP-OF-PAGE RULE, 2026-08-25.
-    # On that page the band is not a positioning statement, it is an obstacle.
-    # It sat between the headline and the first module and, on a 390px phone,
-    # filled a screen and a half of enterprise licensing copy in front of a
-    # reader who had come for the six free modules. The owner opened the page,
-    # saw B2B API copy where the training should be, and reported it broken.
-    #
-    # The band still has to be there and still has to be byte-identical, which
-    # the check above enforces. On this one page it must sit AFTER the module
-    # list instead of before it, and that ordering is asserted below rather than
-    # left to whoever edits the file next.
-    TRAINING_EXEMPT = "training.html"
-    buried = []
-    for p in DUAL_TRACK_PAGES:
-        if p == TRAINING_EXEMPT:
-            continue
-        try:
-            body = read(p)
-        except Exception:
-            continue
-        if "<body" not in body:
-            continue
-        vis = body[body.index("<body"):]
-        vis = re.sub(r"<script.*?</script>|<style.*?</style>", " ", vis, flags=re.S)
-        vis = re.sub(r"<[^>]+>", " ", vis)
-        vis = re.sub(r"\s+", " ", vis)
-        i = vis.find("The Enterprise Platform Track")
-        if i < 0:
-            buried.append("%s (absent)" % p)
-        elif len(vis) and (100.0 * i / len(vis)) > 12.0:
-            buried.append("%s (%.1f%% down)" % (p, 100.0 * i / len(vis)))
-    check("dual-track band sits near the top of each page", not buried,
-          "; ".join(buried) if buried
-          else "all %d pages place it within the first 12%% of visible text "
-               "(training.html exempt, see below)"
-               % (len(DUAL_TRACK_PAGES) - 1))
+    hero_end = home.find('<div class="home-proof-strip"')
+    hero = home[:hero_end] if hero_end > 0 else ""
+    prominent = (
+        'href="resources.html" class="btn btn-primary"' in hero
+        and 'href="enterprise.html"' in hero
+    )
+    check("free resources lead the homepage", prominent,
+          "free resources are the primary hero action and enterprise remains visible"
+          if prominent else "homepage opening actions do not preserve the intended order")
 
-    # The exemption is not a free pass. On training.html the band must come
-    # AFTER the modules, which is the whole point of exempting it.
-    tsrc = read(TRAINING_EXEMPT)
+    tsrc = read("training.html")
     i_mod = tsrc.find('id="module-list"')
-    i_band = tsrc.find("The Enterprise Platform Track")
+    i_band = tsrc.find("<!-- JRS DUAL TRACK v1")
     check("on training.html the dual-track band sits after the modules",
           i_mod > 0 and i_band > i_mod,
           "module-list=%d band=%d" % (i_mod, i_band))
 
-    # Track 2 is a promise, not decoration. If the band ever stops saying the
-    # public material is free, that is a reversal of a locked decision.
-    if texts:
-        body = next(iter(texts))
-        check("dual-track band still promises the free public track",
-              "Free, ungated, and staying that way" in body,
-              "Track 2 language intact" )
-    else:
-        check("dual-track band still promises the free public track", False,
-              "no band found")
+    free_promise = (
+        "Free, ungated access for individual professional evaluation and learning" in tsrc
+        and "No account, card, expiry, or registration wall" in tsrc
+    )
+    check("training bridge still promises the free public track", free_promise,
+          "free, ungated, no-account access remains explicit"
+          if free_promise else "the training bridge no longer carries the complete free-access promise")
 
-    # The ban is asserted, not assumed. A block that is merely absent today can
-    # be pasted back tomorrow by anyone reading the other four pages.
     intruders = [p for p in DUAL_TRACK_BANNED
                  if "The Enterprise Platform Track" in read(p)]
     check("dual-track band stays off the Track 1 pages", not intruders,
@@ -4527,7 +4483,7 @@ def check_free_track_bridges_to_the_licence(offline):
     """
     pages = ("jrsstandard.html", "codebook.html", "simulations.html",
              "investigator-guides.html", "check.html")
-    blocks, missing = {}, []
+    missing, incomplete = [], []
     for page in pages:
         src = read(page)
         a = src.find("<!-- JRS TRACK BRIDGE v1")
@@ -4535,14 +4491,24 @@ def check_free_track_bridges_to_the_licence(offline):
             missing.append(page)
             continue
         b = src.find("<footer", a)
-        blocks[page] = src[a:b]
+        block = src[a:b]
+        absent = []
+        if 'href="review-engine.html"' not in block:
+            absent.append("API contract")
+        if 'href="enterprise.html#enterprise-inquiry"' not in block:
+            absent.append("enterprise inquiry")
+        if not re.search(r"\bfree\b|without a registration wall", block, re.I):
+            absent.append("free-access promise")
+        if absent:
+            incomplete.append("%s lacks %s" % (page, ", ".join(absent)))
     if missing:
         check("free-track pages bridge to the licence", False,
               "no bridge on: %s" % ", ".join(missing))
         return
-    uniq = set(blocks.values())
-    check("free-track pages bridge to the licence", len(uniq) == 1,
-          "%d pages, %d distinct copies" % (len(blocks), len(uniq)))
+    check("free-track pages bridge to the licence", not incomplete,
+          "; ".join(incomplete) if incomplete else
+          "%d pages each preserve free access and link to the API contract and enterprise inquiry"
+          % len(pages))
 
 
 def check_api_contract_has_a_runnable_example(offline):
@@ -4556,18 +4522,20 @@ def check_api_contract_has_a_runnable_example(offline):
 
 
 def check_homepage_hero_offers_both_tracks(offline):
-    """Both doors must sit directly under the headline, one per track."""
+    """The homepage must expose the public path first and keep enterprise visible."""
     src = read("index.html")
-    i = src.find('class="hero-sub"')
-    j = src.find('<div class="dual-track">')
+    i = src.find('<div class="hero">')
+    j = src.find('<div class="home-proof-strip"', i)
     if i < 0 or j < 0 or j < i:
         check("homepage hero offers both tracks", False, "hero landmarks not found")
         return
     between = src[i:j]
-    free = "check.html" in between
-    ent = "enterprise.html#enterprise-inquiry" in between
-    check("homepage hero offers both tracks", free and ent,
-          "free=%s enterprise=%s, between hero-sub and the dual-track block" % (free, ent))
+    free = 'href="resources.html" class="btn btn-primary"' in between
+    standard = 'href="jrsstandard.html"' in between
+    ent = 'href="enterprise.html"' in between
+    check("homepage hero offers both tracks", free and standard and ent,
+          "free-primary=%s standard=%s enterprise=%s in the opening hero" %
+          (free, standard, ent))
 
 
 def check_openapi_matches_the_implementation(offline):
