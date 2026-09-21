@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Run JRS on your own records &middot; JRS</title>
 <meta name="robots" content="index,follow">
-<meta name="description" content="Run the Justification Review Standard on up to twenty five of your own records, free. Your record text is never stored.">
+<meta name="description" content="Run the Justification Review Standard on a bounded set of de-identified records. Raw record text is not persisted by JRS; review the Privacy Policy before using sensitive material.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <!-- /pilot is a shareable campaign path and most of its traffic arrives from
      LinkedIn, where a link with no OpenGraph block renders as a bare grey row.
      noindex keeps the page out of search; it has no bearing on a share card. -->
 <meta property="og:title" content="Run JRS on your own records, free" />
-<meta property="og:description" content="Paste one record and get a five-condition read straight away. No sign-up for the first check. Your record text is never stored: each record is assessed in memory and discarded." />
+<meta property="og:description" content="Paste a de-identified record and get a five-condition read. Raw record text is not persisted by JRS; current processing and telemetry are described in the Privacy Policy." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.jrsstandard.com/org-pilot.html" />
 <meta property="og:image" content="https://jrsstandard.com/og-card.png" />
@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="JRS&#8482; Justification Review Standard" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Run JRS on your own records, free" />
-<meta name="twitter:description" content="Paste one record and get a five-condition read straight away. No sign-up for the first check. Your record text is never stored." />
+<meta name="twitter:description" content="Paste a de-identified record and get a five-condition read. Raw record text is not persisted by JRS; see the Privacy Policy for current processing and telemetry." />
 <meta name="twitter:image" content="https://jrsstandard.com/og-card.png" />
 <link rel="canonical" href="https://www.jrsstandard.com/org-pilot.html" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -146,7 +146,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
   <section id="step-org">
     <h1>Run JRS on your own records</h1>
     <p class="lede">The Organizational Pilot Package. Paste up to twenty five of your own records, one at a time. Each is assessed against the five review conditions and you get the read immediately. Free, no obligation, and you can stop after one.</p>
-    <p class="lede">Running an organizational pilot is confidential. Your records are processed in memory and never stored or retained, and running one carries no public endorsement obligation.</p>
+    <p class="lede">Running the mini-pilot carries no public endorsement obligation. Raw record text is not persisted by JRS, but it is transmitted for model inference. Use de-identified or non-sensitive text unless your organization has approved that processing.</p>
     
 
 <p class="stage-note"><b style="color:var(--text)">Stage, stated plainly.</b> The review engine behind this pilot is unvalidated and single-model, in operational validation. Reproducibility is disclosed rather than hidden, and reproducibility is not accuracy and not validation. <b>No effectiveness claim is made.</b> What this pilot gives you is a measured distribution across your own records, not a verdict on them.</p>
@@ -188,9 +188,9 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     </section>
 
     <div class="privacy">
-      <b style="color:var(--ready-text)">Your record text is never stored.</b> Each record is assessed in memory and discarded. Nothing you paste is written to any database, and it is not used to train anything. Only the count of records you ran and the pattern of results is kept, so the programme can report that an organization used the standard without ever holding what it looked at.
+      <b style="color:var(--ready-text)">Raw record text is not persisted by JRS.</b> The text is transmitted to the model provider for assessment and is not written to JRS storage. Aggregate use and result-pattern data, and any defined derived telemetry on the route used, are handled under the <a href="privacy.html" style="color:var(--accent)">Privacy Policy</a>.
       <br><br>
-      Even so, please remove names and other identifying details before pasting. A record works for this purpose with the specifics redacted.
+      Remove names, identifiers, privileged content, and other sensitive details before pasting unless your organization has approved the processing path.
     </div>
 
     <div class="card">
@@ -202,12 +202,12 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
       <input id="p-org" type="text" placeholder="Organization name" autocomplete="organization">
 
 
-      <label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--muted);line-height:1.5;border:1px solid var(--accent-dim);background:var(--surface2);padding:12px 13px;margin:0 0 10px;cursor:pointer"><input type="checkbox" id="p-registry" style="width:auto;margin:2px 0 0;flex:0 0 auto"><span>I agree to receive my diagnostic results and updates on the JRS standard, and to my details being stored securely under the <a href="privacy.html#consent" id="p-terms-link" style="color:var(--accent);text-decoration:underline">registration terms</a>. <span style="color:var(--text)">No record text is ever stored, and your name and organization are <b style="color:var(--ready-text);font-weight:600">not published</b> by ticking this.</span></span></label>
-      <div id="p-terms" style="display:none;border:1px solid var(--accent-dim);background:var(--surface2);padding:13px 14px;margin:0 0 10px;font-size:12px;color:var(--muted);line-height:1.6">Ticking the box means three things and no more: contact me about the JRS project, store my details securely, and allow that record to travel with the project if the JRS assets are ever transferred to a successor. It does <b style="color:var(--text)">not</b> publish your name or your organization. Your record text is never stored: each record is assessed in memory and discarded. Full detail in the <a href="privacy.html#consent" style="color:var(--accent)">Privacy Policy</a>.</div>
+      <label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--muted);line-height:1.5;border:1px solid var(--accent-dim);background:var(--surface2);padding:12px 13px;margin:0 0 10px;cursor:pointer"><input type="checkbox" id="p-registry" style="width:auto;margin:2px 0 0;flex:0 0 auto"><span>I agree to receive my diagnostic results and updates on the JRS standard, and to my details being stored securely under the <a href="privacy.html#consent" id="p-terms-link" style="color:var(--accent);text-decoration:underline">registration terms</a>. <span style="color:var(--text)">Raw record text is not persisted by JRS, and your name and organization are <b style="color:var(--ready-text);font-weight:600">not published</b> by ticking this.</span></span></label>
+      <div id="p-terms" style="display:none;border:1px solid var(--accent-dim);background:var(--surface2);padding:13px 14px;margin:0 0 10px;font-size:12px;color:var(--muted);line-height:1.6">Ticking the box means three things and no more: contact me about the JRS project, store my details securely, and allow that record to travel with the project if the JRS assets are ever transferred to a successor. It does <b style="color:var(--text)">not</b> publish your name or your organization. Raw record text is not persisted by JRS; current processing and telemetry are described in the <a href="privacy.html#consent" style="color:var(--accent)">Privacy Policy</a>.</div>
 
       <div id="org-msg" style="font-size:12.5px;color:var(--review-text);min-height:16px;margin-bottom:6px"></div>
       <button id="org-go" type="button" style="width:100%">Launch private pilot workspace →</button>
-      <p class="fine" style="text-align:center;color:var(--ready-text)">Free access &middot; No credit card &middot; Memory-only record processing</p>
+      <p class="fine" style="text-align:center;color:var(--ready-text)">Free evaluation &middot; No credit card &middot; Raw text not persisted by JRS</p>
     </div>
   </section>
 
@@ -218,7 +218,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     <p class="lede">Paste one record, redacted, then run the review. You can do up to twenty five. Each read appears below.</p>
 
     <div class="privacy">
-      <b style="color:var(--ready-text)">Not stored.</b> This text is assessed in memory and discarded when the read returns.
+      <b style="color:var(--ready-text)">Not persisted by JRS.</b> This text is transmitted for assessment. Use de-identified or non-sensitive text unless your organization has approved the processing path.
     </div>
 
     <div class="card">
@@ -272,7 +272,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
         <button id="next-go" type="button" class="ghost">Run another record</button>
         <button id="finish-go" type="button">Finish and record this pilot</button>
       </div>
-      <p class="fine">Finishing records that your organization ran the standard, with the count and the pattern of results. It does not send your record text, because that was never kept.</p>
+      <p class="fine">Finishing records that your organization ran the standard, with the count and the pattern of results. The pilot summary does not include the raw record text.</p>
     </div>
   </section>
 
@@ -283,7 +283,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     <p class="lede" id="done-line"></p>
     <div class="card">
       <p style="font-size:13.5px;color:var(--muted);margin-bottom:12px">Your organization is now counted among those that have applied the standard to their own records. The aggregate appears on the public status page, showing counts only, never your organization's results or text unless you agreed to be named.</p>
-      <p style="font-size:13.5px;color:var(--muted);margin-bottom:12px">The person who runs a pilot for their organization carries the designation <b style="color:var(--text)">JRS Lead Diagnostic Advisor</b>.</p>
+      <p style="font-size:13.5px;color:var(--muted);margin-bottom:12px">The person who runs a pilot may use the resulting summary for internal evaluation. Pilot participation does not confer a JRS credential, certification, accreditation, or professional designation.</p>
       <p style="font-size:13.5px;color:var(--muted);margin-bottom:12px"><b style="color:var(--text)">Your executive summary is ready.</b> One page, written for internal leadership: what was reviewed, how the records routed, where the five conditions held and where they did not, and what to do next. It is generated in your browser from the counts on screen, so it contains no record text.</p>
       <div class="teaser" style="border-color:var(--accent-dim)">
         <div class="teaser-lbl">Optional &middot; the public Registry</div>
