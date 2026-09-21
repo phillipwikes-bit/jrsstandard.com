@@ -18,7 +18,7 @@
 <meta name="twitter:image" content="https://jrsstandard.com/og-card.png" />
 <link rel="canonical" href="https://www.jrsstandard.com/review-engine.html" />
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-<meta name="description" content="How the JRS review call handles record text: stateless, no retention at rest, no training use, per-organisation tokens, fail-closed authentication. The one-pager a security reviewer asks for.">
+<meta name="description" content="How the JRS review call handles data: stateless per request, raw record text not persisted by JRS, disclosed derived telemetry, per-organisation tokens, and fail-closed authentication.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -264,7 +264,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 
 <div class="page-eyebrow">Enterprise: Security and Data Handling</div>
 <h1 class="page-title">What happens to a record when it passes through the review call</h1>
-<p class="page-subtitle">This is the page to send to a security reviewer. It states what the endpoint does with record text, what it keeps, what it never sees, and what it does not claim. Every statement here is implemented in <code>api/v1/review-engine.js</code> and is checkable against the response payload you receive.</p>
+<p class="page-subtitle">This page summarizes the current Review Engine data flow for security review: what is transmitted, what JRS does not persist, what derived telemetry may be retained, and what the interface does not claim. Implementation and contract details remain subject to the versioned API materials and current production controls.</p>
 
 <div class="btn-row" style="margin-top:0;">
  <a href="enterprise.html#enterprise-inquiry" class="btn btn-primary">Make a technical integration inquiry &rarr;</a>
