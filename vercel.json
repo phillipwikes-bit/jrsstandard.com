@@ -28,6 +28,16 @@
       "permanent": false
     },
     {
+      "source": "/resources",
+      "destination": "/resources.html",
+      "permanent": false
+    },
+    {
+      "source": "/free-resources",
+      "destination": "/resources.html",
+      "permanent": false
+    },
+    {
       "source": "/about",
       "destination": "/about.html",
       "permanent": false

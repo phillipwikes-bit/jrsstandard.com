@@ -95,14 +95,15 @@
       "asset_id": "JRS-SITE",
       "name": "Public website",
       "type": "website",
-      "location": [
-        "*.html",
-        "reference/",
-        "reviewer/"
-      ],
-      "classification": "PUBLIC",
-      "page_count": 55,
-      "reference_page_count": 17
+            "location": [
+                "*.html",
+                "resources.html",
+                "reference/",
+                "reviewer/"
+            ],
+            "classification": "PUBLIC",
+            "page_count": 56,
+            "reference_page_count": 17
     },
     {
       "asset_id": "JRS-OWNER",

@@ -50,7 +50,7 @@ secondary summary. **A higher level does not erase a lower one.**
 | Trackers | 9 records including historical and generated | Complete |
 | Correspondence | `research/correspondence/`, 40+ message and reply records | Complete |
 | **External published articles** | **3 LinkedIn articles fetched and read live** | **Complete** |
-| Website | 54 public pages | Complete |
+| Website | 55 public pages, including the canonical public-resource hub added 2026-09-21 | Complete |
 
 # 5. Consolidated executive findings
 
