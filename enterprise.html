@@ -239,6 +239,14 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
   .wrap,.container,.container-wide{padding-left:16px;padding-right:16px}
 }
 .cred{font-size:12px;color:var(--muted-soft);line-height:1.6;border-left:2px solid var(--accent-dim);padding-left:11px;margin:18px 0 0;max-width:660px}
+.enterprise-inquiry-panel,.enterprise-detail{border:1px solid var(--rule);background:var(--surface);margin:18px 0 30px}
+.enterprise-inquiry-panel>summary,.enterprise-detail>summary{list-style:none;cursor:pointer;min-height:48px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 16px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.enterprise-inquiry-panel>summary::-webkit-details-marker,.enterprise-detail>summary::-webkit-details-marker{display:none}
+.enterprise-inquiry-panel>summary::after,.enterprise-detail>summary::after{content:'+';font-size:16px;line-height:1;color:var(--muted)}
+.enterprise-inquiry-panel[open]>summary::after,.enterprise-detail[open]>summary::after{content:'−'}
+.enterprise-inquiry-panel>summary:focus-visible,.enterprise-detail>summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.enterprise-inquiry-body,.enterprise-detail-body{border-top:1px solid var(--rule);padding:18px 18px 4px}
+.enterprise-detail-body>div:last-child{margin-bottom:18px!important}
 @media(max-width:700px){#main-content > [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr 1fr!important}}
 @media(max-width:420px){#main-content > [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr!important}}
 </style>
@@ -261,22 +269,19 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
   </button>
  </div>
  <div class="primary-nav-inner" id="primary-nav-items">
-  <a href="/api/dl?e=standard&amp;src=enterprise" class="nav-item">Review Controls</a>
-  <a href="index.html#section-scenarios" class="nav-item">Documentation Failures</a>
-  <a href="index.html#section-tools" class="nav-item">Free Resources</a>
-  <a href="index.html#section-kit" class="nav-item">Deployment Kit &#8599;</a>
-  <a href="training.html" class="nav-item">Simulation Training &#8599;</a>
-  <a href="investigator-guides.html" class="nav-item">Investigator Guides &#8599;</a>
-  <a href="index.html#section-guidance" class="nav-item">Implementation</a>
-  <a href="enterprise.html" class="nav-item active">Enterprise</a>
-  <a href="index.html#section-about" class="nav-item">About</a>
+  <a href="index.html" class="nav-item">Home</a>
+  <a href="jrsstandard.html" class="nav-item">The Standard</a>
+  <a href="research.html" class="nav-item">Evidence &amp; Research</a>
+  <a href="index.html#section-tools" class="nav-item">Practitioner Resources</a>
+  <a href="enterprise.html" class="nav-item active">Enterprise Licensing</a>
+  <a href="about.html" class="nav-item">About</a>
  </div>
 </nav>
 
 <div class="util-bar">
  <div class="util-bar-inner">
   <span class="util-label">Enterprise</span>
-  <a href="#enterprise-inquiry" class="util-link accent-link">Enterprise inquiry</a>
+  <a href="#enterprise-inquiry" class="util-link accent-link">Discuss licensing</a>
   <a href="/api/dl?e=standard&amp;src=enterprise" class="util-link">Review Controls</a>
   <a href="training.html" class="util-link">Training</a>
  </div>
@@ -296,7 +301,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
      the rendered page, not read from source. -->
 <div class="btn-row" style="margin-top:0;">
  <a href="review-engine.html" class="btn btn-primary">Review the API &amp; integration model &rarr;</a>
- <a href="#enterprise-inquiry" class="btn btn-accent">Enterprise inquiry &rarr;</a>
+ <a href="#enterprise-inquiry" class="btn btn-accent">Discuss licensing &rarr;</a>
  <a href="research.html" class="btn btn-ghost">Research &amp; limitations</a>
 </div>
 
@@ -340,19 +345,22 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:18px 0 22px;">
   <div style="border:1px solid var(--rule);padding:14px 16px;background:var(--surface2);">
    <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:7px;">Licensing</div>
-   <p class="body-text" style="margin:0;font-size:13px;">Organisations interested in using JRS within an organisational or professional environment.</p>
+   <p class="body-text" style="margin:0;font-size:13px;">Organisations evaluating commercial organisational use of JRS under an agreed licence.</p>
   </div>
   <div style="border:1px solid var(--rule);padding:14px 16px;background:var(--surface2);">
    <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:7px;">Integration</div>
-   <p class="body-text" style="margin:0;font-size:13px;">Organisations or technology providers interested in incorporating the JRS Review Engine or associated capabilities into an existing workflow or system.</p>
+   <p class="body-text" style="margin:0;font-size:13px;">Technology providers evaluating embedding the JRS Review Engine into an existing product or workflow.</p>
   </div>
   <div style="border:1px solid var(--rule);padding:14px 16px;background:var(--surface2);">
    <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:7px;">Acquisition</div>
-   <p class="body-text" style="margin:0;font-size:13px;">Organisations interested in acquiring JRS intellectual property and associated assets.</p>
+   <p class="body-text" style="margin:0;font-size:13px;">Qualified parties evaluating acquisition of JRS assets through a controlled diligence process.</p>
   </div>
  </div>
  <p class="body-text">Submissions route directly to a private operational dashboard, not to a public queue and not to a mailing list. Licensing and integration inquiries receive the integration schema, the tier that fits, and a written scope in one reply. <b>No records are sent at this stage.</b></p>
- <form id="ei-form">
+ <details class="enterprise-inquiry-panel">
+  <summary>Open enterprise inquiry form</summary>
+  <div class="enterprise-inquiry-body">
+<form id="ei-form">
   <label class="ei-l">Name<input class="ei-i" name="name" required maxlength="120" autocomplete="name"></label>
   <label class="ei-l">Work email<input class="ei-i" name="email" type="email" required maxlength="160" autocomplete="email"></label>
   <label class="ei-l">Organisation<input class="ei-i" name="organization" required maxlength="160" autocomplete="organization"></label>
@@ -391,6 +399,8 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
   <button class="btn btn-accent" type="submit" id="ei-b">Send inquiry</button>
   <p id="ei-m" role="status" class="muted-text"></p>
  </form>
+  </div>
+ </details>
 </div>
 
 
@@ -430,6 +440,9 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
  </div>
 </div>
 
+<details class="enterprise-detail">
+ <summary>Implementation context, sector examples, and deployment detail</summary>
+ <div class="enterprise-detail-body">
 <div style="margin-bottom:44px;">
  <h2 class="section-head">Where Scrutiny Is Shifting</h2>
  <p class="body-text" style="max-width:600px;">As organizations adopt AI across operational work, external review is moving away from the decision alone, and from the AI system alone, toward the documentation those systems help produce. Regulators, auditors, litigants, inspectors general, and public-records professionals rarely examine a model directly. They examine the record. Increasingly the question is not only what was decided, but whether the record can explain how the organization moved from evidence to decision, and whether it can withstand independent review.</p>
@@ -816,6 +829,10 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
  </div>
 </div>
 
+
+ </div>
+</details>
+
 <div style="margin-bottom:20px;" id="integration-overview">
  <h2 class="section-head">Clean technical integration</h2>
  <p class="body-text">The JRS review engine is licensed as a <b>stateless review gate</b>. A partner platform sends the text of one record and receives a structured determination across the five review conditions, together with a request identifier that ties the call to an entry in its own audit trail. There is no session, no accumulated profile, and nothing carried between requests.</p>
@@ -845,7 +862,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
  <p class="body-text"><b>Stage, stated plainly:</b> the engine is unvalidated and single-model, in operational validation. Cross-vendor consistency is disclosed rather than hidden. It is raw agreement, not accuracy, reliability, established reproducibility, or validation; the pre-registered reproducibility criterion is not established because no chance-corrected AC1 was computed for that study. No effectiveness claim is made. Every API response repeats this in its own payload.</p>
 
  <div class="btn-row">
-  <a href="#enterprise-inquiry" class="btn btn-primary">Enterprise inquiry &rarr;</a>
+  <a href="#enterprise-inquiry" class="btn btn-primary">Discuss licensing &rarr;</a>
   <a href="review-engine.html" class="btn btn-accent">Integration schema and API contract &rarr;</a>
  </div>
 </div>
