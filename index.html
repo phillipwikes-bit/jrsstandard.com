@@ -929,6 +929,29 @@ a.gumroad-button.util-link {
   .nav-item{width:100%;justify-content:flex-start}
 }
 .cred{font-size:12px;color:var(--muted-soft);line-height:1.6;border-left:2px solid var(--accent-dim);padding-left:11px;margin:18px 0 0;max-width:660px}
+
+/* SELECTIVE ENTERPRISE HOMEPAGE, 2026-09-21.
+   The opening now carries only the buyer's decision sequence. Detailed
+   methodology, research, integration, and practitioner material remains on
+   the substantial pages already dedicated to those subjects. */
+.home-decision-path{margin:26px 0 0;border-top:1px solid var(--rule)}
+.home-path-row{display:grid;grid-template-columns:132px minmax(0,1fr) auto;gap:22px;align-items:center;padding:22px 0;border-bottom:1px solid var(--rule)}
+.home-path-label{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.home-path-title{font-family:'Bodoni Moda',serif;font-size:21px;line-height:1.25;color:var(--text);margin-bottom:4px}
+.home-path-copy{font-size:13px;line-height:1.65;color:var(--muted);max-width:590px}
+.home-path-link{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;white-space:nowrap;padding:10px 0}
+.home-path-link:hover{color:var(--text)}
+.home-next-step{margin-top:26px;border:1px solid rgba(190,148,71,.4);background:rgba(190,148,71,.04);padding:20px 22px;display:flex;justify-content:space-between;gap:20px;align-items:center}
+.home-next-step-title{font-family:'Bodoni Moda',serif;font-size:23px;line-height:1.25;color:var(--text);margin-bottom:6px}
+.home-next-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.home-next-note{font-size:12px;color:var(--muted-soft);line-height:1.65;padding-top:14px}
+.home-next-note a{color:var(--accent);text-decoration:none}
+@media (max-width:720px){
+  .home-path-row{grid-template-columns:1fr;gap:6px;padding:19px 0}
+  .home-path-link{padding:6px 0 0}
+  .home-next-step{align-items:flex-start;flex-direction:column;gap:14px}
+  .home-next-actions{justify-content:flex-start}
+}
 </style>
 </head>
 <body>
@@ -987,57 +1010,42 @@ a.gumroad-button.util-link {
  <div style="padding:13px 14px;"><div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Technology</div><div style="font-size:13px;color:var(--text);">Operational validation</div></div>
 </div>
 
-<!-- JRS DUAL TRACK v1 :: CANONICAL BLOCK. Byte-identical on every page that
-     carries it. Customer-facing voice only: no pricing, no internal capacity,
-     no claim that any security assessment is avoided. -->
-<div class="dual-track">
- <div class="dt-card dt-enterprise">
-  <div class="dt-tag">Track 1 &middot; Enterprise Platform</div>
-  <div class="dt-head">License the Review Engine</div>
-  <p class="dt-body">For GRC, legal-tech, compliance, investigation, and records platforms, the JRS Review Engine applies the five review conditions as a <b>pre-finalization decision gate</b>. One record in; a structured determination and request identifier return to the partner workflow.</p>
-  <p class="dt-body"><b>Independent per request; raw record text is not persisted by JRS.</b> Record text is transmitted to Anthropic for inference and is not written to JRS storage. Defined derived evaluation telemetry is handled as described in the <a href="privacy.html" style="color:var(--accent);">Privacy Policy</a>. The interface is token-gated and versioned. The engine remains in operational validation; no validated-effectiveness claim is made.</p>
-  <div class="dt-links"><a href="review-engine.html">Integration schema</a> <a href="enterprise.html#enterprise-inquiry">Enterprise inquiry</a></div>
+<div class="home-decision-path" aria-label="JRS evaluation path">
+ <div class="home-path-row">
+  <div class="home-path-label">Why it matters</div>
+  <div><div class="home-path-title">The record must survive the decision-maker.</div><div class="home-path-copy">JRS identifies documentation conditions that can prevent a later reviewer from reconstructing why a consequential decision was made.</div></div>
+  <a class="home-path-link" href="decision-reconstruction-risk.html">See the risk &rarr;</a>
  </div>
- <div class="dt-card dt-public">
-  <div class="dt-tag">Track 2 &middot; Practitioner</div>
-  <div class="dt-head">Practitioner Access</div>
-  <p class="dt-body">Free, ungated access for individual professional evaluation and learning: the core standard, Decision Reconstruction Risk simulations, the six-module reviewer training, and the Investigator Guides.</p>
-  <p class="dt-body"><b>No account, card, expiry, or registration wall.</b> Commercial embedding and licensing are handled separately through the enterprise track.</p>
-  <div class="dt-links"><a href="investigator-guides.html">Investigator Guides</a> <a href="training.html">Training</a> <a href="check.html">Seven-point check</a></div>
+ <div class="home-path-row">
+  <div class="home-path-label">How it works</div>
+  <div><div class="home-path-title">Five conditions, applied before finalization.</div><div class="home-path-copy">The published methodology identifies records that are ready, require revision, or should be escalated.</div></div>
+  <a class="home-path-link" href="jrsstandard.html">Review the method &rarr;</a>
  </div>
-</div>
-<!-- /JRS DUAL TRACK v1 -->
-
-<div style="margin:26px 0;border-left:2px solid var(--accent);padding:3px 0 3px 16px;max-width:760px;">
- <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:7px;">Standard first. Implementation second.</div>
- <p style="font-size:13.5px;color:var(--muted);line-height:1.7;margin:0;"><b style="color:var(--text);">JRS is the methodology.</b> The Review Engine is one licensed implementation of the same five conditions. The standard remains usable by a person, on paper, or inside an existing workflow without buying software.</p>
-</div>
-
-<div style="margin:0 0 26px;">
- <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px;">Four ways to evaluate JRS</div>
- <div class="home-eval-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
-  <a href="jrsstandard.html" style="text-decoration:none;border:1px solid var(--rule);background:var(--surface);padding:16px;display:block;"><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px;">Understand the Standard</div><div style="font-size:12px;color:var(--muted);line-height:1.55;">Read the five-condition methodology and scope.</div></a>
-  <a href="research.html" style="text-decoration:none;border:1px solid var(--rule);background:var(--surface);padding:16px;display:block;"><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px;">Examine the Evidence</div><div style="font-size:12px;color:var(--muted);line-height:1.55;">See measured results, negative findings, and limitations.</div></a>
-  <a href="simulations.html" style="text-decoration:none;border:1px solid var(--rule);background:var(--surface);padding:16px;display:block;"><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px;">Test the Method</div><div style="font-size:12px;color:var(--muted);line-height:1.55;">Use simulations and the record check before any organizational commitment.</div></a>
-  <a href="enterprise.html" style="text-decoration:none;border:1px solid rgba(190,148,71,.45);background:rgba(190,148,71,.04);padding:16px;display:block;"><div style="font-size:13px;font-weight:600;color:var(--accent);margin-bottom:5px;">Evaluate for Enterprise</div><div style="font-size:12px;color:var(--muted);line-height:1.55;">Review integration, data handling, licensing, and inquiry paths.</div></a>
+ <div class="home-path-row">
+  <div class="home-path-label">Evidence</div>
+  <div><div class="home-path-title">Measured results, negative findings, and limits.</div><div class="home-path-copy">The public research record separates observed results from matters still under validation.</div></div>
+  <a class="home-path-link" href="research.html">Examine the evidence &rarr;</a>
+ </div>
+ <div class="home-path-row">
+  <div class="home-path-label">Enterprise fit</div>
+  <div><div class="home-path-title">A defined gate for existing systems.</div><div class="home-path-copy">Evaluate the standard, evidence, API contract, boundaries, controlled pilot, and licensing path.</div></div>
+  <a class="home-path-link" href="review-engine.html">See integration &rarr;</a>
  </div>
 </div>
 
-<div style="margin-bottom:26px;border:1px solid rgba(190,148,71,.3);background:rgba(190,148,71,.03);padding:20px 22px;">
- <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">Enterprise path</div>
- <div style="font-family:'Bodoni Moda',serif;font-size:20px;color:var(--text);margin-bottom:8px;">Evaluate &rarr; controlled pilot &rarr; integrate &rarr; license</div>
- <p style="font-size:13.5px;color:var(--muted);line-height:1.7;margin:0 0 12px;max-width:760px;">The enterprise path is designed to let a buyer examine the standard, evidence, API contract, and operational boundaries before making a licensing decision. No effectiveness or regulatory-compliance claim is implied by evaluation access.</p>
- <a href="enterprise.html" class="btn btn-ghost" style="display:inline-flex;">Open enterprise evaluation &rarr;</a>
+<div class="home-next-step">
+ <div>
+  <div class="home-path-label" style="margin-bottom:7px;">Choose a path</div>
+  <div class="home-next-step-title">Enterprise integration or practitioner use</div>
+ </div>
+ <div class="home-next-actions">
+  <a href="enterprise.html" class="btn btn-accent">Explore Enterprise Integration &rarr;</a>
+  <a href="check.html" class="btn btn-ghost">Check a Record &rarr;</a>
+ </div>
 </div>
 
-<div style="font-size:12.5px;color:var(--muted-soft);line-height:1.65;max-width:760px;border-top:1px solid var(--rule);padding-top:16px;">
- <b style="color:var(--text);">Current stage:</b> operational validation. JRS measures documentation conditions requiring review; it does not determine whether a decision is legally correct, compliant, or substantively justified. <a href="operational-boundaries.html" style="color:var(--accent);">Operational boundaries &rarr;</a>
- <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;">
-  <a href="/api/dl?e=standard&amp;src=index" style="color:var(--muted);text-decoration:none;">Review Controls PDF</a>
-  <a href="training.html" style="color:var(--muted);text-decoration:none;">Reviewer Training</a>
-  <a href="investigator-guides.html" style="color:var(--muted);text-decoration:none;">Investigator Guides</a>
-  <a href="implementation-scenarios.html" style="color:var(--muted);text-decoration:none;">Implementation Scenarios</a>
- </div>
+<div class="home-next-note">
+ Practitioner resources remain free and ungated: <a href="training.html">reviewer training</a> and <a href="investigator-guides.html">Investigator Guides</a>. JRS remains in operational validation and does not determine legal correctness, compliance, or substantive justification. <a href="operational-boundaries.html">Review the boundaries &rarr;</a>
 </div>
 
 </div>
