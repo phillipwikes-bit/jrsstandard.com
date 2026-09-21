@@ -912,6 +912,14 @@ a.gumroad-button.util-link {
   .hero{max-width:960px}
   .hero-sub{max-width:760px}
 }
+@media (max-width:780px){
+  .home-proof-strip,.home-eval-grid{grid-template-columns:1fr 1fr!important}
+}
+@media (max-width:520px){
+  .home-proof-strip,.home-eval-grid{grid-template-columns:1fr!important}
+  .home-proof-strip>div{border-right:none!important;border-bottom:1px solid var(--rule)}
+  .home-proof-strip>div:last-child{border-bottom:none}
+}
 .nav-item{min-height:44px;display:inline-flex;align-items:center}
 .dt-links a,.track-links a{display:inline-block;padding:11px 0;min-height:44px;line-height:22px}
 @media (max-width:900px){
@@ -972,7 +980,7 @@ a.gumroad-button.util-link {
  </div>
 </div>
 
-<div style="display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--rule);margin:26px 0 22px;background:var(--surface);">
+<div class="home-proof-strip" style="display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--rule);margin:26px 0 22px;background:var(--surface);">
  <div style="padding:13px 14px;border-right:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Method</div><div style="font-size:13px;color:var(--text);">Standard v1.0</div></div>
  <div style="padding:13px 14px;border-right:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Instrument</div><div style="font-size:13px;color:var(--text);">Five review conditions</div></div>
  <div style="padding:13px 14px;border-right:1px solid var(--rule);"><div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px;">Evidence</div><div style="font-size:13px;color:var(--text);">Research + stated limits</div></div>
@@ -1007,7 +1015,7 @@ a.gumroad-button.util-link {
 
 <div style="margin:0 0 26px;">
  <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px;">Four ways to evaluate JRS</div>
- <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
+ <div class="home-eval-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
   <a href="jrsstandard.html" style="text-decoration:none;border:1px solid var(--rule);background:var(--surface);padding:16px;display:block;"><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px;">Understand the Standard</div><div style="font-size:12px;color:var(--muted);line-height:1.55;">Read the five-condition methodology and scope.</div></a>
   <a href="research.html" style="text-decoration:none;border:1px solid var(--rule);background:var(--surface);padding:16px;display:block;"><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px;">Examine the Evidence</div><div style="font-size:12px;color:var(--muted);line-height:1.55;">See measured results, negative findings, and limitations.</div></a>
   <a href="simulations.html" style="text-decoration:none;border:1px solid var(--rule);background:var(--surface);padding:16px;display:block;"><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px;">Test the Method</div><div style="font-size:12px;color:var(--muted);line-height:1.55;">Use simulations and the record check before any organizational commitment.</div></a>
