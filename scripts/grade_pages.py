@@ -151,7 +151,15 @@ def grade_page(p, b):
 
     # ---- enterprise readiness, weighted only where it belongs ------------
     if r == "commercial":
-        add("dual-track positioning present", "JRS DUAL TRACK v1" in b, 10)
+        # The 2026-09-21 architecture retired the duplicated dual-track band.
+        # Grade the actual proposition instead: a public/free route and a
+        # controlled/enterprise route must both be visible on the page.
+        lower = b.lower()
+        public_route = "free" in lower and ("resources.html" in b or "jrsstandard.html" in b)
+        controlled_route = ("enterprise.html" in b or "enterprise-inquiry" in b) and (
+            "review engine" in lower or "controlled" in lower or "licens" in lower
+        )
+        add("public and controlled paths are both visible", public_route and controlled_route, 10)
         add("routes to the engine documentation", "review-engine.html" in b, 8)
         add("routes to an enterprise inquiry",
             "enterprise-inquiry" in b or "enterprise.html" in b, 8)
@@ -165,13 +173,15 @@ def grade_page(p, b):
              and "zero data retention" not in b.lower())
             or "does not remove the review" in b or "does not remove the assessment" in b, 8)
         add("a capture path exists on the page",
-            "<form" in b or "/api/checkout" in b or "/api/enterprise-inquiry" in b, 10)
+            "<form" in b or "/api/checkout" in b or "/api/enterprise-inquiry" in b
+            or "enterprise.html#enterprise-inquiry" in b, 10)
         add("terms or boundaries reachable",
             "terms.html" in b or "engagement.html" in b or "operational-boundaries" in b, 5)
     elif r in ("public-content", "reference"):
         add("offers a next step", "<form" in b or "/api/dl" in b
             or "training.html" in b or "check.html" in b
-            or "investigator-guides.html" in b, 8)
+            or "investigator-guides.html" in b
+            or "enterprise.html#enterprise-inquiry" in b, 8)
         add("connects to the enterprise track",
             "enterprise.html" in b or "review-engine.html" in b, 6)
         add("free access stated or implied", "free" in b.lower(), 4)
