@@ -22,7 +22,9 @@ Usage:
 import io
 import os
 import re
+import subprocess
 import sys
+from datetime import datetime, timezone
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SKIP_DIRS = {".git", "node_modules", "__pycache__", "research", ".vercel"}
@@ -30,11 +32,15 @@ SKIP_DIRS = {".git", "node_modules", "__pycache__", "research", ".vercel"}
 PRIVATE = {"programme-status-9872fb93cc94.html", "acquisition-9f3c2a7d4b.html",
            "vp-7c1f9a4e8d2b6035.html"}
 
-# Pages a buyer can actually arrive on and be sold to. Everything else is graded
-# on fitness for its own purpose.
+# Public pages on which a buyer can evaluate the proposition and reach the
+# appropriate next step. Controlled request surfaces remain internal tools.
 COMMERCIAL = {"index.html", "enterprise.html", "review-engine.html",
-              "engagement.html", "audit-request.html", "governance-request.html",
-              "calibration-request.html", "org-pilot.html", "pilot.html"}
+              "org-pilot.html", "pilot.html", "organizational-evaluation.html",
+              "platform-integration.html", "licensing-acquisition.html",
+              "controlled-evaluation-package.html", "platform-evaluation-001.html"}
+CONTROLLED_REQUEST = {"engagement.html", "audit-request.html",
+                      "governance-request.html", "calibration-request.html"}
+ERROR_PAGES = {"404.html"}
 
 FRAMEWORKS = ("ISO/IEC 42001", "ISO 42001", "NIST AI RMF", "EU AI Act")
 NON_EST = ("does not establish compliance", "no framework requires",
@@ -76,6 +82,35 @@ except Exception:
     SITEMAP = ""
 
 
+def normalize_url(url):
+    """Compare canonical and sitemap URLs without a root-only trailing-slash false negative."""
+    return url.strip().rstrip("/")
+
+
+SITEMAP_LOCS = {
+    normalize_url(url)
+    for url in re.findall(r"<loc>\s*([^<]+?)\s*</loc>", SITEMAP, flags=re.I)
+}
+
+
+def canonical_url(b):
+    m = re.search(r'<link\b[^>]*\brel=["\']canonical["\'][^>]*\bhref=["\']([^"\']+)',
+                  b, flags=re.I)
+    if not m:
+        m = re.search(r'<link\b[^>]*\bhref=["\']([^"\']+)["\'][^>]*\brel=["\']canonical["\']',
+                      b, flags=re.I)
+    return normalize_url(m.group(1)) if m else ""
+
+
+def sitemap_member(p, b):
+    """Use the public canonical route, not a basename, as the sitemap identity."""
+    canonical = canonical_url(b)
+    if canonical:
+        return canonical in SITEMAP_LOCS
+    route = "/" if p == "index.html" else "/" + p.replace(os.sep, "/")
+    return normalize_url("https://www.jrsstandard.com" + route) in SITEMAP_LOCS
+
+
 def role(p, b):
     base = os.path.basename(p)
     # Match COMMERCIAL on the RELATIVE PATH, not the basename. Every
@@ -84,10 +119,14 @@ def role(p, b):
     # mean down with dimensions that were never meant to apply to them.
     if p.startswith("reference" + os.sep):
         return "reference"
+    if base in ERROR_PAGES:
+        return "error-page"
     if base in PRIVATE:
         return "private-owner"
     if 'content="noindex' in b and ("?k=" in b or "searchParams.get('k')" in b or "getKey" in b):
         return "keyed-participant"
+    if p in CONTROLLED_REQUEST:
+        return "internal-tool"
     if 'content="noindex' in b:
         return "internal-tool"
     if p in COMMERCIAL:
@@ -98,6 +137,7 @@ def role(p, b):
 def grade_page(p, b):
     r = role(p, b)
     pts = []          # (label, earned, possible, note)
+    markup = re.sub(r"<script\b.*?</script>", "", b, flags=re.S | re.I)
 
     def add(label, ok, weight, note=""):
         pts.append((label, weight if ok else 0, weight, note))
@@ -109,8 +149,10 @@ def grade_page(p, b):
     add("meta description, 40+ chars", bool(d), 4)
     add("viewport declared", 'name="viewport"' in b, 4)
     add("canonical link", 'rel="canonical"' in b, 3)
-    add("one <h1>", b.count("<h1") == 1, 3)
-    add("skip-to-content link", "#main-content" in b or "skip" in b.lower()[:4000], 2)
+    add("one <h1>", len(re.findall(r"<h1\b", markup, flags=re.I)) == 1, 3)
+    add("skip-to-content link", bool(
+        re.search(r'<a\b[^>]*class=["\'][^"\']*skip-link[^"\']*["\']', markup, flags=re.I)
+        or "#main-content" in markup), 2)
     add("footer present", "site-footer" in b or "<footer" in b, 3)
 
     # ---- claim discipline, every role ------------------------------------
@@ -127,7 +169,7 @@ def grade_page(p, b):
     # sitemap asks to be crawled and then asks not to be indexed." Flagged here
     # because the contradiction is invisible on either surface alone.
     ni = 'content="noindex' in b
-    insm = os.path.basename(p) in SITEMAP
+    insm = sitemap_member(p, b)
     add("robots directive agrees with sitemap membership", not (ni and insm), 6,
         "noindex AND in sitemap" if (ni and insm) else "")
 
@@ -139,14 +181,13 @@ def grade_page(p, b):
         " AND ".join(robots) if len(set(robots)) > 1 else "")
 
     if r in ("commercial", "public-content", "reference"):
-        add("indexed in sitemap", os.path.basename(p) in SITEMAP
-            or (p == "index.html" and "jrsstandard.com/</loc>" in SITEMAP)
-            or p.startswith("reference" + os.sep), 5)
+        add("canonical route indexed in sitemap", insm, 5,
+            canonical_url(b) or "no canonical URL")
         add("reachable, has inbound links", INBOUND[p] > 0, 5,
             "%d inbound" % INBOUND[p])
     else:
         add("correctly kept out of the sitemap",
-            os.path.basename(p) not in SITEMAP, 5)
+            not insm, 5)
         add("noindex declared", 'content="noindex' in b, 5)
 
     # ---- enterprise readiness, weighted only where it belongs ------------
@@ -189,6 +230,9 @@ def grade_page(p, b):
         add("no analytics on a keyed surface",
             "googletagmanager" not in b and "gtag(" not in b, 6)
         add("referrer suppressed", 'name="referrer"' in b, 4)
+    elif r == "error-page":
+        add("clear not-found message", "page not found" in b.lower(), 8)
+        add("safe recovery route", 'href="index.html"' in b or 'href="/"' in b, 8)
     elif r == "private-owner":
         add("no analytics", "googletagmanager" not in b and "gtag(" not in b, 10)
         add("referrer suppressed", 'name="referrer"' in b, 6)
@@ -221,7 +265,8 @@ for p in ALL:
     rows.append((p,) + grade_page(p, BODIES[p]))
 
 ORDER = {"commercial": 0, "public-content": 1, "reference": 2,
-         "keyed-participant": 3, "internal-tool": 4, "private-owner": 5}
+         "error-page": 3, "keyed-participant": 4, "internal-tool": 5,
+         "private-owner": 6}
 rows.sort(key=lambda x: (ORDER.get(x[1], 9), -x[3]))
 
 L = []
@@ -231,6 +276,20 @@ def w(s=""):
 w("# Page-by-Page Grade: Enterprise Track Readiness")
 w()
 w("**Generated by:** `scripts/grade_pages.py`  ")
+w("**Generated at:** `%s`  " % datetime.now(timezone.utc).isoformat(timespec="seconds"))
+try:
+    commit = subprocess.check_output(
+        ["git", "rev-parse", "--short", "HEAD"], cwd=ROOT, text=True).strip()
+    branch = subprocess.check_output(
+        ["git", "rev-parse", "--abbrev-ref", "HEAD"], cwd=ROOT, text=True).strip()
+    dirty = bool(subprocess.check_output(
+        ["git", "status", "--porcelain"], cwd=ROOT, text=True).strip())
+except (OSError, subprocess.CalledProcessError):
+    commit, branch, dirty = "unavailable", "unavailable", True
+w("**Source state:** commit `%s` · branch `%s` · working tree `%s`  "
+  % (commit, branch, "modified" if dirty else "clean"))
+w("**Discovered scope:** %d HTML pages · %d public commercial pages  "
+  % (len(ALL), sum(1 for p in ALL if role(p, BODIES[p]) == "commercial")))
 w("**Question every page is scored on:** if a GRC platform architect or legal-tech "
   "executive lands here from a search result or a forwarded link, can they work out "
   "what is being licensed, satisfy themselves it is credible, and reach a person, "

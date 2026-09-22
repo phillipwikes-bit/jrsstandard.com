@@ -113,6 +113,31 @@
       "permanent": false
     },
     {
+      "source": "/organizational-evaluation",
+      "destination": "/organizational-evaluation.html",
+      "permanent": false
+    },
+    {
+      "source": "/platform-integration",
+      "destination": "/platform-integration.html",
+      "permanent": false
+    },
+    {
+      "source": "/licensing-acquisition",
+      "destination": "/licensing-acquisition.html",
+      "permanent": false
+    },
+    {
+      "source": "/controlled-evaluation",
+      "destination": "/controlled-evaluation-package.html",
+      "permanent": false
+    },
+    {
+      "source": "/platform-evaluation-001",
+      "destination": "/platform-evaluation-001.html",
+      "permanent": false
+    },
+    {
       "source": "/evidence-ledger",
       "destination": "/evidence-ledger.html",
       "permanent": false

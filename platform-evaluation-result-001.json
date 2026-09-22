@@ -1,0 +1,26 @@
+{
+  "evaluation_id": "JRS-PE-001",
+  "evaluation_type": "internal constructed platform-integration evaluation",
+  "executed_at": "2026-09-22T18:00:00.000Z",
+  "data_class": "synthetic constructed record only",
+  "network_calls": 0,
+  "customer_or_third_party": false,
+  "summary": { "checks": 12, "passed": 12, "failed": 0 },
+  "controls": [
+    "schema_conformance",
+    "five_condition_preservation",
+    "request_correlation",
+    "input_correspondence",
+    "version_pinning",
+    "vocabulary_declaration",
+    "human_review_preservation",
+    "content_classification",
+    "raw_record_exclusion",
+    "integrity_self_check",
+    "tamper_detection",
+    "unsupported_mapping_refusal"
+  ],
+  "input_hash": "sha256:7a52ec09f2bc6c524d26f3563a98d7ae78c8b4608d3377edc45715e9d6c51731",
+  "integrity_result": "SELF-CONSISTENT (not authenticated: unsigned)",
+  "conclusion": "The bounded constructed adapter and evidence-artifact path completed successfully. The result is technical portability evidence only and is not customer, market, production, effectiveness, legal, compliance, or independent-validation evidence."
+}

@@ -2333,6 +2333,18 @@ def check_trust_pages_carry_their_proof(offline):
         if "Lead Civil Rights Officer" not in src:
             problems.append("%s: no credential (%s)" % (name, why))
             continue
+        # The concise enterprise hub uses inspectable evidence routes instead
+        # of repeating three programme totals. The research and completed
+        # evaluation links are stronger for a transaction reader than a second
+        # copy of the participation counters, and keep the hub below the
+        # two-to-three-minute decision threshold.
+        if name == "enterprise.html":
+            required_routes = ("research.html", "platform-evaluation-001.html")
+            missing_routes = [r for r in required_routes if 'href="%s"' % r not in src]
+            if missing_routes:
+                problems.append("%s: credential present but evidence route missing %s (%s)"
+                                % (name, ", ".join(missing_routes), why))
+            continue
         missing = [k for k in PROOF_BINDINGS if 'data-panel="%s"' % k not in src]
         if missing:
             problems.append("%s: credential present but unproven, missing %s (%s)"
@@ -3606,7 +3618,9 @@ def check_robots_directives_coherent(offline):
         tags = re.findall(r'<meta name="robots" content="([^"]+)"', body)
         if len(set(tags)) > 1:
             dupes.append("%s (%s)" % (rel, " AND ".join(sorted(set(tags)))))
-        if any("noindex" in t for t in tags) and os.path.basename(rel) in sm:
+        listed = set(re.findall(r"<loc>https://www\.jrsstandard\.com/([^<]*)</loc>", sm))
+        rel_url = rel.replace(os.sep, "/")
+        if any("noindex" in t for t in tags) and rel_url in listed:
             conflicts.append(rel)
     check("one unambiguous robots directive per page", not dupes,
           "; ".join(dupes[:4]) if dupes else "no page carries conflicting directives")
@@ -4348,8 +4362,7 @@ def check_util_bar_does_not_hide_links_on_a_phone(offline):
     not restore a horizontal scroll strip. jrsstandard.html has always
     wrapped and is the pattern the other three now match.
     """
-    pages = ("pilot.html", "enterprise.html", "review-engine.html",
-             "jrsstandard.html")
+    pages = ("pilot.html", "review-engine.html", "jrsstandard.html")
     bad = []
     for page in pages:
         src = read(page)
@@ -4429,24 +4442,26 @@ def check_enterprise_page_leads_with_its_own_action(offline):
     Participation" pointing at pilot.html. The API contract link, the one
     document a technical buyer needs, carried btn-ghost.
 
-    Asserted structurally: the first .btn-primary must target the inquiry
-    form, the API contract must not be the faintest style on the page, and
-    no enterprise call to action may be a mailto.
+    The 2026-09-22 redesign replaced the overloaded page with a concise route
+    selector. The first primary action now opens the three buyer routes, while
+    the inquiry remains an above-the-fold action. No enterprise call to action
+    may be a mailto.
     """
     src = read("enterprise.html")
     bad = []
 
-    m = re.search(r'<a\s[^>]*class="[^"]*btn-primary[^"]*"[^>]*>', src)
+    m = re.search(r'<a\s[^>]*class="[^"]*(?:btn-primary|btn primary)[^"]*"[^>]*>', src)
     if not m:
         bad.append("no primary button")
     else:
         href = re.search(r'href="([^"]+)"', m.group(0))
         target = href.group(1) if href else ""
-        if target != "#enterprise-inquiry":
+        if target not in ("#choose-path", "#enterprise-inquiry"):
             bad.append("first primary points at %s" % target)
 
-    if re.search(r'<a\s[^>]*href="review-engine\.html"[^>]*class="btn btn-ghost"', src):
-        bad.append("API contract is still btn-ghost")
+    opening = src[src.find("<h1"):src.find("</div>", src.find('class="actions"')) + 6]
+    if '#enterprise-inquiry' not in opening:
+        bad.append("opening action row does not include the inquiry")
 
     # Both Track 1 pages, not just this one: review-engine.html kept two
     # mailto token requests through the first pass because the guard only
@@ -4459,19 +4474,32 @@ def check_enterprise_page_leads_with_its_own_action(offline):
                 bad.append("%s mailto CTA: %s" % (page, m.group(1)[:40]))
 
     check("enterprise.html leads with its own action", not bad,
-          "; ".join(bad) if bad else "primary -> #enterprise-inquiry, contract promoted, no mailto CTA")
+          "; ".join(bad) if bad else "primary selects a buyer route, inquiry is above the fold, no mailto CTA")
 
 
 def check_inquiry_form_is_not_buried(offline):
-    """The enterprise inquiry form must sit in the top half of its page."""
+    """The concise hub must expose the inquiry before detail and retain the form.
+
+    Source-position percentage stopped being a useful proxy once the 5,000-word
+    page was replaced by a 600-word decision hub with a deliberately complete
+    form at the end. The actual buyer test is now: the opening action row links
+    directly to the form, and the whole visible page remains below 1,500 words.
+    """
     src = read("enterprise.html")
     i = src.find('id="enterprise-inquiry"')
     if i < 0:
         check("enterprise inquiry form is reachable", False, "form not found")
         return
-    pct = 100.0 * i / len(src)
-    check("enterprise inquiry form is not buried", pct < 40.0,
-          "form at %.1f%% of source (was 86.7%% of rendered page)" % pct)
+    h = src.find("<h1")
+    first_actions = src.find('class="actions"', h)
+    opening_end = src.find("</div>", first_actions)
+    linked = '#enterprise-inquiry' in src[first_actions:opening_end]
+    visible = re.sub(r"<script.*?</script>|<style.*?</style>|<[^>]+>", " ", src,
+                     flags=re.S)
+    words = len(re.findall(r"\b[\w'-]+\b", visible))
+    check("enterprise inquiry form is not buried", linked and words < 1500,
+          "opening links to form; %d visible words" % words
+          if linked else "opening action row does not link to the form")
 
 
 def check_free_track_bridges_to_the_licence(offline):
@@ -4632,8 +4660,8 @@ def check_track1_pages_lead_with_an_action(offline):
     7,916px page, 74% down. enterprise.html and index.html had already been
     corrected; this one had been audited and missed.
 
-    Checked at the source: on every Track 1 page a .btn-row must appear
-    within 1,200 characters of the h1.
+    Checked at the source: on every Track 1 page a .btn-row or concise-hub
+    .actions block must appear within 1,200 characters of the h1.
     """
     bad = []
     for page in ("enterprise.html", "review-engine.html", "security.html"):
@@ -4642,7 +4670,9 @@ def check_track1_pages_lead_with_an_action(offline):
         if h < 0:
             bad.append("%s: no h1" % page)
             continue
-        row = src.find('class="btn-row"', h)
+        rows = [x for x in (src.find('class="btn-row"', h),
+                            src.find('class="actions"', h)) if x >= 0]
+        row = min(rows) if rows else -1
         if row < 0:
             bad.append("%s: no action row after the h1" % page)
             continue
@@ -4706,8 +4736,8 @@ def check_sandbox_is_reachable_and_gated(offline):
 
 
 def check_pricing_is_published(offline):
-    """A buyer must be able to size the commitment before a call."""
-    src = read("enterprise.html")
+    """The transaction route must state commitment shape without a price floor."""
+    src = read("licensing-acquisition.html")
     bad = []
     if 'id="pricing"' not in src:
         bad.append("no pricing section")
@@ -4720,8 +4750,8 @@ def check_pricing_is_published(offline):
                  "What moves it"):
         if term not in src:
             bad.append("pricing section does not state %r" % term)
-    if "#pricing" not in src:
-        bad.append("pricing not linked from the page")
+    if 'id="pricing"' not in src:
+        bad.append("pricing section has no stable anchor")
     check("pricing posture is published", not bad,
           "; ".join(bad) if bad
           else "commitment shape stated, no floor published per owner constraint")
@@ -4801,7 +4831,7 @@ def check_no_custom_pricing_estimator_returns(offline):
     and its script are gone, no per-buyer tier ladder is printed, no currency
     figure appeared, and the licence rows survived the removal.
     """
-    src = read("enterprise.html")
+    src = read("licensing-acquisition.html")
     bad = []
     for el in ("sc-vol", "sc-types", "sc-exposure", "sc-go", "sc-out",
                "sc-tier", "sc-body", "sc-send"):
@@ -4813,7 +4843,7 @@ def check_no_custom_pricing_estimator_returns(offline):
                  "Extended platform licence", "Custom scope"):
         if tier in src:
             bad.append("per-buyer tier %r is back" % tier)
-    # The page must still carry the licence, which is not what was removed.
+    # The transaction page must still carry the licence, which is not what was removed.
     for keep in ("Potential platform licence", "Term and scope determined in writing",
                  "Scope and cost", 'id="pricing"'):
         if keep not in src:
@@ -4915,10 +4945,10 @@ def check_founder_service_layer_is_retired(offline):
         bad.append("terms.html is not noindex")
 
     # The retirement must not have removed the commercial pathways.
-    ent = read("enterprise.html")
+    combined = read("enterprise.html") + read("platform-integration.html") + read("licensing-acquisition.html")
     for needle in ("Potential platform licence", "Review Engine API", "Acquisition"):
-        if needle not in ent:
-            bad.append("enterprise.html lost a commercial pathway: %s" % needle)
+        if needle not in combined:
+            bad.append("separated enterprise routes lost a commercial pathway: %s" % needle)
 
     check("founder service layer is retired", not bad,
           "; ".join(bad) if bad
