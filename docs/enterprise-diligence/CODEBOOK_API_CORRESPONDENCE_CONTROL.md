@@ -37,7 +37,7 @@ not restate the mapping table, and it **resolves nothing**.
 | 1 | **JRS Codebook conditions** | `codebook.html` (version `1.0`) | Basis Identification · Reconstructability · Decision-Process Traceability · Chronology · Evidentiary Sufficiency |
 | 2 | **Review Engine condition keys** | `api/v1/review-engine.js`, both OpenAPI files | `basis_identification` · `reasoning_traceability` · `cold_reviewer_clarity` · `accountability_support` · `temporal_reconstructability` |
 | 3 | **Published record-level routing** | `openapi.json` `ReviewResponse.routing` | `Ready` · `Needs work` · `Gap` |
-| 4 | **Implemented record-level determination** | `api/v1/review-engine.js` `deriveDetermination()`; declared in `openapi-review-engine.json` | `ready` · `review_required` · `gap_identified` |
+| 4 | **Implemented record-level determination** | `api/v1/review-engine.js` `deriveDetermination()`; declared in `openapi.json` | `ready` · `review_required` · `gap_identified` |
 
 Vocabularies 1 and 2 both contain five items and **exactly one name appears in both**.
 Vocabularies 3 and 4 describe the same record-level idea in **different words, different

@@ -1680,7 +1680,7 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
       <span style="font-size:12px;color:var(--muted)">This engine is <b>operationally implemented and empirically unvalidated</b>. It runs a single model. Reproducibility is disclosed rather than hidden, and reproducibility is not equivalent to accuracy. Output supports reviewer practice and does not replace human judgment.</span>
     </div>
 
-    <label style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);display:block;margin-bottom:8px">Record Text</label>
+    <label for="pa-input" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);display:block;margin-bottom:8px">Record Text</label>
     <textarea id="pa-input"
       placeholder="Enter record text for review..."
       rows="8"
@@ -2383,7 +2383,7 @@ renderFM();
 
     <div style="margin-bottom:16px;max-width:700px">
       <label style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);display:block;margin-bottom:6px">Observation (Optional)</label>
-      <textarea id="poll-comment" placeholder="Describe what you noticed about this record or your reasoning..." style="width:100%;background:#121212;border:1px solid var(--rule);color:var(--muted);font-family:'Inter',sans-serif;font-size:13px;line-height:1.65;padding:12px 14px;resize:vertical;min-height:60px;box-sizing:border-box"></textarea>
+      <textarea id="poll-comment" aria-label="Participation observation" placeholder="Describe what you noticed about this record or your reasoning..." style="width:100%;background:#121212;border:1px solid var(--rule);color:var(--muted);font-family:'Inter',sans-serif;font-size:13px;line-height:1.65;padding:12px 14px;resize:vertical;min-height:60px;box-sizing:border-box"></textarea>
     </div>
     <button id="poll-submit-btn" onclick="submitPoll()" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:12px 24px;cursor:pointer;opacity:.4;pointer-events:none">Submit Observation</button>
 
@@ -2534,7 +2534,7 @@ renderFM();
   <div style="max-width:820px;margin:0 auto">
     <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">For Professional Associations &amp; Training Bodies</div>
     <h2 style="font-family:'Bodoni Moda',serif;font-size:20px;font-weight:500;color:var(--text);margin-bottom:10px">Licensing this curriculum</h2>
-    <p style="font-size:13.5px;color:var(--muted);line-height:1.7;max-width:660px;margin-bottom:8px">This program (the five-condition method, the Decision Defensibility Score, the calibration exercises, and the completion record) is available for licensing to professional associations, certification bodies, and training providers for continuing-education and professional-development use.</p>
+    <p style="font-size:13.5px;color:var(--muted);line-height:1.7;max-width:660px;margin-bottom:8px">Professional associations, training providers, and other organizations may inquire about a controlled written licence for defined training materials. No right is granted by this page. Any permitted use, modification, distribution, or commercial application must be stated in an executed agreement and limited to rights confirmed as available.</p>
     <p style="font-size:12.5px;color:var(--muted-soft);line-height:1.65;max-width:660px">To discuss licensing or a co-branded training program, contact <a href="mailto:info@jrsstandard.com" style="color:var(--accent)">info@jrsstandard.com</a>.</p>
   </div>
 </div>
@@ -2659,12 +2659,12 @@ renderFM();
       <div class="survey-question">
         <div class="survey-q-label">6. Describe any friction encountered applying JRS review conditions to your existing workflow.</div>
         <div class="survey-q-sub">Optional. Do not include identifying information about individuals or organizations.</div>
-        <textarea class="survey-textarea" id="sq6" placeholder="Describe operational friction, workflow gaps, or implementation challenges observed..."></textarea>
+        <textarea class="survey-textarea" id="sq6" aria-label="Operational friction observations" placeholder="Describe operational friction, workflow gaps, or implementation challenges observed..."></textarea>
       </div>
       <div class="survey-question" style="border-bottom:none;padding-bottom:0;margin-bottom:0">
         <div class="survey-q-label">7. Describe any AI-assisted documentation review concerns observed in your environment.</div>
         <div class="survey-q-sub">Optional. Do not include identifying information about individuals or organizations.</div>
-        <textarea class="survey-textarea" id="sq7" placeholder="Describe characterization concerns, source-traceability gaps, or AI-assisted documentation conditions observed..."></textarea>
+        <textarea class="survey-textarea" id="sq7" aria-label="AI-assisted documentation concerns" placeholder="Describe characterization concerns, source-traceability gaps, or AI-assisted documentation conditions observed..."></textarea>
       </div>
       <div style="margin-top:28px">
         <button class="btn-survey-submit" onclick="submitSurvey()">Submit Observational Survey</button>
@@ -2721,7 +2721,7 @@ renderFM();
     <div style="font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--text);margin-bottom:8px">All six modules completed.</div>
     <p style="font-size:13.5px;color:var(--muted);margin-bottom:20px;line-height:1.65">Enter your name to generate a module completion record. Completion reflects participation in the training modules only and does not constitute certification, accreditation, or a professional credential.</p>
     <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:20px">
-      <input type="text" id="cert-name" placeholder="Your full name" autocomplete="name"
+      <input type="text" id="cert-name" aria-label="Name for completion record" placeholder="Your full name" autocomplete="name"
         style="flex:1;min-width:200px;background:var(--surface2);border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;padding:11px 14px;outline:none">
       <button onclick="generateCert()"
         style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:12px 22px;cursor:pointer;white-space:nowrap">
@@ -2947,7 +2947,7 @@ function generateCert() {
   ctx.fillText('JUSTIFICATION REVIEW STANDARD  ·  JRSSTANDARD.COM', W/2, 518);
   ctx.fillStyle = '#3A3A3A';
   ctx.font = '400 10px "Inter",sans-serif';
-  ctx.fillText('JRS™ is a trademark of Phillip Wikes.  ©2026 Phillip Wikes', W/2, 580);
+  ctx.fillText('JRS™ is a mark used by Phillip Wikes.  ©2026 Phillip Wikes', W/2, 580);
   // Bottom accent line
   ctx.fillStyle = '#8A6E2A'; ctx.fillRect(B+1,H-B-3,W-B*2-2,1.5);
 
@@ -3189,15 +3189,15 @@ function submitPoll() {
     <h2 style="font-family:'Bodoni Moda',serif;font-weight:400;font-size:23px;color:var(--text);margin:0 0 8px">Start the JRS Reviewer Training Program</h2>
     <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 10px">The six modules are already open and stay open without registration. Your name and work email are requested only if you choose a named certificate and consent to project updates. Free for practitioners.</p>
     <p style="font-size:11.5px;color:var(--muted-soft);line-height:1.6;border-left:2px solid var(--accent-dim);padding-left:10px;margin:0 0 16px">Written by <b style="color:var(--muted);font-weight:500">Phillip Wikes</b>, former Lead Civil Rights Officer, Maryland Commission on Civil Rights. Every reviewer who has started this training has finished it. <b><span data-panel="reviewers_all">58</span> international reviewers across three studies</b> have graded records for this work, including <b><span data-panel="completers_all">36</span> independent experts across <span data-panel="countries_all">16</span> countries</b> who each completed a full 24-record set.</p>
-    <input id="en-name" type="text" placeholder="Full name" autocomplete="name" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;margin-bottom:9px">
-    <input id="en-email" type="email" placeholder="Work email" autocomplete="email" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;margin-bottom:14px">
+    <input id="en-name" type="text" aria-label="Full name" placeholder="Full name" autocomplete="name" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;margin-bottom:9px">
+    <input id="en-email" type="email" aria-label="Work email" placeholder="Work email" autocomplete="email" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;margin-bottom:14px">
     <input id="en-org" type="hidden" value="">
     <input id="en-title" type="hidden" value="">
     <!-- THE WARMEST SIGNAL IN THIS FUNNEL WAS BEING DISCARDED.
          A practitioner who registers for the certificate is the one person
          who has already read the standard and may also build the software
          records get written in. Asked once, optional, never blocking. -->
-    <label style="display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);margin:10px 0 5px;">Do you build or sell software? (optional)</label>
+    <label for="en-builds" style="display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);margin:10px 0 5px;">Do you build or sell software? (optional)</label>
     <select id="en-builds" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-family:'Inter',sans-serif;font-size:13.5px;">
      <option value="">Prefer not to say</option>
      <option value="no">No, I use it in my own work</option>

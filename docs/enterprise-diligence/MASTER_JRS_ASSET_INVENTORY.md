@@ -13,8 +13,8 @@ Existence is not ownership; ownership is treated in
 | A-05 | Review Engine (versioned) | Source code | `api/v1/review-engine.js` | `engine_version` in payload | n/a | 259 lines | Live, token-gated |
 | A-06 | Review proxy | Source code | `api/review.js` | n/a | n/a | 280 lines | Live |
 | A-07 | Review engine (partner) | Source code | `api/review-engine.js` | n/a | n/a | 266 lines | Live, token-gated |
-| A-08 | OpenAPI contract (primary) | API schema | `openapi.json` | **1.0.0** (OpenAPI 3.1.0) | n/a | 220 lines | Public. **Conflicts with A-09** |
-| A-09 | OpenAPI contract (validation) | API schema | `openapi-review-engine.json` | **0.1.0-validation** (OpenAPI 3.0.3) | n/a | Present | Public. **Conflicts with A-08** |
+| A-08 | Current OpenAPI contract | API schema | `openapi.json` | **0.1.0-validation** (OpenAPI 3.1.0) | 2026-09-22 reconciliation | File present | Public; describes deployed response and declares that the current endpoint does not emit a Manifest |
+| A-09 | Former validation-contract path | API compatibility redirect | `/openapi-review-engine.json` -> `/openapi.json` | superseded | 2026-09-22 | Permanent redirect in `vercel.json` | No second contract; prior conflict preserved in reconciliation record |
 | A-10 | API modules (all) | Source code | `api/` | n/a | n/a | 56 modules | Live |
 | A-11 | Investigator Field Guide (combined) | Field guide | `JRS_Investigator_Field_Guide.pdf` | n/a | in repo | 24,471 bytes | Public download |
 | A-12 | Field Guide: Employment/EEO | Field guide | `JRS_Investigator_Field_Guide_Employment.pdf` | n/a | in repo | 17,500 bytes | Public download |

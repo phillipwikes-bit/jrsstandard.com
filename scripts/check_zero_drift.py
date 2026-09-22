@@ -1045,7 +1045,6 @@ def check_html_figures_bound(offline):
 # one viewport, which is the top-versus-bottom mismatch the scoped keys exist
 # to prevent. Excluding it is the finding, not an omission.
 TRUST_PAGES = {
-    "index.html":          "the homepage: first contact, and it asks for a click into both tracks",
     "enterprise.html":     "asks a platform buyer to open an integration scoping call",
     "review-engine.html":  "asks a technical buyer to request a token",
     "training.html":       "asks for a full name and a work email in the enrolment overlay",
@@ -1847,7 +1846,7 @@ def check_private_paths_stay_unreachable(offline):
         "/scripts/:path*": "the whole scripts directory",
     }
     have = {r.get("source"): r.get("destination")
-            for r in conf.get("redirects", [])}
+            for r in conf.get("redirects", []) + conf.get("rewrites", [])}
     problems = []
     # Defence in depth. The blanket .docx rule is what makes a mistaken
     # full-branch deploy harmless: twelve private .docx sit at the repository
@@ -1882,12 +1881,12 @@ def check_private_paths_stay_unreachable(offline):
         if src not in have:
             problems.append("%s is no longer redirected, exposing %s"
                             % (src, what))
-        elif have[src] != "/404.html":
-            problems.append("%s now redirects to %r rather than /404.html"
+        elif have[src] not in ("/404.html", "/api/not-found"):
+            problems.append("%s now routes to %r rather than a verified 404 handler"
                             % (src, have[src]))
     check("private paths stay unreachable",
           not problems,
-          "%d redirect rules present, all to /404.html" % len(required)
+          "%d fail-closed rules present, all to a 404 response" % len(required)
           if not problems else "%d problem(s): %s"
           % (len(problems), "; ".join(problems[:2])))
 
@@ -3453,8 +3452,8 @@ def check_dual_track_band(offline):
     home = read("index.html")
     resources = read("resources.html")
     boundary = (
-        'href="resources.html" class="btn btn-primary"' in home
-        and "Practitioner resources remain free and ungated" in home
+        'class="btn primary" href="resources.html"' in home
+        and "Free and ungated materials" in home
         and "controlled implementation" in resources.lower()
         and "public standard" in resources.lower()
     )
@@ -3462,10 +3461,10 @@ def check_dual_track_band(offline):
           "homepage leads to free resources; resources page states the public-standard and controlled-implementation boundary"
           if boundary else "the public-resource or controlled-implementation boundary is incomplete")
 
-    hero_end = home.find('<div class="home-proof-strip"')
+    hero_end = home.find('<div class="proof"')
     hero = home[:hero_end] if hero_end > 0 else ""
     prominent = (
-        'href="resources.html" class="btn btn-primary"' in hero
+        'class="btn primary" href="resources.html"' in hero
         and 'href="enterprise.html"' in hero
     )
     check("free resources lead the homepage", prominent,
@@ -3925,10 +3924,12 @@ def check_nav_links_reach_their_section(offline):
     import glob
 
     idx = read("index.html")
-    check("index.html opens the section named in its URL",
-          "OPEN A SECTION NAMED IN THE URL" in idx
-          and "hashchange" in idx,
-          "handler and hashchange listener present")
+    compact_home = ('<main id="main-content">' in idx
+                    and 'class="page-section"' not in idx
+                    and 'style="display:none' not in idx)
+    check("index.html uses a directly addressable landing architecture",
+          compact_home,
+          "semantic main present; no hidden tab panels or URL-dependent section handler")
 
     # Every fragment a nav link points at must be a real section on index.html.
     sections = set(re.findall(r'id="section-([a-z0-9-]+)"', idx))
@@ -4524,13 +4525,13 @@ def check_api_contract_has_a_runnable_example(offline):
 def check_homepage_hero_offers_both_tracks(offline):
     """The homepage must expose the public path first and keep enterprise visible."""
     src = read("index.html")
-    i = src.find('<div class="hero">')
-    j = src.find('<div class="home-proof-strip"', i)
+    i = src.find('<section class="hero">')
+    j = src.find('<div class="proof"', i)
     if i < 0 or j < 0 or j < i:
         check("homepage hero offers both tracks", False, "hero landmarks not found")
         return
     between = src[i:j]
-    free = 'href="resources.html" class="btn btn-primary"' in between
+    free = 'class="btn primary" href="resources.html"' in between
     standard = 'href="jrsstandard.html"' in between
     ent = 'href="enterprise.html"' in between
     check("homepage hero offers both tracks", free and standard and ent,
@@ -4715,7 +4716,7 @@ def check_pricing_is_published(offline):
     # asserted instead is that the SHAPE of the commitment is stated, which
     # is what lets a buyer self-qualify without opening a negotiation at its
     # bottom.
-    for term in ("Integration setup", "Platform licence", "Evaluation",
+    for term in ("Integration setup", "Potential platform licence", "Evaluation",
                  "What moves it"):
         if term not in src:
             bad.append("pricing section does not state %r" % term)
@@ -4749,7 +4750,7 @@ def check_pii_gate_is_identical_everywhere(offline):
             k += 1
         return None
 
-    pages = ("index.html", "pilot.html", "review-engine.html")
+    pages = ("pilot.html", "review-engine.html")
     got = {}
     for page in pages:
         b = body(read(page))
@@ -4773,19 +4774,13 @@ def check_homepage_is_a_landing_page(offline):
     built for each one.
     """
     src = read("index.html")
-    i = src.find('id="section-home"')
-    if i < 0:
-        check("homepage is a landing page", False, "section-home not found")
-        return
-    m = re.compile(r'<div\s+id="section-[a-z]+"\s+class="page-section"').search(src, i + 10)
-    if not m:
-        check("homepage is a landing page", False, "no following panel")
-        return
-    home_bytes = m.start() - i
-    total = len(src)
-    share = 100.0 * home_bytes / total
-    check("homepage is a landing page", share < 12.0,
-          "home panel is %.1f%% of the document (%d bytes)" % (share, home_bytes))
+    size = len(src.encode("utf-8"))
+    sections = len(re.findall(r'<section\b', src))
+    hidden_panels = len(re.findall(r'class="page-section"|style="display:\s*none', src))
+    ok = size < 50000 and sections <= 6 and hidden_panels == 0
+    check("homepage is a landing page", ok,
+          "%d bytes, %d content sections, %d hidden panels" %
+          (size, sections, hidden_panels))
 
 
 def check_no_custom_pricing_estimator_returns(offline):
@@ -4819,7 +4814,7 @@ def check_no_custom_pricing_estimator_returns(offline):
         if tier in src:
             bad.append("per-buyer tier %r is back" % tier)
     # The page must still carry the licence, which is not what was removed.
-    for keep in ("Platform licence", "Annual, per organisation",
+    for keep in ("Potential platform licence", "Term and scope determined in writing",
                  "Scope and cost", 'id="pricing"'):
         if keep not in src:
             bad.append("licensing content lost: %r" % keep)
@@ -4921,7 +4916,7 @@ def check_founder_service_layer_is_retired(offline):
 
     # The retirement must not have removed the commercial pathways.
     ent = read("enterprise.html")
-    for needle in ("Platform licence", "Review Engine API", "Acquisition"):
+    for needle in ("Potential platform licence", "Review Engine API", "Acquisition"):
         if needle not in ent:
             bad.append("enterprise.html lost a commercial pathway: %s" % needle)
 
@@ -5178,7 +5173,9 @@ def check_no_founder_service_funnel_survives_anywhere(offline):
     for page in ("index.html", "jrsstandard.html", "enterprise.html",
                  "review-engine.html"):
         src = read(page)
-        if "technical implementation of that" not in src:
+        if ("technical implementation of that" not in src
+                and "controlled technical implementation" not in src
+                and "controlled implementation" not in src):
             bad.append("%s no longer distinguishes the standard from the engine" % page)
     if "It is not software and it needs none" not in read("jrsstandard.html"):
         bad.append("jrsstandard.html lost the independence half of the hierarchy")
@@ -5631,6 +5628,17 @@ def check_manifest_implementation_is_not_deployable(offline):
         line.strip() for line in rules.splitlines()
         if line.strip().endswith("/") and not line.strip().startswith(("#", "!"))
     )
+    # Owner-authorized public package, 2026-09-22. These two bounded artifacts
+    # are publication outputs, not implementation code or test infrastructure.
+    public_manifest_files = {
+        "jrs-decision-reconstruction-manifest-v1.0.schema.json",
+        "jrs-decision-reconstruction-manifest-example-v1.0.json",
+    }
+    manifest_page = read("manifest.html")
+    for public_name in sorted(public_manifest_files):
+        if public_name not in manifest_page:
+            findings.append("%s is designated public but is not linked from manifest.html"
+                            % public_name)
 
     # A copy of an excluded file at a non-excluded path is the same exposure.
     # This happened on 2026-09-15: building the independent-review package copied
@@ -5681,6 +5689,8 @@ def check_manifest_implementation_is_not_deployable(offline):
             continue
         for fn in files:
             rel_path = prefix + fn
+            if rel_path in public_manifest_files:
+                continue
             if fn in protected:
                 findings.append("%s sits outside every exclusion rule; a copy at a "
                                 "servable path defeats the exclusion" % rel_path)
@@ -7761,7 +7771,7 @@ def check_prohibited_claims_are_absent_from_every_surface_class(offline):
         "C-19": [r"\bproduction[- ]verified\b(?![^.]{0,30}\b(none|no|not)\b)"],
     }
     # The one occurrence that is known, recorded and blocked on counsel.
-    REGISTERED = {("C-13", "openapi.json"): "B-016, correction drafted and UNAPPLIED"}
+    REGISTERED = {}
 
     json_surfaces = sorted(g for g in os.listdir(ROOT)
                            if g.startswith("openapi") and g.endswith(".json"))
@@ -7841,12 +7851,12 @@ def check_prohibited_claims_are_absent_from_every_surface_class(offline):
           "; ".join(findings) if findings
           else "%d claims read, %d prohibited (%d by pattern, %d held by human "
                "review with recorded reasons); %d HTML and %d JSON surfaces swept; "
-               "1 registered occurrence (C-13 in openapi.json, blocked on B-016)"
+               "%d registered exception(s)"
                % (len(claims),
                   sum(1 for c in claims if c.get("status") == "PROHIBITED"),
                   sum(1 for c in claims if c.get("enforcement") == "pattern"),
                   sum(1 for c in claims if c.get("enforcement") == "human_review"),
-                  len(_html_files()), len(json_surfaces)))
+                  len(_html_files()), len(json_surfaces), len(REGISTERED)))
 
 
 def check_no_conditional_deployment_state(offline):

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Decision Reconstruction Manifest v1.0 | JRS™</title>
+<meta name="description" content="Public specification package for the JRS Evidence and Decision Reconstruction Manifest, including current status, schema, fields, integrity controls, limitations, and licensing inquiry path.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://www.jrsstandard.com/manifest.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050505;--surface:#121212;--surface2:#1a1a1a;--rule:#2a2a2a;--text:#f2f2f2;--muted:#b3b3b3;--muted-soft:#8a8a8a;--accent:#be9447;--accent-dim:#a77a32;--ready:#5dbf82;--review:#d4a055}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif;line-height:1.65}.skip-link{position:absolute;left:-9999px;top:8px;background:var(--accent);color:#050505;padding:10px 14px;z-index:999}.skip-link:focus{left:8px}.site-header{border-bottom:1px solid var(--rule)}.site-header-inner{max-width:1060px;margin:auto;padding:21px 22px;display:flex;justify-content:space-between;align-items:center}.wordmark{font-family:'Bodoni Moda',serif;font-size:30px;color:var(--accent);text-decoration:none}.header-meta{font:9px/1.6 'JetBrains Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);text-align:right}.jrs-sitenav{border-bottom:1px solid var(--rule);display:flex;justify-content:center;flex-wrap:wrap}.jrs-sitenav a{font:9px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);padding:14px 12px;text-decoration:none;min-height:44px}.jrs-sitenav a:hover,.jrs-sitenav a:focus{color:var(--accent)}.wrap{max-width:960px;margin:auto;padding:58px 22px 70px}.eyebrow,.label{font:9px 'JetBrains Mono',monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}h1,h2{font-family:'Bodoni Moda',serif;font-weight:500}h1{font-size:44px;line-height:1.12;margin:0 0 18px;max-width:820px}h2{font-size:25px;margin:42px 0 10px}.lede{font-size:17px;color:var(--muted);max-width:760px}.status{border-left:3px solid var(--review);background:var(--surface);padding:16px 18px;margin:26px 0;color:var(--muted)}.status strong{color:var(--text)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}.card{border:1px solid var(--rule);background:var(--surface);padding:18px}.card h3{margin:0 0 7px;font-size:15px}.card p{margin:0;color:var(--muted);font-size:13px}.table-wrap{overflow-x:auto;border:1px solid var(--rule)}table{width:100%;border-collapse:collapse;min-width:660px}th,td{text-align:left;vertical-align:top;padding:12px 14px;border-bottom:1px solid var(--rule);font-size:13px}th{font:9px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}td{color:var(--muted)}code{color:var(--text);font-family:'JetBrains Mono',monospace;font-size:12px}.actions{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0}.btn{display:inline-block;border:1px solid var(--accent);color:var(--accent);padding:12px 16px;text-decoration:none;font:9px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;min-height:44px}.btn.primary{background:var(--accent);color:#050505;font-weight:600}.note{border:1px solid var(--rule);padding:16px 18px;color:var(--muted);font-size:13px;margin:18px 0}.site-footer{border-top:1px solid var(--rule);padding:24px 22px;color:var(--muted-soft);font:9px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase}.site-footer-inner{max-width:960px;margin:auto}.site-footer a{color:var(--muted-soft)}@media(max-width:640px){h1{font-size:31px}.wrap{padding-top:38px}.header-meta{display:none}.jrs-sitenav{justify-content:flex-start}.jrs-sitenav a{padding:13px 9px}}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to content</a>
+<header class="site-header" role="banner"><div class="site-header-inner"><a href="index.html" class="wordmark">JRS<span style="font-size:10px;vertical-align:super">&#8482;</span></a><div class="header-meta">Justification Review Standard<br>Decision Reconstruction Manifest</div></div></header>
+<!-- JRS SITE NAV v1 :: CANONICAL BLOCK. Byte-identical on every page that carries it. -->
+<nav class="jrs-sitenav" aria-label="Site">
+ <a href="index.html">Home</a>
+ <a href="/api/dl?e=standard&amp;src=sitenav">Review Controls PDF</a>
+ <a href="training.html">Training</a>
+ <a href="resources.html">Free Resources</a>
+ <a href="simulations.html">Simulations</a>
+ <a href="pilot.html">Pilot Program</a>
+ <a href="enterprise.html">Enterprise</a>
+ <a href="manifest.html">Manifest</a>
+ <a href="research.html">Research</a>
+ <a href="jrsstandard.html">The Standard</a>
+</nav>
+<!-- /JRS SITE NAV v1 -->
+<main id="main-content" class="wrap">
+ <div class="eyebrow">Public Specification Package · Version 1.0</div>
+ <h1>Decision Reconstruction Manifest</h1>
+ <p class="lede">The Manifest is a portable, machine-readable evidence artifact describing one JRS evaluation. It records what was evaluated, which versions and vocabularies governed the evaluation, what the engine returned, whether human review remains required, and how the artifact can be checked later.</p>
+ <div class="status"><strong>Current status.</strong> The version 1.0 schema and a controlled implementation library exist and have passed the repository's conformance and integrity tests. The current public Review Engine API does not emit a conforming Manifest. Automatic API delivery and customer-controlled storage remain target licensing architecture. This page does not represent those target capabilities as deployed.</div>
+ <div class="actions"><a class="btn primary" href="jrs-decision-reconstruction-manifest-v1.0.schema.json">Open JSON Schema</a><a class="btn" href="jrs-decision-reconstruction-manifest-example-v1.0.json">View constructed example</a><a class="btn" href="enterprise.html#enterprise-inquiry">Licensing or integration inquiry</a></div>
+
+ <h2>What the Manifest does</h2>
+ <div class="grid">
+  <div class="card"><h3>Pins the evaluation</h3><p>Records the JRS, Codebook, engine, model, API, and Manifest versions used for the evaluation.</p></div>
+  <div class="card"><h3>Preserves the result</h3><p>Carries the five condition results, routing vocabulary, warnings, and human-review requirement in a portable structure.</p></div>
+  <div class="card"><h3>Supports later verification</h3><p>Uses an input hash and a canonical Manifest hash so later reviewers can check correspondence and detect alteration.</p></div>
+  <div class="card"><h3>Leaves storage with the customer</h3><p>The target architecture returns the artifact to the customer for retention in its own evidence store. JRS is not intended to become the permanent repository for customer records.</p></div>
+ </div>
+
+ <h2>Current implementation and target architecture</h2>
+ <div class="table-wrap"><table><thead><tr><th>Element</th><th>Current state</th><th>Target licensing state</th></tr></thead><tbody>
+  <tr><td>Review Engine response</td><td>Returns a request identifier, version metadata, five engine-key condition results, routing determination, and optional variance.</td><td>Returns the API result and a conforming Manifest, or provides a documented transformation that produces one.</td></tr>
+  <tr><td>Manifest generator</td><td>Controlled implementation library with schema validation, canonicalization, hashing, refusal tests, and frozen fixtures.</td><td>Versioned release component governed by the public schema and the executed integration agreement.</td></tr>
+  <tr><td>Record handling</td><td>The current engine receives record text for inference. Raw text is not persisted by JRS. Defined record-derived output is retained as disclosed in the Privacy Policy.</td><td>Minimum necessary representation, documented processors, bounded persistence, and customer-approved data flow.</td></tr>
+  <tr><td>Evidence storage</td><td>JRS retains defined evaluation telemetry. The public API does not create a customer-controlled immutable evidence repository.</td><td>The customer stores the returned Manifest with its own record and retention controls.</td></tr>
+  <tr><td>Signature</td><td>Manifest hashing is implemented. Signing is optional and not presently represented as deployed.</td><td>Signing, key custody, and verification procedures are agreed where the transaction requires authentication.</td></tr>
+ </tbody></table></div>
+
+ <h2>Minimum field groups</h2>
+ <div class="table-wrap"><table><thead><tr><th>Group</th><th>Purpose</th></tr></thead><tbody>
+  <tr><td><code>manifest_id</code>, <code>created_at</code></td><td>Identifies the artifact and creation time.</td></tr>
+  <tr><td><code>manifest_version</code>, <code>jrs_version</code>, <code>codebook_version</code></td><td>Keeps the artifact, methodology, and rule versions distinct.</td></tr>
+  <tr><td><code>engine</code></td><td>Records the engine build, model, and API version.</td></tr>
+  <tr><td><code>input</code></td><td>Records the input hash, algorithm, length, and truncation state without requiring the underlying record to be embedded.</td></tr>
+  <tr><td><code>condition_vocabulary</code>, <code>conditions</code></td><td>Declares which condition-key vocabulary is used and records all five results.</td></tr>
+  <tr><td><code>routing</code></td><td>Records both the routing value and the vocabulary used to interpret it.</td></tr>
+  <tr><td><code>human_review</code></td><td>States that human review is required and gives the reason.</td></tr>
+  <tr><td><code>content_class</code></td><td>Declares whether the artifact contains no record content, derived record content, or the record itself.</td></tr>
+  <tr><td><code>integrity</code></td><td>Records the canonicalization method, Manifest hash, and optional signature metadata.</td></tr>
+ </tbody></table></div>
+
+ <h2>Integrity and hashing</h2>
+ <p class="lede">The input hash allows a holder of the original record to test whether it corresponds to the evaluated input. The Manifest hash is computed over the canonical form of the artifact, excluding the integrity object itself. A changed routing result, version, condition, or input hash therefore changes the Manifest hash.</p>
+ <div class="note"><strong>Important limit.</strong> Hash consistency is not authentication. An unsigned Manifest can be checked for internal consistency, but it does not prove who created it. A digital signature and governed key-custody process are required before authenticity can be claimed.</div>
+
+ <h2>Human review requirement</h2>
+ <p class="lede">Version 1.0 requires <code>human_review.required</code>. The present engine is not established as validated for autonomous consequential-decision use. A Manifest records a documentation evaluation. It does not decide whether the underlying decision is correct, lawful, compliant, or professionally justified.</p>
+
+ <h2>Customer-controlled storage model</h2>
+ <p class="lede">The intended integration places the customer record and long-term evidence store under customer control. The platform sends an approved representation for evaluation, receives the result and Manifest, and stores the Manifest beside its own decision artifact. The Manifest does not require JRS to retain the underlying record.</p>
+
+ <h2>Limitations</h2>
+ <div class="grid">
+  <div class="card"><h3>No legal conclusion</h3><p>The Manifest does not establish admissibility, legal sufficiency, compliance, certification, or defensibility in law.</p></div>
+  <div class="card"><h3>No autonomous decision</h3><p>The Manifest preserves a review result. The responsible human or organization retains authority over the consequential decision.</p></div>
+  <div class="card"><h3>Derived content may remain sensitive</h3><p>Condition notes and remediation text can paraphrase the evaluated record. The content class must identify that risk.</p></div>
+  <div class="card"><h3>Vocabulary remains explicit</h3><p>The schema does not silently relabel Review Engine keys as Codebook conditions. Any mapping must be documented and versioned.</p></div>
+ </div>
+
+ <h2>Rights and licensing boundary</h2>
+ <p class="lede">Publication of this specification permits inspection of the schema. It does not grant source-code rights, implementation rights, derivative rights, trademark rights, commercial embedding rights, exclusivity, or transfer rights. Any such right must be identified in a separate executed agreement after the relevant rights position has been established.</p>
+ <div class="actions"><a class="btn primary" href="enterprise.html#enterprise-inquiry">Discuss evaluation, integration, or acquisition</a><a class="btn" href="review-engine.html">Review the current API</a><a class="btn" href="research.html">Review evidence and limitations</a></div>
+</main>
+<footer class="site-footer" role="contentinfo"><div class="site-footer-inner">JRS&#8482; and Justification Review Standard&#8482; are marks used by Phillip Wikes. Registration and transfer status are not represented by this notice. &nbsp;·&nbsp; <a href="privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="enterprise.html">Enterprise inquiries</a></div></footer>
+</body>
+</html>

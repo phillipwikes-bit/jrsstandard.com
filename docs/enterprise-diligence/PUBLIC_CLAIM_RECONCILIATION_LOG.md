@@ -47,17 +47,17 @@ disclaims in the places where overclaiming would be easiest.
 | **Publication status** | **DEFERRED** |
 | **Approval required** | Owner |
 
-### R-3 Two conflicting API contracts
+### R-3 Two conflicting API contracts — **RESOLVED 2026-09-22**
 
 | Field | Content |
 |---|---|
-| **Page/file** | `openapi.json` (OpenAPI 3.1.0, `info.version` **1.0.0**) and `openapi-review-engine.json` (OpenAPI 3.0.3, `info.version` **0.1.0-validation**) |
-| **Existing statement** | Both describe the same server and the same single path `/api/v1/review-engine`, with **different response schemas**: `conditions`/`routing` versus `result`/`evidence_stage` |
-| **Conflict or ambiguity** | **Direct and unresolved.** An integrator fetching the wrong document will build against the wrong contract. This is the single most likely cause of a failed first integration |
-| **Corrected statement** | Owner to designate one document as canonical; mark the other superseded or remove it |
-| **Evidence** | Both files, read directly |
-| **Publication status** | **DEFERRED** |
-| **Approval required** | Owner. This is an API contract decision, not a copy edit |
+| **Page/file** | Current `openapi.json`; former `/openapi-review-engine.json` compatibility path |
+| **Prior statement** | Two documents described the same endpoint with different schemas |
+| **Resolution** | One current contract now describes the implemented `result` and `evidence_stage` response. The former path permanently redirects to it |
+| **Corrected statement** | `openapi.json`, OpenAPI 3.1.0 and API version `0.1.0-validation`, is the sole current public contract. It states that the endpoint does not currently emit a Manifest |
+| **Evidence** | `openapi.json`, `vercel.json`, implementation correspondence check, and `JRS_PUBLIC_API_CONTRACT_RECONCILIATION_2026-09-22.md` |
+| **Publication status** | **IMPLEMENTED** |
+| **Rights boundary** | Technical correction only. Ownership and commercial-rights determinations remain with counsel |
 
 ### R-4 No published subprocessor list
 

@@ -36,7 +36,7 @@
   --bg:#050505;--surface:#121212;--surface2:#1A1A1A;--surface3:#1E1E1E;
   --rule:#2A2A2A;--rule-soft:#1E1E1E;
   --text:#F2F2F2;--muted:#B3B3B3;--muted-soft:#8A8A8A;
-  --accent:#BE9447;--accent-dim:#7A5E28;
+  --accent:#BE9447;--accent-dim:#A77A32;
   --stop:#8B2020;--review-c:#8B5E1A;--ready:#1E5C35;
   --stop-text:#E88080;--review-text:#D4A055;--ready-text:#5DBF82;
 }
@@ -699,12 +699,12 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
     <p class="contact-sub">Pilot participation is self-directed: the review conditions, the Investigator Guides and the simulations are published, and an organization applies them in its own environment on its own scope. Questions about the standard, and requests to stay informed as it develops, are welcome. Your message is forwarded directly; your contact information is not displayed publicly.</p>
     <form id="pilot-contact-form" action="https://formspree.io/f/mreddwdg" method="POST" style="margin-top:14px;">
       <div style="display:flex;flex-direction:column;gap:10px;">
-        <input type="text" name="name" placeholder="Name" required style="background:var(--surface2);border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:13px;padding:10px 14px;width:100%;">
-        <input type="email" name="email" placeholder="Email address" required style="background:var(--surface2);border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:13px;padding:10px 14px;width:100%;">
-        <input type="text" name="organization" placeholder="Organization (optional)" style="background:var(--surface2);border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:13px;padding:10px 14px;width:100%;">
-        <textarea name="message" placeholder="Question or inquiry" rows="4" required style="background:var(--surface2);border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:13px;padding:10px 14px;width:100%;resize:vertical;"></textarea>
+        <input type="text" name="name" aria-label="Name" placeholder="Name" required style="background:var(--surface2);border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:13px;padding:10px 14px;width:100%;">
+        <input type="email" name="email" aria-label="Email address" placeholder="Email address" required style="background:var(--surface2);border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:13px;padding:10px 14px;width:100%;">
+        <input type="text" name="organization" aria-label="Organization" placeholder="Organization (optional)" style="background:var(--surface2);border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:13px;padding:10px 14px;width:100%;">
+        <textarea name="message" aria-label="Question or inquiry" placeholder="Question or inquiry" rows="4" required style="background:var(--surface2);border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:13px;padding:10px 14px;width:100%;resize:vertical;"></textarea>
         <input type="hidden" name="_subject" value="JRS Pilot Program Inquiry">
-        <input type="text" name="_gotcha" style="display:none;">
+        <input type="text" name="_gotcha" aria-label="Leave this field blank" tabindex="-1" autocomplete="off" style="display:none;">
         <button type="submit" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:12px 24px;cursor:pointer;font-weight:600;align-self:flex-start;">Submit Inquiry</button>
         <p id="form-status" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--muted-soft);display:none;"></p>
       </div>

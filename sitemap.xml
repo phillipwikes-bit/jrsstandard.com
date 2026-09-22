@@ -26,6 +26,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.jrsstandard.com/manifest.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.jrsstandard.com/simulations.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -139,7 +144,6 @@
   <url><loc>https://www.jrsstandard.com/decision-reconstruction-risk.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.jrsstandard.com/evidence-ledger.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.jrsstandard.com/finding.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.jrsstandard.com/index.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.jrsstandard.com/investigator-guides.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.jrsstandard.com/methodology.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.jrsstandard.com/privacy.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>

@@ -302,6 +302,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 <div class="btn-row" style="margin-top:0;">
  <a href="#enterprise-inquiry" class="btn btn-primary">Discuss evaluation or licensing &rarr;</a>
  <a href="review-engine.html" class="btn btn-accent">Review the API &amp; integration model &rarr;</a>
+ <a href="manifest.html" class="btn btn-ghost">Decision Reconstruction Manifest &rarr;</a>
  <a href="research.html" class="btn btn-ghost">Research &amp; limitations</a>
 </div>
 
@@ -326,7 +327,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
      link could not learn it. Two sentences, once, nothing else. -->
 <div style="margin:0 0 26px;border-left:2px solid var(--accent-dim);padding:2px 0 2px 16px;max-width:660px;">
  <p style="font-size:13px;color:var(--muted);line-height:1.7;margin:0 0 6px;"><b style="color:var(--text);">JRS, the Justification Review Standard, is the methodology.</b> It is the review logic and the documentation review standard: a set of conditions applied to a record, inside whatever workflow an organisation already runs.</p>
- <p style="font-size:13px;color:var(--muted);line-height:1.7;margin:0;"><b style="color:var(--text);">The JRS Review Engine is a technical implementation of that logic.</b> It applies the defined conditions to one record through an API and returns a structured determination. The standard is usable without the engine; the engine exists so a platform can operationalise the same conditions in code.</p>
+ <p style="font-size:13px;color:var(--muted);line-height:1.7;margin:0;"><b style="color:var(--text);">The JRS Review Engine is a technical implementation of that logic.</b> It applies a documented technical mapping of the conditions to one record and returns a structured determination. The standard is usable without the engine. The mapping remains under methodological review and is not represented as exact or identical to the Codebook vocabulary.</p>
 </div>
 <p class="cred"><b>Evidence program.</b> <span data-panel="reviewers_all">58</span> reviewers across three studies have graded records within the JRS research program, including <span data-panel="completers_all">36</span> full-set completers across <span data-panel="countries_all">16</span> countries. Sample-specific results, negative findings, and limitations are published on the <a href="research.html" style="color:var(--accent);">Research page</a>. JRS was developed by Phillip Wikes, former Lead Civil Rights Officer, Maryland Commission on Civil Rights.</p>
 
@@ -412,7 +413,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 
 <div style="margin-bottom:44px;" id="enterprise-application">
  <h2 class="section-head">What Enterprise Application Means</h2>
- <p class="body-text" style="max-width:680px;">JRS is a pre-finalization review standard that evaluates whether a record can explain why a consequential decision was made: the basis, reasoning, evidence, and chronology, before the record is finalized. Enterprise use does not require replacing an existing platform. An organization can apply the published methodology manually, or a platform provider can license the Review Engine to operationalize the same five conditions inside an existing workflow.</p>
+ <p class="body-text" style="max-width:680px;">JRS is a pre-finalization review standard that evaluates whether a record can explain why a consequential decision was made: the basis, reasoning, evidence, and chronology, before the record is finalized. Enterprise use does not require replacing an existing platform. An organization can apply the published methodology manually. A platform provider may separately evaluate the Review Engine's documented technical mapping for possible use inside an existing workflow, subject to a written agreement and rights actually available.</p>
  <div class="scope-grid">
   <div class="scope-card">
    <div class="scope-card-label">Workflow insertion</div>
@@ -506,7 +507,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
   </div>
   <div class="scope-card">
    <div class="scope-card-label">Common thread</div>
-   <div class="scope-card-text">In every sector the pattern is identical: AI raises documentation volume without guaranteeing that the basis for a conclusion is present, and the deficiency stays invisible until the record is examined. JRS is the pre-finalization review that surfaces it while the record can still be fixed.</div>
+   <div class="scope-card-text">Across these sectors, the same risk can recur: AI raises documentation volume without guaranteeing that the basis for a conclusion is present, and the deficiency may remain invisible until the record is examined. JRS provides a pre-finalization method for identifying that condition while the record can still be reviewed and corrected.</div>
   </div>
  </div>
 </div>
@@ -820,7 +821,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
  <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px;">Enterprise Inquiry</div>
  <p style="font-size:13.5px;color:var(--muted);line-height:1.65;max-width:540px;margin-bottom:14px;">Inquiries are received on three subjects: licensing of the JRS Review Engine, technical integration of that engine into a partner platform, and acquisition of the JRS assets. The review materials themselves are published and self-directed, and an inquiry is not a prerequisite for using them.</p>
  <div style="font-size:13px;color:var(--muted-soft);margin-bottom:14px;line-height:1.6;">
-  <strong style="color:var(--muted);font-weight:600;">Scope of inquiry:</strong> Licensing terms for the JRS Review Engine. Technical integration, the API contract and the request identifier your audit trail cites. Acquisition of the standard and its associated assets.
+  <strong style="color:var(--muted);font-weight:600;">Scope of inquiry:</strong> Evaluation of the JRS Review Engine, technical integration, the current API contract, the Decision Reconstruction Manifest schema, and potential acquisition of defined JRS assets. An inquiry does not establish that any particular right is available for grant.
  </div>
  <div style="margin-bottom:10px;font-size:12px;color:var(--muted-soft);font-style:italic;">Requests are reviewed. Response time and availability are not guaranteed.</div>
  <div class="btn-row">
@@ -836,14 +837,14 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 
 <div style="margin-bottom:20px;" id="integration-overview">
  <h2 class="section-head">Clean technical integration</h2>
- <p class="body-text">The JRS review engine is licensed as a <b>stateless review gate</b>. A partner platform sends the text of one record and receives a structured determination across the five review conditions, together with a request identifier that ties the call to an entry in its own audit trail. There is no session, no accumulated profile, and nothing carried between requests.</p>
+ <p class="body-text">The current Review Engine is designed as a <b>request-by-request review service</b> for controlled evaluation. A partner platform sends the text of one record and receives a structured determination across the five review conditions, together with a request identifier that the partner can retain in its own audit trail. Raw record text is not stored by JRS; defined derived evaluation telemetry is retained as described in the Privacy Policy. There is no user session or accumulated record profile. Any commercial licence or transfer remains subject to a written instrument defining the rights actually available, the technical scope, and the parties' obligations.</p>
 
  <table class="spec-table">
   <tr><th>Property</th><th>What it means in your environment</th></tr>
   <tr><td>Stateless per call</td><td>Each request is independent and self-contained. Nothing is carried forward from one call to the next.</td></tr>
   <tr><td><b>Raw record text is not persisted by JRS</b></td><td>Record text is transmitted to the model provider for inference and is not written to JRS storage, echoed back in the response, or intentionally logged by the application. This is a raw-input retention statement, not a claim that no derived data exists.</td></tr>
   <tr><td>Structured result + defined telemetry</td><td>Your platform receives the structured determination and request identifier. The versioned route may retain defined derived evaluation telemetry under the retention terms stated in the Privacy Policy. Raw record text is not retained.</td></tr>
-  <tr><td>Per-partner tokens</td><td>Each licensee holds its own credential, rotatable and revocable independently of every other.</td></tr>
+  <tr><td>Per-partner tokens</td><td>Each authorized evaluation partner receives its own credential, rotatable and revocable independently of every other.</td></tr>
   <tr><td>Fail-closed by default</td><td>No token means no access. Open mode requires an explicit server-side flag that is off.</td></tr>
   <tr><td>Versioned route</td><td>Build against <code>/api/v1/review-engine</code>. The contract is versioned so an upgrade is your decision, not a surprise.</td></tr>
  </table>
@@ -867,7 +868,8 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 
  <div class="btn-row">
   <a href="#enterprise-inquiry" class="btn btn-primary">Discuss evaluation or licensing &rarr;</a>
-  <a href="review-engine.html" class="btn btn-accent">Integration schema and API contract &rarr;</a>
+  <a href="review-engine.html" class="btn btn-accent">Current API contract &rarr;</a>
+  <a href="manifest.html" class="btn btn-ghost">Manifest specification package &rarr;</a>
  </div>
 </div>
 
@@ -901,13 +903,13 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 
 <div style="margin-bottom:20px;" id="pricing">
  <h2 class="section-head">Licensing structure</h2>
- <p class="body-text"><b>No figure is published here, and that is a decision rather than an omission.</b> JRS is in operational validation. A published band that nothing has yet transacted at is a number without a reference behind it, and the first buyer to ask who else pays it turns that into a credibility problem rather than a negotiation. When there is a closed licence to point at, a band goes up.</p>
+ <p class="body-text"><b>No figure is published here.</b> JRS is in operational validation, no completed licence provides a transactional reference, and the rights and scope of any commercial agreement must be established before a price can be tied to them. Pricing may be published after an executed transaction creates a supportable reference.</p>
  <p class="body-text">What matters before an inquiry is not the figure but whether this is your size of commitment. The shape below states what a licence is made of and what moves it. Scope is described by the licensee in the inquiry form; nothing is scoped on a call, and nothing is charged during operational validation without a signed scope.</p>
 
  <table class="spec-table">
   <tr><th>Scope and cost</th><th>Shape</th><th>What moves it</th></tr>
   <tr><td><b>Integration setup</b></td><td>One-time, invoiced on a signed scope</td><td>Number of record types, and whether routing returns into a queue you already run or a new one. Condition mapping is carried out by the licensee against the published condition definitions.</td></tr>
-  <tr><td><b>Platform licence</b></td><td>Annual, per organisation</td><td>Records reviewed per year, how many of your end customers the gate is exposed to, and whether the determination is surfaced to your users or held internally.</td></tr>
+  <tr><td><b>Potential platform licence</b></td><td>Term and scope determined in writing</td><td>Any proposal would address records reviewed per year, how many end customers the gate is exposed to, whether the determination is surfaced to users or held internally, and which rights are confirmed as available for grant.</td></tr>
   <tr><td><b>Evaluation</b></td><td><b>No charge, and no contact required</b></td><td>The sandbox runs a record now, and the Organization Mini-Pilot runs a set of your own records in your own browser. Neither requires an inquiry.</td></tr>
  </table>
  <p class="body-text"><b>This is not metered per call.</b> A licence is annual and an integration is one-time, so your cost does not move when your volume moves within a tier. If you need per-call metering instead, say so in the inquiry and it will be quoted that way.</p>

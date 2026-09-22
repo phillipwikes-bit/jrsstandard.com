@@ -1,12 +1,19 @@
 # Human Decisions Required
 
-**Date:** 2026-09-14 · **Revised:** 2026-09-15.
+**Date:** 2026-09-14 · **Revised:** 2026-09-22.
 
 **DECIDED 2026-09-15 and closed here:** D-2, D-3 (in part), D-4 (in principle), D-5 (approach), D-7, D-8 (owner will act), D-9 (conditional). **Still open below.** Only decisions genuinely requiring Phillip Wikes's authority. **None resolved by inference.**
 
 ---
 
-## D-1 · API reconciliation (B-007 / B-002) — **NOW A COUNSEL QUESTION**
+## D-1 · API reconciliation (B-007 / B-002) — **TECHNICALLY RESOLVED; RIGHTS REVIEW REMAINS**
+
+**UPDATE 2026-09-22.** The owner directed reconciliation. One current public contract,
+`openapi.json` version `0.1.0-validation`, now describes the deployed response. The former
+contract path permanently redirects to it. The prior facts and options below are preserved
+as the decision record. Counsel review remains required for ownership, licensing,
+successor-transfer rights, and any binding commercial instrument. Technical reconciliation
+does not clear those rights.
 
 **UPDATE 2026-09-15.** The gating factual question is answered. **`openapi.json` is PUBLISHED**: HTTP 200 at `/openapi.json` and `/openapi`, linked from `security.html`, `review-engine.html` and both confidential buyer surfaces. Per your own instruction this is **COUNSEL REVIEW REQUIRED BEFORE CONTRACT MODIFICATION**.
 
@@ -14,7 +21,7 @@ Whether a *named party* relied on it is **NOT ESTABLISHED** and was not guessed.
 
 **This strengthens rather than changes the engineering recommendation:** Option D modifies the published licensed document not at all; Option B now edits a published licensed document.
 
-**QUESTION.** Which reconciliation option for `/api/v1/review-engine`?
+**HISTORICAL QUESTION.** Which reconciliation option for `/api/v1/review-engine`?
 **EVIDENCE.** `openapi.json` (1.0.0, **Commercial licence**) requires top-level `routing` and `conditions`; the deployed code emits **zero** occurrences of `routing` and nests conditions under `result`. A **second** spec, `openapi-review-engine.json` (0.1.0-validation, no licence), **does** match the code.
 **OPTIONS.** A change code · B change contract · C versioned contracts · D dual emission with deprecation.
 **RECOMMENDATION.** D, then C. Engineering recommendation only.

@@ -118,9 +118,10 @@
         "DOCS",
         "COMMERCIAL"
       ],
-      "known_live_occurrence": "openapi.json info.summary and info.description. B-016, COUNSEL REVIEW REQUIRED, correction drafted and UNAPPLIED.",
+      "known_live_occurrence": "None located after the owner-directed factual correction on 2026-09-22.",
+      "historical_live_occurrence": "Before 2026-09-22, openapi.json info.summary and info.description carried the prohibited claim. Preserved in B-016 and the contract reconciliation record.",
       "evidence": "api/v1/review-engine.js:272 logReview call site",
-      "authority": "Counsel (B-016). Not Board.",
+      "authority": "Owner authorized factual correction on 2026-09-22. Counsel remains required for contractual allocation of data-processing obligations.",
       "enforcement": "pattern"
     },
     {
