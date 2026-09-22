@@ -334,20 +334,22 @@
       "category": "SECURITY",
       "description": "Deployable-surface exposure wider than recorded. Ten root *.sql files and supabase/functions/ were served publicly. VERIFIED ON PRODUCTION 2026-09-15: /supabase-engine-reviews-setup.sql 200, /supabase-setup.sql 200, /supabase/functions/run-study/index.ts 200, while the excluded /supabase-ALL.sql returned 404. supabase-engine-reviews-setup.sql publishes the anon SELECT grant that B-013A treats as the open exposure, plus the full column list and a now-false retention comment; seven further files carry 'for select to anon using (true)'.",
       "evidence_refs": [
-        "FINAL_PRE_DEPLOYMENT_RED_TEAM_2026-09-15.md F-1, F-2"
+        "docs/enterprise-diligence/FINAL_PRE_DEPLOYMENT_RED_TEAM_2026-09-15.md"
       ],
+      "historical_evidence_scope": "F-1 and F-2",
       "affected_assets": [
         "JRS-SITE",
         "JRS-ENGINE"
       ],
       "required_action": "Remediated in configuration: *.sql and supabase/ excluded, guard extended. REQUIRES DEPLOYMENT VERIFICATION: the 404 that proves effect cannot exist until a deployment occurs. Note these files are ALREADY PUBLIC on the current production build, so the exposure persists until the next deployment.",
       "owner": "HUMAN",
-      "status": "DEPLOYED CONFIGURATION — LIVE 404 VERIFICATION NOT ESTABLISHED",
+      "status": "COMPLETED — LIVE 404 VERIFICATION ESTABLISHED 2026-09-22",
       "created": "2026-09-15",
       "note": "Found by an adversarial pass. My own candidate audit had certified 'Protected implementation excluded — CONFIRMED', which was false; that row is corrected in place with the correction visible.",
-      "next_action_by": "CLAUDE",
-      "next_action_basis": "The exclusion remediation is deployed. The remaining action is a direct production HTTP verification that the previously exposed paths return 404; deployment status alone does not establish served-path behavior.",
-      "production_reconciliation_2026_09_20": "Do not retain the false statement that deployment has not occurred. The remaining question is served-path verification, not deployment authorization."
+      "next_action_by": "NONE",
+      "next_action_basis": "Direct production HTTP requests on 2026-09-22 confirmed 404 for /supabase-engine-reviews-setup.sql, /supabase-setup.sql, and /supabase/functions/run-study/index.ts. The configuration remediation and its served-path effect are verified.",
+      "production_reconciliation_2026_09_20": "Do not retain the false statement that deployment has not occurred. The remaining question is served-path verification, not deployment authorization.",
+      "production_verification_2026_09_22": "Three previously exposed representative paths were requested directly from www.jrsstandard.com after production commit e5a5863311ce42391bccb286b1e135ede1a37353. Each returned HTTP 404: /supabase-engine-reviews-setup.sql, /supabase-setup.sql, and /supabase/functions/run-study/index.ts."
     },
     {
       "blocker_id": "B-015",
