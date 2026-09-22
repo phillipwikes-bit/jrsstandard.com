@@ -2,7 +2,7 @@
 
 **Date:** 2026-09-22  
 **Scope:** Public website and its navigation, enterprise pathway, Manifest positioning, and mechanical website grading  
-**Deployment status:** Release committed locally. Production push blocked pending explicit owner authorization to publish commit `9fa9494` to `origin/main`.
+**Deployment status:** Published to GitHub `main` and verified live at `https://www.jrsstandard.com/` on 2026-09-22. The production homepage, enterprise pathway, Manifest package, and free-resource navigation were inspected after deployment.
 
 ## Objective
 
@@ -83,6 +83,6 @@ This changes the test to match the current approved architecture. It does not re
 
 ## Release state
 
-**CLOSED: OWNER PUBLICATION AUTHORIZATION REQUIRED.**
+**CLOSED: WEBSITE RELEASE PUBLISHED. COUNSEL ACTIONS REMAIN.**
 
-The delegable website alignment and verification work is complete and committed locally. The attempted push was stopped because identifying that the revisions were not live did not satisfy the repository control requiring explicit authorization to publish to production. Rights determinations required for an exclusive licence or asset purchase remain counsel actions and were not inferred or closed.
+The website alignment and publication work is complete. GitHub `main` contains the verified release, the temporary publication transport was removed, and the production website displays the revised homepage, full enterprise pathway, free-resource route, and bounded Manifest publication package. Rights determinations required for an exclusive licence or asset purchase remain counsel actions and were not inferred or closed.
