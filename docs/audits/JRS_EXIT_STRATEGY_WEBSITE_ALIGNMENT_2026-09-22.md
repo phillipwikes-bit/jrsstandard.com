@@ -2,7 +2,7 @@
 
 **Date:** 2026-09-22  
 **Scope:** Public website and its navigation, enterprise pathway, Manifest positioning, and mechanical website grading  
-**Deployment status:** Owner requested correction after confirming that the completed revisions were not live. Production publication authorized on 2026-09-22; live verification pending.
+**Deployment status:** Release committed locally. Production push blocked pending explicit owner authorization to publish commit `9fa9494` to `origin/main`.
 
 ## Objective
 
@@ -83,6 +83,6 @@ This changes the test to match the current approved architecture. It does not re
 
 ## Release state
 
-**CLOSED: PRODUCTION PUBLICATION AUTHORIZED; LIVE VERIFICATION PENDING.**
+**CLOSED: OWNER PUBLICATION AUTHORIZATION REQUIRED.**
 
-The delegable website alignment and verification work is complete. The owner identified that the revisions were not live and directed correction. Rights determinations required for an exclusive licence or asset purchase remain counsel actions and were not inferred or closed.
+The delegable website alignment and verification work is complete and committed locally. The attempted push was stopped because identifying that the revisions were not live did not satisfy the repository control requiring explicit authorization to publish to production. Rights determinations required for an exclusive licence or asset purchase remain counsel actions and were not inferred or closed.
