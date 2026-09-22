@@ -11,134 +11,133 @@ Scoring is mechanical. Every point is tied to something present or absent in the
 
 | Role | Pages | Mean score | A/A- | B+/B | C+/C | D/F |
 |---|---|---|---|---|---|---|
-| commercial | 9 | 80.9% | 4 | 3 | 2 | 0 |
-| public-content | 24 | 89.2% | 23 | 0 | 1 | 0 |
-| reference | 17 | 87.8% | 17 | 0 | 0 | 0 |
-| keyed-participant | 4 | 82.8% | 0 | 4 | 0 | 0 |
-| internal-tool | 15 | 86.9% | 13 | 2 | 0 | 0 |
-| private-owner | 3 | 78.4% | 1 | 2 | 0 | 0 |
+| commercial | 5 | 89.3% | 3 | 2 | 0 | 0 |
+| public-content | 26 | 98.6% | 25 | 1 | 0 | 0 |
+| reference | 17 | 100.0% | 17 | 0 | 0 | 0 |
+| keyed-participant | 4 | 91.2% | 4 | 0 | 0 | 0 |
+| internal-tool | 20 | 99.8% | 20 | 0 | 0 | 0 |
+| private-owner | 3 | 100.0% | 3 | 0 | 0 | 0 |
 
-## Commercial (9 pages)
-
-| Page | Grade | Score | Inbound | Failed dimensions |
-|---|---|---|---|---|
-| `enterprise.html` | **A** | 96% | 12 | terms or boundaries reachable |
-| `pilot.html` | **A** | 96% | 34 | terms or boundaries reachable |
-| `index.html` | **A-** | 92% | 39 | a capture path exists on the page |
-| `review-engine.html` | **A-** | 92% | 4 | a capture path exists on the page |
-| `audit-request.html` | **B** | 74% | 3 | skip-to-content link; dual-track positioning present; routes to the engine documentation; routes to an enterprise inquiry; terms or boundaries reachable |
-| `calibration-request.html` | **B** | 74% | 3 | skip-to-content link; dual-track positioning present; routes to the engine documentation; routes to an enterprise inquiry; terms or boundaries reachable |
-| `governance-request.html` | **B** | 74% | 3 | skip-to-content link; dual-track positioning present; routes to the engine documentation; routes to an enterprise inquiry; terms or boundaries reachable |
-| `engagement.html` | **C+** | 66% | 0 | skip-to-content link; reachable, has inbound links (0 inbound); dual-track positioning present; routes to the engine documentation; routes to an enterprise inquiry; a capture path exists on the page |
-| `org-pilot.html` | **C+** | 64% | 6 | one <h1>; skip-to-content link; dual-track positioning present; routes to the engine documentation; states the evidence stage honestly; a capture path exists on the page; terms or boundaries reachable |
-
-## Public Content (24 pages)
+## Commercial (5 pages)
 
 | Page | Grade | Score | Inbound | Failed dimensions |
 |---|---|---|---|---|
-| `privacy.html` | **A** | 100% | 51 | none |
-| `training.html` | **A** | 100% | 27 | none |
-| `workflow-fit.html` | **A** | 100% | 5 | none |
-| `investigator-guides.html` | **A** | 98% | 15 | skip-to-content link |
-| `implementation-scenarios.html` | **A** | 95% | 5 | free access stated or implied |
-| `operational-boundaries.html` | **A** | 95% | 2 | free access stated or implied |
-| `simulations.html` | **A** | 95% | 8 | free access stated or implied |
-| `decision-reconstruction-risk.html` | **A-** | 93% | 10 | skip-to-content link; free access stated or implied |
-| `check.html` | **A-** | 90% | 58 | skip-to-content link; connects to the enterprise track |
-| `reviewer/index.html` | **A-** | 90% | 39 | skip-to-content link; connects to the enterprise track |
-| `terms.html` | **A-** | 90% | 1 | skip-to-content link; connects to the enterprise track |
-| `jrsstandard.html` | **A-** | 89% | 3 | one <h1>; connects to the enterprise track |
-| `about.html` | **A-** | 85% | 3 | skip-to-content link; connects to the enterprise track; free access stated or implied |
-| `ai-governance-record.html` | **A-** | 85% | 1 | skip-to-content link; connects to the enterprise track; free access stated or implied |
-| `codebook.html` | **A-** | 85% | 10 | skip-to-content link; connects to the enterprise track; free access stated or implied |
-| `datasets.html` | **A-** | 85% | 3 | skip-to-content link; connects to the enterprise track; free access stated or implied |
-| `evidence-ledger.html` | **A-** | 85% | 4 | skip-to-content link; connects to the enterprise track; free access stated or implied |
-| `finding.html` | **A-** | 85% | 4 | skip-to-content link; connects to the enterprise track; free access stated or implied |
-| `methodology.html` | **A-** | 85% | 2 | skip-to-content link; connects to the enterprise track; free access stated or implied |
-| `questions.html` | **A-** | 85% | 3 | skip-to-content link; connects to the enterprise track; free access stated or implied |
-| `research.html` | **A-** | 85% | 40 | skip-to-content link; connects to the enterprise track; free access stated or implied |
-| `results.html` | **A-** | 85% | 3 | skip-to-content link; connects to the enterprise track; free access stated or implied |
-| `why-good-decisions-fail.html` | **A-** | 85% | 2 | skip-to-content link; connects to the enterprise track; free access stated or implied |
-| `404.html` | **C+** | 67% | 0 | meta description, 40+ chars; canonical link; indexed in sitemap; reachable, has inbound links (0 inbound); connects to the enterprise track; free access stated or implied |
+| `index.html` | **A** | 100% | 70 | none |
+| `review-engine.html` | **A-** | 92% | 14 | dual-track positioning present |
+| `enterprise.html` | **A-** | 88% | 64 | dual-track positioning present; terms or boundaries reachable |
+| `org-pilot.html` | **B+** | 84% | 11 | dual-track positioning present; a capture path exists on the page |
+| `pilot.html` | **B+** | 82% | 65 | dual-track positioning present; routes to the engine documentation; terms or boundaries reachable |
+
+## Public Content (26 pages)
+
+| Page | Grade | Score | Inbound | Failed dimensions |
+|---|---|---|---|---|
+| `about.html` | **A** | 100% | 4 | none |
+| `ai-governance-record.html` | **A** | 100% | 1 | none |
+| `check.html` | **A** | 100% | 61 | none |
+| `codebook.html` | **A** | 100% | 12 | none |
+| `compliance.html` | **A** | 100% | 1 | none |
+| `datasets.html` | **A** | 100% | 4 | none |
+| `decision-reconstruction-risk.html` | **A** | 100% | 10 | none |
+| `evidence-ledger.html` | **A** | 100% | 5 | none |
+| `finding.html` | **A** | 100% | 4 | none |
+| `implementation-scenarios.html` | **A** | 100% | 6 | none |
+| `investigator-guides.html` | **A** | 100% | 62 | none |
+| `methodology.html` | **A** | 100% | 3 | none |
+| `operational-boundaries.html` | **A** | 100% | 3 | none |
+| `privacy.html` | **A** | 100% | 54 | none |
+| `questions.html` | **A** | 100% | 4 | none |
+| `research-summary.html` | **A** | 100% | 1 | none |
+| `research.html` | **A** | 100% | 61 | none |
+| `results.html` | **A** | 100% | 4 | none |
+| `reviewer/index.html` | **A** | 100% | 70 | none |
+| `simulations.html` | **A** | 100% | 62 | none |
+| `training.html` | **A** | 100% | 65 | none |
+| `why-good-decisions-fail.html` | **A** | 100% | 1 | none |
+| `workflow-fit.html` | **A** | 100% | 6 | none |
+| `jrsstandard.html` | **A** | 94% | 63 | indexed in sitemap |
+| `security.html` | **A** | 94% | 3 | indexed in sitemap |
+| `404.html` | **B** | 76% | 0 | indexed in sitemap; reachable, has inbound links (0 inbound); connects to the enterprise track; free access stated or implied |
 
 ## Reference (17 pages)
 
 | Page | Grade | Score | Inbound | Failed dimensions |
 |---|---|---|---|---|
-| `reference/ai-assisted-record-failure-modes/index.html` | **A-** | 88% | 40 | connects to the enterprise track; free access stated or implied |
-| `reference/ai-verification-controls/index.html` | **A-** | 88% | 40 | connects to the enterprise track; free access stated or implied |
-| `reference/decision-context-loss/index.html` | **A-** | 88% | 40 | connects to the enterprise track; free access stated or implied |
-| `reference/deployment-models/index.html` | **A-** | 88% | 40 | connects to the enterprise track; free access stated or implied |
-| `reference/documentation-risk-tiers/index.html` | **A-** | 88% | 40 | connects to the enterprise track; free access stated or implied |
-| `reference/escalation-triggers/index.html` | **A-** | 88% | 40 | connects to the enterprise track; free access stated or implied |
-| `reference/field-conditions/index.html` | **A-** | 88% | 40 | connects to the enterprise track; free access stated or implied |
-| `reference/implementation-maturity-levels/index.html` | **A-** | 88% | 40 | connects to the enterprise track; free access stated or implied |
-| `reference/index.html` | **A-** | 88% | 40 | connects to the enterprise track; free access stated or implied |
-| `reference/later-review-failure-cascades/index.html` | **A-** | 88% | 40 | connects to the enterprise track; free access stated or implied |
-| `reference/missing-chronology/index.html` | **A-** | 88% | 40 | connects to the enterprise track; free access stated or implied |
-| `reference/record-survivability/index.html` | **A-** | 88% | 40 | connects to the enterprise track; free access stated or implied |
-| `reference/reviewer-responsibility-boundaries/index.html` | **A-** | 88% | 40 | connects to the enterprise track; free access stated or implied |
-| `reference/reviewer-worksheet/index.html` | **A-** | 88% | 40 | connects to the enterprise track; free access stated or implied |
-| `reference/second-line-review-model/index.html` | **A-** | 88% | 40 | connects to the enterprise track; free access stated or implied |
-| `reference/traveler-test/index.html` | **A-** | 88% | 40 | connects to the enterprise track; free access stated or implied |
-| `reference/unsupported-generalization/index.html` | **A-** | 88% | 40 | connects to the enterprise track; free access stated or implied |
+| `reference/ai-assisted-record-failure-modes/index.html` | **A** | 100% | 70 | none |
+| `reference/ai-verification-controls/index.html` | **A** | 100% | 70 | none |
+| `reference/decision-context-loss/index.html` | **A** | 100% | 70 | none |
+| `reference/deployment-models/index.html` | **A** | 100% | 70 | none |
+| `reference/documentation-risk-tiers/index.html` | **A** | 100% | 70 | none |
+| `reference/escalation-triggers/index.html` | **A** | 100% | 70 | none |
+| `reference/field-conditions/index.html` | **A** | 100% | 70 | none |
+| `reference/implementation-maturity-levels/index.html` | **A** | 100% | 70 | none |
+| `reference/index.html` | **A** | 100% | 70 | none |
+| `reference/later-review-failure-cascades/index.html` | **A** | 100% | 70 | none |
+| `reference/missing-chronology/index.html` | **A** | 100% | 70 | none |
+| `reference/record-survivability/index.html` | **A** | 100% | 70 | none |
+| `reference/reviewer-responsibility-boundaries/index.html` | **A** | 100% | 70 | none |
+| `reference/reviewer-worksheet/index.html` | **A** | 100% | 70 | none |
+| `reference/second-line-review-model/index.html` | **A** | 100% | 70 | none |
+| `reference/traveler-test/index.html` | **A** | 100% | 70 | none |
+| `reference/unsupported-generalization/index.html` | **A** | 100% | 70 | none |
 
 ## Keyed Participant (4 pages)
 
 | Page | Grade | Score | Inbound | Failed dimensions |
 |---|---|---|---|---|
-| `contributor.html` | **B+** | 84% | 0 | canonical link; one <h1>; skip-to-content link; referrer suppressed |
-| `honor.html` | **B+** | 84% | 0 | canonical link; one <h1>; skip-to-content link; referrer suppressed |
-| `recheck.html` | **B+** | 84% | 0 | canonical link; one <h1>; skip-to-content link; referrer suppressed |
-| `coauthor.html` | **B+** | 80% | 0 | meta description, 40+ chars; canonical link; one <h1>; skip-to-content link; footer present |
+| `coauthor.html` | **A-** | 92% | 0 | one <h1>; footer present |
+| `recheck.html` | **A-** | 92% | 0 | skip-to-content link; referrer suppressed |
+| `contributor.html` | **A-** | 91% | 0 | one <h1>; referrer suppressed |
+| `honor.html` | **A-** | 91% | 0 | one <h1>; referrer suppressed |
 
-## Internal Tool (15 pages)
+## Internal Tool (20 pages)
 
 | Page | Grade | Score | Inbound | Failed dimensions |
 |---|---|---|---|---|
-| `access.html` | **A** | 97% | 0 | skip-to-content link |
-| `reviewer/completion.html` | **A-** | 92% | 0 | one <h1>; skip-to-content link |
-| `reviewer/evaluation.html` | **A-** | 92% | 4 | one <h1>; skip-to-content link |
-| `ai-records-arm-b.html` | **A-** | 86% | 0 | meta description, 40+ chars; canonical link; skip-to-content link |
-| `ai-records-pilot.html` | **A-** | 86% | 0 | meta description, 40+ chars; canonical link; skip-to-content link |
-| `bench-results.html` | **A-** | 86% | 0 | meta description, 40+ chars; canonical link; skip-to-content link |
-| `engine-activity.html` | **A-** | 86% | 0 | meta description, 40+ chars; canonical link; skip-to-content link |
-| `people.html` | **A-** | 86% | 0 | meta description, 40+ chars; canonical link; skip-to-content link |
-| `research-data.html` | **A-** | 86% | 2 | meta description, 40+ chars; canonical link; skip-to-content link |
-| `review-status.html` | **A-** | 86% | 0 | meta description, 40+ chars; canonical link; skip-to-content link |
-| `submit-record.html` | **A-** | 86% | 0 | meta description, 40+ chars; canonical link; skip-to-content link |
-| `submit-validation.html` | **A-** | 86% | 1 | meta description, 40+ chars; canonical link; skip-to-content link |
-| `supported.html` | **A-** | 86% | 0 | meta description, 40+ chars; canonical link; skip-to-content link |
-| `bench-admin.html` | **B+** | 81% | 1 | meta description, 40+ chars; canonical link; skip-to-content link; footer present |
-| `bench-review.html` | **B+** | 81% | 0 | meta description, 40+ chars; canonical link; one <h1>; skip-to-content link |
+| `access.html` | **A** | 100% | 0 | none |
+| `ai-records-arm-b.html` | **A** | 100% | 0 | none |
+| `ai-records-pilot.html` | **A** | 100% | 0 | none |
+| `audit-request.html` | **A** | 100% | 0 | none |
+| `bench-results.html` | **A** | 100% | 0 | none |
+| `bench-review.html` | **A** | 100% | 0 | none |
+| `calibration-request.html` | **A** | 100% | 0 | none |
+| `engagement.html` | **A** | 100% | 3 | none |
+| `engine-activity.html` | **A** | 100% | 0 | none |
+| `governance-request.html` | **A** | 100% | 0 | none |
+| `people.html` | **A** | 100% | 0 | none |
+| `research-data.html` | **A** | 100% | 2 | none |
+| `review-status.html` | **A** | 100% | 0 | none |
+| `reviewer/completion.html` | **A** | 100% | 0 | none |
+| `reviewer/evaluation.html` | **A** | 100% | 3 | none |
+| `submit-record.html` | **A** | 100% | 0 | none |
+| `submit-validation.html` | **A** | 100% | 1 | none |
+| `supported.html` | **A** | 100% | 0 | none |
+| `terms.html` | **A** | 100% | 7 | none |
+| `bench-admin.html` | **A** | 95% | 1 | footer present |
 
 ## Private Owner (3 pages)
 
 | Page | Grade | Score | Inbound | Failed dimensions |
 |---|---|---|---|---|
-| `programme-status-9872fb93cc94.html` | **A-** | 90% | 0 | meta description, 40+ chars; canonical link; skip-to-content link |
-| `vp-7c1f9a4e8d2b6035.html` | **B** | 74% | 2 | meta description, 40+ chars; canonical link; no analytics; referrer suppressed |
-| `acquisition-9f3c2a7d4b.html` | **B** | 72% | 2 | meta description, 40+ chars; canonical link; skip-to-content link; no analytics; referrer suppressed |
+| `acquisition-9f3c2a7d4b.html` | **A** | 100% | 2 | none |
+| `programme-status-9872fb93cc94.html` | **A** | 100% | 2 | none |
+| `vp-7c1f9a4e8d2b6035.html` | **A** | 100% | 2 | none |
 
 ## Summary Block
 
 ```
 JRS PAGE GRADE, ENTERPRISE TRACK READINESS
 
-  pages graded            72
-  site mean score         86.6%
-  COMMERCIAL mean score   80.9%  (9 pages)
+  pages graded            75
+  site mean score         98.3%
+  COMMERCIAL mean score   89.3%  (5 pages)
 
   commercial page grades
-    enterprise.html              A    96.1%
-    pilot.html                   A    96.1%
-    index.html                   A-   92.1%
+    index.html                   A   100.0%
     review-engine.html           A-   92.1%
-    audit-request.html           B    74.0%
-    calibration-request.html     B    74.0%
-    governance-request.html      B    74.0%
-    engagement.html              C+   66.1%
-    org-pilot.html               C+   63.8%
+    enterprise.html              A-   88.2%
+    org-pilot.html               B+   84.3%
+    pilot.html                   B+   81.9%
 
   pages graded D or F     0
 ```
