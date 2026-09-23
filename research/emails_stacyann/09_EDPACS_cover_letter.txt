@@ -1,0 +1,22 @@
+SEND TO: EDPACS, The EDP Audit, Control, and Security Newsletter, Taylor & Francis
+No editorial address is published and tandfonline.com blocks automated requests.
+Route: the Submit an article button at tandfonline.com/journals/uedp20, which
+goes to Editorial Manager. This is the cover letter.
+
+Dear Editors,
+
+We submit "Documentation Quality in 32 Public-Records Determinations" for consideration.
+
+Auditors are routinely asked to assess decisions made by people who are no longer available, using records that were never written with an auditor in mind. This study examines how often that actually works.
+
+We assessed 32 United States public-records determinations and audits, drawn from 32 distinct public sources across four document classes and two states, issued between 2005 and 2026. Each was read from the source, with a contemporaneous note recording the reason, before the documented outcome was consulted.
+
+The result most relevant to your readership is a concordance between two instruments built with no knowledge of each other. In the five cases where a State or City Comptroller had independently audited the same programme, our structured record-level read and the auditor's own finding agreed in all five that the programme could not adequately evidence its administration. The read also differentiated document classes by how far each exposed the underlying basis, and was not associated with appellate outcome, which separates documentation quality from legal disposition.
+
+The practical output is a five-condition check applied to an individual record before finalisation, which sits alongside rather than inside existing control frameworks.
+
+All material is publicly available and every case carries a citation.
+
+Sincerely,
+
+Stacyann Young and Phillip Wikes

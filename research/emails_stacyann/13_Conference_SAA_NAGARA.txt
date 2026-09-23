@@ -1,0 +1,27 @@
+SEND TO: the annual meeting programme committee at either
+  Society of American Archivists      archivists.org
+  NAGARA                              nagara.org
+NO SUBMISSION ROUTE WAS VERIFIED FOR EITHER. Both run annual calls for
+proposals with their own deadlines and forms. Check the current call before
+sending; this is the text to drop into it.
+
+SESSION PROPOSAL
+
+TITLE
+Can the Basis Be Rebuilt? Testing Reconstructability Across 32 Public-Records Determinations
+
+ABSTRACT
+When a consequential determination is reviewed later, the original decision-maker is often gone. The record has to carry enough for somebody else to understand what was decided, what evidence supported it, and how the conclusion followed. This session reports a pilot testing whether that property can be assessed consistently from the record alone.
+
+We examined 32 publicly available United States public-records determinations and audits from 32 distinct sources, across four document classes and two jurisdictions, issued between 2005 and 2026: New York appellate and trial decisions, Committee on Open Government advisory opinions, Connecticut Freedom of Information Commission final decisions, and Comptroller compliance audits. Each was read from the source, with a contemporaneous note recording the reason, before the documented outcome was consulted.
+
+In the five cases where a State or City Comptroller had independently audited the same programme, the record-level assessment and the auditor's own finding agreed in all five. Assessments differentiated document classes according to how far each source exposed the underlying basis, and were not associated with appellate outcome, which suggests reconstructability and legal disposition measure different properties.
+
+The session sets out the method, the results, and the limits: a small non-random corpus, a single primary reviewer on most cases, and an interim reliability estimate from a ten-case blind second read.
+
+RELEVANCE
+Reconstructability sits alongside the established concerns of retention, authenticity and access, and it can be assessed before a record enters the system a reviewer will later search.
+
+PRESENTERS
+Stacyann Young, Deputy Records Access Officer.
+Phillip Wikes, who developed the review protocol.

@@ -1,0 +1,29 @@
+SEND TO: Government Technology, Route Fifty, or a comparable state and local
+government trade outlet. NO SUBMISSION ROUTE WAS VERIFIED FOR EITHER. Both
+commission more than they accept, so find the relevant editor's byline on a
+recent piece and write to them directly.
+
+This is a PITCH, not a paper. Trade press wants the finding and the
+implication, not the method.
+
+Subject: Story pitch: agencies are buying FOIA software without checking whether the output holds up
+
+Dear [Editor],
+
+A quick pitch, and I will keep it short.
+
+In May 2026 the Chief FOIA Officers Council announced a government-wide inventory of FOIA technology across federal agencies, covering case management, eDiscovery, document review and their costs. It is a sensible thing to do. It answers what software agencies run.
+
+It does not answer whether the determinations coming out of that software hold up when somebody reads them cold.
+
+We tested that. We took 32 real public-records determinations and audits from New York and Connecticut, issued between 2005 and 2026, and asked one question of each: could an independent reviewer rebuild the basis for the decision from the record alone?
+
+The finding that should interest your readers is this. Five of the cases were programmes that a State or City Comptroller had independently audited. In all five, our read of the record and the auditor's own conclusion agreed that the programme could not adequately evidence its public-records administration. Two different methods, same answer.
+
+A fluent, well-formatted determination produced by good software can still be one nobody can later explain. That is a procurement question and an accountability question at the same time, and it is not on the inventory.
+
+My co-author is a serving Deputy Records Access Officer. Happy to write this at whatever length suits you, or to talk it through first.
+
+Sincerely,
+
+Phillip Wikes and Stacyann Young
