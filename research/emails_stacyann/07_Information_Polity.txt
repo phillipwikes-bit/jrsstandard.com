@@ -1,0 +1,22 @@
+SEND TO: Information Polity, via the Sage submission system
+Author instructions: journals.sagepub.com/author-instructions/ipo
+Academic articles should not exceed 6,000 words including footnotes.
+No enquiry address is published, so this is the cover letter.
+
+Dear Editors,
+
+We submit "Documentation Quality in 32 Public-Records Determinations: A Two-State Case Study" for consideration.
+
+Information Polity examines the impact of information and communication technologies on governance and public administration. This study addresses a question at that intersection which is not usually measured: whether the records produced by a public-records process remain capable of explaining themselves to a later reviewer.
+
+The corpus is 32 publicly available United States determinations and audits from 32 distinct sources, across four document classes and two states, issued between 2005 and 2026. Each case was assessed from the source, with a contemporaneous note recording the reason, before the documented outcome was consulted.
+
+In the five cases where a State or City Comptroller had independently audited the same programme, the record-level assessment and the auditor's own finding agreed in all five. Assessments differentiated document classes by how far each source exposed the underlying basis, and were not associated with appellate outcome, which separates documentation quality from legal disposition.
+
+The policy relevance is current. The Chief FOIA Officers Council announced a government-wide inventory of FOIA technology in May 2026. An inventory establishes what systems agencies run. It does not establish whether the determinations those systems produce hold up when read cold, and that is the gap this study addresses.
+
+All material is publicly available and every case carries a citation.
+
+Sincerely,
+
+Stacyann Young and Phillip Wikes
