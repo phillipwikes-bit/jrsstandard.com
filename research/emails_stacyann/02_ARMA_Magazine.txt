@@ -1,10 +1,26 @@
-SEND TO: editor@armaintl.org
+SEND TO: armaservice@armaintl.org
+COPY TO: erica.poff@armaintl.org
 
-Subject: Article proposal: can the basis of a decision be rebuilt from the record?
+Both verified on ARMA's own pages. armaservice@armaintl.org is the address the
+ARMA staff directory itself directs publications, content, editorial and
+communications enquiries to, and it appears twice on that page. Erica Poff is
+the person ARMA names for discussing content ideas before a formal submission.
 
-Dear Editor,
+DO NOT USE editor@armaintl.org. It appears on the ARMA Magazine About page but
+it bounced. Reported by the owner 2026-09-23.
 
-I am writing to propose an article for ARMA Magazine and to ask whether the subject interests you before we write it to your length.
+If neither replies within a fortnight, two further verified addresses exist:
+  tricia.smith@armaintl.org    Tricia Smith Bonfrisco, Interim Chief Staff Officer
+  heather.lehman@armaintl.org  Heather Lehman, Director of Member Engagement
+Neither is an editorial role, so use them only to ask who now handles the
+magazine. ARMA staff addresses follow First.Last@armaintl.org, but the staff
+directory publishes an address for only three people, so do not construct one.
+
+Subject: Article proposal for ARMA Magazine, and who should I send it to?
+
+Dear ARMA,
+
+I am writing to propose an article for ARMA Magazine, and to ask who I should address it to, since the editorial address on the magazine site is not reaching anyone.
 
 The question is one your readership meets constantly. A record can be retained, accessible, complete and professionally written, and still fail the person who has to review it later, because the evidence behind the conclusion is not on the page. We examined that across 32 United States public-records determinations from 32 distinct sources, four document classes and two states, issued between 2005 and 2026.
 
@@ -14,7 +30,7 @@ The practical form is a five-point check that can be applied before a consequent
 
 We would write this as a practitioner piece at your usual length, without statistical apparatus.
 
-Would this suit the magazine?
+Would this suit the magazine, and who should receive it?
 
 Sincerely,
 

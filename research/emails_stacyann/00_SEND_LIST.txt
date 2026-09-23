@@ -7,7 +7,8 @@ The address or route is line 1 of each file.
 
 EMAIL, VERIFIED ADDRESS, SEND TODAY
   01_SAA_Records_Management             decision in five weeks, fastest on list
-  02_ARMA_Magazine                      her profession, ~2,000 word rewrite
+  02_ARMA_Magazine                      armaservice@ + erica.poff@. The editor@
+                                        address BOUNCES, do not use it
   03_American_Archivist                 January window, enquiry can go now
   06_State_and_Local_Government_Review  closest academic fit, her exact corpus
   10_ISACA_Journal                      audit readership, CPEs for authors
