@@ -1,0 +1,21 @@
+Government Information Quarterly, Elsevier
+Submit through Editorial Manager. No presubmission address is published.
+This is the cover letter.
+
+Dear Editors,
+
+We submit "Documentation Quality in 32 Public-Records Determinations: A Two-State Case Study" for consideration.
+
+Government Information Quarterly examines the intersection of policy, information technology, government and the public, and draws on public administration, information science and law. This study sits at that intersection. It asks whether a public-records determination, once issued, still allows an independent reviewer to reconstruct the basis on which the agency acted.
+
+The corpus is 32 publicly available determinations and audits from 32 distinct sources, across four document classes and two states, issued between 2005 and 2026: New York appellate and trial decisions, New York Committee on Open Government advisory opinions, Connecticut Freedom of Information Commission final decisions, and compliance audits from the New York State and New York City Comptrollers.
+
+In the five cases where a Comptroller had independently audited the same programme, the record-level assessment and the auditor's own finding agreed in all five. Assessments differentiated document classes by how far each source exposed the underlying basis, and were not associated with appellate outcome, which separates documentation quality from legal disposition.
+
+The work speaks to a current policy question. The Chief FOIA Officers Council announced a government-wide inventory of FOIA technology in May 2026. An inventory establishes what software agencies run. It does not establish whether the determinations produced by that software hold up when read cold.
+
+All material is publicly available and every case carries a citation.
+
+Sincerely,
+
+Stacyann Young and Phillip Wikes

@@ -1,0 +1,18 @@
+To: publication@isaca.org
+Subject: Article enquiry: auditing whether a record can explain its own decision
+
+Dear Editor,
+
+I am writing to ask whether the following would suit the ISACA Journal before preparing it to your 2,000 to 3,000 word length.
+
+Auditors are routinely asked to assess decisions made by people who are no longer available, using records that were never written with an auditor in mind. We examined how often that actually works, across 32 United States public-records determinations from 32 distinct sources, four document classes and two states, issued between 2005 and 2026.
+
+The result that should interest your readership is a concordance. In the five cases where a State or City Comptroller had independently audited the same programme, our structured record-level read and the auditor's own finding agreed in all five. Two instruments built with no knowledge of each other reached the same conclusion about whether an organisation could evidence what it had done.
+
+The practical output is a five-condition check applied to an individual record before it is finalised, which sits alongside rather than inside existing control frameworks, and the article would cover where to place it in a review workflow.
+
+Would this be appropriate for the Journal?
+
+Sincerely,
+
+Phillip Wikes and Stacyann Young
