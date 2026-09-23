@@ -14,7 +14,7 @@ The editor's only concern was administrative. Your author record carried my emai
 
 The cleanest fix is a note to him from your own account, because that is precisely what he asked for and it is worth more than anything I can say on your behalf. I have put a draft below. Please treat it as a starting point and change anything that is not how you would put it, or bin it and write your own.
 
-If you would rather I handle it, that is completely fine. In that case just send me a direct email address you are happy to have listed as yours, and your ORCID iD if you have one.
+If you would rather I handle it, that is completely fine. In that case just send me a direct email address you are happy to have listed as yours, and your ORCID iD. If you do not have one, it is free and takes about two minutes at orcid.org, and it has to be created by you rather than by me, which is exactly why it answers the editor's question. The iD is the sixteen digit number, in the form 0000-0002-1825-0097.
 
 Your affiliation line is fine either way. That was not what he queried.
 
@@ -33,7 +33,7 @@ You queried whether the authors are two distinct people. We are. I am Ubayet Hos
 
 The contact details were my co-author's error and not a misrepresentation. I contributed to this work in a personal professional capacity, and I asked that my employer's name be removed from the paper for that reason, since the work was not carried out under it. That left me without an institutional address, and rather than asking me for a personal one he entered his own in my author record. He then submitted using an organisational address. I understand why the combination looked opaque, and I would have queried it myself.
 
-I am happy to provide whatever verification your office requires. My ORCID iD is [INSERT, or delete this sentence if you do not have one]. This account is my own and can be used to confirm anything further.
+I am happy to provide whatever verification your office requires. My ORCID iD is [INSERT YOUR ORCID iD, or delete this sentence if you do not have one]. This account is my own and can be used to confirm anything further.
 
 Given that the manuscript was not assessed on its content, I would be grateful to know whether it can be reinstated for review once the author records are corrected, or whether you would prefer a fresh submission.
 
