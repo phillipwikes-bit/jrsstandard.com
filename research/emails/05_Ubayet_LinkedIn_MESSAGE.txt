@@ -1,5 +1,8 @@
 LinkedIn direct message to Ubayet Hossain
-Send as one message. Do not attach anything.
+Send the note as one message. Send the draft as a second message straight after,
+or paste it underneath. Do not attach a file.
+
+--- MESSAGE 1, the note ---
 
 Ubayet, news on the detection paper, and a small ask.
 
@@ -9,10 +12,34 @@ It was not the science. There were no reviewer comments at all and the methodolo
 
 The editor's only concern was administrative. Your author record carried my email address, because when we took the KPMG name off you no longer had an institutional one and I filled mine in rather than asking you for it. From the outside he could not confirm we were two people. That one is mine, and it is fixable.
 
-Could you send me a direct email address you are happy to have listed as yours, and your ORCID iD if you have one? Two minutes, and that is genuinely all it needs.
+The cleanest fix is a note to him from your own account, because that is precisely what he asked for and it is worth more than anything I can say on your behalf. I have put a draft below. Please treat it as a starting point and change anything that is not how you would put it, or bin it and write your own.
 
-Your affiliation line is fine. That was not what he queried.
+If you would rather I handle it, that is completely fine. In that case just send me a direct email address you are happy to have listed as yours, and your ORCID iD if you have one.
 
-One thought worth putting to you: a note from you to the editor, from your own account, would carry far more weight than anything I can say on your behalf. Happy to send you a draft if you would rather take it that way.
+Your affiliation line is fine either way. That was not what he queried.
 
 Phillip
+
+--- MESSAGE 2, the draft for you to edit and send ---
+
+To: deepak.kumar.1@springernature.com
+Subject: Submission 51f28685-c2cd-44c3-aa57-38847e8744c3, confirmation of authorship
+
+Dear Professor MacIntyre,
+
+I am writing from my own account regarding submission 51f28685-c2cd-44c3-aa57-38847e8744c3, "Detectability of Decision Reconstruction Risk in AI-Generated Decision Records: An International Expert Study", following your decision of 22 September.
+
+You queried whether the authors are two distinct people. We are. I am Ubayet Hossain, FRM. I designed the reliability and reproducibility methodology used in the study, I reviewed the submitted manuscript, and I approved it before submission. My co-author Phillip Wikes developed the review standard, conducted the analyses and wrote the paper.
+
+The contact details were my co-author's error and not a misrepresentation. I contributed to this work in a personal professional capacity, and I asked that my employer's name be removed from the paper for that reason, since the work was not carried out under it. That left me without an institutional address, and rather than asking me for a personal one he entered his own in my author record. He then submitted using an organisational address. I understand why the combination looked opaque, and I would have queried it myself.
+
+I am happy to provide whatever verification your office requires. My ORCID iD is [INSERT, or delete this sentence if you do not have one]. This account is my own and can be used to confirm anything further.
+
+Given that the manuscript was not assessed on its content, I would be grateful to know whether it can be reinstated for review once the author records are corrected, or whether you would prefer a fresh submission.
+
+Thank you for setting out the reason for the decision rather than declining without one.
+
+Kind regards,
+
+Ubayet Hossain, FRM
+Independent Financial Risk and Model Validation Professional
