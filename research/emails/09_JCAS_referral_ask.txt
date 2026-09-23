@@ -1,5 +1,12 @@
 Reply to Monika Lehman, JCAS. Send from a personal address, not info@.
 
+CHECK ONE THING BEFORE SENDING: the letter says three decisions came without a
+reviewer report. That is verified for the Journal of Civic Information, for AI
+and Ethics, and for your own reply, which was a scope answer and not a rejection.
+It is NOT verified for Records Management Journal, whose grounds were never
+recorded. If RMJ sent you reviewer comments, change "three" to "two" and drop RMJ
+from the list. Do not overstate this.
+
 To: email.jcas@gmail.com
 Subject: Re: Presubmission inquiry: case study on public-records documentation quality
 
@@ -9,7 +16,13 @@ Thank you, and thank you for answering so quickly. A clear scope answer in two d
 
 Your reading is right. The study works at the level of the individual record and asks whether its documented basis can be reconstructed later. That is a records management question, and it does not engage the archival profession's own practice and standards in the way your readership would expect.
 
-Since you pointed toward government, government records, or the law, may I ask one thing. Is there a particular venue, series, or colleague you would suggest? We are preparing an enquiry to the Society of American Archivists Government Records case study series, and we would welcome your view on whether that is the right door or whether there is a better one.
+I want to raise something adjacent, and I hope it reads as a request for help rather than a complaint, because your reply is not part of the problem. A presubmission enquiry is meant to resolve fit before a submission, and yours did exactly that, which is why we sent it.
+
+The paper has now been declined three times without a reviewer report. The Journal of Civic Information declined on fit in two and a half hours with no reviewer assigned. AI and Ethics declined on an administrative question about our author contact details, with no comments on the content. Neither decision turned on the methods or the findings, and after several months no editor or referee has yet told us anything about the study itself.
+
+That pattern suggests the problem is how we are framing it rather than what is in it, and it is the reason your two sentences were more useful than either formal decision.
+
+So, one question. Since you pointed toward government, government records, or the law, is there a particular venue, series, or colleague you would suggest? We are preparing an enquiry to the Society of American Archivists Government Records case study series, and we would welcome your view on whether that is the right door or whether there is a better one.
 
 If a later piece of ours does engage archival practice directly, we will come back to you.
 
