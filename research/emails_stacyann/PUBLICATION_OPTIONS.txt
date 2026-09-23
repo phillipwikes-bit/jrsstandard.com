@@ -1,0 +1,218 @@
+================================================================================
+EVERY PUBLICATION OPTION FOR THE 32-CASE PUBLIC-RECORDS STUDY
+Stacyann Young and Phillip Wikes. 2026-09-23.
+================================================================================
+
+Read the tiers as a trade. Acceptance likelihood and credential value move in
+opposite directions. Nothing on this list is both certain and prestigious. Pick
+which one you are buying.
+
+Addresses marked VERIFIED were read off the organisation's own page. Anything
+not verified says so. No address on this list was guessed.
+
+
+================================================================================
+TIER 1. GUARANTEED. NO GATEKEEPER. NOT PEER REVIEW.
+================================================================================
+
+ZENODO                                                    zenodo.org
+  What it is: a repository run by CERN and OpenAIRE, non-profit, free. You
+  upload, it issues a permanent DOI, the work is citable forever.
+  Acceptance: certain. Nobody reviews it. There is no decision.
+  Cost: none.
+  Worth: a citable, timestamped, public record with your names on it. It is a
+  preprint. It is not a peer-reviewed credential and must never be described as
+  published in a journal.
+  Notable: it offers an EMBARGO. You can deposit today, keep the files private,
+  and lift it later. That captures the date without spending the disclosure
+  while journals are still considering it.
+  Caution: a deposit is effectively permanent. You cannot delete a published
+  record, only add a new version. Default licence is CC-BY 4.0, which permits
+  commercial reuse, and your commercial rights position is still with counsel.
+
+SSRN                                                      ssrn.com
+  What it is: the Social Science Research Network, owned by Elsevier. The
+  standard preprint venue for law, public policy and public administration.
+  Acceptance: effectively certain. There is a light editorial screen for
+  obvious spam, not a review.
+  Cost: none.
+  Worth: more than Zenodo for this paper, because law and public policy people
+  genuinely read and cite SSRN. Still a preprint, not peer review.
+
+OSF PREPRINTS                                             osf.io/preprints
+  What it is: the Open Science Framework's preprint service.
+  Acceptance: certain. Cost: none.
+  Worth: similar to Zenodo. Choose one preprint home, not three.
+
+YOUR OWN SITE, LINKEDIN, MEDIUM
+  Acceptance: certain. Cost: none.
+  Worth: zero as a credential. Useful for reach, nothing else. Posting the full
+  paper here can complicate a later journal submission, so do not do it while
+  any venue is considering the work.
+
+
+================================================================================
+TIER 2. VERY LIKELY. PRACTITIONER VENUES. THEY NEED COPY EVERY MONTH.
+================================================================================
+
+ARMA MAGAZINE                            editor@armaintl.org        VERIFIED
+  What it is: the magazine of ARMA International, the records and information
+  management professional body. Published since 1966, 10,000+ members who are
+  records managers, IT and legal professionals.
+  Acceptance: high. Contributed articles from working professionals are what
+  the magazine is made of.
+  Cost: none. Length: about 2,000 words, practitioner voice, no statistics, no
+  reference list.
+  Worth: real standing inside her actual profession. Not an academic line.
+  Note: this needs a fresh 2,000-word write, not a cut of the 5,600-word paper.
+
+NAGARA CLEARINGHOUSE                     address obfuscated       NOT VERIFIED
+  What it is: the membership newsletter of the National Association of
+  Government Archives and Records Administrators. Absorbed the Crossroads white
+  paper series in 2013.
+  Why it matters: this is the single closest audience in existence to this
+  paper. Government records administrators, which is her own profession.
+  Acceptance: likely high, but no public submission guidelines exist, so ask
+  first about length and form.
+  Route: nagara.org/Web/About/About.aspx in a browser, the contact form at
+  communitychat.nagara.org/contactus, or (202) 938-1988. Their email is
+  deliberately obfuscated against scraping and could not be retrieved.
+
+EDPACS                                   no address published     NOT VERIFIED
+  What it is: The EDP Audit, Control, and Security Newsletter, Taylor & Francis.
+  The longest running IT audit newsletter, monthly, real ISSN, indexed. It
+  explicitly publishes contributed practitioner work.
+  Acceptance: high for practitioner framework pieces.
+  Route: the Submit an article button at tandfonline.com/journals/uedp20, which
+  goes to Editorial Manager. tandfonline returns HTTP 403 to automated requests
+  so no editorial address could be retrieved.
+  Fit caution: the audience is IT audit and control, not government records.
+  Closer to Phillip's work than to hers.
+
+ISACA JOURNAL                            publication@isaca.org      VERIFIED
+  What it is: the journal of ISACA, the IT governance, audit and risk body.
+  Acceptance: high. 2,000 to 3,000 words, Word document, Cvent portal, no cost,
+  endnotes not footnotes. Authors earn CPEs.
+  Fit caution: audit and governance readership. Again closer to Phillip's
+  framing than to a public-records study.
+
+GOVERNMENT TECHNOLOGY, ROUTE FIFTY       no submission route found
+  What they are: trade press for state and local government officials.
+  Acceptance: unknown, they commission more than they accept.
+  Worth: reach among the people who actually run these programmes. No credential
+  value. Listed for completeness, not recommended as a first move.
+
+
+================================================================================
+TIER 3. LIKELY. PEER REVIEWED, BUT BY PRACTITIONERS AGAINST A RUBRIC.
+================================================================================
+
+SAA GOVERNMENT RECORDS CASE STUDIES
+                                GovtRecs-CaseStudies@archivists.org  VERIFIED
+  What it is: a case study series of the Society of American Archivists,
+  developed by its Government Records Section. Published topics explicitly
+  include accountability and transparency.
+  Review: two Section members against a published rubric. That is peer review by
+  practitioners, not a prestige filter.
+  Length: 1,500 to 5,000 words. Open access, authors retain copyright.
+  STATUS: ALREADY SENT. Their process runs in weeks. Do not chase before late
+  October.
+
+SAA RECORDS MANAGEMENT CASE STUDIES      saarecordsmanagement@gmail.com VERIFIED
+  What it is: the sister series, run by SAA's Records Management Section.
+  Review: two Section reviewers, three-week review, decision within five weeks.
+  That is the fastest stated decision clock of any venue on this list.
+  Length: 2,500 to 5,000 words.
+
+
+================================================================================
+TIER 4. MODERATE. ACADEMIC PEER REVIEW. REAL CREDENTIAL VALUE.
+================================================================================
+
+STATE AND LOCAL GOVERNMENT REVIEW        mscicc@polisci.ufl.edu     VERIFIED
+  What it is: a Sage journal on state and local government, edited by Michael
+  Scicchitano at the University of Florida. Submission via SAGEtrack.
+  Why it is the best academic fit found: the corpus IS state and local
+  government. New York and Connecticut determinations, New York State and New
+  York City Comptroller audits.
+  Acceptance: moderate. This is real academic peer review.
+
+JOURNAL OF BEHAVIORAL PUBLIC ADMINISTRATION        journal-bpa.org portal
+  What it is: an open access journal on behavioural approaches to public
+  administration. No author fees, stated as a deliberate design choice.
+  Length: Research Article up to 4,000 words. Research Letter up to 2,000.
+  APA 7th edition. Anonymised PDF plus author-identified Word.
+  Why it fits unusually well: it runs an active symposium on NULL RESULTS and
+  explicitly encourages exploratory work below conventional significance
+  thresholds. This paper reports a null, a wide interval and an unmet criterion
+  and refuses to soften them. No other venue on this list has said it wants that.
+
+GOVERNMENT INFORMATION QUARTERLY          Elsevier Editorial Manager
+  What it is: an Elsevier journal on the intersection of policy, information
+  technology, government and the public. Draws on public administration,
+  information science and law.
+  Acceptance: lower. Well regarded, high volume of submissions.
+  No presubmission address is published.
+
+INFORMATION POLITY                        Sage submission system
+  What it is: a journal on the impact of information and communication
+  technologies on governance and public administration, now published by Sage.
+  Length: academic articles should not exceed 6,000 words including footnotes.
+  Author instructions: journals.sagepub.com/author-instructions/ipo
+
+THE AMERICAN ARCHIVIST         americanarchivist@archivists.org      VERIFIED
+  What it is: the flagship journal of the Society of American Archivists.
+  Editor Amy Cooper Cary, also amy.cary@marquette.edu.
+  Review: double blind.
+  TIMING IS A HARD GATE: submission windows are 1 January to 15 February and
+  1 June to 15 July. Both are currently shut. Manuscripts arriving outside a
+  window are not sent for review until the next one opens. An enquiry can go now.
+  Fit: the paper already cites Duranti in Archivaria and Yeo in this journal, so
+  it is in conversation with its literature.
+
+
+================================================================================
+TIER 5. ALREADY TRIED. DO NOT RESUBMIT WITHOUT NEW GROUNDS.
+================================================================================
+
+JOURNAL OF CIVIC INFORMATION    Declined 2026-09-01 on fit, in 2h31m, with no
+                                reviewer assigned and no comment on the methods.
+RECORDS MANAGEMENT JOURNAL      Declined. Grounds were never recorded anywhere
+                                in the estate. Worth supplying, because it is
+                                the one gap in the record.
+JOURNAL OF CONTEMPORARY         Declined 2026-09-23 on scope at the presubmission
+ARCHIVAL STUDIES                stage. Her steer: government, government records,
+                                or the law. That steer is what Tiers 3 and 4
+                                above now follow.
+
+
+================================================================================
+CONFERENCE ROUTES. FEEDBACK AND A CITABLE OUTPUT, FASTER THAN A JOURNAL.
+================================================================================
+
+ARMA INFOCON / INFONEXT     Speakers@armaintl.org  proposals        VERIFIED
+                            erica.poff@armaintl.org to discuss first VERIFIED
+  Themes include Records and Information Management, Compliance, Risk
+  Management. Sessions are 60 minutes, aimed at decision makers.
+
+NAGARA ANNUAL CONFERENCE    via nagara.org
+SAA ANNUAL MEETING          via archivists.org
+  Both put the work in front of exactly the right room. No submission details
+  were verified for either.
+
+
+================================================================================
+WHAT TO DO, IN ORDER
+================================================================================
+
+1. Send 01, 02 and 06 today. Email, rolling, and all three are her field.
+2. Send 03 today as a January-window enquiry, so the answer is in hand before
+   the window opens.
+3. Get NAGARA's address in a browser and send 08.
+4. Leave SAA Government Records alone until late October.
+5. Deposit on Zenodo UNDER EMBARGO now if you want the date and the DOI secured
+   without spending the disclosure.
+6. Keep 04, 05 and 07 as direct submissions for when a decision is needed.
+
+Do not send the same text to two places at once. Do not post the full paper
+publicly while any venue is considering it.
