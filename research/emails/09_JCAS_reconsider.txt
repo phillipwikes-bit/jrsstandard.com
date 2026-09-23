@@ -1,9 +1,12 @@
 Reply to Monika Lehman, JCAS. Send from a personal address, not info@.
 
-BEFORE SENDING: the letter says three declines came without a reviewer report.
-Verified for the Journal of Civic Information and for AI and Ethics. NOT verified
-for Records Management Journal, whose grounds were never recorded. If RMJ sent
-reviewer comments, change "three" to "two" and remove it.
+BEFORE SENDING: fill in or delete the bracketed Records Management Journal
+sentence. Only you know what RMJ said, and the estate has no record of it. If RMJ
+sent reviewer comments, delete the whole paragraph, because the point of it is
+that no referee has commented on the study.
+
+The AI and Ethics rejection is NOT mentioned. That was the detection paper, a
+different manuscript, and citing it here would be both irrelevant and confusing.
 
 To: email.jcas@gmail.com
 Subject: Re: Presubmission inquiry: case study on public-records documentation quality
@@ -20,7 +23,7 @@ That question seems to us to sit alongside work you have published. Beyond Descr
 
 That measurement is the contribution we would offer your readership. Archival science has a precise vocabulary for the qualities a record must hold and comparatively little item-level empirical work testing whether individual records actually hold them. We assessed 32 records against that standard, and in the five cases where a government auditor had independently examined the same programme, our reading and the auditor's finding agreed in all five. The rest of the paper is limitations, including a constructed reliability estimate on ten records that we report without softening.
 
-One further thing, offered as context and not as a complaint, since your reply is not part of it. The paper has been declined three times without a reviewer report. The Journal of Civic Information declined on fit in two and a half hours with no reviewer assigned. AI and Ethics declined on an administrative question about our author email addresses, with no comment on the content. No editor or referee has yet told us anything about the study itself, which is why a substantive two sentences from you carried more weight than either formal decision.
+One further thing, offered as context and not as a complaint, since your reply is not part of it. No referee has yet read this study. The Journal of Civic Information declined it on fit in two and a half hours with no reviewer assigned and no comment on the methods or the findings. [RMJ SENTENCE: add one line here saying what Records Management Journal said, or delete this bracketed text and the sentence above about referees if RMJ did send you reviewer comments.] That is why two substantive sentences from you carried more weight with us than a formal decision has so far.
 
 If you would consider it, we would gladly reframe the paper for your readership, leading with the archival question rather than the corpus. If your answer is still no, your steer toward government records is the one we will follow, and we would welcome a specific suggestion if you have one.
 
