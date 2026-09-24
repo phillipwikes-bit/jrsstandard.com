@@ -106,7 +106,7 @@
         "review_required",
         "gap_identified"
       ],
-      "source": "openapi-review-engine.json:80 and api/v1/review-engine.js:108-113",
+      "source": "openapi.json ReviewResponse and api/v1/review-engine.js:108-113",
       "note": "Not recorded at all in the prior version."
     }
   },

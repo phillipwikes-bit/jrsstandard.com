@@ -28,6 +28,16 @@
       "permanent": false
     },
     {
+      "source": "/resources",
+      "destination": "/resources.html",
+      "permanent": false
+    },
+    {
+      "source": "/free-resources",
+      "destination": "/resources.html",
+      "permanent": false
+    },
+    {
       "source": "/about",
       "destination": "/about.html",
       "permanent": false
@@ -100,6 +110,31 @@
     {
       "source": "/enterprise",
       "destination": "/enterprise.html",
+      "permanent": false
+    },
+    {
+      "source": "/organizational-evaluation",
+      "destination": "/organizational-evaluation.html",
+      "permanent": false
+    },
+    {
+      "source": "/platform-integration",
+      "destination": "/platform-integration.html",
+      "permanent": false
+    },
+    {
+      "source": "/licensing-acquisition",
+      "destination": "/licensing-acquisition.html",
+      "permanent": false
+    },
+    {
+      "source": "/controlled-evaluation",
+      "destination": "/controlled-evaluation-package.html",
+      "permanent": false
+    },
+    {
+      "source": "/platform-evaluation-001",
+      "destination": "/platform-evaluation-001.html",
       "permanent": false
     },
     {
@@ -313,26 +348,6 @@
       "permanent": false
     },
     {
-      "source": "/:path*.md",
-      "destination": "/404.html",
-      "permanent": false
-    },
-    {
-      "source": "/:path*.docx",
-      "destination": "/404.html",
-      "permanent": false
-    },
-    {
-      "source": "/scripts/:path*",
-      "destination": "/404.html",
-      "permanent": false
-    },
-    {
-      "source": "/research/:path*",
-      "destination": "/404.html",
-      "permanent": false
-    },
-    {
       "source": "/security",
       "destination": "/security.html",
       "permanent": false
@@ -343,6 +358,11 @@
       "permanent": false
     },
     {
+      "source": "/openapi-review-engine.json",
+      "destination": "/openapi.json",
+      "permanent": true
+    },
+    {
       "source": "/sandbox",
       "destination": "/review-engine.html#sandbox",
       "permanent": false
@@ -351,6 +371,24 @@
       "source": "/pricing",
       "destination": "/enterprise.html#pricing",
       "permanent": false
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/:path*.md",
+      "destination": "/api/not-found"
+    },
+    {
+      "source": "/:path*.docx",
+      "destination": "/api/not-found"
+    },
+    {
+      "source": "/scripts/:path*",
+      "destination": "/api/not-found"
+    },
+    {
+      "source": "/research/:path*",
+      "destination": "/api/not-found"
     }
   ],
   "headers": [
@@ -372,6 +410,18 @@
         {
           "key": "Permissions-Policy",
           "value": "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://analytics.google.com https://formspree.io https://pjzxkeviouofdseagvpf.supabase.co; form-action 'self' https://formspree.io mailto:; upgrade-insecure-requests"
+        },
+        {
+          "key": "Cross-Origin-Opener-Policy",
+          "value": "same-origin"
         }
       ]
     },

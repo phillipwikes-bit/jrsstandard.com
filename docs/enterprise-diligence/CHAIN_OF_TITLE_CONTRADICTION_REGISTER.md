@@ -23,7 +23,7 @@ answering any question.
 
 | # | Contradiction | Sources | Status |
 |---|---|---|---|
-| **Y-1** | Two OpenAPI documents describe the same endpoint at different versions with different response schemas | `openapi.json` 3.1.0/1.0.0 vs `openapi-review-engine.json` 3.0.3/0.1.0-validation | **UNRESOLVED** |
+| **Y-1** | Two OpenAPI documents described the same endpoint at different versions with different response schemas | `openapi.json` 3.1.0/1.0.0 vs `openapi-review-engine.json` 3.0.3/0.1.0-validation | **RESOLVED 2026-09-22.** One current `openapi.json` now describes the deployed response; the former path permanently redirects to it. Prior conflict preserved in this row. |
 | **Y-2** | Codebook condition names and API keys overlap on exactly one of five | `codebook.html` vs `openapi.json` | **UNRESOLVED** |
 | **Y-3** | The CCI co-author is **named first** on an accepted publication but is classified `kind:'panel'` in the roster system and absent from the co-author instrument | `api/_contributor-roster.js` vs `api/_coauthor-roster.js` vs the CCI packet | **UNRESOLVED. Highest-value contradiction in this register** |
 | **Y-4** | Public pages state record text is never stored; result telemetry is written | Public pages vs `api/v1/review-engine.js` | **UNRESOLVED** |

@@ -78,3 +78,37 @@ Correct the website shortcomings identified in the comprehensive audit without e
 
 ## Release rule
 These changes improve public clarity and enterprise presentation. They do not convert unresolved external, legal, security, or research matters into closed findings.
+
+
+## Accessibility and first-impression readability completion — 2026-09-21
+
+A final presentation pass was completed after the initial enterprise-polish cycle:
+- raised low-contrast muted text on the Review Engine, organization mini-pilot, and operational-boundaries surfaces;
+- raised the dim accent where the prior value was too dark for small enterprise-facing labels;
+- increased sub-9px buyer-facing microcopy on the homepage, Enterprise, Review Engine, Security, organization mini-pilot, Operational Boundaries, and Public Program Chronology surfaces to a more legible minimum;
+- preserved the black/gold visual identity while improving readability rather than redesigning the site;
+- left deeper training/reference density intact where it serves practitioner use rather than first-impression enterprise navigation.
+
+This pass changes presentation only. It does not create a new validation, security, rights, adoption, or commercial claim.
+
+## Homepage subtraction and hierarchy completion — 2026-09-21
+
+The visible homepage was reduced again after direct comparison with the enterprise-appearance assessment. The correction preserved the established black-and-gold identity, hero, primary Standard and Enterprise actions, and four-part credibility band.
+
+The following overlapping homepage blocks were removed from the visible opening:
+- the long-form dual-track explanation;
+- the separate methodology-versus-implementation explanation;
+- the four-card evaluation menu;
+- the separate enterprise-process panel; and
+- the repeated group of practitioner-resource links.
+
+They were replaced with one bounded decision sequence:
+1. why documentation reconstruction matters;
+2. how the five-condition standard works;
+3. where evidence and limitations are disclosed;
+4. where the standard fits in an enterprise system; and
+5. a final choice between enterprise integration and practitioner use.
+
+Detailed material continues to reside on the existing Decision Reconstruction Risk, Standard, Research, Review Engine, Enterprise, Training, Investigator Guides, Record Check, and Operational Boundaries pages. No substantive resource, training module, simulation, or implementation function was deleted. Hidden route-specific panels in `index.html` were not counted as visible homepage content and were preserved to avoid breaking established inbound links.
+
+This correction changes information hierarchy and visible homepage restraint only. It does not alter the JRS methodology, research results, API behavior, data handling, licensing rights, or validation status.

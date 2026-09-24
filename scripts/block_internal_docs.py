@@ -14,8 +14,8 @@ owner page and the opaque name of the private roster endpoint. CLAUDE.md itself 
 those surfaces carry no token and are secured by the slug alone, so publishing the slug
 removes their only access control.
 
-This script adds a fail-closed rewrite to vercel.json sending every root-level .md and
-.docx to /404.html. It does NOT rotate the slugs; that is a separate decision because it
+This script checks for fail-closed rewrites in vercel.json sending every .md and .docx
+request to an API route that returns HTTP 404. It does NOT rotate the slugs; that is a separate decision because it
 breaks any link already in circulation.
 
 Idempotent. Run with --check to test without writing.
@@ -32,14 +32,14 @@ import subprocess
 import sys
 
 BLOCK_RULES = [
-    {"source": "/:file(.*\\.md)", "destination": "/404.html"},
-    {"source": "/:file(.*\\.docx)", "destination": "/404.html"},
+    {"source": "/:path*.md", "destination": "/api/not-found"},
+    {"source": "/:path*.docx", "destination": "/api/not-found"},
 ]
 
 # Files that MUST keep answering 200 after the change. A rewrite that took these down
 # would break the site, so the script refuses to write if it would match one of them.
 MUST_STAY_LIVE = ('index.html', 'sitemap.xml', 'robots.txt', 'results.json',
-                  'openapi-review-engine.json', 'JRS-Standard.pdf')
+                  'openapi.json', 'JRS-Standard.pdf')
 
 
 def load(path):

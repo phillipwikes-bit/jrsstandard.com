@@ -29,8 +29,8 @@
 <style>
 :root{
   --bg:#050505; --surface:#121212; --surface2:#1A1A1A;
-  --accent:#BE9447; --accent-dim:#7A5E28;
-  --muted:#B3B3B3; --muted-soft:#8A8A8A; --text:#F2F2F2;
+  --accent:#BE9447; --accent-dim:#A77A32;
+  --muted:#B3B3B3; --muted-soft:#A0A0A0; --text:#F2F2F2;
   --rule:#2A2A2A; --stop:#8B2020; --stop-text:#E88080;
   --review-text:#D4A055; --ready-text:#5DBF82;
 }
@@ -39,13 +39,13 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-
 a{color:var(--accent)}
 .wrap{max-width:760px;width:100%;margin:0 auto;padding:32px 22px 60px;flex:1}
 .wordmark{font-family:'Bodoni Moda',serif;font-size:20px;color:var(--accent);text-decoration:none}
-.eyebrow{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin:22px 0 8px}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin:22px 0 8px}
 h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:27px;margin:0 0 10px;line-height:1.25}
 .lede{font-size:14px;color:var(--muted);line-height:1.65;margin-bottom:18px}
 .card{background:var(--surface);border:1px solid var(--rule);padding:20px;margin:16px 0}
 .card.gold{border-color:var(--accent)}
 .privacy{border-left:3px solid var(--ready-text);background:var(--surface);padding:14px 16px;margin:16px 0;font-size:12.5px;color:var(--muted);line-height:1.6}
-label.fl{display:block;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px}
+label.fl{display:block;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px}
 input,select,textarea{width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;font-family:'Inter',sans-serif;margin-bottom:11px}
 textarea{min-height:190px;resize:vertical;line-height:1.6}
 input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent-dim)}
@@ -60,7 +60,7 @@ button:disabled{opacity:.5;cursor:default}
 .pill.high,.pill.critical{color:var(--stop-text);border-color:var(--stop-text)}
 .cond{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--rule);font-size:13px}
 .cond:last-child{border-bottom:none}
-.st{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;flex:0 0 auto;margin-top:2px}
+.st{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;flex:0 0 auto;margin-top:2px}
 .st.pass{color:var(--ready-text);border:1px solid var(--ready-text)}
 .st.needs{color:var(--review-text);border:1px solid var(--review-text)}
 .st.fail{color:var(--stop-text);border:1px solid var(--stop-text)}
@@ -76,7 +76,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
 .cred{font-size:12px;color:var(--muted-soft);line-height:1.6;border-left:2px solid var(--accent-dim);padding-left:11px;margin-bottom:14px}
 .cred b{color:var(--muted);font-weight:500}
 .teaser{border:1px solid var(--rule);background:var(--surface2);padding:14px 15px;margin-bottom:16px}
-.teaser-lbl{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.teaser-lbl{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
 .teaser p{font-size:12.5px;color:var(--muted);line-height:1.6;margin:0}
 .qbox{border:1px solid var(--rule);background:var(--surface2);padding:12px 13px;margin-bottom:10px}
 .qbox .q{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:8px}
@@ -118,9 +118,9 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
 /* JRS SITE NAV v1 */
 .jrs-sitenav{display:flex;align-items:stretch;background:var(--bg);border-bottom:1px solid var(--rule);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .jrs-sitenav::-webkit-scrollbar{display:none}
-.jrs-sitenav a{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;padding:13px 16px;border-right:1px solid var(--rule);white-space:nowrap;flex-shrink:0;display:flex;align-items:center;min-height:44px}
+.jrs-sitenav a{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;padding:13px 16px;border-right:1px solid var(--rule);white-space:nowrap;flex-shrink:0;display:flex;align-items:center;min-height:44px}
 .jrs-sitenav a:hover{color:var(--accent);background:rgba(190,148,71,.05)}
-@media(max-width:640px){ .jrs-sitenav a{padding:12px 13px;font-size:7.5px} }
+@media(max-width:640px){ .jrs-sitenav a{padding:12px 13px;font-size:9.5px} }
 /* /JRS SITE NAV v1 */
 </style>
 </head>
@@ -128,15 +128,13 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
 <a href="#main-content" class="skip-link">Skip to content</a>
 <!-- JRS SITE NAV v1 :: CANONICAL BLOCK. Byte-identical on every page that carries it. -->
 <nav class="jrs-sitenav" aria-label="Site">
- <a href="index.html">Home</a>
- <a href="/api/dl?e=standard&amp;src=sitenav">Review Controls PDF</a>
- <a href="training.html">Training</a>
- <a href="index.html#section-tools">Free Resources</a>
- <a href="simulations.html">Simulations</a>
- <a href="pilot.html">Pilot Program</a>
- <a href="enterprise.html">Enterprise</a>
- <a href="research.html">Research</a>
  <a href="jrsstandard.html">The Standard</a>
+ <a href="resources.html">Free Resources</a>
+ <a href="research.html">Research</a>
+ <a href="review-engine.html">Review Engine</a>
+ <a href="manifest.html">Manifest</a>
+ <a href="enterprise.html">Enterprise</a>
+ <a href="about.html">About</a>
 </nav>
 <!-- /JRS SITE NAV v1 -->
 <main id="main-content"><div class="wrap">
@@ -174,7 +172,7 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
 
       <div id="sb-result" class="hidden" style="margin-top:16px;border-top:1px solid var(--rule);padding-top:16px">
         <div class="row" style="justify-content:space-between;margin-bottom:10px">
-          <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft)">Review outcome</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft)">Review outcome</div>
           <span class="pill" id="sb-routing">&middot;</span>
         </div>
         <div style="font-size:13.5px;color:var(--muted);margin-bottom:14px" id="sb-rationale"></div>
@@ -234,17 +232,17 @@ footer{border-top:1px solid var(--rule);padding:20px 22px;text-align:center}
     <div id="result" class="hidden">
       <div class="card gold">
         <div class="row" style="justify-content:space-between;margin-bottom:10px">
-          <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft)">Review outcome</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft)">Review outcome</div>
           <span class="pill" id="r-routing">&middot;</span>
         </div>
         <div style="font-size:13.5px;color:var(--muted);margin-bottom:14px" id="r-rationale"></div>
         <div id="r-conditions"></div>
         <div id="r-flags-wrap" class="hidden" style="margin-top:14px">
-          <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft)">Flagged</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft)">Flagged</div>
           <ul id="r-flags"></ul>
         </div>
         <div id="r-rev-wrap" class="hidden" style="margin-top:14px">
-          <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft)">Suggested revisions</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft)">Suggested revisions</div>
           <ul id="r-revisions"></ul>
         </div>
         <div style="margin-top:14px;font-size:13.5px;color:var(--text)" id="r-summary"></div>

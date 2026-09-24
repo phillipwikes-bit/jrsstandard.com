@@ -1,0 +1,63 @@
+{
+  "manifest_id": "df8edd5c-13fb-41a3-ab03-c553b81db2f1",
+  "manifest_version": "1.0",
+  "created_at": "2026-09-16T09:41:29.841Z",
+  "jrs_version": "1.0",
+  "codebook_version": "1.0",
+  "engine": {
+    "name": "JRS Review Engine",
+    "version": "0.1.0-validation",
+    "model": "claude-haiku-4-5-20251001",
+    "api_version": "v1"
+  },
+  "input": {
+    "hash": "sha256:ee8a9198255d9f8668e2c1dd042d34135dbb3a65b6d52d1094fbc6096e32adcb",
+    "hash_algorithm": "sha256",
+    "length_chars": 181,
+    "truncated": false
+  },
+  "condition_vocabulary": "review_engine_keys",
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The stated basis is not traceable to a source in the file.",
+      "note_content_class": "derived_record_content"
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The stated basis is not traceable to a source in the file.",
+      "note_content_class": "derived_record_content"
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "The stated basis is not traceable to a source in the file.",
+      "note_content_class": "derived_record_content"
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The stated basis is not traceable to a source in the file.",
+      "note_content_class": "derived_record_content"
+    },
+    "temporal_reconstructability": {
+      "status": "review",
+      "note": "The stated basis is not traceable to a source in the file.",
+      "note_content_class": "derived_record_content"
+    }
+  },
+  "routing": {
+    "value": "review_required",
+    "vocabulary": "engine_determination"
+  },
+  "human_review": {
+    "required": true,
+    "reason": "Human review remains required because the current Review Engine is not established as validated for autonomous consequential decision use."
+  },
+  "content_class": "derived_record_content",
+  "evaluation": {
+    "runs": 1
+  },
+  "integrity": {
+    "manifest_hash": "sha256:3815824318158bb7a63cc8a86a8e8091a46150c6c795e36faa42dd755f2e4558",
+    "canonicalization": "jrs-dev-canon-1"
+  }
+}

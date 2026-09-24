@@ -1,5 +1,17 @@
 # Change Log
 
+## 2026-09-21 — Public resource and licensing pathway correction
+
+**Created:** `resources.html`, the canonical free practitioner-resource hub, and
+`docs/audits/JRS_PUBLIC_RESOURCE_AND_LICENSING_PATHWAY_CORRECTION_2026-09-21.md`.
+
+**Modified:** homepage resource hierarchy and controls; cross-site Free Resources
+links; enterprise and Review Engine stage language; training registration language;
+footer pathway labels and destinations; `vercel.json`; and `sitemap.xml`.
+
+**Boundary preserved:** no production authorization, validated-effectiveness claim,
+pricing claim, compliance claim, or completed commercial transaction is represented.
+
 ## 2026-09-14 — Control architecture established (`/jrs-init`)
 
 **Created:** `CLAUDE.md` (replaced), `docs/repository-operations/OPERATIONS_ANNEX.md`,

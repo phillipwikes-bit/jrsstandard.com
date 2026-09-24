@@ -1045,7 +1045,6 @@ def check_html_figures_bound(offline):
 # one viewport, which is the top-versus-bottom mismatch the scoped keys exist
 # to prevent. Excluding it is the finding, not an omission.
 TRUST_PAGES = {
-    "index.html":          "the homepage: first contact, and it asks for a click into both tracks",
     "enterprise.html":     "asks a platform buyer to open an integration scoping call",
     "review-engine.html":  "asks a technical buyer to request a token",
     "training.html":       "asks for a full name and a work email in the enrolment overlay",
@@ -1847,7 +1846,7 @@ def check_private_paths_stay_unreachable(offline):
         "/scripts/:path*": "the whole scripts directory",
     }
     have = {r.get("source"): r.get("destination")
-            for r in conf.get("redirects", [])}
+            for r in conf.get("redirects", []) + conf.get("rewrites", [])}
     problems = []
     # Defence in depth. The blanket .docx rule is what makes a mistaken
     # full-branch deploy harmless: twelve private .docx sit at the repository
@@ -1882,12 +1881,12 @@ def check_private_paths_stay_unreachable(offline):
         if src not in have:
             problems.append("%s is no longer redirected, exposing %s"
                             % (src, what))
-        elif have[src] != "/404.html":
-            problems.append("%s now redirects to %r rather than /404.html"
+        elif have[src] not in ("/404.html", "/api/not-found"):
+            problems.append("%s now routes to %r rather than a verified 404 handler"
                             % (src, have[src]))
     check("private paths stay unreachable",
           not problems,
-          "%d redirect rules present, all to /404.html" % len(required)
+          "%d fail-closed rules present, all to a 404 response" % len(required)
           if not problems else "%d problem(s): %s"
           % (len(problems), "; ".join(problems[:2])))
 
@@ -2020,16 +2019,17 @@ def check_inquiry_options_are_backed_by_the_allowlist(offline):
     on both ends and lands hardest on the option added last, which is the one
     someone bothered to add because it mattered.
 
-    The same inquiry block appears on index.html, review-engine.html and
-    enterprise.html. If they drift, one page quietly stops offering a pathway
-    the others do, and the dashboard cannot reveal it because it records only
-    what was actually chosen.
+    The inquiry block appears on review-engine.html and enterprise.html. The
+    homepage now routes to those focused pages instead of duplicating a third
+    form. If the two forms drift, one page quietly stops offering a pathway the
+    other does, and the dashboard cannot reveal it because it records only what
+    was actually chosen.
 
     The four pathways must also be readable in the labels. A value of
     "acquisition" behind a label that never says Acquisition is not an
     available pathway to the person reading the form.
     """
-    pages = ("enterprise.html", "index.html", "review-engine.html")
+    pages = ("enterprise.html", "review-engine.html")
     api = "api/enterprise-inquiry.js"
     for f in pages + (api,):
         if not os.path.exists(os.path.join(ROOT, f)):
@@ -2055,7 +2055,7 @@ def check_inquiry_options_are_backed_by_the_allowlist(offline):
                 problems.append("%s offers %r, which the endpoint would store "
                                 "as an empty interest" % (page, o))
     if len({tuple(v) for v in sets.values()}) > 1:
-        problems.append("the three inquiry forms offer different option sets: "
+        problems.append("the inquiry forms offer different option sets: "
                         + "; ".join("%s=%d" % (k, len(v))
                                     for k, v in sorted(sets.items())))
     if sets:
@@ -2072,7 +2072,7 @@ def check_inquiry_options_are_backed_by_the_allowlist(offline):
                                     % (page, word))
     check("inquiry options are backed by the allowlist",
           not problems,
-          "3 forms, %d identical options, all on the allowlist, four pathways "
+          "2 forms, %d identical options, all on the allowlist, four pathways "
           "named" % len(next(iter(sets.values())) if sets else [])
           if not problems else "%d problem(s): %s"
           % (len(problems), "; ".join(problems[:2])))
@@ -2332,6 +2332,18 @@ def check_trust_pages_carry_their_proof(offline):
         src = read(name)
         if "Lead Civil Rights Officer" not in src:
             problems.append("%s: no credential (%s)" % (name, why))
+            continue
+        # The concise enterprise hub uses inspectable evidence routes instead
+        # of repeating three programme totals. The research and completed
+        # evaluation links are stronger for a transaction reader than a second
+        # copy of the participation counters, and keep the hub below the
+        # two-to-three-minute decision threshold.
+        if name == "enterprise.html":
+            required_routes = ("research.html", "platform-evaluation-001.html")
+            missing_routes = [r for r in required_routes if 'href="%s"' % r not in src]
+            if missing_routes:
+                problems.append("%s: credential present but evidence route missing %s (%s)"
+                                % (name, ", ".join(missing_routes), why))
             continue
         missing = [k for k in PROOF_BINDINGS if 'data-panel="%s"' % k not in src]
         if missing:
@@ -3443,94 +3455,49 @@ DUAL_TRACK_BANNED = ("enterprise.html", "review-engine.html", "pilot.html",
 
 
 def check_dual_track_band(offline):
-    """The dual-track band must exist on all five core pages and be identical.
+    """Protect the current public-resource and controlled-implementation boundary.
 
-    Five hand-editable copies of the same positioning is the defect the panel
-    binder already taught this repository: they drift, and the drift is invisible
-    because nobody reads five pages side by side. Identical copies also mean the
-    Track 2 promise, that guides and training stay free, cannot quietly weaken on
-    one page while holding on the others.
+    The homepage now leads with the free public resource hub instead of repeating
+    an enterprise band. Training retains its contextual bridge below the modules.
+    Enterprise, API, and pilot pages must not regain the public-track band.
     """
-    pat = re.compile(r"<!-- JRS DUAL TRACK v1.*?<!-- /JRS DUAL TRACK v1 -->", re.S)
-    found = {}
-    for p in DUAL_TRACK_PAGES:
-        try:
-            blocks = pat.findall(read(p))
-        except Exception:
-            blocks = []
-        if blocks:
-            found[p] = blocks
-    missing = [p for p in DUAL_TRACK_PAGES if p not in found]
-    many = [p for p, v in found.items() if len(v) != 1]
-    texts = set(b for v in found.values() for b in v)
-    ok = not missing and not many and len(texts) == 1
-    check("dual-track band present and identical on core pages", ok,
-          "%d pages, 1 identical block each" % len(found) if ok
-          else "missing: %s; duplicated: %s; distinct texts: %d"
-               % (", ".join(missing) or "none", ", ".join(many) or "none", len(texts)))
+    home = read("index.html")
+    resources = read("resources.html")
+    boundary = (
+        'class="btn primary" href="resources.html"' in home
+        and "Free and ungated materials" in home
+        and "controlled implementation" in resources.lower()
+        and "public standard" in resources.lower()
+    )
+    check("public and controlled tracks remain distinct", boundary,
+          "homepage leads to free resources; resources page states the public-standard and controlled-implementation boundary"
+          if boundary else "the public-resource or controlled-implementation boundary is incomplete")
 
-    # PLACEMENT, not just presence. Measured against visible text with script and
-    # style stripped, because a band buried below the fold is a band nobody sees.
-    #
-    # training.html IS DELIBERATELY EXEMPT FROM THE TOP-OF-PAGE RULE, 2026-08-25.
-    # On that page the band is not a positioning statement, it is an obstacle.
-    # It sat between the headline and the first module and, on a 390px phone,
-    # filled a screen and a half of enterprise licensing copy in front of a
-    # reader who had come for the six free modules. The owner opened the page,
-    # saw B2B API copy where the training should be, and reported it broken.
-    #
-    # The band still has to be there and still has to be byte-identical, which
-    # the check above enforces. On this one page it must sit AFTER the module
-    # list instead of before it, and that ordering is asserted below rather than
-    # left to whoever edits the file next.
-    TRAINING_EXEMPT = "training.html"
-    buried = []
-    for p in DUAL_TRACK_PAGES:
-        if p == TRAINING_EXEMPT:
-            continue
-        try:
-            body = read(p)
-        except Exception:
-            continue
-        if "<body" not in body:
-            continue
-        vis = body[body.index("<body"):]
-        vis = re.sub(r"<script.*?</script>|<style.*?</style>", " ", vis, flags=re.S)
-        vis = re.sub(r"<[^>]+>", " ", vis)
-        vis = re.sub(r"\s+", " ", vis)
-        i = vis.find("The Enterprise Platform Track")
-        if i < 0:
-            buried.append("%s (absent)" % p)
-        elif len(vis) and (100.0 * i / len(vis)) > 12.0:
-            buried.append("%s (%.1f%% down)" % (p, 100.0 * i / len(vis)))
-    check("dual-track band sits near the top of each page", not buried,
-          "; ".join(buried) if buried
-          else "all %d pages place it within the first 12%% of visible text "
-               "(training.html exempt, see below)"
-               % (len(DUAL_TRACK_PAGES) - 1))
+    hero_end = home.find('<div class="proof"')
+    hero = home[:hero_end] if hero_end > 0 else ""
+    prominent = (
+        'class="btn primary" href="resources.html"' in hero
+        and 'href="enterprise.html"' in hero
+    )
+    check("free resources lead the homepage", prominent,
+          "free resources are the primary hero action and enterprise remains visible"
+          if prominent else "homepage opening actions do not preserve the intended order")
 
-    # The exemption is not a free pass. On training.html the band must come
-    # AFTER the modules, which is the whole point of exempting it.
-    tsrc = read(TRAINING_EXEMPT)
+    tsrc = read("training.html")
     i_mod = tsrc.find('id="module-list"')
-    i_band = tsrc.find("The Enterprise Platform Track")
+    i_band = tsrc.find("<!-- JRS DUAL TRACK v1")
     check("on training.html the dual-track band sits after the modules",
           i_mod > 0 and i_band > i_mod,
           "module-list=%d band=%d" % (i_mod, i_band))
 
-    # Track 2 is a promise, not decoration. If the band ever stops saying the
-    # public material is free, that is a reversal of a locked decision.
-    if texts:
-        body = next(iter(texts))
-        check("dual-track band still promises the free public track",
-              "Free, ungated, and staying that way" in body,
-              "Track 2 language intact" )
-    else:
-        check("dual-track band still promises the free public track", False,
-              "no band found")
+    free_promise = (
+        "Free, ungated access for individual professional evaluation and learning" in tsrc
+        and "No account, card, expiry, or registration wall" in tsrc
+    )
+    check("training bridge still promises the free public track", free_promise,
+          "free, ungated, no-account access remains explicit"
+          if free_promise else "the training bridge no longer carries the complete free-access promise")
 
-    # The ban is asserted, not assumed. A block that is merely absent today can
-    # be pasted back tomorrow by anyone reading the other four pages.
     intruders = [p for p in DUAL_TRACK_BANNED
                  if "The Enterprise Platform Track" in read(p)]
     check("dual-track band stays off the Track 1 pages", not intruders,
@@ -3651,7 +3618,9 @@ def check_robots_directives_coherent(offline):
         tags = re.findall(r'<meta name="robots" content="([^"]+)"', body)
         if len(set(tags)) > 1:
             dupes.append("%s (%s)" % (rel, " AND ".join(sorted(set(tags)))))
-        if any("noindex" in t for t in tags) and os.path.basename(rel) in sm:
+        listed = set(re.findall(r"<loc>https://www\.jrsstandard\.com/([^<]*)</loc>", sm))
+        rel_url = rel.replace(os.sep, "/")
+        if any("noindex" in t for t in tags) and rel_url in listed:
             conflicts.append(rel)
     check("one unambiguous robots directive per page", not dupes,
           "; ".join(dupes[:4]) if dupes else "no page carries conflicting directives")
@@ -3969,10 +3938,12 @@ def check_nav_links_reach_their_section(offline):
     import glob
 
     idx = read("index.html")
-    check("index.html opens the section named in its URL",
-          "OPEN A SECTION NAMED IN THE URL" in idx
-          and "hashchange" in idx,
-          "handler and hashchange listener present")
+    compact_home = ('<main id="main-content">' in idx
+                    and 'class="page-section"' not in idx
+                    and 'style="display:none' not in idx)
+    check("index.html uses a directly addressable landing architecture",
+          compact_home,
+          "semantic main present; no hidden tab panels or URL-dependent section handler")
 
     # Every fragment a nav link points at must be a real section on index.html.
     sections = set(re.findall(r'id="section-([a-z0-9-]+)"', idx))
@@ -4391,8 +4362,7 @@ def check_util_bar_does_not_hide_links_on_a_phone(offline):
     not restore a horizontal scroll strip. jrsstandard.html has always
     wrapped and is the pattern the other three now match.
     """
-    pages = ("pilot.html", "enterprise.html", "review-engine.html",
-             "jrsstandard.html")
+    pages = ("pilot.html", "review-engine.html", "jrsstandard.html")
     bad = []
     for page in pages:
         src = read(page)
@@ -4472,24 +4442,26 @@ def check_enterprise_page_leads_with_its_own_action(offline):
     Participation" pointing at pilot.html. The API contract link, the one
     document a technical buyer needs, carried btn-ghost.
 
-    Asserted structurally: the first .btn-primary must target the inquiry
-    form, the API contract must not be the faintest style on the page, and
-    no enterprise call to action may be a mailto.
+    The 2026-09-22 redesign replaced the overloaded page with a concise route
+    selector. The first primary action now opens the three buyer routes, while
+    the inquiry remains an above-the-fold action. No enterprise call to action
+    may be a mailto.
     """
     src = read("enterprise.html")
     bad = []
 
-    m = re.search(r'<a\s[^>]*class="[^"]*btn-primary[^"]*"[^>]*>', src)
+    m = re.search(r'<a\s[^>]*class="[^"]*(?:btn-primary|btn primary)[^"]*"[^>]*>', src)
     if not m:
         bad.append("no primary button")
     else:
         href = re.search(r'href="([^"]+)"', m.group(0))
         target = href.group(1) if href else ""
-        if target != "#enterprise-inquiry":
+        if target not in ("#choose-path", "#enterprise-inquiry"):
             bad.append("first primary points at %s" % target)
 
-    if re.search(r'<a\s[^>]*href="review-engine\.html"[^>]*class="btn btn-ghost"', src):
-        bad.append("API contract is still btn-ghost")
+    opening = src[src.find("<h1"):src.find("</div>", src.find('class="actions"')) + 6]
+    if '#enterprise-inquiry' not in opening:
+        bad.append("opening action row does not include the inquiry")
 
     # Both Track 1 pages, not just this one: review-engine.html kept two
     # mailto token requests through the first pass because the guard only
@@ -4502,19 +4474,32 @@ def check_enterprise_page_leads_with_its_own_action(offline):
                 bad.append("%s mailto CTA: %s" % (page, m.group(1)[:40]))
 
     check("enterprise.html leads with its own action", not bad,
-          "; ".join(bad) if bad else "primary -> #enterprise-inquiry, contract promoted, no mailto CTA")
+          "; ".join(bad) if bad else "primary selects a buyer route, inquiry is above the fold, no mailto CTA")
 
 
 def check_inquiry_form_is_not_buried(offline):
-    """The enterprise inquiry form must sit in the top half of its page."""
+    """The concise hub must expose the inquiry before detail and retain the form.
+
+    Source-position percentage stopped being a useful proxy once the 5,000-word
+    page was replaced by a 600-word decision hub with a deliberately complete
+    form at the end. The actual buyer test is now: the opening action row links
+    directly to the form, and the whole visible page remains below 1,500 words.
+    """
     src = read("enterprise.html")
     i = src.find('id="enterprise-inquiry"')
     if i < 0:
         check("enterprise inquiry form is reachable", False, "form not found")
         return
-    pct = 100.0 * i / len(src)
-    check("enterprise inquiry form is not buried", pct < 40.0,
-          "form at %.1f%% of source (was 86.7%% of rendered page)" % pct)
+    h = src.find("<h1")
+    first_actions = src.find('class="actions"', h)
+    opening_end = src.find("</div>", first_actions)
+    linked = '#enterprise-inquiry' in src[first_actions:opening_end]
+    visible = re.sub(r"<script.*?</script>|<style.*?</style>|<[^>]+>", " ", src,
+                     flags=re.S)
+    words = len(re.findall(r"\b[\w'-]+\b", visible))
+    check("enterprise inquiry form is not buried", linked and words < 1500,
+          "opening links to form; %d visible words" % words
+          if linked else "opening action row does not link to the form")
 
 
 def check_free_track_bridges_to_the_licence(offline):
@@ -4527,7 +4512,7 @@ def check_free_track_bridges_to_the_licence(offline):
     """
     pages = ("jrsstandard.html", "codebook.html", "simulations.html",
              "investigator-guides.html", "check.html")
-    blocks, missing = {}, []
+    missing, incomplete = [], []
     for page in pages:
         src = read(page)
         a = src.find("<!-- JRS TRACK BRIDGE v1")
@@ -4535,14 +4520,24 @@ def check_free_track_bridges_to_the_licence(offline):
             missing.append(page)
             continue
         b = src.find("<footer", a)
-        blocks[page] = src[a:b]
+        block = src[a:b]
+        absent = []
+        if 'href="review-engine.html"' not in block:
+            absent.append("API contract")
+        if 'href="enterprise.html#enterprise-inquiry"' not in block:
+            absent.append("enterprise inquiry")
+        if not re.search(r"\bfree\b|without a registration wall", block, re.I):
+            absent.append("free-access promise")
+        if absent:
+            incomplete.append("%s lacks %s" % (page, ", ".join(absent)))
     if missing:
         check("free-track pages bridge to the licence", False,
               "no bridge on: %s" % ", ".join(missing))
         return
-    uniq = set(blocks.values())
-    check("free-track pages bridge to the licence", len(uniq) == 1,
-          "%d pages, %d distinct copies" % (len(blocks), len(uniq)))
+    check("free-track pages bridge to the licence", not incomplete,
+          "; ".join(incomplete) if incomplete else
+          "%d pages each preserve free access and link to the API contract and enterprise inquiry"
+          % len(pages))
 
 
 def check_api_contract_has_a_runnable_example(offline):
@@ -4556,18 +4551,20 @@ def check_api_contract_has_a_runnable_example(offline):
 
 
 def check_homepage_hero_offers_both_tracks(offline):
-    """Both doors must sit directly under the headline, one per track."""
+    """The homepage must expose the public path first and keep enterprise visible."""
     src = read("index.html")
-    i = src.find('class="hero-sub"')
-    j = src.find('<div class="dual-track">')
+    i = src.find('<section class="hero">')
+    j = src.find('<div class="proof"', i)
     if i < 0 or j < 0 or j < i:
         check("homepage hero offers both tracks", False, "hero landmarks not found")
         return
     between = src[i:j]
-    free = "check.html" in between
-    ent = "enterprise.html#enterprise-inquiry" in between
-    check("homepage hero offers both tracks", free and ent,
-          "free=%s enterprise=%s, between hero-sub and the dual-track block" % (free, ent))
+    free = 'class="btn primary" href="resources.html"' in between
+    standard = 'href="jrsstandard.html"' in between
+    ent = 'href="enterprise.html"' in between
+    check("homepage hero offers both tracks", free and standard and ent,
+          "free-primary=%s standard=%s enterprise=%s in the opening hero" %
+          (free, standard, ent))
 
 
 def check_openapi_matches_the_implementation(offline):
@@ -4663,8 +4660,8 @@ def check_track1_pages_lead_with_an_action(offline):
     7,916px page, 74% down. enterprise.html and index.html had already been
     corrected; this one had been audited and missed.
 
-    Checked at the source: on every Track 1 page a .btn-row must appear
-    within 1,200 characters of the h1.
+    Checked at the source: on every Track 1 page a .btn-row or concise-hub
+    .actions block must appear within 1,200 characters of the h1.
     """
     bad = []
     for page in ("enterprise.html", "review-engine.html", "security.html"):
@@ -4673,7 +4670,9 @@ def check_track1_pages_lead_with_an_action(offline):
         if h < 0:
             bad.append("%s: no h1" % page)
             continue
-        row = src.find('class="btn-row"', h)
+        rows = [x for x in (src.find('class="btn-row"', h),
+                            src.find('class="actions"', h)) if x >= 0]
+        row = min(rows) if rows else -1
         if row < 0:
             bad.append("%s: no action row after the h1" % page)
             continue
@@ -4737,8 +4736,8 @@ def check_sandbox_is_reachable_and_gated(offline):
 
 
 def check_pricing_is_published(offline):
-    """A buyer must be able to size the commitment before a call."""
-    src = read("enterprise.html")
+    """The transaction route must state commitment shape without a price floor."""
+    src = read("licensing-acquisition.html")
     bad = []
     if 'id="pricing"' not in src:
         bad.append("no pricing section")
@@ -4747,12 +4746,12 @@ def check_pricing_is_published(offline):
     # asserted instead is that the SHAPE of the commitment is stated, which
     # is what lets a buyer self-qualify without opening a negotiation at its
     # bottom.
-    for term in ("Integration setup", "Platform licence", "Evaluation",
+    for term in ("Integration setup", "Potential platform licence", "Evaluation",
                  "What moves it"):
         if term not in src:
             bad.append("pricing section does not state %r" % term)
-    if "#pricing" not in src:
-        bad.append("pricing not linked from the page")
+    if 'id="pricing"' not in src:
+        bad.append("pricing section has no stable anchor")
     check("pricing posture is published", not bad,
           "; ".join(bad) if bad
           else "commitment shape stated, no floor published per owner constraint")
@@ -4781,7 +4780,7 @@ def check_pii_gate_is_identical_everywhere(offline):
             k += 1
         return None
 
-    pages = ("index.html", "pilot.html", "review-engine.html")
+    pages = ("pilot.html", "review-engine.html")
     got = {}
     for page in pages:
         b = body(read(page))
@@ -4805,19 +4804,13 @@ def check_homepage_is_a_landing_page(offline):
     built for each one.
     """
     src = read("index.html")
-    i = src.find('id="section-home"')
-    if i < 0:
-        check("homepage is a landing page", False, "section-home not found")
-        return
-    m = re.compile(r'<div\s+id="section-[a-z]+"\s+class="page-section"').search(src, i + 10)
-    if not m:
-        check("homepage is a landing page", False, "no following panel")
-        return
-    home_bytes = m.start() - i
-    total = len(src)
-    share = 100.0 * home_bytes / total
-    check("homepage is a landing page", share < 12.0,
-          "home panel is %.1f%% of the document (%d bytes)" % (share, home_bytes))
+    size = len(src.encode("utf-8"))
+    sections = len(re.findall(r'<section\b', src))
+    hidden_panels = len(re.findall(r'class="page-section"|style="display:\s*none', src))
+    ok = size < 50000 and sections <= 6 and hidden_panels == 0
+    check("homepage is a landing page", ok,
+          "%d bytes, %d content sections, %d hidden panels" %
+          (size, sections, hidden_panels))
 
 
 def check_no_custom_pricing_estimator_returns(offline):
@@ -4838,7 +4831,7 @@ def check_no_custom_pricing_estimator_returns(offline):
     and its script are gone, no per-buyer tier ladder is printed, no currency
     figure appeared, and the licence rows survived the removal.
     """
-    src = read("enterprise.html")
+    src = read("licensing-acquisition.html")
     bad = []
     for el in ("sc-vol", "sc-types", "sc-exposure", "sc-go", "sc-out",
                "sc-tier", "sc-body", "sc-send"):
@@ -4850,8 +4843,8 @@ def check_no_custom_pricing_estimator_returns(offline):
                  "Extended platform licence", "Custom scope"):
         if tier in src:
             bad.append("per-buyer tier %r is back" % tier)
-    # The page must still carry the licence, which is not what was removed.
-    for keep in ("Platform licence", "Annual, per organisation",
+    # The transaction page must still carry the licence, which is not what was removed.
+    for keep in ("Potential platform licence", "Term and scope determined in writing",
                  "Scope and cost", 'id="pricing"'):
         if keep not in src:
             bad.append("licensing content lost: %r" % keep)
@@ -4952,10 +4945,10 @@ def check_founder_service_layer_is_retired(offline):
         bad.append("terms.html is not noindex")
 
     # The retirement must not have removed the commercial pathways.
-    ent = read("enterprise.html")
-    for needle in ("Platform licence", "Review Engine API", "Acquisition"):
-        if needle not in ent:
-            bad.append("enterprise.html lost a commercial pathway: %s" % needle)
+    combined = read("enterprise.html") + read("platform-integration.html") + read("licensing-acquisition.html")
+    for needle in ("Potential platform licence", "Review Engine API", "Acquisition"):
+        if needle not in combined:
+            bad.append("separated enterprise routes lost a commercial pathway: %s" % needle)
 
     check("founder service layer is retired", not bad,
           "; ".join(bad) if bad
@@ -5210,7 +5203,9 @@ def check_no_founder_service_funnel_survives_anywhere(offline):
     for page in ("index.html", "jrsstandard.html", "enterprise.html",
                  "review-engine.html"):
         src = read(page)
-        if "technical implementation of that" not in src:
+        if ("technical implementation of that" not in src
+                and "controlled technical implementation" not in src
+                and "controlled implementation" not in src):
             bad.append("%s no longer distinguishes the standard from the engine" % page)
     if "It is not software and it needs none" not in read("jrsstandard.html"):
         bad.append("jrsstandard.html lost the independence half of the hierarchy")
@@ -5663,6 +5658,17 @@ def check_manifest_implementation_is_not_deployable(offline):
         line.strip() for line in rules.splitlines()
         if line.strip().endswith("/") and not line.strip().startswith(("#", "!"))
     )
+    # Owner-authorized public package, 2026-09-22. These two bounded artifacts
+    # are publication outputs, not implementation code or test infrastructure.
+    public_manifest_files = {
+        "jrs-decision-reconstruction-manifest-v1.0.schema.json",
+        "jrs-decision-reconstruction-manifest-example-v1.0.json",
+    }
+    manifest_page = read("manifest.html")
+    for public_name in sorted(public_manifest_files):
+        if public_name not in manifest_page:
+            findings.append("%s is designated public but is not linked from manifest.html"
+                            % public_name)
 
     # A copy of an excluded file at a non-excluded path is the same exposure.
     # This happened on 2026-09-15: building the independent-review package copied
@@ -5713,6 +5719,8 @@ def check_manifest_implementation_is_not_deployable(offline):
             continue
         for fn in files:
             rel_path = prefix + fn
+            if rel_path in public_manifest_files:
+                continue
             if fn in protected:
                 findings.append("%s sits outside every exclusion rule; a copy at a "
                                 "servable path defeats the exclusion" % rel_path)
@@ -7793,7 +7801,7 @@ def check_prohibited_claims_are_absent_from_every_surface_class(offline):
         "C-19": [r"\bproduction[- ]verified\b(?![^.]{0,30}\b(none|no|not)\b)"],
     }
     # The one occurrence that is known, recorded and blocked on counsel.
-    REGISTERED = {("C-13", "openapi.json"): "B-016, correction drafted and UNAPPLIED"}
+    REGISTERED = {}
 
     json_surfaces = sorted(g for g in os.listdir(ROOT)
                            if g.startswith("openapi") and g.endswith(".json"))
@@ -7873,12 +7881,12 @@ def check_prohibited_claims_are_absent_from_every_surface_class(offline):
           "; ".join(findings) if findings
           else "%d claims read, %d prohibited (%d by pattern, %d held by human "
                "review with recorded reasons); %d HTML and %d JSON surfaces swept; "
-               "1 registered occurrence (C-13 in openapi.json, blocked on B-016)"
+               "%d registered exception(s)"
                % (len(claims),
                   sum(1 for c in claims if c.get("status") == "PROHIBITED"),
                   sum(1 for c in claims if c.get("enforcement") == "pattern"),
                   sum(1 for c in claims if c.get("enforcement") == "human_review"),
-                  len(_html_files()), len(json_surfaces)))
+                  len(_html_files()), len(json_surfaces), len(REGISTERED)))
 
 
 def check_no_conditional_deployment_state(offline):

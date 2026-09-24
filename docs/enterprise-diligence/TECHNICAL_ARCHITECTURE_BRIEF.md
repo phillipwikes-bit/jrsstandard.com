@@ -23,7 +23,7 @@ dependent*, or *unaudited*.
 | Rate limits | Best-effort, per-instance, per-IP. Source carries `TODO: production volume needs a shared store (KV/Redis)`. Edge isolates do not share state | **source-verified**, and a stated limitation |
 | Error behaviour | 400 on short input, 401 on bad or missing token, upstream model failure raised as `model_error_<status>` | **source-verified** |
 | Versioning | Response carries `api_version`, `engine`, `engine_version`, `model` | **source-verified** |
-| Contract versioning | **Two OpenAPI documents describe the same path at different versions**: `openapi.json` (3.1.0 / 1.0.0) and `openapi-review-engine.json` (3.0.3 / 0.1.0-validation), with different response schemas | **source-verified conflict** |
+| Contract versioning | One current contract, `openapi.json` (OpenAPI 3.1.0 / API 0.1.0-validation), describes the deployed response shape and declares that the endpoint does not currently emit a Manifest. The former contract path permanently redirects to the current file | **source-verified; reconciled 2026-09-22** |
 | Change control | Guard suite `scripts/check_zero_drift.py` runs 126 checks and gates changes; deployment is by pull request to `main` | **observed** (suite executed during this build) |
 | Deployment and hosting | Vercel. Static assets plus `api/*` edge functions. No build step | **source-verified** (`vercel.json`) and **operator-disclosed** (`CLAUDE.md` Section V) |
 | Data store | Supabase, reached with a service-role key held server-side | **source-verified** |

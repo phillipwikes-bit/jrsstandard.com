@@ -16,9 +16,9 @@ outside.
 
 WHAT THIS INSTALLS. One canonical bar, byte-identical on every page that gets
 it, placed immediately after the site header so it reads as part of the
-chrome rather than as page content. It uses the section targets that
-index.html now honours, so "Free Resources" opens the Free Resources panel
-instead of dropping the reader on the default one.
+chrome rather than as page content. It keeps the public standard and free
+resources visible while providing direct routes to research, the Review
+Engine, the Manifest, the enterprise pathway, and the project description.
 
 It scrolls horizontally on a phone rather than wrapping, which is the pattern
 already used by .sticky-nav on training.html and .util-bar-inner elsewhere, so
@@ -34,7 +34,7 @@ WHAT IS DELIBERATELY EXCLUDED, and why each one:
   contributor.html, access.html
   people.html                          deliberate retired dead end
   404.html                             already offers its own way back
-  index.html, jrsstandard.html         already have a full menu
+  index.html, jrsstandard.html         carry purpose-built menus
   enterprise.html, pilot.html
   review-engine.html, training.html
 
@@ -74,18 +74,17 @@ EXCLUDE = {
 OPEN = "<!-- JRS SITE NAV v1 :: CANONICAL BLOCK. Byte-identical on every page that carries it. -->"
 CLOSE = "<!-- /JRS SITE NAV v1 -->"
 
-# Destinations, in the order a reader is most likely to want them. Every href is
-# either a real page or a section index.html is now able to open.
+# Destinations, in the order a reader is most likely to want them. Every href
+# resolves to a public page.
 NAV = OPEN + """
 <nav class="jrs-sitenav" aria-label="Site">
- <a href="index.html">Home</a>
- <a href="training.html">Training</a>
- <a href="index.html#section-tools">Free Resources</a>
- <a href="simulations.html">Simulations</a>
- <a href="pilot.html">Pilot Program</a>
- <a href="enterprise.html">Enterprise</a>
- <a href="research.html">Research</a>
  <a href="jrsstandard.html">The Standard</a>
+ <a href="resources.html">Free Resources</a>
+ <a href="research.html">Research</a>
+ <a href="review-engine.html">Review Engine</a>
+ <a href="manifest.html">Manifest</a>
+ <a href="enterprise.html">Enterprise</a>
+ <a href="about.html">About</a>
 </nav>
 """ + CLOSE
 
@@ -130,8 +129,25 @@ def main():
         path = os.path.join(ROOT, rel)
         src = io.open(path, encoding="utf-8").read()
 
+        pre = depth_prefix(rel)
+        block = NAV
+        if pre:
+            block = re.sub(r'href="(?!https?:|/|#)', 'href="' + pre, block)
+
         if OPEN in src:
-            already.append(rel)
+            start = src.find(OPEN)
+            end = src.find(CLOSE, start)
+            if end < 0:
+                failed.append("%s: canonical nav opens but does not close" % rel)
+                continue
+            end += len(CLOSE)
+            if src[start:end] == block:
+                already.append(rel)
+                continue
+            out = src[:start] + block + src[end:]
+            if not check_only:
+                io.open(path, "w", encoding="utf-8").write(out)
+            added.append(rel)
             continue
 
         # The bar goes straight after the site header. Three pages
@@ -147,11 +163,6 @@ def main():
                 failed.append("%s: no </header> and no <main> to anchor to" % rel)
                 continue
             at, tail_from = m2.start(), m2.start()
-
-        pre = depth_prefix(rel)
-        block = NAV
-        if pre:
-            block = re.sub(r'href="(?!https?:|/|#)', 'href="' + pre, block)
 
         out = src[:at] + ("\n" if m else "") + block + ("" if m else "\n") + src[tail_from:]
 

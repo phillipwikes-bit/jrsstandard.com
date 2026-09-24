@@ -7,7 +7,7 @@
 <meta property="og:title" content="JRS™ Decision Defensibility at Enterprise Scale" />
 <meta property="og:description" content="Reducing Decision Reconstruction Risk across HR, compliance, and investigation functions. JRS examines whether a record can explain why a consequential decision was made, before the record is finalized." />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.jrsstandard.com/enterprise.html" />
+<meta property="og:url" content="https://www.jrsstandard.com/security.html" />
 <meta property="og:site_name" content="JRS™ Justification Review Standard" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="JRS™ Decision Defensibility at Enterprise Scale" />
@@ -16,7 +16,7 @@
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta name="twitter:image" content="https://jrsstandard.com/og-card.png" />
-<link rel="canonical" href="https://www.jrsstandard.com/review-engine.html" />
+<link rel="canonical" href="https://www.jrsstandard.com/security.html" />
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <meta name="description" content="How the JRS review call handles data: stateless per request, raw record text not persisted by JRS, disclosed derived telemetry, per-organisation tokens, and fail-closed authentication.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -81,7 +81,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 
 /* REVIEWER NOTE */
 .reviewer-note{background:var(--surface);border-left:2px solid var(--rule);padding:10px 14px;margin:12px 0;font-size:13px;color:var(--muted-soft);line-height:1.6}
-.reviewer-note-label{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px}
+.reviewer-note-label{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:5px}
 
 /* KIT FLOW */
 .kit-flow{border:1px solid var(--rule);overflow:hidden}
@@ -101,7 +101,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 .case-meta{display:grid;grid-template-columns:1fr 1fr}
 .case-meta-item{padding:10px 14px}
 .case-meta-item:first-child{border-right:1px solid var(--rule)}
-.case-meta-label{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px}
+.case-meta-label{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px}
 .case-meta-val{font-size:12px;color:var(--muted)}
 
 /* BUTTONS */
@@ -117,7 +117,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 /* SCOPE GRID */
 .scope-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0}
 .scope-card{border:1px solid var(--rule);padding:12px 14px;background:var(--surface)}
-.scope-card-label{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:5px}
+.scope-card-label{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:5px}
 .scope-card-text{font-size:12.5px;color:var(--muted);line-height:1.55}
 
 /* PHASE BLOCK */
@@ -160,7 +160,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
  it read as clipped text. jrsstandard.html already wraps this bar;
  these three now match it, so every link is on screen. */
  .util-bar-inner{flex-wrap:wrap;gap:4px 12px;padding:8px 16px}
- .util-link{font-size:8px}
+ .util-link{font-size:9.5px}
  .util-label{display:none}
  .container{padding:36px 16px 72px}
  .btn-row{flex-wrap:wrap;gap:8px}
@@ -174,8 +174,8 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 }
 @media(max-width:400px){
  .page-title{font-size:24px}
- .btn{font-size:8.5px;padding:10px 14px}
- .nav-item{padding:11px 10px;font-size:8.5px}
+ .btn{font-size:9.5px;padding:10px 14px}
+ .nav-item{padding:11px 10px;font-size:9.5px}
 }
 
 .code-block{background:var(--surface);border:1px solid var(--rule);padding:14px 16px;overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.7;color:var(--text);white-space:pre;margin:12px 0}
@@ -248,15 +248,13 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 
 <!-- JRS SITE NAV v1 :: CANONICAL BLOCK. Byte-identical on every page that carries it. -->
 <nav class="jrs-sitenav" aria-label="Site">
- <a href="index.html">Home</a>
- <a href="/api/dl?e=standard&amp;src=sitenav">Review Controls PDF</a>
- <a href="training.html">Training</a>
- <a href="index.html#section-tools">Free Resources</a>
- <a href="simulations.html">Simulations</a>
- <a href="pilot.html">Pilot Program</a>
- <a href="enterprise.html">Enterprise</a>
- <a href="research.html">Research</a>
  <a href="jrsstandard.html">The Standard</a>
+ <a href="resources.html">Free Resources</a>
+ <a href="research.html">Research</a>
+ <a href="review-engine.html">Review Engine</a>
+ <a href="manifest.html">Manifest</a>
+ <a href="enterprise.html">Enterprise</a>
+ <a href="about.html">About</a>
 </nav>
 <!-- /JRS SITE NAV v1 -->
 
@@ -276,7 +274,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
  <h2 class="section-head">The short version</h2>
  <div class="callout callout-gold">
   <div class="callout-label">What a reviewer usually needs in one paragraph</div>
-  <div class="callout-body">Record text is sent over TLS to this endpoint and from there to <b>Anthropic</b>, the model provider, which is a third party. <b>Your record text is not written to any table, not echoed back in the response, and not logged.</b> What the model writes <i>about</i> the record on the versioned route <b>is</b> stored: a short note against each of the five conditions, and a suggested rewritten version of the passage. That is model output about your record rather than the record. <b>It is kept for 90 days and then removed.</b> The evaluation record itself is kept: the date, the five condition statuses, the routing outcome, the run count, the consistency figure and the engine version. <b>The raw record text you submitted is not persisted by JRS.</b> There is therefore a store, and the retention and residency questions are real ones for your organisation to answer rather than ones we can answer for you.</div>
+  <div class="callout-body">Record text is sent over TLS to this endpoint and from there to <b>Anthropic</b>, the model provider, which is a third party. <b>Your record text is not written to any table, not echoed back in the response, and not logged.</b> What the model writes <i>about</i> the record on the versioned route <b>is</b> stored: a short note against each of the five conditions, and a suggested rewritten version of the passage. That is model output about your record rather than the record. <b>It is kept for 90 days and then removed.</b> The evaluation record itself is kept: the date, the five condition statuses, the routing outcome, the run count, the consistency figure and the engine version. <b>The raw record text you submitted is never stored at all by JRS.</b> There is therefore a store, and the retention and residency questions are real ones for your organisation to answer rather than ones we can answer for you.</div>
  </div>
 </div>
 
@@ -358,7 +356,7 @@ Content-Type: application/json</pre>
       <a href="investigator-guides.html" class="footer-link">Investigator Guides</a>
   </div>
   <div style="width:100%;font-family:'Bodoni Moda',serif;font-size:14px;color:var(--accent);margin-bottom:8px;">JRS measures the record, not the tool that produced it.</div>
-  <div style="width:100%;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px"><span style="color:var(--accent-dim)">Back the work:</span> <a href="/api/support?c=rtkw&amp;src=footer" style="color:var(--accent);text-decoration:none">The Right to Know Why</a> &middot; <a href="/api/support?c=defend&amp;src=footer" style="color:var(--accent);text-decoration:none">The Decisions You Can Defend</a></div><div class="footer-copy">&#169; 2026 JRS&#8482; &middot; Justification Review Standard &nbsp;&middot;&nbsp; Phillip Wikes, principal</div>
+  <div style="width:100%;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px"><span style="color:var(--accent-dim)">Research participation:</span> <a href="/reviewer/evaluation.html?src=footer" style="color:var(--accent);text-decoration:none">Pressure-test the standard</a> &middot; <a href="resources.html" style="color:var(--accent);text-decoration:none">Use free resources</a></div><div class="footer-copy">&#169; 2026 JRS&#8482; &middot; Justification Review Standard &nbsp;&middot;&nbsp; Phillip Wikes, principal</div>
  </div>
 </footer>
 

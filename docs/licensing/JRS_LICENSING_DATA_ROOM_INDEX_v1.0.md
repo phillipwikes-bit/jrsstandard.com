@@ -15,8 +15,10 @@ This index organizes the stabilized JRS assets for prospective licensing or tran
 - Published methodology, field guides, and research pages subject to their stated limitations.
 
 ## 2. Decision Reconstruction Manifest — public interface layer
-- `schemas/jrs-decision-reconstruction-manifest.schema.json`
-- `docs/architecture/JRS_EVIDENCE_DECISION_RECONSTRUCTION_MANIFEST_SPEC_v1.0.md`
+- `manifest.html`
+- `jrs-decision-reconstruction-manifest-v1.0.schema.json`
+- `jrs-decision-reconstruction-manifest-example-v1.0.json`
+- controlled implementation and test evidence where minimum-necessary disclosure is required
 - Current manifest implementation/test evidence where disclosure is necessary for evaluation.
 
 The existing v1.0 Manifest is the current architecture. No v1.1 expansion is authorized by this index. The unresolved Codebook-to-engine condition mapping remains unresolved and must not be hidden by a new schema.
@@ -59,7 +61,7 @@ Do not default-disclose:
 Include current blocker/status records and production-verification evidence. Do not convert Vercel deployment success into proof of every live behavior. B-013/B-017 external Supabase permission operations remain separately verifiable production-control-plane actions until actually completed and evidenced.
 
 ## 8. Commercial/API contract caveat
-B-007/B-016 remain COUNSEL matters. The published `openapi.json` and deployed implementation are not to be represented as reconciled until the licensed/public interface question is resolved and any authorized correction is implemented.
+The current technical response-shape defect was corrected on 2026-09-22 by replacing the contradictory public contracts with one `openapi.json` that describes the deployed versioned endpoint. The former `openapi-review-engine.json` path redirects to the current contract. The contract states that the current endpoint does not emit a conforming Manifest. This technical reconciliation does not determine ownership, licensability, commercial terms, or which rights may be granted. Those matters remain within the B-004 counsel channel and the 2026-09-22 counsel determination request.
 
 ## 9. Disclosure sequence
 1. Public standard/methodology.
@@ -75,6 +77,6 @@ Evaluation access does not itself convey ownership, source-code rights, derivati
 - Production deployment: Vercel SUCCESS for current main; live byte/content equivalence remains separately evidenced.
 - External Challenge Pilot: READY FOR EXTERNAL EXECUTION; results NOT MEASURED.
 - Chain of title: OPEN / COUNSEL.
-- API contract reconciliation: COUNSEL.
+- API response contract: technically reconciled 2026-09-22; commercial rights and licence terms remain COUNSEL.
 - Supabase permission operations: external production operation/verification required.
 - Manifest: stabilized at current v1.0; no architecture expansion through this package.
