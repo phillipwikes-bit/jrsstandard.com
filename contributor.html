@@ -128,9 +128,16 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
   if (!key) { fail('This link is incomplete', 'The personal code is missing from the address, so there is nothing to load. Please use the full link from the message you received.'); return; }
 
   fetch('/api/contributor?k=' + encodeURIComponent(key))
-    .then(function(r){ if (!r.ok) throw 0; return r.json(); })
+    .then(function(r){ if (r.status === 503) throw 'paused'; if (!r.ok) throw 0; return r.json(); })
     .then(function(d){ if (!d || !d.ok || !d.person) throw 0; person = d.person; renderForm(); })
-    .catch(function(){ fail('This link did not resolve', 'It may have been copied incompletely, or it may not be current.'); });
+    .catch(function(e){
+      if (e === 'paused') {
+        card.innerHTML = '<h1 class="h1-look">This link is temporarily unavailable</h1>'
+          + '<p class="lede">Please contact info@jrsstandard.com for assistance. No confirmation has been recorded from this attempt.</p>';
+        return;
+      }
+      fail('This link did not resolve', 'It may have been copied incompletely, or it may not be current.');
+    });
 
   function roleLine(p){
     if (p.kind === 'author') return 'Co-author and contributor';

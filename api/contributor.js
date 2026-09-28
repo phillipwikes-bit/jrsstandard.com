@@ -43,6 +43,7 @@ export const config = { runtime: 'edge' };
 // matching the /api/enroll and /api/access convention.
 
 import { ROSTER } from './_contributor-roster.js';
+import { participantLinkPaused } from './_participant-pause.js';
 
 const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 
@@ -244,6 +245,7 @@ function publicPerson(p){
 }
 
 export default async function handler(req){
+  return participantLinkPaused();
   if (req.method === 'OPTIONS') {
     return new Response(null, { status: 204, headers: {
       'Access-Control-Allow-Origin':'*',
@@ -262,7 +264,8 @@ export default async function handler(req){
   if (req.method === 'GET') {
     const url = new URL(req.url);
     const k = keyOf(url.searchParams.get('k'));
-    if (H) await purgeTestRows(H);
+    // Historical automatic test cleanup is not run on a participant read.
+    // It deletes rows and requires separate, evidence-preserving review.
     if (!k) return json({ ok:true, serviceKey: !!SERVICE });
     const p = (k === TEST_KEY) ? TEST_PERSON : ROSTER[k];
     if (!p) return json({ ok:false, error:'unknown_key' }, 404);

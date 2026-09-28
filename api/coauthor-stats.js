@@ -1,4 +1,5 @@
 import { fetchAllUrl } from './_sb-fetch.js';
+import { ownerAccess } from './_owner-auth.js';
 export const config = { runtime: 'edge' };
 
 // Aggregate stats for the co-author confirmation tile on the private status
@@ -16,6 +17,8 @@ export const config = { runtime: 'edge' };
 // endpoint useless for the job it exists to do.
 //
 // GET only.
+// The former token-free posture is superseded: the roster and code-to-person
+// mapping are public in repository history, so these answers are identifiable.
 
 import { ROSTER, TERMS_VERSION } from './_coauthor-roster.js';
 
@@ -33,6 +36,8 @@ function json(o, s){
 }
 
 export default async function handler(req){
+  const denied = await ownerAccess(req);
+  if (denied) return denied;
   if (req.method !== 'GET') return json({ error: 'method_not_allowed' }, 405);
 
   const SERVICE = process.env.SUPABASE_SERVICE_ROLE_KEY || '';

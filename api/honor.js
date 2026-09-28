@@ -1,4 +1,5 @@
 export const config = { runtime: 'edge' };
+import { participantLinkPaused } from './_participant-pause.js';
 
 // Global Governance and Transparency Honor: per-person acceptance endpoint.
 //
@@ -763,6 +764,7 @@ function json(o, s){
 function clean(v, n){ return (v == null ? '' : String(v)).trim().slice(0, n || 200); }
 
 export default async function handler(req){
+  return participantLinkPaused();
   if (req.method === 'OPTIONS') {
     return new Response(null, { status: 204, headers: {
       'Access-Control-Allow-Origin': '*',

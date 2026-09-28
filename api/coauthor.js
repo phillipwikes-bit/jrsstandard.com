@@ -21,6 +21,7 @@
 // when it matters.
 
 import { ROSTER, TERMS_VERSION } from './_coauthor-roster.js';
+import { participantLinkPaused } from './_participant-pause.js';
 
 export const config = { runtime: 'edge' };
 
@@ -58,6 +59,7 @@ function clean(v, max) {
 }
 
 export default async function handler(req) {
+  return participantLinkPaused();
   if (req.method === 'OPTIONS') {
     return new Response(null, {
       status: 204,

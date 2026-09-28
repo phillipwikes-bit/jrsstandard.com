@@ -250,6 +250,11 @@ if (!KEY) {
   fetch('/api/coauthor?k=' + encodeURIComponent(KEY))
     .then(function(r){ return r.json(); })
     .then(function(d){
+      if (d && d.error === 'participant_link_unavailable') {
+        gate.innerHTML = '<h1 class="h1-look">This link is temporarily unavailable</h1>'
+          + '<p class="lead">Please contact info@jrsstandard.com for assistance. No confirmation has been recorded from this attempt.</p>';
+        return;
+      }
       if (!d || !d.ok || !d.found) {
         gate.textContent = 'That link was not recognised. Write to info@jrsstandard.com and I will send a new one.';
         return;

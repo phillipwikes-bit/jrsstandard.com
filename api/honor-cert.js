@@ -1,4 +1,5 @@
 export const config = { runtime: 'edge' };
+import { participantLinkPaused } from './_participant-pause.js';
 
 // Honor certificate delivery.
 //
@@ -124,6 +125,7 @@ function longDate(iso){
 }
 
 export default async function handler(req){
+  return participantLinkPaused();
   if (req.method !== 'GET') return html('Method not allowed', 405);
 
   const env = (typeof process !== 'undefined' && process.env) || {};

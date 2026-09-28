@@ -100,9 +100,14 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
   if (!key) { render404(); return; }
 
   fetch('/api/honor?k=' + encodeURIComponent(key))
-    .then(function(r){ if (!r.ok) throw 0; return r.json(); })
+    .then(function(r){ if (r.status === 503) throw 'paused'; if (!r.ok) throw 0; return r.json(); })
     .then(function(d){ if (!d || !d.found) throw 0; renderForm(d); })
-    .catch(function(){ render404(); });
+    .catch(function(e){
+      if (e === 'paused') {
+        stage.innerHTML = '<h1 class="h1-look">This link is temporarily unavailable</h1>'
+          + '<p class="lede">Please contact info@jrsstandard.com for assistance. No acceptance has been recorded from this attempt.</p>';
+      } else render404();
+    });
 
   function render404(){
     stage.innerHTML =

@@ -197,7 +197,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
   }
 
   fetch('/api/recheck?k=' + encodeURIComponent(key))
-    .then(function(r){ if (!r.ok) throw 0; return r.json(); })
+    .then(function(r){ if (r.status === 503) throw 'paused'; if (!r.ok) throw 0; return r.json(); })
     .then(function(d){
       if (!d || !d.found) throw 0;
       DATA = d;
@@ -208,7 +208,12 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
       restore();
       updateCount();
     })
-    .catch(function(){
+    .catch(function(e){
+      if (e === 'paused') {
+        el('head').textContent = 'This link is temporarily unavailable';
+        el('gate-msg').textContent = 'Please contact info@jrsstandard.com for assistance. No second read has been recorded from this attempt.';
+        return;
+      }
       el('head').textContent = 'This link is not recognised';
       el('gate-msg').textContent = 'Check that you copied the whole link. If it still does not open, email info@jrsstandard.com.';
     });
