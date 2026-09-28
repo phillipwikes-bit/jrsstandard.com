@@ -43,7 +43,7 @@ export const config = { runtime: 'edge' };
 // matching the /api/enroll and /api/access convention.
 
 import { ROSTER } from './_contributor-roster.js';
-import { participantLinkPaused } from './_participant-pause.js';
+import { participantLinkAccess } from './_participant-auth.js';
 
 const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 
@@ -245,7 +245,8 @@ function publicPerson(p){
 }
 
 export default async function handler(req){
-  return participantLinkPaused();
+  const denied = await participantLinkAccess(req, 'contributor');
+  if (denied) return denied;
   if (req.method === 'OPTIONS') {
     return new Response(null, { status: 204, headers: {
       'Access-Control-Allow-Origin':'*',

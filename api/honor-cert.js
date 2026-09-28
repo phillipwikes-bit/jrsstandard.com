@@ -1,5 +1,5 @@
 export const config = { runtime: 'edge' };
-import { participantLinkPaused } from './_participant-pause.js';
+import { participantLinkAccess } from './_participant-auth.js';
 
 // Honor certificate delivery.
 //
@@ -125,7 +125,8 @@ function longDate(iso){
 }
 
 export default async function handler(req){
-  return participantLinkPaused();
+  const denied = await participantLinkAccess(req, 'honor');
+  if (denied) return denied;
   if (req.method !== 'GET') return html('Method not allowed', 405);
 
   const env = (typeof process !== 'undefined' && process.env) || {};
@@ -140,7 +141,9 @@ export default async function handler(req){
   // drift apart, which is the failure this whole session has been correcting.
   let person = null;
   try {
-    const r = await fetch(url.origin + '/api/honor?k=' + encodeURIComponent(key) + '&src=selftest');
+    const r = await fetch(url.origin + '/api/honor?k=' + encodeURIComponent(key)
+      + '&exp=' + encodeURIComponent(url.searchParams.get('exp') || '')
+      + '&sig=' + encodeURIComponent(url.searchParams.get('sig') || '') + '&src=selftest');
     if (r.ok) {
       const d = await r.json();
       if (d && d.found) person = d;

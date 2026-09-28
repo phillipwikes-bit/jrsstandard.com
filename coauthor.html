@@ -204,6 +204,8 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 <script>
 var q = new URLSearchParams(location.search);
 var KEY = (q.get('k') || '').trim();
+var EXP = (q.get('exp') || '').trim();
+var SIG = (q.get('sig') || '').trim();
 var gate = document.getElementById('gate');
 var form = document.getElementById('form');
 var status = document.getElementById('status');
@@ -247,7 +249,7 @@ if (!KEY) {
     + '<p class="lead">Open it from the email you were sent. If you no longer '
     + 'have it, write to info@jrsstandard.com and it will be reissued.</p>';
 } else {
-  fetch('/api/coauthor?k=' + encodeURIComponent(KEY))
+  fetch('/api/coauthor?k=' + encodeURIComponent(KEY) + '&exp=' + encodeURIComponent(EXP) + '&sig=' + encodeURIComponent(SIG))
     .then(function(r){ return r.json(); })
     .then(function(d){
       if (d && d.error === 'participant_link_unavailable') {
@@ -320,6 +322,8 @@ form.addEventListener('submit', function(e){
 
   var body = {
     k: KEY,
+    exp: EXP,
+    sig: SIG,
     name: nm,
     title: titleEl ? titleEl.value.trim() : '',
     org: orgEl ? orgEl.value.trim() : '',

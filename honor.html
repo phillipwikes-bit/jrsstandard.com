@@ -95,11 +95,13 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
   function el(id){ return document.getElementById(id); }
 
   var key = qp('k');
+  var exp = qp('exp');
+  var sig = qp('sig');
   var stage = el('stage');
 
   if (!key) { render404(); return; }
 
-  fetch('/api/honor?k=' + encodeURIComponent(key))
+  fetch('/api/honor?k=' + encodeURIComponent(key) + '&exp=' + encodeURIComponent(exp) + '&sig=' + encodeURIComponent(sig))
     .then(function(r){ if (r.status === 503) throw 'paused'; if (!r.ok) throw 0; return r.json(); })
     .then(function(d){ if (!d || !d.found) throw 0; renderForm(d); })
     .catch(function(e){
@@ -184,7 +186,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
     msg.style.color = 'var(--muted)';
     msg.textContent = 'Recording your acceptance...';
 
-    fetch('/api/honor?k=' + encodeURIComponent(qp('k')), {
+    fetch('/api/honor?k=' + encodeURIComponent(key) + '&exp=' + encodeURIComponent(exp) + '&sig=' + encodeURIComponent(sig), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -207,7 +209,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
       + '<div class="year">' + esc(res.year) + ' &middot; ' + esc(res.code) + '</div>'
       + '<p class="lede">Your certificate will be issued in the name and title you confirmed, and sent to the address you gave. Here is the citation it carries.</p>'
       + '<div class="citation"><b>' + esc(res.printed_name) + '</b><br>' + esc(res.printed_title) + '<br><br>' + esc(res.citation) + '</div>'
-      + '<a href="/api/honor-cert?k=' + encodeURIComponent(qp('k')) + '" target="_blank" rel="noopener" style="text-decoration:none;display:block;margin:0 0 12px"><button type="button">Open my certificate &rarr;</button></a>'
+      + '<a href="/api/honor-cert?k=' + encodeURIComponent(key) + '&exp=' + encodeURIComponent(exp) + '&sig=' + encodeURIComponent(sig) + '" target="_blank" rel="noopener" style="text-decoration:none;display:block;margin:0 0 12px"><button type="button">Open my certificate &rarr;</button></a>'
       + '<p class="lede">It opens as a printable page. Use your browser\'s print option to save it as a PDF. The link keeps working, so you do not have to do it now.</p>'
       + '<p class="lede">If anything above should read differently, reply to the message that brought you here and it will be changed. Reopen the link afterwards and the certificate carries the correction.</p>';
       window.scrollTo(0,0);

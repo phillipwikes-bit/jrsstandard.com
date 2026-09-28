@@ -116,6 +116,8 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
   function el(id){ return document.getElementById(id); }
 
   var key = String(qp('k')||'').toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,20);
+  var exp = qp('exp');
+  var sig = qp('sig');
   var card = el('card');
   var person = null;
 
@@ -127,7 +129,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 
   if (!key) { fail('This link is incomplete', 'The personal code is missing from the address, so there is nothing to load. Please use the full link from the message you received.'); return; }
 
-  fetch('/api/contributor?k=' + encodeURIComponent(key))
+  fetch('/api/contributor?k=' + encodeURIComponent(key) + '&exp=' + encodeURIComponent(exp) + '&sig=' + encodeURIComponent(sig))
     .then(function(r){ if (r.status === 503) throw 'paused'; if (!r.ok) throw 0; return r.json(); })
     .then(function(d){ if (!d || !d.ok || !d.person) throw 0; person = d.person; renderForm(); })
     .catch(function(e){
@@ -237,7 +239,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
       method: 'POST',
       headers: { 'Content-Type':'application/json' },
       body: JSON.stringify({
-        k: key, name: name, title: title, organization: org, email: email, profile: link,
+        k: key, exp: exp, sig: sig, name: name, title: title, organization: org, email: email, profile: link,
         consent_named: cNamed, consent_use: cUse, consent_transfer: cTransfer
       })
     })

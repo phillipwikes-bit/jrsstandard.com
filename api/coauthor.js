@@ -21,7 +21,7 @@
 // when it matters.
 
 import { ROSTER, TERMS_VERSION } from './_coauthor-roster.js';
-import { participantLinkPaused } from './_participant-pause.js';
+import { participantLinkAccess } from './_participant-auth.js';
 
 export const config = { runtime: 'edge' };
 
@@ -59,7 +59,8 @@ function clean(v, max) {
 }
 
 export default async function handler(req) {
-  return participantLinkPaused();
+  const denied = await participantLinkAccess(req, 'coauthor');
+  if (denied) return denied;
   if (req.method === 'OPTIONS') {
     return new Response(null, {
       status: 204,

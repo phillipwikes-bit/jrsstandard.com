@@ -181,6 +181,8 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 (function(){
   var qs = new URLSearchParams(location.search);
   var key = (qs.get('k') || '').replace(/[^a-z0-9]/gi, '').slice(0, 40);
+  var exp = qs.get('exp') || '';
+  var sig = qs.get('sig') || '';
   var el = function(id){ return document.getElementById(id); };
   var esc = function(x){ return String(x==null?'':x).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); };
   var LS = 'jrs-recheck-' + key;
@@ -196,7 +198,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
     return;
   }
 
-  fetch('/api/recheck?k=' + encodeURIComponent(key))
+  fetch('/api/recheck?k=' + encodeURIComponent(key) + '&exp=' + encodeURIComponent(exp) + '&sig=' + encodeURIComponent(sig))
     .then(function(r){ if (r.status === 503) throw 'paused'; if (!r.ok) throw 0; return r.json(); })
     .then(function(d){
       if (!d || !d.found) throw 0;
@@ -325,7 +327,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
     m.style.color = 'var(--muted)';
     m.textContent = 'Recording your read...';
 
-    fetch('/api/recheck?k=' + encodeURIComponent(key), {
+    fetch('/api/recheck?k=' + encodeURIComponent(key) + '&exp=' + encodeURIComponent(exp) + '&sig=' + encodeURIComponent(sig), {
       method: 'POST', headers: { 'Content-Type':'application/json' },
       body: JSON.stringify({
         name: name, email: email,

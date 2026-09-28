@@ -1,5 +1,5 @@
 export const config = { runtime: 'edge' };
-import { participantLinkPaused } from './_participant-pause.js';
+import { participantLinkAccess } from './_participant-auth.js';
 
 // Blind second-reader endpoint for the public-records study.
 //
@@ -84,7 +84,8 @@ function json(o, s){
 function clean(v, n){ return (v == null ? '' : String(v)).trim().slice(0, n || 200); }
 
 export default async function handler(req){
-  return participantLinkPaused();
+  const denied = await participantLinkAccess(req, 'recheck');
+  if (denied) return denied;
   if (req.method === 'OPTIONS') {
     return new Response(null, { status: 204, headers: {
       'Access-Control-Allow-Origin': '*',
