@@ -1,6 +1,6 @@
 export const config = { runtime: 'edge' };
 import { jrsModel } from '../_model.js';
-import { manifestFromEngineResponse } from '../../lib/manifest/from-engine.js';
+import { manifestFromEngineResponse } from '../_manifest/from-engine.js';
 
 // ============================================================
 // JRS Review Engine API   (MIRROR of api/review-engine.js — keep both in sync;

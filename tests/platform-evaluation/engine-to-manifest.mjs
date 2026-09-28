@@ -2,7 +2,7 @@
 // validator. No remote call, customer record, production key or database write.
 import handler from '../../api/v1/review-engine.js';
 import legacyHandler from '../../api/review-engine.js';
-import { manifestFromEngineResponse } from '../../lib/manifest/from-engine.js';
+import { manifestFromEngineResponse } from '../../api/_manifest/from-engine.js';
 import { validateManifest } from '../../tools/validate-manifest.js';
 import { readFileSync } from 'node:fs';
 
