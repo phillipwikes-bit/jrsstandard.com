@@ -1,4 +1,5 @@
 import { fetchAllUrl } from './_sb-fetch.js';
+import { ownerAccess } from './_owner-auth.js';
 export const config = { runtime: 'edge' };
 
 // Country resolution is shared with api/enroll-stats.js so the two endpoints can
@@ -7,6 +8,8 @@ import { resolveCountries } from './_country-backfill.js';
 
 // OWNER-ONLY named list of every person in the private contact table.
 //
+// Historical rationale below is superseded: a public repository exposes the
+// opaque path. Owner bearer authentication now gates this route before DB use.
 // Secured by this opaque, unlinked, noindex URL, so it needs NO token. Same
 // model already used by api/roster-8c3f1a9e7b2d6045.js, the acquisition page,
 // and the supporters page. If this URL ever leaks, rename this file and its
@@ -79,6 +82,8 @@ function json(o, s){
 }
 
 export default async function handler(req){
+  const denied = await ownerAccess(req);
+  if (denied) return denied;
   if (req.method === 'OPTIONS') {
     return new Response(null, { status:204, headers:{
       'Access-Control-Allow-Origin':'*',

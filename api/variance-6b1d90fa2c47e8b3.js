@@ -1,4 +1,5 @@
 export const config = { runtime: 'edge' };
+import { ownerAccess } from './_owner-auth.js';
 
 // Appendix C: crossed reviewer and item variance, computed server-side.
 //
@@ -10,6 +11,8 @@ export const config = { runtime: 'edge' };
 // same way. Asking the owner to export a key to run an analysis the site can
 // run itself is friction with no security benefit.
 //
+// Historical rationale below is superseded. The public repository exposes
+// the path; owner bearer authentication now gates access before DB use.
 // OPAQUE SLUG, NO TOKEN. Same protection as api/people-9dd1ecdf6f8cdfd4.js,
 // api/roster-8c3f1a9e7b2d6045.js and api/geo-4e8b2d7f9a1c3065.js. Never linked
 // from a public page, noindex by virtue of being an API route, and rotated by
@@ -335,6 +338,8 @@ function profileSd(scored, which, fit){
 }
 
 export default async function handler(req){
+  const denied = await ownerAccess(req);
+  if (denied) return denied;
   if (req.method === 'OPTIONS') {
     return new Response(null, { status: 204, headers: {
       'Access-Control-Allow-Origin': '*',

@@ -1,6 +1,9 @@
 import { fetchAllUrl } from './_sb-fetch.js';
+import { ownerAccess } from './_owner-auth.js';
 export const config = { runtime: 'edge' };
 
+// Historical rationale below is superseded. The public repository exposes
+// the path; owner bearer authentication now gates access before DB use.
 // Private training roster viewer. Secured by this opaque, unlinked, noindex URL
 // (same model as the acquisition page), so it needs NO token. Reads pilot_contacts
 // with the server-side service-role key and renders name, title, email,
@@ -32,6 +35,8 @@ async function sha256hex(str){
 }
 
 export default async function handler(req){
+  const denied = await ownerAccess(req);
+  if (denied) return denied;
   const env = (typeof process !== 'undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
   const H = { 'Content-Type':'text/html; charset=utf-8', 'X-Robots-Tag':'noindex, nofollow', 'Cache-Control':'no-store' };

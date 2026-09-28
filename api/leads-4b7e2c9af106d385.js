@@ -1,4 +1,5 @@
 export const config = { runtime: 'edge' };
+import { ownerAccess } from './_owner-auth.js';
 
 // OWNER-ONLY COMMERCIAL INBOX. Every lead, in full, newest first.
 //
@@ -9,6 +10,8 @@ export const config = { runtime: 'edge' };
 // two different jobs and they must not share a URL, since widening the safe
 // endpoint to carry PII would silently make every existing caller a PII caller.
 //
+// Historical rationale below is superseded: this path appears in public source.
+// Owner bearer authentication now gates this route before DB use.
 // SECURED BY THIS OPAQUE, UNLINKED, NOINDEX URL. NO TOKEN.
 // Same model as api/people-9dd1ecdf6f8cdfd4.js and
 // api/roster-8c3f1a9e7b2d6045.js, and the same rotation rule: if this slug ever
@@ -98,6 +101,8 @@ function isTestRow(row) {
 }
 
 export default async function handler(req) {
+  const denied = await ownerAccess(req);
+  if (denied) return denied;
   if (req.method !== 'GET') return json({ error: 'method_not_allowed' }, 405);
 
   const env = (typeof process !== 'undefined' && process.env) || {};
