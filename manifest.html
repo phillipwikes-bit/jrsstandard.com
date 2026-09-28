@@ -33,7 +33,7 @@
  <div class="eyebrow">Public Specification Package · Version 1.0</div>
  <h1>Decision Reconstruction Manifest</h1>
  <p class="lede">The Manifest is a portable, machine-readable evidence artifact describing one JRS evaluation. It records what was evaluated, which versions and vocabularies governed the evaluation, what the engine returned, whether human review remains required, and how the artifact can be checked later.</p>
- <div class="status"><strong>Current status.</strong> The version 1.0 schema and a controlled implementation library exist and have passed the repository's conformance and integrity tests. The current public Review Engine API does not emit a conforming Manifest. Automatic API delivery and customer-controlled storage remain target licensing architecture. This page does not represent those target capabilities as deployed.</div>
+ <div class="status"><strong>Current status.</strong> The version 1.0 schema and a controlled implementation library exist and have passed the repository's conformance and integrity tests. The versioned Review Engine API can return a development Manifest on an authenticated request with <code>include_manifest: true</code>. Default responses omit it. The artifact is unsigned, can contain record-derived notes, and is not automatically stored in a customer-controlled evidence repository. The Engine remains unvalidated.</div>
  <div class="actions"><a class="btn primary" href="jrs-decision-reconstruction-manifest-v1.0.schema.json">Open JSON Schema</a><a class="btn" href="jrs-decision-reconstruction-manifest-example-v1.0.json">View constructed example</a><a class="btn" href="enterprise.html#enterprise-inquiry">Licensing or integration inquiry</a></div>
 
  <h2>What the Manifest does</h2>
@@ -46,7 +46,7 @@
 
  <h2>Current implementation and target architecture</h2>
  <div class="table-wrap"><table><thead><tr><th>Element</th><th>Current state</th><th>Target licensing state</th></tr></thead><tbody>
-  <tr><td>Review Engine response</td><td>Returns a request identifier, version metadata, five engine-key condition results, routing determination, and optional variance.</td><td>Returns the API result and a conforming Manifest, or provides a documented transformation that produces one.</td></tr>
+  <tr><td>Review Engine response</td><td>Returns a request identifier, version metadata, five engine-key condition results, routing determination, optional variance, and an optional authenticated Manifest.</td><td>Returns the API result and a conforming Manifest, or provides a documented transformation that produces one.</td></tr>
   <tr><td>Manifest generator</td><td>Controlled implementation library with schema validation, canonicalization, hashing, refusal tests, and frozen fixtures.</td><td>Versioned release component governed by the public schema and the executed integration agreement.</td></tr>
   <tr><td>Record handling</td><td>The current engine receives record text for inference. Raw text is not persisted by JRS. Defined record-derived output is retained as disclosed in the Privacy Policy.</td><td>Minimum necessary representation, documented processors, bounded persistence, and customer-approved data flow.</td></tr>
   <tr><td>Evidence storage</td><td>JRS retains defined evaluation telemetry. The public API does not create a customer-controlled immutable evidence repository.</td><td>The customer stores the returned Manifest with its own record and retention controls.</td></tr>

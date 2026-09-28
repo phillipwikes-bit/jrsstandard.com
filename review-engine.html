@@ -360,18 +360,20 @@ Content-Type: application/json</pre>
  <h2 class="section-head">Request</h2>
  <pre class="code-block">{
   "text": "The full text of one record.",
-  "runs": 1
+  "runs": 1,
+  "include_manifest": false
 }</pre>
  <table class="spec-table">
   <tr><th>Field</th><th>Type</th><th>Required</th><th>Notes</th></tr>
   <tr><td><code>text</code></td><td>string</td><td>Yes</td><td>Minimum 40 characters. Longer than 8,000 characters is truncated to 8,000.</td></tr>
   <tr><td><code>runs</code></td><td>integer</td><td>No</td><td>1 to 5. Defaults to 1. Above 1 adds a <code>variance</code> block.</td></tr>
+  <tr><td><code>include_manifest</code></td><td>boolean</td><td>No</td><td>Defaults to false. With a valid bearer token, true adds an unsigned development Manifest. Open sandbox calls cannot use this option. Derived notes can contain sensitive record information.</td></tr>
  </table>
 </div>
 
 <div style="margin-bottom:20px;">
  <h2 class="section-head">Response</h2>
- <p class="body-text"><b>Current-state boundary.</b> This endpoint returns the response documented below. It does not currently emit a conforming Decision Reconstruction Manifest. The public <a href="manifest.html" class="accent-link">Manifest v1.0 package</a> documents the separate portable evidence artifact, its controlled implementation status, and the target customer-controlled storage architecture.</p>
+ <p class="body-text"><b>Current-state boundary.</b> The default response is shown below. An authenticated request with <code>include_manifest: true</code> adds a development Manifest that follows the public <a href="manifest.html" class="accent-link">Manifest v1.0 package</a>. It has a self-consistency hash, not a signature or a customer-controlled evidence store. The Engine remains unvalidated.</p>
  <pre class="code-block">{
   "request_id": "f90a631d-8a7c-40c6-8f89-56dc31fbd786",
   "api_version": "v1",

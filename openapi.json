@@ -3,7 +3,7 @@
   "info": {
     "title": "JRS Review Engine API",
     "version": "0.1.0-validation",
-    "description": "Current public contract for POST /api/v1/review-engine. The endpoint evaluates one record against five Review Engine condition keys and returns the implemented response shape. It is an unvalidated, single-model system in operational validation. Reproducibility, when requested through repeated runs, is distinct from accuracy and validation. The endpoint does not currently emit a conforming Decision Reconstruction Manifest."
+    "description": "Current contract for POST /api/v1/review-engine. The endpoint evaluates one record against five Review Engine condition keys. An authenticated caller may explicitly request a development Decision Reconstruction Manifest. This is an unvalidated, single-model system in operational validation. Reproducibility is distinct from accuracy and validation."
   },
   "servers": [
     {
@@ -71,7 +71,7 @@
         },
         "x-jrs-condition-vocabulary": "review_engine_keys",
         "x-jrs-routing-vocabulary": "engine_determination",
-        "x-jrs-manifest-output": "not_emitted_by_current_endpoint"
+        "x-jrs-manifest-output": "optional_authenticated_development_artifact"
       }
     }
   },
@@ -121,6 +121,11 @@
             "maximum": 5,
             "default": 1,
             "description": "Number of independent runs. runs>1 returns a disclosed variance block."
+          },
+          "include_manifest": {
+            "type": "boolean",
+            "default": false,
+            "description": "Authenticated opt-in. Returns an unsigned development Manifest as an additional response field. An open-sandbox caller cannot request it. The output can contain record-derived notes and must be protected by the caller."
           }
         },
         "additionalProperties": false
@@ -184,6 +189,11 @@
             "type": "integer",
             "minimum": 1,
             "maximum": 5
+          },
+          "manifest": {
+            "type": "object",
+            "description": "Optional only when include_manifest=true on an authenticated request. Conforms to schemas/jrs-decision-reconstruction-manifest.schema.json. Its hash is self-consistent, not an authenticated signature. The artifact can contain record-derived notes.",
+            "x-jrs-schema": "/schemas/jrs-decision-reconstruction-manifest.schema.json"
           },
           "result": {
             "type": "object",

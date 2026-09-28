@@ -1,5 +1,6 @@
 export const config = { runtime: 'edge' };
 import { jrsModel } from '../_model.js';
+import { manifestFromEngineResponse } from '../../lib/manifest/from-engine.js';
 
 // ============================================================
 // JRS Review Engine API   (MIRROR of api/review-engine.js — keep both in sync;
@@ -103,8 +104,8 @@ function rateLimited(ip) {
 }
 
 function normStatus(s) {
-  s = String(s || '').toLowerCase();
-  return s === 'pass' || s === 'review' || s === 'gap' ? s : 'review';
+  if (s !== 'pass' && s !== 'review' && s !== 'gap') throw new Error('invalid_model_condition_status');
+  return s;
 }
 function deriveDetermination(conditions) {
   var vals = CONDITION_KEYS.map(function (k) { return (conditions[k] || {}).status; });
@@ -266,6 +267,10 @@ export default async function handler(req) {
   try { body = await req.json(); } catch (e) { return J({ error: 'invalid_json' }, 400); }
   var text = (body && body.text ? String(body.text) : '').trim();
   if (text.length < 40) return J({ error: 'record_too_short', detail: 'Provide at least 40 characters of record text.' }, 400);
+  // Manifest delivery is a controlled, explicit opt-in. Never generate a
+  // derived evidence artifact for an unauthenticated open-sandbox request.
+  if (body.include_manifest === true && !AUTHENTICATED) return J({ error: 'unauthorized' }, 401);
+  const sourceText = text;
   if (text.length > 8000) text = text.slice(0, 8000);
   var runs = Math.min(Math.max(parseInt((body && body.runs) || 1, 10) || 1, 1), 5);
 
@@ -283,6 +288,11 @@ export default async function handler(req) {
     var results = await Promise.all(Array.from({ length: runs }, function () { return oneRun(text, KEY); }));
     var out = Object.assign({}, meta, { result: results[0] });
     if (runs > 1) out.variance = computeVariance(results);
+    if (body.include_manifest === true) {
+      const linked = await manifestFromEngineResponse(
+        Object.assign({ request_id: rid, api_version: API_VERSION }, out), sourceText);
+      out.manifest = linked.manifest;
+    }
     // F-10 INVARIANT: an unauthenticated request never persists record-derived
     // content. In open sandbox mode the evaluation still runs and is still
     // returned to the caller; only the write is withheld.

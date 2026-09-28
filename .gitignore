@@ -25,3 +25,6 @@ build/
 # disposable; the oracle lives in tests/manifest/fixtures/canonical/ and is read
 # only.
 tests/manifest/generated/
+
+# Local controlled evaluations can contain record-derived Engine notes.
+.local-evaluations/

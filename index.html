@@ -104,7 +104,7 @@
     <li><b>Manifest</b>Returns a versioned result, warnings, integrity metadata, and human-review requirement.</li>
     <li><b>Customer workflow</b>The customer stores the artifact and controls correction, acceptance, or escalation.</li>
    </ol>
-   <p class="boundary"><strong>Current versus target.</strong> The public API currently returns a structured evaluation result but does not emit a conforming Manifest. Automatic Manifest delivery and customer-controlled evidence storage remain target licensing architecture. The current implementation is documented separately from that target.</p>
+   <p class="boundary"><strong>Current versus target.</strong> The versioned API returns a structured evaluation result and can return a development Manifest when an authenticated caller explicitly requests it. The caller must retain the artifact under its own controls. A customer-controlled evidence store remains a target integration responsibility.</p>
    <div class="actions"><a class="btn" href="manifest.html">Review the Manifest package →</a><a class="btn secondary" href="enterprise.html#integration-overview">Examine the integration model →</a></div>
   </section>
 
@@ -115,7 +115,7 @@
     <div class="status-row"><div class="status-title">Public methodology</div><div class="status-copy">Published and usable without purchasing software.</div></div>
     <div class="status-row"><div class="status-title">Review Engine</div><div class="status-copy">Operationally implemented, single-model, and empirically unvalidated for autonomous consequential-decision use.</div></div>
     <div class="status-row"><div class="status-title">Manifest v1.0</div><div class="status-copy">Public schema and example available. A controlled generator and integrity tests exist.</div></div>
-    <div class="status-row"><div class="status-title">Current API output</div><div class="status-copy">The current endpoint does not emit a conforming Manifest. Customer-controlled Manifest delivery remains target licensing architecture.</div></div>
+    <div class="status-row"><div class="status-title">Current API output</div><div class="status-copy">An authenticated caller can request a development Manifest with the Engine result. Automatic storage in a customer-controlled evidence repository is not provided.</div></div>
     <div class="status-row"><div class="status-title">Human authority</div><div class="status-copy">JRS identifies documentation conditions requiring review. It does not make the underlying professional decision.</div></div>
     <div class="status-row"><div class="status-title">Transaction status</div><div class="status-copy">Licensing and acquisition conversations may begin. A binding transfer remains subject to established rights and an executed agreement.</div></div>
    </div>
