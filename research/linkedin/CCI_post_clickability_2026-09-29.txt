@@ -1,0 +1,90 @@
+LINKEDIN POST, REVISED FOR CLICKS
+2026-09-29. Link stays in the body. Paragraphs unbroken. Paste ready.
+
+WHAT CHANGED AND WHY
+
+1. Line 2 now carries stakes, not just credit. LinkedIn shows roughly the first
+   210 characters. Your previous line 2 told a stranger that a co-author worked
+   hard. It gave them no reason to keep reading. Hekim still opens the post.
+
+2. Paragraphs are shorter. Three of yours ran over 370 characters, and on a
+   phone that is a wall. Short blocks are read. Long blocks are scrolled past.
+
+3. The finding is no longer given away. Your draft explained the cross-file
+   pattern, named all three phrases and described the fix. A reader who
+   finishes that has no reason to click. This version shows the pattern and
+   stops before the resolution.
+
+4. The six checks are teased, not summarised. One of them is quoted because it
+   is the most quotable. The other five are the reason to open the piece.
+
+5. One line asks a question the reader answers about their own files. That is
+   what makes someone click rather than nod.
+
+WHAT DID NOT CHANGE
+
+Hekim is still the first line. The thanks is still the close. Nothing about his
+contribution was trimmed, because that is the part you said mattered.
+
+================================================================================
+BODY. Copy from the line below.
+================================================================================
+
+This article would not exist without Hekim Colpan.
+
+He volunteered for a piece about something most employers will not notice until they are sitting in a deposition.
+
+Here is the problem.
+
+An employment file can hold emails, attendance records, completed work and a year of prior feedback, and the final memo can still fail. It reads well. It just never connects its conclusions to any of that material.
+
+Under McDonnell Douglas you have to articulate a legitimate reason and show it was the one you actually applied. Fluency does not do that.
+
+Then it gets worse.
+
+AI reuses subjective phrasing. "Cultural fit." "Executive presence." Any one of those reads as ordinary management language.
+
+The same phrases across a dozen files, clustering among employees who share a protected characteristic, read very differently to someone holding the whole set.
+
+Nobody wrote that pattern deliberately. The tool did.
+
+Open one of your own termination memos from the last year. Can you point to the evidence behind each conclusion, or only to the sentence asserting it?
+
+We set out six checks to run before a record is final. The one I would apply even without AI in the picture: read the file as though the person who wrote it has left, and ask whether you could still explain the decision from what is on the page.
+
+The European section is Hekim's, and it is the part I could not have written. An ISO/IEC 42001 auditor's read of what the AI Act actually reaches here, including the part most US coverage skips, that a great many employment workflows sit outside the high-risk regime entirely and are left to ordinary employment law.
+
+He sent regulation numbers and dates where most people send opinions.
+
+Thank you, Hekim. I hope this is the first of several.
+
+https://www.corporatecomplianceinsights.com/that-ai-drafted-termination-memo-could-become-evidence/
+
+================================================================================
+POSTING
+================================================================================
+
+Delete "Hekim Colpan" in line 1, type @Hekim, pick him from the dropdown. Blue
+or it does not count.
+
+Paste the URL last, wait for the preview card, then delete the URL text. The
+card stays.
+
+FIRST 210 CHARACTERS, WHICH IS ALL A SCROLLER SEES:
+"This article would not exist without Hekim Colpan. He volunteered for a piece
+about something most employers will not notice until they are sitting in a
+deposition."
+
+That names him and sets a stake in the same breath.
+
+================================================================================
+HONEST CAVEAT
+================================================================================
+
+This is craft, not measurement. I cannot verify what LinkedIn weights in 2026
+and have not claimed to. What is durable: the truncation point decides whether
+anyone reads past line two, short paragraphs survive mobile, and a post that
+fully answers its own question does not get clicked.
+
+If you would rather keep your version, it is the better piece of writing. It is
+simply a better essay than it is a post.
