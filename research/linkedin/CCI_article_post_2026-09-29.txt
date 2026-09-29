@@ -1,0 +1,102 @@
+LINKEDIN POST, CCI ARTICLE
+Draft for Phillip. Nothing posted. 2026-09-29.
+
+Check before posting: tag Hekim Colpan, he is first-named author on the piece.
+No em-dashes. No "Comment GUIDE" bait, which LinkedIn downranks and which the
+estate already removed once.
+
+================================================================================
+VERSION 1. The one I would post. Opens on the concrete failure.
+================================================================================
+
+An employment file can contain emails, attendance records, completed work and a
+year of prior feedback, and still fail the only test that matters later.
+
+The final memo reads well. It just does not connect its conclusions to any of
+that material.
+
+Hekim Colpan and I wrote about this for Corporate Compliance Insights. AI is now
+drafting performance reviews, warnings and termination memos, and it is good at
+producing documents that sound substantiated. Under McDonnell Douglas an
+employer has to articulate a legitimate reason and show it was actually applied.
+Fluency does not do that. Evidence does.
+
+The part that surprised me most is what happens across files rather than inside
+one. AI reuses subjective phrasing. "Cultural fit." "Executive presence."
+"Struggles with change." Any one of those reads as ordinary management language.
+The same three across a dozen files, clustering among employees who share a
+protected characteristic, reads differently to a reviewer with the whole set in
+front of them.
+
+Nobody wrote that pattern deliberately. The tool did, because that is what tools
+do.
+
+We set out six checks to run before a record is finalised, including one I would
+apply even without AI in the picture: read the file as though the person who
+wrote it has left, and ask whether you could still explain the decision from
+what is on the page.
+
+Link in the first comment.
+
+FIRST COMMENT:
+https://www.corporatecomplianceinsights.com/that-ai-drafted-termination-memo-could-become-evidence/
+
+================================================================================
+VERSION 2. Shorter. Leads on the pattern finding.
+================================================================================
+
+"Cultural fit" in one employment file is ordinary management language.
+
+"Cultural fit" in nine files, clustering among employees who share a protected
+characteristic, is something a reviewer will ask about.
+
+Nobody wrote that pattern on purpose. AI drafting tools reuse subjective
+phrasing, and the pattern only becomes visible when someone reads the files side
+by side, which is exactly what happens in a dispute and rarely happens before
+one.
+
+Hekim Colpan and I wrote this up for Corporate Compliance Insights, with six
+checks to run before a record is final.
+
+The underlying question is older than AI: if the person who made this decision
+is gone, can the record still explain it?
+
+https://www.corporatecomplianceinsights.com/that-ai-drafted-termination-memo-could-become-evidence/
+
+================================================================================
+VERSION 3. For a compliance and legal audience. Most direct.
+================================================================================
+
+New in Corporate Compliance Insights, with Hekim Colpan.
+
+McDonnell Douglas asks an employer to articulate a legitimate reason and show it
+was actually applied. AI-assisted drafting has changed how employment records
+get written. It has not changed that test.
+
+The exposure is not that AI writes badly. It is that AI writes well, and a
+polished narrative can sit on top of an evidentiary record it never actually
+cites. Worse, it reuses phrasing, so subjective language repeats across files in
+patterns no individual author intended.
+
+Six controls to apply before a record is finalised, including identifying the
+human author and the tool, linking conclusions to verifiable evidence, and
+reviewing subjective language across employees rather than one file at a time.
+
+https://www.corporatecomplianceinsights.com/that-ai-drafted-termination-memo-could-become-evidence/
+
+================================================================================
+NOTES
+================================================================================
+
+Why the link sits in the first comment in Version 1: LinkedIn suppresses posts
+with external links in the body. Versions 2 and 3 carry the link inline because
+they are shorter and the reach cost matters less than the friction of a second
+tap.
+
+What none of these do, deliberately:
+  No "thrilled to announce" opener.
+  No claim that JRS prevents anything. The article does not say that and neither
+  should the post.
+  No statistics. The 83.9% detection figure is a human panel result on a
+  constructed corpus and has nothing to do with this article.
+  No engagement bait.
