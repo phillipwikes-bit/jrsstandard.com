@@ -182,7 +182,7 @@
       {
         "schema_revision": "1.0.1",
         "path": "jrs-decision-reconstruction-manifest-v1.0.1.schema.json",
-        "status": "RELEASED TO MAIN, PRODUCTION VERIFICATION REQUIRED",
+        "status": "LIVE VERIFIED 2026-09-29T17:28:53Z",
         "change": "jrs_version and codebook_version accept only the supported 1.0 identifiers; manifest_version remains 1.0",
         "evidence": "tests/manifest/schema-1.0.1.mjs and forged rehashed fixture"
       }

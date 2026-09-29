@@ -12,6 +12,8 @@
 | Same forged manifest rejected by 1.0.1 for both version fields | PASS locally | `node tests/manifest/schema-1.0.1.mjs` |
 | Each version field independently rejected when unsupported | PASS locally | Same test |
 | Public page points to new schema and historical schema | Prepared | `manifest.html` |
-| Production serves exact revision bytes | PENDING until live comparison | `https://www.jrsstandard.com/jrs-decision-reconstruction-manifest-v1.0.1.schema.json` |
+| Production serves exact revision bytes | VERIFIED 2026-09-29T17:28:53Z; HTTP 200, byte-identical | `https://www.jrsstandard.com/jrs-decision-reconstruction-manifest-v1.0.1.schema.json` |
 
 The schema validates declared version identifiers against the currently supported release inventory. It does not authenticate a manifest's origin. The builder and internal default schema still accept caller-supplied nonempty Standard and Codebook versions; a separate build-time change is needed to reject unsupported versions before an artifact is generated. Consumers using the public 1.0.1 schema can reject them at validation.
+
+The public `manifest.html` was also byte-identical to the release commit, and the historical v1.0 schema remained byte-identical. Verification used live HTTP retrieval and byte comparison on 2026-09-29. The GitHub deployment verification workflow is tracked separately.
