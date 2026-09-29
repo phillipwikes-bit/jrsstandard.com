@@ -168,5 +168,24 @@
       "re_executable": "NO. The route is closed in production and no historical evaluation exists to rerun.",
       "verified_re_execution": "NO. Zero evaluations have been rerun and compared. Never claim otherwise."
     }
+  },
+  "public_manifest_schema_releases": {
+    "_scope": "Public root schema URLs. The internal schemas/ file and build.js MANIFEST_VERSION remain 1.0; this is a schema-only revision, not a new Manifest format or engine release.",
+    "current": "1.0.1",
+    "releases": [
+      {
+        "schema_revision": "1.0",
+        "path": "jrs-decision-reconstruction-manifest-v1.0.schema.json",
+        "status": "HISTORICAL, RETAINED",
+        "limitation": "jrs_version and codebook_version accept any nonempty string"
+      },
+      {
+        "schema_revision": "1.0.1",
+        "path": "jrs-decision-reconstruction-manifest-v1.0.1.schema.json",
+        "status": "RELEASED TO MAIN, PRODUCTION VERIFICATION REQUIRED",
+        "change": "jrs_version and codebook_version accept only the supported 1.0 identifiers; manifest_version remains 1.0",
+        "evidence": "tests/manifest/schema-1.0.1.mjs and forged rehashed fixture"
+      }
+    ]
   }
 }

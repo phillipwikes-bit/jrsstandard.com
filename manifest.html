@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Decision Reconstruction Manifest v1.0 | JRS™</title>
+<title>Decision Reconstruction Manifest | JRS™</title>
 <meta name="description" content="Public specification package for the JRS Evidence and Decision Reconstruction Manifest, including current status, schema, fields, integrity controls, limitations, and licensing inquiry path.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://www.jrsstandard.com/manifest.html">
@@ -30,11 +30,13 @@
 </nav>
 <!-- /JRS SITE NAV v1 -->
 <main id="main-content" class="wrap">
- <div class="eyebrow">Public Specification Package · Version 1.0</div>
+ <div class="eyebrow">Public Specification Package · Manifest 1.0 · Schema revision 1.0.1</div>
  <h1>Decision Reconstruction Manifest</h1>
  <p class="lede">The Manifest is a portable, machine-readable evidence artifact describing one JRS evaluation. It records what was evaluated, which versions and vocabularies governed the evaluation, what the engine returned, whether human review remains required, and how the artifact can be checked later.</p>
- <div class="status"><strong>Current status.</strong> The version 1.0 schema and a controlled implementation library exist and have passed the repository's conformance and integrity tests. The versioned Review Engine API can return a development Manifest on an authenticated request with <code>include_manifest: true</code>. Default responses omit it. The artifact is unsigned, can contain record-derived notes, and is not automatically stored in a customer-controlled evidence repository. The Engine remains unvalidated.</div>
- <div class="actions"><a class="btn primary" href="jrs-decision-reconstruction-manifest-v1.0.schema.json">Open JSON Schema</a><a class="btn" href="jrs-decision-reconstruction-manifest-example-v1.0.json">View constructed example</a><a class="btn" href="enterprise.html#enterprise-inquiry">Licensing or integration inquiry</a></div>
+ <div class="status"><strong>Current status.</strong> The Manifest 1.0 schema revision 1.0.1 and a controlled implementation library exist and have passed the repository's conformance and integrity tests. The versioned Review Engine API can return a development Manifest on an authenticated request with <code>include_manifest: true</code>. Default responses omit it. The artifact is unsigned, can contain record-derived notes, and is not automatically stored in a customer-controlled evidence repository. The Engine remains unvalidated.</div>
+ <div class="actions"><a class="btn primary" href="jrs-decision-reconstruction-manifest-v1.0.1.schema.json">Open current JSON Schema</a><a class="btn" href="jrs-decision-reconstruction-manifest-v1.0.schema.json">Earlier schema v1.0</a><a class="btn" href="jrs-decision-reconstruction-manifest-example-v1.0.json">View constructed example</a><a class="btn" href="enterprise.html#enterprise-inquiry">Licensing or integration inquiry</a></div>
+
+ <div class="note"><strong>Schema revision 1.0.1.</strong> The Manifest format remains 1.0. The current schema accepts JRS Standard 1.0 and Codebook 1.0 and rejects unsupported identifiers. The earlier v1.0 schema remains available for historical interpretation. A valid hash demonstrates internal consistency, not that a claimed version exists or that an unsigned artifact is authentic.</div>
 
  <h2>What the Manifest does</h2>
  <div class="grid">
