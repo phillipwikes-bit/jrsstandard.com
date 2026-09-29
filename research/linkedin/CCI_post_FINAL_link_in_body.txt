@@ -1,0 +1,50 @@
+LINKEDIN POST, LINK IN THE BODY
+2026-09-29. Paste ready. Every paragraph is one unbroken line.
+
+WHERE THE LINK GOES
+At the very end, on its own line, after the sign-off. LinkedIn does not support
+hyperlinked text in a post, so a bare URL is the only option. Putting it last
+keeps it out of the way of the writing.
+
+THE TRICK WORTH KNOWING
+Paste the URL, wait two or three seconds for the preview card to appear below
+the compose box, then DELETE the URL text from the post. The card stays. You
+get the card and the click target without a raw URL sitting in your copy.
+
+If the card does not appear, leave the URL in. A visible URL is better than no
+link at all.
+
+STILL DO THIS
+Delete "Hekim Colpan" in the first line, type @Hekim, pick him from the
+dropdown. The name must turn blue or he is not notified and it does not link to
+his profile.
+
+================================================================================
+BODY. Copy from the line below.
+================================================================================
+
+This article would not exist without Hekim Colpan.
+
+He volunteered, and then he did the work that I could not have done. The European section is his: an ISO/IEC 42001 auditor's read of what the AI Act actually reaches here, including the part most US coverage skips, that a great many employment workflows sit outside the high-risk regime entirely and are left to ordinary employment law.
+
+He sent regulation numbers and dates where most people send opinions.
+
+The piece is in Corporate Compliance Insights, and it is about a problem that predates AI and has been made much easier to create.
+
+An employment file can contain emails, attendance records, completed work and a year of prior feedback, and still fail the only test that matters later. The final memo reads well. It just does not connect its conclusions to any of that material. Under McDonnell Douglas an employer has to articulate a legitimate reason and show it was actually applied. Fluency does not do that.
+
+The part that surprised me most happens across files rather than inside one. AI reuses subjective phrasing. "Cultural fit." "Executive presence." "Struggles with change." Any one reads as ordinary management language. The same three across a dozen files, clustering among employees who share a protected characteristic, reads differently to a reviewer with the whole set in front of them. Nobody wrote that pattern deliberately. The tool did.
+
+Six checks to run before a record is final, including the one I would apply anyway: read it as though the person who wrote it has left, and ask whether you could still explain the decision from what is on the page.
+
+Thank you, Hekim. I hope this is the first of several.
+
+https://www.corporatecomplianceinsights.com/that-ai-drafted-termination-memo-could-become-evidence/
+
+================================================================================
+NOTE
+================================================================================
+
+"Link in the first comment." has been removed from the end, since the link is
+now in the body. Leaving that line in with the URL beside it would read as an
+error.
