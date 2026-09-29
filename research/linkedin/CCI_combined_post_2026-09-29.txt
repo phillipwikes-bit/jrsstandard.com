@@ -1,0 +1,109 @@
+COMBINED POST: ARTICLE PLUS THANKS
+Ready to paste. Tag Hekim Colpan. 2026-09-29.
+
+LinkedIn truncates at roughly 210 characters before "see more", so the first two
+lines carry the post. Both versions are built around that.
+
+================================================================================
+VERSION A. RECOMMENDED. Article hook first, thanks as the close.
+The hook earns the click, the thanks lands after the argument.
+================================================================================
+
+An employment file can contain emails, attendance records, completed work and a
+year of prior feedback, and still fail the only test that matters later.
+
+The final memo reads well. It just does not connect its conclusions to any of
+that material.
+
+Hekim Colpan and I wrote about this for Corporate Compliance Insights. AI is now
+drafting performance reviews, warnings and termination memos, and it is good at
+producing documents that sound substantiated. Under McDonnell Douglas an
+employer has to articulate a legitimate reason and show it was actually applied.
+Fluency does not do that. Evidence does.
+
+The part that surprised me most is what happens across files rather than inside
+one. AI reuses subjective phrasing. "Cultural fit." "Executive presence."
+"Struggles with change." Any one of those reads as ordinary management language.
+The same three across a dozen files, clustering among employees who share a
+protected characteristic, reads differently to a reviewer with the whole set in
+front of them.
+
+Nobody wrote that pattern deliberately. The tool did, because that is what tools
+do.
+
+We set out six checks to run before a record is finalised, including one I would
+apply even without AI in the picture: read the file as though the person who
+wrote it has left, and ask whether you could still explain the decision from
+what is on the page.
+
+One thing I want to say properly rather than leave in a byline.
+
+This article would not exist without Hekim Colpan. He volunteered, and then he
+did the work that I could not have done. The European section is his: an ISO/IEC
+42001 auditor's read of what the AI Act actually reaches here, including the
+part most US coverage skips, that a great many employment workflows sit outside
+the high-risk regime entirely and are left to ordinary employment law.
+
+He sent regulation numbers and dates where most people send opinions.
+
+Thank you, Hekim. I hope this is the first of several.
+
+Link in the first comment.
+
+FIRST COMMENT:
+https://www.corporatecomplianceinsights.com/that-ai-drafted-termination-memo-could-become-evidence/
+
+================================================================================
+VERSION B. Thanks first. Use if the point of posting is him.
+Generous, and the opening line is unusual enough to stop a scroll.
+================================================================================
+
+This article would not exist without Hekim Colpan.
+
+He volunteered, and then he did the work that I could not have done. The
+European section is his: an ISO/IEC 42001 auditor's read of what the AI Act
+actually reaches here, including the part most US coverage skips, that a great
+many employment workflows sit outside the high-risk regime entirely and are left
+to ordinary employment law.
+
+He sent regulation numbers and dates where most people send opinions.
+
+The piece is in Corporate Compliance Insights, and it is about a problem that
+predates AI and has been made much easier to create.
+
+An employment file can contain emails, attendance records, completed work and a
+year of prior feedback, and still fail the only test that matters later. The
+final memo reads well. It just does not connect its conclusions to any of that
+material. Under McDonnell Douglas an employer has to articulate a legitimate
+reason and show it was actually applied. Fluency does not do that.
+
+The part that surprised me most happens across files rather than inside one. AI
+reuses subjective phrasing. "Cultural fit." "Executive presence." "Struggles
+with change." Any one reads as ordinary management language. The same three
+across a dozen files, clustering among employees who share a protected
+characteristic, reads differently to a reviewer with the whole set in front of
+them. Nobody wrote that pattern deliberately. The tool did.
+
+Six checks to run before a record is final, including the one I would apply
+anyway: read it as though the person who wrote it has left, and ask whether you
+could still explain the decision from what is on the page.
+
+Thank you, Hekim. I hope this is the first of several.
+
+Link in the first comment.
+
+FIRST COMMENT:
+https://www.corporatecomplianceinsights.com/that-ai-drafted-termination-memo-could-become-evidence/
+
+================================================================================
+BEFORE POSTING
+================================================================================
+
+Tag Hekim Colpan in the body, not just in the comment. A tag in a comment
+notifies him. A tag in the body puts him in front of everyone who sees it.
+
+Post the link as the first comment immediately after the post itself. LinkedIn
+suppresses posts carrying external links in the body.
+
+Neither version repeats a specific regulation date, so neither needs the EUR-Lex
+check.
