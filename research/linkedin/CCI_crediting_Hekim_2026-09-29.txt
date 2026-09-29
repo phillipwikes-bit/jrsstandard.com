@@ -1,0 +1,84 @@
+CREDITING HEKIM COLPAN ON THE CCI ARTICLE
+Drafts for Phillip. Nothing posted. 2026-09-29.
+
+THE ADVICE FIRST, BECAUSE IT CHANGES WHAT YOU SEND.
+
+Do not write a thank-you post. He is a co-author and first-named on the byline.
+A public thank-you casts a co-author as a helper, which is the opposite of what
+you mean and the kind of thing people notice about their own credit.
+
+Credit him instead. Name what he brought. That is worth more to him
+professionally than gratitude is, and it is accurate.
+
+What the record shows he brought, so the credit is specific:
+  ISO/IEC 42001 auditor; EU AI Act, GDPR and DORA.
+  The European regulatory section, 157 words, 11 percent of the piece.
+  The instruments and dates in it: Article 5(2), Regulation (EU) 2026/1744,
+  Annex III from 2 December 2027, Annex I from 2 August 2028, and the point
+  that many workflows fall outside the high-risk regime entirely.
+  He volunteered for this.
+
+================================================================================
+OPTION 1. RECOMMENDED. Tag him in the post, then this as your own first comment.
+================================================================================
+
+The European section of this piece is Hekim Colpan's, and it is the part I could
+not have written. He is an ISO/IEC 42001 auditor, and he brought the AI Act
+timing that most US-facing coverage skips: Annex III obligations from December
+2027, Annex I from August 2028, and the point that a great many employment
+workflows sit outside the high-risk regime altogether and are governed by
+ordinary employment law rather than by the Act.
+
+That last one matters. It is the difference between "the AI Act will handle
+this" and "no, it will not, and your evidentiary burden is unchanged."
+
+================================================================================
+OPTION 2. If you would rather it sit inside the post itself.
+================================================================================
+
+Add after the McDonnell Douglas paragraph:
+
+Hekim Colpan wrote the European half. He is an ISO/IEC 42001 auditor, and his
+section covers what the AI Act does and does not reach here, including the
+point that many employment workflows fall outside the high-risk regime and are
+left to ordinary employment law.
+
+================================================================================
+OPTION 3. A standalone post, only if he is the reason you are posting at all.
+================================================================================
+
+Use this only if the point of the post is him rather than the article.
+
+I have written with a lot of people. Hekim Colpan is the rare co-author who
+sends you a date and a regulation number instead of an opinion.
+
+Our piece on AI-drafted employment records is out in Corporate Compliance
+Insights. The European section is his, and it does the thing I find hardest:
+it says plainly what the AI Act does not cover, rather than implying the
+regulation solves a problem it does not touch.
+
+He is an ISO/IEC 42001 auditor and he volunteered for this. Worth following.
+
+https://www.corporatecomplianceinsights.com/that-ai-drafted-termination-memo-could-become-evidence/
+
+================================================================================
+ONE THING TO CHECK BEFORE YOU AMPLIFY THE DATES
+================================================================================
+
+The tracker records these citations as VERIFIED on 2026-08-19, and records that
+the verification was SECONDARY SOURCE ONLY. EUR-Lex, Justia and ISO all returned
+bot challenges, so no primary Official Journal text was ever retrieved.
+
+The citations are Hekim's and were carried on his authority as an ISO/IEC 42001
+auditor. They verified against secondary sources and are almost certainly right.
+
+But repeating a specific date in your own voice on LinkedIn is a different act
+from carrying a co-author's citation in a shared article. If you want the dates
+in your post, spend two minutes on EUR-Lex first. If you would rather not, use
+Option 1 without the specific dates:
+
+  He brought the AI Act timing that most US-facing coverage skips, and the
+  point that a great many employment workflows sit outside the high-risk
+  regime altogether.
+
+That credits him fully and puts no date in your mouth.
