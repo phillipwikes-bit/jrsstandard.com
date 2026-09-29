@@ -1,30 +1,38 @@
 LINKEDIN POST, REVISED FOR CLICKS
-2026-09-29. Link stays in the body. Paragraphs unbroken. Paste ready.
+2026-09-29, corrected. Link in the body. Paragraphs unbroken. Paste ready.
 
-WHAT CHANGED AND WHY
+TWO CORRECTIONS IN THIS VERSION
 
-1. Line 2 now carries stakes, not just credit. LinkedIn shows roughly the first
-   210 characters. Your previous line 2 told a stranger that a co-author worked
-   hard. It gave them no reason to keep reading. Hekim still opens the post.
+1. SIX WAS WRONG. The article lists SEVEN controls, introduced as "At minimum,
+   the review should require the organization to:". My earlier summary said six
+   and I carried the error into the draft. It would have published as a
+   checkable false statement about your own article, which is the worst kind.
+   The post now says seven, and says "at minimum", which is the article's own
+   framing and is stronger than a bare count.
 
-2. Paragraphs are shorter. Three of yours ran over 370 characters, and on a
-   phone that is a wall. Short blocks are read. Long blocks are scrolled past.
+   The seven, verified against the published text:
+     1. Identify the human author and any AI tools used in drafting
+     2. Preserve source evidence supporting material conclusions
+     3. Link conclusions to verifiable source evidence rather than AI assertions
+     4. Document who reviewed the record, when, and what substantive changes
+     5. Define what drafting-layer material is preserved and under which
+        legal-hold triggers
+     6. Review records across employees for recurring subjective language
+     7. Confirm the final explanation is consistent with documented history
+        that existed before the decision
 
-3. The finding is no longer given away. Your draft explained the cross-file
-   pattern, named all three phrases and described the fix. A reader who
-   finishes that has no reason to click. This version shows the pattern and
-   stops before the resolution.
+2. THE HEKIM LINE IS REPLACED. "He sent regulation numbers and dates where most
+   people send opinions" praises him by putting other people down, which makes
+   the compliment smaller than it should be and slightly sours a thank-you.
 
-4. The six checks are teased, not summarised. One of them is quoted because it
-   is the most quotable. The other five are the reason to open the piece.
+   Replaced with a line that compliments him directly and ties his method to
+   the article's own argument:
 
-5. One line asks a question the reader answers about their own files. That is
-   what makes someone click rather than nod.
+     "His section is built on citations rather than assertions, which is the
+      discipline the article argues records should have."
 
-WHAT DID NOT CHANGE
-
-Hekim is still the first line. The thanks is still the close. Nothing about his
-contribution was trimmed, because that is the part you said mattered.
+   That says he practises the thing you wrote about. Alternatives at the foot
+   of this file if you prefer a different register.
 
 ================================================================================
 BODY. Copy from the line below.
@@ -50,15 +58,36 @@ Nobody wrote that pattern deliberately. The tool did.
 
 Open one of your own termination memos from the last year. Can you point to the evidence behind each conclusion, or only to the sentence asserting it?
 
-We set out six checks to run before a record is final. The one I would apply even without AI in the picture: read the file as though the person who wrote it has left, and ask whether you could still explain the decision from what is on the page.
+We set out seven controls to apply before a record is final, and we mean them as a minimum. The one I would apply even without AI in the picture: read the file as though the person who wrote it has left, and ask whether you could still explain the decision from what is on the page.
 
 The European section is Hekim's, and it is the part I could not have written. An ISO/IEC 42001 auditor's read of what the AI Act actually reaches here, including the part most US coverage skips, that a great many employment workflows sit outside the high-risk regime entirely and are left to ordinary employment law.
 
-He sent regulation numbers and dates where most people send opinions.
+His section is built on citations rather than assertions, which is the discipline the article argues records should have.
 
 Thank you, Hekim. I hope this is the first of several.
 
 https://www.corporatecomplianceinsights.com/that-ai-drafted-termination-memo-could-become-evidence/
+
+================================================================================
+ALTERNATIVES FOR THE HEKIM LINE
+================================================================================
+
+Pick one. All compliment him directly rather than by comparison.
+
+A. "His section is built on citations rather than assertions, which is the
+    discipline the article argues records should have."
+    Ties his method to your thesis. Recommended.
+
+B. "Every claim in his section carries a regulation number and a date."
+    Plainest. Lets the fact do the work.
+
+C. "He does not assert things. He cites them, which made editing his section
+    the easiest part of this."
+    Warmer, and says something about working with him.
+
+D. "He wrote his half the way the article says records should be written."
+    Shortest and the most flattering, though it asks the reader to hold two
+    ideas at once.
 
 ================================================================================
 POSTING
@@ -75,16 +104,11 @@ FIRST 210 CHARACTERS, WHICH IS ALL A SCROLLER SEES:
 about something most employers will not notice until they are sitting in a
 deposition."
 
-That names him and sets a stake in the same breath.
-
 ================================================================================
 HONEST CAVEAT
 ================================================================================
 
-This is craft, not measurement. I cannot verify what LinkedIn weights in 2026
-and have not claimed to. What is durable: the truncation point decides whether
-anyone reads past line two, short paragraphs survive mobile, and a post that
-fully answers its own question does not get clicked.
-
-If you would rather keep your version, it is the better piece of writing. It is
-simply a better essay than it is a post.
+The clickability changes are craft, not measurement. I cannot verify what
+LinkedIn weights in 2026 and have not claimed to. The count correction is not
+craft. It is a fact I got wrong and have now checked against the published
+article.
