@@ -1,0 +1,58 @@
+LINKEDIN POST, FINAL, PASTE READY
+2026-09-29. Version B. Every paragraph is ONE unbroken line so LinkedIn reflows
+it correctly. Do not reformat. Do not paste from a hard-wrapped source.
+
+HOW TO POST
+  1. LinkedIn, Start a post.
+  2. Paste the body below.
+  3. Delete "Hekim Colpan" where it appears in the first line, type @Hekim and
+     pick him from the dropdown. The name must turn blue. Typing the name as
+     plain text does not notify him and does not link to his profile.
+  4. Post.
+  5. Immediately add the URL as the FIRST COMMENT. LinkedIn reduces reach on
+     posts carrying an external link in the body.
+  6. Optional: pin your own first comment so the link sits at the top.
+
+DO NOT attach a link preview card. Pasting the URL into the body creates one and
+costs reach. The comment is the trade.
+
+FIRST 210 CHARACTERS ARE WHAT PEOPLE SEE BEFORE "see more". Yours are:
+"This article would not exist without Hekim Colpan. He volunteered, and then he
+did the work that I could not have done."
+That is a strong opening and needs no change.
+
+================================================================================
+BODY. Copy from the line below to the sign-off.
+================================================================================
+
+This article would not exist without Hekim Colpan.
+
+He volunteered, and then he did the work that I could not have done. The European section is his: an ISO/IEC 42001 auditor's read of what the AI Act actually reaches here, including the part most US coverage skips, that a great many employment workflows sit outside the high-risk regime entirely and are left to ordinary employment law.
+
+He sent regulation numbers and dates where most people send opinions.
+
+The piece is in Corporate Compliance Insights, and it is about a problem that predates AI and has been made much easier to create.
+
+An employment file can contain emails, attendance records, completed work and a year of prior feedback, and still fail the only test that matters later. The final memo reads well. It just does not connect its conclusions to any of that material. Under McDonnell Douglas an employer has to articulate a legitimate reason and show it was actually applied. Fluency does not do that.
+
+The part that surprised me most happens across files rather than inside one. AI reuses subjective phrasing. "Cultural fit." "Executive presence." "Struggles with change." Any one reads as ordinary management language. The same three across a dozen files, clustering among employees who share a protected characteristic, reads differently to a reviewer with the whole set in front of them. Nobody wrote that pattern deliberately. The tool did.
+
+Six checks to run before a record is final, including the one I would apply anyway: read it as though the person who wrote it has left, and ask whether you could still explain the decision from what is on the page.
+
+Thank you, Hekim. I hope this is the first of several.
+
+Link in the first comment.
+
+================================================================================
+FIRST COMMENT. Post this immediately after.
+================================================================================
+
+https://www.corporatecomplianceinsights.com/that-ai-drafted-termination-memo-could-become-evidence/
+
+================================================================================
+IF YOU WOULD RATHER PUT THE LINK IN THE BODY
+================================================================================
+
+Delete the line "Link in the first comment." and paste the URL on its own line
+at the end. You lose some reach and gain a preview card. Either is defensible.
+The comment route is what most people who post regularly now use.
