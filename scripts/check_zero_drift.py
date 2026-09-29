@@ -8983,6 +8983,12 @@ def check_every_active_processor_is_disclosed(offline):
         "www.nycourts.gov": None,
         "www.osc.ny.gov": None,
         "www.linkedin.com": None,
+        # ADDED 2026-09-29 with the Published articles card on resources.html.
+        # An outbound citation to the authors' own published article. The page
+        # never fetches it, so no visitor data reaches the publisher unless the
+        # visitor clicks, which is the same class as the justia and nycourts
+        # citations above. It is NOT a processor and must not be disclosed as one.
+        "www.corporatecomplianceinsights.com": None,
         "schema.org": None,
     }
 
