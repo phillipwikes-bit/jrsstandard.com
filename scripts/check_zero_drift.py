@@ -2884,6 +2884,21 @@ def check_printed_certificate_matches_endpoint(offline):
     try:
         sys.path.insert(0, os.path.join(ROOT, "research"))
         import build_reviewer_eval_certificate as brec
+    except ModuleNotFoundError as e:
+        # DIRECTIVE 9 / check() docstring: an unperformed test is not a failure.
+        # The builder is tracked; what is absent is a third-party dependency this
+        # container does not carry. Skip ONLY for a module that is not part of
+        # this repository, so a broken or deleted builder still FAILS.
+        missing = (e.name or "").split(".")[0]
+        vendored = os.path.exists(os.path.join(ROOT, "research", missing + ".py"))
+        if missing and missing != "build_reviewer_eval_certificate" and not vendored:
+            check("printed certificate wording matches the endpoint", SKIPPED,
+                  "third-party module %r is absent from this container, so the "
+                  "wording could not be compared; this is not drift" % missing)
+            return
+        check("printed certificate wording matches the endpoint", False,
+              "research/build_reviewer_eval_certificate.py did not import: %r" % (e,))
+        return
     except Exception as e:
         check("printed certificate wording matches the endpoint", False,
               "research/build_reviewer_eval_certificate.py did not import: %r" % (e,))
@@ -5249,6 +5264,18 @@ def check_tracked_guides_carry_exactly_one_routing_page(offline):
                "JRS_Investigator_Field_Guide_International.pdf"]
     MARK = "jrsstandard.com/check"
     findings = []
+
+    # DIRECTIVE 9: cannot-test is not tested-and-wrong. pdfinfo and pdftotext are
+    # poppler binaries, never tracked files. The 2026-09 container rebuild removed
+    # them, and without them pages() silently returns 0 and text() returns "",
+    # which would read as a content finding rather than a missing tool.
+    import shutil as _sh
+    _absent = [b for b in ("pdfinfo", "pdftotext") if not _sh.which(b)]
+    if _absent:
+        check("check_tracked_guides_carry_exactly_one_routing_page", SKIPPED,
+              "%s not installed in this container, so guide PDFs could not be "
+              "read; this is missing tooling, not drift" % " and ".join(_absent))
+        return
 
     def pages(path):
         out = _sp.run(["pdfinfo", path], capture_output=True, text=True).stdout
