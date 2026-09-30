@@ -9491,9 +9491,133 @@ def check_cross_vendor_claim_semantics(offline):
           " | ".join(x.split(" [")[0] for x in bad[:8]) if bad
           else "%d public HTML pages scanned; E-039 semantic boundary intact" % scanned)
 
+
+def check_buyer_facing_drafts_obey_the_claim_register(offline):
+    """A buyer-facing draft may not carry a research figure the register has not cleared.
+
+    WHY THIS GUARD EXISTS.  research/strategy/ holds drafts written to be handed
+    to, or forwarded by, someone outside this project: an upward-cover brief, a
+    self-audit instrument, a note to the study panel, proposed site copy.  Those
+    are the documents where a figure travels furthest from its denominator, and
+    they are the documents nobody re-reads before sending.
+
+    UPWARD_COVER_CLAIM_REGISTER_2026-09-30.md states the rule in its own words:
+    "no figure appears in the brief unless it appears in this table".  A rule
+    written in a document is not a control.  This guard is the control.
+
+    FOUR RULES, each traceable to a recorded reason.
+
+    1. PAIRING, reliability.  0.739 and 0.623 are Gwet's AC1 point estimates
+       from E-038.  The pre-registered criterion had two parts, a point estimate
+       of at least 0.61 and a lower confidence bound of at least 0.41, and the
+       point estimates clear the first while neither clears the second.  A
+       document that prints the coefficient and omits the unmet criterion is the
+       exact artifact this estate exists to argue against.
+
+    2. PAIRING, detection.  83.9 is the mean of 16 individual reviewer scores on
+       a CONSTRUCTED 24-record corpus.  research-summary.html states plainly
+       that there is no criterion validity against real records.  The figure may
+       not travel without that scope.
+
+    3. PAIRING, cross-vendor.  82.2 belongs to a consistency series.  No
+       chance-corrected AC1 was computed, so the reproducibility criterion is
+       NOT ESTABLISHED, neither passed nor failed.
+
+    4. REGISTRATION.  Any decimal figure in a draft must also appear in the
+       register.  This is the rule that catches the figure nobody thought to
+       check, which is the only kind that ever ships.
+
+    Plus the two prose constraints a forwarded document cannot afford: the
+    banned certainty vocabulary, and the em-dash.
+
+    SCOPE.  Every file in research/strategy/ must declare an ARTIFACT-CLASS
+    comment, and a file that declares none FAILS, so a new file cannot enter
+    the directory uncontrolled.  The pairing rules apply to every file.  The
+    vocabulary, em-dash and registration rules apply only to EXTERNAL-DRAFT,
+    because an INTERNAL-CONTROL document has to be able to quote a banned term
+    in order to ban it.  That is a scope decision, not an exemption: the
+    control documents are never handed to anyone outside this project.
+    """
+    import glob as _glob
+
+    strategy = sorted(_glob.glob("research/strategy/*.md"))
+    if not strategy:
+        check("buyer-facing drafts obey the claim register", True,
+              "no buyer-facing drafts present")
+        return
+
+    register_path = "research/strategy/UPWARD_COVER_CLAIM_REGISTER_2026-09-30.md"
+    try:
+        with open(register_path, encoding="utf-8") as fh:
+            register = fh.read()
+    except FileNotFoundError:
+        check("buyer-facing drafts obey the claim register", False,
+              "the claim register is missing while %d drafts exist; "
+              "the drafts are uncontrolled" % len(strategy))
+        return
+
+    not_met = re.compile(r"not\s+met|neither\s+clears|criterion\s+was\s+not", re.I)
+    constructed = re.compile(
+        r"constructed[\s\w-]{0,20}?(?:record|corpus)|"
+        r"not\s+(?:a\s+)?field\s+(?:record|performance)|"
+        r"no\s+criterion\s+validity", re.I)
+    consistency = re.compile(
+        r"consistency,?\s+not\s+accuracy|not\s+established|"
+        r"no\s+chance[\s-]*corrected", re.I)
+    banned = re.compile(
+        r"\bcourt[-\s]?(?:proof|admissible)\b|\bliability[-\s]?proof\b|"
+        r"\bguarantee[sd]?\b|\bis\s+(?:legally\s+)?compliant\b|"
+        r"\bindustry\s+standard\b|\bscientifically\s+validated\b", re.I)
+    opener = re.compile(r"(?:^|[.]\s+)Designed\s+for\s+\[?[A-Za-z]", re.M)
+    decimal = re.compile(r"(?<![\w.])(\d{1,3}[.]\d{1,2})(?![\w.])")
+
+    bad = []
+    for path in strategy:
+        with open(path, encoding="utf-8") as fh:
+            body = fh.read()
+        klass = re.search(r"<!--\s*ARTIFACT-CLASS:\s*([A-Z-]+)\s*-->", body)
+        if not klass:
+            bad.append("%s declares no ARTIFACT-CLASS; an unclassified file "
+                       "in research/strategy/ is uncontrolled" % path)
+            continue
+        external = klass.group(1) == "EXTERNAL-DRAFT"
+
+        if ("0.739" in body or "0.623" in body) and not not_met.search(body):
+            bad.append("%s prints an AC1 point estimate without the unmet criterion"
+                       % path)
+        if "83.9" in body and not constructed.search(body):
+            bad.append("%s prints 83.9 without its constructed-corpus scope" % path)
+        if "82.2" in body and not consistency.search(body):
+            bad.append("%s prints 82.2 without consistency-not-accuracy or "
+                       "not-established" % path)
+
+        if external:
+            hit = banned.search(body)
+            if hit:
+                bad.append("%s carries banned certainty vocabulary: %r"
+                           % (path, hit.group(0)))
+            if opener.search(body):
+                bad.append("%s opens a sentence with the banned 'Designed for'" % path)
+            if chr(8212) in body:
+                bad.append("%s contains an em-dash" % path)
+            for fig in sorted(set(decimal.findall(body))):
+                if fig.split(".")[0] in ("1", "2", "3", "4", "5"):
+                    continue
+                if fig not in register:
+                    bad.append("%s carries the figure %s, which the claim "
+                               "register does not clear" % (path, fig))
+
+    tail = "" if len(bad) <= 6 else " (+%d more)" % (len(bad) - 6)
+    check("buyer-facing drafts obey the claim register",
+          not bad,
+          "; ".join(bad[:6]) + tail if bad
+          else "%d artifacts in research/strategy/, all classified; "
+               "figures cleared against the register" % len(strategy))
+
 def main():
     offline = "--offline" in sys.argv
-    for fn in (check_telemetry_parity, check_no_handwritten_counts,
+    for fn in (check_buyer_facing_drafts_obey_the_claim_register,
+               check_telemetry_parity, check_no_handwritten_counts,
                check_no_masking_fallbacks, check_panel_geo,
                check_html_figures_bound, check_panel_binder_identical,
                check_trust_pages_carry_their_proof,

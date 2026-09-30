@@ -1,3 +1,4 @@
+<!-- ARTIFACT-CLASS: EXTERNAL-DRAFT -->
 # NOTE TO THE ARM A PANEL
 ### Courtesy update. Contains no request of any kind.
 
@@ -7,6 +8,11 @@
 
 ## THE RULES THIS NOTE OBEYS
 
+0. **It discloses nobody's participation but the recipient's own.** An earlier draft
+   said Hekim Colpan *"was also on the panel."* **Panel membership is not public**: zero
+   deployed pages name him, and E-001 covers participation, not disclosure of
+   participation to third parties. The clause was removed. His **co-author** credit is
+   public, because the article carries his byline, so naming him that way is safe.
 1. **There is no ask in it.** No request to read, share, comment, endorse or refer.
    If a request appears in a later draft, the note has become outreach and the
    guardrails below no longer cover it.
@@ -30,7 +36,7 @@ You graded a full twenty-four record set for the detection study earlier this ye
 I said at the time I would tell you where the work ended up.
 
 An article drawing on it was published in Corporate Compliance Insights on 29 September,
-co-authored with Hekim Colpan, who was also on the panel. It is about what happens to an
+co-authored with Hekim Colpan. It is about what happens to an
 employment record when AI assistance produces a document that reads well and does not
 connect its conclusions to the evidence behind them.
 

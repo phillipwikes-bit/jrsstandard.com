@@ -1,3 +1,4 @@
+<!-- ARTIFACT-CLASS: INTERNAL-CONTROL -->
 # COGNITIVE RECOGNITION CONVERSION
 ## Execution plan: four mechanisms, four artifacts, four acceptance tests
 

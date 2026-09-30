@@ -1,3 +1,4 @@
+<!-- ARTIFACT-CLASS: INTERNAL-CONTROL -->
 # CLAIM REGISTER
 ## For the Upward Cover Brief and every derivative of it
 

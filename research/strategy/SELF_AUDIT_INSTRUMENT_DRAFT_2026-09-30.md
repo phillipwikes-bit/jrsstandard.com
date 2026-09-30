@@ -1,3 +1,4 @@
+<!-- ARTIFACT-CLASS: EXTERNAL-DRAFT -->
 # THE TEN-MINUTE RECORD TEST
 ### Run this yourself, on your own file, on your own machine
 
@@ -32,7 +33,8 @@ _______________________________________________________________________
 
 ### 2. Basis identification
 
-**Is the source of each material characterization visible, rather than asserted?**
+**Is the source of each material characterization visible and traceable, rather than
+implied or asserted without attribution?**
 
 "Late on 3/4, 3/11 and 3/18, timestamps in the shared drive" has a source.
 "Has a poor attitude" does not.

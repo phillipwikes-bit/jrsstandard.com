@@ -1,3 +1,4 @@
+<!-- ARTIFACT-CLASS: INTERNAL-CONTROL -->
 # NETWORKING EXECUTION PLAN
 ## Converting a list of job titles into an operating system
 

@@ -1,3 +1,4 @@
+<!-- ARTIFACT-CLASS: EXTERNAL-DRAFT -->
 # WHEN A PERSONNEL RECORD CANNOT EXPLAIN ITSELF
 ### A two-page brief for executive and board review
 
@@ -10,11 +11,15 @@
 
 Organizations are now using AI assistance to draft performance reviews, written
 warnings, investigation summaries and termination memos. The resulting documents are
-well organized and professionally worded. A number of them cannot show how they reached
-their conclusions. The evidence that supported the decision may exist somewhere in
-emails, attendance data, prior feedback and manager notes, but the record that will be
-produced in litigation or to a regulator does not connect its conclusions to any of it.
-It asserts. It does not demonstrate.
+well organized and professionally worded. A document can be all of those things and
+still not show how it reached its conclusions. The evidence that supported the decision
+may exist somewhere in emails, attendance data, prior feedback and manager notes, while
+the record that will be produced in litigation or to a regulator does not connect its
+conclusions to any of it. It asserts. It does not demonstrate.
+
+**How often this happens in real organizations is not known and is not claimed here.**
+The question this brief puts is not statistical. It is whether it is true of your files,
+which only you can check.
 
 ## Why routine review does not catch this
 
@@ -36,9 +41,9 @@ change." Read in one file, any of these is ordinary management language. Read ac
 dozen files, clustering among employees who share a protected characteristic, the same
 phrases read very differently to someone holding the entire set.
 
-**Nobody drafted that pattern deliberately. The tool produced it, because producing
-consistent language is what the tool is for.** An organization reviewing one file at a
-time cannot see it. Discovery produces the whole set at once, and the first person to
+**Where such a pattern exists, it is unlikely that anyone drafted it deliberately.**
+Producing consistent language is what the tool is for, and consistency across files is
+the predictable result. An organization reviewing one file at a time cannot see it. Discovery produces the whole set at once, and the first person to
 read them side by side is the one bringing the claim.
 
 This is the difference between defending an individual decision and defending a pattern.

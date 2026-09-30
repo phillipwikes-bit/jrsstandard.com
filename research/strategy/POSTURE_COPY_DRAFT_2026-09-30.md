@@ -1,3 +1,4 @@
+<!-- ARTIFACT-CLASS: EXTERNAL-DRAFT -->
 # POSTURE STATEMENT
 ### Proposed copy for `licensing-acquisition.html`. Sharpening, not building.
 
