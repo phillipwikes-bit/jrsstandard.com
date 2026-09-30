@@ -20,6 +20,8 @@
 | 5 | The two-part criterion was **a point estimate of at least 0.61 and a lower confidence bound of at least 0.41. The point estimates clear the first part. Neither clears the second.** | `research-summary.html`, E-038 | 2026-09-30 | Measured on a **separate, smaller sample**: 22 raters, the 10 records carrying two or more raters, 104 labels from 113 submitted. |
 | 6 | Cross-vendor consistency **82.2 to 93.3 percent across 37 runs restricted to the full 15-record set** | `results.html`, E-039 | 2026-09-30 | **Consistency, not accuracy.** Unrestricted set is 66.7 to 93.3 across 61 mixed-denominator runs, mean 85.3. **No chance-corrected AC1 was computed, so the pre-registered reproducibility criterion is not established.** Study closed 2026-08-21. |
 | 7 | **Five review conditions**, RC1 Reconstructability, RC2 Basis Identification, RC3 Chronology, RC4 Decision-Process Traceability, RC5 Evidentiary Sufficiency | `codebook.html` | 2026-09-30 | **All five are at Experimental maturity.** State it. |
+| 9 | **Criterion evidence from 22 adjudicated employment and labour matters, 22 distinct public sources.** Records the reviewer assessed as **incomplete before the outcome was known** reached an adverse finding **77.8 percent** of the time (n=9, CI 45.3 to 93.7) against **15.4 percent** for records she passed (n=13, CI 4.3 to 42.2). Fisher's exact two-sided **p = 0.0073**, odds ratio 19.25 | `research/BusinessEthics_Article_Draft.md` §5.2, Tanvi Pokhriyal first author | 2026-09-30 | **REAL adjudicated records, not constructed.** Small sample, Wilson intervals because cells are small. **A stricter sensitivity coding gives p = 0.165 and does not reach significance**; that must travel with the result. **UNPUBLISHED DRAFT. BLOCKED for external use pending RT-06 disposition from Tanvi Pokhriyal.** |
+| 10 | **32-case FOIL corpus of real public-records requests to real agencies** | `research/FOIL_Paper_FINAL_2026-08-28.pdf`, Stacyann Young first author | 2026-09-30 | **REAL records.** Under submission, declined by three venues to date. **BLOCKED for external use pending RT-06 disposition from Stacyann Young.** |
 | 8 | **33 contributors hold executed structured consents** including successor transfer | Master Register §22 | 2026-09-18 | Consent to participate. **Not endorsement, not adoption, not assignment.** |
 
 ---
@@ -29,7 +31,11 @@
 Lifted from the live site so the brief cannot contradict the pages it points to.
 
 - *"The corpus is deliberately bimodal, the five review conditions are not psychometrically validated, and one pre-registered reliability criterion was not met."*
-- *"There is no criterion validity against real records."*
+- *"There is no criterion validity against real records."* **SCOPE CORRECTION 2026-09-30.**
+  This sentence is on `research-summary.html` and belongs to the **Review Engine and
+  detection programme**, whose corpus is constructed. **It is not true of the estate.**
+  Rows 9 and 10 are criterion and field evidence on **real** records. Quoting the sentence
+  estate-wide understates the evidence base and is itself a misstatement.
 - *"Not certification, not accreditation, not a credential."*
 - JRS **does not establish compliance** with the EU AI Act, the NIST AI RMF, ISO/IEC 42001 or any other framework.
 

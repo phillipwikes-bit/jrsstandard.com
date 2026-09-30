@@ -17,9 +17,20 @@ may exist somewhere in emails, attendance data, prior feedback and manager notes
 the record that will be produced in litigation or to a regulator does not connect its
 conclusions to any of it. It asserts. It does not demonstrate.
 
-**How often this happens in real organizations is not known and is not claimed here.**
-The question this brief puts is not statistical. It is whether it is true of your files,
-which only you can check.
+**There is evidence, on real records, that this is not a theoretical concern.**
+In a study of 22 adjudicated employment and labour matters drawn from 22 separate public
+sources, a reviewer assessed each record's completeness **before knowing how the matter
+resolved**. The records she marked incomplete went on to draw an adverse finding
+**roughly five times as often** as the records she passed.
+
+The sample is small, one alternative coding of the outcomes does not reach statistical
+significance, and the study is not yet published. It is a signal and not a settled
+finding. **The question this brief puts to you is not statistical anyway. It is whether
+it is true of your files, which only you can check.**
+
+> **HOLD.** The paragraph above may not go out until Tanvi Pokhriyal, who is first author
+> and selected and screened all 22 matters, has agreed to this use of her result. That is
+> checklist item RT-06 and it is an owner action, not a drafting one.
 
 ## Why routine review does not catch this
 
