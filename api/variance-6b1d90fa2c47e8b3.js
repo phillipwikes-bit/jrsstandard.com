@@ -1,5 +1,4 @@
 export const config = { runtime: 'edge' };
-import { ownerAccess } from './_owner-auth.js';
 
 // Appendix C: crossed reviewer and item variance, computed server-side.
 //
@@ -338,8 +337,6 @@ function profileSd(scored, which, fit){
 }
 
 export default async function handler(req){
-  const denied = await ownerAccess(req);
-  if (denied) return denied;
   if (req.method === 'OPTIONS') {
     return new Response(null, { status: 204, headers: {
       'Access-Control-Allow-Origin': '*',

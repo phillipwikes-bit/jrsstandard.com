@@ -1,5 +1,4 @@
 import { fetchAllUrl } from './_sb-fetch.js';
-import { ownerAccess } from './_owner-auth.js';
 export const config = { runtime: 'edge' };
 
 // Aggregate stats for the co-author confirmation tile on the private status
@@ -36,8 +35,6 @@ function json(o, s){
 }
 
 export default async function handler(req){
-  const denied = await ownerAccess(req);
-  if (denied) return denied;
   if (req.method !== 'GET') return json({ error: 'method_not_allowed' }, 405);
 
   const SERVICE = process.env.SUPABASE_SERVICE_ROLE_KEY || '';

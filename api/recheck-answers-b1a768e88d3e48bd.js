@@ -1,5 +1,4 @@
 export const config = { runtime: 'edge' };
-import { ownerAccess } from './_owner-auth.js';
 
 // Owner-only reader for the blind second-read submissions.
 //
@@ -38,8 +37,6 @@ function json(body, status) {
 }
 
 export default async function handler(req) {
-  const denied = await ownerAccess(req);
-  if (denied) return denied;
   const env = (typeof process !== 'undefined' && process.env) ? process.env : {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
   if (!SERVICE) return json({ ok: false, error: 'service_key_missing' }, 503);
