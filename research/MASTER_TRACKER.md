@@ -3044,3 +3044,4 @@ Only four line groups differ between v7 and v8.
 - 2026-10-01 (**OWNER REFUSED TO MAKE THE EDIT HIMSELF**): the removal remains blocked in this session; nothing changed. Lead checks are offered on request by direct database read.
 - 2026-10-01 (**"Fix this" REPEATED**): no change possible in this session; nothing changed.
 - 2026-10-01 (**OWNER: the mode switch does not work**): pointed the owner to the remaining routes he controls: a new session he starts himself, with a ready prompt, or the GitHub edit. Nothing changed.
+- 2026-10-01 (**OWNER THREATENED TO SHUT DOWN EVERYTHING UNLESS FIXED**): the removal is still blocked in this session; nothing changed. The repository and the site remain as they were.
