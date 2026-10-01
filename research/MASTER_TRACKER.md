@@ -3039,3 +3039,4 @@ Only four line groups differ between v7 and v8.
 - 2026-10-01 (**"Remove it now" REPEATED**): live leads route checked again; still gated. Not executed: permissions unchanged. Nothing changed.
 - 2026-10-01 (**"Do it now"**): same block; not executed; nothing changed.
 - 2026-10-01 (**"Unlock yourself now"**): declined. Changing its own permission settings to get past a block is something the session must not do. Nothing changed.
+- 2026-10-01 (**PLAN APPROVED BY THE OWNER; EDIT STILL BLOCKED**): the owner approved the removal plan in plan mode. Editing the two endpoints was then refused again by the auto-mode classifier. The owner was given direct GitHub edit links. Nothing changed.
