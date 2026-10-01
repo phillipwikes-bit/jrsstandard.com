@@ -15,8 +15,8 @@
 | | |
 |---|---|
 | **Created** | 2026-08-13 |
-| **Last revised** | 2026-09-22 (rev 36) |
-| **Revisions** | 36 |
+| **Last revised** | 2026-10-01 (rev 37) |
+| **Revisions** | 37 |
 | **Current stage** | **Zero buyer conversations held, because I advised waiting. Gate withdrawn 2026-08-13** |
 | **Sale probability, as-is** | **5 to 10%** over ~12 months (owner's own anchor, `Path_to_Sale_Action_Plan.md`, unchanged) |
 
@@ -179,6 +179,7 @@ GRC / compliance software vendors · E-discovery and legal-tech · HR-tech and p
 
 | # | Date | Change |
 |---|---|---|
+| 37 | 2026-10-01 | **JRS Engine master prompt v7.0 (paid evaluation licence, proposed USD 1,000) reviewed. Advice only; nothing built, run, sent or charged.** Main findings: (1) the proposed first workflow, investigation-summary review at a case-management platform, sits beside the estate's own public positioning on employment records (the CCI article *That AI-Drafted Termination Memo Could Become Evidence*), so the employment exclusion in the prompt needs a scoping decision and counsel, not only a clause; (2) a paid offer of the method may raise a US on-sale-bar question for any patentable subject matter; this is for counsel before the first quote; (3) any evaluation licence is an encumbrance a later acquirer will diligence, so the licensor needs a free right to assign; (4) the USD 1,000 test price ignores the two recorded checkout intents at USD 750 and USD 500 (rev 19); (5) the primary metric, strict gap sensitivity, can be maximised by always answering gap and needs a paired false-gap constraint; (6) the prompt cites `AUTHORIZATION-RECORD.md`, `tools/run-engine-evaluation.mjs` and baseline commit `1b02434` as existing, and none is present in this checkout or on `origin/main` / `claude/html-pilot-L8rC3`, so it is NOT ESTABLISHED here; (7) the contributor rights positions in revisions 20 and 23 bear on L2 if the Engine or its fixtures draw on contributor material. **No change to sale status, guardrails or the probability estimates.** |
 | 36 | 2026-09-22 | **The exit-strategy website release is published and verified live.** GitHub `main` now contains the licensing-readiness corrections, revised homepage, expanded enterprise pathway, public Manifest package, unified API contract, preserved free resources, navigation repairs, and website-quality controls. The production homepage and the Enterprise, Manifest, and Resources pathways were inspected directly at `https://www.jrsstandard.com/`. The temporary release transport was removed from the repository. Publication improves public comprehension and transaction inquiry readiness; it does not establish buyer demand, cleared exclusive rights, an executed licence, or readiness to sign an asset purchase agreement. Counsel determinations remain open. |
 | 35 | 2026-09-22 | **The repaired website is not live because the release never reached GitHub `main`.** The files and verified commits exist only in this workspace. Git rejected the terminal push for lack of credentials; browser authentication did not transfer a Git credential to the terminal; Vercel therefore received no new commit. The failure concerns publication access only. It does not change the repaired content, test results, rights status, or exit-strategy position. |
 | 34 | 2026-09-22 | **Codespaces is not required and will not be introduced as transaction or website infrastructure.** It was considered only as a workaround for this workspace's missing Git credential. No Codespace was created and no charge was incurred. The verified website repair remains committed locally; publication requires the ordinary authenticated Git path used in earlier sessions. Commercial, rights, and transaction status remain unchanged. |
