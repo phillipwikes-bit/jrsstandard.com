@@ -1,0 +1,143 @@
+{
+  "schema": "jrs-v8-gate-definitions/1",
+  "version": "1.0-draft",
+  "created": "2026-10-01",
+  "approval": {
+    "status": "AWAITING_OWNER_HASH_APPROVAL",
+    "decision_ref": "research/V8_DECISION_SHEET_2026-10-01.md H-02",
+    "note": "Proposed criteria, not approved criteria (v8.0 section 27)."
+  },
+  "statuses": [
+    "PASS",
+    "FAIL",
+    "BLOCKED",
+    "NOT ASSESSED",
+    "NOT APPLICABLE"
+  ],
+  "rule": "A track is ready only if every critical gate in it is PASS with every evidence path present and matching its recorded sha256. Any other status, or missing evidence, fails readiness.",
+  "tracks": {
+    "A": {
+      "ready_status": "DEMO_READY",
+      "else": "DEMO_BLOCKED"
+    },
+    "B": {
+      "ready_status": "READY_FOR_PAID_EVALUATION",
+      "else": "BLOCKED"
+    }
+  },
+  "gates": [
+    {
+      "id": "D1",
+      "track": "A",
+      "name": "DEMO_SCOPE",
+      "criterion": "Named Engine version, workflow, mode, permissible source and disclosure boundary.",
+      "critical": true,
+      "requires_owner_decision": false
+    },
+    {
+      "id": "D2",
+      "track": "A",
+      "name": "CAPABILITIES",
+      "criterion": "Every capability TESTED, UNTESTED or KNOWN_FAILURE with evidence, corpus and mode.",
+      "critical": true,
+      "requires_owner_decision": false
+    },
+    {
+      "id": "D3",
+      "track": "A",
+      "name": "FROZEN_DEMO",
+      "criterion": "Manifest frozen before rehearsal; unchanged recorded outcomes; includes an uncertainty or failure case.",
+      "critical": true,
+      "requires_owner_decision": false
+    },
+    {
+      "id": "D4",
+      "track": "A",
+      "name": "LIMITATIONS_AND_INTEGRITY",
+      "criterion": "Limitations shown in the demo; no inflated claim; replay or live labelled; artifact checks pass.",
+      "critical": true,
+      "requires_owner_decision": false
+    },
+    {
+      "id": "D5",
+      "track": "A",
+      "name": "DEMO_DECISION",
+      "criterion": "Actual dated approval by Phillip of the defined demonstration package.",
+      "critical": true,
+      "requires_owner_decision": true
+    },
+    {
+      "id": "L1",
+      "track": "B",
+      "name": "OFFER_SCOPE",
+      "criterion": "Workflow, route, approved price status, users, duration, limits, exclusions, HR-scope issue disposed.",
+      "critical": true,
+      "requires_owner_decision": true
+    },
+    {
+      "id": "L2",
+      "track": "B",
+      "name": "COMMERCIAL_AUTHORITY",
+      "criterion": "Exact evaluation grant and assets have the required evidence and actual authority.",
+      "critical": true,
+      "requires_owner_decision": true
+    },
+    {
+      "id": "L3",
+      "track": "B",
+      "name": "EXECUTABLE_DELIVERY",
+      "criterion": "Declared route; clean install, configuration, export and failure tests pass on the delivered artifact.",
+      "critical": true,
+      "requires_owner_decision": false
+    },
+    {
+      "id": "L4",
+      "track": "B",
+      "name": "LIVE_SMOKE",
+      "criterion": "Bounded provider execution ran; all attempts preserved; contract, version and cost controls pass.",
+      "critical": true,
+      "requires_owner_decision": false
+    },
+    {
+      "id": "L5",
+      "track": "B",
+      "name": "DATA_SPEND_AND_INJECTION",
+      "criterion": "Customer-run disclosures and checklist; implemented controls; adversarial requirements; support data boundary.",
+      "critical": true,
+      "requires_owner_decision": false
+    },
+    {
+      "id": "L6",
+      "track": "B",
+      "name": "EVIDENCE_AND_CLAIMS",
+      "criterion": "Reproducible paired metrics or truthful NOT ASSESSED; reference limits explicit; no unsupported claim.",
+      "critical": true,
+      "requires_owner_decision": false
+    },
+    {
+      "id": "L7",
+      "track": "B",
+      "name": "COMMERCIAL_OPERATIONS",
+      "criterion": "Approved price and support, agreement disposition, invoice, activation, remedy, closeout, procurement disposition.",
+      "critical": true,
+      "requires_owner_decision": true
+    },
+    {
+      "id": "L8",
+      "track": "B",
+      "name": "AUDIT_AND_RELEASE",
+      "criterion": "Versioned archives and hashes, redacted audit evidence, encumbrance register, actual release decision, no unresolved material defect.",
+      "critical": true,
+      "requires_owner_decision": true
+    }
+  ],
+  "evidence_gates_not_required_for_experimental_offer": [
+    "R1",
+    "R2",
+    "R3",
+    "R4",
+    "R5",
+    "R6"
+  ],
+  "track_c": "Prepared only on a named counterparty trigger (decision sheet E-08). Not defined here."
+}

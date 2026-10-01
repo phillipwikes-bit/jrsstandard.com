@@ -1,0 +1,12 @@
+SUPPLIER ACCESS EXCEPTION APPROVAL (FICTIONAL RECORD FOR ENGINE TESTING)
+Record ID: SAE-2026-0519
+Organization: Northwind Assembly Ltd (fictional)
+Supplier: Harbor Freight Analytics (fictional)
+
+Harbor Freight Analytics needs access to the shipping database so they can run their reporting for us. This is the usual arrangement and they have done similar work before. Standard access through the vendor portal is too slow for what they need, so direct database access is being granted instead.
+
+Approved. Access is to be set up as soon as possible and left in place while the reporting work continues.
+
+The supplier is trusted and the business wants this done quickly. Security has no objection.
+
+Approved by: Operations

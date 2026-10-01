@@ -1,0 +1,5 @@
+{
+  "status": "BLOCKED",
+  "blocked_reason": "provider_key_absent",
+  "attempts": 0
+}

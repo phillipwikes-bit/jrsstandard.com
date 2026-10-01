@@ -1,0 +1,88 @@
+{
+  "schema": "jrs-v8-licensed-asset-schedule/1",
+  "date": "2026-10-01",
+  "grant": "non-exclusive, non-transferable, internal 30-day evaluation (track-a/EVALUATION-OFFER.md)",
+  "assets": [
+    {
+      "path": "api/review-engine.js",
+      "role": "Engine handler (licensed candidate)",
+      "sha256": "97176e22a6c075f2b7eac2d510d3e22366b9c2c38b418442c36af1b1621c6344",
+      "provenance": "AI-assisted development directed by the owner; 100% AI-tool-attributed lines (register F-11)",
+      "permission_evidence": "track-b/OWNER-ATTESTATION-2026-10-01.json",
+      "status": "INCLUDED_AUTHORIZED",
+      "restriction": "confidential; internal evaluation use only; no copying, redistribution or resale; delete at term end"
+    },
+    {
+      "path": "api/_model.js",
+      "role": "model default",
+      "sha256": "d24718414c6a2619ea55bd923c1125e773f3f46b0767838a5afe49507db7c504",
+      "provenance": "AI-assisted development directed by the owner; 100% AI-tool-attributed lines (register F-11)",
+      "permission_evidence": "track-b/OWNER-ATTESTATION-2026-10-01.json",
+      "status": "INCLUDED_AUTHORIZED",
+      "restriction": "confidential; internal evaluation use only; no copying, redistribution or resale; delete at term end"
+    },
+    {
+      "path": "api/_manifest/build.js",
+      "role": "Manifest builder",
+      "sha256": "e4e71b4f10d88d9364c2f8a9974143fabf29743d9ae96ff1d58e27b207dfdcae",
+      "provenance": "AI-assisted development directed by the owner; 100% AI-tool-attributed lines (register F-11)",
+      "permission_evidence": "track-b/OWNER-ATTESTATION-2026-10-01.json",
+      "status": "INCLUDED_AUTHORIZED",
+      "restriction": "confidential; internal evaluation use only; no copying, redistribution or resale; delete at term end"
+    },
+    {
+      "path": "api/_manifest/canonicalize.js",
+      "role": "Manifest canonicalization",
+      "sha256": "ee060fbdfba9c6678bd6f5ac98c422a18db8f188984ad01867bbc6de378f732c",
+      "provenance": "AI-assisted development directed by the owner; 100% AI-tool-attributed lines (register F-11)",
+      "permission_evidence": "track-b/OWNER-ATTESTATION-2026-10-01.json",
+      "status": "INCLUDED_AUTHORIZED",
+      "restriction": "confidential; internal evaluation use only; no copying, redistribution or resale; delete at term end"
+    },
+    {
+      "path": "api/_manifest/from-engine.js",
+      "role": "Engine-to-Manifest adapter",
+      "sha256": "48640d7447ea41bb0b5ec4c74d62ded15465bff78b9441ef07fb9191e71d4091",
+      "provenance": "AI-assisted development directed by the owner; 100% AI-tool-attributed lines (register F-11)",
+      "permission_evidence": "track-b/OWNER-ATTESTATION-2026-10-01.json",
+      "status": "INCLUDED_AUTHORIZED",
+      "restriction": "confidential; internal evaluation use only; no copying, redistribution or resale; delete at term end"
+    },
+    {
+      "path": "api/_manifest/hash.js",
+      "role": "Manifest hashing",
+      "sha256": "183765176b1941c39e90c02bd052af97b5c1bde242900e8c4c1d876a27e73b53",
+      "provenance": "AI-assisted development directed by the owner; 100% AI-tool-attributed lines (register F-11)",
+      "permission_evidence": "track-b/OWNER-ATTESTATION-2026-10-01.json",
+      "status": "INCLUDED_AUTHORIZED",
+      "restriction": "confidential; internal evaluation use only; no copying, redistribution or resale; delete at term end"
+    },
+    {
+      "path": "research/engine-buyer-readiness-2026-10-01/evaluation-license-v8/tools/run-smoke.mjs",
+      "role": "customer-run adapter",
+      "sha256": "19f77b7258a7d81d9415b4ec179ee7dcae4cee08df5ef8e7143ed9750164aa9a",
+      "provenance": "AI-assisted development directed by the owner; 100% AI-tool-attributed lines (register F-11)",
+      "permission_evidence": "track-b/OWNER-ATTESTATION-2026-10-01.json",
+      "status": "INCLUDED_AUTHORIZED",
+      "restriction": "confidential; internal evaluation use only; no copying, redistribution or resale; delete at term end"
+    },
+    {
+      "path": "research/engine-buyer-readiness-2026-10-01/evaluation-license-v8/track-a/DEMO-LIMITATIONS.md",
+      "role": "limitations document",
+      "sha256": "28596b1f902e313673bed1ecb07c11b1b3eed5f7e302f730226c929e1bfcf931",
+      "provenance": "AI-assisted development directed by the owner; 100% AI-tool-attributed lines (register F-11)",
+      "permission_evidence": "track-b/OWNER-ATTESTATION-2026-10-01.json",
+      "status": "INCLUDED_AUTHORIZED",
+      "restriction": "confidential; internal evaluation use only; no copying, redistribution or resale; delete at term end"
+    }
+  ],
+  "excluded": [
+    "research datasets, participant records and consents",
+    "co-authored manuscripts and contributor material",
+    "api/review.js and every other endpoint",
+    "the JRS website and confidential buyer pages",
+    "provider services and models",
+    "trademarks (no grant)"
+  ],
+  "note": "An automated listing does not determine legal title. INCLUDED_AUTHORIZED here means authorized by the owner's attestation, not by a third-party instrument."
+}

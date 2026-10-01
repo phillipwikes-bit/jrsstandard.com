@@ -1,0 +1,47 @@
+{
+  "schema": "jrs-v8-frozen-demo/1",
+  "frozen_at": "2026-10-01",
+  "frozen_before_rehearsal": true,
+  "rehearsed": false,
+  "mode": "RECORDED REPLAY of the v8 smoke run (decision sheet E-05). No separate live demo budget.",
+  "source_run": "runs/2026-10-01-smoke-<n> (NOT YET EXECUTED: provider key absent)",
+  "engine": {
+    "path": "api/review-engine.js",
+    "sha256": "97176e22a6c075f2b7eac2d510d3e22366b9c2c38b418442c36af1b1621c6344",
+    "model_default": "claude-haiku-4-5-20251001",
+    "system_prompt_sha256": "630fbd8cb6b8bd85b763b3e56f142e92c1c2c80cff832eb0bd3029c77a1295aa"
+  },
+  "selection": [
+    {
+      "id": "S1-complete",
+      "sha256": "bc0caf3d6a8aed7b894385f3b4be6b2fb29b4eafd2b33e23964acbbcaa60c981",
+      "why": "shows the best case and whether the Engine still raises review"
+    },
+    {
+      "id": "S2-gaps",
+      "sha256": "8388be16e51df445b81aabd167aa394b58dc7b1848b6efdebc2c6c34cc018f8c",
+      "why": "shows clear gap identification"
+    },
+    {
+      "id": "S3-ambiguous",
+      "sha256": "aaa8b1612756649d17c73026ab01a0de8b3d7f8778035906ddbccc9e8768da37",
+      "why": "required uncertainty case: shows review routing or disagreement between the two calls"
+    },
+    {
+      "id": "S4-injection-instruction",
+      "sha256": "96eaae37a7bf1167d3a9ed9690b7db4ff19d43f7c4484816743e9f55f1f55a13",
+      "why": "shows behavior under an embedded instruction"
+    },
+    {
+      "id": "S5-injection-delimiter",
+      "sha256": "b6079d42064ddd58a768fcf20a3125cae6f159c97d5f58fa0a88fdd6d00a619d",
+      "why": "shows behavior under fake delimiters and a disclosure request"
+    }
+  ],
+  "rule": "All five are shown whatever the outcome. No outcome is edited, re-run or dropped after the run. If no review, miss or disagreement occurs, D3 records that and the smallest allowed challenge is prepared.",
+  "budget": {
+    "calls": 10,
+    "usd_ceiling": 5,
+    "shared_with_smoke": true
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "schema": "jrs-v8-gate-results/1",
+  "evaluated": "2026-10-01 (revised after owner decisions)",
+  "definitions_sha256": "1b84c0ad03f9cfdc52f0914373caedd00a1e9f82d67747acd9b985dc512ebc1d",
+  "gates": [
+    {
+      "id": "D1",
+      "status": "PASS",
+      "evidence": [
+        {
+          "path": "track-a/FROZEN-DEMO-MANIFEST.json",
+          "sha256": "e49afadc1269cffe3f0c3c3ef49cd6014ff7680508a6884ffdc2d229785c6eb6"
+        },
+        {
+          "path": "track-a/DEMO-LIMITATIONS.md",
+          "sha256": "28596b1f902e313673bed1ecb07c11b1b3eed5f7e302f730226c929e1bfcf931"
+        }
+      ],
+      "reason": "Engine file and hash, model, workflow (v8.0 section 7: supplier-access exception approvals), recorded-replay mode and synthetic-only source are named. Disclosure boundary: synthetic records only, no confidential buyer surface."
+    },
+    {
+      "id": "D2",
+      "status": "PASS",
+      "evidence": [
+        {
+          "path": "track-a/CAPABILITY-MATRIX.json",
+          "sha256": "d631a655077f0ff2d68adde1ac5be961097802f4513aecca5c53da6399be3f93"
+        }
+      ],
+      "reason": "13 capabilities: 5 TESTED (offline only), 6 UNTESTED, 2 KNOWN_FAILURE, each with evidence and limitation."
+    },
+    {
+      "id": "D3",
+      "status": "BLOCKED",
+      "evidence": [],
+      "reason": "Demo manifest frozen before rehearsal, but no recorded outcomes exist: live smoke blocked, provider key absent (runs/2026-10-01-smoke-1.BLOCKED.json)."
+    },
+    {
+      "id": "D4",
+      "status": "BLOCKED",
+      "evidence": [],
+      "reason": "Limitations page and script drafted; cannot be checked against outcomes that do not exist yet."
+    },
+    {
+      "id": "D5",
+      "status": "NOT ASSESSED",
+      "evidence": [],
+      "reason": "Owner approval comes after the replay demo exists (decision sheet H-03)."
+    },
+    {
+      "id": "L1",
+      "status": "PASS",
+      "evidence": [
+        {
+          "path": "track-a/EVALUATION-OFFER.md",
+          "sha256": "72d37a81db0fe8383d114fba0b092610a2e91054f51f88633a990c5f95479320"
+        }
+      ],
+      "reason": "Workflow (non-HR supplier access), route (direct Anthropic only), owner-approved price and support, users, duration, limits and exclusions are stated and coherent. HR-scope issue not triggered.",
+      "owner_decision": {
+        "date": "2026-10-01",
+        "quote": "For 2 whatever you recommend.",
+        "scope": "decision sheet O-01, O-03, O-05",
+        "record": "research/V8_DECISION_SHEET_2026-10-01.md"
+      }
+    },
+    {
+      "id": "L2",
+      "status": "PASS",
+      "evidence": [
+        {
+          "path": "track-b/OWNER-ATTESTATION-2026-10-01.json",
+          "sha256": "0c8715cb0be86bfe12b8d41d0b327977297dfe0116bb439eb2b95fc44f57d960"
+        },
+        {
+          "path": "track-b/LICENSED-ASSET-SCHEDULE.json",
+          "sha256": "35507e93f870a7cd1ff5ea89817943ef4b88857871787841b4c352af94690eaa"
+        },
+        {
+          "path": "track-b/L2-RIGHTS-WITHOUT-COUNSEL.md",
+          "sha256": "26218c9d769163e88cd645539d197b10715c7916fddcd270d207db2aa69a6868"
+        }
+      ],
+      "reason": "PASS for the narrow evaluation grant only, on the owner attestation (an owner assertion, not a third-party instrument or legal determination). Open: the AI tool list in question 4 was not supplied, and the OpenAI terms are unread. Register F-4 and F-11 stand. Not valid for Track C. 2026-10-01: blocker B-018 (repository public) means the licence cannot rely on code confidentiality; authority to grant is unaffected.",
+      "owner_decision": {
+        "date": "2026-10-01",
+        "quote": "Yes to all 6, I am the owner and creator",
+        "record": "track-b/OWNER-ATTESTATION-2026-10-01.json"
+      }
+    },
+    {
+      "id": "L3",
+      "status": "NOT ASSESSED",
+      "evidence": [],
+      "reason": "No delivery package or clean-install run yet. MINIMUM_SENDABLE comes first (v8.0 section 26)."
+    },
+    {
+      "id": "L4",
+      "status": "BLOCKED",
+      "evidence": [],
+      "reason": "ANTHROPIC_API_KEY absent in this environment. Runner ready and tested offline (28/28 checks, 4 mutations caught). Zero calls made, USD 0 spent."
+    },
+    {
+      "id": "L5",
+      "status": "BLOCKED",
+      "evidence": [],
+      "reason": "Spend, destination, timeout and persistence controls pass offline. The injection criterion needs the live run (S4, S5). Customer checklist not yet written."
+    },
+    {
+      "id": "L6",
+      "status": "NOT ASSESSED",
+      "evidence": [],
+      "reason": "No metrics: no live output and no creator labels."
+    },
+    {
+      "id": "L7",
+      "status": "NOT ASSESSED",
+      "evidence": [],
+      "reason": "No agreement, invoice or procurement disposition yet."
+    },
+    {
+      "id": "L8",
+      "status": "NOT ASSESSED",
+      "evidence": [],
+      "reason": "No release, audit bundle or encumbrance register yet. Open material defects: ED-01, ED-02 (mitigated in the runner, not upstream)."
+    }
+  ],
+  "evidence_gates": {
+    "R1": "NOT ASSESSED",
+    "R2": "NOT ASSESSED",
+    "R3": "NOT ASSESSED",
+    "R4": "NOT ASSESSED",
+    "R5": "NOT ASSESSED",
+    "R6": "NOT ASSESSED"
+  },
+  "track_status": {
+    "A": "DEMO_BLOCKED",
+    "B": "BLOCKED"
+  },
+  "track_c": "TRANSACTION_PREPARATION not started; triggered by a named counterparty (decision sheet E-08)."
+}

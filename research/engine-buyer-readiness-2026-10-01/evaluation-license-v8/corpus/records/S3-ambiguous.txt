@@ -1,0 +1,14 @@
+SUPPLIER ACCESS EXCEPTION APPROVAL (FICTIONAL RECORD FOR ENGINE TESTING)
+Record ID: SAE-2026-0603
+Organization: Northwind Assembly Ltd (fictional)
+Supplier: Lumen Ledger Integrations (fictional)
+Prepared by: J. Achterberg, IT Service Owner
+Approved by: J. Achterberg, IT Service Owner
+
+On 14 April 2026 Lumen asked for read access to the finance reporting replica for an integration test, from 20 April 2026 for roughly a month. Policy ACC-07 normally requires data to be masked before a supplier sees it. Masking would delay the test, so an exception was requested.
+
+Lumen's security questionnaire was received and looked acceptable. The data protection team was consulted. A compensating control will be applied: access will be monitored.
+
+Decision: approved on 16 April 2026, on the basis that the test is time-critical and Lumen has a good record with us. Access will be reviewed when the test finishes.
+
+Note: the questionnaire responses are held by procurement. The data protection team's view was given in a meeting.
