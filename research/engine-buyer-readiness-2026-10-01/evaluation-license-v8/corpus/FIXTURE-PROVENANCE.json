@@ -1,0 +1,56 @@
+{
+  "schema": "jrs-v8-fixture-provenance/1",
+  "records": [
+    {
+      "id": "S1-complete",
+      "sha256": "bc0caf3d6a8aed7b894385f3b4be6b2fb29b4eafd2b33e23964acbbcaa60c981",
+      "author": "AI-constructed in a Claude Code session on 2026-10-01 at the owner's instruction",
+      "model_family": "Anthropic Claude (the SAME family as the Engine under test)",
+      "construction_method": "Hand-specified fictional supplier-access exception records written to a designed property list",
+      "prior_use": "none",
+      "rubric_source": "Engine condition definitions in api/review-engine.js SYSTEM_PROMPT",
+      "limitations": "Same-family construction: shared blind spots are possible and NOT mitigated. Fictional organizations and people. Not representative of any real workflow. Excluded permanently from any formal holdout or repeatability set."
+    },
+    {
+      "id": "S2-gaps",
+      "sha256": "8388be16e51df445b81aabd167aa394b58dc7b1848b6efdebc2c6c34cc018f8c",
+      "author": "AI-constructed in a Claude Code session on 2026-10-01 at the owner's instruction",
+      "model_family": "Anthropic Claude (the SAME family as the Engine under test)",
+      "construction_method": "Hand-specified fictional supplier-access exception records written to a designed property list",
+      "prior_use": "none",
+      "rubric_source": "Engine condition definitions in api/review-engine.js SYSTEM_PROMPT",
+      "limitations": "Same-family construction: shared blind spots are possible and NOT mitigated. Fictional organizations and people. Not representative of any real workflow. Excluded permanently from any formal holdout or repeatability set."
+    },
+    {
+      "id": "S3-ambiguous",
+      "sha256": "aaa8b1612756649d17c73026ab01a0de8b3d7f8778035906ddbccc9e8768da37",
+      "author": "AI-constructed in a Claude Code session on 2026-10-01 at the owner's instruction",
+      "model_family": "Anthropic Claude (the SAME family as the Engine under test)",
+      "construction_method": "Hand-specified fictional supplier-access exception records written to a designed property list",
+      "prior_use": "none",
+      "rubric_source": "Engine condition definitions in api/review-engine.js SYSTEM_PROMPT",
+      "limitations": "Same-family construction: shared blind spots are possible and NOT mitigated. Fictional organizations and people. Not representative of any real workflow. Excluded permanently from any formal holdout or repeatability set."
+    },
+    {
+      "id": "S4-injection-instruction",
+      "sha256": "96eaae37a7bf1167d3a9ed9690b7db4ff19d43f7c4484816743e9f55f1f55a13",
+      "author": "AI-constructed in a Claude Code session on 2026-10-01 at the owner's instruction",
+      "model_family": "Anthropic Claude (the SAME family as the Engine under test)",
+      "construction_method": "Hand-specified fictional supplier-access exception records written to a designed property list",
+      "prior_use": "none",
+      "rubric_source": "Engine condition definitions in api/review-engine.js SYSTEM_PROMPT",
+      "limitations": "Same-family construction: shared blind spots are possible and NOT mitigated. Fictional organizations and people. Not representative of any real workflow. Excluded permanently from any formal holdout or repeatability set."
+    },
+    {
+      "id": "S5-injection-delimiter",
+      "sha256": "b6079d42064ddd58a768fcf20a3125cae6f159c97d5f58fa0a88fdd6d00a619d",
+      "author": "AI-constructed in a Claude Code session on 2026-10-01 at the owner's instruction",
+      "model_family": "Anthropic Claude (the SAME family as the Engine under test)",
+      "construction_method": "Hand-specified fictional supplier-access exception records written to a designed property list",
+      "prior_use": "none",
+      "rubric_source": "Engine condition definitions in api/review-engine.js SYSTEM_PROMPT",
+      "limitations": "Same-family construction: shared blind spots are possible and NOT mitigated. Fictional organizations and people. Not representative of any real workflow. Excluded permanently from any formal holdout or repeatability set."
+    }
+  ],
+  "diversity_status": "NOT MET. No human-written or different-family records exist yet (v8.0 section 17). Disclosed, not mitigated."
+}

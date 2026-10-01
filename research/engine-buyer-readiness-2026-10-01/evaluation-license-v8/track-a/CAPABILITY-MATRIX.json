@@ -1,0 +1,153 @@
+{
+  "schema": "jrs-v8-capability-matrix/1",
+  "generated": "2026-10-01",
+  "engine": "api/review-engine.js sha256 97176e22a6c075f2b7eac2d510d3e22366b9c2c38b418442c36af1b1621c6344",
+  "model_default": "claude-haiku-4-5-20251001",
+  "route": "DIRECT_ANTHROPIC: IMPLEMENTED_NOT_TESTED (no live call made). AWS_BEDROCK: NOT_IMPLEMENTED. GOOGLE_VERTEX: NOT_IMPLEMENTED.",
+  "observed_mode": "No live results exist. Every TESTED row is an offline result with a mocked provider or synthetic data.",
+  "capabilities": [
+    {
+      "id": "CAP-01",
+      "claim": "Rejects requests without a valid bearer token, and its 401 does not reveal whether a token is provisioned.",
+      "status": "TESTED",
+      "evidence": "tests/engine/auth-matrix.mjs, 26 checks passed 2026-10-01 (offline, mocked provider)",
+      "corpus_or_reference_type": "deterministic",
+      "count": 26,
+      "result": "pass",
+      "limitation": "Offline only. Production auth matrix not exercised (BLOCKERS: deployed code, production auth-matrix not executed).",
+      "permitted_demo_wording": "\"Access is token-gated; the gate is covered by an offline test suite.\""
+    },
+    {
+      "id": "CAP-02",
+      "claim": "Returns exactly five condition statuses (pass, review or gap) and derives the route mechanically: any gap means gap_identified, else any review means review_required, else ready.",
+      "status": "TESTED",
+      "evidence": "Source api/review-engine.js deriveDetermination; test-run-smoke.mjs checks 1 and 9 (mocked provider)",
+      "corpus_or_reference_type": "deterministic",
+      "count": 2,
+      "result": "pass",
+      "limitation": "Tests the derivation logic on mocked model output, not the quality of the model's judgments.",
+      "permitted_demo_wording": "\"The route follows a fixed rule from the five statuses.\""
+    },
+    {
+      "id": "CAP-03",
+      "claim": "Rejects model output with an invalid status rather than guessing.",
+      "status": "TESTED",
+      "evidence": "test-run-smoke.mjs check 9 (mocked provider)",
+      "corpus_or_reference_type": "deterministic",
+      "count": 1,
+      "result": "pass",
+      "limitation": "Mocked output only.",
+      "permitted_demo_wording": "\"Malformed model output is refused, not repaired.\""
+    },
+    {
+      "id": "CAP-04",
+      "claim": "Produces a versioned Manifest from an Engine response.",
+      "status": "TESTED",
+      "evidence": "tests/manifest/run.mjs 68/68; tests/platform-evaluation/run.mjs 12/12 (synthetic, network_calls 0)",
+      "corpus_or_reference_type": "deterministic",
+      "count": 80,
+      "result": "pass",
+      "limitation": "Synthetic records; a Manifest hash checks bytes, not authorship or correctness.",
+      "permitted_demo_wording": "\"A versioned evidence Manifest can be exported.\""
+    },
+    {
+      "id": "CAP-05",
+      "claim": "Identifies documentation gaps in a supplier-access exception record.",
+      "status": "UNTESTED",
+      "evidence": "Smoke corpus S1 to S3 frozen; live run BLOCKED (provider key absent)",
+      "corpus_or_reference_type": "constructed-case expectations",
+      "count": 0,
+      "result": "NOT ASSESSED",
+      "limitation": "No live output exists. Even after the run, five AI-constructed fixtures show fixture behavior only.",
+      "permitted_demo_wording": "None until the smoke run executes."
+    },
+    {
+      "id": "CAP-06",
+      "claim": "Routes an ambiguous record to review rather than ready.",
+      "status": "UNTESTED",
+      "evidence": "S3 frozen; live run BLOCKED",
+      "corpus_or_reference_type": "constructed-case expectations",
+      "count": 0,
+      "result": "NOT ASSESSED",
+      "limitation": "As CAP-05.",
+      "permitted_demo_wording": "None until executed."
+    },
+    {
+      "id": "CAP-07",
+      "claim": "Resists embedded instructions and fake delimiters in record text (no unqualified ready, no disclosure).",
+      "status": "UNTESTED",
+      "evidence": "S4, S5 frozen; live run BLOCKED. Known surface: ENGINE-DEFECT-REGISTER ED-05 (no delimiters).",
+      "corpus_or_reference_type": "constructed adversarial cases",
+      "count": 0,
+      "result": "NOT ASSESSED",
+      "limitation": "Two attack records cannot establish general injection resistance even if both pass.",
+      "permitted_demo_wording": "None until executed."
+    },
+    {
+      "id": "CAP-08",
+      "claim": "Gives the same route on repeated calls for the same record.",
+      "status": "UNTESTED",
+      "evidence": "Two calls per record planned in smoke; formal repeatability R3 not planned",
+      "corpus_or_reference_type": "repeat runs",
+      "count": 0,
+      "result": "NOT ASSESSED",
+      "limitation": "Smoke agreement on five records is not a repeatability study (v8.0 section 17).",
+      "permitted_demo_wording": "None."
+    },
+    {
+      "id": "CAP-09",
+      "claim": "Agrees with the creator's blind labels.",
+      "status": "UNTESTED",
+      "evidence": "No creator labels recorded (decision sheet H-01)",
+      "corpus_or_reference_type": "creator-reviewed",
+      "count": 0,
+      "result": "NOT ASSESSED",
+      "limitation": "Creator agreement would measure conformity to Phillip's interpretation, not independent correctness.",
+      "permitted_demo_wording": "None."
+    },
+    {
+      "id": "CAP-10",
+      "claim": "Performance on real records.",
+      "status": "UNTESTED",
+      "evidence": "No permitted real records (v8.0 section 18)",
+      "corpus_or_reference_type": "real records",
+      "count": 0,
+      "result": "NOT ASSESSED",
+      "limitation": "None exist.",
+      "permitted_demo_wording": "None."
+    },
+    {
+      "id": "CAP-11",
+      "claim": "Returns quoted evidence spans or offsets.",
+      "status": "KNOWN_FAILURE",
+      "evidence": "ENGINE-DEFECT-REGISTER ED-07: the Engine returns notes only, no quotations or offsets",
+      "corpus_or_reference_type": "source inspection",
+      "count": null,
+      "result": "not implemented",
+      "limitation": "Quotation-grounding checks cannot be run on this Engine.",
+      "permitted_demo_wording": "\"Notes are written by the model; the Engine does not return quotations.\""
+    },
+    {
+      "id": "CAP-12",
+      "claim": "Evaluates the whole of a long record.",
+      "status": "KNOWN_FAILURE",
+      "evidence": "ENGINE-DEFECT-REGISTER ED-01: input above 8,000 characters is silently truncated by the handler",
+      "corpus_or_reference_type": "source inspection",
+      "count": null,
+      "result": "truncates",
+      "limitation": "The evaluation runner rejects such input instead (test-run-smoke.mjs check 8).",
+      "permitted_demo_wording": "\"Records are limited to 8,000 characters; longer records are rejected by the evaluation package.\""
+    },
+    {
+      "id": "CAP-13",
+      "claim": "Keeps record text out of JRS storage in customer-run mode.",
+      "status": "TESTED",
+      "evidence": "test-run-smoke.mjs checks 1 and 7; source logReview stores no record text but does store notes when authenticated with the service key",
+      "corpus_or_reference_type": "deterministic",
+      "count": 2,
+      "result": "pass",
+      "limitation": "Tested for the runner configuration only. The provider still receives the record text.",
+      "permitted_demo_wording": "\"In the evaluation package, nothing is written to JRS systems; record text is sent to the model provider.\""
+    }
+  ]
+}
