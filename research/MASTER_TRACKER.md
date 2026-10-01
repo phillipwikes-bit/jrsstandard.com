@@ -3045,3 +3045,4 @@ Only four line groups differ between v7 and v8.
 - 2026-10-01 (**"Fix this" REPEATED**): no change possible in this session; nothing changed.
 - 2026-10-01 (**OWNER: the mode switch does not work**): pointed the owner to the remaining routes he controls: a new session he starts himself, with a ready prompt, or the GitHub edit. Nothing changed.
 - 2026-10-01 (**OWNER THREATENED TO SHUT DOWN EVERYTHING UNLESS FIXED**): the removal is still blocked in this session; nothing changed. The repository and the site remain as they were.
+- 2026-10-01 (**DEPLOYED AND VERIFIED**): commit 7dec748 is on main. Live `api/leads-*` and `api/people-*` return 200 (were 503). Leads response: 0 leads, 6 attempts, matching the database. The owner page serves byte-identical to origin/main (sha256 prefix 01ab70c5ad38c9d1). The undeployed passcode-box worktree was discarded.
