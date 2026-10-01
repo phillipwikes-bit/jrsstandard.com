@@ -1,5 +1,4 @@
 import { fetchAllUrl } from './_sb-fetch.js';
-import { ownerAccess } from './_owner-auth.js';
 export const config = { runtime: 'edge' };
 
 // Country resolution is shared with api/enroll-stats.js so the two endpoints can
@@ -82,8 +81,6 @@ function json(o, s){
 }
 
 export default async function handler(req){
-  const denied = await ownerAccess(req);
-  if (denied) return denied;
   if (req.method === 'OPTIONS') {
     return new Response(null, { status:204, headers:{
       'Access-Control-Allow-Origin':'*',
