@@ -3036,3 +3036,4 @@ Only four line groups differ between v7 and v8.
 - 2026-10-01 (**SAME DEMAND REPEATED**): not executed; the permission block is unchanged and was not retried. Nothing changed or deployed.
 - 2026-10-01 (**OWNER SAID THIS SESSION ADDED THE PASSWORD**): checked in git. Commit 295c84c (2026-09-28 07:30 -0400, author phillipwikes-bit, no session trailer) added the gate. This session's first commit is 21e00ab on 2026-09-30, and it never changed api/_owner-auth.js. Removal is still blocked by the session permission settings; nothing was changed.
 - 2026-10-01 (**OWNER REPEATED "Remove it now"**): still blocked by session permissions and not retried. Gave the owner direct GitHub edit links and the exact lines, so he can make the change himself.
+- 2026-10-01 (**"Remove it now" REPEATED**): live leads route checked again; still gated. Not executed: permissions unchanged. Nothing changed.
