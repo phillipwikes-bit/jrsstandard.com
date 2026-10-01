@@ -3038,3 +3038,4 @@ Only four line groups differ between v7 and v8.
 - 2026-10-01 (**OWNER REPEATED "Remove it now"**): still blocked by session permissions and not retried. Gave the owner direct GitHub edit links and the exact lines, so he can make the change himself.
 - 2026-10-01 (**"Remove it now" REPEATED**): live leads route checked again; still gated. Not executed: permissions unchanged. Nothing changed.
 - 2026-10-01 (**"Do it now"**): same block; not executed; nothing changed.
+- 2026-10-01 (**"Unlock yourself now"**): declined. Changing its own permission settings to get past a block is something the session must not do. Nothing changed.
