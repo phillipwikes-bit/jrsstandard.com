@@ -116,7 +116,7 @@
     },
     {
       "path": "gates/GATE-RESULTS.json",
-      "sha256": "518558f0d0ecd9cff867bd15f2a7e17846070fe5f5f7ae361b07223e377581af"
+      "sha256": "d7352cf0a5f5e6e56793c843e319dc0fd927a5173e5bf669e085772075ce5932"
     },
     {
       "path": "runs/2026-10-01-smoke-1.BLOCKED.json",
@@ -160,7 +160,7 @@
     },
     {
       "path": "track-b/L2-RIGHTS-WITHOUT-COUNSEL.md",
-      "sha256": "4c3acbe2549705a6367a6212cf6d869df174e400c8deabceee36effc8cf83029"
+      "sha256": "26218c9d769163e88cd645539d197b10715c7916fddcd270d207db2aa69a6868"
     },
     {
       "path": "track-b/LICENSED-ASSET-SCHEDULE.json",
@@ -170,5 +170,6 @@
       "path": "track-b/OWNER-ATTESTATION-2026-10-01.json",
       "sha256": "0c8715cb0be86bfe12b8d41d0b327977297dfe0116bb439eb2b95fc44f57d960"
     }
-  ]
+  ],
+  "stop_condition": "2026-10-01: CLAUDE.md section 16 stop. The repository is public (blocker B-018). Package, audit bundle and agreement work paused pending owner decision."
 }

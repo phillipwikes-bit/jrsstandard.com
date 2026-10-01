@@ -78,10 +78,10 @@
         },
         {
           "path": "track-b/L2-RIGHTS-WITHOUT-COUNSEL.md",
-          "sha256": "4c3acbe2549705a6367a6212cf6d869df174e400c8deabceee36effc8cf83029"
+          "sha256": "26218c9d769163e88cd645539d197b10715c7916fddcd270d207db2aa69a6868"
         }
       ],
-      "reason": "PASS for the narrow evaluation grant only, on the owner attestation (an owner assertion, not a third-party instrument or legal determination). Open: the AI tool list in question 4 was not supplied, and the OpenAI terms are unread. Register F-4 and F-11 stand. Not valid for Track C.",
+      "reason": "PASS for the narrow evaluation grant only, on the owner attestation (an owner assertion, not a third-party instrument or legal determination). Open: the AI tool list in question 4 was not supplied, and the OpenAI terms are unread. Register F-4 and F-11 stand. Not valid for Track C. 2026-10-01: blocker B-018 (repository public) means the licence cannot rely on code confidentiality; authority to grant is unaffected.",
       "owner_decision": {
         "date": "2026-10-01",
         "quote": "Yes to all 6, I am the owner and creator",
