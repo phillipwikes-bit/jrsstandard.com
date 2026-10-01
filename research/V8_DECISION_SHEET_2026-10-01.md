@@ -48,3 +48,24 @@ Prepared 2026-10-01 by Claude Code as advice. Nothing here is an approval until 
 | X-01 | Counsel on HR applicability | Only if O-01 = B, or a buyer proposes HR records |
 | X-02 | Selling entity, insurance, tax forms | When a named buyer's procurement asks for them |
 | X-03 | Contributor rights for any conveyance (C1) | Track C only, on a named counterparty |
+
+---
+
+## Owner decisions recorded 2026-10-01
+
+Phillip Wikes, in chat: **"For 2 whatever you recommend."** That was in reply to the unblock list whose item 2 was "Answer the decision sheet in one line", so it is read as approving every Part 2 recommendation.
+
+| ID | Recorded decision |
+|---|---|
+| O-01 | A: non-HR supplier-access exception approvals, fixture-only for now |
+| O-02 | Error weights approved as written in v8.0 section 16 |
+| O-03 | USD 1,000 approved as an unvalidated test price, with 2 hours of support |
+| O-04 | USD 5 ceiling for the ten smoke calls |
+| O-05 | HOLD until MINIMUM_SENDABLE exists, then Phillip names one recipient |
+| O-06 | Phillip pushes `codex/manifest-x9-release` from that workspace (action outstanding; only Phillip can do it) |
+| O-07 | Trackers stay on the working branch until Phillip approves a merge into `main` |
+| O-08 | **NOT ANSWERED.** It is a yes or no question, so no recommendation covers it. Still needed: has the v8.0 prompt been pasted into ChatGPT or any other service? |
+
+Not covered by this approval: Part 3 (H-01 to H-04), which needs specific acts by Phillip at the stated time, including approval of the gate-definitions hash.
+
+L2 (item 3): Phillip has no attorney. The recommendation and an unsigned owner attestation are in `research/engine-buyer-readiness-2026-10-01/evaluation-license-v8/track-b/L2-RIGHTS-WITHOUT-COUNSEL.md`.

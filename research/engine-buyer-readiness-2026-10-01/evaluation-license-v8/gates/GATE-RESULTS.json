@@ -1,6 +1,6 @@
 {
   "schema": "jrs-v8-gate-results/1",
-  "evaluated": "2026-10-01",
+  "evaluated": "2026-10-01 (revised after owner decisions)",
   "definitions_sha256": "1b84c0ad03f9cfdc52f0914373caedd00a1e9f82d67747acd9b985dc512ebc1d",
   "gates": [
     {
@@ -49,15 +49,26 @@
     },
     {
       "id": "L1",
-      "status": "BLOCKED",
-      "evidence": [],
-      "reason": "Offer drafted (track-a/EVALUATION-OFFER.md). Price and support await owner decision O-03. HR-scope issue: not triggered (non-HR workflow)."
+      "status": "PASS",
+      "evidence": [
+        {
+          "path": "track-a/EVALUATION-OFFER.md",
+          "sha256": "72d37a81db0fe8383d114fba0b092610a2e91054f51f88633a990c5f95479320"
+        }
+      ],
+      "reason": "Workflow (non-HR supplier access), route (direct Anthropic only), owner-approved price and support, users, duration, limits and exclusions are stated and coherent. HR-scope issue not triggered.",
+      "owner_decision": {
+        "date": "2026-10-01",
+        "quote": "For 2 whatever you recommend.",
+        "scope": "decision sheet O-01, O-03, O-05",
+        "record": "research/V8_DECISION_SHEET_2026-10-01.md"
+      }
     },
     {
       "id": "L2",
       "status": "BLOCKED",
       "evidence": [],
-      "reason": "Register F-4: no Level A instrument exists. Register F-11: Engine lines are 100% AI-tool-attributed and ownership is NOT ESTABLISHED. Whether the owner attestation suffices for a narrow evaluation grant REQUIRES HUMAN REVIEW (blocker B-004, counsel)."
+      "reason": "Register F-4: no Level A instrument exists. Register F-11: Engine lines are 100% AI-tool-attributed and ownership is NOT ESTABLISHED. Whether the owner attestation suffices for a narrow evaluation grant REQUIRES HUMAN REVIEW (blocker B-004, counsel). Owner has no attorney (2026-10-01). Recommendation and unsigned owner attestation: track-b/L2-RIGHTS-WITHOUT-COUNSEL.md. L2 can pass only on signed attestation answers."
     },
     {
       "id": "L3",

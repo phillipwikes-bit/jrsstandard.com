@@ -1,6 +1,6 @@
 # Proposed paid evaluation
 
-**DRAFT 2026-10-01. NOT AN OFFER UNTIL APPROVED AND SENT. Price and support PENDING OWNER DECISION (decision sheet O-03).** These are proposed terms, not a contract. Final terms require an executed agreement.
+**DRAFT 2026-10-01. NOT SENT (decision sheet O-05: HOLD).** Price and support approved by the owner on 2026-10-01 as an unvalidated test price (decision sheet O-03). These are proposed terms, not a contract. Final terms require an executed agreement.
 
 | Term | Proposed |
 |---|---|
@@ -13,7 +13,7 @@
 | Provider | Your own model-provider account and key. Provider usage is billed to you separately |
 | Delivery | Version-pinned evaluation package, quickstart, synthetic demonstration, findings and Manifest export, closeout report template |
 | Support | Up to 2 hours during the term |
-| Fee | **USD 1,000 (proposed test price, not yet approved)**, plus applicable taxes |
+| Fee | **USD 1,000** (owner-approved test price; not evidence of willingness to pay), plus applicable taxes |
 | Credit | Proposed: the fee actually retained is credited once against a first production licence signed within 180 days after the evaluation ends. This is not an option and creates no obligation to license |
 | Not included | Production use, custom integration, legal advice, exclusivity, redistribution, resale, ongoing services |
 
