@@ -68,7 +68,7 @@
   "corrections": [
     "test-run-smoke.mjs check 11 first tested an arbitrary USD 0.10 threshold and failed at USD 0.101; corrected to the governing USD 5 ceiling, with the history kept in a code comment."
   ],
-  "approvals_recorded": "2026-10-01: owner approved every decision sheet Part 2 recommendation (\"For 2 whatever you recommend.\"), O-08 unanswered. L1 now PASS. L2 attestation prepared, unsigned.",
+  "approvals_recorded": "2026-10-01: owner approved every decision sheet Part 2 recommendation (\"For 2 whatever you recommend.\"), O-08 unanswered. L1 now PASS. L2 attestation prepared, unsigned. 2026-10-01: owner attestation \"Yes to all 6, I am the owner and creator\" recorded; L2 PASS for the evaluation grant only.",
   "artifacts": [
     {
       "path": "ENGINE-DEFECT-REGISTER.md",
@@ -116,7 +116,7 @@
     },
     {
       "path": "gates/GATE-RESULTS.json",
-      "sha256": "4c25cdf421ff4a20b6a9ff9aeb6e1ad55749dc0dac39a28b398c173faab0c48c"
+      "sha256": "518558f0d0ecd9cff867bd15f2a7e17846070fe5f5f7ae361b07223e377581af"
     },
     {
       "path": "runs/2026-10-01-smoke-1.BLOCKED.json",
@@ -160,7 +160,15 @@
     },
     {
       "path": "track-b/L2-RIGHTS-WITHOUT-COUNSEL.md",
-      "sha256": "1b5bd7d0b3a9994ded57afb50d4e3becc52edc173b7bb3d864660eeef806f719"
+      "sha256": "4c3acbe2549705a6367a6212cf6d869df174e400c8deabceee36effc8cf83029"
+    },
+    {
+      "path": "track-b/LICENSED-ASSET-SCHEDULE.json",
+      "sha256": "35507e93f870a7cd1ff5ea89817943ef4b88857871787841b4c352af94690eaa"
+    },
+    {
+      "path": "track-b/OWNER-ATTESTATION-2026-10-01.json",
+      "sha256": "0c8715cb0be86bfe12b8d41d0b327977297dfe0116bb439eb2b95fc44f57d960"
     }
   ]
 }

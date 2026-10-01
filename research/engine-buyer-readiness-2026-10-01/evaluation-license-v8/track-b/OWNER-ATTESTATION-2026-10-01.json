@@ -1,0 +1,22 @@
+{
+  "schema": "jrs-v8-owner-attestation/1",
+  "date": "2026-10-01",
+  "attestor": "Phillip Wikes",
+  "channel": "Claude Code chat, this session (no wet or electronic signature)",
+  "verbatim": "Yes to all 6, I am the owner and creator",
+  "questions_answered_yes": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "questions_source": "track-b/L2-RIGHTS-WITHOUT-COUNSEL.md, section \"Owner attestation\"",
+  "classification": "OWNER ATTESTATION (owner assertion). Not a third-party instrument and not a legal determination of title (CLAUDE.md Rule 4, Rule 8).",
+  "open_details": [
+    "Question 4 asked which AI tools and plans were used; the tool list was not supplied.",
+    "OpenAI terms for the Codex workspace remain NOT ESTABLISHED (HTTP 403 to this environment on 2026-10-01)."
+  ],
+  "scope": "Supports gate L2 for the narrow, non-exclusive 30-day evaluation licence only. Not sufficient for an exclusive licence, a full IP sale or any transfer (Track C)."
+}

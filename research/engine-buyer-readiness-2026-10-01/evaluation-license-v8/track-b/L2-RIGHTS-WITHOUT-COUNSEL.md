@@ -46,6 +46,6 @@ Answer each question yes or no. A "no", or "not sure", on 1 to 5 keeps L2 BLOCKE
 5. The Engine's prompt and code contain no text copied from co-authored manuscripts, participant records or other contributors' material.
 6. I accept that I am granting this licence without a lawyer's review of title, and that the agreement will warrant title only to my knowledge.
 
-Signed: ____________ Date: ________
+**Answered 2026-10-01 in chat: "Yes to all 6, I am the owner and creator".** Recorded in `OWNER-ATTESTATION-2026-10-01.json`. Question 4's tool list was not supplied.
 
 When the answers come back, I record them in `gates/GATE-RESULTS.json`. L2 can pass only on your signed answers, never on my recommendation.

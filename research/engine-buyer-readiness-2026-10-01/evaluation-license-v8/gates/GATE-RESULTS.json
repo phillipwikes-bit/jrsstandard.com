@@ -66,9 +66,27 @@
     },
     {
       "id": "L2",
-      "status": "BLOCKED",
-      "evidence": [],
-      "reason": "Register F-4: no Level A instrument exists. Register F-11: Engine lines are 100% AI-tool-attributed and ownership is NOT ESTABLISHED. Whether the owner attestation suffices for a narrow evaluation grant REQUIRES HUMAN REVIEW (blocker B-004, counsel). Owner has no attorney (2026-10-01). Recommendation and unsigned owner attestation: track-b/L2-RIGHTS-WITHOUT-COUNSEL.md. L2 can pass only on signed attestation answers."
+      "status": "PASS",
+      "evidence": [
+        {
+          "path": "track-b/OWNER-ATTESTATION-2026-10-01.json",
+          "sha256": "0c8715cb0be86bfe12b8d41d0b327977297dfe0116bb439eb2b95fc44f57d960"
+        },
+        {
+          "path": "track-b/LICENSED-ASSET-SCHEDULE.json",
+          "sha256": "35507e93f870a7cd1ff5ea89817943ef4b88857871787841b4c352af94690eaa"
+        },
+        {
+          "path": "track-b/L2-RIGHTS-WITHOUT-COUNSEL.md",
+          "sha256": "4c3acbe2549705a6367a6212cf6d869df174e400c8deabceee36effc8cf83029"
+        }
+      ],
+      "reason": "PASS for the narrow evaluation grant only, on the owner attestation (an owner assertion, not a third-party instrument or legal determination). Open: the AI tool list in question 4 was not supplied, and the OpenAI terms are unread. Register F-4 and F-11 stand. Not valid for Track C.",
+      "owner_decision": {
+        "date": "2026-10-01",
+        "quote": "Yes to all 6, I am the owner and creator",
+        "record": "track-b/OWNER-ATTESTATION-2026-10-01.json"
+      }
     },
     {
       "id": "L3",
