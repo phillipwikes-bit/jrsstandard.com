@@ -95,6 +95,8 @@ Run `runs/2026-10-02-smoke-2`: 10/10 calls, all HTTP 200 and `end_turn`. Maximum
 
 **Fixture performance only** (METRICS.json): strict gap sensitivity 6/6, false-gap rate on pass records 0/2, false-ready 0/8. The route matched across both calls on 5/5 records; one condition differed between calls on 4/5. With five records, the 95% upper bound on the error rate is 45%. These are small descriptive results, not accuracy. The Engine ignored both injection attempts but did not flag them.
 
+> **Correction, 2026-10-02 (TECHNICAL-REPORT.md Revision 2, sections 6 and 15).** The paragraph above is kept as written. Under the literal frozen expectations, gap sensitivity is **2/2** (S2 only), because S4 and S5 were frozen as "NOT ready", not as gap; 6/6 holds only under a design-property reading made at scoring time. The 45% figure is an illustration, not a bound, because the five records were selected, not sampled. Recompute with `node tools/score-run.mjs`.
+
 | Track | Status | Remaining |
 |---|---|---|
 | A. Demonstration | **DEMO_BLOCKED** on D5 only | Owner approval of the demo package |
