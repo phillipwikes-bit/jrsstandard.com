@@ -3131,3 +3131,4 @@ Only four line groups differ between v7 and v8.
   - `COMPANION_PLAN.md`: one piece per target. SCCE and HCCA share one chapter at first, per the decisions log. All pieces vendor-neutral. AWI (target 4) was not in the request and stays unchanged.
   - `TRAINING_EXERCISE_DRAFT.md`: a free "Spot the gap" session with 6 cases.
   Gaps disclosed: no fair-housing cases, so NFHTA needs its own source (NOT ESTABLISHED); the employment-to-private-sector link is an analogy. Tests 21/21; worksheet and band checked on a dry run. Nothing sent. No model call.
+- 2026-10-02 (**OWNER ASKED FOR AN EASY LINK TO ADD THE ANTHROPIC KEY**): gave the key page (https://platform.claude.com/settings/keys, HTTP 200; console.anthropic.com redirects there) and the environment settings steps (title bar environment menu, then Edit, variable ANTHROPIC_API_KEY, then a new session). Advised against pasting the key in chat. No other change.
