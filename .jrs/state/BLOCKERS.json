@@ -464,6 +464,24 @@
       "does_not_block": "Track A or Track B for the tested 0.1.0-validation package, which does not depend on the candidate",
       "next_action_by": "OWNER",
       "next_action_basis": "Only the owner has the computer where the codex branches and E-045 files were made. Claude cannot reach it and cannot push or upload on his behalf."
+    },
+    {
+      "blocker_id": "B-020",
+      "severity": "CRITICAL",
+      "category": "PRIVACY",
+      "description": "Reviewer rosters that link study codes to real names, titles and countries are tracked files on GitHub main and therefore publicly readable while B-018 stands: research/Expert_Roster_All_Studies_2026-08-06.csv (61 code entries, 41 distinct names) and research/Study004_Raters_2026-08-06.csv. They predate consent collection. The consented credit list (research/Contributor_Credit_List_2026-08-29.md) records 27 people who elected to be named, 4 counted but not named, and 31 confirmed of 42. Code-level comparison: 31 of the 61 roster code entries do not appear on the credit list. INFERENCE: the public CSV names people who declined naming or never confirmed. The exact per-person count needs the consent table, which was not queried. Not served by the website (HTTP 404, 2026-10-02); exposure is through GitHub only, since 2026-08-06 (commit 6130e39). No file was moved or deleted by this entry.",
+      "evidence_refs": [
+        "git cat-file origin/main:research/Expert_Roster_All_Studies_2026-08-06.csv (present)",
+        "git log first commit 6130e39 2026-08-06",
+        "research/Contributor_Credit_List_2026-08-29.md header counts",
+        "GET https://www.jrsstandard.com/research/Expert_Roster_All_Studies_2026-08-06.csv -> 404"
+      ],
+      "affected_assets": "Reviewer confidentiality and the 'protect the blind' guardrail; contributor trust; diligence (personal data published without consent is a buyer red flag); research integrity of reviewer-level codes.",
+      "required_action": "Owner decides. (1) Stop further exposure by making the repository private (B-018), the fastest reversible step. (2) Then decide whether to remove the files from Git history. That needs a history rewrite and force push, which CLAUDE.md section 19 and the approval matrix reserve to explicit owner authorization; copies already taken cannot be recalled. (3) Optionally query the consent table to establish the exact affected people before any notification decision, which is a human and possibly counsel matter.",
+      "next_action_by": "OWNER",
+      "next_action_basis": "Visibility, history rewriting and any notification to contributors are owner decisions (CLAUDE.md sections 12, 16 and 26). Claude cannot change repository visibility and must not force-push or contact contributors.",
+      "status": "OPEN",
+      "opened": "2026-10-02"
     }
   ],
   "_decisions_recorded_2026_09_15": {

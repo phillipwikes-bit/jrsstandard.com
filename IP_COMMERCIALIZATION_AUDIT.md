@@ -288,3 +288,15 @@ The owner asked whether R4 changes the recommendation that outreach waits for pu
 - **No recorded decision** holds private buyer conversations until publication. If the owner made one outside the record, it governs, and it should be written down.
 
 **Corrected R4:** keep the public site as a research programme, per the 2026-08-15 decision. Do the preparation work now (repository private; target list). Private, one-to-one conversations remain the recorded advice, but their timing is the owner's decision.
+
+## R7. Pointer, 2026-10-02 (full redo of the recommendations)
+
+The sales and licensing recommendations were redone after the owner supplied six revised estate documents. The current controlling text is `research/JRS_SALES_AND_LICENSING_ASSESSMENT_2026-10-02.md`, Revision 2. It supersedes R2 to R4 and R6 of this audit only where they conflict. The material changes:
+
+- The *AI and Ethics* rejection of 23 September 2026 is now accounted for (*source-reported*; not in this repository).
+- A new privacy exposure was found: blocker B-020, public reviewer rosters.
+- The answer to "what does a buyer get that the public cannot download" is given.
+- Incumbent vendors that already market "defensible" AI documentation are treated as both substitutes and the most plausible licensees.
+- A gated plan is given: private discovery, then a private paid evaluation, with stop rules.
+
+The 2026-08-15 decision (no public paid offer) is unchanged. This audit's earlier text is kept as written.
