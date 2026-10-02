@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbR8nhGq29pXgLUqGrt",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"route\":\"gap\",\"reason\":\"Material gaps remain. Almost all evidence comes from the HR Supervisor, the accused official, and no coworker or witness to the alleged yelling in front of others, the \\\"off the street\\\" remark, or the witness-signature requests was interviewed. The accommodation claim has a direct factual conflict: Complainant says she requested equipment and got no response, while the supervisor, HR Officer and RA Coordinator deny knowing of any request. The record includes no documents resolving it, such as emails or the Georgia Vocational Rehabilitation ergonomic assessment, and no inquiry into the Employee Labor Relations referral. The doctor evidence is dated 2005 and is stale. For the workload claim, the supervisor names comparators but the record shows no verification of their workloads. For the termination claim, there are no comparator probationers and no performance records beyond the supervisor's account. Complainant's own testimony on the harassment allegations and on bias, such as the protected-basis evidence, is not developed. The decision therefore cannot be reliably evaluated on this record.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 5573,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 359,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

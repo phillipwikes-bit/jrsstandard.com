@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbStT3ocT53u3KehFWy",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"route\":\"gap\",\"reason\":\"The ROI omits key documents the claims depend on: the DRAD file with Complainant's medical documentation (Claim 1), her leave records (Claims 2 and 3), and the FMLA request file and supporting medical documentation (Claims 4 and 5). Several factual disputes are left unresolved with no corroboration: whether the May 18 leave was denied or charged as LWOP, whether FMLA was submitted in June or August 2018, and the alleged HR voicemail about a second PIP. The record has no testimony from C1, C2, HR, DRAD1, or the HR representative on the recorded voicemail and the 'badgering' allegation. Comparator evidence is absent: FE's telework, other employees' leave restrictions, and who else was excluded from Look Ahead meetings. The September 2017 PIP and leave restriction is also unexplained. Without these, the decision on the merits cannot be reliably evaluated.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 8692,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 316,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

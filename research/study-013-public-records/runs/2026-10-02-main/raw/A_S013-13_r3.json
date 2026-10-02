@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbTfw1ZxZC6pXHZE65h",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"route\":\"gap\",\"reason\":\"The record does not show why Coworker got 8% and Complainant 5%. Manager, the person who approved the 8%, appears only through Business Partner's account, with no affidavit or statement from Manager. The named approver Complainant was told to seek approval from is also unaddressed. Business Partner's stated basis (Coworker's HR knowledge and experience) is untested against the resumes, which show Complainant with more education and HR experience. The pay policy allows 3-8% for both and gives no guidance on where to land within the range, and no budget or other documentation is cited. Comparator evidence is thin: one 2019 selectee (YOB 1976) offered 5%, with no data on other HR Generalist selectees' raises. Complainant's training allegation and the budget statement are not corroborated. The reprisal theory rests only on the complaint itself, which is not a valid prior activity basis, and the record does not say whether any other prior EEO activity was examined. Without Manager's rationale and fuller comparator pay data, the FAD's finding of no discrimination cannot be reliably evaluated.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 2851,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 364,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

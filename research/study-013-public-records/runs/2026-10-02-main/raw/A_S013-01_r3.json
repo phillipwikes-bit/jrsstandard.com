@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbQcMrcAyrJqd9yfHZ2",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQS0gsKEAgSGAI4AUIIdGhpbmtpbmcSDIFNWLxTWyaGQ00+bhoMxXmLfjsfzLH2kt0MIjCSsCH+hMrPfkkYmiF6/MthuH2Wrayv+oV+9Ep4FHpAZEdL02YTPdc1qWzRZwpdiaYq7wqIBhx2Ve04xYIx87qwgPdH1K2hqy0lEErutvDAtxdujkvuYlcKDe+FuJ52T7d9Lz+75SaXp+/4hQznUgU1GSVmY3xCMyYlsGdOmd+aMa65qdW63mfGXHlEJVA+6weZ4REC14c8PD17y7Qand9cEWpyI2Xc6DhO7i4c0z0jdClULOKvFiN+CRGUgWDEeJJdZor0ntLgK/I6G+43xJ/VrhuensWyNtszMoDFsPMrqZEAgID9wHIcm2b0+0kyg+z6BRc+YGn+Vkj0GwTt/Bd4fX+V8SfXq4BJmDIAzl9Gmj7kc+ciiatF+wOcFoF5TywdLbI4yNtpzUjqqcL3vShmhLuX8XhtQO7db2gaWjiTFGU4a3ZHnoJUKbzBpxxbvTw4bFGawEzb5HCUx8P9djMFBXR+kB8Po3C7r5ue4IftSqnCiK94Vd84k1eE0KSnMvxXYfXj6Qn0Fn5iEJVmc0RIjBstPkcpEejKMhJ09/khjbrCNI5LtYdYE6vbGUmV8euEzehAid5g6QqQaciresjKnJnU8ifABgipgXbpwE8RIkhebJ+ppJLuf8baHt5xecW5O7lYzTEqEtWIcpATIPnctstM5XrZpWnL+vdaWxyUabm1MKWN4mSCInljPSvyZ3RBeouZ++n/Qg3GbJclKah8aEp89ivLZh28ejAn2+VzbB2eGoZCjRDiXxorGkJ7TK6DglHgWpx1Ck2XEcubGisXGhUOUOZhVjLhSjr6sF6mUc/abTasglI8239R3fsoXM4xS7ruWGFvIxL7K8WyOci5BK7fTGbCCig6TQwPb6gMpBNfaEcUSDH5l1eVFiBwFaXM0iKG18R1Aqf0G8waAcbQt5yVcmIowazrZgQBPVIIknVSvGHdK+JH8/Im1jEu+107cMA3TS82PmiVDl1zbPuDujfdGKvmjhNjkJ9fSqc3TRE7lJEFoKUwmr3ipNpa3+H/nt7W2HbB+ciB7so087bx5iYMISb0OuNIiXq0xC2R8cnWhtXTYJLpYeS+ZrDsRPecorUeVOIel0dOt64WefSpCQI1XLeSfhWbEop12ZueKkMwobUSe5HSlkgf7mChK6GoSVDWoVX/B8JaRT+kwaN811Y2uP2yhJAf15pOY1qb8eLIF54muiqS/zq+jE12JCYaKmN2L2GBvnoh70oOCjCS7OIIgkLaXBUOFN5+nYpntLoefnsobHj1hLKeJR4Tl+yGadOMCKRb+jLS885u2GQ8MtCEhNMMYNgEXDK1gu06LGLC4LH3/zRoRG2htFq3sfkocNVOtTR+JlnHghNVvPNytTssmB2hnaNeafuHzjn9CMDtxRH2Nf+llT7Q6xX6ClvPE4FuN8dPBqBj0UFDaZKq2GF46Qnlm9jEiRo+j72otos5pfYh1JB/+8euUQfWhuYLhy3zd8DSW/JHuS6cC7hheVGjPBGMfwcsHtN3cr8ZB4EXh2l9MeKMaVedfdNEYr+CYnbMwAbv5Ju1MxNuMky5ZdzOyDif2hW1OkVIL/Jp2B1c6LE5piKwqOP26zHx2dnHmix+x5YovLVUaUOoqXS60fV4sBgDc4VOWBMg1GubK4YUY3M1sQc+KlSZzhkkZVh52JsmQRtq6a3360zLLY6n6koJ9f1lcwFsr0KR+oEH85+Hx4rTPC06uBn4yWUPd4t0HgyKvL+jPZDiiCwK+nHAbAAQ+Y74+jkMdk6XdBWr9jmswORy/co4zUXVfpWZGVcbLmVAQgR1sfdw909/mQrcSNF5f+XPt7gfLkhpFAyi7WYAQCZaksVypnKDtsG4gBNI1YVySuvmqgPUsX3CYmBqAh4re4Q07/zJeHzIALXn3kQkfLXlRjccb7/eFfORd+AELhgB"
+   },
+   {
+    "type": "text",
+    "text": "{\"route\":\"gap\",\"reason\":\"The record has material gaps. It never says whether the officials knew of the prior EEO activity, and it gives no ages for the Group Lead selectees or the Selectee. It has no DEMO pay data or comparator information and no testimony from the AT Technical Lead or the Division Head. The reconsideration denial is explained only by a conclusory statement that Complainant was 'adequately compensated.' The claim numbering is also muddled: claim 1 is the chastisement, yet the claim 1 narrative covers a Branch Head (A42) non-selection that is not a listed claim. The closing remark that the cybersecurity classes were awarded in a prior EEO complaint is unexplained, and its link to the reprisal and chastisement claims was not developed. The management explanations are detailed, but the record cannot show whether they were pretext, so the FAD cannot be reliably evaluated.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 3545,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 619,
+   "output_tokens_details": {
+    "thinking_tokens": 321
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

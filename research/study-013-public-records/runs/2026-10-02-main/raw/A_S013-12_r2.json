@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbTNLqp1sfhnsjBtyvA",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"route\":\"gap\",\"reason\":\"The record has material gaps on the central harassment claim. Complainant gave the EEO Investigator and AJ a list of 15 people allegedly aware of or involved in the \\\"off the books\\\" investigation, plus specific documents (travel vouchers, field intelligence reports, requests for information, an Administrator's Audit Report) that could confirm or refute email monitoring and surveillance. The record does not show that any were obtained or the witnesses interviewed. The FAD relied on the OPR Bluebook Report, which covered only 9 interviews, all denials, and the outcome was \\\"unfounded.\\\" Complainant withdrew his hearing request, so discovery disputes were never resolved by an AJ. The nonselection claims also lack selecting-official testimony, selectee and comparator information, and the stated reasons for the selections. The Division Chief's timeline (transfer facilitated June 1, before EEO contact) conflicts with Complainant's account and is not tested against documents. The supervisor's alleged comment about the EEO complaint is not shown to have been addressed. The record cannot support a reliable merits decision until these items are filled in.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 3526,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 381,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

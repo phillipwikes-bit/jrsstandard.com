@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbVYNtrvnQAgf4anbPP",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"route\":\"gap\",\"reason\":\"The record has material gaps. S1 made the key comment and sent the allegedly harassing event and meeting requests, yet he was never interviewed, and the record does not say whether a declaration or other substitute was sought. C1 was also not interviewed, and there is no data on C1's sex, sexual orientation, or protected activity, so comparator analysis is not possible. The agency still found no more favorable treatment of comparators. No evidence is described to test S2's workload-rebalancing explanation, such as the other portfolio reassignments or workload data. The hostile work environment claim (scrutiny, criticism, scheduling) also lacks documentary evidence of the events and meeting schedules. The agency's dismissal of reprisal also rests on a narrow view of protected activity, even though Complainant says she opposed discrimination directly to S1 and S2 on May 8, which was not analyzed. These gaps should be filled before a reliable merits decision.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 3971,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 317,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

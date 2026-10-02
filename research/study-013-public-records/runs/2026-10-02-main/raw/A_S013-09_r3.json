@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbSo8pagupJvY55DWjt",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"route\":\"gap\",\"reason\":\"Several accepted claims lack any described evidence or findings. Claims 4, 5, 6, 8-11, 13 and 14 (sick leave delays, the \\\"mental patient\\\" remark, the misconduct accusations and form, S1 pacing, the article on nurses with mental disabilities, splitting staff) get no coworker, S1 or comparator evidence in the record. The harassment analysis rests on only Witness 1 and Witness 2, who were discounted for personal complaints about S1, and it does not address Witnesses 12 and 13, whom Complainant named as having heard the statement or the record snooping. The claim 2 finding relies on privacy-investigation interviews instead of a witness inquiry in the EEO investigation. The Agency also concluded there was no evidence of overhearing without describing interviews of the named eyewitnesses. Claim 1's date discrepancy (2017 vs. 2018) is unresolved, and the discipline letters have unidentified addressees. The decision therefore cannot be reliably evaluated on the merits.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 5448,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 355,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

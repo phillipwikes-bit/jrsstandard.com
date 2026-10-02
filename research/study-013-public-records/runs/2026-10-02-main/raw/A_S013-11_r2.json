@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbTBPmesCKAZ8cb9TCe",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"route\":\"gap\",\"reason\":\"The summary shows only the claim list and procedural history. It has no witness statements, comparator information, or evidence on the supervisor's stated reasons for the schedule change, the scrubs comment, or the \\\"no show\\\" email. Nor does it show how the ROI addressed the hostile work environment claim. The only witness mention is an Inspector General report, with no content. The agency also dismissed claim (g) and treated claims (c)-(f) and (h)-(j) only as background, with no sign the record was developed on them. The timeliness challenge to the appeal is unresolved because the agency has not supplied the information needed for a reasoned determination. The agency's no-discrimination conclusion therefore cannot be evaluated from this record.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 1632,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 246,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

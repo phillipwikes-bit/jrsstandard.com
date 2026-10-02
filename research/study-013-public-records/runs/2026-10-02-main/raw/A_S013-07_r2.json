@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbSN4SjnMVrTPxC5JFJ",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"route\":\"review\",\"reason\":\"The record summary lists 15 detailed incidents and confirms a full ROI was produced and an FAD issued, but it contains no description of the evidence gathered. There is no mention of witness affidavits from Supervisors 1 and 2, the Program Manager, the Chief, or coworkers present at the incidents. Comparators, light-duty documentation, and schedule records are also not described. The FAD's conclusion, that Complainant failed to show disparate treatment, is stated without reasoning. Nothing addresses the hostile work environment, disability accommodation, or age claims. Because this is only a background summary, adequacy cannot be confirmed or ruled out, so a closer human look at the full ROI is needed.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 2233,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 242,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

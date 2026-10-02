@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbRzYPMxa21USAnoMpw",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"route\":\"gap\",\"reason\":\"The record has material gaps. Complainant's reprisal basis was never addressed: the acceptance letter omitted it and he was not asked about it during the investigation, so no evidence exists on protected activity or retaliatory motive. Claim 1 (no midyear review) has no testimony or documents on the stated reason, the Executive Officer's role, or how other employees were treated, and the agency dismissed it on a legal ground. The comparator evidence is thin: two of the four named comparators are only partly addressed, with only the Chief Information Officer's account of those she supervised. Complainant's assertion that others were given telework leniency was not tested with documents or comparator testimony, and the Executive Officer was apparently not interviewed. Claim 2 is well documented through dated emails and ROI pages, but the overall record cannot reliably support a merits decision on all bases and claims.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 5267,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 293,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbUTzgtxupC1eKG9VkM",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"route\":\"gap\",\"reason\":\"The record has material gaps. Third-party witnesses (CW1, CW2, CW3, Division Head, HR/pay-setting officials) are not shown to have been interviewed; the account rests almost entirely on the Branch Supervisor and Deputy of Operations, the officials accused. There is no pay-setting or HR documentation on how CW1, CW2 and CW3 were placed in the band, and the EPA defense is asserted rather than evidenced. The agency's reasoning on CW1 (back-fill, 'full performance level') conflicts with its finding that the work was substantially the same, and CW3 is never analyzed. The CW2 tenure rationale is also untested: Complainant had 17 years of service and says she held higher positions, and the record shows no comparison of actual qualifications or pay history. Comparator evidence for the PDA and rating claims (CW2's PDA, rating distributions, other employees' ratings) is thin. Complainant's evidence of good performance and the PDA email/technical-issue dispute are not resolved. The finding of no discriminatory animus and no severe or pervasive harassment rests on this incomplete evidence.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 5084,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 388,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

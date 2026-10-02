@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbTeVSDV2y1YB4uWFe5",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"route\":\"gap\",\"reason\":\"The record leaves the key issue unresolved: why the Coworker got 8% and Complainant 5%. The manager who approved the 8% increase (Manager) is described only through Business Partner's account, with no apparent affidavit. The record does not show who decided the amounts, what the budget or approval-process explanation was, or whether the policy range was applied consistently. The only other comparator, a 2019 selectee at 5%, is a different time and person and does not address the contemporaneous peer. Complainant's claims about experience, education, and training are unrebutted or unverified, and the policy's 3-8% range leaves discretion that was never explained with documented criteria. No other 2021 HR Generalist promotions or pay decisions are described. The reprisal claim rests on the complaint itself and the record shows no analysis of it. Because there was no hearing, the FAD rests on this thin investigation.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 2851,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 298,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

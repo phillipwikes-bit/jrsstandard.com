@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbW3DUg2NnBdbiDCHZ5",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"route\":\"gap\",\"reason\":\"The record has material gaps that should be filled before a merits decision. The central premise, an oral agreement to resign, is undocumented: it is not in the OWCP-approved settlement, and the only support is hearsay from Person C. There are no affidavits or statements from Complainant, his settlement attorney, or Person C, and no investigation of whether the resignation was voluntary or coerced. The disability finding rests on an absence of medical evidence, yet the record shows HRO never sought updated medical information or ran an interactive accommodation process, and Person D himself suggested treating the matter as an accommodation request. Complainant's accommodation requests for part-time work went unaddressed, and there was no search for vacant positions. The independent medical exam Person C cited as an attachment is missing, and the only exam in the record is dated 2015. No comparators or age-related evidence are addressed, so the conclusion that nothing was age-motivated cannot be evaluated. The dismissal of claims 3 and 4a as collateral attacks was made without developing the facts, and the record never says whether a resignation was actually obtained or a termination was imposed.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 5247,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 375,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

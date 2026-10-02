@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbTyj5VvYjEkgh8CLdF",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"route\":\"gap\",\"reason\":\"Complainant flagged omissions before the final decision, and the Agency did not address them. Subordinate-2 (who allegedly used \\\"mothering\\\" and has since left the post) and Subordinate-3 (who may have used another demeaning term) were not interviewed. HR-2, whom Complainant says she complained to, was not interviewed either. The Agency found no evidence that other demeaning language was used or that management ignored her complaints, but those findings rest on a record missing these witnesses. The decision also misstated that Complainant received a written apology from the IPO. The IPO's account of tasking subordinates directly and of the May workload was not tested against the unexamined witnesses, so the harassment and reprisal conclusions cannot be reliably evaluated until the gaps are filled.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 7710,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 263,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

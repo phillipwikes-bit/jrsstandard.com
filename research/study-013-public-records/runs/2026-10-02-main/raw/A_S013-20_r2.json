@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbVADPnSTxdDQJsZ1wr",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"route\":\"gap\",\"reason\":\"The record has material gaps. C1, the alleged harasser, has no statement summarized. No coworkers who allegedly approached Complainant about the rumor were interviewed. No one was asked about the August 7, 2018 investigative interview or the alleged disclosure of medical information. Management's response is contested: S1 said she forwarded a PS-13 in October 2018, the Lead Manager said she separated the parties but was never told about the rumors, and the Acting Lead Manager and Plant Manager are not addressed. The record shows no anti-harassment inquiry and no comparator evidence. Complainant's affidavit is missing, and the Agency relied on that absence and on 'no corroboration' without developing the evidence itself. The decision therefore cannot be reliably evaluated from this record.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 2080,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 269,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

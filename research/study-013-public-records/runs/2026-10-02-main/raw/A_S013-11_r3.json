@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbTNN5TgNMm7ubEoxPK",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"route\":\"review\",\"reason\":\"The record is fragmentary. It shows an ROI was completed, claims (a), (b) and (k)-(q) were accepted, and a final decision was issued after the hearing request was withdrawn. But it contains no witness statements, comparator evidence, or analysis of the harassment claims. Their contents cannot be assessed, and only a stray reference to a report to the Inspector General appears. Claim (g) was dismissed for not being raised in counseling, and claims (c)-(f) and (h)-(j) were treated as background only. These choices look procedurally plausible but cannot be verified from this summary. The agency's timeliness challenge on appeal also lacks a developed record. Adequacy for a merits decision is uncertain and needs a closer human look at the full ROI.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 1632,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 261,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

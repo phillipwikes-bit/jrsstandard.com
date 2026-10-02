@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbSHkz7H1xCA3R11bww",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"route\":\"gap\",\"reason\":\"The record has material gaps. Retaliation was alleged but never framed or investigated: the acceptance letter omitted it, and Complainant was not asked about the basis of his reprisal claim. Claim 1, the midyear review email, has no investigative evidence on why it was sent or on comparators. The Agency dismissed it as not a discrete act, which sidesteps the factual question of whether it was tied to his medical condition. Comparator evidence is incomplete: only the Chief Information Officer addressed the four named comparators, two were not in her chain, and Comparators 3 and 4 get no substantive account. The Executive Officer's testimony does not appear, and no affidavits from HR or the Accessibility Consultant are cited beyond emails. The accommodation timeline is documented but the disputed points, such as the claimed denial and the unsigned note, rest on one-sided testimony with no statement from Occupational Medical Services. The record cannot reliably support a merits decision on the retaliation basis, Claim 1, or the comparator disparate-treatment theory.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 5267,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 357,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

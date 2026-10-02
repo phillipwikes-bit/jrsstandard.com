@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbUCqcKpvXrGThPfVY8",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"route\":\"gap\",\"reason\":\"The record does not show that key evidence was gathered on the central allegations. Claim 5 (sexual comments) rests on Witness 1's reported apology and Complainant's report to Witness 2, yet no testimony from either is described. The Agency instead says she did not raise the concern until May 14, 2021, which conflicts with her account of reporting to Witness 2. The Manager's own account of the comments, the Subordinate's account, and the Manager's alleged drinking (the comparator claim) are not shown to have been investigated. The Agency rejected the comparator argument as unsupported by preponderant evidence, but no inquiry into the Manager's conduct appears. The alleged denial of shared-drive access and the claim that she was held to a higher standard than male colleagues also have no described inquiry. Complainant withdrew her hearing request, so there was no adversarial testing of these points. The decision therefore cannot be evaluated against a complete record, and the gaps should be filled before a merits decision.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 2230,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 333,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

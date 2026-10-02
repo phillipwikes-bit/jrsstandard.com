@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbSg6eB9vjyyycfDysn",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"route\":\"gap\",\"reason\":\"The record leaves material gaps on the merits. Claims 4-11, 13 and 14 are never separately addressed in the decision, and the record gives no evidence on the May 2019 misconduct accusations, the email incident, the misconduct form, the coworker's \\\"mental patient\\\" remark, or the August 2019 article. Complainant's named witnesses to the surgery remark (Witness 1, Witness 13) and Witness 12, who spoke of coworkers going through her records, are not meaningfully addressed. The Agency rests on Witness 1's credibility on the \\\"mental issues\\\" statement without clear testimony from the others. The key finding that S1 did not disclose the surgery rests on interviews from the privacy investigation, not the EEO investigation, and that report did not examine the claim. The Agency also finds S1 did not know of the disability without exploring Complainant's 2017-2018 medical leave requests and her FMLA forms signed by S1. No comparators are identified, and the discipline letters have unidentified addressees. Because the decision cannot be evaluated against the full set of accepted claims, the gaps should be filled before a merits decision.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 5448,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 385,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

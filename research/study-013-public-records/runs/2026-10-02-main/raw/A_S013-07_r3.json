@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbSUhnvRZKNDw7Q5W1A",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"route\":\"review\",\"reason\":\"The record shows a completed investigation (report of investigation issued, Complainant chose an FAD under 1614.110(b)), but the summary only lists the 15 allegations and says nothing about the evidence gathered. It does not show whether Supervisor 1, Supervisor 2, the Chief, the Program Manager, or coworker witnesses gave statements. It also does not identify comparators, such as officers who were not on Light Duty, or the Agency's reasons for the assignments and schedule change. The FAD's reasoning is thin: it finds no disparate treatment, but the summary does not address the hostile work environment claim, the disability accommodation or light duty issues, or the age and sex bases. Adequacy cannot be judged from this summary, so a closer human look at the full ROI is needed.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 2233,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 268,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

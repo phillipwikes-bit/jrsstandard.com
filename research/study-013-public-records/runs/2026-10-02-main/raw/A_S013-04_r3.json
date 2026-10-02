@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbRRkRHXbPLVKphFtsY",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"route\":\"gap\",\"reason\":\"The summary lists the claims and RMOs and notes an ROI was produced, but it shows no gathered evidence on the merits. There are no witness statements, no comparator information, and no account of the Agency's stated reason for the termination. It also shows no inquiry into the date discrepancy: the termination is dated September 18 but the notice is dated September 24, with 'no call, no show' absences said to start September 18. Allegation 1(c) has no date, and age is not defined. Nothing in the text shows that Witness 1, the IT employee, or any similarly situated employees were addressed. The summary also omits the evidence behind the FAD's conclusion, so that conclusion cannot be evaluated from the record as described.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 1526,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 242,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

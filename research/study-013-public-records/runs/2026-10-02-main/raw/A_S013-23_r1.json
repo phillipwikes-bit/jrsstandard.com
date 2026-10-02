@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbVivdphAw8uJjavNA4",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"route\":\"gap\",\"reason\":\"The record summary shows only S1's denials and generic assertions that the reprimand, rating, and assignments followed standard practice. It names no other witnesses, such as the deciding official for the reprimand, the rater, or coworkers who saw the June 16 and June 23 incidents. There is no comparator evidence on how other CTEs were assigned work, disciplined, or rated, which the disparate-treatment and hostile work environment claims across five bases require. It also does not address the PACS drop from 4.5 to 3.0 or the prior EEO activity and S1's knowledge of it, which the reprisal claim depends on. Without that evidence, the Agency's no-discrimination finding cannot be evaluated, so the gaps should be filled before a merits decision.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 1577,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 258,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

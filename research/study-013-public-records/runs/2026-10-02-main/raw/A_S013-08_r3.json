@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbScyNXCpM2s9UxCBVy",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"route\":\"ready\",\"reason\":\"The record covers both claims with the relevant witnesses: the Proctor, Chief and Assistant Chief DUSM, Merit Promotion Branch Chief, Career Board Presenter, and the testing consultant (via confirmation of full test time). Comparators are addressed: two other candidates (White and Hispanic) were also patted down, and the Proctor searched all candidates he proctored. Selectee qualifications and Complainant's rankings (fifth of the Best Qualified candidates, seventh of 12) are documented. The reprisal claim is answered by the Branch Chief's lack of knowledge of the EEO activity, which is tied to timing. The score of 64.4 versus the cutoffs explains the other non-selections, and the record shows he did not apply for two vacancies. Complainant conceded he did not contend his qualifications were superior. The Proctor's errors are acknowledged and the conclusion can be evaluated from the evidence. Minor soft spots, such as the Career Board's reasoning being relayed secondhand, do not undermine adequacy.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 3607,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 361,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

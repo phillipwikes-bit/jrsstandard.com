@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbTchnAiWDY98SvunVg",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"route\":\"gap\",\"reason\":\"The record leaves material questions open. The decisive issue is why Coworker got 8% and Complainant 5%, but the Manager who approved the 8% increase is not shown to have been interviewed or to have given an affidavit; the account of his or her reasoning comes only from Business Partner. The \\\"HR knowledge and experience\\\" rationale is not documented against the 2-factor policy, which allows 3-8% in this band and sets no experience criterion. Complainant's claim of greater education and experience and her budget-approval allegation (a named individual) are not resolved, and that individual is not shown to have been questioned. The Form 50 salary base figures and the other 2019 selectee's pay are not compared in the record, and the 2019 comparator (YOB 1976) is far from comparable. Protected-activity knowledge for the reprisal claim is not addressed (reprisal is premised on the complaint itself). The FAD only states a conclusion of no proof, so the record cannot support a reliable merits decision until these gaps are filled.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 2851,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 343,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

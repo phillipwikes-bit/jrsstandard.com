@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbUHnmUFJMVg29TSwEv",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"route\":\"gap\",\"reason\":\"The record leaves material questions open. Claim 5 (sexual comments by the Manager) rests on a Witness 1 who supposedly heard the exchange and a Witness 2 who was told of it, yet the summary shows no testimony from either, and the Agency's finding that Complainant raised no concern before May 14, 2021 conflicts with her report to Witness 2. No testimony from the Subordinate is described either. The comparator evidence on the alcohol policy is thin. The Agency relied on management statements that no other officers behaved similarly and dismissed the claim that the Manager drank without discipline as unsupported, with no sign the Manager's conduct was investigated. The Manager's role in the reprimand and short-of-tour decision, and his knowledge of her EEO activity, are not addressed. The lost shared-drive access after the reprimand is not examined. The disparate-standards and time-fraud allegations get no findings, and the Agency gave 'no evidence' as the reason for rejecting incidents 1-4 and 6-11 without showing the evidence was developed. Complainant's later withdrawal of her hearing request does not cure these gaps in the investigation.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 2230,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 392,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

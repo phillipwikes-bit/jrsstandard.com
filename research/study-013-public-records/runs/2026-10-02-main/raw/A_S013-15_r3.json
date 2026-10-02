@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbUC4F6ihxgQ48M6ASc",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"route\":\"gap\",\"reason\":\"Complainant flagged omissions before the decision, and the Agency issued its final decision without filling them. Subordinate-2 (a key witness who allegedly used \\\"mothering\\\"), Subordinate-3 (who may have used another demeaning term), and HR-2 (to whom Complainant says she complained) were never interviewed. The Agency's finding that no evidence showed Subordinate-1 or Subordinate-2 used other demeaning language, or that management ignored complaints, rests on a record that skipped these sources. The FAD also appears to misstate that Complainant received a written apology from the IPO. The IPO's account of when he corrected the term also conflicts with Complainant's, and no comparator or workload evidence was gathered beyond the IPO's own estimates. These gaps are material to the harassment, liability, and reprisal findings and should be filled before a decision.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 7710,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 294,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}
