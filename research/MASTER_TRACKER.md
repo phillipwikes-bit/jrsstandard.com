@@ -3113,3 +3113,15 @@ Only four line groups differ between v7 and v8.
   - witness "affirmed that" testimony was being over-stripped.
   **New finding:** 20 of 30 texts exceed the Engine's 8,000-character limit (8 GAP, 12 PASS), so item 27 needs an owner decision. GAP texts are shorter on average (1,465 against 1,935 words): a possible cue. No model call made; keys absent. Commits b75c3d4 to 00f8f05.
 - 2026-10-02 (**ITEM 25 DRAFTED: CODEBOOK-TO-ENGINE MAPPING**): `research/engine-buyer-readiness-2026-10-01/CODEBOOK_ENGINE_MAPPING.md`. Engine keys map to RC2, RC4, RC1, RC5, RC3. Close matches: RC2 and RC3. Partial: RC1 (it uses RC5's "no prior knowledge" framing) and RC5 (the Engine question can be read as a merits question, which the Codebook excludes). Weak: RC4 (the Engine asks RC1's question). So Study 013 scores the route as primary and per-condition results as exploratory. v0.2 renaming proposed (production change, not made).
+- 2026-10-02 (**OWNER: "EXECUTE ALL RECOMMENDED PROPOSALS TO FACILITATE THIS STUDY". STUDY 013 IS READY TO RUN; THE LIVE RUN IS BLOCKED ONLY BY THE MISSING KEY**): PROTOCOL.md fixed before any model call (1cd246c). Five arms:
+  - A: Sonnet 5.5, generic prompt.
+  - B: Sonnet 5.5 plus the verbatim Codebook.
+  - C: Engine v0.2-eval on Sonnet 5.5, with Codebook keys, no rewrite and delimited input.
+  - C0: the production prompt unchanged on Haiku 4.5, hash-locked to 97176e22.
+  - D: Opus 5.5 plus the Codebook.
+  3 runs per case; the primary outcome is the flag (gap or review) against the EEOC label, with Wilson intervals; no model grading. Items:
+  - 24: the study engine runs on Sonnet 5.5; production is unchanged pending the results.
+  - 25: implemented in v0.2.
+  - 26 and 28: done for evaluation.
+  - 27: a 40,000-character evaluation limit for all arms.
+  Runner and scorer: 21/21 offline tests; three fault copies caught (no destination lock, content[0] parsing, overwrite). **Production finding:** `oneRun` reads `content[0].text`, which breaks on thinking models, so a production migration needs a code fix. No refusal fallback: it would swap the model under test. Arm D is single-vendor because no second vendor's key is set. Estimated cost USD 10 to 20 (*Inference*). No model call made. Commit 4bb7a31.
