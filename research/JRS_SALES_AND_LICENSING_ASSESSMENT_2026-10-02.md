@@ -176,6 +176,12 @@ I read `programme-status-9872fb93cc94.html` live (byte-identical to `main`) and 
 | "Decision Reconstruction Risk: A Record-Level Control", *EDPACS* | You, single author | 2,878 words | **Backup draft**, no co-author dependency | *Observed* | **The fastest submission available**, but it uses stale figures ("15 professionals... 82.8 percent"). Update it to 16 reviewers and 83.9% before submitting |
 | Three LinkedIn articles (2 June, 11 June and 2 July 2026) | You | short | Self-published | *Recorded* (E-025 to E-027) | Priority dates for JRS and DRR. Not peer review; never cite them as such |
 
+**Full manuscript review, added after the owner uploaded four manuscripts:** `research/MANUSCRIPT_REVIEW_2026-10-02.md`. Its key findings:
+1. **The CEP copy edit introduced an error** ("reviewers can be independently reconstruct records"). Send the editor the fix before print. The article also never names JRS.
+2. **The uploaded detection file is the 18 August version.** It still lists the co-author at KPMG India, which he asked to be removed on 28 August. Its consent sentence also contradicts the submitted title page about a withdrawn panel member. Both must be settled before resubmission, given the editor's identity and provenance grounds.
+3. **The ISACA article cannot go out until its first author has read it**, and it recycles the CEP article's practitioner content.
+4. **The RMJ paper is a careful pilot**, with four fixable reviewer objections.
+
 **Honest reading (*Inference*):**
 - **Scholarly record: no peer-reviewed acceptance yet, and four declines** (one recorded, three source-reported). None is known to be on merit: one desk decline on scope, one presubmission decline, one administrative or provenance rejection, and one with unknown grounds.
 - **Trade-press record: two for two** (CEP accepted, CCI published). For selling, trade press reaches buyers directly and is worth more than the journals. The journals matter mainly for diligence credibility (risk R2).
