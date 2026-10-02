@@ -21,6 +21,7 @@ Usage:
 
 Exit code: 0 if every check passes, 1 if any fails. Safe to wire into a hook.
 """
+import fnmatch
 import glob
 import json
 import io
@@ -3341,8 +3342,97 @@ SECRET_PATTERNS = (
     (r"re_[A-Za-z0-9]{16,}", "Resend API key"),
     (r"SG\.[A-Za-z0-9_-]{20,}", "SendGrid API key"),
     (r"sk-ant-[A-Za-z0-9_-]{20,}", "Anthropic API key"),
+    # OpenAI keys, added 2026-10-03 with check_openai_key_stays_server_side. Project, service-account and
+    # admin keys carry a typed prefix; legacy user keys are "sk-" and 40 or more letters and digits. The
+    # word boundary keeps "risk-record-..." inside ordinary prose from matching.
+    (r"\bsk-(?:proj|svcacct|admin)-[A-Za-z0-9_-]{20,}", "OpenAI API key"),
+    (r"\bsk-[A-Za-z0-9]{40,}\b", "OpenAI API key (legacy format)"),
     (r"eyJ[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]{20,}\.", "JWT / service-role key"),
 )
+
+
+# OPENAI_API_KEY, added 2026-10-03 at the owner's instruction: "Configure the JRS application to use the
+# existing OPENAI_API_KEY environment variable in Vercel ... Keep all OpenAI API calls server-side. Verify
+# that no OpenAI credential is accessible from client-side JavaScript or the browser." The only reader is
+# api/run-study.js (the cross-vendor reproducibility runner). Adding a reader is a decision, so the list is
+# explicit and a new reader fails this check until it is added here on purpose.
+OPENAI_KEY_READERS = ("api/run-study.js",)
+
+
+def _deployable_files():
+    """Tracked files Vercel would upload: everything except .vercelignore matches and api/ functions."""
+    ignore = []
+    for line in read(".vercelignore").splitlines():
+        s = line.strip()
+        if s and not s.startswith("#") and not s.startswith("!"):
+            ignore.append(s)
+    out = []
+    for rel in subprocess.run(["git", "ls-files"], capture_output=True, text=True, cwd=ROOT).stdout.split("\n"):
+        if not rel or rel.startswith("api/"):
+            continue
+        hit = False
+        for pat in ignore:
+            if pat.endswith("/") and rel.startswith(pat):
+                hit = True
+            elif "/" not in pat.rstrip("/") and fnmatch.fnmatch(os.path.basename(rel), pat):
+                hit = True
+            elif fnmatch.fnmatch(rel, pat):
+                hit = True
+        if not hit:
+            out.append(rel)
+    return out
+
+
+def check_openai_key_stays_server_side(offline):
+    """The OpenAI key is read only by server functions and can never reach a browser.
+
+    1. No deployable (servable) file names OPENAI_API_KEY or holds an OpenAI-shaped key.
+    2. Only the files in OPENAI_KEY_READERS read it, and only through the server environment.
+    3. No server function serializes the environment into a response.
+    4. In api/run-study.js, askOpenAI returns only the parsed answer and swallows errors, so neither the
+       key nor an OpenAI error body (which can echo a masked key) reaches the caller.
+    """
+    bad = []
+    key_res = [re.compile(p) for p, label in SECRET_PATTERNS if label.startswith("OpenAI")]
+    for rel in _deployable_files():
+        try:
+            body = open(os.path.join(ROOT, rel), encoding="utf-8", errors="ignore").read()
+        except Exception:
+            continue
+        if "OPENAI_API_KEY" in body:
+            bad.append("%s is deployable and names OPENAI_API_KEY" % rel)
+        if any(r.search(body) for r in key_res):
+            bad.append("%s is deployable and holds an OpenAI-shaped key" % rel)
+    readers = []
+    for b, dirs, files in os.walk(os.path.join(ROOT, "api")):
+        for fn in files:
+            if not fn.endswith((".js", ".mjs")):
+                continue
+            rel = os.path.relpath(os.path.join(b, fn), ROOT)
+            src = read(rel)
+            if re.search(r"JSON\.stringify\(\s*(process\.env|env)\s*\)|[:,{]\s*env\s*[,}]", src):
+                bad.append("%s may serialize the server environment into a response" % rel)
+            if "OPENAI_API_KEY" in src:
+                readers.append(rel)
+                if not re.search(r"(process\.env\.OPENAI_API_KEY|envv\(\s*'OPENAI_API_KEY')", src):
+                    bad.append("%s names OPENAI_API_KEY without reading it from the server environment" % rel)
+    extra = sorted(set(readers) - set(OPENAI_KEY_READERS))
+    if extra:
+        bad.append("unapproved OpenAI key reader(s): %s" % ", ".join(extra))
+    src = read("api/run-study.js")
+    fn = src.split("async function askOpenAI", 1)
+    body = fn[1].split("\nasync function", 1)[0] if len(fn) == 2 else ""
+    if not body:
+        bad.append("api/run-study.js: askOpenAI not found")
+    else:
+        rets = re.findall(r"return\s+([^;]+);", body)
+        if not rets or any(not (r.strip().startswith("parseAnswer(") or r.strip() == "null") for r in rets):
+            bad.append("api/run-study.js: askOpenAI returns something other than the parsed answer or null")
+        if "catch" not in body:
+            bad.append("api/run-study.js: askOpenAI does not catch provider errors")
+    check("OpenAI key stays server-side", not bad,
+          "; ".join(bad[:4]) if bad else "read only by %s, from the server environment; no deployable file "
+          "names or holds it; no route serializes the environment" % ", ".join(OPENAI_KEY_READERS))
 
 
 def check_no_secrets_in_source(offline):
@@ -9542,7 +9632,7 @@ def main():
                check_free_funnel_preserved,
                check_checkout_path_active,
                check_sitemap_keeps_free_material,
-               check_no_secrets_in_source,
+               check_no_secrets_in_source, check_openai_key_stays_server_side,
                check_notifications_wired,
                check_alerts_disabled,
                check_dual_track_band,

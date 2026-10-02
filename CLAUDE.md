@@ -269,6 +269,8 @@ Never substitute automation for judgment. Never manufacture legal certainty. Nev
 
 **`ANTHROPIC_API_KEY` must NEVER appear in frontend code, HTML, or any committed file.** It is read only from `process.env` inside `api/review.js`. Refuse any change that would move it client-side and explain why.
 
+**`OPENAI_API_KEY` follows the same rule** (owner instruction 2026-10-03). It lives only in the Vercel environment and is read only by `api/run-study.js`, which sends it only in the `Authorization` header to `api.openai.com`. It must never appear in a page, a client script, a response, a Supabase write, a log, or a committed file. `scripts/check_zero_drift.py::check_openai_key_stays_server_side` fails if a new reader appears or a servable file names it, and `tests/security/openai-key-server-only.mjs` proves the runtime path with a canary.
+
 `api/review.js` is a Vercel Edge Function that accepts `POST {text}`, calls Claude, and returns `routing`, `conditions`, `flags`, `revisions`, `summary`. It must not be modified to accept or return the key.
 
 **Model identifiers are versioned infrastructure, not permanent dependencies.** The engine currently pins `claude-haiku-4-5-20251001`. Treat the identifier as a configurable value with a documented default and a recorded review date; do not treat it as part of the JRS methodology.
