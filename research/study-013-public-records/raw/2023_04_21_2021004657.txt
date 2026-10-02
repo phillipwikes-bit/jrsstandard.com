@@ -1,0 +1,465 @@
+                U.S. EQUAL EMPLOYMENT OPPORTUNITY COMMISSION
+                              Office of Federal Operations
+                                     P.O. Box 77960
+                                Washington, DC 20013
+
+
+                                            Todd S., 1
+                                           Complainant,
+
+                                                 v.
+
+                                        Merrick B. Garland,
+                                         Attorney General,
+                                       Department of Justice,
+                                             Agency.
+
+                                      Appeal No. 2021004657
+
+                                   Agency No. EOI-2020-02119
+
+                                            DECISION
+
+Complainant filed an appeal with the Equal Employment Opportunity Commission (EEOC or
+Commission), pursuant to 29 C.F.R. § 1614.403(a), from the Agency’s July 22, 2021, final
+decision concerning his equal employment opportunity (EEO) complaint alleging employment
+discrimination in violation of Title VII of the Civil Rights Act of 1964 (Title VII), as amended, 42
+U.S.C. § 2000e et seq. For the following reasons, the Commission AFFIRMS the Agency’s final
+decision.
+
+                                         BACKGROUND
+
+Complainant worked as an Immigration Judge, IJ-3, at the Executive Office of Immigration
+Review (EOIR) Field Office in Harlingen, Texas. On November 25, 2020, Complainant filed an
+EEO complaint alleging that the Agency discriminated against him on the bases of race (Black)
+and national origin (Nigeria) by not selecting him for the position of Appellate Immigration Judge
+(AIJ) on August 7, 2020. 2
+
+AIJs are selected using a multi-step hiring process that was described by the Chief Administrative
+Hearing Officer. These procedures were established by the Attorney General and included the
+following:
+
+
+1
+ This case has been randomly assigned a pseudonym which will replace Complainant’s name
+when the decision is published to non-parties and the Commission’s website.
+2
+    AIJs are also referred to as members of the Board of Immigration Appeals.
+                                             2                                      2021004657
+
+1. Vacancy announcements for AIJs are posted on USAJOBS. Application packages are
+   submitted to the Office of Personnel Management (OPM).
+
+2. OPM forwards to the EOIR lists of applicants who meet EOIR’s minimum qualifications.
+
+3. For AIJ vacancies, the candidates referred by OPM are sorted into two tiers – “recommend”
+   and “do not recommend” for further consideration.
+
+4. Candidates in the “recommend” tier are interviewed by panels established by the Board of
+   Immigration Appeals. Those interviews are good for any vacancies that occur within one
+   year of the interview.
+
+5. The panelists forward their applicant evaluations to the EOIR Director. The process
+   requires only that the panelists evaluate applicants before forwarding the application
+   materials and their evaluations to the EOIR Director. It does not require the panelists to
+   provide rankings or scores. The Director reviews the applications of all candidates
+   evaluated by the panelists, regardless of their evaluations.
+
+6. The EOIR Director then forwards a sufficient and appropriate number of applicants to the
+   Finalist Panel. The Finalist Panel typically consists of three members. One member is
+   from the Department’s Justice Management Division; the second member is designated by
+   the Office of the Deputy Attorney General; and the third is designated by the EOIR.
+   Multiple individuals from each component are typically designated to serve in order to
+   provide flexibility in constituting Finalist Panels, and multiple Finalist Panels can be
+   established to conduct interviews.
+
+7. The Finalist Panel is allowed to interview as many of the forwarded applicants as it deems
+   appropriate, though in practice the Finalist Panel interviews all of the forwarded applicants.
+
+8. Following those interviews, the Finalist Panel will either recommend or not recommend to
+   the EOIR Director an applicant for a vacancy.
+
+9. The EOIR Director will then consult with the Office of the Deputy Attorney General and
+   the Office of the Attorney General about each recommended candidate.
+
+10. Based upon those consultations, the EOIR Director will make an initial conditional offer
+    to an applicant. The offer is conditional upon the candidate’s successful completion of a
+    preliminary or full background check, as well a final selection and appointment by the
+    Attorney General.
+
+11. Once an applicant accepts a conditional offer, successfully completes a background check
+    and receives approval from the intermediate Department components – EOIR, the Office
+    of Attorney Recruitment and Management, Legal Counsel, and the Office of the Deputy
+    Attorney General, manifested through consideration and approval of an appointment
+                                                  3                                      2021004657
+
+       memorandum – the Attorney General may appoint the applicant as an AIJ. The Attorney
+       General retains full discretion of the selection and appointment of all applicants for AIJ
+       positions.
+
+IR 247-48, 605-09, 624-26. According to the Chief Administrative Hearing Officer, there were
+two vacancy announcements that ran in 2020. The first vacancy announcement ran in January
+while the second opened in April. The Chief Administrative Hearing Officer averred that he served
+as the EOIR Director for both announcements. IR 248-58.
+
+The Chief Administrative Hearing Officer asserted that the initial panel forwarded the names of
+12 applicants, including Complainant, to the Finalist Panel. The Finalist Panel interviewed
+Complainant on March 31, 2020 and considered him to be an average candidate for the AIJ
+position. IR 249, 629. On April 6, 2020, after the Finalist Panel completed all 12 interviews, the
+Chief Administrative Hearing Officer consulted with the offices of the Deputy Attorney General
+and the Attorney General, determined who he believed to be the four best candidates, and
+forwarded their names for the final stage of the process. All four were given offers. Three accepted
+while the fourth (hereinafter referred to as “Selectee 1”) declined and reapplied under the second
+vacancy announcement. The Chief Administrative Hearing Officer affirmed that of the eight
+remaining candidates, three presented significantly stronger applications than Complainant. IR
+249, 261-63, 267-69, 272-74.
+
+Six of the eight applicants who responded to the January 2020 announcement, including
+Complainant and Selectee 1, applied to the April 2020 announcement. The three applicants who
+were considered stronger candidates in the first selection process were also among those who
+applied for the second. Selectee 1 wanted to work in a different location than the one for which
+he had initially been selected. As with the first 2020 vacancy, the Chief Administrative Hearing
+Officer received the evaluations from the initial panels in late May 2020. He averred that nothing
+substantively had changed regarding the applications of Complainant, Selectee 1, and the three
+other candidates considered significantly stronger than Complainant. He further affirmed that
+because he knew that the Deputy Attorney General and the Attorney General had previously
+regarded those four candidates as stronger than Complainant, there was no reason to forward
+Complainant’s application to the Finalist Panel for a second time. Two other applicants to the
+second 2020 vacancy who did not apply during the first 2020 vacancy were likewise considered
+stronger than Complainant by the review panels who evaluated their applications. Ultimately,
+these two individuals (hereinafter referred to as “Selectee 2” and “Selectee 3”) as well as (Selectee
+1) were ultimately appointed by the Attorney General. IR 249-52, 255-58, 397-99, 425-27, 438-
+40, 460-62, 517-20, 547-58, 560-61, 593, 598, 627.
+
+The investigation of the instant complaint was conducted from December 23, 2020 to April 12,
+2021. The investigator stated in a memorandum-to-the-file dated April 12, 2021, that Complainant
+declined to provide a rebuttal affidavit, opting instead to wait until he received the entire case file
+before doing so. IR 243. At the conclusion of the investigation on April 26, 2021, the Agency
+provided Complainant with a copy of the investigative report and notice of his right to request a
+hearing before an Equal Employment Opportunity Commission Administrative Judge.
+                                                 4                                      2021004657
+
+Complaint File (CF) 902. On May 17, 2021, Complainant requested that a supplemental
+investigation be conducted to gather additional information, including documents that
+Complainant contended were deliberately excluded from the evidentiary record. CF 874-94, 914.
+In a memorandum dated May 28, 2021, and addressed to Complainant, the EEO Director reported
+that additional information had been provided, per Complainant’s request. The EEO Director also
+reminded Complainant of his obligation to either request a hearing before an Equal Employment
+Opportunity Commission Administrative Judge or request a final agency decision without a
+hearing. That same day, the EEO Specialist provided Complainant with a link for Complainant to
+access and download the investigative report. The EEO Specialist requested that Complainant
+reply to her confirming receipt and informed Complainant that he should submit his request for a
+hearing, final agency decision, or withdrawal via email. CF 899-901, 919-29.
+
+On June 7, 2021, Complainant replied to the EEO Specialist by email as follows:
+
+       This is an acknowledgment of your e-mail today requesting that I make an election
+       regarding how I wish to proceed with my EEO Complaint. Please, refer to the
+       Notice I sent to [the EEO Director] on or about June 6, 2021 regarding the issues I
+       raised with the investigation of this case. In that Notice, I outlined the deficiencies
+       inherent in the investigation, including the Agency’s refusal to disclose available
+       information in the Agency’s possession necessary to prosecute my case. With all
+       due respect, I will neither be coerced nor compelled into making an election without
+       the necessary information I requested to make an informed decision. Any election
+       the EEO Office makes with respect to the disposition of this case will be without
+       my consent.
+
+CF 930. Following Complainant’s response to the EEO Specialist, the Agency forwarded the
+complaint, the investigative report, and the supplemental information provided since the close of
+the investigation to the Adjudication Officer for issuance of a final decision. The Agency noted
+the circumstances regarding Complainant’s refusal to make the election between requesting a
+hearing and receiving a final agency decision. In accordance with EEOC Regulation 29 C.F.R.
+§ 1614.108(f), the Agency issued a final decision pursuant to 29 C.F.R. § 1614.110(b). In the
+decision, the Agency concluded that Complainant failed to prove that he was subjected to
+discrimination as alleged.
+
+                                 CONTENTIONS ON APPEAL
+
+In support of his appeal, Complainant submitted a 160-page brief in which he raised numerous
+arguments alleging deficiencies in the investigative report as well as bias on the part of the
+investigator, to the point of the investigator giving legal advice to the Agency. In essence,
+Complainant takes issue with the Agency’s determination that the Selectees were more qualified
+for the AIJ position than he was. In particular, he contends that the Agency violated its own merit
+promotion policy by allowing Selectee 2 to serve on his March 31, 2020 Finalist Panel for the first
+vacancy. He also contends that the Agency’s EEO Office unilaterally forced him into a final
+decision rather than conduct a full and impartial investigation.
+                                                 5                                      2021004657
+
+He maintains that evidence which had a direct bearing on whether he was discriminated against
+was excluded from the investigative report despite his repeated efforts to point this out to the
+investigator. He demands that the Commission enter a default judgment against the Agency as a
+sanction for its alleged exclusion and concealment of material evidence.
+
+                                  ANALYSIS AND FINDINGS
+
+Standard of Review
+
+As this is an appeal from a decision issued without a hearing, pursuant to 29 C.F.R. § 1614.110(b),
+the Agency's decision is subject to de novo review by the Commission. 29 C.F.R. § 1614.405(a).
+See Equal Employment Opportunity Management Directive for 29 C.F.R. Part 1614, at Chapter 9,
+§ VI.A. (Aug. 5, 2015) (explaining that the de novo standard of review “requires that the
+Commission examine the record without regard to the factual and legal determinations of the
+previous decision maker,” and that EEOC “review the documents, statements, and testimony of
+record, including any timely and relevant submissions of the parties, and . . . issue its decision
+based on the Commission’s own assessment of the record and its interpretation of the law”).
+
+Complainant’s Request for Sanctions on Appeal
+
+When the complainant, or the agency against which a complaint is filed, or its employees fail
+without good cause shown to respond fully and in a timely fashion to requests for documents,
+records, comparative data, statistics, affidavits, or the attendance of witness(es), the investigator
+may note in the investigative record that the decisionmaker should, or the Commission on appeal
+may, in appropriate circumstances:
+
+   (i)     Draw an adverse inference that the requested information, or the testimony of the
+           requested witness, would have reflected unfavorably on the party refusing to provide
+           the requested information;
+
+   (ii)    Consider the matters to which the requested information or testimony pertains to be
+           established in favor of the opposing party;
+
+   (iii)   Exclude other evidence offered by the party failing to produce the requested
+           information or witness;
+
+   (iv)    Issue a decision fully or partially in favor of the opposing party; or
+
+   (v)     Take such other actions as it deems appropriate.
+
+29 C.F.R. § 1614.108(c)(3); Equal Employment Opportunity Management Directive for 29 C.F.R.
+Part 1614 (EEO MD-110). Chap. 6, Sec, XI (Aug. 5, 2015). Sanctions serve a dual purpose. On
+the one hand, they aim to deter the underlying conduct of the non-complying party and prevent
+similar misconduct in the future. Barbour v. U.S. Postal Serv., EEOC 07A30133 (June 16, 2005).
+                                                  6                                     2021004657
+
+On the other hand, they are corrective and provide equitable remedies to the opposing party. Given
+these dual purposes, sanctions must be tailored to each situation by applying the least severe
+sanction necessary to respond to a party’s failure to show good cause for its actions and to equitably
+remedy the opposing party. Royal v. Dep’t of Veterans Affairs, EEOC Request No. 0520080052
+(Sept. 25, 2009). Factors pertinent to “tailoring” a sanction, or determining whether a sanction is
+even warranted, include: (1) the extent and nature of the non-compliance, including the
+justification presented by the non-complying party; (2) the prejudicial effect of the non-compliance
+on the opposing party; (3) the consequences resulting from the delay in justice, if any; (4) the
+number of times the party has engaged in such conduct; and (5) the effect on the integrity of the
+EEO process as a whole. Id. A default judgment is the most severe sanction that can be meted out
+to an Agency, and as such, should be reserved only for the most egregious acts of non-compliance.
+Owen L. v. Office of Personnel Mgmt., EEOC Appeal No. 2020000990 (July 15, 2021).
+
+None of the factors relevant to the imposition of a sanction come into play here. Complainant’s
+assertion that the Agency should be sanctioned has been completely undermined by his own
+deliberate decision not to request a hearing when he had the opportunity to do so. The hearing is
+an adjudicatory proceeding that completes the process of developing a full and impartial
+evidentiary record. It provides the parties with a fair and reasonable opportunity to explain and
+supplement the record [emphasis added] and, in appropriate instances, to examine and cross-
+examine witnesses. EEO MD-110, Chap. 7, Sec. I (Aug. 5, 2015); Roman G. v. Dep’t of Veterans
+Affairs, EEOC Appeal No. 2022000508 (Dec. 15, 2022); Bill A. v. Dep’t of the Army. EEOC
+Appeal No. 0120131989 (Oct. 26, 2016); Bullard v. U.S. Postal Serv., EEOC Appeal No.
+0720060045 (April 25, 2008). It is the Commission's intent that where a hearing is properly
+requested and where there is an incomplete or inadequate investigation, the record in the case
+shall be developed under the supervision of the Administrative Judge assigned to the case.
+[Emphasis added.] EEO MD-110, Chap. 6, Sec. XII, n. 8. Complainant had the opportunity to
+clear up any alleged deficiencies in the investigative report by requesting a hearing and engaging
+in discovery but chose not to make that request based upon his apparent misunderstanding of the
+purpose of the hearing process as an extension of the investigative process. Under such
+circumstances, we cannot find, as Complainant urges, that the integrity of the investigative process
+has been so compromised by the Agency’s handling of the investigation as to warrant the severe
+sanction of a default judgment or even any of the lesser sanctions outlined in 29 C.F.R.
+§ 1614.108(c)(3). Moreover, the Commission finds that this investigation developed a sufficient
+record for a fact finder to address the ultimate issue of whether discrimination occurred. We now
+move on to address the merits of Complainant’s claim.
+
+Disparate Treatment
+
+To prevail on his disparate treatment claim, Complainant must satisfy the three-part evidentiary
+scheme fashioned by the Supreme Court in McDonnell Douglas Corp. v. Green, 411 U.S. 792, 802
+(1973). His first step would generally be to establish a prima facie case by demonstrating that he
+was subjected to an adverse employment action under circumstances that would support an
+inference of discrimination. Furnco Const. Co. v. Waters, 438 U.S. 567, 576 (1978).
+                                                  7                                      2021004657
+
+The prima facie inquiry may be dispensed with in this case, however, since the Agency articulated
+a legitimate and nondiscriminatory reason as to why Complainant was not selected for the AIJ
+position in August 2020. See U.S. Postal Service Bd. of Governors v. Aikens, 460 U.S. 711, 713-
+17 (1983). The Chief Administrative Hearing Officer stated that Complainant’s application for
+the AIJ position was not as robust as the applications of other candidates, particularly those who
+were ultimately selected to fill the second vacancy.
+
+To ultimately prevail, Complainant must prove, by a preponderance of the evidence, that the
+explanation put forth by the Chief Administrative Hearing Officer and other management
+witnesses is a pretext for race and national origin discrimination. Reeves v. Sanderson Plumbing
+Prods., Inc., 530 U.S. 133, 143 (2000); St. Mary's Hon. Ctr. v. Hicks, 509 U.S. 502, 519 (1993);
+Tex. Dep’t of Cmty. Affairs v. Burdine, 450 U.S. 248, 256 (1981). Pretext can be demonstrated
+by showing such weaknesses, implausibilities, inconsistencies, incoherencies, or contradictions in
+the Agency's proffered legitimate reasons for its action that a reasonable fact finder could rationally
+find them unworthy of credence. Larraine D. v. Dep’t of Defense, EEOC Appeal No. 2022002980
+(Oct. 27, 2022).
+
+In non-selection cases, Complainant could demonstrate pretext by showing that his qualifications
+for the position were plainly superior to those of the Selectee. Billi D. v. Dep’t of Def., EEOC
+Appeal No. 2021004238 (Sept. 27, 2022). We note, however, that agencies have broad discretion
+to determine how best to manage their operations, and it is not the function of this Commission
+to substitute its judgment for that of management officials who are familiar with the needs of their
+facility. Santo D. v. Dep’t of State, EEOC Appeal No. 0120172768 (June 28, 2018).
+Consequently, those officials may select candidates with fewer years of experience if they believe
+that such candidates are best qualified to meet the needs of the organization. Dovie W. v. Equal
+Empl. Opp. Comm’n., Appeal No. 2020004825 (Oct. 17, 2022). According to the Agency’s
+records from the two selection processes, Selectee 1 received three “highly recommends” from his
+initial interview panel in February. Selectee 2 received two “highly recommends” and one “do
+not recommend” from her initial interview panel in May. Complainant received three
+“recommends” from his initial interview in February. Although Selectee 3 received one definite
+“recommend” from her initial interview panel in May, the other panelists did not say one way or
+the other whether to recommend her for further consideration. IR 397-99, 425-27, 438-40, 627.
+
+In a series of memoranda dated June 29, 2020 and addressed to the Attorney General, the Chief
+Administrative Hearing Officer presented his reasons for recommending each of the Selectees.
+Concerning Selectee 1, the Chief Administrative Hearing Officer stated that he had been a former
+prosecutor who had served in three different judicial positions, had been a law professor and had
+served as an Immigration Judge since 2009. IR 547-50, 560. As to Selectee 2, the Chief
+Administrative Hearing Officer stated that she had served as an Assistant Chief Administrative
+Judge in a temporary detail and had performed in an exemplary manner, and that she had a
+comprehensive knowledge of immigration law and practice. IR 555-58, 561.
+                                                 8                                     2021004657
+
+Regarding Selectee 3, the Chief Immigration Officer stated that she was an Immigration Judge
+with over 17 years of experience in immigration and related areas of law, and that she had a broad
+base of immigration knowledge, having served as an attorney for Customs and Border Protection
+and as an Asylum Officer. IR 551-54, 562.
+
+When asked to compare his qualifications to those of the three Selectees, however, Complainant
+did not even attempt to show that his qualifications were plainly superior to those of the Selectees
+and the other applicants who advanced further along in the process. Instead, he replied that such
+a comparison would be “futile.” IR 233. There is no question that Complainant was well-qualified
+to serve as an AIJ. But so were the Selectees and all the other applicants. The evidentiary record
+is not sufficient to support a finding of pretext based upon the relative qualifications of the
+applicants.
+
+Other indicators of pretext include discriminatory statements or past personal treatment
+attributable to those responsible for the personnel action that led to the filing of the complaint,
+unequal application of Agency policy, deviations from standard procedures without explanation
+or justification, or inadequately explained inconsistencies in the evidentiary record. Tammy S. v.
+Dep’t of the Army, EEOC Appeal No. 2021000578 (May 5, 2022). Complainant averred that the
+Agency abandoned merit principles in order to prevent him from competing for an AIJ position on
+a level playing field so that it could hire White and Asian applicants. IR 232-33. In particular, he
+characterizes the service of Selectee 2 on his Finalist Panel for the first vacancy as a conflict of
+interest, emphasizing that Selectee 2 was part of the panel that had characterized his candidacy for
+the AIJ position as “average.” IR 235-36. Complainant contends in his appeal brief that Selectee
+2 was ineligible to serve on the March 31st Finalist Panel because she was not an AIJ at the time
+she sat on that panel. Consequently, according to Complainant, her presence on that panel is
+evidence of an intent on the part of management to prevent him from becoming an AIJ because of
+his race and national origin. Appeal Brief, p. 43. However, there was no explicit requirement that
+panelists had to be AIJs. Selectee 2 was an Assistant Chief Immigration Judge, which was one of
+the reasons that she was appointed to the March 31, 2020 Finalist Panel.
+
+This is a complicated promotion process, with many steps and unique features not typically found
+in most merit promotion systems. We note that the pretext inquiry is not concerned with bad
+judgment, dislike, or a mistake. Marvin W. v. Dep't of Homeland Sec., EEOC Appeal No.
+0120170438 (Dec. 12, 2018). Rather, the focus of pretext inquiry is whether an agency's actions
+were motivated by discriminatory animus. The affidavits of the Chief Administrative Hearing
+Officer and the other individuals who served on various panels firmly establish that the officials
+involved in processing the two 2020 vacancies followed the Agency’s merit promotion policy.
+
+Complainant raises and discusses at length numerous contentions regarding the Chief
+Administrative Hearing Officer’s decision not to refer him to the Finalist Panel for the second
+vacancy. Complainant, however, has presented neither affidavits, declarations or unsworn
+statements from witnesses other than himself nor documents that are sufficient to contradict or
+undermine the Chief Administrative Hearing Officer’s explanation for recommending the three
+Selectees to the Attorney General, as set forth in his memoranda of June 29, 2020.
+                                                 9                                      2021004657
+
+Likewise, Complainant has not presented any evidence beyond his own assertions which would
+cause us to question the Chief Administrative Hearing Officer’s truthfulness as a witness.
+
+As Complainant chose not to request a hearing, the Commission does not have the benefit of an
+Administrative Judge's credibility determinations after a hearing. Therefore, the Commission can
+only evaluate the facts based on the weight of the evidence presented. At all times, the ultimate
+burden remains with Complainant to demonstrate by a preponderance of the evidence that the
+Agency's reasons were not the real reasons and that the Agency acted on the basis of discriminatory
+animus. In this case, Complainant failed to carry this burden. Aside from conclusory statements
+and his subjective belief, Complainant has not proffered any evidence that the Agency's
+explanation for its actions was pretext for discrimination. As a result, the Commission finds that
+Complainant was not subjected to discrimination as alleged.
+
+                                          CONCLUSION
+
+Based on a thorough review of the record and the contentions on appeal, we AFFIRM the Agency’s
+final decision.
+
+                           STATEMENT OF RIGHTS - ON APPEAL
+                              RECONSIDERATION (M0920)
+
+The Commission may, in its discretion, reconsider this appellate decision if Complainant or the
+Agency submits a written request that contains arguments or evidence that tend to establish that:
+       1. The appellate decision involved a clearly erroneous interpretation of material fact or
+          law; or
+       2. The appellate decision will have a substantial impact on the policies, practices, or
+          operations of the agency.
+
+Requests for reconsideration must be filed with EEOC’s Office of Federal Operations (OFO)
+within thirty (30) calendar days of receipt of this decision. If the party requesting reconsideration
+elects to file a statement or brief in support of the request, that statement or brief must be filed
+together with the request for reconsideration. A party shall have twenty (20) calendar days
+from receipt of another party’s request for reconsideration within which to submit a brief or
+statement in opposition. See 29 C.F.R. § 1614.405; Equal Employment Opportunity Management
+Directive for 29 C.F.R. Part 1614 (EEO MD-110), at Chap. 9 § VII.B (Aug. 5, 2015).
+
+Complainant should submit his or her request for reconsideration, and any statement or brief in
+support of his or her request, via the EEOC Public Portal, which can be found at
+https://publicportal.eeoc.gov/Portal/Login.aspx. Alternatively, Complainant can submit his or her
+request and arguments to the Director, Office of Federal Operations, Equal Employment
+Opportunity Commission, via regular mail addressed to P.O. Box 77960, Washington, DC 20013,
+or by certified mail addressed to 131 M Street, NE, Washington, DC 20507.
+                                                  10                                      2021004657
+
+In the absence of a legible postmark, a complainant’s request to reconsider shall be deemed timely
+filed if OFO receives it by mail within five days of the expiration of the applicable filing period.
+See 29 C.F.R. § 1614.604.
+
+An agency’s request for reconsideration must be submitted in digital format via the EEOC’s
+Federal Sector EEO Portal (FedSEP). See 29 C.F.R. § 1614.403(g). Either party’s request and/or
+statement or brief in opposition must also include proof of service on the other party, unless
+Complainant files his or her request via the EEOC Public Portal, in which case no proof of service
+is required.
+
+Failure to file within the 30-day time period will result in dismissal of the party’s request for
+reconsideration as untimely, unless extenuating circumstances prevented the timely filing of the
+request. Any supporting documentation must be submitted together with the request for
+reconsideration. The Commission will consider requests for reconsideration filed after the
+deadline only in very limited circumstances. See 29 C.F.R. § 1614.604(c).
+
+
+                COMPLAINANT’S RIGHT TO FILE A CIVIL ACTION (S0610)
+
+You have the right to file a civil action in an appropriate United States District Court within ninety
+(90) calendar days from the date that you receive this decision. If you file a civil action, you must
+name as the defendant in the complaint the person who is the official Agency head or department
+head, identifying that person by his or her full name and official title. Failure to do so may result
+in the dismissal of your case in court. “Agency” or “department” means the national organization,
+and not the local office, facility or department in which you work. If you file a request to reconsider
+and also file a civil action, filing a civil action will terminate the administrative processing of
+your complaint.
+
+
+                            RIGHT TO REQUEST COUNSEL (Z0815)
+
+If you want to file a civil action but cannot pay the fees, costs, or security to do so, you may request
+permission from the court to proceed with the civil action without paying these fees or costs.
+Similarly, if you cannot afford an attorney to represent you in the civil action, you may request the
+court to appoint an attorney for you. You must submit the requests for waiver of court costs or
+appointment of an attorney directly to the court, not the Commission. The court has the sole
+discretion to grant or deny these types of requests.
+                                                 11                                     2021004657
+
+Such requests do not alter the time limits for filing a civil action (please read the paragraph titled
+Complainant’s Right to File a Civil Action for the specific time limits).
+
+FOR THE COMMISSION:
+
+
+
+______________________________                    Carlton M. Hadden’s signature
+Carlton M. Hadden, Director
+Office of Federal Operations
+
+
+April 11, 2023
+Date
+

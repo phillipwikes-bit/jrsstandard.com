@@ -1,0 +1,1868 @@
+           U.S. EQUAL EMPLOYMENT OPPORTUNITY COMMISSION
+                         Office of Federal Operations
+                                P.O. Box 77960
+                           Washington, DC 20013
+
+
+                                 Kandi M., 1
+                                Complainant,
+
+                                      v.
+
+                             Carlos Del Toro,
+                                Secretary,
+                          Department of the Navy,
+                                 Agency.
+
+                           Appeal No. 2022003833
+
+                       Hearing No. 480-2021-00012X
+
+                        Agency No. 17-67100-47605
+
+                     Prior Hearing No. 480-2019-00136X
+
+                                  DECISION
+
+On July 6, 2022, Complainant filed an appeal with the Equal Employment
+Opportunity Commission (EEOC or Commission), pursuant to 29 C.F.R. §
+1614.403(a), from the Agency’s final action concerning her equal
+employment      opportunity     (EEO)     complaint     alleging   employment
+discrimination in violation of Title VII of the Civil Rights Act of 1964 (Title
+VII), as amended, 42 U.S.C. § 2000e et seq. For the following reasons, the
+Commission REVERSES the Agency’s final action.
+
+                             ISSUES PRESENTED
+
+The issues presented are: (1) whether the Agency properly dismissed some
+claims on procedural grounds; (2) whether the EEOC Administrative Judge
+(AJ) properly issued a decision without a hearing; and (3) whether the
+
+
+1
+  This case has been randomly assigned a pseudonym which will replace
+Complainant’s name when the decision is published to non-parties and the
+Commission’s website.
+                                     2                         2022003833
+
+preponderance of the evidence in the record establishes that Complainant
+was subjected to harassment based on national origin, sex, and/or reprisal
+as alleged.
+
+                              BACKGROUND
+
+At the time of events giving rise to this complaint, Complainant worked as a
+GS-0344-5 Management Assistant at the Agency’s Production Plant Barstow
+(PPB), Program Management Division (PMD), Marine Depot Maintenance
+Command, facility in Barstow, California. Report of Investigation (ROI) at
+48, 86. Complainant is a Hispanic woman, and she stated that she engaged
+in prior protected EEO activity in 2015 when she filed a complaint alleging
+discrimination based on disability. ROI at 87. Complainant’s first-line
+supervisor was the Supervisory Production Controller (Hawaiian, Chinese,
+and African American woman), and her second-line supervisor was the
+Branch Manager (Caucasian man). ROI at 87, 119-20, 130-31.
+
+Complainant also served as the local union’s Secretary Treasurer. ROI at 88.
+According to Complainant, she requested an external audit, which revealed
+misappropriation of funds by the Local Union President (“the Union
+President”; man) and others on the executive board of the local union. ROI
+at 88-89. Complainant stated that, as a result, on July 5, 2017, the local
+union was placed under trusteeship, and a trustee was assigned (“the Union
+Trustee”; man). ROI at 88, 100. Complainant alleged that, beginning on July
+5, 2017, people who were affected by the audit began subjecting her to non-
+stop harassment, including when she was blamed verbally and in writing,
+her “name was slandered across the entire military compound,” and people
+spread lies about her. ROI at 88-89. Complainant stated that, from July 5
+through August 10, 2017, her car was vandalized at work, multiple rumors
+spread at work that Complainant slept with higher-ups from the district, and
+she was referred to as a “tramp” and “whore.” ROI at 88-89.
+
+Complainant alleged that, on July 6, 2017, the Union President and another
+colleague blurted out that the reason that the union was being put under
+trusteeship was because Complainant was “Fucking/Sleeping” with the top
+guys in the union district. ROI at 28. Complainant stated that the Union
+President also loudly and aggressively stated that he had seen Complainant
+and the Union Trustee “running around in Hawaii together,” which he said
+was the reason for the trusteeship. ROI at 28. Complainant averred that an
+Agency employee (Employee-1; man) spread the same sort of rumors,
+which he told to multiple coworkers and people in his vanpool. ROI at 28.
+                                     3                          2022003833
+
+According to Complainant, another Agency employee (Employee-2; woman)
+told people that, because Complainant was sleeping with men in the district,
+the district took over the union. ROI at 28.
+
+A Mechanic Leader (African American/Caucasian/Native American woman)
+stated that, during the July 6th meeting, Employee-1 asked why they did not
+discuss things before taking over the union and said that he knew “this girl”
+and “she’s evil.” ROI at 59, 150-51. According to the Mechanic Leader, this
+set off the Union President, who smacked the table, proclaimed, “this is all
+bull $#%@”, and pointed at the Union Trustee, shouting that all the Union
+Trustee wanted was “get in [Complainant]’s pants” and that the Union
+President saw how they were acting in Hawaii. ROI at 59. The Mechanic
+Leader averred that the Union President also pointed at the Local Union
+Sergeant-at-Arms (“the Union Sergeant-at-Arms”; Black man) and accused
+him of wanting to “get in [Complainant]’s pants as well before using a few
+more choice foul words, slamming the table again, walking out, and
+slamming the door behind him. ROI at 59, 140-41. The Mechanic Leader
+stated that Employee-2 made a comment, “that’s messed up [Complainant]
+is getting these girls fired and she’s dating him, referring and gesturing to
+[the Union Trustee].” ROI at 59. According to the Mechanic Leader, when
+she asked Employee if she really thought that Complainant was dating the
+Union Trustee, Employee-2 responded, “yeah that’s why all this is happening
+because she[’]s sleeping with him.” ROI at 59.
+
+A Heavy Mobile Mechanic (Hispanic man) stated that he was at the July 6,
+2017, emergency executive board meeting, the Union President said, “this is
+bullshit,” pointed to the Union Trustee, and said, “the only reason you are
+here is because you are sleeping with her [Complainant],” before leaving the
+room. ROI at 61, 154-55. The Union Sergeant-at-Arms stated that, during
+the July 6, 2017, meeting when the trusteeship was imposed, the Union
+President commented that the Union Trustee was “f..king” Complainant,
+noting that he had “seen them in Hawaii.” ROI at 62. According to the Union
+Sergeant-at-Arms, when he told the Union President that he had told him
+that he needed to check out the Local Union Vice President (“the Union VP”;
+man), the Union President accused the Union Sergeant-at-Arms of trying to
+“f..k” Complainant before storming out of the meeting. ROI at 62.
+
+Complainant averred that, on or about July 6, 2017, she went to HR to voice
+her concerns and spoke with a HR Specialist (White woman). ROI at 144-45,
+196, 203.
+                                      4                          2022003833
+
+According to Complainant, the HR Specialist suggested that she should go
+speak with the Plant Manager (Caucasian man), but she explained that she
+was afraid to go to the Plant Manager’s office because his secretary was the
+daughter of the Union President, who had started many of the false rumors
+about Complainant. ROI at 196, 203. Complainant stated that the HR
+Specialist called the Plant Manager to her office and that he told her that it
+sounded like a union matter, not an Agency issue, and adding that the
+financial issues were “hearsay” at that point. ROI at 89, 106, 196, 203.
+Complainant averred that she mentioned that she had names and witnesses.
+ROI at 204. Complainant alleged that she told the Plant Manager, that while
+it may have begun as a union matter, the rumors were continuing to spread
+throughout the workplace, but he said there was nothing he could do. ROI at
+196, 203. Complainant averred that this was her only face-to-face meeting
+with the Plant Manager. ROI at 203.
+
+According to Complainant, during a July 18, 2017, monthly union
+membership meeting, an Agency employee (Employee-3; man) asked
+Complainant if the Union Trustee was her boyfriend, “as rumor has it.” ROI
+at 29. Complainant stated that, after the July 18, 2017, meeting, another
+Agency employee (Employee-4; man) approached the Union Trustee and
+said, “Hey, I got one question for you. . . .” then proceeded to ask the Union
+Trustee if he was “Fucking [Complainant]”. ROI at 29. Complainant alleged
+that, when she got home that evening, she realized her car had been keyed
+and deliberately scratched. ROI at 29. Complainant averred that, on August
+8, 2017, the Union VP called her “a whore, liar, and snitch.” ROI at 29.
+Complainant stated that the Union VP was very hostile and also yelled at a
+union district employee (man) about the takeover. ROI at 29.
+
+Complainant averred that, on August 10, 2017, she noticed someone had
+put flyers on the bulletin board in the main building where she worked that
+included pictures from her Facebook account and typed words that slandered
+and defamed her character. ROI at 87-88. Complainant stated that anyone
+who worked on the military base and any visitors who gained access to the
+compound would be able to see the bulletin board, which was in clear view
+and was typically used for newsletters, sharing information about upcoming
+events or activities, or advertising open vanpool spots. ROI at 88.
+Complainant alleged that she removed the flyers from the bulletin board and
+reported them to the Supervisory Production Controller. ROI at 88.
+According to Complainant, the Supervisory Production Controller was
+concerned and said she would see if any security cameras covered that area.
+ROI at 88.
+                                     5                          2022003833
+
+Complainant averred that she told the Supervisory Production Controller that
+she had “zero confidence” that the Plant Manager or HR would be able to
+help her based on how they disregarded her previous concerns. ROI at 88-
+89. The Supervisory Production Controller stated that Complainant showed
+her a copy of the Facebook posting that had been placed on the bulletin
+board on August 10, 2017. ROI at 121. The Plant Manager averred that, on
+August 10, 2017, Complainant told her that she did not want to pursue any
+action at that time. ROI at 121. According to the Plant Manager, only the
+Manpower Branch had permission to place items on the bulletin board, which
+was located in a visible, well-trafficked area of the plant. ROI at 108. The
+Plant Manager stated that the Marine Corps Police Department (MCPD)
+Criminal Investigative Division (CID) investigated but was unable to identify
+who placed the Facebook post on the bulletin board. ROI at 107.
+
+The record contains an image from Complainant’s Facebook page, with a
+photo from a union training. ROI at 272. Someone typed at the top of the
+page that, during the training, Complainant spent most of her time partying
+with the Union National Vice President (“the National VP”; man) and the
+Union Trustee and that, after the training, Complainant began to make false
+allegations against the President, Vice President, and other board members,
+leading to the dismissal of the local executive board and the firing of the
+Administrative Officer. ROI at 272. The typed message also stated that
+Complainant falsified meeting minutes after voting to approve the transfer of
+funds for the training. ROI at 272. There are two separate pages with
+minutes from an August 11, 2016, Emergency Executive Board Meeting. ROI
+at 273-74.
+
+According to Complainant, on August 14, 2017, she was walking up the
+stairs to her work area when an unknown employee approached her in the
+staircase and yelled, “Hey, is your name [Complainant]?” ROI at 90-91.
+Complainant alleged that, when she responded affirmatively, the employee
+said, “oh so you’re fucking that new union guy!” ROI at 91. Complainant
+averred that she said “excuse me” and “no” and kept walking to her work
+area. ROI at 91. Complainant averred that the employee was wearing PPE
+including safety glasses and that she did not recognize him as someone she
+had seen before. ROI at 91. Complainant stated that she immediately tried
+to report the incident to the Supervisory Production Controller, who was in a
+meeting, so she reported it to the HR Specialist, as well as other incidents
+that had happened since their last meeting. ROI at 91, 197, 203-04.
+                                      6                           2022003833
+
+According to Complainant, on August 14, 2017, the HR Specialist said for the
+first time that Complainant had the right to report the harassment, but she
+did not provide Complainant with any resources for doing so. ROI at 197,
+203-04. Complainant alleged that she did not meet with the Plant Manager
+on August 14, 2017, and that his statement that he asked her to divulge
+names and offered to inquire further was false. ROI at 204.
+
+The Supervisory Production Controller stated that Complainant completed an
+official harassment complaint form, which she forwarded through her chain
+of command on August 17, 2017. ROI at 120. According to the Supervisory
+Production Controller, Complainant’s harassment complaint reported the
+August 14, 2017, incident where the employee yelled at her. ROI at 122.
+The Branch Manager averred that August 17, 2017, was the first date that
+Complainant informed him that she was being subjected to a hostile work
+environment. ROI at 131, 134.
+
+The Plant Manager stated that the HR Specialist called him on August 14,
+2017, stating that Complainant was in her office asking for advice for dealing
+with harassment she was experiencing from union officials, including the
+Union President using abusive language toward her during a union meeting.
+ROI at 106-07. The Plant Manager characterized Complainant as a
+whistleblower who shed light on questionable union financial practices, which
+led to the local union being placed into trusteeship. ROI at 106. According to
+the Plant Manager, he told Complainant that he did not have the authority to
+do anything about an incident that took place outside of work between union
+personnel concerning a union issue and that, if she was threatened or
+verbally assaulted by the Union President, she should have contacted the
+Marine Corps Police Department. ROI at 107. The Plant Manager averred
+that Complainant brought up other issues such as her house being
+vandalized and people at work making rude comments about Complainant to
+her directly and to her friends. ROI at 107. According to the Plant Manager,
+he told Complainant he would initiate a management inquiry into her
+allegation of a hostile workplace if she provided details such as the names of
+the people making rude comments, but she refused to divulge this
+information, he did not have anything actionable to address the situation.
+ROI at 107.
+
+Complainant stated that, when she arrived at work at 6:30 a.m. on August
+17, 2017, she found a threatening letter at her desk. ROI at 92. Complainant
+alleged that the letter stated, “[Complainant], snitches get stitches. You and
+your family will pay!!!! Being a District 12 slut won’t get you very far!!! Die
+snitch bitch!!!” ROI at 92.
+                                      7                          2022003833
+
+Complainant averred that she immediately reported the letter to the
+Supervisory Production Controller and the Branch Manager, who responded
+by contacting base security, the military police, and CID. ROI at 93. The
+record contains a note with the following typed message: “[COMPLAINANT],
+SNITCHES GET STITCHES -YOU &&& YOUR FAMILY WILL PAY!!!!!!!! BEING A
+DISTRICT 12 SLUT WON’T GET YOU VERY FAR!!!!!!!!!!!!” ROI at 270. The
+following message was handwritten at the bottom of the note: “DIE SNITCH
+BITCH!!!!!!!!!” ROI at 270. According to Complainant, CID conducted an
+investigation, but, in her opinion, it was handled very poorly, and they did
+not take the matter seriously. ROI at 92.
+
+According to the Supervisory Production Controller, Complainant reported
+the threatening note to her at 7:35 a.m. on August 17, 2017, and after
+which she immediately called MCPD and escorted Complainant to her office.
+ROI at 123. The Branch Manager stated that, while the Supervisory
+Production Controller called MCPD, he notified his chain of command about
+the incident. ROI at 133. The Supervisory Production Controller averred that
+a MCPD officer took statements from her and Complainant and said he would
+need to turn the investigation over to CID. ROI at 123. The Supervisory
+Production Controller stated that, while awaiting the CID Investigative
+Agent, a MCPD officer called for paramedics to examine Complainant
+because she was pale and seemed to be having a hard time breathing. ROI
+at 123. According to the Supervisory Production Controller, the CID
+Investigative Agent took Complainant’s statement and took her to the CID
+headquarters. ROI at 123.
+
+The Plant Manager averred that Complainant reported the threatening note
+to the Supervisory Production Controller, who called MCPD, and that MCPD
+arrived shortly thereafter. ROI at 110. The Plant Manager stated that, after a
+preliminary look at the facts and circumstances, the MCPD officer on the
+scene determined that CID was the appropriate office to conduct the
+investigation. ROI at 110. According to the Plant Manager, after Complainant
+received the threatening note on August 17, 2017, he sent an email to
+everyone at the Production Plant who had an email account, and he also
+directed all managers and supervisors to read the email at the morning
+muster so anyone without an email account would also receive the message.
+ROI at 108-11. The Plant Manager averred that the email stated that he
+would not tolerate such behavior, stated that the guilty party would be
+disciplined to the full extent allowed by law, and encouraged anyone with
+knowledge to report it to their supervisor and to the CID. ROI at 108-10.
+The Plant Manager stated that CID was not able to determine who placed the
+note on Complainant’s desk. ROI at 108-10.
+                                     8                          2022003833
+
+The record contains a copy of the Agency’s Hostile Work Place Report form
+completed by Complainant on August 17, 2017. ROI at 217-18. According to
+the form, Complainant stated that, on August 9, 2017, she was walking back
+to the office when she noticed a flyer on the bulletin board near the library
+that included a photo from her Facebook page showing Complainant and
+other union members at a training in Hawaii. ROI at 217. The photo was
+captioned with allegations against Complainant, and the flyer also included
+the minutes from a union Executive Board meeting. ROI at 217. The form
+stated that, on August 14, 2017, Complainant was walking up the staircase
+near Program Management when an unknown employee asked Complainant
+if her name was “[Complainant]” and then asked if she was “fucking that
+new union guy.” ROI at 217. On the morning of August 17, 2017,
+Complainant found a note threatening her and her family on her keyboard.
+ROI at 217. The Supervisory Production Controller called the MCPD, and the
+MCPD officer stated that CID would have to handle the matter. ROI at 217.
+The record contains a contemporaneous statement from the Supervisory
+Production Controller, who stated she was talking to the Branch Manager in
+his office at 6:35 a.m. when Complainant walked in, looking very distraught,
+and showed them a piece of paper that was a written threat of harm to
+Complainant and her family. ROI at 219. According to the Supervisory
+Production Controller, MCPD was called immediately, although a MCPD
+officer stated that he would need to contact CID because this form of threat
+was “above what he is allowed to process.” ROI at 219. An EMT examined
+Complainant because she was shaking and short of breath, but Complainant
+declined to go to the hospital. ROI at 219. The Supervisory Production
+Controller stated that the CID agent asked Complainant about the
+threatening letter, as well as the flyer with a photo from Complainant’s
+Facebook that she found the week before on the bulletin board next to the
+library. ROI at 219.
+
+The record contains an August 17, 2017, email from the Plant Manager to a
+PPB listserv, stating that a note was left on an employee’s computer that
+threatened the employee and their family with harm. ROI at 252. The Plant
+Manager stated that information about that employee had also been posted
+on an official bulletin board in violation of orders and policy governing
+bulletin board use. ROI at 252. According to the Plant Manager,
+management was appalled by the actions, which were clearly intended to
+intimidate an employee, and the conduct would not be tolerated. ROI at 252.
+The Plant Manager averred that an investigation was being conducted and
+that management would not rest “until the perpetrator of this despicable act
+is found and held responsible,” ordering anyone with relevant information to
+report it to their immediate supervisor and/or CID. ROI at 252.
+                                     9                          2022003833
+
+There is a second August 17, 2017, email from the Plant Manager forwarding
+the initial email to supervisors and stating that the email needed to be read
+aloud at morning muster. ROI at 253.
+
+The record contains the September 14, 2017, CID Report of Investigation
+into the threatening letter placed on Complainant’s desk. ROI at 262-74. The
+report stated that CID was closing the investigation because no logical leads
+or suspects had been discovered and that, in the event a subject was
+identified, the investigation would be reopened. ROI at 262-63.
+
+Complainant averred that, on January 4, 2018, she went to the Finance
+Office to help walk a Financial Management Analyst (White woman) through
+the steps to complete a task while the Financial Management Analyst was
+covering for an absent coworker. ROI at 96, 162-63. According to
+Complainant, Complainant was familiar with this task because she had
+performed it when she worked in the Finance Office. ROI at 96-98.
+Complainant alleged that the new Finance Supervisor entered the room and
+loudly said, “What are you doing in here? You’re not allowed in here. Get
+out, so long as there is a hostile work environment you cannot come in
+here!”, which appeared to refer to a harassment complaint Complainant had
+filed with the Agency. ROI at 96-98. Complainant described the Finance
+Supervisor’s tone as loud, rude, unprofessional, and extremely adamant,
+which shocked Complainant and seemed to surprise the Financial
+Management Analyst as well. ROI at 96, 213. Complainant stated that, while
+the Finance Supervisor had never been her supervisor, she knew her
+because they had worked in the same branch and in her capacity as a union
+steward, adding that they never had any issues before that date. ROI at 96,
+213. According to Complainant, PMD and the Finance Office were required to
+work closely together, but, after January 4, 2018, it became extremely
+difficult for her to complete some day-to-day functions, and she no longer
+felt comfortable helping coworkers in Finance. ROI at 98.
+
+The Financial Management Analyst stated that she was covering a task for
+an absent coworker and asked Complainant for assistance because she had
+previously been responsible for the task. ROI at 164. According to the
+Financial Management Analyst, once the Finance Supervisor noticed that
+Complainant was in the Finance Office, “she yelled for her to leave as she is
+no longer welcome in finance due to an ongoing EEO complaint filed by
+[Complainant].” The Financial Management Analyst averred that the Finance
+Supervisor sounded rather upset that Complainant was in the Finance Office
+at all and “did not want her anywhere near any of the members of finance.”
+ROI at 164.
+                                     10                          2022003833
+
+According to the Financial Management Analyst, after Complainant left, she
+was “talked to” by the Finance Supervisor about “never having
+[Complainant] come into Finance again due to a pending EEO investigation.”
+ROI at 164. The Financial Management Analyst stated that she believed this
+was reprisal for Complainant’s prior EEO activity, explaining that
+Complainant had left the Finance Office because of harassment and that the
+Finance Supervisor referenced Complainant’s “prior issues when she very
+negatively asked [Complainant] to leave the area.” ROI at 164-65. The
+Financial Management Analyst averred that, for many years, she heard
+coworkers make negative comments about Complainant’s clothing, makeup,
+and how she carried herself. ROI at 165. According to the Financial
+Management Analyst, she felt that she had to hide that she was friends with
+Complainant from her coworkers because people continued to make negative
+comments about Complainant after she left the Finance Office. ROI at 165.
+
+The Finance Supervisor averred that, before she was the supervisor,
+Complainant had asked to be move out of the Finance Office because it was
+a hostile work environment. ROI at 159-60. According to the Finance
+Supervisor, she heard Complainant speaking with the Financial Management
+Analyst and asked if she could speak to her outside of the Finance Office.
+ROI at 160. The Finance Supervisor stated:
+
+     I mentioned to [Complainant] due to the HWE that she
+     submitted prior to me being reassigned to the Finance Branch
+     that I thought it would be a good idea not to come into the
+     Finance Office for her safety as well as others. I asked if she had
+     business then I would gladly assist if she would give me a call or
+     speak to her supervisor rather than putting herself in this
+     environment/situation. I mentioned I was only looking out for
+     her and others.
+
+ROI at 160. The Finance Supervisor stated that she spoke to Complainant in
+a calm manner and that Complainant was appreciative and understood her
+explanation. ROI at 160.
+
+The Supervisory Production Controller stated that, after Complainant told her
+what happened on January 4, 2018, she contacted the Finance Supervisor.
+ROI at 126. According to the Supervisory Production Controller, the Finance
+Supervisor told her that she heard Complainant’s office and walked out of
+her office to ask Complainant if she could speak with her in the hallway. ROI
+at 126.
+                                     11                         2022003833
+
+The Supervisory Production Controller averred that the Finance Supervisor
+informed her that she asked Complainant to leave the Finance Office due to
+her pending harassment claim and that it would be in Complainant’s best
+interest “if she [Complainant] would not put herself into a situation and if
+[Complainant] needs anything pertaining with the finance office to call [the
+Finance Supervisor] and she will assist.” ROI at 126. The Supervisory
+Production Controller stated that the Finance Supervisor said she was very
+professional and did not disrespect Complainant in any way. ROI at 126.
+
+The record contains May 4-5, 2017, emails from the Finance Branch Manager
+to Complainant, asking her to sign the Hostile Work Place Report and noting
+that he had received her statement. ROI at 228-30. In her statement,
+Complainant stated that, after she began working in the Finance Office,
+rumors began circulating in the department and throughout the base that
+Complainant was a stripper and that she got the job because she was a
+“personal stripper” for the former Plant Manager and “basically some sort of
+whore.” ROI at 239. According to Complainant, although she consistently
+wore business attire, she was constantly called into her supervisor’s office
+with complaints about her appearance from other women and singled out for
+dress code compliance. ROI at 239-40. Complainant requested that she be
+moved away from the women in the Finance Department who were
+subjecting her to a hostile work environment. ROI at 243.
+
+Complainant alleged that, on February 12, 2018, the Branch Manager called
+her into his office and told her that a very vulgar and graphic flyer
+concerning Complainant that had been brought to his attention. ROI at 99.
+Complainant stated that the flyer was pornographic, with a photo depicting
+multiple men having sex with a woman, whose face was covered with arrows
+to a message that those “wanting to have a good time” should call
+Complainant, and the flyer listed her personal cell phone number. ROI at 99-
+102. Complainant averred that, by covering the woman’s face and including
+her name and cell phone number, the implication was that she was the
+woman in the photo. ROI at 102. According to Complainant, the Branch
+Manager handled the situation very professionally and told her that he had
+already contacted CID, the EEO office, and the Plant Manager prior to calling
+her into his office. ROI at 99-100. Complainant averred that, later on
+February 12th, a supervisor in another department (“the Engineering
+Supervisor”; Asian man) told her that he had found a copy of the flyer while
+working overtime on Saturday, February 10, 2018. ROI at 99-100, 174-75.
+                                      12                          2022003833
+
+According to Complainant, an Engineering Technician (White man), an IT
+Specialist (Caucasian man), the Risk Management Division Manager
+(Hispanic man), an Occupational Safety & Health Specialist (Safety-1;
+Hispanic man), another Safety Specialist (Safety-2; woman), and someone
+else who worked in IT (“the IT Contractor”; man) also reported finding
+copies of the flyer. ROI at 102, 114, 137, 166-67, 170-71, 178-79, 182-84.
+
+The record contains a black and white flyer with a graphic image of multiple
+men having sex with a woman, the woman’s face is covered, and
+Complainant’s first and last name is nearby in all capital letters. ROI at 277.
+The following message is at the bottom of the flyer: “WANT A GOOD TIME
+CALL [COMPLAINANT’S FIRST NAME]. SHE WILLFULLY FILLS ALL NEEDS
+CUM ALL!!! ACTUAL[] FOOTAGE. CALL [PHONE NUMBER] FOR YOUR TURN.”
+ROI at 277. Complainant’s first and last name also appear at the top of the
+flyer in all capital letters. ROI at 277. To the left of the image, there is the
+following message “[THE UNION TRUSTEE]/[THE NATIONAL VP] *ALL OTHER
+COCK TRU[S]TEES.” ROI at 277.
+
+The Branch Manager stated that, on February 12, 2018, the IT Contractor
+brought a flyer to his office that he found in the stairwell, which he reported
+to CID. ROI at 137. According to the Branch Manager, MCPD came to the
+building to take statements. ROI at 137-38. The Supervisory Production
+Controller stated that she was on scheduled leave on February 12, 2018,
+and that the Branch Manager informed her of the incident on February 13th.
+ROI at 127-28.
+
+According to Complainant, the Plant Manager seemed to want to ignore and
+cover up what had happened. ROI at 100-01, 210. Complainant alleged that
+the Plant Manager waited a day or so until after she had sent an email to the
+base attorney, her chain of command, and the EEO office that the Plant
+Manager sent an email to the workforce about the situation and stated that
+there was zero tolerance for that sort of activity. ROI at 101, 210.
+Complainant averred that, since she received the death threat at her desk in
+August 2017, she had been asking management to use security cameras and
+monitor the footage, both as a safety precaution and to identify the
+responsible parties. ROI at 101. Complainant stated that, during the
+investigation, she learned that the security cameras in the building were not
+operational and that the Plant Manager did not want people to know that the
+cameras did not work. ROI at 101. Complainant alleged that, even if the
+harassment started out as a union matter, the harassment escalated and
+permeated the workplace, where both Complainant and the employees
+affected by the union audit worked. ROI at 101-02.
+                                    13                         2022003833
+
+The record contains an email Complainant sent at 3:00 p.m. on February 13,
+2018, to managers including the Supervisory Production Controller, the
+Branch     Manager,    and   the   Plant    Manager    with   an   attached
+Harassment/Discrimination Advisory Report form. ROI at 244, 251.
+According to Complainant, on February 12th, the Branch Manager called her
+into his office and informed her about some very disturbing and
+pornographic images that had been found around the base beginning on
+February 10th. depicting a woman being penetrated by multiple men. ROI at
+244. The flyers depicted a woman being penetrated by multiple men
+simultaneously, the woman’s face was covered with arrows, Complainant’s
+full name was written in bold letters, and below it said something to the
+effect of “for those wanting a good time to call me ‘[Complainant]’” along
+with Complainant’s actual cell phone number. ROI at 244. In the email,
+Complainant averred that she had no confidence in the Plant Manager, HR,
+or the EEO office and requested that the Investigator General (IG) assign
+someone to investigate the matter, rather than the Plant Manager or the
+EEO office. ROI at 244. Complainant stated, “While this may have begun
+because of a union matter, it has spilled out to a work matter,” adding that
+people should feel safe in their work environments, rather than physically
+and emotionally ill from ongoing harassment. ROI at 244. Complainant noted
+that, while she could not attach “the vulgar and graphic images” using her
+Agency computer, the images could be obtained from MCPD CID. ROI at
+244.
+
+The Plant Manager stated that, on February 12, 2018, the Branch Manager
+brought two pages that the Plant Manager described as “containing
+pornographic images of [Complainant]” to his office that an IT Contractor
+(man) found in the stairwell next to the technical library. ROI at 114, 137.
+According to the Plant Manager, flyers with the pornographic images were
+found in multiple locations on the morning of February 12th. ROI at 114. The
+Plant Manager averred that he directed the Branch Manager to contact the
+MCPD, who responded that morning. ROI at 114. The Plant Manager stated
+that he contacted MCPD’s CID to initiate an investigation. ROI at 115.
+According to the Plant Manager, he had MDMC security personnel save all
+entry point video surveillance camera footage for February 9-11, 2018, onto
+an external hard drive and print the access point logs for the criminal and
+management directed investigations. ROI at 115. The Plant Manager stated
+that CID conducted its investigation from February 16 through April 9, 2018,
+but was unable to determine who was responsible. ROI at 115.
+                                     14                          2022003833
+
+The Plant Manager stated that he sent an email to the workforce with
+instructions to managers and supervisors to read the message at morning
+muster for those without email access. ROI at 115. According to the Plant
+Manager, his email stated that the acts of intimidation and harassment were
+intolerable and that management intended to do everything possible to find
+the guilty party(s), and he requested that people come forward with any
+information. ROI at 115. The record contains an email the Plant Manager
+sent at 3:31 p.m. on February 13, 2018, to a PPB listserv, stating that, on or
+about February 12, pornographic images were placed in various locations
+throughout the plant and noting that, in August 2017, the same employee
+received a threatening note, and information about the employee was
+improperly posted on an official bulletin board. ROI at 253. The February
+13th email included language stating that management would not tolerate
+these continued actions, that an investigation was being conducted, and
+ordering anyone with information to report it to their supervisor and/or CID.
+ROI at 254. At 3:27 p.m., the Plant Manager had sent to supervisors and
+managers a version of the email that was sent to the PPB listserv with a
+copy of the EEO policy attached, asking them to read the email at the
+morning muster and to print and hand out hard copies of the EEO policy.
+ROI at 255-56.
+
+The Plant Manager averred that, on February 13, 2018, Complainant
+requested that the Marine Corps Logistics Command (LOGCOM) Inspector
+General (IG) conduct an investigation. ROI at 115. According to the Plant
+Manager, he forwarded Complainant’s email to LOGCOM and was told that
+the IG would only investigate if it involved military members. ROI at 115.
+The Plant Manager requested that LOGCOM appoint an investigator to
+conduct a management investigation, and he stated that the investigator
+was appointed on February 16, 2018. ROI at 115. On February 14, 2018, the
+Plant Manager forwarded Complainant’s February 13 email to the LOGCOM
+IG and asking if their office would be appointing someone to investigate. ROI
+at 257-58. On February 15, 2018, the LOGCOM Staff Secretary/Command
+Inspector General responded, asking if the matter involved a military
+member and suggested that, if the matter was “civilian on civilian,” it would
+be better to handle by management inquiry. ROI at 257. On February 16,
+2018, the LOGCOM Commanding General directed an investigator to conduct
+a management investigation into Complainant’s allegations. ROI at 260-61.
+
+According to the Plant Manager, on February 15, 2018, he asked the
+Supervisory Production Controller to convey to Complainant that he would
+relocate her to the secured lab area in a secured building with very limited
+access and doors that were cypher lock enabled. ROI at 115.
+                                       15                          2022003833
+
+The Plant Manager stated that, while relocating Complainant might not stop
+whoever was placing the documents, it would provide physical security for
+her. ROI at 115. The Plant Manager averred that Complainant did not want
+to move. ROI at 115. Complainant denied that the Plant Manager asked her
+if she wanted to move to the secured lab on February 15, 2018, stating that
+her doctor took her out of work starting February 14, 2018. ROI at 210.
+According to Complainant, when she returned to work in April and learned
+that additional flyers had been discovered during her medical leave, the
+Supervisory Production Controller mentioned the possibility of moving to the
+secured lab area. ROI at 210. Complainant alleged that she told the
+Supervisory Production Controller that she did not feel safe moving to an
+area away from the Supervisory Production Controller and others, where, if
+something happened to Complainant, she would be alone. ROI at 210.
+
+Complainant stated that, after learning about the flyers, she took a 60-day
+medical leave for severe depression. ROI at 102. Complainant alleged that
+she continued to feel less secure and less safe in the workplace because
+nothing was resolved and she was in constant fear of what would happen
+next. ROI at 103. Complainant averred that Safety-1 found one of the flyers
+during her 60-day leave. ROI at 207. Safety-1 stated that he was cleaning
+the Safety area in April 2018 with Safety-2 when he found a copy of the
+pornographic flyer involving Complainant sitting face down on an unused
+table. ROI at 184. According to Safety-1, he immediately folded the flyer in
+half and turned it in to his supervisor. ROI at 184. Complainant alleged that,
+although additional people reported the flyers, the Plant Manager ignored
+this new information. ROI at 210-11. According to Complainant, during her
+absence, CID conducted an investigation. ROI at 102. Complainant averred
+that, when she spoke to the CID agent about the new information, the agent
+told her that he was only aware of people who had reported seeing the flyer
+on February 10 and 12, 2018. ROI at 210-11. Complainant stated that CID
+was unable to identify the responsible individual(s), describing it like “finding
+a needle in a haystack.” ROI at 102.
+
+The record contains a March 21, 2018, CID Report of Investigation
+concerning obscene papers found depicting two men and one woman in a
+sexually explicit position found in common areas at PPB. ROI at 283-84. The
+report stated that, because no logical leads or suspect(s) or person(s) of
+interest had been discovered, the investigation was being closed as
+unresolved but would be reopened in the event that a subject was identified.
+ROI at 284. According to the report, the investigator had attempted to
+contact the Staff Judge Advocates Office to go over the investigation but had
+not received a response. ROI at 284.
+                                      16                         2022003833
+
+The latest entry in the Report of Investigation is April 5, 2018, so it is not
+clear if CID followed up with the individuals who found copies of the flyer
+after Complainant went on leave. ROI at 284.
+
+During the EEO investigation, the investigator asked the Plant Manager if he
+engaged union officials in order to help stop and prevent further harassment
+of Complainant. ROI at 116. The Plant Manager responded,
+
+      No, it would not have been appropriate for management to
+      contact union officials for what is a management responsibility.
+      Contact might also have [been] interpreted by union officials as
+      an attempt to blame them or hold them responsible for the
+      things that happened to Complainant.
+
+ROI at 116.
+
+Complainant initiated contact with an EEO counselor on August 16, 2017. On
+September 28, 2017, Complainant filed an EEO complaint, which she
+subsequently amended, alleging that she was subjected to discriminatory
+harassment based on national origin (Hispanic), 2 sex (female), and reprisal
+for prior protected EEO activity when:
+
+      a.      On July 6, 2017, during a union meeting at the union hall, the
+              Union President said the reason the union was being put under
+              trusteeship was because Complainant was sleeping with the top
+              guys in the district;
+      b.      On July 18, 2017, during a union meeting, Employee-3 pointed
+              to Complainant and asked her if she was the Union Trustee’s
+              girlfriend as “rumor had it”;
+      c.      On July 18, 2017, during a monthly union member meeting at
+              the union hall, Employee-4 asked the Union Trustee if he was
+              “fucking [Complainant]” and, during the same meeting,
+              Employee-3 asked Complainant if the Union Trustee was her
+              boyfriend;
+      d.      On August 8, 2017, outside of the workplace, the Union VP
+              called Complainant a whore, liar, and snitch and yelled at the
+              Union District Employee for the union takeover;
+
+2
+  Although Complainant designated her race as “Hispanic,” the Commission
+recognizes this term as an indication of national origin rather than race.
+Accordingly, we will address her claim as involving an allegation of national
+origin discrimination.
+                                    17                        2022003833
+
+     e.    On August 10, 2017, an unknown person placed a Facebook
+           picture along with typed words to slander and defame
+           Complainant’s character on the bulletin board in the building
+           where Complainant worked;
+     f.    On August 14, 2017, while Complainant was returning to work
+           and coming up the staircase, an unknown employee yelled,
+           “Hey, [Complainant]! Is your name [Complainant]?” and, when
+           Complainant responded “yes,” then asked Complainant, “So
+           you’re the one that is fucking that new union guy who took over,
+           huh?”;
+     g.    On August 17, 2017, at the beginning of Complainant’s shift,
+           Complainant found an anonymous letter on her work desk that
+           stated, “[Complainant], snitches get stitches. You and your
+           family will pay!!!! Being a District 12 slut won’t get you very
+           far!!! Die snitch bitch!!!”;
+     h.    On January 4, 2018, the Finance Supervisor told Complainant to
+           leave the Finance Office because of a pending hostile work
+           environment claim; and
+     i.    On February 12, 2018, Complainant learned that a flyer was
+           found in the workplace depicting multiple men having sex with a
+           woman, where the face of the woman was covered with arrows
+           to a message for those wanting to have a good time to call
+           “[Complainant]” along with Complainant’s personal cell number
+           and was informed that copies of the same flyer were posted
+           throughout her workplace starting Saturday, February 10, 2018.
+
+The Agency dismissed allegations (a), (b), (c), and (d), stating that the
+dismissal was pursuant to 29 C.F.R. § 1614.106(a)(2) for naming an
+improper agency because the incidents occurred outside of the workplace
+and between union officials regarding union matters. 3
+
+
+
+
+3
+   The Agency dismissed an additional claim pursuant to 29 C.F.R. §
+1614.107(a)(1) for failure to state a claim. Complainant does not challenge
+the dismissal of this claim on appeal. The Commission exercises its
+discretion to address only those issues specifically raised on appeal and
+declines to address this procedural dismissal. See Equal Employment
+Opportunity Management Directive for 29 C.F.R. Part 1614 (EEO MD-110) at
+Chap. 9, § IV.A (Aug. 5, 2015).
+                                    18                         2022003833
+
+At the conclusion of the investigation, the Agency provided Complainant with
+a copy of the report of investigation and notice of her right to request a
+hearing   before     an    Equal    Employment     Opportunity  Commission
+Administrative Judge (AJ). Complainant timely requested a hearing, and the
+matter was docketed as Hearing No. 480-2019-00136X. Complainant filed a
+motion to amend her complaint to include the dismissed allegations (a)
+through (d).
+
+The Agency filed a motion for summary judgment, arguing that the alleged
+harassment was based on Complainant’s union whistleblowing and that there
+was no reason to believe that the harassment was based on her race and
+sex. According to the Agency, although some of the words and the
+pornographic image had sexual contend that could easily support a claim of
+sexual harassment in a different case, the circumstances in this case showed
+that “any discrimination was based on anger from ousted Union leaders over
+the Complainant’s disclosures.” MSJ at 11. The Agency also contended that it
+took prompt and reasonable action, while Complainant only partially
+cooperated in management’s investigation. The Agency’s motion cited a
+Human Resources Satellite Office Sign-In Sheet, which appears to show that
+Complainant visited the office on July 10, 2017, and August 14, 2017. MSJ
+at Attachments 1, 2. The Agency also cited a May 23, 2018, email from the
+Heavy Mobile Mechanic, who was acting as Complainant’s union
+representative, to the Supervisory Production Controller, which states:
+
+     I have just talked to Complainant about her meeting today
+     pertaining to her case as she has stated that management is
+     NOT going to accommodate her with tele-work, she will not be
+     making any phone conference today due to [Complainant] is still
+     under Dr. Care and is not in a right state of mind to answer any
+     kind of questions pertaining to her case [Complainant] will be
+     able to complete her investigation as soon as her Dr. clears her
+     for duty.
+
+MSJ at Attachment 3. On May 23, 2018, the Supervisory Production
+Controller responded, stating that she understood the concern for
+Complainant’s state of mind during an investigative interview and, if
+Complainant’s mental state improved, they could arrange a meeting. MSJ at
+Attachment 3.
+                                     19                          2022003833
+
+The Agency asserted that, while it appeared as though the Finance
+Supervisor blocked Complainant from the Finance Office because of her EEO
+activity, Complainant was referencing a 2015 EEO complaint, which the
+Finance Supervisor had no knowledge of. According to the Agency, the case
+referenced by the Finance Supervisor was a hostile work environment
+allegation that “was not an EEO case at all.” MSJ at 15. The Agency also
+argued that the Finance Supervisor did not ask Complainant to leave in
+retaliation for filing a complaint but based on Complainant’s previous stated
+concern for her safety. Finally, the Agency argued that it properly dismissed
+allegations (a) through (d) pursuant to 29 C.F.R. § 1614.106(a)(2) because
+they involved conduct by union officials during an official union meeting held
+regarding exclusively union matters.
+
+Complainant filed a response opposing the Agency’s motion for summary
+judgment and challenging the Agency’s recitation of the undisputed material
+fact. According to Complainant, she established that she was subjected to
+harassment based on her sex and her prior protected EEO activity. According
+to Complainant, the harassment included death threats and pornographic
+flyers that continued to circulate in the workplace after February 2018, and,
+as a result, she was forced to sell her house, and she attempted suicide.
+Complainant contended that the Agency failed to promptly investigate when
+she reported sexual harassment to the Plant Manager and the HR Specialist
+in July 2017. Complainant argued that the Plant Manager’s August 17, 2017,
+email did not constitute effective action because it did not include accurate
+information regarding the Agency’s internal harassment policy and
+procedures and did not stop the harassment. Finally, Complainant asserted
+that the Agency could not escape liability for the dismissed allegations by
+arguing that the issues were purely union issues because the issues did not
+involve union officials acting in their representational capacity. Complainant
+further noted that, at the time, there were no local union officials because
+the local had been put in trusteeship.
+
+The Agency replied to Complainant’s opposition, arguing that Complainant
+failed to raise a genuine dispute of material fact. The Agency argued that it
+was entitled to judgment as a matter of law on the basis of race. The Agency
+also contended that Complainant failed to provide facts to establish a prima
+facie case of reprisal based on prior EEO activity. According to the Agency,
+Complainant did not show that the harassment was based on her protected
+classes rather than a response by ousted union officials and their supporters
+against anyone perceived to be part of the union takeover. The Agency
+asserted that management took reasonable and prompt measures to
+address Complainant’s allegations.
+                                     20                          2022003833
+
+On September 30, 2020, the AJ assigned to the case issued an Order
+Dismissing Complainant’s Request for Hearing Without Prejudice and
+Scheduling Status Conference. Complainant’s hearing request was reinstated
+under Hearing No. 480-2021-00012X.
+
+On May 2, 2022, the AJ granted the Agency’s motion for summary judgment
+and issued a decision without a hearing finding no discrimination. The AJ
+adopted, with modifications, the statement of undisputed material facts set
+forth in Complainant’s opposition to the Agency’s motion. The AJ reversed
+the Agency’s dismissal of allegations (a) through (d) for failure to state a
+claim, finding that the allegations did not concern union matters and were
+properly assessed as part of Complainant’s hostile work environment claim.
+
+However, the AJ found that, while these statements and actions were not
+subject to dismissal because they occurred during or as part of an internal
+union trusteeship dispute, the context was relevant in assessing whether the
+totality of the harassment was sufficiently severe or pervasive to create a
+hostile work environment for a reasonable person in Complainant’s
+circumstances. According to the AJ, considering that context, allegations (a)
+through (g), while very offensive, were insufficiently severe or pervasive to
+create an abusive working environment for a reasonable person in
+Complainant’s circumstances. The AJ found the Commission’s decision in
+Janay K. v. Dep’t of Justice, EEOC Appeal Nos. 2019004210 & 2019005734
+(Sept. 17, 2020), which affirmed the agency’s final action finding that the
+harassment was not motivated by complainant’s sex or severe or pervasive,
+to be instructive. In Janay K., complainant alleged that: (1) there was a
+rumor that complainant, a female Special Agent, was sleeping with a
+married police officer; (2) a sergeant at the Sheriff’s Office stated he could
+not have “those girls working over here,” referring to complainant, who was
+working on a task force at the Sheriff’s Office; (3) on an ongoing basis, a
+male colleague displayed indignant behavior and demeaned and
+disrespected complainant in front of new agents; (4) a rumor that
+complainant was sleeping with a married officer was posted online; (5) while
+complainant and her male colleague were executing an arrest warrant, they
+had a disagreement, and the colleague called complainant a “cunt”; (6) for
+over a year, the male colleague repeatedly told new agents that whatever
+advice complainant provided was “stupid”; and (7) a second male colleague,
+in a room full of federal agents and task force members awaiting a grand
+jury, stated that the office (to which he and complainant were assigned and
+where complainant was one of only two female agents) was a mess and that
+the Resident Agent in Charge was “banging” a female agent.
+                                      21                          2022003833
+
+The AJ stated that, in Janay K., the Commission held that, while the conduct
+and statements were offensive, the undisputed evidence showed that the
+incidents were more likely the result of workplace disputes and petty
+jealousy between two coworkers stemming from routine workplace conflicts
+between the male colleague and complainant. Further, the AJ noted that,
+while it was undoubtedly true that complainant was offended by the rumors
+about her affair with a police officer, the Commission found that “gossip of
+this sort was common in the workplace regardless of the sex of the subject
+of the gossip” and that the weight of the evidence did not establish a
+discriminatory motivation to the actions in dispute. The AJ determined that,
+in the instant case, the harassment stemmed from the workplace-related
+conflict between Complainant and the people who objected to Complainant’s
+actions that led to the local union being placed in trusteeship. According to
+the AJ, male employees who believed to have caused or benefited from the
+trusteeship were also subjected to harassing statements and conduct.
+
+According to the AJ, two events appeared to be unrelated to the union
+conflict: the Finance Supervisor asking Complainant to leave the Finance
+Office and the copies of the flyer being found at work February 10-12, 2018.
+The AJ found that the Finance Supervisor’s request did not impact a term,
+condition, or privilege of Complainant’s employment and was not reasonably
+likely to deter Complainant or other employees from engaging in EEO
+activity. The AJ determined that there was no evidence that Complainant’s
+national origin or sex was a basis for her request. The AJ therefore
+concluded that Complainant did not establish a prima facie case of
+discriminatory or retaliatory harassment regarding the Finance Supervisor’s
+request.
+
+The AJ found that, although the flyer was highly offensive, liability could not
+be imputed to the Agency regarding the flyer. According to the AJ, upon the
+discovery of the flyer, the Plant Manager directed the Branch Manager to
+contact MCPD CID, who investigated, and directed security personnel to save
+all entry point video surveillance camera footage from February 9-11, 2018,
+and to print the access point log files. The AJ noted that the Plant Manager
+sent an email on February 13, 2018, addressing the August 2017 note and
+the flyers found from February 10-12, 2018, and directed managers and
+supervisors to read the email message and hand out copies of the Agency’s
+EEO policy at the morning muster. The AJ found that the Plant Manager
+offered to relocate Complainant to a secure building with limited access that
+would provide her with physical therapy and that Complainant declined to be
+relocated.
+                                      22                          2022003833
+
+The AJ determined that the Agency took immediate and appropriate
+corrective action to address the harassment and that the Agency’s action
+was reasonably calculated to address the harassment and halt further
+harassment and concluded that, as a result, liability could not be imputed to
+the Agency for the February 2018 harassment.
+
+When the Agency failed to issue a final order within forty days of receipt of
+the AJ’s decision, the AJ’s decision finding that Complainant failed to prove
+that the Agency subjected her to discrimination as alleged became the
+Agency’s final action pursuant to 29 C.F.R. § 1614.109(i).
+
+The instant appeal followed.
+
+                         CONTENTIONS ON APPEAL
+
+On appeal, Complainant contends that the AJ found that the Plant Manager’s
+action on February 13, 2022, was reasonably calculated to address
+harassment that, by that point, had been continuing for months.
+Complainant notes that the Plant Manager’s February 13th email referenced
+the August 2017 note and stated that management was appalled “by these
+continued actions” that were intended to intimidate an Agency employee.
+Complainant also points out that copies of the flyer continued to appear in
+the workplace after the Plant Manager sent the email on February 13th.
+Complainant also argues that the Agency failed to provide accurate
+information regarding the Agency’s internal harassment policy and
+procedures. According to Complainant, the AJ appropriately determined that
+allegations (a) through (d) were properly before the Commission because
+the harassment was not conducted by individuals acting in a
+representational capacity and that, at the time, there were no union officials
+because the local union had been put in trusteeship. Complainant questions
+how the AJ found that the sexually harassing and vulgar conduct and
+statements directed towards her was motivated by Complainant’s perceived
+role in causing the local union to be placed under trusteeship. Complainant
+asserts that she was subjected to sexually harassing and vulgar language
+that amounted to discriminatory harassment based on sex.
+
+In response, the Agency characterizes Complainant’s appeal as a case about
+an officer in the local union who reported that her local union was engaging
+in financial improprieties, which resulted in the national chapter removing all
+of the local union officers and placing the local chapter in trusteeship.
+                                     23                          2022003833
+
+According to the Agency, Complainant subsequently was subjected to
+disparaging comments and treatment that she asserts were based on her
+race, sex, and reprisal rather than her perceived “snitching” on the union
+and the resulting removal of local union officers. The Agency contends that,
+on appeal, Complainant fails to identify any material facts in dispute. The
+Agency asserts that the Finance Supervisor was unaware of Complainant’s
+2015 EEO complaint or any other protected EEO activity and that it was
+unlikely that the Finance Supervisor asking Complainant to leave the work
+area would deter a reasonable person from engaging in protected activity.
+The Agency contends that Complainant failed to establish a prima facie case
+of harassment based on sex because the record was replete with evidence
+that the offensive conduct towards Complainant was based on anger at her
+perceived rule in the union takeover. According to the Agency, there is
+evidence that Black and White individuals, including men, received similar
+treatment and were yelled at during union meetings, accused of sexual
+relationships, and were the subject of pornographic flyers. The Agency
+argues that, even taken together, the name calling, the pornographic picture
+with Complainant’s name on it, a posting on a bulletin board, a brief
+exchange in a stairwell where Complainant was accused of sleeping with a
+union official, and “a letter purportedly left on the Complainant[’s] desk
+calling her snitch and slut,” these events were not pervasive or sufficiently
+severe to establish an abusive workplace. Agency Brief at 9. The Agency
+states that the AJ correctly cited Janay K. and that a similar decision is
+warranted in the instant case despite the sexual nature of the comments.
+
+                           STANDARD OF REVIEW
+
+In rendering this appellate decision we must scrutinize the AJ’s legal and
+factual conclusions, and the Agency’s final order adopting them, de novo.
+See 29 C.F.R. § 1614.405(a) (stating that a “decision on an appeal from an
+Agency’s final action shall be based on a de novo review . . .”); see also
+Equal Employment Opportunity Management Directive for 29 C.F.R. Part
+1614 (EEO MD-110), at Chap. 9, § VI.B. (Aug. 5, 2015) (providing that an
+administrative judge’s determination to issue a decision without a hearing,
+and the decision itself, will both be reviewed de novo). This essentially
+means that we should look at this case with fresh eyes. In other words, we
+are free to accept (if accurate) or reject (if erroneous) the AJ’s, and
+Agency’s, factual conclusions and legal analysis – including on the ultimate
+fact of whether intentional discrimination occurred, and on the legal issue of
+whether any federal employment discrimination statute was violated. See
+id. at Chapter 9, § VI.A. (explaining that the de novo standard of review
+“requires that the Commission examine the record without regard to the
+                                     24                          2022003833
+
+factual and legal determinations of the previous decision maker,” and that
+EEOC “review the documents, statements, and testimony of record, including
+any timely and relevant submissions of the parties, and . . . issue its
+decision based on the Commission’s own assessment of the record and its
+interpretation of the law”).
+
+                                 ANALYSIS
+
+Procedural Dismissal
+
+The Agency dismissed allegations (a) through (d), reasoning that this
+portion of the complaint was filed against an improper agency. The
+regulation set forth at 29 C.F.R. § 1614.107(a)(1) states, in relevant part,
+that an agency shall dismiss a complaint or any portion of a complaint that
+fails to state a claim under § 1614.106(a). Pursuant to 29 C.F.R. §
+1614.106(a), a complaint must be filed with the agency that allegedly
+discriminated against the complainant.
+
+The Commission has no jurisdiction over claims related to the terms of a
+collective bargaining agreement, enforcing the terms of a collective
+bargaining agreement, or relations with union representatives. See Herb P.
+v. Dep’t of the Treasury, EEOC Appeal No. 2020000916 (July 15, 2021);
+Lawrence L. v. U.S. Postal Serv., EEOC Appeal No. 0120160893 (Apr. 26,
+2016); McDonald v. U.S. Postal Serv., EEOC Appeal No. 01A60555 (May 19,
+2006). However, the Agency may be liable under Title VII for failing to take
+action to remedy the harassment of its employees by third parties, including
+by union officials who were also employees of the Agency, even if the union
+officials were acting in their union capacity. See Alba H. v. Dep’t of the Air
+Force, EEOC Appeal No. 0120171882 (Aug. 9, 2017) (complainant’s
+complaint alleging numerous instances of harassment by the union president
+stated a claim) req. for recon. denied, EEOC Request No. 0520170608 (Feb.
+8, 2018) (finding that the complaint was properly filed against the agency
+because complainant alleged numerous incidents of harassment by another
+agency employee while working at an agency facility); Sammons v. U.S.
+Postal Serv., EEOC Appeal No. 01A55105 (Dec. 19, 2005) (reversing
+dismissal of complainant’s claim that a union representative asked for sexual
+favors in exchange for union representation); but see Sammons v. U.S.
+Postal Serv., EEOC Appeal No. 0120064523 (Sept. 5, 2008) (affirming
+decision finding that complainant could not establish a prima facie case of
+harassment because there was no basis for imputing liability to the agency
+because the record established that the alleged harassment did not take
+place on agency property and the alleged harasser, who was not an agency
+                                    25                         2022003833
+
+employee, was a union official acting in his union capacity). Here, we find
+that the AJ properly reversed the Agency’s dismissal of allegations (a)
+through (d) for failure to state a claim and that the record is sufficiently
+developed to address the merits of these allegations.
+
+Summary Judgment
+
+The Commission’s regulations allow an AJ to issue a decision without a
+hearing upon finding that there is no genuine issue of material fact. 29
+C.F.R. § 1614.109(g). EEOC’s decision without a hearing regulation follows
+the summary judgment procedure from federal court. Fed. R. Civ. P. 56. The
+U.S. Supreme Court held summary judgment is appropriate where a judge
+determines no genuine issue of material fact exists under the legal and
+evidentiary standards. Anderson v. Liberty Lobby, Inc., 477 U.S. 242, 255
+(1986). In ruling on a summary judgment motion, the judge is to determine
+whether there are genuine issues for trial, as opposed to weighing the
+evidence. Id. at 249. At the summary judgment stage, the judge must
+believe the non-moving party’s evidence and must draw justifiable
+inferences in the non-moving party’s favor. Id. at 255. A “genuine issue of
+fact” is one that a reasonable judge could find in favor for the non-moving
+party. Celotex v. Catrett, 477 U.S. 317, 322-23 (1986); Oliver v. Digital
+Equip. Corp., 846 F.2d 103, 105 (1st Cir. 1988). A “material” fact has the
+potential to affect the outcome of a case.
+
+An AJ may issue a decision without a hearing only after determining that the
+record has been adequately developed. See Petty v. Dep’t of Def., EEOC
+Appeal No. 01A24206 (July 11, 2003). We carefully reviewed the record and
+find that it is adequately developed. To successfully oppose a decision
+without a hearing, Complainant must identify material facts of record that
+are in dispute or present further material evidence establishing facts in
+dispute.
+
+Here, we find that there are no genuine issues of material fact and that the
+AJ properly issued a decision without a hearing. We also note that
+Complainant’s brief in support of her appeal focused exclusively on
+harassment based on sex and reprisal. The Commission exercises its
+discretion to address only those issues specifically raised on appeal and
+declines to address Complainant’s allegation that she was subjected to
+discrimination based on national origin. See EEO MD-110 at Chap. 9, § IV.A.
+                                     26                          2022003833
+
+However, as discussed further below, we find that the AJ incorrectly issued a
+decision in favor of the Agency, as the preponderance of the evidence
+establishes that Complainant was subjected to harassment based on sex and
+reprisal for which the Agency is liable. See Shayna P. v. Dep’t of Homeland
+Sec., EEOC Appeal No. 0120141506 (June 2, 2017) (the AJ properly issued a
+decision without a hearing but issued the decision in favor of the incorrect
+party because the preponderance of the evidence established that the
+agency discriminated against complainant).
+
+Sexual Harassment
+
+In order to establish a prima facie case of sexual harassment, a complainant
+must prove, by a preponderance of the evidence, the existence of five
+elements: (1) that she is a member of a statutorily protected class; (2) that
+she was subjected to unwelcome conduct related to her sex; (3) that the
+harassment complained of was based on her sex; (4) that the harassment
+had the purpose or effect of unreasonably interfering with her work
+performance and/or creating an intimidating, hostile, or offensive work
+environment; and (5) that there is a basis for imputing liability to the
+employer. Celine      B.   v.   Dep’t    of    the   Navy,   EEOC     Appeal
+No. 2019001961 (Sept. 21, 2020). The harasser’s conduct should be
+evaluated from the objective viewpoint of a reasonable person in the victim’s
+circumstances. Enforcement Guidance on Harassment in the Workplace,
+EEOC Notice No. 915.064 at § III.B.3.d (Apr. 29, 2024).
+
+In other words, to prove her hostile work environment claim, Complainant
+must establish that she was subjected to conduct that was either so severe
+or so pervasive that a “reasonable person” in Complainant’s position would
+have found the conduct to be hostile or abusive. Complainant must also
+prove that the conduct was taken because of a protected basis; in this case,
+her sex. Only if Complainant establishes both of those elements – hostility
+and motive – will the question of Agency liability present itself.
+
+With respect to element (5), an employer is subject to vicarious liability for
+harassment when it is created by a supervisor with immediate (or
+successively higher) authority over the employee.          See Burlington
+Industries, Inc., v. Ellerth, 524 U.S. 742, 118 S. Ct. 2257, 2270 (1998);
+Faragher v. City of Boca Raton, 524 U.S. 775, 118 S. Ct. 2275, 2292-93
+(1998). However, where the harassment does not result in a tangible
+employment action the agency can raise an affirmative defense, which is
+subject to proof by a preponderance of the evidence, by demonstrating: (1)
+that it exercised reasonable care to prevent and correct promptly any
+                                     27                          2022003833
+
+harassing behavior; and (2) that complainant unreasonably failed to take
+advantage of any preventive or corrective opportunities provided by the
+agency or to avoid harm otherwise. See Burlington Industries, supra;
+Faragher, supra; Enforcement Guidance on Harassment in the Workplace, at
+§ IV.C.2. This defense is not available when the harassment results in a
+tangible employment action (e.g., a discharge, demotion, or undesirable
+reassignment) being taken against the employee. In the case of coworker
+harassment, an agency is responsible for acts of harassment in the
+workplace where the agency (or its agents) knew or should have known of
+the conduct, unless it can show that it took immediate and appropriate
+corrective action. Id.
+
+It is undisputed that, in her capacity as the local union Secretary Treasurer,
+Complainant requested an external audit of the local union’s finances and
+that, as a result, union district personnel placed the local union in
+trusteeship on July 5, 2017. When the local was placed under trusteeship,
+the local union executive board, including Complainant, were relieved of
+their union duties. During a July 6, 2017, union meeting, the record reflects
+that various former local union officials, including the Union President,
+blamed Complainant for the local union’s problems. These local union
+officials, including the Union President, stated that the union was placed in
+trusteeship because Complainant was sleeping with district union officials,
+including the Union Trustee, and because district union officials wanted to
+“get into Complainant’s pants.” Union members asked Complainant if she
+was the Union Trustee’s girlfriend and asked the Union Trustee if he was
+“fucking [Complainant].” The Union VP called Complainant “a whore, liar,
+and snitch.”
+
+As these rumors began to spread in the workplace, Complainant reported it
+to the HR Specialist and also spoke with the Plant Manager. Complainant
+stated that the Plant Manager told her that it was a union matter that he
+could not pursue, whereas the Plant Manager stated that Complainant would
+not provide the needed details for him to investigate the matter.
+
+On August 10, 2017, Complainant reported that she found documents
+posted on an official bulletin board in the building where she worked,
+including a photo from her Facebook showing her at district union training in
+Hawaii with an added caption alleging that Complainant spent the training
+partying with the Union Trustee and the National VP.
+                                      28                          2022003833
+
+On August 14, 2017, Complainant reported that she was walking up the
+stairs to return to work when an unknown employee asked if her name was
+Complainant and, when she responded affirmatively, asked her if she was
+“the one that is fucking that new union guy who took over.”
+
+On August 17, 2017, Complainant found an anonymous letter on her desk at
+work. The letter, which was typed in all capital letters, stated that “snitches
+get stitches,” that Complainant and her family would “pay,” and that being a
+district “slut” would not get her very far. At the bottom, “Die snitch bitch!!!”
+was handwritten in all capital letters. Complainant reported the letter to the
+Supervisory Production Controller and the Branch Manager, who immediately
+contacted MCPD, who determined that CID would need to handle the
+investigation. On August 17, 2017, the Plant Manager sent an email to the
+plant, stating that such conduct would not be tolerated and imploring
+anyone with knowledge to come forward. On August 17, 2017, Complainant
+completed an Agency Hostile Work Place form, alleging harassment including
+the threatening letter she found on August 17, being accosted by an
+unknown employee who asked if she was “fucking that new union guy” on
+August 14, and finding flyers on a bulletin board including a photo from
+Complainant’s Facebook that was captioned with allegations against
+Complainant. CID closed the investigation.
+
+Between February 10-12, 2018, Agency employees began finding
+pornographic flyers in the workplace that depicted multiple men having sex
+with a woman. The woman’s face was covered, but Complainant’s full name
+was on the flyer, and the flyer suggested calling Complainant and included
+her real cell phone number. The Branch Manager, who learned about the
+flyers on February 12th, immediately reported the matter to MCPD CID and
+subsequently notified Complainant about the discovery. CID conducted an
+investigation, and the Agency also conducted its own internal management
+investigation. Employees continued to find the pornographic flyers through
+at least April 2018, but the record does not reflect that the subsequent
+discoveries were reported to CID or that CID interviewed the employees who
+found copies of the flyer after February 12, 2018.
+
+Complainant’s physician placed her on a 60-day medical leave. Complainant
+returned to work in April 2018 and learned that additional copies of the flyer
+had been discovered during her medical leave. The Supervisory Production
+Controller informed Complainant that the Plant Manager had offered to
+relocate Complainant to another building with secured access and doors that
+were cypher lock enabled, but Complainant declined this relocation offer.
+Complainant subsequently took additional extended medical leave.
+                                    29                         2022003833
+
+It is undisputed that Complainant is a member of a protected class based on
+her sex and can therefore establish the first prong of a prima facie case of
+harassment. The AJ found that, while most of the alleged harassment
+referred to or related to Complainant’s sex, the undisputed evidence
+established that the conduct and statements were motivated by
+Complainant’s perceived role in causing the local union to be placed under
+trusteeship and the local union officers to be removed.
+
+Local union officials suggested that the local was placed under trusteeship
+because Complainant was sleeping with district union officials or because
+district union officials wanted to sleep with Complainant, and they called
+Complainant whore, liar, and snitch. Union members asked Complainant if
+she was dating the Union Trustee and asked the Union Trustee if he was
+“fucking” Complainant. Complainant found flyers on an Agency bulletin
+board suggesting that, during district union training in Hawaii, Complainant
+was partying with the Union Trustee and other district union officials. A
+stranger approached Complainant at work and asked if she was “fucking that
+new union guy who took over.” Complainant found a threatening note on her
+desk that threatened both Complainant and her family. The note referred to
+Complainant as a snitch but also referred to Complainant as a “District 12
+slut” and a “bitch.” Considering these instances collectively, the AJ found
+that, while offensive, this harassment was not sufficiently severe or
+pervasive to constitute a hostile work environment for a reasonable person
+in Complainant’s circumstances. We disagree.
+
+The AJ relied on the Commission’s decision in Janay K. Like Complainant, in
+Janay K., the complainant was the subject of rumors, including a rumor that
+she was sleeping with a married police officer. The complainant learned
+about the rumor and also heard about it online. The complainant’s male
+coworker argued with her, demeaned her and disrespected her, called her a
+“cunt” when they had a disagreement, and told new agents that whatever
+advice complainant provided was “stupid.” Another male coworker publicly
+stated that the Resident Agent in Charge of his office was “banging” a
+female agent, and the complainant was one of only two female agents in the
+office.
+
+We found in Janay K. that, even if we accepted that the conduct occurred as
+alleged by complainant, the undisputed evidence and even some of
+complainant’s statements showed that the alleged incidents were more likely
+the result of workplace disputes and petty jealousy between Complainant
+and the male coworker.
+                                     30                         2022003833
+
+We also found that the male coworker’s actions were insufficiently severe or
+pervasive to constitute a hostile work environment and that there was no
+evidence that his conduct unreasonably interfered with complainant’s job
+performance. The record reflected that these were isolated incidents
+stemming from routine workplace conflicts and, while the complainant was
+undoubtedly offended by the rumors that she was having an affair with a
+police officer, the record showed that this sort of gossip was common in the
+workplace regardless of the sex of the subject of the gossip. We found that
+the weight of the evidence did not establish that the alleged harassment was
+motivated by the complainant’s sex.
+
+Here, in contrast, there is no evidence of pervasive gossip about the sex
+lives of anyone other than Complainant. Some men, such as the Union
+Trustee and the Union Sergeant-at-Arms, were accused of sleeping with
+Complainant or wanting to sleep with Complainant. However, there is no
+evidence in the record that anyone, male or female, was asked about
+sleeping or wanting to sleep with anyone other than Complainant. There is
+no evidence that, other than the photo from Complainant’s Facebook that
+was accompanied by comments making accusations against Complainant,
+anyone else’s photos or social media posts were posted on an Agency
+bulletin board. There is no evidence in the record that anyone other than
+Complainant received threatening notes at their desk.
+
+We also find that the AJ erred in analyzing the pornographic flyer separately
+from the instances of harassment that occurred in 2017. The record reflects
+that the pornographic flyer listed the names of the Union Trustee and the
+Union VP, although we note that the flyer listed Complainant’s full name
+twice, included her first name in a comment, and also included her actual
+cell phone number. The men’s phone numbers were not included on the
+flyer. The men’s names were only listed once, and their names appeared off
+to the side. In contrast, Complainant’s name appeared in the center of the
+pornographic image.
+
+Upon review, we find that the preponderance of the evidence in the record
+establishes that this harassment was based on Complainant’s sex. Although
+Complainant may have first attracted the ire of some former local union
+executive board members because of her perceived role in having the local
+union placed in trusteeship, the evidence in the record reflects that the
+harassment was based on Complainant’s sex.
+                                      31                          2022003833
+
+While others, such as the Union Trustee and the Union Sergeant-at-Arms,
+were also asked about their sexual activities and subjected to comments
+about their sexual activities, the questions and comments focused on the
+individuals’ sexual activities with Complainant. Accordingly, Complainant has
+established the second and third prongs of a prima facie case of harassment.
+
+We further find that Complainant has established the fourth prong of a prima
+facie case of harassment, that the harassment had the purpose or effect of
+unreasonably interfering with her work performance and/or creating an
+intimidating, hostile, or offensive work environment. In Harris v. Forklift
+Sys., Inc., 510 U.S. 17, 21 (1993), the Supreme Court reaffirmed the
+holding of Meritor Sav. Bank v. Vinson, 477 U.S. 57, 67 (1986), that
+harassment is actionable if it is sufficiently severe or pervasive to alter the
+conditions of the complainant's employment. Thus, not all claims of
+harassment are actionable. In determining that a working environment is
+hostile, factors to consider are the frequency of the alleged discriminatory
+conduct, its severity, whether it is physically threatening or humiliating, and
+if it unreasonably interferes with an employee’s work performance. Sulema
+B. v. Dep't of Veterans Affs., EEOC Appeal No. 2021002728 (Sept. 2,
+2021) (citing Harris, 510 U.S. at 21).
+
+Here, the harassment began in July 2017, and copies of the pornographic
+flyer were found in the workplace through at least April 2018. While the
+harassment initially consisted of offensive comments from fellow local union
+officials, the harassment escalated. A stranger approached her about one of
+the rumors. Someone posted an image from Complainant’s Facebook with an
+added derogatory message on the bulletin board. Complainant found an
+anonymous death threat on her desk, which threatened both Complainant
+and her family, and this incident was threatening, hostile, and intimidating.
+Subsequently, a pornographic flyer was disseminated in the workplace with
+Complainant’s name and cell phone number and a statement that the
+graphic image was “actual footage” of Complainant. As the AJ found, the
+flyer was highly offensive, and we also find that the flyer was humiliating
+and degrading. After the discovery of the flyer, Complainant had to take
+extended medical leave. Here, we conclude that Complainant has established
+that she was subjected to harassment based on sex, including threats of
+violence against Complainant and her family and the dissemination of the
+graphic flyer with her name and phone number, and that the harassment
+was sufficiently severe that a reasonable person in Complainant’s
+circumstances would find the working environment hostile.
+                                      32                          2022003833
+
+Accordingly, we consider whether the Agency is liable for the sexual
+harassment. Because the identity of the individual(s) who accosted
+Complainant in the stairwell, posted the documents on the bulletin board,
+put the threatening letter on Complainant’s desk, and disseminated the
+graphic flyer, we will apply the standard for coworker harassment. Under
+this standard, the Agency is responsible for acts of harassment in the
+workplace where the Agency (or its agents) knew or should have known of
+the conduct, unless it can establish an affirmative defense by showing that it
+took immediate and appropriate corrective action. An appropriate remedial
+action will necessarily depend on the particular facts of the case, such as the
+severity and persistence of the harassment and the effectiveness of any
+initial remedial steps. See Caroline B. v. Dep’t of Veterans Affs., EEOC
+Appeal No. 2020000978 (Sept. 16, 2021). Simply initiating corrective action
+or taking remedial action that only has a temporary or partial impact on the
+alleged harassment is insufficient to establish an affirmative defense of
+immediate and appropriate corrective action. See id.
+
+The AJ found that liability could not be imputed to the Agency regarding the
+flyer because, when the flyer was discovered, the Plant Manager called the
+MCPD CID, asked security personnel to save surveillance camera footage
+and to print access logs, and sent an email to the workforce on February 13,
+2018, addressing the flyers as well as the August 2017 note. The AJ also
+noted that the Plant Manager offered to relocate Complainant to a secure
+building with limited access but that Complainant declined to be relocated.
+
+As discussed above, we find that the AJ erred in analyzing the flyer on its
+own. The fact that the Plant Manager’s February 13, 2018, email referenced
+the August 2017 threatening note and stated that management was
+“appalled by these continued actions” reflects that the Agency had been
+aware of the harassment and that, despite the Agency’s efforts to address
+the harassment after the discovery of the note, the harassment had
+continued. Essentially, the Agency was aware that the corrective action it
+took after the August 2017 harassment had not been effective, yet in
+February 2018 it took the same corrective actions that it was aware had
+been ineffective. Moreover, the undisputed evidence in the record reflects
+that, even after the Plant Manager sent the February 13th email, copies of
+the flyer continued to be found in the workplace. Although the employees
+who found copies of the flyer reported the matter to their supervisors, the
+record does not reflect that this information was forwarded to CID. Finally,
+while the Agency offered to relocate Complainant to a different building,
+Complainant explained that she would not feel safe working by herself in an
+isolated space away from her supervisors and coworkers.
+                                      33                          2022003833
+
+As a rule, an agency should make every reasonable effort to minimize the
+burden or negative consequences to an employee who complains of
+harassment. See Enforcement Guidance on Harassment in the Workplace at
+§ IV.3.b.ii. Moreover, the record reflects that employees continued to find
+copies of the flyer while Complainant was out of the workplace on extended
+medical leave. We find that the Agency is liable for the sexual harassment
+because it has not shown that it took immediate and appropriate corrective
+action. Accordingly, we reverse the Agency’s final action finding that
+Complainant did not establish that she was subjected to sexual harassment.
+
+Retaliatory Harassment
+
+Reprisal claims are considered with a broad view of coverage. See Burlington
+Northern and Santa Fe Ry. Co. v. White, 548 U.S. 53, 67-68 (2006); see
+also, Carroll v. Dep’t of the Army, EEOC Request No. 05970939 (Apr. 4,
+2000). Retaliatory actions which can be challenged are not restricted to
+those which affect a term or condition of employment. Id. Rather, a
+complainant is protected from any discrimination that is reasonably likely to
+deter protected activity. Id.; see also, Carroll, supra. On the one hand, petty
+slights and trivial annoyances are not actionable. On the other, adverse
+actions or threats to take adverse actions such as reprimands, negative
+evaluations, and harassment are actionable. EEOC Enforcement Guidance on
+Retaliation and Related Issues, EEOC Notice No. 915.004, § II.B (Aug 25,
+2016). To ultimately prevail on a claim of retaliatory harassment,
+Complainant must show that she was subjected to conduct sufficient to
+dissuade a “reasonable person” from making or supporting a charge of
+discrimination. See Burlington Northern and Santa Fe Ry. Co., 548 U.S. at
+57; EEOC Enforcement Guidance on Retaliation and Related Issues, §
+II(B)(3) & n. 137. Only if both elements are present, retaliatory motivation
+and a chilling effect on protected EEO activity, will the question of Agency
+liability for reprisal-based harassment present itself. See Janeen S. v. Dep’t
+of Commerce, EEOC Appeal No. 0120160024 (Dec. 20, 2017).
+
+Given the importance of maintaining “unfettered access to [the] statutory
+remedial mechanisms” in the anti-retaliation provisions in Title VII, our cases
+have found that a broad range of actions can fall into this category.
+Burlington N. and Santa Fe Ry. Co., 548 U.S. at 64 quoting Robinson v. Shell
+Oil Co., 519 U.S. 337, 346 (1997). For example, we have held that a
+supervisor threatening an employee by saying “What goes around, comes
+around” when discussing an EEO complaint constitutes an adverse action.
+Vincent v. U.S. Postal Serv., EEOC Appeal No. 0120072908 (Aug. 3, 2009),
+request for recon. denied, EEOC Request No. 0520090654 (Dec. 16, 2010).
+                                     34                          2022003833
+
+We have also found that a supervisor attempting to counsel an employee
+against pursuing an EEO complaint “as a friend,” even if intended innocently,
+is an adverse action. Woolf v. Dep’t of Energy, EEOC Appeal No.
+0120083727 (June 4, 2009) (violation found when a labor management
+specialist told the complainant, “as a friend,” that her EEO claim would
+polarize the office).
+
+Here, it is undisputed that, on January 4, 2018, Complainant was in the
+Finance Office helping the Financial Management Analyst complete a task. It
+is also undisputed that the Finance Supervisor directed Complainant to leave
+the Finance Office because she had filed a hostile work environment
+complaint while working in the Finance Office. On appeal, the Agency
+characterizes Complainant’s hostile work environment complaint as a non-
+EEO harassment claim in which Complainant expressed concerns about her
+safety in the Finance Office. The record reflects that the Finance Supervisor
+had not supervised Complainant, who was transferred out of the Finance
+Office based on her own request.
+
+According to the Agency, Complainant cannot establish a prima facie case of
+harassment based on reprisal because Complainant’s prior protected EEO
+activity was from 2015 and because the Finance Supervisor was not aware
+of Complainant’s 2015 EEO complaint. The Agency argues that the Finance
+Supervisor asked Complainant to leave the Finance Office not in retaliation
+for filing a complaint but because her hostile work environment complaint
+had raised safety concerns.
+
+Complainant alleged that the Finance Supervisor yelled, “What are you doing
+in here? You’re not allowed in here. Get out, so long as there is a hostile
+work environment you cannot come in here!” ROI at 96. The Finance
+Supervisor stated that she told Complainant that, due to the hostile work
+environment complaint she had filed, she should not come into the Finance
+Office for her own safety, adding that “I was only looking out for her and
+others.” ROI at 160. According to the Finance Supervisor, she wanted to
+make sure Complainant “was not putting herself in a situation that could
+cause a hostile situation and looking out for her as well as others within the
+Finance Office.” ROI at 160. The Financial Management Analyst averred that
+the Finance Supervisor yelled at Complainant that she was no longer
+welcome in the Finance Office “due to an ongoing EEO complaint.” ROI at
+164. Finance Office, the Finance Supervisor chastised the Financial
+Management Analyst, stating that Complainant should never “come into
+Finance again due to a pending EEO investigation.” ROI at 164-65.
+                                     35                          2022003833
+
+According to the Supervisory Production Controller, the Finance Supervisor
+stated that she asked Complainant to leave the Finance Office “due to a
+pending hostile work environment” complaint and that, due to Complainant’s
+harassment allegation, it would be in her best interest that Complainant “not
+put herself into a situation.”
+
+On January 4, 2018, Complainant’s EEO complaint, which she filed on
+September 28, 2017, was pending. Based on the record, we are unable to
+determine whether the Agency was still processing the Hostile Work Place
+Report that Complainant completed on August 17, 2017, or the earlier
+hostile work environment claim that Complainant submitted in May 2017
+that led to her being assigned out of the Finance Office. However, according
+to the record, the Agency’s EEO/Anti-Harassment and Sexual Harassment
+Policy requires that, within 24 hours of receiving an initial allegation of
+harassment, a supervisor must report the allegation up the chain of
+command, fill out a Harassment Advisory Notice Form, conduct a preliminary
+inquiry (PI) into the circumstances surrounding the allegations, and submit
+the form to LOGCOM. ROI at 198-99. The policy also states that
+“confidentiality of any individual bringing up a claim of harassment or
+discrimination will be maintained to the fullest extent possible and they will
+be free from reprisal for raising such an issue.” ROI at 199.
+
+Unless the Agency delayed in addressing her hostile work environment
+complaint, it is unlikely that Complainant’s May 2017 harassment complaint
+was still pending on January 4, 2018, which was months after she was
+reassigned away from the Finance Office. Moreover, Complainant was
+reassigned based on the request associated with her harassment complaint
+before the Finance Supervisor became the supervisor of the Finance Office.
+Accordingly, Complainant’s only “pending” complaints on January 4, 2018,
+were her current EEO complaint and possibly her August 17, 2017, Hostile
+Work Place complaint, which raised allegations of harassment based on sex.
+We therefore find that, in directing Complainant to leave the Finance Office
+because of her pending hostile work environment complaint, the Finance
+Supervisor was referring to Complainant’s protected EEO activity. Moreover,
+in mentioning this complaint in front of the Financial Management Analyst,
+the Finance Supervisor disclosed Complainant’s protected EEO activity in
+violation of Title VII as well as the Agency’s internal policy, which assures
+the confidentiality of someone raising a harassment or discrimination to the
+fullest extent possible. Moreover, although Complainant was transferred out
+of the Finance Office at her own request, she was not barred from the
+Finance Office.
+                                      36                          2022003833
+
+Complainant explained that she had a habit of helping out Finance
+employees and that, in her new role as a Management Assistant in the
+Program Management Division, she worked with the Finance Office on
+certain tasks. According to Complainant, after the Finance Supervisor told
+her she could not be in the Finance Office, it made completing some of her
+work more difficult, and sometimes she felt like she had to walk on
+eggshells. We find that the Finance Supervisor’s actions could dissuade a
+reasonable person from engaging in protected EEO activity. Accordingly, the
+Finance Supervisor subjected Complainant to reprisal when she disclosed her
+protected EEO activity to the Financial Management Analyst and when she
+prohibited Complainant from entering the Finance Office.
+
+We next consider whether the Agency is liable for this harassment. In Vance
+v. Ball State Univ., 570 U.S. 421, 133 S. Ct. 2434, 2443 (2013), the
+Supreme Court held that an employee is a “supervisor” if “the employer has
+empowered that employee to take tangible employment actions against the
+victim, i.e., to effect a ‘significant change in employment status, such as
+hiring, firing, failing to promote, reassignment with significantly different
+responsibilities, or a decision causing a significant change in benefits.’” The
+Finance Supervisor was not Complainant’s supervisor, so we will apply the
+standard for coworker harassment. The record reflects that, upon returning
+to her work area, Complainant reported the incident to the Supervisory
+Production Controller. We find that the Agency is liable for the Finance
+Supervisor’s retaliation because there is no evidence that the Agency took
+any action in response. See Candice B. v. Dep’t of Justice, EEOC Appeal No.
+2023005066 (Dec. 20, 2023) (finding agency liable for retaliatory comments
+because there was no evidence the agency took any action to respond). We
+therefore reverse the Agency’s final action finding that Complainant did not
+establish that she was subjected to harassment based on reprisal.
+
+                                CONCLUSION
+
+Based on a thorough review of the record and the contentions on appeal,
+including those not specifically addressed herein, we AFFIRM the issuance of
+a decision without a hearing but REVERSE the Agency’s final action finding
+no discrimination based on sex and reprisal and REMAND the matter to the
+Agency for remedial action in accordance with this decision and the ORDER
+below.
+                                      37                          2022003833
+
+                                   ORDER
+
+The Agency shall take the following remedial actions:
+
+     1. Within sixty (60) calendar days of the date this decision is issued,
+        the Agency shall conduct and complete a supplemental investigation
+        to determine whether Complainant is entitled to compensatory
+        damages for this violation of Title VII. In so doing, the Agency shall:
+
+             a. Issue a notice to Complainant of her right to submit
+                evidence based our guidance in Carle v. Dep’t of the Navy,
+                EEOC Appeal No. 01922369 (Jan. 5, 1993) and request
+                evidence from Complainant in support of compensatory
+                damages. 4 The Notice shall provide Complainant with thirty
+                (30) calendar days to respond (with an option and
+                instructions to request an extension in the case of
+                extenuating circumstances). Complainant has a duty to
+                cooperate with Agency’s investigation to determine
+                compensatory damages, including responding to agency
+                requests for documentation or completing agency forms.
+
+             b. Issue a final agency decision (“Compensatory Damages
+                FAD”) based on the findings of the supplemental
+                investigation. The Compensatory Damages FAD shall state
+                the amount (if any) of compensatory damages owed to
+                Complainant and explain how the Agency determined that
+                amount. The Compensatory Damages FAD shall include
+                appeal rights to the Commission.
+
+4
+  To establish entitlement to compensatory damages, the evidence must
+show a causal relationship between the Agency’s discriminatory action and
+any pecuniary (monetary) or non-pecuniary losses/harm experienced by
+Complainant.
+For more information on evidence to determine compensatory damages:
+EEOC Management Directive 110, Ch. 11 § VII (Aug. 5, 2015), available at
+https://www.eeoc.gov/federal/directives/md-110_chapter_11.cfm (provides
+the types of compensatory damages available under EEOC statutes and
+“Objective Evidence” of entitlement); and N. Thompson, Compensatory
+Damages in the Federal Sector: An Overview, EEOC Digest Vol. XVI, No. 1
+(Winter 2005) available at https://www.eeoc.gov/federal/digest/xvi-
+1.cfm#article (explains Carle v. Dep’t of the Navy under the subsection
+“Proof of Damages”).
+                                     38                          2022003833
+
+        Within sixty (60) calendar days of the date the Compensatory
+        Damages FAD is issued, the Agency shall pay Complainant the
+        amount of compensatory damages it determined are owed. If there
+        is a dispute over the exact amount of compensatory damages
+        owed, the Agency shall pay the undisputed amount to Complainant.
+        If Complainant disagrees with the agency’s award, they may
+        challenge the Agency’s decision on the amount of compensatory
+        damages by filing an appeal of the Compensatory Damages FAD
+        with the Commission. Instructions on how to appeal, including the
+        deadline to file, will be included in the appeal rights portion of the
+        Compensatory Damages FAD.
+
+     2. Within ninety (90) calendar days from the date this decision is
+        issued, the Agency shall determine how many hours of leave
+        (annual, sick, leave without pay, etc.) Complainant used from July
+        6, 2017, through either the date the Agency effectively remedied
+        the harassment or the date this decision is issued as a result of the
+        discriminatory harassment and restore that amount to Complainant.
+        Complainant must demonstrate a causal nexus between the
+        discriminatory harassment and the need to take leave. The Agency
+        shall provide the Compliance Officer with a printout or statement by
+        an appropriate Agency official, identifying the amount and type of
+        leave restored.
+
+     3. Within ninety (90) calendar days of the date this decision is
+        issued, the individuals identified in this decision as the Plant
+        Manager, the Finance Supervisor, the Union President, the Union
+        Vice President, 5 Employee-1, Employee-2, Employee-3, and
+        Employee-4, the Branch Manager, and the Supervisory Production
+        Controller shall complete four hours of in-person or interactive
+        training on the Agency’s obligations under Title VII. The training
+        shall include an emphasis on preventing and correcting workplace
+        harassment, reprisal, and the extent to which EEO activity must be
+        kept confidential.
+
+        For assistance in obtaining the necessary training, the Agency may
+        contact the Commission’s Outreach, Training and Engagement
+        Division via email, at FederalTrainingandOutreach@eeoc.gov.
+
+5
+  Although the Union President and the Union Vice President are identified in
+the decision by their former union executive board titles, the Agency shall
+provide training to them in their capacity as civilian employees.
+                                     39                         2022003833
+
+        The Agency shall provide the Compliance Officer with proof of
+        attendance, as well as the contents and materials it used for the
+        training. If these individuals have left the Agency’s employ, the
+        Agency shall furnish documentation of their departure dates.
+
+     4. Within one hundred twenty (120) calendar days from the date
+        this decision is issued, the Agency shall consider disciplining the
+        Plant Manager, the Finance Supervisor, the Union President, the
+        Union Vice President, 6 Employee-1, Employee-2, Employee-3, and
+        Employee-4, the Branch Manager, and the Supervisory Production
+        Controller for the sexual harassment and harassment based on
+        reprisal in violation of Title VII found to have occurred in this
+        decision. The Commission does not consider training to be
+        disciplinary action. The Agency shall report its decision to the
+        Compliance Officer. If the Agency decides to take disciplinary
+        action, it shall identify the action taken. If the Agency decides not
+        to take disciplinary action, it shall set forth the reason(s) for its
+        decision not to impose discipline. If these individuals have left the
+        Agency’s employ, the Agency shall furnish documentation of their
+        departure dates.
+
+     5. Within thirty (30) calendar days of the date this decision is
+        issued, the Agency shall post a notice in accordance with the
+        section listed below, entitled “Posting Order.” The Agency shall
+        provide the Compliance Officer with the original signed and dated
+        notice, reflecting the dates that the notice was posted, along with
+        evidence that the notice was physically posted at the facility and
+        electronically.
+
+The Agency is further directed to submit a report of compliance in digital
+format as provided in the statement entitled “Implementation of the
+Commission’s Decision.” The report shall be submitted via the Federal
+Sector EEO Portal (FedSEP). See 29 C.F.R. § 1614.403(g). Further, the
+report must include evidence that the corrective action has been
+implemented.
+
+
+
+
+6
+  Although the Union President and the Union Vice President are identified in
+the decision by their former union executive board titles, the Agency shall
+consider disciplining them in their capacity as civilian employees.
+                                     40                         2022003833
+
+                         POSTING ORDER (G0617)
+
+The Agency is ordered to post at its Production Plant Barstow, Marine Depot
+Maintenance Command facility in Barstow, California copies of the attached
+notice. Copies of the notice, after being signed by the Agency's duly
+authorized representative, shall be posted both in hard copy and
+electronic format by the Agency within 30 calendar days of the date this
+decision was issued, and shall remain posted for 60 consecutive days, in
+conspicuous places, including all places where notices to employees are
+customarily posted. The Agency shall take reasonable steps to ensure that
+said notices are not altered, defaced, or covered by any other material. The
+original signed notice is to be submitted to the Compliance Officer as
+directed in the paragraph entitled "Implementation of the Commission's
+Decision," within 10 calendar days of the expiration of the posting period.
+The report must be in digital format and must be submitted via the Federal
+Sector EEO Portal (FedSEP). See 29 C.F.R. § 1614.403(g).
+
+                        ATTORNEY’S FEES (H0124)
+
+If Complainant has been represented by an attorney (as defined by 29
+C.F.R. § 1614.501(e)(1)(iii)), they are entitled to an award of reasonable
+attorney's fees incurred in the processing of the complaint. 29 C.F.R. §
+1614.501(e). The award of attorney's fees shall be paid by the Agency. The
+attorney shall submit a verified statement of fees to the Agency -- not to
+the Equal Employment Opportunity Commission, Office of Federal Operations
+-- within thirty (30) calendar days of receipt of this decision. The Agency
+shall then process the claim for attorney's fees in accordance with 29 C.F.R.
+§ 1614.501.
+
+       IMPLEMENTATION OF THE COMMISSION’S DECISION (K0719)
+
+Under 29 C.F.R. § 1614.405(c) and §1614.502, compliance with the
+Commission’s corrective action is mandatory. Within seven (7) calendar
+days of the completion of each ordered corrective action, the Agency shall
+submit via the Federal Sector EEO Portal (FedSEP) supporting documents in
+the digital format required by the Commission, referencing the compliance
+docket number under which compliance was being monitored. Once all
+compliance is complete, the Agency shall submit via FedSEP a final
+compliance report in the digital format required by the Commission. See 29
+C.F.R. § 1614.403(g). The Agency’s final report must contain supporting
+documentation when previously not uploaded, and the Agency must send a
+copy of all submissions to the Complainant and his/her representative.
+                                      41                          2022003833
+
+If the Agency does not comply with the Commission’s order, the
+Complainant may petition the Commission for enforcement of the order. 29
+C.F.R. § 1614.503(a). The Complainant also has the right to file a civil
+action to enforce compliance with the Commission’s order prior to or
+following an administrative petition for enforcement.          See 29 C.F.R.
+§§ 1614.407, 1614.408, and 29 C.F.R. § 1614.503(g). Alternatively, the
+Complainant has the right to file a civil action on the underlying complaint in
+accordance with the paragraph below entitled “Right to File a Civil Action.”
+29 C.F.R. §§ 1614.407 and 1614.408. A civil action for enforcement or a
+civil action on the underlying complaint is subject to the deadline stated in
+42 U.S.C. 2000e-16(c) (1994 & Supp. IV 1999). If the Complainant files
+a civil action, the administrative processing of the complaint,
+including any petition for enforcement, will be terminated. See 29
+C.F.R. § 1614.409.
+
+Failure by an agency to either file a compliance report or implement any of
+the orders set forth in this decision, without good cause shown, may result
+in the referral of this matter to the Office of Special Counsel pursuant to 29
+C.F.R. § 1614.503(f) for enforcement by that agency.
+
+                     STATEMENT OF RIGHTS - ON APPEAL
+                       RECONSIDERATION (M0124.1)
+
+The Commission may, in its discretion, reconsider this appellate decision if
+Complainant or the Agency submits a written request that contains
+arguments or evidence that tend to establish that:
+      1. The appellate decision involved a clearly erroneous interpretation of
+         material fact or law; or
+      2.     The appellate decision will have a substantial impact on the
+           policies, practices, or operations of the agency.
+
+Requests for reconsideration must be filed with EEOC’s Office of Federal
+Operations (OFO) within thirty (30) calendar days of receipt of this
+decision. If the party requesting reconsideration elects to file a statement or
+brief in support of the request, that statement or brief must be filed
+together with the request for reconsideration. A party shall have
+twenty (20) calendar days from receipt of another party’s request for
+reconsideration within which to submit a brief or statement in opposition.
+See 29 C.F.R. § 1614.405; Equal Employment Opportunity Management
+Directive for 29 C.F.R. Part 1614 (EEO MD-110), at Chap. 9 § VII.B (Aug. 5,
+2015).
+                                     42                          2022003833
+
+Complainant should submit their request for reconsideration, and any
+statement or brief in support of their request, via the EEOC Public Portal,
+which can be found at https://publicportal.eeoc.gov/Portal/Login.aspx
+
+Alternatively, Complainant can submit their request and arguments to the
+Director, Office of Federal Operations, Equal Employment Opportunity
+Commission, via regular mail addressed to P.O. Box 77960, Washington, DC
+20013, or by certified mail addressed to 131 M Street, NE, Washington, DC
+20507. In the absence of a legible postmark, a complainant’s request to
+reconsider shall be deemed timely filed if OFO receives it by mail within five
+days of the expiration of the applicable filing period. See 29 C.F.R. §
+1614.604.
+
+An agency’s request for reconsideration must be submitted in digital format
+via the EEOC’s Federal Sector EEO Portal (FedSEP). See 29 C.F.R. §
+1614.403(g). Either party’s request and/or statement or brief in opposition
+must also include proof of service on the other party, unless Complainant
+files their request via the EEOC Public Portal, in which case no proof of
+service is required.
+
+Failure to file within the 30-day time period will result in dismissal of the
+party’s request for reconsideration as untimely, unless extenuating
+circumstances prevented the timely filing of the request. Any supporting
+documentation must be submitted together with the request for
+reconsideration.         The Commission will consider requests for
+reconsideration filed after the deadline only in very limited circumstances.
+See 29 C.F.R. § 1614.604(f).
+
+         COMPLAINANT’S RIGHT TO FILE A CIVIL ACTION (R0124)
+
+This is a decision requiring the Agency to continue its administrative
+processing of your complaint. However, if you wish to file a civil action, you
+have the right to file such action in an appropriate United States District
+Court within ninety (90) calendar days from the date that you receive
+this decision. In the alternative, you may file a civil action after one
+hundred and eighty (180) calendar days of the date you filed your
+complaint with the Agency, or filed your appeal with the Commission. If you
+file a civil action, you must name as the defendant in the complaint the
+person who is the official Agency head or department head, identifying that
+person by their full name and official title.
+                                       43                          2022003833
+
+Failure to do so may result in the dismissal of your case in court. “Agency”
+or “department” means the national organization, and not the local office,
+facility or department in which you work.        Filing a civil action will
+terminate the administrative processing of your complaint.
+
+
+          COMPLAINANT’S RIGHT TO FILE A CIVIL ACTION (T0124)
+
+This decision affirms the Agency’s final decision/action in part, but it also
+requires the Agency to continue its administrative processing of a portion of
+your complaint. You have the right to file a civil action in an appropriate
+United States District Court within ninety (90) calendar days from the
+date that you receive this decision on both that portion of your complaint
+which the Commission has affirmed and that portion of the complaint which
+has been remanded for continued administrative processing.              In the
+alternative, you may file a civil action after one hundred and eighty
+(180) calendar days of the date you filed your complaint with the Agency,
+or your appeal with the Commission, until such time as the Agency issues its
+final decision on your complaint. If you file a civil action, you must name as
+the defendant in the complaint the person who is the official Agency head or
+department head, identifying that person by their full name and official title.
+Failure to do so may result in the dismissal of your case in court. “Agency”
+or “department” means the national organization, and not the local office,
+facility or department in which you work. If you file a request to reconsider
+and also file a civil action, filing a civil action will terminate the
+administrative processing of your complaint.
+
+
+                   RIGHT TO REQUEST COUNSEL (Z0815)
+
+If you want to file a civil action but cannot pay the fees, costs, or security to
+do so, you may request permission from the court to proceed with the civil
+action without paying these fees or costs. Similarly, if you cannot afford an
+attorney to represent you in the civil action, you may request the court to
+appoint an attorney for you. You must submit the requests for waiver
+of court costs or appointment of an attorney directly to the court,
+not the Commission. The court has the sole discretion to grant or deny
+these types of requests.
+                                       44                          2022003833
+
+Such requests do not alter the time limits for filing a civil action (please read
+the paragraph titled Complainant’s Right to File a Civil Action for the specific
+time limits).
+
+FOR THE COMMISSION:
+
+
+
+______________________________                 Carlton M. Hadden’s signature
+Carlton M. Hadden, Director
+Office of Federal Operations
+
+
+September 19, 2024
+Date
+

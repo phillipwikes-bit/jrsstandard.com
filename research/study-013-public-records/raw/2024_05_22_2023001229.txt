@@ -1,0 +1,927 @@
+              U.S. EQUAL EMPLOYMENT OPPORTUNITY COMMISSION
+                            Office of Federal Operations
+                                   P.O. Box 77960
+                              Washington, DC 20013
+
+
+
+
+                                                 V.
+
+
+                                     Denis R. McDonough,
+                                           Secretaiy,
+                                 Department of Veterans Affairs,
+                                            Agency.
+
+                                     Appeal No. 2023001229
+
+                                 Hearing No. 430-2021-00274X
+
+                               Agency No. 2004-0558-2020104168
+
+                                            DECISION
+
+On December 18, 2022, Complainant filed an appeal with the Equal Employment Oppo1tunity
+Commission (EEOC or Commission), pursuant to 29 C.F.R. § 1614.403(a), from the Agency's
+November 18, 2022, final order concerning her equal employment opportunity (EEO) complaint
+alleging employment discrimination in violation of Title VII of the Civil Rights Act of 1964 (Title
+VII), as amended, 42 U.S.C. § 2000e et seq. and Section 501 of the Rehabilitation Act of 1973
+(Rehabilitation Act), as amended, 29 U.S .C. § 791 et seq. For the following reasons, the
+Commission AFFIRMS in part and REVERSES in pali the Agency's final order.
+
+                                      ISSUES PRESENTED
+
+    1. Whether the EEOC Administrative Judge properly detennined by summa1y judgment that
+       Complainant failed to meet his burden of proving the Agency discriminated against her
+       (dispai·ate treatment) on the basis of her disability and in reprisal for protected activity.
+
+   2. Whether the EEOC Administrative Judge properly detennined by summa1y judgment that
+      Complainant failed to meet her burden of proving the Agency denied her a reasonable
+      accommodation.
+
+
+
+1 This case has been randomly assigned a pseudonym which will replace Complainant's name
+
+when the decision is published to non-paiiies and the Commission's website.
+                                                2                                    2023001229
+
+    3. Whether the EEOC Administrative Judge properly determined by summary judgment that
+       Complainant failed to meet her burden of proving the Agency subjected her to
+       discriminatory harassment on the bases of her disability and in reprisal for protected
+       activity.
+
+                                        BACKGROUND
+
+At the time of events giving rise to this complaint, Complainant worked as a Registered Nurse
+(RN) at the Agency’s Medical Center in Durham, North Carolina (Durham VAMC). At all
+relevant times, Complainant’s first-line supervisor was the Nurse Manager of the Outpatient Clinic
+(RMO1), and her second-line supervisor was the Chief Nurse (RMO2).
+
+On August 28, 2020, Complainant filed an EEO complaint alleging that the Agency subjected her
+to discrimination based on disability (dizziness and migraines) and in reprisal for engaging in
+protected activity (current complaint and past reasonable accommodation requests) when:
+
+    1. On April 15, 2020, the Nurse Manager, Complainant’s supervisor, (RMO1) informed
+        Complainant that he was placing a memorandum in her personnel file for excessive use of
+        unscheduled sick leave.
+    2. On April 16, 2020, RMO1 and Assistant Chief of Human Resources denied Complainant’s
+        reasonable accommodation request for full-time telework.
+    3. On May 5, 2020, RMO1 attempted to discourage Complainant from applying for advanced
+        sick leave.
+    4. On May 6, 2020, RMO1 placed Complainant on medical certification due to missed work
+        time.
+    5. On May 14, 2020, and August 7 and 10, and 17, 2020 RMO1 placed Complainant on absent
+        without leave (AWOL) status.
+    6. In June 2020, RMO1 assigned Complainant to cover two additional panels, group of
+        patients.
+    7. On June 1, 2020, RMO1 informed Complainant that a management Doctor (RMO3) wrote
+        her up regarding patient care and requested a new nurse.
+    8. On July 18, 2020, RMO1 failed to respond to Complainant’s inquiry regarding leave issues;
+    9. On August 17, 2020, RMO1 placed Complainant on AWOL status. 2
+    10. On August 18, and 20, 2020 RMO2 said she could not assist Complainant with resolving
+        her concerns about RMO1.
+    11. On June 9, 2020, RMO1 charged Complainant with AWOL.
+    12. On June 10, 2020, RMO1 refused to provide Complainant with a copy of a complaint that
+        was filed against her.
+    13. On August 11, 2020, RMO1 denied Complainant’s leave.
+
+
+
+2
+  We find that claim 9 is a duplicate of claim 5, both concerning Complainant alleged AWOL
+status on August 17, 2020. Therefore, this decision will analyze Complainant’s allegation
+regarding August 17, 2020, as part of claim 5 only.
+                                                 3                                     2023001229
+
+    14. On September 25, 2020, RMO1 gave Complainant a poor performance appraisal. 3
+
+The Agency found claims 1, 2, 4, 5, 6, 7, 9, and 14 to be timely raised discrete acts and were
+accepted as independently actionable claims of disparate treatment. The Agency found claims 11-
+13 to be untimely raised discrete acts and dismissed them as independently actionable claims but
+accepted them as part of Complainant’s overall harassment claim with the rest of the claims listed
+above.
+
+The evidence developed during the investigation showed that Complainant described her disability
+as “debilitating dizziness and migraines that impact her ability to drive and ambulate safely.” ROI
+at 121. Complainant described her prior EEO activity as participating as a complainant in this
+complaint, as well as requesting reasonable accommodations. Complainant was not subjected to
+any epithets, slurs, negative stereotyping, or threatening, intimidating, or hostile acts due to her
+EEO activity or her disability. See Complainant’s Response to the Agency’s Motion for Summary
+Judgement (Comp. Resp. to MSJ) at 2. Nonetheless, Complainant argues that she was subjected
+to harassment and a hostile work environment as alleged in this complaint.
+
+Complainant was absent from work multiple times in March 2020. Complainant’s leave records
+show that from the beginning of pay period 3, on or about February 3, 2020, to pay period 8, on
+or about April 15, 2020, she was frequently absent from work and accumulated a large total number
+of hours of scheduled and unscheduled absences.
+
+On March 31, 2020, Complainant sent an email to RMO1 and RMO2 titled “Reasonable
+Accommodations Request.” In the email, Complainant stated, in part that she was “requesting
+[their] assistance to meet [her] functions as a RN Care Manager.” ROI at 361. Complainant also
+attached a note from her treating physician in which the physician stated in relevant part:
+
+       Her symptoms of dizziness have become more frequent with recent stress and
+       anxiety, and her driving has become affected. It is my medical opinion that
+       [Complainant] should be allowed to work from home during this time to avoid risk
+       of accident or injury while driving. She should also be excluded from screening
+       patients with respiratory symptoms as were she to contract a respiratory infection
+       and develop a cough, this would exacerbate her underlying condition.
+
+ROI at 363. RMO2 responded to Complainant’s email and stated that RN staff positions had not
+yet been approved to telework so she was unable to concur with that part Complainant’s request
+at that time, but that Complainant would be excluded from screening patients with respiratory
+
+
+3
+  Complainant had several claims that were dismissed by the Agency for failure to state a claim
+and collateral attacks on the Family & Medical Leave Act (FMLA) process. The Commission has
+the discretion to review only those issues specifically raised in an appeal. See Equal Employment
+Opportunity Management Directive for 29 C.F.R. Part 1614, at Chap. 9, § IV.A.3 (Aug. 5, 2015).
+On appeal, Complainant did not contest the Agency’s dismissal of those claims. As such, we will
+not address them in the instant decision.
+                                               4                                    2023001229
+
+symptoms. ROI at 362. RMO2 also sent Complainant paperwork to formally request a reasonable
+accommodation if her described condition was a long-term medical issue and not temporary. Id.
+Prior to Complainant’s accommodation request in late March 2020, Complainant had never
+teleworked.
+
+On April 15, 2020, Complainant met with RMO1 and another Registered Nurse (W1). During the
+meeting, RMO1 presented Complainant with a memorandum which stated in relevant part:
+
+       Since [pay period] 3 you have called out eleven (11) times, for a total of 79 hours
+       of unscheduled leave…If your use of sick leave continues to be excessive, you will
+       be placed on sick leave certification, which means that you will have to provide
+       documentation from a healthcare provider each time you are absent and request sick
+       leave.
+
+Id. at 271. RMO1 had previously issued a similar memorandum to other employees he supervises
+due to their excessive absences.
+
+On April 22, 2020, the Agency issued an Accommodation Request Determination that stated
+Complainant was not approved to telework because “a great percentage of [her] daily requirements
+[was] face to face with [her] patients and team members.” ROI at 406. In this determination,
+Complainant was provided with the following accommodations:
+
+       a. Change your tour of duty as requested to 6:30am – 3:00pm.
+       b. [RMO1] will remove you from the front-line screening of patients entering the
+          clinic.
+       c. Remove you from assignments to the COVID-19 testing/screening tent at the
+          Raleigh 1 CBOC.
+       d. Approve your request of AL/SL from 2:30pm – 3:00pm to accommodate your
+          childcare needs.
+ROI at 405.
+
+Complainant was not aware of any vacant positions that she qualified for as of April 2020 that
+would have allowed her to telework. However, in August 2020, based on Complainant’s request,
+she was permanently transferred to the vacant position of Triage Nurse, a full-time telework
+position that Complainant asserts fully accommodated her disabilities.
+
+On May 6, 2020, Complainant and RMO1 met regarding her use of leave and during the meeting,
+RMO1 provided Complainant with a memorandum describing her excessive use of leave
+beginning pay period 3 and notifying her that “effective immediately, [she was] being placed on
+medical certification. ROI at 273. Complainant was initially marked as absent without leave
+(AWOL) for multiple dates in 2020. RMO1 considered Complainant as AWOL on those dates
+because she had exhausted all of her available sick leave and annual leave.
+                                                  5                                     2023001229
+
+Nonetheless, the Agency later corrected all of Complainant’s AWOL dates to leave without pay
+(LWOP) as requested.
+
+Complainant received an overall “Satisfactory” rating on her 2020 Proficiency Report. During the
+2020 rating year, RMO1 advised Complainant of her deficiencies in her performance, including
+the need to coordinate face-to-face team meetings.
+
+At the conclusion of the investigation, the Agency provided Complainant with a copy of the report
+of investigation (ROI) and notice of her right to request a hearing before an Equal Employment
+Opportunity Commission Administrative Judge (AJ). Complainant timely requested a hearing.
+Over Complainant's objections, the AJ assigned to the case granted the Agency’s December 15,
+2021 motion for a decision without a hearing and issued a decision without a hearing on November
+8, 2022.
+
+In the decision, the AJ found that further development of the record is unlikely to lead to a finding
+of discrimination. The AJ also found that the Agency provided Complainant with a reasonable
+accommodation. The Agency subsequently issued a final order adopting the AJ’s finding that
+Complainant ultimately failed to prove that the Agency subjected her to discrimination as alleged.
+
+The instant appeal followed.
+
+                                  CONTENTIONS ON APPEAL
+
+On appeal, Complainant argues that the AJ erred in issuing a summary judgment because there are
+genuine issues of material fact and that the AJ failed to adequately address whether Complainant
+was a qualified individual under the Rehabilitation Act. Complainant also argues that the Agency
+did not adequately accommodate her. On appeal, the Agency argues that the Complainant’s
+contentions are baseless and that she failed to present evidence or argue effectively that summary
+judgment or the AJ’s decision in favor or the Agency was improper.
+
+                                    STANDARD OF REVIEW
+
+In rendering this appellate decision, we must scrutinize the AJ’s legal and factual conclusions, and
+the Agency’s final order adopting them, de novo. See 29 C.F.R. § 1614.405(a) (stating that a
+“decision on an appeal from an Agency’s final action shall be based on a de novo review . . .”);
+see
+- - -also
+      -- -Equal
+           ---- Employment
+                  - - - - - - - - Opportunity
+                                  ---------   Management
+                                               ---------  Directive
+                                                            - - - - - -for
+                                                                        - -29
+                                                                           - -C.F.R.
+                                                                              - - - - -Part
+                                                                                       - - -1614
+                                                                                            - - - (EEO
+MD-110), at Chap. 9, § VI.B. (Aug. 5, 2015) (providing that an administrative judge’s
+determination to issue a decision without a hearing, and the decision itself, will both be reviewed
+de novo). This essentially means that we should look at this case with fresh eyes. In other words,
+we are free to accept (if accurate) or reject (if erroneous) the AJ’s, and Agency’s, factual
+conclusions and legal analysis – including on the ultimate fact of whether intentional
+discrimination occurred, and on the legal issue of whether any federal employment discrimination
+statute was violated.
+                                                  6                                     2023001229
+
+See id. at Chapter 9, § VI.A. (explaining that the de novo standard of review “requires that the
+Commission examine the record without regard to the factual and legal determinations of the
+previous decision maker,” and that EEOC “review the documents, statements, and testimony of
+record, including any timely and relevant submissions of the parties, and . . . issue its decision
+based on the Commission’s own assessment of the record and its interpretation of the law”).
+
+                                            ANALYSIS
+
+The Commission’s regulations allow an AJ to issue a decision without a hearing upon finding that
+there is no genuine issue of material fact. 29 C.F.R. § 1614.109(g). EEOC’s decision without a
+hearing regulation follows the summary judgment procedure from federal court. Fed. R. Civ. P.
+56. The U.S. Supreme Court held summary judgment is appropriate where a judge determines no
+genuine issue of material fact exists under the legal and evidentiary standards. Anderson v. Liberty
+Lobby, Inc., 477 U.S. 242, 255 (1986). In ruling on a summary judgment motion, the judge is to
+determine whether there are genuine issues for trial, as opposed to weighing the evidence. Id. at
+249. At the summary judgment stage, the judge must believe the non-moving party’s evidence and
+must draw justifiable inferences in the non-moving party’s favor. Id. at 255. A “genuine issue of
+fact” is one that a reasonable judge could find in favor for the non-moving party. Celotex v. Catrett,
+477 U.S. 317, 322-23 (1986); Oliver v. Digital Equip. Corp., 846 F.2d 103, 105 (1st Cir. 1988). A
+“material” fact has the potential to affect the outcome of a case.
+
+An AJ may issue a decision without a hearing only after determining that the record has been
+adequately developed. See Petty v. Dep’t of Def., EEOC Appeal No. 01A24206 (July 11, 2003).
+We carefully reviewed the record and find that it is adequately developed. To successfully oppose
+a decision without a hearing, Complainant must identify material facts of record that are in dispute
+or present further material evidence establishing facts in dispute. Here, Complainant argues that
+the that the Agency did not adequately accommodate her. Complainant also argues that there are
+material facts in dispute regarding whether she could perform the essential functions of her
+position. We find that these purported disputed facts relate to conclusions of law, and not facts.
+With the complete record, including witness statements, we find that additional evidence is not
+necessary for the claims at issue and that Complainant’s arguments did not successfully establish
+a genuine issue of material fact.
+
+Disparate Treatment (Claims 1, 4, 5, 6, 7, and 14)
+
+The Commission has found that a discrete action states a claim outside of the framework of a
+harassment analysis and can also be reviewed within the disparate treatment context. See Moylett
+v. U.S. Postal Serv., EEOC Appeal No. 0120091735 (Jul. 17, 2012); Sedlacek v. Dep’t of Army,
+EEOC Appeal No. 0120083361 (May 11, 2010). Claims 1, 2, 4, 5, 6, 7, and 14 involve timely
+discrete acts that independently state claims outside of the harassment framework. Accordingly,
+we will analyze those claims in the context of disparate treatment.
+                                                 7                                     2023001229
+
+To prevail in a disparate treatment claim, Complainant must satisfy the three-part evidentiary
+scheme fashioned by the Supreme Court in McDonnell Douglas Corp. v. Green, 411 U.S. 792
+(1973). First, she must generally establish a prima facie case by demonstrating that she was
+subjected to an adverse employment action under circumstances that would support an inference
+of discrimination. Furnco Constr. Co. v. Waters, 438 U.S. 567, 576 (1978). Proof of a prima facie
+case will vary depending on the facts of the particular case. McDonnell Douglas, 411 U.S. at 802
+n. 13.
+
+To establish a prima facie case of disparate treatment discrimination based on disability, a
+complainant generally must prove the following elements: (1) they are an individual with a
+disability as defined in 29 C.F.R. §§ 1614.203(a) and 1630.2(g); (2) they are “qualified” as defined
+in 29 C.F.R. §§1614.203(a) and 1630.2(m); (3) the agency took an adverse action against them;
+and (4) there was a causal relationship between their disability and the agency’s actions. See
+Annamarie F. v. Dep’t of the Air Force, EEOC Appeal No. 2021004539 (August 17, 2023).
+
+A complainant may establish a prima facie case of reprisal by showing that: (1) she engaged in a
+protected activity; (2) the agency was aware of the protected activity; (3) subsequently, she was
+subjected to adverse treatment by the agency; and (4) a nexus exists between the protected activity
+and the adverse treatment. Whitmire v. Dep't of the Air Force, EEOC Appeal No. 01A00340 (Sept.
+25, 2000).
+
+The Agency does not dispute that Complainant is a qualified individual with a disability. A fair
+reading of the record reveals that claim 1, 4, 5, 6, 7, and 14 involved adverse actions. Complainant
+argued that there is a causal relationship between her disability and the Agency’s adverse actions
+because it was her medical condition that made her use unscheduled sick leave, get placed on a
+medical certification due to missed work time, charged as being AWOL, and receive a poor
+performance appraisal. Complainant also argued a causal relationship existed between her
+disability and getting assigned to cover two additional groups of patients and getting written up by
+a management doctor because these actions occurred while she was out of the office under her
+doctor’s care. We find that Complainant has established a prima facie case of disability
+discrimination in these claims.
+
+Regarding her retaliation claim, the record reveals that the RMO1 and RMO2 became aware of
+Complainant’s protected activity in late March to early April 2020, when Complainant submitted
+her reasonable accommodation request and was later allegedly denied her requests. 4 In
+Complainant’s claims of reprisal, the incidents occurred in May 2020 through September 2020.
+The Commission has found that a nexus is established when an agency action followed a
+complainant's participation in protected activity in a relatively short period of time. See Whitmere
+v. Dep’t of the Air Force, EEOC Appeal No. 01A00340 (Sept. 25, 2000).
+
+
+
+4
+ It is well established that requesting a reasonable accommodation is protected EEO activity. See
+EEOC Enforcement Guidance on Retaliation and Related Issues, No. 915.004, Sect. II.A.2.e (Aug
+25, 2016).
+                                                  8                                      2023001229
+
+Here, we find that the short timeframe between Complainant’s requests for accommodation and
+the matters at issue are sufficient to establish a prima facie inference of unlawful retaliation.
+
+After establishing a prima facie case, the burden then shifts to the Agency to articulate a legitimate,
+nondiscriminatory reason for its actions. Tex. Dep’t of Cmty. Affs. v. Burdine, 450 U.S. 248, 253
+(1981). Should the Agency carry its burden, Complainant must then prove, by a preponderance of
+the evidence, that the Agency’s explanation is a pretext for discrimination. Reeves v. Sanderson
+Plumbing Prods., Inc., 530 U.S. 133, 143 (2000); St. Mary’s Honor Ctr. v. Hicks, 509 U.S. 502,
+519 (1993); Burdine, 450 U.S. at 256.
+
+Here, we find that the Agency proffered non-discriminatory reasons for its actions. In claim 1,
+RMO1 stated that Complainant was given a memorandum for excessive use of unscheduled sick
+leave after Complainant was counseled on more than one occasion for excessive leave usage. ROI
+at 167. RMO1 also stated that he discussed with Complainant how her fear of COVID-19 was
+affecting her work performance and recommended her to seek a reasonable accommodation for a
+position with telework, if that was what she needed, but that telework was not an option at that
+point in time. ROI at 171.
+
+In claim 4, RMO1 stated that he placed Complainant on medical certification due to excessive
+unscheduled leave because it is standard for management to monitor an employee’s leave if there
+is a pattern of leave usage or absences. ROI at 177. He stated that he first had a conversation with
+Complainant and gave her an opportunity to change her behavior. Id. When it persisted, he placed
+her on medical certification. Id. In the sick leave certification memorandum, RMO1 also stated
+that failure to present medical documentation upon return to duty after unscheduled leave would
+result in an AWOL charge. ROI at 273.
+
+In claim 5, RMO1 stated that Complainant was placed in an AWOL status because she had no
+leave balance at the time of certifying timecards to cover her being absent. ROI at 179. RMO1
+stated that it is Complainant’s responsibility to manage her leave and that he even provided a report
+from their system that displayed her absences. ROI at 184.
+
+In claim 6, RMO1 states that Complainant was assigned to cover two additional panel groups of
+patients because it is common for each team to have a surrogate to cover when another RN Care
+Manager is out. ROI at 180. RMO1 stated that it was for a limited period and that other Care
+Managers covered more than one team as needed as well. Id.
+
+In claim 7, RMO3 stated that he did not write Complainant up nor did he request a new nurse. ROI
+at 202. However, RMO3 indicated that he had concerns that his orders were being delayed and
+patient care was being affected, so he spoke with RMO1 about the situation. ROI at 202-203.
+RMO3 stated that he was also getting complaints from his other staff members about Complainant.
+                                                   9                                       2023001229
+
+Id. Adding to RMO3’s testimony, RMO1 stated that he received numerous complaints from RMO3
+regarding Complainant’s quality of patient care. ROI at 181. RMO1 stated that RMO3 did not have
+the authority to removed Complainant from the panel, so RMO1 removed her for not accepting
+accountability for the responsibilities of the team and for Complainant’s refusal to accept
+accountability for what RMO3 complained about. Id.
+
+In claim 14, RMO1 testified that Complainant was counseled on numerous occasions which
+resulted in her Satisfactory rating on her performance appraisal. ROI at 190. RMO1 and RMO2
+both testified that a Satisfactory rating is not a poor performance rating. ROI at 189, 216. RMO2
+stated that she shared information with Complainant to help her understand that a satisfactory
+rating means all criteria for the job were met. ROI at 216.
+
+We find that Complainant has not established pretext in any of her disparate treatment claims.
+Indicators of pretext include, but are not limited to, discriminatory statements or past personal
+treatment attributable to those responsible for the personnel action that led to the filing of the
+complaint, comparative or statistical data revealing differences in treatment across various
+protected-group lines, unequal application of Agency policy, deviations from standard procedures
+without explanation or justification, or inadequately explained inconsistencies in the evidentiary
+record. Mellissa F. v. U.S. Postal Serv., EEOC Appeal No. 0120141697 (Nov. 12, 2015). At all
+times, the ultimate burden remains with Complainant to demonstrate by a preponderance of the
+evidence that the Agency's reasons were not the real reasons, and that the Agency instead was
+motivated by a prohibited reason.
+
+In an attempt to establish pretext in claim 1, Complainant stated that RMO1 knew of her medical
+condition and how it caused her to be absent from work; however, RMO1 gave her a “hard time.”
+ROI at 127. It should be noted that Complainant herself testified that she was not subjected to any
+epithets, slurs, negative stereotyping, or threatening, intimidating, or hostile acts due her disability.
+See Comp. Resp. to MSJ at 2.
+
+In an attempt to establish pretext in claim 4, Complainant stated that another Registered Nurse
+(C1) was absent from the clinic the majority of the summer in 2019, and she asserts that C1 was
+not placed on medical certification due to her absences. In response, RMO1 stated that C1’s
+extended leave was approved through HR, while Complainant’s was not, which was the reason
+why the medical certification was needed in the first place. ROI at 195. Complainant also argued
+that management should have waited for FMLA approval or disapproval prior to placing her on
+medical certification. However, a review of the relevant leave policies and procedures reveals that
+management is permitted to request a medical certificate for absences in excess of three
+consecutive workdays, which Complainant’s leave record supports that she had in fact had more
+than three consecutive workdays of absences at the time. See ROI at 250-252; 343.
+
+Additionally, employers are entitled to make their own business judgments and the reasonableness
+of the employer’s decision may be probative of whether it is pretext. However, the focus is on the
+employer’s motivation, not its business judgment.
+                                                 10                                     2023001229
+
+See Matilda C. v. Equal Emp’t Opportunity Comm’n, EEOC Appeal No. 0720140027 (Jul. 31,
+2018); Eric M. v. Dep’t of the Interior, EEOC Appeal No. 0120162148 (Feb. 13, 2018); Glass v.
+U.S. Postal Serv., EEOC Appeal No. 07A50068 (Jun. 15, 2006). We note that the Agency could
+have waited for her FMLA determination, but that the Agency was not required to do so.
+Ultimately, in this claim, there is no evidence of unlawful motivation.
+
+In an attempt to establish pretext in claim 5 Complainant argues that she had never been placed in
+AWOL status until she engaged in EEO activity, requested reasonable accommodations, and
+FMLA for her medical condition. However, the record reveals that Complainant’s AWOL status
+occurred only when she took unscheduled leave and did not have any existing leave to cover it.
+Complainant also stated that she should not have been charged with AWOL because management
+knew that her absence was related to her medical condition, but we find Complainant’s assertion
+to be contrary to the Agency’s leave policies and procedures. Article 11, Section 1(C) of the
+Agency’s Leave and Absences Policy states, “RNs are responsible for planning and managing their
+leave.” See ROI at 337. We note that Complainant’s leave for May 14, 2020 was ultimately
+changed to a combination of “other leave” and LWOP. ROI at 253.
+
+In an attempt to establish pretext in claim 6, Complainant again cites C1 as a comparator employee
+who she alleges, in this claim, was not assigned an additional group of patients while she was
+absent. RMO1 refuted Complainant’s argument and testified that C1 was in fact assigned to a team
+and was a surrogate, which means she, at point, would have also covered more than one team. ROI
+at 196.
+
+In claim 7, Complainant stated that her medical condition and EEO activity was a factor because
+after requesting a reasonable accommodation, RMO1 displayed harassing behaviors and he should
+have known it was his responsibility to ensure there was proper coverage for panels to ensure
+patient safety. We do not find Complainant’s assertion to be a persuasive argument for pretext.
+We also find Complainant’s assertion to be in direct conflict with Complainant’s testimony that
+she was not subjected to any epithets, slurs, negative stereotyping, or threatening, intimidating, or
+hostile acts due her disability or EEO activity. See Comp. Resp. to MSJ at 2.
+
+In claim 14, Complainant asserted that her medical condition and EEO activity were factors
+because her previous year evaluation was rated high satisfactory and receive excellent reviews
+regarding her performance and the care provided to patients. In raising this, Complainant does not
+provide any evidence to establish that the Agency’s proffered reasons for her performance rating
+is pretextual. Additionally, the Commission has long held that an Agency has broad discretion to
+set policies and carry out personnel decisions, such as performance appraisals, and it should not
+be second-guessed by the reviewing authority absent evidence of unlawful motivation. See Texas
+Dep't of Community Affairs v. Burdine, 450 U.S. 248, 259 (1981); Vanek v. Dep't of the Treasury,
+EEOC Request No. 05940906 (Jan. 16, 1997). In this case, there is no evidence of unlawful
+motivation in the Agency’s actions.
+                                                 11                                     2023001229
+
+Additionally, the Commission has long held that “[p]articipation in the EEO process does not
+shield employees from uniformly applied standards of conduct and performance; nor are the
+statutory anti-retaliatory provisions a license for employees to engage in misconduct.” Berkner v.
+Dep’t of Commerce, EEOC Petition No. 0320110022 (June 23, 2011).
+
+In these claims, Complainant did not show that the proffered reasons are not worthy of belief and
+her bare assertions that management officials discriminated against her are insufficient to prove
+pretext or that their actions were discriminatory. See Erby v. U.S. Postal Serv., EEOC Appeal No.
+0120064377 (Feb. 12, 2008). Therefore, we find that Complainant failed to meet the burden of
+proving the Agency discriminated against her on the basis of her medical condition or in reprisal
+for protected activity.
+
+Reasonable Accommodation - Telework
+
+In order to establish that she was denied a reasonable accommodation, Complainant must show
+that: (1) she is an individual with a disability as defined by 29 C.F.R. § 1630.2(g); (2) she is
+“qualified” as defined by 29 C.F.R. § 1630.2(m); and (3) the Agency failed to provide a reasonable
+accommodation. See EEOC Enforcement Guidance on Reasonable Accommodation and Undue
+Hardship Under the Americans with Disabilities Act (Enforcement Guidance on Reasonable
+Accommodation), No. 915.002 (Oct. 17, 2002). The Agency does not dispute that Complainant is
+an individual with a disability and is qualified. 5 As such, an agency is required to make reasonable
+accommodation to the known physical and mental limitations of a qualified individual with a
+disability unless the Agency can show that accommodation would cause an undue hardship. See
+29 C.F.R. §§ 1630.2(o), (p).
+
+The term “reasonable accommodation” means, in pertinent part, modifications or adjustments to
+the work environment, or to the manner or circumstances under which the position held is
+customarily performed that enable a qualified individual with a disability to perform the essential
+functions of the position in question. See 29 C.F.R. §1630.2(o)(1)(ii). Reasonable
+accommodations may include but are not limited to job restructuring; part-time or modified work
+schedules; reassignment to a vacant position; acquisition or modifications of equipment or devices;
+appropriate adjustment or modifications of examinations, training materials, or policies; the
+provision of qualified readers or interpreters; and other similar accommodations for individuals
+with disabilities. 29 C.F.R. §1630.2(o)(2)(ii).
+
+Complainant alleged that the Agency denied her reasonable accommodation request for fulltime
+telework. Complainant testified that on March 31, 2020, she made a reasonable accommodation
+request for fulltime telework and to be removed from screening patients with respiratory
+symptoms. Complainant’s reasonable accommodation was accompanied by information from her
+medical provider. See ROI at 363.
+
+
+5
+  In her appellate brief, Complainant makes several arguments regarding the Agency’s failure to
+explicitly state whether she was determined to be a qualified individual with a disability. However,
+since this issue is not disputed by the Agency, we decline to address this at length in this decision.
+                                                 12                                     2023001229
+
+On April 1, 2020, RMO2 responded and granted Complainant exclusion from screening patient,
+but stated that she was unable to approve the request for fulltime telework because Registered
+Nurses were not at that time approved for telework. ROI at 362. Complainant later submitted a
+formal reasonable accommodation request and received additional accommodations in the form of
+changes to her tour of duty, removal from front-line screening of patient and COVID-19 testing
+and screening as well as annual leave/sick leave from 2:30pm- 3:30pm to accommodate her
+childcare needs. ROI at 365. In this formal decision, Complainant’s request for fulltime telework
+was also denied due to the same reasons as earlier stated. Id. However, in this denial, RMO1 added
+that Complainant could not be granted fulltime telework because “a great percentage of
+[Complainant’s] daily requirements is face to face patient interactions and interactions with [her]
+team.” Id.
+
+The Commission has recognized that an agency is not required to remove any of the essential
+functions of a position as a reasonable accommodation. See Enforcement Guidance, General
+Principles. See also Larraine S. v. Dep’t of Agriculture, EEOC Appeal No. 0120180647 (Aug. 15,
+2019); Carlton T. v. Dep’t of the Navy, EEOC Appeal No. 0120151566 (Feb. 7, 2018); Timika O.
+v. Dep’t of the Navy, EEOC Appeal No. 0220140008 (Mar. 9, 2017). Further, an agency does not
+unreasonably deny the reasonable accommodation request where the only effective
+accommodation is to work at home and an essential function of the position requires that at least
+some of the work be performed in the office. See Petzer v. Secretary of Defense, EEO Appeal No.
+01A50812 (Mar. 21, 2006). Therefore, we do not find that the Agency was required to
+accommodate Complainant’s reasonable accommodation request regarding fulltime telework
+given that an essential function of her position was to be in person and provides services in person.
+Nonetheless, management later approved Complainant to telework twice a week. ROI at 130.
+When Complainant stated that this accommodation was ineffective, the Agency searched for
+another position that would allow Complainant to fulltime telework. In August 2020, Complainant
+was reassigned Complainant to a Nurse Triage position where fulltime telework was permitted.
+ROI at 130-131. Complainant stated that this position fully accommodated for her medical
+condition. ROI at 131.
+
+In Complainant’s submissions, Complainant argued that the Agency failed to engage in the
+interactive process and grant her accommodation request for telework. We do not find
+Complainant’s assertion to be supported by the record regarding her formal request for reasonable
+accommodations. It is clear that the Agency initially granted all of Complainant’s
+accommodations, except telework, and continued to work with Complainant through granting
+partial telework and then ultimately reassigning Complainant to a fulltime telework position. We
+note that Complainant does not contest the reassignment. Therefore, we find that Complainant
+failed to show that she was denied a reasonable accommodation by the Agency in claim 2 as the
+record reflects that management took reasonable actions to accommodate Complainant’s request.
+We find no violation of the Rehabilitation Act with regard to the Agency’s decision not to initially
+grant Complainant’s request for a telework position.
+
+Reasonable Accommodation - Leave
+                                                 13                                     2023001229
+
+However, in reviewing the record, we find that the Agency failed to accommodate Complainant
+regarding her use of leave. We understand that Complainant did not submit a formal reasonable
+accommodation request regarding her leave usage but note that an employee is not required to use
+the magic words “reasonable accommodation” in order to make a request. Instead, the employee
+need only inform the Agency that they need an adjustment or change at work for a reason related
+to a medical condition. See Enforcement Guidance on Reasonable Accommodation and Undue
+Hardship Under the Americans with Disabilities Act (Enforcement Guidance), EEOC Notice No.
+915.002 (Oct. 17, 2002) at Q.1. As previously stated, it is undisputed that both RMO1 and RMO2
+were aware of Complainant’s disability. See ROI at 361—362. The record and Complainant’s
+testimony make it clear that many of Complainant’s unscheduled leave absences were because of
+her medical condition and that these management officials were notice of it. See, e.g., ROI 369-
+370, and 377. At this point, the Agency had a duty to engage in the interactive process and grant
+Complainant an accommodation, absent undue hardship.
+
+We do not find that the Agency engaged in the interactive process with Complainant regarding a
+possible accommodation to her leave usage. Instead, the Agency managers, while knowing at least
+some of Complainant’s absences were due to her medical condition, issued her a memorandum
+regarding excessive leave usage (claim 1), placed her on medical certification (claim 2), charged
+her with AWOL (claim 5), and denied her leave requests (claim 13). In these claims, the Agency
+argued that approving Complainant’s unscheduled leave, including the use of LWOP, was contrary
+to Agency policies and procedures. However, the duty to provide reasonable accommodation may
+require an agency to modify a workplace policy when necessitated by an individual’s disability-
+related limitations, absent undue hardship. Enforcement Guidance, at Question 24. The record does
+not contain any evidence of undue hardship on the part of the Agency if it had granted
+Complainant’s requests for leave or LWOP or allowed her to take unscheduled leave. Also, we
+note that unpaid leave is a form of reasonable accommodation, whether or not provided under the
+FMLA. See Enforcement Guidance, at questions 16-21, 28.
+
+Since there is no evidence of the Agency engaging in an interactive process with Complainant
+regarding her leave usage or a showing of undue hardship in granting Complainant unscheduled
+leave, we find that the Agency denied Complainant a reasonable accommodation regarding leave.
+The Commission has stated that, because an employer has an ongoing obligation to provide a
+reasonable accommodation, failure to provide such accommodation constitutes a violation each
+time the employee needs it. See EEOC Compliance Manual Section 2: Threshold Issues, No.
+915.003, at 2-IV (May 12, 2000, revised in part, July 21, 2005). In this case, this violation applies
+to each time the Agency denied Complainant unscheduled leave, including paid leave or LWOP,
+when her absence was because of her disability and any other adverse actions that resulted of such
+leave. 6
+
+
+6
+  A finding of discriminatory intent is not an element of a failure to accommodate. See Brittney B.
+v. Dep’t of Defense, EEOC Appeal No. 2021002613 (Sept. 2, 2021); Susan B. v. Dep’t of the
+Army, EEOC Appeal No. 2020001632 (June 16, 2021). Therefore, our finding that the Agency
+failed to accommodation Complainant’s leave does not disrupt our finding on Complainant’s
+disparate treatment and harassment claims.
+                                                 14                                     2023001229
+
+
+Hostile Work Environment (Claims 3, 8, and 10-13)
+
+As discussed above, Complainant has not provided sufficient arguments or evidence that claims 1,
+2, 4, 5, 6, 7, 9, or 14 were motivated by discrimination or reprisal. As such, we do not find these
+claims to be supportive of Complainant’s harassment claim. See Oakley v. U.S. Postal Serv.,
+EEOC Appeal No. 01982923 (Sept. 21, 2000). Complainant, therefore, remains with claims 3, 8,
+10, 11, 12, and 13 to support her harassment claim.
+
+
+
+In order to establish a prima facie case of harassment, Complainant must prove, by a
+preponderance of the evidence, the existence of five elements: (1) that she is a member of a
+statutorily protected class; (2) that she was subjected to unwelcome conduct related to her protected
+class; (3) that the harassment complained of was based on her protected class; (4) that the
+harassment had the purpose or effect of unreasonably interfering with her work performance and/or
+creating an intimidating, hostile, or offensive work environment; and (5) that there is a basis for
+imputing liability to the employer. See Celine B. v. Dep’t of Navy, EEOC Appeal No. 2019001961
+(Sept. 21, 2020); Humphrey v. U.S. Postal Serv., EEOC Appeal No. 01965238 (Oct. 16, 1998).
+See also Henson v. City of Dundee, 682 F.2d 897 (11th Cir. 1982); Flowers v. Southern Reg’l
+Physician Serv. Inc., 247 F.3d 229 (5th Cir. 2001).
+
+In other words, to prove his hostile work environment claim, Complainant must establish that she
+was subjected to conduct that was either so severe or so pervasive that a “reasonable person” in
+Complainant’s position would have found the conduct to be hostile or abusive. Complainant must
+also prove that the conduct was taken because of a protected basis; in this case, her disability and
+reprisal for her protected activity. Only if Complainant establishes both of those elements –
+hostility and motive – will the question of Agency liability present itself.
+
+The Commission notes that reprisal claims are considered with a broad view of coverage and that
+the threshold for establishing retaliatory harassment is different than for discriminatory
+harassment. To ultimately prevail in her claim of retaliatory harassment, Complainant must show
+that she was subjected to conduct sufficient to dissuade a “reasonable person” from making or
+supporting a charge of discrimination. See id. at 57; EEOC Enforcement Guidance on Retaliation
+and Related Issues, EEOC Notice No. 915.004, § II(B)(3) & n. 137 (Aug. 25, 2016); Carroll v.
+Dep't of the Army, EEOC Request No. 05970939 (Apr. 4, 2000).
+
+In these claims, we find that Complainant’s claims of harassment did not occur as Complainant
+described, or were related to the management of Complainant’s assignments, performance, and
+conduct. For instance, in claim 3, Complainant alleged that RMO1 attempted to discourage
+Complainant from applying for advanced sick leave when he said it would create “financial
+implications” for her.
+                                                15                                     2023001229
+
+In response, RMO1 stated that he expressed to Complainant she may request advanced leave but
+cautioned her to remember it is a debt and should exercise every option before using this method.
+ROI at 175. RMO1 stated that Complainant still requested advanced leave and he forwarded it to
+HR for consideration. Id.
+
+In claim 8, Complainant alleged that RMO1 failed to respond to Complainant’s inquiry regarding
+leave issues. In response, RMO1 stated that he did respond to Complainant’s inquiries about leave,
+but that she was “not receptive to hearing any explanation” regarding the use of annual leave, sick
+leave, and charges of AWOL. ROI at 182. In claim 10, Complainant alleged RMO2 stated she
+could not assist Complainant with resolving her concerns about RMO1. However, Complainant
+herself testified that RMO2 requested to meet with her and RMO1, but Complainant refused. ROI
+at 146-147. Complainant stated that RMO2 should have investigated her concerns. RMO2 stated
+that she recommends group discussion to resolve any concerns between an employee and
+management. ROI at 214.
+
+In claim 11, Complainant alleged that RMO1 charged her with AWOL. RMO1 stated that
+Complainant was charged with AWOL because she was absent from work and had exhausted her
+leave balance. Complainant argued that RMO1 should have changed the charges to LWOP, but
+the relevant policies and procedures regarding LWOP state that approval of LWOP is a matter of
+administrative discretion and that despite Complainant’s argument, employees cannot demand it.
+ROI at 277. Nonetheless, the record reveals that Complainant’s leave for June 9, 2020 was changed
+to a combination of LWOP and “other leave,” not AWOL. ROI at 256. In claim 12, Complainant
+alleged RMO1 refused to provide Complainant with a copy of a complaint that was filed against
+her regarding the complaints described in claim 7. RMO1 testified that he is unaware of any
+complaint filed against her where she did not receive a copy. ROI at 186. RMO1 also stated that
+Complainant was counseled on these issues and refused to sign the report of discussion. Id.
+
+In claim 13, Complainant alleged that RMO1 denied Complainant’s request for leave submitted
+on August 11, 2020 for August 13, 2020. RMO1 stated that Complainant requested LWOP on
+August 11, 2020, but her request was denied because her FLMA was revoked which according to
+HR, she was no longer eligible to use FMLA or LWOP. ROI at 188. RMO1 stated that LWOP
+requests are approved by the second-line supervisor, not him, and that if the request was denied, it
+could have been due to an incomplete form. Id. We note again that the Agency’s policies and
+procedures regarding leave state that LWOP is a matter of administrative discretion and not
+something Complainant can demand. ROI at 277.
+
+In these claims, there is no evidence that the work-related incidents, even if occurred as alleged,
+were taken in order to harass Complainant on the basis of a protected class. Accordingly, we find
+that Complainant failed to meet the burden of proving the Agency subjected her to harassment
+based on disability or in reprisal for prior protected activity.
+                                               16                                     2023001229
+
+                                        CONCLUSION
+
+Based on a thorough review of the record and the contentions on appeal, including those not
+specifically addressed herein, we AFFIRM in part and REVERSE in part. We AFFIRM the
+Agency’s final order adopting the AJ’s summary judgment decision finding of no discrimination
+or harassment. We REVERSE the Agency’s finding of no violation of the Rehabilitation Act for
+failure to accommodate Complainant’s need to use leave and REMAND it for further processing
+in accordance with the ORDER below.
+
+
+                                            ORDER
+
+The Agency is ordered to take the following remedial actions:
+
+   1. Within sixty (60) calendar days of the date this decision is issued, the Agency shall, to the
+      extent that it has not already done so, rescind and expunge the memorandum issued to
+      Complainant on April 15, 2020, and any reference thereto, from Complainant's official
+      personnel file, and any leave restrictions placed on Complainant for sick leave as a result
+      of the memorandum issued to Complainant on May 6, 2020. The Agency shall issue written
+      notice to Complainant that it rescinded the memorandums and sick leave restrictions as
+      well as expunged all references to the memorandums.
+
+   2. To the extent that the Agency determines that Complainant’s absences from March 31,
+      2020 through August 11, 2020 were a result of her disability, the Agency shall, within
+      ninety (90) calendar days from the date this decision is issued, correct Complainant's time
+      and attendance records to reflect use of LWOP rather than AWOL for those determined
+      dates. The Agency shall issue written notice to Complainant confirming that it corrected
+      her time and attendance records in accordance with this order. The Agency shall provide
+      the Compliance officer with a copy of this notice and payroll documentation reflecting the
+      correction.
+
+   3. Within ninety (90) calendar days of the date this decision is issued, the individuals
+      identified in this decision as RMO1 and RMO2 shall complete 2 hours of interactive EEO
+      training, if they are still employed by the Agency, on responsibilities under the
+      Rehabilitation Act with special emphasis on the Agency's obligation to provide reasonable
+      accommodations and to timely respond and process reasonable accommodation requests.
+      For assistance in obtaining the necessary training, the Agency may contact the
+      Commission’s Outreach, Training and Engagement Division via email, at
+      FederalTrainingandOutreach@eeoc.gov. The Agency shall provide the Compliance
+      Officer with proof of attendance, as well as the contents and materials it used for the
+      training. If RMO1 or RMO2 have left the Agency's employ, the Agency shall furnish
+      documentation of their departure date.
+                                                 17                                     2023001229
+
+    4. Within one hundred twenty (120) calendar days from the date this decision is issued, the
+       Agency shall consider disciplining RMO1 and RMO2. The Commission does not consider
+       training to be disciplinary action. The Agency shall report its decision to the Compliance
+       Officer. If the Agency decides to take disciplinary action, it shall identify the action taken.
+       If the Agency decides not to take disciplinary action, it shall set forth the reason(s) for its
+       decision not to impose discipline. If these individuals have left the Agency’s employ, the
+       Agency shall furnish documentation of their departure dates.
+
+    5. Within sixty (60) calendar days of the date this decision is issued, the Agency shall
+       conduct and complete a supplemental investigation to determine whether Complainant is
+       entitled to compensatory damages for this violation of the Rehabilitation Act. In so doing,
+       the Agency shall:
+               (a) Issue a notice to Complainant of her right to submit evidence based our
+                   guidance in Carle v. Dep't of the Navy, EEOC Appeal No. 01922369 (Jan. 5,
+                   1993) and request evidence from Complainant in support of compensatory
+                   damages. 7
+
+               (b) Issue a new final agency decision (“Compensatory Damages FAD”) based on
+                   the findings of the supplemental investigation. The Compensatory Damages
+                   FAD shall state the amount (if any) of compensatory damages owed to
+                   Complainant and explain how the Agency determined that amount. The
+                   Compensatory Damages FAD shall include appeal rights to the Commission.
+
+               (c) Within sixty (60) calendar days of the date the Compensatory Damages FAD
+                   is issued, the Agency shall pay Complainant the amount of compensatory
+                   damages it determined are owed. If there is a dispute over the exact amount of
+                   compensatory damages owed, the Agency shall pay the undisputed amount to
+                   Complainant. If Complainant disagrees with the Agency’s award, they may
+                   challenge the Agency’s decision on the amount of compensatory damages by
+                   filing an appeal of the Compensatory Damages FAD with the Commission.
+                   Instructions on how to appeal, including the deadline to file, will be included in
+                   the appeal rights portion of the Compensatory Damages FAD.
+
+7
+  To establish entitlement to compensatory damages, the evidence must show a causal relationship
+between the Agency’s discriminatory action and any pecuniary (monetary) or non-pecuniary
+losses/harm experienced by Complainant. For more information on evidence to determine
+compensatory damages: EEOC Management Directive 110, Ch. 11 § VII (Aug. 5, 2015), available
+at https://www.eeoc.gov/federal/directives/md-110_chapter_11.cfm (provides the types of
+compensatory damages available under EEOC statutes and “Objective Evidence” of entitlement);
+and N. Thompson, Compensatory Damages in the Federal Sector: An Overview, EEOC Digest
+Vol. XVI, No. 1 (Winter 2005) available at https://www.eeoc.gov/federal/digest/xvi-1.cfm#article
+(explains Carle v. Dep’t of the Navy under the subsection “Proof of Damages”).
+                                                18                                     2023001229
+
+   6. Within thirty (30) calendar days of the date this decision is issued, the Agency shall post
+      a notice in accordance with the section listed below, entitled “Posting Order.” The Agency
+      shall provide the Compliance Officer with the original signed and dated notice, reflecting
+      the dates that the notice was posted, along with evidence that the notice was physically
+      posted at the facility and electronically.
+
+                                   POSTING ORDER (G0617)
+
+The Agency is ordered to post at its Durham, North Carolina, Medical Center facility copies of the
+attached notice. Copies of the notice, after being signed by the Agency's duly authorized
+representative, shall be posted both in hard copy and electronic format by the Agency within
+30 calendar days of the date this decision was issued, and shall remain posted for 60 consecutive
+days, in conspicuous places, including all places where notices to employees are customarily
+posted. The Agency shall take reasonable steps to ensure that said notices are not altered, defaced,
+or covered by any other material. The original signed notice is to be submitted to the Compliance
+Officer as directed in the paragraph entitled “Implementation of the Commission’s Decision,”
+within 10 calendar days of the expiration of the posting period. The report must be in digital
+format, and must be submitted via the Federal Sector EEO Portal (FedSEP). See 29 C.F.R. §
+1614.403(g).
+
+                                  ATTORNEY'S FEES (H1019)
+
+If Complainant has been represented by an attorney (as defined by 29 C.F.R. § 1614.501(e)(1)(iii)),
+she/he is entitled to an award of reasonable attorney's fees incurred in the processing of the
+complaint. 29 C.F.R. § 1614.501(e). The award of attorney's fees shall be paid by the Agency. The
+attorney shall submit a verified statement of fees to the Agency -- not to the Equal Employment
+Opportunity Commission, Office of Federal Operations -- within thirty (30) calendar days of
+receipt of this decision. The Agency shall then process the claim for attorney's fees in accordance
+with 29 C.F.R. § 1614.501.
+
+             IMPLEMENTATION OF THE COMMISSION’S DECISION (K0719)
+
+Under 29 C.F.R. § 1614.405(c) and §1614.502, compliance with the Commission’s corrective
+action is mandatory. Within seven (7) calendar days of the completion of each ordered corrective
+action, the Agency shall submit via the Federal Sector EEO Portal (FedSEP) supporting documents
+in the digital format required by the Commission, referencing the compliance docket number under
+which compliance was being monitored. Once all compliance is complete, the Agency shall
+submit via FedSEP a final compliance report in the digital format required by the Commission.
+See 29 C.F.R. § 1614.403(g). The Agency’s final report must contain supporting documentation
+when previously not uploaded, and the Agency must send a copy of all submissions to the
+Complainant and his/her representative.
+
+If the Agency does not comply with the Commission’s order, the Complainant may petition the
+Commission for enforcement of the order. 29 C.F.R. § 1614.503(a).
+                                                 19                                     2023001229
+
+The Complainant also has the right to file a civil action to enforce compliance with the
+Commission’s order prior to or following an administrative petition for enforcement. See 29
+C.F.R. §§ 1614.407, 1614.408, and 29 C.F.R. § 1614.503(g). Alternatively, the Complainant has
+the right to file a civil action on the underlying complaint in accordance with the paragraph below
+entitled “Right to File a Civil Action.” 29 C.F.R. §§ 1614.407 and 1614.408. A civil action for
+enforcement or a civil action on the underlying complaint is subject to the deadline stated in 42
+U.S.C. 2000e-16(c) (1994 & Supp. IV 1999). If the Complainant files a civil action, the
+administrative processing of the complaint, including any petition for enforcement, will be
+terminated. See 29 C.F.R. § 1614.409.
+
+Failure by an agency to either file a compliance report or implement any of the orders set forth in
+this decision, without good cause shown, may result in the referral of this matter to the Office of
+Special Counsel pursuant to 29 C.F.R. § 1614.503(f) for enforcement by that agency.
+
+                           STATEMENT OF RIGHTS - ON APPEAL
+                              RECONSIDERATION (M0124.1)
+
+The Commission may, in its discretion, reconsider this appellate decision if Complainant or the
+Agency submits a written request that contains arguments or evidence that tend to establish that:
+       1. The appellate decision involved a clearly erroneous interpretation of material fact or
+          law; or
+       2. The appellate decision will have a substantial impact on the policies, practices, or
+          operations of the agency.
+
+Requests for reconsideration must be filed with EEOC’s Office of Federal Operations (OFO)
+within thirty (30) calendar days of receipt of this decision. If the party requesting reconsideration
+elects to file a statement or brief in support of the request, that statement or brief must be filed
+together with the request for reconsideration. A party shall have twenty (20) calendar days
+from receipt of another party’s request for reconsideration within which to submit a brief or
+statement in opposition. See 29 C.F.R. § 1614.405; Equal Employment Opportunity Management
+Directive for 29 C.F.R. Part 1614 (EEO MD-110), at Chap. 9 § VII.B (Aug. 5, 2015).
+
+Complainant should submit their request for reconsideration, and any statement or brief in support
+of their request, via the EEOC Public Portal, which can be found at
+https://publicportal.eeoc.gov/Portal/Login.aspx
+
+Alternatively, Complainant can submit their request and arguments to the Director, Office of
+Federal Operations, Equal Employment Opportunity Commission, via regular mail addressed to
+P.O. Box 77960, Washington, DC 20013, or by certified mail addressed to 131 M Street, NE,
+Washington, DC 20507. In the absence of a legible postmark, a complainant’s request to
+reconsider shall be deemed timely filed if OFO receives it by mail within five days of the expiration
+of the applicable filing period. See 29 C.F.R. § 1614.604.
+                                                  20                                      2023001229
+
+An agency’s request for reconsideration must be submitted in digital format via the EEOC’s
+Federal Sector EEO Portal (FedSEP). See 29 C.F.R. § 1614.403(g). Either party’s request and/or
+statement or brief in opposition must also include proof of service on the other party, unless
+Complainant files their request via the EEOC Public Portal, in which case no proof of service is
+required.
+
+Failure to file within the 30-day time period will result in dismissal of the party’s request for
+reconsideration as untimely, unless extenuating circumstances prevented the timely filing of the
+request. Any supporting documentation must be submitted together with the request for
+reconsideration. The Commission will consider requests for reconsideration filed after the
+deadline only in very limited circumstances. See 29 C.F.R. § 1614.604(f).
+
+                COMPLAINANT’S RIGHT TO FILE A CIVIL ACTION (T0124)
+
+This decision affirms the Agency’s final decision/action in part, but it also requires the Agency to
+continue its administrative processing of a portion of your complaint. You have the right to file a
+civil action in an appropriate United States District Court within ninety (90) calendar days from
+the date that you receive this decision on both that portion of your complaint which the
+Commission has affirmed and that portion of the complaint which has been remanded for
+continued administrative processing. In the alternative, you may file a civil action after one
+hundred and eighty (180) calendar days of the date you filed your complaint with the Agency,
+or your appeal with the Commission, until such time as the Agency issues its final decision on
+your complaint. If you file a civil action, you must name as the defendant in the complaint the
+person who is the official Agency head or department head, identifying that person by their full
+name and official title. Failure to do so may result in the dismissal of your case in court. “Agency”
+or “department” means the national organization, and not the local office, facility or department
+in which you work. If you file a request to reconsider and also file a civil action, filing a civil
+action will terminate the administrative processing of your complaint.
+
+                            RIGHT TO REQUEST COUNSEL (Z0815)
+
+If you want to file a civil action but cannot pay the fees, costs, or security to do so, you may request
+permission from the court to proceed with the civil action without paying these fees or costs.
+Similarly, if you cannot afford an attorney to represent you in the civil action, you may request the
+court to appoint an attorney for you. You must submit the requests for waiver of court costs or
+appointment of an attorney directly to the court, not the Commission. The court has the sole
+discretion to grant or deny these types of requests.
+                                                 21                                     2023001229
+
+Such requests do not alter the time limits for filing a civil action (please read the paragraph titled
+Complainant’s Right to File a Civil Action for the specific time limits).
+
+FOR THE COMMISSION:
+
+
+
+
+Carlton M. Hadden, Director
+Office of Federal Operations
+
+
+May 8, 2024
+Date
+

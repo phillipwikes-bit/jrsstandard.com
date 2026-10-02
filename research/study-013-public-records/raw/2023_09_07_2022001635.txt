@@ -1,0 +1,376 @@
+             U.S. EQUAL EMPLOYMENT OPPORTUNITY COMMISSION
+                           Office of Federal Operations
+                                  P.O. Box 77960
+                             Washington, DC 20013
+
+
+                                           Eura B., 1
+                                          Complainant,
+
+                                                v.
+
+                                       Deb A. Haaland,
+                                          Secretary,
+                                   Department of the Interior,
+                                           Agency.
+
+                                    Appeal No. 2022001635
+
+                                 Hearing No. 570-2021-00761X
+
+                                 Agency No. DOI-OS-20-0403
+
+                                           DECISION
+
+Complainant filed an appeal with the Equal Employment Opportunity Commission (EEOC or
+Commission), pursuant to 29 C.F.R. § 1614.403(a), from the Agency’s January 4, 2022 final
+decision concerning an equal employment opportunity (EEO) complaint alleging employment
+discrimination in violation of Section 501 of the Rehabilitation Act of 1973 (Rehabilitation Act),
+as amended, 29 U.S.C. § 791 et seq.
+
+                                        BACKGROUND
+
+During the period at issue, Complainant worked as a Supervisory IT Cybersecurity Specialist
+within the Agency’s Financial Management Directorate (FMD) in Herndon, Virginia.
+
+On August 27, 2020, Complainant filed a formal complaint alleging that the Agency
+discriminated against her on the bases of disability (vertigo) and in reprisal for prior protected
+EEO activity.
+
+On November 9, 2020, the Agency accepted the formal complaint for investigation. After the
+investigation, the Agency provided Complainant with a copy of the report of investigation (ROI)
+
+
+
+1
+ This case has been randomly assigned a pseudonym which will replace Complainant’s name
+when the decision is published to non-parties and the Commission’s website.
+                                                2                                    2022001635
+
+and notice of her right to request a hearing before an EEOC Administrative Judge (AJ).
+Complainant timely requested a hearing.
+
+On September 15, 2021, the AJ issued a Post Conference Order. Therein, the AJ found that the
+parties agreed to the following framing of the issues:
+
+       1. Whether the Agency discriminated against Complainant based on her
+          disability when it did not grant a reasonable accommodation request on or
+          about February 19, 2020.
+
+       2. Whether the Agency discriminated against Complainant based on her EEO
+          activity, including subjecting her to reprisal-based harassment, from March
+          2019 to February 2021 (as manifested by the numerous events averments to
+          the Agency’s EEO Office in the ROI, Tab 3, and in the Complainant’s
+          preliminary conference report to the [AJ]).
+
+The AJ also ordered, in pertinent part, that one sentence be redacted from the ROI at 173, an
+affidavit from an Agency official, no later than October 15, 2021.
+
+On November 15, 2021, Complainant withdrew her request for a hearing and requested a final
+agency decision. The AJ issued an Order of Dismissal and Remand for Final Agency Decision
+on November 15, 2021.
+
+On January 4, 2022, the Agency issued a final decision finding no discrimination. Regarding
+claim (1), the denial of a reasonable accommodation, the Agency found that it provided
+Complainant with her requested accommodation – a full-time telework. Final Agency Decision
+(FAD) at 36. Specifically, the Agency set forth, “[s]he requested full-time telework, and the
+Agency granted that accommodation. She has not alleged that the Agency has asked her to come
+back to the office since she was granted her requested accommodation of full-time telework in
+March 2020. While Complainant has disagreed with the Agency’s terminology related to her
+requested accommodation, the Agency nonetheless provided her with the requested
+accommodation.” Id.
+
+Regarding claim (2), a reprisal-based harassment claim, the Agency found that Complainant
+failed to establish that the numerous alleged incidents at issue were motivated by her protected
+activity. FAD at 35. The Agency reasoned, “[a]lthough some of the management officials knew
+of her previous EEO activity, there is no evidence that the conduct she alleged is related to her
+prior EEO activity…The record reveals that multiple employees who did not have a technical
+background completed the [Information Systems Security Officer, ISSO duties]. While
+Complainant characterizes the reassignment of these tasks as based on her protected EEO
+activity, there is no evidence that this is the case. To the contrary, the ISSO tasks seemed to be
+assigned to multiple individuals without a technical background. Id.
+                                                3                                     2022001635
+
+The instant appeal followed. On appeal, Complainant, through her attorney, requests that we
+reverse the Agency’s FAD. Complainant’s attorney sets forth that the FAD “relies on
+unauthorized confidential settlement disclosures made by a [named Agency official] in his
+declaration as a basis for reaching its conclusions – after the [AJ] initially assigned to the case
+ordered the Agency to have those portions of the affidavit redacted and the Agency failed to
+follow that order. The AJ instructed the Agency to redact the references to confidential
+settlement communications found in [a named Agency official’s] affidavit…The Agency did not
+follow the AJ’s instructions…” FAD at 1. Based on the foregoing, Complainant’s attorney
+asserts that the Agency should be sanctioned for failing to follow the AJ’s Order and for using
+what should have been redacted to form a conclusion that is adverse to Complainant.
+Complainant’s Brief at 1 n.1.
+
+Regarding claim (1), the denial of a reasonable accommodation, Complainant asserts that she
+was granted telework as a “temporary job modification” and not a reasonable accommodation.
+Thus, Complainant asserts that she never received notification that her reasonable
+accommodation was approved.
+
+Regarding claim (2), a reprisal-based harassment claim, Complainant asserts that the Agency
+assigned her ISSO duties based on her prior protected EEO activity in an effort to overload her
+with work. Complainant’s Brief at 23. Specifically, Complainant, through her attorney, asserts
+that “[m]anagement’s explanation that [she] was best qualified for the ISSO work defies logic, as
+she had never performed the tasks previously, nor had they ever provided her with any training
+before assigning her duties that required immediate action and no ongoing support.” Id.
+
+In response, the Agency requests that we affirm its final decision. The Agency asserts it did
+comply with the AJ’s Order by submitting a redacted ROI on October 15, 2021 and a corrected
+supplemental ROI on October 29, 2021. The Agency set forth that “[w]hile the FAD does cite to
+and references [a named Agency official’s] affidavit in general, the information…which the AJ
+required redaction is never specifically referred to…in the FAD.” Agency’s Brief at 3. The
+Agency reiterates its reasoning in the FAD for finding no discrimination for claims (1) and (2).
+
+
+                                 ANALYSIS AND FINDINGS
+
+As this is an appeal from a decision issued without a hearing, pursuant to 29 C.F.R.
+§ 1614.110(b), the Agency's decision is subject to de novo review by the Commission. 29 C.F.R.
+§ 1614.405(a). See Equal Employment Opportunity Management Directive for 29 C.F.R. Part
+1614, at Chapter 9, § VI.A. (Aug. 5, 2015) (explaining that the de novo standard of review
+“requires that the Commission examine the record without regard to the factual and legal
+determinations of the previous decision maker,” and that EEOC “review the documents,
+statements, and testimony of record, including any timely and relevant submissions of the
+parties, and . . . issue its decision based on the Commission’s own assessment of the record and
+its interpretation of the law”).
+                                                  4                                     2022001635
+
+As an initial matter, we decline to sanction the Agency regarding the redaction of one sentence
+from an affidavit in the ROI. The record reflects that the Agency complied with the AJ’s Order
+when it submitted a supplemental ROI on October 15, 2021, and a corrected supplemental ROI
+on October 29, 2021. The sentence at issue on page 173 of the ROI was redacted from the
+supplemental ROI and the corrected supplemental ROI. Based on the foregoing, we find that the
+Agency followed the AJ’s Order.
+
+We acknowledge, however, that the Agency, on appeal, uploaded a prior version of the ROI
+which did not redact the sentence at issue. However, we find that this action constitutes harmless
+error because we rely on the corrected supplemental ROI (with the proper redaction) in issuing
+this decision herein.
+
+Claim (1)-Denial of a Reasonable Accommodation
+
+To establish that she was denied a reasonable accommodation, Complainant must show that: 1)
+she is an individual with a disability; 2) she is a qualified individual with a disability; and 3) the
+Agency failed to provide a reasonable accommodation. See EEOC Enforcement Guidance on
+Reasonable Accommodation and Undue Hardship Under the Americans with Disabilities Act,
+EEOC Notice No. 915.002 (Oct. 17, 2002) (Enforcement Guidance). “The term ‘qualified’ with
+respect to an individual with a disability, means that the individual satisfies the requisite skill,
+experience, education and other job-related requirements of the employment position such
+individual holds or desires and, with or without reasonable accommodation, can perform the
+essential functions of such position.” 29 C.F.R. § 1630.2(m). An agency is required to make
+reasonable accommodation to the known physical and mental limitations of a qualified
+individual with a disability unless the agency can show that accommodation would cause undue
+hardship. 29 C.F.R. §§ 1630.2(o) and (p).
+
+Assuming arguendo that Complainant is a qualified individual with a disability, we concur with
+the Agency’s final decision that it provided Complainant with the requested accommodation,
+full-time telework. The record contains medical documentation dated February 24, 2020, from a
+Family Nurse Practitioner requesting that Complainant be provided with telework with a
+suggested duration of six months.2 ROI at 432. In a March 6, 2020, memorandum,
+Complainant’s supervisor sets forth that he is granting Complainant’s “temporary job
+modification” of full-time work from home effectively immediately through September 7, 2020.
+ROI at 428. Complainant, however, has not alleged that the Agency required her to stop
+teleworking and return to the office.
+
+Claim (2)-Reprisal-Based Harassment
+
+
+
+
+2
+ The record contains prior medical documentation for Complainant dated February 17, 2020.
+This documentation requested that Complainant be able to telework until her condition resolved.
+The documentation did not set forth a suggested timeframe. ROI at 289.
+                                                5                                     2022001635
+
+To establish a claim of harassment a complainant must show that: (1) they belong to a statutorily
+protected class; (2) they were subjected to harassment in the form of unwelcome verbal or
+physical conduct involving the protected class; (3) the harassment complained of was based on
+their statutorily protected class; (4) the harassment affected a term or condition of employment
+and/or had the purpose or effect of unreasonably interfering with the work environment and/or
+creating an intimidating, hostile, or offensive work environment; and (5) there is a basis for
+imputing liability to the employer. See Henson v. City of Dundee, 682 F.2d 897 (11th Cir.
+1982). Further, the incidents must have been "sufficiently severe or pervasive to alter the
+conditions of [complainant's] employment and create an abusive working environment." Harris
+v. Forklift Systems, Inc., 510 U.S. 17, 21 (1993). The harasser's conduct should be evaluated
+from the objective viewpoint of a reasonable person in the victim's circumstances. Enforcement
+Guidance on Harris v. Forklift Systems Inc., EEOC Notice No. 915.002 at 6 (Mar. 8, 1994).
+
+In the instant matter, Complainant has alleged numerous incidents of harassment. The Agency,
+in a detailed decision, set forth that it articulated legitimate, nondiscriminatory reasons for the
+alleged incidents at issue and that Complainant failed to establish that the alleged incidents were
+based on her prior EEO activity. We concur.
+
+We do not address each alleged incident of harassment herein. However, a significant portion of
+Complainant’s claims pertain to her being assigned Information System Security Officer (ISSO)
+duties and not receiving an appropriate level of support to complete these duties. The record
+contains an affidavit from Complainant’s supervisor during this period. Therein, the supervisor
+asserted that he was informed by higher-level Agency officials of a pressing need for someone to
+perform the role of ISSO for two applications. ROI at 187. The supervisor stated that after a
+discussion among the members of the leadership team it was determined that Complainant was
+the most qualified to perform the job. Id. He further stated that he informed Complainant that
+the ISSO work took priority over her web content duties. ROI at 187-188.
+
+The record also contains an affidavit from Complainant’s second-level supervisor during the
+time period. Therein, he asserted that he supported the leadership team’s decision to assign
+ISSO duties to Complainant. ROI at 163. He stated that prior to assigning the ISSO duties,
+Complainant was one of the department’s most senior Information Security Specialists with
+considerable exposure to the department’s systems. ROI at 164.
+
+While Complainant asserts that she did not have a sufficient technical background to perform
+these duties, the record reflects that other personnel who had been assigned ISSO duties also had
+not previously performed these duties at the time of their assignment and that they did not have a
+technical background. The record contains a declaration under penalty of perjury from an FMD
+employee. Therein, he asserted that he was assigned ISSO work as an ancillary duty for a period
+of time. ROI at 474. He stated that he did not have a background in IT or cybersecurity and that
+performing ISSO duties was completely new to him. 3 ROI at 475.
+
+
+3
+  Another employee, in a declaration under penalty of perjury, asserted that she was also
+assigned ISSO work as an ancillary duty. ROI at 465. She requested her supervisor not to assign
+                                                 6                                     2022001635
+
+
+The record also contains a declaration under penalty of perjury from another FMD employee
+who had performed ISSO work as an ancillary duty in the past. Therein, she asserted that she
+asked not to be assigned ISSO duties because she felt that she did not have the IT expertise
+necessary for these responsibilities. ROI at 472.
+
+An Agency official, in a declaration under penalty of perjury, asserted that she previously
+received complaints from other ISSOs within FMD regarding their workload and not
+understanding the work to be completed. ROI at 463.
+
+Based on the foregoing, we find that the record reflects that there were various ongoing issues
+with assigning ISSO duties to FMD personnel. Specifically the record reflects that the FMD
+personnel assigned ISSO work lacked, according to some individuals, an appropriate technical
+background. In addition, the record also reflects there were issues pertaining to the amount of
+the workload regarding ISSO duties, and issues pertaining to job satisfaction regarding the
+personnel who were assigned ISSO duties. Thus, we find that Complainant failed to establish,
+by a preponderance of evidence, that these duties were assigned to her in reprisal for her prior
+protected EEO activity.
+
+Regarding the level of support Complainant received in performing ISSO duties, the record
+contains an affidavit from an IT Cybersecurity Specialist within a different management chain.
+Therein, he asserted that he was directed to let the assigned ISSOs perform their duties and that if
+specific actions were needed requiring his involvement, he would be called upon. ROI at 245.
+
+Regarding the removal of Complainant’s supervisory duties around February 5, 2021,
+Complainant’s supervisor asserted that Complainant complained to him that she did not have the
+“bandwidth” to perform her supervisory duties in addition to her other duties, which included
+performing ISSO duties for two systems and web content manager duties. ROI at 458. In
+addition, Complainant’s supervisor stated that Complainant, at the time, supervised two
+employees, both of whom planned to retire on March 31, 2021, and that Agency policy requires
+that a supervisor have at least four employees to justify supervisory status. Thus, Complainant’s
+supervisor asserted that she was not compliant with the supervisory requirements. Id.
+
+Upon review of the record, we concur with the Agency’s detailed final decision that
+Complainant failed to establish, by a preponderance of the evidence, that the alleged incidents
+comprising her harassment claim, including those specifically not referenced herein, were based
+on her prior protected EEO activity.
+
+Finally, we note that in the instant matter, Complainant withdrew her request for a hearing before
+an EEOC AJ.
+
+
+her these duties because she did not have the IT security expertise. ROI at 465-466. She further
+stated that she was told that there was no money for a full-time ISSO, so FMD was having FMD
+employees take on these duties in addition to their other assignments. ROI at 465.
+                                               7                                    2022001635
+
+As a result of Complainant’s decision to withdraw her hearing request, we do not have the
+benefit of an AJ’s credibility determinations or an AJ overseeing the further development of the
+record through a hearing. Complainant bears the burden to prove, by a preponderance of the
+evidence, that she was subjected to harassment based on her protected classes, we find that she
+has not met that burden.
+
+                                        CONCLUSION
+
+Accordingly, we AFFIRM the Agency’s final decision finding no discrimination or unlawful
+retaliation was established as alleged.
+
+
+
+
+                          STATEMENT OF RIGHTS - ON APPEAL
+
+                                RECONSIDERATION (M0920)
+
+The Commission may, in its discretion, reconsider this appellate decision if Complainant or the
+Agency submits a written request that contains arguments or evidence that tend to establish that:
+       1. The appellate decision involved a clearly erroneous interpretation of material fact or
+          law; or
+       2. The appellate decision will have a substantial impact on the policies, practices, or
+          operations of the agency.
+
+Requests for reconsideration must be filed with EEOC’s Office of Federal Operations (OFO)
+within thirty (30) calendar days of receipt of this decision. If the party requesting
+reconsideration elects to file a statement or brief in support of the request, that statement or
+brief must be filed together with the request for reconsideration. A party shall have twenty
+(20) calendar days from receipt of another party’s request for reconsideration within which to
+submit a brief or statement in opposition. See 29 C.F.R. § 1614.405; Equal Employment
+Opportunity Management Directive for 29 C.F.R. Part 1614 (EEO MD-110), at Chap. 9 § VII.B
+(Aug. 5, 2015).
+
+Complainant should submit his or her request for reconsideration, and any statement or brief in
+support of his or her request, via the EEOC Public Portal, which can be found at
+https://publicportal.eeoc.gov/Portal/Login.aspx
+
+Alternatively, Complainant can submit his or her request and arguments to the Director, Office
+of Federal Operations, Equal Employment Opportunity Commission, via regular mail addressed
+to P.O. Box 77960, Washington, DC 20013, or by certified mail addressed to 131 M Street, NE,
+Washington, DC 20507. In the absence of a legible postmark, a complainant’s request to
+reconsider shall be deemed timely filed if OFO receives it by mail within five days of the
+expiration of the applicable filing period. See 29 C.F.R. § 1614.604.
+                                                8                                     2022001635
+
+An agency’s request for reconsideration must be submitted in digital format via the EEOC’s
+Federal Sector EEO Portal (FedSEP). See 29 C.F.R. § 1614.403(g). Either party’s request
+and/or statement or brief in opposition must also include proof of service on the other party,
+unless Complainant files his or her request via the EEOC Public Portal, in which case no proof of
+service is required.
+
+Failure to file within the 30-day time period will result in dismissal of the party’s request for
+reconsideration as untimely, unless extenuating circumstances prevented the timely filing of the
+request. Any supporting documentation must be submitted together with the request for
+reconsideration. The Commission will consider requests for reconsideration filed after the
+deadline only in very limited circumstances. See 29 C.F.R. § 1614.604(c).
+
+               COMPLAINANT’S RIGHT TO FILE A CIVIL ACTION (S0610)
+
+You have the right to file a civil action in an appropriate United States District Court within
+ninety (90) calendar days from the date that you receive this decision. If you file a civil action,
+you must name as the defendant in the complaint the person who is the official Agency head or
+department head, identifying that person by his or her full name and official title. Failure to do
+so may result in the dismissal of your case in court. “Agency” or “department” means the
+national organization, and not the local office, facility or department in which you work. If you
+file a request to reconsider and also file a civil action, filing a civil action will terminate the
+administrative processing of your complaint.
+
+                          RIGHT TO REQUEST COUNSEL (Z0815)
+
+If you want to file a civil action but cannot pay the fees, costs, or security to do so, you may
+request permission from the court to proceed with the civil action without paying these fees or
+costs. Similarly, if you cannot afford an attorney to represent you in the civil action, you may
+request the court to appoint an attorney for you. You must submit the requests for waiver of
+court costs or appointment of an attorney directly to the court, not the Commission. The
+court has the sole discretion to grant or deny these types of requests.
+                                                  9                                     2022001635
+
+Such requests do not alter the time limits for filing a civil action (please read the paragraph titled
+Complainant’s Right to File a Civil Action for the specific time limits).
+
+FOR THE COMMISSION:
+
+
+
+
+                                          Carlton M. Hadden’s signature
+Carlton M. Hadden, Director
+Office of Federal Operations
+
+
+August 17, 2023
+Date
+

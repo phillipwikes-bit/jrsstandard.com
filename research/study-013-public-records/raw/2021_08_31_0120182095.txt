@@ -1,0 +1,844 @@
+             U.S. EQUAL EMPLOYMENT OPPORTUNITY COMMISSION
+                           Office of Federal Operations
+                                  P.O. Box 77960
+                             Washington, DC 20013
+
+
+                                         Salvatore K., 1
+                                         Complainant,
+
+                                                v.
+
+                                       Merrick Garland,
+                                       Attorney General,
+                                     Department of Justice
+                                    (U.S. Marshals Service),
+                                           Agency.
+
+                                    Appeal No. 0120182095
+
+                                 Hearing No. 570-2014-00184X
+
+                                Agency Nos. USM-2013-00379
+                                           USM-2015-01457
+
+
+                                           DECISION
+
+Complainant timely filed an appeal with the Equal Employment Opportunity Commission (EEOC
+or Commission), pursuant to 29 C.F.R. § 1614.403(a), from the Agency’s May 11, 2018, final
+order concerning his equal employment opportunity (EEO) complaint alleging employment
+discrimination in violation of Section 501 of the Rehabilitation Act of 1973 (Rehabilitation Act),
+as amended, 29 U.S.C. § 791 et seq. For the following reasons, the Commission REVERSES the
+Agency’s final order.
+
+                                     ISSUES PRESENTED
+
+The issues presented are whether the EEOC Administrative Judge (AJ) properly issued a decision
+without a hearing, and whether the AJ properly found that Complainant did not prove that he was
+improperly subjected to medical inquiries and examinations.
+
+
+
+
+1
+ This case has been randomly assigned a pseudonym which will replace Complainant’s name
+when the decision is published to non-parties and the Commission’s website.
+                                               2                                      0120182095
+
+                                        BACKGROUND
+
+The United States Marshals Service (Agency) is statutorily responsible for security in federal
+courthouses. 28 U.S.C. § 566(a). The Agency fulfills this responsibility by contracting with
+private companies to provide Court Security Officers (CSOs) for federal courthouses.
+
+Complainant began working as a CSO in 2001. From 2012 until June 12, 2014, Complainant
+worked as a CSO pursuant to a contract between the Agency and federal contractor ABC Security,
+Inc. (ABC). 2 In this position, Complainant provided security to the federal court and its judicial
+officers, witnesses, defendants, and attorneys. According to the CSO position description, the
+duties and responsibilities of a CSO require frequent and prolonged walking, standing, running,
+sitting, and stooping. Report of Investigation (ROI), p. 93. Additionally, a CSO is sometimes
+required to subdue violent or potentially violent people. Id. Complainant usually worked at fixed
+posts near judges’ chambers or at the entrance of the courthouse, where he screened members of
+the public seeking entry to court. At the time of events giving rise to this complaint, ABC assigned
+Complainant as a CSO in the Agency’s Court Security Program at the federal courthouse in
+Greenbelt, Maryland.
+
+Under the terms of the contract between ABC and the Agency, each CSO “shall undergo and pass
+an annual examination during the life of ABC the contract for qualification purposes.” ROI,
+Exhibit 17, p. 4. As part of this annual process, all CSOs and CSO applicants complete a
+comprehensive medical form (CSO Form 229) entitled “Certification of Medical Examination for
+Court Security Officers,” and undergo a medical examination by a contractor-designated
+examining physician. In this case, a Federal Occupational Health (FOH) physician served as the
+examining physician.
+
+According to the contract between the Agency and ABC, if an FOH physician is unable to make a
+medical determination or it is necessary to clarify or prove that a disqualifying condition has been
+corrected or eliminated, the FOH physician will issue a ‘deferred’ determination and request
+additional information from the Contractor. Additionally, according to the contract, “the
+Contractor shall require CSOs to submit specific supplemental information within 60 days, unless
+otherwise specified by FOH or the Agency, for completion of a specific test, in order to medically
+qualify.” The contract states that if the requested information is not received by the Agency’s
+Occupational Health Nurse within the 60-day timeframe, or as required for the completion of a
+specific test, the individual must be disqualified to perform under the contract.
+
+In or about 2005, Complainant was diagnosed with Borderline Type II Diabetes. On August 1,
+2013, Complainant was examined by an ABC approved physician pursuant to the annual CSO
+exam. After the exam, a physician (Dr1) initially reported that Complainant was medically
+qualified for his CSO position. The report was then transmitted to the Agency.
+
+
+
+2
+ Pseudonym used for federal contractor since private sector complaint filed. See 42 U.S.C. §
+2000e–5(b).
+                                              3                                   0120182095
+
+On October 27, 2013, a FOH physician (Dr2) reviewed the report and issued a medical review
+form (MRF) to Complainant. The MRF stated that “because there is a diagnosis of diabetes,”
+Complainant must have his treating physician provide a detailed report regarding “diabetes
+control” and his current medical status. ROI, Exhibit 11, pp. 1, 2. Additionally, Dr2 requested
+that Complainant provide the following information:
+
+       1. One month of glucose values performed at least four times per day, before breakfast as
+          well as one to two hours after meals, and stored in a downloadable Glucometer;
+
+       2. Testing measuring Complainant’s cardiovascular, neurological, renal, and ocular
+          health, including a Bruce protocol treadmill stress test;
+
+       3. Complainant’s current hemoglobin measures;
+
+       4. The number of hypoglycemic events in the previous year, and the number of such
+          events that required assistance from others;
+
+       5. A copy of all laboratory results taken over the previous year and current hemoglobin
+          A1C;
+
+       6. A copy of all outpatient clinic notes taken over the previous year;
+
+       7. The date of onset/diagnosis, history of Ketoacidosis, hospitalizations, and general
+          statement of Complainant’s compliance with diabetic education, prescribed
+          medications, dietary recommendations, and activity recommendations over the past
+          year. Also, information regarding whether there is hypoglycemia awareness, and if
+          there is, a description of the symptoms experienced and at what blood glucose level
+          symptoms occur;
+
+       8. Orthostatic blood pressure measurements while in the supine position and three minutes
+          after Complainant stands up;
+
+       9. Complainant’s current eye examination by an ophthalmologist documenting the
+          presence or absence of eye disease based on specific testing (including diabetic
+          retinopathy, macular edema, hemorrhages, lenticular opacities, etc.) which evaluates
+          red/green and blue/yellow color vision; and
+
+       10. Complainant’s history of all medications, including type and dosage adjustments over
+           the past year.
+
+On January 8, 2014, Dr1 provided a letter in response to the MRF. In the letter, Dr1 stated the
+following:
+                                               4                                     0120182095
+
+       On physical exam, [Complainant] has diet controlled Type II Diabetes Mellitus.
+       He has had no symptoms of Diabetes. Recently, he was seen by his
+       ophthalmologist, [Dr3], as well as his cardiologist, [Dr4], both of whom performed
+       thorough evaluations and found no evidence of diabetic eye or cardiac disorders.
+       He is not in need of blood sugar testing on a daily basis, and there is no need for
+       medications at this point. He has been strongly urged to continue an aggressive
+       weight loss and exercise regimen to improve his blood sugar findings. He will be
+       rechecked for hemoglobin A1c today and again in three months following the above
+       noted exercise and diet regimen. He does not require medication at this time and
+       his borderline Type II Diabetes should not impair his ability to perform his job.
+
+Dr2 subsequently issued a follow-up medical review (MRF) in which she again deferred making
+a medical determination, pending further examination. ROI, Exhibit 1, p. 16. Dr2 noted that
+Complainant had not provided requested information about the onset of Diabetes; compliance with
+treatment; evidence of neurological and renal complications; an eye doctor’s report; or an exercise
+stress test.
+
+In the second MRF, Dr2 did not repeat her earlier demand for the blood glucose log and for
+information about hypoglycemic events. However, Dr2 asked for the following:
+
+       1. A copy of Complainant’s eye doctor’s report and a “maximal, stress treadmill exercise
+          test;”
+
+       2. A report setting forth the date of the onset of Complainant’s diabetes;
+
+       3. Complainant’s history of ketoacidosis and hospitalizations;
+
+       4. Complainant’s compliance with treatment;
+
+       5. A report on whether Complainant had neurological or renal diabetic complications;
+
+       6. Complainant’s “clinical course over the past 2 years.”
+
+       7. A copy of “all labs” taken over the previous two years, including current C-peptide
+          level and current Hemoglobin A1C;
+
+       8. A copy of all outpatient clinic records over the past two years;
+
+       9. Complainant’s orthostatic blood pressure measurements while in the supine position
+          and three minutes after standing up;
+
+       10. Complainant’s current complete eye exam by an eye doctor documenting the presence
+           or absence of eye disease; and
+                                               5                                     0120182095
+
+       11. An assessment of the presence of cardiovascular, neurological, and renal disease.
+
+ROI, Exhibit 12, pp. 1, 2.
+
+On or about June 5, 2014, the ABC District Supervisor asked Complainant if he intended to submit
+any additional information to the Agency, and Complainant responded that he believed that he had
+already provided information addressing his ability to do the job in his physician’s letter.
+Complainant also maintained that he did not comply with Dr2’s request for additional medical
+examinations and information because sticking his fingers four times a day to test his glucose
+levels would interfere with his ability to hold a gun while working as a CSO. Exhibit 7, p. 4. In a
+letter dated June 11, 2014, ABC informed Complainant that he was terminated effective June 12,
+2014, as “a direct result of your failure to provide all of the required medical follow-up
+documentation mandated by the [Agency] and the FOH necessary to make a determination of your
+medical qualification.” ROI, Exhibit 1, p. 18.
+
+On March 10, 2015, Complainant filed an EEO complaint in which he alleged that the Agency
+discriminated against him on the basis of disability when from August 1, 2013, until June 11, 2014,
+the Agency subjected him to harassing, excessive, and unduly burdensome medical assessments
+and to requests for documentation while performing services as a CSO on an Agency contract.
+Additionally, Complainant alleged that he was unlawfully terminated from his employment with
+ABC Security on June 12, 2014.
+
+AJ’s Decision
+
+After the investigation of Complainant’s complaint, the Agency provided Complainant with a copy
+of the report of investigation and notice of his right to request a hearing before an EEOC
+Administrative Judge (AJ). Complainant timely requested a hearing. On October 6, 2016, the AJ
+issued a Case Management Order in which he stated that he did not believe that the Report of
+Investigation contained sufficient information to establish the Commission’s jurisdiction over the
+complaint. The AJ required the parties to submit briefs on the topic of jurisdiction.
+
+On October 17, 2016, the Agency submitted a brief conceding the Commission has jurisdiction
+over this matter. In an order dated October 17, 2016, the AJ found that the Commission has
+“sufficient jurisdiction” over this complaint and that the discovery period had been initiated.
+Additionally, the AJ granted Complainant’s October 17, 2016 Motion to Amend his complaint to
+reframe the issue as the following:
+
+       Whether Complainant was discriminated against based on his disability (Borderline
+       Diabetes) when, between August 1, 2013 and June 11, 2014, the [Agency]
+       subjected him to harassing, excessive, and unduly burdensome medical
+       assessments and requirements for documentation while he was performing services
+       as a Court Security Officer on the Agency contract, and refused to make
+       determination that he was medically qualified. Complainant further alleges that
+       because the Agency never determined that he was medically qualified, he was
+                                               6                                      0120182095
+
+       subsequently terminated from his employment with ABC Security on June 12,
+       2014.
+
+On February 7, 2017, Complainant moved for summary judgment, which the Agency opposed on
+February 13, 2017. In a decision dated March 29, 2018, the AJ issued summary judgment in favor
+of the Agency. Specifically, the AJ first found that Complainant failed to timely contact an EEO
+Counselor to raise his allegations. The AJ further found that, even if the complaint was timely,
+the Agency’s request for Complainant’s medical information was job-related and a business
+necessity. The AJ reasoned that Dr2’s requests were consistent with guidance from the American
+College of Occupational and Environmental Medicine (ACOEM), and Complainant did not show
+that Dr2’s reliance on the guidance was used to discriminate against him because of his disability.
+The AJ further reasoned that Dr2 was charged with making final medical determinations, and her
+desire to rely on more than a single-page letter from Complainant’s physician was reasonable.
+
+Additionally, the AJ determined that ABC unilaterally issued the letter of termination without
+request or comment from the Agency while the Agency was still awaiting requested medical
+documentation from Complainant. Further, the AJ found that Complainant could not prevail on
+his termination claim because a legitimate, nondiscriminatory reason exists, namely, that
+Complainant stated that he would not comply with the Agency’s requests, which the AJ
+characterized as reasonable. The Agency subsequently issued a final order fully adopting the AJ’s
+findings.
+
+Complainant’s Private Sector Charge with the EEOC
+
+Shortly after filing the instant federal sector complaint, on March 19, 2015, Complainant also filed
+a disability discrimination charge with EEOC’s Baltimore Field Office against ABC (Respondent)
+challenging his termination. The matter was subsequently transferred to EEOC’s Detroit Field
+Office. On May 24, 2018, the EEOC’s Detroit Field Office issued a reasonable cause
+determination regarding Complainant’s charge (Charge No. 531-2015-01124). The determination
+found, in relevant part, the following:
+
+       The Commission has determined that the evidence obtained during the
+       investigation establishes that there is reasonable cause to believe that Respondent
+       discriminated against Charging Party in violation of the ADA [Americans with
+       Disabilities Act] when it discharged Charging Party due to his disability even
+       though Charging Party could perform the essential functions of the job with or
+       without accommodation. The investigation revealed that the Charging Party was
+       able to work as a Court Security Officer, but that the U.S. Marshals Service
+       informed Respondent that Charging Party was medically disqualified due to his
+       inability to meet the medical standards established by the U.S. Marshals Service.
+       Respondent did not object to the U.S. Marshals Service's direction that the Charging
+       Party be removed from his job working as a Court Security Officer nor did
+       Respondent provide the U.S. Marshals Service with supplemental medical
+       information which would have established that Charging Party was medically
+                                               7                                      0120182095
+
+       qualified to work. The investigation finds Respondent similarly discharged or
+       placed on unpaid leave due to their disabilities a class of Court Security Officers
+       nationwide who were qualified to do the job with or without accommodation from
+       at least February 1, 2012 to present. In addition, Charging Party was subjected to
+       unnecessary rigorous medical testing by the U.S. Marshals Service and/or Federal
+       Occupational Health even though they had sufficient medical information to show
+       Charging Party was qualified for the job.
+
+The letter further invited the parties to engage in conciliation to resolve the matter and forwarded
+a proposed Conciliation Agreement for their review. On January 12, 2021, the EEOC entered into
+a conciliation agreement with ABC.
+
+                                 CONTENTIONS ON APPEAL
+
+On appeal, Complainant maintains that the AJ erred in finding that his complaint was initiated by
+untimely EEO Counselor contact. Complainant contends that there is no evidence that the building
+where Complainant worked contained posters with the applicable time limits, or that he otherwise
+had constructive knowledge of the time limit for initiating Counselor contact. Complainant argues
+that because he was directly employed by a contractor instead of a federal agency, it is
+unreasonable to expect him to have known that within 45 days of his termination, he had the right
+to pursue a discrimination claim against the Agency. Complainant further contends that the AJ’s
+decision is inconsistent with a May 24, 2018 reasonable cause determination by the EEOC’s
+Detroit Field Office, which found reasonable cause to believe that ABC discriminated against
+Complainant in violation of the Americans with Disabilities Act (ADA) when it discharged him.
+
+Additionally, Complainant maintains that the AJ improperly relied upon guidance from the
+American College of Occupational and Environmental Medicine (ACOEM) to conclude that there
+was no discrimination in this case. Complainant contends that ACOEM guidance was not
+applicable here because he only had “pre-diabetes,” and the ACOEM guidance concerns law
+enforcement officers in general, not CSOs in particular. Complainant also contends that nothing
+in ACOEM guidance required the Agency to request all of the information it asked him to submit.
+
+The Agency requests that we affirm its final order but does not raise additional arguments on
+appeal.
+
+                                  ANALYSIS AND FINDINGS
+
+Federal Sector EEO Process Jurisdiction and EEO Counselor Contact
+
+As an initial matter, we note that the Agency concedes and does not challenge the AJ’s finding
+that Complainant’s claim that the Agency violated the Rehabilitation Act falls within the
+jurisdiction of the federal sector EEO process. Therefore, we decline to review the AJ’s
+determination on jurisdiction.
+                                               8                                      0120182095
+
+Regarding timeliness, EEOC Regulation 29 C.F.R. § 1614.105(a)(1) requires that complaints of
+discrimination should be brought to the attention of the EEO Counselor within forty-five (45) days
+of the date of the matter alleged to be discriminatory or, in the case of a personnel action, within
+forty-five (45) days of the effective date of the action. The Commission has adopted a “reasonable
+suspicion” standard (as opposed to a “supportive facts” standard) to determine when the forty-five
+(45) day limitation period is triggered. See Howard v. Dep't of the Navy, EEOC Request No.
+05970852 (Feb. 11, 1999). Thus, the time limitation is not triggered until a complainant reasonably
+suspects discrimination, but before all the facts that support a charge of discrimination have
+become apparent.
+
+EEOC regulations provide that the agency or the Commission shall extend the time limits when
+the individual shows that he was not notified of the time limits and was not otherwise aware of
+them, that he did not know and reasonably should not have known that the discriminatory matter
+or personnel action occurred, that despite due diligence he was prevented by circumstances beyond
+his control from contacting the Counselor within the time limits, or for other reasons considered
+sufficient by the agency or the Commission. 29 C.F.R. § 1614.105(a)(2).
+
+Here, the record reveals that Complainant was terminated by ABC on June 12, 2014. Complainant
+initiated EEO Counselor contact on February 4, 2015, which is well beyond the 45-day time limit.
+However, the Counselor’s Report states that Complainant maintained that he was unaware of the
+45-day time limit and did not learn about it until the union told him to file a claim with the
+Agency’s EEO office.
+
+The AJ noted that the Agency accepted Complainant’s claims because it had no information that
+he was aware of the time limits. The AJ also noted that it was unclear whether the building in
+which Complainant worked contained posters with the applicable time limits or if Complainant
+had other constructive knowledge of the time limits. Nevertheless, the AJ concluded that
+Complainant’s complaint was initiated by untimely EEO Counselor contact because he found that
+Complainant should have reasonably suspected discrimination at the time of his termination but
+failed to act with due diligence to pursue his legal rights.
+
+Upon review, we note that the Agency concedes that the time limits should be extended here
+because there is no record that Complainant was previously apprised of the applicable time limits.
+The AJ determined that Complainant failed to exercise due diligence in pursing his EEO rights,
+but we find no evidence that Complainant’s initial EEO Counselor contact was so late as to
+constitute an unreasonable delay in these circumstances. Consequently, we waive the time limits
+in this case, and find that the AJ improperly concluded that Complainant’s complaint was initiated
+by untimely EEO Counselor contact.
+
+Summary Judgment
+
+We now must determine whether the AJ appropriately issued the decision without a hearing. The
+Commission’s regulations allow an AJ to issue a decision without a hearing upon finding that there
+is no genuine issue of material fact. 29 C.F.R. § 1614.109(g).
+                                                9                                      0120182095
+
+EEOC’s decision without a hearing regulation follows the summary judgment procedure from
+federal court. Fed. R. Civ. P. 56. The U.S. Supreme Court held summary judgment is appropriate
+where a judge determines no genuine issue of material fact exists under the legal and evidentiary
+standards. Anderson v. Liberty Lobby, Inc., 477 U.S. 242, 255 (1986). In ruling on a summary
+judgment motion, the judge is to determine whether there are genuine issues for trial, as opposed
+to weighing the evidence. Id. at 249. At the summary judgment stage, the judge must believe the
+non-moving party’s evidence and must draw justifiable inferences in the non-moving party’s favor.
+Id. at 255. A “genuine issue of fact” is one that a reasonable judge could find in favor for the non-
+moving party. Celotex v. Catrett, 477 U.S. 317, 322-23 (1986); Oliver v. Digital Equip. Corp.,
+846 F.2d 103, 105 (1st Cir. 1988). A “material” fact has the potential to affect the outcome of a
+case.
+
+An AJ may issue a decision without a hearing only after determining that the record has been
+adequately developed. See Petty v. Dep’t of Def., EEOC Appeal No. 01A24206 (July 11, 2003).
+In this case, we carefully reviewed the record and find that it is adequately developed for us to
+address the merits of this case. To successfully oppose a decision without a hearing, Complainant
+must identify material facts of record that are in dispute or present further material evidence
+establishing facts in dispute. Here, there is no evidence that such a dispute exists. As such, the AJ
+correctly determined that there are no genuine issues of material fact or credibility that merited a
+hearing. Therefore, we find that the AJ’s issuance of a decision without a hearing was appropriate.
+However, we determine that summary judgment should have been issued in favor of Complainant,
+instead of in favor of the Agency.
+
+Disability-Related Inquiries/Examination
+
+Under the Rehabilitation Act, employers may make disability-related inquires or require medical
+examinations of employees only if they are job related and consistent with business necessity. 29
+C.F.R. §§ 1630.13(b), 1630.14(c). The Rehabilitation Act does not limit the prohibitions against
+improper medical inquiries to individuals with disabilities. 29 C.F.R. § 1630.14(c); Meeker v.
+U.S. Postal Serv., EEOC Appeal No. 01A12137 (Aug. 23, 2002). Moreover, generally, a
+disability-related inquiry or medical examination of an employee may be ‘job related and
+consistent with business necessity’ when an employer “has a reasonable belief, based on objective
+evidence, that: (1) an employee's ability to perform essential job functions will be impaired by a
+medical condition; or (2) an employee will pose a direct threat due to a medical condition.
+Enforcement Guidance on Disability-Related Inquiries and Medical Examinations of Employees
+Under the ADA (July 27, 2000) (Enforcement Guidance on Disability-Related Inquiries and
+Examinations) at Question 5.
+
+“Objective evidence” is reliable information, either directly observed or provided by a credible
+third party, that an employee may have or has a medical condition that will interfere with his ability
+to perform essential functions or will result in a direct threat. Id. at Question 7. “Direct threat”
+means a significant risk of substantial harm that cannot be eliminated or reduced by reasonable
+accommodation. 29 C.F.R. § 1630.2(r); Candi R. v. Dep’t of Defense, EEOC Appeal No.
+0120172238 (Feb. 28, 2019).
+                                                10                                       0120182095
+
+“An employer is entitled only to the information necessary to determine whether the employee can
+do the essential functions of the job or work without posing a direct threat.” Enforcement
+Guidance on Employee Inquiries and Examinations at Question 13. The burden is on the Agency
+to show that one of the criteria justifying the inquiry or examination was met. Hampton v. U.S.
+Postal Serv., EEOC Appeal No. 01986308 (July 31, 2002).
+
+The direct threat evaluation must be based on an individualized assessment of the person’s present
+ability to safely perform the essential functions of the job. Alonzo N. v. Dep’t of Homeland
+Security, EEOC Appeal No. 0120180739 (June 21, 2019). In determining whether an individual
+would pose a direct threat, the factors to be considered include: 1) the duration of the risk; 2) the
+nature and severity of the potential harm; 3) the likelihood that the potential harm will occur; and
+4) the imminence of the potential harm. Candi R. v. Dep’t of Defense, EEOC Appeal No.
+0120172238.
+
+In this case, we note that Complainant is not challenging the Agency’s annual medical examination
+of all CSOs. He is only challenging the Agency’s subsequent medical inquiries/examinations.
+After the annual medical examination, the Agency initially asked Complainant to provide it with
+at least ten different types of medical information and examinations, including one month of
+glucose values performed at least four times per day; cardiovascular, neurological, renal, and
+ocular tests, including a treadmill stress test; current hemoglobin measures; the number of
+hypoglycemic events in the previous years, and the number of such events that required assistance
+from others; a copy of all laboratory results taken over the previous year; a copy of all outpatient
+clinic notes taken over the previous year; the date of onset/diagnosis, history of Ketoacidosis,
+hospitalizations, and general statement of Complainant’s compliance with diabetic education,
+prescribed medications, dietary recommendations, and activity recommendations over the past
+year; orthostatic blood pressure measurements while in the supine position and three minutes after
+Complainant stands up; and Complainant’s current eye examination by an ophthalmologist.
+
+After Complainant responded to the Agency’s initial medical inquiry, the Agency subsequently
+requested that he provide at least eleven types of medical information and examinations, including
+an eye doctor’s report and a “maximal, stress treadmill exercise test;” a report setting forth the date
+of the onset of Complainant’s diabetes; Complainant’s history of ketoacidosis and hospitalizations;
+Complainant’s compliance with treatment; a report on whether Complainant had neurological or
+renal diabetic complications; Complainant’s “clinical course over the past 2 years;” a copy of “all
+labs” taken over the previous two years, including current C-peptide level and current Hemoglobin
+A1C; a copy of all outpatient clinic records over the past two years; Complainant’s orthostatic
+blood pressure measurements while in the supine position and three minutes after standing up;
+Complainant’s current complete eye exam by an eye doctor documenting the presence or absence
+of eye disease; and an assessment of the presence of cardiovascular, neurological, and renal
+disease.
+
+Upon review, we note that the Agency’s medical inquiry was precipitated by Complainant’s
+disclosure that he was diagnosed with Diabetes Mellitus or Borderline Diabetes.
+                                              11                                     0120182095
+
+However, a Diabetes Mellitus diagnosis does not automatically mean an employee is unable to
+perform the essential functions of a CSO position, which mostly consists of guarding fixed posts
+and screening entrants at courthouses. Therefore, the Agency must provide objective evidence
+that Complainant was unable to perform the essential functions of his position. This standard
+requires an individualized assessment based on observations about Complainant’s work
+performance or conduct, not generalized conclusions, stereotypes, or perceptions about persons
+with Diabetes Mellitus.
+
+The Agency relies upon ACOEM’s guidance to justify Complainant’s medical
+inquiries/examinations. We note that ACOEM guidance states that “diabetes mellitus may place
+LEO’s [law enforcement officers] at risk for sudden incapacitation, thus jeopardizing their ability
+to perform critical job functions.” ROI, Exhibit 18, p. 3. The guidance recommends that individual
+assessments of law enforcement officers with Diabetes Mellitus should be conducted to determine
+the employee’s history of blood glucose control; knowledge of diabetes and its management;
+current stability of blood glucose; risk for significant hypoglycemia or hyperglycemia; and
+presence of diabetic complications.
+
+However, by stating that law enforcement personnel with Diabetes Mellitus should be
+automatically subjected to medical inquiries/examinations, ACOEM’s guidance relies on the type
+of generalized stereotypes forbidden by the Rehabilitation Act and contradicts the Rehabilitation
+Act’s requirement that medical inquiries/examinations can only be based on individualized
+assessments/evidence of employees’ inability to perform the essential functions of their position.
+As explained above, we reject the proposition that a mere diagnosis of Diabetes Mellitus
+automatically means that an agency has a job-related, business-necessity based reason for
+subjecting CSOs to medical inquiries. ACOEM’s assertion that persons with Diabetes Mellitus
+may be at risk for sudden incapacitation that may jeopardize their ability to perform duties is not
+supported by any data or evidence showing to what extent all individuals with Diabetes Mellitus
+are prone to such episodes; how often they occur; and to what extent the risk can be reduced or
+eliminated through medical treatment and lifestyle. A generalized statement that individuals with
+Diabetes Mellitus “may be at risk” is certainly not the type of specific, individualized objective
+evidence that allows the Agency to conclude that Complainant was unable to perform the essential
+functions of his position, as the Rehabilitation Act requires. As such, ACOEM’s guidance does
+not override the requirements and standards of the Rehabilitation Act and, in fact, conflicts with
+them. Therefore, the Agency’s medical inquiries/examinations of Complainant cannot be justified
+by ACOEM guidance.
+
+After a thorough review of the record, we find that there is simply no evidence that Complainant
+experienced or displayed any difficulty performing the essential job functions of his CSO position
+because of his medical condition. See Milford R. v. Dep’t of Defense, EEOC Appeal No.
+0120120081 (Dec. 3, 2015). Instead, it is undisputed that, after Complainant was diagnosed with
+Diabetes, ABC’s physician informed the Agency that Complainant was medically qualified for his
+CSO position.
+                                              12                                     0120182095
+
+Moreover, after the Agency subjected Complainant to the initial medical inquiry, his physician
+also reported that Complainant’s medical condition should not impair his ability to perform his
+job; he had no diabetic symptoms; displayed no evidence of diabetic eye or cardiac disorders; and
+required no medication. We find that the Agency has not presented any evidence from which it
+can be reasonably concluded that it possessed objective evidence that Complainant was unable to
+perform the essential functions of his position.
+
+The other avenue for the Agency to prove that its medical inquiries/examinations were job-related
+and a business necessity is by showing that Complainant posed a threat to himself or others because
+of his Diabetes. To prove direct threat, the Agency must show more than that a person stands
+some elevated risk of future injury. See Alonzo N. v. Dep’t of Homeland Security, EEOC Appeal
+No. 0120180739 (June 21, 2019). Rather, a person is a “direct threat” if he poses a “significant
+risk of substantial harm” to the health and safety of himself or others which cannot be eliminated
+or reduced to an acceptable level by reasonable accommodation. 29 C.F.R. § 1630.2(r); Candi R.
+v. Dep't of Defense, EEOC Appeal No. 0120172238 (Feb. 28, 2019). The direct threat evaluation
+must be based on an individualized assessment of the person's present ability to safely perform the
+essential functions of the job. This assessment must be based on a reasonable medical judgment
+that relies on the most current medical knowledge and/or on the best available objective evidence.
+In determining whether an individual would pose a direct threat, the factors to be considered
+include: (1) the duration of the risk, (2) the nature and severity of the potential harm, (3) the
+likelihood that the potential harm will occur, and (4) the imminence of the potential harm. Id. The
+burden is on the Agency to prove direct threat. Massingill v. Dep't of Veterans Affairs, EEOC
+Appeal No. 01964890 (July 14, 2000).
+
+Here, the mere fact that Complainant has Diabetes does not constitute evidence that he posed a
+direct threat. Moreover, there is simply no individualized evidence that Complainant posed a
+significant risk of substantial harm to the health and safety of himself or others which cannot be
+eliminated or reduced to an acceptable level.
+
+We note that this case is distinguishable from cases wherein we have found that agencies properly
+subjected diabetic employees to medical inquiries and examinations when they displayed a
+medical inability to perform work duties. See Head v. U.S. Postal Serv., EEOC Appeal No.
+01A12349 (Sep. 4, 2002) (medical inquiry proper when Complainant with Diabetes Mellitus and
+Post Traumatic Stress Disorder had an attack of low blood sugar resulting in his nearly fainting
+and being unable to perform his duties as a window clerk); Arroyo v. Dep’t of Homeland Security,
+EEOC Appeal No. 01A21863 (June 16, 2003) (medical examination proper when employee with
+Diabetes who worked as Immigration Inspector at airport suffered many diabetic attacks at work
+and was found wandering the airport in an incoherent state). In this case, the Agency has not
+shown that there was any cause to reasonably believe that Complainant could not perform the
+essential functions of his position. The Agency’s medical inquiry was not prompted by an on-the-
+job diabetic episode, but rather by a mere diagnosis. See Boike v. Akal Security, Inc., Case No.
+2:17-cv-10109, 2019 WL 4747735 (E.D. Mich. 2019) (direct threat defense and medical
+examination analysis require an individualized assessment of the employee’s current ability to
+perform the job and a study of reasonable medical knowledge or evidence).
+                                                13                                      0120182095
+
+Therefore, we find that the Agency subjected Complainant to medical inquiries/examinations that
+violated the Rehabilitation Act.
+
+Moreover, the Agency’s inquiries/examinations were clearly excessive under the Rehabilitation
+Act. Under EEOC Guidance, an employer is entitled only to the information necessary to
+determine whether the employee can perform the essential functions of the job or work without
+posing a direct threat. Enforcement Guidance on Disability-Related Inquiries and Medical
+Examinations, Section B, Question 10 (July 27, 2000). Moreover, in most situations, an employer
+cannot request an employee's complete medical records, because they are likely to contain
+information unrelated to whether the employee can perform his/her essential functions or work
+without posing a direct threat. Id.
+
+In this case, not only did the Agency ask for Complainant to undergo a battery of rigorous testing
+that included a treadmill exercise stress test and measuring his blood glucose levels four times per
+day, but it also asked for him to generally disclose his history of hospitalizations and for a copy of
+“all labs” taken over the previous two years. Additionally, the Agency asked for “all [of
+Complainant’s] outpatient clinic records” over the previous two years, and Complainant’s history
+of all medications, including type and dosage adjustments over the past year. These requests were
+sweeping, overbroad demands that Complainant disclose a wide array of medical information that
+is likely not related to his Diabetes Mellitus or ability to perform the essential functions of his
+position. The Agency failed to narrowly tailor its requests to ensure that its requests did not
+constitute fishing expeditions into Complainant’s medical information and history. As such, we
+determine that the Agency’s requests for medical information and examinations were clearly
+excessive, and therefore violated the Rehabilitation Act.
+
+Termination
+
+Complainant’s refusal to provide medical information demanded by the Agency resulted in his
+termination from ABC because the Agency, through its FOH physician, would not clear
+Complainant to continue working as a CSO until he provided the requested medical information.
+Consequently, we find that the Agency’s improper medical inquiry directly caused Complainant’s
+termination. In so finding, we note that we have held that an employer cannot discipline an
+employee for failing to comply with an improper request for medical information. Watkins v. U.S.
+Postal Serv., EEOC Appeal No. 01981800 (Aug. 29, 2001).
+
+We further note that, in its submissions to the AJ, the Agency argued that it should not be held
+liable here because the FOH physician subjected Complainant to the unlawful medical
+inquiries/examinations, and ABC made the decision to terminate him. However, the Agency and
+its contractor ABC chose to delegate the authority to medically clear contractor CSOs to the FOH
+physician. In fact, in its Reply to Complainant’s Opposition to the Agency’s Motion for Summary
+Judgment dated February 13, 2017, the Agency maintained that it made the decision to “reasonably
+rel[y] upon the law enforcement occupational medical expertise of FOH.” Agency’s Reply to
+Complainant’s Opposition to Agency’s Motion for Summary Judgment, p. 4.
+                                               14                                      0120182095
+
+Having purposefully relied on FOH’s decision to subject CSOs to medical inquiries and
+examinations, the Agency cannot now disavow liability for these actions. FOH clearly acted as an
+agent of the Agency, and Complainant was terminated because of the unlawful medical
+examinations/inquiries of the Agency’s agent. See Abe K. v. Dep’t of Justice, EEOC Appeal Nos.
+0120180724 and 0120181492 (May 14, 2018) (where complainant found not medically qualified
+for his position by Agency’s agent FOH because he did not meet the Agency's color vision
+standard, and he was terminated from his position, Complainant has viable claims against both the
+United States Marshals Service and the Executive Office of the U.S. Attorneys). As such, we
+conclude that the Agency and ABC are liable for Complainant’s termination and now must jointly
+collaborate to remedy this violation of the Rehabilitation Act. See Meeker v. U.S. Postal Serv.,
+EEOC Appeal No. 01A12137 (Aug. 23, 2002) (to remedy wrongful removal for failure to comply
+with an improper request for medical information, complainant's immediate reinstatement together
+with appropriate additional relief was ordered). Finally, we note that in May 2018, the
+Commission’s Detroit Field Office determined that ABC has “similarly discharged or placed on
+unpaid leave due to their disabilities a class of [U.S. Marshals Service] Court Security Officers
+nationwide who were qualified to do the job with or without accommodation from at least February
+1, 2012 to present.” Thus, in the orders below, we direct the Agency to undertake actions designed
+to ensure that CSOs throughout the nation are not subjected to unlawful medical inquiries and
+examinations.
+
+                                         CONCLUSION
+
+Based on a thorough review of the record and the contentions on appeal, including those not
+specifically addressed herein, we REVERSE the Agency’s final order finding no violation of the
+Rehabilitation Act. We REMAND this matter to the Agency to take actions consistent with this
+decision and the ORDERS set forth below.
+
+                                             ORDER
+
+The Agency shall:
+
+       1.      Within sixty (60) calendar days from the date this decision is issued, the Agency
+               shall request that its contractor (ABC, or the current appropriate contractor) offer
+               Complainant conditional reinstatement to his former position of Court Security
+               Officer, or a substantially equivalent and agreeable position, retroactive to the date
+               of his termination on or about on June 12, 2014. Complainant’s reinstatement to a
+               Court Security Officer position shall be dependent on his taking and passing of the
+               annual medical examination given to all Court Security Officers, and on his
+               eligibility for service in this position under applicable age-based mandatory
+               retirement requirements, if any. The Agency shall evaluate Complainant’s medical
+               clearance for duty consistent with the standards set forth in the Rehabilitation Act,
+               EEOC Guidance, and this decision. Complainant must either accept or reject the
+               Agency's offer in writing within 15 calendar days of receipt of the offer.
+                                     15                                      0120182095
+
+     Should Complainant reject the offer of reinstatement, his entitlement to any back
+     pay attributed to the reinstatement shall terminate as of that date of refusal, unless
+     mandatory retirement would have applied to Complainant after the date of his
+     termination. If Complainant has already reached the age of mandatory retirement
+     for this position, his entitlement to back pay shall terminate on the date he reached
+     the age of mandatory retirement for his CSO position.
+
+2.   Within sixty (60) calendar days from the date this decision is issued, the Agency
+     shall collaborate with ABC to determine the appropriate amount of back pay, with
+     interest, and other benefits (such as retirement plans) due Complainant (if any),
+     pursuant to 29 C.F.R. § 1614.501. Complainant shall cooperate in efforts to
+     compute the amount of back pay and benefits due and shall provide all relevant
+     information requested by the Agency. The Agency shall pay the amount within
+     sixty (60) calendar days from the date of its determination of the appropriate
+     amount. If there is a dispute regarding the exact amount of back pay and/or
+     benefits, the Agency shall pay Complainant the undisputed amount within 60 days
+     of the date the Agency determines the amount it believes to be due. Complainant
+     may petition for enforcement or clarification of the amount in dispute. The petition
+     for clarification or enforcement must be filed with the Compliance Officer, at the
+     address referenced in the statement entitled “Implementation of the Commission's
+     Decision.”
+
+3.   Within thirty (30) calendar days from the date the back-pay amount is paid to
+     Complainant, the Agency shall request that Complainant submit his claim for
+     compensation for all additional income-tax liability associated with lump sum
+     payments. The Agency shall afford Complainant sixty (60) calendar days to submit
+     his claim and supporting documents. The burden of proof to establish the amount
+     of additional tax liability, if any, is on Complainant. The calculation of additional
+     tax liability must be based on the taxes Complainant would have paid had he
+     received the back pay in the form of regular salary during the back pay period,
+     versus the additional taxes he paid due to receiving the back-pay in a lump-sum
+     award. Thereafter, the Agency shall issue a decision regarding claimed additional
+     tax liability within sixty (60) calendar days after the time period expires for
+     Complainant to submit his claim for additional tax liability.
+
+4.   Within one hundred and twenty (120) calendar days from the date this decision is
+     issued, the Agency will conduct and complete a supplemental investigation on the
+     issue of Complainant’s entitlement to compensatory damages and will afford him
+     an opportunity to establish a causal relationship between his termination and
+     pecuniary or non-pecuniary losses, if any. Complainant will cooperate in the
+     Agency’s efforts to compute the amount of compensatory damages and will provide
+     all relevant information requested by the Agency. The Agency shall issue a final
+     decision on the issue of compensatory damages within thirty (30) calendar days of
+     the completion of its supplemental investigation. 29 C.F.R. § 1614.110. The final
+                                              16                                      0120182095
+
+               decision shall contain appeal rights to the Commission. The Agency shall submit a
+               copy of the final decision to the Compliance Officer at the address set forth herein.
+
+       5.      Within thirty (30) calendar days of the date of this decision, the Agency’s EEO and
+               Human Resources offices, in collaboration with FOH and ABC (or the current
+               appropriate contractor), shall submit a written request for technical assistance from
+               EEOC, Office of Federal Operations (OFO), Federal Sector Programs (FSP), on
+               revising CSO medical inquiry and examination policies, procedures, and practices
+               nationwide to comply with the standards set forth in the Rehabilitation Act, EEOC
+               Guidance, and OFO case law. Thereafter, the Agency should ensure that its
+               national policies, procedures, and practices for subjecting employees to medical
+               inquiries and examinations comply with the standards set forth by the
+               Rehabilitation Act and EEOC Guidance.
+
+       6.      Within ninety (90) calendar days of the date this decision is issued, the Agency
+               shall provide eight (8) hours of interactive EEO training to all its employees and
+               FOH personnel who are involved in directing CSOs to undergo medical
+               examinations and inquiries, with an emphasis on the requirements of the
+               Rehabilitation Act and EEOC Guidance on this matter.
+
+       7.      The Agency shall pay Complainant reasonable attorney’s fees and costs as set forth
+               in the paragraph below entitled “Attorney’s Fees.”
+
+       8.      The Agency shall post the notice referenced in the paragraph below entitled,
+               “Posting Order.”
+
+                                  POSTING ORDER (G0617)
+
+The Agency is ORDERED to post at its Greenbelt, Maryland area offices copies of the attached
+notice. Copies of the notice, after being signed by the Agency's duly authorized representative,
+shall be posted both in hard copy and electronic format by the Agency within 30 calendar days
+of the date this decision was issued, and shall remain posted for 60 consecutive days, in
+conspicuous places, including all places where notices to employees are customarily posted. The
+Agency shall take reasonable steps to ensure that said notices are not altered, defaced, or covered
+by any other material. The original signed notice is to be submitted to the Compliance Officer as
+directed in the paragraph entitled "Implementation of the Commission's Decision," within 10
+calendar days of the expiration of the posting period. The report must be in digital format, and
+must be submitted via the Federal Sector EEO Portal (FedSEP). See 29 C.F.R. § 1614.403(g).
+
+                                 ATTORNEY'S FEES (H1019)
+
+If Complainant has been represented by an attorney (as defined by 29 C.F.R. § 1614.501(e)(1)(iii)),
+she/he is entitled to an award of reasonable attorney's fees incurred in the processing of the
+complaint. 29 C.F.R. § 1614.501(e). The award of attorney's fees shall be paid by the Agency. The
+attorney shall submit a verified statement of fees to the Agency -- not to the Equal Employment
+                                              17                                     0120182095
+
+Opportunity Commission, Office of Federal Operations -- within thirty (30) calendar days of
+receipt of this decision. The Agency shall then process the claim for attorney's fees in accordance
+with 29 C.F.R. § 1614.501.
+
+            IMPLEMENTATION OF THE COMMISSION’S DECISION (K0719)
+
+Under 29 C.F.R. § 1614.405(c) and §1614.502, compliance with the Commission’s corrective
+action is mandatory. Within seven (7) calendar days of the completion of each ordered corrective
+action, the Agency shall submit via the Federal Sector EEO Portal (FedSEP) supporting documents
+in the digital format required by the Commission, referencing the compliance docket number under
+which compliance was being monitored. Once all compliance is complete, the Agency shall
+submit via FedSEP a final compliance report in the digital format required by the Commission.
+See 29 C.F.R. § 1614.403(g). The Agency’s final report must contain supporting documentation
+when previously not uploaded, and the Agency must send a copy of all submissions to the
+Complainant and his/her representative.
+
+If the Agency does not comply with the Commission’s order, the Complainant may petition the
+Commission for enforcement of the order. 29 C.F.R. § 1614.503(a). The Complainant also has
+the right to file a civil action to enforce compliance with the Commission’s order prior to or
+following an administrative petition for enforcement. See 29 C.F.R. §§ 1614.407, 1614.408, and
+29 C.F.R. § 1614.503(g). Alternatively, the Complainant has the right to file a civil action on the
+underlying complaint in accordance with the paragraph below entitled “Right to File a Civil
+Action.” 29 C.F.R. §§ 1614.407 and 1614.408. A civil action for enforcement or a civil action on
+the underlying complaint is subject to the deadline stated in 42 U.S.C. 2000e-16(c) (1994 & Supp.
+IV 1999). If the Complainant files a civil action, the administrative processing of the
+complaint, including any petition for enforcement, will be terminated. See 29 C.F.R. §
+1614.409.
+
+Failure by an agency to either file a compliance report or implement any of the orders set forth in
+this decision, without good cause shown, may result in the referral of this matter to the Office of
+Special Counsel pursuant to 29 CFR § 1614.503(f) for enforcement by that agency.
+                                               18                                      0120182095
+
+                          STATEMENT OF RIGHTS - ON APPEAL
+                              RECONSIDERATION (M0920)
+
+The Commission may, in its discretion, reconsider this appellate decision if Complainant or the
+Agency submits a written request that contains arguments or evidence that tend to establish that:
+       1. The appellate decision involved a clearly erroneous interpretation of material fact or
+          law; or
+       2. The appellate decision will have a substantial impact on the policies, practices, or
+          operations of the agency.
+
+Requests for reconsideration must be filed with EEOC’s Office of Federal Operations (OFO)
+within thirty (30) calendar days of receipt of this decision. If the party requesting reconsideration
+elects to file a statement or brief in support of the request, that statement or brief must be filed
+together with the request for reconsideration. A party shall have twenty (20) calendar days
+from receipt of another party’s request for reconsideration within which to submit a brief or
+statement in opposition. See 29 C.F.R. § 1614.405; Equal Employment Opportunity Management
+Directive for 29 C.F.R. Part 1614 (EEO MD-110), at Chap. 9 § VII.B (Aug. 5, 2015).
+
+Complainant should submit his or her request for reconsideration, and any statement or brief in
+support of his or her request, via the EEOC Public Portal, which can be found at
+
+https://publicportal.eeoc.gov/Portal/Login.aspx
+
+Alternatively, Complainant can submit his or her request and arguments to the Director, Office of
+Federal Operations, Equal Employment Opportunity Commission, via regular mail addressed to
+P.O. Box 77960, Washington, DC 20013, or by certified mail addressed to 131 M Street, NE,
+Washington, DC 20507. In the absence of a legible postmark, a complainant’s request to
+reconsider shall be deemed timely filed if OFO receives it by mail within five days of the expiration
+of the applicable filing period. See 29 C.F.R. § 1614.604.
+
+An agency’s request for reconsideration must be submitted in digital format via the EEOC’s
+Federal Sector EEO Portal (FedSEP). See 29 C.F.R. § 1614.403(g). Either party’s request and/or
+statement or brief in opposition must also include proof of service on the other party, unless
+Complainant files his or her request via the EEOC Public Portal, in which case no proof of service
+is required.
+
+Failure to file within the 30-day time period will result in dismissal of the party’s request for
+reconsideration as untimely, unless extenuating circumstances prevented the timely filing of the
+request. Any supporting documentation must be submitted together with the request for
+reconsideration. The Commission will consider requests for reconsideration filed after the
+deadline only in very limited circumstances. See 29 C.F.R. § 1614.604(c).
+                                                19                                        0120182095
+
+                COMPLAINANT’S RIGHT TO FILE A CIVIL ACTION (R0610)
+
+This is a decision requiring the Agency to continue its administrative processing of your complaint.
+However, if you wish to file a civil action, you have the right to file such action in an appropriate
+United States District Court within ninety (90) calendar days from the date that you receive this
+decision. In the alternative, you may file a civil action after one hundred and eighty (180)
+calendar days of the date you filed your complaint with the Agency, or filed your appeal with the
+Commission. If you file a civil action, you must name as the defendant in the complaint the person
+who is the official Agency head or department head, identifying that person by his or her full name
+and official title.
+Failure to do so may result in the dismissal of your case in court. “Agency” or “department” means
+the national organization, and not the local office, facility or department in which you work. Filing
+a civil action will terminate the administrative processing of your complaint.
+
+                            RIGHT TO REQUEST COUNSEL (Z0815)
+
+If you want to file a civil action but cannot pay the fees, costs, or security to do so, you may request
+permission from the court to proceed with the civil action without paying these fees or costs.
+Similarly, if you cannot afford an attorney to represent you in the civil action, you may request the
+court to appoint an attorney for you. You must submit the requests for waiver of court costs or
+appointment of an attorney directly to the court, not the Commission. The court has the sole
+discretion to grant or deny these types of requests. Such requests do not alter the time limits for
+filing a civil action (please read the paragraph titled Complainant’s Right to File a Civil Action for
+the specific time limits).
+
+FOR THE COMMISSION:
+
+
+
+_________________________Bernadette B. Wilson’s signature
+Carlton M. Hadden
+Director
+
+June 23, 2021
+Date
+

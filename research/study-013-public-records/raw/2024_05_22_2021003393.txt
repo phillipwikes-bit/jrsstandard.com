@@ -1,0 +1,1275 @@
+             U.S. EQUAL EMPLOYMENT OPPORTUNITY COMMISSION
+                           Office of Federal Operations
+                                  P.O. Box 77960
+                             Washington, DC 20013
+
+
+                                          Denisse Y., 1
+                                          Complainant,
+
+                                                v.
+
+                                         Kilolo Kijakazi,
+                                     Acting Commissioner,
+                                 Social Security Administration,
+                                             Agency.
+
+                                    Appeal No. 2021003393
+
+                        Agency Nos. NY200547SSA & NY200633SSA
+
+                                           DECISION
+
+Complainant appealed to the Equal Employment Opportunity Commission (“EEOC” or
+“Commission”), pursuant to 29 C.F.R. § 1614.403, from a May 3, 2021 Final Agency Decision
+(“FAD”) concerning two equal employment opportunity (“EEO”) complaints alleging
+employment discrimination in violation of Title VII of the Civil Rights Act of 1964 (“Title VII”),
+as amended, 42 U.S.C. § 2000e et seq. and Section 501 of the Rehabilitation Act of 1973
+(“Rehabilitation Act”), as amended. For the following reasons, the Commission REVERSES the
+Agency’s Decision and REMANDS the matter to the Agency for processing in accordance with
+this decision and the Order below.
+
+                                     ISSUES PRESENTED
+
+    1. Whether the Agency erroneously omitted Complainant’s allegation that she was
+       subjected to a hostile work environment.
+
+    2. Whether Complainant established, by preponderance of the evidence, that she was
+       subjected to discrimination as alleged.
+
+
+
+
+1
+ This case has been randomly assigned a pseudonym which will replace Complainant’s name
+when the decision is published to non-parties and the Commission’s website.
+                                                  2                                     2021003393
+
+                                         BACKGROUND
+
+When the alleged discriminatory events took place, Complainant was employed by the Agency
+as a Customer Service Representative (“CSR”), GS-8, at its Newburgh Field Office (“Newburgh
+FO”) in Newburgh, New York.
+
+In 2020, Complainant filed two EEO complaints which have been consolidated for processing.
+
+Complaint 1: Reasonable Accommodation
+
+On June 2, 2020, Complainant filed a formal EEO complaint (identified as Agency No.
+NY200547SSA) alleging discrimination on the basis of her own disability (back condition)
+when, on April 17, 2020 and continuing, Management denied her request for a reasonable
+accommodation. 2
+
+Complaint 2: Non-Selection and Hostile Work Environment Harassment
+
+On August 14, 2020, Complainant filed a formal EEO complaint (identified as Agency No.
+NY200633SSA) alleging that she was subjected to discrimination by the Agency on the bases of
+race (Black/African-American), physical disability (back condition), disability by association
+(caretaker responsibilities for her child with disabilities), and/or reprisal for prior EEO activity 3
+when, on July 8, 2019, she was not selected for the position of Social Insurance Specialist
+(Claims Specialist), GS-105-7, 4 advertised under Vacancy No. DEU-10438667-NY-KB-19-028,
+for the following New York offices: (a) Newburgh, (b) Poughkeepsie, (c) Rockland County, and
+(d) Westchester County.
+
+
+2
+ Complainant also alleges that she was denied a reasonable accommodation to care for her son
+with disabilities. However, the Agency’s duty to provide a reasonable accommodation under the
+Rehabilitation Act extends only to employees and applicants for employment. See Iola F. v.
+Dep’t of Veterans Affairs, EEOC Appeal No. 2021002590 (Aug. 11, 2022) citing Helena v.
+Dep’t of Def., EEOC Appeal No. 07A30108 (Sept. 30, 2004) (agency did not discriminate
+against complainant on the basis of disability when it denied his request for a shift change in
+order to supervise an autistic child).
+3
+  Complainant filed EEO claims in 2012 and 2013, which were procedurally dismissed prior to
+the relevant time frame for these complaints, as well as an EEO claim in 2017, which was
+pending during the relevant time frame for these complaints (Agency Case No. NY170075SSA)
+EEOC Hearing No. 520201700682X (Sept. 30, 2020) (alleged nonselection for the position of
+Lead CSR on September 20, 2016, AJ issued decision without a hearing in favor of Agency),
+Denisse Y. v. Soc. Sec. Admin., EEOC Appeal No. 2021001376 (Feb. 11, 2021) reconsideration
+denied EEOC Request No. 2021003185 (Aug. 3, 2021).
+4
+ Based on the personnel documentation for the Selectee, hired at GS-7, full performance for the
+position is GS-11.
+                                                3                                     2021003393
+
+In Complaint 2, Complainant also alleges she was denied training requests, additional instances
+of non-selection, and numerous alleged hostile work environment harassment claims dating to
+December 2011. As Complainant is aware, the majority of these allegations have already been
+addressed in prior proceedings. The only harassment allegations in her formal EEO complaint
+that have not already been addressed are as follows:
+
+   a. On December 18, 2019, Complainant spoke with the District Manager about her
+      Work from Home by Exception (“WAHBE”) request, and he said that he wanted
+      her in the office more than her being out on leave.
+
+   b. On January 30, 2020, District Manager informed Complainant to “drink some
+      water so you can be well enough to go to work" and constantly asked her to
+      provide a physician note of her condition when she requested to amend Telework
+      by Exception.
+
+   c. Complainant recounts that she was constantly asked for medical documentation,
+      even though she provided annual updates to her FMLA forms, and “numerous
+      letters from her Primary Doctor and Physical Therapist,” because these
+      documents do not specify how her disabilities affect her work.
+
+The Agency’s September 23, 2020 Notice of Acceptance for Complaint 2 did not articulate any
+harassment allegations.
+
+Reasonable Accommodation
+
+The investigative record reveals that in 2010, Complainant was diagnosed with a hereditary
+lumbar disorder (also referred to in the record as a “back condition”), which is a permanent
+degenerative joint disease. The condition weakened Complainant’s lower back muscles and
+impaired her ability to walk, bend, stand and sit for prolonged periods. Complainant is allergic to
+certain pain medication, limiting her ability to manage her chronic pain.
+
+In September 2011, the Agency hired Complainant to work as a CSR at the Jamaica, New York
+Teleservice Center (“TSC”). Within months, she started experiencing “excruciating pain” from
+muscle spasms in her back and neck because her 2-hour commute to and from the TSC
+exacerbated her back condition. In May 2013, Complainant was granted a hardship transfer to
+the Newburgh FO, reducing her commute to about 20 minutes each way. Complainant eventually
+resolved the neck spasms with injections, but her other symptoms persisted and were exacerbated
+when she was pregnant in 2015 and 2019.
+
+From December 2018 through December 2019, Complainant was on Family & Medical Leave
+Act (“FLMA”) leave to care for her son, born in January 2019, and to recover from her
+pregnancy, which exacerbated her back condition.
+                                                  4                                    2021003393
+
+In November 2019, Complainant was diagnosed with Sacrococcygeal Disorder due to her
+pregnancy, giving birth and an elongated tailbone (a hereditary spinal condition), causing severe
+pain to her pelvic region and tailbone area, and adding to her difficulty sitting for prolonged
+periods.
+Complainant was the only CSR working at the Newburgh FO. All other employees reporting to
+the Operations Supervisors were GS-9/11 Claims Specialists or GS-9/11 Technical Experts.
+Although Complainant continued to perform her primary GS-8 CSR responsibility of answering
+customer phone calls, her job duties expanded to include front desk work and tasks that were
+previously completed by Claims Specialists in the Post Entitlement (“PE”) Unit. Complainant
+eventually became responsible for processing paper traffic for the entire Newburgh FO.
+
+Complainant teleworked once a week as part of an employee pilot program and used FMLA
+leave on a weekly basis. Complainant alleges that because she had to take leave due to her
+disability, Management “uses it against her” and denied her a promotion, telling her that it is best
+to stay working as a CSR. “[Management] used their own bias to determine my career goals. I
+am more than capable and have shown that I can do assigned work [above] my grade level.”
+Complainant alleges that Management intentionally kept her stagnant in her current position,
+despite her expanded responsibilities, as punishment for her use of disability-related leave.
+Complainant contends that Management pressured her not to use so much leave, and her
+absences allegedly fostered resentment among her colleagues, as Management refused to
+reassign Complainant’s paperwork processing duties when she was away.
+
+During the relevant time frame, Complainant had two first level supervisors (“Supervisor 1” and
+“Supervisor 2”). Both worked as Operations Supervisors, GS-12, at the Newburgh FO.
+Complainant disclosed her disabilities to both supervisors on multiple occasions. Notably,
+Supervisor 1, who was responsible for approving Complainant’s FMLA requests, who had
+worked with Complainant since 2013 and supervised her since 2016, testified in the record that
+he was unaware that Complainant had a disability, but was aware that she had appointments
+related to her child with a disability.
+
+From August 2016 through December 2019, Complainant reported to Supervisor 1 (physical
+disability, amputee). In or around June 2018, the Newburgh FO Director instructed Supervisor 1
+to be the point of contact for all of Complainant’s disability accommodation and FMLA requests
+after Complainant’s second level supervisor (“Former Supervisor”) allegedly made disparaging
+comments about Complainant’s ability to complete her goals in light of her disabilities. 5 In or
+around January 2020, Supervisor 1 was promoted to a position outside Complainant’s
+supervisory chain, but he remained the point of contact regarding her reasonable accommodation
+request.
+
+From January 2020 through the remainder of the relevant time period, Complainant reported to
+Supervisor 2 (no disability). Supervisor 2 testified that she was made aware that Complainant
+had “back issues” when she started working at the Newburgh FO in 2017.
+
+
+5
+    This claim was addressed separately in an administrative grievance.
+                                                5                                    2021003393
+
+She said she understood that Complainant experiences “a great deal of pain,” but states that she
+has not seen any medical evidence of Complainant’s disabilities. Supervisor 2 recounted that
+Complainant was capable of working from home and completed her assignments on time. She
+was not involved in the interactive process or decision-making related to Complainant’s
+reasonable accommodation request.
+
+On December 6, 2019, per Supervisor 1’s suggestion, Complainant submitted the following
+reasonable accommodation requests through the Agency’s online reasonable accommodation
+portal: (1) leave without pay (“LWOP”), (2) a medical needs chair for her official duty station
+(“ODS”), (3) fulltime telework, (4) equipment (specialized desk, ergonomic keyboard, and a
+specialized chair) for her alternate duty station (“ADS”), and (5) use of flex time for one
+additional 15-minute break. For disability type, she selected “mobility, orthopedic/osteo-
+arthritis, other” and under justification she wrote: “I have Sacrococcygeal disorder and lumbar
+disc disorder. This is affecting my ability walking and making prolonged sitting with work and
+driving activity very difficult.”
+
+To support her request, Complainant provided a December 5, 2019 doctor’s note from her
+Physical Therapist stating the driving exacerbated Complainant’s pain. Supervisor 1 was already
+on notice that Complainant’s back condition was permanent because he reviewed Complainant’s
+medical records submitted in support of her FMLA requests. For the December 6, 2019
+reasonable accommodation, Complainant offered further supporting detail by, stating that she
+could not lift over 10 pounds, sitting for prolonged periods caused her legs to give out, and she
+experienced pain on a daily basis. Complainant estimated that she experienced about three
+episodes pain per month so severe she is rendered unable to sit, bend, walk more than a few feet,
+or stand for any length of time. Complainant stated that during an episode she required assistance
+getting up and used a cane.
+
+Supervisor 1 recalls that after he received notice from the accommodation portal, he engaged
+Complainant in the interactive process (dates not specified). Supervisor 1 reviewed
+Complainant’s medical documentation and determined that it did not support fulltime telework.
+Supervisor 1 pointed out that Complainant’s workload included face to face interviewing and
+paperwork that required her physical presence in the office. Supervisor 1 said he would have
+approved a request for using flextime for an additional break, but he and Complainant never
+discussed it as an option. Supervisor 1 also reasoned that fulltime telework was not warranted
+because Complainant also already used LWOP as part of her approved FMLA and been provided
+with an ergonomic desk at her ODS, which she did not use because she preferred to work in
+reception. Supervisor 1 issued a recommendation to deny Complainant’s request and referred the
+matter to the NRAC in Agency Headquarters.
+
+Complainant alleges that she anticipated that Supervisor 1 would deny her request based on her
+past interactions with him and other Management. Therefore, on the advice of her Union
+Representative, Complainant also sought Work at Home by Exception (“WAHBE”) full time
+telework for “up to 6 months” as permitted under the Collective Bargaining Agreement (“CBA”)
+between the Union and the Agency. Complainant submitted a note from her Physical Therapist
+                                                6                                    2021003393
+
+dated December 18, 2019 stating: “the above patient is being treated for tailbone pain. Driving
+exacerbates her pain, may benefit from working at home.”
+
+On December 18, 2019, Complainant was approved for 6 months WAHBE to “avoid
+exacerbation of your condition and allow healing time for your back disorders.” Complainant
+was scheduled to work from home under WAHBE 4 hours a day on Mondays, Tuesdays and
+Wednesdays. The remaining hours of her shift, and on Thursdays and Fridays, Complainant took
+Leave Without Pay (“LWOP”) through FMLA.
+
+On December 20, 2019, a Center for Accommodations and Disability Services (“CADS”)
+Analyst provided Complainant with instructions for requesting a medical needs chair for her
+ODS (Request 2). Complainant opted not to pursue her request further until she learned whether
+she was approved to telework fulltime.
+
+In February 2020, in response to the CADS Analyst’s request for additional documentation,
+Complainant provided progress notes from seven physical therapy appointments between
+November 20, 2019 and January 15, 2020, containing Complainant’s diagnosis of chronic
+Sacrococcygeal disorders. Each appointment summary includes descriptions of pain consistent
+with Complainant’s account. In a December 5, 2019 progress summary, Physical Therapist
+stated, “increased sitting and driving activity creating more symptoms with more difficulty
+walking.” The summary for their initial November 20, 2019 visit, included, among other things,
+“difficulty getting upright after driving activity.”
+
+Complainant included progress notes from her treating physician from June 17, 2019 through
+December 31, 2019, describing Complainant’s chronic neck pain, and her sacrococcygeal
+disorders, stating that “sitting, standing, and walking” were “aggravating factors” for
+Complainant’s pain. Complainant included progress notes dated August 18, 2017 through April
+4, 2019, from her prior physician regarding her low back pain. Physician described
+Complainant’s chronic pain, neck stiffness, prior diagnoses, including lumbar disc degeneration,
+cervical spondylosis, cervical radiculopathy and insomnia. The notes establish that “sitting for a
+period of time triggers pain,” and that giving birth in January 2019 increased Complainant’s back
+pain.
+
+Complainant also provided progress notes from her Neurologist from November 11, 2015
+through July 24, 2017, accompanied by the results of an MRI exam conducted in 2015. Based on
+the MRI, the Neurologist diagnosed Complainant with multiple spinal issues, including but not
+limited to several bulging disks and, for C7-T1 (vertebra in neck) “severe right and moderate left
+foraminal stenosis by [small joints on either side cervical discs] hypertrophy.” Complainant had
+lumbar surgery in November 2015.
+
+On February 11, 2020, the CADS Analyst emailed Complainant, explaining that the
+documentation to support her reasonable accommodation request must include the “extent of the
+limitations and recommended accommodations including how the [reasonable accommodation]
+will assist performing the essential functions of the job.”
+                                                7                                     2021003393
+
+Complainant responded on February 13, 2020: “I’m requesting to withdraw my claim for an
+ergonomic keyboard. And focus on an ergonomic chair and telework by exception on a
+permanent basis. Additionally [I am] asking if telework is approved, that I have the availability
+to use it as needed. I have my days. Some days worse than others.”
+
+On March 12, 2020, Complainant submitted a note from her Physical Therapist to the CADS
+Analyst. The note recounts that Physical Therapist had been treating Complainant for
+Sacrococcygeal disorder and lumbar disc disorder since November 20, 2019. Physical Therapist
+observed that since starting WAHBE, Complainant “improved significantly” with her walking
+and sitting abilities. The note cautioned:
+
+       a return to prior driving and prolonged sitting at work in a poor ergonomic
+       environment could set her back. She continues to gain trunk strength and control
+       following pregnancy and will continue to benefit from skilled care to advance
+       body mechanics training. I recommend that she be allowed to continue to work
+       from home for three to six months to avoid exacerbation of her condition. In
+       addition, supplying her with a proper chair and ergonomic desk when she does
+       return to work are essential for her well-being and would greatly improve her
+       productivity. [Emphasis added].
+
+On March 4 and 5, 2020 the CADS Analyst interviewed Complainant. For Request 3 (fulltime
+telework). Complainant told the CADS Analyst that telework “will help her walk, help her with
+her workload, and help with the commute or drive home.” According to the CADS Analyst’s
+notes, Complainant explained that she needed telework “for a long time and pregnancy made her
+conditions worse,” and that her chronic back pain made traveling difficult. She described getting
+into the car and the 15-minute drive to the Newburgh FO as “a challenge.” “While 15-minutes
+may not seem far,” Complainant explained, “when her back is out, that is a lot.” Complainant
+states she would stop to take a break if she had to drive for longer than 10 minutes. She rests a
+lot, does breathing exercises, and does not move much at home. She goes to physical therapy
+twice a week. After physical therapy sessions, Complainant also experiences “a lot of” muscle
+spasms, and the commute to physical therapy itself causes her pain.
+
+Complainant also told the CADS Analyst that she “is claustrophobic, she cannot take the
+elevator, and walks two flights of stairs to her workspace. She can sit at her desk for 40 minutes
+at a time.” Complainant told the CADS Analyst that coworkers sometimes helped her walk to her
+desk and with her workloads, and that when her back is out, she uses a cane to walk.
+Complainant asserted that she did not know why the Agency gave her a “hard time” about
+telework, “90% of her job is answering the SSA general phone line, which she can do at home.
+As she does not interact face to face with customers, there is no other aspect of her position that
+she cannot do from home.” Complainant conceded that sometimes she was assigned to work at
+the front desk.
+                                               8                                    2021003393
+
+On March 6, 2020, the CADS Analyst interviewed Supervisor 1, For Request 3, Supervisor 1
+reiterated his belief to the CADS Analyst that Complainant’s request for full time telework as a
+reasonable accommodation was not supported by medical documents and should be denied. He
+told the CADS Analyst that Complainant was capable of driving to her medical appointments,
+she could drive to the office when she needed to get her laptop updated, and (on an unspecified
+date) he witnessed Complainant and her children at the funeral of a coworker’s family member.
+Supervisor 1 stated that the funeral venue was about 9.5 miles from Complainant’s home (a 15 to
+25-minute drive). Additionally, Supervisor 1 recalled that Complainant walks 3 flights of stairs
+to get to her office. Supervisor 1 said that Complainant never informed him of her claustrophobia
+in elevators, only that she “did not like” them. Supervisor 1 never observed Complainant use a
+cane and did not recall seeing coworkers assist her during her pregnancy. He also asserted that
+Complainant’s duties required her presence in the office.
+
+Although Complainant already had an established part-time telework schedule, Supervisor 1 did
+not appear to directly address Request 4 (ergonomic office equipment for her ADS). Rather, he
+noted that Complainant was provided with a chair for her ODS, but she did not use it. For
+Request 5, Supervisor 1 stated that he was not aware of Complainant’s requests for breaks, as she
+never brought it to his attention, and said he would be willing to try three 10-minute breaks.
+
+The CADS Analyst submitted her interview notes and a summary to the NRAC. In a summary
+entitled “recommended denial,” the CADS Analyst states that “Complainant was diagnosed with
+her disabilities in 2010, the condition is long-term, and she has taken leave for two weeks at a
+time to address her condition.” [Emphasis added]. The CADS Analyst recounts that
+Complainant’s most recent pregnancy and delivery in 2019 caused “a lot of back pain” and
+“really pushed out her tailbone.” The CADS Analyst also recounts that Complainant
+“experiences back pain on a daily basis at a level 6 out of 10,” and Complainant said that she
+would “work through her neck pain and back pain.”
+
+With respect to Request 3 (fulltime telework), the CADS Analyst emphasized that
+Complainant’s commute was 10.2 miles, a 15-minute drive, and that Complainant acknowledged
+that her home was “very close” to work. Also, Complainant’s husband would often drive
+Complainant to work, leaving her car there. The CADS Analyst recounted that Complainant
+regularly drove short distances (under 10 minutes) to doctor appointments and to drop off her
+daughter at school. Complainant told the CADS Analyst that if she could telework full time, she
+would be more stationary, she would not have any pressure or embarrassment about her
+disabilities from Management, and she could take breaks and sit in her comfortable chair. At
+home, she could focus on working without interruptions and “modify her pain.” She notes that
+she walks 150 feet to her Manager’s office and walking to the FEI is another 150 feet, and these
+distances are “a lot on her body.”
+
+Regarding Request 4 (ergonomic chair and desk at ADS) the CADS Analyst recounts that
+Complainant could already telework comfortably from her ADS, as she had a chair at home with
+pillows and a donut. Complainant acknowledged she was provided with instructions for
+requesting ergonomic equipment.
+                                                9                                    2021003393
+
+For Request 5 (use of flex time for an additional 15 minute break) the CADS Analyst indicated
+that Supervisor 1 would consider an additional break, but it was not supported by Complainant’s
+medical documentation.
+
+On April 17, 2020, the Agency’s National Reasonable Accommodation Coordinator (“NRAC”
+or “Accommodation Coordinator”), issued a letter formally denying Complainant’s December 6,
+2019 request. The Agency denied requests 3, 4, and 5. The NRAC determined that Complainant
+already received LWOP (Request 1) and withdrew Request 2.
+
+The Denial Letter lists the medical documents Complainant provided to the CADS Analyst, and
+summarized Complainant and Supervisor 1’s interviews with the CADS Analyst. Among other
+things, the Denial Letter recounted that “local management” told the CADS Analyst that
+Complainant was on WAHBE until June 18, 2020, and that her request for LWOP as an
+accommodation had been granted. “Local Management” also informed the CADS Analyst that
+Complainant had visited the office on nonwork days (dates, frequency and duration of these
+visits not specified), thereby “suggesting that commuting to your ODS is possible.”
+
+The NRAC denied Request 4 (ADS equipment) because the medical documentation
+Complainant provided “is insufficient to establish that a specialized chair is necessary to enable
+you to perform your essential job functions.” Alternatively, the Agency stated that Complainant
+withdrew her request for a specialized desk, Complainant told the CADS Analyst that she had a
+comfortable chair at home that she set up with pillows and a donut cushion. The NRAC denied
+Request 5 (an additional 15-minute break) because the medical documentation Complainant
+provided “does not mention anything about the need for an additional break or explain how this
+request will alleviate your symptoms.” With respect to Request 3 (fulltime telework), the NRAC
+concludes that Complainant was provided with an “effective accommodation” to enable
+Complainant to perform the essential functions of her CSR position by granting “liberal use of
+your accrued leave when you are unable to work due to your medical condition and when you
+need to attend your medical appointments. The Agency has also granted LWOP for you to care
+for yourself and family.” The Agency also noted that Complainant was on WAHBE until June
+18, 2020 “consistent with [Physical Therapist’s] recommendation.” The NRAC stated that she
+based her decision in part on Supervisor 1’s recommendations to deny Complainant’s requests.
+
+The Denial Letter specified that the denial of telework would not take effect until after the
+Covid-19 telework was lifted. According to Complainant, had it not been from the mandatory
+work from home order, she could not have reasonably performed the full scope of her work once
+her WAHBE period ended on June 18, 2020.
+                                                10                                    2021003393
+
+Non-Selection
+
+On or about March 1, 2019, Complainant applied for the Claims Specialist position at issue in
+Complaint 2 via USAJobs.gov. A Human Resources (“HR”) Specialist, GS-13, (Black/African
+American) in the Agency’s New York Regional Office, who was responsible for filling the
+position, recalled that the Agency received “many applications” as it was a publicly advertised,
+external recruitment. HR Specialist also clarified that only two openings were available: one in
+Poughkeepsie and one in Westchester County (also referenced in the record as “New Rochelle
+FO”). HR Specialist compiled a “Best Qualified List” of 22 candidates including Complainant
+and forwarded it to the Area Director for the New York Region to conduct the “prequalification
+process.” HR Specialist characterized the prequalification process as “behaviorally based” and
+explained that the results were used to rank the candidates for purpose of selecting them for a
+panel interview.
+
+The Office of the Area Director divided the candidates on the Best Qualified List among various
+management officials at different field offices. The management officials completed the
+“prequalification process” by contacting references and conducting a prequalification interview
+with each candidate. The prequalification interview and the panel interview were comprised of
+the same questions, which were based on a Competency Assessment Interviewing Process
+(“CAIP”) specific to the Claims Specialist position. The Panel scored each response from 1 to 7,
+the total score is added, and that number is used to order the list of candidates.
+
+On or about April 5, 2019, the District Manager for West Nyack, GS-14, (Caucasian)
+(“Interviewer”) contacted Complainant to initiate the prequalification process. Complainant
+emailed a list of three references to Interviewer. First on the list was Complainant’s second level
+supervisor from 2016 through March 15, 2019 (white) (“Former Supervisor”), who was named
+in several of Complainant’s past EEO complaints and had just been promoted to the position of
+Deputy Area Director for the New York Region, GS-14. Former Supervisor stated on the
+reference form that Complainant was “still growing as a CSR.” When asked if she would re-hire
+Complainant, Former Supervisor responded, “only as a CSR.”
+
+On April 10, 2019, Interviewer completed the pre-interview with complainant. According to
+Complainant, another of her professional references, a colleague, told her that she was contacted
+by Interviewer, and Interviewer expressed that she had a positive impression of Complainant. On
+April 17, 2019, Complainant completed the panel interview, which she believed went well.
+
+On or about July 8, 2019, Complainant learned that she was not selected for the Claims
+Specialist Position. She attributed the nonselection to the negative feedback that Management
+provided to Interviewer during the prequalification process.
+
+The Selecting Official for the Claims Specialist position was the District Manager (New
+Rochelle), GS-14, (American of Puerto Rican descent). According to Selecting Official,
+Complainant was not selected for the position because she scored lower on the CAIP interview
+than the selectees.
+                                                11                                     2021003393
+
+HR Specialist testified that she did not provide the pre-qualification interview and reference
+documents to Selecting Official, however, “[Selecting Official] may nonetheless have considered
+the candidates' pre-qualification interview materials in evaluating the candidates.” Selecting
+Official does not recall reviewing the pre-qualification materials and explains that he selected the
+candidates who scored highest on the panel interview. Both selectees were veterans (one had a
+10-point preference, and one had a 5-point preference), which impacted their overall scores.
+Selecting Official testifies that he was not aware of Complainant’s protected bases, he had no
+organizational relationship with Complainant, and he was not involved in Complainant’s prior
+EEO activity.
+
+Final Agency Decision
+
+The investigation for Complaint 1 concluded on October 28, 2020, and the investigation for
+Complaint 2 concluded on December 15, 2020. For reasons unspecified, the Agency did not
+provide Complainant with the reports of investigation (“ROI”) and notice of her right to request
+either a FAD or a hearing before an EEOC Administrative Judge (“AJ”) until February 19, 2021.
+Complainant did not request a hearing within the time frame provided in 29 C.F.R.
+§ 1614.108(f), so the Agency issued a FAD pursuant to 29 C.F.R. § 1614.110(b). 6
+
+The FAD concluded that Complainant failed to prove discrimination as alleged. The instant
+appeal followed. On May 24, 2021, Complainant filed an “Amended Appeal Brief” in support of
+her appeal, and the Agency timely responded with an “Agency’s Memorandum in Opposition to
+Appellant’s Appeal” on June 22, 2021.
+
+                                 CONTENTIONS ON APPEAL
+
+Complaint 1 – Reasonable Accommodation
+
+Complainant contends that the Agency improperly denied her request for a reasonable
+accommodation of fulltime telework, so that she can treat her back condition. She further
+contends that the Agency overlooked testimony from Supervisor 2 confirming that Complainant
+could perform her job duties while teleworking, and notes that she has successfully teleworked
+full time since December 19, 2019. According to Complainant, had it not been for the mandatory
+work from home order due to COVID-19, she could not perform the full scope of her work
+without requesting another reasonable accommodation.
+
+
+
+6
+  On January 10, 2022, Complainant, noting that the Commission had yet to issue an appellate
+decision on Complaints 1 and 2, asked the Commission to consolidate both complaints with
+Agency No. NY-21-0329-SSA (filed June 17, 2021), which was pending a hearing before an
+EEOC AJ. The Commission acknowledges and apologizes for Complainant’s lengthy wait for a
+decision on Complaints 1 and 2. As Complainant already waived her right to a hearing and a
+FAD has been issued on both complaints, Complaints 1 and 2 are at the appellate stage of
+processing and therefore cannot be reviewed in a hearing before an AJ.
+                                               12                                    2021003393
+
+Complainant also maintains that Supervisor 1 was aware of her disability, and that sitting for
+prolonged periods impacted her mobility, yet he denied her request for a reasonable
+accommodation without offering an alternative. She notes that Supervisor 1 stated in the record
+that he would have approved additional breaks as an accommodation yet did not discuss it with
+her.
+
+The Agency contends that Complainant did not establish a prima facie case for denial of
+reasonable accommodation because Complainant’s medical documents did not show how her
+disability impacted her ability to perform the essential functions of her position, nor did it
+explain how the requested accommodation would be effective in that regard. The Agency further
+contends that it already provided Complainant with “liberal use of leave to use as an
+accommodation, as well as the use of leave without pay as an accommodation.” The Agency also
+characterizes its decision to grant Complainant’s December 19, 2019 request for work at home
+by exception as a reasonable accommodation. The Agency notes that due to Covid-19,
+Complainant has continued to telework full time, but contends that Complainant has not shown
+that she needs to telework in order to perform her job duties. The Agency denies Complainant’s
+claim that Supervisor 1 was biased and caused the denial of reasonable accommodation,
+reasoning that the NRAC is the only Agency employee who can make a determination on a
+reasonable accommodation request.
+
+Complaint 2 – Nonselection
+
+Complainant contends that the FAD is based on contradictory and inconsistent witness
+statements, and that the Commission must evaluate witness credibility before reaching a
+decision. She contends that Former Supervisor’s negative reference is contradicted by
+Complainant’s performance reviews and Supervisor 2’s testimony. Complainant also contends
+that the FAD failed to address witness testimony that Complainant already performed Claims
+Specialist work.
+
+The Agency contends that Complainant’s performance reviews and witness testimony about her
+responsibilities are not relevant because, “this vacancy was filled solely on the basis of the
+performance in the interview, and the veterans’ preferences.” The Agency contends that the
+FAD properly found that it provided legitimate nondiscriminatory reasons for its actions.
+Namely, the selectees “were ranked higher on the numeric listing of qualified candidates because
+they were veterans,” and Complainant “simply did not do as well on the interview as the
+selectees had.” The Agency further contends that Complainant cannot show pretext, as she
+“failed to show that her qualifications were plainly superior and has pointed to no other evidence
+that could support a finding of pretext.” The Agency contends that Complainant is not entitled to
+a credibility determination because she did not request a hearing.
+                                                13                                    2021003393
+
+Hostile Work Environment
+
+Complainant contends that the FAD failed to address her hostile work environment claim, but
+does not identify specific claims or events. Rather, she lists the management officials involved in
+her EEO activity and contends that she must discuss her career development with various
+management officials while participating in multiple EEO actions naming them.
+
+The Agency contends that it is “not clear to what Appellant is referring to with this argument.”
+The Agency alternately contends that “a hostile work environment was never an accepted issue,”
+citing its September 23, 2020 Letter of Acceptance for Complaint 2. The Agency also states that
+Complainant raised an April 2020 allegation of harassment that occurred 2011 and 2013, which
+it contends were properly dismissed as untimely raised with an EEO Counselor. In a footnote,
+the Agency obliquely references Complainant’s other allegations of harassment, stating,
+“Appellant filed numerous extraneous documents along with her appeal….Complainant has
+made no affirmative showing that the other documents she filed were ‘new and material.’
+Accordingly, the Commission should not consider her other documents.”
+
+                                   STANDARD OF REVIEW
+
+As this is an appeal from a decision issued without a hearing, pursuant to 29 C.F.R.
+§ 1614.110(b), the Agency's decision is subject to de novo review by the Commission. 29 C.F.R.
+§ 1614.405(a). See Equal Employment Opportunity Management Directive for 29 C.F.R. Part
+1614, at Chapter 9, § VI.A. (Aug. 5, 2015) (explaining that the de novo standard of review
+“requires that the Commission examine the record without regard to the factual and legal
+determinations of the previous decision maker,” and that EEOC “review the documents,
+statements, and testimony of record, including any timely and relevant submissions of the
+parties, and . . . issue its decision based on the Commission’s own assessment of the record and
+its interpretation of the law”).
+
+                                           ANALYSIS
+
+Witness Credibility
+
+The regulation provided under 29 C.F.R. § 1614.108(b) requires an agency to create an impartial
+and appropriate factual record upon which to make findings on the claims raised by the written
+complaint. An “appropriate factual record” is “one that allows a reasonable fact finder to draw
+conclusions as to whether discrimination occurred.” § 1614.108(b). Upon receipt of the ROI,
+complainants are provided an opportunity to cure defects in the record by either notifying the
+agency (in writing) of any perceived deficiencies in the investigation or requesting a hearing
+before an AJ. See EEO MD-110, at Ch. 6, § XI and Ch. 7, § I.
+
+On appeal, Complainant argues that a hearing is necessary because questions of witness
+credibility exist for both ROIs. Complainant does not dispute that she received notice of her
+right to request a hearing before an AJ.
+                                               14                                   2021003393
+
+Therefore, Complainant waived her right to cure the perceived defects in the investigation
+through the hearing process when she failed to timely respond. If Complainant wanted an
+opportunity to develop the record through discovery and cross examination of witnesses, she
+should have timely requested a hearing before an AJ. Tommy O. v. United States Postal Serv.,
+EEOC Appeal No. 0120152090 (Jun. 8, 2017).
+
+Hostile Work Environment Harassment Claim
+
+Throughout the investigative record, and Complainant dedicates much of her argument to
+allegations of harassment ranging from instances that involved the same management officials
+and occurred around the same time as the events in the instant complaint, to incidents that
+occurred as early as December 2011. We have thoroughly reviewed the administrative record,
+and, as they were referenced by both Complainant and the Agency, past EEOC matters raised by
+Complainant with this Commission. We conclude that the Agency’s exclusion of Complainant’s
+harassment allegations in its FAD was appropriate.
+
+In January 2017, Complainant filed a formal EEO complaint (identified as Agency No.
+NY20170075SSA) alleging a single accepted claim of discriminatory non-selection. The matter
+was investigated, and Complainant requested a hearing. Complainant subsequently filed a
+number of motions in an effort to re-frame her January 2017 Complaint as an ongoing
+harassment/hostile work environment claim and included additional instances of nonselection.
+
+In a June 9, 2020 “Case Management Order,” the assigned EEOC AJ denied Complainant’s
+“Motion for Reconsideration of Dismissals Addressed in April 13, 2017 Decision,” “Motion to
+Consolidate” and “Motion to Amend Summary of Claims and Remedy,” all filed on September
+27, 2018. The AJ found that the claims these Motions sought to include were all untimely,
+already raised in a separate proceeding, and/or fell outside the scope of the January 2017
+Complaint. However, the AJ determined that Complainant’s July 28, 2019 “Motion to Amend
+Claim to Consolidate New Instance of Discrimination,” alleging discriminatory nonselection on
+July 8, 2019, contained a new claim of discrimination. The AJ recounted that Complainant
+initially raised the July 8, 2019 non-selection with an EEO Counselor on July 12, 2019, who then
+advised her to request consolidation with January 2017 complaint. The AJ denied the request to
+consolidate but ordered the Agency “to commence processing the new claims as a separate EEO
+complaint, using the filing date of the motion to amend as the date used to determine if
+Complainant's initial contact was timely.” The AJ also instructed the Agency to calculate
+timeliness based on September 27, 2018, the date of Complainant’s denied motions. The
+Agency subsequently notified Complainant of her right to file a formal EEO complaint pursuant
+to the AJ’s Case Management Order.
+
+On August 14, 2020, Complaint 2 (at issue in this appeal) written in narrative format, containing
+the July 8, 2019 non-selection, all of the claims from her September 27, 2018 Motions and
+several more recent instances of alleged harassment (referenced above as “Claims a, b, and c”).
+                                               15                                    2021003393
+
+On September 23, 2020, the Agency issued a Notice of Acceptance for Complaint 2. The only
+claim listed was the July 8, 2019 nonselection. The Notice of Acceptance obliquely addresses
+most of Complainant’s harassment allegations in a footnote explaining that the AJ denied the
+majority of Complainant’s September 27, 2018 motions. The footnote further explains that based
+on the AJ’s instructions, Complainant’s only new claim was the July 8, 2019 nonselection
+stating, “it is unclear where the judge obtained the September date to determine timeliness of the
+non-selection claim.”
+
+The Agency’s decision not to articulate Complainant’s harassment claims from her August 14,
+2020 formal complaint was appropriate to the extent that those claims were previously raised in
+her September 27, 2018 motions. The AJ’s June 9, 2020 Case Management Order provided
+ample explanation for why these claims could not be included in an EEO complaint. The
+Agency’s failure to articulate Complainant’s additional harassment claims (“Claims a, b, and c”)
+amounts to a harmless error. 7 Unlike the accepted claim in Complaint 2 (the July 8, 2019 non-
+selection), Claims a, b, and c were not raised with an EEO Counselor prior to Complainant
+including them in her August 14, 2020 formal EEO complaint.
+
+The regulation set forth at 29 C.F.R. § 1614.107(a)(2) states, in pertinent part, that an agency
+shall dismiss a complaint which raises a matter that has not been brought to the attention of an
+EEO Counselor and is not like or related to a matter on which the complainant has received
+counseling. A later claim or compliant is "like or related" to the original complaint if the later
+claim or compliant adds to or clarifies the original complaint and could have reasonably been
+expected to grow out of the original compliant during the investigation. See Hurlocker v. Dep’t
+of Veterans Affairs, EEOC Appeal No. 0120141346 (June 27, 2014); referencing Scher v. U.S.
+Postal Serv., EEOC Request No. 05940702 (May 30, 1995); Calhoun v. U.S. Postal Serv., EEOC
+Request No. 05891068 (Mar. 8, 1990)
+
+The allegations in Claims a and b are not “like and related” to the July 8, 2019 non-selection, as
+the management official had no involvement in the selection process. The allegation in Claim c
+also does not concern matters “like and related” to Complainant’s nonselection. Further, Claim c
+lacks the necessary specificity to state a claim. See, e.g. Carlan v. Dep’t of the Treas., EEOC
+Appeal No. 01A32447 (Aug. 1, 2003) (finding failure to state a claim due to lack of specificity
+where “Complainant has not identified when the events occurred, what happened, how she was
+directly disadvantaged, or how these matters altered the terms, conditions, or privileges of her
+employment.”) Therefore, even though Complainant consistently alleged harassment throughout
+the record, the FAD’s failure to address these allegations was proper.
+
+This decision shall not be construed as a finding that Complainant was or was not subject to a
+hostile work environment. We emphasize to Complainant that the matter of hostile work
+environment is not at issue in this complaint.
+
+
+7
+ In the legal context the term “harmless error” refers to an error “whose existence has no impact
+on the outcome of the case.” See Hines v. Dep’t of the Navy, EEOC Request No. 05960667
+(Mar. 26, 1998).
+                                                16                                     2021003393
+
+Denial of Reasonable Accommodation
+
+An agency is required to make reasonable accommodation to the known physical and mental
+limitations of an individual with a disability unless the agency can show that accommodation
+would cause an undue hardship. 29 C.F.R. §§ 1630.2(o) and (p). In order to establish that she
+was denied a reasonable accommodation, Complainant must show that: (1) she is an individual
+with a disability as defined by 29 C.F.R. § 1630.2(g); (2) she is “qualified” as defined by 29
+C.F.R. § 1630.2(m); and (3) the Agency failed to provide a reasonable accommodation. See
+EEOC Enforcement Guidance on Reasonable Accommodation and Undue Hardship Under the
+Americans with Disabilities Act (Enforcement Guidance on Reasonable Accommodation), No.
+915.002 (Oct. 17, 2002).
+
+The Agency concedes that Complainant meets the criteria for prongs (1) and (2) but argues that it
+did not deny Complainant a reasonable accommodation, as is required under prong (3). Rather,
+the NRAC concluded that the Agency either already provided Complainant with sufficient
+alternative reasonable accommodations, or Complainant did not need the requested
+accommodations.
+
+A reasonable accommodation is an adjustment or change at work for a reason related to a
+medical condition. See Bryan R. v. United States Postal Serv., EEOC Appeal No. 0120130020
+(Mar. 20, 2015), citing EEOC Enforcement Guidance on Reasonable Accommodation and
+Undue Hardship under the Americans with Disabilities Act, No. 915.002 (“EEOC Guidance No.
+915.002”), Question 1 (Oct. 17, 2002). After receiving a request for reasonable accommodation,
+the employer should engage in the “interactive process,” which is an informal process with the
+requesting individual to clarify their needs and identify the appropriate reasonable
+accommodation. See EEOC Guidance No. 915.002, see also, Abeijon v. Dep’t of Homeland
+Sec., EEOC Appeal No. 0120080156 (Aug. 8, 2012). We note that protected individuals are
+entitled to reasonable accommodations, but they are not necessarily entitled to their
+accommodation of choice. Castaneda v. United States Postal Serv., EEOC Appeal No. 01931005
+(Feb. 17, 1994).
+
+The following accommodations are at issue: (3) fulltime telework, (4) specialized chair and
+specialized desk for Complainant’s alternate duty station (“ADS”), and (5) use of flex time for
+one additional 15-minute break. The NRAC formally denied all three requests on April 17, 2020,
+but clarified that the decision for request (3) fulltime telework would not go into effect until the
+mandatory COVID-19 telework order was rescinded. The COVID-19 telework order remained
+in effect for the duration of the relevant time frame.
+                                               17                                   2021003393
+
+       Request 3
+
+An employer may deny an employee's request to telework if it can show that an alternative
+accommodation would be effective or that telework would cause an undue hardship. See
+Fernanda H. v. Social Sec. Admin., EEOC Appeal No. 2020004066 (Dec. 21, 2021),
+Enforcement Guidance, at Question 34. The Agency has a burden of production to show that
+there is an effective alternative accommodation. Id.
+
+Significantly, in this instance, Complainant was not offered an alternative reasonable
+accommodation. In the Report of Investigation, the EEO Investigator asked Supervisor 1 and
+NRAC whether Complainant was offered an alternative reasonable accommodation. Supervisor
+1 responded “I am not sure,” and NRAC left the response space blank. NRAC wrote “not
+applicable” in response to the follow-up question asking why no alternative accommodation was
+offered. Additionally, the record contradicts the Agency’s contentions that it provided
+Complainant with Work at Home by Exception (“WAHBE”), Leave Without Pay (“LWOP”),
+and “Liberal Leave” as alternative reasonable accommodations. Complainant obtained WAHBE,
+not an accommodation and available to all employees, through her Union because Supervisor 1
+recommended denying Complainant’s request for telework as a reasonable accommodation.
+Likewise, Complainant was not “granted” LWOP or Liberal Leave as a reasonable
+accommodation. Complainant was authorized under the Family & Medical Leave Act (“FLMA”)
+to take leave (including LWOP) related to her disability or to care for her son. According to the
+CADS Analyst’s notes, Supervisor 1 confirmed that Complainant obtained liberal leave outside
+the reasonable accommodation process. The Commission is also unconvinced by the rationale,
+set forth in the NRAC’s Denial Letter, that none of the medical documentation Complainant
+provided (all of which identified prolonged sitting and standing as sources of her chronic pain)
+expressly precluded Complainant from taking alternate forms of transportation to commute to
+work.
+
+Even if the Agency’s provision of LWOP and Liberal Leave was provided as an accommodation,
+these options are neither “reasonable” nor “effective” in instances where Complainant could
+have worked had she been granted telework as an accommodation. See Denese G. v. Dep’t of
+the Treas., EEOC Appeal No. 0120141118 (Dec. 29, 2016) (forcing an employee to take leave
+when another accommodation would permit the employee to continue working is not an
+“effective” accommodation and may evince a failure by the agency to act in good faith). In other
+words, to the extent that Complainant was forced to take leave when she could have teleworked,
+she was denied a reasonable accommodation.
+
+Based on the evidence of record, Complainant’s physical presence at the Newburgh FO was not
+necessary for her to perform the essential functions of the CSR position. The Position
+Description (“PD”) for a CSR, GS-8, supports Complainant’s assertion that the majority of her
+duties consist of interactions with customers over the phone, which she could do from home.
+When asked about Complainant’s specific duties, Supervisor 1 simply referred to the CSR PD.
+Supervisor 2 responded “[Complainant] must answer phones from 9am to the time she leaves, or
+until our phone lines shut off (4 pm).”
+                                                  18                                2021003393
+
+Complainant’s other duties included entering or reviewing data using Agency software. While
+some of this work involved processing paper documents, this appeared to be a minor
+responsibility as Supervisor 2 characterized this as occurring on her “off time” from her primary
+telephone duties. Notably, Complainant’s performance appraisals for 2017, 2018 and 2020, 8 do
+not discuss any job responsibilities involving face to face interaction with the public.
+
+Complainant’s 2020 Mid-Year Review, which she and Supervisor 2 signed on June 5, 2020,
+reflects that she can successfully complete the essential functions of her position while
+teleworking full-time as she was on WAHBE, and that recent updates to Field Office processes
+have made the CSR position more conducive to telework. The June 5, 2020 review
+acknowledges that Complainant was on WAHBE for the duration of the rating period: “You
+continue to produce a fair share of work according to management expectations…..You continue
+to keep the general line open and answer calls continuously… provide quality customer
+support…[and] timely complete your assignments.” Complainant’s performance feedback is
+consistent with her 2017 and 2018 appraisals, prior to her WAHBE.
+
+While further medical documentation is necessary to establish that Complainant requires
+permanent fulltime telework, the Agency erred by outright denying any telework as a reasonable
+accommodation. Again, we reject the Agency’s position that Complainant could use leave as a
+reasonable accommodation because leave where a complainant is capable of working if provided
+an accommodation is not “reasonable” or “effective.” In light of Complainant’s medical
+documentation supporting fulltime telework as a reasonable accommodation, the Agency could
+have offered Complainant an alternative accommodation without denying telework. Specifically,
+the Agency could have provided Complainant with telework as needed. In her February 13, 2020
+response to the CADS Analyst, Complainant indicated that she would be amenable to this.
+Alternatively, the Agency could have allowed fulltime telework as an interim accommodation,
+pending medical documentation supporting the need for fulltime telework as a permanent
+reasonable accommodation.
+
+The Agency improperly denied Request 3 by denying the full-time telework request or failing to
+offer an effective alternative reasonable accommodation.
+
+         Requests 4 and 5
+
+For Request 4, Complainant confirmed that she withdrew her request for an ergonomic keyboard
+at her Alternate Duty Station (“ADS”) but reiterated that she sought a specialized chair and
+specialized desk at her ADS in the February 13, 2020 email. In her accommodation Request,
+Complainant stated that her therapist advised her to use a kneeling chair because “[Complainant]
+a lot of alignment problems on the left side of her body.” For Request 5, Complainant explained
+that she sought an additional 15-minute break (using flex time) because, if she sat for a
+prolonged period time (approximately 40 minutes or more), she would have difficulty getting up
+and walking afterward.
+
+
+8
+    Complainant was on maternity leave in 2019.
+                                               19                                    2021003393
+
+We are baffled by the NRAC’s denial of Requests 4 and 5. Complainant’s PD establishes that the
+nature of her duties require prolonged sitting at a desk. Both before and after the CADS
+Analyst’s request, Complainant provided ample supporting medical documentation establishing
+that she could not sit for prolonged periods of time without impacting her mobility and causing
+severe pain. For Request 5, the reason for Complainant’s request for an additional break is
+“known or obvious.” See Dixie B. The additional break would mitigate the “prolonged” sitting
+required for Complainant to perform the essential functions of her position. For Request 4,
+Complainant’s “known or obvious” disability is sufficient to support a request for an ergonomic
+chair and desk for her ADS Moreover, in the March 12, 2020 note, Physical Therapist
+recommended providing Complainant with an ergonomic office equipment. Simply because
+Complainant found a way to make do by using pillows on a chair at home does not absolve the
+Agency from its obligation to accommodate her. Assuming, NRAC correctly concluded
+Complainant opted not to pursue the CADS Analyst’s instructions on how to request ergonomic
+equipment, it is still erroneous to deny the option due to lack of medical support.
+
+The Agency improperly denied Requests 4 and 5.
+
+Disparate Treatment – Non-Selection
+
+To prevail in a disparate treatment claim such as this, a complainant must satisfy the three-part
+evidentiary scheme fashioned by the Supreme Court in McDonnell Douglas Corp. v. Green, 411
+U.S. 792 (1973). First, the complainant must establish a prima facie case by presenting facts that
+if unexplained, reasonably give rise to an inference of discrimination. McDonnell Douglas, 411
+U.S. at 802; Furnco Construction Corp. v. Waters, 438 U.S. 567 (1978). Proof of a prima facie
+case will vary depending on the facts of the particular case. McDonnell Douglas, 411 U.S. at 802
+n. 13. The burden then shifts to the Agency to articulate a legitimate, nondiscriminatory reason
+for its actions. Texas Dep’t. of Cmty. Affairs v. Burdine, 450 U.S. 248, 253 (1981). To
+ultimately prevail, the complainant must prove, by a preponderance of the evidence, that the
+Agency's explanation is pretextual (i.e. the Agency acted on the basis of a prohibited reason).
+Reeves v. Sanderson Plumbing Products, Inc., 530 U.S. 133, 143 (2000), St. Mary’s Honor Ctr.
+v. Hicks, 509 U.S. 502 (1993).
+
+In the non-selection context, a complainant may establish a prima facie case by showing that: (1)
+they are a member of a protected class and/or they engaged in protected EEO activity, (2) they
+were qualified for the position, (3) they were not selected for the position, and (4) they were
+accorded treatment different from that given to persons otherwise similarly situated who are
+members outside of the complainant’s protected group. EEOC Enforcement Guidance
+on O'Connor v. Consolidated Coin Caterers Corp., EEOC Notice No. 915.002 (Sept. 18,
+1996); Williams v. Dep't of Educ., EEOC Request No. 05970561 (Aug. 6, 1998).
+
+Here, without more, Complainant’s prima facie case for race discrimination is weak as one of the
+two selectees was also Black/African American, and therefore not outside Complainant’s
+protected group. However, it is undisputed by the Agency that Complainant established a prima
+facie case for discriminatory non-selection based on disability and reprisal.
+                                                20                                    2021003393
+
+Once a complainant has established a prima facie case, the burden then shifts to the agency to
+articulate a legitimate, nondiscriminatory reason for its actions. Burdine, 450 U.S. at 253. The
+Supreme Court has stated that for an agency to meet this burden, it must “frame the factual issue
+with sufficient clarity so that the [complainant] will have a full and fair opportunity to
+demonstrate pretext.” Burdine, 450 U.S. at 255-56. Although the agency's burden of production
+is not onerous, it must nevertheless provide a specific, clear, and individualized explanation for
+the treatment accorded a complainant. See Lorenzo v. Dep’t of Def., EEOC Request No.
+05950931 (Nov. 6, 1997).
+
+In its FAD, the Agency reasoned that Complainant was not selected for the position of Social
+Insurance Specialist (Claims Specialist), GS-105-7, because Complainant’s qualifications were
+not “demonstrably superior” to those of the two selectees. In the alternative, the Agency appears
+to argue that Complainant’s qualifications were not relevant because it selected two other
+candidates based on veterans’ preference.
+
+In non-selection cases, the legitimate non-discriminatory reason must include a “specific, clear,
+and individualized explanation” for the non-selection so that the complainant is provided with an
+opportunity to prove that the agency's explanation was a pretext for discriminatory animus. See
+Boston v. United States Postal Serv., EEOC Appeal No. 0120042074 (May 26, 2004).
+Otherwise, a complainant is not required to demonstrate pretext if they have successfully
+established a prima facie case, and the agency's legitimate nondiscriminatory reason is
+“so generalized, conclusory, and vaporous as to offer no substantive explanation of the Agency's
+action.” See Fullman v. United States Postal Serv., EEOC Appeal No. 01A31036 (May 18,
+2004).
+
+The Commission has previously held that where an agency fails to provide “specific, clear, and
+individualized explanation” for why its selecting officials assigned their respective ratings or
+scores to a complainant and the selectees, it fails to meet its burden of production. See Garret W.
+citing Clemente v. Dep’t of Justice, EEOC Appeal No. 0720080012 (Sept. 24, 2008), Golmski v.
+United States Postal Serv., EEOC Appeal No. 01955157 (Jul. 17, 1997), see also Complainant v.
+United States Postal Serv., EEOC Appeal No. 01A31036 (Mar. 18, 2004) (agency statement that
+selectee was “better suited for the position” was “so generalized, conclusory and vaporous as to
+offer no substantive explanation of the agency's action”), Complainant v. Dep’t of Labor, EEOC
+Request No. 0520120381 (Jun. 25, 2015) (unexplained absence and inconsistent explanations
+surrounding selection records, the makeup of the workplace, and the complainant's plainly
+superior qualifications are cumulatively probative of pretext) citing Nita H. v. Dep’t of the
+Interior, EEOC Petition No. 0320110050 (Jul. 16, 2014) (internal inconsistencies, implausibility,
+or contradictions in an employer's explanation of the challenged employment decision may be
+evidence of pretext for discrimination or retaliation.
+
+Here, the Agency’s witnesses provided little explanation regarding why Complainant’s highly
+relevant and lengthy experience was overcome by the selectees, who appears to have less
+relevant experience.
+                                                21                                     2021003393
+
+According to the Vacancy Announcement, the Claims Specialist position entailed “speaking with
+beneficiaries about their rights under the Social Security laws, gathering facts and evidence to
+establish eligibility for benefits, making critical decisions to determine the amount of benefits
+paid to individuals, and using state-of-the-art computer technology to access and update
+information about claims.” [Emphasis added]. With eight years employed by the Agency and six
+in an office primarily staffed by Claims Specialists, Complainant regularly spoke with
+beneficiaries, had familiarity with the relevant laws and software, and regularly performed some
+Claims Specialist responsibilities. Also, Complainant has worked at the GS-8 level for at least
+several years, and the Claims Specialist position at issue is a GS-7. The Agency offers no
+explanation for why the selectees, whose resumes do not reflect any experience with Social
+Security law were better qualified than Complainant for the Claims Specialist position. See
+Garret W. v. United States Postal Serv., EEOC Appeal No. 0120173051 (October 30, 2018), the
+Agency failed to meet its burden of production in a non-selection case because the selecting
+official’s explanation for his scoring consisted mostly of conclusory statements, such as
+“Complainant did not score as well in the hiring process as [the selectee]” and “did not address
+how he determined a higher score for [the selectee’s] one year of experience in a supervisory
+position as opposed to Complainant's 10 years of acting supervisory experience.”
+
+The ranked applicant list following the CAIP Interview contained 25 names, all but Complainant
+and Selectee 1 redacted. Selectee 1 received a final rating of 91 points, Complainant received a
+final rating of 80 points, and Selectee 2’s final rating was not included. Notes and individual
+scoring from the panel interview were not included, even though this was the alleged basis for
+the candidates’ ratings. The CAIP Interview Summary Evaluations were provided in the record,
+even though it is not clear whether Selecting Official considered them.
+
+Assuming the CAIP initial interview materials were considered by Selecting Official, they lack
+detail beyond a numeric score and comments from references. Each score sheet reflected 7
+elements (Customer Service Orientation, Self-Management, Interpersonal Sensitivity, Planning
+and Organizing, Decision Making/Judgment, Analytical Thinking/Prob Solving, and
+Communications) worth up to 7 points based on references and the applicant’s initial interview.
+Out of a possible total of 49 points, Complainant’s overall score was 34, Selectee 1 scored 36,
+and Selectee 2 scored 37, with no explanation for the scoring. We note that Selectee 2 had one
+positive reference, and one reference that characterized Selectee’s “ability to work well with
+supervisors; ability to work well with peers” as “fair.” Selectee 2 originally received a score of 3
+on “Interpersonal Sensitivity” but this was crossed out and changed to 7. As a result, Selectee 2
+scored higher than Complainant. There is no explanation for the change, or notes explaining any
+of the scores.
+
+The Agency provides veterans’ preference as a legitimate non-discriminatory reason in addition
+to interview scores. It is well established that veterans’ preference can be a legitimate
+nondiscriminatory reason for non-selection. Under certain circumstances, applicants for federal
+employment who are veterans are entitled to priority over other qualified candidates when filling
+vacant positions.
+                                               22                                  2021003393
+
+The Commission has previously found instances where an agency selected a candidate based on
+veterans’ preference points, even where their raw interview score was lower than a
+complainant’s score, constituted a legitimate non-discriminatory reason for non-selection. See,
+e.g. Minh W. v. Dep’t of Housing & Urban Devel., EEOC Appeal No. 0120141692 (May 27,
+2016).
+
+Nevertheless, based on the specific facts of this case, the candidates’ veteran status is not
+sufficient to meet the Agency’s evidentiary burden. While HR Specialist stated, “it appears this
+[veterans’ preference] happened in Complainant’s case, as the two selectees were veterans,” the
+Selecting Official testified that the reason he did not select Complainant was that she scored
+lower on the panel interview than the selectees. He recalled, “some of the applicants selected
+were veterans” but reiterates that he chose the candidates with the highest scores. Therefore,
+despite the Agency’s argument, the evidence of record does not establish that veterans’
+preference played a deciding role in the selection at issue.
+
+Based on a thorough review of the record and the contentions on appeal, including those not
+specifically addressed herein, we find the Agency's evidence does not provide a specific, clear,
+and individualized explanation as to why Complainant was not selected for a position for which
+she was deemed qualified. Therefore, the Agency has not met its burden of production, and
+Complainant's initial inference of disability and reprisal discrimination remains unrebutted.
+
+                                        CONCLUSION
+
+Based on a thorough review of the record and the contentions on appeal, we REVERSE the
+Agency’s final order. We REMAND the matter back to the Agency to take corrective action in
+accordance with this Decision and the order herein.
+
+                                       ORDER (C0618)
+
+The Agency shall take the following actions:
+
+   1. Reasonable Accommodation. To the extent that it has not already done so, the Agency
+      shall immediately engage in the interactive process with Complainant to assess her
+      current reasonable accommodation needs. Complainant may need to provide updated
+      medical documentation as part of the interactive process.
+
+       The Agency shall engage in the interactive process and provide the accommodation in
+       accordance with the time frames set forth in the Agency’s reasonable accommodation
+       plan or within 120 calendar days, whichever time frame is shorter.
+
+   2. Restoration of Leave. Within ninety (90) calendar days from the date this decision is
+      issued, the Agency shall restore any leave (e.g. annual, sick, LWOP, FMLA)
+      Complainant was forced to use due to the Agency’s failure to allow her to telework as an
+      effective reasonable accommodation for her disabilities. The time frame shall begin on
+      the date of Complainant’s request, December 6, 2019 through the date Complainant was
+                                           23                                    2021003393
+
+   either granted a reasonable accommodation or left the Agency. The Agency shall provide
+   the Compliance Officer with a printout or statement by an appropriate agency official,
+   identifying the amount and type of leave restored. If Complainant has since retired, the
+   Agency shall reimburse Complainant for the amount of restored leave plus interest from
+   the date of Complainant’s retirement.
+
+       a. We recognize that Complainant’s payroll and leave records will not identify
+          precisely which leave hours were taken due to denial of reasonable
+          accommodation. Therefore, Complainant and the Agency shall work together to
+          extrapolate a “ballpark” number of leave hours to restore, taking into
+          consideration any patterns in Complainant's leave usage, emails or text
+          conversations, medical records (or a signed statement from Complainant's
+          physician with pertinent information) or any other available records the parties
+          deem relevant. See Annie F. v. Dep’t of Homeland Sec., EEOC Appeal No.
+          2022001221 (Apr. 13, 2023) (finding denial of reasonable accommodation where
+          the agency required the complainant to use leave rather than grant her disability-
+          related telework requests, instructing the parties to extrapolate a “ballpark”
+          number of leave hours to restore), Elise S. v. Dep’t of State, EEOC Appeal Nos.
+          2020004019 & 2020004020 (Nov. 22, 2021) (analyzing appropriate methodology
+          for calculating a reasonable estimate for reinstatement of leave where the
+          complainant’s leave usage was impacted by denied reasonable accommodation,
+          and later a change in circumstances outside the scope of the complaint). Some
+          variables the parties may consider include instances where Complainant was
+          explicitly denied telework, instances where Complainant needed to take leave she
+          otherwise would not have taken in order to recover from days she was required to
+          commute to the office, and leave taken on days adjacent to documented flareups
+          of Complainant’s condition. We note that leave restoration may not be necessary
+          where Complainant teleworked due to the COVID-19 pandemic, however, leave
+          usage during that time frame may be compared with time Complainant was still
+          required to come in to the office to compute the “ballpark” amount of leave owed.
+
+       b. Complainant shall cooperate in the Agency's efforts to compute the amount of
+          leave due and shall provide all relevant information requested by the Agency. If
+          there is a dispute regarding the exact amount, the Agency shall issue a check to
+          Complainant for the undisputed amount within sixty (60) calendar days of the
+          date the Agency determines the amount it believes to be due. Complainant may
+          petition for enforcement or clarification of the amount in dispute. The petition for
+          clarification or enforcement must be filed with the Compliance Officer, at the
+          address referenced in the statement entitled, “Implementation of the
+          Commission's Decision.”
+
+3. Promotion. Within sixty (60) calendar days from the date this decision is issued, the
+   Agency shall issue a written offer to Complainant for the position of Social Insurance
+   Specialist (Claims Specialist), GS-105-7 at one of the following New York offices: (a)
+                                                24                                     2021003393
+
+        Newburgh, (b) Poughkeepsie, (c) Rockland County, and (d) Westchester County. 9 or a
+        substantially equivalent position, retroactive to June 23, 2019. 10 The Agency’s offer shall
+        provide Complainant with fifteen (15) calendar days from receipt of the offer to notify
+        the Agency of whether she accepts or declines the offer. Failure to accept the offer within
+        fifteen (15) calendar days will be considered a declination of the offer, unless
+        Complainant can show that circumstances beyond her control prevented a response
+        within the time limit. Any back pay liability shall cease to accrue with either the actual
+        placement of Complainant into the position or with the date the offer was declined.
+
+     4. Back Pay and Lump Sum Payment. Within sixty (60) calendar days of the date this
+        decision is issued, the Agency shall determine the appropriate amount of back pay, with
+        interest, and other benefits due Complainant, pursuant to 29 C.F.R. § 1614.501. The
+        back pay amount shall be computed in the manner prescribed by 5 C.F.R. § 550.805. The
+        back pay period will assume Complainant held the position of Social Insurance Specialist
+        (Claims Specialist), GS-105-7, 11 and shall begin on June 23, 2019.
+
+            a. Complainant shall cooperate with the Agency's efforts to compute the amount of
+               back pay and benefits due, and shall provide all relevant information requested by
+               the Agency within thirty (30) calendar days of the Agency’s request. 12 The
+               Agency shall issue a final agency decision on the amount of back pay owed to
+               Complainant (“Back Pay FAD”), to include appeal rights and a detailed plain
+               language explanation of its back pay calculations. The Back Pay FAD shall also
+               be accompanied by documentation to support the Agency’s calculations and
+               explanation.
+
+
+
+
+9
+  The Agency may, if Complainant agrees, offer Complainant a Social Insurance Specialist
+(Claims Specialist), GS-105-7 (promotion potential to GS-11), or substantially equivalent
+position based out of a different location so long as the position is full-time telework.
+10
+  The personnel documentation for the Selectee for the Poughkeepsie, NY vacancy reflects that
+the effective start date for the position was June 23, 2019, and the full performance level of the
+position was GS-11.
+11
+  The Agency shall determine Complainant’s initial GS-7 step level based on Complainant’s
+GS-8 salary at the time of the nonselection, and calculate promotions and step increases
+accordingly, based on full performance potential of GS-11.
+12
+   As Complainant was on extended FMLA leave in 2019, the Agency may request a statement
+from Complainant’s physician confirming when Complainant would have been physically able
+to start work. The back pay calculation will also assume that Complainant continued her regular
+use of FMLA and would be granted full time telework and liberal use of leave as reasonable
+accommodations upon placement into the Claims Specialist position.
+                                                25                                     2021003393
+
+           b. If there is a dispute regarding the exact amount of back pay, interest, and/or
+              benefits, Complainant may appeal the Agency’s Back Pay FAD to the
+              Commission. The Agency shall still pay Complainant the undisputed amount of
+              back pay owed within sixty (60) calendar days of the date the Back Pay FAD is
+              issued. The back pay calculation and payment period should not exceed one
+              hundred and twenty (120) calendar days.
+
+       The Agency shall also pay Complainant compensation for any adverse tax consequences
+       of receiving back pay as a lump sum. Complainant has the burden of establishing the
+       amount of increased tax liability, if any.
+
+   5. Training. Within ninety (90) calendar days of the date this decision is issued, the
+      individuals identified in this decision as “Supervisor 1” and “Accommodation
+      Coordinator” shall complete 2 hours of interactive training on the Agency’s obligations
+      under the Rehabilitation Act, including, but not limited to what constitutes a disability
+      and when and how to implement telework as a reasonable accommodation.
+
+       For assistance in obtaining the necessary training, the Agency may contact the
+       Commission’s Outreach, Training and Engagement Division via email, at
+       FederalTrainingandOutreach@eeoc.gov. The Agency shall provide the Compliance
+       Officer with proof of attendance, as well as the contents and materials it used for the
+       training. If Supervisor 1 or Accommodation Coordinator has left the Agency's employ,
+       the Agency shall furnish documentation of his/her/their departure date.
+
+   6. Disciplinary Action. Within one hundred twenty (120) calendar days from the date this
+      decision is issued, the Agency shall consider disciplining “Supervisor 1” and
+      “Accommodation Coordinator” for failing to provide Complainant with a reasonable
+      accommodation in violation of the Rehabilitation Act. The Commission does not consider
+      training to be disciplinary action. The Agency shall report its decision to the Compliance
+      Officer. If the Agency decides to take disciplinary action, it shall identify the action
+      taken. If the Agency decides not to take disciplinary action, it shall set forth the reason(s)
+      for its decision not to impose discipline. If Supervisor 1 or Accommodation Coordinator
+      has left the Agency's employ, the Agency shall furnish documentation of his/her/their
+      departure date.
+
+   7. Posting Notice. Within thirty (30) calendar days of the date this decision is issued, the
+      Agency shall post a notice in accordance with the section listed below, entitled “Posting
+      Order.” The Agency shall provide the Compliance Officer with the original signed and
+      dated notice, reflecting the dates that the notice was posted, along with evidence that the
+      notice was physically posted at the facility and electronically.
+
+The Agency is further directed to submit a report of compliance in digital format as provided in
+the statement entitled "Implementation of the Commission's Decision." The report shall be
+submitted via the Federal Sector EEO Portal (FedSEP). See 29 C.F.R. § 1614.403(g).
+                                               26                                   2021003393
+
+Further, the report must include supporting documentation of the Agency's calculation of back
+pay and other benefits due Complainant, including evidence that the corrective action has been
+implemented.
+
+                                  POSTING ORDER (G0617)
+
+The Agency is ordered to post at its the Agency's Newburgh Field Office facility in Newburgh,
+New York, copies of the attached notice. Copies of the notice, after being signed by the
+Agency's duly authorized representative, shall be posted both in hard copy and electronic
+format by the Agency within 30 calendar days of the date this decision was issued, and shall
+remain posted for 60 consecutive days, in conspicuous places, including all places where notices
+to employees are customarily posted. The Agency shall take reasonable steps to ensure that said
+notices are not altered, defaced, or covered by any other material. The original signed notice is
+to be submitted to the Compliance Officer as directed in the paragraph entitled "Implementation
+of the Commission's Decision," within 10 calendar days of the expiration of the posting period.
+The report must be in digital format and must be submitted via the Federal Sector EEO Portal
+(FedSEP). See 29 C.F.R. § 1614.403(g).
+
+                                 ATTORNEY'S FEES (H0124)
+
+If Complainant has been represented by an attorney (as defined by 29 C.F.R. §
+1614.501(e)(1)(iii)), they are entitled to an award of reasonable attorney's fees incurred in the
+processing of the complaint. 29 C.F.R. § 1614.501(e). The award of attorney's fees shall be paid
+by the Agency. The attorney shall submit a verified statement of fees to the Agency -- not to the
+Equal Employment Opportunity Commission, Office of Federal Operations -- within thirty (30)
+calendar days of receipt of this decision. The Agency shall then process the claim for attorney's
+fees in accordance with 29 C.F.R. § 1614.501.
+
+            IMPLEMENTATION OF THE COMMISSION’S DECISION (K0719)
+
+Under 29 C.F.R. § 1614.405(c) and §1614.502, compliance with the Commission’s corrective
+action is mandatory. Within seven (7) calendar days of the completion of each ordered
+corrective action, the Agency shall submit via the Federal Sector EEO Portal (FedSEP)
+supporting documents in the digital format required by the Commission, referencing the
+compliance docket number under which compliance was being monitored. Once all compliance
+is complete, the Agency shall submit via FedSEP a final compliance report in the digital format
+required by the Commission. See 29 C.F.R. § 1614.403(g). The Agency’s final report must
+contain supporting documentation when previously not uploaded, and the Agency must send a
+copy of all submissions to the Complainant and his/her representative.
+
+If the Agency does not comply with the Commission’s order, the Complainant may petition the
+Commission for enforcement of the order. 29 C.F.R. § 1614.503(a). The Complainant also has
+the right to file a civil action to enforce compliance with the Commission’s order prior to or
+following an administrative petition for enforcement. See 29 C.F.R. §§ 1614.407, 1614.408, and
+29 C.F.R. § 1614.503(g).
+                                                27                                    2021003393
+
+Alternatively, the Complainant has the right to file a civil action on the underlying complaint in
+accordance with the paragraph below entitled “Right to File a Civil Action.” 29 C.F.R.
+§§ 1614.407 and 1614.408. A civil action for enforcement or a civil action on the underlying
+complaint is subject to the deadline stated in 42 U.S.C. 2000e-16(c) (1994 & Supp. IV 1999). If
+the Complainant files a civil action, the administrative processing of the complaint,
+including any petition for enforcement, will be terminated. See 29 C.F.R. § 1614.409.
+
+Failure by an agency to either file a compliance report or implement any of the orders set forth in
+this decision, without good cause shown, may result in the referral of this matter to the Office of
+Special Counsel pursuant to 29 C.F.R. § 1614.503(f) for enforcement by that agency.
+
+                           STATEMENT OF RIGHTS - ON APPEAL
+
+                               RECONSIDERATION (M0124.1)
+
+The Commission may, in its discretion, reconsider this appellate decision if Complainant or the
+Agency submits a written request that contains arguments or evidence that tend to establish that:
+       1. The appellate decision involved a clearly erroneous interpretation of material fact or
+          law; or
+       2. The appellate decision will have a substantial impact on the policies, practices, or
+          operations of the agency.
+
+Requests for reconsideration must be filed with EEOC’s Office of Federal Operations (OFO)
+within thirty (30) calendar days of receipt of this decision. If the party requesting
+reconsideration elects to file a statement or brief in support of the request, that statement or
+brief must be filed together with the request for reconsideration. A party shall have twenty
+(20) calendar days from receipt of another party’s request for reconsideration within which to
+submit a brief or statement in opposition. See 29 C.F.R. § 1614.405; Equal Employment
+Opportunity Management Directive for 29 C.F.R. Part 1614 (EEO MD-110), at Chap. 9 § VII.B
+(Aug. 5, 2015).
+
+Complainant should submit their request for reconsideration, and any statement or brief in
+support of their request, via the EEOC Public Portal, which can be found at
+https://publicportal.eeoc.gov/Portal/Login.aspx
+
+Alternatively, Complainant can submit their request and arguments to the Director, Office of
+Federal Operations, Equal Employment Opportunity Commission, via regular mail addressed to
+P.O. Box 77960, Washington, DC 20013, or by certified mail addressed to 131 M Street, NE,
+Washington, DC 20507. In the absence of a legible postmark, a complainant’s request to
+reconsider shall be deemed timely filed if OFO receives it by mail within five days of the
+expiration of the applicable filing period. See 29 C.F.R. § 1614.604.
+
+An agency’s request for reconsideration must be submitted in digital format via the EEOC’s
+Federal Sector EEO Portal (FedSEP). See 29 C.F.R. § 1614.403(g).
+                                                28                                     2021003393
+
+Either party’s request and/or statement or brief in opposition must also include proof of service
+on the other party, unless Complainant files their request via the EEOC Public Portal, in which
+case no proof of service is required.
+
+Failure to file within the 30-day time period will result in dismissal of the party’s request for
+reconsideration as untimely, unless extenuating circumstances prevented the timely filing of the
+request. Any supporting documentation must be submitted together with the request for
+reconsideration. The Commission will consider requests for reconsideration filed after the
+deadline only in very limited circumstances. See 29 C.F.R. § 1614.604(f).
+
+                 COMPLAINANT’S RIGHT TO FILE A CIVIL ACTION (R0124)
+
+This is a decision requiring the Agency to continue its administrative processing of your
+complaint. However, if you wish to file a civil action, you have the right to file such action in an
+appropriate United States District Court within ninety (90) calendar days from the date that you
+receive this decision. In the alternative, you may file a civil action after one hundred and
+eighty (180) calendar days of the date you filed your complaint with the Agency, or filed your
+appeal with the Commission. If you file a civil action, you must name as the defendant in the
+complaint the person who is the official Agency head or department head, identifying that person
+by their full name and official title. Failure to do so may result in the dismissal of your case in
+court. “Agency” or “department” means the national organization, and not the local office,
+facility or department in which you work. Filing a civil action will terminate the
+administrative processing of your complaint.
+
+                           RIGHT TO REQUEST COUNSEL (Z0815)
+
+If you want to file a civil action but cannot pay the fees, costs, or security to do so, you may
+request permission from the court to proceed with the civil action without paying these fees or
+costs. Similarly, if you cannot afford an attorney to represent you in the civil action, you may
+request the court to appoint an attorney for you. You must submit the requests for waiver of
+court costs or appointment of an attorney directly to the court, not the Commission. The
+court has the sole discretion to grant or deny these types of requests. Such requests do not alter
+the time limits for filing a civil action (please read the paragraph titled Complainant’s Right to
+File a Civil Action for the specific time limits).
+
+FOR THE COMMISSION:
+
+
+
+______________________________                   Carlton M. Hadden’s signature
+Carlton M. Hadden, Director
+Office of Federal Operations
+
+April 29, 2024
+Date
+

@@ -1,0 +1,458 @@
+              U.S. EQUAL EMPLOYMENT OPPORTUNITY COMMISSION
+                            Office of Federal Operations
+                                   P.O. Box 77960
+                              Washington, DC 20013
+
+
+                                           Jamie K., 1
+                                          Complainant,
+
+                                                v.
+
+                                      Christine Wormuth,
+                                           Secretary,
+                                    Department of the Army,
+                                            Agency.
+
+                                    Appeal No. 2020005343
+
+                              Agency No. ARCESEA17JUL02596
+
+
+                                           DECISION
+
+On August 11, 2020, Complainant filed an appeal with the Equal Employment Opportunity
+Commission (EEOC or Commission), pursuant to 29 C.F.R. § 1614.403(a), from the Agency’s
+April 20, 2020, final decision concerning his equal employment opportunity (EEO) complaint
+alleging employment discrimination in violation of Title VII of the Civil Rights Act of 1964 (Title
+VII), as amended, 42 U.S.C. § 2000e et seq. and the Age Discrimination in Employment Act of
+1967 (ADEA), as amended, 29 U.S.C. § 621 et seq. 2 For the following reasons, the Commission
+AFFIRMS the Agency’s final decision.
+
+                                        BACKGROUND
+
+At the time of events giving rise to this complaint, Complainant worked as a Supervisory
+Mechanical Engineer, GS-13, at the Agency’s U.S. Army Corps of Engineers in Seattle,
+Washington.
+
+On October 18, 2017, Complainant filed an EEO complaint alleging that the Agency discriminated
+against him and subjected him to a hostile work environment on the bases of race/color
+(Caucasian), sex (male), age (57, DOB November 3, 1959), and reprisal for prior protected EEO
+
+
+1
+  This case has been randomly assigned a pseudonym which will replace Complainant’s name
+when the decision is published to non-parties and the Commission’s website.
+2
+  Despite the late filing date, we do not find that this was an untimely appeal because the Agency
+failed to timely issue a final decision as required by our regulations.
+                                              2                                      2020005343
+
+activity under Title VII of the Civil Rights Act of 1964 and the Age Discrimination in Employment
+Act of 1967. 3 The Agency ultimately accepted 28 separate incidents of discrimination for
+investigation. The Agency framed the claims in the following manner:
+
+           A. Complainant claimed that he was subjected to discrimination based upon sex, age,
+              and color when, on April 5, 2017 and May 25, 2017, Complainant was notified he
+              was not selected for the Chief, Operations Support Branch, Supervisory
+              Interdisciplinary, GS-0401/0808/0810/0830/0850-14 position.
+
+           B. Complainant claimed that he was subjected to a hostile work environment based on
+              sex, age, reprisal (current complaint and prior EEO activity), and color when:
+
+              1. On May 19, 2017; June 30, 2017; July 5, 2017; and in July 2017, an EEO
+                 Manager (Manager) tried to discourage Complainant from engaging in the EEO
+                 complaints process, which created fear and uncertainty that his complaint
+                 would be properly processed;
+
+              2. On May 26, 2017, a Chief, Operations Support Branch, (Chief 1)
+                 mischaracterized Complainant’s sworn statement implying that he violated an
+                 anti-discrimination policy;
+
+              3. On May 26, 2017, Chief 1 provided a copy of Complainant’s sworn statement
+                 interview as a part of her investigation into allegations against one of his
+                 subordinates that eliminated context and mischaracterized his statement in an
+                 effort to make it appear as though he were violating anti-discrimination laws;
+
+              4. On June 9, 2017, Complainant felt pressured to cancel his leave for a family
+                 wedding based on a Command visit scheduled for June 14, 2017;
+
+              5. On June 13, 2017, Complainant received a phone call from a Human Resources
+                 (HR) Specialist in the Labor Management Employee Relations (HR Specialist)
+                 of the Civilian Personnel Advisory Center (CPAC) asking if he was going to
+                 retire and encouraging him to do so;
+
+              6. On June 14, 2017, at a project-wide meeting, Complainant’s second-line
+                 supervisor, the District Commander, a Colonel (Colonel 1) referred to "these
+                 old guys" as a safety problem, because they lift and twist, and he advised people
+                 to stop "old guys" from doing things that could hurt them;
+
+
+
+
+3
+  Complainant’s alleged bases included race and color, both of which he indicated were
+“Caucasian.”
+                               3                                       2020005343
+
+7. On June 17, 2017, Complainant’s first-line supervisor, Operations Division
+   Chief, (Supervisor 1) requested to view the full content of Complainant’s
+   Outlook calendar so she could view all scheduled information;
+
+8. On June 22, 2017, Supervisor 1 met with Complainant and stated the
+   requirements in his Letter of Instruction dated March 31, 2015 would remain in
+   effect for his fiscal years 2017 and 2018 performance objectives;
+
+9. On June 22, 2017, a second Chief, Operations Support Branch, (Chief 2) stated
+   that "new supervisors, and old supervisors that forget" need to be trained and
+   retrained on reasonable accommodation, during an Operations Division Staff
+   conference call meeting;
+
+10. On July 5, 2017, the Assistant District Counsel (Counsel) was intentionally
+    dishonest when he called Complainant and subsequently asked him questions
+    while a U.S. District Attorney was on the phone, in an effort to discourage him
+    from engaging in protected activity;
+
+11. On or about October 2017, HR Specialist contacted Complainant’s
+    Administrative Officer and tried to convince her that he was not able to make
+    decisions;
+
+12. On November 9, 2017, Supervisor 1 sent a very hostile email that was a
+    personal attack on Complainant’s character, integrity, credibility, and
+    capabilities;
+
+13. On November 14, 2017, HR Specialist singled Complainant out in an email
+    response sent to multiple managers insinuating he is lazy or lacks intelligence;
+
+14. On November 28, 2017, a named official (Official 1) and Supervisor 1 were
+    loudly boasting about firing a subordinate employee in order to threaten
+    Complainant;
+
+15. On December 1, 2017, Complainant received performance objectives from
+    Supervisor 1 that are unachievable, unmeasurable, and violate anti-
+    discrimination laws;
+
+16. On December 13, 2017, Supervisor 1 made an uncoordinated visit to
+    Complainant’s worksite to intimidate and undermine his authority;
+
+17. On January 11, 2018, Complainant received a level "3" performance evaluation
+    from Supervisor 1 and a second District Commander, a Colonel (Colonel 2);
+                                 4                                     2020005343
+
+   18. On January 23, 2018, Supervisor 1, the Deputy Commander, a Lieutenant
+       Colonel (Lieutenant Colonel) assigned Complainant to the Seattle District
+       Defense Performance Management and Appraisal Program (DPMAP) team,
+       which led to Supervisor 1 holding him responsible for the results of all
+       Operating Division DPMAP implementation, berating him several times, and
+       creating his failure with the assignment;
+
+   19. On February 8, 2018, Colonel 2 and Lieutenant Colonel focused on
+       Complainant’s project by assigning $150 of liability to two of his employees;
+
+   20. On February 8, 2018, Supervisor 1 and Colonel 2 admitted to giving
+       Complainant a poor performance rating based on his protected activity during
+       a face-to-face meeting with him;
+
+   21. From February 27-28, 2018, Supervisor 1 and Chief 1 humiliated Complainant
+       in front of his peers and after a meeting berated him for not finalizing the
+       Operating Project Manager (OPM) DPMAP standards when he told Official 3
+       that other OPMs ignored his emails;
+
+   22. From April 23-26, 2018, Supervisor 1 refused to make changes to the OPM
+       DPMAP standards and engaged in verbal abuse, unfair mischaracterizations,
+       and referred to Complainant as a hypocrite for not signing the standards;
+
+   23. From April 25-27, 2018, a second named official (Official 2) and Chief 2
+       ignored Complainant’s request and excluded him from key decisions because
+       of hostile comments Supervisor 1 made towards him motivated by her desire
+       for him to fail;
+
+   24. On or around December 2017, Complainant submitted an additional
+       justification to upgrade a subordinate position to a GS-13 Chief of Technical
+       (COT), which was denied by Supervisor 1 and Colonel 2, affecting his path to
+       a GS-14 position; and
+
+   25. From March to June 2018, Supervisor 1 refused to take action to back-fill the
+       GS-12 Electrical Engineer (EE) position, which created a backlog of mission,
+       negatively impacting Complainant’s performance success and removing his
+       ability to justify his subordinate's COT promotion to GS-13.
+
+C. Complainant claimed he was subjected to discrimination based upon sex, age, and
+   reprisal when:
+
+   1. On July 18, 2017, Colonel 1 denied Complainant’s request to change his
+      performance rating higher than the level "3" rating despite his request for
+      reconsideration; and
+                                              5                                      2020005343
+
+               2. On July 18, 2017, Lieutenant Colonel called Complainant and questioned him
+                  about missing equipment and a security intrusion at Albeni Falls Dam.
+
+At the conclusion of the investigation, the Agency provided Complainant with a copy of the report
+of investigation (ROI) and notice of his right to request a hearing before an Equal Employment
+Opportunity Commission Administrative Judge (AJ). In accordance with Complainant’s request,
+the Agency issued a final decision (FAD) pursuant to 29 C.F.R. § 1614.110(b). The Agency
+concluded that Complainant failed to prove that the Agency subjected him to discrimination as
+alleged.
+
+In the FAD, the Agency addressed Complainant’s disparate treatment claims under the three-part
+evidentiary scheme fashioned by the Supreme Court in McDonnell Douglas Corp. v. Green, 411
+U.S. 792 (1973). The Agency subsequently determined that management had provided legitimate
+nondiscriminatory reasons for the alleged actions. Regarding claim A, the Agency found that
+Complainant’s non-selection occurred because he did not demonstrate at the interview that he was
+more qualified than the two selectees, Chiefs 1 and 2. Regarding claim B17, The Agency found
+that Supervisor did not change Complainant’s performance evaluation rating because he did not
+demonstrate that he deserved a higher rating. Regarding claims B8, B15, and B22, the Agency
+found that Complainant’s performance evaluations were justified as it was within a supervisor’s
+authority to set the performance objectives and elements for employees. The Agency noted that
+supervisors are required to provide information on how an employee can exceed their performance
+objectives. Regarding claim C1, the Agency found that Colonel 1 denied Complainant’s request
+for reconsideration and change of his rating because Colonel 1 and Complainant’s former
+supervisor agreed that the level "3" rating Complainant received was fair and would not be
+changed.
+
+The Agency also found that Complainant failed to establish his hostile work environment
+allegations in all claims, asserting that he failed to describe any severe or pervasive management
+conduct; and that Complainant was not an aggrieved employee with respect to most of the
+harassment claims. The Agency found, for example, that the comments by Colonel 1 in claim B7
+were not directed solely at Complainant. Rather, they were made to all employees who attended
+the all hands meeting.
+
+                                 CONTENTIONS ON APPEAL
+
+On appeal, among other things, Complainant states that the Agency had not responded in any way
+to his request for a FAD and had not responded to Complainant’s inquiry as to the status of the
+FAD. According to Complainant, he mailed a request for a FAD to the Agency by certified USPS
+mail on November 16, 2018, about one month after the Agency’s October 18, 2018 notice to either
+request a FAD or an AJ hearing. Complainant asserts that his request for a FAD was received by
+the Agency on November 20, 2018. Complainant states that the Agency then filed the FAD with
+the Commission and Complainant on December 29, 2020, over two years late per Commission
+rules.
+                                               6                                        2020005343
+
+Complainant asserts that he only saw the FAD after it was uploaded to the EEOC portal site on
+December 29, 2020. Complainant expresses a desire that “any future FAD response should not be
+considered timely.” Complainant also requests an AJ hearing “due to the lack of response, fairness,
+and integrity of the Agency process.”
+
+Complainant asserts that the investigation into his complaint was inadequate, citing examples of
+the lack of follow up questions to witnesses during the investigation; and the outright exclusion of
+witness testimonies from the ROI for some of his allegations. For example, Complainant asserts
+that Colonel 1 did place all blame on “old guys” for safety issues, which was witnessed by
+Complainant’s subordinate (Subordinate) and others. ROI at 1273. Subordinate witnessed
+Supervisor referring to an elderly employee (Coworker 1) as an “old man.” ROI at 1272.
+Complainant argues that the investigator did not ask additional follow up questions. Complainant
+also noted that Subordinate stated he had evidence, but the investigator did not seek the evidence
+or clarify the nature of the evidence; and that the investigator “inhibited” Subordinate’s testimony.
+ROI at 1275.
+
+Complainant states that the FAD also failed to address some of his allegations; and that some
+management officials provided false statements in the FAD. Complainant requests that the
+Commission reject the FAD and accept Complainant’s request for a hearing.
+
+On appeal, the Agency asserts that Complainant did not show how the delay in issuance of the
+FAD prejudiced him or otherwise resulted in an unconscionable delay in justice. The Agency also
+asserts that Complainant presented no evidence which would confirm his claim that management’s
+actions were based on his protected bases. The Agency requests that the Commission affirm its
+final decision.
+
+                                    STANDARD OF REVIEW
+
+As this is an appeal from a decision issued without a hearing, pursuant to 29 C.F.R. § 1614.110(b),
+the Agency's decision is subject to de novo review by the Commission. 29 C.F.R. § 1614.405(a).
+See Equal Employment Opportunity Management Directive for 29 C.F.R. Part 1614, at Chapter 9,
+§ VI.A. (Aug. 5, 2015) (explaining that the de novo standard of review “requires that the
+Commission examine the record without regard to the factual and legal determinations of the
+previous decision maker,” and that EEOC “review the documents, statements, and testimony of
+record, including any timely and relevant submissions of the parties, and . . . issue its decision
+based on the Commission’s own assessment of the record and its interpretation of the law”).
+
+                                  ANALYSIS AND FINDINGS
+
+Investigation Inadequacies
+
+EEOC Regulation 29 C.F.R. § 1614.108(b) and EEO MD-110 at Chapter 6, § I require agencies
+to develop an impartial and complete factual record. An appropriate factual record is one that
+allows a reasonable factfinder to draw conclusions as to whether discrimination occurred. EEO
+MD-110 at Chapter 6, § I.
+                                              7                                       2020005343
+
+An investigator must be thorough. “This means identifying and obtaining all relevant evidence
+from all sources regardless of how it may affect the outcome.” Id. at § V.D. “To ensure a balanced
+record, it is necessary only to exhaust those sources likely to support the complainant and the
+respondent. An investigation conducted in this manner might reveal that there is ample evidence
+to support the complainant’s claims and no evidence to support the agency’s version of the facts,
+or vice versa. The best type of investigation allows for complainant to provide rebuttal evidence
+with sufficient time for the investigator to address any issues raised within the regulatory time
+frames.” Id.
+
+Here, the ROI includes statements from witnesses who testified in support of Complainant’s
+allegations, including about the alleged ageist comments. The record is devoid of any evidence
+that the Agency or the EEO Investigator deliberately excluded Complainant’s witnesses from
+submitting affidavits during the investigation in his complaint. Nor does Complainant described
+what new relevant information or evidence any additional witnesses would have provided that
+could lead to a different outcome in this case. Finally, Complainant had access to the ROI
+concerning his complaint and the opportunity to develop the record significantly during the EEO
+investigation, including the opportunity to provide a rebuttal statement. The Commission finds
+that the investigative record is sufficiently thorough and balanced for a reasonable factfinder to
+reach the ultimate issue of whether discrimination occurred. Therefore, the Commission finds the
+investigation was adequate.
+
+Delayed FAD Issuance
+
+We note that our regulations require agency action in a timely manner at many points in the EEO
+process. Tammy S. v. Dep’t of Def., EEOC Appeal No. 0120084008 (June 6, 2014). Compliance
+with these timeframes is not optional; as the Commission stated in Royal v. Dep’t of Veterans
+Affairs, EEOC Request No. 0520080052 (Sept. 25, 2009), “the Commission has the inherent
+power to protect its administrative process from abuse by either party and must insure that
+agencies, as well as complainants, abide by its regulations.” Because of the length of time it can
+take to process a federal sector EEO complaint, any delays in complying with the time frames in
+the regulations can impact the outcome of the complainant’s claims. Id.
+
+Here, we find that the Agency failed to comply with the Commission’s regulations. The record
+reveals that Complainant sent his request for a FAD to the Agency on November 16, 2018. The
+Agency made the FAD available to Complainant on December 29, 2021, over two years later.
+The Agency did not dispute this fact but asserts that Complainant did not show how the delay in
+issuance of the FAD prejudiced him or otherwise resulted in an unconscionable delay in justice.
+Although the Agency failed to timely issue a final decision as required by our regulations, it did
+not act in a manner to warrant the sanction of a default judgment against it. See, e.g. Josefina L.
+v. Soc. Sec. Admin., 0120142023 (July 19, 2016), req. for recon. denied, EEOC Request No.
+0520170108 (Feb. 9, 2017) (finding that the Agency’s 571-day delay in issuing the decision did
+not warrant sanctions, as complainant did not show she was prejudiced by the delay); Abe K. v.
+Dep’t of Agric., EEOC Appeal No. 0120141252 (Nov. 4, 2016) (declining to sanction an agency
+that issued a decision after approximately 326 days when complainant failed to show that he was
+                                               8                                       2020005343
+
+prejudiced by the delay); Jocelyn R. v. Dep’t of Def., EEOC Appeal No. 0120152852 (Mar. 11,
+2016) (citing Vunder v. U.S. Postal Serv., EEOC Appeal No. 01A55147 (May 12, 2006) (declining
+to sanction an agency that issued a decision after approximately 371 days); Anthony M. v. Dep’t
+of the Air Force, EEOC Appeal No. 2019003380 (Sept. 22, 2020). The Commission finds that
+there is no evidence that the Agency’s delay in this case is attributable to contumacious conduct
+or bad faith. As such, under the specific circumstances present, we decline to sanction the Agency
+for its delay in issuing the final decision.
+
+While we will not impose a sanction in the present case, we do find the Agency’s failure to abide
+by the regulations reflects negatively on the Agency’s support for the integrity of the EEO process.
+Beatrice B. v. Dep’t of Veterans Affairs, EEOC Appeal No. 2019001641 (Sept. 17, 2020) (The
+Commission declined to issue a sanction where following a supplemental investigation, the
+Agency delayed in issuing a final decision for over eight months). As a result, we will notify
+Federal Sector Programs (FSP) which monitors the federal agencies’ EEO programs of the
+Agency’s failure to comply with the regulations regarding the timely issuance of final agency
+decisions.
+
+The Merits of the Agency’s Final Decision
+
+Having reviewed the record, we find that the Agency correctly analyzed the facts and law of this
+case to determine that Complainant did not establish that the Agency subjected him to disparate
+treatment as alleged. The Commission recognizes that ordinary managerial and supervisory duties
+include assuring compliance with agency policy and procedures, monitoring subordinates,
+scheduling the workload, scrutinizing and evaluating performance, providing job-related advice
+and counsel, taking action in the face of performance shortcomings, and to otherwise manage the
+workplace. Erika H. v. Dep’t of Transp., EEOC Appeal No. 0120151781 (Jun. 16, 2017). We find
+that many of the allegations stated in Complainant’s complaint fall within these types of
+management prerogatives, and Complainant has not shown how he was treated differently than
+others who were similarly situated and outside of his protected groups.
+
+We also find that the Agency correctly analyzed the facts and law regarding Complainant’s hostile
+work environment allegations in all claims to determine that he failed to describe any severe or
+pervasive management conduct; and that Complainant was not an aggrieved employee with respect
+to most of the harassment claims. See Doe v. U.S. Postal Service, EEOC Appeal No. 0120130491
+(Dec. 18, 2014) citing Oakley v. U.S. Postal Serv., EEOC Appeal No. 01932923 (Sep. 21, 2000)
+(A finding of hostile work environment is precluded where the complainant fails to establish that
+any of the actions taken by the Agency were motivated by discriminatory or retaliatory animus).
+See also Diaz v. Department ofthe Air Force, EEOC Request No. 05931049 (Apr. 21, 1994); Best
+v. Dept. of Transportation, EEOC Appeal No. 0120111844 (Jul. 6, 2011) (defining an “aggrieved
+employee” as one who suffers a present harm or loss with respect to a term, condition, or
+privilege of employment for which there is a remedy.)
+                                               9                                        2020005343
+
+We note that the Commission has posited that for a hostile work environment claim to be
+actionable, the conduct must be more than merely offensive, it must exceed “casual comments,
+rude or derogatory remarks, and conduct motivated by personal animosity or personal feud” and
+the conduct must materially change the terms and conditions of employment and be more than an
+inconvenience or a change in job responsibility. Sealey v. Affiliated Computer Servs., Inc., No.
+11-cv-489, 2012, W.D.N.Y. (Mar. 6, 2012).
+
+In making these findings, we note that Complainant has not offered any substantive arguments as
+to why the Agency erred in finding no discrimination or cited to evidence that he believes
+substantiates his allegations.
+
+                                          CONCLUSION
+
+As we see no independent basis for finding in favor of Complainant, we AFFIRM the Agency’s
+final decision.
+
+          STATEMENT OF RIGHTS - ON APPEAL RECONSIDERATION (M0920)
+
+The Commission may, in its discretion, reconsider this appellate decision if Complainant or the
+Agency submits a written request that contains arguments or evidence that tend to establish that:
+          1. The appellate decision involved a clearly erroneous interpretation of material fact
+             or law; or
+          2. The appellate decision will have a substantial impact on the policies, practices, or
+             operations of the agency.
+
+Requests for reconsideration must be filed with EEOC’s Office of Federal Operations (OFO)
+within thirty (30) calendar days of receipt of this decision. If the party requesting reconsideration
+elects to file a statement or brief in support of the request, that statement or brief must be filed
+together with the request for reconsideration. A party shall have twenty (20) calendar days
+from receipt of another party’s request for reconsideration within which to submit a brief or
+statement in opposition. See 29 C.F.R. § 1614.405; Equal Employment Opportunity Management
+Directive for 29 C.F.R. Part 1614 (EEO MD-110), at Chap. 9 § VII.B (Aug. 5, 2015).
+
+Complainant should submit his or her request for reconsideration, and any statement or brief in
+support of his or her request, via the EEOC Public Portal, which can be found at
+https://publicportal.eeoc.gov/Portal/Login.aspx.
+
+Alternatively, Complainant can submit his or her request and arguments to the Director, Office of
+Federal Operations, Equal Employment Opportunity Commission, via regular mail addressed to
+P.O. Box 77960, Washington, DC 20013, or by certified mail addressed to 131 M Street, NE,
+Washington, DC 20507. In the absence of a legible postmark, a complainant’s request to
+reconsider shall be deemed timely filed if OFO receives it by mail within five days of the expiration
+of the applicable filing period. See 29 C.F.R. § 1614.604.
+                                                 10                                       2020005343
+
+An agency’s request for reconsideration must be submitted in digital format via the EEOC’s
+Federal Sector EEO Portal (FedSEP). See 29 C.F.R. § 1614.403(g). Either party’s request and/or
+statement or brief in opposition must also include proof of service on the other party, unless
+Complainant files his or her request via the EEOC Public Portal, in which case no proof of service
+is required.
+
+Failure to file within the 30-day time period will result in dismissal of the party’s request for
+reconsideration as untimely, unless extenuating circumstances prevented the timely filing of the
+request. Any supporting documentation must be submitted together with the request for
+reconsideration. The Commission will consider requests for reconsideration filed after the
+deadline only in very limited circumstances. See 29 C.F.R. § 1614.604(c).
+
+                COMPLAINANT’S RIGHT TO FILE A CIVIL ACTION (S0610)
+
+You have the right to file a civil action in an appropriate United States District Court within ninety
+(90) calendar days from the date that you receive this decision. If you file a civil action, you must
+name as the defendant in the complaint the person who is the official Agency head or department
+head, identifying that person by his or her full name and official title. Failure to do so may result
+in the dismissal of your case in court. “Agency” or “department” means the national organization,
+and not the local office, facility or department in which you work. If you file a request to reconsider
+and also file a civil action, filing a civil action will terminate the administrative processing of
+your complaint.
+
+                            RIGHT TO REQUEST COUNSEL (Z0815)
+
+If you want to file a civil action but cannot pay the fees, costs, or security to do so, you may request
+permission from the court to proceed with the civil action without paying these fees or costs.
+Similarly, if you cannot afford an attorney to represent you in the civil action, you may request the
+court to appoint an attorney for you. You must submit the requests for waiver of court costs
+or appointment of an attorney directly to the court, not the Commission. The court has the
+sole discretion to grant or deny these types of requests. Such requests do not alter the time limits
+for filing a civil action (please read the paragraph titled Complainant’s Right to File a Civil Action
+for the specific time limits).
+
+FOR THE COMMISSION:
+
+
+______________________________
+Carlton M. Hadden, Director
+Office of Federal Operations
+
+
+August 11, 2022
+Date
+

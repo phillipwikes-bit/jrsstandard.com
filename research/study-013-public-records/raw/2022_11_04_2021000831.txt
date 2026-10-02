@@ -1,0 +1,953 @@
+              U.S. EQUAL EMPLOYMENT OPPORTUNITY COMMISSION
+                            Office of Federal Operations
+                                   P.O. Box 77960
+                              Washington, DC 20013
+
+
+                                           Anne B., 1
+                                          Complainant,
+
+                                                v.
+
+                                       Lloyd J. Austin III,
+                                           Secretary,
+                                     Department of Defense
+                                 (Defense Commissary Agency),
+                                            Agency.
+
+                                    Appeal No. 2021000831
+
+                                 Agency No. DeCA-00009-2019
+
+                                           DECISION
+
+On November 13, 2020, Complainant filed an appeal with the Equal Employment Opportunity
+Commission (EEOC or Commission), pursuant to 29 C.F.R. § 1614.403(a), from the Agency’s
+October 14, 2020 final decision concerning her equal employment opportunity (EEO) complaint
+alleging employment discrimination in violation of Title VII of the Civil Rights Act of 1964 (Title
+VII), as amended, 42 U.S.C. § 2000e et seq. For the following reasons, the Commission
+REVERSES the Agency’s final decision.
+
+                                        BACKGROUND
+
+At the time of events giving rise to this complaint, Complainant worked as a Lead Information
+Technology (IT) Specialist, GS-2210-14, for the Agency’s Enterprise Architecture & Engineering
+at the Agency’s Headquarters in Fort Lee, Virginia. She had been hired in April 2016 as an
+Information Technology Specialist and became her team’s Lead in December 2017. 2
+
+
+1
+ This case has been randomly assigned a pseudonym which will replace Complainant’s name
+when the decision is published to non-parties and the Commission’s website.
+2
+ Complainant identified multiple individuals in this complaint, either as responsible management
+officials or as witnesses. There was a great deal of interdisciplinary collaboration among the
+various branches and teams in the office due to project-centric integration throughout the IT
+Directorate. Consequently, at different times, Complainant’s team members and sometimes
+Complainant herself would receive work assignments from various individuals on other teams
+                                                  2                                   2021000831
+
+On January 10, 2019, Complainant filed an EEO complaint alleging that the Agency discriminated
+against her and subjected her to a hostile work environment on the bases of race (African-
+American) and sex (female) when: 3
+
+          1. Complainant was hired in 2016, staff and managers assumed she was related to other
+             African-American employees in the office;
+
+
+
+designated as project or team leads. Information on the race, sex, and Complainant’s relationships
+with those witnesses is specified where necessary for an understanding of the factual circumstances
+of the case. The individuals Complainant identified include:
+
+      •   The Chief Technology Officer, a Supervisory Information Technology (IT) Specialist
+          (Asian/Hispanic female) (SITS1).
+      •   A second Supervisory IT Specialist who served as Complainant’s second-line supervisor
+          between December 2017 and August 2018 (Black male) (SITS2).
+      •   A Supervisory IT Specialist who directly supervised Complainant temporarily from Oct.
+          to Dec. 2017 (TS1)
+      •   An IT Program Manager Supervisor who served as Complainant’s second-line supervisor
+          between October and December 3017 (White male) (ITPMS1).
+      •   The IT Oversight & Management Chief – Complainant’s first-line supervisor since
+          December 2017 (Black male) (S1).
+      •   The Deputy Director, who served as Complainant’s second-line supervisor between
+          December 2017 and her third-line supervisor since August 2018 (S3).
+      •   An IT Program Manager (ITPM1).
+      •   An IT specialist under Complainant’s supervision (ITS1).
+      •   The Network Chief (NC).
+      •   The Data Center Chief (Black male) (DCC).
+      •   A second IT Program Management Supervisor (White male) (ITPMS2).
+      •   A second IT specialist working under Complainant (Black male) (ITS2).
+      •   A Business Financial Manager (White female) (BFM1).
+      •   A second Business Financial Manager (White female) (BFM2).
+      •   A third Information Technology Specialist (White male) (ITS3).
+      •   A Contracting Officer Representative (White female) (COR).
+      •   The Sustainment Branch Chief in the IT Directorate (SBC).
+      •   A third Supervisory IT Specialist who directly supervised Complainant between April 2016
+          an October 2017 (Black female) (SITS3).
+      •   The Program Manager for IT Infrastructure (Black male) (ITPM2).
+      •   The Division Chief for Resales and Outside Continental United States (White male) (DC).
+      •   The Customer Services Support Chief (Black male) (CSSC).
+      •   A Lead Contracting Specialist (Black female) (LCS).
+3
+    The claims have been re-ordered in chronological order for clarity.
+                                        3                                    2021000831
+
+2. In May 2016, BFM1 accused Complainant of disappearing and not completing her job
+   tasks;
+
+3. In June 2016, BFM1 told Complainant a story about her daughter playing outside and
+   noticing children who were “burnt” and how she, BFM1, had to explain to her daughter
+   that the children were African-American;
+
+4. From October 2016 to July 2017, Complainant was asked to re-compete a contract as
+   a sole-source acquisition that she believed was in violation of procurement procedures,
+   which resulted in her being labeled as difficult and rude;
+
+5. In June 2017, Complainant received a lower rating on a succession management
+   assessment from SITS2;
+
+6. In September 2017, ITPMS1 asked Complainant to set up a meeting with an outside
+   party but once the meeting was scheduled, ITPMS1 cancelled it;
+
+7. From October through December 2017, Complainant was assigned to a half-cubicle
+   away from her team members;
+
+8. From October through December 2017, TS1 failed to answer Complainant’s emails in
+   a timely manner;
+
+9. From October through December 2017, ITPMS1 required Complainant to provide
+   weekly reports on her accomplishments even though other employees were not required
+   to do the same;
+
+10. From October through December 2017, ITPMS2, in his capacity as project manager
+    for the Central Meat Processing Plant Contract, did not include Complainant on
+    important emails and messages;
+
+11. From October through December 2017, Complainant was not issued a performance
+    plan or a close out rating;
+
+12. From October through December 2017, ITPMS2 delayed sending Complainant a copy
+    of the Central Meat Processing Plant solicitation package;
+
+13. In December 2017, ITS3 publicly stated that he would only get a promotion if he
+    painted himself with a black sharpie while rumors were circulating that Complainant
+    became a Team Lead as a result of affirmative action;
+
+14. Since December 2017, ITPM1 did not alert Complainant to important assignments and
+    did not provide her with the information she needed to complete her job duties;
+                                               4                                   2021000831
+
+       15. Throughout 2018, Complainant had been ostracized and excluded from important
+           meetings related to her tasks, with management often circumventing her and contacting
+           her subordinates directly;
+
+       16. In January 2018, BFM2, a GS-12, demanded that Complainant brief the Contracting
+           Officer Representatives on her previous contracts;
+
+       17. In February 2018, SITS2 assigned ITPM1 a project relating to enterprise architecture
+           even though those duties fell within complainant’s position description;
+
+       18. In March 2018, ITPMS2 falsely asserted that ITS2 worked for him even though ITS2
+           actually worked under Complainant;
+
+       19. In April 2018, SITS1 and ITPMS1 created charts and assigned Complainant’s staff to
+           portfolios without seeking Complainant’s input;
+
+       20. In May 2018, ITPMS1 met with ITPM1 to discuss creating a Business Enterprise
+           Architecture, the duties for which fell within Complainant’s position description;
+
+       21. In May 2018, DCC refused to work with Complainant on routine assignments;
+
+       22. In August 2018, NC asked ITS1 to appear at a meeting relating to a task that
+           Complainant was assigned to work on without inviting Complainant to the meeting;
+
+       23. Since August 2018, ITPMS1 routinely attempted to assign ITS1 to the Enterprise
+           Business Solutions team without Complainant’s knowledge;
+
+       24. In September 2018, ITPM1 asked for information from Complainant’s staff without
+           consulting Complainant;
+
+       25. On September 8, 2019, S3 suspended Complainant for two days upon the
+           recommendation of SITS2; and
+
+       26. In October 2018, SITS1 berated Complainant about “pointing fingers” and insinuated
+           that Complainant had refused to work on an assigned project.
+
+                                 FACTUAL BACKGROUND
+
+Incident (1): Complainant averred that when she was hired in April 2016, staff and management
+assumed that she got the job because she was related to one of the other African-American
+employees in the office. IR 530-31. COR and BFM2 averred that they thought that Complainant
+knew or was otherwise friends with someone who was already there. SITS2 also averred that he
+thought Complainant had gotten the job because of her friendship with SITS3. IR 593, 611, 697.
+SITS3, however, averred that SITS2 and others questioned her relationship to Complainant, noting
+                                                 5                                      2021000831
+
+that some people thought Complainant was her sister. SITS3 also stated that SITS2 once told her
+that she had too many African-Americans on her team, and that the situation became such that she
+had to call a team meeting to tell the people under her that Complainant was referred to her by the
+recruiting team in Human Resources. IR 724.
+
+Incident (2): Complainant claimed that SITS1, her supervisor at the time, told her that she had
+received an email from BFM1 that Complainant was taking an hour-long lunch at a nearby
+Starbucks. Complainant stated that she mistakenly thought that she could take an hour-long lunch
+break if she skipped her two 15-minute breaks. She also stated that she stopped doing so as soon
+as she learned of the prohibition. Third, she averred that SITS1 did not treat her White counterparts
+in the same manner. IR 530.
+
+Incident (3): Complainant averred that BFM1 told her a story about having to explain to her young
+daughter that children who she said were “burnt” were African-American children. She further
+averred that BFM1 told SITS1 the same thing. IR 529. SITS3 asserted that BFM1 had the same
+conversation with her and that she considered it “very inappropriate.” IR 727-28.
+
+Incident (4): Complainant alleged that SITS2 and others had asked her to re-compete a contract as
+a sole source acquisition in violation of the Agency’s standard procurement procedures. She
+further averred that when SITS2 asked her to provide a briefing on the matter, she recommended
+that those who wanted the contract re-competed should talk to the Agency’s counsel. Complainant
+maintained that once she refused to move forward with the requested task, she was labeled by her
+colleagues as rude and difficult to work with because she raised a valid objection. She stated that
+during a meeting, the SBC said things to her that were berating and nasty, and that the COR had
+called out the SBC, saying that his remarks were uncalled for. IR 527. COR averred that SBC
+said “something he should not have,” but did not think it was related to Complainant’s race or sex.
+IR 592-93. SBC denied any knowledge of the incident and that he ever characterized Complainant
+as rude or difficult to work with. IR 597-98. SITS2 also denied having knowledge of the matter
+but commended Complainant for her actions. IR 610. SITS3 stated that Complainant’s allegation
+was true, and that SITS1 and SITS2 also labeled her as rude and difficult to work with. In
+particular, SITS3 averred that they (SITS1, SITS2 and others in management) “have no respect for
+African-American women.” IR 727.
+
+Incident (5): Complainant claimed that SITS2 had given her a low rating on a succession
+management assessment. IR 528-29. SITS2 responded that he did not remember most of the
+details but did recall that the assessment was not the annual performance assessment. Rather,
+employees completed voluntary self-assessments that were reviewed by management. He stated
+that he “probably had a good reason” to give her a lower rating but denied that it was related to
+her race or sex. IR 611. SITS3 averred that she was supposed to rate Complainant as her first-
+line supervisor at the time and that SITS2 was supposed to rate her as her second-line supervisor.
+SITS3 averred that SITS2 had given Complainant a lower rating without paying attention to
+Complainant’s resume, and that he never discussed how she, SITS3, had rated Complainant. IR
+727.
+                                                6                                     2021000831
+
+Incident (6): Complainant claimed that ITPMS1 called her and S1 into his office and asked her to
+set up a meeting, and that once the meeting had been arranged, informed her that it was not
+necessary. IR 528. ITPMS1 averred that he could not recall the incident. IR 715. S1 stated that
+Complainant had told her about the incident and that similar incidents had happened before. He
+averred that he or Complainant would work very hard to set things up, make the necessary contacts,
+gather data, task people with assignments, and then ITPMS1 would cancel the meeting without
+justification. S1 stated that he was left with the impression that he and Complainant were just
+being assigned “busy work.” IR 604.
+
+Incident (7): Complainant alleged that, pursuant to a reorganization initiated by SITS1 and carried
+on by ITPMS1, she was assigned to a half-sized cubicle away from her team members while
+contractors were assigned to cubicles nearer to her team. IR 521. ITPM2 stated he and
+Complainant were moved from their original locations when they were both CORs, but that he
+only had to move 50 feet from his old work area whereas Complainant had to move from one end
+of the building to the other. ITPM2 also averred that he did not think the action was taken because
+Complainant was black; rather, he averred that it was due to availability of space. IR 704. ITPMS1
+stated that he did not know anything about the incident but maintained that CORs needed to be
+close to the project managers they were supporting. He also averred that he never heard any
+concerns voiced about Complainant’s seating assignment. IR 712-13.
+
+Incident (8): Complainant claimed that while she was under TS1’s supervision, he failed to answer
+her emails in a timely manner. She averred that he would not respond to some of her emails, and
+that she would send him delivery receipts. IR 522. She maintained that her white male and female
+counterparts were not treated the same as her. IR 523. According to the EEO investigator, TS1
+no longer worked for the Agency and did not provide any contact information. IR 1027.
+
+Incident (9): Complainant claimed that ITPMS1 required her to prepare weekly reports on her
+accomplishments, and that the rest of her team, which consisted of white females, did not. IR 523.
+ITPMS1 stated that a status report was a normal part of working in his division and in the Agency
+as well. He further stated that in order to meet Agency requirements, he required the GS-14
+supervisors that directly reported to him, of which Complainant was one, to provide a weekly
+status report. IR 713.
+
+Incident (10): Complainant alleged that ITPMS2 was changing deliverables and failing to copy
+her on important emails and messages pertaining to vendors, planning, and deliverables. She
+maintained that there were actions she was unable to complete and pertinent information she did
+not have because ITPMS2 did not include her. IR 524-25. ITPMS2 responded that Complainant
+was included in meetings and was involved in helping refine the Central Meat Processing Plant
+contract but did not always attend meetings due to telework or being out of the office. ITPMS2
+further claimed that he tried to include Complainant in the source selection process but was met
+with resistance from his superiors. IR 551-52, 586-87.
+                                                 7                                     2021000831
+
+The DC averred that when checking random emails from December 6, 2017, he noticed that both
+he and Complainant were not copied on ITPMS2’s response to an inquiry which included them,
+but attributed this to communications in IT being “disjointed,” rather than to any desire to exclude
+Complainant or to considerations of race or sex. IR 707. LCS affirmed that ITPMS2 gave the
+responsibilities for reviewing and approving invoices to someone who was not a COR, as
+Complainant was at the time, and that handling invoices was a task typically handled by a COR.
+As to race and sex being factors, LCS averred that in general, ITPMS2 had an issue working with
+a young black woman who challenged or questioned him. IR 739.
+
+Incident (11): Complainant alleged that she was issued neither a performance plan nor a close-out
+rating. IR 524. When asked what evidence she had to prove that her race or sex were factors in
+the incident, Complainant did not provide an answer. IR 524. ITPMS1 stated that TS1 was her
+supervisor at the time. IR 713. SITS3 averred that Complainant was issued a close-out rating but
+not an opening rating, and that ITPMS1 should have initiated the opening rating, but never did.
+She further averred that ITPMS1 had non-supervisory GS-14s doing the personnel work that he
+should have been doing, and that she believed it was due to race because a White member of
+Complainant’s team got her rating. IR 726.
+
+Incident (12): Complainant claimed that ITPMS2 delayed sending her a copy of the Central Meat
+Processing Plant solicitation package, and in so doing, waited until she had gone for the day.
+Complainant further averred that a Contracting Officer told ITPMS2 that he did not review the
+documentation and that she, Complainant, needed to do so and to provide feedback as necessary.
+She also stated that she provided feedback the next day but that ITPMS2 continued to push back
+on the feedback she tried to give. IR 525-26. SITS2 affirmed that he kept telling ITPMS2 that he
+needed to get his acquisition documents reviewed, and that there were tensions between ITPMS1’s
+group, of which ITPMS2 was a part, and S1’s group, of which Complainant was a part. SITS2
+also stated that there could have been considerations of race and sex at play but could not say for
+sure. In SITS2’s words, it was more like, “the Hatfields and the McCoys” between ITPMS1’s
+team and S1’s team. IR 610. SITS3, however, averred that it was common for managers to wait
+until Complainant was not in the office to take action on something, and that this was based on
+Complainant’s race and sex. In addition, she noted that SITS2 wanted ITPM1 in the Lead job that
+Complainant held and was disappointed when Complainant got the job. IR 727.
+
+Incident (13): According to Complainant, ITS3 stated that he would only get a promotion if he
+painted himself with a black sharpie. Complainant averred that she was shocked and
+uncomfortable at the insinuation that she received her promotion to GS-14 based on her skin color
+rather than on the bases of merit or credentials. She further claimed that there had been rumors
+circulating around the office that Complainant did not deserve to be a GS-14 team lead, and that
+her getting that position was the result of affirmative action. Further, she stated that at a vendor
+event, SITS2, himself a Black male, advised her to be firmer with her peers because they did not
+believe she deserved her promotion. Complainant stated that SITS2 admitted that he also felt the
+same way about her. IR 520. SITS2 did admit that he was a little skeptical when he found out
+that Complainant had been selected for the Team Lead position but that his attitude changed when
+he saw that she could actually do the job. IR 609-10.
+                                                8                                     2021000831
+
+Although ITS3 denied having knowledge of the incident, COR, a White female, confirmed that
+she heard ITS3 make the comment and that she believed that Complainant’s race and sex were
+factors in the incident. IR 591-92. S1 stated that there was an attitude among some in the office
+that longevity should determine who gets promoted, that SITS2 had recommended ITPM1, that
+the “good old boys” network was upset when Complainant was selected for the Lead over ITPM1,
+and that some of them refused to support Complainant in her role as a leader. IR 603-04. SITS3
+identified the incident as yet another example of Complainant being harassed because of her race
+and sex. IR 723-24.
+
+Incident (14): Complainant claimed that since she became Team Lead in December 2017, ITPM1
+would bypass her for actions or tasks and failed to report projects that SITS2 and ITPMS1 had
+assigned him to work on. She stated that when she found out about those projects, she could not
+immediately provide information on those projects due to ITPM1 not reporting them or noting
+them in his weekly status reports. IR 519. When asked why she believed that her race and sex
+were factors in this incident, Complainant replied that ITPM1 did not do this with her predecessor
+in the Lead position, a White male. IR 520. ITPM1 averred that this allegation was “completely
+false,” and that he provided Complainant with a spreadsheet which showed her what everyone
+under her was working on. IR 620. SITS2 acknowledged the existence of tensions between
+ITPM1 and Complainant because they both applied for the Lead position and ITPM1 did not get
+it. He opined that the hard feelings were due to ITPM1’s nonselection rather than Complainant’s
+race and sex. IR 609.
+
+Incident (15): Complainant claimed that she was never sure of who held the meetings for the
+charters or how the charters were created, but that multiple meetings had taken place. She stated
+that she did not know the tasks that ITPM1 was working on that had been assigned by ITPMS1,
+and that as of the date of her affidavit, this was still the situation. IR 519.
+
+SITS1 averred that Complainant was not under her at the time and noted that any work products
+that go outside of the division are ultimately vetted and approved by S3. IR 543. ITPMS2 denied
+that this allegation was true and averred that Complainant’s staff came to him for guidance because
+Complainant teleworked a lot and was not always easy to reach. He also stated that sometimes he
+and others had to go to Complainant’s staff in order to reach her. IR 550. SITS2 averred that
+Complainant was a team lead, not a supervisor, and that it would be normal for her people to
+receive tasks from the different teams they were assigned to and for them to report their
+assignments to their team lead during weekly staff meetings. IR 608. ITPM1 affirmed that within
+the IT Directorate there were a lot of integrated process teams on which individuals on the
+Architecture and Engineering team were assigned and that this process of having subject matter
+experts from different areas of the IT Directorate had been long standing. ITPM1 reiterated that
+he never tried to circumvent Complainant and always tried to make sure that Complainant had the
+necessary information. IR 618-19. However, several other witnesses have said otherwise. ITS1,
+who as previously noted worked under Complainant, said that people from other teams came to
+him all the time, and that Complainant eventually instructed him to refer those individuals to her.
+ITS1 could not say for sure whether this was due to considerations of race or sex. IR 702.
+                                                9                                     2021000831
+
+S1 averred that he had witnessed Complainant being bypassed and that he had been “unfortunate
+enough to experience the same thing.” IR 603. SITS3 averred that ever since Complainant had
+been selected for the GS-14 team lead position, management had treated her as if she did not know
+what she was talking about. She further averred that once she was promoted to GS-14, her peers
+and leadership (meaning ITPMS1 and SITS1) would go to ITPM1, who had previously acted in
+Complainant’s position. In addition, she stated that whenever the other team leaders needed her
+people, they would go right to her subordinates without going to her first. SITS3 opined that this
+was due to Complainant’s race and sex, pointing out that this was never done when her White male
+predecessor held her position. IR 725-26. The CSSC also averred that Complainant had been
+excluded from important meetings and bypassed whenever members of her staff were needed,
+which made it difficult for Complainant to report what her team members were working on and
+caused her team members to lose confidence in her. IR 732-33.
+
+Incident (16): Complainant claimed that after she was promoted to GS-14 and had moved to a
+different team, BFM2 had demanded her to brief the CORs on her previous contracts. She further
+averred that she attempted to transfer her work prior to assuming the Team Lead position, but that
+no one was assigned her contracts. She maintained that she spoke to the team before she left on
+December 10, 2017, in order to make sure that the contract spreadsheet was updated, and that the
+briefing was requested on January 20, 2018. When asked why she believed that her race and sex
+were factors in this incident, Complainant replied that she was not given the level of respect due
+to her as a more senior employee, and that her white male or female counterparts were not treated
+the same way. IR 518.
+
+BMF2 responded that she never demanded that Complainant provide a briefing but that she did
+ask Complainant if she would provide specific information regarding three mobile contacts that
+the team did not have. She also averred that there was a special form that had to be filled out and
+that Complainant did not do so, and that Complainant never responded to follow-up emails. IR
+696. S1 asserted that the people in ITPSM1’s division did not really support his team at all, and
+that they had been depriving him of information as well as Complainant. S1 also stated that at one
+time, the CORs used to be in his division, and that senior management had taken the COR mission
+away from him and SITS1 and moved it to ITPMS1’s division, and that as a result, there was no
+objective oversight of contracting and acquisitions. IR 602-03.
+
+Incident (17): Complainant asserted that SITS2 assigned ITPMS1 a project relating to enterprise
+architecture even though those duties were covered by her position description. She pointed out
+that ITPMS1 was a systems engineer while she was an enterprise architect, and that SIST2 assigned
+ITPMS1 an enterprise architecture task even though enterprise architecture duties clearly fell
+within her position description. Complainant further affirmed that ITPMS1 did not tell her or
+report this assignment within his weekly reports and said that he wasn’t even aware of this project
+even through he was working on it. Complainant stated that she only found out about the project
+when SITS2 asked S1 for a status report about a month after it was assigned. When asked why
+she thought her race and sex were factors, Complainant reiterated that her predecessor was a White
+male who was not treated in a like manner. IR 517.
+                                                  10                                     2021000831
+
+SITS2 averred that he could not recall the incident but that he might have done that since both
+Complainant and ITPMS1 both worked in his, SITS2’s directorate. SITS2 also questioned why
+he would have to ask Complainant to assign something to someone on her team. IR 608.
+
+Incident (18): Complainant alleged that ITPMS2 falsely asserted that ITS2 worked for him rather
+than for her. She averred that ITS2 is the assigned engineer for the Central Meat Processing Plant
+contract. LCS asked ITS2 for a status report and ITPMS2 sent an email to the LCR asking her not
+to communicate with ITS2 or otherwise reach out to ITS2 or any other team member. She further
+averred that ITPMS2 was the Central Meat Processing Plant contract manager but not ITS2’s
+supervisor or team lead. Additionally, she averred that ITPMS2 was acting as if her team was
+holding things up. IR 516. ITPMS2 responded that he was in a supervisory position and therefore
+fully aware of who worked for him and who did not. He also stated that ITS2 was a systems
+engineer and therefore not supervised by his division, Program Management. IR 549. LCS averred
+that ITS2 was asked to review a contract modification upon his return to work following leave,
+and that her conversation with ITPMS2 “definitely implied” that she, LCS, had to go through
+ITPMS2 to talk with ITS2. As to whether she believed that race and sex were actors, LCS stated
+that it was her general feeling that ITPMS2 had issues with younger women and that she would
+not be surprised if race was also a factor. IR 738.
+
+Incident (19): Complainant claimed that in April 2018, SITS1 and ITPMS1 created charters and
+assigned Complainant’s staff to project portfolios without first seeking her input. She maintained
+that it was her responsibility to assign engineers to different projects throughout the IT Directorate.
+She also averred that she and S1 were excluded from the multiple meetings that took place on the
+various projects. IR 515.
+
+SITS1 asserted that at a management retreat, an integrated project team on which all divisions
+would participate was suggested. SITS1 also averred that since Complainant was the subordinate
+to a division head, they did not have to check with her when making assignments to the various
+projects. IR 542. ITPMS1 averred that charters were a routine way of providing integrated
+structure to the integrated project teams, and that he and SITS1 established the charters as a means
+to guide their teams. He also stated that he would welcome Complainant’s participation as well
+as her staff’s participation. IR 711-12.
+
+When asked why she believed her race and sex were factors in the way she was treated in
+connection with this incident, Complainant replied that her white counterparts were normally
+consulted prior to personnel assignments. IR 511, 515. S1 averred that it seemed like ITPMS1
+and ITPMS2 were given carte blanche to take people from Complainant’s team and give them
+assignments without first getting input from Complainant or himself. He opined that this was due
+to the fact that she was an African American female and that ITPMS1 and ITPMS2 did not respect
+her. He reiterated that he had discussions with ITPM1, ITPMS1, and SITS1 about the situation
+but that nothing was ever done about it. IR 602. The CSSC averred that ITPMS1 assigned
+Complainant a contract that was “owned” by SITS1, that SITS1 disagreed with the way the
+contract in question was handled, and that SITS1 verbally berated Complainant openly in a manner
+that he, CSSC, considered unprofessional. IR 732.
+                                                11                                     2021000831
+
+Incident (20): Complainant claimed that in May 2018, ITPMS1 met with ITPM1 to discuss
+creating a Business Enterprise Architecture, and that this was another duty that fell within her
+position description. She maintained that ITPMS1 was “backdooring” her projects and her staff
+without coming to her as the team lead, or her team supervisor, S1. IR 514. ITPM1 confirmed
+that he had been tasked to lead the Enterprise Business Architecture project because of his
+knowledge and understanding of the Enterprise Business Program. He averred that Complainant
+reviewed the documentation and provided comments which he incorporated into the final draft.
+IR 617-18. ITPMS1 stated that he did not recall meeting with ITPM1 for the purpose of creating
+a business enterprise architecture, but that providing assistance on such a matter would be a normal
+part of his workload. IR 711. S1 averred that he witnessed the incident and reiterated his belief
+that Complainant was not treated with the respect to be accorded someone in her position because
+of her race and sex. IR 602.
+
+Incident (21): Complainant alleged that in May 2018, the DCC refused to work with Complainant
+on routine assignments and that she had never seen him behave this way with other senior
+employees. IR 513. The DCC averred that Complainant’s section was given an assignment that
+they were trying to pass on to him, and that he tried to explain that completing the documentation
+for that assignment was “above his pay grade.” He also averred that the issue was between S1 and
+SITS1 over who is entitled to assign work to him, the DCC. IR 734. CSSC averred that DCC
+worked under him, and that Complainant’s team members came to him requesting calls from the
+data center which should have come from the DCC. When he asked Complainant about the matter,
+Complainant showed him several emails to the DCC requesting data which were not responded to.
+He also averred that on a number of occasions, he had observed DCC, a GS-13, not being respectful
+of Complainant’s position as a GS-14. CSSC stated that he personally directed DCC to support
+Complainant. IR 732.
+
+Incident (22): Complainant asserted that in August 2018, NC had asked ITS1 to appear at a
+meeting concerning a task that Complainant was assigned to work on but did not invite her to that
+meeting. She characterized this situation as another example of her peers going around her, and
+that ITS1 had told them that they needed to go to her. She reiterated that her race and sex were
+factors because they did not bypass her White male predecessor or her White counterparts. IR
+512. NC averred that he had talked to ITS1 about the matter because Complainant was not
+available at the time. IR 718. ITS1 affirmed that he accepted NC’s invitation to attend the meeting,
+and that he informed Complainant about the meeting and found out that she had not been invited.
+He averred that he believed that Complainant’s race was a reason for her not being invited. IR
+701-02.
+
+Incident (23): Complainant claimed that since August 2018, ITPMS1 had routinely attempted to
+assign ITS1 to the Enterprise Business Solution project without her knowledge. She averred that
+ITPMS1 assigned ITS1 to a position that was not appropriate for him and that she had a systems
+engineer in mind who she believed was a more appropriate choice. She also averred that ITPMS1
+later let her know that he wanted ITS2 on the project as well. IR 510-11. ITS1 confirmed that this
+was correct.
+                                                12                                    2021000831
+
+He further averred that at SITS2’s and ITPMS1’s suggestion, he volunteered to work on the
+process improvement project, but once he signed up, he was told that he was going to be a systems
+engineer for the Enterprise Business Solutions project. He stated that he told SITS2 that he did
+not sign up for that, and that when he informed Complainant, she took him off that project and
+assigned a systems engineer to the project. IR 701. ITPMS1 averred that he had to rely on
+Complainant’s staff for systems engineering and matrix support, and that Complainant’s
+predecessor had assigned ITPM1 as the systems engineer. ITPMS1 confirmed that he was
+assigned to lead a process improvement team and that ITS1 had volunteered for that team but had
+ceased to participate after attending a few meetings. IR 710-11.
+
+S1 averred that he had once again witnessed ITPMS1 assigning Complainant’s team members
+work without getting any input from her or him, S1. He stated that Complainant had indicated to
+him that she felt harassed, and that when he tried to discuss with ITPM1, ITPMS1, and SITS1 how
+they were constantly usurping Complainant’s authority, they ignored him and continued to not
+only usurp Complainant’s authority, but his own as well. He opined that Complainant’s race and
+sex were factors in the incident. IR 602.
+
+Incident (24): Complainant claimed that in September 2018, ITPM1 asked for information from
+Complainant’s staff without consulting her first, and that he did so in order to circumvent her. IR
+509-10. ITPM1 denied having knowledge of the incident. He stated that he transitioned out of
+Complainant’s group in September 2018 and did not take over any programs until October 2018.
+He averred that he did not find any email correspondence with anyone in Complainant’s group for
+the project he was eventually assigned to work on. ITPM1 reiterated that if Complainant had asked
+him to coordinate with her in tasking, he would have done so. IR 616. However, ITS1 confirmed
+that ITPM1 did approach him after he had left Complainant’s team and asked him about certain
+information to which he no longer had access. ITS1 stated that he had to tell ITPM1 that he had
+to go through Complainant to get the information he needed. IR 700.
+
+Incident (25): Complainant alleged that on September 8, 2018, she was given a two-day
+suspension for making a false official statement. She claimed that SITS3 made the complaint
+involving a speeding car that appeared to be coming at her and SITS3. During the ensuing
+investigation she was asked to make a statement along with SITS3 and a third witness, that they
+all testified to the same thing, and that a few months later they were accused of making a false
+statement because the recorded video of the incident did not support their statements. Complainant
+averred that she and SITS3 were suspended while the third witness was not, and that SITS2
+proposed the suspension. IR 507-09.
+
+SITS2 stated that he recommended the suspension after reviewing the building security video and
+finding out that SITS3’s accusation did not square with what he had observed on the video. He
+averred that he based his recommendation upon his assessment that if it were not for the video, the
+driver SITS3 accused might well have faced criminal charges. IR 606-07.
+                                                13                                    2021000831
+
+S3 affirmed that he was the deciding official, that he gave SITS3 a seven-day suspension and
+Complainant a two-day suspension, and that Complainant was allowed to serve her suspension on
+the two days per week that she had off. He accepted SITS2’s explanation that Complainant and
+SITS3 had made false statements. IR 613-14.
+
+SITS3 contested the finding that the video images were not consistent with their statements. She
+stated that the third witness who was not suspended had been with the Agency a long time and was
+involved in a personal relationship with S3. She also affirmed that SITS2 took advantage of the
+fact that S1 was on temporary duty assignment (TDY) at the time of the incident and rushed the
+process through. Further, she averred that the video showed that the speeding vehicle was three
+feet away rather than ten feet away as SITS2 had determined. SITS3 expressed her belief that the
+incident was connected to their race and sex as African-American females. IR 725. S1 averred
+that when Complainant told him about the punishment she had received, he thought that a
+suspension was very unusual given what had happened. S1 further averred that even though he
+was Complainant’s supervisor, he had no input and was not involved in the process at all. He
+opined that the decision was taken away from him because he would likely not have recommended
+the suspension. IR 601.
+
+Incident (26): Complainant alleged that in October 2018, SITS1 berated both her and S1 and
+insinuated that she had refused to work on a particular task. She stated that she had been assigned
+a project by SITS2 and that the solution was that SITS1’s team needed to enforce the existing
+policy. She further claimed that SITS1 insisted that a new solution was needed and then proceeded
+to berate her and S1 for failing to do their jobs. IR 506. SITS1 affirmed that she did not remember
+yelling at or berating Complainant. Rather, she merely stated that she would not expect any
+deliverables from Complainant or S1 regarding the particular project. She maintained that she
+responds to personnel based on their contributions to the Agency’s mission, and that she would
+tell employees if they were not contributing. IR 541. S1 stated that during the incident, he and
+Complainant were trying to talk to SITS1 in a civil manner but that she was raising her voice and
+acting in a very unprofessional manner. IR 600.
+
+At the conclusion of the ensuing investigation, the Agency provided Complainant with a copy of
+its investigative report (IR) and notice of her right to request a hearing before an Equal
+Employment Opportunity Commission Administrative Judge (AJ). On July 12, 2019,
+Complainant requested a final decision. In accordance with Complainant’s request, the Agency
+issued a final decision pursuant to 29 C.F.R. § 1614.110(b). However, it took the Agency 461
+days to do so. 4 The Agency concluded in its decision that Complainant failed to prove that the
+Agency subjected her to discrimination as alleged.
+
+
+
+4
+   Between July 12, 2019, and October 14, 2020, when the decision was finally issued,
+Complainant’s counsel had to follow up with the Agency four times to check on the status of the
+decision. In an email dated May 22, 2020, the Agency notified Complainant’s counsel that the
+employee who drafted final agency decisions was on an extended absence and that it had engaged
+a contractor to write the decision.
+                                                 14                                     2021000831
+
+This appeal followed. In addition to contesting the Agency’s final decision on the merits,
+Complainant also submitted a motion for default judgment. She contends, in essence, that the
+Agency severely compromised the integrity of the EEO process by issuing its final decision 461
+days late.
+
+                                  ANALYSIS AND FINDINGS
+
+As this is an appeal from a decision issued without a hearing, pursuant to 29 C.F.R. § 1614.110(b),
+the Agency's decision is subject to de novo review by the Commission. 29 C.F.R. § 1614.405(a).
+See Equal Employment Opportunity Management Directive for 29 C.F.R. Part 1614, at Chapter 9,
+§ VI.A. (Aug. 5, 2015) (explaining that the de novo standard of review “requires that the
+Commission examine the record without regard to the factual and legal determinations of the
+previous decision maker,” and that EEOC “review the documents, statements, and testimony of
+record, including any timely and relevant submissions of the parties, and . . . issue its decision
+based on the Commission’s own assessment of the record and its interpretation of the law”).
+
+Complainant’s Motion for Sanctions
+
+As noted above, Complainant contends on appeal that a default judgment should be entered in her
+favor as a sanction against the Agency for issuing an untimely final decision. The Commission’s
+regulations provide that an agency shall issue the final decision within 60 days of receiving
+notification that a complainant has requested an immediate decision from the agency, or within 60
+days of the end of the 30-day period for the complainant to request a hearing or an immediate final
+decision where the complainant has not requested either a hearing or a decision. 29 C.F.R. §
+1614.110(b). We note that our regulations require agency action in a timely manner at many points
+in the EEO process. Tammy S. v. Dep’t of Def., EEOC Appeal No. 0120084008 (June 6, 2014).
+
+Compliance with these timeframes is not optional; as the Commission stated in Royal v. Dep’t of
+Veterans Affairs, EEOC Request No. 0520080052 (Sept. 25, 2009), “the Commission has the
+inherent power to protect its administrative process from abuse by either party and must ensure
+that agencies, as well as complainants, abide by its regulations.” Because of the length of time it
+can take to process a federal sector EEO complaint, any delays in complying with the time frames
+in the regulations can impact the outcome of the complainant’s claims. Id.
+
+With respect to Complainant’s request that the Commission sanction the Agency because of the
+length of time that it took to issue a final decision in this case, we decline. Although the Agency
+failed to issue a timely decision as required by regulation, we find that the Agency did not act in a
+manner to warrant a sanction. See, e.g., April T. v. Dep’t of the Army, EEOC Appeal No.
+2021002762 (Aug. 3, 2022) (finding that the Agency’s 446-day delay in issuing the decision did
+not justify the imposition of sanctions); Abe K. v. Dep’t of Agric., EEOC Appeal No. 0120141252
+(Nov. 4, 2016) (declining to sanction an agency that issued a decision after approximately 326
+days); Josefina L. v. Soc. Sec. Admin., EEOC Appeal No. 0120142023 (July 19, 2016), req. for
+recon. den., EEOC Request No. 0520170108 (Feb. 9, 2017) (finding that the Agency’s 571-day
+delay in issuing the decision did not warrant sanctions); Jocelyn R. v. Dep’t of Def., EEOC Appeal
+                                                15                                    2021000831
+
+No. 0120152852 (Mar. 11, 2016) (citing Vunder v. U.S. Postal Serv., EEOC Appeal No.
+01A55147 (May 12, 2006) (declining to sanction an agency that issued a final decision after 371
+days)).
+
+While we will not impose a sanction in the present case since the delay in issuance of the Agency
+decision did not prejudice Complainant or result in an unconscionable delay in justice, we do find
+the Agency’s failure to abide by the regulations reflects negatively on the Agency’s support for
+the integrity of the EEO process. Beatrice B. v. Dep’t of Veterans Affairs, EEOC Appeal No.
+2019001641 (Sept. 17, 2020) (the Commission declined to issue a sanction where following a
+supplemental investigation, the Agency delayed in issuing a final decision for over eight months).
+As a result, we will notify Federal Sector Programs (FSP), which monitors the federal agencies’
+EEO programs, of the Agency’s failure to comply with the regulations regarding the timely
+issuance of its final agency decisions.
+
+Hostile Work Environment
+
+We now turn to the merits of the instant complaint. To establish a claim of discriminatory
+harassment Complainant must show that: (1) she belongs to a statutorily protected class; (2) she
+was subjected to harassment in the form of unwelcome verbal or physical conduct involving the
+protected class; (3) the harassment complained of was based on her statutorily protected classes;
+(4) the harassment affected a term or condition of employment and/or had the purpose or effect of
+unreasonably interfering with the work environment and/or creating an intimidating, hostile, or
+offensive work environment; and (5) there is a basis for imputing liability to the employer. See
+Henson v. City of Dundee, 682 F.2d 897 (11th Cir. 1982). Further, the incidents must have been
+“sufficiently severe or pervasive to alter the conditions of [complainant's] employment and create
+an abusive working environment.” Harris v. Forklift Systems, Inc., 510 U.S. 17, 21 (1993).
+
+Applying the first Henson factor, we find that Complainant is a member of protected classes by
+virtue of her race and sex. Applying the second Henson factor, we find that Complainant was
+subjected to actions from various colleagues, supervisors, and managers between April 2016 and
+October 2018, that were certainly unwelcome from her own, subjective perspective.
+
+Before moving on to our discussion of the remaining Henson harassment factors, we must point
+out that the antidiscrimination statutes are not civility codes. Rather, they forbid “only behavior
+so objectively offensive as to alter the conditions of the victim's employment.” Oncale v.
+Sundowner Offshore Serv., Inc., 523 U.S. 75, 81 (1998). Therefore, to prove her harassment claim,
+Complainant must establish that she was subjected to conduct that was either so severe or so
+pervasive that a “reasonable person” in Complainant's position would have found the conduct to
+be hostile or abusive. Complainant must also prove that the conduct was taken because of her
+protected classes. Only if Complainant establishes both of those elements, hostility and motive,
+will the question of Agency liability present itself.
+                                                16                                     2021000831
+
+Complainant can satisfy the third prong of the Henson test by establishing that the various
+individuals named in her complaint based their actions toward her upon unlawful considerations
+of her race and sex. To do so, she could show such weaknesses, implausibilities, inconsistencies,
+incoherencies, or contradictions in the various named officials’ explanations for their actions that
+a reasonable fact finder could rationally find them unworthy of credence. Opare-Addo v. U.S.
+Postal Serv., EEOC Appeal No. 0120060802 (Nov. 20, 2007), req. for recon. den. EEOC Request
+No. 0520080211 (May 30, 2008). Indicators of such discriminatory intent typically include
+discriminatory statements or past personal treatment attributable to those responsible for the
+personnel action that led to the filing of the complaint, comparative or statistical data revealing
+differences in treatment across various protected-group lines, unequal application of Agency
+policy, deviations from standard procedures without explanation or justification, or inadequately
+explained inconsistencies in the evidentiary record. Mellissa F. v. U.S. Postal Serv., EEOC Appeal
+No. 0120141697 (Nov. 12, 2015).
+
+When asked by the EEO investigator why she believed that her race and sex factored into the
+various incidents, Complainant maintained that her predecessor and many of her White
+counterparts were not excluded from key meetings and assignments and did not have their
+leadership questioned or their authority undermined. IR 506, 508-18, 520, 522-23, 525-30. SITS1,
+SITS2, ITPM1, ITPMS1, ITPMS2 and ITS3 all denied that they tried to exclude Complainant from
+meetings or otherwise tried to undercut her authority over her team. Rather, as ITPM1 explained,
+due to the prevalence of ad hoc integrated and interdisciplinary project teams it was common for
+project leads to give assignments to people who were nominally assigned to teams other than their
+own. IR 618. In addition, ITPMS2 stated that Complainant was often difficult to reach because
+she teleworked, and sometimes he had to go through her staff to reach her. IR 550-51, 587.
+However, S1, SITS3, CSSC, and COR all expressed their belief that considerations of
+Complainant’s race or sex were motivating factors in the various incidents.
+
+S1, SITS3, and CSSC all maintained that ever since Complainant began working for the Agency,
+and especially after she had been selected as her team’s Lead in December 2017, she was treated
+by her peers essentially as a “persona non grata,” or “someone who did not know what they were
+doing” by most of the staff and management in the IT Directorate. IR 602-04, 723-27. 731-33.
+Even COR, a White female stated that Complainant was subjected to hostilities in the workplace
+because of her race and sex. IR 591-92. The preponderant evidence points to the existence of a
+pervasive attitude on the part of many staff and managers in the IT Directorate that Complainant
+was not capable of functioning as an effective Team Lead, and that she got her position through
+affirmative action rather than merit. That animus was on vivid display when ITS3 commented, in
+the presence of COR, that he had to paint himself with a black sharpie in order to get promoted,
+and had done so at a time when rumors were circulating around the IT Directorate that Complainant
+did not deserve her GS-14 position. IR 592. It was also on display when BFM1 made her
+inappropriate comment about African-American children. IR 727-28. In yet another indicator of
+discriminatory animus, SITS2 gave Complainant a low rating on leadership potential six months
+before she got the Team Lead job and claimed that he could not remember why he gave her that
+rating, IR 611, 727.
+                                                17                                     2021000831
+
+Under the particular circumstances of this case, we find it more likely than not that ITPM1,
+ITPMS1, ITPMS2, SITS1, SITS2 and ITS3 were motivated by unlawful considerations of
+Complainant’s race and sex in connection with all 26 incidents comprising her claim, and
+consequently, that she satisfied the third element of the Henson test for the existence of a hostile
+work environment.
+
+Moving on to the fourth element, we find each incident by itself would not be sufficiently severe
+or pervasive to rise to the level of harassment. However, when considered collectively as part of
+a pattern that had been going on for two years or longer, these incidents are more than sufficient
+to meet that test. For over two years, perhaps longer, Complainant constantly found her
+capabilities questioned, her authority undermined, and her participation in the various integrated
+projects constrained. IR 510-11, 514-17, 519, 549, 602-03, 608, 700-02, 710-11, 724-27, 732-34,
+738. There may well have been a standard operating procedure under which Complainant’s
+subordinates who were working on integrated projects received work assignments from individuals
+other than her as their Team Lead. But Complainant is alleging more than that. She is alleging
+that she was systematically excluded from the loop about what was going on with various projects
+in the IT Directorate, and that those exclusions made it extremely difficult, if not impossible, to
+prepare and submit the required weekly status reports. She is also alleging that her superiors and
+her peers undermined her authority as a team lead. In addition, she was berated by one of her
+colleagues for refusing to violate standard procurement procedures by transforming a competitive
+contract into a sole-source contract. IR 592-93, 727. She was also suspended, along with SITS3,
+herself an African-American, as a result of a rushed investigation involving a questionable
+interpretation of a video image. IR 606-07, 613-14, 725. When the incidents are considered
+collectively, there is no question that a reasonable person in Complainant’s position would have
+found the behavior of ITPM1, SITS1, SITS2, ITPMS1, ITPMS2, and ITS3 toward her to be so
+objectively offensive as to alter the conditions of her employment in the IT Directorate.
+Consequently, we find that Complainant satisfied the fourth element of the Henson test.
+
+With respect to element (5), an employer is subject to vicarious liability for harassment when it is
+created by a supervisor with immediate (or successively higher) authority over the
+employee. See Burlington Industries, Inc., v. Ellerth, 524 U.S. 742 (1998); Faragher v. City of
+Boca Raton, 524 U.S. 775 (1998). However, where the harassment does not result in a tangible
+employment action the agency can raise an affirmative defense, which is subject to proof by a
+preponderance       of     the      evidence,      by      demonstrating:         (1)    that     it
+exercised reasonable care to prevent and correct promptly any harassing behavior; and (2) that
+complainant unreasonably failed to take advantage of any preventive or corrective opportunities
+provided by the agency or to avoid harm otherwise. See Burlington Industries, supra at
+765; Faragher, supra at 807; Enforcement Guidance: Vicarious Liability for Unlawful Harassment
+by Supervisors, EEOC Notice No. 915.002, §V(A) (June 18, 1999). SITS3 averred that
+Complainant had reported to her that she was being harassed, and that she, SITS3, tried to talk to
+the various individuals named in Complainant’s complaint without success. When asked whether
+the Agency took any preventative or corrective action, SITS3 replied that management had not.
+IR 724. The Agency has not presented any documentary or testimonial evidence that would cause
+us to question SITS3’s truthfulness as a witness.
+                                                 18                                     2021000831
+
+Consequently, we find that the Agency’s affirmative defense fails, and ultimately, that
+Complainant has satisfied the fifth prong of the Henson test. Accordingly, the Commission finds
+that Complainant was subjected to a discriminatory hostile work environment for which the
+Agency can be held liable.
+
+                                         CONCLUSION
+
+Based on a thorough review of the record and the contentions on appeal, we REVERSE the
+Agency’s final decision.
+
+                                         ORDER (C0618)
+
+The Agency is ordered to take the following remedial action:
+
+   1. Within 90 days of the date this decision is issued, the Agency shall conduct a supplemental
+      investigation concerning Complainant’s entitlement to compensatory damages and
+      equitable relief. The Agency shall allow Complainant to present evidence in support of
+      her claimed entitlement. See Carle v. Dep't of the Navy, EEOC Appeal No. 01922369
+      (Jan. 5, 1993). Complainant shall cooperate with the Agency in this regard. The Agency
+      shall issue a final decision on compensatory damages and equitable relief no later than 90
+      calendar days of the date this decision is issued. The Agency shall pay Complainant the
+      compensatory damages, and provide her with equitable relief, as determined by the Agency
+      within 30 days from the date of the Agency's final decision. The Agency shall submit a
+      copy of the final decision to the Compliance Officer at the address set forth herein.
+
+   2. Within 90 calendar days of the date this decision is issued the Agency shall provide eight
+      hours of in-person or interactive training to the entire staff and management of the IT
+      Directorate regarding their responsibilities with respect to eliminating discrimination and
+      preventing hostile work environments in the federal workplace.
+
+   3. Within 30 calendar days of the date this decision is issued the Agency shall consider taking
+      appropriate disciplinary action against the irresponsible management officials identified in
+      the above decision as SITS1, SITS2, ITPM1, ITPMS1, ITPMS2, and ITS3. The
+      Commission does not consider training to be disciplinary. The Agency shall report its
+      decision to the Compliance Officer. If the Agency decides to take disciplinary action, it
+      shall identify the action taken. If the Agency decides not to take disciplinary action, it shall
+      set forth the reason(s) for its decision not to impose discipline. If any of the responsible
+      management officials have left the Agency’s employ, the Agency shall furnish
+      documentation of their departure date(s)
+
+The Agency is further directed to submit a report of compliance in digital format as provided in
+the statement entitled "Implementation of the Commission's Decision." The report shall be
+submitted via the Federal Sector EEO Portal (FedSEP). See 29 C.F.R. § 1614.403(g). Further,
+the report must include supporting documentation of the Agency's calculation of benefits due
+Complainant, including evidence that the corrective action has been implemented.
+                                                19                                    2021000831
+
+                                  POSTING ORDER (G0617)
+
+The Agency is ordered to post in the offices of the IT Directorate at its Headquarters in Fort Lee,
+Virginia, copies of the attached notice. Copies of the notice, after being signed by the Agency's
+duly authorized representative, shall be posted both in hard copy and electronic format by the
+Agency within 30 calendar days of the date this decision was issued, and shall remain posted for
+60 consecutive days, in conspicuous places, including all places where notices to employees are
+customarily posted. The Agency shall take reasonable steps to ensure that said notices are not
+altered, defaced, or covered by any other material. The original signed notice is to be submitted
+to the Compliance Officer as directed in the paragraph entitled "Implementation of the
+Commission's Decision," within 10 calendar days of the expiration of the posting period. The
+report must be in digital format and must be submitted via the Federal Sector EEO Portal
+(FedSEP). See 29 C.F.R. § 1614.403(g).
+
+                                 ATTORNEY'S FEES (H1019)
+
+If Complainant has been represented by an attorney (as defined by 29 C.F.R. § 1614.501(e)(1)(iii)),
+she/he is entitled to an award of reasonable attorney's fees incurred in the processing of the
+complaint. 29 C.F.R. § 1614.501(e). The award of attorney's fees shall be paid by the Agency. The
+attorney shall submit a verified statement of fees to the Agency -- not to the Equal Employment
+Opportunity Commission, Office of Federal Operations -- within thirty (30) calendar days of
+receipt of this decision. The Agency shall then process the claim for attorney's fees in accordance
+with 29 C.F.R. § 1614.501.
+
+            IMPLEMENTATION OF THE COMMISSION’S DECISION (K0719)
+
+Under 29 C.F.R. § 1614.405(c) and §1614.502, compliance with the Commission’s corrective
+action is mandatory. Within seven (7) calendar days of the completion of each ordered corrective
+action, the Agency shall submit via the Federal Sector EEO Portal (FedSEP) supporting documents
+in the digital format required by the Commission, referencing the compliance docket number under
+which compliance was being monitored. Once all compliance is complete, the Agency shall
+submit via FedSEP a final compliance report in the digital format required by the Commission.
+See 29 C.F.R. § 1614.403(g). The Agency’s final report must contain supporting documentation
+when previously not uploaded, and the Agency must send a copy of all submissions to the
+Complainant and his/her representative.
+
+If the Agency does not comply with the Commission’s order, the Complainant may petition the
+Commission for enforcement of the order. 29 C.F.R. § 1614.503(a). The Complainant also has
+the right to file a civil action to enforce compliance with the Commission’s order prior to or
+following an administrative petition for enforcement. See 29 C.F.R. §§ 1614.407, 1614.408, and
+29 C.F.R. § 1614.503(g). Alternatively, the Complainant has the right to file a civil action on the
+underlying complaint in accordance with the paragraph below entitled “Right to File a Civil
+Action.” 29 C.F.R. §§ 1614.407 and 1614.408. A civil action for enforcement or a civil action on
+the underlying complaint is subject to the deadline stated in 42 U.S.C. 2000e-16(c) (1994 & Supp.
+IV 1999).
+                                                 20                                     2021000831
+
+If the Complainant files a civil action, the administrative processing of the complaint,
+including any petition for enforcement, will be terminated. See 29 C.F.R. § 1614.409.
+
+Failure by an agency to either file a compliance report or implement any of the orders set forth in
+this decision, without good cause shown, may result in the referral of this matter to the Office of
+Special Counsel pursuant to 29 C.F.R. § 1614.503(f) for enforcement by that agency.
+
+                           STATEMENT OF RIGHTS - ON APPEAL
+                              RECONSIDERATION (M0920)
+
+The Commission may, in its discretion, reconsider this appellate decision if Complainant or the
+Agency submits a written request that contains arguments or evidence that tend to establish that:
+       1. The appellate decision involved a clearly erroneous interpretation of material fact or
+          law; or
+       2. The appellate decision will have a substantial impact on the policies, practices, or
+          operations of the agency.
+
+Requests for reconsideration must be filed with EEOC’s Office of Federal Operations (OFO)
+within thirty (30) calendar days of receipt of this decision. If the party requesting reconsideration
+elects to file a statement or brief in support of the request, that statement or brief must be filed
+together with the request for reconsideration. A party shall have twenty (20) calendar days
+from receipt of another party’s request for reconsideration within which to submit a brief or
+statement in opposition. See 29 C.F.R. § 1614.405; Equal Employment Opportunity Management
+Directive for 29 C.F.R. Part 1614 (EEO MD-110), at Chap. 9 § VII.B (Aug. 5, 2015).
+
+Complainant should submit his or her request for reconsideration, and any statement or brief in
+support of his or her request, via the EEOC Public Portal, which can be found at
+https://publicportal.eeoc.gov/Portal/Login.aspx. Alternatively, Complainant can submit his or her
+request and arguments to the Director, Office of Federal Operations, Equal Employment
+Opportunity Commission, via regular mail addressed to P.O. Box 77960, Washington, DC 20013,
+or by certified mail addressed to 131 M Street, NE, Washington, DC 20507. In the absence of a
+legible postmark, a complainant’s request to reconsider shall be deemed timely filed if OFO
+receives it by mail within five days of the expiration of the applicable filing period. See 29 C.F.R.
+§ 1614.604.
+
+An agency’s request for reconsideration must be submitted in digital format via the EEOC’s
+Federal Sector EEO Portal (FedSEP). See 29 C.F.R. § 1614.403(g). Either party’s request and/or
+statement or brief in opposition must also include proof of service on the other party, unless
+Complainant files his or her request via the EEOC Public Portal, in which case no proof of service
+is required.
+
+Failure to file within the 30-day time period will result in dismissal of the party’s request for
+reconsideration as untimely, unless extenuating circumstances prevented the timely filing of the
+request.
+                                                  21                                      2021000831
+
+Any supporting documentation must be submitted together with the request for
+reconsideration. The Commission will consider requests for reconsideration filed after the
+deadline only in very limited circumstances. See 29 C.F.R. § 1614.604(c).
+
+                COMPLAINANT’S RIGHT TO FILE A CIVIL ACTION (R0610)
+
+This is a decision requiring the Agency to continue its administrative processing of your complaint.
+However, if you wish to file a civil action, you have the right to file such action in an appropriate
+United States District Court within ninety (90) calendar days from the date that you receive this
+decision. In the alternative, you may file a civil action after one hundred and eighty (180)
+calendar days of the date you filed your complaint with the Agency, or filed your appeal with the
+Commission. If you file a civil action, you must name as the defendant in the complaint the person
+who is the official Agency head or department head, identifying that person by his or her full name
+and official title. Failure to do so may result in the dismissal of your case in court. “Agency” or
+“department” means the national organization, and not the local office, facility or department in
+which you work. Filing a civil action will terminate the administrative processing of your
+complaint.
+
+                            RIGHT TO REQUEST COUNSEL (Z0815)
+
+If you want to file a civil action but cannot pay the fees, costs, or security to do so, you may request
+permission from the court to proceed with the civil action without paying these fees or costs.
+Similarly, if you cannot afford an attorney to represent you in the civil action, you may request the
+court to appoint an attorney for you. You must submit the requests for waiver of court costs or
+appointment of an attorney directly to the court, not the Commission. The court has the sole
+discretion to grant or deny these types of requests. Such requests do not alter the time limits for
+filing a civil action (please read the paragraph titled Complainant’s Right to File a Civil Action for
+the specific time limits).
+
+FOR THE COMMISSION:
+
+
+
+______________________________                     Carlton M. Hadden’s signature
+Carlton M. Hadden, Director
+Office of Federal Operations
+
+
+September 8, 2022
+Date
+

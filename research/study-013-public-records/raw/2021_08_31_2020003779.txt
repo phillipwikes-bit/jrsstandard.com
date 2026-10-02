@@ -1,0 +1,769 @@
+             U.S. EQUAL EMPLOYMENT OPPORTUNITY COMMISSION
+                           Office of Federal Operations
+                                  P.O. Box 77960
+                             Washington, DC 20013
+
+
+                                         Courtney M., 1
+                                         Complainant,
+
+                                                v.
+
+                                      Thomas W. Harker,
+                                       Acting Secretary,
+                                    Department of the Navy,
+                                           Agency.
+
+                                  Appeal Nos.        2020003308
+                                                     2020003779
+
+                               Hearing Nos. 480-2019-00489X
+                                            480-2019-00490X
+
+                             Agency Nos. DON-13-66001-02266
+                                         DON-14-66001-02069
+
+                                          DECISION
+
+Complainant filed timely appeals with the Equal Employment Opportunity Commission (EEOC
+or Commission),2 pursuant to 29 C.F.R. § 1614.403(a), from the Agency’s final decisions issued
+on April 4, 2020, and May 8, 2020, concerning his equal employment opportunity (EEO)
+complaint alleging employment discrimination in violation of Title VII of the Civil Rights Act of
+1964 (Title VII), as amended, 42 U.S.C. § 2000e et seq. and Section 501 of the Rehabilitation
+Act of 1973 (Rehabilitation Act), as amended, 29 U.S.C. § 791 et seq. For the following reasons,
+the Commission AFFIRMS the Agency’s final decisions.
+
+
+
+
+1
+ This case has been randomly assigned a pseudonym which will replace Complainant’s name
+when the decision is published to non-parties and the Commission’s website.
+2
+  The Commission may, in its discretion, consolidate two or more complaints of discrimination
+filed by the same complainant. See 29 C.F.R. § 1614.606. Accordingly, the Commission
+exercises its discretion to consolidate the captioned cases.
+                                               2                    2020003308 & 2020003779
+
+                                    ISSUES PRESENTED
+
+The issues are whether the Agency should be sanctioned for conducting an untimely
+investigation and issuing untimely final decisions; and whether Complainant established that the
+Agency subjected him to discrimination or harassment based on disability or race, or in reprisal
+for prior protected EEO activity.
+
+                                       BACKGROUND
+
+At the time of events giving rise to this complaint, Complainant worked as a Computer Scientist
+at the Agency’s Space and Naval Warfare Systems, Systems Center Pacific in San Diego,
+California. Complainant’s first-line supervisor (S1) (disability, Caucasian) stated that
+Complainant started to take a lot of leave starting in June 2012, and in August 2012,
+Complainant disclosed that he had a serious medical condition. S1 stated that Complainant
+exhausted his accrued sick and annual leave, and he went on a leave without pay (LWOP) status
+on November 15, 2012. Complainant’s LWOP was granted through May 16, 2013. Report of
+Investigation (ROI) 1 at 119.
+
+On May 23, 2013, Complainant submitted a request for leave under the Family and Medical
+Leave Act (FMLA). S1 responded that Complainant’s request did not include the dates for his
+request, and Complainant updated his request for FMLA leave from June 14, 2013, through
+September 9, 2013. ROI 1 at 63-8. Complainant submitted supporting medical documentation on
+May 30, 2013. ROI 1 at 69-74. On June 10, 2013, S1 informed Complainant that his FMLA
+request was approved through September 9, 2013. ROI 1 at 80. Complainant stated that he
+returned to work on or around September 9, 2013. ROI 2 at 1245.
+
+Complainant moved to another section on June 30, 2014, and he reported to a new supervisor
+(S2) (Caucasian). The move was finalized in September 2014. ROI 2 at 1320.
+
+EEO Complaint No. DON-13-66001-02266 (Complaint #1)
+
+On August 28, 2013, Complainant filed an EEO complaint alleging that the Agency
+discriminated against him based on his disability (physical) when:
+
+   1. management delayed the processing of Complainant’s FMLA request of May 30, 2013,
+      and a decision was not made within the required five days;
+
+   2. during the period of April 2012 through April 2013 (no specific date provided),
+      Complainant stated that his request for time-off to recover from a medical condition was
+      ignored; and
+
+   3. during the period of May 2013 through June 2013, a Human Resources Office
+      representative requested substantial medical documentation regarding two of
+      Complainant’s requests for his extension for LWOP.
+                                                3                    2020003308 & 2020003779
+
+On February 28, 2014, the Agency amended its initial acceptance letter issued on January 29,
+2014, and it accepted the above claims for investigation. The Agency reversed its dismissal of
+claim 3 after Complainant informed the Agency that the initial dates used were incorrect.
+However, the Agency dismissed Complainant’s allegations of disability discrimination when:
+
+   4. Complainant received a one-point salary increase and a one-point bonus, instead of a
+      two-point salary increase for the performance rating period ending June 30, 2012; and
+
+   5. Complainant received a notice of proposed furlough dated May 28, 2013, even though he
+      was in an LWOP status.
+
+The Agency found that claim 4 was untimely, and that claim 5 was moot because Complainant
+was never furloughed. ROI 1 at 48-9. On or about April 21, 2014, Complainant requested a
+hearing before an EEOC Administrative Judge (AJ) because the Agency had not completed the
+investigation within 180 days. ROI 1 at 306-7.
+
+EEO complaint No. DON-14-66001-02069 (Complaint #2)
+
+On March 30, 2014, Complainant filed another EEO complaint alleging that the Agency
+subjected him to discriminatory harassment on the basis of race (Asian), and in reprisal for prior
+protected EEO activity (EEO activity since June 6, 2013), when:
+
+   a) on December 3, 2013, Complainant was allegedly threatened and harassed by his
+      supervisor for not attending a Windows 7 training;
+
+   b) on December 5, 2013, Complainant was issued a Memorandum of Counseling for
+      missing a Windows 7 training;
+
+   c) On December 5, 2013, Complainant was denied New Employee Orientation training,
+      which he felt was required to do his job when he returned to work from his medical
+      leave;
+
+   d) Complainant was assigned a temporary job at the Depot in November 2013, which was
+      outside of his major and the position that he was hired for;
+
+   e) management allegedly never addressed negative remarks made by coworkers during his
+      temporary position at the Depot;
+
+   f) management did not provide a requested phone, which Complainant alleged was
+      necessary to perform his job duties;
+
+   g) the job duties at the Depot created a conflict with his requirement to do a job search that
+      was required for his position;
+                                               4                    2020003308 & 2020003779
+
+    h) on May 5, 2014, Complainant’s request to be assigned to the organization (code) he was
+       working in was denied;
+
+    i) on June 6, 2014, Complainant learned from another employee that she was allowed to
+       have a third-party present during a performance review, while his request was denied;
+
+    j) on or about September 9, 2013, Complainant learned that his “Return to Duty” form had
+       not been submitted to Human Resources by his supervisor;
+
+    k) on or about March 30, 2014, Complainant was not given a management directed
+       reassignment;
+
+    l) on July 10, 2014, a supervisor allegedly provided inaccurate feedback regarding
+       Complainant’s work in the Knowledge Management Group;
+
+    m) on August 13, 2014, Complainant’s supervisor issued him a “memorandum of report”;
+
+    n) on September 9, 2014, Complainant was reassigned by management;
+
+    o) on September 24, 2014, Complainant’s supervisor provided Complainant with a
+       performance contribution score and corresponding salary increase for the period of July
+       2013 to June 2014 that was lower than expected;
+
+    p) on September 24, 2014, Complainant’s request to have his performance review
+       conducted by someone other than his supervisor, and to have a third-party present, was
+       again ignored;
+
+    q) on October 15, 2014, Complainant was required to write a weekly status report to his
+       supervisor, while others were not;
+
+    r) on or about October 16, 2014, Complainant was assigned to the Archibus Project;
+
+    s) on or about December 4, 2014, when Complainant received an email from his supervisor
+       regarding the Archibus training website, he disagreed with the statements and believed
+       that these statements were made in reprisal due to his ongoing EEO investigation; and
+
+    t) on or about December 10, 2014, Complainant’s supervisor claimed that Complainant
+       took unscheduled leave on December 4, 2014, and on or around December 9, 2014, or
+       December 10, 2014. 3
+
+
+
+3
+  On appeal, Complainant argues that the dates for his claims are incorrect. For the purposes of
+this decision, we will use the dates from the Agency’s acceptance letter dated January 16, 2015,
+following Complainant’s fifth request to amend his complaint.
+                                              5                    2020003308 & 2020003779
+
+Complainant amended his complaint five times and the Agency accepted the above incidents of
+alleged harassment for investigation. However, the Agency dismissed Complainant’s allegations
+of discrimination when on October 10, 2014, the Notice of Amendment of Acknowledgement of
+Acceptance of Discrimination did not contain the names of people provided in a previous email;
+on October 13, 2014, the Notice of Amendment of Acknowledgement of Acceptance of
+Discrimination contained incorrect dates and did not contain the name of witnesses and
+discriminators provided in a previous email; and on October 14, 2014, a proposed settlement
+agreement from management was reprisal. The Agency noted that Complainant was alleging
+dissatisfaction with the processing of a previously filed complaint, and it dismissed these
+allegations for failure to state a claim.
+
+At the conclusion of the investigation, the Agency provided Complainant with a copy of the ROI
+and notice of his right to request a hearing before an EEOC AJ. Complainant timely requested a
+hearing.
+
+On September 30, 2015, the initial AJ (AJ1) issued a Dismissal Order (Without Prejudice). AJ1
+noted that Complainant filed a motion to reinstate two dismissed issues (claims 4 and 5), which
+AJ1 denied. AJ1 found that claim 4 was a discrete event, but was not timely raised with an EEO
+Counselor, and Complainant had not provided support for his request to toll his deadline due to
+his LWOP. AJ1 found that claim 5 was moot because Complainant was not furloughed. AJ1 also
+noted that Complainant had a pending motion to consolidate his two complaints, and he found
+that the cases were substantially related and granted Complainant’s request to consolidate.
+
+Regarding Complainant’s request to amend Complaint #2, AJ1 found that the Agency did not
+oppose the amendment and that Complainant made a compelling case to amend his complaint.
+As such, AJ1 amended the complaint to include allegations that the Agency discriminated
+against Complainant based on disability, and in reprisal for prior EEO activity, when: (1) the
+Agency failed to reasonably accommodate Complainant on June 25, 2015, when it did not grant
+his requested LWOP; and (2) on June 29, 2015, Complainant was constructively discharged after
+the Agency denied his request for three additional months of LWOP, forcing him to resign to
+preserve his health without having to fight with the Agency over leave usage as a reasonable
+accommodation.
+
+However, AJ1 found that if Complainant wanted to pursue the constructive discharge claim, he
+would have to proceed with that claim by filing a mixed-case appeal or mixed-case complaint
+with the Merit Systems Protection Board (MSPB). AJ1 noted that Complainant argued that the
+discriminatory harassment led to his involuntary resignation and therefore, he wanted the
+harassment issues heard with his constructive discharge claim. AJ1 dismissed Complainant’s
+hearing request and instructed the Agency to issue Complainant’s MSPB appeal rights.
+
+On October 24, 2015, Complainant filed an appeal with the MSPB, but subsequently filed a
+motion to withdraw the appeal. The MSPB noted that it had not determined if it had jurisdiction
+over Complainant’s appeal but granted the motion and dismissed the appeal with prejudice.
+                                               6                    2020003308 & 2020003779
+
+Complainant requested to reinstate his complaint before the EEOC, but later withdrew his
+hearing request. On May 29, 2019, the second AJ (AJ2) dismissed Complainant’s hearing
+request and remanded the matter to the Agency to render a final decision based on the existing
+record within 60 days.
+
+On April 4, 2020, the Agency issued the final decision for Complaint #2. The Agency assumed
+that Complainant established a prima facie case of discrimination based on race, and in reprisal
+for prior protected EEO activity, and it found that management officials articulated legitimate,
+nondiscriminatory reasons for incidents b, c, d, h, k, m, n, o, and t. The Agency then found that
+Complainant did not show that the management’s legitimate reasons were pretextual. The
+Agency also determined that Complainant did not establish that he was subjected to harassment
+because he only provided his subjective opinion that management officials discriminated against
+him, and there was no independent or corroborative evidence that Complainant was unjustly
+accused, harassed, or treated in a hostile manner by management officials.
+
+On May 5, 2020, the Agency issued the final decision for Complaint #1. The Agency found that
+Complainant did not establish a prima facie case of disability discrimination. However, the
+Agency found that management officials provided legitimate, nondiscriminatory reasons for their
+actions, and that Complainant did not show that the reasons were pretexts for discrimination. The
+Agency concluded that Complainant failed to prove that the Agency subjected him to
+discrimination as alleged.
+
+Complainant filed timely appeals of the final decisions, and he submitted briefs and documents
+in support of his appeals. The Agency opposed Complainant’s appeals.
+
+                                CONTENTIONS ON APPEAL
+
+Complainant’s Contentions
+
+Complainant requests a sanction in the form of a default judgment for the Agency’s failure to
+conduct timely investigations and produce ROIs; issuance of an inadequate, incomplete, and
+impartial investigation; and failure to issue timely final decisions. For Complaint #1,
+Complainant asserts that the Agency issued the final decision on May 8, 2020, which was “354”
+days from AJ2’s May 29, 2019 order. For Complaint #2, Complainant states that the Agency’s
+final decision was 311 days after the AJ’s order. Complainant argues that the “extraordinary”
+delays warrant a default judgment.
+In addition, for Complaint #1, Complainant argues that the Agency omitted and/or used incorrect
+dates to extend the processing of his complaint. For example, when the Agency dismissed an
+allegation as untimely, Complainant emailed the Agency to correct the dates, and the Agency
+improperly treated this as an amendment to extend the investigation period beyond 180 days.
+
+Complainant also argues that the final decision for Complaint #2 should be vacated because it
+did not include his amended failure to accommodate claim.
+                                                7                     2020003308 & 2020003779
+
+Complainant states that he took medical disability leave from January through June 2015, and
+then requested an additional three months of leave. Specifically, Complainant stated that on June
+25, 2015, he requested LWOP through September 15, 2015, and the Agency only granted his
+request through July 1, 2015.
+
+For Complaint #1, Complainant argues that he requested an extension of his medical leave
+without pay as a reasonable accommodation, and that there was no interactive process.
+Regarding the incidents in Complaint #2, Complainant asserts that he was retaliated against for
+his prior EEO activity, and that the Agency’s reasons for their actions were inconsistent. For
+example, Complainant states that S1 attempts to cover up his reprisal by claiming that Human
+Resources denied Complainant’s request for New Employee Orientation training, but that
+Human Resources does not deny training, a supervisor does. Complainant requests that the
+Commission find in his favor and remand the complaint for a decision on remedies.
+
+Agency’s Contentions
+
+The Agency argues that a default judgment is not appropriate in this case and the final decisions
+should be affirmed. The Agency acknowledges that it did not comply with its obligation to issue
+timely final decisions, but states that this was due to significant employee attrition and staffing
+cuts, which resulted in large caseloads for the remaining four staff members. The Agency states
+that, in response, it obtained experienced EEO Specialists for 90-day detail assignments;
+temporarily hired recent law school graduates; and used an interagency agreement for assistance
+with drafting of final decisions. The Agency asserts that the unintentional and unavoidable
+delays do not warrant a default judgment.
+
+The Agency also argues that Complainant has not presented any evidence that he was prejudiced
+by the delays, nor articulated any consequences of the delayed final decisions. In addition, the
+Agency states that it was Complainant who affected the integrity of the EEO process when he
+attempted to jockey between forums, including a trip to federal court, 4 and changed his litigation
+strategy, which prejudiced the Agency. The Agency notes that, during the time that Complainant
+repeatedly amended his complaints, changed forums, and reinstated his complaint before the
+EEOC, several management witnesses retired.
+
+The Agency argues that Complainant waived his right to complain of any deficiencies in the
+investigations because he had an opportunity to raise any deficiencies upon receipt of the ROIs,
+and Complainant did not do so. In addition, the Agency asserts that Complainant failed to give
+testimony, or otherwise cooperate with the EEO Investigator, for Complaint #1. The Agency
+states that the investigative files are complete, impartial, and appropriate.
+
+
+
+
+4
+ Complainant filed a civil action with the U.S. District Court Southern District of California on
+May 6, 2016, and he filed a Motion to Dismiss without Prejudice on March 31, 2017.
+                                                8                    2020003308 & 2020003779
+
+In response to Complainant’s argument that he did not amend Complaint #1, the Agency states
+that Complainant failed to give the actual dates in his formal complaint, and that the addition of
+dates defined the applicable period of the claim. The Agency states that Complainant amended
+Complaint #1 on February 28, 2014, which pushed back the deadline for the completion of the
+investigation to August 27, 2014, and that the Agency met its obligation when it forwarded the
+ROI to Complainant on June 19, 2014. For Complaint #2, the Agency states that it issued the
+ROI 42 days late on May 6, 2016, but that Complainant’s amendments required it to supplement
+the record five times, and that a default judgment is not warranted.
+
+Regarding the amended failure to accommodate claim, the Agency states that AJ2 issued a
+Scheduling Order and noted that the EEOC lacked jurisdiction over Complainant’s constructive
+discharge claim, including the denial of reasonable accommodation claim and other alleged
+discriminatory bases. The Agency also asserts that since the Commission lacked jurisdiction over
+the issues Complainant that voluntarily withdrew before the MSPB, the Commission also lacked
+jurisdiction to remand the issue back to the Agency for further development, and the Agency was
+not required to consider the issue in its final decision. In addition, the Agency notes that AJ2
+specifically ordered the Agency to issue a final decision “on the existing record,” and he did not
+order the Agency to conduct a supplemental investigation into the denial of accommodation
+claim. The Agency argues that the Commission should deny Complainant’s request to vacate the
+April 4, 2020 final decision.
+
+The Agency asserts that Complainant did not establish that he was subjected to discrimination or
+harassment based on disability or race, or in reprisal for prior protected EEO activity, and it
+requests that the Commission affirm its final decisions.
+
+                                   STANDARD OF REVIEW
+
+As this is an appeal from a decision issued without a hearing, pursuant to 29 C.F.R.
+§ 1614.110(b), the Agency’s decision is subject to de novo review by the Commission. 29 C.F.R.
+§ 1614.405(a). See Equal Employment Opportunity Management Directive for 29 C.F.R. Part
+1614 (EEO MD-110), at Chap. 9, § VI.A. (Aug. 5, 2015) (explaining that the de novo standard of
+review “requires that the Commission examine the record without regard to the factual and legal
+determinations of the previous decision maker,” and that EEOC “review the documents,
+statements, and testimony of record, including any timely and relevant submissions of the
+parties, and . . . issue its decision based on the Commission’s own assessment of the record and
+its interpretation of the law”).
+                                               9                    2020003308 & 2020003779
+
+                                 ANALYSIS AND FINDINGS
+
+New evidence on appeal
+
+As a general rule, no new evidence will be considered on appeal unless there is an affirmative
+showing that the evidence was not reasonably available prior to or during the investigation. See
+EEO MD-110 at Chap. 9, § VI.A.3. Here, we note that AJ2 ordered the Agency to issue a final
+decision based on the existing record, which did not contain any evidence on the amended failure
+to accommodate claim, which was added after the completion of the investigations. As such, we
+will consider Complainant’s evidence on the amended claim. However, we note that
+Complainant has not provided arguments or evidence to show that other new materials were not
+available during the investigation, or any explanation as to why they were not provided to the
+investigator during the investigative stage. Accordingly, the Commission will only consider the
+new evidence related to Complainant’s reasonable accommodation claim, which was added to
+Complaint #2 by AJ1.
+
+Claims
+
+We note that the Commission has the discretion to review only those issues specifically raised in
+an appeal. See Id. at Chap. 9, § IV.A.3 (Aug. 5, 2015). On appeal, Complainant did not contest
+the Agency’s procedural dismissals of some of his claims; as such, we will not address these
+claims in the instant decision.
+
+Regarding Complaint #1, Complainant argued that he requested an extension of his medical
+leave without pay as a reasonable accommodation, and that there was no interactive process.
+However, we note that Complainant raises a new theory of discrimination of a failure to
+accommodate for the claims in Complaint #1, and the Commission has held that it is not
+appropriate for a complainant to raise new claims for the first time on appeal. See Hubbard v.
+Dep’t of Homeland Sec., EEOC Appeal No. 01A40449 (Apr. 22, 2004). Accordingly, we will
+not address an allegation of a failure to accommodate for the incidents in Complaint #1.
+
+The Agency argued that, when AJ2 issued the May 20, 2019 Scheduling Order, he noted that the
+EEOC lacked jurisdiction over Complainant’s constructive discharge claim, including the denial
+of reasonable accommodation claim and other alleged discriminatory bases. However, we find
+that this is not accurate because AJ2 stated that they would proceed “on all the accepted claims
+as indicated in the September 30, 2015 [order], except the claim for constructive discharge,” and
+that AJ2 did not exclude the amended failure to accommodate claim. Further, we note that AJ1
+amended Complaint #2 to include two separate claims, and that the failure to accommodate
+claim is distinct from Complainant’s constructive discharge claim. While Complainant requested
+that the Commission vacate the Agency’s final decision because the Agency did not address the
+amended failure to accommodate claim, we find that he provided sufficient information on
+appeal to make a fair and reasoned determination on the claim. As such, we will address the
+amended failure to accommodate claim below.
+                                                 10                    2020003308 & 2020003779
+
+Sanctions
+
+Sanctions serve a dual purpose. On the one hand, they aim to deter the underlying conduct of the
+non-complying party and prevent similar misconduct in the future. Barbour v. U.S. Postal Serv.,
+EEOC Appeal No. 07A30133 (June 16, 2005). On the other hand, they are corrective and
+provide equitable remedies to the opposing party. Given these dual purposes, sanctions must be
+tailored to each situation by applying the least severe sanction necessary to respond to a party's
+failure to show good cause for its actions and to equitably remedy the opposing party. Royal v.
+Dep’t of Veterans Affairs, EEOC Request No. 0520080052 (Sept. 25, 2009). Several factors are
+considered in “tailoring” a sanction and determining if a particular sanction is warranted: 1) the
+extent and nature of the non-compliance, and the justification presented by the non-complying
+party; 2) the prejudicial effect of the non-compliance on the opposing party; 3) the consequences
+resulting from the delay in justice; and 4) the effect on the integrity of the EEO process. Gray v.
+Dep’t of Def., EEOC Appeal No. 07A50030 (Mar. 1, 2007).
+
+On appeal, Complainant requested that the Commission issue a default judgment as a sanction
+against the Agency for its failure to conduct timely investigations and produce ROIs; issuance of
+an inadequate, incomplete, and impartial investigation; and failure to issue timely final decisions.
+
+The agency is required to conduct an impartial and appropriate investigation of the complaint
+within 180 days of the filing of the complaint unless the parties agree in writing to extend the
+time period. When a complaint has been amended, the agency shall complete its investigation
+within the earlier of 180 days after the last amendment to the complaint or 360 days after the
+filing of the original complaint, except that the complainant may request a hearing from an
+administrative judge on the consolidated complaints any time after 180 days from the date of the
+first filed complaint. 29 C.F.R. § 1614.106(e)(2).
+
+Here, we note that the parties disagree as to whether Complainant amended Complaint #1. Upon
+review of the two acceptance letters, 5 we find that the complaint was amended because the
+Agency accepted for investigation a claim that it had previously dismissed. As such, the
+Agency’s deadline for the completion of the investigation was extended to August 23, 2014,
+which was 360 days after Complainant filed his formal complaint on August 28, 2013. We find
+that the Agency met the deadline when it sent the ROI to Complainant on June 19, 2014.
+
+For Complaint #2, Complainant amended his complaint five times, with the last amendment on
+or around January 6, 2015. The deadline for the completion of the investigation for Complaint #2
+was March 25, 2015, which was 360 days after he filed his formal complaint on March 30, 2014.
+The Agency transmitted the ROI to Complainant on May 6, 2015, and it acknowledged that the
+ROI was 42 days late. While Complainant argued that the Agency issued an inadequate,
+incomplete, and impartial investigation, he did not provide specific arguments regarding any
+alleged deficiencies in either investigation.
+
+
+
+5
+    The Agency did not provide a copy of Complainant’s email clarifying the dates of his claims.
+                                                11                     2020003308 & 2020003779
+
+EEOC regulations also provide that an agency shall issue the final decision within 60 days of
+receiving notification that a complainant has requested an immediate decision or within 60 days
+of the end of the 30-day period for the complainant to request a hearing or an immediate final
+decision where the complainant has not requested either a hearing or a decision. 29 C.F.R.
+§ 1614.110(b). It is undisputed that the Agency failed to timely issue the final decisions. We find
+that the Agency failed to comply with the Commission’s regulations when it failed to timely
+complete the investigation for Complaint #2; and when it issued untimely final decisions when
+the final decision for Complaint #2 was 251 days late, and the final decision for Complaint #1
+was 285 days late.
+
+However, we find that the Agency did not act in a manner to warrant sanctions. The Agency
+explained that the delays in issuing the final decisions were due to staffing issues, which it tried
+to mitigate with temporary hires and assistance from another agency; and that the delay in
+completing the investigation for Complaint #2 was due to the need to address Complainant’s five
+amendments. In addition, we note that Complainant has not made a showing that he was
+prejudiced by any Agency delay; that there were any consequences from the delays; or that there
+were any effects on the integrity of the EEO process. See e.g., Josefina L. v. Soc. Sec. Admin.,
+EEOC Appeal No. 0120142023 (July 19, 2016), req. for recon. den’d, EEOC Request No.
+0520170108 (Feb. 9, 2017) (finding that the Agency’s 571-day delay in issuing a final decision
+did not warrant sanctions, as complainant did not show she was prejudiced by the delay). Jocelyn
+R. v. Dep’t of Def., EEOC Appeal No. 0120152852 (Mar. 11, 2016) (citing Vunder v. U.S.
+Postal Serv., EEOC Appeal No. 01A55147 (May 12, 2006) (declining to sanction an agency that
+issued a final decision after approximately 371 days)). Accordingly, under the specific
+circumstances of this case, we decline to issue sanctions against the Agency for their delays. We
+take this opportunity, however, to remind the Agency of its obligation to comply with
+Commission regulations in a timely manner.
+
+Disparate Treatment
+
+Generally, claims of disparate treatment are examined under the analysis first enunciated in
+McDonnell Douglas Corp. v. Green, 411 U.S. 792 (1973). Hochstadt v. Worcester Found. for
+Experimental Biology, Inc., 425 F. Supp. 318, 324 (D. Mass.), aff’d, 545 F.2d 222 (1st Cir.
+1976). For Complainant to prevail, he must first establish a prima facie case of discrimination by
+presenting facts that, if unexplained, reasonably give rise to an inference of discrimination, i.e.,
+that a prohibited consideration was a factor in the adverse employment action. Furnco Constr.
+Corp. v. Waters, 438 U.S. 567 (1978); McDonnell Douglas, 411 U.S. at 802 n.13. Once
+Complainant has established a prima facie case, the burden then shifts to the Agency to articulate
+a legitimate, nondiscriminatory reason for its actions. Tex. Dep't of Cmty. Affairs v. Burdine,
+450 U.S. 248, 253 (1981). If the Agency is successful, the burden reverts back to Complainant to
+demonstrate by a preponderance of the evidence that the Agency’s reason(s) for its action was a
+pretext for discrimination. At all times, Complainant retains the burden of persuasion, and it is
+his obligation to show by a preponderance of the evidence that the Agency acted on the basis of a
+prohibited reason. St. Mary’s Honor Ctr. v. Hicks, 509 U.S. 502 (1993); U.S. Postal Serv. v.
+Aikens, 460 U.S. 711, 715-716 (1983).
+                                               12                    2020003308 & 2020003779
+
+Assuming, arguendo, that Complainant established a prima facie case of disability discrimination
+for claims 1-3, and a prima facie case of discrimination based on race, and in reprisal for prior
+protected EEO activity, for incidents b, c, d, h, k, m, n, o, and t, we find that the Agency
+proffered legitimate, nondiscriminatory reasons for its actions. For claim 1, an Employee
+Relations Specialist (ERS) stated that there was no requirement to approve or disapprove a
+FMLA request within five days. ERS noted that the Agency used a Department of Labor form,
+and that a newer version of the form contained language about a five-day turnaround; however,
+this was not an Agency requirement. ROI 1 at 148.
+
+Regarding claim 2, S1 stated that he was not Complainant’s supervisor during the time at issue,
+unless Complainant’s supervisor was on leave. S1 stated that he always forwarded
+Complainant’s leave requests to his supervisor, and if S1 approved any leave, he obtained
+managerial approval. ROI 1 at 119. Complainant’s former supervisor, who supervised
+Complainant through August or September 2012, stated that he always approved Complainant’s
+requests for time off. ROI 1 at 112.
+
+For claim 3, ERS stated that when he received Complainant’s FMLA package, page three of the
+form was missing so he called Complainant, who resubmitted the package. ERS stated that
+Complainant exhausted his FMLA leave between June 10, 2013, and September 9, 2013, and
+that they informed him that he would need to submit additional medical documentation if he
+wanted to request additional leave. ERS stated that Complainant did not provide the
+documentation because he returned to work. ROI 1 at 147-8.
+
+Regarding incident b, S1 stated that the Agency paid $1,600.00 for the week-long Windows 7
+training, and that Complainant requested the training. S1 stated that Complainant informed him
+on Wednesday morning that he had missed the training because he was concentrating on his
+work. S1 stated that he issued the counseling memo because he needed to document that
+Complainant missed a funded training, and that S1 was unsure if they could recoup the money or
+reschedule Complainant. ROI 2 at 1305.
+
+For incident c, S1 stated that he asked Human Resources if Complainant could attend the New
+Employee Orientation, and that he was informed that Complainant could not because he was not
+a new employee and had already taken the training ten years ago. ROI 2 at 1308. Regarding
+incident d, S1 stated that Complainant was assigned to the Depot because there was a need for
+support there and Complainant was in need of a project. ROI 2 at 1309.
+
+For incidents h and k, S1 stated that they work on a project basis and once a project ends, the
+employees need to find new projects. S1 stated that he informed Complainant that he could find
+his own project, compete for open positions on USAjobs, or have a management reassignment
+but would have no input into where he was assigned. S1 stated that Complainant worked on a
+project from March to June 2014, and he requested to stay in that section. However, after
+Complainant’s duties ended, there was no need for him to stay in that code and S1 did not initiate
+a management reassignment. ROI 2 at 1314-16. The project manager confirmed that
+Complainant did a good job, but that he did not have a need for Complainant. ROI 2 at 1374.
+                                               13                   2020003308 & 2020003779
+
+Regarding incident m, S2 stated that he issued Complainant a written warning because a
+coworker (CW) expressed concerns that Complainant was sleeping during a training and leaving
+early, and CW provided a photo of Complainant sleeping. S2 stated that he requested a progress
+report from the trainer, who noted that Complainant fell behind on lecture materials, and seemed
+to be generally distracted and tired. S2 also stated that he spoke with Complainant about having
+taken an extended lunch break. ROI 2 at 1430, 877-81.
+
+For incident n, S1 stated that he informed Complainant’s second-line supervisor that
+Complainant needed a management directed reassignment because he had not found a project on
+his own since September 2013, and Complainant was ultimately placed under S2. ROI 2 at 1320.
+Regarding incident o, S1 stated that Complainant was meeting expectations and was given a fair
+salary increase and bonus. S1 stated that the seven members of the “pay pool” validated
+Complainant’s performance score. ROI 2 at 1322.
+
+For incident t, S2 stated that Complainant requested leave for December 4, 2014, and again on
+December 8, 2014. S2 stated that Complainant sent him an email on the morning of December 9,
+2014, stating that he would not be coming into work that day, and another email that evening
+stating that he would not be coming into work the following day. S2 stated that he informed
+Complainant that it appeared that he was abusing leave by putting in leave slips every day, and
+not asking permission for leave and only giving S2 a “heads up” that he was taking leave,
+without providing a reason. S2 stated that he did not deny any of Complainant’s leave but
+informed him that he needed to report to work because they were behind on project deliverables.
+ROI 2 at 1440-1.
+
+We find that Complainant has not shown that the proffered reasons were pretext for
+discrimination. Pretext can be demonstrated by showing such weaknesses, inconsistencies, or
+contradictions in the Agency’s proffered legitimate reasons for its action that a reasonable fact
+finder could rationally find them unworthy of credence. See Opare-Addo v. U.S. Postal Serv.,
+EEOC Appeal No. 0120060802 (Nov. 20, 2007) (finding that the agency’s explanations were
+confusing, contradictory, and lacking credibility, which were then successfully rebutted by the
+complainant), request for recon. denied, EEOC Request No. 0520080211 (May 30, 2008).
+
+On appeal, Complainant argued that there are inconsistencies in the Agency’s responses. For
+example, Complainant asserted that S1 stated that Human Resources denied Complainant’s
+request for New Employee Orientation training, but that Human Resources does not deny
+training, a supervisor does, and it was S1’s attempts to cover up his reprisal. However,
+Complainant did not provide any supporting evidence for his assertions. Rather, the record
+contains statements from witnesses that existing employees do not attend this training, even if
+they had been on leave for an extended period of time, and that employees typically only attend
+this training once. ROI 2 at 1383, 1453. We find that Complainant only makes bare assertions
+that he was discriminated against and did not provide any evidence to prove that the proffered
+reasons were pretexts for discrimination.
+                                                 14                     2020003308 & 2020003779
+
+Even crediting Complainant’s assertions that management officials were not truthful, a showing
+that the employer’s articulated reasons are not credible permits, but does not compel, a finding of
+discrimination. See St. Mary’s Honor Ctr. v. Hicks, 509 U.S. 502 (1993). The Commission has
+long held that an Agency has broad discretion to set policies and carry out personnel decisions,
+and it should not be second-guessed by the reviewing authority absent evidence of unlawful
+motivation. See Tex. Dep’t of Cmty. Affairs v. Burdine, 450 U.S. 248, 259 (1981); Vanek v.
+Dep’t of the Treasury, EEOC Request No. 05940906 (Jan. 16, 1997). In this case, there is no
+evidence of unlawful motivation for the Agency’s actions. Accordingly, we find that
+Complainant did not prove that he was discriminated against based on disability or race, or in
+reprisal for prior protected EEO activity, for claims 1-3, or incidents b, c, d, h, k, m, n, o, or t.
+
+Harassment
+
+Harassment is actionable if it is sufficiently severe or pervasive that it results in an alteration of
+the conditions of a complainant’s employment. See Enforcement Guidance on Harris v. Forklift
+Systems, Inc., EEOC Notice No. 915.002, at 3 (Mar. 8, 1994). To establish a claim of
+harassment, Complainant must show that: (1) he belongs to a statutorily protected class; (2) he
+was subjected to unwelcome verbal or physical conduct involving the protected class; (3) the
+harassment complained of was based on the statutorily protected class; (4) the harassment had
+the purpose or effect of unreasonably interfering with his work performance and/or creating an
+intimidating, hostile, or offensive work environment; and (5) there is a basis for imputing
+liability to the employer. See Humphrey v. U.S. Postal Serv., EEOC Appeal No. 01965238 (Oct.
+16, 1998).
+
+As discussed above, we found that Complainant did not establish a case of discrimination on any
+of his alleged bases for incidents b, c, d, h, k, m, n, o, or t. Further, we conclude that a case of
+harassment for these incidents is precluded based on our finding that Complainant did not
+establish that any of the actions taken by the Agency were motivated by his protected bases. See
+Oakley v. U.S. Postal Serv., EEOC Appeal No. 01982923 (Sept. 21, 2000). As such, we will not
+consider incidents b, c, d, h, k, m, n, o, or t in Complainant’s harassment allegation.
+
+We find that Complainant belongs to statutorily protected classes based on his race and prior
+protected EEO activity, and that he was subjected to unwanted verbal conduct. However,
+Complainant did not show that any of the remaining incidents occurred due to a protected class.
+For example, S1 stated that a Depot manager emailed him that Complainant was not following
+her instructions and that some of Complainant’s work was not usable. S1 stated that he spoke
+with Complainant and determined that Complainant was not properly trained at the Depot and
+brought him back. S1 stated that he did not use those remarks in Complainant’s annual
+performance assessment. ROI 2 at 1310-1. In addition, S1 stated that Complainant had access to
+a group telephone, and that no one had a personal telephone, and a witness stated that telephones
+were available for the employees’ use. ROI 2 at 1312, 1395.
+                                                  15                     2020003308 & 2020003779
+
+The Commission has held that routine work assignments, instructions, and admonishments do
+not rise to the level of harassment because they are common workplace occurrences. See Gray v.
+U.S. Postal Serv., EEOC Appeal No. 0120091101 (May 13, 2010). Unless it is reasonably
+established that the common workplace occurrence was somehow abusive or offensive, and that
+it was taken in order to harass Complainant on the basis of his protected class, we do not find
+such common workplace occurrences sufficiently severe or pervasive to rise to the level of a
+hostile work environment or harassment as Complainant alleges. See Complainant v. Dep’t of
+Veterans Affairs, EEOC Appeal No. 0120130465 (Sept. 12, 2014). In this case, there is no
+evidence that the actions were abusive, offensive, or taken to harass Complainant. As such, we
+find that Complainant did not establish that the Agency subjected him to harassment based on his
+race or in reprisal for prior protected EEO activity.
+
+Reasonable Accommodation
+
+In order to establish that Complainant was denied a reasonable accommodation, Complainant
+must show that: (1) he is an individual with a disability; (2) he is a qualified individual with a
+disability; and (3) the Agency failed to provide a reasonable accommodation. See EEOC
+Enforcement Guidance on Reasonable Accommodation and Undue Hardship Under the
+Americans with Disabilities Act, EEOC Notice No. 915.002 (Oct. 17, 2002) (Enforcement
+Guidance). “The term ‘qualified,’ with respect to an individual with a disability, means that the
+individual satisfies the requisite skill, experience, education and other job-related requirements
+of the employment position such individual holds or desires and, with or without reasonable
+accommodation, can perform the essential functions of such position.” 29 C.F.R. § 1630.2(m).
+An agency is required to make reasonable accommodation to the known physical and mental
+limitations of a qualified individual with a disability unless the Agency can show that
+accommodation would cause an undue hardship. See 29 C.F.R. §§ 1630.2(o), (p).
+
+Assuming, for the purpose of analysis and without so finding, that Complainant is a qualified
+individual with a disability, we find that the Agency did not fail to accommodate him.
+Complainant’s evidence shows that on June 17, 2015, Complainant, through his lawyer,
+requested LWOP as an accommodation from June 16, 2015, through September 14, 2015, and
+stated that if the Agency denied the LWOP, he was requesting an interactive process meeting.
+On June 25, 2015, S2 granted Complainant’s request until July 1, 2015.
+
+After receiving a request for reasonable accommodation, “it may be necessary for the [agency] to
+initiate an informal, interactive process with the individual with a disability . . . [to] identify the
+precise limitations resulting from the disability and potential reasonable accommodations that
+could overcome those limitations.” 29 C.F.R. § 1630.2(o)(3); see also Enforcement Guidance at
+Question 5. With his initial request on June 17, 2015, Complainant requested to engage in the
+interactive process. However, we find that Complainant ended the interactive process when he
+resigned from the Agency on June 29, 2015. On appeal, Complainant stated that he submitted a
+reasonable accommodation request for LWOP on June 25, 2015, and we note that he resigned
+just a few days later, and there is no indication that the Agency denied Complainant’s renewed
+request for LWOP or his request for an interactive process meeting.
+                                                  16                2020003308 & 2020003779
+
+The Agency granted Complainant’s requested accommodation through July 1, 2015, and
+Complainant was accommodated through the end of his employment. As such, we find that
+Complainant did not establish that the Agency failed to accommodate him.
+
+                                        CONCLUSION
+
+Based on a thorough review of the record and the contentions on appeal, including those not
+specifically addressed herein, we find that sanctions against the Agency are not warranted, and
+we AFFIRM the Agency’s final decisions finding that Complainant did not establish that the
+Agency subjected him to discrimination or harassment based on disability or race, or in reprisal
+for prior protected EEO activity.
+
+                          STATEMENT OF RIGHTS - ON APPEAL
+                             RECONSIDERATION (M0920)
+
+The Commission may, in its discretion, reconsider this appellate decision if Complainant or the
+Agency submits a written request that contains arguments or evidence that tend to establish that:
+       1. The appellate decision involved a clearly erroneous interpretation of material fact or
+          law; or
+       2. The appellate decision will have a substantial impact on the policies, practices, or
+          operations of the agency.
+
+Requests for reconsideration must be filed with EEOC’s Office of Federal Operations (OFO)
+within thirty (30) calendar days of receipt of this decision. If the party requesting
+reconsideration elects to file a statement or brief in support of the request, that statement or
+brief must be filed together with the request for reconsideration. A party shall have twenty
+(20) calendar days from receipt of another party’s request for reconsideration within which to
+submit a brief or statement in opposition. See 29 C.F.R. § 1614.405; Equal Employment
+Opportunity Management Directive for 29 C.F.R. Part 1614 (EEO MD-110), at Chap. 9 § VII.B
+(Aug. 5, 2015).
+
+Complainant should submit his or her request for reconsideration, and any statement or brief in
+support of his or her request, via the EEOC Public Portal, which can be found at
+
+https://publicportal.eeoc.gov/Portal/Login.aspx
+
+Alternatively, Complainant can submit his or her request and arguments to the Director, Office
+of Federal Operations, Equal Employment Opportunity Commission, via regular mail addressed
+to P.O. Box 77960, Washington, DC 20013, or by certified mail addressed to 131 M Street, NE,
+Washington, DC 20507. In the absence of a legible postmark, a complainant’s request to
+reconsider shall be deemed timely filed if OFO receives it by mail within five days of the
+expiration of the applicable filing period. See 29 C.F.R. § 1614.604.
+                                                17                    2020003308 & 2020003779
+
+An agency’s request for reconsideration must be submitted in digital format via the EEOC’s
+Federal Sector EEO Portal (FedSEP). See 29 C.F.R. § 1614.403(g). Either party’s request
+and/or statement or brief in opposition must also include proof of service on the other party,
+unless Complainant files his or her request via the EEOC Public Portal, in which case no proof of
+service is required.
+
+Failure to file within the 30-day time period will result in dismissal of the party’s request for
+reconsideration as untimely, unless extenuating circumstances prevented the timely filing of the
+request. Any supporting documentation must be submitted together with the request for
+reconsideration. The Commission will consider requests for reconsideration filed after the
+deadline only in very limited circumstances. See 29 C.F.R. § 1614.604(c).
+
+               COMPLAINANT’S RIGHT TO FILE A CIVIL ACTION (S0610)
+
+You have the right to file a civil action in an appropriate United States District Court within
+ninety (90) calendar days from the date that you receive this decision. If you file a civil action,
+you must name as the defendant in the complaint the person who is the official Agency head or
+department head, identifying that person by his or her full name and official title. Failure to do
+so may result in the dismissal of your case in court. “Agency” or “department” means the
+national organization, and not the local office, facility or department in which you work. If you
+file a request to reconsider and also file a civil action, filing a civil action will terminate the
+administrative processing of your complaint.
+
+                          RIGHT TO REQUEST COUNSEL (Z0815)
+
+If you want to file a civil action but cannot pay the fees, costs, or security to do so, you may
+request permission from the court to proceed with the civil action without paying these fees or
+costs. Similarly, if you cannot afford an attorney to represent you in the civil action, you may
+request the court to appoint an attorney for you. You must submit the requests for waiver of
+court costs or appointment of an attorney directly to the court, not the Commission. The
+court has the sole discretion to grant or deny these types of requests. Such requests do not alter
+the time limits for filing a civil action (please read the paragraph titled Complainant’s Right to
+File a Civil Action for the specific time limits).
+
+FOR THE COMMISSION:
+
+
+
+______________________________
+Carlton M. Hadden, Director
+Office of Federal Operations
+
+
+August 4, 2021
+Date
+

@@ -1,0 +1,666 @@
+              U.S. EQUAL EMPLOYMENT OPPORTUNITY COMMISSION
+                            Office of Federal Operations
+                                   P.O. Box 77960
+                              Washington, DC 20013
+
+
+                                          Bennett W., 1
+                                          Complainant,
+
+                                                v.
+
+                                       David Bernhardt,
+                                           Secretary,
+                                   Department of the Interior
+                                 (Bureau of Land Management),
+                                            Agency.
+
+                                    Appeal No. 2019005238
+
+                                 Hearing No. 570-2017-01090X
+
+                                   Agency No. BLM-16-0219
+
+                                           DECISION
+
+On August 11, 2019, Complainant filed an appeal with the Equal Employment Opportunity
+Commission (EEOC or Commission), pursuant to 29 C.F.R. § 1614.403(a), from the Agency’s
+June 6, 2019, final order concerning his equal employment opportunity (EEO) complaint alleging
+employment discrimination in violation of Title VII of the Civil Rights Act of 1964 (Title VII), as
+amended, 42 U.S.C. § 2000e et seq. and Section 501 of the Rehabilitation Act of 1973
+(Rehabilitation Act), as amended, 29 U.S.C. § 791 et seq.
+
+                                        BACKGROUND
+
+At the time of events giving rise to this complaint, Complainant worked as a Human Resource
+Specialist at the Agency’s Bureau of Land Management facility in Washington, D.C.
+
+On June 1, 2016, Complainant filed an EEO complaint alleging that the Agency discriminated
+against him on the bases of race (African-American), sex (male), disability (severe photo-
+sensitivity, anxiety, panic attacks), and reprisal for prior protected EEO activity when:
+
+
+
+
+1
+ This case has been randomly assigned a pseudonym which will replace Complainant’s name
+when the decision is published to non-parties and the Commission’s website.
+                                                 2                                     2019005238
+
+       1.      Since July 2015, Complainant was subjected to a pattern of harassment from
+               management that created a hostile work environment.
+       2.      On December 17, 2015, Complainant’s telework privileges were revoked and his
+               subsequent request for reinstatement of telework in March 2016, was denied.
+       3.      In March 2016, Complainant received a “Fully Successful” Performance Appraisal
+               Rating for Fiscal Year 2015.
+       4.      On April 21, 2016, Complainant’s request to attend Pathways Training was
+               cancelled.
+       5.      On January 20, 2016 and on several other dates, Complainant was denied the
+               opportunity to participate in Staffing policy work.
+       6.      Since February 16, 2016 to July 21, 2016, management has effectively denied
+               Complainant’s requests for a detail by not responding to such requests.
+       7.      On July 14, 2016 and several other dates, Complainant was made aware that his
+               medical documentation had been shared with persons without a need to know and
+               his reasonable accommodation request was made public.
+       8.      On August 3, 2016, Complainant’s request for a reasonable accommodation was
+               denied.
+       9.      on December 29, 2016, Complainant received a fiscal year 2016 annual
+               performance rating, which did not accurately reflect his performance.
+
+At the conclusion of the investigation, the Agency provided Complainant with a copy of the report
+of investigation and notice of his right to request a hearing before an Equal Employment
+Opportunity Commission Administrative Judge (AJ). Complainant timely requested a hearing.
+
+Over Complainant's objections, the AJ assigned to the case granted the Agency’s April 1, 2019
+motion for a decision without a hearing and issued a decision by summary judgment in favor of
+the Agency on May 31, 2019. Specifically, the AJ found that the Agency articulated legitimate,
+nondiscriminatory reasons for its actions and that Complainant failed to establish that such reasons
+were pretextual. The AJ further found that the Agency’s actions were insufficiently severe and/or
+pervasive to constitute harassment and that Complainant failed to establish that Agency officials
+harbored any animus towards his protected bases. With regard to the alleged disclosure of
+Complainant’s medical information, the AJ noted that Complainant conceded that it was within
+the duties of the Reasonable Accommodation Coordinator to view such information. With regard
+to the Agency’s alleged denial of reasonable accommodation, the AJ found that Complainant failed
+to provide requested additional medical information, declined the accommodation offered by the
+Agency, and declined to participate in the interactive process.
+
+The Agency subsequently issued a final order adopting the AJ’s finding that Complainant failed
+to prove that the Agency subjected him to discrimination as alleged.
+
+The instant appeal followed.
+                                                 3                                      2019005238
+
+                                  ANALYSIS AND FINDINGS
+
+The Commission's regulations allow an AJ to issue a decision without a hearing when he or she
+finds that there is no genuine issue of material fact. 29 C.F.R. § 1614.109(g). This regulation is
+patterned after the summary judgment procedure set forth in Rule 56 of the Federal Rules of Civil
+Procedure. The U.S. Supreme Court has held that summary judgment is appropriate where a court
+determines that, given the substantive legal and evidentiary standards that apply to the case, there
+exists no genuine issue of material fact. Anderson v. Liberty Lobby, Inc., 477 U.S. 242, 255
+(1986). In ruling on a motion for summary judgment, a court’s function is not to weigh the
+evidence but rather to determine whether there are genuine issues for trial. Id. at 249. The evidence
+of the non-moving party must be believed at the summary judgment stage and all justifiable
+inferences must be drawn in the non-moving party’s favor. Id. at 255. An issue of fact is "genuine"
+if the evidence is such that a reasonable fact finder could find in favor of the non-moving party.
+Celotex v. Catrett, 477 U.S. 317, 322-23 (1986); Oliver v. Digital Equip. Corp., 846 F.2d 103, 105
+(1st Cir. 1988). A fact is "material" if it has the potential to affect the outcome of the case. If a
+case can only be resolved by weighing conflicting evidence, issuing a decision without holding a
+hearing is not appropriate.
+
+Upon review of the record we find that the AJ properly found that the instant complaint was
+suitable for summary judgment. The record is adequately developed and there are no disputes of
+material fact. On appeal, Complainant argues that the AJ denied him the opportunity to conduct
+discovery, which hampered his ability to establish whether or not material issues of fact were
+present. In response, the Agency argues on appeal that Complainant sought an expansion of time
+from the AJ in order to conduct additional discovery but filed his request too late, and the AJ
+rejected it. We note that, on appeal, Complainant has only provided a single example of the type
+of evidence he believes he was prevented from obtaining, namely evidence to rebut Agency claims
+of plagiarism. However, given that the AJ found that the issue of plagiarism was not a material
+fact and our own decision does not address the issue of plagiarism, we find that Complainant has
+not shown how he was harmed by the AJ’s action.
+
+Disparate Treatment
+
+Where, as here, complainant does not have direct evidence of discrimination, a claim alleging
+disparate treatment is examined under the three-part test set forth in McDonnell Douglas Corp. v.
+Green, 411 U.S. 792 (1973). Under this analysis, a complainant initially must establish a prima
+facie case of discrimination by presenting facts that, if unexplained, reasonably give rise to an
+inference of discrimination, i.e., that a prohibited consideration was a factor in the adverse
+employment action. See St Mary's Honor Center v. Hicks, 509 U.S. 502, 507 (1993); Texas Dep't
+of Community Affairs v. Burdine, 450 U.S. 248, 252-53 (1981); McDonnell Douglas 411 U.S. at
+802. Next, in response, the agency must articulate a legitimate, nondiscriminatory reason for the
+challenged actions. See Burdine, 450 U.S. at 253-54; McDonnell Douglas, 411 U.S. at 802.
+                                                   4                                    2019005238
+
+Finally, it is complainant's burden to demonstrate by a preponderance of the evidence that the
+agency's action was based on prohibited considerations of discrimination, that is, its articulated
+reason for its action was not its true reason but a sham or pretext for discrimination. See Hicks,
+509 U.S. at 511; Burdine, 450 U.S. at 252-53; McDonnell Douglas, 411 U.S. at 804.
+
+This established order of analysis in discrimination cases, in which the first step normally consists
+of determining the existence of a prima facie case, need not be followed in all cases. Where the
+agency has articulated a legitimate, non-discriminatory reason for the personnel action at issue, the
+factual inquiry can proceed directly to the third step of the McDonnell Douglas analysis, the
+ultimate issue of whether complainant has shown by a preponderance of the evidence that the
+agency’s actions were motivated by discrimination. See U.S. Postal Service Board of Governors
+v. Aikens, 460 U.S. 711, 713-714 (1983); Hernandez v. Department of Transportation, EEOC
+Request No. 05900159 (June 28, 1990); Peterson v. Department of Health and Human Services,
+EEOC Request No. 05900467 (June 8, 1990); Washington v. Department of the Navy, EEOC
+Petition No. 03900056 (May 31, 1990).
+
+Telework, Appraisals, Staffing Work, Detail Requests and Medical Information
+
+Following a review of the record we find that responsible management officials articulated
+legitimate, non-discriminatory reasons for the disputed actions.
+
+With regard to Complainant’s telework privileges, Complainant’s Supervisor (S1: Caucasian,
+female) averred that:
+
+          On October 5, 201 5, [S1’s second-level supervisor (S3 2)] asked that the
+          Complainant's telework schedule be suspended through November due to the tight
+          Executive performance schedule. Executives must be able to focus on the mission
+          and the high demands of their positions, and the Complainant's position required
+          that he handle many administrative matters related to their employment. As such
+          the Complainant needed to be responsive and available. [S3] said that his position
+          couldn't telework during that time because she wanted greater visibility and needed
+          for him to be available during this critical time. The Complainant had a vacation
+          already planned and paid for during this time and I did allow him to take leave for
+          a week. After the Executive performance period winded down, the Complainant
+          went back to his regular telework schedule in December. It came to my attention
+          from my leaders that once again he wasn't responding to emails or voicemails. I
+          received a phone call from [S1’s first-level supervisor (S2)] that she and [S3] were
+          trying to get a hold of the Complainant for hours and that he wasn't responding to
+          phone calls or emails. He did not respond to [S2] until after I personally contacted
+          him.
+
+
+
+
+2
+    The record indicates that S3 is no longer with the Agency.
+                                                  5                                      2019005238
+
+       On December 21, 2015 I sent the Complainant a letter that notified him that I was
+       cancelling his telework because he was not only not responding to our leadership's
+       calls, but he also wasn't going to the main Interior building regularly as required. I
+       told him that he needed to show more responsiveness and visibility and that [S2]
+       and [S3] needed to see him and know that he was present and available to provide
+       direct HR service to the executives.
+
+       On February 1, 2016 he asked me about restarting his telework. During my weekly
+       one-on-one meetings with my supervisors during this time period I would
+       occasionally ask if they saw any improvements in these areas and they kept telling
+       me that they did not and that they still needed to observe him being more
+       responsive. The Complainant asked again on March 24, 2016, and made a reference
+       to being on telework punishment. I clarified to him that telework was not an
+       entitlement and that [S3] said that she hadn't seen an improvement in
+       responsiveness and visibility so I wasn't going to approve reinstatement of his
+       telework at that time. The Complainant was permitted to do situational telework in
+       the event of snow, etc.
+
+       In July 2016 I did discuss with him allowing him to telework again regularly on a
+       trial basis but shortly after that discussion I ended up cancelling all telework for all
+       staff members for the remainder of the calendar year due to a shortage of staff and
+       the impending change of administration and leadership that would greatly affect the
+       needed work and responsiveness of our office. Telework was cancelled in
+       September 2016. I cancelled regular telework for all staff members for the
+       remainder of the calendar year due to a shortage of staff and the impending change
+       of administration and leadership that would greatly affect the needed work and
+       responsiveness of our office. It was not reinstated until about 2 weeks ago.
+
+We further note that S1 provided copies of contemporaneous emails between herself and
+Complainant that support her version of events.
+
+With regard to Complainant’s FY 2015 evaluation of “Fully Successful”, S1 averred that:
+
+       Fully successful is not a bad rating; it means that you are performing your duties
+       successfully. I contemplated giving a lower rating level in some of the performance
+       elements based on my observations of the Complainant's work and feedback from
+       my supervisors during that period, but I felt that the Complainant did, in the end,
+       perform the duties at least successfully during the July 2015 to September 2015
+       timeframe, even though I had several complaints or concerns from my leadership
+       that things weren't being done in a timely fashion. At one point during discussions
+       about his performance, I did inform the Complainant that I had concerns that he
+       wasn't operating fully at the GS-14 level. For example, he submitted a vacancy
+       announcement for an executive position that wasn't in final format, something that
+       should be done at the GS-14 grade level.
+                                                 6                                      2019005238
+
+       In another instance, he had a conversation with our Director and he was quite rude
+       and I felt that he lacked diplomacy. I had asked all staff to write up their
+       accomplishments for the rating period and the accomplishments that he himself
+       listed and provided to me were at the fully successful level, he did not list anything
+       that was at an exceptional level. He didn't go above and beyond in any particular
+       area. I provided a verbal review to the Complainant in December and then in March
+       I gave him his formal review. During both I told him that I observed that he was
+       struggling in certain areas and that his performance was fully at best. I told him that
+       based on my observations I did not think that he was fully ready to handle the level
+       of independence needed for a GS-14 position.
+
+With regard to Complainant being denied staffing policy work, S1 averred that:
+
+       Complainant was assigned staffing policy work. In October or November 2015, I
+       did discuss with him that he could work on some hiring reform assignments that I
+       was considering. Subsequent to that, the Bureau took the idea of hiring reform to a
+       much higher level than I was originally considering and decided that they wanted a
+       full-time project lead to lead a multi-dimensional, Bureau-wide program. I was
+       provided an additional position to hire someone to manage this bureau-wide project
+       full time. The Complainant was assigned a role as one of the team leads on the HR
+       Modernization project, an assignment that included numerous and ongoing staffing
+       policy projects. The Complainants own job was primarily serving as the Executive
+       Resources HR Specialist and policy work was an additional duty, so I couldn't have
+       him lead the HR Modernization project or do staffing policy work full time. Also,
+       it was not an option to detail him to the role of HR Modernization program lead
+       because his job required him to be immediately responsive and visible to the
+       Executive Resources cadre. I would have never taken him off of that assignment as
+       that is what he was hired to do. His job was never going to be staffing lead since
+       there was already someone in the staffing lead position. We discussed this and I
+       told him that he was hired to be in the Executive Resources HR Specialist role. I
+       had given him plenty of other policy work as well, including drafting a policy on
+       IPA Assignments and developing a data and metrics program. When I gave him
+       assignments, he often failed to complete them accurately or timely. It would take
+       him months to do some of these things.
+
+With regard to management failing to respond to Complainant’s detail requests in February and
+July, 2016, S1 averred that:
+
+       I do not remember July as I had recently been out of the office on vacation and then
+       was out again for a week or more due to my own unexpected medical issue and I
+       had a backlog of email to catch up on, but I do recall when he asked for the earlier
+       request around February 2016. At that time, I told him that we were getting ready
+       to kick off the HR Modernization project and that he was going to have a major
+       role as a team lead so it was not a good time to be away from the office.
+                                                 7                                     2019005238
+
+       The HR Modernization project went through the end of August 2016. Also, the
+       Complainant had several assignments that he had not turned in and were late, so I
+       could not have approved the request to be on a detail even without the HR
+       Modernization project.
+
+With regard to Complainant’s medical information being shared, S1 averred that,“I shared the
+documentation with . . . the Reasonable Accommodation Coordinator (RAC) for the office and . . .
+the HR Officer. RAC shared the documentation with the Medical Officer of the DOI's Office of
+Occupational Health and Safety.”
+
+With regard to Complainant’s FY 2016 performance rating, S1 averred that:
+
+       The complainant received a rating of Fully Successful for 2016. Although his
+       overall rating was the same as it was for FY 15, based on feedback that I received
+       from some of his executive clients and based on my observations of his work, I was
+       able to raise his rating from level 3 (fully successful) to level 4 (superior) for the
+       element related to his management of the executive resources program. Although
+       this did not raise his overall rating, it did increase his total score from 3.25 in FY
+       15 to 3.4 in FY 16.
+
+The Agency having articulated legitimate non-discriminatory reasons for its actions, the burden
+shifts back to Complainant to establish, by a preponderance of the evidence, that the Agency’s
+reasons were not its true reasons, but were pretexts for discrimination. See Hicks; Burdine;
+McDonnell Douglas. Following a review of the record we find that Complainant has failed to
+meet this burden.
+
+With regard to Complainant’s telework privileges, Complainant did not deny S1’s contention that
+management officials had been unable to reach him while he was on telework. Instead
+Complainant argues that S1 has not provided any evidence that this occurred more than once.
+Complainant further maintained that S1 “had mentioned that [S2&3] mentioned they had difficulty
+reaching other employees but they were never placed on telework restriction, to my knowledge.”
+Complainant, however, has not identified these other employees and hence is unable to establish
+that they were otherwise similarly situated with himself. Complainant argues that female
+employees did not have their telework restricted, but he makes no argument that any of them could
+not be reached by management while teleworking. With regard to S1’s contention that she
+eventually stopped all telework, Complainant maintains that “it only affected the black
+employees . . . of HR Policy and Programs Division; the last white employee [name omitted] of
+the Washington Office retired around August 21, 2016. . . . [name omitted], the sole white
+employee, in Boise, ID, was allowed to continue teleworking.” Since Complainant admits that the
+sole employee outside of his protected bases who was allowed to continue telework worked in a
+separate office more than halfway across the country we again find that Complainant has not
+shown he was similarly situated with that employee.
+                                                 8                                     2019005238
+
+With regard to Complainant’s FY 2015 and 2016 performance ratings, Complainant averred that
+he believed he should have been rated at the Superior level for both and that “the work products I
+produced met the criteria for the Superior levels for Performance Elements 1, 2, 3, and 4. I was
+rated Fully Successful in 3 of my 4 performance elements: Elements I, 2, and 4.” While
+Complainant may believe he was entitled to a higher rating, he has not met his burden of
+establishing that the Agency’s articulated reasons for awarding him “Fully Successful” ratings are
+a pretext or that the actions were motivated by discriminatory animus against his protected bases.
+
+With regard to Complainant being denied staffing policy work, and management failing to respond
+to Complainant’s detail requests in February and July 2016, Complainant did not address S1’s
+articulated reason for her actions. With regard to Complainant’s medical information being shared,
+Complainant affidavit confirms S1’s response that she shared the information with RAC. In
+addition, Complainant alleged that “it came to my attention one of the contractors for building
+maintenance was aware that I received a workplace modification because of a medical condition.”
+As such we find that Complainant has not shown that S1 shared the information with people
+without a need to know or that his reasonable accommodation request was improperly made public.
+
+In conclusion, we find, with regard to the above claims, Complainant has not shown, by a
+preponderance of the evidence, that the Agency’s articulated reason for its actions were pretexts
+to mask discrimination or reprisal, or that such actions were motivated by discriminatory animus
+against his protected bases.
+
+Cancellation of Pathways Training
+
+With regard to the denial of Complainant’s Pathways Training being cancelled, we note that S1
+averred that the reason for the action was that:
+
+       The Complainant was scheduled to attend Pathways training approximately 2-3
+       weeks after I received his medical documentation [in support of his first reasonable
+       accommodation request concerning his photosensitivity]. The Pathways training
+       takes place in Phoenix, AZ and is attended by a large number of participants in a
+       training facility with numerous big fluorescent lights. Because 1 could not control
+       the lighting situation at the training facility and because I had just learned of the
+       severity of his condition, it was necessary for me to cancel his participation in that
+       session.
+
+S1 admits that she cancelled Complainant’s participation in the training because of his claimed
+disability. As such, S1 has not articulated a legitimate, non-discriminatory reason for her action.
+The record shows that S1 and Complainant discussed the option of wearing dark sunglasses
+indoors but S1 nevertheless cancelled the trip based on her own interpretation of Complainant’s
+medical restrictions, not based on Complainant’s description of what his needs were. The record
+shows S1 sent Complainant a memo dated April 15, 2016, in which S1 appears to be receptive to
+Complainant’s medical needs, including the need to turn off overhead lights at his desk.
+                                                  9                                     2019005238
+
+However, S1 further stated in the memo that the training trip needed to be cancelled due to the
+presence of overhead lights at the training center that S1 could not control, despite the fact that S1
+further noted in the memo that it was, “OK [for Complainant] to wear sunglasses.” We note that
+the record includes an additional handwritten note by S1. The date is illegible, but in the note S1
+wrote that Complainant:
+
+       Contradicted himself. Write up conv[ersation] with [Complainant] about
+       Reasonable Accommodation. In morning he said natural sun not a problem and
+       room darkening with window shades wouldn’t matter, only fluorescent light
+       flickering caused problem. Then in afternoon when I told him that he couldn’t go
+       to Phoenix because couldn’t control environment, he said that he could sit through
+       week of training with fluorescent lights cause [illegible] darkening shades for
+       outside [illegible].
+
+This handwritten note indicates that Complainant was willing to attend the training, perhaps with
+the aid of sunglasses, and that he believed that window shades at the facility would be sufficient.
+Despite this S1 decided to cancel the training due to Complainant’s disability rather than
+incorporate Complainant’s feedback into her decision.
+
+Here, it is undisputed that S1 cancelled Complainant’s training because of what she perceived were
+limitations caused by his disability, despite his own expressed desire to attend the training and
+belief that he could be accommodated at the training. We further note that there is no evidence
+proffered by the Agency that allowing Complainant to attend the Pathways training would have
+caused any problems for the Agency. Because S1 has not articulated a legitimate, non-
+discriminatory reason for her action, we find that Complainant has established his claim of
+disparate treatment based on disability when he was denied the opportunity to attend Pathways
+training.
+
+Denial of Reasonable Accommodation
+
+An agency is required to make a reasonable accommodation to the known physical and mental
+limitations of an otherwise qualified individual with a disability unless the agency can show that
+accommodation would cause an undue hardship. 29 C.F.R. § 1630.9. To establish that he was
+denied a reasonable accommodation, Complainant must show that: (1) he is an individual with a
+disability, as defined by 29 C.F.R. § 1630.2(g); (2) he is a “qualified” individual with a disability
+pursuant to 29 C.F.R. § 1630.2(m); and (3) the Agency failed to provide his with a reasonable
+accommodation. See EEOC Enforcement Guidance on Reasonable Accommodation and Undue
+Hardship under the Americans with Disabilities Act, EEOC Notice No. 915.002 (Oct. 17, 2002)
+(Enforcement Guidance on Reasonable Accommodation). The term “qualified,” with respect to an
+individual with a disability, means that the individual satisfies the requisite skill, experience,
+education and other job-related requirements of the employment position such individual holds
+and, with or without reasonable accommodation, can perform the essential functions of the
+position. 29 C.F.R. § 1630.2(m).
+                                                   10                                      2019005238
+
+A request for a modification or change at work because of a medical condition is a request for
+reasonable accommodation. Enforcement Guidance on Reasonable Accommodation at Question
+1. After receiving a request for reasonable accommodation, an agency “must make a reasonable
+effort to determine the appropriate accommodation.” 29 C.F.R. pt. 1614. app. § 1630.9. Thus, “it
+may be necessary for the [agency] to initiate an Informal, interactive process with the individual
+with a disability . . . [to] identify the precise limitations resulting from the disability and potential
+reasonable accommodations that could overcome those limitations.” 29 C.F.R. § 1630.2(o)(3); see
+also 29 C.F.R. pt. 1630 app. § 1630.9; Enforcement Guidance on Reasonable Accommodation at
+Question 5.
+
+Reasonable accommodation includes such modifications or adjustments as job restructuring, the
+acquisition or modification of equipment or devices, and reassignment to a vacant position. 29
+C.F.R. § 1630.2(o)(2)(ii). A qualified individual with a disability is defined as an individual with
+a disability who, with or without reasonable accommodation, can perform the essential functions
+of the position held or desired. 29 C.F.R. § 1630.2(m); see also Struthers v. Dep't of the Navy,
+EEOC Appeal No. 07A40043 (June 29, 2006) (complainant has the threshold burden of
+establishing that he is a qualified individual with a disability).
+
+The record shows that Complainant has severe photosensitivity, anxiety, and panic attacks. With
+regard to severe photosensitivity we find that Complainant is an individual with a disability that
+limits his major life activities of seeing and working based on his physician’s documentation that
+stated that the condition triggered “decapitating [sic]” migraines that impaired his ability to work.
+We further find that Complainant is a qualified individual with a disability as the record shows
+that Complainant could perform the essential functions of his position with reasonable
+accommodations such as dimming the lights in his work area or permitting him to wear dark
+sunglasses at work. With regard to anxiety and panic attacks, we need not address whether
+Complainant is an individual with a disability because, as we explain further below, we find that
+the Agency did not deny Complainant a reasonable accommodation.
+
+In April 2016, Complainant requested an accommodation for extreme photosensitivity and
+generalized anxiety disorder. Complainant requested the removal of overhead lights, the approval
+to wear sunglasses indoors, moving his work location away from his leadership chain, and the
+opportunity to telework. The record further shows that, with regard to Complainant’s normal work
+environment in the office, the Agency and S1 promptly responded to Complainant’s extreme
+photosensitivity by ensuring that the overhead lighting around his work area was dimmed or turned
+off. In his affidavit, Complainant did not allege that his request was not complied with and so we
+find that Complainant was not denied a reasonable accommodation for photosensitivity with
+regard to his normal work environment in the office. As noted above, however, S1 did not provide
+a reasonable accommodation to Complainant with regard to his request to attend Pathways
+training, by, for example, allowing him to attend while wearing sunglasses, or providing the
+training in some other format that would not require Complainant to attend classes under bright
+fluorescent lighting. Instead, S1 cancelled Complainant’s attendance at the training even though
+Complainant indicated he could attend.
+                                                11                                    2019005238
+
+With regard to Complainant’s generalized anxiety disorder, the record shows that the Agency
+engaged in the interactive process with Complainant over a period of months seeking additional
+input and medical information from Complainant, until, on August 3, 2016, S1 issued Complainant
+a memorandum that stated that Complainant had requested:
+
+       [A] reasonable accommodation which you described as anxiety and panic attacks
+       and noted that you were unable to focus on your work. You provided the medical
+       documentation dated May 18, 2016 for your second condition. The medical care
+       provider [Name omitted], noted that your impairment was anxiety and panic attacks
+       which caused you to be unable to focus on work assignments. [Your physician] also
+       noted that your impairment limits your ability to stay on task, complete your
+       assignments in a timely manner, multitask, and analyze complex and abstract
+       concepts. [Your physician] also noted that your position requires a high degree of
+       analytical capability and confidence and your impairment severely limits your
+       ability to perform these duties effectively due to your mind constantly wondering
+       and going blank. [Your physician] recommended that you be allowed to telework
+       twice a week stating that it would help you with your ability to stay focused and to
+       analyze complex and abstract concepts and also recommended moving your work
+       space to a location that is not high traffic.
+
+       Given that our workspace is mainly cubicles and your cubicle is not in a high traffic
+       area, on July 5, 2016, I directed you to reposition your chair and computer to face
+       the back right corner to lessen the distraction of people walking by your cubicle.
+       However, to date you have ignored my directive and have kept your computer in
+       its original position which allows you to see individuals walking by.
+
+       [Your physician] did not give an explanation of how working from home would
+       stop your mind from going blank or wandering and enable you to stay on task, to
+       multitask and to analyze complex and abstract concepts, and to complete your work
+       in a timely manner. Your past telework demonstrated a lack of responsiveness to
+       senior management which is why telework was rescinded. Your position does not
+       allow for extended telework as an essential function of your position requires much
+       face-to-face time with senior leadership. [The Agency Telework Handbook] states
+       that ''Employees are responsible for communicating well with the supervisor, co-
+       workers, and customers, enabling a relatively seamless transition” and
+       "Demonstrating self-motivation independence, and dependability in accomplishing
+       work assignments.” . . .
+
+       I cannot modify your position to remove any of your essential functions nor can I
+       lower your production standards. However, I can offer that for the time being that
+       you move your computer as previously directed, and once cubicle 3294 becomes
+       vacant you may move to that cubicle as it is further from the hallway door. In
+       addition, I am willing to purchase noise reduction headphones for you that should
+                                                12                                     2019005238
+
+       assist in your staying focused as they filter out distracting sounds but still allow
+       nearby conversations.
+
+The memorandum concluded by requesting that Complainant respond within ten days or “it will
+be assumed you are no longer interested in the assistance offered and your case will he closed.”
+The record does not show that Complainant responded to the August 3, 2016 memorandum. As
+such we find that the Agency did not deny Complainant a reasonable accommodation with regard
+to his generalized anxiety disorder and panic attacks.
+
+Hostile Work Environment
+
+Finally, we note that, to the extent that Complainant is alleging that he was subjected to a hostile
+work environment, when his telework privileges were revoked, he received “Fully Successful”
+ratings for Fiscal Years 2015 and 2016, he was denied the opportunity to participate in staffing
+policy work, his detail requests were ignored, and his medical information was shared with persons
+without a need to know, we find that under the standards set forth in Harris v. Forklift Systems,
+Inc., 510 U.S. 17 (1993) that any claim of hostile work environment that includes such claims must
+fail. See Enforcement Guidance on Harris v. Forklift Systems, Inc., EEOC Notice No. 915.002
+(March 8, 1994). A prima facie case of hostile work environment that includes such claims is
+precluded based on our finding, discussed above, that Complainant failed to establish that any of
+the actions taken by the Agency were motivated by discriminatory animus or retaliatory motive.
+See Oakley v. United States Postal Service, EEOC Appeal No. 01982923 (September 21, 2000).
+
+The sole remaining act of harassment consists of Complainant receiving a written warning on
+October 6, 2015. In considering whether such an action constitutes harassment, the Commission
+notes that in Harris, the Supreme Court reaffirmed the holding of Meritor Savings Bank v. Vinson,
+477 U.S. 57 (1986), that harassment is actionable if it is sufficiently severe or pervasive that it
+results in an alteration of the conditions of the complainant’s employment. See EEOC Notice No.
+915.002 (March 8, 1994), Enforcement Guidance on Harris v. Forklift Systems, Inc. at 3.
+
+Following a review of the record we find that Complainant has not shown that the harassment
+either involved or was based on his protected bases. We further find that Complainant has not
+shown that the single action was sufficiently severe or pervasive so as to alter the conditions of
+Complainant’s employment.
+
+                                         CONCLUSION
+
+Based on a thorough review of the record and the contentions on appeal, including those not
+specifically addressed herein, we find with regard to all of the claims except the cancellation of
+his Pathways Training, that Complainant has not shown that discrimination occurred. However,
+with regard to the denial of Pathways Training we find that Complainant has established that he
+was denied a reasonable accommodation and that he was subjected to disparate treatment based
+on disability. We therefore AFFIRM the final order in part and REVERSE in part, and we
+REMAND the claim for further processing in according with this decision and the Order below.
+                                                13                                     2019005238
+
+                                             ORDER
+
+   1. If he has not already been provided with the Pathways Training at issue, Complainant shall
+      receive permission to attend the next session of the training if he still wishes to go, with
+      reasonable accommodation provided for his disabilities.
+
+   2. Within ninety (90) calendar days of the date this appellate decision is issued, the Agency
+      shall conduct a supplemental investigation to determine Complainant's entitlement to
+      compensatory damages under the Rehabilitation Act. The Agency shall give Complainant
+      notice of the right to submit objective evidence (pursuant to the guidance given in Carle v.
+      Dep’t of the Navy, EEOC Appeal No. 01922369 (January 5, 1993)) and request objective
+      evidence from Complainant in support of his request for compensatory damages within
+      forty-five (45) calendar days of the date Complainant receives the Agency's notice. No
+      later than sixty (60) calendar days after the supplemental investigation is complete, the
+      Agency shall issue a final Agency decision addressing the issue of compensatory damages
+      and remit payment of said amount. The final decision shall contain appeal rights to the
+      Commission.
+
+   3. Within ninety (90) calendar days from the date this decision is issued, the Agency shall
+      provide eight hours of interactive or in-person training to S1 (Complainant’s supervisor at
+      the Agency’s Bureau of Land Management facility in Washington, DC), regarding
+      management’s responsibilities under the Rehabilitation Act, with special emphasis on
+      management’s duties regarding the interactive process. The Agency shall provide proof of
+      S1’s attendance, as well as the contents of the in-person training provided.
+
+   4. Within thirty (30) calendar days from the date this decision is issued, the Agency shall post
+      a finding notice, as provided in the statement entitled “Posting Order.”
+
+The Agency is further directed to submit a report of compliance, as provided in the statement
+entitled “Implementation of the Commission's Decision.” The report shall include supporting
+documentation verifying that the corrective action has been implemented.
+
+                                   POSTING ORDER (G0617)
+
+The Agency is ordered to post at its Bureau of Land Management facility in Washington, DC,
+copies of the attached notice. Copies of the notice, after being signed by the Agency's duly
+authorized representative, shall be posted both in hard copy and electronic format by the Agency
+within 30 calendar days of the date this decision was issued, and shall remain posted for 60
+consecutive days, in conspicuous places, including all places where notices to employees are
+customarily posted. The Agency shall take reasonable steps to ensure that said notices are not
+altered, defaced, or covered by any other material. The original signed notice is to be submitted to
+the Compliance Officer as directed in the paragraph entitled ““Implementation of the
+Commission's Decision,” within 10 calendar days of the expiration of the posting period.
+                                                 14                                     2019005238
+
+The report must be in digital format, and, must be submitted via the Federal Sector EEO Portal
+(FedSEP). See 29 C.F.R. § 1614.403(g).
+
+                                  ATTORNEY'S FEES (H1016)
+
+If Complainant has been represented by an attorney (as defined by 29 C.F.R. § 1614.501(e)(1)(iii)),
+he is entitled to an award of reasonable attorney's fees incurred in the processing of the complaint.
+29 C.F.R. § 1614.501(e). The award of attorney's fees shall be paid by the Agency. The attorney
+shall submit a verified statement of fees to the Agency -- not to the Equal Employment Opportunity
+Commission, Office of Federal Operations -- within thirty (30) calendar days of the date this
+decision was issued. The Agency shall then process the claim for attorney's fees in accordance
+with 29 C.F.R. § 1614.501.
+
+             IMPLEMENTATION OF THE COMMISSION'S DECISION (K0618)
+
+Under 29 C.F.R. § 1614.405(c) and §1614.502, compliance with the Commission's corrective
+action is mandatory. Within seven (7) calendar days of the completion of each ordered corrective
+action, the Agency shall submit via the Federal Sector EEO Portal (FedSEP) supporting documents
+in the digital format required by the Commission, referencing the compliance docket number under
+which compliance was being monitored.
+
+Once all compliance is complete, the Agency shall submit via FedSEP a final compliance report
+in the digital format required by the Commission. See 29 C.F.R. § 1614.403(g). The Agency's final
+report must contain supporting documentation when previously not uploaded, and the Agency
+must send a copy of all submissions to the Complainant and his/her representative.
+
+If the Agency does not comply with the Commission's order, the Complainant may petition the
+Commission for enforcement of the order. 29 C.F.R. § 1614.503(a). The Complainant also has the
+right to file a civil action to enforce compliance with the Commission's order prior to or following
+an administrative petition for enforcement. See 29 C.F.R. §§ 1614.407, 1614.408, and 29 C.F.R.
+§ 1614.503(g). Alternatively, the Complainant has the right to file a civil action on the underlying
+complaint in accordance with the paragraph below entitled “Right to File a Civil Action.” 29
+C.F.R. §§ 1614.407 and 1614.408. A civil action for enforcement or a civil action on the underlying
+complaint is subject to the deadline stated in 42 U.S.C. 2000e-16(c) (1994 & Supp. IV 1999). If
+the Complainant files a civil action, the administrative processing of the complaint, including any
+petition for enforcement, will be terminated. See 29 C.F.R. § 1614.409.
+
+               COMPLAINANT'S RIGHT TO FILE A CIVIL ACTION (R0610)
+
+This is a decision requiring the Agency to continue its administrative processing of your complaint.
+However, if you wish to file a civil action, you have the right to file such action in an appropriate
+United States District Court within ninety (90) calendar days from the date that you receive this
+decision. In the alternative, you may file a civil action after one hundred and eighty (180) calendar
+days of the date you filed your complaint with the Agency or filed your appeal with the
+                                                  15                                      2019005238
+
+Commission. If you file a civil action, you must name as the defendant in the complaint the person
+who is the official Agency head or department head, identifying that person by his or her full name
+and official title. Failure to do so may result in the dismissal of your case in court. “Agency” or
+“department” means the national organization, and not the local office, facility or department in
+which you work. Filing a civil action will terminate the administrative processing of your
+complaint.
+
+                            RIGHT TO REQUEST COUNSEL (Z0815)
+
+If you want to file a civil action but cannot pay the fees, costs, or security to do so, you may request
+permission from the court to proceed with the civil action without paying these fees or costs.
+Similarly, if you cannot afford an attorney to represent you in the civil action, you may request the
+court to appoint an attorney for you. You must submit the requests for waiver of court costs or
+appointment of an attorney directly to the court, not the Commission. The court has the sole
+discretion to grant or deny these types of requests. Such requests do not alter the time limits for
+filing a civil action (please read the paragraph titled Complainant’s Right to File a Civil Action for
+the specific time limits).
+
+FOR THE COMMISSION:
+
+
+
+______________________________                     Carlton M. Hadden’s signature
+Carlton M. Hadden, Director
+Office of Federal Operations
+
+
+November 9, 2020
+Date
+

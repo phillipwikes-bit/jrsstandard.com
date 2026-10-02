@@ -1,0 +1,382 @@
+            U.S. EQUAL EMPLOYMENT OPPORTUNITY COMMISSION
+                          Office of Federal Operations
+                                 P.O. Box 77960
+                            Washington, DC 20013
+
+
+
+                                      Minerva Z., 1
+                                      Complainant,
+
+                                           v.
+
+                                 Denis R. McDonough,
+                                       Secretary,
+                             Department of Veterans Affairs,
+                                        Agency.
+
+                                Request No. 2024002014
+
+                                 Appeal No. 2021002154
+
+                              Hearing No. 570-2016-00929X
+
+                           Agency No. 2004-0372-2015104699
+
+
+                  DECISION ON REQUEST FOR RECONSIDERATION
+
+Complainant timely requested that the Equal Employment Opportunity Commission (EEOC or
+Commission) reconsider its decision in Minerva Z. v. Department of Veterans Affairs, EEOC
+Appeal No. 2021002154 (September 22, 2022).
+
+                                  ISSUE PRESENTED
+
+Whether Complainant’s request for reconsideration of EEOC Appeal No. 2021002154 meets the
+criteria detailed in 29 C.F.R. § 1614.405(c).
+
+                                    BACKGROUND
+
+During the relevant time, Complainant worked as a Rating Veterans Service Representative
+(RVSR), GS-0996-12, at the Appeals Management Service Center (AMC) in Washington, D.C.
+
+
+
+1
+ This case has been randomly assigned a pseudonym which will replace Complainant’s name
+when the decision is published to non-parties and the Commission’s website.
+                                               2                                   2024002014
+
+Complainant filed two complaints that were consolidated. In her first complaint, Complainant
+alleged discrimination based on race (African American), sex (female) and reprisal when:
+
+Complaint A
+
+       (1)    On February 4, 2015, via email, Complainant informed the Assistant Director that
+              she felt the February 3, 2013, meeting dealing with hostile workplace
+              environment and discrimination was unsuccessful and she was not satisfied with
+              the outcome.
+       (2)    On February 13, 2015, the Assistant Director scolded Complainant in the
+              presence of her coworkers.
+       (3)    On February 25, 2015, Complainant was issued a proposed Letter of Reprimand
+              (LOR) for Conduct Unbecoming of a Federal Employee.
+       (4)    On March 10, 2015, Complainant requested a change of her tour of duty, but her
+              request was denied.
+       (5)    On March 12, 2015, Complainant’s third-line supervisor issued Complainant the
+              LOR.
+       (6)    On March 18, 2015, Complainant’s first-line supervisor (Supervisor 1) failed to
+              input Complainant’s January 2015 productivity output and seven hours of
+              productivity output for February 5, 2015.
+       (7)    On May 19, 2015, Complainant’s request for telework was denied.
+       (8)    As of June 10, 2015, Complainant had not been informed as to whether her
+              request for an exemption for mandatory overtime in March and April 2015 had
+              been approved or denied.
+       (9)    On October 15, 2015, Complainant’s third line supervisor issued Complainant a
+              Notice of Proposed Removal (NPR).
+
+In her second complaint, Complainant alleged discrimination based on race, sex, disability (Post
+Traumatic Stress Disorder) and reprisal when:
+
+Complaint B
+
+       (1)    In 2013, Supervisor 1 subjected Complainant to unwanted sexual advances and
+              tried to kiss her neck which she rejected and pushed him away.
+       (2)    From February 2015 to March 2015, Supervisor 1 regularly asked Complainant if
+              she would consider marrying him after his divorce.
+       (3)    Beginning in March 2015, Supervisor 1 gave Complainant a hard time about her
+              monthly performance appraisal.
+       (4)    Beginning in March 2015, Supervisor 1 lingered around Complainant's desk and
+              would stalk Complainant.
+       (5)    On March 20, 30 and May 19, 2015, Complainant requested deductible time for
+              the months of January and February 2015, but she was never credited for the
+              deductible time.
+                                               3                                    2024002014
+
+       (6)    From May 2015 to present, Supervisor 1 harassed and stalked Complainant by
+              calling her and hanging up three times a day along with stopping by her desk to
+              see what she was doing.
+       (7)    From May 20, 2015, through August 11, 2015, a Human Resources Specialist
+              (HR Specialist) continually asked Complainant if she had talked with her union
+              representative about settling her EEO case and said if she withdrew her
+              complaint, the LOR would be removed.
+       (8)    On June 9, 2015, Supervisor 1 informed Complainant that he could not put her in
+              for an award or give her good comments in her performance appraisals because
+              she kept too much company around her desk.
+       (9)    In June 2015, Supervisor 1 went to Complainant's desk and told her “You don't
+              love me no more.”
+       (10)   On June 30, 2015, Complainant's request for a reasonable accommodation was
+              partially denied.
+       (11)   On July 14, 2015, Complainant emailed Supervisor 1 about her June 2015
+              appraisal and explained that her figures had been incorrectly calculated but he
+              took no remedial action.
+       (12)   On July 20, 2015, Supervisor 1 falsely accused Complainant of failing to put in
+              tickets.
+       (13)   On July 21, 2015, Complainant requested a reasonable accommodation and
+              emailed Supervisor 1 and another supervisor asking for clarification about why
+              she was denied participation in the Telework Pilot Program (TPP), but she did not
+              receive a response.
+       (14)   On July 22, and 23, 2015, Supervisor 1 wrote down the names of the male
+              employees that stopped by Complainant's desk and informed their supervisors.
+       (15)   On July 22, 2015, Supervisor 1 called another supervisor to direct two male
+              coworkers to stay away from Complainant's desk.
+       (16)   On July 23, 2015, a male coworker was directed to stay away from Complainant's
+              desk.
+       (17)   On July 25, 2015, Supervisor 1 denied Complainant's request for eight hours of
+              overtime.
+       (18)   On July 28, 2015, Supervisor 1 would appear at Complainant's desk when other
+              male coworkers were present and asked if it was work-related.
+       (19)    On August 24, 2015, HR Specialist denied Complainant’s August 17, 2015,
+              accommodation request.
+       (20)   On October 15, 2015, Complainant’s third level Supervisor issued Complainant
+              an NPR for Inappropriate Disclosure of Patient Information and Lack of Candor.
+
+Following the Agency’s investigation of the claims, Complainant timely requested a hearing, but
+subsequently withdrew her request and the Agency issued a Final Agency Decision (FAD)
+finding that, with regard to the NPR, Complainant proved that management subjected her to
+unlawful reprisal, but also finding no discrimination with regard to any of the remaining claims.
+Complainant subsequently appealed.
+                                                 4                                     2024002014
+
+In EEOC Appeal No. 2021002154, we reversed the finding with regard to the NPR, but found
+that the Agency violated the Rehabilitation Act when Complainant was denied a reasonable
+accommodation (Complaint A, Claim 7A; Complaint B, Claims 10B, 13B and 19B).
+Additionally, with regard to Complainant’s claim of retaliatory harassment by HR Specialist
+(Complaint B, Claim 7), we remanded the claim for a supplemental investigation.
+
+With regard to the remaining claims, however, we found no discrimination. Specifically,
+concerning Complainant being denied a change of tour duty, issued a Letter of Reprimand, and
+denied overtime, we found that the Agency articulated legitimate nondiscriminatory reasons for
+its actions and Complainant failed to establish that such reasons were pretextual. With regard to
+the allegations of sex-based harassment, we found Complainant failed to establish that the
+actions occurred as alleged, and that to the extent the actions did occur, they were insufficiently
+severe and/or pervasive to constitute harassment. We therefore affirmed the FAD in part,
+reversed in part, and vacated in part, and remanded the claim for a supplemental investigation
+into the matter of retaliatory harassment by HR Specialist.
+
+The instant request for reconsideration from Complainant followed.
+
+                                CONTENTIONS ON REQUEST
+
+Complainant maintains that in our prior decision we erred in finding that Supervisor 1 was still
+her supervisor at the time she received the NPR. In addition, Complainant raises the same
+arguments she made on appeal.
+
+                                   STANDARD OF REVIEW
+
+EEOC regulations provide that the Commission may, in its discretion, grant a request to
+reconsider any previous Commission decision issued pursuant to 29 C.F.R. § 1614.405(a), where
+the requesting party demonstrates that: (1) the appellate decision involved a clearly erroneous
+interpretation of material fact or law; or (2) the appellate decision will have a substantial impact
+on the policies, practices, or operations of the agency. See 29 C.F.R. § 1614.405(c).
+
+                                           ANALYSIS
+
+In her request, Complainant disagrees with our findings with regard to the issue of whether or
+not Supervisor 1 was still Complainant’s supervisor at the time the NPR was issued and argues
+that in reversing the Agency’s finding that the NPR was retaliatory, we erroneously found that
+Supervisor 1 was not her supervisor at the time. Complainant maintains that an email dated
+October 14, 2015, confirms that Supervisor 1 was still her supervisor at the time the NPR was
+issued the following day. We note, however, that a review of our prior decision reveals that our
+reason for finding no discrimination was because:
+
+       the evidence does not support the finding that [Supervisor 1] initiated or instigated
+       the review of ASPEN in mid-September or otherwise had an active role in
+                                                 5                                     2024002014
+
+       compiling the evidence file to support the NPR. The record is also devoid of
+       evidence to suggest that [Supervisor 1] was involved in the decision to issue the
+       NPR.
+
+EEOC Appeal No. 2021002154.
+
+Furthermore, the record shows the NPR was not issued by Supervisor 1, but by the Assistant
+Veterans Service Center Manager and thus even if we erred in our prior decision by finding that
+Supervisor 1 was not Complainant’s supervisor at the time the NPR was issued, any such error
+was not material. We note in this regard that Complainant has still not shown that the NPR was
+motivated by retaliatory animus either by Supervisor 1, who was not involved in the NPR, or by
+the official who issued the NPR. The remainder of Complainant’s request for reconsideration
+consists of the same arguments made in her initial appeal.
+
+We have reviewed the submissions by Complainant in support of the instant request for
+reconsideration. However, we determine that there is no reason to disturb the Commission’s
+prior decision. A request for reconsideration is not a second appeal to the Commission. Equal
+Employment Opportunity Management Directive for 29 C.F.R. Part 1614 (EEO MD-110), Chap.
+9 § VI.A (Aug. 5, 2015); see, e.g., Lopez v. Dep't of Agric., EEOC Request No. 0520070736
+(Aug. 20, 2007). Rather, a reconsideration request is an opportunity to demonstrate that the
+appellate decision involved a clearly erroneous interpretation of material fact or law, or will have
+a substantial impact on the policies, practices, or operations of the Agency. Complainant has not
+done so here.
+
+After reviewing the previous decision and the entire record, the Commission finds that the
+request fails to meet the criteria of 29 C.F.R. § 1614.405(c), and it is the decision of the
+Commission to deny the request. The decision in EEOC Appeal No. 2021002154 remains the
+Commission's decision. There is no further right of administrative appeal on the decision of the
+Commission on this request.
+
+The complaint is REMANDED to the Agency for compliance with our previous Order repeated
+below.
+
+                                             ORDER
+
+To the extent that it has not already done so, the Agency is ORDERED to take the following
+actions:
+
+       1.      Within 60 days from the date this decision is issued, the Agency shall conduct and
+               complete a supplemental investigation with respect to Complaint B, Claim 7
+               (hereinafter referred to as “Claim 7B”) that is consistent with the requirements of
+               29 C.F.R. § 1614.108(b), in EEO MD-110, Chapter 6 and consistent with this
+               decision. The supplemental investigation shall include, but is not limited to: (a) an
+               affidavit or other declaration from Complainant’s then Union Representative and
+                                                6                                     2024002014
+
+              Complainant’s coworker (identified as CW9 in our prior appellate decision)
+              addressing their knowledge of the facts relevant to Claim 7B; (b) an affidavit
+              from HR Specialist’s supervisor which provides a detailed explanation of the
+              Human Resources Specialist (HR Specialist) role as ADRC and what,
+              specifically, she understood HR Specialist needed to contact her then Union
+              Representative about; (c) an affidavit or other declaration from HR Specialist
+              providing: (i) a full detailed explanation as to the extent of his job duties relevant
+              to Claim 7B; (ii) details regarding each time he communicated with Complainant
+              relevant to Claim 7B 2; (d) all documentary evidence relevant to HR Specialist’s
+              job duties relevant to Claim 7B; (e) all documentary evidence in the Agency’s
+              possession relevant to Claim 7B, including but not limited to: (i) the two emails
+              identified by Complainant in her testimony; (ii) all email correspondence between
+              Complainant and her then Union Representative relevant to Claim 7B; (iii) all
+              email correspondence between her then Union Representative and HR Specialist
+              relevant to Claim 7B; and (iv) all email correspondence between HR Specialist
+              and Complainant relevant to Claim 7B.
+
+              If the investigator is unable to obtain the requested testimonial or documentary
+              evidence, the investigator shall provide an explanation in the record. The Agency
+              shall provide Complainant the opportunity to provide a rebuttal affidavit once he
+              has received the supplemental investigative report. Complainant shall cooperate,
+              as appropriate, with the Agency in its actions in supplementing the investigation.
+              In the supplemental investigative report, exhibits should be identified in the
+              bookmark sections of the electronic submissions to the Commission and not only
+              identified as an exhibit with a number. The Agency shall issue a new decision
+              following the completion of the investigation. A copy of the supplemental
+              investigative report and a new final decision, unless the parties have otherwise
+              resolved this matter, must be provided to the Compliance Officer as referenced
+              below.
+
+       2.     To the extent that Complainant still requires it, the Agency shall immediately
+              engage in the interactive process with Complainant and provide her with a
+              reasonable accommodation for her disability in accordance with our decision
+              herein.
+
+       3.     Within 90 calendar days of the date this decision is issued, the Agency shall
+              conduct a supplemental investigation to determine Complainant's entitlement to
+              compensatory damages under the Rehabilitation Act [for the failure to provide an
+              effective reasonable accommodation]. The Agency shall give Complainant notice
+              of the right to submit objective evidence (pursuant to the guidance given in Carle
+              v. Dep't of the Navy, EEOC Appeal No. 01922369 (Jan. 5, 1993)) and request
+
+
+2
+  This should include the allegation that HR Specialist raised the issue of settling her EEO
+complaint and telework accommodations at the same time.
+                                                 7                                      2024002014
+
+               objective evidence from Complainant in support of her request for compensatory
+               damages within 45 calendar days of the date Complainant receives the Agency's
+               notice. No later than 60 calendar days after the supplemental investigation is
+               complete, the Agency shall issue a final Agency decision addressing the issue of
+               compensatory damages and remit payment of said amount. The final decision
+               shall contain appeal rights to the Commission.
+
+       4.      Within 90 calendar days from the date this decision is issued, the Agency shall
+               provide eight hours of interactive or in-person training to the officials identified in
+               this decision as HR Specialist and any other management official who had
+               reviewed Complainant’s application for the TPP, regarding management's
+               responsibilities under the Rehabilitation Act. The Agency shall provide proof of
+               the officials’ attendance, as well as the contents of the inperson training
+               provided.
+
+       5.      The Agency shall consider taking appropriate disciplinary action against HR
+               Specialist. The Agency shall report its decision to the Compliance Officer
+               referenced herein. If the Agency decides to take disciplinary action, it shall
+               identify the action taken. If the Agency decides not to take disciplinary action, it
+               shall set forth the reason(s) for its decision not to impose discipline. If the
+               identified management officials have left the Agency's employment, the Agency
+               shall furnish documentation of the departure date(s).
+
+The Agency is further directed to submit a report of compliance, as provided in the statement
+entitled “Implementation of the Commission's Decision.” The report shall include supporting
+documentation verifying that the corrective action has been implemented.
+
+                                   POSTING ORDER (G0617)
+
+The Agency is ordered to post at its Veterans Benefit Administration’s Regional Office in
+Washington, D.C., copies of the attached notice. Copies of the notice, after being signed by the
+Agency's duly authorized representative, shall be posted both in hard copy and electronic
+format by the Agency within 30 calendar days of the date this decision was issued, and shall
+remain posted for 60 consecutive days, in conspicuous places, including all places where notices
+to employees are customarily posted. The Agency shall take reasonable steps to ensure that said
+notices are not altered, defaced, or covered by any other material. The original signed notice is to
+be submitted to the Compliance Officer as directed in the paragraph entitled “Implementation of
+the Commission's Decision,” within 10 calendar days of the expiration of the posting period. The
+report must be in digital format and must be submitted via the Federal Sector EEO Portal
+(FedSEP). See 29 C.F.R. § 1614.403(g).
+                                                8                                     2024002014
+
+             IMPLEMENTATION OF THE COMMISSION’S DECISION (K0719)
+
+Under 29 C.F.R. § 1614.405(c) and §1614.502, compliance with the Commission’s corrective
+action is mandatory. Within seven (7) calendar days of the completion of each ordered corrective
+action, the Agency shall submit via the Federal Sector EEO Portal (FedSEP) supporting
+documents in the digital format required by the Commission, referencing the compliance docket
+number under which compliance was being monitored. Once all compliance is complete, the
+Agency shall submit via FedSEP a final compliance report in the digital format required by the
+Commission. See 29 C.F.R. § 1614.403(g). The Agency’s final report must contain supporting
+documentation when previously not uploaded, and the Agency must send a copy of all
+submissions to the Complainant and his/her representative. If the Agency does not comply with
+the Commission’s order, the Complainant may petition the Commission for enforcement of the
+order. 29 C.F.R. § 1614.503(a). The Complainant also has the right to file a civil action to
+enforce compliance with the Commission’s order prior to or following an administrative petition
+for enforcement. See 29 C.F.R. §§ 1614.407, 1614.408, and 29 C.F.R. § 1614.503(g).
+Alternatively, the Complainant has the right to file a civil action on the underlying complaint in
+accordance with the paragraph below entitled “Right to File a Civil Action.” 29 C.F.R. §§
+1614.407 and 1614.408. A civil action for enforcement or a civil action on the underlying
+complaint is subject to the deadline stated in 42 U.S.C. 2000e-16(c) (1994 & Supp. IV 1999). If
+the Complainant files a civil action, the administrative processing of the complaint,
+including any petition for enforcement, will be terminated. See 29 C.F.R. § 1614.409.
+
+Failure by an agency to either file a compliance report or implement any of the orders set forth in
+this decision, without good cause shown, may result in the referral of this matter to the Office of
+Special Counsel pursuant to 29 C.F.R. § 1614.503(f) for enforcement by that agency.
+
+               COMPLAINANT’S RIGHT TO FILE A CIVIL ACTION (P0124)
+
+This decision of the Commission is final, and there is no further right of administrative appeal
+from the Commission’s decision. You have the right to file a civil action in an appropriate
+United States District Court within ninety (90) calendar days from the date that you receive
+this decision. If you file a civil action, you must name as the defendant in the complaint the
+person who is the official Agency head or department head, identifying that person by their full
+name and official title. Failure to do so may result in the dismissal of your case in court.
+“Agency” or “department” means the national organization, and not the local office, facility or
+department in which you work.
+
+                          RIGHT TO REQUEST COUNSEL (Z0815)
+
+If you want to file a civil action but cannot pay the fees, costs, or security to do so, you may
+request permission from the court to proceed with the civil action without paying these fees or
+costs. Similarly, if you cannot afford an attorney to represent you in the civil action, you may
+request the court to appoint an attorney for you. You must submit the requests for waiver of
+court costs or appointment of an attorney directly to the court, not the Commission.
+                                                 9                                      2024002014
+
+The court has the sole discretion to grant or deny these types of requests. Such requests do not
+alter the time limits for filing a civil action (please read the paragraph titled Complainant’s Right
+to File a Civil Action for the specific time limits).
+
+FOR THE COMMISSION:
+
+
+______________________________                   Carlton M. Hadden’s signature
+Carlton M. Hadden, Director
+Office of Federal Operations
+
+
+April 2, 2024
+Date
+

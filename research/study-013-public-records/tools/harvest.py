@@ -16,8 +16,10 @@ QUERIES = {
     "Q3": '"did not request a hearing" AFFIRM',
     "Q4": '"requested a final agency decision" AFFIRMS',
     "Q5": '"supplemental investigation" "adequately developed"',
+    # Amendment 2
+    "Q6": 'VACATES "supplemental investigation" "final decision"',
 }
-PDF_RE = re.compile(r'href="(https://www\.eeoc\.gov/sites/default/files/decisions/(2026_\d\d_\d\d)/[^"]+\.pdf)"')
+PDF_RE = re.compile(r'href="(https://www\.eeoc\.gov/sites/default/files/decisions/(\d{4}_\d\d_\d\d)/[^"]+\.pdf)"')
 ANY_RE = re.compile(r'href="(https://www\.eeoc\.gov/sites/default/files/(?:migrated_files/)?decisions/[^"]+)"')
 MAX_PAGES = 60
 
@@ -63,7 +65,16 @@ def main():
             pool.setdefault(url, {"url": url, "folder": folder, "queries": []})
             if qid not in pool[url]["queries"]:
                 pool[url]["queries"].append(qid)
-    cands = sorted(pool.values(), key=lambda c: (c["folder"], appeal_no(c["url"])))
+    cands = sorted(pool.values(), key=lambda c: (c["folder"], appeal_no(c["url"])), reverse=True)  # Amendment 3: newest first
+    # Amendment 2: de-duplicate by appeal number, keeping the earliest posting
+    seen, dedup = set(), []
+    for c in cands:
+        a = appeal_no(c["url"])
+        if a in seen:
+            continue
+        seen.add(a)
+        dedup.append(c)
+    cands = dedup
     for c in cands:
         c["appeal"] = appeal_no(c["url"])
         pdf = os.path.join(RAW, f'{c["folder"]}_{c["appeal"]}.pdf')

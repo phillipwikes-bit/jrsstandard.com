@@ -1,0 +1,921 @@
+             U.S. EQUAL EMPLOYMENT OPPORTUNITY COMMISSION
+                           Office of Federal Operations
+                                  P.O. Box 77960
+                             Washington, DC 20013
+
+
+                                         Margorie F., 1
+                                         Complainant,
+
+                                               v.
+
+                                   Alejandro N. Mayorkas,
+                                          Secretary,
+                              Department of Homeland Security
+                           (Transportation Security Administration),
+                                           Agency.
+
+                                    Appeal No. 2020004280
+
+                                Hearing Nos. 450-2017-00029X
+                                             450-2017-00417X
+                                             451-2018-00286X
+
+                              Agency Nos. HS-TSA-23615-2015
+                                          HS-TSA-00607-2017
+                                          HS-TSA-00569-2018
+
+                                          DECISION
+
+Complainant filed an appeal with the Equal Employment Opportunity Commission (EEOC or
+Commission), pursuant to 29 C.F.R. § 1614.403(a), from the Agency’s June 16, 2020, final order
+concerning her equal employment opportunity (EEO) complaint alleging employment
+discrimination in violation of Title VII of the Civil Rights Act of 1964 (Title VII), as amended,
+42 U.S.C. § 2000e et seq., Section 501 of the Rehabilitation Act of 1973 (Rehabilitation Act), as
+amended, 29 U.S.C. § 791 et seq., and the Age Discrimination in Employment Act of 1967
+(ADEA), as amended, 29 U.S.C. § 621 et seq. For the following reasons, the Commission
+AFFIRMS, in part, and REVERSES, in part, the Agency’s final order.
+
+
+
+
+1
+ This case has been randomly assigned a pseudonym which will replace Complainant’s name
+when the decision is published to non-parties and the Commission’s website.
+                                               2                                    2020004280
+
+                                       BACKGROUND
+
+At the time of events giving rise to this complaint, Complainant worked as an Instructional
+Systems Specialist (SV-1750-I) at the Agency’s Canine Training Center (CTC), Lackland Air
+Force Base in San Antonio, Texas.
+
+On January 21, 2014, Complainant completed a reasonable accommodation request due to a
+respiratory impairment which was aggravated by fragrance. Complainant requested one, or a
+combination of, the following accommodations: (1) implementation of a fragrance-free work
+environment; (2) telework, as needed; and (3) excused absences, as needed. Report of
+Investigation (ROI) 1 at 620-1. Complainant averred that she submitted her reasonable
+accommodation request to her then first-line supervisor, a Supervisory Training Instructor (STI1)
+(disability, female, prior EEO activity). ROI 1 at 119.
+
+STI1 stated that she forwarded Complainant’s reasonable accommodation request to
+Headquarters before she changed jobs. ROI 1 at 523. Complainant’s second-line supervisor, a
+Supervisory Air Marshal-in-Charge (SAM) (disability, male, prior EEO activity) clarified that
+STI1 submitted Complainant’s reasonable accommodation request on January 27, 2014, and that
+on March 11, 2014, they discovered that the email address in the Agency’s global address book
+contained an error. On March 12, 2014, Complainant’s request was sent to the correct email
+address. ROI 1 at 458. On April 21, 2014, Complainant obtained a new first-line supervisor, a
+Supervisory Training Instructor (STI2) (no disability, male, prior EEO activity). ROI 1 at 116.
+
+On June 18, 2014, a Reasonable Accommodation Specialist (RAS) (no disability, female, prior
+EEO activity) emailed Complainant to acknowledge her reasonable accommodation request. ROI
+1 at 352. On July 29, 2014, RAS sent Complainant the medical questionnaire for her physician to
+complete. Agency Motion for Summary Judgment Exhibit 5 at 12-16.
+
+Complainant alleged that on August 12, 2014, her new second-line supervisor, a Supervisory
+Federal Air Marshal (SFAM) (undisclosed disability status, male, no prior EEO activity)
+informed her that she was not authorized to work on her EEO complaint or reasonable
+accommodation request during work hours. ROI 1 at 165.
+
+On or about September 8, 2014, Complainant provided medical documentation noting that she
+has asthma and allergic rhinitis; and she has difficulty breathing and experiences wheezing and
+chest-tightness when provoked by fragrances, air fresheners, and cleaning products. ROI 1 at
+302-3. RAS claimed that she reached out to Complainant on September 25, 2014, and she left a
+voicemail message, but Complainant did not return her call. ROI 1 at 513, 515.
+
+On October 22, 2014, the Reasonable Accommodation Program Manager (RAPM) (no disability,
+female, prior EEO activity) emailed Complainant and informed her that RAS was on a detail
+assignment, so RAPM was following up on Complainant’s request. ROI 1 at 506. RAPM averred
+that, when she did not hear from Complainant by October 28, 2018, she asked a Human
+Resources Specialist (HRS) for assistance in contacting Complainant.
+                                               3                                    2020004280
+
+RAPM stated that on November 12, 2014, she informed HRS that she had spoken with
+Complainant and needed to discuss possible accommodations with Complainant’s managers.
+ROI 1 at 498.
+
+RAS spoke with Complainant on July 10, 2015, 2 to discuss possible accommodations, such as
+use of an air purifier, wearing a mask, and telework. RAS averred that Complainant was irritated
+and not receptive to the suggestions, and that Complainant hung up on RAS. ROI 1 at 515.
+SFAM asserted that he spoke with RAS approximately three to four times, in June or July 2015,
+and again in September or October 2015, and their discussions focused on the possibility of
+implementing a fragrance-free environment. ROI 1 at 538.
+
+On October 29, 2015, Complainant received her fiscal year 2015 (FY15) performance rating of
+Exceeded Expectations. ROI 1 at 637. On December 3, 2015, the CTC moved to a new facility
+and Complainant went from a semi-private office to an open office environment. ROI 1 at 127.
+
+On September 21, 2016, the Agency announced a vacancy for a Supervisory Training Instructor
+(SV-1712-J), under vacancy announcement number HQ-OTD-TA70-16-166903-I. ROI 2 at 269-
+72. Complainant applied for the position, but she was not selected for an interview. ROI 2 at
+274-93, 54. On October 26, 2016, Complainant received her fiscal year 2016 (FY16)
+performance rating of Exceeded Expectations. ROI 2 at 262.
+
+On September 5, 2017, the Agency announced a vacancy for a Supervisory Training Instructor
+(SV-1712-J), under vacancy announcement number HQ-OTD-TA70-17-357474-I. ROI 3 at 248-
+54. Complainant applied for the position and was interviewed on October 17, 2017. The
+selecting official informed Complainant of her non-selection on November 3, 2017. ROI 3 at
+256-65, 53-4. On October 18, 2017, STI1 issued Complainant her fiscal year 2017 (FY17)
+performance rating of Achieved Expectations. 3 ROI 3 at 316.
+
+Agency Case No. HS-TSA-23615-2015/EEOC Hearing No. 450-2017-00029X (Complaint 1)
+
+On July 13, 2015, Complainant filed an EEO complaint alleging that the Agency subjected her to
+discrimination and harassment on the bases of sex (female) and disability (physical), and in
+reprisal for requesting a reasonable accommodation, when:
+
+    1. on July 26, 2013, SAM directed Complainant to remove a sign and donation bowl from
+       the office she used for a fundraising effort;
+
+
+
+
+2
+  RAS used both June 10th and July 10th as the date for this conversation, but the other evidence
+in the record shows that this conversation occurred on July 10, 2015.
+3
+  STI1 became Complainant’s first-line supervisor again, but it is not clear when she returned to
+this position.
+                                               4                                     2020004280
+
+   2. on February 9, 2015, Complainant became aware that SAM refused to promote her to the
+      position as Training Manager, Instructional Systems Specialist, (SV-1750-J);
+
+   3. on October 27, 2014, STI2 rated Complainant a “3” in the area of communications for
+      her 2014 performance evaluation;
+
+   4. on October 30, 2014, RAPM refused to process Complainant’s reasonable
+      accommodation request;
+
+   5. on December 3, 2014, and on September 29, 2014, management knew about
+      Complainant’s medical condition, but continued to allow another employee to wear a lot
+      of fragrance that saturated the workplace, which negatively impacted Complainant;
+
+   6. on February 17, 2015, STI1 who knew about Complainant’s medical condition, entered
+      the office wearing fragrance, which negatively impacted her;
+
+   7. on February 26, 2015, a coworker informed a new employee that she (new employee) did
+      not need to be concerned with Complainant’s medical condition;
+
+   8. on March 17, 2015, STI2 who knew about Complainant’s medical condition, tasked her
+      with administering a student end-of-course critiques to a classroom filled with fragrance,
+      which negatively impacted her;
+
+   9. on March 23, 2015, STI2 who knew about Complainant’s medical condition, failed to
+      prevent employees wearing fragrance from entering the office, which negatively
+      impacted her;
+
+   10. on August 12, 2015, during a meeting with management, Complainant was informed that
+       she must submit an account of how she spent her time each day;
+
+   11. on August 12, 2015, management informed Complainant that she was not authorized to
+       work on her EEO complaint or reasonable accommodation request during work hours;
+       and
+
+   12. on October 29, 2015, Complainant received her performance appraisal and contended
+       that it did not accurately reflect her skills and that the ratings were not applied equally
+       throughout the organization.
+
+Agency Case No. HS-TSA-00607-2017/EEOC Hearing No. 450-2017-00417X (Complaint 2)
+
+On February 22, 2017, Complainant filed an EEO complaint alleging discrimination based on
+disability and age (51), and in reprisal for prior protected EEO activity (HS-TSA-23615-2015),
+when:
+                                                5                                    2020004280
+
+   13. on or about October 18, 2016, Complainant was not selected for the position of
+       Supervisory Training Instructor (SV-1712-J), under vacancy number HQ-OTD- TA70-
+       16-166903-I; and
+
+   14. on or about October 19, 2016, Complainant was given a rating of “Exceeded
+       Expectations” on her performance evaluation.
+
+Agency Case No. HS-TSA-00569-2018/EEOC Hearing No. 451-2018-00286X (Complaint 3)
+
+On March 12, 2018, Complainant filed an EEO complaint alleging discrimination based on her
+sex (female), age, and disability, and in reprisal for prior EEO activity (HS-TSA-23615-2015),
+when:
+
+   15. on November 3, 2017, management did not select Complainant for a supervisor position,
+       under vacancy number HQ-OTD-TA70-17-357474-I; and
+
+   16. on November 8, 2017, management issued Complainant a lower rating than the previous
+       year.
+
+At the conclusion of the investigations, the Agency provided Complainant with copies of the
+ROIs and notices of her right to request a hearing before an EEOC Administrative Judge (AJ).
+Complainant timely requested hearings. Over Complainant’s objections, the AJ assigned to the
+case granted the Agency’s November 6, 2019, motion for a decision without a hearing and issued
+a joined decision without a hearing on May 11, 2020.
+
+As an initial matter, the AJ dismissed claims 1, 2, and 3 as untimely. The AJ then found that
+Complainant could not establish a hostile work environment because the complained of incidents
+could generally be described as disagreements with managerial decisions, and Complainant
+failed to show that the incidents were the result of her protected status and produced no evidence
+showing animus by any of the responsible management officials. The AJ noted that, even the
+meeting with SFAM in August 2015 was an attempt to help Complainant, based on her
+allegations that she had too much work and she did not have a clear understanding about her
+work. For Complainant’s claims related to her performance appraisals, the AJ noted that
+Complainant testified that she did not believe that they were based on her sex or age.
+
+Regarding the non-selection claims, the AJ found that the 2016 selectee was also female, and
+therefore, there was no sex discrimination. The AJ also noted that, there were five male
+candidates who were interviewed and also not selected, and only one male candidate was
+younger than the age of 40; and as such, Complainant could not establish age discrimination. The
+AJ determined that the selection for the 2017 position was made based on the candidates’
+interview scores, and that Complainant presented no evidence to challenge the interview process,
+and she could not show that the process or the selection was based on a discriminatory or
+retaliatory motive.
+                                                6                                    2020004280
+
+For Complainant’s request for a reasonable accommodation, the AJ determined that Complainant
+failed to engage in the interactive process and could not show disability discrimination. Rather,
+the AJ found that the Agency properly engaged in an interactive process, not only for
+Complainant’s alleged fragrance sensitivity, but for other unclaimed conditions. The AJ noted
+that, in 2013, Complainant had a semi-private office, and she was permitted to telework when
+she anticipated or speculated there would be fragrances in the area. When the new CTC opened,
+Complainant had a cubicle in the corner part of office out of the main hallway where there is less
+foot traffic by employees. The AJ also determined that the evidentiary record showed that when
+Complainant smelled any fragrance that might trigger her claimed asthma, she did not hesitate to
+inform the person directly, or notify either her supervisor or a management official to ask the
+person to refrain from coming into Complainant’s area and/or refrain from the use of the
+fragrance.
+
+The AJ found that Complainant’s unwillingness to continue and engage in conversations and
+consider viable alternatives did not equate to Agency discrimination, and that the Agency
+continued to work with Complainant to prevent overpowering fragrances from entering her area.
+The AJ noted that, on occasion when someone (employee, student, or visitor) accidently wore a
+fragrance that did not appeal to Complainant, she notified management, who was proactive to
+rectify the situation. The AJ also found that Complainant was permitted to telework when
+needed. The AJ determined that the evidence showed that the Agency formally and informally
+engaged in discussion on how to best address Complainant’s request for a fragrance-free
+environment, and there was no indication that the Agency neglected its obligation or ignored any
+request for assistance.
+
+The AJ concluded that there were no genuine issues of material fact with respect to
+Complainant’s claims that she was subjected to unlawful sex, age, and disability discrimination
+and reprisal, and the AJ found no discrimination. The Agency subsequently issued a final order
+adopting the AJ’s finding that Complainant failed to prove that the Agency subjected her to
+discrimination as alleged.
+
+Complainant filed the instant appeal and submitted a brief in support of her appeal. The Agency
+opposed Complainant’s appeal.
+
+                                 CONTENTIONS ON APPEAL
+
+Complainant’s Contentions
+
+Through her attorney, Complainant argues that the evidence presented proves as a matter of law
+that the Agency discriminated against her by failing to act upon her reasonable accommodation
+request, and it retaliated against her because she filed a reasonable accommodation request and
+EEO complaints. Complainant asserts that the AJ erred when she adopted all of the Agency’s
+facts, without consideration of any of Complainant’s facts or evidence.
+                                                7                                    2020004280
+
+While the AJ concluded Complainant failed to engage in the interactive process and that the
+Agency properly engaged in the interactive process, Complainant argues that the evidence
+proves that it was Complainant that offered a variety of potential reasonable accommodations,
+such as telework, and the Agency never issued a final determination on her request for a
+reasonable accommodation. Complainant notes that she submitted a reasonable accommodation
+request on or about January 21, 2014, and she has never been advised in writing as to whether
+her request has been granted or denied. Further, RAPM confirmed that, “[n]o final determination
+was issued. The case should have been closed out one way or the other. I believe her
+accommodation request just fell through the cracks; it fell off the radar screen.”
+
+Complainant also notes that the Agency claimed that she “works in a private office,” when she
+was really in a shared office, and that a private office could have been given to Complainant
+when she relocated to the new training academy. Instead, Complainant was placed in a very
+populated and busy cube environment which was even less private than her previous office.
+Complainant adds that she was never offered telework as a reasonable accommodation. While
+the AJ concluded that there was no evidence the Agency neglected its obligation, Complainant
+counters that the Agency admitted that Complainant’s reasonable accommodation request “fell
+through the cracks.”
+
+Complainant alleges that the AJ also agreed with the Agency’s unsupported “false” claim that it
+offered Complainant several accommodations which she refused. However, while
+accommodation options were discussed in the interactive process, the Agency admitted that it
+never offered or declined the accommodation request. Complainant notes that the Agency and
+the AJ focus on Complainant’s request for a fragrance-free workplace, claiming that is the only
+accommodation she would accept. If so, then the Agency would have declined that request,
+allowing Complainant to implement the appeal process set forth in the Agency’s policy.
+However, the Agency failed to take any action on her accommodation request, thereby, denying
+Complainant her rights.
+
+For claim 2, Complainant asserts that she had no reasonable suspicion of the discriminatory
+actions of SAM regarding the April 21, 2014, promotion until February 9, 2015; therefore, her
+March 26, 2015, contact with the EEO counselor was within the 45-day timeframe.
+
+Complainant claims that she was retaliated against when on August 12, 2015, she was ordered
+not to work on her EEO complaint during work hours and was accused of secretly recording the
+meeting in violation of Agency policy. Complainant alleges that, during this meeting,
+Complainant was told she cannot work on EEO, reasonable accommodation, or Department of
+Labor (regarding an unrelated on-the-job injury) issues at work, and that the Agency provided a
+copy of the recording. In addition, Complainant alleges that she was informed that she “not
+authorized to use the [Agency] email system to pursue her EEO complaint,” and that the Agency
+will only serve Complainant’s personal email address on July 14, 2017. 4
+
+
+4
+  The Commission has held that it is not appropriate for a complainant to raise new claims for the
+first time on appeal. See Hubbard v. Dep’t of Homeland Sec., EEOC Appeal No. 01A40449
+                                               8                                    2020004280
+
+Regarding the 2016 non-selection, the AJ found that there was no sex discrimination. However,
+Complainant asserts that she did not claim sex discrimination, but she claimed age and disability
+discrimination and reprisal. Complainant notes that the AJ did not address the disability
+discrimination or reprisal claims, and only concluded that Complainant cannot show age
+discrimination for the 2016 non-selection.
+
+Complainant also argues that there are material issues of fact precluding the granting of summary
+judgment regarding her performance evaluations. As to the 2017 performance evaluation, the AJ
+stated, “[a]ccording to Complainant’s own deposition testimony, she cannot show that either her
+age or sex played any part in her performance scores.” However, Complainant did not claim age
+discrimination on any of the claims for her evaluations in 2015, 2016, or 2017, and she only
+alleged sex discrimination for the 2015 evaluation. Complainant alleged disability discrimination
+and reprisal on all the evaluations, which were not addressed by the AJ. Complainant notes that a
+coworker (CW) received a higher performance rating in 2017, despite Complainant being “more
+skilled” than CW.
+
+Complainant argues that the AJ did not review the motion for summary judgment and response
+in a light most favorable to Complainant, instead she weighed the evidence; ignored evidence
+presented by Complainant; and failed to address all the claims. Complainant requests that the
+Commission reverse the Agency’s final order upholding the AJ’s decision to grant summary
+judgment without a hearing.
+
+Agency Contentions
+
+The Agency argues that Complainant’s appeal is nothing more than her dissatisfaction with the
+AJ’s findings, and she failed to demonstrate any judicial errors.
+
+The Agency asserts that Complainant’s requested accommodation was not reasonable because,
+as the Commission has consistently held, a request for a completely fragrance-free work
+environment is not a reasonable accommodation and imposes an undue hardship. However, the
+Agency not only engaged in the interactive process, but also provided Complainant with
+alternatives that she simply rejected without good cause. The Agency claims that the undisputed
+evidence supports the AJ’s findings that Complainant was uncooperative throughout the formal
+process and insisted on a fragrance-free environment, and that Complainant made no attempts to
+re-engage the Agency after hanging up and refusing to speak with the reasonable
+accommodation office in October 2015, or at any time after she moved to the new CTC. The
+Agency asserts that management officials responded by encouraging the reduction or elimination
+of fragrance products at work and allowed Complainant to telework, which were effective
+accommodations.
+
+
+
+(Apr. 22, 2004). Should Complainant wish to pursue this July 14, 2017 incident, she is advised to
+contact an EEO Counselor to initiate the administrative process.
+                                                9                                     2020004280
+
+The Agency claims that RAPM’s “mere technicality” of not issuing a closure letter is harmless
+error, and the lack of a closure letter does not negate all of the accommodations that the Agency
+undisputedly provided. The Agency maintains that it provided accommodations, such as
+situational telework, a separate office to prevent constant interaction with other office employees
+and speaking with employees when it was brought to management’s attention, as well as other
+accommodations for other unrelated medical conditions.
+
+For claim 2, the Agency argues that Complainant failed to provide any explanation to
+demonstrate good cause for her untimely EEO counselor contact nearly a year later on March 24,
+2015. The Agency notes that Complainant would have realized that she was not promoted when
+STI2 was promoted and took over as the Training Manager and became Complainant’s
+supervisor.
+
+The Agency states that Complainant’s appeal focuses on her performance rating for FY17, and
+she argued that she has a superior skill set as compared to CW. However, management officials
+provided legitimate, non-discriminatory explanations for the ratings, and Complainant has no
+evidence of illegal motive for the FY17 performance score. The Agency asserts that there is no
+guarantee that performance scores are automatically higher in each subsequent year, and
+Complainant proffered no justification other than her self-serving opinion that she warranted a
+higher score than “Achieves Expectations.”
+
+The Agency notes that Complainant’s appeal did not address the hostile work environment
+claim, but that the record does not support such a finding. The Agency argues that no material
+dispute of facts or other facts in which a credibility determination was necessary to warrant a
+hearing, and that Complainant failed to meet her evidentiary burden as to disability, age, and sex
+discrimination, or reprisal for her prior protected activity. The Agency requests that the
+Commission affirm its final order upholding the AJ’s decision.
+
+                                 ANALYSIS AND FINDINGS
+
+Standard of Review
+
+In rendering this appellate decision, we must scrutinize the AJ’s legal and factual conclusions,
+and the Agency’s final order adopting them, de novo. See 29 C.F.R. § 1614.405(a) (stating that
+a “decision on an appeal from an Agency’s final action shall be based on a de novo review . . .”);
+see also Equal Employment Opportunity Management Directive for 29 C.F.R. Part 1614 (EEO
+MD-110), at Chap. 9, § VI.B. (Aug. 5, 2015) (providing that an administrative judge’s
+determination to issue a decision without a hearing, and the decision itself, will both be reviewed
+de novo). This essentially means that we should look at this case with fresh eyes. In other
+words, we are free to accept (if accurate) or reject (if erroneous) the AJ’s, and the Agency’s,
+factual conclusions and legal analysis – including on the ultimate fact of whether intentional
+discrimination occurred, and on the legal issue of whether any federal employment
+discrimination statute was violated. See id. at Chap. 9, § VI.A. (explaining that the de novo
+standard of review “requires that the Commission examine the record without regard to the
+                                                10                                    2020004280
+
+factual and legal determinations of the previous decision maker,” and that EEOC “review the
+documents, statements, and testimony of record, including any timely and relevant submissions
+of the parties, and . . . issue its decision based on the Commission’s own assessment of the record
+and its interpretation of the law”).
+
+Decision Without a Hearing
+
+We determine whether the AJ appropriately issued the decision without a hearing. The
+Commission’s regulations allow an AJ to issue a decision without a hearing upon finding that
+there is no genuine issue of material fact. 29 C.F.R. § 1614.109(g). EEOC’s decision without a
+hearing regulation follows the summary judgment procedure from federal court. Fed. R. Civ. P.
+56. The U.S. Supreme Court held summary judgment is appropriate where a judge determines no
+genuine issue of material fact exists under the legal and evidentiary standards. Anderson v.
+Liberty Lobby, Inc., 477 U.S. 242, 255 (1986). In ruling on a summary judgment motion, the
+judge is to determine whether there are genuine issues for trial, as opposed to weighing the
+evidence. Id. at 249. At the summary judgment stage, the judge must believe the non-moving
+party’s evidence and must draw justifiable inferences in the non-moving party’s favor. Id. at 255.
+A “genuine issue of fact” is one that a reasonable judge could find in favor for the non-moving
+party. Celotex v. Catrett, 477 U.S. 317, 322-23 (1986); Oliver v. Digital Equip. Corp., 846 F.2d
+103, 105 (1st Cir. 1988). A “material” fact has the potential to affect the outcome of a case.
+
+An AJ may issue a decision without a hearing only after determining that the record has been
+adequately developed. See Petty v. Dep’t of Def., EEOC Appeal No. 01A24206 (July 11, 2003).
+We carefully reviewed the record and find that it is adequately developed. To successfully
+oppose a decision without a hearing, Complainant must identify material facts of record that are
+in dispute or present further material evidence establishing facts in dispute. Here, Complainant
+argues that there are material issues of fact precluding the granting of summary judgment
+regarding her performance evaluation and non-selection claims. However, Complainant did not
+identify any evidence to show a dispute of a material fact, and only offers her opinion that she is
+more skilled than CW; and mere allegations, speculations and conclusory statements, without
+more, are insufficient to create a genuine issue of material fact. See Lee v. Dep’t of Homeland
+Sec., EEOC Appeal No 0520110581 (Jan. 12, 2012), citing to Baker v. U.S. Postal Serv., EEOC
+Appeal No. 01981962 (June 26, 2001), request for reconsideration denied, EEOC Request No.
+05A10914 (Oct. 1, 2001). A review of the record does not reveal any genuine disputes of
+material facts. Therefore, the AJ’s issuance of a decision without a hearing was appropriate.
+
+Initial Matters
+
+As an initial matter, Complainant argues that the AJ did not address the proper bases for her
+claims alleging discrimination for her 2016 non-selection and performance ratings. As such, we
+will address Complainant’s claims of discrimination based on age, disability and reprisal for the
+2016 non-selection, and her claims alleging disability discrimination and reprisal for her FY15,
+FY16, and FY17 performance ratings in the instant decision.
+                                                11                                     2020004280
+
+We also note that the Commission has the discretion to review only those issues specifically
+raised in an appeal. See EEO MD-110 at Chap. 9, § IV.A.3. On appeal, Complainant only
+challenged the AJ’s determination that claim 2 was untimely; and the AJ’s decisions on her
+allegations of: (1) a failure to provide a reasonable accommodation; (2) retaliation when she was
+informed that she was not authorized to work on her EEO complaint or reasonable
+accommodation request during work hours; and (3) discrimination for the 2016 non-selection,
+and FY15, FY16, and FY17 performance ratings. As such, we will only address these claims.
+This decision will not address the timeliness of claims 1 or 3; or Complainant’s claim alleging
+harassment, claims 7 and 10, since these issues were not raised by Complainant on appeal.
+
+On appeal, Complainant asserts that for claim 2, she had no reasonable suspicion of the
+discriminatory actions of SAM regarding the April 21, 2014, promotion until February 9, 2015;
+and therefore, her March 26, 2015 contact with the EEO counselor was within the 45-day
+timeframe. EEOC regulation requires that complaints of discrimination should be brought to the
+attention of the EEO counselor within forty-five (45) days of the date of the matter alleged to be
+discriminatory or, in the case of a personnel action, within forty-five (45) days of the effective
+date of the action. 29 C.F.R. § 1614.105(a)(1). The Commission has adopted a “reasonable
+suspicion” standard (as opposed to a “supportive facts” standard) to determine when the forty-
+five (45) day limitation period is triggered See Howard v. Dep’t of the Navy, EEOC Request No.
+05970852 (Feb. 11, 1999). Thus, the time limitation is not triggered until a complainant
+reasonably suspects discrimination, but before all the facts that support a charge of
+discrimination have become apparent.
+
+While Complainant argues that she did not have a reasonable suspicion of discrimination
+regarding the April 21, 2014, promotion until February 9, 2015, she only made a blanket
+assertion, without explaining how and why she had a reasonable suspicion of discrimination on
+February 9, 2015, as opposed to when she learned that she was not selected for the position. As
+such, we find that the AJ properly determined that this claim was not timely, and we AFFIRM its
+dismissal.
+
+Reasonable Accommodation (Claims 4-6, 8, and 9)
+
+In order to establish that Complainant was denied a reasonable accommodation, Complainant
+must show that: (1) she is an individual with a disability; (2) she is a qualified individual with a
+disability; and (3) the Agency failed to provide a reasonable accommodation. See EEOC
+Enforcement Guidance on Reasonable Accommodation and Undue Hardship Under the
+Americans with Disabilities Act, EEOC Notice No. 915.002 (Oct. 17, 2002) (Enforcement
+Guidance). “The term ‘qualified,’ with respect to an individual with a disability, means that the
+individual satisfies the requisite skill, experience, education and other job-related requirements
+of the employment position such individual holds or desires and, with or without reasonable
+accommodation, can perform the essential functions of such position.” 29 C.F.R. § 1630.2(m).
+An agency is required to make reasonable accommodation to the known physical and mental
+limitations of a qualified individual with a disability unless the Agency can show that
+accommodation would cause an undue hardship. See 29 C.F.R. §§ 1630.2(o), (p).
+                                                12                                     2020004280
+
+We find that Complainant’s medical documentation establishes that she is an individual with a
+disability. Complainant’s doctor noted that she suffers from asthma and allergic rhinitis; and she
+has difficulty breathing and experiences wheezing and chest-tightness when provoked by
+fragrances, air fresheners, and cleaning products. ROI 1 at 302-3. An individual with a disability
+is one who: (1) has a physical or mental impairment that substantially limits one or more major
+life activities; (2) has a record of such impairment; or (3) is regarded as having such an
+impairment. 29 C.F.R. § 1630.2(g). Major life activities include such functions as caring for
+one’s self, performing manual tasks, walking, seeing, hearing, speaking, breathing, learning, and
+working. 29 C.F.R. § 1630.2(i). An impairment is a disability if it substantially limits the ability
+of an individual to perform a major life activity as compared to the ability of most people in the
+general population. 29 C.F.R. § 1630.2(j)(ii). While the AJ noted that Complainant did not
+provide medical documentation to show that she had a chemical sensitivity, we find that
+Complainant’s medical documentation sufficiently connects her diagnosed conditions to a
+substantial limitation in breathing, when triggered.
+
+The record shows that Complainant’s performance ratings during the relevant time period were
+at least at a fully successful level. ROI 1 at 637, ROI 2 at 262, ROI 3 at 316. As such, we find
+that Complainant is a qualified individual with a disability.
+
+In January 2014, Complainant submitted a reasonable accommodation request of (1)
+implementation of a fragrance-free work environment; (2) telework, as needed; and (3) excused
+absences, as needed. ROI 1 at 620-1. The Commission has held that a request for a work
+environment that is entirely fragrance-free was not a reasonable accommodation request and
+would have imposed an undue hardship. See Roberts v. Dep’t of Transp., EEOC Appeal No.
+01970727 (Sept. 15, 2000) (agency was not required to provide an entirely fragrance-free
+environment for complainant who had multiple chemical sensitivity, but it should have engaged
+in the interactive process to determine whether it could have provided complainant with
+telework, an air filter, or an office involving limited contact with others). However, the Agency
+is obligated to consider alternative accommodations for Complainant.
+
+The Agency maintains that it provided accommodations, such as situational telework, a separate
+office to prevent constant interaction with other office employees, and speaking with employees,
+when it is brought to management’s attention. However, we find that the record does not support
+that the Agency provided Complainant with effective accommodations.
+
+Regarding telework, SFAM averred that Complainant had a telework agreement in place, and
+that she had been allowed to telework on many occasions, and RAPM asserted that Complainant
+teleworked “for a while” and then declined it. ROI 1 at 539, 500. We note that RAPM did not
+provide any details regarding Complainant’s declination of telework. However, Complainant
+denied ever declining telework and the Agency provided evidence showing that Complainant
+actually requested telework on November 26, 2014, and June 25, 2015, due to fragrance
+concerns, which STI2 approved. ROI 1 at 442, Agency Motion for Summary Judgment, Exhibit
+5 at 22, 24.
+                                              13                                   2020004280
+
+While it appears that Complainant had a telework agreement in place as part of the Agency’s
+regular telework program, we find that a fair reading of Complainant’s reasonable
+accommodation request was for telework that was independent of her regular telework
+agreement. Complainant affirmed that her telework agreement was not due to her reasonable
+accommodation request. ROI 1 at 442.
+
+The record shows that on April 5, 2016, STI2 informed Complainant that he was “awaiting
+determination if [he] will be able to reissue the expired [telework] agreements.” ROI 1 at 437.
+There is no further evidence to show when Complainant’s telework agreement expired, and if it
+was renewed. While the Agency argues that it granted Complainant telework and that the lack of
+an written decision was a “harmless error,” we find that there is no evidence that the Agency
+granted Complainant’s request for telework as a reasonable accommodation, and STI2
+substantiated that Complainant was not offered telework as an option as a reasonable
+accommodation. ROI 1 at 481. Further, there is no evidence that Complainant had any telework
+option once her regular telework agreement expired. Accordingly, we find that the Agency did
+not grant Complainant telework as a reasonable accommodation.
+
+We also find that there is no evidence that the Agency considered a separate office as a
+reasonable accommodation. RAS stated that she and Complainant discussed possible
+accommodations of an air purifier, mask, respirator, and telework as possible accommodations.
+ROI 1 at 515. RAPM confirmed that RAS discussed with Complainant the options of an air
+purifier and wearing a mask or respirator. ROI 1 at 500. SFAM stated that when he spoke with
+RAS, the discussion was focused on whether the Agency could implement a fragrance-free
+policy. ROI 1 at 538. The Agency offered no evidence that it granted a separate office for
+Complainant as a reasonable accommodation.
+
+The Agency also asserts that management officials spoke to employees to encourage the
+reduction or elimination of fragrance products at work. However, the evidence shows that this
+was not effective because Complainant continued to complain of the use of fragranced products.
+In addition to incidents 5, 6, 8, and 9, the record shows that Complainant emailed STI2 on March
+14, and 26, 2016, to complain of strong fragrances and air fresheners. ROI 1 at 434-5.
+
+While the Agency argues that the Agency accommodated Complainant, we find that the Agency
+did not show that it provided effective accommodations to Complainant. As such, we find that
+Complainant established that the Agency failed to provide her with a reasonable accommodation
+in violation of the Rehabilitation Act, and we REVERSE the Agency’s final order adopting the
+AJ’s decision on Complainant’s reasonable accommodation claim.
+
+The Commission has also held that failure to respond to a request for accommodation in a timely
+manner may result in a finding of discrimination. See Denese G.v. Dep’t of the Treasury, EEOC
+Appeal No. 0120141118 (Dec. 29, 2016); Shealy v. Equal Emp’t. Opportunity Comm’n, EEOC
+Appeal No. 0120070356 (Apr. 18, 2011); Villanueva v. Dep't of Homeland Sec., EEOC Appeal
+No. 01A34968 (Aug. 10, 2006).
+                                              14                                  2020004280
+
+In determining whether there was an unnecessary delay, we are to consider (1) the reasons for
+the delay; (2) the length of the delay; (3) how much the individual with a disability and the
+employer each contributed to the delay. (4) what the employer was doing during the delay, and
+(5) whether the required accommodation was simple or complex to provide. Enforcement
+Guidance at Question 10, n.38.
+
+We find that the record supports a finding of an unnecessary delay on the Agency’s part in
+processing Complainant’s request for a reasonable accommodation. It is undisputed that
+Complainant initiated her request in January 2014. The Agency provided evidence to show that
+the Agency was using “reasonableaccomodation@tsa.dhs.gov” as an email address, which was
+misspelled with a missing “m” in accommodation, and that STI1 emailed a correctly spelled, yet
+incorrect email address. Agency Motion for Summary Judgment Exhibit 5 at 3-4.
+
+Complainant’s request was routed to the correct email address on or about March 12, 2014;
+however, there was no explanation for why the Agency took three months to confirm receipt of
+Complainant’s request on June 17, 2014. RAPM acknowledged that Complainant’s request was
+initiated in January 2014, but she averred that she did not know what happened to Complainant’s
+request. RAMP further noted that Complainant’s request “just fell through the cracks” when the
+Agency failed to issue any determination for her request. ROI 1 at 499-500.
+
+Once the Agency received Complainant’s medical documentation in September 2014, RAS
+called Complainant on September 25, 2014, and she left a voicemail message; and RAPM
+contacted Complainant in October and November 2014. RAS stated that she spoke with
+Complainant again on July 10, 2015. ROI 1 at 515, 498. SFAM stated that he spoke with RAS in
+June or July, and then again in September or October 2015. ROI 1 at 538. No Agency official
+provided an explanation for the gap between November 2014, to June or July 2015, when there
+was no action on Complainant’s request. While the Agency claims that Complainant refused to
+engage in the interactive process when she hung up and refused to speak with the reasonable
+accommodation office in October 2015, we note that even if Complainant was rude and
+uncooperative in July and October 2015, neither RAS nor RAPM provided a reason for the
+Agency’s delay in processing the request from November 2014.
+
+In looking at the totality of the circumstances, we find that the Agency was mainly responsible
+for the delay in the processing of Complainant’s request, starting with its error in its email
+address. The Agency offered no explanation for why it took approximately three months to
+acknowledge Complainant’s request on June 17, 2014; why the Agency did not request medical
+documentation until over one month later on July 29, 2014; why no one took action on
+Complainant’s request from November 2014 to June or July 2015; or why the Agency has not
+yet issued Complainant any decision on her request. As such, we find that the Agency failed to
+respond to Complainant’s request for a reasonable accommodation in a timely manner, since
+January 27, 2014.
+                                                15                                    2020004280
+
+Where a discriminatory practice involves the provision of a reasonable accommodation, damages
+may be awarded if the Agency fails to demonstrate that it made a good faith effort to provide the
+individual with a reasonable accommodation for her disability. See 42 U.S.C. § 1981a(a)(3); and
+Gunn v. U.S. Postal Serv., EEOC Appeal No. 0120053293 (June 15, 2007). In this case, we find
+that the Agency failed to demonstrate a good faith effort in providing a reasonable
+accommodation to Complainant with months of unexplained inaction. Complainant is therefore
+entitled to present a claim for compensatory damages on the Agency’s failure to timely
+accommodate him. See West v. Gibson, 527 U.S. 212 (1999); see also Complainant v. Dep’t of
+Justice, EEOC Appeal No. 0120121339 (May 8, 2015) (complainant entitled to present a claim
+for compensatory damages when she was in bad faith denied accommodation leading to her
+termination). As such, the Agency is ORDERED to conduct a supplemental investigation
+regarding any compensatory damages, attorney’s fees, and costs.
+
+Disparate Treatment (Claims 12, 13, 14, 15, and 16)
+
+To prevail in a disparate treatment claim such as this, Complainant must satisfy the three-part
+evidentiary scheme fashioned by the Supreme Court in McDonnell Douglas Corp. v. Green, 411
+U.S. 792 (1973). She must generally establish a prima facie case by demonstrating that she was
+subjected to an adverse employment action under circumstances that would support an inference
+of discrimination. Furnco Constr. Co. v. Waters, 438 U.S. 567, 576 (1978). The prima facie
+inquiry may be dispensed with in this case, however, since the Agency has articulated legitimate
+and nondiscriminatory reasons for its conduct. See U.S. Postal Serv. Bd. of Governors v. Aikens,
+460 U.S. 711, 713-17 (1983); Holley v. Dep’t of Veterans Affairs, EEOC Request No. 05950842
+(Nov. 13, 1997). To ultimately prevail, Complainant must prove, by a preponderance of the
+evidence, that the Agency’s explanation is a pretext for discrimination. Reeves v. Sanderson
+Plumbing Products, Inc., 530 U.S. 133 (2000); St. Mary’s Honor Ctr. v. Hicks, 509 U.S. 502,
+519 (1993); Tex. Dep’t of Cmty. Affs. v. Burdine, 450 U.S. 248, 256 (1981); Holley, supra;
+Pavelka v. Dep’t of the Navy, EEOC Request No. 05950351 (Dec. 14, 1995).
+
+Assuming, arguendo, that Complainant established a prima facie case of discrimination based on
+age, disability, and sex, and in reprisal for prior protected EEO activity, we find that the Agency
+proffered legitimate, nondiscriminatory reasons for its actions. For Complainant’s FY15
+performance rating, STI2 stated that Complainant was rated as Exceeded Expectations, which
+was a strong rating commensurate with her duties and responsibilities. ROI 1 at 491. Regarding
+Complainant’s FY16 performance rating, STI2 asserted that Complainant was given an
+Exceeded Expectations based on the established expectations for employee performance. ROI 2
+at 202. For Complainant’s FY17 rating, STI1 claimed that she gave Complainant a 3.37 because
+she had some problems performing her duties that year. For example, STI1 had to repeatedly ask
+Complainant for information before she would provide it and it was difficult for STI1 to obtain
+the information. STI1 noted that she gave CW a higher rating because she went above and
+beyond her duties in developing her courses and always gave STI1 any requested information
+without STI1 having to remind her. ROI 3 at 187-8.
+                                               16                                   2020004280
+
+Regarding the 2016 non-selection, the selecting official stated that Complainant was not
+recommended for the interview portion of the selection process because she did not have canine
+experience. To compare, the selectee served in every section of CTC, and had experience as a
+trainer, instructor, and adoption coordinator. ROI 2 at 185-6. Other members of the selection
+panel confirmed that Complainant was not recommended because she did not have relevant
+canine experience. ROI 2 at 207, 212, 217.
+
+We find that Complainant has not shown that the proffered reasons were pretexts for
+discrimination. Pretext can be demonstrated by showing such weaknesses, inconsistencies, or
+contradictions in the Agency’s proffered legitimate reasons for its action that a reasonable fact
+finder could rationally find them unworthy of credence. See Opare-Addo v. U.S. Postal Serv.,
+EEOC Appeal No. 0120060802 (Nov. 20, 2007) (finding that the agency’s explanations were
+confusing, contradictory, and lacking credibility, which were then successfully rebutted by the
+complainant), request for recon. denied, EEOC Request No. 0520080211 (May 30, 2008).
+Complainant did not provide any arguments or evidence to show that the proffered reasons are
+not worthy of belief and her bare assertions that management officials discriminated against her
+are insufficient to prove pretext or that their actions were discriminatory.
+
+In addition, the Commission has long held that an Agency has broad discretion to set policies
+and carry out personnel decisions, and it should not be second-guessed by the reviewing
+authority absent evidence of unlawful motivation. See Burdine, 450 U.S. 248, 259 (1981);
+Vanek v. Dep’t of the Treasury, EEOC Request No. 05940906 (Jan. 16, 1997). In this case,
+there is no evidence of unlawful motivation for the Agency’s actions. Accordingly, we find that
+Complainant did not establish that the Agency discriminated against her based on her age,
+disability, or sex, or in reprisal for prior protected EEO activity, when it issued Complainant’s
+FY15, FY16, and FY17 performance ratings, and did not select her for the Supervisory Training
+Instructor position in 2016, and we AFFIRM the Agency’s final order adopting the AJ’s decision
+on these claims.
+
+Retaliation (Claim 11)
+
+Complainant alleges that she was retaliated against when on August 12, 2015, she was told that
+she cannot work on her EEO complaint, reasonable accommodation request, or Department of
+Labor claim at work. A complainant may establish a prima facie case of reprisal by showing that:
+(1) she engaged in a protected activity; (2) the agency was aware of the protected activity; (3)
+subsequently, she was subjected to adverse treatment by the agency; and (4) a nexus exists
+between the protected activity and the adverse treatment. Whitmire v. Dep’t of the Air Force,
+EEOC Appeal No. 01A00340 (Sept. 25, 2000). In this case, we find that the evidence does not
+support that this adverse action occurred as alleged.
+
+SFAM denied telling Complainant that she was unable to work on her EEO complaint or
+reasonable accommodation request on duty. Rather, SFAM stated that there were issues with
+how many hours Complainant spent on her EEO activity, and they needed to ensure that it did
+not interfere with her regular duties.
+                                                 17                                     2020004280
+
+STI2 corroborated that he and SFAM discussed with Complainant her current workload and how
+she spent her day. STI2 added that they did not tell Complainant that she could not work on her
+EEO complaint, but that she needed to balance her work demands with the demands of her EEO
+activity. ROI 1 at 543, 488-9. A review of the audio recording provided by the Agency
+corroborates that no one told Complainant that she was unable to work on her EEO complaint,
+reasonable accommodation request, or injury claim while on duty. As such, we find that
+Complainant did not establish that she was retaliated against when she was allegedly told that
+she was not authorized to work on her EEO complaint or reasonable accommodation request
+during work hours.
+
+                                          CONCLUSION
+
+Based on a thorough review of the record and the contentions on appeal, including those not
+specifically addressed herein, we REVERSE the Agency’s final order adopting the AJ’s decision
+on Complainant’s reasonable accommodation claim; and we AFFIRM the Agency’s final order
+adopting the AJ’s decision finding no discrimination or retaliation for the remaining claims.
+
+                                              ORDER
+
+The Agency is ordered to take the following remedial action:
+
+   1. To the extent that it has not already done so, the Agency shall re-engage in the interactive
+      process to identify effective accommodations and issue Complainant a written decision
+      on her reasonable accommodation request, within 90 days from the date this decision is
+      issued.
+
+   2. Within 90 days of the date this decision is issued, the Agency shall conduct a
+      supplemental investigation with respect to Complainant’s claim of compensatory
+      damages, attorney’s fees, and costs. The Agency shall allow Complainant to present
+      evidence in support of her compensatory damages claim. See Carle v. Dep’t of the Navy,
+      EEOC No. 01922369 (Jan. 5, 1993). Complainant shall cooperate with the Agency in this
+      regard. The Agency shall issue a final decision addressing the issues of compensatory
+      damages, attorney’s fees, and costs, no later than 30 days after the completion of the
+      investigation.
+
+   3. Within 90 days of the date this decision is issued, the Agency shall provide eight (8)
+      hours of interactive EEO training to RAS and RAPM, with an emphasis on the Agency’s
+      obligation to timely process employees’ requests for reasonable accommodation.
+
+   4. Within 60 days of the date this decision is issued, the Agency shall consider taking
+      appropriate disciplinary action against RAS and RAPM. If the Agency decides to take
+      disciplinary action, it shall identify the action taken. If the Agency decides not to take
+      disciplinary action, it shall set forth the reason(s) for its decision not to impose discipline.
+      If any of the responsible management officials have left the Agency’s employment, then
+      the Agency shall furnish documentation of their departure date(s).
+                                               18                                    2020004280
+
+   5. Within 30 days of the date this decision is issued, the Agency shall post notices in
+      accordance with the paragraph below.
+
+                                  POSTING ORDER (G0617)
+
+The Agency is ordered to post at its Canine Training Center (CTC), Lackland Air Force Base in
+San Antonio, Texas facility copies of the attached notice. Copies of the notice, after being
+signed by the Agency's duly authorized representative, shall be posted both in hard copy and
+electronic format by the Agency within 30 calendar days of the date this decision was issued,
+and shall remain posted for 60 consecutive days, in conspicuous places, including all places
+where notices to employees are customarily posted. The Agency shall take reasonable steps to
+ensure that said notices are not altered, defaced, or covered by any other material. The original
+signed notice is to be submitted to the Compliance Officer as directed in the paragraph entitled
+"Implementation of the Commission's Decision," within 10 calendar days of the expiration of the
+posting period. The report must be in digital format, and must be submitted via the Federal
+Sector EEO Portal (FedSEP). See 29 C.F.R. § 1614.403(g).
+
+                                 ATTORNEY'S FEES (H1019)
+
+If Complainant has been represented by an attorney (as defined by 29 C.F.R. §
+1614.501(e)(1)(iii)), she/he is entitled to an award of reasonable attorney's fees incurred in the
+processing of the complaint. 29 C.F.R. § 1614.501(e). The award of attorney's fees shall be paid
+by the Agency. The attorney shall submit a verified statement of fees to the Agency -- not to the
+Equal Employment Opportunity Commission, Office of Federal Operations -- within thirty (30)
+calendar days of receipt of this decision. The Agency shall then process the claim for attorney's
+fees in accordance with 29 C.F.R. § 1614.501.
+
+            IMPLEMENTATION OF THE COMMISSION’S DECISION (K0719)
+
+Under 29 C.F.R. § 1614.405(c) and §1614.502, compliance with the Commission’s corrective
+action is mandatory. Within seven (7) calendar days of the completion of each ordered
+corrective action, the Agency shall submit via the Federal Sector EEO Portal (FedSEP)
+supporting documents in the digital format required by the Commission, referencing the
+compliance docket number under which compliance was being monitored. Once all compliance
+is complete, the Agency shall submit via FedSEP a final compliance report in the digital format
+required by the Commission. See 29 C.F.R. § 1614.403(g). The Agency’s final report must
+contain supporting documentation when previously not uploaded, and the Agency must send a
+copy of all submissions to the Complainant and his/her representative.
+
+If the Agency does not comply with the Commission’s order, the Complainant may petition the
+Commission for enforcement of the order. 29 C.F.R. § 1614.503(a). The Complainant also has
+the right to file a civil action to enforce compliance with the Commission’s order prior to or
+following an administrative petition for enforcement. See 29 C.F.R. §§ 1614.407, 1614.408, and
+29 C.F.R. § 1614.503(g).
+                                                  19                                  2020004280
+
+Alternatively, the Complainant has the right to file a civil action on the underlying complaint in
+accordance with the paragraph below entitled “Right to File a Civil Action.” 29 C.F.R.
+§§ 1614.407 and 1614.408. A civil action for enforcement or a civil action on the underlying
+complaint is subject to the deadline stated in 42 U.S.C. 2000e-16(c) (1994 & Supp. IV 1999). If
+the Complainant files a civil action, the administrative processing of the complaint,
+including any petition for enforcement, will be terminated. See 29 C.F.R. § 1614.409.
+
+Failure by an agency to either file a compliance report or implement any of the orders set forth in
+this decision, without good cause shown, may result in the referral of this matter to the Office of
+Special Counsel pursuant to 29 C.F.R. § 1614.503(f) for enforcement by that agency.
+
+                           STATEMENT OF RIGHTS - ON APPEAL
+                               RECONSIDERATION (M0920)
+
+The Commission may, in its discretion, reconsider this appellate decision if Complainant or the
+Agency submits a written request that contains arguments or evidence that tend to establish that:
+       1. The appellate decision involved a clearly erroneous interpretation of material fact or
+          law; or
+       2. The appellate decision will have a substantial impact on the policies, practices, or
+          operations of the agency.
+
+Requests for reconsideration must be filed with EEOC’s Office of Federal Operations (OFO)
+within thirty (30) calendar days of receipt of this decision. If the party requesting
+reconsideration elects to file a statement or brief in support of the request, that statement or
+brief must be filed together with the request for reconsideration. A party shall have twenty
+(20) calendar days from receipt of another party’s request for reconsideration within which to
+submit a brief or statement in opposition. See 29 C.F.R. § 1614.405; Equal Employment
+Opportunity Management Directive for 29 C.F.R. Part 1614 (EEO MD-110), at Chap. 9 § VII.B
+(Aug. 5, 2015).
+
+Complainant should submit his or her request for reconsideration, and any statement or brief in
+support of his or her request, via the EEOC Public Portal, which can be found at
+
+https://publicportal.eeoc.gov/Portal/Login.aspx
+
+Alternatively, Complainant can submit his or her request and arguments to the Director, Office
+of Federal Operations, Equal Employment Opportunity Commission, via regular mail addressed
+to P.O. Box 77960, Washington, DC 20013, or by certified mail addressed to 131 M Street, NE,
+Washington, DC 20507. In the absence of a legible postmark, a complainant’s request to
+reconsider shall be deemed timely filed if OFO receives it by mail within five days of the
+expiration of the applicable filing period. See 29 C.F.R. § 1614.604.
+
+An agency’s request for reconsideration must be submitted in digital format via the EEOC’s
+Federal Sector EEO Portal (FedSEP). See 29 C.F.R. § 1614.403(g).
+                                               20                                   2020004280
+
+Either party’s request and/or statement or brief in opposition must also include proof of service
+on the other party, unless Complainant files his or her request via the EEOC Public Portal, in
+which case no proof of service is required.
+
+Failure to file within the 30-day time period will result in dismissal of the party’s request for
+reconsideration as untimely, unless extenuating circumstances prevented the timely filing of the
+request. Any supporting documentation must be submitted together with the request for
+reconsideration. The Commission will consider requests for reconsideration filed after the
+deadline only in very limited circumstances. See 29 C.F.R. § 1614.604(c).
+
+
+               COMPLAINANT’S RIGHT TO FILE A CIVIL ACTION (T0610)
+
+This decision affirms the Agency’s final decision/action in part, but it also requires the Agency
+to continue its administrative processing of a portion of your complaint. You have the right to
+file a civil action in an appropriate United States District Court within ninety (90) calendar
+days from the date that you receive this decision on both that portion of your complaint which
+the Commission has affirmed and that portion of the complaint which has been remanded for
+continued administrative processing. In the alternative, you may file a civil action after one
+hundred and eighty (180) calendar days of the date you filed your complaint with the Agency,
+or your appeal with the Commission, until such time as the Agency issues its final decision on
+your complaint. If you file a civil action, you must name as the defendant in the complaint the
+person who is the official Agency head or department head, identifying that person by his or her
+full name and official title. Failure to do so may result in the dismissal of your case in court.
+“Agency” or “department” means the national organization, and not the local office, facility or
+department in which you work. If you file a request to reconsider and also file a civil action,
+filing a civil action will terminate the administrative processing of your complaint.
+
+
+                          RIGHT TO REQUEST COUNSEL (Z0815)
+
+If you want to file a civil action but cannot pay the fees, costs, or security to do so, you may
+request permission from the court to proceed with the civil action without paying these fees or
+costs. Similarly, if you cannot afford an attorney to represent you in the civil action, you may
+request the court to appoint an attorney for you. You must submit the requests for waiver of
+court costs or appointment of an attorney directly to the court, not the Commission. The
+court has the sole discretion to grant or deny these types of requests.
+                                                 21                                     2020004280
+
+Such requests do not alter the time limits for filing a civil action (please read the paragraph titled
+Complainant’s Right to File a Civil Action for the specific time limits).
+
+FOR THE COMMISSION:
+
+
+
+______________________________
+Carlton M. Hadden, Director
+Office of Federal Operations
+
+
+March 7, 2022
+Date
+

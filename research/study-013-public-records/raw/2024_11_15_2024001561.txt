@@ -1,0 +1,799 @@
+           U.S. EQUAL EMPLOYMENT OPPORTUNITY COMMISSION
+                         Office of Federal Operations
+                                P.O. Box 77960
+                           Washington, DC 20013
+
+
+                                 Clifford L., 1
+                                Complainant,
+
+                                      v.
+
+                            Denis R. McDonough,
+                                 Secretary,
+                       Department of Veterans Affairs
+                      (Veterans Health Administration),
+                                  Agency.
+
+                           Appeal No. 2024001561
+
+                     Agency No. 2003-666-2022-148504
+
+                                  DECISION
+
+On December 27, 2023, Complainant filed an appeal with the Equal
+Employment Opportunity Commission (EEOC or Commission), pursuant to 29
+C.F.R. § 1614.403(a), from the Agency’s December 4, 2023, final decision
+concerning his equal employment opportunity (EEO) complaint alleging
+employment discrimination in violation of Section 501 of the Rehabilitation Act
+of 1973 (Rehabilitation Act), as amended, 29 U.S.C. § 791 et seq. For the
+following reasons, the Commission AFFIRMS the Agency’s final decision.
+
+                             ISSUES PRESENTED
+
+Whether Complainant established that he was denied a reasonable
+accommodation for his disabilities and subjected to discrimination based on
+his disability and reprisal.
+
+
+
+
+1
+ This case has been randomly assigned a pseudonym which will replace
+Complainant’s name when the decision is published to non-parties and the
+Commission’s website.
+                                       2                           2024001561
+
+                                BACKGROUND
+
+At the time of events giving rise to this complaint, Complainant worked as a
+Training Instructor at the Agency’s Sheridan VA Medical Center in Sheridan,
+Wyoming.
+
+On November 30, 2022, Complainant filed an EEO complaint alleging that the
+Agency discriminated against him on the bases of disability (learning
+disabilities, anxiety, and fibromyalgia) and reprisal for protected EEO activity
+under Section 501 of the Rehabilitation Act of 1973 when the Agency
+subjected him to numerous incidents of discrimination and harassment
+including but not limited to the Chief of Education Services (Chief) insisting on
+keeping the door between her office and Complainant’s desk open stating that
+it was so “[she] can watch [him]”; the Chief denied his request for a
+reasonable accommodation; on February 8, 2022, the Chief issued
+Complainant a letter of reprimand; and on July 18, 2022, Complainant was
+terminated from his employment and the Acting Chief of Nutrition and Food
+Services (Acting Chief) instructed police to escort him out of the building
+immediately while he was trying to collect his personal belongings. 2
+
+Complainant started work at the Agency in October 2021 and was subject to
+a two-year probationary period. He stated that he suffers from learning
+disabilities and is a 70 percent disabled veteran due to his anxiety and
+fibromyalgia, which includes severe social anxiety.           See Report of
+Investigation (ROI) at 126-27. He asserted that his limitations are “being
+exposed to [] Hostile and abusive people at the Sheridan VA.” See ROI at
+127. He insisted that he was not allowed to perform the majority of his
+accepted job duties. See ROI at 127. He asserted that he told the Chief and
+other Agency management officials about his disabilities and the “bullying and
+abuse” he suffered but the Agency took no action. See ROI at 129. He stated
+that he was a “known whistleblower,” but did not provide details as to what
+specific actions he took that constituted whistleblowing. See ROI at 130.
+
+
+2
+ The Agency initially dismissed Complainant’s complaint pursuant to 29 C.F.R.
+§1614.107(a)(2) for untimely counselor contact. Complainant appealed the
+Agency’s dismissal and on appeal, the Commission reversed the procedural
+dismissal and remanded the complaint to the Agency for investigation. See
+Clifford L. v. Dep’t of Veterans Affs., EEOC Appeal No. 2023002090 (June 6,
+2023). During the investigation, Complainant amended his complaint to add
+more incidents of harassment as well as alleging reprisal for whistleblower
+activities.
+                                        3                            2024001561
+
+He stated that the Chief refused to submit his request for a reasonable
+accommodation several times and when it was finally submitted, the “ADA
+office” did not record it initially and it was not actually recorded until December
+2021. See ROI at 132. He asserted that the Chief offered alternatives but
+“did not address much of [his] requests,” and instead offered him things he
+did not ask for and falsely accused him of having focus issues which he denies
+having. See ROI at 132-33. He stated that she offered him mentors but
+essentially told him not to bother other people when he needed work help.
+See ROI at 133.
+
+The Associate Director of Patient Care Services (Associate Director), who was
+Complainant’s second-line supervisor, explained that when Complainant
+began his employment, he began requesting a compressed schedule and
+regular recurring telework but not as a reasonable accommodation. See ROI
+at 350. She stated that regular recurring telework agreements were based
+on the needs of the service and determined separately from telework as a
+reasonable accommodation. See ROI at 350-51. The Chief explained that
+Complainant’s initial requests for telework, not submitted through the
+reasonable accommodation process, were not filled out correctly and so HR
+told her that Complainant’s paperwork would not go through so she had to
+send the form back to Complainant with the suggested corrections, but
+Complainant continued not to make the suggested corrections. See ROI at
+255. The Acting Chief explained that Complainant’s request for permanent
+full-time could not be granted because one of Complainant’s duties was to
+conduct New Employee Orientation which is in person and therefore, full-time
+telework was not possible. See ROI at 292-93. He asserted that the initial
+position description was not posted as permitting full-time telework and he
+explained that to Complainant but that they allowed ad-hoc telework two days
+a week unless Complainant was needed to be on site for things like New
+Employee Orientation. See ROI at 292. He stated that the whole education
+department only had ad hoc telework as did all the dieticians who he managed
+at the time. See ROI at 293.
+
+Complainant’s request for a reasonable accommodation form, dated
+December 15, 2021, requested telework on Tuesdays and Thursdays; written
+instructions and directives; extra time to process instructions; a
+compressed/flexible schedule; a dedicated person (Coworker 1) to help him
+feel safe; the ability to take a few walks throughout the day; and to be allowed
+to remove himself from “uncomfortable situations that triggered [his] medical
+condition.” See ROI at 153-58.
+                                       4                          2024001561
+
+The attached medical documentation form indicated that Complainant’s
+anxiety gets worse when he is around people and “causes problems focusing
+on his work,” and further noted that Complainant felt that working from home
+would “help him focus.” See ROI at 153-54. Ultimately, on January 25, 2022,
+the Agency granted Complainant an alternative accommodation in the form of
+ad hoc telework on Tuesdays and Thursdays “as long as coverage at the office
+for essential duties is covered;” a compressed schedule; having various people
+as mentors available who agree to the task “allowing for other members of
+education to get their own work done;” an additional 15 minutes per day to
+walk; noise canceling earphones, air purifier, and an upgrade in a designated
+office for a secluded space for when Complainant needs a place to go to
+refocus. See ROI at 158-59.
+
+Complainant stated that the Chief, who was his first-level supervisor at the
+time, would not let him have the clearance he needed to perform his job, told
+him to stop bothering her and ask his coworker (Coworker 1) who was
+assigned to be his mentor if he had any questions, and gave him insignificant
+assignments such as running errands, shoveling snow, and getting things for
+her in the education building, but the rest of the time, he was forced to sit at
+his desk all day doing very little. See ROI at 163. He stated that the Chief
+made him and Coworker 1 sign in and out on a board even to go to the
+restroom and when he mentioned it to the Associate Director, she only
+laughed and said that the Chief could use a sign in and sign out board, even
+if it was only to track the two disabled employees. See ROI at 163. He
+asserted that the Associate Director responded to his complaining about how
+the Chief was not letting him perform his duties by ignoring him and silencing
+him, telling him he needed to stop asking for protection by email even though
+email is the primary method of communication. See ROI at 164. He stated
+that the Chief yelled and screamed at him and told him that he was not allowed
+to leave his chair except on breaks and to go to the restroom and whenever
+he did, he needed to sign out on the board on her office door anytime he left
+his chair. See ROI at 165. He asserted that no one else but him and Coworker
+1 was required to use the sign in board, and it was only after the sign in board
+was mentioned at a meeting with all the Education employees where none of
+the other employees knew anything about the board that it was agreed they
+no longer needed to use it. See ROI at 165-66.
+
+The Chief stated that Complainant was assigned projects based on his
+performance expectations, as were other employees in the Education
+department. See ROI at 253.
+                                      5                           2024001561
+
+She explained that Coworker 1 was assigned to be Complainant’s mentor
+when he started working at the Agency and he would give Complainant
+assignments but that when a new employee starts at the Agency, there is a
+lot of information for a new employee to understand and Coworker 1 would
+give him access to much of the necessary information. See ROI at 260. She
+stated that she met with Coworker 1 to discuss Complainant’s orientation
+process and was told by Coworker 1 that Complainant was progressing in his
+knowledge about the Agency. See ROI at 260. She stated that the sign in
+process was instituted by the previous supervisor and Complainant started
+yelling because he disagreed with the sign in requirement. See ROI at 262.
+She asserted that the sign in requirement was discussed the next day at the
+morning staff meeting and the staff decided on a different way to keep track
+of one another and just tell someone that they were leaving. See ROI at 262.
+The Associate Director explained that the Chief established a sign in, sign out
+board to help her team know where the rest of the team might be located
+because the Sheridan facility has a large campus with multiple buildings and
+some distance between the buildings and it was within the Chief’s authority
+as a supervisor to track the work of her employees. See ROI at 360. She
+stated that to her recollection, Complainant let her know that he did not agree
+with the need for the sign in board and felt he did not have to follow his
+supervisor’s instructions. See ROI at 360. Coworker 1 stated that the Chief
+enacted a sign in sign out board for everyone in the service and when
+Complainant questioned her about it, stating that it was treating them like
+children, the Chief was “a little indignant,” and denied that the sign in board
+was disrespectful. See ROI at 431. He acknowledged that at one point, he
+was in a meeting where the Chief would not listen to what he had to say and
+in his opinion talked to Complainant as if he were a child. See ROI at 431;
+434.
+
+Complainant further stated that after the Chief left and the Acting Chief took
+over, the Acting Chief assigned him a full-time position as a Health
+Professional Trainee (HPT) on top of his regular position and refused to have
+the additional position added to his performance description so he would not
+get the credit for doing the extra duties. See ROI at 177-79. He asserted
+that when he asked the Acting Chief to just let him do his actual job because
+he had no experience to be a Health Professional Trainee, the Acting Chief
+only laughed and said he had to do it. See ROI at 179. He stated that the
+Acting Chief sent him an email accusing him of causing delays with the Health
+Professional Trainees and he informed him that the HPTs turning in their
+information caused the delays and the Acting Chief wanted to investigate him
+to see if he was doing the job correctly. See ROI at 181.
+                                      6                           2024001561
+
+The Chief stated that Health Professionals Trainee duties were on
+Complainant’s performance assignments, and he was given training by the
+current person in that position and given a team member to help him if
+needed. See ROI at 272. The Acting Chief clarified that providing Health
+Professionals Trainee training was one of Complainant’s ancillary duties and
+Complainant was in charge of supervising 11 HPTs but that in fact,
+Complainant only completed the tasks for 6-7 of them and he and another
+employee had to complete the rest because Complainant was not following
+policy and wasn’t doing the work. See ROI at 314. The Acting Chief stated
+that he had received complaints about Complainant’s work, with people saying
+that they were concerned about the Health Professionals Trainees not starting
+on time and that it was due to Complainant. See ROI at 290. He asserted
+that he asked Complainant about it and Complainant claimed it was the HPTs
+who were at fault so he asked Complainant to verify his work and in response,
+Complainant started alleging harassment. See ROI at 290. The record
+includes the contemporaneous email exchange between the Acting Chief and
+Complainant where the Acting Chief asked Complainant to send him any
+emails Complainant had sent to HPT trainees and when Complainant
+questioned the reason for the request, the Acting Chief explained that in the
+last three months, there had been a delay with 5 out of the 10 HPTs and
+Complainant had told him the issue was with the trainees so he was trying to
+verify Complainant’s information. See ROI at 305-308. The Acting Chief then
+sent Complainant another email in response to a telephone conversation
+reminding Complainant that he was making a reasonable request as
+Complainant’s supervisor to verify work is being completed. See ROI at 305.
+The record indicates that Complainant’s response was to ask if he would be
+subjected to “retaliation and punishment” if he refused. See ROI at 304. The
+Associate Director explained that at the time, the Education Department had
+some vacancies, including the Health Professionals Trainee position, and so in
+order not to have degradation of their services, staff were asked to cover some
+tasks while the vacant positions were still being recruited. See ROI at 366-
+67.
+
+Complainant stated that on February 8, 2022, the Chief issued him a letter of
+reprimand that was “full of lies and dishonest claims,” and he was forced to
+sign in and told that if he did not, there would be further punishment. See
+ROI at 182. The Chief asserted that Complainant was mistaken about the
+dates, and she issued him a counseling memorandum regarding
+Complainant’s behavior in the office on December 7, 2021. See ROI at 274.
+                                      7                           2024001561
+
+The record indicates that the Chief issued Complainant a memorandum
+entitled “Probationary Warning-Revised”(letter of warning) dated February 8,
+2022, in which the Chief reminded Complainant that when hired, he was
+subject to a two-year probationary/trial period and warning him that his
+conduct had been unacceptable, citing inappropriate communications with
+management and failure to follow instructions and directing Complainant to
+stop sending argumentative emails to all of his supervisors. See Supplemental
+ROI at 77-80. Specifically, the letter of warning letter indicated that
+Complainant had been instructed to hand in ad hoc telework forms, take and
+teach a “crucial conversations” training course, and utilize a sign in sheet to
+record his lunch and breaks, and had refused to comply with any of these
+instructions in a timely manner. Id. The record includes a memorandum
+written by one of Complainant’s coworkers, a Clinical Nurse Educator,
+regarding a meeting that occurred on December 7, 2021, at which she stated
+that the Chief repeatedly interrupted Complainant, speaking over him and not
+letting him say a full sentence without interruption, stating that the Chief’s
+tone was rude and inappropriate for a leader. See Supplemental ROI at 81.
+
+Complainant stated that the Acting Chief, the Associate Director, and his then-
+Supervisor, the new Chief of Education (Supervisor) used his disability against
+him to cause his anxiety to skyrocket. See ROI at 138. He asserted that they
+used a police officer who held him hostage in an office with two supervisors
+and did not allow him to leave, blocking the door with both hands, which he
+stated was a deliberate attempt to cause trauma and fear. See ROI at 138.
+He stated that he is not sure whether the Acting Chief, the Associate Director,
+or the Supervisor made the decision to terminate him but they were all there
+at the termination meeting and tried to intimidate and silence him because he
+was speaking out against the “abuse they were using on humans and disabled
+humans.”     See ROI at 139-40. He stated that management told him his
+termination was due to failure to follow instructions and inappropriate
+communications with others but that the Acting Chief refused to provide
+evidence to support the allegations. See ROI at 140.
+
+The Acting Chief stated that he made the decision to terminate Complainant
+due to Complainant’s inappropriate communications with coworkers and his
+failure to follow instructions. See ROI at 297. He explained that Complainant
+was rude to a colleague and his work on Health Professional Trainees was
+unsatisfactory. See ROI at 298. The Acting Chief explained that when he
+gave Complainant the letter of termination, Complainant asked for the
+evidence file and he told Complainant that he could reach out to HR for it, at
+which point Complainant became angry and started yelling and threatening
+the Acting Chief’s job. See ROI at 295.
+                                        8                           2024001561
+
+He asserted that was when the Agency police started to try to de-escalate the
+situation. See ROI at 295. He denied that Agency police did anything to
+intimidate Complainant, explaining that in fact Complainant was given
+approximately 45 minutes from 3:45 p.m. to 4:30 p.m. to gather his
+belongings and Complainant had already done so and was only using his
+computer for the last 30 minutes and that was when police told Complainant
+to leave the premises.          See ROI at 296.       The record includes a
+contemporaneous memorandum the Acting Chief made of the meeting
+regarding Complainant’s termination which stated that after the Acting Chief
+started reading the letter of termination to Complainant, Complainant became
+upset and insisted the termination was retaliation and unfounded and then
+Complainant stood up, grabbed the letter and stormed out of the office
+threatening the Acting Chief’s job and yelling that he was going to sue the
+Agency. See ROI at 302. The memorandum stated that Complainant was
+yelling out in the hallway and when the Acting Chief went out to tell
+Complainant that they still needed his badge and his laptop, Complainant
+confronted the Acting Chief, pointing his finger at his face, and at that point,
+Agency police stepped in and told Complainant to step back twice until
+Complainant eventually obeyed. See ROI at 302. The memorandum stated
+that Complainant went to his computer and initially responded that he didn’t
+need to leave until finally at 4:30, Agency police told Complainant he had to
+leave the premises and after Complainant argued a little longer, Complainant
+left the building with his belongings. See ROI at 303. The Supervisor stated
+that she was a witness at the meeting where the Acting Chief issued
+Complainant his letter of termination and she confirmed the Acting Chief’s
+description of events, stating that after Complainant was issued the letter, he
+went to his computer and started sending emails to his personal email
+account, refusing to leave the premises as instructed until Agency police asked
+him more than once to do so. See ROI at 384. The record includes a
+contemporaneous memorandum the Supervisor wrote describing the meeting
+regarding Complainant’s termination which confirms the Acting Chief’s
+description of events. See ROI at 391-92.
+
+At the conclusion of the investigation, the Agency provided Complainant with
+a copy of the report of investigation and notice of his right to request a hearing
+before an Equal Employment Opportunity Commission Administrative Judge
+(AJ). In accordance with Complainant’s request, the Agency issued a final
+decision pursuant to 29 C.F.R. § 1614.110(b). The decision initially dismissed
+Complainant’s claim of reprisal based on his whistleblower status, noting that
+whistleblower retaliation does not fall within any of the EEO statutes.
+                                       9                          2024001561
+
+The decision went on to find that Complainant did not establish that the
+Agency denied him an effective accommodation and that the Agency
+articulated legitimate, nondiscriminatory reasons for its actions and
+Complainant offered no evidence beyond his subjective assertions to indicate
+that the Agency’s reasons were a pretext for discrimination. Finally, the
+decision found that the alleged incidents of harassment were not sufficiently
+severe or pervasive to constitute an unlawful hostile work environment. The
+decision concluded that Complainant failed to prove that the Agency subjected
+him to discrimination as alleged.
+
+Complainant appealed.
+
+                          CONTENTIONS ON APPEAL
+
+On appeal, Complainant argues that the Agency’s investigation and its
+decision were incomplete because it did not interview all of Complainant’s
+suggested witnesses, including Complainant’s wife who is also employed by
+the Agency, and that the Agency’s decision did not accurately recount all the
+evidence in the record. Complainant further casts doubt on the veracity of
+the Agency’s witnesses. Complainant contends that the Agency denied him a
+reasonable accommodation and improperly diagnosed with “focus” issues
+which he did not have and that the record clearly establishes that Complainant
+was subjected to abuse and bullying based on his disability and reprisal for his
+protected activity in requesting a reasonable accommodation.
+
+In response, the Agency argues that its final decision accurately recounted all
+the facts in the record and the evidence does not support Complainant’s
+assertions that he was denied an effective accommodation or that he was
+subjected to discrimination or harassment.
+
+                           STANDARD OF REVIEW
+
+As this is an appeal from a decision issued without a hearing, pursuant to 29
+C.F.R. § 1614.110(b), the Agency’s decision is subject to de novo review by
+the Commission. 29 C.F.R. § 1614.405(a).            See Equal Employment
+Opportunity Management Directive for 29 C.F.R. Part 1614, at Chapter 9,
+§ VI.A. (Aug. 5, 2015) (explaining that the de novo standard of review
+“requires that the Commission examine the record without regard to the
+factual and legal determinations of the previous decision maker,” and that
+EEOC “review the documents, statements, and testimony of record, including
+any timely and relevant submissions of the parties, and . . . issue its decision
+                                       10                          2024001561
+
+based on the Commission’s own assessment of the record and its
+interpretation of the law”).
+
+                                   ANALYSIS
+
+Adequacy of the Investigation
+
+Investigations of discrimination complaints are governed by 29 C.F.R. §
+1614.108 and the instructions contained in the Commission’s EEO MD-110.
+See EEO MD-110, Chap. 6 (“Development of Impartial and Appropriate Factual
+Records”). An adequate agency investigation is one that is developed
+impartially and contains an appropriate factual record. 29 C.F.R. §
+1614.108(b). “An appropriate factual record is one that allows a reasonable
+fact finder to draw conclusions as to whether discrimination occurred.” 29
+C.F.R. § 1614.108(b); EEO MD-110, Chap. 6, § § I, IV.B., IV.C. An investigator
+must be unbiased, objective and thorough. Id. at § V.C. The investigator must
+obtain all relevant evidence from all sources regardless of how it may affect
+the outcome. Id. at § V.D. Moreover, the complainant, upon receipt of the
+ROI, is provided an opportunity to cure defects in the record by either notifying
+the agency (in writing) of any perceived deficiencies in the investigation or
+requesting a hearing before an AJ. See EEO MD-110, at Ch. 6, § XI and Ch.
+7, § I.
+
+Here, Complainant insists that the investigation was inadequate because it did
+not interview all of his suggested witnesses. We reject Complainant’s
+contention. The Commission has stated repeatedly that an EEO Investigator
+is not necessarily obligated to pursue all of a complainant’s suggestions
+regarding how the investigation is conducted. See Sid E. v. Dep’t of Transp.,
+EEOC Appeal No. 2019002597 (Sept. 22, 2020). Moreover, if Complainant
+wanted an opportunity to further develop the record through discovery and
+cross examination of witnesses, he could have requested a hearing but failed
+to do so. 3 See Tommy O. v. United States Postal Serv., EEOC Appeal No.
+
+3
+  To the extent Complainant appears to argue that his failure to request a
+hearing should be excused because Complainant was not represented by
+counsel at the time, we reject the argument. Being represented by counsel is
+not a prerequisite to requesting a hearing before an AJ and there is no
+indication that Complainant was somehow unable to understand the choice he
+made in requesting a final Agency decision instead. The mere fact that
+Complainant now regrets his choice because he disagrees with the Agency’s
+final decision is unfortunate but does not invalidate Complainant’s failure to
+request a hearing.
+                                       11                          2024001561
+
+0120152090 (Jun. 8, 2017). Upon our review of the record, we find that the
+record was adequately developed.
+
+Denial of Reasonable Accommodation
+
+Section 501 of the Rehabilitation Act of 1973, 29 U.S.C. § 791 (2012) (as
+amended) requires that an Agency make reasonable accommodation to the
+known physical or mental limitations of an otherwise qualified applicant or
+employee with a disability, unless the Agency can demonstrate that doing so
+would impose an undue hardship. 29 C.F.R. § 1630.9(a) (2017); EEOC
+Enforcement Guidance on Reasonable Accommodation and Undue Hardship
+under the Americans with Disabilities Act (Enforcement Guidance) (revised
+Oct. 17, 2002). Once an employer becomes aware of the need for an
+accommodation of an employee’s disability, the employer may engage in an
+interactive process with the employee to identify and implement appropriate
+reasonable accommodations. See 29 C.F.R. § 1630.2(o)(3) (2019). An Agency
+may choose among reasonable accommodations as long as the chosen
+accommodation is effective, and while the preference of the individual with a
+disability should be given primary consideration, an Agency has the ultimate
+discretion to choose between effective accommodations. See Enforcement
+Guidance, supra, at Q. 9.
+
+To establish that he was denied a reasonable accommodation, Complainant
+must show that: (1) he is an individual with a disability, as defined by 29
+C.F.R. § 1630.2(g); (2) he is a “qualified” individual with a disability pursuant
+to 29 C.F.R. § 1630.2(m); and (3) the Agency failed to provide him with a
+reasonable accommodation. See, e.g., Bill A. v. Dep’t of the Army, EEOC
+Appeal No. 0120131989 (Oct. 26, 2016).
+
+In this case, Complainant insists that the Agency denied him a reasonable
+accommodation because the Agency did not grant him all that he requested,
+for example having Coworker 1 as a dedicated “safe person” to assist him,
+and offering him accommodations he had not requested by improperly
+diagnosing focus issues which he did not have. 4 Complainant’s arguments are
+without merit. To the extent Complainant argues that the Agency improperly
+diagnosed him, Complainant’s contentions are not supported by the evidence.
+
+
+4
+ To the extent Complainant insists that the Chief either destroyed his initial
+reasonable accommodation request or somehow delayed in submitting it to
+the RA Coordinator, there is no evidence in the record supporting his
+assertions.
+                                       12                          2024001561
+
+Complainant’s own medical documentation attached to his reasonable
+accommodation request specifically noted that Complainant’s anxiety “causes
+problems focusing on his work,” and that Complainant felt that working from
+home would “help him focus.” See ROI at 153-54. The Agency therefore
+acted reasonably in offering Complainant’s additional accommodations such
+as noise-canceling headphones and a secluded office to help him focus
+because his own documentation stated that Complainant’s medical condition
+led to his having problems with focusing. While Complainant clearly takes
+issue with the Agency not specifically designating Coworker 1 to be his “safe
+person” to assist him but offering instead various other employees in the
+Education department to assist him provided they could do so while also
+performing their own duties, Complainant does not explain why using those
+other employees would not have been effective. In this case, the gravamen
+of Complainant’s argument is that the Agency denied him a reasonable
+accommodation because the Agency did not offer him all that he asked for.
+However, while Complainant is entitled to an effective accommodation, he is
+not entitled to the accommodation of his choice. See Brenton W. v. Dep’t of
+the Army, EEOC Appeal No. 2022003193 (Dec. 5, 2022). Complainant has
+not established that the alternative accommodations the Agency offered were
+not effective. We therefore find that Complainant has not established that the
+Agency violated the Rehabilitation Act by denying him a reasonable
+accommodation.
+
+Disparate Treatment
+
+Applying the McDonnell Douglas burden-shifting standard defined in
+McDonnell Douglas Corp. v. Green, 411 U.S. 792 (1973), a complainant
+initially must establish a prima facie case of discrimination by presenting facts
+which, if unexplained, reasonably give rise to an inference of discrimination,
+i.e., that a prohibited consideration was a factor in the adverse employment
+action. See St. Mary’s Honor Center v. Hicks, 509 U.S. 502, 507 (1993);
+Texas Dep’t of Community Affs. v. Burdine, 450 U.S. 248, 252-53 (1981);
+McDonnell Douglas, 411 U.S. at 802. The burden then shifts to the agency to
+articulate a legitimate, nondiscriminatory reason for its actions. Burdine, 450
+U.S. at 253. Once the agency has met its burden, the complainant has the
+responsibility to demonstrate by a preponderance of the evidence that the
+agency’s action was based on prohibited considerations of discrimination, that
+is, its articulated reason for its action was not its true reason but a sham or
+pretext for discrimination. See Hicks, 509 U.S. at 511; Burdine, 450 U.S. at
+252-5 3; McDonnell Douglas, 411 U.S. at 804.
+                                       13                          2024001561
+
+Complainant may establish a prima facie case of discrimination by providing
+evidence that: (1) he is a member of a protected class; (2) he suffered an
+adverse employment action; and (3) either that similarly situated individuals
+outside his protected class were treated differently, or other circumstances
+surrounding the adverse employment action give rise to an inference of
+discrimination. McDonnell Douglas, 411 U.S. at 802 n.13; Reeves v.
+Sanderson Plumbing, 530 U.S. 133, 142 (2000); Bodett v. CoxCom, Inc., 366
+F.3d 736, 743-44 (9th Cir.2004) (internal quotation marks omitted).
+
+Complainant may establish a prima facie case of reprisal by showing that: (1)
+he engaged in a protected activity; (2) the agency was aware of the protected
+activity; (3) subsequently, he was subjected to adverse treatment by the
+agency; and (4) a nexus exists between the protected activity and the adverse
+treatment. Whitmire v. Dep’t of the Air Force, EEOC Appeal No. 01A00340
+(Sept. 25, 2000). When establishing a prima facie case of retaliation under
+Title VII, close temporal proximity is sufficient to infer a causal nexus between
+an employee’s protected activity and an adverse action on the part of an
+employer. See Clark County School Dist. v. Breeden, 532 U.S. 268, 273
+(2001) (noting that “cases that accept mere temporal proximity between an
+employer’s knowledge of protected activity and an adverse employment action
+as sufficient evidence of causality to establish a prima facie case uniformly
+hold that the temporal proximity must be ‘very close”’).
+
+We find that Complainant did not establish a prima facie case based on his
+disability. While it is undisputed that the various management officials were
+all made aware that Complainant had a disability, Complainant did not identify
+any similarly-situated individuals who did not have a disability who were
+treated differently nor is there any evidence beyond Complainant’s own
+subjective beliefs that any of the Agency’s actions were based on his disability.
+Complainant’s subjective beliefs are not enough to establish a prima facie
+case.
+
+We do find that Complainant has established a prima facie case of reprisal for
+any incidents occurring after December 15, 2021, based on his protected
+activity of requesting a reasonable accommodation and then in contacting an
+EEO counselor on February 2, 2022. 5 We find, however, that the Agency
+articulated legitimate, nondiscriminatory reasons for all of its actions.
+
+5
+  We affirm the Agency’s dismissal of Complainant’s claim of whistleblower
+retaliation. See Jill M. v. Dep’t of Defense, EEOC Appeal No. 2021000550
+(July 15, 2021) (reprisal based on whistleblowing activity not within the
+jurisdiction of the Commission).
+                                       14                          2024001561
+
+The Chief issued Complainant a memorandum entitled “Probationary Warning-
+Revised” warning Complainant that his conduct had been unacceptable due to
+his inappropriate communications with management and failure to follow
+instructions. See Supplemental ROI at 77-80. Specifically, the letter of
+warning indicated that Complainant had been instructed to hand in ad hoc
+telework forms, take and teach a “crucial conversations” training course, and
+utilize a sign in sheet to record his lunch and breaks, and had refused to
+comply with any of these instructions in a timely manner. Id. Similarly, the
+Acting Chief stated that he decided to terminate Complainant based on the
+inappropriate manner in which Complainant communicated with his coworkers
+and his failure to follow supervisor instructions. See ROI at 297. This is
+further supported by the contemporaneous evidence in the record of
+Complainant’s emails to his supervisors which indicated that Complainant sent
+frequent emails to various management officials accusing them of retaliation
+and abuse with little to no substantiated evidence and questioning their right
+to take some actions.
+
+We further conclude that Complainant did not establish that any of the
+Agency’s reasons are a pretext for discrimination.           While Complainant
+repeatedly casts doubt on the veracity of all the other witnesses’ testimony,
+we note that because Complainant did not request a hearing, we do not have
+the benefit of an AJ’s credibility determinations and can only evaluate the facts
+based on the weight of the evidence presented. See Lore v. Dep’t of Homeland
+Sec., EEOC Appeal No. 0120113283 (Sept. 13, 2013) (complainant failed to
+establish that witnesses made false statements where he withdrew his request
+for a hearing and credibility determinations were unable to be made). In this
+case, Complainant submitted no evidence of pretext aside from his repeated
+insistence that the management officials were motivated by discriminatory or
+retaliatory animus. However, his clear disagreement with the Agency’s
+actions unsupported by any probative evidence is not sufficient to establish
+pretext.    See Complainant v. Envtl. Prot. Agency, EEOC Appeal No.
+0520140302 (Oct. 23, 2014). The Commission has repeatedly stated that
+mere assertions or conjecture that an agency’s explanation is a pretext for
+intentional discrimination are insufficient because subjective belief, however
+genuine, does not constitute evidence of any unlawful motive. See Leif S. v.
+Dep’t of the Treasury, EEOC Appeal No. 2021004037 (April 28, 2022); Juliet
+B. v. U.S. Postal Serv., EEOC Appeal No. 0120182519 (Oct. 8, 2019). We find
+no persuasive evidence that Complainant’s protected classes were a factor in
+any of the Agency’s actions.
+                                       15                           2024001561
+
+At all times, the ultimate burden remains with Complainant to demonstrate by
+a preponderance of the evidence that the Agency’s reasons were not the real
+reasons and that discriminatory animus was a factor in its actions. Here,
+Complainant failed to carry this burden. See Liz M. v. Dep’t of Defense, EEOC
+Appeal No. 0120150805 (April 5, 2017).
+
+Hostile Work Environment
+
+Discriminatory harassment is actionable if it is sufficiently severe or pervasive
+that it results in an alteration of the conditions of the Complainant’s
+employment. See Enforcement Guidance on Harris v. Forklift Systems, Inc.,
+EEOC Notice No. 915.002, at 3 (Mar. 8, 1994). To prove a claim of
+discriminatory harassment, a complainant “must establish that [he] was
+subjected to conduct that was either so severe or so pervasive that a
+‘reasonable person’ in Complainant’s position would have found the conduct
+to be hostile or abusive. Complainant must also prove that the conduct was
+taken because of a protected basis.” Jenna P. v. Dep’t of the Navy, EEOC
+Appeal No. 2019002007, 2020 WL 6134298, at *7 (Sept. 22, 2022).
+
+To prevail in his claim of retaliatory harassment, Complainant must show that
+he was subjected to conduct sufficient to dissuade a “reasonable person” from
+making or supporting a complaint of discrimination. See Burlington N. & Santa
+Fe Ry. Co. v. White, 548 U.S. 53, 57 (2006); EEOC Enforcement Guidance on
+Retaliation and Related Issues, EEOC Notice No. 915.004, § II(B)(3) & n. 137
+(Aug. 25, 2016). Only if both elements are present, retaliatory motivation and
+a chilling effect on protected EEO activity, will the question of Agency liability
+for reprisal-based harassment present itself. See Janeen S. v. Dep’t of Com.,
+EEOC Appeal No. 0120160024 (Dec. 20, 2017). Importantly, “[t]he threshold
+for establishing retaliatory harassment is different than for discriminatory
+hostile work environment. Retaliatory harassing conduct can be challenged
+under the Burlington Northern standard even if it is not severe or pervasive
+enough to alter the terms and conditions of employment.” Irvin C. v. Dep’t of
+Homeland Sec., EEOC Appeal No. 0720180024 (July 25, 2023), at *8 (quoting
+EEOC Enforcement Guidance on Retaliation & Related Issues, No. 915.004, §
+II.B, Ex. 17. (Aug 25, 2016). “If the conduct would be sufficiently material to
+deter protected activity in the given context, even if it were insufficiently
+severe or pervasive to create a hostile work environment, there would be
+actionable retaliation.” EEOC Enforcement Guidance on Retaliation & Related
+Issues, No. 915.004, § II.B, Ex. 17. (Aug 25, 2016).
+                                      16                          2024001561
+
+In this case, we find that Complainant’s hostile work environment claim must
+fail because there is no evidence beyond his own subjective assertions that
+any of the alleged incidents of harassment are due to any of his protected
+bases. See Ceola K. v. Dep’t of Defense, EEOC Appeal No. 2022003102 (June
+22, 2023).
+
+Contrary to Complainant’s repeated insistence on appeal, there is no evidence
+in the record to support Complainant’s insistence that he was subjected to any
+abuse or bullying based on either his disability or reprisal. While Complainant
+emphasizes on appeal that Coworker 1 noted that he witnessed the Chief
+being “derogatory” to Complainant by speaking to him as if he were a child
+and the statement by another coworker that she witnessed the Chief
+interrupting Complainant in an unprofessional and rude manner, at best, these
+incidents indicate only that there was a contentious interpersonal relationship
+between Complainant and the Chief. Such a tense interpersonal relationship
+does not, however, establish that Complainant was subjected to harassment.
+Nor has Complainant in any respect refuted the allegations in the letter of
+warning     that he refused to follow numerous work -related specific
+instructions. In particular, the record indicates that Complainant refused to
+turn in the forms requested, refused to take or teach the class his manager
+requested, and refused to follow her instructions on other occasions. The Chief
+indicated that Complainant responded to their requests in a discourteous
+manner. The Acting Chief stated that he made the decision to terminate
+Complainant’s      employment      due    to     Complainant’s     inappropriate
+communications with coworkers and his failure to follow instructions. He
+explained that Complainant was rude to a colleague and his work on Health
+Professional Trainees was unsatisfactory.
+
+The Commission has repeatedly stated that Title VII is not a civility code and
+personality clashes and other common workplace grievances “while
+sometimes unpleasant, do not constitute harassment, even if done in a
+confrontational manner.” Felton M. v. Dep’t of Agric., EEOC Appeal No.
+0120171203 (June 23, 2017); see also Eileen S. v. Dep’t of the Army, EEOC
+Appeal No. 0120170721 (Mar. 20, 2019) (finding no hostile work environment
+when, among other things, Complainant was told she “sucked” and that she
+“did not perform [her] job worth a damn,” and Complainant was told in front
+of other employees “you are ignorant and do not know what the hell you are
+talking about”). Furthermore, we find that all the alleged incidents of
+harassment are little more than routine work assignments, instructions, and
+admonishments which do not arise to the level of a hostile work environment.
+See Melodee M. v. Dep’t of Agric., EEOC Appeal No. 0120142984 (Jan. 24,
+2017).
+                                      17                          2024001561
+
+While Complainant insists that he was subjected to “abuse” and “bullying,”
+there is no evidence to support his description of his treatment and his own
+subjective perception of the various management officials’ treatment of him
+does not satisfy the objective standard required to establish unlawful
+harassment. See Carl T. v. Social Security Admin., EEOC Appeal No.
+2022000277 (Jan. 5, 2023) (stating Title VII forbids only behavior so
+objectively offensive as to alter the conditions of the victim's employment);
+Mattson v. Dep’t of Homeland Sec'y, EEOC Appeal No. 0120052563 (July 3,
+2007) (stating that a hostile work environment is established by an objective
+standard and not a complainant's subjective perceptions).
+
+                                CONCLUSION
+
+Based on a thorough review of the record and the contentions on appeal,
+including those not specifically addressed herein, we AFFIRM the Agency’s final
+decision finding that Complainant did not establish that he was subjected to
+discrimination as alleged.
+
+                    STATEMENT OF RIGHTS - ON APPEAL
+                      RECONSIDERATION (M0124.1)
+
+The Commission may, in its discretion, reconsider this appellate decision if
+Complainant or the Agency submits a written request that contains arguments
+or evidence that tend to establish that:
+      1. The appellate decision involved a clearly erroneous interpretation of
+         material fact or law; or
+      2. The appellate decision will have a substantial impact on the policies,
+         practices, or operations of the agency.
+
+Requests for reconsideration must be filed with EEOC’s Office of Federal
+Operations (OFO) within thirty (30) calendar days of receipt of this
+decision. If the party requesting reconsideration elects to file a statement or
+brief in support of the request, that statement or brief must be filed
+together with the request for reconsideration. A party shall have
+twenty (20) calendar days from receipt of another party’s request for
+reconsideration within which to submit a brief or statement in opposition. See
+29 C.F.R. § 1614.405; Equal Employment Opportunity Management Directive
+for 29 C.F.R. Part 1614 (EEO MD-110), at Chap. 9 § VII.B (Aug. 5, 2015).
+                                       18                           2024001561
+
+Complainant should submit their request for reconsideration, and any
+statement or brief in support of their request, via the EEOC Public Portal, which
+can be found at
+
+https://publicportal.eeoc.gov/Portal/Login.aspx
+
+Alternatively, Complainant can submit their request and arguments to the
+Director, Office of Federal Operations, Equal Employment Opportunity
+Commission, via regular mail addressed to P.O. Box 77960, Washington, DC
+20013, or by certified mail addressed to 131 M Street, NE, Washington, DC
+20507. In the absence of a legible postmark, a complainant’s request to
+reconsider shall be deemed timely filed if OFO receives it by mail within five
+days of the expiration of the applicable filing period. See 29 C.F.R. §
+1614.604.
+
+An agency’s request for reconsideration must be submitted in digital format
+via the EEOC’s Federal Sector EEO Portal (FedSEP). See 29 C.F.R. §
+1614.403(g). Either party’s request and/or statement or brief in opposition
+must also include proof of service on the other party, unless Complainant files
+their request via the EEOC Public Portal, in which case no proof of service is
+required.
+
+Failure to file within the 30-day time period will result in dismissal of the
+party’s request for reconsideration as untimely, unless extenuating
+circumstances prevented the timely filing of the request. Any supporting
+documentation must be submitted together with the request for
+reconsideration. The Commission will consider requests for reconsideration
+filed after the deadline only in very limited circumstances. See 29 C.F.R. §
+1614.604(f).
+
+          COMPLAINANT’S RIGHT TO FILE A CIVIL ACTION (S0124)
+
+You have the right to file a civil action in an appropriate United States District
+Court within ninety (90) calendar days from the date that you receive this
+decision. If you file a civil action, you must name as the defendant in the
+complaint the person who is the official Agency head or department head,
+identifying that person by their full name and official title. Failure to do so
+may result in the dismissal of your case in court. “Agency” or “department”
+means the national organization, and not the local office, facility or
+department in which you work. If you file a request to reconsider and also file
+a civil action, filing a civil action will terminate the administrative
+processing of your complaint.
+                                       19                          2024001561
+
+                   RIGHT TO REQUEST COUNSEL (Z0815)
+
+If you want to file a civil action but cannot pay the fees, costs, or security to
+do so, you may request permission from the court to proceed with the civil
+action without paying these fees or costs. Similarly, if you cannot afford an
+attorney to represent you in the civil action, you may request the court to
+appoint an attorney for you. You must submit the requests for waiver of
+court costs or appointment of an attorney directly to the court, not
+the Commission. The court has the sole discretion to grant or deny these
+types of requests. Such requests do not alter the time limits for filing a civil
+action (please read the paragraph titled Complainant’s Right to File a Civil
+Action for the specific time limits).
+
+FOR THE COMMISSION:
+
+
+______________________________                 Carlton M. Hadden’s signature
+Carlton M. Hadden, Director
+Office of Federal Operations
+
+
+September 23, 2024
+Date
+

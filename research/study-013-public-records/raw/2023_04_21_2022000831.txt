@@ -1,0 +1,637 @@
+             U.S. EQUAL EMPLOYMENT OPPORTUNITY COMMISSION
+                           Office of Federal Operations
+                                  P.O. Box 77960
+                             Washington, DC 20013
+
+
+                                          Linda A., 1
+                                         Complainant,
+
+                                               v.
+
+                                     Christine Wormuth,
+                                          Secretary,
+                                   Department of the Army,
+                                           Agency.
+
+                                    Appeal No. 2022000831
+
+                                Hearing No. 570-2021-00683X
+
+                            Agency No. ARCEHECSA20FEB01152
+
+                                          DECISION
+
+On December 1, 2021, Complainant filed an appeal with the Equal Employment Opportunity
+Commission (EEOC or Commission), concerning her equal employment opportunity (EEO)
+complaint alleging employment discrimination in violation of Title VII of the Civil Rights Act of
+1964 (Title VII), as amended, 42 U.S.C. § 2000e et seq., Section 501 of the Rehabilitation Act of
+1973 (Rehabilitation Act), as amended, 29 U.S.C. § 791 et seq., and the Age Discrimination in
+Employment Act of 1967 (ADEA), as amended, 29 U.S.C. § 621 et seq. Two days after
+Complainant filed her appeal, the Agency issued a final order implementing the EEOC
+Administrative Judge (AJ)’s finding no discrimination. 2
+
+
+
+
+1
+  This case has been randomly assigned a pseudonym which will replace Complainant’s name
+when the decision is published to non-parties and the Commission’s website.
+2
+  Though Complainant filed her appeal prematurely, we find that her appeal is ripe upon the
+Agency’s issuance of its final decision. See Mirta L. v. Dep’t of Homeland Sec., EEOC Appeal
+No. 2020001116 (Mar. 23, 2021) (finding premature appeal to be perfected upon the issuance of
+the agency’s final decision).
+                                                 2                                     2022000831
+
+                                        BACKGROUND
+
+At the time of events giving rise to this complaint, Complainant worked as a Procurement
+Analyst, GS-1102-14, at the Agency’s Directorate of Contracting in Washington, D.C.
+As a Procurement Analyst, Complainant’s duties included developing and implementing various
+acquisitions programs, interpreting higher-level contracting policies and directives, providing
+guidance and assistance to contracting personnel, reviewing proposed acquisition regulations,
+and participating in the implementation of formal contracting training programs. See Report of
+Investigation (ROI) at 74-80. She was directly supervised by the Chief of Strategic Operations
+(Chief). 3 Id. at 106 and 121. The Director of Contracting (Director) led the directorate and served
+as Complainant’s fourth level supervisor. Id. 4
+
+In June 2019, Complainant was hospitalized due to an undiagnosed condition and took leave for
+approximately six weeks. See ROI at 133. According to Complainant, when she returned to
+work, the Chief’s “initial response was for [Complainant] to get the help [that she needed] and to
+make sure that [she] had the tools need[ed] to telework and guidelines for telework.” Id. at 111.
+The Chief ultimately allowed Complainant to telework beginning October 11, 2019, after
+receiving a medical note from Complainant’s medical provider that indicated that Complainant
+had a medical need to telework. Id. at 72.
+
+In November 2019, the Chief allegedly informed Complainant over the telephone that she would
+be sending reasonable accommodation forms to her because the Chief had allegedly gotten into
+trouble for accepting notes from Complainant’s physicians. See ROI at 44 and 108. The
+following month, the Chief formally notified Complainant by memorandum dated December 5,
+2019, that if Complainant wished to continue full-time telework, Complainant needed to submit
+a formal request for reasonable accommodation no later than January 6, 2020. Id. at 49.
+Complainant timely submitted the request and provided medical documentation in support of her
+request, which indicated that Complainant could not drive or engage in prolonged standing due
+to frequent dizziness, chronic headaches, cervical radiculopathy, and impaired fasting glucose.
+Id. at 73.
+
+On January 31, 2020, the Director issued a memorandum instituting a new directorate-wide
+telework policy. ROI at 84-87. In issuing the memorandum, the Director expressed her desire to
+utilize telework to allow for “discretionary workplace flexibility.” Id. However, the Director
+emphasized that telework was not an entitlement and categorically forbade supervisors, military,
+and administrative personnel and anyone on alternate work schedules from participating in
+regular and recurring telework. Id. The Director required employees desiring telework on
+medical grounds to file a separate request for “medical telework.” Id.
+
+
+
+3
+  The Chief formally held the title of Supervisory Procurement Analyst. ROI at 120.
+4
+  Though Complainant declared in her affidavit that the Director was her third level supervisor,
+we note that both the Chief and the Director maintained that the Director was Complainant’s
+fourth level supervisor. ROI at 121 and 128.
+                                                3                                    2022000831
+
+Following the issuance of the Director’s memorandum, the Chief formally responded to
+Complainant’s request for reasonable accommodation on February 6, 2020. ROI at 83. While the
+Chief acknowledged that the effects of Complainant’s impairments caused Complainant to
+“experience frequent dizziness and have trouble driving and standing for prolonged periods of
+time,” the Chief determined that Complainant was not entitled to full-time telework as a
+reasonable accommodation “due to the existence of employee van pools commuting between
+[Complainant’s] residential area and [her] work site, [which provided Complainant] alternatives
+to driving daily to work.” Id. In denying Complainant’s request, the Chief emphasized that the
+needs of the office required Complainant’s in-person presence. Id. As Complainant worked an
+alternate work schedule, the Chief informed Complainant that Complainant was not eligible for
+telework under the new telework policy that the Director signed on January 31, 2020 and ordered
+her to report to work in-person by March 2, 2020. Id.
+
+On February 28, 2020, Complainant initiated EEO contact to begin the process for filing a
+discrimination complaint. ROI at 10. During the informal complaint process, the Director
+informed the Agency’s EEO Office that while she would not allow Complainant to telework full-
+time, she was willing to purchase a scooter for Complainant to get to work. Id. at 13 and 123.
+Complainant, however, declined the alternate accommodation and was “really bothered” by the
+proposal. Id. at 117-18. Complainant recalled that she specifically told the Director that she did
+not have the physical strength to get the scooter on and off or to get to the Uber and employee
+van pool vehicles that she needed to take each morning and evening. Id. She emphasized that she
+did not want to be responsible for a government owned scooter. Id.
+
+On May 4, 2020, Complainant filed a formal EEO complaint alleging that the Agency
+discriminated against her on the bases of race (African American), color (black), age (over 40),
+sex (female), and disability (physical), 5 when on February 6, 2020, 6 she was denied a reasonable
+accommodation by her first and fourth level managers. 7
+
+During the EEO investigation, Complainant acknowledged that she was able to commute to work
+in person by using paid rideshare services, the employee van pool, and public transportation to
+get to the office; however, she noted that on her first day back to the office, she experienced
+“three episodes” while “working and walking around with [the Chief].” ROI at 11 and 107.
+
+
+
+5
+   Though Complainant’s disability had not yet been diagnosed at the time of the EEO
+investigation, the record reflects that Complainant alleged that she experienced limited mobility
+as well as frequent dizziness, chronic headaches, cervical radiculopathy, and impaired fasting
+glucose. ROI at 73, 101, and 107.
+6
+   The record shows that the Agency emailed Complainant its decision on her request for
+reasonable accommodation on February 6, 2020, not February 4, 2020, as indicated. ROI at 82-
+83.
+7
+  In the Agency’s notice of acceptance, the Agency incorrectly referred to Complainant’s fourth
+level supervisor as her second level supervisor. ROI at 33. We have reframed the claim to correct
+this error.
+                                                4                                     2022000831
+
+Complainant recalled that the Chief volunteered to take her to the metro station to ensure her
+safety. Id.
+
+She emphasized that her duties could be performed at home and maintained that she
+“successfully completed all assignments and executed the mission requirements” and kept the
+Chief fully apprised of her activities while teleworking full-time. ROI at 110. Complainant
+asserted that the Chief treated her less favorably than similarly situated employees and
+maintained that the Chief’s decision to deny her request for reasonable accommodation
+unnecessarily placed her safety and life in jeopardy. Id. at 11 and 107
+
+The Chief did not deny Complainant’s assertion that Complainant “was able to perform the
+essential functions of her position without accommodation” and acknowledged that she had
+allowed Complainant to telework “for a number of months” prior to Complainant’s request for
+reasonable accommodation. ROI at 123. The Chief emphasized, however, that she denied
+Complainant’s full-time telework as a reasonable accommodation because the medical
+documentation that Complainant provided “did not state that [Complainant] was unable to
+commute to the office.” Id. Given that Complainant “had previously taken a van pool and metro
+to the office,” the Chief determined that the Agency was not obligated to grant Complainant full-
+time telework as a reasonable accommodation. Id.
+
+The Director added that she did not make the decision to deny Complainant’s request for
+reasonable accommodation and maintained that she merely informed the Chief of the
+documentation that was needed to process the request. ROI at 130.
+
+At the conclusion of the investigation, the Agency provided Complainant with a copy of the
+report of investigation (ROI) and notice of her right to request a hearing before an EEOC AJ. In
+accordance with Complainant’s request, the matter was assigned to an AJ.
+
+On August 16, 2021, the AJ assigned to the matter determined sua sponte that the complaint did
+not warrant a hearing and consequently proposed to issue a decision without a hearing in favor of
+the Agency. The Agency responded to the AJ’s proposal by urging the AJ to rule in its favor on
+the grounds that it had effectively accommodated Complainant and did not subject her to
+disparate treatment. Complainant, however, vehemently opposed the AJ’s proposal.
+
+In arguing that the Agency unlawfully denied her reasonable accommodation, Complainant
+emphasized that her commute did not solely consist of the employee van pool. Complainant
+asserted that to get to work, she needed to use rideshare services to get to the employee van pool,
+which, in turn, took her to the metro station. She then walked 1.5 blocks from the metro station
+to her office. Complainant reiterated that her commute would cause her to experience “multiple
+episodes” and emphasized that “[s]ome episodes were so bad that [she] was off [her] feet for up
+to five days.” Given how her disability affected her mobility, Complainant argued that the
+offered accommodations were not effective.
+                                               5                                    2022000831
+
+Furthermore, Complainant characterized the Director’s offer of a scooter, as a “blatant disregard
+for an understanding and intent of the physical burden that [she] would have to undergo in
+accepting the [reasonable accommodation] offer from [the Director].” 8
+Over Complainant’s objections, the AJ issued a decision on November 4, 2021, finding that the
+Agency’s denial of Complainant’s request for full time telework as a reasonable accommodation
+was not discriminatory because the Agency had legitimate, non-discriminatory reasons for
+denying Complainant’s request. In so finding, the AJ acknowledged that “Complainant disagreed
+wholly with management’s actions.” However, the AJ ultimately determined that Complainant
+failed to demonstrate pretext because her allegations were mostly based on her perception that
+the Director was “not a fan of telework” and nothing in the record showed that the Agency
+deviated from its established policies and procedures or treated Complainant less favorably than
+similarly situated employees. As the AJ found the offered alternate accommodations to be
+effective, the AJ concluded that the Agency did not engage in a discriminatory manner when it
+exercised its “ultimate discretion to choose between effective accommodations.”
+
+Complainant filed her appeal prior to the Agency’s issuance of a final order. Two days later, the
+Agency issued a final order adopting the AJ’s finding that Complainant failed to prove that the
+Agency subjected her to discrimination as alleged.
+
+                                CONTENTIONS ON APPEAL
+
+Complainant did not submit any contentions in support of her appeal.
+
+The Agency opposes the appeal and requests that we affirm its final order. In so arguing, the
+Agency maintains that it provided Complainant with effective alternate accommodations and did
+not subject her to disparate treatment. The Agency emphasizes that Complainant is not entitled to
+the accommodation of her choice.
+
+
+
+
+8
+  We note that Complainant alleged in her opposition that the Chief subjected her to various acts
+of reprisal following her engaging in protected EEO activity, such as lowering her performance
+appraisal for Fiscal Year 2020. She alleged that despite her attempts to amend her complaint to
+include these allegations, the Agency failed to do so. While we are mindful of Complainant’s
+claims of reprisal, we are disinclined to remand the complaint as Complainant has not, on appeal,
+specifically challenged the AJ’s decision to only address the sole claim accepted by the Agency.
+See Equal Employment Opportunity Management Directive for 29 C.F.R. Part 1614 at Chap. 9,
+§ IV.A.3 (Aug. 5, 2015) (noting Commission’s discretion to only review issues specifically
+raised on appeal).
+                                                6                                     2022000831
+
+                                   STANDARD OF REVIEW
+
+In rendering this appellate decision, we must scrutinize the AJ’s legal and factual conclusions,
+and the Agency’s final order adopting them, de novo. See 29 C.F.R. § 1614.405(a) (stating that
+a “decision on an appeal from an Agency’s final action shall be based on a de novo review . . .”);
+see also Equal Employment Opportunity Management Directive for 29 C.F.R. Part 1614 (EEO
+MD-110), at Chap. 9, § VI.B. (Aug. 5, 2015) (providing that an administrative judge’s
+determination to issue a decision without a hearing, and the decision itself, will both be reviewed
+de novo). This essentially means that we should look at this case with fresh eyes. In other
+words, we are free to accept (if accurate) or reject (if erroneous) the AJ’s, and Agency’s factual
+conclusions and legal analysis – including on the ultimate fact of whether intentional
+discrimination occurred, and on the legal issue of whether any federal employment
+discrimination statute was violated. See id. at Chap. 9, § VI.A. (explaining that the de novo
+standard of review “requires that the Commission examine the record without regard to the
+factual and legal determinations of the previous decision maker,” and that EEOC “review the
+documents, statements, and testimony of record, including any timely and relevant submissions
+of the parties, and . . . issue its decision based on the Commission’s own assessment of the record
+and its interpretation of the law”).
+
+                                 ANALYSIS AND FINDINGS
+
+The Commission’s regulations allow an AJ to issue a decision without a hearing upon finding
+that there is no genuine issue of material fact. 29 C.F.R. § 1614.109(g). EEOC’s decision
+without a hearing regulation follows the summary judgment procedure from federal court. Fed.
+R. Civ. P. 56. The U.S. Supreme Court held summary judgment is appropriate where a judge
+determines no genuine issue of material fact exists under the legal and evidentiary standards.
+Anderson v. Liberty Lobby, Inc., 477 U.S. 242, 255 (1986). In ruling on a summary judgment
+motion, the judge is to determine whether there are genuine issues for trial, as opposed to
+weighing the evidence. Id. at 249. At the summary judgment stage, the judge must believe the
+non-moving party’s evidence and must draw justifiable inferences in the non-moving party’s
+favor. Id. at 255. A “genuine issue of fact” is one that a reasonable judge could find in favor for
+the non-moving party. Celotex v. Catrett, 477 U.S. 317, 322-23 (1986); Oliver v. Digital Equip.
+Corp., 846 F.2d 103, 105 (1st Cir. 1988). A “material” fact has the potential to affect the
+outcome of a case.
+
+An AJ may issue a decision without a hearing only after determining that the record has been
+adequately developed. See Petty v. Dep’t of Def., EEOC Appeal No. 01A24206 (July 11, 2003).
+We carefully reviewed the record and find that it is adequately developed. To successfully
+oppose a decision without a hearing, Complainant must identify material facts of record that are
+in dispute or present further material evidence establishing facts in dispute. Here, Complainant
+has not done so. Accordingly, the AJ properly issued a summary judgment decision.
+                                                 7                                     2022000831
+
+After a careful review of the record, however, we find that the AJ erred in issuing a decision
+without a hearing in favor of the Agency. We note that the AJ, in finding no discrimination,
+appears to have applied the three-part disparate treatment analysis first enunciated in McDonnell
+Douglas Corporation v. Green, 411 U.S. 792 (1973), to a claim alleging the denial of reasonable
+accommodation. While the McDonnell-Douglas analysis is appropriate when determining
+whether a complainant was subjected to disparate treatment based on his or her disability, a
+complainant does not have to prove that the agency was motivated by discriminatory animus to
+prevail on a claim concerning reasonable accommodation. Rather, under the Commission’s
+regulations, an agency is required to make reasonable accommodation to the known physical and
+mental limitations of a qualified individual with a disability unless the agency can show that
+accommodation would cause an undue hardship. 29 C.F.R. §§ 1630.2(o) and (p). Complainant
+has the burden of proving, by a preponderance of the evidence, that she was a qualified
+individual with a disability. The Agency, in turn, has the burden of establishing undue hardship.
+In applying the proper standard, we agree with the AJ that summary judgment is indeed
+warranted, but we conclude that Complainant is the prevailing party for the reasons discussed
+below.
+
+Denial of Reasonable Accommodation
+
+Under the Commission’s regulations, an agency is required to make reasonable accommodation
+to the known physical and mental limitations of a qualified individual with a disability unless the
+agency can show that accommodation would cause an undue hardship. 29 C.F.R. §§
+1630.2(o) and (p). To prevail on her denial of reasonable accommodation claim, Complainant
+must show that: (1) she was an individual with a disability; (2) she was a qualified individual
+with a disability; and (3) the Agency failed to provide a reasonable accommodation. See EEOC
+Enforcement Guidance on Reasonable Accommodation and Undue Hardship Under the
+Americans with Disabilities Act (Reasonable Accommodation Guidance), No. 915.002 (Oct. 17,
+2002).
+
+The threshold question is whether a complainant was an individual with a disability within the
+meaning of the regulations during the relevant period. An individual with a disability is one who:
+(1) has a physical or mental impairment that substantially limits one or more major life activities;
+(2) has a record of such impairment; or (3) is regarded as having such an impairment. 29 C.F.R.
+§ 1630.2(g). Major life activities include such functions as caring for oneself, performing manual
+tasks, walking, seeing, hearing, speaking, breathing, learning, and working, and the operation of
+a major bodily function. 29 C.F.R. § 1630.2(i). An impairment is a disability if it substantially
+limits the ability of an individual to perform a major life activity as compared to the ability of
+most people in the general population. 29 C.F.R. § 1630.2(j)(1)(ii). As the record contains two
+medical opinions indicating that Complainant had 1) a medical need to telework, and 2) could
+not drive or engage in prolonged standing due to frequent dizziness, chronic headaches, cervical
+radiculopathy, and impaired fasting glucose, we find that she was an individual with a disability
+during the relevant period. ROI at 72-73. Complainant averred that her specific disability was
+not known at that time because, due to COVID-19, her Neurologist’s office had stopped testing.
+ROI at 107.
+                                                 8                                      2022000831
+
+However, she indicated that due to her dizziness and severe lightheadedness, she began to walk
+with a cane to make sure she did not fall. Id. Based on the evidence, we determine that
+Complainant is substantially limited in the major life activity of walking, as reflected in the fact
+that she used a cane to walk. See Latarsha A. v. Fed. Energy Regul. Comm’n., EEOC Appeal
+Nos. 0120123215 & 0120131079 (Mar. 15, 2016) (finding that complainant established that they
+were substantially limited in the major life activity of walking, as reflected in the fact that she
+often uses a cane to walk); see also Interpretive Guidance on Title I of the Americans with
+Disabilities Act, 29 C.F.R. Part 1630 (Interpretive Guidance), 1630.2(i) (walking is a major life
+activity) and 1630.2(j) (an individual is substantially limited if she is significantly restricted in
+her ability to perform a major life activity as compared to the average person in the general
+population).
+
+As Complainant has met the threshold requirement that would entitle her to the protections of the
+Rehabilitation Act, she must now show that she was a “qualified” individual with a disability
+within the meaning of 29 C.F.R. § 1630.2(m). The regulation defines such an individual as a
+disabled person who, with or without a reasonable accommodation, can perform the essential
+functions of the position in question. Given the Chief’s admission that Complainant “was able to
+perform the essential functions of her position without accommodation,” we find Complainant to
+be a qualified individual with a disability. ROI at 123.
+
+The burden now shifts to the Agency to provide case-specific evidence showing that it would be
+an undue hardship to grant Complainant’s request for reasonable accommodation. See
+Reasonable Accommodation Guidance. Our review of the record here shows that the Chief
+originally denied Complainant’s request for full-time telework because the Chief determined that
+the needs of the office required Complainant’s in-person presence and there were alternative
+accommodations in the form of rideshare services and public transportation that Complainant
+could effectively use in lieu of her requested accommodation. ROI at 83. Ultimately, we find the
+Agency’s arguments to be unpersuasive.
+
+Undue hardship must be based on an individualized assessment of current circumstances that
+show that a specific reasonable accommodation would cause significant difficulty or expense. A
+determination of undue hardship should be based on several factors, including:
+
+    • the nature and cost of the accommodation needed;
+
+    • the overall financial resources of the facility making the reasonable accommodation; the
+       number of persons employed at this facility; the effect on expenses and resources of the
+       facility;
+
+    • the overall financial resources, size, number of employees, and type and location of
+       facilities of the employer (if the facility involved in the reasonable accommodation is
+       part of a larger entity);
+                                               9                                   2022000831
+
+    •   the type of operation of the employer, including the structure and functions of the
+        workforce, the geographic separateness, and the administrative or fiscal relationship of
+        the facility involved in making the accommodation to the employer; and
+
+    • the impact of the accommodation on the operation of the facility.
+
+After reviewing the record, we are unable to discern how Complainant’s request for full time
+telework would constitute an undue hardship. We note that Complainant had been full-time
+teleworking for a number of months and that the Chief asked Complainant to submit a request
+for a reasonable accommodation if she wished to continue full-time telework. ROI at 49. By the
+Chief’s own admission, she had allowed Complainant to telework “for a number of months”
+prior to Complainant’s formal request for reasonable accommodation, and Complainant “was
+able to perform the essential functions of her position without accommodation.” ROI at 123. We
+note that the Chief, in denying, Complainant’s request for reasonable accommodation, made no
+mention of any challenges faced by the Agency as a result of allowing Complainant to telework.
+Id. at 83. Given the lack of specificity, we find the Chief’s claim of undue hardship to be
+unsupported, as we are unable to discern how the Agency would face undue hardship in
+continuing Complainant’s request to telework as she had “for a number of months.”
+
+Furthermore, we find the Chief’s denial of Complainant’s request for reasonable accommodation
+“due to the existence of employee van pools commuting between [Complainant’s] residential
+area and [her] work site” to be invalid because this alternative did not effectively address
+Complainant’s limitations. While we acknowledge that Complainant previously used the
+employee van pool, as well as rideshare services and public transportation, to commute to work,
+we note that Complainant clearly stated that she suffered medical episodes as a result of having
+to commute to work. As the Agency never disputed the claimed effects of Complainant’s
+commute on her health and wellbeing, we discern no reason to question her assertions and
+ultimately find the offered alternative accommodation to be ineffective.
+
+Finally with regard to the Director’s offer to purchase a scooter for Complainant, given that
+Complainant’s medical records clearly stated that Complainant could not drive or engage in
+prolonged standing due, in part, to her frequent dizziness and chronic headaches, and that she
+needed to use a cane when walking, we fail to envision how Complainant would operate a
+scooter on public streets and/or sidewalks and lift it in and out of rideshare and employee van
+pool vehicles. For these reasons, we also find this alternative accommodation to be ineffective.
+
+Based on the foregoing, we conclude that the Agency violated the Rehabilitation Act by failing
+to reasonably accommodate Complainant’s disabilities.
+                                               10                                    2022000831
+
+Disparate Treatment
+
+We note that Complainant alleged that the denial of her request for reasonable accommodation
+was also based on her race, color, age, and sex. Upon careful review of the AJ’s decision and the
+evidence of record, as well as the parties’ arguments on appeal, we conclude that the AJ correctly
+determined that the preponderance of the evidence did not establish that Complainant was
+discriminated against by the Agency on the bases of her race, color, age, or sex, as alleged.
+
+Compensatory Damages
+
+Where a discriminatory practice involves the provision of a reasonable accommodation, damages
+may be awarded if the Agency fails to demonstrate that it made a good faith effort to provide the
+individual with a reasonable accommodation for his or her disability. 42 U.S.C. § 1981a(a)(3);
+Gunn v. U.S. Postal Serv., EEOC Appeal No. 0120053293 (June 15, 2007). In this case, we find
+that the Agency did not act in good faith. We are particularly troubled by the Chief’s decision to
+deny Complainant’s request for full time telework based on generalized claims about the needs
+of the office. We are also troubled by the Chief’s decision to deny Complainant’s request based
+on the existence of employee van pools without considering the impact of such an
+accommodation on Complainant’s health and wellbeing. And, finally, we find the Director’s
+offer to purchase a scooter for Complainant to be particularly insensitive and clearly, not a good
+faith effort at accommodating Complainant. We therefore find that compensatory damages are
+warranted.
+
+                                        CONCLUSION
+
+We AFFIRM in part the Agency’s final order implementing the AJ’s finding of no
+discrimination on Complainant’s claim of disparate treatment. However, we REVERSE the
+Agency’s final order regarding Complainant’s denial of reasonable accommodation claim and
+REMAND the matter to the Agency for further processing in accordance with the ORDER
+below.
+
+                                            ORDER
+
+The Agency shall take the following actions.
+
+   1. The Agency shall within thirty (30) calendar days, if not immediately, take all steps
+      necessary to provide Complainant with effective reasonable accommodation, to include
+      allowing her to telework full time.
+
+   2. The Agency shall determine the amount of compensatory damages to which Complainant
+      is entitled and pay Complainant that amount:
+                                            11                                    2022000831
+
+       a. Within sixty (60) calendar days of the date this decision is issued, the Agency
+          shall conduct a supplemental investigation with respect to Complainant’s claim of
+          compensatory damages in connection with her claim that she was denied a
+          reasonable accommodation as alleged in claim (2).
+
+               i. The Agency shall allow Complainant to present evidence in support of her
+                  compensatory damages claim. See Carle v. Dep’t of the Navy, EEOC
+                  Appeal No. 01922369 (Jan. 5, 1993).
+
+               ii. Complainant shall cooperate with the Agency in this regard, including by
+                   responding to Agency requests for information and by completing any
+                   Agency forms. Complainant shall reply to any Agency requests for
+                   information within 30 calendar days.
+
+       b. Within thirty (30) calendar days of the completion of the supplemental
+          investigation, the Agency shall issue a final decision, with appeal rights to the
+          Commission, addressing the issue of compensatory damages.
+
+       c. Within sixty (60) calendar days of determining the amount of compensatory
+          damages due Complainant, the Agency shall issue a check to Complainant for the
+          undisputed amount.
+
+3. Within ninety (90) calendar days of the date this decision is issued, the Agency shall
+   provide four hours of training to the Chief of Strategic Operations (Supervisory
+   Procurement Analyst), and the Director who are identified on pages 120 and 127 of the
+   ROI. The training shall address the Agency’s obligations under the Rehabilitation Act
+   with respect to reasonable accommodation requests. The required training shall address
+   unlawful disability discrimination, with a special emphasis on management’s obligation
+   under Section 501 of the Rehabilitation Act to reasonably accommodate individuals with
+   disabilities. The Commission does not consider training to constitute disciplinary action.
+   For assistance in obtaining the necessary training, the Agency may contact the
+   Commission’s Training and Outreach Division via email, at
+   FederalTrainingandOutreach@eeoc.gov.
+
+4. Within one hundred twenty (120) calendar days from the date this decision is issued
+   the Agency shall consider disciplining the Chief and the Director. The Commission does
+   not consider training to be disciplinary action. The Agency shall report its decision to the
+   Compliance Officer. If the Agency decides to take disciplinary action, it shall identify the
+   action taken. If the Agency decides not to take disciplinary action, it shall set forth the
+   reason(s) for its decision not to impose discipline. If the Chief has left the Agency’s
+   employ, the Agency shall furnish documentation of her departure date.
+
+5. Within thirty (30) calendar days of the date this decision is issued, the Agency shall
+   post a notice in accordance with the Statement entitled “Posting Order.”
+                                               12                                    2022000831
+
+The Agency is further directed to submit a report of compliance in digital format as provided in
+the statement entitled “Implementation of the Commission’s Decision.” The report shall be
+submitted via the Federal Sector EEO Portal (FedSEP). See 29 C.F.R. § 1614.403(g). Further,
+the report must include evidence that the corrective action has been implemented.
+
+                                  POSTING ORDER (G0617)
+
+The Agency is ordered to post at the Agency’s Directorate of Contracting (Washington, D.C.)
+copies of the attached notice. Copies of the notice, after being signed by the Agency's duly
+authorized representative, shall be posted both in hard copy and electronic format by the
+Agency within thirty (30) calendar days of the date this decision was issued, and shall remain
+posted for sixty (60) consecutive days, in conspicuous places, including all places where notices
+to employees are customarily posted. The Agency shall take reasonable steps to ensure that said
+notices are not altered, defaced, or covered by any other material. The original signed notice is
+to be submitted to the Compliance Officer as directed in the paragraph entitled "Implementation
+of the Commission's Decision," within ten (10) calendar days of the expiration of the posting
+period. The report must be in digital format and must be submitted via the Federal Sector EEO
+Portal (FedSEP). See 29 C.F.R. § 1614.403(g).
+
+                                 ATTORNEY’S FEES (H1019)
+
+If Complainant has been represented by an attorney (as defined by 29 C.F.R. §
+1614.501(e)(1)(iii)), she/he is entitled to an award of reasonable attorney's fees incurred in the
+processing of the complaint. 29 C.F.R. § 1614.501(e). The award of attorney's fees shall be paid
+by the Agency. The attorney shall submit a verified statement of fees to the Agency -- not to the
+Equal Employment Opportunity Commission, Office of Federal Operations -- within thirty (30)
+calendar days of receipt of this decision. The Agency shall then process the claim for attorney’s
+fees in accordance with 29 C.F.R. § 1614.501.
+
+            IMPLEMENTATION OF THE COMMISSION’S DECISION (K0719)
+
+Under 29 C.F.R. § 1614.405(c) and §1614.502, compliance with the Commission’s corrective
+action is mandatory. Within seven (7) calendar days of the completion of each ordered
+corrective action, the Agency shall submit via the Federal Sector EEO Portal (FedSEP)
+supporting documents in the digital format required by the Commission, referencing the
+compliance docket number under which compliance was being monitored. Once all compliance
+is complete, the Agency shall submit via FedSEP a final compliance report in the digital format
+required by the Commission. See 29 C.F.R. § 1614.403(g). The Agency’s final report must
+contain supporting documentation when previously not uploaded, and the Agency must send a
+copy of all submissions to the Complainant and his/her representative.
+
+If the Agency does not comply with the Commission’s order, the Complainant may petition the
+Commission for enforcement of the order. 29 C.F.R. § 1614.503(a).
+                                                13                                    2022000831
+
+The Complainant also has the right to file a civil action to enforce compliance with the
+Commission’s order prior to or following an administrative petition for enforcement. See 29
+C.F.R. §§ 1614.407, 1614.408, and 29 C.F.R. § 1614.503(g). Alternatively, the Complainant has
+the right to file a civil action on the underlying complaint in accordance with the paragraph
+below entitled “Right to File a Civil Action.” 29 C.F.R. §§ 1614.407 and 1614.408. A civil
+action for enforcement or a civil action on the underlying complaint is subject to the deadline
+stated in 42 U.S.C. 2000e-16(c) (1994 & Supp. IV 1999). If the Complainant files a civil
+action, the administrative processing of the complaint, including any petition for
+enforcement, will be terminated. See 29 C.F.R. § 1614.409.
+
+Failure by an agency to either file a compliance report or implement any of the orders set forth in
+this decision, without good cause shown, may result in the referral of this matter to the Office of
+Special Counsel pursuant to 29 C.F.R. § 1614.503(f) for enforcement by that agency.
+
+                           STATEMENT OF RIGHTS - ON APPEAL
+                              RECONSIDERATION (M0920)
+
+The Commission may, in its discretion, reconsider this appellate decision if Complainant or the
+Agency submits a written request that contains arguments or evidence that tend to establish that:
+       1. The appellate decision involved a clearly erroneous interpretation of material fact or
+          law; or
+       2. The appellate decision will have a substantial impact on the policies, practices, or
+          operations of the agency.
+
+Requests for reconsideration must be filed with EEOC’s Office of Federal Operations (OFO)
+within thirty (30) calendar days of receipt of this decision. If the party requesting
+reconsideration elects to file a statement or brief in support of the request, that statement or
+brief must be filed together with the request for reconsideration. A party shall have twenty
+(20) calendar days from receipt of another party’s request for reconsideration within which to
+submit a brief or statement in opposition. See 29 C.F.R. § 1614.405; Equal Employment
+Opportunity Management Directive for 29 C.F.R. Part 1614 (EEO MD-110), at Chap. 9 § VII.B
+(Aug. 5, 2015).
+
+Complainant should submit his or her request for reconsideration, and any statement or brief in
+support of his or her request, via the EEOC Public Portal, which can be found at
+https://publicportal.eeoc.gov/Portal/Login.aspx. Alternatively, Complainant can submit his or her
+request and arguments to the Director, Office of Federal Operations, Equal Employment
+Opportunity Commission, via regular mail addressed to P.O. Box 77960, Washington, DC
+20013, or by certified mail addressed to 131 M Street, NE, Washington, DC 20507. In the
+absence of a legible postmark, a complainant’s request to reconsider shall be deemed timely filed
+if OFO receives it by mail within five days of the expiration of the applicable filing period. See
+29 C.F.R. § 1614.604.
+                                                14                                     2022000831
+
+An agency’s request for reconsideration must be submitted in digital format via the EEOC’s
+Federal Sector EEO Portal (FedSEP). See 29 C.F.R. § 1614.403(g). Either party’s request
+and/or statement or brief in opposition must also include proof of service on the other party,
+unless Complainant files his or her request via the EEOC Public Portal, in which case no proof of
+service is required.
+
+Failure to file within the 30-day time period will result in dismissal of the party’s request for
+reconsideration as untimely, unless extenuating circumstances prevented the timely filing of the
+request. Any supporting documentation must be submitted together with the request for
+reconsideration. The Commission will consider requests for reconsideration filed after the
+deadline only in very limited circumstances
+
+               COMPLAINANT'S RIGHT TO FILE A CIVIL ACTION (T0610)
+
+This decision affirms the Agency's final decision/action in part, but it also requires the Agency to
+continue its administrative processing of a portion of your complaint. You have the right to file a
+civil action in an appropriate United States District Court within ninety (90) calendar days from
+the date that you receive this decision on both that portion of your complaint which the
+Commission has affirmed and that portion of the complaint which has been remanded for
+continued administrative processing. In the alternative, you may file a civil action after one
+hundred and eighty (180) calendar days of the date you filed your complaint with the Agency, or
+your appeal with the Commission, until such time as the Agency issues its final decision on your
+complaint. If you file a civil action, you must name as the defendant in the complaint the person
+who is the official Agency head or department head, identifying that person by his or her full
+name and official title. Failure to do so may result in the dismissal of your case in court.
+“Agency” or “department” means the national organization, and not the local office, facility or
+department in which you work. If you file a request to reconsider and also file a civil action,
+filing a civil action will terminate the administrative processing of your complaint.
+
+                           RIGHT TO REQUEST COUNSEL (Z0815)
+
+If you want to file a civil action but cannot pay the fees, costs, or security to do so, you may
+request permission from the court to proceed with the civil action without paying these fees or
+costs. Similarly, if you cannot afford an attorney to represent you in the civil action, you may
+request the court to appoint an attorney for you. You must submit the requests for waiver of
+court costs or appointment of an attorney directly to the court, not the Commission. The
+court has the sole discretion to grant or deny these types of requests.
+                                                 15                                     2022000831
+
+Such requests do not alter the time limits for filing a civil action (please read the paragraph titled
+Complainant’s Right to File a Civil Action for the specific time limits).
+
+FOR THE COMMISSION:
+
+
+
+______________________________                    Carlton M. Hadden’s signature
+Carlton M. Hadden, Director
+Office of Federal Operations
+
+
+March 15, 2023
+Date
+

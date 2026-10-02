@@ -1,0 +1,1153 @@
+              U.S. EQUAL EMPLOYMENT OPPORTUNITY COMMISSION
+                            Office of Federal Operations
+                                   P.O. Box 77960
+                              Washington, DC 20013
+
+
+                                            Clarine L., 1
+                                           Complainant,
+
+                                                 v.
+
+                                       Lloyd J. Austin III,
+                                           Secretary,
+                                     Department of Defense
+                                    (Defense Health Agency),
+                                            Agency.
+
+                             Appeal Nos. 2022003811, 2023004452
+
+                                 Hearing No. 531-2020-00411X
+
+                      Agency Nos. DHANCR-19-0014, DHANCR-20-0025
+
+                                            DECISION
+
+On July 5, 2022, and August 3, 2023, Complainant filed appeals with the Equal Employment
+Opportunity Commission (EEOC or Commission), pursuant to 29 C.F.R. § 1614.403(a),
+concerning her equal employment opportunity (EEO) complaints alleging employment
+discrimination in violation of Title VII of the Civil Rights Act of 1964 (Title VII), as amended,
+42 U.S.C. § 2000e et seq., Section 501 of the Rehabilitation Act of 1973 (Rehabilitation Act), as
+amended, 29 U.S.C. § 791 et seq., and the Age Discrimination in Employment Act of 1967
+(ADEA), as amended, 29 U.S.C. § 621 et seq.
+
+EEOC regulations allow the Commission to consolidate two or more complaints filed by the
+same Complainant. 29 C.F.R. § 1614.606. We note that the complaints, final Agency actions,
+and issues on appeal are very similar in each case. Therefore, the Commission exercises its
+discretion to consolidate these appeals. 2
+
+
+1
+ This case has been randomly assigned a pseudonym which will replace Complainant’s name
+when the decision is published to non-parties and the Commission’s website.
+2
+  This decision shall cite to the investigative record and the supplemental investigative record for
+Complainant’s first complaint, Agency No. DHANCR-19-0014, as ROI 1 and SROI 1,
+respectively, and to the investigative record for Complainant’s second complaint, Agency No.
+DHANCR-20-0025, as ROI 2.
+                                              2                      2022003811, 2023004452
+
+                                      BACKGROUND
+
+At the time of events giving rise to these complaints, Complainant worked as a GS-0671-9
+Health Systems Specialist in the General Internal Medicine Service (GIMS) at the Agency’s
+Walter Reed National Military Medical Center in Bethesda, Maryland.
+
+Complainant was hit by a car on March 27, 2019, while crossing the street on the base. ROI 1 at
+9; ROI 2 at 512. Complainant reported to the Walter Reed emergency room after the hit-and-run
+accident. ROI 1 at 124-25. Complainant filed a worker’s compensation claim and was out of
+work on extended leave after the accident, returning to work in September 2019. ROI 1 at 99;
+SROI 1 at 81. According to Complainant, after the accident, she was treated for back and leg
+injuries, Post Traumatic Stress Disorder (PTSD), migraines, and dizziness. ROI 2 at 512.
+
+Complainant identified her disability as PTSD, hypervigilance, migraines, vitiligo, nausea,
+anxiety, depression, kidney disease, blood pressure, and heart disease. ROI 2 at 512. According
+to Complainant, management was aware of her medical conditions because she requested
+reasonable accommodations. ROI 2 at 512. Complainant stated that she engaged in protected
+EEO activity by requesting reasonable accommodations and filing EEO complaints. ROI 2 at
+512.
+
+On May 13, 2019, Complainant filed an EEO complaint, which she subsequently amended,
+alleging that the Agency discriminated against her on the bases of her race (African American),
+age (born in May 1960), disabilities, and reprisal for prior protected EEO activity when:
+
+       1.     On December 19, 2018, she was harassed and bullied by the Internal Medicine
+              Service Chief (Service Chief-1).
+       2.     In 2018, her job duties and computer system access were taken away by the
+              Business Manager (Supervisor-1), the Health Service Administrator
+              (Administrator-1), and Service Chief-1.
+       3.     On or about December 4, 2018, she received a written counseling for conduct and
+              performance from Supervisor-1.
+       4.     On December 18, 2018, she received a written counseling for conduct and
+              performance from Supervisor-1.
+       5.     On January 7, 2019, she received a written counseling for conduct and
+              performance from Supervisor-1.
+       6.     In 2019, she became aware that Supervisor-1 failed to give her a performance
+              appraisal that was due before March 24, 2019.
+       7.     In March 2019, Service Chief-1 gave her a negative report to the Audiology
+              Service Chief.
+       8.     On April 3, 2019, she became aware that Supervisor-1 accessed her medical
+              information.
+       9.     On April 2, 2019, Supervisor-1 made a medical statement on Complainant’s
+              Federal Employee’s Notice of Traumatic Injury and Claim Continuation of
+              Pay/Compensation form, delaying her worker’s compensation paperwork.
+                                                3                      2022003811, 2023004452
+
+       10.     On or about May 7, 2019, she was informed by Supervisor-1 that a case number
+               had not been assigned to her accident investigation and that sufficient medical
+               documentation had not been received, which could delay the worker’s
+               compensation process. She was also informed that the 45-day timeframe for case
+               development had passed and that she must now take either annual or sick leave
+               moving forward.
+       11.     On or about May 31, 2019, Supervisor-1 documented and acknowledged
+               Complainant’s performance plan while she was out on worker’s compensation.
+       12.     In July 2019, she asked the Labor/Management Employee Relations Division
+               Chief (HR-1) to change the unjust appraisal in DPMAP.
+       13.     In November 2019, she had not received her appraisal in a timely manner, and her
+               appraisal was changed from unsatisfactory to satisfactory.
+       14.     On or about December 19, 2019, she was verbally assaulted by Service Chief-1;
+       15.     On or about December 20, 2019, her work was not acknowledged by Service
+               Chief-1 in an email he sent.
+       16.     On February 12, 2020, she emailed the Human Resources Liaison (HR-2), asking
+               when her appraisal would be completed in the system.
+       17.     On or about February 14, 2020, her request to work with Command MSA
+               University was denied by Service Chief-1.
+       18.     On or about February 14, 2020, she was denied participation in department
+               leadership duties that had been back briefed on Patient-Centered Medical Home
+               (PCMH) by Service Chief-1.
+       19.     On February 26, 2020, Complainant received a rating of 1 on her appraisal, which
+               did not allow her to qualify for an award.
+       20.     On March 4, 2020, Supervisor-1 stated that Complainant did not do her work
+               well.
+       21.     On March 10, 2020, she received an email from the Business Manager
+               (Supervisor-2) harassing her based on her approved reasonable accommodation.
+
+Complainant did not complete an affidavit or otherwise provide a sworn statement during the
+investigation of this complaint. ROI 1 at 167, SROI 1 at 168.
+
+At the conclusion of the investigation, the Agency provided Complainant with a copy of the
+report of investigation and notice of her right to request a hearing before an EEOC
+Administrative Judge (AJ). When Complainant did not request a hearing, the Agency issued a
+final decision pursuant to 29 C.F.R. § 1614.110(b). The June 2, 2022, decision concluded that
+Complainant failed to prove that the Agency subjected her to discrimination as alleged in claims
+(1) through (8). The final decision did not address claims (9) through (21) or the basis of
+disability, which Complainant had raised as a basis for discrimination in her amendments.
+
+Complainant filed Appeal No. 2022003811 on July 5, 2022. On appeal, Complainant contends
+that the Agency’s final decision was excessively late and that default judgment in her favor is an
+appropriate sanction. Complainant also notes that the Agency’s decision failed to address the
+amended claims.
+                                                4                      2022003811, 2023004452
+
+On July 15, 2020, Complainant filed a second EEO complaint, which she subsequently amended,
+alleging that the Agency discriminated against her on the bases of her race (African American),
+color (Brown), disabilities, age (born in May 1960), and reprisal for prior protected EEO activity
+when:
+
+       22.     Since October 2019, Service Chief-1 has excluded Complainant from leadership
+               meetings.
+       23.     In October 2019, Service Chief-1 informed Complainant that her duties would be
+               changing but failed to identify the new duties and did not respond to requests for
+               clarification.
+       24.     In October 2019, Supervisor-2 denied Complainant’s reasonable accommodation
+               request to telework.
+       25.     On December 11, 2019, management removed a filing cabinet from
+               Complainant’s office.
+       26.     On December 16, 2019, Complainant’s supervisor told her that she needed to
+               change her time in Automated Time Attendance and Production System
+               (ATAAPS) to Absent Without Leave (AWOL) for December 11, 2019.
+       27.     On December 20, 2019, Service Chief-1 failed to acknowledge the Performance
+               and Improvement Chief’s email complimenting Complainant’s project
+               contributions.
+       28.     In December 2019, Complainant learned management failed to inform Human
+               Resources that she was on extended Leave Without Pay (LWOP) for medical
+               reasons, as required by policy.
+       29.     From February 2020 to present, Complainant’s reasonable accommodation
+               request has not been appropriately processed in a timely manner, and management
+               has failed to provide Complainant with an effective accommodation.
+       30.     On March 10, 2020, Complainant’s first-line supervisor told her that she was not
+               supporting the mission.
+       31.     In May 2020, Supervisor-2 accused Complainant of jeopardizing a Lean Six
+               Sigma project.
+       32.     In July 2020, management gave Complainant taskers, kept changing the task
+               and/or deadlines, and, in turn, discredited Complainant’s work.
+       33.     In July 2020, management instructed Complainant not to reach out for assistance
+               because she was a GS-9 and nobody needed to hold her hand.
+       34.     In July 2020, a Supervisory Health System Specialist (Supervisor-3) questioned
+               Complainant regarding an IT issue by stating “why did you put the union on my
+               email”.
+       35.     In July 2020, Complainant did not receive the same support or training as her
+               colleagues.
+       36.     In July 2020, Complainant was moved to a room with loud banging noises
+               outside.
+       37.     On August 6, 2020, management placed Complainant on a Performance
+               Improvement Plan (PIP).
+                                                5                     2022003811, 2023004452
+
+       38.    On September 29, 2020, Complainant became aware that she was removed from
+              the GIMS administrative distribution list.
+       39.    On October 16, 2020, Complainant was not paid because her hours were not
+              certified by Supervisor-3 and timely entered in the Defense Civilian Payroll
+              System.
+       40.    On November 4, 2020, management accused Complainant of not following
+              instructions when sending out emails to providers and yelled at Complainant and
+              interrupted her while she was speaking.
+
+At the conclusion of the investigation, the Agency provided Complainant with a copy of the
+report of investigation and notice of her right to request a hearing before an EEOC AJ.
+Complainant timely requested a hearing but subsequently withdrew her request on February 8,
+2021. On February 10, 2021, the AJ issued an Order granting Complainant’s request and
+ordering the Agency to issue a final decision pursuant to 29 C.F.R. § 1614.110(b).
+
+Complainant filed Appeal No. 2023004452 on August 3, 2023. 3 On appeal, Complainant notes
+that the Agency had failed to issue a final decision and again requested default judgment as a
+sanction for the Agency’s delay.
+
+On September 14, 2023, the Agency issued a final decision. The decision concluded that
+Complainant failed to prove that the Agency subjected her to discrimination as alleged.
+
+The instant appeal from Complainant followed.
+
+                                 ANALYSIS AND FINDINGS
+
+As this is an appeal from a decision issued without a hearing, pursuant to 29 C.F.R.
+§ 1614.110(b), the Agency's decision is subject to de novo review by the Commission. 29 C.F.R.
+§ 1614.405(a). See Equal Employment Opportunity Management Directive for 29 C.F.R. Part
+1614 (EEO MD-110), at Chapter 9, § VI.A. (Aug. 5, 2015) (explaining that the de novo standard
+of review “requires that the Commission examine the record without regard to the factual and
+legal determinations of the previous decision maker,” and that EEOC “review the documents,
+statements, and testimony of record, including any timely and relevant submissions of the
+parties, and . . . issue its decision based on the Commission’s own assessment of the record and
+its interpretation of the law”).
+
+As a preliminary matter, as Complainant notes, the Agency’s final decision in Agency No.
+DHANCR-19-0014 failed to address her amended claims that were the subject of the
+supplemental investigation. Because the record is sufficiently developed to address these claims,
+we find this constitutes harmless error and will address the merits of these claims on appeal.
+
+
+
+3
+  This initially premature appeal has since been cured by the Agency’s issuance of its final
+decision.
+                                                6                       2022003811, 2023004452
+
+Untimely Final Agency Decisions
+
+On appeal, Complainant contends that the Agency failed to issue timely final decisions in
+accordance with EEOC regulations and requests the issuance of default judgment against the
+Agency as a sanction.
+
+We note that our regulations require agency action in a timely manner at many points in the EEO
+process. Tammy S. v. Dep’t of Def., EEOC Appeal No. 0120084008 (June 6, 2014). Compliance
+with these timeframes is not optional; as the Commission stated in Royal v. Dep’t of Veterans
+Affs., EEOC Request No. 0520080052 (Sept. 25, 2009), “the Commission has the inherent
+power to protect its administrative process from abuse by either party and must insure that
+agencies, as well as complainants, abide by its regulations.” Because of the length of time it can
+take to process a federal sector EEO complaint, any delays in complying with the time frames in
+the regulations can impact the outcome of the complainant’s claims. Id.
+
+Here, we find that the Agency failed to comply with the Commission’s regulations. The
+Commission’s regulation found at 29 C.F.R. § 1614.110(b) requires that an agency issue a final
+decision within 60 days of receiving notification of a request for a final decision. The record
+does not show the date on which Complainant received notice of right to request a hearing for
+her first EEO complaint, but the EEO investigator completed the supplemental investigation on
+May 26, 2020. SROI 1 at 168. The Agency issued its final decision on June 2, 2022,
+approximately two years later. For Complainant’s second EEO complaint, Complainant timely
+requested a hearing, and the AJ dismissed Complainant’s hearing request on February 10, 2021,
+and ordered the Agency to issue a final decision in accordance with 29 C.F.R. § 1614.110(b).
+The Agency issued its final decision on September 14, 2023, which was after Complainant filed
+Appeal No. 2023004452 and more than two and a half years after the AJ ordered the Agency to
+issue an immediate final decision. Therefore, the Agency’s final decisions are vastly untimely,
+and the Agency has not explained its reasons for the excessive delays.
+
+Although the Agency failed to timely issue a final decision as required by our regulations, it did
+not act in a manner to warrant the sanction of a default judgment against it. See, e.g. Josefina L.
+v. Soc. Sec. Admin., 0120142023 (July 19, 2016), req. for recon. denied, EEOC Request No.
+0520170108 (Feb. 9, 2017) (finding that the agency's 571-day delay in issuing the decision did
+not warrant sanctions, as complainant did not show she was prejudiced by the delay); Abe K. v.
+Dep’t of Agric., EEOC Appeal No. 0120141252 (Nov. 4, 2016) (declining to sanction an agency
+that issued a decision after approximately 326 days when complainant failed to show that he was
+prejudiced by the delay); Jocelyn R. v. Dep’t of Def., EEOC Appeal No. 0120152852 (Mar. 11,
+2016) (citing Vunder v. U.S. Postal Serv., EEOC Appeal No. 01A55147 (May 12,
+2006)) (declining to sanction an agency that issued a decision after approximately 371
+days); Anthony M. v. Dep’t of the Air Force, EEOC Appeal No. 2019003380 (Sept. 22, 2020)
+(declining to sanction agency that issued final decision almost two years after complainant
+withdrew hearing request). In the instant case, Complainant has not shown that she was
+prejudiced by the delays. As such, under the specific circumstances present, we decline to
+sanction the Agency for its delay in issuing the final decision.
+                                                 7                       2022003811, 2023004452
+
+
+While we will not impose a sanction in the present case, we do find the Agency’s failure to abide
+by the regulations reflects negatively on the Agency’s support for the integrity of the EEO
+process and, as a result, will notify EEOC’s Federal Sector Programs (FSP), which monitors the
+federal agencies’ EEO programs, of the Agency’s failure to comply with the regulations
+regarding the timely issuance of final agency decisions. See Kayce L. v. Dep’t of Health &
+Human Servs., EEOC Appeal No. 2019002439 (Sept. 30, 2022) (declining to issue sanction for
+FAD issued 1,312 days after complainant’s request for immediate final decision but referring
+matter to FSP); Beatrice B. v. Dep’t of Veterans Affs., EEOC Appeal No. 2019001641 (Sept. 17,
+2020) (declining to issue a sanction where agency delayed issuing final decision for more than
+eight months following supplemental investigation but referring matter to FSP).
+
+Denial of Reasonable Accommodation
+
+Complainant alleged that she was denied reasonable accommodations for her disability. The
+Agency found that Complainant established that she was a qualified individual with a disability.
+We agree with that determination. However, the Agency’s final decision improperly evaluated
+Complainant’s reasonable accommodation claims using a disparate treatment framework.
+
+In order to establish that Complainant was denied a reasonable accommodation, Complainant
+must show that: (1) she is an individual with a disability; (2) she is a qualified individual with a
+disability; and (3) the Agency failed to provide a reasonable accommodation. See EEOC
+Enforcement Guidance on Reasonable Accommodation and Undue Hardship Under the
+Americans with Disabilities Act (Enforcement Guidance on Reasonable Accommodation), No.
+915.002 (Oct. 17, 2002). An agency is required to make reasonable accommodation to the
+known physical and mental limitations of a qualified individual with a disability unless the
+agency can show that accommodation would cause an undue hardship. 29 C.F.R. §§ 1630.2(o)
+and (p). “The term “qualified,” with respect to an individual with a disability, means that the
+individual satisfies the requisite skill, experience, education and other job-related requirements
+of the employment position such individual holds or desires and, with or without reasonable
+accommodation, can perform the essential functions of such position.” 29 C.F.R. § 1630.2(m).
+
+Supervisor-2 stated that, after returning to work from extended medical leave in September 2019,
+Complainant requested reasonable accommodation. SROI 1 at 81-82. Complainant stated that
+she requested telework as a reasonable accommodation on October 28, 2019. ROI 2 at 516-17.
+Complainant requested 100 percent telework until she recovered from symptoms of PTSD and
+depression, estimated to be 90 days but did not explain why or provide medical documentation
+explaining why telework was necessary. ROI 2 at 550-52. Supervisor-2 stated that they could not
+provide Complainant full-time telework because her position description required her to be in
+person at least part of the time to provide training and interact with staff to make sure their
+competencies were up to date. SROI 1 at 82. According to Supervisor-2, Complainant did not
+provide medical documentation that indicated that she could not perform her job duties involving
+interacting with staff in person. SROI 1 at 82.
+                                                8                      2022003811, 2023004452
+
+We find that Complainant did not establish by preponderant evidence in the record that she
+needed full-time telework as a reasonable accommodation for her disability in 2019.
+
+According to Complainant, from February 2020 to present, her request for reasonable
+accommodation was not processed in a timely manner, and management failed to provide her
+with an effective accommodation. ROI 2 at 523. Complainant stated that in 2020 she requested a
+private office with adjustable lights and no noise or crowds. ROI 2 at 523. The record contains a
+February 20, 2020, request for reasonable accommodation. SROI 1 at 101-03; ROI 2 at 348-50.
+Complainant requested a private office so she could work uninterrupted with dim lights and to
+not work at the front desk. SROI 1 at 101. The record contains two copies of a March 16, 2020,
+memorandum from Supervisor-2 regarding the essential functions of Complainant’s position,
+asking Complainant’s medical providers for information. SROI 1 at 93-100. One physician
+recommended that Complainant be accommodated with PTSD preventive measures, including
+decreased light and sound stimulation, interruptions, and distractions, and recommended that
+Complainant be accommodated with no front desk work. SROI 1 at 93-96. A second physician
+recommended that Complainant be accommodated with dimmed lights, less people traffic, and
+limited in-person interactions with large groups. SROI 1 at 97-100.
+
+On April 3, 2020, Supervisor-2 indicated that she was denying Complainant’s request because
+she offered Complainant the only two available non-shared offices in the service, which
+Complainant rejected. SROI 1 at 103; ROI 2 at 355. According to Supervisor-2, because
+Complainant currently shared an office, it was not always possible to dim the lights or provide
+uninterrupted work time. ROI 2 at 355. Supervisor-2 noted that the medical documentation
+reflected that Complainant could perform all of her duties with the exception of front desk
+coverage or providing training to large groups. ROI 2 at 355. According to Supervisor-2, she
+would continue to offer Complainant the two non-shared offices, not assign her to cover the front
+desk, not assign her to provide training to large groups. ROI 2 at 355. The record contains a May
+21, 2020, email from Supervisor-2, explaining that, prior to April 3, 2020, she offered
+Complainant two separate non-shared offices, to not assign Complainant to the front desk, to
+allow Complainant to train small groups instead of large groups, and to approve telework or
+adjust her tour of duty. ROI 2 at 353-54.
+
+The record reflects that Supervisor-2 accommodated Complainant by not assigning her to work
+at the front desk and by not asking her to train large groups. Because Complainant shared an
+office, it was not possible for Complainant to dim the lights or have a private workspace in her
+current office. We find that Complainant has not shown that the two non-shared offices offered
+to her by Supervisor-2 would not have been effective. Moreover, Supervisor-2 agreed to approve
+telework or adjust Complainant’s tour of duty so she could avoid high-traffic times in the office.
+The record reflects that Administrator-1 signed Complainant’s telework agreement on behalf of
+Supervisor-2 on April 16, 2020. ROI 2 at 446-49. We find that Complainant has not established
+that she was denied a reasonable accommodation as alleged.
+                                               9                      2022003811, 2023004452
+
+Complainant averred that, in July 2020, management moved her into two unsuitable workspaces.
+ROI 2 at 523. According to Complainant, in July 2020, she was moved to a room with loud
+banging noises outside. ROI 2 at 532. Complainant stated that she accepted the office space
+under duress and noted that she did not notice the door openers outside the office in order to
+object. ROI 2 at 532-33. Supervisor-3 stated that Complainant was moved twice based on her
+requests for a new office, once because Complainant complained that the door on the wall
+outside her office made banging noises and once because Complainant complained that noise
+from flushing the toilet was too loud. ROI 2 at 805, 811-12. Service Chief-2 stated that the
+decision to move offices was made by Complainant and that she witnessed Complainant say that
+the new space was satisfactory. ROI 2 at 839-40. According to the Operations Chief, when
+Complainant objected to the noise caused by people hitting the handicap button to open the door,
+they placed signs outside asking people not to press the handicap button too hard and provided
+Complainant with a sound machine to dampen noise. ROI 2 at 867. The record contains a July 8,
+2020, email from the Operations Chief to Complainant, asking if things had improved since a
+sign was posted at the doors near Complainant’s office asking personnel to be quiet and whether
+Complainant had received a white noise machine. ROI 2 at 271. The Operations Chief averred
+that, when these measures did not help, they moved another employee so Complainant could be
+moved to a different office. ROI 2 at 867.
+
+The record reflects that, on September 21, 2020, Supervisor-3 signed Complainant’s February
+20, 2020, request for accommodation, indicating that she was formally approving the request.
+ROI 2 at 350. In a September 21, 2020, email to the Operations Chief, Supervisor-3 stated that,
+although she was not Complainant’s supervisor when she submitted the request for
+accommodation, the Equal Employment Manager (EEO-1) told her that she needed to sign the
+form. ROI 2 at 393. The Equal Opportunity Support Officer (EEO-2) stated that, while the
+Agency reasonably accommodated Complainant by moving her to a private office, the
+September 21, 2020, approval exceeded the Agency’s policy that the maximum time for
+processing and providing reasonable accommodation shall not exceed 30 business days absent
+extenuating circumstances. ROI 2 at 956-57.
+
+The record contains a September 14, 2020, request for telework as an accommodation to reduce
+the risk of contracting Covid-19 because she had chronic kidney disease, obesity,
+cardiomyopathy, and hypertension. ROI 2 at 274-76. The record contains a September 15, 2020,
+note from a Physician Assistant, stating that Complainant had several chronic conditions that
+placed her at increased risk of contracting a more severe course of Covid-19, including
+hypertrophic cardiomyopathy, tachycardia, stage 3 chronic kidney disease, and prediabetes. ROI
+2 at 347. The Physician Assistant noted that Complainant’s fear of contracting Covid-19
+exacerbated her anxiety and that a change in Complainant’s location at work had not lessened
+her fear of contracting Covid-19 or improved the distractions that appeared to exacerbate her
+PTSD. ROI 2 at 347. The Physician Assistant recommended that Complainant be permitted to
+work from home given her increased risk of a severe clinical outcome if she was infected with
+Covid-19. ROI 2 at 347.
+                                              10                      2022003811, 2023004452
+
+On September 17, 2020, the Operations Chief forwarded a reasonable accommodation request
+from Complainant for telework to reduce the risk of contracting Covid-19 to EEO-1. ROI 2 at
+300-03. The Operations Chief noted that, because Complainant was in the middle of a PIP, based
+on guidance from Labor/Management-Employee Relations (LMER), they could not support her
+teleworking until the conclusion of her PIP in three weeks. ROI 2 at 300. On October 13, 2020,
+Supervisor-3 responded to an email from Complainant, stating that it had been discussed that her
+request for telework as a reasonable accommodation could not be approved during her PIP based
+on the collective bargaining agreement (CBA). ROI 2 at 304. The section of the Agency’s CBA
+concerning telework states that an employee under a performance improvement plan would be
+ineligible to participate in telework and also states that telework may be a reasonable
+accommodation for employees with disabilities. ROI 2 at 281-82.
+
+The Agency denied Complainant’s request for full-time telework as a reasonable accommodation
+because she was on a PIP. The Agency’s CBA stated that employees on a PIP were ineligible for
+telework. In Natalie S. v. Dep’t of Veterans Affs., EEOC Appeal No. 0120140815 (Jan. 26,
+2018), we found that a complainant was denied a reasonable accommodation when the agency
+denied her request for telework as a reasonable accommodation because her conduct and
+performance were not consistent with the agency’s telework guidelines. We noted that an
+agency’s obligation to reasonably accommodate an employee with a disability might require
+waiving eligibility requirements for telework or otherwise modifying its telework program. We
+found in Natalie S. that, although complainant’s performance did not meet the standards for
+telework, the agency could have afforded her a trial period of 30 days to determine whether
+telework was an effective accommodation that allowed her to meet the productivity standards.
+
+Here, Complainant had already been approved to telework. As noted above, Complainant’s
+telework agreement was approved on April 16, 2020. On May 18, 2020, the Interim Service
+Chief (Service Chief-2) sent Complainant an email with high importance, asking her to place
+training folders on a desk no later than 10 a.m. ROI 2 at 240. The record contains a May 18,
+2020, email from Service Chief-2 to Administrator-1, stating that she called Complainant when
+she did not receive a reply to her email. ROI 2 at 232. According to Service Chief-2,
+Complainant had not been able to use her computer or access email since Friday and told Service
+Chief-2 that no one told her she needed to come into work if she could not work remotely. ROI 2
+at 232. Service Chief-2 attached Complainant’s telework agreement, noting that it did not
+address what to do if Complainant was unable to work remotely. ROI 2 at 232-37. On May 19,
+2020, Complainant responded to Service Chief-2’s email about the folders for the first time,
+stating that she was scheduled to telework that week. ROI 2 at 240.
+
+On July 7, 2020, Service Chief-2 sent Complainant an email cancelling her existing telework
+agreement and asking her to sign an updated telework agreement including language stating that,
+if Complainant experienced any IT issue, she needed to report it to her supervisor and would be
+expected to report to the work site if she could not connect while trying to telework. ROI 2 at
+241-42, 246-47.
+                                               11                      2022003811, 2023004452
+
+On July 8, 2020, Service Chief-2 emailed Complainant, asking her to inform management of her
+status ASAP and stating, if she was teleworking, she needed to sign the attached agreement
+because Service Chief-2 had cancelled the prior telework agreement for omitting one of the
+requirements. ROI 2 at 241. On July 8, 2020, Supervisor-3 emailed Complainant, stating that she
+was following up on their phone call and that Complainant needed to come into the office
+because she did not sign the new telework agreement and therefore did not have a valid telework
+agreement in place. ROI 2 at 245-46. On July 8, 2020, Complainant emailed Service Chief-2 and
+Supervisor-3, stating that, after receiving a call from Supervisor-3, she searched her inbox and
+did not see Service Chief-2’s email about updating her telework agreement and asking if Service
+Chief-2 had received delivery confirmation or a read receipt. ROI 2 at 242-45. Service Chief-2
+responded that she had asked Complainant to sign a new telework agreement the day before
+Complainant left work while they were in the office. ROI 2 at 242. According to Service Chief-
+2, Complainant should not be teleworking if she did not see the email because telework was
+conditional upon having a signed telework agreement. ROI 2 at 242. Service Chief-2 added that,
+if Complainant’s email was not functioning, she could not telework because she needed reliable
+email access to do her job. ROI 2 at 242.
+
+The record contains a July 8, 2020, email from Service Chief-2 documenting a conversation with
+Complainant in her office during which Complainant stated she did not receive either of Service
+Chief-2’s email and Service Chief-2 told Complainant that she should not telework at that time
+because of the problems with her email. ROI 2 at 249. According to Service Chief-2, although
+Complainant stated that her email was reliable, Service Chief-2 stated that she disagreed that her
+email was reliable since she did not receive her messages and told Complainant she could not
+telework if she was not receiving all of her emails. ROI 2 at 249. Service Chief-2 stated that
+Complainant acknowledged this and said she would put in a ticket to see what was going on with
+her email. ROI 2 at 249. Service Chief-2 explained that Complainant had issues with
+connectivity but failed to come into work or notify anyone for two or three days that she was
+unable to connect. ROI 2 at 846. On July 21, 2020, Complainant forwarded her revised telework
+agreement to the Deputy Chief of Administration. ROI 2 at 259-60. On July 21, 2020, the
+Deputy Chief of Administration responded, identifying several modifications or additions
+Complainant needed to make, including documenting that she had completed telework training.
+ROI 2 at 259. On July 22, 2020, Supervisor-3 signed Complainant’s revised telework agreement.
+ROI 2 at 263-68.
+
+We find that the record reflects that Complainant failed to communicate while teleworking and
+that her performance issues worsened while teleworking. Accordingly, we find that the Agency
+has shown that it would have constituted an undue hardship to allow Complainant to telework
+full-time while she was on a PIP. Meanwhile, the Agency continued to work with Complainant
+to find effective alternate accommodations, exploring noise-cancelling headphones, ear plugs,
+and advanced sick leave. ROI 2 at 306, 612. The Operations Chief sought private, isolated office
+space with dimmable lights outside of the Department of Medicine because there was no such
+space in the Department of Medicine, but the Deputy Director for the Directorate for Medical
+Services responded that there was likely no space without any noise and that space was at a
+premium because a third of the hospital was displaced due to construction. ROI 2 at 324-28.
+                                                12                       2022003811, 2023004452
+
+The Deputy Director for the Directorate for Medical Services requested that Industrial Hygiene
+test the noise levels from the sound of flushing toilets. ROI 2 at 331. A Certified Industrial
+Hygienist determined that, while the flushing sounds did cause noise levels in Complainant’s
+office that were greater than those in her former office, the sounds were well below the levels
+that could damage hearing. ROI 2 at 325-26. The Certified Industrial Hygienist asked the Zone
+Manager to address the water splashing or spraying onto the toilet seats in the bathrooms,
+reached out to Facilities to discuss the noise concern with a plumber, and recommended
+exploring other office space without toilet noise and/or working with Occupational Health. ROI
+2 at 325-26.
+
+On appeal, Complainant states that she suffers from a degenerative condition, cerebral palsy, and
+asserts that they Agency’s failure to accommodate her worsened her medical conditions to the
+point that she has exhausted her leave. There is no evidence in the record for the two complaints
+at issue on appeal that Complainant’s medical conditions included cerebral palsy. Our review is
+limited to the evidence in the record, and our analysis is limited to the timeframes associated
+with the denial of reasonable accommodation claims accepted by the Agency.
+
+An employer should respond expeditiously to a request for reasonable accommodation.
+Enforcement Guidance on Reasonable Accommodation at Question 10. If the employer and the
+individual with a disability need to engage in an interactive process, this too should proceed as
+quickly as possible. Id. Similarly, the employer should act promptly to provide the reasonable
+accommodation. Id. Unnecessary delays can result in a violation. Id. In determining whether
+there has been an unnecessary delay in responding to a request for reasonable accommodation,
+relevant factors include: (1) the reason(s) for delay; (2) the length of the delay; (3) how much the
+individual with a disability and the employer each contributed to the delay; (4) what the
+employer was doing during the delay; and (5) whether the required accommodation was simple
+or complex to provide. See Robyn D. v. Dep’t of the Air Force, EEOC Appeal No. 2021000644
+(May 19, 2021).
+
+While Supervisor-3 did not formally sign Complainant’s February 20, 2020, reasonable
+accommodation request until September 21, 2020, the record reflects that the Agency
+accommodated Complainant before that date. Before April 3, 2020, Supervisor-2 accommodated
+Complainant by not asking her to cover the front desk or provide training to large groups. The
+record reflects that some of the delay was attributable to Complainant’s refusal to consider
+private office spaces offered to her. Supervisor-2 also offered Complainant the only two
+available private offices, which Complainant rejected without trying. After Supervisor-2 left the
+department in April 2020, the Agency continued its efforts to reasonably accommodate
+Complainant. In July 2020, Complainant agreed to move to two private offices, but she
+subsequently objected to noise issues in both spaces. The Agency posted signs, provided
+Complainant with a white noise machine, ear plugs, and noise-cancelling headphones, and
+worked with Industrial Hygiene and Facilities regarding the noise levels in Complainant’s office.
+Private office space outside the department was not available because of construction in the
+hospital, and, given the nature of a hospital, it was not clear if any office space would be totally
+free of sounds or distractions.
+                                                13                      2022003811, 2023004452
+
+The preponderance of the evidence in the record reflects that the Agency continued to work with
+Complainant to find an effective accommodation. Accordingly, we find that the Agency fulfilled
+its obligation under the Rehabilitation Act to reasonably accommodate Complainant.
+
+Improper Access of Confidential Medical Information
+
+Complainant alleged that Supervisor-1 improperly accessed her confidential medical
+information. The Commission’s regulations implementing the Rehabilitation Act provide for the
+confidentiality of employee medical records. 29 C.F.R. § 1630.14(c)(1) provides, in pertinent
+part, that: “Information obtained . . . regarding the medical condition or history of any employee
+shall . . . be treated as a confidential medical record.” By its terms, this requirement applies to
+confidential medical information obtained from “any employee,” and is not limited to individuals
+with disabilities. See Hampton v. U.S. Postal Serv., EEOC Appeal No. 01A00132 (April 13,
+2000). Improper Agency disclosure of such medical information constitutes a per se violation of
+the Rehabilitation Act. Valle v. U.S. Postal Serv., EEOC Request No. 05960585 (Sept. 5, 1997).
+
+A coworker (Coworker-1) stated that he helped Complainant with her worker’s compensation
+claim and that Supervisor-1 allegedly completed Complainant’s worker’s compensation
+paperwork with a medical discharge statement from the Walter Reed emergency room. ROI 1 at
+133. According to Coworker-1, Complainant was upset because she did not give Supervisor-1
+permission to access her medical records. ROI 1 at 133.
+
+Supervisor-1 denied accessing Complainant’s medical records from the emergency room. ROI 1
+at 124. Service Chief-1 stated that it was not possible for them to access Complainant’s medical
+records from the clinic. ROI 1 at 101. Administrator-1 noted that they contacted base security
+regarding the hit and run accident. ROI 1 at 113. According to Supervisor-1, she was responsible
+for filing Complainant’s worker’s compensation claim, so she requested claim-related medical
+information from Complainant after the injury. ROI 1 at 124. Supervisor-1 averred that
+Complainant provided limited information to her regarding the worker’s compensation claim and
+limited medical documentation to cover her extended absence from work. ROI 1 at 125.
+According to Service Chief-1, Complainant had been absent for several days but had not
+provided medical documentation for absence, so they did not know how to classify her absence,
+noting they needed medical documentation after she was absent for more than three days. ROI 1
+at 100-01. Supervisor-1 stated that, by summer 2019, Complainant was out of worker’s
+compensation time and running out of sick leave, so she contacted Complainant. ROI 1 at 125.
+
+The preponderance of the evidence in the record reflects that Supervisor-1 requested medical
+information that was required to initiate Complainant’s workers compensation claim and that
+Complainant’s supervisors also contacted her to request medical documentation for her extended
+absence and to ask what kind of leave she wanted to take. Supervisor-1 denied accessing
+Complainant’s medical records related to her emergency room visit, and Service Chief-1 stated
+that it was not possible for them to access these records. Upon review, we find that Complainant
+has not established that management improperly accessed her confidential medical information
+in violation of the Rehabilitation Act.
+                                                14                       2022003811, 2023004452
+
+Disparate Treatment and Harassment
+
+To prevail in a disparate treatment claim, Complainant must satisfy the three-part evidentiary
+scheme fashioned by the Supreme Court in McDonnell Douglas Corp. v. Green, 411 U.S. 792
+(1973). She must generally establish a prima facie case by demonstrating that she was subjected
+to an adverse employment action under circumstances that would support an inference of
+discrimination. Furnco Constr. Co. v. Waters, 438 U.S. 567, 576 (1978). The prima facie inquiry
+may be dispensed with in this case, however, since the Agency has articulated legitimate and
+nondiscriminatory reasons for its conduct. See U.S. Postal Serv. Bd. of Governors v. Aikens, 460
+U.S. 711, 713-17 (1983); Holley v. Dep’t of Veterans Affairs, EEOC Request No. 05950842
+(Nov. 13, 1997). To ultimately prevail, Complainant must prove, by a preponderance of the
+evidence, that the Agency’s explanation is a pretext for discrimination. Reeves v. Sanderson
+Plumbing Products, Inc., 530 U.S. 133 (2000); St. Mary’s Honor Ctr. v. Hicks, 509 U.S. 502,
+519 (1993); Tex. Dep’t of Cmty. Affairs v. Burdine, 450 U.S. 248, 256 (1981); Holley, supra;
+Pavelka v. Dep’t of the Navy, EEOC Request No. 05950351 (Dec. 14, 1995).
+
+To establish a claim of harassment a complainant must show that: (1) she belongs to a statutorily
+protected class; (2) she was subjected to harassment in the form of unwelcome verbal or physical
+conduct involving the protected class; (3) the harassment complained of was based on the
+statutorily protected class; (4) the harassment affected a term or condition of employment and/or
+had the purpose or effect of unreasonably interfering with the work environment and/or creating
+an intimidating, hostile, or offensive work environment; and (5) there is a basis for imputing
+liability to the employer. See Henson v. City of Dundee, 682 F.2d 897 (11th Cir. 1982). Further,
+the incidents must have been “sufficiently severe or pervasive to alter the conditions of
+[complainant’s] employment and create an abusive working environment.” Harris v. Forklift
+Systems, Inc., 510 U.S. 17, 21 (1993). The harasser’s conduct should be evaluated from the
+objective viewpoint of a reasonable person in the victim’s circumstances. Enforcement Guidance
+on Harris v. Forklift Systems Inc., EEOC Notice No. 915.002 at 6 (Mar. 8, 1994).
+
+Reprisal claims are considered with a broad view of coverage. See Burlington Northern and
+Santa Fe Ry. Co. v. White, 548 U.S. 53, 67-68 (2006); see also, Carroll v. Dep’t of the Army,
+EEOC Request No. 05970939 (Apr. 4, 2000). Retaliatory actions which can be challenged are
+not restricted to those which affect a term or condition of employment. Id. Rather, a complainant
+is protected from any discrimination that is reasonably likely to deter protected activity. Id.; see
+also, Carroll, supra. To ultimately prevail on a claim of retaliatory harassment, Complainant
+must show that she was subjected to conduct sufficient to dissuade a “reasonable person” from
+making or supporting a charge of discrimination. See Burlington Northern and Santa Fe Ry. Co.
+v. White, 548 U.S. 53, 57 (2006); EEOC Enforcement Guidance on Retaliation and Related
+Issues, EEOC Notice No. 915.004, § II(B)(3) & n. 137 (Aug. 25, 2016).
+
+Complainant alleged discrimination with respect to receiving memoranda of counseling on
+December 4, 2018, December 18, 2018, and January 7, 2019. The Agency provided legitimate,
+nondiscriminatory reasons for issuing Complainant these memoranda of counseling.
+                                              15                      2022003811, 2023004452
+
+The Agency’s legitimate, nondiscriminatory explanation for Supervisor-1 issuing Complainant a
+memorandum of counseling on December 4, 2018, was that Complainant was missing deadlines
+and not completing tasks. ROI 1 at 77-80, 122-23. According to Supervisor-1, she had
+unsuccessfully tried to speak with Complainant about her performance, so she began
+documenting the issues. ROI 1 at 122. Service Chief-1 stated that Supervisor-1 began issuing
+letters of counseling to Complainant because she was not performing the duties in her job
+description and had not made improvements after Supervisor-1 attempted to correct the issue
+several times. ROI 1 at 98-99. Supervisor-1’s legitimate, nondiscriminatory reason for issuing
+Complainant the December 18, 2018, memorandum of counseling was that Complainant failed to
+ensure training was complete for a new employee. ROI 1 at 81-86, 122-23. In a statement,
+Complainant stated that she felt Supervisor-1 was trying to sabotage her because they had
+already discussed this employee and Supervisor-1 did not listen to her recommendation to place
+a seasoned administrative staffer in the position. ROI 1 at 87. The Agency’s legitimate,
+nondiscriminatory explanation for Supervisor-1 issuing Complainant the January 7, 2019,
+memorandum of counseling was that Complainant had not timely completed assignments or
+communicated her leave with Supervisor-1. ROI 1 at 89-90, 122-23. Supervisor-1 stated that
+Complainant seemed to be abusing her alternate work schedule (AWS) and taking leave without
+Supervisor-1’s approval. ROI 1 at 122. Complainant did not provide an affidavit or sworn
+statement regarding these claims, and we find that the preponderance of the evidence in the
+record does not establish pretext for discrimination.
+
+Complainant alleged that Service Chief-1 gave a negative report about her to the Audiology
+Service Chief. According to Service Chief-1, he met with the Audiology Service Chief on March
+7, 2019, because Complainant listed him as a reference when she applied for a position in
+Audiology. ROI 1 at 96-97. Service Chief-1 averred that, when he or his deputy were contacted
+as a reference, they provided balanced feedback by describing that employee’s strengths and
+weaknesses. ROI 1 at 97. Service Chief-1 stated that he gave a fair and balanced description of
+Complainant’s job performance, describing her strengths as interacting with patients and others
+and her weaknesses as timeliness, data analysis, and project management. ROI 1 at 97. We find
+that the Agency provided a legitimate, nondiscriminatory explanation for Service Chief-1’s
+meeting with the Audiology Service Chief and that Complainant has failed to establish pretext
+for discrimination by the preponderance of the evidence.
+
+Complainant alleged that she was subjected to discrimination when her 2019 performance
+appraisal was not timely issued. The record contains Complainant’s performance appraisal for
+the rating period ending on March 31, 2019, with an effective date of June 1, 2019. ROI 1 at
+146-55. Complainant was rated “Fully Successful” in Provide Quality Personnel & Service
+Management and in Professionalism and Teamwork and rated “Unacceptable” in the element of
+Quality Work, resulting in an overall “Unacceptable” rating. ROI 1 at 154. Supervisor-1 stated
+that she issued Complainant’s performance appraisal late because she was a new Business
+Manager and had a large number of employees to rate. ROI 1 at 119. According to Supervisor-1,
+her supervisors were aware of the delay, and her subordinates received their appraisals within a
+couple of weeks of each other. ROI 1 at 119-20.
+                                             16                     2022003811, 2023004452
+
+Service Chief-1 stated that most services did not complete performance appraisals by the
+published deadlines, in part because there was a new system, because there were a large number
+of employees in the same chain of command, and because of delays receiving input from
+employees. ROI 1 at 96. According to Service Chief-1, many employees received their appraisals
+late that year, and, because Complainant was on extended leave when her appraisal was issued
+and not responding to emails, she was not available to sign her appraisal. SROI 1 at 38.
+Complainant has not shown that her 2019 performance appraisal was delayed based on her race,
+disability, age, and/or prior protected EEO activity.
+
+Complainant stated that Supervisor-1 delayed her workers’ compensation paperwork and that, on
+or about May 7, 2019, Supervisor-1 informed her that a case number had not been assigned to
+her accident investigation, that sufficient medical documentation had not been received, which
+could delay the worker’s compensation process, and that, because the 45-day timeframe for case
+development had passed, Complainant needed to take annual or sick leave moving forward.
+Coworker-1, who assisted Complainant with her worker’s compensation claim, stated that
+Supervisor-1 did not submit the correct paperwork when Complainant was injured, causing her
+to not be compensated correctly. ROI 1 at 133. The Agency’s legitimate, nondiscriminatory
+explanation for the delay was that Complainant failed to provide information needed to submit
+her claim. Supervisor-1 stated that any delay in Complainant’s worker’s compensation claim was
+attributable to Complainant’s failure to communicate and provided the needed documentation.
+SROI 1 at 55. The record contains a May 7, 2019, email from Supervisor-1 to Complainant,
+stating that she needed to provide sufficient medical diagnostic documentation and initial
+treatment notes and case number details for the worker’s compensation process and asking what
+type of leave Complainant wanted to use moving forward for timekeeping purposes. SROI 1 at
+63. Supervisor-1 stated that she forwarded an email with this language to Complainant from a
+HR representative (HR-3). SROI 1 at 58. According to Supervisor-1, she was relaying
+information to Complainant because time was running out and she needed to know what type of
+leave Complainant wanted to take after the 45 days. SROI 1 at 58. The record contains a May 8,
+2019, email from HR-3 to Complainant, asking whether she had a copy of the police report and
+stating that the one-page doctor’s note was insufficient medical evidence to support that
+Complainant had a diagnosed condition for her worker’s compensation claim. SROI 1 at 64. HR-
+3 stated that, if Complainant was concerned about privacy, she could provide the documentation
+directly to Occupational Health. SROI 1 at 64. The preponderance of the evidence in the record
+does not establish that the legitimate, nondiscriminatory reason for the delay in processing
+Complainant’s worker’s compensation claim was pretextual.
+
+Complainant alleged that she was subjected to harassment when Supervisor-1 falsely
+documented that Complainant acknowledged her performance plan while she was out of work.
+The record contains an automated May 31, 2019, email stating that Supervisor-1 had
+documented Complainant’s acknowledgment of her performance plan. ROI 1 at 216.
+Complainant noted that she was out on worker’s compensation on that date and could not
+acknowledge her performance plan. ROI 1 at 216. Supervisor-1 stated that the deadline to
+acknowledge performance plans passed while Complainant was on extended leave, and
+Complainant was not responding to communication. SROI 1 at 53-54.
+                                                      17              2022003811, 2023004452
+
+According to Supervisor-1, her action consisted of clicking a button to move Complainant’s
+performance plan forward as required. SROI 1 at 53. Supervisor-2 stated that the button clicked
+indicated that the employee was not present. SROI 1 at 85. The Agency has provided a
+legitimate, nondiscriminatory reason for Supervisor-1 indicating in the system that Complainant
+was not present to acknowledge her performance plan, and Complainant has not established that
+the proffered reason was pretextual.
+
+Complainant filed a grievance regarding her 2019 performance appraisal and alleged that she
+was subjected to discrimination and harassment when she reached out to HR-1 and HR-2
+because her appraisal was not timely changed and when she did not receive a performance award
+on February 26, 2020. 4 ROI 1 at 136-45. The record contains a July 22, 2019, First Step
+Grievance Decision agreeing to change the overall rating to “Successful.” ROI 1 at 156. The
+record contains a September 6, 2019, memorandum from Administrator-1 regarding
+Complainant’s 2019 performance appraisal, which states that, based on Complainant’s
+grievance, her rating for the third element would be changed from “Unacceptable” to “Fully
+Successful.” SROI 1 at 76. The record contains a request form to change Complainant’s
+performance appraisal based on a grievance decision, changing her rating for the Quality of
+Work element to “Fully Successful.” SROI 1 at 66-74.
+
+The Agency’s legitimate, nondiscriminatory explanation for the delay was that Complainant’s
+appraisal was not updated in fall 2019 due to a technical glitch and was not updated until March
+2020 because HR mistakenly thought it was already updated. On February 12, 2020,
+Complainant emailed HR-2 to ask when her appraisal would be updated in the system. HR-2
+stated that a former HR Liaison had attempted to update the appraisal, but Complainant
+contacted her on February 12, 2020, because her old appraisal was still in the system due to a
+system glitch. SROI 1 at 115, 117-18, 121-50. HR-2 stated that she submitted another ticket to
+fix the problem, noting that, until Complainant contacted HR in February, they were not aware
+that the appraisal had not been updated. SROI 1 at 117-18, 121-50. The record contains an
+October 2, 2019, email from the former HR Liaison requesting a change to Complainant’s rating.
+SROI 1 at 121. The record contains a March 3, 2020, email stating that the change to
+Complainant’s 2019 appraisal was completed. SROI 1 at 137. According to HR-1, approximately
+six to eight other employees also needed their appraisals changed based on grievances, and HR
+had to follow the same lengthy process to update the appraisals in the online system. SROI 1 at
+154. HR-1 stated that he reached out to Complainant to inform her that her management was not
+involved in the delay in updating her appraisal. SROI 1 at 156-57. A mistake made by an agency
+is not evidence of pretext unless there is evidence that the mistake was based on a complainant’s
+protected classes. See Vickey S. v. Dep’t of Def., EEOC Appeal No. 0120112893 (Nov. 17,
+2015); Hsieh v. Dep’t of Veterans Affs., EEOC Appeal No. 0120120980 (June 4, 2012); Carroll
+v. Dep’t of Justice, EEOC Appeal No. 01A20985 (Jan. 21, 2003). Complainant has not
+established by preponderant evidence that the mistake was based on her membership in any
+protected class or otherwise established pretext for discrimination.
+
+
+
+4
+    The appraisal itself is not an issue on appeal.
+                                               18                     2022003811, 2023004452
+
+The Agency’s legitimate, nondiscriminatory reason for Complainant not receiving a performance
+award in February 2020 was that she received an “Unacceptable” rating on her initial appraisal.
+According to Service Chief-1, the policy was that, if someone received an unsatisfactory rating
+on their appraisal, they were ineligible for any award, stating that a Caucasian male physician
+also did not receive an award because he received an unsatisfactory rating. SROI 1 at 42-43.
+Although Complainant’s appraisal was changed to remove the “Unacceptable” rating on March
+3, 2020, she did not allege that she failed to receive an award after her appraisal was changed.
+Moreover, as discussed above, we find that she has not established that the delay in removing the
+“Unacceptable” rating was discriminatory. Complainant has not established by the
+preponderance of the evidence in the record that the Agency’s legitimate, nondiscriminatory
+reason for not providing her a performance award in February 2020 was pretextual.
+
+Complainant averred that, in December 2019, she learned that Supervisor-2 failed to inform HR
+that she was on extended LWOP for medical reasons. ROI 2 at 521. According to Complainant,
+although she told Supervisor-2 that she needed to contact payroll because LWOP would affect
+her benefits, Supervisor-2 did not do so. ROI 2 at 521-22. Supervisor-2 stated that Complainant
+was not on LWOP for 30 or more days, so there was no need to do an action. ROI 2 at 752.
+Complainant has not shown that the Agency’s legitimate, nondiscriminatory reason for not
+informing HR that she was on LWOP was pretextual.
+
+Complainant alleged that Service Chief-1 denied her request to work with Medical Support
+Assistant (MSA) University. Service Chief-1 stated he was not involved in Complainant’s
+request to work with MSA University. SROI 1 at 40. Supervisor-2 stated that, as Complainant’s
+supervisor, she agreed that Complainant could be removed from the service and placed in charge
+of MSA University. SROI 1 at 85. According to Supervisor-2, the Director did not move forward
+with that plan, likely because of a budget issue. SROI 1 at 85. The record contains emails
+indicating that, as of January 27, 2020, a plan to detail Complainant to stand up the MSA
+University was put on hold. SROI 1 at 111-13. We find that Complainant has not established by
+preponderant evidence that the legitimate, nondiscriminatory explanation for not reassigning her
+to MSA University was pretextual.
+
+We find that the Agency provided a legitimate, nondiscriminatory reason for placing her on a
+PIP. Complainant stated that, in July 2020, Supervisor-3 placed her on a PIP for failing the
+element of data mining. ROI 2 at 533. Supervisor-3 averred that she placed Complainant on a
+PIP to address performance issues that she addressed with Complainant. ROI 2 at 813. Service
+Chief-2 stated that she agreed that Complainant’s performance did not satisfactorily meet the
+requirements of her performance plan. ROI 2 at 841. The Operations Chief stated that she
+supported Complainant during her PIP as a mentor to help increase her skills and knowledge as
+they related to her position description. ROI 2 at 865, 868. According to Complainant, she
+should not have been placed on a PIP because Supervisor-3 expected her to complete a last-
+minute task even though she was mourning the death of an employee she trained and had just
+moved into the new office with a broken desk. ROI 2 at 533-34. Complainant provided photos of
+the office and commented that her computer was not hooked up when Supervisor-3 asked her to
+produce a spreadsheet. ROI 2 at 544-47.
+                                               19                     2022003811, 2023004452
+
+Although Complainant stated that she did not have access to her computer to produce a
+spreadsheet on a particular date, the record reflects that Supervisor-3 placed Complainant on a
+PIP because of sustained performance issues. Complainant has not established that the Agency’s
+legitimate, nondiscriminatory reason was a pretext for discrimination or retaliation.
+
+The Agency provided a legitimate, nondiscriminatory explanation for Complainant not timely
+being paid on October 16, 2020. Complainant alleged that, on October 16, 2020, she was not
+paid because Supervisor-3 did not certify her hours and enter them into the payroll system on
+time. ROI 2 at 537. According to Complainant, Supervisor-3 told her that it was a system error
+and that others also did not get paid. ROI 2 at 537. Supervisor-3 averred that she did not get
+timecards for Complainant and other employees approved in time during a holiday weekend,
+resulting in those employees not timely being paid. ROI 2 at 815. According to Supervisor-3,
+once she found out about the issue, she contacted payroll to have an emergency check issued.
+ROI 2 at 815. Complainant has not established that the legitimate, nondiscriminatory reason was
+a pretext for discrimination based on her membership in any protected class.
+
+In a statement, Complainant alleged that she was subjected to harassment and bullying on
+December 19, 2018, when Service Chief-1 called her into his office, told her that no one liked
+working with her, and questioned her ability to lead because she missed a leadership meeting.
+ROI 1 at 87. Service Chief-1 denied harassing or bullying Complainant and stated that he did not
+know why she would say he harassed and bullied her. ROI 1 at 94-95. Complainant alleged that
+Service Chief-1 verbally assaulted her on December 19, 2019, but she did not provide any
+details. Service Chief-1 denied verbally assaulting Complainant as alleged. SROI 1 at 39. We
+find that the preponderance of the evidence does not establish that Service Chief-1 harassed
+Complainant as alleged.
+
+Complainant alleged that Supervisor-1 stated that she did not do her work well. According to
+Supervisor-1, all of her feedback regarding Complainant’s performance was metrics-driven and
+communication-oriented and based on her performance plan. SROI 1 at 56. Service Chief-1
+described Supervisor-1 as cordial towards Complainant but stated that Complainant was cold,
+distant, and aggressive towards Supervisor-1. ROI 1 at 101-02. Complainant has not shown that
+Supervisor-1’s comment was based on her race, age, disability, and/or prior protected activity.
+
+Complainant alleged that, in 2018, her duties and computer system access were taken away by
+Supervisor-1, Administrator-1, and Service Chief-1. Administrator-1 stated that he removed the
+task of managing the provider list from Complainant because she was making errors and because
+it was not one of the duties of her position. ROI 1 at 110-11. Service Chief-1 stated that he did
+not recall taking away Complainant’s job duties or computer system access in 2018 as alleged.
+ROI 1 at 97-98. Supervisor-1 denied taking away Complainant’s computer access, explaining
+that, when Complainant was moved to a new desk due to clinic needs, her computer was not
+moved right away because Complainant had not prepared for the move in advance. ROI 1 at 120-
+21. We find that Complainant either has not established that the alleged harassment occurred or
+that it was based on her membership in any protected class.
+                                               20                     2022003811, 2023004452
+
+Complainant alleged that, since October 2019, Service Chief-1 excluded her from leadership
+meetings. Complainant stated that her position statement included “supervisors rights” and stated
+that she was part of the leadership team, which was why she attended the meetings. ROI 1 at
+163. According to Complainant, as a result of being excluded, she was not aware of what was
+happening within her own organization because no one back briefed her on the information. ROI
+2 at 513. Complainant stated that Service Chief-1 told her that she had new duties that did not
+require her to attend the meetings, but he never informed her what those new duties were. ROI 2
+at 514. Supervisor-1 stated that the leadership meetings were for managers and that Complainant
+was not a supervisor, a manager, or in a leadership role. SROI 1 at 55. Service Chief-1 averred
+that, while Complainant did not have any supervisory or leadership duties, her former supervisor
+included her in these meetings. SROI 1 at 40-41. According to Service Chief-1, after
+Complainant was out on extended leave in 2019, he decided to remove her from weekly team
+meetings because her presence had been disruptive and he wanted her to focus on her core duties
+when she returned from leave. ROI 1 at 97-98. Supervisor-2 added that, because they discussed
+confidential matters during the leadership meetings, it created a conflict of interest to allow
+Complainant to attend. SROI 1 at 86. Service Chief-1 stated that he did not remember telling
+Complainant that her duties would change, noting that he was not her supervisor or higher-level
+reviewer and that any change in duties would have to be approved by them. ROI 2 at 718.
+Supervisor-2 averred that she was Complainant’s first-line supervisor during this change and was
+not aware of any change to Complainant’s duties other than Service Chief-1 uninviting her from
+the leadership meetings. ROI 2 at 746. We find that the Agency provided a legitimate,
+nondiscriminatory reason for excluding Complainant from leadership meetings, which is that
+Complainant was not part of the leadership team and her presence at the meetings had been
+disruptive. Although Complainant asserted that her position was supervisory, her position
+description states that it is a nonsupervisory position. ROI 2 at 1041. Complainant has not
+established pretext for discrimination. We find that the preponderance of the evidence in the
+record does not establish that Service Chief-1 told Complainant her duties were changing or that
+her duties actually changed.
+
+Complainant alleged that, when she arrived at work on December 11, 2019, the filing cabinet
+was missing from her office. ROI 2 at 517. Complainant stated that, while she did not know who
+moved the filing cabinet, Supervisor-2 did not seem surprised that it was missing and told her to
+ask her office mate. ROI 2 at 517-19. Supervisor-2 stated that she did not recall moving a filing
+cabinet from Complainant’s office but noted that, during that time, Complainant shared an office
+with another employee. ROI 2 at 749. We find that Complainant has not established that the
+filing cabinet was moved based on her membership in any protected class. According to
+Complainant, she began having anxiety when the filing cabinet was missing because her personal
+belongings were inside. ROI 2 at 518. Complainant stated that Occupational Health sent her
+home and told her she could not drive. ROI 2 at 518. Complainant alleged that, on December 16,
+2019, Supervisor-2 told her that she needed to change her time for December 11, 2019, to
+AWOL because she left that day without signing out. ROI 2 at 518-19. We find that Complainant
+has not shown that she was asked to change her time to AWOL based on her membership in any
+protected class.
+                                               21                     2022003811, 2023004452
+
+According to Complainant, on December 20, 2019, Service Chief-1 received an email from the
+Performance Improvement Chief complimenting Complainant as the project manager for the
+service. ROI 2 at 520. Complainant stated that Service Chief-1 ignored the comments about her
+role and refused to acknowledge the compliment or acknowledge her work. ROI 2 at 520.
+Service Chief-1 averred that he did not remember the email in question but explained that he
+received hundreds of messages a week and did not directly respond to or acknowledge each
+email. ROI 2 at 722. We find that Complainant has not shown that Service Chief-1 failed to
+acknowledge the Performance Improvement Chief’s comments praising her work based on her
+membership in any protected class.
+
+Complainant alleged that, on March 10, 2020, she received an email from Supervisor-2 harassing
+her based on her reasonable accommodation and telling her she was not supporting the mission.
+According to Complainant, Supervisor-2 and the Chief of Operations for Adult PCMH (the
+Operations Chief) had asked her to cover the front desk even though Supervisor-2 had reviewed
+medical documentation stating that Complainant could not work at the front desk. ROI 2 at 524.
+Supervisor-2 stated that Complainant did not have an approved reasonable accommodation at
+that time. SROI 1 at 87. The Operations Chief stated that Complainant was the only available
+staff member who was not engaged in direct patient care at the time. ROI 2 at 861. Supervisor-2
+explained that there was an operational emergency and she asked Complainant to cover the front
+desk for an hour or two to help out the team and that Complainant refused to cover the front
+desk, stating that she had an accommodation and could not be in bright light or around people.
+SROI 1 at 87-88, 104-10; ROI 2 at 755. According to Supervisor-2, Complainant was not
+disciplined for refusing to cover the front desk. SROI 1 at 87-88; ROI 2 at 755. The record does
+not reflect that, as of March 10, 2020, Complainant had an approved reasonable accommodation
+excluding her from front desk duty. Complainant had requested that as a reasonable
+accommodation on February 20, 2020, but she did not provide the requested medical
+documentation until after March 16, 2020. ROI 2 at 769-76. Moreover, we do not find that
+Supervisor-2’s emails constituted harassment based on Complainant’s race, color, disability, age,
+and/or prior protected activity.
+
+Complainant alleged that, in May 2020, Supervisor-2 accused her of jeopardizing a Lean Six
+Sigma project. ROI 2 at 525-26. The record contains a May 13, 2020, email from Complainant
+with the results from an Internal Medicine phone tree audit and proposed changes. ROI 2 at 495.
+On May 13, 2020, Supervisor-2 copied individuals from the Quality Directorate and stated she
+was not sure what Complainant was trying to do because a Lean Six Sigma project the year
+before worked to improve the phone tree. ROI 2 at 494. On May 13, 2020, the Operations Chief
+asked Complainant to pause until the Quality Directorate responded about the phone tree. ROI 2
+at 494. The record reflects that Supervisor-2 asked why she was auditing the phone tree in light
+of the recent Lean Six Sigma project, but the record does not reflect that she accused her of
+jeopardizing a Lean Six Sigma project. We find that Complainant has not established that this
+instance of harassment occurred as alleged or that Supervisor-2’s email was based on
+Complainant’s membership in any protected class.
+                                                22                       2022003811, 2023004452
+
+Complainant stated that, in July 2020, management gave her taskers and kept changing the task
+and/or deadline and discredited her work. ROI 2 at 525. Complainant alleged that she would be
+asked to brief on one topic and then she would be asked questions about a totally different topic
+that she was not asked to brief. ROI 2 at 525. Supervisor-3 denied that Complainant was given
+unrealistic deadlines to complete tasks, stating that she told Complainant not to wait until the day
+a task was due to say she needed additional time. ROI 2 at 808. Service Chief-2 stated that the
+tasks in question specifically referenced Complainant’s position description and performance
+objectives. ROI 2 at 835. According to Service Chief-2, while deadlines were sometimes
+adjusted due to absences or in response to request from Complainant or her union representatives
+to change or clarify the tasks, in those cases the deadlines were postponed. ROI 2 at 835. Service
+Chief-2 denied discrediting Complainant’s work. ROI 2 at 835. We find that the record reflects
+that any changes to tasks or deadlines were based on Complainant’s absences or requests for
+clarification or extensions and not her membership in any protected class. The preponderance of
+the evidence in the record does not establish that Complainant’s work was discredited as alleged.
+
+Complainant stated that, in July 2020, she asked Supervisor-3 about resources for a task, and
+Supervisor-3 responded that Complainant was a GS-9 and she did not have time to hold her
+hand. ROI 2 at 528. According to Complainant, some of the websites had moved or been
+renamed, and she was trying to ask Supervisor-3 about the location of the information. ROI 2 at
+528-29. Supervisor-3 stated that she asked Complainant to create one spreadsheet with four tabs
+and that Complainant turned in four separate spreadsheets, each with a different font and text
+size. ROI 2 at 808. According to Supervisor-3, she told Complainant that, as a GS-9 employee,
+she should not need her supervisor to hold her hand for something like creating a spreadsheet,
+but she denied telling Complainant she could not reach out for help. ROI 2 at 808-09.
+Supervisor-3 averred that she told Complainant and all her subordinates not to send anything
+outside of the clinic without communicating with her first. ROI 2 at 808-09. We find that
+Complainant has not established by preponderant evidence that Supervisor-3’s comment was
+based on her membership in a protected class.
+
+Complainant averred that, in July 2020, Supervisor-3 asked her why she included the union on
+an email about an IT issue. ROI 2 at 529-30. Complainant stated that she included the union
+representative on the email because she needed help with things that she was not familiar with.
+ROI 2 at 530. Supervisor-3 explained that Complainant was asked to contact IT to find out why
+she was having trouble receiving email and send Supervisor-3 the ticket number. ROI 2 at 809.
+According to Supervisor-3, when she asked Complainant for the ticket number, she noticed that
+Complainant had included a union representative on the email. ROI 2 at 809. Supervisor-3 stated
+that she did ask Complainant why the union representative was on the email because
+Complainant had already agreed to provide the ticket number. ROI 2 at 809. We find that
+Complainant has not shown that Supervisor-3 asked her why she included the union on the email
+based on her race, color, disability, age, and/or prior protected EEO activity.
+
+Complainant alleged that, beginning in July 2020, she did not receive the same support or
+training as her colleagues. ROI 2 at 531. Complainant noted that she was uninvited from the
+weekly Tuesday meetings for Department of Medicine administrators. ROI 2 at 531.
+                                                23                      2022003811, 2023004452
+
+Supervisor-3 stated that the Business Managers for the area attended these weekly meetings and
+that, because she attended the meetings for Internal Medicine, there was no need for
+Complainant to attend as well. ROI 2 at 810. Regarding technical support, the record reflects
+that, when Complainant asked on May 7, 2020, why her S drive was missing, the Operations
+Chief responded that the same thing happened to her the day before and that Complainant needed
+to put in an IT ticket request. ROI 2 at 491-92. On two occasions in 2020, Complainant lost
+connectivity while teleworking but did not report to the office or inform anyone that she was
+unable to connect. ROI 2 at 232-49. Supervisor-3 denied that Complainant’s request for training
+was disapproved, stating that Complainant was allowed to attend after completing her PIP. ROI 2
+at 810. According to the Operations Chief, on September 14, 2020, Complainant requested to
+attend training after her PIP. ROI 2 at 217-19. The Operations Chief stated that the training was
+October 6-8, 2020, but her PIP did not conclude until October 23, 2020. ROI 2 at 217-19. We
+find that Complainant has not established that she was denied support or training based on her
+membership in any protected class.
+
+Complainant stated that, on September 29, 2020, she became aware that she had been removed
+from the GIMS administrative distribution list. ROI 2 at 535. On September 25, 2020, the
+Operations Chief forwarded Complainant a September 23, 2020, email stating that, the next day,
+staff sign in sheets would return. ROI 2 at 482. On September 25, 2020, Complainant responded
+that she had not received the initial email, and the Operations Chief asked if she was receiving
+any of the emails. ROI 2 at 482-83. On September 29, 2020, Complainant emailed the
+Operations Chief and Supervisor-3, asking them to make sure she was in the listserv so she did
+not miss any GIMS emails. ROI 2 at 484. According to the Operations Chief, another employee
+in the department managed the distributions list and was unaware that Complainant was not on
+the list. ROI 2 at 870. The Operations Chief stated that, after Complainant pointed out she was
+not receiving the emails, the list was examined, and other GIMS employees were missing from
+the list as well. ROI 2 at 870. Supervisor-3 denied being aware Complainant was removed or
+requesting that Complainant be removed from any email groups. ROI 2 at 496, 814. We find that
+Complainant has not shown that she was removed from the GIMS administrative email
+distribution list based on her membership in any protected class.
+
+According to Complainant, on November 4, 2020, Service Chief-2 interrupted her while she was
+speaking, causing her to lose her train of thought, and then repeatedly yelled at her. ROI at 538.
+Complainant stated that she was trying to answer Service Chief-2’s question, but Service Chief-2
+kept cutting her off. ROI 2 at 538-39. Service Chief-2 stated that, over the past two years, she
+repeatedly asked Complainant not to send providers messages notifying that they had notes that
+were overdue without checking with her first. ROI 2 at 845. According to Service Chief-2,
+Complainant often made errors in pulling the data or failed to recognize errors in the data that
+made the note appear overdue when it was not. ROI 2 at 845. Service Chief-2 averred that she
+received many frustrated emails from providers as a result of Complainant’s emails, that she did
+not want providers spending time resolving an issue that did not exist, and that, as the providers’
+supervisor, she felt it was her responsibility to notify them if notes were overdue. ROI 2 at 845.
+According to Service Chief-2, when she learned Complainant had started sending these emails
+again, she asked to speak to her. ROI 2 at 845.
+                                               24                      2022003811, 2023004452
+
+Service Chief-2 stated that Complainant spoke for approximately five minutes without stopping
+or appearing to understand why she had called, so she attempted to interrupt politely by saying
+“excuse me.” ROI 2 at 845. Service Chief-2 averred that Complainant did not appear to hear her,
+so she raised her voice progressively until Complainant stopped speaking. ROI 2 at 845. Service
+Chief-2 stated that Complainant responded that she could not hear Service Chief-2, contrary to
+Complainant’s assertion that she was yelling. ROI 2 at 845. Service Chief-2 denied harassing
+Complainant, stating that she was trying to protect providers from unnecessary stress from
+Complainant’s emails, which she had already asked her to stop sending. ROI 2 at 845.
+
+We find that the Agency has provided legitimate, nondiscriminatory reasons for its actions and
+that Complainant did not establish that the proffered reasons were a pretext for discrimination.
+Regarding Complainant’s harassment allegations, she has either not established that the alleged
+harassment occurred as alleged or has not shown that the alleged harassment was based on her
+race, color, age, disability, and/or prior protected EEO activity. Accordingly, Complainant has
+not established that she was subjected to discrimination or a hostile work environment as alleged.
+
+                                        CONCLUSION
+
+Based on a thorough review of the record and the contentions on appeal, including those not
+specifically addressed herein, we AFFIRM the Agency’s final decisions finding no
+discrimination.
+
+                           STATEMENT OF RIGHTS - ON APPEAL
+                              RECONSIDERATION (M0920)
+
+The Commission may, in its discretion, reconsider this appellate decision if Complainant or the
+Agency submits a written request that contains arguments or evidence that tend to establish that:
+       1. The appellate decision involved a clearly erroneous interpretation of material fact or
+          law; or
+       2. The appellate decision will have a substantial impact on the policies, practices, or
+          operations of the agency.
+
+Requests for reconsideration must be filed with EEOC’s Office of Federal Operations (OFO)
+within thirty (30) calendar days of receipt of this decision. If the party requesting
+reconsideration elects to file a statement or brief in support of the request, that statement or
+brief must be filed together with the request for reconsideration. A party shall have twenty
+(20) calendar days from receipt of another party’s request for reconsideration within which to
+submit a brief or statement in opposition. See 29 C.F.R. § 1614.405; Equal Employment
+Opportunity Management Directive for 29 C.F.R. Part 1614 (EEO MD-110), at Chap. 9 § VII.B
+(Aug. 5, 2015).
+
+Complainant should submit his or her request for reconsideration, and any statement or brief in
+support of his or her request, via the EEOC Public Portal, which can be found at
+https://publicportal.eeoc.gov/Portal/Login.aspx
+                                                25                      2022003811, 2023004452
+
+Alternatively, Complainant can submit his or her request and arguments to the Director, Office
+of Federal Operations, Equal Employment Opportunity Commission, via regular mail addressed
+to P.O. Box 77960, Washington, DC 20013, or by certified mail addressed to 131 M Street, NE,
+Washington, DC 20507. In the absence of a legible postmark, a complainant’s request to
+reconsider shall be deemed timely filed if OFO receives it by mail within five days of the
+expiration of the applicable filing period. See 29 C.F.R. § 1614.604.
+
+An agency’s request for reconsideration must be submitted in digital format via the EEOC’s
+Federal Sector EEO Portal (FedSEP). See 29 C.F.R. § 1614.403(g). Either party’s request
+and/or statement or brief in opposition must also include proof of service on the other party,
+unless Complainant files his or her request via the EEOC Public Portal, in which case no proof of
+service is required.
+
+Failure to file within the 30-day time period will result in dismissal of the party’s request for
+reconsideration as untimely, unless extenuating circumstances prevented the timely filing of the
+request. Any supporting documentation must be submitted together with the request for
+reconsideration. The Commission will consider requests for reconsideration filed after the
+deadline only in very limited circumstances. See 29 C.F.R. § 1614.604(c).
+
+
+               COMPLAINANT’S RIGHT TO FILE A CIVIL ACTION (S0610)
+
+You have the right to file a civil action in an appropriate United States District Court within
+ninety (90) calendar days from the date that you receive this decision. If you file a civil action,
+you must name as the defendant in the complaint the person who is the official Agency head or
+department head, identifying that person by his or her full name and official title. Failure to do
+so may result in the dismissal of your case in court. “Agency” or “department” means the
+national organization, and not the local office, facility or department in which you work. If you
+file a request to reconsider and also file a civil action, filing a civil action will terminate the
+administrative processing of your complaint.
+
+
+                          RIGHT TO REQUEST COUNSEL (Z0815)
+
+If you want to file a civil action but cannot pay the fees, costs, or security to do so, you may
+request permission from the court to proceed with the civil action without paying these fees or
+costs. Similarly, if you cannot afford an attorney to represent you in the civil action, you may
+request the court to appoint an attorney for you. You must submit the requests for waiver of
+court costs or appointment of an attorney directly to the court, not the Commission. The
+court has the sole discretion to grant or deny these types of requests.
+                                                 26                       2022003811, 2023004452
+
+Such requests do not alter the time limits for filing a civil action (please read the paragraph titled
+Complainant’s Right to File a Civil Action for the specific time limits).
+
+FOR THE COMMISSION:
+
+
+
+______________________________                    Carlton M. Hadden’s signature
+Carlton M. Hadden, Director
+Office of Federal Operations
+
+
+January 3, 2024
+Date
+

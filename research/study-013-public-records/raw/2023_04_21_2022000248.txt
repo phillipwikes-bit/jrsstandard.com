@@ -1,0 +1,641 @@
+             U.S. EQUAL EMPLOYMENT OPPORTUNITY COMMISSION
+                           Office of Federal Operations
+                                  P.O. Box 77960
+                             Washington, DC 20013
+
+
+
+                                          Genny L., 1
+                                         Complainant,
+
+                                               v.
+
+                                    Denis R. McDonough,
+                                          Secretary,
+                                Department of Veterans Affairs,
+                                           Agency.
+
+                                    Appeal No. 2022000248
+
+                                Hearing No. 520-2021-00325X
+
+                Agency Nos. 200H-0620-2019104798, 200H-0620-2019102854
+
+                                          DECISION
+
+Complainant appeals to the Equal Employment Opportunity Commission (EEOC or
+Commission) from the Agency’s final decision dated October 13, 2021, finding no
+discrimination concerning her consolidated complaints alleging employment discrimination in
+violation of Title VII of the Civil Rights Act of 1964 (Title VII), as amended, 42 U.S.C. § 2000e
+et seq. For the following reasons, we AFFIRM the Agency’s final decision finding no
+discrimination regarding the consolidated complaints.
+
+                                       BACKGROUND
+
+At the time of events giving rise to this complaint, Complainant worked as a GS-13, Program
+Analyst - Planetree Coordinator at the Agency’s Hudson Valley Health Care System in
+Montrose, New York.
+
+On May 4, 2019, Complainant filed her complaint, Agency No. 200H-0620-2019102854,
+alleging that:
+
+
+
+
+1
+ This case has been randomly assigned a pseudonym which will replace Complainant’s name
+when the decision is published to non-parties and the Commission’s website.
+                                                 2                                      2022000248
+
+    A. She was subjected to discrimination and a hostile work environment based on race
+       (African American), color (black), sex (female), and in reprisal for prior EEO activity
+       when:
+
+       1. On April 1, 2019, her first-level supervisor (S1), the Executive Assistant to the
+          Director/Health Systems Specialist, GS-13, changed her schedule.
+
+       2. On May 9, 2019, S1 issued a mid-year performance appraisal for her which did not
+          reflect the work performed.
+
+       3. On various dates, including April 30, 2019, S1 subjected her to harassment by
+          denying her sick leave request, pretending to look for her, sending her threatening
+          emails, sending text messages to her personal phone, and ordering her to report to a
+          different work location an hour from her home without reimbursement, then
+          threatening her with Absent Without Leave (AWOL) when she refused.
+
+       4. On unspecified dates, S1 subjected her to harassment by micromanaging her and
+          asking about her whereabouts, changing her supervisors, failing to respond to her
+          complaints and concerns, preventing her from attending the Executive Governance
+          Board meetings, and trying to make her work outside of her reasonable
+          accommodations. 2
+
+On August 12, 2019, Complainant filed another complaint, Agency No. 200H-0620-
+2019104798, which was amended, alleging that:
+
+    B. She was subjected to discrimination and a hostile work environment based on race
+       (African American), color (black), national origin (Ghana), and in reprisal for prior EEO
+       activity when:
+
+       1. On April 17, 2019, S1 removed her as the co-chair of the Patient and Family
+          Advisory Council (PFAC).
+
+       2. On May 6, 2019, S1 disinvited her to a meeting with Planetree International, an
+          organization she is responsible for working with.
+
+
+
+2
+  The Agency previously issued a final decision dismissing the complaint, Agency No. 200H-
+0620-2019102854. Complainant appealed, and the Commission, in EEOC Appeal No.
+2019004589 (Jan. 15, 2020), reversed the Agency’s dismissal of claims A.1 – A.4, identified
+herein, for failure to state a claim but affirmed its dismissal of two other claims (i.e., concerning
+a staff meeting on September 21, 2018, and an October 2018 performance appraisal) due to
+untimely EEO Counselor contact. Accordingly, the Agency accepted and investigated claims
+A.1 – A.4. We will consider the dismissed claims as background information for Complainant’s
+harassment claim herein.
+                                        3                                    2022000248
+
+3. On May 8, 2019, S1 issued her an Unacceptable rating in her mid-year performance
+   appraisal.
+
+4. On May 17, 2019, S1 issued her a Reprimand for Failure to Follow Leave Requesting
+   Procedures and Failure to Follow Instruction.
+
+5. On May 31, 2019, S1 instructed her to delete critical information from the April
+   PFAC after the minutes had been approved by the members and the PFAC chair.
+
+6. On June 13, 2019, S1 disinvited her from attending and discussing her work with the
+   Long-Term Care Institute at Castle Point and sent an email accusing her of lying and
+   misrepresenting facts.
+
+7. On June 20, 2019, S1 planned a visit without her consent and asked her to approve an
+   invoice for service that was a violation of the contract.
+
+8. On June 24, 2019, S1 warned her that any changes in tour of duty or location needed
+   approval, despite her Caucasian coworker not needing approval to change his tour of
+   duty or location.
+
+9. On July 2, 2019, S1 scolded her for not notifying S1 when she came to work after an
+   appointment.
+
+10. On July 5, 2019, S1 scolded her in an email for sending an action plan on July 5,
+    2019, instead of on the holiday July 4, 2019, and warned her not to repeat it.
+
+11. On July 9, 2019, S1 disinvited her to the Long-Term Care Institute survey discussion
+    at the Montrose Facility.
+
+12. On July 19, 2019, at a “supervision” meeting, S1 claimed S1 did not know what
+    Complainant did every day and S1 mocked her and stated that she spent most of her
+    time creating PowerPoint slides. S1 then instructed her to remove any reference to
+    Complainant’s third-level supervisor (S3) (a Senior Executive Service, the Medical
+    Center Director), being involved in the cultural transformation efforts.
+
+13. On September 10, 2019, she was issued a Proposed Removal for misstatement of
+    medical fact, conduct unbecoming, careless or negligent workmanship, unauthorized
+    absence, failure to follow Agency policy, and out of assigned work area.
+
+14. On August 7, 2019, S1 reassigned her duties as co-chair of the Strategic Analytics for
+    Improvement and Learning committee to another employee.
+
+15. On August 14, 2019, S3 put her committee tasks and responsibilities to solicit design
+    for the new Community Living Center (CLC) on hold.
+                                                4                                     2022000248
+
+       16. On September 27, 2019, S1 assigned her several tasks to degrade, humiliate, and
+           make her feel unworthy.
+
+       17. On August 22, 2019, her second-level supervisor (S2), a GS-15, Associate Director,
+           terminated negotiations with the Cleveland Clinic and VISN (Veterans Integrated
+           Services Network) Contracting Staff without consulting her.
+
+       18. On October 8, 2019, S1 denied her request to modify her schedule to Tuesday (Castle
+           Point facility), Wednesday, Friday, 8:00 - 16:30, and Monday and Thursday, 8:45 -
+           17:15.
+
+       19. On October 10, 2019, S1 sent an email stating her tour would be changed,
+           disapproved her attendance at the Planetree International Conference in Florida,
+           threatened that she would no longer chair the CLC taskforce to advance the Planetree
+           agenda in the CLC, and threatened that the Planetree contract would be terminated.
+
+       20. On October 18, 2019, S1 denied her request to attend the annual American Public
+           Health Association conference, to be held on November 2 - 6, 2019, in Philadelphia,
+           Pennsylvania.
+
+       21. Effective October 17, 2019, her schedule was changed to Monday – Friday, 8:00 –
+           16:30.
+
+       22. On December 5, 2019, S1 rated her as Unacceptable on her Fiscal Year (FY) 2019
+           performance rating and issued her a new job description that was significantly
+           different, less prestigious, less interesting, and diminished material responsibilities.
+
+       23. On December 16, 2019, S1 stripped her of responsibilities as a full – fledged
+           Planetree Coordinator.
+
+At the conclusion of the investigation, the Agency provided Complainant with a copy of the
+report of investigation and notice of her right to request a hearing before an EEOC
+Administrative Judge (AJ). 29 C.F.R. § 1614.108(f). Complainant requested a hearing for
+Agency No. 200H-0620-2019102854, but later withdrew the request. For Agency No. 200H-
+0620-2019104798, Complainant requested a final Agency decision. The Agency issued a final
+Agency decision for the consolidated complaints concluding that it asserted legitimate,
+nondiscriminatory reasons for its actions, which Complainant failed to rebut.
+
+Regarding claim A.1, S1 indicated that she did not change Complainant’s schedule on April 1,
+2019. S1 stated that Complainant had the same schedule (Monday – Friday, 9:00 am – 5:30 pm)
+since September 3, 2018. S1 indicated that on March 25, 2019, Complainant requested to her
+then supervisor to modify her schedule for Fridays, 7:00 am – 3:30 pm, for her child’s soccer
+schedule. Complainant’s then supervisor denied the request because starting Complainant’s
+work at 7 am was not beneficial to the organization or veterans.
+                                                5                                     2022000248
+
+S1 stated that when Complainant transitioned to S1’s supervision on April 1, 2019, S1 also did
+not approve Complainant’s Friday schedule change. S1 noted that she did grant Complainant’s
+request to report to the Castle Point facility only one day per a week, instead of two days. The
+record indicates that Complainant’s position required her to work at both Castle Point and
+Montrose facilities.
+
+Regarding claims A.2 and B.3, Complainant’s mid-year performance review, dated April 19,
+2019, reveals that her performance was “Needs improvement to be Fully Successful or better.”
+Specifically, S1 noted that Complainant did not fully meet the critical elements in the areas of:
+Planetree recognition/designation (i.e., inappropriate commentary at Planetree exit and not
+working collaboratively with staff); patient centered care (i.e., not managing the PFAC members
+properly and inappropriate action plans); and customer service (i.e., inappropriate congressional
+response letter and unprofessional conduct by advising CLC family not to leave money with the
+resident because staff may steal it). S1 notified Complainant to write an action plan to
+demonstrate improvement in the above cited areas. Further, S1 notified Complainant to update
+action plans on a weekly basis and submit a monthly executive level summary. S1 indicated that
+Complainant’s action plan would be due on May 15, 2019, and her weekly supervision meeting
+would take place on May 17, 2019, to discuss her action plan updates.
+
+Regarding claim A.3, S1 stated that on April 30, 2019, S1 marked Complainant AWOL after
+consulting with Human Resources (HR) because Complainant did not come for a meeting or
+report to the work at the Castle Point facility as instructed. Instead, Complainant reported to the
+Montrose facility. Later that morning, Complainant put in a request for sick leave (two hours
+from 3:30 pm to 5:30 pm). S1 initially denied the sick leave request after consulting with HR
+because Complainant was already marked AWOL, but later a HR Specialist advised S1 that
+charging AWOL was improper when sick leave was requested. Accordingly, S1 retracted the
+denial and canceled AWOL and apologized to Complainant. S1 denied pretending to look for
+Complainant; rather, S1 stated that S1 was looking for Complainant to discuss work related
+matters.
+
+S1 denied sending Complainant threatening emails. S1 indicated that the most of time, she sent
+text messages to Complainant in response to her initial text messages. When Complainant told
+S1 not to text her, S1 complied and S1 never sent a text message since then.
+
+Regarding claim A.4, S1 indicated that as her supervisor, S1 discussed with Complainant her
+work assignments and how S1 could help her; S1 also that she assigned Complainant tasks and
+duties. S1 stated that she was asking Complainant’s whereabouts because she could not find
+Complainant. S1 noted that she then learned that Complainant came to work one or two hours
+late several times without informing her or requesting time off.
+
+In February 2019, S3 made a decision to organizationally move Complainant’s position under a
+newly formed Veteran Experience Office under the supervision of a new Veteran Experience
+Officer (VEO).
+                                                 6                                      2022000248
+
+But, since the position and the office were brand new, the VEO wanted more time to figure out
+the role and purpose of the new service before Complainant was assigned to her supervision.
+Considering the VEO’s concerns, in April 2019, S3 decided to move Complainant’s position
+back under S1’s supervision so the VEO could redesign her service. S1 stated that she had
+nothing to do with this incident.
+
+S1 indicated that she properly responded to all Complainant’s concerns and emails, including all
+her rebuttals, grievances, and complaints.
+
+S1 stated that she was not responsible regarding Complainant’s being removed from the calendar
+invitations for the Executive Governance Board meetings. S1 indicated that Complainant was a
+co-chair for a committee that presented at Executive Governance Board meetings. S1 also
+indicated that Complainant was on the calendar invitation for the meetings and was receiving
+reminders about the meetings from December 2018, until at least May 2019. Complainant
+however attended only one meeting in January 2019. When she found out Complainant was not
+on the calendar invitation for the meetings, S1 stated that she reached out to the staff assistant to
+have that remedied.
+
+Regarding her reasonable accommodations, we note that Complainant has not alleged a claim of
+disability discrimination. S1 indicated that HR approved Complainant’s request for a sit and
+stand desk in her Castle Point office and it was installed in April 2019. In May 2019, HR
+informed S1 that Complainant also requested a petite ergonomic chair and complete office desk
+for Castle Point office, but she provided insufficient medical documentation to grant her request
+for additional equipment as her documentation only supported the sit and stand desk. S1 denied
+asking Complainant to work without her approved reasonable accommodation in place. S1
+indicated that she had no involvement with Complainant’s reasonable accommodation requests.
+
+Regarding claim B.1, S1 indicated that the co-chair of the PFAC was originally held by the
+Patient Centered Care Coordinator. When that Coordinator retired, Complainant was
+temporarily assigned to the co-chair role. Later, when the VEO was hired and replaced the
+Patient Centered Care Coordinator, the VEO was properly assigned as the co-chair of the PFAC
+and Complainant was no longer assigned to that co-chair role.
+
+Regarding claim B.2, S1 indicated that Complainant was not disinvited by S1 or anyone else. S1
+stated that S1 actually requested S3’s staff assistant to add Complainant to the calendar invite.
+
+Regarding claim B.4, the record indicates that Complainant was issued a reprimand dated May
+17, 2019, for failure to follow leave requesting procedures and for failure to follow supervisory
+instruction. Specifically, S1 stated that Complainant did not inform S1 that she was going to be
+out sick on May 10, 2019; she did not attend a meeting on April 19, 2019, as instructed; and she
+did not report to duty at the Castle Point facility on April 30, 2019, as instructed.
+                                               7                                   2022000248
+
+Regarding claim B.5, S1 indicated that S1 asked Complainant to delete the statement, i.e., that
+S3 was invited to the meeting but was unable to attend, from the minutes of the April 17, 2019
+PFAC meeting. S3 informed S1 that S3 did not want to attend the meeting as it was too
+premature for her to attend before meeting with the Planetree members.
+
+Regarding claims B6 and B11, S1 indicated that upon S3’s request, Complainant was not invited
+to the Long-Term Care Institute meeting because Complainant had previously spoken
+inaccurately and negatively about the medical center and its staff. S1 indicated that she and
+Complainant had a disagreement regarding windows on the acute psychiatry unit, with S1
+believing it a hazard and Complainant disagreeing. Complainant told S1 that it was not a hazard
+because the acute psychiatry unit at the Brooklyn Facility had its windows opened. S1 later
+learned that there was no acute psychiatry unit at the Brooklyn Facility and further the
+Manhattan unit did not have windows opened.
+
+Regarding claim B.7, S1 indicated that it was S1’s responsibility to approve invoices and S1 did
+not ask Complainant to approve an invoice; rather, S1 asked Complainant for Complainant’s
+input prior to approval because Complainant was more familiar with that contract.
+
+Regarding claim B.8, S1 indicated that all employees, including Complainant, were required to
+request to change their tour of duty or location, and S1 informed Complainant of such.
+
+Regarding claim B.9, S1 indicated that S1 did not scold Complainant; rather, S1 emailed her
+asking about her return time from her appointment because S1 did not receive a notification from
+an online time and attendance system that she entered her appointment time therein. As soon as
+S1 learned that Complainant entered the time in the system, S1 sent her an email to disregard
+S1’s prior email.
+
+Regarding claim B.10, S1 denied scolding Complainant as alleged. As her supervisor, stated S1,
+S1 instructed Complainant to send S1 Complainant’s action plan by close of business Thursdays,
+so S1 would have a time to review it prior to their weekly supervision meeting on Fridays.
+
+Regarding claim B.12, S1 denied mocking Complainant as alleged. S1 indicated that
+Complainant repeatedly used language and word choices that were pejorative and inappropriate
+referring to leadership. S1 also indicated that Complainant improperly assigned tasks to S3 to
+attend trainings and retreats on numerous occasions although she was instructed not to do so.
+
+Regarding claim B.13, S1 indicated that Complainant was issued a proposed removal on
+September 10, 2019, based on six charges. Specifically, S1 stated that Complainant misstated
+material facts when she incorrectly told S1 that: the inpatient psychiatric unit had working
+windows at the Brooklyn Facility; CLC Nurse Managers did not attend its taskforce meetings;
+she was unable to print materials and had computer issues; and she did not need a Public Affairs
+Officer’s approval before printing the brochures.
+                                                8                                    2022000248
+
+S1 also stated that Complainant failed to take an appropriate action when the PFAC group
+verbally attacked her coworker; she failed to complete a worksheet related to Long-Term Care
+Institute survey; she was absent without authorization from 2:00 pm to 2:30 pm, on June 17,
+2019; she invited a Congressional officer without authorization; and she failed to report to work
+at the Montrose Facility on September 10, 2019. S1 noted that she considered Complainant’s
+May 17, 2019 reprimand and her multiple misstatements on other occasions. The record
+indicates that the proposed removal was subsequently withdrawn, and no actual decision was
+made.
+
+Regarding claim B.14, S1 indicated that Complainant was not removed as co-chair of the
+Strategic Analytics for Improvement and Learning committee; rather, she was removed as chair
+of the sub-committee based on her repeated reports against nursing staff. S3 assigned the Nurse
+Managers as chairs of their respective sub-committees.
+
+Regarding claim B.15, S3 indicated that she instructed Complainant to stop soliciting the design
+of the new CLC facility without going through the Architect/Engineering Firm and stakeholders.
+S3 noted that Complainant did not keep S3 apprised of her activities and her solicitation with
+CLC residents and staff was premature.
+
+Regarding claim B.16, S1 denied assigning Complainant several tasks to degrade, humiliate, and
+make her feel unworthy. Rather, stated S1, Complainant was assigned to tasks, i.e., to work with
+a supervisor to decorate the facility for Halloween, to survey areas around the facility to ensure
+desks had name plates identifying them, to make note of whether entry to spaces denotes
+location, and to survey Veterans for their choice for television channel in reception areas, which
+were within the scope of her job.
+
+Regarding claim B.17, S2 indicated that negotiations between the lawyers for Veterans Affairs
+and the Cleveland Clinic were terminated because they could not come to an agreement to get
+the subject contract awarded. Thus, management decided not to further pursue the subject
+matter. S2 stated that it was her job to notify contracting staff of management’s decision
+terminating negotiations.
+
+Regarding claim B.18, S1 stated that Complainant requested and was granted her schedule
+changes five times in the last six months. S1 also stated that Complainant was abusing and
+taking advantage of S1’s lenience in changing her work schedules and that her frequent schedule
+changes became an administrative burden. S1 stated that she nevertheless approved
+Complainant’s request to change Complainant’s schedule to report to the Castle Point facility on
+Tuesdays but denied other changes.
+
+Regarding claim B.19, S1 denied Complainant’s request to attend the Planetree International
+Conference because her attendance was not necessary or appropriate since the medical center no
+longer pursued a Planetree Contract certification,
+                                               9                                    2022000248
+
+Regarding claim B.20, S1 indicated that she denied Complainant’s request to attend the annual
+American Public Health Association conference because it was not submitted in a timely
+manner, i.e., within 30 days prior to the conference, and it was not related to her position.
+
+Regarding claim B.21, S1 indicated that due to Complainant’s frequent schedule changes,
+described in claim B.18, S1 offered Complainant to keep her current schedule, Monday – Friday,
+9:00 am – 5:30 pm or change it to Monday – Friday, 8:00 am – 4:30 pm, to comply with other
+employees’ schedule in the office. After several discussions, on October 17, 2019, S1 informed
+Complainant that her schedule would be Monday – Friday, 8:00 am – 4:30 pm. S1 noted that
+one employee had his schedule changed temporarily to accommodate a program he was helping
+to facilitate. But, when the program ended, that employee’s schedule was changed back to his
+normal schedule, Monday – Friday, 8:00 am – 4:30 pm. S1 stated that all other similarly situated
+colleagues of Complainant had the same schedule: Monday – Friday, 8:00 am – 4:30 pm.
+
+Regarding claim B.22, S1 stated that she issued Complainant an Unacceptable rating for FY
+2019 (highest to lowest rating, Outstanding, Excellent, Fully Successful, Minimally Satisfactory,
+and Unacceptable) because Complainant’s performance in all three critical elements, i.e.,
+Planetree recognition/designation, patient centered care, and customer service, were
+unacceptable. Specifically, S1 indicated that Complainant failed to submit and update her
+appropriate action plans and submit monthly executive level summaries to be fully successful in
+her position as instructed in her mid-year performance, described in A.2. S1 also indicated that
+Complainant failed to: attend the Planetree strategy meeting in May 2019; to communicate
+Planetree’s goals, milestones, and accomplishments to all employees; to manage or lead the
+PFAC effectively; to communicate concerns regarding the PFAC meetings to leadership; and to
+convene the PFAC meetings in a satisfactory manner.
+
+Further, S1 stated that Complainant inappropriately informed CLC family members that staff
+may steal residents’ money if it was left with them; and she mislead the PFAC members that S3
+was not attending the meeting when in fact S3 had not been invited. S1 indicated that
+Complainant’s job description was the same as before which mainly centered around
+implementing patient centered care, except deleting a Planetree certification since it was no
+longer pursued by the medical center. Complainant indicated that she subsequently appealed her
+FY2019 performance rating to S2, and it was changed to a Satisfactory rating.
+
+Regarding claim B.23, S1 stated that the Executive Leadership team decided to no longer pursue
+Planetree certification, as described above, and as a result a Planetree Coordinator was
+eliminated.
+
+The Agency issued its decision finding that Complainant failed to establish she was subjected to
+discrimination and a hostile work environment as alleged. Complainant appeals from the
+Agency’s decision. Complainant submits her brief to support her appeal reiterating her
+allegations against S1.
+                                              10                                   2022000248
+
+                                ANALYSIS AND FINDINGS
+
+As this is an appeal from a decision issued without a hearing, pursuant to 29 C.F.R.
+§ 1614.110(b), the agency's decision is subject to de novo review by the Commission. 29 C.F.R.
+§ 1614.405(a). See Equal Employment Opportunity Management Directive for 29 C.F.R. Part
+1614 (EEO MD-110), Chap. 9 § VI.A. (Aug. 5, 2015) (explaining that the de novo standard of
+review "requires that the Commission examine the record without regard to the factual and legal
+determinations of the previous decision maker," and that EEOC "review the documents,
+statements, and testimony of record, including any timely and relevant submissions of the
+parties, and . . . issue its decision based on the Commission's own assessment of the record and
+its interpretation of the law").
+
+To prevail in a disparate treatment claim such as this, Complainant must satisfy the three-part
+evidentiary scheme fashioned by the Supreme Court in McDonnell Douglas Corp. v. Green, 411
+U.S. 792 (1973). Complainant must initially establish a prima facie case by demonstrating that
+Complainant was subjected to an adverse employment action under circumstances that would
+support an inference of discrimination. Furnco Construction Co. v. Waters, 438 U.S. 567, 576
+(1978). Proof of a prima facie case will vary depending on the facts of the particular case.
+McDonnell Douglas, 411 U.S. at 804 n. 14. The burden then shifts to the Agency to articulate a
+legitimate, nondiscriminatory reason for its actions. Texas Dep’t of Community Affairs v.
+Burdine, 450 U.S. 248, 253 (1981).
+
+Once the Agency has met its burden, Complainant bears the ultimate responsibility to persuade
+the fact finder by a preponderance of the evidence that the Agency’s explanation was pretextual.
+Reeves v. Sanderson Plumbing Products, Inc., 530 U.S. 133, 143 (2000); St. Mary's Honor
+Center v. Hicks, 509 U.S. 502 (1993). Complainant can do this by showing that the proffered
+explanations were unworthy of credence or that a discriminatory reason more likely motivated
+the Agency. Burdine, 450 U.S. at 256. A showing that the employer’s articulated reasons were
+not credible permits, but does not compel, a finding of discrimination. Hicks, 509 U.S. at 511.
+
+This established order of analysis in discrimination cases, in which the first step normally
+consists of determining the existence of a prima facie case, need not be followed in all cases.
+Where the Agency has articulated a legitimate, nondiscriminatory reason for the personnel action
+at issue, the factual inquiry can proceed directly to the third step of the McDonnell Douglas
+analysis, the ultimate issue of whether Complainant has shown by a preponderance of the
+evidence that the Agency's actions were motivated by discrimination. See U.S. Postal Serv.
+Board of Governors v. Aikens, 460 U.S. 711, 713-714 (1983); Hernandez v. Dep’t of
+Transportation, EEOC Request No. 05900159 (June 28, 1990); Peterson v. Dep’t of Health and
+Human Serv., EEOC Request No. 05900467 (June 8, 1990); Washington v. Dep’t of the Navy,
+EEOC Petition No. 03900056 (May 31, 1990).
+                                                11                                     2022000248
+
+To establish a claim of harassment, Complainant must establish that: (1) Complainant belongs to
+a statutorily protected class; (2) Complainant was subjected to harassment in the form of
+unwelcome verbal or physical conduct involving the protected class; (3) the harassment
+complained of was based on Complainant’s statutorily protected class; (4) the harassment
+affected a term or condition of employment and/or had the purpose or effect of unreasonably
+interfering with the work environment and/or creating an intimidating, hostile, or offensive work
+environment; and (5) there is a basis for imputing liability to the Agency. See Henson v. City of
+Dundee, 682 F.2d 897 (11th Cir. 1982). Further, the incidents must have been “sufficiently
+severe or pervasive to alter the conditions of [complainant’s] employment and create an abusive
+working environment.” Harris v. Forklift Systems, Inc., 510 U.S. 17, 21 (1993); see also Oncale
+v. Sundowner Offshore Service, Inc., 23 U.S. 75 (1998). The harasser’s conduct should be
+evaluated from the objective viewpoint of a reasonable person in the victim’s circumstances.
+Enforcement Guidance on Harris v. Forklift Systems, Inc., EEOC Notice No. 915.002 at 6 (Mar.
+8, 1994).
+
+Therefore, to prove her harassment claim, Complainant must establish that she was subjected to
+conduct that was either so severe or so pervasive that a “reasonable person” in her position
+would have found the conduct to be hostile or abusive. Complainant must also prove that the
+conduct was taken because of a protected basis. Only if Complainant establishes both of those
+elements, hostility and motive, will the question of Agency liability present itself.
+
+In the instant case, assuming arguendo that Complainant established a prima facie case of
+discrimination, we find that the Agency articulated legitimate, nondiscriminatory reasons for its
+actions. Regarding her performance evaluation, Complainant was notified in her mid-year
+performance review that she needed improvement on all three critical elements in her
+performance plan. S1 further notified Complainant to update her action plans on a weekly basis
+and submit a monthly executive level summary. Since her performance did not improve and she
+failed to update appropriate action plans or submit an executive level summary, Complainant
+was issued an Unacceptable rating for FY2019, which was later changed to a Satisfactory rating.
+
+The Agency indicated that Complainant was granted a sit and stand desk but was not granted a
+petite ergonomic chair or additional equipment because she did not provide documentation to
+support the additional request. Here, Complainant is not alleging a claim of disability
+discrimination.
+
+Regarding the reprimand, S1 indicated that Complainant was issued a letter of reprimand on May
+17, 2019, for failure to follow leave requesting procedures and for failure to follow supervisory
+instruction. S1 stated that Complainant failed to notify S1 of her sick leave and failed report to a
+meeting and at Castle Point facility as instructed.
+
+S1 indicated that Complainant was issued a proposed removal on September 10, 2019, for
+misstatement of material facts, conduct unbecoming, careless or negligent workmanship,
+unauthorized absence, failure to follow Agency policy, and reporting to out of assigned work
+area.
+                                               12                                    2022000248
+
+Therein, S1 cited seven specifications when Complainant made misstatements, including her
+improper conduct at the PFAC, her absence without authorization, inviting Congressional officer
+without authorization, and her failure to report to work at the Montrose Facility as instructed.
+The record indicates that the proposed action was subsequently withdrawn, and no actual
+decision was made.
+
+Regarding schedule changes, S1 stated that she approved Complainant’s requests for schedule
+changes on several occasions, including her tour for Castle Point on Tuesdays. Since
+Complainant’s schedule changes caused an administrative burden, S1 denied Complainant’s
+additional schedule change request. Thus, on October 17, 2019, S1 decided Complainant’s
+schedule would be Monday – Friday, 8 am – 4:30 pm, which was the standard schedule for
+everyone else in the front office and in similar grades/positions. Regarding claim B.8, S1 denied
+allowing the identified Caucasian employee to change schedules without approval. We find no
+evidence that the identified Caucasian employee was allowed to change schedules without prior
+approval. Upon review, we find that Complainant failed to show that there were any similarly
+situated employees not in her protected groups who were treated differently under similar
+circumstances.
+
+S1 indicated that as a supervisor, it was her responsibilities to review and monitor Complainant’s
+work assignments. Regarding the AWOL claim, S1 acknowledged that she incorrectly charged
+Complainant AWOL on April 30, 2019, but it was later retracted and canceled. S1 denied
+sending Complainant threatening emails as alleged. S1 also indicated that she stopped
+sending/responding to text messages to Complainant upon her request not to do so.
+
+After a review of the record, we find that Complainant failed to show that the Agency’s
+articulated reasons were a mere pretext for discrimination. Regarding the discrete incidents, we
+find that Complainant failed to show that any of the actions were motivated by discrimination.
+Further, we find that Complainant failed to show that there were any similarly situated
+employees not in her protected groups who were treated differently under similar circumstances.
+
+The Commission has held that agencies generally have broad discretion to set policies and carry
+out personnel decisions and should not be second-guessed by the reviewing authority absent
+evidence of unlawful motivation. Vanek v. Dep’t of the Treasury, EEOC Request No. 05940906
+(Jan. 16, 1997); Shapiro v. Soc. Sec. Admn., EEOC Request No. 05960403 (Dec. 6, 1996).
+Although Complainant disagreed with the severity of the assessed discipline, we note that the
+Commission cannot stand as a “super-personnel” department. See Janel B. v. Soc. Sec. Admn.,
+EEOC Appeal No. 2019000126 (Aug. 12, 2020). Upon review, we find that Complainant failed
+to establish that she was subjected to discrimination as alleged.
+
+Regarding her claim of harassment, considering all the events, including dismissed claims, we
+find that Complainant failed to show that it was related to any protected basis of discrimination.
+                                               13                                   2022000248
+
+The Commission has held that routine work assignments, instructions, admonishments, and
+addressing performance deficiencies do not rise to the level of harassment because they are
+common workplace occurrences. See Complainant v. Dep’t of Veterans Affs., EEOC Appeal No.
+0120130465 (Sept. 12, 2014); Gray v. U.S. Postal Serv., EEOC Appeal No. 0120091101 (May
+13, 2010). We note that anti-discrimination statues are not civility codes designed to protect
+against the “ordinary tribulations” of the workplace. Rather, they forbid “only behavior so
+objectively offensive as to alter the conditions of the victim’s employment.” Oncale, 23 U.S. at
+81. Upon review, we find that Complainant failed to make such showing here.
+
+It appears that Complainant did not work well with S1. Complainant did not agree with her
+supervisors’ business decisions and the manner they carried out the medical center’s mission.
+The tasks in claim B.16 may not have been desired by Complainant, but there is no evidence that
+they were assigned on a discriminatory basis. Based on a thorough review of the record,
+considering all statements submitted on appeal, we find that Complainant has failed to show that
+the Agency’s actions were motivated by discrimination as she alleged.
+
+                                        CONCLUSION
+
+Accordingly, the Agency’s final decision finding no discrimination is AFFIRMED.
+
+                          STATEMENT OF RIGHTS - ON APPEAL
+                              RECONSIDERATION (M0920)
+
+The Commission may, in its discretion, reconsider this appellate decision if Complainant or the
+Agency submits a written request that contains arguments or evidence that tend to establish that:
+       1. The appellate decision involved a clearly erroneous interpretation of material fact or
+          law; or
+       2. The appellate decision will have a substantial impact on the policies, practices, or
+          operations of the agency.
+
+Requests for reconsideration must be filed with EEOC’s Office of Federal Operations (OFO)
+within thirty (30) calendar days of receipt of this decision. If the party requesting
+reconsideration elects to file a statement or brief in support of the request, that statement or
+brief must be filed together with the request for reconsideration. A party shall have twenty
+(20) calendar days from receipt of another party’s request for reconsideration within which to
+submit a brief or statement in opposition. See 29 C.F.R. § 1614.405; Equal Employment
+Opportunity Management Directive for 29 C.F.R. Part 1614 (EEO MD-110), at Chap. 9 § VII.B
+(Aug. 5, 2015).
+
+Complainant should submit his or her request for reconsideration, and any statement or brief in
+support of his or her request, via the EEOC Public Portal, which can be found at
+https://publicportal.eeoc.gov/Portal/Login.aspx.
+                                                14                                    2022000248
+
+Alternatively, Complainant can submit his or her request and arguments to the Director, Office
+of Federal Operations, Equal Employment Opportunity Commission, via regular mail addressed
+to P.O. Box 77960, Washington, DC 20013, or by certified mail addressed to 131 M Street, NE,
+Washington, DC 20507. In the absence of a legible postmark, a complainant’s request to
+reconsider shall be deemed timely filed if OFO receives it by mail within five days of the
+expiration of the applicable filing period. See 29 C.F.R. § 1614.604.
+
+An agency’s request for reconsideration must be submitted in digital format via the EEOC’s
+Federal Sector EEO Portal (FedSEP). See 29 C.F.R. § 1614.403(g). Either party’s request
+and/or statement or brief in opposition must also include proof of service on the other party,
+unless Complainant files his or her request via the EEOC Public Portal, in which case no proof of
+service is required.
+
+Failure to file within the 30-day time period will result in dismissal of the party’s request for
+reconsideration as untimely, unless extenuating circumstances prevented the timely filing of the
+request. Any supporting documentation must be submitted together with the request for
+reconsideration. The Commission will consider requests for reconsideration filed after the
+deadline only in very limited circumstances. See 29 C.F.R. § 1614.604(c).
+
+
+               COMPLAINANT’S RIGHT TO FILE A CIVIL ACTION (S0610)
+
+You have the right to file a civil action in an appropriate United States District Court within
+ninety (90) calendar days from the date that you receive this decision. If you file a civil action,
+you must name as the defendant in the complaint the person who is the official Agency head or
+department head, identifying that person by his or her full name and official title. Failure to do
+so may result in the dismissal of your case in court. “Agency” or “department” means the
+national organization, and not the local office, facility or department in which you work. If you
+file a request to reconsider and also file a civil action, filing a civil action will terminate the
+administrative processing of your complaint.
+
+
+                          RIGHT TO REQUEST COUNSEL (Z0815)
+
+If you want to file a civil action but cannot pay the fees, costs, or security to do so, you may
+request permission from the court to proceed with the civil action without paying these fees or
+costs. Similarly, if you cannot afford an attorney to represent you in the civil action, you may
+request the court to appoint an attorney for you. You must submit the requests for waiver of
+court costs or appointment of an attorney directly to the court, not the Commission. The
+court has the sole discretion to grant or deny these types of requests.
+                                                 15                                     2022000248
+
+Such requests do not alter the time limits for filing a civil action (please read the paragraph titled
+Complainant’s Right to File a Civil Action for the specific time limits).
+
+FOR THE COMMISSION:
+
+
+
+______________________________                    Carlton M. Hadden’s signature
+Carlton M. Hadden, Director
+Office of Federal Operations
+
+
+February 14, 2023
+Date
+

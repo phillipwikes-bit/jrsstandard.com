@@ -1,0 +1,418 @@
+             U.S. EQUAL EMPLOYMENT OPPORTUNITY COMMISSION
+                           Office of Federal Operations
+                                  P.O. Box 77960
+                             Washington, DC 20013
+
+
+                                         Tynisha H., 1
+                                         Complainant,
+
+                                               v.
+
+                                         Louis DeJoy,
+                                     Postmaster General,
+                                  United States Postal Service
+                                      (Great Lakes Area),
+                                           Agency.
+
+                                    Appeal No. 2020000367
+
+                                Hearing No. 440-2019-00164X
+
+                                  Agency No. 4J-604-0155-18
+
+                                          DECISION
+
+On October 4, 2019, Complainant filed an appeal with the Equal Employment Opportunity
+Commission (EEOC or Commission), pursuant to 29 C.F.R. § 1614.403(a), from the Agency’s
+September 9, 2019, final decision concerning her equal employment opportunity (EEO)
+complaint alleging employment discrimination in violation of Title VII of the Civil Rights Act of
+1964 (Title VII), as amended, 42 U.S.C. § 2000e et seq. For the following reasons, the
+Commission VACATES the Agency’s final decision.
+
+                                     ISSUE PRESENTED
+
+The issue presented is whether it was an abuse of discretion for an Administrative Judge (AJ) to
+dismiss Complainant’s hearing request as a sanction.
+
+                                       BACKGROUND
+
+At the time of events giving rise to this complaint, Complainant worked as a Q7-02 Carrier
+Technician at the Agency’s Addison, Illinois Post Office. On August 22, 2018, Complainant
+
+
+1
+ This case has been randomly assigned a pseudonym which will replace Complainant’s name
+when the decision is published to non-parties and the Commission’s website.
+                                                2                                     2020000367
+
+contacted an EEO Counselor and filed a formal EEO complaint on December 17, 2018, alleging
+that the Agency discriminated against her on the basis of reprisal for prior protected EEO activity
+when:
+
+   1. On September 13, 2018, and November 17, 2018, management gave her a hard time
+      about attending medical appointments;
+   2. On September 14, 2018, the Postmaster charged at her and pulled the earbud from her
+      ear;
+   3. On September 17, 2018, she asked to leave sick, and the supervisor laughed at her;
+   4. On November 19, 2018, she was given an investigative interview, and on November 26,
+      2018, she received a Letter of Warning; and
+   5. Between November 12, 2018, and January 2019, management made her work beyond her
+      medical restrictions.
+
+At the conclusion of the investigation, Complainant was provided a copy of the investigative file
+and requested a hearing before an EEOC AJ. The AJ assigned to the case issued an
+Acknowledgment Order on June 20, 2019, and Complainant confirmed receipt of the
+Acknowledgment Order by email on June 22, 2019. In the Acknowledgment Order, the AJ
+scheduled an initial conference for July 16, 2019, and stated that, at the initial conference, the
+parties should be prepared to discuss various matters, including additional documents or
+evidence that the AJ ordered the parties to provide by July 11, 2019:
+
+   1. Complainant shall submit all evidence that the Responsible Managing Official(s) was
+      aware of her prior EEO activity;
+   2. Complainant shall submit all evidence that Complainant’s prior EEO Activity was a
+      factor considered during the underlying events outlined in the accepted issues;
+   3. Complainant shall submit all evidence of any retaliatory motive that the Agency had
+      during the underlying events as outlined in the accepted issues;
+   4. Complainant shall submit all evidence of any comparators to Complainant who reported
+      to the same supervisors and were similarly situated who were treated more favorably than
+      Complainant with respect to attendance and leave requirements and discipline;
+   5. Complainant shall identify all duties she performed outside her medical restrictions, the
+      RMO who required her to perform outside her medical restrictions and all witnesses who
+      saw her working outside her medical restrictions;
+   6. Complainant shall provide copies of all medical documentation provided to the Agency
+      following any unscheduled leave during the relevant time period;
+   7. Complainant shall explain what harm she suffered as a result of any missed doctor’s
+      appointments;
+   8. The Agency shall submit any evidence, which is not already included in the ROI, which
+      refutes Complainant’s claims and allegations raised in Complaint 4J-604-0155-18.
+
+Acknowledgment Order at 2. In the Acknowledgment Order, the AJ stated, “These documents
+are due to the Administrative [sic] no later than July 11, 2019, with copy to the opposing party.
+                                               3                                   2020000367
+
+If Complainant fails to timely submit the requested evidence, the Initial Conference will be
+canceled and sanctions may be imposed up to, and including dismissal of the hearing
+request.” Id. (emphasis in original).
+
+On July 10, 2019, Complainant’s mother, who is not an attorney, (CM1) sent an email to the AJ,
+asking the AJ to review the attached documents “and advise if she needs to do anything else.”
+Hearing Correspondence File (HCF) at 2. The attached documents were a copy of the
+Acknowledgment Order and a Designation of Representative Form naming a non-attorney as
+representative (CR1) for Complainant. Id. at 5-11. On July 10, 2019, the AJ responded, “I cannot
+give legal advice, but this attachment does not include any of the information that Complainant
+was asked to provide.” Id. at 2. On July 11, 2019, CM1 emailed additional attachments to the AJ.
+Id. at 12-153.
+
+At 8:07 a.m. on July 12, 2019, the AJ emailed the parties an Order to Show Cause. Id. at 156. In
+the Order to Show Cause, the AJ stated that Complainant had failed to provide the
+documentation requested in the Acknowledgment Order. Id. at 157. The AJ cancelled the Initial
+Status Conference and ordered Complainant to show cause by July 22, 2019 why sanctions
+should not be imposed for her failure to comply with the AJ’s order. Id. at 157-58.
+
+At 9:25 a.m. on July 12, 2019, Complainant emailed the AJ, stating that she had sent the
+documents to the AJ in a timely manner and explaining that CM1 had emailed the attachments
+on her behalf because Complainant did not have a way to scan the documents. Id. at 159-60. At
+5:09 p.m., the AJ responded to Complainant, stating that the documents provided by CM1 were
+in the ROI and were not responsive to the AJ’s request and adding, “The ROI does not contain
+the information I requested. As the Complainant you have the burden of proof.” Id. at 159. At
+5:24 pm. on July 12, 2019, Complainant replied that CM1 “sent different attachments to you.”
+Id. At 5:34 p.m., the AJ sent the following reply to Complainant’s 5:24 p.m. email:
+
+       The information sent is not what you were ordered to provide. You were asked for
+       specific documentation in the Ack Order. She [CM1] sent information from the
+       ROI. You have not complied with the Ack Order [Complainant]. You designated
+       [CR1] as your representative, not your mother. I did not have to accept anything
+       from your mother, nor did I have any obligation to communicate with her, but I
+       did. I told her you needed to comply with the Order and provide the requested
+       documentation by July 11. You failed to do so. This is my last communication to
+       you on this subject.
+
+Id. at 159. Complainant sent additional emails to the AJ at 5:29 p.m. and 5:33 p.m., including a
+copy of the attachments previously provided by CM1 and stating that the attachments had
+contained more than 100 pages and were “everything I have” related to her EEO complaint. Id. at
+162, 302. At 5:59 p.m., the AJ replied, “This documentation does not include the documentation
+you were asked to provide. Please read your Acknowledgment Order.” Id. at 303. At 6:42 p.m.,
+Complainant responded, “I apologize I sent everything I had but I will send the documentation
+                                                4                                    2020000367
+
+that was requested. Thank you.” Id. At 9:29 p.m., the AJ replied, “It is too late. Now you have to
+show a legally sufficient reason for you failed to send it by July 11, 2019, as ordered.” Id.
+
+On July 17, 2019, Complainant emailed the AJ, requesting more time to sent in the requested
+information, noting that she had not understood what kind of documents the AJ was asking for
+and adding, “I am seeking a legal representative to help me with this case.” Id. at 303.
+
+On July 29, 2019, the AJ emailed the parties an Order of Dismissal of Hearing Request. Id. at
+304. In the Order of Dismissal, the AJ stated that Complainant failed to provide the information
+requested in the Acknowledgment Order and that, in response to the Order to Show Cause,
+“Complainant emailed the Administrative Judge five times and included the previously provided
+and deficient information from the ROI. Complainant was advised that the Administrative Judge
+had reviewed the ROI prior to sending the June 20, 2019 Order, and that the information
+requested in the Order was not a part of the ROI.” Id. at 306-07. The AJ dismissed
+Complainant’s hearing request as a sanction, finding “that Complainant has engaged in behavior
+that shows a lack of cooperation, and a failure to comply with Administrative Judge’s Orders” by
+failing to provide the requested information and by failing to provide a legally sufficient reason
+to justify her failure to do so. Id. at 308.
+
+The Agency issued a final decision on Complainant’s EEO complaint in accordance with the
+AJ’s Order of Dismissal of Hearing Request. The decision concluded that Complainant failed to
+prove that the Agency subjected her to discrimination as alleged.
+
+The instant appeal followed. Complainant did not submit a statement or brief in support of her
+appeal.
+
+In response to Complainant’s appeal, the Agency requests that the Commission affirm its final
+decision finding no discrimination.
+
+                                 ANALYSIS AND FINDINGS
+
+The AJ dismissed Complainant’s hearing request as a sanction, stating that Complainant had
+failed to show good cause for not complying with her order. An AJ has the authority to sanction
+either party for failure without good cause shown to fully comply with an order. 29 C.F.R. §
+1614.109(f)(3). Such sanctions may include an adverse inference that the requested information
+would have reflected unfavorably on the party refusing to provide the requested information,
+exclusion of other information offered by the party refusing to provide the requested information,
+or issuance of a decision fully or partially in favor of the opposing party, or other actions, as
+appropriate. Id.
+                                                 5                                     2020000367
+
+The Commission has held repeatedly that sanctions must be tailored to each situation, applying
+the least severe sanction necessary to respond to the party's failure to show good cause for its
+actions, as well as to equitably remedy the opposing party. See Ward B. v. U.S. Postal Serv.,
+EEOC Appeal No. 2019001570 (May 12, 2020); Gray v. Dep't of Def., EEOC Appeal No.
+07A50030 (Mar. 1, 2007); Rountree v. Dep't of the Treasury, EEOC Appeal No. 07A00015 (July
+13, 2001); Hale v. Dep't of Justice, EEOC Appeal No. 01A03341 (Dec. 8, 2000).
+
+Dismissal of a hearing request by an AJ as a sanction is only appropriate in extreme
+circumstances, such as when the complainant engages in contumacious conduct, not merely
+negligence. See Schoenrogge v. Dep't of Justice, EEOC Appeal No. 0120130893 (May 20, 2013)
+(dismissal of hearing request appropriate where the complainant engaged in contumacious
+conduct that included repeated failure to comply with discovery obligations and serious abuse of
+process by filling voice mail boxes of AJ and Agency Counsel with erratic, lewd, and vulgar
+messages regarding his complaint to the point where intervention of the Federal Protective
+Service and local police was necessary); Robert A. v. U.S. Postal Serv., EEOC Appeal No.
+0120182698 (Feb. 21, 2020) (dismissal of hearing request upheld where complainant failed to
+respond to order to show cause and did not provide evidence that he was incapacitated and
+unable to comply with the AJ's order).
+
+Consequently, if a lesser sanction would suffice to deter the conduct and to equitably remedy the
+opposing party, an AJ may be abusing his or her discretion by dismissing the complaint. See
+Georgianne B. v. Dep't of Agric., EEOC Appeal Nos. 0120181591 & 0120181592 (Feb. 27,
+2020) (dismissal of hearing request rejected on appeal where AJ dismissed hearing request
+outright rather than grant Agency's motion to compel discovery or limiting the complainant's
+discovery when the complainant failed to appear at the initial conference and failed to respond to
+a discovery request despite the fact that the parties and the AJ remained in continuous email
+correspondence in an effort to litigate the case); Drucilla Y. v. Dep't of the Treasury, EEOC
+Appeal No. 0120182728 (Feb. 27, 2020) (dismissal of hearing request rejected on appeal where
+the complainant made earnest but unsuccessful effort to comply with an onerous
+acknowledgement and scheduling order); Hale v. Dep't of Justice, EEOC Appeal No. 01A03341
+(Dec. 8, 2000) (dismissal of hearing request rejected on appeal where the complainant failed to
+return a designation of hearing form but informed the hearings office by phone that she was
+searching for an attorney and requested more time for discovery).
+
+The Commission's interest lies in deterring the underlying conduct of the non-complying party
+and protecting its administrative process from abuse by either party to ensure that agencies, as
+well as complainants, abide by its regulations. See Royal v. Dep't of Veterans Affairs, EEOC
+Request No. 0520080052 (Sep. 25, 2009). The factors pertinent to “tailoring” a sanction, or
+determining whether a sanction is, in fact, warranted, include the following: (1) the extent and
+nature of the non-compliance, including the justification presented by the non-complying party;
+(2) the prejudicial effect of the non-compliance on the opposing party; (3) the consequences
+resulting from the delay in justice, if any; and (4) the effect on the integrity of the EEO process.
+Chere S. v. Soc. Sec. Admin., EEOC Appeal No. 0720180012 (Nov. 30, 2018); see also Royal,
+                                                6                                    2020000367
+
+EEOC Request No. 0520080052; Gray, EEOC Appeal No. 07A50030; Vovsest v. Soc. Sec.
+Admin., EEOC Appeal No. 01A35340 (Jan. 18, 2005).
+
+Here, the AJ determined that Complainant failed to establish good cause for failing to comply by
+providing the information requested in the Acknowledgment Order. However, we note that
+Complainant did timely provide the AJ with information in response to her request. However,
+while we agree with the AJ that many of the documents provided by Complainant and by CM1
+were already in the ROI, we note that Complainant provided the AJ with medical documentation
+that does not appear in the ROI. See Hearing Correspondence File at 39-53. While the AJ may
+not have found the information provided by Complainant to be responsive, we do not find that
+Complainant engaged in contumacious conduct, and we find that it was an abuse of discretion to
+dismiss Complainant’s hearing request as a sanction.
+
+Moreover, it appears that the AJ ordered Complainant to provide information to rectify perceived
+deficiencies in the ROI prepared by the Agency. Although the AJ correctly noted that
+Complainant has the burden of proof regarding her discrimination claims, it is the Agency’s
+responsibility to produce an adequate record. EEOC Regulation 29 C.F.R. § 1614.108(b)
+requires, inter alia, that the agency develop an impartial and appropriate factual record upon
+which to make findings on the claims raised in the complaint. One purpose of an investigation is
+to gather facts upon which a reasonable fact finder may draw conclusions as to whether a
+violation of the discrimination statutes has occurred. Id.; Equal Employment Opportunity
+Management Directive for 29 C.F.R. Part 1614 (EEO MD-110) at Chap. 6, § IV.B (Aug 5,
+2015). An investigation must include “a thorough review of the circumstances under which the
+alleged discrimination occurred; the treatment of members of the Complainant's group as
+compared with the treatment of similarly situated employees...and any policies and/or practices
+that may constitute or appear to constitute discrimination, even though they have not been
+expressly cited by the complainant.” Id. at § IV.C. Therefore, it was inappropriate to sanction
+Complainant under these circumstances when it is the Agency’s responsibility to produce an
+adequate record.
+
+Additionally, we note that the hearing process is intended to be an extension of the investigative
+process, designed to ensure that the parties have a “fair and reasonable opportunity to explain
+and supplement the record and, in appropriate instances, to examine and cross-examine
+witnesses.” EEO MD-110 at Chap. 7, § I; see also 29 C.F.R. § 1614.109(a) (“Upon appointment,
+the administrative judge shall assume full responsibility for the adjudication of the complaint,
+including overseeing the development of the record.”). If the AJ did not find the record
+adequately developed to determine whether discrimination occurred, it was inappropriate to
+order Complainant to provide the missing information before the Initial Conference and before
+any opportunity for discovery. 2
+
+
+2
+  According to the record, the EEO Investigator mailed affidavits to two witnesses, but the
+affidavits were not returned. Investigative Summary at 7. There is no documentation in the
+record of any Agency attempts to ensure participation in the investigation of these two witnesses,
+who appear to have been Agency employees. EEOC Regulations provide that the Agency and
+                                                7                                     2020000367
+
+Instead, the AJ could have ordered the Agency to conduct a supplemental investigation, or the
+AJ could have developed the record further during the hearing process. Accordingly, we vacate
+the Agency’s final decision and remand the matter to the Hearings Unit. On remand, we advise
+the AJ to oversee the development of the record as needed during the hearing process.
+
+                                         CONCLUSION
+
+Therefore, after a careful review of the record, including Complainant's arguments on appeal, the
+Agency's response, and arguments and evidence not specifically discussed in this decision, the
+Commission VACATES the Agency's final action and REMANDS the matter to the Agency in
+accordance with this decision and the Order below.
+
+                                             ORDER
+
+The Agency is directed to submit a copy of the complaint file to the Hearings Unit of the EEOC
+Chicago District Office within fifteen (15) calendar days of the date this decision becomes final.
+The Agency shall provide written notification to the Compliance Officer at the address set forth
+below that the complaint file has been transmitted to the Hearings Unit. Thereafter, the
+Administrative Judge shall issue a decision on the complaint in accordance with 29 C.F.R. §
+1614.109 and the Agency shall issue a final action in accordance with 29 C.F.R. § 1614.110.
+
+            IMPLEMENTATION OF THE COMMISSION’S DECISION (K0719)
+
+Under 29 C.F.R. § 1614.405(c) and § 1614.502, compliance with the Commission’s corrective
+action is mandatory. Within seven (7) calendar days of the completion of each ordered
+corrective action, the Agency shall submit via the Federal Sector EEO Portal (FedSEP)
+supporting documents in the digital format required by the Commission, referencing the
+compliance docket number under which compliance was being monitored. Once all compliance
+is complete, the Agency shall submit via FedSEP a final compliance report in the digital format
+required by the Commission. See 29 C.F.R. § 1614.403(g). The Agency’s final report must
+contain supporting documentation when previously not uploaded, and the Agency must send a
+copy of all submissions to the Complainant and his/her representative.
+
+any employee of a federal agency shall produce such evidence as the investigator deems
+necessary. 29 C.F.R. § 1614.108(c)(1). The regulations further provide that, when the Agency or
+its employees “fail without good cause shown to respond fully and in timely fashion” to requests
+for documents, affidavits, the attendance of witnesses, or other evidence “the investigator may
+note in the investigative record that the decisionmaker should, or the Commission on appeal,
+may in appropriate circumstances: (i) draw an adverse inference that the requested information,
+or the testimony of the requested witness would have reflected unfavorably on the party refusing
+to provide the requested information; (ii) consider the matters to which the requested information
+or testimony pertains to be established in favor of the opposing party; (iii) exclude other
+evidence offered by the party failing to produce the requested information or witness; (iv) issue a
+decision fully or partially in favor of the opposing party; or (v) take such other actions as it
+deems appropriate.” 29 C.F.R. § 1614.108(c)(3).
+                                                8                                     2020000367
+
+If the Agency does not comply with the Commission’s order, the Complainant may petition the
+Commission for enforcement of the order. 29 C.F.R. § 1614.503(a). The Complainant also has
+the right to file a civil action to enforce compliance with the Commission’s order prior to or
+following an administrative petition for enforcement. See 29 C.F.R. §§ 1614.407, 1614.408, and
+29 C.F.R. § 1614.503(g). Alternatively, the Complainant has the right to file a civil action on the
+underlying complaint in accordance with the paragraph below entitled “Right to File a Civil
+Action.” 29 C.F.R. §§ 1614.407 and 1614.408. A civil action for enforcement or a civil action
+on the underlying complaint is subject to the deadline stated in 42 U.S.C. 2000e-16(c) (1994 &
+Supp. IV 1999). If the Complainant files a civil action, the administrative processing of the
+complaint, including any petition for enforcement, will be terminated. See 29 C.F.R.
+§ 1614.409.
+
+Failure by an agency to either file a compliance report or implement any of the orders set forth in
+this decision, without good cause shown, may result in the referral of this matter to the Office of
+Special Counsel pursuant to 29 C.F.R. § 1614.503(f) for enforcement by that agency.
+
+                           STATEMENT OF RIGHTS - ON APPEAL
+                               RECONSIDERATION (M0920)
+
+The Commission may, in its discretion, reconsider this appellate decision if Complainant or the
+Agency submits a written request that contains arguments or evidence that tend to establish that:
+       1. The appellate decision involved a clearly erroneous interpretation of material fact or
+          law; or
+       2. The appellate decision will have a substantial impact on the policies, practices, or
+          operations of the agency.
+
+Requests for reconsideration must be filed with EEOC’s Office of Federal Operations (OFO)
+within thirty (30) calendar days of receipt of this decision. If the party requesting
+reconsideration elects to file a statement or brief in support of the request, that statement or
+brief must be filed together with the request for reconsideration. A party shall have twenty
+(20) calendar days from receipt of another party’s request for reconsideration within which to
+submit a brief or statement in opposition. See 29 C.F.R. § 1614.405; Equal Employment
+Opportunity Management Directive for 29 C.F.R. Part 1614 (EEO MD-110), at Chap. 9 § VII.B
+(Aug. 5, 2015).
+
+Complainant should submit his or her request for reconsideration, and any statement or brief in
+support of his or her request, via the EEOC Public Portal, which can be found at
+https://publicportal.eeoc.gov/Portal/Login.aspx
+
+Alternatively, Complainant can submit his or her request and arguments to the Director, Office
+of Federal Operations, Equal Employment Opportunity Commission, via regular mail addressed
+to P.O. Box 77960, Washington, DC 20013, or by certified mail addressed to 131 M Street, NE,
+Washington, DC 20507.
+                                                 9                                      2020000367
+
+In the absence of a legible postmark, a complainant’s request to reconsider shall be deemed
+timely filed if OFO receives it by mail within five days of the expiration of the applicable filing
+period. See 29 C.F.R. § 1614.604.
+
+An agency’s request for reconsideration must be submitted in digital format via the EEOC’s
+Federal Sector EEO Portal (FedSEP). See 29 C.F.R. § 1614.403(g). Either party’s request
+and/or statement or brief in opposition must also include proof of service on the other party,
+unless Complainant files his or her request via the EEOC Public Portal, in which case no proof of
+service is required.
+
+Failure to file within the 30-day time period will result in dismissal of the party’s request for
+reconsideration as untimely, unless extenuating circumstances prevented the timely filing of the
+request. Any supporting documentation must be submitted together with the request for
+reconsideration. The Commission will consider requests for reconsideration filed after the
+deadline only in very limited circumstances. See 29 C.F.R. § 1614.604(c).
+
+               COMPLAINANT’S RIGHT TO FILE A CIVIL ACTION (R0610)
+
+This is a decision requiring the Agency to continue its administrative processing of your
+complaint. However, if you wish to file a civil action, you have the right to file such action in an
+appropriate United States District Court within ninety (90) calendar days from the date that you
+receive this decision. In the alternative, you may file a civil action after one hundred and
+eighty (180) calendar days of the date you filed your complaint with the Agency, or filed your
+appeal with the Commission. If you file a civil action, you must name as the defendant in the
+complaint the person who is the official Agency head or department head, identifying that person
+by his or her full name and official title. Failure to do so may result in the dismissal of your case
+in court. “Agency” or “department” means the national organization, and not the local office,
+facility or department in which you work. Filing a civil action will terminate the
+administrative processing of your complaint.
+
+                           RIGHT TO REQUEST COUNSEL (Z0815)
+
+If you want to file a civil action but cannot pay the fees, costs, or security to do so, you may
+request permission from the court to proceed with the civil action without paying these fees or
+costs. Similarly, if you cannot afford an attorney to represent you in the civil action, you may
+request the court to appoint an attorney for you. You must submit the requests for waiver of
+court costs or appointment of an attorney directly to the court, not the Commission. The
+court has the sole discretion to grant or deny these types of requests.
+                                                 10                                     2020000367
+
+Such requests do not alter the time limits for filing a civil action (please read the paragraph titled
+Complainant’s Right to File a Civil Action for the specific time limits).
+
+FOR THE COMMISSION:
+
+
+______________________________                    Carlton M. Hadden’s signature
+Carlton M. Hadden, Director
+Office of Federal Operations
+
+
+July 28, 2021
+Date
+

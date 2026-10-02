@@ -1,0 +1,806 @@
+             U.S. EQUAL EMPLOYMENT OPPORTUNITY COMMISSION
+                           Office of Federal Operations
+                                  P.O. Box 77960
+                             Washington, DC 20013
+
+
+                                         Chanelle B., 1
+                                         Complainant,
+
+                                               v.
+
+                                      Carlos Del Toro,
+                                         Secretary,
+                                   Department of the Navy,
+                                          Agency.
+
+                                   Appeal No. 2020004887
+
+                              Agency No. DON 19-39872-01074
+
+                                          DECISION
+
+On August 31, 2020, Complainant filed an appeal with the Equal Employment Opportunity
+Commission (EEOC or Commission), pursuant to 29 C.F.R. § 1614.403(a), from the Agency’s
+July 21, 2020, final decision concerning her equal employment opportunity (EEO) complaint
+alleging employment discrimination in violation of Section 501 of the Rehabilitation Act of 1973
+(Rehabilitation Act), as amended, 29 U.S.C. § 791 et seq. For the following reasons, the
+Commission REVERSES the Agency’s final decision.
+
+                                       BACKGROUND
+
+During the relevant time, Complainant worked as an Information Technology Specialist, GS-11
+at the Agency’s U.S. Pacific Fleet, Littoral Combat Ship Squadron One in San Diego, California.
+Complainant was appointed to this position on January 9, 2017, subject to a two-year
+probationary period. See Report of Investigation (ROI) at 179. Complainant’s supervisor (S1)
+assumed his position in September 2017. See ROI at 468-70.
+
+Complainant suffers from post-traumatic stress disorder (PTSD), for which she verbally
+requested a reasonable accommodation for on January 13, 2017. See ROI at 444. It is unclear
+from the record what the informal accommodation consisted of, but it appears to have related to
+Complainant’s desk location.
+
+
+
+1
+ This case has been randomly assigned a pseudonym which will replace Complainant’s name
+when the decision is published to non-parties and the Commission’s website.
+                                                2                                    2020004887
+
+Complainant stated that she was not informed about the reasonable accommodation process and
+when she notified her supervisor (S1) that she intended to request an accommodation, S1 became
+hostile and started to scrutinize her leave. See ROI at 445. Complainant filed an informal
+grievance, dated October 16, 2018, after S1 reduced her duties and told her she had to submit her
+work projects to a military employee, which she asserted put her performance appraisal at risk.
+See ROI at 156, 447-48. S1 stated that Complainant’s position description (PD) was updated
+because there was a reorganized command, in which certain programs were reassigned. See ROI
+at 473.
+
+Complainant explained that she was previously located at a desk, at the back of the office, with a
+wall behind it. But S1 moved her to a desk at the front of the office, which allowed customers
+and co-workers to stand behind her when the area was congested. See ROI at 449. Complainant
+submitted a reasonable accommodation request for her PTSD on October 11, 2018, requesting a
+desk that would not require her to face away from personnel entering the office space. See ROI
+at 306-307. When asked for additional documentation, Complainant submitted a note from her
+physician explaining that a workspace which allowed Complainant to be fully aware of those
+around her and the environment, i.e. no one behind her, would reduce her anxiety and improve
+her concentration. See ROI at 251. In a November 27, 2018 email, S1 informed Complainant
+that her accommodation request had been approved; specifically, that her desk would have
+additional privacy screens. See ROI at 410. According to Complainant, she informed the
+Agency that the accommodation provided was not effective and also noted that her desk was not
+ergonomically correct. In response, an ergonomic assessment was conducted on her workstation.
+See ROI at 277, 289, 451-52. The Agency, however, did not make any other modification to the
+accommodation.
+
+On November 21, 2018, Complainant sent S1 an email requesting to move back to her original
+desk location until her symptoms improved. However, she did not receive a response. See ROI
+at 161. On November 28, 2018, she again asked S1 if she could work from her previously
+assigned desk until her symptoms subsided. See ROI at 160-61. S1 told Complainant that he
+expected her to be at her modified desk the next day, on November 29, 2018. See ROI at 159.
+According to Complainant, she was out sick on November 29, 2018. When she returned to the
+office, on November 30, 2018, S1 required her to return to her assigned workspace and told her
+“this is a direct order.” See ROI at 183, 455. Complainant explained she could not do so
+because of her PTSD, but S1 responded that he did not care about her condition. See ROI at 455.
+Complainant stated that she became very upset and had a panic attack. See id. S1 recalled that
+Complainant cried, “Can’t you see I am having a f**** panic attack?” See ROI at 183.
+Complainant stated that she went to the Chief Staff Officer (CSO), her third-line supervisor, and
+asked him to intercede, but he did not. See ROI at 456. The CSO recalled that Complainant
+came to him in tears, asking for assistance, and he explained that her accommodation was
+approved and if she was not satisfied, she would need to restart the reasonable accommodation
+process. See ROI at 502.
+                                               3                                    2020004887
+
+On December 3, 2018, Complainant was issued a new PD, which she stated was unnecessary and
+issued to “cover up” the fact that her duties had been removed. See ROI at 457. S1 stated that
+the previous PD was too general and needed to be revised to better fit the organization. See ROI
+at 483. On the same day, Complainant was also marked Absent Without Leave (AWOL)
+although she had an approved Fitness and Wellness agreement in place. See ROI at 458. The
+agreement permitted Complainant to exercise for one hour from 3:00 to 4:00 p.m. on Mondays,
+Wednesdays, and Fridays, and was signed by S1 on September 27, 2018. See ROI at 423.
+Complainant stated that she was not told she had been marked AWOL. See ROI at 458.
+
+Complainant was again marked AWOL, on December 6, 2018, when she left for a doctor’s
+appointment. See ROI at 459. However, according to Complainant, she had informed S1 and her
+time-keeper of her appointment. See Id. The next day, upon being informed of her AWOL
+status, Complainant explained that she made a mistake in the timekeeping system for which she
+apologized and corrected. See ROI at 187. S1 asked for additional documentation of her
+doctor’s appointment and, in response, Complainant provided a copy of an appointment card
+confirming a doctor’s appointment at 2:15 p.m. on December 6, 2018. See ROI at 192.
+Complainant stated that after she corrected her error in the time-keeping system, S1 approved the
+leave request, but still marked her as being AWOL. See ROI at 459.
+
+On December 10, 2018, Complainant received a Management Directed Reassignment. See ROI
+at 236. Oddly, on the same day, Complainant also received a termination letter, notifying her of
+her termination during her probationary period. The letter informed Complainant she was being
+terminated for relocating her work desk without permission, unprofessional conduct to her
+supervisor on November 30, 2018, and leaving work without permission on December 3 and
+December 6, 2018. See ROI at 87-88.
+
+On March 4, 2019, Complainant filed an EEO complaint alleging that the Agency discriminated
+against her on the bases of disability (mental) and reprisal for protected EEO activity under
+Section 501 of the Rehabilitation Act of 1973 when:
+
+           a. From January 13, 2017 to October 10, 2018, the Agency failed to inform
+              Complainant of the proper reasonable accommodation procedures;
+
+           b. On August 20, 2018, S1 removed Complainant’s duties required for
+              “successful” completion of critical elements in her performance appraisal;
+
+           c. On August 31, 2018, Complainant was required to move workstations
+              despite an informal reasonable accommodation which was previously
+              approved;
+
+           d. On September 14, 2018, S1 did not respond to Complainant’s verbal
+              administrative grievance (from 15 days prior on August 30, 2018);
+                                                  4                                     2020004887
+
+           e. In October 2018 and November 2018, S1 did not engage Complainant in
+              an interactive discussion, which led to an approved yet ineffective
+              accommodation;
+
+           f. On October 31, 2018, the CSO did not respond to Complainant’s written
+              administrative grievance [dated October 16, 2018] within 15 days; 2
+
+           g. On November 8, 2018, S1 informed Complainant she had to submit a sick
+              leave request for his approval instead of annotating the hours in the
+              timekeeping system;
+
+           h. On November 30, 2018, S1 directed Complainant to return to her original
+              workstation;
+
+           i. On December 3, 2018, Complainant was told she was being reassigned to
+              a new position description;
+
+           j. On December 3, 2018, Complainant was marked AWOL despite having
+              an approved Fitness and Wellness agreement;
+
+           k. On December 6, 2018, Complainant was marked AWOL despite having
+              informed S1 of a medical appointment on December 3, 2018;
+
+           l. On December 10, 2018, Complainant received a Management Directed
+              Reassignment; and
+
+           m. On December 10, 2018, Complainant was terminated during her
+              probationary period.
+
+At the conclusion of the investigation, the Agency provided Complainant with a copy of the
+report of investigation and notice of her right to request a hearing before an Equal Employment
+Opportunity Commission Administrative Judge (AJ). In accordance with Complainant’s request,
+the Agency issued a final decision pursuant to 29 C.F.R. § 1614.110(b).
+
+In its decision, the Agency found that claims (e), (j), (k), (l), and (m) constituted discrete adverse
+employment actions, but determined that Complainant did not establish a prima facie case of
+disparate treatment with regard to those claims because she did not identify any similarly-
+situated employees who were treated differently. The Agency further found that Complainant
+did not establish she was denied a reasonable accommodation. Although Complainant was
+found to have established a prima facie case of reprisal for claims (e) through (m), the Agency
+found that that management presented legitimate, nondiscriminatory reasons.
+
+
+2
+  We note that the record indicates that the CSO responded to Complainant’s administrative
+grievance on November 15, 2018. See ROI at 157-58.
+                                               5                                   2020004887
+
+Moreover, reasoned the Agency, Complainant did not establish that the proffered reasons were a
+pretext for discrimination. The decision further found that Complainant did not establish a
+hostile work environment. According to the Agency decision, Complainant failed to prove that
+she was subjected to discrimination as alleged.
+
+                                CONTENTIONS ON APPEAL
+
+On appeal, Complainant contends that the record was sufficient to establish both a prima facie
+case of disparate treatment and reprisal based on S1’s statements and actions. For example, his
+expressed a desire to discipline Complainant for the “administrative issues” he had to deal with
+regarding her accommodation request. Also, the fact that Complainant, alone, was required to
+provide additional documentation of her sick leave requests. Complainant also asserts that the
+investigation failed to adequately examine any similarly situated employees. Finally,
+Complainant argues that the evidence establishes that she was denied a reasonable
+accommodation and the Agency’s stated reasons are not worthy of credence.
+
+In response, the Agency asserts that Complainant has not established either a hostile work
+environment or the denial of a reasonable accommodation. Moreover, it contends that
+Complainant’s disability does not excuse her misconduct.
+
+                                ANALYSIS AND FINDINGS
+
+As this is an appeal from a decision issued without a hearing, pursuant to 29 C.F.R.
+§ 1614.110(b), the Agency's decision is subject to de novo review by the Commission. 29 C.F.R.
+§ 1614.405(a). See Equal Employment Opportunity Management Directive for 29 C.F.R. Part
+1614, at Chapter 9, § VI.A. (Aug. 5, 2015) (explaining that the de novo standard of review
+“requires that the Commission examine the record without regard to the factual and legal
+determinations of the previous decision maker,” and that EEOC “review the documents,
+statements, and testimony of record, including any timely and relevant submissions of the
+parties, and . . . issue its decision based on the Commission’s own assessment of the record and
+its interpretation of the law”).
+
+Reasonable Accommodation
+
+Agencies are required to reasonably accommodate the known limitations of qualified individuals
+with disabilities unless they can show that doing so would result in undue hardship upon their
+operations. See 29 C.F.R. §§ 1630.2(o), (p); EEOC Enforcement Guidance on Reasonable
+Accommodation and Undue Hardship under the Americans with Disabilities Act (Enforcement
+Guidance), EEOC Notice No. 915.002 (Oct. 17, 2002); Barney G. v. Dep’t of Agric., EEOC
+Appeal No. 0120120400 (Dec. 3, 2015). Inherent in this duty is an obligation to break down
+artificial barriers which preclude individuals with disabilities from participating on an equal
+footing in the work force. Accordingly, the Rehabilitation Act requires federal agencies to make
+various types of “reasonable accommodation” for federal employees who have disabilities.
+                                                  6                                     2020004887
+
+This requirement helps ensure that federal employees with disabilities will be able to perform the
+essential functions of their positions and enjoy all the benefits and privileges of employment
+enjoyed by non-disabled employees. See Appendix to Part 1630 - Interpretive Guidance on Title
+I of the Americans with Disabilities Act (Appendix to Part 1630), at § 1630.2(o): Reasonable
+Accommodation.
+
+After receiving a request for reasonable accommodation, an agency “must make a reasonable
+effort to determine the appropriate accommodation.” 29 C.F.R. Part 1630, app. § 1630.9. Thus,
+“it may be necessary for the [agency] to initiate an informal, interactive process with the
+individual with a disability . . . [to] identify the precise limitations resulting from the disability
+and potential reasonable accommodations that could overcome those limitations.” 29 C.F.R. §
+1630.2(o)(3); see also 29 C.F.R. pt. 1630 app. § 1630.9, Enforcement Guidance at Q. 5. The
+term “reasonable accommodation” means, in pertinent part, modifications or adjustments to the
+work environment, or to the manner or circumstances under which the position held is
+customarily performed that enable a qualified individual with a disability to perform the essential
+functions of the position in question. See 29 C.F.R. §1630.2(o)(1)(ii). Reasonable
+accommodations may include but are not limited to: job restructuring; part-time or modified
+work schedules; reassignment to a vacant position; or acquisition or modifications of equipment
+or devices. 29 C.F.R. § 1630.2(o)(2)(ii).
+
+As an initial matter, we find, and the Agency does not dispute, that Complainant is a qualified
+individual with a disability within the meaning of the applicable regulations. Here, the record
+demonstrates that Complainant was capable of performing the essential functions of her job with
+an effective and reasonable accommodation. Complainant had performed the duties of her
+position for more than a year at her previous desk in the rear of the office. See ROI at 444, 449.
+
+We find that the Agency did not provide Complainant with an effective and reasonable
+accommodation, due to its failure to engage in the interactive process (claim (e)). We note that
+an agency’s failure to properly engage in the interactive process does not itself establish a denial
+of reasonable accommodation, unless the failure to engage in the interactive process resulted in
+the agency’s failure to provide a reasonable accommodation. See Broussard v. U.S. Postal Serv.,
+EEOC Appeal No. 01997106 (Sept. 13, 2002). While a complainant is not entitled to the
+accommodation of her choice, she is entitled to an effective accommodation. See Lathum v.
+U.S. Postal Serv., EEOC Appeal No. 01A53430 (Aug. 22, 2006). If more than one
+accommodation is effective, the preference of the individual with a disability should be given
+primary consideration. See Polen v. Dep’t of Defense, EEOC Appeal No. 01970984 (Jan. 16,
+2001). Here, Complainant explained that her previous desk location was at the back of the
+office, with a wall behind it. This location allowed Complainant to see people approach her and
+also did not permit anyone to stand behind her, allowing her to be fully aware of her
+surroundings, minimizing the hypervigilance that is one of the symptoms of her PTSD. After
+she was relocated to the front of the office, in a location which permitted people to congregate
+behind her, she requested a desk location that would not require her to face away from entrances
+or permit people to stand behind her. See ROI at 306-307, 449.
+                                                7                                    2020004887
+
+When asked for additional documentation, Complainant provided a form from her physician
+stating that a workspace which allowed Complainant to be fully aware of people and her
+environment, i.e. no one behind her, would reduce her anxiety and help her to concentrate. See
+ROI at 251.
+
+Rather than providing the requested accommodation, S1 approved an accommodation which
+consisted of “additional cubicle wall partitions for privacy.” See ROI at 410. This was not an
+effective accommodation, however, because it did not address Complainant’s concerns regarding
+the ability to see those around her and limit the possibility of people approaching from behind.
+In addition, when Complainant explained to S1 that the privacy screens did not effectively
+accommodate her PTSD, S1 told her that he did not care about her condition. See ROI at 455.
+Further, when Complainant spoke to the CSO, he simply told her that if she was not satisfied
+with the accommodation, she should restart the reasonable accommodation process. See ROI at
+502. We note that the record indicates, and the CSO acknowledges, that Complainant expressed
+a willingness to work from her designated desk at some future time, when the symptoms of her
+condition improved sufficiently to permit her to do so. See ROI at 502. However, neither S1 nor
+the CSO were willing to consider such a compromise. See id. The record is devoid of any
+explanation from management as to why Complainant’s request could not be granted, permitting
+her to work at a desk location with her back to a wall. The Agency has not asserted that its
+failure to accommodate Complainant was due to undue hardship. This is particularly troubling
+since the record reflects that Complainant had previously performed her job functions,
+effectively, while at her desired desk location, indicating that it would not have been an undue
+hardship to grant Complainant’s requested accommodation. See ROI at 455. We conclude that
+the Agency did not make a good faith effort engage in the interactive process and accommodate
+Complainant. Therefore, Complainant proved by a preponderance of the evidence that she was
+denied a reasonable accommodation in violation of the Rehabilitation Act.
+
+Disparate Treatment
+
+Complainant also asserts that she was subjected to disparate treatment on the basis of disability
+and in reprisal for protected EEO activity in a number of instances, including the reassignment of
+duties and extra scrutiny of sick leave requests, and culminating in her termination on December
+10, 2018.
+
+Complainant must satisfy a three-part evidentiary scheme to prevail on a claim of disparate
+treatment reprisal discrimination. McDonnell Douglas Corp. v. Green, 411 U.S. 792 (1973).
+First, Complainant must establish a prima facie case by demonstrating that she was subjected to
+an adverse employment action under circumstances that would support an inference of
+discrimination. McDonnell Douglas, 411 U.S. at 802; Furnco Constr. Co. v. Waters, 438 U.S.
+567, 576 (1978). Second, the burden is on the Agency to articulate a legitimate,
+nondiscriminatory reason for its actions. Tex. Dep’t of Cmty. Affairs v. Burdine, 450 U.S. 248,
+253 (1981).
+                                               8                                    2020004887
+
+Third, should the Agency carry its burden, Complainant must then have an opportunity to prove
+by a preponderance of the evidence that the legitimate reasons offered by the Agency were not
+its true reasons, but were a pretext for discrimination. McDonnell Douglas, 411 U.S. at 804; St.
+Mary’s Honor Center v. Hicks, 509 U.S. 502 (1993).
+
+Complainant may establish a prima facie case of reprisal by showing that: (1) she engaged in a
+protected activity; (2) the agency was aware of the protected activity; (3) subsequently, she was
+subjected to adverse treatment by the agency; and (4) a nexus exists between the protected
+activity and the adverse treatment. Whitmire v. Dep’t of the Air Force, EEOC Appeal No.
+01A00340 (Sept. 25, 2000). Reprisal claims are afforded a broad view of coverage and are “not
+limited to discriminatory actions that affect the terms and conditions of employment.”
+Burlington Northern & Santa Fe Railway Co. v. White, 548 U.S. 53, 64 (2006). Rather, a
+complainant “must show that a reasonable employee would have found the challenged action
+materially adverse,” that is, one that “might have ‘dissuaded a reasonable worker”’ from
+engaging in protected activity. Id. at 68.
+
+“A request for reasonable accommodation is a form of protected activity.” Walters v. Pension
+Benefit Guarantee Corp., EEOC Appeal No. 0220080001 (Nov. 18, 2010); Keller v. U.S. Postal
+Serv., EEOC Appeal No. 01A03119 (Apr. 25, 2003). Federal employees are protected from
+“retaliation” in their exercise of their own rights or their encouragement of someone else's
+exercise of rights granted by the Rehabilitation Act. 29 U.S.C § 791; see also, Americans with
+Disabilities Act of 1990 (ADA), as amended, Section 503, 42 U.S.C.A. § 12203.
+
+In this case, the record reflects that S1 and the CSO became aware of Complainant’s disability in
+August 2018, when Complainant first protested the change in her designated workstation.
+Complainant engaged in protected activity when she filed her reasonable accommodation request
+on October 11, 2018, and then filed a grievance challenging the reassignment of her duties and
+the end of her informal accommodation of a workstation located at the back of the office. We
+find that Complainant established a nexus between her protected bases and claims (g) through
+(n), culminating in her termination (claim (m)), given the close temporal proximity between her
+accommodation request on October 11, 2018 and the challenged actions beginning on November
+8, 2018. Evidence of the nexus is also shown by S1’s comments doubting the veracity of
+Complainant’s condition in spite of the medical documentation and expressing his desire to
+discipline Complainant for the “administrative issues” related to her accommodation request.
+See, e.g., Morris v. U.S. Postal Serv., EEOC Appeal No. 01A51604 (June 14, 2005) (finding that
+temporal proximity of approximately one month between adverse action and protected conduct
+was sufficient to raise an inference of retaliation). We also note that the record indicates that
+there were no issues with Complainant’s performance or her conduct from the time of her hiring,
+in January 2017, until August 2018, when she made her new supervisors, S1 and the CSO, aware
+of her condition and intention to file a reasonable accommodation request.
+                                                9                                     2020004887
+
+The termination letter described the Agency’s legitimate, nondiscriminatory reasons for
+Complainant’s termination as follows: (1) On November 28, 2018, she relocated her workspace
+without her supervisor’s approval; (2) Failure to follow a direct order, when her supervisor told
+her to return to her designated work desk on November 30, 2018, she did not comply until
+December 3, 2018; (3) Unprofessional conduct by raising her voice and using profanity to her
+supervisor on November 30, 2018; (4) Failure to follow established leave procedures by leaving
+her work desk without permission on December 3, 2018 and December 6, 2018; and (5) being
+charged with 2.67 hours of AWOL on December 6, 2018. See ROI at 87-88.
+
+Complainant can establish pretext in two ways: “(1) indirectly, by showing that the employer’s
+proffered explanation is unworthy of credence because it is internally inconsistent or otherwise
+not believable, or (2) directly, by showing that unlawful discrimination more likely motivated the
+employer.” Chuang v. Univ. of Cal. Davis Bd. of Trs., 225 F.3d 1115, 1127 (9th Cir. 2000)
+(internal quotation marks omitted); see also McDonnell Douglas, 411 U.S. at 804-05. Indicators
+of pretext can include discriminatory statements or past personal treatment attributable to the one
+or more of the officials involved in the selection process, unequal application of Agency policy,
+deviations from standard procedures without explanation or justification, or inadequately
+explained inconsistencies in the evidentiary record. See Mellissa F. v. U.S. Postal Serv., EEOC
+Appeal No. 0120141697 (Nov. 12, 2015). In this case, we find that Complainant has established
+that the Agency’s reasons for its conduct were a pretext for discrimination based on a
+combination of both direct and indirect evidence which cumulatively indicate that unlawful
+discrimination more likely than not motivated the Agency.
+
+The evidence in the record does not support the Agency’s stated reasons for Complainant’s
+termination, indicating that it is not worthy of credence. To begin with, the relocation of
+Complainant’s assigned workstation is a direct consequence of the Agency’s failure to engage in
+the interactive process and provide an effective accommodation for Complainant’s disability. In
+addition, the record reflects that on November 21, 2018, Complainant sent S1 an email seeking
+permission to return to her previous workstation until the symptoms of her condition improved.
+See ROI at 160-61. When S1 did not respond, Complainant sent another email on November 28,
+2018, reiterating her request to work from her previous workstation. S1 responded, by simply
+ordering Complainant to work from her assigned desk. See ROI at 159-60. Complainant
+explained that she was out sick on November 29, 2018, and, upon her return on November 30,
+2018, she explained to S1 that she could not return to her assigned desk because of her condition.
+S1 purportedly told her that he did not care about her condition and she should talk to her
+doctors. 3 See ROI at 183, 455. Moreover, contrary to the implication created by the termination
+letter, Complainant in fact obeyed S1’s direct order and returned to her assigned desk on the next
+business day, i.e. December 3, 2018.
+
+
+
+
+3
+  S1 denied telling Complainant that he did not care about her condition; however, he
+acknowledged that he “often times told all [his] employees ‘[he is] not a doctor.’” See ROI at
+475.
+                                                10                                    2020004887
+
+With respect to claim (j), leaving her workstation without permission on December 3, 2018, the
+evidence does not support the Agency’s version of the event. According to Complainant, she
+only left her workstation to go to the track for the previously approved one hour. See ROI at
+458. Notably, there is no evidence in the record to support S1’s bare assertion that
+Complainant’s departure did not correlate with the time of her pre-approved Fitness and
+Wellness Leave.
+
+With respect to claim (k), Complainant’s AWOL status on December 6, 2018, the evidence in
+the record casts doubt on the severity of the offense professed by the Agency. The record
+indicates that Complainant made an inadvertent error, submitting her leave request for an
+incorrect date, an error for which she apologized and immediately corrected the next day. See
+ROI at 187-89, 459. Complainant further stated that, although S1 approved the corrected leave
+request, he still marked her as AWOL. See ROI at 459. In addition, the record provides some
+support for Complainant’s assertion that S1 subjected her leave requests to extra scrutiny, which
+was not directed to other employees. S1 sent Complainant an email stating the Agency required
+“administratively acceptable evidence” for sick leave of less than three days “when determined
+necessary by the agency.” See ROI at 189-91. However, S1’s statement to Complainant is not
+supported by the Agency’s Policy on Time and Attendance, which provides only that an
+employee is required to provide supporting documentation for sick leave lasting longer than
+three days. See ROI at 388-89. There is no evidence in the record supporting S1’s insistence
+that Complainant was required to provide evidence to support her sick leave requests of less than
+three days, nor has the Agency provided an explanation for this deviation from the its established
+procedures.
+
+We further emphasize that there is additional evidence in the record which indicates that the
+Agency’s stated reasons for Complainant’s termination were a pretext for discrimination. In
+October 2018, in response to Complainant’s administrative grievance, an HR official sent the
+CSO an email expressing her concerns with S1’s decision to rearrange Complainant’s duties and
+amend her PD (claims (b) and (i)). See ROI at 529-30. In particular, the HR official noted that,
+based on her understanding, Complainant was not the only person with that specific PD. It is
+unclear from the record if any other employee was also assigned a new PD. 4 See id. The HR
+official also stated that it was a “red flag[]” that S1 made these changes given that S1 had
+inquired about terminating Complainant during her probationary period. See ROI at 530.
+Furthermore, while S1 denied any retaliatory motive, and stated that dealing with Complainant’s
+reasonable accommodation request “didn’t take up that much time,” he emailed an HR staff
+person on November 27, 2018, stating that Complainant was not satisfied with her
+accommodation and was going to submit additional medical documentation. In the email S1
+proceeded to complain that he “[had] to spend an extraordinary amount of time dealing with
+administrative issue [sic] concerning this employee.” See ROI at 302, 472.
+
+
+
+
+4
+ S1 stated that he could not recall if any other employees had their duties reassigned at the time.
+See ROI at 474.
+                                                11                                    2020004887
+
+Additionally, he stated that he thought Complainant had an issue with honesty and expressed his
+desire to reassign or discipline Complainant for the “continuous cycle” of administrative issues.
+See id. at 302-303.
+
+With regard to the final reason given for Complainant’s termination, while we acknowledge that
+her unprofessional conduct and use of profanity toward her supervisor is a valid reason for
+termination, we find that, under the circumstances of this case, Complainant’s misconduct was
+only a pretext for discrimination. See Hamilton v. General Elec. Co., 556 F.3d 428 (6th Cir.
+2009) (“[W]hen an employer waits for a legal, legitimate reason to fortuitously materialize, and
+then uses it to cover up his true, longstanding motivations for firing the employee, the
+employer’s actions constitute the very definition of pretext.”) (internal quotations omitted).
+While an agency does not have a duty to excuse an employee’s misconduct as a form of
+reasonable accommodation where such misconduct would result in discipline or discharge if
+committed by another employee, Complainant’s misconduct in this situation was a direct result,
+not only of Complainant’s disability, but of the Agency’s failure to provide her with an effective,
+reasonable accommodation. Moreover, we emphasize that the circumstances of this case support
+an inference that S1 had already decided to terminate Complainant because he had made
+inquiries, in October 2018, about possibly terminating her during her probationary period and
+again expressed his desire to reassign or discipline Complainant on November 27, 2018, less
+than a week before the incidents on which Complainant’s termination was based. We also note
+that the CSO, who ultimately approved the termination, did not provide any additional,
+independent reason for Complainant’s termination. Instead, the CSO stated only that he believed
+S1’s explanation that Complainant was terminated for the reasons given in the termination letter.
+See ROI at 507-507.
+
+We find that the Agency failed to provide sufficient legitimate, nondiscriminatory reasons to
+support its actions, i.e. requiring Complainant to provide supporting documentation for her sick
+leave requests, changing her position description, requiring Complainant to return to her previous
+workstation, marking Complainant AWOL on December 3 and 6, 2018, and terminating her on
+December 10, 2018. We conclude that Complainant successfully established by a preponderance
+of the evidence that the Agency’s reasons were a pretext for discrimination. Therefore,
+Complainant has established that she was discriminated against as alleged.
+
+Hostile Work Environment Based on Disability and Reprisal
+
+We also find that Complainant has shown that she was subjected to a hostile work environment
+based on reprisal and disability, and that the Agency is vicariously liable for the harassment. To
+establish a claim of harassment a complainant must show that: (1) she belongs to a statutorily
+protected class; (2) she was subjected to harassment in the form of unwelcome verbal or physical
+conduct involving the protected class; (3) the harassment complained of was based on her
+statutorily protected class; (4) the harassment affected a term or condition of employment and/or
+had the purpose or effect of unreasonably interfering with the work environment and/or creating
+an intimidating, hostile, or offensive work environment; and (5) there is a basis for imputing
+liability to the employer. See Henson v. City of Dundee, 682 F.2d 897 (11th Cir. 1982).
+                                               12                                    2020004887
+
+Further, the incidents must have been “sufficiently severe or pervasive to alter the conditions of
+[complainant’s] employment and create an abusive working environment.” Harris v. Forklift
+Systems, Inc., 510 U.S. 17, 21 (1993). The harasser’s conduct should be evaluated from the
+objective viewpoint of a reasonable person in the victim’s circumstances. Enforcement
+Guidance on Harris v. Forklift Systems Inc., EEOC Notice No. 915.002 at 6 (Mar. 8, 1994).
+
+With respect to element (5), an employer is subject to vicarious liability for harassment when it
+is created by a supervisor with immediate (or successively higher) authority over the employee.
+See Burlington Industries, Inc., v. Ellerth, 524 U.S. 742, 118 s. Ct. 2257, 2270 (1998); Faragher
+v. City of Boca Raton, 524 U.S. 775, 118 S. Ct. 2275, 2292-93 (1998). However, where the
+harassment does not result in a tangible employment action the agency can raise an affirmative
+defense, which is subject to proof by a preponderance of the evidence, by demonstrating: (1) that
+it exercised reasonable care to prevent and correct promptly any harassing behavior; and (2) that
+complainant unreasonably failed to take advantage of any preventive or corrective opportunities
+provided by the agency or to avoid harm otherwise. See Burlington Industries, supra; Faragher,
+supra; Enforcement Guidance: Vicarious Liability for Unlawful Harassment by Supervisors,
+EEOC Notice No. 915.002 (June 18, 1999). This defense is not available when the harassment
+results in a tangible employment action (e.g., a discharge, demotion, or undesirable
+reassignment) being taken against the employee.
+
+The statutory anti-retaliation provisions prohibit any adverse treatment that is based on a
+retaliatory motive and is reasonably likely to deter a reasonable employee from engaging in
+protected activity. Burlington N. and Santa Fe Ry. Co. v. White, 548 U.S. 53 (2006). On the
+one hand, petty slights and trivial annoyances are not actionable. On the other, adverse actions
+or threats to take adverse actions such as reprimands, negative evaluations, and harassment are
+actionable. EEOC Enforcement Guidance on Retaliation and Related Issues, EEOC Notice No.
+915.004, § II(B) (Aug. 25, 2016).
+
+As previously noted, in a November 27, 2018 email, S1 complained about the “continuous
+cycle” of “administrative issues” he had to handle regarding Complainant’s reasonable
+accommodation request. While this email was not directed to Complainant, other evidence in the
+record supports Complainant’s assertion that S1 became hostile and started treating her
+differently after she submitted her reasonable accommodation request. In particular, we note S1
+subjected Complainant’s leave requests to additional scrutiny by requiring her to submit
+documentation in support her sick leave, a requirement which is not reflected in the Agency’s
+Policy on Time and Attendance. See ROI at 189-91; 388-89. The record also reveals that, more
+than once, S1 demonstrated an indifference to Complainant’s disability. For example, when
+Complainant explained why she could not return to her assigned desk, S1 simply ordered her
+back to her designated workstation and purportedly advised Complaint to speak with her
+doctors. 5 See ROI at 455.
+
+
+
+5
+ S1 denies telling Complainant that he did not care about her condition, as alleged by
+Complainant. There were no witnesses to the exchange.
+                                                13                                     2020004887
+
+We find that considered as a whole, the instant record establishes that Complainant was
+subjected to harassment based on disability and reprisal. The alleged harassment also clearly
+affected the terms and conditions of her employment as she was held to different standards than
+her coworkers when it came to requesting sick leave, unfairly marked AWOL, and ultimately
+terminated without any warning, counseling, or investigation. We further find that these
+incidents of harassment are sufficiently severe to constitute a hostile work environment.
+
+S1 was responsible for the disability and reprisal-based harassment, and as Complainant’s
+supervisor, the Agency is vicariously liable. The Agency has not established an affirmative
+defense, as the preponderance of the evidence does not establish that it exercised reasonable care
+to prevent and promptly correct any harassing behavior. We note that the CSO acknowledged
+that Complainant reached out to him in October 2018, about feeling belittled by S1, and he
+explained that he spoke with S1 about his demeanor and tone. See ROI at 515. However, the
+record reflects that the CSO did not take any further action. See id. In addition, after
+Complainant filed her administrative grievance, an HR official emailed the CSO expressing her
+concerns about the “red flags” raised by S1’s treatment of Complainant at the time, but the CSO
+not only failed to take any action, he accepted S1’s later explanation for Complainant’s
+termination without question. See ROI at 507-508; 530. Therefore, Complainant has established
+that she was subjected to a hostile work environment based on reprisal and disability.
+
+                                         CONCLUSION
+
+Based on a thorough review of the record and the contentions on appeal, including those not
+specifically addressed herein, we find that Complainant has established that the Agency
+subjected her to discrimination and a hostile work environment based on disability and reprisal,
+and denied her a reasonable accommodation.
+
+Therefore, we REVERSE the Agency’s final decision finding no discrimination and REMAND
+the matter to the Agency for further processing in accordance with this decision and the Order
+below.
+
+                                        ORDER (C0618)
+
+The Agency is ordered to take the following remedial actions:
+
+I.     Within thirty (30) days of the date this decision is issued, the Agency shall offer to
+       reinstate Complainant in the position of IT Specialist, or a substantially equivalent
+       position. Complainant shall have fifteen (15) days from the date of the offer to accept or
+       decline the position. If Complainant should decline the Agency’s offer, the date of her
+       rejection shall be the end date for any back pay due Complainant. The offer shall state
+       that reinstatement will be effective retroactively to the date of the termination giving rise
+       to the instant appeal, and shall include all benefits, including backpay, that she would
+       have received, but for the termination. Should Complainant not wish to be reinstated, she
+       shall receive backpay and benefits, as noted below, from the date of her termination to
+       the date of her response to the agency.
+                                               14                                    2020004887
+
+II.    Within 60 calendar days of the date this decision is issued, the Agency shall determine
+       the appropriate amount of back pay, with interest, and other benefits due the
+       Complainant, pursuant to 29 C.F.R. § 1614.501. The amount of backpay shall be equal
+       to the pay Complainant would have earned had she not been terminated in December
+       2018. The amount of backpay may be reduced by the amount of interim earnings, not to
+       include unemployment compensation or similar excludable income, acquired during the
+       period between the date of termination and the date of either reinstatement or rejection of
+       the offer of reinstatement. The Complainant shall cooperate in the Agency’s efforts to
+       compute the amount of back pay and benefits due, and shall provide all relevant
+       information requested by the Agency. If there is a dispute regarding the exact amount of
+       back pay and/or benefits, the Agency shall issue a check to the Complainant for the
+       undisputed amount within 60 calendar days of the date the Agency determines the
+       amount it believes to be due. The Complainant may petition for enforcement or
+       clarification of the amount in dispute. The petition for clarification or enforcement must
+       be filed with the Compliance Officer, at the address referenced in the statement entitled
+       “Implementation of the Commission's Decision.”             The Agency shall also pay
+       compensation for the adverse tax consequences of receiving back pay as a lump sum.
+       Complainant has the burden of establishing the amount of increased tax liability, if any.
+       Once the Agency has calculated the proper amount of back pay, Complainant shall be
+       given the opportunity to present the Agency with evidence regarding the adverse tax
+       consequences, if any, for which Complainant shall then be compensated.
+
+III.   If Complainant accepts reinstatement to her position and to the extent that Complainant
+       still requires it, the Agency shall immediately engage in the interactive process with
+       Complainant and provide her with a reasonable accommodation for her disability.
+
+IV.    Within sixty (60) days of the date this decision is issued, the agency shall expunge the
+       termination letter and all references to complainant’s termination from all agency records
+       and files.
+
+V.     Within ninety (90) calendar days of the date this decision is issued, the Agency shall
+       conduct a supplemental investigation concerning Complainant’s entitlement to
+       compensatory damages, determine the amount of compensatory damages due
+       Complainant, and issue a final decision on compensatory damages with appeal rights to
+       the Commission. The Agency shall allow Complainant to present evidence in support of
+       her compensatory damages claim. See Carle v. Dep’t of the Navy, EEOC Appeal No.
+       01922369 (Jan. 5, 1993). Complainant shall cooperate with the Agency in this regard.
+       The Agency shall issue a final decision addressing the issues of compensatory damages
+       no later than 30 calendar days after the completion of the investigation. Within thirty
+       (30) calendar days of determining the amount of compensatory damages due
+       Complainant, the Agency shall pay that amount to Complainant.
+
+VI.    Within sixty (60) calendar days of the date this decision is issued, the Agency shall
+       restore to Complainant any leave used as the result of the unlawful harassment or the
+       Agency’s failure to accommodate Complainant. Complainant shall cooperate with the
+                                                 15                                     2020004887
+
+        Agency and provide it with information concerning what leave she took as a result of the
+        harassment and the failure to accommodate.
+
+VII.    Within ninety (90) calendar days of the date this decision is issued, the Agency shall
+        provide a minimum of four hours of in-person or interactive EEO training to the
+        responsible management officials, including S1 and the CSO. The training shall have a
+        special emphasis on reprisal, disability discrimination, the reasonable accommodation
+        process, and harassment.
+
+VIII.   Within sixty (60) calendar days of the date this decision is issued, the Agency shall
+        consider discipline against the responsible officials, including S1 and the CSO. The
+        Agency shall report its decision to the Compliance Officer. If the Agency decides not to
+        take disciplinary action, it shall set forth the reason(s) for its decision. If S1 or the CSO
+        is no longer employed by the Agency, as either an employee or a contractor, the Agency
+        shall provide evidence of their departure date(s).
+
+IX.     Within thirty (30) calendar days of the date this decision is issued the Agency shall post a
+        notice in accordance with the statement entitled “Posting Order.”
+
+The Agency is further directed to submit a report of compliance in digital format as provided in
+the statement entitled “Implementation of the Commission's Decision.” The report shall be
+submitted via the Federal Sector EEO Portal (FedSEP). See 29 C.F.R. § 1614.403(g). Further,
+the report must include supporting documentation, including evidence that the corrective action
+has been implemented.
+
+                                   POSTING ORDER (G0617)
+
+The Agency is ordered to post at its San Diego, California Littoral Combat Ship Squadron One
+facility copies of the attached notice. Copies of the notice, after being signed by the Agency’s
+duly authorized representative, shall be posted both in hard copy and electronic format by the
+Agency within 30 calendar days of the date this decision was issued, and shall remain posted for
+60 consecutive days, in conspicuous places, including all places where notices to employees are
+customarily posted. The Agency shall take reasonable steps to ensure that said notices are not
+altered, defaced, or covered by any other material. The original signed notice is to be submitted
+to the Compliance Officer as directed in the paragraph entitled “Implementation of the
+Commission’s Decision,” within 10 calendar days of the expiration of the posting period. The
+report must be in digital format, and must be submitted via the Federal Sector EEO Portal
+(FedSEP). See 29 C.F.R. § 1614.403(g).
+
+                                  ATTORNEY’S FEES (H1019)
+
+If Complainant has been represented by an attorney (as defined by 29 C.F.R. §
+1614.501(e)(1)(iii)), she/he is entitled to an award of reasonable attorney's fees incurred in the
+processing of the complaint. 29 C.F.R. § 1614.501(e). The award of attorney’s fees shall be paid
+by the Agency. The attorney shall submit a verified statement of fees to the Agency -- not to the
+Equal Employment Opportunity Commission, Office of Federal Operations -- within thirty (30)
+                                                16                                    2020004887
+
+calendar days of receipt of this decision. The Agency shall then process the claim for attorney's
+fees in accordance with 29 C.F.R. § 1614.501.
+
+             IMPLEMENTATION OF THE COMMISSION’S DECISION (K0719)
+
+Under 29 C.F.R. § 1614.405(c) and §1614.502, compliance with the Commission’s corrective
+action is mandatory. Within seven (7) calendar days of the completion of each ordered
+corrective action, the Agency shall submit via the Federal Sector EEO Portal (FedSEP)
+supporting documents in the digital format required by the Commission, referencing the
+compliance docket number under which compliance was being monitored. Once all compliance
+is complete, the Agency shall submit via FedSEP a final compliance report in the digital format
+required by the Commission. See 29 C.F.R. § 1614.403(g). The Agency’s final report must
+contain supporting documentation when previously not uploaded, and the Agency must send a
+copy of all submissions to the Complainant and his/her representative.
+
+If the Agency does not comply with the Commission’s order, the Complainant may petition the
+Commission for enforcement of the order. 29 C.F.R. § 1614.503(a). The Complainant also has
+the right to file a civil action to enforce compliance with the Commission’s order prior to or
+following an administrative petition for enforcement. See 29 C.F.R. §§ 1614.407, 1614.408, and
+29 C.F.R. § 1614.503(g). Alternatively, the Complainant has the right to file a civil action on the
+underlying complaint in accordance with the paragraph below entitled “Right to File a Civil
+Action.” 29 C.F.R. §§ 1614.407 and 1614.408. A civil action for enforcement or a civil action
+on the underlying complaint is subject to the deadline stated in 42 U.S.C. 2000e-16(c) (1994 &
+Supp. IV 1999). If the Complainant files a civil action, the administrative processing of the
+complaint, including any petition for enforcement, will be terminated. See 29 C.F.R.
+§ 1614.409.
+
+Failure by an agency to either file a compliance report or implement any of the orders set forth in
+this decision, without good cause shown, may result in the referral of this matter to the Office of
+Special Counsel pursuant to 29 C.F.R. § 1614.503(f) for enforcement by that agency.
+
+                           STATEMENT OF RIGHTS - ON APPEAL
+                               RECONSIDERATION (M0920)
+
+The Commission may, in its discretion, reconsider this appellate decision if Complainant or the
+Agency submits a written request that contains arguments or evidence that tend to establish that:
+       1. The appellate decision involved a clearly erroneous interpretation of material fact or
+          law; or
+       2. The appellate decision will have a substantial impact on the policies, practices, or
+          operations of the agency.
+
+Requests for reconsideration must be filed with EEOC’s Office of Federal Operations (OFO)
+within thirty (30) calendar days of receipt of this decision. If the party requesting
+reconsideration elects to file a statement or brief in support of the request, that statement or
+brief must be filed together with the request for reconsideration.
+                                                  17                                    2020004887
+
+A party shall have twenty (20) calendar days from receipt of another party’s request for
+reconsideration within which to submit a brief or statement in opposition. See 29 C.F.R. §
+1614.405; Equal Employment Opportunity Management Directive for 29 C.F.R. Part 1614 (EEO
+MD-110), at Chap. 9 § VII.B (Aug. 5, 2015).
+
+Complainant should submit his or her request for reconsideration, and any statement or brief in
+support of his or her request, via the EEOC Public Portal, which can be found at
+
+https://publicportal.eeoc.gov/Portal/Login.aspx
+
+Alternatively, Complainant can submit his or her request and arguments to the Director, Office
+of Federal Operations, Equal Employment Opportunity Commission, via regular mail addressed
+to P.O. Box 77960, Washington, DC 20013, or by certified mail addressed to 131 M Street, NE,
+Washington, DC 20507. In the absence of a legible postmark, a complainant’s request to
+reconsider shall be deemed timely filed if OFO receives it by mail within five days of the
+expiration of the applicable filing period. See 29 C.F.R. § 1614.604.
+
+An agency’s request for reconsideration must be submitted in digital format via the EEOC’s
+Federal Sector EEO Portal (FedSEP). See 29 C.F.R. § 1614.403(g). Either party’s request
+and/or statement or brief in opposition must also include proof of service on the other party,
+unless Complainant files his or her request via the EEOC Public Portal, in which case no proof of
+service is required.
+
+Failure to file within the 30-day time period will result in dismissal of the party’s request for
+reconsideration as untimely, unless extenuating circumstances prevented the timely filing of the
+request. Any supporting documentation must be submitted together with the request for
+reconsideration. The Commission will consider requests for reconsideration filed after the
+deadline only in very limited circumstances. See 29 C.F.R. § 1614.604(c).
+
+               COMPLAINANT’S RIGHT TO FILE A CIVIL ACTION (R0610)
+
+This is a decision requiring the Agency to continue its administrative processing of your
+complaint. However, if you wish to file a civil action, you have the right to file such action in an
+appropriate United States District Court within ninety (90) calendar days from the date that you
+receive this decision. In the alternative, you may file a civil action after one hundred and
+eighty (180) calendar days of the date you filed your complaint with the Agency, or filed your
+appeal with the Commission. If you file a civil action, you must name as the defendant in the
+complaint the person who is the official Agency head or department head, identifying that person
+by his or her full name and official title. Failure to do so may result in the dismissal of your case
+in court. “Agency” or “department” means the national organization, and not the local office,
+facility or department in which you work. Filing a civil action will terminate the
+administrative processing of your complaint.
+                                               18                                    2020004887
+
+                          RIGHT TO REQUEST COUNSEL (Z0815)
+
+If you want to file a civil action but cannot pay the fees, costs, or security to do so, you may
+request permission from the court to proceed with the civil action without paying these fees or
+costs. Similarly, if you cannot afford an attorney to represent you in the civil action, you may
+request the court to appoint an attorney for you. You must submit the requests for waiver of
+court costs or appointment of an attorney directly to the court, not the Commission. The
+court has the sole discretion to grant or deny these types of requests. Such requests do not alter
+the time limits for filing a civil action (please read the paragraph titled Complainant’s Right to
+File a Civil Action for the specific time limits).
+
+FOR THE COMMISSION:
+
+
+
+______________________________                  Carlton M. Hadden’s signature
+Carlton M. Hadden, Director
+Office of Federal Operations
+
+
+February 24, 2022
+Date
+

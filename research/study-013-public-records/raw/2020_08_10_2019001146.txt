@@ -1,0 +1,347 @@
+              U.S. EQUAL EMPLOYMENT OPPORTUNITY COMMISSION
+                            Office of Federal Operations
+                                   P.O. Box 77960
+                              Washington, DC 20013
+
+
+                                            Otis H.,1
+                                          Complainant,
+
+                                                v.
+
+                                      Dr. Mark T. Esper,
+                                          Secretary,
+                                    Department of Defense
+                            (Defense Information Systems Agency),
+                                           Agency.
+
+                                    Appeal No. 2019001146
+
+                                Agency No. DOD-DISA-18-002
+
+                                           DECISION
+
+On December 3, 2018, Complainant filed an appeal with the Equal Employment Opportunity
+Commission (EEOC or Commission), pursuant to 29 C.F.R. § 1614.403(a), from the Agency’s
+November 14, 2018, final decision concerning his equal employment opportunity (EEO) complaint
+alleging employment discrimination in violation of Title VII of the Civil Rights Act of 1964 (Title
+VII), as amended, 42 U.S.C. § 2000e et seq. For the following reasons, the Commission AFFIRMS
+the Agency’s final decision.
+
+                                     ISSUES PRESENTED
+
+The issues presented are whether the preponderance of the evidence in the record establishes that
+Complainant was subjected to a hostile work environment and discrimination based on his
+protected classes.
+
+                                        BACKGROUND
+
+At the time of events giving rise to this complaint, Complainant worked as a Network
+Administrator at the Agency’s Business Division in Procurement Logistics (PL) at Scott Air Force
+Base in Illinois.
+
+
+
+1
+ This case has been randomly assigned a pseudonym which will replace Complainant’s name
+when the decision is published to non-parties and the Commission’s website.
+                                                 2                                     2019001146
+
+On November 27, 2017, Complainant filed an EEO complaint alleging that the Agency subjected
+him to a hostile work environment and discriminated against him on the bases of race (African-
+American), sex2 (male), and color3 (Black) when:
+
+       1.      from August 29, 2017 to April 1, 2018, Complainant’s first line supervisor, the
+               Chief Enterprise Services (S1) (Caucasian male), allowed Global Service Desk
+               employees, CW1 and CW2, to direct networking courses of action on the
+               Information Technology System Management ticketing system;
+
+       2.      from August 29, 2017 to April 1, 2018, S1 segregated Complainant from PL13
+               team members and restricted the assistance rendered to Complainant by PL13 team
+               members;
+
+       3.      on October 18, 2017, S1 harassed and bullied Complainant into letting Lifecycle
+               Replacement team member, CW3, to continue to cut users from the switch after
+               Complainant instructed CW3 not to do so; and,
+
+       4.      From October 2017 to April 1, 2018, S1 has been more responsible to feedback
+               provided by Caucasian PL13 team members, and less likely to report network
+               outages precipitated by Caucasian PL13 team members in comparison to
+               Complainant.
+
+The investigative record reflects the following pertinent matters relating to the subject claims.
+
+CW1 and CW2 (both Caucasian females) worked in the helpdesk ticketing system. When a system
+goes down, CW1 and CW2 assign the ticket to an administrator, such as Complainant.
+Complainant then investigates why the incident occurred. Complainant asserted that for at least
+six months, CW1 and CW2, directed him on how to do his job. Complainant asserted that he
+complained of this, and his second line supervisor, the Chief Business Operations Division (S2)
+(Caucasian male) allegedly directed them to stop. However, Complainant asserted that S1 allowed
+them to start directing his work again in August 2017. Complainant found this frustrating as CW1
+and CW2 were customer support personnel, did not have the technical expertise to direct his work.
+
+S1 stated that he did not supervise CW1 and CW2. S1 noted that in June 2017, CW1 and CW2
+were moved to a different building after both individuals alleged that Complainant was harassing
+them.
+
+
+
+2
+ During the investigation, Complainant informed the EEO Investigator that he did not believe that
+his sex was a factor regarding his allegations.
+3
+ During the investigation, Complainant withdrew the basis of color from his complaint.
+Complainant testified that he considered race and color to be synonymous.
+                                                3                                     2019001146
+
+S1 denied ever directing CW1 or CW2 to instruct Complainant how to do his job, or that
+Complainant should follow either CW1 or CW2’s advice. S2 stated that he was aware of the
+accusation but that when he looked into the matter, he could not find evidence to substantiate
+Complainant’s allegations.
+
+Regarding Claim 2, Complainant asserted that the incident occurred in October 2017. Complainant
+stated that he was working on a Lifecycle Replacement project. He stated that there was cabling
+that had to be done prior to the headquarters (HQ) team arriving. Prior to the HQ team’s arrival,
+S1 allegedly informed Complainant that he would have to do the cabling alone. When he asked
+why he had to do the cabling alone, S1 purportedly told him that he had no other networking people
+to assist him.
+
+S1 denied segregating Complainant, forcing him to work alone, or barring those team members
+from assisting him. S1 stated that prior to becoming Complainant’s supervisor, Complainant had
+signed a “Pre-cutover site requirements” document dated May 10, 2017. The requirements were
+set to be completed prior to the HQ team arriving. However, Complainant had to take emergency
+leave from October 19 to 23, 2017, prior to finishing the project. S1 and S2 noted that while not
+in their responsibilities, the HQ team completed the cabling cleanup with assistance from the
+Telecom team. As for not having enough assistance, S1 sent Complainant numerous emails seeing
+if he needed assistance as the project was supposed to be completed in August 2017 but was pushed
+back to October 2017. S2 corroborated the statement and noted that he was copied on those emails.
+
+Part of Complainant’s job is to ensure the network runs smoothly. On October 18, 2017,
+Complainant was organizing cables in the communications closet that bad become badly
+entangled. Complainant asserted that he informed S1 that if the cables were cut, users would lose
+connectivity. However, some cables were so badly entangled, that reorganizing without cutting
+some was impossible. At some point, S1, Complainant, and CW3 (Caucasian female) were
+together organizing the closet. CW3 cut some cables as part of the cleanup. S1 initially believed
+that there were no users on the cables being cut. However, S1 later determined that those who were
+teleworking were inadvertently impacted. S1 informed upper management that about fifty users
+were impacted. Complainant asserted he was required to fix the connections without assistance.
+S1 denied this and stated that he and another employee assisted in reconnecting the impacted users.
+
+Regarding the fourth claim, Complainant noted that outages caused by Caucasian employees were
+less likely, if ever, to be reported to upper management, especially when compared to networks he
+worked on. For example, on October 25, 2017, Complainant asserted that S1 brought down a
+network, but that it was not reported to upper management. In contrast, when Complainant worked
+on the wireless local area network (LAN) infrastructure, and it temporarily went offline, it was
+immediately reported. Complainant asserted that the two incidents demonstrated how management
+was less likely to report network outages caused by Caucasian employees compared to him.
+
+S1 asserted that the October 25, 2017 incident was the result of a firewall being down. It was a
+simple matter of a cable being mistakenly re-plugged into an incorrect port. S1 stated that it was
+easily and readily resolved.
+                                                 4                                      2019001146
+
+The wireless system, on the other hand, directly impacted users as the system was down for an
+extended period. The wireless network was reported by users, and not by S1 or S2. S1 and S2
+noted that no discipline was issued in either incident.
+
+At the conclusion of the investigation, the Agency provided Complainant with a copy of the report
+of investigation and notice of his right to request a hearing before an EEOC Administrative Judge
+(AJ). When Complainant did not request a hearing within the time frame provided in 29 C.F.R.
+§ 1614.108(f), the Agency issued a final decision pursuant to 29 C.F.R. § 1614.110(b). The
+decision concluded that Complainant failed to prove that the Agency subjected him to
+discrimination as alleged.
+
+                                  CONTENTIONS ON APPEAL
+
+Complainant requested that the Commission reverse the Agency’s finding of no discrimination.
+Complainant asserted that while he provided documentation substantiating his claims, it appeared
+as if the Agency did not review it as it was not discussed in the final Agency decision.
+
+The Agency did not provide an appellate brief in opposition to Complainant’s appeal.
+
+                                  ANALYSIS AND FINDINGS
+
+Standard of Review
+
+As this is an appeal from a decision issued without a hearing, pursuant to 29 C.F.R. § 1614.110(b),
+the Agency’s decision is subject to de novo review by the Commission. 29 C.F.R. § 1614.405(a).
+See Equal Employment Opportunity Management Directive for 29 C.F.R. Part 1614 (EEO MD-
+110), at Chapter 9, § VI.A. (Aug. 5, 2015) (explaining that the de novo standard of review “requires
+that the Commission examine the record without regard to the factual and legal determinations of
+the previous decision maker,” and that EEOC “review the documents, statements, and testimony
+of record, including any timely and relevant submissions of the parties, and . . . issue its decision
+based on the Commission’s own assessment of the record and its interpretation of the law”).
+
+Disparate Treatment
+
+Complainant alleges that he was subjected to disparate treatment. A claim of disparate treatment
+is examined under the three-part analysis first enunciated in McDonnell Douglas Corporation v.
+Green, 411 U.S. 792 (1973). For a complainant to prevail, he must first establish a prima facie
+case of discrimination by presenting facts that, if unexplained, reasonably give rise to an inference
+of discrimination, i.e., that a prohibited consideration was a factor in the adverse employment
+action. McDonnell Douglas, 411 U.S. at 802, n. 13; Furnco Construction Corp. v. Waters, 438
+U.S. 567 (1978). The burden then shifts to the agency to articulate a legitimate, nondiscriminatory
+reason for its actions. Texas Department of Community Affairs v. Burdine, 450 U.S. 248, 253
+(1981).
+                                                   5                                       2019001146
+
+Once the agency has met its burden, the complainant bears the ultimate responsibility to persuade
+the fact finder by a preponderance of the evidence that the agency acted on the basis of a prohibited
+reason. St. Mary's Honor Center v. Hicks, 509 U.S. 502 (1993).
+
+This established order of analysis in discrimination cases, in which the first step normally consists
+of determining the existence of a prima facie case, need not be followed in all cases. Where the
+agency has articulated a legitimate, nondiscriminatory reason for its actions, the factual inquiry
+can proceed directly to the third step of the McDonnell Douglas analysis, the ultimate issue of
+whether complainant has shown by a preponderance of the evidence that the agency’s actions were
+motivated by discrimination. U.S. Postal Service Board of Governors v. Aikens, 460 U.S. 711,
+713-714 (1983).
+
+Unlawful Harassment
+
+Complainant also alleged that he was subjected to unlawful harassment. A harassment claim is
+examined under the standards set forth in Harris v. Forklift Systems, Inc., 510 U.S. 17, 21 (1993).
+See also Enforcement Guidance on Harris v. Forklift Systems. Inc., EEOC Notice No. 915.002
+(Mar. 8, 1994). To establish this claim, a complainant must show that: (1) he belongs to a
+statutorily protected class; (2) he was subjected to harassment in the form of unwelcome verbal or
+physical conduct involving the protected class; (3) the harassment complained of was based on her
+statutorily protected class; (4) the harassment affected a term or condition of employment and/or
+had the purpose or effect of unreasonably interfering with the work environment and/or creating
+an intimidating, hostile, or offensive work environment; and (5) there is a basis for imputing
+liability.
+
+The Supreme Court in Harris explained that an “objectively hostile or abusive work environment
+[is created when] a reasonable person would find [it] hostile or abusive” and the complainant
+subjectively perceives it as such. Harris, 510 U.S. at 21-22. Whether the harassment is sufficiently
+severe to trigger a violation must be determined by looking at all the circumstances, including “the
+frequency of the discriminatory conduct; its severity; whether it is physically threatening or
+humiliating, or a mere offensive utterance; and whether it unreasonably interferes with an
+employee's work performance.” Id. at 23.
+
+A hostile work environment exists when the workplace is permeated with discriminatory
+intimidation, ridicule, and insult that is sufficiently severe or pervasive to alter the condition of the
+complainant's employment. See Harris, supra; see also Oncale v. Sundowner Offshore Svcs., Inc.,
+523 U.S. 75, 78 (1998).
+
+With respect to element (5) of a harassment claim, an agency is subject to vicarious liability for
+harassment when it is created by a supervisor with immediate (or successively higher) authority
+over the employee. See Burlington Industries, Inc., v. Ellerth, 524 U.S. 742 (1998); Faragher v.
+City of Boca Raton, 524 U.S. 775 (1998); Enforcement Guidance: Vicarious Liability for Unlawful
+Harassment by Supervisors, EEOC Notice No. 915.002 (June 18, 1999).
+                                                6                                     2019001146
+
+Analysis
+
+Regarding Complainant’s disparate treatment claims, if we assume, arguendo, that Complainant
+established a prima facie case of discrimination based on his protected classes, the Agency has
+articulated legitimate, nondiscriminatory reasons for its actions. For example, Complainant
+asserted that he was treated differently compared to Caucasian employees when it came to network
+outages. Complainant asserted that the disparate treatment singled him out and made him appear
+to be a poor performing employee. Complainant noted, for example, an October 25, 2017 incident
+when S1 allowed a network to temporarily come down but was not widely reported for causing
+the issue. In comparison, when he worked on a wireless network issue, he was immediately
+reported to upper management when the network came down. Complainant believed it was part of
+a pattern of Caucasian employees being treated preferentially. Here, the record demonstrated that
+the two incidents were substantially different from one another. S1’s firewall incident was a quick
+resolve that did not negatively impact employees’ productions. In contrast, when the wireless
+network came down, users themselves widely reported the incident. The record indicated that
+neither S1 or Complainant was disciplined for either issue, and it appeared that both were examples
+of common workplace events.
+
+Regarding Complainant’s claim of hostile work environment, we find that the examples provided
+do not demonstrate evidence of a pervasively hostile work environment. For example,
+Complainant asserted that S1 had directed and/or allowed CW1 and CW2 to direct Complainant
+on how to do the technical component of his position. Complainant found this to be harassing as
+neither were technically trained individuals, and yet were instructing him on how to do his job.
+However, despite Complainant’s assertions, there is no evidence in the record that demonstrated
+that management had instructed CW1 or CW2 to direct Complainant on how to do the technical
+components of his job. CW1 and CW2 both worked in the ticketing helpdesk and were responsible
+for assigning tickets when claims occurred. There is no indication that outside of assigning
+Complainant tickets for work, that either directed Complainant on how to do his job. Moreover,
+after submitting a complaint to S2, S2 investigated the matter, but did not find any evidence to
+substantiate Complainant’s complaint. Complainant also noted that he was frequently required to
+work alone and denied assistance when asked.
+
+Based on the record, we find no evidence that these incidents would demonstrate an objectively
+hostile environment. We note that the discrimination statutes are not a civility code. What is
+prohibited is “behavior so objectively offensive as to alter the conditions of the victim’s
+employment.” Oncale, 523 U.S. at 81. In sum, the evidence does not support a finding of
+discrimination on any basis, the presence of discriminatory animus, or the existence of a hostile
+work environment.
+                                                  7                                     2019001146
+
+                                          CONCLUSION
+
+Based on a thorough review of the record and the contentions on appeal, including those not
+specifically addressed or referenced herein, we AFFIRM the Agency’s finding that it did not
+discriminate against Complainant as alleged.
+
+                           STATEMENT OF RIGHTS - ON APPEAL
+                               RECONSIDERATION (M0617)
+
+The Commission may, in its discretion, reconsider the decision in this case if the Complainant or
+the Agency submits a written request containing arguments or evidence which tend to establish
+that:
+
+       1.     The appellate decision involved a clearly erroneous interpretation of material fact or
+               law; or
+
+       2.     The appellate decision will have a substantial impact on the policies, practices, or
+               operations of the Agency.
+
+Requests to reconsider, with supporting statement or brief, must be filed with the Office of Federal
+Operations (OFO) within thirty (30) calendar days of receipt of this decision. A party shall have
+twenty (20) calendar days of receipt of another party’s timely request for reconsideration in
+which to submit a brief or statement in opposition. See 29 C.F.R. § 1614.405; Equal Employment
+Opportunity Management Directive for 29 C.F.R. Part 1614 (EEO MD-110), at Chap. 9 § VII.B
+(Aug. 5, 2015). All requests and arguments must be submitted to the Director, Office of Federal
+Operations, Equal Employment Opportunity Commission. Complainant’s request may be
+submitted via regular mail to P.O. Box 77960, Washington, DC 20013, or by certified mail to 131
+M Street, NE, Washington, DC 20507. In the absence of a legible postmark, the request to
+reconsider shall be deemed timely filed if it is received by mail within five days of the expiration
+of the applicable filing period. See 29 C.F.R. § 1614.604. The agency’s request must be submitted
+in digital format via the EEOC’s Federal Sector EEO Portal (FedSEP). See 29 C.F.R. §
+1614.403(g). The request or opposition must also include proof of service on the other party.
+
+Failure to file within the time period will result in dismissal of your request for reconsideration as
+untimely, unless extenuating circumstances prevented the timely filing of the request. Any
+supporting documentation must be submitted with your request for reconsideration. The
+Commission will consider requests for reconsideration filed after the deadline only in very limited
+circumstances. See 29 C.F.R. § 1614.604(c).
+
+               COMPLAINANT’S RIGHT TO FILE A CIVIL ACTION (S0610)
+
+You have the right to file a civil action in an appropriate United States District Court within ninety
+(90) calendar days from the date that you receive this decision. If you file a civil action, you must
+name as the defendant in the complaint the person who is the official Agency head or department
+head, identifying that person by his or her full name and official title.
+                                                   8                                      2019001146
+
+Failure to do so may result in the dismissal of your case in court. “Agency” or “department” means
+the national organization, and not the local office, facility or department in which you work. If you
+file a request to reconsider and also file a civil action, filing a civil action will terminate the
+administrative processing of your complaint.
+
+                            RIGHT TO REQUEST COUNSEL (Z0815)
+
+If you want to file a civil action but cannot pay the fees, costs, or security to do so, you may request
+permission from the court to proceed with the civil action without paying these fees or costs.
+Similarly, if you cannot afford an attorney to represent you in the civil action, you may request the
+court to appoint an attorney for you. You must submit the requests for waiver of court costs or
+appointment of an attorney directly to the court, not the Commission. The court has the sole
+discretion to grant or deny these types of requests. Such requests do not alter the time limits for
+filing a civil action (please read the paragraph titled Complainant’s Right to File a Civil Action for
+the specific time limits).
+
+FOR THE COMMISSION:
+
+
+
+______________________________                     Carlton M. Hadden’s signature
+Carlton M. Hadden, Director
+Office of Federal Operations
+
+
+February 25, 2020
+Date
+

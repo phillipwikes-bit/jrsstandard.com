@@ -1,0 +1,295 @@
+             U.S. EQUAL EMPLOYMENT OPPORTUNITY COMMISSION
+                           Office of Federal Operations
+                                  P.O. Box 77960
+                             Washington, DC 20013
+
+
+                                           Fidel S., 1
+                                          Complainant,
+
+                                                v.
+
+                                       Carlos Del Toro,
+                                          Secretary,
+                                    Department of the Navy,
+                                           Agency.
+
+                                    Appeal No. 2023002334
+
+                                 Hearing No. 551-2022-00052X
+
+                                 Agency No. 21-4523A-00245
+
+
+                                           DECISION
+
+Complainant filed an appeal with the Equal Employment Opportunity Commission (EEOC or
+Commission), pursuant to 29 C.F.R. § 1614.403(a), from the Agency’s February 10, 2023, final
+order concerning his equal employment opportunity (EEO) complaint alleging employment
+discrimination in violation of Section 501 of the Rehabilitation Act of 1973 (Rehabilitation Act),
+as amended, 29 U.S.C. § 791 et seq.
+
+                                        BACKGROUND
+
+At the time of events giving rise to this complaint, Complainant worked as a Helper Trainee,
+Marine Machinery Mechanic at the Agency’s Puget Sound Naval Shipyard and Intermediate
+Maintenance Facility in Bremerton, Washington. Complainant began his career conditional
+appointment on January 7, 2019, and he was subject to a two-year probationary period. Report of
+Investigation (ROI) at 113.
+
+
+
+
+1
+ This case has been randomly assigned a pseudonym which will replace Complainant’s name
+when the decision is published to non-parties and the Commission’s website.
+                                                 2                                     2023002334
+
+On or about June 1, 2019, Complainant suffered a workplace injury that caused a right shoulder
+slap tear/adhesive capsulitis. Complainant testified that he needed accommodations due to his
+inability to reach above his head and carry heavy objects, and accommodations were provided.
+ROI at 402, 405, 606.
+
+On March 17, 2021, Complainant filed an EEO complaint alleging that the Agency discriminated
+against him based on disability (physical) when on December 22, 2020, he was notified of his
+termination from federal service, effective December 31, 2020. At the conclusion of the
+investigations, 2 the Agency provided Complainant with a copy of the ROI and notice of his right
+to request a hearing before an EEOC Administrative Judge (AJ). Complainant timely requested
+a hearing.
+
+On November 21, 2022, the AJ issued a Notice of Intent to Issue Summary Judgment (“Notice of
+Intent”). The AJ noted that there did not appear to be any issues of material fact or credibility to
+be determined at a hearing. The AJ found that there was no evidence to show that Complainant’s
+termination was motivated by disability. For example, the record lacked evidence that a non-
+disabled employee was treated more favorably under similar circumstances. The Agency
+removed Complainant during his probationary period due to his repeated failures to obtain the
+necessary “non-nuclear quality control” (NNQC) qualification required to effectively perform his
+duties. The record also showed that the Agency terminated other employees for failing to obtain
+qualifications during their probationary periods. In addition, Complainant’s current first-line
+supervisor (“Supervisor”) reported that Complainant’s workplace attitude was often
+uncooperative and combative.
+
+To the extent that Complainant believed that his medical limitations were the cause of his failure
+to obtain his qualifications and that the Agency failed to accommodate his limitations, the AJ
+found that Complainant did not raise a failure to accommodate claim. The AJ stated that
+Complainant’s allegations of discriminatory treatment appear to rely upon subjective opinion,
+which was insufficient to defeat summary judgment, but if Complainant possessed evidence to
+corroborate his claims, he should submit it. The AJ ordered the parties to respond to the Notice
+of Intent. Both parties filed timely responses.
+
+On January 11, 2023, the AJ issued a decision without a hearing. Upon review of the parties’
+responses, the AJ found that Complainant did not provide a reason to disturb the findings in the
+prior Notice of Intent. The AJ concluded that the evidentiary record was sufficiently developed
+and granted summary judgment in the Agency’s favor.
+
+The Agency subsequently issued a final order adopting the AJ’s finding that Complainant failed
+to prove that the Agency subjected him to discrimination as alleged. Complainant filed the
+instant appeal but did not submit any arguments in support of his appeal. The Agency opposes
+his appeal.
+
+
+2
+  The Agency conducted a supplemental investigation to obtain additional evidence, including
+information about the specific conduct that was considered for Complainant’s termination.
+                                                3                                     2023002334
+
+                                 ANALYSIS AND FINDINGS
+
+Standard of Review
+
+In rendering this appellate decision, we must scrutinize the AJ’s legal and factual conclusions,
+and the Agency’s final order adopting them, de novo. See 29 C.F.R. § 1614.405(a) (stating that
+a “decision on an appeal from an Agency’s final action shall be based on a de novo review . . .”);
+see also Equal Employment Opportunity Management Directive for 29 C.F.R. Part 1614 (EEO
+MD-110), at Chap. 9, § VI.B. (Aug. 5, 2015) (providing that an administrative judge’s
+determination to issue a decision without a hearing, and the decision itself, will both be reviewed
+de novo). This essentially means that we should look at this case with fresh eyes. In other
+words, we are free to accept (if accurate) or reject (if erroneous) the AJ’s, and the Agency’s,
+factual conclusions and legal analysis – including on the ultimate fact of whether intentional
+discrimination occurred, and on the legal issue of whether any federal employment
+discrimination statute was violated. See id. at Chap. 9, § VI.A. (explaining that the de novo
+standard of review “requires that the Commission examine the record without regard to the
+factual and legal determinations of the previous decision maker,” and that EEOC “review the
+documents, statements, and testimony of record, including any timely and relevant submissions
+of the parties, and . . . issue its decision based on the Commission’s own assessment of the record
+and its interpretation of the law”).
+
+Decision without a Hearing
+
+We determine whether the AJ appropriately issued the decision without a hearing. The
+Commission’s regulations allow an AJ to issue a decision without a hearing upon finding that
+there is no genuine issue of material fact. 29 C.F.R. § 1614.109(g). EEOC’s decision without a
+hearing regulation follows the summary judgment procedure from federal court. Fed. R. Civ. P.
+56. The U.S. Supreme Court held summary judgment is appropriate where a judge determines no
+genuine issue of material fact exists under the legal and evidentiary standards. Anderson v.
+Liberty Lobby, Inc., 477 U.S. 242, 255 (1986). In ruling on a summary judgment motion, the
+judge is to determine whether there are genuine issues for trial, as opposed to weighing the
+evidence. Id. at 249. At the summary judgment stage, the judge must believe the non-moving
+party’s evidence and must draw justifiable inferences in the non-moving party’s favor. Id. at 255.
+A “genuine issue of fact” is one that a reasonable judge could find in favor for the non-moving
+party. Celotex v. Catrett, 477 U.S. 317, 322-23 (1986); Oliver v. Digital Equip. Corp., 846 F.2d
+103, 105 (1st Cir. 1988). A “material” fact has the potential to affect the outcome of a case.
+
+An AJ may issue a decision without a hearing only after determining that the record has been
+adequately developed. See Petty v. Dep’t of Def., EEOC Appeal No. 01A24206 (July 11, 2003).
+We carefully reviewed the record and find that it is adequately developed. To successfully
+oppose a decision without a hearing, Complainant must identify material facts of record that are
+in dispute or present further material evidence establishing facts in dispute. Here, Complainant
+offers no arguments on appeal to show a genuine dispute of material fact, and we find that a
+decision without a hearing was appropriate.
+                                               4                                    2023002334
+
+Disparate Treatment
+
+To prevail in a disparate treatment claim such as this, Complainant must satisfy the three-part
+evidentiary scheme fashioned by the Supreme Court in McDonnell Douglas Corp. v. Green, 411
+U.S. 792 (1973). He must generally establish a prima facie case by demonstrating that he was
+subjected to an adverse employment action under circumstances that would support an inference
+of discrimination. Furnco Constr. Co. v. Waters, 438 U.S. 567, 576 (1978). The prima facie
+inquiry may be dispensed with in this case, however, since the Agency has articulated legitimate
+and nondiscriminatory reasons for its conduct. See U.S. Postal Serv. Bd. of Governors v. Aikens,
+460 U.S. 711, 713-17 (1983); Holley v. Dep’t of Veterans Affairs, EEOC Request No. 05950842
+(Nov. 13, 1997). To ultimately prevail, Complainant must prove, by a preponderance of the
+evidence, that the Agency’s explanation is a pretext for discrimination. Reeves v. Sanderson
+Plumbing Products, Inc., 530 U.S. 133 (2000); St. Mary’s Honor Ctr. v. Hicks, 509 U.S. 502,
+519 (1993); Tex. Dep’t of Cmty. Affairs v. Burdine, 450 U.S. 248, 256 (1981); Holley, supra;
+Pavelka v. Dep’t of the Navy, EEOC Request No. 05950351 (Dec. 14, 1995).
+
+Assuming, arguendo, that Complainant established a prima facie case of discrimination based on
+disability, we find that the Agency proffered legitimate, nondiscriminatory reasons for his
+removal. The Superintendent of Shop 38 testified that he considered Complainant’s performance
+and conduct deficiencies in his decision to terminate his employment during his probationary
+period. Specifically, Complainant could not obtain a foundational qualification that all Shop 38
+employees were expected to obtain because he twice failed the NNQC and was not proactive in
+taking the necessary steps to take the course for the third time. 3 ROI at 422-5, 428-30.
+
+The Superintendent also considered the Supervisor’s feedback, which noted that Complainant
+could not follow basic instructions and he constantly argued with the mechanics on best
+practices. The Supervisor provided an example when he did not follow her instructions, which
+led to their inability to accomplish their job the next day. When she spoke to him about the
+situation, he either did not understand or care about her concerns. The Supervisor also noted a
+time when she assigned Complainant to work “topside,” and when she asked why he was not on
+the boat, he replied that there were enough people and that he would help someone else. The
+Supervisor instructed Complainant to work on the boat, as previously assigned. ROI at 443.
+
+The Supervisor further elaborated that Complainant demonstrated a “horrible attitude,” such as
+when he was rude to attendants who were unable to check a tool right away, and he was
+unwilling to learn when mechanics tried to teach/mentor him on the work.
+
+
+
+3
+  The Superintendent stated that he was not aware at the time he made the decision to remove
+Complainant that a Training Instructor was trying to coordinate a third attempt at the NNQC test.
+The Training Instructor explained that after Complainant failed the exam the second time, he
+sent a notice to the shop to request that Complainant review the NNQC material before enrolling
+in another class or to see him for a one-on-one session, and he spoke to the General Foreman
+about Complainant. Supplemental ROI at 27, 45.
+                                               5                                    2023002334
+
+The Supervisor added that she had multiple one-on-one conversations with Complainant about
+her expectations from him. Supplemental ROI at 33.
+
+We find that Complainant has not shown that the proffered reasons were pretexts for
+discrimination. Pretext can be demonstrated by showing such weaknesses, inconsistencies, or
+contradictions in the Agency’s proffered legitimate reasons for its action that a reasonable fact
+finder could rationally find them unworthy of credence. See Opare-Addo v. U.S. Postal Serv.,
+EEOC Appeal No. 0120060802 (Nov. 20, 2007) (finding that the agency’s explanations were
+confusing, contradictory, and lacking credibility, which were then successfully rebutted by the
+complainant), request for recon. denied, EEOC Request No. 0520080211 (May 30, 2008). While
+other employees averred that they did not witness Complainant being uncooperative or
+combative, no witness provided testimony to dispute the Supervisor’s specific examples. ROI at
+447, 461, 470, 511. The record also shows that the Agency previously terminated two other Shop
+38 employees for repeatedly failing exams, including the NNQC. ROI at 115.
+
+Complainant did not show that the proffered reasons are not worthy of belief and his bare
+assertions that management officials discriminated against him are insufficient to prove pretext
+or that their actions were discriminatory. As such, we find that Complainant did not establish
+disability discrimination when the Agency terminated his employment during his probationary
+period.
+
+                                        CONCLUSION
+
+Based on a thorough review of the record and the contentions on appeal, including those not
+specifically addressed herein, we AFFIRM the Agency’s final order adopting the AJ’s decision.
+
+                          STATEMENT OF RIGHTS - ON APPEAL
+                             RECONSIDERATION (M0920)
+
+The Commission may, in its discretion, reconsider this appellate decision if Complainant or the
+Agency submits a written request that contains arguments or evidence that tend to establish that:
+       1. The appellate decision involved a clearly erroneous interpretation of material fact or
+          law; or
+       2. The appellate decision will have a substantial impact on the policies, practices, or
+          operations of the agency.
+
+Requests for reconsideration must be filed with EEOC’s Office of Federal Operations (OFO)
+within thirty (30) calendar days of receipt of this decision. If the party requesting
+reconsideration elects to file a statement or brief in support of the request, that statement or
+brief must be filed together with the request for reconsideration. A party shall have twenty
+(20) calendar days from receipt of another party’s request for reconsideration within which to
+submit a brief or statement in opposition. See 29 C.F.R. § 1614.405; Equal Employment
+Opportunity Management Directive for 29 C.F.R. Part 1614 (EEO MD-110), at Chap. 9 § VII.B
+(Aug. 5, 2015).
+                                                  6                                   2023002334
+
+Complainant should submit his or her request for reconsideration, and any statement or brief in
+support of his or her request, via the EEOC Public Portal, which can be found at
+
+https://publicportal.eeoc.gov/Portal/Login.aspx
+
+Alternatively, Complainant can submit his or her request and arguments to the Director, Office
+of Federal Operations, Equal Employment Opportunity Commission, via regular mail addressed
+to P.O. Box 77960, Washington, DC 20013, or by certified mail addressed to 131 M Street, NE,
+Washington, DC 20507. In the absence of a legible postmark, a complainant’s request to
+reconsider shall be deemed timely filed if OFO receives it by mail within five days of the
+expiration of the applicable filing period. See 29 C.F.R. § 1614.604.
+
+An agency’s request for reconsideration must be submitted in digital format via the EEOC’s
+Federal Sector EEO Portal (FedSEP). See 29 C.F.R. § 1614.403(g). Either party’s request
+and/or statement or brief in opposition must also include proof of service on the other party,
+unless Complainant files his or her request via the EEOC Public Portal, in which case no proof of
+service is required.
+
+Failure to file within the 30-day time period will result in dismissal of the party’s request for
+reconsideration as untimely, unless extenuating circumstances prevented the timely filing of the
+request. Any supporting documentation must be submitted together with the request for
+reconsideration. The Commission will consider requests for reconsideration filed after the
+deadline only in very limited circumstances. See 29 C.F.R. § 1614.604(c).
+
+               COMPLAINANT’S RIGHT TO FILE A CIVIL ACTION (S0610)
+
+You have the right to file a civil action in an appropriate United States District Court within
+ninety (90) calendar days from the date that you receive this decision. If you file a civil action,
+you must name as the defendant in the complaint the person who is the official Agency head or
+department head, identifying that person by his or her full name and official title. Failure to do
+so may result in the dismissal of your case in court. “Agency” or “department” means the
+national organization, and not the local office, facility or department in which you work. If you
+file a request to reconsider and also file a civil action, filing a civil action will terminate the
+administrative processing of your complaint.
+
+                          RIGHT TO REQUEST COUNSEL (Z0815)
+
+If you want to file a civil action but cannot pay the fees, costs, or security to do so, you may
+request permission from the court to proceed with the civil action without paying these fees or
+costs. Similarly, if you cannot afford an attorney to represent you in the civil action, you may
+request the court to appoint an attorney for you. You must submit the requests for waiver of
+court costs or appointment of an attorney directly to the court, not the Commission. The
+court has the sole discretion to grant or deny these types of requests.
+                                                  7                                     2023002334
+
+Such requests do not alter the time limits for filing a civil action (please read the paragraph titled
+Complainant’s Right to File a Civil Action for the specific time limits).
+
+FOR THE COMMISSION:
+
+
+
+______________________________                    Carlton M. Hadden’s signature
+Carlton M. Hadden, Director
+Office of Federal Operations
+
+
+January 3, 2024
+Date
+

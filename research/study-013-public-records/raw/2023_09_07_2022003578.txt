@@ -1,0 +1,317 @@
+             U.S. EQUAL EMPLOYMENT OPPORTUNITY COMMISSION
+                           Office of Federal Operations
+                                  P.O. Box 77960
+                             Washington, DC 20013
+
+
+                                         Jarvis R., 1
+                                        Complainant,
+
+                                              v.
+
+                                        Bill Nelson,
+                                       Administrator,
+                       National Aeronautics and Space Administration
+                                 (Langley Research Center),
+                                          Agency.
+
+                                   Appeal No. 2022003578
+
+                               Hearing No. 430-2022-00059X
+
+                             Agency No. NCN-19-LARC-00207
+
+                                         DECISION
+
+On June 16, 2022, Complainant filed an appeal with the Equal Employment Opportunity
+Commission (EEOC or Commission), pursuant to 29 C.F.R. § 1614.403(a), from the Agency’s
+May 19, 2022, final order concerning his equal employment opportunity (EEO) complaint
+alleging employment discrimination in violation of Title VII of the Civil Rights Act of 1964
+(Title VII), as amended, 42 U.S.C. § 2000e et seq.
+
+                                      BACKGROUND
+
+At the time of events giving rise to this complaint, Complainant worked as a Senior Programmer
+with the staffing firm, Science Systems and Application, Inc. (SSAI) at the Agency’s NASA
+Langley Research Center (LaRC) facility in Hampton, Virginia.
+
+On October 3, 2019, Complainant filed an EEO complaint alleging that the Agency
+discriminated against him on the basis of sex (male) when:
+
+    1. On March 27, 2019, SSAI terminated Complainant’s employment.
+
+
+
+1
+ This case has been randomly assigned a pseudonym which will replace Complainant’s name
+when the decision is published to non-parties and the Commission’s website.
+                                                2                                    2022003578
+
+On March 25, 2020, the Agency dismissed the complaint for failure to state a claim because it
+did not, under common law, employ or jointly employ Complainant. On April 15, 2020,
+Complainant appealed the Agency’s procedural dismissal of his complaint to the Commission. In
+EEOC Appeal No. 2020003134 (Oct. 15, 2020), the Commission vacated the dismissal because
+there was insufficient evidence to decide on the issue of joint employment. In its decision, the
+Commission remanded the complaint and ordered the Agency to investigate the joint
+employment issue and then accept the complaint or issue another final agency decision (FAD)
+dismissing it for lack of standing. After conducting a limited supplemental investigation, the
+Agency again dismissed the complaint on December 11, 2020, for lack of standing, finding that
+the limited supplemental investigation did not find sufficient evidence to suggest that the Agency
+was a joint employer for the Complainant.
+
+On December 29, 2020, the Complainant filed another appeal contesting the Agency’s December
+11, 2020, procedural dismissal. On June 28, 2021, the Commission reversed the Agency’s Final
+Agency Decision dismissing the complaint finding that the Agency was a joint employer for the
+Complainant with Science Systems and Applications, Inc. (SSAI) and ordered the Agency to
+conduct a full supplemental investigation on the merits of the complaint. EEOC Appeal No.
+2021001448.
+
+At the conclusion of the investigation, the Agency provided Complainant with a copy of the
+report of investigation (ROI) and notice of his right to request a hearing before an Equal
+Employment Opportunity Commission Administrative Judge (AJ). Complainant timely
+requested a hearing. Over Complainant's objections, the AJ assigned to the case granted the
+Agency’s April 13, 2022, motion for a decision without a hearing and issued a decision without a
+hearing on May 3, 2022. The Agency subsequently issued a final order adopting the AJ’s
+finding that Complainant failed to prove that the Agency subjected him to discrimination as
+alleged.
+
+The instant appeal followed. On appeal, Complainant filed a brief in support of his appeal. The
+Agency did not file anything on appeal.
+
+                                 ANALYSIS AND FINDINGS
+
+Standard of Review
+
+As this is an appeal from a decision issued without a hearing, pursuant to 29 C.F.R. §
+1614.110(b), the Agency's decision is subject to de novo review by the Commission. 29 C.F.R. §
+1614.405(a). See Equal Employment Opportunity Management Directive for 29 C.F.R. Part
+1614, at Chap. 9, § VI.A. (Aug. 5, 2015) (explaining that the de novo standard of review
+“requires that the Commission examine the record without regard to the factual and legal
+determinations of the previous decision maker,” and that EEOC “review the documents,
+statements, and testimony of record, including any timely and relevant submissions of the
+parties, and . . . issue its decision based on the Commission’s own assessment of the record and
+its interpretation of the law”).
+                                                 3                                     2022003578
+
+
+Summary Judgment
+
+An AJ may issue a decision without a hearing only after determining that the record has been
+adequately developed. See Petty v. Dep’t of Def., EEOC Appeal No. 01A24206 (July 11, 2003).
+We carefully reviewed the record and find that it is adequately developed.
+
+The Commission’s regulations allow an AJ to issue a decision without a hearing upon finding
+that there is no genuine issue of material fact. 29 C.F.R. § 1614.109(g). At the summary
+judgment stage, the judge must believe the non-moving party’s evidence and must draw
+justifiable inferences in the non-moving party’s favor. Id. at 255. A “genuine issue of fact” is one
+that a reasonable judge could find in favor for the non-moving party. Celotex v. Catrett, 477 U.S.
+317, 322-23 (1986); Oliver v. Digital Equip. Corp., 846 F.2d 103, 105 (1st Cir. 1988). A
+“material” fact has the potential to affect the outcome of a case. To successfully oppose a
+decision without a hearing, Complainant must identify material facts of record that are in dispute
+or present further material evidence establishing facts in dispute.
+
+Here, Complainant alleges that there is a genuine issue of material fact because he disagrees with
+the description of an event listed in the background section of the Agency’s Motion for Summary
+Judgment. See Hearing Documents at 727. More specifically, Complainant argues that the fourth
+event listed in the background section is missing relevant information regarding the timing of his
+termination. Complainant alleges that the missing information would provide evidence on
+NASA’s and SSAI’s decision to keep Complainant on PTO until his termination which he
+believes prevented him from defending himself against the charges at the time they occurred. See
+Hearing Documents at 822. While Complainant’s assertion may be true, there is no evidence to
+suggest that this is a material fact that has the potential to affect the outcome of this case.
+
+For the reasons discussed below, we find that, even construing any inferences raised by the
+undisputed facts in favor of Complainant, a reasonable factfinder could not find in his favor.
+
+New Claims on Appeal
+
+In the Complainant’s appeal statement, he asserts, for the first time, claims beyond those listed in
+his formal complaint or filings at the hearing stage. More specifically, he insists that the EEOC
+should investigate NASA on their actions during March 2019 and throughout this EEOC case.
+See Complainant’s Appeal Statement at 6. However, the Commission has held that it is not
+appropriate for a complainant to raise new claims for the first time on appeal. See Hubbard v.
+Dep't of Homeland Security, EEOC Appeal No. 01A40449 (Apr. 22, 2004). Should he wish to
+pursue these new claims, Complainant is advised to contact an EEO Counselor to initiate the
+administrative process.
+
+In his statement, Complainant also alleges, for the first time, that in addition to sex
+discrimination, he believes that his termination was, in part, based on reprisal. See
+Complainant’s Appeal Statement.
+                                                4                                    2022003578
+
+The Commission has found that it is not appropriate to raise a new basis for the first time on
+appeal, absent a compelling reason, because allowing a complainant to raise a basis not presented
+to the agency at some point prior to its final determination would thwart the investigative
+process. See Valdez v. U.S. Postal Serv., EEOC Appeal No. 01A00196 (May 11, 2000).
+
+Therefore, we decline to address Complainant’s newly raised claim or basis for discrimination in
+this decision.
+
+Disparate Treatment
+
+To prevail in a disparate treatment claim such as this, Complainant must satisfy the three-part
+evidentiary scheme fashioned by the Supreme Court in McDonnell Douglas Corp. v. Green, 411
+U.S. 792 (1973). He must generally establish a prima facie case by demonstrating that he was
+subjected to an adverse employment action under circumstances that would support an inference
+of discrimination. Furnco Constr. Co. v. Waters, 438 U.S. 567, 576 (1978). The burden then
+shifts to the agency to articulate a legitimate, non-discriminatory reason for its actions. Tex.
+Dep’t of Cmty. Affairs v. Burdine, 450 U.S. 248, 256 (1981). Once the agency has met its
+burden, the complainant bears the ultimate responsibility to persuade the fact finder by a
+preponderance of the evidence that the agency’s articulate reason is pretextual and that the
+agency instead acted on the basis of a prohibited reason. St. Mary's Honor Ctr. v. Hicks, 509
+U.S. 502, 519 (1993).
+
+Indicators of pretext include, but are not limited to, discriminatory statements or past personal
+treatment attributable to those responsible for the personnel action that led to the filing of the
+complaint, comparative or statistical data revealing differences in treatment across various
+protected-group lines, unequal application of Agency policy, deviations from standard
+procedures without explanation or justification, or inadequately explained inconsistencies in the
+evidentiary record. Mellissa F. v. U.S. Postal Serv., EEOC Appeal No. 0120141697 (Nov. 12,
+2015). At all times, the ultimate burden remains with Complainant to demonstrate by a
+preponderance of the evidence that the Agency's reasons were not the real reasons and that the
+Agency acted on the basis of discriminatory animus.
+
+This established order of analysis in discrimination cases, in which the first step normally
+consists of determining the existence of a prima facie case, need not be followed in all cases.
+Where, like here, the agency has articulated a legitimate, nondiscriminatory reason for its
+actions, 2 the factual inquiry can proceed directly to the third step of the McDonnell Douglas
+analysis, the ultimate issue of whether complainant has shown by a preponderance of the
+evidence that the agency's actions were motivated by discrimination. U.S. Postal Serv. Bd. of
+Governors v. Aikens, 460 U.S. 711, 713-714 (1983).
+
+Complainant argues that his termination was based on sex because the NASA Branch Director
+concluded that Complainant displayed aggressive and threatening behavior against a female
+
+
+2
+    See Hearing Documents at 733-737.
+                                                  5                                      2022003578
+
+colleague “simply because she stated so.” See Complainant’s Appeal Statement at 2.
+Complainant further argues that there were no witnesses during their interaction so management
+is engaging in sex discrimination because if “a female, accusing a male, then it must be true.” Id.
+In response, the Agency denied Complainant’s allegations and stated that its nondiscriminatory
+reason for terminating him was based on his history of poor interactions with NASA and SSAI
+employees, unproductive and unprofessional communication, and disrupting meetings.
+
+To support its nondiscriminatory reasons for termination, the Agency cites several instances
+where Complainant’s behavior was unproductive and unprofessional and negatively affected
+others or their ability to work. See Hearing Document at 733-737. In response to the Agency’s
+nondiscriminatory reasons, the Complainant suggests that the Agency’s management official that
+supported the termination action only provided SSAI with negative information about his past
+behavior and performance appraisals. However, in doing this, Complainant fails to provide any
+evidence to suggest that his history of negative behavior or the comments on his performance
+appraisal are not true.
+
+In fact, in his appeal statement, the Complainant even quotes the female colleague that was
+involved in the interaction that started the investigation that led to his termination, in an attempt
+to dispute the Agency’s motive. In her statement, she says, “I know that historically he has bad
+behavior and I have witnessed this bad behavior with other[s] so I do not believe the behavior
+would have changed.” See Remand ROI at 119-120. This statement does not provide the support
+Complainant believes it does. Instead, this statement provides support for the Agency’s stated
+nondiscriminatory reasons for Complainant’s termination. It not only addresses his past bad
+behavior, but also states that it was not likely for him to change, had he continued to work.
+Nonetheless, Complainant has failed to prove that the explanation for his termination is pretext
+or that his sex, and not his behavior, played any role in the Agency and contracting company’s
+decision to terminate him.
+
+In his appeal, Complainant alleges that the contracting company’s stated reason for his
+termination – gross misconduct and violation of SSAI’s Workplace Violence Prevention and
+Policy – is pretextual. The Complainant argues that because the female colleague only stated that
+she “felt threatened” by the interaction and that she did not state that it was a real “threat” that he
+did not violate the policy and should not have been terminated. However, a review of SSAI’s
+policy indicates that intimidation, verbal abuse, and “other threatening behavior that occurs in
+the workplace” are all covered under the policy and subject to disciplinary action, up to and
+including termination. See Remand ROI at 181. Thus, even if Complainant was relying on the
+contracting company’s stated reason for his termination to implicate the Agency as a joint
+employer for pretext, it is not supported by any evidence. Without any evidence that suggests
+discrimination on the basis of sex was a motivating factor in terminating Complainant, instead of
+his well cited performance and behavior concerns, the Commission finds that the Agency’s
+reasoning has not been established as pretext.
+                                                  6                                 2022003578
+
+
+                                        CONCLUSION
+
+Based on a thorough review of the record and the arguments on appeal, including those not
+specifically addressed herein, we AFFIRM the Agency’s final order adopting the AJ’s decision.
+
+                          STATEMENT OF RIGHTS - ON APPEAL
+                             RECONSIDERATION (M0920)
+
+The Commission may, in its discretion, reconsider this appellate decision if Complainant or the
+Agency submits a written request that contains arguments or evidence that tend to establish that:
+       1. The appellate decision involved a clearly erroneous interpretation of material fact or
+          law; or
+       2. The appellate decision will have a substantial impact on the policies, practices, or
+          operations of the agency.
+
+Requests for reconsideration must be filed with EEOC’s Office of Federal Operations (OFO)
+within thirty (30) calendar days of receipt of this decision. If the party requesting
+reconsideration elects to file a statement or brief in support of the request, that statement or
+brief must be filed together with the request for reconsideration. A party shall have twenty
+(20) calendar days from receipt of another party’s request for reconsideration within which to
+submit a brief or statement in opposition. See 29 C.F.R. § 1614.405; Equal Employment
+Opportunity Management Directive for 29 C.F.R. Part 1614 (EEO MD-110), at Chap. 9 § VII.B
+(Aug. 5, 2015).
+
+Complainant should submit his or her request for reconsideration, and any statement or brief in
+support of his or her request, via the EEOC Public Portal, which can be found at
+
+https://publicportal.eeoc.gov/Portal/Login.aspx
+
+Alternatively, Complainant can submit his or her request and arguments to the Director, Office
+of Federal Operations, Equal Employment Opportunity Commission, via regular mail addressed
+to P.O. Box 77960, Washington, DC 20013, or by certified mail addressed to 131 M Street, NE,
+Washington, DC 20507. In the absence of a legible postmark, a complainant’s request to
+reconsider shall be deemed timely filed if OFO receives it by mail within five days of the
+expiration of the applicable filing period. See 29 C.F.R. § 1614.604.
+
+An agency’s request for reconsideration must be submitted in digital format via the EEOC’s
+Federal Sector EEO Portal (FedSEP). See 29 C.F.R. § 1614.403(g). Either party’s request
+and/or statement or brief in opposition must also include proof of service on the other party,
+unless Complainant files his or her request via the EEOC Public Portal, in which case no proof of
+service is required.
+                                                7                                     2022003578
+
+Failure to file within the 30-day time period will result in dismissal of the party’s request for
+reconsideration as untimely, unless extenuating circumstances prevented the timely filing of the
+request. Any supporting documentation must be submitted together with the request for
+reconsideration. The Commission will consider requests for reconsideration filed after the
+deadline only in very limited circumstances. See 29 C.F.R. § 1614.604(c).
+
+               COMPLAINANT’S RIGHT TO FILE A CIVIL ACTION (S0610)
+
+You have the right to file a civil action in an appropriate United States District Court within
+ninety (90) calendar days from the date that you receive this decision. If you file a civil action,
+you must name as the defendant in the complaint the person who is the official Agency head or
+department head, identifying that person by his or her full name and official title. Failure to do
+so may result in the dismissal of your case in court. “Agency” or “department” means the
+national organization, and not the local office, facility or department in which you work. If you
+file a request to reconsider and also file a civil action, filing a civil action will terminate the
+administrative processing of your complaint.
+
+                          RIGHT TO REQUEST COUNSEL (Z0815)
+
+If you want to file a civil action but cannot pay the fees, costs, or security to do so, you may
+request permission from the court to proceed with the civil action without paying these fees or
+costs. Similarly, if you cannot afford an attorney to represent you in the civil action, you may
+request the court to appoint an attorney for you. You must submit the requests for waiver of
+court costs or appointment of an attorney directly to the court, not the Commission. The
+court has the sole discretion to grant or deny these types of requests. Such requests do not alter
+the time limits for filing a civil action (please read the paragraph titled Complainant’s Right to
+File a Civil Action for the specific time limits).
+
+FOR THE COMMISSION:
+
+
+
+
+                                         Carlton M. Hadden’s signature
+Carlton M. Hadden, Director
+Office of Federal Operations
+
+
+August 23, 2023
+Date
+

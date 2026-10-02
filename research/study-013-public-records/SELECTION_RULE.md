@@ -41,3 +41,29 @@ The decision's BACKGROUND section only, which describes the investigation and th
 - Q3 (pass pool): `"did not request a hearing" AFFIRM`
 - Q4 (pass pool): `"requested a final agency decision" AFFIRMS`
 - Q5 (gap pool): `"supplemental investigation" "adequately developed"`
+
+## Amendment 2, 2026-10-02 (after classification counts were seen)
+**What had been seen:** label counts per pool and flag values per decision. One PASS decision (2024002416) was opened to check its layout. No GAP decision text had been read.
+**Reason:** under the rule, the 2026 pool gave 2 GAP and 165 PASS. Merits remands for an inadequate record are rare, so the GAP quota cannot fill.
+**Changes:**
+- Posting window widened for **both** pools to folders `2025_07_*` onward. That is still after the Engine model's published training period, which is *Source-reported*: Anthropic lists Haiku 4.5's training data as reliable to February 2025.
+- Q6 (gap pool) added: `VACATES "supplemental investigation" "final decision"`.
+- Duplicates removed by appeal number, keeping the earliest posting.
+- PASS sampling: when the PASS pool exceeds its quota, it is taken in the same fixed order (folder date, then appeal number).
+- If GAP still falls short of 15, the round runs with the GAP decisions available, and the PASS count is matched to that number so the pools stay balanced. The shortfall is reported.
+
+## Amendment 3, 2026-10-02 (after amendment 2 added no candidates)
+**Observed:** the EEOC search index returns few decisions posted in 2025. For the gap queries, most results are older migrated text files or dated folders from 2020 and 2021.
+**Changes:**
+- Any dated posting folder (`YYYY_MM_DD`) is eligible, for both pools.
+- Ordering becomes **newest first** (folder date descending, then appeal number), so recent decisions fill the quotas before older ones.
+- Each case records its posting year. The memorization analysis compares results on decisions posted before and after February 2025, and arm A (no JRS) serves as the recognition check.
+- Undated migrated `.txt` files stay excluded: their posting dates are unknown.
+
+## Amendment 4, 2026-10-02 (after the GAP candidate list was seen, before any case text was given to a model)
+- **GAP tightened:** it needs a vacate or remand, with no reversal (a reversal finds discrimination, which is not an inadequate record), and no remand limited to damages. The EEOC sentence stating the inadequacy is stored as the label's evidence.
+- **Text unit applied as written:** only decisions with a BACKGROUND section of at least 250 words can supply text. This applies to both pools.
+- **Date matching:** for each GAP selected (newest first), the PASS chosen is the eligible PASS nearest in posting date, without replacement. This stops posting year from separating the pools.
+
+## Amendment 5, 2026-10-02 (stripping correction, before any model call)
+The first strip removed witness testimony ("S2 affirmed that ...") because it matched "affirm" in any case. The fix: ruling verbs are matched in capitals only, as the EEOC writes its rulings. Procedural phrases are still removed in any case: remand, vacate, supplemental investigation, the EEOC's finding phrases, appeal references, inadequacy wording. The pseudonym footnote is also removed.
