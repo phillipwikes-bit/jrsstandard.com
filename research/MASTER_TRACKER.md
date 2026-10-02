@@ -3161,6 +3161,6 @@ Only four line groups differ between v7 and v8.
 - 2026-10-02 (**OWNER: COMPLETELY DELETE AND ELIMINATE STUDY 013; RESEARCH "PREVENTION AS THE PRODUCT"**): `research/study-013-public-records/` was removed from the working tree with `git rm` (1,268 files). It was never on `main` or deployed. Its commits remain in git history on this branch, so it is recoverable; erasing it from history would need a rewrite and force push, which was not done.
   - Report: E.4 and E.5 replaced by one withdrawal note; the companion-evidence line removed; decisions-log row added.
   - Items 26 and 28 reverted from DONE to OPEN, and the v0.2 build note on item 24 corrected, because the evaluation code lived inside the deleted folder. Item 29 is CLOSED (withdrawn). The production content[0] finding on item 24 is kept.
-  - Flagged for counsel: whether a withdrawn internal test must be disclosed before any Engine sale that makes performance claims.
   - Study 014 draft and marketing assessment no longer depend on or cite Study 013; Study 014 builds its own corpus.
   Earlier tracker lines are left as written (append-only log).
+- 2026-10-02 (**OWNER: NO NOTES TO COUNSEL**): the counsel flag on the Study 013 withdrawal was removed from the report (E.4 and E.5 note), from IP_SALE_TRACKER row 71, and from the previous tracker entry. The report keeps one withdrawal note with no results.

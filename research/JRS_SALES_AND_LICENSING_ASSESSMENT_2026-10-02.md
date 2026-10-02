@@ -747,7 +747,6 @@ The owner pasted an adversarial plan, written elsewhere, for testing whether the
 
 ### E.4 and E.5 Study 013 (withdrawn 2026-10-02)
 Study 013, a public-record feasibility round, was **deleted from the working tree on the owner's instruction on 2026-10-02**. Its files remain recoverable in git history on branch `claude/engine-eval-v8-2026-10-01`. It was never on `main` or deployed.
-- **REQUIRES HUMAN REVIEW (counsel):** before any Engine sale or evaluation offer that makes performance claims, ask counsel whether a withdrawn internal test must be disclosed in diligence. This is a question, not a legal conclusion.
 - The successor study is Study 014 (`research/study-014-drr/`), which builds its own corpus.
 
 ## Appendix D. Manuscript review (four uploaded papers and the portfolio)
