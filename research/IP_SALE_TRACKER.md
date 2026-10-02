@@ -16,7 +16,7 @@
 |---|---|
 | **Created** | 2026-08-13 |
 | **Last revised** | 2026-10-02 (rev 54) |
-| **Revisions** | 53 |
+| **Revisions** | 54 |
 | **Current stage** | **Zero buyer conversations held, because I advised waiting. Gate withdrawn 2026-08-13** |
 | **Sale probability, as-is** | **5 to 10%** over ~12 months (owner's own anchor, `Path_to_Sale_Action_Plan.md`, unchanged) |
 
