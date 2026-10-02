@@ -487,7 +487,7 @@ Started 2026-10-02 at the owner's request: "take care of every possible preparat
 | 20 | ED-05 (record text sent without delimiters): prepare a fix; testing it needs a small paid-call allowance and owner approval | OPEN |
 | 21 | Update the stale `scripts/publication_status.py` | OPEN |
 | 24 | Migrate the Engine off `claude-haiku-4-5-20251001` to a longer-supported model and freeze Engine v0.2 (needs a small paid test allowance) | OPEN |
-| 25 | Publish a version-controlled Codebook-to-Engine condition mapping (ED-06) | OPEN |
+| 25 | Publish a version-controlled Codebook-to-Engine condition mapping (ED-06) | **DRAFTED 2026-10-02:** `research/engine-buyer-readiness-2026-10-01/CODEBOOK_ENGINE_MAPPING.md`. Two Engine questions drift from the Codebook (Engine 2 and Engine 4). v0.2 renaming proposed. Publication awaits the owner |
 | 26 | Remove or disable the `compliant_version` rewrite for evaluation and benchmark use | OPEN |
 | 27 | Define the unit of review: a final decision record or a whole investigation file (8,000-character limit). **Study 013 evidence (2026-10-02): 20 of the 30 public-record cases exceed 8,000 characters (8 GAP, 12 PASS).** Options: an evaluation-only higher limit in the adapter; a fixed excerpt rule; or run only the 10 that fit (7 GAP, 3 PASS, unbalanced). Owner decision | OPEN |
 | 28 | Add an evaluation mode with no JRS telemetry, for any non-synthetic pilot | OPEN |
